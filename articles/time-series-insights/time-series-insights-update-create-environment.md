@@ -1,6 +1,6 @@
 ---
-title: Az Azure Time Series Insights (előzetes verzió) oktatóanyaga |} A Microsoft Docs
-description: További tudnivalók az Azure Time Series Insights (előzetes verzió)
+title: Állítsa be az Azure Time Series Insights – előzetes környezet oktatóanyag |} A Microsoft Docs
+description: Ismerje meg, hogyan állítsa be a környezetet az Azure Time Series Insights előzetes verziója.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,161 +9,164 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: d4f69533a68e11b3e171963429b141cf0736472d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 20cec1305f84bd1ff7e01f2e1d38f374aa17bc6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014633"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106676"
 ---
-# <a name="azure-time-series-insights-preview-tutorial"></a>Az oktatóanyag az Azure Time Series Insights (előzetes verzió)
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights – előzetes környezet beállításával.
 
-Ez az oktatóanyag végigvezeti egy Azure Time Series Insights (TSI) előzetes verziójú környezet, a szimulált eszközökről származó adatok használatával történő létrehozásának folyamatán. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag végigvezeti egy Azure Time Series Insights – előzetes környezet, amely fel van töltve a szimulált eszközökről származó adatokkal történő létrehozásának folyamatán. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-* A TSI (előzetes verzió) környezetet hozhat létre.
-* A TSI (előzetes verzió) környezet csatlakozhat egy Eseményközpontba.
-* A szél farm szimuláció futtatása az adatok streamelése a TSI előzetes környezetbe.
+* Egy Time Series Insights előzetes verziója környezetet hozhat létre.
+* A Time Series Insights előzetes környezet csatlakozhat az Azure Event Hubs-eseményközpontba.
+* A szél farm szimuláció futtatása az adatok streamelése a Time Series Insights előzetes verziója környezetbe.
 * Alapvető adatok elemzését, a.
 * Egy Idősorozat-modell típusa és a hierarchia megadása, és társíthatja azt az üzemelő példányok.
 
-## <a name="create-a-time-series-insights-preview-environment"></a>A Time Series Insights (előzetes verzió) környezet létrehozása
+## <a name="create-a-time-series-insights-preview-environment"></a>Egy Time Series Insights előzetes környezet létrehozása
 
-Ez a szakasz ismerteti, hogyan hozhat létre az Azure TSI (előzetes verzió) környezet használatával a [az Azure Portal](https://portal.azure.com/).
+Ez a szakasz ismerteti, hogyan hozhat létre a Time Series Insights előzetes környezet használatával a [az Azure portal](https://portal.azure.com/).
 
-1. Jelentkezzen be az előfizetés fiók Azure-portálra
-1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban.
-1. Válassza az **Eszközök internetes hálózata** kategóriát, majd a **Time Series Insights** elemet.
+1. Jelentkezzen be az Azure Portalra az előfizetéses fiókba.
 
-   ![az oktatóanyag egy az egyhez][1]
+1. Válassza ki **erőforrás létrehozása**.
 
-1. A Time Series Insights környezetet lapon adja meg a szükséges paramétereket, és kattintson a **tovább: eseményforrás**. A jelen oktatóanyag esetében állítsa be a **Time Series azonosító** , `Id`. Tudjon meg többet a **Time Series azonosítók**, olvassa el [Time Series azonosítók](./time-series-insights-update-how-to-id.md).
+1. Válassza ki a **IOT-** kategóriát, és válassza ki **Time Series Insights**.
 
-   ![az oktatóanyag második][2]
+  ![Hozzon létre egy erőforrást, majd válassza ki az IOT-, majd válassza ki és a Time Series Insights][1]
 
-1. Az a **eseményforrás** lapon töltse ki a szükséges paramétereket, kattintson a **felülvizsgálat + létrehozás**. A jelen oktatóanyag esetében állítsa be a **időbélyeg** tulajdonság mező `Timestamp`.
+1. Az a **alapjai** lapot, adja meg a szükséges paramétereket, majd **tovább: forrás**
 
-   ![oktatóanyag – három][3]
+  ![A Time Series Insights-környezet alapvető beállítások lapon, a következő: eseményforrás gomb][2]
 
-1. Tekintse át a részletes adatait, és kattintson a **létrehozás** a környezet kiépítésének megkezdéséhez.
+1. Az a **eseményforrás** lapot, adja meg a szükséges paramétereket, majd **felülvizsgálat + létrehozás**.
 
-   ![oktatóanyag – 4][4]
+  ![A forrás és a felülvizsgálat + Létrehozás gomb látható][3]
 
-1. A telepítés sikeres befejezése után kapni fog egy értesítést.
+1. Az a **összefoglalás** lapon tekintse át a részletes adatait, és válassza ki **létrehozás** a környezet kiépítésének megkezdéséhez.
 
-   ![az oktatóanyag-öt][5]
+  ![Az összefoglaló lapon és a Létrehozás gombra][4]
 
-## <a name="send-events-to-your-tsi-environment"></a>Események küldése a TSI-környezetbe
+1. Ha üzembe helyezés sikeres, megjelenik egy értesítés.
 
-Ebben a szakaszban egy Szélmalom készülékszimulátort használandó küldhet eseményeket egy Eseményközpontba keresztül a TSI környezet.
+  ![Üzembe helyezés sikeres értesítés][5]
 
-  1. Az Azure Portalon keresse meg az event hub-erőforrásra, és csatlakoztathatja azt a TSI-környezetben. Ismerje meg, [az erőforrás összekapcsolása egy meglévő eseményközpontban](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+## <a name="send-events-to-your-time-series-insights-environment"></a>Események küldése Time Series Insights-környezete
 
-  1. Az Event Hub-erőforrások oldalának, lépjen a **megosztott hozzáférési házirendek** , majd **RootManageSharedAccessKey**. Másolás a **kapcsolati karakterlánc – elsődleges kulcs** itt jelenik meg.
+Ebben a szakaszban egy Szélmalom készülékszimulátort küldhet eseményeket egy eseményközpontba keresztül a Time Series Insights-környezet használata.
 
-      ![az oktatóanyag-6][6]
+  1. Az Azure Portalon nyissa meg az event hub-erőforrás, és csatlakoztathatja azt a Time Series Insights-környezet. További információ [az erőforrás csatlakozik egy meglévő eseményközponton](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-  1. Nyissa meg a következőt: [https://tsiclientsample.azurewebsites.net/windFarmGen.html]( https://tsiclientsample.azurewebsites.net/windFarmGen.html). Ez a webalkalmazás Szélmalom eszközök szimulálja.
-  1. Illessze be a 3. lépésében másolja a kapcsolati karakterláncot a **az Eseményközpont kapcsolati Sztringje**
+  1. Az event hub erőforrás-oldalon, Ugrás **megosztott hozzáférési házirendek** > **RootManageSharedAccessKey**. Másolja az értéket a **kapcsolati karakterlánc – elsődleges kulcs**.
 
-      ![oktatóanyag – hét][7]
+      ![Másolja az elsődleges kulcs kapcsolati karakterlánc értéke][6]
 
-  1. Kattintson a **kattintson a Start** eseményeket küld az eseményközpontba. Ebben a szakaszban egy fájlt `instances.json` letölti a gépre. Mentse a fájlt, hogy szüksége lesz később.
+  1. Nyissa meg a következőt: [https://tsiclientsample.azurewebsites.net/windFarmGen.html]( https://tsiclientsample.azurewebsites.net/windFarmGen.html). Ez a webalkalmazás URL-címen Szélmalom eszközök szimulálja.
 
-  1. Lépjen vissza az eseményközpontba. Meg kell jelennie a hub.d fogadja az új események
+  1. Az a **az Eseményközpont kapcsolati Sztringje** a weblapon mezőbe illessze be az előző lépésben kimásolt kapcsolati karakterláncot.
 
-      ![oktatóanyag – 8][8]
+      ![Az Eseményközpont kapcsolati Sztringje mezőbe illessze be az elsődleges kulcs kapcsolati karakterlánca][7]
+
+  1. Válassza ki **elindításához kattintson** leküldéses eseményeket az eseményközpontjába. Nevű fájl *instances.json* van letölt a számítógépre. Mentse a fájlt későbbi használat céljából.
+
+  1. Lépjen vissza az event hubs az Azure Portalon. Az eseményközpontban **áttekintése** új események az event hub által fogadott lapon látható.
+
+     ![Event hub áttekintő oldala, amely bemutatja az event hubs-mérőszámai][8]
 
 ## <a name="analyze-data-in-your-environment"></a>A környezetben lévő adatok elemzése
 
-Ebben a szakaszban végre fogja hajtani alapszintű analitika az idősorozat-adatok használata a Time Series Insights explorer frissítése időben.
+Ebben a szakaszban alapszintű analitika az idősoros adatokat, az a Time Series Insights explorer frissítése idő hajt végre.
 
-  1. Keresse meg az URL-cím az Azure Portal, az erőforrás oldalról kattintva a Time Series Insights frissítés explorer.
+  1. Nyissa meg az URL-cím (erőforrás) lapján az Azure Portalon kattintson a Time Series Insights frissítés explorer.
 
-      ![oktatóanyag – 9][9]
+      ![A Time Series Insights explorer URL-címe][9]
 
-  1. A Explorerben kattintson a a **fölérendelt objektum nélküli példányok** csomópontok a környezet a Time Series példányok megtekintéséhez.
+  1. A explorer alatt **fizikai hierarchia**, jelölje be a **fölérendelt objektum nélküli példányok** csomópontok a környezetben az összes idő sorozatú példányok megtekintéséhez.
 
-      ![oktatóanyag – tíz][10]
+     ![A fizikai hierarchia panelen fölérendelt objektum nélküli példányok listája][10]
 
-  1. Ebben az oktatóanyagban fogunk az elmúlt napon belül küldött adatok elemzéséhez. Ehhez kattintson a **Gyorshivatkozások** , és válassza ki a **az elmúlt 24 órából** lehetőséget.
+  1. Ebben az oktatóanyagban az elmúlt nap során elküldött adatok tudjuk elemezni. Válassza ki **Gyorshivatkozások**, majd válassza ki **az elmúlt 24 órából**.
 
-      ![oktatóanyag – tizenegy][11]
+     ![A Gyorshivatkozások legördülő mezőben válassza ki az elmúlt 24 órából][11]
 
-  1. Válassza ki **Sensor_0** válassza **átlagos érték megjelenítése** küldését a time series példány adatainak megjelenítéséhez.
+  1. Válassza ki **Sensor_0**, majd válassza ki **átlagos érték megjelenítése** a Time Series Insights-példányból küldött adatok megjelenítéséhez.
 
-      ![oktatóanyag – 12][12]
+     ![Válassza ki a Sensor_0 átlagos érték megjelenítése][12]
 
-  1. Hasonlóképpen dolgozunk más idő sorozat példányai alapszintű analitika végrehajtásához származó adatokat is.
+  1. Ehhez hasonlóan más Time Series Insights-példányok alapszintű analitika végrehajtásához származó is dolgozunk.
 
-      ![oktatóanyag – tizenhárom][13]
+     ![Egy Time Series Insights-adatok diagram][13]
 
-## <a name="define-a-type-and-hierarchy"></a>Adja meg a típust és a hierarchia
+## <a name="define-a-type-and-hierarchy"></a>Adja meg a típust és a hierarchia 
 
-Ebben a szakaszban egy típust, a hierarchiában, szerzői, és rendelje azokat a time series példányok. Tudjon meg többet [Time Series modellek](./time-series-insights-update-tsm.md).
+Ebben a szakaszban a típust és a hierarchia létrehozásához és a majd társítsa a Time Series Insights-példányok típusát és hierarchia. További információ [Time Series modellek](./time-series-insights-update-tsm.md).
 
-  1. A Explorerben kattintson a a **modell** alkalmazássávon lapján.
+  1. A Explorerben válassza ki a **modell** fülre.
 
-      ![oktatóanyag – tizennégy][14]
+     ![A modell fülre a explorer menü][14]
 
-  1. A típusok területen kattintson a **+ Hozzáadás**. Ez lehetővé teszi, új Time Series modell típus létrehozásához.
+  1. Az a **típusok** szakaszban jelölje be **Hozzáadás** hozhat létre egy új Idősorozat-modell típusa.
 
-      ![az oktatóanyag-tizenöt][15]
+     ![A Hozzáadás gombra a típusok oldalon][15]
 
-  1. Adja meg a típus-szerkesztőben egy **neve**, **leírása**, és a változók létrehozása **átlagos**, **Min**, és **maximális** értékek az alább látható módon. Kattintson a **létrehozás** menteni a típusát.
+  1. Írja be a szerkesztő, adjon meg értéket a **neve** és **leírás**. Változók létrehozása **átlagos**, **Min**, és **maximális** értékek a következő ábrán látható módon. Válassza ki **létrehozás** menteni a típusát.
 
-      ![oktatóanyag – tizenhat][16]
+     ![A típus hozzáadása panelen, és a Létrehozás gombra][16]
 
-      ![oktatóanyag – seventeen][17]
+     ![A minta Szélmalom típusok][17]
 
-  1. Az a **hierarchiák** területén kattintson a **+ Hozzáadás**. Ez lehetővé teszi, hozzon létre egy új Time Series modell hierarchia.
+  1. Az a **hierarchiák** szakaszban jelölje be **Hozzáadás** egy Idősorozat-modell új hierarchia.
 
-     ![oktatóanyag – tizennyolc][18]
+     ![A Hozzáadás gombra a hierarchiák oldalon][18]
 
-  1. Adja meg a hierarchia-szerkesztőben egy **neve** , és adja hozzá a hierarchiaszintek alább látható módon. Kattintson a **létrehozás** menteni a hierarchiában.
+  1. A hierarchia-szerkesztőben adjon meg egy értéket **neve** , és adja hozzá a hierarchiaszintek. Válassza ki **létrehozás** menteni a hierarchiában.
 
-     ![oktatóanyag – tizenkilenc][19]
+     ![A hierarchia hozzáadása panelen, és a Létrehozás gombra][19]
 
-     ![oktatóanyag – erdőtopológia][20]
+     ![A fizikai hierarchia mezőbe][20]
 
-  1. Az a **példányok** szakaszt, válasszon ki egy példányt, és kattintson a **szerkesztése**. Ez lehetővé teszi, típusa és a hierarchia társítani ezt a példányt.
+  1. Az a **példányok** szakaszt, válasszon ki egy példányt, és válassza ki **szerkesztése** típusa és a hierarchia társítandó ezt a példányt.
 
-     ![az oktatóanyag-erdőtopológia-egy][21]
+     ![Példányok listája][21]
 
-  1. A példány-szerkesztőben válassza ki a típusa és a hierarchia meghatározott lépések 3, 5 fent látható módon.
+  1. A példány-szerkesztőben válassza ki a típusát és a hierarchiában, amelyet a 3. és 5 megadott.
 
-     ![a második erdőtopológia oktatóanyag][22]
+     ![A Szerkesztés-példány panel][22]
 
-  1. Azt is megteheti, ehhez az összes példány egyidejű, szerkesztheti a `instances.json` korábban letöltött fájlra. Ebben a fájlban cserélje le az összes **typeId** és **hierarchyId** Azonosítóval rendelkező mezők szerzett a fenti 5, 3,. lépést.
+  1. Másik lehetőségként válassza ki egyszerre a típusa és a hierarchia minden példány esetében, szerkesztheti a *instances.json* korábban letöltött fájlra. Ebben a fájlban cserélje le az összes **typeId** és **hierarchyId** Azonosítóval rendelkező mezők kapott a 3. és 5.
 
-  1. Az a **példányok** területén kattintson a **feltöltése JSON** , és töltse fel a szerkesztett `instances.json` fájlt a lent látható módon.
+  1. Az a **példányok** szakaszban jelölje be **feltöltése JSON** , és töltse fel a szerkesztett *instances.json* fájlt.
 
-     ![oktatóanyag – 20-három][23]
+     ![A JSON feltöltés gombot][23]
 
-  1. Keresse meg a **Analytics** lapra, és frissítse a böngészőt. Meg kell jelennie az típusa és a fent meghatározott hierarchiához társított összes példányát.
+  1. Válassza ki a **Analytics** lapra, és frissítse a böngészőt. A típus és a hierarchia meghatározott társított összes példányát kell megjelennie.
 
-     ![oktatóanyag – huszonnégy][24]
+     ![Egy Time Series Insights-adatok diagram][24]
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:  
 
-* A TSI (előzetes verzió) környezetet hozhat létre.
-* A TSI (előzetes verzió) környezet csatlakozhat egy Eseményközpontba.
-* A szél farm szimuláció futtatása az adatok streamelése a TSI (előzetes verzió) környezetbe.
-* Alapvető adatok elemzését, a.
-* Meghatározása egy Idősorozat-modell típusa, a hierarchiában, és társíthatja azt az üzemelő példányok.
+* Egy Time Series Insights előzetes verziója környezetet hozhat létre.
+* A Time Series Insights előzetes környezet csatlakozhat egy eseményközpontba.
+* A szél farm szimuláció futtatása az adatok streamelése a Time Series Insights előzetes környezet.
+* Az adatok egy alapszintű elemzéseket végezhet.
+* Egy Idősorozat-modell típusa és a hierarchia megadása, és rendelje azokat a példányokat.
 
-Most, hogy tudja, hogyan hozhat létre saját TSI frissítési környezet, tudjon meg többet a TSI-ben kapcsolatos főbb fogalmakat.
+Most, hogy tudja, hogyan hozhat létre a saját Time Series Insights frissítési környezet, tudjon meg többet a Time Series Insightsban kapcsolatos főbb fogalmakat.
 
-Olvassa el a TSI tárolási konfigurációt:
+Olvassa el a Time Series Insights tárolási konfigurációt:
 
 > [!div class="nextstepaction"]
-> [Az Azure TSI (előzetes verzió) storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
+> [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
 
 További tudnivalók a Time Series modellek:
 
 > [!div class="nextstepaction"]
-> [Az Azure TSI (előzetes verzió) az adatmodellezés](./time-series-insights-update-tsm.md)
+> [Az Azure Time Series Insights előzetes verziója az adatmodellezés](./time-series-insights-update-tsm.md)
 
 <!-- Images -->
 [1]: media/v2-update-provision/tutorial-one.png

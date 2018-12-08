@@ -1,5 +1,5 @@
 ---
-title: Kapcsolatos szövegfelolvasás – beszédszolgáltatás
+title: Szövegfelolvasás – beszédszolgáltatások kapcsolatban
 titleSuffix: Azure Cognitive Services
 description: A szöveg-hang transzformációs API több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat kínál. Standard hangtípust használatához meg kell a hangalapú nevének megadásakor a beszédfelismerési szolgáltatás hívásakor néhány más paramétereket.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f01fe5c71cdd6f4c70527fcf2553374aae9a5d8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 42e9a7e02bbe7efeab4ea0d8ee5d9876b68a7565
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469925"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100650"
 ---
 # <a name="about-the-text-to-speech-api"></a>Tudnivalók a Text to Speech API
 

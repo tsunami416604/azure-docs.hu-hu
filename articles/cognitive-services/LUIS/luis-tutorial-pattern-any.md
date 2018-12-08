@@ -1,8 +1,9 @@
 ---
-title: '5. oktatóanyag: Pattern.any entitás szabad formátumú szöveghez'
+title: Pattern.any entitás
 titleSuffix: Azure Cognitive Services
 description: A pattern.any entitás használata az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival.
 services: cognitive-services
+ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ee5ba6783a50ad50489a20aa662f17af2ca4ae6a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421997"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103472"
 ---
 # <a name="tutorial-5-extract-free-form-data"></a>5. oktatóanyag: Szabad formátumú adatok kinyerése
 

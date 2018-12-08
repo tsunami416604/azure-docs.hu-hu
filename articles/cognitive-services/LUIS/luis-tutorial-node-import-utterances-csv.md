@@ -1,21 +1,22 @@
 ---
-title: Programozott módon a Node.js használatával a LUIS alkalmazás készítése |} A Microsoft Docs
+title: Importálja a Node.js használatával kimondott szöveg
 titleSuffix: Azure
 description: Ismerje meg, hogyan hozhat létre egy már létező adatokat CSV formátumban a LUIS jelentéskészítési API-val programozott módon a LUIS-alkalmazás.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034042"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101191"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programozott módon a Node.js használatával a LUIS alkalmazás készítése
 
@@ -34,7 +35,7 @@ Ha már rendelkezik egy rendszer, amely szem előtt, az intelligens hangfelismer
 
 Nyissa meg az `IoT.csv` fájlt. Elméleti otthoni automation szolgáltatás, beleértve a hogyan lettek besorolva, a felhasználó mondta, és a néhány hasznos információkkal kihúzott azokat a felhasználói lekérdezések naplózása a tartalmazza. 
 
-![CSV-fájl](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![Már meglévő adatok CSV-fájl](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 Látni, hogy a **RequestType** oszlop lehet szándék fog vonatkozni, és a **kérelem** az oszlopban látható egy példa utterance (kifejezés). A többi mező entitások lehet, ha azok az utterance (kifejezés). Mivel szándék fog vonatkozni, az entitások és példa kimondott szöveg van, hogy egy egyszerű, mintaalkalmazást a követelmények.
 
@@ -106,9 +107,9 @@ Ha az entitások és a szándék fog vonatkozni a LUIS alkalmazás definiálva v
 ### <a name="install-nodejs-dependencies"></a>Telepítse a Node.js-függőségek
 A Node.js-függőségek telepítése az npm-ből a terminálon/parancssorból.
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>Konfigurációs beállítások módosítása
 Annak érdekében, hogy az alkalmazás használatához meg kell az index.js fájlt az értékeket módosítsa saját végponti kulcs, és adja meg azt szeretné, hogy az alkalmazás nevét. Állítsa be az alkalmazás kulturális környezet vagy a verziószám módosíthatja is.
@@ -116,28 +117,31 @@ Annak érdekében, hogy az alkalmazás használatához meg kell az index.js fáj
 Nyissa meg az index.js fájlt, és módosítsa ezeket az értékeket a fájl elején.
 
 
-````JavaScript
+```nodejs
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
-### <a name="run-the-script"></a>A parancsfájl futtatása
+```
+
+### <a name="run-the-script"></a>A szkript futtatása
 Futtassa a szkriptet a terminálon/parancssorból a node.js használatával.
 
-````
+```console
 > node index.js
-````
+```
+
 vagy
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>Alkalmazás folyamatban
 Az alkalmazás futása közben a parancssori folyamatot mutatja. A parancssori kimenet tartalmazza a válaszokat a LUIS formátumát.
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 

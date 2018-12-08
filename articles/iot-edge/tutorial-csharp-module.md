@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge C# oktatóanyag | Microsoft Docs
+title: Az oktatóanyagban létre egyéni C# modul – Azure IoT Edge |} A Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult C#-kóddal, és hogyan helyezheti üzembe egy peremhálózati eszközön.
 services: iot-edge
 author: kgremban
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 135de641458a1c3b193069b3d9bc94e88080eb55
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cc2888ba3315df13e7be5246b07d6f9fe52be56d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310286"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106413"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 

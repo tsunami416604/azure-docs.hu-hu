@@ -5,14 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 2ac8403c5375c2448be0bf2348775ce3350570c0
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161359"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104237"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (klasszikus) használatával egy ExpressRoute-kapcsolatcsoport módosítása
 
@@ -24,7 +25,7 @@ ms.locfileid: "52161359"
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Ez a cikk emellett bemutatja, hogyan ellenőrizze az állapotot, update vagy delete és a egy ExpressRoute-kapcsolatcsoport megszüntetése.
+Ez a cikk végigvezeti a lépéseken ellenőrizze az állapotot, update vagy delete és az ExpressRoute klasszikus üzemi modell kapcsolatcsoport megszüntetése. Ez a cikk a klasszikus üzembehelyezési modellre vonatkozik.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 

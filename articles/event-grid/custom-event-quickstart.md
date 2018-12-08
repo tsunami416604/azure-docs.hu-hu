@@ -1,21 +1,22 @@
 ---
-title: Egyéni események az Azure Event Gridhez parancssori felület használatával | Microsoft Docs
-description: Az Azure Event Grid és az Azure CLI segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre.
+title: Webes végpont – Event Grid, Azure CLI-vel egyéni eseményeket küldeni |} A Microsoft Docs
+description: Azure Event Grid és az Azure CLI használatával közzététele egy egyéni témakör és feliratkozás témakör eseményeire. Az események a webalkalmazás kezeli.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/02/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: fe48125da881cd30b8a2645b5406840e2eef7e96
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 12fbc23e372042b54a987015273c004b32a9584a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041562"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104424"
 ---
-# <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure CLI-vel és az Event Griddel
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Gyors útmutató: Egyéni események átirányítása az Azure CLI és az Event Grid webes végpont
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az egyéni témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -47,7 +48,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. Az egyéni témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. Az egyéni témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Ezenkívül kell 3 – 50 karakter hosszúságú lehet, és tartalmaznia csak a-z, A-Z, 0-9, értékek és a "-"
 
 ```azurecli-interactive
 topicname=<your-topic-name>

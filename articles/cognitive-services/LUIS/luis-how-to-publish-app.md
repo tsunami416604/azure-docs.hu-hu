@@ -1,21 +1,22 @@
 ---
-title: A LUIS-alkalmazás közzététele az előrejelzési végpont
+title: Alkalmazás közzététele
 titleSuffix: Azure Cognitive Services
 description: Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fe8806b4cc84bb9a15ce5620366fee23bba328c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886485"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106430"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 

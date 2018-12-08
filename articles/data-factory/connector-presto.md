@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2017
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 29ac668ddb9d5df88d5f743630eaf2d9288b8727
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 905431c73488ddc6ebf2d13823e4bb705d16304c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123436"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102010"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Presto
 
@@ -88,7 +88,12 @@ Presto társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz Presto adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **PrestoObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **PrestoObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **PrestoObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -100,7 +105,8 @@ Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Presto
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -109,14 +115,14 @@ Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Presto
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz Presto forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="prestosource-as-source"></a>PrestoSource forrásként
+### <a name="presto-as-source"></a>A presto forrásként
 
 Adatok másolása Presto, állítsa be a forrás típusaként a másolási tevékenység **PrestoSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **PrestoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

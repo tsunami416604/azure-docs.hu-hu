@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 39eacca1e5ddb4c7024c5195dc1823f2c3c651e7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c42677d595eae3a6742f4536dcdd0314ff2d20d8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875263"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104778"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Kódminták a .NET SDK verziója 3.0-s (előzetes verzió), a legújabb mintáib
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-A [Microsoft.Azure.DocumentDB NuGet-csomagra](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) is szüksége van. 
+A [Microsoft.Azure.DocumentDB NuGet-csomagra](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) is szüksége van. 
 
 > [!NOTE]
 > Minden minta önálló, magát állítja be, és végül kitakarít maga után. Így a minták több hívást intéznek a CreateDocumentCollectionAsync() felé. Minden ilyen hívás esetén az előfizetésére 1 órányi használat terhelődik a létrehozott gyűjtemény teljesítményszintjének megfelelően. 

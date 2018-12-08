@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs-beli Apache kafka Akka adatfolyamok használata |} A Microsoft Docs
-description: Event Hub Akka Streamek csatlakozik egy Kafka engedélyezve van.
+title: Apache kafka platformmal – Azure Event Hubs használatával Akka adatfolyamok |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet csatlakozni az Apache Kafka Akka Streamek információkat engedélyezve van az Azure event hub.
 services: event-hubs
 documentationcenter: ''
 author: basilhariri
@@ -10,15 +10,15 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
-ms.date: 08/06/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 973470a6964e04b84b814ecf8732b2b981ced44c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 24eb48e47f098b2355c51cb88b162d24f42a9e60
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278956"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104135"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Event Hubs-beli Apache kafka Akka adatfolyamok használata
 Ez az oktatóanyag bemutatja, hogyan Akka Streamek csatlakozni a Kafka-kompatibilis az event hubs a protokollt használó ügyfelek módosítása, vagy saját fürtök futtatása nélkül. Támogatja az Azure Event hubs szolgáltatás a Kafka [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html)
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja, hogyan Akka Streamek csatlakozni a Kafka-kompatibi
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
-> * A példa-projekt klónozása
+> * A példaprojekt klónozása
 > * Akka Streamek előállító Futtatás 
 > * Futtatási Akka Streamek fogyasztói
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltétele
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket. 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
-* [Java fejlesztői készlet (JDK 1.8-as +)](https://aka.ms/azure-jdks)
+* [Java fejlesztői készlet (JDK) 1.8+](https://aka.ms/azure-jdks)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Töltse le](http://maven.apache.org/download.cgi) és [telepítése](http://maven.apache.org/install.html) a Maven bináris archívum
@@ -51,7 +51,7 @@ Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltétele
 
 Event Hubs-névtér elküldeni vagy fogadni a minden Event Hubs szolgáltatás szükséges. Lásd: [Kafka létrehozása az Event Hubs engedélyezve](event-hubs-create-kafka-enabled.md) Bevezetés az Event Hubs Kafka végpont kapcsolatos információkat. Ellenőrizze, hogy az Event Hubs kapcsolati karakterláncot a későbbi használatra.
 
-## <a name="clone-the-example-project"></a>A példa-projekt klónozása
+## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
 Most, hogy a Kafka-kompatibilis az Event Hubs kapcsolati karakterláncot, az Azure Event Hubs, Kafka-tárház klónozása, és keresse meg a `akka` almappát:
 
@@ -144,18 +144,18 @@ Ebben az oktatóanyagban megtudhatta, hogyan Akka Streamek csatlakozni a Kafka-k
 
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
-> * A példa-projekt klónozása
+> * A példaprojekt klónozása
 > * Akka Streamek előállító Futtatás 
 > * Futtatási Akka Streamek fogyasztói
 
-További információ az Event Hubs és az Event Hubs a Kafka, a következő témakörben talál:  
+Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
-- [Az Event Hubs-beli Apache kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [A Kafka létrehozása az Event Hubs engedélyezve](event-hubs-create-kafka-enabled.md)
-- [Stream az Event Hubsba, a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Egy Kafka-közvetítő Kafka-kompatibilis eseményközpont tükrözéséhez.](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Csatlakozás az Apache Spark egy Kafka-kompatibilis event hubs](event-hubs-kafka-spark-tutorial.md)
-- [Az Apache Flink csatlakozni egy Kafka-kompatibilis eseményközpont](event-hubs-kafka-flink-tutorial.md)
-- [Egy Kafka-kompatibilis eseményközpont Kafka csatlakozás integrálása](event-hubs-kafka-connect-tutorial.md)
-- [Minták megtekintése a githubon](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
+- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create-kafka-enabled.md)
+- [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Kafka-közvetítő tükrözése egy Kafka-kompatibilis eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Az Apache Spark csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
+- [Az Apache Flink csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
+- [A Kafka Connect integrálása egy Kafka-kompatibilis eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)

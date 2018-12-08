@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő tárfiókba | Microsoft Docs
-description: Azure CLI-példaszkript – Pillanatkép exportálása/másolása virtuális merevlemezként azonos vagy másik előfizetésben lévő tárfiókba
+title: Az Azure CLI minta – másolat egy pillanatképet egy Storage-fiók egy másik régióban |} A Microsoft Docs
+description: Az Azure CLI-Példaszkript – pillanatkép exportálása/másolása merevlemezként azonos vagy eltérő régióban lévő tárfiókhoz.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: cd555cfea6a84a0bdf0d0c4c9b9b68ae079fbc7b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.custom: mvc,seodec18
+ms.openlocfilehash: bdc9da206e938c0c7fd3d027ee02b11d01a1b4d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106719"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-cli"></a>Felügyelt pillanatképek a CLI használatával történő exportálása/másolása virtuális merevlemezként egy másik régióban lévő tárfiókba
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>CLI-vel másik régióban lévő tárfiókba pillanatkép exportálása/másolása
 
 Ez a szkript egy felügyelt pillanatképet exportál egy másik régió tárfiókjába. Először létrehozza a pillanatkép SAS URI-azonosítóját, majd annak használatával átmásolja a pillanatképet egy másik régióban lévő tárfiókba. A szkript használatával vészhelyreállítási célokból eltérő régiókban készíthet biztonsági másolatokat a felügyelt lemezeiről. 
 

@@ -1,91 +1,82 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele – REST, Python – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ez a REST-alapú rövid útmutató végigvezeti a tudásbázisok közzétételének folyamatán, amely során a tudásbázis legutolsó tesztelt verzióját leküldéssel továbbítja egy dedikált Azure Search-indexre, amely a közzétett tudásbázist képviseli. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
+title: Közzététel a Tudásbázis következő, a REST, a Python
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: A Python REST-alapú rövid útmutató végigvezeti közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: dc72febaca765756dfb909cbcdcc43b8d6cab0f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646814"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105257"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Python használatával
 
-Ez a rövid útmutató végigvezeti a tudásbázisok (KB) programozott módon való közzétételén. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
-1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+* [Python 3.7](https://www.python.org/downloads/)
+* Rendelkeznie kell QnA Maker-szolgáltatással is. A kulcs lekéréséhez válassza az irányítópulton az Erőforrás-kezelés területen lévő Kulcsok lehetőséget.
+* A QnA Maker tudásbázis (KB) azonosítója az URL-címben található a kbid lekérdezésisztring-paraméterben, amint az alább látható.
 
-```python
-# -*- coding: utf-8 -*-
+    ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-import http.client, urllib.parse, json, time
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-nodejs.md).
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+> [!NOTE] 
+> A teljes megoldásfájl(ok) az [**Azure-Samples/cognitive-services-qnamaker-python** GitHub-adattárban](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base) érhető(k) el.
 
-# Replace this with a valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+## <a name="create-a-knowledge-base-python-file"></a>A tudásbázis Python-fájljának létrehozása
 
-# Replace this with a valid knowledge base ID.
-kb = 'ENTER ID HERE';
+Hozzon létre egy `publish-kb-3x.py` nevű fájlt.
 
-host = 'westus.api.cognitive.microsoft.com'
-service = '/qnamaker/v4.0'
-method = '/knowledgebases/'
+## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-def pretty_print (content):
-# Note: We convert content to and from an object so we can pretty-print it.
-    return json.dumps(json.loads(content), indent=4)
+A `publish-kb-3x.py` tetején a következő sorok hozzáadásával adja hozzá a szükséges függőségeket a projekthez:
 
-def publish_kb (path, content):
-    print ('Calling ' + host + path + '.')
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-Type': 'application/json',
-        'Content-Length': len (content)
-    }
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path, content, headers)
-    response = conn.getresponse ()
+[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=1-1 "Add the required dependencies")]
 
-    if response.status == 204:
-        return json.dumps({'result' : 'Success.'})
-    else:
-        return response.read ()
+## <a name="add-required-constants"></a>Szükséges konstansok hozzáadása
 
-path = service + method + kb
-result = publish_kb (path, '')
-print (pretty_print(result))
+A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is. Cserélje le az értékeket a saját.
+
+[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
+
+## <a name="add-post-request-to-publish-knowledge-base"></a>Adja hozzá a POST-kérés Tudásbázis közzététele
+
+A szükséges állandókat után adja hozzá a következő kódra, amely egy HTTPS-kérést küld a QnA Maker API Tudásbázis közzététele, és megkapja a választ:
+
+[!code-python[Add a POST request to publish knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=17-26 "Add a POST request to publish knowledge base")]
+
+Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugtázására. A válasz törzsében nem található tartalom. A kód adja hozzá a 204-es válaszok tartalmát.
+
+Bármely egyéb válasz esetében a rendszer a választ változtatás nélkül adja vissza.
+
+## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
+
+Írja be a következő parancsot egy parancssorba a program futtatásához. Ezt a kérelmet küld a QnA Maker API-t a Tudásbázis közzététele, majd nyomtassa ki a hibák és sikeres 204.
+
+```bash
+python publish-kb-3x.py
 ```
 
-## <a name="the-publish-a-knowledge-base-response"></a>A tudásbázis közzététele válasz
-
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
-
-```json
-{
-  "result": "Success."
-}
-```
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>További lépések
+
+A Tudásbázis közzététele után kell a [végponti URL-cím létrehozásához választ](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

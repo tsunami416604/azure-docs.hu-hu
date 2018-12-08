@@ -1,21 +1,21 @@
 ---
 title: A LUIS-alkalmazás tesztelése
-titleSuffix: Azure Cognitive Services
-description: Tesztelés az a folyamat minta utterances biztosítva a LUIS, és a egy beérkező válasszal, LUIS elismert szándékokat és entitásokat. A LUIS, tesztelheti, egyszerre egy utterance (kifejezés), vagy adjon meg egy kötegelt kimondott szöveg. A tesztelés, hasonlítsa össze az aktuális aktív modellt a közzétett modell.
-services: cognitive-services
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Tesztelés az a folyamat minta utterances biztosítva a LUIS, és a egy beérkező válasszal, LUIS elismert szándékokat és entitásokat.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 58bcf45d1a45d448f2f5845ffe43ad07f886a6fc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5aeb955b579a15f29429c585720dbef1b9560efa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637011"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105529"
 ---
 # <a name="testing-example-utterances-in-luis"></a>A LUIS példa utterances tesztelése
 

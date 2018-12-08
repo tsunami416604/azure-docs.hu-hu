@@ -1,21 +1,22 @@
 ---
-title: 'Kép besorolási oktatóanyag: Azure Machine Learning szolgáltatás a modellek üzembe helyezése'
+title: 'Kép besorolási oktatóanyag: modellek üzembe helyezése'
+titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell üzembe helyezésére a scikit-learn alkalmazásával egy Python Jupyter-notebookban.  Ez az oktatóanyag egy kétrészes sorozat második része.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: tutorial
-ms.custom: seodec12
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e56fe88eec70af313d0b0dd8cf0aaf27b054121
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: fe8fed71711e10af94ff41d1bb4ca4b0c1952374
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011538"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101178"
 ---
 # <a name="tutorial-part-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Az oktatóanyag (2. rész): egy kép besorolási modell az Azure Container Instance (ACI) üzembe helyezése
 
@@ -32,7 +33,7 @@ Az oktatóanyagnak ebben a részében az Azure Machine Learning szolgáltatás s
 > * A modell üzembe helyezése az ACI-ban
 > * Az üzembe helyezett modell tesztelése
 
-Az ACI termelési környezetekhez nem ideális, teszteléshez és a munkafolyamatok megértéséhez azonban nagyszerűen használható. Skálázható termelési környezetek esetén fontolja meg az [Azure Kubernetes Service](how-to-deploy-to-aks.md) használatát.
+Az ACI termelési környezetekhez nem ideális, teszteléshez és a munkafolyamatok megértéséhez azonban nagyszerűen használható. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 

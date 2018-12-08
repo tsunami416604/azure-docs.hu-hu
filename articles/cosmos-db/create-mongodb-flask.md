@@ -3,19 +3,19 @@ title: 'Az Azure Cosmos DB: Flask webalkalmazás létrehozása Pythonnal és az 
 description: Egy Python Flask kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
 author: slyons
+ms.author: sclyon
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc
+ms.custom: quick start connect, mvc, seodec18
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/02/2017
-ms.author: sclyon
-ms.openlocfilehash: 70a103aa7c03abeed98237a3b1dc3ec8b514810a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 96ccaf70906d495d1bd2781cf9eeaed7c27bc35e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849057"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101381"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Flask alkalmazás létrehozása a MongoDB API-val
 
@@ -120,7 +120,7 @@ Az alábbi kódrészletek mind az app.py fájlból származnak, és a helyi Azur
 
 Ha tesztelni szeretné a kódot egy élő Azure Cosmos DB-fiókban, lépjen az Azure Portalra egy fiók létrehozásához, és kérje le a kapcsolati sztring adatait. Ezután másolja azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati sztring** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben használja a képernyő jobb oldalán lévő másolási gombokat a felhasználónév, a jelszó és a gazdagép másolásához a Dal.cs fájlba.
+1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati sztring** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben használja a képernyő jobb oldalán lévő másolási gombokat a felhasználónév, a jelszó és a gazdagép másolásához a Dal.cs fájlba.
 
 2. Nyissa meg a gyökérkönyvtárban lévő **app.py** fájlt.
 
@@ -149,7 +149,7 @@ Ezután hozzá kell adnia a MONGOURL, MONGO_PASSWORD és MONGO_USERNAME elemeket
 Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul található Üzembe helyezés az Azure-ban gombra is kattinthat. Ezután nyissa meg az Azure-t, és állítsa be az alkalmazásbeállításokat a Cosmos DB-fiókadatokkal.
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
-<img src="http://azuredeploy.net/deploybutton.png"/>
+<img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
 </a>
 
 > [!NOTE]

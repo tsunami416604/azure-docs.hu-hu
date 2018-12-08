@@ -1,21 +1,22 @@
 ---
-title: '5. oktatóanyag: Szülő/gyermek kapcsolatok – LUIS hierarchikus entitás környezetfüggő tanult adatokhoz'
+title: Hierarchikus entitás
 titleSuffix: Azure Cognitive Services
 description: Kapcsolódó adatrészletek keresése kontextus alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 36751f533b59e0ff140f5ad03e7f1fc0fa9cad41
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000566"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104407"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
@@ -32,7 +33,6 @@ Ez a hierarchikus entitás jó választás az ilyen típusú adatok esetén, miv
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Meglévő oktatóalkalmazás használata
 > * Szándék hozzáadása 
@@ -90,7 +90,7 @@ A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott sz
 
 Vegyük például a következő kimondott szöveget:
 
-```JSON
+```json
 mv Jill Jones from a-2349 to b-1298
 ```
 
@@ -100,19 +100,19 @@ Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érk
 
 1. A(z) `Displace 425-555-0000 away from g-2323 toward hh-2345` kimondott szövegben válassza ki a következő szót: `g-2323`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Locations`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Képernyőkép: Új entitás létrehozása a szándék lapon")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Képernyőkép az új entitás létrehozása a szándék lapon](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "szándék oldalon új entitás létrehozása képernyőképe")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
 2. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
 
-    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Képernyőkép: Entitás létrehozása felugró párbeszédpanel új Hely entitáshoz")
+    ![Képernyőkép az entitás létrehozása előugró párbeszédpanelen új helyre az entitáshoz](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "entitás létrehozása előugró párbeszédpanelen új helyre az entitáshoz képernyőképe")
 
 3. A `g-2323` címkéje `Locations`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki a `g-2323`, majd a **Locations** (Helyek) elemet, azután pedig a jobb oldali menüben a `Origin` lehetőséget.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Az entitáscímkézés előugró párbeszédpanel képernyőképe, a hely entitásgyermek módosításához")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Képernyőkép a felugró párbeszédpanel címkézés entitás módosítani az entitás gyermek helyeken](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "módosítani az entitás gyermek helyeken entitás címkézés felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
 5. Címkézze meg az egyéb helyeket a többi kimondott szövegben: a kimondott szövegben válassza ki az épületet és az irodát, majd válassza ki a Locations (Helyek) elemet, majd a jobb oldali menüben válassza az `Origin` vagy `Destination` lehetőséget. Ha minden hely fel lett címkézve, a **Tokens View** (Jogkivonatok nézet) kimondott szövegei egy mintára kezdenek hasonlítani. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Képernyőkép: Helyek entitás felcímkézve a kimondott szövegekben")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Képernyőkép a helyek entitás címkézve a kimondott szöveg](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "képernyőképe a helyek entitás címkézve a kimondott szöveg")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
 ## <a name="add-prebuilt-number-entity-to-app"></a>Előre összeállított szám entitás hozzáadása az alkalmazáshoz
 Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
@@ -140,7 +140,7 @@ Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
 
 2. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `MoveEmployee`.
 
-    ```JSON
+    ```json
     {
       "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
       "topScoringIntent": {

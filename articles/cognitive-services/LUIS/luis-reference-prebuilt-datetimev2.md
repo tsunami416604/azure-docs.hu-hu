@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások datetimeV2 referencia – Azure |} A Microsoft Docs
+title: DatetimeV2 előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk datetimeV2 rendelkezik előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f59c429906d6cee2b9f4aff6e16ba23e8d28c97b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105852"
 ---
 # <a name="datetimev2-entity"></a>DatetimeV2 entitás
 
@@ -27,7 +28,7 @@ DatetimeV2 felügyelje a [felismerő szöveges](https://github.com/Microsoft/Rec
 ## <a name="example-json"></a>Példa JSON-ban 
 Az alábbi példa JSON-válasz egy `datetimeV2` altípusa entitás `datetime`. Más típusú datetimeV2 entitások példákért lásd [datetimeV2 az altípus](#subtypes-of-datetimev2)</a>.
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ Ha például adott "Május 2." utterance (kifejezés):
 Az alábbi példa bemutatja a feloldás "május 2" entitás. Ez a megoldás feltételezi, hogy a mai dátum 2017 május 2. és 2018 május 1. között egy dátumot.
 A mezők `X` a a `timex` mező a dátum részei, amely nincs explicit módon megadott ellenőrzőpontokon az utterance (kifejezés).
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ A mezők `X` a a `timex` mező a dátum részei, amely nincs explicit módon meg
 
 A `datetimeV2` entitás kibontja a dátum és idő tartományokat. A `start` és `end` mezőben adja meg a kezdő és a tartomány végéig. Az utterance (kifejezés) "Május 2. május 5-én a", a LUIS biztosít **daterange** is az aktuális évre, és a következő évre értékeit. Az a `timex` mező, a `XXXX` értékek azt jelzik, a kétértelműséget, az év. `P3D` azt jelzi, az adott időszakban három napig tart.
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ A `datetimeV2` entitás kibontja a dátum és idő tartományokat. A `start` és
 
 Az alábbi példa bemutatja, hogyan használja a LUIS **datetimeV2** feloldani az utterance (kifejezés) "Csütörtök, Tuesday". Ebben a példában az aktuális dátum későbbi, június 19-én. A LUIS tartalmaz **daterange** mindkét elé, és hajtsa végre az aktuális dátumot dátumtartományok értékeket.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ Az értékek tömb van ideje két elemet, ha a az idő, vagy az időtartomány n
 
 Az alábbi példa bemutatja, hogyan használja a LUIS **datetimeV2** feloldani az utterance (kifejezés), amely rendelkezik egy időtartományt.
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

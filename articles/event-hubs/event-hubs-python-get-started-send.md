@@ -1,6 +1,6 @@
 ---
-title: Események küldése az Azure Event Hubs Python használatával |} A Microsoft Docs
-description: Ismerkedés az események küldése az Event Hubs Python használatával
+title: Pythonnal – Azure Event Hubs események küldése |} A Microsoft Docs
+description: Ez a cikk egy forgatókönyv Node.js-alkalmazás, amely az Azure Event Hubs küldi az eseményeket létrehozásához.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 41d0c8daedeb73ceffc9f4890d1e805e199bc2a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7adf3976f5f7e028ffa9ffeb13db22d3d4bba8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956891"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102979"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Események küldése az Event Hubs Python használatával
 

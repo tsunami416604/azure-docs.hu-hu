@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 996696587f53b1ecd861dc71925a730f8a6efd9b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6521688e595230951e0753fd67c2bf9b02e0a6ec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975711"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102146"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](tutorial-logs-dashboards.md) oktatóanyag folytatása.   
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Riasztási szabály létrehozása
 > * Műveletcsoport konfigurálása e-mail-értesítés küldésére
 
-Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
@@ -76,4 +76,4 @@ Ez az oktatóanyag bemutatta, hogyan képesek a riasztási szabályok proaktíva
 Kövesse ezt a hivatkozást az előre felépített Log Analytics-szkriptminták megtekintéséhez.  
 
 > [!div class="nextstepaction"]
-> [Log Analytics-szkriptminták](../../log-analytics/powershell-samples.md)
+> [Log Analytics-szkriptminták](../../azure-monitor/platform/powershell-samples.md)

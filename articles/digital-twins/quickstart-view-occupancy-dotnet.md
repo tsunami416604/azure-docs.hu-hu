@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582394"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105512"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető Teremkeresés Azure digitális Twins használatával
 
@@ -71,7 +71,7 @@ Ebben a lépésben a digitális Twins térbeli gráf építi ki:
 - Egyéni függvény. 
 - Egy szerepkör-hozzárendelés.
  
-A térbeli graph használatával van kiépítve a [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) fájlt.
+A térbeli graph használatával van kiépítve a [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) fájlt. 
 
 1. Futtassa az `dotnet run ProvisionSample` parancsot.
     >[!NOTE]
@@ -88,6 +88,9 @@ A térbeli graph használatával van kiépítve a [provisionSample.yaml](https:/
 1. A végrehajtás végén, másolja a `ConnectionString` az eszköz az eszköz szimulátor minta használható. Csak a képen leírt karakterlánc másolja.
 
     ![Minta üzembe helyezése][1]
+
+    >[!TIP]
+    > Megtekintheti és módosíthatja a térbeli graph használatával a [Azure digitális Twins Graph megjelenítő](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 ## <a name="send-sensor-data"></a>Érzékelőadatok küldése
 

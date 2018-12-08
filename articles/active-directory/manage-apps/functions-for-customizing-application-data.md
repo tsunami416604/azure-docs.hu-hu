@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: e5db47cabddb2898667ff9d6cdac41cf3b953099
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843580"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105155"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -79,7 +79,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **separator** |Szükséges |Karakterlánc |Forrásértékek elválasztó, amikor azok vannak összefűzött egy karakterlánc, karakterlánc. Lehet "", ha nincs elválasztó nem szükséges. |
-| ** source1... sourceN ** |Szükség esetén a változó-hányszor |Karakterlánc |A karakterlánc-értékek egymáshoz csatlakoztatni. |
+| **source1... sourceN** |Szükség esetén a változó-hányszor |Karakterlánc |A karakterlánc-értékek egymáshoz csatlakoztatni. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -141,6 +141,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
   * Ha **forrás** értékkel rendelkezik, használja a **regexPattern** és **regexGroupName** érték kinyerésére rendelkező tulajdonság **replacementPropertyName** . Helyettesítő értéket adja vissza eredményként
 
 **Paraméterek:**<br> 
+
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
@@ -166,7 +167,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| ** uniqueValueRule1... uniqueValueRuleN ** |Legalább a 2 szükséges, nem felső határérték |Karakterlánc | Egyedi érték létrehozási szabályok kiértékelése listája |
+| **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |Karakterlánc | Egyedi érték létrehozási szabályok kiértékelése listája |
 
 
 - - -

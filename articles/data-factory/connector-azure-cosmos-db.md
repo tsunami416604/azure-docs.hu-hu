@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása, vagy az Azure Cosmos DB használatával a Data Factory |} A Microsoft Docs
+title: Adatok másolása, illetve az Azure Cosmos DB (az SQL API-t) a Data Factory használatával |} A Microsoft Docs
 description: Ismerje meg, hogyan másolhat adatokat támogatott forrás adattárakból származó, vagy az Azure Cosmos DB támogatott fogadó-áruházak Data Factory használatával.
 services: data-factory, cosmosdb
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c10a933f371bfc84b863413134f2fdf5ff9c0e34
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 16c02f1f47f556f550519feec78e7dd26b302e18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161837"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103795"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB-ből az Azure Data Factory használatával
+# <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (az SQL API-t) az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-azure-documentdb-connector.md)
@@ -39,6 +39,9 @@ Használhatja az Azure Cosmos DB-összekötő:
 - Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. Másolja ki a dokumentumok-, illetve a JSON-fájlok vagy az vagy egy másik Azure Cosmos DB-gyűjtemények, lásd: [importálás vagy exportálás JSON-dokumentumok](#importexport-json-documents).
 
 A Data Factory integrálható a [Azure Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) a legjobb teljesítményt biztosítja az Azure Cosmos DB írásakor.
+
+>[!NOTE]
+>Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API.
 
 > [!TIP]
 > A [adatáttelepítés videó](https://youtu.be/5-SRNiC_qOU) végigvezeti a lépéseken, az adatok másolása az Azure Blob storage-ból az Azure Cosmos DB. A videó bemutatja a tölt be adatot az Azure Cosmos DB az általános teljesítmény-finomhangolási szempontok is.

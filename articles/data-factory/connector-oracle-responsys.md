@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c8376fcdcc33996ecc9340647c92a3abcf262c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6a2bbc75c3802d6eea86e6d552330adde4bdc5f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129692"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101772"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Responsys
 
@@ -80,7 +80,12 @@ Oracle Responsys társított szolgáltatás a következő tulajdonságok támoga
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz Oracle Responsys adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Oracle Responsys, állítsa be a type tulajdonság, az adatkészlet **ResponsysObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása az Oracle Responsys, állítsa be a type tulajdonság, az adatkészlet **ResponsysObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ResponsysObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -92,7 +97,8 @@ Adatok másolása az Oracle Responsys, állítsa be a type tulajdonság, az adat
         "linkedServiceName": {
             "referenceName": "<Oracle Responsys linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -109,7 +115,7 @@ Adatok másolása Oracle Responsys, állítsa be a forrás típusaként a másol
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ResponsysSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

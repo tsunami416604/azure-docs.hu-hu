@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: c91254b3a4a7037e24b22ba226c66141707d0c10
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016572"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103455"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -29,7 +29,7 @@ A következő tartalmától azt, hogy több különböző nyelvet és a környez
 - [C#a Visual Studióban az xUnit](#c-in-visual-studio)
 - [A VS Code-Jest JavaScript](#javascript-in-vs-code)
 
-Az a minta tárház érhető el az [GitHub](https://github.com/craigshoemaker/azure-functions-tests).
+Az a minta tárház érhető el az [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#a Visual Studióban
 Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásnak a Visual Studióban, és futtassa, és teszteli a [xUnit](https://xunit.github.io).

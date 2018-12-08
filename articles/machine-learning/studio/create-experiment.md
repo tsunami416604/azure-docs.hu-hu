@@ -1,11 +1,11 @@
 ---
-title: Egy egyszerű kísérlet a Machine Learning Studióban | Microsoft Docs
+title: Egyszerű kísérlet – az Azure Machine Learning Studióban |} A Microsoft Docs
 description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
 keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9564ddcff3dfd910877f40482bc3f5acb2d03d35
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425710"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105393"
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
 Ha korábban még soha nem használta az **Azure Machine Learning Studiót**, ez az oktatóanyag Önnek szól.
 

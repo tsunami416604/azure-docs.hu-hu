@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning-szolgáltatás áttelepítése
+title: A Workbench áttelepítése
+titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan frissítheti, vagy egy korábbi verziójáról az Azure Machine Learning szolgáltatás késői verziójára való áttérést.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,14 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 8517b469e622068b37bb0fde34f5cfcd8703c7ee
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cc60fd6a9d5f154d26fc9c495f190296453a0db0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877270"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106651"
 ---
-# <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás legújabb verziójára való áttérést 
+# <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>A Workbench az Azure Machine Learning szolgáltatás legújabb verziójára történő áttelepítése 
 
 **Ha telepítette a Workbench alkalmazást, illetve kísérleti és modellkezelési fiókok előzetes rendelkezik, ez a cikk segítségével áttelepítheti az a legújabb verzióra.**  Ha az előzetes verziójú Workbench telepítve, vagy egy Kísérletezési, illetve a modellkezelési fiók nem rendelkezik, nem kell áttelepíteni semmit.
 
@@ -75,11 +76,10 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Webszolgáltatások át, telepítse újra a modellek az új központi telepítési célok, az új SDK-t vagy a parancssori felület használatával. Hiba esetén nem kell az eredeti pontozófájl, a modell fájl függőségek fájlok, a környezet fájl és a sémafájlok módosítása. 
 
-A legújabb verzióra, a modellek webszolgáltatásként való telepített [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) vagy [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS)-fürtöket. 
+A legújabb verzióra, a modellek webszolgáltatásként az Azure Container Instances (ACI) vagy az Azure Kubernetes Service (AKS)-fürtöket üzembe helyezve. 
 
 További tudnivalók az alábbi cikkeket:
-+ [Az aci Szolgáltatásban üzembe helyezése](how-to-deploy-to-aci.md)
-+ [Az aks üzembe helyezése](how-to-deploy-to-aks.md)
++ [Hogyan helyezhet üzembe, és ahol](how-to-deploy-and-where.md)
 + [Oktatóanyag: Azure Machine Learning szolgáltatás a modellek üzembe helyezése](tutorial-deploy-models-with-aml.md)
 
 Amikor [támogatása a korábbi CLI véget ér](overview-what-happened-to-workbench.md#timeline), akkor nem fogja tudni felügyelni az eredetileg a Modellkezelési fiók a telepített webszolgáltatások. Azonban ezeket a szolgáltatásokat továbbra is működni fog a mindaddig, amíg az Azure Container Service (ACS) továbbra is támogatott.

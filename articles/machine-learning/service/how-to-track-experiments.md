@@ -1,5 +1,6 @@
 ---
-title: Nyomon követheti kísérletek és képzési mérőszámokat – az Azure Machine Learning |} A Microsoft Docs
+title: Track kísérletek és képzési metrikák
+titleSuffix: Azure Machine Learning service
 description: Az Azure Machine Learning szolgáltatással nyomon követhető a kísérletek és figyelheti a mérőszámokat javíthatják a modell létrehozását. További naplózás hozzáadása a tanítási szkriptet, hogyan lehet elküldeni a kísérletet, hogyan ellenőrizheti egy futó feladat állapotát és megtekintése a Futtatás eredményeit.
 services: machine-learning
 author: heatherbshapiro
@@ -10,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae61f6fe24486eb1d4d5deecf5fb005a4d71b5fc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7137d43805065a8f29aa8fcf5307dd5b8947b345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016163"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101347"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
@@ -291,7 +292,7 @@ További információk:
 + [Modell lehetővé teszi azt ismertetik](#model-explain-ability-and-feature-importance)
 
 
-### <a name="how-to-see-run-charts"></a>Hogyan futtatási diagramok megjelenítéséhez:
+### <a name="view-the-run-charts"></a>A futtatási diagramok megtekintése
 
 1. Lépjen a munkaterülethez. 
 

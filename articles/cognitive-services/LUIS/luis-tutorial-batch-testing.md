@@ -1,21 +1,22 @@
 ---
-title: '2. oktatóanyag: A Batch teszt együtt 1000 kimondott szöveg '
+title: Batch-teszt
 titleSuffix: Azure Cognitive Services
 description: Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162541"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106039"
 ---
 # <a name="tutorial-2-batch-test-data-sets"></a>2. oktatóanyag: A Batch-teszt adatkészletek
 
@@ -31,11 +32,11 @@ Batch-tesztelés vonatkozó követelmények:
 
 Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van adva egy leképezés példa megcímkézzen használja. 
 
-**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Használja meglévő oktatóanyag alkalmazása
+> * Meglévő oktatóalkalmazás használata
 > * Hozzon létre egy kötegfájlt teszt 
 > * Egy batch-teszt futtatása
 > * Vizsgálati eredmények áttekintése
@@ -46,17 +47,17 @@ Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van 
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 
-Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
+Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
+Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
 
-2. A JSON importálja egy új alkalmazást.
+2. Importálja a JSON-t egy új alkalmazásba.
 
-3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `batchtest`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket. 
+3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `batchtest` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
 
-4. Az alkalmazás betanításához.
+4. Tanítsa be az alkalmazást.
 
 ## <a name="batch-file"></a>Batch-fájl
 

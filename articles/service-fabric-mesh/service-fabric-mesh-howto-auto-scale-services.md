@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9ed4c98af94b56876266d5425111bc3f842c5e87
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 94b1b4cfbc5e7a96be389f315a1c58dc311c60a0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892352"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104938"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazások automatikus skálázási házirendek létrehozása
 Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik legfőbb előnye, hogy a szolgáltatásokat egyszerűen lehet horizontálisan le- és felskálázni. Ez akkor hasznos, ha változó mértékű terhelés éri a szolgáltatásokat, vagy ha javítani szeretne a rendelkezésre álláson. Méretezheti a szolgáltatásokat, vagy manuálisan, vagy az automatikus skálázás házirendeket állíthat be.
@@ -30,9 +30,9 @@ Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik leg
 ## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Az automatikus méretezés a házirendet, az eseményindító és mechanizmus létrehozásának lehetőségeit
 Az automatikus skálázási szabályzat minden egyes szolgáltatás méretezésére van meghatározva. A szabályzat vagy a YAML erőforrás fájlt, vagy a JSON-üzembe helyezési sablon van meghatározva. Minden egyes méretezési szabályzat két részből áll: egy eseményindítót és a egy skálázási mechanizmus.
 
-Az eseményindító határozza meg, amikor az automatikus skálázás házirend hív-e.  Adja meg, milyen típusú trigger (átlagos terhelés) és a metrika figyelése (CPU és memória).  A felső és alsó betöltési küszöbérték százalékban megadva. A méretezési csoport időköz határozza meg, milyen gyakran szeretné ellenőrizni (másodpercben) a megadott kihasználtság (például az átlagos processzorterhelés) a jelenleg üzemelő szolgáltatásban-példányok között.  A mechanizmus akkor aktiválódik, ha a figyelt metrika az alsó küszöbérték alá csökken, vagy növeli a felső küszöbérték felett.  További információkért lásd: [AutoScalingTrigger](/rest/api/servicefabric/sfmeshrp-model-autoscalingtrigger).
+Az eseményindító határozza meg, amikor az automatikus skálázás házirend hív-e.  Adja meg, milyen típusú trigger (átlagos terhelés) és a metrika figyelése (CPU és memória).  A felső és alsó betöltési küszöbérték százalékban megadva. A méretezési csoport időköz határozza meg, milyen gyakran szeretné ellenőrizni (másodpercben) a megadott kihasználtság (például az átlagos processzorterhelés) a jelenleg üzemelő szolgáltatásban-példányok között.  A mechanizmus akkor aktiválódik, ha a figyelt metrika az alsó küszöbérték alá csökken, vagy növeli a felső küszöbérték felett.  
 
-A skálázási mechanizmus a skálázási művelet végrehajtása a szabályzat akkor aktiválódik, amikor határozza meg.  Adja meg, milyen típusú mechanizmus (replika hozzáadása/eltávolítása), a minimális és maximális replika számít (egész szám).  A szolgáltatás replikák száma soha nem lesz skálázva a minimális száma kisebb vagy nagyobb a maximális száma.  A méretezési csoport növekmény is adja meg egy egész számot, amely a hozzáadott vagy eltávolított egy skálázási műveletet a replikák száma.  További információkért lásd: [AutoScalingMechanism](/rest/api/servicefabric/sfmeshrp-model-autoscalingmechanism).
+A skálázási mechanizmus a skálázási művelet végrehajtása a szabályzat akkor aktiválódik, amikor határozza meg.  Adja meg, milyen típusú mechanizmus (replika hozzáadása/eltávolítása), a minimális és maximális replika számít (egész szám).  A szolgáltatás replikák száma soha nem lesz skálázva a minimális száma kisebb vagy nagyobb a maximális száma.  A méretezési csoport növekmény is adja meg egy egész számot, amely a hozzáadott vagy eltávolított egy skálázási műveletet a replikák száma.  
 
 ## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Az automatikus skálázási szabályzat a JSON-sablon meghatározása
 

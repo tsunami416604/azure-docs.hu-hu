@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning Data Prep SDK - Python az adatok írása
+title: Írás és előkészítheti az adatokat a Data Prep Python SDK-val
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg az adatok Azure Machine Learning Data Prep SDK-val. Írhat egy adatfolyamot, és fájlokat a (helyi rendszer, az Azure Blob Storage és Azure Data Lake Storage) a támogatott helyek bármelyikét bármikor adatai.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: 4a2af832fda8a85ee8a4aba395a8f436172153ed
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 1278d0c448b041849f477b55d8311f516c3bccf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308562"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104441"
 ---
 # <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>Az Azure Machine Learning Data Prep SDK használata az adatok írása
 

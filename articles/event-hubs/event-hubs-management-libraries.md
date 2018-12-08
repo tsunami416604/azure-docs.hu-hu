@@ -1,20 +1,21 @@
 ---
-title: Az Azure Event Hubs felügyeleti könyvtárak |} A Microsoft Docs
-description: Az Event Hubs-névterek és az entitások kezelése a .NET használatával
+title: Kezelési kódtárak – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk az erőforrástárban, amelyeket az Azure Event Hubs-névterek és az entitások kezelése a .NET használatával információkat biztosít.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9685d5c5a673b0ec27e973bbbfd327547c63652
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955354"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102715"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs felügyeleti könyvtárak
 

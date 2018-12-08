@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 3fa90b14428babf40b740b439f4ed0117fca2bd8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7fa22e6e3eacd3647a426938aa0c3c7862dd0111
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959903"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102894"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -137,6 +137,9 @@ Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a
 
 Virtuális hálózati szolgáltatásvégpont-szabályzat lehetővé teszi az Azure-szolgáltatások, csak bizonyos Azure-szolgáltatási erőforrások, így keresztül a Szolgáltatásvégpontok a virtuális hálózati forgalmának szűrése. Szolgáltatásvégpont-szabályzat részletes hozzáférés-vezérlés az Azure-szolgáltatások virtuális hálózati forgalomhoz adja meg. További információ: [virtuális hálózati szolgáltatásvégpont-szabályzat](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
+## <a name="faqs"></a>Gyakori kérdések
+
+A gyakori kérdések, tekintse meg [virtuális hálózati szolgáltatási végpont – gyakori kérdések](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
 
 ## <a name="next-steps"></a>További lépések
 

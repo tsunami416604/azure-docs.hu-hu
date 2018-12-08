@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be Azure notebookok |} A Microsoft Docs
+title: Jelentkezzen be Azure notebookok
 description: Gyorsan jelentkezzen be Azure notebookok, és állítsa be a felhasználói azonosító, amely lehetőséget nyújt a mentett projektek és a notebookok megoszthatja másokkal.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 573a5892489857fef5d542da0b3c58ec879aa772
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878363"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106311"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Jelentkezzen be, és állítsa be a felhasználói azonosító
 

@@ -1,29 +1,23 @@
 ---
-title: A Network Performance Monitor konfigurálása az Azure ExpressRoute-Kapcsolatcsoportok |} A Microsoft Docs
+title: A Network Performance Monitor konfigurálása ExpressRoute-Kapcsolatcsoportok – Azure |} A Microsoft Docs
 description: Konfigurálja a felhő alapú hálózatfigyelési (NPM) az Azure ExpressRoute-Kapcsolatcsoportok számára. Tartalmazza a figyelés ExpressRoute privát társviszony-létesítés és Microsoft társviszony-létesítésen keresztül.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 93bafb739c35b81796186dc845f7933a82e1675b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968118"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104730"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
-Network Performance monitort (NPM) egy olyan felhő alapú hálózati figyelő megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. Npm-et a Log Analytics részét képezi. Az NPM kibővíti az expressroute-hoz, amely lehetővé teszi a hálózati teljesítmény nyomon követése az ExpressRoute-Kapcsolatcsoportok privát társviszony-létesítés, vagy a Microsoft társviszony-létesítés használatára konfigurált keresztül. Hálózati problémák azonosítása és kiküszöbölése érdekében észlelését az npm-et az expressroute-hoz való konfigurálásakor. Ez a szolgáltatás az Azure Government felhőben is érhető el.
+Ez a cikk segít az ExpressRoute figyelése a Network Performance Monitor bővítmény konfigurálása. Network Performance monitort (NPM) egy olyan felhő alapú hálózati figyelő megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. Npm-et a Log Analytics részét képezi. Az NPM kibővíti az expressroute-hoz, amely lehetővé teszi a hálózati teljesítmény nyomon követése az ExpressRoute-Kapcsolatcsoportok privát társviszony-létesítés, vagy a Microsoft társviszony-létesítés használatára konfigurált keresztül. Hálózati problémák azonosítása és kiküszöbölése érdekében észlelését az npm-et az expressroute-hoz való konfigurálásakor. Ez a szolgáltatás az Azure Government felhőben is érhető el.
 
 A következőket teheti:
 

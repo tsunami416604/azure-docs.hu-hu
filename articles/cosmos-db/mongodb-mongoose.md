@@ -9,16 +9,16 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: 1230e8d4352254ef637419c77b4addb7f6f6bb05
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875127"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101432"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
 
-Ez az oktatóanyag bemutatja, hogyan kell használni adatok az Azure Cosmos DB-ben való tárolása esetében a [Mongoose-keretrendszert](http://mongoosejs.com/). Ebben a bemutatóban a MongoDB API-t használjuk az Azure Cosmos DB-hez. Ha nem ismerné, a Mongoose egy objektummodellezési keretrendszer a MongoDB-hez Node.js-ben, és egyszerű, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez.
+Ez az oktatóanyag bemutatja, hogyan kell használni adatok az Azure Cosmos DB-ben való tárolása esetében a [Mongoose-keretrendszert](https://mongoosejs.com/). Ebben a bemutatóban a MongoDB API-t használjuk az Azure Cosmos DB-hez. Ha nem ismerné, a Mongoose egy objektummodellezési keretrendszer a MongoDB-hez Node.js-ben, és egyszerű, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez.
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
@@ -95,7 +95,7 @@ A Mongoose minden létrehozott modellhez létrehoz egy új MongoDB-gyűjteményt
 
 Ez a bemutató mindkét modellre vonatkozik. Először a gyűjteményenként egy adattípust tárolását mutatjuk be. Ez a Mongoose tényleges viselkedése.
 
-A Mongoose alkalmaz egy [diszkriminátor](http://mongoosejs.com/docs/discriminators.html) nevű koncepciót. A diszkriminátorok sémaöröklési mechanizmusok. Lehetővé teszik, hogy egy alapul szolgáló MongoDB-gyűjteményre több modell épüljön átfedő sémákkal.
+A Mongoose alkalmaz egy [diszkriminátor](https://mongoosejs.com/docs/discriminators.html) nevű koncepciót. A diszkriminátorok sémaöröklési mechanizmusok. Lehetővé teszik, hogy egy alapul szolgáló MongoDB-gyűjteményre több modell épüljön átfedő sémákkal.
 
 A különböző adatmodelleket tárolhatja ugyanabban a gyűjteményben, majd a lekérdezés időpontjában alkalmazhat egy szűrőfeltételt, hogy csak a szükséges adatokat kérje le.
 
@@ -195,7 +195,7 @@ A Mongoose alapértelmezés szerint létrehoz egy MongoDB-gyűjteményt minden a
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Adatok tárolása egyetlen gyűjteményben Mongoose diszkriminátorok használatával
 
-Ennél a módszernél a [Mongoose diszkriminátorok](http://mongoosejs.com/docs/discriminators.html) segítségével optimalizáljuk az egyes Azure Cosmos DB-gyűjtemények költségét. A diszkriminátorok lehetővé teszik egy megkülönböztető „kulcs” meghatározását, amely segítségével tárolhatja, megkülönböztetheti és szűrheti a különböző objektummodelleket.
+Ennél a módszernél a [Mongoose diszkriminátorok](https://mongoosejs.com/docs/discriminators.html) segítségével optimalizáljuk az egyes Azure Cosmos DB-gyűjtemények költségét. A diszkriminátorok lehetővé teszik egy megkülönböztető „kulcs” meghatározását, amely segítségével tárolhatja, megkülönböztetheti és szűrheti a különböző objektummodelleket.
 
 Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönböztető kulcsot, majd felvesszük az alapszintű modell kiterjesztéseként a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) sémát.
 

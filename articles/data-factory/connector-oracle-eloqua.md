@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8bb5e7ca71a24f36b102938668d57bdccd0b0b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123521"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101806"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Eloqua
 
@@ -76,7 +76,12 @@ Oracle Eloqua társított szolgáltatás a következő tulajdonságok támogatot
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz Oracle Eloqua adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatkészlet **EloquaObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatkészlet **EloquaObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **EloquaObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -88,7 +93,8 @@ Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatké
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ Adatok másolása az Oracle Eloqua, állítsa be a type tulajdonság, az adatké
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz Oracle Eloqua forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="eloquasource-as-source"></a>EloquaSource forrásként
+### <a name="eloqua-as-source"></a>Eloqua forrásként
 
 Oracle Eloqua adatmásolás, állítsa be a forrás típusaként a másolási tevékenység **EloquaSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **EloquaSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

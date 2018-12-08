@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: moderakh
-ms.openlocfilehash: 65af8a27d864231e6302d813836e2f63803234d2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f66623c8e37f0663da7defc10d87d89bd0ad99d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844780"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105778"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Azure Cosmos DB SQL API-fiók erőforrásainak létrehozása és kezelése Java-alkalmazással
 
@@ -39,7 +39,7 @@ Továbbá:
 * [Java fejlesztői készlet (JDK) 1.8+](https://aka.ms/azure-jdks)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
-* [Maven](http://maven.apache.org/download.cgi) bináris archívum [letöltése](http://maven.apache.org/install.html) és [telepítése](http://maven.apache.org/)
+* [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 * [Git](https://www.git-scm.com/)
     * Ubuntu rendszeren futtathatja a `sudo apt-get install git` parancsot a Git telepítéséhez.

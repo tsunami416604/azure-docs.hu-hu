@@ -1,6 +1,7 @@
 ---
-title: Az Application Insights az Azure Machine Learning szolgáltatás engedélyezése
-description: Ismerje meg, hogyan állíthatja be az Application Insights az Azure Machine Learning szolgáltatás használatával telepített szolgáltatások
+title: A figyelő modellek az Application insights segítségével
+titleSuffix: Azure Machine Learning service
+description: Az Azure Machine Learning szolgáltatásban üzembe helyezett webszolgáltatások figyelése az Application Insights használatával
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
 ms.custom: seodec18
-ms.openlocfilehash: ef26bd433d311e63e122f48871654c9fbc26216a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2b97ee8853ba49a3b12d98aeb2b494aa890c8e8f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013168"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102283"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
 
@@ -49,7 +50,7 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>A szolgáltatási egyéni nyomkövetési naplók
-Ha azt szeretné, hogy egyéni nyomkövetési naplók, kövesse a normál telepítés folyamata [AKS](how-to-deploy-to-aks.md) vagy [ACI](how-to-deploy-to-aci.md) . Ezután:
+Ha azt szeretné, hogy egyéni nyomkövetési naplók, hajtsa végre a szokásos központi telepítési folyamat az AKS vagy az aci Szolgáltatásban a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot. Ezután kövesse az alábbi lépéseket:
 
 1. Frissítse a pontozófájl nyomtatási utasítások hozzáadásával.
     

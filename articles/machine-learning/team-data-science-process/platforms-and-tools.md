@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 96548b5db1051c751f6468cb330cb5049182ce95
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446449"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104254"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -129,17 +129,17 @@ A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
         ssh-keygen
         cat .ssh/id_rsa.pub
 
-![](./media/platforms-and-tools/resources-1-generate_ssh.png)
+![Parancsokat az SSH-kulcs létrehozása](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Másolja a teljes ssh kulcs beleértve *ssh-rsa*. 
 - Jelentkezzen be az Azure DevOps-szolgáltatásokkal. 
 - Kattintson a **< név\>**  a lapot, majd kattintson a jobb felső sarokban található **biztonsági**. 
     
-    ![](./media/platforms-and-tools/resources-2-user-setting.png)
+    ![Kattintson a nevére, és kattintson a biztonsági](./media/platforms-and-tools/resources-2-user-setting.png)
 
 - Kattintson a **nyilvános SSH-kulcsokat**, és kattintson a **+ Hozzáadás**. 
 
-    ![](./media/platforms-and-tools/resources-3-add-ssh.png)
+    ![Kattintson a nyilvános SSH-kulcsokat, és majd kattintson a + Hozzáadás](./media/platforms-and-tools/resources-3-add-ssh.png)
 
 - Illessze be az ssh kulcs imént másolt a szövegmezőbe, és mentse el.
 

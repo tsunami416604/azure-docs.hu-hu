@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – létrehozása és futtatása a Jupyter notebook az Azure-ban |} A Microsoft Docs
+title: Oktatóanyag – létrehozása és futtatása a Jupyter notebook az Azure-ban
 description: Hogyan lehet egy futtatása Jupyter notebook létrehozása Azure-jegyzetfüzetekben, azt mutatja be, az adatelemzés lineáris regressziós folyamatán.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a73a3e89c2f1c2b852193ae916d73675b5b0fbcd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856032"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106675"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -54,7 +54,12 @@ A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a
 ### <a name="upload-the-data-file"></a>Az adatfájl feltöltése
 
 1. Az Azure-jegyzetfüzetekben projekt irányítópultján, válassza ki a **feltöltése** > **URL-CÍMRŐL**
-1. Az előugró ablakban adja meg az URL-cím `https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv` a **fájl URL-cím** és *cricket_chirps.csv* a **Fájlnév**, majd **kész**.
+1. Az előugró ablakban adja meg a következő URL-cím **fájl URL-cím** és *cricket_chirps.csv* a **Fájlnév**, majd **kész**.
+
+    ```url
+    https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
+    ```
+
 1. A *cricket_chirps.csv* fájlt meg kell jelennie a projekt fájllista:
 
     ![Az újonnan létrehozott CSV-fájlt a projekt fájlok listájának megjelenítése](media/tutorial/csv-file-in-project.png)
@@ -87,7 +92,7 @@ A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a
 
 1. Válassza ki **fájl mentése** mentse a fájlt, és térjen vissza a projekt irányítópultján.
 
-## <a name="install-python-packages-at-the-project-level"></a>Telepítse a Python-csomagokat a projekthez szintjén
+## <a name="install-project-level-packages"></a>Projekt szolgáltatásiszint-csomagok telepítése
 
 A notebook belül mindig parancsokat használhatja például a `!pip install` egy kódcellába szükséges csomagok telepítéséhez. Azonban az ilyen parancsok futtatása minden alkalommal, amikor a notebook kód cellák futtatja, és hosszabb időt is igénybe vehet. Ebből kifolyólag inkább telepíthet csomagokat a projekthez szinten az egy `requirements.txt` fájlt.
 
@@ -113,7 +118,7 @@ A notebook belül mindig parancsokat használhatja például a `!pip install` eg
 
 A telepítő lépés helyen a projekt futtatása minden olyan jegyzetfüzet fog futni egy környezetben amelyen telepítve vannak-e az azokat a csomagokat.
 
-## <a name="create-the-notebook-file-and-start-jupyter"></a>A notebook fájl létrehozásához, és indítsa el a Jupyter
+## <a name="create-and-run-a-notebook"></a>Notebook létrehozása és futtatása
 
 Készen áll az adatfájlban és a projekt környezet beállítása hogy mostantól létrehozhat és nyissa meg a notebook.
 
@@ -125,7 +130,7 @@ Készen áll az adatfájlban és a projekt környezet beállítása hogy mostant
 
     [![](media/tutorial/tutorial-new-notebook.png "Kezdeti nézete egy új jegyzetfüzetet az Azure-jegyzetfüzetekben")](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="a-brief-tour-of-the-notebook-interface"></a>A notebook felület rövid bemutatása
+## <a name="tour-the-notebook-interface"></a>A notebook felület bemutatása
 
 A notebook fut, a kód Markdown cellák, futtassa a cellákat és kezelheti a notebookot az is hozzáadhat. Először azonban érdemes Ismerkedjen meg a kapcsolat néhány percet vesz igénybe. A teljes dokumentációt, válassza a **súgó** > **súgója Notebook** parancs.
 
@@ -404,7 +409,7 @@ Is használhatja a **fájl** > **készítsen róla egy másolatot** parancsot, �
 
 Ha elkészült, a jegyzetfüzet, használja a **fájl** > **Bezárás és halt** parancsot, amely bezárja a notebookot, és a kernel futott, hogy leállítja. Az Azure notebookok majd a böngészőlapon automatikusan bezáródik.
 
-## <a name="debugging-code-in-a-notebook-using-visual-studio-code"></a>A Visual Studio Code jegyzetfüzetlapot kód hibakeresése
+## <a name="debug-notebooks-using-visual-studio-code"></a>Hibakeresés a Visual Studio Code notebookok
 
 A kód cellák a jegyzetfüzet nem a várt módon működni, ha lehet kódhibák vagy más hibák. Azonban más, az `print` utasítások Jupyter notebook nem biztosít semmilyen hibakeresési létesítményekben változók, értéket jeleníti meg.
 

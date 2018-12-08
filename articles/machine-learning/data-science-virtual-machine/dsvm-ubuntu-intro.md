@@ -1,11 +1,13 @@
 ---
-title: Egy Linux (Ubuntu) adatelemző virtuális gép Azure-beli üzembe helyezése |} A Microsoft Docs
+title: Egy Ubuntu Linux rendszerű adatelemző virtuális gép létrehozása
+titleSuffix: Azure
 description: Állítsa be, és hozzon létre egy Data Science virtuális gép a Linux (Ubuntu) az Azure-ban, elemzési és gépi tanulás.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 ms.author: gokuma
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244865"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106770"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 

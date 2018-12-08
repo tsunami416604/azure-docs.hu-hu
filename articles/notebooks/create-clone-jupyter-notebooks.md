@@ -1,5 +1,5 @@
 ---
-title: Hogyan hozhat létre, és klónozza a Jupyter notebooks az Azure-ban |} A Microsoft Docs
+title: Hozzon létre, és klónozza a Jupyter notebooks az Azure-ban
 description: Azure-jegyzetfüzetek projektek jegyzetfüzetek és a kapcsolódó fájlokat, amelyek új létrehozása, vagy más forrásból származó klónozása gyűjteményét kezelheti.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 36de7ce0cbbc1c3a2c12682b6882dc4d5491eb10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c4325f0c9de0d945d1612a3ab4171a2bfe1be25b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855946"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106515"
 ---
-# <a name="create-and-clone-projects"></a>Hozzon létre, és klónozza a projektek
+# <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
 Az Azure-jegyzetfüzeteket a Jupyter notebookok és a kapcsolódó fájlokat rendszerezi a nevű logikai csoportokba *projektek*. Tárolójaként, először hozzon létre egy projektet, majd hozzon létre vagy klónozásához egy vagy több notebookok mellett egyéb projekt fájlokat egy mappában található. (Ezt a folyamatot mutatják be a [oktatóanyag](tutorial-create-run-jupyter-notebook.md).)
 
@@ -49,7 +49,7 @@ Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amel
 
 Használatakor a **megosztás** parancsot, és válassza ki a **beágyazási** lapon is másolhatja, vagy a HTML-kódot, vagy a Markdown, amely létrehoz egy "indítási notebook" jelvény:
 
-    ![Launch notebook badge ](https://notebooks.azure.com/launch.png)
+![Indítsa el a jegyzetfüzet-jelvény ](https://notebooks.azure.com/launch.png)
 
 Ha nem rendelkezik egy Azure-jegyzetfüzetek projekt, egy hivatkozás, amely klónokat hozhat létre a Githubról közvetlenül használatával a következő sablonokat, és cserélje le a megfelelő felhasználónevet és a tárház nevét:
 

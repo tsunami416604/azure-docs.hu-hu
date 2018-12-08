@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27b41655d9a6c9000d9bc3cf98bf3246bb108104
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015551"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094933"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -215,6 +215,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP-Címek – lásd: [nyilvános IP-korlátozások](#pip-limitations)
+* Recovery Services-tároló – kell regisztrálni egy privát előzetes verzióban érhető el. Lásd: [Recovery Servicesre vonatkozó korlátozásokat](#recovery-services-limitations).
 * Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés
@@ -259,7 +260,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Microsoft Genomics
 * NetApp
 * Nyilvános IP-Címek – lásd: [nyilvános IP-korlátozások](#pip-limitations)
-* Recovery Services-tároló – még nincs társítva a Recovery Services-tároló a számítási, hálózati és tárolási erőforrások áthelyezése, lásd: [Recovery Servicesre vonatkozó korlátozásokat](#recovery-services-limitations).
 * Azure-beli SAP HANA-szolgáltatás
 * Biztonság
 * Site Recovery
@@ -446,6 +446,8 @@ A művelet több percig futtathatnak.
 
 ## <a name="recovery-services-limitations"></a>Recovery Services-korlátozások
 
+Recovery Services-tároló áthelyezéséhez regisztrálnia kell egy privát előzetes verzióban érhető el. Próbálja ki, hogy írni AskAzureBackupTeam@microsoft.com.
+
 Az Azure Site Recovery vész-helyreállítási beállításához használt tárolási, hálózati és számítási erőforrások áthelyezése nincs engedélyezve.
 
 Például tegyük fel, hogy beállította-e a tárfiókhoz (Storage1) a helyszíni gépek replikálását, és szeretné a védett gép merülnek fel a feladatátvételt követően az Azure-ba (Network1) virtuális hálózathoz csatolt virtuális gépként (VM1 –). Ön nem helyezhetők át a következő Azure erőforrások - Storage1 VM1 és Network1 - ugyanazon az előfizetésen belüli erőforráscsoportok között vagy előfizetések között.
@@ -453,7 +455,10 @@ Például tegyük fel, hogy beállította-e a tárfiókhoz (Storage1) a helyszí
 A regisztrált virtuális gép áthelyezése a **az Azure backup** erőforráscsoportok között:
  1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági másolatok adatainak megőrzése
  2. A virtuális gép áthelyezése a céloldali erőforráscsoport
- 3. Állítsa a felhasználók visszaállíthatják a az áthelyezési művelet előtt létrehozott rendelkezésre álló helyreállítási pontokból azonos vagy új tároló alatt.
+ 3. Ismételt védelem – mellett az azonos/új tároló
+
+Felhasználók állíthatja vissza az áthelyezési művelet előtt létrehozott rendelkezésre álló helyreállítási pontokból.
+
 Ha a felhasználó a biztonsági másolatban szereplő virtuális gép előfizetések között, az 1 és 2. lépés ugyanaz marad. A 3. lépésben a felhasználónak kell csoportban található / a célul szolgáló előfizetésben létrehozott egy új tárolót a virtuális gép védelmét. Recovery Services-tároló közötti előfizetés biztonsági mentések nem támogatja.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-korlátozások

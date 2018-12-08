@@ -1,21 +1,22 @@
 ---
-title: Előre összeállított útmutatója – Azure |} A Microsoft Docs
+title: Előre összeállított tartományhivatkozás
 titleSuffix: Azure
 description: Az előre összeállított tartományok, amelyek előre elkészített gyűjteménye szándékokat és entitásokat a Language Understanding Intelligent Services (LUIS) referenciája.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335623"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106243"
 ---
 # <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -107,7 +108,7 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | FindContact| Kapcsolattartási adatok keresése név alapján.|Carol szám keresése<br/>Carol szám megjelenítése<br/>|
 | FindSpeedDial| Található a speedial telefonszám van beállítva, és ez fordítva is igaz.|Mi az a telefonos számot 5?<br/>Tárcsázza a set sebesség van?<br/>Mi a telefonszáma 941-5555-333?|
 | GetForwardingsStatus| Átirányítás aktuális állapotának lekéréséhez.|A hívás továbbítás engedélyezve van?<br/>Figyelmeztessen, ha hívás Állapotom-e a be- vagy kikapcsolása<br/>|
-| GoBack| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Visszalépés|
+| GoBack| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
 | Kihagyás| Bejövő hívás figyelmen kívül.|Nem válaszol<br/>Hagyja figyelmen kívül a hívás|
 | IgnoreWithMessage| Bejövő hívás figyelmen kívül, és inkább szöveget tartalmazó válasz.|Ez a meghívás nem válaszol, de küldjön inkább üzenetet.<br/>Figyelmen kívül hagyhatja, és vissza egy szöveges üzenet elküldéséhez.|
 | PressKey| Egy gomb vagy a szám nyomja le a billentyűzeten.|Tárcsázás csillagra.<br/>Nyomja meg az 1-2 3.|
@@ -137,7 +138,7 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | Vonal | A sor a felhasználó szeretne egy hívást, vagy a szöveg/e-mail küldése.| Munkahelyi sor<br/>Brit cella<br/>Skype|
 | Üzenet | Küldendő e-mail vagy szöveges üzenet.| Nagyszerű, ma értekezlet-volt. Találkozunk kis idő múlva!|
 | MessageType | Egy ügyfél vagy üzenet címzettje neve.| Szöveg<br/>E-mail|
-| OrderReference | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. Például "last" vagy "legutóbbi" a "Mi volt az utolsó üzenet elküldött?"| Utolsó<br/>Legutóbbi|
+| OrderReference | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. Például "last" vagy "legutóbbi" a "Mi volt az utolsó üzenet elküldött?"| Vezetéknév<br/>Legutóbbi|
 | SenderName | A feladó neve.| Patti Owens|
 
 ## <a name="entertainment"></a>szórakoztatás  
@@ -154,14 +155,14 @@ A Szórakozás tartományban szándékok és entitások filmek, zene, játékoka
 | ContentRating | Media tartalom filmekhez például G vagy R minősítése.|Gyerek videó.<br/>PG besorolása.|
 | Műfaj | A műfajt filmet, játékot, alkalmazást vagy dal.|Comedies<br/>Dramas<br/>vicces|
 | Kulcsszó| Adjon meg egy attribútum általános keresési kulcsszó a pontosabb media tárolóhelyben nem létezik.|Zeneszámokat<br/>Hold folyam<br/>Amelia Earhart|
-| Nyelv | Az adathordozó, például használja a beszélt nyelv filmet vagy a dal használt nyelv.|Francia<br/>Angol<br/>koreai|
+| Nyelv | Az adathordozó, például használja a beszélt nyelv filmet vagy a dal használt nyelv.|francia<br/>Angol<br/>koreai|
 | MediaFormat | A további technikai különleges, amelyben az adathordozó van formázva.|HD filmek<br/>3D filmek<br/>Letölthető|
 | MediaSource | A tároló vagy a Marketplace-en az adathordozó beszerzése a.|Netflix<br/>Prime|
 | MediaSubTypes| Adathordozó-típusok kisebb, mint a mozi- és játékokat.|Bemutatók<br/>DLC<br/>Pótkocsik|
-| Állampolgárság| Az ország, ahol egy filmet, megjelenítése vagy egy zeneszám lett létrehozva.|Francia<br/>Német<br/>koreai|
+| Állampolgárság| Az ország, ahol egy filmet, megjelenítése vagy egy zeneszám lett létrehozva.|francia<br/>német<br/>koreai|
 | Személy| Az aktor, igazgató, előállítói, zenésze vagy egy filmet, alkalmazás, játék vagy TV-műsor előadója.|Madonna<br/>Stanley Kubrick|
 | Szerepkör| Szerepet, amelyet a személy, a média létrehozása.|Sings<br/>Útmutatása alapján<br/>–|
-| Cím| Egy filmet, alkalmazás, játékot, TV-műsor vagy dal neve.|Ismerősök felvételének engedélyezése<br/>Minecraft|
+| Beosztás| Egy filmet, alkalmazás, játékot, TV-műsor vagy dal neve.|Ismerősök felvételének engedélyezése<br/>Minecraft|
 | Típus| Egy filmet, alkalmazás, játékot, TV show vagy szám típus vagy adathordozó formátumát.|Zene<br/>MovieTV <br/>jeleníti meg|
 | UserRating| Felhasználói csillag vagy minősítés miniatűrök.|5 csillag<br/>3 csillag<br/>4 csillag|
 
@@ -234,7 +235,7 @@ A HomeAutomation tartományban szándékok és entitások intelligens otthoni es
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
 | Eszköz | Eszköz, amely be vagy ki kell kapcsolni egy típusa.|kávét készítő<br/>Thermostat<br/>lámpa|
-| Művelet | Az eszköz beállítása állapota.|zárolás<br/>nyitás<br/>a következőn:<br/>kikapcsolva|
+| Művelet | Az eszköz beállítása állapota.|zárolás<br/>nyitás<br/>be<br/>kikapcsolva|
 | Hely | A hely vagy az eszköz a helyiségben.|nappali<br/>szobája<br/>megjelenítő kijelzőket a konyhai|
 
 ## <a name="movietickets"></a>MovieTickets 
@@ -266,11 +267,12 @@ When is Captain Omar showing?
 A zene tartományban szándékok és entitások zene játsszon egy zenelejátszókkal kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|Példák|
+|--|
+|Beethoven lejátszása|
+|Növelje a kötet nyomon követése|
+|Folytassa a következő zeneszám|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -297,11 +299,12 @@ Skip to the next song
 A Megjegyzés tartományban szándékok és entitások létrehozására, szerkesztésére és megjegyzések keresése kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|Példák|
+|--|
+|Saját élelmiszerszükségletét Megjegyzés saláta tomato kenyér kávé hozzáadása|
+|Jelölje ki a saját bevásárlólistáról banánok|
+|Szabadságolási lista összes elemének eltávolításához|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -322,19 +325,21 @@ Remove all items from my vacation list
 | Alkalmazásnév | Jegyzetelő alkalmazást neve.|Wunderlist<br/>OneNote|
 | ContactName | Egy partnert a jegyzet neve.|Carol<br/>Jim<br/>Chris|
 | Adatforrás | Megjegyzések helye.|OneDrive<br/>Google docs<br/>a számítógép|
-| Adattípus | A fájl vagy dokumentum, általában az adott programok társított típusát.|Diák<br/>Táblázat<br/>Munkalap|
+| Adattípus | A fájl vagy dokumentum, általában az adott programok társított típusát.|Diák<br/>Számolótábla<br/>Munkalap|
 | Szöveg | Egy megjegyzés vagy emlékeztető szöveg.|a Stretch walking előtt<br/>hosszú futtatású holnap|
-| Cím | Megjegyzés címe.|élelmiszerszükségletét<br/>Személyek meghívásához<br/>TEENDŐ|
+| Beosztás | Megjegyzés címe.|élelmiszerszükségletét<br/>Személyek meghívásához<br/>TEENDŐ|
 
 ## <a name="ondevice"></a>OnDevice 
 A OnDevice tartományban szándékok és entitások, az eszköz vezérlésére kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|Példák|
+|--|
+|Zárja be a videólejátszó|
+|A lejátszás megszakítása|
+|Módosíthatja a képernyőt világosabb?|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -381,11 +386,13 @@ Can you make the screen brighter?
 A helyek tartományban szándékok kezeléséhez, többek között a vállalkozások, intézmény, éttermek, nyilvános szóközöket és címek kapcsolódó lekérdezések biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|Példák|
+|--|
+|A hely mentése a Kedvencek|
+|Milyen távol az ünnepi adóazonosító?|
+|Mely nem Safeway bezárja?|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -417,7 +424,7 @@ At what time does Safeway close?
 |SelectItem|Válasszon egy elemet egy helyre vagy helyek kapcsolatos választási listájáról.|A második érték kiválasztása<br/>Válassza ki az első|
 |ShowMap|Egy terület térkép megjelenítése.|A második egy térképen megjelenítése<br/>Térkép megjelenítése<br/>Keresse meg a San Franciscóban a térképen|
 |ShowNext|A következő elem megjelenítése egy sorozatban.|Következő megjelenítése<br/>a következő oldalra lépéshez|
-|ShowPrevious|Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése<br/>előző<br/>Nyissa meg az előző|
+|ShowPrevious|Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése<br/>vissza<br/>Nyissa meg az előző|
 |StartOver|Indítsa újra az alkalmazást, vagy új munkamenet indításához.|Újrakezdés<br/>Új munkamenet<br/>
 restart|
 |TakesReservations|Kérje meg, hogy helyet fogad-e a foglalások.|Nem a tárban foglalások elfogadása<br/>Az lehetséges, ha szeretné tenni egy foglalást a olívaolaj kertben
@@ -450,11 +457,13 @@ restart|
 Az emlékeztető tartományban szándékok és entitások létrehozására, szerkesztésére és emlékeztetők keresése a biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|Példák|
+|--|
+|Módosítsa a Kérdezési holnap 9: 00|
+|Emlékeztessen tej a kezdőlap vissza saját módon megvásárlása|
+|Ha az emlékeztető Christine a születésnap is ellenőrizheti?|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -473,11 +482,12 @@ Can you check if I have a reminder about Christine's birthday?
 A RestaurantReservation tartományban szándékok és entitások éttermi foglalások felügyeletével kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|Példák|
+|--|
+|Két tonight, Zucca fenntarthat|
+|Könyv BJ a másnapi egy táblázat|
+|3. a Palo Alto 7 tábla|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -502,11 +512,12 @@ Table for 3 in Palo Alto at 7
 A Taxi tartományban szándékok és entitások létrehozására és kezelésére taxi foglalások biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|Példák|
+|--|
+|Cab-fájl lekérése me egy du. 3:|
+|Mennyi már rendelkezik saját taxi várni?|
+|Megszakítja az Uber|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -531,11 +542,13 @@ Cancel my Uber
 A fordítás tartományban szándékok és entitások kapcsolatos szöveget a cél nyelvre fordításával biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|Példák|
+|--|
+|Francia fordítás|
+|Német hello fordítása|
+|Ezt a mondatot angol fordítása|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -546,7 +559,7 @@ Translate this sentence to English
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| TargetLanguage | Egy fordítási Célnyelv.|Francia<br/>Német<br/>koreai|
+| TargetLanguage | Egy fordítási Célnyelv.|francia<br/>német<br/>koreai|
 | Szöveg | A fordítandó szöveg.|Hello World<br/>jó reggelt<br/>jó estét|
 
 ## <a name="tv"></a>TV 
@@ -554,11 +567,12 @@ Translate this sentence to English
 A TV tartományban szándékok és entitások biztosít televízióra szabályozása.
 
 ### <a name="examples"></a>Példák
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|Példák|
+|--|
+|BBC kapcsoló csatorna|
+|Útmutató TV show|
+|Tekintse meg a földrajzi National|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -576,11 +590,13 @@ Watch National Geographic
 A segédprogramok tartományban szándékok számos feladat, például üdvözletek, törlését, megerősítő, Súgó, ismétlődés, navigációs, elindítása és leállítása a feladatokat biztosít.
 
 ### <a name="examples"></a>Példák
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|Példák|
+|--|
+|Lépjen vissza a Twitteren|
+|Kérjük, segítsen|
+|Ismételje meg az utolsó kérdés.|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -588,7 +604,7 @@ Repeat last question please
 | Mégse | Művelet törlése.|Az üzenet törlése<br/>Nem szeretnék többé elküldeni az e-mailben|
 | Megerősítés | Erősítse meg a műveletet.|Igen hoppá megerősítem, hogy<br/>Jól tudom vagyok megerősítése<br/>Rendben, szeretnék vagyok megerősítése|
 | FinishTask | Fejezze be a felhasználó egy feladatot.|Már nem használom<br/>Végeztem<br/>Művelet befejeződött|
-| GoBack | Lépjen vissza egy lépést, vagy térjen vissza az előző lépésben.|Lépjen vissza a Twitteren<br/>Lépjen vissza az adott lépés<br/>Visszalépés|
+| GoBack | Lépjen vissza egy lépést, vagy térjen vissza az előző lépésben.|Lépjen vissza a Twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
 | Súgó | Kérelem segítséget.|Kérjük, segítsen<br/>Súgó megnyitása<br/>help|
 | Ismétlés | Ismételje meg a műveletet.|Ismételje meg az utolsó kérdés.<br/>Ismételje meg a legutóbbi dal|
 | ShowNext | A következő elem megjelenítése egy sorozatban. |Következő megjelenítése<br/>a következő oldalra lépéshez|
@@ -600,11 +616,13 @@ Repeat last question please
 Az időjárási tartományban szándékok és entitások biztosít időjárás-előrejelzéseket és előrejelzések.
 
 ### <a name="examples"></a>Példák
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|Példák|
+|--|
+|szeptembertől londoni időjárás|
+|Milyen? a 10 nap-előrejelzési s?|
+|Mi az az átlaghőmérséklet Indiában szeptembertől?|
+
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
@@ -621,11 +639,12 @@ What's the average temperature in India in september?
 A webes tartomány megjelölésű biztosít ellenőrizheti, hogy egy webhely.
 
 ### <a name="examples"></a>Példák
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|Példák|
+|--|
+|Navigáljon a Facebook.com weboldalt|
+|Ugrás a www.twitter.com|
+|Navigáljon a www.bing.com|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |

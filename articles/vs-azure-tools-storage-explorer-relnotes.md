@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038620"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101415"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -141,7 +141,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -165,9 +165,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -197,7 +197,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -221,9 +221,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -252,7 +252,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -276,9 +276,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -312,7 +312,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -336,9 +336,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -393,9 +393,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Helyreállítható törlés
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -450,9 +450,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -504,9 +504,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -570,9 +570,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
@@ -607,9 +607,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
@@ -656,9 +656,9 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
@@ -702,9 +702,11 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -764,9 +766,11 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -818,9 +822,11 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
 * Bár az Azure Stack jelenleg nem támogatja a fájlmegosztások, a fájlmegosztások csomópont továbbra is egy csatolt Azure Stack tárfiókok alatt jelenik meg.
 * A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```

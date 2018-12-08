@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Azure Event Hubs névtér és a fogyasztói csoportot egy sablon használatával |} A Microsoft Docs
+title: Egy sablon használatával az Azure Event Hubs névtér és a fogyasztói csoport létrehozása |} A Microsoft Docs
 description: Event Hubs-névtér létrehozása egy eseményközponttal, valamint egy fogyasztói csoportot az Azure Resource Manager-sablonok használatával
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 452e866a801a27d0a9681802706abb06f214bd6d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fefaadcbe88a79f260e8061ce0b380f3e18f688c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962317"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103013"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Azure Resource Manager-sablon használatával eseményközpont létrehozása
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.

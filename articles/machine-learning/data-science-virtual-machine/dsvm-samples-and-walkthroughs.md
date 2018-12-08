@@ -1,11 +1,12 @@
 ---
 title: Minták és útmutatók az adatelemző virtuális gépek – Azure |} A Microsoft Docs
-description: Minták és útmutatók az adatelemző virtuális gépek.
+description: További tudnivalók a minták és útmutatók, amely megtanítása hogyan végezheti el a gyakori feladatok és a forgatókönyvek és az adatelemző virtuális gép.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 74d5893a377fb67dbec7b185525e74ac248deede
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902756"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101993"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Az adatelemző virtuális gépek minták
 

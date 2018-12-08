@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 615e03e1905fc282a8561138904a965db6226837
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 10dcdd1c9660f37e272251aba181828405eb07ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833008"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106583"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez
 
@@ -39,7 +39,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 * Továbbá:
     * A [Node.js](https://nodejs.org/en/) 6.0.0-s vagy újabb verziója
-    * [Git](http://git-scm.com/)
+    * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -135,7 +135,7 @@ Az alábbi kódrészletek mind az **app.js** fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
+1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 

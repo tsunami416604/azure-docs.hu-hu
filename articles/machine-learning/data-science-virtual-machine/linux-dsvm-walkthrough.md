@@ -1,11 +1,13 @@
 ---
-title: Az adatelemzés és a Linux rendszerű adatelemző virtuális gép az Azure-ban |} A Microsoft Docs
+title: Linux rendszerű adatelemző virtuális gép használata
+titleSuffix: Azure
 description: Hogyan végezheti el számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 5c590b8df2eeb8859a6b78f4d719661c8b542ebe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0c929bb569fb96dfdaa53f47036cc8f16251ad1c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000269"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105240"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.

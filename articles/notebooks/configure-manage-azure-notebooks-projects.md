@@ -1,5 +1,5 @@
 ---
-title: Konfigurálhatja és kezelheti az Azure-jegyzetfüzet-projektek |} A Microsoft Docs
+title: Konfigurálhatja és kezelheti az Azure-jegyzetfüzet-projektek
 description: Hogyan kezelheti a projekt metaadatok, soubory projektu, a projekt környezet és a beállítási lépéseket az Azure notebookok felhasználói felület és a terminál közvetlen hozzáférést.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 0e24d06cfeefd8315e21a45b833e6bf0e5f9dfd9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856020"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104084"
 ---
-# <a name="manage-and-configure-projects"></a>Kezelheti és konfigurálhatja a projektek
+# <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
 A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális gép, amelyben Jupyter notebookok futtatja, a fájl mappa és a leíró metaadatok együtt egy konfigurációs. Az Azure-jegyzetfüzetekben projekt-irányítópult lehetővé teszi a fájlok kezelése és egyéb konfigurálása a projekt jellemzői:
 

@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0540a81db93570928dd33b66a69b6883b2df0cd9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 74c2142e8f6839422446767cd0c70b34daa3f1ad
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007688"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103247"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rövid útmutató: Szöveg tartalmának elemzése kifogásolható tartalom felismeréséhez C# nyelven 
 
@@ -47,59 +47,19 @@ Következő lépésként másolja és illessze be az ebben az útmutatóban tal�
 
 Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
-```csharp
-using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
 Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy Content Moderator-ügyfélszolgáltatót az előfizetéséhez. Adja hozzá a kódot a **Program** osztály mellett, ugyanabban a névtérben. Frissítenie kell a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
-```csharp
-// Wraps the creation and configuration of a Content Moderator client.
-public static class Clients
-{
-    // The region/location for your Content Moderator account, 
-    // for example, westus.
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    // The base URL fragment for Content Moderator calls.
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
-
-    // Your Content Moderator subscription key.
-    private static readonly string CMSubscriptionKey = "YOUR API KEY";
-
-    // Returns a new Content Moderator client for your subscription.
-    public static ContentModeratorClient NewClient()
-    {
-        // Create and initialize an instance of the Content Moderator API wrapper.
-        ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
-
-        client.Endpoint = AzureBaseURL;
-        return client;
-    }
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
 Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek adják meg a bemeneti szöveg tartalmának és a kimeneti JSON tartalmának fájljait.
 
-```csharp
-// The name of the file that contains the text to evaluate.
-private static string TextFile = "TextFile.txt";
-
-// The name of the file to contain the output from the evaluation.
-private static string OutputFile = "TextModerationOutput.txt";
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
 Létre kell hoznia a *TextFile.txt* bemeneti fájlt, és ennek megfelelően frissítenie kell az elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
 
@@ -119,34 +79,7 @@ Adja hozzá az alábbi kódot a **Main** metódushoz. A **ScreenText** metódus 
 
 Ha többet szeretne megtudni arról, mire szolgálnak ezek a műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.
 
-```csharp
-// Load the input text.
-string text = File.ReadAllText(TextFile);
-Console.WriteLine("Screening {0}", TextFile);
-
-text = text.Replace(System.Environment.NewLine, " ");
-byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(text);
-MemoryStream stream = new MemoryStream(byteArray);
-
-// Save the moderation results to a file.
-using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
-{
-    // Create a Content Moderator client and evaluate the text.
-    using (var client = Clients.NewClient())
-    {
-        // Screen the input text: check for profanity,
-        // autocorrect text, check for personally identifying
-        // information (PII), and classify the text into three categories
-        outputWriter.WriteLine("Autocorrect typos, check for matching terms, PII, and classify.");
-        var screenResult =
-        client.TextModeration.ScreenText("text/plain", stream, "eng", true, true, null, true);
-        outputWriter.WriteLine(
-                JsonConvert.SerializeObject(screenResult, Formatting.Indented));
-    }
-    outputWriter.Flush();
-    outputWriter.Close();
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
 
 ## <a name="run-the-program"></a>A program futtatása
 

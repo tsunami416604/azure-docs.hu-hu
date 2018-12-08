@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: cdd01953e4053eec6e8b0cb57c7a68bb2ae01673
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d2e76bde90c0bf2d411697998fe140eb1b706b9b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957478"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106464"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/security-microsoft-trust-center.md).  
@@ -181,7 +181,7 @@ Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a k
 A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a szervezeti fiók vagy a korábban használt Microsoft-fiók használatával. A portál és a Log Analytics szolgáltatás közötti összes forgalom egy biztonságos csatornán keresztül zajlik. A portál használata esetén a munkamenet-azonosító akkor jön létre, a felhasználó ügyfélen (webböngésző), és a helyi gyorsítótárban tárolt adatokat, mindaddig, amíg a munkamenet meg lett szakítva. Ha leállt, a gyorsítótár törlődik. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie HTTPOnly vannak megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portal munkamenet meg lett szakítva.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan gyűjthet adatokat a Log Analytics az Azure virtuális gépek következő a [Azure virtuális gépek rövid útmutatóját](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+* Ismerje meg, hogyan gyűjthet adatokat a Log Analytics az Azure virtuális gépek következő a [Azure virtuális gépek rövid útmutatóját](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-*  Ha a környezete fizikai vagy virtuális Windows vagy Linux rendszerű számítógépek adatainak összegyűjtése, tekintse meg a [gyors útmutató: Linux rendszerű számítógépek](../../log-analytics/log-analytics-quick-collect-linux-computer.md) vagy [a rövid útmutató a Windows-számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  Ha a környezete fizikai vagy virtuális Windows vagy Linux rendszerű számítógépek adatainak összegyűjtése, tekintse meg a [gyors útmutató: Linux rendszerű számítógépek](../../azure-monitor/learn/quick-collect-linux-computer.md) vagy [a rövid útmutató a Windows-számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

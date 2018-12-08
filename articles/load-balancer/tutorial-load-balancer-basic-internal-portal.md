@@ -4,11 +4,7 @@ description: Ez az oktatóanyag bemutatja, hogyan hozhat létre belső alapszint
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -17,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ccbbb107dfd8fde237cdfdd4b0c3fcc080fd70e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 404b667de32e16dc43fa1359a297078ac07b5cfe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839245"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106379"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: Egyenleg belső bejövő forgalmának terhelés egy alapszintű load balancer az Azure Portalon
 
@@ -62,9 +58,6 @@ Először hozzon létre egy virtuális hálózatot (VNet). A virtuális hálóza
    - **Példány részletei** > **rendelkezésre állási beállítások**: 
      1. Legördülő listára, és válassza ki **rendelkezésre állási csoport**. 
      2. Válassza ki **új létrehozása**, típus *MyAvailabilitySet*, és válassza ki **OK**.
-   - **Rendszergazdai fiók** > **felhasználónév**: típus *azureuser*.
-   - **Rendszergazdai fiók** > **jelszó**: típus *Azure1234567*. 
-     Írja be újra a jelszót a **jelszó megerősítése** mező.
    
 1. Válassza ki a **hálózatkezelés** lapon, vagy válasszon **tovább: lemezek**, majd **tovább: hálózatkezelés**. 
    
@@ -212,7 +205,7 @@ Először csatlakozzon a három virtuális gép a távoli asztali (RDP).
    
 1. A Windows biztonsági képernyőn válassza ki a **további lehetőségek** , majd **másik fiók használata**. 
    
-   Adjon meg egy felhasználónevet *azureuser* és a jelszó *Azure1234567*, és válassza ki **OK**.
+   Adja meg a felhasználónevet és jelszót, majd **OK**.
    
 1. Válasz **Igen** a minden tanúsítvány-kérdésre. 
    

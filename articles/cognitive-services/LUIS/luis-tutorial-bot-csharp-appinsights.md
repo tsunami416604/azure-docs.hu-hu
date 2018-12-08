@@ -1,23 +1,24 @@
 ---
-title: Application Insights-adatok a LUIS C# használatával
+title: Az Application Insights használatávalC#
 titleSuffix: Azure Cognitive Services
 description: A robot a LUIS alkalmazás és a C# használatával az Application Insights szolgáltatással integrált hozhat létre.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: c7f12352355b12cf1a7363a2a82fa786248cdc6f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb7ce154985db97dba2a36b4b0d834cada1605d9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965291"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101058"
 ---
-# <a name="add-luis-results-to-application-insights"></a>A LUIS-eredményeket ad hozzá az Application Insights
+# <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>A LUIS-eredményeket ad hozzá egy robottal az Application InsightsC#
 
 Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
@@ -174,7 +175,7 @@ Az Azure Portalon keresse meg a web app bot, és nyissa meg. Az alábbi lépése
 
 3. A konzolablakban adja meg a következő parancsot:
 
-    ```
+    ```console
     cd site\wwwroot && build.cmd
     ```
 
@@ -190,11 +191,12 @@ Az Azure Portalon keresse meg a web app bot, és nyissa meg. Az alábbi lépése
 
 3. Nincs különbség a csevegőrobot választ kell megjelennie. A módosítás adatokat továbbít felé az Application Insights, nem a robot a válaszokat. Adja meg néhány további utterances, így egy kicsit több adat az Application insights szolgáltatásban:
 
-```
-Please deliver a pizza
-Turn off all the lights
-Turn on the hall light
-```
+|Beszédmódok|
+|--|
+|Küldje el a kétpizzás|
+|Kapcsolja ki az összes lámpa|
+|Kapcsolja be a hall világos|
+
 
 ## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application insights szolgáltatásban
 
@@ -231,7 +233,7 @@ Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](h
 
 3. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő felett az utolsó sort a lekérdezési ablakban:
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
     | extend score = todouble(customDimensions.LUIS_topScoringIntentScore)
     | extend utterance = tostring(customDimensions.LUIS_query)

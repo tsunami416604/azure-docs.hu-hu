@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 50a46b37be3115b92a3f8bc7cf426c8c7df78ce9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994135"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103421"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management jelentések
 
@@ -25,7 +25,7 @@ Ez a cikk segítségével megismerheti a Cloudyn cost management jelentések ala
 
 Íme egy példa az időalapú költségeket tartalmazó jelentést egy pillantást. A legtöbb a Cloudyn jelentésekben hasonló elrendezés rendelkezik.
 
-![mintajelentés](./media/understanding-cost-reports/sample-report.png)
+![A leírások megfelelő számozott területeket időalapú költségeket tartalmazó jelentést – példa](./media/understanding-cost-reports/sample-report.png)
 
 Minden egyes számozott terület az előző képen leírt részletei a következő információkat:
 
@@ -47,11 +47,11 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
     Használja a címkék területen csoporthoz címke kategóriák szerint. A menüben szereplő címkék Azure részleg vagy költség center címkéket és azok a Cloudyn költség entitás- és előfizetés-címkék. Válassza ki a címkékkel szűrheti az eredményeket. Írja be a címke neve (kulcsszó) szűrheti az eredményeket is.
 
-    ![beállítások kiválasztása](./media/understanding-cost-reports/select-options.png)
+    ![Példa a szűrheti az eredményeket a címkék listája](./media/understanding-cost-reports/select-options.png)
 
     Kattintson a **Hozzáadás** új szűrő hozzáadásához.
 
-    ![szűrő hozzáadása](./media/understanding-cost-reports/add-filter.png)
+    ![Beállítások és a feltételek szerinti szűrést, a Szűrő mezőbe hozzáadása](./media/understanding-cost-reports/add-filter.png)
 
     Címkét, csoportosítást, vagy a szűrés nem vonatkozik Azure-erőforrások vagy erőforrás-csoport címkék.
 
@@ -61,9 +61,9 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
     Csoportok használata költségelemzést a standard szintű, hogy a jelentések részletezett kategóriák a számlázás a jelentésben.  A Költséglefoglalási jelentések megjelenítése a csoportokat azonban címke-alapú kategóriák megtekintéséhez. Címke-alapú kategóriák a költséglefoglalási modell és a standard tételes kategóriák az elszámolási adatok vannak definiálva.
 
-    ![csoportok címkék](./media/understanding-cost-reports/groups-tags01.png)
+    ![Címkék szerint példa listája](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![csoportok címkék](./media/understanding-cost-reports/groups-tags02.png)
+    ![Második példa címkelista, amely szerint](./media/understanding-cost-reports/groups-tags02.png)
 
     Költségek felosztási jelentésekben csoportok csoporthoz címke-alapú kategóriák a következők lehetnek:
       - Címkék
@@ -166,7 +166,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
     Megjelenítési formátum segítségével válassza ki a különböző graph vagy tábla nézetek.
 
-    ![Megjelenítési formátum](./media/understanding-cost-reports/display-formats.png)
+    ![Megjelenítési formátum kiválasztható, szimbólumok](./media/understanding-cost-reports/display-formats.png)
 
 13. **Multi-color**
 

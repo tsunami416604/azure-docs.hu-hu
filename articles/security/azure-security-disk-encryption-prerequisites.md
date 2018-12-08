@@ -1,20 +1,22 @@
 ---
-title: Az Azure Disk Encryption előfeltétel-konfigurációs |} A Microsoft Docs
+title: Előfeltételek – IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
 description: Ez a cikk ismerteti a Microsoft Azure Disk Encryption használatával IaaS-beli virtuális gépek előfeltételei.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: ad8bf0217dcd07a7272a220f2d91ed6bc40523bc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 55226204d148239b7c32d1abc6f61fddcfc5b913
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498589"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104978"
 ---
-# <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei 
+# <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
+
  Ez a cikk az Azure Disk Encryption titkosítási előfeltétel, biztosítani kell, mielőtt használhatná az Azure Disk Encryption igénylő elemeket ismerteti. Az Azure Disk Encryption integrálva van [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) titkosítási kulcsok kezeléséhez. Használhat [Azure PowerShell-lel](/powershell/azure/overview), [Azure CLI-vel](/cli/azure/), vagy a [az Azure portal](https://portal.azure.com) konfigurálása az Azure Disk Encryption.
 
 A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára az Azure IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése előtt a [Azure Disk Encryption áttekintése](azure-security-disk-encryption-overview.md) című cikket, ellenőrizze, hogy rendelkezik az előfeltételek teljesülnek. 

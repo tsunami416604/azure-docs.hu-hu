@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 748eefd78f8235a906d0e87874b29432b4b869c7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265262"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106787"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
@@ -376,7 +376,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 
 Ebben a szakaszban feltölti az átalakított adatokat az Azure SQL Data Warehouse-ba. Az Azure Databricks Azure SQL Data Warehouse-összekötőjével közvetlenül feltölthet egy adathalmazt SQL Data Warehouse-táblaként.
 
-Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob Storage-ot használja ideiglenes tárhelyként, amelybe feltölti az Azure Databricks és az Azure SQL Data Warehouse között áthelyezett adatokat. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként korábban már létre kellett hoznia a fiókot.
+Ahogy korábban említettük, az SQL data warehouse-összekötő az Azure Blob Storage ideiglenes tárolási helyeként feltölteni az adatokat az Azure Databricks és az Azure SQL Data Warehouse között. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként korábban már létre kellett hoznia a fiókot.
 
 1. Adja meg az Azure Storage-fiók Azure Databricksből való eléréséhez szükséges konfigurációt. Ha a portálról a blob Storage másolja az URL-cím, mindenképpen távolítsa el *https://* kezdetétől fogva. 
 

@@ -1,6 +1,6 @@
 ---
-title: Csoportos feladatok adatok adatelemzési folyamat Csapatvezető – Azure |} A Microsoft Docs
-description: A tevékenységek a data science csoportprojektet a csapat érdeklődő röviden ismerteti.
+title: A csapat feladatok vezethet a a csapat adatelemzési folyamat csapatával – Azure
+description: A feladatok, amelyek egy Csapatvezető egy data science csoportprojektet a Vázlat várhatóan hajtsa végre az adatelemzési csapatával.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2004396266d4bde9f3be540408524b668bbb863d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 68fd0abf314eb4fde5ff335acc161d82ad78cd0c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443849"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106634"
 ---
-# <a name="team-lead-tasks"></a>Csapat vezető feladatok
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>A csapat adatelemzési folyamat csapatával az vezethet a csapat feladatok
 
 Ez a témakör ismerteti a feladatokat, amely egy Csapatvezető várható esetében az adatelemzési csapatával. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Tdsp-vel egy rugalmas és iteratív adatelemzési módszer, amelynek célja prediktív elemzési megoldások és intelligens alkalmazások hatékony. Együttműködés és a csapat learning növelésére tervezték. A folyamat egy szerkezetekből ajánlott eljárást, és mind a Microsofttól, valamint az iparág, hogy elősegítse a cégek teljes adatelemzési kezdeményezések sikeres megvalósítását szükséges struktúrák rejlő előnyöket a analytics programok. Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 

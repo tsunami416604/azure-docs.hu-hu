@@ -1,10 +1,10 @@
 ---
-title: '1. lépés: A Machine Learning Studio-munkaterület létrehozása |} A Microsoft Docs'
+title: '1. lépés: Egy munkaterület létrehozása – Azure Machine Learning Studióban |} A Microsoft Docs'
 description: 'A fejlesztés egy prediktív megoldás a forgatókönyv 1. lépés: ismerje meg, hogyan állítható be egy új Azure Machine Learning Studio-munkaterület.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 0990fb6f8166be516b32e1f457f868be16dedcb2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0ee3515888071f7c35c4a191d2d4fdfc75dcb1a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316960"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104975"
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-studio-workspace"></a>Az útmutató 1. lépés: Egy Machine Learning Studio-munkaterület létrehozása
 Ez az útmutató az első lépés a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).

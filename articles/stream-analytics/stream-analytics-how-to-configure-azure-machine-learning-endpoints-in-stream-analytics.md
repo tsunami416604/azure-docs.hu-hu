@@ -4,17 +4,16 @@ description: Ez a cikk azt ismerteti, gépi nyelvére felhasználó által defin
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 024d7094a9baa90eebd57b4c76db367f81bd0400
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/07/2018
+ms.openlocfilehash: cea810a5e57f4b10c170038108226c4e0f1320bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700867"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104933"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>A Machine Learning-integráció a Stream Analytics
 Stream Analytics támogatja a felhasználó által definiált függvények, melyek az Azure Machine Learning-végpontokra irányuló. Ez a szolgáltatás REST API-támogatása részleteit a a [Stream Analytics REST API-könyvtár](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ez a cikk nyújt kiegészítő információkat, amelyeket ez a funkció a Stream Analytics sikeres megvalósítását. Oktatóanyag is közzé lett téve, és elérhető [Itt](stream-analytics-machine-learning-integration-tutorial.md).
@@ -51,7 +50,7 @@ Tegyük fel, az alábbi példakód létrehoz egy skaláris elnevezésű UDF *new
 
 A példában a kérés törzse:  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -67,7 +66,7 @@ A példában a kérés törzse:
             }
         }
     }
-````
+```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Alapértelmezett UDF RetrieveDefaultDefinition végpont meghívása
 A vázban UDF létrehozása után az UDF teljes definíciója van szükség. A RetreiveDefaultDefinition végpont segít a skaláris függvény, amely egy Azure Machine Learning-végpont van kötve az alapértelmezett definíció lekérése. Az alábbi hasznos megköveteli, hogy az alapértelmezett skaláris függvény, amely egy Azure Machine Learning-végpont van kötve az UDF-definíció lekérése. Ez nem adja meg a tényleges végpontnak ahogy azt már megadott PUT kérelem során. Stream Analytics meghívja a végpont, ha explicit módon van megadva a kérelemben megadott. Ellenkező esetben az eredetileg hivatkozott egy használ. Itt a UDF beolvassa egy karakterlánc-paramétert (egy mondatnál), és adja vissza, egyetlen kimeneti típusú karakterlánc, ami azt jelenti, hogy a "vélemények" címkét a mondat helyett szerepel.
@@ -78,7 +77,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 
 A példában a kérés törzse:  
 
-````
+```json
     {
         "bindingType": "Microsoft.MachineLearning/WebService",
         "bindingRetrievalProperties": {
@@ -86,11 +85,11 @@ A példában a kérés törzse:
             "udfType": "Scalar"
         }
     }
-````
+```
 
 A minta kimeneti e keresse meg valami szeretné alatt.  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -126,7 +125,7 @@ A minta kimeneti e keresse meg valami szeretné alatt.
             }
         }
     }
-````
+```
 
 ## <a name="patch-udf-with-the-response"></a>A válasz javítás UDF-ben
 Most már az UDF kell javítható az előző válaszban kapott, az alább látható módon.
@@ -137,7 +136,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 A kérelem törzsében (RetrieveDefaultDefinition kimenete):
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -173,12 +172,12 @@ A kérelem törzsében (RetrieveDefaultDefinition kimenete):
             }
         }
     }
-````
+```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Stream Analytics átalakítási hívja az UDF megvalósítása
 Most már lekérdezéséhez az UDF-ben (Itt nevű scoreTweet) minden bemeneti eseményhez, és választ az esemény-kimenetre.  
 
-````
+```json
     {
         "name": "transformation",
         "properties": {
@@ -186,7 +185,7 @@ Most már lekérdezéséhez az UDF-ben (Itt nevű scoreTweet) minden bemeneti es
             "query": "select *,scoreTweet(Tweet) TweetSentiment into blobOutput from blobInput"
         }
     }
-````
+```
 
 
 ## <a name="get-help"></a>Segítségkérés

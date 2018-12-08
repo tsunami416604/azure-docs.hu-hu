@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/04/2018
+ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 1df4e345645fb216f1656b2bbe87396cf0719d1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 57b13f5ae37fa4d8d5dbbdc00b9fedbb0f1c9163
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994984"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101840"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers-preview"></a>Az Azure Kubernetes Service (AKS) tárolókat (előzetes verzió) és az Azure Monitor figyelésének leállítása
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókat és az Azure Monitor figyelésének leállítása
 
-Ha engedélyezése után az AKS-fürt figyelése, úgy döntene, hogy már nem szeretne, megfigyeli azt, akkor is *kikapcsolhatja az újat*.  Ez a cikk bemutatja, hogyan teheti ezt meg az Azure CLI vagy a megadott Azure Resource Manager-sablonokkal.  
+Miután engedélyezte az AKS-fürt figyelése, állítsa le a fürt figyelése, ha úgy dönt, hogy már nem szeretné figyelni tudja azt. Ez a cikk bemutatja, hogyan teheti ezt meg az Azure CLI vagy a megadott Azure Resource Manager-sablonokkal.  
 
 
 ## <a name="azure-cli"></a>Azure CLI

@@ -1,20 +1,21 @@
 ---
-title: Események fogadása az Azure Event Hubs Node.js használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan események fogadása az Event Hubs Node.js használatával.
+title: Események fogadása node.js-szel – Azure Event Hubs használatával |} A Microsoft Docs
+description: Ez a cikk egy forgatókönyv Node.js-alkalmazás, amely az Azure Event Hubsból fogadja az eseményeket létrehozásához.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9d7ec781fbc559b434b51db4a5dd8ffb1b6ef11f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239084"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103230"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Események fogadása az Azure Event Hubs Node.js használatával
 

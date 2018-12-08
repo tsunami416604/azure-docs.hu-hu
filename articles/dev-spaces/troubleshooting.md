@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014548"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104594"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -75,6 +75,7 @@ A Visual Studióban:
 
     ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>Többlépcsős docker-fájlok:
 Ez a hiba jelenhet meg használatakor egy többlépcsős docker-fájlban. A részletes kimenet a következőképpen jelenik meg:
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 Ennek az oka egy régebbi verziója, amely nem támogatja a többlépcsős Docker futtatása AKS-csomópontok épít. A docker-fájlban többlépcsős buildek elkerülése érdekében újraírási kell.
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>Ismételt futtatásával vezérlő újbóli létrehozása után egy szolgáltatás
+Ez a hiba jelenhet meg, majd újra létrehozza a fürthöz társított Azure-fejlesztési tárolóhelyek vezérlő és eltávolítása után futtassa újra a szolgáltatás megkísérlése során. A részletes kimenet a következőképpen jelenik meg:
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+Ennek oka az, a fejlesztői, szóközök eltávolítására nem távolítja el, hogy a tartományvezérlő által korábban telepített szolgáltatások. A vezérlő újbóli létrehozását, és ezután megpróbálja futtatni a szolgáltatásokat az új vezérlőt használó meghiúsul, mert a régi szolgáltatások helyükön vannak.
+
+Ennek használatához a `kubectl delete` parancs használatával manuálisan a régi szolgáltatások eltávolítása a fürtből, majd futtassa újra a fejlesztési szóközöket a új szolgáltatások telepítése.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
 
@@ -195,6 +211,15 @@ A VS Code-bővítmény nem rendelkezik az Azure fejlesztési szóközöket a fej
 
 ### <a name="try"></a>Próbálja ki:
 Telepítse a [VS Code-bővítmény Azure fejlesztési tárolóhelyek](get-started-netcore.md).
+
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hibakeresés hiba "érvénytelen"cwd"érték" / src ". A rendszer nem találja a megadott fájlt." vagy "indítása: program"/ src / [projekt bináris elérési út]"nem létezik."
+A hiba a VS Code hibakereső futó jelentések `Invalid 'cwd' value '/src'. The system cannot find the file specified.` és/vagy `launch: program '/src/[path to project executable]' does not exist`
+
+### <a name="reason"></a>Ok
+Alapértelmezés szerint a VS Code-bővítménnyel használja `src` , a munkakönyvtárban a projekt a tárolón. Ha már frissítette a `Dockerfile` szeretne megadni egy másik működő könyvtárba, előfordulhat, hogy ezt a hibaüzenetet.
+
+### <a name="try"></a>Próbálja ki:
+Frissítés a `launch.json` fájlt a `.vscode` alkönyvtára a projektmappába. Módosítsa a `configurations->cwd` irányelv könyvtárába átirányítása a `WORKDIR` a projektben meghatározott `Dockerfile`. Szükség lehet frissíteni a `configurations->program` irányelvnek is.
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>A típus vagy névtér nevének "SajátLista" nem található.
 

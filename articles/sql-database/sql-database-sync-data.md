@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 78984cf9f73fd0cdd6e28e20e1d54d5b1198b7be
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687486"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101838"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -69,7 +69,7 @@ Adatok szinkronizálása nem az előnyben részesített megoldás a következő 
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatok szinkronizálása? 
 
--   **Adatok változásainak követése:** Data Sync nyomon követi a módosításokat insert használatával, frissítése és törlése az eseményindítók. A módosítások a felhasználói adatbázisban egy oldali táblában vannak rögzítve.
+-   **Adatok változásainak követése:** Data Sync nyomon követi a módosításokat insert használatával, frissítése és törlése az eseményindítók. A módosítások a felhasználói adatbázisban egy oldali táblában vannak rögzítve. Vegye figyelembe, hogy a TÖMEGES Beszúrás nem triggereket alapértelmezés. Ha FIRE_TRIGGERS nincs megadva, nincs insert eseményindítók hajtható végre. Adja hozzá a FIRE_TRIGGERS lehetőség, hogy a Data Sync ezeket beillesztések nyomon követheti. 
 
 -   **Adatok szinkronizálása:** Data Sync célja egy küllős modellben. A Hub külön-külön szinkronizál minden tagja. A központi menü módosításokat a rendszer letölti a tag, és majd a tag program feltölti a hubhoz.
 

@@ -1,6 +1,7 @@
 ---
-title: What's new in Azure Machine Learning
-description: Ez a dokumentum ismerteti az Azure Machine Learning frissítései.
+title: Újdonságok
+titleSuffix: Azure Machine Learning service
+description: Ismerje meg az Azure Machine Learning szolgáltatást a legújabb frissítéseket.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +10,13 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
-ms.openlocfilehash: 1ee28638ed68b40672143f10c4373e287a370e2d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: ea9f8e07b627b7f3554e390063d61ef984f30dad
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868106"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105138"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 

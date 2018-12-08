@@ -1,5 +1,5 @@
 ---
-title: Automatikus üzembe Azure IoT Edge-eszköz-DPS – Windows |} A Microsoft Docs
+title: Automatikus üzembe Windows-eszközök Azure IoT Edge - a DPS |} A Microsoft Docs
 description: Szimulált eszköz használata a Windows-gépen teszteléséhez automatikus eszközkiépítés az Azure IoT Edge Device Provisioning Service szolgáltatással
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9be790d9b512dc9338cf183240430ad0ada3bef4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565105"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101602"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>A Windows egy szimulált TPM Edge-eszköz létrehozása és kiépítése
 

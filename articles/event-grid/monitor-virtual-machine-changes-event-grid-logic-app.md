@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957926"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106073"
 ---
-# <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása
 
 Az Azure-beli vagy külső erőforrásokban bekövetkező adott események esetén elindíthat automatizált [logikaialkalmazás-munkafolyamatokat](../logic-apps/logic-apps-overview.md). Ezek az erőforrások közzétehetik az eseményeket az [Azure Event Griden](../event-grid/overview.md). Az eseményrács ezután leküldi az eseményeket a végpontként üzenetsorokkal, webhookokkal vagy [eseményközpontokkal](../event-hubs/event-hubs-what-is-event-hubs.md) rendelkező feliratkozókra. Feliratkozóként logikai alkalmazása fogadhatja az eseményeket az eseményrácsról, és azok alapján automatizált munkafolyamatokat hajthat végre – mindehhez nem szükséges programkódot írnia.
 
@@ -159,7 +159,7 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    ![Művelet hozzáadása a feltétel igaz értéke esetére](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-condition-2.png)
 
-2. A keresőmezőbe írja be szűrőként az „e-mail” kifejezést. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Például: 
+2. A keresőmezőbe írja be szűrőként az „e-mail” kifejezést. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Példa: 
 
    * Azure munkahelyi vagy iskolai fiókok esetében válassza az Office 365 Outlook-összekötőt. 
    * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt. 
@@ -210,7 +210,7 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    Például átméretezheti a virtuális gépet az Azure Portalon vagy az [Azure PowerShell használatával](../virtual-machines/windows/resize-vm.md). 
 
-   Pár pillanat múlva egy e-mailt kell kapnia. Például:
+   Pár pillanat múlva egy e-mailt kell kapnia. Példa:
 
    ![A virtuális gép módosításáról tájékoztató e-mail](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 

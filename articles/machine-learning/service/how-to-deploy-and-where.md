@@ -1,5 +1,6 @@
 ---
-title: Az üzembe helyezés modellek Azure Machine Learning szolgáltatással |} A Microsoft Docs
+title: A modellek üzembe helyezési helyének kiválasztása
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg a különböző lehetőségeket a modellek üzembe helyezhető éles környezetben az Azure Machine Learning szolgáltatás használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -9,37 +10,165 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/29/2018
-ms.openlocfilehash: 97ac405db3de4fa2c6f1173f813eafd41a5361ad
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 53f3c61a98bc08b453ae894abaa512b94044bcf7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209445"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100701"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
-Az Azure Machine Learning szolgáltatás a betanított modell telepíthet több módszert is biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT edge-eszközök.
+Az Azure Machine Learning szolgáltatás több módszert is telepíthet a betanított modell az SDK-t biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT edge-eszközök.
 
 A következő számítási célnak modellek helyezhető üzembe:
 
-- [Az Azure Container Instances (aci) Szolgáltatásban](#aci): gyors üzembe helyezés. Jó fejlesztési vagy tesztelési célokra.
-- [Az Azure Kubernetes Service (AKS)](#aks): jó nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít.
-- [Az Azure IoT Edge](#iotedge): IoT-eszközök a modellek üzembe helyezése. Következtetési történik az eszközön.
-- [A mező-programmable gate array (FPGA)](#fpga): valós idejű következtetési ultraalacsony késése.
+| Számítási célt | Üzemelő példány típusa | Leírás |
+| ----- | ----- | ----- |
+| [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Webszolgáltatás | Gyors üzembe helyezés. Jó fejlesztési vagy tesztelési célokra. |
+| [Az Azure Kubernetes Service (AKS)](#aks) | Webszolgáltatás | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
+| [Azure IoT Edge](#iotedge) | IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
+| [A mező-programmable gate array (FPGA)](#fpga) | Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
 
-Ez a dokumentum többi része ezen lehetőségek részletesen ismerteti.
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a id="aci"></a>Az Azure Container Instances szolgáltatásban
+- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [Azure Machine Learning a rövid útmutató – első lépések](quickstart-get-started.md).
 
-A modellek telepítéséről, egy REST API-végpont, ha egy vagy több az alábbi feltételek használata Azure Container Instances szolgáltatásban teljesül:
+- Mindkét pickle a betanított modell (`.pkl`) vagy az ONNX (`.onnx`) formátumban. Ha nem rendelkezik a betanított modell, kövesse a [modelleket taníthat be a](tutorial-train-models-with-aml.md) oktatóanyag betanítására és regisztrálhat egy, az Azure Machine Learning szolgáltatással.
+
+- A kód szakaszok feltételeztük, hogy `ws` hivatkozik a machine learning-munkaterület. Például: `ws = Workspace.from_config()`.
+
+## <a name="deployment-workflow"></a>Telepítési munkafolyamat
+
+A modell üzembe helyezését a minden számítási célokhoz hasonlít:
+
+1. A modell betanításához.
+1. Regisztrálja a modellt.
+1. Hozzon létre egy rendszerképet konfigurációt.
+1. Hozza létre a rendszerképet.
+1. A rendszerkép üzembe helyezése számítási célt.
+1. Az üzemelő példány tesztelése
+1. (Nem kötelező) A törlés összetevőket.
+
+    * Amikor **webszolgáltatásként üzembe helyezése**, három üzembe helyezési lehetőség áll rendelkezésre:
+
+        * [üzembe helyezése](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Ez a módszer használata esetén nem kell regisztrálja a modellt, vagy a kép létrehozásához. Azonban Ön nem határozhatja meg a modell vagy a kép neve vagy hozzárendelt címkék és leírások.
+        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Ez a módszer használata esetén nem kell hozzon létre egy rendszerképet. De nem rendelkezik a létrehozott lemezkép neve felett.
+        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): regisztrálja a modellt, és ez a módszer használata előtt hozzon létre egy rendszerképet.
+
+        A példák a jelen dokumentum-használat `deploy_from_image`.
+
+    * Amikor **, IoT Edge-modul üzembe helyezése**, regisztrálja a modellt és a lemezkép létrehozásának kell.
+
+## <a name="register-a-model"></a>Regisztrálja a modellt
+
+Csak a betanított modellek is üzembe helyezhetők. A modell Azure Machine Learning, vagy egy másik szolgáltatás használatával kell betanítani. A modell fájlból regisztrálásához használja a következő kódot:
+
+```python
+from azureml.core.model import Model
+
+model = Model.register(model_path = "model.pkl",
+                       model_name = "Mymodel",
+                       tags = ["0.1"],
+                       description = "test",
+                       workspace = ws)
+```
+
+> [!NOTE]
+> A példa bemutatja, hogy egy modell pickle-fájlként tárolja, amíg is használt ONNX-modellekkel. ONNX-modellekkel használatával kapcsolatos további információkért lásd: a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
+
+További információkért lásd: a dokumentáció a a [Model class](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+
+## <a id="configureimage"></a> Egy rendszerkép-konfiguráció létrehozása
+
+Üzembe helyezett modellnél képként vannak csomagolva. A rendszerkép tartalmazza a minta futtatásához szükséges függőségeket.
+
+A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a `azureml.core.image.ContainerImage` osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet. 
+
+A következő kód bemutatja, hogyan hozhat létre egy új rendszerkép-konfiguráció:
+
+```python
+from azureml.core.image import ContainerImage
+
+# Image configuration
+image_config = ContainerImage.image_configuration(execution_script = "score.py",
+                                                 runtime = "python",
+                                                 conda_file = "myenv.yml",
+                                                 description = "Image with ridge regression model",
+                                                 tags = {"data": "diabetes", "type": "regression"}
+                                                 )
+```
+
+Ebben a konfigurációban egy `score.py` át fájlt kéri, hogy a modell. Ez a fájl két függvényt tartalmazza:
+
+* `init()`: Ez a függvény általában a modell tölt be egy globális objektum. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
+
+* `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. A futtatás bemenetei és kimenetei általában JSON-fájlokat használnak a szerializáláshoz vagy a deszerializáláshoz, de más formátumokat is támogatnak.
+
+Példa `score.py` fájlt, tekintse meg a [kép besorolási oktatóanyag](tutorial-deploy-models-with-aml.md#make-script). Például, hogy az ONNX-modellt használja, tekintse meg a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
+
+A `conda_file` paraméterrel adja meg a conda-környezet fájlt. Ez a fájl a conda-környezet üzembe helyezett modell határozza meg. Ez a fájl létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy környezetben fájlt (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file).
+
+További információkért lásd: a dokumentáció a [ContainerImage osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
+
+## <a id="createimage"></a> A lemezkép létrehozása
+
+Miután létrehozta a rendszerkép-konfiguráció, a lemezképek létrehozására használhatja. Ez a rendszerkép a tárolójegyzékbe a munkaterület tárolja. Létrehozása után telepítheti a ugyanazt a lemezképet több szolgáltatásra.
+
+```python
+# Create the image from the image configuration
+image = ContainerImage.create(name = "myimage", 
+                              models = [model], #this is the model object
+                              image_config = image_config,
+                              workspace = ws
+                              )
+```
+
+**Becsült időtartam**: körülbelül 3 perc alatt.
+
+Képek egyben a rendszerverzióval ellátott ugyanazzal a névvel több lemezképet is regisztrálhatja. Például az első képen regisztrált `myimage` hozzá van rendelve egy azonosítója `myimage:1`. A következő alkalommal regisztrál egy képen `myimage`, az azonosítója, az új lemezkép `myimage:2`.
+
+Lemezkép létrehozása körülbelül 5 percet vesz igénybe.
+
+További információkért lásd: a dokumentáció a [ContainerImage osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
+
+## <a name="deploy-the-image"></a>A rendszerkép üzembe helyezése
+
+Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak függően némileg eltérnek. Az alábbi szakaszokban található információk segítségével megtudhatja, hogyan helyezhet üzembe:
+
+* [Azure Container Instances](#aci)
+* [Az Azure Kubernetes-szolgáltatás](#aks)
+* [Project Brainwave (mező-programmable gate arrays)](#fpga)
+* [Az Azure IoT Edge-eszközök](#iot)
+
+### <a id="aci"></a> Az Azure Container Instances szolgáltatásban való üzembe helyezése
+
+A modellek üzembe helyezéséhez a egy webszolgáltatás, ha egy vagy több, a következő feltételek használata Azure Container Instances szolgáltatásban teljesül:
+
 - Gyors üzembe helyezése és a modell érvényesítése kell. ACI üzembe helyezés befejeződött, kevesebb mint 5 perc alatt.
-- A találatokat helyezi üzembe a modellt fejlesztési vagy tesztelési környezetben. ACI-előfizetésenként 20 tárolócsoportok üzembe teszi lehetővé. További információkért lásd: a [kvóták és régiók rendelkezésre állása az Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentumot.
+- A tesztelt egy olyan modell, fejlesztés alatt áll. ACI-előfizetésenként 20 tárolócsoportok üzembe teszi lehetővé. További információkért lásd: a [kvóták és régiók rendelkezésre állása az Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentumot.
 
-További információkért lásd: a [modell üzembe helyezése az Azure Container Instances](how-to-deploy-to-aci.md) dokumentumot.
+Azure Container Instancesben való üzembe helyezéséhez használja az alábbi lépéseket:
 
-## <a id="aks"></a>Az Azure Kubernetes Service
+1. Adja meg a telepítési konfigurációt. Az alábbi példa meghatározza egy processzormaggal és 1 GB memóriát használó konfiguráció:
 
-A nagy léptékű termelési forgatókönyvekhez használja az Azure Kubernetes Service (AKS). Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=configAci)]
+
+2. A létrehozott rendszerképének üzembe helyezéséhez a [a lemezkép létrehozásának](#createimage) szakasz ebben a dokumentumban a következő kód használatával:
+
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
+
+    **Becsült időtartam**: körülbelül 3 perc alatt.
+
+    > [!TIP]
+    > Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+
+További információkért lásd: a dokumentáció a a [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.comS/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) osztályokat.
+
+### <a id="aks"></a> Az Azure Kubernetes Service üzembe helyezése
+
+Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
 
 AKS-fürt létrehozása az egy folyamatot, amikor a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
 
@@ -50,34 +179,153 @@ Az Azure Kubernetes Service az alábbi képességeket biztosítja:
 * A modelladatok gyűjtésének
 * A webes szolgáltatások gyors válaszidők
 
-AKS-fürt létrehozása nagyjából 20 percet vesz igénybe.
+Azure Kubernetes Service-ben való üzembe helyezéséhez használja az alábbi lépéseket:
 
-További információkért lásd: a [modell üzembe helyezése az Azure Kubernetes Service](how-to-deploy-to-aks.md) dokumentumot.
+1. AKS-fürt létrehozásához használja a következő kódot:
 
-## <a id="iotedge"></a>Az Azure IoT Edge
+    > [!IMPORTANT]
+    > Az AKS-fürtöt hoz létre a rendszer egy folyamatot, amikor a munkaterülethez. Létrehozása után újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
 
-Az IoT-eszközök azt az gyorsabban szükséges pontozáshoz elvégzendő műveleteken pontozó a felhőbe történő adatküldés helyett az eszközön. Az Azure IoT Edge segítségével a modell a peremhálózati eszközökön is üzemeltethet. A modell üzembe helyezése IoT Edge-ben Ha egy vagy több, a következő funkciók van szüksége:
-- Felhőalapú kapcsolat nélkül is helyileg, a feladatok prioritása kezeléséhez
-- A létrehozott adatok a felhőben gyorsan lekéréshez túl nagy
-- Engedélyezze a keresztül intelligencia a és a helyi eszközök közel valós idejű feldolgozás
-- Adatvédelemmel kapcsolatos követelmények adatok befogadásához 
+    ```python
+    from azureml.core.compute import AksCompute, ComputeTarget
 
-További információkért lásd: a [üzembe helyezés az Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning) dokumentumot.
+    # Use the default configuration (you can also provide parameters to customize this)
+    prov_config = AksCompute.provisioning_configuration()
 
-Az IoT Edge szolgáltatás további információkért lásd: a [Azure IoT Edge dokumentációja](https://docs.microsoft.com/azure/iot-edge/).
+    aks_name = 'aml-aks-1' 
+    # Create the cluster
+    aks_target = ComputeTarget.create(workspace = ws, 
+                                        name = aks_name, 
+                                        provisioning_configuration = prov_config)
 
+    # Wait for the create process to complete
+    aks_target.wait_for_completion(show_output = True)
+    print(aks_target.provisioning_state)
+    print(aks_target.provisioning_errors)
+    ```
 
-## <a id="fpga"></a>A mező-programmable gate arrays (FPGA)
+    **Becsült időtartam**: körülbelül 20 percet.
 
-Hardver gyorsított modellek segítségével Project Brainwave ultramagas közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik. Project Brainwave gyorsítja Neurális hálózatok (DNN) mező-programmable gate arrays az Azure-felhőben üzembe helyezett. Leggyakrabban használt dnn-eket egyaránt elérhetők a tanulással featurizers, vagy saját adatai testre szabható a súlyok betanított.
+    > [!TIP]
+    > Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. *, használhatja a rendszerképének üzembe helyezéséhez. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő fürthöz a munkaterülethez mutat be:
+    >
+    > ```python
+    > # Set the resource group that contains the AKS cluster and the cluster name
+    > resource_group = 'myresourcegroup'
+    > cluster_name = 'mycluster'
+    > 
+    > # Attatch the cluster to your workgroup
+    > attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+    >                                          cluster_name = cluster_name)
+    > compute = ComputeTarget.attach(ws, 'mycompute', attach_config)
+    > 
+    > # Wait for the operation to complete
+    > aks_target.wait_for_completion(True)
+    > ```
 
-További információkért lásd: a [üzembe helyezés az egy FPGA](how-to-deploy-fpga-web-service.md) dokumentumot.
+2. A létrehozott rendszerképének üzembe helyezéséhez a [a lemezkép létrehozásának](#createimage) szakasz ebben a dokumentumban a következő kód használatával:
+
+    ```python
+    from azureml.core.webservice import Webservice, AksWebservice
+
+    # Set configuration and service name
+    aks_config = AksWebservice.deploy_configuration()
+    aks_service_name ='aks-service-1'
+    # Deploy from image
+    service = Webservice.deploy_from_image(workspace = ws, 
+                                                name = aks_service_name,
+                                                image = image,
+                                                deployment_config = aks_config,
+                                                deployment_target = aks_target)
+    # Wait for the deployment to complete
+    service.wait_for_deployment(show_output = True)
+    print(service.state)
+    ```
+
+    > [!TIP]
+    > Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+
+További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) osztályokat.
+
+### <a id="fpga"></a> A mező-programmable gate arrays (FPGA) üzembe helyezése
+
+Project Brainwave ultramagas közel valós idejű következtetési kérelmek elérése érdekében lehetővé teszi. Project Brainwave gyorsítja Neurális hálózatok (DNN) mező-programmable gate arrays az Azure-felhőben üzembe helyezett. Leggyakrabban használt dnn-eket egyaránt elérhetők a tanulással featurizers, vagy saját adatai testre szabható a súlyok betanított.
+
+A Project Brainwave használatával üzembe helyezéséhez, olvassa az [üzembe helyezés az egy FPGA](how-to-deploy-fpga-web-service.md) dokumentumot.
+
+### <a id="iotedge"></a> Az Azure IoT Edge üzembe helyezése
+
+Az Azure IoT Edge-eszköz, Linux vagy Windows-alapú eszköz, amely az Azure IoT Edge-futtatókörnyezet. Machine learning-modellek IoT Edge-modulok ezekre az eszközökre telepíthető. Az IoT Edge-eszköz üzembe helyezéséhez lehetővé teszi, hogy az eszköz a modell használatának közvetlenül, ahelyett, hogy adatokat küldeni a felhőbe feldolgozásra. Gyorsabb válaszidőt és alacsonyabb az adatforgalom kap.
+
+A tárolóregisztrációs adatbázisból az Azure IoT Edge-modulok az eszközre vannak telepítve. Kép a modellből származó létrehozásakor tárolódik a tároló-beállításjegyzékbe a munkaterület.
+
+A következő lépéseket követve az Azure Machine Learning szolgáltatás munkaterület a tároló a tárolójegyzék hitelesítő adatainak lekérése:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index).
+
+1. Nyissa meg az Azure Machine Learning szolgáltatás munkaterületet, és válassza ki __áttekintése__. Nyissa meg a tároló beállításjegyzék-beállításokat, jelölje be a __beállításjegyzék__ hivatkozásra.
+
+    ![A tároló beállításjegyzék-bejegyzés képe](./media/how-to-deploy-and-where/findregisteredcontainer.png)
+
+1. Egyszer a container registry esetében válassza **Tárelérési kulcsok** , majd engedélyezze a rendszergazdai felhasználót.
+
+    ![A hozzáférési kulcsok képernyő képe](./media/how-to-deploy-and-where/findaccesskey.png)
+
+1. Mentse az értékeket a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**. 
+
+Ha a hitelesítő adatokat, kövesse a [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](../../iot-edge/how-to-deploy-modules-portal.md) a dokumentumot, a lemezkép telepítése az eszközre. Konfigurálásakor a __beállításjegyzék-beállítások__ az eszközhöz, használja a __bejelentkezési kiszolgáló__, __felhasználónév__, és __jelszó__ a munkaterület tárolóregisztrációs adatbázis.
+
+> [!NOTE]
+> Ha még nem ismeri az Azure IoT, a szolgáltatás első lépésekről lásd: a következő dokumentumokban talál:
+>
+> * [Gyors útmutató: Linux rendszerű eszközre telepítéséhez az első IoT Edge-modul](../../iot-edge/quickstart-linux.md)
+> * [Rövid útmutató: Az első IoT Edge-modul a Windows-eszköz üzembe helyezése](../../iot-edge/quickstart.md)
+
+## <a name="testing-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
+
+A webszolgáltatás üzembe teszteléséhez használhatja a `run` webszolgáltatás metódusa. A következő példában egy JSON-dokumentumok értéke egy webszolgáltatás, és az eredmény jelenik meg. Az elküldött adatok egyeznie kell a modellt vár. Ebben a példában az adatok formátuma megfelel-e a bemeneti a küzdő modell által várt.
+
+```python
+import json
+
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10], 
+    [10,9,8,7,6,5,4,3,2,1]
+]})
+test_sample = bytes(test_sample,encoding = 'utf8')
+
+prediction = service.run(input_data = test_sample)
+print(prediction)
+```
+
+## <a name="update-the-web-service"></a>A web service frissítése
+
+A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
+
+```python
+from azureml.core.webservice import Webservice
+
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
+# Update the image used by the service
+service.update(image = new-image)
+print(service.state)
+```
+
+> [!NOTE]
+> Amikor frissít egy képet, a webszolgáltatás nem frissül automatikusan. Minden egyes szolgáltatás, amely az új lemezképet használni kívánt manuálisan kell frissítenie.
+
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+
+Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
+
+Kép törléséhez használja `image.delete()`.
+
+A regisztrált modell törléséhez használja `model.delete()`.
 
 ## <a name="next-steps"></a>További lépések
 
-Modell üzembe helyezése egy adott számítási célnak vonatkozó további információkért lásd az alábbi dokumentumokat:
-
-* [Modell üzembe helyezése az Azure Container Instances szolgáltatásban](how-to-deploy-to-aci.md)
-* [Modell üzembe helyezése az Azure Kubernetes Service szolgáltatásban](how-to-deploy-to-aks.md)
-* [Modell üzembe helyezése az Azure IoT Edge-ben](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)
-* [Modell üzembe helyezése FPGA](how-to-deploy-fpga-web-service.md)
+* [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
+* [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)
+* [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)

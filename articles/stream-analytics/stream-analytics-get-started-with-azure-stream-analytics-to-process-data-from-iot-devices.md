@@ -2,19 +2,19 @@
 title: IoT valós idejű adatstreamek az Azure Stream Analytics használatával
 description: IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és valós idejű adatfeldolgozással
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 56243be40a4d47f315ff6599ff2d50c83e44afbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b008fe128aa760197c34d8c14c4d3b92cbed2bd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849547"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103166"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
 Ez az oktatóanyag bemutatja, hogyan hozhat létre streamfeldolgozó logikákat, és hogyan gyűjthet velük adatokat az eszközök internetes hálózatára kapcsolódó (IoT-) eszközökről. Egy valódi, az IoT-re épülő gyakorlati esettel fogjuk bemutatni, hogyan hozhat létre egy megoldást gyorsan és gazdaságosan.
@@ -56,35 +56,35 @@ A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató val�
    > 
 4. Jelölje be a négyzetet a feladat irányítópultra való helyezéséhez, majd kattintson a **LÉTREHOZÁS** elemre.
    
-    ![feladat létrehozása folyamatban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
+    ![Stream analytics-feladat létrehozása folyamatban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
 5. A böngészőablak jobb felső sarkában a „Központi telepítés elindítva...” üzenetet kell látnia. Hamarosan a befejezést jelző ablakra vált, az alábbiakban látható módon.
    
-    ![feladat létrehozása folyamatban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
+    ![Stream analytics üzembe helyezés sikeres](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Azure Stream Analytics-lekérdezés létrehozása
 A feladat létrehozása után itt az idő, hogy megnyissa és készítsen egy lekérdezést. A feladatához könnyedén hozzáférhet, ha a csempéjére kattint.
 
-![Feladat csempe](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Stream Analytics-feladat csempe az Azure Portalon](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 A **Feladattopológia** panelben kattintson a **LEKÉRDEZÉS** dobozra, a Lekérdezés szerkesztő megnyitásához. A **LEKÉRDEZÉS** szerkesztőben egy olyan T-SQL-lekérdezést adhat meg, amely végrehajtja az átalakítást a beérkező eseményadatokon.
 
-![Lekérdezésmező](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Stream Analytics lekérdezési irányítópult](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>Lekérdezés: Nyers adatok archiválása
 A lekérdezések legegyszerűbb formája a továbbított lekérdezés, amely a kijelölt kimeneten archiválja az összes bemeneti adatot. Most töltse le a számítógépére a mintaadatfájlokat a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot). 
 
 1. Illessze be a lekérdezést a PassThrough.txt fájlból. 
    
-    ![Teszt bemeneti stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+    ![Lekérdezés illessze a Stream Analytics query-szerkesztő](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 2. Kattintson a három pontra az adatbevitele mellett, majd válassza ki a **Mintaadatok feltöltése** fájlból mezőt.
    
-    ![Teszt bemeneti stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
+    ![Válassza a mintaadatok feltöltése fájlból](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. Ennek eredményeképp egy panel nyílik meg, benne válassza ki a HelloWorldASA-InputStream.json adatfájlt a letöltött helyről és kattintson az **OK** gombra a panel alján.
    
-    ![Teszt bemeneti stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
+    ![Json-mintaadatfájl feltöltéséhez](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
 4. Ezután kattintson a **Teszt** fogaskerékre az ablak bal felső területén, majd dolgozza fel a teszt lekérdezést a minta adathalmazokon. A feldolgozás befejezése után egy eredmények ablak fog megnyílni a lekérdezés alatt.
    
-    ![Teszteredmények](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+    ![A Stream Analytics-lekérdezés eredményei](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Lekérdezés: Adatok szűrése feltétel alapján
 Próbáljuk meg egy feltétel alapján szűrni az eredményeket. Azt szeretnénk, hogy az eredmények között csak a "sensorA." származó események A lekérdezés a Filtering.txt fájlban található.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Edge-modulok (a VS Code) üzembe helyezése |} A Microsoft Docs
+title: A Visual Studio Code - az Azure IoT Edge modulok üzembe helyezése |} A Microsoft Docs
 description: Modulok IoT Edge-eszköz üzembe helyezése a Visual Studio Code használatával
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a7f0fc0c3169aadac78609830dda55ae1ec7ea46
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567843"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100820"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>A Visual Studio Code-ból az Azure IoT Edge-modulok telepítése
 
@@ -109,7 +110,7 @@ Használhatja a Visual Studio Code az Azure IoT-bővítmények az IoT hub-művel
 
 2. Az Explorer alján bontsa ki a **Azure IoT Hub-eszközök** szakaszban. 
 
-   ![Bontsa ki az Azure IoT Hub-eszközök](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Az Azure IoT Hub-eszközök a szakaszt kibontva](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
 3. Kattintson a **...**  a a **Azure IoT Hub-eszközök** szakaszcímben. Ha nem látja a három pontra, a kurzort a fejléc. 
 

@@ -1,5 +1,5 @@
 ---
-title: Klónozza a GitHub-Azure-jegyzetfüzetek használata Jupyter notebook |} A Microsoft Docs
+title: Klónozza a GitHub-Azure-jegyzetfüzetek használata Jupyter notebook
 description: Gyorsan klónozza a GitHub-adattárból egy Jupyter notebookot, és futtathatja az Azure-jegyzetfüzet-fiókban.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: f50f9f0d92a535198fa453132eb550775da6cc4a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e30057f773afe6ec625b811c6ca1447c519ceda7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877955"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106328"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Egy jegyzetfüzetet klónozása
 

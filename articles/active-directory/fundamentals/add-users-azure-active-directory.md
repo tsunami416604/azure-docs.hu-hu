@@ -1,6 +1,6 @@
 ---
-title: Hozzáadása vagy törlése az Azure Active Directory felhasználók |} A Microsoft Docs
-description: Ismerje meg, hogyan vehet fel új felhasználókat, vagy törölje a meglévő felhasználók Azure Active Directory használatával.
+title: Hozzáadhat vagy törölhet az Azure Active Directory-felhasználók – |} A Microsoft Docs
+description: Új felhasználók hozzáadása, vagy törli a meglévő felhasználókat az Azure Active Directoryval kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295104"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104679"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Hogyan: hozzáadása vagy törlése az Azure Active Directory használatával felhasználókat
-Új felhasználók hozzáadása, és a meglévő felhasználók törlése az Azure Active Directory (Azure AD) bérlő, az Azure AD.
+# <a name="add-or-delete-users-using-azure-active-directory"></a>Hozzáadhat vagy törölhet a felhasználók Azure Active Directory használatával
+Új felhasználók hozzáadása, és a meglévő felhasználók törlése az Azure Active Directory (Azure AD) bérlő.
 
 ## <a name="add-a-new-user"></a>Új felhasználó hozzáadása
-Létrehozhat egy új felhasználót az Azure Active Directory használatával.
+Létrehozhat egy új felhasználót az Azure Active Directory portál használatával.
 
 ### <a name="to-add-a-new-user"></a>Új felhasználó hozzáadása
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) globális rendszergazdai vagy a címtár felhasználói rendszergazdaként.
@@ -58,10 +58,10 @@ Létrehozhat egy új felhasználót az Azure Active Directory használatával.
 Ha rendelkezik Azure Active Directory (felhő) és a Windows Server Active Directory (helyszíni) tartalmazó környezet, hozzáadhat új felhasználókat való szinkronizálásával a meglévő felhasználói fiók adatait. Hibrid környezetek és a felhasználók kapcsolatos további információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Felhasználó törlése
-Egy meglévő felhasználó Azure Active Directory használatával törölheti.
+Egy meglévő felhasználó Azure Active Directory portálon törölheti.
 
 ### <a name="to-delete-a-user"></a>Felhasználó törlése
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, és keressen rá, és válassza ki a felhasználót az Azure AD-bérlőjéből törölni szeretné. Ha például _Mary Parker_.
 

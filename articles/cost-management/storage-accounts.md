@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: f7092a08e501ae61ef93be383290db575b5ad1f1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995576"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100854"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Storage-fiókok konfigurálása a Cloudynben
 
@@ -35,18 +35,18 @@ Ha nem rendelkezik egy AWS simple storage service (S3) gyűjtőbe, akkor meg kel
 
 Konfigurálása, hogy a Cloudyn által használható az Azure storage nagyon egyszerű. Gyűjtse össze a tárfiók részleteit, és másolja őket a Cloudyn portálon.
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 2. Kattintson a **minden szolgáltatás**válassza **tárfiókok**, görgessen lefelé a storage-fiókot, amelyet szeretne használni, és válassza ki azt a fiókot.
 3. Az a storage-fiók oldalon alatt **beállítások**, kattintson a **Tárelérési kulcsok**.
 4. Másolás a **tárfióknevet** és **kapcsolati karakterlánc** key1 alatt.  
-![Az Azure storage hozzáférési kulcsok](./media/storage-accounts/azure-storage-access-keys.png)  
+![Másolja ki a tárfiók nevét és kapcsolati sztringje](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com webhelyre, és jelentkezzen be.
 6. Kattintson a fogaskerék szimbólumra, majd **jelentések tárolókezelési**.
 7. Kattintson a **új hozzáadása +** , és győződjön meg arról, hogy a Microsoft Azure van kiválasztva. Illessze be az Azure storage-fiók neve az a **neve** területen. Illessze be a **kapcsolati karakterlánc** a megfelelő területen. Adja meg a tároló nevét, és kattintson a **mentése**.  
-![A Cloudyn tárolási kapacitással, az Azure-hoz](./media/storage-accounts/azure-cloudyn-storage.png)
+![Illessze be az Azure storage-fiók nevét és kapcsolati karakterlánc hozzáadása egy új jelentés storage használata](./media/storage-accounts/azure-cloudyn-storage.png)
 
   Az új jelentés az Azure storage bejegyzés jelenik meg a storage-fiók listában.  
-    ![Új jelentés az Azure storage a listában](./media/storage-accounts/azure-storage-entry.png)
+    ![Új jelentés az Azure storage bejegyzést listában](./media/storage-accounts/azure-storage-entry.png)
 
 
 Jelentések az Azure-tárolóba mentheti. Az jelentésekben, kattintson a **műveletek** majd **jelentés ütemezése**. Jelentés elnevezése majd saját URL-címet, vagy használja az automatikusan létrehozott URL-címet. Válassza ki **Storage mentése** , és válassza ki a tárfiókot. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a CSV vagy JSON-fájl formátuma, és mentse a jelentést.
@@ -67,7 +67,7 @@ Amikor létrehoz egy új szabályzatot, meg kell adnia egy S3 gyűjtőt mentés�
 4. Kattintson a **JSON** fülre.
 5. A következő szabályzatot lehetővé teszi, hogy egy S3 gyűjtőt mentéséhez. Másolja és illessze be az alábbi házirend példát a **JSON** fülre. Cserélje le &lt;bucketname&gt; a gyűjtő nevére.
 
-  ```
+  ```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -86,7 +86,7 @@ Amikor létrehoz egy új szabályzatot, meg kell adnia egy S3 gyűjtőt mentés�
 ```
 
 6. Kattintson a **szabályzat áttekintése**.  
-    ![Szabályzat áttekintése](./media/storage-accounts/aws-policy.png)  
+    ![Példa információkat megjelenítő AWS JSON-házirend](./media/storage-accounts/aws-policy.png)  
 7. A szabályzat áttekintése lapon írja be a házirend nevét. Ha például _CloudynSaveReport2S3_.
 8. Kattintson a **hozzon létre házirendet**.
 
@@ -102,7 +102,7 @@ Csatlakoztassa az új házirend, az AWS konzolon nyissa meg, és szerkessze a Cl
   1. Kattintson a Cloudyn-szerepkör nevét.
   2. Az a **engedélyek** lapra, majd **szabályzat csatolása**.
   3. Keresse meg a létrehozott szabályzatot, és válassza ki, majd kattintson **szabályzat csatolása**.
-    ![AWS – szabályzat szerepkör csatolása](./media/storage-accounts/aws-attach-policy-role.png)
+    ![A Cloudyn szerepkör csatolt példa házirend](./media/storage-accounts/aws-attach-policy-role.png)
 
 **A felhasználók számára:**
 
@@ -111,7 +111,7 @@ Csatlakoztassa az új házirend, az AWS konzolon nyissa meg, és szerkessze a Cl
 3. Az a **engedély megadása a** szakaszban jelölje be **a meglévő szabályzatok közvetlen csatolása**.
 4. Keresse meg a létrehozott szabályzatot, és válassza ki, majd kattintson **tovább: tekintse át**.
 5. Kattintson a szerepkör neve lap Hozzáadás engedélyekkel, **engedélyek hozzáadása**.  
-    ![AWS – felhasználó szabályzatának csatolása](./media/storage-accounts/aws-attach-policy-user.png)
+    ![A Cloudyn felhasználói csatolt példa házirend](./media/storage-accounts/aws-attach-policy-user.png)
 
 
 ### <a name="optional-set-permission-with-bucket-policy"></a>Választható lehetőség: Engedély beállítása a bucket szabályzat
@@ -152,11 +152,11 @@ Jelentéseket hozhat létre, a gyűjtő házirend segítségével S3 gyűjtő sz
 2. Kattintson a fogaskerék szimbólumra, majd **jelentések tárolókezelési**.
 3. Kattintson a **új hozzáadása +** , és győződjön meg arról, hogy az AWS van kiválasztva.
 4. Válassza ki egy fiókot és a storage gyűjtőbe. Az AWS-tároló gyűjtőbe neve automatikusan kitöltve jelennek.  
-    ![Az AWS gyűjtők jelentés tároló hozzáadása](./media/storage-accounts/aws-cloudyn-storage.png)  
+    ![Példa-információk hozzáadása egy új jelentés storage használata](./media/storage-accounts/aws-cloudyn-storage.png)  
 5. Kattintson a **mentése** majd **Ok**.
 
     Az új AWS jelentés tárolási bejegyzés jelenik meg a storage-fiókok listájának.  
-    ![Új AWS jelentés tárolót a listában](./media/storage-accounts/aws-storage-entry.png)
+    ![Új AWS jelentés tárolási bejegyzés megjelenítése a storage-fiók listája](./media/storage-accounts/aws-storage-entry.png)
 
 
 Jelentések az Azure-tárolóba mentheti. Az jelentésekben, kattintson a **műveletek** majd **jelentés ütemezése**. Jelentés elnevezése majd saját URL-címet, vagy használja az automatikusan létrehozott URL-címet. Válassza ki **Storage mentése** , és válassza ki a tárfiókot. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a CSV vagy JSON-fájl formátuma, és mentse a jelentést.

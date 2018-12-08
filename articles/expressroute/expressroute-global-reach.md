@@ -1,19 +1,19 @@
 ---
-title: Az ExpressRoute globális elérhetőséggel kapcsolatos |} A Microsoft Docs
-description: Ez a cikk leírja, mi az az ExpressRoute globális elérhetőségű.
-documentationcenter: na
+title: A helyszíni hálózatok csatlakoztatása a Microsoft Cloud globális elérhetőségű – Azure ExpressRoute használatával |} A Microsoft Docs
+description: Ez a cikk bemutatja az ExpressRoute globális elérhetőségű.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 23f3d2c4a53e05d962fdc7da72b336cc66f21306
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683066"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105452"
 ---
 # <a name="expressroute-global-reach-preview"></a>Globális elérhetőség az ExpressRoute (előzetes verzió)
 Az ExpressRoute egy magán- és rugalmas módja a helyszíni hálózatok csatlakoztatása a Microsoft Cloud. Számos Microsoft felhőszolgáltatások, például Azure, Office 365 és Dynamics 365 elérését a saját adatközpontban vagy a vállalati hálózathoz. Például előfordulhat, hogy rendelkezik egy fiókirodában, a San franciscóban az ExpressRoute-kapcsolatcsoport szilícium-völgy és a egy másik fiókiroda londoni az ExpressRoute-kapcsolatcsoport város. Mindkét fiókirodák lehet nagy sebességű kapcsolat az USA nyugati régiója, Egyesült Királyság déli régiója és az Azure-erőforrások. Azonban a fiókirodák közvetlenül egymással adatok nem váltanak. Más szóval 10.0.1.0/24 küldhet adatokat, 10.0.3.0/24 és 10.0.4.0/24, de nem 10.0.2.0/24.

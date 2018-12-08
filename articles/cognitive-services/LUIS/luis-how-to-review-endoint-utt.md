@@ -1,23 +1,24 @@
 ---
-title: Tekintse át a végpont utterances a Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Tekintse át a felhasználói kimondott szöveg
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS áttörést jelentő funkció az aktív tanulás fogalmát. Miután a LUIS végpont lekérdezések rendelkezik, aktív tanulás növeli az eredmények minőségének választja ki, hogy pontosan kimondott szöveg. Ha ezek a kimondott szöveg, betanítását és közzététele, majd a LUIS pontosabb azonosítja a kimondott szöveg.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7175463001eac118d2939d3479e61a01b80ba86b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030795"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106549"
 ---
-# <a name="review-endpoint-utterances"></a>A végpont beszédmódjainak áttekintése
+# <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>A LUIS-portál végpontja utterances felülvizsgálata
 
 A LUIS átütő jellemzője a [fogalom](luis-concept-review-endpoint-utterances.md) , aktív tanulás. Miután a LUIS végpont lekérdezéseket tartalmaz, a LUIS használja aktív tanulás az eredmények minőségének javítása érdekében. Az aktív tanulás folyamatban LUIS megvizsgálja az összes endpoint megcímkézzen, és kiválasztja, hogy pontosan kimondott szöveg. Ha ezek a kimondott szöveg, betanítását és közzététele, majd a LUIS pontosabb azonosítja a kimondott szöveg. 
 

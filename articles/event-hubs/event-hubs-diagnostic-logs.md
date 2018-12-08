@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs – diagnosztikai naplók |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be a diagnosztikai naplók az event hubs az Azure-ban.
+title: Állítsa be a diagnosztikai naplók – Azure Event Hubs |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be a tevékenységnaplókat, és az event hubs az Azure-beli diagnosztikai naplók.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/02/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c0c8740648ad845b58ff0578607f4b5e9c235166
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985166"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105478"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Állítsa be az Azure event hub diagnosztikai naplók
 

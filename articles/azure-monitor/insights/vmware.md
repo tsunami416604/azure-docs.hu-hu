@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 383b73d335c8993aa99109c7430d2292a3bfea4a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c451482f0aa9c2e6c0a15ab048885920889a2708
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836440"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106396"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -42,7 +42,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 a vSphere ESXi-gazdagép egy 5.5-ös, 6.0-s és 6.5-ös
 
 #### <a name="prepare-a-linux-server"></a>Egy Linux-kiszolgáló előkészítése
-Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
+Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 

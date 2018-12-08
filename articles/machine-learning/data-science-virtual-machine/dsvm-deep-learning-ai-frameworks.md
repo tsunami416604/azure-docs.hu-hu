@@ -1,11 +1,12 @@
 ---
 title: Mély tanulás és Mesterségesintelligencia-keretrendszerek – Azure |} A Microsoft Docs
-description: Mély tanulás és mesterségesintelligencia-keretrendszerek
+description: Ismerje meg a deep learning-keretrendszerek és eszközök támogatott a Data Science virtuális gépen.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: fbe3aeac3918142388edfa8cd053badd362d7fd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5bf9a0e9cbbcf2a4144255ac0bfbd4bd48e956c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241922"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104465"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatelemző virtuális gép](https://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](https://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding. 

@@ -1,20 +1,22 @@
 ---
-title: Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek |} A Microsoft Docs
+title: A függelék – az IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
 description: 'Ez a cikk a függelék: a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.'
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d6e186f25cc69791d939d93d24a37cadb1113353
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614674"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105042"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
+
 Ez a cikk a mellékletet [IaaS virtuális gépekhez az Azure Disk Encryption](azure-security-disk-encryption-overview.md). Ellenőrizze, hogy az Azure Disk Encryption, IaaS virtuális gépek cikkek előbb a környezetet tudni elolvasni. Ez a cikk ismerteti, hogyan készíti elő az előzetes titkosítással VHD-k és egyéb feladatokhoz.
 
 ## <a name="connect-to-your-subscription"></a>Csatlakozás az előfizetéshez
@@ -57,7 +59,7 @@ A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption
 
 ### <a name="bkmk_ConnectCLI"></a> Csatlakozás az előfizetéshez az Azure CLI-vel
 
-1. Jelentkezzen be Azure-ban [az bejelentkezési](/cli/azure/authenticate-azure-cli#interactive-log-in). 
+1. Jelentkezzen be Azure-ban [az bejelentkezési](/cli/azure/authenticate-azure-cli#sign-in-interactively). 
      
      ```azurecli
      az login
@@ -189,7 +191,7 @@ A Windows Server 2008 R2 a következő paranccsal:
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Készítse elő az operációsrendszer-kötet BitLocker segítségével `bdehdcfg`
-Az operációs rendszer partíció tömörítése, és a gép előkészítése a BitLocker, hajtsa végre a [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) szükség esetén:
+Az operációs rendszer partíció tömörítése, és a gép előkészítése a BitLocker, hajtsa végre a [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) szükség esetén:
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -295,23 +297,23 @@ A terjesztési telepítése közben titkosítás konfigurálása a következő l
 
 1. Válassza ki **titkosított kötetek konfigurálni** mikor particionálni a lemezeket.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04 beállítása – titkosított kötetek konfigurálni](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Hozzon létre egy külön rendszerindítási meghajtót, amely nem lesznek titkosítva. A legfelső szintű meghajtójának titkosításához.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Ubuntu 16.04-telepítő – titkosításához, jelölje ki az eszközöket](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Adjon meg egy jelszót. Ez az a jelszót a key vault feltöltött.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04 beállítása – adja meg a jelszót](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Fejezze be a particionálást.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04 beállítása – Befejezés particionálása](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Ha a virtuális gép, és a egy hozzáférési kódot a rendszer kéri, használja a 3. lépésében megadott jelszót.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04 beállítása – adja meg a jelszót a rendszerindító](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. A virtuális gép előkészítése Azure-ban való fel [ezek az utasítások](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nem futnak (a virtuális gép megszüntetése) az utolsó lépés még.
 
@@ -377,7 +379,7 @@ Adja meg a titkosítás működéséhez az Azure-ral a következő lépések vé
 
 7. Most már Ön is a virtuális gép megszüntetéséhez.
 
- ![Ubuntu 16.04-telepítő](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Ubuntu 16.04-telepítő – frissítés-initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Folytassa a következő lépéssel, és töltse fel a VHD-t az Azure-bA.
 
@@ -385,11 +387,11 @@ Adja meg a titkosítás működéséhez az Azure-ral a következő lépések vé
 Konfigurálja a titkosítást a terjesztési telepítése során, tegye a következőket:
 1. Amikor particionálni a lemezeket, válassza ki a **Kötetcsoport titkosítása**, majd írja be a jelszót. Ez az a jelszó a key vault feltöltött lesz.
 
- ![openSUSE, 13.2 beállítása](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE, 13.2 beállítása – Kötetcsoport titkosítása](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Indítsa el a virtuális gép az Ön jelszavát.
 
- ![openSUSE, 13.2 beállítása](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE, 13.2 beállítása – adja meg a jelszót a rendszerindító](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. A virtuális gép előkészítése Azure-ban utasításait követve feltöltése [SLES- vagy opensuse-alapú virtuális gép előkészítése Azure-](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nem futnak (a virtuális gép megszüntetése) az utolsó lépés még.
 
@@ -453,19 +455,19 @@ erre:
 Konfigurálja a titkosítást a terjesztési telepítése során, tegye a következőket:
 1. Válassza ki **az adatok titkosítása** lemezek particionálása esetén.
 
- ![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![CentOS 7 beállítása – telepítési cél](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Győződjön meg arról, hogy **titkosítása** gyökérpartíciót van kiválasztva.
 
- ![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![CentOS 7 beállítása – válassza ki a gyökérpartíciót titkosítása](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Adjon meg egy jelszót. Ez az a feltöltött lesz a kulcstartó hozzáférési kódot.
 
- ![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![CentOS 7 beállítása – adja meg a jelszót](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Ha a virtuális gép, és a egy hozzáférési kódot a rendszer kéri, használja a 3. lépésében megadott jelszót.
 
- ![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7 beállítása – adja meg a jelszót a rendszerindítási](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. A virtuális gép előkészítése Azure-ba való feltöltése, a "CentOS 7.0 +" szakaszban foglaltak szerint [CentOS-alapú virtuális gép előkészítése Azure-](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nem futnak (a virtuális gép megszüntetése) az utolsó lépés még.
 
@@ -526,7 +528,7 @@ erre:
     ```    
 5. Futtassa a "/ usr/sbin/dracut - f - v" az initrd frissíteni.
 
-![CentOS 7 beállítása](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7 telepítő – /usr/sbin/dracut -f - v rendszert futtató](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a> Titkosított virtuális lemezek feltöltése az Azure storage-fiókba
 BitLocker-titkosítást vagy DM-Crypt titkosítás engedélyezése után a helyi titkosított virtuális merevlemez kell feltölteni a tárfiókba.

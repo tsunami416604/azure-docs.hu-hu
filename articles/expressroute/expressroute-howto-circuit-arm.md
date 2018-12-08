@@ -1,18 +1,19 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport: PowerShell: az Azure Resource Manager |} A Microsoft Docs'
-description: Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
+title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport - PowerShell: Azure |} A Microsoft Docs'
+description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257452"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105002"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a PowerShell használatával egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "51257452"
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Ez a cikk ismerteti az Azure ExpressRoute-kapcsolatcsoport létrehozása a PowerShell-parancsmagok és az Azure Resource Manager üzemi modell használatával. Ez a cikk emellett bemutatja, hogyan ellenőrizheti a kapcsolatcsoport állapotát, a frissítés után, vagy törlése és megszüntetése azt.
+Ez a cikk segít a PowerShell-parancsmagok és az Azure Resource Manager üzemi modell használatával egy ExpressRoute-kapcsolatcsoportot létrehozni. Azt is ellenőrizze az állapotát, frissítése, törlése, vagy egy kapcsolatcsoport megszüntetése.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

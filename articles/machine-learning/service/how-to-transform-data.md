@@ -1,5 +1,6 @@
 ---
-title: Adatok átalakítása a segítségével az Azure Machine Learning Data Prep SDK – Python
+title: Alakítsa, és előkészítheti az adatokat a Data Prep Python SDK-val
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg a átalakítása és az Azure Machine Learning Data Prep SDK adattisztítást. Átalakítás módszerekkel oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,13 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 652392f869ed3c064e7a3899b74848e223ee6472
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c734605cd67fcd2490aef0ddc6732dad112424b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880233"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101789"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
@@ -349,7 +351,7 @@ dataflow.head(5)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|None|None|None|None|None|None|None|None|None|None|None|None|None|
+|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
 |1|2013-08-01-08:14:37|2013-08-01-09:09:06|N|1|0|0|0|0|1|.00|0|0|21,25|
 |2|2013-08-01-09:13:00|2013-08-01 11:38:00|N|1|0|0|0|0|2|.00|0|0|75|
 |3|2013-08-01-09:48:00|2013-08-01-09:49:00|N|5|0|0|0|0|1|.00|0|1|2.1|
@@ -370,7 +372,7 @@ dataflow.head(5)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|0|None|None|None|None|None|None|None|None|None|None|None|
+|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
 |1|2013-08-01-08:14:37|2013-08-01-09:09:06|0|0|0|0|1|.00|0|0|21,25|
 |2|2013-08-01-09:13:00|2013-08-01 11:38:00|0|0|0|0|2|.00|0|0|75|
 |3|2013-08-01-09:48:00|2013-08-01-09:49:00|0|0|0|0|1|.00|0|1|2.1|
@@ -387,7 +389,7 @@ dataflow.head(5)
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
-|0|None|None|None|None|None|None|None|
+|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
 |1|2013-08-01-08:14:37|2013-08-01-09:09:06|1|.00|0|0|21,25|
 |2|2013-08-01-09:13:00|2013-08-01 11:38:00|2|.00|0|0|75|
 |3|2013-08-01-09:48:00|2013-08-01-09:49:00|1|.00|0|1|2.1|

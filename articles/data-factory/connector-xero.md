@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d9ee9a73f4e88786ca51fe9fac50ce51e25b4dde
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02bd85e8502af5e479d052f08276b08bb734d855
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123368"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103575"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Xero
 
@@ -92,7 +92,12 @@ A .pem-fájlt a Unix sor endings(\n) többek között az összes szöveget is.
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Xero-adathalmaz által támogatott tulajdonságok listáját tartalmazza.
 
-Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **XeroObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -104,7 +109,8 @@ Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObje
         "linkedServiceName": {
             "referenceName": "<Xero linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -120,7 +126,7 @@ Adatok másolása a Xero, állítsa be a forrás típusaként a másolási tevé
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **XeroSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Contacts"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Contacts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

@@ -1,19 +1,19 @@
 ---
-title: 'Párhuzamosan fennálló ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása: PowerShell: Azure |} A Microsoft Docs'
-description: Ez a cikk bemutatja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modell konfigurálását
+title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – a párhuzamos telephelyközi: PowerShell: Azure |} A Microsoft Docs'
+description: Konfigurálja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modellben.
 services: expressroute
 author: charwen
-manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243811"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104033"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell-lel ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -21,6 +21,9 @@ ms.locfileid: "51243811"
 > * [PowerShell – Klasszikus](expressroute-howto-coexist-classic.md)
 > 
 > 
+
+
+Ez a cikk segít fennálló ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. Site-to-Site VPN konfigurálhatja biztonságos feladatátvételi útvonalként az expressroute-hoz, vagy a nem expressroute-on keresztül kapcsolódó helyekhez való csatlakozáshoz használja a Site-to-Site VPN-eket. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
 
 Az egyidejű helyek közötti VPN- és ExpressRoute-kapcsolatok konfigurálása több előnnyel jár:
 

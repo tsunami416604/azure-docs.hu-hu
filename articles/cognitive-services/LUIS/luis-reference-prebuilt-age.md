@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások kor referencia – Azure |} A Microsoft Docs
+title: Kor előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk tartalmaz kora előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 63ff00c29548af2f26a2b7b5e5ac68b5397671ec
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2965f9fcedba55536ef25469975679bffe27b4e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441825"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102656"
 ---
 # <a name="age-entity"></a>Kor entitás
 Az előre összeállított kora entitás age értékét egyaránt numerikusan és tekintetében nap, hét, hónap és év rögzíti. Az entitás már be van tanítva, mert nem kell kora, az alkalmazás leképezések tartalmazó példa beszédmódok hozzáadása. Kor entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Kor felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizer
 ## <a name="resolution-for-prebuilt-age-entity"></a>Előre összeállított kora entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
 
-```JSON
+```json
 {
   "query": "A 90 day old utilities bill is quite late.",
   "topScoringIntent": {

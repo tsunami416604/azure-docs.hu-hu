@@ -1,6 +1,6 @@
 ---
 title: Adatok tisztítása és előkészítése az Azure Machine Learning |} A Microsoft Docs
-description: Adatok előkészítése, gépi tanulási előzetes feldolgozása és.
+description: Adatok előkészítése, hogy hatékonyan használható a machine Learning előzetes feldolgozása és.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52457e19cede5d8d2b74d9c3d81ebf35e3ad06c4
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: b8903e021028ce51e042bd0aea87a91d564de25d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101262"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
 Előzetesen feldolgozni, és adattisztítást is a fontos feladatok, amelyek általában kell elvégezni, mielőtt adatkészlet használható hatékonyan a machine Learning szolgáltatáshoz. Nyers adatokat gyakran zajos és nem megbízható, és esetleg hiányzik a értékeket. Az ilyen adatok használata a modellezési félrevezető eredményeket hozhat létre. Ezek a feladatok tartozik, a csoportos adatelemzési folyamat (TDSP), és általában hajtsa végre egy kezdeti feltárásával egy adatkészlet felderítésére, és tervezze meg a szükséges előzetes feldolgozás segítségével. Részletesebb útmutatásért TDSP folyamattal kapcsolatban, tekintse meg a leírt lépéseket a [csoportos adatelemzési folyamat](overview.md).

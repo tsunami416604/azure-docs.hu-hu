@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0618a580c6bdcef8f28a439cd79e67d863e58b9e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: abc3d5832cd85cb3297077f2d661ec8fe32fde9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995229"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105291"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
 
@@ -119,6 +119,7 @@ Ha anélkül szeretné újra közzétenni az alkalmazást, hogy a kódhoz hozzá
   * Az IIS-kezelőben válassza ki az alkalmazáskészletét, nyissa meg a **Speciális beállítások** elemet, és a **Folyamatmodell** területen jegyezze fel az identitást.
   * A Számítógép-kezelés vezérlőpulton adja ezt az identitást a Teljesítményfigyelő felhasználói csoporthoz.
 * Ha MMA/SCOM (Systems Center Operations Manager) van telepítve a kiszolgálón, néhány verzió esetében ütközés léphet fel. Távolítsa el az SCOM-ot és az Állapotfigyelőt is, és telepítse újra a legújabb verziókat.
+* Állapot figyelő naplók alapértelmezés szerint ezen a helyen található: "C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log"
 * Lásd: [Hibaelhárítás][qna].
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
@@ -217,9 +218,12 @@ Az alkalmazás önmagától nem gyűjt telemetriai adatokat, csupán a webalkalm
 
 Ha kiválaszt egy webalkalmazást, amelyet az Állapotfigyelővel szeretne beállítani:
 
-* Letölti és elhelyezi az Application Insights-szerelvényeket és a .config fájlt a webalkalmazás bináris mappájába.
-* Módosítja a `web.config` fájlt az Application Insights HTTP nyomkövetési moduljának hozzáadásához.
+* Letölti és elhelyezi az Application Insights-szerelvényeket és az ApplicationInsights.config fájlt a webalkalmazás bináris fájljainak mappáját.
 * A függőségi hívások összegyűjtéséhez engedélyezi a CLR-profilkészítést.
+
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Application Insights SDK melyik verzióját telepíti az állapotfigyelő?
+
+Jelen pillanatban állapotfigyelője csak az Application Insights SDK-verziók 2.3-as vagy 2.4 telepíthetők.
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Az alkalmazás frissítésekor minden alkalommal futtatnom kell az Állapotfigyelőt?
 

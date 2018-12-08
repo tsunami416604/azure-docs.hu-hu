@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 427eb8abdede8c821d214d9f6a64fc6a122699de
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f2bbcf0218291f91d3ee5b25e89a5f580e0c1c86
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002012"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105733"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -95,7 +95,7 @@ Esemény előfizetés létrehozása során, ha például egy hibaüzenetet lát 
 
 ### <a name="event-delivery-security"></a>Kézbesítési biztonsági esemény
 
-Egy esemény-előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím gondoskodhat a webhook-végpontot. Állítsa be a lehet például egy titkos kulcsot a lekérdezési paraméterek egyike egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token). A webhook használatával ismeri fel az esemény érkezik Event Grid érvényes engedélyekkel. Event Grid a webhook minden eseménykézbesítés tartalmazza a lekérdezési paraméterek.
+Egy esemény-előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím gondoskodhat a webhook-végpontot. Állítsa be a lehet például egy titkos kulcsot a lekérdezési paraméterek egyike egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token). A webhook a titkos kulcs használatával ismeri fel az esemény érkezik Event Grid érvényes engedélyekkel. Event Grid a webhook minden eseménykézbesítés tartalmazza a lekérdezési paraméterek.
 
 Az esemény-előfizetés szerkesztésekor a lekérdezési paraméterek nem jelenik meg vagy nem adott vissza, ha a [--– teljes-végpont-URL-címek](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 

@@ -1,11 +1,12 @@
 ---
 title: Az Azure-ban – földrajzi mesterséges intelligenciát használó virtuális gép kiépítése az Azure |} A Microsoft Docs
-description: Hogyan építheti ki a virtuális gép földrajzi mesterséges Intelligencia az Azure-ban.
+description: Ismerje meg, hogyan hozhat létre, és a földrajzi mesterséges Intelligencia adatelemző virtuális gép konfigurálása. A földrajzi mesterséges Intelligencia adatelemzési virtuális gépet használó földrajzi mesterséges Intelligencia és gépi Tanulási megoldások létrehozásához szükséges eszközöket biztosít.
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239797"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103948"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Az Azure-ban földrajzi mesterséges intelligenciát használó virtuális gép kiépítése 
 

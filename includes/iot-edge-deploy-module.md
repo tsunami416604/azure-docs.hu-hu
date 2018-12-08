@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 10/14/2018
+ms.date: 12/7/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 92fb568bb1044df5be8c80372973743e2c0e3dcd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 1a750a97cdc940c0f0a3d7e33d6be0d33f811425
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52900998"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53108022"
 ---
 Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Az IoT Edge-modul egy tárolóként megvalósított végrehajtható csomag. Ebben a szakaszban azt fogja telepítését végzi az előre elkészített modul a [IoT Edge-modulok szakaszában az Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Ez a modul a szimulált eszköz telemetriai adatokat hoz létre.
 
@@ -34,8 +34,7 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
    ```json
     {
     "routes": {
-        "route": "FROM /messages/* INTO $upstream",
-        "upstream": "FROM /messages/* INTO $upstream"
+        "route": "FROM /messages/* INTO $upstream"
         }
     }
    ```

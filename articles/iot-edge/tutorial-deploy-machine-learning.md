@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learning üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
+title: Oktatóanyag az Azure Machine Learning az Azure IoT Edge - eszköz üzembe helyezése |} A Microsoft Docs
 description: Az oktatóanyagban egy Azure Machine Learning-példányt helyezünk üzembe modulként egy peremhálózati eszközre.
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: e301e7da36e7ca549609da942f6e6d6dd3a3e791
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977207"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103347"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -115,7 +115,7 @@ Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine 
 
 1. A **Registry Settings** (Regisztrációs adatbázis beállításai) szakaszban adja meg az Azure tárolóregisztrációs adatbázisból másolt hitelesítő adatokat. 
 
-   ![A tárolójegyzék hitelesítő adatainak hozzáadása](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![A jegyzékfájl a tárolójegyzék hitelesítő adatainak hozzáadása](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. Ha már üzembe helyezte a tempSensor modult az IoT Edge-eszközön, akkor lehet, hogy automatikusan ki van töltve. Ha a modul még nem szerepel a listában, akkor vegye fel.
 
@@ -182,7 +182,7 @@ A következő lépések azt mutatják be, hogyan állítható be a Visual Studio
 
 2. Ezt követően válassza a **...**, majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
 
-   ![IoT Hub-eszközök – Továbbiak menü](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Az IoT Hub kapcsolati karakterlánc beállítása](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Az oldal tetején megnyíló szövegmezőben adja meg a saját IoT Hubjához tartozó iothubowner kapcsolati sztringet. IoT Edge-eszközének ekkor meg kell jelennie az IoT Hub-eszközök listájában.
 

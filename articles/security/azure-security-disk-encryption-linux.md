@@ -1,18 +1,19 @@
 ---
-title: Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
+title: Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése
 description: Ez a cikk útmutatást nyújt a Microsoft Azure Disk Encryption engedélyezése a Linux rendszerű IaaS virtuális gépekhez.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/19/2018
-ms.openlocfilehash: 8806d2b1848064c48615aed653c69c2df9b1949f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7c8833f2c6d9a4ae8fdd9eba8ca6bb4f850b5ca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685463"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100786"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése 
 
@@ -147,13 +148,13 @@ Egy Linux rendszerű méretezési csoport adatok lemeztitkosítás batch fájl p
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>Regisztráljon az Azure CLI-vel a lemez titkosítási előzetes verzió
 
-Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell önálló regisztrálja az előfizetését [az a funkció regisztrálása](/cli/azure/feature#az_feature_register). Csak akkor kell hajtsa végre a következő lépéseket a lemeztitkosítási előzetes szolgáltatás első használatakor:
+Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell önálló regisztrálja az előfizetését [az a funkció regisztrálása](/cli/azure/feature#az-feature-register). Csak akkor kell hajtsa végre a következő lépéseket a lemeztitkosítási előzetes szolgáltatás első használatakor:
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [az funkció show](/cli/azure/feature#az_feature_show). Ha a `State` jelentések *regisztrált*, regisztrálja újra a *Microsoft.Compute* szolgáltató [az provider register](/cli/azure/provider#az_provider_register):
+A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [az funkció show](/cli/azure/feature#az-feature-show). Ha a `State` jelentések *regisztrált*, regisztrálja újra a *Microsoft.Compute* szolgáltató [az provider register](/cli/azure/provider#az-provider-register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

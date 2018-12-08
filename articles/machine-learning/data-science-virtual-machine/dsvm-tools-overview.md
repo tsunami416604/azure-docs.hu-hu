@@ -1,11 +1,12 @@
 ---
-title: Az adatok tudományos virtuális gép eszközök áttekintése - Azure |} Microsoft Docs
-description: Adatok tudományos virtuális gép áttekintése eszközök.
-keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
+title: Data Science virtuális gép eszközök áttekintése – Azure |} A Microsoft Docs
+description: Ismerje meg az eszközök és segédprogramok előre telepített a Data Science virtuális gépen.
+keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,26 +16,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9f10c30c8619a32e65063bbc83fd885aee93a4fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c51a44f7fcd46e9c15700fe91a4c86afbe02801
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407028"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100956"
 ---
-# <a name="get-to-know-your-data-science-virtual-machine"></a>Ismerkedjen meg az adatok tudományos virtuális gép
+# <a name="get-to-know-your-data-science-virtual-machine"></a>Ismerje meg az adatelemző virtuális gép
 
-A tudományos virtuális gép (DSVM) tartalmaz, valamint a népszerű adattudomány machine learning/AI eszközök és adatok platformok. Az eszköz konfigurációk szigorú tesztelt adatelemzők és fejlesztők a Microsoft és a szélesebb körű adatok tudományos Közösség stabilitás és általános életképességét biztosításához.
+Az adatelemzési virtuális gép (DSVM) az adatplatformok, népszerű adatelemzési és machine learning/mesterséges Intelligencia eszközök széles körű listáját tartalmazza. Az eszköz-konfigurációk ellenőrizteti kell megvizsgálni, az adatelemzők és fejlesztők a Microsoft és a szélesebb körű adatelemzési Közösség stabilitását és általános életképességgel által.
 
-A DSVM is több Kódminták és forgatókönyvek helyileg végrehajtható Jupyter notebookok formájában. Ezeket a mintákat szövegértést támogatási dokumentációja is van. 
+A dsvm-hez is több Kódminták és útmutatók Jupyter notebookok helyileg végrehajtható formájában. Ezeket a mintákat, ezzel elősegítve a szövegértést dokumentációját is van. 
 
-Az alábbi szakaszok a eszközök, rendszerek, segédprogramok és az adatok tudományos VM szereplő minták vannak csoportosítva:
+Az eszközöket, platformokat, segédprogramok és mintákat, amelyek szerepelnek az adatelemző virtuális gép a következő szakaszokra vannak rendszerezve:
 
-1. **[A részletes tanulási és AI keretrendszerek](dsvm-deep-learning-ai-frameworks.md)**
-2. **[Gépi tanulás és adatok tudományos eszközök](dsvm-ml-data-science-tools.md)**
+1. **[Mélytanulási és AI-keretrendszerek](dsvm-deep-learning-ai-frameworks.md)**
+2. **[Gépi tanulási és adatelemzési eszközöket](dsvm-ml-data-science-tools.md)**
 3. **[Programozási nyelvek](dsvm-languages.md)**
-4. **[Fejlesztői eszközök és IDEs](dsvm-tools-development.md)**
-5. **[Adatok adatfeldolgozást eszközök](dsvm-tools-ingestion.md)**
-6. **[Az adatok feltárása és a képi megjelenítés eszközök](dsvm-tools-explore-and-visualize.md)**
-7. **[Adatok platformok](dsvm-data-platforms.md)**
-8. **[Kódminták és forgatókönyvek](dsvm-samples-and-walkthroughs.md)**
+4. **[Fejlesztőeszközök és ide-k](dsvm-tools-development.md)**
+5. **[Adatfeldolgozási eszközök](dsvm-tools-ingestion.md)**
+6. **[Az adatok feltárása és vizualizációs eszközök](dsvm-tools-explore-and-visualize.md)**
+7. **[Adatplatformok](dsvm-data-platforms.md)**
+8. **[Minták és útmutatók](dsvm-samples-and-walkthroughs.md)**

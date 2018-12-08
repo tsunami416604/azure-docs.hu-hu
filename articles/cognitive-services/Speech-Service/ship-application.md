@@ -1,21 +1,22 @@
 ---
-title: Beszédfelismerési szolgáltatás SDK API-JÁNAK dokumentációja – oktatóanyagok és API-referencia
+title: Az SDK - beszédszolgáltatások beszédfelismerési-alkalmazások fejlesztése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre és fejleszthet alkalmazásokat a beszédfelismerési SDK-val
+description: Ismerje meg, hogyan hozhat létre alkalmazásokat a beszédfelismerési SDK használatával.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 7510b1501051b79f6bdaf33ec57647a7982fafda
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 4999639356fd440b6358983f1e4859fb3c505fc7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469418"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106498"
 ---
 # <a name="ship-an-application"></a>Szállítási alkalmazás
 

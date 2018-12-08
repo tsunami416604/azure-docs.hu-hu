@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning segítségével modell hiperparaméterek hangolása
+title: Hiperparaméterek a modell finomhangolása
+titleSuffix: Azure Machine Learning service
 description: Hatékonyan finomhangolja az Azure Machine Learning szolgáltatás használatával a mély tanulás / gépi tanulási modell hiperparaméterek. Megtudhatja, hogyan határozza meg a paraméter keresési terület, adjon meg egy elsődleges metrika optimalizálása és a korai a rosszul működő fut le.
 ms.author: swatig
 author: swatig007
@@ -9,14 +10,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: b722af6fd5dd29a5b7cef8581d27d421825fb323
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: da809aaaa1dd46c1232d0b032136833caaf0d2d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868157"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100735"
 ---
-# <a name="tune-hyperparameters-for-your-model"></a>Hiperparaméterek a modell finomhangolása
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>A modell Azure Machine Learning szolgáltatással hiperparaméterek hangolása
 
 Hatékonyan finomhangolja hiperparaméterek a modell Azure Machine Learning szolgáltatás használatával.  Hiperparaméter finomhangolása a következő lépésekből áll:
 

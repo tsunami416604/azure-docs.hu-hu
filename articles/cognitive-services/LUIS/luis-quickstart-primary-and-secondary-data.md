@@ -1,21 +1,22 @@
 ---
-title: '7. oktatóanyag: Egyszerű entitás kifejezéslistával a LUIS-ban'
+title: Egyszerű entitás, kifejezéslista
 titleSuffix: Azure Cognitive Services
 description: Gépi tanulással létrejött adatok kinyerése kimondott szövegből
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a783491ca04f19964cc66f1faef5e2fdba142e24
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425246"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094440"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>7. oktatóanyag: Nevek kinyerése egyszerű entitással és kifejezéslistával
 
@@ -92,7 +93,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
 3. Az `I want to apply for the new accounting job` kimondott szövegben válassza az `accounting` lehetőséget, az előugró menü felső mezőjébe írja be a `Job` kifejezést, majd válassza a **Create new entity** (Új entitás létrehozása) elemet az előugró menüben. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "A LUIS képernyőképe a kiemelt ApplyForJob szándékkal és az entitás létrehozásának lépéseivel")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Képernyőkép a LUIS "ApplyForJob" leképezést és a kiemelt entitás lépéseket létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "képernyőképe a LUIS \"ApplyForJob\" leképezést és az entitás lépéseket kiemelt létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 4. Az előugró ablakban ellenőrizze az entitás nevét és típusát, majd válassza a **Done** (Kész) lehetőséget.
 
@@ -100,7 +101,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
 5. A `Submit resume for engineering position` kimondott szövegben címkézze meg a `engineering` kifejezést állásentitásként. Válassza ki a `engineering` kifejezést, majd válassza a **Job** (Állás) lehetőséget az előugró menüben. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Képernyőkép a LUIS-ról, az állásentitás címkézése kiemelve")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Képernyőkép a LUIS kiemelt feladat entitás címkézés](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "képernyőképe, a LUIS címkézés feladat entitás kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
     Minden kimondott szöveg meg van címkézve, de öt kimondott szöveg nem elég arra, hogy megtanítsa a LUIS-t az állással kapcsolatos szavakra és kifejezésekre. Azokhoz az állásokhoz, amelyek számértéket használnak, nem kell több példa, mert reguláris kifejezés entitást használnak. Azokhoz az állásokhoz, amelyek szavakból vagy kifejezésekből állnak, legalább 15 további példa szükséges. 
 
@@ -157,7 +158,7 @@ Az entitás megcímkézése vagy _megjelölése_ megmutatja a LUIS-nak, hol tal�
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Here is my c.v. for the programmer job`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő kimondott szövegeket kell visszaadnia: `ApplyForJob`.
 
-    ```JSON
+    ```json
     {
       "query": "Here is my c.v. for the programmer job",
       "topScoringIntent": {
@@ -226,7 +227,7 @@ A LUIS-alkalmazás nagy magabiztossággal megtalálta a megfelelő szándékot �
 
 A következő JSON-ben, a LUIS a megfelelő szándékkal (`lead welder`) válaszol, de nem nyerte ki a `ApplyForJob` állásnevet. 
 
-```JSON
+```json
 {
   "query": "This is the lead welder paperwork.",
   "topScoringIntent": {
@@ -291,13 +292,13 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
 3. Az új kifejezéslistának adja a `Job` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe. Nyomja le az Enter billentyűt. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép: az új kifejezéslista létrehozása előugró párbeszédpanel")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Ha több szót szeretne hozzáadni a kifejezéslistához, tekintse át **Related Values** (Kapcsolódó értékek) listáját, és adja hozzá a relevánsakat. 
 
 4. A kifejezéslista aktiválásához kattintson a **Save** (Mentés) gombra.
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Képernyőkép: az új kifejezéslista létrehozása előugró párbeszédpanel, a kifejezéslista értékmezőjében található szavakkal")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "képernyőkép hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 5. [Tanítsa be](#train) és [tegye közzé](#publish) ismét az alkalmazást a kifejezéslista használatához.
 
@@ -305,7 +306,7 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
     A JSON-válasz tartalmazza a kinyert entitást:
 
-    ```JSON
+    ```json
     {
         "query": "This is the lead welder paperwork.",
         "topScoringIntent": {

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394357"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106447"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Rövid útmutató: Adatok lekérdezése az Azure Data Explorerben
 
@@ -134,7 +134,7 @@ Most, hogy áttekintettük az alapszintű lekérdezések működését, nézzük
 
 1. Futtassa az alábbi lekérdezést.
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: fd437e42c404bec71036e760b95aef7e005d3fd9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 23ee4142dbf3d3c07eb89640554a464d0ac51822
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880199"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102996"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API a .NET-tel való használatába
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -88,7 +88,7 @@ A NuGet-csomagok beszerzéséhez kövesse az alábbi lépéseket:
 4. Keressen rá az interneten a „WindowsAzure.ConfigurationManager” kifejezésre, és válassza az **Install** (Telepítés) gombot a Microsoft Azure Configuration Manager kódtárának telepítéséhez.
 
 > [!NOTE]
-> A .NET-keretrendszerhez készült Storage közös kódtár ODataLib-függőségeit nem a WCF-adatszolgáltatások, hanem a NuGeten elérhető ODataLib-csomagok oldják fel. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](http://nuget.org/packages/Microsoft.Data.OData/), az [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) és a [Spatial](http://nuget.org/packages/System.Spatial/) csomagok. Ezeket a kódtárakat az Azure Table Storage osztályai használják, de szükséges függőségek a Storage közös kódtárral való programozáshoz.
+> A .NET-keretrendszerhez készült Storage közös kódtár ODataLib-függőségeit nem a WCF-adatszolgáltatások, hanem a NuGeten elérhető ODataLib-csomagok oldják fel. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](https://nuget.org/packages/Microsoft.Data.OData/), az [Edm](https://nuget.org/packages/Microsoft.Data.Edm/) és a [Spatial](https://nuget.org/packages/System.Spatial/) csomagok. Ezeket a kódtárakat az Azure Table Storage osztályai használják, de szükséges függőségek a Storage közös kódtárral való programozáshoz.
 > 
 > 
 
@@ -453,7 +453,7 @@ table.Execute(insertOrReplaceOperation);
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a [DynamicTableEntity][dotnet_DynamicTableEntity] és az [EntityResolver][dotnet_EntityResolver] lekérdezésekkel hajtható végre. A leképezésről az [Introducing Upsert and Query Projection][blog_post_upsert] (Az upsert művelet és a lekérdezésleképezés bemutatása) című blogbejegyzésből tudhat meg többet. A Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiókkal működik.
+Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a [DynamicTableEntity][dotnet_DynamicTableEntity] és az [EntityResolver][dotnet_EntityResolver] lekérdezésekkel hajtható végre. A Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiókkal működik.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -576,9 +576,6 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 * [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../sql-database/sql-database-develop-dotnet-simple.md) a relációs adatok tárolásához.
 
 [Download and install the Azure SDK for .NET]: /develop/net/
-[Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
-
-[blog_post_upsert]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
 [dotnet_api_ref]: https://msdn.microsoft.com/library/azure/mt347887.aspx
 [dotnet_CloudTableClient]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtableclient.aspx

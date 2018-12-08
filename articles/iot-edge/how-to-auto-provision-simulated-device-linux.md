@@ -1,6 +1,6 @@
 ---
-title: Automatikus üzembe Azure IoT Edge-eszköz-DPS – Linux |} A Microsoft Docs
-description: Linux rendszerű virtuális gép egy szimulált TPM-eszköz segítségével tesztelheti az eszköz kiépítése Azure IoT Edge
+title: Automatikus üzembe Linux rendszerű eszközök-DPS – Azure IoT Edge |} A Microsoft Docs
+description: Linux rendszerű virtuális gép egy szimulált TPM-eszköz segítségével tesztelheti az Azure Device Provisioning Service az Azure IoT Edge-hez
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 0550b1765e36d591a1baf34d3c255a252ca5278b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446242"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101755"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép virtuális TPM-mel az Edge-eszköz létrehozása és kiépítése
 

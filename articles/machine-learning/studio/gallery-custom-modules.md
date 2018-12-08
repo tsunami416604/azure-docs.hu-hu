@@ -1,10 +1,10 @@
 ---
 title: Az Azure, AI-katalógusban egyéni modulok – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Fedezze fel az egyéni machine learning-modulok az Azure AI-katalógusban.
+description: Fedezze fel az egyéni machine learning-modulok az Azure AI-katalógusban. Egyéni modulok bontsa ki az Azure Machine Learning Studio képességeit.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: a504bcfbbcd70c1d6fc8402d4c232e7e8a5476b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b51af78625d869fb168dce7c7bd7ed57e159cbda
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313741"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104772"
 ---
 # <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Machine Learning Studio: Az Azure AI-katalógusban egyéni machine learning-modulok felderítése
 

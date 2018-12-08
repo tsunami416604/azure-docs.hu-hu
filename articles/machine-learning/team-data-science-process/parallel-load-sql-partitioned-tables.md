@@ -1,6 +1,6 @@
 ---
-title: Hozhat létre, és az adatok gyors párhuzamos importálása táblák optimalizálása egy SQL Server-beli virtuális gépen történő |} A Microsoft Docs
-description: Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával
+title: Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával egy Azure-beli virtuális gépen
+description: Gyors párhuzamos tömeges importálása az SQL Server-adatbázis az adatokat a particionált táblákat hozhat létre.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f437de3043cbd3d689f85dc3524b419b1633553f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 5645799b0f1be1c2c6117a314920ee996880cb37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446466"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101198"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Hozhat létre, és optimalizálhatja a táblák gyors párhuzamos az adatok importálása be egy SQL Server-beli virtuális gépen
 
 Ez a cikk ismerteti, hogyan hozhat létre gyors párhuzamos tömeges importálása az SQL Server-adatbázis az adatokat a particionált táblákat. Big Data típusú adatok betöltése és átvitele egy SQL Database, az adatok importálása az SQL DB és a lekérdezések a javítása érdekében a *particionált táblák és nézetek*. 
 

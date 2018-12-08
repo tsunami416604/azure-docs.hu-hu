@@ -1,21 +1,22 @@
 ---
-title: Előre összeállított entitások a Language Understanding (LUIS)
+title: Előre összeállított entitások
 titleSuffix: Azure Cognitive Services
 description: LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 8371e99224b511a87b2061708f00822a70c024b0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999071"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103931"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 

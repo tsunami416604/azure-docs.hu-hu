@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory felhasználó jelszavának alaphelyzetbe állítása |} A Microsoft Docs
-description: Ismerje meg az Azure Active Directory felhasználó jelszavának alaphelyzetbe állítása.
+title: A felhasználói jelszó - Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directory felhasználó jelszavának alaphelyzetbe állítása leírja.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,19 +12,22 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 3803808ab589c3d880111421f650141f0d829f0b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c8dd387104d52075425d881363dbcbaac700461a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736090"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103370"
 ---
-# <a name="how-to-reset-a-users-password-using-azure-active-directory"></a>Útmutató: Azure Active Directory használatával egy felhasználói jelszó alaphelyzetbe állítása
-Ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérdezi kizárva, vagy ha a felhasználó nem érkezett meg a jelszót alaphelyzetbe állíthatja a felhasználó jelszavát.
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Az Azure Active Directory felhasználói jelszó alaphelyzetbe állítása
+A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérdezi kizárva, vagy ha a felhasználó soha nem kapott jelszót alaphelyzetbe állíthatja a felhasználó jelszavát.
 
 >[!Note]
 >Kivéve, ha az Azure AD-bérlő egy felhasználó a kezdőkönyvtárba, nem lehet új jelszót kérnek. Ez azt jelenti, hogy a felhasználó a szervezet egy másik szervezet, a Microsoft-fiók vagy a Google-fiók egy olyan fiókkal jelentkezik be, ha nem tudja alaphelyzetbe állítani a jelszavukat.<br><br>Ha a felhasználó rendelkezik egy, a Windows Server Active Directory mérvadó forrás, csak fogja tudni új jelszót, ha bekapcsolta a jelszóvisszaíró.<br><br>Ha a felhasználó rendelkezik egy, az Azure AD külső mérvadó forrás, nem lehet új jelszót kérhet. Csak a felhasználó vagy egy külső Azure Active Directory, a rendszergazda alaphelyzetbe állíthatja a jelszót.
+
+>[!Note]
+>Ha Ön nem rendszergazda, és további útmutatás a saját munkahelyi vagy iskolai jelszó helyett keres, tekintse meg a [a munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="to-reset-a-password"></a>Jelszó alaphelyzetbe állítása
 

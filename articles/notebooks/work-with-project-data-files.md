@@ -1,5 +1,5 @@
 ---
-title: Az Azure-jegyzetfüzeteket a projektek adatok importálása és exportálása |} A Microsoft Docs
+title: Az Azure-jegyzetfüzeteket a projektek adatok importálása és exportálása
 description: Hogyan lehet egy Azure-jegyzetfüzetek projekt külső forrásból származó adatokat importálnak, és a egy projektet az adatok exportálása.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 84b238ee287d6b47421788d14235abceb03fafa7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b0b52fc32b2895fdcd994bad5bfc73dbf938add2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856031"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102078"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 

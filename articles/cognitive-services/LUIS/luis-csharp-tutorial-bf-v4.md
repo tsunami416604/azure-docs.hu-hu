@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: 993e5c7c1975af0c8fe3e55fd59a2f90b39ff642
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 740dae77bd60a0d38370b0678d57d3479eafceb1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011693"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106260"
 ---
-# <a name="tutorial-luis-bot-in-c"></a>Oktatóanyag: LUIS-robot a C#-ben
+# <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A robot a LUIS a C# a Bot keretrendszer 4.x-es és az Azure Web app bot
 A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**

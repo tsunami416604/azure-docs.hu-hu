@@ -1,21 +1,22 @@
 ---
-title: V2 a v1 útmutató API-k áttelepítése
+title: V1-v2 API-k áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan áttelepítése a legújabb API-ra állította.
+description: Ismerje meg, hogyan migrálhatja a a legújabb API-készlet.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 7514390593b4afca4793923089516f3393db0428
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646575"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105835"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrálási útmutató
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -43,7 +44,7 @@ A végpont API új lekérdezési karakterlánc paraméterei, valamint a különb
 
 
 V1 végpont sikeres válasz:
-```JSON
+```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
     {
@@ -54,7 +55,7 @@ V1 végpont sikeres válasz:
 ```
 
 v2 végpont sikeres válasz:
-```JSON
+```json
 {
   "query": "forward to frank 30 dollars through HSBC",
   "topScoringIntent": {

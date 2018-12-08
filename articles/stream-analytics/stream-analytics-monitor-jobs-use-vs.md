@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti, hogyan használhatja a Visual Studio figyelés
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2018
-ms.openlocfilehash: 9cc65fc5119bedc816f825b7aae6120f4bca3b12
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059180"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101009"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Figyelheti és kezelheti a Stream Analytics-feladatok a Visual Studióval
 
@@ -31,14 +31,14 @@ A **feladat összegzése** és **feladat metrikáinak** adni a feladat rövid pi
 
 Összecsukhatja a **feladat összegzése** , és kattintson a **feladat metrikáinak** lapon megtekintheti a fontos metrikákat. Ellenőrzés, és törölje metrikák típusok hozzáadása, és azokat eltávolítsa a gráf.
 
-![Stream Analytics-metrikák](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics mérőszámainak áttekintését, a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
 ## <a name="error-monitoring"></a>Kivételfigyelés
 
 Hibák kattintva is figyelheti a **hibák** fülre.
 
-![Stream Analytics-hibák](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Stream Analytics-hibák a Visual Studióban](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Támogatás kérése

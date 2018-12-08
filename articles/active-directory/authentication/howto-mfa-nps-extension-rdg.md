@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6f8999f0af50eb50b5ebca9acd57f573cfc71961
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 410e9df588ad4aba52d1d69349f5df67fa1826a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877493"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100939"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -33,7 +33,7 @@ A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szerv
 
 NPS RADIUS-egyszerűbbé tétele és a VPN-kezelésének központosítása szervezetek használata általában a szabályzatok. Azonban számos szervezet is használhatja az NPS egyszerűbbé tétele és a távoli asztali asztali kapcsolatengedélyezési házirendek (RD CAPs) kezelésének központosítása.
 
-Szervezetek is integrálhatja az Azure MFA megfelelőségi magas szintű biztonság növelése és a hálózati házirend-kiszolgáló. Ezzel biztosíthatja, hogy a felhasználók kétlépéses ellenőrzést, jelentkezzen be a távoli asztali átjáró létrehozásához. A felhasználók számára hozzáférést biztosítani a felhasználónév/jelszó kombináció, amely a felhasználó rendelkezik a hatókörükön információkkal együtt kell adnia. Ezeket az információkat megbízható legyen, és nem nehezen másolható, például egy mobiltelefonszámot, a mobiltelefonra száma, az alkalmazás egy mobileszközön, és így tovább.
+Szervezetek is integrálhatja az Azure MFA megfelelőségi magas szintű biztonság növelése és a hálózati házirend-kiszolgáló. Ezzel biztosíthatja, hogy a felhasználók kétlépéses ellenőrzést, jelentkezzen be a távoli asztali átjáró létrehozásához. A felhasználók számára hozzáférést biztosítani a felhasználónév/jelszó kombináció, amely a felhasználó rendelkezik a hatókörükön információkkal együtt kell adnia. Ezeket az információkat megbízható legyen, és nem nehezen másolható, például egy mobiltelefonszámot, a mobiltelefonra száma, az alkalmazás egy mobileszközön, és így tovább. Támogatott hitelesítési módszerekkel kapcsolatos további információk: a szakasz [állapítsa meg, milyen hitelesítési módszerek használatát](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
 Az NPS-bővítményt, az Azure-ban rendelkezésre állását, előtt a felhasználókat a kétlépéses ellenőrzést, az integrált hálózati házirend-kiszolgáló és az Azure MFA-környezetek megvalósításához szükséges kellett konfigurálnia és karbantartania egy külön MFA-kiszolgáló a helyszíni környezetben leírtakszerint[ Távoli asztali átjáró és az Azure multi-factor Authentication kiszolgáló RADIUS-t használó](howto-mfaserver-nps-rdg.md).
 

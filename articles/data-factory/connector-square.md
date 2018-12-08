@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f63dcc73532426b07f792f631f934587fca08605
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 80389be735d337f72426f0745fee5717b96fa78a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128996"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100871"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával szögletes
 
@@ -78,7 +78,12 @@ Négyzetes társított szolgáltatás a következő tulajdonságok támogatottak
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a négyzetes adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatmásolás négyzetet, állítsa be a type tulajdonság, az adatkészlet **SquareObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatmásolás négyzetet, állítsa be a type tulajdonság, az adatkészlet **SquareObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **SquareObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -90,7 +95,8 @@ Adatmásolás négyzetet, állítsa be a type tulajdonság, az adatkészlet **Sq
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -99,14 +105,14 @@ Adatmásolás négyzetet, állítsa be a type tulajdonság, az adatkészlet **Sq
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a négyzetes forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="squaresource-as-source"></a>SquareSource forrásként
+### <a name="square-as-source"></a>Négyzetes forrásként
 
 Adatok másolása szögletes, állítsa be a forrás típusaként a másolási tevékenység **SquareSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SquareSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Business"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Business"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

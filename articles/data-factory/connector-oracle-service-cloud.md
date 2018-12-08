@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a576b94881e114a97e58bf93515e372221da3346
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b97b8e145e2a770a00c77eefc9ce6d323fd6222e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096280"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101837"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle felhőalapú
 
@@ -80,7 +80,12 @@ Társított Oracle Service felhőalapú szolgáltatás a következő tulajdonsá
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az Oracle-szolgáltatás Felhőbeli adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Oracle-szolgáltatás felhőalapú, állítsa be a type tulajdonság, az adatkészlet **OracleServiceCloudObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása az Oracle-szolgáltatás felhőalapú, állítsa be a type tulajdonság, az adatkészlet **OracleServiceCloudObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **OracleServiceCloudObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -92,7 +97,8 @@ Adatok másolása az Oracle-szolgáltatás felhőalapú, állítsa be a type tul
         "linkedServiceName": {
             "referenceName": "<OracleServiceCloud linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -109,7 +115,7 @@ Adatok másolása az Oracle-szolgáltatás felhőalapú, állítsa be a forrás 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **OracleServiceCloudSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

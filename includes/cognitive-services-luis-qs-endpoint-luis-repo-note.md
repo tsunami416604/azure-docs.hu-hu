@@ -4,18 +4,18 @@ description: fájl belefoglalása
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: include file
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
-ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: f9b057a54ad71d8e2a1e1fc8ee7593d9c7adc0d7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 84c40232463952dba24925a94e1e683d75e31218
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044029"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53109428"
 ---
 > [!NOTE] 
 > A teljes megoldás letölthető a [**LUIS-Samples** GitHub-adattárból](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/).
