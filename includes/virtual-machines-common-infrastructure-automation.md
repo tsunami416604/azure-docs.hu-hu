@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981525"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027909"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek infrastruktúra automatizálási eszközök használata
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
@@ -23,7 +23,7 @@ Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon 
     - [Az Azure Automation](#azure-automation) műveleteket hajthat végre az Azure-ban és a helyszíni infrastruktúra között.
 
 - Alkalmazás központi telepítése és a továbbítás automatizálása
-    - Ilyenek például [Azure DevOps-szolgáltatásokkal](#visual-studio-team-services) és [Jenkins](#jenkins).
+    - Ilyenek például [Azure DevOps-szolgáltatásokkal](#azure-devops-services) és [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Az Ansible](https://www.ansible.com/) automatizálási motor konfigurációkezelés, a virtuális gép létrehozása és alkalmazások központi telepítése. Az Ansible ügynök nélküli modellt alkalmaz, általában az SSH-kulcsokkal hitelesítheti és kezelheti a célgéphez való. Forgatókönyvek, az Ansible modulok meghatározott feladatok végrehajtásához rendelkezésre álló számos konfigurációs feladatok vannak definiálva. További információkért lásd: [hogyan Ansible működik](https://www.ansible.com/how-ansible-works).
