@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 35329468ee01d5b70d654c1eb4a908db9d3fcb5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184829"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074451"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>API-verzióprofilok használata a .NET-tel az Azure Stackben
 
@@ -80,7 +80,7 @@ Azure .NET SDK használata az Azure Stack használatával, adja meg a következ�
 
 Az Azure stack a bérlő Azonosítójának megkereséséhez kövesse az utasításokat, található [Itt](../azure-stack-csp-ref-operations.md). A környezeti változók beállítása, tegye a következőket:
 
-### <a name="microsoft-windows"></a>A Microsoft Windows
+### <a name="microsoft-windows"></a>Microsoft Windows
 
 A környezeti változók beállítása egy Windows parancssorban, használja a következő formátumot:
 
@@ -193,7 +193,9 @@ A következő minták GitHub-adattárak található megoldások létrehozása a 
 
 1.  Klónozza a tárházat, a következő paranccsal:
 
-    `git clone <https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject>`
+    ```shell
+    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
+    ```
 
 2.  Azure-beli szolgáltatásnév létrehozása, és rendelje hozzá egy szerepkörhöz az előfizetés eléréséhez. Egyszerű szolgáltatás létrehozásával kapcsolatos útmutatóért lásd: [Az Azure PowerShell használatával egy egyszerű szolgáltatás létrehozása tanúsítvánnyal][].
 

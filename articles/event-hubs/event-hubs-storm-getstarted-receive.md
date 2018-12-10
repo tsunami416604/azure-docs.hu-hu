@@ -1,6 +1,6 @@
 ---
-title: Események fogadása az Azure Event Hubs Apache Stormot használó |} A Microsoft Docs
-description: Fogadása az Event Hubs használatával az Apache Storm – első lépések
+title: Események fogadása az Apache Storm – Azure Event Hubs használatával |} A Microsoft Docs
+description: Ez a cikk információt nyújt az események fogadása az Azure Event Hubs, az Apache Storm használatával.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058414"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094610"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása az Event Hubs, az Apache Storm használatával
 
@@ -40,7 +41,7 @@ Ebben az oktatóanyagban egy [HDInsight Storm] [ HDInsight Storm] telepítése, 
     ```
 4. Az eclipse-ben hozzon létre egy új Maven-projektet (kattintson **fájl**, majd **új**, majd **projekt**).
    
-    ![][12]
+    ![Fájl -> Új -> Projekt][12]
 5. Válassza ki **használja az alapértelmezett munkaterület helye**, majd kattintson a **tovább**
 6. Válassza ki a **maven-archetype-quickstart** archetype, majd kattintson a **tovább**
 7. Helyezze be egy **GroupId** és **ArtifactId**, majd kattintson a **Befejezés**

@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek (előzetes verzió) előkészítése az Azure Monitor |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan fogunk előkészíteni és az Azure Monitor konfigurálása a virtuális gépek, így az elosztott alkalmazás hogyan működik, és milyen állapotbeli problémák azonosított ismertetése.
+title: Az Azure Monitor a virtuális gépek előzetes üzembe helyezése |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan telepíti, és az Azure Monitor konfigurálása a virtuális gépek, így ismertetése, hogyan működik az elosztott alkalmazás és milyen állapotbeli problémák azonosított.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,52 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 4e374528a0fa757458e7e4881714370937b56f9c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e0013d8239346085c06d41dada00012f4c39cf96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998291"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095842"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
-Ez a cikk bemutatja, hogyan állítható be az Azure Monitor a virtuális gépek az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok és a környezetben, a virtuális gépek operációs rendszer állapotának figyelésére többek között a felderítés és az alkalmazásfüggőségek leképezése Előfordulhat, hogy futhat őket.  
+# <a name="deploy-azure-monitor-for-vms-preview"></a>Az Azure Monitor a virtuális gépek előzetes üzembe helyezése
+Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése. 
 
-Az Azure Monitor engedélyezése a virtuális gépek az alábbi módszerek egyikének használatával történik, és az egyes módszerek használatával részletei is szerepelnek a cikk későbbi részében.  
+Engedélyezi az Azure Monitor-beli virtuális gépek a következő módszerek egyikével:  
 
-* Kiválasztásával egy Azure virtuális gépen **Insights (előzetes verzió)** közvetlenül a virtuális gépről.
-* Több Azure virtuális gépeken az Azure Policy segítségével annak biztosítása érdekében a meglévő és új virtuális gépek értékeli ki a szükséges függőségek telepítve van és megfelelően legyenek konfigurálva.  Így eldöntheti, függően mi nem megfelelőként, hogyan szeretné javítani a nem megfelelő virtuális gépek jelenti.  
-* Több Azure virtuális gépek vagy a virtuális gép méretezési csoportok között egy adott előfizetésen vagy erőforráscsoport PowerShell használatával.
+* Egy Azure virtuális gépen engedélyezze kiválasztásával **Insights (előzetes verzió)** közvetlenül a virtuális gépről.
+* Két vagy több Azure virtuális gépek az Azure Policy használatával engedélyezheti. Ezzel a módszerrel a szükséges függőségek a meglévő és új virtuális gép telepítve van és megfelelően konfigurálva. Nem megfelelő virtuális gépek jelenti, hogy lehetősége engedélyezheti őket, és elháríthatja a módját. 
+* Engedélyezzen két vagy több Azure virtuális gépek vagy virtuálisgép-méretezési csoportok között egy adott előfizetésen vagy erőforráscsoporton PowerShell használatával.
+
+További információ az egyes módszerek van megadva a cikk későbbi részében.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Kezdés előtt ellenőrizze, hogy megértette a következő, az alábbi alszakaszok leírtak szerint.
+A Kezdés előtt győződjön meg arról, hogy tisztában van-e az alábbi szakaszokban található információk.
 
 ### <a name="log-analytics"></a>Log Analytics 
 
-Log Analytics-munkaterület az alábbi régiókban jelenleg támogatott:
+Log Analytics-munkaterület jelenleg a következő régiókban támogatott:
 
   - USA nyugati középső régiója  
   - USA keleti régiója  
   - Nyugat-Európa  
   - Délkelet-Ázsia<sup>1</sup>  
 
-<sup>1</sup> ebben a régióban jelenleg nem támogatja az Azure Monitor állapota funkcióját a virtuális gépek   
+<sup>1</sup> ebben a régióban jelenleg nem támogatja a Azure monitor az állapotfigyelő szolgáltatás virtuális gépek számára.   
 
 >[!NOTE]
->Azure-beli virtuális gépek előre telepített bármely régió és nem korlátozottak a támogatott régiók, a Log Analytics-munkaterületen.
+>Az Azure virtual machines-régióból kezdeményezett telepíthetők, és nem csak a támogatott régiók, a Log Analytics-munkaterületen.
 >
 
-Ha nem rendelkezik egy munkaterületet, létrehozhat keresztül [Azure CLI-vel](../../azure-monitor/learn/quick-create-workspace-cli.md)segítségével, [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md), a a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md), vagy [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md).  Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, lehetősége van, hozzon létre egy munkaterületet a folyamat során.  
+Ha nem rendelkezik egy munkaterületet, létrehozhat egyet az alábbi módszerek egyikével:
+* [Az Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md) 
 
-A megoldás engedélyezése a nagy mennyiségű először példahelyzet a következő konfigurálása a Log Analytics-munkaterület:
+Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, létrehozhat egy munkaterületet, a folyamat során. 
 
-* Telepítse a **ServiceMap** és **InfrastructureInsights** megoldásokat. A csak lehet elvégezni egy ebben a cikkben ismertetett Azure Resource Manager-sablon használatával.   
+Az ipari méretekben a forgatókönyvben a megoldás engedélyezéséhez előbb konfigurálja a következőket a Log Analytics-munkaterület:
+
+* Telepítse a ServiceMap és InfrastructureInsights megoldásokat. A telepítést csak ebben a cikkben megadott egy Azure Resource Manager-sablon használatával.  
 * Konfigurálja a teljesítményszámlálók adatainak összegyűjtése a Log Analytics-munkaterületet.
 
-A munkaterület konfigurálása a skála esetben jelennek meg [telepítő Log Analytics-munkaterületet az a méretezési csoport üzembe helyezéskor](#setup-log-analytics-workspace).
+Az ipari méretekben a forgatókönyvhöz a munkaterület beállítása: [állítsa be a Log Analytics-munkaterület ipari méretekben üzembe helyezésének](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Windows- és Linux operációs rendszerek listája.  A teljes listát, részletesen ismertetve a fő- és alverzió Linux operációs rendszer kiadási és a kernel verziója támogatott alább ebben a szakaszban.
+Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Windows- és Linux operációs rendszerek listája. Ebben a szakaszban később nyújtott teljes listáját, amelyek a fő- és alverzió Linux operációsrendszer-kiadás részleteit, és a kernel verziója támogatott.
 
 |Operációs rendszer verziója |Teljesítmény |Maps |Állapot |  
 |-----------|------------|-----|-------|  
@@ -68,22 +76,22 @@ Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Window
 |Windows Server 2012 R2 | X | X | |  
 |Windows Server 2012 | X | X | |  
 |Windows Server 2008 R2 | X | X| |  
-|RHEL 7, 6| X | X| X |  
+|Red Hat Enterprise Linux (RHEL) 7, 6| X | X| X |  
 |Ubuntu 18.04, 16.04, 14.04 | X | X | X |  
-|Cent operációs rendszer Linux 7, 6 | X | X | X |  
-|SLES 12 | X | X | X |  
+|CentOS Linux 7, 6 | X | X | X |  
+|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |  
 |Oracle Linux 7 | X<sup>1</sup> | | X |  
 |Oracle Linux 6 | X | X | X |  
 |Debian 9.4, 8 | X<sup>1</sup> | | X | 
 
-<sup>1</sup> a teljesítmény a szolgáltatás az Azure Monitor-beli virtuális gépek csak az Azure Monitor érhető el, akkor esetén nem érhető el, akkor a bal oldali ablaktáblán, az Azure virtuális gépek közvetlenül elérhessék.  
+<sup>1</sup> a teljesítmény funkció az Azure Monitor-beli virtuális gépek csak az Azure Monitor érhető el. Nem érhető el, közvetlenül a bal oldali ablaktáblán az Azure virtuális gépek használatakor. 
 
 >[!NOTE]
 >Az alábbi adatokat a következőkre vonatkozik a Linux operációs rendszer támogatja:  
-> - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.  
-> - A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Ha például kiadási karakterlánc "2.6.16.21-0.8-xen", a rendszer nem támogatott.  
-> - Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.  
-> - A CentOSPlus kernel szintén nem támogatott.  
+> - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak. 
+> - Nestandardní kernel kiadások, mint például a Xen, és a fizikai cím bővítmény (fizikai) nem támogatottak az minden olyan Linux-disztribúció. A kiadási karakterláncot, például egy rendszer *2.6.16.21-0.8-xen* nem támogatott. 
+> - Egyéni kernelekkel, többek között a standard szintű kernelekkel, újrafordítások nem támogatottak. 
+> - CentOSPlus kernel nem támogatott. 
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -144,18 +152,22 @@ Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Window
 |12 SP2 | 4.4. * |
 |12 SP3 | 4.4. * |
 
-### <a name="microsoft-dependency-agent"></a>A Microsoft Dependency agent
-Virtuális gépek térkép az Azure Monitor az adatok lekérése a Microsoft Dependency agent. A függőségi ügynök a Log Analytics agent a Log Analytics, és ezért a rendszer létesített kapcsolatát rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök támaszkodik. Engedélyezésekor az Azure Monitor-beli virtuális gépek egyetlen Azure virtuális gép vagy a módszerek használatakor a, a méretezési csoport üzembe helyezési, az Azure virtuális gép függőségi ügynök bővítmény segítségével telepítse az ügynököt, hogy előkészítési folyamatot részeként. Hibrid környezetben a függőségi ügynök letölthető, és manuálisan telepíteni, vagy Azure-on kívül üzemeltetett ezeket a virtuális gépeket egy automatikus központi telepítési módszer használatával.  
+### <a name="the-microsoft-dependency-agent"></a>A Microsoft Dependency agent
+Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. A függőségi ügynök a Log Analytics-ügynököket a Log Analytics-kapcsolat támaszkodik. Ezért a rendszer a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök kell rendelkeznie. 
+
+Engedélyezi az Azure Monitor-beli virtuális gépek egy Azure virtuális Gépen, vagy az ipari méretekben üzembe helyezési módszert használja, a felhasználói élményt részeként az ügynök telepítése az Azure virtuális gép függőségi ügynök bővítmény használatára van szükség. 
+
+Hibrid környezetben, töltse le és telepítse a függőségi ügynök két módszer egyikével: manuális, illetve egy automatikus telepítési módszer használatával, virtuális gépek, amelyek üzemeltetett Azure-on kívülről. 
 
 A következő táblázat ismerteti a térkép funkció támogatja a hibrid környezetben összekapcsolt forrásokról.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. Operációs rendszerek teljes listáját lásd: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. Operációs rendszerek teljes listáját lásd: [támogatott operációs rendszerek](#supported-operating-systems). |
 | System Center Operations Manage felügyeleti csoport | Nem | |  
 
-A függőségi ügynök a következő helyről lehet letölteni.
+A függőségi ügynök letölthető a következő helyekről:
 
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
@@ -163,54 +175,62 @@ A függőségi ügynök a következő helyről lehet letölteni.
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
-A következő hozzáférést kell adni a felhasználók számára, annak érdekében, az Azure monitorban funkcióhoz férhet hozzá a virtuális gépek számára.  
+Engedélyezze, és az Azure monitorban funkcióhoz férhet hozzá a virtuális gépek kell a következő hozzáférési szerepköröket hozzárendelni: 
   
-- A megoldás engedélyezéséhez adható hozzá a Log Analytics közreműködő szerepkör tagjaként kell.  
+- A megoldás engedélyezéséhez rendelkeznie kell a *Log Analytics-közreműködő* szerepkör. 
 
-- A teljesítmény, egészségügyi, megtekintése, és adatokat, az Azure virtuális gép és virtuális gépek az Azure Monitor szolgáltatással konfigurált Log Analytics-munkaterületet a Monitoring Reader szerepkör tagjaként hozzá kell.   
+- Teljesítmény, egészségügyi, megtekintése, és adatokat, rendelkeznie kell a *Monitoring Reader* az Azure virtuális gép szerepkör. A Log Analytics-munkaterület-beli virtuális gépek az Azure Monitor kell konfigurálni.  
 
 A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
 
-## <a name="enable-from-the-azure-portal"></a>Az Azure Portalról engedélyezése
+## <a name="enable-monitoring-in-the-azure-portal"></a>Engedélyezze a monitorozást az Azure Portalon
 Ha engedélyezni szeretné az Azure Portalon az Azure Virtuálisgép-monitorozási, tegye a következőket:
 
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
-2. Az Azure Portalon válassza ki a **virtuális gépek**. 
-3. Válasszon ki egy virtuális gépet a listából. 
-4. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)**.
-5. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Válassza ki **virtuális gépek**. 
+1. Válasszon ki egy virtuális gépet a listából. 
+1. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)**.
+1. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
 
     ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](./media/vminsights-onboard/enable-vminsights-vm-portal-01.png)
 
-5. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  A lista preselects az alapértelmezett munkaterületre és a helyre, amely a virtuális gép telepítve van az előfizetésben. 
+1. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  
+    A lista preselects az alapértelmezett munkaterületre és a helyre, amely a virtuális gép telepítve van az előfizetésben. 
 
     >[!NOTE]
-    >Ha azt szeretné, a virtuális gépről a monitorozási adatok tárolására szolgáló új Log Analytics-munkaterület létrehozásához kövesse a [hozzon létre egy Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md) a támogatott régiók egyikében korábban felsorolt.   
+    >Ha azt szeretné, a virtuális gépről a monitorozási adatok tárolására szolgáló új Log Analytics-munkaterület létrehozásához kövesse a [hozzon létre egy Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md) a támogatott régiók egyikében korábban felsorolt.  
 
-Miután engedélyezte a figyelés, a virtuális gép mérőszámok megtekintéséhez nagyjából 10 percet igénybe vehet. 
+Miután engedélyezte a figyelés, előtt megtekintheti a mérőszámok a virtuális gép körülbelül 10 percet vehet igénybe. 
 
 ![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](./media/vminsights-onboard/onboard-vminsights-vm-portal-status.png)
 
 
-## <a name="on-boarding-at-scale"></a>Az előkészítési ipari méretekben
-Ez a szakasz útmutatást hajtsa végre az a következő felhőméretű üzembe Azure monitor használatával, vagy az Azure Policy-beli virtuális gépek vagy az Azure PowerShell használatával.  
+## <a name="deploy-at-scale"></a>Üzembe helyezés
+Ebben a szakaszban, üzembe helyezés az Azure Monitor-beli virtuális gépek vagy az Azure Policy, vagy az Azure PowerShell használatával. 
 
-A lépéseket kell elvégeznie, mielőtt konfigurálhatná üzembe helyezésében a virtuális gépek előre konfigurálása a Log Analytics-munkaterület foglalja össze vannak.
+A virtuális gépek üzembe helyezése, előtt előre konfigurálhatja a Log Analytics-munkaterület az alábbiak szerint:
+
+1. Ha még nem rendelkezik egy munkaterületet, hozzon létre egyet az Azure Monitor által támogatott virtuális gépek számára.  
+    Mielőtt folytatná, tekintse meg a [munkaterületeinek kezeléséhez](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) költség, felügyeleti és megfelelőségi szempontok megismerése.      
 
 1. Hozzon létre egy új munkaterületen, ha egy még nem létezik, amely használható az Azure Monitor virtuális gépek támogatásához. Felülvizsgálat [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json) egy új munkaterületet, a költség, felügyeleti és megfelelőségi szempontokat a folytatás előtt létrehozása előtt.       
-2. Engedélyezze a teljesítményszámlálók a munkaterületen, a Linux és Windows virtuális gépeken a gyűjteményhez.
-3. Telepíteni és engedélyezni az **ServiceMap** és **InfrastructureInsights** megoldás a munkaterületén.  
 
-### <a name="setup-log-analytics-workspace"></a>Log Analytics-munkaterület beállítása
-Ha nem rendelkezik a Log Analytics-munkaterületet, tekintse át a javasolt alatt elérhető módszerek a [Előfeltételek](#log-analytics) szakasz hozhat létre egyet.  
+1. Engedélyezze a teljesítményszámlálók a munkaterületen, a Linux és Windows virtuális gépeken a gyűjteményhez.
+
+1. Telepítse, és engedélyezze a ServiceMap és InfrastructureInsights megoldást a munkaterületén. 
+
+### <a name="set-up-a-log-analytics-workspace"></a>Log Analytics-munkaterület beállítása
+Ha a Log Analytics-munkaterület nincs, hozzon létre egyet a módszereket, a javasolt áttekintésével a ["Előfeltételek"](#log-analytics) szakaszban. 
 
 #### <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../azure-monitor/platform/data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már nincs konfigurálva a megoldás által igényelt a teljesítményszámlálók adatainak összegyűjtése, meg kell engedélyezheti őket. Ezt két módon teheti meg:
+* Leírtak szerint manuálisan [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Letöltésével és futtatásával egy PowerShell-parancsprogram, amely elérhető a [Azure PowerShell-galéria](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
  
 #### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Telepítse a ServiceMap és InfrastructureInsights megoldásokat
-Ez a módszer egy JSON-sablon ahhoz, hogy a megoldás-összetevőket a Log Analytics-munkaterület konfigurációját tartalmazza.  
+Ez a módszer egy JSON-sablon, amely a megoldás-összetevőket a Log Analytics-munkaterület engedélyezése konfigurációját tartalmazza. 
 
-Ha ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalmát, lásd:
+Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
@@ -280,9 +300,9 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ]
     ```
 
-2. Mentse a fájlt **installsolutionsforvminsights.json** egy helyi mappába.
-3. Értékeinek szerkesztéséhez **WorkspaceName**, **ResourceGroupName**, és **WorkspaceLocation**.  Az érték **WorkspaceName** a Log Analytics-munkaterületet, amely magában foglalja a munkaterület neve és értéke a teljes erőforrás-Azonosítójára van **WorkspaceLocation** a régió, a munkaterület van definiálva.
-4. Készen áll a sablon a következő PowerShell-paranccsal üzembe helyezésére:
+1. Mentse a fájlt *installsolutionsforvminsights.json* egy helyi mappába.
+1. Értékeinek szerkesztéséhez *WorkspaceName*, *ResourceGroupName*, és *WorkspaceLocation*. Az érték *WorkspaceName* a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
+1. Készen áll a sablon üzembe helyezése a következő PowerShell-parancs használatával:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
@@ -294,96 +314,99 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     provisioningState       : Succeeded
     ```
 
-### <a name="enable-using-azure-policy"></a>Engedélyezze az Azure Policy használata
-Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű, amely biztosítja az egységes megfelelőségi és az új virtuális gépek kiépítése, automatikus engedélyezést [Azure Policy](../../azure-policy/azure-policy-introduction.md) ajánlott. Ezek a házirendek:
+### <a name="enable-by-using-azure-policy"></a>Az Azure Policy segítségével
+Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű oly módon, hogy elősegíti a következetes megfelelőség és az újonnan létrehozott virtuális gépek automatikus engedélyezése, javasoljuk, hogy [Azure Policy](../../azure-policy/azure-policy-introduction.md). Ezek a házirendek:
 
-* Log Analytics-ügynököket és a függőségi ügynök üzembe helyezése 
-* Jelentés a megfelelőségi eredmények 
-* Nem kompatibilis virtuális gépek szervizelése
+* A Log Analytics-ügynököket és a függőségi ügynök üzembe helyezése. 
+* Megfelelési eredmények jelentést. 
+* Javítsa a nem kompatibilis virtuális gépek.
 
-A szabályzat a bérlőhöz virtuális gépek engedélyezése az Azure Monitor van szükség: 
+Az Azure Monitor engedélyezése a virtuális gépek a bérlő Azure Policy használatával: 
 
-- A hatókör – a felügyeleti csoportban, előfizetéshez vagy erőforráscsoporthoz a kezdeményezés hozzárendelése 
-- Tekintse át és szervizelése megfelelőségi eredmények  
+- A kezdeményezés hozzárendelése egy hatókör: felügyeleti csoport, előfizetéshez vagy erőforráscsoporthoz 
+- Tekintse át és szervizelése megfelelőségi eredményeit  
 
-Az Azure szabályzat-hozzárendelés további információkért lásd: [Azure Policy – áttekintés](../../governance/policy/overview.md#policy-assignment) , és tekintse át a [felügyeleti csoportok áttekintése](../../governance/management-groups/index.md) a folytatás előtt.  
+Azure Policy hozzárendelésével kapcsolatos további információkért lásd: [Azure Policy – áttekintés](../../governance/policy/overview.md#policy-assignment) , és tekintse át a [felügyeleti csoportok áttekintése](../../governance/management-groups/index.md) a folytatás előtt. 
 
-Az alábbi táblázat felsorolja a megadott szabályzatdefiníciók.  
-
-|Name (Név) |Leírás |Típus |  
-|-----|------------|-----|  
-|[Előzetes verzió]: a virtuális gépek az Azure Monitor engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (VM) a megadott hatókör (felügyeleti csoport, előfizetéshez vagy erőforráscsoportot). Log Analytics-munkaterület szükséges paraméterként. |Kezdeményezés |  
-|[Előzetes verzió]: naplózási függőségi ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |A virtuális gépek nem megfelelőként való jelentése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: naplózási Log Analytics ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |A virtuális gépek nem megfelelőként való jelentése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |A linuxos virtuális gépekhez készült Dependency Agent telepítése, ha a VM-lemezkép (operációs rendszer) szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: a függőségi ügynököt Windows virtuális gépek üzembe helyezése |A windowsos virtuális gépekhez készült Dependency Agent telepítése, ha a VM-lemezkép (operációs rendszer) szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |A linuxos virtuális gépekhez készült Log Analytics Agent telepítése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |A windowsos virtuális gépekhez készült Log Analytics Agent telepítése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
-
-Önálló házirend (amelyet a kezdeményezés nem tartalmaz) 
+A szabályzatdefiníciók a következő táblázatban láthatók: 
 
 |Name (Név) |Leírás |Típus |  
 |-----|------------|-----|  
-|[Előzetes verzió]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása |Jelentést nem megfelelő virtuális gépek, ha azok nem naplózza a szabályzat/kezdeményezés-hozzárendelés megadott LA-munkaterülethez. |Szabályzat |
+|[Előzetes verzió]: a virtuális gépek az Azure Monitor engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (VM) a megadott hatókör (felügyeleti csoport, előfizetéshez vagy erőforráscsoportot). Log Analytics-munkaterületet használja paraméterként. |Kezdeményezés |  
+|[Előzetes verzió]: naplózási függőségi ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: naplózási Log Analytics ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |Függőségi ügynök telepítése Linux rendszerű virtuális gépekhez a virtuális gép (OS) rendszerkép definiálása a listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: a függőségi ügynököt Windows virtuális gépek üzembe helyezése |Ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve, telepítse a függőségi ügynököt Windows virtuális. |Szabályzat |  
+|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépekhez a virtuális gép (OS) rendszerkép definiálása a listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Log Analytics ügynök Windows virtuális gépek üzembe helyezése, ha a virtuális gép rendszerkép (OS) van definiálva, a listában, és az ügynök nincs telepítve. |Szabályzat |  
 
-#### <a name="assign-azure-monitor-initiative"></a>Az Azure Monitor kezdeményezés hozzárendelése
+(Nem tartalmazza a kezdeményezés-) önálló házirend az alábbiakban ismertetjük: 
+
+|Name (Név) |Leírás |Típus |  
+|-----|------------|-----|  
+|[Előzetes verzió]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása |Virtuális gépek jelentést nem megfelelő, ha azok nem naplózását a házirend/kezdeményezés-hozzárendelést a megadott Log Analytics-munkaterületen. |Szabályzat |
+
+#### <a name="assign-the-azure-monitor-initiative"></a>Az Azure Monitor kezdeményezés hozzárendelése
 A jelen kezdeti kiadás csak az Azure Portalon hozhat létre a szabályzat-hozzárendelés. Megtudhatja, hogyan hajtsa végre ezeket a lépéseket, tekintse meg [szabályzat-hozzárendelés létrehozása az Azure Portalról](../../governance/policy/assign-policy-portal.md). 
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet. 
-2. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
-3. Válassza ki **kezdeményezés hozzárendelése** tetején a **szabályzat – hozzárendelések** lapot.
-4. Az a **kezdeményezés hozzárendelése** lapon válassza ki a **hatókör** , kattintson a három pontra, és válassza ki, vagy egy felügyeleti csoporthoz, vagy előfizetésben, és opcionálisan egy erőforráscsoportot. A hatókör kényszerítésre kijelölt virtuális gépek csoportja, ebben az esetben a szabályzat-hozzárendelés korlátozza. Kattintson a **kiválasztása** alján a **hatókör** lapon a módosítások mentéséhez.
-5. **A kizárások** lehetővé teszi, hogy hagyja ki egy vagy több erőforrást hatálya alá, amely nem kötelező. 
-6. Válassza ki a **kezdeményezésdefiníció** elérhető definíciók listájának megnyitásához, majd válassza a három pontot ábrázoló  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek** csoportot a listából, és kattintson **Kiválasztása**.
-7. A **hozzárendelés neve** automatikusan kitölti a kezdeményezés nevét a kijelölt, de ezt módosíthatja. Ha szeretné hozzáadhat egy **Leírást**. **Által hozzárendelt** automatikusan alapján van feltöltve éppen bejelentkezett, és ez a mező nem kötelező.
-8. Válassza ki a **Log Analytics-munkaterület** a legördülő listából, amely a támogatott régióban érhető el.
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon, válassza a **minden szolgáltatás**, majd keresse meg és válassza a **házirend**. 
+1. Az Azure Policy oldalára bal oldali panelén válassza **hozzárendelések**.  
+    A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
+1. Felső részén a **szabályzat – hozzárendelések** lapon jelölje be **kezdeményezés hozzárendelése**.
+1. Az a **kezdeményezés hozzárendelése** lapon válassza ki a **hatókör** , kattintson a három pontra (...), és válassza ki a felügyeleti csoportot vagy előfizetést.  
+    Ebben a példában egy hatókör korlátozza a szabályzat-hozzárendelést a csoportosított kényszerítésre kijelölt virtuális gépek.
+1. Alsó részén a **hatókör** lapon mentse a módosításokat kiválasztásával **kiválasztása**.
+1. (Nem kötelező) A hatókör egy vagy több erőforrás eltávolításához jelölje ki **kizárások**. 
+1. Válassza ki a **kezdeményezésdefiníció** három pontra (...) elérhető definíciók listájának megjelenítéséhez jelölje ki  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek**, majd válassza ki a  **Válassza ki**.  
+    A **hozzárendelés neve** mezőt automatikusan kitölti a kiválasztott kezdeményezési nevű, de ezt módosíthatja. Az opcionális leírást is hozzáadhat. A **által hozzárendelt** mezőt automatikusan kitölti éppen bejelentkezett alapján, és ezt az értéket nem kötelező.
+1. Az a **Log Analytics-munkaterület** legördülő listában a támogatott régió, válassza ki egy munkaterületet.
 
     >[!NOTE]
-    >A munkaterület-e a hozzárendelés hatókörén kívül esik, meg kell adnia **Log Analytics-közreműködő** engedélyeket a szabályzat-hozzárendelés egyszerű azonosító. Ha ezt nem teszi meg jelenhet meg üzembe helyezési hibák például: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` felülvizsgálati [hogyan konfigurálhatja manuálisan a felügyelt identitás](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity) hozzáférést.
-    >
-
-9. Figyelje meg a **felügyelt identitás** beállítás be van jelölve. Ez a rendszer ellenőrzi, amikor a kezdeményezés érvényessége a felhasználóhoz a deployIfNotExists hatást házirendet is tartalmaz. Az a **identitás kezelése hely** legördülő listára, válassza ki a megfelelő régiót.  
-10. Kattintson a **Hozzárendelés** gombra.
+    >Ha a munkaterület a hozzárendelés hatókörén kívül esik, biztosítson *Log Analytics-közreműködő* engedélyeket a szabályzat-hozzárendelés egyszerű azonosító. Ha nem ezt teszi, megjelenhet egy központi telepítési hiba például: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` hozzáférést biztosítani, tekintse át a [hogyan konfigurálhatja manuálisan a felügyelt identitás](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+    >  
+    A **felügyelt identitás** jelölőnégyzet be van jelölve, a kezdeményezés érvényessége a felhasználóhoz egy házirend tartalmazza a *deployIfNotExists* érvénybe. 
+1. Az a **identitás kezelése hely** legördülő listára, válassza ki a megfelelő régiót. 
+1. Válassza a **Hozzárendelés** elemet.
 
 #### <a name="review-and-remediate-the-compliance-results"></a>Tekintse át és szervizelése megfelelőségi eredményeit 
 
-Megismerheti a megfelelőségi eredmények áttekintéséhez olvassa el [azonosíthatja a meg nem felelés eredmények](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Válassza ki **megfelelőségi** az oldal bal oldalán található, és keresse meg a  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek** kezdeményezés, amelyek nem felelnek meg a létrehozott hozzárendelést a száma.
+Megismerheti a megfelelőségi eredmények áttekintéséhez olvassa el [azonosíthatja a meg nem felelés eredmények](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). A bal oldali panelen válassza ki a **megfelelőségi**, majd keresse meg a  **[Előzetes verzió] engedélyezése az Azure Monitor-beli virtuális gépek** kezdeményezés-beli virtuális gépek nem megfelelő, a hozzárendelés alapján Ön létrehozott.
 
 ![Szabályzatoknak való megfelelés, Azure-beli virtuális gépek](./media/vminsights-onboard/policy-view-compliance-01.png)
 
 A kezdeményezés található házirendek eredményei alapján a virtuális gépek jelentett nem megfelelő a következő esetekben:  
   
-1. A log Analytics vagy a függőségi ügynök nincs telepítve.  
-   Ez a jellemző rendelkező meglévő virtuális gépek hatókör. Veszélyt, [javítási feladatok létrehozása](../../governance/policy/how-to/remediate-resources.md) üzembe helyezéséhez szükséges ügynökök nem megfelelő szabályzat.    
+* A log Analytics vagy a függőségi ügynök nincs telepítve. 
+   Ebben a forgatókönyvben jellemző, a meglévő virtuális gépek hatókör. Csökkentése érdekében, hogy, üzembe helyezése a szükséges ügynökök által [szervizelési feladatokat hozhat létre](../../governance/policy/how-to/remediate-resources.md) lévő nem megfelelő házirendhez.   
  
     - [Előzetes verzió]: Deploy Dependency Agent for Linux VMs   
     - [Előzetes verzió]: Deploy Dependency Agent for Windows VMs  
     - [Előzetes verzió]: Deploy Log Analytics Agent for Linux VMs  
     - [Előzetes verzió]: Deploy Log Analytics Agent for Windows VMs  
 
-2. VM-lemezkép (OS) nem szerepel a szabályzat-definícióban meghatározott listában.  
-   A feltételek a központi telepítési házirend csak a jól ismert Azure-beli Virtuálisgép-rendszerképeket üzembe helyezett virtuális gépeket tartalmazza. Ellenőrizze a dokumentációban, ha a virtuális gép operációs rendszerének vagy nem támogatott. Ha nem érhető el, majd kell ismétlődő a központi telepítésre vonatkozó házirendet és a frissítése vagy módosítja azt, hogy a rendszerkép megfelelő legyen. 
+* VM-lemezkép (OS) nem azonosítja a szabályzat-definícióban. 
+   A feltételek a központi telepítésre vonatkozó házirendet, például csak jól ismert Azure Virtuálisgép-rendszerképekből telepített virtuális gépekkel. Ellenőrizze a dokumentációban, megtekintéséhez, hogy támogatott-e a virtuális gép operációs rendszerének. Nem támogatott, ha a központi telepítésre vonatkozó házirendet és a frissítés ismétlődő, vagy módosítsa azt, hogy a rendszerkép megfelelő legyen. 
   
     - [Előzetes verzió]: naplózási függőségi ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő  
     - [Előzetes verzió]: naplózási Log Analytics ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő
 
-3. Virtuális gépek nem jelentkezik a megadott LA munkaterületet.  
-Lehetséges, hogy néhány virtuális gépet a kezdeményezési hatókörében jelentkezik a és a különböző LA munkaterület a szabályzat-hozzárendelésben megadott. Ez a szabályzat egy olyan eszköz azonosításához, amely a virtuális gépek egy nem megfelelő munkaterületnek jelentenek.  
+* Virtuális gépek nem jelentkezik be a megadott Log Analytics-munkaterületet.  
+    Akkor lehet, hogy néhány virtuális gépet a kezdeményezési hatókörében jelentkeznek be a másik a szabályzat-hozzárendelés megadott Log Analytics-munkaterületet. Ez a szabályzat egy olyan eszköz azonosításához, amely a virtuális gépek egy nem megfelelő munkaterületnek jelentenek. 
  
     - [Előzetes verzió]: Audit Log Analytics Workspace for VM - Report Mismatch  
 
 ### <a name="enable-with-powershell"></a>Engedélyezze a PowerShell-lel
-Engedélyezi az Azure Monitor-beli virtuális gépek több virtuális gép vagy virtuálisgép-méretezési csoportok, használhatja egy megadott PowerShell-szkript – [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) folytatva befejezheti a feladatot az Azure PowerShell-galériából érhető el.  Ez a szkript algoritmusa minden virtuális gép és a virtuális gép méretezési csoportot az előfizetésében, a megadott hatókörön belüli erőforráscsoportban *ResourceGroup*, és a egy egyetlen virtuális gép vagy virtuálisgép-méretezési általmegadott*Neve*.  Minden virtuális gép vagy a virtuális gép méretezési csoport esetében a szkript ellenőrzi, ha a Virtuálisgép-bővítmény már telepítve van, és ha nem, telepítse újra a kísérletet.  Ellenkező esetben halad a Log Analytics és a függőségi ügynök Virtuálisgép-bővítmények telepítése.   
+Engedélyezi az Azure Monitor-beli virtuális gépek több virtuális gép vagy virtuálisgép-méretezési csoportok, használhatja a PowerShell-parancsfájl [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), az Azure PowerShell-galériából érhető el. Ez a szkript minden virtuális gép és a virtuális gép méretezési csoportot az előfizetésében, a hatókörön belüli erőforráscsoport által meghatározott végighalad *ResourceGroup*, vagy egy egyetlen virtuális gép vagy virtuálisgép-méretezési csoporthoz által megadott *Neve*. Minden virtuális gép vagy a virtuális gép méretezési csoport esetében a szkript ellenőrzi a Virtuálisgép-bővítmény telepítve van-e már. Ha a Virtuálisgép-bővítmény nincs telepítve, a parancsfájl megpróbálja újra kell telepíteni. Ha a Virtuálisgép-bővítmény telepítve van, a parancsfájl telepíti a Log Analytics és a függőségi ügynök Virtuálisgép-bővítmények.  
 
-A szkriptnek szüksége van az Azure PowerShell 5.7.0 modul verzió vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+A szkriptnek szüksége van az Azure PowerShell 5.7.0 modul verzió vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 
-A parancsfájllal kapcsolatos segítséget szeretne kérni, futtathatja `Get-Help` argumentum részletes és gyakorlati példa listáját.   
+A parancsfájl argumentum részletek és a példa használati listájának lekéréséhez futtassa `Get-Help`.  
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
 
 SYNOPSIS
-    This script installs VM extensions for Log Analytics and Dependency Agent as needed for VM Insights.
+    This script installs VM extensions for Log Analytics and the Dependency agent as needed for VM Insights.
 
 
 SYNTAX
@@ -393,7 +416,7 @@ SYNTAX
 
 
 DESCRIPTION
-    This script installs or re-configures following on VM's and VM Scale Sets:
+    This script installs or re-configures following on VMs and VM Scale Sets:
     - Log Analytics VM Extension configured to supplied Log Analytics Workspace
     - Dependency Agent VM Extension
 
@@ -403,7 +426,7 @@ DESCRIPTION
     - Specific VM/VM Scale Set
     - Compliance results of a policy for a VM or VM Extension
 
-    Script will show you list of VM's/VM Scale Sets that will apply to and let you confirm to continue.
+    Script will show you list of VMs/VM Scale Sets that will apply to and let you confirm to continue.
     Use -Approve switch to run without prompting, if all required parameters are provided.
 
     If the extensions are already installed will not install again.
@@ -421,16 +444,16 @@ PARAMETERS
 
     -SubscriptionId <String>
         SubscriptionId for the VMs/VM Scale Sets
-        If using PolicyAssignmentName parameter, subscription that VM's are in
+        If using PolicyAssignmentName parameter, subscription that VMs are in
 
     -ResourceGroup <String>
-        <Optional> Resource Group to which the VMs or VM Scale Sets belong to
+        <Optional> Resource Group to which the VMs or VM Scale Sets belong
 
     -Name <String>
         <Optional> To install to a single VM/VM Scale Set
 
     -PolicyAssignmentName <String>
-        <Optional> Take the input VM's to operate on as the Compliance results from this Assignment
+        <Optional> Take the input VMs to operate on as the Compliance results from this Assignment
         If specified will only take from this source.
 
     -ReInstall [<SwitchParameter>]
@@ -440,11 +463,11 @@ PARAMETERS
         <Optional> Set this flag to trigger update of VM instances in a scale set whose upgrade policy is set to Manual
 
     -Approve [<SwitchParameter>]
-        <Optional> Gives the approval for the installation to start with no confirmation prompt for the listed VM's/VM Scale Sets
+        <Optional> Gives the approval for the installation to start with no confirmation prompt for the listed VMs/VM Scale Sets
 
     -WorkspaceRegion <String>
         Region the Log Analytics Workspace is in
-        Suported values: "East US","eastus","Southeast Asia","southeastasia","West Central US","westcentralus","West Europe","westeurope"
+        Supported values: "East US","eastus","Southeast Asia","southeastasia","West Central US","westcentralus","West Europe","westeurope"
         For Health supported is: "East US","eastus","West Central US","westcentralus"
 
     -WhatIf [<SwitchParameter>]
@@ -464,19 +487,19 @@ PARAMETERS
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup>
 
-    Install for all VM's in a Resource Group in a subscription
+    Install for all VMs in a Resource Group in a subscription
 
     -------------------------- EXAMPLE 2 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup> -ReInstall
 
-    Specify to ReInstall extensions even if already installed, for example to update to a different workspace
+    Specify to reinstall extensions even if already installed, for example to update to a different workspace
 
     -------------------------- EXAMPLE 3 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -PolicyAssignmentName a4f79f8ce891455198c08736 -ReInstall
 
-    Specify to use a PolicyAssignmentName for source, and to ReInstall (move to a new workspace)
+    Specify to use a PolicyAssignmentName for source, and to reinstall (move to a new workspace)
 ```
 
 A következő példa bemutatja a mappában található a PowerShell-parancsok segítségével engedélyezése az Azure Monitor-beli virtuális gépek és a várt kimeneti megismerése:
@@ -487,16 +510,16 @@ $WorkspaceKey = "<Key>"
 $SubscriptionId = "<GUID>"
 .\Install-VMInsights.ps1 -WorkspaceId $WorkspaceId -WorkspaceKey $WorkspaceKey -SubscriptionId $SubscriptionId -WorkspaceRegion eastus
 
-Getting list of VM's or VM ScaleSets matching criteria specified
+Getting list of VMs or VM ScaleSets matching criteria specified
 
-VM's or VM ScaleSets matching criteria:
+VMs or VM ScaleSets matching criteria:
 
 db-ws-1 VM running
 db-ws2012 VM running
 
-This operation will install the Log Analytics and Dependency Agent extensions on above 2 VM's or VM Scale Sets.
-VM's in a non-running state will be skipped.
-Extension will not be re-installed if already installed. Use -ReInstall if desired, for example to update workspace
+This operation will install the Log Analytics and Dependency agent extensions on above 2 VMs or VM Scale Sets.
+VMs in a non-running state will be skipped.
+Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example to update workspace
 
 Confirm
 Continue?
@@ -528,41 +551,41 @@ Not running - start VM to configure: (0)
 Failed: (0)
 ```
 
-## <a name="enable-for-hybrid-environment"></a>A hibrid környezet engedélyezése
-Ez a szakasz ismerteti, hogyan előkészítheti a virtuális gépeket vagy fizikai számítógépek üzemeltetett az adatközpontban vagy egyéb felhőkörnyezet által az Azure Monitor-beli virtuális gépek figyelésére.  
+## <a name="enable-for-a-hybrid-environment"></a>A hibrid környezet engedélyezése
+Ez a szakasz azt ismerteti, hogyan helyezhet üzembe virtuális gépeket vagy fizikai számítógépeket, amelyek az adatközpontban vagy egyéb felhőalapú környezetek figyelés által üzemeltetett Azure Monitor-beli virtuális gépek. 
 
-Az Azure Monitor, virtuális gépek térkép függőségi ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../../azure-monitor/platform/gateway.md) Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépeken a hálózat csatlakozik az internethez.
+Az Azure Monitor, virtuális gépek térkép függőségi ügynök maga adatokat nem továbbít, és nincs szükség tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../../azure-monitor/platform/gateway.md) , ha az informatikai biztonsági szabályzatok nem engedélyezése a számítógépek a hálózat csatlakozik az internethez.
 
-Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../azure-monitor/platform/log-analytics-agent.md).  
+Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../log-analytics/log-analytics-agent-overview.md). 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Összesített lépéseket:
+A lépések a következőképpen lehet összefoglalni:
 
-1. Log Analytics-ügynököket telepíteni Windows vagy Linux
-2. Töltse le és telepítse az Azure Monitor a virtuális gépek térkép függőségi ügynök [Windows](https://aka.ms/dependencyagentwindows) vagy [Linux](https://aka.ms/dependencyagentlinux).
-3. Teljesítményszámlálók gyűjtésének engedélyezéséhez
-4. A virtuális gépek előkészítése az Azure Monitor
+1. Telepítse a Log Analytics-ügynököket Windows vagy Linux.
+1. Töltse le és telepítse az Azure Monitor, a virtuális gépek térkép függőségi ügynök [Windows](https://aka.ms/dependencyagentwindows) vagy [Linux](https://aka.ms/dependencyagentlinux).
+1. A teljesítményszámlálók gyűjtésének engedélyezéséhez.
+1. Az Azure Monitor-beli virtuális gépek üzembe helyezése.
 
 ### <a name="install-the-dependency-agent-on-windows"></a>Telepítse a függőségi ügynököt Windows 
-A függőségi ügynök telepítheti manuálisan a Windows-számítógépeken futó `InstallDependencyAgent-Windows.exe`. Ha a végrehajtható fájl kapcsolók nélkül futtatja, a telepítővarázsló, amelyek telepítéséhez az interaktív módon elindítja.  
+Telepítheti a függőségi ügynök manuálisan a Windows-számítógépeken futó `InstallDependencyAgent-Windows.exe`. Ha a végrehajtható fájl kapcsolók nélkül futtatja, a telepítővarázsló, amelyekkel az ügynök telepítéséhez interaktív módon elindítja. 
 
 >[!NOTE]
->Az ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
+>*Rendszergazdai* jogosultság szükséges telepíteni, vagy távolítsa el az ügynököt.
 
-Az alábbi táblázat a parancssorból az ügynök a telepítő által támogatott konkrét paraméterei emeli ki.  
+Az alábbi táblázat a paramétereket, az ügynök a parancssorból a telepítő által támogatott emeli ki. 
 
 | Paraméter | Leírás |
 |:--|:--|
 | /? | A parancssori kapcsolók listáját adja vissza. |
-| /S | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
+| /S | Felhasználói beavatkozás nélkül csendes telepítést hajt végre. |
 
-Ha például az a telepítőprogram futtatásához a `/?` írja be a paraméter `InstallDependencyAgent-Windows.exe /?`
+Ha például az a telepítőprogram futtatása a `/?` írja be a paraméter **InstallDependencyAgent-Windows.exe /?**.
 
-A Windows a függőségi ügynök fájlok vannak telepítve a `C:\Program Files\Microsoft Dependency Agent` alapértelmezés szerint.  Ha a függőségi ügynök nem a telepítés befejezése után indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A naplózási könyvtár `%Programfiles%\Microsoft Dependency Agent\logs`. 
+A Windows a függőségi ügynök fájlok vannak telepítve a *C:\Program Files\Microsoft függőségi ügynök* alapértelmezés szerint. Ha a függőségi ügynök nem a telepítés befejezése után indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A naplózási könyvtár *%Programfiles%\Microsoft függőségi Agent\logs*. 
 
 ### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
-A függőségi ügynök telepítve van a Linux-kiszolgálókon `InstallDependencyAgent-Linux64.bin`, azt a héjparancsfájlt, egy önkicsomagoló bináris. A fájl használatával futtathatja `sh` vagy adjon hozzá végrehajtási engedélyeket magát a fájlt.
+A függőségi ügynök telepítve van a Linux-kiszolgálókon *InstallDependencyAgent-Linux64.bin*, azt a héjparancsfájlt, egy önkicsomagoló bináris. A fájl használatával futtathatja `sh` vagy adjon hozzá végrehajtási engedélyeket magát a fájlt.
 
 >[!NOTE]
 > Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
@@ -572,13 +595,13 @@ A függőségi ügynök telepítve van a Linux-kiszolgálókon `InstallDependenc
 |:--|:--|
 | – Súgó | A parancssori kapcsolók listájának lekérése. |
 | -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
-| --ellenőrzése | Az engedélyek és az operációs rendszer ellenőrzése, az ügynök telepítése nélkül. |
+| --ellenőrzése | Ellenőrizze a jogosultságokat és az operációs rendszer, de ne telepítse az ügynököt. |
 
-Ha például az a telepítőprogram futtatása a `-help` paraméterként `InstallDependencyAgent-Linux64.bin -help`.
+Ha például az a telepítőprogram futtatása a `-help` paraméter, írja be **InstallDependencyAgent-Linux64.bin-súgó**.
 
-A Linux függőségi ügynök telepítése a rendszergazdaként a következő parancs futtatásával `sh InstallDependencyAgent-Linux64.bin`
+A Linux függőségi ügynök telepítése a rendszergazdaként a következő parancs futtatásával `sh InstallDependencyAgent-Linux64.bin`.
     
-Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A Linux-ügynökök, a naplózási könyvtár van `/var/opt/microsoft/dependency-agent/log`.
+Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A Linux-ügynökök, a naplózási könyvtár van */var/opt/microsoft/dependency-agent/log*.
 
 A függőségi ügynök fájlok kerülnek a következő könyvtárak:
 
@@ -591,12 +614,14 @@ A függőségi ügynök fájlok kerülnek a következő könyvtárak:
 | Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../azure-monitor/platform/data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már nincs konfigurálva a megoldás által igényelt a teljesítményszámlálók adatainak összegyűjtése, szüksége lesz az engedélyezésükhöz. Ezt két módon teheti meg: 
+* Leírtak szerint manuálisan [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Letöltésével és futtatásával egy PowerShell-parancsprogram, amely elérhető a [Azure PowerShell-galéria](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
  
-### <a name="onboard-azure-monitor-for-vms"></a>A virtuális gépek előkészítése az Azure Monitor
-Ez a módszer egy JSON-sablon ahhoz, hogy a megoldás-összetevőket a Log Analytics-munkaterület konfigurációját tartalmazza.  
+### <a name="deploy-azure-monitor-for-vms"></a>Az Azure Monitor-beli virtuális gépek üzembe helyezése
+Ez a módszer egy JSON-sablon, amely a megoldás-összetevőket a Log Analytics-munkaterület engedélyezése konfigurációját tartalmazza. 
 
-Ha ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalmát, lásd:
+Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
@@ -668,9 +693,9 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ]
     ```
 
-2. Mentse a fájlt **installsolutionsforvminsights.json** egy helyi mappába.
-3. Értékeinek szerkesztéséhez **WorkspaceName**, **ResourceGroupName**, és **WorkspaceLocation**.  Az érték **WorkspaceName** a Log Analytics-munkaterületet, amely magában foglalja a munkaterület neve és értéke a teljes erőforrás-Azonosítójára van **WorkspaceLocation** a régió, a munkaterület van definiálva.
-4. Készen áll a sablon a következő PowerShell-paranccsal üzembe helyezésére:
+1. Mentse a fájlt *installsolutionsforvminsights.json* egy helyi mappába.
+1. Értékeinek szerkesztéséhez *WorkspaceName*, *ResourceGroupName*, és *WorkspaceLocation*. Az érték *WorkspaceName* a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
+1. Készen áll a sablon üzembe helyezése a következő PowerShell-parancs használatával:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
@@ -681,10 +706,10 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ```powershell
     provisioningState       : Succeeded
     ```
-Miután engedélyezte a figyelés, állapota és a hibrid számítógép mérőszámok megtekintéséhez nagyjából 10 percet vehet igénybe. 
+Miután engedélyezte a figyelés, az állapot és a hibrid számítógép metrikák megtekintéséhez nagyjából 10 percet vehet igénybe. 
 
 ## <a name="performance-counters-enabled"></a>A teljesítményszámlálók engedélyezve
-A virtuális gépek az Azure Monitor konfigurálása a Log Analytics-munkaterületet a megoldás által használt teljesítményszámlálók adatainak összegyűjtése.  A következő táblázat felsorolja azokat az objektumokat és a megoldás által konfigurált számlálói gyűjtött minden 60 másodpercben.
+A virtuális gépek az Azure Monitor konfigurálása a Log Analytics-munkaterületet a megoldás által használt a teljesítményszámlálók adatainak összegyűjtése. A következő táblázat felsorolja azokat az objektumokat és a megoldás által konfigurált számlálói gyűjtött minden 60 másodpercben.
 
 ### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
 
@@ -724,11 +749,11 @@ A virtuális gépek az Azure Monitor konfigurálása a Log Analytics-munkaterül
 |Processzor |Processzoridő |  
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
-A Microsoft automatikusan gyűjt keresztül az Azure Monitor szolgáltatás használatának és teljesítményének adatait. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a szolgáltatás javítására használja. Adja meg a pontos és hatékony hibaelhárítási képességeket kínál, a térkép a szolgáltatás adatokat például az operációs rendszer és verzió, IP-cím, DNS-nevet és munkaállomás-neve, a szoftver konfigurációjára vonatkozó információkat tartalmaz. A Microsoft nem gyűjti a neveket, címeket és egyéb kapcsolattartási adatait.
+A Microsoft automatikusan gyűjt keresztül az Azure Monitor szolgáltatás használatának és teljesítményének adatait. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a szolgáltatás javítására használja. Pontos és hatékony hibaelhárítás képességeket biztosít, a térkép funkció adatait tartalmazza a szoftverek, például az operációs rendszer és verzió, IP-cím, DNS-nevet és munkaállomás neve konfigurációjával kapcsolatos információkat. A Microsoft nem gyűjt, neveket, címeket és egyéb kapcsolattartási adatait.
 
 Az adatok gyűjtésével és használatával kapcsolatos további információkért tekintse meg a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 ## <a name="next-steps"></a>További lépések
 
-A figyelés engedélyezve van a virtuális gép, ezt az információt és az Azure Monitor-beli virtuális gépek elemzési érhető el.  Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [a virtuális gépek állapotának megtekintése az Azure Monitor](vminsights-health.md), vagy a felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md).  
+Most, hogy a figyelés engedélyezve van a virtuális gépet, ezeket az adatokat és az Azure Monitor-beli virtuális gépek elemzési érhető el. Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [a virtuális gépek állapotának megtekintése az Azure Monitor](vminsights-health.md). Felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md). 
