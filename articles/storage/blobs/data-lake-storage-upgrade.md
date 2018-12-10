@@ -8,14 +8,14 @@ ms.author: normesta
 ms.date: 12/06/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0920e1f699ad16effe7b8b2b7e6a70e817880820
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c8ca1c54504bc827dc67251502ce53ee4e6fae80
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975360"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098542"
 ---
-# <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-gen1-to-azure-data-lake-storage-gen2-preview"></a>A big data-elemzési megoldások az Azure Data Lake Gen1 frissítsen az Azure Data Lake Storage Gen2 előzetes verzió
+# <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2-preview"></a>A big data-elemzési megoldások az Azure Data Lake Storage Gen1 frissítsen az Azure Data Lake Storage Gen2 előzetes verzió
 
 A big data-elemzési megoldások az Azure Data Lake Storage Gen1 használja, ha ez az útmutató segít ezen megoldások használata az Azure Data Lake Storage Gen2 előzetes verzió frissítése. Ez a dokumentum segítségével felmérheti a függőségeket, amely a megoldás a Data Lake Storage Gen1 rendelkezik. Ez az útmutató emellett bemutatja, hogyan tervezheti meg és hajtsa végre a frissítést.
 
@@ -128,7 +128,7 @@ Data Lake Storage Gen1 használata esetén a végpontok közötti folyamatok sz�
 | Használat          | [A Power bi Desktopban  ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-power-bi)                                                                           | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |
 |                      | [Excel ](https://techcommunity.microsoft.com/t5/Excel-Blog/Announcing-the-Azure-Data-Lake-Store-Connector-in-Excel/ba-p/91677)                                                 | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |
 |                      | [Analysis Services ](https://blogs.msdn.microsoft.com/analysisservices/2017/09/05/using-azure-analysis-services-on-top-of-azure-data-lake-storage/)                            | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |
-| Termelékenység         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nem támogatott*                                                                                                                                                              | Fiókkezelés *– mostantól elérhető* Adatműveletek *–**még nem érhető el*                                                                    |
+| Termelékenység         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nem támogatott*                                                                                                                                                              | Fiókkezelés *– mostantól elérhető* Adatműveletek *–**még nem érhető el*                                                                   |
 |                      | [A Data Lake Tools for Visual Studio ](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-data-lake-tools-install)                                   | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |
 |                      | [Azure Storage Explorer ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)                                                          | *Már elérhető*                                                                                                                                                              | *Már elérhető*                                                                                                                                 |
 |                      | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=usqlextpublisher.usql-vscode-ext)                                                                     | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |

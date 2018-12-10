@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd felismerése Androidon, Java nyelven a Speech Service SDK segítségével'
+title: 'Gyors útmutató: Recognize speech, a Java (Android) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát Androidon, Java nyelven a Speech Service SDK segítségével
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219426"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090108"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Androidon, Java nyelven a Speech SDK segítségével
 
@@ -63,7 +63,7 @@ A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
 A Speech SDK androidos változata [AAR-ként (Android-kódtárként)](https://developer.android.com/studio/projects/android-library) van csomagolva, amely tartalmazza a szükséges kódtárakat és a használathoz szükséges Android-engedélyeket.
 Egy Maven-adattárban üzemel, a következő helyen: https://csspeechstorage.blob.core.windows.net/maven/.
 
-Készítse elő a projektet a Speech SDK használatára. A Project Structure (Projektstruktúra) ablak megnyitásához az Android Studio menüsávján válassza a **File (Fájl)** > **Project Structure (Projektstruktúra)** elemet. A Project Structure (Projektstruktúra) ablakban hajtsa végre a következő módosításokat: 
+Készítse elő a projektet a Speech SDK használatára. A Project Structure (Projektstruktúra) ablak megnyitásához az Android Studio menüsávján válassza a **File (Fájl)** > **Project Structure (Projektstruktúra)** elemet. A Project Structure (Projektstruktúra) ablakban hajtsa végre a következő módosításokat:
 
 1. Az ablak bal oldalán található listából válassza ki a **Project** (Projekt) elemet. A **Default Library Repository** (Kódtár alapértelmezett adattára) értékéhez fűzzön hozzá egy vesszőt, majd a Maven-adattár aposztrófok közé zárt URL-címét. 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ A felhasználói felület szöveges és grafikus megjelenése ezen a ponton elvi
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * Az `onCreate` metódus egy olyan kódot tartalmaz, amely mikrofon- és internet-engedélyeket kér, majd elindítja a natív platform kötését. A natív platform kötését csak egyszer kell elvégezni. Erre érdemes mihamarabb, már az alkalmazás inicializálása során sort keríteni.
-   
+
    * Ahogy korábban már említettük, az `onSpeechButtonClicked` metódus kezeli azt, ha a gombra kattintanak. A gomb lenyomása aktiválja a diktálás funkció elindítását.
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
