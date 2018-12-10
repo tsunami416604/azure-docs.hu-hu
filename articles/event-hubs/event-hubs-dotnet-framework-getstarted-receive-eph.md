@@ -1,5 +1,5 @@
 ---
-title: Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával | Microsoft Docs
+title: Események fogadása a .NET-keretrendszer – Azure Event Hubs használatával |} A Microsoft Docs
 description: Események az Azure Event Hubsból .NET-keretrendszer segítségével történő fogadásához kövesse az oktatóanyag lépéseit.
 services: event-hubs
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c7b211202013050c826ef8a530a831b8f02673f6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8052b797707f7913fdd678f4dd51822754623104
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015092"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077256"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával
 

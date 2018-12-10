@@ -3,6 +3,8 @@ items:
   items:
   - name: Mi az Azure Files?
     href: storage-files-introduction.md
+  - name: Blobok, fájlok vagy lemezek választása
+    href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: Gyors útmutatók
   items:
   - name: Fájlmegosztás létrehozása – Portal
@@ -20,65 +22,99 @@ items:
     href: storage-sync-files-extend-servers.md
 - name: Alapelvek
   items:
-  - name: Felkészülés
-    items:
-    - name: Azure Files
-      href: storage-files-planning.md
-    - name: Azure File Sync
-      href: storage-sync-files-planning.md
-    - name: A felhőbeli rétegzés ismertetése
-      href: storage-sync-cloud-tiering.md
-  - name: A tárfiókok ismertetése
+  - name: Az Azure Files bemutatása
+    href: storage-files-planning.md
+  - name: Az Azure File Sync bemutatása
+    href: storage-sync-files-planning.md
+  - name: A felhőbeli rétegzés ismertetése
+    href: storage-sync-cloud-tiering.md
+  - name: A tárfiókok bemutatása
     href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: Adatredundancia
+  - name: Azure Storage-replikáció
+    href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     items:
-    - name: Redundancia áttekintése
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Helyileg redundáns tárolás
       href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Zónaredundáns tárolás
       href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Georedundáns tárolás
       href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Azure-fájlmegosztások pillanatképei
+    href: storage-snapshots-files.md
   - name: Méretezhetőségi és teljesítménycélok
     href: storage-files-scale-targets.md
-  - name: Vészhelyreállítási útmutató
+  - name: Biztonság
+    items:
+    - name: Az Azure Storage biztonsága
+      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Inaktív adatok titkosítása
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure AD-hitelesítés SMB-n keresztül
+      href: storage-files-active-directory-overview.md
+    - name: Megfelelőségi ajánlatok
+      href: ../common/storage-compliance-offerings.md
+  - name: Fejlesztés
+    items:
+    - name: Egyidejűség kezelése
+      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Megosztott kulcsos hitelesítés
+      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
+    - name: Közös hozzáférésű jogosultságkódok (SAS)
+      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Mérőszámok
+    items:
+    - name: Diagnosztika
+      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Storage Analytics
+      href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Metrikák az Azure Monitorban
+      href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - name: Vészhelyreállítás
     href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Korlátok
   - name: GYIK
     href: storage-files-faq.md
-- name: Útmutató
+- name: Útmutatók
   items:
+  - name: Létrehozás
+    items:
+    - name: Fájlmegosztás létrehozása
+      href: storage-how-to-create-file-share.md
   - name: Üzembe helyezés
     items:
     - name: Az Azure Files üzembe helyezése
       href: storage-files-deployment-guide.md
     - name: Az Azure File Sync üzembe helyezése
       href: storage-sync-files-deployment-guide.md
-    - name: A File Sync proxy- és tűzfalbeállításai
+    - name: A File Sync proxy- és tűzfalbeállításainak konfigurálása
       href: storage-sync-files-firewall-and-proxy.md
-    - name: Az Azure File Sync kibocsátási megjegyzései
-      href: storage-files-release-notes.md
-  - name: Kezelés
+  - name: Csatlakoztatás
     items:
-    - name: Fájlmegosztás létrehozása
-      href: storage-how-to-create-file-share.md
     - name: Az Azure Files használata Windows rendszerrel
       href: storage-how-to-use-files-windows.md
     - name: Az Azure Files használata Linux rendszerrel
       href: storage-how-to-use-files-linux.md
     - name: Az Azure Files használata macOS rendszerrel
       href: storage-how-to-use-files-mac.md
+  - name: Kezelés
+    items:
     - name: Kiszolgáló regisztrálása az Azure File Sync használatával
       href: storage-sync-files-server-registration.md
-    - name: A fájlmegosztások pillanatképeinek ismertetése
-      href: storage-snapshots-files.md
     - name: Azure Files Sync-kiszolgálóvégpont hozzáadása
       href: storage-sync-files-server-endpoint.md
-    - name: PowerShell a kínai, kormányzati és német felhőkhöz
+    - name: Tárhely kezelése a független Azure-felhőkben
       href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: Adatátvitel
+  - name: Figyelés
     items:
-    - name: Adatok áthelyezése a Storage-ba és a Storage-ból
+    - name: Metrikák és naplózás
+      items:
+      - name: Migrálás új metrikákra
+        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Metrikák engedélyezése és megtekintése (klasszikus)
+        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - name: Migrate (Áttelepítés)
+    items:
+    - name: Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
       href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: AzCopy Windowson
       href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -86,8 +122,6 @@ items:
       href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: Fejlesztés
     items:
-    - name: Egyidejűség kezelése
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Kapcsolati sztringek konfigurálása
       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: .NET
@@ -100,29 +134,15 @@ items:
       href: storage-python-how-to-use-file-storage.md
   - name: Biztonságos
     items:
-    - name: Biztonsági útmutató
-      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Tűzfalak és virtuális hálózatok konfigurálása
       href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Inaktív adatok titkosítása
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Biztonságos átvitel megkövetelése
       href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Azure AD-hitelesítés SMB-n keresztül
-      items:
-      - name: Az SMB-n keresztüli Azure AD-hitelesítés áttekintése
-        href: storage-files-active-directory-overview.md
-      - name: Az SMB-n keresztüli Azure AD-hitelesítés engedélyezése
-        href: storage-files-active-directory-enable.md
-    - name: Megosztott kulcsos hitelesítés
-      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-    - name: Közös hozzáférésű jogosultságkódok (SAS)
-      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Az SMB-n keresztüli Azure AD-hitelesítés engedélyezése
+      href: storage-files-active-directory-enable.md
     - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
       href: ../common/storage-security-tls.md
-    - name: Megfelelőségi ajánlatok
-      href: ../common/storage-compliance-offerings.md
-  - name: Figyelés és hibaelhárítás
+  - name: Hibaelhárítás
     items:
     - name: Azure-fájlok hibaelhárítása Windows rendszeren
       href: storage-troubleshoot-windows-file-connection-problems.md
@@ -130,18 +150,6 @@ items:
       href: storage-troubleshoot-linux-file-connection-problems.md
     - name: Azure-fájlok szinkronizálásának hibaelhárítása
       href: storage-sync-files-troubleshoot.md
-    - name: Figyelés, diagnosztika és hibaelhárítás
-      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Metrikák és naplózás
-      items:
-      - name: Metrikák az Azure Monitorban
-        href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Migrálás új metrikákra
-        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Storage Analytics
-        href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Metrikák engedélyezése és megtekintése (klasszikus)
-        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Referencia
   items:
   - name: PowerShell
@@ -187,7 +195,9 @@ items:
 - name: További források
   items:
   - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?product=storage
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Az Azure File Sync kibocsátási megjegyzései
+    href: storage-files-release-notes.md
   - name: Azure Storage-ügyféleszközök
     href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: Stack Overflow
@@ -234,9 +244,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: bcfce193fdd41cf9c45e2967d565dc56ebbc2979
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 462729efaaad743a45f431fb0ac06c40188679b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970603"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101721"

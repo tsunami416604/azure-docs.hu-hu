@@ -56,16 +56,8 @@ items:
         href: storage-secure-access-application.md
       - name: 4 – Tárterületek figyelése és hibaelhárítása
         href: storage-monitor-troubleshoot-storage-application.md
-    - name: Magas rendelkezésre állás tervezése felhőalapú tároláshoz
-      items:
-      - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
-        href: storage-create-geo-redundant-storage.md
-      - name: 2 – Hiba szimulálása RA-GRS tárolóval
-        href: storage-simulate-failure-ragrs-account-app.md
     - name: Adatok migrálása a felhőbe az AzCopy használatával
       href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Strukturálatlan adatok keresése felhőalapú tárolóban
-      href: storage-unstructured-search.md
     - name: Tárolási alkalmazás teljesítményének és skálázhatóságának optimalizálása
       items:
       - name: 1 – Virtuális gép és tárfiók létrehozása
@@ -76,6 +68,20 @@ items:
         href: storage-blob-scalable-app-download-files.md
       - name: 4 – Átviteli sebességgel és késéssel kapcsolatos metrikák ellenőrzése
         href: storage-blob-scalable-app-verify-metrics.md
+    - name: Statikus webhely üzemeltetése
+      items:
+      - name: 1 – Statikus webhely létrehozása
+        href: storage-blob-static-website-host.md
+      - name: 2 – Egyéni tartomány engedélyezése SSL-lel
+        href: storage-blob-static-website-custom-domain.md
+    - name: Magas rendelkezésre állás tervezése felhőalapú tároláshoz
+      items:
+      - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
+        href: storage-create-geo-redundant-storage.md
+      - name: 2 – Hiba szimulálása RA-GRS tárolóval
+        href: storage-simulate-failure-ragrs-account-app.md
+    - name: Strukturálatlan adatok keresése felhőalapú tárolóban
+      href: storage-unstructured-search.md
   - name: Példák
     items:
     - name: .NET
@@ -558,8 +564,6 @@ items:
         items:
         - name: Hozzáférési jogosultságok felügyelete RBAC használatával
           href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: A 2. generációs Data Lake Storage kiértékelése
-      href: ../blobs/data-lake-storage-evaluation.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Útmutató
     items:
     - name: Engedélyek beállítása az Azure Storage Explorerrel
@@ -616,9 +620,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: Videók
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: dc45425a3e20d18bbe43e4a41ca40bd6c2fe6b9a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fb4a261b19f08e5dcf4bedda60eacca42e97c7e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013645"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099613"

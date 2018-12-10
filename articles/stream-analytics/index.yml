@@ -1,22 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 439ac4e49941e425601124f2209eb67faa74cd43
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f004aa82b7fb5cd85ca0054622010f956d056baf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084226"
 documentType: LandingData
 title: Stream Analytics-dokumentáció
 metadata:
   title: Az Azure Stream Analytics dokumentációja – oktatóanyagok és API-referencia
   meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
   services: stream-analytics
-  author: jasonwhowell
+  author: mamccrea
   ms.author: mamccrea
-  manager: kfile
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 04/25/2018
+  ms.date: 12/06/2018
+  ms.custom: seodec18
 abstract:
   description: Ismerje meg, hogyan futtathat eszközök internetes hálózata-elemzést (IoT) a felhőben Stream Analytics teljes körűen felügyelt eseményfeldolgozási motorral. Oktatóanyagok és egyéb dokumentációk, amelyek bemutatják, hogyan elemezhet valós időben például alkalmazásokból, érzékelőkből, eszközökből és a közösségi médiából származó adatokat.
   aside:
@@ -25,7 +25,7 @@ abstract:
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: Az Azure Stream Analytics használatával valós idejű elemzési és gépi tanulási modelleket engedélyezhet a felhőben és az IoT Edge-ben. (1:15:05)
+    title: Valós idejű elemzés és gépi tanulás az Azure Stream Analytics használatával. (1:15:05)
     href: https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor
     width: 250
 sections:
