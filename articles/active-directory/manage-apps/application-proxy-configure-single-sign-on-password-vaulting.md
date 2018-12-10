@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6ae7cff42a9b744409fa454199155796c8c06713
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624029"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138966"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Az egyszeri bejelentkezés alkalmazásproxyval való vaulting jelszó
 
@@ -26,7 +26,7 @@ Az Azure Active Directory Application Proxy segítségével növelje hatékonys�
 
 Az alkalmazásproxy támogatja több [egyszeri bejelentkezési módok](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Jelszóalapú bejelentkezés célja az alkalmazásokat, amelyek egy felhasználónév – jelszó kombinációt használja a hitelesítéshez. Az alkalmazás konfigurálása a jelszóalapú bejelentkezés, a felhasználóknak kell jelentkezzen be a helyszíni alkalmazás egyszer. Ezt követően az Azure Active Directory tárolja a bejelentkezési adatait, és automatikusan átadja az alkalmazás, amikor a felhasználók távolról elérni. 
 
-Érdemes már közzétett és tesztelte az alkalmazást az alkalmazásproxy használatával. Ha nem, kövesse a lépéseket a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md) majd térjen vissza ide. 
+Érdemes már közzétett és tesztelte az alkalmazást az alkalmazásproxy használatával. Ha nem, kövesse a lépéseket a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md) majd térjen vissza ide. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Az alkalmazás vaulting jelszó beállítása
 

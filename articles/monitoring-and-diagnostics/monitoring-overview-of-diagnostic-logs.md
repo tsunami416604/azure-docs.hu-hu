@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682945"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134165"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -40,7 +40,7 @@ Az alábbiakban néhány, a diagnosztikai naplók segítségével teheti:
 
 * Menti azokat egy [ **Tárfiók** ](monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
 * [Azokat a Stream **az Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
-* Elemezheti a [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
+* Elemezheti a [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), ahol az adatok írása közvetlenül a Log Analytics és nincs szükség, először a tárolás az adatokat írni.  
 
 Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
@@ -63,7 +63,7 @@ Erőforrás-diagnosztikai naplók vannak konfigurálva az erőforrás diagnoszti
     - Ha a megőrzési házirend-beállításokat, de a naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs és a Log Analytics lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
     - Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
-Ezek a beállítások egyszerűen vannak konfigurálva, a diagnosztikai beállításokat a portálon keresztül, az Azure PowerShell és CLI-parancsok vagy keresztül a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/).
+Ezek a beállítások egyszerűen az Azure PowerShell és CLI-parancsokkal portál vagy a használatával a diagnosztikai beállítások vannak konfigurálva a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/).
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.

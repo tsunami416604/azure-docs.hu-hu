@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cf3e367dad528017a98e103962c57cb758da55cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a7a5c097f0400d89398cef66eeb7bd0ce8d5e97b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356620"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132431"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Az Application Proxy-alkalmazások konfigurálása
 
@@ -28,15 +28,15 @@ Ennek a cikknek a segítségével megismerheti a konfigurálása az Application 
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok 
 
-A kezdeti konfigurációt és a egy Application Proxy-alkalmazások, a felügyeleti portálon keresztül létrehozása kapcsolatos további információkért kövesse a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md).
+A kezdeti konfigurációt és a egy Application Proxy-alkalmazások, a felügyeleti portálon keresztül létrehozása kapcsolatos további információkért kövesse a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
-További összekötő konfigurálásával kapcsolatos további információkért lásd: [alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-enable.md).
+További összekötő konfigurálásával kapcsolatos további információkért lásd: [alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md).
 
 Tanúsítványok feltöltése és egyéni tartományok használatával kapcsolatos tudnivalókat lásd: [egyéni tartományok használata az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Hozzon létre az Alkalmazásbeállítás URL-címek
 
-Ha lépéseit követi a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md) dokumentáció alatt, és az alkalmazás létrehozása hibaüzenet az információkat a hiba részleteit, és hogyan háríthatja el a javaslatokat tekintse meg a az alkalmazás. A legtöbb hiba üzenetekben a javasolt javítás. Gyakori hibák elkerülése érdekében győződjön meg:
+Ha lépéseit követi a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md) dokumentáció alatt, és az alkalmazás létrehozása hibaüzenet az információkat a hiba részleteit, és hogyan háríthatja el a javaslatokat tekintse meg a az alkalmazás. A legtöbb hiba üzenetekben a javasolt javítás. Gyakori hibák elkerülése érdekében győződjön meg:
 
 -   Az Application Proxy-alkalmazások létrehozásához szükséges engedéllyel rendelkező rendszergazdáknak
 
@@ -75,4 +75,4 @@ A hibaüzenetet jeleníti meg a jobb felső sarokban lévő megpróbálja feltö
    ![Értesítés kérése](./media/application-proxy-config-how-to/error-message2.png)
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md)
+[Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-add-on-premises-application.md)

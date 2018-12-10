@@ -1,5 +1,5 @@
 ---
-title: Forgatókönyvek meghatározhatja és megtervezheti az analytics-folyamat – Azure |} A Microsoft Docs
+title: Forgatókönyvek meghatározhatja és megtervezheti az analytics-folyamat - csoportos adatelemzési folyamat
 description: Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása kulcs kérdéssor figyelembe vételével.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
-ms.openlocfilehash: feea90b20bac1bce9924731119fab6e3fab04450
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5faa7a58a252a5d3b8cc044f9e81a6d7cb2df7d5
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105904"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138041"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 Milyen erőforrásokat kell azt tervezi, hogy tartalmazzák az ehhez a feldolgozása egy adatkészleten, speciális analitikai környezet beállítása során? Ez a cikk javasol egy sorozatát kérdéseket tehet fel, amelyek segítenek a feladatok és a kapcsolódó erőforrások a szituáció azonosítása. A prediktív elemzési magas szintű lépéseinek sorrendjét szemlélteti az [Mi az a csoportos adatelemzési folyamat (TDSP)?](overview.md). Egyes lépéseket az adott forgatókönyvnek megfelelő feladatokat bizonyos erőforrásokra van szükség. A szituáció azonosítása a legfontosabb kérdések adatlogisztika, jellemzőit, az adatkészleteket és az eszközöket és nyelveket szeretne végezni az elemzés minőségét vonatkoznak.

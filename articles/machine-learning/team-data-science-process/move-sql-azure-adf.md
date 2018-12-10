@@ -1,5 +1,5 @@
 ---
-title: Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel |} A Microsoft Docs
+title: Az Azure Data Factory - csoportos adatelemzési folyamat SQL Azure, SQL Server-adatok
 description: Állítsa be az ADF-folyamatot, amely két együtt adatáthelyezést naponta helyszíni adatbázisok között, és a felhőbeli adatok migrálási tevékenységek composes.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: bddb54d9a00c5ec88fcebe498d7f959c0f8e3dbf
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 87aa1c30bb567c6820e2d9ecacfc3f8cd2338339
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447036"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137769"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel
 
@@ -43,7 +43,7 @@ Beállítjuk az ADF-folyamatot, amely composes két az áttelepítési tevékeny
 * adatok másolása az Azure Blob Storage-fiókhoz az Azure SQL Database.
 
 > [!NOTE]
-> A lépéseket, látható itt lett a részletes oktatóanyag az ADF csapatunk igazítani: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md) témakör vonatkozó szakaszaihoz vezetnek hivatkozások megadni, ha szükséges.
+> A lépéseket, látható itt lett a részletes oktatóanyag az ADF csapatunk igazítani: [adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal/) témakör vonatkozó szakaszaihoz vezetnek mutató hivatkozások találhatók, mikor a megfelelő.
 >
 >
 
@@ -68,15 +68,10 @@ Az eljárás a saját adatok készletét használja az itt elérhető alkalmazko
 ## <a name="create-adf"></a> Az Azure Data Factory létrehozása
 Egy új Azure Data Factory és a egy erőforráscsoportban létrehozására vonatkozó utasításokat a [az Azure portal](https://portal.azure.com/) biztosított [hozzon létre egy Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nevezze el az új ADF-példány *adfdsp* és nevezze el az erőforráscsoport létrehozásánál *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Telepítse és konfigurálja az adatkezelési átjáró mentése
-Ahhoz, hogy az egy helyszíni SQL Server használata az Azure data factory-folyamatok, szeretne adat-előállítóhoz társított szolgáltatásként hozzáadása. A társított szolgáltatás létrehozásához egy helyszíni SQL Server, a következőket kell tennie:
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Telepítse és konfigurálja az Azure Data Factory integrációs modul 
+Az integrációs modul az egy ügyfél által kezelt adatintegrációs infrastruktúra különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt. Ez a modul nevén "Adatkezelési átjáró" volt. 
 
-* Töltse le és telepítse a Microsoft adatkezelési átjáró a helyi számítógépre.
-* a társított szolgáltatás a helyszíni adatforráshoz az átjáró használatára konfigurálja.
-
-Az adatkezelési átjárót szerializálja és deserializes a forrás és a fogadó adatait hol található a számítógépen.
-
-Telepítési utasításokat és az adatkezelési átjáró részleteiért lásd: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md)
+Állítsa be, hogy [kövesse a folyamat létrehozására szolgáló instrutions](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Az adatforrásokhoz való kapcsolódáshoz társított szolgáltatások létrehozása
 A társított szolgáltatás határozza meg az információkat, amelyeket az Azure Data Factory egy adatforrás, melyhez csatlakozni. Három erőforrást van ebben a forgatókönyvben, amelyhez a társított szolgáltatások szükségesek:

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445958"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134971"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -47,7 +47,7 @@ A windows server a TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő te
 2. Indítsa újra a kiszolgálót
 
 
-Az összekötő kiszolgáló hálózati követelményeivel kapcsolatos további információkért lásd: [alkalmazásproxy – első lépések, és telepítheti az összekötőt](application-proxy-enable.md).
+Az összekötő kiszolgáló hálózati követelményeivel kapcsolatos további információkért lásd: [alkalmazásproxy – első lépések, és telepítheti az összekötőt](application-proxy-add-on-premises-application.md).
 
 ## <a name="maintenance"></a>Karbantartás
 Az összekötők és a szolgáltatás gondoskodik a magas rendelkezésre állású-feladatokat. Ezek hozzáadásának vagy eltávolításának dinamikusan is. Minden alkalommal, amikor új kérelem érkezik lesz irányítva a jelenleg elérhető összekötők egyikéhez. Ha egy összekötő átmenetileg nem érhető el, ez a forgalom nem válaszol.
@@ -64,7 +64,7 @@ Nem, nem használt összekötők manuálisan törölni kell. Amikor fut egy öss
 
 ## <a name="automatic-updates"></a>Automatikus frissítések
 
-Az Azure AD összes telepített összekötő esetében az automatikus frissítések biztosít. Mindaddig, amíg a Alkalmazásproxyösszekötő szolgáltatás fut, automatikusan frissíti az összekötőkhöz. Ha nem látja a összekötő frissítési szolgáltatást a kiszolgálón, kell [telepítse újra az összekötő](application-proxy-enable.md) bármely frissítéseket. 
+Az Azure AD összes telepített összekötő esetében az automatikus frissítések biztosít. Mindaddig, amíg a Alkalmazásproxyösszekötő szolgáltatás fut, automatikusan frissíti az összekötőkhöz. Ha nem látja a összekötő frissítési szolgáltatást a kiszolgálón, kell [telepítse újra az összekötő](application-proxy-add-on-premises-application.md) bármely frissítéseket. 
 
 Ha nem szeretné, várjon, amíg az összekötő való automatikus frissítését, végrehajthatja a kézi frissítés. Nyissa meg a [összekötő letöltési oldal](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) a kiszolgálókra, ahol az összekötő található, és válassza ki a **letöltése**. Ez a folyamat elindít egy frissítést a helyi összekötő. 
 
@@ -136,7 +136,7 @@ Az összekötők olyan számítógépen, amelyen a nem tartományhoz csatlakozta
 
 Összekötő központi telepítés általában nagyon egyszerű, és nem igényel külön konfigurálást. Vannak azonban bizonyos egyedi feltételeket kell figyelembe venni:
 
-* Szervezetek számára, amelyek a kimenő forgalmat korlátozni kell [nyissa meg a szükséges portok](application-proxy-enable.md#open-your-ports).
+* Szervezetek számára, amelyek a kimenő forgalmat korlátozni kell [nyissa meg a szükséges portok](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 * A FIPS előírásainak megfelelő gépek szükség lehet módosítani a konfigurációt, hogy az összekötő folyamatokat létrehozni és menteni egy tanúsítványt.
 * Győződjön meg arról, hogy mindkét összekötő-szolgáltatások engedélyezve vannak-e el az összes szükséges portok és IP-címek kell szervezeteknek, amelyek alapján a folyamatot, amelyet a hálózati kéréseket környezetükben zárolását.
 * Bizonyos esetekben a kimenő előre proxyk felosztása a kétirányú Tanúsítványalapú hitelesítés, és hatására a kommunikáció meghiúsul.

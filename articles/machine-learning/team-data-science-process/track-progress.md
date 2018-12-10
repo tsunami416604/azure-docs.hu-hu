@@ -1,6 +1,6 @@
 ---
-title: Adatelemzési projektek – az Azure Machine Learning végrehajtásának |} A Microsoft Docs
-description: Hogyan értenie az adatokhoz is előrehaladását úgy követheti nyomon az adatelemzési projektjéhez.
+title: Adatelemzési projektek - csoportos adatelemzési folyamat állapotának nyomon követése
+description: Hogyan data science csoportvezetők bérleti csapat és a érdeklődők nyomon követheti az adatok adatelemzési projektek.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 202ac89b8a281012dbcf5f4c4df11e97ba2c8c65
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441468"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134302"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Adatelemzési projektek előrehaladását úgy követheti nyomon
+# <a name="tracking-the-progress-of-data-science-projects"></a>Adatelemzési projektek előrehaladását nyomon követése
 
 Data science csoportvezetők Csapatvezetők és projekt érdeklődők kell a projektek előrehaladását úgy követheti nyomon, milyen munkahelyi végeztük el őket, és ki használja őket, és a feladatlisták nem marad. 
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Media Services v3 használatával egyéni átalakító kódolása |} A Microsoft Docs
+title: Kódolás a Media Services v3 – az Azure használatával egyéni átalakító |} A Microsoft Docs
 description: Ez a témakör bemutatja az Azure Media Services v3 használatával egyéni átalakító kódolása.
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
-ms.date: 10/15/2018
+ms.custom: seodec18
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: c3318020b54beb121ac48d993a8ce794ac8e377f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c62d9132cdd7eb2ebcbecc3c417ad30d368a278a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376635"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138704"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>Az egyéni átalakítási kódolása
 

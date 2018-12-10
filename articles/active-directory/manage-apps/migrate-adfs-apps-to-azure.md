@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840664"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141934"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
@@ -82,7 +82,7 @@ Az összevont alkalmazások az alábbi kategóriákba tartozó alkalmazásokat f
 
 ### <a name="non-federated-apps"></a>Nem összevont alkalmazások
 Emellett a nem összevont alkalmazások is integrálhatók az Azure AD-be az Azure AD-alkalmazásproxy és a kapcsolódó képességek segítségével. A nem összevont alkalmazások közé tartoznak:
-- Az integrált Windows-hitelesítést az Active Directory-val közvetlenül használó alkalmazások. Ezek az alkalmazások az [Azure AD-alkalmazásproxyval](application-proxy-publish-azure-portal.md) integrálhatók az Azure AD-be.
+- Az integrált Windows-hitelesítést az Active Directory-val közvetlenül használó alkalmazások. Ezek az alkalmazások az [Azure AD-alkalmazásproxyval](application-proxy-add-on-premises-application.md) integrálhatók az Azure AD-be.
 - Az egyszeri bejelentkezésszolgáltatóval egy ügynökön keresztül integrált, a fejlécalapú hitelesítést használó alkalmazások. A telepített ügynökön keresztül bejelentkező, fejlécalapú hitelesítést használó helyszíni alkalmazások az Azure AD-alkalmazásproxy és a [Ping Access for Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/) használatával konfigurálhatók az Azure AD-alapú bejelentkezésre.
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>Helyszíni összevont alkalmazások átalakítása az Azure AD-ben való használathoz 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 0d809f9a1b3abbb284c3f7e0c27eb9c236692a3f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 85a1e874ad80d0a3251c93c9c1199f56ab045527
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386465"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140570"
 ---
 # <a name="read-before-you-scale"></a>Olvassa el, mielőtt méretezése
 Az alkalmazás terhelését szándékos tervezést igényel, szinte mindig hosszabb ideig tart, mint egy órát éles környezethez és igényel, hogy jobban megismerhesse a számítási feladatok és üzleti környezet; forrás méretezési számítási erőforrásokat valójában soha nem végzett előtt ezt a tevékenységet, ha ajánlott első lépésként kódmintáiban [tervezési megfontolások a Service Fabric-fürt kapacitása](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity), ez a dokumentum további része a folytatás előtt. Ez a javaslat nem kívánt LiveSite problémák elkerülése érdekében, és emellett ajánlott sikerült tesztelni a műveletek végrehajtásához egy nem éles környezetben ellen dönt. Bármikor lehet [éles problémák jelentése és az Azure-ban fizetős támogatási kérelem](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Hajtsa végre ezeket a műveleteket, amelyek rendelkeznek a megfelelő környezet számára lefoglalt mérnökök Ez a cikk azt ismerteti, a méretezési műveletek, de kell döntse el, és a használati esetekhez; megfelelő mely műveletek megismeréséhez a méretezési csoport (Processzor és a Storage, memória), hogy milyen erőforrásokat például milyen irányba (függőleges vagy vízszintes), és milyen műveleteket (erőforrás-sablon telepítési Portal, PowerShell vagy a parancssori felületen).
@@ -103,10 +103,10 @@ A Service Fabric Explorert a felsorolt csomópontokat tartalmazza milyen a Servi
 
 Annak érdekében, hogy, hogy amikor eltávolít egy virtuális Gépet eltávolít egy csomópontot, két lehetősége van:
 
-1) Válassza ki a fürthöz, így Ön az infrastruktúra integrációs csomóponttípus, arany és ezüst tartóssági szintet. Amely majd automatikusan eltávolítja a csomópontot a rendszerállapot-szolgáltatások (FM) a horizontális.
+1. Válassza ki a fürthöz, így Ön az infrastruktúra integrációs csomóponttípus, arany és ezüst tartóssági szintet. Amely majd automatikusan eltávolítja a csomópontot a rendszerállapot-szolgáltatások (FM) a horizontális.
 Tekintse meg [részleteit itt tartóssági szint](service-fabric-cluster-capacity.md)
 
-2) Miután a Virtuálisgép-példány mérete, meg kell hívnia a [Remove-ServiceFabricNodeState parancsmag](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. Miután a Virtuálisgép-példány mérete, meg kell hívnia a [Remove-ServiceFabricNodeState parancsmag](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
 
 > [!NOTE]
 > Service Fabric-fürtök bizonyos mennyiségű csomópontokat folyamatosan rendelkezésre állását és állapot - nevezik "a kvórum fenntartása." megőrzése érdekében megkövetelte a szükséges Így is a fürtben lévő összes gép leállítása, kivéve, ha először végrehajtása után általában nem biztonságos egy [teljes biztonsági mentést az állapot](service-fabric-reliable-services-backup-restore.md).

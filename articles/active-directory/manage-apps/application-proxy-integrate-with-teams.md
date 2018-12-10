@@ -15,12 +15,12 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 83f32cc18f1237d5d28e8340177fd6e2fae4e173
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367198"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133638"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams keresztül a helyszíni alkalmazások eléréséhez
 
@@ -31,7 +31,7 @@ A felhasználók felhőbeli alkalmazásokat adhat hozzá a Teams-csatornákkal [
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Az alkalmazásproxy-összekötő telepítése és az alkalmazás közzététele
 
-Ha még nem tette, [Proxy konfigurálása a bérlő számára, és telepítse az összekötőt](application-proxy-enable.md). Ezt követően [a helyszíni alkalmazás közzététele](application-proxy-publish-azure-portal.md) a távoli hozzáféréshez. Az alkalmazás közzétételekor használt jegyezze meg a külső URL-cím, mert használja az alkalmazás hozzáadásához a csapatoknak.
+Ha még nem tette, [Proxy konfigurálása a bérlő számára, és telepítse az összekötőt](application-proxy-add-on-premises-application.md). Ezt követően [a helyszíni alkalmazás közzététele](application-proxy-add-on-premises-application.md) a távoli hozzáféréshez. Az alkalmazás közzétételekor használt jegyezze meg a külső URL-cím, mert használja az alkalmazás hozzáadásához a csapatoknak.
 
 Ha már rendelkezik a közzétett alkalmazásokat, de nem emlékszik a külső URL-címeit, keresse meg azokat a [az Azure portal](https://portal.azure.com). Jelentkezzen be, majd nyissa meg **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** > Válassza ki az alkalmazást >  **Az alkalmazásproxy**.
 

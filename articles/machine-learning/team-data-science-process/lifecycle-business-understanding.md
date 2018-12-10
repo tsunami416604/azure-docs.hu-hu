@@ -1,6 +1,6 @@
 ---
-title: Üzleti ismertetése szakaszában, a csoportos adatelemzési folyamat életciklusa – Azure |} A Microsoft Docs
-description: A célok, feladatok és a data-adatelemzési projektek üzleti ismertetése szakaszának le
+title: A csoportos adatelemzési folyamat az üzleti igények felmérése
+description: A célok, feladatok és a data-adatelemzési projektek a csoportos adatelemzési folyamat az üzleti ismertetése szakaszának le.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3d2a6bf5a7e4766ca6205c413dd27fa9a69c16b7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: f45d8a83c323689272313314d0f9ac9b79edecd7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446721"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141662"
 ---
-# <a name="business-understanding"></a>Üzleti ismertetés
+# <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Az üzleti ismertetése szakaszban a csoportos adatelemzési folyamat életciklusa
 
 Ez a cikk ismerteti a célokat, feladatok és az üzleti ismertetése szakaszban, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
 
@@ -92,5 +92,3 @@ Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
    5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
 Azt adja meg a teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a folyamat összes lépését. A [példa forgatókönyvek](walkthroughs.md) a cikk a forgatókönyvek miniatűr leírások és hivatkozások listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
-
-Hogyan hajtható végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TSDP használata az Azure Machine Learning](https://aka.ms/datascienceprocess).

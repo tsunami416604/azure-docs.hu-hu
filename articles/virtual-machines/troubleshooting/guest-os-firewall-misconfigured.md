@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ad659cfcf1bfdad440968da5568b993724a5f351
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319546"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137837"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Az Azure virtuális gép vendég operációs rendszer tűzfala helytelenül van konfigurálva.
 
@@ -33,7 +33,7 @@ Ez a cikk vezeti be, hogyan háríthatja el a helytelenül konfigurált a vendé
 
 ## <a name="cause"></a>Ok
 
-A Virtual Network szolgáltatás hibás, a Vendég rendszer tűzfal blokkolhatja néhány vagy az összes típusú hálózati forgalmat a virtuális géphez. 
+A Virtual Network szolgáltatás hibás, a Vendég rendszer tűzfal blokkolhatja néhány vagy az összes típusú hálózati forgalmat a virtuális géphez.
 
 ## <a name="solution"></a>Megoldás
 
@@ -43,11 +43,11 @@ A probléma elhárításához, használja a soros konzol vagy [javítsa ki a vir
 
 ## <a name="online-mitigations"></a>Online megoldások
 
-Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, nyissa meg a "Javítás a virtuális gép offline állapotba helyezi" szakaszában az Azure-cikket:
+Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, nyissa meg a "Javítás a virtuális gép offline állapotba helyezi" szakaszában az Azure-cikket:
 
  [Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géphez (RDP) keresztül történő engedélyezéséhez vagy a könnyebb hibaelhárítás biztosít: 
+A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géphez (RDP) keresztül történő engedélyezéséhez vagy a könnyebb hibaelhárítás biztosít:
 
 *   Távoli asztal (TCP, bejövő): Ez az a szabványos szabály, amely elsődleges hozzáférést biztosít a virtuális géphez RDP azáltal, hogy az Azure-ban.
 
@@ -55,7 +55,7 @@ A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géph
 
 *   Fájl- és nyomtatómegosztás (SMB, bejövő): Ez a szabály lehetővé teszi, hogy a hálózati megosztás eléréséhez hibaelhárítási beállításként.
 
-*   Fájl- és nyomtatómegosztás (Echo kérés – ICMPv4-be): Ez a szabály lehetővé teszi, hogy a virtuális gép pingelje. 
+*   Fájl- és nyomtatómegosztás (Echo kérés – ICMPv4-be): Ez a szabály lehetővé teszi, hogy a virtuális gép pingelje.
 
 A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális állapotát.
 
@@ -83,7 +83,7 @@ A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális ál
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Hibaelhárítási, kikapcsolhatja a tűzfalprofilokról: 
+*   Hibaelhárítási, kikapcsolhatja a tűzfalprofilokról:
 
     ```cmd
     netsh advfirewall set allprofiles state off

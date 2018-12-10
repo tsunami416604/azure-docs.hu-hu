@@ -1,21 +1,20 @@
 ---
-title: Az Azure Cosmos DB Automation - kezelés a PowerShell-lel
+title: PowerShell-lel az Azure Cosmos DB-erőforrások létrehozása és felügyelete
 description: Az Azure Powershell használata kezelheti az Azure Cosmos DB-fiókokhoz.
-services: cosmos-db
 author: SnehaGunda
-tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/21/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 89c8fd169322f08681547cc7ae33f1d894e26781
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 6dcb5e445c9c294b81de0363f5462b8d21621616
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873020"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135288"
 ---
-# <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Egy PowerShell-lel az Azure Cosmos DB-fiók létrehozása
+# <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>Hozzon létre, és az Azure Cosmos DB-erőforrások kezelése a PowerShell használatával
 
 Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritások kezelésére szolgáló parancsokat is tartalmaz [többrégiós adatbázisfiókhoz][distribute-data-globally]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
 

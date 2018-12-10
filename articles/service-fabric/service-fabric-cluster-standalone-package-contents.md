@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253335"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141611"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server a Service Fabric különálló csomag tartalma
 Az a [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric különálló csomag, talál a következő fájlokat:
@@ -40,6 +40,7 @@ Az a [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabri
 | Tools\ServiceFabricUpdateService.zip |Automatikus kód frissítés fürtök, amely nem rendelkezik internet-hozzáférés engedélyezésére szolgáló eszköz. További információk találhatók [Itt](service-fabric-cluster-upgrade-windows-server.md)|
 
 **Sablonok** 
+
 | **Fájl neve** | **Rövid leírás** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |Egy fürt mintát tartalmazó konfigurációs fájlt egy nem biztonságos, három csomópontos egygépes (vagy virtuális gép) fejlesztési fürtöt, az egyes csomópontok állapotinformációit a fürt beállításait. |

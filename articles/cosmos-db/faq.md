@@ -1,23 +1,22 @@
 ---
-title: Az Azure Cosmos DB – gyakori kérdések
+title: Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 description: Válaszok az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás – gyakori kérdések. Ismerje meg a kapacitás, a teljesítményszintek és a méretezés.
 keywords: Adatbázissal kapcsolatos kérdések, gyakori kérdések, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: e4ed9ee34260dfffc0034fb7524a037e957fab3f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851179"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139656"
 ---
-# <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
-
-## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
+# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Mi történt a DocumentDB API-hoz?
 
@@ -78,7 +77,7 @@ Is használhatja a [Azure Cosmos DB Emulatort](local-emulator.md) fejlesztéséh
 Technikai kérdés, az alábbi két kérdés egyik közzététele, és válaszoljon a fórumok:
 
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 Javasolhat új funkciókat, hozzon létre egy új kérelmet [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
@@ -125,10 +124,6 @@ Az Azure Cosmos DB az összes Azure-régióban a megadott megtalálható a [Azur
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Van lehetőség az átállás a tároló szint átviteli adatbázis-szintű teljesítmény kiépítés folyamatban? Vagy fordítva
 
 Tároló és az adatbázis átviteli szintű üzembe helyezésének egymástól különálló ajánlatok, és mindkét közötti váltáskor szükséges áttelepítés forrás adatait a célhelyre. Ami azt jelenti, hogy hozzon létre egy új adatbázist vagy egy új gyűjteményt, és ezután telepítse át az adatok segítségével kell [tömeges végrehajtó könyvtár](bulk-executor-overview.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
-
-### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Hogyan hozhatok létre a rögzített gyűjtemény partíciós kulccsal
-
-Jelenleg létrehozhat gyűjtemény partíciós kulcs adattovábbítási kapacitással rendelkező használatával a [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metódus a .net SDK-t vagy a használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). A rögzített gyűjtemény létrehozása az Azure portal használatával jelenleg nem támogatott.
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure cosmos DB támogatja az idősoros elemzés?
 
@@ -304,7 +299,7 @@ Az alábbi módokon is ossza meg velünk véleményét:
 
 * [Felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Mi az a kapcsolati karakterláncot, amely a Table API csatlakozni kell?
 
@@ -525,7 +520,7 @@ Az Azure Cosmos DB amely késés, átviteli sebesség, rendelkezésre állás é
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>A C# / .NET-fejlesztéshez, érdemes használni a Microsoft.Azure.Graphs csomag vagy a Gremlin.NET?
 
-Az Azure Cosmos DB Gremlin API a nyílt forráskódú illesztőprogramokat használja, a szolgáltatás fő összekötőkként. Ezért az ajánlott lehetőség [illesztőprogramok, Apache Tinkerpop által támogatott](http://tinkerpop.apache.org/).
+Az Azure Cosmos DB Gremlin API a nyílt forráskódú illesztőprogramokat használja, a szolgáltatás fő összekötőkként. Ezért az ajánlott lehetőség [illesztőprogramok, Apache Tinkerpop által támogatott](https://tinkerpop.apache.org/).
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Hogyan számlázzuk a RU/s a gráfadatbázisok lekérdezések futtatásakor?
 
@@ -539,7 +534,7 @@ Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tá
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hogyan tudja megvédeni Gremlin-illesztőprogramokkal injektálási támadások ellen?
 
-Legtöbb natív Tinkerpop Gremlin-illesztőprogramok a lehetőséget, ha a lekérdezés-végrehajtáshoz paramétereket tartalmazó engedélyezése. Ez a példa bemutatja, hogyan a [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) és a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Legtöbb natív Tinkerpop Gremlin-illesztőprogramok a lehetőséget, ha a lekérdezés-végrehajtáshoz paramétereket tartalmazó engedélyezése. Ez a példa bemutatja, hogyan a [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) és a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Miért jelenik meg a "Gremlin lekérdezésfordítási hiba: minden olyan metódus nem található" hiba?
 

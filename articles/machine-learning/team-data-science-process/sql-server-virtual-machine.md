@@ -1,5 +1,5 @@
 ---
-title: Egy SQL Server virtuális gépet az adatok megismerése az Azure-ban |} A Microsoft Docs
+title: Egy SQL Server virtuális gép – a csoportos adatelemzési folyamat az adatok megismerése
 description: Adatok feltárása és szolgáltatások készítése az SQL Server virtuális gépen az Azure-ban
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 73e56497834344e0e41d89313086c051683b4fbb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d14f03be3f6d62c201218f5073ba9af61765f55c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442557"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136443"
 ---
 # <a name="heading"></a>Dolgozza fel az adatokat az SQL Server virtuális gépen az Azure-ban
 Ez a dokumentum bemutatja, hogyan elemezheti adatait, és hozzon létre funkciók az SQL Server virtuális gép az Azure-ban tárolt adatok. Ezt megteheti, adatok konvertálása SQL-lel vagy a programozási nyelvet, például a Python használatával.

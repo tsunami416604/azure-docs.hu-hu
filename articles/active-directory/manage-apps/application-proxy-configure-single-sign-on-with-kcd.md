@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422283"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136246"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -75,7 +75,7 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
 Sharepointserviceaccount a Szervizcsomagok számítógép fiókja vagy egy szolgáltatás a Szervizcsomagok alkalmazáskészlet van futtató fiók is lehet.
 
 ## <a name="configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása 
-1. Közzéteheti az alkalmazását a szakaszban ismertetett utasításoknak megfelelően [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-publish-azure-portal.md). Ügyeljen arra, hogy válassza ki, hogy **Azure Active Directory** , a **előhitelesítést metódus**.
+1. Közzéteheti az alkalmazását a szakaszban ismertetett utasításoknak megfelelően [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-add-on-premises-application.md). Ügyeljen arra, hogy válassza ki, hogy **Azure Active Directory** , a **előhitelesítést metódus**.
 2. Miután az alkalmazás megjelenik a vállalati alkalmazások listájában, válassza ki, majd kattintson a **egyszeri bejelentkezési**.
 3. Az egyszeri bejelentkezési mód beállítása legyen **integrált Windows-hitelesítés**.  
 4. Adja meg a **belső alkalmazás egyszerű Szolgáltatásnevét** az alkalmazáskiszolgáló. Ebben a példában a közzétett alkalmazás egyszerű Szolgáltatásnevét http/www.contoso.com. Ezt az SPN kell lennie, amelyhez az összekötőt használhat delegált hitelesítő adatokat a szolgáltatások listájában. 

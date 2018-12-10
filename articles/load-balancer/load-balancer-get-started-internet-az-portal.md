@@ -1,24 +1,26 @@
 ---
-title: Hozzon létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím Azure portal használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure portal használatával
+title: Standard Load Balancer létrehozása az Azure portal használatával, a zónaredundáns frontend
+titlesuffix: Azure Load Balancer
+description: Ismerje meg, hogyan hozhat létre egy nyilvános Standard Load Balancer zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure portal használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740943"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135686"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Zónaredundáns nyilvános előtérbeli IP-Címmel cím Azure portal használatával egy nyilvános Load Balancer Standard létrehozása
+#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Az Azure portal használatával, a zónaredundáns előtérbeli nyilvános Standard Load Balancer létrehozása
 
 Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) és a egy zónaredundáns frontend-IP szabványos nyilvános cím segítségével. A Standard Load Balancer egy egyetlen előtérbeli IP-cím zónaredundáns alapértelmezés szerint.
 

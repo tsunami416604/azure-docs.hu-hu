@@ -1,6 +1,6 @@
 ---
-title: Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból |} A Microsoft Docs
-description: Hive táblákat hozhat létre és tölt be adatokat a hive-táblákban blob
+title: Hive táblák létrehozása, és betöltheti az adatokat a Blob storage - csoportos adatelemzési folyamat
+description: Hive-lekérdezések használata a Hive táblákat hozhat létre, és betöltheti az adatokat az Azure blob storage-ból. Hive-táblák partíció, és használja az optimalizált sor Oszlopalapú (ORC) formázása a lekérdezés teljesítményének javítása érdekében.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 42911c347cd055f37f7fe8f31b6d22cc18a78662
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442880"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134947"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 
@@ -65,14 +65,14 @@ Küldje el a Hive-lekérdezések a Hadoop parancssor három módja van:
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Közvetlenül a Hadoop parancssor Hive-lekérdezések elküldéséhez.
 Például a parancs futtatásával `hive -e "<your hive query>;` egyszerű Hive-lekérdezéseket közvetlenül a Hadoop parancssor elküldéséhez. Íme egy példa, ahol a vörös ismerteti, amelyek a Hive-lekérdezést küldi el a parancsot, és a zöld mezőt felvázolja a Hive-lekérdezés kimenete.
 
-![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-1.png)
+![Hive-lekérdezést a Hive-lekérdezés kimenete a parancs](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>.Hql fájlokat a Hive-lekérdezések elküldéséhez
 Ha a Hive-lekérdezés bonyolultabb, és több sor tartozik, a parancssor vagy a Hive parancskonzol lekérdezések szerkesztése nem célszerű. Alternatív, hogy a Hadoop-fürt fő csomópontjának egy szövegszerkesztő segítségével egy helyi könyvtárban, az átjárócsomópont .hql fájlba mentése a Hive-lekérdezéseket. A Hive-lekérdezést a .hql fájlban beküldhető használatával, majd a `-f` argumentum az alábbiak szerint:
 
     hive -f "<path to the .hql file>"
 
-![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-3.png)
+![Hive-lekérdezés egy .hql fájlban](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Folyamat állapota képernyő nyomtatása Hive-lekérdezések elrejtése**
 
@@ -84,7 +84,7 @@ Alapértelmezés szerint a Hadoop parancssor, Hive-lekérdezés elküldése utá
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive-parancs konzolon Hive-lekérdezések elküldéséhez.
 Először is adhatja meg a Hive parancskonzolról parancs futtatásával `hive` a Hadoop parancssor, majd küldje el a Hive-lekérdezések Hive parancs konzolon. Íme egy példa. Ebben a példában a két piros mezőkben adja meg a Hive parancskonzolról használt parancsok és a Hive-lekérdezés Hive parancskonzolról, illetve elküldött jelöljön ki. A zöld mezőt a Hive-lekérdezés kimenete emeli ki.
 
-![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-2.png)
+![Nyissa meg a Hive parancssori konzolt és adja meg a parancsot, Hive-lekérdezés kimenetének megtekintéséhez](./media/move-hive-tables/run-hive-queries-2.png)
 
 Az előző példák közvetlenül kimeneti a Hive-lekérdezés eredményeit a képernyőn. Is kiírhatja a kimenetet egy helyi fájlba a fő csomópont, vagy Azure-blobba. Más eszközök segítségével, majd tovább a Hive-lekérdezések kimenetének elemzése.
 
@@ -95,7 +95,7 @@ A kimenet egy helyi könyvtárba, a fő csomópontot a Hive-lekérdezés eredmé
 
 A következő példa a Hive-lekérdezés kimenete egy fájlba írt `hivequeryoutput.txt` címtárban `C:\apps\temp`.
 
-![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-1.png)
+![Hive-lekérdezés kimenete](./media/move-hive-tables/output-hive-results-1.png)
 
 **Azure-blobba kimeneti Hive-lekérdezés eredményei**
 
@@ -105,11 +105,11 @@ A Hive-lekérdezés eredményeit az Azure-blobba, az alapértelmezett tároló, 
 
 A következő példa a Hive-lekérdezés kimenete egy blob könyvtár írt `queryoutputdir` belül a a Hadoop-fürt alapértelmezett tárolója. Itt csak kell a címtár nevét, a blob neve nélkül. Hiba lépett fel, ha könyvtárat és a blob nevét is, mint például biztosít `wasb:///queryoutputdir/queryoutput.txt`.
 
-![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-2.png)
+![Hive-lekérdezés kimenete](./media/move-hive-tables/output-hive-results-2.png)
 
 A Hadoop-fürt Azure Storage Explorer használatával az alapértelmezett tároló megnyitása után megjelenik az alábbi ábrán látható módon a Hive-lekérdezés kimenete. A szűrő (vörös kiemelt) és lekérdezheti csak a megadott nevében szereplő betűket a blob alkalmazhat.
 
-![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-3.png)
+![A Hive-lekérdezés kimenete bemutató az Azure Storage Explorerrel](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. A Hive szerkesztőben a Hive-lekérdezések elküldéséhez
 A Lekérdezéskonzol (Hive szerkesztő) is használhatja az űrlap egy URL-cím megadásával *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* kifejezés webböngészőbe. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.

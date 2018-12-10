@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 52157797bb01fc73c551ca9654b2360d161b653d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2a55e39414cd691c48b015b3aae73f93cbb95aab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134658"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -32,7 +32,7 @@ Ez a cikk egy hivatkozást, amellyel a helyi javítani a leggyakoribb problémá
 
 Ez a cikk feltételezésekre a következő:
 
--   Üzembe helyezés az Azure AD-alkalmazásproxy kiszolgálónként [alkalmazásproxy – első lépések](application-proxy-enable.md) és általános alkalmazás-hozzáférési nem KCD a várt módon működik.
+-   Üzembe helyezés az Azure AD-alkalmazásproxy kiszolgálónként [alkalmazásproxy – első lépések](application-proxy-add-on-premises-application.md) és általános alkalmazás-hozzáférési nem KCD a várt módon működik.
 
 -   A közzétett célalkalmazás Internet Information Services (IIS) és a Microsoft általi implementációja Kerberos alapul.
 

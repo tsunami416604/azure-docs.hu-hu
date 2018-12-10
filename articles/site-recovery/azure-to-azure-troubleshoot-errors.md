@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: dc89eadfc0038d74ced431693c321944a7ee3a12
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a524c773b0f4f6d3dc14830d4c3200512f8b287c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834366"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140914"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -184,15 +184,15 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 
 
  - **Felbontás**
-  1.    A mobilitási szolgáltatás ügynökének a proxybeállításokat az Internet Explorer a Windows és Linux rendszeren /etc/environment észleli.
-  2.  Ha inkább a állítsa be a proxy csak az automatikus rendszer-Helyreállítás a mobilitási szolgáltatást, majd megadhatja a proxy adatait a ProxyInfo.conf helyen található:</br>
-      - ``/usr/local/InMage/config/`` a ***Linux***
-      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` a ***Windows***
-  3.    A ProxyInfo.conf kell a proxybeállításokat a következő INI-formátumban. </br>
+   1.   A mobilitási szolgáltatás ügynökének a proxybeállításokat az Internet Explorer a Windows és Linux rendszeren /etc/environment észleli.
+   2.  Ha inkább a állítsa be a proxy csak az automatikus rendszer-Helyreállítás a mobilitási szolgáltatást, majd megadhatja a proxy adatait a ProxyInfo.conf helyen található:</br>
+       - ``/usr/local/InMage/config/`` a ***Linux***
+       - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` a ***Windows***
+   3.   A ProxyInfo.conf kell a proxybeállításokat a következő INI-formátumban. </br>
                    *[proxy]*</br>
                    *Cím =http://1.2.3.4*</br>
                    *Port = 567*</br>
-  4. Csak támogatja az automatikus rendszer-Helyreállítás a mobilitási szolgáltatás ügynökének ***nem hitelesített proxyk***.
+   4. Csak támogatja az automatikus rendszer-Helyreállítás a mobilitási szolgáltatás ügynökének ***nem hitelesített proxyk***.
 
 ### <a name="fix-the-problem"></a>A probléma megoldása
 Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).

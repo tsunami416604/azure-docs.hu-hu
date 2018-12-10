@@ -5,33 +5,33 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 201f6f463736674cee3f94cc0d0177a8ddb181a1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6238d3d7a64816df01be69458d784114368d9e17
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110105"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141339"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Ajánlott eljárások biztonságossá tétele és a számítási feladatok kezelése az Azure-bA migrálása
 
-A tervezés és szem előtt tartva magát, az áttelepítés mellett az áttelepítés tervezése meg kell terveznie a biztonsági és felügyeleti modell az Azure-ban migrálás után. Ez a cikk ismerteti a tervezési és ajánlott eljárások biztonságossá tétele az Azure-alapú áttelepítése után, valamint a folyamatban lévő feladatok az üzembe helyezés futó bármely optimális szinten tartani. 
+A tervezés és szem előtt tartva magát, az áttelepítés mellett az áttelepítés megtervezése, fontolja meg az Azure-ban a biztonsági és felügyeleti modellt migrálás után kell. Ez a cikk ismerteti a tervezési és ajánlott eljárások biztonságossá tétele az Azure-alapú áttelepítése után, valamint, hogy az üzemelő példány optimális teljesítményének fenntartásához futó folyamatban lévő feladatok. 
 
 > [!IMPORTANT]
-> Az ajánlott eljárásokról és a jelen cikkben ismertetett vélemények az Azure platformon alapul, és szolgáltatás írásának időpontjában elérhető szolgáltatások. Funkciók és képességek idővel változni.
+> Az ajánlott eljárásokról és a jelen cikkben ismertetett vélemények az Azure platformon alapul, és a szolgáltatás írásának időpontjában elérhető szolgáltatások. Funkciók és képességek idővel változni.
 
 ## <a name="secure-migrated-workloads"></a>Az áttelepített munkaterhelések védelmére
 
-Az áttelepítés után a kritikus fontosságú feladat az áttelepített alkalmazások és szolgáltatások, külső és belső fenyegetések elleni védelmét. Ajánlott eljárások a következők:
+Az áttelepítés után a kritikus fontosságú feladat az áttelepített alkalmazások és szolgáltatások, külső és belső fenyegetések elleni védelmét. Ajánlott eljárások segítségével végezheti el:
 
-- Az Azure Security Center használata: ismerje meg, hogyan dolgozhat a monitorozási, értékelési, és az Azure Security Center által nyújtott ajánlások
-- **Az adatok titkosításához**: ajánlott eljárások lekérése az Azure-ban az adatok titkosításához.
-- **Állítsa be a kártevőirtó**: virtuális gépek védelme a kártevők és rosszindulatú támadások.
-- **Webalkalmazások biztonságossá**: Keep bizalmas adatok biztonságos, a web Apps alkalmazások át.
-- **Tekintse át az előfizetések**: Ellenőrizze, hogy ki férhet hozzá az Azure-előfizetések és -erőforrások az áttelepítés után.
-- **Naplók használata**: tekintse át az Azure naplózási és biztonsági naplók rendszeres időközönként.
-- **Speciális biztonsági funkciói**: megismerheti és kiértékelheti a más biztonsági funkciókat, Azure által kínált.
+- [Az Azure Security Center használata](#best-practice-follow-azure-security-center-recommendations): ismerje meg, hogyan dolgozhat a monitorozási, értékelési, és az Azure Security Center által nyújtott ajánlások
+- [Az adatok titkosításához](#best-practice-encrypt-data): ajánlott eljárások lekérése az Azure-ban az adatok titkosításához.
+- [Állítsa be a kártevőirtó](#best-practice-protect-vms-with-antimalware): virtuális gépek védelme a kártevők és rosszindulatú támadások.
+- [Webalkalmazások biztonságossá](#best-practice-secure-web-apps): Keep bizalmas adatok biztonságos, a web Apps alkalmazások át.
+- [Tekintse át az előfizetések](#best-practice-review-subscriptions-and-resource-permissions): Ellenőrizze, hogy ki férhet hozzá az Azure-előfizetések és -erőforrások az áttelepítés után.
+- [Naplók használata](#best-practice-review-audit-and-security-logs): tekintse át az Azure naplózási és biztonsági naplók rendszeres időközönként.
+- [Tekintse át a más biztonsági funkciókat](#best-practice-evaluate-other-security-features): megismerheti és kiértékelheti az Azure által kínált fejlett biztonsági funkciókat.
 
 ## <a name="best-practice-follow-azure-security-center-recommendations"></a>Ajánlott eljárás: az Azure Security Center javaslatainak követése
 
@@ -47,15 +47,14 @@ A Microsoft keményen együttműködik annak érdekében, hogy az Azure-bérlő 
 - **Csak az idő szerinti (JIT) hozzáférési**: a hálózat támadási felület csökkentése az idő, vezérelt hozzáférést csak a felügyeleti portjaihoz, Azure virtuális gépeken.
     - Virtuális gépek folyamatos kiderítsék tevékenységhez rendelkező virtuális gép RDP-port meg van nyitva az interneten a 3389-es tesz elérhetővé. Az Azure IP-címek jól ismert, és a támadók folyamatosan mintavételi őket 3389 portok megnyitása a támadások. 
     - Csak az idő használt hálózati biztonsági csoportok (NSG-k) és a bejövő szabályok ezt a korlátot az, hogy mennyi ideig egy adott port nyitva.
-    - Az igény szerinti engedélyezve van. A Security Center ellenőrzi, hogy a felhasználó rendelkezik-e a szerepköralapú hozzáférés-vezérlés (RBAC) írási hozzáférési engedélyek egy virtuális gép. Emellett adja meg a felhasználók hogyan kapcsolódhatnak a virtuális gépek szabályok. Ha engedélyek rendben, a hozzáférési kérelem jóváhagyása és NSG-ket a kijelölt portok ennyi ideig beérkező forgalom engedélyezésére konfigurálja a következőket adja meg. Az NSG-k akkor lépjen vissza az előző állapotukba, ha az idő lejár.
-- **Az adaptív alkalmazásvezérlők**: szoftver és a kártevő szoftverek folyamatosan ki virtuális gépeket szabályozhatja, hogy mely alkalmazásokat futtatni őket.
-    - a dinamikus alkalmazások engedélyezési listáinak.
+    - A szerinti engedélyezve van, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e a szerepköralapú hozzáférés-vezérlés (RBAC) írási hozzáférési engedélyek egy virtuális gép. Emellett adja meg a felhasználók hogyan kapcsolódhatnak a virtuális gépek szabályok. Ha engedélyek rendben, a hozzáférési kérelem jóváhagyása és NSG-ket a kijelölt portok ennyi ideig beérkező forgalom engedélyezésére konfigurálja a következőket adja meg. Az NSG-k akkor lépjen vissza az előző állapotukba, ha az idő lejár.
+- **Az adaptív alkalmazásvezérlők**: szoftver- és kártevők ki a virtuális gépek mely alkalmazások futhatnak őket szabályozásával használhassa a dinamikus alkalmazások engedélyezési listáinak.
     - Az adaptív alkalmazásvezérlők lehetővé teszik az engedélyezési lista alkalmazásokhoz, és megakadályozza, hogy rosszindulatú felhasználók és rendszergazdák számára jóvá nem hagyott vagy átvizsgálási szoftver alkalmazások telepítése a virtuális gépeken.
     - Letilthatja vagy riasztás megkísérli a kártevő alkalmazások futtatására, elkerülheti a nemkívánatos vagy rosszindulatú alkalmazások és a szervezet biztonsági szabályzattal gondoskodhat.
 - **Fájlintegritási monitorozás**: virtuális gépeken futó fájlok integritásának biztosításában.
     - Nem kell telepíteni a szoftvert, hogy a virtuális gép problémákat okozhat.  Egy fájl módosítása, a virtuális gép hibája vagy a teljesítmény teljesítménycsökkenés is okozhat.  A fájl integritás figyelés megvizsgálja a rendszerfájlokat és a beállításjegyzék-beállításai a módosításokat, és értesítést küld, ha valami probléma frissül.
     - A Security Center javasolja, amely fájlok, célszerű figyelemmel kísérni.
-További információt az ajánlott eljárás: • kezelése virtuális gépek hozzáférés használatával csak az idő • az adaptív vezérlőket az Azure Security Center • a fájlintegritási Monitorozás az Azure Security Centerben
+
 
 **tudj meg többet:**
 
@@ -173,7 +172,7 @@ A számítási feladatok migrálása, és futtathatja őket az Azure-ban, szám�
 
 Az Azure Active Directory (AD) biztosít, amely megjelenik az Azure monitorban tevékenységeket tartalmazó naplók. A naplók rögzítése Azure bérlős, amikor azok történt, és ki végzett jelszóműveleteket. 
 
-- Naplók megjelenítése a bérlő feladatok előzményeit. Bejelentkezési tevékenység megjelenítése a feladatokat elvégző naplózza. 
+- Naplók megjelenítése a bérlő feladatok előzményeit. Bejelentkezési tevékenységek naplózza a feladatokat elvégző megjelenítése. 
 - Biztonsági jelentések a hozzáférést az Azure AD-licencre függ. Az ingyenes és alapszintű kap kockázatos felhasználók és bejelentkezések listája. Prémium 1 és 2. prémium kiadásban első alapul szolgáló eseményből származó információkat.
 - Tevékenységnaplók is átirányítása egy hosszú távú megőrzés és elemzéseket végpontok száma.
 - Általános gyakorlat, tekintse át a naplókat, vagy a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti eszközök a automatikusan tekintse át a rendellenességeket integrálása révén.  Ha Premium 1 vagy 2-es nem használ, szüksége lesz elemzési rengeteg ehhez a saját maga, vagy használja a SIEM-rendszerbe.  Elemzés magában foglalja a kockázatos bejelentkezések és események és egyéb felhasználói támadási mintákat keres.
@@ -202,15 +201,15 @@ Az Azure számos más biztonsági funkciókat, amelyek fejlett biztonsági lehet
 
 Ebben a szakaszban javaslatokat kaphat tőlünk néhány ajánlott eljárást az Azure felügyeleti, többek között:
 
-- **Erőforrások kezelése**: ajánlott eljárások Azure-erőforráscsoportot és az erőforrások, például intelligens elnevezési, a véletlen törlés megelőzése, a megfelelő engedélyekkel, és a hatékony erőforrás-címkézési kezelése.
-- **Tervezetek használata**: gyors áttekintés használatát szemléltető felépítésére és kezelésére, az üzembe helyezési környezetekhez.
-- **Tekintse át az architektúrák**: tekintse át az Azure-architektúrák segítségével megtudhatja származó, az áttelepítés utáni üzemelő példányok létrehozása mintát.
-- **Állítsa be a felügyeleti csoportok**: Ha több előfizetéssel rendelkezik, képes felügyeleti csoportokba rendezheti őket, és szabályozási beállításokat alkalmazza ezeket a csoportokat.
-- **Hozzáférési szabályzatok beállítása**: megfelelőségi szabályzatok alkalmazása az Azure-erőforrások.
-- **A BCDR-stratégia megvalósításához**: összeállítani (egy üzleti folytonossági és vészhelyreállítási BCDR) stratégia az adatok biztonságban, a környezet rugalmas, és fel erőforrásokat és futó leállások esetén.
-- **Virtuális gépek kezelése a**: virtuális gépek rendelkezésre állási csoportokba, a rugalmasság és a magas rendelkezésre állás. Felügyelt lemezek használata a virtuális gép lemez- és felügyeleti megkönnyítése érdekében.
-- **Erőforrás-használat figyelése**: az Azure-erőforrások diagnosztikai naplózás engedélyezése, hozhat létre riasztásokat és a proaktív hibaelhárítási forgatókönyveket, és az Azure irányítópultján használja a központi telepítési állapotának és állapotát egyesített nézetét.
-- **Támogatás és a frissítések kezelése**: az Azure támogatási csomagot, és hogyan vonatkozóan, a virtuális gépek frissítése az ajánlott eljárások ismertetése, és a put folyamatok változáskezelés.
+- [Erőforrások kezelése](#best-practice-name-resource-groups): ajánlott eljárások Azure-erőforráscsoportot és az erőforrások, például intelligens elnevezési, a véletlen törlés megelőzése, a megfelelő engedélyekkel, és a hatékony erőforrás-címkézési kezelése.
+- [Tervezetek használata](#best-practice-implement-blueprints): gyors áttekintés használatát szemléltető felépítésére és kezelésére, az üzembe helyezési környezetekhez.
+- [Tekintse át az architektúrák](#best-practice-review-azure-reference-architectures): tekintse át az Azure-architektúrák segítségével megtudhatja származó, az áttelepítés utáni üzemelő példányok létrehozása mintát.
+- [Állítsa be a felügyeleti csoportok](#best-practice-manage-resources-with-management-groups): Ha több előfizetéssel rendelkezik, képes felügyeleti csoportokba rendezheti őket, és szabályozási beállításokat alkalmazza ezeket a csoportokat.
+- [Hozzáférési szabályzatok beállítása](#best-practice-deploy-azure-policy): megfelelőségi szabályzatok alkalmazása az Azure-erőforrások.
+- [A BCDR-stratégia megvalósításához](#best-practice-implement-a-bcdr-strategy): összeállítani (egy üzleti folytonossági és vészhelyreállítási BCDR) stratégia az adatok biztonságban, a környezet rugalmas, és fel erőforrásokat és futó leállások esetén.
+- [Virtuális gépek kezelése a](#best-practice-use-managed-disks-and-availability-sets): virtuális gépek rendelkezésre állási csoportokba, a rugalmasság és a magas rendelkezésre állás. Felügyelt lemezek használata a virtuális gép lemez- és felügyeleti megkönnyítése érdekében.
+- [Erőforrás-használat figyelése](#best-practice-monitor-resource-usage-and-performance): az Azure-erőforrások diagnosztikai naplózás engedélyezése, hozhat létre riasztásokat és a proaktív hibaelhárítási forgatókönyveket, és az Azure irányítópultján használja a központi telepítési állapotának és állapotát egyesített nézetét.
+- [Támogatás és a frissítések kezelése](#best-practice-manage-updates): az Azure támogatási csomagot, és hogyan vonatkozóan, a virtuális gépek frissítése az ajánlott eljárások ismertetése, és a put folyamatok változáskezelés.
 
 
 ## <a name="best-practice-name-resource-groups"></a>Ajánlott eljárás: erőforráscsoport neve
@@ -225,7 +224,7 @@ Annak biztosítása, hogy az erőforráscsoportok rendelkezik adjon kifejező ne
 
 **tudj meg többet:**
 
-[Ismerje meg](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) elnevezési konvenciók
+- [Ismerje meg](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) elnevezési konvenciók
 
 ## <a name="best-practice-implement-delete-locks-for-resource-groups"></a>Ajánlott eljárás: megvalósítása erőforráscsoportok zárolások törlése
 
@@ -283,16 +282,16 @@ Ugyanúgy, mint a tervezet lehetővé teszi, hogy a projekt tervezési paraméte
 - [Olvasási](https://docs.microsoft.com/azure/governance/blueprints/overview) tervezetek kapcsolatban.
 - [Felülvizsgálat](https://azure.microsoft.com/blog/customizing-azure-blueprints-to-accelerate-ai-in-healthcare/) a mesterséges Intelligencia felgyorsítása az egészségügyben használt tervezet példa.
 
-## <a name="best-practice---review-azure-reference-architectures"></a>Ajánlott eljárás – tekintse át az Azure-referenciaarchitektúrák
+## <a name="best-practice-review-azure-reference-architectures"></a>Ajánlott eljárás: tekintse át Azure-referenciaarchitektúrák
 
 Biztonságos, méretezhető és kezelhető Azure-beli másolatain ijesztőnek tűnhet.  A folyamatos változásokat nehézkes lehet tartani az optimális környezet különböző funkcióit. Tanuljon hivatkozást kellene hasznos lehet, kialakításakor és számítási feladatok migrálása az.  Az Azure és az Azure partnerek létrehozott minta referenciaarchitektúrák számos különféle típusú környezeteket. Ezeket a mintákat úgy tervezték, hogy adja meg ötleteit, tanuljon és épülnek. 
 
 A referenciaarchitektúrák forgatókönyv szerint vannak elrendezve. Ajánlott eljárásokat és tanácsokat a felügyeleti, rendelkezésre állást, méretezhetőséget és biztonsági tartalmazzák.
-
+Az Azure App Service-környezet az App Service-ben futtatására, alkalmazások, beleértve a Windows és Linux-webalkalmazások, a Docker tárolók, mobilalkalmazások és funkciók teljesen elkülönített és dedikált környezetet biztosít. App Service-ben az Azure ad a biztonsági, terheléselosztási, automatikus skálázást és az automatikus kezelés a az alkalmazás. Akkor is kihasználhatja a fejlesztési és tesztelési lehetőségeket, például a folyamatos üzembe helyezést az Azure DevOps- és GitHub-csomagkezelés, átmeneti környezetek, egyéni tartományt és SSL-tanúsítványokat. Alkalmazások, amelyeknek az elkülönítés és biztonságos hálózati hozzáférést, és azokat, amelyek nagy mennyiségű memóriát és más szeretné méretezni az erőforrásokat az App Service-ben hasznos.
 **tudj meg többet:**
 
-[Ismerje meg](https://docs.microsoft.com/azure/architecture/reference-architectures/) Azure-referenciaarchitektúrák.
-[Felülvizsgálat](https://docs.microsoft.com/azure/architecture/example-scenario/) Azure példaforgatókönyvek.
+- [Ismerje meg](https://docs.microsoft.com/azure/architecture/reference-architectures/) Azure-referenciaarchitektúrák.
+- [Felülvizsgálat](https://docs.microsoft.com/azure/architecture/example-scenario/) Azure példaforgatókönyvek.
 
 ## <a name="best-practice-manage-resources-with-management-groups"></a>Ajánlott eljárás:-erőforrások kezelése a felügyeleti csoportok
 
@@ -332,62 +331,50 @@ Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályz
 
 ## <a name="best-practice-implement-a-bcdr-strategy"></a>Ajánlott eljárás: egy BCDR-stratégia megvalósításához
 
-Tervezés az üzletmenet-folytonossági és vészhelyreállítási (bcdr) funkciók, van egy kritikus fontosságú a gyakorlatban az Azure-bA áttelepítés tervezése során kell elvégezni. A jogi feltételeket a szerződést, amely egy nagyobb kényszerített például hurrikánok vagy földrengések kötelezettségek ürügy vis major záradékot tartalmaz. Azonban akkor is lehetővé teszi annak érdekében, hogy szolgáltatások továbbra is futtassa, és szükség esetén helyre, ha katasztrófa arra körül kötelezettségek. Ennek a lehetősége webalkalmazásainkkal a vállalat jövőbeli.
+Tervezés az üzletmenet-folytonossági és vészhelyreállítási (bcdr) funkciók, van egy kritikus fontosságú a gyakorlatban az Azure-bA áttelepítés tervezése során kell végrehajtani. A jogi feltételeket a szerződést, amely egy nagyobb kényszerített például hurrikánok vagy földrengések kötelezettségek ürügy vis major záradékot tartalmaz. Azonban akkor is lehetővé teszi annak érdekében, hogy szolgáltatások továbbra is futtassa, és szükség esetén helyre, ha katasztrófa arra körül kötelezettségek. Ennek a lehetősége webalkalmazásainkkal a vállalat jövőbeli.
 
+Széles körben a BCDR-stratégia figyelembe kell venni:
+- **Az adatok biztonsági mentésének**: hogyan lehet az adatok biztonságban tartani, hogy helyreállíthatja azt könnyedén Ha leállások esetén.
+- **Vész-helyreállítási**: hogyan kell fenntartani az alkalmazások, rugalmas és érhető el, ha a leállások esetén. 
 
-Az Azure platform számos rugalmasság szolgáltatást biztosítja:
+### <a name="azure-resiliency-features"></a>Az Azure rugalmassága funkciók
+Az Azure platform számos rugalmasság szolgáltatást biztosít.
 
 - **Régiót a párosítási**: Azure-régiók és az adatok fizikai tárolási helye határain belül regionális védelmet biztosíthat párokkal. Azure régiópárok fizikai elkülönítését biztosítja, rangsorolja a széles körű leállás esetén a pár egyik régió helyreállítása, helyezi üzembe a rendszerfrissítések külön-külön az egyes régiókban, és lehetővé teszi, hogy a szolgáltatások, például az Azure georedundáns tárolási való replikálása a regionális párokról.
 - **A rendelkezésre állási zónák**: a rendelkezésre állási zónák fizikai külön zónák egy Azure-régióban való létrehozásával egy teljes Azure-adatközpont meghibásodása elleni védelem. Minden zóna egy megkülönböztető áramforrásról, a hálózati infrastruktúra és a hűtési mechanizmus rendelkezik.
 - **A rendelkezésre állási csoportok**: a rendelkezésre állási csoportok adatközponton belül meghibásodásai elleni védelem érdekében. A rendelkezésre állási csoportokban, így magas rendelkezésre állású virtuális gépek csoportosítja. Egyes rendelkezésre állási csoporton belül az Azure csomagszűrő több tartalék tartomány benne együtt az alapul szolgáló hardver egy közös áramforrásról és a hálózati kapcsoló és a egy csoportba, amely a karbantartás, vagy újra kell indítani, alapul szolgáló hardver frissítési tartományok egy időben. Például ha a munkaterhelés Azure virtuális gépekhez összeset is elhelyezhető, két vagy több virtuális gépet minden egyes alkalmazás-szint egy. Elhelyezhet például előtérbeli virtuális gép egy, és a egy másik virtuális gépek adatszint. Mivel csak egyetlen frissítési tartományt minden újraindítani egyszerre egy készletben, és az Azure biztosítja, hogy egy csoporton belüli virtuális gépek a tartalék tartományok vannak elosztva, akkor győződjön meg arról, hogy a készlet nem minden virtuális gép egyszerre lesz nem.
 
+### <a name="set-up-bcdr"></a>BCDR beállítása
 
-Az Azure-bA migrálásánál fontos tudni, hogy bár az Azure platform lehetővé teszi a beépített funkciók és más BCDR-szolgáltatások, meg kell az Azure-alapú kihasználásához az Azure rugalmasságának biztosításával, magas rendelkezésre állás, vészhelyreállítás tervezése helyreállítás, és biztonsági mentési szolgáltatásai és funkciói.
-- A BCDR-megoldások függ, hogy a vállalati célok, és az Azure-alapú befolyásolja. Infrastruktúra-szolgáltatás (IaaS) és a Platformszolgáltatás (PaaS) központi telepítések a BCDR különféle kihívásokat jelenthet.
+Az Azure-bA migrálásánál fontos megérteni, hogy az Azure platform olyan beépített rugalmassági funkciókat kínál, bár kell terveznie az Azure-alapú kihasználásához az Azure-funkciók és szolgáltatások magas rendelkezésre állást biztosító vészhelyreállítás és a biztonsági mentés.
+
+- A BCDR-megoldás függ, hogy a vállalati célok, és az Azure üzembe helyezési stratégiához befolyásol. Infrastruktúra-szolgáltatás (IaaS) és a Platformszolgáltatás (PaaS) központi telepítések a BCDR különféle kihívásokat jelenthet.
 - Egyszer helyen, a BCDR-megoldások kell vizsgálni rendszeresen ellenőrizni, hogy a stratégia működőképes marad.
 
 
-## <a name="best-practice-back-up-your-deployment"></a>Ajánlott eljárás: biztonsági másolatot az üzembe helyezés
+## <a name="best-practice-back-up-your-data"></a>Ajánlott eljárás: az adatok biztonsági mentése
 
-A legtöbb esetben egy a helyszíni számítási feladatok kivonják a migrálás után, és a helyszíni adatok biztonsági mentése stratégiát kell kiterjesztett vagy cserélni. Ha telepít át a teljes adatközpontját az Azure-ba, tervezése és implementálása az Azure-technológiák használatával teljes biztonsági mentési megoldást kell, vagy külső integrált megoldásokat. A kiválasztott biztonsági mentési megoldás az Azure-alapú függően eltérő lesz. 
+A legtöbb esetben egy a helyszíni számítási feladatok kivonják a migrálás után, és a helyszíni adatok biztonsági mentése stratégiát kell kiterjesztett vagy cserélni. Ha telepít át a teljes adatközpontját az Azure-ba, tervezése és implementálása az Azure-technológiák használatával teljes biztonsági mentési megoldást kell, vagy külső integrált megoldásokat. 
 
 
 ### <a name="back-up-an-iaas-deployment"></a>Készítsen biztonsági másolatot egy IaaS-telepítés
 
-
-A számítási feladatok Azure IaaS virtuális gépeken futó, érdemes megfontolni a következő biztonsági mentési megoldások:
+Azure IaaS virtuális gépeken futó számítási feladatok fontolja meg ezek a biztonsági mentési megoldások:
 
 - **Az Azure Backup**: az Azure Windows és Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentést biztosít.
 - **A pillanatképek tárolási**: blob storage, pillanatképek.
 
 #### <a name="azure-backup"></a>Azure Backup
 
-
 Az Azure Backup biztonsági másolatot készít az Azure storage-ban tárolt adatok helyreállítási pontokat hoz létre. Az Azure Backup biztonsági mentése az Azure-beli Virtuálisgép-lemezeket, és az Azure Files (előzetes verzió). Az Azure Files adja meg a felhőben, az SMB-n keresztül elérhető fájlmegosztások.
    
 Az Azure Backup segítségével többféle módon a virtuális gépek biztonsági mentése.
 
-- **A virtuális gép beállításainak a közvetlen biztonsági mentést**:
-    - Az Azure Backup integrálva van a virtuális gép beállításai az Azure Portalon.
-    - Készítsen biztonsági másolatot a virtuális gép naponta egyszer, és a Virtuálisgép-lemez visszaállítása. 
-    - Az Azure Backup az app-kompatibilis data pillanatképek (VSS) vesz igénybe.
-    - Nincs ügynök telepítve van a virtuális gépen.
-- **Közvetlen biztonsági mentést a Recovery Services-tároló**:
-    - Üzembe helyezése egy Azure Backup helyreállítási tárat, és válassza ki a virtuális gépek biztonsági mentésének.
-    - Ezt a módszert biztosít egyetlen helyen való nyomon követheti és kezelheti a biztonsági mentések és további biztonsági mentési és visszaállítási lehetőségek közül. 
-    - Az Azure Backup a Microsoft Azure Recovery Services-(MARS) ügynök telepítése a virtuális gépen.
-    - Legfeljebb napi háromszori van biztonsági mentés.
-    - Biztonsági mentés, a fájl vagy mappa szinten van, és nem alkalmazás-kompatibilis. Linux nem támogatott.
-- **Az Azure Backup Server: a virtuális gép az Azure Backup Server védelmét**:
-   - Az Azure Backup Server az Azure Backup szolgáltatásban díjmentesen nyújtja.
-   - A virtuális gép biztonsági másolatot a helyi Azure Backup-tárhelyre.
-   - Majd készítsen biztonsági másolatot az Azure Backup Server az Azure Recovery Services-tárolóban.
-   - Biztonsági másolat egy alkalmazás a DNSSEC használatát, teljes granularitással keresztül gyakran a biztonsági mentés és megőrzés
-   - Az alkalmazás szintjén is biztonsági másolatot készíteni. Például úgy, hogy az SQL Server, a SharePoint biztonsági mentése
+- **A virtuális gép beállításainak a közvetlen biztonsági mentést**: biztonsági másolatot készíthet az Azure Backup a virtuális gépek az Azure portal virtuális gép közül. Készítsen biztonsági másolatot a virtuális gép egyszer, és a nap, és a Virtuálisgép-lemez visszaállítása, igény szerint. Az Azure Backup elkészítette az app-kompatibilis data pillanatképek (VSS), nincs ügynök telepítve van a virtuális gépen.
+- **Közvetlen biztonsági mentést a Recovery Services-tároló**: biztonsági másolatot készíthet az IaaS-beli virtuális gépek az Azure biztonsági mentési Recovery Services-tároló üzembe helyezésével. Nyomon követését és a biztonsági másolatok kezelése egyetlen helyen, és részletes biztonsági mentési és helyreállítási lehetőségeket biztosít. Biztonsági mentés: legfeljebb napi háromszori, a fájl vagy mappa szintjén. App-t támogató nem fut, és a Linux nem támogatott. A Microsoft Azure Recovery Services-(MARS) ügynököt egyes virtuális gépek biztonsági szeretne a telepítés céljaként megadott.
+- **Az Azure Backup Server: a virtuális gép Azure Backup Server védelmét**: az Azure Backup Server az Azure Backup szolgáltatásban díjmentesen nyújtja. A virtuális gép biztonsági másolatot a helyi Azure Backup Server storage. Majd készítsen biztonsági másolatot az Azure Backup Server az Azure-tárolóban. Biztonsági mentés: alkalmazás a DNSSEC használatát, a gyakori biztonsági mentés és megőrzés keresztül teljes részletességgel. Az alkalmazás szintjén is biztonsági másolatot készíteni. Például úgy, hogy az SQL Server, a SharePoint biztonsági mentése
 
-Az Azure Backup automatikusan foglalja le és kezeli a használatalapú fizetési modellel felhasznált tárhelyért tárolót.
-- Storage, LRS vagy GRS is hozzárendelhető.
-- Az Azure Backup titkosítja az adatokat átvitel közben az AES 256 eljárással, és elküldi azt az HTTPS-kapcsolaton keresztül az Azure-bA. Az adatok biztonsági inaktív az Azure-ban van titkosítva [Storage Service Encryption (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fqueues%2ftoc.json), és az adatok átvitelét és tárolását.
+A biztonság érdekében az Azure Backup titkosítja az adatokat átvitel közben az AES 256 eljárással, és elküldi azt az HTTPS-kapcsolaton keresztül az Azure-bA. Az adatok biztonsági inaktív az Azure-ban van titkosítva [Storage Service Encryption (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fqueues%2ftoc.json), és az adatok átvitelét és tárolását.
 
 
 ![Az Azure Backup](./media/migrate-best-practices-security-management/iaas-backup.png)
@@ -409,9 +396,9 @@ Az Azure virtuális gépek és az Azure Storage szolgáltatásban tárolódnak.
 
 **tudj meg többet:**
 
-- [További információ] (https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction Az azure blob storage-bA.
+- [Ismerje meg](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) az Azure blob storage-bA.
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots) blob-pillanatkép létrehozása.
-- Tekintse át a mintaforgatókönyv] (https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup/) a blob storage biztonsági mentéshez.
+- [Tekintse át a mintaforgatókönyv](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup) a blob storage biztonsági mentéshez.
 - [További információ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) helyreállítható törlés.
 - [Felülvizsgálat](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Mi a teendő az Azure Storage leállása esetén?
 
@@ -453,7 +440,7 @@ Mivel az Azure Functions függvények több vagy kevesebb mint kód, biztonsági
 
 - [Az adatvédelem](https://docs.microsoft.com/azure/devops/articles/team-services-security-whitepaper?view=vsts) Azure fejlesztők és üzemeltetők számára.
 
-## <a name="best-practice-set-up-a-disaster-recovery-strategy"></a>Ajánlott eljárás: egy vész-helyreállítási stratégiát beállítása
+## <a name="best-practice-set-up-disaster-recovery"></a>Ajánlott eljárás: vészhelyreállítás beállítása 
 
 Adatok védelme mellett BCDR tervezési érdemes megfontolni, így az alkalmazások és számítási feladatok nem állnak katasztrófa esetén. 
 
@@ -553,7 +540,7 @@ Ha nem sikerül a számítási infrastruktúra Azure-ban, Azure-függvényalkalm
 - [Ismerje meg](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution) vészhelyreállítás és földrajzi elosztás tartós az Azure Functions.
 
 
-### <a name="best-practice-use-managed-disks-and-availability-sets"></a>Ajánlott eljárás: felügyelt lemezek és a rendelkezésre állási csoportok használata
+## <a name="best-practice-use-managed-disks-and-availability-sets"></a>Ajánlott eljárás: felügyelt lemezek és a rendelkezésre állási csoportok használata
 
 Az Azure rendelkezésre állási csoportokat használ, logikusan csoportosíthatja a virtuális gépek és a egy készlet más erőforrásairól elkülöníteni a virtuális gépek. Virtuális gépet egy rendelkezésre állási csoportban vannak elosztva a különböző alrendszereket, helyi hibák ellen védelmet biztosító több tartalék tartomány, és úgy, hogy a készlet nem minden virtuális gép újraindítása egyszerre is több tartományban futó.
 
@@ -662,7 +649,7 @@ Később szüksége lesz működhet együtt a támogatási munkatársak vagy a M
 - [Áttekintés](https://azure.microsoft.com/support/options/) az Azure támogatási csomagok.
 - [Ismerje meg](https://azure.microsoft.com/support/legal/sla/) szolgáltatói szerződések (SLA).
 
-## <a name="best-practice---manage-updates"></a>Ajánlott eljárás,-frissítések kezelése
+## <a name="best-practice-manage-updates"></a>Ajánlott eljárás: frissítések kezelése
 
 Tartja az Azure virtuális gépek frissítése a legújabb operációs rendszerrel és a szoftverfrissítések egy nagyméretű adathalmazokat. Minden virtuális gép, mely szükséges frissítések ki, és automatikusan leküldéses azonosítani a ezeket a frissítéseket a rendkívül értékes illesztésének lehetősége.
 

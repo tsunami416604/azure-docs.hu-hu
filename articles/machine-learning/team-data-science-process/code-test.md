@@ -1,6 +1,6 @@
 ---
-title: Adatok tudományos kód tesztelése az Azure-ban a UCI felnőtt jövedelem előrejelzési adatkészlettel – csoportos adatelemzési folyamat és az Azure DevOps-szolgáltatásokkal
-description: Data science kód UCI felnőtt jövedelem előrejelzési adatokkal tesztelés
+title: Tesztelje a data science kódot az Azure DevOps-szolgáltatásokkal – csoportos adatelemzési folyamat
+description: Adatok tudományos kódot tesztelés az Azure-ban a UCI felnőtt bevétel előrejelzése adatkészlet a csoportos adatelemzési folyamat és az Azure DevOps-szolgáltatásokkal
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: tdsp
-ms.custom: (previous author=weig, ms.author=weig)
-ms.openlocfilehash: d04f50bc3de34c28c10be7ba429f85a99096de47
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
+ms.openlocfilehash: d8c3bafaa42e68eb7f6b5212c055793a1f2b1137
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443950"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134539"
 ---
-# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Adatok adatelemzési kódot a UCI felnőtt bevétel előrejelzése adatkészlettel tesztelése
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatok tudományos kódot tesztelés az Azure-ban a csoportos adatelemzési folyamat és az Azure DevOps-szolgáltatásokkal
 Ez a cikk tartalmaz útmutatást előzetes kód tesztelése egy adatelemzési munkafolyamathoz. Az ilyen tesztelést adatszakértők egy rendszeres és hatékony módszert kínál ellenőrizze a minőség és a kódját a várt eredményt kapja. A csoportos adatelemzési folyamat (TDSP) használjuk [a UCI felnőtt jövedelem adatkészletet használó projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) azt korábban közzétett megjelenítéséhez a kódot tesztelés menetét. 
 
 ## <a name="introduction-on-code-testing"></a>Bevezetés a kódot tesztelés

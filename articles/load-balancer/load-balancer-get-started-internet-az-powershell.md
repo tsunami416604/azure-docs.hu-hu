@@ -1,5 +1,6 @@
 ---
-title: Hozzon létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím PowerShell-lel |} A Microsoft Docs
+title: Standard Load Balancer létrehozása az Azure PowerShell-lel zónaredundáns frontend
+titlesuffix: Azure Load Balancer
 description: A PowerShell-lel zónaredundáns nyilvános IP-cím cím előtérbeli nyilvános Load Balancer Standard létrehozása
 services: load-balancer
 documentationcenter: na
@@ -7,18 +8,19 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: kumud
-ms.openlocfilehash: 9dfd477678148f3e4bb80bafe61e4867dab54c8e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b6730b624cc0416354fecfdbe747f643540f9e89
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739532"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138745"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-powershell"></a>Hozzon létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím PowerShell-lel
+#  <a name="create-a-standard-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Hozzon létre egy standard szintű terheléselosztó zónaredundáns előtérbeli Azure PowerShell-lel
 
 Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) és a egy zónaredundáns frontend-IP szabványos nyilvános cím segítségével.
 

@@ -7,19 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 3142cabf28dd60fa49bed4cc153eaba096a2782e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109755"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139744"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Ajánlott eljárásokat, és állítsa be a hálózati, számítási feladatok migrálása az Azure-bA
 
-A tervezés és szem előtt tartva magát, az áttelepítés mellett az áttelepítés tervezése kritikus fontosságú lépés egyik megtervezését és megvalósítását az Azure-hálózatok. Ez a cikk ismerteti a tervezési információkat és ajánlott eljárások az IaaS és PaaS implementációk az Azure-ban való migráláskor hálózatkezelés.
+A tervezés és az áttelepítés mellett magát, az áttelepítés tervezése kritikus fontosságú lépés egyik megtervezését és megvalósítását az Azure-hálózatok. Ez a cikk ismerteti a hálózati ajánlott eljárások IaaS és PaaS implementációk az Azure-ba való migrálás során.
 
 > [!IMPORTANT]
-> Az ajánlott eljárásokról és a jelen cikkben ismertetett vélemények az Azure platformon alapul, és a szolgáltatás írásának időpontjában elérhető szolgáltatások. Funkciók és képességek idővel változni. Lehet, hogy nem minden javaslat alkalmazható a telepítéshez, ezért válassza, amelyek környezete számára.
+> Az ajánlott eljárásokról és a jelen cikkben ismertetett vélemények az Azure platformon alapul, és a szolgáltatás írásának időpontjában elérhető szolgáltatások. Funkciók és képességek idővel változni. Lehet, hogy nem minden javaslat alkalmazható a telepítéshez, ezért válassza, amelyek az Ön számára.
 
 
 ## <a name="design-virtual-networks"></a>Virtuális hálózatok megtervezése

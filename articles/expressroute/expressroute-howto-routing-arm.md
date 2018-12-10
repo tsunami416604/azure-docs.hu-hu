@@ -1,19 +1,19 @@
 ---
-title: 'Útválasztás (társviszony-létesítés) az expressroute-kapcsolatcsoport konfigurálása: Resource Manager: PowerShell: Azure |} A Microsoft Docs'
+title: 'Az ExpressRoute - Kapcsolatcsoportok társviszony konfigurálása: PowerShell: Azure |} A Microsoft Docs'
 description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
-documentationcenter: na
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: jaredro
-ms.openlocfilehash: 63c88838d943be028aa655863b96b68f6b5b1321
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: b8e9aadc63af563c47d42ed52445afbc270d98ec
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261757"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141543"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>A PowerShell használatával egy ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 

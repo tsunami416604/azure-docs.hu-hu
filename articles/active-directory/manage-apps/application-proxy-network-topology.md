@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 28837436ee4336dd7fa2b3e66402257d1e1263b9
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889786"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140479"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia szempontjai Azure Active Directory Application Proxy használatával
 
@@ -85,9 +85,9 @@ Az összekötő a célalkalmazás közelében helyezze az ügyfél hálózatán.
 
 Ha az összekötő kell a tartományvezérlőre egy üzemel, ez a minta azért előnyösebb. Legtöbb ügyfelünk akkor használja ezt a mintát, mivel a legtöbb forgatókönyvhöz jól működik. Ez a minta mintával 2 a szolgáltatás és az összekötő közötti forgalom optimalizálása érdekében is kombinálhatók.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>2. minta: Kihasználhatja az ExpressRoute nyilvános társviszony-létesítés
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2. minta: Kihasználhatja az ExpressRoute a Microsoft társviszony-létesítés
 
-Ha az ExpressRoute nyilvános társviszony-létesítés beállításához, használhatja a gyorsabb ExpressRoute-kapcsolat Application Proxy és az összekötő közötti forgalom. Az összekötő továbbra is a hálózat, az alkalmazás közelében van.
+Ha az ExpressRoute állítsa be a Microsoft társviszony-létesítés, használhatja a gyorsabb ExpressRoute-kapcsolat Application Proxy és az összekötő közötti forgalom. Az összekötő továbbra is a hálózat, az alkalmazás közelében van.
 
 ### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>3. minta: Kihasználhatja az ExpressRoute privát társviszony-létesítést az
 
@@ -137,13 +137,13 @@ Ez az egy egyszerű minta. Ugrás 3 optimalizálása úgy, hogy az összekötő 
 
 ### <a name="use-case-3"></a>Használja a 3. eset
 
-**Forgatókönyv:** az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. Az ExpressRoute nyilvános társviszony-létesítés létezik az Azure és a vállalati hálózat között.
+**Forgatókönyv:** az alkalmazás szerepel a szervezeti hálózatához az adatközpontjába. A Microsoft társviszony-létesítési ExpressRoute létezik az Azure és a vállalati hálózat között.
 
 **Javaslat:** hajtsa végre az 1. és 2, az előző szakaszban ismertetett mintákat.
 
 Először helyezze el az alkalmazást a lehető legközelebb az összekötőt. Ezt követően a rendszer automatikusan használja az ExpressRoute az ugrások 2. 
 
-Ha az ExpressRoute-kapcsolat nyilvános társviszony-létesítés használ, a proxy- és az összekötő közötti forgalom tovább az hivatkozás. Ugrás 2 késés van optimalizálva.
+Ha az ExpressRoute-kapcsolat a Microsoft társviszony-létesítés használ, a proxy- és az összekötő közötti forgalom tovább az hivatkozás. Ugrás 2 késés van optimalizálva.
 
 ![A proxy- és összekötő között ExpressRoute bemutató ábra.](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
@@ -173,7 +173,7 @@ Ebben az esetben egy másik változatot használatával is használni. Ha legtö
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazásproxy engedélyezése](application-proxy-enable.md)
+- [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
 - [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259088"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138789"
 ---
 <a id="preparemachines"></a>
 
@@ -83,6 +83,7 @@ Rendelkeznie kell a fürt rendszergazdája központi telepítését és konfigur
 A szakaszok ezt a fájlt a részletekért lásd: [különálló Windows-fürt konfigurációs beállításainak](service-fabric-cluster-manifest.md).
 
 Nyissa meg a letöltött csomag egy ClusterConfig.json fájlt, és módosítsa az alábbi beállításokat:
+
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
 | **NodeType** |A csomóponttípusok lehetővé teszik különböző csoportokba rendezheti a fürtcsomópontokat. A fürt legalább egy NodeType csomóponttípust kell rendelkeznie. Egy csoport összes csomópontja a következő közös jellemzőkkel rendelkeznek: <br> **Név** – Ez az a csomóponttípus neve. <br>**Végpontportokat** – ezek a különböző nevesített végpontok (portot képes) ennek a csomóponttípusnak társított. Használhat bármilyen szeretne, mindaddig, amíg azok nem ütköznek a bármi más, a jegyzékfájlban és még nem más, a számítógép vagy virtuális gépen futó alkalmazás által használt port számát. <br> **Elhelyezési tulajdonságok** – ezek a helyrendszeri szolgáltatások vagy a szolgáltatások elhelyezési korlátozások használni csomópont típus tulajdonságait írják le. Ezek a tulajdonságok akkor a felhasználó által definiált kulcs-érték párok, amelyek további metaadatok biztosítanak egy adott csomópont. Példák a csomópont tulajdonságait lehet rendelkezik-e a csomópont a merevlemez-meghajtóra vagy grafikus kártyát, a merevlemez-meghajtóról, magok és más fizikai tulajdonságok forgórészek száma. <br> **Kapacitások** -fürt(ök) adható meg neve és a egy adott erőforrás mennyiségét, hogy egy adott csomópont felhasználható rendelkezik. Például egy csomópontot adhat meg, hogy rendelkezik-e "MemoryInMb" nevű metrika a kapacitása és arról, hogy vannak-e rendelkezésre álló 2048 MB-ot alapértelmezés szerint. Ezek a kapacitások használhatók futásidőben győződjön meg arról, hogy az adott mennyiségű erőforrást igénylő szolgáltatások kerüljenek-e a csomópontokon, hogy ezek az erőforrások a szükséges mennyiségben érhető el.<br>**IsPrimary** – Ha győződjön meg arról, hogy csak az egyik értéke az elsődleges, a következő értékkel definiált egynél több NodeType *igaz*, amely az cég, ahol a rendszer futtassa. Minden más csomóponttípusok értékre kell állítani *false (hamis)* |
@@ -97,20 +98,20 @@ Miután a fürt konfigurációját volt-e a környezet konfigurálva minden beá
 Amikor a fürt rendszergazdája konfigurálja a különálló Service Fabric-fürtön, a környezetet kell állítani a következő feltételek: <br>
 1. A fürtöt létrehozó felhasználónak számítanak csomópontnak a fürt konfigurációs fájlban felsorolt összes gép biztonsági rendszergazdai jogosultsággal kell rendelkeznie.
 2. A gép, amelyről a fürt létrehozása, valamint minden egyes fürt csomópontját működtető kell:
-* Service Fabric SDK eltávolítása után
-* Rendelkezik a Service Fabric-futtatókörnyezet eltávolítása 
-* A Windows tűzfalszolgáltatást (mpssvc) engedélyezve van
-* A távoli beállításjegyzék szolgáltatás (a távoli beállításjegyzék) engedélyezve van
-* Fájl megosztási (SMB) engedélyezve van
-* Rendelkezik a szükséges portokat lett megnyitva, a fürt konfiguráció portok alapján
-* Rendelkezik a szükséges, a Windows az SMB és a távoli beállításjegyzék szolgáltatás megnyitott portok: 135-ös, 137-es, 138, 139-es és a 445-ös
-* Egy másik hálózati kapcsolat
+   * Service Fabric SDK eltávolítása után
+   * Rendelkezik a Service Fabric-futtatókörnyezet eltávolítása 
+   * A Windows tűzfalszolgáltatást (mpssvc) engedélyezve van
+   * A távoli beállításjegyzék szolgáltatás (a távoli beállításjegyzék) engedélyezve van
+   * Fájl megosztási (SMB) engedélyezve van
+   * Rendelkezik a szükséges portokat lett megnyitva, a fürt konfiguráció portok alapján
+   * Rendelkezik a szükséges, a Windows az SMB és a távoli beállításjegyzék szolgáltatás megnyitott portok: 135-ös, 137-es, 138, 139-es és a 445-ös
+   * Egy másik hálózati kapcsolat
 3. A fürt csomópont gépek egyike egy tartományvezérlő legyen.
 4. Ha a fürt üzembe lesz helyezve egy biztonságos fürt, ellenőrizze a szükséges biztonsági előfeltételeket helyezze el, és megfelelően van konfigurálva a konfiguráció alapján.
 5. Ha a fürt gépek nem internetről elérhető, a fürt konfigurációját a állítsa be a következőket:
-* Telemetria letiltása: alatt *tulajdonságok* beállítása *"enableTelemetry": hamis*
-* Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: alatt *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
-* Azt is megteheti, ha hálózati internet-hozzáférés korlátozott fehér felsorolt tartományokhoz, az alábbi tartományok szükségesek az automatikus frissítés: go.microsoft.com jövőben a Microsoft
+   * Telemetria letiltása: alatt *tulajdonságok* beállítása *"enableTelemetry": hamis*
+   * Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: alatt *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
+   * Azt is megteheti, ha hálózati internet-hozzáférés korlátozott fehér felsorolt tartományokhoz, az alábbi tartományok szükségesek az automatikus frissítés: go.microsoft.com jövőben a Microsoft
 
 6. Állítsa be a megfelelő Service Fabric víruskereső – kizárások:
 

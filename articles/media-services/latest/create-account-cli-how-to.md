@@ -1,5 +1,5 @@
 ---
-title: Az Azure Media Services-fiók létrehozása az Azure CLI-vel |} A Microsoft Docs
+title: Media Services-fiók létrehozása az Azure CLI használatával – Azure |} A Microsoft Docs
 description: Ezen rövid útmutató lépéseivel egy Azure Media Services-fiókot hozhat létre.
 services: media-services
 documentationcenter: ''
@@ -9,21 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
-ms.date: 11/11/2018
+ms.custom: seodec18
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: cb49b642137517c0ceef7d2fa01994a554db1f4e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fc80e2c540279c0a0c8acb575c9e5b1478a46cf8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613159"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133366"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
 Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A időpontban hoz létre egy Media Services-fiók, emellett létrehoz egy társított storage-fiók (vagy használjon egy meglévőt) a Media Services-fiókkal azonos földrajzi régióban.
-
-Ez a cikk ismerteti az Azure CLI használatával új Azure Media Services-fiók létrehozásának lépései.  
+Azure: A cikk az Azure CLI használatával új Azure Media Services-fiók létrehozásának lépéseit ismerteti.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

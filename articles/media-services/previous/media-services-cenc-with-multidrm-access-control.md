@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 69802c6c4246b91f62a0e49ec0c34bdd3a1bec8b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c94c88aa088745a2ed421bff43c8d87382564a43
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958420"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141475"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése
 
@@ -372,7 +372,7 @@ Biztonsági kulcsok két típusa van:
 
 > [!NOTE]
 > Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt:
-
+> 
 > IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" aláíráshoz nem lehet kisebb, mint "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>A befejezett rendszer és a teszt

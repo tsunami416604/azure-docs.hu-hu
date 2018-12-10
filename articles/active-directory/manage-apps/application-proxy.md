@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139953"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Hogyan lehet a helyszíni alkalmazások biztonságos távoli elérést biztosíthat
 
@@ -88,8 +88,8 @@ Mielőtt alkalmazásproxy állít be, ellenőrizze, hogy egy támogatott [Azure 
 
 Ismerkedés az Application Proxy két lépésben:
 
-1. [Alkalmazásproxy engedélyezése és konfigurálása az összekötő](application-proxy-enable.md).    
-2. [Alkalmazások közzététele](application-proxy-publish-azure-portal.md) -töltse le a helyszíni alkalmazásait közzétett és elérhető távolról a gyors és egyszerű varázsló segítségével.
+1. [Alkalmazásproxy engedélyezése és konfigurálása az összekötő](application-proxy-add-on-premises-application.md).    
+2. [Alkalmazások közzététele](application-proxy-add-on-premises-application.md) -töltse le a helyszíni alkalmazásait közzétett és elérhető távolról a gyors és egyszerű varázsló segítségével.
 
 ## <a name="whats-next"></a>A következő lépések
 Miután az első alkalmazás közzétételéhez nincs sokkal több mindent tehet az alkalmazásproxy:

@@ -1,6 +1,6 @@
 ---
-title: Csoportos feladatok adatok adatelemzési folyamat projekt vezető – Azure |} A Microsoft Docs
-description: A feladatok számára egy egy data science csoportprojektet a projektvezető röviden ismerteti.
+title: A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
+description: Röviden ismerteti a projekt vezető feladatok végrehajtása a data science csapatprojekt várható.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 0b5129c4642a0c4381591f751bc4d5a51990b256
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442897"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135164"
 ---
-# <a name="project-lead-tasks"></a>Érdeklődő tevékenységeket
+# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 
 Ez az oktatóanyag ismerteti a feladatokat, amely a projektvezető marketingosztályhoz projektcsapat esetében várható. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). A TDSP egy keretrendszer, amely hatékony felhőalapú, prediktív elemzési megoldások végrehajtásához tevékenységek strukturált sorrendje biztosít a Microsoft által kifejlesztett. Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
@@ -27,7 +27,8 @@ A **projekt vezető** kezeli a napi tevékenységek egyes adatszakértők, az eg
 
 Ez a témakör ismerteti a feladatok 1,2 és 6 projekt érdeklődők a munkafolyamat jelenleg.
 
->[AZURE.NOTE] Hogy szerkezeti TDSP csoportos környezetben az Azure DevOps használatával az alábbi utasításokat a projekt beállításához szükséges lépéseket. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a Microsoft TDSP tanfolyamsorozat. Ha egy másik kódot üzemeltető platform szolgál a csoport, a feladatokat kell végrehajtani a csapatvezetők általában, ne módosítsa. Azonban ezeket a feladatokat a módja eltérő lesz.
+> [!NOTE]
+> Hogy szerkezeti TDSP csoportos környezetben az Azure DevOps használatával az alábbi utasításokat a projekt beállításához szükséges lépéseket. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a Microsoft TDSP tanfolyamsorozat. Ha egy másik kódot üzemeltető platform szolgál a csoport, a feladatokat kell végrehajtani a csapatvezetők általában, ne módosítsa. Azonban ezeket a feladatokat a módja eltérő lesz.
 
 
 ## <a name="repositories-and-directories"></a>Adattárak és könyvtárak
@@ -195,7 +196,8 @@ Most be kell küldje le a tartalmát **_DSProject1_** való _R5_ a projektben a 
     
 - A változás- és leküldéses véglegesítése. 
 
->[AZURE.NOTE] Ha ez az első alkalommal egy Git-tárház véglegesítése után, szeretné-e a globális paraméterek konfigurálása *user.name* és *user.email* futtatása előtt a `git commit` parancsot. Futtassa az alábbi két parancsot:
+> [!NOTE]
+> Ha ez az első alkalommal egy Git-tárház véglegesítése után, szeretné-e a globális paraméterek konfigurálása *user.name* és *user.email* futtatása előtt a `git commit` parancsot. Futtassa az alábbi két parancsot:
         
     git config --global user.name <your name>
     git config --global user.email <your email address>

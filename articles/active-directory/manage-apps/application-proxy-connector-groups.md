@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622633"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139024"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -32,7 +32,7 @@ Minden Application Proxy connector hozzá van rendelve egy összekötőcsoportho
 >Ha egy nagy Proxy telepítésének, minden alkalmazást az alapértelmezett összekötő csoporthoz sem rendelhet. Ezzel a módszerrel új összekötő nem kapja meg az élő adatforgalom mindaddig, amíg egy aktív összekötőcsoport hozzárendelhetők. Ez a konfiguráció lehetővé teszi put összekötők egy tétlen üzemmódban vissza az alapértelmezett csoport helyezi őket, hogy a felhasználók anélkül is elvégezheti a karbantartás.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az összekötők csoport, győződjön meg arról, hogy rendelkezik [több összekötő telepítve](application-proxy-enable.md). Egy új összekötő a telepítéskor automatikusan bekerül a **alapértelmezett** összekötőcsoport.
+Az összekötők csoport, győződjön meg arról, hogy rendelkezik [több összekötő telepítve](application-proxy-add-on-premises-application.md). Egy új összekötő a telepítéskor automatikusan bekerül a **alapértelmezett** összekötőcsoport.
 
 ## <a name="create-connector-groups"></a>Összekötő-csoportok létrehozása
 Ezen lépések összekötő csoportok létrehozásához. 

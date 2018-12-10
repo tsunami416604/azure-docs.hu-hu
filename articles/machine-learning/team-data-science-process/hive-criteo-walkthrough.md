@@ -1,5 +1,5 @@
 ---
-title: A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet |} A Microsoft Docs
+title: Használja az Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet - csoportos adatelemzési folyamat
 description: A csoportos adatelemzési folyamat használatával egy végpontok közötti forgatókönyv alkalmazó készíthet és helyezhet üzembe egy nagy (1 TB) nyilvánosan elérhető adatkészletet használó modell egy HDInsight Hadoop-fürt
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3aef1b85a462eea74fbe977e9a48054f11acf47a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447027"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135814"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
@@ -478,7 +478,7 @@ Több millió, a nagyméretű adathalmazok egyes kategorikus funkciók egyedi é
 ##### <a name="building-counting-transforms"></a>Leltár készítése átalakítások
 Száma funkciókat hozhat létre, használja a **hozhat létre számbavételi átalakítása** modul, amely az Azure Machine Learningben elérhető. A modul a következőhöz hasonló:
 
-![Leltár átalakítása modul készítése](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![Leltár átalakítása modul tulajdonságok létrehozása](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![modul készítése számbavételi átalakítása](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 

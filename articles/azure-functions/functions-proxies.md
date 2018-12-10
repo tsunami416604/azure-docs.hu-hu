@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095045"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139520"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
@@ -149,7 +149,7 @@ Minden egyes proxy tartozik egy rövid nevet, például *proxy1* az előző pél
 > [!NOTE] 
 > A *útvonal* tulajdonság frissítése az Azure Functions-proxyk nem fogadja el a *routePrefix* a Függvényalkalmazás állomáskonfiguráció tulajdonságát. Ha például tartalmazzon egy előtagot `/api`, bele kell foglalni a *útvonal* tulajdonság.
 
-### <a name="disableProxies"></a>Az egyes proxyk letiltása
+### <a name="disableProxies"></a> Az egyes proxyk letiltása
 
 Letilthatja egyes proxyk hozzáadásával `"disabled": true` , a proxy a `proxies.json` fájlt. Ez azt eredményezi, bármilyen kérelmeket felel meg a matchCondidtion visszaadandó 404-es.
 ```json
@@ -166,6 +166,22 @@ Letilthatja egyes proxyk hozzáadásával `"disabled": true` , a proxy a `proxie
     }
 }
 ```
+
+### <a name="applicationSettings"></a> Nastavení aplikace
+
+A proxy viselkedését több alkalmazás beállításai vezérlik. Azok az összes leírt a [funkciók App beállításainak ismertetése](./functions-app-settings.md)
+
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+
+### <a name="reservedChars"></a> (Karakterlánc formázása) fenntartott karaktereket
+
+Olvassa el az összes karakterlánc értelmezése, kivéve a kapcsos zárójelek és perjeleket nélkül proxyk
+
+|Karakter|Escape-karaktert|Példa|
+|-|-|-|
+|{vagy}|{{és}}|`{{ example }}` --> `{ example }`
+|/|///| `example.com///text.html` --> `example.com/text.html`
 
 ### <a name="requestOverrides"></a>Egy requestOverrides objektum meghatározása
 

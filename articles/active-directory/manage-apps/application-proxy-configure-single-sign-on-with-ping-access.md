@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 200c87bdf2f0d686cd2e768d3b6b9a7fe3a5691b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282515"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140846"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -51,7 +51,7 @@ Ez a cikk szól, akik közzétenni egy alkalmazást ebben a forgatókönyvben az
 
 Ha még alkalmazásproxy engedélyezve van, és egy összekötő telepítve van, kihagyhatja ezt a szakaszt, és helyezze át a [adja hozzá az alkalmazás az Azure AD-alkalmazásproxyval](#add-your-app-to-azure-ad-with-application-proxy).
 
-Az Application Proxy connector egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. További részletes telepítési utasításokat: [alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-enable.md).
+Az Application Proxy connector egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. További részletes telepítési utasításokat: [alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásproxy**.
@@ -66,7 +66,7 @@ Az Application Proxy connector egy Windows Server-szolgáltatás, amely arra uta
 
 Nincsenek két műveletet kell tennie az Azure Portalon. Először az alkalmazásproxy használatával az alkalmazás közzétételéhez. Ezt követően kell gyűjtenie némi információt az alkalmazást a PingAccess lépések során használható.
 
-Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részletes útmutató lépéseit, 1 – 8., lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md).
+Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részletes útmutató lépéseit, 1 – 8., lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
 1. Ha még nem az utolsó szakaszban, jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **vállalati alkalmazások**.

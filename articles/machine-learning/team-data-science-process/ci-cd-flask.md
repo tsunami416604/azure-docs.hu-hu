@@ -1,5 +1,5 @@
 ---
-title: Folyamatos integráció az Azure machine learning folyamat létrehozása
+title: Folyamatos integráció Azure folyamat – a csoportos adatelemzési folyamat létrehozása
 description: 'Mesterséges intelligencia (AI) alkalmazások fejlesztési és üzemeltetési útmutatónk: folyamatos integrációs folyamat létrehozása az Azure-ban a Docker és a Kubernetes használatával'
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
-ms.custom: seodec18, "(previous author=jainr, ms.author=jainr)"
-ms.openlocfilehash: 84d0c42b132016bbb350636cc00651a13bf93616
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
+ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102300"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134284"
 ---
 # <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Folyamatos integrációs folyamat létrehozása az Azure-ban a Docker, Kubernetes- és Python Flask-alkalmazás
 AI-alkalmazások a munkahelyi, machine learning-modellek és az alkalmazás létrehozása és a végfelhasználók számára való használata adatokhoz hozzáférést biztosító alkalmazás-fejlesztők az Adatszakértők gyakran két adatfolyamot vannak. Ebben a cikkben bemutatjuk, hogyan valósíthat meg egy folyamatos integrációs (CI) / folyamatos kézbesítési (CD) folyamat AI-alkalmazáshoz. AI-alkalmazások beépítve imagenet machine learning (gépi tanulás) modell alkalmazáskód kombinációját. Ebben a cikkben azt is pretrained modell beolvasása a saját Azure blob storage-fiók, annak oka az AWS S3 szintű fiók is lehet. A cikk egy egyszerű python flask-webalkalmazás használjuk.

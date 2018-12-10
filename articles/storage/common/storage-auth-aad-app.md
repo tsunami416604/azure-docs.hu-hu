@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 03dd056363cd99f5354dc10ed5ae328eb39c3ec2
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: b817723120f07de9159e47c1259a68eb95b9c2e3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291062"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140778"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok (előzetes verzió)
 
@@ -79,11 +79,11 @@ A kód példa bemutatja, hogyan kaphat hozzáférési tokent az Azure ad-ből. A
 
 A rendszerbiztonsági tag az Azure AD-hitelesítés, néhány jól ismert értéket is a kódban kell.
 
-#### <a name="azure-ad-oauth-endpoint"></a>Az Azure AD OAuth-végpont
+#### <a name="azure-ad-authority"></a>Az Azure AD-szolgáltatót
 
-Az alapszintű Azure AD-szolgáltató végpont az OAuth 2.0 a következő, ahol *bérlőazonosító* az Active Directory-bérlő azonosítója (vagy a címtár-azonosító):
+A Microsoft nyilvános felhő, az alapszintű Azure AD-szolgáltatót a következő, ahol *bérlőazonosító* az Active Directory-bérlő azonosítója (vagy a címtár-azonosító):
 
-`https://login.microsoftonline.com/<tenant-id>/oauth2/token`
+`https://login.microsoftonline.com/<tenant-id>/`
 
 A bérlő Azonosítóját az Azure AD-bérlő, a hitelesítéshez használandó azonosítja. A Bérlőazonosító lekéréséhez kövesse az ismertetett lépéseket **a Bérlőazonosító beszerzése az Azure Active Directory**.
 
@@ -138,11 +138,11 @@ Ezután adjon meg egy metódust, amely az Azure ad-ből tokent kér. A jogkivona
 static string GetUserOAuthToken()
 {
     const string ResourceId = "https://storage.azure.com/";
-    const string AuthEndpoint = "https://login.microsoftonline.com/{0}/oauth2/token";
+    const string AuthInstance = "https://login.microsoftonline.com/{0}/";
     const string TenantId = "<tenant-id>"; // Tenant or directory ID
 
     // Construct the authority string from the Azure AD OAuth endpoint and the tenant ID. 
-    string authority = string.Format(CultureInfo.InvariantCulture, AuthEndpoint, TenantId);
+    string authority = string.Format(CultureInfo.InvariantCulture, AuthInstance, TenantId);
     AuthenticationContext authContext = new AuthenticationContext(authority);
 
     // Acquire an access token from Azure AD. 

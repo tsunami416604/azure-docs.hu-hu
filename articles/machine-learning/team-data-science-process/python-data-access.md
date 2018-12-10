@@ -1,5 +1,5 @@
 ---
-title: A Machine Learning Python ügyfélkönyvtárat adatkészletek elérése |} A Microsoft Docs
+title: Hozzáférés az adathalmazokhoz Python ügyféloldali kódtár – csoportos adatelemzési folyamat
 description: Telepítheti és használhatja a Python ügyféloldali kódtár eléréséhez, és az Azure Machine Learning adatok biztonságos kezelésére egy helyi Python-környezetet.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680685"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140030"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Az előzetes verzióját a Microsoft Azure Machine Learning Python ügyfélkönyvtárat engedélyezheti a helyi Python-környezetben az Azure Machine Learning-adatkészletek biztonságos hozzáférést, és lehetővé teszi a létrehozását és kezelését, az adatkészletek a munkaterületen.
@@ -92,10 +92,10 @@ A hitelesítési tokenek felügyelt a **hitelesítési JOGKIVONATOK** lap **beá
     ![Adathalmazok][datasets]
 4. Válassza ki a kódtöredék a ablakban jelenik meg, és másolja a vágólapra.
    
-    ![Hozzáférési kód][dataset-access-code]
+    ![Létrehozás adatok hozzáférési kód gomb][dataset-access-code]
 5. Illessze be a kódot a notebookot a helyi Python-alkalmazás.
    
-    ![Notebook][ipython-dataset]
+    ![Illessze be a notebook kódot][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>A Machine Learning-kísérletek köztes adatkészletek elérése
 Kísérlet a Machine Learning Studio futtatása után is lehet a köztes adatkészletek elérése a modulok kimeneti csomópontjából. Az adatkészletek köztes olyan adatok, amelyek által létrehozott és használt köztes lépések egy modell eszköz futtatásakor.
@@ -133,10 +133,10 @@ A következő lépések bemutatják egy példa, amely létrehoz egy kísérletet
     ![Helyi menü][experiment]
 8. Válassza ki a kódrészletet, és a megjelenő ablakban másolja a vágólapra.
    
-    ![Hozzáférési kód][intermediate-dataset-access-code]
+    ![Helyi menüből a hozzáférési kód előállítása][intermediate-dataset-access-code]
 9. Illessze be a kódot a notebookot.
    
-    ![Notebook][ipython-intermediate-dataset]
+    ![Illessze be a jegyzetfüzet kódot][ipython-intermediate-dataset]
 10. Az adatok matplotlib használatával jelenítheti meg. Ez az életkor oszlop hisztogramja jeleníti meg:
     
     ![Hisztogram][ipython-histogram]

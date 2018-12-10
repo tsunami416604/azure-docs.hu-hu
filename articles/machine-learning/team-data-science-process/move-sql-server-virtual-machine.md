@@ -1,5 +1,5 @@
 ---
-title: Adatok áthelyezése SQL Server Azure virtuális géphez |} A Microsoft Docs
+title: Adatok áthelyezése az SQL Server virtuális gép – csoportos adatelemzési folyamat
 description: Adatok áthelyezése vagy egy helyszíni SQL Serverről egybesimított fájlokba, az SQL Server Azure virtuális gépen.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 649c98c235adc2435840c6c43d3e2f9d5755265f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446194"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136188"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 

@@ -1,5 +1,5 @@
 ---
-title: A csoportos adatelemzési folyamat életciklusa – Azure |} A Microsoft Docs
+title: A csoportos adatelemzési folyamat életciklusa
 description: A data-adatelemzési projektek végrehajtásához szükséges lépéseket
 services: machine-learning
 author: marktab
@@ -10,19 +10,21 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 24807d00170ed46a95d2726e1172b15775e0376d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443390"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135950"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa
 
 A csoportos adatelemzési folyamat (TDSP) biztosít egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása. Az életciklus elejétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit ismerteti. Ha egy másik adattudományi életciklus, mint a tartományok közötti iparági szabványos folyamata Data Mining [(SZÍNELOSZLÁS-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), az adatbázisok a Knowledge Discovery [(évi Versenysorozatából)](https://wikipedia.org/wiki/Data_mining#Process), vagy a szervezet saját egyéni folyamat , a feladatalapú TDSP továbbra is használhatja. 
 
 Ennek az életciklusnak a data-adatelemzési projektek olyan intelligens alkalmazásokat része lett tervezve. Ezek az alkalmazások üzembe helyezése a machine learning és a mesterséges intelligenciát használó modellek prediktív elemzőeszközöket. Alkalmi elemzési projektek és a felderítő adatelemzési projektek is kihasználhatják a folyamat használata. De ezek a projektek, az itt leírt lépések némelyike nem szükség lehet. 
+
+## <a name="five-lifecycle-stages"></a>Öt életciklusának szakaszai
 
 A TDSP életciklus iteratív végrehajtott öt fő szakaszból tevődik össze. A szakaszok az alábbiak:
 

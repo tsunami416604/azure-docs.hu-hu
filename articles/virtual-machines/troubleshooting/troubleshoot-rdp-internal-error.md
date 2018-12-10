@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 7d0d4a34a31f15c23638eba1f14794838780f2b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307160"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134522"
 ---
-#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül 
+#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül
 
 Ez a cikk ismerteti, amikor megpróbál kapcsolódni egy virtuális géphez (VM) a Microsoft Azure-ban tapasztalható hiba.
-> [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk. 
+> [!NOTE]
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
 
-## <a name="symptoms"></a>Probléma 
+## <a name="symptoms"></a>Probléma
 
 A távoli asztal protokoll (RDP) használatával nem lehet csatlakozni egy Azure virtuális Gépen. A kapcsolatot a "Távoli konfigurálása" szakaszban elakad, vagy a következő hibaüzenet jelenik meg:
 
-- RDP belső hiba 
+- RDP belső hiba
 - Belső hiba történt
 - Ez a számítógép nem lehet csatlakozni a távoli számítógéppel. Próbáljon meg újra. Ha a probléma továbbra is fennáll, forduljon a tulajdonosa, a távoli számítógép vagy a hálózati rendszergazda
 
@@ -43,7 +43,7 @@ A probléma a következő okok miatt fordulhat elő:
 - A TLS protokoll le van tiltva.
 - A tanúsítvány sérült vagy lejárt.
 
-## <a name="solution"></a>Megoldás 
+## <a name="solution"></a>Megoldás
 
 Mielőtt végrehajtaná ezeket a lépéseket, az érintett virtuális gép operációsrendszer-lemezének pillanatkép készítése a biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
@@ -52,7 +52,7 @@ A probléma elhárításához, használja a soros konzol vagy [javítsa ki a vir
 
 ### <a name="use-serial-control"></a>Soros vezérlőelem használata
 
-Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Ha a soros konzol nincs engedélyezve a virtuális Gépen, nyissa meg a [javítsa ki a virtuális Gépet offline](#repair-the-vm-offline) szakaszban.
 
 #### <a name="step-1-check-the-rdp-port"></a>. Lépés: 1 Ellenőrizze az RDP-port
@@ -63,35 +63,35 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
         Netstat -anob |more
 2. Ha Termservice.exe 8080-as portot használ, akkor folytassa a 2. lépés. Ha egy másik szolgáltatás vagy alkalmazás eltérő Termservice.exe 8080-as portot használ, kövesse az alábbi lépéseket:
 
-    A. Állítsa le a szolgáltatást, amely a 3389-szolgáltatást használ: 
+    1. Állítsa le a szolgáltatást, amely a 3389-szolgáltatást használ:
 
-        Stop-Service -Name <ServiceName>
+        STOP-Service - Name <ServiceName>
 
-    B. Indítsa el a terminálszolgáltatás: 
+    2. Indítsa el a terminálszolgáltatás:
 
-        Start-Service -Name Termservice
+        Start-Service - Termservice neve
 
 2. Ha az alkalmazás nem lehet leállítani, vagy ez a módszer nem vonatkozik Önre, módosítsa a portot, az RDP-hez:
 
-    A. A port módosítása:
+    1. A port módosítása:
 
-        Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
+        Set-ItemProperty-elérési út "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp"-portszám név-érték <Hexportnumber>
 
-        Stop-Service -Name Termservice Start-Service -Name Termservice
- 
-    B. Állítsa be az új port a tűzfalon:
+        STOP-Service - Name Termservice Start-Service-Termservice neve
 
-        Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+    2. Állítsa be az új port a tűzfalon:
 
-    C. [Frissítse a hálózati biztonsági csoportot az új portot](../../virtual-network/security-overview.md) az Azure portal RDP-portjára.
+        Set-NetFirewallRule – neve "RemoteDesktop-felhasználói módú-az-TCP" - LocalPort < új PORT (decimális) >
+
+    3. [Frissítse a hálózati biztonsági csoportot az új portot](../../virtual-network/security-overview.md) az Azure portal RDP-portjára.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2. lépés: Az RDP-önaláírt tanúsítvány a megfelelő engedélyek beállítása
 
 1.  Egy PowerShell-példány futtassa a következő parancsokat egyenként az RDP-önaláírt tanúsítvány megújítása:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint 
+        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
 
-        Stop-Service -Name "SessionEnv" 
+        Stop-Service -Name "SessionEnv"
 
         Start-Service -Name "SessionEnv"
 
@@ -101,24 +101,24 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
     2. Az a **fájl** menüjében válassza **beépülő modul hozzáadása/eltávolítása**, jelölje be **tanúsítványok**, majd válassza ki **Hozzáadás**.
     3. Válassza ki **számítógépfiókok**válassza **egy másik számítógépre**, majd adja hozzá a hibás virtuális Gépnek az IP-címét.
     4. Nyissa meg a **távoli Desktop\Certificates** mappát, kattintson a jobb gombbal a tanúsítványt, és majd, és válassza ki **törlése**.
-    5. A PowerShell-példány a soros konzolból indítsa újra a távoli asztal konfigurálásának szolgáltatást: 
+    5. A PowerShell-példány a soros konzolból indítsa újra a távoli asztal konfigurálásának szolgáltatást:
 
-            Stop-Service -Name "SessionEnv" 
+            Stop-Service -Name "SessionEnv"
 
             Start-Service -Name "SessionEnv"
 3. Állítsa alaphelyzetbe a MachineKeys mappa engedélyeit.
-    
-        remove-module psreadline icacls 
+
+        remove-module psreadline icacls
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
 
@@ -129,9 +129,9 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
 Az RDP-ügyfelet használja az alapértelmezett protokoll a TLS 1.0. Azonban ez módosítható a TLS 1.1-et az új standard vált. A TLS 1.1 le van tiltva, a virtuális gépen, ha a kapcsolat nem jön létre.
 1.  CMD-példányban engedélyezze a TLS protokoll:
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 2.  Módosítások felülírása megakadályozni az AD-házirend, ideiglenesen állítsa le a csoportházirend frissítése:
@@ -201,23 +201,23 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
 
-#### <a name="enable-all-supported-tls-versions"></a>Engedélyezze a TLS az összes támogatott verzió 
+#### <a name="enable-all-supported-tls-versions"></a>Engedélyezze a TLS az összes támogatott verzió
 
 1.  Nyisson meg egy rendszergazda jogú parancssort munkamenetet (**Futtatás rendszergazdaként**), és a Futtatás a következő parancsokat. Az alábbi parancsfájl feltételezi, hogy a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét van hozzárendelve F. cserélje le ezt a meghajtóbetűjelet, a megfelelő értékkel van a virtuális géphez.
 2.  Ellenőrzés, amely a TLS engedélyezve van:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
 3.  Ha a kulcs nem létezik, vagy annak értéke **0**, a protokoll engedélyezéséhez futtassa az alábbi parancsfájlok:
@@ -238,22 +238,22 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 
 4.  NLA engedélyezése:
 
-        REM Enable NLA 
+        REM Enable NLA
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-    
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
 5.  [Az operációsrendszer-lemez leválasztása, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md), és ellenőrizze, hogy a probléma megoldódott.
 
 
 
-    
- 
+
+

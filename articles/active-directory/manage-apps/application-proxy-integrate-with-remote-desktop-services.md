@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230792"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135491"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -49,7 +49,7 @@ Az RDS-példány üzembe a távoli asztali webes szerepkör és a távoli asztal
 
 - A távoli asztali Web- és a távoli asztali átjáró végpontok található ugyanarra a gépre, és a közös legfelső szintű kell lennie. A távoli asztali Web- és a távoli asztali átjáró, az alkalmazásproxy használatával egyetlen alkalmazásként tesszük közzé, hogy a két alkalmazás között egyszeri bejelentkezés használatát is használhat.
 
-- Már rendelkezik [telepített távoli asztali szolgáltatások](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), és [engedélyezte az alkalmazásproxyt](application-proxy-enable.md).
+- Már rendelkezik [telepített távoli asztali szolgáltatások](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), és [engedélyezte az alkalmazásproxyt](application-proxy-add-on-premises-application.md).
 
 - Ez a forgatókönyv azt feltételezi, hogy a végfelhasználóknak meg az Internet Explorer a Windows 7 vagy Windows 10 rendszerű asztali számítógépek, amelyek a távoli asztali webes oldalán keresztül csatlakoznak. Ha más operációs rendszerek támogatásához van szüksége, tekintse meg [támogatja a többi ügyfél-konfiguráció](#support-for-other-client-configurations).
 
@@ -63,7 +63,7 @@ RDS és Azure AD-alkalmazásproxy a környezetének beállítása után lépése
 
 ### <a name="publish-the-rd-host-endpoint"></a>Közzététel a távoli asztali állomás végpont
 
-1. [Egy új Application Proxy-alkalmazások közzététele](application-proxy-publish-azure-portal.md) a következő értékeket:
+1. [Egy új Application Proxy-alkalmazások közzététele](application-proxy-add-on-premises-application.md) a következő értékeket:
    - Belső URL-címe: `https://\<rdhost\>.com/`, ahol `\<rdhost\>` , amelyek a távoli asztali Web- és a távoli asztali átjáró közös gyökere.
    - Külső URL-címe: Ezt a mezőt automatikusan kitölti a rendszer az alkalmazás neve alapján, de módosíthatja azokat. A felhasználók halad át az URL-cím RDS elérésekor
    - Előhitelesítési módszer: az Azure Active Directory

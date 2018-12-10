@@ -1,26 +1,21 @@
 ---
-title: Azure Cosmos DB kezelése az Azure Storage Explorerben
-description: Megismerheti, hogyan kezelhető az Azure Cosmos DB az Azure Storage Explorerben.
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: Azure Storage Explorer használatával Azure Cosmos DB-erőforrások kezelése
+description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB és az erőforrásainak kezelése az Azure Storage Explorer használatával.
 author: Jejiang
-manager: kfile
-editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162466"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138126"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB kezelése az Azure Storage Explorerben
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer használatával Azure Cosmos DB-erőforrások kezelése
 
 Az Azure Cosmos DB Azure Storage Explorerben történő használata lehetővé teszi a felhasználók számára az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és eseményindítók frissítését olyan Azure-entitások mellett, mint a tárolóblobok és üzenetsorok. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat. Az Azure Storage Explorer jelenleg SQL-, MongoDB-, Graph- és Table-fiókokat támogat.
 
@@ -242,8 +237,8 @@ Ha a fenti lépésekkel nem talál önaláírt tanúsítványokat, küldjön vis
 
 Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett:
 
-- Ellenőrizze, hogy a fióknak van-e hozzáférése az előfizetésekhez. Ehhez jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
-- Ügyeljen arra, hogy a megfelelő környezettel jelentkezzen be ([Azure](http://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Germany](https://portal.microsoftazure.de/), [Azure US Government](http://portal.azure.us/) vagy Egyéni környezet/Azure Stack).
+- Ellenőrizze, hogy a fióknak van-e hozzáférése az előfizetésekhez. Ehhez jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+- Ügyeljen arra, hogy a megfelelő környezettel jelentkezzen be ([Azure](https://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Germany](https://portal.microsoftazure.de/), [Azure US Government](https://portal.azure.us/) vagy Egyéni környezet/Azure Stack).
 - Ha proxyt használ, ügyeljen arra, hogy a Storage Explorer-proxy megfelelően legyen beállítva.
 - Próbálja meg eltávolítani és újra hozzáadni a fiókot.
 - Próbálja meg azt, hogy törli a következő fájlokat a kezdőkönyvtárból (például: C:\Users\ContosoUser), majd újra hozzáadja a fiókot:

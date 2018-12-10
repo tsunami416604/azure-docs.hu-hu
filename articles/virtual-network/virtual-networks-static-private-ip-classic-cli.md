@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: abc551f796cb2d8921b6b1f67fb6a6714655ffde
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971144"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134675"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>A klasszikus Azure CLI használatával virtuális gépek (klasszikus) magánhálózati IP-címek konfigurálása
 
@@ -75,7 +75,7 @@ Nevű új virtuális gép létrehozása *DNS01* új felhőalapú szolgáltatás 
    * **TestService**. A felhőszolgáltatás, ahol létrejön a virtuális gép neve.
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage – Windows – 2012 R2-x64-v14.2**. A virtuális gép létrehozásához használt lemezkép.
    * **adminuser**. Helyi rendszergazda a Windows virtuális gép számára.
-   * **AdminP@ssw0rd**. A Windows virtuális gép helyi rendszergazdai jelszót.
+   * <strong>AdminP@ssw0rd</strong>. A Windows virtuális gép helyi rendszergazdai jelszót.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan kérheti le a statikus magánhálózati IP-címadatok egy virtuális géphez
 Az a fenti szkript létrehozni a virtuális gép statikus privát IP-címadatok megtekintéséhez futtassa a következő Azure CLI-parancsot, és tekintse meg az értékét *hálózati StaticIP*:

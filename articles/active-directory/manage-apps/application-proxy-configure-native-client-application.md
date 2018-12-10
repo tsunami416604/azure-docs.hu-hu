@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621088"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135526"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése
 
@@ -35,7 +35,7 @@ Használja az Azure AD Authentication Library, amely gondoskodik a hitelesítés
 Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Library natív alkalmazás közzététele a négy lépést. 
 
 ## <a name="step-1-publish-your-application"></a>1. lépés: Az alkalmazás közzététele
-A proxy-alkalmazások közzététele, mint bármely más alkalmazás, és rendelje hozzá a felhasználók elérhetik az alkalmazást. További információkért lásd: [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-publish-azure-portal.md).
+A proxy-alkalmazások közzététele, mint bármely más alkalmazás, és rendelje hozzá a felhasználók elérhetik az alkalmazást. További információkért lásd: [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
 ## <a name="step-2-configure-your-application"></a>2. lépés: Az alkalmazás konfigurálása
 A natív alkalmazás a következőképpen konfigurálja:
@@ -55,8 +55,8 @@ További részletes információ egy új alkalmazásregisztráció létrehozás�
 A címtárban lévő további alkalmazásokat ki vannak téve a natív alkalmazás engedélyezése:
 
 1. Még mindig **alkalmazásregisztrációk**, válassza ki az imént létrehozott új natív alkalmazást.
-2. Válassza ki **szükséges engedélyek**.
-3. Válassza a **Hozzáadás** lehetőséget.
+2. Válassza ki **API-engedélyek**.
+3. Válassza ki **adjon hozzá egy engedélyt**.
 4. Nyissa meg az első lépés **API kiválasztása**.
 5. A Keresősáv használatával keresse meg az első szakaszban közzétett alkalmazásproxy alkalmazást. Válassza ki az alkalmazást, majd kattintson a **kiválasztása**. 
 

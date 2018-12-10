@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c27649bc92b9874c6a669911d2b86273cf7adf0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956986"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136332"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés egy alkalmazásproxy-alkalmazás konfigurálása
 
@@ -29,7 +29,7 @@ Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználók hozzáférni egy
 ## <a name="how-to-configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása
 Egyszeri bejelentkezés konfigurálásához először győződjön meg arról, hogy az alkalmazás konfigurálása Azure Active Directoryn keresztül az előhitelesítési. A konfiguráció végrehajtását, lépjen a **Azure Active Directory**  - &gt; **vállalati alkalmazások**  - &gt; **minden alkalmazás**   - &gt; Az alkalmazás  **- &gt; alkalmazásproxy**. Ezen a lapon lásd a "Előtti hitelesítés" mezőt, és győződjön meg arról, hogy állítsa be az "Azure Active Directory. 
 
-Üzem előtti hitelesítési módszerekkel kapcsolatos további információkért lásd: 4. lépését a [közzétételi Alkalmazásdokumentum](application-proxy-publish-azure-portal.md).
+Üzem előtti hitelesítési módszerekkel kapcsolatos további információkért lásd: 4. lépését a [közzétételi Alkalmazásdokumentum](application-proxy-add-on-premises-application.md).
 
    ![Az előhitelesítési módszer az Azure Portalon](./media/application-proxy-config-sso-how-to/app-proxy.png)
 

@@ -12,12 +12,12 @@ ms.date: 08/20/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 0ad58d4759d8532ab947043c20cc1060782c6d78
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055752"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138670"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Az Azure Active Directory Application Proxy és a Tableau 
 
@@ -29,7 +29,7 @@ Ebben a cikkben a forgatókönyv azt feltételezi, hogy:
 
 - [A tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) konfigurálva. 
 
-- Egy [Application Proxy connector](application-proxy-enable.md) telepítve. 
+- Egy [Application Proxy connector](application-proxy-add-on-premises-application.md) telepítve. 
 
  
 ## <a name="enabling-application-proxy-for-tableau"></a>A Tableau alkalmazásproxy engedélyezése 
@@ -43,7 +43,7 @@ Szeretné közzétenni a Tableau, szeretne közzétenni egy alkalmazást az Azur
 
 Esetén:
 
-- Részletes utasítások lépéseket lásd a 1-8- [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md). 
+- Részletes utasítások lépéseket lásd a 1-8- [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md). 
 - A Tableau értékeinek megkeresése az alkalmazásproxy mezők információ a dokumentációban a Tableau.  
 
 **Az alkalmazás közzétételéhez**: 

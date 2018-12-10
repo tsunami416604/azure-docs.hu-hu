@@ -1,5 +1,5 @@
 ---
-title: A csoportos adatelemzési folyamat kijelölés funkció |} A Microsoft Docs
+title: A csoportos adatelemzési folyamat a szolgáltatás kiválasztása
 description: Szolgáltatás kiválasztása célját ismerteti, és a példákat, azok szerepét a machine Learning adatokat a fejlesztés során.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442372"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138653"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Funkcióválasztás a csoportos adatelemzési folyamatban (TDSP)
 Ez a cikk azt ismerteti, szolgáltatás kiválasztása az alkalmazásában, és példákat tartalmaz a szerepét a machine learning adatokat a fejlesztés folyamatát. Ezek a példák az Azure Machine Learning Studio állítják. 
@@ -42,21 +42,21 @@ Többek között a funkció kiválasztási módszer egy felügyelt környezetben
 
 Az Azure Machine Learning Studióban nincsenek modulok megadott szolgáltatás kiválasztása. Az alábbi ábrán látható, ezek a modulok tartalmaznak [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] és [Fisher lineáris Discriminant elemzési] [ fisher-linear-discriminant-analysis].
 
-![A szolgáltatás kiválasztása példa](./media/select-features/feature-Selection.png)
+![A szolgáltatás kiválasztása modulok](./media/select-features/feature-Selection.png)
 
 Fontolja meg, például a használatát a [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] modul. Az egyszerűség kedvéért továbbra is a szöveg adatbányászati példa használatával. Tegyük fel, hogy szeretné-e 256 szolgáltatások keresztül létrehozott regressziós modell létrehozása a [Szolgáltatáskivonatolás] [ feature-hashing] modul, és hogy a válasz változót a "Col1", amely tartalmazza a könyv felülvizsgálati minősítések 1 és 5 közötti. Állítsa a "Funkció pontozási metódus" "Pearson korrelációs", "céloszlop" kell "Col1" és "Kívánt szolgáltatások száma" 50-re. Ezután a modul [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] együtt a target attribútum "Col1" 50 funkciókat tartalmazó adatkészletet hoz létre. A következő ábrán látható a folyamat ehhez a kísérlethez, és a bemeneti paramétereket:
 
-![A szolgáltatás kiválasztása példa](./media/select-features/feature-Selection1.png)
+![Szűrő-alapú szolgáltatás kiválasztása modul tulajdonságai](./media/select-features/feature-Selection1.png)
 
 A következő ábrán látható, az így kapott adatkészleteket:
 
-![A szolgáltatás kiválasztása példa](./media/select-features/feature-Selection2.png)
+![Eredményül kapott adatkészletet modul szűrő-alapú szolgáltatás kiválasztása](./media/select-features/feature-Selection2.png)
 
 Egyes szolgáltatások összességére vonatkozik önmagában, illetve a target attribútum "Col1" Pearson korrelációját. A felső pontszámok szolgáltatásai megmaradnak.
 
 A kiválasztott funkciók a megfelelő eredmények az alábbi ábrán láthatók:
 
-![A szolgáltatás kiválasztása példa](./media/select-features/feature-Selection3.png)
+![Pontszámok modul szűrő-alapú szolgáltatás kiválasztása](./media/select-features/feature-Selection3.png)
 
 Ez alkalmazásával [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] modult, 50 kívüli 256 funkciók ki van jelölve, mert a legtöbb korrelált funkcióit a célváltozó "Col1", a pontozó módszer alapján "Pearson-korrelációs".
 

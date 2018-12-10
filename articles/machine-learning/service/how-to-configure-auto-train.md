@@ -1,5 +1,6 @@
 ---
-title: Az automatikus machine learning-kísérlet – az Azure Machine Learning konfigurálása
+title: Automatizált machine learning-példakísérleteket konfigurálása
+titleSuffix: Azure Machine Learning service
 description: Automatizált gépi tanulási algoritmus választja ki az Ön számára, és készen áll a központi telepítési modell generál. Ismerje meg a beállításokat, amelyek segítségével automatizált machine learning-példakísérleteket konfigurálása.
 author: nacharya1
 ms.author: nilesha
@@ -9,14 +10,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: b2be09d69013cc8361f92cb0b6e3aa5fef3bcc02
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000300"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140166"
 ---
-# <a name="configure-your-automated-machine-learning-experiment"></a>Az automatikus machine learning-kísérlet konfigurálása
+# <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
 Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja. Ebben az útmutatóban megtudhatja, hogyan különböző konfigurációs beállításainak megadásához.
 
@@ -214,7 +216,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `iterations` |Az ismétlések maximális számát. Minden egyes ismétléskor megegyezik a betanítási feladat, amely egy folyamat eredményez. Folyamat az adatok előfeldolgozása és a modell. A magas színvonalú modell, amelyet 250 vagy több    | 100
 `max_concurrent_iterations`|    Párhuzamos az ismétlések maximális száma. Ez a beállítás csak távoli számítási működik.|   1
 `max_cores_per_iteration`   | Azt jelzi, hogy hány magunk a számítási célnak a használni kívánt betanításához egy folyamatot. Ha az algoritmus kihasználhatják a több mag, majd ez növeli a Többmagos gépen a teljesítményt. Beállíthatja a gépen elérhető összes mag használandó 1 értéket ad.|  1
-`Iteration_timeout_minutes` |   Korlátozza egy adott iterációhoz szükséges idő (perc). Ha egy iterációját meghaladja a megadott mennyiséget, a iteráció beolvasása megszakítva. Ha nincs megadva, a rendszer az iteráció továbbra is fut, amíg befejeződik. |   None
+`iteration_timeout_minutes` |   Korlátozza egy adott iterációhoz szükséges idő (perc). Ha egy iterációját meghaladja a megadott mennyiséget, a iteráció beolvasása megszakítva. Ha nincs megadva, a rendszer az iteráció továbbra is fut, amíg befejeződik. |   None
 `n_cross_validations`   |A keresztellenőrzés felosztásainak száma| None
 `validation_size`   |Állítsa be az összes képzési minta százalékában érvényesítési mérete.|  None
 `preprocess` | Igaz/hamis <br/>Igaz lehetővé teszi, hogy a bemeneti adatok az előfeldolgozási végrehajtásához kísérletezhet. Következő része a előfeldolgozása<li>Hiányzó adatok: Biztosítják a hiányzó adatokat-numerikus az átlag, a legtöbb előfordulásával szöveg </li><li>Kategorikus értékek: Adattípusa szám és egyedi száma értékek e kevesebb mint 5 %-os, az egyik gyakori kódolási alakíthatók át egymásba </li><li>Stb. Ellenőrizze a teljes listát [a GitHub-adattár](https://aka.ms/aml-notebooks)</li><br/>Megjegyzés: Ha az adatok ritka nem használhat előfeldolgozása = true |  False (Hamis) | 

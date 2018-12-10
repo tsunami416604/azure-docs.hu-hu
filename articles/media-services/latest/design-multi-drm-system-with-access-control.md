@@ -1,6 +1,6 @@
 ---
-title: Egy DRM-mel a content protection rendszert az Azure Media Services cccess vezérlővel |} A Microsoft Docs
-description: Ismerje meg a Microsoft Smooth Streaming Client portolása Kit módjával.
+title: A DRM-mel a content protection rendszer hozzáférést vezérlő – az Azure Media Services-Tervező |} A Microsoft Docs
+description: További információ a licencelésről a Microsoft Smooth Streaming Client portolása Kit.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958193"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136273"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
 
@@ -50,7 +51,7 @@ Az alábbi táblázat foglalja össze a különböző platformokon a natív DRM-
 | **Ügyfélplatform** | **Natív DRM** | **AZ EME** |
 | --- | --- | --- | --- |
 | **Okostévére vezérléséhez** | A PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME a PlayReady és/vagy Widevine|
-| **Windows 10-es** | PlayReady | A PlayReady MS Edge/IE11|
+| **Windows 10** | PlayReady | A PlayReady MS Edge/IE11|
 | **Android-eszközök (telefonon, táblagépen, TV)** |Widevine |A Widevine Chrome |
 | **iOS** | FairPlay | A fairplay rendszerhez Safari (óta 11,2 iOS) |
 | **macOS** | FairPlay | A fairplay rendszerhez (óta a Safari 9 és a Mac OS X 10.11 El Capitan) Safari|
@@ -401,15 +402,15 @@ Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ug
 
 **Egyéni Azure AD-bérlő tartományi fiók**: A testreszabott bejelentkezési oldala, az egyéni Azure AD-bérlői tartomány.
 
-![Egyéni Azure AD-bérlő tartományi fiók](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Egyéni Azure AD bérlő tartományi fiók egyik](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
 **Tartományi fiókot a Microsoft intelligens kártyás**: A bejelentkezési oldal, testre szabott Microsoft vállalati IT-modernizálás a kétfaktoros hitelesítés.
 
-![Egyéni Azure AD-bérlő tartományi fiók](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![Egyéni Azure AD bérlő tartományi fiók két](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-fiók**: a fogyasztók számára a Microsoft-fiók bejelentkezési oldalán.
 
-![Egyéni Azure AD-bérlő tartományi fiók](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![Egyéni Azure AD bérlő tartományi fiók három](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>A PlayReady titkosított adathordozó-bővítmények használata
 Olyan modern böngészőt a titkosított Media Extensions (eme) technológiával kapcsolatos PlayReady-támogatás, például az Internet Explorer 11 Windows 8.1 vagy újabb rendszeren és Windows 10-es, a Microsoft Edge böngésző PlayReady az alapul szolgáló DRM EME számára.

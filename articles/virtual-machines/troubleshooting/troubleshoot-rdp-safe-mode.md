@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 3ff1db9ee7dc34ce529702d61b3ac5970bb5d9df
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 097b7efd7643e3b8450284d19e13a428dfd48ac2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309865"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138857"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nem hajtható végre egy virtuális gép RDP-vel, mert a virtuális gép csökkentett módban indul.
 
 Ez a cikk bemutatja, hogyan, amelyben nem lehet csatlakoztatni az Azure Windows Virtual Machines (VM), mert a virtuális gép úgy van beállítva. a probléma megoldásához indítsa el a csökkentett módban való.
 
-> [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk. 
+> [!NOTE]
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
 
-## <a name="symptoms"></a>Probléma 
+## <a name="symptoms"></a>Probléma
 
 Nem lehet RDP-kapcsolatok vagy egyéb kapcsolatok (például a HTTP) az Azure-beli virtuális géphez, mert a virtuális gép konfigurálva van, indítsa el a csökkentett mód. Amikor ellenőrizheti a képernyőképen a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, láthatja, hogy a virtuális Gépen indul el megfelelően, de a hálózati adapter nem érhető el:
 
@@ -38,7 +38,7 @@ Nem lehet RDP-kapcsolatok vagy egyéb kapcsolatok (például a HTTP) az Azure-be
 Az RDP-szolgáltatás nem érhető el csökkentett üzemmódban. Csak alapvető rendszer programok és szolgáltatások letöltése, amikor a virtuális gép csökkentett módban indul. Ez vonatkozik a csökkentett mód, amelyek "Minimális biztonságos indítás" és "Biztonságos rendszerindítási kapcsolattal rendelkező" két különböző verzióit.
 
 
-## <a name="solution"></a>Megoldás 
+## <a name="solution"></a>Megoldás
 
 Mielőtt végrehajtaná ezeket a lépéseket, az érintett virtuális gép operációsrendszer-lemezének pillanatkép készítése a biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
@@ -46,9 +46,9 @@ A probléma megoldásához, soros vezérlőelem segítségével konfigurálhatja
 
 ### <a name="use-serial-control"></a>Soros vezérlőelem használata
 
-1. Csatlakozás [soros konzolon és a nyílt CMD-példány](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. Csatlakozás [soros konzolon és a nyílt CMD-példány](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Ha a soros konzol nincs engedélyezve a virtuális Gépen, [javítsa ki a virtuális Gépet offline](#repair-the-vm-offline).
-2. A rendszerindítási konfigurációs adatok ellenőrzése: 
+2. A rendszerindítási konfigurációs adatok ellenőrzése:
 
         bcdedit /enum
 
@@ -65,7 +65,7 @@ A probléma megoldásához, soros vezérlőelem segítségével konfigurálhatja
 3. Törölje a **safemoade** jelzőt, így a virtuális gép normál üzemmódban fog elindulni:
 
         bcdedit /deletevalue {current} safeboot
-        
+
 4. Győződjön meg arról, hogy a rendszerindítási konfigurációs adatok ellenőrzése a **csökkentett mód** jelző eltávolítása:
 
         bcdedit /enum
@@ -77,7 +77,7 @@ A probléma megoldásához, soros vezérlőelem segítségével konfigurálhatja
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
 
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
-2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot. 
+2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 3. Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>Engedélyezze a memóriakép naplóját és a soros konzol (nem kötelező)
@@ -115,10 +115,10 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
 #### Configure the Windows to boot into normal mode
 
 1. Open an elevated command prompt session (**Run as administrator**).
-2. Check the boot configuration data. In the following commands, we assume that the drive letter that is assigned to the attached OS disk is F. Replace this drive letter with the appropriate value for your VM. 
+2. Check the boot configuration data. In the following commands, we assume that the drive letter that is assigned to the attached OS disk is F. Replace this drive letter with the appropriate value for your VM.
 
         bcdedit /store F:\boot\bcd /enum
-    Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".  
+    Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".
 
     If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
 

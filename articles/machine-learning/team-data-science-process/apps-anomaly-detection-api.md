@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learning Anomáliadetektálás API |} A Microsoft Docs
+title: Az Azure Machine Learning Anomáliadetektálás API – a csoportos adatelemzési folyamat
 description: Anomáliadetektálás API, amelyek a észleli a rendellenességeket, amely időben egyenletesen elosztásban numerikus értékek idősorozat-adatokat a Microsoft Azure Machine Learning használatával létrehozott.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
-ms.custom: (previous author=alokkirpal, ms.author=alok)
-ms.openlocfilehash: 485cf6af9f019bc43ee862627db8549240690247
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443926"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134794"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>A Machine Learning Anomáliadetektálás API
 ## <a name="overview"></a>Áttekintés
@@ -37,9 +37,9 @@ Az Anomáliadetektálás ajánlat az első lépésekhez hasznos eszközöket tar
 > [!NOTE]
 > Próbálja ki **informatikai Anomáliaelemző megoldás** működteti [az API-t](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
 > 
-> A teljes körű megoldást az Azure-előfizetéshez telepített <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **Kezdje itt >**</a>
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>API üzembe helyezés
 Annak érdekében, hogy az API-t használ, azt telepítenie kell az Azure-előfizetéshez ahol tárolható az Azure Machine Learning-webszolgáltatásként.  Az ehhez a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Két AzureML webszolgáltatások (és az azokhoz kapcsolódó erőforrásokat) az Azure-előfizetéshez – ez telepíti, egy a szezonalitás észlelési anomáliadetektálás, és egy szezonalitás észlelési nélkül.  Az üzembe helyezés befejeztével lesz az API-k kezelése az [AzureML webszolgáltatások](https://services.azureml.net/webservices/) lapot.  Ezen az oldalon lesz a végpontok helyére, API-kulcsokat, valamint mintakód találhat az API-t hívná.  Részletes utasítások [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).

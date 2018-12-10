@@ -1,5 +1,5 @@
 ---
-title: IPsec átviteli módhoz konfigurálása Windows gazdagépekre – az Azure ExpressRoute privát társviszony-létesítés |} A Microsoft Docs
+title: 'IPsec átviteli módhoz Windows gazdagépekre InPrivate-társviszony konfigurálása: ExpressRoute: Azure |} A Microsoft Docs'
 description: Hogyan lehet engedélyezni az Azure Windows virtuális gépek és a helyszíni Windows gazdagépekre keresztül ExpressRoute privát társviszony-létesítés csoportházirend-objektumok és szervezeti egységek közötti IPsec átviteli módhoz.
 services: expressroute
 author: fabferri
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
-ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 39bbe8a0ec11b90d506ce0d1c0bad37ddba46a5d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394329"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139120"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurálja az ExpressRoute privát társviszony-létesítés IPsec átviteli módhoz
 

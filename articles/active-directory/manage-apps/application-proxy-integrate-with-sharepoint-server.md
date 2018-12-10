@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0f1b46176ba440a11d1584846019859c63d2f263
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425207"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135780"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -163,7 +163,7 @@ Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következ
 
 Most, hogy a SharePoint Kerberos és a beállított KCD engedélyezését, készen áll az Azure AD-alkalmazásproxyn keresztül távoli hozzáférés a SharePoint-farm közzététele.
 
-1. Közzététel a SharePoint-webhely a következő beállításokkal. Lépésenkénti útmutatásért lásd: [közzététel az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
+1. Közzététel a SharePoint-webhely a következő beállításokkal. Lépésenkénti útmutatásért lásd: [közzététel az Azure AD-alkalmazásproxy használatával](application-proxy-add-on-premises-application.md). 
    - **Belső URL-cím**: a SharePoint-webhely URL-CÍMÉT a cégen belül, például **https://SharePoint/**. Ebben a példában győződjön meg arról, használandó **https**
    - **Előhitelesítési módszer**: az Azure Active Directory
    - **A fejlécek URL-cím fordításának**: nem

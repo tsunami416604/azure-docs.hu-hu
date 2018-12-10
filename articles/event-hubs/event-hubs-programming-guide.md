@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs programozási útmutatója | Microsoft Docs
-description: Kód írása az Azure Event Hubs az Azure .NET SDK használatával.
+title: Programozási útmutató – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk információt nyújt az írási kódot az Azure Event hubs az Azure .NET SDK használatával.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011453"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138075"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -76,7 +76,7 @@ Eseményadatokat küld, ha egy partíció-hozzárendelést kivonatolásával ér
 
 ### <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
-A partíciós kulcs használata nem kötelező, és gondolja át alaposan-e használni. Sok esetben a partíciókulcsok használatával akkor hasznos, ha fontos események rendezése. Ha partíciókulcsot használ, ezeket a partíciókat megkövetelése a rendelkezésre állás egyetlen csomóponton, és idővel; leállások is például ha a számítási csomópontok újraindítás és a javítás. Mint ilyen Ha a Partícióazonosító és adott partíció valamilyen okból elérhetetlenné válik, az adott partíciók adatainak elérésére tett kísérlet sikertelen lesz. Ha magas rendelkezésre állás legfontosabb, nem ad meg partíciókulcsot; Ebben az esetben események küldése a partíciókat a korábban leírt Ciklikus időszeleteléses modell használatával. Ebben a forgatókönyvben egy explicit lehetőség rendelkezésre állás (nincs Partícióazonosító) és a konzisztencia (rögzítés a Partícióazonosító események) között végez.
+A partíciós kulcs használata nem kötelező, és gondolja át alaposan-e használni. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ. Sok esetben a partíciókulcsok használatával akkor hasznos, ha fontos események rendezése. Ha partíciókulcsot használ, ezeket a partíciókat megkövetelése a rendelkezésre állás egyetlen csomóponton, és idővel; leállások is például ha a számítási csomópontok újraindítás és a javítás. Mint ilyen Ha a Partícióazonosító és adott partíció valamilyen okból elérhetetlenné válik, az adott partíciók adatainak elérésére tett kísérlet sikertelen lesz. Ha magas rendelkezésre állás legfontosabb, nem ad meg partíciókulcsot; Ebben az esetben események küldése a partíciókat a korábban leírt Ciklikus időszeleteléses modell használatával. Ebben a forgatókönyvben egy explicit lehetőség rendelkezésre állás (nincs Partícióazonosító) és a konzisztencia (rögzítés a Partícióazonosító események) között végez.
 
 Egy másik szempont események feldolgozása az késleltetések kezeli. Néhány esetben lehet jobb dobja el az adatokat, majd próbálkozzon újra, mint próbálja feldolgozási feladatokhoz ajánljuk, amelyek teljesítményproblémákat okozhat, további alárendelt feldolgozási késedelem tartani. Például a tőzsdei árfolyamjelző célszerűbb várakozási teljes naprakész adatokat, de az élő Csevegésben vagy VOIP-forgatókönyv, ahelyett hogy az adatok gyors, még akkor is, ha még nem fejeződött be.
 

@@ -1,22 +1,24 @@
 ---
-title: A Studio 3T használata (MongoChef) az Azure Cosmos DB használatával
-description: A Studio 3T használata egy Azure Cosmos DB MongoDB API-fiókkal
+title: Csatlakozás MongoDB-fiókhoz a Studio 3T használata (MongoChef)
+titleSuffix: Azure Cosmos DB
+description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB MongoDB API-t a Studio 3T használata, és a egy adatbázis, gyűjtemény és dokumentumok létrehozása, csatlakoztatása után.
 keywords: a mongochef, a studio 3T
 services: cosmos-db
 author: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 12/06/2018
 ms.author: sclyon
-ms.openlocfilehash: 8a41c40963602b5a207271b818987ca13ad021d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 5bdcf035f892f1cbdb8bb43579dba547f0ec8bfd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863839"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135652"
 ---
-# <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Az Azure Cosmos DB: Használja a Studio 3T MongoDB API-fiókkal
+# <a name="connect-to-mongodb-account-using-studio-3t-mongochef"></a>Csatlakozás MongoDB-fiókhoz a Studio 3T használata (MongoChef)
 
 Szeretne csatlakozni egy Azure Cosmos DB MongoDB API-fiókot, tegye a következőket:
 

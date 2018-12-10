@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962554"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132754"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
 Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát együtt, ellenőrizze, hogy könnyen tud alkalmazásproxy használatával a Qlik Sense-telepítés a távelérés biztosítása.  
@@ -27,13 +27,13 @@ Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát
 Ez a forgatókönyv további része feltételezi, a következőket:
  
 - Konfigurált [Qlik Sense](https://community.qlik.com/docs/DOC-19822). 
-- [Az Application Proxy connector telepítése](application-proxy-enable.md#install-and-register-a-connector) 
+- [Az Application Proxy connector telepítése](application-proxy-add-on-premises-application.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Az alkalmazások közzététele az Azure-ban 
 A közzétételhez QlikSense kell két alkalmazás közzététele az Azure-ban.  
 
 ### <a name="application-1"></a>#1. alkalmazás: 
-Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részletes útmutató lépéseit, 1 – 8., lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md). 
+Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részletes útmutató lépéseit, 1 – 8., lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md). 
 
 
 1. Jelentkezzen be globális rendszergazdaként az Azure Portalon. 
@@ -63,6 +63,6 @@ Közzétételi Qlik Sense a proxyval kapcsolatos további információkért teki
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az alkalmazásproxy-alkalmazások közzététele](application-proxy-publish-azure-portal.md)
+- [Az alkalmazásproxy-alkalmazások közzététele](application-proxy-add-on-premises-application.md)
 - [Az alkalmazásproxy-összekötők](application-proxy-connector-groups.md)
 

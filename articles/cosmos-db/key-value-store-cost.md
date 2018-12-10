@@ -1,19 +1,18 @@
 ---
-title: Az Azure Cosmos DB egy kulcs-érték tárolóként – költségek áttekintése
-description: További információ az alacsony költségű, mint egy kulcsérték-tárolóba az Azure Cosmos DB használatával.
-keywords: kulcs-érték tároló
-services: cosmos-db
+title: Az Azure Cosmos DB egy kulcs-érték tárolóként kérelem egységekre vonatkozó díjakon
+description: További információk az Azure Cosmos DB kérelem egységekre vonatkozó díjakon az egyszerű írási és olvasási műveletek, amikor egy kulcs/érték tároló használatban van.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 7331db23757ab4eaae054c7fe640952fe22a7917
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 3ab066cc3d2b06dc12c2399d718aeec6aac03b25
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840868"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134182"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Az Azure Cosmos DB egy kulcs-érték tárolóként – költségek áttekintése
 
@@ -36,9 +35,9 @@ Az alábbi táblázat a fenntartott egységek számát hajtsa végre az olvasás
 
 ## <a name="cost-of-reads-and-writes"></a>Olvasási és írási költség
 
-Ha üzembe helyezi az 1000 RU/s, 3.6-os m Kérelemegység/óra és fogja a összegek költségét 0,08 óra (az Egyesült Államok és Európa). Egy 1 KB-os mérete a dokumentumhoz, ez azt jelenti, hogy felhasználhatja 3.6-m olvasási 0,72-m ír (3.6-os m Kérelemegység / 5) használatával a kiosztott átviteli sebesség. 1 millió olvasási és írási normalizálva, a díj a következő lesz $0,022 /m olvasási (0,08 / 3.6-os) és 0.111 $/ millió ír (0,08 / 0,72). A költség / millió válik minimális, az alábbi táblázatban látható módon.
+Ha üzembe helyezi az 1000 RU/s, 3.6-m Kérelemegység/óra és fogja a összegek költségét 0,08 óra (az Egyesült Államok és Európa). Egy 1 KB-os mérete a dokumentumhoz, ez azt jelenti, hogy felhasználhatja 3.6-m olvasási 0,72-m ír (3.6-m Kérelemegység / 5) használatával a kiosztott átviteli sebesség. 1 millió olvasási és írási normalizálva, a díj a következő lesz $0,022 /m olvasási (0,08 / 3.6-os) és 0.111 $/ millió ír (0,08 / 0,72). A költség / millió válik minimális, az alábbi táblázatban látható módon.
 
-|Elem mérete|1-m olvasása|1-m írási|
+|Elem mérete|1-m olvasása|1 millió írási|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|

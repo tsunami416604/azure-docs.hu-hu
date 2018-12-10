@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720932"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139265"
 ---
 <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 =================================
@@ -177,7 +177,7 @@ Használhatja ezt a paramétert a Test Drive munkamenet egyedi azonosításához
 
 Egyes Azure-erőforrások, például a storage-fiókok vagy DNS-nevek, globálisan egyedi nevek van szükség.
 
-Ez azt jelenti, hogy minden alkalommal, amikor a Test Drive üzembe helyezte a Resource Manager-sablon, létrehoz egy **egy egyedi nevet az új erőforráscsoport** összes annak\' erőforrások **.** Ezért azt kell használnia a [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) függvény és a változók nevében erőforráscsoporton azonosítókat létrehozni véletlenszerű egyedi értékeket:
+Ez azt jelenti, hogy minden alkalommal, amikor a Test Drive üzembe helyezte a Resource Manager-sablon, létrehoz egy **egy egyedi nevet az új erőforráscsoport** összes annak\' erőforrásokat. Ezért azt kell használnia a [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) függvény és a változók nevében erőforráscsoporton azonosítókat létrehozni véletlenszerű egyedi értékeket:
 
       "variables": {
       ...

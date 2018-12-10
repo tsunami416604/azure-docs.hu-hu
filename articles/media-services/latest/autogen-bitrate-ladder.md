@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services a standard szintű Encoder használatával egy automatikusan létrehozott skála használatával videók kódolása |} A Microsoft Docs
-description: Ez a témakör bemutatja a Media Services a standard szintű Encoder használatával kódolás a bemeneti videó és a egy automatikusan létrehozott skála, a bementi felbontás és átviteli sebesség alapján. A bementi felbontás és sávszélességű soha nem lehet túllépni. Például ha a bemenet 720p, 3 MB/s, a kimeneti lesz 720p legjobb maradnak, és elkezdi alacsonyabb, mint 3 MB/s díjakat.
+title: Kódolás a Media Services – az Azure standard szintű Encoder videók |} A Microsoft Docs
+description: Ez a témakör bemutatja a Media Services a standard szintű Encoder használatával kódolás a bemeneti videó és a egy automatikusan létrehozott skála, a bementi felbontás és átviteli sebesség alapján.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378958"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132806"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódolás a egy automatikusan létrehozott skála
 

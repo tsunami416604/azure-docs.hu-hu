@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584098"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141509"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Az Azure IoT Hub díjszabása
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584098"
 | Eszköz- és modul ikereszköz-lekérdezések | Lekérdezések függően az eredmény mérete 512 bájtos adattömbök darab üzenetként számítjuk fel. |
 | Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | Nem számítunk fel díjat. |
 | Feladatok eszközönkénti műveleti | Feladatok műveleteket (például az ikereszköz-frissítések, és módszerek) szokásos módon számítjuk fel. Például egy feladat 1000 metódust hívja az 1 KB-os kérelmek és válaszok üres – törzs eredményez 1000 üzeneteket kell fizetnie. |
+| Életben tartási üzenetek | Az AMQP és MQTT protokoll használata esetén a kapcsolat által küldött üzenetek és a vyjednávání által küldött üzenetek nem terheli. |
 
 > [!NOTE]
 > Méretek arra az esetre vonatkoznak a hasznos adatainak mérete (bájt) (protokoll keretező figyelmen kívül hagyja) a mérlegeli. Üzenetek, tulajdonságok és a szervezet rendelkezik, amelyek mérete számított protokoll-független módon. További információkért lásd: [az IoT Hub üzenet formátuma](iot-hub-devguide-messages-construct.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319434"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134437"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure virtuális gép vendég operációs rendszer tűzfal blokkolja a bejövő forgalom
 
@@ -31,17 +31,17 @@ Nem használhat RDP-kapcsolatának szeretne csatlakozni egy Azure virtuális gé
 
 ## <a name="cause"></a>Ok
 
-### <a name="cause-1"></a>OK: 1 
+### <a name="cause-1"></a>OK: 1
 
 Az RDP-szabályban nincs beállítva, hogy az RDP-forgalmat.
 
-### <a name="cause-2"></a>OK 2 
+### <a name="cause-2"></a>OK 2
 
 A Vendég-tűzfal profilok beállítása az összes bejövő kapcsolat blokkolása, ideértve az RDP-forgalmat.
 
 ![Tűzfalbeállítás](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>Megoldás 
+## <a name="solution"></a>Megoldás
 
 Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
@@ -49,7 +49,7 @@ A probléma megoldásához használja a módszer [táveszközök használata Azu
 
 ### <a name="online-troubleshooting"></a>Online hibáinak elhárítása
 
-Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a "[javítsa ki a virtuális gép Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a "[javítsa ki a virtuális gép Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
 #### <a name="mitigation-1"></a>1. megoldás
 
@@ -80,7 +80,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     Nyissa meg az adott szabályokat a távoli asztal (TCP, bejövő), ellenkező esetben futtassa a következő parancsot:
 
     ```cmd
@@ -94,7 +94,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
     ```
 
     Hibaelhárítás és a tűzfal megfelelően beállítás befejezése után engedélyezze újra a tűzfalat.
-    
+
     > [!Note]
     > Nem kell újraindítani a virtuális Gépet a alkalmazni ezeket a módosításokat.
 
@@ -128,11 +128,11 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
     ```
 
     > [!Note]
-    > Nem kell újraindítani a virtuális Gépet, a módosítások életbe léptetéséhez. 
+    > Nem kell újraindítani a virtuális Gépet, a módosítások életbe léptetéséhez.
 
 4.  Próbálja meg újból elérni a virtuális gép RDP-Kapcsolaton keresztül.
 
-### <a name="offline-mitigations"></a>A kapcsolat nélküli megoldások 
+### <a name="offline-mitigations"></a>A kapcsolat nélküli megoldások
 
 1.  [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
 
@@ -159,7 +159,7 @@ Lásd: [hogyan engedélyezzen vagy tiltson le egy tűzfal, a vendég operáció
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

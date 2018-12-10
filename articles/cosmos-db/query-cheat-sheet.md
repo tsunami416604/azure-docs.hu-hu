@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 7f429778429e2d98d5abd655ee4b9acdc1472ff2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 21b2ee99fa8f9b22b4dfccadfaadf1d4a10980cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878659"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138143"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Az Azure Cosmos DB lekérdezési adatlapok
 
@@ -34,7 +34,7 @@ Töltse le a [lekérdezést az Azure Cosmos DB A3 méretű adatlapok](https://go
 
 ## <a name="next-steps"></a>További lépések
 További segítségért lekérdezések írása a következő cikkekben talál:
-* Lásd: SQL API-lekérdezések [lekérdezése az SQL API használatával](tutorial-query-sql-api.md), [az Azure Cosmos DB SQL-lekérdezések](how-to-sql-query.md), és [SQL-szintaxis referenciája](sql-api-sql-query-reference.md)
+* Lásd: SQL API-lekérdezések [lekérdezése az SQL API használatával](tutorial-query-sql-api.md), [az Azure Cosmos DB SQL-lekérdezések](how-to-sql-query.md), és [SQL-szintaxis referenciája](sql-api-query-reference.md)
 * MongoDB-lekérdezés, lásd: [lekérdezése a MongoDB API használatával](tutorial-query-mongodb.md) és [MongoDB API támogatása a MongoDB funkcióihoz és szintaxisához](mongodb-feature-support.md)
 * Gremlin API-lekérdezés, lásd: [lekérdezése a Gremlin API használata](tutorial-query-graph.md) és [Azure Cosmos DB Gremlin graph támogatása](gremlin-support.md)
 * Lásd: Table API-lekérdezések [lekérdezés a Table API használatával](tutorial-query-table.md)

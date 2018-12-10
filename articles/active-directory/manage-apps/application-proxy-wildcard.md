@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 638ae4c779af3bebb68622ccee6932618d42e4f0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140047"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Az Azure Active Directory application proxy a helyettesítő karaktereket tartalmazó alkalmazások 
 
@@ -49,7 +49,7 @@ Például: `http(s)://*.adventure-works.com`. A belső és külső URL-címeket 
 
 Ha további alkalmazásokat különböző konfigurációs beállításokkal rendelkezik, közzé kell tennie az ilyen kivételek külön alkalmazásokként felülírja az alapértelmezett értékeket beállítani a helyettesítő karaktert. Helyettesítő karakter nélküli alkalmazások mindig elsőbbséget élveznek helyettesítő karaktereket tartalmazó alkalmazások. Konfigurációs szempontjából ezek a "csak" a szokásos alkalmazások.
 
-Egy helyettesítő karaktert tartalmazó alkalmazás létrehozása alapján azonos [alkalmazás közzétételi folyamat](application-proxy-publish-azure-portal.md) elérhető minden más alkalmazás. Az egyetlen különbség, hogy tartalmazza-e helyettesítő karakterként az URL-címeket, és az egyszeri bejelentkezés konfigurálása.
+Egy helyettesítő karaktert tartalmazó alkalmazás létrehozása alapján azonos [alkalmazás közzétételi folyamat](application-proxy-add-on-premises-application.md) elérhető minden más alkalmazás. Az egyetlen különbség, hogy tartalmazza-e helyettesítő karakterként az URL-címeket, és az egyszeri bejelentkezés konfigurálása.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -137,7 +137,7 @@ Mindhárom alkalmazás:
 - Az azonos tulajdonságokkal rendelkezik.
 
 
-A helyettesítő karaktereket tartalmazó alkalmazásokká, az ismertetett lépéseket követve közzéteheti [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md). Ez a forgatókönyv feltételezi, hogy:
+A helyettesítő karaktereket tartalmazó alkalmazásokká, az ismertetett lépéseket követve közzéteheti [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md). Ez a forgatókönyv feltételezi, hogy:
 
 - A következő Azonosítóval rendelkező bérlő: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -145,7 +145,7 @@ A helyettesítő karaktereket tartalmazó alkalmazásokká, az ismertetett lép�
 
 - A **CNAME** mutató bejegyzés `*.adventure-works.com` való `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` létrejött.
 
-A következő a [lépéseket dokumentált](application-proxy-publish-azure-portal.md), egy új application proxy-alkalmazást hoz létre a bérlőben. Ebben a példában a helyettesítő karakter szerepel a következő mezőket:
+A következő a [lépéseket dokumentált](application-proxy-add-on-premises-application.md), egy új application proxy-alkalmazást hoz létre a bérlőben. Ebben a példában a helyettesítő karakter szerepel a következő mezőket:
 
 - Belső URL-címe:
 
@@ -184,7 +184,7 @@ Ebben a forgatókönyvben rendelkezik emellett három általános alkalmazásoka
 
 Győződjön meg arról, hogy egy CNAME-rekordok léteznek-e a pontok kell `finance.adventure-works.com` az alkalmazásproxy oldalon az alkalmazás a megadott alkalmazás adott végpontnak. Ebben a forgatókönyvben `finance.adventure-works.com` mutat `https://finance-awcycles.msappproxy.net/`. 
 
-A következő a [lépéseket dokumentált](application-proxy-publish-azure-portal.md), ehhez a forgatókönyvhöz szükséges a következő beállításokat:
+A következő a [lépéseket dokumentált](application-proxy-add-on-premises-application.md), ehhez a forgatókönyvhöz szükséges a következő beállításokat:
 
 
 - Az a **belső URL-cím**, beállított **pénzügyi** helyettesítő karakter helyett. 
@@ -215,6 +215,6 @@ További információ:
 
 - **Egyéni tartományok**, lásd: [egyéni tartományok használata az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md).
 
-- **Alkalmazás-közzététel**, lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md)
+- **Alkalmazás-közzététel**, lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-add-on-premises-application.md)
 
 

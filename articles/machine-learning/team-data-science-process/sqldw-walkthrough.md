@@ -1,6 +1,6 @@
 ---
-title: 'A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse |} A Microsoft Docs'
-description: Fejlett analitikai folyamat és technológia, működés közben
+title: Hozhat létre és helyezhet üzembe egy modellt az SQL Data Warehouse - csoportos adatelemzési folyamat
+description: Fejleszthet és telepíthet egy gépi tanulási modellt az SQL Data Warehouse egy nyilvánosan elérhető adatkészlet.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445707"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139130"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -117,7 +117,7 @@ Nyissa meg a Windows PowerShell-parancs konzolt. Töltse le a példában az SQL-
 
 A sikeres végrehajtása után az aktuális munkakönyvtárba vált *- DestDir*. Kell látnia képernyő jelenik meg az alábbi módon:
 
-![][19]
+![Aktuális munkakönyvtárban történt változtatásokat][19]
 
 Az a *- DestDir*, rendszergazdai módban hajtsa végre a következő PowerShell-parancsfájlt:
 
@@ -321,7 +321,7 @@ Dönthet arról, hogy milyen tegye Ha ismétlődő a forrás és cél fájlokat 
 > 
 > 
 
-![#21 ábrázolása][21]
+![Az AzCopy kimenete][21]
 
 Használhatja a saját adatait. Ha az adatok a helyszíni gépen, a valós életben alkalmazásban, az AzCopy továbbra is használhatja a helyszíni adatok feltöltése a saját Azure blob Storage. Csak módosítani szeretné a **forrás** helyét, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, az AzCopy-parancsot a PowerShell-parancsfájl a helyi könyvtárba, amely tartalmazza az adatokat a.
 
@@ -334,7 +334,7 @@ Ez a Powershell-szkript is rendkívüli az Azure SQL DW-információkat az adato
 
 A sikeres végrehajtást követően látni fogja a képernyő alábbi módon:
 
-![][20]
+![Egy sikeres parancsfájl végrehajtása kimenete][20]
 
 ## <a name="dbexplore"></a>Az adatok feltárása és az Azure SQL Data Warehouse funkciófejlesztési feladatok
 Ez a szakasz által futtatott SQL-lekérdezéseket közvetlenül az Azure SQL DW végzünk adatok feltárása és a szolgáltatás generálása **Visual Studio Data Tools**. Ebben a szakaszban használt összes SQL-lekérdezéseket a minta parancsfájl nevű található *SQLDW_Explorations.sql*. Ez a fájl már letöltötte a helyi könyvtárba a PowerShell parancsfájlhoz. Is lekérhet a [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). De a fájlt a Githubon nincs csatlakoztatva az Azure SQL DW információk.
@@ -571,16 +571,16 @@ Ha már beállított egy AzureML-munkaterületet, közvetlenül a minta IPython 
 
 1. Jelentkezzen be az AzureML-munkaterülethez, "Studio" kattintson a felül, és kattintson a lap bal oldalán "NOTEBOOKOK".
    
-    ![#22 ábrázolása][22]
+    ![Kattintson a Studio ezután NOTEBOOKOK][22]
 2. "Új" kattintson a lap bal alsó sarkában, majd válassza "a Python 2". Ezután adjon meg egy nevet a jegyzetfüzetet, és kattintson a pipa jelre az új üres IPython Notebook létrehozása.
    
-    ![#23 ábrázolása][23]
+    ![Az új gombra, majd válassza ki a Python 2][23]
 3. Kattintson a "Jupyter" szimbólumra az új IPython Notebook bal felső sarkában.
    
-    ![#24 ábrázolásához.][24]
+    ![Kattintson a Jupyter szimbólum][24]
 4. A minta IPython Notebook áthúzása a a **fa** az AzureML IPython Notebook szolgáltatás, majd kattintson a lap **feltöltése**. Ezt követően a minta IPython Notebook lesz feltöltve az AzureML IPython Notebook szolgáltatásba.
    
-    ![#25 ábrázolása][25]
+    ![Kattintson a feltöltés][25]
 
 A minta futtatásához IPython Notebook vagy a Python-szkriptfájlt, a következő Python-csomagok szükségesek. Az AzureML IPython Notebook szolgáltatás használja, ha ezek a csomagok előre telepítve lett.
 
@@ -684,7 +684,7 @@ Ezután megnézzük a Dobozdiagram megjelenítése a quantiles trip távolság s
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![#1 ábrázolása][1]
+![Box-diagram kimenet][1]
 
 ### <a name="visualization-distribution-plot-example"></a>Vizualizáció: Terjesztési diagram példa
 A terjesztés és a mintavételezett trip távolságot a hisztogram megjelenítő grafikon.
@@ -695,7 +695,7 @@ A terjesztés és a mintavételezett trip távolságot a hisztogram megjelenít�
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![#2 ábrázolása][2]
+![Terjesztési diagram kimenet][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Vizualizáció: Sáv- és grafikon
 Ebben a példában azt az öt bins trip távolság bin és a dobozolási eredményeinek képi megjelenítése.
@@ -709,26 +709,26 @@ Azt jeleníti meg a fenti bin terjesztési egy sávon, vagy az ábrázolást. so
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![#3 ábrázolása][3]
+![Sáv diagram kimenet][3]
 
 és
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![#4 ábrázolása][4]
+![Diagram kimeneti sor][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizáció: Teszteredményekből példák
 Bemutatjuk a pontdiagram között **út\_idő\_a\_másodperc** és **út\_távolság** megtekintéséhez, hogy van-e bármilyen korrelációs
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![#6 ábrázolása][6]
+![Idő és a távolság közötti kapcsolat Teszteredményekből kimenete][6]
 
 Hasonló módon is közötti kapcsolat ellenőrzése **arány\_kód** és **út\_távolság**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![#8 ábrázolása][8]
+![Kód és a távolság közötti kapcsolat Teszteredményekből kimenete][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>A mintavételezett adatok IPython notebook az SQL-lekérdezések használata az adatok feltárása
 Ebben a szakaszban a mintavételezett adatok, amelyeket a rendszer megőrzi a fentiekben létrehozott új tábla használó adatok disztribúciók tárgyaljuk. Vegye figyelembe, hogy hasonló explorations használatával végezheti el az eredeti táblát.

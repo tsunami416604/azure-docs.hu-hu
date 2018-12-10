@@ -1,5 +1,5 @@
 ---
-title: Adatgyűjtés és understanding szakasza a csoportos adatelemzési folyamat életciklusa – Azure |} A Microsoft Docs
+title: Adatgyűjtés és adatértelmezés a csoportos adatelemzési folyamat
 description: A célok, feladatok és az adatgyűjtés és a data-adatelemzési projektek ismertetése szakasza a termékek
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 13cbcead381257c87f17dc8ed6666a1b8964d81a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 77c67c491b3157103b267864417678c83326814c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441572"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141152"
 ---
-# <a name="data-acquisition-and-understanding"></a>Adatgyűjtés és adatértelmezés
+# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Adatgyűjtés és a csoportos adatelemzési folyamat ismertetése szakasza
 
 Ez a cikk ismerteti a célokat, feladatok és az adatok beszerzése és megértése fázis, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
 

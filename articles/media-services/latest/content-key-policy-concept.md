@@ -1,5 +1,5 @@
 ---
-title: A tartalom az Azure Media Services kulcs házirendjei |} A Microsoft Docs
+title: Tartalom-kulcs házirendjei, a Media Services – Azure |} A Microsoft Docs
 description: Ez a cikk annak magyarázatát, Mik azok a Tartalomszabályzat kulcsot, és hogyan használják az Azure Media Services biztosítja.
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 541713677184d93eb78856e3c3373ab432d5f0cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085957"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141527"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 

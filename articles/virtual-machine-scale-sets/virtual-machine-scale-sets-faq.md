@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447180"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139367"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -31,7 +31,7 @@ Válaszok a virtual machine scale sets – gyakori kérdések az Azure-ban.
 
 **K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
 
-**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–300, egyéni rendszerképen alapuló virtuális gépet tartalmazhat.
+**V.** Egy méretezési csoportot a 0 – 1000 virtuális platformrendszerképen alapuló, vagy 0 és 600 virtuális gépeket, egyéni rendszerképen alapuló is rendelkezhet.
 
 **K.** Támogatott az adatlemezek használata a méretezési csoportokon belül?
 

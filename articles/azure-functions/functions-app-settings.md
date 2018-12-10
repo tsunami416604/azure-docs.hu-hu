@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: e346aed2efaab6afcd24e622f577708221b47cb1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965854"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138245"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -172,6 +172,48 @@ A függvényalkalmazás egy csatlakoztatott alkalmazáscsomag-fájl futtatását
 |WEBHELY\_FUTTATÁSA\_FROM\_CSOMAG|1|
 
 Érvényes értékek a következők vagy egy URL-címet, amelyet a központi telepítési csomag fájl helyét, vagy `1`. Ha beállítása `1`, a csomagot kell lennie a `d:\home\data\SitePackages` mappát. Ezzel a beállítással telepítési zip használatakor a csomag automatikusan fel a rendszer ezen a helyen. Előzetes verzióban ez a beállítás neve volt `WEBSITE_RUN_FROM_ZIP`. További információkért lásd: [a functions futtatása egy csomagfájlt](run-functions-from-deployment-package.md).
+
+## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Alapértelmezés szerint a Functions-proxyk egy API-hívások küldése a proxyk függvényei ugyanaz a Függvényalkalmazás ahelyett, hogy hozzon létre új HTTP-kérést közvetlenül a helyi rendszer használatára. Ezzel a beállítással lehetővé teszi, hogy tiltsa le ezt a viselkedést.
+
+|Kulcs|Érték|Leírás|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Meghívja a helyi függvényben függvény mutató háttérkiszolgáló url-címet már nem küld közvetlenül a függvényt, és inkább irányítja a rendszer a HTTP-kezelőfelület vissza a a függvényalkalmazás|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Ez az alapértelmezett érték. A helyi függvény mutató háttérkiszolgáló url-hívások Függvényalkalmazás a rendszer továbbítja közvetlenül a függvény|
+
+
+## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Ez a beállítás szabályozza, hogy 2F. % dekódolni, perjeleket az útvonal-paraméterek, be a háttérkiszolgáló URL-címe behelyezésekor. 
+
+|Kulcs|Érték|Leírás|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Útvonal-paraméterek a kódolt perjeleket őket dekódolni fog rendelkezni. `example.com/api%2ftest` lesz `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Ez az az alapértelmezett viselkedést. Az összes útvonal paraméterek továbbít változatlan marad.|
+
+### <a name="example"></a>Példa
+
+Íme egy példa proxies.json a függvényalkalmazás az URL-cím myfunction.com:
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+|URL-cím-dekódolás|Input (Bemenet)|Kimenet|
+|-|-|-|
+|true|myfunction.com/test%2fapi|example.com/test/API
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
+
 
 ## <a name="next-steps"></a>További lépések
 

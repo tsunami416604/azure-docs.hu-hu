@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2f726c9c70e6e46ad2e82e9d6f15dae2c9d3d008
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724689"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138007"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 
-Profiler az ASP.NET és az ASP.NET Core web Apps, Web Apps szolgáltatást futtató jelenleg működik. Az alapszintű szolgáltatásszintet vagy újabb verziója szükséges Profiler használatára.
+Profiler az ASP.NET és az ASP.NET Core web Apps, Web Apps szolgáltatást futtató jelenleg működik. Az alapszintű szolgáltatásszintet vagy újabb verziója szükséges Profiler használatára. A linuxon futó Profiler engedélyezése jelenleg csak akkor lehetséges, keresztül [ezzel a módszerrel](app-insights-profiler-aspnetcore-linux.md).
 
 ## <a id="installation"></a> A Web Apps számára Profiler engedélyezése
 Profiler engedélyezése webes alkalmazásokhoz, kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatások futnak, az alábbiakban útmutatást Profiler engedélyezése az egyéb támogatott platformon:
@@ -29,11 +29,10 @@ Profiler engedélyezése webes alkalmazásokhoz, kövesse az alábbi utasításo
 * [Service Fabric-alkalmazások](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-
 Application Insights Profiler az App Services modul részeként előre telepítve van, de a bekapcsolásához és get-profilok az Azure Web Apps kell. Akkor is, ha a forráskódot is szerepelnek az App Insights SDK egy webalkalmazás üzembe helyezett, kövesse az alábbi lépéseket a profiler engedélyezéséhez.
 
 1. Nyissa meg a **App Services** panel az Azure Portalon.
-1. Navigáljon a **beállítások > figyelés** ablaktáblán.
+1. Navigáljon a **beállítások > Application Insights** ablaktáblán.
 
    ![Az App Insights engedélyezése az App Services portálon](./media/app-insights-profiler/AppInsights-AppServices.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager erőforráscsoport törlése
-description: Ismerteti, hogyan Azure Resource Manager orders-e az erőforrások törlését Ha töröl egy erőforráscsoportot.
+title: Törölje az erőforráscsoportot és az erőforrások – Azure Resource Manager
+description: Ismerteti, hogyan Azure Resource Manager orders-e az erőforrások törlését Ha töröl egy erőforráscsoportot. Leírja a válaszkódot, valamint hogyan Resource Manager kezeli őket határozza meg, ha a törlés sikerült.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b0711cab07584aa84ab437a2a4efb5aab92f3d1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319357"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132329"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Az Azure Resource Manager erőforrás-csoport törlése
 
@@ -68,4 +69,4 @@ Más hibakódok erőforrás-kezelő nem az erőforrás törlését.
 ## <a name="next-steps"></a>További lépések
 
 * Erőforrás-kezelő kapcsolatos fogalmak megismeréséhez tekintse meg [Azure Resource Manager áttekintése](resource-group-overview.md).
-* A műveletek esetében egy erőforrás-szolgáltató megtekintése: [Azure REST API](/rest/api/).
+* Törlés parancsokért lásd: [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [Azure CLI-vel](/cli/azure/group?view=azure-cli-latest#az-group-delete), és [REST API-val](/rest/api/resources/resourcegroups/delete).

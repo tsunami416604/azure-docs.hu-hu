@@ -1,22 +1,22 @@
 ---
-title: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
-description: Megtudhatja, hogyan csatlakoztathat egy Node.js Mongoose alkalmazást az Azure Cosmos DB-hez
-services: cosmos-db
-author: slyons
+title: Egy Node.js Mongoose alkalmazást az Azure Cosmos DB csatlakoztatása
+description: Ismerje meg, hogyan tárolhat és kezelhet az Azure Cosmos DB a Mongoose-keretrendszer használatával.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101432"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134930"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Egy Node.js Mongoose alkalmazást az Azure Cosmos DB csatlakoztatása
 
 Ez az oktatóanyag bemutatja, hogyan kell használni adatok az Azure Cosmos DB-ben való tárolása esetében a [Mongoose-keretrendszert](https://mongoosejs.com/). Ebben a bemutatóban a MongoDB API-t használjuk az Azure Cosmos DB-hez. Ha nem ismerné, a Mongoose egy objektummodellezési keretrendszer a MongoDB-hez Node.js-ben, és egyszerű, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez.
 

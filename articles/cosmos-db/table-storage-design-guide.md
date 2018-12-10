@@ -1,21 +1,22 @@
 ---
-title: Az Azure Storage Table tervezési útmutatója
-description: Tervezési méretezhető és Nagytejesítményű táblákat az Azure Table Storage
-services: cosmos-db
+title: Azure Cosmos DB támogatja a méretezést és teljesítményt táblák tervezése
+description: 'Az Azure Storage Table tervezési útmutatója: Tervezése méretezhető és nagytejesítményű táblákat az Azure Cosmos DB és az Azure Storage-táblából'
 author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.topic: conceptual
-ms.date: 11/03/2017
-ms.author: sngun
-ms.openlocfilehash: 041a2637ede298bc145b512c6113189b8a14db4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656a8acc06a0d02959dda42c980db65c011f0bb3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876222"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140948"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezése méretezhető és Nagytejesítményű táblákat
+
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 Méretezhető és nagytejesítményű táblákat számos tényezőtől, például a teljesítményt, méretezhetőséget és figyelembe kell venni. Ha korábban létrehozott sémák a relációs adatbázisok, ezeket a szempontokat, ismerős lesz, de vannak az Azure Table storage modell és a relációs modellek között némileg hasonlít, amíg vannak-e is számos fontos különbség. Ezek a különbségek általában különböző kialakításokat, amelyek nézhet counter-intuitive vagy valaki jól ismert, relációs adatbázisok nem megfelelő, de, amely jó érthető legyen, ha tervez, egy nosql-alapú kulcs-érték tároló például az Azure Table service vezethet. Számos, a Tervező különbségek fogja tartalmazni az a tény, hogy a Table service célja meg entitások (a relációs adatbázis-terminológiában sorokat) az adatok vagy támogatnia kell a nagy tranzakciós adatkészletek esetében is tartalmazó felhőléptékű alkalmazások támogatása kötetek: ezért kell másképp gondolja hogyan tárolja az adatait, és a Table service működésének megismerése. Egy jól megtervezett NoSQL-adattár engedélyezheti a megoldás méretezése sokkal tovább (és alacsonyabb költségek), mint egy megoldás, amely relációs adatbázist használ. Az útmutató az alábbi témakörök segítségével.  
@@ -318,7 +319,7 @@ Ez a példa bemutatja egy szervezeti egység és a kapcsolódó alkalmazott enti
 
 Egy másik módszert, ha denormalizálja az adatokat, és csak az adatok denormalizált részleg, az alábbi példában látható módon alkalmazott entitásokat. Adott esetben ez denormalizált megközelítésében rejlik-kezelő nem lehet a legjobb, ha a követelmény, hogy tudja majd módosítani egy részleg vezetője részleteit, mivel ehhez frissítenie a részleg minden alkalmazott rendelkezik.  
 
-![][2]
+![Alkalmazott entitás][2]
 
 További információkért lásd: a [Denormalizáció minta](#denormalization-pattern) Ez az útmutató későbbi.  
 
@@ -395,18 +396,18 @@ Például ha rendelkezik, amelyek adatokat tartalmaznak, amelyek nem változik g
 ### <a name="inheritance-relationships"></a>Öröklés kapcsolatok
 Ha az ügyfélalkalmazás osztályokat, amelyek részét képezik az öröklési kapcsolatban, amelyek az üzleti entitásokat használ, egyszerűen megőrizheti ezen entitások a Table service szolgáltatásban. Például előfordulhat, hogy rendelkezik a következő csoportját az ügyfélalkalmazásban található megadott ahol **személy** absztrakt osztály.
 
-![][3]
+![Öröklés kapcsolatok ER ábrája][3]
 
 Az a Table service használatával egyetlen személy tábla entitások használatával, hogy néz ki ez a két tényleges osztály példányainak megőrizheti a:  
 
-![][4]
+![A és az alkalmazott jogi személyisége ábrája][4]
 
 A több entitástípusok ugyanabban a táblában az Ügyfélkód működő kapcsolatos további információkért lásd: a szakasz [használata heterogén entitástípusok](#working-with-heterogeneous-entity-types) Ez az útmutató későbbi. Ez példákat az Ügyfélkód entitástípus felismerése.  
 
 ## <a name="table-design-patterns"></a>Táblázat kialakítási minták
 Az előző szakaszokban látott néhány részletes hozzászólások optimalizálása a Táblatervezés lekérése entitás adatainak, mind lekérdezésekkel és beszúrását, frissítését és entitások adatainak törlése. Ez a szakasz néhány tábla szolgáltatási megoldások használható mintákat ismerteti. Ezenkívül láthatja, miként, gyakorlatilag kezelheti a problémák és feláldozását ebben az útmutatóban korábban kiadott. Az alábbi ábrán a különböző minták között létesített kapcsolatait összegzi:  
 
-![][5]
+![Táblázat kialakítási minták képe][5]
 
 A minta térkép felett (kék) mintákat és kizárási mintákat (narancs), ebben az útmutatóban ismertetett közötti kapcsolathoz emeli ki. Természetesen léteznek számos más mintákat, amelyek mellett szóló érvek. Például a Table Service azon kulcsfontosságú forgatókönyvek egyike, hogy használja a [Materialized View minta](https://msdn.microsoft.com/library/azure/dn589782.aspx) származó a [parancs Query Responsibility Segregation (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) mintát.  
 
@@ -423,7 +424,7 @@ Ha szeretné is tudja megtalálni egy alkalmazott entitás, például az e-mail-
 #### <a name="solution"></a>Megoldás
 A másodlagos indexek hiánya megkerüléséhez minden egyes használatával egy másik példánya minden entitás több példányát is tárolhatja **RowKey** értéket. Ha egy entitás tárolja az alább látható szerkezetéről, találatokkal alkalmazott entitások e-mail-cím vagy az alkalmazott azonosítója alapján. Az előtag értékei a **RowKey**, "empid_" és "email_" engedélyezi, hogy a lekérdezés egyetlen alkalmazott vagy egy tartományt az alkalmazottak e-mail-címek vagy az alkalmazotti azonosítókat számos használatával.  
 
-![][7]
+![A különböző értékek rowkey tulajdonságok esetén alkalmazott entitás][7]
 
 A következő két szűrési feltételeket (egy keresésekor által alkalmazott azonosítója és a egy keresése a e-mail-címe) is adja meg a pont lekérdezéseket:  
 
@@ -447,7 +448,7 @@ A minta megvalósítása során az alábbi pontokat vegye figyelembe:
 * A numerikus értékek Padding a **RowKey** (például az alkalmazott azonosítója 000223), lehetővé teszi, hogy javítsa ki, rendezési és szűrési alapján felső és alsó határértékét.  
 * Ön nem feltétlenül kell ismétlődő az entitás tulajdonságait. Például, ha a cím a lekérdezéseket, amelyek használatával az e-mailt az entitásokat a **RowKey** soha nem kell az alkalmazott életkor, ezek az entitások sikerült az alábbi struktúrával rendelkeznek:
 
-![][8]
+![Alkalmazott entitás][8]
 
 * Általában célszerűbb duplikált adatok tárolására, és győződjön meg arról, hogy egyetlen lekérdezéssel, mint, több lekérdezés segítségével keresse meg egy entitás és egy másik keresse ki a szükséges adatokat a szükséges összes adatot lekérheti.  
 
@@ -468,7 +469,7 @@ Több másolatot minden entitás használatával különböző Store **rowkey tu
 #### <a name="context-and-problem"></a>Kontextus és probléma
 A Table service automatikusan indexeli az entitásoknak a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi egy ügyfélalkalmazás egy entitás hatékonyan használatával ezek az értékek lekéréséhez. Például használja az alábbi táblázat szerkezete, egy ügyfélalkalmazás egy pont query segítségével kérje le egy adott alkalmazott entitást a részleg nevét és az alkalmazott azonosítója (a **PartitionKey** és **rowkey tulajdonságok esetén**  értékek). Egy ügyfél is lekérhet entitások minden részleg alkalmazott azonosítója alapján rendezi.  
 
-![][9]
+![Alkalmazott entitás][9]
 
 Ha szeretné is tudja megtalálni egy alkalmazott entitás, például az e-mail-címét, egy másik tulajdonságának értéke alapján való kevésbé hatékony partíció vizsgálatot kell használnia. Ennek oka az, a table service nem biztosít a másodlagos indexeket. Ezenkívül nincs lehetőség egy listát az alkalmazottak, mint egy másik sorrendben rendezve **RowKey** sorrendben.  
 
@@ -477,7 +478,7 @@ Rendszer várhatóan nagy mennyiségű, ezek az entitások tranzakciókat, és s
 #### <a name="solution"></a>Megoldás
 Másodlagos indexek hiánya megkerüléséhez tárolhat több példányt minden entitás minden egyes másolás használatával különböző **PartitionKey** és **RowKey** értékeket. Ha egy entitás tárolja az alább látható szerkezetéről, találatokkal alkalmazott entitások e-mail-cím vagy az alkalmazott azonosítója alapján. Az előtag értékei a **PartitionKey**, "empid_" és "email_" engedélyezi, hogy melyik index egy lekérdezés használni kívánt azonosításához.  
 
-![][10]
+![Index elsődleges és másodlagos indexszel rendelkező alkalmazott entitás alkalmazott entitás][10]
 
 A következő két szűrési feltételeket (egy keresésekor által alkalmazott azonosítója és a egy keresése a e-mail-címe) is adja meg a pont lekérdezéseket:  
 
@@ -500,7 +501,7 @@ A minta megvalósítása során az alábbi pontokat vegye figyelembe:
 * A numerikus értékek Padding a **RowKey** (például az alkalmazott azonosítója 000223), lehetővé teszi, hogy javítsa ki, rendezési és szűrési alapján felső és alsó határértékét.  
 * Ön nem feltétlenül kell ismétlődő az entitás tulajdonságait. Például ha a lekérdezések az entitások, az e-mail cím, hogy a keresési a **rowkey tulajdonságok esetén** soha nem kell az alkalmazott életkor, ezek az entitások sikerült az alábbi struktúrával rendelkeznek:
   
-  ![][11]
+  ![A másodlagos index alkalmazott entitás][11]
 * Általában célszerűbb duplikált adatok tárolására, és győződjön meg arról, hogy egyetlen lekérdezést, mint, több lekérdezés használja az elsődleges index a másodlagos index és a egy másik lookup a szükséges adatokat használó entitásban található a szükséges összes adatot lekérheti.  
 
 #### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
@@ -530,7 +531,7 @@ EGTs elemi tranzakciókat engedélyezése több ugyanazzal a partíciókulccsal 
 Az Azure-üzenetsorok használatával valósítható meg olyan megoldás, amely a végső konzisztenciát biztosít a két partíció és tárolórendszerek között.
 Ezt a megközelítést mutatja be, fel, hogy a követelmény, hogy tudni archiválja a régi alkalmazott entitások. Régi alkalmazott entitások ritkán lesznek lekérdezve, és olyan tevékenységet, amely az aktuális alkalmazottak foglalkozik ki kell zárni. Ezt a követelményt megvalósításához az aktív alkalmazottak tárolja a **aktuális** tábla- és a korábbi alkalmazottak a **archív** tábla. Egy alkalmazott archiválás igényel, az a entitás törléséhez a **aktuális** táblát, és adja hozzá a kívánt entitásra a **archív** táblában, de nem használható egy EGT két művelet végrehajtásához. Annak elkerülése érdekében, hogy egy hiba miatt az entitások jelennek meg mindkét vagy sem táblában, az archiválási művelet végül konzisztens kell lennie. Az alábbi feladatütemezési ábrán ez a művelet lépéseit ismerteti. További részleteket a következő szöveget a Kivétel elérési utak biztosítunk.  
 
-![][12]
+![Végleges konzisztencia megoldás diagramja][12]
 
 Ügyfél üzenetet helyez el az Azure-üzenetsort, ebben a példában alkalmazott #456 archiválása a archív műveletet kezdeményez. Feldolgozói szerepkör az üzenetsorról új üzenetek; Ha talál egyet, kiolvassa az üzenetet, és egy rejtett másolási elhagyja az üzenetsorban. A feldolgozói szerepkör ezután lekéri egy entitást egy példányát a **aktuális** táblában, másolja a a **archív** táblát, és végül törli az eredeti a **aktuális** tábla. Végül ha nincsenek hibák az előző lépésekből származó, a feldolgozói szerepkör törli a rejtett üzenetet az üzenetsorból.  
 
@@ -570,7 +571,7 @@ Karbantartása index entitások engedélyezése a hatékony keresést, hogy az e
 #### <a name="context-and-problem"></a>Kontextus és probléma
 A Table service automatikusan indexeli az entitásoknak a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi egy ügyfélalkalmazás egy entitás hatékonyan pont lekérdezéssel lekérni. Például használja az alábbi táblázat szerkezete, az ügyfélalkalmazások hatékonyan egyes alkalmazott entitás használatával lekérhető a részleg nevét és az alkalmazott azonosítója (a **PartitionKey** és **RowKey**).  
 
-![][13]
+![Alkalmazott entitás][13]
 
 Ha szeretné is tudja lekérni a vezetéknevét, például egy másik nem egyedi tulajdonság értéke alapján alkalmazott entitások listájának a kevésbé hatékony partíció vizsgálat keresse ki őket közvetlenül az index használata helyett egyezés található kell használnia. Ennek oka az, a table service nem biztosít a másodlagos indexeket.  
 
@@ -589,7 +590,7 @@ Az első lehetőség, akkor hozzon létre minden egyedi Vezetéknév, és minden
 
 A második lehetőség használja a index entitások, amelyek tárolják a következő adatokat:  
 
-![][14]
+![Alkalmazott entitás tartalmazza az alkalmazotti azonosítókat utolsó azonos nevű karakterlánccal][14]
 
 A **EmployeeIDs** tárolt utolsó nevű tulajdonság tartalmazza az alkalmazottak számára az alkalmazotti azonosítókat listáját a **RowKey**.  
 
@@ -611,7 +612,7 @@ Az alábbi lépéseket kell követnie, amikor szüksége van egy részleg utols�
 
 A harmadik lehetőség, amely a következő adatokat tárolja index entitások használja:  
 
-![][15]
+![Alkalmazott entitás tartalmazza az alkalmazotti azonosítókat utolsó azonos nevű karakterlánccal][15]
 
 A **EmployeeIDs** tárolt utolsó nevű tulajdonság tartalmazza az alkalmazottak számára az alkalmazotti azonosítókat listáját a **RowKey**.  
 
@@ -643,12 +644,12 @@ Együtt ötvözze a kapcsolódó adatokat egyetlen entitás ahhoz, hogy minden h
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Egy relációs adatbázisban akkor általában normalizálása a másolás több táblából adatokat lekérő lekérdezéseket eredményez Adattörlés céljából. Normalizálása az Azure-táblák adatait, ha gondoskodnia kell, több adatváltások az ügyfélről a kiszolgálónak a kapcsolódó adatokat. Például a táblázat szerkezetét, alább látható az Intézet adatai olvashatók be két adatváltások szükséges: egy beolvasni a részleg entitás, amely tartalmazza a kezelőazonosító, és a egy másik kérelem beolvasni a részleteket a kezelő a alkalmazott entitásokban.  
 
-![][16]
+![Részleg entitás és alkalmazott entitás][16]
 
 #### <a name="solution"></a>Megoldás
 Ahelyett, hogy az adatok tárolása a két különálló entitások, denormalizálja az adatokat, és a részleg entitás őrizze a kezelő részletek. Példa:  
 
-![][17]
+![Denormalizált és kombinált osztály entitás][17]
 
 Részleg entitásokkal ezekkel a tulajdonságokkal tárolja most kérheti le a részletekről a részleg pont lekérdezéssel kapcsolatban van szüksége.  
 
@@ -676,18 +677,18 @@ Egy relációs adatbázisban természetes lekérdezésekben összekapcsolások h
 
 Tegyük fel, a Table service, az alábbi struktúra használatával alkalmazott entitások tárolja:  
 
-![][18]
+![Alkalmazott entitás][18]
 
 Értékelések és teljesítménye minden évben, az alkalmazott működött, a szervezet számára vonatkozó előzményadatok tárolása emellett és érhetik el ezeket az információkat év szerint kell. Az egyik lehetőség, hogy hozzon létre egy másik táblát, amely tárolja az entitások az alábbi struktúra használatával:  
 
-![][19]
+![Alkalmazott entitás][19]
 
 Figyelje meg, hogy ezt a módszert használja dönthet megkettőzése néhány információt (például utónév és Vezetéknév), az új entitás ahhoz, hogy az adatok egy kéréssel. Azonban erős konzisztencia nem karbantartása, mivel a két entitás szolgáltatásfrissítést frissíteni egy EGT nem használható.  
 
 #### <a name="solution"></a>Megoldás
 Egy új entitástípus Store az eredeti tábla entitások használatával az alábbi struktúra használatával:  
 
-![][20]
+![Az összetett kulcs alkalmazott entitás][20]
 
 Figyelje meg a **RowKey** már az alkalmazott azonosítója és az év, amely lehetővé teszi az alkalmazott teljesítmény beolvasásához, és tekintse át az adatokat egyetlen entitás egyetlen kérelem felülvizsgálata adatok összetett kulcs.  
 
@@ -756,7 +757,7 @@ Számos alkalmazás, amely már nem kell lennie az ügyfélalkalmazások számá
 
 Egy lehetséges tervezési, hogy a dátum és a bejelentkezési kérelem ideje a **RowKey**:  
 
-![][21]
+![Bejelentkezési kísérlet entitás][21]
 
 Ezzel a módszerrel elkerülhető a partíció-elérési pontokhoz, mert a kérelem beszúrása, és jelentkezzen be az egyes felhasználók egy külön partíciót az entitások törlése. Ez a megközelítés azonban lehet, költségessé és időigényessé Ha már rendelkezik egy nagy mennyiségű entitást, mivel először ki kell ahhoz, hogy törli az entitások azonosítása egy tábla ellenőrzést hajt végre, és törölnie kell az egyes régi entitás. Adatváltások számát csökkentheti a kiszolgálóhoz, törölje a régi entitások kötegelés több delete kérelem be EGTs szükséges.  
 
@@ -786,14 +787,14 @@ Teljes körű sorozat Store egyetlen entitás minimalizálása érdekében, hogy
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Gyakran előfordul az alkalmazás számára az adatok általában egyszerre lekéréséhez szükséges sorozatát tárolja a rendszer. Például az alkalmazás előfordulhat, hogy rögzítse az összes alkalmazott által minden órában hány Csevegési üzeneteket, majd ezt az információt megrajzolásához hány üzenetet minden felhasználóhoz az előző 24 óra során küldött. Lehet, hogy egy tervezési 24 entitások tárolására minden alkalmazott számára:  
 
-![][22]
+![Üzenet stats entitás][22]
 
 Ezzel a kialakítással egyszerűen keresse meg és frissítéséhez minden alkalmazott számára, amikor az alkalmazást az üzenetek száma érték frissíteni kell az entitás módosítására. Azonban és lekéri az információkat, a tevékenység-diagram megrajzolásához az előző 24 óra, le kell kérnie 24 entitásokat.  
 
 #### <a name="solution"></a>Megoldás
 Egy külön tulajdonsággal a következő tervezési használatával tárolja az üzenetek száma óránként:  
 
-![][23]
+![Üzenet stats entitás elválasztott tulajdonságokkal][23]
 
 Ezzel a kialakítással az üzenetek száma egy alkalmazott frissíteni az adott órában használhatja egy merge művelet. Most kérheti le az összes kérelem használatával egyetlen entitás-diagram megrajzolásához szükséges információkat.  
 
@@ -822,7 +823,7 @@ Egy egyéni entitás legfeljebb 252 tulajdonságot tartalmazhat (kivéve a köte
 #### <a name="solution"></a>Megoldás
 A Table service használatával, több entitás legfeljebb 252 tulajdonságot tartalmazhat egy egyetlen nagy üzleti objektum képviselő is tárolhatja. Például ha szeretné tárolni az elmúlt 365 nap összes alkalmazott által küldött Csevegési üzenet darabszámát, az alábbi tervezési, amely két különböző sémákkal használhatja:  
 
-![][24]
+![Üzenet stats entitás entitással Rowkey 01 és az üzenet állapota a rowkey tulajdonságok esetén 02][24]
 
 Ha olyan módosítást, amely mindkét entitások szinkronizálja egymással Újévi frissíteni kell az van szüksége, használhatja az EGT. Ellenkező esetben egy egyetlen merge művelet használatával frissítse az üzenetek száma egy adott napjára. Összes adat lekéréséhez egyetlen alkalmazott le kell kérnie mindkét entitásban, amely két hatékony-kérelmeket is megteheti egy **PartitionKey** és a egy **RowKey** értéket.  
 
@@ -849,7 +850,7 @@ Egy egyéni entitás nem tárolja az adatok több mint 1 MB összesen. Ha egy va
 #### <a name="solution"></a>Megoldás
 Ha az entitás meghaladja 1 MB méretű, mert egy vagy több tulajdonságának egy nagy mennyiségű adatot tartalmaznak, adatokat tárolni a Blob service-ben, és majd tárolni a blob címét az entitásban található egy tulajdonság. Például a fénykép egy alkalmazott tárolni a blob storage és tárolására is használható a fényképet mutató hivatkozást a **fénykép** az alkalmazott entitás tulajdonságát:  
 
-![][25]
+![A blob storage mutató fénykép karakterláncára alkalmazott entitás][25]
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -874,12 +875,12 @@ Növelhető a méretezhetőséget, ha Beszúrások nagy mennyiségű között os
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Előtag-beillesztés vagy entitások hozzáfűzi a tárolt entitások jellemzően az alkalmazás új entitásokat ad hozzá a partíciók egymást követő első vagy utolsó partíciót eredményez. Ebben az esetben az összes adott időpontban Beszúrások vannak zajló ugyanazon a partíción létrehozása, amely megakadályozza, hogy a table service terheléselosztási forgalmas szúr be több csomópont, és ami miatt a skálázási célértékei eléri az alkalmazás között a partíció. Például ha egy alkalmazás, amely hálózati naplókat és az erőforrás eléréséhez az alkalmazottak által, majd egy entitásstruktúrát, ahogy az alábbi eredményezheti kritikus ponttá váljon, ha a tranzakciók mennyisége eléri a skálázhatósági célok, az a jelenlegi órán partíció egy az egyes partíció:  
 
-![][26]
+![Alkalmazott entitás][26]
 
 #### <a name="solution"></a>Megoldás
 A következő alternatív entitásstruktúrát egy adott partícióra forgalmas elkerülhető, az alkalmazás eseményeket:  
 
-![][27]
+![Az év, hónap, nap, óra és eseményazonosító főneveket rowkey tulajdonságok esetén alkalmazott entitás][27]
 
 Figyelje meg, az ebben a példában hogyan mindkét a **PartitionKey** és **RowKey** összetett kulcs. A **PartitionKey** a részleg és a alkalmazott azonosítót használja a naplózás szét a több partíciót.  
 
@@ -905,13 +906,13 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Egy közös használati eset, a naplóadatok beolvasni egy kijelölt naplóbejegyzések adott dátum/idő különböző: például szeretné az összes hiba és kritikus üzeneteihez, amelyeket az alkalmazás naplóz, 15:04 és a egy adott dátumon 15:06 között. Nem szeretné, hogy a dátum és idő a naplóüzenet segítségével meghatározhatja a partíció log entitások mentése:, amely az okozza, gyakori elérésű a partíción egy adott időpontban minden napló entitások oszt azonos **PartitionKey** érték (lásd a a szakasz [kizárási minta Prepend hozzáfűzése](#prepend-append-anti-pattern)). Például a következő entitás sémát egy naplófájlüzenetre eredménye egy gyakran használt adatok partíciót, mert az alkalmazás összes naplóüzenetek ír a partíció az aktuális dátum és óra:  
 
-![][28]
+![Napló üzenet entitás][28]
 
 Ebben a példában a **RowKey** dátuma és időpontja, győződjön meg arról, hogy naplóüzenetek tárolása dátum és idő sorrendben rendezve log üzenet tartalmazza, az egy üzenetazonosító abban az esetben, ha több naplóüzenetek ugyanazt a dátum és idő megosztani.  
 
 Másik megoldás használja, egy **PartitionKey** , amely biztosítja, hogy az alkalmazás partíciók számos üzeneteket ír. Például ha a forrás a naplóüzenet lehetővé teszi a sok partíciók között az üzenetek továbbítása, a következő entitás sémáján használhatja:  
 
-![][29]
+![Napló üzenet entitás][29]
 
 Ebben a sémában a probléma viszont, hogy egy adott időtartam összes a naplózott üzeneteket beolvasni, kell megkeresni minden partícióján a táblában.
 
@@ -971,7 +972,7 @@ var employees = query.Execute();
 
 Figyelje meg, hogyan a lekérdezés határoz meg, mindkét egy **rowkey tulajdonságok esetén** és a egy **PartitionKey** jobb teljesítmény biztosítása érdekében.  
 
-A következő mintakód bemutatja a fluent API-val megfelelő funkciók (További információ a fluent API-k általában: [egy Fluent API-t tervezése ajánlott eljárásai](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+A következő mintakód bemutatja a fluent API-val megfelelő funkciók (További információ a fluent API-k általában: [egy Fluent API-t tervezése ajánlott eljárásai](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(

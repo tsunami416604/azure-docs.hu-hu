@@ -1,5 +1,5 @@
 ---
-title: Csapat adatok adatelemzési folyamat Csoportkezelő feladatok – Azure |} A Microsoft Docs
+title: Adatelemzési folyamat manager feladatok csapata
 description: A tevékenységek a data science csapatprojekt csoportvezető röviden ismerteti.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: ee10f17f76f7c3745cb32223c58b0d2d12f7d6b6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d44b13bb087f171c3f0474cde73167481221274f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446347"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136581"
 ---
-# <a name="group-manager-tasks"></a>Csoportkezelő feladatok
+# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>A data science csapatprojekt csoportvezető feladatai
 
 Ez a témakör ismerteti a feladatokat, a csoport kezelőjének várhatóan végezze el a előzmény / saját data science szervezet. Együttműködésen alapuló csoport környezet, amely szabványosítja a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 

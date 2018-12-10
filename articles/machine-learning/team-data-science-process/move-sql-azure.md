@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése az Azure SQL Database az Azure Machine Learning |} A Microsoft Docs
-description: SQL-táblát és az adatok betöltése az SQL-tábla létrehozása
+title: Adatok áthelyezése az Azure SQL Database - csoportos adatelemzési folyamat
+description: Helyezze át az adatokat egybesimított fájlok (CSV- vagy TSV formátumokat) vagy egy helyszíni SQL Server egy Azure SQL Database-ban tárolt adatokkal.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1c65e2b622d9c70626411f470593730570de813b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 2ae03dc41d4e5611b75b683975f26874187de1d0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445345"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136297"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 

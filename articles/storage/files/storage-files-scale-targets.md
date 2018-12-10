@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 57929b23e437e17ceb90196e3cfa59c16d518f5a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527437"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138585"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ez a cikk ismerteti a méretezhetőségi és teljesítménycéljai Azure Files és az Azure File Sync.
@@ -46,6 +46,7 @@ Az Azure File Sync, a teljesítmény fontos két szakaszban végzik:
 2. **Folyamatban lévő szinkronizálás**: után az adatok kezdetben áttöltésekor, az Azure-fájlmegosztások, az Azure File Sync tartja több végpontot szinkronizálva.
 
 Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbiakban az eredmények figyelhetők egy konfigurációs rendszereken belső tesztelése során
+
 | Rendszer-konfiguráció |  |
 |-|-|
 | CPU | 64 virtuális maggal és 64 MiB L3-gyorsítótár |

@@ -1,5 +1,5 @@
 ---
-title: A prediktív karbantartási megoldásokat az Azure AI útmutatója |} A Microsoft Docs
+title: Az Azure AI-útmutató a prediktív karbantartási megoldás – a csoportos adatelemzési folyamat
 description: A data science-megoldás több vertikális iparágak prediktív karbantartási megoldások átfogó leírást.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444919"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135685"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -289,11 +289,11 @@ Többcsoportos osztályozási technikák gondoskodnak a PdM-megoldásokban is ha
 #### <a name="label-construction-for-multi-class-classification"></a>Többcsoportos besorolási címke építése
 Itt a kérdést: "Mi a valószínűsége annak, hogy egy eszköz meghiúsul a következő _nZ_ időegységben ahol _n_ időszakok száma?" Ez a kérdés megválaszolásához nZ rekordok gyűjtő idő (3Z, 2Z, a – Z) használatával egy eszköz a meghibásodás előtti címkét. Minden egyéb címkét "normál" rögzíti (label = 0). Ez a módszer a célváltozó tartalmazza _kategorikus_ értékeket. (Lásd az 5. ábra).
 
-![5. ábra Hiba ideje előrejelzéshez többosztályos osztályozási címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Hiba ideje előrejelzési többcsoportos besorolási címkézés
+![5. ábra Hiba ideje előrejelzési többosztályos osztályozási címkék](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Hiba ideje előrejelzési többcsoportos besorolási címkézés
 
 Itt a kérdést: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_" (címke = _P<sub>i</sub>_). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
 
-![6. ábra Alapvető ok előrejelzéshez többosztályos osztályozási címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. Alapvető ok előrejelzési többcsoportos besorolási címkézés
+![6. ábra Alapvető ok többosztályos osztályozási címkék előrejelzési](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. Alapvető ok előrejelzési többcsoportos besorolási címkézés
 
 A modell rendeli hozzá a hiba miatt minden valószínűség _P<sub>i</sub>_  és hibák nélkül valószínűségét. Ezek valószínűségek, hogy a problémákat, amelyek a legnagyobb valószínűséggel fordulnak elő a jövőben előrejelzését magnitude szerint is rendezve.
 

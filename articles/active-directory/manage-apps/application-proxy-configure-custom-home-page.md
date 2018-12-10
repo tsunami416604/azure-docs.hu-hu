@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d098d38c39788dee7f4a3852d07a762b36fd9a4f
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 9ee7f0b975dd2990281833726b4013c9726a2935
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333751"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134318"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
@@ -142,4 +142,4 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 ## <a name="next-steps"></a>További lépések
 
 - [Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-enable.md)
+- [Alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md)

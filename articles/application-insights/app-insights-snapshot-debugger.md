@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 11e9099ba9008ead6583eaf30292cdec63475f02
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994262"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136715"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
@@ -68,7 +68,7 @@ A következő környezetekben támogatottak:
         <!-- How often to reset problem counters. -->
         <ProblemCounterResetInterval>1.00:00:00</ProblemCounterResetInterval>
         <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
-        <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
+        <SnapshotsPerTenMinutesLimit>3</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>30</SnapshotsPerDayLimit>
         <!-- Whether or not to collect snapshot in low IO priority thread. The default value is true. -->
@@ -455,7 +455,7 @@ Vagy ha egy .NET Core-alkalmazást az appsettings.json használja:
 Egy pillanatkép jön létre, amikor a rtesítő kivétel van-e megjelölve a pillanatkép-azonosítót. A pillanatkép-azonosító alkalmazás egyéni tulajdonság része, a kivétel telemetriát az Application Insights jelentésekor. Használatával **keresési** az Application Insights, az összes telemetriai adat található a `ai.snapshot.id` egyéni tulajdonság.
 
 1. Keresse meg az Application Insights-erőforrást az Azure Portalon.
-2. Kattintson a **keresési**.
+2. Kattintson a **Keresés** gombra.
 3. Típus `ai.snapshot.id` a keresőmezőbe, és nyomja le az Enter.
 
 ![Keresse meg a telemetriai adatok a portálon egy pillanatkép-azonosító](./media/app-insights-snapshot-debugger/search-snapshot-portal.png)

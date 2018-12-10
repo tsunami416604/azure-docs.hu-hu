@@ -2,16 +2,17 @@
 title: A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 description: Használja az Azure Cosmos DB módosítási hírcsatorna támogatása a dokumentumok nyomon követésére, és végezze el a feldolgozási eseményalapú eseményindítókat például és a gyorsítótárak és elemzési rendszerek naprakészen tartása.
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: dfb0048b29c5d63a2eee4c239e17ef222aad331e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837460"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133757"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Az Azure Cosmos DB csatorna módosítása
 
@@ -82,7 +83,7 @@ Például a csatorna módosítása a következő feladatokat végezheti hatékon
 
 Az alábbiakban a forgatókönyvek is egyszerűen implementálni a módosítás adatcsatornával:
 
-* Belül a [kiszolgáló nélküli](http://azure.com/serverless) webes és mobilalkalmazásokat, nyomon követheti az eseményeket, mint például az összes módosítást a felhasználói profilt, beállítások vagy azok helyétől, és aktiválja a bizonyos műveletek, például az eszközök leküldéses értesítések küldése használatával [Azure Functions](#azure-functions). 
+* Belül a [kiszolgáló nélküli](https://azure.microsoft.com/en-us/solutions/serverless/) webes és mobilalkalmazásokat, nyomon követheti az eseményeket, mint például az összes módosítást a felhasználói profilt, beállítások vagy azok helyétől, és aktiválja a bizonyos műveletek, például az eszközök leküldéses értesítések küldése használatával [Azure Functions](change-feed-functions.md).
 
 * Készítsen játékot használata Azure Cosmos DB, akkor is, például használata módosításcsatornáját befejezett játékok a pontszámok alapján a valós idejű ranglisták megvalósításához.
 

@@ -1,6 +1,6 @@
 ---
-title: A Power BI-irányítópult állapotát és a vezetési szokásokat – Azure |} A Microsoft Docs
-description: A Cortana Intelligence képességeit használatával valós idejű és prediktív elemzéseket az állapotát és a vezetési szokásokat.
+title: A Power BI-irányítópult állapotát és a vezetési szokásokat – csoportos adatelemzési folyamat
+description: Fejlesztés a Power BI-irányítópultra valós idejű, prediktív, és elemzéseket állapotát a batch és a vezetési szokásokat.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b4d36b7d68bad658200024a2fe31a876d411536c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a964820979f24af1fee2be65461302be73b9e77b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444649"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135117"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Járműtelemetria Telemetriai Analytics megoldás sablon Power BI-irányítópult beállítási útmutatásai
 
@@ -26,8 +26,8 @@ Ez a megoldás összefoglaló leírását áttekintéséhez lásd: [jármű-Tele
 Ismerje meg a megoldás még tovább, lásd: [jármű-Telemetria elemzési megoldás forgatókönyve: részletes ismerje meg, a megoldás](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Üzembe helyezése a [Járműtelemetria elemzése](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás. 
-* [Power BI Desktop telepítése](https://www.microsoft.com/download/details.aspx?id=45331).
+* Üzembe helyezése a [Járműtelemetria elemzése](https://gallery.cortanaintelligence.com/Solutions/5bdb23f3abb448268b7402ab8907cc90) megoldás. 
+* [Power BI Desktop telepítése](https://aka.ms/pbidesktopstore).
 * Szerezzen be egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/). Ha nem rendelkezik Azure-előfizetéssel, első lépések az ingyenes Azure-előfizetéssel.
 * Nyissa meg a Power BI-fiókkal.
 
@@ -345,7 +345,7 @@ A valós idejű irányítópult létrehozása sikerült. Végrehajtási CarEvent
 
 ### <a name="configure-power-bi-reports"></a>A Power BI-jelentések konfigurálása
 
-1. Nyissa meg a Tervező fájlt **ConnectedCarsPbiReport.pbix** a Power BI Desktop használatával. Ha még nem rendelkezik azt, telepítse a Power BI Desktop a [Power BI Desktop telepítése](https://www.microsoft.com/download/details.aspx?id=45331) webhelyén.
+1. Nyissa meg a Tervező fájlt **ConnectedCarsPbiReport.pbix** a Power BI Desktop használatával. Ha még nem rendelkezik azt, telepítse a Power BI Desktop a [Power BI Desktop telepítése](https://aka.ms/pbidesktopstore) webhelyén.
 
 1. Válassza ki **lekérdezések szerkesztése**.
 

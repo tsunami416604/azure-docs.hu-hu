@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2344d35827cf541f0230f74917be3ae0ea39e074
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e75b04b3220347bdaa90dbc2f21d92475df3aa47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356618"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136254"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>A probléma az alkalmazásproxy-alkalmazás létrehozása 
 
@@ -28,7 +28,7 @@ Az alábbiakban néhány gyakori problémák személyek face egy új alkalmazás
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok 
 
-A felügyeleti portálon keresztül egy Application Proxy-alkalmazások létrehozásával kapcsolatos további tudnivalókért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-publish-azure-portal.md).
+A felügyeleti portálon keresztül egy Application Proxy-alkalmazások létrehozásával kapcsolatos további tudnivalókért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
 Ha a dokumentum lépéseit követi, és az alkalmazás létrehozása hibaüzenet, tekintse meg az információkat a hiba részleteit, és hogyan javíthatja az alkalmazás javaslatokat. A legtöbb hiba üzenetekben a javasolt javítás. 
 
@@ -51,4 +51,4 @@ A következő hibaüzenet jelenik meg a jobb felső sarokban az alkalmazás lét
    ![Értesítés kérése](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-enable.md)
+[Alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md)

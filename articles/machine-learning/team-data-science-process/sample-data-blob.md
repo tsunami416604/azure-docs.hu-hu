@@ -1,6 +1,6 @@
 ---
-title: Adatmintavétel az Azure blob storage-ban |} A Microsoft Docs
-description: Adatmintavétel az Azure Blob Storage
+title: Az Azure-ban a mintaadatokat a blob storage - csoportos adatelemzési folyamat
+description: Töltse le a programozott módon, és ezután mintavételezi a pythonban írt eljárások az Azure blob storage-ban tárolt adatok mintavételezésének.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7dbd5f932f2d090a3f9fa8f917d12869a94dc553
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 0f9795e6a9a451ab1492e62fd54faea5894d99ae
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136494"
 ---
 # <a name="heading"></a>Adatmintavétel az Azure blob storage-ban
 

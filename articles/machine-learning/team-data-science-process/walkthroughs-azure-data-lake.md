@@ -1,5 +1,5 @@
 ---
-title: U-SQL használatával az Azure Data Lake adatelemzési útmutatók |} A Microsoft Docs
+title: Analytics U-SQL használatával az Azure Data Lake - csoportos adatelemzési folyamat
 description: A prediktív elemzések az Azure Data Lake U-SQL használatával bejárása példái.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2f01ec6dc97dccbca15c61d4f1a087f6f1a9abe2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ecf19ec484e03f4cbc9e396ff80818c192da4d17
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444222"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132789"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL használatával az Azure Data Lake adatelemzési útmutatók
 

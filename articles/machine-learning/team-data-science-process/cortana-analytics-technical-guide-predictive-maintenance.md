@@ -1,5 +1,5 @@
 ---
-title: Az Azure-ral – technikai útmutató Cortana Intelligence-Megoldásbeli közlékedésben prediktív karbantartás |} A Microsoft Docs
+title: Útmutató a prediktív karbantartás a légi közlekedésben – a csoportos adatelemzési folyamat
 description: Technikai útmutató a Microsoft Cortana Intelligence-Megoldássablon prediktív karbantartás a légi közlekedésben, segédprogramok és a szállítási.
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: d5f6934385d616390baf336404ddd79d4bc2a490
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965436"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140183"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technikai útmutató a prediktív karbantartás a légi közlekedésben és más vállalatok számára a Cortana Intelligence Megoldássablon
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
 >[!Important]
 Ez a cikk elavult. A prediktív karbantartás a légi közlekedésben szóló vita továbbra is szükséges, de információk, tekintse meg [megoldás áttekintése üzleti célközönség](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).

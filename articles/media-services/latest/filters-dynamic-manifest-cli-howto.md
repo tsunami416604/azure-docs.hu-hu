@@ -1,6 +1,6 @@
 ---
-title: Méretezés a Media szolgáltatás számára fenntartott egység – Azure |} A Microsoft Docs
-description: Ez a témakör a méretezési Media feldolgozására az Azure Media Services nyújt áttekintést.
+title: Szűrők létrehozása az Azure Media Services a CLI használatával |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hozhat létre szűrők a Media Services a parancssori felület használatával.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336861"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133859"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 

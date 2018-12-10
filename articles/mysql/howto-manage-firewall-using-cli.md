@@ -10,18 +10,18 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 45df284d29ea2d5eb799697b22deeab03cb66622
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ece07d2be605f51e08274649f3ea15e3bbba472
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956660"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134896"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI-vel
 Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák számára, hogy hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályait](./concepts-firewall-rules.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* [Telepítse az Azure parancssori felületét (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * Egy [, Azure Database for MySQL-kiszolgáló és adatbázis](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Tűzfal szabály parancsok:
@@ -38,9 +38,9 @@ Parancsok:
 Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az bejelentkezési** parancsot.
 
 1. A parancssorból futtassa a következő parancsot:
-```azurecli
-az login
-```
+    ```azurecli
+    az login
+    ```
 Ez a parancs a következő lépésben használandó kódot jelenít meg.
 
 2. Nyissa meg a webböngésző használata [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), majd írja be a kódot.
@@ -48,21 +48,21 @@ Ez a parancs a következő lépésben használandó kódot jelenít meg.
 3. Amikor a rendszer felkéri, jelentkezzen be az Azure-beli hitelesítő adataival.
 
 4. A bejelentkezési azonosító jogosult, miután az előfizetések listája, nyomtatása a konzolon. Másolja ki a kívánt előfizetés azonosítóértékét azonosítója beállítása a jelenlegi használni kívánt előfizetést. Használja a [fiók beállítása az](/cli/azure/account#az-account-set) parancsot.
-   ```azurecli-interactive
-   az account set --subscription <your subscription id>
-   ```
+    ```azurecli-interactive
+    az account set --subscription <your subscription id>
+    ```
 
 5. Ha bizonytalan a nevek, listázza a Azure database for MySQL-kiszolgálók az előfizetésben és erőforráscsoportban csoportban. Használja a [az mysql server list](/cli/azure/mysql/server#az-mysql-server-list) parancsot.
 
-   ```azurecli-interactive
-   az mysql server list --resource-group myresourcegroup
-   ```
+    ```azurecli-interactive
+    az mysql server list --resource-group myresourcegroup
+    ```
 
    Vegye figyelembe a name attribútum listáján, és meg kell adnia a MySQL-kiszolgáló működjön. Szükség esetén ellenőrizze a részleteket az adott kiszolgálón és a name attribútum használatával, hogy helyes-e. Használja a [az mysql server show](/cli/azure/mysql/server#az-mysql-server-show) parancsot.
 
-   ```azurecli-interactive
-   az mysql server show --resource-group myresourcegroup --name mydemoserver
-   ```
+    ```azurecli-interactive
+    az mysql server show --resource-group myresourcegroup --name mydemoserver
+    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Lista, Azure Database for MySQL-kiszolgáló tűzfalszabályait 
 A meglévő kiszolgáló tűzfalszabályainak a kiszolgálón a kiszolgáló nevét és az erőforráscsoport nevét használja, listája. Használja a [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) parancsot.  Figyelje meg, hogy a kiszolgáló neve attribútum van megadva a a **– kiszolgáló** váltson, és nem a **--neve** váltson. 

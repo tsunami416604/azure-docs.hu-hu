@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a Hadoop-fürtben lévő adatok és modellek létrehozása az Azure Machine Learning |} A Microsoft Docs
+title: Egy Hadoop-fürt – a csoportos adatelemzési folyamat az adatok megismerése
 description: A csoportos adatelemzési folyamat használatával egy végpontok közötti forgatókönyv, alkalmazó egy HDInsight Hadoop-fürtöt hozhat létre és helyezhet üzembe modelleket.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: ad6493b8acb315a0764e1aee153f0919318747ce
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879655"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139622"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
@@ -765,7 +765,7 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 
   Az alábbi ábrán látható-e egy adott út tipp kifizetett megjósolni a kísérlet:
 
-  ![Kísérlet diagram](./media/hive-walkthrough/QGxRz5A.png)
+  ![Előre jelezni, ha tipp fizették kísérlet diagram](./media/hive-walkthrough/QGxRz5A.png)
 
   b. Ehhez a kísérlethez a cél címke disztribúciók is körülbelül 1:1.
 
@@ -785,7 +785,7 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 
   Az alábbi ábrán látható a kísérlet előre jelezni, melyik van tipp valószínű, hogy tartoznak. A bins vannak: osztály 0: tipp = 0, 1. osztályú: > $0 és tipp tipp < = $5, 2. osztályú: > $5 és tipp tipp < = 10 $ osztály 3: > $ 10-es és tipp tipp < $20 és osztály 4 =: > $20 tipp.
 
-  ![Kísérlet diagram](./media/hive-walkthrough/5ztv0n0.png)
+  ![Tipp a bin előrejelzésére kísérlet diagram](./media/hive-walkthrough/5ztv0n0.png)
 
   Most megmutatjuk, a tényleges vizsgálati osztály terjesztési néz ki. Osztály 0 és 1. osztályú elterjedt, és az egyéb osztályok ritkák.
 
@@ -805,7 +805,7 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 
   Az alábbi ábrán látható a kísérlet előre jelezni az adott tipp mennyiségét:
 
-  ![Kísérlet diagram](./media/hive-walkthrough/11TZWgV.png)
+  ![Tipp – összeg előrejelzésére kísérlet diagram](./media/hive-walkthrough/11TZWgV.png)
 
   b. Regresszió kapcsolatos problémák esetén a az előrejelzési pontosság megnézzük a squared hiba az előrejelzéseket, valamint a determinációs együttható mérjük:
 

@@ -1,5 +1,5 @@
 ---
-title: Adatok importálására és az AzCopy használata az Azure Blob Storage-ból |} A Microsoft Docs
+title: A Blob storage adatok áthelyezése az AzCopy - csoportos adatelemzési folyamat
 description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová az AzCopy használatával
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9e8b852b9f13e8f41daff27e305bc9c0cda78cb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6a204c68a05cec827fa8e432889cc60296132d4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442998"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140575"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Adatok importálására és az Azure Blob Storage, az AzCopy használatával
 Az AzCopy parancssori segédprogram az feltöltése, letöltése és másolhatja az adatokat, és a Microsoft Azure blob, fájl és a table storage.

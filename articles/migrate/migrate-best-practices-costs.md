@@ -5,18 +5,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: f4e067bc1d9a6d738a1289216acc0571661959ea
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110062"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135559"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Ajánlott eljárások a költségszámítás és méretezési számítási feladatok migrálása az Azure-bA
 
-A tervezés és kialakítási az áttelepítéshez, mint az Azure-migrálás, hosszú távú sikert költségek összpontosító biztosítja. A migrálási projekt alatt, kritikus fontosságú, hogy az összes csapatok (pénzügyi, kezeléséhez, alkalmazásokért felelős csapatok stb) kapcsolódó költségeit. Az áttelepítés előtt becslése a migrálás kiadásokat, az alapkonfigurációt a havi, negyedéves, és az éves költségvetés célok, kritikus fontosságú a sikeres. Az áttelepítés után kell optimalizálhatja a költségeket, folyamatosan figyelheti a számítási feladatokat, és tervezze meg jövőbeli használati mintákat. Az áttelepített erőforrások előfordulhat, hogy kezd, mint egy adott típusú számítási feladatok, de egy másik típusúvá időbeli alakulásával, használat, a költségek és időeltolású üzleti követelmények alapján.
+A tervezés és kialakítási az áttelepítéshez, mint az Azure-migrálás, hosszú távú sikert költségek összpontosító biztosítja. A migrálási projekt alatt, kritikus fontosságú, hogy az összes csapatok (pénzügyi, kezeléséhez, alkalmazásokért felelős csapatok stb) kapcsolódó költségeit.
+- Az áttelepítés előtt becslése a migrálás kiadásokat, az alapkonfigurációt a havi, negyedéves, és az éves költségvetés célok, kritikus fontosságú a sikeres.
+- Az áttelepítés után kell optimalizálhatja a költségeket, folyamatosan figyelheti a számítási feladatokat, és tervezze meg jövőbeli használati mintákat. Az áttelepített erőforrások előfordulhat, hogy kezd, mint egy adott típusú számítási feladatok, de egy másik típusúvá időbeli alakulásával, használat, a költségek és időeltolású üzleti követelmények alapján.
 
 Ez a cikk ismerteti az ajánlott eljárások költségszámítás és a méretezési előtt, és az áttelepítés után.  
 

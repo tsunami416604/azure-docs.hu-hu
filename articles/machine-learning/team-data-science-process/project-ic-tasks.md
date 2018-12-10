@@ -1,5 +1,5 @@
 ---
-title: Csoportos adatelemzési folyamat feladatok számára egy egyéni közreműködő – Azure |} A Microsoft Docs
+title: A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
 description: A tevékenységek a data science csapatprojekt egy egyéni közreműködőjének röviden ismerteti.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: d8e51dcf8434508664801f53391592aab34d7e4a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447061"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136761"
 ---
-# <a name="individual-contributor-tasks"></a>Közreműködői feladatok
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
 
 Ez a témakör ismerteti a feladatokat, amely egy egyéni közreműködő várható esetében az adatelemzési csapatával. Együttműködő csapat környezet, amely szabványosítja az a célja a [csoportos adatelemzési folyamat](overview.md) (TDSP). Röviden ismerteti a személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat adatelemzési csapatával által végrehajtott ezt a folyamatot, a szabványosításával lásd [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 

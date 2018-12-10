@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2af5ed294c4a53e38690991f1f65b3f7d2f46c73
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356655"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134828"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -62,7 +62,7 @@ A hibás átjáró hiba azt jelzi, hogy az összekötő nem érhető el a hátt�
 
 A tiltott hibát látja, ha a felhasználó nincs hozzárendelve az alkalmazáshoz. Ez a hiba lehet az Azure Active Directoryban vagy a háttéralkalmazás.
 
-Felhasználók hozzárendelése az Azure-ban az alkalmazás kapcsolatban lásd: a [konfigurációs dokumentációt](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
+Felhasználók hozzárendelése az Azure-ban az alkalmazás kapcsolatban lásd: a [konfigurációs dokumentációt](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user).
 
 Ha Ön kijelenti, hogy a felhasználó hozzá van rendelve az alkalmazás az Azure-ban, ellenőrizze a háttéralkalmazás az felhasználó konfigurációját. Ha a Kerberos által korlátozott delegálás vagy integrált Windows-hitelesítést használ, lásd a KCD hibaelhárítása vonatkozó irányelveket.
 
