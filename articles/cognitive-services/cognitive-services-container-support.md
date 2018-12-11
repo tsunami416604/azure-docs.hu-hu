@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cognitive Servicesben tároló támogatása
+title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan Docker-tárolók férhetnek közelebb a Cognitive Services az adatok.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 681120db66b1e8e79d3c16fe654939450b509a01
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eabdeb9aaf57db2281cb6450d9e21f1b2f098c01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011606"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087321"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
