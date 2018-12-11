@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 8302a444f28e4fb330a1eedbac9a5da762979d6c
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681959"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870402"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -51,11 +51,21 @@ Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kí
 
 ## <a name="authentication"></a>Hitelesítés
 
-Fizessen elő a Translator Text API a Microsoft Cognitive Services és az előfizetési kulcs (az Azure Portalon érhető el) használja a hitelesítéshez. 
+Fizessen elő a Translator Text API vagy [Cognitive Services teljes körű](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services, és az előfizetés key (az Azure Portalon érhető el) hitelesítést használni. 
 
-A legegyszerűbb módja, ha az Azure a titkos kulcs át a Translator szolgáltatás használatával a kérelem fejlécében `Ocp-Apim-Subscription-Key`.
+Három fejlécek előfizetését hitelesítés használatával. A táblázat az egyes használatát ismerteti:
 
-Alternatív, hogy a titkos kulcsot egy engedélyezési jogkivonatot szerezni a jogkivonat-szolgáltatás. Ezt követően átadhatja a hitelesítési jogkivonat a Translator szolgáltatás használatával a `Authorization` kérés fejlécéhez. Egy engedélyezési jogkivonatot beszerezni, győződjön meg arról, egy `POST` kérelem a következő URL-CÍMRE:
+|Fejlécek|Leírás|
+|:----|:----|
+|OCP-Apim-Subscription-Key|*Cognitive Services-előfizetés használata, a titkos kulcs átadásakor*.<br/>A Translator Text API-előfizetéséhez tartozó Azure titkos kulcs értéke.|
+|Engedélyezés|*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: `Bearer <token>`.|
+|OCP-Apim-előfizetés-régió|*Használat a Cognitive Services teljes körű előfizetéssel egy teljes körű titkos kulcs átadásakor.*<br/>A régió, a teljes körű előfizetés értéke. Ezt az értéket nem kötelező, ha nem használ egy teljes körű előfizetéssel.|
+
+###  <a name="secret-key"></a>Titkos kulcs
+Az első lehetőség az, hogy hitelesítést végezni a `Ocp-Apim-Subscription-Key` fejléc. Egyszerűen adja meg a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
+
+### <a name="authorization-token"></a>Engedélyezési jogkivonat
+Másik lehetőségként tudjon cserélni a titkos kulcs hozzáférési jogkivonat helyeként. Ez a token részét képezi, minden egyes kérelemmel a `Authorization` fejléc. Egy engedélyezési jogkivonatot beszerezni, győződjön meg arról, egy `POST` kérelem a következő URL-CÍMRE:
 
 | Környezet     | Hitelesítési szolgáltatás URL-címe                                |
 |-----------------|-----------------------------------------------------------|
@@ -66,6 +76,7 @@ Az alábbiakban például kérelmek egy adott titkos kulcs token beszerzése:
 ```
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+
 // Pass secret key using query string parameter
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
@@ -78,20 +89,21 @@ Authorization: Bearer <Base64-access_token>
 
 Egy hitelesítési tokent a 10 percig érvényes. A jogkivonat a Translator API-k több hívása esetén kell újra felhasználni. Azonban ha a program kéréseket hajt végre a Translator API egy kiterjesztett időszakon belül, majd a program kell kérnie egy új hozzáférési jogkivonat rendszeres időközönként (például: 8 percenként).
 
-Összefoglalva, a Translator API egy ügyfél kérelmet belefoglal egy engedélyeztetési fejléc a következő táblázatban:
+### <a name="all-in-one-subscription"></a>Teljes körű előfizetéssel
 
-<table width="100%">
-  <th width="30%">Fejlécek</th>
-  <th>Leírás</th>
-  <tr>
-    <td>OCP-Apim-Subscription-Key</td>
-    <td>*Cognitive Services-előfizetés használata, a titkos kulcs átadásakor*.<br/>A Translator Text API-előfizetéséhez tartozó Azure titkos kulcs értéke.</td>
-  </tr>
-  <tr>
-    <td>Engedélyezés</td>
-    <td>*Cognitive Services-előfizetés használata egy hitelesítési tokent átadásakor.*<br/>A tulajdonosi jogkivonat értéke: "tulajdonosi <token>".</td>
-  </tr>
-</table> 
+A legutóbbi hitelesítési lehetőség, hogy a Cognitive Services-szolgáltatás teljes körű előfizetéssel. Ez lehetővé teszi, hogy egyetlen titkos kulcs több szolgáltatás-kérelmek hitelesítéséhez. 
+
+Ha egy teljes körű titkos kulcsot használja, meg kell adnia két hitelesítési fejléceket a kérelmét. Az első továbbítja a titkos kulcsot, a második adja meg a régiót, az Ön előfizetéséhez rendelve. 
+* `Ocp-Api-Subscription-Key`
+* `Ocp-Apim-Subscription-Region`
+
+Ha a titkos kulcsot adja át a lekérdezési karakterlánc paraméterrel `Subscription-Key`, majd a lekérdezési paramétert meg kell adnia a régiót `Subscription-Region`.
+
+Ha tulajdonosi jogkivonattal használ, be kell szereznie a jogkivonatot a régió végpontról: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+
+Választható régiók a következők `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, és `westus2`.
+
+Régió szükség a teljes körű Text API-előfizetésre.
 
 ## <a name="errors"></a>Hibák
 
