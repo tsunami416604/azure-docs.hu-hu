@@ -1,5 +1,6 @@
 ---
-title: Hogyan működik az Azure Machine Learning szolgáltatás?
+title: Hogyan működik?
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg az architektúra, a terminológiáról és az Azure Machine Learning szolgáltatás alkotó fogalmak. Emellett megismerjük a szolgáltatást, és az Azure-szolgáltatások az Azure Machine Learning szolgáltatás által használt általános munkafolyamata kapcsolatos.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
-ms.openlocfilehash: 054fba06ea4a372fe59fb1ef0c7aa51e72558210
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 4e006c3ac9684cc9e51e8b3505659864123758d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877394"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097998"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
