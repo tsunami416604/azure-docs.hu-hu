@@ -1,5 +1,6 @@
 ---
-title: Az ONNX- és az Azure Machine Learning |} Hozzon létre és helyezhet üzembe modelleket
+title: Hozzon létre és együttműködésre az ONNX-modellek üzembe helyezése
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg az ONNX és létrehozása és üzembe helyezése az ONNX-modellek Azure Machine Learning használata
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 9fdb9699a5c402fa05c98ff6aaf46ee551007f71
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 5fc0e00d9c4404a1c6a757c354a9c7116dfeffa7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873665"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094015"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -183,10 +185,7 @@ A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
     f.write(myenv.serialize_to_string())
    ```
 
-4. Az Azure Machine Learning, a ONNX modell üzembe helyezése:
-   + Az Azure Container Instances (aci Szolgáltatásban): [megtudhatja, hogyan...](how-to-deploy-to-aci.md)
-
-   + Az Azure Kubernetes Service (AKS): [megtudhatja, hogyan...](how-to-deploy-to-aks.md)
+4. A modell üzembe helyezése, tekintse meg a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 
 
 ## <a name="examples"></a>Példák

@@ -1,5 +1,6 @@
 ---
-title: A fejlesztési környezet konfigurálása az Azure Machine Learning |} A Microsoft Docs
+title: A fejlesztési környezet konfigurálása
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatás használatakor. Ebből a dokumentumból megtudhatja, hogyan Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása a Jupyter Notebooks, Azure notebookok, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
 services: machine-learning
 author: rastala
@@ -10,12 +11,13 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: c963c83df6eae09651ae8ec95a8bbb21bc1edfad
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 6e2222d56ea37983b1efafedaac8e01058cb44fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870317"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098049"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
