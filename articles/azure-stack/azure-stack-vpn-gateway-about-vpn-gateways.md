@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 86fcec0321e8f1b92fdc554532cb8f949b1b1569
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496198"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081388"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Tudnivalók az Azure Stackhez VPN-átjáró
 
@@ -108,9 +108,9 @@ Az alábbi táblázatban az átjárótípusok és azok becsült összesített á
 
 |   | VPN Gateway teljesítménye *(1)* | VPN Gateway maximális IPsec-alagútjainak *(2)* |
 |-------|-------|-------|
-|**Alapszintű Termékváltozat** ***(3)***    | 100 Mbps  | 10    |
-|**A standard Termékváltozat**       | 100 Mbps  | 10    |
-|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
+|**Alapszintű Termékváltozat** ***(3)***    | 100 Mbps  | 20    |
+|**A standard Termékváltozat**       | 100 Mbps  | 20    |
+|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 10    |
 
 **Tábla megjegyzések:**
 

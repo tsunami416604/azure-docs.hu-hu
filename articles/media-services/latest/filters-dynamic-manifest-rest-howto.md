@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: juliako
-ms.openlocfilehash: 6b0ef646ba9ea535038f181ebfff5bf7639afdf8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083411"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása a Media Services REST API-val
 
@@ -32,7 +32,7 @@ Az ebben a témakörben leírt lépések elvégzéséhez kell:
 
 - Felülvizsgálat [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
-- [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md)/
+- [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).
 
 ## <a name="define-a-filter"></a>Szűrő megadásához.  
 

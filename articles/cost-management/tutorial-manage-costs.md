@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 1642a9398ed9d2f0e74c03cd77990339b0a0ac03
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997707"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083563"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: Költségek kezelése a Cloudyn használatával
 
@@ -53,13 +53,11 @@ A költséglefoglalás első lépéseként a hatókört kell definiálni egy kö
 
 Egyéni költséglefoglalási modell létrehozásához válassza a **Költségek** &gt; **Költségkezelés** &gt; **Cost Allocation 360°** lehetőséget a jelentés menüjében.
 
-![A Cost Allocation 360 kiválasztása](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Itt választhatja ki Cost Allocation 360 irányítópult megjelenítő példa](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 A **Cost Allocation 360** lapon kattintson a **Hozzáadás** elemre, majd adja meg a költségmodell nevét és leírását. Válassza ki az összes fiókot vagy válasszon egy egyénit. Egyéni fiókok kiválasztása esetén egyszerre több fiókot is választhat akár különböző felhőszolgáltatóktól is. Ezután kattintson a **Kategorizálás** gombra a költségadatok kategorizálásához használt felderített címkék kiválasztásához. Válassza ki a modellbe felvenni kívánt címkéket (kategóriákat). A következő példában az **Egység** címke van kiválasztva.
 
-![Példa a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
-
-
+![Példa ábrázoló költsége a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
 
 A példában látható, hogy 19 680 dollár nincs kategorizálva (nem rendelkezik címkével).
 
@@ -97,7 +95,7 @@ A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) felté
 
 Az alábbi képen a **Work-Load** elnevezésű új kategóriához létrehozott szabályokat bemutató példa látható.
 
-![Példa kategória](./media/tutorial-manage-costs/category01.png)
+![Példa az új munkaterhelés kategória](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Címkék forrásai és jelentések
 
@@ -124,7 +122,7 @@ Az egyes vállalatok egészen különböző módszereket alkalmazhatnak a költs
 
 A költséglefoglalási eredmények megtekintéséhez nyissa meg a Költségelemzési jelentést, és válassza ki a létrehozott költségmodellt. Ezután hozzon létre csoportosítást a költségmodellben kiválasztott egy vagy több címke alapján.
 
-![Költségelemzési jelentés](./media/tutorial-manage-costs/cost-analysis.png)
+![Költségelemzési jelentés megjelenítése az új költség származó adatok egy példa](./media/tutorial-manage-costs/cost-analysis.png)
 
 Egyszerűen hozhat létre és menthet az adott csoportok által használt adott szolgáltatásokra összpontosító jelentéseket. Például elképzelhető, hogy az egyik részleg jelentős mértékben használ Azure-beli virtuális gépeket. Létrehozhat egy, az Azure-beli virtuális gépekre szűrt jelentést a használat mértékének és a költségeknek a megjelenítéséhez.
 

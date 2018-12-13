@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: bb18a7338eb688ab427725933b9fc3f73b44b502
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992054"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077076"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
@@ -43,7 +43,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján. Ezt a listában **Cost Management**válassza **Advisor-javaslatok**. Az Advisor díjakkal kapcsolatos ajánlások jelennek meg.
 
-![Tanácsadói ajánlások](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Az Azure Portalon látható a Cost Management Advisor-javaslatok](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 A javaslatok listája a használat hatékonysági hiányosságainak azonosítja, vagy további pénzt takaríthat meg, amelyek segítségével vásárlási javaslatok megjelenítése. Az összegzett **lehetséges éves megtakarítások** takaríthat meg, állítsa le vagy szabadítsa fel a virtuális gépeket, amelyek megfelelnek a javaslat szabályokat az összes összegét mutatja. Ha nem szeretné leállíthatja őket, érdemes egy kevésbé költséges, Virtuálisgép-termékváltozatra méretezheti azokat.
 
@@ -59,20 +59,20 @@ Bár bizonyos forgatókönyvek elvárt eredményezhetnek alacsony kihasználtsá
 
 A javaslatok listája, kattintson a **a kihasználatlan virtuális gépek megfelelő méretezése vagy leállítása** javaslat. A virtuális gép jelöltek listája válassza ki a virtuális gép átméretezése, és kattintson a virtuális gép. A virtuális gép részletei jelennek meg, hogy a kihasználtsági mérőszámokat ellenőrizheti. A **lehetséges éves megtakarítások** értéke mi takaríthat meg, állítsa le vagy távolítsa el a virtuális Gépet. A virtuális gép átméretezése valószínűleg pénzt takaríthat meg, de nem menti a lehetséges éves megtakarítások teljes mennyisége.
 
-![Javaslat részletei](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Javaslat részletei – példa](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
 A virtuális gép adatait ellenőrizze a virtuális gép – győződjön meg arról, hogy egy megfelelő átméretezése jelölt kihasználását.
 
-![Virtuális gép részletei](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Példa virtuális gép részletesen bemutató korábbi kihasználtsága](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
 Megjegyzés: az aktuális virtuális gép méretét. Miután meggyőződött arról, hogy a virtuális gépet át lehet méretezni, zárja be a virtuális gép adatait, hogy a virtuális gépek listájának megtekintéséhez.
 
 Leállítása vagy átméretezése a jelöltek listájából válassza ki **méretezze át a virtuális gép**.
-![A virtuális gép átméretezése](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![Példa javaslat az a virtuális gép átméretezése](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Ezután megjelenik a rendelkezésre álló átméretezése lehetőségek listája. Válassza ki azt, amelyik a forgatókönyvnek a legjobb teljesítményt és költséghatékonyságot biztosít. A következő példában a beállítást választott a átméretezi a **DS14\_V2** , egy **DS13\_V2**. A javaslat a következő menti a $551.30 havonta vagy $6,615.60/ év.
 
-![Méret választása](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Adja meg a méret elérhető Virtuálisgép-méretek listájának példa](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
 Miután kiválasztotta a megfelelő méretű, kattintson a **kiválasztása** az átméretezési művelet elindításához.
 
@@ -82,7 +82,7 @@ Miután kiválasztotta a megfelelő méretű, kattintson a **kiválasztása** az
 
 Amikor a virtuális gép átméretezése sikeresen befejeződik, egy Azure-értesítés jelenik meg.
 
-![Az átméretezett értesítés](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Értesítés a sikeres a virtuális gép átméretezve](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>További lépések
 

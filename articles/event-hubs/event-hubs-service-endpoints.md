@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure Event hubs |} A Microsoft Docs
-description: Hátralékának szolgáltatásvégpont hozzáadása egy virtuális hálózatot.
+title: Virtuális hálózati Szolgáltatásvégpontok – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk információt nyújt az adda hátralékának szolgáltatás végpontnak egy virtuális hálózathoz.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29b5f877065029dc271e49c1afd6d547def58a6e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: MT
+ms.openlocfilehash: 18c63b9c16ed9e82972a933d2aee5990d2fa84ac
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408132"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081574"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 

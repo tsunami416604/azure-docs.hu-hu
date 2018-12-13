@@ -1,7 +1,7 @@
 ---
 title: Előzetes verzió tudásbázisok – Qna Maker áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Tudásbázis importálása
+description: QnA Maker ingyenes előzetes verzióban létrehozott tudásbázisok kell át kell helyezni a QnA Maker általánosan elérhető A QnA Maker előzetes a január 2019 elavulttá válik.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,15 +10,16 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078810"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
-A QnA Maker általános rendelkezésre állás bejelentett 2018. május 7., a \\\build\ konferencián. A QnA Maker általánosan elérhető az Azure-ban létrehozott új architektúrákra rendelkezik. QnA Maker ingyenes előzetes verzióban létrehozott tudásbázisok kell át kell helyezni a QnA Maker általánosan elérhető A QnA Maker előzetes November 2018-ban elavulttá válik. A QnA Maker GA a változásokkal kapcsolatos további információkért lásd: a QnA Maker GA közlemény [blogbejegyzés](https://aka.ms/qnamakerga-blog).
+A QnA Maker általános rendelkezésre állás bejelentett 2018. május 7., a \\\build\ konferencián. A QnA Maker általánosan elérhető az Azure-ban létrehozott új architektúrákra rendelkezik. QnA Maker ingyenes előzetes verzióban létrehozott tudásbázisok kell át kell helyezni a QnA Maker általánosan elérhető A QnA Maker előzetes a január 2019 elavulttá válik. A QnA Maker GA a változásokkal kapcsolatos további információkért lásd: a QnA Maker GA közlemény [blogbejegyzés](https://aka.ms/qnamakerga-blog).
 
 A QnA Maker most már rendelkezik egy [díjszabási modell](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
 

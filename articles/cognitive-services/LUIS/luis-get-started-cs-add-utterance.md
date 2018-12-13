@@ -1,21 +1,22 @@
 ---
-title: Rövid C#-útmutató – modell módosítása és LUIS-alkalmazás betanítása
-titleSuffix: Azure Cognitive Services
-description: Ebben a rövid C#-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+title: Módosíthatja, alkalmazás, betanításaC#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Ebben a rövid C#-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 82cc5d940a48cfca33a4ad9e160905df34f86454
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 807e90216d8fff8453f7fa8596926483102fd258
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960464"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087813"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rövid útmutató: Modell módosítása a C# használatával
 
@@ -56,7 +57,7 @@ A Visual Studio-projektnek szüksége van a következőkre: **JsonFormatterPlus*
 ### <a name="write-the-c-code"></a>A C#-kód megírása
 A **Program.cs** fájlnak a következőkből kell állnia:
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,7 +127,7 @@ Buildelje a kódot a Visual Studióban.
 
 A projekt /bin/Debug könyvtárában futtassa az alkalmazást egy parancssorból. 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

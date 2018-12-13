@@ -1,21 +1,22 @@
 ---
-title: Hogyan telepítheti és futtathatja a tárolók
-titlesuffix: Computer Vision - Cognitive Services - Azure
+title: Tárolók telepítése és futtatása
+titlesuffix: Computer Vision - Azure Cognitive Services
 description: Hogyan letöltése, telepítése és a Computer Vision-tárolókat futtathat az bemutató oktatóanyag.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634642"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077035"
 ---
 # <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
@@ -39,7 +40,7 @@ Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Az
 
 A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Kiszolgálókövetelmények és javaslatok
+### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
 A szöveg felismerése tárolóhoz legalább 1 processzormag, legalább 2.6-os gigahertz (GHz) igényel, és gyorsabban, és 8 gigabájt (GB), a lefoglalt memória, de ajánlott legalább 2 processzormag és 8 GB lefoglalt memória.
 
@@ -162,7 +163,9 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatás
 * Tárolórendszerképek futtatása a Docker.
 * Használhatja a REST API vagy SDK-val a Computer Vision tárolókban műveletek hívására adja meg a gazdagép a tároló URI-t.
 * Számlázási adatokat adjon meg egy tároló hárítható el.
-* ** A cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak.  
+
+> [!IMPORTANT]
+> Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak.
 
 ## <a name="next-steps"></a>További lépések
 

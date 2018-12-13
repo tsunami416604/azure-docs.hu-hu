@@ -1,5 +1,6 @@
 ---
-title: 'Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás a Pythonban'
+title: 'Gyors útmutató: Első lépések a Pythonban'
+titleSuffix: Azure Machine Learning service
 description: Ismerkedés az Azure Machine Learning szolgáltatás a Pythonban. A Python SDK használatával hozzon létre egy munkaterületet, amely az alapvető blokk, amellyel kísérletezhet, betanítását és gépi tanulási modellek üzembe helyezése a felhőben.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 1a6bb648de251d8764eec52491a918e7cb1de653
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 2ca97275848d87ccc03c7839265f867f9c3c3948
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015381"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073353"
 ---
 # <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Használata Python SDK-t az Azure Machine Learning használatának első lépései
 

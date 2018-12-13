@@ -1,22 +1,23 @@
 ---
-title: Az Azure dedikált HSM fizikai biztonság |} A Microsoft Docs
-description: Azure dedikált HSM FIPS szabványnak megfelelő Azure-ban kulcstároló-képességeket biztosít 140-2-3. szint tanúsítvánnyal
+title: HSM fizikai biztonság – Azure dedikált HSM-be |} A Microsoft Docs
+description: Fizikai biztonság Azure dedikált HSM eszközök adatközpontokban kapcsolatos információk
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a0f85c755b269d95720137368a4ff438031a9fae
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 662800d2b9db7d7a19861431354e55b3897e020a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319364"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080044"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Az Azure dedikált HSM fizikai biztonság
 

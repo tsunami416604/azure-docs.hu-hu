@@ -1,5 +1,5 @@
 ---
-title: Az Azure Event Hubs geo-disaster recovery |} A Microsoft Docs
+title: GEO-disaster recovery – Azure Event Hubs |} A Microsoft Docs
 description: Feladatátvétel földrajzi régiót használnak, és hajtsa végre az Azure Event Hubs vész-helyreállítási
 services: event-hubs
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 89ecfd93c22fe72fee3befd8d4a722eb41d816af
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747171"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091346"
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery"></a>Az Azure Event Hubs Geo-disaster recovery
+# <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
-Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
+Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
 A Geo-disaster recovery funkció érhető el globálisan az Event Hubs Standard Termékváltozat esetében.
 

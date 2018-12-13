@@ -11,7 +11,7 @@ ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.openlocfilehash: c40837baf66b39d98da17c244f462f356d2b1f26
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52864349"

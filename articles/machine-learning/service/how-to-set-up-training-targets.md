@@ -1,5 +1,6 @@
 ---
-title: Állítsa be a modell betanítása és az Azure Machine Learning szolgáltatás a számítási célokhoz |} A Microsoft Docs
+title: Létrehozhat és használhat a számítási célokhoz modell betanítása
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan válassza ki, és a gépi tanulási modellek betanításához használja (számítási céljainak) képzési környezet. Az Azure Machine Learning szolgáltatás lehetővé teszi egyszerű kapcsoló képzési környezet. Indítsa el a helyi képzés, és ha horizontális felskálázásra van szüksége, váltson át a felhőalapú számítási célt.
 services: machine-learning
 author: heatherbshapiro
@@ -10,14 +11,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 07ea61ffe3ffc17cd255b826e3506ffe2b1ce9cd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 1a6533c1ec25eb8500f67cb98494463d7daf752b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017722"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080095"
 ---
-# <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
+# <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
 Az Azure Machine Learning szolgáltatással betaníthatja a modell a különböző számítási erőforrásokon. Ezek a számítási erőforrásokat, nevű __számítási céljainak__, helyi vagy a felhőben. Ebből a dokumentumból megtanulhatja a támogatott számítási célokhoz és azok használatát.
 
@@ -249,16 +251,24 @@ Az alábbi lépéseket az SDK segítségével betanítási célként egy adatele
 1. Egy számítási célnak egy meglévő virtuális géphez csatolni kell adnia a teljes tartománynév, a bejelentkezési nevet és a jelszót a virtuális gép.  Cserélje le a példában ```<fqdn>``` nyilvános teljes tartománynévvel a virtuális Gépet, vagy a nyilvános IP-cím. Cserélje le ```<username>``` és ```<password>``` az SSH-felhasználót és a virtuális gép jelszava:
 
     ```python
-    from azureml.core.compute import RemoteCompute
+    from azureml.core.compute import RemoteCompute, ComputeTarget
+    
+    # Create compute config.
+    attach_config = RemoteCompute.attach_configuration(address = "ipaddress",
+                                                       ssh_port=22,
+                                                       username='<username>',
+                                                       password="<password>")
+    # If using SSH instead of a password, use this:
+    #                                                  ssh_port=22,
+    #                                                   username='<username>',
+    #                                                   password=None,
+    #                                                   private_key_file="path-to-file",
+    #                                                   private_key_passphrase="passphrase")
 
-    dsvm_compute = RemoteCompute.attach(ws,
-                                    name="attach-dsvm",
-                                    username='<username>',
-                                    address="<fqdn>",
-                                    ssh_port=22,
-                                    password="<password>")
+    # Attach the compute
+    compute = ComputeTarget.attach(ws, "attach-dsvm", attach_config)
 
-    dsvm_compute.wait_for_completion(show_output=True)
+    compute.wait_for_completion(show_output=True)
 
 1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
 
@@ -303,25 +313,15 @@ Az Azure Databricks egy Apache Spark-alapú környezetben az Azure-felhőben. Az
 Csatlakoztassa az Azure Databricks, egy számítási célnak, az Azure Machine Learning SDK, és adja meg a következő információkat:
 
 * __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
-* __Erőforrás-azonosító__: az Azure Databricks-munkaterület erőforrás-Azonosítóját. A következő szöveg arra példát, ez az érték formátuma:
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
-    ```
-
-    > [!TIP]
-    > Az erőforrás-azonosító lekéréséhez használja az Azure CLI-parancsot. Cserélje le `<databricks-ws>` a Databricks-munkaterület nevét:
-    > ```azurecli-interactive
-    > az resource list --name <databricks-ws> --query [].id
-    > ```
-
+* __Databricks-munkaterület neve__: az Azure Databricks-munkaterület nevét.
 * __Hozzáférési jogkivonat__: A hozzáférési jogkivonatot az Azure databricks hitelesítéséhez. Hozzáférési jogkivonat létrehozásához, tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentumot.
 
 A következő kód bemutatja, hogyan csatlakoztathat Azure Databricks, egy számítási célnak mutat be:
 
 ```python
 databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
-databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
 databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
 
 try:
@@ -330,13 +330,17 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('databricks_compute_name {}'.format(databricks_compute_name))
-    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
     print('databricks_access_token {}'.format(databricks_access_token))
-    databricks_compute = DatabricksCompute.attach(
-             workspace=ws,
-             name=databricks_compute_name,
-             resource_id=databricks_resource_id,
-             access_token=databricks_access_token
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
          )
     
     databricks_compute.wait_for_completion(True)
@@ -354,23 +358,15 @@ Az Azure Data Lake Analytics egy big data-elemzési platform az Azure-felhőben.
 Csatlakoztassa a Data Lake Analytics számítási célként, az Azure Machine Learning SDK, és adja meg a következő információkat:
 
 * __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
-* __Erőforrás-azonosító__: a Data Lake Analytics-fiók erőforrás-Azonosítóját. A következő szöveg arra példát, ez az érték formátuma:
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
-    ```
-
-    > [!TIP]
-    > Az erőforrás-azonosító lekéréséhez használja az Azure CLI-parancsot. Cserélje le `<datalakeanalytics>` nevét a Data Lake Analytics-fiók neve:
-    > ```azurecli-interactive
-    > az resource list --name <datalakeanalytics> --query [].id
-    > ```
+* __Erőforráscsoport__: A Data Lake Analytics-fiókot tartalmazó erőforráscsoportot.
+* __Fiók neve__: A Data Lake Analytics-fiók nevét.
 
 A következő kód bemutatja, hogyan csatlakoztathat a Data Lake Analytics számítási célként mutat be:
 
 ```python
 adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
-adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
 
 try:
     adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
@@ -378,11 +374,16 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('adla_compute_name {}'.format(adla_compute_name))
-    print('adla_resource_id {}'.format(adla_resource_id))
-    adla_compute = AdlaCompute.attach(
-             workspace=ws,
-             name=adla_compute_name,
-             resource_id=adla_resource_id
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
          )
     
     adla_compute.wait_for_completion(True)
@@ -410,14 +411,17 @@ HDInsight compute célként konfigurálásához kell adnia a teljes tartományn�
 > ![Képernyőkép a HDInsight fürt áttekintése az URL-cím bejegyzés kiemelésével](./media/how-to-set-up-training-targets/hdinsight-overview.png)
 
 ```python
-from azureml.core.compute import HDInsightCompute
+from azureml.core.compute import HDInsightCompute, ComputeTarget
 
 try:
     # Attaches a HDInsight cluster as a compute target.
-    HDInsightCompute.attach(ws,name = "myhdi",
-                            address = "<fqdn>",
-                            username = "<username>",
-                            password = "<password>")
+    attach_config = HDInsightCompute.attach_configuration(address = "fqdn-or-ipaddress",
+                                                          ssh_port = 22,
+                                                          username = "username",
+                                                          password = None, #if using ssh key
+                                                          private_key_file = "path-to-key-file",
+                                                          private_key_phrase = "key-phrase")
+    compute = ComputeTarget.attach(ws, "myhdi", attach_config)
 except UserErrorException as e:
     print("Caught = {}".format(e.message))
     print("Compute config already attached.")

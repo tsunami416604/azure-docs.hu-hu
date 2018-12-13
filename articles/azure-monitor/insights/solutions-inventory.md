@@ -16,7 +16,7 @@ ms.date: 06/26/2018
 ms.author: bwren
 ms.openlocfilehash: 4e7bcfbbec7be7320328df9ed2fa34ba7f7dbfc6
 ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52888392"

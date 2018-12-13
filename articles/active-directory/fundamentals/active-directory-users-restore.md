@@ -1,6 +1,6 @@
 ---
-title: Állítsa vissza vagy nemrégiben törölt felhasználó végleg eltávolítja az Azure Active Directoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan visszaállítható a felhasználók megtekintéséhez, törölt felhasználói visszaállítása vagy az Azure Active Directory felhasználók végleges törlésére.
+title: Állítsa vissza vagy véglegesen eltávolítja egy nemrég törölt felhasználó – az Azure Active Directory |} A Microsoft Docs
+description: Hogyan visszaállítható a felhasználók megtekintéséhez, törölt felhasználói visszaállítása vagy az Azure Active Directory felhasználók végleges törlésére.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 88d3c672cd072cd4b252f7ce4ede3a4c7b13a7db
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 5f747d90368b636cb2ab8cf0e20ef5e676f99af6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736172"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080503"
 ---
-# <a name="how-to-restore-or-permanently-remove-a-recently-deleted-user-with-azure-active-directory"></a>Hogyan: állítsa vissza vagy véglegesen a az Azure Active Directoryval nemrégiben törölt felhasználó eltávolítása
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Állítsa vissza vagy az Azure Active Directoryval nemrégiben törölt felhasználó eltávolítása
 A felhasználó törlését követően a fiók maradt felfüggesztett állapotba 30 napig. A 30 napos időszak alatt a felhasználói fiók is lehet visszaállítani, együtt minden hozzá tartozó tulajdonságok. A 30 napos időszak letelte után a felhasználó automatikusan, és véglegesen, törlődik.
 
 A visszaállítható felhasználók megtekintése, törölt felhasználói visszaállítása vagy véglegesen törli a felhasználó Azure Active Directory (Azure AD) használatával az Azure Portalon.
@@ -42,7 +42,7 @@ Felhasználók végleges törlése és visszaállítása a következő szerepkö
 Legalább 30 nappal ezelőtt törölt összes felhasználója láthatja. Ezek a felhasználók vissza tudja állítani.
 
 ### <a name="to-view-your-restorable-users"></a>A visszaállítható felhasználók megtekintése
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, majd válassza ki **törölt felhasználók**.
 

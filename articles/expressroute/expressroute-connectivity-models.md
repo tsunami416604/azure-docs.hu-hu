@@ -1,25 +1,19 @@
 ---
-title: 'ExpressRoute kapcsolati modellek: Csatlakozás a Microsoft Azure-hoz hálózati szolgáltatókon, adatcserélőkön és Ethernet-szolgáltatókon keresztül | Microsoft Docs'
+title: 'ExpressRoute kapcsolati modellek: Azure |} A Microsoft Docs'
 description: Ez a cikk a különböző típusú kapcsolatokat ismerteti az ügyfél hálózata és a Microsoft Azure, az Office 365 és a Dynamics 365 szolgáltatás között. Az ügyfelek használhatnak MPLS-szolgáltatókat, felhőbeli adatcserélőket vagy Ethernet-szolgáltatókat.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.topic: conceptual
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 00f97da2189491103c461b49ac82feb92d8f4b9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: ef53f9d3cefa35624d6f94dc98db4ebe8b6646cd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22709895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078905"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute kapcsolati modellek
 A helyszíni hálózata és a Microsoft-felhő között háromféleképpen hozhat létre kapcsolatot: [Cloud Exchange közös elhelyezés](#CloudExchange), [pontok közötti Ethernet-kapcsolat](#Ethernet) és [bármely elemek közötti (IPVPN) kapcsolat](#IPVPN). A kapcsolatszolgáltatók egy vagy több kapcsolódási modellt kínálhatnak. Kapcsolatszolgáltatójával együttműködve választhatja ki az Ön számára optimális modellt.
@@ -36,7 +30,7 @@ Helyszíni adatközpontjait/irodáit pontok közötti Ethernet-hivatkozásokon k
 ## <a name="IPVPN"></a>Bármely elemek közötti (IPVPN-) hálózat
 WAN hálózatát integrálhatja a Microsoft Clouddal. Az IPVPN-szolgáltatók (jellemzően MPLS VPN) bármilyen elemek közötti kapcsolódást kínálnak a fiókirodák és az adatközpontok közti kapcsolatokhoz. A Microsoft Cloud összekapcsolható a WAN hálózatával, így ugyanúgy jelenik meg, mint bármely másik fiókiroda. A WAN-szolgáltatók jellemzően felügyelt 3. rétegbeli kapcsolatokat kínálnak. Az ExpressRoute képességi és szolgáltatásai a fenti kapcsolódási modellek mindegyikében megegyeznek. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 * Tudjon meg többet az ExpressRoute funkcióiról. Lásd: [Az ExpressRoute technikai áttekintése](expressroute-introduction.md)
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

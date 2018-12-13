@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: első beszédszándék – Node.js'
+title: Szándékkal, a Node.js beolvasása
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Node.js nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a355b59a7674e21eddddbc311d90a9798931f89
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: e173e8af525c1d4239720adc504f8e5bbf14c062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012708"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090557"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Rövid útmutató: Szándék lekérése a Node.js használatával
 

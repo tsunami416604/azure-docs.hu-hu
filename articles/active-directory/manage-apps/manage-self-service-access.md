@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: barbkess
-ms.openlocfilehash: c1e6c48ef262bf3cb71f7201ba2ff7e9105681dc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1876ff0cea2e46f8159b9ffb24de72a6272b3a79
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357175"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077077"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Az önkiszolgáló alkalmazás-hozzárendelés konfigurálása
 
@@ -57,7 +57,7 @@ Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, ha
 
 5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
 6.  Válassza ki az önkiszolgáló engedélyezni kívánt alkalmazást a listából való hozzáférést.
 
@@ -67,8 +67,8 @@ Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, ha
 
 9.  Ezután, amelyekhez a felhasználók, akik kérése az alkalmazáshoz való hozzáférést kell adni a csoport kijelöléséhez kattintson a választó a felirat melletti **melyik csoporthoz lesz hozzáadva a hozzárendelt felhasználók?** , és válasszon ki egy csoportot.
   
-  > [!NOTE]
-  > Szinkronizálja a helyi csoportok nem támogatottak a csoportot, amelyhez az alkalmazáshoz való hozzáférést kérő felhasználók hozzáadásra kerüljenek használatra.
+    > [!NOTE]
+    > Szinkronizálja a helyi csoportok nem támogatottak a csoportot, amelyhez az alkalmazáshoz való hozzáférést kérő felhasználók hozzáadásra kerüljenek használatra.
   
 10. **Választható lehetőség:** előtt egy üzleti jóváhagyás megkövetelése, ha a felhasználók jogosultak-e a hozzáférést, és állítsa a **az alkalmazáshoz való hozzáférés engedélyezéséhez jóváhagyás szükséges?** kapcsolót **Igen**.
 
@@ -76,10 +76,10 @@ Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, ha
 
 12. **Választható lehetőség:** a munkahelyi jóváhagyónak, akik jogosultak a hagyja jóvá az alkalmazáshoz való hozzáférés megadásához kattintson a címke melletti a választó **kik hagyhatják jóvá az alkalmazáshoz való hozzáférést?** legfeljebb 10 egyéni kiválasztásához munkahelyi jóváhagyónak.
 
-   >[!NOTE]
-   >Csoportok nem támogatottak.
-   >
-   >
+     > [!NOTE]
+     > Csoportok nem támogatottak.
+     >
+     >
 
 13. **Választható lehetőség:** **alkalmazásokhoz, amelyeknél a szerepkörök**, ha szeretné az önkiszolgáló felhasználók hozzárendelése egy szerepkörhöz, kattintson a Tovább gombra a választó a **melyik szerepkörhöz legyenek hozzárendelve a felhasználók ebben az alkalmazásban?** Válassza ki a szerepkört, amelyhez hozzá kell rendelni ezeket a felhasználókat.
 

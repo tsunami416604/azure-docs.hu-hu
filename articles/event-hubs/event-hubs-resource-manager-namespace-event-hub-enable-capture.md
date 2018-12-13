@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs-névtér létrehozása és a Rögzítés funkció engedélyezése sablon használatával | Microsoft Docs
+title: Rögzítés engedélyezve van az Azure Event Hubs-névtér létrehozása |} A Microsoft Docs
 description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: c8341b40ba7616add1415178a2f0775fbbc66ec1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 598c4f23787b9e17df9a11890904763fce0d1cd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918340"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076865"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 

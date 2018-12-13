@@ -1,5 +1,5 @@
 ---
-title: Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek |} A Microsoft Docs
+title: Automatikus vertikális felskálázás átviteli egységek – Azure Event Hubs |} A Microsoft Docs
 description: Automatikus feltöltés engedélyezése a névtér automatikusan növelheti az átviteli egységek.
 services: event-hubs
 documentationcenter: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cf0c7a5339d2880bbed01fc95b54038d15f1c2ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010824"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083534"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek
-
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform. Mint ilyen az Event Hubs használatának gyakran nő, miután a szolgáltatás használatát. Az ilyen használatához szükséges, növelje az előre meghatározott [átviteli egységek](event-hubs-features.md#throughput-units) az Event Hubs méretezhető, és a nagyobb átviteli sebességre kezelésére. A **automatikus feltöltésről** az Event hubs szolgáltatás automatikusan felskálázással növelje átviteli egységek számát, a használattal kapcsolatos igények alapján. Átviteli egységek növelése megakadályozza, hogy a szabályozási forgatókönyvek, ahol:
 
 * Bejövő forgalom díjait meghaladják a beállított kapacitásegységek.

@@ -1,21 +1,22 @@
 ---
-title: Tudnivalók az Azure ExpressRoute virtuális hálózati átjárók |} A Microsoft Docs
-description: További információ a virtuális hálózati átjárók az expressroute-hoz.
+title: Kapcsolatos az ExpressRoute virtuális hálózati átjárók – Azure |} A Microsoft Docs
+description: További információ a virtuális hálózati átjárók az expressroute-hoz. Ez a cikk az átjáró-termékváltozatok és típusok kapcsolatos információkat tartalmaz.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: df0d9c91d1d4f120f934c7375d0c517e3869834e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684766"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076593"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
-A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. A virtuális hálózati átjáró használható a forgalom az ExpressRoute vagy VPN-forgalmat. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít.
+A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. A virtuális hálózati átjáró használható a forgalom az ExpressRoute vagy VPN-forgalmat. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít, és tartalmazza a termékváltozatok kapcsolatos információkat, a Termékváltozat és átjárótípusok becsült teljesítmény.
 
 ## <a name="gateway-types"></a>Átjárótípusok
 

@@ -1,10 +1,10 @@
 ---
-title: Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata |} A Microsoft Docs
+title: Webalkalmazás-paraméterek – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Hogyan használható az Azure Machine Learning webszolgáltatás-paraméterek a web service elérésekor a modell működésének módosítása céljából.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 526c89a83a102c80bf1ddb5a5d950b0367a9cd69
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312010"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076373"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata
 Az Azure Machine Learning webszolgáltatás tegye közzé konfigurálható paraméterek és modulokat tartalmazó kísérlet jön létre. Bizonyos esetekben előfordulhat, hogy módosítani szeretné a modul viselkedését a webszolgáltatás futtatása közben. *Webalkalmazás-paraméterek* lehetővé teszi, hogy a feladat végrehajtásához. 

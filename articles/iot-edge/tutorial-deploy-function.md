@@ -1,6 +1,6 @@
 ---
-title: Azure-függvények üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
-description: Az oktatóanyagban Azure-függvényeket helyezünk üzembe modulként peremhálózati eszközökön.
+title: Az oktatóanyag egy Azure-függvényt az Azure IoT Edge - eszköz üzembe helyezése |} A Microsoft Docs
+description: Ebben az oktatóanyagban fejlesztése az Azure IoT Edge-modul adatbázisként működik, akkor telepítheti az edge-eszköz.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165618"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081880"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Üzembe helyezni az Azure IoT Edge-modulok működik
 
@@ -27,7 +27,7 @@ Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvet
 > * Szűrt adatok megtekintése.
 
 <center>
-![Az oktatóanyag architektúradiagramja](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+![Diagram – oktatóanyag architektúra, előkészítése és üzembe helyezése függvénymodul](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek t�
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
 
-    ![Tároló-beállításjegyzék létrehozása](./media/tutorial-deploy-function/create-container-registry.png)
+    ![Tároló-beállításjegyzék létrehozása az Azure Portalon](./media/tutorial-deploy-function/create-container-registry.png)
 
 2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
 

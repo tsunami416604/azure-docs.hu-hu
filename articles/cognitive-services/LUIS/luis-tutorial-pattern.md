@@ -1,21 +1,22 @@
 ---
-title: '3. oktatóanyag: Minták a LUIS-előrejelzések javításához'
+title: Minták
 titleSuffix: Azure Cognitive Services
 description: Minták használata a szándék- és entitás-előrejelzések pontosságának javításához kevesebb kimondottszöveg-példa megadásával. A minta egy sablonként szolgáló kimondottszöveg-példán alapul, amelynek a szintaxisával azonosíthatók az entitások és a figyelmen kívül hagyható szövegek.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138327"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075522"
 ---
 # <a name="tutorial-3-add-common-utterance-formats"></a>3. oktatóanyag: Gyakori kimondottszöveg-formátumok hozzáadása
 
@@ -106,7 +107,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Who is the boss of Jill Jones?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -196,7 +197,7 @@ A minták segítségével jelentősen megnövelheti a megfelelő szándék ponts
 Ne zárja be ezt a második böngészőablakot. Az oktatóanyag későbbi részében még használni fogja. 
 
 ## <a name="template-utterances"></a>Kimondottszöveg-sablonok
-Az Emberi erőforrások (HR) tartomány jellegéből adódóan van néhány gyakori kifejezésmód, amellyel rá lehet kérdezni az alkalmazottak szervezeten belüli kapcsolatára. Például:
+Az Emberi erőforrások (HR) tartomány jellegéből adódóan van néhány gyakori kifejezésmód, amellyel rá lehet kérdezni az alkalmazottak szervezeten belüli kapcsolatára. Példa:
 
 |Beszédmódok|
 |--|
@@ -229,7 +230,7 @@ Ebben az oktatóanyagban a következő két szándékot adja hozzá: `OrgChart-M
 
 Miután a LUIS visszaad egy előrejelzést az ügyfélalkalmazásnak, a szándék neve függvénynévként használható az ügyfélalkalmazásban, az Employee entitás pedig ennek a függvénynek a paramétereként használható.
 
-```Javascript
+```nodejs
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ Emlékeztetőül: az alkalmazottakat a [listaentitásokkal foglalkozó oktatóan
 
 3. Lépjen az URL-cím végéhez, és írja be a `Who is the boss of Jill Jones?` sztringet kimondott szövegként. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {

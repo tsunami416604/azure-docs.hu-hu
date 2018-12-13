@@ -1,33 +1,23 @@
 ---
-title: Helyezze át a nyilvános társviszony-létesítést az Azure expressroute-on Microsoft társviszony-létesítésre |} A Microsoft Docs
+title: Helyezze át a nyilvános társviszony-létesítés a Microsoft társviszony-létesítés – Azure ExpressRoute |} A Microsoft Docs
 description: Ez a cikk bemutatja, a lépések végrehajtásával helyezhetők át, a nyilvános társviszony-létesítés a Microsoft társviszony-létesítést az expressroute-on.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 579f8874459004ef6bfa0d0794ab09333e053acb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966114"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100021"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Helyezze át a nyilvános társviszony-létesítés Microsoft társviszony-létesítésre
 
-Az ExpressRoute támogatja a Microsoft-társviszony-létesítés útvonalszűrőkkel való használatát az Azure PaaS-szolgáltatások, például az Azure Storage és az Azure SQL Database esetén. A Microsoft PaaS- és SaaS-szolgáltatásokhoz való hozzáféréshez most csak egy útválasztási tartományra van szüksége. Útvonalszűrők segítségével szelektíven meghirdetheti a PaaS-szolgáltatások előtagjait a felhasználni kívánt Azure-régiókhoz.
-
-Ez a cikk segít helyezze át a nyilvános társviszony-létesítés konfigurációját a Microsoft társviszony-létesítés üzemkimaradás nélkül. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
-
+Ez a cikk segít helyezze át a nyilvános társviszony-létesítés konfigurációját a Microsoft társviszony-létesítés üzemkimaradás nélkül. Az ExpressRoute támogatja a Microsoft-társviszony-létesítés útvonalszűrőkkel való használatát az Azure PaaS-szolgáltatások, például az Azure Storage és az Azure SQL Database esetén. A Microsoft PaaS- és SaaS-szolgáltatásokhoz való hozzáféréshez most csak egy útválasztási tartományra van szüksége. Útvonalszűrők segítségével szelektíven meghirdetheti a PaaS-szolgáltatások előtagjait a felhasználni kívánt Azure-régiókhoz. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 
 ## <a name="before"></a>Előkészületek
 

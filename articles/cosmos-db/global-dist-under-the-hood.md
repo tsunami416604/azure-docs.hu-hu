@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54511505841f170180bce0fccd8bd289ba24de2b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073354"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Az Azure Cosmos DB globális terjesztésének – technikai részletek
 
@@ -43,7 +43,7 @@ Cosmos DB globális terjesztésének támaszkodik két fő absztrakciók – -re
 
 ## <a name="replica-sets"></a>Replikakészletekhez
 
-Erőforrás-partíció a tényleges táblán alapuló replikák több tartalék tartomány, a replikakészlethez nevű elosztva önállóan felügyelt, és dinamikusan kiegyenlített terhelésű csoportként. A készlet együttesen a replikált állapot gép protokollt, hogy az erőforrás-partíción belül az adatok magas rendelkezésre álló, tartós és egységes valósítja meg. A replikakészlet tagság N dinamikus –, tartja NMin és a hibákat, a felügyeleti műveletek és a sikertelen replikák időpontját alapján NMax fiókkulcs újbóli létrehozása vagy a helyreállítás között ingadozik. A tagság végbement változások alapján, a replikáció is protokoll Átkonfigurálás olvasási méretét, és határozatképességére írása. Szeretné egyenletesen elosztani a átviteli sebesség az adott erőforrás-partíció van rendelve, a két ötleteket alkalmazunk: először a vezető az írási kérelmek feldolgozásának költsége magasabb, mint a frissítések alkalmazása a követő metódus költsége. Ennek megfelelően a vezető tervezett van több rendszererőforrást, mint a követők. Másodszor amennyire csak lehetséges, az adott konzisztenciaszint olvasási kvórum áll kizárólag a követő metódus replikákat. Hogy ne vegye fel a kapcsolatot a vezető, de az olvasási, kivéve, ha szükséges. A Research történik, a kapcsolat az ötleteit számos alkalmazunk [terhelés és a kapacitás](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a kvórum-alapú rendszerekben a öt konzisztencia modellek, amelyek a Cosmos DB támogatja.  
+Erőforrás-partíció a tényleges táblán alapuló replikák több tartalék tartomány, a replikakészlethez nevű elosztva önállóan felügyelt, és dinamikusan kiegyenlített terhelésű csoportként. A készlet együttesen a replikált állapot gép protokollt, hogy az erőforrás-partíción belül az adatok magas rendelkezésre álló, tartós és egységes valósítja meg. A replikakészlet tagság N dinamikus –, tartja NMin és a hibákat, a felügyeleti műveletek és a sikertelen replikák időpontját alapján NMax fiókkulcs újbóli létrehozása vagy a helyreállítás között ingadozik. A tagság végbement változások alapján, a replikáció is protokoll Átkonfigurálás olvasási méretét, és határozatképességére írása. Szeretné egyenletesen elosztani a átviteli sebesség az adott erőforrás-partíció van rendelve, a két ötleteket alkalmazunk: először a vezető az írási kérelmek feldolgozásának költsége magasabb, mint a frissítések alkalmazása a követő metódus költsége. Ennek megfelelően a vezető tervezett van több rendszererőforrást, mint a követők. Másodszor amennyire csak lehetséges, az adott konzisztenciaszint olvasási kvórum áll kizárólag a követő metódus replikákat. Hogy ne vegye fel a kapcsolatot a vezető, de az olvasási, kivéve, ha szükséges. A Research történik, a kapcsolat az ötleteit számos alkalmazunk [terhelés és a kapacitás](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a kvórum-alapú rendszerekben a öt konzisztencia modellek, amelyek a Cosmos DB támogatja.  
 
 ## <a name="partition-sets"></a>Partíció-csoportok
 
@@ -57,7 +57,7 @@ A szolgáltatás lehetővé teszi a Cosmos-adatbázisok konfigurálása egy egye
 
 ## <a name="conflict-resolution"></a>Ütközések feloldása
 
-A tervezési, a frissítés propagálás, ütközésfeloldás és okozati nyomon követése a korábbi munkahelyi profilból inspirációt a [járványos algoritmusok](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) és a [Bayou](http://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) rendszer. A kernelekkel, ötleteire megélték rendelkezik, és adjon meg egy kényelmes hivatkozási a Cosmos DB-rendszer terve való kommunikációhoz, is estek át jelentős átalakításában, a Cosmos DB rendszer táblázatunk őket. Ez volt szükség, mert a korábbi rendszerekhez készültek, sem az erőforrás-szabályozás, sem a méretezéssel, ahol a Cosmos DB kell megfelelően működjenek, és nem az funkciók (például korlátozott frissesség konzisztencia), és szigorú és átfogó SLA-k, amelyek a Cosmos DB biztosít az ügyfeleinek.  
+A tervezési, a frissítés propagálás, ütközésfeloldás és okozati nyomon követése a korábbi munkahelyi profilból inspirációt a [járványos algoritmusok](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) és a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) rendszer. A kernelekkel, ötleteire megélték rendelkezik, és adjon meg egy kényelmes hivatkozási a Cosmos DB-rendszer terve való kommunikációhoz, is estek át jelentős átalakításában, a Cosmos DB rendszer táblázatunk őket. Ez volt szükség, mert a korábbi rendszerekhez készültek, sem az erőforrás-szabályozás, sem a méretezéssel, ahol a Cosmos DB kell megfelelően működjenek, és nem az funkciók (például korlátozott frissesség konzisztencia), és szigorú és átfogó SLA-k, amelyek a Cosmos DB biztosít az ügyfeleinek.  
 
 Ne felejtse el, hogy a partíció beállítása legyen elosztva több régióban, és követi a Cosmos DB-k (több főkiszolgálós) replikációs protokoll használatával replikálja az adatokat egy adott partíció-készletet alkotó fizikai partíciók között. Minden egyes erőforrás-partíció (legyen az egy partíció-) írási műveletek fogad, és olvasási általában szolgál az ügyfelek, amelyek a helyi régióban. Fogadja el az erőforrás-partíció egy adott régión belül írási tartósan véglegesítve és beállítani magas rendelkezésre az erőforrás-partíción belül, mielőtt azok a igazoltak vissza az ügyfélnek. Ezek feltételes írások és propagálva lesz másik fizikai partíciók egy víruskereső vysokou csatorna használatával a partíció,-csoporton belül. Ügyfelek lekérdezhetik feltételes vagy véglegesített írások fejléc átadásával. A víruskereső vysokou propagálás (beleértve a propagálás gyakorisága) el dinamikus, a partíció-készletet, a regionális közelség fizikai partíciók és a konzisztencia, beállított szint a topológia alapján. Egy partíció-csoportba a Cosmos DB dinamikusan kiválasztott soron partícióval rendelkező elsődleges véglegesítési séma követi. A soron lehetőség a dinamikus, és szerves része az újrakonfigurálás a partíció-készlet alapján topológiáját, az átmeneti területre. A lefoglalt írás (többek között több-row/kötegelt frissítések) garantáltan meg fog felelni. 
 

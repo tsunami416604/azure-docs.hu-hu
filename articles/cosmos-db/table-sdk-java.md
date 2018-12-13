@@ -12,7 +12,7 @@ ms.author: yaronyg
 ms.custom: ''
 ms.openlocfilehash: 67d4da0a57e38863cc73faab1e3ed8d4b271ceb3
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52864162"

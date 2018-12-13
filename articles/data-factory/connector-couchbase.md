@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: fee9deb43b4619f26cb9e4c0044b25bd34af93d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a4c683f6f3a1b321b786569999edac67cfb41892
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126833"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083495"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase
 
@@ -74,7 +74,13 @@ A Couchbase társított szolgáltatás a következő tulajdonságok támogatotta
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Couchbase adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Couchbase adatmásolás, állítsa be a type tulajdonság, az adatkészlet **CouchbaseTable**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Couchbase adatmásolás, állítsa be a type tulajdonság, az adatkészlet **CouchbaseTable**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **CouchbaseTable** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+
 
 **Példa**
 
@@ -86,7 +92,8 @@ Couchbase adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Cou
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -102,7 +109,7 @@ Adatok másolása a Couchbase, állítsa be a forrás típusaként a másolási 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **CouchbaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

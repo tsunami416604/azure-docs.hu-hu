@@ -1,23 +1,24 @@
 ---
-title: Tekintse át a Language Understanding (LUIS) aktív tanulás használata végpont kimondott szöveg
-titleSuffix: Azure Cognitive Services
-description: Aktív tanulás az előrejelzési pontosság és a legegyszerűbb megvalósításához három stratégia egyik. Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.
+title: Tekintse át a felhasználói kimondott szöveg
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/07/2018
 ms.author: diberry
-ms.openlocfilehash: 4ef6f5022b3c38eab2cda20123f179811f46390f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: ca8a6b05722ac2edc91d7459c64c2bdb312a7016
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637238"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080962"
 ---
-# <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Aktív tanulás engedélyezése endpoint utterances áttekintésével
+# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Aktív tanulás engedélyezésének végpont utterances áttekintésével kapcsolatos fogalmak
 Aktív tanulás az előrejelzési pontosság és a legegyszerűbb megvalósításához három stratégia egyik. Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.
 
 ## <a name="what-is-active-learning"></a>Mi az aktív tanulás

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 99e42f404fe103f406c4b3835f8c455bc2b91e07
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: 77a5b455e3ef86484119983af24b6461a2fba229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017688"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074487"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása
 
@@ -64,7 +64,7 @@ ACT a kiadások csökkentése érdekében. A legtöbbet hozhatja ki a tervezési
 
 A szervezet minden tagja a költség-kezelés életciklusának kell végezhetnek. Az érintett töltheti a költségek optimalizálása érdekében van szükség. Szigorú iteratív erről a folyamatról, és, hogy a szervezet felelős felhőalapú irányítási kulcsfontosságú alapelve.
 
-![Kulcsfontosságú alapelvek](./media/cost-mgt-best-practices/principles.png)
+![Láthatóság, elszámoltathatóság és optimalizálás a kulcsfontosságú alapelvek ábrája](./media/cost-mgt-best-practices/principles.png)
 
 ## <a name="plan-with-cost-in-mind"></a>Költség szem megtervezése
 

@@ -5,51 +5,52 @@ author: DCtheGeek
 manager: carmonm
 ms.service: governance
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f058bf8195c56681be0419a0a30f3d814e5d1906
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960832"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088136"
 ---
 # <a name="management-in-azure"></a>Felügyelet az Azure-ban
 
-Irányítás az Azure-ban az Azure-felügyelet egyik formája. Ez a cikk röviden ismerteti a különböző felügyeleti területeket, amelyekre szükség van az Azure-ban az alkalmazások és erőforrások üzembe helyezéséhez és karbantartásához, továbbá a szükséges dokumentumokra mutató hivatkozásokat tartalmaz.
+Irányítás az Azure-ban az Azure-felügyelet egyik formája. Ez a cikk ismerteti a különböző felügyeleti területeket, üzembe helyezése és karbantartása az Azure-erőforrások számára.
 
-Felügyelet alatt azokat a feladatokat és folyamatokat értjük, amelyekre szükség van az üzleti alkalmazások és az azokat támogató erőforrások kezeléséhez. Az Azure számos együttműködő szolgáltatást és eszközt kínál, amelyek teljes körű felügyeletet biztosítanak nem csupán az Azure-ban, hanem a felhőben és a helyszínen futó alkalmazások felett is. Egy teljes körű felügyeleti környezet kialakításának első lépése, hogy megismerkedjen az elérhető eszközökkel és azzal, hogyan használhatja ezeket együtt különböző felügyeleti forgatókönyvek során.
+Felügyelet alatt azokat a feladatokat és folyamatokat értjük, amelyekre szükség van az üzleti alkalmazások és az azokat támogató erőforrások kezeléséhez. Az Azure számos olyan szolgáltatások és eszközök, amelyek együttműködve a teljes körű felügyeletet biztosítanak rendelkezik. Ezek a szolgáltatások csak az Azure-ban, hanem más felhőkben és a helyszíni erőforrások esetében nem. A különböző eszközök, és hogyan működnek együtt egy teljes körű felügyeleti környezet kialakításának első lépése.
 
-A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van szükség az alkalmazások és erőforrások kezeléséhez. Ezekre a területekre egy életciklus szakaszaiként is gondolhatunk, mivel egymás után mindegyik sorra kerül egy erőforrás működtetése során. A folyamat a kezdeti üzembe helyezéssel kezdődik, az erőforrás működtetése során folyamatosan zajlik, és csak akkor zárul le végleg, amikor az erőforrást kivonják a működésből.
+A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van szükség az alkalmazások és erőforrások kezeléséhez. Ezekre a területekre egy életciklus, tekinthető. Minden terület gondolhatunk, egy erőforráscsoport szükséges folyamatos egymás után. Az erőforrás életciklusának kezdődik a kezdeti üzembe helyezést a folyamatos művelet, végül pedig ha már nincs.
 
-![Felügyeleti funkciók](../monitoring/media/management-overview/management-capabilities.png)
+![Szabályok kezelése](../monitoring/media/management-overview/management-capabilities.png)
 
-Nincsen olyan Azure-szolgáltatás, amely egymaga képes lenne ellátni az egyes felügyeleti területek összes feladatát, ehhez több szolgáltatás együttes használata szükséges. Egyes szolgáltatások célzott funkciókat tartalmaznak, az Application Insights például a webalkalmazások monitorozását végzi. Más szolgáltatások általános funkciókat nyújtanak, a Log Analytics például más szolgáltatások felügyeleti adatait tárolja, lehetővé téve a különböző szolgáltatások által küldött különböző típusú adatok elemzését.
+Nincs olyan Azure-szolgáltatás teljesen beírja egy adott felügyeleti területen követelményeinek. Ehelyett minden egyes van, hogy több szolgáltatás együttes használata által. Bizonyos szolgáltatásokhoz, például az Application Insights, adja meg a webes alkalmazásokhoz célzott figyelési funkciókat. Mások, például a Log Analytics felügyeleti adatok tárolása más szolgáltatásokhoz. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzéséhez.
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
 ## <a name="monitor"></a>Figyelés
 
-A monitorozás adatok gyűjtését és elemzését jelenti azzal a céllal, hogy meg lehessen állapítani az üzleti alkalmazás és az általa használt erőforrások teljesítményét, állapotát és rendelkezésre állását. Egy hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás egyes összetevőinek működéséről, és segít növelni az üzemidőt a kritikus problémákra vonatkozó előzetes értesítésekkel, amelyeknek köszönhetően még azelőtt fel lehet számolni őket, hogy tényleges problémát okoznának. Az [Azure-alkalmazások és -erőforrások monitorozásával](../monitoring/monitoring-overview.md) foglalkozó témakör áttekintést nyújt az Azure-beli monitorozásról, és bemutatja azokat a szolgáltatásokat, amelyek szerepet kapnak a monitorozási stratégiában.
+Figyelés gyűjtése és adatok naplózása, a teljesítményét, állapotát és az erőforrások rendelkezésre állásának elemzése. Egy hatékony monitorozási stratégia segít megérteni a összetevők, és növelni az üzemidőt értesítésekkel a műveletet. Olvasási figyelését, amely ismerteti a különböző szolgáltatások nagy mennyiségben használta [figyelése az Azure-alkalmazások és erőforrások](../monitoring/monitoring-overview.md).
 
 ## <a name="configure"></a>Konfigurálás
 
-A konfigurálás az alkalmazások és erőforrások kezdeti üzembe helyezését, majd ezt követő, javításokkal és frissítésekkel történő karbantartását jelenti. Ha szkriptekkel vagy szabályzatokkal automatizálja ezeket a feladatokat, elkerülheti a redundanciákat, minimalizálhatja a feladatokra fordított időt és energiát, és pontosabban és hatékonyabban dolgozhat. Az [Azure Automation](../automation/automation-intro.md) tartalmazza azon szolgáltatások nagy részét, amelyek a konfigurációs feladatok automatizálásához szükségesek. A folyamatok automatizálására szolgáló runbookok mellett konfiguráció- és frissítésfelügyeletet is kínál, ezzel segítve a konfigurációk szabályzatokkal történő kezelését, valamint a frissítések azonosítását és telepítését.
+Konfigurálja a kezdeti telepítés és konfiguráció az erőforrások és folyamatos karbantartást hivatkozik.
+Ezek a feladatok automatizálását a redundancia, minimálisra csökkentik az idő és munka, és a pontosság és a hatékonyság növelése kiküszöbölése teszi lehetővé. Az [Azure Automation](../automation/automation-intro.md) tartalmazza azon szolgáltatások nagy részét, amelyek a konfigurációs feladatok automatizálásához szükségesek. Bár a runbookok folyamatautomatizálási kezelni, konfiguráció- és konfigurációjának kezelésével segítik.
 
 ## <a name="govern"></a>Irányítás
 
 Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség. Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.
-Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. Az [Azure Policy](../azure-policy/azure-policy-introduction.md) lehetővé teszi olyan szabályzatdefiníciók létrehozását, hozzárendelését és kezelését, amelyek különböző szabályokat és műveleteket kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az [Azure Cost Management by Cloudyn](../cost-management/overview.md) segítségével követheti az Azure-erőforrások és egyéb felhőszolgáltatók, például az AWS vagy a Google felhőhasználatát és költségeit.
+Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. [Az Azure Policy](./policy/overview.md) hozhat létre, rendelje hozzá és kezelhet szabályzatdefiníciókat az erőforrások szabályok érvényesítése. Ez a funkció biztosítja, hogy ezek az erőforrások megfelelnek-e a vállalati szabványoknak. [Az Azure Cost Management by Cloudyn](../cost-management/overview.md) nyomon követheti az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatát és költségeit.
 
 ## <a name="secure"></a>Biztonságos
 
-Az alkalmazások, erőforrások és adatok biztonságának beletartozik a fenyegetések értékelése, összegyűjtése és biztonsággal kapcsolatos adatok elemzése és annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos módon. Azure Security Center, amely tartalmazza a egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet a hibrid felhőbeli számítási feladatokban által biztosított biztonsági figyelési és kockázati elemzések. Az [Azure biztonsági megoldásait ismertető](../security/azure-security.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.
+Kezelheti az erőforrásokat és az adatok biztonságát. Egy biztonsági program magában foglalja a fenyegetéseket, gyűjtése és elemzése az adatokat, és az alkalmazások és erőforrások megfelelőségének felméréséhez. Biztonsági figyelési és kockázati elemzések által biztosított [az Azure Security Center](../security-center/security-center-intro.md), foglalkozik, amely egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz. Lásd: [bemutatása az Azure Security](../security/azure-security.md) átfogó információkat és útmutatást az Azure-erőforrások biztosítása.
 
 ## <a name="protect"></a>Védelem
 
-A védelem annak garantálását jelenti, hogy az alkalmazások és adatok mindig rendelkezésre álljanak, olyan leállások esetén is, amelyeknek a bekövetkeztére Ön nincsen hatással. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. [Az Azure Backup](../backup/backup-introduction-to-azure-backup.md)biztosít a biztonsági mentés és helyreállítás az adatok a felhőben vagy a helyszínen. Az [Azure Site Recovery](../site-recovery/site-recovery-overview.md) az alkalmazások magas rendelkezésre állásáról gondoskodik, garantálva az üzletmenet folytonosságát és az azonnali vészhelyreállítást.
+Védelem gondoskodik az alkalmazások és adatok érhető el, még akkor is, amelyek Öntől leállások hivatkozik. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. [Az Azure Backup](../backup/backup-introduction-to-azure-backup.md)biztosít a biztonsági mentés és helyreállítás az adatok a felhőben vagy a helyszínen. [Az Azure Site Recovery](../site-recovery/site-recovery-overview.md) biztosítja az üzletmenet-folytonossági és az azonnali katasztrófa során.
 
 ## <a name="migrate"></a>Migrate (Áttelepítés)
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
-Az [Azure Migrate](../migrate/migrate-overview.md) szolgáltatás segít felmérni, hogy a helyszíni virtuális gépek mennyire alkalmasak az Azure-felhőbe való migrálásra, és erről teljesítményalapú méretezési és költségbecsléseket is készít. Az Azure Site Recovery segít a [helyszíni](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépek vagy az [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) virtuális gépeinek tényleges migrálásában. Az [Azure Database Migration](../dms/dms-overview.md) több adatbázis-erőforrás migrálását teszi lehetővé Azure-adatplatformokra.
+[Az Azure Migrate](../migrate/migrate-overview.md) egy szolgáltatás, amellyel felmérheti a migrálásra való alkalmasságát, a helyszíni virtuális gépek az Azure-bA. Az Azure Site Recovery áttelepíti a virtuális gépek [helyi](../site-recovery/migrate-tutorial-on-premises-azure.md) vagy [Amazon Web servicesből](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) áttelepítése adatbázisforrásokból az Azure-adatplatformokra nyújt segítséget.

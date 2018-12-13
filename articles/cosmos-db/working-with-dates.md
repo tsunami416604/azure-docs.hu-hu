@@ -7,20 +7,20 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.openlocfilehash: 49196df580aec4975a74849e8f2b36c03f6750ad
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 48879eb3ae4fc3a54d50a4e896b4a1eb94acabf9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956108"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073805"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Az Azure Cosmos DB dátumok használata
-Az Azure Cosmos DB séma rugalmasságát és a gazdag indexelési natív lehetőségeket kínál [JSON](http://www.json.org) adatmodellt. Az összes Azure Cosmos DB-erőforrásokat, például adatbázisok, tárolók, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok formájában. A hordozható visszatérhetnek követelmény, JSON-t (és az Azure Cosmos DB) támogatja a alapvető típusok csak egy kis készletét: karakterlánc, szám, logikai érték, tömböt, objektum és Null. JSON azonban rendkívül rugalmas, és lehetővé teszi a fejlesztők és a keretrendszereket, amelyek ezeket a primitívek használatával, és objektumokat vagy tömbök összeállítása azokat összetettebb típusokra. 
+Az Azure Cosmos DB séma rugalmasságát és a gazdag indexelési natív lehetőségeket kínál [JSON](https://www.json.org) adatmodellt. Az összes Azure Cosmos DB-erőforrásokat, például adatbázisok, tárolók, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok formájában. A hordozható visszatérhetnek követelmény, JSON-t (és az Azure Cosmos DB) támogatja a alapvető típusok csak egy kis készletét: karakterlánc, szám, logikai érték, tömböt, objektum és Null. JSON azonban rendkívül rugalmas, és lehetővé teszi a fejlesztők és a keretrendszereket, amelyek ezeket a primitívek használatával, és objektumokat vagy tömbök összeállítása azokat összetettebb típusokra. 
 
 Az alapvető típusok, mellett számos alkalmazás kell a [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) dátumok és időbélyegek képviselő típus. Ez a cikk bemutatja, hogyan fejlesztők is tárolása, lekérése és lekérdezése az Azure Cosmos DB .NET SDK használatával dátumok.
 
 ## <a name="storing-datetimes"></a>Időpontok tárolására
-Alapértelmezés szerint a [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) szerializálja a dátum/idő értékek [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) karakterláncokat. A legtöbb alkalmazás a következő okok miatt alapértelmezett karakteres használható dátum és idő:
+Alapértelmezés szerint a [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) szerializálja a dátum/idő értékek [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) karakterláncokat. A legtöbb alkalmazás a következő okok miatt alapértelmezett karakteres használható dátum és idő:
 
 * Karakterláncok összehasonlíthatók, és a dátum/idő értékek relatív sorrendjének esetén is megőrződik karakterláncok való átalakításából származnak. 
 * Ez a megközelítés a JSON-átalakítás bármilyen egyéni kód vagy attribútumok nem igényel.

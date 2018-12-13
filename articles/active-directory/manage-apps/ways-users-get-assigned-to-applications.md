@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9e27df857d560abdf5b6a54272bb022b6ed466ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226845"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079364"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazások
 
@@ -33,15 +33,15 @@ Egy felhasználó egy alkalmazáshoz akkor először kell rendelni, valamilyen m
 
 2.  A rendszergazda [hozzárendeli egy csoporthoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , hogy a felhasználó tagja, az alkalmazáshoz, többek között:
 
-  * Egy csoportot, amely a rendszer szinkronizálta a helyszíni
+    * Egy csoportot, amely a rendszer szinkronizálta a helyszíni
 
-  * A felhőben létrehozott statikus biztonsági csoport
+    * A felhőben létrehozott statikus biztonsági csoport
 
-  * A [dinamikus biztonsági csoport](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) a felhőben létrehozott
+    * A [dinamikus biztonsági csoport](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) a felhőben létrehozott
 
-  * A felhőben létrehozott Office 365-csoportot
+    * A felhőben létrehozott Office 365-csoportot
 
-  * A [minden felhasználó](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) csoport
+    * A [minden felhasználó](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) csoport
 
 3.  Lehetővé teszi a rendszergazda [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , hogy a felhasználó egy alkalmazást a hozzáadása a [alkalmazás-hozzáférési Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **alkalmazás hozzáadása** funkció **üzleti jóváhagyása nélkül**
 

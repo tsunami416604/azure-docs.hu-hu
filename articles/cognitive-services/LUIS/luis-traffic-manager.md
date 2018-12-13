@@ -1,21 +1,22 @@
 ---
-title: A Language Understanding (LUIS) végpont kvóta növeléséhez a Microsoft Azure Traffic Manager használatával
+title: Végpont kvóta növeléséhez
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3f3dddca7944403ace6a9779be07b0d458fb3cd1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042176"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076763"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -36,7 +37,7 @@ Az Azure-erőforrások létrehozását, mielőtt hozzon létre egy erőforráscs
 
 Hozzon létre erőforráscsoportot **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.2.0)** parancsmagot:
 
-```PowerShell
+```powerShell
 New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
@@ -69,7 +70,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
 
     A profil létrehozásához használja a következő parancsmagot. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey az East US LUIS kulcs van. Ha az elérési út nem megfelelő, a LUIS alkalmazás azonosítója és a végpont kulcs, beleértve a Traffic Manager lekérdezés-e állapota `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS-végpontot. Győződjön meg arról, hogy értékét `q` van `traffic-manager-east` így láthatja, hogy ezt az értéket a LUIS-végpont naplókat.
 
-    ```PowerShell
+    ```powerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
     ```
     
@@ -89,7 +90,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
 
 2. Adja hozzá az USA keleti Régiójában koncového bodu **[Add-azurermtrafficmanagerendpointconfig parancsmag esetében](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig?view=azurermps-6.2.0)** parancsmag
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
     ```
     Ez a táblázat azt ismerteti, hogy a parancsmag minden változót:
@@ -105,7 +106,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
 
     A sikeres válasz a következőhöz hasonló:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-eastus
     Name                             : luis-profile-eastus
     ResourceGroupName                : luis-traffic-manager
@@ -124,7 +125,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
 
 3. Állítsa be az USA keleti Régiójában koncového bodu **[Set-azurermtrafficmanagerprofile parancsmag](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** parancsmag
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $eastprofile
     ```
 
@@ -137,7 +138,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
     A profil létrehozásához használja a következő parancsmagot. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey az East US LUIS kulcs van. Ha az elérési út nem megfelelő a LUIS-alkalmazás azonosítója és -végpont kulcsot is beleértve, a Traffic Manager-lekérdezés állapota-e `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS-végpontot. Győződjön meg arról, hogy értékét `q` van `traffic-manager-west` így láthatja, hogy ezt az értéket a LUIS-végpont naplókat.
 
-    ```PowerShell
+    ```powerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
     ```
     
@@ -157,7 +158,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
 2. Adja hozzá az USA nyugati RÉGIÓJA koncového bodu **[Add-azurermtrafficmanagerendpointconfig parancsmag esetében](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** parancsmag
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
     ```
 
@@ -174,7 +175,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
     A sikeres válasz a következőhöz hasonló:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-westus
     Name                             : luis-profile-westus
     ResourceGroupName                : luis-traffic-manager
@@ -193,7 +194,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
 
 3. Állítsa be az USA nyugati RÉGIÓJA koncového bodu **[Set-azurermtrafficmanagerprofile parancsmag](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** parancsmag
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $westprofile
     ```
 
@@ -204,7 +205,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
 1. A szülő-profil létrehozása **[New-azurermtrafficmanagerprofile parancsmag](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** parancsmag
 
-    ```PowerShell
+    ```powerShell
     $parentprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
     ```
 
@@ -224,7 +225,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
 2. USA keleti Régiójában gyermek profil hozzá a szülő **[Add-azurermtrafficmanagerendpointconfig parancsmag esetében](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** és **NestedEndpoints** típusa
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
     ```
 
@@ -242,7 +243,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     A sikeres válasz tekintse meg az alábbiakhoz hasonló, és tartalmazza az új `child-endpoint-useast` végpont:    
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -261,7 +262,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
 3. USA nyugati RÉGIÓJA gyermek profil hozzá a szülő **[Add-azurermtrafficmanagerendpointconfig parancsmag esetében](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** parancsmag és **NestedEndpoints** típusa
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
     ```
 
@@ -279,7 +280,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
     A sikeres válasz tekintse meg hasonló, és tartalmazza a mindkét az előző `child-endpoint-useast` végpont és az új `child-endpoint-uswest` végpont:
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -298,7 +299,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
 
 4. A végpontok beállítása **[Set-azurermtrafficmanagerprofile parancsmag](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** parancsmag 
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $parentprofile
     ```
 
@@ -309,7 +310,7 @@ A korábbi szakaszokban létrehozott három PowerShell változók: `$eastprofile
 
 Cserélje le a csúcsos zárójelpárban van, a cikkek `<>`, a három profil van szüksége a megfelelő értékekkel. 
 
-```PowerShell
+```powerShell
 $<variable-name> = Get-AzureRmTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
 ```
 
@@ -329,7 +330,7 @@ A Traffic Manager lekérdezi, hogy online állapotban minden végpont elérési 
 ### <a name="validate-traffic-manager-polling-works"></a>A Traffic Manager működése lekérdezési ellenőrzése
 Egy másik ellenőrzése a traffic manager működése lekérdezési módja a LUIS-végpont naplók. Az a [LUIS] [ LUIS] webhely alkalmazáslistában lapon, az alkalmazás a végpont-napló exportálása. A Traffic Manager milyen gyakran kérdezze le a két végpontok, mert nincsenek bejegyzések a naplókban akkor is, ha csak néhány percet a voltak. Ne felejtse el, és tekintse meg a bejegyzéseket, ahol a lekérdezés kezdete `traffic-manager-`.
 
-```text
+```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 ```
@@ -339,7 +340,7 @@ Ellenőrizze, hogy a DNS-választ adja vissza egy LUIS-végpontot, kérjen a for
 
 A következő Node.js-kód kérést küld a szülő-profil, és adja vissza a LUIS-végpont:
 
-```javascript
+```nodejs
 const dns = require('dns');
 
 dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 07c58ea964d6af1ffe1a447d8b52879753f1951c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a9916a412341d0b345bfc7a0e0f28d8e0add1846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123351"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081456"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Salesforce Marketing Cloud
 
@@ -78,7 +78,12 @@ Salesforce Marketing Cloud-beli társított szolgáltatás a következő tulajdo
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Salesforce Marketing Cloud adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Használatával adatait átmásolhatja a Salesforce Marketing Cloud, állítsa be a type tulajdonság, az adatkészlet **SalesforceMarketingCloudObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Használatával adatait átmásolhatja a Salesforce Marketing Cloud, állítsa be a type tulajdonság, az adatkészlet **SalesforceMarketingCloudObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **SalesforceMarketingCloudObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -90,7 +95,8 @@ Használatával adatait átmásolhatja a Salesforce Marketing Cloud, állítsa b
         "linkedServiceName": {
             "referenceName": "<SalesforceMarketingCloud linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,7 +112,7 @@ Használatával adatait átmásolhatja a Salesforce Marketing Cloud, állítsa b
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SalesforceMarketingCloudSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

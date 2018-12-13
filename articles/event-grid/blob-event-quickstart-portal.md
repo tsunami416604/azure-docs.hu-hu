@@ -1,6 +1,6 @@
 ---
-title: Blob Storage-események az Azure Event Gridhez az Azure Portal használatával | Microsoft Docs
-description: Az Azure Event Grid és az Azure Portal segítségével létrehozhat egy Blob Storage-fiókot, és feliratkozhat annak eseményeire.
+title: Blob storage-események küldéséhez a webes végpont - portálon |} A Microsoft Docs
+description: Az Azure Event Grid és az Azure Portal segítségével létrehozhat egy Blob Storage-fiókot, és feliratkozhat annak eseményeire. Az eseményeket küld egy Webhookot.
 services: event-grid
 keywords: ''
 author: tfitzmac
@@ -8,14 +8,15 @@ ms.author: tomfitz
 ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 44e258069515ad6c409c193312f3a714a5096541
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 6fd48ecd6def6a4fcd56751b6a137f75b16896ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404222"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086963"
 ---
-# <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Blob Storage-események létrehozása és átirányítása az Azure Portal és az Event Grid segítségével
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: Útvonal Blob storage-események az Azure Portallal webes végpontra
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehoz egy Blob Storage-fiókot az Azure Portallal, feliratkozik a Blob Storage-hoz tartozó eseményekre, és aktivál egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 

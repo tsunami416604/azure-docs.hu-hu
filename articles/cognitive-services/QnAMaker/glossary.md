@@ -1,7 +1,7 @@
 ---
 title: Szószedet – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Szószedet
+description: A QnA Maker szolgáltatást számos új feltétel, a gépi tanulási és a természetes nyelvi feldolgozás, valamint a szolgáltatás-specifikus használati rendelkezik. Ebben a listában az adott feltételeinek értelmezése nyújt segítséget.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 832bf85087b706451a6ee58c538d7a163ef18203
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166044"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079942"
 ---
-# <a name="glossary"></a>Szószedet
+# <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>A QnA Maker Tudásbázis és a szolgáltatás szószedet
 
 ## <a name="qna-maker-service"></a>A QnA Maker szolgáltatás
 A QnA Maker szolgáltatás olyan olyan előfeltételt, QnA Maker használatához. A QnA Maker csomag vásárlása beállítja az erőforrások létrehozására és kezelésére a Tudásbázis Azure-előfizetésében. A QnA Maker felhasználói fiókokat hozhat létre több QnA Maker szolgáltatás Azure-előfizetésében.

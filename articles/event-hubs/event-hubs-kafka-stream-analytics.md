@@ -1,5 +1,5 @@
 ---
-title: Az Apache Kafka feldolgozni az Azure Stream analytics használatával az Event Hubs-események |} A Microsoft Docs
+title: Stream analytics – Azure Event Hubs használatával az Apache Kafka eseményeinek feldolgozása |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan dolgozza fel a Kafka, amely vannak töltve az event hubs használatával az Azure Stream Analytics használatával
 services: event-hubs
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 031ed86461420ca6ebb2ac3a8f669305666e3cf4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278344"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076840"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával 
 Ez a cikk bemutatja, hogyan adatok streamelése az Event Hubs Kafka-kompatibilis, és az Azure Stream Analyticsszel dolgozza fel. Végigvezeti az alábbi lépéseket: 
@@ -205,15 +205,15 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. További információ az Event Hubs és az Event Hubs a Kafka, a következő témakörben talál:  
+Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
-- [Az Event Hubs-beli Apache kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [A Kafka létrehozása az Event Hubs engedélyezve](event-hubs-create-kafka-enabled.md)
-- [Stream az Event Hubsba, a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Egy Kafka-közvetítő Kafka-kompatibilis eseményközpont tükrözéséhez.](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Csatlakozás az Apache Spark egy Kafka-kompatibilis event hubs](event-hubs-kafka-spark-tutorial.md)
-- [Az Apache Flink csatlakozni egy Kafka-kompatibilis eseményközpont](event-hubs-kafka-flink-tutorial.md)
-- [Egy Kafka-kompatibilis eseményközpont Kafka csatlakozás integrálása](event-hubs-kafka-connect-tutorial.md)
-- [Egy Kafka-kompatibilis eseményközpont Akka Streamek csatlakozni](event-hubs-kafka-akka-streams-tutorial.md)
-- [Minták megtekintése a githubon](https://github.com/Azure/azure-event-hubs-for-kafka) 
+- [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
+- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create-kafka-enabled.md)
+- [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Kafka-közvetítő tükrözése egy Kafka-kompatibilis eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Az Apache Spark csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
+- [Az Apache Flink csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
+- [A Kafka Connect integrálása egy Kafka-kompatibilis eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [Az Akka Streams csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka) 

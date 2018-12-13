@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985012"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091043"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési ezerszer
 Ez a cikk bemutatja, hogyan ezerszer kihasználásához az Azure Stream Analytics szolgáltatásban. Megismerheti a Stream Analytics-feladatok méretezése a bemeneti partíció konfigurálásával, valamint a elemzési lekérdezés definíciójának finomhangolásával.
@@ -51,7 +51,7 @@ A Power BI, az SQL és SQL-adattárház kimenetek nem támogatják a particioná
 A partíciók kapcsolatos további információkért lásd a következő cikkeket:
 
 * [Az Event Hubs-szolgáltatások áttekintése](../event-hubs/event-hubs-features.md#partitions)
-* [Adatparticionálás](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
+* [Adatparticionálás](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Zavaróan párhuzamos feladatok
@@ -80,9 +80,11 @@ Az alábbi szakaszok tárgyalják a példákat megtekinteni, amelyek zavaróan p
 
 Lekérdezés:
 
+```SQL
     SELECT TollBoothId
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
+```
 
 Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, amely küld az event hubs particionálási. Figyelje meg, hogy a lekérdezés tartalmaz **partíció által PartitionId**, így a #2. követelmény a korábban teljesít. A kimeneti kell konfigurálni az event hub kimeneti a feladat a partíciós kulcs értéke az **PartitionId**. Egy utolsó ellenőrzés, hogy ellenőrizze, hogy a bemeneti partíciók számának kimeneti partíciók száma egyenlő.
 
@@ -93,9 +95,11 @@ Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, am
 
 Lekérdezés:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Ez a lekérdezés csoportosítási kulccsal rendelkezik. Ezért az események csoportosítva el kell küldeni az Eseményközpont ugyanazon a partíción. Ebben a példában a Microsoft csoportosítási szempont TollBoothID, mivel azt kell róla, hogy TollBoothID használja partíciókulcsként, ha az események eseményközpontba érkeznek. Ezután az ASA, használhatjuk **partíció által PartitionId** a partícióséma öröklik, és a teljes ezerszer engedélyezéséhez. Mivel a kimeneti blob storage-ba, nem kell aggódnia a partíciókulcs-értékkel, #4. követelmény alapján konfigurálása.
 
@@ -121,6 +125,7 @@ A Power bi-kimenet jelenleg nem támogatja a particionálást. Ezért az ebben a
 
 Lekérdezés:
 
+```SQL
     WITH Step1 AS (
     SELECT COUNT(*) AS Count, TollBoothId, PartitionId
     FROM Input1 Partition By PartitionId
@@ -130,6 +135,7 @@ Lekérdezés:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Amint láthatja, a második lépésben használ **TollBoothId** particionálási kulcsként. Ez a lépés nem ugyanaz, mint az első lépés, és, ezért megköveteli tőlünk egy shuffle tennie. 
 
@@ -143,6 +149,7 @@ A lekérdezés egy vagy több lépést rendelkezhet. Az egyes lépések által m
 
 Lekérdezés:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -151,6 +158,7 @@ Lekérdezés:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute,3), TollBoothId
+```
 
 Ez a lekérdezés két lépésből áll.
 
@@ -182,20 +190,25 @@ Megtekintheti az egyes **példák** az alábbi táblázatban.
 
 A következő lekérdezést a autók alatt áll, amely rendelkezik három tollbooths díjmentesen állomás három perces időtartamon belül számítja ki. Ez a lekérdezés legfeljebb hat SUs skálázhatók.
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 A lekérdezés több SUS-t használja, hogy mind a bemeneti streamet, és a lekérdezés kell particionálni. Mivel az adatokat a stream partíció 3 értékre van állítva, a következő módosított lekérdezés legfeljebb 18 SUs skálázhatók:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Ha a lekérdezés particionálva van, a bemeneti események feldolgozása, és összevonva jelenik meg különálló partíció csoportok. Kimeneti események is jönnek létre az egyes csoportok. Particionálás néhány várt következményekhez vezethet során a **GROUP BY** művelet nem a partíciókulcs a bemeneti streamből. Ha például a **TollBoothId** az előző lekérdezést a mező nem partíciókulcsa **Input1**. Ez több partíciót őrbódét 1 származó adatok lehetnek elosztva.
 
 Minden egyes a **Input1** partíciók fogja feldolgozni, külön-külön Stream Analytics. Ennek eredményeképpen az ugyanazon őrbódét ugyanaz az Átfedésmentes ablak az autó számát, több rekordot hoz létre. A bemeneti partíciós kulcs nem módosítható, ha a probléma lehet meghatározni egy nem partíció lépés hozzáadásával az összesített értékek partíciókon, az alábbi példában látható módon:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -205,6 +218,7 @@ Minden egyes a **Input1** partíciók fogja feldolgozni, külön-külön Stream 
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Ez a lekérdezés 24 SUS-t is méretezhető.
 

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – ASA-feladatok üzembe helyezése Azure IoT Edge-eszközökön | Microsoft Docs
+title: Oktatóanyag az Azure Stream Analytics-feladat az Azure IoT Edge - eszköz üzembe helyezése |} A Microsoft Docs
 description: Az oktatóanyagban egy Azure Stream Analytics-példányt helyezünk üzembe modulként egy IoT Edge-eszközre.
 author: kgremban
 manager: philmea
@@ -7,14 +7,13 @@ ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: MT
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 926609e261c318f22e5c5d2091ea8fbf8f7315d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566941"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081336"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -34,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az Azure Stream Analytics üzembe helyezése egy IoT Edge-eszközön az Azure Portalról.
 
 <center>
-![Az oktatóanyag architektúradiagramja](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+![Diagram – oktatóanyag architektúra tesztelése és üzembe helyezése az ASA-feladat](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 >[!NOTE]
@@ -100,7 +99,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. A **Feladattopológia** területen válassza a **Bemenetek** lehetőséget, majd a **Streambemenet hozzáadása** elemet.
 
-   ![Azure Stream Analytics-bemenet](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Az Azure Stream Analytics bemenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
 1. Válassza az **Edge Hub** elemet a legördülő listából.
 
@@ -110,7 +109,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. A **Feladattopológia** területen nyissa meg a **Kimenetek** pontot, és válassza a **Hozzáadás** elemet.
 
-   ![Azure Stream Analytics-kimenet](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Az Azure Stream Analytics kimenet hozzáadása](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
 1. Válassza az **Edge Hub** elemet a legördülő listából.
 
@@ -207,7 +206,7 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **tempSensor*
 
     Látható, hogy az új Stream Analytics-modul az IoT Edge-ügynökmodullal és az IoT Edge-központtal együtt fut.
 
-    ![A modul kimenete](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![tempSensor és az eszköz által jelentett ASA-modul](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>Adatok megtekintése
 
@@ -229,7 +228,7 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
 
 Látnia kell, ahogy a géphőmérséklete folyamatosan emelkedik, amíg valamelyik 30 másodperces ablakban eléri a 70 fokot. A Stream Analytics-modul ekkor kiváltja a rendszer alaphelyzetbe állítását, és a géphőmérséklet visszaáll 21 fokra. 
 
-   ![Docker-napló](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![A parancs kimenete alaphelyzetbe modulnaplóinak be](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 

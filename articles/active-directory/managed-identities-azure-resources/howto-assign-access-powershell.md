@@ -1,6 +1,6 @@
 ---
-title: MSI-hozzáférés hozzárendelése egy Azure-erőforrás, PowerShell-lel
-description: Részletes utasítások hozzárendelése egy olyan MSI Csomaghoz, egy erőforráson, egy másik erőforrás, a PowerShell használatával való hozzáférést.
+title: Egy felügyelt identitás hozzáférés hozzárendelése egy Azure-erőforrást PowerShell használatával
+description: Részletes utasításokat egy erőforráson, egy felügyelt identitás hozzárendelése egy másik erőforrás, a PowerShell használatával való hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -12,56 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 12/06/2018
 ms.author: daveba
-ms.openlocfilehash: 058578093a91d38f4eed8827888f79b5cc33ce87
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7ed61ead475acb81da4434c880954e801492351b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "47106976"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081557"
 ---
-# <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>A Felügyeltszolgáltatás-identitás (MSI) hozzáférés hozzárendelése egy erőforrást PowerShell használatával
+# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Egy felügyelt identitás hozzáférés hozzárendelése egy erőforrást PowerShell használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Miután konfigurálta az Azure-erőforrás egy MSI-vel, az MSI hozzáférést biztosíthat egy másik erőforráshoz, csakúgy, mint egy rendszerbiztonsági tagot. Ez a példa bemutatja, az Azure virtuális gép MSI-hozzáférés biztosítása az Azure storage-fiókba, PowerShell-lel.
+Miután konfigurálta az Azure-erőforrás felügyelt identitással, a felügyelt identitás hozzáférést biztosíthat más erőforráshoz, csakúgy, mint bármely rendszerbiztonsági tag. Ez a példa bemutatja, az Azure virtuális gép felügyelt identitás hozzáférés biztosítása a PowerShell-lel az Azure storage-fiókba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Telepítés [az Azure PowerShell legújabb verzióját](https://www.powershellgallery.com/packages/AzureRM) Ha még nem tette.
 
-Emellett telepítse [Azure PowerShell 4.3.1 verzió](https://www.powershellgallery.com/packages/AzureRM/4.3.1) Ha még nem tette.
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Az RBAC használatával hozzáférést egy felügyelt identitás hozzárendelése egy másik erőforrás
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Az RBAC használatával az MSI-hozzáférés hozzárendelése egy másik erőforrás
+Miután engedélyezte az Azure-erőforrás, felügyelt identitás [például egy Azure virtuális gép](qs-configure-powershell-windows-vm.md):
 
-Miután engedélyezte az MSI-Azure-erőforrás [például egy Azure virtuális gép](qs-configure-powershell-windows-vm.md):
-
-1. Jelentkezzen be Azure-ban a `Connect-AzureRmAccount` parancsmagot. Egy fiókot, amely alatt az MSI konfigurálása Azure-előfizetéshez társított használja:
+1. Jelentkezzen be Azure-ban a `Connect-AzureRmAccount` parancsmagot. Egy fiókot, amely alatt a felügyelt identitás konfigurálása Azure-előfizetéshez társított használja:
 
    ```powershell
    Connect-AzureRmAccount
    ```
-2. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) beolvasni az egyszerű szolgáltatás "myVM", amely jött létre, amikor lehetővé tettük az MSI nevű virtuális gép. Ezt követően használjuk [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) biztosíthat a virtuális gép "Olvasó" hozzáférést a tárfiókhoz "myStorageAcct" nevű:
+2. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) beolvasni az egyszerű szolgáltatás nevű virtuális gép `myVM`, amely jött létre, amikor lehetővé tettük felügyelt identitás. Ezután használja [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) biztosíthat a virtuális gép **olvasó** nevű tárfiókot hozzáférést `myStorageAcct`:
 
     ```powershell
     $spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="next-steps"></a>További lépések
 
-Az MSI az erőforrás nem jelenik meg a rendelkezésre álló identitások listájában, győződjön meg arról, hogy az MSI engedélyezve lett-e megfelelően. Ebben az esetben is visszatér az Azure VM a [az Azure portal](https://portal.azure.com) és:
-
-- Tekintse meg a "Konfiguráció" lapot, és ellenőrizze, engedélyezett MSI-vel = "Yes".
-- Tekintse meg a "Bővítmények" lapot, és győződjön meg, hogy az MSI-bővítmény telepítése sikeresen.
-
-Ha vagy helytelen, szükség lehet ismételt üzembe helyezése az MSI az erőforráson újra, vagy az üzemelő példány hibájának elhárítása.
-
-## <a name="related-content"></a>Kapcsolódó tartalom
-
-- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
-- Egy Azure-beli virtuális gépen az MSI engedélyezéséhez tekintse [konfigurálása az Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) PowerShell-lel](qs-configure-powershell-windows-vm.md).
-
-Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
-
+- [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
+- Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások PowerShell-lel, egy Azure virtuális Gépen található](qs-configure-powershell-windows-vm.md).

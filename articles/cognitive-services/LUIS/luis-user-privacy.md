@@ -1,21 +1,22 @@
 ---
-title: Exportálás és az ügyfél data - Language Understanding – intelligens HANGFELISMERÉSI törlését
+title: Az adatok törlését & exportálása
 titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) őrzi meg a szolgáltatás ügyfél-tartalmat, de a LUIS felhasználó keresztül megtekintése, exportálását és törlését a teljes körű vezérléssel rendelkezik. Ezt megteheti a LUIS webes portálon vagy a LUIS programozható API-k révén.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfd168d5c56bc800831c402a23bb1a506fa15221
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: de8e8ba2c54a2d355cbff3ab50ab92a907ad67e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883890"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073244"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportálás és az ügyféladatokat, a Language Understanding (LUIS) a Cognitive Services törlése
 

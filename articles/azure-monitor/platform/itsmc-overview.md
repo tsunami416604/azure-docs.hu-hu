@@ -16,7 +16,7 @@ ms.author: v-jysur
 ms.component: ''
 ms.openlocfilehash: 7227fd68f696e827a076005bcd116e222f23e9b0
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52883276"

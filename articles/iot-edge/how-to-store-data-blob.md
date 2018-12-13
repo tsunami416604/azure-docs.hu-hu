@@ -1,5 +1,5 @@
 ---
-title: Az Azure Blob Storage, az Azure IoT Edge-eszközökön |} A Microsoft Docs
+title: Az Azure IoT Edge-eszközök – a blokkblobok Store |} A Microsoft Docs
 description: Egy Azure Blob Storage-modul üzembe helyezése az IoT Edge-eszköz a peremhálózaton adatok tárolására.
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa88ff46b4fb93d55aa0087cca0e6184f3e087a0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e56d49208740686b51cdaef1bab778e2c08a9b58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567281"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077920"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -105,7 +106,7 @@ Válassza ki a blob storage-modulban található két módszer egyikével:
    > [!CAUTION]
    > Ne módosítsa a "/ blobroot" Linux és a "C:/BlobRoot" a Windows, a  **\<Storage directory kötési >** értékeket.
 
-    ![A modul értékek frissítése](./media/how-to-store-data-blob/edit-module.png)
+    ![Frissítés modul tároló-létrehozási beállítások – portál](./media/how-to-store-data-blob/edit-module.png)
 
 6. **Mentés** "IoT Edge-egyéni modulok" értékei
 7. Kattintson a **tovább** "Modulok beállítása" szakaszban.
@@ -149,7 +150,7 @@ A megoldássablon hoz létre, amely tartalmazza a blob storage modul rendszerké
    {\"Env\": [\"LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME\",\" LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY\"],\"HostConfig\": {\"Binds\": [\"<storage directory bind>\"],\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"11002\"}]}}}
    ```
 
-   ![Frissítés a modul létrehozási beállítások](./media/how-to-store-data-blob/create-options.png)
+   ![A modul createOptions – VS Code frissítése](./media/how-to-store-data-blob/create-options.png)
 
 4. Frissítse a létrehozási lehetőségek JSON `<storage directory bind>` tároló operációs rendszertől függően. Adja meg a nevét egy [kötet](https://docs.docker.com/storage/volumes/) vagy az IoT Edge-eszköz, ahol azt szeretné, hogy a blob modul tárolja az adatokat egy könyvtár abszolút elérési útját.  
 

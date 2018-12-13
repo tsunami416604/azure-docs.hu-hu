@@ -1,6 +1,6 @@
 ---
-title: Az Azure notebookok áttekintése |} A Microsoft Docs
-description: A Jupyter notebooks futtathatók a felhőben, az ingyenes Azure-jegyzetfüzetek szolgáltatással.
+title: Az Azure notebookok áttekintése
+description: Futtassa a Jupyter notebookok felhőalapú az ingyenes Azure-jegyzetfüzetek szolgáltatáshoz, ahol nincs telepítő vagy a konfiguráció nem szükséges.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a84f71c2656c73867ee076d4b993026558a0a504
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085399"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
-Azure notebookok üzemeltetett szolgáltatás ingyenes, a fejlesztése és futtatása a Jupyter notebookok a felhőben, a telepítés nélkül. [Jupyter](http://jupyter.org/) (korábbi nevén IPython-) egy nyílt forráskódú projekt, amely lehetővé teszi egyszerű egyesítése Markdown szöveget, végrehajtható kódok, állandó adatait, képeket és a Vizualizációk egyetlen, a megosztható vászonra, akkor a *notebook* (képe ajánlatának jupyter.org):
+Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. [Jupyter](https://jupyter.org/) (korábbi nevén IPython-) egy nyílt forráskódú projekt, amely lehetővé teszi egyszerű egyesítése Markdown szöveget, végrehajtható kódok, állandó adatait, képeket és a Vizualizációk egyetlen, a megosztható vászonra, akkor a *notebook* (képe ajánlatának jupyter.org):
 
-[![](http://jupyter.org/assets/jupyterpreview.png "Jupyter-notebookok")](http://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter-notebookok")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 A kód, a grafikus és magyarázó szöveg hatékony kombinációja, miatt Jupyter számos célra, beleértve a data science utasítás, adatok tisztítása és átalakítása, numerikus szimuláció, statisztikai modellezési és fejlesztését a legnépszerűbb vált Machine learning-modellek.
 
@@ -51,7 +51,7 @@ Mivel az Azure-jegyzetfüzetek szerzői általános kódot, futtatása és megos
 Röviden az Azure-jegyzetfüzetek segítségével munkája hatékonyabbá és így még többet.
 
 > [!Note]
-> További információ a Jupyter magát találhatók [jupyter.org](http://jupyter.org/) és a a [Jupyter-dokumentáció](http://jupyter-notebook.readthedocs.io/en/latest/).
+> További információ a Jupyter magát találhatók [jupyter.org](https://jupyter.org/) és a a [Jupyter-dokumentáció](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
 

@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások hőmérséklet referencia – Azure |} A Microsoft Docs
+title: Hőmérséklet-előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk tartalmazza a hőmérséklet előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 2716600346e65f2ca0b97e56cc156fdfb10ff3a4
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 51ae734a62de79d765ef1adc46b59fb98a5ca7e8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52440958"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089189"
 ---
 # <a name="temperature-entity"></a>Hőmérséklet entitás
 Hőmérséklet kibontja a hőmérséklet-típusok különböző. Az entitás már be van tanítva, mert nem kell az alkalmazás hőmérséklet tartalmazó példa beszédmódok hozzáadása. Hőmérséklet-entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Hőmérséklet felügyelje a [felismerő szöveges](https://github.com/Microsoft
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Előre összeállított hőmérséklet entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.temperature** entitás.
 
-```JSON
+```json
 {
   "query": "set the temperature to 30 degrees",
   "topScoringIntent": {

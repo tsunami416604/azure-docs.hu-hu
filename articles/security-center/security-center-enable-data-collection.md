@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27d27f582c1306d8a8370567fd9c6858ad439ca8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851145"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082449"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -261,7 +261,7 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
     a.  [Windows virtuális gép OMS bővítményének telepítése](../virtual-machines/extensions/oms-windows.md)
     
     b.  [Linuxhoz készült OMS virtuálisgép-bővítmény telepítése](../virtual-machines/extensions/oms-linux.md)
-5.  A bővítmények a meglévő virtuális gépek üzembe helyezéséhez kövesse a [Azure virtuális gépekről történő adatgyűjtést](../log-analytics/log-analytics-quick-collect-azurevm.md).
+5.  A bővítmények a meglévő virtuális gépek üzembe helyezéséhez kövesse a [Azure virtuális gépekről történő adatgyűjtést](../azure-monitor/learn/quick-collect-azurevm.md).
 
   > [!NOTE]
   > A szakasz **esemény-és teljesítményadatok gyűjtése** nem kötelező.

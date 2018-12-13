@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467718"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867580"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -87,7 +87,7 @@ Példa:
 Az egyéni beszédfelismerési rendszer átiratok normalizálja való visszaváltás a szöveg kis- és eltávolítani felesleges beolvasások absztrakt. Fontos, hogy az átiratok 100 %-os pontos beszédátírás, a megfelelő hangfelvételeket-e.
 
 > [!TIP]
-> Ha a készít éles szöveg-hang transzformációs beszédhangot, válassza ki a kimondott szöveg (vagy parancsfájlokat), amelyeknek veszi figyelembe a fiók fonetikus lefedettség és a hatékonyságot. Az eredmények problémákat okoz a következőket szeretne? [Az egyéni beszédfelismerési csapattól](mailto:tts@microsoft.com) található ki kellene USA kapcsolatos további részletekért.
+> Ha a készít éles szöveg-hang transzformációs beszédhangot, válassza ki a kimondott szöveg (vagy parancsfájlokat), amelyeknek veszi figyelembe a fiók fonetikus lefedettség és a hatékonyságot. Az eredmények problémákat okoz a következőket szeretne? [Az egyéni beszédfelismerési csapattól](mailto:speechsupport@microsoft.com) található ki kellene USA kapcsolatos további részletekért.
 
 ## <a name="upload-your-datasets"></a>Az adathalmazok feltöltése
 

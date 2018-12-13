@@ -1,5 +1,6 @@
 ---
-title: Regressziós modell oktatóanyag – automatikusan tanítási modell Azure Machine Learning szolgáltatással
+title: 'Regressziós modell Útmutató: automatikusan modelleket taníthat be'
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre egy gépi Tanulási modellt az automatizált machine learning használata.  Az Azure Machine Learning képes automatikusan elvégezni az adatokat feldolgozását, valamint az algoritmusok és hiperparaméterek kiválasztását. A kész modell ezután az Azure Machine Learning szolgáltatással lesz üzembe helyezve.
 services: machine-learning
 ms.service: machine-learning
@@ -9,15 +10,15 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 5c732cd6dc707cfb34248414187d8f2d15357572
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 593274cf66e93051b860ed75d77f13537188f345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013935"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076032"
 ---
-# <a name="tutorial-part-2-use-automated-machine-learning-to-build-and-train-a-regression-model"></a>(2. rész) oktatóanyag: használja az automatikus gépi tanulás hozhat létre, és a egy regressziós modell betanítása
+# <a name="tutorial-part-2-use-automated-machine-learning-to-build-your-regression-model"></a>(2. rész) oktatóanyag: használata automatizált gépi tanulás a regressziós modell létrehozása
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban, [előkészítette a NYC-i taxik adatait regressziós modellezéshez](tutorial-data-prep.md).
 
@@ -653,7 +654,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Az automatikus regressziós modell betanítása
 
-Indítsa el a kísérlet helyi futtatását. Adja át a definiált `automated_ml_config` objektumot a kísérletvászonra, és a kimenetét állítsa `true` folyamatának megtekintése a kísérlet során.
+Indítsa el a kísérlet helyi futtatását. Adja át a definiált `automated_ml_config` objektumot a kísérletvászonra, és a kimenetét állítsa `True` folyamatának megtekintése a kísérlet során.
 
 
 ```python
@@ -717,7 +718,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Futtatás részletei Jupyter Widget](./media/tutorial-auto-train-models/jup-widget-auto.png)
+![A Futtatás részletei Jupyter Widget](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Jupyter Widget diagram](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>2. lehetőség: Lekérése, és vizsgálja meg az összes futtatási ismétlését a Pythonban
 

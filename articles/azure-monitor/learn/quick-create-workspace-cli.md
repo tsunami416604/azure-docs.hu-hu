@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8a015d94304c9b0f9dcfacb24f17af1a19a3d008
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 635e73a9cbff1c7a18f274db09125be19e1c6bb7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074468"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Log Analytics-munkaterület létrehozásához Azure CLI 2.0 használatával
 
@@ -32,8 +32,8 @@ Az Azure CLI 2.0 az Azure-erőforrások parancssorból vagy szkriptekkel törté
  
 Más forrásokból, például az Azure virtuális gépek és a Windows vagy Linux rendszerű virtuális gépek a környezetben a következő témakörökben talál:
 
-* [Azure virtuális gépekről történő adatgyűjtést](../../log-analytics/log-analytics-quick-collect-azurevm.md)
-* [Hibrid Linux számítógépekről történő adatgyűjtést](../../log-analytics/log-analytics-quick-collect-linux-computer.md)
+* [Azure virtuális gépekről történő adatgyűjtést](../../azure-monitor/learn/quick-collect-azurevm.md)
+* [Hibrid Linux számítógépekről történő adatgyűjtést](../../azure-monitor/learn/quick-collect-linux-computer.md)
 * [Hibrid Windows-számítógépekről történő adatgyűjtést](quick-collect-windows-computer.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre [egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
@@ -129,5 +129,5 @@ Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtés�
 
 * Ahhoz, hogy az adatok gyűjtését az Azure-erőforrásokat az Azure Diagnostics vagy az Azure storage, lásd: [gyűjtése az Azure naplói és a Log Analytics használati metrikái](../../azure-monitor/platform/collect-azure-metrics-logs.md).  
 * Adjon hozzá [System Center Operations Manager alkalmazást adatforrásként](../../azure-monitor/platform/om-agents.md) adatokat gyűjteni az Operations Manager felügyeleti csoportnak jelentő ügynökök és a Log Analytics-munkaterületen tárolja.  
-* Csatlakozás [Configuration Manager](../../log-analytics/log-analytics-sccm.md) számítógépek, amelyek tagjai a hierarchiában lévő gyűjtemények importálása.  
+* Csatlakozás [Configuration Manager](../../azure-monitor/platform/collect-sccm.md) számítógépek, amelyek tagjai a hierarchiában lévő gyűjtemények importálása.  
 * Tekintse át a [felügyeleti megoldások](../../azure-monitor/insights/solutions.md) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.

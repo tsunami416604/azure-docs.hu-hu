@@ -1,21 +1,22 @@
 ---
-title: Beszédalapú fordítási kapcsolatban
+title: Tolmácsolás – beszédszolgáltatások kapcsolatban
 titlesuffix: Azure Cognitive Services
-description: Beszédalapú fordítási lehetőségeinek áttekintése
+description: A Speech Service API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 9d94105377597ca8e79cc43ed0903371e185d510
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469143"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086708"
 ---
 # <a name="about-the-speech-translation-api"></a>Tudnivalók a beszédalapú fordítási API
 

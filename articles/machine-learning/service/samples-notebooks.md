@@ -1,5 +1,6 @@
 ---
-title: A Jupyter notebook az Azure Machine Learning szolgáltatás oktatóanyagai
+title: A példában Jupyter notebookok
+titleSuffix: Azure Machine Learning service
 description: Keresse meg és Fedezze fel az Azure Machine Learning szolgáltatás a Pythonban példában Jupyter notebookok használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 5ec010d6e0539e9ba316b48dc02110dc19e4b13e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: f7affc60e3504b9b43d7663a4b7799c52fef79e7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884117"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082781"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez
 

@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 7ae8a79ac04e1d5263e084d6be4b27f303bd5848
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: MT
+ms.openlocfilehash: 07d6b07a583b8a8ce8b490333a87ff659f495e45
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006787"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866988"
 ---
-# <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban
+# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Az Apache Hadoop-fürt létrehozása biztonságos átvitellel rendelkező tárfiókok az Azure HDInsight
 
 A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-transfer.md) funkció megnöveli az Azure Storage-fiók biztonságát azáltal, hogy minden, a fiókra beérkező kérést biztonságos kapcsolat használatára kényszerít. Ezt a funkciót és a wasbs sémát csak a HDInsight-fürt 3.6-os vagy újabb verziója támogatja. 
 
@@ -66,10 +66,10 @@ Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre HDInsight-fürtöt,
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
 
-* További információ a Hive és a HDInsight együttes használatáról, például a Hive-lekérdezések Visual Studióból történő végrehajtásáról: [A Hive használata a HDInsighttal][hdinsight-use-hive].
-* További információ az adatok átalakítására szolgáló Pig nyelvről: [A Pig használata a HDInsighttal][hdinsight-use-pig].
-* További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal][hdinsight-use-mapreduce].
-* A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
+* További információ a [Apache Hive](https://hive.apache.org/) a HDInsight, beleértve a Visual Studióban a Hive-lekérdezések végrehajtásához lásd: [Apache Hive használata a HDInsight][hdinsight-use-hive].
+* További információ [Apache Pig](https://pig.apache.org/), adatok átalakítására szolgáló lásd [Apache Pig használata a HDInsight-][hdinsight-use-pig].
+* További információ [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), tekintse meg a hadoopon adatokat feldolgozó programok írására úgy [Apache Hadoop MapReduce használata a HDInsight-][hdinsight-use-mapreduce].
+* A HDInsight-adatok elemzésére a HDInsight Tools for Visual Studio használatával kapcsolatos további információkért lásd: [for HDInsight Visual Studio Apache Hadoop-eszközök használatának megkezdéséhez](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 Ha szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
@@ -80,11 +80,11 @@ Ha többet szeretne megtudni a HDInsight-fürtök létréhozásáról vagy kezel
 
 * Információk a Linux-alapú HDInsight-fürtök kezeléséhez: [Manage HDInsight clusters using Ambari](hdinsight-hadoop-manage-ambari.md) (HDInsight-fürtök kezelése az Ambari segítségével).
 * További információ a HDInsight-fürtök létrehozásakor kiválasztható beállításokról: [Creating HDInsight on Linux using custom options](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight létrehozása Linux rendszeren egyéni beállításokkal).
-* Ha már ismeri a Linux és a Hadoop használatát, de szeretne konkrét részleteket megtudni a HDInsight-alapú Hadoopról, akkor tekintse meg a következő témakört: [Working with HDInsight on Linux](hdinsight-hadoop-linux-information.md) (A HDInsight használata Linux rendszeren). Ez a cikk többek között az alábbi információkat tartalmazza:
+* Ha már ismeri a Linux- és Apache Hadoop, de konkrét részleteket a HDInsight a Hadoop tudni szeretné, tekintse meg [HDInsight használata Linux rendszeren](hdinsight-hadoop-linux-information.md). Ez a cikk többek között az alábbi információkat tartalmazza:
   
-  * a fürtön tárolt szolgáltatások, például az Ambari és a WebHCat URL-címét;
-  * a Hadoop-fájlok és- példák helyét a helyi fájlrendszerben;
-  * az Azure Storage (WASB) alapértelmezett adattárként történő használatát a HDFS helyett.
+  * URL-címek, mint például a fürtön tárolt szolgáltatások [Apache Ambari](https://ambari.apache.org/) és [webhcat használatával](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
+  * Helyét [Apache Hadoop](https://hadoop.apache.org/) fájlok és -példák a helyi fájlrendszerben
+  * Az Azure Storage (WASB) helyett használatát [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) alapértelmezett tárolásához
 
 [1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: f64a82cc3096c3c4d2a47568f4d6d516c685ee04
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: fc38c6278590e213674a2522169f988eaeea9cc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991753"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081353"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -45,7 +45,7 @@ Engedélyek hozzárendelése a Cost Management adataihoz kapcsolatos további in
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Költségvetés létrehozása az Azure Portalon
 
@@ -57,23 +57,23 @@ Után a költségvetés hoz létre, azok őket az aktuális költségeket az egy
 
 Kattintson a **Hozzáadás** parancsra.
 
-![A Cost Management költségvetése](./media/tutorial-acm-create-budgets/budgets01.png)
+![Az Azure Portalon látható a Cost Management költségvetése](./media/tutorial-acm-create-budgets/budgets01.png)
 
 Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki egy havi, negyedéves, vagy egy éves időtartama. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott.
 
 Íme egy példa egy havi költségvetés hoz létre az $4500. E-mailek beolvasása riasztás 90 %-a költségvetés elérésekor.
 
-![Havi költségvetés-példa](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![A létrehozás költségvetés mezőben látható példa információk](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
 Negyedéves költségvetési létrehozásakor az havi költségvetési azonos módon működik. A különbség az, hogy a költségvetési összeg a negyedév egyenletesen vannak osztva a három hónapos negyedév. Ahogy, éves költségvetés összeg egyenletesen osztva az év minden 12 hónapig.
 
 Támasztott költségeket aktuális frissül, amikor a Cost Management fogadja a frissített számlázási adatokat. Általában, naponta.
 
-![Jelenlegi támasztott költségeket](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+![Aktuális támasztott költségeket bemutató példaadatok](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
 
 Miután létrehozta a költségvetést, a költségek elemzése jelenik meg. Megtekintés a költségvetést, a költési trend viszonyítva az egyik az első lépéseket megkezdésekor [elemezheti a költségeket, és a költségkeret-beállítási](quick-acm-cost-analysis.md).
 
-![Költségvetés látható költségelemzés](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Példa költségvetés és a kiadások a cost analysis látható](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 Az előző példában létrehozott egy költségvetés-előfizetéssel. Azonban egy erőforráscsoporthoz költségvetési is létrehozhat. Ha azt szeretné, hozzon létre egy erőforráscsoportot a költségvetést, lépjen **Költségkezelés + számlázás** &gt; **előfizetések** &gt; válasszon ki egy előfizetést > **erőforrás csoportok** > Válasszon ki egy erőforráscsoportot > **költségvetése** >, majd **Hozzáadás** költségvetés keretében.
 
@@ -81,7 +81,7 @@ Az előző példában létrehozott egy költségvetés-előfizetéssel. Azonban 
 
 Függően a hozzáférési szintet, amelyet rendelkezik szerkesztheti a költségvetési tulajdonságainak módosításához. A következő példában az egyes tulajdonságok írásvédettek, mert a felhasználó csak az előfizetés közreműködő engedéllyel rendelkezik. Jelenleg a **lejárati dátum** le van tiltva, és a beállítása után nem módosítható.
 
-![Költségvetés – közreműködői engedélye szerkesztése](./media/tutorial-acm-create-budgets/edit-budget.png)
+![Példa a különböző tulajdonságok módosításához költségvetési szerkesztése](./media/tutorial-acm-create-budgets/edit-budget.png)
 
 
 ## <a name="next-steps"></a>További lépések

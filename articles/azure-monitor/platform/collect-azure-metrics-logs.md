@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 867d3647e293292a6294a30b71a046cc1c64d0d3
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.openlocfilehash: 33ceece70c920bcb8bfd49fcfc8ff544af592b6b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888290"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088204"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -61,7 +61,7 @@ Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböz�
 
 
 > [!NOTE]
-> Figyelés az Azure-beli virtuális gépek (Linux és Windows), javasoljuk, hogy telepíti a [Log Analytics Virtuálisgép-bővítmény](../../log-analytics/log-analytics-quick-collect-azurevm.md). Az ügynököt a virtuális gépekről gyűjtött elemzéseket biztosít. Virtuálisgép-méretezési csoportokhoz is használhatja a bővítményt.
+> Figyelés az Azure-beli virtuális gépek (Linux és Windows), javasoljuk, hogy telepíti a [Log Analytics Virtuálisgép-bővítmény](../../azure-monitor/learn/quick-collect-azurevm.md). Az ügynököt a virtuális gépekről gyűjtött elemzéseket biztosít. Virtuálisgép-méretezési csoportokhoz is használhatja a bővítményt.
 >
 >
 

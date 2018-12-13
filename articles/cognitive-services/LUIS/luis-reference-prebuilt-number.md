@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások száma referencia – Azure |} A Microsoft Docs
+title: Előre összeállított entitások száma
 titleSuffix: Azure
 description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) tartalmazza.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b3ac42f5ecd1dc14055b0767e057a1da093042f9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: ead544400f97f9a49296cc43552bea3a6f3def98
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334567"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095316"
 ---
 # <a name="number-entity"></a>Szám entitás
 Számos módon, amelyben a numerikus értékek összeszámolása, express, és írja le az adatokat használják. Ez a cikk ismerteti a lehetséges példa csak néhányat. A LUIS a változások, a felhasználó utterances értelmezi, és egységes numerikus értéket adja vissza. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések számot tartalmazó példa beszédmódok hozzáadása. 
@@ -42,7 +43,7 @@ LUIS tartalmazza a felismert értékét egy **`builtin.number`** az entitás a `
 ## <a name="resolution-for-prebuilt-number"></a>Feloldási előre összeállított maximális száma
 Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifejezés) "két tucat" értékének 24, LUIS, a JSON-választ.
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

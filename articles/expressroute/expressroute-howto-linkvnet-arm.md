@@ -2,18 +2,18 @@
 title: 'Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport: PowerShell: Azure |} A Microsoft Docs'
 description: Ez a dokumentum az ExpressRoute-Kapcsolatcsoportok összekapcsolása virtuális hálózatok (Vnetek) áttekintést nyújt a Resource Manager üzemi modell és a PowerShell használatával.
 services: expressroute
-documentationcenter: na
 author: ganesr
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: 02b765b3efe933a1dd8d12d422efff8142bdc553
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 5dde6dfdfaed23dbbfe61b06a433f731d90a0440
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234697"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075998"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz
 > [!div class="op_single_selector"]
@@ -171,7 +171,7 @@ $connection.RoutingWeight = 100
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett értéke 0.
+A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett érték a 0.
 
 ## <a name="next-steps"></a>További lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

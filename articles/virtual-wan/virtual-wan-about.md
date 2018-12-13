@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: fedb41f6538e0c65114c4a28c8aa43ffc7ef6d7f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: c2edb821eb8bd9a5da7a6cce81269e7d3f611722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957600"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869891"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
@@ -29,7 +29,7 @@ A cikk gyors betekintést biztosít az Azure-beli és nem Azure-beli számítás
 
 ## <a name="s2s"></a>Helyek közötti kapcsolatok
 
-Ha helyek közötti kapcsolatot szeretne létrehozni a Virtual WAN használatával, ezt megteheti egy [Virtual WAN-partneren](https://go.microsoft.com/fwlink/p/?linkid=2019615) keresztül vagy manuálisan is.
+Ha helyek közötti kapcsolatot szeretne létrehozni a Virtual WAN használatával, ezt megteheti egy [Virtual WAN-partneren](virtual-wan-locations-partners.md) keresztül vagy manuálisan is.
 
 ### <a name="s2spartner"></a>Együttműködés a Virtual WAN-partnerekkel
 
@@ -46,11 +46,11 @@ Ha nem szeretne választott partnert használni, manuálisan is konfigurálhatja
 
 A pont–hely (P2S) kapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális központtal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne csatlakoztatni.
 
-A kapcsolat manuális létrehozásával kapcsolatban lásd [a pont–hely kapcsolatok a Virtual WAN használatával való létrehozását](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid) ismertető cikket.
+A kapcsolat manuális létrehozásával kapcsolatban lásd [a pont–hely kapcsolatok a Virtual WAN használatával való létrehozását](virtual-wan-point-to-site-portal.md) ismertető cikket.
 
 ## <a name="er"></a>ExpressRoute-kapcsolatok (előzetes verzió)
 
-A kapcsolat manuális létrehozásával kapcsolatban lásd [az ExpressRoute-kapcsolatok a Virtual WAN használatával való létrehozását](https://go.microsoft.com/fwlink/p/?linkid=2020148&clcid) ismertető cikket.
+A kapcsolat manuális létrehozásával kapcsolatban lásd [az ExpressRoute-kapcsolatok a Virtual WAN használatával való létrehozását](virtual-wan-expressroute-portal.md) ismertető cikket.
 
 
 ## <a name="resources"></a>Virtual WAN-erőforrások
@@ -76,4 +76,4 @@ Végpontok közötti virtuális WAN konfigurálásához a következő erőforrá
 
 ## <a name="next-steps"></a>További lépések
 
-* A [Virtual WAN-partnerek és helyek](https://aka.ms/virtualwan) megtekintése
+Nézet a [virtuális WAN-partnerek és helyek](virtual-wan-locations-partners.md) lapot.

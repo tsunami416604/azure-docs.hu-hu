@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 93e64aaa436b23390de328a9268dcfcb773c279f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 08a114b7f1ea3c422489a830676d859a9da88b7c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728161"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075303"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuálisgép-bővítmény linuxhoz
 
@@ -81,7 +81,7 @@ A Log Analytics-ügynököket-bővítmény linuxhoz megköveteli, hogy a célold
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez a munkaterület-Azonosítót és a cél a Log Analytics-munkaterület; munkaterület kulcsa Ezek az értékek lehetnek [található a Log Analytics-munkaterület](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) az Azure Portalon. A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy **munkaterület azonosítója** és **workspaceKey** kis-és nagybetűket.
+A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez a munkaterület-Azonosítót és a cél a Log Analytics-munkaterület; munkaterület kulcsa Ezek az értékek lehetnek [található a Log Analytics-munkaterület](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) az Azure Portalon. A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy **munkaterület azonosítója** és **workspaceKey** kis-és nagybetűket.
 
 ```json
 {

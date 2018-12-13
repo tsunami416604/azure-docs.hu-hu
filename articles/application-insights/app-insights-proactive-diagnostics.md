@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: a023a18fb6f251ea878c54159509709a87daaa84
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724706"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868939"
 ---
 # <a name="smart-detection-in-application-insights"></a>Az Application Insights intelligens detektálás
  Intelligens észlelés automatikusan figyelmezteti, az esetleges teljesítményproblémákat okozhat a webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
@@ -56,7 +56,7 @@ Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából szárma
 
 * [Metrika explorer](app-insights-metrics-explorer.md)
 * [A keresési ablak](app-insights-diagnostic-search.md)
-* [Analytics – erőteljes lekérdezési nyelv](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics – erőteljes lekérdezési nyelv](../azure-monitor/log-query/get-started-portal.md)
 
 Az intelligens észlelés a teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 

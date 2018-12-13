@@ -1,21 +1,22 @@
 ---
-title: Rövid Java-útmutató – modell módosítása és LUIS-alkalmazás betanítása
-titleSuffix: Azure Cognitive Services
-description: Ebben a rövid Java-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+title: Módosíthatja, alkalmazás, Java betanítása
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Ebben a rövid Java-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfe4aae25a34799370e52c8677871a62935ab5c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 206b345fedb033a6b98e350fec8c66a3496f5236
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419741"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080826"
 ---
 # <a name="quickstart-change-model-using-java"></a>Rövid útmutató: Modell módosítása a Java használatával 
 
@@ -71,14 +72,14 @@ ms.locfileid: "50419741"
 
 A függőségeket tartalmazó AddUtterance fordítása
 
-```CMD
+```console
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
 ## <a name="run-code"></a>Kód futtatása
 Az `AddUtterance` argumentumok nélkül történő meghívása betanítás nélkül adja hozzá a LUIS-beli kimondott szövegeket az alkalmazáshoz.
 
-```CMD
+```console
 > java -classpath .;gson-2.8.2.jar AddUtterances
 ```
 

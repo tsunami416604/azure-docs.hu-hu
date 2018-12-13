@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e8608782c71f8afc2ae32b16077cb26b5dcc6849
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
-ms.translationtype: MT
+ms.openlocfilehash: e639bd40c877aded1439fe999fcf3f7114b9a727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976185"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890670"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Mesterséges Intelligencia használatával monitorozásának és hibaelhárításának intelligens elemzési adatbázis-teljesítmény
 
@@ -87,7 +87,7 @@ Az Azure SQL Analytics megoldás biztosítja a grafikus felhasználói felület,
 > Gyors bevezetés: ki az alapoktól való használatakor az Intelligent Insights beszerzése a legegyszerűbb módja az, hogy a vele együtt az Azure SQL Analytics, amely adatbázis teljesítményproblémák grafikus felhasználói felületet biztosít. A marketplace-ről az Azure SQL Analytics megoldás hozzáadása, hozzon létre egy munkaterületet a megoldás belül, és az Intelligent Insights engedélyezni kívánt minden egyes adatbázishoz, adja meg a diagnosztikai beállítások paneljén látható az adatbázis "SQLInsights" bejelentkezés adatfolyamként a az Azure SQL Analytics munkaterületén.
 >
 
-Üzem előtti követelmény, hogy rendelkezik Azure SQL Analytics hozzáadott a marketplace-ről az Azure portal Irányítópultjára, és hozzon létre egy munkaterületet, lásd: [konfigurálása az Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration)
+Üzem előtti követelmény, hogy rendelkezik Azure SQL Analytics hozzáadott a marketplace-ről az Azure portal Irányítópultjára, és hozzon létre egy munkaterületet, lásd: [konfigurálása az Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)
 
 Az Azure SQL Analytics Intelligent Insights használatához konfigurálja az Intelligent Insights naplóadatokat az előző lépésben létrehozott Azure SQL Analytics-munkaterületnek is streamelhetők lásd [Azure SQL Database metrikák és diagnosztikai naplózás](sql-database-metrics-diag-logging.md).
 
@@ -179,5 +179,5 @@ A figyelt kritikus kivételek adatbázisközi a abszolút küszöbértékeket a 
 
 - Ismerje meg, hogyan [intelligens elemzésekkel SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Használja a [Intelligent Insights az SQL Database teljesítményét diagnosztikai napló](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Ismerje meg, hogyan [figyeli az SQL Database használatával az SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Ismerje meg, hogyan [figyeli az SQL Database használatával az SQL Analytics](../azure-monitor/insights/azure-sql.md).
 - Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

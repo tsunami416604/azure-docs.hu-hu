@@ -1,6 +1,6 @@
 ---
-title: Rendelje hozzá, vagy Azure Active Directory-licencek eltávolítása |} A Microsoft Docs
-description: Rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket a felhasználók vagy csoportok Azure Active Directory használatával.
+title: Rendelje hozzá, vagy távolítsa el a licencek – Azure Active Directory |} A Microsoft Docs
+description: Rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket a felhasználók vagy csoportok kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077461"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>Hogyan: rendelje hozzá, vagy távolítsa el az Azure Active Directory-licencek
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Rendelje hozzá, vagy távolítsa el a licencek használata az Azure Active Directory portálon
 Számos Azure Active Directory (Azure AD) szolgáltatás az adott termék szükséges, hogy aktiválja az Azure AD-termékre, és a felhasználók vagy csoportok (és társított tagok) minden egyes licenc. Csak az aktív licenccel rendelkező felhasználók hozzáférhetnek, és a licencelt használata az Azure AD-szolgáltatások.
 
 ## <a name="available-product-editions"></a>Elérhető termékazonosító kiadások
@@ -40,7 +40,7 @@ Részletes információ az egyes termék edition és a társított licencelési 
 Megtekintheti az elérhető termékek, többek között az egyes licencek ellenőrzése minden függőben lévő lejárati dátumát és az elérhető hozzárendelések száma.
 
 ### <a name="to-find-your-product-and-license-details"></a>A termék- és licenc részletei keresése
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **licencek**.
 

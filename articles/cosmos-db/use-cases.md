@@ -7,12 +7,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: 400ce3ddb2a01db32faa7d3303c89a76c2c4649a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f49f56d57de6cdcb7c5e9b557ed897d17a6bf7fb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960030"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079177"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   
@@ -27,7 +27,7 @@ Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásá
 ## <a name="introduction"></a>Bevezetés
 [Az Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott adatbázis-szolgáltatása. A szolgáltatás célja, hogy az ügyfelek számára, hogy rugalmasan (és egymástól függetlenül) átviteli sebesség és tárterület tetszőleges számú földrajzi régió között. Az Azure Cosmos DB, az első globálisan elosztott adatbázis-szolgáltatás a piacon elérhető még ma, hogy kínál átfogó [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/cosmos-db/) mely magában foglalja az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia. 
 
-Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](http://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [MongoDB API-val](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), és [ Táblák API](table-introduction.md) natív módon, és a egy bővíthető módon. 
+Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](https://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [MongoDB API-val](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), és [ Táblák API](table-introduction.md) natív módon, és a egy bővíthető módon. 
 
 Az alábbiakban néhány attribútum az Azure Cosmos DB, győződjön meg arról, hogy kiválóan alkalmas nagy teljesítményű alkalmazások globális léptéke.
 
@@ -60,7 +60,7 @@ Katalógus adatok felhasználási magában foglalja a tároló és lekérdező a
 
 ![Az Azure Cosmos DB kiskereskedelmi katalógus referenciaarchitektúra](./media/use-cases/product-catalog.png)
 
-Az Azure Cosmos DB gyakran használják az event sourcing power eseményvezérelt architektúrák használatával, a [módosításcsatornáját](change-feed.md) funkciókat. A módosítási hírcsatorna teszi lehetővé alsóbb rétegbeli mikroszolgáltatások megbízható és Növekményesen olvasási beszúrások és a egy Azure Cosmos DB-hez készült frissítéseket (például rendelés események). Ez a funkció is javítható, ha egy állandó tárolóba üzenetközvetítőként állapot módosítása eseményekhez és a meghajtó munkafolyamatban számos mikroszolgáltatásból között adja meg (amely is megvalósíthatók [kiszolgáló nélküli Azure Functions](http://azure.com/serverless)).
+Az Azure Cosmos DB gyakran használják az event sourcing power eseményvezérelt architektúrák használatával, a [módosításcsatornáját](change-feed.md) funkciókat. A módosítási hírcsatorna teszi lehetővé alsóbb rétegbeli mikroszolgáltatások megbízható és Növekményesen olvasási beszúrások és a egy Azure Cosmos DB-hez készült frissítéseket (például rendelés események). Ez a funkció is javítható, ha egy állandó tárolóba üzenetközvetítőként állapot módosítása eseményekhez és a meghajtó munkafolyamatban számos mikroszolgáltatásból között adja meg (amely is megvalósíthatók [kiszolgáló nélküli Azure Functions](https://azure.com/serverless)).
 
 ![Az Azure Cosmos DB rendezése a folyamat a referencia-architektúra](./media/use-cases/event-sourcing.png)
 
@@ -69,7 +69,7 @@ Emellett az Azure Cosmos DB-ben tárolt adatok integrálható a HDInsight a big 
 ## <a name="gaming"></a>Játékok
 Az adatbázisszint játékalkalmazások felhőtermékekkel. A modern játékok grafikus feldolgozási mobile/konzol ügyfeleken, de a felhőt, például játékon belüli, a közösségimédia-integráció és a ranglistákat testre szabott és személyre szabott tartalmat továbbít. Játékok gyakran szükséges ezredmásodperces olvasási és írási műveletek egy vonzó biztosítanak a játékbeli felhasználói élményt. A játék-adatbázist kell gyors és kérelemarányok jelentkező hatalmas terheléseket kezelje az új játékok indul, és a funkciófrissítéseket.
 
-Az Azure Cosmos DB például a játékok által használt [a the Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) által [Next Games](http://www.nextgames.com/), és [a Halo 5: Őrei](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Az Azure Cosmos DB a játék fejlesztők számára a következő előnyöket nyújtja:
+Az Azure Cosmos DB például a játékok által használt [a the Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) által [Next Games](https://www.nextgames.com/), és [a Halo 5: Őrei](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Az Azure Cosmos DB a játék fejlesztők számára a következő előnyöket nyújtja:
 
 * Az Azure Cosmos DB lehetővé teszi, hogy a teljesítmény skálázását felfelé vagy lefelé rugalmasan. Ez lehetővé teszi a frissítési profil és -statisztikák a több tucat egyidejű játékélményt nyújthat millió kezelése azáltal, hogy egyetlen API hívással játékokat.
 * Az Azure Cosmos DB ezredmásodperces olvasási támogatja, és írja a játék során bármilyen késedelmes jelentések elkerülése érdekében.
@@ -104,12 +104,12 @@ Ismerkedés az Azure Cosmos DB használatával, kövesse a [rövid útmutatók](
 Vagy, ha többet szeretne azokról az ügyfelekről a Cosmos DB használatával, a következő ügyfelek beszámolói érhetők el:
 
 * [Jet.com adatfeldolgozási főigazgatója](https://jet.com). E-kereskedelmi úttörő élre a felső helyszíni eyes, a Microsoft cloud futtat, kihasználja a Cosmos DB globális méretű.
-* [Asos.com](http://www.asos.com/). Asos.com egy brit online módon és hatalmas áruházban. Célja a fiatal felnőttek, Asos Mit árul, több mint 850 márkákat, valamint a saját tartományán ruházat és kellékek.
+* [Asos.com](https://www.asos.com/). Asos.com egy brit online módon és hatalmas áruházban. Célja a fiatal felnőttek, Asos Mit árul, több mint 850 márkákat, valamint a saját tartományán ruházat és kellékek.
 * [Toyota](https://www.toyota.com/). Toyota Motor Corporation japán autógyártás gyártó. Toyota Cosmos DB globális IoT-alkalmazás használja.
 * [A Citrix](https://customers.microsoft.com/story/citrix). A Citrix fejlesztett single-sign-on megoldás az Azure Service Fabric és Azure Cosmos DB használatával
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA a Forradalmi IoT-megoldás jármű-tulajdonosok segít időt, költséget takaríthat meg, gáz mentés – és esetleg helyén.
 * [A Domino Kétpizzás](https://www.dominos.com). A Domino Kétpizzás Inc.-amerikai kétpizzás étteremlánc.
-* [Azt szabályozza, Johnson](http://www.johnsoncontrols.com). Johnson vezérlők egy globális változatos technológia és az ügyfelek már több mint 150 országban számos szolgáltató több ipari vezető.
+* [Azt szabályozza, Johnson](https://www.johnsoncontrols.com). Johnson vezérlők egy globális változatos technológia és az ügyfelek már több mint 150 országban számos szolgáltató több ipari vezető.
 * [A Microsoft Windows, univerzális Store, az Azure IoT Hub, az Xbox Live és más szolgáltatások](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). A Microsoft hogyan hoz létre az Azure Cosmos DB használatával nagy mértékben méretezhető szolgáltatásokkal.
 * [A Microsoft Data- és elemzési csoport](https://customers.microsoft.com/story/microsoftdataandanalytics). A Microsoft Data- és elemzési csoport éri el az Azure Cosmos DB globális big-data gyűjtemény
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha az Azure Cosmos DB ügyfeleket és a cégeket összekapcsolásához India.

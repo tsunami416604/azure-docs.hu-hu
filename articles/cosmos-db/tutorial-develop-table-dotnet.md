@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 02c4ead0f41463a70cc7123427193f835d9cca94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.openlocfilehash: c3749657ae432d8a6c85522b7dac31e31e39ea77
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877735"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075915"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben
 
@@ -97,7 +97,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
 
     A képernyő jobb oldalán található másolási gombok használatával másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét.
 
@@ -180,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 Az ügyfél az alkalmazás beállításaiban meghatározott `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` és `TablePreferredLocations` konfigurációs értékkel inicializálható.
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-Ezután létrehozhat egy táblát a `CloudTable` használatával. Az Azure Cosmos DB-ben a táblák egymástól függetlenül méretezhetők a tárolás és az átviteli teljesítmény szempontjából, és a szolgáltatás automatikusan kezeli a particionálást. Az Azure Cosmos DB a rögzített méretű és a korlátlan táblákat is támogatja. Részletekért lásd a [particionálást az Azure Cosmos DB-ben](partition-data.md). 
+
+Ezután létrehozhat egy táblát a `CloudTable` használatával. Az Azure Cosmos DB-ben a táblák egymástól függetlenül méretezhetők a tárolás és az átviteli teljesítmény szempontjából, és a szolgáltatás automatikusan kezeli a particionálást. 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");

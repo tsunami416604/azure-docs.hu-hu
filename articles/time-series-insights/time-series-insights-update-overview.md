@@ -10,16 +10,22 @@ ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
-ms.openlocfilehash: 01c3c580027fd682ccd7dc099def6dd6b2770d65
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 9843a01ed3c96b362e17718e9035c378da6c3cf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962528"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083393"
 ---
 # <a name="azure-time-series-insights-overview"></a>Az Azure Time Series Insights áttekintése
 
 Az Azure Time Series Insights (TSI) egy teljes körű Platform A – szolgáltatásként nyújtott betöltési, dolgozza fel, tárolása és lekérdezése rendkívül contextualized, a time series-optimalizált, amely ideális adatok feltárása ad hoc, valamint a működési elemzés IoT-méretű adatokra. Az Azure TSI szolgáltatás egyedileg bővíthető és testre szabott ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések.
+
+## <a name="video"></a>Videó
+
+Ebben a videóban áttekintést az Azure Time Series Insights (előzetes verzió) egy felhőalapú IoT-elemzési platform biztosítunk.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="defining-iot-data"></a>IoT-adatok meghatározása
 
@@ -46,7 +52,7 @@ Az Azure TSI egy átfogó teljes körű Platform, A szolgáltatás ajánlatot is
 A TSI jelenleg előzetes verzióban az operational insights-képességeket is kínál. Interaktív adatfeltárás és operatív adatelemzési TSI használatát teszi lehetővé tovább kamatoztatását IoT-eszközök gyűjtött adatokat nyer. Pontosabban az előzetes ajánlat támogatja az alábbi fő lehetőségeket:
 
 * Egy skálázható, teljesítmény és költség optimalizált idő sorozat adattár, amely lehetővé teszi, hogy a felhőalapú IoT-megoldás trend évnyi idősorozat-adatok másodpercek alatt.
-* A szemantikai modell támogatása a tartomány és a származtatott, és nem származtatott jelekkel, eszközök és eszközökről érkező társított metaadatokat.
+* Szemantikaimodell-támogatás, amellyel ismertetheti az eszközök származtatott és nem származtatott jeleihez társított tartományokat és metaadatokat.
 * Továbbfejlesztett felhasználói felületet nyújt, amely az eszközintelligencia-alapú adatelemzési információk ötvözi a gazdag, ad-hoc adatelemzést a üzleti és működési intelligenciával
 * Az integrációt a fejlett gépi tanulási és elemzési eszközökkel, mint például az Azure Databricks, az Apache Spark, Azure Machine Learning, a Jupyter notebooks, a Power bi-ban, hogy az ügyfelek idősorozat-adatok ügyfélfeladatainak idő kiszolgálókon és a működési hatékonyságot stb.
 

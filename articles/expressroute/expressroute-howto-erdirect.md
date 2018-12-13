@@ -1,18 +1,19 @@
 ---
-title: Az Azure ExpressRoute közvetlen konfigurálása |} A Microsoft Docs
-description: Ezen a lapon hogyan állíthat be az ExpressRoute közvetlen (előzetes verzió)
+title: Konfigurálja az ExpressRoute közvetlen – Azure |} A Microsoft Docs
+description: Ezen a lapon konfigurálja az ExpressRoute közvetlen (előzetes verzió) segítségével.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
-ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959668"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076610"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Az ExpressRoute közvetlen (előzetes verzió) konfigurálása
 

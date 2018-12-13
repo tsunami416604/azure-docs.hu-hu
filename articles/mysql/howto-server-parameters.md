@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 07/18/2018
-ms.openlocfilehash: 686db4dc15eb42abead3eef6798ed2b83e248811
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.date: 12/06/2018
+ms.openlocfilehash: 451316b32bcda43d62bbabf0c4f73d239698c85b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136451"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078722"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal használatával
 
@@ -42,9 +42,9 @@ InnoDB Pufferkészletben és kapcsolatok maximális száma nem konfigurálható 
 
 |**Tarifacsomag**| **Számítási generáció**|**vCore(s)**|**InnoDB Pufferkészletben (MB)**| **Kapcsolatok maximális száma**|
 |---|---|---|---|--|
-|Alapszintű| Gen 4| 1| 1024| 50|
+|Alapszintű| Gen 4| 1| 960| 50|
 |Alapszintű| Gen 4| 2| 2560| 100|
-|Alapszintű| Gen 5| 1| 1024| 50|
+|Alapszintű| Gen 5| 1| 960| 50|
 |Alapszintű| Gen 5| 2| 2560| 100|
 |Általános rendeltetés| Gen 4| 2| 3584| 300|
 |Általános rendeltetés| Gen 4| 4| 7680| 625|
@@ -56,10 +56,12 @@ InnoDB Pufferkészletben és kapcsolatok maximális száma nem konfigurálható 
 |Általános rendeltetés| Gen 5| 8| 15360| 1250|
 |Általános rendeltetés| Gen 5| 16| 31232| 2500|
 |Általános rendeltetés| Gen 5| 32| 62976| 5000|
+|Általános rendeltetés| Gen 5| 64| 125952| 10000|
 |Memóriára optimalizált| Gen 5| 2| 7168| 600|
 |Memóriára optimalizált| Gen 5| 4| 15360| 1250|
 |Memóriára optimalizált| Gen 5| 8| 30720| 2500|
 |Memóriára optimalizált| Gen 5| 16| 62464| 5000|
+|Memóriára optimalizált| Gen 5| 32| 125952| 10000|
 
 Ezeket a további kiszolgáló paramétereket, amelyek nem konfigurálhatók, a rendszer:
 

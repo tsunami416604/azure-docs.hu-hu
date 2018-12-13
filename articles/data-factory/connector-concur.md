@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: cee04bd3901db7136a877643979832ed8a70cbd8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123877"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076151"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával beleértve
 
@@ -79,7 +79,13 @@ A következő tulajdonságok támogatottak, beleértve a társított szolgáltat
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz beleértve adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása beleértve, állítsa be a type tulajdonság, az adatkészlet **ConcurObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása beleértve, állítsa be a type tulajdonság, az adatkészlet **ConcurObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ConcurObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+
 
 **Példa**
 
@@ -91,7 +97,8 @@ Adatok másolása beleértve, állítsa be a type tulajdonság, az adatkészlet 
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -107,7 +114,7 @@ Adatok másolása beleértve, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ConcurSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

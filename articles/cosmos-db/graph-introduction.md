@@ -8,29 +8,29 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f2ca118e137104c6dddd2945b7b88b2f535621eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849229"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077446"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Többmodelles adatbázis, amely támogatja a dokumentumokat, a kulcs-érték párokat, a gráfokat és az oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
 
-A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját. Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
+A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját. Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](https://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
 ## <a name="what-is-a-graph-database"></a>Mi az a gráfadatbázis?
 Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitásokra fókuszál. Számos alkalmazás esetében szükséges az entitások és a kapcsolatok természetes modellezése is.
 
-A [gráf](http://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. 
+A [gráf](https://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. 
 
 * **Csúcsok** – A csúcsok diszkrét objektumokat jelölnek, például személyeket, helyeket vagy eseményeket. 
 
 * **Élek** – Az élek a csúcsok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt. 
 
-* **Tulajdonságok** – A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat jelölik. Ilyen tulajdonságok lehet például a csúcsok neve vagy kora. Vagy egy él időbélyege és/vagy súlya. Formálisabban ezt a modellt [tulajdonsággráfnak](http://tinkerpop.apache.org/docs/current/reference/#intro) is nevezik. Az Azure Cosmos DB támogatja a tulajdonsággráf modellt.
+* **Tulajdonságok** – A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat jelölik. Ilyen tulajdonságok lehet például a csúcsok neve vagy kora. Vagy egy él időbélyege és/vagy súlya. Formálisabban ezt a modellt [tulajdonsággráfnak](https://tinkerpop.apache.org/docs/current/reference/#intro) is nevezik. Az Azure Cosmos DB támogatja a tulajdonsággráf modellt.
 
 Például az alábbi mintagráf személyek, mobileszközök, érdeklődési körök és operációs rendszerek közti kapcsolatokat ábrázol:
 
@@ -80,18 +80,18 @@ Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat 
 
 ## <a name="get-started"></a>Bevezetés
 
-Az Azure Cosmos DB Gremlin API-fiókok létrehozása és az azokhoz való hozzáférés az Azure parancssori felület (CLI), az Azure PowerShell vagy az Azure Portal használatával lehetséges. Miután létrehozott egy fiókot, az abban található gráfadatbázisokhoz a Gremlin API szolgáltatásvégpontjának (`https://<youraccount>.gremlin.cosmosdb.azure.com`) használatával férhet hozzá, amely WebSocket-előteret biztosít a Gremlinhez. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
+Az Azure Cosmos DB Gremlin API-fiókok létrehozása és az azokhoz való hozzáférés az Azure parancssori felület (CLI), az Azure PowerShell vagy az Azure Portal használatával lehetséges. Miután létrehozott egy fiókot, az abban található gráfadatbázisokhoz a Gremlin API szolgáltatásvégpontjának (`https://<youraccount>.gremlin.cosmosdb.azure.com`) használatával férhet hozzá, amely WebSocket-előteret biztosít a Gremlinhez. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
 
 Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-illesztőprogramokat foglalja össze:
 
 | Letöltés | Dokumentáció | Első lépések | Támogatott összekötő-verzió |
 | --- | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Gráf létrehozása a .NET használatával](create-graph-dotnet.md) | 3.4.0-RC2 |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Gráf létrehozása a Java használatával](create-graph-java.md) | 3.2.0+ |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Gráf létrehozása a .NET használatával](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Gráf létrehozása a Java használatával](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a GitHubon](https://github.com/jbmusso/gremlin-javascript) | [Gráf létrehozása a Node.js használatával](create-graph-nodejs.md) | 2.6.0|
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) | 3.2.7 |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) | 3.1.0 |
-| [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) | 3.2.0 + |
+| [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="graph-database-design-considerations"></a>Gráfadatbázisok kialakítási szempontjai
 

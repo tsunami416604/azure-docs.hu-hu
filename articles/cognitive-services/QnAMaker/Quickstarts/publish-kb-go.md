@@ -1,21 +1,22 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele – REST, Go – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: A REST-alapú rövid útmutató végigvezeti közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
+title: REST, nyissa meg a Tudásbázis közzététele
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: Nyissa meg REST-alapú rövid útmutató végigvezeti közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: b10180ad89890c314aec7059347186fa66b354f6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: MT
+ms.openlocfilehash: 4f553578890016579e6653fa9b13bfbf98f44796
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165084"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078599"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Go használatával
 

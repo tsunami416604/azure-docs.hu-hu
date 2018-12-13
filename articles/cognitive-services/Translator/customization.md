@@ -10,20 +10,20 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229679"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877972"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
-A Microsoft egyéni Translator előzetes funkciója, a Microsoft Translator szolgáltatás, amely lehetővé teszi a felhasználók testre speciális Neurális gépi fordítás a Microsoft Translator fordítása a szöveg a Translator Text API (csak a 3. verzió) használatával.
+A Microsoft egyéni Translator funkciója, a Microsoft Translator szolgáltatás, amely lehetővé teszi a felhasználók testre speciális Neurális gépi fordítás a Microsoft Translator fordítása a szöveg a Translator Text API (csak a 3. verzió) használatával.
 
-A funkció is használható együtt használva beszédalapú fordítási testreszabásához [Cognitive Services beszéd előzetes](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+A funkció is használható együtt használva beszédalapú fordítási testreszabásához [Cognitive Services beszéd](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
-## <a name="custom-translator"></a>Egyéni a fordítót
+## <a name="custom-translator"></a>Custom Translator
 
 Egyéni a fordítót hozhat létre olyan Neurális fordítással rendszerek, amelyek a saját üzleti és az iparágban használt terminológia ismertetése. A testre szabott fordítási rendszer majd fog integrálhatja meglévő alkalmazások, munkafolyamatok és a websites.
 
@@ -48,7 +48,7 @@ A Microsoft Translator örökölt Hub statisztikai gépi fordítási lefordítan
 
 |   | **Hub** | **Egyéni a fordítót**|
 |:-----|:----:|:----:|
-|Testreszabás funkció állapota   | Általános rendelkezésre állás  | Előzetes verzió |
+|Testreszabás funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
 | Text API-verzió  | Csak v2   | Csak a v3 |
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |

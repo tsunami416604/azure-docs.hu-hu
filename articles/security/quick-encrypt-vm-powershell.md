@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató – Windows IaaS virtuális gép titkosítása az Azure PowerShell használatával | Microsoft Docs
-description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használható az Azure PowerShell a Windows rendszerű virtuális gépek titkosítására.
+description: Ebben a rövid útmutató az Azure-ban Windows IaaS virtuális gép titkosítása az Azure PowerShell használatával.
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245871"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087864"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Rövid útmutató: Windows IaaS virtuális gép titkosítása az Azure PowerShell használatával
 
-Az Azure Disk Encryption segítségével titkosíthatja Windows és Linux rendszerű IaaS virtuális gépeit. A megoldás integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. Az Azure Disk Encryption használatával gondoskodhat róla, hogy inaktív virtuális gépei biztonságban legyenek az iparági szabványoknak megfelelő titkosítási technológia használatával. Ebben a rövid útmutatóban egy Windows Server 2016-alapú virtuális gépet fog létrehozni, majd titkosítani fogja az operációsrendszer-lemezt. 
+Az Azure Disk Encryption segítségével titkosíthatja Windows és Linux rendszerű IaaS virtuális gépeit. A megoldás integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. Az Azure Disk Encryption használatával gondoskodhat róla, hogy inaktív virtuális gépei biztonságban legyenek az iparági szabványoknak megfelelő titkosítási technológia használatával. Ebben a rövid útmutatóban egy Windows Server 2016-alapú virtuális gépet fog létrehozni, majd titkosítani fogja az operációsrendszer-lemezt.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

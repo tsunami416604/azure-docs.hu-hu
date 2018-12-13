@@ -1,5 +1,5 @@
 ---
-title: A Microsoft gépi tanuláson alapuló termékeinek összehasonlítása – Azure | Microsoft Docs
+title: A machine learning-a Microsoft termék-lehetőségek összehasonlítása
 description: Összehasonlíthat a Microsoft kínálatában található számos különféle terméket, hogy megalkothassa, üzembe helyezhesse és kezelhesse a gépi tanuláson alapuló modelljeit. Eldöntheti, mely terméket válassza ki a saját megoldásához.
 services: machine-learning
 ms.service: machine-learning
@@ -8,36 +8,36 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 09/24/2018
-ms.openlocfilehash: 182504373795b3cb0f2794acbed5e253ac6bc95c
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.date: 12/04/2018
+ms.openlocfilehash: a778a371e28b0406d43aa07bbc0c0c039654f7b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419559"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073771"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Milyen gépi tanuláson alapuló termékek találhatók a Microsoft kínálatában?
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Mik azok a machine learning-termékek, a Microsoft?
 
 A Microsoft számos különféle terméket kínál, amelyekkel megalkothatja, üzembe helyezheti és kezelheti gépi tanuláson alapuló modelljeit. A termékek összehasonlításával kiválaszthatja, melyikkel lesz a leghatékonyabb a gépi tanuláson alapuló megoldásának fejlesztése.
 
 | Gépi tanuláson alapuló termék | Mi ez? | Mik a lehetőségei |
 |-|-|-|
-| A felhőben | | |
+| ***A felhőben*** | | |
 | [Azure Machine Learning szolgáltatás](#azure-machine-learning-services) | Felügyelt felhőszolgáltatás Machine Learninghez  | Modellek betanítása, üzembe helyezése és kezelése Python és CLI használatával |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Húzással használható vizuális interfész Machine Learninghez | Modellek létrehozása és üzembe helyezése, illetve tanulási kísérletek futtatása előre konfigurált algoritmusok használatával |
+| [Az Azure Machine Learning Studióban](#azure-machine-learning-studio) | A csomóponthúzási&ndash;és&ndash;dobja el a vizuális felhasználói felületet, a gépi tanulás | Modellek létrehozása és üzembe helyezése, illetve tanulási kísérletek futtatása előre konfigurált algoritmusok használatával |
 | [Azure Databricks](#azure-databricks) | Spark-alapú elemzési platform | Modellek és adat-munkafolyamatok létrehozása és üzembe helyezése |
 | [Azure Cognitive Services](#azure-cognitive-services) | Azure szolgáltatás előre összeállított, mesterséges intelligencián és gépi tanuláson alapuló modellekkel | Intelligens funkciók egyszerű hozzáadása alkalmazásokhoz |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | Virtuális gép előre telepített adatelemzési eszközökkel | Gépi tanuláson alapuló megoldások fejlesztése előre konfigurált környezetben |
-| Helyszíni követelmények | | |
+| ***A helyszínen***<br>*(a helyszíni kiszolgálók is futtatható virtuális gépen a felhőben)* | | |
 | [SQL Server Machine Learning-szolgáltatások](#sql-server-machine-learning-services) | SQL-be ágyazott elemzési motor | Modellek létrehozása és üzembe helyezése SQL Serveren belül |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | Különálló nagyvállalati kiszolgáló prediktív elemzésekhez | Modellek építése és üzembe helyezése R és Python használatával |
-| Fejlesztői eszközök | | |
+| ***Fejlesztői eszközök*** | | |
 | [ML.NET](#mlnet) | Nyílt forráskódú, többplatformos Machine Learning SDK | Gépi tanuláson alapuló megoldások fejlesztése .NET-alkalmazásokhoz |
 | [Windows ML](#windows-ml) | Windows 10 Machine Learning platform | Betanított modellek értékelése Windows 10-es eszközökön |
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning szolgáltatás
 
-Az [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md) (előzetes verzió) egy teljes körűen felügyelt felhőszolgáltatás, amellyel gépi tanuláson alapuló modellek ipari méretekben taníthatók be, helyezhetők üzembe és kezelhetők. Teljes körűen támogatja a nyílt forráskódú technológiákat, így több tízezer nyílt forráskódú Python-csomaggal, többek között TensorFlow-val, PyTorch-csal és scikit-learnnel is használható. Emellett sokoldalú eszközök is rendelkezésére állnak, mint például az [Azure Notebooks](https://notebooks.azure.com/), a [Jupyter notebookok](http://jupyter.org) vagy a [Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/), amelyek segítségével könnyebben tárhatja fel és alakíthatja át adatait, illetve taníthatja be és helyezheti üzembe modelljeit. Az Azure Machine Learning szolgáltatás funkcióival a modellek generálása és finomhangolása könnyedén, hatékonyan és pontosan automatizálható.
+[Az Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md) egy teljes körűen felügyelt felhőszolgáltatás, használt betanításához, üzembe helyezése és kezelése a gépi Tanulási modelleket ipari méretekben. Teljes körűen támogatja a nyílt forráskódú technológiákat, így több tízezer nyílt forráskódú Python-csomaggal, többek között TensorFlow-val, PyTorch-csal és scikit-learnnel is használható. Gazdag eszközök is elérhetők, például [Azure notebookok](https://notebooks.azure.com/), [Jupyter notebookok](http://jupyter.org), vagy a [a Visual Studio Code az Azure Machine Learning](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) bővítmény megkönnyíti a felfedezése és alakíthat át adatokat, és ezután betanítása és modellek üzembe helyezése. Az Azure Machine Learning szolgáltatás funkcióival a modellek generálása és finomhangolása könnyedén, hatékonyan és pontosan automatizálható.
 
 Az Azure Machine Learning szolgáltatással a Python és a CLI használatával taníthat be, helyezhet üzembe és kezelhet gépi tanuláson alapuló modelleket ipari méretekben.
 
@@ -74,9 +74,10 @@ A Cognitive Services különböző eszközökre és platformokra történő alka
 ## <a name="azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine
 
 Az [Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md) egy személyre szabott virtuálisgép-környezet a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre hoztak létre. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.
-A Data Science Virtual Machine Windows és Linux Ubuntu rendszerekhez készült verziója egyaránt elérhető (Linux CentOS rendszeren nem támogatott az Azure Machine Learning szolgáltatás).
-Egy adott verzió információiért és a benne található funkciók listájáért lásd a [Azure Data Science Virtual Machine (adatelemző virtuális gép) bemutatása](../data-science-virtual-machine/overview.md) című témakört.
+
 Azure Machine Learning szolgáltatás célként támogatja a Data Science Virtual Machine-t.
+Windows és Linux Ubuntu (az Azure Machine Learning szolgáltatás nem támogatott Linux CentOS) verzió érhető el.
+Egy adott verzió információiért és a benne található funkciók listájáért lásd a [Azure Data Science Virtual Machine (adatelemző virtuális gép) bemutatása](../data-science-virtual-machine/overview.md) című témakört.
 
 Akkor érdemes az Adatelemzési virtuális gépet használnia, ha egyetlen csomóponton kell futtatnia a feladatait. Illetve ha távolról kell virtuálisan felskáláznia a feldolgozást egyetlen gépen.
 

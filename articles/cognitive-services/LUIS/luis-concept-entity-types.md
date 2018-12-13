@@ -1,21 +1,22 @@
 ---
-title: A LUIS-alkalmazások – beszédfelismerés entitástípusok
-titleSuffix: Azure Cognitive Services
+title: Entitás típusa
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: A Language Understanding Intelligent Service (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: MT
+ms.openlocfilehash: 761b2101ed7b55de27628882778c51bc86c70ef4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085861"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075658"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 
@@ -71,7 +72,7 @@ A LUIS kínál számos különböző típusú entitások; előre összeállítot
 | Name (Név) | A címkézés | Leírás |
 | -- |--|--|
 | **Előre összeállított** <br/>[Egyéni](#prebuilt)| |  **Definíció**<br>Beépített típusok, amelyek közös fogalmait. <br><br>**List**<br/>kulcskifejezések száma, sorszámát, hőmérséklet, dimenzió, pénzt, kor, százalékos, e-mailt, URL-cím, telefonszám és a kulcsfontosságú kifejezések. <br><br>Előre összeállított entitások neve vannak fenntartva. <br><br>Az összes olyan előre összeállított entitások, az alkalmazáshoz hozzáadott rendszer adja vissza a [végpont](luis-glossary.md#endpoint) lekérdezés. További információkért lásd: [előre összeállított entitások](./luis-prebuilt-entities.md). <br/><br/>[Entitás példaválasz](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Reguláris kifejezés**<br/>[Reguláris kifejezés](#regex)||**Definíció**<br>Egyéni reguláris kifejezés formázott nyers utterance (kifejezés) szöveget. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  <br><br>Ehhez az entitáshoz jó szót vagy kifejezést semmilyen változást, amely egyben egységes konzisztens módon formázott.<br><br>Reguláris kifejezések egyeztetésének helyesírás-ellenőrzésének átalakítás után alkalmazza. <br><br>Ha a reguláris kifejezés túl összetett, például sok zárójelben, Ön nem adhat hozzá a kifejezés a modellbe. <br><br>**Példa**<br>`kb[0-9]{6,}` kb123456 illeszkedik.<br/><br/>[Gyors útmutató](luis-quickstart-intents-regex-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Reguláris kifejezés**<br/>[Reguláris kifejezés](#regex)||**Definíció**<br>Egyéni reguláris kifejezés formázott nyers utterance (kifejezés) szöveget. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  <br><br>Ehhez az entitáshoz jó szót vagy kifejezést semmilyen változást, amely egyben egységes konzisztens módon formázott.<br><br>Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza. Használja a része, de nem minden a [.Net reguláris kifejezés](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) könyvtár.<br><br>Ha a reguláris kifejezés túl összetett, például sok zárójelben, Ön nem adhat hozzá a kifejezés a modellbe. <br><br>**Példa**<br>`kb[0-9]{6,}` kb123456 illeszkedik.<br/><br/>[Gyors útmutató](luis-quickstart-intents-regex-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md)|
 | **Egyszerű** <br/>[Gép megtanult](#machine-learned) | ✔ | **Definíció**<br>Egy egyszerű entitás egy általános entitás, amely egy egyetlen fogalom ismerteti, és van megtanult a gép megtanult környezetből. Környezet például a word választott, a word elhelyezési és az utterance (kifejezés) hossza.<br/><br/>Ez az a jó entitás szavakat vagy kifejezéseket, következetesen formátuma nem, de ugyanazt jelenti. <br/><br/>[Gyors útmutató](luis-quickstart-primary-and-secondary-data.md)<br/>[Entitás példaválasz](luis-concept-data-extraction.md#simple-entity-data)|  
 | **List** <br/>[Pontos egyezés](#exact-match)|| **Definíció**<br>Entitások listája és azok synoymns kapcsolódó szavakat rögzített, lezárt csoportját képviselik, a rendszer. <br><br>Előfordulhat, hogy minden lista entitás egy vagy több űrlap. Legjobban használható módszereket, amelyek ugyanazt a fogalmat változata egy ismert gyűjteményével.<br/><br/>A LUIS nem deríti fel a további értékek a lista entitásokat. Használja a **javasoljuk** funkció, amellyel új szavak javaslatokat tekintse meg az aktuális lista alapján.<br/><br>Ha egynél több lista entitás ugyanazzal az értékkel, a végpont lekérdezés minden entitás adja vissza. <br/><br/>[Gyors útmutató](luis-quickstart-intent-and-list-entity.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Vegyes](#mixed) | ✔|**Definíció**<br>Patterns.any pedig változó hosszúságú való megjelöléséhez, ahol az entitás kezdődik és végződik csak egy minta sablon utterance (kifejezés) használja.  <br><br>**Példa**<br>Adja meg az utterance (kifejezés) keresése könyvek cím alapján, a pattern.any kibontja a teljes cím. Egy sablon utterance (kifejezés) pattern.any használatával van `Who wrote {BookTitle}[?]`.<br/><br/>[Oktatóanyag](luis-tutorial-pattern.md)<br>[Entitás példaválasz](luis-concept-data-extraction.md#composite-entity-data)|  
@@ -98,7 +99,7 @@ Felülvizsgálat [korlátok](luis-boundaries.md#model-boundaries) megértéséhe
 
 ## <a name="roles-versus-hierarchical-entities"></a>Szerepkörök és a hierarchikus entitások
 
-További információkért lásd: [szerepkörök és a hierarchikus entitások](luis-concept-roles.md#roles-versus-hierarchical-entities).
+További információt a [szerepköröket és a hierarchikus entitásokat](luis-concept-roles.md#roles-versus-hierarchical-entities) ismertető cikkben talál.
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchikus entitások összetett vs
 Összetett hierarchikus alá tartozó alanyokra és egyaránt rendelkezik szülő-gyermek típusú kapcsolatokat és megtanult gép. A machine learning lehetővé teszi, hogy a LUIS tudni, hogy az entitások különböző környezetekben (szavak elrendezésének) alapján. Összetett entitások olyan rugalmasabb, mivel lehetővé teszik különböző entitástípusok gyermekeként. Egy hierarchikus entitás gyermekek csak egyszerű entitásokat is. 

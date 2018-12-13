@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093901"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075090"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával
 
@@ -52,30 +52,6 @@ Ez a cikk bemutatja, hogyan kell új felügyelt adatlemez csatolása egy Windows
 8. Az a **új lemez formázása** ablakban ellenőrizze a beállításokat, és válassza ki **Start**.
 9. Megjelenik egy figyelmeztetés értesíti, hogy a lemezek formázása törli az összes adatot. Kattintson az **OK** gombra.
 10. Válassza a formázás befejeződése után **OK**.
-
-## <a name="use-trim-with-standard-storage"></a>A TRIM függvénnyel a standard szintű storage szolgáltatással
-
-Ha standard szintű tárterület (HDD) használja, engedélyeznie kell a **TRIM** parancsot. A **TRIM** parancs elveti a nem használt blokkolja a lemezen, úgy, hogy csak a ténylegesen használt storage használatáért. Használatával **TRIM**, takaríthat meg a költségek nagy fájlok létrehozása, majd később törli a őket. 
-
-Ellenőrizze a **TRIM** beállítást, nyisson meg egy parancssort a Windows virtuális Gépen, és adja meg a következő parancsot:
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-Ha a parancs visszaadja a 0, **TRIM** megfelelően engedélyezve van. Ellenkező esetben 1 adja vissza, ha a következő paranccsal engedélyezéséhez **TRIM**:
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-Miután törli az adatokat a lemezről, gondoskodhat a **TRIM** a töredezettségmentesítési flush megfelelően a futó operations **TRIM**:
-
-```
-defrag.exe <volume:> -l
-```
-
-A kötet annak érdekében, hogy a teljes kötet van vágott is formázható.
 
 ## <a name="next-steps"></a>További lépések
 

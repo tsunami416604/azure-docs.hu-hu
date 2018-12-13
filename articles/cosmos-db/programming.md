@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: ea6bad6c6711240b8a5a0c57813a69b7c109c9c0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9f36d6761e61f0de610cb3f612cd069092cdc242
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878291"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083699"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények
 
-Ismerje meg, hogyan JavaScript nyelvintegrált, a tranzakciós végrehajtása az Azure Cosmos DB lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF-EK)**  a natív módon egy [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. A JavaScript integrációja lehetővé teszi, hogy a program logika, amely tartalmazza a szükséges, és közvetlenül az adatbázis tárolási partíciók belül írását. 
+Ismerje meg, hogyan JavaScript nyelvintegrált, a tranzakciós végrehajtása az Azure Cosmos DB lehetővé teszi, hogy a fejlesztők írási **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF-EK)**  a natív módon egy [ECMAScript 2015](https://www.ecma-international.org/ecma-262/6.0/) JavaScript. A JavaScript integrációja lehetővé teszi, hogy a program logika, amely tartalmazza a szükséges, és közvetlenül az adatbázis tárolási partíciók belül írását. 
 
 Ebben a cikkben megtudhatja a válaszokat az alábbi kérdésekre:  
 
@@ -44,7 +44,7 @@ Ez a megközelítés az *"JavaScript egy T-SQL modern napot"* felszabadítja a r
 
 A létrehozási és egyéni lekérdezési operátorokkal, adatbázis-eseményindítók és tárolt eljárások végrehajtása keresztül támogatott a [az Azure portal](https://portal.azure.com), a [REST API](/rest/api/cosmos-db/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), és [ügyféloldali SDK-k](sql-api-sdk-dotnet.md) , beleértve a .NET, Node.js és JavaScript számos platformon.
 
-Ebben az oktatóanyagban a [Node.js SDK-val Q Ígéreteinket](http://azure.github.io/azure-documentdb-node-q/) szintaxis és a tárolt eljárások, eseményindítók és felhasználói függvények használatát mutatja be.   
+Ebben az oktatóanyagban a [Node.js SDK-val Q Ígéreteinket](https://azure.github.io/azure-documentdb-node-q/) szintaxis és a tárolt eljárások, eseményindítók és felhasználói függvények használatát mutatja be.   
 
 ## <a name="stored-procedures"></a>Tárolt eljárások
 ### <a name="example-write-a-stored-procedure"></a>Példa: Egy tárolt eljárást írása
@@ -666,7 +666,7 @@ Az alábbi leírásokat a fenti táblázatban szereplő minden egyes lekérdezé
 
 
 ## <a name="runtime-support"></a>Podpora modulu Runtime
-Az Azure Cosmos DB [JavaScript kiszolgáló ügyféloldali API](https://azure.github.io/azure-cosmosdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelven, a szabványos [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Az Azure Cosmos DB [JavaScript kiszolgáló ügyféloldali API](https://azure.github.io/azure-cosmosdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelven, a szabványos [ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Biztonság
 A JavaScript tárolt eljárások és eseményindítók vendégünk, hogy egy szkript hatásait nem nyilvánosságra kerüljenek a másik a pillanatkép-tranzakció elkülönítés az adatbázis szintjén áthaladás nélkül. A futtatókörnyezetet készletezett, de a környezet minden egyes futás után törlődik. Ezért ezek garantáltan biztonságos, minden olyan nem kívánt mellékhatásokkal egymástól.
@@ -831,7 +831,7 @@ Azt is tapasztalhatja a következő hivatkozások és erőforrások hasznos, ha 
 
 * [Az Azure Cosmos DB a JavaScript kiszolgálóoldali API-referencia](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-* [Biztonságos és hordozható adatbázis bővíthetőség](http://dl.acm.org/citation.cfm?id=276339) 
-* [Szolgáltatás-orientált adatbázis-architektúra](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
-* [A .NET-futtatórendszer a Microsoft SQL server üzemeltetése](http://dl.acm.org/citation.cfm?id=1007669)
+* [JavaScript ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+* [Biztonságos és hordozható adatbázis bővíthetőség](https://dl.acm.org/citation.cfm?id=276339) 
+* [Szolgáltatás-orientált adatbázis-architektúra](https://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+* [A .NET-futtatórendszer a Microsoft SQL server üzemeltetése](https://dl.acm.org/citation.cfm?id=1007669)

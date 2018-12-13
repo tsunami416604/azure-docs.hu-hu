@@ -1,19 +1,20 @@
 ---
-title: Egyéni dátum/idő elérésiút-minták az Azure Stream Analytics a blob storage-kimenet (előzetes verzió)
-description: ''
+title: Dátum/idő elérésiút-minták az Azure Stream Analytics (előzetes verzió) kimeneti blob
+description: Ez a cikk ismerteti az egyéni dátum és idő elérési útja minták funkció az Azure Stream Analytics-feladatok a blob storage-kimenet.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452564"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090785"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Egyéni dátum/idő elérésiút-minták az Azure Stream Analytics a blob storage-kimenet (előzetes verzió)
 
@@ -61,7 +62,7 @@ Például: `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={dat
 
 Egyéni kimeneti kiküszöböli módosítása a táblák és partíciók manuálisan hozzá port adatok között az Azure Stream Analytics és a Hive archiválás vesződségei nélkül. Ehelyett sok mappákat is hozzáadhatók használatával automatikusan:
 
-```
+```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 ```
 
@@ -75,9 +76,9 @@ Hozzon létre egy blob kimeneti fogadó a következő beállításokkal:
 
 A teljes elérési út mintája a következőképpen történik:
 
-```
-year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}
-```
+
+`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
+
 
 A feladat indításakor a mappastruktúra az elérésiút-minta alapján jön létre a blob-tárolóban. A napi szintű részletesen elemezheti.
 

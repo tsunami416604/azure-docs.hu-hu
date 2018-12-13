@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632772"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077341"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
 
@@ -123,7 +123,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 Ha elkészült, kövesse az előző szakaszban fiókhoz való csatlakozás a Log Analytics a megfelelő tárolási.
 
-Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-munkaterület PowerShell használatával. További tudnivalókért lásd: [kezelése a Log Analytics PowerShell-lel](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-munkaterület PowerShell használatával. További tudnivalókért lásd: [kezelése a Log Analytics PowerShell-lel](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 * [A Log Analytics-ügynök telepítésének](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok összegyűjtéséhez a teljesítményszámlálókat és a docker-statisztikák és a tárolókhoz naplóinak összegyűjtésére

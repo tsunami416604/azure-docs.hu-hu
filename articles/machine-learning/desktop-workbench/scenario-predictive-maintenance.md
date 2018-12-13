@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c638ed9132612db7b82168d3a57057aba9b2d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996213"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870334"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós életből vett prediktív karbantartás
 
@@ -98,13 +98,13 @@ A példa notebookok az kódjának könyvtárában tárolódnak. A notebookok be�
 
 ## <a name="data-description"></a>Adatok leírása
 
-A [szimulált adatok](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) öt vesszővel tagolt (.csv) fájlból áll. Az alábbi hivatkozások segítségével első adatkészletek kapcsolatos részletes leírását.
+A [szimulált adatok](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide) a következőket tartalmazza [öt vesszővel elválasztott értékeket tartalmazó (.csv) fájlt](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data):
 
-* [Gépek](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): jellemzőket, például az életkor és a modell egyes gépek megkülönböztetésére.
-* [Hiba](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): A hibanapló vannak lépett fel, miközben továbbra is működik a gép nem törhető hibákat tartalmazza. Ezek a hibák nem tekinthetők hibák, bár prediktív jövőbeli hibák esemény is lehet. Hibák dátum-idő értékek vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
-* [Karbantartási](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): A karbantartási naplót mindkét ütemezett és nem tervezett karbantartás rekordokat tartalmaz. Ütemezett karbantartási megfelel-e a rendszeres időközönkénti összetevők vizsgálata. Nem ütemezett karbantartási gépi hiba vagy más teljesítménycsökkenés merülhetnek fel. A dátum-idő értékek karbantartás vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
-* [Telemetria](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): A telemetriai adatokat a processzoridővel sorozat minden gépen több érzékelőadatok áll. Az adatok naplózta érzékelő értékek átlaga egyes egy óra alatt.
-* [Hibák](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): hibák összetevő cseréjére belül a karbantartási naplót felelnek meg. Minden rekord tartalmazza a gép azonosítója, összetevőtípus, és a helyettesítő dátuma és időpontja. Ezeket a rekordokat a machine learning-címkék, amelyek a modell előre jelezni próbál létrehozására szolgálnak.
+* [Gépek](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/machines.csv): jellemzőket, például az életkor és a modell egyes gépek megkülönböztetésére.
+* [Hibák](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/errors.csv): A hibanapló vannak lépett fel, miközben továbbra is működik a gép nem törhető hibákat tartalmazza. Ezek a hibák nem tekinthetők hibák, bár prediktív jövőbeli hibák esemény is lehet. Hibák dátum-idő értékek vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
+* [Karbantartási](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/maint.csv): A karbantartási naplót mindkét ütemezett és nem tervezett karbantartás rekordokat tartalmaz. Ütemezett karbantartási megfelel-e a rendszeres időközönkénti összetevők vizsgálata. Nem ütemezett karbantartási gépi hiba vagy más teljesítménycsökkenés merülhetnek fel. A dátum-idő értékek karbantartás vannak kerekítve a legközelebbi óra, mivel a telemetriai adatok gyűjtése óránkénti.
+* [Telemetria](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/telemetry.csv): A telemetriai adatokat a processzoridővel sorozat minden gépen több érzékelőadatok áll. Az adatok naplózta érzékelő értékek átlaga egyes egy óra alatt.
+* [Hibák](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/failures.csv): hibák összetevő cseréjére belül a karbantartási naplót felelnek meg. Minden rekord tartalmazza a gép azonosítója, összetevőtípus, és a helyettesítő dátuma és időpontja. Ezeket a rekordokat a machine learning-címkék, amelyek a modell előre jelezni próbál létrehozására szolgálnak.
 
 Töltse le a nyers adatok beállítása a GitHub-adattárból, és hozzon létre ehhez az elemzéshez PySpark adatkészletek, tekintse meg a [adatbetöltés](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) Jupyter Notebookot a forgatókönyvben a kód mappában.
 

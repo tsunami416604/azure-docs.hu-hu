@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: danoble
-ms.openlocfilehash: f73c6f279f4281abb3751f101255ca3707a59641
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b7a6649fab8b0203c20b93bee9e941614828a99b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850380"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091798"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
@@ -76,7 +76,7 @@ Java-alkalmazások vagy a Java-ügyfelet használó MongoDB-alkalmazások futtat
 
 A [Tanúsítvány hozzáadása a Java CA tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikk utasításai alapján importálja az X.509-tanúsítványt az alapértelmezett Java-tanúsítványtárolóba. Tartsa szem előtt, hogy a keytool parancs futtatásakor a %JAVA_HOME% könyvtárban fog dolgozni.
 
-A "CosmosDBEmulatorCertificate" SSL-tanúsítvány telepítése után az alkalmazásnak képesnek kell lennie a helyszíni Azure Cosmos DB Emulatorhoz való csatlakozásra és annak használatára. Ha továbbra is problémákat tapasztal, akkor ajánlott az [SSL/TLS-kapcsolatok hibaelhárítása](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) című cikk utasításai alapján eljárni. Valószínű, hogy a tanúsítvány nincs telepítve a %JAVA_HOME%/jre/lib/security/cacerts tárolóban. Megtörténhet például, hogy ha a Java több verziója is telepítve van, az alkalmazás nem azt a cacerts tárolót használja, amely frissítve lett.
+A "CosmosDBEmulatorCertificate" SSL-tanúsítvány telepítése után az alkalmazásnak képesnek kell lennie a helyszíni Azure Cosmos DB Emulatorhoz való csatlakozásra és annak használatára. Ha továbbra is problémákat tapasztal, akkor ajánlott az [SSL/TLS-kapcsolatok hibaelhárítása](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) című cikk utasításai alapján eljárni. Valószínű, hogy a tanúsítvány nincs telepítve a %JAVA_HOME%/jre/lib/security/cacerts tárolóban. Megtörténhet például, hogy ha a Java több verziója is telepítve van, az alkalmazás nem azt a cacerts tárolót használja, amely frissítve lett.
 
 ## <a name="how-to-use-the-certificate-in-python"></a>A tanúsítvány használata a Pythonban
 

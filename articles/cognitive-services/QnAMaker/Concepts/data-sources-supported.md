@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422354"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082237"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -44,7 +44,7 @@ Ez a gyakori kérdéseket tartalmazó oldal, ahol a válaszok azonnal kövesse u
 
 Az alábbi, egy egyszerű gyakori kérdéseket tartalmazó oldal egy példát:
 
-![Egyszerű gyakori kérdéseket tartalmazó oldal](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![Egyszerű – gyakori kérdések lapján példa a Tudásbázis](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>Mutató hivatkozásokat tartalmaz a gyakori kérdéseket tartalmazó oldalak 
@@ -53,7 +53,7 @@ A gyakori kérdéseket tartalmazó oldal az ilyen típusú kérdéseket együtt 
 
 Alább egyik példája egy gyakori kérdéseket tartalmazó oldal mutató hivatkozásokat tartalmaz, amelyek ugyanazon az oldalon szakaszokban:
 
- ![A szakasz hivatkozás gyakori kérdéseket tartalmazó oldal](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![A szakasz kapcsolat – gyakori kérdések lapján példa a Tudásbázis](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>A témakörök kezdőlapja a gyakori kérdéseket tartalmazó oldalak
@@ -62,7 +62,7 @@ Az ilyen típusú – gyakori kérdések a témakörök honlappal rendelkezik, a
 
 Alább egyik példája egy gyakori kérdések lapra, ahol témakörök kezdőlapja már – gyakori kérdések szakaszokban eltérő lapjain hivatkozásokat. 
 
- ![Áruházra mutató mélyhivatkozás – gyakori kérdések lapján](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![Tudásbázis lapon példa áruházra mutató mélyhivatkozás – gyakori kérdések](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>PDF / DOC fájlok
@@ -77,7 +77,7 @@ Manuális művelet rendszerint útmutatást anyagot, amely a termékek dokument�
 
 Alább egy példát egy index lapot, és a hierarchikus tartalom manuális van
 
- ![A termék manuális példa](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![A termék manuális példa a Tudásbázis](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > Kibontási optimális, amelyek a tábla tartalmát és/vagy a index lapot és a egy egyértelmű struktúra hierarchikus fejlécekkel kézikönyvek.
@@ -106,7 +106,7 @@ Answer2
 
 Alább egy példát egy strukturált QnA word-dokumentumot a következő:
 
- ![Strukturált QnA dokumentum](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![Tudásbázis strukturált QnA dokumentum példa](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>Strukturált *TXT*, *TSV* és *XLS* fájlok
 
@@ -121,7 +121,7 @@ A forrásfájl további oszlopokat a rendszer figyelmen kívül hagyja.
 
 Az alábbi példában a strukturált QnA, *.xls* fájlt, HTML-tartalom:
 
- ![Excel-strukturált kérdések és válaszok](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Strukturált QnA excel-példa a Tudásbázis](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>Strukturált adatok formátumát importálása
 

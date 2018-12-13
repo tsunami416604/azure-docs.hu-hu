@@ -1,6 +1,6 @@
 ---
-title: Újdonságok Kibocsátási megjegyzések az Azure ad-hez |} A Microsoft Docs
-description: Ismerje meg, mi az új Azure Active Directoryval (Azure AD), például a legújabb kibocsátási megjegyzések, az ismert problémák, hibajavításokat tartalmaz, az elavult funkciók és a jövőbeni változtatásokról.
+title: Újdonságok Kibocsátási megjegyzések – Azure Active Directory |} A Microsoft Docs
+description: Ismerje meg, mi az új Azure Active Directoryval, például a legújabb kibocsátási megjegyzések, az ismert problémák, hibajavításokat tartalmaz, elavult funkció, és a közelgő változásokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc4e421808ab0f79070224edea4b75f527affaf0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.custom: it-pro
+ms.openlocfilehash: 8ed51a5f61ca48434fd837449ecc2b6b8c3d74dc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426237"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083517"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 

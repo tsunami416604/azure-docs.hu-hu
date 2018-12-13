@@ -17,7 +17,7 @@ ms.author: abshamsft
 ms.component: ''
 ms.openlocfilehash: e0ea6a82b1dbd9b3fa4a273fae2b79cdc3629904
 ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52890721"

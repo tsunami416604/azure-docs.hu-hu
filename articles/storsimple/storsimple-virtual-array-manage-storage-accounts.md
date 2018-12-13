@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736733"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867605"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Tárfiók hitelesítő adatainak kezelése a StorSimple Virtual Array StorSimple Eszközkezelő
 
@@ -148,7 +148,7 @@ Tájékoztatja a változás a StorSimple-Eszközkezelő szolgáltatás, meg kell
     
 4. A StorSimple-Eszközkezelő szolgáltatásban frissíteni szeretné a kulcsot, amely korábban módosult a Microsoft Azure Storage szolgáltatásban. Az a **Synchronize tárfiókkulcs** panelen, ha az elsődleges elérési kulcs megváltozott (sikeres újragenerálás), kattintson az elsődleges, és kattintson **kulcs szinkronizálása**. Ha a másodlagos kulcs megváltozott, kattintson a **másodlagos**, és kattintson a **kulcs szinkronizálása**.
    
-    ![Elérési kulcs szinkronizálása](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-acess-key.png)
+    ![Elérési kulcs szinkronizálása](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [felügyelete a StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).

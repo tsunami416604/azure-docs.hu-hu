@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 28327a650bad529595ec843ed73f00a9dfcfa58a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874226"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082951"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és teljesítési folyamat
 Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely telepítve van az Azure DevOps-könnyedén integrálhatja a build és kiadás folyamatos üzembe helyezési folyamat az Azure DevTest Labs. A bővítmény telepítését három feladatot: 
@@ -138,7 +138,7 @@ A központi telepítés a következő szintre, ha a virtuális Géphez használa
 1. Válassza ki a kibocsátási folyamat **tevékenységek hozzáadása a** , majd a a **telepítés** lapon maradva adja hozzá egy *Azure PowerShell-lel* feladat. A feladat a következőképpen konfigurálja:
 
    > [!NOTE]
-   > Gyűjteni a DevTest Labs virtuális gép adatait, tekintse meg [üzembe helyezés: Azure PowerShell-lel](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) , és hajtsa végre a parancsprogramot.
+   > Gyűjteni a DevTest Labs virtuális gép adatait, tekintse meg [üzembe helyezés: Azure PowerShell-lel](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) , és hajtsa végre a parancsprogramot.
 
    a. A **Azure kapcsolattípus**válassza **Azure Resource Manager**.
 

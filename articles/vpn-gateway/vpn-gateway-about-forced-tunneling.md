@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure-webhelyek kapcsolatok kényszerített bújtatás konfigurálása: klasszikus |} Microsoft Docs'
-description: Hogyan lehet irányítani, vagy "kényszerített" minden internetre irányuló forgalomnak a helyszíni helyre.
+title: 'Az Azure Site-to-Site-kapcsolatok kényszerített bújtatás konfigurálása: klasszikus |} A Microsoft Docs'
+description: Hogyan lehet irányítani, vagy "kényszerítéséhez" internetre irányuló összes forgalmat a helyszíni helyre.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 79bf6892c823da282c3e763921e830f986419854
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cf566811f1e5fe7fde20d148e68417acf6d42f54
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23883522"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073822"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Kényszerített bújtatás konfigurálása klasszikus üzemi modellel
 
-A kényszerített bújtatás lehetővé teszi az átirányítási vagy "kényszerített" minden internetre irányuló forgalomnak biztonsági másolatot a helyszíni helyre vizsgálati és naplózási pont-pont VPN-alagúton keresztül. Ez az kritikus fontosságú biztonsági előfeltétele annak, hogy a legtöbb vállalati informatikai házirendek. Kényszerített bújtatás nélkül internetre irányuló forgalomnak a virtuális gépek Azure-ban lesz mindig haladnak át Azure hálózati infrastruktúráról közvetlenül kimenő csatlakozik az internethez, a beállítás lehetővé teszi vizsgálja meg, vagy a forgalom naplózása nélkül. Jogosulatlan Internet-hozzáférés is eredményezhet, információfelfedés vagy más típusú biztonsági problémákat.
+Kényszerített bújtatás lehetővé teszi az átirányítási vagy "kényszerített" internetre irányuló összes forgalmat a helyszíni helyre biztonsági és vizsgálati és naplózási Site-to-Site VPN-alagúton keresztül. Ez a legtöbb vállalati informatikai kritikus fontosságú biztonsági követelményeket a szabályzatokat. Anélkül, hogy kényszerített bújtatást végez, internetre irányuló forgalmat a virtuális gépekről az Azure-ban fog mindig haladnak át az Azure hálózati infrastruktúráról közvetlenül meg az internethez, ezáltal lehetővé teszi a forgalmat, vagy vizsgálja meg a beállítás nélkül. Jogosulatlan Internet-hozzáférés potenciálisan vezethet információfelfedés vagy más biztonsági résekkel szemben.
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálása, a kényszerített bújtatás a klasszikus telepítési modellel létrehozott virtuális hálózatokat. A kényszerített bújtatás PowerShell, nem a portálon keresztül használatával konfigurálható. Ha azt szeretné, a Resource Manager üzembe helyezési modellben a kényszerített bújtatás konfigurálása, a következő legördülő listából válassza a klasszikus cikk:
+Ez a cikk konfigurálásán vezeti végig kényszerített bújtatás a klasszikus üzemi modellel létrehozott virtuális hálózatok esetében. Kényszerített bújtatás PowerShell-lel, nem a portálon keresztül konfigurálható. Ha azt szeretné, a Resource Manager üzemi modell a kényszerített bújtatás konfigurálása, az alábbi legördülő listából válassza a klasszikus cikk:
 
 > [!div class="op_single_selector"]
 > * [PowerShell – Klasszikus](vpn-gateway-about-forced-tunneling.md)
@@ -37,22 +37,22 @@ Ez a cikk bemutatja, hogyan konfigurálása, a kényszerített bújtatás a klas
 > 
 
 ## <a name="requirements-and-considerations"></a>Követelmények és szempontok
-Az Azure-ban kényszerített bújtatás konfigurálása virtuális hálózati felhasználó által definiált útvonalak (UDR) keresztül. Egy helyszíni hely irányít át forgalmat az Azure VPN gatewayhez alapértelmezett útvonalat kifejezve. A következő szakaszban azok az aktuális útválasztási táblázat és korlátozása útvonalak egy Azure virtuális hálózat:
+Kényszerített bújtatás az Azure-beli virtuális hálózati felhasználó által megadott útvonalak (UDR) keresztül van konfigurálva. Egy alapértelmezett útvonalat az Azure VPN gateway kifejezése egy helyszíni helyre irányítja a forgalmat. A következő szakaszban azok az Azure Virtual Network az útválasztási tábla-és útvonalak a jelenlegi korlátozás:
 
-* Minden egyes virtuális hálózati alhálózat van egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási táblázatban az útvonalak a következő három csoport rendelkezik:
+* Minden egyes virtuális hálózat alhálózatához rendelkezik egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási tábla az útvonalak a következő három csoport rendelkezik:
 
-  * **Helyi VNet útvonalak:** közvetlenül és a cél virtuális gépek ugyanabban a virtuális hálózatban.
-  * **A helyi útvonalak:** számára az Azure VPN gateway.
-  * **Alapértelmezett útvonal:** közvetlenül kell az internethez. A privát IP-címek nem fedi le az előző két útvonalak szánt csomagok törlődnek.
-* Felhasználó által definiált útvonalak kiadása létrehoz egy útválasztási táblázatot egy alapértelmezett útvonal hozzáadása, és majd társítani a virtuális hálózat alhálózat ezek alhálózatok kényszerített bújtatás engedélyezése az útválasztási táblázatban.
-* Egy "alapértelmezett"nevű hely a létesítmények közötti helyi helyek között a virtuális hálózathoz be kell.
-* A kényszerített bújtatás kell rendelni egy Vnetet, amely egy dinamikus útválasztási VPN-átjáró (nem a statikus átjárók) rendelkezik.
-* A kényszerített bújtatás ExpressRoute a mechanizmus révén nincs konfigurálva, de ehelyett szerint engedélyezve van egy alapértelmezett útvonalat hirdet a ExpressRoute BGP társviszony-létesítési munkameneteket keresztül. Tekintse meg a [ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/) további információt.
+  * **Helyi VNet-útvonal:** közvetlenül és a cél virtuális gépek ugyanazon a virtuális hálózaton.
+  * **A helyszíni útvonalakat:** , az Azure VPN-átjáró.
+  * **Alapértelmezett útvonal:** közvetlenül az internethez való. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer eldobja.
+* Felhasználó által megadott útvonalak kiadása hozzon létre egy útválasztási táblázatot, adjon hozzá egy alapértelmezett útvonalat, és majd rendelheti hozzá az ezekhez az alhálózatokhoz a kényszerített bújtatás engedélyezése a virtuális hálózat alhálózat az útválasztási táblázatban.
+* Meg kell állítania egy "alapértelmezett webhely" a létesítmények közötti helyek között a virtuális hálózathoz csatlakozik.
+* Kényszerített bújtatás kell rendelni egy virtuális hálózattal, amely dinamikus útválasztási VPN-átjáró (nem a statikus átjárók) rendelkezik.
+* Kényszerített bújtatás ExpressRoute nincs konfigurálva ez a mechanizmus keresztül, de ehelyett szerint engedélyezve van a társviszony-létesítési ExpressRoute BGP-munkamenetek használatával egy alapértelmezett útvonalat hirdet. Tekintse át a [az ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/) további információt.
 
-## <a name="configuration-overview"></a>Konfigurálása – áttekintés
-A következő példában a Frontend alhálózathoz nem kényszeríti a bújtatott. A munkaterhelések Frontend alhálózaton fogadja el, és a felhasználói kérésekre válaszol az internetről közvetlenül is. A közepes réteg és a háttérkiszolgáló alhálózatok kényszerítve vannak bújtatott. A kimenő kapcsolatokat ezek két alhálózat-Internet kell kényszerített vagy egy helyszíni hely keresztül az S2S VPN-alagutat átirányítva.
+## <a name="configuration-overview"></a>Konfiguráció áttekintése
+A következő példában az előtérbeli alhálózat nem kényszerítetten bújtatott. Az előtérben levő alhálózathoz számítási feladatokhoz továbbra is fogadni és válaszol ügyfelek az internetről közvetlenül. A középső rétegbeli és a háttérbeli alhálózat kényszerítve bújtatott. Az internethez az alábbi két alhálózat bármely kimenő kapcsolatok kényszerített vagy átirányítva az S2S VPN-alagúton keresztül egy helyszíni helyhez lesz.
 
-Ez lehetővé teszi, hogy korlátozza és vizsgálja meg a virtuális gépek Internet-hozzáféréssel, vagy miközben továbbra is a többrétegű szolgáltatás architektúrája szükséges engedélyezése a felhőalapú Azure-szolgáltatások. Is alkalmazhat kényszerített bújtatás a teljes virtuális hálózatokra Ha szerepel a virtuális hálózatok nem internetre munkaterhelések.
+Ez lehetővé teszi, hogy korlátozza és vizsgálja meg az Internet-hozzáférést a virtuális gépek vagy felhőszolgáltatások az Azure-ban, miközben továbbra is szükséges a többrétegű szolgáltatások architektúra engedélyezése. Is alkalmazhat a kényszerített bújtatás a teljes virtuális hálózatok Ha sem internetkapcsolattal rendelkező számítási feladatok a virtuális hálózatokon.
 
 ![Alagúthasználat kényszerítése](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
@@ -60,13 +60,13 @@ Ez lehetővé teszi, hogy korlátozza és vizsgálja meg a virtuális gépek Int
 A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következő elemekkel.
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
-* A konfigurált virtuális hálózati. 
-* Az Azure PowerShell-parancsmagok legújabb verzióját. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+* Egy konfigurált virtuális hálózatot. 
+* Az Azure PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
 ## <a name="configure-forced-tunneling"></a>Kényszerített bújtatás konfigurálása
-Az alábbi eljárás segítségével megadhatja, hogy kényszerített bújtatást a virtuális hálózat. A konfigurálás lépéseinek végrehajtásához a virtuális hálózat hálózati konfigurációs fájl tartozik.
+Az alábbi eljárás segítségével adja meg a kényszerített bújtatás egy virtuális hálózathoz. A konfigurációs lépések megegyeznek a virtuális hálózatok közötti hálózati konfigurációs fájlt.
 
-```
+```xml
 <VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
      <AddressSpace>
       <AddressPrefix>10.1.0.0/16</AddressPrefix>
@@ -104,47 +104,50 @@ Az alábbi eljárás segítségével megadhatja, hogy kényszerített bújtatás
     </VirtualNetworkSite>
 ```
 
-Ebben a példában a virtuális hálózat MultiTier – VNet három alhálózatok rendelkezik: "Háttér", "Előtér" és "Midtier" alhálózatok, négy helyszínek közötti kapcsolatok: "DefaultSiteHQ", és három ágak. 
+Ebben a példában a virtuális hálózat MultiTier – VNet három alhálózatot tartalmaz: "Háttér", "Előtér" és "Midtier" alhálózatok, négy létesítmények közötti kapcsolat: "DefaultSiteHQ", és három ágat. 
 
-A lépések állítja be a "DefaultSiteHQ" az alapértelmezett hely kapcsolat a kényszerített bújtatás, és konfigurálja a Midtier és háttér-alhálózatok használata a kényszerített bújtatást.
+A lépések a "DefaultSiteHQ' állítja az alapértelmezett hely kapcsolat a kényszerített bújtatás, és konfigurálja a Midtier, és a háttérbeli alhálózatok használata kényszerített bújtatás.
 
-1. Hozzon létre egy útválasztási táblázatban. Az útvonaltábla létrehozásához használja a következő parancsmagot.
+1. Útválasztási táblázat létrehozása. A következő parancsmag használatával az útválasztási táblázat létrehozása.
 
-  ```powershell
-  New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
-  ```
+   ```powershell
+   New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+   ```
+
 2. Adjon hozzá egy alapértelmezett útvonalat az útválasztási táblázathoz. 
 
-  A következő példa egy alapértelmezett útvonalat ad az 1. lépésben létrehozott útválasztási táblázathoz. Vegye figyelembe, hogy az csak útvonal támogatott "0.0.0.0/0" a "A(z)" következő ugrás a cél-előtagot.
+   Az alábbi példa hozzáad egy alapértelmezett útvonalat az útválasztási táblázatban az 1. lépésben létrehozott. Vegye figyelembe, hogy az egyetlen útvonalat támogat a cél előtagjához "0.0.0.0/0" a "VPN" következő ugrás.
 
-  ```powershell
-  Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
-  ```
-3. Az útválasztási táblázatban az alhálózatok társítása. 
+   ```powershell
+   Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+   ```
 
-  Után létre lett hozva egy útválasztási táblázat és egy útvonalat, az alábbi példát követve adja hozzá, vagy rendeljen hozzá egy virtuális hálózat alhálózathoz útvonaltábla. A példa az útvonaltáblát "MyRouteTable" hozzáadása a Midtier és a háttérkiszolgáló alhálózatok MultiTier-VNet hálózatok.
+3. Az útválasztási táblázatban az alhálózatokhoz társítja. 
 
-  ```powershell
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
-  ```
-4. Rendeljen hozzá egy alapértelmezett webhelyet, a kényszerített bújtatást. 
+   Miután egy útválasztási tábla jön létre, és egy útvonalat, használja a következő példát hozzáadása és társít egy virtuális hálózat alhálózatához. A példa az útvonaltáblában "MyRouteTable" Midtier és a háttérbeli alhálózatok, MultiTier hálózatok ad hozzá.
 
-  Az előző lépésben parancsmag mintaparancsfájlok az útvonaltábla létrehozása, és két VNet alhálózatok útvonaltábla társítva. A többi lépés helyet kell kijelölnie egy helyi a többhelyes kapcsolatok a virtuális hálózat között az alapértelmezett hely, vagy alagút.
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+   ```
 
-  ```powershell
-  $DefaultSite = @("DefaultSiteHQ")
-  Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
-  ```
+4. A kényszerített bújtatás, rendeljen hozzá egy alapértelmezett helyet. 
+
+   Az előző lépésben a minta parancsmagot parancsprogramok az útválasztási táblázat létrehozása, és az útvonaltábla két virtuális hálózat alhálózatok társítva. A fennmaradó lépéseként válassza ki a többhelyes kapcsolatokat a virtuális hálózat között egy helyi alagút vagy alapértelmezett webhelyhez.
+
+   ```powershell
+   $DefaultSite = @("DefaultSiteHQ")
+   Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
+   ```
 
 ## <a name="additional-powershell-cmdlets"></a>További PowerShell-parancsmagok
-### <a name="to-delete-a-route-table"></a>Új útvonaltábla törlése
+### <a name="to-delete-a-route-table"></a>Útválasztási táblázat törlése
 
 ```powershell
 Remove-AzureRouteTable -Name <routeTableName>
 ```
   
-### <a name="to-list-a-route-table"></a>Egy útválasztási táblázatot listájára
+### <a name="to-list-a-route-table"></a>Útválasztási táblázat listázásához
 
 ```powershell
 Get-AzureRouteTable [-Name <routeTableName> [-DetailLevel <detailLevel>]]
@@ -156,19 +159,19 @@ Get-AzureRouteTable [-Name <routeTableName> [-DetailLevel <detailLevel>]]
 Remove-AzureRouteTable –Name <routeTableName>
 ```
 
-### <a name="to-remove-a-route-from-a-subnet"></a>Egy alhálózat egy útvonal eltávolítása
+### <a name="to-remove-a-route-from-a-subnet"></a>Egy alhálózatról egy útvonal eltávolítása
 
 ```powershell
 Remove-AzureSubnetRouteTable –VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 ```
 
-### <a name="to-list-the-route-table-associated-with-a-subnet"></a>Alhálózat társított útvonaltábla listázásához
+### <a name="to-list-the-route-table-associated-with-a-subnet"></a>Az alhálózatokhoz társított útvonaltábla listázásához
 
 ```powershell
 Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 ```
 
-### <a name="to-remove-a-default-site-from-a-vnet-vpn-gateway"></a>Az alapértelmezett hely eltávolítása a virtuális hálózat VPN-átjáró
+### <a name="to-remove-a-default-site-from-a-vnet-vpn-gateway"></a>Az alapértelmezett hely eltávolítása egy virtuális hálózatok közötti VPN-átjáró
 
 ```powershell
 Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>

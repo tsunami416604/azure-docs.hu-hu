@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learning-szolgáltatások az Azure notebookok használata |} A Microsoft Docs
+title: Az Azure Machine Learning-szolgáltatások az Azure notebookok használata
 description: Áttekintés az Azure Machine Learning-szolgáltatások, amelyek az Azure-jegyzetfüzeteket is használhatja a minta-jegyzetfüzeteket.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fabd89f7591abafd68b318921fb7723f3eb7373d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1508ccc151aaafd7e0c0b46345c4dcb1a5b7b03c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856454"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083665"
 ---
 # <a name="use-azure-machine-learning-services-in-a-notebook"></a>Az Azure Machine Learning-szolgáltatások használata a notebook
 
@@ -47,9 +47,9 @@ Az Azure notebookok érhető el a szükséges környezetet az előre konfigurál
 
 Az Azure Machine Learning-szolgáltatások dokumentációja tartalmaz számos más erőforráshoz, amely végigvezeti Önt a Machine Learning szolgáltatás belül notebookok használata:
 
-- [Gyors útmutató: A Python használatával Azure Machine Learning használatának első lépései](/azure/machine-learning/service/quickstart-create-workspace-with-python.md)
-- [#1. oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással](/azure/machine-learning/service/tutorial-train-models-with-aml.md)
-- [#2. oktatóanyag: Egy kép osztályozási modell az Azure Container Instance (ACI) üzembe helyezése](/azure/machine-learning/service/tutorial-deploy-models-with-aml.md)
-- [Oktatóanyag: Az automatikus machine learning az Azure Machine Learning szolgáltatásban egy osztályozási modell betanítása](/azure/machine-learning/service/tutorial-auto-train-models.md)
+- [Gyors útmutató: A Python használatával Azure Machine Learning használatának első lépései](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [#1. oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [#2. oktatóanyag: Egy kép osztályozási modell az Azure Container Instance (ACI) üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Oktatóanyag: Az automatikus machine learning az Azure Machine Learning szolgáltatásban egy osztályozási modell betanítása](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
-Emellett a dokumentációjában talál a [Azure Machine Learning SDK Pythonhoz készült](/python/api/overview/azure/ml/intro.md?view=azure-ml-py).
+Emellett a dokumentációjában talál a [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

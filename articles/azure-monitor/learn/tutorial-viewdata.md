@@ -14,12 +14,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: d81e2089fed1e855f419234967cec26a491a0f0e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: dac89bae7fa12075deeb3842ad74979f8b237946
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975701"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074661"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>A Log Analytics-naplókereséssel gyűjtött adatok megtekintése vagy elemzése
 
@@ -29,7 +29,7 @@ A Log Analyticsben a naplókereséssel lekérdezéseket hozhat létre a begyűjt
 > * Az eseményadatok egyszerű keresése és különböző funkciók használata az eredmények módosításához és szűréséhez 
 > * A teljesítményadatok használatának módja
 
-Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 A lekérdezések létrehozása és szerkesztése, valamint a visszaadott adatok interaktív használata kétféleképpen végezhető el.  Az alapvető lekérdezésekhez használja az Azure Portal Naplók keresése oldalát, a speciális lekérdezéshez pedig a Bővített analitika portált. A két portál eltérő funkcióiról lásd a következővel foglalkozó cikket: [Portálok a naplólekérdezések létrehozásához és szerkesztéséhez az Azure Log Analyticsben](../../azure-monitor/log-query/portals.md)
 

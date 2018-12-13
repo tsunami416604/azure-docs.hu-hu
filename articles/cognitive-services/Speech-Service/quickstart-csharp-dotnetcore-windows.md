@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd felismerése Windowson, C# nyelven, a .NET Core-ban a Speech Service SDK használatával'
+title: 'Gyors útmutató: Recognize speech, .NET Core (Windows) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát a .NET Core-ban Windowson, C# nyelven a Speech Service SDK segítségével.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 891de4700470931d8eaec3e2a3bb7ca2110e48dd
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e82e39eb3fc6c7ebaf4798ad10038bfd2fa9a41b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469135"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085484"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C# nyelven, a .NET Core-ban a Speech SDK segítségével
 

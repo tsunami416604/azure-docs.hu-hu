@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd felismerése és szöveggé konvertálása, .NET Framework (Windows) – Speech Service'
+title: 'Gyors útmutató: Recognize speech, .NET-keretrendszer (Windows) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Ezt az útmutatót követve egy diktálási konzolalkalmazást hozhat létre a Windows-hoz készült .NET-keretrendszer és a Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 171d6c6a972d6fa3eb2e96ceacb75dd2fce1eb92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683498"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074895"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>Rövid útmutató: Beszéd felismerése és szöveggé konvertálása a Speech SDK és a .NET Framework (Windows) használatával
 

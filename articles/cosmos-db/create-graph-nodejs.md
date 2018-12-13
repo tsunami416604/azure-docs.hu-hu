@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 0f2bcc34a1f82c33c8f640dce8eecccf312651fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 58fca9e66b0be12992d7762824df4ceb9a22e614
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844210"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073414"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a Gremlin API-val
 
@@ -36,7 +36,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítsé
 
 Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
 * [Node.js](https://nodejs.org/en/)-verzió: 0.10.29-es vagy újabb
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

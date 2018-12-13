@@ -1,21 +1,21 @@
 ---
 title: Azure-előfizetés regisztrálása a Cloudynben | Microsoft Docs
-description: Az Azure-előfizetésével regisztrálhat a Cloudynbe.
+description: Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 57f2a43f22832775b250c032ce8a35b082f011e1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b5975f3d11a76d7713928ab008dbd9ec19b85738
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993284"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082578"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Egyéni Azure-előfizetés regisztrálása és a költségadatok megtekintése
 
@@ -23,23 +23,23 @@ Az Azure-előfizetésével regisztrálhat a Cloudynbe. A regisztráció hozzáf�
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="register-with-cloudyn"></a>Regisztráció a Cloudynben
 
 1. Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján.
 2. Az **Áttekintés** területen kattintson a **Cloudyn** elemre.  
-    ![Cloudyn lap](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![A Cloudyn lap jelenik meg az Azure-ban helyettük](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. A **Cost Management** oldalon kattintson a **Go to Cloudyn** (Ugrás a Cloudynre) elemre a Cloudyn regisztrációs oldalának új ablakban való megnyitásához.
 4. A Cloudyn portálon a próbaverzióra való regisztrációhoz írja be a vállalata nevét, majd válassza az **Azure Individual Subscription Owner** (Egyéni Azure-előfizetés tulajdonosa) lehetőségre, és kattintson a **Next** (Tovább) gombra. A fiókneve és a bérlőazonosító automatikusan rákerül az űrlapra.  
-    ![Regisztráció próbaverzióra](./media/quick-register-azure-sub/trial-reg-ind.png)
+    ![Regisztrálás a próbaverzióra lap, adja meg a regisztrációs adatait](./media/quick-register-azure-sub/trial-reg-ind.png)
 5. Válassza ki az előfizetéséhez kapcsolódó **Offer ID - Name** (Ajánlatazonosító – Név) elemet. Ha nem biztos abban, milyen díjazonosító tartozik az előfizetéséhez, nézzen meg egy Azure-számlát, és keresse meg rajta az **ajánlatazonosítót**.
 6. Fogadja el a használati feltételeket, majd ellenőrizze az adatokat, és kattintson a **Next** (Tovább) gombra.
 7. A **Gather additional data** (További adatok gyűjtése) oldalon kattintson a **Next** (Tovább) gombra. Ezzel felhatalmazza fel a Cloudynt az Azure-erőforrásadatok gyűjtésére. A gyűjtött adatok az előfizetéseire vonatkozó használati, teljesítmény-, elszámolási és címkeadatokból állnak.  
-    ![További adatok gyűjtése](./media/quick-register-azure-sub/gather-additional.png)
+    ![Ha engedélyezi, hogy a Cloudyn további adatok lap összegyűjtése](./media/quick-register-azure-sub/gather-additional.png)
 8. A böngészőjében megnyílik a Cloudyn bejelentkezési oldala. Jelentkezzen be az Azure-előfizetése hitelesítő adataival.
 9. A **Go to Cloudyn** (Ugrás a Cloudynre) elemre kattintva nyissa meg a Cloudyn portált, ahol az **Accounts Management** (Fiókok kezelése) oldalon látnia kell az Azure-előfizetés fiókjának adatait.  
-    ![Fiókkezelés](./media/quick-register-azure-sub/accounts-mgt.png)
+    ![Fiókok kezelése lap Azure-előfizetés adatainak megjelenítése](./media/quick-register-azure-sub/accounts-mgt.png)
 
 Oktatóvideó az Azure-előfizetés regisztrációjáról: [A címtárbeli GUID és a díjazonosító megkeresése a Cloudynben való használathoz](https://youtu.be/PaRjnyaNGMI).
 

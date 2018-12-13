@@ -4,16 +4,16 @@ description: Ez a cikk végigvezeti programozott módon szabályzatok létrehoz�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: MT
+ms.openlocfilehash: 881dc5c66f9b408d28a43fa16cff987a79a896a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242628"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084906"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -29,7 +29,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy a következő előfeltételek
 
 1. Frissítse az AzureRM PowerShell-modult a legújabb verzióra. A legújabb verzióval kapcsolatos további információkért lásd: [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases).
 
-1. Regisztrálja a Policy Insights erőforrás-szolgáltató, ellenőrizze, hogy működik-e az előfizetés az erőforrás-szolgáltató az Azure PowerShell-lel. Egy erőforrás-szolgáltató regisztrálásához rendelkeznie kell az erőforrás-szolgáltató regisztrálási műveletének elvégzésére vonatkozó engedéllyel. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+1. Regisztrálja a Policy Insights erőforrás-szolgáltató ellenőrzése, hogy működik-e az előfizetés az erőforrás-szolgáltató az Azure PowerShell-lel. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
    ```azurepowershell-interactive
    Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'

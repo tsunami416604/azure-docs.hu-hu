@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Szöveg nyelvének azonosítása, C# – Translator Text API'
+title: 'Gyors útmutató: Észleli a szöveg nyelvét, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban megismerheti, hogyan észleli a .NET Core és a Translator Text REST API használatával megadott szöveg nyelvét fogja.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 89aedb33a88a7fb5f0a4e0abed172ba4e1cd091e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: de5088a012a7f5fd210a5aa66805fe865cc09bbe
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682068"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889259"
 ---
-# <a name="quickstart-detect-text-language-with-the-translator-text-rest-api-c"></a>Gyors útmutató: Észleli a szöveg nyelvét, a Translator Text REST API-val (C#)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Gyors útmutató: A Translator Text API használatával észleli a szöveg nyelv használatávalC#
 
 Ebben a rövid útmutatóban megismerheti, hogyan észleli a .NET Core és a Translator Text REST API használatával megadott szöveg nyelvét fogja.
 

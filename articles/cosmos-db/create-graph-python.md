@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: eb7959b1a41c602ce4f34750802d962fe4ff84cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b8a26164145360bdd46656a86817b8ec61bcb56c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839313"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081489"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Python és az Azure Portal használatával
 
@@ -42,7 +42,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 Továbbá:
 * [Python](https://www.python.org/downloads/) 3.5-ös vagy újabb verzió
 * [pip csomagkezelő](https://pip.pypa.io/en/stable/installing/)
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Python-illesztő a Gremlinhez](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -101,7 +101,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azokat az alkalmazásba. Ezek a beállítások lehetővé teszik az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
 
     Másolja az URI érték első részét.
 

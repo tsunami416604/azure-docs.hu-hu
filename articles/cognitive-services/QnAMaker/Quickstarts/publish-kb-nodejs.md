@@ -1,21 +1,22 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele – REST, Node.js – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató végigvezeti a tudásbázisok (KB) programozott módon való közzétételén. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+title: Tudásbázis következő, a REST, a Node.js közzététele
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: A Node.js rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3d96beee881df560fc616cd975502f062275e9eb
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: MT
+ms.openlocfilehash: 4b6f3e6913801de9259c106469bf8ca986f5b7b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162024"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083801"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Node.js használatával
 

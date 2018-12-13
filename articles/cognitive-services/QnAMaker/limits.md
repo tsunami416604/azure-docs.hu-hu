@@ -1,7 +1,7 @@
 ---
 title: Korlátozások és határok – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker között korlátok átfogó listáját.
+description: A QnA Maker részei a Tudásbázis és a szolgáltatás metaadat-korlátokkal rendelkeznek. Fontos, hogy a Tudásbázis tesztelése és közzététele érdekében ezeket korlátokon belül.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137293"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084788"
 ---
-# <a name="qna-maker-limits"></a>A QnA Maker korlátok
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 A QnA Maker között korlátok átfogó listáját.
 
 ## <a name="knowledge-bases"></a>Tudásbázisok

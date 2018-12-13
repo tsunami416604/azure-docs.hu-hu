@@ -1,5 +1,6 @@
 ---
-title: Regressziós modell oktatóanyag – Azure Machine Learning szolgáltatás az adatok előkészítése
+title: 'Regressziós modell oktatóanyag: adatok előkészítése'
+titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag első részében meg fogjuk útmutató előkészítheti az adatokat a Python, az Azure Machine Learning SDK-val regressziós modellezéshez.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 94e004c40177298f805336509d649065fc7dfdb7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 14be60977ef0be3e88a0cb01356446b59ca374e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012368"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076440"
 ---
 # <a name="tutorial-part-1-prepare-data-for-regression-modeling"></a>(1. rész) oktatóanyag: adatok előkészítése az regressziós modellezéshez
 

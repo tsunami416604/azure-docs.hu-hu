@@ -1,5 +1,5 @@
 ---
-title: Adattárolás az Azure IoT Edge SQL-moduljával | Microsoft Docs
+title: Oktatóanyag tároló adatainak SQL-modullal – Azure IoT Edge |} A Microsoft Docs
 description: Megtudhatja, hogyan történik az adatok egy SQL Server-modul használatával történő helyi tárolása az IoT Edge-eszközön
 services: iot-edge
 author: kgremban
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 996964dd7fe52073b19db1b252e511f242b5f955
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833993"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075047"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -251,7 +251,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
    }
    ```
 
-   ![SQL Server-tároló hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![A jegyzékfájl az SQL server modul hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. Az IoT Edge-eszközt a Docker-tárolók típusától függően frissíteni a **sql** modul paraméterei, az alábbi kódra:
    * Windows-tárolók:
@@ -416,7 +416,7 @@ Futtassa a következő parancsot az SQL-parancssori eszközből a formázott tá
    GO
    ```
 
-   ![A helyi adatok megtekintése](./media/tutorial-store-data-sql-server/view-data.png)
+   ![Helyi adatbázis tartalmának megtekintése](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

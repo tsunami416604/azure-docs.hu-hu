@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 68698cf23a59a5f4fd182891ebed243dac1319bf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870537"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082663"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti az Azure Automation szolgáltatással kommunikáció konfigurálása és a Log Analytics használatával az a Log Analytics-átjáró, amikor közvetlen csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáférés.  A Log Analytics-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -122,7 +122,7 @@ Az átjáró telepítéséhez hajtsa végre az alábbi lépéseket.  Ha egy kor�
    1. Írja be az átjáró használni a TCP-port száma. A telepítő egy bejövő szabályt konfigurálja, a port számát, a Windows tűzfalon.  Az alapértelmezett érték: 8080-as.
       A portnak a számát, az érvényes értéktartomány: 1-65535. Ha a bemeneti nem esik a tartományba, hibaüzenet jelenik meg.
    1. Igény szerint ha a kiszolgáló, amelyen az átjáró telepítve van egy proxyn keresztül történő kommunikációhoz van szüksége, írja be a proxykiszolgáló címét, amelyen az átjáró kell csatlakoztatnia. Például: `http://myorgname.corp.contoso.com:80`.  Ha üres, akkor az átjáró megpróbálja közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és jelszót.<br><br> ![Átjáró varázsló proxy konfigurálása](./media/gateway/gateway-wizard02.png)<br>   
-   1. Kattintson a **Tovább** gombra.
+   1. Kattintson a **Tovább**gombra.
 1. Ha nincs engedélyezve a Microsoft Update, a Microsoft Update lapon jelenik meg, ahol kiválaszthatja az engedélyezéshez. Jelölje ki, és kattintson a **tovább**. Ellenkező esetben folytassa a következő lépéssel.
 1. Az a **célmappa** lapon hagyja bejelölve az alapértelmezett mappa: C:\Program Files\OMS átjáró, vagy írja be a helyet, ahol szeretné telepíteni az átjárót, és kattintson a **tovább**.
 1. Az a **készen áll a telepítésre** kattintson **telepítése**. Felhasználói fiókok felügyeletének telepítése kér engedélyt jelenhet meg. Ha igen, kattintson a **Igen**.
@@ -142,7 +142,7 @@ Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terhelés
 A következő szakasz tartalmazza a lépéseket, a közvetlenül csatlakoztatott Log Analytics-ügynökök, az Operations Manager felügyeleti csoport vagy az Azure Automation hibrid Runbook-feldolgozók konfigurálásáról a Log Analytics-átjáróval kommunikálni az Azure Automation és a Log Elemzés.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Önálló Log Analytics-ügynök konfigurálása
-Követelmények és lépések a Log Analytics-ügynök telepítése Windows-számítógépeket a Log Analytics szolgáltatásba való közvetlen csatlakozás ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](agent-windows.md) vagy a Linux rendszerű számítógépek lásd [ Linux rendszerű számítógépek csatlakoztatása a Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md). Helyett adja meg a proxykiszolgáló az ügynök telepítése közben, cserélje le ezt az értéket az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát.  Ha hálózati terheléselosztót több átjárókiszolgáló telepített, akkor a Log Analytics proxykonfigurációjának a hálózati Terheléselosztás virtuális IP-címét.  
+Követelmények és lépések a Log Analytics-ügynök telepítése Windows-számítógépeket a Log Analytics szolgáltatásba való közvetlen csatlakozás ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](agent-windows.md) vagy a Linux rendszerű számítógépek lásd [ Linux rendszerű számítógépek csatlakoztatása a Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Helyett adja meg a proxykiszolgáló az ügynök telepítése közben, cserélje le ezt az értéket az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát.  Ha hálózati terheléselosztót több átjárókiszolgáló telepített, akkor a Log Analytics proxykonfigurációjának a hálózati Terheléselosztás virtuális IP-címét.  
 
 Az Automation hibrid Runbook-feldolgozó kapcsolatos információkért lásd: [hibrid Runbook-feldolgozó üzembe helyezése](../../automation/automation-hybrid-runbook-worker.md).
 

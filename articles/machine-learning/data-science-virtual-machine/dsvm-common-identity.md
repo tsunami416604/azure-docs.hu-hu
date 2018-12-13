@@ -1,11 +1,12 @@
 ---
 title: Közös identitás beállítása a az adatelemző virtuális gép – Azure |} A Microsoft Docs
-description: Az enterprise csapat DSVM környezetekben közös identitást állíthat be.
+description: Ismerje meg, hogyan hozhat létre az általános felhasználói fiókok, amelyek között több adatelemző virtuális gépek használhatók. Azure Active Directory vagy egy helyszíni Active Directory használatával hitelesítheti a felhasználókat, a Data Science virtuális gép.
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be7c63d3879c7ed89cd97eaecd6d59b6b5aadd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436301"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075471"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen közös identitás beállítása
 

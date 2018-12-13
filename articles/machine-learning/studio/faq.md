@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 4d4e6a47b35d3cb98e4425c11628625818642fa0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309140"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867851"
 ---
 # <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning Studio – gyakori kérdések: számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -32,7 +32,7 @@ Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, 
 ## <a name="general-questions"></a>Általános kérdések
 **Mi a Machine Learning Studio?**
 
-A Machine Learning Studio egy böngészőn keresztül elérhető munkaterület-környezet. A Machine Learning Studio vizuális összeállítási interfészekkel rendelkező modulok sorát tartalmazza, amelyek lehetővé teszik, hogy egy teljes körű adatelemezési munkafolyamatot építsen egy kísérlet formájában.
+A Machine Learning Studio egy webböngészőn keresztül elérhető, és húzza a vászonra környezet. A Machine Learning Studio vizuális összeállítási interfészekkel rendelkező modulok sorát tartalmazza, amelyek lehetővé teszik, hogy egy teljes körű adatelemezési munkafolyamatot építsen egy kísérlet formájában.
 
 A Machine Learning Studióval kapcsolatos további információkért olvassa el a [Mi a Machine Learning Studio](what-is-ml-studio.md) című fejezetet.
 

@@ -1,21 +1,22 @@
 ---
-title: A LUIS-alkalmazások az Azure Cognitive Services szolgáltatásokat
-titleSuffix: Azure Cognitive Services
-description: Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell. Szolgáltatások révén a LUIS egyaránt szándékok és entitások felismerésére.
+title: Szolgáltatások
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: 57ad7d680d83e13d9aff1d55a52ab982c585df76
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638259"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080197"
 ---
 # <a name="phrase-list-features-in-luis"></a>A LUIS kifejezés szolgáltatásai
 

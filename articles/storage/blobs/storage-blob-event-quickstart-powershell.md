@@ -1,5 +1,5 @@
 ---
-title: Az Azure Blob storage-események átirányítása egyéni webes végpontra – Powershell |} A Microsoft Docs
+title: Webes végpont - Powershell az Azure Blob storage-események küldése |} A Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
 author: david-stanford
@@ -8,14 +8,15 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 8482678a9c42fa2d960dee54c9810593cd820553
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: c7c8fd487bef0da7da84a23e18a4e999645106b3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732001"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076423"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Blob storage-események átirányítása egyéni webes végpontra a PowerShell-lel
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: A tárolási események átirányítása webes végpont a PowerShell-lel
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure PowerShell használatával feliratkozás Blob storage-események, az eseményindító egy eseményt, és az eredmény megtekintéséhez. 
 
@@ -27,11 +28,11 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ## <a name="setup"></a>Beállítás
 
-Ehhez a cikkhez az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
+Ez a cikk megköveteli, hogy az Azure PowerShell legújabb verzióját futtatja. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
 
 ```powershell
 Connect-AzureRmAccount
@@ -58,7 +59,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-BLOB storage-események az általános célú v2-tárfiókok és a Blob storage-fiókok érhetők el. **Általános célú v2** tárfiókok összes tárolási szolgáltatás, így a Blobok, fájlok, üzenetsorok és táblák összes funkcióját támogatják. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
+Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. Az **általános célú v2** fiókok olyan tárfiókok, amelyek a társzolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
 Az LRS replikációt a Blob storage-fiók létrehozása [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely meghatározza a használandó tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa létrehoz egy nevű tárfiókot **gridstorage** a helyileg redundáns tárolás (LRS). 
 
@@ -160,7 +161,7 @@ Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Co
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha azt tervezi, hogy folytatja a tárfiók és az esemény előfizetésének használatát, akkor ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
+Ha azt tervezi, hogy folytatja a storage és az esemény előfizetésének, ne törölje az erőforrásokat létrehozott ebben a cikkben. Ha nem szeretné folytatni, a következő paranccsal törölheti a ebben a cikkben létrehozott erőforrásokat.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup

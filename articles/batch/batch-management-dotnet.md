@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fd511a8a9d17bf79f1237bbfe2dc2ddbc5ec1b2e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505385"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867426"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a a Batch Management ügyféloldali kódtára a .NET-hez
 
@@ -153,7 +153,7 @@ A Batch Management .NET könyvtár egy Azure-erőforrás-szolgáltató ügyfél,
 
 ## <a name="sample-project-on-github"></a>Minta-projektet a Githubon
 
-Tekintse meg a Batch Management .NET használatával működés közben, tekintse át a [AccountManagment] [ acct_mgmt_sample] mintaprojektet a Githubon. A AccountManagment mintaalkalmazás bemutatja a következő műveleteket:
+Tekintse meg a Batch Management .NET használatával működés közben, tekintse át a [AccountManagement] [ acct_mgmt_sample] mintaprojektet a Githubon. A AccountManagement mintaalkalmazás bemutatja a következő műveleteket:
 
 1. Az Azure AD-ből biztonsági jogkivonat beszerzése [ADAL][aad_adal]. Ha a felhasználó még nem jelentkezett be, bekapcsolják a Azure hitelesítő adatait.
 2. Az Azure ad-ből kapott biztonsági jogkivonat, hozzon létre egy [SubscriptionClient] [ resman_subclient] Azure lekérdezni a fiókhoz tartozó előfizetések listáját. A felhasználó is válasszon egy előfizetést a listából, ha több előfizetéssel tartalmazza.

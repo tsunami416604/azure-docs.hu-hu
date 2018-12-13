@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 694682264a38d0b35f00fb6611f843ae7e518ba0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8af76c64e755b9c72ae4ebcc223e5f69549b92b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838165"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076731"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és az Azure App Service Web Apps használatával egy Azure Resource Manager-sablon üzembe helyezése
 Az oktatóanyag bemutatja, hogyan használhatja az Azure Resource Manager-sablon üzembe helyezése és integrálása [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), egy [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web app és a egy minta-webalkalmazáshoz.
@@ -119,7 +119,7 @@ Most már a második sablon üzembe helyezni.  Ez a sablon hasznos bemutatják, 
 ## <a name="next-steps"></a>További lépések
 Gratulálunk! Üzembe helyezte az Azure Cosmos DB, az App Service web app és a egy minta-webalkalmazás Azure Resource Manager-sablonok használatával.
 
-* Azure Cosmos DB kapcsolatos további tudnivalókért kattintson [Itt](http://azure.com/docdb).
+* Azure Cosmos DB kapcsolatos további tudnivalókért kattintson [Itt](https://azure.microsoft.com/services/cosmos-db/).
 * További információ az Azure App Service Web apps szolgáltatásról, kattintson a [Itt](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Az Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért kattintson [Itt](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 

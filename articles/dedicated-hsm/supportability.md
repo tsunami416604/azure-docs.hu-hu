@@ -1,6 +1,6 @@
 ---
-title: Az Azure dedikált HSM támogatási lehetőségek |} A Microsoft Docs
-description: Azure dedikált HSM FIPS szabványnak megfelelő Azure-ban kulcstároló-képességeket biztosít 140-2-3. szint tanúsítvánnyal
+title: Támogatási lehetőségek – Azure dedikált HSM |} A Microsoft Docs
+description: Támogatási lehetőségek és a különböző helyzetekben Azure dedikált HSM-be a felelősségi területeket
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -9,14 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.custom: seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 7c7cc38cb3332b153cd2a315d48c69b48a1dc357
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2ed6a79b8736a1d3b472e31ce643c0d1ee085bbb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319504"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085909"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Dedikált HSM Azure támogatási lehetőségek
 

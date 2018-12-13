@@ -1,6 +1,6 @@
 ---
-title: Események küldése az Azure Event Hubsba a .NET Core használata |} A Microsoft Docs
-description: Események küldése az Event Hubsba a .NET Core első lépések
+title: Események a .NET Core - az Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk a forgatókönyv létrehozásához, amely elküldi az eseményeket az Azure Event Hubsba a .NET Core-alkalmazást.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9d8edaa89bf1e80f9e3d97409385161abedffae3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b645b444d62ae0f1834006a41190c417cee35963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969243"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081693"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-core"></a>Üzenetek küldése az Azure Event Hubsba a .NET Core első lépések
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.

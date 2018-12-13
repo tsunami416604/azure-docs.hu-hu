@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ece6780803809829e69fccc320ae65a0c7b0f94b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089258"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rövid útmutató: MongoDB API Xamarin.Forms-alkalmazás létrehozása a .NET-tel az Azure Portalon
 
@@ -156,7 +156,7 @@ Az alábbi kódrészletek a rendszer az összes átveszi a `MongoService` osztá
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati sztring** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépések során a képernyő jobb oldalán található másolási gombok használatával másolhatja a vágólapra az elsődleges kapcsolati sztringet.
+1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati sztring** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépések során a képernyő jobb oldalán található másolási gombok használatával másolhatja a vágólapra az elsődleges kapcsolati sztringet.
 
 2. Nyissa meg a **TaskList.Core** projekt **Helpers** könyvtárában lévő **APIKeys.cs** fájlt.
 

@@ -1,23 +1,23 @@
 ---
 title: Az Azure-ban a Cloudyn költségvetések kezeléséhez |} A Microsoft Docs
-description: Ez a cikk segít hozhat létre és kezelhet a Cloudyn költségvetése.
+description: Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: ef2ccd1d1fb5583d1356969ca759e5fb58a81936
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 44062670283a15f678da45e13a831e73a7738c39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075488"
 ---
-# <a name="manage-budgets"></a>Költségvetések kezelése
+# <a name="manage-azure-budgets-with-cloudyn"></a>A Cloudyn Azure költségvetése kezelése
 
 Költségvetés létrehozása és a költségvetés-alapú súgó a felhő cégirányítási és felelősségre vonhatóság riasztást küld. Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 
@@ -40,7 +40,7 @@ Költségvetés létrehozása, és rendelje hozzá egy entitás:
 3. A költségvetési évben válassza ki az év, ahol szeretné létrehozni a költségvetést.
 4. Minden hónapban a költségvetés érték beállítása. Ha elkészült, kattintson a **mentése**.
 Ebben a példában a 2018 június havi költségvetését $135,000 értéke. A teljes költségvetés az év $1,615,000.00.
-![Költségvetés létrehozása](./media/manage-budgets/set-budget.png)
+![Itt lehet megadni a költségvetési minden hónapban a költségvetés lap létrehozása](./media/manage-budgets/set-budget.png)
 
 
 Az éves költségvetés-fájl importálása:
@@ -64,11 +64,11 @@ Ebben a példában feltételeztük az aktuális dátum későbbi, június 22. 20
 
 A jelentés megtekintéséhez másik módja, és összesített költségeit és tekintse meg a költségvetést. Összesített költségek alatt megtekintéséhez **mezők megjelenítése/elrejtése**válassza **összesített költségeit** és **teljes költségvetés**. Íme egy példa az összesített költségeit az év kezdete óta.
 
-![Halmozott költségvetés](./media/manage-budgets/accumulated-budget.png)
+![Példa tevődik össze a költségek és a teljes fennmaradó látható a Cost vs. Költségvetés időalapú jelentés](./media/manage-budgets/accumulated-budget.png)
 
 Valamikor a jövőben az összesített költségeit meghaladhatja a költségvetést. Könnyebben láthatja, hogy ha módosítja a diagram nézet a _sor_ típusa.
 
-![Vonaldiagram látható költségvetés](./media/manage-budgets/budget-line.png)
+![Költségvetés hónapok jelentés díja vonaldiagram látható](./media/manage-budgets/budget-line.png)
 
 ## <a name="create-budget-alerts-for-a-filter"></a>Szűrő költségvetés riasztások létrehozása
 
@@ -81,7 +81,7 @@ Lássunk erre egy példát.
 
 A a Cost VS-ben. Idő a jelentés felett költségvetési, kattintson a **műveletek** majd **jelentés ütemezése**. A küszöbérték lapon válassza ki egy küszöbértéket metrikát. Ha például **költségvetés százalékos vs**. Válassza ki a riasztási típusát, és adja meg a költségvetés százalékos érték. Ha szeretne kaphat, csak egyszer, válassza ki a **egymást követő riasztások számát** és írja be _1_. Kattintson a **Save** (Mentés) gombra.
 
-![Költségvetési figyelmeztetés](./media/manage-budgets/budget-alert.png)
+![A Mentés vagy a jelentés be ütemezést a költségvetés riasztás létrehozása](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>További lépések
 

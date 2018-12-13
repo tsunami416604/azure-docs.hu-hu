@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853149"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077001"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Gyors útmutató: Hozzon létre egy Python-szkriptet észleléséhez és keret arcokat a kép
 
@@ -28,14 +28,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
 - [A Python 2.7-es vagy újabb, illetve 3.5-ös vagy újabb verziója](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) eszköz
-- A Face API Python SDK-t. A következő parancs futtatásával telepítheti:
-    ```bash
-    pip install cognitive_face
-    ```
+
+## <a name="get-the-face-sdk"></a>A Face SDK beszerzése
+
+A Face Python SDK telepítése a parancssor használatával megnyitásával, és futtassa a következő parancsot:
+
+```shell
+pip install cognitive_face
+```
 
 ## <a name="detect-faces-in-an-image"></a>A kép arcok észlelése
 
-Hozzon létre egy új Python-szkriptet _FaceQuickstart.py_. Adja hozzá a következő kódot. Ez az arcfelismerés központi funkcióit. Le kell cserélnie `<Subscription Key>` a kulcs értékét. Is szükség lehet értékének módosítása `BASE_URL` a megfelelő régióazonosító használata a kulcshoz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban. Beállíthatja `img_url` URL-címét használni kívánt képet.
+Hozzon létre egy új Python-szkriptet nevű _FaceQuickstart.py_ , és adja hozzá a következő kódot. Ez az arcfelismerés központi funkcióit. Le kell cserélnie `<Subscription Key>` a kulcs értékét. Is szükség lehet értékének módosítása `BASE_URL` a megfelelő régióazonosító használata a kulcshoz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban. Beállíthatja `img_url` URL-címét használni kívánt képet.
 
 A parancsfájl arcok észlelése meghívásával a **cognitive_face.face.detect** metódussal, amely becsomagolja a [hibakeresés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API-t és a egy téglalapot listáját adja vissza.
 

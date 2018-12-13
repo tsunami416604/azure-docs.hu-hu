@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 68fcc8b324bebfc7ca4fa94b2633b475137ea580
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857171"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075593"
 ---
-# <a name="knowledge-base-lifecycle"></a>Tudásbázis életciklusa
+# <a name="knowledge-base-lifecycle-in-qna-maker"></a>A QnA Maker Tudásbázis életciklusa
 A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
 
 ![Tartalomkészítési ciklus](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
@@ -30,8 +31,8 @@ A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besor
 
 A nagy Tudásbázis a tesztelés automatizálható generateAnswer API-k használatával. 
 
-## <a name="publish-the-knowledge-base"></a>A Tudásbázis közzététele
-Ha elkészült a Tudásbázis tesztelése, közzéteheti azt. A legújabb verzióra a tesztelt Tudásbázis egy dedikált Azure Search-index jelölő leküldések közzététele a **közzétett** Tudásbázis. Azt is létrehoz egy végpontot, amely nem hívható meg csevegőrobot, vagy az alkalmazás.
+## <a name="publish-the-knowledge-base"></a>A tudásbázis közzététele
+Ha elkészült a Tudásbázis tesztelése, közzéteheti azt. A legújabb verzióra a tesztelt Tudásbázis egy dedikált Azure Search-index jelölő leküldések közzététele a **közzétett** Tudásbázis. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 
 Ezzel a módszerrel végzett módosítások folyamatban van a Tudásbázis tesztelése verziója nincsenek hatással a közzétett verzió, amely egy éles alkalmazásban élő lehet.
 

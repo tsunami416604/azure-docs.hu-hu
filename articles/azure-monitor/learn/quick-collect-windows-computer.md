@@ -15,15 +15,15 @@ ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 64f9ea9f2e4da9c059cf080bc651e9e3f1ca93ea
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 011cfc181438d1a816afd9046f58f4d5c25b4504
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975893"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090160"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Windows rendszerű számítógépekhez hibrid környezetekben
-Az [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Windows-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli windowsos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](../../log-analytics/log-analytics-quick-collect-azurevm.md) ismertető cikket.  
+Az [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Windows-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli windowsos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](../../azure-monitor/learn/quick-collect-azurevm.md) ismertető cikket.  
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements) ismertető részt.
  

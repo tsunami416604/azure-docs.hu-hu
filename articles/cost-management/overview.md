@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 4979304cd13aa6f61c22d68d8df5ee4cf545a3c0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 5c99d638845cf0cd00ddbacf1ed0dcf3da889dd6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995382"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082543"
 ---
-# <a name="what-is-cloudyn"></a>Mi az a Cloudyn?
+# <a name="what-is-the-cloudyn-service"></a>Mi a Cloudyn szolgáltatás?
 
 A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatának és költségeinek követését, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cloudyn segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
 

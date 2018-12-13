@@ -1,6 +1,6 @@
 ---
-title: Események küldése az Azure Event Hubs C használatával |} A Microsoft Docs
-description: Események küldése az Azure Event Hubs C használatával
+title: Események C – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk egy útmutató egy C alkalmazás, amely az Azure Event Hubs küldi az eseményeket létrehozásához.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 10/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 95a689b00d67a9f2c24b4deaf5575464923a1e60
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8c134ae9944517d6ae66fcd22e06bbfc599912b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961773"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076392"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Események küldése az Azure Event Hubs C használatával
 

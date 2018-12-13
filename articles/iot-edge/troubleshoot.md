@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge hibaelhárítása | Microsoft Docs
-description: Az Azure IoT Edge gyakori problémáinak megoldása és a hibaelhárítási készségek elsajátítása
+title: Hibaelhárítás – az Azure IoT Edge |} A Microsoft Docs
+description: Ebben a cikkben megismerheti standard diagnosztikai képességek az Azure IoT Edge, például összetevő-állapot és a naplók beolvasása, és a leggyakoribb hibák elhárításához
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a553798a3ac15340805984a0e87312875f82c46c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 448fe3e7d6f3129ce6a40494abcf993f6dc4e4f7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567655"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081404"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -243,7 +244,7 @@ Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-ne
 1. Az Azure Portalon lépjen a virtuális gép áttekintés oldalán. 
 2. Válassza ki **konfigurálása** DNS-neve alatt. Ha a virtuális géphez már tartozik egy DNS-név konfigurálva, nem kell egy új konfigurálása. 
 
-   ![Konfigurálja a DNS-név](./media/troubleshoot/configure-dns.png)
+   ![Konfigurálja a virtuális gép DNS-neve](./media/troubleshoot/configure-dns.png)
 
 3. Adjon meg egy értéket a **DNS-névcímke** válassza **mentése**.
 4. Másolja a következő formátumban kell lennie új DNS-név  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.Azure.com formát követi**.
@@ -274,7 +275,7 @@ A felhasználói felületen:
 
 A portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, egy környezeti változó létrehozása nevű *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
 
-![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
+![OptimizeForPerformance "false" értékűre.](./media/troubleshoot/optimizeforperformance-false.png)
 
 **VAGY**
 

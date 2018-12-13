@@ -1,11 +1,12 @@
 ---
 title: Adatok adatelemzési virtuális gép fejlesztői eszközök – Azure |} A Microsoft Docs
-description: Data Science virtuális gép fejlesztői eszközök.
+description: Ismerje meg az eszközök és az integrált fejlesztői környezeteket, amelyek előre telepített a Data Science virtuális gépen.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: ef9f1e0c043370bdfacf654cffb524b716a34446
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ee1e7003a9f1479db7311072e29132cf491cbc88
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872330"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073754"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Fejlesztőeszközök a Data Science virtuális gépen
 

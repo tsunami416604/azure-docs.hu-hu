@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning CLI-bővítmény használata
+title: A machine learning-CLI-bővítmény használata
+titleSuffix: Azure Machine Learning service
 description: További információ az Azure Machine Learning CLI-bővítmény az Azure CLI-hez. Az Azure CLI-vel egy platformfüggetlen parancssori segédprogram, amely lehetővé teszi, hogy az erőforrások az Azure-felhőben. A Machine Learning-bővítmény lehetővé teszi, hogy az Azure Machine Learning szolgáltatás.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ab348ce3a6d45c2ac4d2d14978781e57a8b5d17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: e1e94c2301cdbacf2ade037fe04cc8359ed06598
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872845"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078191"
 ---
-# <a name="use-the-azure-machine-learning-cli-extension"></a>Az Azure Machine Learning CLI-bővítmény használata
+# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>A CLI-bővítmény használata az Azure Machine Learning szolgáltatáshoz
 
 Az Azure Machine Learning parancssori az való kiterjesztése a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), többplatformos parancssori felület az Azure platformon. Ez a bővítmény használata az Azure Machine Learning szolgáltatással, a parancssorból parancsokat tartalmaz. Lehetővé teszi a teljes gépi tanulási munkafolyamatokat automatizáló szkriptek létrehozására. Ha például hozhat létre parancsprogramokat, amelyek a következő műveletek végrehajtásához:
 

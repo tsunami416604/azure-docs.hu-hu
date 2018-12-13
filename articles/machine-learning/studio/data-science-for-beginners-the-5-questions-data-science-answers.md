@@ -1,11 +1,11 @@
 ---
-title: A 5 data science - adatelemzés kezdőknek – az Azure Machine Learning Studio rákérdez |} A Microsoft Docs
+title: Adatelemzés kezdőknek – az Azure Machine Learning Studióban |} A Microsoft Docs
 description: Adatelemzés kezdőknek van megtanítja 5 rövid videót, az alapvető fogalmait kezdve az 5 kérdések adatelemzés választ ad. Az Azure Machine Learning.
 keywords: Ennek során az adatelemzés, a data adatelemzés kezdőknek, az adatelemzés kezdőknek, data science alapjait, adatelemzési kérdésekre, data science videó, data science bemutatása
 services: machine-learning
 documentationcenter: na
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c59b4783c59c44604738a3056b3484e11ff90363
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 1f8de5cca7495c407c4fd7b4bf0b2295b3ae8e16
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314166"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073873"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 Adatelemzés a gyors bevezetést *adatelemzés kezdőknek* az öt rövid videóban a felső adatszakértő. Ezeket a videókat egyszerű, de hasznos,-e Önt érdeklő adatelemzésre vagy dolgozik, az adatszakértők.

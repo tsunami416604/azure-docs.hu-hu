@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure Machine Learning szolgáltatás?
-description: A Machine learning-a felhőben, és mi is használhatja azt. Azure Machine Learning szolgáltatáshoz – egy integrált, teljes körű adatelemzési megoldás adatszakértők fejlesztése, kísérletezhet, és üzembe helyezéséhez a fejlett elemzési alkalmazások felhőhöz méretezett számára áttekintése.
+description: Azure Machine Learning szolgáltatáshoz – egy integrált, teljes körű adatelemzési megoldás adatszakértők fejlesztése, kísérletezhet, és üzembe helyezéséhez a fejlett elemzési alkalmazások felhőhöz méretezett számára áttekintése.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: 3a99d807bb5c3337d251044312e06806b0fe4bbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: c3c0697af739c151f9aa7cbaed65283a365be7a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955003"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077222"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -33,12 +34,12 @@ Az Azure Machine Learning szolgáltatás egy felhőalapú környezet gépi tanul
 [ ![Az Azure Machine Learning szolgáltatás munkafolyamata](./media/overview-what-is-azure-ml/aml.png) ] (. / media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Az Azure Machine Learning szolgáltatás teljes körűen támogatja a nyílt forráskódú technológiákat, így több tízezer nyílt forráskódú Python-csomaggal, többek között a TensorFlow-val és a scikit-learnnel is használható.
-Számos eszközt, például támogatása [Jupyter notebookok](http://jupyter.org) vagy a [a Visual Studio Code az Azure Machine Learning](http://aka.ms/VSToolsforAI) bővítmény, megkönnyíti az interaktív adatfeltárás, átalakíthatja, és majd fejlesztése és tesztelése modellek.
+Számos eszközt, például támogatása [Jupyter notebookok](http://jupyter.org) vagy a [a Visual Studio Code az Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) bővítmény, megkönnyíti az interaktív adatfeltárás, átalakíthatja, és majd fejlesztése és tesztelése modellek.
 Az Azure Machine Learning szolgáltatás a [modellek automatizált generálására és finomhangolására szolgáló funkciókat](tutorial-auto-train-models.md) is tartalmaz, így segít könnyeddé, hatékonnyá és pontossá tenni az új modellek létrehozását.
 
 Az Azure Machine Learning szolgáltatás lehetővé teszi, hogy a betanítást a helyi gépen kezdje, majd horizontálisan felskálázza a felhőbe. A legtöbb elérhető [számítási céljainak](how-to-set-up-training-targets.md) például az Azure Machine Learning Compute és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), és a [hiperparaméter finomhangolása services speciális](how-to-tune-hyperparameters.md), hozhat létre jobb gyorsabb és modellek segítségével kihasználhatja a felhőben.
 
-Ha létrehozta a megfelelő modellt, azt könnyedén üzembe is helyezheti egy tároló segítségével, például a Docker használatával. Ez azt jelenti, hogy a modell könnyedén üzembe helyezhető az [Azure Container Instances](how-to-deploy-to-aci.md) vagy az [Azure Kubernetes Service](how-to-deploy-to-aks.md) szolgáltatásokkal, illetve saját helyszíni vagy felhőalapú tárolómegoldásának használatával.
+Ha létrehozta a megfelelő modellt, azt könnyedén üzembe is helyezheti egy tároló segítségével, például a Docker használatával. Ez azt jelenti, hogy egyszerű üzembe helyezése az Azure Container Instances szolgáltatásban vagy az Azure Kubernetes Service-ben, vagy a tárolót használja a saját telepítések, a helyszínen vagy a felhőben. További információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 A már üzembe helyezett modelleket kezelheti és futásukat nyomon követheti, így nyugodtan kísérletezhet addig, amíg megtalálhatja a megfelelő megoldást.
 Üzembe helyezését követően a modell lépjen vissza az előrejelzések [valós idejű](how-to-consume-web-service.md), vagy [aszinkron módon](how-to-run-batch-predictions.md) a nagy mennyiségű adatot.
 
@@ -58,9 +59,9 @@ Számos nyílt forráskódú Python-csomagban elérhető gépi tanulási-összet
 - <a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank">CNTK</a>
 - <a href="http://mxnet.io" target="_blank">MXNet</a>
 
-Ha már rendelkezik egy modellt, használatával, hozzon létre egy tárolót (például a Dockert), amely tesztelési helyileg telepíthető. Ha végzett tesztelést, a modell is üzembe helyezhetők akár éles webszolgáltatásként [Azure Container Instances](how-to-deploy-to-aci.md) vagy [Azure Kubernetes Service](how-to-deploy-to-aks.md).
+Ha már rendelkezik egy modellt, használatával, hozzon létre egy tárolót (például a Dockert), amely tesztelési helyileg telepíthető. Ha végzett tesztelést, a modell vagy az Azure Container Instances, vagy az Azure Kubernetes Service-ben az éles webszolgáltatásként is telepíthető. További információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 
-Az üzembe helyezett modellnél használatával majd kezelheti a [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy a [az Azure portal](https://portal.azure.com/).
+Az üzembe helyezett modellnél használatával majd kezelheti a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) vagy a [az Azure portal](https://portal.azure.com/).
 A modell kísérletek nyomon követése mellett kiértékelheti modell metrikákat, teljesített kapcsolat-újraépítési és ismételt üzembe helyezése a modell új verzióit.
 
 Az Azure Machine Learning szolgáltatás használatához alább, a [További lépések](#next-steps) résznél kezdhet hozzá.

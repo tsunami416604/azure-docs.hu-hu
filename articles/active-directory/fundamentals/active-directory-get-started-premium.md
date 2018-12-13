@@ -1,6 +1,6 @@
 ---
-title: Hogyan regisztrálhat a Prémium szintű Azure Active Directory-kiadásra | Microsoft Docs
-description: Lépésről lépésre ismerteti, hogyan regisztrálhat a Prémium szintű Azure Active Directory-kiadásokra.
+title: Iratkozzon fel a prémium szintű kiadásokban – Azure Active Directory |} A Microsoft Docs
+description: Regisztráljon az Azure Active Directory Premium kiadások kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.custom: it-pro
-ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394697"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073992"
 ---
-# <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Útmutató: Prémium szintű Azure Active Directory regisztráció
-Vásárolhat Active Directory (Azure AD) Prémium szintű előfizetést és hozzárendelheti az Azure-előfizetéséhez. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
+# <a name="sign-up-for-azure-active-directory-premium-editions"></a>Regisztráljon az Azure Active Directory Premium-kiadások
+Vásárol, és a prémium szintű Azure Active Directory (Azure AD) kiadások társítása az Azure-előfizetés. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
 
 > [!NOTE]
 >Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.

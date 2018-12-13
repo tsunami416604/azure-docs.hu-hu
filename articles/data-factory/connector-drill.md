@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 166dffc6f79784b9a62cea4cb545aee32001441d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 180489aecc5eb5e937b4c163bc40937f3f6d2d80
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124677"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077664"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) segítségével részletes
 
@@ -74,7 +74,12 @@ Részletezés társított szolgáltatás a következő tulajdonságok támogatot
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz részletes adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Részletes adatokat másol, az adatkészlet, a type tulajdonság beállítása **DrillTable**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Részletes adatokat másol, az adatkészlet, a type tulajdonság beállítása **DrillTable**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **DrillTable** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -86,7 +91,8 @@ Részletes adatokat másol, az adatkészlet, a type tulajdonság beállítása *
         "linkedServiceName": {
             "referenceName": "<Drill linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -102,7 +108,7 @@ Részletes adatokat másol, állítsa be a forrás típusaként a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **DrillSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

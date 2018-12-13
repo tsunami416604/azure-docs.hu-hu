@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c9445793061b84a1bd1632d00b64ea99800bc2d1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643004"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080674"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -62,7 +62,7 @@ Ha a fentiek egyikével sem működik, a következő támogatási csatornákat i
 | NOT_DEFINED | Nincsenek telepítve a szükséges függőséget, mert a auoms auditd beépülő modul nem lesz telepítve | Nem sikerült, auoms telepítés csomag auditd. |
 | 2 | Érvénytelen paraméter a rendszerhéj-csomag számára biztosított. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra |
 | 3 | Nincs lehetőség a rendszerhéj-csomag számára biztosított. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra. |
-| 4 | Érvénytelen a csomag, írja be vagy érvénytelen proxybeállítások; omsagent -*rpm*.sh csomagok csak telepíthető az RPM-alapú rendszereken, és omsagent -*deb*.sh csomagok csak telepíthető Debian-alapú rendszereken. Az univerzális telepítővel az ajánlott a [legújabb kiadása](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux). Emellett [tekintse át](#issue:-unable-to-connect-through-proxy-to-log-analytics) , ellenőrizze a beállításokat. |
+| 4 | Érvénytelen a csomag, írja be vagy érvénytelen proxybeállítások; omsagent -*rpm*.sh csomagok csak telepíthető az RPM-alapú rendszereken, és omsagent -*deb*.sh csomagok csak telepíthető Debian-alapú rendszereken. Az univerzális telepítővel az ajánlott a [legújabb kiadása](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Emellett [tekintse át](#issue:-unable-to-connect-through-proxy-to-log-analytics) , ellenőrizze a beállításokat. |
 | 5 | A rendszerhéj-csomagot kell végrehajtani a legfelső szintű vagy 403-as hibát adott vissza az előkészítés során. A parancs használatával futtassa `sudo`. |
 | 6 | Érvénytelen architektúra csomag vagy; bevezetés során visszaadott hiba 200-as hiba omsagent -*x64.sh csomagok csak a 64 bites rendszerek és omsagent - telepíthető*x86.sh csomagok csak 32 bites rendszerekre telepíthető. Töltse le az architektúra a megfelelő csomagot a [legújabb kiadása](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | OMS-csomag telepítése nem sikerült. Nézze át a parancs kimenete a legfelső szintű hiba. |
@@ -410,7 +410,7 @@ Reonboard használata után továbbra is a `--purge` lehetőség
 ### <a name="resolution"></a>Megoldás: 
 Hajtsa végre az alábbi lépéseket a probléma.
 1. Távolítsa el a bővítményt az Azure Portalról.
-2. Telepítse az ügynököt a következő a [utasításokat](../../log-analytics/log-analytics-quick-collect-linux-computer.md).
+2. Telepítse az ügynököt a következő a [utasításokat](../../azure-monitor/learn/quick-collect-linux-computer.md).
 3. Indítsa újra az ügynököt a következő parancs futtatásával: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 * Várjon néhány percet, és a kiépítési állapot **sikeres kiépítés**.
 

@@ -1,21 +1,22 @@
 ---
-title: Alkalmazás irányítópult, a Language Understanding alkalmazások
-titleSuffix: Azure Cognitive Services
+title: Alkalmazás-irányítópult
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ismerje meg az irányítópult, egy teszi jelentéskészítési eszköz, amely lehetővé teszi, hogy egyetlen pillantással alkalmazások figyelése.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335010"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074418"
 ---
 # <a name="application-dashboard"></a>Alkalmazás irányítópult
 Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 

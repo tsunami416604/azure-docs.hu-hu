@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: e7b4bc51ab71fa1043afdab019d27fd089d0356c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a0223547f7ccac9a1fd43776440319b436193d3a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980083"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088680"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Node.js és az Azure Cosmos DB használatával
 
@@ -36,7 +36,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 Emellett szüksége lesz a következőkre:
 * [Node.js](https://nodejs.org/en/)-verzió: 0.10.29-es vagy újabb
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -158,7 +158,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kó
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az [Azure Portalon](http://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget. 
+1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget. 
 
     Válassza a ![Másolás gomb](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 

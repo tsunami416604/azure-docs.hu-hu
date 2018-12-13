@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d032471ef588e3ae415915e5b4d817ca5738888a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678369"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889140"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API használatával (C#)
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg használatávalC#
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan átírás (átalakítás) szöveg egy parancsfájlból származó .NET Core használatával való (C#) és a Translator Text REST API. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 

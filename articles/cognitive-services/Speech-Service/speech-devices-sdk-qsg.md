@@ -1,5 +1,5 @@
 ---
-title: A beszédfelismerés eszközök SDK használatának első lépései
+title: A beszédfelismerés Devices SDK-val – beszédszolgáltatások használatának első lépései
 titleSuffix: Azure Cognitive Services
 description: Előfeltételek és a Speech eszközök SDK – első lépések vonatkozó utasításokat.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/18/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: e035e1bdedefc8e327b0179006b45f3bad4c41ee
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 46f7762a815a7fa4aa4663d9ac6e7c6001ea345c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470200"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097182"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
-Ez a cikk ismerteti, hogyan konfigurálhatja a fejlesztési számítógép és a Speech eszköz development Kitet, a beszéd eszköz SDK-val speech-kompatibilis eszközök fejlesztéséhez. Ezután létrehozhatja és üzembe helyezünk egy mintaalkalmazást az eszközön. 
+Ez a cikk ismerteti, hogyan konfigurálhatja a fejlesztési számítógép és a Speech eszköz development Kitet, a beszéd eszköz SDK-val speech-kompatibilis eszközök fejlesztéséhez. Ezután létrehozhatja és üzembe helyezünk egy mintaalkalmazást az eszközön.
 
 A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val. Is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -40,7 +41,7 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
 * Get- [Speech service előfizetési kulcs](get-started.md). 30 napos ingyenes próbaverzió beszerzése, illetve egy kulcs lekérése az Azure-irányítópulton.
 
-* Ha szeretné használni a Speech service szándékának felismerése, iratkozzon fel a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetési kulcs lekérése](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription). 
+* Ha szeretné használni a Speech service szándékának felismerése, iratkozzon fel a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetési kulcs lekérése](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription).
 
     Is [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/azure/cognitive-services/luis/) vagy használja a LUIS-modell, a LUIS-example.json mintát. A LUIS-modell érhető el minta a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Feltölteni a JSON-fájlt is a modell a [LUIS portál](https://www.luis.ai/home), jelölje be **importálása új alkalmazás**, majd válassza ki a JSON-fájlt.
 
@@ -64,9 +65,9 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 1. Telepítse a tanúsítványokat és a hálózati ébresztési word (kulcsszó) tábla fájlt, és állítsa be az engedélyeket a hangeszköz. Egy parancssori ablakban írja be a következő parancsokat:
 
    ```
-   adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/ 
+   adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
    adb shell
-   cd /data/ 
+   cd /data/
    chmod 777 roobo_setup.sh
    ./roobo_setup.sh
    exit
@@ -77,34 +78,34 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
     > [!TIP]
     > A számítógép mikrofon és előadó, és ellenőrizze, hogy dolgozik a fejlesztői készlet mikrofonok vypnutí. Így nem fog véletlenül indít el az eszközt az audio a számítógépről.
-    
+
 1.  Indítsa el a Vysor a számítógépen.
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1.  Az eszköz szerepelnie kell **válasszon egy eszközt**. Válassza ki a **nézet** gomb mellett az eszköz. 
- 
+1.  Az eszköz szerepelnie kell **válasszon egy eszközt**. Válassza ki a **nézet** gomb mellett az eszköz.
+
 1.  A mappa ikont választva a vezeték nélküli hálózathoz csatlakozni, és válassza **beállítások** > **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
- 
+
     > [!NOTE]
-    > Ha a vállalati eszközök csatlakoztatása a Wi-Fi rendszer kapcsolatos házirendek, a MAC-cím beszerzése, és hogyan lehet csatlakozni a vállalati Wi-Fi kapcsolatban az informatikai részlegtől szüksége. 
+    > Ha a vállalati eszközök csatlakoztatása a Wi-Fi rendszer kapcsolatos házirendek, a MAC-cím beszerzése, és hogyan lehet csatlakozni a vállalati Wi-Fi kapcsolatban az informatikai részlegtől szüksége.
     >
     > A fejlesztői csomag a MAC-cím megkereséséhez válassza ki a fájlmappa ikonra az asztalon, a fejlesztői csomag.
     >
     >  ![Vysor fájlmappa](media/speech-devices-sdk/qsg-10.png)
     >
-    > Válassza ki **beállítások**. Keresse meg a "mac-cím", és válassza **Mac-cím** > **speciális WLAN**. Írja le a MAC-cím, amely a párbeszédpanel alján jelenik meg. 
+    > Válassza ki **beállítások**. Keresse meg a "mac-cím", és válassza **Mac-cím** > **speciális WLAN**. Írja le a MAC-cím, amely a párbeszédpanel alján jelenik meg.
     >
     > ![Vysor MAC-cím](media/speech-devices-sdk/qsg-11.png)
     >
     > Egyes vállalatok előfordulhat, hogy mennyi ideig lehet egy eszköz időkorlátja a Wi-Fi rendszer csatlakozik. Szüksége lehet egy adott számú nap eltelte után a fejlesztői csomag regisztrálása a Wi-Fi-rendszer a kiterjesztése.
-    > 
+    >
     > Ha azt szeretné, a beszélő csatlakoztatása a fejlesztői csomag, akkor csatlakozhat ki a következő vonal. Egy jó minőségű, 3.5-mm speaker kell kiválasztani.
     >
     > ![Vysor hang](media/speech-devices-sdk/qsg-14.png)
- 
+
 ## <a name="run-a-sample-application"></a>A mintaalkalmazás futtatása
 
 A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőrzése, hozza létre és telepítse a mintaalkalmazást:
@@ -114,10 +115,10 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
 1.  Válassza az **Open an existing Android Studio project** (Létező Android Studio-projekt megnyitása) lehetőséget.
 
     ![Android Studio – egy meglévő projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
- 
+
 1.  Ugrás a C:\SDSDK\Android-Sample-Release\example. Válassza ki **OK** a példaprojekt megnyitásához.
- 
-1.  A beszédfelismerés előfizetési kulcs hozzáadása a forráskódban. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját. 
+
+1.  A beszédfelismerés előfizetési kulcs hozzáadása a forráskódban. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
 
     A kulcsok és az alkalmazásadatok nyissa meg a következő sorokat a forrásfájl MainActivity.java:
 
@@ -135,7 +136,7 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
     Emellett [hozzon létre egy egyéni ébresztési szó](speech-devices-sdk-create-kws.md).
 
     A használni kívánt ébresztési szó telepítése:
- 
+
     * Hozzon létre egy kulcsszót mappát a Adatmappa az eszköz egy parancssori ablakban az alábbi parancsok futtatásával:
 
         ```
@@ -152,9 +153,9 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_k.fst /data/keyword
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```
-    
+
     * Ezeket a fájlokat a mintaalkalmazásban hivatkozhat. Keresse meg a következő sorokat a MainActivity.java. Győződjön meg arról, hogy a megadott kulcsszóval az egyik használ, és, hogy az elérési út mutat, a `kws.table` fájlt, amely leküldeni az eszközre.
-        
+
         ```java
         private static final String Keyword = "Computer";
         private static final String KeywordModel = "/data/keyword/kws.table";
@@ -175,7 +176,7 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
     private static final String SelectedGeometry = "Circular6+1";
     ```
     A következő táblázat ismerteti a rendelkezésre álló értékeket:
-    
+
     |Változó|Jelentés|Elérhető értékek|
     |--------|-------|----------------|
     |`DeviceGeometry`|Fizikai mic-konfiguráció|A kör alakú dev csomag: `Circular6+1` |
@@ -186,12 +187,12 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
     |||Egy lineáris dev csomag, amely két megkérhetném használ: `Linear2`|
 
 
-1.  A hozhat létre az alkalmazás a **futtatása** menüjében válassza **"alkalmazás" futtatása**. A **válassza ki a központi telepítési cél** párbeszédpanel jelenik meg. 
+1.  A hozhat létre az alkalmazás a **futtatása** menüjében válassza **"alkalmazás" futtatása**. A **válassza ki a központi telepítési cél** párbeszédpanel jelenik meg.
 
 1. Válassza ki az eszközt, és válassza **OK** az eszközön az alkalmazás telepítéséhez.
 
     ![Válassza ki a központi telepítési cél párbeszédpanel](media/speech-devices-sdk/qsg-7.png)
- 
+
 1.  A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
     ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/qsg-8.png)
@@ -208,12 +209,12 @@ Ha tanúsítványhibák a beszédfelismerési szolgáltatás használatakor, gy�
 
     ![A beállítások területen válassza ki a dátum és idő](media/speech-devices-sdk/qsg-12.png)
 
-1. Tartsa a **automatikus dátum és idő** lehetőség van kijelölve. A **válassza időzóna**, válassza ki az aktuális időzóna. 
+1. Tartsa a **automatikus dátum és idő** lehetőség van kijelölve. A **válassza időzóna**, válassza ki az aktuális időzóna.
 
     ![Válassza ki a dátum és időzóna-beállításai](media/speech-devices-sdk/qsg-13.png)
 
-    Ha látja, hogy a fejlesztői csomag idő megegyezik-e a számítógépen lévő idő, a fejlesztői csomag csatlakozik az internethez. 
-    
+    Ha látja, hogy a fejlesztői csomag idő megegyezik-e a számítógépen lévő idő, a fejlesztői csomag csatlakozik az internethez.
+
     Fejlesztési kapcsolatos további információkért lásd: a [ROOBO – fejlesztési útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
 ### <a name="audio"></a>Hang

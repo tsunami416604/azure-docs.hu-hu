@@ -1,5 +1,5 @@
 ---
-title: Beszéd Devices SDK-val a licencszerződést.
+title: Beszéd Devices SDK-val licencszerződés – beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
 description: Beszéd Devices SDK-val licencszerződést.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466120"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078514"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Beszéd Devices SDK-val a licencszerződést.
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>MICROSOFT SZOFTVERLICENC-SZERZŐDÉS<br>BESZÉD ESZKÖZÖK SZOFTVERFEJLESZTŐI KÉSZLET (SDK) 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>MICROSOFT SZOFTVERLICENC-SZERZŐDÉS<br>BESZÉD ESZKÖZÖK SZOFTVERFEJLESZTŐI KÉSZLET (SDK)
 
 > HA ÉL (VAGY A FŐ ÜZLETI HELYÉT EGY ÜZLETI) AZ EGYESÜLT ÁLLAMOKBAN, KÉRJÜK, OLVASSA EL AZ ALÁBBI "KÖTÉS VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL LEMONDÁS" SZAKASZT. BEFOLYÁSOLJA A VITÁS ÜGYEK MEGOLDÁSÁRÓL.
 
@@ -57,7 +58,7 @@ f) szoftvert kell használnia a Microsoft Azure Cognitive Services beszédszolg�
 
 **5\. VISSZAJELZÉS.** A szoftver visszajelzést adhat a Microsoftnak, ha engedélyezi a Microsoftnak, nélkül, ingyenesen a jogot arra használja, megossza vagy kereskedelmileg hasznosítsa a visszajelzés bármilyen módon és bármilyen célra. Ön nem biztosít arról, hogy a Microsoft a a szoftver vagy dokumentáció külső felek számára a Microsoft a visszajelzés tartalmazza azokat a licencfeltételek hatálya alá tartozik. Ezek a rendelkezések a jelen szerződés.
 
-**6\. IDŐSZAK.** A jelen szerződés lép érvénybe a az elfogadást, és bármikor megszüntethető, vagy a Microsoft által. 
+**6\. IDŐSZAK.** A jelen szerződés lép érvénybe a az elfogadást, és bármikor megszüntethető, vagy a Microsoft által.
 
 **7\. MEGSZÜNTETÉSE.** Minden egyéb jogot érinti a Microsoft felmondhatja a szerződést, ha bármely használati vagy feltételeket ahhoz, hogy a feladatokat. Ebben az esetben Ön pedig köteles megsemmisíteni a szoftver összes másolatát és az összes annak összetevőit.
 

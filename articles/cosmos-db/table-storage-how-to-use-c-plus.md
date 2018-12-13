@@ -9,12 +9,12 @@ ms.devlang: cpp
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: dff665a26efb00ed74ddfab4259c5c35ca1abb38
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9bfc6ed2c781ddc54815665c492e7f2413033ca0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880131"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087116"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a C++ nyelvvel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "52880131"
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Table Storage szolgáltatás vagy az Azure Cosmos DB Table API használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások használatával** foglalkoznak.
 
 > [!NOTE]
-> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](http://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
+> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](https://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
 > 
 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
@@ -42,7 +42,7 @@ Az útmutatóban olyan Storage-szolgáltatásokat használ, amelyek futtathatók
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
 * **Linux:** Kövesse az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) oldalán található utasításokat.  
-* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be az alábbi parancsot a [NuGet csomagkezelő konzolján](http://docs.nuget.org/docs/start-here/using-the-package-manager-console), majd nyomja le az Enter billentyűt.  
+* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be az alábbi parancsot a [NuGet csomagkezelő konzolján](/nuget/tools/package-manager-console), majd nyomja le az Enter billentyűt.  
   
      Install-Package wastorage
 
@@ -478,5 +478,5 @@ Az alábbi hivatkozásokat követve többet is megtudhat az Azure Storage és a 
 * [A Table API bemutatása](table-introduction.md)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage-erőforrások listázása C++-ban](../storage/common/storage-c-plus-plus-enumeration.md)
-* [A Storage ügyféloldali kódtára a C++ programnyelvhez – referencia](http://azure.github.io/azure-storage-cpp)
+* [A Storage ügyféloldali kódtára a C++ programnyelvhez – referencia](https://azure.github.io/azure-storage-cpp)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)

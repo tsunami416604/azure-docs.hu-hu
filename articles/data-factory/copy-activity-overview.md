@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457083"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082646"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -173,6 +173,7 @@ Másolási tevékenység végrehajtásának részletei és teljesítményjellemz
 | DataRead | Olvassa el a forrásból származó adatok mérete | Int64 típusú érték a **bájtok** |
 | DataWritten | A fogadó írt adatok mérete | Int64 típusú érték a **bájtok** |
 | filesRead | A fájlok másolását, amikor az adatok másolása a file storage száma. | Int64 típusú érték (egység) |
+| fileScanned | A forrás file storage az éppen beolvasott fájlok száma. | Int64 típusú érték (egység) |
 | filesWritten | A fájlok másolását, amikor az adatok másolása a file Storage száma. | Int64 típusú érték (egység) |
 | rowsCopied | (Ez nem vonatkozik a bináris másolat) másolását sorok száma. | Int64 típusú érték (egység) |
 | rowsSkipped | Kihagyta a inkompatibilis sorok száma. A szolgáltatás által beállított "enableSkipIncompatibleRow" true bekapcsolhatja. | Int64 típusú érték (egység) |

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával Hive |} Microsoft Docs
-description: 'Útmutató: adatok másolása Hive támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával Hive |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a Hive támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,55 +11,55 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 379cc5412d317680afa9b03f0eea60c7f1a3b60d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9402be4045b9b3113623cfe3e441c944f62296cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051085"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079382"
 ---
-# <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával struktúra 
+# <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Hive 
 
-Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni Hive módját ismerteti. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol a Hive használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Hive adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Másolhat adatokat Hive bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
+Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és Hive-összekötő tulajdonságait.
+A következő szakaszok segítségével határozhatók meg a Data Factory-entitások meghatározott Hive-összekötőre-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok Hive kapcsolódó szolgáltatás támogatottak:
+Hive-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **struktúra** | Igen |
-| gazdagép | Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Hive, elválasztva (;) több gazdagépek (csak ha serviceDiscoveryMode engedélyezése).  | Igen |
-| port | A TCP-portot, amelyen a Hive kiszolgáló ügyfélkapcsolatokat. Ha Azure HDInsights csatlakozni, adja meg 443-as port. | Igen |
-| serverType | A Hive kiszolgáló típusa. <br/>Két érték engedélyezett: **HiveServer1**, **hiveserver2-n**, **HiveThriftServer** | Nem |
-| thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, **HTTP** | Nem |
-| authenticationType | A hitelesítési módszer a Hive-kiszolgálóhoz való hozzáféréshez. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
-| serviceDiscoveryMode | jelzi, hogy a szolgáltatással ZooKeeper, hamis nem igaz.  | Nem |
-| zooKeeperNameSpace | ZooKeeper alapján mely Hive Server 2 csomópontokat ad hozzá a névteret.  | Nem |
-| useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezést használja-e, vagy egy egyenértékű űrlap HiveQL alakítja azokat.  | Nem |
-| felhasználónév | A Hive-kiszolgáló eléréséhez használt felhasználónév.  | Nem |
-| jelszó | A jelszót a felhasználónak megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
-| httpPath | A részleges URL-címet a Hive-kiszolgáló megfelelő.  | Nem |
-| enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
-| trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |
-| useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett értéke hamis.  | Nem |
-| allowHostNameCNMismatch | Megadja, hogy egy hitelesítésszolgáltató által kiállított SSL tanúsítvány nevének egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztül kapcsolódáskor-e. Az alapértelmezett értéke hamis.  | Nem |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type | A type tulajdonság értékre kell állítani: **Hive** | Igen |
+| gazdagép | IP-cím vagy a gazdagép a Hive kiszolgáló neve, pontosvesszővel (;) több gazdagépek (amikor csak serviceDiscoveryMode beállítás engedélyezve).  | Igen |
+| port | A TCP-port a Hive-kiszolgáló által az ügyfélkapcsolatok figyeléséhez. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Igen |
+| serverType | Hive server típusa. <br/>Engedélyezett értékek a következők: **HiveServer1**, **hiveserver2-n keresztül**, **HiveThriftServer** | Nem |
+| thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **bináris**, **SASL**, **HTTP** | Nem |
+| authenticationType | A Hive-kiszolgáló eléréséhez használt hitelesítési módszert. <br/>Engedélyezett értékek a következők: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| serviceDiscoveryMode | Igaz értéket a szolgáltatással ZooKeeper, false nem jelzi.  | Nem |
+| zooKeeperNameSpace | A névtér a ZooKeeper, mely Hive Server 2 szerint csomópontokat ad hozzá.  | Nem |
+| useNativeQuery | Itt adhatja meg, hogy az illesztőprogram natív HiveQL lekérdezéseket használ, vagy alakítja át őket egy azzal egyenértékű HiveQL űrlapra.  | Nem |
+| felhasználónév | A Hive-kiszolgáló hozzáféréséhez használt felhasználónév.  | Nem |
+| jelszó | A jelszó a felhasználónak megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| httpPath | A részleges tartozó URL-cím a Hive-kiszolgáló.  | Nem |
+| enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
+| trustedCertPath | A .pem-fájlt tartalmazó ellenőrzésének folyamatát a kiszolgálón, ha SSL-kapcsolaton keresztül kapcsolódik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság csak akkor állítható, ha SSL-lel a saját üzemeltetésű Az alapértelmezett érték a telepített bemutathatja cacerts.pem fájlt:  | Nem |
+| useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy adott PEM-fájl. Az alapértelmezett értéke FALSE (hamis).  | Nem |
+| allowHostNameCNMismatch | Meghatározza a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik egy hitelesítésszolgáltató által kiállított SSL-tanúsítvány neve kötelező legyen-e. Az alapértelmezett értéke FALSE (hamis).  | Nem |
+| allowSelfSignedServerCert | Megadja, hogy, hogy a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke FALSE (hamis).  | Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -84,9 +84,14 @@ A következő tulajdonságok Hive kapcsolódó szolgáltatás támogatottak:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Hive dataset által támogatott tulajdonságokról listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Hive-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása struktúra, az adatkészlet típus tulajdonságának beállítása **HiveObject**. Nincs ilyen típusú dataset további típusra vonatkozó tulajdonság.
+Adatokat másol a Hive, az adatkészlet, a type tulajdonság beállítása **HiveObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **HiveObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -98,23 +103,24 @@ Adatok másolása struktúra, az adatkészlet típus tulajdonságának beállít
         "linkedServiceName": {
             "referenceName": "<Hive linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Hive forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Hive-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="hivesource-as-source"></a>HiveSource forrásaként
+### <a name="hivesource-as-source"></a>HiveSource forrásként
 
-Adatok másolása struktúra, állítsa be a forrás típusa a másolási tevékenység **HiveSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása a Hive, állítsa be a forrás típusaként a másolási tevékenység **HiveSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **HiveSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM MyTable"`. | Igen |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HiveSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -149,4 +155,4 @@ Adatok másolása struktúra, állítsa be a forrás típusa a másolási tevék
 ```
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

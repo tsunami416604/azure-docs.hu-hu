@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d149f26ce953efef316e68fe75bc07d1e240ae2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 86ad385488d9661abd52a2bd1a2d561956f0cbb3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970399"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082560"
 ---
-# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQl query példák használatával adatokat lekérdezni az Azure Cosmos Db-ből
+# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQL query példák használatával adatokat lekérdezni az Azure Cosmos DB-ből
 
 Az Azure Cosmos DB lekérdezése elemek SQL (Structured Query Language) használatával az SQL API-fiókok egy JSON-lekérdezési nyelvet támogatja. A lekérdezési nyelv az Azure Cosmos DB tervezésekor az alábbi két célok tekinthetők meg:
 
@@ -2253,14 +2253,14 @@ Az alábbi példa bemutatja, hogyan használható a queryDocuments az API a Java
 ## <a id="References"></a>Hivatkozások
 
 1. [Az Azure Cosmos DB bemutatása][introduction]
-2. [Az Azure Cosmos DB SQL-specifikáció](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Az Azure Cosmos DB SQL-specifikáció](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Az Azure Cosmos DB Konzisztenciaszintjeinek][consistency-levels]
-5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-6. JSON-BAN [http://json.org/](http://json.org/)
-7. JavaScript-specifikáció [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Értékelés technikák nagy méretű adatbázisok lekérdezése [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+6. JSON-BAN [https://json.org/](https://json.org/)
+7. JavaScript-specifikáció [https://www.ecma-international.org/publications/standards/Ecma-262.htm](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+8. LINQ [https://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
+9. Értékelés technikák nagy méretű adatbázisok lekérdezése [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel
 11. Lu, Ooi, Tan, párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel.
 12. Christopher Olston, Benjamin Reed Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: a Pig Latin: egy nem így idegen nyelvű adatfeldolgozási vagy SIGMOD 2008.

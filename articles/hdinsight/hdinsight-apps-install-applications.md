@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1a6b453bb92ca57a1c9be9bff958ac0780ea12e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498044"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093556"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
@@ -29,7 +29,7 @@ Az alábbi listában a közzétett alkalmazást mutatja be:
 * **A HDInsight DATAIKU DDS** lehetővé teszi az adatok szakemberek prototípusként, felépíthet és telepíthet rendkívül specifikus szolgáltatások, amelyek átalakítják a nyers adatokat hatékony üzleti előrejelzésekké.
 * **Datameer** önkiszolgáló méretezhető platformra való előkészítéséhez, feltárása, és gyorsítja vonatkozó az adatok elemzési információkká értékes üzleti használatra kész, gyorsabb és okosabb elemzések kézbesítése összetett többforrású adatokat bekapcsolása egy a nagyvállalati szintű.
 * **A HDInsight (béta) a H2O mesterséges intelligencia** H2O Sparkling Water a következő elosztott algoritmusokat támogatja: GLM, Naiv Bayes, elosztott, véletlenszerű erdő, átmenetes kiemelési gép, Neurális hálózatokat, Deep learning, a K-közép, PEM, Alacsony rangsorolják modellek, rendellenességek észlelése és Autoencoders általánosítva.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (másolatot KAP) egy nagyvállalati használatra kész Apache Kylin és Apache Hadoop technológián adatraktár; a subsecond biztosít nagy méretű adatkészlet késés lekérdezése és egyszerűbbé teszi az adatelemzés az üzleti felhasználók és az elemzők. 
+* **Kyligence vállalati**, Apache Kylin működteti, azonnali elemzéseket biztosít a nagy méretű adatkészletek az üzleti felhasználók és az adatelemzők. Az élvonalbeli gépi tanulási technológia és intelligens adatmodellezési funkciót Ez nagyban növeli a hatékonyságot, big data-elemzés. 
 * **Adat-előkészítési Paxata önkiszolgáló**
 * **Spark-feladatkiszolgálót KNIME Spark-végrehajtó** Spark-feladatkiszolgálót KNIME Spark-végrehajtó HDInsight-fürtök csatlakoztatásához az KNIME elemzési Platform szolgál.
 * **A Presto buborék** Presto van a gyors, skálázható elosztott SQL lekérdezési motorja. Tárolási és számítási szétválasztása lett tervezve, Presto tökéletes megoldás az adatok az Azure Data Lake Storage, Azure Blob Storage, SQL és NoSQL-adatbázisok és más adatforrásokhoz.

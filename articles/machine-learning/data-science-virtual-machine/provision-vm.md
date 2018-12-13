@@ -1,10 +1,12 @@
 ---
-title: A Windows Data Science virtuális gép Azure-beli üzembe helyezése |} A Microsoft Docs
+title: A Windows Data Science virtuális gép létrehozása
+titleSuffix: Azure
 description: Konfigurálja és a egy adatelemző virtuális gép létrehozása az Azure-ban Analytics és a gépi tanulás.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -13,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 20867b6bfecb981a9bc47180cb39a1c489b19d2f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959750"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079636"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:

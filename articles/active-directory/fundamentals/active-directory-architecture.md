@@ -1,6 +1,6 @@
 ---
-title: Mi az az Azure Active Directory architektúrájának? | Microsoft Docs
-description: Ismerje meg az Azure Active Directory-bérlő fogalmát, és hogyan kezelheti az Azure-t az Azure Active Directory.
+title: Az architektúra áttekintése – Azure Active Directory |} A Microsoft Docs
+description: Ismerje meg az Azure Active Directory-bérlő fogalmát, és kezelése az Azure-ban az Azure Active Directory használatával.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: 62ade1318b670b4eecf1be1a9255fe497d094a1a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733213"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076117"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi az az Azure Active Directory architektúrájának?
-Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md)
 
-Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, valamint engedélyeket adhat meg a vállalati erőforrások hozzáférésének engedélyezéséhez és megtagadásához. Az identitáskezeléssel kapcsolatos információért tekintse meg az [Azure-identitáskezelés alapjait leíró szakaszt](https://docs.microsoft.com/azure/active-directory/fundamentals-identity).
+Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, valamint engedélyeket adhat meg a vállalati erőforrások hozzáférésének engedélyezéséhez és megtagadásához. Az identitáskezeléssel kapcsolatos információért tekintse meg az [Azure-identitáskezelés alapjait leíró szakaszt](active-directory-whatis.md).
 
 ## <a name="azure-ad-architecture"></a>Azure AD-architektúra
 Az Azure AD földrajzilag elosztott architektúrája a széles körű megfigyelését, automatikus átirányítás, feladatátvételi és helyreállítási funkciókat, amelyeket vállalati szintű rendelkezésre állást és teljesítményt nyújthat az ügyfeleknek egyesíti.
@@ -114,7 +114,7 @@ Ha bármelyik Azure AD szolgáltatás nem várt módon működik, azonnal művel
 
 **Biztonságos műveletek**
 
-Műveleti vezérlőket, például a többtényezős hitelesítés (MFA) használatával minden olyan művelet, valamint minden művelet naplózását. Emellett minden olyan operatív tevékenység igény szerinti folyamatos számára szükséges ideiglenes hozzáférést just-in-time jogosultságszint-emelési rendszert használ. További információkért lásd: [The Trusted Cloud](https://azure.microsoft.com/support/trust-center) (A megbízható felhő).
+Műveleti vezérlőket, például a többtényezős hitelesítés (MFA) használatával minden olyan művelet, valamint minden művelet naplózását. Emellett minden olyan operatív tevékenység igény szerinti folyamatos számára szükséges ideiglenes hozzáférést just-in-time jogosultságszint-emelési rendszert használ. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/support/trust-center).
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

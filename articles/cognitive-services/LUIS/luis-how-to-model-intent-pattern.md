@@ -1,21 +1,22 @@
 ---
-title: A minta sablonok helyett további beszédmódok hozzáadása a LUIS-alkalmazások
-titleSuffix: Azure Cognitive Services
+title: Minták hozzáadása pontossága
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ismerje meg, a minta-sablonok hozzáadása a Language Understanding (LUIS) alkalmazások növelve előrejelzés pontosságát.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885886"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093182"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
 LUIS-alkalmazásokon végpont utterances kap, miután a [fogalom](luis-concept-patterns.md) minták növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Használati mintáit [entitások](luis-concept-entity-types.md) és azok szerepköreivel adott minta szintaxis segítségével adatokat szeretne kinyerni. 
@@ -125,7 +126,7 @@ Egy meglévő utterance (kifejezés) sem hozhat létre egy minta a **szándékot
 
 1. A kijelölt sora az utterance (kifejezés), válassza a három pontra (***...*** ) az utterance (kifejezés) jobb gombra, és válassza **mintaként Hozzáadás**.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Képernyőkép a beállítások menü kiemelt Hozzáadás minta utterances-tábla")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![Képernyőkép a beállítások menü kiemelt Hozzáadás mintával utterances tábla](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Képernyőkép a beállítások menü kiemelt Hozzáadás minta utterances-tábla")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. A minta szerint módosíthatja a [szintaxis szabályainak](luis-concept-patterns.md#pattern-syntax). Ha bejelölte az utterance (kifejezés) feliratú entitásokkal, ezeket az entitásokat is még a mintában a helyes szintaxis.
 

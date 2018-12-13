@@ -1,24 +1,22 @@
 ---
-title: 'ASP.NET MVC oktatóprogram az Azure Cosmos DB szolgáltatáshoz: webalkalmazás-fejlesztés | Microsoft Docs'
+title: 'ASP.NET MVC oktatóprogram az Azure Cosmos DB: webalkalmazás-fejlesztés'
 description: ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához az Azure Cosmos DB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre.
 keywords: asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.workload: azure-vs
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247670"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868718"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
 

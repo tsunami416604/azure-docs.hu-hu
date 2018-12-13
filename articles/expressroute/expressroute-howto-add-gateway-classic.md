@@ -1,19 +1,19 @@
 ---
-title: 'PowerShell-lel ExpressRoute virtuális hálózati átjáró konfigurálása: klasszikus: Azure |} A Microsoft Docs'
+title: 'Az ExpressRoute - klasszikus virtuális hálózati átjáró konfigurálása: Azure PowerShell-lel |} A Microsoft Docs'
 description: Klasszikus üzemi modellben a virtuális hálózati átjáró konfigurálása virtuális hálózathoz a PowerShell használatával egy ExpressRoute-konfiguráció modell.
-documentationcenter: na
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: 366aed206e8b1fb72547a64a957d83eec78c1358
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161981"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083272"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>PowerShell (klasszikus) használatával ExpressRoute virtuális hálózati átjáró konfigurálása
 > [!div class="op_single_selector"]

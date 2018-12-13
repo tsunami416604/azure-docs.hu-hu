@@ -3,23 +3,22 @@ title: 'Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks 
 description: Ismerje meg, hogyan használhatja az Azure Databricks szolgáltatást az Event Hubs szolgáltatással és a Cognitive Services API-val streamelési adatok közel valós idejű hangulatelemzéséhez.
 services: azure-databricks
 author: lenadroid
+ms.author: alehall
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 10/23/2018
-ms.author: alehall
-ms.openlocfilehash: cf396dea6ee467267ea73379ea04026fc8cc53b2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.openlocfilehash: 449d721683bd59646506db57d78b9535aa7d614d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636579"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100182"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
-Ez az oktatóanyag bemutatja, hogyan végezhet közel valós idejű hangulatelemzést streamelési adatokon az Azure Databricks használatával. Az Azure Event Hubs használatával beállít egy adatbetöltési rendszert. Az Event Hubs szolgáltatás üzeneteit az Azure Databricks szolgáltatásban a Spark Event Hubs összekötő segítségével használhatja fel. Végül használja a Microsoft Cognitive Service API-kat a streamelési adatok hangulatelemzéséhez.
+Ebben az oktatóanyagban elsajátíthatja, hogyan hangulatelemzést futtat egy streamelési adatokon az Azure Databricks segítségével közel valós időben. Az Azure Event Hubs használatával beállít egy adatbetöltési rendszert. Az Event Hubs szolgáltatás üzeneteit az Azure Databricks szolgáltatásban a Spark Event Hubs összekötő segítségével használhatja fel. Végül használja a Microsoft Cognitive Service API-kat a streamelési adatok hangulatelemzéséhez.
 
 Az oktatóanyag elvégzésével „Azure” kifejezéseket tartalmazó Twitter-tweetek streamelését valósította meg, és hangulatelemzést végzett a tweeteken.
 
@@ -151,7 +150,7 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
 ## <a name="get-a-cognitive-services-access-key"></a>Cognitive Services hozzáférési kulcs beszerzése
 
-Ez az oktatóanyag bemutatja, hogyan végezhet hangulatelemzést közel valós időben streamelt tweeteken a [Microsoft Cognitive Services Text Analytics API-k](../cognitive-services/text-analytics/overview.md) futtatásával. Az API-k használata előtt létre kell hoznia egy Microsoft Cognitive Services-fiókot az Azure-ban, és be kell szereznie egy hozzáférési kulcsot a Text Analytics API-k használatához.
+Ebben az oktatóanyagban használja a [Microsoft Cognitive Services Text Analytics API-k](../cognitive-services/text-analytics/overview.md) hangulatelemzést közel valós idejű tweetstream való. Az API-k használatához a Microsoft Cognitive Services-fiók létrehozása az Azure-ban, és szereznie egy hozzáférési kulcsot a Text Analytics API-k használatához.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -169,11 +168,11 @@ Ez az oktatóanyag bemutatja, hogyan végezhet hangulatelemzést közel valós i
     - Adja meg az Azure-előfizetés nevét, amelyben a fiókot létrehozta.
     - Válasszon egy Azure-beli helyet.
     - Válasszon egy tarifacsomagot a szolgáltatáshoz. További információ a Cognitive Services díjszabásáról: [díjszabási lap](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    - Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni.
+    - Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
 
     Kattintson a **Létrehozás** gombra.
 
-5. A fiók létrehozását követően az **Áttekintés** lapon kattintson a **Hozzáférési kulcsok megjelenítése** lehetőségre.
+5. A fiók létrehozása után a a **áttekintése** lapon jelölje be **hozzáférési kulcsok megjelenítése**.
 
     ![Hozzáférési kulcsok megjelenítése](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Hozzáférési kulcsok megjelenítése")
 
@@ -206,7 +205,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
 ## <a name="send-tweets-to-event-hubs"></a>Tweetek küldése az Event Hubsnak
 
-Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és a helyőrzőt cserélje le a korábban létrehozott Event Hubs-névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
+Az a **SendTweetsToEventHub** jegyzetfüzet, illessze be az alábbi kódot, és cserélje le a helyőrző értékek Event Hubs-névtér és Twitter-alkalmazás, amelyet korábban hozott létre. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 ```scala
 import java.util._
@@ -313,7 +312,7 @@ val customEventhubParameters =
   EventHubsConf(connectionString)
   .setMaxEventsPerTrigger(5)
 
-val incomingStream = spark.readStream.format("eventhubs").option(customEventhubParameters.toMap).load()
+val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
 
 incomingStream.printSchema
 
@@ -396,7 +395,7 @@ A kimenetnek ezután a következő kódrészlethez hasonlónak kell lennie:
     ...
     ...
 
-Közel valós időben streamelt adatokat az Azure Event Hubsból az Azure Databricksbe az Apache Spark Event Hubs-összekötőjével. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
+Streamelt adatokat az Azure Event Hubsból az Azure Databricksbe az Apache Spark az Event Hubs összekötője segítségével közel valós időben. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Hangulatelemzés futtatása tweeteken
 
@@ -509,7 +508,7 @@ object SentimentDetector extends Serializable {
 }
 ```
 
-Adjon hozzá egy másik cellát egy Spark UDF (felhasználói függvény) definiálására, amely meghatározza a hangulatot.
+Adjon hozzá egy másik cellába meghatározása egy Spark UDF (felhasználó által definiált függvény), amely meghatározza a róluk szóló véleményeket.
 
 ```scala
 // User Defined Function for processing content of messages to return their sentiment.
@@ -571,7 +570,7 @@ A következő kódrészlethez hasonló kimenetnek kell megjelennie:
 
 A **Hangulat** oszlopban szereplő **1**-hez közeli érték nagyszerű Azure felhasználói élményre utal. A **0**-hoz közeli érték arra utal, hogy a felhasználók a Microsoft Azure használata során hibákkal találkoztak.
 
-Ennyi az egész! Az Azure Databricks segítségével adatokat streamelt az Azure Event Hubsba, a streamelt adatokat az Event Hubs összekötője segítségével használta fel, majd közel valós idejű hangulatelemzést hajtott végre rajtuk.
+Ennyi az egész! Az Azure Databricks segítségével streamelt adatokat az Azure Event Hubsba, az adatok streamelése az Event Hubs összekötője segítségével felhasznált és majd hangulatelemzést streamelési adatok közel valós időben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

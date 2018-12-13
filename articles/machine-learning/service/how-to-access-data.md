@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning szolgáltatásból származó adattárainak hozzáférés az adatokhoz
+title: Hozzáférés az adatokhoz a adattárolók
+titleSuffix: Azure Machine Learning service
 description: Az Azure Machine Learning szolgáltatás betanítás során adatokat tároló elérése érdekében adattárainak használata
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +11,14 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 50df0647372832647712d514dd9d4651d8d9cc2d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: bce6d636dd80820732d4911c1b24ef00118b594e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014054"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073466"
 ---
-# <a name="how-to-access-data-during-training"></a>Adatbázisadatok elérése során képzés
+# <a name="access-data-during-training-from-your-datastores"></a>Az adattárolók a betanítás során érheti el adatait
 Egy adattár segítségével elérheti és kezelheti az Azure Machine Learning-munkafolyamatok adatait.
 
 Az Azure Machine Learning szolgáltatásban, az adattárral absztrakciós felett [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction). Az adattároló hivatkozhat, vagy egy [Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) tároló vagy [Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) az alapul szolgáló tárolóként. 

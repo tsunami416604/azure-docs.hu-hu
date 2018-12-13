@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a3d079483ecf4ea8cf9a4c6bda050bfe8befcfd0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241684"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076102"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-hoz az Azure Data Factory (előzetes verzió) használatával
 
@@ -89,8 +89,12 @@ QuickBooks társított szolgáltatás a következő tulajdonságok támogatottak
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a QuickBooks adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az adatkészlet **QuickBooksObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az adatkészlet **QuickBooksObject**. A következő tulajdonságok támogatottak:
 
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **QuickBooksObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 **Példa**
 
 ```json
@@ -101,7 +105,8 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az 
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,14 +115,14 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az 
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a QuickBooks forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="quickbookssource-as-source"></a>QuickBooksSource forrásként
+### <a name="quickbooks-as-source"></a>QuickBooks forrásként
 
 Adatok másolása a QuickBooks online-hoz, állítsa be a forrás típusaként a másolási tevékenység **QuickBooksSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **QuickBooksSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

@@ -5,17 +5,18 @@ description: Ez a cikk az e-mail tartalmazza az előre összeállított Entitás
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6d05f62ad725a89b0a34b21b8a8d36bb8fa464b1
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 07fe8a0d48d59da89ad76f1648b75332d23005a2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441011"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074074"
 ---
 # <a name="email-entity"></a>E-mail entitás
 E-mailek kinyerése a teljes e-mail-címét az utterance (kifejezés) tartalmaz. Az entitás már be van tanítva, mert nem kell tartalmazó e-mailben az alkalmazás leképezések példa beszédmódok hozzáadása. A támogatott e-mail entitás `en-us` culture csak. 
@@ -23,7 +24,7 @@ E-mailek kinyerése a teljes e-mail-címét az utterance (kifejezés) tartalmaz.
 ## <a name="resolution-for-prebuilt-email"></a>Előre összeállított e-mailek felbontás
 Az alábbi példa bemutatja a feloldása a **builtin.email** entitás.
 
-```JSON
+```json
 {
   "query": "please send the information to patti.owens@microsoft.com",
   "topScoringIntent": {

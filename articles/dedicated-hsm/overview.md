@@ -1,6 +1,6 @@
 ---
-title: Mit jelent a dedikált HSM? | Microsoft Docs
-description: Azure dedikált HSM FIPS szabványnak megfelelő Azure-ban kulcstároló-képességeket biztosít 140-2-3. szint tanúsítvánnyal
+title: Mit jelent a dedikált HSM? -Az azure dedikált HSM |} A Microsoft Docs
+description: Azure dedikált HSM-be, e rövid áttekintés révén kulcstároló-képességeket, amely megfelel a FIPS Azure-ban 140-2-3. szint tanúsítvánnyal
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 11/26/2018
+ms.custom: mvc, seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 92d77ec886a0f37c28f5e3031a7e14f63299c8aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eeafa33c8c1cdbcd7d0e55e3860dda1b8d451fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427114"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080078"
 ---
-# <a name="what-is-dedicated-hsm"></a>Mit jelent a dedikált HSM?
+# <a name="what-is-azure-dedicated-hsm"></a>Mi az az Azure-beli dedikált HSM?
 
-Az Azure, a dedikált HSM titkosítási kulcs tárolása az Azure-ban, amely megfelel a legszigorúbb biztonsági előírásokat nyújt. Dedikált HSM az ideális megoldás, az ügyfelek igénylő FIPS 140-2 érvényesítve, a Level 3 eszközök és a HSM-készülék teljes és kizárólagos irányítását is. A hardveres biztonsági modulokhoz számos Azure-régióban globálisan üzembe, és egyszerűen két, az eszközök kiosztása és magas rendelkezésre állásúként konfigurálva. HSM-EK is előfordulhat, hogy kiosztott ahhoz, hogy biztosítsa elleni regionális szolgáltatásszint feladatátvételi régióban. A Microsoft kiadott, a dedikált HSM szolgáltatás használatával a [SafeNet Luna hálózati HSM 7 (modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) Gemalto készüléket. Ez az eszköz a legmagasabb szintű teljesítmény- és titkosítási integrációs lehetőségeket kínál. Üzembe helyezésekor, a HSM-EK közvetlenül az ügyfél virtuális hálózathoz csatlakozik, és a is fért hozzá a helyszíni alkalmazás és a felügyeleti eszközök a pont – hely vagy a helyek közötti VPN-kapcsolat konfigurálása. Ügyfelek szoftver- és a dokumentációt, konfigurálhatja és kezelheti a hardveres biztonsági modulokhoz Gemalto a támogatási portálról fogják beszerezni.
+Az Azure, a dedikált HSM egy Azure-szolgáltatás, amely biztosítja a titkosítási kulcs tárolása az Azure-ban. Dedikált HSM megfelel-e a legszigorúbb biztonsági előírásokat. Az ideális megoldás az ügyfelek igénylő FIPS 140-2 3. szint érvényesítve eszközök és a HSM-készülék teljes és kizárólagos vezérlő. A hardveres biztonsági modulokhoz számos Azure-régióban globálisan üzembe, és egyszerűen két, az eszközök kiosztása és magas rendelkezésre állásúként konfigurálva. HSM-EK is előfordulhat, hogy kiosztott ahhoz, hogy biztosítsa elleni regionális szolgáltatásszint feladatátvételi régióban. A Microsoft kiadott, a dedikált HSM szolgáltatás használatával a [SafeNet Luna hálózati HSM 7 (modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) Gemalto készüléket. Ez az eszköz a legmagasabb szintű teljesítmény- és titkosítási integrációs lehetőségeket kínál. Üzembe helyezésekor, a HSM-EK közvetlenül az ügyfél virtuális hálózathoz csatlakozik, és a is fért hozzá a helyszíni alkalmazás és a felügyeleti eszközök a pont – hely vagy a helyek közötti VPN-kapcsolat konfigurálása. Ügyfelek szoftver- és a dokumentációt, konfigurálhatja és kezelheti a hardveres biztonsági modulokhoz Gemalto a támogatási portálról fogják beszerezni.
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Miért érdemes használni az Azure dedikált HSM?
 

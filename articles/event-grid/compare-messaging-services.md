@@ -1,21 +1,22 @@
 ---
-title: Azure üzenetkezelési szolgáltatások összehasonlítása
-description: Az Azure Event Grid, az Event Hubs és a Service Bus összehasonlítása. Javaslat a megfelelő szolgáltatás használatára különböző forgatókönyvek esetén.
+title: Az Azure összehasonlítása – Event Grid, az Event Hubs, a Service Bus üzenetkezelés
+description: A három Azure üzenetkezelési szolgáltatások – Azure Event Grid, az Event Hubs és a Service Bus ismertetése Javaslat a megfelelő szolgáltatás használatára különböző forgatókönyvek esetén.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 7e78dd77d5bd3d9e5aee55aaeffa933a21c3b477
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852197"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084957"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>Az üzenetkézbesítő Azure-szolgáltatás kiválasztása
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Válassza ki az Azure üzenetkezelési szolgáltatások – Event Grid, az Event Hubs és a Service Bus közötti
 
 Az Azure három olyan szolgáltatást kínál, amely segít kézbesíteni az események üzeneteit egy teljes megoldásban. Ezek a szolgáltatások a következők:
 
@@ -61,7 +62,7 @@ A következő jellemzőkkel rendelkezik:
 
 * dinamikusan skálázható
 * alacsony költség
-* serverless
+* kiszolgáló nélküli
 * legalább egyszeri kézbesítés
 
 ### <a name="event-hubs"></a>Event Hubs

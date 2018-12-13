@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 03757aaf13d48730a3061f07ae3138f0aadbdf00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077851"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Magento
 
@@ -77,7 +77,12 @@ A Magento társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Magento adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatmásolás Magento, állítsa be a type tulajdonság, az adatkészlet **MagentoObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatmásolás Magento, állítsa be a type tulajdonság, az adatkészlet **MagentoObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **MagentoObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -89,7 +94,8 @@ Adatmásolás Magento, állítsa be a type tulajdonság, az adatkészlet **Magen
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +104,14 @@ Adatmásolás Magento, állítsa be a type tulajdonság, az adatkészlet **Magen
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Magento forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="magentosource-as-source"></a>MagentoSource forrásként
+### <a name="magento-as-source"></a>Magento forrásként
 
 Adatok másolása Magento, állítsa be a forrás típusaként a másolási tevékenység **MagentoSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MagentoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Customers"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Customers"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

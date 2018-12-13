@@ -3,7 +3,7 @@ title: Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig |} A 
 description: Ismerje meg, hogyan Azure SQL Database támogatja akár 10 évig tárolását teljes adatbázis biztonsági másolatait.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 7225c90d0d85b2a7fe53f9d2d3b13f68a45d0471
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026177"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868208"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
 
 Számos alkalmazás rendelkezik szabályozási, megfelelőségi vagy egyéb üzleti célra használja, amely esetében megtarthatja az adatbázisok biztonsági mentése az Azure SQL Database által biztosított 7 – 35 napon túl [automatikus biztonsági mentések](sql-database-automated-backups.md). A hosszú távú megőrzés (LTR) szolgáltatással tárolhatja a megadott SQL adatbázis teljes biztonsági mentés a [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) a blob storage akár 10 évig. Biztonsági másolat új adatbázisként visszaállíthatja.
 
 > [!NOTE]
-> Az Azure SQL Database logikai kiszolgálók üzemeltetett adatbázisok LTR is engedélyezhetők. Ez még nem felügyelt példányok lévő üzemeltetett adatbázisokhoz.
+> Az Azure SQL Database logikai kiszolgálók üzemeltetett adatbázisok LTR is engedélyezhetők. Ez még nem felügyelt példányok lévő üzemeltetett adatbázisokhoz. Használhatja az SQL Agent-feladatok ütemezése [csak másolatot adatbázis biztonsági másolatait](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) alternatívájaként LTR 35 napos időszak letelte után.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL-adatbázis hosszú távú megőrzés működése

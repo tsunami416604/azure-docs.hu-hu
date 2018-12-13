@@ -1,21 +1,19 @@
 ---
-title: Bevezetés az Azure Cosmos DB Table API használatába | Microsoft Docs
+title: Az Azure Cosmos DB Table API bemutatása
 description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy mennyiségű kulcs-érték típusú adatok tárolására és lekérdezésére a népszerű OSS MongoDB API-k használatával.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 07c1edd53ff30cc3128443cb8984d1a5467c4395
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 2647065d251caea571e2bfcd5703bbb3bec08345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240052"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074305"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
@@ -25,7 +23,7 @@ Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Tabl
 * [Dedikált teljesítmény](partition-data.md) világszerte.
 * Az esetek 99%-ában egyszámjegyű ezredmásodperces késés.
 * Garantáltan magas szintű rendelkezésre állás.
-* [Automatikus másodlagos indexelés](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+* [Automatikus másodlagos indexelés](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
 Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. A Table API a .NET, a Java, a Python és a Node.js környezetekhez is rendelkezik ügyfél-SDK-val.
 

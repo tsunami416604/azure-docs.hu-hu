@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs Capture engedélyezése a portálon keresztül | Microsoft Docs
-description: Engedélyezze az Event Hubs Capture funkciót az Azure Portal használatával.
+title: Rögzítése az események streamelése az Azure portal – Azure Event Hubs használatával |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet engedélyezni az Azure Portalon keresztül az Azure Event Hubs streamelési események rögzítése.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 01c7d9c848465177d5ff1ed7264743437e57d663
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014718"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075114"
 ---
-# <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Az Event Hubs Capture engedélyezése az Azure Portal használatával
+# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Az események keresztül az Azure Event Event Hubs rögzítés engedélyezése
 
 Az Azure [Event Hubs Capture][capture-overview] lehetővé teszi a streamelt Event Hubs-adatok tetszőleges [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)- vagy [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)-fiókba történő automatikus továbbítását.
 

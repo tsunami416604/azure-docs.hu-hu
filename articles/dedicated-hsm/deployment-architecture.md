@@ -1,24 +1,25 @@
 ---
-title: Az Azure dedikált HSM üzembe helyezési architektúrája |} A Microsoft Docs
-description: Azure dedikált HSM FIPS szabványnak megfelelő Azure-ban kulcstároló-képességeket biztosít 140-2-3. szint tanúsítvánnyal
+title: Üzembe helyezési architektúra – Azure dedikált HSM-be |} A Microsoft Docs
+description: Alapvető tervezési szempontok Azure dedikált HSM-architektúra részeként használatakor
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 8481f444464135a24d42612f334ac6096cba7b21
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319413"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078293"
 ---
-# <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Az Azure dedikált HSM üzembe helyezési architektúrája
 
 Az Azure, a dedikált HSM titkosítási kulcs tárolása az Azure biztosít. Ez megfelel a szigorú biztonsági követelmények. Ügyfelek számára az Azure dedikált HSM-be, ha azok:
 

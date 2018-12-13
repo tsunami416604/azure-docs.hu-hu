@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b0023c42d99842c704734d4f994273436f201e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121872"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077647"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával HubSpot
 
@@ -84,7 +84,12 @@ HubSpot társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz HubSpot adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása történő HubSpot, állítsa be a type tulajdonság, az adatkészlet **HubspotObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása történő HubSpot, állítsa be a type tulajdonság, az adatkészlet **HubspotObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **HubspotObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -96,7 +101,8 @@ Adatok másolása történő HubSpot, állítsa be a type tulajdonság, az adatk
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -112,7 +118,7 @@ Adatok másolása HubSpot, állítsa be a forrás típusaként a másolási tev�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HubspotSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Companies where Company_Id = xxx"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

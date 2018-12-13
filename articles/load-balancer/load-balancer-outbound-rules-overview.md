@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.openlocfilehash: 34a80a180d4c08027e4c975d4f7955966eec7307
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219375"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086368"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -67,9 +67,9 @@ API-verzió "2018-07-01" lehetővé teszi egy kimenő szabály definícióját s
 
 Kimenő szabály csak egyetlen nyilvános IP-cím is használható, amíg kimenő szabályok terhei konfigurációs kimenő NAT méretezése Több IP-cím használatával nagy méretű forgatókönyvek tervezése és a kimenő szabályok használatával beállíthatja csökkentése [SNAT Erőforrásfogyás](load-balancer-outbound-connections.md#snatexhaust) rejtő mintákat.  
 
-Minden további IP-cím, egy előtérbeli által biztosított 64 000 elmúló port SNAT portokat használja, hogy a terheléselosztó számára biztosít. Míg a terheléselosztás és a bejövő NAT-szabályokat egyetlen előtér, a kimenő szabály kibővíti az előtér-formátumban, és lehetővé teszi, hogy több előtérrendszer ugyanabban a szabályban.  Több előtérrendszer szabályonként meg kell szorozni a mennyiséget, a rendelkezésre álló SNAT portok minden egyes nyilvános IP-címmel, és nagy forgatókönyveket támogatja.
+Minden további IP-cím, egy előtérbeli által biztosított 51,200 elmúló port SNAT portokat használja, hogy a terheléselosztó számára biztosít. Míg a terheléselosztás és a bejövő NAT-szabályokat egyetlen előtér, a kimenő szabály kibővíti az előtér-formátumban, és lehetővé teszi, hogy több előtérrendszer ugyanabban a szabályban.  Több előtérrendszer szabályonként meg kell szorozni a mennyiséget, a rendelkezésre álló SNAT portok minden egyes nyilvános IP-címmel, és nagy forgatókönyveket támogatja.
 
-Ezenkívül használhatja a [nyilvános IP-előtag](https://aka.ms/lbpublicipprefix) közvetlenül a kimenő szabály.  Előtag egyszerűbb méretezést és egyszerűsített engedélyezési lista forgalom származik az az Azure-alapú nyilvános IP-cím használatával biztosít. Előtérbeli IP-konfiguráció a terheléselosztó erőforrás közvetlenül hivatkozni egy nyilvános IP-címelőtag belül is beállíthatja.  Ez lehetővé teszi, hogy a terheléselosztó a nyilvános IP-előtag kizárólagos felett, és a kimenő szabály automatikusan fogja használni az összes nyilvános IP-címeire a nyilvános IP-előtag a kimenő kapcsolatok számára.  Minden egyes nyilvános IP-előtag a tartományon belüli IP-címet adjon meg 64 000 elmúló port az SNAT portokat használja, hogy a terheléselosztó IP-címenként.   
+Ezenkívül használhatja a [nyilvános IP-előtag](https://aka.ms/lbpublicipprefix) közvetlenül a kimenő szabály.  Előtag egyszerűbb méretezést és egyszerűsített engedélyezési lista forgalom származik az az Azure-alapú nyilvános IP-cím használatával biztosít. Előtérbeli IP-konfiguráció a terheléselosztó erőforrás közvetlenül hivatkozni egy nyilvános IP-címelőtag belül is beállíthatja.  Ez lehetővé teszi, hogy a terheléselosztó a nyilvános IP-előtag kizárólagos felett, és a kimenő szabály automatikusan fogja használni az összes nyilvános IP-címeire a nyilvános IP-előtag a kimenő kapcsolatok számára.  Minden egyes nyilvános IP-előtag a tartományon belüli IP-címet adja meg az SNAT portokat használja, hogy a terheléselosztó IP-címenként 51,200 elmúló port.   
 
 Nem lehet egyedi nyilvános IP-cím erőforrások a nyilvános IP-előtag alapján létrehozott, ez a beállítás használatakor, mert az kimenő szabályt a nyilvános IP-előtag teljes vezérlési jogosultsággal kell rendelkeznie.  További részletes finomhangolás van szüksége, ha az egyes nyilvános IP-cím erőforrás létrehozása a nyilvános IP-előtag, és több nyilvános IP-címek külön-külön hozzárendelése az előtér egy kimenő szabály.
 
@@ -82,7 +82,7 @@ Használja a következő paramétert 10 000 SNAT lefoglalni a portokat a virtuá
 
           "allocatedOutboundPorts": 10000
 
-Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 64 000 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Például ha 10 000 portok száma a virtuális gép és a 7 virtuális gép foglal le a háttérrendszernek a készlet egyetlen nyilvános IP-cím megosztásához, a konfiguráció visszautasított (7 x 10,0000 SNAT portok > 64 000 SNAT portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
+Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 51,200 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Például ha 10 000 portok száma a virtuális gép és a 7 virtuális gép foglal le a háttérrendszernek a készlet egyetlen nyilvános IP-cím megosztásához, a konfiguráció visszautasított (7 x 10,0000 SNAT portok > 51,200 SNAT portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
 
 Térhet vissza a [háttérkiszolgáló-készlet mérete alapján automatikus SNAT portkiosztással](load-balancer-outbound-connections.md#preallocatedports) 0-portok számának megadásával.
 
@@ -160,7 +160,7 @@ Ha nem szeretné a terheléselosztási szabály használható kimenő kell [tilt
 
 Kimenő szabályok használatával beállíthatja finomhangolása a [háttérkiszolgáló-készlet mérete alapján automatikus SNAT portkiosztással](load-balancer-outbound-connections.md#preallocatedports).
 
-Például ha két virtuális gépet, egyetlen nyilvános IP-cím megosztása kimenő NAT-hoz, érdemes foglalja le az alapértelmezett 1024 portokat, ha SNAT Erőforrásfogyás SNAT portok számának növeléséhez. Minden egyes nyilvános IP-cím legfeljebb 64 000 elmúló port közreműködhet.  Ha konfigurál egy egyetlen nyilvános IP-cím előtérbeli az kimenő szabályt, a háttérkészletben lévő virtuális gépek akár 64 000 SNAT portok összesen juttathatja el.  A két virtuális gépet legfeljebb 32 000 SNAT port a kimenő szabály (2 x 32 000 = 64 000) lehet hozzárendelni.
+Például ha két virtuális gépet, egyetlen nyilvános IP-cím megosztása kimenő NAT-hoz, érdemes foglalja le az alapértelmezett 1024 portokat, ha SNAT Erőforrásfogyás SNAT portok számának növeléséhez. Minden egyes nyilvános IP-cím legfeljebb 51,200 elmúló port közreműködhet.  Ha konfigurál egy egyetlen nyilvános IP-cím előtérbeli az kimenő szabályt, a háttérkészletben lévő virtuális gépek 51,200 SNAT portok összesen juttathatja el.  A két virtuális gépek esetében legfeljebb 25 600 SNAT port a kimenő szabály (2 x 25,600 = 51,200) lehet hozzárendelni.
 
 Felülvizsgálat [kimenő kapcsolatok](load-balancer-outbound-connections.md) és a részleteket az [SNAT](load-balancer-outbound-connections.md#snat) portok vannak lefoglalva, és használja.
 
@@ -202,7 +202,7 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
 
 ## <a name="limitations"></a>Korlátozások
 
-- Használható elmúló port előtérbeli IP-címenként legfeljebb 64 000.
+- Az előtérbeli IP-címenként használható elmúló port maximális száma: 51,200.
 - A konfigurálható kimenő üresjárati időkorlát tartománya 4-66 perc (240 a 4000-es másodperc).
 - Terheléselosztó nem támogatja a ICMP kimenő helyezkedik el.
 - Portál konfigurálása, illetve megtekintheti a kimenő szabályok nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.

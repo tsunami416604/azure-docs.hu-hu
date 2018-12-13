@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 2767b8e493327e4e8275481ffc7aa18d70c81ccd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e91984281350e9ea0a5f3411c39d29dfd6420529
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836797"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080911"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 
@@ -32,7 +32,7 @@ Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak
 
   - Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 
-* [Maven](http://maven.apache.org/download.cgi) bináris archívum [letöltése](http://maven.apache.org/install.html) és [telepítése](http://maven.apache.org/)  
+* [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)  
   
   - Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 

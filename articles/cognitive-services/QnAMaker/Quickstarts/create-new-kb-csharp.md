@@ -1,21 +1,22 @@
 ---
-title: 'Rövid útmutató: Tudásbázis létrehozása – REST, C# – QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: Hozzon létre Tudásbázis – RESTC#
+titlesuffix: QnA Maker- Azure Cognitive Services
 description: Ez a C# REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: 190a937a4239c08d844d271d2e1d8e858215a5c2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: ef950978d73659888e76fc89c0db14924f54b6f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334959"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092606"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a C# használatával
 

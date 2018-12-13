@@ -1,21 +1,22 @@
 ---
-title: '6. oktatóanyag: Az intelligens HANGFELISMERÉSI összetett entitás összetett adatokat nyerhet ki'
+title: Összetett entitást"
 titleSuffix: Azure Cognitive Services
 description: Adjon hozzá egy összetett entitást szeretné a különböző típusú kinyert adatok egyetlen tartalmazó entitásba. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423501"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079211"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Oktatóanyag 6: Csoport és a kapcsolódó adatokat nyerhet ki
 Ebben az oktatóanyagban egy összetett entitás szeretné a kinyert adatokkal történő tartalmazó egyetlen entitás hozzáadása. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
@@ -70,7 +71,7 @@ Az áthelyezési kérelemnek tartalmaznia kell az alkalmazott (bármely szinonim
 
 A kibontott adatok végpontról tartalmazzák ezt az információt és küldje vissza a a `RequestEmployeeMove` összetett entitást:
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -103,22 +104,22 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 
 3. Válassza a Nagyító ikont, az eszköztáron a kimondott szöveg szűréséhez. 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot Nagyító gomb kiemelésével")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![Képernyőkép a LUIS "MoveEmployee" szándékot Nagyító gomb kiemelésével](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "képernyőképe a LUIS \"MoveEmployee\" szándékot Nagyító gomb kiemelésével")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. Adja meg `tomorrow` be a szűrő szövegmezőbe az utterance (kifejezés) található `shift x12345 to h-1234 tomorrow`.
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Képernyőkép a LUIS \"MoveEmployee\" leképezés \"holnap innovációit\" szűrővel kiemelésével")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [![Képernyőkép a LUIS "MoveEmployee" leképezés "holnap innovációit" szűrővel kiemelt](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "képernyőképe a LUIS \"MoveEmployee\" leképezés \"holnap innovációit\" szűrővel kiemelésével")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     Hogy az entitás szűrés datetimeV2, kiválasztásával **entitás szűrők** majd **datetimeV2** a listából. 
 
 5. Válassza ki az első entitás `Employee`, majd **Zabalit do összetett entitást** előugró menü listájában. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![Képernyőkép a LUIS első entitás kiválasztásával a kiemelt összetett "MoveEmployee" szándékot](media/luis-tutorial-composite-entity/hr-create-entity-1.png "képernyőképe a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. Azonnal válassza ki az utolsó entitás `datetimeV2` az utterance (kifejezés) található. Zöld sáv megjelenítése a kiválasztott szavakat jelző egy összetett entitás alapján. Az előugró menüben adja meg az összetett név `RequestEmployeeMove` majd válassza ki az Entert. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Képernyőkép a LUIS összetett és létrehozni egy entitásban utolsó entitás kiválasztása \"MoveEmployee\" szándékot kiemelésével")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![Képernyőkép a LUIS utolsó entitás kiválasztása az összetett és entitások kiemelt "MoveEmployee" szándékot](media/luis-tutorial-composite-entity/hr-create-entity-2.png "képernyőképe a LUIS \"MoveEmployee\" szándékot utolsó entitás kiválasztása az összetett és kiemelt entitás létrehozása")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. A **milyen típusú entitást szeretne létrehozni?**, szinte az összes, a szükséges mezők szerepelnek a listában. Csak a származási helye nincs megadva. Válassza ki **adjon hozzá egy gyermek entitásnak**, jelölje be **Locations::Origin** meglévő entitások, majd válassza ki a listáról **kész**. 
 
@@ -135,15 +136,15 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 
 1. Valamennyi példa utterance (kifejezés) válassza ki a bal szélső entitást, amely az összetett kell lennie. Válassza ki **Zabalit do összetett entitást**.
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![Képernyőkép a LUIS első entitás kiválasztásával a kiemelt összetett "MoveEmployee" szándékot](media/luis-tutorial-composite-entity/hr-label-entity-1.png "képernyőképe a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. Válassza ki az utolsó szót az összetett entitásban, majd válassza ki **RequestEmployeeMove** az előugró menüben. 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az utolsó entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![Képernyőkép a LUIS utolsó entitás kiválasztásával a kiemelt összetett "MoveEmployee" szándékot](media/luis-tutorial-composite-entity/hr-label-entity-2.png "képernyőképe a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az utolsó entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. Ellenőrizze, hogy a célt az összes utterances vannak ellátva, az összetett entitáshoz. 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Képernyőkép a LUIS \"MoveEmployee\" címkével ellátott összes utterances az")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![Képernyőkép a LUIS "MoveEmployee" címkével ellátott összes utterances a](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "\"MoveEmployee\" címkével ellátott összes utterances a képernyőkép, LUIS")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>Betanítás
 
@@ -161,7 +162,7 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 
     Mivel ez a teszt ellenőrzése az összetett ki kell olvasni megfelelően, egy tesztet vagy tartalmazhat egy meglévő minta utterance (kifejezés) vagy egy új utterance (kifejezés). Ellenőrzi, hogy a gyermekentitások tartalmazza az összetett entitásban.
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {

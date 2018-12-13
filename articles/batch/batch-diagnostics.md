@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 04/05/2018
+ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61db5e9eedc57ef6316cb760499362ed856e38c6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 379e5503900621381bbc27c6604cc8208cfdb80e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076457"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
@@ -53,11 +53,17 @@ Az összes Batch-fiók metrikákat tekinthet meg:
 
 Metrikák programozott módon lekéréséhez használja az Azure Monitor API-kat. Lásd a [lekérése az Azure Monitor-metrikák .NET-tel](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
 
+## <a name="batch-metric-reliability"></a>Batch-metrika megbízhatóság
+
+Metrikák trendelemzés és az adatok elemzési célokra szolgálnak. Metrika kézbesítési nem garantált, és a kimenő soron kívüli kézbesítési, adatvesztés és/vagy ismétlődést használatára. Egyetlen eseményeket a riasztás vagy az eseményindító függvények használata nem ajánlott. Tekintse meg a [Batch-metrikákhoz kapcsolódó riasztások](#batch-metric-alerts) riasztási küszöbértékek beállításával kapcsolatos további részletekért.
+
+Az elmúlt 3 perc kibocsátott metrikák továbbra is lehetséges, hogy összesíti. Ez idő alatt a metrikaértékek is vezethet.
+
 ## <a name="batch-metric-alerts"></a>A Batch metrikákhoz kapcsolódó riasztások
 
-Igény szerint állítsa be közel valós idejű *metrikákhoz kapcsolódó riasztások* , amely indítható el, ha egy adott mérőszám értéke átlép egy küszöbértéket, hozzárendelt. A riasztást állít elő egy [értesítési](../monitoring-and-diagnostics/insights-alerts-portal.md) úgy dönt, hogy ha a riasztás "aktív" (amikor áthaladnak a küszöbértéket, és a riasztási feltétel nem teljesül), valamint amikor azt "megoldódott" (amikor újra áthaladnak a küszöbértéket, és a feltétel nem már teljesül). 
+Igény szerint állítsa be közel valós idejű *metrikákhoz kapcsolódó riasztások* , amely indítható el, ha egy adott mérőszám értéke átlép egy küszöbértéket, hozzárendelt. A riasztást állít elő egy [értesítési](../monitoring-and-diagnostics/insights-alerts-portal.md) úgy dönt, hogy ha a riasztás "aktív" (amikor áthaladnak a küszöbértéket, és a riasztási feltétel nem teljesül), valamint amikor azt "megoldódott" (amikor újra áthaladnak a küszöbértéket, és a feltétel nem már teljesül). Egyetlen adatpont alapuló riasztások nem ajánlott, mivel a metrikák out soron kívüli kézbesítési, az adatvesztést és/vagy duplikált vonatkozik. Riasztási kell, használja a küszöbértékek áthidalhatók az ezeket az inkonzisztenciákat.
 
-Például érdemes metrikariasztás konfigurálása, ha az alacsony prioritású magok száma egy bizonyos szintre csökken, így módosíthatja a készletek az összeállításban.
+Például érdemes metrikariasztás konfigurálása, ha az alacsony prioritású magok száma egy bizonyos szintre csökken, így módosíthatja a készletek az összeállításban. Javasoljuk, hogy állítsa be legalább 10 percig, ahol riasztásokat indítás, ha az átlagos alacsony prioritású magok száma a küszöbérték érték alá csökken, a teljes időszakra. Egy 1 – 5 percnél hosszabb ideig a riasztást, metrikák továbbra is lehetséges, hogy összesítés nem ajánlott.
 
 Metrikariasztás konfigurálása a portálon:
 

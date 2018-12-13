@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 5dee0286f5e8f43527062f6bd9255a5d735651f3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994107"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075981"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-előfizetések és -fiókok aktiválása a Cloudynnel
 
@@ -41,7 +41,7 @@ Ha az Ön fiókja **Közreműködő** szerepkörrel rendelkezik, nem rendelheti 
 3. Az Azure Active Directory területen válassza a **Felhasználói beállítások** lehetőséget.
 4. Ellenőrizze az **Alkalmazásregisztrációk** beállítást.
     - Ha **Igen** értékre van állítva, akkor nem rendszergazdai felhasználók is regisztrálhatnak AD-alkalmazásokat. Ez a beállítás azt jelenti, hogy az Azure AD-bérlő bármely felhasználója regisztrálhat alkalmazásokat.  
-    ![Alkalmazásregisztrációk](./media/activate-subs-accounts/app-register.png)
+    ![alkalmazásregisztrációk kiválasztása a felhasználói beállítások](./media/activate-subs-accounts/app-register.png)
     - Ha az **Alkalmazásregisztrációk** beállítás értéke **Nem**, akkor csak a bérlői rendszergazdák regisztrálhatnak Azure Active Directory-alkalmazásokat. A bérlői rendszergazdának kell regisztrálnia a CloudynCollector alkalmazást.
 
 
@@ -53,12 +53,12 @@ Fiókok hozzáadásakor vagy előfizetések frissítésekor hozzáférést bizto
 
 1. A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
 2. Kattintson az **Új fiók hozzáadása** lehetőségre. Ekkor megjelenik az **Új fiók hozzáadása** mező. Adja meg a szükséges adatokat.  
-    ![Új fiók hozzáadása mező](./media/activate-subs-accounts//add-new-account.png)
+    ![Adja meg a szükséges információkat az új fiók hozzáadása listában](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Előfizetés frissítése
 
 1. Ha frissíteni szeretne egy _inaktivált_ előfizetést, amely már létezik a Cloudyn Fiókkezelés területén, kattintson a szerkesztés ikonra a szülői _bérlő GUID azonosítója_ jobb oldalán. Az előfizetések egy szülői bérlő alatt vannak csoportosítva, ezért célszerű elkerülni az előfizetések külön-külön történő aktiválását.
-    ![Az előfizetések újbóli felderítése](./media/activate-subs-accounts/existing-sub.png)
+    ![Válassza ki a bérlő Azonosítóját a Rediscover előfizetések mezőbe](./media/activate-subs-accounts/existing-sub.png)
 2. Ha szükséges, adja meg a bérlő azonosítóját. Ha nem ismeri a bérlő azonosítóját, az alábbi lépésekkel kiderítheti:
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
@@ -106,7 +106,7 @@ Előfordulhat, hogy a részlegek rendszergazdáinak, a fióktulajdonosoknak és 
 A Cloudyn szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő. Az adminisztrátori jogosultságra vonatkozó követelmény azonban megkerülhető. Kérheti, hogy az Azure Active Directory adminisztrátora adjon Önnek jogosultságot a **CloudynAzureCollector** engedélyezéséhez egy PowerShell-szkripttel. Az alábbi szkript jogosultságot ad a **CloudynAzureCollector** Azure Active Directory-szolgáltatásnév regisztrálásához.
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

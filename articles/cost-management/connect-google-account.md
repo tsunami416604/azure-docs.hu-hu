@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: f0a119bb7a2e18b04caa52319e4908fa5f6241dc
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 45d5cee92ce75c2e13f602d1ea6540698ea8abf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000325"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078361"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>A Google Cloud Platform-fiók csatlakoztatása
 
@@ -30,7 +30,7 @@ Első lépésként a projekttel kapcsolatos információk összegyűjtéséhez.
 
 1. Jelentkezzen be a Google Cloud Platform kezelőpultját [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Tekintse át a Cloudyn, és jegyezze fel a bevezetni kívánt projekt adatokat a **projektnév** és a **Projektazonosító**. Biztosíthatja az adatok későbbi lépéseire praktikus.  
-    ![Google Cloud Platform-konzol](./media/connect-google-account/gcp-console01.png)
+    ![Projekt nevét és a Google Cloud Platform-konzolon látható a projekt Azonosítóját](./media/connect-google-account/gcp-console01.png)
 3. Ha a számlázás nincs engedélyezve, és a projekthez kapcsolódó, számlázási fiók létrehozása. További információkért lásd: [hozzon létre egy új számlázási fiók](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Tárolási gyűjtőbe számlázási Exportálás engedélyezése
@@ -41,7 +41,7 @@ Google Cloud Storage segítségével tárolja a használati jelentések tekintet
 
 1. Ha nem engedélyezte a számlázási exportálása fájlba, kövesse az utasításokat, [egy számlázási Exportálás engedélyezése](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Használhatja a JSON és a fürt megosztott kötetei szolgáltatás számlázási exportálási formátumát.
 2. Ellenkező esetben a Google Cloud Platform-konzolon lépjen **számlázási** > **számlázási exportálási**. Vegye figyelembe a számlázási **gyűjtőbe neve** és **jelentés előtag**.  
-    ![A számlázás exportálása](./media/connect-google-account/billing-export.png)
+    ![A számlázás exportálási oldalán látható exportálási számlaadatok](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>A Google Cloud Platform API-k engedélyezése
 
@@ -69,7 +69,7 @@ Szoftverleltárazási és használati adatokat gyűjthet, a Cloudyn a következ�
 4. A **Google-fiók neve**, adja meg a számlázási fiók e-mail címét, majd kattintson a **tovább**.
 5. A Google-hitelesítési párbeszédpanelen válassza ki, vagy adjon meg egy Google-fiókot, majd **engedélyezése** cloudyn.com hozzáférést a fiókjához.
 6. Adja meg a kérelem projekt információkat, hogy Ön volt-e korábbi feljegyzett. Tartalmazzák **Projektazonosító**, **projekt** neve, **számlázási** gyűjtőbe nevét, és **számlázási fájl** előtag jelentést, majd kattintson a  **Mentés**.  
-    ![Google-projekt hozzáadása](./media/connect-google-account/add-project.png)
+    ![Google-projekt hozzáadása a Cloudyn-fiókjába](./media/connect-google-account/add-project.png)
 
 A Google-fiók megjelenik a fiókok listáját, és üzenetnek kell megjelennie **hitelesített**. Azt a Google-projekt neve és azonosítója kell jelennek meg, és rendelkezik egy zöld pipa szimbólumot. Fiók állapota a következő: **befejezve**.
 

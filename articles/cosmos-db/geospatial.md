@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 947a39a3660e0755efbf99b74b66d2c16e331e07
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 29bb495bbbd56ab39964b34db35fb4d222a60179
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837052"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074695"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -305,7 +305,7 @@ Ehhez hasonlóan az itt a lekérdezés összes dokumentumot, amelynek "hely" meg
 Most, hogy hogyan kérdezhet le "LINQ to" és az SQL-dokumentumok tekintse meg a Microsoft készített, vessünk egy pillantást az Azure Cosmos DB konfigurálása kifejezéséhez.
 
 ## <a name="indexing"></a>Indexelés
-Hogy leírtak szerint a [séma független indexelése az Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) a papír alakítottuk ki az Azure Cosmos DB-adatbázismotor kell valódi sémafüggetlen JSON első osztályú támogatást nyújthassunk és. Az Azure Cosmos DB írásra optimalizált adatbázismotort a GeoJSON szabványos jelölt térbeli adatok (pontok poligonok és vonalak) natív módon megért.
+Hogy leírtak szerint a [séma független indexelése az Azure Cosmos DB](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) a papír alakítottuk ki az Azure Cosmos DB-adatbázismotor kell valódi sémafüggetlen JSON első osztályú támogatást nyújthassunk és. Az Azure Cosmos DB írásra optimalizált adatbázismotort a GeoJSON szabványos jelölt térbeli adatok (pontok poligonok és vonalak) natív módon megért.
 
 Legnépszerűbb, a geometry geodéziai koordináták 2D adatsík az alakzatot a tervezett, akkor cellák fokozatosan osztva egy **quadtree**. E cellák 1D belül cella helye alapján vannak leképezve egy **Hilbert terület töltési görbe**, amely megőrzi a pontok helye. Emellett a helyadatok indexelésekor, halad végig néven ismert folyamat **tesszellációs**, azt jelenti, egy helyen metsző összes cellát és azonosított tárolt és kulcsok az Azure Cosmos DB-index. Lekérdezéskor például a pontok és poligonok argumentumok is Csempézett, bontsa ki a megfelelő azonosító cellatartományokról, akkor az indexből adatok lekérésére használt.
 
@@ -389,7 +389,7 @@ Itt láthat egy kódrészletet a .NET-ben, amely bemutatja, hogyan hozzon létre
 Most, hogy megtanulhatta, hogyan kezdheti el a földrajzi támogatásával az Azure Cosmos DB, ezután is:
 
 * A kódírás a [térinformatikai .NET platformra írt kódmintái a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Ismerkedés a térinformatikai lekérdezések a [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
+* Ismerkedés a térinformatikai lekérdezések a [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo#geospatial)
 * Tudjon meg többet [Azure Cosmos DB-lekérdezés](how-to-sql-query.md)
 * Tudjon meg többet [Azure Cosmos DB-indexelő házirendek](index-policy.md)
 
