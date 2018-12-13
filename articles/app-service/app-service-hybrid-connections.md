@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service hibrid kapcsolataira |} A Microsoft Docs
+title: Hibrid kapcsolatok – az Azure App Service |} A Microsoft Docs
 description: Hogyan hozhat létre, és a hibrid kapcsolatok segítségével különböző hálózatokon lévő erőforrások eléréséhez
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: cdfe1a35dbbf8fa048e0b0ca24f06bb0e73bde61
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968313"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258015"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai #
 
@@ -136,7 +137,7 @@ A HCM felhasználói felületének indításakor megjelenik az első lépésben 
 Egy vagy több hibrid kapcsolat hozzáadása a HCM:
 
 1. Indítsa el a HCM felhasználói felületén.
-1. Válassza ki **konfigurálása egy másik hibrid kapcsolat**.
+2. Válassza ki **konfigurálása egy másik hibrid kapcsolat**.
 ![Képernyőkép az új hibrid kapcsolatok konfigurálása][8]
 
 1. Jelentkezzen be az Azure-fiókjával.
@@ -197,7 +198,7 @@ A hibrid kapcsolat társított JSON-objektum hasonlóan néz ki:
       }
     }
 
-Egy ezzel az információval módja a armclient, amelyeket kérhet le a [ARMClient] [ armclient] github-projekt. Íme egy példa egy már létező hibrid kapcsolat csatolására a webalkalmazáshoz. Hozzon létre egy JSON-fájlt, mint például a fenti séma szerint:
+Egy ezzel az információval módja a armclient, amelyeket kérhet le a [ARMClient] [ armclient] GitHub-projekt. Íme egy példa egy már létező hibrid kapcsolat csatolására a webalkalmazáshoz. Hozzon létre egy JSON-fájlt, mint például a fenti séma szerint:
 
     {
       "name": "relay-demo-hc",

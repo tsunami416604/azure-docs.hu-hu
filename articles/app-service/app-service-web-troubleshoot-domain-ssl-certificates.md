@@ -1,5 +1,5 @@
 ---
-title: Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása |} A Microsoft Docs
+title: Tartományok és SSL-tanúsítványok – az Azure App Service – hibaelhárítás |} A Microsoft Docs
 description: Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 5c5bdb8fad60a2e4196c2c9f74764e27cec5ba62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970773"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251606"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -74,26 +75,26 @@ Ez a probléma a következő okokból fordulhat elő:
 
 - Az App Service-csomag az ingyenes és közös. Ezek a tarifacsomag nem támogatják az SSL. 
 
-    **Megoldás**: webalkalmazás az App Service-csomag frissítsen a standard előfizetésre.
+    **Megoldás**: Az App Service-csomag, a web app frissítsen a standard előfizetésre.
 
 - Az előfizetés nem rendelkezik érvényes bankkártyaadatok.
 
-    **Megoldás**: érvényes bankkártyaadatok hozzáadása az előfizetéshez. 
+    **Megoldás**: Az előfizetéshez hozzáadott érvényességéről. 
 
 - Az előfizetési ajánlatok között nem támogatja az App Service-tanúsítvány, például a Microsoft Student megvásárlásával.  
 
-    **Megoldás**: frissíti az előfizetését. 
+    **Megoldás**: Az előfizetés frissítése. 
 
 - Az előfizetés elérte a korlátot, amelyek egy adott előfizetés engedélyezett vásárolt.
 
-    **Megoldás**: App Service-tanúsítványok legfeljebb 10 tanúsítványa vásárlásokra a használatalapú fizetés és a nagyvállalati szerződéssel rendelkező előfizetés esetében. Minden olyan előfizetés esetében a korlát: 3. A korlát növeléséhez forduljon [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Az App Service-tanúsítvány csalás lett megjelölve. A következő hibaüzenet: "a tanúsítvány meg lett jelölve lehetséges csalás. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány nem válik használhatóvá 24 órán belül, forduljon az Azure ügyfélszolgálatához."
+    **Megoldás**: App Service-tanúsítványok rendelkezik egy legfeljebb 10 tanúsítványa vásárlásokra a használatalapú fizetés és a nagyvállalati szerződéssel rendelkező előfizetés esetében. Minden olyan előfizetés esetében a korlát: 3. A korlát növeléséhez forduljon [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Az App Service-tanúsítvány csalás lett megjelölve. A következő hibaüzenetet kapott: "A tanúsítvány meg lett jelölve lehetséges csalás. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány nem válik használhatóvá 24 órán belül, forduljon az Azure ügyfélszolgálatához."
 
     **Megoldás**: Ha a tanúsítvány csalás van megjelölve, és 24 óra nincs feloldva, kövesse az alábbi lépéseket:
 
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Lépjen a **App Service-tanúsítványok**, és válassza ki a tanúsítványt.
-    3. Válassza ki **Tanúsítványkonfiguráció** > **2. lépés: Ellenőrizze** > **tartomány-ellenőrzés**. Ebben a lépésben egy e-mailben értesítést küld az Azure-tanúsítvány-szolgáltatóhoz a probléma megoldásához.
+    3. Válassza ki **Tanúsítványkonfiguráció** > **2. lépés: Győződjön meg arról** > **tartomány-ellenőrzés**. Ebben a lépésben egy e-mailben értesítést küld az Azure-tanúsítvány-szolgáltatóhoz a probléma megoldásához.
 
 ## <a name="domain-problems"></a>Tartomány-problémák
 
@@ -124,7 +125,7 @@ Kényszerítheti, hogy a tanúsítvány szinkronizálást:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **App Service-tanúsítványok**, majd válassza ki a tanúsítványt.
 2. Válassza ki **Újrakulcsolás és szinkronizálás**, majd válassza ki **szinkronizálási**. A szinkronizálás befejezése hosszabb időt vesz igénybe. 
-3. Amikor a szinkronizálás befejeződött, megjelenik a következő értesítés: "Frissítése sikerült összes erőforrást a legújabb tanúsítvánnyal."
+3. Amikor a szinkronizálás befejeződött, a következő értesítés jelenik meg: "Frissítése sikerült összes erőforrást a legújabb tanúsítvánnyal."
 
 ### <a name="domain-verification-is-not-working"></a>Tartomány-ellenőrzés nem működik. 
 
@@ -163,17 +164,17 @@ Ez a probléma akkor fordul elő, a következő okok valamelyike:
 
 - Nincs bankkártyára az Azure-előfizetést, vagy a hitelkártya érvénytelen.
 
-    **Megoldás**: érvényes bankkártyaadatok hozzáadása az előfizetéshez.
+    **Megoldás**: Az előfizetéshez hozzáadott érvényességéről.
 
 - Ön nem az előfizetés tulajdonosa, így nem kell tartományt vásárolnia engedéllyel.
 
-    **Megoldás**: [a tulajdonosi szerepkör hozzárendelése](../role-based-access-control/role-assignments-portal.md) a fiókjához. Vagy forduljon az előfizetés adminisztrátorát, hogy kérjen engedélyt vásárolhat egy tartományt.
+    **Megoldás**: [A tulajdonosi szerepkör hozzárendelése](../role-based-access-control/role-assignments-portal.md) a fiókjához. Vagy forduljon az előfizetés adminisztrátorát, hogy kérjen engedélyt vásárolhat egy tartományt.
 - Elérte a határértéket tartományok az előfizetés megvásárlásával kapcsolatos. A jelenlegi maximum 20.
 
     **Megoldás**: Ha szeretné növelni a korlátot, lépjen kapcsolatba [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Az Azure-előfizetés típusa nem támogatja az App Service-tartományok vásárlása.
 
-    **Megoldás**: az Azure-előfizetés váltson egy másik előfizetés-típus, például egy használatalapú fizetéses előfizetésre.
+    **Megoldás**: Frissítse az Azure-előfizetés egy másik előfizetés-típus, például egy használatalapú fizetéses előfizetésre.
 
 ### <a name="you-cant-add-a-host-name-to-a-web-app"></a>A webalkalmazás nem adhat hozzá egy nevet 
 
@@ -187,7 +188,7 @@ Ez a probléma akkor fordul elő, a következő okok valamelyike:
 
 - Nincs engedélye a gazdagépnév hozzáadása.
 
-    **Megoldás**: kérje meg az előfizetés adminisztrátorát, hogy adjon engedélyt adjon hozzá egy nevet.
+    **Megoldás**: Kérje meg az előfizetés adminisztrátorát, hogy adjon engedélyt adjon hozzá egy nevet.
 - Nem sikerült ellenőrizni a tartomány tulajdonjogát.
 
     **Megoldás**: Győződjön meg arról, hogy a CNAME és a egy rekord megfelelően van konfigurálva. Egyéni tartomány leképezése a webalkalmazást, hozzon létre egy CNAME-rekordot vagy egy A rekordot. Ha szeretne egy legfelső szintű tartományt használja, és txt típusú rekordok kell használnia:

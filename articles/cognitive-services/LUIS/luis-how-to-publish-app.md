@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fe8806b4cc84bb9a15ce5620366fee23bba328c4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106430"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136647"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 
@@ -38,7 +38,7 @@ Az alkalmazás közzé van téve a LUIS erőforrások a LUIS portálon hozzá t�
 
 Ha az alkalmazás sikeresen közzé lett téve, egy zöld, sikeres értesítés jelenik meg, a böngésző tetején. A zöld értesítési sáv a végpontok egy hivatkozást is tartalmaz. 
 
-![Közzétételi előugró ablak](./media/luis-how-to-publish-app/publish-success.png)
+![Közzétételi előugró ablak, és hivatkozás a végpont](./media/luis-how-to-publish-app/publish-success.png)
 
 Ha a végpont URL-címe van szüksége, válassza ki a hivatkozást. Is érheti el a végponti URL-címek kiválasztásával **kezelés** a felső menüben, majd válassza ki **kulcsokat és a végpontok** a bal oldali menüben. 
 

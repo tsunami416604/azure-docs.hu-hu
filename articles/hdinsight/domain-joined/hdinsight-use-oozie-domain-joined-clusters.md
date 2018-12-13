@@ -1,31 +1,33 @@
 ---
-title: Az Apache Hadoop Oozie munkafolyamatokat az Azure HDInsight-fürt a vállalati biztonsági csomag
-description: Hadoop az Oozie használata a Linux-alapú HDInsight vállalati biztonsági csomag. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
+title: Biztonságos, vállalati biztonsági csomag – Azure HDInsight az Apache Oozie-munkafolyamatok
+description: Biztonságos Apache Oozie munkafolyamatokat az Azure HDInsight vállalati biztonsági csomag használatával. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: mamccrea
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633665"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165146"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Futtathat Apache Oozie a HDInsight Hadoop-fürtöket a vállalati biztonsági csomaggal
+
 Az Apache Oozie egy munkafolyamat és koordinációs rendszer, amely az Apache Hadoop-feladatokat kezeli. Az Oozie integrálva van a Hadoop-veremmel, és támogatja a következő feladatokat:
 - Az Apache MapReduce
-- Az Apache Pig
-- Az Apache Hive
+- Apache Pig
+- Apache Hive
 - Az Apache sqoop használatával
 
 Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
 ## <a name="prerequisite"></a>Előfeltétel
+
 - Az Azure HDInsight Hadoop-fürtön vállalati biztonsági csomag (ESP). Lásd: [konfigurálása HDInsight-fürtök ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
@@ -224,8 +226,11 @@ nano workflow.xml
    Ez a fájl tulajdonságok megtalálhatónak kell lennie helyi Oozie feladatok futtatásakor.
 
 ## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Egyéni Hive-parancsprogramok, az Oozie-feladatok létrehozása
+
 Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-parancsprogramok is létrehozhat.
+
 ### <a name="hive-server-1-file"></a>Hive server 1-fájl
+
 1.  Hozzon létre, és Hive server 1 műveletek egy fájl szerkesztése:
     ```bash
     nano countrowshive1.hql
@@ -244,6 +249,7 @@ Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-para
     ```
 
 ### <a name="hive-server-2-file"></a>Hive server 2-fájl
+
 1.  Hozzon létre, és a Hive server 2 műveletek mező szerkesztése:
     ```bash
     nano countrowshive2.hql
@@ -262,11 +268,13 @@ Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-para
     ```
 
 ## <a name="submit-oozie-jobs"></a>Az Oozie-feladatok elküldése
+
 ESP fürtök Oozie-feladatok elküldése olyan, mint az ESP fürtök Oozie-feladatok elküldése.
 
 További információkért lásd: [megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Hadoop-keretrendszerrel használható Oozie](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Az Oozie-feladat küldése eredményei
+
 Az Oozie-feladatok futnak, a felhasználó számára. Ezért az Apache YARN és az Apache Ranger audit naplók megjelenítése a megszemélyesített felhasználóként futtatott feladatok. A parancssori felület kimeneti Oozie-feladat a következő kódhoz hasonlóan néz ki:
 
 
@@ -304,6 +312,7 @@ Az Oozie-feladatok futnak, a felhasználó számára. Ezért az Apache YARN és 
 A Ranger Hive server 2 műveletek vizsgálati naplók megjelenítése a felhasználó művelet futtatása Oozie. A Ranger és a YARN nézetek csak a fürt rendszergazda láthatók
 
 ## <a name="configure-user-authorization-in-oozie"></a>Az Oozie felhasználói hitelesítés konfigurálása
+
 Oozie önmagában, amely segítségével megakadályozhatja a felhasználók leállítása vagy törlése a többi felhasználó feladatok felhasználói engedélyezési konfigurációval rendelkezik. Ez a konfiguráció engedélyezéséhez állítsa be a `oozie.service.AuthorizationService.security.enabled` való `true`. 
 
 További információkért lásd: [Oozie-telepítés és konfigurálás](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
@@ -311,6 +320,7 @@ További információkért lásd: [Oozie-telepítés és konfigurálás](https:/
 Az összetevők, például a Hive server 1, ahol a Ranger beépülő modul nem érhető el vagy nem támogatott csak a HDFS coarse-grained engedélyezési lehetőség. Minden részletre kiterjedő engedélyezési csak a Ranger modulok keresztül érhető el.
 
 ## <a name="get-the-oozie-web-ui"></a>Az Oozie webes felület beolvasása
+
 Az Oozie webes felület lehetővé teszi a webes az Oozie-feladat állapotát a fürtön. A webes felhasználói felületen lekéréséhez tegye a következőket ESP fürtök:
 
 1. Adjon hozzá egy [élcsomópont](../hdinsight-apps-use-edge-node.md) , és engedélyezze [SSH Kerberos-hitelesítés](../hdinsight-hadoop-linux-use-ssh-unix.md).

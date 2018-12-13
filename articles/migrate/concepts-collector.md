@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 5a542ae23bf500125fd08338b2efd30dd42d9a8d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840911"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255975"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -32,13 +32,13 @@ A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és 
 - Ez a modell nem függ a vCenter Server statisztikai beállításait teljesítményadatok gyűjtéséhez.
 - Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
 
-**Azonnali változtatásait:** a folyamatos felderítési berendezéssel, a felderítés befejeződése után (tart néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
+**Azonnali változtatásait:** A folyamatos felderítési berendezéssel, a felderítés befejeződése után (tart néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
 
 A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-- Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+- További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
-- Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+- Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 > [!NOTE]
 > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
@@ -48,7 +48,7 @@ A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konf
 A gyűjtőberendezés egy OVF-sablon használatával telepít:
 
 - Az OVF-sablon letöltése az Azure Migrate-projektet az Azure Portalon. A letöltött fájl importálása a vCenter Serverhez, a virtuális gép gyűjtőberendezés beállításához.
-- Az OVF, a VMware 4 mag, 8 GB RAM és a egy lemezt 80 GB-os virtuális gép beállítása. Az operációs rendszer Windows Server 2012 R2 (64 bites).
+- Az OVF, a VMware beállítja 8 magos, 16 GB RAM és 80 GB egy lemezt egy virtuális Gépet. Az operációs rendszer Windows Server 2016 (64 bites).
 - Futtassa a gyűjtő, amikor egy előfeltétel-ellenőrzések száma futtatásával győződjön meg arról, hogy a gyűjtő csatlakozhat az Azure Migrate.
 
 - [További](tutorial-assessment-vmware.md#create-the-collector-vm) a gyűjtő létrehozásáról.
@@ -58,14 +58,18 @@ A gyűjtőberendezés egy OVF-sablon használatával telepít:
 
 A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön meg arról, hogy kapcsolódni az Azure Migrate szolgáltatás az interneten keresztül, és a feltöltés felderített adatokat.
 
-- **Ellenőrizze az internetkapcsolatot**: A gyűjtő csatlakozhat közvetlenül az internethez, vagy egy proxyn keresztül.
+- **Ellenőrizze az Azure-felhő**: A gyűjtő tudnia kell, az Azure-felhőben, amelyet át kíván.
+    - Válassza ki Azure Government, ha azt tervezi, Azure Government-felhőben való áttelepítéséhez.
+    - Válassza a az Azure globális, ha az Azure kereskedelmi felhőben át kíván.
+    - A felhőben az itt megadott alapján, a berendezés küld felderített metaadatokat a megfelelő végpontok.
+- **Ellenőrizze az internetkapcsolatot**: A gyűjtő kapcsolódhatnak közvetlenül az internethez, vagy egy proxyn keresztül.
     - Az előfeltétel-ellenőrzés ellenőrzi a kapcsolatot a [szükséges és választható URL-címek](#connect-to-urls).
     - Ha közvetlenül kapcsolódik az internethez, az adott semmit nem szükséges, eltérő gondoskodik róla, hogy, hogy a gyűjtő elérje a szükséges URL-címek.
     - Ha egy proxyn keresztül csatlakozik, vegye figyelembe a [kapcsolatos követelményeiről alább](#connect-via-a-proxy).
 - **Időszinkronizálás ellenőrzése**: A gyűjtő kell szinkronizálva az internetes időkiszolgálóval hitelesíti a kérelmeket a szolgáltatás biztosításához.
     - A portal.azure.com URL-cím kell a gyűjtő érhető el, hogy az idő érvényesíthető legyen.
     - Ha a gép nincs szinkronizálva, az idő a gyűjtő virtuális gépen az aktuális idő megfelelően módosítani szeretné. Ehhez a nyissa meg egy rendszergazdai parancssort a virtuális Gépen, futtassa **w32tm /tz** időzóna ellenőrzésére. Futtatás **w32tm/resync** az idő szinkronizálása.
-- **Ellenőrizze a gyűjtő szolgáltatás fut**: az Azure Migrate Collector szolgáltatás a gyűjtő virtuális gépen kell futnia.
+- **Ellenőrizze a gyűjtő szolgáltatás fut**:  Az Azure Migrate Collector szolgáltatás a gyűjtő virtuális gépen kell futnia.
     - Ez a szolgáltatás a számítógép indításakor automatikusan elindul.
     - Ha a szolgáltatás nem fut, indítsa el a Vezérlőpult.
     - A gyűjtő szolgáltatás csatlakozik a vCenter-kiszolgáló, a virtuális gép metaadatainak és a teljesítmény adatokat gyűjti össze és elküldi azokat az Azure Migrate szolgáltatásnak.
@@ -107,7 +111,8 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 
 **URL-cím** | **Részletek**  | **Az előfeltétel-ellenőrzés**
 --- | --- | ---
-*.portal.azure.com | Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
+*.portal.azure.com | Érvényes globális Azure-bA. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
+*. portal.azure.us | Csak az Azure Government alkalmazható. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | Nem kötelező URL-címek elérését.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan kell.
 
 

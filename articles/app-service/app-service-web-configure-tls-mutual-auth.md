@@ -1,5 +1,5 @@
 ---
-title: TLS kölcsönös hitelesítés beállítása webalkalmazáshoz
+title: TLS kölcsönös hitelesítés – az Azure App Service konfigurálása
 description: Ismerje meg, hogyan konfigurálja a webappot a TLS ügyfél Tanúsítványalapú hitelesítés használatára.
 services: app-service
 documentationcenter: ''
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056208"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252881"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>TLS kölcsönös hitelesítés beállítása webalkalmazáshoz
 ## <a name="overview"></a>Áttekintés
 Hozzáférés az Azure-webalkalmazást, hitelesítési típust engedélyezésével korlátozhatja. Ennek egyik módja a hitelesítés ügyféltanúsítvány használatával, ha a rendszer a TLS/SSL-en keresztül. Ez a mechanizmus TLS kölcsönös hitelesítés vagy a hitelesítést, és ez a cikk részletesen ügyféltanúsítvány-alapú hitelesítés használatára a webalkalmazás beállítása ügyféltanúsítvány nevezzük.
 
-> **Megjegyzés:** a webhely a HTTP és HTTPS-nem keresztül éri el, ha bármely ügyfél-tanúsítvány nem fog kapni. Tehát ha az alkalmazás ügyfél-tanúsítványok nem engedélyezze kérelmeket az alkalmazás HTTP-n keresztül.
+> **Megjegyzés:** Ha a HTTP és HTTPS-nem keresztül éri el a hely, nem fog kapni minden olyan ügyfél-tanúsítványt. Tehát ha az alkalmazás ügyfél-tanúsítványok nem engedélyezze kérelmeket az alkalmazás HTTP-n keresztül.
 > 
 > 
 
@@ -51,7 +52,7 @@ Ellenőrizze, hogy a "hely" értékét módosítsa arra, bárhol is legyenek a w
 
 Is https://resources.azure.com tükrözés, a `clientCertEnabled` tulajdonságot `true`.
 
-> **Megjegyzés:** ARMClient powershellből futtatásakor, szüksége lesz karakterpárt a \@ a JSON-fájlt a háttérrendszer osztásjelek szimbólum ".
+> **Megjegyzés:** Ha ARMClient futtatja a Powershell, szüksége lesz karaktert a \@ a JSON-fájlt egy vissza osztásjelek a szimbólum ".
 > 
 > 
 

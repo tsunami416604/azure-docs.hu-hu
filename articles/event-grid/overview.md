@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 12/06/2018
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 1b45350d826f41726668a27ce8f98624202c8e32
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088075"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321016"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -87,7 +87,7 @@ Az Event Grid, az Event Hubs és a Service Bus összehasonlítása: [Az üzenetk
 
 ## <a name="what-can-i-do-with-event-grid"></a>Mire használhatom az Event Gridet?
 
-Az Azure Event Grid számos, amely javítja a kiszolgáló nélküli funkciók, műveletek automatizálása és integrációs munkahelyi biztosít: 
+Az Azure Event Grid biztosít több technológiáikkal nagymértékben növeljék a kiszolgáló nélküli funkciók, műveletek automatizálása, és [integrációs](http://azure.com/integration) működik: 
 
 ### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazásarchitektúrák
 

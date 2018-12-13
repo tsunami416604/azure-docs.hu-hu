@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: d938b8a7551f77f00b7c18421f07972a508f21ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019793"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262435"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.
@@ -46,7 +46,7 @@ Megtekintheti és használatával a következő beállításokat konfigurálhatj
 * [Beállítások](#settings)
     * [Hozzáférési kulcsok](#access-keys)
     * [Speciális beállítások](#advanced-settings)
-    * [Az Azure Cache Redis tanácsadó](#redis-cache-advisor)
+    * [Az Azure Cache Redis tanácsadó](#azure-cache-for-redis-advisor)
     * [Méretezés](#scale)
     * [Redis-fürt mérete](#cluster-size)
     * [Redis-adatmegőrzés](#redis-data-persistence)
@@ -98,7 +98,7 @@ A **beállítások** szakasz lehetővé teszi, hogy elérheti, és adja meg a k�
 
 * [Hozzáférési kulcsok](#access-keys)
 * [Speciális beállítások](#advanced-settings)
-* [Az Azure Cache Redis tanácsadó](#redis-cache-advisor)
+* [Az Azure Cache Redis tanácsadó](#azure-cache-for-redis-advisor)
 * [Méretezés](#scale)
 * [Redis-fürt mérete](#cluster-size)
 * [Redis-adatmegőrzés](#redis-data-persistence)
@@ -480,7 +480,7 @@ Az Azure Cache a Redis-példány használatával biztonságosan kiadhat parancso
 
 > [!IMPORTANT]
 > - A Redis-konzol nem működik a [VNET](cache-how-to-premium-vnet.md). Ha a gyorsítótár része virtuális Hálózatnak, csak a virtuális hálózaton lévő ügyfelek hozzáférhet a gyorsítótárban. Redis konzol fut a helyi böngészőben, amely a virtuális hálózaton kívülről, mert azt nem lehet csatlakozni a gyorsítótár.
-> - Nem minden Redis parancsok a Redis Azure Cache-ben támogatottak. Redis parancsok, amelyek le vannak tiltva az Azure Cache redis listáját lásd az előző [redis Cache a redis Azure Cache-ben nem támogatott parancsok](#redis-commands-not-supported-in-azure-redis-cache) szakaszban. A Redis-parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
+> - Nem minden Redis parancsok a Redis Azure Cache-ben támogatottak. Redis parancsok, amelyek le vannak tiltva az Azure Cache redis listáját lásd az előző [redis Cache a redis Azure Cache-ben nem támogatott parancsok](#redis-commands-not-supported-in-azure-cache-for-redis) szakaszban. A Redis-parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
 > 
 > 
 

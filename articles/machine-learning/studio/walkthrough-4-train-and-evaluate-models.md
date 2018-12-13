@@ -1,12 +1,11 @@
 ---
-title: '4. lépés: A prediktív elemzési modellek – az Azure Machine Learning Studio betanítása |} A Microsoft Docs'
-description: 'A fejlesztés egy prediktív megoldás bemutatója 4. lépés: Train, pontszám, és az Azure Machine Learning Studio több modell kiértékelése.'
+title: '4. lépés: Prediktív elemzési modellek – Azure Machine Learning Studióban |} A Microsoft Docs'
+description: 'Az a Develop egy prediktív megoldás bemutatója. 4. lépés: Pontszám, modellek betanítása és kiértékelése több Azure Machine Learning studióban.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 4b4ffcf8e6c886a2f182c844f940e53c24d1efa0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2464ef0ba89f138834bedfdc9f29347092e5fe99
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313469"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254513"
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Az útmutató 4. lépés: Betanítása és kiértékelése a Machine Learning Studio prediktív elemzési modellek
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Az útmutató 4. lépés: A Machine Learning Studio prediktív elemzési modellek betanítása és kiértékelése
 Ez a témakör ismerteti a forgatókönyv negyedik lépésében [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [A Machine Learning Studio-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
@@ -190,7 +189,7 @@ Az adatelemzési és az eredmények értelmezésében és a modellek teljesítm�
 > 
 
 - - -
-**A következő: [a webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md)**
+**Következő: [A webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md)**
 
 [0]: ./media/walkthrough-4-train-and-evaluate-models/train-model-select-column.png
 [1]: ./media/walkthrough-4-train-and-evaluate-models/experiment-with-train-model.png

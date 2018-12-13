@@ -1,5 +1,5 @@
 ---
-title: Azure Database for MySQL-kiszolgáló létrehozása és konfigurálása az Ansible (előzetes verzió) használatával
+title: Hozzon létre, és a egy Azure Database for MySQL-kiszolgáló konfigurálása az Ansible segítségével
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Database for MySQL-kiszolgálót az Ansible használatával
 ms.service: ansible
 keywords: ansible, azure, devops, bash, forgatókönyv, mysql, adatbázis
@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 6fd08e21fe0573d48ae7752eb410845062932b5e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427896"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255941"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Azure Database for MySQL-kiszolgáló létrehozása és konfigurálása az Ansible (előzetes verzió) használatával
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Hozzon létre, és a egy Azure Database for MySQL-kiszolgáló konfigurálása az Ansible segítségével
 Az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) egy felügyelt szolgáltatás, amellyel magas rendelkezésre állású MySQL-adatbázisokat futtathat, kezelhet és skálázhat a felhőben. Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. 
 
 Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Azure Database for MySQL-kiszolgálót és konfigurálhatja annak tűzfalszabályát az Ansible használatával. Ezeket a feladatokat nagyjából öt perc alatt elvégezheti az Azure Portalon.
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Azure Databas
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. A `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti az Ansible 2.7 RC verziót. Az Ansible 2.7 kiadását követően nem kell majd megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz.
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  

@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 3807dcf9ea4625db72b0579e0609641e3aedb088
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e0bab08e52233d10cff3ec936d024dcbb86d2a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845722"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188010"
 ---
 # <a name="views-in-management-solutions-preview"></a>Nézetek az eszközkezelési megoldások (előzetes verzió)
 > [!NOTE]
@@ -96,9 +95,9 @@ Egy Resource Manager-sablonban definiált összes Log Analytics erőforrás rend
 
 | Munkaterület-verzió | API-verzió | Lekérdezés |
 |:---|:---|:---|
-| V1 (örökölt)   | 2015. 11. 01-előzetes verzió | Örökölt formátum.<br> Példa: Az esemény Error = hiba =  |
-| v2 (frissítve) | 2015. 11. 01-előzetes verzió | Örökölt formátum.  Telepítse a frissített formátumra alakítja át.<br> Példa: Az esemény Error = hiba =<br>Konvertálva: esemény &#124; ahol Error == "Error"  |
-| v2 (frissítve) | 2017-03-03-előzetes verzió | Frissítési formátum. <br>Példa: Event &#124; ahol Error == "Error"  |
+| V1 (örökölt)   | 2015. 11. 01-előzetes verzió | Örökölt formátum.<br> Példa: Típus esemény Error = hiba =  |
+| v2 (frissítve) | 2015. 11. 01-előzetes verzió | Örökölt formátum.  Telepítse a frissített formátumra alakítja át.<br> Példa: Típus esemény Error = hiba =<br>Konvertálva: Esemény &#124; ahol Error == "Error"  |
+| v2 (frissítve) | 2017-03-03-előzetes verzió | Frissítési formátum. <br>Példa: Esemény &#124; ahol Error == "Error"  |
 
 
 ## <a name="add-the-view-details"></a>Adja hozzá a részleteinek megtekintése

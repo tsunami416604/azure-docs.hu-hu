@@ -1,5 +1,5 @@
 ---
-title: Az Azure-tervek paramétereknek dinamikus tervezetek létrehozása
+title: A dinamikus tervezetek létrehozása-paraméterek használata
 description: Ismerje meg a statikus és dinamikus paraméterek, és hogyan használja őket hozza létre a dinamikus tervek.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093751"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310317"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -51,13 +52,13 @@ A paraméter értéke a tervrajz-definícióban meghatározott nevezzük egy **s
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statikus paramétereinek beállítása a portálon
 
-1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
 1. A lap bal oldalán válassza a **Tervdefiníciók** lehetőséget.
 
 1. Kattintson egy meglévő tervezet a, és kattintson a **tervrajz szerkesztése** , vagy kattintson **+ létrehozás tervezet** , és adja meg az adatokat a a **alapjai** fülre.
 
-1. Kattintson a **tovább: összetevők** , vagy kattintson az a **összetevők** fülre.
+1. Kattintson a **tovább: Összetevők** , vagy kattintson az a **összetevők** fülre.
 
 1. Megjeleníti a paraméter közül a tervezet hozzáadott összetevők **X, Y paraméter kitöltve** a a **paraméterek** oszlop. Kattintson az összetevő sor összetevő paramétereit.
 
@@ -168,7 +169,7 @@ Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. E
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>A portál dinamikus paraméterek beállítása
 
-1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
 1. A lap bal oldalán válassza a **Tervdefiníciók** lehetőséget.
 

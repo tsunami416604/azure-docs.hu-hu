@@ -1,7 +1,7 @@
 ---
 title: Exportálja, vagy a munkaterület adatainak törlése
 titleSuffix: Azure Machine Learning service
-description: Az Azure Machine Learning exportál, vagy az Azure portal, a CLI, az SDK-t és a hitelesített REST API-k és-munkaterület törlése. Ez a cikk bemutatja, hogyan.
+description: Ismerje meg, hogyan exportálhatja, vagy az Azure portal, a CLI, az SDK-t és a hitelesített REST API-k és-munkaterület törlése.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0979c531c90b67cedce544ff2eb6f7aceeb84a44
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 81215058095acfeedd320025457feec73d3b0d23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093777"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192345"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportálja, vagy a Machine Learning szolgáltatás munkaterület adatainak törlése 
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights környezetből a C#-kód használatával adatokat kérdezhet le |} A Microsoft Docs
+title: Az Azure Time Series Insights C# lekérdezése – az Azure Time Series Insights környezetet használatával adatokat lekérdezni C# kód |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan kérdezhet le adatokat Azure Time Series Insights-környezetből kódolása C# (C-éles) .NET nyelven írt egyéni alkalmazás által.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 82a3d4527d241aba80eb471508c99c7781dd4a41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630857"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277948"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Adatok lekérdezése az Azure Time Series Insights-környezetből C# használatával
 

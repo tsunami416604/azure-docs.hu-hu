@@ -10,25 +10,23 @@ ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2aa2f4e55d375f6ed7960af8bbe327d45b5ea025
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871761"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192257"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Az egyéni nézetek létrehozása az adatforrásnézet-tervezőből a Log Analytics használatával
 Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
 
 Nézettervező kapcsolatos további információkért lásd:
 
-* [Csempe referencia](view-designer-tiles.md): biztosít egy referencia-útmutató az egyéni nézetekben a rendelkezésre álló csempék beállításai.
-* [Vizualizációs rész referenciája](view-designer-parts.md): biztosít egy referencia-útmutató a beállítások a vizualizációs rész, amely az egyéni nézetek érhetők el.
+* [Csempe referencia](view-designer-tiles.md): Itt egy referencia-útmutató az egyéni nézetekben a rendelkezésre álló csempék beállításai.
+* [Vizualizációs rész referenciája](view-designer-parts.md): Itt egy referencia-útmutató a beállítások a vizualizációs rész, amely az egyéni nézetek érhetők el.
 
 
 ## <a name="concepts"></a>Alapelvek
@@ -40,7 +38,7 @@ Az adatforrásnézet-tervezőből létrehozott nézeteket az alábbi táblázatb
 
 | Rész | Leírás |
 |:--- |:--- |
-| Csempék | A Log Analytics-munkaterületre jelennek **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
+| Mozaik elrendezés | A Log Analytics-munkaterületre jelennek **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
 | Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Egyes nézetek egy vagy több Vizualizáció részt tartalmaz. |
 | Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. A rész részletes rekordok biztosító Naplókeresés végrehajtásához elemek választhatja ki. |
 
@@ -72,9 +70,9 @@ Létrehozhat egy új nézetet az adatforrásnézet-tervezőből kiválasztásáv
 Nézettervező használatával hozzon létre új nézetek, vagy szerkesztheti a meglévőket. 
 
 Nézettervező három ablaktáblák rendelkezik: 
-* **Tervezési**: az egyéni nézetet tartalmaz, amely létrehozásakor és szerkesztését. 
-* **Vezérlők**: tartalmazza a csempék és hozzáadott részek a **tervezési** ablaktáblán. 
-* **Tulajdonságok**: a csempék vagy a kiválasztott részek tulajdonságait jeleníti meg.
+* **Tervezési**: Az egyéni nézetet tartalmaz, amely létrehozásakor és szerkesztését. 
+* **Vezérlők**: A csempék és a hozzáadni kívánt részeket tartalmazza a **tervezési** ablaktáblán. 
+* **Tulajdonságok**: A csempék vagy a kiválasztott részek tulajdonságait jeleníti meg.
 
 ![Nézettervező](media/view-designer/view-designer-screenshot.png)
 

@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 7f4e956601ee25549d0a0828c4c3dd0e8d6ff85b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f754242d0cf7ee30572b21a3f4daf6fd2c0f63ff
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840129"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275907"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack rendszerállapotának ellenőrzése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack operátorait szerint lehetővé teszi az egészségügyi és állapotát, a rendszer igény szerinti kellene elengedhetetlen. Az Azure Stack érvényesítési eszköz (**Test-AzureStack**), amely lehetővé teszi egy PowerShell-parancsmag futtatása tesztek egy sorozatát hibák azonosítására, ha jelen van a rendszeren. Általában meg kell adnia az eszköz futtatásához a [kiemelt végpontját (EGP)](azure-stack-privileged-endpoint.md) amikor, forduljon a Microsoft támogatási (CSS) egy problémához. Rendszerszintű állapotát és állapotadatokat csak olyan mélységben CSS is gyűjthet és a részletes naplók elemzése, és összpontosítson a terület, ahol a hiba történt, és együttműködnek Önnel a probléma megoldásához.
 
@@ -45,7 +45,7 @@ Ahogy korábban is hangsúlyoztuk, a fürtérvényesítési eszköz futtatása a
    Test-AzureStack
    ```
 
-   Tekintse meg a [paraméter szempontok](azure-stack-diagnostic-test.md#parameter-considerations) és [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-cases) szakaszokban további információkat.
+   Tekintse meg a [paraméter szempontok](azure-stack-diagnostic-test.md#parameter-considerations) és [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-case-examples) szakaszokban további információkat.
 
 3. Ha bármelyik teszteli, hogy a jelentés **sikertelen**futtassa:
 
@@ -121,13 +121,13 @@ A fürtérvényesítési eszköz kell megvizsgálni, a következő felhőt helyz
 
 - Egy bérlő virtuális gép üzemel egy része a felhőbeli eset teszteli. Használhat **DoNotDeployTenantVm** , tiltsa le a szolgáltatást. 
 
-- Meg kell adnia a **ServiceAdminCredential** felhőalapú forgatókönyv tesztek futtatásához a paraméter a [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-cases) szakaszban.
+- Meg kell adnia a **ServiceAdminCredential** felhőalapú forgatókönyv tesztek futtatásához a paraméter a [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-case-examples) szakaszban.
 
-- **BackupSharePath** és **BackupShareCredential** használt történő tesztelésekor a biztonsági mentési infrastruktúra-beállításokat, ahogyan az a [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-cases) szakaszban.
+- **BackupSharePath** és **BackupShareCredential** használt történő tesztelésekor a biztonsági mentési infrastruktúra-beállításokat, ahogyan az a [megkülönbözteti a kis példákat](azure-stack-diagnostic-test.md#use-case-examples) szakaszban.
 
-- A fürtérvényesítési eszköz is a PowerShell következő általános paramétereket támogatja: részletes, hibakeresési, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable és OutVariable. További információkért lásd: [általános paraméterek](http://go.microsoft.com/fwlink/?LinkID=113216).  
+- A fürtérvényesítési eszköz is a PowerShell következő általános paramétereket támogatja: Részletes, hibakeresési, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, és OutVariable. További információkért lásd: [általános paraméterek](http://go.microsoft.com/fwlink/?LinkID=113216).  
 
-## <a name="use-case-examples"></a>Kis példákat 
+## <a name="use-case-examples"></a>Kis példákat
 
 ### <a name="run-validation-without-cloud-scenarios"></a>Ellenőrzés nélkül felhőbeli forgatókönyvek futtatása
 
@@ -154,7 +154,7 @@ Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName Pri
 Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Include AzsScenarios   
 ```
 
-A felhőalapú rendszergazdai felhasználónevet kell szerepelniük az egyszerű felhasználónév formátuma: serviceadmin@contoso.onmicrosoft.com (Azure AD). Amikor a rendszer kéri, írja be a felhőalapú rendszergazdai fiók jelszavát.
+Felhő rendszergazdájának felhasználóneve az egyszerű felhasználónév formátumban kell megadni: serviceadmin@contoso.onmicrosoft.com (Az azure AD). Amikor a rendszer kéri, írja be a felhőalapú rendszergazdai fiók jelszavát.
 
 ### <a name="run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix"></a>A rendszer készültségének tesztelése a frissítés vagy gyorsjavítás telepítése előtt a fürtérvényesítési eszköz futtatása
 

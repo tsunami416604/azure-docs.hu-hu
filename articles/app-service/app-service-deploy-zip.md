@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájllal |} A Microsoft Docs
+title: A kód egy ZIP- vagy WAR-fájllal – az Azure App Service üzembe helyezése |} A Microsoft Docs
 description: Megtudhatja, hogyan helyezze üzembe az alkalmazást az Azure App Service egy ZIP-fájlba (vagy a Java-fejlesztőknek készült WAR-fájl).
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: b628ae0806febb3ffd4edaf71be45841aff38516
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 437f1aa631e058ee62bb3c08d2ad654c3d0666f3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423028"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259086"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájlt
 
@@ -116,5 +117,5 @@ Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64A
 
 ## <a name="more-resources"></a>További erőforrások
 
-* [Kudu: Egy zip-fájl üzembe helyezése a](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
+* [Kudu: Egy zip-fájl üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Az Azure App Service üzembe helyezési hitelesítő adatok](app-service-deploy-ftp.md)

@@ -1,5 +1,5 @@
 ---
-title: SSH-támogatás a Linuxon futó Azure App Service |} A Microsoft Docs
+title: SSH-támogatás az App Service linuxon – Azure |} A Microsoft Docs
 description: Ismerje meg az SSH használata Linuxon futó Azure App Service.
 keywords: az Azure app service, webalkalmazás, linux, oss
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 4fa5e40b75be933ee62c8ba59449a78ac071dc43
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958173"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251304"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service
 
@@ -66,7 +67,7 @@ Ezeket a lépéseket jelennek meg az Azure App Service-tárházban, [például](
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Adjon hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) , a docker-fájl másolása egy [sshd_config](https://man.openbsd.org/sshd_config) fájlt a */etc/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az sshd_config fájlban, az Azure-App-Service GitHub-adattárában [Itt](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+2. Adjon hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) , a docker-fájl másolása egy [sshd_config](https://man.openbsd.org/sshd_config) fájlt a */etc/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az sshd_config fájlban, az Azure-App-Service GitHub-adattárában [Itt](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
 
     > [!NOTE]
     > A *sshd_config* fájlnak tartalmaznia kell a következő vagy a kapcsolat hibája esetén: 
@@ -77,13 +78,13 @@ Ezeket a lépéseket jelennek meg az Azure App Service-tárházban, [például](
     COPY sshd_config /etc/ssh/
     ```
 
-1. Tartalmazza a 2222-es port a [ `EXPOSE` utasítás](https://docs.docker.com/engine/reference/builder/#expose) a docker-fájl számára. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Egy belső egyetlen port elérhető csak egy privát virtuális hálózat hálózati hidas kapcsolatán belüli tárolók által.
+3. Tartalmazza a 2222-es port a [ `EXPOSE` utasítás](https://docs.docker.com/engine/reference/builder/#expose) a docker-fájl számára. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Egy belső egyetlen port elérhető csak egy privát virtuális hálózat hálózati hidas kapcsolatán belüli tárolók által.
 
     ```docker
     EXPOSE 2222 80
     ```
 
-1. Ügyeljen arra, hogy indítsa el a héjparancsfájl használatával SSH szolgáltatást (Példa: [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
+4. Ügyeljen arra, hogy indítsa el a héjparancsfájl használatával SSH szolgáltatást (Példa: [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
 
     ```bash
     #!/bin/bash

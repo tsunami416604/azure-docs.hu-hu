@@ -4,14 +4,14 @@ description: Ismerteti, hogyan értékelheti a helyszíni gépek nagy számú az
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: b0965d50781ac3bb6c62338a2c6f17317306d249
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 809d892c6238441f5a0bd93382acd7a783a4f0e9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835539"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260718"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -19,17 +19,20 @@ Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: A migrálni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.0-s vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
-- **vCenter-fióknak**: egy csak olvasható fiókot vCenter-kiszolgáló eléréséhez szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
-- **Engedélyek**: A vCenter Serverben, a virtuális gép létrehozása az OVA formátumú fájl importálásával engedélyek szükségesek.
-- **Statisztikai beállítások**: Ez a követelmény nem csak a alkalmazni a [felderítés egyszeri felderítés modell](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods). Felderítés egyszeri felderítés modell a vCenter Server statisztikai beállításait meg kell a 3. szintre történő telepítés megkezdése előtt. A statisztikai szint, hogy a nap, heti és havi adatgyűjtés minden állítható be a 3. Ha bármely három az adatgyűjtés szintje alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban alapjául a Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
+- **VMware**: Az áttelepíteni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.0-s vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
+- **vCenter-fióknak**: VCenter Server eléréséhez egy csak olvasható fiók szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
+- **Engedélyek**: A vCenter Server virtuális gép létrehozása az OVA formátumú fájl importálásával engedélyre van szükségük.
+- **Statisztikai beállítások**: Ez a követelmény nem csak a alkalmazni a [felderítés egyszeri felderítés modell](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) most már elavult. Felderítés egyszeri felderítés modell a vCenter Server statisztikai beállításait meg kell a 3. szintre történő telepítés megkezdése előtt. A statisztikai szint, hogy a nap, heti és havi adatgyűjtés minden állítható be a 3. Ha bármely három az adatgyűjtés szintje alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban alapjául a Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
+
+> [!NOTE]
+> A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
 
 ### <a name="set-up-permissions"></a>Engedélyek beállítása
 
 Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gépek felderítéséhez kiértékelés céljából. A VMware-fiókot a következő engedélyekre van szüksége:
 
-- Felhasználó típusa: Legalább egy, csak olvasási jogosultsággal rendelkező felhasználó.
-- Engedélyek: Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható.
+- Felhasználó típusa: Legalább egy csak olvasási jogosultsággal rendelkező felhasználó
+- Engedélyek: Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható
 - Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
 - A hozzáférés korlátozásához rendelje a Gyermekobjektumba propagálás objektummal rendelkező Nincs hozzáférés szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
 
@@ -76,26 +79,26 @@ A forgatókönyvtől függően akkor is feloszthatja a felfedezett összefüggé
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépekkel
 Ha több vCenter-kiszolgálók a környezetében rendelkezik, és kevesebb mint 1500 virtuális gépek teljes száma, a forgatókönyv az alábbi megközelítéseket is használhatja:
 
-**Folyamatos felderítési:** folyamatos felderítés esetén csak egyetlen projekt egy készülék csatlakoztatható. Ezért meg kell üzembe helyezése egy berendezést a vCenter-kiszolgálók, majd ennek megfelelően hozzon létre egy projektet az egyes készülék és a felderítések eseményindító.
+**Folyamatos felderítési:** Folyamatos felderítés esetén egy készülék, egyetlen projekt csatlakoztathatók. Ezért meg kell üzembe helyezése egy berendezést a vCenter-kiszolgálók, majd ennek megfelelően hozzon létre egy projektet az egyes készülék és a felderítések eseményindító.
 
-**(Most már elavult a) felderítés egyszeri felderítés:** egyetlen gyűjtő és a egy migrálási projekt használhatja az összes virtuális gép felderítése minden vCenter-kiszolgáló között. Mivel a felderítés egyszeri felderítés gyűjtő egy vCenter-kiszolgáló egyszerre deríti fel, az azonos gyűjtő futtatása ellen a vCenter-kiszolgálók egymás után, és a gyűjtő pontjára migrálás ugyanazon a projekten. Ha az összes felderítések befejeződött, majd létrehozhat értékeléseket a gépek.
+**Egyszeri felderítés (most már elavult):** Egyetlen gyűjtő és a egy migrálási projekt segítségével a virtuális gépek felderítése minden vCenter-kiszolgáló között. Mivel a felderítés egyszeri felderítés gyűjtő egy vCenter-kiszolgáló egyszerre deríti fel, az azonos gyűjtő futtatása ellen a vCenter-kiszolgálók egymás után, és a gyűjtő pontjára migrálás ugyanazon a projekten. Ha az összes felderítések befejeződött, majd létrehozhat értékeléseket a gépek.
 
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépekkel
 
 Ha több vCenter-kiszolgálók a vCenter-kiszolgáló legfeljebb 1500 virtuális gépet, de több mint 1500 virtuális gépet minden vCenter-kiszolgáló között, szeretne létrehozni (egy migrálási projekt csak 1500 virtuális gépet tartalmazhat) több migrálási projektet. Ez a migrálási projekt / vCenter-kiszolgáló létrehozásával, és a felderítések felosztás érheti el.
 
-**Folyamatos felderítési:** több gyűjtő berendezések (egy mindegyik vCenter-kiszolgáló) létrehozása és csatlakozás minden készülék egy projektet és az eseményindító felderítése ennek megfelelően kell.
+**Folyamatos felderítési:** Több gyűjtő berendezések (egy mindegyik vCenter-kiszolgáló) létrehozása és csatlakozás minden készülék egy projektet és az eseményindító felderítése ennek megfelelően kell.
 
-**(Most már elavult a) felderítés egyszeri felderítés:** egyetlen gyűjtő használatával minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítéseket, is több berendezések üzembe helyezése és a felderítések párhuzamosan futnak.
+**Egyszeri felderítés (most már elavult):** Egyetlen gyűjtő használatával minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítéseket, is több berendezések üzembe helyezése és a felderítések párhuzamosan futnak.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Több mint 1500 gépek egyetlen vCenter-kiszolgáló
 
 Ha egy vCenter-kiszolgáló 1500-nál több virtuális gép is van, a felderítés felosztása több áttelepítési projektet szeretné. Osztott felderítések, használja ki a készüléket a hatókör mezőt, és adja meg a gazdagép, fürt, mappa vagy adatközpontot, amelyben szeretné felderíteni. Például, ha a vCenter-kiszolgáló, egy 1000 két mappa (mappa1) virtuális gépek és a másik a 800 virtuális gép (mappa2), a hatókör mező használható felosztása a felderítéseket, ezek a mappák között.
 
-**Folyamatos felderítési:** ebben az esetben kell az első gyűjtő hozzon létre két collector berendezést, adja meg a hatókör mappa1, és csatlakoztassa az első migrálási projektet. A párhuzamos mappa2 felderítéséhez a második gyűjtőberendezés segítségével, és csatlakoztassa a második migrálási projektet.
+**Folyamatos felderítési:** Ebben az esetben kell az első gyűjtő hozzon létre két collector berendezést, adja meg a hatókör mappa1, és csatlakoztassa az első migrálási projektet. A párhuzamos mappa2 felderítéséhez a második gyűjtőberendezés segítségével, és csatlakoztassa a második migrálási projektet.
 
-**(Most már elavult a) felderítés egyszeri felderítés:** az azonos gyűjtő használatával aktiválásához mindkét a felderítések. Az első felderítés, adja meg a hatókör mappa1 majd mutasson az első migrálási projektet, hogy az első felderítés befejeződése után is az azonos gyűjtő használja, módosítsa a hatókört, a második migrálási projekt mappa2 és a migrálási projekt részletei és Ezt a második felderítés.
+**Egyszeri felderítés (most már elavult):** Az azonos gyűjtő használatával aktiválásához mindkét a felderítések. Az első felderítés, adja meg a hatókör mappa1 majd mutasson az első migrálási projektet, hogy az első felderítés befejeződése után is az azonos gyűjtő használja, módosítsa a hatókört, a második migrálási projekt mappa2 és a migrálási projekt részletei és Ezt a második felderítés.
 
 ### <a name="multi-tenant-environment"></a>Több-bérlős környezet
 
@@ -131,13 +134,13 @@ Ha több projektet, a vCenter Serverhez csak egyszer a gyűjtőberendezés letö
     > [!NOTE]
     > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
 
-    **Azonnali változtatásait:** a folyamatos felderítési berendezéssel után a felderítés befejezéséhez (veszi fel néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
+    **Azonnali változtatásait:** A folyamatos felderítési berendezéssel után a felderítés befejezéséhez (veszi fel néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
 
     Vegye figyelembe, hogy a berendezés a teljesítményadatok folyamatosan gyűjtését végzi, és nem észleli a konfiguráció változását a helyszíni környezetben (pl. virtuális gépek hozzáadását, törlését, lemezek hozzáadását stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-    - Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+    - További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
-    - Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+    - Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 3. A **projekt hitelesítő adatainak másolása**, másolja az Azonosítót, és a projekt kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 

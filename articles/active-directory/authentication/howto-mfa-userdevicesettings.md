@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8d3ffa2664c747f5fbbd4269b23ae54850e0d750
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496900"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320999"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése
 
@@ -30,8 +30,8 @@ Ez a beállítás kényszeríti a felhasználót, hogy újra végrehajtania a re
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Felhasználók számára a kapcsolattartási mód újbóli megadásának kötelezővé tétele
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
-3. Válassza ki **multi-factor Authentication**. A többtényezős hitelesítés lap nyílik meg. 
+2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg. 
 4. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg. 
 5. Válassza ki **felhasználói beállítások kezelése**.
 6. Jelölje be a **kérése a kiválasztott felhasználóktól a kapcsolattartási mód újbóli megadásának**.
@@ -44,8 +44,8 @@ Ez a beállítás minden, a felhasználó által létrehozott alkalmazásjelszó
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>A felhasználók alkalmazásjelszók meglévő törlése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
-3. Válassza ki **multi-factor Authentication**. A többtényezős hitelesítés lap nyílik meg. 
+2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg. 
 6. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg. 
 7. Válassza ki **felhasználói beállítások kezelése**.
 8. Jelölje be a **törli a kiválasztott felhasználók által létrehozott összes meglévő alkalmazásjelszavak**.
@@ -62,8 +62,8 @@ A **visszaállítási multi-factor authentication szolgáltatás az összes kor�
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Többtényezős hitelesítés visszaállítása egy felhasználó az összes felfüggesztett eszközökön
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
-3. Válassza ki **multi-factor Authentication**. A többtényezős hitelesítés lap nyílik meg. 
+2. A bal oldalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+3. A jobb oldalon válassza ki a **multi-factor Authentication** az eszköztáron. A többtényezős hitelesítés lap nyílik meg. 
 6. Ellenőrizze a felhasználókat, hogy a kezelni kívánt melletti mezőbe. Gyors lépés beállítások listáját a jobb oldalon jelennek meg. 
 7. Válassza ki **felhasználói beállítások kezelése**.
 8. Jelölje be a **visszaállítási multi-factor authentication szolgáltatás az összes korábban megjegyzett eszközön**

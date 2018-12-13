@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 583a84fd943f6dab63f94e2811e21853e6e5f6a1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0023b8aa5d4f79af397b937030c5308a970af991
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959171"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187500"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveletcsoport létrehozása a Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Műveletcsoportok konfigurálása. Sablonok használatával automatikusan állíthat be, amelyek felhasználhatók a meghatározott típusú riasztások Műveletcsoportok. A Műveletcsoportok győződjön meg arról, hogy a megfelelő felek értesítést kapnak, ha a riasztás aktiválódik.
@@ -164,6 +164,6 @@ Resource Manager-sablonnal műveletcsoport létrehozásához hoz létre a típus
 
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [Műveletcsoportok](monitoring-action-groups.md).
+* Tudjon meg többet [Műveletcsoportok](../azure-monitor/platform/action-groups.md).
 * Tudjon meg többet [riasztások](monitoring-overview-alerts.md).
-* Ismerje meg, hogyan adhat hozzá [Resource Manager-sablon használatával riasztások](alert-activity-log.md).
+* Ismerje meg, hogyan adhat hozzá [Resource Manager-sablon használatával riasztások](../azure-monitor/platform/alerts-activity-log.md).

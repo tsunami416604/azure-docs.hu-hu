@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cfc191830ddadbbe3258fc1b61fcd4bcc45fdd8c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969362"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186752"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
-Miután [telepítése az Azure Stack Development Kit (ASDK)](asdk-install.md), néhány ajánlott telepítés utáni konfigurációs változtatásokat kell.
+Miután [telepítése az Azure Stack Development Kit (ASDK)](asdk-install.md), kell, hogy néhány ajánlott telepítés utáni konfigurációs módosítások jelentkezve AzureStack\AzureStackAdmin ASDK a gazdagépen. 
 
 ## <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése
 

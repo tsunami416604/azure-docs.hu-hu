@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 57ad7d680d83e13d9aff1d55a52ab982c585df76
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080197"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271385"
 ---
-# <a name="phrase-list-features-in-luis"></a>A LUIS kifejezés szolgáltatásai
+# <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
 
 A machine learning szolgáltatás egy *funkció* egy megkülönböztető is leálljon vagy attribútum, amelyek a rendszer figyelembe veszi. 
 
@@ -32,9 +32,17 @@ Kifejezések listáját, LUIS egy második jelzés ezeket szavakkal kapcsolatos 
 ## <a name="how-to-use-phrase-lists"></a>A kifejezés listák használata
 A HR alkalmazás [egyszerű entitás oktatóanyag](luis-quickstart-primary-and-secondary-data.md), az alkalmazás által használt egy **feladat** programozói, roofer és miniszter feladat típusú kifejezés listája. Ha az alábbi értékek egyikére gép megtanult egységként címke, LUIS megtanulja felismerni a többi. 
 
-A kifejezéslista felcserélhetők vagy nem cserélhető lehet. Egy *felcserélhetők* kifejezéslista van, amelyek szinonimák, értékek és a egy *nem cserélhető* kifejezéslista szánnak értékek, amelyek szinonimák azonban még mindig nem kell egy további jel az alkalmazásban. 
+A kifejezéslista felcserélhetők vagy nem cserélhető lehet. Egy *felcserélhetők* kifejezéslista van, amelyek szinonimák, értékek és a egy *nem cserélhető* kifejezéslista célja az, egy meghatározott szókészletet alkalmazáslistájában. A szöveg szóhasználati kifejezés listáját növekedésével tapasztalhatja bizonyos feltételek több formában (szinonimák). Bontja ezeket egy másik kifejezés listája, amelyek felcserélhető. 
+
+|Listatípus|Cél|
+|--|--|
+|Cserélhető|A szinonimák vagy szavak, amikor a listában egy másik szóban változik, rendelkezik az azonos szándékot, és az entitások kinyeréséhez.|
+|Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|
+
+A kifejezés nem csak az entitás észlelési kapcsolatban sorolja fel, de is szándék besorolást, ha nem cserélhető logikus például a szöveg szóhasználati szavak nem ismert angol nyelven kívül hozzáadása.
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Kifejezés tartalmazza a Súgó egyszerű felcserélhetők entitások azonosítása
 Cserélhető kifejezés listák helyes módon a LUIS-alkalmazás teljesítményének finomhangolása. Ha az alkalmazás hiba történt a megfelelő leképezés kimondott szöveg előrejelzésére vagy entitások FELISMERVE, gondolja át e a kimondott szöveg tartalmazza-e a szokatlan szavakat vagy szavak, amelyek lehet, hogy a jelentése nem egyértelmű. Ezeknek a szavaknak esetén használható jól az egy kifejezést listára.
 
@@ -44,7 +52,7 @@ Egy kifejezés lista tehát nem a LUIS szigorú az egyeztetés elvégzéséhez, 
 A kifejezéslista hozzáadása nem megjelölésű további példa beszédmódok hozzáadása helyett. 
 
 ## <a name="an-interchangeable-phrase-list"></a>Egy cserélhető kifejezéslista
-Egy cserélhető kifejezés listával szavak vagy kifejezések listája osztályának vagy csoportjának létrehozásakor. Ilyen például, egy hónapig, például a "January", "February", "Március"; listája vagy nevét, például "János", "Mary", "Frank".  Ezek a listák felcserélhető, hogy az utterance (kifejezés) lenne feliratú ugyanezzel a leképezés vagy entitás, ha egy másik szót, kifejezést listájában használtak. Például ha "a naptár megjelenítése a januári" ugyanennyi a szándék szerint "a naptár megjelenítése a február", majd a szavakat az felcserélhetők listájának kell lennie. 
+Egy cserélhető kifejezéslista akkor használja, ha a szavak vagy kifejezések listája a osztályának vagy csoportjának hoz létre. Ilyen például, egy hónapig, például a "January", "February", "Március"; listája vagy nevét, például "János", "Mary", "Frank".  Ezek a listák felcserélhető, hogy az utterance (kifejezés) lenne feliratú ugyanezzel a leképezés vagy entitás, ha egy másik szót, kifejezést listájában használtak. Például ha "a naptár megjelenítése a januári" ugyanennyi a szándék szerint "a naptár megjelenítése a február", majd a szavakat az felcserélhetők listájának kell lennie. 
 
 ## <a name="a-non-interchangeable-phrase-list"></a>Nem cserélhető kifejezéslista
 A kifejezés nem cserélhető listáját használata nem azonos szavakat vagy kifejezéseket, a tartományban lévő csoportosíthatók. 

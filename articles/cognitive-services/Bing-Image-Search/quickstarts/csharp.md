@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Képkeresés a C# használatával – Bing Image Search API'
+title: 'Gyors útmutató: Keresse meg a Bing Image Search REST API-rendszerképek – ésC#'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan tekintheti meg a keresési eredményt a JSON-válaszban. Ez az egyszerű C#-alkalmazás elküld egy HTTP-s képkeresési lekérdezést az API-nak, majd megjeleníti az első visszaadott kép URL-címét.
+description: Ez a rövid útmutató segítségével képet keresési kérelmeket küldjön a Bing Image Search REST API használatával C#, JSON-válaszok részesül.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 3819b476c5d3638f409b4195d6340920032d7b99
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307491"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249515"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search API és a C# használatával
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Gyors útmutató: Keresse meg a Bing Image Search REST API használatával képek ésC#
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan tekintheti meg a keresési eredményt a JSON-válaszban. Ez az egyszerű C#-alkalmazás elküld egy HTTP-s képkeresési lekérdezést az API-nak, majd megjeleníti az első visszaadott kép URL-címét.
 

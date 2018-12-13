@@ -1,5 +1,5 @@
 ---
-title: Egy kimenő IP-cím módosítása – az Azure előkészítése
+title: Kimenő IP-cím módosítása – az Azure App Service előkészítése
 description: Ha módosítani kell a kimenő IP-cím, megtudhatja, mit kell tennie, hogy az alkalmazása továbbra is működik, a módosítás után.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.custom: seodec18
+ms.openlocfilehash: f611733400b8bfd18a135fe07f84606f13e59704
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309348"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275720"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Hogyan készíti elő a kimenő IP-cím módosítása
 
@@ -23,9 +24,9 @@ Ha módosítja a kimenő IP-címek az Azure App Service-alkalmazás értesítés
 
 ## <a name="determine-if-you-have-to-do-anything"></a>Ha meg semmit sem kell tennie meghatározása
 
-* 1. lehetőség: Az App Service-alkalmazás nem használja az IP-szűrés, explicit listában vagy különleges kezelést a kimenő forgalom-útválasztást vagy a tűzfal például, ha semmit nem kell.
+* 1. lehetőség: Ha az App Service-alkalmazás nem használja az IP-szűrés, explicit listában vagy a kimenő forgalom-útválasztást vagy a tűzfal például különleges kezelést, semmit nem kell.
 
-* 2. lehetőség: Ha az alkalmazás különleges kezelést a kimenő IP-címeit (lásd az alábbi példákat), vegye fel az új kimenő IP-címek bárhol a meglévőket jelennek meg. Ne cserélje le a meglévő IP-címek. Az új kimenő IP-címek az alábbi utasításokat a következő szakaszban találja.
+* 2. lehetőség: Ha az alkalmazása különleges kezelést a kimenő IP-címeit (lásd az alábbi példákat), az új kimenő IP-címek hozzáadása, bárhol is a meglévőket jelennek meg. Ne cserélje le a meglévő IP-címek. Az új kimenő IP-címek az alábbi utasításokat a következő szakaszban találja.
 
   Például előfordulhat, hogy kimenő IP-cím explicit módon szerepel az alkalmazáson kívüli tűzfal, vagy egy külső fizetési szolgáltatás előfordulhat, hogy rendelkezik, amely tartalmazza a kimenő IP-címet az alkalmazás engedélyezett listával. Ha a kimenő címét egy listában bárhol az alkalmazáson kívül van konfigurálva, hogy kell módosítani.
 
@@ -39,7 +40,7 @@ Az új kimenő IP-címek láthatók a portálon életbe. Amikor Azure elindul, a
 
 3.  Válassza ki az App Service-alkalmazást a listából.
 
-4.  Ha az alkalmazás egy függvényalkalmazást, lásd: [alkalmazás kimenő IP-címek függvény](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Ha az alkalmazás egy függvényalkalmazást, lásd: [alkalmazás kimenő IP-címek függvény](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
 4.  Alatt a **beállítások** fejléc, kattintson a **tulajdonságok** a bal oldali navigációs és a keresés feliratú szakasz **kimenő IP-címeket**.
 

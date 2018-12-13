@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: f7dbc124781992ada9c3538cf415b836d8764064
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: f17998957db6fca5b109b5a05aa624e238af8dca
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810820"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257539"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible-lel felügyelheti az Azure Kubernetes Service-t (AKS-t). Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Azure Kubernetes Service-fürtöket az Ansible használatával.
@@ -79,7 +79,7 @@ Az AKS-fürt Ansible-lel való létrehozásához mentse az előző mintaforgató
 
 Az **ansible-playbook* parancs kimenete a következőhöz hasonló, és azt mutatja, hogy az AKS-fürt sikeresen létrejött:
 
-  ```bash
+  ```Output
   PLAY [Create AKS] ****************************************************************************************
 
   TASK [Gathering Facts] ********************************************************************************************
@@ -140,7 +140,7 @@ Az Azure Kubernetes Service-fürt Ansible használatával való skálázásához
 
 Az alábbi kimenet azt mutatja, hogy az AKS-fürt sikeresen létrejött:
 
-  ```bash
+  ```Output
   PLAY [Scale AKS cluster] ***************************************************************
 
   TASK [Gathering Facts] ******************************************************************
@@ -178,7 +178,7 @@ Az Azure Kubernetes Service-fürt az Ansible használatával való törléséhez
   ```
 
 Az alábbi kimenet azt mutatja, hogy az AKS-fürt sikeresen törölve lett:
-  ```bash
+  ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] ****************************
 
 TASK [Gathering Facts] ********************************************************************
@@ -192,4 +192,4 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
   
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)
+> [Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)

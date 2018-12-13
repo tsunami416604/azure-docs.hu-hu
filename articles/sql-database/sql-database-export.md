@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fecc694e5520444be06dab82191b6454fb4ee8f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2d881b9dbc20dbbf95491d023b859a20815091d3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354036"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311201"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis exportálása BACPAC-fájlba
 
@@ -39,11 +39,11 @@ Archiválás vagy áthelyezése egy másik platformon-adatbázisok exportálás�
   - Használja a [fürtözött index](https://msdn.microsoft.com/library/ms190457.aspx) az összes nagy táblák null értékű. Fürtözött indexek nélkül exportálása meghiúsulhat, ha a 6 és 12 óránál hosszabb ideig tart. Ennek az oka az exportálási szolgáltatás el kell végeznie egy tábla beolvasásával szeretné kipróbálni az egész tábla exportálása. Határozza meg, ha a táblák optimalizált Exportálás futtatása van egy jó módszer **DBCC SHOW_STATISTICS** , és ellenőrizze, hogy a *RANGE_HI_KEY* nem null, és annak értéke helyes terjesztési. További információkért lásd: [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> BACPACs használható biztonsági mentési és visszaállítási műveletek nem tartozhat. Az Azure SQL Database automatikusan létrehoz minden felhasználói adatbázis biztonsági mentését. További információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md) és [SQL Database biztonsági mentéseinek](sql-database-automated-backups.md).  
+> BACPACs használható biztonsági mentési és visszaállítási műveletek nem tartozhat. Az Azure SQL Database automatikusan létrehoz minden felhasználói adatbázis biztonsági mentését. További információkért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md) és [SQL Database biztonsági mentéseinek](sql-database-automated-backups.md).
 
 ## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Az Azure portal használatával egy BACPAC-fájlba exportálása
 
-Egy adatbázis használatával történő exportálás, az [az Azure portal](https://portal.azure.com), nyissa meg az adatbázishoz tartozó lap, és kattintson a **exportálása** az eszköztáron. Adja meg a BACPAC-fájlnevet, adja meg az Azure storage-fiók és tároló az exportálás, és adja meg a hitelesítő adatokat a forrás-adatbázishoz való csatlakozáshoz.  
+Egy adatbázis használatával történő exportálás, az [az Azure portal](https://portal.azure.com), nyissa meg az adatbázishoz tartozó lap, és kattintson a **exportálása** az eszköztáron. Adja meg a BACPAC-fájlnevet, adja meg az Azure storage-fiók és tároló az exportálás, és adja meg a hitelesítő adatokat a forrás-adatbázishoz való csatlakozáshoz.
 
 ![adatbázis exportálása](./media/sql-database-export/database-export.png)
 
@@ -72,13 +72,13 @@ Az SQL Server Management Studio legújabb verzióiban elérhető egy varázslót
 
 Használja a [New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) parancsmagot, hogy küldje el az Azure SQL Database szolgáltatás egy adatbázis exportálási kérelmet. Az adatbázis méretétől függően az exportálási művelet eltarthat egy ideig.
 
- ```powershell
- $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
-   -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
-   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
- ```
+```powershell
+$exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
+  -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
+  -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
+```
 
-Az exportálási kérelem állapotának ellenőrzéséhez használja a [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) parancsmagot. Fut ez a kérelem után azonnal általában értéket ad vissza **állapota: InProgress**. Amikor látja **állapota: sikeres** az exportálás befejeződött.
+Az exportálási kérelem állapotának ellenőrzéséhez használja a [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) parancsmagot. Fut ez a kérelem után azonnal általában értéket ad vissza **állapota: InProgress**. Amikor látja **állapota: Sikeres** az exportálás befejeződött.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

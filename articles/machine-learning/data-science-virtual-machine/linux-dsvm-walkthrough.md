@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 0c929bb569fb96dfdaa53f47036cc8f16251ad1c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105240"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190645"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -318,19 +318,19 @@ A dsvm-hez az Anaconda terjesztési tartalmaz egy Jupyter notebookot, olyan töb
 
 > [!NOTE]
 > A Python Csomagkezelő használandó (keresztül a `pip` parancs) a Jupyter notebook a jelenlegi kernel, az alábbi parancsot a használni kódcellába, például:
-```python
+  ```python
    import sys
    ! {sys.executable} -m pip install numpy -y
-```
+  ```
 >
 >
 
 > [!NOTE]
 > A Conda-telepítővel (keresztül a `conda` parancs) a Jupyter notebook a jelenlegi kernel, az alábbi parancsot a használni kódcellába, például:
-```python
+  ```python
    import sys
    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
+  ```
 >
 >
 
@@ -346,7 +346,7 @@ Több mintafüzetek már telepítve vannak a virtuális gépen:
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (az R analitikai eszközt, ismerje meg, egyszerűen) az adatbányászat R egy grafikus eszközt. Rendelkezik egy intuitív felületen, amely megkönnyíti a betöltése, ismerje meg, és alakíthat át adatokat, és hozhat létre és modellek értékeléséhez.  A cikk [Rattle: A Data Mining GUI az R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) biztosít a forgatókönyv azt mutatja be, annak szolgáltatásait.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (az R analitikai eszközt, ismerje meg, egyszerűen) az adatbányászat R egy grafikus eszközt. Rendelkezik egy intuitív felületen, amely megkönnyíti a betöltése, ismerje meg, és alakíthat át adatokat, és hozhat létre és modellek értékeléséhez.  A cikk [Rattle: Az R Data Mining grafikus](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) biztosít a forgatókönyv azt mutatja be, annak szolgáltatásait.
 
 Telepítse, és indítsa el a Rattle az alábbi parancsokkal:
 

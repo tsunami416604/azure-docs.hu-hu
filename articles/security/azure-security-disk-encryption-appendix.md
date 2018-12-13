@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6e186f25cc69791d939d93d24a37cadb1113353
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105042"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310671"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -132,6 +132,20 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
  -  [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.  
 
+### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Titkosítása és visszafejtése a Virtuálisgép-méretezési csoportok
+
+- [A futó Linux rendszerű virtuális gép méretezési lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [Egy futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [Egy virtuális gép méretezési állítsa be a Linux rendszerű virtuális gépek üzembe helyezése Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [A virtuális gép méretezési állítsa be a Windows virtuális gépek üzembe helyezése Windows VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [Tiltsa le a futó Linux rendszerű virtuális gép méretezési lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [Tiltsa le a futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Titkosítása és visszafejtése a virtuális gépek az Azure AD-alkalmazás (előző kiadás) 
  
 - [A meglévő vagy IaaS Windows rendszerű virtuális gépek futtatása a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
@@ -162,17 +176,7 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
 
 - [Egy futó Windows virtuális gép az Azure AD-ügyfél tanúsítványának ujjlenyomata lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
-- [A futó Linux rendszerű virtuális gép méretezési lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Egy futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-
- - [Egy virtuális gép méretezési állítsa be a Linux rendszerű virtuális gépek üzembe helyezése Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-
- - [A virtuális gép méretezési állítsa be a Windows virtuális gépek üzembe helyezése Windows VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-
-- [Tiltsa le a futó Linux rendszerű virtuális gép méretezési lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
-
-- [Tiltsa le a futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> Előzetes titkosítással Windows virtuális merevlemez előkészítése
 A következő szakaszok szükség annak előre titkosított Windows virtuális merevlemez előkészítése az Azure IaaS-titkosított merevlemezként üzembe helyezéshez. Az információk segítségével készítheti elő, és indítsa el az Azure Site Recovery vagy az Azure friss Windows virtuális gép (VHD). VHD feltöltése és készítse elő a további információkért lásd: [általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban](../virtual-machines/windows/upload-generalized-managed.md).

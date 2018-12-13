@@ -4,10 +4,9 @@ description: A Studio prediktív elemzési kísérletek kifejlesztéséhez, és 
 keywords: machine learning studio,áttekintő diagram,letöltés
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
-ms.author: amlstudiodocs
-manager: mwinkle
+author: garyericson
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.author: garye
 editor: cgronlun
 ms.assetid: 5b302c6c-41fd-4551-a4ae-0f5b450e1e6b
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: d972cc9f162e16d5b688919dcdb5b7b06ad90736
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ce842d11d47529eca2be894a230b60417cea102f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312463"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278015"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Az Azure Machine Learning Studio képességeit áttekintő diagram
 A **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagram átfogó képet nyújt a Machine Learning Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatáról.
@@ -52,5 +51,5 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 * A Machine Learning Studio áttekintéséhez olvassa el a [Mi a Machine Learning Studio](what-is-ml-studio.md) című fejezetet.
 * A Machine Learning Studióban található gépi tanulási algoritmusok részletes leírását az [Algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md) című fejezetben találja.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

@@ -1,5 +1,5 @@
 ---
-title: Egy Estimator osztály használatával gépi Tanulási modelleket taníthat be
+title: Gépi Tanulási modelleket taníthat be a estimators
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hajthat végre egy csomópontos és elosztott képzési hagyományos gép tanulási és deep learning-modellek Azure Machine Learning services Estimator osztály használatával
 ms.author: minxia
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e7157b9546d1f9ca40bab35d9e643c38051db04e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100752"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184355"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Az Azure Machine Learning-modellek betanításához
 
 Képzési gépi tanulási modelleket, különösen Neurális hálózatok, gyakran egy idő - és számításigényes feladat. Miután végzett a tanítási szkriptet és a egy kis részét jelentik az adatok a helyi gépen futó, valószínűleg érdemes vertikális felskálázása a számítási feladatok.
 
-Képzési elősegítése érdekében az Azure Machine Learning Python SDK biztosít egy magas szintű absztrakció, a estimator osztály, amely lehetővé teszi, hogy a felhasználók számára könnyen a saját az Azure-ökoszisztéma-modellek betanításához. Létrehozhat és használhat egy `Estimator` objektum szeretné futtatni a távoli számítási, legyen szó egy egycsomópontos futtatható vagy elosztott képzési GPU-fürtön belül képzési kód elküldéséhez. PyTorch és TensorFlow-feladatok az Azure Machine Learning is biztosít megfelelő egyéni `PyTorch` és `TensorFlow` estimators egyszerűsítése érdekében ezek a keretrendszerek használatával.
+Képzési elősegítése érdekében az Azure Machine Learning Python SDK biztosít egy magas szintű absztrakció, a estimator osztály, amely lehetővé teszi, hogy a felhasználók számára könnyen a saját az Azure-ökoszisztéma-modellek betanításához. Létrehozhat és használhat egy [ `Estimator` objektum](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) szeretné futtatni a távoli számítási képzési kód elküldeni, legyen az egy egycsomópontos futtatható vagy elosztott képzési között GPU-fürtön. PyTorch és TensorFlow-feladatok az Azure Machine Learning is biztosít megfelelő egyéni `PyTorch` és `TensorFlow` estimators egyszerűsítése érdekében ezek a keretrendszerek használatával.
 
 ## <a name="train-with-an-estimator"></a>Az egy estimator betanítása
 

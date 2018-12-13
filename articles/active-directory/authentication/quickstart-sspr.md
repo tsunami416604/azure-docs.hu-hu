@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c40cb3192d514d990ea2a5d66e1484ff204e9b10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
-ms.translationtype: HT
+ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223557"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311558"
 ---
-# <a name="quickstart-self-service-password-reset"></a>Rövid útmutató: Új jelszó önkiszolgáló kérése
+# <a name="quickstart-self-service-password-reset"></a>Gyors útmutató: Új jelszó önkiszolgáló kérése
 
 Ebben az oktatóanyagban az önkiszolgáló jelszó-visszaállítás (SSPR) konfigurálásának menetével fog megismerkedni. Ez egy egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat a jelszavuk visszaállítására vagy fiókjuk zárolásának feloldására.
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban az önkiszolgáló jelszó-visszaállítás (SSPR) konf
 
 * Egy működő Azure AD-bérlő, legalább próbaverziós licenccel.
 * Egy globális rendszergazdai jogosultsággal rendelkező fiók.
-* Egy nem rendszergazdai szintű tesztfelhasználó ismert jelszóval. Ha létre kell hoznia a felhasználót, tekintse meg az [új felhasználók az Azure Active Directoryhoz történő hozzáadását](../add-users-azure-active-directory.md) ismertető rövid útmutatót.
+* Egy nem rendszergazdai tesztfelhasználó ismeri, ha szeretne létrehozni egy felhasználói lásd a cikk jelszóval [a rövid útmutató: Új felhasználók hozzáadása az Azure Active Directory](../add-users-azure-active-directory.md).
 * Egy tesztcsoport a teszteléshez, amelynek a nem rendszergazdai szintű tesztfelhasználó a tagja. Ha létre kell hoznia a csoportot, tekintse meg a [csoport létrehozását és a tagok hozzáadását az Azure Active Directoryban](../active-directory-groups-create-azure-portal.md) ismertető cikket.
 
 ## <a name="enable-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének engedélyezése
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban az önkiszolgáló jelszó-visszaállítás (SSPR) konf
     * Kattintson a **Save** (Mentés) gombra.
 
 3. A **Hitelesítési módszerek** lapon adja meg a következő beállításokat:
-   * Az új jelszó kéréséhez szükséges módszerek száma: **1**
+   * Új jelszó kéréséhez szükséges módszerek száma: **1**
    * Felhasználók által választható módszerek:
       * **Mobiltelefon**
       * **Irodai telefon**
@@ -48,8 +48,8 @@ Ebben az oktatóanyagban az önkiszolgáló jelszó-visszaállítás (SSPR) konf
     ![Hitelesítés][Authentication]
 
 4. A **Regisztráció** lapon adja meg a következő beállításokat:
-   * Felhasználói regisztráció megkövetelése bejelentkezéskor: **Igen**
-   * A napok számának megadása, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését: **365**
+   * Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor: **Igen**
+   * Állítsa be a hány nap elteltével a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését: **365**
 
 ## <a name="test-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás tesztelése
 
@@ -64,7 +64,7 @@ Most pedig teszteljük az SSPR konfigurációját egy tesztfelhasználóval. Miv
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt.
+Az önkiszolgáló jelszóátállítás letiltása egyszerű feladat. Nyissa meg az Azure AD-bérlővel, majd **tulajdonságok** > **új jelszó kérésére vonatkozó**, majd válassza ki **nincs** alatt **önkiszolgáló jelszó-visszaállítás Engedélyezett**.
 
 ## <a name="next-steps"></a>További lépések
 

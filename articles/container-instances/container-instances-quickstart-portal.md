@@ -1,25 +1,25 @@
 ---
-title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban
-description: Ebben a rövid útmutatóban az Azure Portal használatával helyez üzembe egy Docker-tárolóban futó alkalmazást az Azure Container Instances szolgáltatáshoz
+title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban – portál
+description: Ebben a rövid útmutatóban használhatja az Azure Portalon egy futtathat az Azure Container Instances szolgáltatásban elkülönített tárolót a Docker-tárolóalkalmazás üzembe helyezése
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857720"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190288"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rövid útmutató: alkalmazás futtatása az Azure Container Instances szolgáltatásban
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure Portalon
 
-Az Azure Container Instances használatával egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nincs szükség virtuális gépek üzembe helyezésére vagy teljes tárolóvezénylési platform, például a Kubernetes használatára. Ebben a rövid útmutatóban az Azure Portal használatával tárolót hozhat létre az Azure-ban, és az alkalmazását egy teljes tartománynévvel (FQDN-nel) elérhetővé teheti. Néhány beállítás konfigurálása és a tároló üzembe helyezése után tallózhat a futó alkalmazásban:
+Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ebben a rövid útmutatóban az Azure Portal használatával tárolót hozhat létre az Azure-ban, és az alkalmazását egy teljes tartománynévvel (FQDN-nel) elérhetővé teheti. Néhány beállítás konfigurálása és a tároló üzembe helyezése után tallózhat a futó alkalmazásban:
 
-![Az Azure Container Instances szolgáltatáshoz üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
+![Az Azure Container Instances szolgáltatásban üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -87,7 +87,7 @@ Válassza az **Igen** lehetőséget, amikor a megerősítési párbeszédpanel m
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilvános Docker Hub beállításjegyzékben található rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilvános Docker Hub beállításjegyzékben található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy Azure-beli privát tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)

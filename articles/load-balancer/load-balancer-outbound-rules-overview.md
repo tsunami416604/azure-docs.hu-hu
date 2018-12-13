@@ -1,5 +1,6 @@
 ---
-title: Kimenő szabályok az Azure Load Balancer |} A Microsoft Docs
+title: Az Azure Load Balancerben kimenő szabályok
+titlesuffix: Azure Load Balancer
 description: Kimenő szabályok használatával határozza meg a kimenő hálózati cím fordítása
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 34a80a180d4c08027e4c975d4f7955966eec7307
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086368"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185018"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -191,14 +193,14 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
    1. Tiltsa le a terheléselosztási szabály a kimenő SNAT.
    2. Konfigurálja az kimenő szabályt az azonos terheléselosztóhoz.
    3. Újból felhasználhatja a háttérkészlet, a virtuális gépek által már használt.
-   4. Adja meg a "protocol": "All", a kimenő szabály részeként.
+   4. Adja meg a "protocol": "All" a kimenő szabály részeként.
 
 - Csak bejövő NAT-szabályok használata esetén nincs kimenő NAT van megadva.
 
    1. A háttérkészlet virtuális gépeket helyezni.
    2. Egy vagy több előtérbeli IP-konfiguráció a nyilvános IP-cím vagy nyilvános IP-előtag megadása.
    3. Konfigurálja az kimenő szabályt az azonos terheléselosztóhoz.
-   4. Adja meg a "protocol": "All", a kimenő szabály részeként
+   4. Adja meg a "protocol": A kimenő szabály részeként "All"
 
 ## <a name="limitations"></a>Korlátozások
 

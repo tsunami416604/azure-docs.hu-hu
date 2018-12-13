@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: b52604fa19a5598e8aff5b8a1ea25e7361add553
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 22dab5ecaba71093056e9bb2f6843c19896f845d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997011"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323388"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -95,14 +95,14 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 Ennek eredményeképp az Application Insights kialakítási kulcsai be lesznek szúrva a(z) `ServiceConfiguration.*.cscfg` nevű fájlokba. ([Mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Ha meg szeretné változtatni az Application Insightsba küldött diagnosztikai információk szintjét, ezt [a `.cscfg` fájlok közvetlen szerkesztésével](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) teheti meg.
+Ha meg szeretné változtatni az Application Insightsba küldött diagnosztikai információk szintjét, ezt [a `.cscfg` fájlok közvetlen szerkesztésével](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) teheti meg.
 
 ## <a name="sdk"></a>Az SDK telepítése az egyes projektekben
 Ezzel a beállítással megnyílik a lehetőség, hogy egyéni üzleti telemetriát vegyen fel bármely szerepkörbe az alkalmazás használatának és teljesítményének szorosabb elemzése céljából.
 
 A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes felhőalkalmazás-projektekhez.
 
-1. **Webes szerepkörök**: Kattintson jobb gombbal a projektre, és válassza a **Configure Application Insights** (Application Insights konfigurálása) vagy a **Add &gt; Application Insights telemetry** (Hozzáadás &gt; Application Insights Telemetria) lehetőséget.
+1. **Webes szerepkörök**: Kattintson a jobb gombbal a projektre, és válassza a **Application Insights konfigurálása** vagy **Hozzáadás > Application Insights telemetria**.
 
 2. **Feldolgozói szerepkörök**: 
  * Kattintson a jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**.
@@ -162,7 +162,7 @@ A webes szerepkörökben a kérések modulja automatikusan gyűjti a HTTP-kéré
 
 A feldolgozói szerepkörökhöz intézett hívások teljesítményének rögzítése a HTTP-kérésekkel megegyező módon történő nyomkövetéssel hajtható végre. Az Application Insightsban a Kérés telemetriatípus a megnevezett kiszolgálóoldali műveletek egységeit méri, amelyeknek mérhető az idejük, és külön-külön sikerülhetnek vagy meghiúsulhatnak. Az SDK automatikusan rögzíti a HTTP-kéréseket, de saját kód beszúrásával a feldolgozói szerepkörökhöz intézett hívásokat is nyomon követheti.
 
-Lásd a kérések jelentésére kialakított két minta feldolgozói szerepkört: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) és [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+Tekintse meg a kérések jelentésére két minta feldolgozói szerepkört: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) és [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Kivételek
 A nem kezelt kivételek a különféle webalkalmazás-típusokból való gyűjtésével kapcsolatban lásd: [Kivételek figyelése az Application Insightsban](app-insights-asp-net-exceptions.md).
@@ -203,7 +203,7 @@ Ez részletes diagnosztikai információt biztosít, mivel láthatja, mi vezetet
 Ezt a következőképpen teheti meg:
 
 * Állítsa a korrelációs azonosítót egy CallContext környezetre, ahogy [itt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36) látható. Ebben az esetben a kérés azonosítóját használjuk korrelációs azonosítóként.
-* Adja hozzá a TelemetryInitializer egyéni implementációját az Operation.Id a fent megadott korrelációs azonosítóra történő beállításához. Íme egy példa: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
+* Adja hozzá a TelemetryInitializer egyéni implementációját az Operation.Id a fent megadott korrelációs azonosítóra történő beállításához. Íme egy példa van: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
 * Adja hozzá az egyéni telemetriainicializálót. Ezt az ApplicationInsights.config fájlban, vagy a kódban látható módon [Itt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Ügyfél-telemetria
@@ -230,7 +230,7 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Servi
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Application Insights-erőforrások létrehozásának automatizálása](app-insights-powershell.md)
 * [Az Azure Diagnostics-diagnosztikák automatizálása](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

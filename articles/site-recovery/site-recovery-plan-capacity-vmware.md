@@ -4,15 +4,15 @@ description: Ez a cikk a kapacitás megtervezése és a méretezési csoport has
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: 2d418282120ee24a5b5492c18593165fba2c6c12
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839415"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258848"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás és méretezés az Azure-bA VMware vész-helyreállítási terv
 
@@ -26,7 +26,7 @@ A replikálási környezetre vonatkozó információk összegyűjtésére futtat
 
 **Összetevő** | **Részletek** |
 --- | --- | ---
-**Replikáció** | **Maximális napi adatváltozási sebesség:** egyetlen folyamatkiszolgáló képes kezelni a napi és a egy védett számítógép csak használhatja egy folyamatkiszolgáló módosítása minősítése 2 TB-ig. 2 TB-os így, a maximális napi adatváltozási gyakoriság, amely a védett gép támogatott.<br/><br/> **Maximális átviteli sebesség:** egy storage-fiókot az Azure-ban A replikált gépek is tartozhatnak. A standard szintű tárfiók képes kezelni másodpercenként 20 000 kérelem legfeljebb, és azt javasoljuk, hogy őrizze meg a bemeneti/kimeneti műveletek száma másodpercenként (IOPS) számát a forrásgép között 20 000. Például ha a forrásgép 5 lemezekkel rendelkezik, és az egyes lemezek állít elő, 120 IOPS (8 KB a mérete) a forrásgépen, majd lesz a lemez IOPS-korlát az 500-as Azure-ban. (A szükséges tárfiókok száma osztva a 20 000 teljes forrásgépen IOPS, megegyezik.)
+**Replikáció** | **Maximális napi változási:** A védett gép csak egy folyamatkiszolgálót, és a egy egyetlen folyamatkiszolgáló képes kezelni a napi módosítási gyakorisága 2 TB-ig. 2 TB-os így, a maximális napi adatváltozási gyakoriság, amely a védett gép támogatott.<br/><br/> **Maximális átviteli sebesség:** Egy storage-fiókot az Azure-ban a replikált gépek is tartozhatnak. A standard szintű tárfiók képes kezelni másodpercenként 20 000 kérelem legfeljebb, és azt javasoljuk, hogy őrizze meg a bemeneti/kimeneti műveletek száma másodpercenként (IOPS) számát a forrásgép között 20 000. Például ha a forrásgép 5 lemezekkel rendelkezik, és az egyes lemezek állít elő, 120 IOPS (8 KB a mérete) a forrásgépen, majd lesz a lemez IOPS-korlát az 500-as Azure-ban. (A szükséges tárfiókok száma osztva a 20 000 teljes forrásgépen IOPS, megegyezik.)
 **Konfigurációs kiszolgáló** | A konfigurációs kiszolgáló tudja kezelni a napi módosítási aránya kapacitást az összes védett gépeken futó számítási feladatok között kell lennie, és ha folyamatosan szeretné replikálni adatokat az Azure Storage elegendő sávszélességet kell.<br/><br/> Ajánlott eljárásként keresse meg a konfigurációs kiszolgáló az ugyanahhoz a hálózathoz és a LAN-szegmens, a védeni kívánt gépeket. Egy másik hálózaton található, de a védeni kívánt gépek kell rendelkezniük a réteg 3 hálózati rá.<br/><br/> A tábla a következő szakaszban található a konfigurációs kiszolgáló méretezési javaslatokat foglalja össze.
 **Folyamatkiszolgáló** | Az első folyamatkiszolgáló a konfigurációs kiszolgálón alapértelmezés szerint telepítve van. A környezet skálázása további folyamatkiszolgálók telepítheti. <br/><br/> A folyamatkiszolgáló replikációs adatokat fogad a védett gépekre, és a gyorsítótárazás, tömörítés és titkosítás segítségével optimalizálja őket. Ezután, elküldi az adatokat az Azure-bA. A folyamat kiszolgáló gépnek rendelkeznie kell a következő feladatok végrehajtására elegendő erőforrással.<br/><br/> A folyamatkiszolgáló a lemezalapú gyorsítótárban használja. 600 GB vagy több külön gyorsítótár lemez használata esetén a hálózati szűk keresztmetszet, illetve leállás tárolt adatok változásának kezelésére.
 
@@ -74,14 +74,14 @@ A kiszolgálók, skálázza módja függ a vertikális vagy horizontális felsk�
 
 Miután már használta a [a Deployment Planner eszköz](site-recovery-deployment-planner.md) kiszámításához szükséges (a kezdeti replikáció és a majd különbözeti) replikációs sávszélesség, szabályozhatja a használatával több lehetőség közül választhat replikálásához használt sávszélesség mennyiségét:
 
-* **A sávszélesség szabályozását**: az Azure-bA replikált VMware-forgalom halad keresztül egy adott folyamatkiszolgáló. Beállíthatja a sávszélesség a folyamatkiszolgáló futtató gépek szabályozását.
-* **Befolyásolhatja a sávszélesség**: befolyásolhatja a sávszélesség-replikációhoz használt néhány beállításkulcsok használatával:
+* **A sávszélesség szabályozását**: Az Azure-bA a VMware-forgalom halad végig egy adott folyamatkiszolgáló. Beállíthatja a sávszélesség a folyamatkiszolgáló futtató gépek szabályozását.
+* **Befolyásolhatja a sávszélesség**: A sávszélesség-replikációhoz használt néhány beállításkulcsok használatával is szabályozhatja:
   * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** beállításazonosítót a lemezen adatátvitelre (kezdeti vagy változásreplikálásra) használt szálak számát adja meg. Minél magasabb a beállítás értéke, annál nagyobb hálózati sávszélességet használ a rendszer a replikáláshoz.
   * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** számát határozza meg az adatátviteli feladat-visszavétel során használt szálak számát.
 
 ### <a name="throttle-bandwidth"></a>Sávszélesség szabályozása
 
-1. Nyissa meg az Azure Backup szolgáltatás MMC beépülő modul a gépen, és a folyamatkiszolgáló. Alapértelmezés szerint a helyi biztonsági másolat érhető el az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
+1. Nyissa meg az Azure Backup szolgáltatás MMC beépülő modul a gépen, és a folyamatkiszolgáló. Alapértelmezés szerint a helyi biztonsági másolat érhető el az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
 2. Kattintson a beépülő modul **Tulajdonságok módosítása** elemére.
 
     ![Képernyőkép az Azure Backup szolgáltatás MMC beépülő modul lehetőséget tulajdonságainak módosítása](./media/site-recovery-vmware-to-azure/throttle1.png)

@@ -1,25 +1,25 @@
 ---
-title: Munkafolyamatok kialakítása e-mailek és mellékletek feldolgozására – Azure Logic Apps | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre automatizált munkafolyamatokat e-mailek és mellékletek feldolgozására az Azure Logic Apps, az Azure Storage és az Azure Functions segítségével
+title: Oktatóanyag – automatizálhatja a feldolgozási e-mailek és mellékletek – Azure Logic Apps |} A Microsoft Docs
+description: Oktatóanyag –, amelyek kezelik az e-maileket és mellékleteket az Azure Logic Apps, az Azure Storage és az Azure Functions automatizált munkafolyamatok létrehozásával
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231968"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140506"
 ---
-# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>E-mailek és mellékletek feldolgozása az Azure Logic Apps használatával
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: Kezelési e-maileket és mellékleteket az Azure Logic Apps automatizálása
 
-Az Azure Logic Apps segítségével automatizálhatja a munkafolyamatait, és integrálhatja az adatokat különböző Azure- és Microsoft-szolgáltatások, más szolgáltatott szoftveralkalmazások (SaaS), valamint a helyszíni rendszerek között. Ez az oktatóanyag bemutatja, hogyan hozhat létre bejövő e-maileket és mellékleteket kezelő [logikai alkalmazásokat](../logic-apps/logic-apps-overview.md). A logikai alkalmazás feldolgozza a tartalmakat és az Azure-tárterületre menti azokat, és értesítést küld a felhasználóknak a tartalmak áttekintésével kapcsolatban. 
+Az Azure Logic Apps segítségével automatizálhatja a munkafolyamatait, és integrálhatja az adatokat különböző Azure- és Microsoft-szolgáltatások, más szolgáltatott szoftveralkalmazások (SaaS), valamint a helyszíni rendszerek között. Ez az oktatóanyag bemutatja, hogyan hozhat létre bejövő e-maileket és mellékleteket kezelő [logikai alkalmazásokat](../logic-apps/logic-apps-overview.md). Ez a logikai alkalmazás elemzi az e-mailek tartalmának, menti a tartalmat az Azure storage, és értesítést küld a tartalom megtekintésével. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -68,7 +68,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
    | **Teljesítmény** | Standard | Ez a beállítás adja meg a támogatott adattípusokat és az adathordozót az adatok tárolásához. Lásd: [A tárfiókok típusai](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
    | **Biztonságos átvitelre van szükség** | Letiltva | Ez a beállítás adja meg a kapcsolatokról érkező kérésekre vonatkozó biztonsági követelményeket. Lásd: [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md). | 
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve | 
-   | **Erőforráscsoport** | LA-Tutorial-RG | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. <p>**Megjegyzés:** Az erőforráscsoportok adott régiókon belül léteznek. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. | 
+   | **Erőforráscsoport** | LA-Tutorial-RG | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. <p>**Megjegyzés:** Egy erőforráscsoport létezik egy adott régión belül. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. | 
    | **Virtuális hálózatok konfigurálása** | Letiltva | Ebben az oktatóanyagban tartsa meg a **Letiltva** beállítást. | 
    |||| 
 
@@ -144,7 +144,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport | 
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). | 
    | **Hely** | USA nyugati régiója | A korábban is használt régió | 
-   | **Tárolás** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a tárfiók a függvényalkalmazást tartalmazza, és nem egyezik a korábban az e-mail-mellékletek számára létrehozott tárfiókkal. | 
+   | **Tárolás** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a tárfiók a függvényalkalmazást tartalmazza, és a korábban létrehozott storage-fiók e-mail-mellékletek eltér. | 
    | **Application Insights** | Ki | Bekapcsolja az [Application Insights](../application-insights/app-insights-overview.md) alkalmazásmonitorozását, de ehhez az oktatóanyaghoz válassza a **kikapcsolva** beállítást. | 
    |||| 
 
@@ -246,11 +246,11 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
 
 ## <a name="monitor-incoming-email"></a>A bejövő e-mailek monitorozása
 
-1. A tervezőben a keresőmezőbe szűrőként írja be az „"when new email arrives” (új e-mail érkezésekor) szöveget. Válassza ki ezt az eseményindítót a saját levelezési szolgáltatójához: **When a new email arrives - <*saját-levelezési-szolgáltató*>**
+1. A tervezőben a keresőmezőbe szűrőként írja be az „"when new email arrives” (új e-mail érkezésekor) szöveget. Válassza ezt az eseményindítót az e-mail-szolgáltatóhoz: **Új e-mail érkezésekor - <*az e-mail-szolgáltatója*>**
 
-   Például:
+   Példa:
 
-   ![Válassza ezt az eseményindítót az e-mail-szolgáltatónál: „Új e-mail érkezésekor”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![Válassza ki ezt az eseményindítót az e-mail-szolgáltatónál: "Új e-mail érkezésekor"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Munkahelyi vagy iskolai Azure-fiókok esetében válassza az Office 365 Outlookot. 
    * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt. 
@@ -274,7 +274,7 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
 
       | Beállítás | Érték | Leírás | 
       | ------- | ----- | ----------- | 
-      | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. | 
+      | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem távolítja el e-mailt a fiókból, csak az új üzeneteket ellenőrzése, és feldolgozza, amelyek megfelelnek a tárgyszűrőnek. | 
       | **Mellékletek is** | Igen | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. | 
       | **Tárgyszűrő** | ```Business Analyst 2 #423501``` | Az e-mail tárgyában keresendő szöveg | 
       |  |  |  | 
@@ -313,7 +313,7 @@ Most adjon meg olyan feltételt, amely csak a csatolmánnyal rendelkező e-maile
 
    2. A középső mezőben tartsa meg az **is equal to** (egyenlő) operátort.
 
-   3. A jobb oldali mezőben írja be a **True** (Igaz) értéket az eseményindító **Has attachment** (Rendelkezik melléklettel) tulajdonság értékének összehasonlításához.
+   3. A jobb oldali mezőbe írja be a **igaz** összehasonlítandó értéket a **rendelkezik melléklettel** tulajdonság értékét a trigger.
 
       ![Feltétel létrehozása](./media/tutorial-process-email-attachments-workflow/finished-condition.png)
 
@@ -328,7 +328,7 @@ Most adjon meg olyan feltételt, amely csak a csatolmánnyal rendelkező e-maile
          "and": [ {
             "equals": [
                "@triggerBody()?['HasAttachment']",
-                 "True"
+                 "true"
             ]
          } ]
       },
@@ -377,7 +377,7 @@ Ez a lépés hozzáadja az előzőleg létrehozott Azure-függvényt a logikai a
 
    ![Művelet hozzáadása az „If true”-n (Ha igaz) belül](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. A keresőmezővel keressen rá az „azure functions” kifejezésre, majd válassza ezt a műveletet: **Choose an Azure function - Azure Functions** (Válasszon Azure-függvényt - Azure Functions).
+2. A keresőmezőbe keresse meg az "azure functions", és válassza a következő műveletet: **Válassza ki az Azure-függvény – az Azure Functions**
 
    ![Művelet kiválasztása a „Válasszon Azure-függvényt” lehetőséghez](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -419,7 +419,7 @@ Ezután adjon hozzá egy műveletet, amely egy blobot hoz létre a tárolóban a
 
 1. Az **If true** (Ha igaz) szakaszban az Azure-függvénye alatt válassza a **Művelet hozzáadása** lehetőséget. 
 
-2. A keresőmezőbe írja be a „create blob” (blob létrehozása) kifejezést, és válassza ezt a műveletet: **Create blob - Azure Blob Storage** (Blob létrehozása - Azure Blob Storage)
+2. A Keresés mezőbe írja be a "blob létrehozása" szűrőként, és válassza a következő műveletet: **Azure Blob Storage blob - létrehozása**
 
    ![Művelet hozzáadása blob létrehozására az e-mail törzse számára](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -518,7 +518,7 @@ Ezután adja hozzá a műveletet, amely az egyes mellékleteket blobként menti 
 
    ![Művelet hozzáadása az iterációhoz](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. A keresőmezőbe írja be a „create blob” (blob létrehozása) kifejezést, és válassza ezt a műveletet: **Create blob - Azure Blob Storage** (Blob létrehozása - Azure Blob Storage)
+2. A Keresés mezőbe írja be a "blob létrehozása" szűrőként, és válassza ki ezt a műveletet: **Azure Blob Storage blob - létrehozása**
 
    ![Művelet hozzáadása blob létrehozásához](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
@@ -572,7 +572,7 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
 
 ## <a name="send-email-notifications"></a>E-mail-értesítések küldése
 
-1. A **Ha igaz** ágban az **e-mail-mellékletekre vonatkozó For each** iterációban válassza a **Művelet hozzáadása** lehetőséget. 
+1. Az a **ha igaz** ágban a **mindegyik e-mail-melléklet számára** ikonjához, válassza a **művelet hozzáadása**. 
 
    ![Művelet hozzáadása a „for each” iteráció alatt](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 

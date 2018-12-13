@@ -1,6 +1,6 @@
 ---
-title: Azure Search szolgáltatás létrehozása a portálon | Microsoft Docs
-description: Azure Search szolgáltatás üzembe helyezése a portálon.
+title: Az Azure Search szolgáltatás létrehozása a portálon – Azure Search
+description: Az Azure Portal Azure Search szolgáltatás üzembe helyezése. Válassza ki az erőforráscsoportok, régiók, és a Termékváltozat vagy tarifacsomag.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713927"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315985"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -58,7 +59,7 @@ Az erőforráscsoport együtt használt Azure-szolgáltatások és -erőforráso
 Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. Fontos, hogy a földrajzi helytől függően az [árak eltérőek lehetnek](https://azure.microsoft.com/pricing/details/search/).
 
 ## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
-[Az Azure Search jelenleg többféle tarifacsomagban is kapható](https://azure.microsoft.com/pricing/details/search/): Ingyenes, Alapszintű vagy Standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
+[Az Azure Search jelenleg többféle tarifacsomagban is kapható érhető el](https://azure.microsoft.com/pricing/details/search/): Ingyenes, alapszintű vagy Standard. Mindegyik szintet saját [kapacitás és korlátozások](search-limits-quotas-capacity.md) jellemzik. Útmutatást talál a [Tarifacsomag vagy SKU kiválasztása](search-sku-tier.md) című cikkben.
 
 Az Ügyfelek éles számítási feladatokhoz általában a Standard tarifacsomagot, kezdésként pedig az Ingyenes szolgáltatást választják.
 

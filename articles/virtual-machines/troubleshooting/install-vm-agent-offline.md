@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419401"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192056"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure virtuálisgép-ügynök telepítése kapcsolat nélküli módban 
 
@@ -36,7 +36,7 @@ Virtuálisgép-ügynök telepítése kapcsolat nélküli módban a következő e
 
 Az alábbi lépések segítségével Virtuálisgép-ügynök telepítése kapcsolat nélküli módban.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1. lépés: A virtuális gép operációsrendszer-lemezét csatolja egy másik virtuális Géphez adatlemezként
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1. lépés: Adatlemezként egy másik virtuális Géphez a virtuális gép operációsrendszer-lemez csatolása
 
 1.  Törölje a virtuális Gépet. Ügyeljen arra, hogy válassza ki a **tartsa a lemezek** lehetőséget a virtuális gép törlésekor.
 
@@ -76,7 +76,7 @@ Az alábbi lépések segítségével Virtuálisgép-ügynök telepítése kapcso
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![A beállításkulcsok exportálása](./media/install-vm-agent-offline/backup-reg.png)
+          ![A beállításkulcsok exportálása](./media/install-vm-agent-offline/backup-reg.png)
 
     2. Szerkessze a beállításjegyzék fájljairól. Minden fájl, módosítsa a bejegyzés értéke **rendszer** való **BROKENSYSTEM** (ahogyan az alábbi képeken látható), és mentse a fájlt. Ne felejtse el a **ImagePath** az aktuális virtuális gép-ügynök. Szükségünk lesz a megfelelő mappába másolja a csatlakoztatott operációsrendszer-lemez. 
 

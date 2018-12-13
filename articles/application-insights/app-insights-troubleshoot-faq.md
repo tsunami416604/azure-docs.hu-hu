@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0e934a629edc41ce09cad810b0d3b9b88e36c6d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996513"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323354"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -26,7 +26,7 @@ ms.locfileid: "52996513"
 
 * [.NET-alkalmazás](app-insights-asp-net-troubleshoot-no-data.md)
 * [Egy már futó alkalmazás](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Az Azure diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Az Azure diagnostics](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](app-insights-java-troubleshoot.md)
 
 *Nincs adat jelenik meg a kiszolgálón lévő*
@@ -118,7 +118,7 @@ A [ügyfél weblapok](app-insights-javascript.md):
 
 Más forrásokból, ha konfigurálja őket:
 
-* [Az Azure diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Az Azure diagnostics](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [A docker-tárolók](app-insights-docker.md)
 * [Az elemzési tábla importálása](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -137,8 +137,8 @@ A további [ASP.NET](app-insights-api-filtering-sampling.md) vagy [Java](app-ins
 
 Áttekintjük az IP-cím (IPv4 vagy IPv6) a webes ügyfél használatával [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Böngésző telemetriai: gyűjtünk a küldő IP-címet.
-* Telemetriát: az Application Insights-modult összegyűjti az ügyfél IP-cím. Nem gyűjtenek, ha `X-Forwarded-For` van beállítva.
+* Böngésző telemetriai adatokat: A küldő IP-cím gyűjtünk.
+* Telemetriát: Az Application Insights-modult összegyűjti az ügyfél IP-cím. Nem gyűjtenek, ha `X-Forwarded-For` van beállítva.
 
 Konfigurálhatja a `ClientIpHeaderTelemetryInitializer` beolvasandó az IP-cím egy másik fejlécet. Egyes rendszerekben, például áthelyezés olyan proxy, és töltse be a terheléselosztó vagy a CDN-t `X-Originating-IP`. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 

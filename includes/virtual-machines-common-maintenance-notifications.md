@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981524"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215900"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>A portálon a karbantartásra ütemezett virtuális gépek megtekintése
 
@@ -29,7 +29,7 @@ Az Azure Portalon, és keresse meg a karbantartásra ütemezett virtuális gépe
 
 4. Válassza ki, és adja hozzá a következő oszlopokat:
 
-   **Karbantartási**: a virtuális gép a karbantartás állapotát jeleníti meg. A lehetséges értékek a következők:
+   **Karbantartási**: A virtuális gép a karbantartás állapotát jeleníti meg. A lehetséges értékek a következők:
       
       | Érték | Leírás |
       |-------|-------------|
@@ -41,15 +41,15 @@ Az Azure Portalon, és keresse meg a karbantartásra ütemezett virtuális gépe
       | - | A virtuális gép nem szerepel egy tervezett karbantartási műveletek. |
       
 
-   **Karbantartás – önkiszolgáló ablak**: jeleníti meg az időtartomány, ha önálló elindítható a karbantartás a virtuális gépeken.
+   **Karbantartás – önkiszolgáló ablak**: Az időtartomány mutatja önálló elindítható a karbantartás a virtuális gépeken.
    
-   **Karbantartás – ütemezett ablak**: jeleníti meg az időtartomány, ha Azure megőrzi a virtuális gép karbantartás elvégzéséhez. 
+   **Karbantartás – ütemezett ablak**: Az időtartomány mutatja Azure megőrzi a virtuális gép karbantartás elvégzéséhez. 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
 
-Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá további címzettek és csatornák a kommunikáció Azure-tevékenységi riasztások létrehozásával. További információkért lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá további címzettek és csatornák a kommunikáció Azure-tevékenységi riasztások létrehozásával. További információkért lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 Mindenképpen állítsa be a **eseménytípus** , **tervezett karbantartás** és **szolgáltatások** , **Virtual Machine Scale Sets** és/vagy **Virtuális gépek**
     

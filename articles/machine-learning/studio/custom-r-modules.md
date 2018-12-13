@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -16,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 5cddc767b4652df6753cc57eb7305b46ec45e19d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098637"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277930"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 
 Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure Machine Learning Studióban, egy egyéni R modult. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-is-a-custom-r-module"></a>Mi az, hogy egy egyéni R modult?
 A **egyéni modult** egy felhasználó által definiált modul, amely feltölti a munkaterülethez, és egy Azure Machine Learning-kísérlet részeként végrehajtott. A **egyéni R modult** van egy egyéni modult, amely végrehajtja a felhasználó által definiált R függvény. **R** a egy programnyelv a statisztikai számítástechnika és a grafikai statisztikusok és az adatelemző szakemberek által algoritmusok megvalósításának széles körben használt. R jelenleg az egyetlen támogatott egyéni modulok, de támogatja a jövőbeli kiadásokban további nyelveket van ütemezve nyelv.
@@ -96,7 +95,7 @@ Ez elérhetővé `CustomAddRows` funkciót az Azure Machine Learning modul, egy 
     </Module>
 
 
-Fontos megjegyezni, hogy értékét a **azonosító** attribútumai a **bemeneti** és **Arg** az XML-fájl elemeinek meg kell egyeznie a paraméter nevét, az R-kód a CustomAddRows.R pontosan fájlt: (*dataset1*, *dataset2*, és *lapozófájl-kapacitás* a példában). Ehhez hasonlóan az értékét a **belépési pont** attribútuma a **nyelvi** elemben pontosan meg kell egyeznie a függvény az R-szkript neve: (*CustomAddRows* a példában) . 
+Fontos megjegyezni, hogy értékét a **azonosító** attribútumai a **bemeneti** és **Arg** az XML-fájl elemeinek meg kell egyeznie a paraméter nevét, az R-kód a CustomAddRows.R pontosan fájlt: (*dataset1*, *dataset2*, és *lapozófájl-kapacitás* a példában). Ehhez hasonlóan az értékét a **belépési pont** attribútuma a **nyelvi** elemben pontosan meg kell egyeznie a függvény az R-szkript neve: (*CustomAddRows* a példában). 
 
 Ezzel szemben a **azonosító** az attribútum a **kimeneti** elem nem felel meg az R-szkript minden változó. Ha egynél több kimeneti szükség, egyszerűen listáját adja vissza a R függvény elhelyezett eredményekkel *ugyanabban a sorrendben* , **kimenetek** elemek deklarált az XML-fájlban.
 
@@ -150,7 +149,7 @@ Minden bemeneti, és előfordulhat, hogy a kimeneti portját egy nem kötelező 
 ### <a name="input-elements"></a>A bemeneti elemek
 A bemeneti portok adatokat adnak át az R függvény és a munkaterület teszi lehetővé. A **adattípusok** , amely a bemeneti portok a következők támogatottak: 
 
-**A DataTable:** ilyen átadott az R egy data.frame funkciót. Tulajdonképpen bármely telepítéstípushoz (például CSV-fájlok vagy ARFF fájlok), amely a Machine Learning, és amely által támogatott kompatibilisek az **DataTable** egy data.frame automatikusan alakulnak. 
+**A DataTable:** Ez a típus, egy data.frame átadott az R-függvény. Tulajdonképpen bármely telepítéstípushoz (például CSV-fájlok vagy ARFF fájlok), amely a Machine Learning, és amely által támogatott kompatibilisek az **DataTable** egy data.frame automatikusan alakulnak. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -159,7 +158,7 @@ A bemeneti portok adatokat adnak át az R függvény és a munkaterület teszi l
 A **azonosító** kapcsolódó attribútum **DataTable** bemeneti portját egyedi értékkel kell rendelkeznie, és ezt az értéket meg kell egyeznie a megfelelő nevű paraméter az R függvényben.
 Nem kötelező **DataTable** értékkel rendelkezik, amely nem ad át egy kísérletet a bemeneti portok **NULL** az R függvény és a választható zip figyelmen kívül hagyja a portokat, ha a bemenet nem kapcsolódik. A **isOptional** attribútum megadása nem kötelező, mind a **DataTable** és **Zip** típusait, és *hamis* alapértelmezés szerint.
 
-**Zip:** egyéni modulok elfogadhat bemenetként egy zip-fájlt. A bemenet a R munkakönyvtárba a függvény van csomagolva.
+**Zip:** Egyéni modulok elfogadhatja a zip-fájlt bemenetként. A bemenet a R munkakönyvtárba a függvény van csomagolva.
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -177,7 +176,7 @@ Az egyéni R-modulok egy Zip-port azonosítója nem rendelkezik a paramétereket
 * Értékét a **isOptional** attribútuma a **bemeneti** elem nem kötelező (és *false (hamis)* alapesetben, ha nincs megadva); de ha a célgyűjtemény meg van adva, kelllennie*igaz* vagy *hamis*.
 
 ### <a name="output-elements"></a>Kimeneti elemek
-**Standard kimeneti portok:** kimeneti portok az R-függvény, amely ezután felhasználhatók a későbbi modulok, a visszaadott értékeket vannak leképezve. *A DataTable* támogatott jelenleg csak a standard kimeneti port típusa. (Támogatása *tanulók* és *alakítja át az* kapja.) A *DataTable* kimeneti számít, ha:
+**Standard kimeneti portok:** Az R-függvény, amely ezután felhasználhatók a későbbi modulok a kimeneti portok visszatérési értékek vannak leképezve. *A DataTable* támogatott jelenleg csak a standard kimeneti port típusa. (Támogatása *tanulók* és *alakítja át az* kapja.) A *DataTable* kimeneti számít, ha:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -215,7 +214,7 @@ Például, ha módosítani szeretné a **egyéni sorok hozzáadása** modul kime
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Vizualizáció kimeneti:** azt is megadhatja a kimeneti portra típusú *Vizualizáció*, R grafikus eszköz és a konzol kimenete a kimenet megjeleníti. Ezt a portot nem része az R függvény kimenete, és nem zavarja a más típusú kimeneti port a sorrendben. Egy Vizualizáció portot ad hozzá az egyéni modulok, adjon hozzá egy **kimeneti** elem értéke az *Vizualizáció* a annak **típus** attribútum:
+**Vizualizáció a kimenetre:** Azt is megadhatja a kimeneti portra típusú *Vizualizáció*, amely R grafikus eszköz és a konzol kimenete a kimenet megjelenítése. Ezt a portot nem része az R függvény kimenete, és nem zavarja a más típusú kimeneti port a sorrendben. Egy Vizualizáció portot ad hozzá az egyéni modulok, adjon hozzá egy **kimeneti** elem értéke az *Vizualizáció* a annak **típus** attribútum:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -372,6 +371,6 @@ A végrehajtási környezet az R-szkript az R, ugyanazon verzióját használja,
 
 **Korlátozások a végrehajtási környezet** tartalmazza:
 
-* Nem állandó fájlrendszer: az egyéni modult futtatásakor írt fájlok nem rögzíti a ugyanazon modul több futtatás során.
+* Nem állandó fájlrendszer: Az egyéni modult futtatásakor írt fájlok a ugyanazon modul több futtatás során nem rögzíti.
 * Nincs hálózati hozzáférés
 

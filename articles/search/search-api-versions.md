@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search API-verziók |} Microsoft Docs
-description: Az Azure Search REST API-k és az ügyféloldali kódtára a .NET SDK házirendje.
+title: A .NET SDK-t és a REST API-k – Azure Search API-verziók felügyeletét
+description: Verzió szabályzat az Azure Search REST API-k és az ügyféloldali kódtára a .NET SDK-ban.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,53 +9,54 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: brjohnst
-ms.openlocfilehash: 8d1e30b0bca3c63fe4528c06e5389d8cbe27a7e6
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.custom: seodec2018
+ms.openlocfilehash: 0cf5cac341cb36029c09ee2da5477323fac79cf5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113605"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311643"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
-Az Azure Search rendszeresen bevezeti szolgáltatás-frissítéseket. Néha, de nem minden esetben ezek a frissítések megkövetelése az előző verziókkal való kompatibilitás miatt API egy új verziója. Új verzió közzététele lehetővé teszi szabályozhatja, mikor és hogyan integrálja a keresési szolgáltatás frissítéseiről a kódban.
+Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.
 
-Szabály az Azure Search csapat új verzió csak akkor, ha szükséges, közzéteszi, azt is tartalmaz, amely néhány annak érdekében, hogy a kódot egy új API-verziót használja a frissítés óta. Új verzióra van szükség, csak akkor, ha néhány szempontja, hogy az API-t úgy, hogy megszakítja az előző verziókkal való kompatibilitás megváltozott. Ezek a változások akkor fordulhat elő, meglévő funkciók javításai, vagy módosítsa a meglévő API felületet biztosít új funkciókat.
+Szabály az Azure Search-csapat új verzió csak akkor szükséges, közzéteszi, mivel szükség lehet az egyes annak érdekében, hogy a kód egy új API-verzió használatához frissítse. Új verzió csak akkor, ha bizonyos elemeit az API megváltozott úgy, hogy megszakítja a visszamenőleges kompatibilitás érdekében van szükség. Az ilyen változások javításai, a meglévő funkciók miatt, vagy módosítsa a meglévő API-felület funkciói miatt fordulhat elő.
 
-Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi a [szemantikai versioning](http://semver.org/) szabályok, ami azt jelenti, hogy ugyanolyan verziójú három részből áll: a fő alverziószám és buildszáma (például 1.1.0-ás). Törés az előző verziókkal való kompatibilitás módosítások csak az megjelenik egy új fő verziója az SDK-t. Szolgáltatás-frissítéseket nem törhető növeli a alverzió, és hibajavítások csak növeli a verzió buildszámával.
+Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi a [Szemantikus verziószámozást](http://semver.org/) szabályt, ami azt jelenti, hogy a verzió három részből áll: nagyobb, kisebb és buildszámát (például az 1.1.0-s). Egy új fő SDK verziója csak a módosításokat, amelyek törés az előző verziókkal való kompatibilitás. A nem törhető funkciófrissítések növeli az alverzió, és hibajavítások csak növeli a build-verziószáma.
 
 > [!NOTE]
-> Az Azure Search szolgáltatáspéldány több REST API-verziók, többek között a legújabb egy támogatja. Továbbra is a verzióját használja, ha már nem a legújabb egyet, de azt javasoljuk, hogy az áttelepített a kódot a legújabb verzióját használja. A REST API használata esetén minden kérelemben keresztül az api-version paramétert meg kell adnia az API-verzió. A .NET SDK használatával, az SDK-t használ verziója határozza meg a megfelelő REST API-verzióra. Ha egy régebbi SDK használ, továbbra is futtassa ezt a kódot módosítások nélküli, még akkor is, ha a szolgáltatás frissítése újabb API-verzió támogatja.
+> Az Azure Search-szolgáltatáspéldányhoz több REST API-verziók, többek között a legújabb buildszám támogatja. Továbbra is verzióját használja, amikor már nem a legújabb buildszám, de azt javasoljuk, hogy a legújabb verzió használatához kódok migrálása. A REST API használata esetén az api-version paraméter használatával minden kérésben meg kell adnia az API-verziót. A .NET SDK használatával, az SDK-t használ a verzióját határozza meg a megfelelő REST API-verzió. Ha egy régebbi SDK-t használja, továbbra is futtassa, hogy a kód módosítása nélkül, akkor is, ha a szolgáltatás frissítése egy újabb API-verzió támogatja.
 
-## <a name="snapshot-of-current-versions"></a>Aktuális verzió pillanatképe
-Alább van pillanatképet az összes aktuális verziója programozási felületek Azure search.
+## <a name="snapshot-of-current-versions"></a>Aktuális verziók pillanatképe
+Alább van az aktuális verziók az összes pillanatképet alkalmazásprogramozási felület az Azure Search.
 
 | Adapterek | Legutóbbi főverzió | status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |5.0 |Általában akkor érhető el, 2018. áprilisi kiadás dátuma |
-| [.NET SDK minta](https://aka.ms/search-sdk-preview) |4.0.1-Preview |Megtekintés, előfordulhat, hogy 2017 kiadott |
-| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Általánosan elérhető |
-| [Szolgáltatás REST API 2017 11-11 – előzetes verzió](search-api-2017-11-11-preview.md) |2017. 11. 11. dátumú előzetes verzió |Előzetes verzió |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Általánosan elérhető |
-| [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Általánosan elérhető |
+| [.NET SDK](https://aka.ms/search-sdk) |5.0 |Általánosan elérhető, kiadás dátuma: 2018. április |
+| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |4.0.1-Preview |Előzetes, kiadás dátuma: 2017. május |
+| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Mindenki számára elérhető |
+| [Szolgáltatási REST API 2017-11-11-Preview](search-api-2017-11-11-preview.md) |2017. 11. 11. dátumú előzetes verzió |Előzetes verzió |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Mindenki számára elérhető |
+| [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Mindenki számára elérhető |
 
-A REST API-k esetében, beleértve a `api-version` minden egyes hívásakor szükség. Használatával `api-version` segítségével egyszerűen egy adott verziójához, például egy előnézeti API. A következő példa bemutatja, hogyan a `api-version` paraméter meg van adva:
+A REST API-k, többek között a `api-version` minden hívás szükség. Használatával `api-version` megkönnyíti az egy adott, például az API előzetes verziójához. Az alábbi példa bemutatja, hogyan a `api-version` paraméter meg van adva:
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
 
 > [!NOTE]
-> Bár egyes kérelem egy `api-version`, azt javasoljuk, hogy ugyanolyan verziójú API-kérelmek használjon. Ez akkor különösen igaz olyan esetben, ha új API-verziók bevezetni attribútumot, vagy nem ismeri fel a korábbi verziók műveletek. API-verziók keverése rendelkezhet nem várt következményekkel és el kell kerülni.
+> Bár az egyes kérések rendelkezik egy `api-version`, azt javasoljuk, hogy minden API-kérések ugyanazt a verziót használjon. Ez akkor különösen igaz olyankor, amikor új API-verziókban bevezetni, attribútumok vagy nem ismeri fel a korábbi verziók műveleteket. API-verziók keverése rendelkezhet nem kívánt következményekkel és el kell kerülni.
 >
-> A szolgáltatás REST API és a felügyeleti REST API-t is rendszerverzióval ellátott egymástól függetlenül. A verziószámokra bármilyen hasonlóság előfordulhatnak.
+> A szolgáltatás REST API-t és a felügyeleti REST API-t is rendszerverzióval ellátott egymástól. A verziószámok bármilyen hasonlóság előfordulhatnak.
 
-Általánosan elérhető (vagy GA) API-k éles környezetben használható, és az Azure szolgáltatásiszint-szerződések vonatkoznak. Az előzetes verziókban kísérleti funkciók, amelyek nem mindig áttelepítése az egy GA verziójával rendelkezik. **Erősen ajánlott kerülheti el a minta API-k éles alkalmazásokban.**
+Általánosan elérhető (vagy a GA) API-k éles környezetben is használható, valamint az Azure szolgáltatásiszint-szerződések vonatkozik. Előzetes verziók esetében az általánosan elérhető verzióra nem mindig át kísérleti jellegű funkciókhoz. **Erősen ajánlott éles üzemi alkalmazások pedig az API-k előzetes verziójával elkerülése érdekében.**
 
-## <a name="about-preview-and-generally-available-versions"></a>Előzetes és általánosan elérhető verziójának kapcsolatos
-Az Azure Search mindig előzetes kiadását a REST API-n keresztül kísérleti funkciók először, majd előzetes verziói a .NET SDK használatával.
+## <a name="about-preview-and-generally-available-versions"></a>Előzetes és általánosan elérhető verziókról
+Az Azure Search mindig előre felszabadítja a REST API-n keresztül kísérleti funkciók először majd keresztül a .NET SDK előzetes verzióit.
 
-Előzetes verziójú funkciók érhetők el a teszteléshez és a kísérletezés, azzal a céllal, a szolgáltatás tervezési és megvalósítási visszajelzéseket. Emiatt az előzetes verziójú funkciók változnak az idők, valószínűleg az, hogy az törés visszamenőleges kompatibilitás is. Ez a ellentétben stabil és valószínű, hogy módosítsa kivételével kis visszamenőlegesen kompatibilis javítások és továbbfejlesztett funkciók egy GA verziójával. Emellett előzetes verziójú funkciók nem mindig így GA kiadás be.
+Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezés a cél az, hogy a funkció megtervezéséhez és implementációjához visszajelzéseket. Ezért az előzetes verziójú funkciók idővel valószínűleg az, hogy a visszamenőleges kompatibilitás felosztása módosíthatja. Ez a szakembereket egy GA verzióban funkciók, amelyek stabil és nem valószínű, hogy kisebb visszamenőlegesen kompatibilis javításokat és fejlesztések kivételével módosítása. Emellett előzetes verziójú funkciók nem mindig teszi azt megismerheti a GA kiadás be.
 
-Ezen okok miatt javasoljuk írása, amely egy függőséget az előzetes verziókban az éles kódban ellen. Ha egy régebbi verziója előzetes verzió használata esetén ajánlott az áttelepítés általánosan elérhető (GA) verziójára.
+Ebből kifolyólag javasoljuk, hogy a függőséget vesz fel az előzetes verziókat éles kód írása ellen. Ha régebbi előzetes verzióját használja, azt javasoljuk az általánosan elérhető (GA) verzió-ba való migrálás.
 
-A .NET SDK-ban: található kód áttelepítési útmutató a [frissítése a .NET SDK](search-dotnet-sdk-migration.md).
+A .NET SDK-ban: Kód áttelepítési útmutató található [frissítése a .NET SDK](search-dotnet-sdk-migration.md).
 
-Általános rendelkezésre állási azt jelenti, hogy Azure Search most a szolgáltatásiszint-szerződéssel (SLA) alapján. A szolgáltatásiszint-szerződést található [Azure keresési szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Általános rendelkezésre állás azt jelenti, hogy Azure Search mostantól a szolgáltatásiszint-szerződés (SLA) alapján. Az SLA található [Azure Search szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

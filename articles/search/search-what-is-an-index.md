@@ -1,6 +1,6 @@
 ---
-title: Indexek az Azure Search szolgáltatásban | Microsoft Docs
-description: Megismerheti az Azure Search szolgáltatásbeli indexek alapfogalmait és használatát.
+title: Index definíciója és fogalmak – Azure Search
+description: Az Azure Search, és hogyan használhatók a indexek alapfogalmait bemutatása.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: e1ff28434dab4e63e10d6b14eb671260650d4ada
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793402"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317066"
 ---
 # <a name="indexes-in-azure-search"></a>Indexek az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
@@ -35,7 +36,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 | Típus | Leírás |
 | --- | --- |
 | *Edm.String* |A teljes szöveges keresés (például szóhatároló, származtató) érdekében lehetőség van a szöveg tokenekre bontására. |
-| *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a karakterlánclista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
+| *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
 | *Edm.Boolean* |Igaz/hamis értékeket tartalmaz. |
 | *Edm.Int32* |32 bites egész számok. |
 | *Edm.Int64* |64 bites egész számok. |
@@ -48,7 +49,7 @@ Részletesebb információkat az Azure Search által [támogatott adattípusokr�
 ### <a name="field-attributes"></a>Mezőattribútumok
 | Attribútum | Leírás |
 | --- | --- |
-| *Kulcs* |Az egyes dokumentumok egyedi azonosítóját megadó karakterlánc, amelyet a dokumentumok megkeresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
+| *Kulcs* |Az egyes dokumentumok egyedi azonosítóját megadó sztring, amelyet a dokumentumok megkeresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
 | *Lekérhető* |Megadja, hogy az adott mező visszaadható-e egy keresési eredményben. |
 | *Szűrhető* |Lehetővé teszi az adott mező szűrőlekérdezésekben történő használatát. |
 | *Rendezhető* |Lehetővé teszi egy lekérdezés számára, hogy az adott mezőt használja egy rendezés alapjaként. |

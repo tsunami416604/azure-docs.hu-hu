@@ -1,7 +1,7 @@
 ---
-title: A modellek üzembe helyezési helyének kiválasztása
+title: A modellek webszolgáltatásként üzembe helyezése
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg a különböző lehetőségeket a modellek üzembe helyezhető éles környezetben az Azure Machine Learning szolgáltatás használatával.
+description: 'Ismerje meg, hogyan és hol, beleértve az Azure Machine Learning szolgáltatás modellek üzembe helyezése: Az Azure Container Instances, az Azure Kubernetes Service, Azure IoT Edge és Field-programmable gate arrays.'
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 53f3c61a98bc08b453ae894abaa512b94044bcf7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e7840bb3ac6449009b843bb74cc19b960b492205
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100701"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310147"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -30,6 +30,8 @@ A következő számítási célnak modellek helyezhető üzembe:
 | [Az Azure Kubernetes Service (AKS)](#aks) | Webszolgáltatás | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
 | [Azure IoT Edge](#iotedge) | IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,9 +55,9 @@ A modell üzembe helyezését a minden számítási célokhoz hasonlít:
 
     * Amikor **webszolgáltatásként üzembe helyezése**, három üzembe helyezési lehetőség áll rendelkezésre:
 
-        * [üzembe helyezése](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Ez a módszer használata esetén nem kell regisztrálja a modellt, vagy a kép létrehozásához. Azonban Ön nem határozhatja meg a modell vagy a kép neve vagy hozzárendelt címkék és leírások.
-        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Ez a módszer használata esetén nem kell hozzon létre egy rendszerképet. De nem rendelkezik a létrehozott lemezkép neve felett.
-        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): regisztrálja a modellt, és ez a módszer használata előtt hozzon létre egy rendszerképet.
+        * [Üzembe helyezése](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Ha ezzel a módszerrel nem kell regisztrálja a modellt, vagy a kép létrehozásához. Azonban Ön nem határozhatja meg a modell vagy a kép neve vagy hozzárendelt címkék és leírások.
+        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Ha ezzel a módszerrel nem kell hozzon létre egy rendszerképet. De nem rendelkezik a létrehozott lemezkép neve felett.
+        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): Regisztrálja a modellt, és ez a módszer használata előtt hozzon létre egy rendszerképet.
 
         A példák a jelen dokumentum-használat `deploy_from_image`.
 
@@ -78,7 +80,7 @@ model = Model.register(model_path = "model.pkl",
 > [!NOTE]
 > A példa bemutatja, hogy egy modell pickle-fájlként tárolja, amíg is használt ONNX-modellekkel. ONNX-modellekkel használatával kapcsolatos további információkért lásd: a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
 
-További információkért lásd: a dokumentáció a a [Model class](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+További információkért lásd: a dokumentáció a a [Model class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
 ## <a id="configureimage"></a> Egy rendszerkép-konfiguráció létrehozása
 
@@ -102,7 +104,7 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
 
 Ebben a konfigurációban egy `score.py` át fájlt kéri, hogy a modell. Ez a fájl két függvényt tartalmazza:
 
-* `init()`: Ez a függvény általában a modell tölt be egy globális objektum. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
+* `init()`: Általában ez a függvény a modellben tölt be egy globális objektum. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
 
 * `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. A futtatás bemenetei és kimenetei általában JSON-fájlokat használnak a szerializáláshoz vagy a deszerializáláshoz, de más formátumokat is támogatnak.
 
@@ -125,11 +127,9 @@ image = ContainerImage.create(name = "myimage",
                               )
 ```
 
-**Becsült időtartam**: körülbelül 3 perc alatt.
+**Becsült időtartam**: Körülbelül 3 perc.
 
 Képek egyben a rendszerverzióval ellátott ugyanazzal a névvel több lemezképet is regisztrálhatja. Például az első képen regisztrált `myimage` hozzá van rendelve egy azonosítója `myimage:1`. A következő alkalommal regisztrál egy képen `myimage`, az azonosítója, az új lemezkép `myimage:2`.
-
-Lemezkép létrehozása körülbelül 5 percet vesz igénybe.
 
 További információkért lásd: a dokumentáció a [ContainerImage osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
@@ -147,7 +147,7 @@ Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak 
 A modellek üzembe helyezéséhez a egy webszolgáltatás, ha egy vagy több, a következő feltételek használata Azure Container Instances szolgáltatásban teljesül:
 
 - Gyors üzembe helyezése és a modell érvényesítése kell. ACI üzembe helyezés befejeződött, kevesebb mint 5 perc alatt.
-- A tesztelt egy olyan modell, fejlesztés alatt áll. ACI-előfizetésenként 20 tárolócsoportok üzembe teszi lehetővé. További információkért lásd: a [kvóták és régiók rendelkezésre állása az Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentumot.
+- A tesztelt egy olyan modell, fejlesztés alatt áll. Kvóta és régióban rendelkezésre állás az ACI, olvassa el a [kvóták és régiók rendelkezésre állása az Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentumot.
 
 Azure Container Instancesben való üzembe helyezéséhez használja az alábbi lépéseket:
 
@@ -159,7 +159,7 @@ Azure Container Instancesben való üzembe helyezéséhez használja az alábbi 
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
 
-    **Becsült időtartam**: körülbelül 3 perc alatt.
+    **Becsült időtartam**: Körülbelül 3 perc.
 
     > [!TIP]
     > Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
@@ -204,7 +204,7 @@ Azure Kubernetes Service-ben való üzembe helyezéséhez használja az alábbi 
     print(aks_target.provisioning_errors)
     ```
 
-    **Becsült időtartam**: körülbelül 20 percet.
+    **Becsült időtartam**: Körülbelül 20 percet.
 
     > [!TIP]
     > Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. *, használhatja a rendszerképének üzembe helyezéséhez. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő fürthöz a munkaterülethez mutat be:
@@ -278,8 +278,8 @@ Ha a hitelesítő adatokat, kövesse a [üzembe helyezése az Azure IoT Edge-mod
 > [!NOTE]
 > Ha még nem ismeri az Azure IoT, a szolgáltatás első lépésekről lásd: a következő dokumentumokban talál:
 >
-> * [Gyors útmutató: Linux rendszerű eszközre telepítéséhez az első IoT Edge-modul](../../iot-edge/quickstart-linux.md)
-> * [Rövid útmutató: Az első IoT Edge-modul a Windows-eszköz üzembe helyezése](../../iot-edge/quickstart.md)
+> * [Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön](../../iot-edge/quickstart-linux.md)
+> * [Gyors útmutató: Helyezze üzembe az első IoT Edge-modul a Windows-eszköz](../../iot-edge/quickstart.md)
 
 ## <a name="testing-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
 

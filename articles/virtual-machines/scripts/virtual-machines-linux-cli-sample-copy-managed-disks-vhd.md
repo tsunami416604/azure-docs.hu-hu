@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Felügyelt lemezek mögöttes VHD-fájljának exportálása/másolása Storage-fiókba | Microsoft Docs
-description: Azure CLI-példaszkript – Felügyelt lemezek mögöttes VHD-fájljának exportálása/másolása Storage-fiókba
+title: Az Azure CLI minta – storage-fiók egy felügyelt lemezek másolása
+description: Az Azure CLI minta - exportálási vagy egy felügyelt lemezek másolása egy ároláshoz fiókot.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: c5f06a8c8fb707a2bf0451f8e9ed391ac0c5bad9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: HT
+ms.custom: mvc,seodec18
+ms.openlocfilehash: 4ee8b9dbb22e4530beb81bea9735867ecf21a1d4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045242"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183030"
 ---
-# <a name="exportcopy-the-underlying-vhd-of-a-managed-disk-to-a-storage-account-with-cli"></a>Felügyelt lemez mögöttes VHD-fájljának exportálása/másolása egy tárfiókba a parancssori felület használatával
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Exportálása/másolása egy felügyelt lemezt egy storage-fiókba az Azure CLI használatával
 
 Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről regionális terjeszkedéshez. 
 

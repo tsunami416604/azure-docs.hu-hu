@@ -1,5 +1,5 @@
 ---
-title: Útmutatás az Azure-webalkalmazások üzembe helyezése a sablonok használatával |} A Microsoft Docs
+title: Útmutató a sablonok – az Azure App Service-alkalmazások telepítése |} A Microsoft Docs
 description: Javaslatok webalkalmazások telepítése Azure Resource Manager-sablonok létrehozására.
 services: app-service
 documentationcenter: app-service
@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.custom: seodec18
+ms.openlocfilehash: 523574f49673ee961665136d90f04183e7c1a679
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927672"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277760"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutatás a webes alkalmazások üzembe helyezése Azure Resource Manager-sablonok használatával
 
@@ -87,7 +88,7 @@ Az alábbi példa bemutatja egy sablon részét. A konfiguráció a kapcsolati k
 }
 ```
 
-A fenti kódot használó alkalmazást kész minta: [sablon: egyszerű Umbraco-webalkalmazás összeállítása](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+A fenti kódot használó alkalmazást kész minta: [sablon: Egyszerű Umbraco-webalkalmazás összeállítása](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy-hibákkal kapcsolatos információk keresése
 

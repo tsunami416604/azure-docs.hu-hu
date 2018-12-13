@@ -1,5 +1,5 @@
 ---
-title: A méretezési csoport az Azure Time Series Insights-környezet tervezése |} A Microsoft Docs
+title: Terv az Azure Time Series Insights - csomag az Azure Time Series Insights-környezet a méretezési csoport |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan ajánlott eljárások követése az Azure Time Series Insights környezetekben, beleértve a tárolási kapacitás, az adatmegőrzés, betöltési kapacitás, figyelés és üzleti vészhelyreállítási (bcdr funkciók) tervezése során.
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422558"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273765"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Az Azure Time Series Insights-környezet megtervezése
 

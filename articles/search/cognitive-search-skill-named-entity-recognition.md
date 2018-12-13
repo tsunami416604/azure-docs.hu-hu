@@ -1,5 +1,5 @@
 ---
-title: Megnevezett entitások felismerése cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+title: Megnevezett entitások felismerése cognitive search szakértelem – Azure Search
 description: Nevesített entitások személy, helyen és szervezeten kigyűjtése a szöveg Azure Search-kognitív keresés folyamatban.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442029"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313989"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitások felismerése cognitive szakértelem
 
@@ -23,8 +24,10 @@ A **megnevezett entitások felismerése** szakértelem nevesített entitásokhoz
 
 > [!NOTE]
 > <ul>
-> <li>A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. </li>
-> <li> Nevesített entitások felismerése szakértelem "elavult" minősülnek, és nem hivatalosan támogatja től február 15., a 2019. Kövesse a felsorolt javaslatokra <a href="cognitive-search-skill-deprecated.md">elavult értesítés keresése kognitív képességekkel</a> migrálása a támogatott műveleteket lap</li>
+> <li>
+> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.>
+> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).</li>
+> <li> Nevesített entitások felismerése szakértelem "elavult" minősülnek, és nem hivatalosan támogatja től február 15., a 2019. Kövesse a felsorolt javaslatokra <a href="cognitive-search-skill-deprecated.md">elavult kognitív keresés</a> migrálása a támogatott műveleteket lap</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill

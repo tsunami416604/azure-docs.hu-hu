@@ -2,8 +2,8 @@
 title: Az Azure Machine Learning Modellkezelés webes szolgáltatás használata során |} A Microsoft Docs
 description: Ez a dokumentum ismerteti a lépéseket és fogalmak vesz részt az Azure Machine Learning modellkezelés használatával üzembe helyezett webszolgáltatások felhasználása.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbd36e5389208b21704f1749beee016e30cc4ec5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950628"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253850"
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
 
@@ -60,7 +60,7 @@ A webes kulcs lekéréséhez használja a következő parancsot:
 ```
 az ml service keys realtime -i <web service id>
 ```
-HTTP-kérés létrehozásakor használja a kulcsot az engedélyezési fejléc: "Engedélyezés": "tulajdonosi <key>"
+HTTP-kérelem létrehozásakor az engedélyeztetési fejléc található kulcs használatát: "Engedélyezés": "Tulajdonosi <key>"
 
 ## <a name="get-the-service-swagger-description"></a>A Swagger szolgáltatásleírás lekérése
 Ha a szolgáltatás API-séma van megadva, a szolgáltatási végpont teszi ki a Swagger-dokumentumok ```http://<ip>/api/v1/service/<service name>/swagger.json```. A Swagger-dokumentumok automatikus létrehozásához a szolgáltatás ügyfele, és vizsgálja meg a várt bemeneti adatokat és egyéb adatait a szolgáltatás használható.

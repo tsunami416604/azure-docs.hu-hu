@@ -11,14 +11,14 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5fc0e00d9c4404a1c6a757c354a9c7116dfeffa7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8da2309a16c07440158c1de324eea1fa05b1c98b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094015"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189068"
 ---
-# <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
+# <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
 A [nyissa meg a Neurális hálózat Exchange](https://onnx.ai) (ONNX) formátuma nyílt szabvány, amely a machine learning-modellek jelző. ONNX által támogatott egy [partnerek közösségi](https://onnx.ai/supported-tools), beleértve a Microsoft, akik kompatibilis keretrendszerek és eszközök létrehozása. Microsoft elkötelezett a nyílt forráskódú és együttműködésre AI, így az adatelemzők és fejlesztők is:
 

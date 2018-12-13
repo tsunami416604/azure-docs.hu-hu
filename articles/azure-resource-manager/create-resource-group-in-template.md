@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 12/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 87f81c6b6568cd63eaf10840043511669d634062
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b92790161ae9ad9b56400429677ab0fdd6d552e9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079327"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316233"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Erőforráscsoportok létrehozása az Azure Resource Manager-sablonok
 
@@ -24,7 +24,7 @@ Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon m
 
 Az adott erőforráscsoporton ugyanazt a sablont az erőforrások is telepítheti.
 
-Ez a cikk az Azure CLI és PowerShell használatával a sablonok üzembe helyezése.
+Ez a cikk az Azure CLI és PowerShell használatával a sablonok üzembe helyezése. A sablonok üzembe helyezése, mert felületén telepíti az erőforráscsoport, a nem Azure-előfizetést a portálon nem használható.
 
 ## <a name="create-empty-resource-group"></a>Üres erőforráscsoport létrehozása
 

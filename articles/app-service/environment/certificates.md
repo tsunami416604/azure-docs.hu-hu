@@ -1,5 +1,5 @@
 ---
-title: Tanúsítványok és az Azure App Service-környezet
+title: Tanúsítványok és az App Service-környezet – Azure
 description: Az ASE-tanúsítványokkal kapcsolatos számos témakörök ismertetik.
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167983"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271895"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és az App Service-környezet 
 
@@ -32,8 +33,8 @@ Ha külső ASE környezetben használja, majd az alkalmazások elérésekor: [al
 
 Tanúsítványok konfigurálása az ILB ASE esetében két lehetőség van.  Alapértelmezett helyettesítő tanúsítvány beállítása az ILB ASE környezetnek, vagy állítsa be a tanúsítványok az egyes webalkalmazások az ASE-t.  A választott, függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
 
-- **Tulajdonos:** ezt az attribútumot állítsa *. [ a gyökér--Ön-gyökértartománya] ILB ASE környezetben helyettesítő tanúsítványt. Ha az alkalmazáshoz tartozó tanúsítványt létrehozni, azt [alkalmazásnév] kell lennie. [a gyökér--Ön-gyökértartománya]
-- **Tulajdonos alternatív neve:** ennek az attribútumnak tartalmaznia kell mindkét *. [ a gyökér--Ön-gyökértartománya] és a *.scm. [a gyökér--Ön-gyökértartománya] esetében az ILB ASE környezetben helyettesítő tanúsítványt. Ha az alkalmazáshoz tartozó tanúsítványt létrehozni, azt [alkalmazásnév] kell lennie. [a gyökér--Ön-gyökértartománya] és [alkalmazásnév] .scm. [a gyökér--Ön-gyökértartománya].
+- **Tulajdonos:** Ezt az attribútumot állítsa *. [a gyökér--Ön-gyökértartománya] ILB ASE környezetben helyettesítő tanúsítványt. Ha az alkalmazáshoz tartozó tanúsítványt létrehozni, azt [alkalmazásnév] kell lennie. [a gyökér--Ön-gyökértartománya]
+- **Tulajdonos alternatív neve:** Ennek az attribútumnak tartalmaznia kell mindkét *. [a gyökér--Ön-gyökértartománya] és a *.scm. [a gyökér--Ön-gyökértartománya] esetében az ILB ASE környezetben helyettesítő tanúsítványt. Ha az alkalmazáshoz tartozó tanúsítványt létrehozni, azt [alkalmazásnév] kell lennie. [a gyökér--Ön-gyökértartománya] és [alkalmazásnév] .scm. [a gyökér--Ön-gyökértartománya].
 
 Egy harmadik változó, amely tartalmazza az összes az egyedi alkalmazásnevek a tulajdonos alternatív nevének helyettesítő hivatkozás használata helyett a tanúsítvány egy ILB ASE tanúsítvány is létrehozhat. A probléma merült fel ez a módszer, hogy az alkalmazásokat, akkor az ASE helyeznek nevei meghozni ismernie kell, vagy az ILB ASE tanúsítvány folyamatosan frissíteni kell.
 

@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure Web Apps szolgáltatásban
-description: Ismerje meg az ajánlott eljárásokról és a csomópont-alkalmazásokhoz az Azure Web Apps hibaelhárítási lépéseket.
+title: Ajánlott eljárások és hibaelhárítás a node.js-szel – Azure App Service-ben
+description: Ismerje meg az ajánlott eljárások és hibaelhárítási lépések csomópont-alkalmazásokhoz az Azure App Service-ben.
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 6918d216be11763a34d7738c616e917a2db01ade
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961424"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315723"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure Web Apps szolgáltatásban
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
 Ebből a cikkből megtudhatja, ajánlott eljárások és hibaelhárítási lépések [node-alkalmazások](app-service-web-get-started-nodejs.md) futtatása az Azure Web Apps (a [iisnode](https://github.com/azure/iisnode)).
 
@@ -282,6 +283,6 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure App Service node.js-alk
 * [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Az Azure App Service Web Apps: NODE.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js fejlesztői központ](../nodejs-use-node-modules-azure-apps.md)
 * [A Szupertitkos Kudu hibakereső konzol felfedezése](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

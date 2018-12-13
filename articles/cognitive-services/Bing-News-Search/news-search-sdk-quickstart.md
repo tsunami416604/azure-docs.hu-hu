@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Bing News Search SDK, C#'
+title: 'Gyors útmutató: Hajtsa végre a hírkeresési – a Bing News Search SDK számáraC#'
 titleSuffix: Azure Cognitive Services
-description: A Bing News Search SDK konzolalkalmazás beállítása.
+description: Ez a rövid útmutató segítségével hírkeresés a Bing News Search SDK a Pythonhoz készült használatával, és a válasz feldolgozása.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 447c59d45e3b1614ce8dbddc56f9dba0dd156e90
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317058"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258763"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-c"></a>Rövid útmutató: A Bing News Search SDK a C# használatával
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Gyors útmutató: Hajtsa végre egy hírkeresés a Bing News Search SDK esetében azC#
 
 A Bing News Search SDK a REST API funkcióit biztosítja a hírek lekérdezéséhez és az eredmények elemzéséhez. 
 

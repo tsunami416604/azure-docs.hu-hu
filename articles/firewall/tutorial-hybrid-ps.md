@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 467e8242ffeec435976f3f8fa5740908ea93d262
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316396"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260905"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban három virtuális hálózatot hoz létre:
 
 - **VNet-Hub** – Ez a virtuális hálózat van a tűzfal.
 - **VNet-küllő** -küllő virtuális hálózat a számítási feladatok Azure-ban található jelöli.
-- **VNet-rendszert** – a helyi virtuális hálózat egy helyszíni hálózat jelöli. Egy valós üzemelő példányban ez VPN- vagy Express Route-kapcsolattal csatlakozhat. Az egyszerűség kedvéért ez az oktatóanyag a VPN gateway-kapcsolatot használ, és az Azure-található virtuális hálózat egy helyszíni hálózat megjelenítésére szolgál.
+- **VNet-rendszert** – a helyi virtuális hálózat egy helyszíni hálózat jelöli. -Tényleges telepítés megjeleníthet útvonal vagy VPN-kapcsolat. Az egyszerűség kedvéért ez az oktatóanyag a VPN gateway-kapcsolatot használ, és az Azure-található virtuális hálózat egy helyszíni hálózat megjelenítésére szolgál.
 
 ![Tűzfal a hibrid hálózatban](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -310,6 +310,9 @@ Ezután hozzon létre néhány útvonalat:
 - Egy útvonalat a központi átjáró alhálózatától a küllő alhálózatához a tűzfal IP-címén keresztül
 - Egy alapértelmezett útvonalat a küllő alhálózattól a tűzfal IP-címén keresztül
 
+>[!NOTE]
+>Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. Ha engedélyezte a kényszerített bújtatás a helyi ExpressRoute- vagy Alkalmazásátjáró-n keresztül, szeretné-e az UDR 0.0.0.0/0 konfigurálása a **NextHopType** értéket állítja be **Internet**, majd rendelje hozzá  **AzureFirewallSubnet**.
+
 ```azurepowershell
 #Create a route table
 $routeTableHubSpoke = New-AzureRmRouteTable `
@@ -482,4 +485,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)

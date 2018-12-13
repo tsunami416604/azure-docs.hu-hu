@@ -1,5 +1,5 @@
 ---
-title: Az SSL IP-cím módosítása – az Azure előkészítése
+title: SSL-IP-cím módosítása – az Azure App Service előkészítése
 description: Ha módosítani kell az SSL-IP-címe, megtudhatja, mit kell tennie, hogy az alkalmazása továbbra is működik, a módosítás után.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576542"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270790"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Egy SSL-IP-cím módosítása előkészítése
 
@@ -31,7 +32,7 @@ Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás SSL IP-címe m
 
 4.  Alatt a **beállítások** fejléc, kattintson a **SSL-beállítások** a bal oldali navigációs.
 
-5. Az SSL-kötések szakaszban jelölje ki a gazdagép neve bejegyzést. Megnyílik a szerkesztőben válassza **SNI SSL** a a **SSL-típus** legördülő menüben, majd kattintson **kötésének hozzáadása**. A művelet a sikert jelző üzenet megjelenésekor azt a meglévő IP-cím kiadása.
+1. Az SSL-kötések szakaszban jelölje ki a gazdagép neve bejegyzést. Megnyílik a szerkesztőben válassza **SNI SSL** a a **SSL-típus** legördülő menüben, majd kattintson **kötésének hozzáadása**. A művelet a sikert jelző üzenet megjelenésekor azt a meglévő IP-cím kiadása.
 
 6.  Az a **SSL-kötések** területén válassza ismét a tanúsítványt az ugyanazon gazdagép neve rekord. A szerkesztőben megjelenő, ezúttal válassza **IP-alapú SSL** a a **SSL-típus** legördülő menüben, majd kattintson **kötésének hozzáadása**. Amikor megjelenik a művelet a sikert jelző üzenet, melyeket beszerezett új IP-címet.
 

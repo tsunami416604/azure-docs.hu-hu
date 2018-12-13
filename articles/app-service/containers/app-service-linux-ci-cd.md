@@ -1,6 +1,6 @@
 ---
-title: Folyamatos üzembe helyezés a Web App for containers szolgáltatásban – Azure Docker container registryből |} A Microsoft Docs
-description: Hogyan állítható be a folyamatos üzembe helyezés a Web App for Containers a Docker-tárolójegyzék.
+title: Folyamatos üzembe helyezés a Web App for containers szolgáltatásban – Azure App Service-ben |} A Microsoft Docs
+description: Hogyan állítható be a folyamatos üzembe helyezés a Web App for containers szolgáltatásban.
 keywords: az Azure app Service-ben, a linux, a docker, az acr, a nyílt forráskódú
 services: app-service
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: msangapu;yili
-ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: yili
+ms.custom: seodec18
+ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298534"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315529"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for containers szolgáltatásban
 

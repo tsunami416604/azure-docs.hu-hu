@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az App Service környezet v1
+title: Alkalmazás bemutatása környezet v1 - Azure-szolgáltatás
 description: Ismerje meg az App Service Environment v1 funkció, amely biztonságos, VNet-csatlakozású, dedikált skálázási egységek biztosít a futó összes alkalmazását.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 0433e6dc557ee5a935fa666b3c325fe03d08e29d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 5a06e2577468baa6f3e46f838db11f1925ec0e1d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962267"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271606"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az App Service környezet v1
 

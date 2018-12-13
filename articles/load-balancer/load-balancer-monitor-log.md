@@ -1,5 +1,6 @@
 ---
-title: Az alapszintű nyilvános Load Balancer operations, események és teljesítményszámlálók figyelése |} A Microsoft Docs
+title: A figyelő operations, események és alapszintű nyilvános Load Balancer számlálói
+titlesuffix: Azure Load Balancer
 description: Ismerje meg, hogyan engedélyezze a riasztási eseményekre, és egészségügyi állapotának naplózása alapszintű nyilvános Load Balancer mintavételi
 services: load-balancer
 documentationcenter: na
@@ -7,26 +8,27 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261502"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164126"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>Naplóelemzés az alapszintű nyilvános Load Balancer
 
 >[!IMPORTANT] 
->Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. A Standard Load Balancer kapcsolatos további információkért lásd: [Standard Load Balancer áttekintése](load-balancer-standard-overview.md) amely közzéteszi a többdimenziós metrikák az Azure monitorban telemetriai adatokat.
+>Az Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk az Alapszintű Load Balancert ismerteti. A Standard Load Balancer kapcsolatos további információkért lásd: [Standard Load Balancer áttekintése](load-balancer-standard-overview.md) amely közzéteszi a többdimenziós metrikák az Azure monitorban telemetriai adatokat.
 
 Segítségével különböző típusú naplók az Azure-ban felügyelet és hibaelhárítás az alapszintű Load Balancer Terheléselosztók. Néhányat ezek a naplók a portálon keresztül is elérhetők. Az összes napló ki kell olvasni az Azure blob storage-ból, és a különböző eszközök, például az Excel és a Power bi tekinthetők meg. További információ a különböző típusú naplók az alábbi listából.
 
-* **Auditnaplók:** használható [Azure-Auditnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén műveleti naplók) minden művelet nem továbbíthatók a társított Azure-előfizetéseit, és azok állapotának megtekintése. Auditnaplók alapértelmezés szerint engedélyezve vannak, és az Azure Portalon lehet megtekinteni.
-* **Riasztás az eseménynaplókat:** használhatja ezt a naplót a terheléselosztó által kiváltott riasztások megtekintéséhez. A terheléselosztó állapotát öt percenként gyűjtött. Ha egy load balancer figyelmeztetési esemény jelenik meg, ez a napló csak írása.
+* **Naplófájlok:** Használhat [Azure-Auditnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén műveleti naplók) minden művelet nem továbbíthatók a társított Azure-előfizetéseit, és azok állapotának megtekintése. Auditnaplók alapértelmezés szerint engedélyezve vannak, és az Azure Portalon lehet megtekinteni.
+* **Riasztás az eseménynaplókat:** Ez a napló használatával a terheléselosztó által kiváltott riasztások megtekintése. A terheléselosztó állapotát öt percenként gyűjtött. Ha egy load balancer figyelmeztetési esemény jelenik meg, ez a napló csak írása.
 * **Állapotminta-naplókat:** Ez a napló segítségével megtekintheti az állapotmintát, például a példányok a háttérkiszolgáló-készlet, amely nem kap kéréseket a terheléselosztóból miatt sikertelen állapotadat-mintavételi által észlelt problémákkal. Ebbe a naplófájlba írja be az állapot-mintavételi változása esetén.
 
 > [!IMPORTANT]
@@ -131,7 +133,7 @@ A JSON-kimenet megjeleníti a Tulajdonságok mező mintavételi állapotát az a
 
 Megtekintheti és elemezheti a naplózási adatokat az alábbi módszerek bármelyikével:
 
-* **Azure-eszközök:** információt lekérni a felügyeleti naplók az Azure PowerShell-lel, az Azure parancssori felület (CLI), az Azure REST API vagy az Azure betekintő portálon keresztül. Az egyes módszerek részletes útmutató a részletes leírást talál a [auditálási műveletek a Resource Manager](../azure-resource-manager/resource-group-audit.md) cikk.
+* **Az Azure-eszközök:** Az Azure PowerShell-lel, az Azure parancssori felület (CLI), az Azure REST API vagy az Azure betekintő portálon keresztül auditnaplók lévő információk lekéréséhez. Az egyes módszerek részletes útmutató a részletes leírást talál a [auditálási műveletek a Resource Manager](../azure-resource-manager/resource-group-audit.md) cikk.
 * **A Power bi-ban:** Ha Ön még nem rendelkezik egy [Power BI](https://powerbi.microsoft.com/pricing) fiók próbálhatja ki ingyenesen. Használatával a [Azure-Auditnaplók tartalomcsomaghoz a Power bi](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs), elemezheti az adatokat az irányítópultok előre konfigurált, vagy testre szabhatja a nézeteket a saját követelményeinek megfelelően.
 
 ## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Megtekintheti és elemezheti az állapotadat-mintavétel és az Eseménynapló

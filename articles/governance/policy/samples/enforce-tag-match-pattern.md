@@ -1,5 +1,5 @@
 ---
-title: Azure Policy-minta – Címkék mintaegyezésének kényszerítése
+title: Minta - címke-egyeztetési minta kényszerítése
 description: Ez a mintaszabályzat a címke értékéhez tartozó mintával való megegyezést követeli meg az erőforrásoktól.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 4de75212567c03b4fd5395818dbeae7644ee4926
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 237a5e9a54394f1227e270c0a42a160f9259710a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963236"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313887"
 ---
 # <a name="enforce-tag-match-pattern-for-tag-values"></a>Címkék mintaegyezésének kényszerítése címkeértékekhez
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search hozzáadása a Blob Storage |} A Microsoft Docs
-description: Index létrehozása kódból az Azure Search HTTP REST API használatával.
+title: Az Azure Blob Storage – Azure Search teljes szöveges keresés hozzáadása
+description: Az Azure Blob storage-indexelő Azure Search HTTP REST API használatával kódban bejárás szöveges tartalommal.
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -8,12 +8,13 @@ ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
 ms.author: magottei
-ms.openlocfilehash: 4f8099bbd5af250e58441eb0e202d4674f0671fe
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403225"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310878"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 

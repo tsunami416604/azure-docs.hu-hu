@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Keresés a Go használatával – Bing Web Search API'
+title: 'Gyors útmutató: Végezzen keresést a Go - Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Go használatával, majd hogyan fogadhatja a JSON-választ.
+description: Ez a rövid útmutató segítségével-kérelmeket küldjön a Bing Web Search REST API használatával nyissa meg, és a egy JSON-választ kap
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 97b9a75802441a9360291d334b9920366a1c9450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310429"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255635"
 ---
-# <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Go segítségével  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Go használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
 

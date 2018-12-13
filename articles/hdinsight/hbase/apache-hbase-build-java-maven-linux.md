@@ -1,20 +1,20 @@
 ---
-title: Java HBase ügyfél – Azure HDInsight
+title: Az Apache Maven – Azure HDInsight segítségével a Java-HBase-ügyfél létrehozása
 description: Ismerje meg, az Apache Maven használata Java-alapú Apache HBase-alkalmazás létrehozása, majd telepítse az Azure HDInsight HBase.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445651"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164058"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások
 
@@ -56,8 +56,8 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
 
     Ez a parancs létrehoz egy könyvtárat a neve megegyezik a **artifactID** paraméter (**hbaseapp** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * **pom.xml**: A projekt Hálózatiobjektum-modellt ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
-   * **src**: A címtár, amely tartalmazza a **main/java/com/microsoft/példák** könyvtárat, ahol az alkalmazást hoz létre.
+   * **pom.xml**:  A projekt Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
+   * **src**: A könyvtár, amely tartalmazza a **main/java/com/microsoft/példák** könyvtárat, ahol az alkalmazást hoz létre.
 
 3. Törölje a `src/test/java/com/microsoft/examples/apptest.java` fájlt. Ebben a példában nincs használatban.
 

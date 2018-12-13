@@ -10,17 +10,15 @@ ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 33ceece70c920bcb8bfd49fcfc8ff544af592b6b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 49f515c4321b13652d64c2e6f5b8e44ed6a29bca
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088204"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188095"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -73,7 +71,7 @@ Azure-erőforrások, amelyek támogatják a [az Azure monitor](../../azure-monit
 > [!NOTE]
 > A többdimenziós metrikák elküldése a Log Analyticsbe diagnosztikai beállításokon keresztül jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Azonban a metrika jelenik meg az összes bejövő üzenetek összes diagnosztikai beállításokon keresztül exportálásakor várólistára helyezi az Eseményközpont.
+> *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Azonban a metrika jelenik meg az összes bejövő üzenetek összes diagnosztikai beállításokon keresztül exportálásakor várólistára helyezi az Eseményközpont.
 >
 >
 

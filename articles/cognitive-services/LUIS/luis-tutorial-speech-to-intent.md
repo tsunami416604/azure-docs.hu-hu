@@ -1,7 +1,7 @@
 ---
 title: Beszéd használata C# SDK
 titleSuffix: Azure Cognitive Services
-description: A Speech Service-szel egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech NuGet-csomagot használja, amelyet referenciaként már tartalmaz.
+description: A Speech Service-szel egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 92db504ebfd0f8ad0bef9282bafd62fa9780d5e2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099307"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162631"
 ---
 # <a name="integrate-speech-service"></a>A Speech Service integrálása
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -27,7 +27,7 @@ Szüksége lesz egy ingyenes [LUIS][LUIS]-webhelyfiókra az alkalmazás importá
 Az Azure Portalon [hozzon létre](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding-** (LUIS-) kulcsot. 
 
 ## <a name="import-human-resources-luis-app"></a>A Human Resources LUIS-alkalmazás importálása
-Az ebben a cikkben szereplő szándékok és kimondott szövegek a Human Resources LUIS-alkalmazásból származnak, amely a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) GitHub-adattárban érhető el. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 
+A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) GitHub-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 
 
 Ez az alkalmazás az emberi erőforrások (Human Resources, HR) tárgykörébe tartozó szándékokat, entitásokat és kimondott szövegeket tartalmaz. Példák kimondott szövegekre:
 

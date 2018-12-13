@@ -1,7 +1,7 @@
 ---
 title: Példa kimondott szövegek hozzáadása
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ismerje meg, a Language Understanding (LUIS) alkalmazások hozzáadása a kimondott szöveg.
+description: Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS), akik az példa beszédmódok hozzáadása egy beszédszándék kell.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: ada1d7e922bdd47cfc9fe8139ad83adfa45ed073
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085518"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139170"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -90,7 +90,7 @@ Az alkalmazott nevét, a John Smith, egy előre elkészített [personName](luis-
 
 1. Adja meg az összetett entitás nevét a legördülő listában.
 
-    ![Képernyőkép az entitás nevének megadása](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![Képernyőkép az összetett entitás nevét a legördülő listában adja meg.](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Az entitások megfelelően be zöld vonal esetén a teljes kifejezés alapján.
 
@@ -118,7 +118,7 @@ Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a f
 
 1. A word, az utterance (kifejezés) a következő címkét kapta a szülő hierarchikus entitással. A word hozzárendelése egy gyermek entitásnak kell. Térjen vissza az utterance (kifejezés) a szándék részletek lapon. Válassza ki a word-, majd a legördülő listából válassza ki a létrehozott entitás nevét, és hajtsa végre a menüben válassza ki a megfelelő gyermek entitásnak jobb.
 
-    ![Képernyőkép a leképezések részletei oldala, amelyen kiemelve ToLocation entitás](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![Képernyőkép a leképezések Részletek lap, ahol, hozzá kell rendelni a szó egy gyermek entitásnak](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
@@ -135,7 +135,7 @@ Válassza ki az aláhúzott szavakra vörös színnel az utterance (kifejezés).
 
 Az entitás mezőben jelenik meg a **entitás állapota** egy piros felkiáltójel, ha az előrejelzés eltérés van az. Az entitás állapot címkézett és előrejelzett entitások közötti különbségekkel kapcsolatos információk megtekintéséhez válasszon **entitás állapota** válassza ki az elemet a jobb oldalon.
 
-![Képernyőkép az entitás állapota előrejelzés eltérés](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Képernyőkép a helyes, javítsa ki az előrejelzés eltérés kívánt elem kiválasztása](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 A piros vonal bármelyik a következő alkalommal jelenhetnek meg:
 

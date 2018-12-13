@@ -1,5 +1,5 @@
 ---
-title: Események küldése Azure Time Series Insights-környezetben |} A Microsoft Docs
+title: Az Azure Time Series Insights - események küldése események küldése az Azure Time Series Insights-környezet |} A Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja egy eseményközpontot, és futtathat egy mintaalkalmazást események leküldéséhez megtekintheti az Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 09d72db62998d178475666c170ee5eae460924ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 69d16292f5b71179ee66fb5f7d6c4a6f11cbb9de
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097063"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276145"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Események küldése Time Series Insights-környezetbe az event hubs használatával
 
@@ -101,7 +102,7 @@ Egyszerű JSON-objektum:
 }
 ```
 
-#### <a name="output-one-event"></a>A kimenetre: Egy esemény
+#### <a name="output-one-event"></a>Kimenet: Egy esemény
 
 |id|időbélyeg|
 |--------|---------------|

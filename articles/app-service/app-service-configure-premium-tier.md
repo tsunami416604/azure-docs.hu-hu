@@ -1,5 +1,5 @@
 ---
-title: PremiumV2 szintű csomag konfigurálása az Azure App Service |} A Microsoft Docs
+title: PremiumV2 szintű csomag – az Azure App Service konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogyan végezhet a teljesítmény a webes, mobilos és API-alkalmazás Azure App Service-ben a méretezési lehetőségek érhetők el az új PremiumV2 tarifacsomag szerint.
 keywords: app service, azure app service, méret, méretezhető, app service-csomag, app service ára
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226309"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258899"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
 

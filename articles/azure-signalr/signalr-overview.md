@@ -1,23 +1,17 @@
 ---
-title: Mi az az Azure SignalR? | Microsoft Docs
+title: Mi az Azure SignalR
 description: Az Azure SignalR szolgáltatás áttekintése.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
 ms.service: signalr
-ms.devlang: na
 ms.topic: overview
-ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: a159833936ec4762213f063e235fa4f9237af95b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e66326c6c4d93a92c579255cb00b6614ecc03b8c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951100"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255176"
 ---
 # <a name="what-is-azure-signalr-service"></a>Mi az az Azure SignalR szolgáltatás?
 
@@ -25,7 +19,7 @@ Az Azure SignalR szolgáltatás leegyszerűsíti a valós idejű webes funkciók
 
 A cikk áttekintést nyújt az Azure SignalR szolgáltatásról.
 
-## <a name="what-is-azure-signalr-service-used-for"></a>Mire használják az Azure SignalR szolgáltatást? 
+## <a name="what-is-azure-signalr-service-used-for"></a>Mire használják az Azure SignalR szolgáltatást?
 
 Számos alkalmazástípushoz szükségesek valós idejű tartalomfrissítések. A következő példák megfelelőek lehetnek az Azure SignalR szolgáltatás használatához:
 
@@ -45,4 +39,3 @@ Jelenleg háromféleképpen lehet használni az Azure SignalR szolgáltatást:
 - **[ASP.NET Core SignalR-alkalmazás skálázása](signalr-overview-scale-aspnet-core.md)** – Az Azure SignalR szolgáltatás integrálása egy ASP.NET Core SignalR-alkalmazással több százezer kapcsolatra való horizontális felskálázáshoz.
 - **[Kiszolgáló nélküli, valós idejű alkalmazások létrehozása](signalr-overview-azure-functions.md)** – Az Azure SignalR szolgáltatással integrált Azure Functions használata kiszolgáló nélküli, valós idejű alkalmazások létrehozására, többek között JavaScript, C# és Java nyelven.
 - **[Üzenetek küldése a kiszolgálóról az ügyfeleknek REST API-n keresztül](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** – Az Azure SignalR szolgáltatás biztosít egy REST API-t, amely lehetővé teszi, hogy az alkalmazások bármilyen REST-kompatibilis programnyelven üzeneteket küldjenek a SignalR szolgáltatáshoz csatlakoztatott ügyfeleknek.
-

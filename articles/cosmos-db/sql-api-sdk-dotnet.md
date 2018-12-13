@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5af80a387a8b07992a82dac39c23082069419b60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: c7f3b2fc0e5cc75bccbaf075dc2e2a2be8c7801d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865913"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255958"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK, az SQL API-hoz: Töltse le és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -54,6 +54,16 @@ ms.locfileid: "52865913"
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
+
+* A hozzáadott új constuctor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+
+* Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
+
+* Továbbfejlesztett gyűjtemény gyorsítótár érvényesítése.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -106,7 +116,7 @@ ms.locfileid: "52865913"
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: az olvasási munkamenet nem érhető el a bemeneti munkamenet-jogkivonat" hibák munkamenet konzisztenciaszint használatakor.
+* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el"hiba munkamenet konzisztenciaszint használatakor.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -177,7 +187,7 @@ ms.locfileid: "52865913"
 * Javít, hogy rugalmasabb SDK bizonyos körülmények között az automatikus feladatátvételre.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Egy WebException alkalmanként okozó probléma: A távoli név nem oldható fel.
+* Javítás a WebException alkalmanként okozó hibát: A távoli név nem oldható fel.
 * A beírt dokumentumok közvetlenül olvasásakor ReadDocumentAsync API új hozzáadásával támogatása hozzáadva.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -210,7 +220,7 @@ ms.locfileid: "52865913"
 * Új osztályok és módszerek feldolgozni támogatása a [módosításcsatornáját](change-feed.md) dokumentumok egy gyűjteményen belül.
 * Partícióra kiterjedő lekérdezések folytatása és néhány teljesítmény a partícióra kiterjedő lekérdezések támogatása.
 * Createdatabaseasync és Createdocumentcollectionasync metódusok hozzáadásával.
-* LINQ rendszer funkciók támogatása: IsDefined, IsNull és IsPrimitive.
+* A rendszer függvények LINQ-támogatás: IsDefined, IsNull és IsPrimitive.
 * Javítsa ki az automatikus binplacing Microsoft.Azure.Documents.ServiceInterop.dll és DocumentDB.Spatial.Sql.dll sestavení alkalmazás bin mappát, vannak olyan eszközök project.json projektek a Nuget-csomag használata esetén.
 * Támogatja az ügyfél oldalán ETW-nyomkövetések hibakeresés közben forgatókönyvek hasznosak lehetnek, amelyek kibocsátó.
 
@@ -222,7 +232,7 @@ ms.locfileid: "52865913"
 * Különböző SDK-t hibajavításokat tartalmaz.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* A következő NotFoundException okozó probléma kijavítva: az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el. A kivétel történt bizonyos esetekben egy földrajzilag elosztott fiók olvasási-régió lekérdezésekor.
+* A következő NotFoundException okozó probléma kijavítva: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el. A kivétel történt bizonyos esetekben egy földrajzilag elosztott fiók olvasási-régió lekérdezésekor.
 * A responseStream kimeneti tulajdonság a ResourceResponse osztály, amely lehetővé teszi a közvetlen hozzáférés az alapul szolgáló Stream választ el.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -230,7 +240,7 @@ ms.locfileid: "52865913"
 * Rögzített egyéni JsonSerializerSettings objektumot használ a szerializálási adatok helytelenül formázott partíció key fejléc kiváltó problémát.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Kijavítva a hiba hosszabb ideig futó lekérdezések okozó: engedélyezési token nem érvényes az aktuális időpontban.
+* Kijavítva a hiba hosszabb ideig futó lekérdezések okozó problémát: Engedélyezési token nem érvényes az aktuális időpontban.
 * Kijavítva az eredeti SqlParameterCollection partíció felső /-rendezés lekérdezések közötti eltávolítva.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -265,7 +275,7 @@ ms.locfileid: "52865913"
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználó által definiált teljesítményszintek](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Rögzített]**  Lekérdezése az Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt a tartalom másolása adatfolyamba".
+* **[Rögzített]**  Lekérdezése az Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt a tartalom másolása adatfolyamba ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Kibontott LINQ támogatja a lapozófájl, a feltételes kifejezések új operátorokat, és a tartomány összehasonlítása.
@@ -340,6 +350,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2018. december 07. |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |

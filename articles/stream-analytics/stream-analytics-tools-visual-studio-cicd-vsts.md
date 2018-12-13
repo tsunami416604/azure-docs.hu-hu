@@ -1,22 +1,22 @@
 ---
-title: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure DevOps Services használatával – oktatóanyag
+title: Üzembe helyezés az Azure Stream Analytics-feladat a CI/CD Azure DevOps használatával
 description: A cikk azt írja le, hogyan helyezhet üzembe egy Azure Stream Analytics-feladatot a CI/CD-vel az Azure DevOps Services használatával.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 07/10/2018
-ms.openlocfilehash: 0f729725a04b19a513ca92953e997b51e4558884
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7e9ce598dbd8987ab32747f5fa9d14646ed4ee71
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986265"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164075"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Üzembe helyezés az Azure Stream Analytics-feladat a CI/CD Azure folyamatok használatával
 Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz az Azure Pipelines használatával. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -55,11 +55,11 @@ Az alkalmazás forrásfájljait megoszthatja az Azure DevOps egyik projektjében
 
 2. A **Team Explorer** **Synchronization** (Szinkronizálás) nézetében válassza ki a **Push to Azure DevOps Services** (Leküldés az Azure DevOps Services szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
-   ![Leküldéses Git-adattár](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
+   ![Továbbítsa az Azure fejlesztési és üzemeltetési szolgáltatás Git-adattár közzététele gomb](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
 3. Ellenőrizze az e-mail-címet, és válassza ki a saját szervezetét az **Azure DevOps Services Domain** (Azure DevOps Services tartomány) legördülő listájából. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
-   ![Leküldéses Git-adattár](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
+   ![Leküldéses Git-tárház adattár közzététele gomb](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
     Az adattár közzétételével egy új projekt jön létre a szervezetben a helyi adattáréval azonos néven. Ha egy már meglévő projektben kíván adattárat létrehozni, az **adattár neve** mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a projektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
  
@@ -73,33 +73,33 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
 
 1. A **Build & Release** (Build és kiadás) lapon válassza a **Builds** (Buildek) és a **+ New** (+ Új) lehetőséget.  Válassza az **Azure DevOps Services Git** és a **Continue** (Folytatás) lehetőséget.
     
-    ![Forrás kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
+    ![Az Azure DevOps fejlesztési és üzemeltetési Git forrás kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
 2. A **Select a template** (Sablon kiválasztása) területen kattintson az **Empty Process** (Üres folyamat) elemre, ha egy üres folyamattal kezdené meg a munkát.
     
-    ![Buildsablon kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
+    ![Üres folyamat kiválasztása a devops sablon beállításai](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
 3. A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) triggerállapot bejelölésével.  Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához. 
     
-    ![Triggerállapot](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
+    ![Engedélyezze a folyamatos integráció trigger állapota](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
 4. A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, létre kell hoznia a kiadási folyamatot, amely telepíti az alkalmazást egy fürtre. Kattintson a jobb gombbal a buildelési folyamat melletti három pontra, és válassza az **Edit** (Szerkesztés) lehetőséget.
 
 5.  A **Tasks** (Feladatok) között az **Agent queue** (Ügynöküzenetsor) megfelelőjeként adja meg a következőt: Hosted.
     
-    ![Ügynöküzenetsor kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue.png) 
+    ![Fronta agenta válassza a feladatok menü](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
 6. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **NuGet**-feladatot.
     
-    ![NuGet-feladat hozzáadása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget.png)
+    ![NuGet-feladat hozzáadása a fronta Agenta](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
 7. Bontsa ki az **Advanced** (Speciális) pontot, és adja hozzá a `$(Build.SourcesDirectory)\packages` elemet a **célkönyvtárhoz**. Tartsa meg a fennmaradó alapértelmezett NuGet konfigurációs értékeket.
 
-   ![NuGet-feladat konfigurálása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-config.png)
+   ![NuGet-visszaállítási feladat konfigurálása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
 8. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **MSBuild**-feladatot.
 
-   ![MSBuild-feladat hozzáadása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild-task.png)
+   ![Fronta Agenta MSBuild feladat hozzáadása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
 9. Cserélje az **MSBuild-argumentumokat** a következőkre:
 
@@ -107,11 +107,11 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
    /p:CompilerTaskAssemblyFile="Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll"  /p:ASATargetsFilePath="$(Build.SourcesDirectory)\packages\Microsoft.Azure.StreamAnalytics.CICD.1.0.0\build\StreamAnalytics.targets"
    ```
 
-   ![MSBuild-feladat konfigurálása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild.png)
+   ![A fejlesztési és üzemeltetési MSBuild feladat konfigurálása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
 10. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adja hozzá egy **Azure-erőforráscsoport üzembehelyezési** feladatát. 
     
-    ![Azure-erőforráscsoport üzembehelyezési feladatának hozzáadása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy.png)
+    ![Azure-erőforráscsoport üzembehelyezési feladatának hozzáadása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
 11. Bontsa ki az **Azure Details** (Azure – részletek) pontot, és töltse ki a konfiguráció mezőit a következők szerint:
     
@@ -124,16 +124,16 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
     |Sablon paraméterei  | [Saját megoldás elérési útja]\bin\Debug\Deploy\\[Saját projekt neve].JobTemplate.parameters.json   |
     |Sablon paramétereinek felülbírálása  | Írja be a szövegmezőbe a felülbírálni kívánt sablonparamétereket. Például: –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Ez a tulajdonság nem kötelező, de a build hibaüzeneteket eredményezhet, ha a paraméterek nincsenek felülbírálva.    |
     
-    ![Tulajdonságok beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
+    ![Azure erőforráscsoport-telepítés tulajdonságainak beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
 12. A buildelési folyamat teszteléséhez kattintson a **Save & Queue** (Mentés és várakozási sorba helyezés) gombra.
     
-    ![Felülbírálási paraméterek beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
+    ![Mentés és üzenetsorba hozhat létre DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
 ### <a name="failed-build-process"></a>Sikertelen buildelési folyamat
 Lehet, hogy null értékű üzembehelyezési paraméterekről szóló hibaüzenetet kap, ha nem bírálta felül a sablon paramétereit a buildelési folyamat **Azure-erőforráscsoport üzembe helyezésének** feladatában. A probléma megoldásához térjen vissza a buildelési folyamathoz, és bírálja felül a null értékű paramétereket.
 
-   ![A buildelési folyamat sikertelen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
+   ![Fejlesztési és üzemeltetési Stream Analytics folyamata nem tudott hozhat létre.](./media/stream-analytics-tools-visual-studio-cicd-vsts/devops-build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>Módosítások véglegesítse és leküldése a kiadás indításához
 A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást az Azure DevOpsba.    
@@ -142,11 +142,11 @@ A kód írása közben eszközölt módosításokat a Visual Studio automatikusa
 
 1. A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet a frissítés leírásával, majd véglegesítse a módosításokat.
 
-    ![Módosítások véglegesítése és leküldése](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
+    ![Tárház változtatások véglegesítése a Visual studióból](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-commit-changes-visual-studio.png)
 
 2. Válassza ki a közzé nem tett változások ikonját az állapotsávon vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot az Azure DevOps szolgáltatásban.
 
-    ![Módosítások véglegesítése és leküldése](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
+    ![Küldje el a módosításokat a Visual Studióból](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-visual-studio.png)
 
 Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a buildelési folyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön a feladat frissítését.
 

@@ -1,7 +1,7 @@
 ---
-title: A felkapott képek – a Bing Image Search API webes keresés
+title: A Bing Image Search API a felkapott képek bekérése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan kereshet a felkapott képek weben a Bing Image Search API használatával.
+description: Keresse meg a mai népszerű webes tartalmazó képek a Bing Image Search API.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296311"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258968"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>A Bing Image Search API a felkapott képek bekérése
+# <a name="get-trending-images-from-the-web"></a>Webes felkapott képek bekérése
 
 A mai népszerű képek lekéréséhez a következő GET kérelmet küldeni:  
 

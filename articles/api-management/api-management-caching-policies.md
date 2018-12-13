@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2511a608a74a04314b5fd56a55f4ae93ca0e2978
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017474"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310436"
 ---
 # <a name="api-management-caching-policies"></a>Az API Management gyorsítótárazási házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -80,7 +80,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Példa házirend-kifejezések használatával  
- Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
+ Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -118,14 +118,14 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 | gyorsítótár-beállítás               | Az attribútum a következő értékek közül választhat:<br />- `internal` a beépített API Management-gyorsítótár használata<br />- `external` az ismertetett módon kihasználhassák a külső gyorsítótár [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Ellenkező esetben használja a belső vagy külső gyorsítótár, ha konfigurálva. | Nem       | `prefer-external` |
 | alsóbb rétegbeli gyorsítótárazási típus        | Ez az attribútum a következő értékek egyikére kell beállítani.<br /><br /> – Nincs – alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />-privát – alsóbb rétegbeli privát gyorsítótárazás használata engedélyezett.<br />– nyilvános - titkos és megosztott alsóbb rétegbeli engedélyezve van a gyorsítótárazás.                                                                                                          | Nem       | nincs              |
 | kell-revalidate                | Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van ez az attribútum be- vagy kikapcsolja a `must-revalidate` gyorsítótár vezérlő irányelv az átjáró válaszokat.                                                                                                                                                                                                                      | Nem       | true              |
-| változó-által-fejlesztő              | Állítsa be `true` fejlesztői kulcsonként gyorsítótár által küldött válaszokhoz.                                                                                                                                                                                                                                                                                                         | Igen      |                   |
-| változó-által-developer-csoportok       | Állítsa be `true` a gyorsítótár-válaszok száma felhasználói szerepkörhöz.                                                                                                                                                                                                                                                                                                             | Igen      |                   |  
+| változó-által-fejlesztő              | Állítsa be `true` a gyorsítótár-válaszok száma [előfizetési kulcs](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |                   |
+| változó-által-developer-csoportok       | Állítsa be `true` a gyorsítótár-válaszok száma [felhasználói csoport](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Igen      |                   |  
 
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
--   **A házirend-hatókörök:** API, a művelet, a termék  
+-   **A házirend-hatókörök:** API-t, a művelet, a termék  
   
 ##  <a name="StoreToCache"></a> Store Cache  
  A `cache-store` házirend gyorsítótárazza a választ a megadott beállítások szerint. Ez a szabályzat alkalmazható azokban az esetekben, ahol válasz tartalma statikus marad egy időszakon belül. Válasz-gyorsítótárazás csökkenti a sávszélesség, és a háttérrendszer webes kiszolgáló, és csökkenti a késést az API-fogyasztókat által érzékelt kirótt feldolgozási követelmények.  
@@ -159,7 +159,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Példa házirend-kifejezések használatával  
- Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
+ Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -197,7 +197,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** kimenő    
--   **A házirend-hatókörök:** API, a művelet, a termék  
+-   **A házirend-hatókörök:** API-t, a művelet, a termék  
   
 ##  <a name="GetFromCacheByKey"></a> Érték lekérése a gyorsítótárból  
  Használja a `cache-lookup-value` házirend végrehajtása a keresési gyorsítótár kulcs és a egy gyorsítótárazott értéket ad vissza. A kulcs egy tetszés szerinti karakterlánc értéke lehet, és általában biztosított egy házirend-kifejezés használatával.  

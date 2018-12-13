@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: cb1392bd70c92ae4f6bfc6707198c3079ad7ecef
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b0dd0c0c0c300b4db94c1ab22205f9e808556f0b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285799"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166827"
 ---
 ## <a name="state-behavior"></a>Állapot viselkedés
 
-A [szimuláció](../articles/iot-accelerators/iot-accelerators-device-simulation-device-schema.md#simulation) szakaszában az eszközmodell sémájának meghatározása egy szimulált eszközt a belső állapot:
+A [szimuláció](../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) szakaszában az eszközmodell sémájának meghatározása egy szimulált eszközt a belső állapot:
 
 - `InitialState` az eszköz állapota objektum összes tulajdonsága esetén a kezdeti értékeket határozza meg.
 - `Script` azonosítja, hogy az állapot frissítéséhez ütemezés szerint futtatott JavaScript-fájlt.
@@ -143,7 +143,7 @@ Megtekintheti, hogy a teljes [hűtő-01-state.js](https://github.com/Azure/devic
 
 ## <a name="method-behavior"></a>Módszer viselkedés
 
-A [CloudToDeviceMethods](../articles/iot-accelerators/iot-accelerators-device-simulation-device-schema.md#cloudtodevicemethods) az eszközmodell sémájának szakasza határozza meg a szimulált eszköz válaszol módszereket.
+A [CloudToDeviceMethods](../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) az eszközmodell sémájának szakasza határozza meg a szimulált eszköz válaszol módszereket.
 
 Az alábbi példa egy szimulált hűtő eszköz által támogatott módszerek listáját jeleníti meg:
 

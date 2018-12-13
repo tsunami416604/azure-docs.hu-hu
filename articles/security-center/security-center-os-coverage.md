@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240426"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185579"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
-Biztonsági állapot monitorozása és javaslatok érhetők el a virtuális gépek (VM), mind a klasszikus és Resource Manager üzembe helyezési modellek és számítógépek használatával létrehozott.
+Biztonsági állapot monitorozása és javaslatok érhetők el a virtuális gépek (VM), a klasszikus és Resource Manager üzembe helyezési modellel, és a számítógépek által létrehozott.
 
 > [!NOTE]
 > Tudjon meg többet a [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md) az Azure-erőforrásokhoz.
@@ -35,7 +35,7 @@ Biztonsági állapot monitorozása és javaslatok érhetők el a virtuális gép
 Ez a szakasz felsorolja a platformokat, amelyeken az Azure Security Center-ügynök futtathatja, és, amelyről adatokat tudjon gyűjteni.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows-számítógépek és virtuális gépek által támogatott platformok
-A támogatott Windows operációs rendszerek:
+Az alábbi Windows operációs rendszerek támogatottak:
 
 * Windows Server 2008
 * Windows Server 2008 R2
@@ -45,24 +45,24 @@ A támogatott Windows operációs rendszerek:
 
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux rendszerű számítógépek és virtuális gépek által támogatott platformok
-Támogatott Linux operációs rendszerek:
+A következő Linux operációs rendszerek támogatottak:
 
-* Ubuntu verziók 12.04 LTS, 14.04 LTS, 16.04 LTS
-* Debian verziók 6, 7, 8, 9
-* CentOS verziók 5, 6, 7
-* Red Hat Enterprise Linux (RHEL) verziók 5, 6, 7
-* SUSE Linux Enterprise Server (SLES) verziók 11, 12
-* Oracle Linux-verziók 5, 6, 7
-* Amazon Linux 2012.09 2017-ig
-* Openssl 1.1.0-s csak támogatott x86_64 platformokon (64 bites)
+* Ubuntu 12.04 LTS, 14.04 LTS és 16.04 LTS verzió.
+* Debian verziók 6, 7, 8 és 9.
+* CentOS 5, 6 és 7.
+* Red Hat Enterprise Linux (RHEL) verziójú 5, 6 és 7.
+* SUSE Linux Enterprise Server (SLES) verziók 11 – 12.
+* Oracle Linux-verziók 5, 6 és 7.
+* Amazon Linux 2012.09 2017-ig.
+* OpenSSL 1.1.0-s csak támogatott platformokon x86_64, 64 bites.
 
 > [!NOTE]
-> Virtuális gép működés elemzése még nem érhető el Linux operációs rendszerekhez.
+> Virtuális gép működés elemzése még nem érhetők el Linux operációs rendszerekhez.
 >
 >
 
 ## <a name="vms-and-cloud-services"></a>Virtuális gépek és Cloud Services
-Egy cloud service-ben futó virtuális gépek is támogatottak. Csak a felhőszolgáltatások tárhelyek figyelt éles üzemben futó webes és feldolgozói szerepköröket. Felhőszolgáltatás kapcsolatos további információkért lásd: [Cloud Services – áttekintés](../cloud-services/cloud-services-choose-me.md).
+A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak. Csak cloud services webes és feldolgozói szerepkörök üzemelési pont felcserélése futtató figyeli a program. A cloud services kapcsolatos további információkért lásd: [áttekintése az Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
 
 ## <a name="supported-iaas-features"></a>Támogatott IaaS-szolgáltatások
@@ -74,25 +74,25 @@ Egy cloud service-ben futó virtuális gépek is támogatottak. Csak a felhőszo
 |----|----|----|----|----|
 |Környezet|Azure|Nem Azure|Azure|Nem Azure|
 |VMBA fenyegetésészlelési riasztások|✔|✔|✔ (a támogatott verziók)|✔|
-|A hálózati alapú fenyegetésészlelés riasztásai|✔|X|✔|X|
+|Hálózati fenyegetésészlelés riasztásai|✔|X|✔|X|
 |A Windows Defender ATP-integráció *|✔ (a támogatott verziók)|✔|X|X|
 |Hiányzó javítások|✔|✔|✔|✔|
 |Biztonsági konfigurációk|✔|✔|✔|✔|
-|Kártevőirtó|✔|✔|X|X|
+|Kártevőirtó-programok|✔|✔|X|X|
 |Virtuális gépek igény szerinti elérése|✔|X|✔|X|
 |Adaptív alkalmazásvezérlők|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Disk encryption (Lemeztitkosítás)|✔|X|✔|X|
-|Harmadik féltől származó központi telepítési|✔|X|✔|X|
+|Külső üzembe helyezés|✔|X|✔|X|
 |NSG-k|✔|X|✔|X|
-|Filess fenyegetések észlelése|✔|✔|X|X|
+|Fileless fenyegetésészlelés|✔|✔|X|X|
 |Hálózati térkép létrehozásához|✔|X|✔|X|
 |Az adaptív hálózati vezérlők|✔|X|✔|X|
 
 \* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
 
 
-## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások
+## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások 
 
 
 |Szolgáltatás|Javaslatok|Fenyegetések észlelése|
@@ -100,20 +100,20 @@ Egy cloud service-ben futó virtuális gépek is támogatottak. Csak a felhőszo
 |SQL|✔| ✔|
 |PostGreSQL *|✔| ✔|
 |MySQL *|✔| ✔|
-|A BLOB storage fiókok *|✔| ✔|
+|Az Azure Blob storage fiókok *|✔| ✔|
 |App Services|✔| ✔|
-|Felhőszolgáltatások|✔| X|
+|Cloud Services|✔| X|
 |Virtuális hálózatok|✔| NA|
 |Alhálózatok|✔| NA|
 |Hálózati adapterek (NIC-k)|✔| ✔|
 |NSG-k|✔| NA|
 |Előfizetés|✔| ✔|
 
-\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
+\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) – ismerje meg, hogyan tervezheti meg és a tervezési szempontokat az Azure Security Center elfogadása
-- [Biztonsági riasztások típus szerint az Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) – további tudnivalók a virtuális gép működésének elemzése és az összeomlási memóriakép memória elemzése a Security Centerben
-- [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-- [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi
+- Ismerje meg, hogyan [tervezéséhez és bevezetéséhez az Azure Security Center a tervezési szempontokat](security-center-planning-and-operations-guide.md).
+- Tudjon meg többet [virtuális gép működésének elemzése és az összeomlási memóriakép memória elemzéseket végezhet a Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).
+- Keresés [az Azure Security Center használatával kapcsolatos gyakori kérdések](security-center-faq.md).
+- Keresés [Azure biztonsági és megfelelőségi információ blogbejegyzések](https://blogs.msdn.com/b/azuresecurity/).

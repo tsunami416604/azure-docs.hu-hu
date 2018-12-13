@@ -1,20 +1,20 @@
 ---
-title: Elemezheti és az Azure HDInsight az Apache Hive JSON-dokumentumok feldolgozása
-description: Ismerje meg, hogyan használja a JSON-dokumentumok és elemezheti az apache Hive, az Azure HDInsight használatával
+title: Elemezheti és az Apache Hive – Azure HDInsight JSON-dokumentumok feldolgozása
+description: Ismerje meg, hogyan használja a JSON-dokumentumok és elemezheti az Azure HDInsight az Apache Hive használatával
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0322b95c6fecc120fd6a50b05dbf502f28afa114
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f50767ad4fc979962968c32bbe972e28d93cce88
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006566"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166404"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok elemzését az Azure HDInsight az Apache Hive használatával
 
@@ -145,7 +145,7 @@ Az UDF-ben használt json_tuple a [nézet oldalirányú](https://cwiki.apache.or
 ### <a name="use-a-custom-serde"></a>Egy egyéni SerDe használata
 SerDe a legjobb választás beágyazott JSON-dokumentumok elemzését. Lehetővé teszi, hogy a JSON-séma határozza meg, és ezután használhatja a sémát a dokumentumok elemzése. Útmutatásért lásd: [egy egyéni JSON-SerDe használata a Microsoft Azure HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Végezetül JSON operátor az Ön által választott Hive típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentum, és keresse ki csak egy mezőt, válassza ki a Hive-UDF get_json_object használja. Ha egynél több kulcs keressük meg, majd használhatja json_tuple. Ha rendelkezik egy beágyazott dokumentumot, akkor a JSON-SerDe kell használnia.
 
 ## <a name="next-steps"></a>További lépések

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36cdb8a84c7ec7e05917be1144ae008f90cad03a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321135"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -35,7 +35,7 @@ Az erőforrás helye nem módosítható. Erőforrások áthelyezése csak áthel
 
 ## <a name="checklist-before-moving-resources"></a>Erőforrások áthelyezése előtti ellenőrzőlistát
 
-Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése előtt. Ezen feltételek ellenőrzésével a hibák elkerülhetőek.
+Nincsenek erőforrások áthelyezése előtt néhány fontos lépést. Ezen feltételek ellenőrzésével a hibák elkerülhetőek.
 
 1. A forrás- és az előfizetések léteznie kell az előfizetésen belül [Azure Active Directory-bérlő](../active-directory/develop/quickstart-create-new-tenant.md). Ellenőrizze, hogy mindkét előfizetéshez tartozik-e az azonos bérlő azonosítója, használja az Azure PowerShell vagy az Azure CLI.
 
@@ -58,7 +58,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
   * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
+1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Előfordulhat, hogy ezt a hibaüzenetet erőforrás új előfizetésre történő áthelyezésekor azonban, hogy az előfizetés még nem volt használva az adott erőforrástípushoz.
 
   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
@@ -93,7 +93,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
 1. Erőforrások áthelyezése előtt tekintse át az erőforrásokat az előfizetés az előfizetési kvóták. Erőforrások áthelyezése azt jelenti, hogy az előfizetés túl fogja lépni a teljesítménye korlátait, ha meg kell tekintenie a e kérheti a kvótájának növelését. Korlátok, és hogyan lehet növelni listáját lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 
-1. Ha lehetséges, nagy break helyezi át a külön áthelyezési műveleteket. Erőforrás-kezelő azonnal egyetlen művelettel több mint 800 erőforrások áthelyezéséhez kísérlet sikertelen lesz. Azonban legalább 800 erőforrások áthelyezése is meghiúsulhat időtúllépés által.
+1. Ha lehetséges, nagy break helyezi át a külön áthelyezési műveleteket. Erőforrás-kezelő azonnal hibát ad vissza, ha rendelkezésre áll a több mint 800 erőforrás egyetlen művelettel. Azonban legalább 800 erőforrások áthelyezése is meghiúsulhat időtúllépés által.
 
 1. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Határozza meg, hogy az áthelyezés sikeres lesz, hogy [ellenőrzése az áthelyezési kérelemben](#validate-move). Ebben a cikkben, amelyek szakaszokban [erőforrások áthelyezését engedélyező szolgáltatásokat](#services-that-can-be-moved) , és amely [erőforrások áthelyezését engedélyező szolgáltatásokat nem](#services-that-cannot-be-moved).
 
@@ -130,7 +130,7 @@ A kéréstörzs:
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Analysis Services
 * API Management
 * Az App Service apps (webalkalmazások) – lásd: [App Service korlátai](#app-service-limitations)
-* App Service-tanúsítvány
+* Az App Service-tanúsítványok – lásd: [App Service-tanúsítvány korlátozások](#app-service-certificate-limitations)
 * Application Insights
 * Automation
 * Azure Active Directory B2C
@@ -312,15 +312,7 @@ Ez a támogatás azt jelenti, hogy is áthelyezheti:
 Az alábbiakban a korlátozásokat, amelyek még nem támogatottak:
 
 * Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át virtuális gépeket a Key Vault-tanúsítvánnyal.
-* Az Azure Backup szolgáltatással konfigurált virtuális gépek. Használja az alábbi megkerülő megoldás e virtuális gépek áthelyezése
-  * Keresse meg a virtuális gép helyét.
-  * Keresse meg a következő elnevezési mintának egy erőforráscsoportot: `AzureBackupRG_<location of your VM>_1` például AzureBackupRG_westus2_1
-  * Ha az Azure Portalon, majd ellenőrizze "rejtett típusok megjelenítése"
-  * Ha a PowerShellben használja a `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmag
-  * Ha a CLI-t, használja a `az resource list -g AzureBackupRG_<location of your VM>_1`
-  * Keresse meg az erőforrás-típussal `Microsoft.Compute/restorePointCollections` , amely rendelkezik az elnevezési minta `AzureBackup_<name of your VM that you're trying to move>_###########`
-  * Ez az erőforrás törlése
-  * Törlés befejezése után lesz a virtuális gép áthelyezése
+* Ha a virtuális gép úgy van konfigurálva, a biztonsági mentéshez, lásd: [Recovery Servicesre vonatkozó korlátozásokat](#recovery-services-limitations).
 * Virtual Machine Scale Sets Standard Termékváltozatú terheléselosztó vagy a Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A csatolt tervek Piactéri erőforrások alapján létrehozott virtuális gépeken nem lehet áthelyezni, erőforráscsoport vagy előfizetés között. Az aktuális előfizetésben a virtuális gép megszüntetése, és telepítse újra az új előfizetés.
 
@@ -334,19 +326,17 @@ Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virt
 
 ## <a name="app-service-limitations"></a>Az App Service korlátai
 
-Az App Service-erőforrások áthelyezésére korlátozások eltérő Ha áthelyez egy előfizetésen belül vagy egy új előfizetést az erőforrások alapján.
-
-Feltöltött tanúsítványok, a nem App Service-tanúsítványok az ezekben a szakaszokban ismertetett korlátozások vonatkoznak. Továbbléphet az App Service-tanúsítványok új erőforráscsoportba vagy előfizetésbe korlátozások nélkül. Ha több web apps, az azonos App Service-tanúsítványt használja, először helyezze át a web apps helyezze át a tanúsítványt.
+Az App Service-erőforrások áthelyezésére korlátozások eltérő Ha áthelyez egy előfizetésen belül vagy egy új előfizetést az erőforrások alapján. Ha a webalkalmazás az App Service-tanúsítványt használ, tekintse meg a [App Service-tanúsítvány korlátozások](#app-service-certificate-limitations)
 
 ### <a name="moving-within-the-same-subscription"></a>Az egy előfizetésen belüli áthelyezése
 
-Ha a webalkalmazás áthelyezése _ugyanazon az előfizetésen belül_, a feltöltött SSL-tanúsítványok nem helyezhetők át. Azonban áthelyezheti egy webalkalmazást az új erőforráscsoport áthelyezése a feltöltött SSL-tanúsítvány nélkül, és az alkalmazás SSL funkció továbbra is működik.
+Ha a webalkalmazás áthelyezése _ugyanazon az előfizetésen belül_, külső SSL-tanúsítványok nem helyezhetők át. Azonban áthelyezheti egy webalkalmazást az új erőforráscsoport áthelyezése a külső tanúsítvány nélkül, és az alkalmazás SSL funkció továbbra is működik.
 
 Ha szeretné helyezni az SSL-tanúsítványt a webalkalmazással, kövesse az alábbi lépéseket:
 
-1. Törölje a feltöltött tanúsítvány megjelenjen a webalkalmazásból.
+1. Törölje a külső tanúsítványt a webalkalmazásból, de a tanúsítvány egy példányát megtartása
 2. Helyezze át a webes alkalmazás.
-3. Töltse fel a tanúsítványt a áthelyezett webalkalmazáshoz.
+3. A külső tanúsítvány feltöltése az áthelyezett webalkalmazáshoz.
 
 ### <a name="moving-across-subscriptions"></a>Áthelyezése előfizetések között
 
@@ -359,6 +349,10 @@ Ha a webalkalmazás áthelyezése _előfizetésekben_, az alábbi korlátozások
     - App Service-környezetek
 - Az erőforráscsoportban lévő összes App Service-erőforrások együtt lehessen áthelyezni.
 - App Service-erőforrások csak akkor helyezhető el az erőforráscsoportból, amelyben eredetileg létrehozták őket. Ha egy App Service erőforrás már nem az eredeti erőforráscsoportba, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és ezután áthelyezhető előfizetések között.
+
+## <a name="app-service-certificate-limitations"></a>App Service-tanúsítvány korlátozások
+
+Az App Service-tanúsítvány áthelyezheti egy új erőforráscsoportot vagy előfizetést. Ha az App Service-tanúsítványt egy webalkalmazáshoz kötött, előtt az erőforrások áthelyezése új előfizetésre kell végeznie néhány lépést. Törölje az erőforrások áthelyezése előtti az SSL-kötés és a privát tanúsítványt a webalkalmazásból. Az App Service-tanúsítvány törlése, nem kell az web app alkalmazásban csak a privát tanúsítványt.
 
 ## <a name="classic-deployment-limitations"></a>Klasszikus üzembe helyezési korlátozásoknak
 
@@ -382,7 +376,7 @@ Klasszikus erőforrások áthelyezése ugyanazon az előfizetésen belül egy ú
 Ha az erőforrások áthelyezése új előfizetésre, a következő korlátozások vonatkoznak:
 
 * Az előfizetés összes klasszikus erőforrást műveletben kell áthelyezni.
-* A célként megadott előfizetés nem tartalmazhat bármilyen egyéb klasszikus erőforrások.
+* A célként megadott előfizetés nem kell klasszikus erőforrásokat.
 * Az áthelyezés csak igényelni lehet klasszikus áthelyezését a külön REST API-n keresztül. A standard szintű Resource Manager áthelyezés parancsok nem működnek, ha a klasszikus erőforrások áthelyezése új előfizetésre.
 
 Klasszikus erőforrások áthelyezése új előfizetést, használja a REST-műveletek, konkrétan a klasszikus erőforrások. A REST használata, hajtsa végre az alábbi lépéseket:
@@ -448,18 +442,21 @@ A művelet több percig futtathatnak.
 
 Recovery Services-tároló áthelyezéséhez regisztrálnia kell egy privát előzetes verzióban érhető el. Próbálja ki, hogy írni AskAzureBackupTeam@microsoft.com.
 
-Az Azure Site Recovery vész-helyreállítási beállításához használt tárolási, hálózati és számítási erőforrások áthelyezése nincs engedélyezve.
+Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre. Tárolók, amelyek biztonsági mentése az Azure Files, az Azure File Sync vagy az SQL IaaS virtuális gépek nem helyezhetők át. 
 
-Például tegyük fel, hogy beállította-e a tárfiókhoz (Storage1) a helyszíni gépek replikálását, és szeretné a védett gép merülnek fel a feladatátvételt követően az Azure-ba (Network1) virtuális hálózathoz csatolt virtuális gépként (VM1 –). Ön nem helyezhetők át a következő Azure erőforrások - Storage1 VM1 és Network1 - ugyanazon az előfizetésen belüli erőforráscsoportok között vagy előfizetések között.
+Ha egy virtuális gép nem helyezi át a tárolóval, az aktuális virtuális gép helyreállítási pontjait a tárolóban marad, amíg le nem járnak. A virtuális gép áthelyezése a tárolóval, vagy sem, hogy a virtuális gép visszaállíthatja a korábbi biztonsági másolatok a tárolóban.
 
-A regisztrált virtuális gép áthelyezése a **az Azure backup** erőforráscsoportok között:
- 1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági másolatok adatainak megőrzése
- 2. A virtuális gép áthelyezése a céloldali erőforráscsoport
- 3. Ismételt védelem – mellett az azonos/új tároló
+Recovery Services-tároló közötti előfizetés biztonsági mentések nem támogatja. Ha áthelyezi a virtuális gép biztonsági mentési adatokat tároló előfizetések között, a virtuális gépeknek ugyanahhoz az előfizetéshez, és az ezen az azonos céloldali erőforráscsoport folytathatja a biztonsági mentések.
 
-Felhasználók állíthatja vissza az áthelyezési művelet előtt létrehozott rendelkezésre álló helyreállítási pontokból.
+Miután a tároló megadott a tárolóhoz tartozó biztonsági mentési szabályzatok maradnak. Jelentéskészítés és a monitorozás kell beállítani újra a tár az áthelyezés után.
 
-Ha a felhasználó a biztonsági másolatban szereplő virtuális gép előfizetések között, az 1 és 2. lépés ugyanaz marad. A 3. lépésben a felhasználónak kell csoportban található / a célul szolgáló előfizetésben létrehozott egy új tárolót a virtuális gép védelmét. Recovery Services-tároló közötti előfizetés biztonsági mentések nem támogatja.
+Virtuális gép áthelyezése egy új előfizetést a helyreállítási tár áthelyezése nélkül:
+
+ 1. Átmenetileg a biztonsági mentés leállítása
+ 2. A virtuális gépek áthelyezése az új előfizetés
+ 3. Ismételt védelem – egy új tárolót, az adott előfizetésben alatt
+
+Az Azure Site Recovery vész-helyreállítási beállításához használt tárolási, hálózati és számítási erőforrások áthelyezése nincs engedélyezve. Például tegyük fel, hogy beállította-e a tárfiókhoz (Storage1) a helyszíni gépek replikálását, és szeretné a védett gép merülnek fel a feladatátvételt követően az Azure-ba (Network1) virtuális hálózathoz csatolt virtuális gépként (VM1 –). Ön nem helyezhetők át a következő Azure erőforrások - Storage1 VM1 és Network1 - ugyanazon az előfizetésen belüli erőforráscsoportok között vagy előfizetések között.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-korlátozások
 
@@ -469,7 +466,7 @@ Amikor új előfizetésbe való áthelyezését egy HDInsight-fürtöt, előszö
 
 ## <a name="search-limitations"></a>Keresés korlátozások
 
-Egyszerre helyezni különböző régiókban lévő több keresési erőforrások nem helyezhetők át.
+Több keresési erőforrások nem helyezhetők át másik régióban egyszerre.
 Ebben az esetben kell külön áthelyezni őket.
 
 ## <a name="lb-limitations"></a> Load Balancer korlátozások
@@ -484,7 +481,7 @@ Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 
 ## <a name="use-portal"></a>A portál használatával
 
-Erőforrások áthelyezése, válassza ki ezeket az erőforrásokat tartalmazó erőforráscsoportot, és válassza a **áthelyezése** gombra.
+Erőforrások áthelyezése, válassza ki az erőforráscsoportot, és ezeket az erőforrásokat, és válassza a **áthelyezése** gombra.
 
 ![erőforrások áthelyezése](./media/resource-group-move-resources/select-move.png)
 
@@ -504,7 +501,7 @@ Ha befejeződött, értesítést kap arról, az eredmény.
 
 ## <a name="use-powershell"></a>A PowerShell használata
 
-Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) parancsot. Az alábbi példa bemutatja, hogyan több erőforrást áthelyezése egy új erőforráscsoportot.
+Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) parancsot. Az alábbi példa bemutatja, hogyan több erőforrás áthelyezése egy új erőforráscsoportot.
 
 ```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -516,7 +513,7 @@ Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Res
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
-Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [az erőforrás-áthelyezési](/cli/azure/resource?view=azure-cli-latest#az-resource-move) parancsot. Adja meg az erőforrás-azonosítókat az erőforrások áthelyezése. Az alábbi példa bemutatja, hogyan több erőforrást áthelyezése egy új erőforráscsoportot. Az a `--ids` paramétert, adja meg az erőforrás-azonosítók áthelyezése szóközzel elválasztott listáját.
+Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [az erőforrás-áthelyezési](/cli/azure/resource?view=azure-cli-latest#az-resource-move) parancsot. Adja meg az erőforrás-azonosítókat az erőforrások áthelyezése. Az alábbi példa bemutatja, hogyan több erőforrás áthelyezése egy új erőforráscsoportot. Az a `--ids` paramétert, adja meg az erőforrás-azonosítók áthelyezése szóközzel elválasztott listáját.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

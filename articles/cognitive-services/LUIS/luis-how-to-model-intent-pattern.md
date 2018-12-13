@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093182"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134998"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
 LUIS-alkalmazásokon végpont utterances kap, miután a [fogalom](luis-concept-patterns.md) minták növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Használati mintáit [entitások](luis-concept-entity-types.md) és azok szerepköreivel adott minta szintaxis segítségével adatokat szeretne kinyerni. 
@@ -96,7 +96,7 @@ Egy másik beszédszándék több mintákat szeretné hozzárendelni, jelölje b
 
 2. A **minták törlése** megerősítő párbeszédpanel jelenik meg. Válassza ki **Ok** a Törlés gombra.
 
-    ![Több minták törlésének képernyőképe](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Több minták mezőről törlésének képernyőképe](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>Entitás minta listájának szűrése
 
@@ -117,7 +117,7 @@ A szűrő alkalmazásakor a leképezés neve jelenik meg az eszköztáron.
 ## <a name="remove-entity-or-intent-filter"></a>Entitás vagy szándék szűrő eltávolítása
 Ha a minta a szűrt lista, az eszköztáron az entitás vagy a leképezés neve jelenik meg. A szűrő eltávolításához válassza ki a nevét.
 
-![Képernyőkép a szűrt minták entitás](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Képernyőkép az entitás szűrő eltávolítása](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 A szűrő törlődik, és minden minták megjelenítése. 
 

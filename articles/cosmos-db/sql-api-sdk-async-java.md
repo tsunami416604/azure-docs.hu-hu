@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: fadefe09f9f744fabe0f0f3f3cb519b3abb50b41
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 635eb1d373867d238c570c805943df4fe29da1b3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098883"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253612"
 ---
-# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB aszinkron Java SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -43,9 +43,9 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 
 <tr><td>**Első lépések**</td><td>[Az aszinkron Java SDK használatának első lépései](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
 
-<tr><td>**Kódminta**</td><td>[Github](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
+<tr><td>**Kódminta**</td><td>[GitHubon](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
 
-<tr><td>**Teljesítménnyel kapcsolatos tippek**</td><td>[Github információs](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
+<tr><td>**Teljesítménnyel kapcsolatos tippek**</td><td>[GitHub információs](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
 
 <tr><td>**Minimális támogatott futtatókörnyezet**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
@@ -63,7 +63,7 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Az írási újrapróbálkozási elérési út NPE hibája kijavítva.
 * A végpont-kezelés NPE hibája kijavítva.
-* Frissítve a sebezhető függőségek ([github #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
+* Frissítve a sebezhető függőségek ([GitHub # 68-as](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
 * Támogatás hozzáadva a hibaelhárítási Netty hálózati naplózás.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
@@ -72,16 +72,16 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Támogatás hozzáadva a Proxy.
 * Erőforrás-engedélyezési jogkivonat támogatása.
-* Kijavítva a hiba a nagyméretű partíciókulcsok kezelését ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
+* Kijavítva a hiba a nagyméretű partíciókulcsok kezelését ([GitHub #63](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
 * Továbbfejlesztett dokumentációját.
 * Az SDK átstrukturálása részletesebb modulokat.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* Kijavítva a hiba nem angol nyelvű területi beállításokhoz ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
+* Kijavítva a hiba nem angol nyelvű területi beállításokhoz ([GitHub #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
 * A hozzáadott segédmetódusokat ütközés erőforrásban.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Jackson miatt a teljesítmény javítása érdekében és licencelési org.json függőségi lecserélve ([github #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
+* Jackson miatt a teljesítmény javítása érdekében és licencelési org.json függőségi lecserélve ([GitHub #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
 * Eltávolított elavult OfferV2 osztály.
 * Átviteli sebesség tartalom ajánlat osztályhoz metódus hozzáadott leírójához.
 * Bármelyik módszert a dokumentumok és az erőforrások egy jackson objektumot adja vissza a módosított org.json típusok visszaadása.
@@ -94,18 +94,18 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 * Egyedi Index szabályzat támogatása.
 * Támogatás hozzáadva a válasz folytatási jogkivonat mérete a hírcsatorna beállításai korlátozza.
 * A partíció-lekérdezés Adatbázisközi Partition Split támogatása.
-* Kijavítva a hiba, a Json-szerializálás timestamp ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Kijavítva a hiba, a Json-szerializálás timestamp ([GitHub #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
 * Kijavítva a hiba az enumerálás a Json-szerializálást.
-* Kijavítva a hiba a 2MB méretű dokumentumok kezelése ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
-* Függőségi com.fasterxml.jackson.core:jackson-databind 2.9.5 egy hiba miatt frissített ([jackson-databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
-* Egy hiba miatt 0.8.0.17 frissített rxjava – kiegészítő funkciók a függőségi ([rxjava – kiegészítő funkciók: github #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* Kijavítva a hiba a 2MB méretű dokumentumok kezelése ([GitHub #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* Függőségi com.fasterxml.jackson.core:jackson-databind 2.9.5 egy hiba miatt frissített ([jackson-adatkötéséhez meg: GitHub #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* Egy hiba miatt 0.8.0.17 frissített rxjava – kiegészítő funkciók a függőségi ([rxjava – kiegészítő funkciók: GitHub #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
 * A metaadatok leírását frissíti, hogy a beágyazott dokumentáció a rest-tel pom-fájljába.
-* Szintaxis fokozása ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([github #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
+* Szintaxis fokozása ([GitHub #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([GitHub #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Biztonsági-nyomás támogatása a lekérdezésben.
 * A lekérdezés kulcstartományhoz partícióazonosító támogatása.
-* Javítsa ki, hogy nagyobb folytatási kérés fejlécében (#24 bugfix github).
+* Javítsa ki, hogy nagyobb folytatási kérés fejlécében (bugfix GitHub #24).
 * Annak biztosítása érdekében a JVM 4.1.22.Final frissített netty függőségi leállítja a főszálban befejeződése után.
 * Javítsa ki a tokenu relace passing fő erőforrások olvasásakor elkerülése érdekében.
 * További példák hozzá.

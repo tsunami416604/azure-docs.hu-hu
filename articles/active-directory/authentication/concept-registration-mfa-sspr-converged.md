@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 44a5b32b68b0365e957d97a516f0d767e6501c0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: dbced5cfa2a47dc2fdcf630d62104bb7ba8e7bc0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630324"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186650"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
@@ -74,6 +74,8 @@ Ezen az oldalon a felhasználók látják a korábban regisztrált hitelesítés
 Az új felületet tartozó auditnaplók az auditnapló hitelesítési módszerek kategóriában található.  
 
 ## <a name="known-issues"></a>Ismert problémák
+
+Azonosítottuk a hibát a konvergens, ahol B2B vendégfelhasználók számára engedélyezettek a konvergens regisztrációs kihasználására nem képes a multi-factor Authentication regisztrálása regisztrációs. Amikor a rendszer átirányítja a regisztrációs oldalhoz, a lap hibákat ki. Fejlesztők ismeri a problémát és megoldást nyújtanak a dolgozik. Most a javaslatot, hogy hozzon létre egy csoportot, és bármely B2B-felhasználók kizárása a csoportból.
 
 **Alapértelmezett MFA módszer telefonhívás van beállítva, amikor egy felhasználó regisztrálja magát a telefonon, szöveges üzenet használatával**
 

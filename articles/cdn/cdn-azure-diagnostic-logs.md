@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409254"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256729"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -98,7 +98,7 @@ A naplók tárolására a Log Analytics használatához kövesse az alábbi lép
    A **Log Analytics-munkaterületek** lap jelenik meg.
 
     >[!NOTE] 
-    >OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
+    >Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
@@ -107,7 +107,7 @@ A naplók tárolására a Log Analytics használatához kövesse az alábbi lép
     A **Log Analytics-munkaterület** lap jelenik meg.
 
     >[!NOTE] 
-    >OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
+    >Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/07_Create-new.png)
 
@@ -189,7 +189,7 @@ Alapvető elemzési naplók óránként jönnek létre, és az adatokat gyűjt, 
 |-------|---------|
 |Előfizetés azonosítója    |Az Azure-előfizetés Guid formátumú azonosítója.|
 |Erőforráscsoport neve |Az erőforrás nevét, amely a CDN-erőforrások tartoznak.|
-|Profil neve |A CDN-profil neve|
+|Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
 |Év|  Az év, például 2017 négyjegyű ábrázolása|
 |Hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
@@ -202,7 +202,7 @@ Hogy megkönnyítse a core analytics eléréséhez, egy eszköz bemutató kódmi
 
 Itt látható, hogyan használhatja az eszközt:
 
-1.  Tekintse meg a github-hivatkozás: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Tekintse meg a GitHub-hivatkozás: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Töltse le a kódot.
 3.  Kövesse az utasításokat fordításához és konfigurálása.
 4.  Futtassa az eszközt.
@@ -217,7 +217,7 @@ A Log Analytics használatához be kell [naplózás engedélyezése](#enable-log
 
  Az alábbi ábrán látható, az architektúra a bemeneti adatok és a tárház kimenetek:
 
-![Azure-beli monitorozási munkaterület](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Log Analytics-munkaterület](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *3. ábra – Log Analytics-adattárhoz*
 

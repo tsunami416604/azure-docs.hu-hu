@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search értékkorlátozás szűrők |} Microsoft Docs
-description: Szűrési feltételek felhasználó biztonsági azonosítóját, nyelvi, földrajzihely-vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében.
+title: Az értékkorlátozó szűrők az alkalmazások – Azure Search a Keresés a navigációban
+description: Szűrési feltétel felhasználó biztonsági azonosítóját, földrajzihely-vagy numerikus értékek keresési eredményei között az Azure Search szolgáltatásban a Microsoft Azure-ban üzemeltetett felhőalapú keresési szolgáltatás lekérdezések csökkentése érdekében.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,54 +8,55 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792409"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314805"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
-Jellemzőalapú navigációs szolgál a lekérdezési eredmények keresési alkalmazásban, ahol az alkalmazás felhasználói felületi vezérlők csoportokhoz dokumentumok (például a kategóriák és márkákat) tartalmazó Search kínál, és Azure Search biztosít a biztonsági adatstruktúra irányuló szűréséhez a felhasználói élmény. Ebben a cikkben tekintse át gyorsan az alapvető lépéseken, egy biztonsági a keresési élményt szeretne biztosítani jellemzőalapú navigációs szerkezetben létrehozásához. 
+Jellemzőalapú navigáció szolgál a lekérdezési eredmények keresési alkalmazásban, ahol az alkalmazás felhasználói felületi vezérlők hatókörkezelési keresés csoportokhoz dokumentumok (például kategóriák vagy márkái) kínál, és az Azure Search biztosít az adatok struktúrája biztonsági önállóan Irányított szűrés a felhasználói élményt. Ez a cikk gyors áttekintését egy jellemzőalapú navigációs struktúrát a keresési élményt szeretne biztosítani biztonsági létrehozásának alapvető lépéseit. 
 
 > [!div class="checklist"]
-> * Szűrés és értékkorlátozás mezők kiválasztása
+> * A szűréshez és a jellemzőalapú mezők kiválasztása
 > * A mező attribútumainak beállítása
-> * Az index és az adatok betöltése összeállítása
-> * A lekérdezés értékkorlátozás szűrők hozzáadása
+> * Hozhat létre az index és az adatok betöltése
+> * Az értékkorlátozó szűrők lekérdezés hozzáadása
 > * Eredmények kezelése
 
-Értékkorlátozás dinamikus és lekérdezés visszaadott. Keresési válaszok velük kapcsolja a értékkorlátozó kategóriákat használatával keresse meg az eredményeket. Ha nem ismeri a Decimal típushoz, a következő példa olyan bemutatásáért jellemzőalapú navigációs szerkezetben.
+Értékkorlátozással dinamikus és a egy lekérdezést a visszaadott. Search válaszai a értékkorlátozó kategóriákat ad vissza az eredmények használt bring velük. Ha nem ismeri az aspektusokat, az alábbi példában egy jellemzőalapú navigációs szerkezetben ábrája.
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Most ismerkedik jellemzőalapú navigációs és a kívánt több részletességi? Lásd: [jellemzőalapú navigációs megvalósítható az Azure Search](search-faceted-navigation.md).
+További részletek új, a jellemzőalapú navigáció, és szeretné? Lásd: [jellemzőalapú navigáció megvalósítása az Azure Search](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Mezők kiválasztása
 
-Egyetlen értéket mezők, valamint a gyűjtemények keresztül értékkorlátozás kerülhet sor. Mezőket, amelyeknek a legmegfelelőbb jellemzőalapú navigációs rendelkezik alacsony számossága: kevés eltérő érték, amely ismételje meg a keresési corpus (például listája színek, országokban vagy védjegyek) a dokumentumok teljes. 
+Egyetlen érték mezők, valamint a gyűjtemények értékkorlátozással is vetítve. Mezőkkel, amelyek működnek a legjobban a jellemzőalapú navigáció alacsony Számosság rendelkezik: egy kis számú különböző értékeket, amelyek ismételje meg a keresési forrásgyűjteményébe (például egy lista a színeket, országok vagy márkanevek) található dokumentumok teljes. 
 
-Értékkorlátozás mező által alapon engedélyezve van, az index létrehozásakor a következő attribútum TRUE értékre állításával: `filterable`, `facetable`. Csak a szűrhető mezők értéke korlátozható.
+Jellemzőalapú mező szerint alapon engedélyezve van, az index létrehozásakor a következő attribútumok igaz értékre állításával: `filterable`, `facetable`. Csak a szűrhető mezők értéke korlátozható.
 
-Bármely [mező típusa](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , amelyek esetleg használható lenne a jellemzőalapú navigáció "kategorizálható" jelölésű:
+Bármely [mezőbe írja be](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , amelyek esetleg használható lenne a jellemzőalapú navigáció "kategorizálható" van megjelölve:
 
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ Numerikus típusú: Edm.Int32, Edm.Int64, Edm.Double
++ A mező numerikus típusok: Edm.Int32, Edm.Int64, Edm.Double
 
-Nem használhatja a Edm.GeographyPoint jellemzőalapú navigáció. Értékkorlátozás emberi olvasható szöveget és számokat össze. Ilyen értékkorlátozás nem támogatottak a földrajzi koordináta. Egy hely szerint értékkorlátozás vagy régiót mezőt kell.
+Jellemzőalapú navigáció Edm.GeographyPoint nem használhat. Értékkorlátozással emberi olvasható szöveget vagy számokat és változóból tevődnek. Értékkorlátozással mint ilyen, a földrajzi koordináták nem támogatottak. Egy hely szerint értékkorlátozás vagy régiót mezőt kell lennie.
 
 ## <a name="set-attributes"></a>Attribútumainak beállítása
 
-Az index egyedi mező definíciói mező felhasznált szabályozó indexattribútumok kerülnek. A következő példában kulcsattribútumával alacsony, értékkorlátozás, hasznos mezők alkotják: kategória (Szálloda, motel, hostel), eszközök és értékeléseket. 
+Vezérelheti a mező használatát index attribútumairól az index egyedi Meződefiníciók kerülnek. A következő példában alacsony számosságú, értékkorlátozás, hasznos, ha a mezők állhat: kategória (Szálloda, amelyben, hostel), eszközök és besorolás. 
 
-A .NET API-t, a szűrő attribútumok állítható be explicit módon kell. A REST API-ban, értékkorlátozás, szűrésével, és alapértelmezés szerint engedélyezve vannak, ami azt jelenti, hogy csak kell explicit módon beállítva az attribútumokat, ha meg szeretné kikapcsolni őket. Bár nem kötelező technikailag, megmutatjuk, az adatok az alábbi többi példában oktatási célokra. 
+A .NET API-t, a szűrési attribútumokhoz explicit módon kell beállítani. A REST API-t, a többnyelvűséget és a szűrés alapértelmezés szerint engedélyezve vannak, ami azt jelenti, hogy csak kell explicit módon attribútumainak beállítása, ha szeretné kikapcsolni őket. Bár ez nem szükséges technikailag, bemutatjuk az adatok az alábbi REST-példában oktatási célokra. 
 
 > [!Tip]
-> Ajánlott eljárásként a teljesítmény- és tárolási optimalizálása kikapcsolása értékkorlátozás soha nem használható mint egy dimenzió mezőket. Különösen a singleton értékek, például az azonosító vagy a termék nevét, a karakterlánc típusú meg "Kategorizálható": hamis megelőzése érdekében a véletlen (és hatástalan) használja a jellemzőalapú navigáció.
+> Ajánlott eljárásként a teljesítmény- és tárolási optimalizálása kikapcsolása jellemzőkezelés értékkorlátozásként soha nem használt mezőket. Különösen a singleton értékek, például egy azonosító vagy a termék nevét, a karakterlánc-mezők "Kategorizálható"-ra kell állítani: False (hamis), hogy azok véletlen (és hatástalan) használja a jellemzőalapú navigáció.
 
 
 ```http
@@ -79,15 +80,15 @@ A .NET API-t, a szűrő attribútumok állítható be explicit módon kell. A RE
 ```
 
 > [!Note]
-> Az index definícióját a rendszer átmásolja az [létrehozása az Azure Search-index REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). A mező felületi különbséget kivételével azonos legyen. Szűrhető és kategorizálható attribútumok explicit módon kerülnek a kategóriát, címkék, parkingIncluded, smokingAllowed és minősítési mezők. A gyakorlatban szűrhető kap, és a kategorizálható szabad Edm.String Edm.Boolean és Edm.Int32 mező típusokon. 
+> Az index definícióját átmásolva [létrehozása az Azure Search-index REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez megegyezik a Meződefiníciók felületi eltérések kivételével. Filterable és kategorizálható attribútumok explicit módon hozzáadódnak a kategória, címkék, parkingIncluded, smokingAllowed és minősítés mezőket. A gyakorlatban szűrhető kap, és a kategorizálható Edm.String Edm.Boolean és Edm.Int32 mezőtípusok az ingyenes. 
 
-## <a name="build-and-load-an-index"></a>Build és betölteni egy indexet
+## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
 
-Egy közbenső (és esetleg nyilvánvaló) lépés, hogy kell [felépítéséhez és az index feltöltése](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) mielőtt egy lekérdezésben. Ebben a lépésben Itt a teljesség megemlíteni azt. Annak meghatározásához, hogy rendelkezésre áll-e az index egy úgy, hogy az indexek lista ellenőrzés a [portal](https://portal.azure.com).
+Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
 
-## <a name="add-facet-filters-to-a-query"></a>A lekérdezés értékkorlátozás szűrők hozzáadása
+## <a name="add-facet-filters-to-a-query"></a>Az értékkorlátozó szűrők lekérdezés hozzáadása
 
-Az alkalmazás kódjában, amely meghatározza egy érvényes lekérdezés, beleértve a keresési kifejezéseket, értékkorlátozás, szűrők, pontozási profilok – semmit állítson össze egy kérelem használt minden részén lekérdezést készíteni. Az alábbi példa épít fel a kérelmeket, amelyek értékkorlátozás navigációs vendéglátóipar, besorolásával és egyéb készülékek típusa alapján hoz létre.
+Az alkalmazás kódjában hozhatnak létre egy lekérdezést, amely meghatározza egy érvényes lekérdezést, beleértve a keresési kifejezéseket, értékkorlátozással, szűrőket, pontozási profilok – semmi állítson össze egy kérelmet használt minden része. Az alábbi példa egy kérelmet, amely létrehozza az értékkorlátozó navigációs vendéglátóipar, besorolásával és egyéb készülékek típusa alapján hoz létre.
 
 ```csharp
 SearchParameters sp = new SearchParameters()
@@ -98,33 +99,33 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-### <a name="return-filtered-results-on-click-events"></a>A szűrt eredménye kattintson az események
+### <a name="return-filtered-results-on-click-events"></a>A visszaadott eredmény kattintási események
 
-A szűrőkifejezés kezeli az kattintson eseményt értékkorlátozás értéke. Egy kategória dimenzió megadott, kattintson a "motel" kategória keresztül történik egy `$filter` , ami az adott típusú szállások kifejezés. Amikor egy felhasználó "motelek" annak jelzésére, hogy megjelenjenek-e csak motelek kattint, a következő lekérdezés az alkalmazás tartalmazza-e a $filter = kategória eq 'motelek".
+A szűrőkifejezés kezeli a kattintás eseményt, értékkorlátozás értéke. Adja meg a kategória értékkorlátozás, kattintson a "amelyben" kategória biztosítják a `$filter` kifejezés, amely az adott típusú szálláshelyigényt kiválasztja. Ha egy felhasználó "motelek" jelzi, hogy megjelenjen-e csak motelek kattint, a következő lekérdezés az alkalmazás elküld tartalmazza-e a $filter = kategória eq 'motelek".
 
-A következő kódrészletet, ha a felhasználó kiválaszt egy értéket a kategória dimenzió hozzáadja a szűrő kategóriát.
+A következő kódrészletet, ha a felhasználó kiválaszt egy értéket a kategória aspektus ad hozzá a szűrő kategória.
 
 ```csharp
 if (categoryFacet != "")
   filter = "category eq '" + categoryFacet + "'";
 ```
-A REST API használatával, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist: `$filter=category/any(c: c eq 'c1')`
+A REST API-val, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist: `$filter=category/any(c: c eq 'c1')`
 
-## <a name="tips-and-workarounds"></a>Tippek és a lehetséges megoldások
+## <a name="tips-and-workarounds"></a>Tippek és megkerülő megoldások
 
-### <a name="initialize-a-page-with-facets-in-place"></a>Egy helyen megnyilvánulása lap inicializálása
+### <a name="initialize-a-page-with-facets-in-place"></a>Helyben értékkorlátozással tartalmazó oldalt inicializálása
 
-Ha azt szeretné, egy helyen megnyilvánulása lap inicializálása, a lekérdezés lap inicializálási rendezi a lap egy kezdeti értékkorlátozás struktúrával részeként is elküldheti.
+Szeretné inicializálni a helyen értékkorlátozással tartalmazó oldalt, ha a lekérdezés használatával ültet be az oldal egy kezdeti értékkorlátozás struktúrával se inicializace stránky részeként küldhet.
 
-### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Aszinkron módon szűrt eredményeinek jellemzőalapú navigációs szerkezetben megőrzése
+### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>A szűrt eredmények aszinkron módon jellemzőalapú navigációs szerkezetben megőrzése
 
-A dimenzió navigációs az Azure Search kihívásai egyike, hogy létezik-e értékkorlátozás a csak az aktuális eredmény. A gyakorlatban esetében gyakori, rögzített értékkorlátozást megőrizni, hogy a felhasználó navigálhatnak visszafelé, Visszalépés az alternatív elérési utak keresztül keresés felfedezése lépéseket. 
+Az értékkorlátozó navigációs az Azure Search szolgáltatásban a legnagyobb kihívás, hogy létezik-e értékkorlátozással csak az aktuális eredményt. A gyakorlatban szokás megőrzése értékkorlátozással statikus készletét, hogy a felhasználó navigálhat fordított, a Visszalépés lépések végrehajtásával Fedezze fel az alternatív útvonalait a tartalom keresése. 
 
-Bár ez egy gyakori használati eset, nincs valamit a jellemzőalapú navigációs szerkezetben out-of-az-box tartalmaz. A fejlesztők számára statikus értékkorlátozás általában két szűrt lekérdezések kiállításával áthidalni a korlátozást: egyet az eredmények hatókörét, a másik navigációs célokra értékkorlátozás statikus listájának létrehozásához használt.
+Bár ez egy gyakori alkalmazási helyzet, már nem valami a jellemzőalapú navigációs szerkezetben jelenleg nyújt a-beépített. A fejlesztők számára statikus értékkorlátozással általában két szűrt lekérdezések kiállításával megkerüléséhez a korlátozás: egyet az eredmények hatóköre, a másik hozzon létre egy statikus értékkorlátozással navigációs célokra használt.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Az Azure Search szűrők](search-filters.md)
-+ [Index REST API-t létrehozni](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Szűrők az Azure Search szolgáltatásban](search-filters.md)
++ [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

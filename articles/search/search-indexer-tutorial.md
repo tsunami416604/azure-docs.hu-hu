@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag az Azure SQL-adatbázisok indexeléséről az Azure Search szolgáltatásban | Microsoft Docs
+title: Az oktatóanyag az Azure SQL-adatbázisok Azure portal – Azure Search az indexeléshez
 description: Ebben az oktatóanyagban feltérképezi az Azure SQL Database-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988795"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312051"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Oktatóanyag: Azure SQL Database-adatbázis feltérképezése Azure Search-indexelőkkel
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Oktatóanyag: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
 Ez az oktatóanyag az indexelő konfigurálását mutatja be kereshető adatok kinyeréséhez egy minta Azure SQL-adatbázisból. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Az Azure SQL-adatbázis indexelője mind közül a legszélesebb körben használt indexelő. 
 

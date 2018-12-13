@@ -3,8 +3,8 @@ title: Azure CLI-példaszkript – Webalkalmazás létrehozása a GitHubról tö
 description: Azure CLI-példaszkript – Webalkalmazás létrehozása a GitHubról történő üzembe helyezéssel
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 81077e25dfdafae163490aae01266f4742f520c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 85e90349c6842942423e5cf6d3a1cfed3f11b234
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993833"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186446"
 ---
-# <a name="create-a-web-app-with-deployment-from-github"></a>Webalkalmazás létrehozása a GitHubról történő üzembe helyezéssel
+# <a name="create-a-web-app-with-deployment-from-github-using-azure-cli"></a>Webalkalmazás létrehozása az Azure CLI-vel a githubról történő üzembe helyezéssel
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt. Ezután telepíti a webalkalmazás kódját egy nyilvános GitHub-adattárból (folyamatos üzembe helyezés nélkül). A GitHubról való folyamatos üzembe helyezésről lásd: [Webalkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel](app-service-cli-continuous-deployment-github.md).
 

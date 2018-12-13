@@ -1,5 +1,5 @@
 ---
-title: A fejlesztési környezet konfigurálása
+title: Python fejlesztési környezet beállítása
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatás használatakor. Ebből a dokumentumból megtudhatja, hogyan Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása a Jupyter Notebooks, Azure notebookok, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e2222d56ea37983b1efafedaac8e01058cb44fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 59f847dc38cddfd9185cfd169cf1ef34c744f8f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098049"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192634"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -25,11 +25,11 @@ Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja a fejlesztési kör
 
 Ez a dokumentum a következő konkrét környezetekben és eszközök összpontosít:
 
-* [Az Azure notebookok](#aznotebooks): az Azure-felhőben üzemeltetett, A Jupyter notebookok szolgáltatás. Ez __a legegyszerűbb__ megoldást a kezdéshez, mivel az Azure Machine Learning SDK már telepítve van.
-* [Az adatelemző virtuális gép](#dsvm): A __előre konfigurált fejlesztői és kísérleti környezetben__ az Azure-felhőben, amely __tervezett data science munkahelyi__ és egyaránt telepíthető Egyetlen Virtuálisgép-példányok Processzor és GPU-alapú példányok. Python 3, Conda, a Jupyter notebookok és az Azure Machine Learning SDK már telepítve vannak. A virtuális gép együttműködik a népszerű gépi tanulás / deep learning-keretrendszerek, eszközök és -szerkesztők, gépi Tanulási megoldások fejlesztéséhez. Valószínűleg __a legteljesebb körű__ fejlesztői környezet ML-hez az Azure platformon.
-* [A Jupyter Notebooks](#jupyter): Ha már használja a Jupyter Notebooks, az SDK-val rendelkezik-e néhány kiegészítő funkciók, amelyek kell telepítenie.
-* [A Visual Studio Code](#vscode): Visual Studio Code-ot használ, hogy vannak-e néhány hasznos bővítményt, amely telepíthető.
-* [Az Azure Databricks](#aml-databricks): egy népszerű elemzési platform az Apache Spark alapján. Ismerje meg, hogyan tehet szert az Azure Machine Learning SDK alakzatot a fürt üzembe helyezéséhez modellek.
+* [Az Azure notebookok](#aznotebooks): Az Azure-felhőben üzemeltetett Jupyter notebookok szolgáltatás. Ez __a legegyszerűbb__ megoldást a kezdéshez, mivel az Azure Machine Learning SDK már telepítve van.
+* [Az adatelemző virtuális gép](#dsvm): A __előre konfigurált fejlesztői és kísérleti környezetben__ az Azure-felhőben, amely __tervezett data science munkahelyi__ , és csak a Virtuálisgép-példányok vagy GPU-alapú példányok vagy CPU telepíthetők. Python 3, Conda, a Jupyter notebookok és az Azure Machine Learning SDK már telepítve vannak. A virtuális gép együttműködik a népszerű gépi tanulás / deep learning-keretrendszerek, eszközök és -szerkesztők, gépi Tanulási megoldások fejlesztéséhez. Valószínűleg __a legteljesebb körű__ fejlesztői környezet ML-hez az Azure platformon.
+* [A Jupyter Notebooks](#jupyter): Ha már használja a Jupyter Notebooks, az SDK-val rendelkezik néhány kiegészítő funkciók, amelyek kell telepítenie.
+* [A Visual Studio Code](#vscode): A Visual Studio Code-ot használ, ha nincsenek néhány hasznos bővítményt, amely telepíthető.
+* [Az Azure Databricks](#aml-databricks): Apache Spark-alapú népszerű elemzési platform. Ismerje meg, hogyan tehet szert az Azure Machine Learning SDK alakzatot a fürt üzembe helyezéséhez modellek.
 
 Ha már a Python 3-környezettel rendelkezik, vagy csak szeretné, az SDK telepítésének alapvető lépéseit, tekintse meg a [helyi számítógép](#local) szakaszban.
 
@@ -212,7 +212,7 @@ A Visual Studio Code fejlesztési célra, használja az alábbi lépéseket:
 
 1. Python-fejlesztéshez a Visual Studio Code használatával kapcsolatban lásd: a [Python a vscode-ban – első lépések](https://code.visualstudio.com/docs/python/python-tutorial) dokumentumot.
 
-1. Válassza ki a Conda-környezetet, nyissa meg a VS Code, majd használja __Ctrl-Shift-P__ (Linux és Windows) vagy __parancs-Shift-P__ (Mac) lekérése a __parancs raklapos__. Adja meg __Python: kiválasztása Interpret__ , és válassza ki a conda-környezetet.
+1. Válassza ki a Conda-környezetet, nyissa meg a VS Code, majd használja __Ctrl-Shift-P__ (Linux és Windows) vagy __parancs-Shift-P__ (Mac) lekérése a __parancs raklapos__. Adja meg __Python: Válassza ki a Interpret__ , és válassza ki a conda-környezetet.
 
 1. Ellenőrizze, hogy az SDK-t is használhatja, hozzon létre egy új Python-fájlt (.py), amely a következő kódot tartalmazza. Ezután futtassa a fájlt:
 

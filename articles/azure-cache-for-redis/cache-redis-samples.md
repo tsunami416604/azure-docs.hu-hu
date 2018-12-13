@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 8d31e8909a6c06fc324fef95907f0617a6723236
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ea509d3804053f060ad551b6eff945b70cec8796
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019685"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261058"
 ---
-# <a name="azure-cache-for-redis-samples"></a>Az Azure Cache Redis-minták
+# <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
 Ez a témakör az Azure Cache Redis-minták kiterjedő forgatókönyvek, például egy cache olvasása és írása adat- és a gyorsítótárból való kapcsolódással és az Azure Cache gyorsítótárral az ASP.NET a Redis-szolgáltatók listája. A minták néhány letölthető projektek, és néhány tartalmaz részletes útmutatást és kódrészletek tartalmazza, de ne csatolja egy letölthető projektet.
 
 ## <a name="hello-world-samples"></a>Hello world minta
@@ -40,7 +40,7 @@ Ez a példa bemutatja, hogyan lehet:
 * Használhatja a Redis csoportokat címkézés megvalósítása
 * A Redis-fürt használata
 
-További információkért lásd: a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) dokumentációja a githubon, és további használati forgatókönyvek esetén tekintse meg a [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests) egységteszteket.
+További információkért lásd: a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) dokumentációja a Githubon, és további használati forgatókönyvek esetén tekintse meg a [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests) egységteszteket.
 
 [Az Azure Cache használata pythonnal redis](cache-python-get-started.md) bemutatja, hogyan kezdheti el az Azure Cache a redis használata Python és a [redis-py](https://github.com/andymccurdy/redis-py) ügyfél.
 

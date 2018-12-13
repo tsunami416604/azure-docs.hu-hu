@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Bing News Search SDK, Java'
+title: 'Gyors útmutató: Hajtsa végre a hírkeresési – a Bing News Search SDK a Javához készült'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan helyezheti üzembe a Bing News SDK-konzolalkalmazást.
+description: Ez a rövid útmutató segítségével hírkeresés a Bing News Search SDK használata Javához készült, és a válasz feldolgozása.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 056d75a1039e805786b14aa19c896bda78d04150
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316871"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251589"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-java"></a>Rövid útmutató: Bing News Search SDK Javával
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>Gyors útmutató: Bing – Hírkeresés a Java SDK
 
 A Bing News Search SDK a REST API funkciót biztosítja a hírek lekérdezéséhez és az eredmények elemzéséhez.  A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
 

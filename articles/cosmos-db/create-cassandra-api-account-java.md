@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
+title: Hozzon létre egy Java-alkalmazás – Azure Cosmos DB Cassandra API-fiókot
 description: Ez a cikk bemutatja, hogyan hozhat létre Cassandra API-fiókot, és hogyan adhat hozzá adatbázist (más néven kulcsteret) és táblát egy Java-alkalmazás segítségével.
 author: kanshiG
 ms.author: govindk
@@ -8,15 +8,16 @@ services: cosmos-db
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: 57b255fc3875adfd411ee8508f238f0e10af85f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0bff57d91a777619b825dacef5988dda010c794b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089836"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138840"
 ---
-# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Oktatóanyag: Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-by-using-a-java-application"></a>Oktatóanyag: Egy Azure Cosmos DB Cassandra API-fiók létrehozása a Java-alkalmazás használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Java-alkalmazás segítségével egy Cassandra API-fiókot az Azure Cosmos DB-ben, és hogyan adhat hozzá a fiókhoz egy adatbázist (más néven kulcsteret) és egy táblát. A Java-alkalmazás a [Java illesztőprogramot](https://github.com/datastax/java-driver) használja egy felhasználói adatbázis létrehozásához, amely olyan adatokat tartalmaz, mint a felhasználók azonosítója, neve és városa.  
 

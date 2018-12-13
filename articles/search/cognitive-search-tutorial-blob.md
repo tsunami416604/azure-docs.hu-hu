@@ -1,5 +1,5 @@
 ---
-title: Kognitív keresési API-k meghívása az Azure Search szolgáltatásban | Microsoft Docs
+title: Az oktatóanyag a cognitive search API-k – Azure Search hívása
 description: Ez az oktatóanyag részletesen bemutat egy példát adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
 manager: pablocas
 author: luiscabrer
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 3350f182e236cc0828040f1ee1eb73cf54cf18a8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec2018
+ms.openlocfilehash: 4f5b0661f67dd63177309905079ee68716e9e721
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957367"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315740"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg a kognitív keresési API-k (előzetes verzió) meghívásának módját
+# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg, hogyan hívhat meg kognitív API-k (előzetes verzió)
 
 Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. A kognitív képességek olyan természetes nyelvi feldolgozási (NLP) és képfeldolgozási műveletek, amelyek kinyerik egy kép szövegeit vagy szöveges ábrázolásait, észlelik a nyelvet, az entitásokat, a kulcskifejezéseket stb. Ennek a végeredménye egy kognitív keresésindexelési folyamat által létrehozott, további tartalmakban gazdag Azure Search-index. 
 
@@ -34,7 +35,9 @@ A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásb
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
+> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
+>
+> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,14 +68,12 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
   ![A portál szolgáltatás-definíció lap](./media/cognitive-search-tutorial-blob/create-search-service1.png "szolgáltatás definíció lap a portálon")
   ![szolgáltatás definíció lap a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition lap az a portálon")
 
-  > [!NOTE]
-  > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Ennek a funkciónak a díjszabását a későbbiekben jelentjük be.
-
+ 
 1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
 
   ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service3.png "Szolgáltatásdefiníciós oldal a portálon")
 
-1. Miután létrehozta a szolgáltatást, gyűjtse össze a következő információkat: az **URL-címet** az Áttekintés lapról és az **api-kulcsot** (elsődleges vagy másodlagos) a Kulcsok lapról.
+1. A szolgáltatás létrehozása után gyűjtse össze a következő információkat: **URL-cím** – Áttekintés lapon, és **api-kulcs** (elsődleges vagy másodlagos) a kulcsok lapról.
 
   ![Végpont- és kulcsadatok a portálon](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Végpont- és kulcsadatok a portálon")
 
@@ -130,7 +131,7 @@ Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e a
 Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2017-11-11-Preview` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. A fejlécet az oktatóanyag további lépéseiben ismét felhasználhatja.
 
 > [!TIP]
-> Mielőtt belevetné magát a munka nagyobb részébe, eljött a megfelelő pillanat annak ellenőrzésére, hogy a keresőszolgáltatás az előzetes verziót támogató helyek egyikén, az USA déli középső régiójában vagy a nyugat-európai régióban fut-e.
+> Most mielőtt rengeteg munkát, ellenőrizze, hogy a keresési szolgáltatás fut-e a támogatott helyek egyikén ideje biztosít az előzetes verziójú funkció: USA déli középső Régiójában és Nyugat-Európa.
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 

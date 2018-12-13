@@ -1,5 +1,5 @@
 ---
-title: Nyílt forráskódú technológiák – gyakori kérdések az Azure web apps |} A Microsoft Docs
+title: Nyílt forráskódú technológiák – gyakori kérdések – Azure App Service-ben |} A Microsoft Docs
 description: Az Azure App Service Web Apps funkcióját a nyílt forráskódú technológiákkal kapcsolatos gyakori kérdésekre választ kaphat.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 19168f965f2a98a1dc3f94ae0b029449865a9582
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ac80cd5ee1c530736666338e8bc3763b110c688c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971350"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255533"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákat az Azure Web Apps vonatkozó gyakori kérdések
 
@@ -113,7 +114,7 @@ Django telepítésével kapcsolatos információkért lásd: [Django-alkalmazás
 
 Az Azure Marketplace-en, és egyéni telepítésekhez:
 
-* Mappa helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Mappájának helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * A lényeges fájlok:
     * catalina. *éééé-hh-nn*.log
     * host-manager.*yyyy-mm-dd*.log
@@ -124,7 +125,7 @@ Az Azure Marketplace-en, és egyéni telepítésekhez:
 
 A portál **Alkalmazásbeállítások** központi telepítések:
 
-* Mappa helye: D:\home\LogFiles
+* Mappájának helye: D:\home\LogFiles
 * A lényeges fájlok:
     * catalina. *éééé-hh-nn*.log
     * host-manager.*yyyy-mm-dd*.log
@@ -189,7 +190,7 @@ Ha nemrégiben áttelepítette az Azure-ba, előfordulhat, hogy a WordPress irá
 
 WordPress ismerős + az Azure-webhely bővítmény frissítése az adatbázisban közvetlenül az átirányítási URL-cím használható. WordPress ismerős + használatával kapcsolatos további információkért lásd: [WordPress eszközöket és a MySQL-migrálása a WordPress ismerős +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
 
-Azt is megteheti, ha inkább manuálisan frissíteni az átirányítási URL-cím, az SQL-lekérdezések vagy PHPMyAdmin, lásd: [WordPress: helytelen URL-cím átirányítása](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Azt is megteheti, ha inkább manuálisan frissíteni az átirányítási URL-cím, az SQL-lekérdezések vagy PHPMyAdmin, lásd: [WordPress: Helytelen URL-cím átirányítása](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan változtatható meg a bejelentkezési jelszó WordPress?
 
@@ -203,8 +204,8 @@ Ha saját maga a közelmúltban a beépülő modul telepítése után a WordPres
 
 A MySQL-adatbázis, amely csatlakozik a WordPress-webhely áttelepítése több lehetősége van:
 
-* A fejlesztők: Használja a [parancssort vagy a PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nem-Fejlesztők: [WordPress ismerős +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* Fejlesztők számára: Használja a [parancssort vagy a PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Nem-fejlesztők számára: Használat [WordPress ismerős +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segíti meg, hogy még biztonságosabbá teheti a WordPress-e?
 

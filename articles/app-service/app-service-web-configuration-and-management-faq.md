@@ -1,5 +1,5 @@
 ---
-title: Konfiguráció – gyakori kérdések az Azure web appshez |} A Microsoft Docs
+title: Konfiguráció – gyakori kérdések – az Azure App Service |} A Microsoft Docs
 description: Konfigurálással és felügyelettel kapcsolatos gyakori kérdésekre adott válaszokat lekérése az Azure App Service Web Apps funkcióját.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c2758084331a487d65235b70bed803a74d0a34b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967742"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322533"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -138,7 +138,7 @@ A WebJob-naplókat, tekintse át:
 6. Válassza ki a **váltógomb kimeneti** gombra.
 7. Válassza ki a letöltési hivatkozás.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Hibrid kapcsolatok használata az SQL Server próbálok. Miért jelenik meg az üzenet "System.OverflowException: a művelet aritmetikai túlcsordulást okozott"?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Hibrid kapcsolatok használata az SQL Server próbálok. Miért jelenik meg az üzenet "System.OverflowException: A művelet aritmetikai túlcsordulást okozott"?
 
 Hibrid kapcsolatok használatával az SQL Server elérését, ha a Microsoft .NET frissítés 2016. május 10-én a kapcsolódás meghiúsulását okozhatja. Ez az üzenet jelenhetnek meg:
 
@@ -199,7 +199,7 @@ A HAR-fájl megtekintéséhez használja a [HAR megjelenítő](http://www.softwa
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Miért kapok hiba jelenik meg csatlakozni egy App Service-webalkalmazás az expressroute-hoz csatlakoztatott virtuális hálózat?
 
-Az Azure-webalkalmazás csatlakoztatása egy virtuális hálózathoz, amely az Azure ExpressRoute csatlakozik-e meg, ha sikertelen. A következő üzenet jelenik meg: "Gateway nem egy VPN-átjárót."
+Az Azure-webalkalmazás csatlakoztatása egy virtuális hálózathoz, amely az Azure ExpressRoute csatlakozik-e meg, ha sikertelen. A következő üzenet jelenik meg: "Átjáró nem VPN-átjáró."
 
 Jelenleg nem lehet az expressroute-hoz csatlakoztatott virtuális hálózat pont – hely VPN-kapcsolatok. A pont – hely VPN és ExpressRoute nem létezhet ugyanazon a virtuális hálózaton. További információkért lásd: [ExpressRoute és site-to-site VPN-kapcsolatok korlátok és korlátozások](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 
@@ -296,7 +296,7 @@ A leggyorsabb mód a Microsoft .NET App Service-ben telepített verzió azonosí
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Automatikus skálázási miért nem működik, a várható?
 
-Ha Azure automatikus méretezési funkciójával még nem számát vagy a web app-példány horizontálisan skálázott megfelelő-e, akkor előfordulhat, hogy fut-e be egy olyan forgatókönyvet, amelyben szándékosan lehetőséget választjuk, nem méretezhető miatt "állapota váltakozik." végtelen ciklust elkerülése érdekében Ez általában akkor fordul elő, amikor a horizontális felskálázást és a horizontális leskálázási küszöbértékek között nem megfelelő. Megtudhatja, hogyan "váltakozó" elkerülése érdekében, valamint hogy olvassa a többi az automatikus méretezés ajánlott eljárásairól, olvassa [automatikus méretezés ajánlott eljárásairól](../monitoring-and-diagnostics/insights-autoscale-best-practices.md#autoscale-best-practices).
+Ha Azure automatikus méretezési funkciójával még nem számát vagy a web app-példány horizontálisan skálázott megfelelő-e, akkor előfordulhat, hogy fut-e be egy olyan forgatókönyvet, amelyben szándékosan lehetőséget választjuk, nem méretezhető miatt "állapota váltakozik." végtelen ciklust elkerülése érdekében Ez általában akkor fordul elő, amikor a horizontális felskálázást és a horizontális leskálázási küszöbértékek között nem megfelelő. Megtudhatja, hogyan "váltakozó" elkerülése érdekében, valamint hogy olvassa a többi az automatikus méretezés ajánlott eljárásairól, olvassa [automatikus méretezés ajánlott eljárásairól](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Miért nem automatikus skálázási néha méretezése csak részben?
 

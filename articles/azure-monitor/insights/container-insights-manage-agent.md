@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 03e67508aab57a825c851f2cb3d361c0aea63f72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 566ab8d14ebce04a2cba208dd72efc3782d5ad41
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109823"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256298"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Az Azure Monitor tárolók ügynök kezelése
 Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log Analytics-ügynök Linux rendszeren. Kezdeti telepítés után nincsenek rutin vagy választható feladatok végrehajtásához életciklusa során szükség lehet. Ez a cikk részletesen manuálisan frissítse az ügynököt, és tiltsa le az adott tároló környezeti változóit. 
@@ -62,9 +62,9 @@ Az állapot a következő példában kell hasonlítania ahol értéke *omi* és 
     docker-cimprov 1.0.0.31
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változó gyűjtemény egy tároló letiltása
-Környezeti változók gyűjti össze a tárolók fut egy pod-tárolókhoz az Azure Monitor és a jeleníti meg őket a tulajdonság panelen a kiválasztott tároló a **tárolók** megtekintése. Ez a viselkedés vagy vagy után az AKS-fürt üzembe helyezése során egy adott tároló gyűjtés letiltása szabályozhatja a környezeti változó beállításával *AZMON_COLLECT_ENV*. Ez a funkció érhető el az ügynök verziója – ciprod11292018 és újabb verzióit.  
+Környezeti változók gyűjti össze a tárolók fut egy pod-tárolókhoz az Azure Monitor és a jeleníti meg őket a tulajdonság panelen a kiválasztott tároló a **tárolók** megtekintése. Ez a viselkedés szabályozhatja az AKS-fürtöt, vagy után üzembe helyezés során vagy egy adott tároló gyűjtés letiltása a környezeti változó beállításával *AZMON_COLLECT_ENV*. Ez a funkció érhető el az ügynök verziója – ciprod11292018 és újabb verzióit.  
 
-Egy új vagy meglévő tárolón környezeti változók gyűjteményét letiltásához állítsa be a változó *AZMON_COLLECT_ENV* értékkel *hamis* a Kubernetes üzembe helyezési yaml-konfigurációs fájl.   
+Egy új vagy meglévő tárolón környezeti változók gyűjteményét letiltásához állítsa be a változó **AZMON_COLLECT_ENV** értékkel **hamis** a Kubernetes üzembe helyezési yaml konfigurációs fájlban.   
 
 ```  
 - name: AZMON_COLLECT_ENV  
@@ -73,9 +73,9 @@ Egy új vagy meglévő tárolón környezeti változók gyűjteményét letiltá
 
 A következő parancsot a módosítás alkalmazásához az AKS-tároló: `kubectl apply -f  <path to yaml file>`.
 
-Annak ellenőrzéséhez, hogy a konfiguráció módosításának hatása tartott, válassza ki a tároló a **tárolók** megtekintheti az Azure monitorban tárolókhoz, valamint a tulajdonság panelen, bontsa ki a **környezeti változók**.  A szakasz csak a korábban - létrehozott változó megjelennie **AZMON_COLLECT_ENV = FALSE**. Minden más tárolók a környezeti változók szakaszban kell listázza az összes felderített a környezeti változókat.   
+Annak ellenőrzéséhez, hogy a konfiguráció módosításának érvénybe tartott, válassza ki a tároló a **tárolók** megtekintheti az Azure monitorban tárolókhoz, valamint a tulajdonság panelen, bontsa ki a **környezeti változók**.  A szakasz csak a korábban - létrehozott változó megjelennie **AZMON_COLLECT_ENV = FALSE**. Minden más tárolók a környezeti változók szakaszban kell listázza az összes felderített a környezeti változókat.   
 
-Engedélyezze újra a felderítési a környezeti változók, korábban alkalmazza ugyanazt a folyamatot, és módosítsa az értéket **false (hamis)** való **igaz**, majd futtassa újra a `kubectl` parancsot a tároló frissítésére.  
+Kívánja újból engedélyezni a környezeti változók felderítési, korábban alkalmazza ugyanazt a folyamatot, és módosítsa az értéket **false (hamis)** való **igaz**, majd futtassa újra a `kubectl` parancsot a tároló frissítésére.  
 
 ```  
 - name: AZMON_COLLECT_ENV  

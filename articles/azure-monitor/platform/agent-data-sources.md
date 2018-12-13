@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 29306fa508a2c0702e69f6b6ebcb7571041d57d6
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 3bebdfea34cea9d0b0b5c19489ce51bf25f60af9
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890262"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189727"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
 Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
@@ -41,7 +39,7 @@ A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Log 
 | [IIS-naplók](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |naplófájlváltás beállítás függ |
 | [Teljesítményszámlálók](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |ütemezett, legalább 10 másodperc |
 | [Teljesítményszámlálók](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |ütemezett, legalább 10 másodperc |
-| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage-ból: 10 perc; ügynök: a beérkezéskor |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage: 10 perc; ügynök: a beérkezéskor |
 | [Windows-eseménynaplók](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | a beérkezéskor |
 
 

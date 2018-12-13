@@ -1,5 +1,5 @@
 ---
-title: Szöveg felosztása a kognitív keresés szakértelem (Azure Search) |} A Microsoft Docs
+title: Szöveg felosztása a kognitív keresés szakértelem – Azure Search
 description: Szöveg felosztása adattömbökre vagy a szöveget az Azure Search-felderítési bővítést folyamatban hossza alapján.
 services: search
 manager: pablocas
@@ -10,19 +10,17 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 376a5a2214c5f1d77439923d6a11aaad5e011e73
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730766"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313853"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása cognitive szakértelem
 
 A **szöveg felosztása** szakértelem működésképtelenné válik a szöveg adattömbökbe szöveg. Megadhatja, hogy szeretné-e a szöveg kezdetét mondatokat vagy egy adott hosszúságú oldalak. Ez szakértelem, különösen hasznosak, ha olyan szöveg maximális aktiválásához megszerzett képességeit a hosszúsági követelményeknek. 
-
-> [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -34,7 +32,7 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | "Lapok" vagy "mondatok" | 
-| maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100. | 
+| maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100.  Ha a textSplitMode "lapok" értékre van állítva, az algoritmus megpróbálja a szöveg felosztása adattömbökre, amelyek mérete legfeljebb "maximumPageLenth". Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így az adatrészlet méretének lehet valamivel kisebb, mint "maximumPageLength". | 
 | defaultLanguageCode   | (nem kötelező) A következő nyelvi kódok: `da, de, en, es, fi, fr, it, ko, pt`. Alapértelmezés szerint angol (en). Érdemes figyelembe venni néhány dolgot:<ul><li>Ha egy languagecode-countrycode formátum, a formátum csak a languagecode részét szolgál.</li><li>A nyelv nem szerepel a fenti listán, ha a felosztás szakértelem karakter határokat, működésképtelenné válik a szöveg.</li><li>Biztosít egy nyelvi kód hasznos darabolás szó nem terület nyelveken, például a kínai, japán és koreai megfelezése elkerülése érdekében.</li></ul>  |
 
 

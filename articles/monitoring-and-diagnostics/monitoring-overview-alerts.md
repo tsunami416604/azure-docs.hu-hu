@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 9340c5a70ac652f1cf0a8b0cddce8488e0a62eee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: d86e543da5c7000f0140c1b6e53674a0fd22b0e4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978869"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194130"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
@@ -52,7 +52,7 @@ Riasztási szabályok legfőbb attribútumai a következők:
 
 **Súlyosság** – Ha a riasztási szabályban megadott feltétel teljesülése a riasztás súlyosságát. Súlyosság 0-tól 4 terjedhet.
 
-**A művelet** – a riasztás akkor aktiválódik, amikor egy bizonyos művelet. További információkért lásd: [Műveletcsoportok](monitoring-action-groups.md).
+**A művelet** – a riasztás akkor aktiválódik, amikor egy bizonyos művelet. További információkért lásd: [Műveletcsoportok](../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>A is riasztás
 
@@ -122,7 +122,7 @@ Akkor hozzon létre egy új riasztási szabály az alábbi három lépést:
  
 Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell, hogy tudja, hogy a monitorozási forrás vagy azt jelzi, hogy egy Azure-erőforrás kiválasztása előtt támogatottak. Elérhető jelek automatikusan szűri a program a célként megadott erőforrás kiválasztott alapján. Is alapján, hogy a cél, végigvezeti a riasztási szabály a logikai automatikusan meghatározása.  
 
-A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](alert-metric.md).
+A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](../azure-monitor/platform/alerts-metric.md).
 
 Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](../azure-monitor/overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi jelenleg támogatott a riasztási tapasztalatok alapján.
 
@@ -130,7 +130,7 @@ Korábban az Azure Monitor, az Application Insights, a Log Analytics és a Servi
 
 | **Forrás figyelése** | **Jel típusa**  | **Leírás** | 
 |-------------|----------------|-------------|
-| Szolgáltatások állapota | Tevékenységnapló  | Nem támogatott. Lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Szolgáltatások állapota | Tevékenységnapló  | Nem támogatott. Lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Webalkalmazás rendelkezésre állási tesztek | Nem támogatott. Lásd: [webtesztriasztást](../application-insights/app-insights-monitor-web-app-availability.md). Rendelkezésre álló webhelyre, hogy az Application insights szolgáltatásnak van kialakítva. Értesítés küldése, amikor a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
 
 
@@ -174,13 +174,13 @@ A riasztás részletei lap az alábbi szakaszokat tartalmazza.
 
 A riasztási funkció 2018 június előtt az Azure Monitor mérőszámok és Tevékenységnaplók log "Riasztások (klasszikus)" nevezzük. 
 
-További információkért lásd: [klasszikus riasztások](./monitoring-overview-alerts-classic.md)
+További információkért lásd: [klasszikus riasztások](./../azure-monitor/platform/alerts-classic.overview.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [További információk az intelligens csoportokról](https://aka.ms/smart-groups)
-- [További információ a műveletcsoportokról](monitoring-action-groups.md)
+- [További információ a műveletcsoportokról](../azure-monitor/platform/action-groups.md)
 - [Az Azure-ban a riasztási példányok kezelése](https://aka.ms/managing-alert-instances)
 - [Az intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
 

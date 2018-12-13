@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search index vagy frissítés kereshető tartalom újraépítése |} A Microsoft Docs
+title: Azure Search-index létrehozásához vagy frissítéséhez a kereshető tartalmak – Azure Search
 description: Adja hozzá az új elemeket, frissítse a meglévő elemeket vagy dokumentumok vagy elavult dokumentumok Újraépítés teljes vagy részleges növekményes indexelő frissítése az Azure Search-index törlése.
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 374e7601169647f0eb7d3a214cf15567b7b11090
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641424"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316896"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Hogyan lehet Azure Search-index újraépítése
 
@@ -35,7 +36,7 @@ A gyakori, teljes csomag újraépíti aktív fejlesztés során, amikor index s�
 
 | Módosítása | Építse újra állapota|
 |--------------|---------------|
-| Módosítsa a mező nevét a adattípus, vagy a [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index) | Egy mező definíció általában költségével egyezik meg a Újraépítés büntetés kivételével ezek [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index): lekérhető, SearchAnalyzer, SynonymMaps. Lekérhető, SearchAnalyzer és SynonymMaps attribútumok anélkül, hogy az index újraépítése kellene hozzáadhat existující Pole.|
+| Módosítsa a mező nevét a adattípus, vagy a [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index) | Egy mező definíció általában költségével egyezik meg a Újraépítés büntetés kivételével ezek [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index): Lekérhető, SearchAnalyzer, SynonymMaps. Lekérhető, SearchAnalyzer és SynonymMaps attribútumok anélkül, hogy az index újraépítése kellene hozzáadhat existující Pole.|
 | Adjon hozzá egy mezőt | Az újjáépítést nem szigorú követelmény. Meglévő indexelt dokumentumok adják meg az új mező értéke null. Egy jövőbeli reindex a forrásadatok értékeket cserélje le az Azure Search által hozzáadott null értékeket. |
 | Mező törlése | Azure Search-index közvetlenül egy mező nem lehet törölni. Ehelyett az alkalmazás figyelmen kívül hagyása elkerülése érdekében használja a "törölt" mezőben kell rendelkeznie. Fizikailag a mező definíciója és annak tartalmát marad az index a következő alkalommal, amikor újra kell építeni az indexet egy sémát, amely az áttekinthetőség kedvéért kihagyja az adott mező használatával.|
 

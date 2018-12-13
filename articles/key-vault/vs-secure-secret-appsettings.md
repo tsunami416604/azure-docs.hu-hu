@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625453"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252106"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan biztonságosan az Azure-alkalmazások titkos alkalmazás konfigurációs beállításainak mentése.
 
-Hagyományosan az összes webes alkalmazás konfigurációs beállítások konfigurációs fájlok, például a Web.config lesznek mentve. Ez az eljárás vezet a Felhőhöz tartozó hitelesítő adatok, amilyen a Github nyilvános verziókövetési rendszerekben, például a titkos beállítások ellenőrzése. Mindeközben annak oka az lehet nehezen hajtsa végre a biztonsági szempontból ajánlott a többletterhelés forráskódjának módosítása, és konfigurálja újra a fejlesztői beállítások miatt.
+Hagyományosan az összes webes alkalmazás konfigurációs beállítások konfigurációs fájlok, például a Web.config lesznek mentve. Ez az eljárás vezet a Felhőhöz tartozó hitelesítő adatok, amilyen a GitHub nyilvános verziókövetési rendszerekben, például a titkos beállítások ellenőrzése. Mindeközben annak oka az lehet nehezen hajtsa végre a biztonsági szempontból ajánlott a többletterhelés forráskódjának módosítása, és konfigurálja újra a fejlesztői beállítások miatt.
 
 Ahhoz, hogy a fejlesztési folyamatban a biztonságos, azokat az eszközöket és keretrendszer kódtárakat menteni a titkos Alkalmazásbeállítások biztonságosan, minimális konfigurációval vagy nem az adatforrás-kód módosítása jönnek létre.
 

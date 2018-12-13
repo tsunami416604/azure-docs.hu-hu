@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 99ed74a9664fbeeb65d90e51d0afcd97dd0b0ca0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 67c9cc5b46b7567674b3d0bf99bd85ab321c6bd3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346493"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277172"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 
@@ -30,6 +30,9 @@ Az Azure Multi-Factor Authentication-kiszolgálót külön kiszolgálóra kell t
 - Tartományhoz csatlakoztatott Azure MFA-kiszolgáló. Ha még nincs telepítve, kövesse az [Azure Multi-Factor Authentication-kiszolgáló – első lépések](howto-mfaserver-deploy.md) című szakasz lépéseit.
 - Hálózati házirend-kiszolgáló egy meglévő konfigurálva.
 - A hitelesítést az NPS szolgáltatásokkal végző távoli asztali átjáró.
+
+> [!NOTE]
+> Ez a cikk az MFA-kiszolgáló csak üzembe helyezések, nem az Azure MFA (felhőalapú) kell használni.
 
 ## <a name="configure-the-remote-desktop-gateway"></a>A távoli asztali átjáró konfigurálása
 Konfigurálja úgy a távoli asztali átjárót, hogy a RADIUS-hitelesítést egy Azure Multi-Factor Authentication-kiszolgálónak küldje el. 

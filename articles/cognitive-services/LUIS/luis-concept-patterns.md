@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3c33612ef76a572bd4bf63a5e7d6f05e36c7847b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 46c9eb99d808874e0f49dee5fa4865a4867873f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081999"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271521"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Minták szándék alacsony megbízhatósági megoldása
-Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Fontolja meg egy alkalmazott Tom, egy alkalmazott felettesétől az Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
+Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Egy alkalmazott felettesétől az alkalmazott, a Tom, vegye figyelembe, Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
 
 ![Szervezeti diagram képe](./media/luis-concept-patterns/org-chart.png)
 
@@ -43,6 +43,8 @@ Minták előrejelzési technológiák kombinációját használja. Egy leképez�
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Minták növelhető az entitás észlelése
 Minták entitások használatához, a minta nem észlelhetők az entitás. Egy minta csak célja, hogy az előrejelzés leképezések és szerepkörök segítségével.  
+
+Továbbfejlesztett entitás előrejelzési megtekintéséhez be egyetlen mintát több utterances összecsukása után nem számít. Egyszerű entitások üzenetszám meg kell beszédmódok hozzáadása, vagy használjon lista entitásokat más a minta nem indulnak el.
 
 ## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használata
 Ha két vagy több entitások egy minta kontextusban kapcsolódó, mintákat használják az entitást [szerepkörök](luis-concept-roles.md) entitásokról környezeti információk kinyeréséhez. Ez a hierarchikus gyermekek egyenértékűek, de **csak** minták érhető el. 

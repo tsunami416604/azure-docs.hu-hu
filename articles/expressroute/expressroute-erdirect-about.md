@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 2310f007697cf1acbdbc907d4562853a2717eb5d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097124"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163827"
 ---
 # <a name="about-expressroute-direct-preview"></a>Kapcsolatos az ExpressRoute közvetlen (előzetes verzió)
 
-Az ExpressRoute közvetlen lehetővé teszi a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak lehetővé teszi. Az ExpressRoute közvetlen kettős 100-GB/s kapcsolat, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
+Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. Az ExpressRoute közvetlen kettős 100-GB/s kapcsolat, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
 
 Az ExpressRoute közvetlen biztosít fő funkcióját tartalmazza, de nem korlátozódik:
 
 * Nagy mennyiségű adat betöltése az olyan szolgáltatásokba, mint például a Storage és az Cosmos DB
-* Szabályozott módon és igénylő iparágakban fizikai elkülönítését dedikált és hasonló kapcsolat elszigetelt: banki szolgáltatások, kormányzati és kereskedelmi
+* Szabályozott módon, és például dedikált és elkülönített kapcsolatot igénylő iparágakban a fizikai elszigetelése: Banki szolgáltatások, kormányzati és kereskedelmi
 * A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
 
 > [!IMPORTANT]

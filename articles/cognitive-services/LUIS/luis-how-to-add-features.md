@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 905970c3ab449f139710cf974111618f16da141a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 39a6ead041b1783a3effcb9659c59ea788cd2bf6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086640"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139503"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Használja a kifejezés boost jelre a word lista sorolja fel
 
@@ -38,11 +38,11 @@ Kifejezések listáját, LUIS egy második jelzés ezeket szavakkal kapcsolatos 
 
 4. A LUIS is javasol kapcsolódó értékeket a kifejezés listához való hozzáadásához. Kattintson a **javasoljuk** javasolt értékek a added value(s) szemantikailag kapcsolódó csoport beolvasásához. Kattintson a javasolt értékeket, vagy kattintson **adja hozzá az összes** adja hozzá őket az összes.
 
-    ![A javasolt értékek kifejezéslista](./media/luis-add-features/related-values.png)
+    ![Kifejezés Proposed listaértékek – összes hozzáadása](./media/luis-add-features/related-values.png)
 
 5. Kattintson a **ezeket az értékeket felcserélhetők** Ha hozzáadott kifejezés listaértékek alternatívával felcserélhetők.
 
-    ![A javasolt értékek kifejezéslista](./media/luis-add-features/interchangeable.png)
+    ![Kifejezés Proposed listaértékek – jelölje be azoknak a cserélhető ](./media/luis-add-features/interchangeable.png)
 
 6. Kattintson a **Save** (Mentés) gombra. A "Város" kifejezés helyett szerepel lista adnak hozzá a **listák kifejezés** lap.
 

@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: d720a7401b9ed1188a01d3cc2cc9ec7b66b640ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b2a60ddee58a7a9c37582085132ee8a1df767cb4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091551"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190356"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
@@ -60,7 +59,7 @@ Az alábbi ismert problémák az állapotfigyelő szolgáltatással:
 - Konfigurációs módosítások, például frissítése egy küszöbértéket, akár 30 percet igénybe vehet, még akkor is, ha a portálon vagy a számítási feladatok a figyelő API előfordulhat, hogy azokat azonnal frissítse. 
 - Az egyes processzor és a logikai processzor szint állapotára vonatkozó feltételek a Windows nem érhetők el. Windows virtuális gépek csak a teljes CPU-kihasználtság érhető el. 
 - Riasztási szabályok esetében minden egyes állapotfigyelő feltétel megadott nem jelennek meg az Azure Portalon. Engedélyezheti vagy letilthatja a Szolgáltatásállapot-riasztás kizárólag a szabály a [számítási feladatok a figyelő API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager). 
-- Nem lehet hozzárendelni egy [Azure Monitor műveletcsoport](../../monitoring-and-diagnostics/monitoring-action-groups.md) health-riasztások az Azure Portalon. Az értesítési beállítás API segítségével konfigurálhatja a műveletcsoport aktiválását, amint egy szolgáltatásállapot-riasztás aktiválódik. Jelenleg a virtuális gépek elleni a Műveletcsoportok rendelhet, hogy az összes *állapotriasztások* ugyanazt a Műveletcsoportok ellen a virtuális gép eseményindító aktiválva. Ellentétben a hagyományos Azure-riasztások, és nincs külön művelet minden szolgáltatásállapot-riasztási szabály a csoport. Emellett a csak adja meg az e-mailben vagy SMS-értesítések konfigurált Műveletcsoportok health-riasztások előállítása esetén támogatottak. 
+- Nem lehet hozzárendelni egy [Azure Monitor műveletcsoport](../../azure-monitor/platform/action-groups.md) health-riasztások az Azure Portalon. Az értesítési beállítás API segítségével konfigurálhatja a műveletcsoport aktiválását, amint egy szolgáltatásállapot-riasztás aktiválódik. Jelenleg a virtuális gépek elleni a Műveletcsoportok rendelhet, hogy az összes *állapotriasztások* ugyanazt a Műveletcsoportok ellen a virtuális gép eseményindító aktiválva. Ellentétben a hagyományos Azure-riasztások, és nincs külön művelet minden szolgáltatásállapot-riasztási szabály a csoport. Emellett a csak adja meg az e-mailben vagy SMS-értesítések konfigurált Műveletcsoportok health-riasztások előállítása esetén támogatottak. 
 
 ## <a name="next-steps"></a>További lépések
 A követelmények és engedélyezésének a virtuális gépek figyelése módszerekkel, tekintse át [-beli virtuális gépek üzembe helyezése az Azure Monitor](vminsights-onboard.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/15/2018
 ms.author: stbaron
-ms.openlocfilehash: 73e58653c249639d2c2317badcd9995658009b64
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710987"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163038"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető
 Alább az erőforrástípusok szerint resource health segítségével végrehajtott összes ellenőrzés teljes listája.
@@ -144,4 +144,4 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 # <a name="next-steps"></a>További lépések
 -  Lásd: [bemutatása az Azure Service Health dashboard](service-health-overview.md) és [bemutatása az Azure Resource Health](resource-health-overview.md) , hogy többet őket. 
 -  [Az Azure Resource Health kapcsolatos gyakori kérdések](resource-health-faq.md)
-- Riasztások beállítása, így állapotbeli probléma értesítést kap. További információkért lásd: [riasztásainak konfigurálása a Szolgáltatásállapot-események](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+- Riasztások beállítása, így állapotbeli probléma értesítést kap. További információkért lásd: [riasztásainak konfigurálása a Szolgáltatásállapot-események](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

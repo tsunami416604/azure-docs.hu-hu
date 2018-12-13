@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: f7d1b5774e41761c7c332b0b38371979ca9d30cd
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1283f84b4a45f5eedc98e6b16e5277e5347be1a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679681"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270246"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -114,7 +114,7 @@ Választhat bármelyik DDoS protection elérhető metrikáinak riasztást küldj
 
 A DDoS-támadás ellenőrzése a riasztás szimulálásához lásd: [ellenőrzése DDoS észlelési](#validate-ddos-detection).
 
-Hogy még többet is megtudhat [webhookok konfigurálásáról](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [a logic apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) riasztások létrehozásához.
+Hogy még többet is megtudhat [webhookok konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [a logic apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) riasztások létrehozásához.
 
 ## <a name="use-ddos-protection-telemetry"></a>DDoS elleni védelem telemetriai használata
 
@@ -129,9 +129,9 @@ A támadás telemetriai adatokat valós időben az Azure Monitor keresztül bizt
 
 A metrikák nevei jelenthet különböző csomagtípusok és bájt csomagokat, és a egy alapvető szerkezet mindegyik metrikát a címke neve a következő:
 
-- **Eldobott címkenév** (például **bejövő csomagok eldobott DDoS**): a DDoS protection rendszer eldobott/törlődik csomagok számát regisztrálja.
-- **Továbbított címkenév** (például **bejövő továbbított csomagok DDoS**): a cél virtuális IP-CÍMEK – nem szűrt forgalmat a DDoS-rendszer által továbbított csomagok számát regisztrálja.
-- **Nincs címke neve** (például **bejövő csomagok DDoS**): a tisztítási rendszerbe – a csomagok összege jelölő kapott csomagok száma dobni, és továbbítva.
+- **Eldobott címkenév** (például **bejövő csomagok eldobott DDoS**): A DDoS protection rendszer eldobott/törlődik csomagok száma.
+- **Továbbított címkenév** (például **bejövő továbbított csomagok DDoS**): A DDoS-rendszer a cél virtuális IP-CÍMEK – nem szűrt forgalmat által továbbított csomagok száma.
+- **Nincs címke neve** (például **bejövő csomagok DDoS**): A tisztítási rendszerbe – eldobott és a továbbított csomagok összege jelölő kapott csomagok teljes száma.
 
 Telemetriai adatok érvényesítéséhez DDoS-támadás szimulálása, lásd: [ellenőrzése DDoS észlelési](#validate-ddos-detection).
 
@@ -156,9 +156,9 @@ A támadás kockázatcsökkentési jelentések összesített értéket jelenít 
 5. Válassza ki **nyilvános IP-cím** a **erőforrástípus**, majd válassza ki az adott nyilvános IP-cím metrikáinak bejelentkezik.
 6. Válassza ki **engedélyezze a diagnosztikát a DDoSMitigationReports napló gyűjtése** majd válassza az alábbi lehetőségek közül, amennyi szükséges:
 
-    - **Archiválás tárfiókba**: adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Az eseményközpontok felé Stream**: lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Mindkét a növekményes és a támadás utáni kockázatcsökkentési a jelentések a következő mezőket tartalmazzák
 - Támadási vektorok
@@ -178,9 +178,9 @@ Támadás kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse á
 5. Válassza ki **nyilvános IP-cím** a **erőforrástípus**, majd válassza ki az adott nyilvános IP-cím metrikáinak bejelentkezik.
 6. Válassza ki **engedélyezze a diagnosztikát a DDoSMitigationFlowLogs napló gyűjtése** majd válassza az alábbi lehetőségek közül, amennyi szükséges:
 
-    - **Archiválás tárfiókba**: adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Az eseményközpontok felé Stream**: lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Az Azure analytics irányítópulton tekintheti meg a forgalmi naplók adatai, importálhatja a minta-irányítópult https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Forgalmi naplók fog rendelkezni a következő mezőket: 

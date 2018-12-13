@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból | Microsoft Docs
+title: Az Azure PowerShell-szkript mintát - alkalmazás létrehozása és üzembe helyezése helyi Git-adattárból |} A Microsoft Docs
 description: Azure PowerShell-példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: cdd691d156d182c3d85dcc731ddf1bc62204b072
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: 5a8976ce806554f9faae6376cdb938cecd5ced1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324154"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309355"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból
 

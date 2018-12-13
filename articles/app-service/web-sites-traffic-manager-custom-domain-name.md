@@ -1,5 +1,5 @@
 ---
-title: Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, a terheléselosztás a Traffic Manager használó.
+title: DNS-neveket, amelyek használják a Traffic Manager – Azure App Service-alkalmazások konfigurálása
 description: Egy egyéni tartománynevet használja az-webalkalmazás létrehozása az Azure App Service, amely a terheléselosztás a Traffic Manager tartalmazza.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: b140ccba2b45dbfb1e4413c9fbeb12e9fec6bc8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 2b2efbbccedc2478b30a05fe2cd60c063de2a64d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227178"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309484"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Manager használatával
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]

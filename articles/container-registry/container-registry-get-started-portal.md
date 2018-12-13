@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Privát Docker-tárolójegyzék létrehozása az Azure-ban az Azure Portallal
+title: Rövid útmutató – privát Docker-tárolójegyzék létrehozása az Azure-ban – Azure portal
 description: Gyorsan megismerheti egy privát Docker-tárolójegyzék az Azure Portallal való létrehozásának módját.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 865c53fdda60f6a0384157ec68042b4b8b243a7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278667"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255363"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure Portalon
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy privát tárolójegyzékben az Azure portal használatával
 
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehoz egy tárolóregisztrációs adatbázist az Azure Portallal, továbbít egy rendszerképet a regisztrációs adatbázisba, végül üzembe helyezi a tárolót a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 

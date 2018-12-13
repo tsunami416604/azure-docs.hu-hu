@@ -1,5 +1,5 @@
 ---
-title: Biztonság az Azure App Service és az Azure Functions |} A Microsoft Docs
+title: Biztonsági áttekintés – az Azure App Service |} A Microsoft Docs
 description: Ismerje meg hogyan App Service segítségével biztonságos alkalmazását, és hogyan lehet további zárolását az alkalmazás a fenyegetésekkel szemben.
 keywords: az Azure app service, webalkalmazás, mobilalkalmazás, api-alkalmazás, függvényalkalmazás, biztonság, biztonságos, biztonságos, megfelelőség, a megfelelő, a tanúsítványt, a tanúsítványok, https, ftps, tls, a megbízhatóság, a titkosítás, titkosítás, titkosított, ip-korlátozást, hitelesítés, engedélyezés, authn, autho, msi, felügyeltszolgáltatás-identitás, felügyelt identitás, titkos kulcsok, titkos kulcsot, javítás, patch, javítások, verzió, elkülönítés, hálózatelkülönítés, ddos, mitm
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 7c2297fa5f7ebaae1c54794ebbbd37e25d3931ca
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857499"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251470"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Biztonság az Azure App Service és az Azure Functions
 

@@ -3,8 +3,8 @@ title: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Az
 description: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI használatával
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: da269c2a096ad317703329bf6ad847dbaf9016e9
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988580"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188653"
 ---
-# <a name="scale-a-web-app-manually"></a>Webalkalmazások manuális skálázása
+# <a name="scale-a-web-app-manually-using-azure-cli"></a>Azure CLI segítségével manuálisan webalkalmazások méretezése
 
 Ez a példaszkript egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást hoz létre. Ezután egy példányból több példányra skálázza az App Service-csomagot.
 

@@ -4,10 +4,9 @@ description: Könnyen érthető áttekintése machine learning alapjai algoritmu
 keywords: Machine learning alapjait, az algoritmus példákkal gépi tanulással kezdőknek, machine learning kérdések, népszerű algoritmusok, algoritmus szemléltető ábra
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodc18
+ms.author: garye
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -17,23 +16,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 610cc430170ac31832703b822e027f3dbdd053a2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093760"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275737"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infografika: A Machine learning alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető infografika áttekintése. Algoritmus példákkal a machine learning kezdő algoritmusok közül melyiket szeretné használni, és mire használhatók a megismerése érdekében.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Népszerű algoritmusok, Machine Learning studióban
 [Az Azure Machine Learning Studio](https://studio.azureml.net/) gazdag tára algoritmusokat kínál prediktív elemzőeszközöket tartalmaz. Szemléltető ábra négy népszerű családok - regressziós, rendellenességek észlelése, a fürtözést és besorolási - algoritmusok azonosítja, és hivatkozásokat tartalmaz a működő szereplő példák a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/). A katalógus tartalmazza a példakísérletek és oktatóanyagok, amelyek bemutatják, hogyan ezeket az algoritmusokat a való életből vett számos megoldás alkalmazható.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Töltse le a algoritmuspéldákkal szemléltető ábra
-**[Letöltés: Szemléltető ábrát a machine learning alapjai algoritmus példákkal (PDF) mutató hivatkozásokkal](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Letöltés: A machine learning alapjai algoritmus példákkal (PDF) mutató hivatkozásokkal szemléltető ábra](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Szemléltető ábra: Gépi tanulás alapjai algoritmuspéldákkal. Népszerű algoritmusokat. A Machine learning-kezdők számára.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Szemléltető ábra: A Machine learning alapjai algoritmus példákkal. Népszerű algoritmusokat. A Machine learning-kezdők számára.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>További segítség algoritmusokat a kezdő és haladó felhasználók
 * A különböző típusú gépi tanulási algoritmusok, használatuk és arról, hogy a megfelelőt a megoldáshoz válassza alaposabb ismertetéséhez lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md).
@@ -42,7 +41,7 @@ Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kér
 * Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
 * Az Azure AI-katalógusban, és a Közösség által készített rendelkezésére álló számos forrás áttekintését, lásd: [megosztás és az Azure AI katalógusban erőforrások felderítéséhez](gallery-how-to-use-contribute-publish.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx

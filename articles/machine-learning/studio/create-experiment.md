@@ -4,10 +4,9 @@ description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kí
 keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 9564ddcff3dfd910877f40482bc3f5acb2d03d35
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105393"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262418"
 ---
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -41,7 +40,7 @@ Ebben az oktatóanyagban végigvezetjük azon, hogyan hozhat létre egy gépi ta
 - [A Machine Learning alapjai algoritmus példákkal](basics-infographic-with-algorithm-examples.md) – Ez az infografika hasznos lehet, ha többet szeretne megtudni a Machine Learning Studióban elérhető különféle gépi tanulási algoritmusokról.
 - [Gépi tanulási útmutató](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) – Ez az útmutató hasonló információkat tartalmaz, mint a fenti infografika, de interaktív formában.
 - [Gépi tanulási algoritmus-adatlap](algorithm-cheat-sheet.md) és [Algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md) – Ez a letölthető poszter és a kísérő cikk mélységükben tárgyalják a Studio algoritmusait.
-- [Machine Learning Studio: Súgó az algoritmusokhoz és modulokhoz](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Ez az összes Studio modul teljes referenciaanyaga, beleértve a gépi tanulási algoritmusokat.
+- [A Machine Learning Studio: Algoritmus és a modul súgójában](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Ez az összes Studio referenciaanyaga, beleértve a gépi tanulási algoritmusok teljes referenciája
 
 
 
@@ -67,25 +66,25 @@ A Studio használatának megkezdéséhez lépjen a [https://studio.azureml.net](
 Ebben a Machine Learning oktatóanyagban öt lépés végrehajtásával fogjuk megalkotni a Machine Learning Studio-kísérletet, amely elvégzi a modell létrehozását, betanítását és pontozását. Ezek:
 
 - **Modell létrehozása**
-    - [1. lépés: Az adatok beszerzése]
+    - [1. lépés: Adatok lekérése]
     - [2. lépés: Az adatok előkészítése]
     - [3. lépés: A jellemzők meghatározása]
 - **A modell betanítása**
-    - [4. lépés: Tanulási algoritmus kiválasztása és alkalmazása]
+    - [4. lépés: A tanulási algoritmus kiválasztása és alkalmazása]
 - **A modell pontozása és tesztelése**
     - [5. lépés: Új autó árának előrejelzése]
 
-[1. lépés: Az adatok beszerzése]: #step-1-get-data
+[1. lépés: Adatok lekérése]: #step-1-get-data
 [2. lépés: Az adatok előkészítése]: #step-2-prepare-the-data
 [3. lépés: A jellemzők meghatározása]: #step-3-define-features
-[4. lépés: Tanulási algoritmus kiválasztása és alkalmazása]: #step-4-choose-and-apply-a-learning-algorithm
+[4. lépés: A tanulási algoritmus kiválasztása és alkalmazása]: #step-4-choose-and-apply-a-learning-algorithm
 [5. lépés: Új autó árának előrejelzése]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
 > Az [Azure AI katalógusban](https://gallery.cortanaintelligence.com) megtalálja az alábbi kísérlet egy működő példányát. Lépjen a **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Az első adatelemzési kísérlet – Autó árának előrejelzése) lapra, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet Machine Learning Studio munkaterületre való letöltéséhez.
 
 
-## <a name="step-1-get-data"></a>1. lépés: Az adatok beszerzése
+## <a name="step-1-get-data"></a>1. lépés: Adatok lekérése
 
 A Machine Learning alkalmazásához először is adatokra van szüksége.
 A Machine Learning Studio számos mintaként használható adathalmazt tartalmaz, de számos más forrásból is importálhat adatokat. Ebben a példában a munkaterületén megtalálható **Automobile price data (Raw)** (Nyers autóáradatok) nevű mintahalmazt fogjuk használni.
@@ -219,7 +218,7 @@ Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott r�
 
 Ezzel létrehoz egy szűrt adathalmazt, amelyben csak a következő lépésben használandó tanulási algoritmusnak továbbítani kívánt tulajdonságok szerepelnek. Később visszatérhet ide, és más jellemzőkkel is elvégezheti az előrejelzést.
 
-## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>4. lépés: Tanulási algoritmus kiválasztása és alkalmazása
+## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>4. lépés: A tanulási algoritmus kiválasztása és alkalmazása
 
 Most, hogy előkészítettük az adatokat, a prediktív modell létrehozásához már csak a tanítás és a tesztelés szükséges. A következőkben az adatok segítségével elvégezzük a modell betanítását, majd a modell tesztelésével megállapítjuk, hogy milyen pontossággal képes előre jelezni az árakat.
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
@@ -304,11 +303,11 @@ Az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul eredményéne
 
 A következő statisztikák tekinthetők meg:
 
-- **Mean Absolute Error** (átlagos abszolút eltérés, MAE): az abszolút eltérések átlaga (*eltérésnek* az előre jelzett érték és a tényleges érték közötti különbséget nevezzük).
-- **Root Mean Squared Error** (gyökátlagos négyzetes eltérés, RMSE): a tesztelési adathalmazon végzett előrejelzések eltéréseinek négyzetéből számított átlag négyzetgyöke.
-- **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
-- **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
-- **Coefficient of Determination** (determinációs együttható): ez az **R-négyzet értéke** néven is ismert statisztikai mérőszám azt mutatja, hogy a modell mennyire illik az adatokhoz.
+- **Mean Absolute Error** (MAE): A átlaga (egy *hiba* az előre jelzett érték és a tényleges érték közötti különbséget).
+- **Root mean-készlet négyzet hiba** (Gyökátlagos): Az eltérések átlaga a tesztelési adathalmazon végzett előrejelzések négyzetgyökét.
+- **Relatív abszolút hiba**: Abszolút hibák tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
+- **Relatív négyzet hiba**: Viszonyítva eltéréseinek és az összes tényleges értékek átlaga a tényleges értékek átlaga.
+- **Coefficient of Determination**: Más néven a **R-négyzet értéke**, ez a statisztikai mérőszám azt arról, hogy a modell illik az adatokhoz.
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb értékek azt jelzik, hogy az előrejelzés közelebb van a tényleges értékekhez. A **Coefficient of Determination** (determinációs együttható) értéke minél közelebb van az egyhez (1,0-hoz), annál pontosabb az előrejelzés.
 

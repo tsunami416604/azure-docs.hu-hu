@@ -1,9 +1,9 @@
 ---
-title: Megbízható gyűjtemények használata |} Microsoft Docs
-description: Ismerje meg az ajánlott eljárások megbízható gyűjtemények használata.
+title: Reliable Collections használata |} A Microsoft Docs
+description: A Reliable Collections használata ajánlott eljárások megismerése.
 services: service-fabric
 documentationcenter: .net
-author: rajak
+author: tylermsft
 manager: timlt
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
-ms.author: rajak
-ms.openlocfilehash: 2568e116fdb3f80976d49787877d2ecf68f128ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 86e1370bb5241dbe14b34cebe2f2ee6d71a0a323
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210817"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193535"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
-A Service Fabric a .NET-fejlesztők számára megbízható gyűjtemények keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótár és megbízható várólista osztályok biztosít. Ha használja ezeket az osztályokat, az állapot (méretezhetőségre) particionálva, replikálni (a rendelkezésre állás érdekében), és egy partíciót (ACID szemantikáját) belül. Most egy tipikus használati megbízható dictionary objektum tekintse meg, és tekintse meg, milyen a végrehajtása.
+A Service Fabric a .NET-fejlesztők számára a Reliable Collections-n keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótárban és megbízható várólista osztályokat biztosít. Ha használja ezeket az osztályokat, az állapot van particionálva (a méretezhetőség érdekében), replikálni (a rendelkezésre állás érdekében), és (az ACID szemantika) egy partíción belül. Most egy megbízható szótárban objektum egy tipikus használati tekintse meg, és megtudhatja, milyen a ténylegesen mivel.
 
 ```csharp
 
@@ -49,20 +49,20 @@ catch (TimeoutException) {
 }
 ```
 
-Összes művelet (kivéve a ClearAsync pedig nem vonható vissza), a megbízható szótár objektumokon ITransaction objektum szükséges. Ez az objektum van társítva a, és minden bármely megbízható szótár és megbízható végrehajtja a végrehajtani kívánt módosítás várólistára objektumok belül egyetlen partícióra. Egy ITransaction szerez be a partíció meghívásával objektum által StateManager tartozó CreateTransaction metódust.
+A megbízható szótárban objektumok (kivéve a ClearAsync ez nem vonható vissza), minden művelethez szükség van a ITransaction objektum. Ez az objektum van társítva bármely és, hogy minden olyan megbízható szótárban és/vagy megbízható végrehajtani kívánt összes módosítást a várólistára ugyanazon a partíción belüli objektumok. Egy ITransaction szerez be a partíció meghívásával objektum a StateManager a CreateTransaction metódus.
 
-A fenti kódot, a megbízható dictionary AddAsync metódusnak átadott a ITransaction objektum. Belső a szótár módszerek, amely fogad egy kulcs egy kulcshoz hozzárendelt olvasási/írási zárolás igénybe vehet. A metódus módosítja a kulcs-érték, ha a módszer egy írási zárolás veszi a kulcsot, és ha a metódus csak beolvassa a kulcs értékét, majd olvasási zárolás szükséges a kulcsot. Mivel AddAsync a kulcs-érték az új, az átadott értékre módosítja, a kulcs írási zárolás lesz végrehajtva. Igen 2 (vagy több) szálak megpróbálnak értékek hozzáadásához ugyanazzal a kulccsal egyszerre, egy szál arányban fogják beszerezni az írási zárolás, és a más szálak blokkolja. Alapértelmezés szerint 4 másodpercet a zárolás; módszerek letiltása 4 másodpercen belül a módszerek throw egy TimeoutException. Módszer túlterhelések létezik, hogy lehetővé teszi a adjon át egy explicit időtúllépési értéket, ha inkább.
+A fenti kódrészletben a ITransaction objektum egy megbízható szótárban AddAsync metódusnak átadott van. Belsőleg szótár módszer, amely egy kulcsot a kulcshoz tartozó olvasó/zárolást igénybe vehet. Ha a metódus a kulcs értékét módosítja, a metódushoz zárolhatja a kulcs, és ha a metódus csak olvas a kulcs értékét, majd egy olvasási zárolás készül a kulcsot. Mivel AddAsync a kulcs értékét az új, az átadott értékre módosítja, a kulcs írási zárolása használatban van. Ezért 2 (vagy több) szálak megpróbál értékek hozzáadásához ugyanazzal a kulccsal egyszerre, ha egy szálat az írási zárolása fogják beszerezni, és letiltja a más szálak. Alapértelmezés szerint módszerek zárolást; akár 4 másodpercig letiltása 4 másodperc elteltével a módszerek throw egy TimeoutException. Túlterheléssel módszer létezik, így átadandó egy explicit időtúllépési értéket, ha inkább.
 
-Általában, hogy a kód írása reagálni a TimeoutException alatt, és újra próbálkozik a teljes műveletet (ahogy a fenti kódot) Egyszerű kód Task.Delay átadásakor 100 milliomod másodperc minden alkalommal, amikor csak hívandó. De a valóságban, valószínűleg jobb, ha valamilyen exponenciális vissza az indító késleltetés használja helyette.
+Általában a reagálni a TimeoutException elfogja-e, és a teljes művelet újrapróbálása (ahogyan az a fenti kód látható) kód írása. Egyszerű kódomat Task.Delay passing 100 ezredmásodpercben, minden alkalommal, amikor csak hívandó. De a valóságban ez valószínűleg jobb, ha az exponenciális visszatartási késleltetés bizonyos típusú használja helyette.
 
-A zárolás keletkezik, ha a AddAsync hozzáadja egy belső ideiglenes könyvtár az ITransaction objektumhoz rendelt kulcs-érték objektumra hivatkozik. Ez biztosítja, hogy olvasási-a-saját-írási műveletek szemantikájú történik. Ez azt jelenti, hogy után hívható AddAsync, (az azonos ITransaction objektum használatával) TryGetValueAsync újabb hívásakor visszatér az érték akkor is, ha még nem véglegesített tranzakció. A következő AddAsync rendezi sorba a kulcsot és értéket bájt tömbök objektumok és ezek bájt tömbök hozzáfűz egy naplófájlba, a helyi csomóponton. Végezetül AddAsync küld a byte tömbök a másodlagos replikák úgy, hogy a kulcs/érték ugyanazokat az információkat. Annak ellenére, hogy a kulcs/érték adatokat naplófájlba van írva, az adatokat nem részének számít a szótár csak a velük társított tranzakció véglegesítése után.
+A zárolás igényelve, miután AddAsync hozzáad egy belső átmeneti szótárba, az ITransaction objektumhoz társított kulcs-érték objektum hivatkozását. Ez történik, olvasási-your-saját-írások szemantika használatával. Azt jelenti Miután AddAsync felhívja, (az azonos ITransaction objektum használatával) TryGetValueAsync újabb hívása értéket fogja visszaadni akkor is, ha Ön rendelkezik nem véglegesített tranzakció. Ezután AddAsync szerializálja a kulcs és érték bájttömbökhöz objektumok és ezek bájttömbökhöz fűz a helyi csomópont egy naplófájlba. Végül AddAsync elküldi a bájttömbökhöz a másodlagos replikák úgy, hogy a kulcs/érték ugyanazokat az információkat. Annak ellenére, hogy a kulcs/érték-adatokat egy naplófájl íródott, az adatokat nem részének számít a szótár mindaddig, amíg a velük társított tranzakció véglegesítve.
 
-A fenti kódot CommitAsync hívása véglegesíti a tranzakció műveleteket. Pontosabban hozzáfűzi a véglegesítési információt a naplófájl a helyi csomóponton, és a végrehajtási rekord is küld a másodlagos replikákon. Miután a replikák másodlagosak (nagy) rendelkezik válaszolt, minden adatmódosítást állandó minősülnek, és bármely, amely nem volt kezelhetők a ITransaction objektum keresztül kapcsolódó zárolások feloldásáig blokkolva lesz, így más szálak tranzakciók állíthatók be ugyanazokkal a kulcsokkal és értékekkel.
+A fenti kódrészletben CommitAsync meghívásához érvényesítése a tranzakció műveleteket. Pontosabban a véglegesítés adatokat fűz a naplófájl a helyi csomóponton, és a végrehajtási rekord is küld a másodlagos replikákon. A replikák kvórum (nagy) válaszolt, miután minden adatmódosítást állandó számít, és minden társított kulcsokat, amelyekkel a ITransaction objektum-n keresztül is kezelhetők zárolások jelennek meg más szálak/tranzakciók ugyanazokkal a kulcsokkal is módosíthatja, és azok értékek.
 
-Ha CommitAsync nem neve (általában miatt kivételt folyamatban), majd a ITransaction elemet lekérdezi eldobták. Nem véglegesített ITransaction objektum ártalmatlanítása, amikor a Service Fabric hozzáfűzi a megszakítási információt a helyi csomópont naplófájl, és semmi nem kell a másodlagos replikák bármelyike elküldését. És ezt követően bármely, amely nem volt kezelhetők a tranzakció keresztül kapcsolódó zárolások feloldásáig blokkolva lesz.
+CommitAsync (általában egy kivétel) miatt nem hívják meg, ha a ITransaction objektum beolvasása eldobva. Nem véglegesített ITransaction objektum értékesítésére, amikor a Service Fabric hozzáfűzi a megszakítási információkat a helyi csomópont naplófájlt, és semmit nem kell bármelyik másodlagos replikán kell küldeni. És ezt követően jelennek meg minden olyan zárolásokat társított kulcsokat, amelyekkel a tranzakció-n keresztül is kezelhetők.
 
-## <a name="common-pitfalls-and-how-to-avoid-them"></a>Közös nehézségek és azok elkerülésének
-Most, hogy megismerte a megbízható gyűjtemények működése belső, vessen egy pillantást néhány gyakori előreláthatók őket. Tekintse meg az alábbi kódot:
+## <a name="common-pitfalls-and-how-to-avoid-them"></a>Közös buktatókat, és hogyan rájuk
+Most, hogy már érti, hogyan működnek a megbízható gyűjteményekből belsőleg, vessünk egy pillantást ezek közül néhány közös előreláthatók. Tekintse meg az alábbi kódot:
 
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -78,9 +78,9 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Egy rendszeres .NET könyvtár az használatakor egy kulcs/érték hozzáadása a szótár, és módosítsa a tulajdonság (például LastLogin). Azonban ez a kód nem működnek megfelelően megbízható adatkönyvtárhoz. Ne felejtse el a korábbi vitafórum a AddAsync hívása rendezi sorba a kulcs/érték objektumok bájt tömbök és a helyi fájl majd menti a tömbök és is elküldi azokat a másodlagos replikákon. Ha később megváltoztatja egy tulajdonság, a tulajdonság értéke csak; memóriában változik a helyi fájl vagy a replikák küldött adatok nem befolyásolja. Ha a folyamat leállásából eredő, a memória van érvényteleníteni. Új folyamat indításakor, vagy ha egy másik replika elsődleges válik, majd a régi tulajdonság értéke nem elérhető.
+Az egy normál .NET szótár használatakor egy kulcs/érték hozzáadása a szótár, és majd módosítsa az értéket (például LastLogin) tulajdonság. Azonban ez a kód nem működnek megfelelően az egy megbízható szótárban. Ne feledje a korábbi vitafórum a AddAsync hívása szerializálja a kulcs/érték bájttömbökhöz objektumok, és ezután menti a tömbök egy helyi fájlba, és is elküldi őket a másodlagos replikákon. Ha később megváltoztatja az olyan tulajdonság, a tulajdonság értéke csak; a memóriában változik a helyi fájl vagy a replikákra elküldött adatokat nem érinti. Ha a folyamat leáll, a memória van érvényteleníteni. Amikor új folyamat elindul, vagy ha egy másik replikára elsődleges válik, majd a régi tulajdonság értéke nem érhető el.
 
-I nem emelje ki elég milyen egyszerűen azt, hogy milyen típusú hibát fent látható. És csak megtudhatja, hogyan a hibát. Ha a folyamat leáll. A kód írása a megfelelő módon egyszerűen a két sort fordított:
+E hangsúlyozzák nem elég mennyire egyszerű is, hogy milyen típusú fenti hibát. És csak ismertetik a hibát. Ha a folyamat leáll. A kód írása a megfelelő módon egyszerűen, hogy a két sor fordított:
 
 
 ```csharp
@@ -92,7 +92,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Íme egy másik példa a megjelenítő gyakori hiba:
+Íme egy másik gyakori hiba példa:
 
 ```csharp
 
@@ -111,11 +111,11 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Ebben az esetben rendszeres .NET szótárak, a fenti kódot remekül működik, és egy közös minta: a fejlesztői kulcsot használ kereshet meg egy értéket. A meglévő értéket, a fejlesztői módosítja egy tulajdonság értékét. Megbízható gyűjteményéhez, hogy ez a kód azonban mutat a szerint már tárgyalt probléma: **ne módosítson egy objektum után adott, megbízható gyűjteményhez.**
+Újra, a .NET reguláris szótárak, a fenti kód jól működik, és a egy gyakori trend: a fejlesztői kulcsot használ kereshet meg egy értéket. Ha az érték már létezik, a fejlesztői módosítja egy tulajdonság értéke. A megbízható gyűjtemények, hogy ezt a kódot azonban kiváló ugyanez a probléma a már tárgyalt: **ne módosítson egy objektumot után egy megbízható gyűjteményben fordítani.**
 
-A megfelelő értéket egy megbízható gyűjtemény frissítése módja egy hivatkozást a meglévő értéket, és fontolja meg többé ez az útmutató által hivatkozott objektum. Ezután hozzon létre egy új objektumot, amely az eredeti objektum pontos másolatát. Most ezt az új objektumot állapotának módosítása, és írja a gyűjteményhez az új objektumot, hogy azt bájt tömbök, szerializálható lekérdezi a hozzáfűzi a helyi fájlhoz, és elküldve a. A módosítás(ok) véglegesítés után a memóriában lévő objektumok, a helyi fájl és a replikák a azonos pontos állapottal rendelkeznek. Csak jó!
+A helyes-e frissíteni egy értéket egy megbízható gyűjteményben módja egy hivatkozást a meglévő értéket, és fontolja meg az objektumra hivatkozik Ez a hivatkozás nem módosítható. Ezután hozzon létre egy új objektumot, amely az eredeti objektum pontos másolatát. Most módosíthatja az új objektum állapotát, és írja be a gyűjteménybe. az új objektum úgy, hogy azt a lekérdezi bájttömbökhöz, hogy szerializálni hozzáfűzi a helyi fájl és elküldve a. A módosítás(ok) véglegesítését, a memóriában lévő objektumok, a helyi fájl és minden replika után pontos állapotra. Minden készen áll!
 
-Az alábbi kódot a megfelelő módon frissíteni egy megbízható gyűjtemény értéket jeleníti meg:
+Az alábbi kód bemutatja a megfelelő módon frissíteni egy értéket egy megbízható gyűjteményben:
 
 ```csharp
 
@@ -142,10 +142,10 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Programozói hiba megelőzése érdekében megváltoztathatatlan adattípusok definiálása
-Szeretnénk ideális esetben a fordítási hibákat, ha véletlenül eredményez, amelyeknek figyelembe kell venni az nem módosítható objektum állapotának mutates kódot. De a C# fordítóprogram nincs ehhez lehetőséget. Igen, lehetséges programozói hibák elkerülése érdekében határozottan ajánlott, hogy a típust határoznak meg kell megváltoztathatatlan típusokra megbízható gyűjteményeket használ. Pontosabban Ez azt jelenti, hogy anyagot core értéktípusok (például számok [Int32, UInt64 stb.] dátum és idő, Guid, TimeSpan érték vagy hasonló). És természetesen is karakterlánc használható. Legjobb gyűjtemény tulajdonságok szerializálása során elkerülése érdekében, és azokat deszerializálása is gyakran hátrányosan befolyásolhatja a teljesítményt. Azonban ha gyűjteménytulajdonságokkal használni kívánt, erősen ajánlott a használata. NET által nem módosítható gyűjteményeket könyvtár ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ebben a könyvtárban letölthető http://nuget.org. Javasoljuk továbbá, az osztályok zárolásra és a mezőket csak olvasható amikor csak lehetséges.
+## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Programozói hiba elkerülése érdekében nem módosítható az adattípusok definiálása
+Szeretnénk ideális esetben hibák jelentéséhez a fordító, ha véletlenül olyan kódot, amely mutates állapota olyan objektum, amely lehet a megfontolandó nem módosítható. Azonban a C# fordító nem tudnak ehhez. Így lehetséges programozói hibák elkerülése érdekében javasoljuk, hogy a típust határoznak meg kell típusa nem módosítható a reliable collections használata. Pontosabban Ez azt jelenti, annál maradni core érték típusú (például a számok [Int32, UInt64 stb.], dátum és idő, Guid, időtartam és a hasonló). És persze, karakterlánc is használható. Gyűjtemény tulajdonságait, szerializálása elkerülése érdekében ajánlott, és azokat deszerializálása is gyakran összeállítása hátrányosan befolyásolhatja a teljesítményt. Javasoljuk azonban, ha szeretné használni a gyűjtemény tulajdonságait, magas használatát. A HÁLÓ nem módosítható gyűjteményeket könyvtár ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ebben a könyvtárban letölthető http://nuget.org. Javasoljuk továbbá, az osztályok zárolásra és a mezők csak olvasható, amikor csak lehetséges.
 
-Az alábbi UserInfo típus bemutatja, hogyan kell egy nem módosítható típus kihasználja a fenti ajánlásokat.
+Az alábbi UserInfo típusát mutatja be egy kihasználhatja a fenti javaslatok nem módosítható típusának definiálása.
 
 ```csharp
 
@@ -181,7 +181,7 @@ public sealed class UserInfo {
 }
 ```
 
-A ItemId típusa nem is módosítható típus Itt látható módon:
+Az elemazonosító típusa is egy nem módosítható típus Itt látható módon:
 
 ```csharp
 
@@ -197,23 +197,23 @@ public struct ItemId {
 }
 ```
 
-## <a name="schema-versioning-upgrades"></a>Séma versioning (frissítés)
-Belsőleg megbízható gyűjtemények szerializálni a objektumok használják. NET a DataContractSerializer. A szerializált objektumok őrződnek meg az elsődleges másodpéldány helyi lemezre, és a rendszer szintén továbbíthatja a Microsoftnak a másodlagos replikákon. A szolgáltatás Miután kiforrottá válik, valószínű, milyen típusú adatok (séma), a szolgáltatásnak szüksége van módosítani kell. Nagy gondot az adatok verziószámozásának kell készíthető elő. Mindenekelőtt mindig kell tudni régi adatokat. Pontosabban, ez azt jelenti, hogy a deszerializálás kódot kell végtelenül visszamenőlegesen kompatibilis: a szolgáltatás kód verziója 333 egy megbízható gyűjtemény helyezi el őket a szolgáltatáskód hibáit 1 verziójának 5 éve adatok alapján képesnek kell lennie.
+## <a name="schema-versioning-upgrades"></a>Séma verziószámozásával (frissítések)
+A Reliable Collections szerializálni a belsőleg, az objektumok. A NET DataContractSerializer. A szerializált objektumokat is az elsődleges replika helyi lemezen való megőrzése és is eljussanak a másodlagos replikákon. A szolgáltatás kiforrottá, valószínű, milyen típusú adatok (séma), a szolgáltatásnak szüksége van módosítani szeretné. Az adatok bármilyen verziókezelését kell megközelítést. Mindenekelőtt a mindig kell lehet deszerializálni a régi adatokat. Pontosabban Ez azt jelenti, a deszerializálás kód korlátlanul visszamenőlegesen kompatibilis kell lennie: A szolgáltatás kód 333 verziója adatot egy megbízható gyűjteményben 1. verzióját a szolgáltatást kód 5 éve a művelethez használandó képesnek kell lennie.
 
-Ezenkívül szolgáltatáskódot egyszerre lehet frissített több frissítési tartományt. Igen a frissítés során, hogy a szolgáltatáskód hibáit, hiszen egyszerre két különböző verziója. A szolgáltatáskód hibáit új verzióját használja az új sémával, mert a szolgáltatáskód hibáit régi verziói esetleg nem tudja kezelni az új sémával rendelkező kell elkerülése érdekében. Ha lehetséges, akkor tervezzen előre kompatibilis 1 verziójával kell a szolgáltatás minden verziója. Pontosabban Ez azt jelenti, hogy 1-es verzió, a szolgáltatás kód egyszerűen figyelmen kívül bármely séma elemei nem explicit módon kezeli képesnek kell lennie. Azonban képesnek kell lennie minden explicit módon kapcsolatos nem tud adatot és egyszerűen vissza kimenő szótár kulcs vagy érték frissítésekor írási mentéséhez.
+Ezenkívül a szolgáltatás kódja: frissített több frissítési tartományt egyszerre. Ezért a frissítés során kell a szolgáltatást kód fut egyidejűleg két különböző verzióit. Az új verziót a szolgáltatás kód az új sémával használja a szolgáltatást kód régi verziói nem feltétlenül tudja kezelni az új sémában kellene kell elkerülése érdekében. Ha lehetséges, akkor tervezzen előre kompatibilis 1 verziója által a szolgáltatás egyes verzióihoz. Pontosabban Ez azt jelenti, hogy a szolgáltatás kód V1 kell egyszerűen figyelmen kívül semmilyen séma elemei nem explicit módon kezeli. Azonban képesnek kell lennie minden olyan, nem explicit módon ismert adatok és egyszerűen vissza meg, amikor frissíti egy szótárban kulcs vagy érték írási mentéséhez.
 
 > [!WARNING]
-> Amíg a séma, kulcs módosíthatja, bizonyosodjon meg, hogy a kulcs kivonatkód és egyenlő algoritmusok stabil. Ha módosítja, hogyan működnek ezek az algoritmusok valamelyikét, csak akkor képes a kulcsot a megbízható szótár belül minden eddiginél újra.
+> Bár a kulcs a séma módosításához biztosítania kell, hogy a kulcs a kivonatkód egyenlő algoritmusok és stabil. Ha módosítja a hogyan működnek ezek az algoritmusok közül választhat, nem tud keresse ki a kulcsot a megbízható szótárban belül bármikor újra.
 >
 >
 
-Másik lehetőségként hajthat végre, milyen gyakran emlegetik úgy, a 2-fázis frissítés. A 2-fázis frissítést, a szolgáltatás V1-es rendszerről frissít V2: V2 a kódot tartalmaz, amely meg tudja az új sémaváltozás foglalkozik, de ez a kód nem hajtja végre. A V2 kód V1 adatok olvasását, akkor működik, és V1 adatokat. Majd a frissítés befejezése után minden frissítési tartományok között, akkor is valamilyen módon azt a futó V2-példányokban kívánja, hogy a frissítés befejeződött. (Jel egyik módja azt a konfigurációs frissítés fokozatosan; ez hasznossá ezt a 2-fázis frissítésének.) Most a V2 példányok is V1-adatok olvasása, V2 adatokat átalakíthatja, el és kiírni V2 adatként. Ha más esetekben V2-adatok olvasása, nem kell konvertálni, csak működik rajta, és kiírni a V2-adatok.
+Másik lehetőségként hajthat végre, mi általában a neve egy 2-fázis frissítése. Egy 2-fázis frissítést frissítse a szolgáltatás V1-től a v2: V2 tartalmazza a kódot, amely képes az új sémaváltozás foglalkozik, de ez a kód nem hajtja végre. A V2 kód V1 adatokat olvas be, amikor azt rajta működik, és V1 adatokat ír. Ezt követően a frissítés befejezése után minden frissítési tartományok között, akkor is valamilyen módon jelezze futó V2 példányok, hogy a frissítés befejeződött. (Jel egyik módja a vezethet be a konfiguráció frissítése, ez az a 2-fázis frissítés teszi ezt.) Most a V2-példányokat is V1-adatok olvasása, alakíthatja át a V2-adatok, a művelethez, és írható ki V2 adatként. További példányok V2-adatok olvasási, nem kell konvertálni, azok csak működik rajta, és kiírja a V2-adatok.
 
 ## <a name="next-steps"></a>További lépések
-Kompatibilis adatokat továbbítson a szerződések létrehozásával kapcsolatos további tudnivalókért lásd: [előre kompatibilis adategyezményeinek](https://msdn.microsoft.com/library/ms731083.aspx).
+Kompatibilis adatokat továbbítson a szerződések létrehozásával kapcsolatos további információkért lásd: [továbbító-kompatibilis Data szerződések](https://msdn.microsoft.com/library/ms731083.aspx).
 
-Gyakorlati tanácsok a versioning adategyezményeinek kapcsolatban [adatok szerződés Versioning](https://msdn.microsoft.com/library/ms731138.aspx).
+Verziókezelés adatok szerződések kapcsolatos bevált gyakorlatok megismeréséhez tekintse meg a [adatok szerződés Versioning](https://msdn.microsoft.com/library/ms731138.aspx).
 
-Verzió hibatűrő adategyezményeinek végrehajtására, lásd: [verzió hibatűrő szerializálási visszahívások](https://msdn.microsoft.com/library/ms733734.aspx).
+Verzió hibatűrő adatok szerződések megvalósítása kapcsolatban lásd: [verzió hibatűrő szerializálási visszahívások](https://msdn.microsoft.com/library/ms733734.aspx).
 
-Adjon meg olyan adatszerkezet, amely képes együttműködni több verziója között lásd: [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
+Megtudhatja, hogyan tud olyan adatszerkezet, amely képes együttműködni különböző több verziót, tekintse meg a [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959826"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185865"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Figyelési forgatókönyvek az metrikákhoz kapcsolódó riasztások
 
@@ -51,7 +51,7 @@ Az Azure Portalon lépjen az Automation-fiók. A **figyelés**válassza **riaszt
 
 ### <a name="define-the-action-to-take"></a>Adja meg az elvégzendő műveletet
 
-1. A **3. Műveleti csoport megadása** szakaszban kattintson az **+ Új műveletcsoport** gombra. Műveletcsoport olyan műveletek, amelyek között több riasztás is használhatja. Ezek tartalmazhatnak, de nem kizárólagosan, e-mail-értesítések, runbookok, webhookok és sok más. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
+1. A **3. Műveleti csoport megadása** szakaszban kattintson az **+ Új műveletcsoport** gombra. Műveletcsoport olyan műveletek, amelyek között több riasztás is használhatja. Ezek tartalmazhatnak, de nem kizárólagosan, e-mail-értesítések, runbookok, webhookok és sok más. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 1. A **Műveletcsoport neve** mezőben adjon meg egy felhasználóbarát és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 

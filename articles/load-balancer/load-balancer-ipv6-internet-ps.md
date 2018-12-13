@@ -1,23 +1,25 @@
 ---
-title: Egy Azure internetkapcsolattal rendelkező load balancer létrehozása IPv6 – PowerShell |} A Microsoft Docs
+title: Egy internetkapcsolattal rendelkező load balancer létrehozása IPv6 - PowerShell
+titlesuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozhat létre egy internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal PowerShell használatával a Resource Managerhez
 services: load-balancer
 documentationcenter: na
 author: KumudD
 keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 71164899de9e4351e2da5ce469f0d7ae0373829f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c62ef62a4a16f78003087347548c12793d61b10f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741334"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162409"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal PowerShell használatával a Resource Managerhez létrehozásának első lépései
 

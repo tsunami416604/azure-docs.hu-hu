@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/28/2018
-ms.openlocfilehash: 54deae9fcf9fdc786aa917bae518a2177a7acaff
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: baba85aeb800dd8effe3be295b2149179604b41d
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500370"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164840"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for MySQL-hez
 
@@ -39,7 +39,7 @@ Ellenőrizheti, hogy az AKS-fürt rendelkezik gyorsított hálózatkezelést:
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Nyissa meg a Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi a közvetlenül a Kubernetes vagy a Cloud Foundry Azure-szolgáltatások kiépítése. Ez egy [Open Service Broker API](https://www.openservicebrokerapi.org/) megvalósítása az Azure-hoz.
 
-Az OSBA hozzon létre egy Azure Database for MySQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for MySQL-hez együtt a [OSBA Github-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
+Az OSBA hozzon létre egy Azure Database for MySQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for MySQL-hez együtt a [OSBA GitHub-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
 
 
 

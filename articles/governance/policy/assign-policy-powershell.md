@@ -1,22 +1,22 @@
 ---
-title: Rövid útmutató – Szabályzat-hozzárendelés létrehozása PowerShell-lel az Azure-környezet nem megfelelő erőforrásainak azonosításához
-description: Ebben a gyors útmutatóban a PowerShell használatával hozhat létre egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
+title: Hozzon létre egy házirendet a nem megfelelő erőforrások azonosításához az Azure PowerShell használatával
+description: Azure PowerShell használatával hozzon létre egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 79e192bae8a1d9ac3e27f35dc2f64befc5a75a84
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 32fe811c80fd34b4ea3390a3f46a1d36aba7534e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078811"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310708"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>Gyors útmutató: Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához az Azure RM PowerShell modullal
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Azure PowerShell-lel a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést hoz létre. Amikor végzett, azonosíthatja a szabályzat-hozzárendelés szempontjából *nem megfelelő* virtuális gépeket.
 

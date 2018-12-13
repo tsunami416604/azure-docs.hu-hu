@@ -1,7 +1,7 @@
 ---
-title: Első .gif rendszerképek – a Bing Image Search API
+title: GIF Képkeresés a Bing Image Search API használatával
 titleSuffix: Azure Cognitive Services
-description: Hogyan használható a Bing Image Search API .gif képek további információt szeretne kapni.
+description: A Bing Image Search API használatával .gif rendszerképek keresése a weben.
 services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
@@ -10,16 +10,17 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: 7536452d3ed0030b34e4f30deba56d6d8ae1957c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870247"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249311"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>.Gif Képkeresés a Bing Image Search API használatával
+# <a name="search-for-gif-images"></a>GIF-rendszerképek keresése 
 
-A Bing Image Search API lehetővé teszi, hogy a teljes webes a leginkább releváns .gif között is kereshet.  A fejlesztők beépíthetik vonzó GIF beszélgetés különböző forgatókönyvekben. 
+A Bing Image Search API lehetővé teszi, hogy a teljes webes a leginkább releváns .gif között is kereshet.  A fejlesztők beépíthetik vonzó GIF beszélgetés különböző forgatókönyvekben. 
 
 A következő URL-címet az a lekérdezés animált .gif rendszerképeket.
 ````
@@ -206,5 +207,5 @@ A kód lekéri a következő eredményeket JSON-objektumként:
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyorsútmutató](quickstarts/csharp.md)
+- [C# – rövid útmutató](quickstarts/csharp.md)
 - [Az oktatóanyag Képkeresés egyoldalas alkalmazás](tutorial-bing-image-search-single-page-app.md)

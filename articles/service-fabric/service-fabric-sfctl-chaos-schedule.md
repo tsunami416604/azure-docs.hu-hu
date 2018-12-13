@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492240"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276451"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
 GET, és a chaos ütemezés beállításához.
@@ -29,7 +29,7 @@ GET, és a chaos ütemezés beállításához.
 |Parancs|Leírás|
 | --- | --- |
 | Get | A Chaos ütemezését, mikor és hogyan futtathat a Chaos meghatározása beolvasása. |
-| Állítsa be | A Chaos által használandó káosz ütemezésének beállítása. |
+| halmaz | A Chaos által használt ütemezés beállításához. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl-káosz ütemezés lekérése
 A Chaos ütemezését, mikor és hogyan futtathat a Chaos meghatározása beolvasása.
@@ -53,9 +53,9 @@ Lekérdezi a verzióját használja a Chaos ütemezés és a Chaos ütemezés, a
 | – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl-káosz beállítva ütemezés
-A Chaos által használandó káosz ütemezésének beállítása.
+A Chaos által használt ütemezés beállításához.
 
-Az ütemezés beállítása, a Chaos jelenleg használatban lévő káosz szerint. A Chaos káosz ütemezés szerint fut automatikusan beütemezett. A megadott bemeneti ütemezés szerint a verziót meg kell egyeznie a Chaos ütemezését, az a kiszolgáló verziója. Ha a megadott verzió nem egyezik meg a verziót a kiszolgálón, a Chaos ütemezés nem frissül. Ha verziója megegyezik a verzió a kiszolgálón, a Chaos ütemezése frissül, és a Chaos ütemezését, az a kiszolgáló verziójának értéke akkor növekszik, mentése és 0-ra burkolja 2 147 483 647 után. Ha a kérés érkezett, a Chaos fut, a hívás sikertelen lesz.
+A Chaos káosz ütemezés szerint fut automatikusan beütemezett. A megadott bemeneti ütemezés szerint a verziót meg kell egyeznie a Chaos ütemezését, az a kiszolgáló verziója. Ha a megadott verzió nem egyezik meg a verziót a kiszolgálón, a Chaos ütemezés nem frissül. Ha verziója megegyezik a verzió a kiszolgálón, a Chaos ütemezése frissül, és a Chaos ütemezését, az a kiszolgáló verziójának értéke akkor növekszik, mentése és 0-ra burkolja 2 147 483 647 után. Ha a kérés érkezett, a Chaos fut, a hívás sikertelen lesz.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -143,6 +143,7 @@ Az alábbi parancsot (feltéve, hogy az aktuális ütemezés 0 verzióval rendel
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>További lépések
 - [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.

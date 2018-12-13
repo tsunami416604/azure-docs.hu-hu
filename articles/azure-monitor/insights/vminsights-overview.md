@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: c7d2004da52d83ceda62dc31583797d9a218ef48
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085451"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188505"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Mi az Azure Monitor-beli virtuális gépek (előzetes verzió)?
 
@@ -27,11 +26,11 @@ A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM
 
 Az Azure Monitor-beli virtuális gépek a megoldás, a teljesítmény- és alkalmazásfüggőségek figyelés, a virtuális gépek, amelyek üzemeltethető a helyszínen vagy egy másik felhőszolgáltatóval támogatását is tartalmazza. Három főbb funkcióiról részletes betekintést biztosít:
 
-* **Windows és Linux rendszerű Azure virtuális gépek logikai összetevőit**: mérése történik, szemben az előre konfigurált állapotára vonatkozó feltételek, és azok riasztást küld, ha a kiértékelt feltétel nem teljesül.  
+* **Windows és Linux rendszerű Azure virtuális gépek logikai összetevőit**: Előre konfigurált állapotára vonatkozó feltételek, elleni mérése történik, és azok riasztást küld, ha a kiértékelt feltétel nem teljesül.  
 
-* **Előre meghatározott, népszerű teljesítménydiagramok**: alapvető teljesítmény-mérőszámokat a Vendég virtuális gép operációs rendszer megjelenítéséhez.
+* **Előre meghatározott, népszerű teljesítménydiagramok**: A Vendég virtuális gép operációs rendszerről alapvető teljesítmény-mérőszámait jeleníti meg.
 
-* **Függőségi térkép**: a virtuális géppel a különböző erőforráscsoportokban és előfizetésekben összekapcsolt összetevőket jeleníti meg.  
+* **Függőségi térkép**: A virtuális géppel a különböző erőforráscsoportokban és előfizetésekben összekapcsolt összetevőket jeleníti meg.  
 
 Az funkciók vannak szervezve három szempontok:
 
@@ -46,8 +45,8 @@ A Log Analytics-integráció biztosít hatékony összesítési és szűrés, é
 
 Megtekintheti az adatok közvetlenül a virtuális gép egyetlen virtuális gépen, vagy használhatja az Azure Monitor, hogy a virtuális gépek összesített nézete. Ebben a nézetben minden egyes szolgáltatás perspektíva alapul:
 
-* **Egészségügyi**: A virtuális gépeket kapcsolódó egy erőforráscsoportot.
-* **Térkép** és **teljesítmény**: A virtuális gépek úgy vannak konfigurálva, a jelentés egy adott Log Analytics-munkaterületet.
+* **Egészségügyi**: A virtuális gépek egy erőforráscsoporthoz kapcsolódnak.
+* **Térkép** és **teljesítmény**: A virtuális gépek a jelentés egy adott Log Analytics-munkaterületet úgy van beállítva.
 
 ![Az Azure Portalon a virtuális gép insights perspektíva](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 

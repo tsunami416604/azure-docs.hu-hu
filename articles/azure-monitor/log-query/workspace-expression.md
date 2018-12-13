@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 2909f586ce102b319ca9dfeea191c7812e3f6b06
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883125"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182944"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés Workspace() kifejezés
 
@@ -32,7 +31,7 @@ A `workspace` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni
 
 ## <a name="arguments"></a>Argumentumok
 
-- *Azonosító*: azonosítja a munkaterület az alábbi táblázat a formátumok valamelyikével.
+- *Azonosító*: A munkaterület az alábbi táblázat a formátumok valamelyikével azonosítja.
 
 | Azonosító | Leírás | Példa
 |:---|:---|:---|

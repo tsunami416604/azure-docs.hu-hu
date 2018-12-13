@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás üzembe helyezése az Azure App Service-ben FTP/S használatával |} A Microsoft Docs
+title: Telepítse központilag a tartalmakat FTP/S - az Azure App Service használatával |} A Microsoft Docs
 description: Megtudhatja, hogyan helyezze üzembe az alkalmazást az Azure App Service-ben FTP- vagy FTPS használatával.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: f48dc4d91fd5fafda88f518c27c79e151e5b1ebe
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679392"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260072"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -46,8 +47,8 @@ Javasoljuk, hogy használja **alkalmazás hitelesítő adatok** , mivel minden a
 ## <a name="deploy-files-to-azure"></a>Az Azure files üzembe helyezése
 
 1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), vagy [WinSCP](https://winscp.net/index.php)), az alkalmazás csatlakozni összegyűjtött kapcsolati információk.
-3. Másolja a fájlokat és a megfelelő könyvtárstruktúrát a [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/site/wwwroot/App_Data/feladatok/** könyvtárat a webjobs-feladatokat).
-4. Keresse meg az alkalmazás URL-címe, ellenőrizze az alkalmazás megfelelően fut-e. 
+2. Másolja a fájlokat és a megfelelő könyvtárstruktúrát a [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/site/wwwroot/App_Data/feladatok/** könyvtárat a webjobs-feladatokat).
+3. Keresse meg az alkalmazás URL-címe, ellenőrizze az alkalmazás megfelelően fut-e. 
 
 > [!NOTE] 
 > Ellentétben [Git-alapú telepítések](app-service-deploy-local-git.md), FTP telepítési nem támogatja a következő központi telepítés automatizálását: 

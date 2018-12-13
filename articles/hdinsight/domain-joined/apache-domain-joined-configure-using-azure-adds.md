@@ -1,5 +1,5 @@
 ---
-title: Vállalati biztonsági csomag egy HDInsight-fürt konfigurálása az Azure AD-DS-sel
+title: Vállalati biztonsági csomag konfigurációját az Active Directory Domain Servicest – Azure HDInsight segítségével
 description: Megtudhatja, hogyan állíthatja be, és a HDInsight vállalati biztonsági csomag fürt konfigurálása Azure Active Directory Domain Services használatával.
 services: hdinsight
 ms.service: hdinsight
@@ -7,13 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/9/2018
-ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 10/09/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5e5b8320459561ac2dbbf72a812e29e837e08cd6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684748"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166659"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -97,11 +98,11 @@ Miután engedélyezte a ESP, az Azure AD-Tartományi kapcsolatos gyakori konfigu
 
 ESP egy HDInsight-fürtöt hoz létre, amikor meg kell adnia a következő paraméterekkel:
 
-- **Fürt rendszergazdai felhasználói**: válassza ki a fürt rendszergazdája, a szinkronizált Azure AD-DS-ben. A tartományi fiók a szinkronizált és elérhető az Azure AD-Tartományi már kell lennie.
+- **Fürt rendszergazdai felhasználói**: Válassza ki a fürt rendszergazdája, a szinkronizált Azure AD-DS-ben. A tartományi fiók a szinkronizált és elérhető az Azure AD-Tartományi már kell lennie.
 
 - **A fürt hozzáféréscsoportokat**: A biztonsági csoportok segít a felhasználóknak szeretne szinkronizálni, és a fürt hozzáféréssel rendelkezik az Azure AD-Tartományi elérhetőnek kell lennie. Ha például HiveUsers csoport. További információkért lásd: [hozzon létre egy csoportot, és tagokat vehet fel a az Azure Active Directoryban](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-- **LDAPS URL-cím**: Példa ldaps://contoso.com:636.
+- **LDAPS URL-CÍM**: Ez például akkor ldaps://contoso.com:636.
 
 Az alábbi képernyőfelvételen egy sikeres konfigurálása az Azure Portalon:
 

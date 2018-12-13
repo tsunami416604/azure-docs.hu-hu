@@ -1,5 +1,5 @@
 ---
-title: Adatok megjelenítése az az Azure Time Series Insights – előzetes explorer |} A Microsoft Docs
+title: Az Azure Time Series Insights előzetes verziója explorer - adatok megjelenítése az az Azure Time Series Insights – előzetes explorer |} A Microsoft Docs
 description: Ez a cikk ismerteti a szolgáltatások és az Azure Time Series Insights – előzetes explorer web app alkalmazásban elérhető beállítások.
 author: ashannon7
 ms.author: anshan
@@ -9,12 +9,13 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 3a2958d838f0646ac030421b3785fc11a1466dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086725"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272337"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Adatok megjelenítése az a explorer előzetes verzió
 
@@ -24,7 +25,7 @@ Ez a cikk azt ismerteti, lehetőségek és beállítások az Azure Time Series I
 
 Mielőtt használná az Azure Time Series Insights – előzetes explorer, a következőket kell tennie:
 
-* Állítsa be a Time Series Insights környezettel rendelkezik. További információkért lásd: [oktatóanyag: Azure Time Series Insights – előzetes](./time-series-insights-update-create-environment.md).
+* Állítsa be a Time Series Insights környezettel rendelkezik. További információkért lásd: [oktatóanyag: Az Azure Time Series Insights-előzetes verzió](./time-series-insights-update-create-environment.md).
 * A fiók a Time Series Insights-környezetet, Ön által létrehozott adatok hozzáférést biztosítanak. Parancs saját maga számára hozzáférést is megadhat.
 * Eseményforrás hozzáadása a Time Series Insights környezetet az adatok leküldéséhez a környezetet.
 
@@ -34,12 +35,12 @@ Mielőtt használná az Azure Time Series Insights – előzetes explorer, a kö
 
 Az Azure Time Series Insights – előzetes Explorert a következő elemekből áll:
 
-* **Navigációs sáv**: lehetővé teszi, hogy analytics és a modell lapok közötti váltáshoz.
-* **Hierarchiafája**: lehetővé teszi a forrásadatok adott adatelem választja.
+* **Navigációs sáv**: Lehetővé teszi elemzések és a modell lapok közötti váltáshoz.
+* **Hierarchiafája**: Válassza ki a forrásadatok adott adatelem teszi lehetővé.
 * **Jól Time series**: Megjeleníti az aktuálisan kiválasztott adatelemet.
-* **Diagram panel**: az aktuális működő diagramot jelenít meg.
-* **Idősor**: módosíthatja a működő azt az időtartományt.
-* **Alkalmazássávon**: a felhasználó olyan felügyeleti lehetőségeket, például az aktuális bérlő tartalmazza, és lehetővé teszi a téma- és nyelvi beállítások módosítása.
+* **Diagram panel**: Megjeleníti az aktuális működő diagramot.
+* **Idősor**: Módosíthatja a működő azt az időtartományt.
+* **Alkalmazássávon**: A felhasználó olyan felügyeleti lehetőségeket, például az aktuális bérlő tartalmazza, és lehetővé teszi a téma- és nyelvi beállítások módosítása.
 
 ## <a name="time-series-insights-preview-environment-panel"></a>Time Series Insights előzetes környezet panel
 
@@ -53,17 +54,17 @@ A környezet panel megjeleníti az összes hozzáfér a Time Series Insights kö
 
 A navigációs menüben válthat a Time Series Insights-alkalmazások között:
 
-* **Elemezheti**: lehetővé teszi a diagram és megoldásban gazdag analitikai hajthatja végre az modellezett vagy unmodeled idősoros adatokat.
+* **Elemezheti**: Lehetővé teszi a diagram és megoldásban gazdag analitikai hajthatja végre az modellezett vagy unmodeled idősoros adatokat.
 
-* **Modell**: lehetővé teszi a Time Series Insights előzetes verziója új típusú, hierarchiákat és példányok leküldése a Time Series Insights-modellben.
+* **Modell**: Lehetővé teszi új Time Series Insights előzetes verziója típusok, hierarchiákat és példányok leküldése a Time Series Insights-modellben.
 
 ## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights előzetes verziója modell létrehozásához
 
 Az ehhez az alkalmazáshoz az Idősorozat-modell létrehozási, olvasási, frissítési és törlési (CRUD) műveleteket hajthat végre.  
 
-* **Time Series modelltípus**: a Time Series Insights típusok meghatározó változókat vagy számítások adatelemzésre képletek engedélyezése. Azok a egy adott Time Series Insights-példány. A típus lehet egy vagy több változót.
-* **Time Series hierarchiája**: a hierarchiák szintekbe az adatok rendszeres szervezetek. Hierarchiák jelzik a Time Series Insights adatait a különböző entitások közötti kapcsolatokat.
-* **Time Series modell példány**: példányai az idősor magukat. A legtöbb esetben a DeviceID vagy AssetID, amely a környezetben az eszköz egyedi azonosítója.
+* **Time Series modelltípus**: Time Series Insights-típusok engedélyezése meghatározó változókat vagy számítások adatelemzésre képleteket. Azok a egy adott Time Series Insights-példány. A típus lehet egy vagy több változót.
+* **Time Series hierarchiája**: A hierarchiák szintekbe az adatok rendszeres szervezetek. Hierarchiák jelzik a Time Series Insights adatait a különböző entitások közötti kapcsolatokat.
+* **Time Series modell példány**: Az idősor magukat a példányai. A legtöbb esetben a DeviceID vagy AssetID, amely a környezetben az eszköz egyedi azonosítója.
 
 Az Idősorozat-modell kapcsolatos további információkért lásd: [alkalommal sorozat modellek](./time-series-insights-update-tsm.md).
 
@@ -94,13 +95,13 @@ A diagram megjelenítheti a vonalakként idő sorozat példányai. A környezet 
 
   ![Explorer-nyolc][8]
 
-1. **A kijelölt dátumtartományban**: szabályozza, mely adatok elemek érhetők el a vizualizációt.
+1. **A kijelölt dátumtartományban**: Szabályozza, mely adatok elemek érhetők el a vizualizációt.
 
-1. **Belső dátum tartomány csúszkaeszközt**: a két végpontot vezérlők használata húzza őket a kívánt időre időtartam.
+1. **Belső dátum tartomány csúszkaeszközt**: A két végpontot vezérlőkkel húzza őket a kívánt időre időtartam.
 
-1. **Idő a tartomány összecsukása vezérlő**: összecsukása és kibővíti az idő span panel szerkesztő.
+1. **Idő a tartomány összecsukása vezérlő**: Magasságúra csökken, és az idő span panel szerkesztő fájl.
 
-1. **Vezérlő y tengely formázása**: Váltás az elérhető y tengely megjelenítési beállításai:
+1. **Vezérlő y tengely formázása**: Váltás a rendelkezésre álló y tengely megjelenítési beállításai:
 
     * `Default`: Minden sor egy egyedi y tengely rendelkezik.
     * `Stacked`: Lehetővé teszi több sort az azonos y tengelyen zásobníku az y tengely adatok módosítását a kijelölt sor alapján.
@@ -126,19 +127,19 @@ Ha a Time Series Insights előzetes verzió használata során először válass
 
   ![Explorer-tizenkét][12]
 
-1. **Belső dátumtartomány csúszkaeszközt**: a két végpontot vezérlők használata húzza őket a kívánt időre időtartam. A külső dátumtartomány csúszka vezérlő belső dátumtartomány korlátozza.
+1. **Belső dátumtartomány csúszkaeszközt**: A két végpontot vezérlőkkel húzza őket a kívánt időre időtartam. A külső dátumtartomány csúszka vezérlő belső dátumtartomány korlátozza.
 
-1. **Növelése és csökkentése dátum tartomány gombok**: növekedést vagy csökkenést az idő az az időtartam alatt azt szeretné, vagy a gomb kiválasztásával span.
+1. **Növelése és csökkentése dátum tartomány gombok**: Növelje vagy csökkentse az időtartam számára a kívánt időközt vagy gomb kiválasztásával.
 
 1. **Idő a tartomány összecsukása vezérlő**: A webes vezérlő lehetővé teszi a belső dátumtartomány csúszkaeszközt kivételével az összes vezérlő elrejtése.
 
-1. **Külső dátumtartomány csúszkavezérlő**: a végpont-vezérlők használatával válassza ki a külső dátum tartományt, amely a belső tartomány-ellenőrzési elérhető lesz.
+1. **Külső dátumtartomány csúszkavezérlő**: A végpont vezérlők segítségével válassza ki a külső dátum tartományt, amely a belső tartomány-ellenőrzési elérhető lesz.
 
-1. **Gyorshivatkozások dátum tartomány legördülő**: lehetővé teszi, hogy gyorsan válthat előre beállított idő span beállításokat is, például az elmúlt 30 percben, az elmúlt 12 órában vagy egy egyéni tartomány között. Ez az érték módosítása módosítja a időköz méretű csúszkaeszközt tárgyalt elérhető időköz tartományok is.
+1. **Gyorshivatkozások dátum tartomány legördülő**: Lehetővé teszi az előre beállított idő span beállításokat is, például az elmúlt 30 percben, az elmúlt 12 órában vagy egy egyéni tartomány között. Ez az érték módosítása módosítja a időköz méretű csúszkaeszközt tárgyalt elérhető időköz tartományok is.
 
-1. **Intervallum méretű csúszkaeszközt**: lehetővé teszi, hogy azonos keresztül adataikkal időközök nagyítás időtartományon. Ez a művelet idő nagy szeletei közötti mozgás pontosabb felügyeletét biztosítja. Kisebb, mint egy ezredmásodperc alatt maradnak, így megjelenik az adatok részletes, nagy felbontású darabok szeletek lefelé zökkenőmentes trendeket jelenít meg. A csúszka alapértelmezett kiindulási pontjaként a választását, amely elosztja a megoldás, a lekérdezés sebessége és a granularitási az adatok a legoptimálisabb nézet van beállítva.
+1. **Intervallum méretű csúszkaeszközt**: Nagyítás adataikkal időközök azonos időtartomány keresztül teszi lehetővé. Ez a művelet idő nagy szeletei közötti mozgás pontosabb felügyeletét biztosítja. Kisebb, mint egy ezredmásodperc alatt maradnak, így megjelenik az adatok részletes, nagy felbontású darabok szeletek lefelé zökkenőmentes trendeket jelenít meg. A csúszka alapértelmezett kiindulási pontjaként a választását, amely elosztja a megoldás, a lekérdezés sebessége és a granularitási az adatok a legoptimálisabb nézet van beállítva.
 
-1. **Dátumtartomány és a webes vezérlő**: a webes vezérlő is egyszerűen kattintson és válassza ki a kívánt dátum és idő tartományok. A vezérlőelem használatával váltson a különböző időzónák között. Miután módosításokat végez a alkalmazni az aktuális munkaterületen válassza ki **mentése**.
+1. **Dátumtartomány és a webes vezérlő**: A webes vezérlő is egyszerűen kattintson és válassza ki a kívánt dátum és idő tartományok. A vezérlőelem használatával váltson a különböző időzónák között. Miután módosításokat végez a alkalmazni az aktuális munkaterületen válassza ki **mentése**.
 
   ![Explorer tizenhárom][13]
 
@@ -169,8 +170,8 @@ Jelölje ki a kapcsolat webalkalmazás (kiemelve) mentéséhez, vagy az Azure Ti
 
 Az Azure Time Series Insights előzetes verziója támogatja a két témák:
 
-* **Világos téma**: az alapértelmezett téma jelenik meg ebben a dokumentumban.
-* **Sötét téma**: Ez a beállítás a explorer itt látható módon:
+* **Világos téma**: Az alapértelmezett téma jelenik meg ebben a dokumentumban.
+* **Sötét téma**:  Ez a beállítás az Intézőben, itt látható módon:
 
   ![Explorer-seventeen][17]
 
@@ -205,7 +206,7 @@ Tudjon meg többet a támogatott lekérdezési műveletek és adattípusok olvas
 
 **Mérték**: A legördülő megjeleníti az összes numerikus oszlopai (**Double típusú értékekkel**) a jelenlegi diagramhoz elemeket is használni.
 
-**Felosztási szempont**: A legördülő oszlopokat jelenít meg minden a rendelkezésre álló kategorikus (karakterlánc) a modellt, amely az adatok alapján csoportosíthatja. Ugyanazt az x tengelyen megtekintéséhez legfeljebb öt feltételeket adhat hozzá. Adja meg a kívánt paramétereket, és válassza ki **Hozzáadás** friss kifejezés hozzáadásához.
+**Felosztási szempont**: A legördülő minden a kategorikus oszlopok (karakterlánc), amely az adatok alapján csoportosíthatja a modell jeleníti meg. Ugyanazt az x tengelyen megtekintéséhez legfeljebb öt feltételeket adhat hozzá. Adja meg a kívánt paramétereket, és válassza ki **Hozzáadás** friss kifejezés hozzáadásához.
 
   ![Explorer-erdőtopológia][20]
 

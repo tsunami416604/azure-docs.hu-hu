@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 63f9417a65fbe3141907dc7d7d64da06eec7e93f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882543"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187449"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő a Log Analytics folyamatok automatizálása a Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow munkafolyamatok tartalmazó naplókeresések a Log Analytics által lekért adatok létrehozását teszik lehetővé.
@@ -57,7 +56,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 
 2. Válassza ki **HTML-táblázat** számára a **diagramtípus**.<br><br>![Log Analytics művelet](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>5. lépés: Konfigurálja a folyamat e-mailek küldése
+## <a name="step-5-configure-the-flow-to-send-email"></a>5. lépés: E-mail küldése a flow konfigurálása
 
 1. Kattintson a **új lépés**, és kattintson a **+ művelet hozzáadása**.
 2. Keresse meg **az Office 365 Outlook**.
@@ -69,7 +68,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 6. Kattintson a **speciális beállítások megjelenítése**.
 7. Az a **HTML** jelölje ki **Igen**.<br><br>![Az Office 365 e-mailek konfigurációs ablaka](media/flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>6. lépés: Mentse, és a folyamat tesztelése
+## <a name="step-6-save-and-test-your-flow"></a>6. lépés: Mentés és a folyamat tesztelése
 1. Az a **Folyamatnév** mezőben, adja hozzá a folyamat nevét, és kattintson **folyamat létrehozása**.<br><br>![Folyamat mentése](media/flow-tutorial/flow06.png)
 2. A folyamat létrehozása megtörtént, és a egy nap, amely megadott ütemezés fog futni. 
 3. A folyamat teszteléséhez azonnal, kattintson a **Futtatás most** , majd **folyamat futtatása**.<br><br>![Folyamat futtatása](media/flow-tutorial/flow07.png)

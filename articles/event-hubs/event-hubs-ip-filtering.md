@@ -1,6 +1,6 @@
 ---
-title: IP-szűrők – Azure Event Hubs-hozzáférés korlátozása |} A Microsoft Docs
-description: Használja az IP-szűrés blokk-kapcsolatokat, az adott IP-címek az Azure Event Hubsba.
+title: Az Azure Event Hubs tűzfalszabályok |} A Microsoft Docs
+description: Tűzfal-szabályok használatával engedélyezi az adott IP-címekről érkező kapcsolatok az Azure Event Hubsba.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -11,28 +11,26 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: d21bf32ce804d2c8f6177eb7f789474bc41c9733
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087507"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268274"
 ---
-# <a name="restrict-access-to-azure-event-hubs-using-ip-filters"></a>Az Azure Event Hubs IP-szűrők használatával való hozzáférés korlátozása
-Forgatókönyvek, amelyben az Azure Event Hubs elérhetőnek kell lenniük csak bizonyos ismert helyek a *IP-szűrő* funkciója lehetővé teszi visszautasítja, vagy a forgalom származik az adott IPv4-címeket fogad szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
+# <a name="use-firewall-rules"></a>Tűzfalszabályok
+
+A forgatókönyvek, amelyben az Azure Event Hubs elérhetőnek kell lenniük csak bizonyos ismert helyek esetén tűzfalszabályok engedélyezése, hogy a forgalom származik az adott IPv4-címek elfogadására vonatkozó szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Két fontos eseteinek is hasznos, ha szeretné, hogy letiltja az Event Hubs, az egyes IP-címek az alábbiak szerint:
-
-- Az event hubs kell forgalom fogadására csak a megadott IP-címről, és elvetheti a minden mást. Az Event Hubs használata esetén például [Azure Express Route] [ express-route] a helyszíni infrastruktúra magánkapcsolatokat hozhat létre. 
-- Az Event Hubs-rendszergazda által azonosított gyanús, IP-címekről érkező forgalom elutasítása kell.
+Az Event Hubs-névtér beállítása szeretne minden más elutasítás és csak a megadott IP-címtartományt a forgalom úgy, hogy azt kell kapnia, akkor használhatja egy *tűzfalszabály* blokkolja az Event Hub-végpontok más IP-címek. Az Event Hubs használata esetén például [Azure Express Route] [ express-route] a helyszíni infrastruktúra magánkapcsolatokat hozhat létre.
 
 ## <a name="how-filter-rules-are-applied"></a>Szűrési szabályok alkalmazása
 
 Az IP-szűrési szabályok érvényesek az Event Hubs-névterek szintjén. Ezért a szabályok érvényesek lesznek az összes kapcsolat bármely támogatott protokollt használó ügyfelektől.
 
-Minden kapcsolódási kísérlet IP-címről, amely megfelel az Event Hubs-névtér rejecting IP szabály van elutasítottuk, mert nem engedélyezett. A válasz nem említi az IP-szabályt.
+Minden olyan IP-címről, amely nem felel meg egy engedélyezett IP-szabályt az Event Hubs névtér van elutasítottuk, mert a csatlakozási kísérlet nem engedélyezett. A válasz nem említi az IP-szabályt.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
@@ -42,68 +40,107 @@ Alapértelmezés szerint a **IP-szűrő** rács a portálon az Event Hubs, az ü
 
 IP-szűrési szabályok a rendszer sorrendben alkalmazza, és az első szabály, amely az IP-cím megegyezik a elfogadása vagy elutasítása műveletet határozza meg.
 
-Például ha azt szeretné, a tartomány 70.37.104.0/24 címeit fogadja el, és minden más elutasítása, az első szabály a rácson a cím-tartományt 70.37.104.0/24 kell fogadnia. A következő szabályt kell utasítania összes címet a tartomány 0.0.0.0/0 használatával.
+>[!WARNING]
+> Tűzfalak végrehajtási megakadályozhatja az egyéb Azure-szolgáltatásokhoz az Event hubs szolgáltatással való interakcióhoz.
+>
+> Megbízható Microsoft-szolgáltatások nem támogatottak. Ha IP-szűrés (tűzfal) vannak megvalósítva, és fog hamarosan közzétesszük.
+>
+> Gyakori Azure forgatókönyvek nem működnek az IP-szűrés (vegye figyelembe, hogy a lista **nem** teljes körű) –
+> - Azure Monitor
+> - Azure Stream Analytics
+> - Az Azure Event Grid-integráció
+> - Az Azure IoT Hub-útvonalak
+> - Az Azure IoT Device Explorer
+> - Azure Data Explorer
+>
+> Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton
+> - Azure Web Apps
+> - Azure Functions
 
-> [!NOTE]
-> IP-címek visszautasítja megakadályozhatja az egyéb Azure-szolgáltatások (például az Azure Stream Analytics, Azure Virtual Machines vagy a portálon a Device Explorer) az Event hubs szolgáltatással való interakcióhoz.
-
-### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Az IP-szűrési szabály létrehozása az Azure Resource Manager-sablonok
+### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Egy tűzfalszabály létrehozása az Azure Resource Manager-sablonok
 
 > [!IMPORTANT]
-> A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott. 
+> Tűzfal-szabályok használata támogatott a **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott.
 
 A következő Resource Manager-sablon lehetővé teszi, hogy egy IP-szűrési szabály hozzáadása egy meglévő Event Hubs-névtér.
 
 Sablon paraméterei:
 
-- **ipFilterRuleName** legfeljebb 128 karakter hosszúságú egyedi, kis-és nagybetűket, alfanumerikus karakterláncnak kell lennie.
-- **ipFilterAction** vagy **elutasítása** vagy **elfogadás** a alkalmazni az IP-szűrési szabály művelet.
 - **ipMask** egyetlen IPv4-cím vagy IP-címeket a CIDR-jelölésrendszerben egy kódblokkot. Például a CIDR jelölésrendszerben 70.37.104.0/24 jelöli 256 IPv4-címek 70.37.104.0 a 70.37.104.255, az a tartomány jelentős előtag bitek számát jelző 24.
 
+> [!NOTE]
+> Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
+> Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
+> 
+> forrás:
+> ```json
+> "defaultAction": "Allow"
+> ```
+> erre:
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "eventhubNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Event Hubs namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('eventhubNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.EventHub/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('eventhubNamespaceName')]",
+        "type": "Microsoft.EventHub/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.EventHub/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.EventHub/namespaces/', parameters('eventhubNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 A sablon üzembe helyezéséhez kövesse az utasításokat [Azure Resource Manager][lnk-deploy].

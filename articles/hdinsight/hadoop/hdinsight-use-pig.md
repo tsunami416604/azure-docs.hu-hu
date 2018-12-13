@@ -1,5 +1,5 @@
 ---
-title: Az Apache Pig használata a HDInsight
+title: Apache Pig - Azure HDInsight használata
 description: Ismerje meg, hogyan lehet a Pig használata a HDInsight az Apache Hadoop.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 4eb4fa201a435df5e2b5016ba9686d76707c0635
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 25a91c6217aac1b2278957c1ff0ed8b7a9b1f6ac
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011628"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166166"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -40,11 +40,11 @@ A Pig lehetővé teszi az adatok előállításához a kívánt kimeneti áthala
 
 A Pig Latin nyelv lehetővé teszi a nyers adatok bevitele, egy vagy több átalakítások, a kívánt kimeneti előállításához keresztül érkező adatfolyam ismertetik. A Pig Latin programok az általános mintát követik:
 
-* **Betöltés**: kezelhetők a fájlrendszerből adatokat olvasni.
+* **Betöltés**: A fájlrendszer kezelhetők az adatok olvasása
 
-* **Átalakítás**: az adatok kezelése
+* **Átalakítás**: Az adatok kezelése
 
-* **Memóriakép és nem tárolnak**: kimeneti adatok a képernyőre, vagy a feldolgozáshoz tárolja
+* **Memóriakép és nem tárolnak**: A kimeneti adatoknak a képernyőre, vagy a feldolgozáshoz tárolja
 
 ### <a name="user-defined-functions"></a>Felhasználó által definiált függvények
 

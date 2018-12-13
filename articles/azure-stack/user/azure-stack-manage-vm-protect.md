@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/15/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963913"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191529"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Az Azure Stack üzembe helyezett virtuális gépek védelme
 
@@ -55,8 +55,8 @@ Tervezze meg a backup-helyreállítás és a vész-helyreállítási stratégia 
 
 |  | Globális Azure | Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett | Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett** | Az működtetni CSP az Azure Stack felhasználói virtuális gépeket telepít. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Kriptográfiai Szolgáltató az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Kriptográfiai Szolgáltató az Azure Stack az elsődleges helyen működik. Ügyfél adatközpontja célja visszaállítása vagy feladatátvétel. |
-| **Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett** | Felhasználói virtuális gépeket a rendszer telepíti az ügyfél üzemeltetett Azure Stack. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Ügyfél az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Ügyfél az Azure Stack az elsődleges helyen működik. A Felhőszolgáltató adatközpontjában célja visszaállítása vagy feladatátvétel. |
+| **Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett** | Az működtetni CSP az Azure Stack felhasználói virtuális gépeket telepít.<br><br>Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Kriptográfiai Szolgáltató az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik.<br><br>Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Kriptográfiai Szolgáltató az Azure Stack az elsődleges helyen működik.<br><br>Ügyfél adatközpontja célja visszaállítása vagy feladatátvétel. |
+| **Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett** | Felhasználói virtuális gépeket a rendszer telepíti az ügyfél üzemeltetett Azure Stack.<br><br>Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Ügyfél az Azure Stack az elsődleges helyen működik.<br><br>A Felhőszolgáltató adatközpontjában célja visszaállítása vagy feladatátvétel. | Ügyfél az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik.<br><br>Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. |
 
 ![Forrás-cél kombinációk](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
@@ -82,8 +82,8 @@ A leggyakrabban használt védelmi séma Virtuálisgép-alapú alkalmazásokhoz,
 Az alkalmazás helyreállítása szükséges egy vagy több virtuális gép visszaállítása, ugyanabban a felhőben vagy egy új felhőt. A célfelhő az adatközpontban vagy a nyilvános felhőben. A választott cloud teljesen a vezérlőben, amely az és az adatvédelmi követelmények alapján.
  
  - RTO: Az órában mért állásidő
- - Helyreállítási Időkorlát: Változó adatvesztés (biztonsági mentés gyakoriságától függően)
- - Üzembe helyezési topológia: aktív/passzív
+ - HELYREÁLLÍTÁSI IDŐKORLÁT: Változó adatvesztés (biztonsági mentés gyakoriságától függően)
+ - Üzembe helyezési topológia: Aktív/passzív
 
 #### <a name="planning-your-backup-strategy"></a>A biztonsági mentési stratégia tervezése
 
@@ -110,8 +110,8 @@ Ezzel a módszerrel a rendszer telepíti az alkalmazást egy felhőben, és a vi
 ![Replikálás – kézi feladatátvételt](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: Percben mért állásidő
- - Helyreállítási Időkorlát: Változó adatvesztés (replikáció gyakoriságától függően)
- - Üzembe helyezési topológia: aktív/passzív készenléti
+ - HELYREÁLLÍTÁSI IDŐKORLÁT: Változó adatvesztés (replikáció gyakoriságától függően)
+ - Üzembe helyezési topológia: Aktív/passzív készenléti
  
 ### <a name="high-availabilityautomatic-failover"></a>Magas rendelkezésre állást és automatikus feladatátvétel
 
@@ -122,8 +122,8 @@ Az alkalmazásnak méretezési csoportokkal együtt, szüksége lesz a natív m�
 Ezzel a megközelítéssel az alkalmazás csak akkor aktív egy felhőben, de a szoftver központi telepítése több felhő. Az egyéb felhőkben is készenléti módban az alkalmazás megkezdheti a feladatátvétel elindításakor.
 
  - RTO: Állásidő idejének mérése másodpercben
- - Helyreállítási Időkorlát: Minimális adatvesztéssel
- - Üzembe helyezési topológia: aktív/aktív-készenléti
+ - HELYREÁLLÍTÁSI IDŐKORLÁT: Minimális adatvesztéssel
+ - Üzembe helyezési topológia: Aktív/aktív-készenléti
 
 ### <a name="fault-tolerance"></a>Hibatűrés
 
@@ -133,16 +133,16 @@ Először annak biztosítása érdekében a virtuális gépek méretezési csopo
 
 Ne feledje, hogy minden egyes Azure Stack-felhőben függetlenek egymástól,-e, a felhők mindig számítanak aktív, az infrastruktúra szempontjából. Ebben az esetben az alkalmazás több aktív példány egy vagy több aktív felhők vannak telepítve.
 
- - RTO: Nincs állásidő
- - Helyreállítási Időkorlát: Nincs adatvesztés
- - Üzembe helyezési topológia: aktív/aktív
+ - RTO: Állásidő nélkül
+ - HELYREÁLLÍTÁSI IDŐKORLÁT: Nincs adatvesztés
+ - Üzembe helyezési topológia: Aktív/aktív
 
 ### <a name="no-recovery"></a>Nincs recovery
 
 Egyes alkalmazások a környezetében előfordulhat, hogy nem kell a nem tervezett leállásokkal vagy adatvesztés elleni védelem. Például a virtuális gépek fejlesztési célokra, és a tesztelés általában nem kell helyreállítani. Egy alkalmazás vagy egy adott virtuális gép védelme nélkül mellett. Az Azure Stack nem kínál biztonsági mentési vagy a virtuális gépek replikálását az alapul szolgáló infrastruktúráról. Az Azure-hoz hasonlóan kell minden egyes előfizetés az egyes virtuális gép védelmét szeretné.
 
- - RTO: helyreállíthatatlan
- - Helyreállítási Időkorlát: Teljes adatvesztés
+ - RTO: Helyreállíthatatlan
+ - HELYREÁLLÍTÁSI IDŐKORLÁT: Teljes adatvesztés
 
 ## <a name="recommended-topologies"></a>Ajánlott topológiák
 

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985396"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321289"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
@@ -27,10 +27,10 @@ Meghívó e-mailek minősítés kulcsfontosságú ahhoz, hogy a partnerek hajón
 Tekintsünk meg néhány elemét az e-mailt, hogy tudja, hogyan lehet a legjobban a képességeinek használata érdekében.
 
 ### <a name="subject"></a>Tárgy
-Az e-mail tárgyában a következő mintát követi: meghívót kapott a &lt;tenantname&gt; szervezet
+Az e-mail tárgyában a következő mintát követi: Meghívót kapott a &lt;tenantname&gt; szervezet
 
 ### <a name="from-address"></a>Feladó címe
-A feladó címe LinkedIn-hez hasonló mintát használjuk.  Legyen egyértelmű a meghívót küldő személy, aki és amely vállalati és is elmagyarázza, hogy az e-mail érkezik egy Microsoft e-mail-címét. A formátum: &lt;megjelenített nevét, a meghívót küldő személy&gt; a &lt;tenantname&gt; (a Microsofton keresztül) <invites@microsoft.com>
+A feladó címe LinkedIn-hez hasonló mintát használjuk.  Legyen egyértelmű a meghívót küldő személy, aki és amely vállalati és is elmagyarázza, hogy az e-mail érkezik egy Microsoft e-mail-címét. A formátum a következő: &lt;Megjelenített nevét, a meghívót küldő személy&gt; a &lt;tenantname&gt; (a Microsofton keresztül) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Válasz címzettje
 A válasz az e-mailben, ha elérhető, a meghívót küldő személy e-mail van beállítva, hogy e-mail-válasz egy e-mailt küld vissza a meghívót küldő személy.
@@ -40,7 +40,7 @@ A bérlő használja a meghívói e-mailekről a vállalati arculat megjelenít�
 
 ### <a name="call-to-action"></a>Művelet hívása
 A művelet meghívásához két részből áll: Miért érdemes a címzett megkapta az e-mailt, és amit a címzett van a rendszer arról tájékoztatja.
-- A "Miért" szakaszt a következő minta használatával is kezelhetők: az alkalmazás-hozzáférési meghívót kapott a &lt;tenantname&gt; szervezet
+- A "Miért" szakaszt a következő minta használatával is kezelhetők: Alkalmazás-hozzáférési meghívót kapott a &lt;tenantname&gt; szervezet
 
 - És a "Mi folyamatban kéri, hogy tegye" szakasz jelenlétét jelzi a **Ismerkedés** gombra. Meghívók nélkül hozzáadása után a címzett, ez a gomb nem jelenik meg.
 
@@ -52,7 +52,7 @@ Ha még állított be a profilképét, a meghívót küldő személy monogramja 
   ![Megjelenítés a meghívót küldő személy monogramja](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Törzs
-A törzse tartalmazza az üzenetet, amely a meghívót küldő személy composes, vagy a meghívó API keresztülmegy. Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
+A törzse tartalmazza az üzenetet, hogy a meghívót küldő személy composes mikor [vendégfelhasználók a könyvtárban, csoport vagy alkalmazás](add-users-administrator.md) vagy [a meghívó API használatával](customize-invitation-api.md). Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
 
 ### <a name="footer-section"></a>Lábléc szakasz
 A lábléc tartalmazza a Microsoft vállalati márka, és lehetővé teszi, hogy a címzett tudja, ha a rendszer elküldte az e-mail címről küldtük. Különleges eset:

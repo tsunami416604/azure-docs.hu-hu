@@ -1,5 +1,5 @@
 ---
-title: Python-webalkalmazások létrehozása a Linuxon futó Azure App Service-ben | Microsoft Docs
+title: Python-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
 description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404725"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261850"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Python-webalkalmazások létrehozása a Linuxon futó Azure App Service-ben (előzetes verzió)
 

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 22b2faa91be9b4a2504bff542deb559d33b9fa4f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101041"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141764"
 ---
-# <a name="quickstart-get-intent-using-c"></a>Rövid útmutató: Szándék lekérése a C# használatával
+# <a name="quickstart-get-intent-using-c"></a>Gyors útmutató: Leképezés használata elsőC#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -47,11 +47,11 @@ Ha C# nyelven lekérdezi a GET [API](https://westus.dev.cognitive.microsoft.com/
 
 1. Hozzon létre egy új konzolalkalmazást a Visual Studióban. 
 
-    ![A LUIS felhasználói beállítások menü elérése](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Hozzon létre egy új konzolalkalmazást a Visual Studióban](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. A Visual Studio projekt Megoldáskezelő ablakában válassza az **Add reference** (Referencia hozzáadása) elemet, majd válassza a **System.Web** lehetőséget az Assemblies (Szerelvények) lapon.
 
-    ![A LUIS felhasználói beállítások menü elérése](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Válassza a Hozzáadás hivatkozás, majd jelölje ki a System.Web a szerelvények lapról](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Írja felül a Program.cs fájlt a következő kóddal:
     

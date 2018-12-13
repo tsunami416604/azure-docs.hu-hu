@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: Flask webalkalmazás létrehozása Pythonnal és az Azure Cosmos DB MongoDB API létrehozása'
+title: 'Az Azure Cosmos DB: A Flask-webalkalmazás létrehozása Pythonnal és az Azure Cosmos DB MongoDB API'
 description: Egy Python Flask kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
 author: slyons
@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc, seodec18
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/02/2017
-ms.openlocfilehash: 96ccaf70906d495d1bd2781cf9eeaed7c27bc35e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 09c19f57a2993c0faad3dca708f67526f99d13df
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101381"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165112"
 ---
-# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Flask alkalmazás létrehozása a MongoDB API-val
+# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Az Azure Cosmos DB: Készíthet olyan Flask alkalmazást a MongoDB API-ban
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -46,7 +46,7 @@ Ez a rövid útmutató a következő [Flask példát](https://github.com/Azure-S
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Flask-MongoDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Ilyen egyszerű az adatokkal programozott módon dolgozni.
+Most tekintsük klónozza a Flask-MongoDB API-alkalmazást a Githubról, beállítjuk a kapcsolati karakterláncot, és futtassa azt. Ilyen egyszerű az adatokkal programozott módon dolgozni.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -134,7 +134,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
-Az alkalmazás üzembe helyezéséhez hozzon létre egy új webalkalmazást az Azure-ban, és engedélyezze a Github-adattár elágazásával végzett folyamatos üzembe helyezést. Kövesse ezt az [oktatóanyagot](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment) a GitHubbal való folyamatos üzembe helyezés beállításához az Azure-ban.
+Az alkalmazás üzembe helyezéséhez, hozzon létre egy új webalkalmazást az Azure-ban, és a GitHub-adattár elágazásával végzett folyamatos üzembe helyezés engedélyezése. Kövesse ezt [oktatóanyag](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment) folyamatos üzembe helyezés a Githubbal, az Azure-ban való beállításához.
 
 Amikor az Azure-ba végez üzembe helyezést, el kell távolítania az alkalmazáskulcsokat, és ellenőriznie kell, hogy az alábbi szakasz ne megjegyzésként szerepeljen:
 
@@ -153,7 +153,7 @@ Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul találhat�
 </a>
 
 > [!NOTE]
-> Ha a Githubon vagy más forrásvezérlő helyen szeretné tárolni a kódot, távolítsa el a kapcsolati sztringekat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
+> Ha szeretné tárolni a kódot a Githubon vagy más Forrásvezérlő,. mindenképpen távolítsa el a kapcsolati karakterláncokat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

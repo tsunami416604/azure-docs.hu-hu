@@ -1,6 +1,6 @@
 ---
-title: Az adatmodellezés az Azure Time Series Insightsban |} A Microsoft Docs
-description: Adatok modellezése az Azure Time Series Insights ismertetése
+title: Az Azure Time Series Insights adatmodellezés – adatok modellezése az Azure Time Series Insights – előzetes |} A Microsoft Docs
+description: Ismerje meg, adatmodellezést Azure Time Series Insights előzetes verziója.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -8,133 +8,132 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: dc6244b6e263d3fb963d40b2f0c626cdfa9ecff8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.custom: seodec18
+ms.openlocfilehash: e68bc01d2c0781333454fa753992d0136fac0c06
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873461"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269090"
 ---
-# <a name="data-modeling-in-azure-time-series-insights"></a>Az Azure Time Series Insightsban adatmodellezési
+# <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatok modellezése az Azure Time Series Insights előzetes verziója
 
-Ez a dokumentum azt ismerteti, hogyan használható a **Time Series modellek** követve az Azure Time Series Insights (előzetes verzió). Számos gyakori adatforgatókönyvek azt részletezi.
+Ez a dokumentum ismerteti, hogyan használható a Time Series modellek az Azure Time Series Insights előzetes verziója a következő. Számos gyakori adatforgatókönyvek azt részletezi.
 
-Olvassa el a [(előzetes verzió) az Azure TSI explorer](./time-series-insights-update-explorer.md) cikkben további információt a frissítés megnyitásával.
+A frissítés használatával kapcsolatos további tudnivalókért olvassa el a [Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md).
 
 ## <a name="types"></a>Típusok
 
-### <a name="how-to-create-a-single-type"></a>Egyetlen gazdagéptípust létrehozása
+### <a name="create-a-single-type"></a>Hozzon létre egy egyetlen típusa
 
-1. Első lépésként a TSM modell választó panel fejlécére, és a menüből válassza ki a típusokat. Ezt követően összecsukása TSM típusok összpontosíthat a panelen:
+1. Nyissa meg a Time Series modellek választó panel, és válassza ki **típusok** a menüből. A Time Series modellek típusok összpontosíthat a panel összecsukása.
 
-    ![portal_one][1]
+    ![Portal_one][1]
 
-1. Kattintson a **Hozzáadás** gombra.
-1. Bemeneti típusok tartozó összes adatot, és kattintson a **létrehozás**. Így hozzunk létre típusok a környezetben:
+1. Válassza a **Hozzáadás** lehetőséget.
+1. Adjon meg, amelyeket típusok is vonatkozik, és válassza a **létrehozás**. Ez a művelet rekordtípust hoz létre a környezetben.
 
-    ![portal_two][2]
+    ![Portal_two][2]
 
-### <a name="how-to-bulk-upload-one-or-more-types"></a>Tömeges feltöltés egy vagy több típusa
+### <a name="bulk-upload-one-or-more-types"></a>Tömeges feltöltés egy vagy több típusa
 
-1. Kattintson a **JSON feltöltése**.
-1. Válassza ki, hogy a típus hasznos adatokat tartalmazó fájlt.
-1. Kattintson a **feltöltése**
+1. Válassza ki **JSON feltöltése**.
+1. Válassza ki a típusú hasznos adatait tartalmazó fájlt.
+1. Válassza a **Feltöltés** lehetőséget.
 
-    ![portal_three][3]
+    ![Portal_three][3]
 
-### <a name="how-to-edit-a-single-type"></a>Egyetlen gazdagéptípust szerkesztése
+### <a name="edit-a-single-type"></a>Egyetlen gazdagéptípust szerkesztése
 
-* Válassza ki a típusát, majd kattintson a **szerkesztése** gombra. A szükséges módosításokat, és kattintson a **mentése**:
+Válassza ki a típusát, és válassza ki **szerkesztése**. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    ![portal_four][4]
+![Portal_four][4]
 
-### <a name="how-to-delete-a-type"></a>A típus törlése
+### <a name="delete-a-type"></a>A típus törlése
 
-* Válassza ki a típusát, majd kattintson a **törlése** gombra. Ha nincsenek példányok azon típusainak társítva, akkor törlődik:
+Válassza ki a típusát, és válassza ki **törlése**. Ha nincsenek példányok hozzárendelve a típusok, akkor az törlődik.
 
-    ![portal_five][5]
+![Portal_five][5]
 
 ## <a name="hierarchies"></a>Hierarchiák
 
-### <a name="how-to-create-a-single-hierarchy"></a>Egyetlen hierarchia létrehozása
+### <a name="create-a-single-hierarchy"></a>Egyetlen hierarchia létrehozása
 
-1. Első lépésként a TSM modell választó panel fejlécére, és válassza ki a hierarchiák a menüből. Ezt követően összecsukása TSM típusok összpontosíthat a panelen:
+1. Nyissa meg a Time Series modellek választó panel, és válassza ki **hierarchiák** a menüből. A Time Series modellek hierarchiák összpontosíthat a panel összecsukása.
 
-    ![portal_six][6]
+    ![Portal_six][6]
 
-1. Kattintson a **hozzáadása**
+1. Válassza a **Hozzáadás** lehetőséget.
 
-    ![portal_seven][7]
+    ![Portal_seven][7]
 
-1. Kattintson a **hozzáadása szint** a jobb oldali ablaktáblán:
+1. Válassza ki **hozzáadása szint** a jobb oldali ablaktáblán.
 
-    ![portal_eight][8]
+    ![Portal_eight][8]
 
-1. Adja meg a hierarchia adatait, és kattintson a **létrehozás**:
+1. Adja meg a hierarchia adatait, és válassza ki **létrehozás**.
 
-    ![portal_nine][9]
+    ![Portal_nine][9]
 
-### <a name="how-to-bulk-upload-one-or-more-hierarchies"></a>Tömeges feltöltés egy vagy több hierarchiák
+### <a name="bulk-upload-one-or-more-hierarchies"></a>Tömeges feltöltés egy vagy több hierarchiák
 
-1. Kattintson a **JSON feltöltése**.
-1. Válassza ki a fájlt, amely tartalmazza a hierarchia hasznos.
-1. Kattintson a **feltöltése**:
+1. Válassza ki **JSON feltöltése**.
+1. Válassza ki a hierarchia hasznos adatait tartalmazó fájlt.
+1. Válassza a **Feltöltés** lehetőséget.
 
-    ![portal_ten][10]
+    ![Portal_ten][10]
 
-### <a name="how-to-edit-a-single-hierarchy"></a>Egyetlen hierarchia szerkesztése
+### <a name="edit-a-single-hierarchy"></a>Egyetlen hierarchia szerkesztése
 
-* Válassza ki a hierarchiában, és kattintson a a **szerkesztése** gombra. A szükséges módosításokat, és kattintson a **mentése**:
+Válassza ki a hierarchiában, és válassza ki **szerkesztése**. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    ![portal_eleven][11]
+![Portal_eleven][11]
 
-### <a name="how-to-delete-a-hierarchy"></a>Egy hierarchia törlése
+### <a name="delete-a-hierarchy"></a>Egy hierarchia törlése
 
-* Válassza ki a hierarchiában, és kattintson a **törlése** gombra. Ha nincsenek példányok társítva a hierarchiában, törlődik.
+Válassza ki a hierarchiában, és válassza ki **törlése**. Ha nincsenek példányok hozzárendelve a hierarchiában, akkor az törlődik.
 
-    ![portal_twelve][12]
+![Portal_twelve][12]
 
 ## <a name="instances"></a>Példányok
 
-### <a name="how-to-create-a-single-instance"></a>Egyetlen példány létrehozása
+### <a name="create-a-single-instance"></a>Egyetlen példány létrehozása
 
-1. Első lépésként a TSM modell választó panel fejlécére, és a menüből válassza ki a példányokat. Ezt követően összecsukása TSM típusok összpontosíthat a panelen:
+1. Nyissa meg a Time Series modellek választó panel, és válassza ki **példányok** a menüből. A Time Series modellek példányok összpontosíthat a panel összecsukása.
 
-    ![portal_thirteen][13]
+    ![Portal_thirteen][13]
 
-1. Kattintson a **hozzáadása**:
+1. Válassza a **Hozzáadás** lehetőséget.
 
-    ![portal_fourteen][14]
+    ![Portal_fourteen][14]
 
-1. Adja meg a példány részleteit, válassza ki a hozzárendelés típusa és a hierarchia, kattintson a **létrehozás**.
+1. Adja meg a példány részleteit, típusa és a hierarchia társítás, válassza ki és **létrehozás**.
 
-### <a name="how-to-bulk-upload-one-or-more-instances"></a>Tömeges feltöltés egy vagy több példány
+### <a name="bulk-upload-one-or-more-instances"></a>Tömeges feltöltés egy vagy több példány
 
-1. Kattintson a **JSON feltöltése**.
-1. Válassza ki a fájlt, amely tartalmazza a példányok hasznos:
+1. Válassza ki **JSON feltöltése**.
+1. Válassza ki a példányok hasznos adatait tartalmazó fájlt.
 
-    ![portal_fifteen][15]
+    ![Portal_fifteen][15]
 
-1. Kattintson a **feltöltése**.
+1. Válassza a **Feltöltés** lehetőséget.
 
-### <a name="how-to-edit-a-single-instance"></a>Egyetlen példány szerkesztése
+### <a name="edit-a-single-instance"></a>Egyetlen példány szerkesztése
 
-* Válassza ki azt a példányt, és kattintson a **szerkesztése** gombra. A szükséges módosításokat, és kattintson a **mentése**:
+Válassza ki azt a példányt, és válassza ki **szerkesztése**. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    ![portal_sixteen][16]
+![Portal_sixteen][16]
 
-### <a name="how-to-delete-an-instance"></a>Egy példány törlése
+### <a name="delete-an-instance"></a>Példány törlése
 
-* Válassza ki azt a példányt, majd kattintson a **törlése** gombra. Ha nincsenek események a példányok társítva, akkor törlődik.
+Válassza ki azt a példányt, és válassza ki **törlése**. Ha nincsenek események a példányok társítva, akkor az törlődik.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [adatmodellezés](./time-series-insights-update-tsm.md) bővebben **Time Series modellek**.
-
-Megtekintheti a (előzetes verzió) az Azure TSI Explorerben engedélyezett [cikk](./time-series-insights-update-explorer.md) további információ az előzetes verzióra.
-
-További információ a támogatott JSON-alakzatok, olvassa el [támogatott JSON-alakzatok](./time-series-insights-send-events.md#json).
+- Time Series modellek kapcsolatos további információkért olvassa el a [adatmodellezés](./time-series-insights-update-tsm.md).
+- További tudnivalók az előzetes verzióra, olvassa el [adatok megjelenítése az az Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md).
+- Támogatott JSON-alakzatok kapcsolatos további információkért olvassa el a [támogatott JSON-alakzatok](./time-series-insights-send-events.md#json).
 
 <!-- Images -->
 [1]: media/v2-update-how-to-tsm/portal_one.png

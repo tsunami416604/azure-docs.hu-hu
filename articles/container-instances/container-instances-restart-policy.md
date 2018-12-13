@@ -1,18 +1,18 @@
 ---
-title: Tárolóalapú feladatok futtatása az Azure Container Instances szolgáltatásban az újraindítási házirendek
+title: Használja az Azure Container Instancesben újraindításra vonatkozó házirendek tárolóalapú feladatok
 description: Ismerje meg, hogyan használható az Azure Container Instances szolgáltatásban futtatott feladatok befejezését, mint például a buildelési, tesztelési vagy kép renderelési feladatok végrehajtásához.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853890"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321033"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása az újraindítási házirendek
 
@@ -24,7 +24,7 @@ A példákban Ez a cikk a használati bemutatni az Azure CLI. Rendelkeznie kell 
 
 ## <a name="container-restart-policy"></a>Tároló újraindítási szabályzata
 
-Egy tárolót az Azure Container Instances szolgáltatásban való létrehozásakor megadhat egy három újraindítási házirend-beállítások.
+Amikor létrehoz egy [tárolócsoport](container-instances-container-groups.md) az Azure Container Instancesben, kiválaszthat egyet a három újraindítási házirend-beállításokat.
 
 | Újraindítási szabályzat   | Leírás |
 | ---------------- | :---------- |
@@ -93,6 +93,24 @@ Kimenet:
 
 Ez a példa bemutatja a kimenete a STDOUT küldött a parancsfájlt. A tárolóalapú feladatok, azonban előfordulhat, hogy inkább írni a kimeneti újabb lekérés-tároláshoz. Például, hogy egy [Azure-fájlmegosztás](container-instances-mounting-azure-files-volume.md).
 
+## <a name="manually-stop-and-start-a-container-group"></a>Manuálisan állítsa le és indítsa el a tárolócsoport
+
+Függetlenül az újraindítási házirend konfigurált egy [tárolócsoport](container-instances-container-groups.md), érdemes manuális indítása vagy leállítása egy tárolócsoportot.
+
+* **Állítsa le** - manuálisan állítsa le egy futó tárolócsoportra bármikor – például használatával a [az tároló stop] [ az-container-stop] parancsot. Az egyes tárolókhoz kapcsolódó számítási feladatok, érdemes leállítani egy tárolócsoport menteni a költségeket a meghatározott időszak után. 
+
+  Leállítása folyamatban van egy tárolócsoport leállítja és újraindítja a tárolók a csoport; nem őrzi meg a tároló állapota. 
+
+* **Indítsa el** – Ha egy tárolócsoport le van állítva – vagy mert a tárolók saját leállt, vagy manuálisan leállították a csoport – használhatja a [tároló indítása API](/rest/api/container-instances/containergroups/start) vagy manuálisan elindítani a tárolók Azure Portalon a csoport. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
+
+  Új központi telepítést azonos konfigurációjú tároló indítása egy tárolócsoport kezdődik. Ez a művelet segítségével gyorsan felhasználhatja egy ismert tároló a portcsoportok, amely a várt módon működik. Nem kell ugyanazt a számítási feladatot futtatni egy új tárolócsoport létrehozásához.
+
+* **Indítsa újra a** -újraindíthatja a tárolócsoport működés közben – például használja a [az tároló újraindítási] [ az-container-restart] parancsot. Ez a művelet újraindítja az összes tároló tárolócsoportban. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
+
+  A tárolócsoport újraindítása akkor hasznos, ha a kívánt központi telepítési hiba elhárítása. Például ha egy ideiglenes erőforrás-korlátozás meggátolja, hogy a tárolók sikeresen fut, a csoport újraindítása megoldhatja a problémát.
+
+Manuálisan indítsa el, vagy indítsa újra egy tárolócsoportot, miután a tároló csoport fut a beállított megfelelően újraindítási házirend.
+
 ## <a name="configure-containers-at-runtime"></a>Tárolók konfigurálása a futási időben
 
 Amikor létrehoz egy tárolópéldányt, beállíthatja a **környezeti változók**, illetve adja meg az egyéni **parancssori** végrehajtani, amikor a tároló elindult. Ezek a beállítások a kötegelt feladatok használatával készítse elő az egyes tárolók feladatspecifikus konfigurációval.
@@ -105,7 +123,7 @@ Például a parancsfájl a példa tárolóban működése módosítható a táro
 
 *NumWords*: A STDOUT küldött szavak számát.
 
-*A MinLength*: word, a megszámlálandó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
+*A MinLength*: Ahhoz, hogy a megszámlálandó szó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
 
 ```azurecli-interactive
 az container create \
@@ -131,6 +149,8 @@ Kimenet:
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>Parancssor felülbírálása
 
@@ -174,5 +194,7 @@ Hogyan kell a tárolókat, amelyek befejezését kimenetének megőrzése a rés
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639781"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183471"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Az Azure-ban üzemeltetett virtuális gép konfigurálása
 
@@ -28,14 +28,14 @@ Ez a cikk a méretezés, frissítése és általánosítani a virtuális gépet 
 
 ## <a name="sizing-the-vhds"></a>A virtuális merevlemezeket méretezése
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Ha kiválasztotta a virtuális gépek előre konfigurált operációs rendszert (és szükség esetén további szolgáltatások), majd, már kivételezett egy standard Azure Virtuálisgép-méretet leírtak szerint [VM-termékváltozatok lapon](./cpp-skus-tab.md).  Ez az ajánlott eljárás.  Azonban ha manuálisan telepíti az operációs rendszer, majd kell méretezze az elsődleges virtuális Merevlemezt a VM-lemezképben található:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Ha kiválasztotta a virtuális gépek előre konfigurált operációs rendszert (és szükség esetén további szolgáltatások), majd, már kivételezett egy standard Azure Virtuálisgép-méretet leírtak szerint [VM-termékváltozatok lapon](./cpp-skus-tab.md).  Az ajánlott módszer a megoldás kezdve egy előre konfigurált operációs rendszer.  Azonban ha manuálisan telepíti az operációs rendszer, majd kell méretezze az elsődleges virtuális Merevlemezt a VM-lemezképben található:
 
 - A Windows, az operációs rendszer VHD-fájlként kell létrehoznia egy 127 – 128 GB-os rögzített formátumú VHD-t. 
 - Linux rendszeren ez a VHD-fájlként kell létrehoznia egy 30 – 50 GB-os rögzített formátumú VHD-t.
 
 Ha a fizikai méret kisebb, mint 127 – 128 GB-os, a virtuális merevlemez ritka fájlnak kell lennie. Biztosított alap Windows- és SQL Server rendszerképek megfelel ezeknek a követelményeknek, ezért ne módosítsa a formátumot vagy beszerzett virtuális merevlemez méretét. 
 
-Az adatlemezek mérete akár 1 TB is lehet. A lemezméret eldöntésekor ne feledje, hogy ügyfelek nem tudják átméretezni a virtuális merevlemezek lemezképen belüli a telepítéshez. Az adatlemezek virtuális rögzített formátumú vhd-fájlként kell létrehoznia. Akkor is ritka fájlnak kell lennie. Adatlemezek kezdetben lehet üres, vagy adatokat tartalmaznak.
+Az adatlemezek mérete akár 1 TB is lehet. Amikor eldönti, azok méretét, ne feledje, hogy ügyfelek nem tudják átméretezni a virtuális merevlemezek lemezképen belüli a telepítéshez. Az adatlemezek virtuális rögzített formátumú vhd-fájlként kell létrehoznia. Akkor is ritka fájlnak kell lennie. Adatlemezek kezdetben lehet üres, vagy adatokat tartalmaznak.
 
 
 ## <a name="install-the-most-current-updates"></a>A legújabb frissítéseinek telepítéséhez
@@ -49,7 +49,7 @@ Linux-disztribúciókra vonatkozó frissítéseket gyakran letölthető és tele
 
 ## <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzést
 
-A megoldás rendszerképeket az Azure piactéren, a magas biztonsági szintű fenn kell tartania.  A következő cikk nyújt biztonsági konfigurációk és eljárások segítséget nyújtanak e cél Ellenőrzőlista: [biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Ezek a javaslatok némelyike Linux-alapú rendszerképekhez jellemző, de bármely Virtuálisgép-lemezkép legtöbb vonatkoznak. 
+A megoldás rendszerképeket az Azure piactéren, a magas biztonsági szintű fenn kell tartania.  A következő cikkben biztonsági konfigurációk és eljárások segítséget nyújtanak e cél feladatlistát tartalmazza: [Biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Ezek a javaslatok némelyike Linux-alapú rendszerképekhez jellemző, de bármely Virtuálisgép-lemezkép legtöbb vonatkoznak. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Egyéni konfigurációs és ütemezett feladatok végrehajtása
@@ -95,8 +95,8 @@ A következő két lépésből álló folyamat Linux rendszerű virtuális gép 
 
 Másolatokat készít a virtuális gép hasznos gyakran a biztonsági mentés, tesztelés, testre szabott feladatátvétel vagy terheléselosztás, különböző konfigurációjú megoldást kínálnak, és így tovább. A duplikált, és töltse le az elsődleges virtuális Merevlemezt, hogy egy nem felügyelt Klónozás információkért lásd:
 
-- Linux rendszerű virtuális gép: [Linux VHD letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
-- Windows virtuális gép: [egy Windows virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/windows/download-vhd.md)
+- Linux rendszerű virtuális Gépen: [Linux rendszerű VHD letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
+- Windows virtuális gépek: [Töltse le a virtuális merevlemez Windows Azure-ból](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Első lépések a Pythonban'
+title: 'Gyors útmutató:  Ismerkedés a Pythonban'
 titleSuffix: Azure Machine Learning service
 description: Ismerkedés az Azure Machine Learning szolgáltatás a Pythonban. A Python SDK használatával hozzon létre egy munkaterületet, amely az alapvető blokk, amellyel kísérletezhet, betanítását és gépi tanulási modellek üzembe helyezése a felhőben.
 services: machine-learning
@@ -11,16 +11,16 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ca97275848d87ccc03c7839265f867f9c3c3948
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073353"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268510"
 ---
-# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Használata Python SDK-t az Azure Machine Learning használatának első lépései
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Azure Machine Learning használatának első lépései a Python SDK használatával
 
-Ebben a rövid útmutatóban Machine Learning-[munkaterületet](concept-azure-machine-learning-architecture.md) fog létrehozni és használni a Pythonhoz készült Azure Machine Learning SDK segítségével. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ebben a rövid útmutatóban először saját Python-környezetet és Jupyter-notebookkiszolgálót konfigurál. Ha telepítés nélkül szeretné futtatni, tekintse meg a következőt: [Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portalon](quickstart-get-started.md).
+Ebben a rövid útmutatóban Machine Learning-[munkaterületet](concept-azure-machine-learning-architecture.md) fog létrehozni és használni a Pythonhoz készült Azure Machine Learning SDK segítségével. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ebben a rövid útmutatóban először saját Python-környezetet és Jupyter-notebookkiszolgálót konfigurál. Telepítés nélkül futtatja, lásd: [a rövid útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával](quickstart-get-started.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -40,14 +40,12 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
->[!NOTE]
-> Ebben a cikkben kód szükséges Azure Machine Learning SDK verziója 1.0.2-es vagy újabb. 
-
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
-
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
+
+>[!NOTE]
+> Ebben a cikkben kód szükséges Azure Machine Learning SDK verziója 1.0.2-es vagy újabb. 
 
 *Ha 2018. szeptember 27. után létrehozott Data Science Virtual Machine-t használ, hagyja ki ezt a szakaszt.* Ezeken a Data Science Virtual Machine-példányokon már előre telepítve van a Python SDK.
 
@@ -206,6 +204,6 @@ A Machine Learning-oktatóanyagokkal való használathoz szüksége lesz még n�
 Miután telepítette ezeket a csomagokat, kövesse a modellek betanításával és üzembe helyezésével kapcsolatos oktatóanyagokat. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Képbesorolási modell betanítása](tutorial-train-models-with-aml.md)
+> [Oktatóanyag: Egy rendszerkép osztályozási modell betanítása](tutorial-train-models-with-aml.md)
 
 A [GitHubon lévő összetettebb példákkal](https://aka.ms/aml-notebooks) is megismerkedhet.

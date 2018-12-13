@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 110357a7a84aa8cc6bd7dcb5bbef9ca02879a9cb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494287"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165800"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark Stream (DStream) például az Apache Kafka on HDInsight
 
@@ -55,19 +55,19 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
    
     ![HDInsight-egyéni üzembe helyezés](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
-    * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
+    * **Erőforráscsoport**: Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
 
-    * **Hely**: válasszon, földrajzilag közeli helyet.
+    * **Hely**: Válasszon egy helyet, földrajzilag közel.
 
-    * **Fürt neve alapján**: ezt az értéket használja, a Spark alapnevét, és a Kafka-fürtök. Ha például **hdistreaming** nevű egy Spark-fürtöt hoz létre __spark-hdistreaming__ és a egy nevű Kafka-fürt **kafka-hdistreaming**.
+    * **Fürt neve alapján**: Ez az érték a Spark és Kafka-fürtök alapnevét szolgál. Ha például **hdistreaming** nevű egy Spark-fürtöt hoz létre __spark-hdistreaming__ és a egy nevű Kafka-fürt **kafka-hdistreaming**.
 
-    * **A fürt bejelentkezési név**: a Spark és Kafka-fürtök rendszergazdai felhasználóneve.
+    * **A fürt bejelentkezési név**: Az a Spark és Kafka-fürtök rendszergazdai felhasználójának neve.
 
-    * **A fürt bejelentkezési jelszavának**: a Spark és Kafka-fürtök rendszergazdai felhasználójának jelszava.
+    * **A fürt bejelentkezési jelszavának**: A Spark és Kafka-fürtök rendszergazdai felhasználójának jelszava.
 
-    * **SSH-felhasználónév**: az SSH-felhasználó, a Spark és Kafka-fürtök létrehozása.
+    * **SSH-felhasználónév**: Az SSH-felhasználó számára a Spark és Kafka-fürtök létrehozásához.
 
-    * **SSH-jelszó**: a Spark és Kafka-fürtök az SSH-felhasználó jelszavát.
+    * **SSH jelszó**: A Spark és Kafka-fürtök az SSH-felhasználó jelszavát.
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 

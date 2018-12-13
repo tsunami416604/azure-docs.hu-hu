@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722972"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258202"
 ---
 <a name="logic-app-test-drive"></a>Logikai alkalmazás kipróbálása
 ====================
@@ -29,7 +29,7 @@ Ez a cikk a kiadók, akik az ajánlatot az appsource-ban, és létre szeretné h
 <a name="how-to-build-a-logic-app-test-drive"></a>Hogyan hozhat létre egy logikai alkalmazás kipróbálása
 -----------------------------------
 
-Továbbra is a githubon, jelenleg Logic App-Tesztverziókkal meghajtó dokumentáció tesztje [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) és [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app), keresse fel további ott.
+Továbbra is a Githubon, jelenleg Logic App-Tesztverziókkal meghajtó dokumentáció tesztje [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) és [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app), keresse fel további ott.
 
 <a name="how-to-publish-a-test-drive"></a>A Test Drive közzététele
 ---------------------------
@@ -40,7 +40,7 @@ Most, hogy a beépített Test Drive, ez a szakasz végigvezeti Önt a mezőkben 
 
 Az első és legfontosabb mezőt, hogy állíthatja be, hogy szeretne tesztelni kívánja az összes kötelező mezőt a képernyő jelenik meg, hogy adja meg. Ha bejelöli **nem,** az űrlap le lesz tiltva, és ha ismét közzéteszi az a Tesztverziós le van tiltva, a Test Drive éles törlődik.
 
-*Megjegyzés:*: minden olyan felhasználó által aktívan használt tesztverziók esetén ezek Tesztverzió továbbra is futni, amíg a munkamenet lejár.
+*Megjegyzés:*: Ha bármely Tesztverzió felhasználók által aktívan használt, ezeket a Tesztverzió továbbra is futni, amíg a munkamenet lejár.
 
 ### <a name="details"></a>Részletek
 
@@ -70,11 +70,11 @@ Töltse ki a következő szakaszban a Test Drive logikai alkalmazás konfigurál
 
 - **Régió** - *[kötelező mező]* választott régió, ahol válasszon a Ha a meghajtó a logikai alkalmazás tesztelése erőforrások vannak üzembe helyezve.
 
-    *Megjegyzés:* Ha a logikai alkalmazás minden olyan egyéni erőforrás, amely egy régióban vannak tárolva, ellenőrizze, hogy adott régióban itt ki van jelölve. A legjobb módja az, hogy **teljesen helyileg, az Azure-előfizetést a portálon, a logikai alkalmazás üzembe helyezése, és ellenőrizze, hogy működik-e** itt írása előtt.
+    *Megjegyzés:* Ha a logikai alkalmazás minden olyan egyéni erőforrás, amely egy régióban vannak tárolva, győződjön meg arról, adott régióban itt ki van jelölve. A legjobb módja az, hogy **teljesen helyileg, az Azure-előfizetést a portálon, a logikai alkalmazás üzembe helyezése, és ellenőrizze, hogy működik-e** itt írása előtt.
 
 - **Maximális párhuzamos Tesztverzió** - *[kötelező mező]* Test Drive-példányok, amelyek már központilag telepítve és Várakozás a kiválasztott régiónként eléréséhez. Ügyfelek azonnal hozzáférhetnek a Tesztverzió várnia a központi telepítés helyett.
 
-    *Megjegyzés:* futtatásakor egy webináriumra/class adat. Ha szeretné a tanulóknak, hogy kipróbálás N számú, javasoljuk, hogy közzé N számú a gyakori elérésű példányok és majd ezt követően az osztály több mint tennie, térjen vissza a normál gyakori elérésű-példányok számát.
+    *Megjegyzés:* Ha egy webináriumra/class adat. Ha szeretné a tanulóknak, hogy kipróbálás N számú futnak, javasoljuk, hogy közzé N számú a gyakori elérésű példányok és majd ezt követően az osztály több mint tennie, térjen vissza a normál gyakori elérésű-példányok számát.
 
 - **Tesztelje a meghajtó időtartama (óra) –** *[kötelező mező]* időtartama mennyi ideig a Test Drive aktív marad, a \# óra. A Test Drive Ez az időtartam lejárta után automatikusan leáll.
 

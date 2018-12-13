@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5a1f0c0ee8a9f6ef6871e19e7722e09f4e96ba7f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106753"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142070"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ismerje meg, hogyan hozhat létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás.
 
@@ -141,16 +141,16 @@ Hozzon létre egy tárfiókot és egy tárolót a tiszta adatok tárolását.
 
 1.  Jelentkezzen be a [ *az Azure portal*](https://portal.azure.com/).
 
-2.  Az Azure Portalon bontsa ki a szolgáltatások a menü megnyitásához, majd válassza a bal oldali **minden szolgáltatás**. Görgessen le a **tárolási** válassza **tárfiókok**. Az a ** Tárfiókok ** ablakban válassza a **Hozzáadás**.
+2.  Az Azure Portalon bontsa ki a szolgáltatások a menü megnyitásához, majd válassza a bal oldali **minden szolgáltatás**. Görgessen le a **tárolási** válassza **tárfiókok**. Az a **Tárfiókok** ablakban válassza a **Hozzáadás**.
 
 3.  Adja meg a tárfiók nevét.
 
     > [!Note]  
     > A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. A tárfiók nevének Azure-on belül egyedinek kell lennie. Az Azure portal jelzi, ha a kiválasztott tárfiók neve már használatban van.
 
-4.  Adja meg a használt üzemi modell: **Resource Manager**.
+4.  Adja meg a használt üzemi modell: **Erőforrás-kezelő**.
 
-5.  Válassza ki a tárfiók típusát: **általános célú V1**, majd adja meg a teljesítményszintet: **Standard**.
+5.  Válassza ki a tárfiók típusát: **Általános célú V1**, majd adja meg a teljesítményszintet: **Standard szintű**.
 
 6.  Válassza ki a tárfiók replikálási beállítását: **GRS**.
 
@@ -162,7 +162,7 @@ Hozzon létre egy tárfiókot és egy tárolót a tiszta adatok tárolását.
 
 10. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
-    ![Helyettesítő szöveg](/media/azure-stack-solution-machine-learning/image1.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image1.png)
 
 11.  Válassza ki a nemrég létrehozott tárfiókot.
 
@@ -180,7 +180,7 @@ Hozzon létre egy tárfiókot és egy tárolót a tiszta adatok tárolását.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image4.png)
 
-## <a name="step-2-create-a-data-science-virtual-machine"></a>2. lépés: Hozzon létre egy Data Science virtuális gép
+## <a name="step-2-create-a-data-science-virtual-machine"></a>2. lépés: A Data Science virtuális gép létrehozása
 
 Hozzon létre egy Ubuntu adatelemzési virtuális gép (DSVM) az Azure Portalon.
 
@@ -194,8 +194,8 @@ Hozzon létre egy Ubuntu adatelemzési virtuális gép (DSVM) az Azure Portalon.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image6.png)
 
-> ! [Fontos]  
-> **Válasszon** jelszó **, a*hitelesítési típus*.
+> [!Important]  
+> Válasszon **jelszó** , a **hitelesítési típus**.
 
 Helyezze el az új dsvm-hez az újonnan létrehozott tárfiók ugyanabban az erőforráscsoportban. Minden Edge Machine Learning objektumot az Azure-ban az erőforráscsoporton belül vannak telepítve.
 
@@ -209,7 +209,8 @@ Helyezze el az új dsvm-hez az újonnan létrehozott tárfiók ugyanabban az er�
 
     d.  Az a **diagnosztikai Tárfiók**, válassza ki a korábban létrehozott tárfiókot.
 
-    e.  Megjegyzés: Az aad-ben engedélyezni és konfigurálni az Azure-előfizetéshez tartozó, felügyelt identitások Azure-erőforrások számára engedélyezhető is.
+    > [!Note]  
+    > Az aad-ben engedélyezni és konfigurálni az Azure-előfizetéshez tartozó felügyelt identitások az Azure-erőforrások is engedélyezhető.
 
 2.  Kattintson az **OK** gombra.
 
@@ -312,7 +313,8 @@ Az Azure portal használatával üzembe helyezése az Azure Machine Learning-fi�
 
 Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. Itt megtalálhatja a [támogatott platformok](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation) listáját.
 
-**Figyelmeztetés:** befejeződik a telepítés eltarthat egy órát.
+> [!Warning]  
+> A telepítés végrehajtásához egy órát vehet igénybe.
 
 1.  Töltse le és indítsa el a Workbench legújabb verziójának telepítőjét.
 
@@ -321,7 +323,7 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
 
 1.  Kövesse a képernyőn megjelenő utasításokat a telepítő befejezését.
 
-    ** A telepítést, akár 30 percet is igénybe vehet. **
+    **A telepítést, akár 30 percet is igénybe vehet.**
     
     `Windows: C:\\Users\\<user>\\AppData\\Local\\AmlWorkbench`
     
@@ -493,7 +495,7 @@ Az adatelőkészítési csomag átadható később egy futtatókörnyezetnek, p�
 
     3.  Válassza ki **értékek száma** a menüből.
 
-        Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy Négysávos hisztogramot. A céloszlop négy különféle értékkel rendelkezik: **Iris-virginica**, **Iris-versicolor**,**Iris-setosa**, és a egy **(null)** értéket.
+        Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy Négysávos hisztogramot. A céloszlop négy különféle értékkel rendelkezik: **IRIS-virginica**, **Iris-versicolor**,**Iris-setosa**, és a egy **(null)** értéket.
 
     ![Az Értékek számának kiválasztása](media/azure-stack-solution-machine-learning/image34.png)
 
@@ -865,7 +867,7 @@ A parancsfájl végrehajtása a Docker-tárolóban egy távoli Linux gépen SSH-
     ```yaml  
     Framework: Python
     ```
-1.  Adja ki ugyanazt a parancsot a parancssori felület ablakában, mint korábban az a cél*<DSVM>* ezúttal az iris_sklearn.py végrehajtása távoli Docker-tárolóban: (helyettesítse be a <DSVM> és az adatelemző virtuális gép nevét, a szögletes zárójelek nélkül).
+1.  Adja ki ugyanazt a parancsot a parancssori felület ablakában, mint korábban az a cél*<DSVM>* ezúttal az iris_sklearn.py végrehajtása távoli Docker-tárolóban: (Helyettesítse be a <DSVM> és az adatelemző virtuális gép nevét, a szögletes zárójelek nélkül).
 
     ```CLI
         az ml experiment submit -c <DSVM> iris_sklearn.py
@@ -885,7 +887,7 @@ Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az
 
 4.  Tekintse át az **iris_sklearn.py** fájlt és keresse meg, hol jött létre a pickle-fájl. A Control+F billentyűkombinációval nyissa meg a **Keresés** párbeszédpanelt, és a Python-kódban keresse meg a **pickle** szót.
 
-Ez a kódrészlet megmutatja, hogyan jött létre a pickle kimeneti fájlja. A kimeneti pickle-fájl neve a lemezen **model.pkl**.
+    Ez a kódrészlet megmutatja, hogyan jött létre a pickle kimeneti fájlja. A kimeneti pickle-fájl neve a lemezen **model.pkl**.
 
     ```Python
         print("Export the model to model.pkl")
@@ -923,7 +925,7 @@ A modellfájl mellett a webszolgáltatás üzembe helyezéséhez pontozó szkrip
 
     Ez a szkript létrehoz egy JSON-fájlt a **kimenetek** rész, amely a modellhez szükséges sémát rögzíti.
 
-1.  Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várjon, amíg a legújabb ** score_iris.py** feladat megjelenítése a zöld **befejezve** állapotát. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **score_iris.py** hiperhivatkozásra a futtatási részletek megtekintéséhez.
+1.  Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várja meg, hogy a legfrissebb **score_iris.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **score_iris.py** hiperhivatkozásra a futtatási részletek megtekintéséhez.
 
 2.  A **Futtatás tulajdonságai** lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt. Jelölje be a fájl neve melletti jelölőnégyzetet, majd válassza a **Letöltés** gombot. Mentse a fájlt a projektmappa gyökérkönyvtárába.
 
@@ -952,23 +954,23 @@ A modellfájl mellett a webszolgáltatás üzembe helyezéséhez pontozó szkrip
 
 Készítse elő a környezetet a modell üzembe helyezése.
 
-## <a name="step-5-deploy-and-use-azure-container-registry"></a>5. lépés: Központi telepítése, és az Azure Container Registry használata
+## <a name="step-5-deploy-and-use-azure-container-registry"></a>5. lépés: Az Azure Container Registry üzembe helyezése és használata
 
 Telepítéséhez és használatához az Azure Container Registrybe.
 
 Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az erőforráscsoport megegyezik.
 
-    ```CLI
-        az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
-    ```
+```CLI
+    az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
+```
 
 ### <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
 Az **az acr login** paranccsal jelentkezzen be az ACR-példányba. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
-    ```CLI
-        az acr login --name <acrName>
-    ```
+```CLI
+    az acr login --name <acrName>
+```
 
 A parancs visszaadja a "bejelentkezés sikeres üzenetet, ha befejeződött.
 
@@ -978,11 +980,11 @@ Használat *helyi módú* üzembe helyezés a helyi számítógépen, és a fejl
 
 A Docker Engine-nek helyileg kell futnia a modell üzembe helyezése következő lépéseinek végrehajtásához. Használja a `-h` jelző végén található minden egyes parancsot a megfelelő súgóüzenetet megjelenítéséhez.
 
-    > [!Note]  
-    > If Docker engine is not locally available, proceed by creating a cluster in Azure for deployment and keep the cluster for re-use, or delete it after the tutorial to avoid ongoing charges.
+> [!Note]  
+> Docker-motor nem érhető el helyben, ha másik megoldásként egy fürtöt az Azure-beli üzembe helyezéshez és újra felhasználhatja a fürtöt megtarthatja, vagy folyamatban lévő díjak elkerülése érdekében az oktatóanyag elvégzését követően törölje azt.
 
-    > [!Note]  
-    > Web services deployed locally do not appear in Azure Portal's list of services. They will be running in Docker on the local machine.
+> [!Note]  
+> Helyszínen üzembe helyezett webszolgáltatások nem jelennek meg az Azure Portal szolgáltatások listája. Azok a Dockerben futnak a helyszíni gépen.
 
 1.  Nyissa meg a parancssori felületet (CLI) A Machine Learning Workbench alkalmazás **Fájl** menüjében válassza a **Parancssor megnyitása** lehetőséget.
 
@@ -1017,7 +1019,7 @@ A Docker Engine-nek helyileg kell futnia a modell üzembe helyezése következő
     az provider show -n Microsoft.ContainerRegistry
     ```
 
-    A kimenet harmadik sora a következő: **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **megjelenítése** parancsot, amíg a kimenet **"registrationState": "Registered.**
+    A kimenet megjeleníti a harmadik sorban **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **megjelenítése** parancsot, amíg a kimenet **"registrationState": "Regisztrálva.**
 
 1.  Hozza létre a környezetet. Ezt a lépést környezetenként egyszer futtatni.
 
@@ -1218,9 +1220,9 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetés, előfordulh
 
     ![Megoldássablon telepítése](media/azure-stack-solution-machine-learning/image59.png)
 
-10\. Válassza ki **alapjai** a a Kubernetes-fürt létrehozása.
+10. Válassza ki **alapjai** a a Kubernetes-fürt létrehozása.
 
-    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
+    ![Megoldássablon telepítése](media/azure-stack-solution-machine-learning/image60.png)
 
 11. Adja meg a **Linux rendszerű virtuális gép rendszergazdai felhasználónevét**. A Linux rendszerű virtuális gépek, a Kubernetes-fürt részét képező és a DVM felhasználóneve.
 
@@ -1261,7 +1263,7 @@ A WSL környezetben futtassa a következő parancsokat a kubectl telepítése a 
 
 ```PowerShell  
 Install-script -name install-kubectl -scope CurrentUser -force
-Install-kubectl.ps1 -downloadlocation “C:\Users\<Current User>\Documents\Kube
+Install-kubectl.ps1 -downloadlocation "C:\Users\<Current User>\Documents\Kube"
 ```
 
 ### <a name="install-kubectl-on-the-windows-subsystem-for-linux-environment"></a>A Windows alrendszer a kubectl telepítése Linux-környezet
@@ -1301,7 +1303,7 @@ Például egy Kubernetes-fürtön futó helyi laptopon, amikor egy eszköz is sz
 Ha a kubectl fürt-adatok az URL-cím választ ad vissza, de a fürt a rendszer továbbra is nem érhető el, ellenőrzi a megfelelő konfiguráció használatával:
 
 ```Bash  
-> kubectl cluster-info dump
+    kubectl cluster-info dump
 ```
 
 ### <a name="enable-shell-autocompletion"></a>Shell autocompletion engedélyezése
@@ -1349,7 +1351,7 @@ Egy új WSL-munkamenetben a helyi JSON-fájl beszerzését követően használja
     kubectl proxy
     kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
     kubectl proxy
-    set KUBECONFIG=”/mnt/c/users/<current user>/documents/Kube/kubeconfig.json”
+    set KUBECONFIG="/mnt/c/users/<current user>/documents/Kube/kubeconfig.json"
     kubectl.exe config view
 ```
 
@@ -1408,7 +1410,7 @@ Mentse a **iris_deployment.yaml** fájl (található /*mnt/c/felhasználó/<curr
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image67.png)
 
 Üzembe helyezés állapotának ellenőrzéséhez:
 
@@ -1416,7 +1418,7 @@ kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deploymen
 Kubectl get deployments
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image68.png)
 
 Az üzembe helyezés hosszabb ideig is eltarthat.
 
@@ -1553,7 +1555,7 @@ A Szolgáltatásvégpontok konfigurálásának részeként a vsts-ben van szüks
 
 A szolgáltatásnév engedélyeket helyezhet üzembe erőforrásokat az Azure Stack-előfizetés
 
-Az előfizetésben található erőforrások eléréséhez, rendeljen hozzá egy szerepkörhöz az alkalmazást. Döntse el, melyik szerepkör jelöli az alkalmazást a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Az előfizetésben található erőforrások eléréséhez, rendeljen hozzá egy szerepkörhöz az alkalmazást. Döntse el, melyik szerepkör jelöli az alkalmazást a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 Állítsa be a hatókört az előfizetés, erőforráscsoport vagy erőforrás szintjén. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása lehetővé teszi, hogy olvassa el az erőforráscsoportot és a benne található erőforrásokat.
 
@@ -1828,7 +1830,7 @@ Sikeres ehhez hasonlóan fog kinézni:
 
 3.  **Kiszolgáló URL-címe**: Adja meg a container service címet a formathttp: / / {API kiszolgálócíme}
 
-4.  **Kubeconfig**: a Kubeconfig érték lekéréséhez futtassa a következő Azure-parancsok egy parancssorban a rendszergazdai jogosultsággal indított.
+4.  **Kubeconfig**: A Kubeconfig érték lekéréséhez futtassa a következő Azure-parancsok egy parancssorban a rendszergazdai jogosultsággal indított.
 
     > [!Important]  
     > Ezzel a parancssori felülettel segítségével a következő lépéseket.
@@ -1855,7 +1857,7 @@ az aks get-credentials resource-group <yourResourceGroup> neve <yourazurecontain
 
 ![Kubernetes Service-végpont](media/azure-stack-solution-machine-learning/image123.png)
 
-1.  Keresse meg a **.kube**a kezdőkönyvtár mappát (például: C:\\felhasználók\\<user>\\dokumentumok\\Kube)
+1.  Keresse meg a **.kube**a kezdőkönyvtár mappát (pl.: C:\\felhasználók\\<user>\\dokumentumok\\Kube)
 
 2.  Másolja ki a tartalmát a**config**fájlt, és illessze be a Kubernetes-kapcsolat ablak. Válassza ki a**OK**gombra.
 
@@ -1914,7 +1916,7 @@ Ha a kubernetes felhasználói felület már fut, keresse meg a központi telep�
 
     ```Bash  
     git add .
-    git commit -m “Added Service YAML” 
+    git commit -m "Added Service YAML" 
     git push
     ```
 
@@ -1959,9 +1961,8 @@ Ha a kubernetes felhasználói felület már fut, keresse meg a központi telep�
 1.  Állítsa be a Kubernates szolgáltatáskapcsolódási a korábban létrehozott Azure Stack-kapcsolatra, és válassza a **konfigurációs fájlok használata** jelölőnégyzetet, adjon hozzá egy konfigurációs fájlt. Keresse meg a csatolt összetevők iris_service.yaml fájlt.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image135.png)
-
-
-    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image136.png)
+    <!-- -->
+    ![helyettesítő szöveg](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  A kiadási definíció mentéséhez.
 
@@ -2013,7 +2014,7 @@ Egy érvényesítési az alábbihoz hasonló üzenetnek kell megjelennie:
 
 Minden függvény végrehajtásának egy függvényalkalmazáshoz szükséges. A függvényalkalmazás lehetővé teszi, hogy egyszerűbb felügyeleti, üzembe helyezéséhez és erőforrás-megosztás egy logikai egységként csoportosítási funkció.
 
-1.  Az Azure Stack felhasználói portálon, válassza ki a **+ új** majd válassza ki a bal felső sarkában található gomb**Web + mobil** >**Függvényalkalmazás**.
+1.  Az Azure Stack felhasználói portálon, válassza ki a **+ új** majd válassza ki a bal felső sarkában található gomb **Web + mobil** >**Függvényalkalmazás**.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image141.png)
 
@@ -2021,13 +2022,13 @@ Minden függvény végrehajtásának egy függvényalkalmazáshoz szükséges. A
 
     ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-machine-learning/image142.png)
 
-1.  Válassza ki**létrehozás**és a függvényalkalmazás üzembe helyezéséhez.
+1.  Válassza ki **létrehozás**és a függvényalkalmazás üzembe helyezéséhez.
 
-2.  Válassza ki az értesítési ikon a portál jobb felső sarkában, és tekintse meg a a**üzembe helyezés sikeres** üzenet.
+2.  Válassza a portál jobb felső sarkában található Értesítések ikont, és várja meg az **üzembe helyezés sikerességét** jelző üzenetet.
 
     ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-machine-learning/image143.png)
 
-1.  Válassza ki**erőforrás megnyitása** az új függvényalkalmazás megtekintéséhez.
+1.  Válassza ki **erőforrás megnyitása** az új függvényalkalmazás megtekintéséhez.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image144.png)
 
@@ -2103,13 +2104,13 @@ Hozzon létre egy Azure Stack tárfiókok és a Storage-üzenetsor adatokat.
 
 6.  Válassza ki **helyi** a tárfiók helyét.
 
-7.  Válassza ki**létrehozás**a tárfiók létrehozásához.
+7.  Válassza ki **létrehozás**a tárfiók létrehozásához.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image156.png)
 
 1.  Válassza ki a nemrég létrehozott tárfiókot.
 
-2.  Válassza ki a**üzenetsorok**.
+2.  Válassza ki a **üzenetsorok**.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image157.png)
 
@@ -2129,7 +2130,7 @@ Hozzon létre egy Azure Stack tárfiókok és a Storage-üzenetsor adatokat.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image161.png)
 
-1.  Adja meg a storage-fiók nevét a **neve** mező, a teljes körű hozzáadása; tá_rolási
+1.  Adja meg a storage-fiók nevét a **neve** mező, a teljes körű hozzáadása `_STORAGE`.
 
 Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontját.
 
@@ -2229,7 +2230,7 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image178.png)
 
-1.  Ellenőrizze, hogy az adatok Azure üzemeltetett Storage-fiókhoz tartozik elemzett akár a felhőben az Azure-ból: sikeres hasonlóan néz ki az alábbi.
+1.  Ellenőrizze az Azure üzemeltetett tárfiók, megtekintheti az adatok elemzésének befejezését akár a felhőben az Azure-ból: Sikeres hasonlóan néz ki az alábbi.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image179.png)
 

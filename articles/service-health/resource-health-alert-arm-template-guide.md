@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625946"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184100"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
 
@@ -32,7 +32,7 @@ Az Azure Resource Health láthatók a jelenlegi és korábbi állapotát az Azur
 Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néhány dolgot:
 
 1. Telepítenie kell a [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`)
-2. Kell [létrehozása vagy újbóli műveletcsoport](../monitoring-and-diagnostics/monitoring-action-groups.md) arra az esetre, konfigurálva
+2. Kell [létrehozása vagy újbóli műveletcsoport](../azure-monitor/platform/action-groups.md) arra az esetre, konfigurálva
 
 ## <a name="instructions"></a>Utasítások
 1. PowerShell használatával jelentkezzen be Azure-fiókjával, és válassza ki az előfizetést, amellyel kommunikálni szeretne
@@ -233,7 +233,7 @@ Ha azt szeretné, hogy értesíthessük a Szolgáltatásállapot-események öss
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Ismeretlen" események elkerülése érdekében a Resource Health-riasztások beállítása
 
-Az Azure Resource Health is tud jelentéseket, az erőforrások legfrissebb állapotának folyamatos figyelése által vizsgált indák használatával. A megfelelő jelentett egészségügyi állapotok: "Elérhető", "Nem érhető el" és "Csökkentett teljesítményű". Azonban az olyan esetekben, ahol a futtató és az Azure-erőforrás nem tud kommunikálni egymással, egy "Ismeretlen" állapotjelentés az erőforrás, és egy "Aktív" állapottal kapcsolatos esemény, amely akkor tekinthető.
+Az Azure Resource Health is tud jelentéseket, az erőforrások legfrissebb állapotának folyamatos figyelése által vizsgált indák használatával. A megfelelő jelentett egészségügyi állapotok a következők: "Elérhető", "Nem érhető el" és "Csökkentett teljesítményű". Azonban az olyan esetekben, ahol a futtató és az Azure-erőforrás nem tud kommunikálni egymással, egy "Ismeretlen" állapotjelentés az erőforrás, és egy "Aktív" állapottal kapcsolatos esemény, amely akkor tekinthető.
 
 Azonban amikor egy erőforrást az "Ismeretlen" jelenti, valószínű, hogy a megfelelő állapotot nem változott az utoljára pontos jelentés óta. Ha szeretné, hogy az "Ismeretlen" esemény-riasztások kiküszöböléséhez, logikát is megadhat a sablonban:
 
@@ -435,4 +435,4 @@ További információ a Resource Health:
 -  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapot-ellenőrzések](resource-health-checks-resource-types.md)
 
 Hozza létre a Service Health-riasztások:
--  [Service Health-riasztások beállítása](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [Service Health-riasztások beállítása](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

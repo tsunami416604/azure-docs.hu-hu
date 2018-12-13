@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 4ac770b58e4a4d9a547916997a8f9d181b2fa895
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 139d7a13b9f6ce6132bffb798aa41b207ebf7929
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852956"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317409"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 
@@ -75,7 +75,7 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 
 Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
-## <a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás az Azure Cosmos DB-fiók
 1. Első lépésként cserélje le a hivatkozások elején a C# az alkalmazás a **Program.cs** fájl az alábbi hivatkozásokat:
     ```csharp
     using System;
@@ -173,7 +173,7 @@ Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásán
 Gratulálunk! Sikeresen csatlakoztatta az Azure Cosmos DB-fiókot. 
 
 ## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
-Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) vagy [ **Documentclient** ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) funkcióját a ``CosmosDatabases`` osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
+Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) vagy [ **Documentclient** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) funkcióját a ``CosmosDatabases`` osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
     
 1. Másolja és illessze be a **CreateDatabase** az alábbi metódust a **GetStartedDemoAsync** metódust. **CreateDatabase** létrehoz egy új adatbázist azonosítójú ``FamilyDatabase`` Ha ezt még nem létezik, a megadott azonosítójú a ``databaseId`` mező. 
 
@@ -290,7 +290,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 > 
 > 
 
-Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) vagy [ **CreateContainerAsync** ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) működni a **CosmosContainers** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
+Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) vagy [ **CreateContainerAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) működni a **CosmosContainers** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
 
 1. Másolja és illessze be a **CreateContainer** az alábbi metódust a **CreateDatabase** metódust. **CreateContainer** létrehoz egy új tárolót azonosító ``FamilyContainer`` Ha ezt még nem létezik, a megadott azonosítójú a ``containerId`` mező. 
 
@@ -325,7 +325,7 @@ Select **F5** to run your application.
 Congratulations! You have successfully created an Azure Cosmos DB container.  
 
 ## <a id="CreateDoc"></a>Step 6: Add items to the container
-An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
+An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
 
 First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. 
 1. Select **Ctrl+Shift+A** to open the **Add New Item** dialog. Add a new class **Family.cs** to your project. 
@@ -507,7 +507,7 @@ Válassza ki **F5** az alkalmazás futtatásához.
 Gratulálunk! Sikeresen létrehozott két Azure Cosmos DB-elemekben.  
 
 
-## <a id="Query"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
+## <a id="Query"></a>7. lépés: Azure Cosmos DB-erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód bemutatja, hogyan futtathat lekérdezéseket a cikkeket, hogy az előző lépésben beszúrt ellen.
 
 1. Másolja és illessze be a **RunQuery** az alábbi metódust a **AddItemsToContainer** metódust.
@@ -684,7 +684,7 @@ Válassza ki **F5** az alkalmazás futtatásához.
 
 Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-adatbázist.
 
-## <a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
+## <a id="Run"></a>11. lépés: Futtassa a C# Konzolalkalmazás minden egy helyen!
 Válassza ki az F5 össze és futtathatja az alkalmazást hibakeresési módban, a Visual studióban.
 
 A kimenet egy konzolablakban a teljes alkalmazás kell megjelennie. A kimenet megjeleníti a hozzáadott lekérdezések eredményeit, amelynek meg kell egyeznie az alábbi mintaszöveggel.
@@ -731,7 +731,7 @@ Ennyi az egész, build azt, és máris jó úton jár!
 
 
 ## <a name="next-steps"></a>További lépések
-* Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-oktatóanyag: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással](sql-api-dotnet-application-preview.md).
+* Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Lásd: [ASP.NET MVC oktatóprogram: Webalkalmazások fejlesztése az Azure Cosmos DB](sql-api-dotnet-application-preview.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Tekintse meg az [Azure Cosmos DB használatával történő teljesítmény- és mérettesztelést](performance-testing.md) ismertető cikket.
 * Ismerje meg, hogyan [monitorozhatja az Azure Cosmos DB-kérelmeket, -használatot és -tárolást](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.

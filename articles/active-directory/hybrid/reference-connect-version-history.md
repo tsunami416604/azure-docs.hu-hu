@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Verziókiadások |} A Microsoft Docs'
+title: 'Azure AD Connect: Verziókiadások |} A Microsoft Docs'
 description: Ez a cikk felsorolja az Azure AD Connect és az Azure AD Sync összes kiadása
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 12/11/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 816992fa05613bc8904cfaf4b34345a02c9b3ba2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728293"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278678"
 ---
-# <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
+# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
 
 
@@ -37,11 +37,23 @@ Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szüksége
 
 Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12690"></a>1.2.69.0
+
+### <a name="release-status"></a>Kiadási állapot
+12/11/2018: Kiadás dátuma: letöltés
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+Ez a gyorsjavítás build lehetővé teszi, hogy a felhasználók kiválaszthatják a céltartományba, a megadott erdő, amikor eszközvisszaírás engedélyezése RegisteredDevices tároló belül.  A korábbi verziókban az Eszközbeállítások új funkciókat tartalmazó (1.1.819.0 – 1.2.68.0), a RegisteredDevices tároló helye az erdő gyökeréhez korlátozott volt, és nem engedélyezte a gyermek tartományok.  Ez a korlátozás csak eszközében magát az új telepítések esetén – a helyben végzett frissítések nem érintett is.  
+
+Ha bármely a frissített eszközbeállítások funkciókat tartalmazó buildet egy új kiszolgálóra lett telepítve, és engedélyezve volt a eszközvisszaírás, szüksége lesz a manuálisan adja meg a tároló helyét, ha nem szeretné, hogy az erdő gyökértartományában található.  Ehhez szüksége eszközvisszaírás letiltása, majd újra engedélyeznie, ami lehetővé teszi, hogy adja meg a tároló helye a "Visszaírási erdő" oldalon.
+
+
+
 ## <a name="12680"></a>1.2.68.0
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-11/30/2018:, amely a letölthető
+11/30/2018:  Kiadás dátuma: letöltés
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
@@ -53,7 +65,7 @@ Ez a gyorsjavítás-build ütközés javít, ahol hitelesítési hiba fordulhat 
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-11/19/2018:, amely a letölthető
+11/19/2018:  Kiadás dátuma: letöltés
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
@@ -103,7 +115,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2018-8-21: Megjelent a letöltésről és automatikus frissítés. 
+8/21/2018: Megjelent a letöltésről és automatikus frissítés. 
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -114,7 +126,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 - Amikor felhasználói bejelentkezés a Jelszókivonat-szinkronizálás és átmenő hitelesítés a "Change felhasználói bejelentkezési" feladat, az alapértelmezés szerint engedélyezve van a közvetlen egyszeri bejelentkezés jelölőnégyzetet.
 - A Windows Server Essentials 2019 támogatása
 - Az Azure AD Connect Health-ügynök frissítése a legújabb verzióra 3.1.7.0 megtörtént
-- A frissítés során a telepítő észleli az alapértelmezett szinkronizálási szabályokat, ha a rendszergazda megjelennek a egy figyelmeztetés, mielőtt felülírná a módosított szabályokat. Ez lehetővé teszi a felhasználó korrekciós művelet, és később folytathatja. Régi viselkedés: Ha hiba történt a szabály bármely módosítása out-of-box majd kézi frissítés figyelmeztetéseket a felhasználónak anélkül volt felülírása ezeket a szabályokat, és szinkronizálásütemező le lett tiltva, a felhasználó értesítése nélkül. Az új viselkedés: Felhasználó felszólítást kap figyelmeztetést, mielőtt felülírná a módosított out-of-box szinkronizálási szabályokat. A felhasználónak kell, hogy a frissítési folyamat leáll, és később a javítási műveletek után folytatódik.
+- A frissítés során a telepítő észleli az alapértelmezett szinkronizálási szabályokat, ha a rendszergazda megjelennek a egy figyelmeztetés, mielőtt felülírná a módosított szabályokat. Ez lehetővé teszi a felhasználó korrekciós művelet, és később folytathatja. Régi viselkedés: Hiba történt a szabály bármely módosítása out-of-box majd kézi frissítés figyelmeztetéseket a felhasználónak anélkül volt felülírja ezeket a szabályokat, és a szinkronizálásütemező le lett tiltva, a felhasználó értesítése nélkül. Az új viselkedés: Mielőtt felülírná a módosított out-of-box szinkronizálási szabályok figyelmeztetéssel bekéri a felhasználó. A felhasználónak kell, hogy a frissítési folyamat leáll, és később a javítási műveletek után folytatódik.
 - Adjon meg érvényes a FIPS megfelelőségi problémát, így hibaüzenetet az MD5 kivonatoló létrehozásához a FIPS-kompatibilis környezetben és a egy hivatkozást, amely a probléma megkerülése biztosít dokumentációt jobban kezelése.
 - Felhasználói felület javítása összevonási feladatokat, amelyek egy külön sub csoportban az összevonáshoz immár a varázsló frissítse. 
 - Az összes összevonási további feladatokat egy egyszerűen használható egyetlen alárendelt menüpont alatt vannak csoportosítva.
@@ -142,7 +154,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 
 ### <a name="release-status"></a>Kiadási állapot
 
-5/14/2018: automatikus frissítés és a letöltés.
+5/14/2018: Megjelent az automatikus frissítés- és letöltést.
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -153,8 +165,8 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 - Eszközkonfiguráció visszaírás kizárólag az Azure AD Connect varázsló belül mostantól felügyelet alatt.
 - Egy új PowerShell-modul nevű ADSyncTools.psm1 kerül, amely az SQL-kapcsolati hibák és a különböző hibaelhárítási segédprogramok segítségével. További információ a ADSyncTools modul [Itt](tshoot-connect-tshoot-sql-connectivity.md). 
 - Új további tevékenység "Konfigurálása eszköz options" lett hozzáadva. A feladat segítségével konfigurálhatja az alábbi két műveletet: 
-    -   **Hibrid Azure AD-csatlakozás**: Ha a környezetben egy helyszíni AD erőforrás-igényű, és azt is szeretné profitál az Azure Active Directory által biztosított képességek, a hibrid Azure AD-csatlakoztatott eszközök valósíthat meg. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
-    -   **Eszközvisszaírás**: eszközvisszaírás alapján az AD FS-eszközök feltételes hozzáférésének engedélyezésére használja (2012 R2 vagy újabb) által védett eszközök
+    -   **Hibrid Azure AD-csatlakozás**: Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
+    -   **Eszközvisszaírás**: Eszközvisszaírás alapján az AD FS-eszközök feltételes hozzáférésének engedélyezésére használja (2012 R2 vagy újabb) által védett eszközök
 
    >[!NOTE] 
    > - Engedélyezheti a szinkronizálási beállítások testreszabása történő eszközvisszaírás szürkén jelennek meg. 
@@ -167,37 +179,37 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 - Ebben a kiadásban az SQL Server 2012 SP4, amely többek között számos biztonsági rések javításokat nyújt az SQL Server Express telepítések frissíti.  Lásd: [Itt](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) további információ az SQL Server 2012 SP4.
 - Szinkronizálási szabály feldolgozása: kimenő illesztési szinkronizálási szabályokat nincs csatlakozás feltétellel kell megszüntetéséhez alkalmazott Ha a fölérendelt szinkronizálási szabály már nem alkalmazható
 - Számos kisegítő-javítások alkalmazása a Synchronization Service Manager felhasználói felületén és a szinkronizálási Szabályszerkesztővel
-- Az Azure AD Connect varázsló: Hiba történt a létrehozásakor AD-összekötő fiók van amikor az Azure AD Connect egy munkacsoporthoz tartozik
-- Az Azure AD Connect varázsló: A az Azure AD-be lapján jelennek meg az ellenőrzési jelölőnégyzetet, ha az AD és az Azure AD-ellenőrzött tartományok bármilyen eltérés van
+- Az Azure AD Connect varázsló: AD-összekötő fiók létrehozása az Azure AD Connect egy munkacsoporthoz tartozik, ha hiba
+- Az Azure AD Connect varázsló: Az Azure AD bejelentkezési oldalon megjelenítéséhez ellenőrzés be a jelölőnégyzetet, ha bármely nem egyezik az AD és az Azure AD-ellenőrzött tartományok
 - Automatikus frissítési PowerShell javítsa ki, hogy automatikus frissítési állapota helyesen bizonyos esetekben próbált automatikus frissítés után.
-- Az Azure AD Connect varázsló: Korábban hiányzó adatok rögzítése telemetriai adatok frissítése
+- Az Azure AD Connect varázsló: Frissített telemetriai korábban hiányzó adatok rögzítése
 - Az Azure AD Connect varázsló: A következő módosításokat használatakor a **felhasználói bejelentkezés módosítása** váltson át az átmenő hitelesítés, az AD FS. feladat:
     - Az átmenő hitelesítés ügynök telepítve van az Azure AD Connect-kiszolgáló és az átmenő hitelesítés szolgáltatás engedélyezve van, mielőtt azt konvertálása felügyeltről összevont felügyelt.
     - Felhasználók már nem konvertálja a felügyelt összevont. Csak a tartomány(ok) konvertálja.
-- Az Azure AD Connect varázsló: AD FS több tartomány Regex esetén nem megfelelő felhasználó UPN ' speciális karakter Regex frissítés speciális karakterek támogatása
+- Az Azure AD Connect varázsló: Az AD FS több tartomány Regex esetén nem megfelelő felhasználó UPN ' speciális karakter Regex frissítés speciális karakterek támogatása
 - Az Azure AD Connect varázsló: Távolítsa el a jelezhet "Konfigurálása a forráshorgony attribútuma" jelenik meg, amikor nincs változás 
-- Az Azure AD Connect varázsló: A kettős összevonási forgatókönyvben AD FS-támogatása
-- Az Azure AD Connect varázsló: AD FS-jogcímek nem frissülnek a hozzáadott tartomány konvertálása a felügyelt tartományt összevontra során
+- Az Azure AD Connect varázsló: A kettős összevonási forgatókönyvben az AD FS támogatás
+- Az Azure AD Connect varázsló: AD FS-jogcímek nem frissülnek az új tartomány konvertálása a felügyelt tartományt összevontra során
 - Az Azure AD Connect varázsló: A telepített csomagok észlelési, találtunk a régi Dirsync vagy az Azure AD szinkronizálása/az Azure AD Connect kapcsolódó termékeket. Mi most megpróbál távolítsa el az elavult termékeket.
-- Az Azure AD Connect varázsló: Megfelelő hiba üzenet leképezése során csatlakoztatott a hitelesítési ügynök telepítése sikertelen
-- Az Azure AD Connect varázsló: "Konfiguráció" tároló eltávolítása lapon tartományi szervezeti egységek szűrése
+- Az Azure AD Connect varázsló: Javítsa a hiba üzenet leképezése, ha csatlakoztatott a hitelesítési ügynök telepítése sikertelen
+- Az Azure AD Connect varázsló: Eltávolított "Konfiguráció" tároló lapon tartományi szervezeti egységek szűrése
 - A szinkronizálási motor telepítése: távolítsa el a szinkronizálási motor telepítése msi szükségtelen régi logikai alkalmanként sikertelen
-- Az Azure AD Connect varázsló: Javítás a helyi menü Súgó szövege választható szolgáltatások lapon Jelszókivonat-szinkronizálás
-- Szinkronizálás a motor futásidejű: Javítsa ki a forgatókönyvet, ahol a CS objektum rendelkezik egy importált delete és szinkronizálási szabályok próbálja meg újra üzembe a objektum.
-- Szinkronizálás a motor futásidejű: felvétele Súgó hivatkozásra az Online kapcsolat hibaelhárítási útmutató az eseménynaplóban az importálási hiba
-- Szinkronizálás a motor futásidejű: csökkentett Szinkronizálásütemező memóriahasználata összekötők számbavétele során
+- Az Azure AD Connect varázsló: A választható funkciók lapon előugró súgószöveg javítás a Jelszókivonat-szinkronizálás
+- Szinkronizálási motor runtime: Javítsa ki a forgatókönyvet, ahol a CS objektum rendelkezik egy importált delete és szinkronizálási szabályok próbálja meg újra üzembe a objektum.
+- Szinkronizálási motor runtime: Adja hozzá a Súgó hivatkozásra az Online kapcsolat hibaelhárítási útmutató az eseménynaplóban az importálási hiba
+- Szinkronizálási motor runtime: Szinkronizálásütemező összekötők számbavételekor csökkentett memóriahasználata
 - Az Azure AD Connect varázsló: Megoldani a problémát egy egyéni szinkronizálási szolgáltatásfiók nem AD olvasási jogosultsággal rendelkező feloldása
-- Az Azure AD Connect varázsló: Javíthatja a tartomány és az OU-szűrés kijelölések naplózása
-- Az Azure AD Connect varázsló: MFA forgatókönyvhöz létrehozott összevonási megbízhatósági jogcímekre alapértelmezett AD FS hozzáadása
-- Az Azure AD Connect varázsló: AD FS üzembe helyezése WAP: hozzáadása a kiszolgáló nem tud új tanúsítvány használatára
-- Az Azure AD Connect varázsló: DSSO kivétel keletkezett onPremCredentials tartomány nincs inicializálva 
+- Az Azure AD Connect varázsló: A tartomány és az OU-szűrés kijelölések naplózása javítása
+- Az Azure AD Connect varázsló: Az AD FS hozzáadása alapértelmezett jogcímeket MFA forgatókönyvhöz létrehozott összevonási megbízhatósági kapcsolatot kell
+- Az Azure AD Connect varázsló: Az AD FS üzembe helyezése a WAP: Hozzáadásának kiszolgáló meghibásodása esetén új tanúsítvány használatára
+- Az Azure AD Connect varázsló: Amikor onPremCredentials egy tartomány nem inicializált DSSO kivétel 
 - Lehetőleg flow az AD distinguishedName attribútum aktív felhasználó.
 - Rögzített formai hibát is az első OOB-szinkronizálási szabály prioritása 99 helyett 100 értékre lett beállítva
 
 
 
 ## <a name="117510"></a>1.1.751.0
-Állapot 4/12/2018:, amely a letölthető csak
+Állapot 4/12/2018: Csak a letölthető kiadás dátuma:
 
 >[!NOTE]
 >Ez a kiadás egy gyorsjavítás az Azure AD Connect
@@ -212,7 +224,7 @@ Javítva a probléma automatikus Azure-beli példány felderítési voltak a Chi
 Hiba történt a konfiguráció újrapróbálkozási logika, amely egy ArgumentException figyelmezteti a "ugyanazzal a kulccsal rendelkező elemet már hozzáadták."  Emiatt az összes újrapróbálkozási művelet sikertelen lesz.
 
 ## <a name="117500"></a>1.1.750.0
-Állapot 3 22-es/2018. március: automatikus frissítési és a letöltés.
+Állapot 3 22-es/2018. március: Megjelent az automatikus frissítési és a letöltési.
 >[!NOTE]
 >Ha befejeződött a frissítés új verzióra, azt automatikusan aktivál egy teljes szinkronizálást, és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD Connectoron. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e az ennek támogatásához, vagy tartsa addig, amíg egy erre alkalmas időpontban talált a frissítés a szükséges lépéseket.
 
@@ -227,7 +239,7 @@ Hiba történt a konfiguráció újrapróbálkozási logika, amely egy ArgumentE
 * Módosult a **felhasználói bejelentkezés** oldalon a "Jelszó-szinkronizálás", "A Jelszókivonat-szinkronizálás" lehetőséget.  Az Azure AD Connect szinkronizálja a jelszókivonatok, nem pedig jelszavakkal, így ez igazodik, valójában mi történik a.  További információ: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md)
 
 ## <a name="117490"></a>1.1.749.0
-Állapota: Válassza ki az ügyfelek nyilvánosan
+Állapot: Válassza ki az ügyfél általánosan elérhető
 
 >[!NOTE]
 >Ha befejeződött a frissítés új verzióra, azt automatikusan aktivál egy teljes szinkronizálást, és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD Connectoron. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e az ennek támogatásához, vagy tartsa addig, amíg egy erre alkalmas időpontban talált a frissítés a szükséges lépéseket.
@@ -289,7 +301,7 @@ A segédprogram nem szükséges a jelszó módosítása. Az Azure AD Connect var
 
 
 ## <a name="116540"></a>1.1.654.0
-Állapot: 2017. December 12.
+Állapot: 2017. december 12.
 
 >[!NOTE]
 >Ebben a kiadásban, egy biztonsági kapcsolódó gyorsjavítás az Azure AD Connect
@@ -319,9 +331,9 @@ Engedélyezés    | Rendszergazdák                | Teljes hozzáférés       
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 
@@ -429,7 +441,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 
 ## <a name="116140"></a>1.1.614.0
-Állapot: 05 2017. szeptember
+Állapot: 2017. szeptemberi 05
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -501,7 +513,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 * Megtörtént egy probléma javítása, a [tartomány és szervezeti egységek szűrése képernyő](how-to-connect-install-custom.md#domain-and-ou-filtering) az az Azure AD Connect varázsló jelenik *minden tartomány és szervezeti egységek szinkronizálása* lehetőség választása, annak ellenére, hogy a szervezeti egység szerinti szűrés engedélyezve van.
 
-*   Megtörtént egy probléma javítása, amely miatt a [könyvtárpartíciók konfigurálása képernyő](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) a a Synchronization Service Managert, hibát ad vissza, ha a *frissítése* gombra kattint. A hibaüzenet *"hiba történt a tartományok frissítése közben: írja be a" System.Collections.ArrayList"típusú objektum nem lehet" Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* A hiba akkor fordul elő, amikor új AD-tartomány hozzáadása egy meglévő AD-erdőhöz, és a frissítés gomb használatával az Azure AD Connect frissíteni szeretne.
+*   Megtörtént egy probléma javítása, amely miatt a [könyvtárpartíciók konfigurálása képernyő](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) a a Synchronization Service Managert, hibát ad vissza, ha a *frissítése* gombra kattint. A hibaüzenet *"hiba történt a tartományok frissítése közben: Objektum nem konvertálható, írja be a "System.Collections.ArrayList" típusú "Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* A hiba akkor fordul elő, amikor új AD-tartomány hozzáadása egy meglévő AD-erdőhöz, és a frissítés gomb használatával az Azure AD Connect frissíteni szeretne.
 
 #### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -516,10 +528,10 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
   * Engedélyezte, hogy a felhasználó a jelszóvisszaíró szolgáltatás.
   
   >[!NOTE]
-  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
+  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: Automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115580"></a>1.1.558.0
-Állapot: Nem elérhető lesz. A build változásai verzió 1.1.561.0 szerepelnek.
+Állapot: Nincs elérhető lesz. A build változásai verzió 1.1.561.0 szerepelnek.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -529,7 +541,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 * Megtörtént egy probléma javítása, a [tartomány és szervezeti egységek szűrése képernyő](how-to-connect-install-custom.md#domain-and-ou-filtering) az az Azure AD Connect varázsló jelenik *minden tartomány és szervezeti egységek szinkronizálása* lehetőség választása, annak ellenére, hogy a szervezeti egység szerinti szűrés engedélyezve van.
 
-*   Megtörtént egy probléma javítása, amely miatt a [könyvtárpartíciók konfigurálása képernyő](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) a a Synchronization Service Managert, hibát ad vissza, ha a *frissítése* gombra kattint. A hibaüzenet *"hiba történt a tartományok frissítése közben: írja be a" System.Collections.ArrayList"típusú objektum nem lehet" Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* A hiba akkor fordul elő, amikor új AD-tartomány hozzáadása egy meglévő AD-erdőhöz, és a frissítés gomb használatával az Azure AD Connect frissíteni szeretne.
+*   Megtörtént egy probléma javítása, amely miatt a [könyvtárpartíciók konfigurálása képernyő](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) a a Synchronization Service Managert, hibát ad vissza, ha a *frissítése* gombra kattint. A hibaüzenet *"hiba történt a tartományok frissítése közben: Objektum nem konvertálható, írja be a "System.Collections.ArrayList" típusú "Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* A hiba akkor fordul elő, amikor új AD-tartomány hozzáadása egy meglévő AD-erdőhöz, és a frissítés gomb használatával az Azure AD Connect frissíteni szeretne.
 
 #### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -544,7 +556,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
   * Engedélyezte, hogy a felhasználó a jelszóvisszaíró szolgáltatás.
   
   >[!NOTE]
-  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
+  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: Automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115570"></a>1.1.557.0
 Állapot: 2017. július
@@ -558,7 +570,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 * Kijavítva az Initialize-ADSyncDomainJoinedComputerSync parancsmag által okozott az ellenőrzött tartományt a meglévő szolgáltatás kapcsolódási pont objektumot módosítani, akkor is, ha továbbra is érvényes tartomány a következőn:. Ez a probléma akkor fordul elő, ha az Azure AD-bérlővel rendelkezik, amely a szolgáltatáskapcsolati pont konfigurálásához használható egynél több ellenőrzött tartomány.
 
 #### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
-* A jelszóvisszaíró már elérhető előzetes verzióban a Microsoft Azure Government felhőben és a Microsoft Cloud németországi adatközpontjában. A különböző példányok az Azure AD Connect-támogatással kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: vonatkozó különleges szempontok példányok](reference-connect-instances.md).
+* A jelszóvisszaíró már elérhető előzetes verzióban a Microsoft Azure Government felhőben és a Microsoft Cloud németországi adatközpontjában. A különböző példányok az Azure AD Connect-támogatással kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: Különleges szempontok a példányok](reference-connect-instances.md).
 
 * Az Initialize-ADSyncDomainJoinedComputerSync parancsmag most már rendelkezik AzureADDomain nevű új nem kötelező paraméter. Ez a paraméter lehetővé teszi, hogy adható meg, amely a szolgáltatáskapcsolati pont konfigurálásához használt tartomány ellenőrzése.
 
@@ -660,15 +672,15 @@ CBool(
 * Lehetővé teszi ügyfeleink számára hozzon létre egyéni szinkronizálási szabályok sAMAccountName domainNetBios és csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName folyamat következő sémaváltozások vezettek be:
 
   * MV-séma következő attribútumok lettek hozzáadva:
-    * Csoport: AccountName
+    * Csoport: Fióknév
     * Group: domainNetBios
     * Csoport: domainFQDN
     * Személy: distinguishedName
 
   * Az Azure AD-összekötő séma következő attribútumok lettek hozzáadva:
-    * Group: OnPremisesSamAccountName
+    * Csoport: OnPremisesSamAccountName
     * Csoport: NetBiosName
-    * Csoport: tartománynév
+    * Csoport: Tartománynév
     * Felhasználó: OnPremisesDistinguishedName
 
 * A ADSyncDomainJoinedComputerSync parancsmag parancsfájl most már rendelkezik AzureEnvironment nevű új nem kötelező paraméter. A paraméter adja meg, melyik a megfelelő Azure Active Directory-bérlő üzemeltetett régióban használható. Érvényes értékek a következők:
@@ -707,7 +719,7 @@ Kiadás dátuma: 2017. május
 Az Azure AD Connect szinkronizálása
 
 * Kijavítva, amely hatására az automatikus frissítése az Azure AD Connect-kiszolgáló még akkor is, ha az ügyfél letiltotta a funkciót, a Set-ADSyncAutoUpgrade parancsmag használatával történik. Az automatikus frissítési folyamat a kiszolgálón a frissítés továbbra is rendszeres időközönként ellenőrzi a javítás, de a letöltött telepítőt az automatikus frissítési konfiguráció figyelembe veszi.
-* A DirSync a helyben frissítés során az Azure AD Connect létrehoz egy Azure AD-szolgáltatásfiók és az Azure AD szinkronizálása az Azure AD-összekötő által használandó. A fiók létrehozása után az Azure AD Connect végzi a hitelesítést az Azure AD-fiókkal. Egyes esetekben hitelesítés nem sikerül átmeneti problémák miatt viszont emiatt DirSync helyszíni frissítését hiba miatt sikertelen *"hiba történt az AAD-Szinkronizáló beállítása a feladat végrehajtása: AADSTS50034: Jelentkezzen be az alkalmazást, hogy a fióknak kell lennie Adja hozzá a xxx.onmicrosoft.com könyvtár."* A DirSync frissítése rugalmasságát javítása érdekében az Azure AD Connect mostantól a hitelesítési lépés újbóli végrehajtása.
+* A DirSync a helyben frissítés során az Azure AD Connect létrehoz egy Azure AD-szolgáltatásfiók és az Azure AD szinkronizálása az Azure AD-összekötő által használandó. A fiók létrehozása után az Azure AD Connect végzi a hitelesítést az Azure AD-fiókkal. Egyes esetekben hitelesítés nem sikerül átmeneti problémák miatt viszont emiatt DirSync helyszíni frissítését hiba miatt sikertelen *"hiba történt az AAD-Szinkronizáló beállítása a feladat végrehajtása: AADSTS50034: Jelentkezzen be az alkalmazást, hogy a fiókot hozzá kell adni a xxx.onmicrosoft.com könyvtárba."* A DirSync frissítése rugalmasságát javítása érdekében az Azure AD Connect mostantól a hitelesítési lépés újbóli végrehajtása.
 * Hiba történt a 443-as buildelési, amelynek hatására a DirSync helyi frissítés sikeres, de nem jöttek létre futtatási profilokat a címtár-szinkronizálás szükséges. Az Azure AD Connect a build logikai javítási tartalmazza. A build ügyfél rendszerre frissül, amikor az Azure AD Connect észleli a hiányzó futtatási profilok, és létrehozza őket.
 * Kijavítva a jelszó-szinkronizálás folyamata nem indulnak el az Event ID 6900 és a hiba kiváltó *"ugyanazzal a kulccsal rendelkező elemet már hozzáadták"*. Ez a probléma akkor fordul elő, frissít OU konfigurációs szűrés AD konfigurációs partíció tartalmazza. A probléma megoldásához, jelszó-szinkronizálás folyamata most csak tartománypartíciókban AD jelszó-módosítások szinkronizálása. Például a konfigurációs partíción tartományon kívüli partíciókat a rendszer kihagyja.
 * Expressz telepítés során az Azure AD Connect létrehoz egy helyi az AD-összekötővel folytatott kommunikációhoz használt AD DS-fiókot a helyszíni AD. Korábban a PASSWD_NOTREQD jelölővel állítsa be a felhasználó-fiók-ellenőrzési attribútum a fiók létrejön, és a véletlenszerű jelszót a fiók be van állítva. Most az Azure AD Connect explicit módon a PASSWD_NOTREQD jelző után eltávolítja a jelszót a fiók be van állítva.
@@ -716,7 +728,7 @@ Az Azure AD Connect szinkronizálása
 * Konfigurálja a szervezeti egységek szűrése, vagy használhatja az Azure AD Connect varázsló vagy a Synchronization Service Managert. Korábban az Azure AD Connect varázsló használatával konfigurálja a szervezeti egységek szűrése, ha létrehozott szervezeti egységeket licencdíjait is a címtár-szinkronizálás. Ha nem szeretné, hogy bekerüljenek az új szervezeti egységeket, konfigurálnia kell szervezeti egységek szűrése a Synchronization Service Managert használja. Most érheti el az Azure AD Connect varázsló segítségével viselkedést.
 * Kijavítva, amely hatására az Azure AD Connect kell létrehozni a séma telepítése a rendszergazda helyett a dbo sémában tárolt eljárásokat.
 * Kijavítva a követési azonosító attribútum ki lehet hagyni a az AAD Connect kiszolgáló eseménynaplók, az Azure AD által visszaadott okozó hibát. A probléma akkor fordul elő, ha az Azure AD Connect egy átirányítási üzenet fogadása az Azure ad-ből, és az Azure AD Connect nem tud kapcsolódni a végponthoz megadott. A követési azonosítót használják a támogatási szakértők hibaelhárítás során az ügyféloldali naplói korrelációját.
-* Ha az Azure AD Connect LargeObject hiba kap az Azure ad-ből, az Azure AD Connect eseményazonosító 6941, üzenet eseményt hoz létre *"a telepített objektum mérete túl nagy. Csökkentse az attribútum objektum értékeinek számát."* Egy időben, az Azure AD Connect is előállít egy eseményazonosító 6900, az üzenet félrevezető esemény *"Microsoft.Online.Coexistence.ProvisionRetryException: nem lehet kommunikálni a Windows Azure Active Directory szolgáltatás."* Zavarok minimalizálása érdekében az Azure AD Connect LargeObject hiba fogadásakor. utóbbi esetben már nem generál.
+* Ha az Azure AD Connect LargeObject hiba kap az Azure ad-ből, az Azure AD Connect eseményazonosító 6941, üzenet eseményt hoz létre *"a telepített objektum mérete túl nagy. Csökkentse az attribútum objektum értékeinek számát."* Egy időben, az Azure AD Connect is előállít egy eseményazonosító 6900, az üzenet félrevezető esemény *"Microsoft.Online.Coexistence.ProvisionRetryException: Nem sikerült a Windows Azure Active Directory szolgáltatással való kommunikációra."* Zavarok minimalizálása érdekében az Azure AD Connect LargeObject hiba fogadásakor. utóbbi esetben már nem generál.
 * Kijavítva, amelynek hatására a Synchronization Service Managert, hogy nem válaszol, az általános LDAP-összekötő konfigurációjának frissítése közben.
 
 **Új funkciók és fejlesztések:**
@@ -729,12 +741,12 @@ Az Azure AD Connect szinkronizálása
   * Hozzáadott **preferredDataLocation** metaverzumséma és AAD-összekötő séma. Egyéni szinkronizálási szabályok ezt vagy attribútumok frissítése az Azure ad-ben kívánó ügyfelek valósítható meg. 
   * Hozzáadott **userType** metaverzumséma és AAD-összekötő séma. Egyéni szinkronizálási szabályok ezt vagy attribútumok frissítése az Azure ad-ben kívánó ügyfelek valósítható meg.
 
-* Az Azure AD Connect most már automatikusan lehetővé teszi, hogy ConsistencyGuid attribútum használata a Forráshorgony-attribútumként a helyszíni AD-objektumok. További, az Azure AD Connect feltölti az objectGuid attribútum értéke ConsistencyGuid attribútum, akkor, ha üres. Ez a funkció akkor alkalmazható, csak az új telepítéshez. A szolgáltatásról további információért tekintse meg a cikk szakasz [az Azure AD Connect: tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
+* Az Azure AD Connect most már automatikusan lehetővé teszi, hogy ConsistencyGuid attribútum használata a Forráshorgony-attribútumként a helyszíni AD-objektumok. További, az Azure AD Connect feltölti az objectGuid attribútum értéke ConsistencyGuid attribútum, akkor, ha üres. Ez a funkció akkor alkalmazható, csak az új telepítéshez. A szolgáltatásról további információért tekintse meg a cikk szakasz [az Azure AD Connect: Tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 * A parancsmag új hibaelhárítási Invoke-ADSyncDiagnostics lett hozzáadva a Jelszókivonat-szinkronizálás diagnosztizálásához kapcsolatos problémákat. A parancsmag használatával kapcsolatos információkért tekintse meg a cikk [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása](tshoot-connect-password-hash-synchronization.md).
 * Most már támogatja a szinkronizálási postafiókhoz nyilvános mappa objektumait ki az Azure AD Connect a helyszíni AD az Azure ad-hez. A funkciót, az Azure AD Connect varázsló a választható funkciók használatával engedélyezheti. A szolgáltatásról további információért tekintse meg a cikk [Office 365 Directory-alapú biztonsági blokkolás támogatása a helyszíni levelezés engedélyezett nyilvános mappái](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Az Azure AD Connectnek szüksége van az AD DS-fiókot a szinkronizálás a helyszíni AD. Korábban Ha telepítette az Expressz mód használata az Azure AD Connect, biztosíthatja az Azure AD Connect és egy vállalati rendszergazdai fiók hitelesítő adatait az AD DS-fiókot hozna létre. Azonban az egyéni telepítés és erdők hozzáadása egy meglévő üzemelő példányt, kellett adja meg ehelyett az AD DS-fiókot. Most is arra, hogy adjon meg egy vállalati rendszergazdai fiók hitelesítő adatait az egyéni telepítés során, és lehetővé teszik az Azure AD Connect az AD DS-fiókot létrehozni.
 * Az Azure AD Connect mostantól támogatja az SQL AOA. Az Azure AD Connect telepítése előtt engedélyeznie kell az SQL AOA. A telepítés során az Azure AD Connect észleli a megadott SQL-példány engedélyezve van-e az SQL AOA vagy sem. Ha SQL AOA engedélyezve van, az Azure AD Connect további kitalálja, hogy ha az SQL AOA szinkron replikáció vagy aszinkron replikáció használatára van konfigurálva. Állítson be a rendelkezésre állási csoport figyelőjét, javasoljuk, hogy a RegisterAllProvidersIP tulajdonságot 0 értékre állítja. Ez a javaslat az oka az Azure AD Connect jelenleg SQL Native Client összetevőt használja kapcsolódni az SQL és az SQL natív ügyfél nem támogatja a MultiSubNetFailover tulajdonság használatát.
-* Ha az Azure AD Connect-kiszolgáló LocalDB használ az adatbázis, és elérte a 10 GB-os méretkorlátot, a szinkronizálási szolgáltatás nem indul el. Korábban a szeretne felszabadítani elegendő helyet a szinkronizálási szolgáltatás indítása a LocalDB ShrinkDatabase műveletet végrehajtani. Amely után a Synchronization Service Managert segítségével törölheti a futtatási előzmények több DB hely felszabadítása érdekében. Most segítségével Start-ADSyncPurgeRunHistory parancsmag futtatása kiürítése előzményadatok szolgáltatást a LocalDB adatbázisból DB lemezterület felszabadítása érdekében. További, a parancsmag támogatja-e egy offline üzemmód (megadásával az - offline paramétert) amely használható, ha a szinkronizálási szolgáltatás nem fut. Megjegyzés: A kapcsolat nélküli módban csak használható, ha a szinkronizálási szolgáltatás nem fut, és a használt adatbázis LocalDB.
+* Ha az Azure AD Connect-kiszolgáló LocalDB használ az adatbázis, és elérte a 10 GB-os méretkorlátot, a szinkronizálási szolgáltatás nem indul el. Korábban a szeretne felszabadítani elegendő helyet a szinkronizálási szolgáltatás indítása a LocalDB ShrinkDatabase műveletet végrehajtani. Amely után a Synchronization Service Managert segítségével törölheti a futtatási előzmények több DB hely felszabadítása érdekében. Most segítségével Start-ADSyncPurgeRunHistory parancsmag futtatása kiürítése előzményadatok szolgáltatást a LocalDB adatbázisból DB lemezterület felszabadítása érdekében. További, a parancsmag támogatja-e egy offline üzemmód (megadásával az - offline paramétert) amely használható, ha a szinkronizálási szolgáltatás nem fut. Megjegyzés: A kapcsolat nélküli módban csak akkor használható, ha a szinkronizálási szolgáltatás nem fut, és a használt adatbázis LocalDB.
 * Csökkentheti a tárolóhely, az Azure AD Connect most tömöríti a szinkronizálási hiba részleteinek LocalDB/SQL-adatbázisok a tárolás előtt. Az Azure AD Connect egy régebbi verzióját erre a verzióra történő frissítés esetén az Azure AD Connect egy egyszeri tömörítés a meglévő szinkronizálási hiba részleteinek hajt végre.
 * Korábban a után frissíti az OU-szűrés konfigurálása, manuálisan futtatnia kell meglévő objektumok meg megfelelően foglalt/zárva a címtár-szinkronizálás teljes importálást. Most, az Azure AD Connect automatikusan aktiválja a teljes importálás során a következő szinkronizálási ciklus. További, a teljes importálás csak az AD-összekötők, a frissítés hatással lehet vonatkozik. Megjegyzés: ennek a fejlesztésnek az OU-szűrés csak az Azure AD Connect varázsló használatával végzett frissítések alkalmazható. Ez nem alkalmazható az OU-szűrés a Synchronization Service Managert használatával végzett frissítés.
 * Korábban a Csoportalapú szűrés támogatja a felhasználók, csoportok, és forduljon objektumok csak. Most Csoportalapú szűrés is támogatja számítógép-objektumokat.
@@ -837,7 +849,7 @@ Jelszó visszaállítása
 * Továbbfejlesztett kapcsolat megbízhatóságát, az Azure Service Bus.
 
 ## <a name="113800"></a>1.1.380.0
-Kiadás dátuma: 2016. December
+Kiadás dátuma: 2016. december
 
 **Kijavítva a hiba:**
 
@@ -847,7 +859,7 @@ Kiadás dátuma: 2016. December
 >A build az ügyfeleket az Azure AD Connect automatikus frissítés funkció nem érhető el.
 
 ## <a name="113710"></a>1.1.371.0
-Kiadás dátuma: 2016. December
+Kiadás dátuma: 2016. december
 
 **Ismert hiba:**
 
@@ -861,7 +873,7 @@ Kiadás dátuma: 2016. December
 >A build az ügyfeleket az Azure AD Connect automatikus frissítés funkció nem érhető el.
 
 ## <a name="113700"></a>1.1.370.0
-Kiadás dátuma: 2016. December
+Kiadás dátuma: 2016. december
 
 **Ismert problémák:**
 
@@ -876,7 +888,7 @@ Kiadás dátuma: 2016. December
 >A build az ügyfeleket az Azure AD Connect automatikus frissítés funkció nem érhető el.
 
 ## <a name="113430"></a>1.1.343.0
-Kiadás dátuma: 2016. November
+Kiadás dátuma: 2016. november
 
 **Ismert hiba:**
 
@@ -996,7 +1008,7 @@ Kiadás dátuma: 2016. február
 * A helyszíni AD-fiókok nem ismeri fel a telepítővarázsló Ha egy másik DNS-fa, mint a gyökértartomány rendelkező tartományban található.
 
 ## <a name="1091310"></a>1.0.9131.0
-Kiadás dátuma: 2015. December
+Kiadás dátuma: 2015. december
 
 **Rögzített problémák:**
 
@@ -1006,7 +1018,7 @@ Kiadás dátuma: 2015. December
 * A "Nem lehet hozzáférni az ADSync SQL-adatbázis" hibát frissítése távoli SQL Server az Azure AD Connect korábbi kiadásáról jeleníti meg.
 
 ## <a name="1091250"></a>1.0.9125.0
-Kiadás dátuma: 2015. November
+Kiadás dátuma: 2015. november
 
 **Új funkciók:**
 
@@ -1127,7 +1139,7 @@ Kiadás dátuma: 2015. február
 * Idegen rendszerbiztonsági tagok (FSP) abban az erdőben több tartományból való csatlakozás a nem egyértelmű illesztési hibát okoz.
 
 ## <a name="104751202"></a>1.0.475.1202
-Kiadás dátuma: 2014. December
+Kiadás dátuma: 2014. december
 
 **Új funkciók:**
 

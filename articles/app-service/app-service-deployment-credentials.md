@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezési hitelesítő adatok beállítása az Azure App Service |} A Microsoft Docs
+title: Az Azure App Service – az üzembe helyezési hitelesítő adatok konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure App Service üzembe helyezési hitelesítő adatok.
 services: app-service
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/22/2018
 ms.author: cephalin
-ms.openlocfilehash: a04057023308087adbf449b8f91af6a473c11c1e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 9f1d6714dd015af857c5e6156bc7254a944363c4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312095"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257183"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Az Azure App Service üzembe helyezési hitelesítő adatok konfigurálása
 [Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](app-service-deploy-local-git.md) és [FTP/S üzembe helyezési](app-service-deploy-ftp.md). Ezek nem azonosak az Azure Active Directory hitelesítő adatként.

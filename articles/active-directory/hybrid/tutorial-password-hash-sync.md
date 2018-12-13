@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure-ban a Jelszókivonat-szinkronizálás (nál) egyerdős AD integrálása |} A Microsoft Docs'
+title: 'Oktatóanyag:  Az Azure-ban a Jelszókivonat-szinkronizálás (nál) egyerdős AD integrálása |} A Microsoft Docs'
 description: Bemutatja, hogyan állíthatja be az egy hibrid identitás környezet Jelszókivonat-szinkronizálás használatával.
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426910"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164702"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: A Jelszókivonat-szinkronizálás (nál) használatával egyetlen AD-erdővel integrálása
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása jelszókivonat-szinkronizálással (PHS)
 
 ![Létrehozás](media/tutorial-password-hash-sync/diagram.png)
 
@@ -81,7 +81,7 @@ A virtuális gép kiépítésének befejezéséhez, kell az operációs rendszer
 5. Kattintson a **telepítse most**.
 6. Adja meg a licenckulcsot, és kattintson a **tovább**.
 7. Ellenőrizze ** e fogadja el a licencfeltételeket, és kattintson a **tovább**.
-8. Válassza ki **egyéni: csak a Windows telepítése (speciális)**
+8. Válassza ki **egyéni:  Csak a Windows telepítése (speciális)**
 9. Kattintson a **Tovább** gombra
 10. A telepítés befejezése után indítsa újra a virtuális gépet, a bejelentkezési és a futtatási Windows frissíti annak biztosítása érdekében, a virtuális Gépet a legfrissebb.  Telepítse a legújabb frissítéseket.
 
@@ -192,7 +192,7 @@ Most, hogy az Azure AD-bérlő, hozunk létre egy globális rendszergazdai fiók
 1.  A **Kezelés** alatt válassza a **Felhasználókat**.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Válassza ki **minden felhasználó** majd **+ új felhasználó**.
-3.  Adjon meg egy nevet és egy felhasználónevet ehhez a felhasználóhoz. Ez a bérlő globális rendszergazdája lesz. Is érdemes módosítani a **címtárbeli szerepkör** való **globális rendszergazdája.** Az ideiglenes jelszót is megjelenítheti. Amikor elkészült, válassza ki a **létrehozás**.</br>
+3.  Adjon meg egy nevet és egy felhasználónevet ehhez a felhasználóhoz. Ez a bérlő globális rendszergazdája lesz. Is érdemes módosítani a **címtárbeli szerepkör** való **globális rendszergazdája.** Az ideiglenes jelszót is megjelenítheti. Amikor elkészült, válassza a **Létrehozás** gombot.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Miután ez befejeződött, nyisson meg egy új webböngészőt, és jelentkezzen be az új globális rendszergazdai fiókot és az ideiglenes jelszó használatával myapps.microsoft.com.
 5. Módosítsa a jelszót a globális rendszergazda úgy, hogy az ne felejtse el lesz.
@@ -205,8 +205,8 @@ Most, töltse le és telepítse az Azure AD Connect ideje.  Ha telepítve van a 
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
 4. Az Express settings (Gyorsbeállítások) képernyőn kattintson a **Use express settings** (Gyorsbeállítások használata) lehetőségre.</br>  
 ![Létrehozás](media/tutorial-password-hash-sync/express1.png)</br>
-5. A csatlakozás az Azure ad Szolgáltatáshoz képernyőn adja meg a felhasználónevet és jelszót a globális rendszergazda Azure ad-ben. Kattintson a **Tovább** gombra.  
-6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **Tovább** gombra.  
+5. A csatlakozás az Azure ad Szolgáltatáshoz képernyőn adja meg a felhasználónevet és jelszót a globális rendszergazda Azure ad-ben. Kattintson a **Tovább**gombra.  
+6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **Tovább**gombra.  
 7. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
 8. A telepítés befejezése után kattintson az **Exit** (Kilépés) gombra.
 9. Miután a telepítés befejeződött, jelentkezzen ki, és jelentkezzen be újra a Synchronization Service Managert vagy a szinkronizálási Szabályszerkesztő használata előtt.

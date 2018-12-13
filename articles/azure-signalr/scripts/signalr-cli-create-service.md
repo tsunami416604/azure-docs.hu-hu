@@ -1,26 +1,19 @@
 ---
-title: Azure CLI-példaszkript – SignalR szolgáltatás létrehozása | Microsoft Docs
+title: Az Azure CLI Példaszkript – egy SignalR-szolgáltatás létrehozása
 description: Azure CLI-példaszkript – SignalR szolgáltatás létrehozása
-services: signalr
-documentationcenter: signalr
 author: sffamily
-manager: cfowler
-editor: ''
-tags: azure-service-management
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: d64e43ad6dc021676fb9483574e0d710cd0a766f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 364a8b6574b06aa2403ea028fecd0676ba0342a7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998644"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256213"
 ---
 # <a name="create-a-signalr-service"></a>SignalR szolgáltatás létrehozása 
 

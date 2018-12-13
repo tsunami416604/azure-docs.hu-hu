@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 013c425e911340a1b85c21ff6fc89819087e90a1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 7ff69d3b79662cff1fc28b0b59777225d0cc439f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869160"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189030"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight az Azure portal használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resourc
 
     ![Új fürt létrehozása az Azure Portalon](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "új fürt létrehozása az Azure Portalon")
 
-    * A **Fürt neve** mezőben adja meg a fürt nevét, amelynek globálisan egyedinek kell lennie.
+    * Adja meg **fürt neve**: A névnek globálisan egyedinek kell lennie.
 
     * Az a **előfizetés** legördülő menüben válassza ki az Azure-előfizetést, amely a fürt szolgál.
 
@@ -57,30 +57,30 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resourc
 
     * Adjon meg egy **SSH-felhasználónév** , és ha szeretné engedélyezni az SSH-jelszó ugyanaz, mint a korábban megadott rendszergazdai jelszót, jelölje be a **használja ugyanazt a jelszót, mint a fürtbe való bejelentkezésekor** jelölőnégyzetet. Ha nem, adja meg, vagy egy **jelszó** vagy **nyilvános kulcs**, az SSH-felhasználó hitelesítéséhez használandó. A Microsoft a nyilvános kulcs használatát javasolja. A hitelesítő adatok konfigurációjának mentéséhez kattintson az oldal alján található **Kiválasztás** elemre.
    
-    További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+        További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
     * Az **Erőforráscsoport** alatt adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni.
 
     * Adjon meg egy adatközpont **hely** ahol a fürt létrejött.
 
-    * Kattintson a **Tovább** gombra.
+    * Kattintson a **Tovább**gombra.
 
-4. A **biztonsági és hálózatkezelési**, a megadott legördülő menüben virtuális hálózathoz is csatlakoztathatja a fürtjét. Válassza ki a Azure-beli virtuális hálózathoz és az alhálózatot, ha el szeretné helyezni a fürt egy virtuális hálózatban. HDInsight használatával egy virtuális hálózathoz, beleértve a virtuális hálózathoz megadott konfigurációs követelményekkel kapcsolatos információkat lásd: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md). Ha használni szeretné a **vállalati biztonsági csomag**, is követheti az itt leírt utasításokat: [HDInsight fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+4. A **biztonsági és hálózatkezelési**, a megadott legördülő menüben virtuális hálózathoz is csatlakoztathatja a fürtjét. Válassza ki a Azure-beli virtuális hálózathoz és az alhálózatot, ha el szeretné helyezni a fürt egy virtuális hálózatban. HDInsight használatával egy virtuális hálózathoz, beleértve a virtuális hálózathoz megadott konfigurációs követelményekkel kapcsolatos információkat lásd: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md). Ha használni szeretné a **vállalati biztonsági csomag**, is követheti az itt leírt utasításokat: [A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
 5. A **tárolási**, adja meg, hogy az Azure Storage (WASB) vagy a Data Lake Storage az alapértelmezett tárolóként. Tekintse meg az alábbi táblázatban további információt.
 
-    ![Új fürt létrehozása az Azure Portalon](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "új fürt létrehozása az Azure Portalon")
+     ![Új fürt létrehozása az Azure Portalon](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "új fürt létrehozása az Azure Portalon")
 
-    | Storage                                      | Leírás |
-    |----------------------------------------------|-------------|
-    | **Az Azure Storage-Blobokkal, az alapértelmezett tároló**   | <ul><li>A **elsődleges tárolási típusok**válassza **Azure Storage**. Ezt követően a **kijelöléséről**, választhat **saját előfizetések** szeretné-e az Azure-előfizetés részét képező tárfiókot adjon meg, és jelölje ki a tárfiókot. Ellenkező esetben kattintson a **hívóbetű** , és adja meg az adatokat a tárfiók, válassza ki a kívánt kívül az Azure-előfizetés.</li><li>A **alapértelmezett tároló**, ha szeretné, lépjen a portál által javasolt alapértelmezett tároló nevét, vagy saját maga hozza létre.</li><li>Ha a WASB használja alapértelmezett tárolóként, (opcionálisan) kattintson **további Tárfiókok** társítása a fürt további tárfiókok megadására. A **Azure-Tárkulcsok**, kattintson a **tárkulcs hozzáadása**, és ezután megadhat egy storage-fiókot az Azure-előfizetésekre vagy más előfizetésekből származó (azáltal, hogy a tárfiók hozzáférési kulcsát).</li><li>Ha a WASB használja alapértelmezett tárolóként, (opcionálisan) kattintson **Data Lake Store-hozzáférés** , adja meg az Azure Data Lake Storage kiegészítő tárolóként. További információkért lásd: [a rövid útmutató: a HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
-    | **Az Azure Data Lake Storage alapértelmezett tárolóként** | A **elsődleges tárolási típusok**válassza **Azure Data Lake Storage Gen1** vagy **Azure Data Lake Storage Gen2 (előzetes verzió)** , majd a cikk [a rövid útmutató : Állítsa be a HDInsight-fürtök](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) útmutatást. |
-    | **Külső metaadattárak**                      | Szükség esetén az SQL-adatbázis, a fürthöz társított Hive-val és az Oozie-metaadatok mentése is megadhat. A **SQL-adatbázis kiválasztása a Hive** SQL-adatbázis kiválasztása, és adja meg a felhasználónév/jelszó az adatbázishoz. Ismételje meg ezeket a lépéseket Oozie-metaadatok.<br><br>Néhány szempontot metaadattárakat az Azure SQL database használatakor. <ul><li>Az Azure SQL database, a metaadattár használt más Azure-szolgáltatásokkal, mint az Azure HDInsight való csatlakozást engedélyezhetik. Az Azure SQL database irányítópulton a jobb oldalon kattintson a kiszolgálónévre. Ez az a kiszolgáló, amelyen az SQL database-példány fut-e. Miután a nézetet, kattintson a **konfigurálása**, majd **Azure-szolgáltatások**, kattintson a **Igen**, és kattintson a **mentése**.</li><li>Amikor metaadattárának, ne használja az adatbázis nevét, amely tartalmazza a kötőjelet vagy kötőjelet tartalmazhat, ez okozhat a Fürtlétrehozási folyamat sikertelen lesz.</li></ul> |
+     | Storage                                      | Leírás |
+     |----------------------------------------------|-------------|
+     | **Az Azure Storage-Blobokkal, az alapértelmezett tároló**   | <ul><li>A **elsődleges tárolási típusok**válassza **Azure Storage**. Ezt követően a **kijelöléséről**, választhat **saját előfizetések** szeretné-e az Azure-előfizetés részét képező tárfiókot adjon meg, és jelölje ki a tárfiókot. Ellenkező esetben kattintson a **hívóbetű** , és adja meg az adatokat a tárfiók, válassza ki a kívánt kívül az Azure-előfizetés.</li><li>A **alapértelmezett tároló**, ha szeretné, lépjen a portál által javasolt alapértelmezett tároló nevét, vagy saját maga hozza létre.</li><li>Ha a WASB használja alapértelmezett tárolóként, (opcionálisan) kattintson **további Tárfiókok** társítása a fürt további tárfiókok megadására. A **Azure-Tárkulcsok**, kattintson a **tárkulcs hozzáadása**, és ezután megadhat egy storage-fiókot az Azure-előfizetésekre vagy más előfizetésekből származó (azáltal, hogy a tárfiók hozzáférési kulcsát).</li><li>Ha a WASB használja alapértelmezett tárolóként, (opcionálisan) kattintson **Data Lake Store-hozzáférés** , adja meg az Azure Data Lake Storage kiegészítő tárolóként. További információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+     | **Az Azure Data Lake Storage alapértelmezett tárolóként** | A **elsődleges tárolási típusok**válassza **Azure Data Lake Storage Gen1** vagy **Azure Data Lake Storage Gen2 (előzetes verzió)** , majd a cikk [a rövid útmutató : A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) útmutatást. |
+     | **Külső metaadattárak**                      | Szükség esetén az SQL-adatbázis, a fürthöz társított Hive-val és az Oozie-metaadatok mentése is megadhat. A **SQL-adatbázis kiválasztása a Hive** SQL-adatbázis kiválasztása, és adja meg a felhasználónév/jelszó az adatbázishoz. Ismételje meg ezeket a lépéseket Oozie-metaadatok.<br><br>Néhány szempontot metaadattárakat az Azure SQL database használatakor. <ul><li>Az Azure SQL database, a metaadattár használt más Azure-szolgáltatásokkal, mint az Azure HDInsight való csatlakozást engedélyezhetik. Az Azure SQL database irányítópulton a jobb oldalon kattintson a kiszolgálónévre. Ez az a kiszolgáló, amelyen az SQL database-példány fut-e. Miután a nézetet, kattintson a **konfigurálása**, majd **Azure-szolgáltatások**, kattintson a **Igen**, és kattintson a **mentése**.</li><li>Amikor metaadattárának, ne használja az adatbázis nevét, amely tartalmazza a kötőjelet vagy kötőjelet tartalmazhat, ez okozhat a Fürtlétrehozási folyamat sikertelen lesz.</li></ul> |
 
-    Kattintson a **Tovább** gombra. 
+     Kattintson a **Tovább**gombra. 
 
-    > [!WARNING]
-    > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
+     > [!WARNING]
+     > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
 6. Másik lehetőségként kattinthat **alkalmazások** telepíthet alkalmazásokat, hogy működik a HDInsight-fürtökkel. Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései. További információkért lásd: [telepítése HDInsight-alkalmazások](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
@@ -99,11 +99,11 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resourc
    Kattintson a **tovább** mentse a csomópontok árképzésének konfigurációját.
 
 8. A **Parancsfájlműveletek**, testre szabhatja a fürt egyéni összetevők telepítéséhez.  Használja ezt a beállítást, ha azt szeretné, egyéni parancsfájl használata a fürt testreszabása, a fürt létre lesz hozva. A szkriptműveletek kapcsolatos további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
-Kattintson a **Tovább** gombra.
+Kattintson a **Tovább**gombra.
 
 9. A **összefoglalás**, ellenőrizze a korábban megadott adatokat, majd kattintson **létrehozás**.
 
-    ![Csomópont árképzési szintjei](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "adja meg a fürt csomópontok száma")
+     ![Csomópont árképzési szintjei](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "adja meg a fürt csomópontok száma")
     
     > [!NOTE]
     > Némi várakozás a fürt létrehozása, általában körülbelül 15 percet vesz igénybe. A csempe használatához a Kezdőpulton, vagy a **értesítések** bal oldalán a lapra, és ellenőrizze a kiépítési folyamat a bejegyzés.
@@ -117,9 +117,9 @@ Kattintson a **Tovább** gombra.
     
     * **Áttekintés** lapon például a nevét, az erőforráscsoportot, amelyhez tartozik, a helyet, az operációs rendszer, a fürt irányítópultja stb URL-CÍMÉT a fürt összes nélkülözhetetlen információkat nyújt.
     * **Irányítópult** a fürthöz társított Ambari portálra irányítja.
-    * **Secure Shell**: a fürthöz SSH használatával eléréséhez szükséges információkat.
+    * **Secure Shell**: A fürthöz SSH használatával eléréséhez szükséges információkat.
     * **Fürt méretezése** lehetővé teszi, hogy a fürthöz társított munkavégző csomópontok számának növelése.
-    * **Törlés**: törli a HDInsight-fürtöt.
+      * **Törlés**: Törli a HDInsight-fürtöt.
     
 
 ## <a name="customize-clusters"></a>Fürtök személyre szabása
@@ -153,6 +153,6 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, megtudhatja, hogyan ha
 ### <a name="apache-spark-clusters"></a>Az Apache Spark-fürtök
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md)
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](spark/apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](spark/apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
 

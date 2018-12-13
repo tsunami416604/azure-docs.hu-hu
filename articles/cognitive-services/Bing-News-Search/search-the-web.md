@@ -1,7 +1,7 @@
 ---
-title: Mi a Bing News Search?
+title: Mi az a Bing News Search API?
 titlesuffix: Azure Cognitive Services
-description: Arra vonatkozó tudnivalók, hogyan kereshet híreket az interneten a Bing News Search API-val.
+description: Ismerje meg, hogyan több kategóriákban, beleértve a hírek és témakörök népszerű aktuális hírek a webes keresés a Bing News Search API használatával.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 17383d38b1401149003ad9d1794b3e69284f9033
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227858"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253092"
 ---
-# <a name="what-is-bing-news-search"></a>Mi a Bing News Search?
+# <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
 A Bing News Search API a [Bing Hírekhez](https://www.bing.com/news) hasonló (de nem pontosan ugyanolyan) élményt nyújt. A Bing News Search API lehetővé teszi, hogy keresési lekérdezést küldjön a Bingnek, és egy ahhoz kapcsolódó híreket tartalmazó listát kapjon vissza.
 

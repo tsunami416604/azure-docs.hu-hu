@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: eab0c1339030ffeb14c4fe39a70178fdf5f13a22
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 33086be2c85e44b81a9f444a10a683e54f8612f7
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871098"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164449"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
@@ -173,7 +173,7 @@ $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 > [!IMPORTANT]
-> Biztonsági mentés nem visszafejthető LTR törlése. Értesítéseket állíthat be kapcsolatos minden törlése az Azure monitorban szűrésével művelethez "Töröl egy hosszú távú adatmegőrzés céljából készített biztonsági". A tevékenységnapló arról, hogy ki és a kérést leadó információkat tartalmaz. Lásd: [tevékenységnapló-riasztások létrehozása](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md) részletes útmutatást.
+> Biztonsági mentés nem visszafejthető LTR törlése. Értesítéseket állíthat be kapcsolatos minden törlése az Azure monitorban szűrésével művelethez "Töröl egy hosszú távú adatmegőrzés céljából készített biztonsági". A tevékenységnapló arról, hogy ki és a kérést leadó információkat tartalmaz. Lásd: [tevékenységnapló-riasztások létrehozása](../azure-monitor/platform/alerts-activity-log.md) részletes útmutatást.
 >
 
 ### <a name="restore-from-ltr-backups"></a>Vissza az LTR biztonsági másolataiból

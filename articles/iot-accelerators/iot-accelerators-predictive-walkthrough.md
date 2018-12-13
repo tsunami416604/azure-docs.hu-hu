@@ -8,16 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b76bea6207cd6ac5d2ed570cf54dde7c52d5ff97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137070"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309620"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
 
 A prediktív karbantartási megoldásgyorsító olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt a megoldásgyorsítót proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT megoldás megoldásgyorsítók szolgáltatásokat, mint az IoT Hub és a egy [Azure Machine Learning] [ lnk-machine-learning] munkaterületen. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
+
+A prediktív karbantartási megoldásgyorsító [kódja a Githubon elérhető](https://github.com/Azure/azure-iot-predictive-maintenance).
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
@@ -43,7 +45,7 @@ A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machi
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
 
-A megoldásgyorsító egy szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: a 9. érzékelő, a 11. érzékelő, a 14. érzékelő és a 15. érzékelő telemetriáját, amelyek a motor fennmaradó hasznos élettartamának (RUL) kiszámítására szolgáló Machine Learning-modellhez szükséges adatokat biztosítják. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
+A megoldásgyorsító egy szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: 11. érzékelő, 14. érzékelő és 15. érzékelő Telemetriáját 9 érzékelője adja meg a motor rul értékének kiszámításához a Machine Learning-modellhez szükséges adatokat. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
 
 *Ciklusszám*. A ciklus a következő két és tíz óra közti időtartamú befejezett repülőjegyet. A rendszer félóránként rögzíti a telemetriai adatokat a repülőutak közben.
 
@@ -60,7 +62,7 @@ Az IoT Hub nyugtázza az eszközparancsokat.
 
 ## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics-feladat
 
-**Feladat: Telemetria** – a bejövő eszköz telemetriastreamjén működik két utasítással.
+**Feladat: Telemetria** működik két utasítással használatával a bejövő eszköz telemetriai Stream:
 
 * Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi. Itt azt a rendszer vizualizálja a webalkalmazásban.
 * A második kiszámítja az átlagos érzékelőértékeket egy kétperces csúszóablakban, és ezeket az adatokat az eseményközponton keresztül egy **eseményfeldolgozóba** küldi.

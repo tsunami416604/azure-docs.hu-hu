@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 405104554b4ee8e773b6d2e39966a262f98beb6d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243144"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259783"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
 
-A Microsoft SQL Server Management Studióban gyorsan írhat lekérdezéseket az Azure Blockhain Workbench SQL-adatbázisához, és azonnal tesztelheti is őket. Ebből a szakaszból részletesen megismerheti, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
+A Microsoft SQL Server Management Studio lehetővé teszi a gyors írása és tesztelése a lekérdezéseket az Azure Blockchain Workbench SQL-adatbázis. Ebből a szakaszból részletesen megismerheti, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

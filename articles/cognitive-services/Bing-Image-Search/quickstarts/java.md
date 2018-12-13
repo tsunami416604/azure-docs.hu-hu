@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Képkeresés a Java használatával – Bing Image Search API'
+title: 'Gyors útmutató: Keresse meg a Bing Image Search REST API és a Java --lemezképek'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Java-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
+description: Ez a rövid útmutató segítségével kép keresési kérelmeket küldjön a Bing Image Search REST API Java használatával, és JSON-válaszok kap.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 63add2406b4535747c09299ecc0df6d1b6b47da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 17dcf33074e7ee097a8778b3b867cb196cd814c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315868"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258168"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és Java használatával
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a Java használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Java-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 

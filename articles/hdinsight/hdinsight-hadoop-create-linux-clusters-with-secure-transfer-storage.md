@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 07d6b07a583b8a8ce8b490333a87ff659f495e45
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: be379061f738ccee298c9a5aac88d3a95613f214
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866988"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193229"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Az Apache Hadoop-fürt létrehozása biztonságos átvitellel rendelkező tárfiókok az Azure HDInsight
 
@@ -23,7 +23,7 @@ A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elindításának feltétele:
 
-* **Azure-előfizetés**: egy ingyenes egy hónapos próbafiók létrehozásához keresse fel az [azure.microsoft.com/free](https://azure.microsoft.com/free) webhelyet.
+* **Azure-előfizetés**: Egy ingyenes egy hónapos próbafiók létrehozásához keresse meg a [azure.microsoft.com/free](https://azure.microsoft.com/free).
 * **Engedélyezett biztonságos átvitellel rendelkező Azure-tárfiók** Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat.
 * **Blobtároló a tárfiókon**. 
 
@@ -45,7 +45,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure R
     - Rövid nevet adjon a tárfióknak.
     - Már korábban létre kell hozni a tárfiókot és a blobtárolót is. 
 
-    Az utasításokért lásd: [Fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
+      Az utasításokért lásd: [Fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
 
 Ha szkriptműveleteket használ a saját konfigurációs fájlok megadásához, a wasbs a következő beállításokkal használandó:
 

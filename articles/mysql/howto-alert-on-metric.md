@@ -1,6 +1,6 @@
 ---
-title: Metrikák riasztások konfigurálása az Azure-adatbázis MySQL az Azure-portálon
-description: A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database MySQL az Azure-portálról.
+title: Metrikák riasztások konfigurálása az Azure Database for MySQL-hez az Azure Portalon
+description: Ez a cikk ismerteti konfigurálása és a hozzáférési metrikákhoz kapcsolódó riasztások az Azure Database for MySQL-hez az Azure Portalról.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
@@ -9,78 +9,78 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6db451ab7de50039c38b59612dd2ab1c61c35e7b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265179"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271250"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Riasztásokat állíthat be metrikák Azure-adatbázis a MySQL az Azure-portál használatával 
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Riasztásokat állíthat be mérőszámok az Azure Database for MySQL-hez az Azure portal használatával 
 
-Ez a cikk bemutatja, hogyan Azure-adatbázis létrehozásakor az Azure portál használatával MySQL riasztásokhoz. Figyelése az Azure-szolgáltatások metrikáját alapuló riasztást kaphat.
+Ez a cikk bemutatja, hogyan állítható be Azure Database for MySQL-riasztások az Azure portal használatával. A metrikák az Azure-szolgáltatások monitorozása alapján riasztást kaphat.
 
-A riasztási eseményindítók megadott metrika értékét ebbe a hozzárendelt küszöbértéket. A riasztási eseményindítók is, ha az első feltétele teljesül, majd ezt követően, hogy a feltétel mikor van már nem teljesül. 
+A riasztás akkor aktiválódik, ha egy adott mérőszám értéke átlép egy küszöbértéket, rendeli. A riasztási eseményindítók is, ha az első feltétele teljesül, és majd ezt követően, hogy a feltétel ha van már nem teljesül. 
 
-A következő műveleteket hajthatja végre, amikor elindítja a riasztásokat lehet beállítani:
-* e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
-* e-mail küldéséhez megadott további e-maileket.
+A következő műveleteket hajthatja végre, amikor elindítja riasztásokat lehet beállítani:
+* e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és társrendszergazdák
+* További e-mailek, Ön által megadott e-mail küldése.
 * Webhook meghívása
 
-Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvasása:
+Konfigurálhatja és riasztási szabályok használatával kapcsolatos információk lekérése:
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Parancssori felület (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [Parancssori felület (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
+* [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Riasztási szabályt létrehozni a metrika az Azure-portálon
-1. Az a [Azure-portálon](https://portal.azure.com/), válassza ki a figyelni kívánt MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Hozzon létre egy riasztási szabályt a metrika az Azure Portalról
+1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for MySQL-kiszolgálóhoz szeretné figyelni.
 
-2. A a **figyelés** az oldalsávon, jelölje be szakasza **riasztási szabályok** látható módon:
+2. Alatt a **figyelés** oldalsávon válassza szakaszában **riasztási szabályok** látható módon:
 
    ![Válassza ki a riasztási szabályok](./media/howto-alert-on-metric/1-alert-rules.png)
 
-3. Válassza ki **metrika riasztás hozzáadása** (+ ikonra). 
+3. Válassza ki **metrikariasztás hozzáadása** (+ ikon). 
 
-4. A **Hozzáadás szabály** oldalon lent látható módon megnyílik.  Adja meg a szükséges adatokat:
+4. A **szabály felvétele** lap, melyen alább látható módon.  Töltse ki a szükséges adatokat:
 
-   ![Metrika riasztási űrlap hozzáadása](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![Metrikaalapú riasztás űrlap hozzáadása](./media/howto-alert-on-metric/2-add-rule-form.png)
 
    | Beállítás | Leírás  |
    |---------|---------|
-   | Name (Név) | Adja meg a riasztási szabály nevét. Ez az érték a riasztás-értesítési e-mailek küldése. |
-   | Leírás | A riasztási szabály rövid leírását adhatja meg. Ez az érték a riasztás-értesítési e-mailek küldése. |
+   | Name (Név) | Adja meg a riasztási szabály nevét. Ez az érték a riasztási értesítések e-mailek küldése. |
+   | Leírás | Adjon meg egy rövid leírást a riasztási szabályt. Ez az érték a riasztási értesítések e-mailek küldése. |
    | Riasztás: | Válasszon **metrikák** az ilyen típusú riasztás. |
-   | Előfizetés | Ebben a mezőben a rendszer az előfizetéshez, amely az Azure-adatbázis MySQL előre feltöltve. |
-   | Erőforráscsoport | Ez a mező a erőforráscsoporttal, az Azure-adatbázis a MySQL előre feltöltve a rendszer. |
-   | Erőforrás | Ebben a mezőben az Azure-adatbázis neve a MySQL előre feltöltve a rendszer. |
-   | Metrika | Válassza ki a cél, hogy szeretne kiadni egy riasztást. Például **tárolási százalékos**. |
-   | Állapot | Válassza ki a metrika az összehasonlítandó feltételét. Például **nagyobb, mint**. |
-   | Küszöbérték | Küszöbérték a metrika, például 85 (százalék). |
-   | Időszak | Az időtartam alatt a metrika szabály a riasztási eseményindítók előtt teljesülniük kell. Például **az elmúlt 30 perc**. |
+   | Előfizetés | Ez a mező az előfizetéshez, amelyen az Azure Database MySQL-hez előre van töltve. |
+   | Erőforráscsoport | Ebben a mezőben előre van töltve az erőforráscsoport az Azure database for MySQL-hez. |
+   | Erőforrás | Ebben a mezőben előre van töltve olyan neve az Azure Database for MySQL-hez. |
+   | Metrika | Válassza ki a riasztással a kívánt metrikát. Ha például **tárolási százalékos**. |
+   | Állapot | Válassza ki azt a feltételt, a metrika az össze kell hasonlítani. Ha például **nagyobb, mint**. |
+   | Küszöbérték | Küszöbérték a mérőszám, például 85 (százalék). |
+   | Időszak | Az az időtartam, a metrikaszabály kell biztosítani a riasztási eseményindítók előtt. Ha például **az elmúlt 30 perc**. |
 
-   A példa alapján, a riasztás keresi tárolási százalékos 85 % feletti 30 perces időszakon át. Riasztás váltja ki, ha a tárhely átlagos százalékos 30 percig 85 % felett volt. Akkor következik be, az első eseményindító, ha elindítja a újra átlagos tárolási százalékos esetén 85 % alatt több mint 30 perc.
+   A példa alapján, a riasztás keres tárolási százalékos 85 % felett egy 30 perces időszak alatt. A riasztást aktivál, ha a tárolási átlagos százalékos 30 percig 85 % felett volt. Az első eseményindító akkor fordul elő, ha elindítja újra amikor az átlagos tárolási százalékos értéke 85 % alatt több mint 30 perc.
 
-5. Adja meg az értesítés módját, a riasztási szabály használni szeretne. 
+5. Válassza ki az értesítési módszer a riasztási szabály használni szeretne. 
 
-   Ellenőrizze **E-mail-tulajdonosok, közreműködőknek és olvasóknak** lehetőséget, ha azt szeretné, hogy az előfizetés rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
+   Ellenőrizze **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak** beállítást, ha azt szeretné, hogy az előfizetés rendszergazdái és társadminisztrátorai a riasztás akkor aktiválódik, ha e-mail üzenetben.
 
-   Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani -  *email@contoso.com;email2@contoso.com*
+   Ha azt szeretné, további e-mail értesítést kapnak, ha a riasztás akkor aktiválódik, adja hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek -  *email@contoso.com;email2@contoso.com*
 
-   Igény szerint adja meg egy érvényes URI-azonosító található a **Webhook** mezőben, ha azt szeretné, hogy a riasztás aktiválódásakor meghívta.
+   Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
 
-6. Válassza ki **OK** a riasztás létrehozása.
+6. Válassza ki **OK** a riasztás létrehozásához.
 
-   Néhány percen belül a riasztás aktív, és elindítja a leírt módon.
+   Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése
-Miután létrehozta a riasztást, válassza ki azt, és a következő műveleteket hajthatja végre:
+Miután létrehozta a riasztást, válassza ki, és hajtsa végre a következőket:
 
-* Tekintse meg a metrika küszöbérték és a tényleges értékek az előző nap az ehhez a riasztáshoz kapcsolódó megjelenítő grafikon.
+* Tekintse meg a metrika küszöbértéke és a tényleges értékek az előző nap a riasztáshoz tartozó megjelenítő grafikon.
 * **Szerkesztés** vagy **törlése** a riasztási szabályt.
-* **Tiltsa le a** vagy **engedélyezése** a riasztás, ha azt szeretné, ideiglenesen leállítani, vagy folytathatja a fogadott értesítések.
+* **Tiltsa le** vagy **engedélyezése** a riasztás, ha azt szeretné, ideiglenesen leállíthatja, vagy folytathatja a értesítéseket kapni.
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ [konfigurálása webhookokkal a riasztások](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
-* Első egy [metrikák gyűjtemény áttekintése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.
+* Tudjon meg többet [webhookok konfigurálásáról a riasztások](../azure-monitor/platform/alerts-webhooks.md).
+* Get- [metrikák gyűjtési áttekintése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , győződjön meg arról, hogy szolgáltatása elérhető és válaszkész.

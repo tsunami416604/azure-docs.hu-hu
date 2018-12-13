@@ -1,21 +1,21 @@
 ---
-title: Az Azure Container Instances oktatóanyaga – Az alkalmazás előkészítése
-description: Az Azure Container Instances oktatóanyaga, 1/3. rész – Alkalmazás előkészítése az Azure Container Instancesben való üzembe helyezéshez
+title: Oktatóanyag – tárolórendszerkép előkészítése az Azure Container Instances szolgáltatásban
+description: 'Az Azure Container Instances oktatóanyag 1. rész: 3 – tárolórendszerkép az alkalmazás előkészítése az Azure Container Instances szolgáltatásban való üzembe helyezéshez'
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: dfe494eba64f546616e4e6cc9898f9d63d81eaa2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 029b4f2d0f0f88f56ca1f3e282d8c80e76f4d5c7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854779"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186412"
 ---
-# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Oktatóanyag: Tároló létrehozása az Azure Container Instancesben való üzembe helyezéshez
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Oktatóanyag: Hozzon létre egy tárolórendszerképet az Azure Container Instances szolgáltatásban való üzembe helyezéshez
 
 Az Azure Container Instances lehetővé teszi Docker-tárolók üzembe helyezését az Azure-infrastruktúrában anélkül, hogy ehhez virtuális gépeket kellene üzembe helyeznie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ebben az oktatóanyagban egy kisméretű Node.js-webalkalmazást csomagolunk egy, az Azure Container Instances használatával futtatható tárolórendszerképbe.
 

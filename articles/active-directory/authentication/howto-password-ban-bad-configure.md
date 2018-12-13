@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743288"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252201"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>A letiltott jelszavak egyéni lista konfigurálása
 
@@ -36,7 +36,7 @@ A letiltott jelszavak egyéni lista konfigurálása egy Azure Active Directory P
    * A letiltott jelszavak egyéni lista legfeljebb 1000 szavakat is tartalmazhat.
    * A letiltott jelszavak egyéni lista egy kis-és nagybetűket.
    * A letiltott jelszavak egyéni lista közös karaktert helyettesítő figyelembe veszi.
-      * Példa: "o" és "0" vagy "a" és "@"
+      * Példa: "o" és "0" vagy "a" és "\@"
    * A karakterlánc minimális hosszának 4 karakter, a maximális 16 karakternél.
 1. Minden karakterláncok hozzáadásakor kattintson **mentése**.
 

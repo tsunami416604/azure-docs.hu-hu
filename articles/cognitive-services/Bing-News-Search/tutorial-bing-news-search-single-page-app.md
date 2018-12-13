@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Bing News Search, egyoldalas alkalmazás'
+title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást – Bing News Search API'
 titlesuffix: Azure Cognitive Services
-description: Azt ismerteti, hogyan használható a Bing News Search API egy egyoldalas webalkalmazásban.
+description: Ebben az oktatóanyagban használatával hozhat létre egy egyoldalas webalkalmazást, amely a keresési lekérdezéseket küldhet a Bing Hírkeresési API, és megjeleníti az eredményeket a képernyőn látható weblapon található.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803647"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262044"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>Oktatóanyag: Egyoldalas News Search-alkalmazás
+# <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást
+
 A Bing News Search API lehetővé teszi az interneten való keresést és a keresési lekérdezésnek megfelelő hírtípus szerinti eredmények lekérését. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing News Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
 <!-- Remove until we can replace it with sanitized copy
@@ -378,7 +380,7 @@ A hírleképező függvény:
 > * Létrehoz egy bekezdéscímkét, hozzárendeli az `news` osztályhoz, és leküldéssel továbbítja a HTML-tömbnek.
 > * Kiszámítja a képminiatűr méretét (a szélesség 60 képpontban rögzített, a magasságot ezzel arányosan számítja ki).
 > * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez. 
-> * Létrehozza az `<a>` HTML -címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
+> * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
 A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
@@ -397,7 +399,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Egy ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

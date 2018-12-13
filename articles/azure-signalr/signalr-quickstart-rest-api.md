@@ -1,27 +1,20 @@
 ---
-title: Rövid útmutató – az Azure SignalR szolgáltatás REST API-ja | Microsoft Docs
+title: Rövid útmutató – az Azure SignalR Service REST API-val
 description: Rövid útmutató az Azure SignalR szolgáltatás REST API-jának használatához.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 36fb87d3255149c041c4288d13c54eaff8425e06
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024350"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251861"
 ---
-# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
+# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Gyors útmutató: Valós idejű üzenetek szórási konzol alkalmazásból
 
 Az Azure SignalR szolgáltatás [REST API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md) biztosításával támogatja a kiszolgáló és ügyfél közötti kommunikációs forgatókönyveket, például a szétküldést. Bármelyik programozási nyelvet választhatja, amely képes REST API-t hívni. Küldhet üzenetet minden csatlakoztatott ügyfélnek, név szerint egy adott ügyfélnek, vagy ügyfelek egy csoportjának.
 
@@ -30,17 +23,15 @@ Ebből a rövid útmutatóból megtudhatja, hogyan küldhet üzeneteket parancss
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
+
 * [.NET Core SDK](https://www.microsoft.com/net/download/core)
 * Az Ön által választott szöveg- vagy kódszerkesztő.
 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
-
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -68,6 +59,7 @@ Azt is megtalálhatja, hogyan hozhat létre hozzáférési jogkivonatot az Azure
 ### <a name="build-the-executable-file"></a>A végrehajtható fájl létrehozása
 
 A példához a MacOS osx.10.13-x64 rendszert használjuk. A más platformokon való létrehozáshoz tekintse meg a [referenciákat](https://docs.microsoft.com/dotnet/core/rid-catalog).
+
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
 
@@ -108,7 +100,7 @@ A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` 
 
 ## <a name="usage"></a>Használat
 
-Ha a kiszolgáló elindult, használja a parancsot az üzenetküldéshez
+Miután elindult a kiszolgáló, a paranccsal üzenetet küldeni:
 
 ```
 send user <User Id>
@@ -121,8 +113,11 @@ broadcast
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
 
 ## <a name="usage"> </a> Integráció külső szolgáltatásokkal
+
 Az Azure SignalR szolgáltatás lehetővé teszi, hogy külső szolgáltatásokat lehessen a rendszerbe integrálni.
-### <a name="usage"> </a> A műszaki specifikációk meghatározása
+
+### <a name="definition-of-technical-specifications"></a>A műszaki specifikációk meghatározása
+
 Az alábbi táblázat ismerteti a jelenleg támogatott REST API-k összes verzióját. Az egyes verziók definíciófájlját is megtalálja
 
 Verzió | API-állapot | Ajtó | Specifikusság
@@ -136,14 +131,15 @@ API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Szétküldés mindenkinek](#broadcast) | :heavy_check_mark: | :heavy_check_mark:
 [Szétküldés egy csoportnak](#broadcast-group) | :heavy_check_mark: | :heavy_check_mark:
-Szétküldés néhány csoportnak | :heavy_check_mark: (elavult) | `N / A`
+Szétküldés néhány csoportnak | :heavy_check_mark: (Elavult) | `N / A`
 [Küldés adott felhasználóknak](#send-user) | :heavy_check_mark: | :heavy_check_mark:
-Küldés néhány felhasználónak | :heavy_check_mark: (elavult) | `N / A`
+Küldés néhány felhasználónak | :heavy_check_mark: (Elavult) | `N / A`
 [Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | :heavy_check_mark:
 [Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | :heavy_check_mark:
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Szétküldés mindenkinek
+
 Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -151,6 +147,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Szétküldés egy csoportnak
+
 Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -158,6 +155,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>Küldés adott felhasználóknak
+
 Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -165,12 +163,14 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Felhasználó hozzáadása egy csoporthoz
+
 Verzió | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
+
 Verzió | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`

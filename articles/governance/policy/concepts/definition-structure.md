@@ -1,5 +1,5 @@
 ---
-title: Azure szabályzatdefiníciók struktúrája
+title: A szabályzatdefiníciók struktúrája részletei
 description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Policy által létesíteni az erőforrások konvenciók a szervezetben: Ha a házirend érvényesítve van, és milyen érvénybe léptetéséhez.'
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 456ac392d74db0dc596c24a47d176e19d267bc85
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: c09f1f5af8ef417fc4ed195b8ff17cc23c744319
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079517"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313139"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -216,6 +217,8 @@ A következő mezők támogatottak:
 - `kind`
 - `type`
 - `location`
+- `identity.type`
+  - Típusát adja vissza [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) engedélyezve van az erőforráson.
 - `tags`
 - `tags.<tagName>`
   - Ahol **\<tagName\>** feltételét ellenőrzése a címke neve.

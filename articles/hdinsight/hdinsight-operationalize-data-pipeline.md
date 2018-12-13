@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109971"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251708"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -24,10 +24,10 @@ Ez a cikk ismerteti az adatfolyamatok az ismételhetőség használata a HDInsig
 
 A következő esetben a bemeneti adatokat tartalmazó repülési adatok kötegelt egy hónapig egybesimított fájl. A flight data közé tartozik a forrás és cél repülőtér, a besorolásával mérföld, az indulási és érkezési idő és így tovább. Az ehhez a folyamathoz célja összefoglalva napi légitársaság teljesítmény, ahol minden egyes légitársaság rendelkezik minden nap, az átlagos indulási és érkezési késések percben és az adott napon repült összes mérföld egy sort.
 
-| ÉV | HÓNAP | DAY_OF_MONTH | SZOLGÁLTATÓ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | MONTH | DAY_OF_MONTH | SZOLGÁLTATÓ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | MIVEL | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 A példa folyamat megvárja, amíg a egy új időszakban flight data érkezik, akkor a részletes repülőjáratokkal kapcsolatos információkat tartalmaz a hosszú távú elemzések Hive-data warehouse-bA tárolja. A folyamat is létrehoz egy sokkal kisebb adatkészletet, amely csak a napi flight data foglalja össze. A napi repülési összefoglaló adatokat egy SQL Database-adatbázishoz küldött adja meg a jelentések, például webhelyekhez.
@@ -156,7 +156,7 @@ Az Oozie Webkonzol segítségével megtekintheti az állapotát a koordinátor �
 
 ### <a name="configure-hive"></a>Hive konfigurálása
 
-1. Töltse le egy példa egy CSV-fájl, amely egy hónapig repülési adatokat tartalmaz. Töltse le a ZIP-fájl `2017-01-FlightData.zip` származó a [HDInsight Github-adattár](https://github.com/hdinsight/hdinsight-dev-guide) és bontsa ki a CSV-fájl `2017-01-FlightData.csv`. 
+1. Töltse le egy példa egy CSV-fájl, amely egy hónapig repülési adatokat tartalmaz. Töltse le a ZIP-fájl `2017-01-FlightData.zip` származó a [HDInsight GitHub-adattár](https://github.com/hdinsight/hdinsight-dev-guide) és bontsa ki a CSV-fájl `2017-01-FlightData.csv`. 
 
 2. Másolja a CSV-fájl, akár az Azure Storage-fiókot a HDInsight-fürthöz csatlakozik, és elhelyezheti a `/example/data/flights` mappát.
 
@@ -545,7 +545,7 @@ Ez a munkafolyamat ütemezése, futtatása napi (vagy egy adott időtartományba
 
 Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs adatait a munkafolyamat-példányhoz. Vannak azonban néhány fontos elemek hívásához.
 
-* Az 1: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja az időintervallum, amelyen keresztül a koordinátor futtatja.
+* 1. pont: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja az időintervallum, amelyen keresztül a koordinátor futtatja.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
@@ -553,7 +553,7 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
 
     Koordinátor felelős műveletek belül a `start` és `end` dátumtartomány szerint a megadott időköz az `frequency` attribútum. Minden ütemezett művelethez ezután futtatja a munkafolyamatot a konfigurált. A fenti koordinátor definíciójában a koordinátor van konfigurálva műveleteket hajtson végre 2017. január 1-től 2017. január 5-én. A gyakoriság 1 nap értékre van állítva a [Oozie kifejezés nyelve](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakorisága kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. Dátumtartományokat, amelyek korábban, mint ebben a példában a művelet lesz ütemezve késedelem nélkül fusson. A dátum, amelyen művelet való futásra van ütemezve kezdetét nevezzük a *névleges idő*. Ha például az adatok feldolgozása a 2017. január 1-től a koordinátor ütemeznek művelet után névleges költséget számítunk időpont 2017-01-01T00:00:00 GMT.
 
-* Pont 2: a munkafolyamat dátum tartományán belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
+* 2. pont: A munkafolyamat dátum keretein belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -578,11 +578,11 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
 
 Az előző három pont eddig is számtalan előnyét egy olyan helyzetet, ahol a koordinátor ütemezi a feldolgozás a forrásadatok a napi – naponta módon össze. 
 
-* Az 1: A koordinátor kezdődik, a 2017-01-01 névleges dátuma.
+* 1. pont: A koordinátor kezdődik, a 2017-01-01 névleges dátuma.
 
-* Pont 2: Oozie keres az elérhető adatokat `sourceDataFolder/2017-01-FlightData.csv`.
+* 2. pont: Az Oozie megkeresi az elérhető adat `sourceDataFolder/2017-01-FlightData.csv`.
 
-* Pont 3: Ha Oozie ezt a fájlt talál, ütemezés, amely feldolgozza az adatokat a 2017-01-01-munkafolyamat egy példányát. Az Oozie majd 2017-01-02 feldolgozása továbbra is. Ezt a próbaidőszakot akár, de nem tartalmazza a 2017-01-05 ismétlődik.
+* 3. pontok: Az Oozie ezt a fájlt talál, ütemezi a fel az adatokat a 2017-01-01-munkafolyamat egy példányát. Az Oozie majd 2017-01-02 feldolgozása továbbra is. Ezt a próbaidőszakot akár, de nem tartalmazza a 2017-01-05 ismétlődik.
 
 A munkafolyamatok, a konfiguráció a koordinátor meghatározottak szerint egy `job.properties` fájlt, amely rendelkezik felülbírálja a munkafolyamat által használt beállításokat.
 

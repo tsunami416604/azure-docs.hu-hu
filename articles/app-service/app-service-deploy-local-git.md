@@ -1,5 +1,5 @@
 ---
-title: Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
+title: Üzembe helyezés a helyi Git-adattár – Azure App Service-ben
 description: Ismerje meg, hogyan engedélyezheti a helyi Git üzemelő példányt az Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 242eb906c95b373b2edd538be5f06756cac1e8c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959325"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256509"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -166,14 +167,14 @@ Az alábbiakban gyakori hibák vagy problémák az Azure App Service-alkalmazás
 
 **OK**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatok helytelen volt.
 
-**Feloldási**: használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
+**Feloldási**: Használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
 
 ---
 **Jelenség**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
 **OK**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított be a `push.default` értékét `.gitconfig`.
 
-**Feloldási**: futtassa `git push` újra, adja meg a master ágról. Példa:
+**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -182,9 +183,9 @@ git push azure master
 ---
 **Jelenség**: `src refspec [branchname] does not match any.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha megpróbál egy ágat a főadatbázison kívül, az "Azure" a távoli mappához küldéssel.
+**OK**: Ez a hiba akkor fordulhat elő, ha megpróbálja a főadatbázison kívül egyik ágára való leküldés az "Azure" a távoli mappához küldéssel.
 
-**Feloldási**: futtassa `git push` újra, adja meg a master ágról. Példa:
+**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -195,7 +196,7 @@ git push azure master
 
 **OK**: Ez a hiba akkor fordulhat elő, ha megpróbál egy nagy git-tárház leküldéses HTTPS-kapcsolaton keresztül.
 
-**Feloldási**: a helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
+**Feloldási**: A helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -206,7 +207,7 @@ git config --global http.postBuffer 524288000
 
 **OK**: Ez a hiba akkor fordulhat elő, ha, a Node.js-alkalmazás üzembe helyezése egy _package.json_ fájlt, amely meghatározza a további szükséges modulokat.
 
-**Feloldási**: 'npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
+**Feloldási**: A(z) "npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
 
 * **Helytelen formátumú package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
 * **Natív modul, hogy egy nem bináris terjesztési Windows**:
@@ -220,5 +221,5 @@ git config --global http.postBuffer 524288000
 
 * [Projekt Kudu-dokumentáció](https://github.com/projectkudu/kudu/wiki)
 * [Folyamatos üzembe helyezés az Azure App Service-ben](app-service-continuous-deployment.md)
-* [Példa: Webalkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (az Azure parancssori felület)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
-* [Példa: Webalkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (PowerShell)](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+* [Minta: Webes alkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (az Azure parancssori felület)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+* [Minta: Webes alkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház (PowerShell)](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

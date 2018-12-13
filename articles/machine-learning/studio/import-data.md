@@ -5,9 +5,8 @@ keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítás
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c194ee3b-838c-4efe-bb2a-c1d052326216
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 8f6bc6e1e13de879f81e6fc6f1f447d0c2856ced
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2f8c1eb43fddb21a59d4f00fd86b08d3fb3608f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315256"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269957"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
 
@@ -39,10 +38,6 @@ A Machine Learning Studio a saját adatok használatával fejlesztése és betan
 > 
 
 Ez a bevezető cikk is ismerteti, hogyan olvashat be adatokat használatra kész a Machine Learning Studióban, és ismerteti, hogy mely adatformátumok a célnyelven és adattípusok használata támogatott.
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban használatra kész adatok lekérése
 A Machine Learning Studio téglalap alakú vagy táblázatos adatok, például a strukturált adatok egy adatbázisból, azonban bizonyos körülmények között nem téglalap adatok használhatók vagy tagolt szöveges adat tervezték.

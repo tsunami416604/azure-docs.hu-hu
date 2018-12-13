@@ -4,9 +4,8 @@ description: Útmutató az Azure Machine Learning Studio webszolgáltatás-egyid
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 keywords: az Azure machine learning, a webszolgáltatások, operacionalizálás, a méretezés, végpont, egyidejűség
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
@@ -17,14 +16,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 3077afc99e7879b14c36e16cdbed8afb3a07bdb3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 736c27f5c8ad6efb2b4e36f44998ce06d7b69248
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312181"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256349"
 ---
-# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Az Azure Machine Learning webszolgáltatás skálázása további végpontok hozzáadása
+# <a name="scaling-an-azure-machine-learning-studio-web-service-by-adding-additional-endpoints"></a>Az Azure Machine Learning Studio webszolgáltatás skálázása további végpontok hozzáadása
 > [!NOTE]
 > Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatáshoz. 
 > 

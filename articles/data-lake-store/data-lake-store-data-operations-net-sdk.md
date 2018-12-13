@@ -1,5 +1,5 @@
 ---
-title: '.NET SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+title: '.NET SDK-VAL: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
 description: Használja az Azure Data Lake Storage Gen1 .NET SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 71ddbc2363075b721bfbd418bd29e5154baba866
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391487"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163233"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -146,7 +146,7 @@ Az alábbi kódrészlet egy fájlhoz vagy könyvtárhoz társított tulajdonság
     var directoryEntry = client.GetDirectoryEntry(fileName);
     PrintDirectoryEntry(directoryEntry);
 
-A `PrintDirectoryEntry` metódus meghatározása a [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) található minta részeként érhető el. 
+Definíciója a `PrintDirectoryEntry` módszer érhető el a minta részeként [a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
 
 ## <a name="rename-a-file"></a>Fájl átnevezése
 Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókja egy már létező fájlt nevez át.
@@ -164,7 +164,7 @@ Az alábbi kódrészlet egy Data Lake Storage Gen1 fiók található könyvtára
         PrintDirectoryEntry(entry);
     }
 
-A `PrintDirectoryEntry` metódus meghatározása a [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) található minta részeként érhető el.
+Definíciója a `PrintDirectoryEntry` módszer érhető el a minta részeként [a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted).
 
 ## <a name="delete-directories-recursively"></a>Könyvtárak rekurzív törlése
 Az alábbi kódrészlet rekurzív módon töröl egy könyvtárat és annak összes alkönyvtárát.
@@ -174,8 +174,8 @@ Az alábbi kódrészlet rekurzív módon töröl egy könyvtárat és annak öss
 
 ## <a name="samples"></a>Példák
 Az alábbiakban néhány példa a Data Lake Storage Gen1 fájlrendszer SDK használatával.
-* [Alapszintű példa a GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
-* [Speciális példa a GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
+* [Alapszintű példa a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
+* [Speciális példa a Githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
 ## <a name="see-also"></a>Lásd még
 * [Fiókkezelési műveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md)

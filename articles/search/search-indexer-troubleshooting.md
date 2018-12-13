@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search gyakori indexelő problémák elhárítása |} A Microsoft Docs
-description: Az Azure Search indexelők szolgáltatással kapcsolatos gyakori problémák megoldásához
+title: Gyakori keresési indexelő hibáinak elhárítása – Azure Search
+description: Javítsa ki a hibákat, és az indexelők szolgáltatással kapcsolatos gyakori problémák az Azure Search, beleértve az adatforrás-kapcsolat, a tűzfal és a hiányzó dokumentumok.
 author: mgottein
 manager: cgronlun
 services: search
@@ -9,12 +9,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: magottei
-ms.openlocfilehash: 6c64cf066651c403136bba97c8d1e1230162dbb4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec2018
+ms.openlocfilehash: 7696f1628edd3b81568382fd7892a877c6f54ef7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312391"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Az Azure Search gyakori indexelő hibáinak elhárítása
 

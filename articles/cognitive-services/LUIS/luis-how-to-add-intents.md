@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 20d076e256143683b52cfaa713e25e4d31f0f3d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098695"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139869"
 ---
 # <a name="add-intents"></a>Leképezések hozzáadása 
 
@@ -58,7 +58,7 @@ Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. L
 
 Előfordulhat, hogy az utterance (kifejezés) megjelölésű a egy leképezési előrejelzés eltérés van a kiválasztott célt és az előrejelzési pontszám között. LUIS azt jelzi, hogy a piros Keretes ez eltérést észlelt a **szándékot feliratú** a sorban található az a példában utterance (kifejezés). 
 
-![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![Képernyőkép a leképezések Részletek lapján utterance (kifejezés) előrejelzés eltérés hibákkal](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 Válassza ki a felső navigációs **Train**. Az előrejelzés eltérés van most szűnt.
 
@@ -107,7 +107,7 @@ Az alábbi műveleteket az egyes utterance (kifejezés) a három pont menüben j
 
 * Szerkesztés: az utterance (kifejezés) szövegének módosítása
 * Törlés: a leképezés eltávolítása az utterance (kifejezés). Ha továbbra is az utterance (kifejezés), célszerűbb áthelyezni, hogy-e a **nincs** szándékot. 
-* Adjon hozzá egy minta: A minta lehetővé teszi, hogy egy közös utterance (kifejezés) igénybe vehet, és jelölje be a cserélhető és szöveg figyelmen kívül hagyható, ezáltal csökkentve a további utterances a SZÁNDÉKTÓL. 
+* Adjon hozzá egy minta: A minta egy közös utterance (kifejezés) igénybe vehet, és jelölje be a cserélhető és szöveg figyelmen kívül hagyható, ezáltal csökkentve a további utterances a SZÁNDÉKTÓL teszi lehetővé. 
 
 A **szándékot feliratú** oszlop lehetővé teszi, hogy az utterance (kifejezés) célját módosítani.
 

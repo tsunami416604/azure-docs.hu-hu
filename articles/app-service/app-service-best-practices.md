@@ -1,5 +1,5 @@
 ---
-title: Azure App Service – ajánlott eljárások
+title: Ajánlott eljárások – az Azure App Service-ben
 description: Ismerje meg, ajánlott eljárások és hibaelhárítási az Azure App Service-ben.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: ff79680c00a394790ba56db9ab4b237f06c677e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240630"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261823"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service – ajánlott eljárások
 Ez a cikk összegzi az ajánlott eljárások a [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -38,7 +39,7 @@ Figyelési, illetve szolgáltatási javaslatok keresztül jelzett mikor láthatj
 ## <a name="CPUresources"></a>Ha használja a vártnál több CPU-alkalmazások
 Megfigyelheti, hogy az alkalmazás felhasználja a vártnál nagyobb CPU vagy élményt ismétlődő CPU adatforgalmi csúcsokhoz jelzett keresztül figyelési, illetve szolgáltatási javaslatok, fontolja meg vertikális vagy horizontális felskálázás az App Service-csomag. Ha az alkalmazást állapotalapú, vertikális felskálázása csak a lehetőség, míg ha az alkalmazás állapot nélküli, méretezési out történő további rugalmasságot és újabb skálázási lehetőségeit. 
 
-"Állapotalapú" és "állapot nélküli" alkalmazások kapcsolatos további részletekért tekintse meg ezt a videót: [skálázható teljes körű Többrétegű alkalmazások tervezése az a Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service-ben skálázással és automatikus skálázást lehetőségekkel kapcsolatos további információkért lásd: [webalkalmazások méretezése az Azure App Service](web-sites-scale.md).  
+"Állapotalapú" és "állapot nélküli" alkalmazások kapcsolatos további részletekért tekintse meg ezt a videót: [A Microsoft Azure Web App egy méretezhető, teljes körű többrétegű alkalmazás tervezési](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service-ben skálázással és automatikus skálázást lehetőségekkel kapcsolatos további információkért lásd: [webalkalmazások méretezése az Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Amikor szoftvercsatorna-erőforrásai kimerültek
 Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárak, amelyek nem felelnek meg újból felhasználhatja a TCP-kapcsolatok, vagy egy magasabb szintű protokoll, például HTTP - életben tartási nem használatakor használatát. Tekintse át a kódtárakat, az App Service-csomagra konfigurálva, vagy azok érhetők el a kód a kimenő kapcsolatok hatékony használatának biztosítása érdekében az alkalmazások által hivatkozott dokumentációját. Az alábbi is a megfelelő létrehozása és a kiadás vagy karbantartási kapcsolatok kiszivárgását elkerülése érdekében könyvtár dokumentációja nyújt segítséget. Ilyen ügyfél kódtárak vizsgálat van folyamatban, amíg hatás mérsékelheti horizontális felskálázás több példányra.

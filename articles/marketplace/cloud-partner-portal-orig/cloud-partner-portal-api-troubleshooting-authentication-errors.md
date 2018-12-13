@@ -14,26 +14,25 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82a5ef86d1ca35cddb05cb4e126e64cc3759bcc0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 12ed395855b9d870f8f6e3564dc5b3b899b9c6c1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809719"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313870"
 ---
-<a name="troubleshooting-common-authentication-errors"></a>Gyakori hitelesítési hibák elhárítása
-------------------------------------------
+# <a name="troubleshooting-common-authentication-errors"></a>Gyakori hitelesítési hibák elhárítása
 
 Ez a cikk nyújt segítséget a gyakori hitelesítési hibák, a Cloud Partner Portal API-k használata esetén.
 
-### <a name="unauthorized-error"></a>Jogosulatlan hiba
+## <a name="unauthorized-error"></a>Jogosulatlan hiba
 
 Ha rendszeresen kap `401 unauthorized` hibát, ellenőrizze, hogy rendelkezik-e egy érvényes hozzáférési jogkivonatot.  Ha még nem tette meg, hozzon létre egy alapszintű Azure Active Directory (Azure AD-) alkalmazás és a egy egyszerű szolgáltatást leírtak szerint [egy Azure Active Directory-alkalmazás és -erőforrásokeléréséhezszolgáltatásnévlétrehozásaaportálon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Ezután használja az alkalmazás vagy egy egyszerű HTTP POST-kérelmet a hozzáférés ellenőrzéséhez.  Akkor tartalmazza a bérlő Azonosítóját, Alkalmazásazonosítót, objektumazonosító: és a titkos kulcs a hozzáférési jogkivonat beszerzése az alábbi képen látható módon:
 
 ![A 401-es hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-### <a name="forbidden-error"></a>Tiltott hibaüzenet
+## <a name="forbidden-error"></a>Tiltott hibaüzenet
 
 Ha egy `403 forbidden` hiba, győződjön meg arról, hogy a megfelelő szolgáltatásnévhez hozzáadta-e a Cloud Partner portálra a kiadói fiókjában.
 Kövesse a [Előfeltételek](./cloud-partner-portal-api-prerequisites.md) lapot, az egyszerű szolgáltatást a portálra.

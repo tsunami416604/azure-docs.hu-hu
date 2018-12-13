@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 84bc151e8d7acf8d320b5883e8637c321762fb32
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090346"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251385"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Adatok importálása és az adatok exportálása modult használó Azure Machine Learning Studio-webszolgáltatások üzembe helyezése
 
@@ -29,10 +28,10 @@ Amikor létrehoz egy prediktív kísérletet, általában hozzáadhat egy webes 
 
 Az adatok importálása és exportálása adatok modulok, olvasni és írni a helyeket, például a HTTP, a Hive-lekérdezés, egy Azure SQL database, az Azure Table storage, Azure Blob storage-adatcsatorna használatával egy webes URL-címet adjon meg különböző adatokat, vagy egy helyszíni SQL-adatbázis.
 
-Ez a témakör használja az "5 minta: Train, tesztelési, kiértékelése a bináris osztályozás: felnőtt adatkészlet" mintát, és feltételezi, hogy az adatkészlet már be van töltve censusdata nevű Azure SQL-táblába.
+Ez a témakör használja az "5. példa: A vonat, tesztelhetők, kiértékeléséhez bináris osztályozás: Felnőtt adatkészlet"mintát, és feltételezi, hogy az adatkészlet már be van töltve censusdata nevű Azure SQL-táblába.
 
 ## <a name="create-the-training-experiment"></a>A betanítási kísérlet létrehozása
-Amikor megnyitja a "minta 5: Train, tesztelési, Evaluate bináris osztályozási: felnőtt adatkészlet" mintát, használja a bináris osztályozási felnőtt népszámlálási jövedelem mintaadatkészlettel. És a vásznon a kísérlet a következő képhez hasonlóan néz ki:
+Amikor megnyitja a "5. példa: A vonat, tesztelhetők, kiértékeléséhez bináris osztályozás: Felnőtt adatkészlet"mintát, használja a bináris osztályozási felnőtt népszámlálási jövedelem mintaadatkészlettel. És a vásznon a kísérlet a következő képhez hasonlóan néz ki:
 
 ![A kísérlet kezdeti konfigurálása.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -104,7 +103,7 @@ Klasszikus webszolgáltatásként üzembe helyezéséhez, és létrehozhat egy a
 2. A Futtatás befejeződésekor kattintson **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]**.
 3. A webszolgáltatás irányítópultján keresse meg az API-kulcsot. Másolja és mentse későbbi használatra.
 4. Az a **alapértelmezett végpont** tábla mértékrácsán kattintson a **kötegelt végrehajtási** nyissa meg az API-súgóoldalon mutató hivatkozást.
-5. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **új** > **projekt** > **Visual C#**   >   **Windows klasszikus Asztalialkalmazás** > **Console App (.NET Framework)**.
+5. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
 6. Az API-súgóoldalon, keresse meg a **mintakód** szakasz az oldal alján.
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba, és távolítson el minden hivatkozást a blob Storage.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változó a korábban mentett API-kulccsal.
@@ -133,7 +132,7 @@ A Futtatás végeztével egy új tábla hozzáadódik a pontozási eredményeine
 3. Kísérlet üzembe helyezése lapon adjon meg egy nevet, a webes szolgáltatáshoz, és a egy tarifacsomagot választani, majd kattintson **telepítés**.
 4. Az a **rövid** kattintson **felhasználás**.
 5. Az a **mintakód** területén kattintson **Batch**.
-6. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **új** > **projekt** > **Visual C#**   >   **Windows klasszikus Asztalialkalmazás** > **Console App (.NET Framework)**.
+6. A Visual Studióban hozzon létre egy C# Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
 7. Másolja és illessze be a C# mintakód a Program.cs fájlba.
 8. Frissítse az értéket, a *apikey tulajdonsággal végzett tesztelése* változót a **elsődleges kulcs** található a **alapvető fogyasztási adatai** szakaszban.
 9. Keresse meg a *scoreRequest* nyilatkozat, és frissítse a webszolgáltatás-paraméterek, amelyeket a rendszer átad a *adatok importálása* és *adatok exportálása* modulok. Ebben az esetben, az eredeti lekérdezéssel, de egy új tábla nevét adja meg.

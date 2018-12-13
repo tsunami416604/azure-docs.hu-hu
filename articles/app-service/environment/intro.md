@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service Environment bemutatása
+title: Az App Service Environment - Azure bemutatása
 description: Az Azure App Service Environment rövid áttekintése
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: f4ecf403b6e2a8405472a7992d65b273957fc175
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: af279f3a37290a3ab8a98318b5080d1145f45078
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959665"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269056"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
@@ -81,7 +81,7 @@ Az ASE-k virtuális és helyszíni hálózatokkal történő használatáról az
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
 
-Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat. 
+App Service Environment-környezet két verziója van: Az ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat. 
 
 Az ASEv1 esetén minden erőforrást manuálisan kell felügyelnie. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Mielőtt horizontálisan felskálázza az App Service-csomagot, először a feldolgozók készletét kell felskáláznia oda, ahol üzemeltetni szeretné azt.
 

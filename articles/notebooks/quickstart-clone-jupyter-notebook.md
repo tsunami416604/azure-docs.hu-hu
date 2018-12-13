@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e30057f773afe6ec625b811c6ca1447c519ceda7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13650d53098c891b168cb88516dbee53f3da5cc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106328"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260259"
 ---
-# <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Egy jegyzetfüzetet klónozása
+# <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Notebook klónozása
 
 Számos adatelemzők és fejlesztők tárolja a jegyzetfüzetekre a [GitHub-adattárak](https://github.com), egy ingyenes szolgáltatás, amely számos különböző projekttípusok tárolási és verziókövetési. GitHub gyakran használják, pedig a helyileg futó Jupyter notebookok dolgoztunk. Ezekben az esetekben minden közreműködő fenntartja az adattár helyi példányának, és futtatja a notebookok a másolatot.
 
@@ -34,19 +34,19 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
-1. A a **saját projektek** lapon, válassza ki a felfelé mutató nyílra (billentyűparancs: U; a gomb akkor jelenik meg, mint **Github-adattár feltöltése** Ha a böngészőablak elég széles):
+1. Az a **saját projektek** lapon, válassza ki a felfelé mutató nyílra (billentyűparancs: U. a gomb akkor jelenik meg, mint **GitHub-adattár feltöltése** Ha a böngészőablak elég széles):
 
-    ![Töltse fel a Github-adattárat a parancs a saját projektek lapon](media/quickstarts/upload-github-repo-command.png)
+    ![Töltse fel a GitHub-adattárat a parancs a saját projektek lapon](media/quickstarts/upload-github-repo-command.png)
 
-1. Az a **Github-adattár feltöltése** , amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza **importálás**:
+1. Az a **GitHub-adattár feltöltése** , amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza **importálás**:
 
-    - **Github-adattár**: Microsoft/cognitive-services-jegyzetfüzetek (ezt a nevet a Jupyter notebookok klónozza az Azure Cognitive Services: [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+    - **Github-adattár**: A Microsoft/cognitive-services-jegyzetfüzetek (ezt a nevet a Jupyter notebookok klónozza az Azure Cognitive Services: [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
     - **Klónozza a rekurzív módon**: (törölve)
-    - **Projektnév**: Cognitive Services-klón
+    - **Projektnév**: A cognitive Services-klón
     - **A projekt Azonosítóját**: cognitive services-klón
     - **Nyilvános**: (törölve)
 
-    ![Github-adattár helyi menü tárház kapcsolatos információk összegyűjtéséhez feltöltése](media/quickstarts/upload-github-repo-popup.png)
+    ![GitHub-adattár helyi menü tárház kapcsolatos információk összegyűjtéséhez feltöltése](media/quickstarts/upload-github-repo-popup.png)
 
 1. Türelemmel, amíg a folyamat befejeződése után; a tárház klónozása pár percet is igénybe vehet.
 

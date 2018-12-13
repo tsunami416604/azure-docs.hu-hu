@@ -14,15 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2d75a432e84c3490186da6f8342562fddcaa32e1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c0109839144775e9064db4f8396f19688fcc13e8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809680"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308634"
 ---
-<a name="lcs-subscription"></a>LCS-előfizetés
-================
+# <a name="lcs-subscription"></a>LCS-előfizetés
 
 Ebben az oktatóanyagban megtudhatja, hogyan hozzon létre egy előfizetést. Ez az előfizetés kap egy Microsoft Online tesztbérlővel és a egy Microsoft Dynamics Lifecycle Services-projektet, telepíthet egy környezetet. Fogja további felhasználók beállítása a Microsoft Online bérlőben, és a következő szolgáltatás-felügyeleti képességekkel rendelkező tapasztalatszerzés. Az alábbiakban ismertetjük képességek:
 
@@ -32,8 +31,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan hozzon létre egy előfizetést. Ez
 - További felhasználók hozzáadása a Microsoft Azure Active Directory és az ügyfél.
 - Erőforrások megtekintése az előfizetés e-mailben.
 
-<a name="key-terms"></a>Fontos kifejezések:
-=========
+## <a name="key-terms"></a>Fontos kifejezések:
 
 **A Microsoft Online Services-bérlő** -bérlő a csoport az összes előfizetés és a felhasználók a szervezet számára. A bérlő egy időben, mint az első a Microsoft Online Services-előfizetés létrehozása.
 

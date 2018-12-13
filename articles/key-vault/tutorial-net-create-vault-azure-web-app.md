@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706840"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322141"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Oktatóanyag: Azure Key Vault használata a .NET-ben az Azure web app használatával
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Oktatóanyag: Az Azure Key Vault használata a .NET-keretrendszerben Azure web app használatával
 
 Az Azure Key Vault segítségével API-kulcsok például titkainak védelmére és adatbázis-kapcsolati karakterláncok. Ez hozzáférést biztosít az alkalmazások, szolgáltatások és informatikai erőforrásra lenne szükség.
 
@@ -56,7 +56,7 @@ A folytatás előtt olvassa el a [Key Vault alapvető fogalmait](key-vault-whati
 
 Az Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, nem a kódban. Azonban szüksége hitelesítéséhez az Azure Key Vaulttal a kulcsok lekéréséhez. Hitelesítést a Key Vault, a hitelesítő adatokat kell. Egy klasszikus bootstrap kapcsolatos dilemma megoldása. Felügyelt Felügyeltszolgáltatás-identitás (MSI) megoldja a problémát azáltal, hogy egy _identitás bootstrap_ , amely leegyszerűsíti a folyamatot.
 
-Az Azure-szolgáltatások MSI engedélyezésekor (például: virtuális gépek, az App Service-ben vagy a függvények), az Azure létrehoz egy [szolgáltatásnév](key-vault-whatis.md#basic-concepts). MSI azért teszi ezt a szolgáltatást az Azure Active Directory (Azure AD)-példány, és be annak a példánynak a szolgáltatásnév hitelesítő adatok kódtárba.
+Az Azure-szolgáltatások MSI engedélyezésekor (például: Virtuális gépek, az App Service vagy funkciók), az Azure létrehoz egy [szolgáltatásnév](key-vault-whatis.md#basic-concepts). MSI azért teszi ezt a szolgáltatást az Azure Active Directory (Azure AD)-példány, és be annak a példánynak a szolgáltatásnév hitelesítő adatok kódtárba.
 
 ![MSI-diagram](media/MSI.png)
 
@@ -88,9 +88,9 @@ Ez az oktatóanyag során erőforráscsoport használja.
 
 Hozzon létre egy kulcstartót az erőforráscsoportban, adja meg a következő információkat:
 
-* A Key vault neve: 3 – 24 karakter, amely csak számokat, betűket és kötőjeleket tartalmazhat karakterláncot (például: 0 – 9, a – z, A-Z, - és)
+* A Key vault name: 3 – 24 karakter, amely csak számokat, betűket és kötőjeleket tartalmazhat karakterláncot (például: 0-9, a – z, A-Z, - és)
 * Erőforráscsoport neve
-* Hely: **USA nyugati RÉGIÓJA**
+* Hely: **USA nyugati régiója**
 
 Adja meg az Azure CLI az alábbi parancsot:
 
@@ -132,7 +132,7 @@ Kövesse ezt [oktatóanyag](../app-service/app-service-web-get-started-dotnet.md
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 3. Importálja a About.cshtml.cs fájlban a következő kódot:
 
-   ```
+   ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
@@ -140,7 +140,7 @@ Kövesse ezt [oktatóanyag](../app-service/app-service-web-get-started-dotnet.md
 
 4. A kód a AboutModel osztály kell ehhez hasonló:
 
-   ```
+   ```csharp
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -220,7 +220,7 @@ Az Azure Key Vault lehetővé teszi a biztonságos tárolása a hitelesítő ada
 
 1. Jegyezze fel a `PrincipalId` az Azure-ban az alkalmazás közzétételekor. Az 1. lépésben a parancs kimenete a következő formátumban kell megadni:
 
-   ```
+   ```json
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

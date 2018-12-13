@@ -1,5 +1,5 @@
 ---
-title: Entitások felismerése cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+title: Entitások felismerése cognitive search szakértelem – Azure Search
 description: Eltérő típusú entitásokat kigyűjtése a szöveg Azure Search-kognitív keresés folyamatban.
 services: search
 manager: pablocas
@@ -10,19 +10,23 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 7599ab7eb7a6ff247548d988c57bdc6c501a5a6b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52449946"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311864"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitások felismerése cognitive szakértelem
 
 A **entitások felismerése** szakértelem különböző típusú entitás kigyűjti a szöveget. 
 
 > [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
+> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
+>
+> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
@@ -51,7 +55,7 @@ Paraméterek kis-és nagybetűket, és minden megadása nem kötelező.
 
 ## <a name="skill-outputs"></a>Ismeretek kimenetek
 
-**Megjegyzés:**: nem minden entitás kategória minden nyelv esetében támogatottak.
+**MEGJEGYZÉS:**: Nem minden entitás kategória minden nyelv esetében támogatottak.
 Csak _en_, _es_ kivonása támogatja `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` típusokat.
 
 | Kimeneti név     | Leírás                   |
@@ -64,7 +68,7 @@ Csak _en_, _es_ kivonása támogatja `"Quantity"`, `"Datetime"`, `"URL"`, `"Emai
 | URL-címek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy URL-cím |
 | e-mailek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy e-mailt |
 | namedEntities | Komplexní typy tömbje, amely a következő mezőket tartalmazzák: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>megbízhatósági (egyelőre nem használt. A-1 értékre lesz beállítva)</li></ul> |
-| entitás | Egy tömb, amely a kinyert szöveget, a következő mezőkkel entitásokkal kapcsolatos részletes információkat tartalmaz, összetett típusok <ul><li> név (a tényleges entitás neve. Ez határozza meg a "normalized" űrlap)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Wikipédia-oldal az entitás mutató)</li><li>bingId</li><li>(az entitás elismert kategóriáját) típusa</li><li>altípusa (csak az adott kategóriába számára elérhető, ezzel áttekintést nyújt a egy további granual typu entity)</li><li> egyezések (összetett tartalmazó gyűjteményhez)<ul><li>szöveg (a nyers szöveg az entitás)</li><li>eltolás (a hely hol található)</li><li>hossza (a nyers entitás szöveg hossza)</li></ul></li></ul> |
+| entitás | Egy tömb, amely a kinyert szöveget, a következő mezőkkel entitásokkal kapcsolatos részletes információkat tartalmaz, összetett típusok <ul><li> név (a tényleges entitás neve. Ez határozza meg a "normalized" űrlap)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Wikipédia-oldal az entitás mutató)</li><li>bingId</li><li>(az entitás elismert kategóriáját) típusa</li><li>altípusa (csak az adott kategóriába számára elérhető, ezáltal egy részletesebb nézet typu entity)</li><li> egyezések (összetett tartalmazó gyűjteményhez)<ul><li>szöveg (a nyers szöveg az entitás)</li><li>eltolás (a hely hol található)</li><li>hossza (a nyers entitás szöveg hossza)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Minta-definíció
 

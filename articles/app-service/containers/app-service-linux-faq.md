@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service linuxon – gyakori kérdések |} A Microsoft Docs
+title: App Service linuxon – gyakori kérdések – Azure |} A Microsoft Docs
 description: Az Azure App Service linuxon – gyakori kérdések.
 keywords: az Azure app service, webalkalmazás, – gyakori kérdések, linux, oss, tárolók, többtárolós, multicontainer webalkalmazás
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
-ms.openlocfilehash: 94e61cf5bf4f629dfd776cf9ea2ae54233e91dc6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 7fe9fd68e03fc36f5aac5d6c27c07896715af906
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417582"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261160"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -74,7 +75,7 @@ Igen, szükség nevű beállítása alkalmazás `WEBSITE_WEBDEPLOY_USE_SCM` val�
 
 Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmazáskód üzembe helyezéséhez az alábbi lehetőségek közül:
 
-- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: Az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
 

@@ -1,5 +1,5 @@
 ---
-title: Jegyzet bemenetei között meg és a egy kognitív keresés folyamatban, az Azure Search kimenetek |} A Microsoft Docs
+title: Hivatkozás be- vagy kimenetként a cognitive folyamatok – Azure Search keresési
 description: A jegyzet szintaxist és a hivatkozás jegyzetre bemeneteit és kimeneteit, a képességek alkalmazási lehetőségét, a kognitív keresés folyamat az Azure Search az útmutató ismerteti.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801947"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315820"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Egy cognitive search indexmezők széljegyzetet referencia útmutató
 
@@ -61,7 +62,7 @@ Mivel az alapértelmezett környezet `"/document"`, a listáját, akikkel már a
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>2. példa: Hivatkozás egy dokumentum egy tömb
+## <a name="example-2-reference-an-array-within-a-document"></a>2. példa Egy dokumentum egy tömb hivatkozhat.
 
 Ebben a példában az előzőt, hogyan meghívása egy Adatbővítés lépést több alkalommal keresztül ugyanazt a dokumentumot épül. Tegyük fel, az előző példában létrehozott egyetlen dokumentum 10 személyek nevű karakterláncok tömbje. Előfordulhat, hogy ésszerű a következő lépésben egy második Adatbővítés, amely a vezetéknevet kigyűjti a teljes nevet. Nincsenek 10 nevek, mert azt szeretné, ezt a lépést, která bude volána 10 alkalommal ebben a dokumentumban egyszer minden egyes személy számára. 
 
@@ -93,7 +94,7 @@ Ha jegyzetek tömbök vagy karakterláncok gyűjteményei, érdemes célként me
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>3. példa: Referencia tagok v poli
+## <a name="example-3-reference-members-within-an-array"></a>3. példa: V poli referencia tagok
 
 Néha szüksége át őket egy adott szakértelem egy adott típusú összes jegyzet csoportosításához. Fontolja meg, amely azonosítja a 2. példa a kinyert utolsó nevéből leggyakoribb Vezetéknév elméleti egyéni műveleteket. Az egyéni ismeretek csak a legutóbbi nevét, adjon meg a környezetben `"/document"` és a bemeneti, `"/document/people/*/lastname"`.
 

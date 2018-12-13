@@ -1,5 +1,5 @@
 ---
-title: Az Azure Policy hatások ismertetése
+title: Megismerheti, hogyan működnek a hatások
 description: Azure szabályzat-definíció rendelkezik, amelyek meghatározzák, hogyan megfelelőségét, és jelentett különböző hatásokkal.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 2bed2f52f29d5c97ab576fae73498b60fb7ecc30
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079800"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310844"
 ---
 # <a name="understand-policy-effects"></a>A szabályzat hatásainak megismerése
 
@@ -72,7 +72,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-2. példa: Két **mező/érték** párok fűzze hozzá a címkéket egy készletét.
+2. példa Két **mező/érték** párok fűzze hozzá a címkéket egy készletét.
 
 ```json
 "then": {
@@ -120,7 +120,7 @@ A megtagadási hatás nem rendelkezik használható tulajdonságokat a **majd** 
 
 ### <a name="deny-example"></a>Példa megtagadása
 
-Példa: A Megtagadás hatás használatával.
+Példa: A megtagadási hatás használatával.
 
 ```json
 "then": {
@@ -265,7 +265,7 @@ A **részletek** a DeployIfNotExists hatást tulajdonsága egyezik a kapcsolód�
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists példa
 
-Példa: SQL Server-adatbázisok, hogy ha engedélyezve van-e a transparentDataEncryption értékeli ki. Ha nem, akkor hajtja végre a központi telepítést, az engedélyezéshez.
+Példa: SQL Server-adatbázisok, hogy ha engedélyezve van-e a transparentDataEncryption kiértékeli. Ha nem, akkor hajtja végre a központi telepítés engedélyezése.
 
 ```json
 "if": {

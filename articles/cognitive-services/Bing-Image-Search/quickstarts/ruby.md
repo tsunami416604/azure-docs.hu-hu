@@ -1,6 +1,7 @@
 ---
-title: 'Rövid útmutató: Képkeresés Ruby használatával – Bing Image Search API'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Ruby-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
+title: 'Gyors útmutató: Keresse meg a Bing Image Search REST API és a Ruby --lemezképek'
+titleSuffix: Azure Cognitive Services
+description: Ez a rövid útmutató segítségével kép keresési kérelmeket küldjön a Bing Image Search REST API Ruby használatával, és JSON-válaszok kap.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: d5772b46c167b873ed4f5d60a110d31a5c8308a5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 4a5b0c6e67ce4d7a533ad35023261a3c02601a83
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315936"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257658"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Rövid útmutató: Keresési lekérdezések küldése a REST API és a Ruby használatával
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a Ruby használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Ruby-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 

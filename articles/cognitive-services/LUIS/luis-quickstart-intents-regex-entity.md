@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 9cc88523ee31d80292c7d0d2bf9321dbbfc2ab6b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093317"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135576"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>3. oktatóanyag: Helyesen formázott adatok kinyerése
 Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást, hogy konzisztensen formázott adatokat nyerjen ki egy kimondott szövegből a **Reguláris kifejezés** entitás használatával.
@@ -25,14 +25,13 @@ Az entitások célja a kimondott szövegekben található fontos adatok kinyeré
 
 **Példák kimondott szövegekre:**
 
-```
-Where is HRF-123456?
-Who authored HRF-123234?
-HRF-456098 is published in French?
-HRF-456098
-HRF-456098 date?
-HRF-456098 title?
-```
+|Példák kimondott szövegekre|
+|--|
+|Hol található HRF-123456?|
+|Ki lett létrehozva HRF-123234?|
+|HRF-456098 francia nyelvű közzé lett téve?|
+|HRF-456098|
+|HRF-456098 dátum?|
  
 A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén, ha
 

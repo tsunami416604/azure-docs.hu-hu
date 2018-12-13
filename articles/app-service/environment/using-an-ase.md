@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-környezet használata
+title: Használja az App Service Environment-környezet – Azure
 description: Hogyan létrehozását, közzétételét és alkalmazások méretezése az Azure App Service-környezet
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 5f2959183e1741c8e37db92ede249d83bb3d53a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964696"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274717"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -26,13 +27,13 @@ ms.locfileid: "52964696"
 
 Az Azure App Service Environment-környezet üzembe helyezése az Azure App Service-ben az ügyfél az Azure virtual network egyik alhálózatában. Ez a következőkből áll:
 
-- **Előtér-vége**: az előtérrendszerek, ahol a HTTP/HTTPS leállítja az App Service environment (ASE).
-- **Feldolgozók**: A munkavállalók az erőforrásokat, az alkalmazások üzemeltetéséhez.
-- **Adatbázis**: az adatbázis tárolja az információt, amely meghatározza a környezetben.
-- **Tárolási**: az ügyfél által közzétett alkalmazások tárolására szolgál.
+- **Előtér-vége**: Az előtérrendszerek, ahol a HTTP/HTTPS leállítja az App Service environment (ASE).
+- **Feldolgozók**: A feldolgozók olyan erőforrást, amely az alkalmazások üzemeltetéséhez.
+- **Adatbázis**: Az adatbázis tartalmazza, amely meghatározza a környezetben.
+- **Tárolási**: Az ügyfél által közzétett alkalmazások tárolására szolgál.
 
 > [!NOTE]
-> Az App Service Environment-környezet két verziója: ASEv1 és ASEv2. Az asev1-ben az erőforrásokat kell kezelni, mielőtt használhatná őket. Ismerje meg, hogyan konfigurálhatja és kezelheti az asev1-ben, lásd: [konfigurálása az App Service-környezet v1][ConfigureASEv1]. Ez a cikk további részének ASEv2 összpontosít.
+> Nincsenek App Service Environment-környezet két verziója: Az ASEv1 és ASEv2. Az asev1-ben az erőforrásokat kell kezelni, mielőtt használhatná őket. Ismerje meg, hogyan konfigurálhatja és kezelheti az asev1-ben, lásd: [konfigurálása az App Service-környezet v1][ConfigureASEv1]. Ez a cikk további részének ASEv2 összpontosít.
 >
 >
 
@@ -51,7 +52,7 @@ Webalkalmazás létrehozása az ASE környezetben:
 
 1. Válassza ki **erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
 
-1. Adja meg a webalkalmazás nevét. Ha az ASE App Service-csomag kijelölve, a tartomány nevét az alkalmazás az ASE tartomány nevét jeleníti meg.
+2. Adja meg a webalkalmazás nevét. Ha az ASE App Service-csomag kijelölve, a tartomány nevét az alkalmazás az ASE tartomány nevét jeleníti meg.
 
     ![Webes alkalmazás nevének kiválasztása][1]
 

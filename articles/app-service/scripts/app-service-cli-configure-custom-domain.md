@@ -4,7 +4,7 @@ description: Azure CLI-példaszkript – Egyéni tartomány leképezése egy web
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 223678b39dbaeede255157b97ffca2c73f252a31
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 1b458a6869345acf3ceb1e236ce6c33fae457345
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976703"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188654"
 ---
-# <a name="map-a-custom-domain-to-a-web-app"></a>Egyéni tartomány leképezése egy webalkalmazásra
+# <a name="map-a-custom-domain-to-a-web-app-using-cli"></a>Egyéni tartomány leképezése egy webalkalmazásra parancssori felület használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service szolgáltatásban a kapcsolódó erőforrásokkal együtt, majd leképezi rá a `www.<yourdomain>` tartományt.
 

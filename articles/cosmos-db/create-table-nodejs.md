@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Table API a node.js-szel – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: TABLE API a node.js-szel – Azure Cosmos DB használatával'
 description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Table API profilalkalmazások létrehozására az Azure Portal és a Node.js használatával
 services: cosmos-db
 author: SnehaGunda
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 1b6a947914b086bc0300c9ff9d7390a7bc80c2a8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 870b07013aa279a20dd231fecc83775fd1aebc5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079602"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166098"
 ---
-# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Node.js és az Azure Cosmos DB használatával
+# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Egy táblát a Node.js és az Azure Cosmos DB API-alkalmazás létrehozása
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)

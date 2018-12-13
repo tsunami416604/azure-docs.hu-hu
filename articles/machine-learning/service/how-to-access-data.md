@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés az adatokhoz a adattárolók
+title: Hozzáférés az adatokhoz a adattárainak képzéshez
 titleSuffix: Azure Machine Learning service
 description: Az Azure Machine Learning szolgáltatás betanítás során adatokat tároló elérése érdekében adattárainak használata
 services: machine-learning
@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bce6d636dd80820732d4911c1b24ef00118b594e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 235ad729be434c8329a74e71abfe713480756316
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073466"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187143"
 ---
 # <a name="access-data-during-training-from-your-datastores"></a>Az adattárolók a betanítás során érheti el adatait
 Egy adattár segítségével elérheti és kezelheti az Azure Machine Learning-munkafolyamatok adatait.

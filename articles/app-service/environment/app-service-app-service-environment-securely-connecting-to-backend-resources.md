@@ -1,5 +1,5 @@
 ---
-title: Biztonságos csatlakozás a Háttérerőforrásokhoz egy App Service Environment-környezet a
+title: Biztonságos kapcsolódás biztonsági záró erőforrásokat, az App Service Environment-környezet – Azure
 description: Ismerje meg való biztonságos kapcsolódás háttérerőforrásokhoz egy App Service Environment-környezet a.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 4fccfbb4cbc1b0db0c032d95ad66b497520aa619
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960940"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315859"
 ---
-# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Biztonságos csatlakozás a Háttérerőforrásokhoz egy App Service Environment-környezet a
+# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Biztonsági biztonságos kapcsolódás App Service-környezet erőforrásainak vége
 ## <a name="overview"></a>Áttekintés
 Mivel az App Service-környezet mindig létrejön **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** klasszikus telepítési modell [virtuális hálózat] [ virtualnetwork], más háttérerőforrásokhoz egy App Service Environment-környezet a kimenő kapcsolatokat áramolhasson kizárólag a virtuális hálózaton.  Egy friss változás 2016. június végzett, az ASE is üzembe helyezhetők a címtartomány nyilvános, vagy az RFC1918 címterek (azaz a magánhálózati címek) használó virtuális hálózatokra.  
 

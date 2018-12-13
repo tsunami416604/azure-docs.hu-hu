@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával'
+title: 'Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával'
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Databricks-munkaterület és egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568954"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259545"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozható létre Azure Databricks-munkaterület, illetve azon belül egy Apache Spark-fürt. Végezetül azt is ismertetjük, hogyan futtathat Spark-feladatokat a Databricks-fürtön. További információt az Azure Databricksről [az Azure Databrickset](what-is-azure-databricks.md) ismertető cikkben talál.
 
@@ -86,12 +86,12 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 ## <a name="download-a-sample-data-file"></a>Mintaadatfájl letöltése
 Töltsön le egy JSON-mintaadatfájlt, és mentse az Azure Blob Storage-ban.
 
-1. Ezt a JSON-mintaadatfájlt a [GitHubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) töltheti le a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg.
+1. Töltse le a JSON [a Githubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg.
 
 2. Ha még nem rendelkezik tárfiókkal, akkor hozzon létre egyet.
     - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.
     - Adjon meg egy egyedi nevet a tárfióknak.
-    - A **Fióktípus** beállításnál válassza a **Blob Storage** lehetőséget.
+    - Válassza ki **fióktípus**: **Blob Storage**
     - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
     
     További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.

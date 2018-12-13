@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search szolgáltatásban az indexek lekérdezése a keresési ablak |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a keresési ablak az Azure Search szolgáltatásban az indexek lekérdezéséhez.
+title: Az Azure Portalon az Azure Search – az indexek lekérdezése a keresési ablak
+description: Az Azure portal-eszközök például a keresési ablak a lekérdezés indexek használata az Azure Search szolgáltatásban. Adja meg a keresési kifejezéseket, vagy teljesen minősített keresőkifejezések speciális szintaxissal.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 11f102fcb2a24f9062313f9a3234c29e70a3dfe0
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004133"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315663"
 ---
 # <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Az Azure Search lekérdezési indexeket a keresési ablak használatával 
 

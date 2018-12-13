@@ -1,5 +1,5 @@
 ---
-title: A robotC#
+title: A robot - C# – v3
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 919d48d73a552596c78c3be18e7628ee7700f7e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b4b074de483d4a1ccd4c934a9fa7254e0f656a1b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080214"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133950"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A LUIS-robot C# a Bot keretrendszer 3.x és az Azure Web app bot
 
@@ -37,11 +37,11 @@ A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismer�
 
 1. Az a [az Azure portal](https://portal.azure.com), jelölje be **hozzon létre új erőforrást** bal felső menüjében.
 
-    ![Új erőforrás létrehozása](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
+    ![Új erőforrás létrehozása az Azure Portalon](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
 2. A keresőmezőbe keresése **Web App Bot**. 
 
-    ![Új erőforrás létrehozása](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
+    ![Válassza ki a web app bot erőforrás típusa](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
 3. Kattintson a Web App Bot ablakban **létrehozás**.
 

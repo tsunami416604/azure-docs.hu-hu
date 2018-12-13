@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 225cb3d2f78f41bdb17763d13644c1d95bc62710
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c565ccf7ac04e2a3ba86e2fa256a05a9649d2de4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014701"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166149"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
@@ -90,7 +90,7 @@ SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a H
 
     * **Név**: Hive
     * **Minta URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra osztályának elérési**: használja a Hozzáadás gombra az összes korábban letöltött jar-fájlok hozzáadása
+    * **Elérési út felesleges osztály**: Használja a Hozzáadás gombra az összes korábban letöltött jar-fájlok hozzáadása
     * **Osztálynév**: org.apache.hive.jdbc.HiveDriver
 
    ![Adja hozzá az illesztőprogram párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
@@ -103,22 +103,22 @@ SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a H
 
 7. A következő értékeket használja a **Alias hozzáadása** párbeszédpanel.
 
-    * **Név**: Hive HDInsight
+    * **Név**: A HDInsight Hive
 
-    * **Illesztőprogram**: használja a legördülő listából válassza ki a **Hive** illesztőprogram
+    * **Illesztőprogram**: Használja a legördülő listából válassza ki a **Hive** illesztőprogram
 
     * **URL-CÍM**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
-    * **Felhasználónév**: a HDInsight-fürthöz a fürt bejelentkezési fiók nevét. A mező alapértelmezett értéke: `admin`.
+    * **Felhasználónév**: A fürt bejelentkezési fiók neve a HDInsight-fürthöz. A mező alapértelmezett értéke: `admin`.
 
-    * **Jelszó**: a fürt bejelentkezési fiókjának jelszavát.
+    * **Jelszó**: A fürt bejelentkezési fiókjának jelszava.
 
  ![alias párbeszédpanel hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > Használja a **teszt** gombra kattintva győződjön meg arról, hogy működik-e a kapcsolat. Amikor **csatlakozhat: Hive HDInsight** párbeszédpanel megjelenésekor válassza **Connect** a teszt végrehajtásához. Ha a teszt sikeres, megjelenik egy **sikeres csatlakozás** párbeszédpanel. Ha hiba lép fel, tekintse meg [hibaelhárítás](#troubleshooting).
+    > Használja a **teszt** gombra kattintva győződjön meg arról, hogy működik-e a kapcsolat. Amikor **csatlakozni: A HDInsight Hive** párbeszédpanel megjelenésekor válassza **Connect** a teszt végrehajtásához. Ha a teszt sikeres, megjelenik egy **sikeres csatlakozás** párbeszédpanel. Ha hiba lép fel, tekintse meg [hibaelhárítás](#troubleshooting).
 
     Szeretné menteni a kapcsolat alias, használja a **Ok** gomb alsó részén a **Alias hozzáadása** párbeszédpanel.
 
@@ -140,7 +140,7 @@ A HDInsight Hive-lekérdezéshez Java-ügyfél használatával például a rende
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Váratlan hiba történt egy SQL-kapcsolat megnyitása
 
-**A jelenség**: 3.3-as verziójának vagy újabb verziót egy HDInsight-fürtön való csatlakozáskor a hibaüzenet egy váratlan hiba történt. Ennek a hibának a híváslánc a következő sorokat kezdődik:
+**A jelenség**: 3.3-as verziójának vagy újabb verziót egy HDInsight-fürtön való kapcsolódáskor, amelyek váratlan hiba történt a hiba jelenhet meg. Ennek a hibának a híváslánc a következő sorokat kezdődik:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -148,9 +148,9 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**OK**: Ez a hiba egy régebbi verziójú SQuirreL mellékelt commons-codec.jar fájl okozza.
+**OK**: Ez a hiba oka egy régebbi verziójú SQuirreL mellékelt commons-codec.jar fájl.
 
-**Feloldási**: Ez a hiba elhárításához kövesse az alábbi lépéseket:
+**Feloldási**: Ez a hiba javításához használja a következő lépéseket:
 
 1. A HDInsight-fürtből származó a commons-kodek jar-fájl letöltése.
 

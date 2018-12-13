@@ -1,27 +1,20 @@
 ---
-title: Rövid útmutató az Azure SignalR szolgáltatás használatához | Microsoft Docs
+title: 'Gyors útmutató: Azure SignalR Service használata'
 description: Rövid útmutató, amelyből megtudhatja, hogyan hozhat létre az Azure SignalR szolgáltatással csevegőszobát ASP.NET Core MVC alkalmazásokkal.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959478"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260616"
 ---
-# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása a SignalR szolgáltatással
+# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Gyors útmutató: A SignalR Service csevegőszoba létrehozása
 
 
 Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. Ez a szolgáltatás a [SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction)-n alapul.
@@ -41,7 +34,7 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [.NET Core SDK-t](https://www.microsoft.com/net/download/windows).
-* Töltse le vagy klónozza az [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub-adattárat. 
+* Töltse le vagy klónozza a [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub-adattárban. 
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR-erőforrás létrehozása
 
@@ -133,8 +126,8 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
 
 A SignalRben a központ egy olyan alapvető összetevő, amely egy ügyfélről meghívható metódusokat tesz elérhetővé. Ebben a szakaszban meghatároz egy központosztályt két metódussal: 
 
-* `Broadcast`: Ez a metódus üzenetet küld az összes ügyfélnek.
-* `Echo`: Ez a metódus visszaküld egy üzenetet a hívónak.
+* `Broadcast`: Ez a módszer küld el egy üzenetet minden ügyfélnek.
+* `Echo`: Ez a módszer egy üzenetet küld vissza a hívónak.
 
 Mindkét metódus az ASP.NET Core SignalR SDK által biztosított `Clients` csatolót használja. Ez a csatoló hozzáférést biztosít az összes csatlakozó ügyfélhez, így lehetősége van tartalmat leküldeni az ügyfeleknek.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: d579a9b628ac515877c1977f700940547e96f0c0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726610"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255312"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Használata esetén az Azure Application Insights Java SDK
 Esetén figyelési mértékek alkalmazásmetrikák JVM-alapú alkalmazás code, és exportálja az adatokat a kívánt rendszerek figyelése. Ez a cikk használata esetén az Application insights segítségével a Spring Boot és a Spring Boot-alkalmazások hogyan meg.
@@ -228,7 +228,7 @@ Lépések:
 
 További információk a metrikákról, tekintse meg a [esetén dokumentáció](https://micrometer.io/docs/).
 
-Más mintakód létrehozásával különböző típusú metrikák található[a hivatalos esetén Github-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+Más mintakód létrehozásával különböző típusú metrikák található[a hivatalos esetén GitHub-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Hogyan köthet további metrikák gyűjtési
 
@@ -242,7 +242,7 @@ Hozzon létre egy, a megfelelő metrikakategória bean. Tegyük fel például, h
         Return new GuavaCacheMetrics();
     }
 ```
-Nincsenek alapértelmezés szerint nincs engedélyezve, de a fenti módon köthető több metrikát. Teljes listáját, tekintse meg [a hivatalos esetén Github-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Nincsenek alapértelmezés szerint nincs engedélyezve, de a fenti módon köthető több metrikát. Teljes listáját, tekintse meg [a hivatalos esetén GitHub-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Nem Spring alkalmazások
 Adja hozzá a következő kötőkódot a konfigurációs fájl:

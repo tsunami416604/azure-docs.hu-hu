@@ -1,22 +1,24 @@
 ---
-title: Kimenő kapcsolatok (klasszikus) Azure-ban |} A Microsoft Docs
+title: Kimenő kapcsolatok (klasszikus) Azure-ban
+titlesuffix: Azure Load Balancer
 description: Ez a cikk azt ismerteti, hogyan biztosítja az Azure cloud services nyilvános internetes szolgáltatásokkal kommunikálni.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219664"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189999"
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -74,7 +76,7 @@ SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT �
 
 Amikor [több nyilvános terheléselosztásos végpontjait](load-balancer-multivip.md) létezik, a nyilvános IP-címek bármelyike egy [a kimenő forgalom jelölt](#multivipsnat), és a egy véletlenszerűen kiválasztott.  
 
-### <a name="defaultsnat"></a>3. forgatókönyv: Nincs nyilvános IP-címére
+### <a name="defaultsnat"></a>3. forgatókönyv: Hozzárendelt nyilvános IP-cím
 
 Ebben a forgatókönyvben a virtuális gép vagy a webes feldolgozói szerepkör nem képezi részét nyilvános kiegyenlített terhelésű végpontot.  És a virtuális gép esetén nincs hozzárendelve egy ILPIP-cím. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot.  Az Azure automatikusan foglalja le ezt a címet.
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: f9f26f14944986bc673a3b7529adb055ad16d058
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a22a3dabf1aa71e0d092c4145523da9b0121c8c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003061"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322209"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics használatának engedélyezésével az Azure Cloud Servicesben
 Lásd: [Azure Diagnostics – áttekintés](../azure-diagnostics.md) Azure Diagnostics háttér számára.
@@ -30,7 +30,7 @@ Ez a forgatókönyv ismerteti, hogyan valósíthat meg egy Azure feldolgozói sz
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy egy Azure-előfizetés és a Visual Studio használata az Azure SDK-t. Ha nem rendelkezik Azure-előfizetéssel, akkor Regisztráljon a [ingyenes próbaverzió][Free Trial]. Ügyeljen arra, hogy [telepítse és konfigurálja az Azure Powershellt 0.8.7 verzió vagy újabb][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>1. lépés: A feldolgozói szerepkör létrehozása
+### <a name="step-1-create-a-worker-role"></a>1. lépés: Feldolgozói szerepkör létrehozása
 1. Indítsa el a **Visual Studiót**.
 2. Hozzon létre egy **Azure Cloud Service** -projektet a **felhőalapú** sablont, amely a .NET-keretrendszer 4.5 célozza.  Adja a projektnek "WadExample", és kattintson az OK gombra.
 3. Válassza ki **feldolgozói szerepkör** , és kattintson az OK gombra. A projekt létrejön.
@@ -39,7 +39,7 @@ Ez a cikk feltételezi, hogy egy Azure-előfizetés és a Visual Studio használ
 6. Hozhat létre egy megoldást, hogy ellenőrizze, hogy rendelkezik-e hibák.
 
 ### <a name="step-2-instrument-your-code"></a>2. lépés: A kód alkalmazásáról
-Cserélje le a WorkerRole.cs tartalmát az alábbira. A SampleEventSourceWriter, osztály örökli a [EventSource osztály][EventSource Class], négy naplózási metódusokat megvalósítja: **SendEnums**, **MessageMethod** , **SetOther** és **HighFreq**. Az első paraméterként a **WriteEvent** metódus határozza meg a megfelelő esemény azonosítója. A Run metódus valósítja meg, amely meghívja a naplózás módszer megvalósított végtelen ciklust a **SampleEventSourceWriter** osztály 10 másodpercenként.
+Cserélje le a WorkerRole.cs tartalmát az alábbira. A SampleEventSourceWriter, osztály örökli a [EventSource osztály][EventSource Class], négy naplózási metódusokat valósít meg: **SendEnums**, **MessageMethod**, **SetOther** és **HighFreq**. Az első paraméterként a **WriteEvent** metódus határozza meg a megfelelő esemény azonosítója. A Run metódus valósítja meg, amely meghívja a naplózás módszer megvalósított végtelen ciklust a **SampleEventSourceWriter** osztály 10 másodpercenként.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -170,8 +170,8 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>5. lépés: Telepítse a feldolgozói szerepkör diagnosztika
-A rendszer egy webes vagy feldolgozói szerepkör diagnosztikai kezelése a PowerShell-parancsmagok: Set-AzureServiceDiagnosticsExtension, a Get-AzureServiceDiagnosticsExtension és a Remove-AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>5. lépés: Diagnosztika a feldolgozói szerepkör telepítése
+Egy webes vagy feldolgozói szerepkör diagnosztikai kezelése a PowerShell-parancsmagok a következők: Set-AzureServiceDiagnosticsExtension, a Get-AzureServiceDiagnosticsExtension és a Remove-AzureServiceDiagnosticsExtension.
 
 1. Nyissa meg az Azure Powershellt.
 2. Hajtsa végre a parancsfájl diagnosztikai telepíthető a feldolgozói szerepkör (cserélje le *StorageAccountKey* a wadexample tárfiókhoz a tárfiók-kulcsot az és *config_path* az elérési útját a  *WadExample.xml* fájl):
@@ -197,7 +197,7 @@ A diagnosztika konfigurációs fájljának inicializálása diagnosztikai beáll
 Ha gondja van, tekintse meg [Azure Diagnostics hibaelhárítása](../azure-diagnostics-troubleshooting.md) segítséget a gyakori problémák megoldásához.
 
 ## <a name="next-steps"></a>További lépések
-[Kapcsolódó Azure virtuális gép diagnosztikai cikkek listája](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) gyűjtött adatok módosításához kapcsolatos hibák elhárítása, vagy tudjon meg többet a diagnosztikai általában.
+[Kapcsolódó Azure virtuális gép diagnosztikai cikkek listája](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) gyűjtött adatok módosításához kapcsolatos hibák elhárítása, vagy tudjon meg többet a diagnosztikai általában.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

@@ -3,8 +3,8 @@ title: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üze
 description: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.service: app-service-web
@@ -13,16 +13,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/12/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 21f3c48da2e91849d476ec4d16a17fd2b67708c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: b828fd1e7b1135f2e31e7f6e33957983c476edfb
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952511"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183930"
 ---
-# <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával
+# <a name="create-a-web-app-and-deploy-files-with-ftp-using-azure-cli"></a>Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával az Azure CLI használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyez egy statikus HTML-oldalt FTP használatával. Az FTP-feltöltéshez a szkript a [cURL](https://en.wikipedia.org/wiki/CURL) segédprogramot használja példaként. A fájlok feltöltéséhez bármilyen FTP-eszközt használhat.
 

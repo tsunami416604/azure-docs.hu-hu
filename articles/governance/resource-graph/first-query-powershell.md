@@ -1,5 +1,5 @@
 ---
-title: Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
+title: Azure PowerShell-lel az első lekérdezés futtatása
 description: Ez a cikk végigvezeti az Azure PowerShellhez szükséges Resource Graph modul aktiválásának lépésein és az első lekérdezése futtatásán.
 services: resource-graph
 author: DCtheGeek
@@ -7,14 +7,14 @@ ms.author: dacoulte
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: resource-graph
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6bd7ceaeaf0b064ebbd8f069a4741489349bb980
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: 5ffc93afdfff1a069d00b61868b5ae025121198c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427505"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310725"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 

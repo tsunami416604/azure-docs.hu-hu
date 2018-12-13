@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082663"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194232"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti az Azure Automation szolgáltatással kommunikáció konfigurálása és a Log Analytics használatával az a Log Analytics-átjáró, amikor közvetlen csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáférés.  A Log Analytics-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -89,8 +87,8 @@ Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügyn
 
 |Átjáró |Támogatott ügynökök száma KB.|  
 |--------|----------------------------------|  
-|-CPU: Intel XEON v3 CPU E5-2660 \@ 2,6 GHz-es 2 mag<br> -Memória: 4 GB<br> -Hálózati sávszélesség: 1 GB/s| 600|  
-|-CPU: Intel XEON v3 CPU E5-2660 \@ 2,6 GHz-es 4 mag<br> -Memória: 8 GB<br> -Hálózati sávszélesség: 1 GB/s| 1000|  
+|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 2 mag<br> – Memória: 4 GB<br> -Hálózati sávszélességet: 1 Gbps| 600|  
+|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 4 mag<br> – Memória: 8 GB<br> -Hálózati sávszélességet: 1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>A Log Analytics-átjáró letöltése
 
@@ -136,7 +134,7 @@ Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terhelés
 1. Jelentkezzen be a Windows server, amely tagja a rendszergazdák rendszergazdai fiókkal az NLB-fürt.  
 1. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **a hálózati terheléselosztás kezelője**.
 1. A Microsoft Monitoring Agent telepítve van egy Log Analytics-átjáró kiszolgáló kapcsolódni, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/gateway/nlb02.png)<br> 
-1. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – a gazdagépet a fürthöz: csatlakozás](./media/gateway/nlb03.png) 
+1. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz: Kapcsolódás](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Log Analytics-ügynököket és az Operations Manager felügyeleti csoport konfigurálása
 A következő szakasz tartalmazza a lépéseket, a közvetlenül csatlakoztatott Log Analytics-ügynökök, az Operations Manager felügyeleti csoport vagy az Azure Automation hibrid Runbook-feldolgozók konfigurálásáról a Log Analytics-átjáróval kommunikálni az Azure Automation és a Log Elemzés.  
@@ -183,7 +181,7 @@ Nagy vagy összetett környezetek esetében csak szüksége lehet adott kiszolg�
 1. Nyissa meg az Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületen.  
 1. Válassza a szerzői műveletek munkaterületének **szabályok** , és kattintson a **hatókör** gombra az Operations Manager eszköztárán. Ha ez a gomb nem érhető el, ellenőrizze, győződjön meg arról, hogy egy objektumot, nem pedig mappát jelölt a figyelés ablaktáblán. A **felügyeleti csomag objektumai** párbeszédpanel közös célzott osztályok, csoportok és objektumok listáját jeleníti meg. 
 1. Típus **Állapotfigyelő szolgáltatás** a a **keressen** mezőben, majd válassza ki a listából.  Kattintson az **OK** gombra.  
-1. Keresse meg a szabály **Advisor beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** , majd mutasson a **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás**  , és válasszon ki egy adott objektumot a listából.  Igény szerint hozhat létre egyéni csoportja az állapotfigyelő szolgáltatás objektum a kiszolgálók, ez a felülbírálás a alkalmazni, és ezután alkalmazza a felülbírálást, ehhez a csoporthoz.
+1. Keresse meg a szabály **Advisor beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** , majd mutasson a **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás** , és válasszon ki egy adott objektumot a listából.  Igény szerint hozhat létre egyéni csoportja az állapotfigyelő szolgáltatás objektum a kiszolgálók, ez a felülbírálás a alkalmazni, és ezután alkalmazza a felülbírálást, ehhez a csoporthoz.
 1. Az a **felülbírálás tulajdonságai** párbeszédpanelen jelölje be a a **felülbírálása** oszlop melletti a **WebProxyAddress** paraméter.  Az a **felülbírálás értéke** mezőben adja meg az URL-cím, a Log Analytics átjáró kiszolgáló biztosítsa, hogy először a a `http://` előtag.  
 
     >[!NOTE]
@@ -256,7 +254,7 @@ Parancsmagok segítségével végezze el a feladatokat, amelyek szükségesek a 
 1. Ha nem történt hiba az előző lépésben, a modul importálása sikeresen megtörtént, és a parancsmag is használható. Típusa `Get-Module OMSGateway`
 1. Miután változtatásokat parancsmagok segítségével, győződjön meg arról, újra kell indítania az átjárószolgáltatást.
 
-Ha hibaüzenetet kap a 3. lépésben, a modul nem lett importálva. A hiba akkor fordulhat elő, ha nem található a modul PowerShell. Az átjáró telepítési elérési úton található: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
+Ha hibaüzenetet kap a 3. lépésben, a modul nem lett importálva. A hiba akkor fordulhat elő, ha nem található a modul PowerShell. Az átjáró telepítési útvonalához, találhatja: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 
 | **A parancsmag** | **Paraméterek** | **Leírás** | **Példa** |
 | --- | --- | --- | --- |  
@@ -290,7 +288,7 @@ Az alábbi táblázat bemutatja a eseményazonosítók és a Log Analytics-átj�
 | 103 |HTTP-csatlakozási parancsot kapott az ügyféltől |
 | 104 |Nem egy HTTP-csatlakozási parancs |
 | 105 |Célkiszolgáló nem szerepel az engedélyezési listán, vagy a céloldali port nem biztonságos portot (443) <br> <br> Győződjön meg arról, hogy az átjáró kiszolgálón az MMA-ügynök és az átjáróval kommunikáló ügynökök csatlakoztatva a Log Analytics munkaterületén. |
-| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítványt: CN = átjáró <br><br> Győződjön meg arról, hogy: <br>    <br> &#149;Az átjáró használata verziószám 1.0.395.0 vagy nagyobb. <br> &#149;Az MMA-ügynök az átjárókiszolgálón és az átjáróval kommunikáló ügynökök csatlakoznak a Log Analytics munkaterületén. |
+| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítvány: CN = átjáró <br><br> Győződjön meg arról, hogy: <br>    <br> &#149;Az átjáró használata verziószám 1.0.395.0 vagy nagyobb. <br> &#149;Az MMA-ügynök az átjárókiszolgálón és az átjáróval kommunikáló ügynökök csatlakoznak a Log Analytics munkaterületén. |
 | 106 |A Log Analytics-átjáró csak a TLS 1.0, TLS 1.1 és 1.2-es támogatja.  Nem támogatja az SSL. Minden nem támogatott a TLS/SSL protokoll verziója, a Log Analytics-átjáró event ID 106 állít elő.|
 | 107 |A TLS-munkamenet jóvá lett hagyva. |
 

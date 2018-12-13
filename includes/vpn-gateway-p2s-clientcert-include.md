@@ -5,30 +5,30 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/06/2018
+ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 01a62fe7abb8a79f9afc08c0ff707cdfbb97ddac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44343170"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323804"
 ---
-Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Az ügyféltanúsítványokat a főtanúsítványból hozzák létre, majd telepítik az egyes ügyfélszámítógépekre. Ha nincs telepítve érvényes ügyféltanúsítvány, és az ügyfél megpróbál csatlakozni a virtuális hálózathoz, akkor a hitelesítés meghiúsul.
+Minden virtuális hálózathoz pont – hely kapcsolattal csatlakozó ügyfélszámítógépen rendelkeznie kell telepített ügyféltanúsítvánnyal. Hozza létre a főtanúsítvány az, és telepítse az egyes ügyfélszámítógépekre. Ha nem telepít egy érvényes ügyféltanúsítványt, hitelesítés sikertelen lesz, amikor az ügyfél megpróbál csatlakozni a virtuális hálózathoz.
 
-Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfélhez is. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ha azonban több ügyfél is ugyanazt az ügyféltanúsítványt használja, és Önnek vissza kell vonnia a tanúsítványt, az összes olyan ügyfél számára elő kell állítania és telepítenie kell új tanúsítványokat, amelyek az adott tanúsítványt használják a hitelesítéshez.
+Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfélhez is. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ellenkező esetben ha több ügyfél használja ugyanazt az ügyféltanúsítványt hitelesítésre, és Ön visszavonáshoz, szüksége létrehozni, és telepítenie kell új tanúsítványokat, amelyek a tanúsítványt használja minden ügyfélhez.
 
-Ügyféltanúsítványokat a következő módszerekkel hozhat létre:
+Ügyfél-tanúsítványok az alábbi módszerek használatával is létrehozhat:
 
 - **Vállalati tanúsítvány:**
 
-  - Ha vállalati tanúsítványmegoldást használ, az általános „name@yourdomain.com” formátumban hozza létre az ügyféltanúsítványokat a „tartománynév\felhasználónév” formátum helyett.
-  - Ellenőrizze, hogy az ügyféltanúsítvány azon a „felhasználói” tanúsítványsablonon alapul-e, amely használati listájának első helyén az „ügyfél-hitelesítés” áll, nem pedig az intelligens kártyás bejelentkezés vagy egyebek. A tanúsítvány ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és tekintse meg a **Részletek > Kibővített kulcshasználat** részt.
+  - Ha vállalati tanúsítványmegoldást használ, az ügyféltanúsítványokat a közös formátumban *name@yourdomain.com*. Ez a formátum helyett használja a *tartománynév\felhasználónév* formátumban.
+  - Ellenőrizze, hogy egy felhasználó tanúsítványsablont, amelynek alapján az ügyféltanúsítvány *ügyfél-hitelesítés* az első elem, a felhasználók listájában szerepel. Ellenőrizze a tanúsítvány kattint, és megtekintés **kibővített kulcshasználat** a a **részletek** fülre.
 
-- **Önaláírt főtanúsítvány:** Fontos, hogy lépésről lépésre betartsa a P2S-tanúsítványokkal foglalkozó valamelyik alábbi cikk utasításait. Ellenkező esetben a létrehozott ügyféltanúsítványok nem lesznek kompatibilisek a P2S-kapcsolatokkal, és az ügyfelek hibákat kapnak majd a kapcsolódás során. Az alábbi cikkekben ismertetett lépésekkel kompatibilis ügyféltanúsítványok hozhatóak létre: 
+- **Önaláírt főtanúsítvány:** Lépésről lépésre betartsa a P2S-tanúsítványokkal alábbi cikk hajtsa végre az, hogy a létrehozott ügyféltanúsítványok lesznek kompatibilisek a P2S-kapcsolatokkal. Ezekben a cikkekben leírt lépéseket egy kompatibilis ügyféltanúsítvány létrehozása: 
 
-  * [A Windows 10 PowerShellre vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Ezekhez az utasításokhoz Windows 10 és PowerShell szükséges a tanúsítványok létrehozásához. A létrehozott tanúsítványok bármely támogatott P2S-ügyfélen telepíthetőek.
-  * [A MakeCertre vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Ha nem rendelkezik hozzáféréssel Windows 10 rendszerű számítógéphez, a Makecert használatával is létrehozhat tanúsítványokat. A MakeCert ugyan elavult, azonban továbbra is hozhat létre vele tanúsítványokat. A létrehozott tanúsítványok bármely támogatott P2S-ügyfélen telepíthetőek.
+  * [A Windows 10 Powershellre vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Ezekhez az utasításokhoz Windows 10-es és a PowerShell is létrehozhat tanúsítványokat. A létrehozott tanúsítványok bármely támogatott P2S-ügyfélen is telepíthető.
+  * [Útmutatás a MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Ha nem rendelkezik hozzáféréssel Windows 10 rendszerű számítógéphez a tanúsítványok létrehozásához használja a Makecertet. Bár a MakeCert elavult, továbbra is használhatja azt is létrehozhat tanúsítványokat. Telepítheti a létrehozott tanúsítványok bármely támogatott P2S-ügyfélen.
   * [Linuxra vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Amikor egy önaláírt főtanúsítványból az előző utasítások segítségével hoz létre ügyféltanúsítványt, akkor az automatikusan a létrehozásához használt számítógépre lesz telepítve. Ha egy ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne telepíteni, akkor exportálnia kell azt egy .pfx-fájlként a teljes tanúsítványlánccal együtt. Ez egy .pfx fájlt hoz létre, amely tartalmazza az ügyfél sikeres hitelesítéséhez szükséges főtanúsítvány-adatokat. A tanúsítvány exportálásának lépéseiért lásd: [Tanúsítványok – ügyféltanúsítvány exportálása](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+  Egy önaláírt főtanúsítványból létre ügyféltanúsítványt, ha automatikusan települ a létrehozáshoz használt számítógépen. Telepíthet ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne, ha exportálja .pfx-fájlként, a teljes tanúsítványlánccal együtt. Ez létrehoz egy .pfx-fájlt, amely tartalmazza a főtanúsítvány információit az ügyfél hitelesítéséhez szükséges. Tanúsítvány exportálása lépéseiért lásd: [tanúsítványok létrehozása és exportálása pont – hely PowerShell-lel](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

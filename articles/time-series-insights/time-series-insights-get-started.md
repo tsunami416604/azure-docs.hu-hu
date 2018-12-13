@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights-környezet létrehozása | Microsoft Docs
+title: Az Azure Time Series Insights - környezet létrehozása Azure Time Series Insights-környezet létrehozása |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan hozzon létre egy új Time Series Insights-környezetet az Azure portal használatával.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 909d8a921e46f0f935bb8a059714b1c0170ddee4
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: f50f0de4cff72f8eaf8304893d49ab14a68a3fc4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627661"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277301"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Új Time Series Insights-környezet létrehozása az Azure Portalon
 Ez a cikk azt ismerteti, hogyan hozhat létre egy új Time Series Insights-környezet az Azure portal használatával.

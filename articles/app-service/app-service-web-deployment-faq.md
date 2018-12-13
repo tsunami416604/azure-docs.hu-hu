@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezés – gyakori kérdések az Azure web appshez |} A Microsoft Docs
+title: Üzembe helyezés – gyakori kérdések – az Azure App Service |} A Microsoft Docs
 description: Üzembe az Azure App Service Web Apps szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszok.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748442"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262112"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
 
@@ -39,7 +40,7 @@ További információkért lásd: [telepítse az alkalmazást az App Service-ben
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Egy hibaüzenet jelenik meg a Visual Studióból üzembe látható. Hogyan oldhatom fel ez?
 
-Ha a következő üzenetet látja, akkor előfordulhat, hogy használja az SDK egy régebbi verziója: "erőforrás"YourResourceName"erőforráscsoport"YourResourceGroup"üzembe helyezés során hiba történt: MissingRegistrationForLocation: az előfizetés nincs regisztrálva a Erőforrás típusa "összetevő" a következő helyen: "USA középső RÉGIÓJA". Regisztrálja újra a szolgáltató annak érdekében, hogy ezen a helyen érheti el." 
+Ha a következő üzenetet látja, akkor előfordulhat, hogy használja az SDK egy régebbi verziója: "Hiba"YourResourceName"erőforrás 'YourResourceGroup' erőforráscsoportban üzembe helyezés során: MissingRegistrationForLocation: Az előfizetés nincs regisztrálva az erőforrástípus "összetevő" a következő helyen: "USA középső RÉGIÓJA". Regisztrálja újra a szolgáltató annak érdekében, hogy ezen a helyen érheti el." 
 
 A probléma megoldásához frissítse a [legújabb SDK](https://azure.microsoft.com/downloads/). Ha az üzenet, és a legújabb SDK rendelkezik, küldjön egy támogatási kérést.
 

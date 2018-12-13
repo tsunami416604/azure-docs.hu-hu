@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service – diagnosztika áttekintése |} A Microsoft Docs
+title: Diagnosztikai áttekintése – Azure App Service-ben |} A Microsoft Docs
 description: Ismerje meg, hogyan háríthatóak el a problémákat az App Service-diagnosztikával webalkalmazással együtt.
 keywords: App Service-ben, az azure app Service-ben, diagnosztika, támogatási, webalkalmazás, hibaelhárítás, önsegítő anyagok
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: a8b256f43d8e4103404ab4276431ceb06d9ed36a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969238"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255142"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Az Azure App Service – diagnosztika áttekintése 
 
@@ -66,5 +67,5 @@ Számos alkalmazás probléma kapcsolatos problémákat, az alkalmazás kódjáb
 
 Az Application Insights-kivételek és függőségek megtekintéséhez jelölje ki a **webalkalmazás nem érhető** vagy **webes alkalmazás lassú** parancsikonok csempére. 
 
-![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
+![Az Application insights](./media/app-service-diagnostics/AppInsights6.png)
 

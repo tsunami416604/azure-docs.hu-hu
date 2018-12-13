@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: .NET-példák az SQL API-hoz'
-description: A GitHub tartalmaz az Azure Cosmos DB általános feladataihoz, többek között a CRUD-műveletekhez kötődő C# .NET-példákat.
+description: Keresés C# .NET példák a Githubon a gyakori feladatokhoz az Azure Cosmos DB SQL API, köztük CRUD-műveletek használata.
 keywords: NoSQL-példa
 author: rnagpal
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: c42677d595eae3a6742f4536dcdd0314ff2d20d8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104778"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166625"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Kódminták a .NET SDK verziója 3.0-s (előzetes verzió), a legújabb mintáib
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- [Aktiválhatja Visual Studio-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetés minden hónapban biztosít Önnek jóváírást, amelyekkel fizetős Azure-szolgáltatásokat használhat.
+- Is [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetésében kreditek minden hónapban biztosít Önnek, hogy a fizetős Azure-szolgáltatásokat is használhat.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -146,7 +146,7 @@ A változáscsatorna-minta ([azure-documentdb-dotnet/samples/code-samples/Change
 | [Változáscsatorna olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Partíciókulcsok tartományainak olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-A változáscsatorna feldolgozási mintája (a [változáscsatorna migrálási eszköze](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)) bemutatja, hogyan használhat egy változáscsatorna-feldolgozó kódtárat az adatok másik Cosmos DB gyűjteménybe való replikálásához.   
+A módosítási hírcsatorna a processzor-minta:  [Módosítsa az áttelepítési eszköz hírcsatorna](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) replikálja az adatokat egy másik Cosmos DB-gyűjtemények a változáscsatorna feldolgozói kódtára segítségével mutatja be.   
 
 ## <a name="server-side-programming-examples"></a>Kiszolgálóoldali programozási példák
 A kiszolgálóoldali programozási fájl ([azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.
@@ -161,7 +161,7 @@ A kiszolgálóoldali programozási fájl ([azure-documentdb-dotnet/samples/code-
 | [Trigger utáni elem létrehozása](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [Felhasználói függvény (UDF) létrehozása](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-A kiszolgálóoldali programozásról további információt az [Azure Cosmos DB kiszolgálóoldali programozás ismertetőjének tárolt eljárásokat, adatbázis-triggereket és UDF-eket leíró részében talál](programming.md).
+Kiszolgálóoldali programozása kapcsolatos további információkért lásd: [Azure Cosmos DB kiszolgálóoldali programozása: Tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények](programming.md).
 
 ## <a name="user-management-examples"></a>Felhasználókezelés példái
 A felhasználókezelési fájl ([azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.

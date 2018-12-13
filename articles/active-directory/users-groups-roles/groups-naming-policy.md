@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 12/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243129"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275108"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése
 
@@ -58,6 +58,7 @@ Azt javasoljuk, hogy használja-e az attribútumokat, amelyek kitölti a rendsze
 Letiltott szó listáját az kifejezéseket a csoporthoz tartozó nevek és aliasok egytől vesszővel tagolt listája. Nincs karakterláncrészletet keresések történik. A csoport nevét, és a egy vagy több egyéni letiltott szó között pontos egyezés szükséges aktiválása sikertelen. Részleges karakterlánc-keresés nem történik meg, hogy a felhasználók használhatják a gyakori szavakat, például a "Class", akkor is, ha "osztály" tiltott szót.
 
 Letiltott szó lista szabályok:
+
 - Letiltott szavakat nagybetűk nem számítanak.
 - Amikor a felhasználó egy letiltott szó egy csoport nevének részeként, megjelenik egy hibaüzenet jelenik meg a letiltott szó.
 - Nincsenek letiltott szavakat a karakter korlátozások.
@@ -120,7 +121,7 @@ Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, 
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Adja meg a csoportelnevezési házirend és egyéni letiltott szavakat
 
-1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben.
+1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. A funkció megfelelő működéséhez [GroupName] szerepelnie kell a beállítást.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -166,6 +167,27 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ````
+
+## <a name="remove-the-naming-policy"></a>A kiosztási szabályzat eltávolítása
+
+1. A csoport előtagok és az Azure AD PowerShell utótagok üres.
+  
+  ````
+  $Setting["PrefixSuffixNamingRequirement"] =""
+  ````
+  
+2. Az egyéni letiltott szavakat üres. 
+  
+  ````
+  $Setting["CustomBlockedWordsList"]=""
+  ````
+  
+3. A beállítások mentéséhez.
+  
+  ````
+  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+  ````
+
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Kiosztási szabályzat élményt Office 365-alkalmazások között
 

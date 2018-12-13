@@ -1,23 +1,17 @@
 ---
-title: Valós idejű alkalmazások létrehozása az Azure Functions és az Azure SignalR használatával | Microsoft Docs
+title: Az Azure Functions és az Azure SignalR valós idejű alkalmazások készítése
 description: Az Azure SignalR szolgáltatás kiszolgáló nélküli alkalmazásokban való használatának áttekintése.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
 ms.service: signalr
-ms.devlang: na
 ms.topic: overview
-ms.workload: tbd
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 587752b25e3c98bbabbd42bd4d838fd19ae9fd45
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 9380c6434902c6882f84312a3d6999791bf15115
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318707"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256009"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Valós idejű alkalmazások létrehozása az Azure Functions és az Azure SignalR szolgáltatással
 
@@ -71,4 +65,3 @@ Ez a cikk áttekintést nyújtott arról, hogyan használható az Azure Function
 
 * [Kiszolgáló nélküli Azure SignalR – rövid útmutató – C#](signalr-quickstart-azure-functions-csharp.md)
 * [Kiszolgáló nélküli Azure SignalR – rövid útmutató – JavaScript](signalr-quickstart-azure-functions-javascript.md)
-

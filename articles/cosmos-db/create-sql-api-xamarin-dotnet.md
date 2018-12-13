@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Teendőkezelő alkalmazás fejlesztése Xamarin használatával'
+title: 'Az Azure Cosmos DB: Hozhat létre egy teendőkezelő alkalmazás fejlesztése Xamarin használatával'
 description: A cikk egy Xamarin-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre az adatbázisra vonatkozóan.
 services: cosmos-db
 author: codemillmatt
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: b26f8448f8f7c20d5b38df04b79b8cb42773f44c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f955e0386cd601212eb992870f02607538b537e2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105716"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252626"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Teendőkezelő alkalmazás fejlesztése Xamarin használatával
+# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Az Azure Cosmos DB: Hozhat létre egy teendőkezelő alkalmazás fejlesztése Xamarin használatával
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -64,7 +64,7 @@ Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https:/
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozzuk a Xamarin SQL API-alkalmazást a GitHubról, áttekintjük a kódot, beszerezzük az API-kulcsokat, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.
+Most hozzunk Klónozás a Xamarin SQL API-alkalmazást a Githubról, tekintse át a kódot, szerezze be az API-kulcsokat, és futtassa azt. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -114,9 +114,9 @@ Ez a megoldás bemutatja, hogy hogyan hozhat létre egy teendőkezelő alkalmaz�
 
 A ToDoItems megoldásban található kód az alábbiakat tartalmazza:
 
-* ToDoItems.Core: Ez egy Xamarin.Forms-projektet és az Azure Cosmos DB-ben a teendőket kezelő, megosztott alkalmazáslogikai kódot tartalmazó .NET Standard-projekt.
+* ToDoItems.Core: Ez az a .NET Standard-projekt Xamarin.Forms-projekt és a megosztott kódot tartalmazó Azure Cosmos DB alkalmazáslogikai.
 * ToDoItems.Android: Ez a projekt az Android-alkalmazást tartalmazza.
-* ToDoItems.iOS: Ez a projekt az iOS-alkalmazást tartalmazza.
+* ToDoItems.iOS: Ez a projekt tartalmazza az iOS-alkalmazás.
 
 Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos DB-vel.
 

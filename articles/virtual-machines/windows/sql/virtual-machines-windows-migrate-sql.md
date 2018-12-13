@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628783"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323217"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>SQL Server-adatbázis áttelepítése Azure-beli virtuális gépen futó SQL Serverre
 
@@ -36,7 +36,7 @@ Az elsődleges migrálás módszerek a következők:
 * Válassza le majd másolja az adathoz és naplófájlhoz az Azure blob storage- és URL-címről az SQL Server Azure virtuális Gépen, majd csatolja
 * A helyszíni fizikai gép átalakítása Hyper-V virtuális merevlemez, töltse fel az Azure Blob storage, és telepíteni, a feltöltött új virtuális gépet a virtuális merevlemez
 * Szállítási merevlemez Windows Import/Export szolgáltatás használata
-* Ha rendelkezik egy AlwaysOn telepítése a helyszíni, használja a [Azure replika hozzáadása varázsló](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) replika létrehozásához az Azure és a feladatátvevő, mutasson a felhasználók az Azure database-példány
+* Ha az AlwaysOn rendelkezésre állási csoport központi telepítésének a helyszíni, használja a [Azure replika hozzáadása varázsló](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) replika létrehozásához az Azure és a feladatátvevő, mutasson a felhasználók az Azure database-példány
 * Az SQL Server [tranzakciós replikáció](https://msdn.microsoft.com/library/ms151176.aspx) -előfizetőként az Azure SQL Server-példány konfigurálása, és tiltsa le a replikációt, mutasson a felhasználók az Azure database-példány
 
 > [!TIP]

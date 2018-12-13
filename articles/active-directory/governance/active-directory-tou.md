@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/04/2018
+ms.date: 12/10/2018
 ms.author: rolyon
-ms.openlocfilehash: 85f15c67207128914ef0d0d1051a54a33d757e72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 448ef296af3ceaffffa1a4a69060916afd9abdc4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106277"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185681"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -130,7 +130,7 @@ A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kö
     >[!IMPORTANT]
     >A feltételes hozzáférési szabályzat vezérlői (beleértve a használati feltételeket) nem támogatják a szolgáltatásfiókokra irányuló kényszerítést.  Javasoljuk, hogy zárjon ki minden szolgáltatásfiókot a feltételes hozzáférési szabályzatból.
 
-     Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért lásd: [a rövid útmutató: felhőalkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl szükséges](../conditional-access/require-tou.md).
+     Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért lásd: [a rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl szükséges](../conditional-access/require-tou.md).
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -227,7 +227,7 @@ Szerkesztheti a használati feltételeket tartalmazó fájl bizonyos részleteit
 
 1. Kattintson a **mentése** a módosítások mentéséhez.
 
-    A módosítások mentése után a felhasználóknak kell fogadnia hatókörébe.
+    A módosítások mentése után a felhasználók nem kell ezeket a szerkesztéseket hatókörébe.
 
 ## <a name="add-a-terms-of-use-language"></a>A használati feltételek használata nyelv hozzáadása
 Az alábbi eljárás ismerteti, hogyan lehet a használati feltételek használata nyelv hozzáadása.
@@ -334,46 +334,46 @@ Feltételes hozzáférési szabályzatot konfigurálni ahhoz a Microsoft Intune 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K: Hogyan ellenőrizhetem, hogy egy felhasználó elfogadta-e a használati feltételeket (és ha igen, mikor)?**</br>
-V: a használati panel a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért lásd: [megtekintheti a jelentést, akik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
+**KÉRDÉS: Hogyan ellenőrizhetem amikor / felhasználó a használati feltételek elfogadása?**</br>
+VÁLASZ: A panel használata a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért lásd: [megtekintheti a jelentést, akik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
 
-**K: Mennyi ideig tárolódnak az információk?**</br>
-V: a felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fogadta el a használati feltételeket élettartama tárolt feltételeit. Az Azure AD naplózási naplót 30 napig tárol.
+**KÉRDÉS: Mennyi ideig őrzi meg tárolt adatokat?**</br>
+VÁLASZ: A felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fogadta el a használati feltételeket élettartama tárolt feltételeit. Az Azure AD naplózási naplót 30 napig tárol.
 
-**K: Miért láthatók a feltételeit, és az Azure AD használati jelentés címtárbérlőhöz különböző számú naplók?**</br>
-V: a használati jelentés használati tárolja a használati feltételeket, miközben a naplót 30 napig tárol az Azure AD naplózási élettartama. A használati jelentés használatát is, csak a felhasználók aktuális jóváhagyási állapotot jeleníti meg. Például ha egy felhasználó elutasítja, és majd elfogadja a használati jelentés használata csak akkor jelenik meg, hogy a felhasználó fogadja el. Ha szeretne látni a korábbi, használhatja az Azure AD auditnaplóinak.
+**KÉRDÉS: Miért látok a feltételeit, és az Azure AD használati jelentés címtárbérlőhöz különböző számú naplók?**</br>
+VÁLASZ: A használati jelentés használata a használati feltételeket, miközben a naplót 30 napig tárol az Azure AD naplózási élettartama nem történik. A használati jelentés használatát is, csak a felhasználók aktuális jóváhagyási állapotot jeleníti meg. Például ha egy felhasználó elutasítja, és majd elfogadja a használati jelentés használata csak akkor jelenik meg, hogy a felhasználó fogadja el. Ha szeretne látni a korábbi, használhatja az Azure AD auditnaplóinak.
 
-**K: Ha a használati feltételek részleteinek tudom szerkeszteni, azt igényel a felhasználóknak újra el kell fogadniuk?**</br>
-V: Igen, ha egy rendszergazda szerkeszt a részletek a használati feltételeket, eléréséhez a felhasználóknak az új feltételeket hatókörébe.
+**KÉRDÉS: Tudom szerkeszteni a részletek a használati feltételeket, ha nem írja elő a felhasználóknak újra el kell fogadniuk?**</br>
+VÁLASZ: Nem, ha egy rendszergazda szerkeszt a részletek a használati feltételek (nevet, megjelenítendő nevet, felhasználóknak legyen kötelező vagy nyelv hozzáadása), nem szükséges a felhasználók számára az új feltételeket hatókörébe.
 
-**K: frissíti egy meglévő használati feltételek dokumentuma?**</br>
-Válasz: egy meglévő használati feltételek dokumentuma jelenleg nem lehet frissíteni. Ha módosítani szeretné a használati feltételek dokumentuma, akkor új feltételek használata-példány létrehozása.
+**KÉRDÉS: Frissíti egy meglévő használati feltételek dokumentuma is?**</br>
+VÁLASZ: Jelenleg nem lehet frissíteni egy meglévő használati feltételek dokumentuma. Ha módosítani szeretné a használati feltételek dokumentuma, akkor új feltételek használata-példány létrehozása.
 
-**K: Ha a hivatkozások a használati feltételek PDF dokumentuma van, a végfelhasználók fogja tudni azokra kattint?**</br>
-V: a PDF-fájl jelenik meg alapértelmezés szerint, JPEG, így nem kattintható hivatkozások állnak. Felhasználók rendelkeznek a kívánt **megtekintéssel? Kattintson ide a**, amely a PDF-fájl rendereli natív módon, a hivatkozások támogatottak.
+**KÉRDÉS: Ha a hivatkozások a használati feltételek PDF dokumentuma, a végfelhasználók fogja tudni azokra kattint?**</br>
+VÁLASZ: A PDF-fájl jelenik meg alapértelmezés szerint, JPEG, így nem kattintható hivatkozások állnak. Felhasználók rendelkeznek a kívánt **megtekintéssel? Kattintson ide a**, amely a PDF-fájl rendereli natív módon, a hivatkozások támogatottak.
 
-**K: A használati feltételek több nyelv használatát is támogatják?**</br>
-V: Igen. Jelenleg nincsenek 108 több különböző nyelvet a rendszergazda konfigurálhatja egy egyetlen használati feltételeit.
+**KÉRDÉS: Használati feltételek több nyelv támogatása is?**</br>
+VÁLASZ: Igen. Jelenleg nincsenek 108 több különböző nyelvet a rendszergazda konfigurálhatja egy egyetlen használati feltételeit. A rendszergazdák több PDF-dokumentumok feltöltése, és ezeket a dokumentumokat a megfelelő nyelvű (akár 108) címkét. Amikor a végfelhasználók jelentkeznek be, azt tekintse meg a böngésző nyelvi beállításait, és megjeleníti az egyező dokumentumok. Ha nem szerepel, hogy az alapértelmezett dokumentum, amely az első dokumentum feltöltött jelennek meg.
 
-**K: Mikor lépnek életbe a használati feltételek?**</br>
-V: A használati feltételek a bejelentkezéskor lépnek életbe.
+**KÉRDÉS: Ha van a használati feltételek?**</br>
+VÁLASZ: A használati feltételeket a bejelentkezési élmény során aktiválódik.
 
-**K: Mely alkalmazásokhoz használhatom a használati feltételeket?**</br>
-V: Feltételes hozzáférési szabályzatot a modern hitelesítést használó vállalati alkalmazásokhoz hozhat létre.  Bővebb információ: [vállalati alkalmazások](./../manage-apps/view-applications-portal.md).
+**KÉRDÉS: Mely alkalmazásokhoz használhatom a használati feltételeket?**</br>
+VÁLASZ: Feltételes hozzáférési szabályzatot a modern hitelesítést használó vállalati alkalmazásokhoz hozhat létre.  Bővebb információ: [vállalati alkalmazások](./../manage-apps/view-applications-portal.md).
 
-**K: Több használati feltételt is hozzáadhatok egy adott felhasználóhoz vagy alkalmazáshoz?**</br>
-V: Igen, ha több feltételes hozzáférési szabályzatot is létrehoz az adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati hatókörébe esik, el kell fogadniuk egy használati feltételek egyszerre.
+**KÉRDÉS: Egy adott felhasználó vagy alkalmazás is hozzáadhatok több használati feltételeket?**</br>
+VÁLASZ: Igen, több feltételes hozzáférési szabályzatok létrehozásával adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati hatókörébe esik, el kell fogadniuk egy használati feltételek egyszerre.
  
-**K: Mi történik akkor, ha egy felhasználó nem fogadja el a használati feltételeket?**</br>
-V: Ebben az esetben a felhasználón nem kaphat hozzáférést az alkalmazáshoz. Jelentkezzen be újra, és fogadja el a feltételeket ahhoz, hogy a hozzáférést a felhasználónak kell.
+**KÉRDÉS: Mi történik, ha a felhasználó elutasítja a használati feltételeket?**</br>
+VÁLASZ: A felhasználó hozzáférése az alkalmazáshoz való hozzáférés le van tiltva. Jelentkezzen be újra, és fogadja el a feltételeket ahhoz, hogy a hozzáférést a felhasználónak kell.
  
-**K: van unaccept a korábban elfogadott használati feltételeket?**</br>
-V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalmazó fájl](#how-users-can-review-their-terms-of-use), de jelenleg nincs unaccept lehetővé.
+**KÉRDÉS: Az is unaccept a korábban elfogadott használati feltételeket?**</br>
+VÁLASZ: Is [felülvizsgálati korábban elfogadott használati feltételeket tartalmazó fájl](#how-users-can-review-their-terms-of-use), de jelenleg nincs unaccept lehetővé.
 
-**K: Mi történik, ha az Intune használati feltételeket is használata?**</br>
-V: Ha konfigurálta a két Azure AD használati feltételek és [Intune használati feltételek](/intune/terms-and-conditions-create), a felhasználó köteles fogadnia mindkettőt. További információkért lásd: a [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+**KÉRDÉS: Mi történik, ha az Intune használati feltételeket is használata?**</br>
+VÁLASZ: Ha konfigurálta is az Azure AD használati feltételek és [Intune használati feltételek](/intune/terms-and-conditions-create), a felhasználó köteles fogadnia mindkettőt. További információkért lásd: a [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: A felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](../conditional-access/require-tou.md)
+- [Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](../conditional-access/require-tou.md)
 - [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](../conditional-access/best-practices.md)

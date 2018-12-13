@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: c437f350e394dc8c264903508a2a5a66fa8225a7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346861"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161984"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Az Azure Stream Analytics-lekérdezések hibaelhárítása
 
@@ -47,47 +48,47 @@ A valós idejű feldolgozásához az adatok néz ki a lekérdezés közepén ism
 
 A következő példalekérdezés az Azure Stream Analytics-feladat egy adatfolyam-bemenetre, két referenciaadat típusú bemenetek és az Azure Table Storage-kimenet rendelkezik. A lekérdezés csatlakozik az event hubs és a két hivatkozás blobok nevét és kategóriáját információkat adatait:
 
-![A SELECT INTO. példalekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Stream Analytics a SELECT INTO. példalekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
 Vegye figyelembe, hogy a feladat fut, de nincsenek események előállítása folyamatban van a kimenetben. Az a **figyelés** csempén látható itt, láthatja, hogy a bemeneti van olyan adatokat, de nem tudja, melyik lépés a **CSATLAKOZZON** lehet elvetni az összes esemény miatt.
 
-![A figyelés csempe](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![A Stream Analytics figyelése csempe](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
 Ebben az esetben néhány további SELECT INTO utasítások a "bejelentkezés" a köztes ILLESZTÉS eredményei és a bemenetről beolvasott adatokat adhat hozzá.
 
 Ebben a példában lehetőségekkel bővült két új "ideiglenes kimenetek." Ezek lehetnek bármilyen fogadóba Öntől. Azure Storage itt példaként használjuk:
 
-![Extra SELECT INTO utasítások hozzáadása](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Stream Analytics-lekérdezés extra SELECT INTO utasítások hozzáadása](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
 Majd módosíthatja a lekérdezést, ehhez hasonló:
 
-![Átdolgozta SELECT INTO lekérdezést](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![Átdolgozta válassza ki az Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
 Most indítsa el újra a feladatot, és biztosítani, hogy néhány percig. Majd lekérdezheti temp1 és a Visual Studio Cloud Explorer előállítására a következő táblázatok temp2:
 
 **temp1 tábla**
-![a SELECT INTO temp1 tábla](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+![a SELECT INTO temp1 tábla Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **temp2 tábla**
-![a SELECT INTO temp2 tábla](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+![a SELECT INTO temp2 tábla Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Amint láthatja, temp1 és a temp2 egyaránt rendelkeznek az adatokat, és az oszlop helyesen van-e feltöltve temp2. Azonban mert nem szerepel továbbra is megjeleníthető adat a kimenetben, valami probléma:
 
-![A SELECT INTO output1 tábla adatot nem tartalmazó](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![A SELECT INTO output1 tartalmazó tábla nem data Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 Az adatok mintavételezésének, biztos lehet majdnem biztos, hogy a probléma van a második való CSATLAKOZÁST. Töltse le a referencia-adatok a blobból, és tekintse meg:
 
-![A SELECT INTO ref tábla](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![A SELECT INTO "ref" Stream Analytics lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
 Amint láthatja, a GUID, amely a referenciaadatok formátuma formátuma eltér az [a] oszlopában temp2. Ezért az adatok nem érkeznek output1 a várt módon.
 
 Javítsa ki az adatok formátumát, töltse fel a blob hivatkoznak, és próbálkozzon újra:
 
-![A SELECT INTO ideiglenes tábla](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![A SELECT INTO ideiglenes tábla Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
 Ebben az esetben az adatok a kimenetben formázott és kitölti a várt módon.
 
-![A SELECT INTO végső táblázatba](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![A SELECT INTO végső táblázatba Stream Analytics-lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>Segítségkérés
 

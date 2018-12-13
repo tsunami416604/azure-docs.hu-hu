@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: d75df381f1afc17d291fe0a477078acb3435019c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 46b00e102cbf5e981ac7036de65232e869dc9651
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958134"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272701"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -21,7 +21,7 @@ A **Azure-tevékenységnapló** van egy előfizetési napló, amely az Azure-ban
 
 ![Tevékenység-naplók és egyéb típusú naplók ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
 
-1. ábra: Tevékenységeket tartalmazó naplók és egyéb típusú naplók
+1. ábra: Tevékenység-naplók és egyéb típusú naplók
 
 A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md). A Tevékenységnaplók adatait a műveletek egy erőforráson kívülről (a "vezérlősík"). Diagnosztikai naplók az erőforrás által kibocsátott vannak, és adja meg a műveletet az erőforrás (az "adatsík") kapcsolatos információkat.
 
@@ -33,14 +33,14 @@ A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diag
 A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-parancsmagok használatával lehet lekérdezni események és az Azure Monitor REST API-t.
 
 > [!NOTE]
-> [Az újabb riasztások](monitoring-overview-alerts.md) ajánlat hatékonyabb, ha jelentkeznek be riasztási szabályok létrehozása és kezelése a tevékenység.  [További információk](alert-activity-log.md).
+> [Az újabb riasztások](monitoring-overview-alerts.md) ajánlat hatékonyabb, ha jelentkeznek be riasztási szabályok létrehozása és kezelése a tevékenység.  [További információk](../azure-monitor/platform/alerts-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
 A tevékenységnapló megjelenítése és adatokat. További részletek a sémák szerializálása e kategóriák közül a [ebben a cikkben](monitoring-activity-log-schema.md). Ezek a következők:
 * **Felügyeleti** – ezt a kategóriát tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
-* **A Service Health** – Ez a kategória tartalmazza a service health az Azure-ban bekövetkezett események rekord. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "SQL Azure, az USA keleti régiójában üzemen kívül van." A Szolgáltatásállapot-események az öt fajta származnak: szükséges művelet, eszközkapcsolat helyreállítási, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforráshoz lenne hatással lehet az esemény-előfizetés.
-* **A Resource Health** – Ez a kategória tartalmazza azt a rekordot a az Azure-erőforrások előfordult resource health események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Virtuális gép állapot nem érhető el értékre módosult." Közelmúltbeli állapotesemények hozhat létre négy egészségügyi állapotok egyike: érhető el, nem érhető el, csökkentett teljesítményű és ismeretlen. Emellett a resource health-események csoportosíthatók, hogy a Platform vagy a felhasználó által kezdeményezett.
+* **A Service Health** – Ez a kategória tartalmazza a service health az Azure-ban bekövetkezett események rekord. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "SQL Azure, az USA keleti régiójában üzemen kívül van." A Szolgáltatásállapot-események az öt fajta származnak: Beavatkozás szükséges, helyreállítási eszközkapcsolat, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforráshoz lenne hatással lehet az esemény-előfizetés.
+* **A Resource Health** – Ez a kategória tartalmazza azt a rekordot a az Azure-erőforrások előfordult resource health események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Virtuális gép állapot nem érhető el értékre módosult." Közelmúltbeli állapotesemények hozhat létre négy egészségügyi állapotok egyike: Elérhető, nem érhető el, csökkentett teljesítményű vagy ismeretlen. Emellett a resource health-események csoportosíthatók, hogy a Platform vagy a felhasználó által kezdeményezett.
 * **Riasztási** – Ez a kategória összes aktiválás az Azure-riasztások rekordja látható. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "százalékos processzorhasználatról a myVM már több mint 80-as az elmúlt 5 percben." Azure rendszerek különböző rendelkezik egy riasztási elv – valamilyen szabály meghatározása, és értesítést kaphat, ha a feltétel egyezik az szabályokat. Minden alkalommal, amikor egy támogatott Azure riasztástípus "aktiválja,", vagy értesítést hozhat létre, hogy a feltételek teljesülnek, egy rekord, az aktiválás szintén leküldéssel ebbe a kategóriába, a tevékenységnapló.
 * **Automatikus skálázási** – Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatikus skálázási beállítások alapján automatikus skálázási motor a művelethez kapcsolódó események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Automatikus vertikális felskálázási művelet sikertelen volt." Használja az automatikus méretezés, akkor lehet automatikusan horizontálisan felskálázhatja vagy leskálázhatja a támogatott erőforrástípus a példányok számának napi és/vagy terhelési () metrikaadatok egy automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek teljesülnek felfelé vagy lefelé méretezés, a kezdő és a sikeres és sikertelen események ebbe a kategóriába vannak rögzítve.
 * **Az ajánlás** – Ez a kategória javaslattételi események az Azure Advisor tartalmaz.
@@ -57,7 +57,7 @@ Az alábbiakban néhány, a tevékenységnapló megteheti:
 
 
 * Lekérdezni és megtekinteni azt a a **az Azure portal**.
-* [Egy tevékenységnapló eseményéhez, hozzon létre egy riasztást.](monitoring-activity-log-alerts.md)
+* [Egy tevékenységnapló eseményéhez, hozzon létre egy riasztást.](../azure-monitor/platform/activity-log-alerts.md)
 * [Stream, hogy egy **Eseményközpont** ](monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 * A Power bi használatával elemezhetők a [ **Power bi-tartalomcsomag**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Mentse azt egy **Tárfiók** archív vagy manuális ellenőrzést](monitoring-archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **Naplóprofil**.

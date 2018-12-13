@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli alkalmazás vertikális felskálázása |} A Microsoft Docs
+title: Vertikális felskálázás funkciók és - kapacitások és az Azure App Service |} A Microsoft Docs
 description: Útmutató az Azure App Service kapacitás és funkciókat adhat hozzá alkalmazás vertikális felskálázása.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: e612fc6ce737fba1552c4eacbab133783c9994dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971232"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251052"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Az Azure-beli alkalmazás vertikális felskálázása
 
@@ -29,8 +30,8 @@ ms.locfileid: "52971232"
 
 Ez a cikk bemutatja, hogyan skálázhatja őket az Azure App Service-ben. Két munkafolyamatok méretezési, méretezhető felfelé és horizontális felskálázás, és ez a cikk ismerteti a vertikális felskálázásos munkafolyamat.
 
-* [Vertikális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több Processzor, memória, lemezterület és extra funkciók, például dedikált virtuális gépeken (VM), az egyéni tartományok és a tanúsítványok, előkészítési pontok, automatikus skálázást és egyéb beolvasása. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service-csomag.
-* [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje az alkalmazást futtató Virtuálisgép-példányok számát.
+* [Vertikális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Több Processzor, memória, lemezterület és extra funkciók, például dedikált virtuális gépeken (VM), az egyéni tartományok és a tanúsítványok, előkészítési pontok, automatikus skálázást és egyéb beolvasása. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service-csomag.
+* [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Az alkalmazást futtató Virtuálisgép-példányok számának növelése.
   Horizontálisan akár 20 példány, hogy a tarifacsomagtól függően. [App Service Environment-környezetek](environment/intro.md) a **elkülönített** szint tovább növeli a horizontális felskálázás count 100 példány. További információ a horizontális felskálázás: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md). Itt megtudhatja, hogyan az automatikus skálázást, amely a példányok száma automatikusan alapján előre meghatározott szabályok és ütemezések méretezését.
 
 A méretezési csoport beállításai csak érvényesek, és hatással vannak az összes alkalmazása másodpercig is eltarthat a [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
@@ -98,7 +99,7 @@ Szolgáltatási korlátok, kvóták, és a korlátozások és támogatott szolg�
   
     [Virtuális gép és Felhőszolgáltatás-méretek esetében a Microsoft Azure][vmsizes]
   
-* További információ az Azure App Service-ben ajánlott eljárások létrehozása egy méretezhető és rugalmas architektúra, beleértve: [ajánlott eljárások: az Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
+* További információ az Azure App Service-ben ajánlott eljárások létrehozása egy méretezhető és rugalmas architektúra, beleértve: [ajánlott eljárásokat: Az Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
 * Videók a méretezés App Service-alkalmazások a következő forrásanyagokban talál:
   
   * [Mikor érdemes méretezni az Azure Websites – a Lengyel Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)

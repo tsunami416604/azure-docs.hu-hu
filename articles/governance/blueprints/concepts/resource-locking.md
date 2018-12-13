@@ -1,5 +1,5 @@
 ---
-title: Erőforrás zárolása az Azure-tervek ismertetése
+title: Erőforrás zárolása ismertetése
 description: Ismerje meg az erőforrások védelme a tervezet hozzárendelésekor zárolási beállítások.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4e71797837927fe5f5233bcf88d35fef98f504e9
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 0e272f7137967b545269a408b6e83552de532682
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139442"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309433"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
@@ -21,9 +22,9 @@ A nagy mennyiségű egységes környezetet létrehozása csak akkor valóban a l
 
 ## <a name="locking-modes-and-states"></a>Zárolási mód és állapotok
 
-Zárolási mód vonatkozik a tervezet-hozzárendelést, és csak két pontot tartalmaz: **nincs** vagy **összes erőforrás**. A zárolási mód tervezet-hozzárendelés során van konfigurálva, és nem módosítható, miután a hozzárendelés sikerült alkalmazni az előfizetéshez.
+Zárolási mód vonatkozik a tervezet-hozzárendelést, és csak két pontot tartalmaz: **Nincs** vagy **összes erőforrás**. A zárolási mód tervezet-hozzárendelés során van konfigurálva, és nem módosítható, miután a hozzárendelés sikerült alkalmazni az előfizetéshez.
 
-A tervezet-hozzárendelést az összetevők által létrehozott erőforrásokat három állapota van: **nincs zárolva**, **csak olvasható**, vagy **nem Szerkesztés / Törlés**. Minden egyes összetevő lehet a **nincs zárolva** állapota. Van azonban, hogy nem erőforráscsoport összetevők **csak olvasható** és erőforráscsoportok **nem módosítása / törlése** állapotok. Ez a különbség fontos különbség az, hogy hogyan kezeli az ezekhez az erőforrásokhoz.
+A tervezet-hozzárendelést az összetevők által létrehozott erőforrásokat három állapota van: **Sok mindent megváltoztathat**, **csak olvasható**, vagy **nem Szerkesztés / Törlés**. Minden egyes összetevő lehet a **nincs zárolva** állapota. Van azonban, hogy nem erőforráscsoport összetevők **csak olvasható** és erőforráscsoportok **nem módosítása / törlése** állapotok. Ez a különbség fontos különbség az, hogy hogyan kezeli az ezekhez az erőforrásokhoz.
 
 A **csak olvasható** állapota pontosan a meghatározott: az erőforrás nem módosítható bármilyen módon – nem végez módosítást, és nem törölhető. A **nem Szerkesztés / Törlés** erőforráscsoportok "container" jellege miatt több árnyalt. Az erőforrás-csoport objektum csak olvasható, de módosításokat nem zárolt erőforrások az erőforráscsoporton belül lehetséges.
 

@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre, kezelhet és secure admin és lekérdezési api-kulcsok az Azure Search |} A Microsoft Docs
+title: Hozzon létre, kezelhet és secure admin és lekérdezési api-kulcsok – Azure Search
 description: API-kulcsok a szolgáltatásvégpont való hozzáférés szabályozása. Az adminisztrációs kulcsok írási hozzáférést. Lekérdezési kulcsok a csak olvasási hozzáféréssel is létrehozható.
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0a8975fad21645535a6e7407bcd2d59f537a9fff
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec2018
+ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727973"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316927"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Az Azure Search szolgáltatás api-kulcsok létrehozása és kezelése
 
@@ -67,7 +68,7 @@ Kulcsfontosságú biztonsági biztosított korlátozza a hozzáférést a portá
 
 + A szolgáltatás irányítópultján kattintson **hozzáférés-vezérlés (IAM)** , majd a **szerepkör-hozzárendelések** fülre kattintva megtekintheti a szolgáltatás szerepkör-hozzárendeléseit.
 
-A következő szerepkörök tagjai megtekinthetik és kulcsok újragenerálása: tulajdonos, közreműködő, [keresési szolgáltatás közreműködők](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Megtekintheti és kulcsok újragenerálása a következő szerepkörök tagjai: Tulajdonos, közreműködő, [szolgáltatás közreműködők keresése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
 > A keresési eredmények az identitásalapú hozzáférés létrehozhat által identitás, az eredmények azokat a biztonsági szűrők, amelynek a kérelmező nem szeretett volna dokumentumok eltávolítása. További információkért lásd: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [az Active Directory biztonságos](search-security-trimming-for-azure-search-with-aad.md).

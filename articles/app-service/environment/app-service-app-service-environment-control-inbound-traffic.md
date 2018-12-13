@@ -1,6 +1,6 @@
 ---
-title: Az App Service-környezetek bejövő forgalom vezérlése
-description: További tudnivalók az App Service-környezetek bejövő forgalmat hálózati biztonsági szabályok konfigurálása.
+title: App Service Environment - Azure bejövő forgalom szabályozása
+description: Ismerje meg az App Service-környezet bejövő forgalom szabályozása a hálózati biztonsági szabályok konfigurálása.
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -14,112 +14,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ed72bf3202d6cb2d2161bc0df693d3e6a1fc58ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836923"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271974"
 ---
-# <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Az App Service-környezetek bejövő forgalom vezérlése
+# <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Az App Service-környezet bejövő forgalom szabályozása
 ## <a name="overview"></a>Áttekintés
-Az App Service-környezetek hozhatók létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell [virtuális hálózati][virtualnetwork].  Egy új virtuális hálózat és az új alhálózat egy App Service Environment-környezet létrehozásakor adhatók meg.  Másik lehetőségként az App Service-környezetek is létrehozható egy már meglévő virtuális hálózat és a korábban létrehozott alhálózati.  2016. június a módosítások a ASEs is is telepíthető az nyilvános címtartományt, vagy RFC1918 címterek (azaz Magáncímeket) használó virtuális hálózatok.  További információ az App Service-környezetek létrehozásáról: [egy App Service Environment-környezet létrehozása][HowToCreateAnAppServiceEnvironment].
+Az App Service-környezet hozható létre **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** klasszikus telepítési modell [virtuális hálózat] [ virtualnetwork].  App Service-környezet létrehozásakor egy új virtuális hálózat és egy új alhálózatot kell meghatározni.  Azt is megteheti App Service-környezet is létrehozható egy már meglévő virtuális hálózat és a meglévő alhálózat.  2016. június egyik módosítását az ASE is üzembe helyezhetők a címtartomány nyilvános, vagy az RFC1918 címterek (azaz a magánhálózati címek) használó virtuális hálózatokra.  További részleteket az App Service-környezet létrehozása [App Service-környezet létrehozása][HowToCreateAnAppServiceEnvironment].
 
-Egy App Service Environment-környezet mindig kell létrehozni egy alhálózaton belül, mert alhálózat biztosít egy olyan hálózathatárhoz zárolását bejövő forgalom mögött fölérendelt eszközöket és szolgáltatásokat úgy, hogy a HTTP és HTTPS-forgalom felsőbb rétegbeli IP-címek csak elfogadható használható.
+App Service-környezet mindig belül kell létrehoznia egy alhálózathoz, mert az alhálózat biztosít egy hálózathatárt, amely zárolhat rétegbeli eszközök és szolgáltatások mögötti bejövő forgalmat, hogy az adott csak elfogadja a HTTP és HTTPS-forgalom használható felsőbb rétegbeli IP-címeket.
 
-Bejövő és kimenő hálózati forgalom az alhálózat segítségével kezelhető egy [hálózati biztonsági csoport][NetworkSecurityGroups]. Bejövő forgalom vezérlése hoz létre a hálózati biztonsági szabályok a hálózati biztonsági csoport, és ezután a hálózati biztonsági csoport az App Service-környezet tartalmazó alhálózat szükséges.
+Bejövő és kimenő hálózati forgalmat egy alhálózaton található szabályzatokkal vezérelhető a [hálózati biztonsági csoport][NetworkSecurityGroups]. Hálózati biztonsági szabályok létrehozása egy hálózati biztonsági csoportot, és majd hozzárendelése a hálózati biztonsági csoportot az alhálózatot, amely tartalmazza az App Service Environment bejövő forgalom szabályozása igényel.
 
-Ha hálózati biztonsági csoport alhálózathoz van hozzárendelve, az App Service Environment-környezet az alkalmazások bejövő forgalmát engedélyezett/zárolva van alapján az engedélyezési és megtagadási szabályoknak a hálózati biztonsági csoport meghatározott.
+Hálózati biztonsági csoport hozzárendelése egy alhálózathoz, után az App Service-környezet az alkalmazások bejövő forgalmának engedélyezett/zárolva van alapján az engedélyezési és megtagadási szabályoknak a hálózati biztonsági csoport meghatározott.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>Szerepel az App Service-környezetek bejövő hálózati portok
-A hálózati biztonsági csoportok bejövő hálózati forgalom zárolása, mielőtt fontos tudni, hogy a szükséges és választható hálózati portok – az App Service-környezetek készletét.  Bizonyos portok felé irányuló forgalom ki véletlenül bezárja azt eredményezheti, hogy működésképtelenné egy App Service Environment-környezetben.
+## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>App Service Environment-környezetben használt bejövő hálózati portok
+A hálózati biztonsági csoport bejövő hálózati forgalom meghatározott sémákra kelljen, mielőtt fontos tudni, hogy az App Service-környezet által használt szükséges és választható hálózati portok készletét.  Bizonyos portok forgalom ki véletlenül bezárja azt eredményezheti, hogy működésképtelenné App Service Environment-környezetben.
 
-Az App Service Environment-környezet által használt portok listája a következő: Minden portjait **TCP**, ha nincs másként jelezve egyértelműen:
+App Service-környezet által használt portok listáját a következő: Minden port **TCP**, ha másként nincs jelezve egyértelműen:
 
-* 454: **port szükséges** kezelése és karbantartása az App Service Environment-környezetek SSL-en keresztüli Azure-infrastruktúra használják.  Blokkolja ezt a portot irányuló forgalmat.  Ez a port mindig egy hajlamosnak nyilvános VIP van kötve.
-* 455: **port szükséges** kezelése és karbantartása az App Service Environment-környezetek SSL-en keresztüli Azure-infrastruktúra használják.  Blokkolja ezt a portot irányuló forgalmat.  Ez a port mindig egy hajlamosnak nyilvános VIP van kötve.
-* 80: alapértelmezett port a bejövő HTTP-forgalmat az App Service-csomag egy App Service Environment-környezetben futó alkalmazások számára.  A ILB-kompatibilis ASE ezt a portot a ASE ILB címét van kötve.
-* 443-as: alapértelmezett port a bejövő SSL forgalmát az App Service-csomag egy App Service Environment-környezetben futó alkalmazások.  A ILB-kompatibilis ASE ezt a portot a ASE ILB címét van kötve.
-* 21: FTP-vezérlőcsatorna.  Ez a port biztonságosan blokkolható, ha az FTP nem használja.  Egy ILB-kompatibilis ASE a ezt a portot is köthető ILB címre egy ASE a.
-* 990: ftps-t a vezérlőcsatornához.  Ez a port biztonságosan blokkolható, ha még nem használ ftps-t.  Egy ILB-kompatibilis ASE a ezt a portot is köthető ILB címre egy ASE a.
-* 10001-10020: FTP-adatcsatornákhoz.  Csakúgy, mint a vezérlőcsatorna, ezeket a portokat biztonságosan blokkolható Ha FTP nincs használatban.  A ILB-kompatibilis ASE ezt a portot a ASE ILB cím köthető.
-* 4016: a Visual Studio 2012 távoli hibakereséshez.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  A ILB-kompatibilis ASE ezt a portot a ASE ILB címét van kötve.
-* 4018: a Visual Studio 2013 távoli hibakereséshez.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  A ILB-kompatibilis ASE ezt a portot a ASE ILB címét van kötve.
-* 4020: a Visual Studio 2015-höz távoli hibakereséshez.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  A ILB-kompatibilis ASE ezt a portot a ASE ILB címét van kötve.
+* 454:  **Szükséges port** kezelésével és karbantartásával App Service Environment-környezetek SSL-en keresztül az Azure-infrastruktúra által használt.  Nem blokkolja a forgalmat ezen a porton.  Ezt a portot a nyilvános virtuális IP-cím egy ASE környezethez mindig van kötve.
+* 455:  **Szükséges port** kezelésével és karbantartásával App Service Environment-környezetek SSL-en keresztül az Azure-infrastruktúra által használt.  Nem blokkolja a forgalmat ezen a porton.  Ezt a portot a nyilvános virtuális IP-cím egy ASE környezethez mindig van kötve.
+* 80:  Alapértelmezett port a bejövő HTTP-forgalom App Service-csomagban App Service Environment-környezetben futó alkalmazásokra.  Ez a port az ASE ILB-kompatibilis, az ASE ILB-címmel van kötve.
+* 443: Alapértelmezett port bejövő SSL-forgalmat az App Service-csomagok App Service Environment-környezetben futó alkalmazásokra.  Ez a port az ASE ILB-kompatibilis, az ASE ILB-címmel van kötve.
+* 21:  Az FTP-Kiszolgálójának vezérlőcsatorna.  Ez a port biztonságosan blokkolható, ha az FTP nem használja.  Az ASE ILB-kompatibilis ezt a portot is köthető az ILB-esetében egy ASE Környezethez.
+* 990:  FTPS vezérlőcsatorna.  Ez a port biztonságosan blokkolható, ha FTPS nincs használatban.  Az ASE ILB-kompatibilis ezt a portot is köthető az ILB-esetében egy ASE Környezethez.
+* 10001-10020: FTP-adatcsatornák.  Csakúgy, mint a vezérlőcsatorna, ezeket a portokat biztonságosan blokkolható, ha az FTP nem használja.  Az ASE ILB-kompatibilis ezt a portot is köthető az ASE ILB-címmel.
+* 4016: Távoli hibakeresés a Visual Studio 2012 használja.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  Ez a port az ASE ILB-kompatibilis, az ASE ILB-címmel van kötve.
+* 4018: Távoli hibakeresés a Visual Studio 2013 használja.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  Ez a port az ASE ILB-kompatibilis, az ASE ILB-címmel van kötve.
+* 4020: Távoli hibakeresés a Visual Studio 2015-öt használja.  Ez a port biztonságosan blokkolható, ha a szolgáltatás nem használja.  Ez a port az ASE ILB-kompatibilis, az ASE ILB-címmel van kötve.
 
-## <a name="outbound-connectivity-and-dns-requirements"></a>Kimenő kapcsolatok és a DNS-követelmények
-Egy App Service Environment-környezet megfelelő működéséhez ez is igényli a különböző végpontok kimenő hozzáférést. "A hálózati kapcsolat szükséges" szakaszában van a külső végpontok egy ASE által használt teljes listáját a [ExpressRoute tartozó fürthálózat-konfiguráció](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) cikk.
+## <a name="outbound-connectivity-and-dns-requirements"></a>Kimenő kapcsolat és DNS-követelmények
+Az App Service-környezet megfelelő működéséhez azt is megköveteli a különféle végpontok a kimenő hozzáférést. Az "A hálózati kapcsolat szükséges" szakaszában szerepel a külső végpontokat az ASE által használt teljes listáját a [az ExpressRoute hálózati konfiguráció](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) cikk.
 
-App Service-környezetek virtuális hálózat egy érvényes DNS-infrastruktúra szükséges.  Ha bármilyen okból az App Service Environment-környezet létrehozása után a DNS-konfiguráció módosul, a fejlesztők kényszerítheti az App Service-környezet az új DNS-konfiguráció érvényesítéséhez.  Az az App Service Environment-felügyelet panel tetején található indítására, a "Restart" ikonnal működés közbeni környezet újraindítás a [Azure-portálon] [ NewPortal] okoz a környezetben, az új DNS-konfiguráció érvényesítéséhez.
+App Service Environment-környezetek egy érvényes DNS-infrastruktúra a virtuális hálózat szükséges.  Ha bármilyen okból a DNS-konfigurációt egy App Service Environment-környezet létrehozása után módosul, a fejlesztők kényszerítheti egy App Service Environment folytattuk a munkát az új DNS-konfiguráció.  Az az App Service Environment-felügyelet panel tetején található "Restart" ikonra működés közbeni környezet újraindítás elindítása a [az Azure portal] [ NewPortal] okoz az új DNS-t választja ki a környezet konfiguráció.
 
-Ajánlott továbbá, hogy a virtuális hálózaton egyéni DNS-kiszolgálók kell-e a telepítő az App Service Environment-környezet létrehozása előtt időben.  Ha egy virtuális hálózat DNS-konfiguráció megváltozott egy App Service Environment-környezet létrehozása közben, az App Service Environment-környezet létrehozása folyamat sikertelen vezethet.  Egy hasonló tekintettel az egy egyéni DNS-kiszolgáló létezik a VPN-átjáró másik végén, és a DNS-kiszolgáló nem érhető el vagy nem érhető el, ha az App Service Environment-környezet létrehozása is sikertelen lesz.
+Emellett javasoljuk, hogy minden egyéni DNS-kiszolgáló a virtuális hálózaton kell-e időben App Service-környezet létrehozása előtt a telepítő.  Ha egy virtuális hálózat DNS-konfiguráció módosul, míg az App Service-környezet létrehozása folyamatban van, az App Service Environment-környezet létrehozása folyamat sikertelen, amely fog eredményezni.  Egy hasonló tekintettel az egyéni DNS-kiszolgáló létezik VPN gateway másik végén, és a DNS-kiszolgáló nem érhető el vagy nem érhető el, ha az App Service Environment-környezet létrehozása is sikertelen lesz.
 
-## <a name="creating-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Teljes hogyan hálózati biztonsági csoportok témakör a következő [információk][NetworkSecurityGroups].  Az Azure Service Management az alábbi példa koppint, a hálózati biztonsági csoportok konfigurálása és alkalmazása a hálózati biztonsági csoport, amely tartalmazza az App Service-környezetek alhálózathoz egy aktuális mutatja be.
+## <a name="creating-a-network-security-group"></a>A hálózati biztonsági csoport létrehozása
+Milyen a hálózati biztonsági csoportok munkahelyi kapcsolatos részletes lásd a következő [információk][NetworkSecurityGroups].  Az Azure Service Management az alábbi példa éri el a hálózati biztonsági csoportok konfigurálása és alkalmazása egy hálózati biztonsági csoportot, amely tartalmazza az App Service Environment-alhálózathoz összpontosítva emeli ki.
 
-**Megjegyzés:** hálózati biztonsági csoportok grafikusan használatával konfigurálható a [Azure Portal](https://portal.azure.com) vagy Azure PowerShell használatával.
+**Megjegyzés:** Hálózati biztonsági csoportok grafikusan használatával konfigurálható a [az Azure Portal](https://portal.azure.com) vagy az Azure Powershellen keresztül.
 
-Hálózati biztonsági csoportok először egy előfizetéshez tartozó önálló egységként jönnek létre. Mivel a hálózati biztonsági csoportok Azure-régióban jönnek létre, győződjön meg arról, hogy a hálózati biztonsági csoport jön létre az App Service Environment-környezet ugyanabban a régióban.
+Hálózati biztonsági csoportok jönnek létre az egy előfizetéshez tartozó önálló egységként először. Mivel az Azure-régióban a hálózati biztonsági csoportok jönnek létre, győződjön meg arról, hogy a hálózati biztonsági csoport jön létre az App Service-környezet ugyanabban a régióban.
 
-A következő mutatja be, a hálózati biztonsági csoport létrehozása:
+A következő mutat be egy hálózati biztonsági csoport létrehozása:
 
     New-AzureNetworkSecurityGroup -Name "testNSGexample" -Location "South Central US" -Label "Example network security group for an app service environment"
 
-Hálózati biztonsági csoport létrehozása után egy vagy több hálózati biztonsági szabályok hozzáadása történik meg azt.  Mivel a szabályok idővel megváltozhat, javasoljuk, hogy tér el a további szabályok beszúrása időbeli megkönnyítése szabályának prioritásait használt számozási séma.
+A hálózati biztonsági csoport létrehozása után egy vagy több hálózati biztonsági szabályok hozzáadja.  Mivel a szabálykészletet idővel változhat, ajánlott a lemezterület-szabályának prioritásait, hogy idővel további szabályok beszúrni használt számozási sémát ki.
 
-Az alábbi példában látható egy szabályt, amely explicit módon engedélyezi a hozzáférést a kezeli és tartja karban az App Service Environment-környezet az Azure infrastruktúra által igényelt felügyeleti portokat.  Ne feledje, hogy az összes felügyeleti adatforgalmat SSL-en keresztül zajló kommunikációról védi-e ügyféltanúsítványokat, ezért annak ellenére, hogy a portokat az Azure felügyeleti infrastruktúra eltérő bármely entitás nem érhető el.
+Az alábbi példa bemutatja egy szabályt, amely kifejezetten hozzáférést biztosít a felügyeleti portokat az Azure-infrastruktúra kezelésére és karbantartására az App Service-környezet számára szükséges.  Vegye figyelembe, hogy az összes felügyeleti forgalom SSL-kapcsolaton keresztül zajlik, és védi-e ügyféltanúsítványokat, ezért annak ellenére, hogy a portokat, eltérő Azure kezelési infrastruktúra minden olyan entitás elérhetetlenné válnak.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
 
-Zárolása port a 80-as és 443-as "elrejtőzni" egy App Service-környezet mögött felsőbb rétegbeli eszközök és szolgáltatások elérését, amikor Ön tudniuk kell, hogy a felsőbb rétegbeli IP-címet.  Például ha webalkalmazási tűzfal (WAF) használ, a WAF lesz a saját IP-cím (vagy címek) használó, ha egy alsóbb rétegbeli App Service Environment-környezet proxyhasználat forgalmat.  Ez az IP-cím használatára szüksége lesz a *SourceAddressPrefix* paraméter egy hálózati biztonsági szabály.
+Meghatározott sémákra kelljen port a 80-as és 443-as "elrejtőzni" App Service-környezet mögött felsőbb rétegbeli eszközök és szolgáltatások elérését, amikor kell ismernie a felsőbb rétegbeli IP-cím.  Például ha egy webalkalmazási tűzfal (WAF) használ, a WAF lesz a saját IP-cím (vagy címek) használó, amikor proxy-forgalom egy alsóbb rétegbeli App Service Environment-környezet.  Ez az IP-cím használatához szüksége lesz a *SourceAddressPrefix* paraméter egy hálózati biztonsági szabály.
 
-Az alábbi példában egy adott felsőbb rétegbeli IP-címről érkező bejövő forgalom kifejezetten engedélyezett.  A cím *1.2.3.4* helyőrzőként szolgál egy fölérendelt WAF IP-címét.  Módosítsa az értéket a felsőbb rétegbeli eszköz vagy a szolgáltatás által használt cím kereséséhez.
+Az alábbi példában egy adott felsőbb rétegbeli IP-címre érkező bejövő forgalmat külön nem engedélyezett.  A cím *1.2.3.4* helyettesíti szolgál egy felsőbb rétegbeli WAF IP-címét.  Módosítsa az értéket a felsőbb rétegbeli eszközök vagy a szolgáltatás által használt cím egyezik.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTP" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTPS" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-FTP-támogatás van szükség, ha a következő szabályok segítségével sablonként adjon hozzáférést az FTP-vezérlő port és az adatok portok.  Mivel FTP állapot-nyilvántartó protokoll, nem lehet képes továbbítani az FTP-forgalmat egy hagyományos HTTP/HTTPS tűzfalhoz vagy proxyhoz eszközön keresztül.  Ebben az esetben szüksége lesz beállítva a *SourceAddressPrefix* más értékre – például a IP-címtartomány fejlesztői vagy a központi telepítési gépek mely FTP ügyfelek futnak. 
+FTP-támogatás van szükség, ha a következő szabályok segítségével sablonként az FTP-vezérlő port és az adatokhoz való hozzáférés biztosítása a channel-porttal.  Mivel az FTP állapot-nyilvántartó protokoll, nem lehet tudni FTP-forgalmat útvonal egy hagyományos HTTP/HTTPS tűzfal vagy proxy eszközön keresztül.  Ebben az esetben be kell állítania a *SourceAddressPrefix* más értékre – például az IP-címtartomány fejlesztői és a központi telepítési gépek, amelyek FTP ügyfelek futtatja. 
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPCtrl" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '21' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 
-(**Megjegyzés:** az adatcsatorna porttartománya módosíthatja a próbaidőszak alatt.)
+(**Megjegyzés:** az adatcsatorna porttartománya az előzetes verzió ideje alatt változhat.)
 
-Távoli hibakeresés a Visual Studio használata esetén a következő szabályok bemutatják, hogyan engedélyezheti a hozzáférést.  Van külön szabály minden Visual Studio támogatott verziója óta egyes verzióihoz távoli hibakereséshez másik portot használ.  FTP-hozzáférést, a távoli hibakeresési forgalom előfordulhat, hogy nem megfelelő sorrendben egy hagyományos WAF vagy a proxy-eszközön keresztül.  A *SourceAddressPrefix* helyett az IP-címtartomány futó Visual Studio developer gépek állítható be.
+Távoli hibakeresés a Visual Studio használata esetén a következő szabályok bemutatják, hogyan lehet hozzáférést biztosítani.  Mivel minden verzió egy másik portot használ a távoli hibakeresés hajtható végre, nincs külön szabály minden támogatott verziót, a Visual Studio.  FTP-hozzáférést, a távoli hibakeresési előfordulhat, hogy nem adatforgalom megfelelően egy hagyományos WAF vagy a proxy eszközön keresztül.  A *SourceAddressPrefix* ehelyett beállítható az IP-címtartományt futó Visual Studio fejlesztői gépek.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2012" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4016' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2013" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4018' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
-## <a name="assigning-a-network-security-group-to-a-subnet"></a>Hálózati biztonsági csoport hozzárendelése egy alhálózaton
-Hálózati biztonsági csoport tartozik egy alapértelmezett biztonsági szabály, amely megtagadja a hozzáférést az összes külső forgalom.  A fent leírt hálózati biztonsági szabályok és a bejövő forgalom blokkolása alapértelmezett szabály az eredménye, hogy csak a társított címtartományokból forrás felé irányuló forgalmat egy *engedélyezése* művelet fog tudni forgalmat küldeni egy App Service Environment-környezetben futó alkalmazások.
+## <a name="assigning-a-network-security-group-to-a-subnet"></a>A hálózati biztonsági csoport hozzárendelése egy alhálózathoz
+Hálózati biztonsági csoport tartozik egy alapértelmezett biztonsági szabály, amely megtagadja a hozzáférést minden külső forgalom.  A hálózati biztonsági szabályok a fent leírt, és az alapértelmezett biztonsági szabály blokkolja a bejövő forgalom az eredménye a társított forrás címtartományok csak forgalmát egy *engedélyezése* művelet lesz küldhet App Service Environment-környezetben futó alkalmazások forgalmat.
 
-Miután elkészült a hálózati biztonsági csoport biztonsági szabályait, kell az App Service-környezet tartalmazó alhálózat hozzárendelését.  A hozzárendelési utasítás hivatkozik, mind az App Service Environment-környezet tartalmazó a virtuális hálózat nevét, valamint az alhálózat, amelyen létrehozták az App Service Environment-környezet nevét.  
+A hálózati biztonsági csoportok biztonsági szabályokat megjelenik, miután hozzá kell rendelni az alhálózatot, amely tartalmazza az App Service-környezet szükséges.  A hozzárendelés parancs hivatkozik, mind a virtuális hálózatot, amelyben az App Service-környezetben található nevére, valamint az alhálózat, hol jött létre az App Service-környezet neve.  
 
-Az alábbi példában látható, a hálózati biztonsági csoport folyik a hozzárendelése olyan alhálózat és virtuális hálózathoz:
+Az alábbi példában látható egy alhálózat és virtuális hálózat lesz hozzárendelve hálózati biztonsági csoportok:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-Ha a hálózati biztonsági csoport a helyhozzárendelés képes lesz (a hozzárendelés egy hosszú futású műveleteket és néhány percet is igénybe vehet.), csak a forgalom megfelelő bejövő *engedélyezése* szabályok sikeresen eléri a alkalmazásokat az App Service Environment-környezetben.
+Ha a hálózati biztonsági csoport-hozzárendelés sikeres (a hozzárendelés egy hosszú ideig futó műveletek és néhány percet is igénybe vehet), csak a forgalom megfelelő bejövő *engedélyezése* szabályok sikeresen el fog érni az App Service-alkalmazások Környezet.
 
-A teljesség a következő példa bemutatja, hogyan távolítsa el, és így dis-rendelje hozzá a hálózati biztonsági csoport az alhálózatból:
+A teljesség az alábbi példa bemutatja, hogyan távolítsa el, és így nem rendelje hozzá a hálózati biztonsági csoport az alhálózatról:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-## <a name="special-considerations-for-explicit-ip-ssl"></a>Explicit IP-SSL szempontjai
-Ha egy alkalmazás explicit IP-SSL-címmel van konfigurálva (alkalmazható *csak* való, amelyek egy nyilvános VIP ASEs), az App Service Environment-környezet alapértelmezett IP-címe helyett a HTTP és HTTPS forgalmat, folytatódjon az alhálózat egy másik készleten a 80-as és 443-as portot eltérő portok.
+## <a name="special-considerations-for-explicit-ip-ssl"></a>Explicit IP SSL vonatkozó különleges szempontok
+Ha egy alkalmazás explicit IP-SSL-címmel van konfigurálva (alkalmazható *csak* az ASE, amelyek egy nyilvános virtuális IP-cím), az App Service-környezet alapértelmezett IP-címe helyett a HTTP és HTTPS forgalmat, az alhálózatban folyamatok keresztül egy 80-as és 443-astól különböző portok külön készletét.
 
-Az egyes kulcspár minden IP-SSL cím által használt portok a portál felhasználói felületen az App Service Environment részletek UX paneljén található.  Jelölje be "az összes beállítások"--> "IP-címek".  Az "IP-címek" panel összes explicit módon konfigurált IP-SSL címek táblázatát jeleníti meg, az App Service Environment-környezet, együtt a speciális port pár, amellyel minden IP-SSL címhez kapcsolódó HTTP és HTTPS-forgalmat.  A port párt a DestinationPortRange paraméterek kell használni, amikor a szabályok konfigurálása a hálózati biztonsági csoport.
+Az egyes virtuálisgép-pár az összes IP-SSL-cím által használt portok a portál felhasználói felületén az App Service-környezet részletei UX paneljén található.  Jelölje be "az összes beállítás"--> "IP-címek".  A "IP-címek" panel egy tábla összes explicit módon konfigurált IP-SSL címeket tartalmazza a speciális port pár, amellyel minden IP-SSL címhez társított HTTP és HTTPS-forgalom irányítása mellett az App Service Environment.  A port pár, amelyek a DestinationPortRange paraméterek kell használni, amikor szabályok konfigurálása a hálózati biztonsági csoport.
 
-Ha egy alkalmazást egy ASE az IP-SSL használatára van konfigurálva, a külső ügyfelek nem jelenik meg, és nem kell aggódnia a különleges pár porthozzárendelést.  Az alkalmazás felé irányuló forgalom általában erdőtől áramolnak a konfigurált IP-SSL címet.  A fordítás a speciális port párhoz automatikusan történik, belső adatforgalom utolsó szakasza során a ASE tartalmazó alhálózat be. 
+Egy alkalmazásét az ASE IP SSL használatára van konfigurálva, amikor a külső ügyfelek esetében nem jelenik meg, és nem kell aggódnia a speciális pár portleképezést.  Az alkalmazások forgalom általában a konfigurált IP-SSL címre.  A fordítás, a speciális port pár automatikusan történik, belsőleg irányítaná a forgalmat az utolsó szakasza során be az ASE-t tartalmazó alhálózatról. 
 
-## <a name="getting-started"></a>Bevezetés
-App Service Environment-környezetek megkezdéséhez, lásd: [App Service Environment bemutatása][IntroToAppServiceEnvironment]
+## <a name="getting-started"></a>Első lépések
+Első lépések az App Service Environment-környezetek, lásd: [App Service Environment bemutatása][IntroToAppServiceEnvironment]
 
-További részletek az App Service-környezetek háttér erőforrás biztonságosan kapcsolódó alkalmazásokra körül: [biztonságosan való csatlakozás háttér erőforrások az App Service-környezetek][SecurelyConnecttoBackend]
+Biztonságos csatlakozás a háttérerőforrásra App Service-környezet az alkalmazások körül részletekért lásd: [biztonságos csatlakozás a háttérerőforrásokhoz egy App Service Environment-környezet][SecurelyConnecttoBackend]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

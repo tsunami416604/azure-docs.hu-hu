@@ -12,18 +12,18 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615874"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275669"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szükséges az ebben a cikkben előfeltételként felsorolt lépéseket.
 
@@ -152,6 +152,12 @@ Identitás tanúsítványa egy témát, amely megfelel a következő formátumba
 | Formátum | Példa |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>Tanúsítványok ellenőrzése
+Az app service erőforrás-szolgáltató üzembe helyezése előtt kell [használandó tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) elérhető az Azure Stack készültségi ellenőrző eszköz használatával a [PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az Azure Stack készültségi ellenőrző eszköz ellenőrzi, hogy a generált PKI-tanúsítványokat app services üzembe helyezési alkalmasak. 
+
+Ajánlott eljárásként, azokkal a szükséges munka során [Azure Stack PKI-tanúsítványokat](azure-stack-pki-certs.md), meg kell terveznie, hogy elegendő idő teszteléséhez, és adja ki újból tanúsítványok, ha szükséges. 
 
 ## <a name="virtual-network"></a>Virtuális hálózat
 
@@ -347,7 +353,7 @@ Kövesse az alábbi lépéseket:
 | AzureStackAdminCredential | Szükséges | Null | Az Azure AD szolgáltatás rendszergazdai hitelesítő adataihoz. |
 | CertificateFilePath | Szükséges | Null | **Teljes elérési útja** , az identitás alkalmazástanúsítvány-fájlja korábban létrehozott. |
 | CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
-| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: "AzureCloud", "AzureChinaCloud", 'AzureUSGovernment', "AzureGermanCloud".|
+| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: "AzureCloud", 'AzureChinaCloud', "AzureUSGovernment", "AzureGermanCloud".|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory összevonási szolgáltatások alkalmazás létrehozása
 

@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: dd10581888da64114debec40cba8564023033864
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990161"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278508"
 ---
-# <a name="tutorial-1-classify-iris---preparing-the-data"></a>1. oktatóanyag: Írisz osztályozása – Az adatok előkészítése
+# <a name="tutorial-1-classify-iris---preparing-the-data"></a>1. oktatóanyag: Írisz osztályozása – az adatok előkészítése
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -45,11 +45,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 - Egy Azure Machine Learning kísérletezési fiókra
 - Egy telepített Azure Machine Learning Workbenchre
 
-Ezen előfeltételek hiányában kövesse a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket a fiókok beállításához és az Azure Machine Learning Workbench alkalmazás telepítéséhez. 
+Ha ezeket az előfeltételeket már nem rendelkezik, kövesse a [a rövid útmutató: Telepítés és indítás](quickstart-installation.md) a cikk a fiókok beállításához és az Azure Machine Learning Workbench alkalmazás telepítéséhez. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Új projekt létrehozása a Workbenchben
 
-Ha követte a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket, már létrehozta ezt a projektet, és továbbléphet a következő szakaszra.
+Ha követte a lépéseket a [a rövid útmutató: Telepítés és indítás](quickstart-installation.md) a cikk a projektben már rendelkezik, és továbbléphet a következő szakaszban.
 
 1. Nyissa meg az Azure Machine Learning Workbench alkalmazást, és szükség esetén jelentkezzen be. 
    
@@ -152,7 +152,7 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
    1. Kattintson a jobb gombbal a kiválasztásához. 
    1. Válassza az **Értékek száma** elemet a legördülő menüből. 
 
-   Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy négysávos hisztogram. A céloszlop négy különféle értékkel rendelkezik: **Iris-virginica**, **Iris-versicolor**, **Iris-setosa**, valamint egy **(null)** érték.
+   Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy négysávos hisztogram. A céloszlop négy különféle értékkel rendelkezik: **IRIS-virginica**, **Iris-versicolor**, **Iris-setosa**, és a egy **(null)** értéket.
 
    ![Az Értékek számának kiválasztása](media/tutorial-classifying-iris/value_count.png)
 

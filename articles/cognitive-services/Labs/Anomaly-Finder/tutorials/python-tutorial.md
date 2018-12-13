@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Anomáliadetektálás a Python használatával'
+title: 'Oktatóanyag: Rendellenességek észlelése, a Python'
 titlesuffix: Azure Cognitive Services
 description: Megismerkedhet egy Python-notebookkal, amely az Anomaly Detection API-t használja. Ha az eredeti adatpontokat elküldi az API-nak, visszakapja a várt értéket és az attól eltérő pontokat.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: d1e9afc32625cdbf97f576ee091d7dc03271e2fc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887751"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164806"
 ---
-# <a name="tutorial-anomaly-detection-with-python-application"></a>Oktatóanyag: Anomáliadetektálás Python-alkalmazásokkal
+# <a name="tutorial-anomaly-detection-with-python-application"></a>Oktatóanyag: Rendellenességek észlelése, a Python-alkalmazás
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható az Anomaly Detectio
 
 ## <a name="download-the-example-code"></a>A példakód letöltése
 
-1. Lépjen az [oktató notebookhoz a GitHubon](https://github.com/MicrosoftAnomalyDetection/python-sample).
+1. Keresse meg az [oktatóanyag notebookját a GitHubon](https://github.com/MicrosoftAnomalyDetection/python-sample).
 2. Kattintson a zöld gombra az oktatóanyag klónozásához vagy letöltéséhez. 
 
 ## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Az oktató notebook megnyitása a Jupyterben

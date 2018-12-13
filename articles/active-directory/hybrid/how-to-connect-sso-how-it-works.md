@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – hogyan működik |} A Microsoft Docs'
+title: 'Azure AD Connect: Közvetlen egyszeri bejelentkezés – hogyan működik |} A Microsoft Docs'
 description: Ez a cikk ismerteti az Azure Active Directory zökkenőmentes egyszeri bejelentkezés funkció működése.
 services: active-directory
 keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970424"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193076"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai bemutatása
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai bemutatása
 
 Ez a cikk biztosít technikai részletek be az Azure Active Directory zökkenőmentes egyszeri bejelentkezés (zökkenőmentes SSO) funkció működése.
 
@@ -58,8 +58,8 @@ A böngészőben a bejelentkezési folyamat a következőképpen történik:
 2. Ha a felhasználó még nem jelentkezett be, a rendszer átirányítja a felhasználót az Azure AD bejelentkezési oldal.
 3. A felhasználó begépeli a felhasználó neve, az Azure AD bejelentkezési oldal.
 
-  >[!NOTE]
-  >A [bizonyos alkalmazások](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), 2 & 3. lépéseket a rendszer kihagyja.
+   >[!NOTE]
+   >A [bizonyos alkalmazások](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), 2 & 3. lépéseket a rendszer kihagyja.
 
 4. A JavaScript használatával a háttérben, az Azure AD kihívást a böngészőben a 401-es jogosulatlan választ, adja meg a Kerberos-jegy-n keresztül.
 5. A böngészőben a jegyet, az Active Directory kér a `AZUREADSSOACC` számítógépfiók (amely az Azure AD).

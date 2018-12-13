@@ -1,5 +1,5 @@
 ---
-title: Shaper cognitive search szakértelem (Azure Search) |} A Microsoft Docs
+title: Shaper cognitive search szakértelem – Azure Search
 description: Metaadatok és strukturált információt kinyerése strukturálatlan adatok, és vegyen részt Ön az Azure Search-felderítési bővítést folyamatban összetett típus.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728999"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313836"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
@@ -26,9 +27,6 @@ A Shaper szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozá
 Alapértelmezés szerint ez a módszer támogatja az objektumok, amely egy szintnél mélyebb. Az összetett objektumokat láncolhatja össze több Shaper lépést.
 
 A válaszban a kimeneti név mindig "kimeneti". Belsőleg a folyamat leképezhet egy másik nevet, például a "kimeneti", de a Shaper a következő példa "analyzedText" magát szakértelem adja vissza "kimeneti" a válaszban. Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
-
-> [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

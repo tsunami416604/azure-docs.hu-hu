@@ -10,17 +10,15 @@ ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: cb246ad927669ac9b8a3981134142ad9be27c6ae
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889531"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184950"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
@@ -55,7 +53,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Te
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
-| [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [Az SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
@@ -100,5 +98,5 @@ Tevékenységnapló adatainak csak akkor jelenik meg *után* konfigurálta a viz
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy [riasztás](../../monitoring-and-diagnostics/alert-metric.md) mikor történik, egy adott tevékenységet.
+- Hozzon létre egy [riasztás](../../azure-monitor/platform/alerts-metric.md) mikor történik, egy adott tevékenységet.
 - Használat [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) a tevékenységnaplókból részletes információk megtekintéséhez.

@@ -1,5 +1,5 @@
 ---
-title: Azure Policy-minta – Engedélyezett SQL DB SKU-k
+title: Minta – engedélyezett az SQL DB-termékváltozatok
 description: Ez a mintaszabályzat megköveteli egy jóváhagyott termékváltozat használatát az SQL-adatbázisokon.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 3f2ed04555f46f80585c3a17612e3071bfec415d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f22ee99750f12d44ca61fac6a0e5db4bde9634a1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992779"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311354"
 ---
 # <a name="allowed-sql-db-skus"></a>Engedélyezett termékváltozatok SQL-adatbázisokhoz
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

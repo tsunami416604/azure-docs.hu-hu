@@ -1,48 +1,49 @@
 ---
-title: Azure Search levágási eredményez a biztonsági szűrők |} Microsoft Docs
-description: Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és a felhasználói identitások használatával.
+title: Az eredmények – Azure Search-csonkolás biztonsági szűrők
+description: Hozzáférés-vezérlést a biztonsági szűrők és a felhasználói identitások Azure Search-tartalom.
 ms.service: search
 ms.topic: conceptual
 services: search
 ms.date: 08/07/2017
-author: revitalbarletz
-ms.author: revitalb
+author: brjohnstmsft
+ms.author: brjohnst
 manager: jlembicz
-ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792800"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314227"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search levágási eredményez a biztonsági szűrők
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>Biztonsági szűrők a tisztítás eredmények elérése érdekében az Azure Search szolgáltatásban
 
-Szűrőket biztonsági lehet levágni a keresési eredmények az Azure Search felhasználó identitása alapján. A keresési funkciók általában megköveteli a személy, aki a keresés elleni ezeket az alapelveket, akik a dokumentum tartalmazó mező kérelmek identitásának összehasonlítása. A program egyezést talál, a felhasználó vagy az egyszerű (például egy csoport vagy szerepkör) dokumentum hozzáférése van.
+Biztonsági szűrők szűkítheti a keresési eredmények az Azure Search szolgáltatásban felhasználói identitás alapján is alkalmazhat. A keresési funkciót általában megköveteli a személy, aki a keresés szemben az elvek, akik számára engedélyezett a dokumentumot tartalmazó kérelmek identitásának összehasonlítása. Ha van egyezés, a felhasználó vagy az egyszerű (például egy csoport vagy szerepkör) rendelkezik a dokumentum elérését.
 
-Biztonsági eléréséhez a egyirányú szűrési keresztül történik egy bonyolult vagy műveletet egyenlőség kifejezések: például `Id eq 'id1' or Id eq 'id2'`, és így tovább. Erre akkor hibákhoz vezethet, nehéz a kezelése, és azokban az esetekben, ahol a lista tartalmazza-e a több száz vagy ezer értékek lassítja a lekérdezési válaszidőt hány másodpercig által. 
+Egyirányú értékre a biztonsági szűrés keresztül történik egy bonyolult vagy műveletet egyenlőség kifejezések: például `Id eq 'id1' or Id eq 'id2'`, és így tovább. Ez a megközelítés akkor hibalehetőséget magában rejtő, nehezen fenntartható, és azokban az esetekben, ahol a lista tartalmazza-e a több száz vagy akár több ezer olyan értékek, a lekérdezések válaszideje szerint hány másodpercig lelassul. 
 
-Egy egyszerűbb és gyorsabb megoldás keresztül, a `search.in` függvény. Ha `search.in(Id, 'id1, id2, ...')` helyett egy egyenlőség kifejezés alárendelt második válasz számíthat alkalommal.
+Egy egyszerűbb és gyorsabb megoldás keresztül, a `search.in` függvény. Ha `search.in(Id, 'id1, id2, ...')` helyett egyenlőségi kifejezés, másodperc törtrésze várható alkalommal.
 
-Ez a cikk bemutatja, hogyan hajthat végre olyan biztonsági szűrést, az alábbi lépéseket követve:
+Ez a cikk bemutatja, hogyan végezheti el a biztonsági szűrés, az alábbi lépéseket követve:
 > [!div class="checklist"]
-> * A fő azonosítókat tartalmazó mező létrehozása 
-> * Leküldéses vagy meglévő dokumentumokat a megfelelő egyszerű azonosítók frissítése
-> * A keresési foglalhatnak `search.in` `filter`
+> * Az egyszerű azonosítókat tartalmazó mező létrehozása 
+> * Leküldéses vagy a megfelelő egyszerű azonosítókkal meglévő dokumentumok frissítéséhez
+> * Az egy keresési kérelmet `search.in` `filter`
 
 >[!NOTE]
-> A jelen dokumentum nem ismerteti a fő azonosítók lekérésének folyamatát. Az identitás-szolgáltatótól szerezheti be.
+> Ez a dokumentum nem terjed ki az egyszerű azonosítók lekérését jelenti. Ez a szolgáltatás identitásszolgáltatótól szerezheti be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Search szolgáltatás](https://docs.microsoft.com/azure/search/search-create-service-portal), és [Azure Search-Index](https://docs.microsoft.com/azure/search/search-create-index-portal).  
+Ez a cikk feltételezi, hogy egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Search szolgáltatás](https://docs.microsoft.com/azure/search/search-create-service-portal), és [Azure Search-Index](https://docs.microsoft.com/azure/search/search-create-index-portal).  
 
-## <a name="create-security-field"></a>Hozzon létre biztonsági mező
+## <a name="create-security-field"></a>Biztonsági mező létrehozása
 
-A dokumentumok tartalmaznia kell egy mező megadása, hogy mely csoportok rendelkezzenek hozzáféréssel. Ez a szűrési feltételt, amely dokumentumok kiválasztott vagy a kibocsátó számára visszaadott eredménykészlet fogja elutasítani válik.
-Tegyük fel, hogy a védett fájlok index van, és minden fájl különböző felhasználók által elérhető.
-1. A mező hozzáadása `group_ids` (dönthet úgy, ide bármilyen nevét), egy `Collection(Edm.String)`. Győződjön meg arról, hogy a mezőben egy `filterable` attribútum értékének beállítása `true` , hogy a keresési eredményeket a rendszer a hozzáférést a felhasználó rendelkezik-e alapján. Például, ha beállította a `group_ids` mezőről `["group_id1, group_id2"]` a dokumentum `file_name` "secured_file_b", csak a csoport azonosítók "group_id1" vagy "group_id2" olvasási hozzáféréssel rendelkezik a fájlhoz tartozó felhasználókat.
-   Győződjön meg arról, hogy a mező `retrievable` attribútum van beállítva `false` , hogy a rendszer nem adott vissza a keresési kérelem részeként.
-2. Is hozzáadhat `file_id` és `file_name` ebben a példában az mezőket.  
+A dokumentumok tartalmaznia kell egy mezőben adja meg, hogy mely csoportok kapjanak hozzáférést. Ez a szűrési feltételeket, amelyek dokumentumok kiválasztása vagy utasítani a kibocsátó számára visszaadott eredménykészlet válik.
+Tegyük fel, hogy rendelkezünk a védett fájlok index, és minden egyes fájl által a felhasználók egy másik csoportja érhető el.
+1. Mező hozzáadása `group_ids` (választhat Itt bármilyen nevet), egy `Collection(Edm.String)`. Ellenőrizze, hogy a mező egy `filterable` attribútum beállítása `true` úgy, hogy a keresési eredmények szűr a rendszer a hozzáférést a felhasználó rendelkezik alapján. Például, ha beállította a `group_ids` mezőt `["group_id1, group_id2"]` a dokumentum a `file_name` "secured_file_b", csak a csoport azonosítók "group_id1" vagy "group_id2" olvasási hozzáférést a fájlhoz tartozó felhasználók.
+   Győződjön meg arról, hogy a mező `retrievable` attribútum `false` úgy, hogy ezt nem adja vissza a keresési kérelem részeként.
+2. Is hozzáadhat `file_id` és `file_name` feltételezünk mezőket.  
 
 ```JSON
 {
@@ -55,9 +56,9 @@ Tegyük fel, hogy a védett fájlok index van, és minden fájl különböző fe
 }
 ```
 
-## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Adatok küldése az indexbe, a REST API használatával
+## <a name="pushing-data-into-your-index-using-the-rest-api"></a>A REST API használatával az indexbe történő adatleküldéshez
   
-Az index URL-végpontjának HTTP POST-kérelmet ad ki. A HTTP-kérelem törzse lehet hozzáadni a dokumentumokat tartalmazó JSON-objektum:
+Egy HTTP POST kérés kiadása az index URL-cím végponthoz. A HTTP-kérelem törzse hozzáadandó dokumentumot tartalmazó JSON-objektum:
 
 ```
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=[api-version]  
@@ -65,7 +66,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-A kérelem törzsében szereplő a dokumentumok tartalmának megadása:
+A kérelem törzsében a dokumentumok tartalmának megadása:
 
 ```JSON
 {
@@ -92,7 +93,7 @@ A kérelem törzsében szereplő a dokumentumok tartalmának megadása:
 }
 ```
 
-Ha módosítania meglévő dokumentum a csoportok listáját, használhatja a `merge` vagy `mergeOrUpload` művelet:
+Ha egy meglévő dokumentumot frissítse azokat a csoportokat van szüksége, használhatja a `merge` vagy `mergeOrUpload` művelet:
 
 ```JSON
 {
@@ -106,16 +107,16 @@ Ha módosítania meglévő dokumentum a csoportok listáját, használhatja a `m
 }
 ```
 
-Létrehozásától vagy frissítésétől egészen a dokumentumok a teljes részletekért elolvashatja [szerkeszthetik a dokumentumokat a](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Hozzáadása vagy frissítése a dokumentumok teljes részleteiért olvassa [szerkeszthetik a dokumentumokat a](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
    
-## <a name="apply-the-security-filter"></a>A biztonsági szűrés
+## <a name="apply-the-security-filter"></a>A biztonsági szűrők alkalmazása
 
-Ahhoz, hogy a dokumentumok alapján trim `group_ids` hozzáférés kell ki egy keresési lekérdezés egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrő, ahol "group_id1, group_id2,..." csoportokra, amelyhez a keresési kérelmet kibocsátó tartozik.
-Ez a szűrő megfelelő összes dokumentumot, amelynek a `group_ids` mező egy adott azonosítót tartalmaz.
-Az Azure Search használatával dokumentumok keresése részletes olvasható [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet egy POST kérést használó dokumentumokat.
+Annak érdekében, hogy a tároló visszaigénylésének dokumentumok alapján `group_ids` hozzáférést, meg kell keresési lekérdezés küldése az egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrőt, ahol "group_id1 group_id2...", amely a keresési kérelmet kibocsátó tartozik csoportjai.
+Ez a szűrő megfelel összes dokumentumot, amelynek a `group_ids` mező tartalmaz egy adott azonosítók.
+További részletek az Azure Search-dokumentumok keresése, beolvashatja [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet egy POST kérést dokumentumok.
 
-A HTTP POST-kérelmet ad ki:
+A HTTP POST kérés kiadása:
 
 ```
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=[api-version]  
@@ -131,7 +132,7 @@ Adja meg a szűrő a kérelem törzsében szereplő:
 }
 ```
 
-A dokumentumok szerezheti vissza, ha `group_ids` "group_id1" vagy "group_id2" tartalmaz. Más szóval kap a dokumentumok, amelyhez a kérés kibocsátó olvasási hozzáféréssel rendelkezik.
+A dokumentumok szerezheti vissza, ahol `group_ids` "group_id1" vagy "group_id2" tartalmaz. Más szóval kap a dokumentumokat, amelyhez a kérés kibocsátó olvasási hozzáféréssel rendelkezik.
 
 ```JSON
 {
@@ -151,10 +152,10 @@ A dokumentumok szerezheti vissza, ha `group_ids` "group_id1" vagy "group_id2" ta
 ```
 ## <a name="conclusion"></a>Összegzés
 
-Ez a hogyan szűrheti a felhasználói azonosító és az Azure keresési eredmény `search.in()` függvény. Ez a funkció használatával adjon át az egyes céldokumentumban társított egyszerű azonosítók egyeztetéshez a kérelmező felhasználó egyszerű azonosítót. Keresési kérelem kezelésekor a `search.in` függvény kiszűri a keresési eredmények között, amelyekhez nincs a felhasználó rendszerbiztonsági tagok olvasási hozzáféréssel rendelkezik. Az egyszerű azonosítók jelenthet többek között a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
+Ez a hogyan felhasználói identitás és az Azure Search az eredményeket szűrheti `search.in()` függvény. Ez a funkció használatával adja át az egyes céldokumentumban társított egyszerű azonosítók egyeztetéshez a kérelmező felhasználó egyszerű azonosítók. Egy keresési kérelmet történik, ha a `search.in` függvény kiszűri a keresési eredmények, amelyekhez a felhasználó rendszerbiztonsági tagok közül egyik sem rendelkezik olvasási hozzáféréssel. Az egyszerű azonosítók hozhat létre például a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
  
 ## <a name="see-also"></a>Lásd még
 
-+ [Active Directory azonosító-alapú hozzáférés-vezérlés Azure Search-szűrők használata](search-security-trimming-for-azure-search-with-aad.md)
-+ [Az Azure Search szűrők](search-filters.md)
-+ [Adatok biztonsági és hozzáférés-vezérlés az Azure Search műveletek](search-security-overview.md)
++ [Az Active Directory azonosító-alapú hozzáférés-vezérlés az Azure Search-szűrők használata](search-security-trimming-for-azure-search-with-aad.md)
++ [Szűrők az Azure Search szolgáltatásban](search-filters.md)
++ [Adatok biztonsági és hozzáférés-vezérlés az Azure Search-műveletek](search-security-overview.md)

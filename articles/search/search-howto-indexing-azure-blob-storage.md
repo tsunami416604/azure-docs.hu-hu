@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search szolgáltatással az Azure Blob Storage indexelése
-description: Útmutató az Azure Blob Storage indexelése és szöveg kinyerése a dokumentumokat az Azure Search szolgáltatással
+title: Az Azure Blob storage tartalmának az Azure Search – a teljes szöveges keresés
+description: Tudnivalók az Azure Blob Storage indexelése és szöveg kinyerése és az Azure Search a dokumentumokat.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406972"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317474"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -69,8 +70,8 @@ Adatforrás létrehozása API további információkért lásd: [adatforrás lé
 A hitelesítő adatokat megadhatja a blob-tároló, a következő módszerek egyikével:
 
 - **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Megtekintheti a kapcsolati karakterláncot az Azure Portalról a storage-fiók paneljére lépve > Beállítások > kulcsok (a klasszikus tárfiókokkal) vagy a beállítások > hozzáférési kulcsok (a storage-fiókok Azure Resource Manager).
-- **Storage-fiók közös hozzáférésű jogosultságkód** (SAS) kapcsolódási karakterlánc: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` az SAS kell rendelkeznie a listában, és olvasási jogosultságokkal tárolókkal és objektumokkal (ebben az esetben blobok).
--  **Tároló közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` az SAS a lista kell, és olvasási engedéllyel a tároló.
+- **Storage-fiók közös hozzáférésű jogosultságkód** (SAS) kapcsolódási karakterlánc: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` A SAS kell van a listában, és olvasási jogosultságokkal tárolókkal és objektumokkal (ebben az esetben blobok).
+-  **Tároló közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Az SAS a lista kell, és olvasási engedéllyel a tároló.
 
 További információ a megosztott tároló eléréséhez aláírások című témakörben talál [közös hozzáférési aláírások használatával](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -96,7 +97,7 @@ Hozzon létre egy kereshető indexet a következőképpen `content` tárolásár
 
 Indexek létrehozásával kapcsolatos további információkért lásd: [Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
-### <a name="step-3-create-an-indexer"></a>3. lépés: Hozzon létre egy indexelőt
+### <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
 Az indexelő adatforráshoz kapcsolódik a cél keresési indexhez, és biztosít az Adatfrissítés automatizálásához ütemezés szerint.
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
@@ -128,7 +129,7 @@ Attól függően, a [az indexelő konfigurációjának](#PartsOfBlobToIndex), a 
 * A dokumentum a szöveges tartalom kinyert nevű karakterlánc típusú `content`.
 
 > [!NOTE]
-> Az Azure Search korlátozza, hogy mennyi szöveg bontja ki a tarifacsomagot függően: 32000 karakterek az ingyenes szinten, 64 000 alapszintű és Standard, a Standard S2 és a Standard S3 szinten 4 millió. Figyelmeztetés az indexelő állapotválasz csonkolt dokumentumok szerepel.  
+> Az Azure Search korlátozza mennyi szöveg bontja ki a tarifacsomagot függően: 32000 karakterek az ingyenes szinten, 64 000 alapszintű és Standard, a Standard S2 és a Standard S3 szinten 4 millió. Figyelmeztetés az indexelő állapotválasz csonkolt dokumentumok szerepel.  
 
 * A blob megtalálható a felhasználó által megadott metaadat-tulajdonságot az esetleges vonjuk pontosan.
 * Standard szintű blob metaadat-tulajdonságot bontja be a következő mezőket:
@@ -333,7 +334,7 @@ Például a következő házirendet figyelembe veszi a blob metaadat-tulajdonsá
 
 Előfordulhat, hogy szeretné "összeállítás" dokumentumok az index több forrásból. Például érdemes egyesíteni a szöveget a blobok az egyéb Cosmos DB-ben tárolt metaadatok. Építse fel a dokumentumok keresése a több részből is használhatja a push API indexelő különböző indexelők együtt. 
 
-A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne, olvassa el a külső: [dokumentumok egyesítése más adatokkal az Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne olvassa el a külső: [Dokumentumok egyesítése más adatokkal az Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Az indexelő egyszerű szöveg 
@@ -374,7 +375,7 @@ Az alábbi táblázat foglalja össze az egyes végzett feldolgozást, és az Az
 | MSG (alkalmazás/vnd.ms – outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Többek között a mellékleteket, szöveg kinyerése |
 | A ZIP (alkalmazás/zip) |`metadata_content_type` |Az archívumban található összes dokumentum szöveg kinyerése |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Sáv XML-címkével, és a szöveg kinyerése |
-| JSON (alkalmazás/json) |`metadata_content_type`</br>`metadata_content_encoding` |Szöveg kinyerése<br/>Megjegyzés: Ha több dokumentumot mezők kinyerése egy JSON-blobját van szüksége, tekintse meg [indexelő JSON-blobok](search-howto-index-json-blobs.md) részletekért |
+| JSON (alkalmazás/json) |`metadata_content_type`</br>`metadata_content_encoding` |Szöveg kinyerése<br/>MEGJEGYZÉS: Ha több dokumentumot mezők kinyerése egy JSON-blobját van szüksége, tekintse meg [indexelő JSON-blobok](search-howto-index-json-blobs.md) részletekért |
 | EML (üzenet/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Többek között a mellékleteket, szöveg kinyerése |
 | RTF (alkalmazás/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Szöveg kinyerése|
 | Egyszerű szöveg (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Szöveg kinyerése|

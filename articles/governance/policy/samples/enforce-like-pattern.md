@@ -1,5 +1,5 @@
 ---
-title: Azure Policy-minta – LIKE minta kényszerítése
+title: Minta – kényszerítése a like
 description: Ez a mintaszabályzat megköveteli az erőforrásoktól, hogy feleljenek meg az elnevezési konvenciók LIKE mintájának.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: c895c92617245f8b60daf463798fac78117a36a1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 47ade1081317addadb40fca94bd6c3c5de066f74
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955418"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311575"
 ---
 # <a name="enforce-like-pattern-for-naming-conventions"></a>Elnevezési konvenciók kényszerítése LIKE mintával
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

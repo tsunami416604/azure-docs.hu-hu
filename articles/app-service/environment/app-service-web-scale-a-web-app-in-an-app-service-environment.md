@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások méretezése App Service Environment-környezetben
+title: Alkalmazások méretezése App Service Environment-környezetben – Azure
 description: Alkalmazások méretezése App Service Environment-környezetben
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: 3b2f93c9763805377ed534d59b1025a5aa1a32e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: c94e7f761dcbc7e05965e359d7f9a864335c9c6b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955530"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269345"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Alkalmazások méretezése App Service-környezetben
 Az Azure App Service-ben nincsenek megfelelően skálázhatja három dolgot:
@@ -39,7 +40,7 @@ Módosítása vagy elem látható, az ASE az App Service-csomagokban üzemeltete
 
 ![][1]
 
-A feldolgozó készlet, amely az ASP elérhető számítási erőforrások száma meghaladja az ASP nem vertikális.  Ha a szükséges számítási erőforrásokért, hogy feldolgozókészletben kell az ASE-rendszergazda adja hozzá őket beolvasása.  Az információk újrakonfigurálása az ASE-t, olvassa el az adatok itt: [App Service environment konfigurálása][HowtoConfigureASE].  Érdemes kapacitás alapján ütemezés vagy metrikák hozzáadása az ASE automatikus skálázási funkciókat is.  Konfigurálásáról további információért lásd az ASE környezetben magát az automatikus skálázási [konfigurálása az automatikus méretezés App Service-környezet][ASEAutoscale].
+A feldolgozó készlet, amely az ASP elérhető számítási erőforrások száma meghaladja az ASP nem vertikális.  Ha a szükséges számítási erőforrásokért, hogy feldolgozókészletben kell az ASE-rendszergazda adja hozzá őket beolvasása.  Az ASE információk újrakonfigurálása olvassa el az adatok itt: [App Service environment konfigurálása][HowtoConfigureASE].  Érdemes kapacitás alapján ütemezés vagy metrikák hozzáadása az ASE automatikus skálázási funkciókat is.  Konfigurálásáról további információért lásd az ASE környezetben magát az automatikus skálázási [konfigurálása az automatikus méretezés App Service-környezet][ASEAutoscale].
 
 Több app service-csomagok különböző feldolgozókészletek a számítási erőforrások használatával is létrehozhat, vagy használhatja ugyanazt a feldolgozó készletet.  Például ha rendelkezik (10) elérhető számítási erőforrások feldolgozói készlethez 1, ha szeretné, hozzon létre egy app service-csomag (6) a számítási erőforrások használatával, és egy másik app service-csomag (4) használó számítási erőforrásokat.
 

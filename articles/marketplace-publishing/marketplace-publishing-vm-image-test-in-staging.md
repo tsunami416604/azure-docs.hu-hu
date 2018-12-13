@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf41953300c3042853118c815dbf64e4474106fa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715872"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194113"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>A Virtuálisgép-ajánlat az Azure Marketplace-en tesztelése az átmeneti állapotában
 Átmeneti azt jelenti, hogy központi telepítése egy saját "védőfal" mögött, ahol tesztelheti, és ellenőrizze a működését, a piactéren való telepítés előtt a Termékváltozat. A Termékváltozat jelenik meg, ahogy bármilyen olyan ügyfelünk, akit helyezte üzembe, hogy átmeneti. A Virtuálisgép-lemezkép kell leküldeni, átmeneti minősítéssel kell rendelkezniük.
 
-## <a name="step-1-push-your-offer-to-staging"></a>1. lépés: Küldje le az ajánlat átmeneti üzembe helyezéséhez
+## <a name="step-1-push-your-offer-to-staging"></a>1. lépés: Az ajánlat átmeneti környezetbe
 1. Az a **közzététel** lapra, majd **az átmeneti üzem**.
    
     ![rajz](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
@@ -35,12 +35,12 @@ ms.locfileid: "39715872"
    > Virtuális gépek esetén megoldássablonokkal, és adjon **nem** engedélyezett előfizetések CSP, DreamSpark- vagy Azure in Open licencprogram típusú.
    > 
    > 
+   >
+   > Virtuális gépek, a gombra kattintva esetén **átmeneti üzembe**, az alábbi lépéseket kell végrehajtani a jelenet mögött. Lesz a közzététel lapon az egyes lépések állapotának megtekintése a közzétételi portálon. Ellenőrizze ezen a lapon rendszeres időközönként (mindaddig, amíg az állapot mutatja, ELŐKÉSZÍTETT) javítás a végétől igénylő hibák információkért.
 
-    > Virtuális gépek, a gombra kattintva esetén **átmeneti üzembe**, az alábbi lépéseket kell végrehajtani a jelenet mögött. Lesz a közzététel lapon az egyes lépések állapotának megtekintése a közzétételi portálon. Ellenőrizze ezen a lapon rendszeres időközönként (mindaddig, amíg az állapot mutatja, ELŐKÉSZÍTETT) javítás a végétől igénylő hibák információkért.
-
-    > - Először az előkészítési kérelemben kerül a minősítési csapatot, amely a virtuális merevlemez ellenőrzése. Azonban ha a kérelem csak marketing-módosítás van itt, majd a minősítési lépésben a rendszer kihagyta.
-    > - A minősítés befejezése után a replikáció az ajánlat indítsa el az összes Azure-adatközpontok között. Általában 24-48hours a replikálás befejezéséhez szükséges, de is igénybe vehet egy héttel a vhd méretétől függően. Ha viszont a kérelem csak marketing-módosítás van itt, majd a replikálást, gyorsabb.
-    > - Amikor a replikálás is befejeződik, majd az ajánlat elérhető lesz a [az Azure portal](http:/portal.azure.com). Ebben az időszakban az állapot ELŐKÉSZÍTENI válnak a közzétételi portálon. Egy előkészített ajánlat jelenik meg a a [az Azure portal](http:/portal.azure.com) csak használatával a, amellyel elő van készítve az ajánlatot az előfizetéshez tartozó e-mail-azonosítót.
+   > - Először az előkészítési kérelemben kerül a minősítési csapatot, amely a virtuális merevlemez ellenőrzése. Azonban ha a kérelem csak marketing-módosítás van itt, majd a minősítési lépésben a rendszer kihagyta.
+   > - A minősítés befejezése után a replikáció az ajánlat indítsa el az összes Azure-adatközpontok között. Általában 24-48hours a replikálás befejezéséhez szükséges, de is igénybe vehet egy héttel a vhd méretétől függően. Ha viszont a kérelem csak marketing-módosítás van itt, majd a replikálást, gyorsabb.
+   > - Amikor a replikálás is befejeződik, majd az ajánlat elérhető lesz a [az Azure portal](http:/portal.azure.com). Ebben az időszakban az állapot ELŐKÉSZÍTENI válnak a közzétételi portálon. Egy előkészített ajánlat jelenik meg a a [az Azure portal](http:/portal.azure.com) csak használatával a, amellyel elő van készítve az ajánlatot az előfizetéshez tartozó e-mail-azonosítót.
 
 1. Jelentkezzen be a [Azure betekintő portál](https://portal.azure.com) az előző lépésben szereplő Azure-előfizetések egyikének használatával.
 2. Keresse meg az ajánlat, és ellenőrizze a VM-lemezkép pontok:
@@ -58,8 +58,8 @@ ms.locfileid: "39715872"
 > 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy az ajánlat "előkészített" és tesztelése a működését, és marketing-tartalmat, folytassa a végső közzétételi fázis **4. lépés**: [üzembe helyezése az ajánlatot a piactéren](marketplace-publishing-push-to-production.md).
+Most, hogy az ajánlat "előkészített" és tesztelése a működését, és marketing-tartalmat, folytassa a végső közzétételi fázis **4. lépés**: [Üzembe helyezése az ajánlatot a piactéren](marketplace-publishing-push-to-production.md).
 
 ## <a name="see-also"></a>Lásd még
-* [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
+* [Első lépések: Ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 

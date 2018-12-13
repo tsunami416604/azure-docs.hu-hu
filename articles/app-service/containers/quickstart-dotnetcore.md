@@ -1,5 +1,5 @@
 ---
-title: .NET Core-webalkalmazás létrehozása és üzembe helyezése Linuxon futó App Service-ben | Microsoft Docs
+title: .NET Core-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
 description: Percek alatt üzembe helyezheti az első .NET Core Hello World alkalmazását a Linuxon futó App Service-ben.
 keywords: azure app service, webalkalmazás, dotnet, core, linux, oss
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: f074c6184652ced133a7253bee3cc7a8a556c574
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316769"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251793"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben
 

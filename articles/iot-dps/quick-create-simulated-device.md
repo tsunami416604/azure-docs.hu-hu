@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 3ae454be8327c1f9ce605899e4b26105d44ab0f6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157853"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189302"
 ---
-# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rövid útmutató: Szimulált TPM-eszköz kiépítése az Azure IoT C SDK-val
+# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Gyors útmutató: Az Azure IoT C SDK használatával szimulált TPM-eszköz kiépítése
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -25,8 +25,8 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat p
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. A rövid útmutató folytatása előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -142,15 +142,15 @@ Ebben a szakaszban olyan mintát hoz létre és futtat, amely beolvassa a futó 
 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
-    - **Mechanizmus:** Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-    - **Ellenőrzőkulcs:** Adja meg a TPM-eszközhöz létrehozott *Ellenőrzőkulcsot* a *tpm_device_provision* projekt futtatásával.
-    - **Regisztráció azonosítója:** Írja be a TPM-eszközhöz létrehozott *Regisztrációs azonosítót* a *tpm_device_provision* projekt futtatásával.
-    - **IoT Edge-eszköz:** Válassza a **Letiltás** lehetőséget.
-    - **IoT Hub-eszközazonosító:** A **test-docs-device** megadásával adjon azonosítót az eszköznek.
+    - **Mechanizmus:** Válassza a TPM elemet az identitás igazolási *Mechanizmusaként*.
+    - **Ellenőrzőkulcs:** Adja meg a *ellenőrzőkulcsot* futtassa a TPM-eszköz számára létrehozott a *tpm_device_provision* projekt.
+    - **Regisztrációs azonosító:** Adja meg a *regisztrációs azonosító* futtassa a TPM-eszköz számára létrehozott a *tpm_device_provision* projekt.
+    - **IoT Edge-eszköz:** Válassza ki **letiltása**.
+    - **IoT Hub-Eszközazonosító:** Adja meg **test-docs-eszköz** biztosíthat az eszköz azonosítója.
 
-    ![Írja be az eszköz beléptetési információit a portálon](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+      ![Írja be az eszköz beléptetési információit a portálon](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-    Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni beléptetések* lapon lévő listában. 
+      Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni beléptetések* lapon lévő listában. 
 
 
 <a id="firstbootsequence"></a>

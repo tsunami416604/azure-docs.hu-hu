@@ -10,17 +10,15 @@ ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8a1ee511848cf854374323b356492f374988d5d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: af41e2af87afbbeb8629d07508d4e5244351a4df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109768"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277346"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -174,7 +172,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:
 - Az adatmennyiség meghalad egy megadott mennyiséget.
 - Az adatmennyiség várhatóan meghalad egy megadott mennyiséget.
 
-Az Azure-riasztások támogatják a keresési lekérdezéseket támogató [naplóriasztásokat](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md). 
+Az Azure-riasztások támogatják a keresési lekérdezéseket támogató [naplóriasztásokat](../../azure-monitor/platform/alerts-unified-log.md). 
 
 A következő lekérdezés akkor ad vissza eredményt, ha több mint 100 GB adat lett összegyűjtve az elmúlt 24 órában:
 
@@ -186,7 +184,7 @@ A következő lekérdezés egy egyszerű képlettel előrejelzi, mikor fog a ren
 
 Ha más adatmennyiségre szeretne riasztást beállítani, módosítsa a lekérdezésekben a 100 értéket arra a GB mennyiségre, amely esetén riasztást szeretne kapni.
 
-Az [új naplózási riasztás létrehozásával kapcsolatos](../../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
+Az [új naplózási riasztás létrehozásával kapcsolatos](../../azure-monitor/platform/alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
 
 Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat lett összegyűjtve 24 órán belül, állítsa be a következőket:  
 
@@ -200,7 +198,7 @@ Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mi
    - A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*
    - A **Súlyosság** legyen *Figyelmeztetés*
 
-Megadhat egy meglévő [műveletcsoportot](../../monitoring-and-diagnostics/monitoring-action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
+Megadhat egy meglévő [műveletcsoportot](../../azure-monitor/platform/action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
 
 A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat összegyűjtése várható 24 órán belül, állítsa be a következőket:
 
@@ -214,13 +212,13 @@ A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több 
    - A **Név** legyen *Több mint 100 GB várható adatmennyiség 24 órán belül*
    - A **Súlyosság** legyen *Figyelmeztetés*
 
-Megadhat egy meglévő [műveletcsoportot](../../monitoring-and-diagnostics/monitoring-action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
+Megadhat egy meglévő [műveletcsoportot](../../azure-monitor/platform/action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
 
 Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a vártnál magasabb szintű használatot okozó hibák elhárításához.
 
 ## <a name="next-steps"></a>További lépések
 * A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](../log-query/log-query-overview.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
-* Az [új naplózási riasztás létrehozásával kapcsolatos](../../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
+* Az [új naplózási riasztás létrehozásával kapcsolatos](../../azure-monitor/platform/alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
 * A [megoldáscélzási](../insights/solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 * Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzataival](../../security-center/security-center-enable-data-collection.md) foglalkozó cikket.
 * Módosítsa a [teljesítményszámlálók konfigurációját](data-sources-performance-counters.md).

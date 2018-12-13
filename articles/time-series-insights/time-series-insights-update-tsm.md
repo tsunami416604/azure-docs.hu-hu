@@ -1,6 +1,6 @@
 ---
-title: Time Series modellben |} A Microsoft Docs
-description: Ismertetése Time Series-modell
+title: Az Azure Time Series Insights - Time Series modellben |} A Microsoft Docs
+description: Ismertetése az Azure Time Series Insights Time Series modellben.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,40 +9,45 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d5f94aebcd55474385e903246ce7945586456dd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890415"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278185"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
-Ez a dokumentum ismerteti a **Idősorozat-modell** (TSM) rész az Azure Time Series Insights (TSI) frissítése. Modellelemek a modellben, annak képességeit és hogyan kezdheti el létrehozását és a saját modellek ismerteti.
+Ez a cikk ismerteti az Azure Time Series Insights – előzetes Idősorozat-modell részét. Modellelemek a modellben, annak képességeit és hogyan kezdheti el létrehozását és a saját modellek tárgyalja.
 
-Az IoT-eszközökről gyűjtött adatok hagyományosan, megnehezítve a keresése, és gyorsan elemezheti az érzékelők környezeti információkat nem rendelkezik. A fő motiváció TSM számára, hogy egyszerűbb keresése és elemzése IoT-adatot válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével. TSMs a lekérdezésekben és navigációs létfontosságú szerepet játszik, mivel azok contextualize eszköz és az eszközre irányuló entitásokat. Adatait a bennük tárolt képletek kihasználva TSM powers time series lekérdezések számításokban megőrzi.
+Az IoT-eszközökről gyűjtött adatok hagyományosan környezeti információkat, ami megnehezíti a keresése, és gyorsan elemezheti az érzékelő nem rendelkezik. A fő motiváció Idősorozat-modell számára, hogy egyszerűbb keresése és elemzése IoT-adatot. Ez a cél a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével éri el. 
+
+Time Series modellek a lekérdezésekben és navigációs létfontosságú szerepet játszanak, mert azok az eszköz és az eszközre irányuló entitások contextualize. Idősorozat-modellben levő rendelkezik megőrzött adatok idősorozat-lekérdezés számítások működteti a bennük tárolt képletek kihasználásával.
 
 ![TSM][1]
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
-. A cél legyen a egyszerű és zökkenőmentes kezelheti a time series contextualization TSM lehetővé teszi a az Azure TSI-ben (előzetes verzió) a következő képességekkel:
+Idősorozat-modell a cél legyen a egyszerű és zökkenőmentes time series contextualization kezelése, lehetővé teszi a Time Series Insights előzetes verzióban érhető el az alábbi képességeket. Ez segít:
 
-* Lehetővé teszi az hozhat létre és kezelheti a számítások vagy a képleteket, átalakítja az adatokat kihasználva skaláris függvények, összesített műveletek, stb.
-* Szülő-gyermek típusú kapcsolatokat navigációs és referencia kontextusának biztosításához a time series telemetria engedélyezése meghatározása.
-* Ezek segítségével hierarchiák létrehozása és a szolgáltatáspéldány-mezők példányok részét társított tulajdonságok megadása.
+* Hozhat létre és számítások vagy képletek kezelése, skaláris függvények felhasználásával adatok átalakítása műveletek összesített, és így tovább.
+
+* Adja meg a navigációs és hivatkozás engedélyezése és a time series telemetriai kontextusba szülő-gyermek típusú kapcsolatokat.
+
+* Adja meg a példányok részét társított tulajdonságok *mezők példány* és hozhatók létre hierarchiák.
 
 ## <a name="times-series-model-key-components"></a>Túllépi az adatsorozat modell legfontosabb összetevők
 
-Nincsenek TSM három fő összetevői:
+Idősorozat-modell három fő részből áll:
 
-* **Time Series modell** *típusok*
-* **Time Series modell** *hierarchiák*
-* **Time Series modell** *példányok*
+* Time Series modell *típusok*
+* Time Series modell *hierarchiák*
+* Time Series modell *példányok*
 
 ## <a name="time-series-model-types"></a>Time Series adatmodell-típusokat
 
-**Time Series modell** *típusok* meghatározó változókat és adatelemzésre számítások képletek engedélyezése és a egy adott TSI-példányhoz társított. A típus lehet egy vagy több változót. Például a TSI-példány típusú lehet **hőmérséklet-érzékelő**, amely a következőkből áll a változók: *átlagos hőmérsékletét*, *min hőmérséklet*, és *maximális hőmérséklet*. Alapértelmezett típussal hozunk létre, az adatok indításakor TSI beérkeznek. Azt is olvassa és beállítások frissítve lett. Alapértelmezett típusok fog rendelkezni, amely az események száma.
+Time Series modell *típusok* segítségével meghatározhatja a változók vagy számítások adatelemzésre képleteket. A típusok társítva egy adott Time Series Insights-példányt. A típus lehet egy vagy több változót. Például egy Time Series Insights-példány típusú lehet *hőmérséklet-érzékelő*, amely a következőkből áll a változók *átlagos hőmérsékletét*, *min hőmérséklet*, és *hőmérséklet maximális*. Alapértelmezett típussal hozunk létre, amikor az adatok elindul a tárfiókba kerülnek a Time Series Insights. Az alapértelmezett típus is lekérje és a modell beállítások frissítése. Alapértelmezett típusok rendelkezik, amely az események száma.
 
 ## <a name="time-series-model-type-json-example"></a>Time Series modell típusa példa JSON
 
@@ -69,13 +74,13 @@ Minta:
 }
 ``````
 
-További információk a származó Idősorozat-modell típust a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+Idősorozat-modell típusaival kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ## <a name="variables"></a>Változók
 
-Az Azure TSI-típusok változók, nevesített számítások keresztül az események értékeinek rendelkezik. A TSI változó definíciók olyan képletet, és a számítási szabályokat tartalmaz. Változó-definícióhoz tartozik típusa, érték, szűrő, csökkentésére és határok. Változók TSM definíciójában vannak tárolva, és a tárolt definíció felülbírálása a lekérdezési API-kon keresztül beágyazott adható meg.
+Time Series Insights típusok változók, nevesített számítások keresztül az események értékeinek rendelkezik. Time Series Insights változó definíciók olyan képletet, és a számítás szabályokat tartalmaz. Változó-definícióhoz tartozik *kind*, *érték*, *szűrő*, *csökkentési*, és *határok*. Változók vannak tárolva a definíció az Idősorozat-modell, és a tárolt definíció felülbírálása a lekérdezési API-kon keresztül beágyazott adható meg.
 
-Az alábbi mátrix változó definíciók jelmagyarázat módon működik:
+A következő mátrix változó definíciók jelmagyarázat módon működik:
 
 ![tábla][2]
 
@@ -83,8 +88,8 @@ Az alábbi mátrix változó definíciók jelmagyarázat módon működik:
 
 A következő változó jellegű támogatottak:
 
-* Numerikus
-* Összesítés
+* *numerikus*
+* *Összesítés*
 
 ### <a name="variable-filter"></a>Változó szűrő
 
@@ -96,13 +101,13 @@ Változó és számítási célszerű használni. Ez az az oszlop az eseményeke
 
 ### <a name="variable-aggregation"></a>Változó összesítés
 
-Az aggregate függvényt a változó lehetővé teszi a számítási része. A TSI támogatni fogja a szokásos összesítések (nevezetesen, **min**, **maximális**, **átlagos**, **sum**, és **száma**).
+A változó az aggregate függvényt lehetővé teszi a számítási része. A Time Series Insights támogatja reguláris összesítések (nevezetesen *min*, *maximális*, *átlagos*, *sum*, és *száma*).
 
 ## <a name="time-series-model-hierarchies"></a>Time Series modell hierarchiák
 
-Hierarchiák rendszerezéséhez példányok és azok a tulajdonságnevek megadásával. Előfordulhat, hogy egy hierarchián vagy több hierarchiát. Ezenkívül nem szükséges, ezek az adatok aktuális része, de minden példány egy hierarchia leképezhető. Egy TSM példány leképezhet egy hierarchián vagy több hierarchiát.
+Hierarchiák rendszerezéséhez példányok és azok a tulajdonságnevek megadásával. Előfordulhat, hogy egy hierarchián vagy több hierarchiát. Nem szükséges az adatok aktuális része, de minden példány egy hierarchia leképezhető. Egy Idősorozat-modell-példány leképezhet egy hierarchián vagy több hierarchiát.
 
-Hierarchiák által meghatározott **Hierarchiaazonosító**, **neve**, és **forrás**. Hierarchiák elérési utak rendelkezik, egy elérési utat a felhasználó szeretne létrehozni a hierarchiában felülről lefelé szülő-gyermek sorrendjét. A szülő/gyermek tulajdonságok szolgáltatáspéldány-mezők leképezése.
+Hierarchiák által meghatározott *Hierarchiaazonosító*, *neve*, és *forrás*. Hierarchiák rendelkezik egy elérési utat, amely a felhasználók létre szeretné hozni a hierarchiában felülről lefelé szülő-gyermek sorrendjét. A szülő-gyermek típusú tulajdonságok térkép *mezők példány*.
 
 ### <a name="time-series-model-hierarchy-json-example"></a>Time Series modell hierarchia példa JSON
 
@@ -121,33 +126,33 @@ Minta:
 }
 ```
 
-További információt az Idősorozat-modell hierarchiát a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+Idősorozat-modell hierarchiák kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-definition-behavior"></a>Hierarchia definíció viselkedése
 
-Vegye figyelembe az alábbi példában, amelyben hierarchia H1 rendelkezik "elkészítése", "floor" és "hely" definíciójához részeként:
+Vegye figyelembe az alábbi példában, ahol a H1 hierarchia már *létrehozásához*, *emelet*, és *szoba* definíciójához részeként:
 
 ```plaintext
  H1 = [“building”, “floor”, “room”]
 ```
 
-A szolgáltatáspéldány-mezők attól függően, a hierarchia attribútumai és értékei fog megjelenni jelennek meg: 
+Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei jelennek meg az alábbi táblázatban látható módon: 
 
-| Time Series-azonosító | Szolgáltatáspéldány-mezők |
+| Idősorozat azonosítója | Szolgáltatáspéldány-mezők |
 | --- | --- |
 | ID1 | "elkészítése" = "1000", "emelet" = "10", "hely" = "55."  |
 | ID2 | "elkészítése" = "1000", "hely" = "55." |
-| ID3 |  "floor" = "10" |
+| ID3 | "floor" = "10" |
 | MINT AZ ID4 ESETÉBEN | "elkészítése" = "1000", "emelet" = "10"  |
 | ID5 | |
 
-A fenti példában ID1 jeleníti meg a felhasználói felület és felhasználói H1 hierarchia részeként többi közben besorolt alatt `Unparented Instances` óta nem felelnek meg a megadott adatok hierarchiába.
+Az előző példában ID1 megjeleníti a hierarchiában H1 felhasználói felület és felhasználói részeként, és a többi szerint besorolt *fölérendelt objektum nélküli példányok* mivel azok nem megfelelnek a megadott hierarchiát.
 
 ## <a name="time-series-model-instances"></a>Time Series modell-példány
 
-Az idősor magukat a példányai. A legtöbb esetben a *deviceId* vagy *assetId* lesz a környezetben az eszköz egyedi azonosítója. A példányok rendelkeznek leíró információkat a hozzájuk társított példány tulajdonságainak neve. Minimális példány tulajdonságai közé tartozik a hierarchiára vonatkozó információk. Akkor hasznos, leíró adatok, például a gyártó, operátor vagy a legutóbbi szolgáltatás dátuma is tartalmazhatnak.
+Az idősor magukat a példányai. A legtöbb esetben a *deviceId* vagy *assetId* a környezetben az eszköz egyedi azonosítója. A példányok rendelkeznek leíró információkat a hozzájuk társított példány tulajdonságainak neve. Minimális példány tulajdonságai közé tartozik a hierarchiára vonatkozó információk. Akkor hasznos, leíró adatok, például a gyártó, operátor vagy a legutóbbi szolgáltatás dátuma is tartalmazhatnak.
 
-Példányok által meghatározott *timeSeriesId*, *typeId*, *hierarchyId*, és *instanceFields*. Csak egy rendeli minden példány *típus*, és a egy vagy több hierarchiák. Példányok összes tulajdonságok öröklése a hierarchiák, míg további *instanceFields* adhat hozzá további példányt erőforrástulajdonság-definíciót.
+Példányok által meghatározott *timeSeriesId*, *typeId*, *hierarchyId*, és *instanceFields*. Csak egy rendeli minden példány *típus*, és a egy vagy több hierarchiák. Hierarchiák, és további példányok öröklik az összes tulajdonság *instanceFields* adhat hozzá további példányt erőforrástulajdonság-definíciót.
 
 *instanceFields* példányát és a statikus adatokat, amely meghatározza egy példányt, tulajdonság. Miközben is támogatja a keresési műveletek végrehajtása az indexelés meghatározzák a hierarchiában, vagy nem hierarchia tulajdonságának értékét.
 
@@ -170,7 +175,7 @@ Minta:
 }
 ```
 
-További információt az Idősorozat-modell példányok a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+Idősorozat-modell példányok kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-settings-example"></a>Idő tanulása beállítások példa
 
@@ -191,13 +196,13 @@ Minta:
 }
 ```
 
-Az Idősorozat-modell beállításokkal kapcsolatos további információkért olvassa el a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Idősorozat-modell beállításaival kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Azure TSI (előzetes verzió) tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
+Lásd: [storage Azure Time Series Insights előzetes verziója a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
-Olvassa el az új [idősorozat-modell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
+Megjelenik az új [Idősorozat-modell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
 
 <!-- Images -->
 [1]: media/v2-update-tsm/tsm.png

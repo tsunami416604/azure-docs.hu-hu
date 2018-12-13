@@ -1,6 +1,6 @@
 ---
-title: Adatok importálása az Azure Searchben | Microsoft Docs
-description: Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe.
+title: Adatbetöltési search-indexbe – Azure Search adatok importálása
+description: Töltse fel, és a külső adatforrásokból származó adatokat feltölteni az Azure Search-index.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249778"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314856"
 ---
-# <a name="indexing-in-azure-search"></a>Indexelés az Azure Search szolgáltatásban
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>Lekérdezések az Azure Search külső adatok indexelése
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249778"
 > 
 > 
 
-Az Azure Searchben a lekérdezések a [keresési indexbe](search-what-is-an-index.md) betöltött tartalmakon futnak. Ez a cikk a tartalmak indexbe való betöltésének két alapvető módszerét vizsgálja: az adatok programozott módon történő *elküldését* az indexbe, vagy az [Azure Search-indexelő](search-indexer-overview.md) beállítását úgy, hogy a támogatott adatforrásra mutasson az adatok *lekéréséhez*.
+Az Azure Search szolgáltatásban lekérdezések betölti és a tartalmakon futnak egy [search-index](search-what-is-an-index.md). Ez a cikk az index feltöltése két alapvető módszerét vizsgálja: *leküldéses* az indexbe az adatok programozott módon, vagy egy [Azure Search-indexelőt](search-indexer-overview.md) egy támogatott adatforrásra,  *a lekéréses* az adatok.
 
 ## <a name="pushing-data-to-an-index"></a>Adatok elküldése egy indexbe
 A legrugalmasabb módszer a leküldéses modell, amelyet arra használnak, hogy programozott módon adatokat küldjön az Azure Searchnek. Először is nem korlátozza az adatforrás típusát. Bármely JSON-dokumentumokból álló adatkészlet továbbítható az Azure Search-indexnek, feltéve hogy az adatkészlet minden dokumentuma tartalmaz olyan mezőket, amelyek az indexsémában meghatározott mezőkhöz vannak hozzárendelve. Emellett nem korlátozza a végrehajtás gyakoriságát sem. Tetszőleges gyakorisággal továbbíthat módosításokat az indexeknek. Nagyon alacsony késleltetési követelményekkel rendelkező alkalmazások esetében (ha például arra van szükség, hogy a keresési műveletek szinkronizálva legyenek a dinamikus leltáradatbázissal) kizárólag a leküldéses modell használható.

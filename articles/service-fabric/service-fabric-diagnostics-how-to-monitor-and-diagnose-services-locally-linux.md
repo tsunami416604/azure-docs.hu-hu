@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051374"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309161"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
 
@@ -35,7 +35,7 @@ Figyelés, észlelni, diagnosztizálása és hibaelhárítása lehetővé teszi 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Service Fabric Java-alkalmazások hibakeresése
 
-Java-alkalmazások [több naplózási keretrendszerekből](http://en.wikipedia.org/wiki/Java_logging_framework) érhetők el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE együtt is használható a [a github-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started).  A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszer.
+Java-alkalmazások [több naplózási keretrendszerekből](http://en.wikipedia.org/wiki/Java_logging_framework) érhetők el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE együtt is használható a [a GitHub-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started). A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszer.
 
 Java.util.logging használatával irányíthatja át az alkalmazásnaplókat a memória, a kimeneti Stream, a konzol fájlok vagy a sockets. Ezek a beállítások mindegyike esetében nincsenek alapértelmezett kivételkezelők keretében nyújtott. Létrehozhat egy `app.properties` fájlt, hogy az alkalmazás összes naplók átirányítása egy helyi fájlba a fájl-kezelő konfigurálása.
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 Által mutatott a mappát a `app.properties` fájlnak léteznie kell. Után az `app.properties` jön létre, a belépési pont szkriptje is módosítani kell `entrypoint.sh` a a `<applicationfolder>/<servicePkg>/Code/` mappát a tulajdonság beállítása `java.util.logging.config.file` való `app.propertes` fájlt. A bejegyzés a következő kódrészlethez hasonlóan kell kinéznie:
@@ -64,7 +64,7 @@ Ezt a konfigurációt eredményez, egy rotált módon összegyűjtött naplók `
 
 Alapértelmezés szerint ha obsluha explicit módon van konfigurálva, a konzol kezelő regisztrálva van. A naplók alapján /var/log/syslog syslog egy tekinthető meg.
 
-További információkért lásd: a [a github-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+További információkért lásd: a [a GitHub-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric C#-alkalmazások hibakeresése
@@ -83,8 +83,8 @@ Egy egyéni EventListener használatával figyeli a szolgáltatás esemény, és
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ Egy egyéni EventListener használatával figyeli a szolgáltatás esemény, és
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ Egy egyéni EventListener használatával figyeli a szolgáltatás esemény, és
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 01ba8b6d9ebef5d79b660638d60d5b745c624786
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725386"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271725"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 Automatizálhatja a konfigurációját [riasztások](app-insights-alerts.md) a [Application Insights](app-insights-overview.md).
 
-Emellett akkor is [állítsa be a webhookok automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Emellett akkor is [állítsa be a webhookok automatizálható a riasztás](../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Ha azt szeretné, erőforrások és a riasztások létrehozásához egy időben, érdemes lehet [egy Azure Resource Manager-sablonnal](app-insights-powershell.md).
@@ -132,10 +132,10 @@ A metrikák különféle telemetriai modulok által küldött:
 | kérelem,<br/>requestFailed |[Kiszolgálói kérelem](app-insights-configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhookok
-Is [automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Riasztást hoz létre az Azure egy webcímet tetszőleges fogja hívni.
+Is [automatizálható a riasztás](../azure-monitor/platform/alerts-webhooks.md). Riasztást hoz létre az Azure egy webcímet tetszőleges fogja hívni.
 
 ## <a name="see-also"></a>Lásd még
 * [Nakonfigurovat Application Insights-szkript](app-insights-powershell-script-create-resource.md)
 * [Az Application Insights és a webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
 * [Az Application insights szolgáltatásba a Microsoft Azure Diagnostics kapcsolási automatizálása](app-insights-powershell-azure-diagnostics.md)
-* [Automatizálható a riasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Automatizálható a riasztás](../azure-monitor/platform/alerts-webhooks.md)

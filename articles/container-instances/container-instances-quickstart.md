@@ -1,23 +1,23 @@
 ---
-title: Rövid útmutató – Alkalmazás futtatása az Azure Container Instances szolgáltatásban
-description: Ebben a rövid útmutatóban az Azure CLI használatával helyez üzembe egy Docker-tárolóban futó alkalmazást az Azure Container Instances szolgáltatásban
+title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban – CLI
+description: Ebben a rövid útmutatóban egy Docker-tárolóalkalmazás futtatása egy elkülönített tárolóban az Azure Container Instances szolgáltatásban való üzembe helyezéséhez használhatja az Azure CLI
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7db3d9a076fe9ff5b8bbf970705b82a3f0d5ce54
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855663"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189608"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rövid útmutató: Alkalmazás futtatása az Azure Container Instances szolgáltatásban
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure CLI-vel
 
-Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ebben a rövid útmutatóban létrehoz egy tárolót az Azure-ban az Azure Portal használatával, majd elérhetővé teszi a hozzá tartozó alkalmazást egy teljes tartománynévvel (FQDN). Néhány másodperccel azután, hogy végrehajt egy üzembehelyezési parancsot, már meg is keresheti tallózással a futó alkalmazást:
+Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ez a rövid útmutatóban az Azure CLI hozzon létre egy tárolót az Azure-ban, és a egy teljesen minősített tartománynevét (FQDN) elérhetővé az alkalmazás használja. Néhány másodperccel azután, hogy végrehajt egy üzembehelyezési parancsot, már meg is keresheti tallózással a futó alkalmazást:
 
 ![Az Azure Container Instances szolgáltatásban üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 

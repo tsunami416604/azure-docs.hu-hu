@@ -1,13 +1,12 @@
 ---
 title: Mások data science példák – az Azure Machine Learning Studio másolása |} A Microsoft Docs
-description: 'Adatelemzési titokról: mások az Ön helyett ezt a munkát. Machine learning példák le az Azure AI-katalógusban.'
+description: 'Üzleti titokra adatelemzési módszer: Első másokat, hogy Ön helyett ezt a munkát. Machine learning példák le az Azure AI-katalógusban.'
 keywords: adatok tudományos példák, machine learning például fürtözési algoritmust, fürtözési algoritmust példa
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: c033cc42fd9f57c18242c6e7a6b301238592c0fe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075013"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260378"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
-## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Az adatelemzés kezdőknek sorozat
+## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat
 A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön helyett ezt a munkát. Az Azure AI-katalógusban a saját machine learning-kísérlet használandó fürtözési algoritmust példát talál.
 
 > [!IMPORTANT]
@@ -42,13 +41,13 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [adatelemzési készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* Videó: 5: Más emberek munkájának lemásolása az adatelemzéshez való másolása
+* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5. Videó: Más emberek munkájának lemásolása az adatelemzéshez
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>A szövegben: Más emberek munkájának lemásolása az adatelemzéshez való másolása
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>A szövegben: Más emberek munkájának lemásolása az adatelemzéshez
 Üdvözli az a sorozat ötödik videó "Adatelemzés kezdőknek."
 
 Ezt az eszközt azt is kölcsönzött a kiindulási pontként a saját munkájához található példák egy hely ismerheti. Előfordulhat, hogy a legtöbbet hozhassa ki ezt a videót, ha először tekintse meg az oktatóanyag-sorozatban a korábbi videókat.

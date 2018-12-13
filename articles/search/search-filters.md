@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search szűrők |} Microsoft Docs
-description: Szűrés a felhasználó biztonsági azonosítóját, nyelvi, földrajzihely- vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében.
+title: Keresési eredmények az Azure Search - index sorolására alkalmazott szűrők
+description: Szűrheti a felhasználó biztonsági azonosítóját, nyelvi, földrajzihely- vagy numerikus értékek keresési eredményei között az Azure Search szolgáltatásban a Microsoft Azure-ban üzemeltetett felhőalapú keresési szolgáltatás lekérdezések csökkentése érdekében.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,67 +8,68 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 9f891dbe3f051f2fb5bfd242830f3c30abede487
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: d99196e231d122fcb0e707d30aed4d3b3eb2b89d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191366"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310351"
 ---
 # <a name="filters-in-azure-search"></a>Szűrők az Azure Search szolgáltatásban 
 
-A *szűrő* szempontokat tartalmazza az Azure Search lekérdezésben használt dokumentumok kijelöléséhez. Nem szűrt keresési az index összes dokumentum tartalmazza. A szűrő egy részének dokumentumok keresési lekérdezés hatóköröket. Például egy szűrő sikerült korlátozhatja a teljes szöveges keresés csak az adott termék, egy adott márkájú vagy színét, egyszer árlista egy meghatározott küszöbérték feletti.
+A *szűrő* kiválasztásakor egy Azure Search lekérdezésben használt dokumentumok szempontokat tartalmazza. Szűrés nélkül keresési az index összes dokumentum tartalmazza. Egy szűrőt egy részhalmazára dokumentumok keresési lekérdezés hatóköröket. Például egy szűrő sikerült korlátozza a teljes szöveges keresés csak az adott termék, egy adott márkájú vagy színes, ár időpontokban egy meghatározott küszöbérték feletti.
 
-Néhány keresési lép ugyanazok a szűrő követelményei végrehajtásának részeként, de használhatja a szűrők bármikor kívánt keresési használatával *érték-alapú* feltételek (tartalmazó keresse meg a termék típusa "könyvek" kategória" nem-példa"által közzétett"Simon & Schuster").
+Néhány keresési funkciókat szűrő követelményeket írnak elő a megvalósítás részeként, de használhatja a szűrők korlátozhatja a keresés használatával megváltoztathatja *értékalapú* feltételek (hatókörkezelési keresése a termék típusa "könyvek" category" nem-fantasztikus"által közzétett"Simon és Schuster").
 
-Ha inkább a, célzott keresés vonatkozó adatait a *struktúrák* (ügyfél-ellenőrzések mezőhöz tartalmazó keresési), alternatív módszert, az alábbiakban.
+Ha inkább a cél bizonyos célzott keresést *struktúrák* (ügyfél-ellenőrzések mezőre hatókörkezelési keresése), alternatív módszert, az alábbiakban.
 
-## <a name="when-to-use-a-filter"></a>Mikor érdemes használni a szűrő
+## <a name="when-to-use-a-filter"></a>Ha a szűrő
 
-Szűrők a következők eligazodást több keresési alkalmazásokban, beleértve a "Keresés közeli", jellemzőalapú navigáció és a biztonsági szűrők, hogy csak a dokumentumok a felhasználó engedélye van. Ezek az elemek egyikét sem alkalmazza, ha egy szűrőt kell. A szűrő a keresési lekérdezés, amely a földrajzi hely meghatározásának koordináták biztosít a felhasználó, vagy a kérelmező biztonsági Azonosítóját a kiválasztott dimenzió kategória csatolva.
+Szűrők több keresési funkciókat, beleértve a "Keresés a közelben", és a jellemzőalapú navigáció, biztonsági szűri, hogy csak ezeket a dokumentumokat a felhasználók számára engedélyezett lásd: az alapvető. Ha ezek a tapasztalatok bármelyike implementálásához szűrő megadása kötelező. A szűrőt a keresési lekérdezést, amely a földrajzi koordináták biztosít a felhasználó vagy a kérelmező biztonsági Azonosítóját a kiválasztott értékkorlátozás kategória csatolva.
 
 Példaforgatókönyvek a következők:
 
-1. Az index alapján a adatok értékkel szelet használjon szűrőt. Adott város, eszközök és lakáshelyzet típusú sémát, előfordulhat, hogy létrehozhat egy szűrőt, amely explicit módon válassza ki a dokumentumot, amely megfelel a feltételeknek (a budapesti, condos, partszakasz). 
+1. Szűrő használatával szeletelheti az indexben lévő az index alapján. Adja meg egy séma a város, a lakáshelyzet típusa és az eszközök, létrehozhat egy szűrőt, hogy explicit módon válassza ki a dokumentumok, amelyek megfelelnek a feltételeknek (a budapesti, a condos, az i partszakasz). 
 
-  Teljes szöveges keresés az ugyanazon a forráson gyakran eredménye hasonló, de szűrő pontosabb abban, hogy pontos egyezés az indexben tartalom szűrő kifejezés van szükség. 
+  A teljes szöveges keresés az ugyanazokkal a be gyakran a hasonló eredményt ad, de szűrő pontosabb abban, hogy pontos egyezés az indexben lévő tartalom szűrési kifejezés van szükség. 
 
-2. Szűrő használata, ha a keresési élményt szűrő követelmény tartalmaz:
+2. Használjon szűrőt, ha a keresési funkciót tartalmaz, a szűrő követelmény:
 
- * [Jellemzőalapú navigációs](search-faceted-navigation.md) vissza felelt meg a felhasználó által kiválasztott dimenzió kategória szűrőt használja.
- * Földrajzi keresési szűrő felelt meg az aktuális hely "keresett közeli" koordináták alkalmazásokat használ. 
- * A biztonsági szűrők adja át a biztonsági azonosítók szűrési feltételeket, mint ahol egyezés az indexben a hozzáférési jogosultságot a dokumentumhoz proxyként funkcionál.
+ * [Jellemzőalapú navigáció](search-faceted-navigation.md) át vissza a felhasználó által kiválasztott értékkorlátozás kategória szűrőt használ.
+ * Földrajzi keresés szűrőt használ a "Keresés a közelben" az aktuális hely koordinátái alkalmazások át. 
+ * Biztonsági szűrők adja át a biztonsági azonosítók szűrőfeltételeket, mint ahol az egyezés az indexben a hozzáférési jogosultsága ahhoz, hogy a dokumentum-proxyként funkcionál.
 
-3. Szűrő használata, ha azt szeretné, hogy egy számmező a keresési feltételeket. 
+3. Használjon szűrőt, ha azt szeretné, hogy a keresési feltételeknek, egy numerikus mezőben. 
 
-  Numerikus mező lekérhető a dokumentumban, és jelenhet meg a keresési eredmények között, de nem kereshető (függvényében a teljes szöveges keresés) külön-külön. Ha módosítania kell a kiválasztási feltételek numerikus adatok alapján, a szűrő használata.
+  Numerikus mező lekérhető a dokumentum, és a keresési eredmények között szerepelhetnek, de ez nem kereshető (függvényében a teljes szöveges keresés) külön-külön. Ha kiválasztási feltételek numerikus adatokon alapuló, használjon szűrőt.
 
-### <a name="alternative-methods-for-reducing-scope"></a>A hatókör csökkentésére alternatív módszerek
+### <a name="alternative-methods-for-reducing-scope"></a>Alternatív módszerek az hatókör csökkentése
 
-Ha egy szűkítő hatása a keresési eredmények között, szűrők a következők nem az egyetlen lehetősége. Másik módszert lehet felel meg leginkább, attól függően, hogy a cél:
+Ha azt szeretné, a keresési eredmények szűkítő hatása, szűrők nem lesznek az egyetlen lehetősége. Ezek az alternatívák jobban megfelel, attól függően, a cél lehet:
 
- + `searchFields` lekérdezési paraméter értékén rögzíti a keresési bizonyos mezők. Például ha az index külön mezők biztosít angol és spanyol leírásokat, használhatja searchFields, amelyekre a teljes szöveges keresés használandó mezőket. 
+ + `searchFields` lekérdezési paraméter értékén rögzíti a search az egyes mezők. Például ha az index külön mezőket is tartalmazza az angol és spanyol leírások, használhatja searchFields, amelyekre a teljes szöveges keresés használandó mezőket. 
 
-+ `$select` paraméter használatával adja meg az eredményt mezők beállítása, hatékonyan díszítésre a válasz a hívó alkalmazás felé. Ez a paraméter nem pontosítsa a lekérdezést, vagy csökkentse a dokumentumgyűjteményt, de ha részletes válasz a cél, ezt a paramétert, fontolja meg. 
++ `$select` Adja meg az eredményt szerepeltetendő mezőket beállítása, hatékonyan a válasz-csonkolás mielőtt elküldené a hívó alkalmazás paraméter használható. Ez a paraméter nem pontosítsa a lekérdezést, vagy csökkentse a dokumentum egy dokumentumgyűjteményben, de a pontos válasz a cél az, ha ezt a paramétert, fontolja meg. 
 
-Vagy paraméterrel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paramétert](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Mindkét paraméter kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paramétereket](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="filters-in-the-query-pipeline"></a>A lekérdezés feldolgozási szűrők
+## <a name="filters-in-the-query-pipeline"></a>A lekérdezési folyamat szűrői
 
-Időben a szűrő elemző bemenetként feltételeket fogad el., konvertálja a kifejezés atomi logikai kifejezésen, és összeállít egy szűrő fa, amely majd kiértékelt index szűrhető mezők.  
+Lekérdezéskor egy szűrő elemző feltételeket fogad bemenetként, a kifejezés alakítja át atomi logikai kifejezésen és összeállít egy szűrő fa, amely ezután kiértékeli az indexben lévő szűrhető mezők fölé.  
 
-Szűrés keresés a dokumentum beolvasásához alárendelt feldolgozási folyamatokat és relevanciájának pontozási foglalandó dokumentumok jogosult előtt következik be. Ha a keresési karakterláncot, a szűrő hatékonyan csökkenti az ezt követő keresési művelet felületének. Ha önállóan használható (például, ha a lekérdezési karakterlánc akkor üres, ha `search=*`), a szűrési feltételek nem az egyetlen bemeneti. 
+Szűrés keresési, a feltételeknek megfelelő mely dokumentumokat, például az alsóbb feldolgozási a dokumentum beolvasásához és a relevancia alapján végzett kiértékelés előtt történik. A keresési karakterláncot párosítva a szűrő hatékonyan csökkenti a későbbi keresési műveletet felületének. Ha önállóan használható (például, ha a lekérdezési karakterlánc értéke üres where `search=*`), a szűrési feltételeket a rendszer egyetlen bemeneti. 
 
 ## <a name="filter-definition"></a>Szűrődefiníció
 
-Szűrők a következők OData kifejezések használatával csuklós egy [OData V4 szintaxis támogatott az Azure Search részhalmazát](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+Szűrőket OData-kifejezések használatával csuklós egy [támogatott az Azure Search OData V4-szintaxis részhalmazát](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-Egy szűrő megadhatja az egyes **keresési** műveletet, de maga a szűrő lehetnek több mező, több feltételt, és ha egy **ismatch** függvény, több. Egy több lépésből álló szűrőkifejezés predikátumok bármilyen sorrendben is megadhat. A teljesítmény nem érzékelhető nyereség van, ha adott sorrendben predikátumok átrendezését próbál meg.
+Megadhat egy szűrőt minden **keresési** műveletet, de maga a szűrő több mező, több feltételt is tartalmazhat, és ha egy **ismatch** funkció, több olyan kifejezés. A több részből álló szűrőkifejezés predikátumok bármilyen sorrendben is megadhat. Nincs észrevehető nyereség teljesítmény van, ha adott sorrendben predikátumok átrendezheti próbál.
 
-A rögzített korlátját egy kifejezést a kérelem maximális korlátot. A szűrő, amelynek részét alkotják a teljes kérelemfeldolgozási legfeljebb 16 MB a FELADÁS egy vagy több, vagy a GET 8 KB lehet. Ideiglenes korlátoknak a szűrőkifejezést záradékok számú összefüggéseket. Jó tapasztalatok, ha több száz záradékok, áll kockázata, hogy a korlát rendszert futtató. Azt javasoljuk, hogy az alkalmazást úgy, hogy ez nem jelent szűrők unbounded méretének tervezésekor.
+A rögzített korlátját egy kifejezést a maximális korlátot, a kérésre. A kérelem teljes, amelynek részét alkotják az a szűrőt, legfeljebb 16 MB, a POST vagy GET 8 KB-os lehet. A szűrőkifejezés záradékai száma kapcsolható ideiglenes korlátok. Jó tapasztalatok, hogy ha több száz szolgáló szerződéses klauzulák, áll: a korlát veszélye. Azt javasoljuk, hogy az alkalmazás úgy, hogy azt nem generál korlátlan méretű szűrők tervezése.
 
-A következő példák mutatják be a több API-k prototypical szűrőkben megadott meghatározásoknak.
+A következő példák mutatják be prototípusos szűrő definíciók több API-k.
 
 ```http
 # Option 1:  Use $filter for GET
@@ -93,23 +94,23 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ```
 
-## <a name="filter-design-patterns"></a>Szűrő tervezési minták
+## <a name="filter-design-patterns"></a>Tervezési minták szűrése
 
-A következő példák bemutatják tervminták több szűrő forgatókönyvek. További ötletek, lásd: [OData-kifejezésszintaxist > Példák](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
+Az alábbi példák bemutatják, számos tervezési minták a szűrő forgatókönyveket. További ötleteket találhat [OData-kifejezések szintaxisa > Példák](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
 
-+ Önálló **$filter**, a lekérdezési karakterlánc, akkor hasznos, amikor a szűrőkifejezés képes teljes minősítéséhez az egyik fontos dokumentumok nélkül. A lekérdezési karakterlánc nélkül nincs nincs lexikális vagy nyelvi elemzés, nincs és nem rangsorolási. Figyelje meg, a keresési karakterláncot az üres.
++ Önálló **$filter**, anélkül, hogy egy lekérdezési karakterláncot, akkor hasznos, ha a szűrőkifejezés viszont fontos dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nincs nincs lexikális vagy nyelvi elemzés, nincs pontozási és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
 
    ```
    search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
    ```
 
-+ Lekérdezési karakterlánc kombinációja és **$filter**, ahol a szűrő hoz létre a részét, és a lekérdezési karakterlánc biztosítanak a kifejezés bemeneti adatokat a teljes szöveges keresés a szűrt részhalmaza. A leggyakoribb kódmintát a szűrő egy lekérdezési karakterlánc érték használata.
++ Lekérdezési karakterlánc kombinációjának és **$filter**, amelyben a szűrő a következő részhalmazt hoz létre, és a lekérdezési karakterlánc kifejezés bemenetei biztosít a teljes szöveges keresés a szűrt részhalmazát keresztül. A leggyakrabban használt kód a minta egy szűrő használata a lekérdezési karakterlánc.
 
    ```
    search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
    ```
 
-+ Összetett lekérdezések elválasztott "vagy", mindegyiket a saját szűrési feltételeket (például "beagles" a "kutya") vagy "siamese" a "cat". VAGY kellett kifejezések kiértékelése külön-külön választ, minden egyes egy egy választ küld vissza a hívó alkalmazás egyesítve. Ebben a kialakítási mintában a search.ismatch funkción keresztül valósul meg. A nem pontozási (search.ismatch) vagy a pontozási verziója (search.ismatchscoring) is használhatja.
++ Összetett lekérdezéseket, elválasztott "vagy", mindegyik a saját szűrési feltételeket (például "beagles" a "kutya") vagy "siamese" a "cat". VAGY kellett kifejezések kiértékelése külön-külön, mindegyikhez egy választ küld vissza a hívó alkalmazás összesítve jelenik meg a választ. Ebben a kialakításban search.ismatch funkción keresztül érhető el. A nem pontozási (search.ismatch) vagy a pontozási verzióját (search.ismatchscoring) is használhatja.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +120,7 @@ A következő példák bemutatják tervminták több szűrő forgatókönyvek. T
    $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
    ```
 
-Nyomon követheti a cikkek átfogó útmutatást a konkrét használati esetek:
+Nyomon követheti az alábbi cikkek átfogó útmutatást adott használati eseteket:
 
 + [Jellemzők szűrői](search-filters-facets.md)
 + [Nyelvi szűrők](search-filters-language.md)
@@ -127,9 +128,9 @@ Nyomon követheti a cikkek átfogó útmutatást a konkrét használati esetek:
 
 ## <a name="field-requirements-for-filtering"></a>Szűrés mező követelményei
 
-A REST API-t a szűrhető a *a* alapértelmezés szerint. Szűrhető mezők növelje index méretét; meg kell adni `filterable=FALSE` használandó tényleges szűrő nem szereplő mezők. Mező definíciók beállításaival kapcsolatos további információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+A REST API-t a szűrhető a *a* alapértelmezés szerint. A szűrhető mezők növelhető a méret index; meg kell adni `filterable=FALSE` mező, amelyet nem szeretné, hogy a szűrő ténylegesen használ. Meződefiníciók beállításaival kapcsolatos további információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-A .NET SDK-ban, a szűrhető van *ki* alapértelmezés szerint. Az API a szűrhető tulajdonság beállítása a van [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). A készlet BaseRate mező meghatározására az alábbi példában.
+A .NET SDK-ban, a szűrhető van *ki* alapértelmezés szerint. Az API a szűrhető tulajdonság beállításához [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). A set BaseRate mező meghatározására az alábbi példában.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -138,37 +139,37 @@ A .NET SDK-ban, a szűrhető van *ki* alapértelmezés szerint. Az API a szűrhe
 
 ### <a name="reindexing-requirements"></a>Újraindexelés követelmények
 
-Ha egy mező nem szűrhető, és engedélyezni szeretné, szűrhető, hogy új mező hozzáadása, vagy építse újra a létező mező. Mező definíció módosítása megváltoztatja az index fizikai struktúráját. Az Azure Search görbékhez hozzáférése indexelt gyors lekérdezés sebességének, amely szükségessé teszi a adatstruktúrák egy újjáépítését mező definíciók módosításakor. 
+Ha egy mező nem szűrhető, és azt szeretné, hogy szűrhető legyen, akkor adjon hozzá egy új mezőt, és építse újra a meglévő mező. Egy mező definíció módosítása megváltoztatja az index fizikai struktúráját. Az Azure Search szolgáltatásban az összes engedélyezett elérési utak kibővítése a lekérdezési sebessége, ami szükségessé teszi a adatstruktúrák újjáépítést Meződefiníciók változásakor vannak indexelve. 
 
-Egyéni mezők újraépítése, lehet, hogy egy kis hatás műveletet, csak egy küldi el a meglévő dokumentum kulcs és a hozzájuk társított értékeket az indexbe, minden a dokumentumban érintetlenül egyesítési művelet igénylő. Ha rebuild követelmény, tekintse meg a további tájékoztatást a következő hivatkozások:
+Egyes mezők újraépítése egy kis hatás művelet, csak egy küldi el a meglévő dokumentum kulcs és a hozzájuk társított értékeket az indexbe, minden egyes dokumentum további része érintetlenül merge műveletet igénylő lehet. Ha Újraépítés követelmény, tekintse meg az utasításokat az alábbi hivatkozásokat:
 
- + [A .NET SDK használatával indexelési műveletek](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [A REST API használatával indexelési műveletek](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
+ + [Indexelési műveleteket a .NET SDK használatával](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
+ + [Indexelési műveletet a REST API használatával](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>Szöveges szűrő – alapok
 
-Szöveg szűrők érvényesek-e a karakterlánc típusú, amelyből el kívánja való lekérésére néhány keresési corpus belül értékek alapján dokumentumok tetszőleges gyűjteménye.
+Szövegszűrők érvényesek a karakterláncot tartalmazó mezők esetében, ahonnan lekérni az egyes dokumentumok keresési forrásgyűjteményébe belüli értékei alapján tetszőleges gyűjteménye.
 
-Álló karakterláncok szöveges szűrők nincs lexikális analysis vagy szóhatároló, így csak az összehasonlítást. Tegyük fel például, egy mező *f* "napfényes" tartalmaz `$filter=f eq 'Sunny'`nem egyezik, de `$filter=f eq 'Sunny day'` lesz. 
+Mikroszolgáltatásokból álló karakterláncok Szövegszűrők, az nincs lexikális elemzés vagy szavakra, ezért összehasonlítások csak pontos egyezések. Tegyük fel például, egy mezőt *f* tartalmazza a "sunny day"," `$filter=f eq 'Sunny'`nem egyezik, de `$filter=f eq 'Sunny day'` lesz. 
 
-Karakterlánc csak kis-és nagybetűket. Nincs alsó-kis-és felső cased szó van: `$filter=f eq 'Sunny day'` nem fogják tudni "napfényes nyelvhez.
+Karakterlánc csak kis-és nagybetűket. Nincs alsó – kis-és felső Case alakú szavakat van: `$filter=f eq 'Sunny day'` nem "napsütéses nap".
 
 
-| Módszer | Leírás | 
+| A módszer | Leírás | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvény kezeléséről egy mező karakterláncok vesszővel tagolt listáját. A karakterláncok alkotják a szűrési feltételeket, a lekérdezés hatókörét minden mezőjére alkalmazott. <br/><br/>`search.in(f, ‘a, b, c’)` szemantikai szempontból egyenértékű `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy sokkal gyorsabb végrehajtja az értékek listája nagy esetén.<br/><br/>Javasoljuk a **javításával** szolgáló funkciók [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők álló nyers szöveg illeszkednie kell az adott mezőben található. Ez a megközelítés sebesség tervezték. Több ezer értékeket válaszideje subsecond számíthat. Bár nem explicit függvény átadhatók elemek száma korlátozott, a késés növekedése arányában megadta karakterláncok száma. | 
-| [Search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvény, amely lehetővé teszi a teljes szöveges keresés műveleteit szigorúan logikai szűrő azonos szűrőkifejezésben található kombinálhatók. Ez lehetővé teszi több lekérdezés-szűrő kombináció egy kérelem. Használhatja az egy *tartalmaz* egy részleges karakterlánc nagyobb karakterláncon belüli szűrőt. |  
-| [$filter = mező operátor karakterlánc](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | A felhasználó által definiált kifejezés mezők, operátorok és értékek állnak. | 
+| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvényt, így egy adott mező karakterláncok vesszővel tagolt listája. A karakterláncok alkotják a szűrési feltételt, amely érvénybe lépnek minden mező a lekérdezés hatókörébe. <br/><br/>`search.in(f, ‘a, b, c’)` szemantikailag egyenértékűnek `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy végrehajtása sokkal gyorsabb, ha az értékek nagy.<br/><br/>Javasoljuk, hogy a **javításával** működőképesek [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők egyezést kell keresni egy adott mező a nyers szöveg tevődik össze. Ez a megközelítés sebesség lett tervezve. Több száz értékek ezer subsecond válaszideje várható. Bár nem explicit a függvénynek átadható elemek száma korlátozott, a késés növekedése adnia karakterláncok száma arányos. | 
+| [Search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresés műveleteit kizárólag logikai típusú szűrő az azonos szűrőkifejezésben kombinálhatók. Egyetlen kérelem több lekérdezésszűrő kombináció lehetővé teszi. Használhatja azt egy *tartalmaz* szűrőt a részleges karakterlánc nagyobb karakterláncon belül. |  
+| [$filter = mező operátor karakterlánc](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy felhasználó által definiált kifejezés tevődik össze mezőket, operátorokat és értékeket. | 
 
 ## <a name="numeric-filter-fundamentals"></a>Numerikus szűrő – alapok
 
-A numerikus nincsenek `searchable` teljes szöveges keresés környezetében. Csak karakterláncok teljes szöveges keresés vonatkoznak. Például a kívánt keresőkifejezést, 99,99 megadásakor nem vissza $99,99 árú elemeket. Ehelyett elemek, amelyekhez a szám 99 karakterlánc mezőket a dokumentum mutatunk be. Így ha numerikus adatokat, a feltételezi, használt őket az szűrők, beleértve a tartományokat, értékkorlátozás, csoportok és így tovább. 
+Numerikus mező `searchable` teljes szöveges keresés kontextusában. Csak karakterláncok vonatkoznak rá a teljes szöveges keresés. Például 99,99 egy keresési kifejezést adja meg, ha nem kap vissza elemek $99,99 díjszabása. Ehelyett jelennének meg a számot 99 karakterlánc mezőket a dokumentum rendelkező elemek. Így ha a numerikus adatokat, feltételezzük, hogy használhatja ezeket a szűrőket, beleértve a tartományokat, értékkorlátozással, csoportok és így tovább. 
 
-Numerikus mezők (ár, méret, SKU, azonosítója) tartalmazó dokumentumok ezeket az értékeket a találatok között adja meg, ha a mező jelölése `retrievable`. Itt az pont, maga a teljes szöveges keresés nincs numerikus típusú alkalmazandó.
+Numerikus mezők (ára, méret, SKU, azonosítója) tartalmazó dokumentumok adja meg ezeket az értékeket a keresési eredmények között, ha a négyzet be van jelölve `retrievable`. Itt az pont, hogy maga a teljes szöveges keresés nem alkalmazható a mező numerikus típusú.
 
 ## <a name="next-steps"></a>További lépések
 
-Először próbálja meg **keresési ablak** tartalmazó lekérdezések elküldeni a portálon **$filter** paraméterek. A [valós-erőforrások-minta index](search-get-started-portal.md) érdekes eredményét mutatja az a következő lekérdezések szűrve, amikor Ön illessze be a keresési sávon:
+Először próbálja meg **keresési ablak** a portálon, a lekérdezések elküldése **$filter** paramétereket. A [valós szűrőként mintaindex](search-get-started-portal.md) érdekes eredményeket biztosít a következő lekérdezések szűrve, amikor, illessze be őket a keresősávban:
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -191,12 +192,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-További példák dolgozni, lásd: [OData szűrő kifejezésszintaxist > Példák](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
+További példák dolgozni, lásd: [OData szűrési kifejezés szintaxisa > Példák](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Hogyan teljes szöveges keresés az Azure Search működik](search-lucene-query-architecture.md)
-+ [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Teljes szöveges keresés működése az Azure Search szolgáltatásban](search-lucene-query-architecture.md)
++ [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Támogatott adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

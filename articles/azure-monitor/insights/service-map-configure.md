@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 68ca8593dea93faf076ffb5d99ec7bcad210a810
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141832"
+ms.locfileid: "53188792"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -363,7 +362,7 @@ Ha problémába ütközik telepítését és futtatását a Service Map, ez a sz
 #### <a name="installer-prompts-for-a-reboot"></a>Telepítő kérni fogja a számítógép újraindítása
 A függőségi ügynök *általában* nem igényel újraindítást telepítése vagy eltávolítása után. Egyes ritka esetekben azonban a Windows Server-telepítés folytatásához újraindítás szükséges. Ez akkor történik, amikor a függőség, általában a Microsoft Visual C++ terjeszthető változata, a zárolt fájlok miatt újraindítás szükséges.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Üzenet "függőségi ügynök telepítése nem sikerült: Visual Studio-futtatókörnyezeti kódtárak telepítése nem sikerült (kód = [code_number])" jelenik meg
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Üzenet "függőségi ügynök telepítése nem sikerült: Nem sikerült telepíteni a Visual Studio modul kódtárak (kód = [code_number]) "jelenik meg
 
 A Microsoft Dependency agent a Microsoft Visual Studio modul kódtárak épül. Egy üzenetet fog kapni, ha probléma van a kódtárak telepítése során. 
 
@@ -375,14 +374,14 @@ A következő táblázat felsorolja a kód számokat és a javasolt megoldások.
 
 | Kód | Leírás | Megoldás: |
 |:--|:--|:--|
-| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Tekintse meg a legutóbbi könyvtár installer naplójának.<br><br>Ha egy sor követi "Windows8.1-KB2999226-x64.msu" hivatkozás "hiba 0x80240017: nem sikerült végrehajtani az MSU-csomagot," KB2999226 telepítéséhez szükséges előfeltételeket nem rendelkezik. Kövesse az utasításokat az Előfeltételek szakaszban szereplő [a Windows Universal C futásidejű](https://support.microsoft.com/kb/2999226). Szükség lehet, futtassa a Windows Update, és indítsa újra a többször annak érdekében, hogy telepítse az előfeltételeket.<br><br>Futtassa újra a Microsoft Dependency agent telepítő. |
+| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Tekintse meg a legutóbbi könyvtár installer naplójának.<br><br>Ha egy sor követi "Windows8.1-KB2999226-x64.msu" hivatkozás "hiba 0x80240017: Nem sikerült végrehajtani az MSU-csomag,"KB2999226 telepítéséhez szükséges előfeltételeket nem rendelkezik. Kövesse az utasításokat az Előfeltételek szakaszban szereplő [a Windows Universal C futásidejű](https://support.microsoft.com/kb/2999226). Szükség lehet, futtassa a Windows Update, és indítsa újra a többször annak érdekében, hogy telepítse az előfeltételeket.<br><br>Futtassa újra a Microsoft Dependency agent telepítő. |
 
 ### <a name="post-installation-issues"></a>Telepítés utáni kapcsolatos problémák
 #### <a name="server-doesnt-appear-in-service-map"></a>Kiszolgáló nem jelenik meg a Service Map
 Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Service Map megoldás nem jelenik meg:
 * A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti.<br><br>
-**Windows**: keresse meg a szolgáltatás nevű, "A Microsoft Dependency agent."<br>
-**Linux**: Ellenőrizze, hogy a futó feldolgozni a "microsoft-függőség-ügynök."
+**Windows**: Keresse meg a szolgáltatás nevű, "A Microsoft Dependency agent."<br>
+**Linux**: Keresse meg a futó folyamat "a microsoft-függőség-ügynök."
 
 * Az, hogy a [ingyenes tarifacsomag Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Az ingyenes csomag legfeljebb öt egyedi Service Map kiszolgálók tesz lehetővé. További kiszolgálók nem jelennek meg a Service Map, még akkor is, ha az előzetes öt rendszer már nem küld adatokat.
 
@@ -390,7 +389,7 @@ Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Servic
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze a kiszolgálón az ügynök: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../../azure-monitor/platform/agent-linux-troubleshoot.md).
+Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze az ügynököt a kiszolgálón: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
 Ha a kiszolgáló a Service Map, de azt nem rendelkezik folyamat vagy kapcsolati adatokkal, azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 2063198ab2a7b11e15528e81acb46ba16277782a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097641"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272167"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
@@ -31,11 +30,11 @@ Ez a cikk bemutatja egy referenciaimplementációt, egy ügyfél lemorzsolódás
 Ez a kísérlet fejlesztette ki és Roger Barga, korábbi nevén Microsoft Azure Machine Learning Termékmenedzser, Serge Berger és egyszerű Adattudós, a Microsoft által tesztelt. Az Azure dokumentációs csapata köszönetet mondani a segítségükért összpontosíthassák nyugtázza, és Köszönjük Ez a tanulmány megosztása.
 
 > [!NOTE]
-> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Egy példa bemutatja, hogyan hozhat létre egy gépi tanulási modellt a forgalom elemzése:: [kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/)
+> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Hogyan hozhat létre egy gépi tanulási modellt lemorzsolódásának elemzése a példát talál: [Kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/)
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>A probléma a vásárlók lemorzsolódásának
 A fogyasztó piacon elérhető, és az összes vállalati ágazatban vállalkozások kell forgalom kezelésére. Néha túlzott és befolyásolja a házirendet érintő döntések. A hagyományos megoldás, ha nagy-upsell churners előre jelezni, és oldja meg saját igényeinek megfelelő marketingkampányokba, recepciószolgálata szolgáltatáson keresztül vagy a speciális felmentésekről alkalmazásával. Ezek a módszerek eltérőek lehetnek industry iparági. Még vésve egy adott fogyasztói fürtről a másikra egy iparági (például távközlési) belül.
@@ -66,7 +65,7 @@ A továbbítás akik megközelítés kezelni az adatforgalom a legjobb módszer,
 
 ![][2]
 
-*4. ábra: Egységes többmodelles archetype*  
+*4. ábra: Egyesített többmodelles archetype*  
 
 A modellek közötti interakció az kulcs, ha egy átfogó megközelítés továbbítására az ügyfélmegtartást. Minden modell feltétlenül replikákban idővel; az architektúra ezért implicit ciklusba (az adatok adatbányászati SZÍNELOSZLÁS-DM szabvány által beállított archetype hasonló [***3***]).  
 
@@ -85,7 +84,7 @@ Az alábbi ábrán látható a prototípus hoztunk létre, a Machine Learning St
 
 ![][3]
 
-*5. ábra: Prototípust egy megközelítést modellezési adatforgalom*  
+*5. ábra: A modellezés megközelítés adatforgalom prototípus*  
 
 A következő szakaszok további információt a prototípus-pontozási modelljei, hogy mi a Machine Learning Studio használatával.  
 
@@ -104,15 +103,15 @@ Az alábbi ábrák bemutatják a használt adatok.
 
 ![][4]
 
-*6. ábra: Cikkből szerint (rejtjelezett) adatforrás*  
+*6. ábra: Adatforrás (rejtjelezett) cikkből szerint*  
 
 ![][5]
 
-*7. ábra: Funkciók adatforrásból kinyert*
+*7. ábra: Adatforrásból kinyert funkciók*
  
 
 > Vegye figyelembe, hogy ezek az adatok személyes, és ezért a modell és az adatok nem oszthatók meg.
-> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/): [telekommunikációs az ügyfél változásainak](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/): [Ügyfeleinek Lemorzsolódása](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Többet szeretne megtudni, hogyan implementálható a Cortana Intelligence Suite segítségével lemorzsolódási elemzési modell, azt is javasoljuk [ebben a videóban](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) vezető Programmenedzsere hétköznapon Hyong Tok szerint. 
 > 
@@ -147,7 +146,7 @@ Azonban a legfontosabb mérőszám adatforgalom-e a téves besorolás arány:, m
 
 ![][7]
 
-*9. ábra: Passau prototípus terület alatt görbévé*
+*9. ábra: Görbe Passau prototípus terület*
 
 ### <a name="using-auc-to-compare-results"></a>Az eredmények összehasonlítása AUC használatával
 Terület alatt görbe (AUC) egy globális érték, képviselő metrika *separability* a pontszámok pozitív és negatív számítógépcsoportokon a felosztások között. A hagyományos fogadó operátor jellemző (ROC) gráfhoz hasonló, de egy fontos különbség az, hogy a AUC metrika nem kell választani egy küszöbértéket. Ehelyett azt az eredményről keresztül **összes** választási lehetőségek. Ezzel szemben a hagyományos ROC-diagramon látható a riasztási aránnyal a függőleges tengely és a vízszintes tengelyről téves riasztási aránnyal, és a besorolási küszöbérték változó.   
@@ -168,7 +167,7 @@ Az alábbi ábrán a Wikipedia a kapcsolatot a színes, könnyen érthető kép 
 
 ![][8]
 
-*10. ábra: Magával a pontosság és a pontosság*
+*10. ábra: Pontosság és a pontosság magával*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Gyorsított döntési fa modell pontosságát és a pontosság eredményei
 Az alábbi ábra a pontozás a Machine Learning prototípus használata a gyorsított döntési fa modell, amely a négy modellek között a legpontosabb történetesen nyers eredményét jeleníti meg:  
@@ -217,13 +216,13 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
  
 
 ## <a name="references"></a>Referencia
-[1] prediktív elemzési: túl az előrejelzéseket, Nyugat McKnight információkezelés p.18 – 20 2011. júliusi/augusztus.  
+[1] prediktív elemzési: Túl az előrejelzéseket, Nyugat McKnight, információk kezelése, a p.18 – 20 2011. júliusi/augusztus.  
 
-[2] Wikipedia-cikk: [pontosság és a pontosság](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia-cikk: [Pontosság és a pontosság](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [SZÍNELOSZLÁS-DM 1.0-s: részletes adatok adatbányászati útmutatója](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [SZÍNELOSZLÁS-DM 1.0-S: Részletes adatok adatbányászati útmutatója](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [big Data típusú adatok Marketing: az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [telekommunikációs churn folyamatmodell-sablont](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) 
  
@@ -231,7 +230,7 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 ## <a name="appendix"></a>Függelék
 ![][10]
 
-*12. ábra: Pillanatképét bemutató adatváltozás-prototípuson*
+*12. ábra: Pillanatkép a lemorzsolódás prototípuson-bemutató*
 
 [1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
 [2]: ./media/azure-ml-customer-churn-scenario/churn-2.png

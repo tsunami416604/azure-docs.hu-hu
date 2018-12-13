@@ -1,6 +1,6 @@
 ---
-title: Vásárlói adatok kérése az Azure Time Series Insights funkciók
-description: Vásárlói adatok funkciók összefoglalása.
+title: Vásárlói adatok kérése az Azure Time Series Insights-ügyféladatok kérelem - funkciók az Azure Time Series Insightsban |} A Microsoft Docs
+description: Az Azure Time Series Insights vásárlói adatok funkciók összefoglalása.
 author: ashannon7
 ms.author: anshan
 manager: cshankar
@@ -8,12 +8,13 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
-ms.openlocfilehash: 4696cdaf96a73c54334f553a0affe459e3476946
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: c749a61fa26b13ffe67c5913d1a11b6c1f0e186b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629735"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276060"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 

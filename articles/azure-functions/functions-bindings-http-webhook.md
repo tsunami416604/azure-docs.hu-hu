@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3cdedd0c8ddf6d2c724351cf150499434e3886c9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994711"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317440"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -495,7 +495,7 @@ Ha a függvényalkalmazás által használt [App Service-hitelesítés / engedé
 
 Ezt az információt a kötelező adatokat is olvashatja. Ez a funkció csak az a funkciók 2.x verziójú futtatókörnyezet érhető el. Jelenleg is csak a .NET-es nyelveken érhető el.
 
-A .NET összehangolandó, ez az információ érhető el, egy [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). A ClaimsPrincipal érhető el az alábbi példában látható módon a kérés környezetének részeként:
+A .NET-nyelveket, ez az információ érhető el, egy [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). A ClaimsPrincipal érhető el az alábbi példában látható módon a kérés környezetének részeként:
 
 ```csharp
 using System.Net;
@@ -540,8 +540,8 @@ Functions-kulcsok használata a HTTP-függvény végpontjainak eléréséhez a f
 
 Kulcsok két típusa van:
 
-* **Gazdagép kulcsok**: belül a függvényalkalmazás a függvények által megosztott ezeket a kulcsokat. Ha egy API-kulcsot, ezek a függvényalkalmazás belül függvényeket elérését teszi lehetővé.
-* **Funkcióbillentyűk**: csak a konkrét funkciók, amelyek szerint vannak definiálva a alkalmazni ezeket a kulcsokat. Ha egy API-kulcsot, ezek csak való hozzáférés engedélyezése, hogy a függvény.
+* **Gazdagép kulcsok**: Ezek a kulcsok által az függvényalkalmazás lévő összes függvény vannak megosztva. Ha egy API-kulcsot, ezek a függvényalkalmazás belül függvényeket elérését teszi lehetővé.
+* **Funkcióbillentyűk**: Ezek a kulcsok csak a konkrét funkciók, amelyek szerint vannak definiálva a alkalmazni. Ha egy API-kulcsot, ezek csak való hozzáférés engedélyezése, hogy a függvény.
 
 Minden egyes kulcs neve referenciaként, és a függvény és a gazdagép szintjén van ("alapértelmezett" nevű) alapértelmezett kulcs. Funkcióbillentyűk elsőbbséget élveznek a gazdagép-kulcsokat. Két kulcs van megadva ugyanazzal a névvel, a függvény kulcsát mindig használja.
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 37d57b0dc381f0ed2edf1f3debb76e5b54eae157
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b0e0f26abbf8eb5cbf1cf9ba2014204d773ae15d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093828"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187313"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
  
@@ -38,34 +38,34 @@ Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre
 
 * **Service Bus XML-formátuma**  
 
-  * **korábbi verziók:** Azure Stream Analytics használt DataContractSerializer, ezért az üzenet tartalmának XML-címkéket tartalmazza. Példa:
+  * **Korábbi verziók:** Az Azure Stream Analytics DataContractSerializer, használja, ezért az üzenet tartalmának XML-címkéket tartalmazza. Példa:
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "hőmérséklet": 64\}\u0001 
+    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "hőmérséklet": 64\}\u0001 
 
-  * **jelenlegi verzió:** az üzenet tartalmának tartalmaz közvetlenül semmilyen további címkékkel a stream. Példa:
+  * **jelenlegi verziója:** Az üzenet tartalma közvetlenül a nincsenek további címkék a streamet tartalmaz. Példa:
   
-   {"SensorId": "1", "hőmérséklet": 64} 
+    {"SensorId": "1", "hőmérséklet": 64} 
  
 * **A mezőnevek megőrzése Kisbetű/nagybetű megkülönböztetése**  
 
-  * **korábbi verziók:** mezőnevek alacsonyabb olyan esetekben, amikor az Azure Stream Analytics-motor általi feldolgozásának módosult. 
+  * **Korábbi verziók:** Alacsonyabb olyan esetekben, amikor az Azure Stream Analytics-motor általi feldolgozásának mezőnevek módosult. 
 
   * **jelenlegi verzió:** Kisbetű/nagybetű megkülönböztetése mezők nevét a rendszer megőrzi, az Azure Stream Analytics-motor feldolgozásakor. 
 
-  > [!NOTE] 
-  > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el az Edge-környezetben üzemeltetett Stream elemzési feladatok. Ennek eredményeképpen minden mezőnevek vannak kisbetűssé konvertált, ha a feladat az Edge-ben üzemel. 
+    > [!NOTE] 
+    > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el az Edge-környezetben üzemeltetett Stream elemzési feladatok. Ennek eredményeképpen minden mezőnevek vannak kisbetűssé konvertált, ha a feladat az Edge-ben üzemel. 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **korábbi verziók:** CREATE TABLE parancs nem fejeződött az NaN (nem szám az események szűrése. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
+  * **Korábbi verziók:** CREATE TABLE parancs nem fejeződött az NaN (nem szám az események szűrése. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
 
-  * **jelenlegi verzió:** CREATE TABLE lehetővé teszi, hogy adjon meg egy erős sémát. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket. 
+  * **jelenlegi verziója:** CREATE TABLE lehetővé teszi, hogy adjon meg egy erős sémát. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket. 
 
 * **Tiltsa le az automatikus upcast dátum/idő karakterlánc JSON-fájlban.**  
 
-  * **korábbi verziók:** a JSON-elemző, akkor automatikusan upcast karakterlánc dátum és idő dátum/időzóna információkat értékeket írja be, és átalakítása (UTC). Ennek következtében elvesztése az időzóna adatait.
+  * **Korábbi verziók:** A JSON-elemző ehhez automatikusan upcast karakterláncértékek dátum/idő típus dátum/időzóna információkat, és átalakítása (UTC). Ennek következtében elvesztése az időzóna adatait.
 
-  * **jelenlegi verzió:** van több automatikusan upcast, a karakterlánc-értékeket dátum/idő típus dátum/időzóna információkat. Ennek eredményeképpen az időzónaadatok tartani. 
+  * **jelenlegi verziója:** Nincs több automatikusan upcast, a karakterlánc-értékeket dátum/idő típus dátum/időzóna információkat. Ennek eredményeképpen az időzónaadatok tartani. 
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemenetek hibaelhárítása](stream-analytics-troubleshoot-input.md)

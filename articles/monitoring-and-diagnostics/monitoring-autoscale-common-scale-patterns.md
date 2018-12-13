@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: c7084a10aceafcdd1039893b810fcbd8b74b874b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7fa2cbc831c6bcb734b4a4596a3f75f81e8ee085
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967404"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317032"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Gyakori automatikus skálázási minták áttekintése
 Ez a cikk bemutatja az erőforrás méretezése az Azure-ban használt mintáit.
 
 Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-# <a name="lets-get-started"></a>Lehetővé teszi, hogy első lépései
+## <a name="lets-get-started"></a>Lehetővé teszi, hogy első lépései
 
 Ez a cikk azt feltételezi, hogy Ön ismeri az automatikus méretezés. Is [itt kezdhet az erőforrás méretezése][1]. Az alábbiakban gyakori méretezési mintáit.
 
@@ -56,7 +56,7 @@ Webes alkalmazás (/ VMSS/felhőszolgáltatási szerepkör) rendelkezik, és
 
 Rendelkezik egy webes előtérrendszert és a egy API-szint, amely kommunikál a háttérrendszerrel.
 
-- Az egyéni események az előtér-alapú API-réteg méretezésére (Példa: méretezésére a fizetési folyamat a bevásárlókocsiba elemeinek száma alapján)
+- Az egyéni események az előtér-alapú API-réteg méretezésére (Példa: Szeretné méretezni a fizetési folyamat a bevásárlókocsiba elemeinek száma alapján)
 
 ![Méretezési csoport egyéni metrika alapján][5]
 

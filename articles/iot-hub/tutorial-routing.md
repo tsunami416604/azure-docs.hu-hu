@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416885"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135338"
 ---
-# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Üzenetek útválasztásának konfigurálása az IoT Hub használatával
+# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Az IoT Hub üzenet-útválasztás konfigurálása
 
 Az [üzenetek útválasztása](iot-hub-devguide-messages-d2c.md) lehetővé teszi telemetriaadatok küldését az IoT-eszközökről a beépített, Event Hub-kompatibilis végpontokra vagy olyan egyéni végpontokra, mint például a Blob Storage, a Service Bus-üzenetsorok, a Service Bus-témakörök és az Event Hubs. Az üzenetek útválasztásának konfigurálásakor létrehozhat [útválasztási lekérdezéseket](iot-hub-devguide-routing-query-syntax.md), amelyekkel megadható egy adott feltételnek megfelelő útvonal. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. 
 
@@ -56,6 +56,10 @@ Az alábbi szakaszok ismertetik a szükséges lépések elvégzésének módját
 1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). 
 
 2. Hozzon létre egy IoT Hubot az S1 szinten. Adjon hozzá egy fogyasztói csoportot az IoT Hubhoz. A fogyasztói csoportot az Azure Stream Analytics használja az adatok lekérésekor.
+
+   > [!NOTE]
+   > Az oktatóanyag elvégzéséhez a fizetős csomagra kell használnia egy Iot hubot. Az ingyenes szinten csak lehetővé teszi egy végpont beállítása, és ehhez az oktatóanyaghoz több végpontot.
+   > 
 
 3. Hozzon létre egy standard szintű V1-tárfiókot Standard_LRS-replikációval.
 
@@ -302,15 +306,15 @@ Az adatokat a rendszer Avro formátumban írja a Blob Storage-ba.
 
 9. Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott tárolóhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
 
-   **Név**: Adja meg az útválasztási lekérdezés nevét. Ez az oktatóanyag a **StorageRoute** nevet használja.
+   **Név**: Adjon meg egy nevet az útválasztási lekérdezés. Ez az oktatóanyag a **StorageRoute** nevet használja.
 
-   **Végpont**: Az imént beállított végpontot jeleníti meg. 
+   **Végpont**: Ez látható az imént beállított végpont. 
    
-   **Adatforrás**: A legördülő listából válassza az **Eszköztelemetria-üzenetek** elemet.
+   **Az adatforrás**: Válassza ki **eszköz Telemetriai üzeneteket** a legördülő listából.
 
-   **Útvonal engedélyezése**: Ügyeljen rá, hogy ez a beállítás engedélyezve legyen.
+   **Engedélyezze az útvonal**: Győződjön meg arról, hogy ez engedélyezve van.
    
-   **Útválasztási lekérdezés**: Lekérdezési sztringként írja be a következőt: `level="storage"`. 
+   **Útválasztási lekérdezés**: Adja meg `level="storage"` a lekérdezési karakterlánc formájában. 
 
    ![A tárfiók útválasztási lekérdezésének létrehozását bemutató képernyőkép.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
@@ -332,21 +336,21 @@ Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Lépjen az Üz
 
    **Végpont neve**: Adja meg a végpont nevét. Ez az oktatóanyag a **CriticalQueue** nevet használja.
    
-   **Service Bus-névtér**: Kattintson a mezőre a legördülő lista megjelenítéséhez, majd válassza ki az előkészítő lépésekben beállított Service Bus-névteret. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja.
+   **Service Bus-Namespace**: Kattintson a megjelenítéséhez a legördülő listából; Ez a mező Válassza ki a service bus-névtér az előkészítő lépésben állítsa be. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja.
 
-   **Service Bus-üzenetsor**: Kattintson a mezőre a legördülő lista megjelenítéséhez, majd válassza ki a Service Bus-üzenetsort. Ez az oktatóanyag a **contososbqueue** üzenetsort használja.
+   **Service Bus-üzenetsorba**: Kattintson a megjelenítéséhez a legördülő listából; Ez a mező a legördülő listából válassza ki a Service Bus-üzenetsorba. Ez az oktatóanyag a **contososbqueue** üzenetsort használja.
 
 5. A Service Bus-üzenetsor végpontjának hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre. 
 
 6.  Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott Service Bus-üzenetsorhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
 
-   **Név**: Adja meg az útválasztási lekérdezés nevét. Ez az oktatóanyag az **SBQueueRoute** nevet használja. 
+   **Név**: Adjon meg egy nevet az útválasztási lekérdezés. Ez az oktatóanyag az **SBQueueRoute** nevet használja. 
 
-   **Végpont**: Az imént beállított végpontot jeleníti meg.
+   **Végpont**: Ez látható az imént beállított végpont.
 
-   **Adatforrás**: A legördülő listából válassza az **Eszköztelemetria-üzenetek** elemet.
+   **Az adatforrás**: Válassza ki **eszköz Telemetriai üzeneteket** a legördülő listából.
 
-   **Útválasztási lekérdezés**: Lekérdezési sztringként írja be a következőt: `level="critical"`. 
+   **Útválasztási lekérdezés**: Adja meg `level="critical"` a lekérdezési karakterlánc formájában. 
 
    ![Útválasztási lekérdezés Service Bus-üzenetsorhoz való létrehozását bemutató képernyőkép.](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
@@ -366,15 +370,15 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **+ Erőforrás létrehozása** gombra. A keresőmezőbe írja a **logikai alkalmazás** kifejezést, és nyomja le az Enter billentyűt. Válassza a logikai alkalmazást lehetőséget a megjelenő keresési eredmények közül, majd a **Létrehozás** elemre kattintva lépjen tovább a **Logikai alkalmazás létrehozása** panelre. Töltse ki a mezőket. 
 
-   **Név**: Ez a mező a logikai alkalmazás neve. Ez az oktatóanyag a **ContosoLogicApp** nevet használja. 
+   **Név**: Ebben a mezőben pedig a logikai alkalmazás neve. Ez az oktatóanyag a **ContosoLogicApp** nevet használja. 
 
-   **Előfizetés**: Válassza ki az Azure-előfizetést.
+   **Előfizetés**: Válassza ki az Azure-előfizetését.
 
-   **Erőforráscsoport**: Kattintson a **Meglévő használata** elemre, és válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
+   **Erőforráscsoport**: Kattintson a **meglévő** , és jelölje ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
-   **Hely**: Használja a saját helyzetét. Ez az oktatóanyag az **USA nyugati régióját** használja. 
+   **Hely**: A helyet használja. Ez az oktatóanyag az **USA nyugati régióját** használja. 
 
-   **Log Analytics**: Ezt a kapcsolót ki kell kapcsolni. 
+   **Log Analytics**: A váltógomb ki kell kapcsolni. 
 
    ![A Logikai alkalmazás létrehozása képernyő képernyőképe.](./media/tutorial-routing/create-logic-app.png)
 
@@ -426,9 +430,9 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie. Ez az oktatóanyag a **contosoJob** nevet használja.
 
-   **Erőforráscsoport**: Használja az IoT Hubja által használt erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
+   **Erőforráscsoport**: Az IoT hub által használt ugyanazt az erőforráscsoportot használja. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
-   **Hely**: Használja a beállítási szkriptnél is használt helyet. Ez az oktatóanyag az **USA nyugati régióját** használja. 
+   **Hely**: A telepítési parancsprogram használja ugyanazt a helyet használja. Ez az oktatóanyag az **USA nyugati régióját** használja. 
 
    ![A Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-create-job.png)
 
@@ -440,15 +444,15 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 5. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az IoT Hubot. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Bemeneti áljel**: Ez az oktatóanyag a **contosoinputs** áljelet használja.
+   **Bemeneti áljel**: Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
 
-   **Előfizetés**: Válassza ki az előfizetését.
+   **Előfizetés**: Válassza ki előfizetését.
 
-   **IoT Hub**: Válassza ki az IoT Hubot. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja.
+   **Az IoT Hub**: Válassza ki az IoT hubot. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja.
 
-   **Végpont**: Válassza az **Üzenetkezelés** lehetőséget. (Ha a Műveletek monitorozása lehetőséget választja, akkor az IoT Hub telemetriaadatait kapja meg, nem pedig az átküldött adatokat.) 
+   **Végpont**: Válassza ki **üzenetkezelési**. (Ha a Műveletek monitorozása lehetőséget választja, akkor az IoT Hub telemetriaadatait kapja meg, nem pedig az átküldött adatokat.) 
 
-   **Megosztott elérési házirend neve**: Válassza az **iothubowner** lehetőséget. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
+   **Megosztott elérési házirend neve**: Válassza ki **iothubowner**. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
 
    **Fogyasztói csoport**: Válassza ki a korábban létrehozott fogyasztói csoportot. Ez az oktatóanyag a **contosoconsumers** csoportot használja.
    
@@ -464,11 +468,11 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 2. A **Kimenetek** panelen kattintson a **Hozzáadás**, majd a **Power BI** elemre. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Kimeneti áljel**: A kimenet egyedi áljele. Ez az oktatóanyag a **contosooutputs** áljelet használja. 
+   **Kimeneti alias**: A kimeneti egyedi aliast. Ez az oktatóanyag a **contosooutputs** áljelet használja. 
 
-   **Adatkészlet neve**: A Power BI-ban használni kívánt adatkészletnév. Ez az oktatóanyag a **contosodataset** nevet használja. 
+   **Adatkészlet neve**: A Power BI-ban használandó adatkészlet nevét. Ez az oktatóanyag a **contosodataset** nevet használja. 
 
-   **Tábla neve**: A Power BI-ban használni kívánt táblanév. Ez az oktatóanyag a **contosotable** nevet használja.
+   **Táblanév**: A Power BI-ban használandó tábla neve. Ez az oktatóanyag a **contosotable** nevet használja.
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 

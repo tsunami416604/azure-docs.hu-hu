@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ca79976ec2ecf2755b975749e9c9150c4a49e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441073"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272702"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Az Azure Active Directory B2C-vel egyéni házirendet nyilvános előzetes verzió kibocsátási megjegyzései
 Egyéni szabályzatkészlet funkció már elérhető az értékeléshez tartozó összes Azure Active Directory B2C nyilvános előzetes verzióként érhető el (Azure AD B2C-vel) ügyfelek. E szolgáltatáskészlet a fejlesztők a fejlett identitáskezelési a legösszetettebb identitáskezelési megoldások célja.  
@@ -25,24 +25,23 @@ E szolgáltatáskészlet még ma, a fejlesztők számára, hogy az identitás-ke
 ## <a name="features-included-in-this-public-preview"></a>A nyilvános előzetes verzióban foglalt funkciók
 A nyilvános előzetes verzióban bevezetett új funkciókkal a fejlesztők a következő feladatokat végezheti el:<br>
 
-* Szerző és feltöltése az egyéni hitelesítési felhasználói utak egyéni szabályzatok használatával. 
+* Hozhat létre, és töltse fel az egyéni hitelesítési felhasználói utak egyéni szabályzatok használatával. 
    * Felhasználói utak cseréje, részletes közötti Jogcímszolgáltatók ismertetik. 
-   * Adja meg a felhasználói utak feltételes elágaztatás. 
-* Az egyéni hitelesítési felhasználói utak szolgáltatások REST API-t integrálja.  
+   * Adja meg a felhasználói utak feltételes elágaztatás. * Az egyéni hitelesítési felhasználói utak szolgáltatások REST API-t integrálja.  
 * Adja hozzá a megfelelő szabványos OpenIDConnect identitásszolgáltatókkal összevonási. <br>
 * Adja hozzá az összevonás az Identitásszolgáltatók, amelyek igazodnak a SAML 2.0 protokoll. 
 
 ## <a name="terms-of-the-public-preview"></a>A nyilvános előzetes feltételeinek
 
-* Javasoljuk, hogy az új funkciók csak tesztelési célokra használhatók.<br>
+* Azt javasoljuk, hogy az új funkciók csak tesztelési célokra használhatók.<br>
 * Az új szolgáltatások éles környezetben való használatra nem alkalmasak.<br>
-* Szolgáltatásiszint-szerződések (SLA) nem vonatkoznak az új funkciók. <br>
+* Az új szolgáltatások szolgáltatásiszint-szerződések (SLA) nem vonatkoznak. <br>
 * Támogatási kérések rendszeres támogatási csatornákon keresztül lehet benyújtani. <br>
-* Nincs megadva Ígért dátum, általános rendelkezésre állás érdekében.<br>
-* Saját belátása szerint, és bármilyen okból a Microsoft is jelzőt és elutasítása vagy forgatókönyvek és a felhasználói utak keretet túllépő része egy ügyfél identitás- és hozzáférés-kezelő (CIAM) platform, mely az Azure AD B2C-vel termék bérleti hatókörének korlátozása.
+* Nincs megadva Ígért dátum általános rendelkezésre állás érdekében.<br>
+* A saját belátásunk szerint, és bármilyen okból a Microsoft is jelzőt és elutasítása vagy forgatókönyvek és a felhasználói utak keretet túllépő része egy ügyfél identitás- és hozzáférés-kezelő (CIAM) platform, mely az Azure AD B2C-vel termék bérleti hatókörének korlátozása.
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Egyéni szabályzat szolgáltatáskészletet fejlesztők feladatai
-Manuális szabályzatkonfiguráció alacsonyabb szintű hozzáférést biztosít az Azure AD B2C az alapul szolgáló platform és egy egyedi, teljes mértékben testre szabható a bizalmi keretrendszer létrehozását eredményezi. Ezek lehetséges kombinációinak száma egyéni Identitásszolgáltatók, megbízhatósági kapcsolatokat, az integrációt a külső szolgáltatások és a munkafolyamatok részletes fel őket a speciális fejlesztők nagyobb a növekvő igények szerint helyezze el.
+Manuális szabályzatkonfiguráció alacsonyabb szintű hozzáférést biztosít az Azure AD B2C az alapul szolgáló platform és egy egyedi, teljes mértékben testre szabható a bizalmi keretrendszer létrehozását eredményezi. Ezek lehetséges kombinációinak száma egyéni Identitásszolgáltatók, megbízhatósági kapcsolatokat, az integrációt a külső szolgáltatások és a munkafolyamatok részletes fel őket a speciális fejlesztők nagyobb a növekvő igények szerint helyezze el.
 
 Teljes körűen kihasználhatják a nyilvános előzetes verzióban, javasoljuk, hogy egyéni szabályzatkészlet funkciót használó fejlesztők formátumhoz a következő irányelveket:
 * Megismerkedhet az identitás-kezelőfelületi keretrendszer és a kulcs vagy titkos kódokkal felügyeleti konfiguráció nyelven.
@@ -52,7 +51,7 @@ Teljes körűen kihasználhatják a nyilvános előzetes verzióban, javasoljuk,
 * Azonnali tájékozódás az új fejlesztések az identitás-szolgáltatóktól és szolgáltatásokat integrálja. Ha például nyomon követheti, változások a titkos kódok és az ütemezett és nem tervezett módosításokat a szolgáltatásban.
 * Aktív figyelés beállítása, és figyelheti az alkalmazások válaszkészségét éles környezetben.
 * Az Azure-előfizetésében naprakészen kapcsolattartási e-mail-címeket, és továbbra is a Microsoft-webhelyek működés közbeni csapatával e-mailekre válaszkész maradhat.
-* Amikor javasoljuk, hogy a webhelyek működés közbeni csoportja. Ehhez kellő időben művelet végrehajtása. 
+* Amikor javasoljuk, hogy a webhelyek működés közbeni csoportja. Ehhez kellő időben művelet végrehajtása. 
 
 ## <a name="features-by-stage-and-known-issues"></a>Funkciók szakasz és ismert problémák
 Egyéni szabályzat/identitás-kezelőfelületi keretrendszer képességek folyamatos és gyors fejlesztés alatt áll.  Ez a tábla indexe szolgáltatások/összetevő rendelkezésre állása alapján.
@@ -100,7 +99,7 @@ A külső összetevők és a felületek
 |   Helyi fiók bejelentkezési, api.localaccountsignin |  | x |  |  |
 |   Helyi fiók regisztrálási, api.localaccountsignup |  | x |  |  |
 |   Többtényezős hitelesítés lap, api.phonefactor |  | x |  |  |
-|   Önálló kiszolgáló által megerősített – például közösségi fiók sig felskálázás api.selfasserted |  | x |  |  |
+|   Önálló kiszolgáló által megerősített – például közösségi fiók regisztrációs, api.selfasserted |  | x |  |  |
 |   Önálló kiszolgáló által megerősített profil frissítése, api.selfasserted.profileupdate |  | x |  |  |
 |   Egyesített regisztrációs vagy bejelentkezési oldal, api.signuporsignin |  | x |  |  |
 

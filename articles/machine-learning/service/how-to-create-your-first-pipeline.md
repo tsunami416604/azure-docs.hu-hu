@@ -1,5 +1,5 @@
 ---
-title: Gépi Tanulási folyamatok futtatásához és létrehozása
+title: Nyomon követheti a gépi Tanulási folyamatok létrehozása & futtatása
 titleSuffix: Azure Machine Learning service
 description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült.  A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100555"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269040"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Hozhat létre és futtathat egy machine learning folyamatot az Azure Machine Learning SDK
 
@@ -26,10 +26,10 @@ A folyamatok létrehozása az Azure Machine Learning szolgáltatás tagjai szám
 
 A folyamatok távoli számítási célnak kiszámításához és a köztes és végső adatokat, hogy a folyamat társított tárolására használja.  A folyamatok olvasható és írható adat- és támogatott [az Azure storage](https://docs.microsoft.com/azure/storage/) helyeket.
 
+>[!Note]
+>Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 * [A fejlesztési környezet konfigurálása](how-to-configure-environment.md) az Azure Machine Learning SDK telepítése.
 

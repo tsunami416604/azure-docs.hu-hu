@@ -1,5 +1,5 @@
 ---
-title: CORS-támogatással rendelkező RESTful API az Azure App Service-ben | Microsoft Docs
+title: A CORS - az Azure App Service RESTful API üzemeltetése |} A Microsoft Docs
 description: Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben.
 services: app-service\api
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445429"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261568"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
@@ -58,7 +58,7 @@ Futtassa a következő parancsot a minta tárház klónozásához.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Ez az adattár a következő oktatóanyag alapján létrehozott alkalmazást tartalmaz: [Swaggert használó ASP.NET Core webes API-k súgóoldalai](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
+A tárház a következő oktatóanyag alapján létrehozott alkalmazást tartalmaz: [Az ASP.NET Core Web API Swagger használatával súgóoldalak](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -211,4 +211,4 @@ Az alábbiak elvégzését ismerte meg:
 A következő oktatóanyag a felhasználók hitelesítését és engedélyezését mutatja be.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](app-service-web-tutorial-auth-aad.md)
+> [Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok](app-service-web-tutorial-auth-aad.md)

@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 74ea923ccfc88847ae6d2513b3ef592cc8899b8d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c774a463264a3df859ac097dce4aa21df1c1dd8
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966874"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163361"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Az IoT-központ eszköz híd egyéb IoT-felhők csatlakozni az IoT-központ létrehozása
 
@@ -34,7 +34,7 @@ A függvényalkalmazás alakítja át az adatokat olyan formátumra, fogadja el 
 Ha az IoT Central-alkalmazást az eszköz által Eszközazonosítót a továbbított üzenet felismeri, egy új mérték jelenik meg az eszközön. Ha az eszköz azonosítója soha nem látják az IoT Central-alkalmazást, a függvényalkalmazás megkísérli egy új eszközt regisztrálhat az adott eszköz Azonosítóját, és az IoT Central-alkalmazást egy "társítatlan eszköz" állapottal fog megjelenni. 
 
 ## <a name="how-do-i-set-it-up"></a>Hogyan állíthatok azt be?
-Az utasításokat az információs fájl, a Github-adattárat a részletes listáját. 
+Az utasításokat az információs fájl, a GitHub-adattárat a részletes listáját. 
 
 ## <a name="pricing"></a>Díjszabás
 Az Azure-erőforrások üzemeltetett Azure-előfizetésében. További információ a díjszabásról a a [információs fájl](https://aka.ms/iotcentralgithubdevicebridge).

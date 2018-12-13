@@ -1,21 +1,21 @@
 ---
-title: Az Azure Container Instances oktatóanyaga – Alkalmazás üzembe helyezése
-description: Az Azure Container Instances oktatóanyaga, 3/3. rész – Alkalmazás üzembe helyezése
+title: Oktatóanyag – tároló alkalmazás üzembe helyezése az Azure Container Instances szolgáltatásban
+description: Az Azure Container Instances oktatóanyaga 3 / 3. rész – a tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863720"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191098"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Oktatóanyag: Tároló üzembe helyezése az Azure Container Instancesben
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Oktatóanyag: Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 
 Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehoztunk egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [leküldtük az Azure Container Registrybe](container-instances-tutorial-prepare-acr.md). A sorozat befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instancesben.
 

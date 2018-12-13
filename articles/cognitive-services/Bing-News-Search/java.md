@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Bing News Search API, Java'
+title: 'Gyors útmutató: Végezzen keresést a C# – a Bing Web Search REST API'
 titlesuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval és a kódmintákkal gyorsan megkezdheti a Bing News Search API használatát a Microsoft Cognitive Servicesben az Azure-on.
+description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API Java használatával, és a egy JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316837"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260956"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-java"></a>Rövid útmutató a Bing News Search API és a Java használatához
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a hírkeresési, Java és a Bing News Search REST API használatával
 
 Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Search API az Azure-on. Bár ez a cikk Javát használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 

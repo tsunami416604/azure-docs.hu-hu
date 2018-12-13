@@ -4,9 +4,8 @@ description: Az R nyelv használatával az Azure Machine Learning Studio funkci�
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311008"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272065"
 ---
-# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Az Azure Machine Learning Studio: Kísérlet kiterjesztése az R 
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Az Azure Machine Learning Studio: A kísérletek bővítése R-rel 
 Az Azure Machine Learning Studio funkciójának keresztül az R nyelv használatával kiterjesztheti a [R-szkript végrehajtása] [ execute-r-script] modul.
 
 Ez a modul több bemeneti adatkészletet fogad, és egyetlen adatkészlet kimenetként eredményez. Beírhatja az R-szkriptet a **R-szkript** paraméterében a [R-szkript végrehajtása] [ execute-r-script] modul.
@@ -58,7 +57,7 @@ Csomagok, amelyek még nincsenek telepítve a következő parancsok használatá
 
 Ha a `my_favorite_package.zip` fájl tartalmazza a csomagot.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 <!-- Module References -->

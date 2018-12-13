@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031084"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166591"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Metaadatok és a GenerateAnswer API használatával
 
@@ -54,15 +54,15 @@ A HTTP POST-kérelmet GenerateAnswer hívható meg. Az mintakódot, amely bemuta
 - **Kérelem URL-címe**: https://{QnA készítő végpontot} /knowledgebases/ {Tudásbázis-azonosító} / generateAnswer
 
 - **A kérés paraméterei**: 
-    - **Tudásbázis-azonosító** (karakterlánc): a Tudásbázis a GUID-azonosító.
-    - **QnAMaker végpont** (karakterlánc): az Azure-előfizetésében üzembe helyezve a végpont állomásneve.
+    - **Tudásbázis-azonosító** (karakterlánc): A Tudásbázis GUID azonosítója.
+    - **QnAMaker végpont** (karakterlánc): Az Azure-előfizetésében üzembe helyezve a végpont állomásneve.
 - **Kérelem fejlécei**
-    - **A Content-Type** (karakterlánc): az API-nak küldött törzs médiatípusa.
+    - **A Content-Type** (karakterlánc): Az API-nak küldött törzs médiatípusa.
     - **Engedélyezési** (karakterlánc): A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Kérelem törzse**
-    - **kérdés** (karakterlánc): egy felhasználó kérdést, szemben a Tudásbázis kérdezhető le.
-    - **felső** (nem kötelező, csak egész szám): a kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.
-    - **felhasználói azonosító** (nem kötelező, csak karakterlánc): egy egyedi Azonosítót a felhasználó azonosítására. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.
+    - **kérdés** (karakterlánc): Egy felhasználó kérdést, szemben a Tudásbázis kérdezhető le.
+    - **felső** (nem kötelező, csak egész szám): A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.
+    - **felhasználói azonosító** (nem kötelező, csak karakterlánc): Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.
     - **strictFilters** (nem kötelező, csak karakterlánc): Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. További információkért lásd az alábbi.
     ```json
     {
@@ -82,13 +82,13 @@ A HTTP POST-kérelmet GenerateAnswer hívható meg. Az mintakódot, amely bemuta
 - **Válasz 200** – sikeres hívás az kérdés eredményét adja vissza. A válasz a következő mezőket tartalmazzák:
     - **válaszok** -válaszokat a felhasználó lekérdezése, rangsorolási pontszám sorrendbe rendezett listáját.
         - **pontszám**: 0 és 100 közötti rangsorolási pontszám.
-        - **kérdések**: az a felhasználó által megadott kérdésre.
+        - **kérdések**: A felhasználó által megadott kérdéseket.
         - **válasz**: A választ a kérdésére.
-        - **forrás**: a forrás, amelyről a választ ki kell olvasni vagy menti a Tudásbázis nevére.
-        - **metaadatok**: a válasz társított metaadatokat.
-            - Name: metaadat neve. (string, maximum: 100, a szükséges)
-            - érték: metaadat-értékben. (string, maximum: 100, a szükséges)
-        - **ID**: a válasz rendelt egyedi azonosító.
+        - **forrás**: A forrás, amelyről a választ ki kell olvasni vagy menti a Tudásbázis neve.
+        - **metaadatok**: A válasz társított metaadatokat.
+            - név: Metaadat-neve. (karakterlánc, a maximális hossz: 100, a szükséges)
+            - Érték: Metaadat-értékben. (karakterlánc, a maximális hossz: 100, a szükséges)
+        - **ID**: A válasz rendelt egyedi azonosítója.
     ```json
     {
         "answers": [
@@ -167,6 +167,8 @@ A GenerateAnswer adott válasz a következő tartalmazza az egyező kérdés-vá
 Ez az információ az előző beszélgetés használatra kontextusában rögzítéséhez újabb témák használható. 
 
 ## <a name="next-steps"></a>További lépések
+
+A közzétételi oldalon is biztosít választ létrehozásához szükséges adatok [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) és [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
 > [Tudásbázis létrehozása](./create-knowledge-base.md)

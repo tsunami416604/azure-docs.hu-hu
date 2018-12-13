@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/13/2018
+ms.date: 03/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 52757098436349d38538f4c2168a70e53ad58421
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946612"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270161"
 ---
-# <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modell üzembe helyezése
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -168,7 +168,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Eng
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-   A kimenet harmadik sora a következő: **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **show** parancsot, amíg a kimenet a következő nem lesz: **"registrationState": "Registered"**.
+   A kimenet megjeleníti a harmadik sorban **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **megjelenítése** parancsot, amíg a kimenet **"registrationState": "Registered"**.
 
    >[!NOTE] 
    Ha egy ACS-fürtön hajtja végre az üzembe helyezést, ugyanezen módszerrel regisztrálnia kell a **Microsoft.ContainerService** erőforrás-szolgáltatót is.
@@ -234,24 +234,24 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
 
    Az **az ml service create realtime** parancsot az alábbi kapcsolókkal lehet használni:
 
-   * `-f`: A pontozó szkript fájlneve
+   * `-f`: A pontozó szkript fájlneve.
 
    * `--model-file`: A modellfájl. Ebben az esetben ez a model.pkl pickle-fájl.
 
    * `-s`: A szolgáltatásséma. Ez az előző lépésben jött létre a **score_iris.py** szkript helyi futtatásával.
 
-   * `-n`: Az alkalmazás neve, csak kisbetűkből állhat.
+   * `-n`: Az alkalmazás nevét, amely csak kisbetűkből állhat.
 
    * `-r`: A modell futtatókörnyezete. Ebben az esetben ez a Python-modell. Az érvényes futtatókörnyezetek a `python` és a `spark-py`.
 
-   * `--collect-model-data true`: Ez a kapcsoló lehetővé teszi adatok gyűjtését.
+   * `--collect-model-data true`: Ez a kapcsoló engedélyezi az adatgyűjtést.
 
-   * `-c`: A további csomagokat tartalmazó Conda-függőségfájl elérési útja.
+   * `-c`: A fájl elérési útját conda függőségek ahol kiegészítő csomagok vannak megadva.
 
    >[!IMPORTANT]
    >A szolgáltatásnév, amely az új Docker-rendszerkép neve is, csak kisbetűkből állhat. Ellenkező esetben a rendszer hibaüzenetet küld. 
 
-1. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet, amely tartalmazza a modellt, a sémát és a pontozófájlt, majd leküldi azt az Azure Container Registrybe: **\<ACR_név\>.azurecr.io/\<rendszerképnév\>:\<verzió\>**. 
+1. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet a modell, a sémát és a pontozófájlt, és majd leküldi azt az Azure container registrybe: **\<Acr_név\>.azurecr.io/\<imagename\>:\<verzió\>**. 
 
    A parancs lekéri a rendszerképet a helyi számítógépre, és a rendszerkép alapján elindít egy Docker-tárolót. Ha a környezet fürt üzemmódban lett konfigurálva, a Docker-tároló az Azure Cloud Services Kubernetes-fürtön lesz üzembe helyezve.
 
@@ -351,15 +351,15 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
 
 1. Ezeket az adatokat felhasználhatja az Azure Blob Storage-ból. Számos különféle, Microsoft szoftvereket és nyílt forráskódú eszközöket használó eszköz érhető el, például:
 
-   * Machine Learning: a CSV-fájl adatforrásként való felvételével nyissa meg a CSV-fájlt.
+   * Machine Learning: A CSV-fájlt adatforrásként való felvételével nyissa meg a CSV-fájlt.
 
-   * Excel: nyissa meg táblázatként a napi CSV-fájlokat.
+   * Excel: Nyissa meg táblázatként a napi CSV-fájlokat.
 
-   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a blobok CSV-adataiból.
+   * [Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): Hozzon létre diagramokat a blobok CSV-adatokat a beolvasott adatokat.
 
-   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): töltsön be CSV-adatokat egy Hive-táblába, és végezzen SQL-lekérdezéseket közvetlenül a blobokon.
+   * [Hive-](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): CSV-adatokat betölteni egy Hive-táblába, és végezzen SQL-lekérdezéseket közvetlenül a blobokon.
 
-   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): hozzon létre DataFrame-et nagy mennyiségű CSV-adatból.
+   * [A Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Hozzon létre DataFrame-et nagy mennyiségű CSV-adatból.
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

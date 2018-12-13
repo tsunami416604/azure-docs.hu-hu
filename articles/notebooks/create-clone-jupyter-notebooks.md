@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c4325f0c9de0d945d1612a3ab4171a2bfe1be25b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106515"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164415"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -42,7 +42,7 @@ Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amel
 | **Törlés** | Tulajdonos | Törli a kiválasztott projekthez. Ez a művelet nem vonható vissza. |
 | **Terminálszolgáltatások** | Tulajdonos | A project server kezdődik, majd megnyílik egy új böngészőablakot a bash, terminál, hogy a kiszolgáló. |
 | **+ Új projekt** | Tulajdonos | Létrehoz egy új projektet. Lásd: [hozzon létre egy új projektet](#create-a-new-project). |
-| **Töltse fel a Github-adattár** | Tulajdonos | Importál egy projektet a Githubról. [A projekt importálása a Githubról](#import-a-project-from-github). |
+| **Töltse fel a GitHub-adattár** | Tulajdonos | Importál egy projektet a Githubról. [A projekt importálása a Githubról](#import-a-project-from-github). |
 | **Klónozás** | Mindenki számára | Másolja át a kiválasztott projekt a saját fiókba. Kéri, ha még nem már bejelentkezhet. Lásd: [-projekt klónozása](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Szerezzen be egy indítási jelvény
@@ -105,9 +105,9 @@ A projekt klónozása:
 ## <a name="next-steps"></a>További lépések
 
 - [Ismerkedés a mintafüzetek](azure-notebooks-samples.md)
-- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Hogyan: diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
-- [Útmutató: adatok fájlok használata](work-with-project-data-files.md)
-- [Útmutató: adat-erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
-- [Útmutató: az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)
+- [kézikönyv: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
+- [kézikönyv: Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
+- [kézikönyv: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [kézikönyv: Adatfájlok használata](work-with-project-data-files.md)
+- [kézikönyv: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [kézikönyv: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 4df7975d4d52e00cce7b57c6f207eb6cb9ea3be3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847898"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310521"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>egy többrétegű Citrix XenApp és xendesktop-példányok üzembe helyezés a vészhelyreállítás beállítása
 
@@ -130,15 +130,15 @@ A helyreállítási terv csoportok együtt rendelkező virtuális gépek feladat
 
 1. A XenApp összetevő virtuális gépek hozzáadása a helyreállítási terv.
 2. Kattintson a helyreállítási terv -> + a helyreállítási terv. Adja meg a helyreállítási terv egy intuitív nevét.
-3. A VMware virtuális gépek: VMware folyamatkiszolgáló, a cél a Microsoft Azure, és üzembe helyezési modellt használja, mint a Resource Manager, majd kattintson a elemek kiválasztásával forrás kiválasztása.
-4. Hyper-V virtuális gépek: válassza ki a forrás VMM-kiszolgálóval, a Microsoft Azure, valamint a mint a Resource Manager üzemi modell cél és kattintson az elemek kiválasztását és válassza ki a XenApp üzembe helyezés virtuális gépeken.
+3. A VMware virtuális gépek: Válassza ki a forrás VMware folyamatkiszolgáló, a cél a Microsoft Azure, és üzembe helyezési modellt használja, mint a Resource Manager, majd kattintson a elemeket választhat ki.
+4. Hyper-V virtuális gépek: Válassza ki a forrás VMM-kiszolgálóval, a Microsoft Azure cél, és mint Resource Manager üzemi modell, és kattintson az elemek kiválasztásával, és válassza ki a XenApp üzembe helyezés virtuális gépeken.
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuális gépek feladatátvételi csoportok felvétele
 
 A helyreállítási terv feladatátvételi csoportok az adott indítási sorrend, szkriptek vagy manuális műveletek hozzáadása testre szabható. A következő csoportok hozzá kell adni a helyreállítási tervbe.
 
 1. Feladatátvételi csoport1: AD DNS
-2. Feladatátvételi csoport2: SQL Server virtuális gépek
+2. Feladatátvételi csoport2: SQL Server-alapú virtuális gépek
 2. Feladatátvételi 3: VDA fő kép virtuális Gépet
 3. Feladatátvételi 4: Alkalmazáskézbesítési vezérlőt és StoreFront-kiszolgáló virtuális gépek
 
@@ -150,13 +150,14 @@ Parancsfájlokat lehet futtatni előtt vagy után adott csoportban lévő helyre
 A testre szabott helyreállítási terv néz ki az alábbi:
 
 1. Feladatátvételi csoport1: AD DNS
-2. Feladatátvételi csoport2: SQL Server virtuális gépek
+2. Feladatátvételi csoport2: SQL Server-alapú virtuális gépek
 3. Feladatátvételi 3: VDA fő kép virtuális Gépet
 
    >[!NOTE]     
    >Csak egy helyszíni xenapp alkalmazandók, 4, 6, 7 manuális vagy parancsfájl műveleteket tartalmazó lépéseket > MCS/PVS katalógusok környezetet.
 
-4. 3. csoport manuális vagy parancsfájl művelet: leállítási fő VDA virtuális gép a fő VDA virtuális Gépet az Azure-ba irányuló feladatátvételkor futó állapotban lesz. Hozhat létre új MCS-katalógus használatával az Azure üzemeltetési, a fő VDA virtuális gép szükség lehet a Leállítva (de lefoglalt) állapot. Állítsa le a virtuális gép az Azure Portalról.
+4. 3. csoport kézi vagy parancsprogram-művelet: Állítsa le a fő VDA virtuális gép.
+A fő VDA virtuális Gépet az Azure-ba irányuló feladatátvételkor futó állapotban lesz. Hozhat létre új MCS-katalógus használatával az Azure üzemeltetési, a fő VDA virtuális gép szükség lehet a Leállítva (de lefoglalt) állapot. Állítsa le a virtuális gép az Azure Portalról.
 
 5. Feladatátvételi 4: Alkalmazáskézbesítési vezérlőt és StoreFront-kiszolgáló virtuális gépek
 6. 3 manuális vagy parancsfájl 1 művelet:

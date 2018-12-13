@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016694"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164644"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -39,7 +39,7 @@ Igen.
 
 A core a Service Fabric-fürtözési technológia használható úgy, hogy bárhol a világon futtató gépek mindaddig, amíg egymáshoz hálózati kapcsolattal rendelkeznek. Ugyanakkor ilyen fürt készítése és bonyolult feladatnak bizonyulhat.
 
-Ha érdekli, ebben a forgatókönyvben, azt javasoljuk, hogy az ügyfél beolvasása vagy keresztül a [Service Fabric Github Hibalistájában](https://github.com/azure/service-fabric-issues) vagy a támogatási képviselő további útmutatást a beszerzéséhez. A Service Fabric csapata dolgozik azon, hogy az egyértelműség érdekében további, útmutatást és javaslatokat ehhez a forgatókönyvhöz. 
+Ha érdekli, ebben a forgatókönyvben, azt javasoljuk, hogy az ügyfél beolvasása vagy keresztül a [Service Fabric GitHub Hibalistájában](https://github.com/azure/service-fabric-issues) vagy a támogatási képviselő további útmutatást a beszerzéséhez. A Service Fabric csapata dolgozik azon, hogy az egyértelműség érdekében további, útmutatást és javaslatokat ehhez a forgatókönyvhöz. 
 
 Néhány mérlegelendő szempont ezzel kapcsolatban: 
 

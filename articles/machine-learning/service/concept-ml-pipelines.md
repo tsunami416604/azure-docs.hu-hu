@@ -1,7 +1,7 @@
 ---
-title: Gépi tanulási folyamatok létrehozása
+title: 'A folyamatok: optimalizálása gépi tanulás nagy sebesség, a hordozhatóságot, és újra felhasználhatja'
 titleSuffix: Azure Machine Learning service
-description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. Machine learning (gépi tanulás) folyamatok segítségével az adatszakértők hozhat létre, optimalizálhat és kezelhet a machine learning-munkafolyamatokat.
+description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. A gépi tanulási (ML-) folyamatokat az adatelemzők gépi tanulási munkafolyamatok létrehozásához, optimalizálásához és felügyeletéhez használják.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b427df25e722dda95bd27cc1fb2657247bc6a41a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e2874c4a40a2347fd47e93c99fdec7ff5e81aec1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100633"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308209"
 ---
-# <a name="building-machine-learning-pipelines-using-azure-machine-learning-service"></a>Épület machine learning-folyamatokat az Azure Machine Learning szolgáltatás használatával
+# <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással
 
-Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye.
+Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre az Azure Machine Learning-SDK Pythonhoz készült, és a folyamatok használatának előnye.
 
 ## <a name="what-are-machine-learning-pipelines"></a>Mik azok a machine learning-folyamatokat?
 
@@ -32,42 +32,42 @@ Machine learning (gépi tanulás) folyamatok, az adatszakértők, adatmérnökö
 
 Az alábbi ábrán látható egy példa folyamatot:
 
-[ ![Machine learning-folyamatokat az Azure Machine Learning szolgáltatásban](./media/concept-ml-pipelines/pipelines.png) ] (. / media/concept-ml-pipelines/machine-learning-pipelines-big.png#lightbox)
+![Machine learning-folyamatokat az Azure Machine Learning szolgáltatásban.](./media/concept-ml-pipelines/pipelines.png)
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Miért érdemes létrehozni az Azure Machine Learning folyamatok?
 
-A [Azure Machine Learning SDK Pythonhoz készült](#the-python-sdk-for-pipelines) nyújt, és nyomon követése az egyes folyamatok, valamint a gépi Tanulási folyamatok létrehozására használható.
+Használhatja a [Azure Machine Learning SDK Pythonhoz készült](#the-python-sdk-for-pipelines) gépi Tanulási folyamatok is nyújt, és nyomon követése az egyes folyamatok létrehozásához.
 
-A folyamatok optimalizálhatja a munkafolyamatot az egyszerűség, gyorsabb, hordozhatósága és újból. Az Azure Machine Learning folyamatok készítésekor összpontosíthat tapasztalatai legjobb &mdash; gépi tanulás &mdash; infrastruktúra helyett.
+A folyamatok optimalizálhatja a munkafolyamatot az egyszerűség, gyorsabb, hordozhatósága és újból. Az Azure Machine Learning folyamatok készítésekor összpontosíthat szaktudását, a machine learning, az infrastruktúra helyett.
 
-Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket, a munkafolyamat tesztelése és finomhangolása kell futtatnia. Egy lépésre egy számítási egységben, a folyamat. A fenti ábrán látható, a feladat az adatok előkészítésének többek között számos lépést is igénybe vehet, de nem kizárólagosan a, normalizálási, átalakítási, ellenőrzés és featurization. Adatforrások és a köztes adatok felhasználják a folyamat, mely menti számítási időt és erőforrásokat. 
+Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket kell, a munkafolyamat tesztelése és finomhangolása futtassa újra. Egy lépésre egy számítási egységben, a folyamat. A fenti ábrán látható, a feladat az adatok előkészítéséről sok lépésből magába foglaló. Ezek közé tartozik, de nem kizárólagosan normalizálási, átalakítási, ellenőrzés és featurization. Adatforrások és a köztes adatok felhasználják a folyamat, mely menti számítási időt és erőforrásokat. 
 
-Miután a folyamat arra tervezték, nincs gyakran több finomhangoló a folyamat a betanítási hurok körül. Ha újra futtathatja egy folyamatot, a futtatási ugrik a lépéseket, amelyek újra kell futtatnia, például egy frissített tanítási szkriptet, és kihagyja a mi nem változott. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. 
+Miután a folyamat arra tervezték, nincs gyakran több finomhangoló körül a betanítási ciklus a folyamat. Ha újra futtathatja egy folyamatot, a futtatási ugrik a lépéseket, amelyek újra kell futtatnia, például egy frissített tanítási szkriptet, és kihagyja a mi nem változott. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. 
 
-Az Azure Machine Learning használható különböző eszközökre és keretrendszereket, mint a Microsoft Cognitive Toolkit, tensorflow-hoz vagy az egyes lépések a folyamatban. Az Azure koordináták között a különböző [számítási céljainak](concept-azure-machine-learning-architecture.md) használhatja, hogy a köztes adatokat az alsóbb rétegbeli számítási példányokkal rendelkező könnyen megoszthatók. 
+Az Azure Machine Learning használható különböző eszközökre és keretrendszereket, mint a Microsoft Cognitive Toolkit vagy TensorFlow, a folyamat minden lépése. Az Azure koordináták között a különböző [számítási céljainak](concept-azure-machine-learning-architecture.md) használhatja, hogy a köztes adatokat az alsóbb rétegbeli számítási példányokkal rendelkező könnyen megoszthatók. 
 
 Is [követheti a metrikákat, a folyamat kísérletek](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) közvetlenül az Azure Portalon. 
 
 ## <a name="key-advantages"></a>Főbb előnyök
 
-A következő fő előnye az, hogy a teljes gépi tanulási munkafolyamatok folyamatok létrehozásához:
+Fő előnye az, hogy a teljes gépi tanulási munkafolyamatok folyamatok létrehozásához a következők:
 
 |Legfontosabb előnye|Leírás|
 |:-------:|-----------|
-|**Felügyelet nélküli&nbsp;fut.**|Néhány lépéssel párhuzamosan vagy a feladatütemezés futtatása egy megbízható és a felügyelet nélküli módon ütemezhet. Adatelőkészítés és modellezés óta is utolsó napokat vagy heteket, most összpontosíthat más feladatok a folyamat futása közben. |
-|**Vegyes és sokféle számítási**|Több folyamatot, amely megbízhatóan koordinálja a heterogén és méretezhető számítási erőforrások és a tárolók használata. A folyamat egyes lépéseit futtatni a különböző számítási célhelyei, például a HDInsight, GPU adatelemzési virtuális gépek és a Databricks, hatékonnyá használja az elérhető számítási lehetőségek közül.|
-|**Újrahasznosíthatóság**|A folyamatok bizonyos forgatókönyvek esetén például átképezési és a kötegelt pontozás templatized is lehet.  Egyszerű REST-hívásokon keresztül a külső rendszerekből aktiválható.|
-|**Nyomon követést és verziókezelés**|Helyett manuálisan követési adatok és az eredmény elérési iterálni, használatával az egyes folyamatok SDK explicit módon nevezze el és verzió az adatok adatforrásokat, bemenetként, és kiírja, valamint szkripteket és adatokat külön-külön az fokozott termelékenység kezelésére.|
+|**Felügyelet nélküli&nbsp;fut.**|Ütemezzen néhány lépést, amelyek párhuzamosan vagy egymás után futnak megbízható módon, felügyelet nélkül. Mivel adatelőkészítéshez és modellezés is utolsó napok vagy hetek, most összpontosíthat más feladatok a folyamat futása közben. |
+|**Vegyes és sokféle számítási**|Több folyamatot, amely megbízhatóan koordinálja a heterogén és méretezhető számítási erőforrások és a tárolók használata. A folyamat egyes lépéseit a különböző számítási célokhoz, például a HDInsight, a GPU adatelemzési virtuális gépek és a Databricks futtathatja. Ez lehetővé teszi a rendelkezésre álló számítási lehetőségek hatékony kihasználását.|
+|**Újrahasznosíthatóság**|Bizonyos forgatókönyvek esetén, például az átképezési és kötegelt pontozási folyamatokat is sablonok kialakítása. Egyszerű REST-hívásokon keresztül a külső rendszerekből elindíthatja őket.|
+|**Nyomon követést és verziókezelés**|Helyett manuálisan követési adatok és az eredmény elérési iterálni, használatával az egyes folyamatok SDK explicit módon adja és verzió az adatok adatforrásokat, bemenetként, és adja vissza. Parancsfájlok és megnövelt hatékonyság adatok külön-külön is kezelheti.|
 
 ## <a name="the-python-sdk-for-pipelines"></a>A Python SDK folyamatok
 
-A Python használatával a gépi Tanulási folyamatokat hozhat létre. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. Használhatja azt a Jupyter notebookok vagy egy másik elsődleges IDE-ben. 
+A Python használatával a gépi Tanulási folyamatokat hozhat létre. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. Használhatja azt a Jupyter notebooks, vagy egy másik által választott integrált fejlesztői környezetben. 
 
-Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatokat. Az SDK olyan keretrendszer, előre elkészített méretére vonatkozó gyakori feladatokat, mint az adatátvitel és a modell közzétételi tartalmazza. A keretrendszer egyéni lépéseket, amelyek újrafelhasználható folyamatok közötti implementálásával saját konvenciók modellek is kiterjeszthető. A tárolók számítási és tárolási erőforrások is kezelhetők közvetlenül az SDK-ból.
+Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatokat. Az SDK olyan keretrendszer, előre elkészített méretére vonatkozó gyakori feladatokat, például az adatforgalom és a modell közzétételi tartalmazza. A keretrendszer egyéni lépéseket, amelyek újrafelhasználható folyamatok közötti implementálásával saját konvenciók modellezésére bővítheti. Közvetlenül az SDK-t a számítási célokhoz és a tárolási erőforrások is kezelheti.
 
-Folyamatok menthető, sablonok, és a egy REST-végponthoz is telepíthető, így a kötegelt pontozás vagy megőrzési feladatokat ütemezhet.
+A folyamatok Mentés sablonként, és telepítse őket a REST-végponton, így a kötegelt pontozás vagy megőrzési feladatokat ütemezhet.
 
-Tekintse meg a [folyamatok Python SDK referenciadokumentumai](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) és a következő szakaszban megtudhatja, hogyan hozhat létre saját a notebookot.
+Megtudhatja, hogyan hozhat létre a saját, tekintse meg a [folyamatok Python SDK referenciadokumentumai](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) és a következő szakaszban a notebookot.
 
 ## <a name="example-notebooks"></a>Példa notebookok
  

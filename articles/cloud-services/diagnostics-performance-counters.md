@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001463"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322943"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Az Azure-felhőszolgáltatás teljesítményszámlálók gyűjtése
 
@@ -127,7 +127,7 @@ A Cloud Services az Azure Diagnostics bővítmény lehetővé teszi, hogy Ön ad
 
 A gyűjtendő teljesítményszámlálókat meghatározott a **diagnostics.wadcfgx** fájlt. A Visual Studióban nyissa meg ezt a fájlt (van definiálva szerepkörönként), és keresse meg a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Vegyen fel egy új **PerformanceCounterConfiguration** gyermek elemet. Ez az elem két attribútumokkal rendelkezik: `counterSpecifier` és `sampleRate`. A `counterSpecifier` attribútum adja meg, melyik gyűjtéséhez számláló (az előző szakaszban bekeretezett) beállítása a rendszer teljesítménye. A `sampleRate` érték azt jelzi, hogy milyen gyakran van kérdezi le azt az értéket. Egész minden teljesítményszámlálót átkerülnek az Azure-ban a szülő megfelelően `PerformanceCounters` elem `scheduledTransferPeriod` attribútum értéke.
 
-További információ a `PerformanceCounters` sémaelem, tekintse meg a [Azure Diagnostics-séma](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element).
+További információ a `PerformanceCounters` sémaelem, tekintse meg a [Azure Diagnostics-séma](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
 
 A megadott időszakra a `sampleRate` az XML-időtartam adatokat írja be annak jelzésére, hogy milyen gyakran van kérdezi le azt a teljesítményszámláló attribútum használja. Az alábbi példában a sebesség értéke `PT3M`, ami azt jelenti, `[P]eriod[T]ime[3][M]inutes`: percen át 3 percenként.
 
@@ -297,4 +297,4 @@ Mint azt korábban említettük, a gyűjtendő teljesítményszámlálókat megh
 - [Az Application Insights az Azure Cloud Servicesben](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Az Application Insights rendszerteljesítmény-számlálók](../application-insights/app-insights-performance-counters.md)
 - [A számláló elérési út megadását](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure Diagnostics-séma - teljesítményszámlálók](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Azure Diagnostics-séma - teljesítményszámlálók](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

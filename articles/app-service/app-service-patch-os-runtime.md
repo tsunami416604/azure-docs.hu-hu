@@ -1,5 +1,5 @@
 ---
-title: Az operációs rendszer és a futtatókörnyezet javítása az Azure App Service szolgáltatásban |} A Microsoft Docs
+title: Az operációs rendszer és a futtatókörnyezet javítása kiadása ütemben történik – az Azure App Service-ben |} A Microsoft Docs
 description: Ismerteti, hogyan frissítse az Azure App Service-frissítéseket az operációs rendszer és a modulok, és hogyan kezdheti közleményeket.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 9855becd7c047788ed310dff4317a5df87cc9b61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.custom: seodec18
+ms.openlocfilehash: a0fdab06606a88fafa803a9a112c05452578cfeb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047628"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252864"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futtatókörnyezet javítása az Azure App Service-ben
 
@@ -100,5 +101,5 @@ A következő táblázatban látható a verziók Windows és a nyelvi futtatók�
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Adatvédelmi központ: biztonság](https://www.microsoft.com/en-us/trustcenter/security)  
+[Adatvédelmi központ: Biztonsági](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bites ASP.NET Core az Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

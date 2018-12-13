@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 03c561001999245b55e6e76b02f8916d0b2d619f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 167f0fd9e06e731a6a2fef15d762d8815f5d4f9b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963232"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189982"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
@@ -64,10 +62,10 @@ Egy időbélyeg elválasztó használata, majd a TimeGenerated tulajdonság, az 
 
 
 1. Kattintson a **Tallózás** , keresse meg a minta fájlt.  Vegye figyelembe, hogy ez lehetséges, hogy a gomb neve lehet **fájl kiválasztása** egyes böngészőkben.
-2. Kattintson a **Tovább** gombra.
+2. Kattintson a **Tovább**gombra.
 3. Az egyéni napló varázsló feltölteni a fájlt, és a listában, amely azonosítja a rekordokat.
 4. Módosítsa az új rekord azonosításához, és válassza ki a kivonni kívánt a naplófájl rekordjainak legjobb azonosításához használt elválasztó karaktert.
-5. Kattintson a **Tovább** gombra.
+5. Kattintson a **Tovább**gombra.
 
 ### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtemények elérési útjának felvétele
 Az ügynökön, ahol keresse meg az egyéni napló definiálni kell egy vagy több elérési útvonalat.  Vagy megadhat egy adott elérési útja és a naplófájl neve, vagy a név helyettesítő karakter segítségével adható meg egy elérési utat. Ez támogatja az alkalmazásokat, amelyek minden nap, vagy ha egy fájl bizonyos méretet elér, hozzon létre egy új fájlt. Az egyetlen naplófájl több elérési úttal is megadhatja.

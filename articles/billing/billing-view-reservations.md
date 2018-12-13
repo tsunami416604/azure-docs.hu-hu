@@ -1,5 +1,5 @@
 ---
-title: Azure foglalások megtekintése |} A Microsoft Docs
+title: Azure-erőforrások lefoglalását megtekintése |} A Microsoft Docs
 description: Ismerje meg az Azure-foglalások megtekintése az Azure Portalon.
 services: billing
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c7522076987aacacc6fde6a0c9d2fa867a3f14aa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584587"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314040"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure-foglalások megtekintése az Azure Portalon
+# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Foglalások megtekintése az Azure-hoz az Azure Portalon
 
-Az előfizetés típusa és az engedélyek, függően nincsenek többféle módon Azure foglalások megtekintéséhez.
+Az előfizetés típusa és az engedélyek, függően számos megtekintése az Azure-erőforrások lefoglalását többféleképpen.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>A foglalások tulajdonosaként vagy olvasó megtekintése
 
@@ -30,7 +30,7 @@ Alapértelmezés szerint amikor vásárol egy foglalást, és a fiók rendszerga
  
 Tulajdonos vagy olvasó, foglalás megtekintése
 
-1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Keresés **foglalások**.
 
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ A Foglalás hatóköre módosítani szeretné, ha a Foglalás felosztása vagy m
 
 Foglalás tranzakciók megtekintése az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Keresés **Cost Management és számlázás**.
 
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -54,13 +54,13 @@ Foglalás tranzakciók megtekintése az Azure Portalon
 1. Az eredmények szűréséhez válassza **Timespan**, **típus**, vagy **leírás**.
 1. Kattintson az **Alkalmaz** gombra.
 
-    ![Foglalás tranzakciók eredményeket megjelenítő képernyőkép](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
+    ![Foglalás-tranzakciók eredményeket megjelenítő képernyőkép](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
 
 API-k használatával az adatok lekéréséhez lásd: [nagyvállalati vásárlók számára fenntartott példány első szolgáltatásra vonatkozó forgalmi díjak](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az, Cosmos DB szolgáltatás számára fenntartott kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)

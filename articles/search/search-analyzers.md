@@ -1,5 +1,5 @@
 ---
-title: Elemzők az Azure Search szolgáltatásban |} A Microsoft Docs
+title: Az elemzők nyelvi és szöveges feldolgozására – Azure Search
 description: Az alapértelmezett egyéni, előre definiált vagy nyelvspecifikus alternatívákkal standard Lucene hozzárendelése egy cserélje le az indexben lévő kereshető szöveges mezők elemzők számát.
 services: search
 ms.service: search
@@ -8,14 +8,15 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec2018
+ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116370"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310538"
 ---
-# <a name="analyzers-in-azure-search"></a>Elemzők az Azure Search szolgáltatásban
+# <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
 Egy *analyzer* összetevője [teljes szöveges keresés](search-lucene-query-architecture.md) felelős a lekérdezési karakterláncok és az indexelt dokumentumok feldolgozásáért. A következő átalakításokra tipikus elemzés során:
 
@@ -149,7 +150,7 @@ Ebben a példában ajánljuk figyelmébe:
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>2. példa: Az alapértelmezett elemző felülbírálása
+### <a name="example-2-override-the-default-analyzer"></a>2. példa Bírálja felül az alapértelmezett elemző
 
 A standard szintű elemző eszköz az alapértelmezett érték. Tegyük fel, hogy az alapértelmezett cserélje le egy másik előre meghatározott elemző eszköz, például a minta analyzer. Ha nem egyéni beállításainak, csak adja meg azt a mezőt definícióban található nevének kell.
 
@@ -181,7 +182,7 @@ A "analyzer"-elem felülbírálja a szabványos analyzer mező szerint történi
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>3. példa: Különböző elemzők az indexelési és keresési műveletek
+### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>3. példa: Az indexelési és keresési műveletek különböző elemzők
 
 Az API-k különböző elemzők az indexelés és keresés megadásával további index attribútumait tartalmazza. A `searchAnalyzer` és `indexAnalyzer` párban, és cserélje le az egyetlen kötelező attribútumok `analyzer` attribútum.
 

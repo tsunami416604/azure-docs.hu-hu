@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 208e021dd9025ffff92ed46749346cfb53d0b080
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002521"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166608"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -147,7 +147,7 @@ Hop előfordulhat, hogy egy vagy több, a traceroute válaszol az alábbi forgat
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>A megoldás bemutatja, 100 %-os adatvesztés, de a forrás és cél közötti kapcsolat
 Ez akkor fordulhat elő, ha a gazdagép tűzfal vagy a (hálózati tűzfal vagy Azure NSG-t) a köztes tűzfal blokkolja a forrásügynök és a cél közötti kommunikáció a figyeléshez az NPM által használt porton keresztül (alapértelmezés szerint a port meg 8084, kivéve, ha a ügyfél változott ez).
 
-* Győződjön meg arról, hogy a gazdagép tűzfal nem blokkolja-e a szükséges porton a kommunikációt, tekintse meg a következő nézetet a forrás és cél csomópontok állapotát: a Network Performance Monitor -> Konfiguráció -> a csomópontokon. 
+* Győződjön meg arról, hogy a gazdagép tűzfal nem blokkolja-e a szükséges porton a kommunikációt, tekintse meg a következő nézetet a forrás és cél csomópontok állapotát: A Network Performance Monitor -> Konfiguráció -> a csomópontokon. 
   Ha nem megfelelő állapotú, a vonatkozó utasítások megtekintése és korrekciós műveletek. Ha a csomópontok kifogástalan, helyezze át a b lépésben. az alábbiakban.
 * Győződjön meg arról, hogy egy köztes tűzfal- vagy Azure NSG-t nem blokkolja-e a szükséges porton a kommunikációt, használja a külső PsPing segédprogram használatával az alábbi utasítások végrehajtásával:
   * a psping eszköz érhető el letöltésre [Itt](https://technet.microsoft.com/sysinternals/psping.aspx) 
@@ -161,17 +161,8 @@ Ez akkor fordulhat elő, ha a gazdagép tűzfal vagy a (hálózati tűzfal vagy 
 Mivel a hálózati elérési utak között, A b eltérhetnek a hálózati elérési utak között A, B, veszteségének és késleltetésének eltérő értékeket figyelhető.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért vannak saját ExpressRoute-Kapcsolatcsoportok és a társviszony-kapcsolatok nem észlelhető?
-Ez akkor fordulhat elő, ha a kapcsolatcsoport és a társviszony-kapcsolatokat több előfizetést is vannak elosztva. NPM deríti fel, hogy csak az ExpressRoute privát társviszony-létesítési kapcsolatokra, amelyben a virtuális hálózat csatlakozik az ExpressRoute is ugyanazon az előfizetés össze van kapcsolva az NPM-munkaterületen. Ezenkívül NPM deríti fel a Microsoft társviszony-létesítési kapcsolatokra az ugyanabba az előfizetésbe, azzal, ami a csatlakoztatott ExpressRoute-kapcsolatcsoport társított az NPM-munkaterületen. Ez egyértelművé tenni az az alábbi példában:
+Az NPM mostantól felderíti az ExpressRoute-Kapcsolatcsoportok és társviszony-kapcsolatok az összes előfizetést, amelyhez a felhasználónak hozzáférése van. Válassza ki az összes olyan előfizetést, az Express Route-erőforrások kapcsolódnak, és engedélyezze a monitorozást az összes felderített erőforrást. NPM keresi a kapcsolat objektumokat, ha a felderítése, a privát társviszony-létesítés, ezért ellenőrizze, hogy egy virtuális hálózathoz társítva a társviszony-létesítés.
 
- Ha 2 virtuális hálózatok közötti kapcsolat egy előfizetésben A és B virtuális hálózat a B előfizetés, expressroute-előfizetés emellett c-hez csatlakoztatva van-e egy másik VNET – VNET C előfizetés c-hez A ER is rendelkezik a társviszony-létesítés előfizetésben c MS 
-
-Ezt követően
-
-* Ha NPM munkaterület csatlakoztatva van egy előfizetéshez, akkor meg lesz képes csak ER a virtuális hálózatok közötti kapcsolatok figyelésére.
-* Ha az NPM-munkaterület csatlakoztatva van a B-előfizetéssel, majd fogjuk VNET b ER csak kapcsolatait figyelheti.
-* Ha az NPM-munkaterület csatlakoztatva van a C-előfizetéssel, majd fogjuk figyelni a C virtuális hálózat, valamint a társviszony-létesítés MS ER kapcsolatait.
-
-Az előfizetések közötti támogatás hamarosan elérhető lesz. Ezt követően fogja figyelni az ExpressRoute privát és Microsoft társviszony-kapcsolatokat a különböző előfizetésekben találhatóak, egy munkaterületről.
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>A figyelő ER funkcióra diagnosztikai üzenet "Nem továbbítja forgalmat bármilyen kapcsolatcsoport". What does that mean? (Megfelel-e a Microsoft Azure a jogszabályi előírásoknak? Mit kell érteni ez alatt?)
 
 Egy forgatókönyv, ahol van-e megfelelő kapcsolat a helyszíni között és az Azure-csomópontok, de a forgalom nem fogja az NPM által figyelendő konfigurálása ExpressRoute-kapcsolatcsoport keresztül lehet. 
@@ -214,7 +205,7 @@ Az NPM-folyamat leáll, ha azt használja a gazdagép CPU-erőforrások több mi
 Npm-et a csomóponton, amelyen az EnableRules.ps1 Powershell-szkriptet, hogy az ügynökök TCP-kapcsolatok létrehozása egymással a megadott porton fut csak egy helyi Windows tűzfal szabályt hoz létre. A megoldás minden olyan tűzfal vagy a hálózati biztonsági csoport (NSG) szabályai nem módosítja.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hogyan tudom ellenőrizni a figyeléshez használt csomópontok állapotát?
-A következő nézetet a figyeléshez használt csomópontok állapotát is megtekintheti: a Network Performance Monitor -> konfigurációs csomópont ->. Ha egy csomópont állapota nem megfelelő, a hiba részleteinek megtekintéséhez, és hajtsa végre a javasolt műveletet.
+A következő nézetet a figyeléshez használt csomópontok állapotát tekintheti meg: A Network Performance Monitor -> Konfiguráció -> a csomópontokon. Ha egy csomópont állapota nem megfelelő, a hiba részleteinek megtekintéséhez, és hajtsa végre a javasolt műveletet.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Jelenthetik NPM késésű mikroszekundumban?
 Npm-et a felhasználói felületen és ezredmásodperc késés számok lefelé kerekít. Ugyanazokat az adatokat, egy nagyobb részletességgel (néha legfeljebb négy tizedesjegyek) tárolja.

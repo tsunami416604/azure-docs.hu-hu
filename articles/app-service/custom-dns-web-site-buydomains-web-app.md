@@ -1,5 +1,5 @@
 ---
-title: Azure Web Apps.ben használni kívánt egyéni tartománynév megvásárlása
+title: Vásároljon egyéni tartománynevet az Azure-ban – App Service-ben
 description: Ismerje meg, hogyan-webalkalmazás létrehozása az Azure App Service-ben az egyéni tartománynév vásárlása.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.custom: seodec18
+ms.openlocfilehash: 3f587b7e1b051b28d11ad84fcb2d02bd01315de5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345191"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256434"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps.ben használni kívánt egyéni tartománynév megvásárlása
 
@@ -153,8 +154,8 @@ Ha úgy dönt, hogy nem a webes alkalmazás egy vagy több alapértelmezett áll
 
 Bármely más webalkalmazás rendelhet gazdanév található az App Service-tartományt is. A lépései attól függnek, hogy az App Service-tartomány és a web app tartozik ugyanahhoz az előfizetéshez.
 
-- Másik előfizetés: a webalkalmazáshoz, például egy kívülről vásárolt tartomány egyéni DNS-rekordok az App Service-tartomány leképezéséhez. Információ az egyéni DNS-neveket adhat hozzá egy App Service-tartomány: [egyéni DNS-rekordok kezelése](#custom). Külső megvásárolt tartomány leképezése egy webalkalmazásra, lásd: [meglévő egyéni DNS-név leképezése az Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
-- Ugyanabban az előfizetésben: kövesse az alábbi lépéseket.
+- Másik előfizetésbe: Térkép egyéni DNS-rekordok az App Service-tartomány, a web app, például egy kívülről vásárolt tartományhoz. Információ az egyéni DNS-neveket adhat hozzá egy App Service-tartomány: [egyéni DNS-rekordok kezelése](#custom). Külső megvásárolt tartomány leképezése egy webalkalmazásra, lásd: [meglévő egyéni DNS-név leképezése az Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
+- Ugyanabban az előfizetésben: Kövesse az alábbi lépéseket.
 
 ### <a name="launch-add-hostname"></a>Indítsa el a gazdagépnév hozzáadása
 Az a **App Services** lapra, jelölje be a nevet a webalkalmazás állomásnevek, válassza ki a hozzárendelni kívánt **beállítások**, majd válassza ki **egyéni tartományok**.
@@ -280,4 +281,4 @@ Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárár
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Gyakori kérdések: App Service-tartomány (előzetes verzió) és az egyéni tartományok](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)
+[GYAKORI KÉRDÉSEK: App Service-tartomány (előzetes verzió) és az egyéni tartományok](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

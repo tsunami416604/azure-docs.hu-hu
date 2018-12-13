@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 2f4f5bf19815469f76c1ee18ff42177f77faec28
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/12/2018
+ms.openlocfilehash: 108d2ac83c0dc317dee2f8c66f95f01d3569a7c4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871115"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311660"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
 A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
@@ -58,6 +58,9 @@ Az Azure rendszer öt kapcsolatok figyelése az Azure Database for PostgreSQL-ki
 - A PITR a funkció használata esetén az azonos árképzési szint konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
 - A visszaállítás során létrehozott új kiszolgáló nem rendelkezik a tűzfalszabályt, amely létezett az eredeti kiszolgálón. Tűzfalszabályok kell lennie külön beállítja azt az új kiszolgáló számára.
 - Törölt kiszolgáló visszaállítása nem támogatott.
+
+### <a name="utf-8-characters-on-windows"></a>A Windows UTF-8 karakter
+- Bizonyos esetekben az UTF-8 karakter nem támogatottak teljes mértékben nyílt forráskódú PostgreSQL a Windows, amely hatással van az Azure Database for postgresql-hez. További információt a szál [programhiba #15476 a postgresql-archívumban](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) további információt.
 
 ## <a name="next-steps"></a>További lépések
 - Megismerheti [érhető el az egyes tarifacsomagja](concepts-pricing-tiers.md)

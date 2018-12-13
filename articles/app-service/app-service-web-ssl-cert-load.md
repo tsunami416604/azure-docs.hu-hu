@@ -1,5 +1,5 @@
 ---
-title: Egy feltöltött SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service szolgáltatásban |} A Microsoft Docs
+title: Alkalmazáskód – az Azure App Service használata ügyfél SSL-tanúsítvány |} A Microsoft Docs
 description: ''
 services: app-service\web
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 8041d86e21f464e1dee4fba543be7d2c54c10367
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051476"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254326"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben
 
@@ -55,7 +56,7 @@ Adjon hozzá egy alkalmazás nevű beállítása `WEBSITE_LOAD_CERTIFICATES` és
 
 ![Alkalmazás-beállítás konfigurálása](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
-Ha befejezte, kattintson a **mentése**.
+Amikor végzett, kattintson a **Mentés** gombra.
 
 A konfigurált tanúsítvánnyal már készen áll a kód által használható.
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4441ad1e2940892c1627cbc2d4ee0186e4cfda17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bbb338d2b1d359d8e141b18a2beacd8b7faafe9c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264061"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326457"
 ---
 **Standard felügyelt virtuálisgép-merevlemez**
 
@@ -33,7 +33,7 @@ ms.locfileid: "51264061"
 
 **Prémium felügyelt virtuálisgép-lemezek: lemezenkénti korlátok**
 
-| Prémium szintű lemeztípus  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | A P60 *             | P70 *             | P80 *             |
+| Prémium szintű lemeztípus  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | A P60 *             | P70 *             | P80 *             |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Lemez mérete GiB-ban           | 32             | 64             | 128            | 256  | 512            | 1,024    | a 2048     | 4095    | 8,192     | 16384     | 32 767     |
 | IOPS-érték lemezenként       | Legfeljebb 120 | Legfeljebb 240              | Legfeljebb 500              | Akár 1100 | Akár 2,300              | Legfeljebb 5000              | Akár 7500             | Akár 7500              | Akár 12,500              | Legfeljebb 15 000              | Legfeljebb 20 000              |

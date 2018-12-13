@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 0e316bf06cc6e2915adca5e7961083e6668bbfc1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.date: 12/11/2018
+ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889123"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320846"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
-Létrehozhat egy Azure Database for MySQL-kiszolgáló három különböző tarifacsomag egyikében: alapszintű, általános célú és memóriahasználatra optimalizált. A tarifacsomag, amelyek kioszthatóak virtuális magok, memória / virtuális mag és a tárolási technológiát, az adatok tárolására használt számítási mennyisége alapján különbözteti meg. Az összes erőforrás a MySQL-kiszolgáló szintjén vannak üzembe helyezve. A kiszolgáló egy vagy több adatbázissal rendelkezhet.
+Létrehozhat egy Azure Database for MySQL-kiszolgáló a másik három tarifacsomag közül: Alapszintű, általános célú és memóriahasználatra optimalizált. A tarifacsomag, amelyek kioszthatóak virtuális magok, memória / virtuális mag és a tárolási technológiát, az adatok tárolására használt számítási mennyisége alapján különbözteti meg. Az összes erőforrás a MySQL-kiszolgáló szintjén vannak üzembe helyezve. A kiszolgáló egy vagy több adatbázissal rendelkezhet.
 
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
@@ -42,6 +42,9 @@ Miután létrehozott egy kiszolgálót, a virtuális magok, a hardver generáci�
 ## <a name="compute-generations-and-vcores"></a>Számítási generáció és a virtuális magok
 
 A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Jelenleg két számítási generáció, 4. generációs és a Gen 5 közül választhat. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral. A gen 4 és a Gen 5 ("X" azt jelzi, hogy elérhető), a következő régiókban érhetők el.
+
+> [!IMPORTANT]
+> 2018. December 12., kezdve új ügyfeleket nem helyezhetik üzembe a számítási generáció 4 kiszolgálók Dél-Brazília, közép-Kanada, kelet-Kanada, Kelet-Ázsia, USA 2. keleti régiója, közép-India, Nyugat-India, Nyugat-japán, USA északi középső Régiója, USA nyugati RÉGIÓJA. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. február 1. ezekben a régiókban migrálása.
 
 | **Az Azure-régió** | **A gen 4** | **A gen 5** |
 |:---|:----------:|:--------------------:|

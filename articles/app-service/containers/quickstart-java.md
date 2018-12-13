@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató Java-webalkalmazás a Linuxon futó Azure App Service-ben történő létrehozásához
+title: Java-webalkalmazás létrehozása linuxon – az Azure App Service-ben
 description: Ezzel a rövid útmutatóval percek alatt üzembe helyezheti első Hello World Java-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/07/2018
+ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247555"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252609"
 ---
-# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rövid útmutató: Java-webalkalmazás létrehozása a Linuxon futó App Service-ben
+# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Gyors útmutató: Java-webalkalmazás létrehozása Linuxon futó App Service-ben
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használható az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) és az [Azure Web Apps előzetes verziójához készült Maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java-webalkalmazás webarchívumfájljának üzembe helyezéséhez.
 
@@ -108,8 +108,10 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban egy Java-webalkalmazást hozott létre a Mavennel, konfigurálta az [Azure Web Apps Maven bővítményét](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezett egy webarchívumba csomagolt Java-alkalmazást a Linuxon futó App Service-ben. Az adatbázisok csatlakoztatását, a naplózás és a monitorozás beállítását, a biztonsági megoldások konfigurálását és a futtatókörnyezeti beállítások megadását a Linuxon futó App Service-hez készült Java-fejlesztői útmutató ismerteti.
+Ebben az útmutatóban egy Java-webalkalmazást hozott létre a Mavennel, konfigurálta az [Azure Web Apps Maven bővítményét](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezett egy webarchívumba csomagolt Java-alkalmazást a Linuxon futó App Service-ben. Tekintse meg az alábbi oktatóanyagok és útmutatók további információ a Linuxon futó App Serivce Java-alkalmazások futtatására.
 
-> [!div class="nextstepaction"]
-> [Linuxon futó App Service – Java-fejlesztői útmutató](app-service-linux-java.md)
+- [Oktatóanyag: Üzembe helyezése egy Java vállalati alkalmazás-és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+- [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#connecting-to-data-sources)
+- [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
+- [Alkalmazásteljesítmény-figyelési eszközök beállítása](how-to-java-apm-monitoring.md)
 

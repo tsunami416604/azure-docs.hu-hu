@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás visszaállítása az Azure-ban
-description: Ismerje meg, hogyan lehet visszaállítani az alkalmazást egy pillanatképből.
+title: Állítsa vissza biztonsági másolatból – az Azure App Service-ben
+description: Ismerje meg, hogyan állíthatja vissza az alkalmazás egy pillanatképből.
 services: app-service
 documentationcenter: ''
 author: ahmedelnably
@@ -13,59 +13,60 @@ ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
-ms.openlocfilehash: e1ae8fcc30323c865aa96937f43054515f293394
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec18
+ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767300"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260038"
 ---
-# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Az alkalmazások az Azure-ban visszaállítás egy pillanatképből
-A cikkből megtudhatja, hogyan lehet visszaállítani az alkalmazásban [Azure App Service](../app-service/app-service-web-overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotára, az alkalmazás pillanatképeket valamelyike alapján. Nem kell ahhoz, hogy a pillanatképek biztonsági mentés, a platform automatikusan menti a helyreállítási célokra minden alkalmazás pillanatképet.
+# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Az Azure-beli alkalmazás visszaállítása pillanatképből
+Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/app-service-web-overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotát, az alkalmazás a pillanatképek alapján. Nem kell a pillanatképek biztonsági mentés engedélyezése, a platform automatikusan menti a helyreállítási célból minden alkalmazás pillanatképét.
 
-A pillanatképek növekményes árnyékmásolatok, és rendszeres több előnyöket biztosítanak [biztonsági mentések](web-sites-backup.md):
-- Nem következnek be fájlmásolási hibák miatt zárolásokat.
-- Tároló mérete korlátozás nélkül.
+Pillanatképeket növekményes pillanatképek és a normál felett több előnye is van [biztonsági mentések](web-sites-backup.md):
+- Fájl másolása hibák fájl zárolása miatt.
+- Storage mérete korlátozás nélkül.
 - Nem szükséges konfiguráció.
 
-A pillanatképek visszaállítása a rendszer futó alkalmazások számára elérhető **prémium** réteg vagy újabb verzióját. Az alkalmazás vertikális felskálázásával kapcsolatos információkért lásd: [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).
+A pillanatképek helyreállítása érhető el futó alkalmazásokra **prémium** szint vagy újabb verziója. Az alkalmazás vertikális felskálázásával kapcsolatos további információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md).
 
 ## <a name="limitations"></a>Korlátozások
 
-- A funkció jelenleg előzetes verzió.
-- Csak visszaállíthatja ugyanahhoz az alkalmazáshoz, vagy egy adott alkalmazáshoz tartozó tárolóhelyre.
-- App Service leállítja a cél alkalmazás vagy a cél-tárolóhely a visszaállítás végrehajtása közben.
-- App Service tartja a három hónapnyi pillanatképek platform adatok helyreállítási célokra.
-- Visszaállíthatja a pillanatképek csak az elmúlt 30 napban.
+- A szolgáltatás jelenleg előzetes verzióban érhető el.
+- Ugyanazt az alkalmazást vagy egy adott alkalmazáshoz tartozó tárhely csak visszaállítása.
+- App Service-ben a cél alkalmazásban és a céltárolóhelyen megadott leállítja a visszaállítás végrehajtása közben.
+- Az App Service biztosítja, hogy három hónapnyi pillanatképek tartozó platform adat-helyreállítási céllal.
+- A pillanatképek csak állíthatja vissza az elmúlt 30 napra vonatkozóan.
  
 
-## <a name="restore-an-app-from-a-snapshot"></a>Egy alkalmazás visszaállítás egy pillanatképből
+## <a name="restore-an-app-from-a-snapshot"></a>Alkalmazás visszaállítása pillanatképből
 
-1. A a **beállítások** az alkalmazást a oldalán a [Azure-portálon](https://portal.azure.com), kattintson a **biztonsági mentések** megjelenítéséhez a **biztonsági mentések** lap. Kattintson a **visszaállítása** alatt a **Snapshot(Preview)** szakasz.
+1. Az a **beállítások** az alkalmazás oldalán a [az Azure portal](https://portal.azure.com), kattintson a **biztonsági mentések** megjelenítéséhez a **biztonsági mentések** lap. Kattintson a **visszaállítása** alatt a **Snapshot(Preview)** szakaszban.
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. Az a **visszaállítása** lapon, válassza ki a pillanatkép visszaállítása.
+2. Az a **visszaállítása** lapra, jelölje be a pillanatkép visszaállítása.
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. Adja meg az alkalmazás visszaállításához **visszaállítási célhelyének ellenőrzése**.
+3. Adja meg a cél az alkalmazás a visszaállításhoz a **visszaállítási célhelyének**.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Ha úgy dönt, **felülírása**minden, az alkalmazás aktuális fájlrendszer meglévő adatok törlése és felül. Kattintás előtt **OK**, győződjön meg arról, hogy mit kíván tenni.
+   > Ha úgy dönt, **felülírás**minden, az alkalmazás jelenlegi fájlrendszer-ben meglévő adatok törölve lesz, és felül. Gombra való kattintás előtt **OK**, győződjön meg arról, hogy mit szeretne tenni.
    > 
    > 
       
    > [!Note]
-   > A jelenlegi technikai korlátozások miatt csak visszaállíthatja alkalmazások azonos skálázási egységben. Ez a korlátozás egy későbbi kiadásban fog szűnni.
+   > Jelenlegi technikai korlátok miatt csak visszaállíthatja a azonos skálázási egység alkalmazásaival. Ez a korlátozás egy későbbi kiadásban törlődni fog.
    > 
    > 
    
-    Kiválaszthatja **meglévő App** tárhely visszaállításához. Mielőtt ezt a beállítást használja, kell már létrehozott egy tárolóhely az alkalmazásban.
+    Választhat **meglévő alkalmazás** állíthatja vissza a tárolóhelyet. Mielőtt ezt a beállítást használja, érdemes már létrehozott egy tárolóhely az alkalmazásban.
 
-4. Ha szeretné, állítsa vissza a hely konfigurációjától.
+4. Ha szeretné, a webhely-konfiguráció visszaállítása.
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 

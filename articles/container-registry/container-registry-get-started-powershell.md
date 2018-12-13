@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban a PowerShell-lel
+title: Rövid útmutató – privát Docker-tárolójegyzék létrehozása az Azure-ban – PowerShell
 description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure-ban a PowerShell-lel.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/08/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: fe21ab3e29b7a4cbf204be82246d37a4b91128e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 7dcdca594949a3b20000b31db681370ee4f9eac3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856683"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255285"
 ---
-# <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>Rövid útmutató: Azure Container Registry létrehozása a PowerShell-lel
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Gyors útmutató: Hozzon létre egy privát tárolójegyzékben Azure PowerShell-lel
 
 Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a Docker-tárolók rendszerképeinek létrehozására, tárolására és kiszolgálására szolgál. Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Azure-tárolóregisztrációs adatbázist a PowerShell használatával. A regisztrációs adatbázis létrehozását követően le fog küldeni egy tárolórendszerképet az adatbázisba, majd üzembe helyezi a tárolót a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 

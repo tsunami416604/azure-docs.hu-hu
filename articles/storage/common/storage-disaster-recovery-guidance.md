@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033923"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323268"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk, hogy a szolgáltatásaink mindig elérhetők. Egyes esetekben kényszeríti a vezérlő hatás túli velünk a kapcsolatot, hogy a szolgáltatás nem tervezett leállások miatt egy vagy több régióban. Könnyebben kezelni ezeket ritkán fordul elő, az Azure Storage szolgáltatás a következő magas szintű útmutatást biztosítunk.
@@ -34,7 +34,7 @@ Az Azure-szolgáltatás állapotának meghatározása ajánlott módja a Felirat
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Mi a teendő, ha a Társzolgáltatás kimaradása történik
 Ha egy vagy több tárolószolgáltatások átmenetileg nem érhető el egy vagy több régióban, két lehetőség van, érdemes figyelembe venni. Ha az adatok közvetlen hozzáférést kívánnak, fontolja meg a 2. lehetőség.
 
-### <a name="option-1-wait-for-recovery"></a>1. lehetőség: Várjon a helyreállítás
+### <a name="option-1-wait-for-recovery"></a>1. lehetőség: Várjon, amíg a helyreállítási
 Ebben az esetben az Ön részéről semmit nem kell. Jelenleg is dolgozunk térségekre való kiterjesztésén az Azure-szolgáltatás rendelkezésre állásának visszaállítása érdekében. A szolgáltatás állapotát a figyelemmel kísérheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
 ### <a name="option-2-copy-data-from-secondary"></a>2. lehetőség: Adatok másolása a másodlagos
@@ -43,7 +43,7 @@ Ha úgy döntött [írásvédett georedundáns tárolás (RA-GRS)](storage-redun
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mire számítson, ha a tárolási feladatátvétel történik
 Ha úgy döntött [georedundáns tárolás (GRS)](storage-redundancy-grs.md) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott), az Azure Storage fogja megőrizni az adatok tartós két régióban (elsődleges és másodlagos). Mindkét régióban az Azure Storage folyamatosan megőrzi az adatok több replika.
 
-Ha regionális katasztrófa hatással van az elsődleges régióban, először megpróbáljuk a szolgáltatás az adott régióban, amely a lehető legjobb kombinációját RTO és RPO visszaállításához. A vészhelyreállítási és annak hatással, egyes ritka esetekben jellegétől függ azt nem lehet visszaállítani az elsődleges régióba. Ezen a ponton fogunk földrajzi feladatátvételt végrehajtani. Régiók közötti adatreplikáció egy aszinkron folyamat, amely magában foglalja a késés, így lehetséges, hogy módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek.
+Ha regionális katasztrófa hatással van az elsődleges régióban, azt először megpróbálja állítsa vissza a szolgáltatás az adott régióban a lehető legjobb kombinációját RTO és RPO biztosít. A vészhelyreállítási és annak hatással, egyes ritka esetekben jellegétől függ azt nem lehet visszaállítani az elsődleges régióba. Ezen a ponton fogunk földrajzi feladatátvételt végrehajtani. Régiók közötti adatreplikáció egy aszinkron folyamat, amely magában foglalja a késés, így lehetséges, hogy módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek.
 
 A tároló földrajzi feladatátvételt tapasztalatokra vonatkozó pontok néhány:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Képadatok kinyerése C# használatával – Bing Image Search API'
+title: 'Oktatóanyag: Bontsa ki a Bing Image Search API használatával lemezkép adatait ésC#'
 titleSuffix: Azure Cognitive Services
 description: A cikk alapján létrehozhat egy C# alkalmazást, amely kinyeri a képek adatait a Bing Image Search API használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 36996ebed25d159cdc2a1908b5c9f1f5447c823f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297656"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259766"
 ---
-# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Képadatok kinyerése a Bing Image Search API és a C# használatával
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Bontsa ki a Bing Image Search API használatával lemezkép adatait ésC#
 
 A Bing Image Search API-n keresztül több [végpont](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) is elérhető. A `/details` végpont egy képpel együtt érkező POST-kérelmet fogad el, és különböző adatokat képes visszaadni a képről. A C#-alkalmazás az API használatával elküld egy képet, és megjeleníti a Bing által visszaadott adatokat JSON-objektumok formájában, mint amilyen például a következő:
 
@@ -98,7 +98,7 @@ Ezt a JSON-választ ezután megjelenítheti a konzolon.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Képelemzés-token használata kérelemben
 
-Ha egy `POST`-kérelem eredményeivel visszaadott `ImageInsightsToken` tokent szeretne használni, hozzáadhatja azt egy `GET`-kérelemhez. Például:
+Ha egy `POST`-kérelem eredményeivel visszaadott `ImageInsightsToken` tokent szeretne használni, hozzáadhatja azt egy `GET`-kérelemhez. Példa:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -113,4 +113,4 @@ Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk
 
 ## <a name="see-also"></a>Lásd még
 
-* [Bing Image Search API – referenciaanyag](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

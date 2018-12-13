@@ -1,21 +1,21 @@
 ---
-title: Webes forgalom kezelése az Azure Application Gateway és az Ansible használatával (előzetes verzió)
+title: Az Azure Application Gatewayen a webes forgalom kezelése Ansible-lel
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Application Gatewayt a webes forgalom kezeléséhez az Ansible használatával
 ms.service: ansible
-keywords: ansible, azure, devops, bash, forgatókönyv, azure application gateway, load balancer, webes forgalom
+keywords: az ansible, azure, devops, bash, forgatókönyv, az Alkalmazásátjáró, terheléselosztó-, web forgalom
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912866"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253356"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Webes forgalom kezelése az Azure Application Gateway és az Ansible használatával (előzetes verzió)
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Az Azure Application Gatewayen a webes forgalom kezelése Ansible-lel
 
 Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát.
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következőket mutatja be:
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. Az Ansible 2.7 RC-t a `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti. Az Ansible 2.7-es kiadását követően nem kell megadnia a verziót.
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

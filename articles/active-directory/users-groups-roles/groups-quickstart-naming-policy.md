@@ -14,14 +14,14 @@ ms.date: 08/08/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8ebdb22ba5ca04a5c811b3b368055f5f4371c75f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 8c5d980f25e196add6885d250665eae7127456f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208905"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273119"
 ---
-# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rövid útmutató: Elnevezési szabályzat az Azure Active Directoryban lévő csoportokhoz
+# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory elnevezési szabályzat
 
 Ebben a rövid útmutatóban elnevezési szabályzatot állíthat be az Azure Active Directory (Azure AD) bérlőjében a felhasználók által létrehozott Office 365-csoportokhoz, hogy a bérlő csoportjainak rendszerezése és keresése egyszerűbbé váljon. Az elnevezési szabályzatot például a következőkre használhatja:
 
@@ -50,7 +50,7 @@ Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, 
 
 ## <a name="set-up-naming-policy"></a>Elnevezési szabályzat beállítása
 
-### <a name="step-1-sign-in-using-powershell-cmdlets"></a>1. lépés: Jelentkezzen be PowerShell-parancsmagok használatával
+### <a name="step-1-sign-in-using-powershell-cmdlets"></a>1. lépés: Jelentkezzen be a PowerShell-parancsmagok használatával
 
 1. Nyissa meg a Windows PowerShell alkalmazást. Nincs szükség emelt szintű jogosultságokra.
 
@@ -78,9 +78,9 @@ Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, 
   $Setting.Values
   ````
   
-### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>3. lépés: Állítsa be az elnevezési szabályzatot és az egyéni letiltott szavakat
+### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>3. lépés: Állítsa be a csoportelnevezési házirend és egyéni letiltott szavakat
 
-1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben.
+1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. A funkció megfelelő működéséhez [GroupName] szerepelnie kell a beállítást.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -102,19 +102,19 @@ Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az eg
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben.
+1. A csoport előtagok és az Azure AD PowerShell utótagok üres.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =""
   ````
   
-2. Állítsa be az egyéni letiltott szavakat, amelyek használatát korlátozni szeretné. A következő példa szemlélteti, hogyan adhatja hozzá saját egyéni szavait.
+2. Az egyéni letiltott szavakat üres.
   
   ````
   $Setting["CustomBlockedWordsList"]=""
   ````
   
-3. Az új szabályzat alkalmazáshoz mentse a beállításait a következő példának megfelelően.
+3. A beállítások mentéséhez.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting

@@ -1,5 +1,5 @@
 ---
-title: Foglaljon le a partíciókat és -replikákat a lekérdezést, és az Azure Search szolgáltatásban az indexelés |} A Microsoft Docs
+title: Foglaljon le a partíciókat és -replikákat a lekérdezéshez és indexelő – Azure Search
 description: Módosítsa a partíció- és a replika számítógépes erőforrások az Azure Search szolgáltatásban, ahol az egyes erőforrások a számlázható keresési egységek díjszabása.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238735"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316114"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>A lekérdezés és a számítási feladatok indexeléséhez az Azure Search partíciókat és -replikákat foglalása
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépés az, hogy szükség esetén a replikákat és partíciókat, a szolgáltatás által használt számának növelésére. Minden egyes számlázási egységek rögzített számú kínálja. Ez a cikk ismerteti azokat az egységeket optimális konfigurációt, amely elosztja a lekérdezés-végrehajtás, indexelési és tárolási követelményeinek elérésére lefoglalása.
@@ -92,12 +93,12 @@ Közel valós idejű adatok frissítése igénylő alkalmazások keresése, mint
 
 A lekérdezés hosszabb ideig nagyobb indexeket. Mint ilyen Észreveheti, hogy minden egyes partíciók növekményes növekedése igényel a replikák kisebb, de arányos növekedése. A lekérdezések és a lekérdezés kötet összetettsége be, hogy mennyi idő alatt be van kapcsolva a lekérdezés végrehajtása lesz tényező.
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Alapszintű csomag: partíció és a replika kombinációk
+## <a name="basic-tier-partition-and-replica-combinations"></a>Alapszintű csomag: Partíció és a replika kombinációk
 Egy egyszerű szolgáltatást is pontosan egy partícióval rendelkezik, és legfeljebb három replika, legfeljebb korlátozhatja három SUS. A csak állítható erőforrás a replikákat. A lekérdezések magas rendelkezésre állás érdekében legalább két replika van szüksége.
 
 <a id="chart"></a>
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Standard szint: partíció és a replika kombinációk
+## <a name="standard-tiers-partition-and-replica-combinations"></a>Standard szint: Partíció és a replika kombinációk
 Ez a táblázat bemutatja a SUS-t az összes Standard szint a replikákat és partíciókat, a 36-SU korlátozás kombinációit támogatásához szükséges.
 
 |   | **1 partíció** | **2 partíció** | **3 partíció** | **4 partíciók** | **6 partíciók** | **12 partícióra** |

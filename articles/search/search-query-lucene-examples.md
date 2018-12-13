@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search lekérdezési példák Lucene |} A Microsoft Docs
+title: Lucene lekérdezési példa – Azure Search
 description: Lucene lekérdezési szintaxis az intelligens keresést, közelségi keresésre, kifejezés kiemelése, reguláris kifejezés keresése és az Azure Search szolgáltatás helyettesítő karakteres kereséssel.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057232"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317158"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Példák Lucene szintaxisú lekérdezésekre, amellyel az Azure Search speciális lekérdezések
 Lekérdezések az Azure Search létrehozásánál lecserélheti az alapértelmezett [egyszerű lekérdezéselemzőt](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) szélesebb körben alkalmazhatóvá vált a [Lucene lekérdezéselemző az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) határozhatja meg a speciális és speciális lekérdezés definíciók. 
@@ -93,7 +94,7 @@ Ez a lekérdezés válasza az alábbi képernyőfelvételhez hasonlóan kell kin
 
 Előfordulhat, hogy észrevette a keresési pontszámtól a válaszban. 1 egységes pontszámok fordulhat elő, esetén nincs rank, vagy mert a keresés nem volt a teljes szöveges keresés, vagy mert a feltétel nem lett alkalmazva. A feltétel nem null értékű Search sorok visszatérhet tetszőleges sorrendben. Is tartalmazó tényleges feltételek, látni fogja a keresési pontszámok jelentéssel bíró értékekké fejlesztheti tovább.
 
-## <a name="example-2-intra-field-filtering"></a>2. példa:-On belüli mezőt szűrése
+## <a name="example-2-intra-field-filtering"></a>2. példa Mező-on belüli szűrése
 
 Teljes Lucene szintaxis támogatja a kifejezések mező belül. Ez a lekérdezés a őket, de nem kezdő kifejezés vezető üzleti az adatfeliratokat keresi:
 
@@ -112,7 +113,7 @@ Adjon meg egy **fieldname:searchterm** konstrukció, megadhat egy fielded lekér
 
 A megadott mező **fieldname:searchterm** kell lennie egy kereshető mező. Lásd: [Index létrehozása (Azure Search szolgáltatás REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.
 
-## <a name="example-3-fuzzy-search"></a>3. példa: Intelligens keresés
+## <a name="example-3-fuzzy-search"></a>3. példa: intelligens keresést
 
 Teljes Lucene-szintaxis az intelligens keresés a feltételeket, amelyek hasonló konstrukció megfelelő is támogatja. Ehhez az intelligens keresést, fűzze hozzá a hullámos vonallal `~` szimbólum egy egyetlen szó, és a egy nem kötelező paraméter, a 0. és 2 közötti értéket, amely megadja a Szerkesztés végén. Ha például `blue~` vagy `blue~1` kék blues és integrációs adna vissza.
 
@@ -129,7 +130,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 > Az intelligens-lekérdezések [elemzett](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Lekérdezési típusokra hiányos feltételeket (előtag lekérdezés, helyettesítő karaktert tartalmazó lekérdezés, regex lekérdezés, az intelligens lekérdezés) kerülnek közvetlenül a lekérdezés fában, az elemzési fázis kihagyásával. Az egyetlen átalakítás hiányos lekérdezési kifejezések végrehajtott lowercasing van.
 >
 
-## <a name="example-4-proximity-search"></a>4. példa: Közelségi keresés
+## <a name="example-4-proximity-search"></a>4. példa: közelségi keresésre
 Közelségi keresés segítségével keresse meg a feltételeket, amelyek egymáshoz közel egy dokumentumban. Egy hullámos vonallal beszúrása "~" kifejezés végén jel követ szavak, amelyek a közelségi határ létrehozása száma. Például "Szálloda repülőtér" ~ 5 megtalálja a a feltételek Szálloda és repülőtér belül minden más 5 szó egy dokumentumban.
 
 Ebben a lekérdezésben, feladatok, ahol azt nem lehet egynél több szóból elválasztott "vezető elemző" kifejezéssel:
@@ -145,7 +146,7 @@ Próbálja ki újra eltávolítása a szavak közötti "vezető elemző" kifejez
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~0
 ```
 
-## <a name="example-5-term-boosting"></a>5. példa: Kifejezés kiemelése
+## <a name="example-5-term-boosting"></a>5. példa: kiemelési távú
 Kifejezés kiemelési prioritása nagyobb, ha a gyorsított időszak alatt, dokumentum, amely nem tartalmazza a kisbetűs viszonyított tartalmazza a dokumentum hivatkozik. Jelentősen növelheti a kifejezés, használja a beszúrási jellel "^", a keresett kifejezés végén boost tényezővel (szám) szimbólum. 
 
 A jelen "előtte" lekérdezések, feladatok kifejezéssel keressen *számítógép elemző* , és figyelje meg, hogy nem adott eredményeket mindkét szavakat *számítógép* és *elemző*, még  *számítógép* feladat van az eredmények tetején.
@@ -187,7 +188,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 > Regex-lekérdezések [elemzett](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Az egyetlen átalakítás hiányos lekérdezési kifejezések végrehajtott lowercasing van.
 >
 
-## <a name="example-7-wildcard-search"></a>7. példa: Helyettesítő karakteres keresés
+## <a name="example-7-wildcard-search"></a>7. példa: helyettesítő karakteres keresés
 Általában felismerhető szintaxist használhat több (\*) vagy egy (?) karakter helyettesítő karakteres kereséssel. Vegye figyelembe, hogy a Lucene lekérdezéselemző használatát a szimbólumok egyetlen kifejezés, és a egy kifejezés nem támogatja.
 
 Ebben a lekérdezésben keressen rá a "programazonosítója", amelynél a programozási feltételeket és a benne programozói üzleti címek előtagot tartalmazó feladatok. Nem használhatja a * és? szimbólum a keresési első karaktert.

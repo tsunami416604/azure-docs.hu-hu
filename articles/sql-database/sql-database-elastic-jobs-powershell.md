@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 36b03794f4b55af3de89f96ecee02f5542f40f01
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972099"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278457"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell (előzetes verzió) használatával az SQL Database rugalmas feladatok létrehozása és kezelése
 
@@ -31,7 +31,7 @@ A PowerShell API-k **rugalmas adatbázis-feladatok** (az előzetes verzió), ame
 * Azure-előfizetés. Az ingyenes próbaverzióra, lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
 * Az Elastic Database-eszközökkel létrehozott adatbázisok egy csoportja. Lásd: [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md).
 * Azure PowerShell. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/overview).
-* **Elastic Database-feladatok** PowerShell csomag: lásd: [telepítése rugalmas adatbázis-feladatok](sql-database-elastic-jobs-service-installation.md)
+* **Elastic Database-feladatok** PowerShell csomag: Lásd: [telepítése rugalmas adatbázis-feladatok](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetés
 Válassza ki az előfizetést az előfizetés-azonosítót kell (**- SubscriptionId**) vagy az előfizetés neve (**- SubscriptionName**). Ha több előfizetéssel rendelkezik, futtathatja a **Get-AzureRmSubscription** parancsmagot, és másolja a kívánt előfizetési információkat az eredményt állítsa be. Ha már rendelkezik az előfizetés adatait, futtassa az alapértelmezett, azaz a cél a feladatok létrehozását és kezelését az előfizetés beállítása a következő parancsmagot:
@@ -193,8 +193,8 @@ A feladat végrehajtja a Transact-SQL (T-SQL) szkriptek vagy DACPACs alkalmazás
 
 Csoportokat hozhat létre két típusa van: 
 
-* [Horizontális skálázási térképet](sql-database-elastic-scale-shard-map-management.md) csoportot: egy feladat elküldésekor, amelyekre horizontálispartíció-térkép, a feladat lekérdezi a szegmenstérkép határozza meg az aktuális szegmens körét, és majd hoz létre gyermek mindegyik szegmenshez feladatok a szegmenstérkép.
-* Egyéni gyűjtési csoportjának: egyéni definiált Database-adatbázisokhoz. Amikor egy feladat egyéni gyűjtemény célozza, hoz létre gyermek feladatokat az egyes adatbázisok jelenleg az egyéni gyűjtemény.
+* [Horizontális skálázási térképet](sql-database-elastic-scale-shard-map-management.md) csoportot: Egy feladat elküldésekor, amelyekre horizontálispartíció-térkép, a feladat lekérdezi a szegmenstérkép határozza meg az aktuális szegmens körét, és majd hoz létre gyermek mindegyik szegmenshez feladatok horizontális skálázási térképet.
+* Egyéni gyűjtési csoportja: Adatbázisok egyéni meghatározott készlete. Amikor egy feladat egyéni gyűjtemény célozza, hoz létre gyermek feladatokat az egyes adatbázisok jelenleg az egyéni gyűjtemény.
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>Állítsa be a rugalmas adatbázis-csatlakozási feladatok
 A kapcsolat kell állítani a feladatok *adatbázis vezérlése* a feladatok API-k használata előtt. Ez a parancsmag futtatása aktiválja a felugró ablak a felhasználónevet és a rugalmas adatbázis-feladatok telepítésekor létrehozott jelszót kér egy hitelesítőadat-ablakban. Ebben a témakörben közölt összes példák feltételezik, hogy az első lépéshez már végbementek.
@@ -414,20 +414,20 @@ Elastic Database-feladatok feladatok indításakor alkalmazható egyéni végreh
 
 Végrehajtási házirendek definiálása jelenleg engedélyezése:
 
-* Neve: A végrehajtási házirend azonosítója.
-* Feladat időtúllépése: Teljes idő előtt a feladat meg lesz szakítva Elastic Database-feladatok által.
-* Kezdeti újrapróbálkozási időköz: Intervallum várjon első újrapróbálkozás előtt.
-* Maximális újrapróbálkozási időköz: Korlát az újrapróbálkozási időközök használatára.
-* Újrapróbálkozási időköz leállítási együttható: Együttható alapján számítja ki a következő esedékes újrapróbálkozások között.  Az alábbi képlet használható: (kezdeti csolódási újrapróbálkozási időköz) * Math.pow ((intervallum leállítási együttható) (próbálkozások száma) – 2). 
+* Név: A végrehajtási házirend azonosítója.
+* Feladat időtúllépése: Teljes idő, mielőtt a feladat meg lesz szakítva Elastic Database-feladatok által.
+* Kezdeti újrapróbálkozási időköz: Első újrapróbálkozás előtti várakozási időt.
+* Maximális újrapróbálkozási időköz: Az újrapróbálkozási időközök használandó korlátot.
+* Újrapróbálkozási időköz leállítási együttható: Újrapróbálkozások között a következő esedékes kiszámításához használt együttható.  Használja a következő képletre: (A kezdeti újrapróbálkozási időköz) * Math.pow ((intervallum leállítási együttható) (újrapróbálkozások száma) – 2). 
 * Kísérletek maximális száma: A maximális újrapróbálkozási kísérletek száma a feladatokon belül végrehajtani.
 
 Az alapértelmezett végrehajtási házirendet a következő értékeket használja:
 
 * Név: Alapértelmezett végrehajtási házirend
 * Feladat időtúllépése: 1 hét
-* Kezdeti újrapróbálkozási időköz: 100 ezredmásodpercben
+* Kezdeti újrapróbálkozási időköz:  100 ideje ezredmásodpercben
 * Maximális újrapróbálkozási időköz: 30 perc
-* Ismételje meg a időköz együttható: 2
+* Újrapróbálkozási időköz együttható: 2
 * Kísérletek maximális száma: 2 147 483 647
 
 A kívánt végrehajtási házirend létrehozása:
@@ -459,8 +459,8 @@ Elastic Database-feladatok támogatja a megszakítási kérések feladatok.  Ela
 
 Elastic Database-feladatok is hajtsa végre a megszakítási két különböző módja van:
 
-1. Jelenleg a feladatok végrehajtása Mégse: lemondás észlel, amíg egy tevékenység fut, ha lemondás kísérli meg a rendszer a feladat jelenleg végrehajtás alatt aspektusa belül.  Példa: Ha nincs hosszan futó lekérdezést jelenleg lemondás megkísérelt végrehajtani, az megszakítja a lekérdezés ismételt megkísérléséhez lesz.
-2. Tevékenység-újrapróbálkozások megszakítása: lemondás végrehajtási feladat konfigurálása előtt a vezérlő szál észlelése esetén a vezérlőelem szál ne indítsa el a feladatot és deklarálja a kérelmet, mert meg lett szakítva.
+1. A Mégse gombra a jelenleg teljesítés alatt feladatokat: Ha lemondás észlel, amíg egy tevékenység fut, akkor lemondás belül a feladat jelenleg végrehajtás alatt aspektusa történt kísérlet.  Példa: Ha jelenleg lemondás megkísérelt végrehajtani egy hosszan futó lekérdezést, a lekérdezés megszakításához kísérlet lesz.
+2. Tevékenység-újrapróbálkozások megszakítása: Lemondás végrehajtási feladat konfigurálása előtt a vezérlő szál észlelése esetén a vezérlőelem szál ne indítsa el a feladatot, és deklarálja a kérelmet, mert meg lett szakítva.
 
 Ha egy feladat törlése a szülőfeladat van szükség, a megszakítási kérelemre váró a szülő feladat és az összes hozzá tartozó gyermekfeladatok lesz figyelembe.
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.author: danlep
-ms.openlocfilehash: e0ced96d032467dea4a9e32a48e5288df3cfd254
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7b61702feb062c57fdec84f335ace44a47d0283
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996446"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249481"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
 
@@ -29,10 +29,11 @@ Az Azure Container Instances a következő régiókban érhető el a megadott pr
 | Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | USA keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója | Linux | 4 | 14 |
+| Kelet-Japán | Linux | 2 | 8 |
 | Kelet-Ausztrália, USA 2. keleti régiója, Délkelet-Ázsia | Linux | 2 | 7 |
 | Kanada közép-India, közép-India, Kelet-Ázsia, USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA | Linux | 2 | 3.5 |
 | Kelet-Európa, Nyugat-Európa, USA nyugati régiója | Windows | 4 | 14 |
-| Kelet-Ausztrália, közép-Kanada, közép-India, Kelet-Ázsia, USA keleti RÉGIÓJA 2, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, USA 2. nyugati | Windows | 2 | 3.5 |
+| Kelet-Ausztrália, közép-Kanada, közép-India, Kelet-Ázsia, USA keleti RÉGIÓJA 2, kelet-japán, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, USA nyugati RÉGIÓJA 2 | Windows | 2 | 3.5 |
 
 Az ezen erőforráskorlátokon belül létrehozott tárolópéldányok az üzembe helyezés régiójában állnak rendelkezésre. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák csillapítása érdekében próbálja meg alacsonyabb processzor- és memóriabeállításokkal üzembe helyezni a példányokat, vagy próbálja meg később az üzembe helyezést.
 

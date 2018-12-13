@@ -1,5 +1,5 @@
 ---
-title: Teljes szöveges keresés (Lucene) motor architektúra az Azure Search szolgáltatásban |} A Microsoft Docs
+title: Teljes szöveges keresés (Lucene) motor architektúra – Azure Search
 description: Teljes szöveges kereséshez, mint az Azure Search kapcsolódó Lucene lekérdezési feldolgozására és dokumentum beolvasása fogalmak ismertetése.
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036870"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315806"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Teljes szöveges keresés működése az Azure Search szolgáltatásban
 
@@ -73,7 +74,7 @@ A kérelem a keresőmotor a következőket teszi:
 Ez a cikk a legtöbb tárgya feldolgozását a *keresési lekérdezés*: `"Spacious, air-condition* +\"Ocean view\""`. Szűrés és rendezés esnek a hatókörön. További információkért lásd: a [Search API dokumentációja](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>1. fázis: Lekérdezéselemzési 
+## <a name="stage-1-query-parsing"></a>1. fázis: Elemzési lekérdezés 
 
 Feljegyzett, a lekérdezési karakterláncban a kérés az első sort: 
 
@@ -95,7 +96,7 @@ A lekérdezéselemző átszervezése a segédlekérdezések be egy *lekérdezés
 
  ![Logikai érték searchmode minden lekérdezése][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Támogatott elemzők: egyszerű és a teljes Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Támogatott elemzők: Egyszerű és teljes Lucene 
 
  Az Azure Search mutatja a két különböző lekérdezési nyelvet, `simple` (alapértelmezett), és `full`. Beállításával a `queryType` paramétert a keresési kéréssel, akkor mondja el a lekérdezéselemző mely lekérdezési nyelvet választja, hogy tudja, a kezelők és a szintaxis értelmezése. A [egyszerű lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) intuitív és robusztus, gyakran megfelelő értelmezéséhez, a felhasználói bevitel – ügyféloldali feldolgozás nélkül van. Támogatja a jól ismert webes keresőmotorokból lekérdezési operátor. A [teljes Lucene lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), amelyek beállításával kap `queryType=full`, terjeszti ki az alapértelmezett egyszerű lekérdezési nyelv támogatásával további operátorok és a lekérdezés típusok, pl. helyettesítő, intelligens, a regex és a mező-hatáskörű lekérdezések. Például egy reguláris kifejezést az egyszerű lekérdezési szintaxis küldött lenne értelmezni egy lekérdezési karakterláncot, és nem egy kifejezés. A kérelem (példa) ebben a cikkben a teljes Lucene lekérdezési nyelvet használ.
 
@@ -262,7 +263,7 @@ Térjen vissza a jelen példában a **cím** mező, a fordított index néz ki:
 | végső megoldásként | 3 |
 | Retreat | 4 |
 
-A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1, 3.
+A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1., 3.
 
 Az a **leírás** mező, az index a következőképpen történik:
 
@@ -314,7 +315,7 @@ Lekérdezés-végrehajtás során egyes lekérdezések végrehajtásakor a keres
 
 A teljes a szóban forgó lekérdezés, a dokumentumok, amelyek megfelelnek 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>4. szakasz: pontozás  
+## <a name="stage-4-scoring"></a>4. fázis: A pontozás  
 
 Minden dokumentumnak egy keresési eredményhalmaz egy relevanciapontszám van hozzárendelve. A relevanciapontszám feladata magasabb rank, ezeket a dokumentumokat, amely a legjobban a keresési lekérdezés által kifejezett egy felhasználó kapcsolatos kérdésére választ kaphat. A pontszám, amely megfelel a feltételek statisztikai tulajdonságok alapján számítja ki. A pontozó függvény lényege [TF/IDF (kifejezés gyakorisága – inverz dokumentum frequency)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori használati tartalmazó lekérdezéseket TF/IDF elősegíti a ritka kifejezést tartalmazó eredmények. Például az összes Wikipedia-cikk elméleti index, dokumentumokból, amely egyezik a lekérdezés *elnöke*, a megfelelő dokumentumok *elnöke* relevánsabb, mint a dokumentumok minősülnek a megfelelő *a*.
 

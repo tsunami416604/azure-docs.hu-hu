@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
+title: Visual Studio használatával – az Azure App Service webalkalmazások hibáinak elhárítása
 description: Ismerje meg, hogyan háríthatók el a távoli hibakeresés, a nyomkövetés és a naplózási eszközök a Visual Studio 2013 beépített Azure-webalkalmazás.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: eafb4e82a319a0fdbe954757158a09aba83e9be0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 689ff528f18a810c35031dd60a65470d4351b9a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972286"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278525"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -71,7 +72,7 @@ A Visual Studio egy részét a webes alkalmazás felügyeleti funkciók és a ko
 
     Ebben az oktatóanyagban a naplózás és nyomkövetés listákból fogja használni. Is használni kívánt távoli hibakeresés, de más módszert fogja használni az engedélyezéshez.
 
-    Az alkalmazásbeállítások és a kapcsolati karakterláncok be ebben az ablakban kapcsolatos információkért lásd: [Azure Web Apps: alkalmazás-karakterláncok és a kapcsolati karakterláncok működése](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
+    Az alkalmazásbeállítások és a kapcsolati karakterláncok be ebben az ablakban kapcsolatos információkért lásd: [Azure Web Apps: Hogyan alkalmazás-karakterláncok és a kapcsolati karakterláncok munkahelyi](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
 
     Ha szeretne egy web app feladatot, amely ebben az ablakban nem hajtható végre, kattintson a **nyissa meg a felügyeleti portálon** , nyisson meg egy böngészőablakot az Azure Portalra.
 

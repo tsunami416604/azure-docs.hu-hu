@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1e8f94a0131ace6354d070e932e414a1897260e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286601"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166302"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>Az Azure SQL data warehouse a karbantartási tervezése
 
@@ -32,9 +32,9 @@ Minden tervezett karbantartási esemény előtt értesítést fog kapni. A karba
 
 ## <a name="setting-up-alerts"></a>Riasztások beállítása
 
-Azt javasoljuk, [Azure Monitor](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) tervezett karbantartási naplóriasztások beállítása. A riasztások segítségével tervezze meg a szükséges karbantartás az Ön számára a hatás minimalizálása érdekében. 
+Azt javasoljuk, [Azure Monitor](../azure-monitor/platform/alerts-activity-log-service-notifications.md) tervezett karbantartási naplóriasztások beállítása. A riasztások segítségével tervezze meg a szükséges karbantartás az Ön számára a hatás minimalizálása érdekében. 
 
-Értesítések beállításához használja, ezek [jelentkezik riasztás utasításokat](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+Értesítések beállításához használja, ezek [jelentkezik riasztás utasításokat](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
 
 ## <a name="next-steps"></a>További lépések
 Figyelésével kapcsolatos további információkért lásd: [a számítási feladat monitorozása](sql-data-warehouse-manage-monitor.md).

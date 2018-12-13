@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 6999f51482d38245373a8a7a5081a89f1790b669
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0338ffa13d1b141bb40deaf43fd04fe37bfaf5d2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956743"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252107"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -39,15 +39,15 @@ Azure virtuális hálózatokkal rendelkezik NSG-Folyamatnaplók, bejövő inform
 
 ## <a name="key-components"></a>A legfontosabb összetevők
 
-- **Hálózati biztonsági csoport (NSG)**: a biztonsági szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat egy Azure virtuális hálózathoz csatlakozó erőforrások listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Hálózati biztonsági csoport (NSG) folyamatnaplóit**: keresztül a hálózati biztonsági csoport bejövő és kimenő IP-forgalom kapcsolatos információk megtekintéséhez. NSG-folyamat naplók json formátumban íródtak, és a hálózati Adaptert a folyamat vonatkozik egy szabály alapon, bejövő és kimenő folyamatok megjelenítése, 5-ször több információt a folyamat (forrás és a cél IP-cím forrás és a cél-port és protokoll), és ha a forgalmat a rendszer engedélyezte vagy az elutasított. NSG-Folyamatnaplók kapcsolatos további információkért lásd: [NSG-Folyamatnaplók](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: az Azure-szolgáltatás, amely monitorozási adatokat gyűjt, és tárolja az adatokat egy központi tárházban. Ezek az adatok lehetnek események, teljesítményadatok vagy az Azure API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, mint például a hálózati teljesítmény figyelése és a traffic analytics beépített Log Analytics használatával alapjaként. További információkért lásd: [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log analytics-munkaterület**: egy példányát a log analytics, Azure-fiókra vonatkozó adatok tárolására. További információ a log analytics-munkaterületek: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher**: egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet az Azure-beli hálózati forgatókönyvek szintjén. NSG-Folyamatnaplók kapcsolja ki és a Network Watcher kapcsolhatja be. További információkért lásd: [Network Watcher](network-watcher-monitoring-overview.md).
+- **Hálózati biztonsági csoport (NSG)**: A biztonsági szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat egy Azure virtuális hálózathoz csatlakozó erőforrások listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Hálózati biztonsági csoport (NSG) folyamatnaplóit**: Lehetővé teszi keresztül a hálózati biztonsági csoport bejövő és kimenő IP-forgalom kapcsolatos információk megtekintéséhez. NSG-folyamat naplók json formátumban íródtak, és a hálózati Adaptert a folyamat vonatkozik egy szabály alapon, bejövő és kimenő folyamatok megjelenítése, 5-ször több információt a folyamat (forrás és a cél IP-cím forrás és a cél-port és protokoll), és ha a forgalmat a rendszer engedélyezte vagy az elutasított. NSG-Folyamatnaplók kapcsolatos további információkért lásd: [NSG-Folyamatnaplók](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: Azure-szolgáltatás figyelési adatait gyűjti és tárolja az adatokat egy központi tárházban. Ezek az adatok lehetnek események, teljesítményadatok vagy az Azure API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, mint például a hálózati teljesítmény figyelése és a traffic analytics beépített Log Analytics használatával alapjaként. További információkért lásd: [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log analytics-munkaterület**: A log analytics, Azure-fiókra vonatkozó adatok tárolására egy példányát. További információ a log analytics-munkaterületek: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher**: Egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet az Azure-beli hálózati forgatókönyvek szintjén. NSG-Folyamatnaplók kapcsolja ki és a Network Watcher kapcsolhatja be. További információkért lásd: [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Forgalmi elemzések működése
 
-A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. Például a gazdagép-1 (IP-cím: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és tárolja a log analytics-munkaterület. Az alábbi képen látható, az adatfolyam:
+A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. Ha például a gazdagép 1 (IP-cím: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és tárolja a log analytics-munkaterület. Az alábbi képen látható, az adatfolyam:
 
 ![NSG-Folyamatnaplók feldolgozása folyamatábrája](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -291,9 +291,12 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
     ![Irányítópult, amely a virtuális hálózatok eloszlása](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - A virtuális hálózati topológia látható a felső szalagon kiválasztása hasonlóan a virtuális hálózat (belső virtuális hálózati kapcsolatok/Active/Inactive) paraméterek, a külső kapcsolatokat, aktív forgalommal és rosszindulatú forgalmat a virtuális hálózat.
+- A virtuális hálózati topológiát, előfizetések, munkaterületek, resouece csoportok és időintervallum alapján szűrhetők. További szűrőket, amelyek segítenek megérteni, a folyamat vannak: Flow típusa (virtuális hálózatok közötti, IntraVNET stb.), a Flow irányát (bejövő, kimenő), a folyamat állapota (engedélyezett, letiltva) virtuális hálózatok (a megcélzott és a csatlakoztatott), a (társviszony-létesítés vagy átjáró - P2S és S2S) kapcsolat típusa és NSG-t. Ezek a szűrők használatával részletesen vizsgálni kívánt virtuális hálózatok összpontosíthat.
 - A virtuális hálózati topológia például egy virtuális hálózathoz (engedélyezett/letiltott/bejövő/kimenő/Benign/kártékony) folyamatokat, protokoll és hálózati biztonsági csoportok, érdemes forgalom elosztását mutatja:
 
     ![Virtuális hálózati topológiától, amely a forgalom terjesztési és a folyamat részletei](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    
+    ![Virtuális hálózati topológiától, amely a legfelső szintű és további szűrők](./media/traffic-analytics/virtual-network-filters.png)
 
     ![Folyamat részletei a virtuális hálózati adatforgalom eloszlása a naplókeresésben](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 

@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: ''
-ms.openlocfilehash: 7227fd68f696e827a076005bcd116e222f23e9b0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: e910a953743e8b43f51add5a1e74b3d612b62ba8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883276"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190067"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -162,7 +161,7 @@ Ha a Service Map megoldást használja, az ügyfélszolgálati elemek létrehoz�
 
 ![Log Analytics képernyő](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-További információ: [Service Map](../../azure-monitor/insights/service-map.md)
+További információ: [Szolgáltatástérkép](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>További információ
@@ -176,7 +175,7 @@ A következő információkat ITSMC által gyűjtött adatokat példákat mutat 
 
 > A munkaelem-típusok függően importálja a Log Analytics **ServiceDesk_CL** a következő mezőket tartalmazzák:
 
-**Munkaelem:** **incidensek**  
+**Munkaelem:** **Incidensek**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Mezők**
@@ -203,7 +202,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer
 
 
-**Munkaelem:** **Változáskérések**
+**Munkaelem:** **A Változáskérések**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 

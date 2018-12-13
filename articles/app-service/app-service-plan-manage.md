@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-csomag kezelése |} A Microsoft Docs
+title: Kezelheti az App Service-csomag – Azure |} A Microsoft Docs
 description: Megtudhatja, hogyan kezelheti az App Service-csomag különböző feladatok végrehajtására.
 keywords: App Service-ben, az azure app Service-ben, méretezhető, app service-csomag módosítása, létrehozása, felügyelete, kezelése
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 8f8e5f3d184073a73ca30764542dc56e45974120
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166066"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262129"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomag kezelése
 
@@ -35,7 +36,7 @@ Egy [Azure App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overvi
 
 1. Az a [az Azure portal](https://portal.azure.com), jelölje be **új** > **Web + mobil**, majd válassza ki **webalkalmazás** vagy más típusú App Service-alkalmazás.
 
-1. Válasszon ki egy meglévő App Service-csomag, vagy hozzon létre egy csomagot az új alkalmazás.
+2. Válasszon ki egy meglévő App Service-csomag, vagy hozzon létre egy csomagot az új alkalmazás.
 
    ![Alkalmazás létrehozása az Azure Portalon.][createWebApp]
 

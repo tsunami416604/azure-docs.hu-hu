@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search-index létrehozása a portálon |} A Microsoft Docs
+title: Azure Search-index létrehozása az Azure portal – Azure Search
 description: Ismerje meg, hogyan tervezőkkel beépített portál index Azure Search-index létrehozása.
 manager: cgronlun
 author: heidisteen
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 4bba8b41418dadad1b241d60ab0b7aeee4c046d7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990846"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316709"
 ---
 # <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Az Azure portal segítségével Azure Search-index létrehozása
 
@@ -95,7 +96,7 @@ Az Azure Search API dokumentációja egy egyszerű *szálloda*-indexet használ�
 
 Miután létrehozott egy Azure Search-indexet, folytathatja a következő lépéssel, ami a [kereshető adatok feltöltése az indexbe](search-what-is-data-import.md).
 
-Úgy is dönthet, hogy inkább az indexeket tanulmányozza alaposabban. Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál lapokra osztott oldalakat kínál a leggyakrabban használt elemek: a mezők, elemzők és javaslattevők megadására. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
+Úgy is dönthet, hogy inkább az indexeket tanulmányozza alaposabban. Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál lapokra osztott oldalakat kínál a leggyakrabban használt elemek definiálása: A mezők, elemzők és javaslattevők. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
 
 ## <a name="see-also"></a>Lásd még
 
