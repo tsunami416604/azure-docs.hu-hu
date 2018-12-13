@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1d00dbe23fbd724893ba2b964fc54a3ea9066dcb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251034"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876536"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Ismerkedés az Azure DevTest Labs használatával
 Ha úgy dönt, hogy ismerje meg a DevTest Labs, vannak-e két előre – általános elérési méretezett üzembe helyezés a koncepció igazolása vs. 
@@ -51,7 +51,7 @@ Létrehozása és tesztelési környezetek kezelése a vállalaton belül akkor 
 
 - Tesztelőknek újrahasznosítható sablonok és összetevők használatával Windows és Linux-környezetek gyors létrehozásával tesztelheti a legfrissebb verziójának alkalmazását.
 - Tesztelőknek is növelheti a terhelésteszt több tesztügynök kiépítésével
-- Rendszergazdák kapcsolódhatnak a labor létrehozása VSTS DevOps-forgatókönyvekre engedélyezése
+- Rendszergazdák kapcsolódhatnak a labor létrehozása az Azure DevOps, DevOps-forgatókönyvekre engedélyezése
 - A rendszergazdák biztosításával, hogy szabályozhatja költségeit:
     - Tesztelőknek szükségük több virtuális gépet nem lehet lekérni.
     - Virtuális gépek leállnak, le, amikor nincs használatban

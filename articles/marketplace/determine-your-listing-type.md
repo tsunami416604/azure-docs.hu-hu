@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261071"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081540"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi lehetőség meghatározása
 Az Ön által választott az ajánlat közzétételi lehetőség közvetlenül kapcsolódik a jogosultsági követelményeknek és a piactér GTM előnyeit. Ami még fontosabb a közzététel lehetőséget és ajánlat írja be a Cloud Partner portálra a választott határozza meg, hogyan működjön együtt a marketplace-ajánlat felhasználók.
 
 Közzétételi beállítások engedélyezéséhez ajánlat típusának kiválasztása, majd a marketplace-ajánlat létrehozása a Cloud Partner portálra. Ehhez szüksége lesz a következő kulcs piactéren fogalmak megértéséhez: a közzétételi beállításokat kínálnak, típusok és a konfigurációs és a hívások-az-műveletet, amely fogja meghatározni, hogyan és hol az ajánlatot a piactéren kirakattípus jelenik meg.
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >A fenti táblázat ismerteti, hogyan képezi le a saját megoldásokkal vagy a szolgáltatás a kirakat, közzétételi lehetőség és bemutatására az ajánlatot a piactéren az ajánlat típusát.

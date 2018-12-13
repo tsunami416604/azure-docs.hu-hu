@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: ef9c096989eeb37159d0deb705e7870afe2eff8b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 70641084d2213b50803800a64000611d139facec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975396"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075772"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>A hozzáférés-vezérléssel Azure Stack Role-Based erőforrásaihoz való hozzáférés kezelése
 
@@ -91,9 +91,9 @@ A következő lépések bemutatják, hogyan engedélyek konfigurálása a felhas
 1. A felügyelni kívánt erőforrás tulajdonosi engedélyekkel rendelkező fiókkal jelentkezzen be.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki a használni kívánt engedélyeket állíthat be az erőforráscsoport nevét.
-4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **hozzáférés-vezérlés** megtekintése az erőforráscsoport számára elérhető elemeket sorolja fel. Ezek az eredmények szűréséhez, és használja a menüsávon hozzáadása és engedélyek eltávolítása.
-5. Az a **hozzáférés-vezérlés** menü sávot, válassza a **+ Hozzáadás**.
-6. A **engedélyek hozzáadása**:
+4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **szerepkör-hozzárendelések** megtekintése az erőforráscsoport számára elérhető elemeket sorolja fel. Szűrheti és az eredmények csoportosítása.
+5. Az a **hozzáférés-vezérlés** menü sávot, válassza a **szerepkör-hozzárendelés hozzáadása**.
+6. A **szerepkör-hozzárendelés hozzáadása** panelen:
 
    * Válassza ki a hozzárendelni kívánt szerepkört az **szerepkör** legördülő listából.
    * Válassza ki a hozzárendelni kívánt erőforrást a **rendelhet hozzáféréseket** legördülő listából.

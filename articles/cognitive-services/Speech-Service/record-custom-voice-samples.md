@@ -1,5 +1,5 @@
 ---
-title: Rekord voice-minták az egyéni beszédfelismerési létrehozása
+title: Jegyezze fel az egyéni beszédfelismerési-minták – beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
 description: Győződjön meg arról, a gyártási minőségű egyéni beszédfelismerési robusztus parancsfájl előkészítése, mindegyik hangalapú jó szakembereket és professzionális rögzítése.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/5/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471186"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081081"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -50,7 +51,7 @@ Válassza ki a hangalapú szakembereket, amelynek a természetes hangtípus, pé
 > [!TIP]
 > Általában kerülje a felismerhető beszédhangot hozhat létre olyan egyéni beszédfelismerési – kivéve, ha természetesen célja az, hogy a hírességek hang előállításához. Alacsonyabb szintű ismert beszédhangot olyan általában kevésbé zavaró a felhasználók számára.
 
-Az egyik legfontosabb tényező hangalapú szakembereket kiválasztására vonatkozó konzisztencia. A felvételek kell az összes hang-, módosította őket ugyanarra a napra ugyanabban a helyiségben. Ez ideális jó felvétel eljárások és mérnöki keretében is készíthető elő. 
+Az egyik legfontosabb tényező hangalapú szakembereket kiválasztására vonatkozó konzisztencia. A felvételek kell az összes hang-, módosította őket ugyanarra a napra ugyanabban a helyiségben. Ez ideális jó felvétel eljárások és mérnöki keretében is készíthető elő.
 
 A szóbeli szakembereket a másik fele a egyenlet. Ő az egységes sebesség, a kötetek szintjén, a lényegét és a képviselő hangvételét mérnökeinkkel képesnek kell lennie. Egyértelmű diction kell. A szakembereket is képesnek kell lennie a szigorúan ellenőrzik a saját projektjeire variation érzelmi hatással és speech mannerisms.
 
@@ -71,7 +72,7 @@ A parancsfájlban megcímkézzen származhatnak bárhol: fantasztikus, nem fanta
 
 A kimondott szöveg nem kell azonos forrásból, vagy a forrás ugyanolyan típusú származnak. Nem is szükséges, ami ehhez egymással. Azonban akkor, ha fogja használata állítsa mondatokat (például "sikeresen bejelentkezett") az speech-alkalmazás ügyeljen arra, hogy a szkriptet fogja össze őket. Ez lehetőséget biztosít az egyéni beszédfelismerési jobb esélye a ezeket a kifejezéseket is felel. És kell való használatra megad egy felvételt szintetizált helyett, ha már rendelkezik, az azonos használatának.
 
-Kulcsot hangalapú szakembereket kiválasztása a konzisztencia pedig különböző a hallmark jó parancsfájlra. A szkript számos más szavakat és a mondat hosszúságú, és a hangulatokra különböző mondatokat tartalmaznia kell. Minden nyelven hang mindig és számos olyan környezeteket kezeli őket több kell lennie (nevű *fonetikus lefedettség*). 
+Kulcsot hangalapú szakembereket kiválasztása a konzisztencia pedig különböző a hallmark jó parancsfájlra. A szkript számos más szavakat és a mondat hosszúságú, és a hangulatokra különböző mondatokat tartalmaznia kell. Minden nyelven hang mindig és számos olyan környezeteket kezeli őket több kell lennie (nevű *fonetikus lefedettség*).
 
 Továbbá a szöveget kell tartalmazniuk, összes lehetséges, hogy az adott hang írásban jelölhető, és helyezze el az egyes hang különböző helyeken a mondatokban. Deklaratív mondatokat és kérdéseket is érdemes lehet tartalmazza, és olvassa el a megfelelő intonation.
 
@@ -188,9 +189,9 @@ Jegyezze fel a helyes öt másodpercenként az első rögzítés előtt csend r�
 > [!TIP]
 > Igazán rögzítésére szüksége a hangalapú szakembereket érdekében, hogy csak azok a sorok monophonic (single-csatorna) felvétel. Azonban ha sztereó rögzíti, a második csatorna segítségével rögzítse az adott sorokat tárgyalása rögzítése a vezérlő helyiségben a chatter, vagy vesz igénybe. A verzió, az egyéni beszédfelismerési portal feltöltött, távolítsa el a nyomon követése.
 
-Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. Helyes, de természetes diction írásmódja megfelelő és nem kívánt hangok hiánya keres. Ne habozzon, kérje meg a szakembereket újra jegyezze fel az utterance (kifejezés), amely nem felel meg ezeknek a szabványoknak. 
+Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. Helyes, de természetes diction írásmódja megfelelő és nem kívánt hangok hiánya keres. Ne habozzon, kérje meg a szakembereket újra jegyezze fel az utterance (kifejezés), amely nem felel meg ezeknek a szabványoknak.
 
-> [!TIP] 
+> [!TIP]
 > Ha nagy számú utterances használ, egy egyetlen utterance (kifejezés) nem feltétlenül a eredő egyéni beszédfelismerési észrevehető hatása. További legcélszerűbb egyszerűen megjegyezni megszólalásokat problémákkal, zárja ki őket az adatkészlet, és tekintse meg, hogyan az egyéni beszédfelismerési elemről kiderül, hogy lehet. Mindig lépjen vissza a studióban, és jegyezze fel a kihagyott minták később.
 
 Megjegyzés: a lekérési szám, vagy minden kimondásakor, amikor a parancsfájlt a kódot. Kérje meg a felvételt metaadatok vagy köteg lap, valamint minden kimondásakor megjelölni a mérnök.

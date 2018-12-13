@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4123f66c12898f8f8828494d59590992ac109e27
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c17d4d51327862872d240e07cb69d4ddf1f8672b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997648"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082142"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Biztonságos összetevők az Azure Resource Manager-sablon-üzembehelyezések
 
 Ismerje meg, hogyan teheti biztonságossá az összetevőket az Azure Resource Manager-sablonok az Azure Storage-fiók használata közös hozzáférésű jogosultságkódok (SAS) használt. Üzembe helyezési összetevők olyan fájlok, a fő sablonfájl mellett a telepítés befejezéséhez szükséges. Ha például a [oktatóanyag: az Azure Resource Manager-sablonok importálása SQL BACPAC-fájlok](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), a fő sablont hoz létre az Azure SQL Database; táblákat hozhat létre és adatokat szúrhat be egy BACPAC-fájlba is meghívja. A BACPAC-fájlba az összetevőt. A lehívandó összetevő nyilvános hozzáférés az Azure storage-fiók tárolva van. Ebben az oktatóanyagban SAS használhatja a BACPAC-fájlba korlátozott hozzáférés adható a saját Azure Storage-fiókban. További információ a SAS: [a közös hozzáférésű jogosultságkód (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+Ismerje meg, hogyan teheti biztonságossá a hivatkozott sablonnak, lásd: [oktatóanyag: a csatolt Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md).
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -57,6 +59,8 @@ Ebben a szakaszban, készítse elő a BACPAC-fájlba, a fájl elérhető biztons
 * Hozzon létre egy Storage-fiók Blob tárolóba.
 * Töltse fel a BACPAC-fájlt a tárolóba.
 * A SAS-jogkivonat a BACPAC-fájl lekérése.
+
+Ezeket a lépéseket egy PowerShell-parancsprogram használatával automatizálhatja, tekintse meg a parancsfájl [töltse fel a hivatkozott sablonnak](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
 
 ### <a name="download-the-bacpac-file"></a>A BACPAC-fájl letöltése
 

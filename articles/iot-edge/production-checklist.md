@@ -1,19 +1,20 @@
 ---
-title: Egy éles környezetben az Azure IoT Edge-megoldás előkészítése |} A Microsoft Docs
+title: Eszközök és az éles környezetben – Azure IoT Edge üzemelő példányok előkészítése |} A Microsoft Docs
 description: Útmutató az Azure IoT Edge megoldás a fejlesztéstől az éles környezetben, beleértve az eszközök beállítása a megfelelő tanúsítványokat és a egy jövőbeli kódfrissítéseket telepítési tervének érvénybe.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48fd774d6d887a12ed1c1ad9689ca34f5d866367
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585562"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100038"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 

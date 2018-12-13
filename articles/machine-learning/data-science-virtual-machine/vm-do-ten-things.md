@@ -1,11 +1,13 @@
 ---
-title: Tíz dolog teheti meg az adatelemző virtuális gép az Azure-ban |} A Microsoft Docs
+title: Adatáttekintés és modellezés az adatelemző virtuális gép
+titleSuffix: Azure
 description: Hajtsa végre a különféle adatáttekintés és modellezés a feladat az adatelemző virtuális gép.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250917"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075682"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -62,7 +64,7 @@ A Python például a Visual Studio Community Edition, amely rendelkezik a Python
 
 Itt látható, hogy az egyéni környezet beállítása néz ki a Visual Studióban.
 
-![Projektek készítése PTVS-telepítő](./media/vm-do-ten-things/PTVSSetup.png)
+![A Visual Studio képernyőképe a Python Tools for Visual Studio kiválasztva](./media/vm-do-ten-things/PTVSSetup.png)
 
 Tekintse meg a [PVTS dokumentációban](https://aka.ms/ptvsdocs) további részleteket a Python-környezetek létrehozása.
 
@@ -249,7 +251,7 @@ A kód letöltése a GitHub-adattárból, használhatja a ```git clone``` paranc
 
 A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételhez bemutatja a Git és a GitHub, Visual Studio eszközök elérése.
 
-![Git a Visual Studióban](./media/vm-do-ten-things/VSGit.PNG)
+![A Visual Studio képernyőképe a megjelenített GitHub-kapcsolattal](./media/vm-do-ten-things/VSGit.PNG)
 
 További információ a Git segítségével dolgozhat a GitHub-adattárban több erőforrás elérhető a github.com találja. A [adatlap](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) hasznos hivatkozás.
 
@@ -261,12 +263,12 @@ Az Azure blob egy megbízható, gazdaságos felhőalapú tárolás, a kis- és b
 
 * **Hozzon létre az Azure Blob storage-fiókjában [az Azure portal](https://portal.azure.com).**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![A Storage-fiók létrehozását az Azure Portal képernyőképe](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Győződjön meg arról, hogy az előre telepített parancssori AzCopy eszköz a következő címen található ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. A könyvtárra, amelyben az azcopy.exe már szerepel a PATH környezeti változóba, ha nem szeretné beírni a parancs teljes elérési útja, ez az eszköz futtatásakor. További információ az AzCopy eszközt, tekintse meg [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md)
 * Az Azure Storage Explorer eszköz elindításához. Le is tölthetők: [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![Képernyőkép az Azure Storage Explorer egy Storage-fiók elérése során](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
 **Adatok áthelyezése Azure Blob virtuális gépről: AzCopy**
 
@@ -276,7 +278,7 @@ Adatok áthelyezése a helyi fájlok és a blob storage között, használhatja 
 
 Cserélje le **C:\myfolder** a elérési utat, ahová a fájlt tárolja, **mystorageaccount** a blob storage-fiók neve, a **mycontainer** a tároló nevének **tárfiókkulcs** , a blob storage hozzáférési kulccsal. Annak a tárfiók hitelesítő adatait a [az Azure portal](https://portal.azure.com).
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Képernyőkép a Tárfiók kulcsait és a tároló adatainak az Azure Portalon](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 AzCopy-parancs futtatása, a PowerShellben vagy a parancssorból. Íme néhány példa a használatra az AzCopy-parancsot:
 
@@ -291,20 +293,20 @@ AzCopy-parancs futtatása, a PowerShellben vagy a parancssorból. Íme néhány 
 
 Az Azure-blobba másolja az AzCopy-parancs futtatása után láthatja a fájl megjelenik-e az Azure Storage Explorerben kis türelmet kérünk.
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![Képernyőkép a tárfiók, a feltöltött CSV-fájl megjelenítése](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
 **Adatok áthelyezése Azure Blob virtuális gépről: Azure Storage Explorerrel**
 
 A virtuális gépen az Azure Storage Explorer használatával is feltölthetők a helyi fájlokból való adatokat:
 
-* Adatok feltöltése a tárolóba, válassza ki a céltárolót, és kattintson a **feltöltése** gomb.![ Töltse fel a Storage Explorerben](./media/vm-do-ten-things/storage-accounts.png)
-* Kattintson a **...**  jobb oldalán a **fájlok** jelölje ki egy vagy több fájlokat a fájlrendszerből, és kattintson a **feltöltése** a fájlok feltöltése a kezdéshez.![ A blob-fájlok feltöltése](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Adatok feltöltése a tárolóba, válassza ki a céltárolót, és kattintson a **feltöltése** gomb.![ Képernyőkép az Azure Storage Explorer a feltöltés gombot](./media/vm-do-ten-things/storage-accounts.png)
+* Kattintson a **...**  jobb oldalán a **fájlok** jelölje ki egy vagy több fájlokat a fájlrendszerből, és kattintson a **feltöltése** a fájlok feltöltése a kezdéshez.![ Fájlok feltöltése párbeszédpanel képernyőképe](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 **Olvassa el az adatokat az Azure-Blobból: Machine Learning-olvasó modul**
 
 Az Azure Machine Learning Studióban, használhat egy **adatok importálása modullal** adatokat olvasni a blobot.
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Képernyőkép a Machine Learning studióban az adatok importálása modullal](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 **Olvassa el az adatokat az Azure-Blobból: Python ODBC**
 
@@ -352,7 +354,7 @@ Ezután beépülő modul az Azure Blob-fiókja hitelesítő adataival, és beolv
 
 Az adatok az olvasható adatok keretet másként:
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Az első 10 sornyi adatot képernyőképe](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Az Azure Data Lake Storage egy nagy kapacitású adattár a big data-elemzési számítási feladatok és a Hadoop elosztott fájlrendszer (HDFS) kompatibilis. A Hadoop, Spark- és az Azure Data Lake Analytics működik. Ebben a szakaszban megtudhatja hogyan adatok áthelyezése az Azure Data Lake Store-ba, és az Azure Data Lake Analytics használatával elemzések futtatására.
@@ -361,17 +363,17 @@ Az Azure Data Lake Storage egy nagy kapacitású adattár a big data-elemzési s
 
 * Hozzon létre az Azure Data Lake Analytics a [az Azure portal](https://portal.azure.com).
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![Képernyőkép a Data Lake Analytics létrehozása az Azure Portalról](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * A **Azure Data Lake Tools** a **Visual Studio** ezen található [hivatkozás](https://www.microsoft.com/download/details.aspx?id=49504) már telepítve van a Visual Studio Community Edition, amely a virtuális gépen. Ha Visual Studio indítása, és a bejelentkezés az Azure-előfizetés, megtekintheti az Azure Data Analytics-fiók és a storage, a bal oldali panelen, a Visual Studio.
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Képernyőkép a Data Lake Tools a Visual Studióban](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
 **Adatok áthelyezése a Data Lake-Virtuálisgép: Azure Data Lake Explorerrel**
 
 Használhat **Azure Data Lake Explorerrel** feltölthet adatokat a helyi fájlokat a virtuális gépen a Data Lake storage.
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![Képernyőkép a fájlok feltöltése a Data Lake Explorerrel használatával](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 Egy adatfolyamat üzembe helyezés az adatmozgás, vagy az Azure Data Lake használatával is létrehozható a [Azure Data Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Ebben [cikk](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) folyamatok végigvezeti az adatok létrehozásának lépésein.
 
@@ -379,11 +381,11 @@ Egy adatfolyamat üzembe helyezés az adatmozgás, vagy az Azure Data Lake haszn
 
 Ha az adatok Azure Blob storage-ban található, is közvetlenül beolvashatja az adatokat az Azure storage-blobból az U-SQL-lekérdezésben. A U-SQL-lekérdezések összeállítása, előtt ellenőrizze, a blob storage-fiók az Azure Data Lake van csatolva. Lépjen a **az Azure portal**, keresse meg az Azure Data Lake Analytics-irányítópultot, kattintson a **adatforrás hozzáadása**, válassza ki a tárolási típust **Azure Storage** és a beépülő modul az Azure Storage-fiók Nevére és kulcsára. Ezután megtörténik a storage-fiókban tárolt adatokra hivatkoznak.
 
-![Adja meg a storage-fiók és a kulcs](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Adatforrás hozzáadása párbeszédpanel képernyőképe](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 A Visual Studióban olvassa el az adatokat blob storage-ból, hajtsa végre az egyes adatkezelés, Funkciók tervezése és kimeneti adatok vagy az Azure Data Lake, vagy az Azure Blob Storage. Ha az adatok blob storage-ban hivatkozik, használja **wasb: / /**; Ha az adatokat az Azure Data Lake használata hivatkozik **swbhdfs: / /**
 
-![Adatkeretek](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![Képernyőkép a lekérdezés a WASB bejegyzéshez vannak kiemelve](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Az alábbi U-SQL-lekérdezéseket használhat a Visual Studióban:
 
@@ -429,7 +431,7 @@ Az alábbi U-SQL-lekérdezéseket használhat a Visual Studióban:
 
 A lekérdezés elküldésekor a kiszolgálóhoz, miután a feladat állapota bemutató ábra. Ez jelenik meg.
 
-![Feladatábra állapota](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![A feladatállapot párbeszédpanel képernyőképe](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
 **A Data Lake adatlekérdezés: U-SQL**
 
@@ -437,11 +439,11 @@ Miután az adatkészlet az Azure Data Lake be lett töltve, [U-SQL nyelv](../../
 
 A lekérdezés után elküldésekor tripdata_summary-kiszolgálóra. Hamarosan a fürt megosztott kötetei szolgáltatás található **Azure Data Lake Explorerrel**, akkor előfordulhat, hogy adatok előnézetének megtekintéséhez kattintson a jobb gombbal a fájlt.
 
-![Az Azure Data Lake Explorerrel fájl](./media/vm-do-ten-things/USQL_create_summary.png)
+![Képernyőkép a Data Lake Explorerrel csv-fájl](./media/vm-do-ten-things/USQL_create_summary.png)
 
 A fájl adatainak megtekintése:
 
-![Fájl összegzése](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Képernyőkép a összefoglaló információk](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop-fürtök
 Az Azure HDInsight egy felügyelt Apache Hadoop, Spark, HBase és Storm szolgáltatás a felhőben. Használhatja egyszerűen az adatelemző virtuális gép az Azure HDInsight-fürtökkel.
@@ -450,7 +452,7 @@ Az Azure HDInsight egy felügyelt Apache Hadoop, Spark, HBase és Storm szolgál
 
 * Hozzon létre az Azure Blob storage-fiókjában [az Azure portal](https://portal.azure.com). Ez a tárfiók HDInsight-fürtök adatok tárolására szolgál.
 
-![Az Azure Blob storage-fiók létrehozása](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Képernyőkép a HDInsight létrehozása az Azure Portalról](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Testre szabhatja az Azure HDInsight Hadoop-fürtök a [Azure Portalon](../team-data-science-process/customize-hadoop-cluster.md)
   
@@ -460,7 +462,7 @@ Az Azure HDInsight egy felügyelt Apache Hadoop, Spark, HBase és Storm szolgál
 
 * Engedélyezése **távelérési** az átjárócsomóponthoz, a fürt létrehozása után. Az itt megadott távelérési hitelesítő adatok megjegyzése későbbi eljárás alkalmával a rendszer igény szerint.
 
-![Távoli hozzáférés engedélyezése](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![A HDInsight-fürt távoli hozzáférés engedélyezése](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * Az Azure Machine Learning-munkaterület létrehozása. A Machine Learning-kísérletek találhatók a Machine Learning-munkaterületet. A kiemelt lehetőségek kiválasztása a portálon, az alábbi képernyőképen látható módon:
 
@@ -638,7 +640,7 @@ Is számítási felvételi helye és dropoff hely közötti távolságot, és ha
     results.head(5)
 
 
-![Felvétel és dropoff tábla](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![A begyűjtés és dropoff tábla első sorok](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Idővel tekintheti meg az adatok be van töltve a Hadoop-fürtök:
     pd.read_sql(queryString,connection)
 
 
-![Adattábla](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Az adatok a tábla első sorok](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **Adatok olvasása a Machine Learning segítségével HDI: Adatolvasó modulja**
 

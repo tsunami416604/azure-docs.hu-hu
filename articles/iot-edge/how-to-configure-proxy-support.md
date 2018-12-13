@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Edge-eszközök konfigurálása hálózati proxyk |} A Microsoft Docs
+title: Eszközök konfigurálása a hálózati proxyk – Azure IoT Edge |} A Microsoft Docs
 description: Hogyan állíthatja be az Azure IoT Edge-futtatókörnyezet és bármely internetkapcsolattal rendelkező proxykiszolgálón keresztül kommunikáljon az IoT Edge-modulok.
 author: kgremban
 manager: ''
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913223"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100468"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -173,7 +174,7 @@ Az Edge agentet és az Edge hub-modulok konfigurálásához válasszon **speciá
 
 Adja hozzá a **https_proxy** környezeti változót, az Edge agentet és az Edge hub modulmeghatározásokat. Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszközön a config.yaml fájlt ad hozzá, amelyek az Edge agent modul definíció túl. 
 
-![Környezeti változók beállítása](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![Https_proxy környezeti változó beállítása](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 Minden más modulok tesznek, egy manifest nasazení hozzáadni kívánt ugyanezt a mintát követi. Az itt lehet megadni a modul nevét és a lemezkép lapon nincs egy környezeti változók szakaszban.
 

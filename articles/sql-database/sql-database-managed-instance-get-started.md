@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: 02a7a460799a098b6be10a52d6e1a1598b023454
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839116"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890500"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rövid útmutató: Felügyelt Azure SQL Database-példány létrehozása
 
@@ -90,4 +90,4 @@ Az üzembe helyezés sikeres befejezése után tekintse át a létrehozott erőf
   - Rövid útmutató arról, hogyan csatlakozhat felügyelt példányokhoz Azure-beli virtuális gépről: [Azure-beli virtuálisgép-kapcsolat konfigurálása](sql-database-managed-instance-configure-vm.md).
   - Rövid útmutató arról, hogyan csatlakozhat felügyelt példányokhoz helyi ügyfélszámítógépről pont-hely típusú kapcsolattal: [Pont-hely típusú kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 - Ha vissza kíván állítani egy meglévő SQL-adatbázist egy felügyelt példányra, használhatja az [Azure Database Migration Services (DMS) migrálásához](../dms/tutorial-sql-server-to-managed-instance.md) szolgáltatást, amellyel a visszaállítás egy adatbázis biztonságimásolat-fájljából történik, vagy a [T-SQL RESTORE parancsot](sql-database-managed-instance-get-started-restore.md), amellyel egy adatbázis biztonságimásolat-fájljából végezhet visszaállítást.
-- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../log-analytics/log-analytics-azure-sql.md)
+- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md)

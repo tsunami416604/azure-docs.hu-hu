@@ -11,7 +11,7 @@ author: jpe316
 ms.date: 12/04/2018
 ms.openlocfilehash: 1007e3f151a27fad5390404b0241dcb361168fd3
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52882573"

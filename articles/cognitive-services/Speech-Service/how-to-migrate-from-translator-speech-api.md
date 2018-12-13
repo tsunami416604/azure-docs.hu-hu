@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 81513819fd60dc088c2ed4a781562684c84e803a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415474"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879306"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>A beszédfelismerési szolgáltatás át a Translator Speech API
 
@@ -45,7 +45,7 @@ Ez a cikk segítségével az alkalmazások át a Microsoft Translator Speech API
 | Időzítési adatai                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |
 | Korrelációs azonosító                                    | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | Egyéni beszédfelismerési modelleket                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | A beszédfelismerési szolgáltatás egyéni beszédmodellekké, amelyek szabhatja testre a szervezet egyedi szókincsből eredőket beszédfelismerés kínál.                                                                                                                                           |
-| Egyéni fordítási modellek                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Előfizetés a Microsoft fordítási API lehetővé teszi, hogy [egyéni a fordítót](https://www.microsoft.com/translator/business/customization/) (jelenleg előzetes verzió) használata a saját adatok pontosabb fordítások.                                                 |
+| Egyéni fordítási modellek                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Előfizetés a Microsoft fordítási API lehetővé teszi, hogy [egyéni a fordítót](https://www.microsoft.com/translator/business/customization/) pontosabb fordítások használandó a saját adatait.                                                 |
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 

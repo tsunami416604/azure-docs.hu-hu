@@ -1,5 +1,5 @@
 ---
-title: Nem találhatók előfizetések hibát amikor megpróbál bejelentkezni az Azure portal vagy az Azure account Center webhelyen |} A Microsoft Docs
+title: Nem találhatók előfizetések hiba – az Azure portal bejelentkezési |} A Microsoft Docs
 description: Minden megoldást kínál, amelyben nem találhatók előfizetések hiba lép fel probléma esetén jelentkezzen be az Azure portal vagy az Azure account Center webhelyen.
 services: ''
 documentationcenter: ''
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 584342b3dd223c45495db36ad49d83dece858137
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581782"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081302"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Nem találhatók előfizetések hiba az Azure Portalon vagy az Azure account Center webhelyen
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Nem találhatók előfizetések bejelentkezési hiba történt az Azure Portalon vagy az Azure account Center webhelyen
 
 Egy "Nem találhatók előfizetések" hibaüzenetet kaphat, ha megpróbál bejelentkezni a [az Azure portal](https://portal.azure.com/) vagy a [Azure Account Center](https://account.windowsazure.com/Subscriptions). Ez a cikk egy megoldást nyújt a probléma.
 

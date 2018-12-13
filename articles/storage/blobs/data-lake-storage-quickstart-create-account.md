@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 256d79b743195d35d84e266acfc8b7ba220cb055
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 914dcf6d19ca0791c5914e7d605e48f15a610d62
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975879"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099511"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Azure Data Lake Storage Gen2-storage-fiók létrehozása
 
@@ -135,7 +135,7 @@ Uninstall-Module AzureRM.Storage -Force
 A Az.Storage modul telepítése
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion .07 –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
 ```
 
 Az AzureRM kompatibilitási mód engedélyezéséhez.

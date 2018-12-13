@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582331"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080589"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása
 
@@ -163,6 +163,9 @@ A **provisionSample.yaml** fájl a következő csomópontokat tartalmazza:
     > Győződjön meg arról, hogy a `dataType` és `hardwareId` kulcsok összhangba kerüljenek az utasításokat, ez a kódrészlet felett. Azt is ellenőrizze, hogy a szerkesztő nem cserélte-e le a szóközöket tabulátorokra. 
 
 Mentse és zárja be a provisionSample.yaml fájlt. A következő oktatóanyaggal fog további információk hozzáadása ehhez a fájlhoz, és hogyan építhet ki az Azure digitális Twins minta létrehozása.
+
+> [!TIP]
+> Megtekintheti és módosíthatja a térbeli graph használatával a [Azure digitális Twins Graph megjelenítő](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

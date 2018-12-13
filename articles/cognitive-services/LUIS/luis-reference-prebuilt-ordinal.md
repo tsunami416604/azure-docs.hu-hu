@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre elkészített, entitások sorszámnál referencia – Azure |} A Microsoft Docs
+title: Sorszámnál előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk sorszámnál előre összeállított entitások információkat a Language Understanding (LUIS) tartalmaz.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: e80b9dc63accec43532116b81e6eb0b9bd52ee22
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: 060314bd56d477bad3dcb3333ba02c5f4786b476
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335253"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082764"
 ---
 # <a name="ordinal-entity"></a>Sorszám entitás
 Sorszámok az objektumon belüli egy numerikus ábrázolását: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell tartalmazó sorszámnál való az alkalmazás leképezések példa beszédmódok hozzáadása. Támogatott sorszámnál entitás [számos országban](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Sorszámát felügyelje a [felismerő szöveges](https://github.com/Microsoft/Re
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Előre összeállított sorszámnál entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.ordinal** entitás.
 
-```JSON
+```json
 {
   "query": "Order the second option",
   "topScoringIntent": {

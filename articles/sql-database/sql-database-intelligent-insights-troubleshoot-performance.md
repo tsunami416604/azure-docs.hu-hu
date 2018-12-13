@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 60d19f6d598c6090e0dc00c61817a0f8aed35003
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230036"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889497"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
-Ez az oldal információt nyújt az Azure SQL Database és a felügyelt példány teljesítménnyel kapcsolatos problémákat észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. A diagnosztikai naplót telemetriát továbbítható legyen [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás fejlesztési és üzemeltetési egyéni riasztási és jelentéskészítési képességeit.
+Ez az oldal információt nyújt az Azure SQL Database és a felügyelt példány teljesítménnyel kapcsolatos problémákat észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. A diagnosztikai naplót telemetriát továbbítható legyen [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás fejlesztési és üzemeltetési egyéni riasztási és jelentéskészítési képességeit.
 
 > [!NOTE]
 > Egy gyors SQL Database teljesítménye – hibaelhárítási útmutató Intelligent Insights használatával, lásd: a [ajánlott a hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábra ebben a dokumentumban.

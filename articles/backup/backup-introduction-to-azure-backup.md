@@ -2,20 +2,20 @@
 title: Mi az az Azure Backup?
 description: Az Azure Backup használatával biztonsági mentést végezhet, és visszaállíthatja az adatokat Windows Serverekről, Windows-munkaállomásokról, System Center DPM-kiszolgálókról, valamint az Azure-beli virtuális gépekről.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások
 ms.service: backup
 ms.topic: overview
 ms.date: 8/2/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
-ms.translationtype: HT
+ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480973"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878303"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -206,7 +206,7 @@ Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső 
 
 ## <a name="what-is-a-protected-instance"></a>Mi az a védett példány?
 A védett példány egy általános elnevezés az olyan Windows-számítógépekre, -kiszolgálókra (fizikai vagy virtuális) vagy SQL-adatbázisokra, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. A példány onnantól tekinthető védettnek, hogy konfigurálja a számítógép, kiszolgáló vagy adatbázis biztonsági mentésére vonatkozó házirendet, és létrehozott egy biztonsági másolatot az adatokról. Az adott védett példány rákövetkező biztonsági másolatai (az úgynevezett helyreállítási pontok), növelik a foglalt tárhely méretét. Védett példányonként 9999 helyreállítási pontot hozhat létre. Ha töröl egy helyreállítási pontot a tárterületről, az nem számít az összesen 9999 helyreállítási pont közé.
-Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Például:
+Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Példa:
 
 * Egy Hyper-V vagy Azure IaaS hipervizorhálót futtató virtuális gép. A virtuális gép vendég operációs rendszerei lehetnek Windows Server vagy Linux rendszerek.
 * Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy virtuális gép, amely a Windows Servert futtatja, valamint olyan számítási feladatokat, amelyekről biztonsági másolatot kell készíteni. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange Server, a Microsoft SharePoint Server, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.

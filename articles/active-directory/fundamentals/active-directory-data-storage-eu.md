@@ -1,6 +1,6 @@
 ---
-title: Az európai ügyfelekhez tartozó identitásadatok Azure AD általi tárolásának helye | Microsoft Docs
-description: Megtudhatja, hogy hol tárolja a Microsoft Azure Active Directory az európai ügyfeleihez tartozó, identitással kapcsolatos adatokat.
+title: Az Európai ügyfelei számára – Azure Active Directory Identity adattárolás |} A Microsoft Docs
+description: Ismerje meg, az Azure Active Directory tárolja az Európai ügyfeleinek identitással kapcsolatos adatokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,22 +10,22 @@ ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.custom: it-pro
-ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733397"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099937"
 ---
-# <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Az európai ügyfelekhez tartozó identitásadatok Microsoft Azure Active Directory (Azure AD) általi tárolásának helye
-Az Azure AD segítséget nyújt a felhasználói identitások kezelésében és a szervezete erőforrásait biztonságossá tevő intelligenciaalapú hozzáférési szabályzatok létrehozásában. Az identitásadatok tárolásának helye a szervezete által a szolgáltatásra történő előfizetéskor megadott cím alapján lesz meghatározva. Azaz amikor például az Office 365-re vagy az Azure-ra előfizetett. Ha pontosan szeretné meghatározni az identitásadatok helyét, tekintse meg a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszát.
+# <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Az Európai ügyfelek az Azure Active Directory Identity adattárolás
+Az Azure Active Directory (Azure AD) segítségével, amely a szervezet erőforrásaihoz biztonságossá intelligens megoldásokkal vezérelt hozzáférési szabályzatokat hozhat létre, így kezelheti a felhasználói identitásokat. Az identitásadatok tárolásának helye a szervezete által a szolgáltatásra történő előfizetéskor megadott cím alapján lesz meghatározva. Azaz amikor például az Office 365-re vagy az Azure-ra előfizetett. Ha pontosan szeretné meghatározni az identitásadatok helyét, tekintse meg a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszát.
 
 Noha a legtöbb Azure AD-vel kapcsolatos európai identitásadat európai adatközpontokban marad, van öt felhasználóval kapcsolatos attribútum, amelyeknek a tárolása jellemzően USA-beli adatközpontokban történik. Ezek az attribútumok a következők: GivenName, Surname, userPrincipalName, Domain és PasswordHash. A PasswordHash attribútum kivételt képez, a rendszer nem tárolja az USA-ban, ha valaki olyan helyszíni, összevont hitelesítési módszert használ, amely megakadályozza, hogy a rendszer szinkronizálja a PasswordHash értékét az Azure AD-vel. Van ezenfelül pár olyan, a normál Azure AD-működéshez szükséges működési, szolgáltatásspecifikus adat, amelyet a rendszer az USA-ban tárol, és nem tartalmaz személyes adatokat.
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Európai ügyfelekhez kapcsolódó, de nem európai adatközpontban tárolt adatok
 
-Az európai székhellyel rendelkező szervezetekhez tartozó legtöbb, Azure AD-vel kapcsolatos európai identitásadat európai adatközpontokban marad. A nem európai adatközpontokban tárolt Azure AD-adatok a következők:
+Az európai székhellyel rendelkező szervezetekhez tartozó legtöbb, Azure AD-vel kapcsolatos európai identitásadat európai adatközpontokban marad. Az Azure AD az adatokat, amelyeket az Európai adatközpontokban tárolja, Egyesült államokbeli adatközpontok, emellett replikálva tartalmazza:
 
 - **Identitással kapcsolatos attribútumok**
 

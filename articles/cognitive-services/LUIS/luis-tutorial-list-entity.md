@@ -1,5 +1,5 @@
 ---
-title: Címke automatikusan adott entitással lista használatával Nodejs entitások |} A Microsoft Docs
+title: A kivonatot szöveg egyezés entitások
 description: Ismerje meg, hogy egy lista entitás segítségével egy szót vagy kifejezést a LUIS-címke változatok hozzáadása.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: cb8f2ef4afa83b8e4d258a4227795593242e84bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036779"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082254"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Egy lista entitás használatával növelheti az entitás észlelése 
 Ez az oktatóanyag bemutatja, hogy egy [entitás listában](luis-concept-entity-types.md) entitás észlelési növelése érdekében. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Legújabb [Node.js](https://nodejs.org)
-> * [A LUIS alkalmazás HomeAutomation](luis-get-started-create-app.md). Ha nem rendelkezik a kezdőlap Automation létrehozott alkalmazást, hozzon létre egy új alkalmazást, és adja hozzá az előre összeállított tartományt **HomeAutomation**. Betanítása, és tegye közzé az alkalmazást. 
+> * [A LUIS alkalmazás HomeAutomation](luis-get-started-create-app.md). Ha nem rendelkezik a kezdőlap Automation létrehozott alkalmazást, hozzon létre egy új alkalmazást, és adja hozzá az előre összeállított tartományt **HomeAutomation**. Tanítsa be és tegye közzé az alkalmazást. 
 > * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (ha sokszor lekérdezése), alkalmazás-azonosító, verzió:, és [régió](luis-reference-regions.md) a LUIS alkalmazás.
 
 > [!Tip]
@@ -81,15 +81,16 @@ Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Mód
 
 A következő paranccsal telepítse az NPM függőségeit, és futtassa a kódot a lista entitás létrehozása:
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 A Futtatás kimenete a lista entitás azonosítója:
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>A modell betanítása
 A LUIS betanításához ahhoz, hogy az új lista befolyásolhatja a lekérdezés eredményeit. Képzési az képzés, majd állapotának ellenőrzése, ha a betanítási történik egy kétlépéses folyamat. Számos modellt az alkalmazás taníthat be néhány percet is igénybe vehet. A következő kód betanítja az alkalmazást, majd megvárja, amíg a képzés létrejött. A kód várakozási és újrapróbálkozási stratégiát használ, a 429-es elkerülése érdekében "túl sok kérelem" hiba történt. 
 
@@ -99,13 +100,13 @@ Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Mód
 
 Az alábbi parancs segítségével futtassa a kódot az alkalmazás betanítása:
 
-```Javascript
+```console
 node train.js
 ```
 
 A Futtatás kimenete a képzés a LUIS-modell minden egyes ismétléskor állapotát. A következő végrehajtási képzési csak egy ellenőrzés szükséges:
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Mód
 
 Az alábbi parancs segítségével futtassa a kódot az alkalmazás lekérdezéséhez:
 
-```Javascript
+```console
 node publish.js
 ```
 
 A következő kimenet tartalmazza a lekérdezéseket a végpont URL-címe. Valódi JSON-eredményeket a valódi appID tartalmazhat. 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Mód
 
 A következő paranccsal futtassa a kódot, és az alkalmazás lekérdezést:
 
-```Javascript
+```console
 node train.js
 ```
 
 A lekérdezés eredményeinek kimenete. Mivel a kód hozzáadja a **részletes** a lekérdezési karakterlánchoz, a kimeneti név-érték pár tartalmazza az összes leképezések és azok pontszámok:
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

@@ -1,23 +1,23 @@
 ---
 title: A Cloudyn-jelentések használata az Azure-ban |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan használható a különböző jelentéseket a Cloudyn portálon.
+description: Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portál segítségével hatékonyan használja őket célját.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: c3f1fec21ab2c71f75677e814a6e19e1e540dddb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994738"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075880"
 ---
-# <a name="use-cloudyn-reports"></a>A Cloudyn jelentéseinek használata
+# <a name="reports-available-in-the-cloudyn-portal"></a>A Cloudyn portálon elérhető jelentések
 
 Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portálon célját. Azt is ismerteti, hogyan hatékonyan használhatja a jelentéseket. A legtöbb jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. A legtöbb művelet elvégezhető egy jelentésben, műveletek végezhetők az egyéb jelentésekben. A Cloudyn jelentésekben, beleértve az testreszabásához, és mentse vagy ütemezett jelentéseket, használatáról lásd [ismertetése költségjelentéseket](understanding-cost-reports.md).
 
@@ -59,7 +59,7 @@ Irányítópultok Cloudy a jelentések magas szintű áttekintést biztosítanak
 
 ## <a name="budget-information-in-reports"></a>A jelentésekben költségvetési információk
 
-Cloudyn-jelentések megjelenítése a költségvetési információk után manuálisan létrehozott egy. Így a jelentések nem jelennek meg a költségvetési információk költségvetési létrehozásáig. További információkért lásd: [költségvetés-beállítások](#budget-settings).
+Cloudyn-jelentések megjelenítése a költségvetési információk után manuálisan létrehozott egy. Így a jelentések nem jelennek meg a költségvetési információk költségvetési létrehozásáig. További információkért lásd: [költségvetés beállítások](#budget-management-settings).
 
 ## <a name="reports-and-reporting-features"></a>Jelentések és a jelentéskészítési szolgáltatások
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8b0f5e2941878cf91a60c2dca5497e4e50b6ea01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007654"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077766"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQuery-ből az Azure Data Factory használatával
 
@@ -33,7 +33,7 @@ A Data Factory-kapcsolat beépített illesztőprogramot tartalmaz. Így nem kell
 >[!NOTE]
 >A Google BigQuery-összekötő a BigQuery API-k épül. Vegye figyelembe, hogy BigQuery korlátok a maximális sebesség a bejövő kéréseket, és kikényszeríti a-project alapon, megfelelő kvóták hivatkozzon [kvóták és korlátok – API-kérelmek](https://cloud.google.com/bigquery/quotas#api_requests). Ellenőrizze, hogy Ön nem indítja el a fiókot a túl sok egyidejű kéréssel.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -45,7 +45,7 @@ A következő tulajdonságok támogatottak számára a Google BigQuery-beli tár
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| típus | A type tulajdonságot állítsa **GoogleBigQuery**. | Igen |
+| type | A type tulajdonságot állítsa **GoogleBigQuery**. | Igen |
 | Projekt | A projekt Azonosítóját, az alapértelmezett BigQuery projekt-lekérdezést.  | Igen |
 | additionalProjects | Nyilvános projekt azonosítóinak vesszővel elválasztott listáját BigQuery projektek való hozzáférést.  | Nem |
 | requestGoogleDriveScope | E kérelmezzenek hozzáférést a Google Drive-bA. Engedélyezi a Google Drive-hozzáférést lehetővé teszi, hogy összevont táblákat, amelyek BigQuery adatait a Google drive-on támogatása. Az alapértelmezett érték **hamis**.  | Nem |
@@ -93,7 +93,7 @@ A következő tulajdonságok támogatottak számára a Google BigQuery-beli tár
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| e-mailben | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál. Csak a helyi Integration Runtime használható.  | Nem |
+| e-mail | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál. Csak a helyi Integration Runtime használható.  | Nem |
 | keyFilePath | A szolgáltatásfiókjának e-mail címe hitelesítéséhez használt kulcs .p12-fájl teljes elérési útja. | Nem |
 | trustedCertPath | A .pem-fájlt, amely tartalmazza a segítségével ellenőrizze a kiszolgálón, ha SSL-kapcsolaton keresztül csatlakozik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság beállítható csak akkor, ha a helyi integrációs modul az SSL Protokollt használja. Az alapértelmezett érték a cacerts.pem fájlt az integration runtime telepítve.  | Nem |
 | useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy megadott .pem-fájlt. Az alapértelmezett érték **hamis**.  | Nem |
@@ -124,7 +124,12 @@ A következő tulajdonságok támogatottak számára a Google BigQuery-beli tár
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Google BigQuery-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása a Google BigQuery, állítsa be a type tulajdonság, az adatkészlet **GoogleBigQueryObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása a Google BigQuery, állítsa be a type tulajdonság, az adatkészlet **GoogleBigQueryObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **GoogleBigQueryObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -136,7 +141,8 @@ Adatok másolása a Google BigQuery, állítsa be a type tulajdonság, az adatk�
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -151,8 +157,8 @@ Adatok másolása a Google BigQuery, állítsa be a forrás típusaként a máso
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrása típusa tulajdonságát állítsa **GoogleBigQuerySource**. | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| type | A másolási tevékenység forrása típusa tulajdonságát állítsa **GoogleBigQuerySource**. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

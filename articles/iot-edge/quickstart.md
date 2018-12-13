@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge + Windows rövid útmutatója | Microsoft Docs
-description: Az Azure IoT Edge kipróbálása elemzés futtatásával egy szimulált Edge-eszközön
+title: Rövid útmutató az Azure IoT Edge-eszköz létrehozása a Windows |} A Microsoft Docs
+description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és üzembe helyezhesse az előre összeállított kódot távolról az Azure Portalról.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 78cb00c568942e6b8c0f5da035381c82f5789a08
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cd9123fcd3f8f37397bfefc1e3ee9200a93a72af
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977012"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082448"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -27,7 +27,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 3. Az IoT Edge-futtatókörnyezet telepítése és elindítása az eszközén.
 4. Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
 
-![A rövid útmutató architektúrája](./media/quickstart/install-edge-full.png)
+![Diagram – rövid útmutató architektúra eszközhöz és a felhő](./media/quickstart/install-edge-full.png)
 
 A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
 
@@ -72,7 +72,7 @@ IoT Edge-eszköz:
 
 A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure CLI használatával.
 
-![IoT Hub létrehozása](./media/quickstart/create-iot-hub.png)
+![Diagram – a felhőben az IoT hub létrehozása](./media/quickstart/create-iot-hub.png)
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet.
 
@@ -87,7 +87,7 @@ A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResourc
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
 Regisztráljon egy IoT Edge-eszközt az újonnan létrehozott IoT Hubon.
-![Eszköz regisztrálása](./media/quickstart/register-device.png)
+![Diagram - eszköz regisztrálása az IoT Hub identitással](./media/quickstart/register-device.png)
 
 Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Az eszközidentitás a felhőben található, és egy egyedi eszközkapcsolati sztringgel társíthat fizikai eszközt az eszközidentitáshoz.
 
@@ -112,7 +112,7 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése és elindítása
 
 Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el.
-![Eszköz regisztrálása](./media/quickstart/start-runtime.png)
+![Diagram - indítása a futtatókörnyezet az eszközön](./media/quickstart/start-runtime.png)
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
 
@@ -175,7 +175,7 @@ Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben ü
 ## <a name="deploy-a-module"></a>Modul üzembe helyezése
 
 Azure IoT Edge-eszközeit kezelheti a felhőből, és üzembe helyezhet egy olyan modult, amely telemetriaadatokat küld az IoT Hubra.
-![Eszköz regisztrálása](./media/quickstart/deploy-module.png)
+![Diagram - eszközre a felhőből modul üzembe helyezése](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
