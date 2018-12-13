@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1a1281be1c1b58b21406dad5826e240ccac6c898
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 08a6134d61c4f93f891488ef24a7b81e81645897
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567762"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089802"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
 
@@ -71,7 +71,7 @@ Az Azure IoT Edge zökkenőmentesen integrálható az Azure IoT-megoldásgyorsí
 * Számítási feladatok küldése több eszközre.
 * A használatban lévő eszközökön futó számítási feladatok monitorozása.
 
-![A telemetriák, az elemzések és az eszközök műveletei koordinálva vannak a felhővel](./media/about-iot-edge/cloud-interface.png)
+![Eszköz telemetriai és a műveleteket a felhő koordinálva](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>További lépések
 

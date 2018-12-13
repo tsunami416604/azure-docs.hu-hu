@@ -1,5 +1,6 @@
 ---
-title: Hogyan kezelheti és kvóták az Azure Machine Learning szolgáltatás kérése
+title: Kezelését és kérését erőforráskvóták
+titleSuffix: Azure Machine Learning service
 description: Ez az útmutató ismerteti a különböző a kvóták az erőforrásokat az Azure Machine Learning és a megtekintése, és további kvótát.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
-ms.openlocfilehash: 516e8a9c73fdeacba38d9c81f5cb2d0b8db106c8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: b868e20ebb1054864116957fd671a17e2d980c0a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867698"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083852"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
@@ -69,7 +71,7 @@ Rendelkezésre álló erőforrások:
 
 <sup>1</sup> maximális élettartamát hivatkozik, amely egy Futtatás elindításához, és a Befejezés után. Befejezett futtatások korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett futtatások adatait nem érhető el.
 
-### <a name="container-instances"></a>Tárolópéldányok
+### <a name="container-instances"></a>Container Instances szolgáltatásban
 
 Emellett van egy a container Instances szolgáltatásban, regisztrálhat egy adott időszakban (óránként hatóköre) vagy a teljes előfizetés számára vonatkozó határértéket.
 

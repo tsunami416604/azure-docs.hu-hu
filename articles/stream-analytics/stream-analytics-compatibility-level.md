@@ -2,18 +2,18 @@
 title: Kompatibilitási szintje az Azure Stream Analytics-feladatok ismertetése
 description: Ismerje meg, hogyan állíthatja be az Azure Stream Analytics-feladat és a fontosabb változását foglalja össze a kompatibilitási szintje a legújabb kompatibilitási szinten
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: e4a4aa7bb944ec15d4283893c0f3e8c647a1d8b4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 37d57b0dc381f0ed2edf1f3debb76e5b54eae157
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968629"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093828"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
  
@@ -27,7 +27,7 @@ Kompatibilitási szint szabályozza a stream analytics-feladat működését. A 
 
 Győződjön meg arról, hogy a kompatibilitási szint frissítése előtt állítsa le a feladatot. A kompatibilitási szint nem frissíthető, ha a feladat nem futó állapotban. 
 
-![A portál kompatibilitási szint](media/stream-analytics-compatibility-level/image1.png)
+![Stream Analytics kompatibilitási szintje az Azure Portalon](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
  
 Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre érvényesíti a feladat a szintaxissal, amely megfelel a kiválasztott kompatibilitási szintet. 

@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: MT
+ms.openlocfilehash: e2b68982a855b56d97983460f248ef3040d03d79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364992"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876758"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
 A bejövő adatok mennyisége meghaladja a környezet konfigurációját, amikor a késleltetés vagy az Azure Time Series Insights-szabályozás tapasztalhat.
@@ -56,9 +56,9 @@ Itt konfigurálhatja a riasztások a következő mérőszámok segítségével:
 |**Bejövő forgalom érvénytelen üzenet érkezett**     | Érvénytelen üzeneteinek száma az összes Azure Event Hubs vagy Azure IoT Hub eseményforrások olvasni.      |
 |**Bejövő üzenetek fogadása**   | Üzenetek száma az összes Event Hubs vagy IoT-központok eseményforrások olvasni.        |
 |**Bejövő bájtok tárolt**     | Összes tárolt események méretét és lekérdezhető. A tulajdonság értéke csak a számított méretét.        |
-|**Bejövő forgalom tárolt események**     |   A tárolt és lekérdezhető egybesimított események száma.      |
-|**Bejövő forgalom fogadott üzenethez idő elteltével**    |  Forrás- és az idő a feldolgozása a bejövő forgalom a különbözet között az, hogy az üzenet az eseménynaplóban-e várólistán lévő idő másodpercben.      |
-|**Bejövő üzenetek száma időbeli kapott**    |  Utolsó várólistán lévő üzenetek sorszáma közötti különbség az adatforrás a bejövő forgalom feldolgozott üzenet partíciót és feladatütemezési számát.      |
+|**Bejövő forgalom tárolt események**     |   A tárolt és lekérdezhető egybesimított események száma.      |
+|**Bejövő forgalom fogadott üzenethez idő elteltével**    |  Forrás- és az idő a feldolgozása a bejövő forgalom a különbözet között az, hogy az üzenet az eseménynaplóban-e várólistán lévő idő másodpercben.      |
+|**Bejövő üzenetek száma időbeli kapott**    |  Utolsó várólistán lévő üzenetek sorszáma közötti különbség az adatforrás a bejövő forgalom feldolgozott üzenet partíciót és feladatütemezési számát.      |
 
 
 ![Késés](media/environment-mitigate-latency/latency.png)

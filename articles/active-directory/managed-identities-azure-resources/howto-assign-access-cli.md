@@ -1,6 +1,6 @@
 ---
-title: MSI-hozzáférés hozzárendelése egy Azure-erőforrás, Azure CLI használatával
-description: Részletes utasítások hozzárendelése egy olyan MSI Csomaghoz, egy erőforráson, egy másik erőforrás, Azure CLI-vel való hozzáférést.
+title: Egy felügyelt identitás hozzáférés hozzárendelése egy Azure-erőforrás Azure CLI használatával
+description: Részletes utasításokat egy erőforráson, egy felügyelt identitás hozzárendelése egy másik erőforrás, Azure CLI-vel való hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -12,36 +12,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 12/06/2017
 ms.author: daveba
-ms.openlocfilehash: 2e3b85251b9dabd6efd23e5b41372703a237d227
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 25d92c6c8c03f277b4219cd7d2a83afbb81e2b10
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949077"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081370"
 ---
-# <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>A Felügyeltszolgáltatás-identitás (MSI) hozzáférés hozzárendelése egy erőforrást az Azure CLI használatával
+# <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Egy felügyelt identitás hozzáférések hozzárendelése az Azure CLI-vel erőforrás
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Miután konfigurálta az Azure-erőforrás egy MSI-vel, az MSI hozzáférést biztosíthat egy másik erőforráshoz, csakúgy, mint egy rendszerbiztonsági tagot. Ez a példa bemutatja, hogyan biztosíthat az Azure virtuális gép vagy a virtuális gép méretezési csoportjának MSI-hozzáférés az Azure storage-fiókba, az Azure CLI használatával.
+Miután konfigurálta az Azure-erőforrás felügyelt identitással, a felügyelt identitás hozzáférést biztosíthat más erőforráshoz, csakúgy, mint bármely rendszerbiztonsági tag. Ez a példa bemutatja, az Azure virtuális gép vagy a virtuális gép méretezési csoportjának felügyelt identitás hozzáférés biztosítása az Azure CLI-vel az Azure storage-fiókba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
-Három lehetősége van a CLI-példaszkriptek futtatásához:
-
-- Használat [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
-- Használja a beágyazott Azure Cloud Shell-t a "Kipróbálom" gomb, mindegyik blokk jobb felső sarkában található.
-- [Azure CLI legújabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) Ha inkább a helyi CLI-konzol használatával. 
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
+- Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Három lehetősége van a CLI-példaszkriptek futtatásához:
+    - Használat [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
+    - Használja a beágyazott Azure Cloud Shell-t a "Kipróbálom" gomb, mindegyik blokk jobb felső sarkában található.
+    - [Azure CLI legújabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) Ha inkább a helyi CLI-konzol használatával. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Az RBAC használatával az MSI-hozzáférés hozzárendelése egy másik erőforrás
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Az RBAC használatával hozzáférést egy felügyelt identitás hozzárendelése egy másik erőforrás
 
-Engedélyezését követően az MSI-Azure-erőforrás, például egy [Azure virtuális gép](qs-configure-cli-windows-vm.md) vagy [Azure-beli virtuálisgép-méretezési csoport](qs-configure-cli-windows-vmss.md): 
+Engedélyezését követően felügyelt identitás egy Azure-erőforrás, például egy [Azure virtuális gép](qs-configure-cli-windows-vm.md) vagy [Azure-beli virtuálisgép-méretezési csoport](qs-configure-cli-windows-vmss.md): 
 
 1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Amelyben üzembe helyezése a virtuális gép vagy virtuálisgép-méretezési csoportot szeretne Azure-előfizetéssel társított fiókot használ:
 
@@ -49,7 +48,7 @@ Engedélyezését követően az MSI-Azure-erőforrás, például egy [Azure virt
    az login
    ```
 
-2. Ebben a példában azt egy Azure-beli virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [az erőforrások listájából](/cli/azure/resource/#az-resource-list) az egyszerű szolgáltatás a virtuális gép "myVM" nevű beolvasásához:
+2. Ebben a példában azt egy Azure-beli virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [az erőforrások listájából](/cli/azure/resource/#az-resource-list) a szolgáltatásnév lekérése a myVM nevű virtuális gépet:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -66,20 +65,8 @@ Engedélyezését követően az MSI-Azure-erőforrás, például egy [Azure virt
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="next-steps"></a>További lépések
 
-Az MSI az erőforrás nem jelenik meg a rendelkezésre álló identitások listájában, győződjön meg arról, hogy az MSI engedélyezve lett-e megfelelően. Ebben az esetben is visszatér az Azure virtuális gép vagy virtuálisgép-méretezési csoportját az [az Azure portal](https://portal.azure.com) és:
-
-- Tekintse meg a "Konfiguráció" lapot, és ellenőrizze, engedélyezett MSI-vel = "Yes".
-- Tekintse meg a "Bővítmények" lapot, és győződjön meg, hogy az MSI-bővítmény telepítése sikeresen (**bővítmények** lap nem érhető el egy Azure-beli virtuálisgép-méretezési csoportban).
-
-Ha vagy helytelen, szükség lehet ismételt üzembe helyezése az MSI az erőforráson újra, vagy az üzemelő példány hibájának elhárítása.
-
-## <a name="related-content"></a>Kapcsolódó tartalom
-
-- MSI áttekintését lásd: [Felügyeltszolgáltatás-identitás – áttekintés](overview.md).
-- Egy Azure virtuális gépen az MSI engedélyezéséhez tekintse [konfigurálni egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) Azure parancssori felületével](qs-configure-cli-windows-vm.md).
-- Egy Azure-beli virtuálisgép-méretezési csoportot az MSI engedélyezéséhez tekintse [konfigurálása az Azure virtuális gép méretezési beállítása Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával](qs-configure-portal-windows-vmss.md)
-
-Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
-
+- [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
+- Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások egy Azure virtuális gépen az Azure CLI-vel](qs-configure-cli-windows-vm.md).
+- Engedélyezheti a felügyelt identitás egy Azure-beli virtuálisgép-méretezési [konfigurálása felügyelt identitások az Azure-erőforrások egy virtuális gép méretezési csoportban Azure CLI-vel](qs-configure-cli-windows-vmss.md).

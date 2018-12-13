@@ -1,5 +1,5 @@
 ---
-title: Jelenleg a Jupyter notebook az Azure-ban diavetítésként |} A Microsoft Docs
+title: Jelenleg a Jupyter notebook az Azure-ban diavetítésként
 description: Hogyan cellák diavetítés mód konfigurálása a Jupyter notebook majd jelentenek a diavetítés a elő kiterjesztéssel.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8eaa264cf679de7158a31805c406cb217e6a1fd2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856015"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081421"
 ---
 # <a name="run-a-notebook-slideshow"></a>A notebook diavetítés futtatása
 

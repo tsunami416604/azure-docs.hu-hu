@@ -1,21 +1,22 @@
 ---
-title: '9. oktatóanyag: Hangulatelemzés – pozitív, negatív vagy semleges érzelmek azonosítása a LUIS-ban'
+title: Hangulatelemzés
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből. A hangulat meghatározása a teljes kimondott szövegből történik.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 60c4b280033e110f6b8b2a3ce720934e118c8479
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424850"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098933"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>9. oktatóanyag: Kimondott szöveg általános hangulatának kinyerése
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből. A hangulat meghatározása a teljes kimondott szövegből történik.
@@ -94,7 +95,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 2. A beállítás engedélyezéséhez kapcsolja be a **hangulatelemzést**. 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![Hangulatelemzés bekapcsolása közzétételi beállításai](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish"></a>Közzététel
 
@@ -106,7 +107,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Jill Jones work with the media team on the public portal was amazing`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia kinyert hangulatelemzéssel: `EmployeeFeedback`.
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {

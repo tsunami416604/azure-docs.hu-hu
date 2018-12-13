@@ -1,5 +1,6 @@
 ---
-title: Hozzon létre és gépi Tanulási folyamatok - futtatásához az Azure Machine Learning szolgáltatás
+title: Gépi Tanulási folyamatok futtatásához és létrehozása
+titleSuffix: Azure Machine Learning service
 description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült.  A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak.
 services: machine-learning
 ms.service: machine-learning
@@ -9,17 +10,17 @@ ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 0119e60a6493ed13b04b36fc5fccc7227503fe0a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100555"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Hozhat létre és futtathat egy machine learning folyamatot az Azure Machine Learning SDK
 
-Ebből a cikkből megismerheti, hogyan hozzon létre, közzétételéhez, futtassa, és nyomon követheti a [machine learning-folyamat](concept-ml-pipelines.md) használatával a [Azure Machine Learning-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Ezek a folyamatok létrehozásához és kezeléséhez a munkafolyamatok, amelyek összefűzheti a machine learning különböző fázisait segítségével. Minden egyes fázisában, például az adat-előkészítési és a modell betanítása és a egy folyamatot egy vagy több lépést is tartalmazhatnak.
+Ebből a cikkből megismerheti, hogyan hozzon létre, közzétételéhez, futtassa, és nyomon követheti a [machine learning-folyamat](concept-ml-pipelines.md) használatával a [Azure Machine Learning-SDK](https://aka.ms/aml-sdk).  Ezek a folyamatok létrehozásához és kezeléséhez a munkafolyamatok, amelyek összefűzheti a machine learning különböző fázisait segítségével. Minden egyes fázisában, például az adat-előkészítési és a modell betanítása és a egy folyamatot egy vagy több lépést is tartalmazhatnak.
 
 A folyamatok létrehozása az Azure Machine Learning szolgáltatás tagjai számára láthatók [munkaterület](how-to-manage-workspace.md). 
 

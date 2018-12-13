@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory bejelentkezési oldalát arculat hozzáadása |} A Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá a szervezet védjegyezését az Azure Active Directory bejelentkezési oldalára.
+title: A munkahelyi bejelentkezési lap – Azure Active Directory márkajelzés hozzáadása |} A Microsoft Docs
+description: A szervezet az Azure Active Directory bejelentkezési oldalára márkajelzési adásával kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-custom: it-pro
-ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 0ce0d42e37bcc5c936798947bacf0232891c24ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090312"
 ---
-# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>Útmutató: az Azure Active Directory bejelentkezési oldalát arculat hozzáadása
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
 
 >[!Note]
->Egyéni arculat hozzáadása kell használni az Azure Active Directory Premium 1, 2. prémium vagy alapszintű kiadásához, vagy rendelkezik Office 365-licenccel. További információ a licencelési és -kiadás: [regisztrálhat a prémium szintű Azure AD](active-directory-get-started-premium.md).<br><br>Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD prémium és alapszintű kiadásai jelenleg nem támogatottak Kínában a 21Vianet által üzemeltetett Azure szolgáltatásban. További információkért forduljon velünk a kapcsolatot a [Azure Active Directory-fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/).
+>Egyéni arculat hozzáadása kell használni az Azure Active Directory Premium 1, 2. prémium vagy alapszintű kiadásához, vagy rendelkezik Office 365-licenccel. További információ a licencelési és -kiadás: [regisztrálhat a prémium szintű Azure AD](active-directory-get-started-premium.md).<br><br>Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldal testreszabása
 Testre szabhatja az Azure AD bejelentkezési lapok, amelyek jelenik meg, amikor a felhasználók bejelentkeznek a szervezet bérlő-specifikus alkalmazások, mint például [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), vagy egy, a tartomány változót, például a átadásakor[ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
@@ -34,7 +34,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 > Az összes márkajelzési elemek egyike sem kötelező. Ha nincs háttérkép-megad szalagcímemblémát, például a bejelentkezési oldal jeleníti meg az embléma a célhelyről (például Office 365) alapértelmezett háttérben történő rendszerképpel.<br><br>Ezenkívül arculat megjelenítése a bejelentkezési oldal nem jelenik meg személyes Microsoft-fiókok. Ha a felhasználók vagy a vendégek személyes Microsoft-fiókkal, a bejelentkezési oldal nem jelenik meg a céges arculatot a szervezet.
 
 ### <a name="to-customize-your-branding"></a>A márkajelzési beállításokat testreszabása
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **konfigurálása**.
 
@@ -92,7 +92,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 Miután létrehozta a egyéni márkajelzési beállításokat, lépjen vissza, és bármit módosítani.
 
 ### <a name="to-edit-your-custom-branding"></a>Az egyéni védjegyezés szerkesztése
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **konfigurálása**.
 
@@ -109,7 +109,7 @@ Az alapértelmezett nyelv, az eredeti konfiguráció nyelv nem módosítható. H
 
 ### <a name="to-add-a-language-specific-branding-configuration"></a>A nyelvspecifikus márkajelzési konfiguráció hozzáadása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **vállalati védjegyezés**, majd válassza ki **új nyelv**.
 

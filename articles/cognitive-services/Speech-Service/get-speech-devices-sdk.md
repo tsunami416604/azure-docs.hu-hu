@@ -1,21 +1,22 @@
 ---
 title: Beszédeszközök SDK letöltése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan érheti el a Speech eszköz SDK-val.
+description: A beszédfelismerési szolgáltatás együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. Ebben a cikkben fogja elsajátíthatja a beszédfelismerési Devices SDK-val való hozzáférést, és kezdje el a fejlesztést.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 822c4bdc6bb47d51bcd264c9093e7d07308d2b11
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: bc9497ff8d48cd1c5fd045f12908234462a7a2f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468772"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095059"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK beszerzése
 
@@ -29,14 +30,14 @@ A beszédfelismerés Devices SDK-val eléréséhez:
 1. Olvassa el a [licencszerződésének](speech-devices-sdk-license.md).
 1. Ha elfogadja a licencszerződés feltételeit, jelölje be **elfogadom**.
 1. Válaszoljon a kérdésekre, a képernyőn.
-1. A kérdőív beküldése. 
+1. A kérdőív beküldése.
 1. Ha az e-mail-címét még nem része az Azure Active Directory (Azure AD), az alábbi példához hasonlóan meghívó e-mail kap hozzáférés jóváhagyásakor van. Ha az e-mail cím már az Azure ad-ben, kap egy e-mailt a Microsoft Speech-csapattól, még a hozzáféréshez jóváhagyott, és áttérhet a [töltse le a Speech Devices SDK-val](#download-the-speech-devices-sdk).
 
 ## <a name="approval-e-mail"></a>Jóváhagyási e-mail
 
 ```
-From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com> 
-Subject: You're invited to the Microsoft organization 
+From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com>
+Subject: You're invited to the Microsoft organization
 ```
 
 ![e-mail-üzenet](media/speech-devices-sdk/get-sdk-1.png)
@@ -58,16 +59,16 @@ A következő lépéseket az Azure AD a regisztráció során megadott e-mail-c�
 4. Válassza ki **tovább** jelszót.
 
 5. Amikor a rendszer kéri, ellenőrizze az e-mailek, az ellenőrző kód le a meghívó e-mailben kapott.
- 
+
 7. Illessze be, vagy írja be a biztonsági kódot az e-mail-üzenet, a párbeszédpanel bezárásához. Ebben a példában a biztonsági kódot az **8406**. Kattintson a **Tovább** gombra.
 
     ![E-mail cím visszaigazolása](media/speech-devices-sdk/get-sdk-6.png)
- 
+
 8. A hozzáférési Panel alkalmazás a böngészőben jelenik meg, ha meggyőződött róla, hogy az e-mail-címét az Azure AD részét képezi. Most már elérhetők a Speech eszközök SDK letöltési helyre.
 
 ## <a name="download-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK letöltése
 
-Nyissa meg a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Jelentkezzen be a korábban létrehozott Microsoft-fiókjával. 
+Nyissa meg a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Jelentkezzen be a korábban létrehozott Microsoft-fiókjával.
 
 ![SDK-letöltési helye](media/speech-devices-sdk/get-sdk-7.png)
 
@@ -76,20 +77,20 @@ Töltse le a Speech tartozó SDK-t és eszközöket mintakód és referenciaanya
 1. Töltse le és telepítse az Aspera Connect eszközzel, amikor a rendszer kéri a böngészőben.
 
     ![Töltse le az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-8.png)
- 
+
 1. Válassza ki **Igen** Aspera Connect alkalmazások váltani.
 
     ![Váltson át az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-9.png)
- 
+
 1. Válassza ki **engedélyezése** Aspera Connect használatával a fájlok letöltését.
 
     ![Töltse le az Aspera-csatlakozás](media/speech-devices-sdk/get-sdk-10.png)
- 
+
 1. Az Aspera csatlakozás adatátvitel ablak bezárásához, a fájlok letöltése után.
 
     ![Aspera csatlakozás adatátvitel ablak](media/speech-devices-sdk/get-sdk-11.png)
- 
-Alapértelmezés szerint a fájlokat a rendszer letölti a **letölti** mappát. Akkor is jelentkezzen ki a hely most. 
+
+Alapértelmezés szerint a fájlokat a rendszer letölti a **letölti** mappát. Akkor is jelentkezzen ki a hely most.
 
 ## <a name="next-steps"></a>További lépések
 

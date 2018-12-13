@@ -1,21 +1,22 @@
 ---
-title: Rövid Python-útmutató – modell módosítása és LUIS-alkalmazás betanítása
-titleSuffix: Azure Cognitive Services
-description: Ebben a rövid Python-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+title: Módosíthatja, alkalmazást, a Python betanítása
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Ebben a rövid Python-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e8ed2a44a72cbe6fd30d39856b436728623dce66
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040176"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087950"
 ---
 # <a name="quickstart-change-model-using-python"></a>Rövid útmutató: Modell módosítása a Python használatával
 
@@ -46,7 +47,7 @@ Futtassa az alkalmazást egy parancssorból a Python 3.6 segítségével.
 
 Az add-utterance argumentumok nélkül történő meghívása betanítás nélkül ad hozzá kimondott szöveget az alkalmazáshoz.
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ Az alábbiakban a betanításra irányuló sikeres kérés eredménye látható:
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

@@ -1,21 +1,22 @@
 ---
-title: A beszédfelismerési szolgáltatás SDK hibaelhárítása
+title: Az SDK - beszédszolgáltatások beszédfelismerési hibaelhárítása
 titleSuffix: Azure Cognitive Services
-description: Végezzen hibaelhárítást a Speech Service SDK-t.
+description: Ez a cikk a Speech Service SDK használatakor esetleg felmerülő problémák megoldásához információkat nyújt.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464571"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095483"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>A beszédfelismerési szolgáltatás SDK hibaelhárítása
 
@@ -23,7 +24,7 @@ Ez a cikk a Speech Service SDK használatakor esetleg felmerülő problémák me
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba: A WebSocket-frissítés (403) hitelesítési hiba miatt meghiúsult
 
-Előfordulhat, hogy a nem megfelelő végpont az régió vagy szolgáltatás. Ellenőrizze, hogy helyes-e az URI-t. 
+Előfordulhat, hogy a nem megfelelő végpont az régió vagy szolgáltatás. Ellenőrizze, hogy helyes-e az URI-t.
 
 Ezenkívül előfordulhat, a probléma az előfizetési kulcs vagy engedélyezési jogkivonat. További információkért tekintse meg a következő szakaszban.
 
@@ -78,19 +79,19 @@ Egy engedélyezési jogkivonatot használnak a hitelesítéshez, ha annak ellen�
     ```Powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
-    
+
     # $OAuthToken is the authorization token returned by the token service.
     $RecoRequestHeader = @{
       'Authorization' = 'Bearer '+ $OAuthToken
       'Transfer-Encoding' = 'chunked'
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
-    
+
     # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
-    
+
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
-    
+
     # Show the result.
     $RecoResponse
     ```
@@ -122,4 +123,3 @@ A probléma okozza hívásaiból. Mivel ez a hiba jelenhetnek meg:
 ## <a name="next-steps"></a>További lépések
 
 * [Tekintse át a kibocsátási megjegyzések](releasenotes.md)
-

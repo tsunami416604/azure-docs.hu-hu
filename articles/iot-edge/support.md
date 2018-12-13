@@ -1,6 +1,6 @@
 ---
-title: Eszközplatform-támogatás az Azure IoT Edge |} A Microsoft Docs
-description: Az Azure IoT Edge által támogatott platformok
+title: Támogatott operációs rendszerek, tároló motorok – Azure IoT Edge |} A Microsoft Docs
+description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure IoT Edge-démon és a futtatókörnyezeti és az éles eszközök támogatott tároló-motorok
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,16 @@ ms.date: 11/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45c5c7245a2af3b0d0e328bfcc43112eaee406ee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 3c75f50e40f83a4dc6765ae422fbb2458f40d770
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565003"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100181"
 ---
-# <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
+# <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
+
 Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
 
 **Hibák Reporting** – a legtöbb fejlesztési, amely az Azure IoT Edge-termék hiányzóra történik, az IoT Edge nyílt forráskódú projekt. A hibák jelenteni lehet a [problémák lap](https://github.com/azure/iotedge/issues) a projekt. Javítások gyorsan eljutnak a projektből a termékfrissítéseket.

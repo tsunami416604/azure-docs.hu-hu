@@ -5,38 +5,50 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/17/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2c05feffc0b0cebe71083b8ec918204843d0720
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 72e61a36b58c0bc666f3e19b71fb1abe842208f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409837"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111653"
 ---
-1. A portál bal oldalán kattintson az **+ Erőforrás létrehozása** gombra, és írja be a „virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **Virtuális hálózati átjáró** lap alsó részén kattintson a **Létrehozás** gombra a **Virtuális hálózati átjáró létrehozása** lap megnyitásához.
-2. A **Virtuális hálózati átjáró létrehozása** lapon töltse ki a virtuális hálózati átjáró értékeit.
+1. Jelentkezzen be az Azure Portalon, és válassza **erőforrás létrehozása**. A **új** lap megnyitásakor.
 
-  ![Create virtual network gateway page fields](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Create virtual network gateway page fields")
-3. A **Virtuális hálózati átjáró létrehozása** lapon adja meg a virtuális hálózati átjáró értékeit.
+2. Az a **keressen a piactéren mezőben**, adja meg *virtuális hálózati átjáró*, és válassza ki **virtuális hálózati átjáró** a keresési listáról. 
 
-  - **Név**: adjon nevet az átjárónak. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
-  - **Átjáró típusa**: válassza ki a **VPN** elemet. A VPN-átjárók a **VPN** virtuális hálózati átjárótípust használják. 
-  - **VPN típusa**: válassza ki a konfigurációjához megadott VPN-típust. A legtöbb konfigurációhoz útvonalalapú VPN-típus szükséges.
-  - **SKU**: válassza ki az átjáró SKU-ját a legördülő listából. A legördülő listában szereplő SKU-k a kiválasztott VPN-típustól függenek. Az átjáró-termékváltozatokkal kapcsolatos további információkért lásd: [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Átjáró-termékváltozatok).
+3. Az a **virtuális hálózati átjáró** lapon jelölje be **létrehozás** megnyitásához a **virtuális hálózati átjáró létrehozása** lap.
 
-    Csak akkor válassza ki az **Aktív-aktív üzemmód engedélyezése** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre. Ha nem ez a helyzet, ne válassza ki a beállítást.
-  - **Hely**: Lehetséges, hogy le kell görgetnie, hogy megjelenjen a Hely. Állítsa be úgy a **Hely** mezőt, hogy a virtuális hálózat helyére mutasson. Az értéke lehet például az USA nyugati régiója. Ha a hely nem egyezik meg azzal a régióval, ahol a virtuális hálózat található, akkor a következő lépésben egy virtuális hálózat kiválasztásakor az nem jelenik meg a legördülő listában.
-  - **Virtuális hálózat**: Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót. Kattintson a **Virtuális hálózat** elemre a Virtuális hálózat választása lap megnyitásához. Válassza ki a VNet elemet. Ha a VNet nem jelenik meg, ellenőrizze, hogy a Hely mező arra a régióra mutat-e, amelyikben a virtuális hálózata található.
-  - **Átjáróalhálózat címtartománya**: Ez a beállítás csak akkor jelenik meg, ha előzőleg nem hozott létre átjáróalhálózatot a virtuális hálózathoz. Ha korábban létrehozott egy érvényes átjáróalhálózatot, ez a beállítás nem jelenik meg.
-  - **Nyilvános IP-cím**: Ez a beállítás azt a nyilvános IP-cím-objektumot adja meg, amely hozzá lesz rendelve a VPN-átjáróhoz. A nyilvános IP-címet a rendszer dinamikusan rendeli hozzá ehhez az objektumhoz a VPN-átjáró létrehozásakor. A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
+   ![Create virtual network gateway page fields](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Create virtual network gateway page fields")
 
-    - Hagyja bejelölve az **Új létrehozása** lehetőséget.
-    - Adjon egy nevet a nyilvános IP-címnek a **szövegmezőben**.
+4. Az a **virtuális hálózati átjáró létrehozása** lapon, töltse ki a virtuális hálózati átjáró értékeit:
 
-4. A **BGP ASN konfigurálása** beállítást csak akkor jelölje ki, ha a konfigurációhoz kifejezetten szükség van rá. Ha szükség van a beállításra, az ASN alapértelmezett értéke 65515 lesz, de ez módosítható.
-5. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a lap alján lévő **Rögzítés az irányítópulton** elemet. 
-6. A **Létrehozás** gombra kattintva hozzákezdhet a VPN-átjáró létrehozásához. A rendszer ellenőrzi a beállításokat, és az irányítópulton megjelenik a „Virtuális hálózati átjáró üzembe helyezése” csempe. Az átjáró létrehozása akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
+   - **Név**: Adjon meg egy nevet az átjáró objektumot hoz létre. Ez a név nem egyezik az átjáró-alhálózat neve. 
 
-Az átjáró létrehozása után úgy tekintheti meg a hozzárendelt IP-címet, ha megnézi a virtuális hálózatot a portálon. Az átjáró csatlakoztatott eszközként fog megjelenni. A csatlakoztatott eszközre (azaz a virtuális hálózati átjáróra) kattintva további információkat jeleníthet meg.
+   - **Átjáró típusa**: válasszon **VPN** VPN-átjárókhoz. 
+
+   - **VPN típusa**: válassza ki a konfigurációjához megadott VPN-típust. A legtöbb konfigurációt igényelnek a **útvonalalapú** VPN-típust.
+
+   - **SKU**: válassza ki az átjáró SKU-ját a legördülő listából. A legördülő listában szereplő SKU-k a kiválasztott VPN-típustól függenek. Az átjáró-termékváltozatokkal kapcsolatos további információkért lásd: [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Átjáró-termékváltozatok).
+
+      Csak válassza **aktív – aktív üzemmód engedélyezése** létrehozásánál egy átjáró aktív-aktív konfigurációban. Ha nem ez a helyzet, ne válassza ki a beállítást.
+  
+   - **Hely**: Előfordulhat, hogy kell görgetnie a **hely**. Állítsa be **hely** arra a helyre, ahol a virtuális hálózat is található. Ha például **USA nyugati RÉGIÓJA**. Ha a hely nem állít be a régió, ahol a virtuális hálózat is található, nem fog megjelenni a legördülő listából válassza ki a virtuális hálózat kiválasztása.
+
+   - **Virtuális hálózat**: Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót. Válassza ki **virtuális hálózati** megnyitásához a **válasszon egy virtuális hálózatot** lapon, és válassza ki a virtuális hálózathoz. Ha a virtuális hálózat nem jelenik meg, ellenőrizze, hogy a **hely** mező értéke pedig a régió, ahol a virtuális hálózat is található.
+
+   - **Átjáróalhálózat címtartománya**: csak láthatja ezt a beállítást a korábban létrehozott átjáró-alhálózatot a virtuális hálózat. Ha korábban már létrehozott egy érvényes átjáró-alhálózatot, akkor ez a beállítás nem jelenik meg.
+
+   - **Nyilvános IP-cím**: Ezzel a beállítással a nyilvános IP-címobjektumot, amely a VPN-átjáróhoz van társítva. A nyilvános IP-címet a rendszer dinamikusan rendeli hozzá ehhez az objektumhoz a VPN-átjáró létrehozásakor. A VPN gateway jelenleg támogatja a csak *dinamikus* nyilvános IP-címek hozzárendelését. Azonban a dinamikus kiosztási nem jelenti azt, hogy az IP-cím módosul a VPN gatewayhez való hozzárendelése után. Csak ha az átjárót törli, majd újra létrehozza a nyilvános IP-cím módosításainak van. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
+    
+      - Hagyja bejelölve az **Új létrehozása** lehetőséget.
+
+      - A szövegmezőben adja meg egy nevet a nyilvános IP-cím.
+
+   - **BGP ASN konfigurálása**: hagyja, a beállítás nincs bejelölve, kivéve, ha a konfiguráció kifejezetten igényel. Ha ezt a beállítást igényel, az alapértelmezett ASN szám van *65515*, amelyet módosíthat.
+     
+5. Ellenőrizze a beállításokat, és válassza ki **létrehozás** a VPN-átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és láthatja a **üzembe helyezése virtuális hálózati átjáró** csempét az irányítópulton. Az átjáró létrehozása akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
+
+6. Miután létrehozta az átjárót, ellenőrizze az IP-cím van hozzárendelve a portálon a virtuális hálózat megtekintésével. Az átjáró csatlakoztatott eszközként fog megjelenni. Kiválaszthatja, hogy a csatlakoztatott eszközre (azaz a virtuális hálózati átjáróra) kattintva további információ.

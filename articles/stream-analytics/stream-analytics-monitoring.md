@@ -1,30 +1,31 @@
 ---
 title: Feladat figyelése az Azure Stream Analytics ismertetése
-description: Ez a cikk ismerteti az Azure Stream Analytics-feladatok figyelése
+description: Ez a cikk ismerteti az Azure Portalon az Azure Stream Analytics-feladatok figyelése.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963284"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096615"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
 ## <a name="introduction-the-monitor-page"></a>Bemutatása: A figyelő lap
 Az Azure portál mindkét surface fő teljesítménymutatói, figyelése és hibaelhárítása a lekérdezés és a feladat teljesítményét is lehet. Ezek a metrikák megtekintéséhez tallózással keresse meg a Stream Analytics-feladat, a metrikák megjelenítésének iránt, és megtekintheti a **figyelés** szakasz az Áttekintés oldalon.  
 
-![Figyelési hivatkozás](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![Stream Analytics-feladat figyelése hivatkozás](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
 Az ablakban látható módon jelenik meg:
 
-![Figyelési feladat irányítópult](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![Stream Analytics-feladat figyelési irányítópult](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics-metrikáit
 | Metrika                 | Meghatározás                               |
@@ -49,7 +50,7 @@ Az ablakban látható módon jelenik meg:
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Figyelés testreszabása az Azure Portalon
 Módosíthatja a diagram, metrika is látható, típusát és időtartomány a diagram szerkesztése beállításaiban. További információkért lásd: [testreszabása figyelése annak](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-  ![Lekérdezési idő figyelése graph](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![Stream Analytics lekérdezési idő grafikon](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
 ## <a name="latest-output"></a>Legújabb kimenet

@@ -1,5 +1,6 @@
 ---
-title: Adatok betöltése az az Azure Machine Learning Data Prep SDK – Python
+title: Terhelés és előkészítő data az adatok előkészítő Python SDK-val
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg az adatok Azure Machine Learning Data Prep SDK-val. Különböző típusú bemeneti adatok betöltése, adja meg a fájl adattípusok és a paraméterek, vagy az SDK az intelligens olvasó funkciók használatához automatikus észlelése a fájl típusa.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,13 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f4bb4d95548a8c6c373eaa32617245a7ee0910b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 0d7561c0dc89fb47f88ca6e54616736067262391
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865675"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095068"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
@@ -128,9 +130,9 @@ dataflow.head(5)
 
 ||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|
 |------|------|------|-----|------|-----|-------|----|-----|
-|0|None|None|None|None|None|None|None|None|None|
-|1|None|None|None|None|None|None|None|None|None|
-|2|None|None|None|None|None|None|None|None|None|
+|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
+|1|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
+|2|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
 |3|Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^|
 |4|1|Profilkép|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 

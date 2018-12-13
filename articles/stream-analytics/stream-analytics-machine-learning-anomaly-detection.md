@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti, hogyan használhatja az Azure Stream Analytics
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567043"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091220"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
@@ -95,7 +95,7 @@ Idő előrehaladtával modellek képzett különböző adatokat. Ahhoz, hogy meg
 
 Diagramja a lépések hasonlítania: 
 
-![Képzési modellek](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Machine learning-modellek képzés](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Modell** | **Képzési kezdő időpontja** | **A pontszám használatának megkezdéséhez idő** |
 |---------|---------|---------|
@@ -145,15 +145,15 @@ Az érzékelő használatával a következő szempontokat érdemes figyelembe ve
 
    Ez az 1 és a egy felső korlátot módosítása (a ugyanez a logika vonatkozik a alacsonyabb korlátot módosítása) az alábbi 2. ábra jelenik meg. Mindkét-adatok a hullámformák egy rendellenes szint módosításának. Narancssárga függőleges vonalak jelölik Ugrás határok Ugrás mérete pedig ugyanaz, mint a megadott AnomalyDetection operátort duplikátumészlelési időtartam. A zöld sorok azt jelzik, hogy a képzés ablak méretének. Az 1. ábrán az Ugrás mérete megegyezik a melyik anomáliadetektálási aktiválást időpontját. A 2. ábrán az Ugrás mérete, amelynek az anomáliadetektálási tart feleannyi idő. Minden esetben egy felfelé változás észlelésekor, mert a modell pontozása használt volt tanított normális adatokká. Kizárása alapján a kétirányú szint módosításának detector használatával működését, azt kell a normál értéket használja, lépjen vissza a normál pontszámmodell modell betanítási ablakban. Az 1. ábrán a pontozási modell betanítása néhány szokásos esemény tartalmaz, így vissza a normál nem észlelhető. De a 2. ábrán a képzés csak tartalmazza a rendellenes rész, amely biztosítja, hogy lépjen vissza a normál észlel. Fele-nél is működik ugyanezen okból, mivel semmit nagyobb lesz végül többek között a normál események kicsit. 
 
-   ![AD-ablak méretének egyenlő anomáliadetektálási hossza](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![AD-ablak méretének egyenlő anomáliadetektálási hossza](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![AD-ablakméret egyenlő fele anomáliadetektálási hossza](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![AD-ablakméret egyenlő fele anomáliadetektálási hossza](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. Azokban az esetekben, ahol az anomáliadetektálási hossza nem becsülhető ez detector használatával működtet, legjobb erőfeszítés. Azonban kiválasztása, hogy egy szűkebb időtartomány korlátozza a betanítási adatok, amelyek növelné a valószínűsége, hogy a normál visszaállításához. 
 
 3. A következő esetben a hosszabb anomáliadetektálási nem észlelhető, a képzési ablak már eleve tartalmazza egy anomáliadetektálási ugyanolyan magas értékű. 
 
-   ![Az azonos méretű anomáliák](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![Az észlelt rendellenességek azonos mérettel](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>Rendellenességek észlelése. példalekérdezés 
 

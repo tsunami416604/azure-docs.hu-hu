@@ -1,21 +1,22 @@
 ---
-title: '3. oktatóanyag: Reguláris kifejezésnek megfeleltetett adatok – helyesen formázott adatok kinyerése'
+title: Reguláris kifejezést entitás
 titleSuffix: Azure Cognitive Services
 description: Konzisztensen formázott adatok kinyerése kimondott szövegből a Reguláris kifejezés entitással.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: 9cc88523ee31d80292c7d0d2bf9321dbbfc2ab6b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423415"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093317"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>3. oktatóanyag: Helyesen formázott adatok kinyerése
 Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást, hogy konzisztensen formázott adatokat nyerjen ki egy kimondott szövegből a **Reguláris kifejezés** entitás használatával.
@@ -129,7 +130,7 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `When were HRF-123456 and hrf-234567 published in the last year?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek pont megfelelő, és `FindForm` szándékot kell visszaadnia `HRF-123456` és `hrf-234567` űrlapszámmal.
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

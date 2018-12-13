@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 01b1a770959b29969fbfd0b4575a45b9c53318b6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867970"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086539"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Java-webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
 
@@ -49,10 +49,10 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java fejlesztői készlet (JDK) 7+](https://aka.ms/azure-jdks).
-* [Eclipse IDE for Java EE Developers.](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
+* [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
 
-Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
+Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
 
 ## <a id="CreateDB"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
@@ -84,7 +84,7 @@ JSP-alkalmazás létrehozása:
     ![Hello World – Java-alkalmazásokra vonatkozó oktatóanyag](./media/sql-api-java-application/image12.png)
 
 ## <a id="InstallSDK"></a>3. lépés: Az SQL Java SDK telepítése
-Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Maven](http://maven.apache.org/) használatával kérhetők le.
+Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Maven](https://maven.apache.org/) használatával kérhetők le.
 
 Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések végrehajtásával:
 
@@ -118,7 +118,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             private String name;
         }
    
-    Ebben a projektben a [Project Lombok](http://projectlombok.org/) nevű projekt használatával hozzuk létre a konstruktort, a beolvasókat, a beállítókat és a felépítőt. Ezt a kódot kézzel is megírhatja, vagy létrehozhatja azt az IDE használatával.
+    Ebben a projektben a [Project Lombok](https://projectlombok.org/) nevű projekt használatával hozzuk létre a konstruktort, a beolvasókat, a beállítókat és a felépítőt. Ezt a kódot kézzel is megírhatja, vagy létrehozhatja azt az IDE használatával.
 2. Az Azure Cosmos DB szolgáltatás elindításához példányosítania kell egy új **DocumentClient**-ügyfelet. Általában érdemes újrafelhasználni a **DocumentClient** ügyfelet ahelyett, hogy minden későbbi kérés esetén új ügyfelet hozna létre. Az ügyfél újrafelhasználásához burkolja be azt egy **DocumentClientFactory** használatával. Az [1. lépésben](#CreateDB) a vágólapra mentett URI és PRIMARY KEY (ELSŐDLEGES KULCS) értékeket be kell illeszteni a DocumentClientFactory.java fájlba. Cserélje ki a [YOUR\_ENDPOINT\_HERE] részt az URI-re, a [YOUR\_KEY\_HERE] részt pedig az elsődleges kulcsra.
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -729,7 +729,7 @@ Az Azure Websites megkönnyíti a Java-alkalmazások telepítését. Nincs más 
 ## <a id="GetProject"></a>A projekt beszerzése a GitHubról
 A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) (teendők) projektben. A teendők projekt Eclipse-be történő importálásához győződjön meg arról, hogy rendelkezik az [Előfeltételek](#Prerequisites) szakaszban ismertetett szoftverekkel és erőforrásokkal, majd tegye a következőket:
 
-1. Telepítse a [Project Lombok](http://projectlombok.org/) nevű projektet. A projekt konstruktorainak, beolvasóinak, beállítóinak létrehozása a Lombok használatával történik. A lombok.jar fájl letöltése után kattintson rá duplán annak telepítéséhez, vagy telepítse azt a parancssorból.
+1. Telepítse a [Project Lombok](https://projectlombok.org/) nevű projektet. A projekt konstruktorainak, beolvasóinak, beállítóinak létrehozása a Lombok használatával történik. A lombok.jar fájl letöltése után kattintson rá duplán annak telepítéséhez, vagy telepítse azt a parancssorból.
 2. Ha az Eclipse meg van nyitva, zárja be, és indítsa el újra a Lombok betöltéséhez.
 3. Az Eclipse **File** (Fájl) menüjében kattintson az **Import** (Importálás) elemre.
 4. Az **Import** (Importálás) ablakban kattintson a **Git**, majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.

@@ -1,5 +1,5 @@
 ---
-title: Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban? | Microsoft Docs
+title: Alapértelmezett felhasználói engedélyek – Azure Active Directory |} A Microsoft Docs
 description: További információ a különböző felhasználói engedélyek elérhető az Azure Active Directoryban.
 services: active-directory
 author: eross-msft
@@ -11,16 +11,15 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-custom: it-pro
-ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730479"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096588"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
-
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználói hozzáférés magában foglalja a felhasználó típusát, [szerepkörtagságait](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) és az egyes objektumok tulajdonjogát. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait.
 
 ## <a name="member-and-guest-users"></a>Tag- és vendégfelhasználók

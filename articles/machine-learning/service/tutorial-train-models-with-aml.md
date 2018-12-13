@@ -1,5 +1,6 @@
 ---
-title: 'Kép besorolási oktatóanyag: modellek Azure Machine Learning szolgáltatással'
+title: 'Kép besorolási oktatóanyag: modelleket taníthat be'
+titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell betanítására a scikit-learn alkalmazásával egy Python Jupyter-notebookban. Ez az oktatóanyag egy kétrészes sorozat első része.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 14ecc492ba7ce4b97af147e79c0a4e3f9a7aaba0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: fc61465615e35c071466c7a1350c8e9794a7f78e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017671"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099107"
 ---
 # <a name="tutorial-part-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: (1. rész): egy kép osztályozási modell Azure Machine Learning szolgáltatással betanítása
 

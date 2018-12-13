@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 38dfa61a90605fb6dfa43e34df99400d67b27118
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 71f3084be697dd84f3f262d2a79cd04a0ba76d8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012147"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086810"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -33,11 +33,11 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 
 2. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.
 
-    [![](media/luis-quickstart-new-app/app-list.png "Alkalmazáslista képernyőképe")](media/luis-quickstart-new-app/app-list.png)
+    [![Képernyőkép az alkalmazások listájának](media/luis-quickstart-new-app/app-list.png "Alkalmazáslista képernyőképe")](media/luis-quickstart-new-app/app-list.png)
 
 3. A párbeszédpanelen adja a „Home Automation” nevet az alkalmazásnak.
 
-    [![](media/luis-quickstart-new-app/create-new-app-dialog.png "A Create new app (Új alkalmazás létrehozása) felugró párbeszédpanel képernyőképe")](media/luis-quickstart-new-app/create-new-app-dialog.png)
+    [![Képernyőkép, hozzon létre új alkalmazás felugró párbeszédpanel](media/luis-quickstart-new-app/create-new-app-dialog.png "létrehozása képernyőképe új alkalmazás felugró párbeszédpanel")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
 4. Válassza ki az alkalmazás kulturális környezetét. Ehhez az otthonautomatizálási alkalmazáshoz válassza a magyar nyelvet. Ezután válassza a **Done** (Kész) elemet. A LUIS létrehozza az otthonautomatizálási alkalmazást. 
 
@@ -48,11 +48,11 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 
 A bal oldali navigációs ablaktáblán válassza a **Prebuilt domains** (Előre összeállított tartományok) elemet. Ezután keressen a „Home” kifejezésre. Válassza az **Add domain** (Tartomány hozzáadása) lehetőséget.
 
-[![](media/luis-quickstart-new-app/home-automation.png "Az előre összeállított tartomány menüben meghívott Home Automation tartomány képernyőképe")](media/luis-quickstart-new-app/home-automation.png)
+[![Képernyőkép a kezdőlap Automation tartomány feltüntettük az előre összeállított tartomány menü](media/luis-quickstart-new-app/home-automation.png "képernyőképe a kezdőlap Automation tartomány feltüntettük az előre összeállított tartomány menü")](media/luis-quickstart-new-app/home-automation.png)
 
 A tartomány sikeres hozzáadása után az előre összeállított tartomány mezőben megjelenik egy **Remove domain** (Tartomány eltávolítása) gomb.
 
-[![](media/luis-quickstart-new-app/remove-domain.png "A Home Automation tartomány képernyőképe az eltávolítás gombbal")](media/luis-quickstart-new-app/remove-domain.png)
+[![Eltávolítás gomb képernyőképe a kezdőlap Automation-tartomány](media/luis-quickstart-new-app/remove-domain.png "Eltávolítás gomb képernyőképe a kezdőlap Automation-tartomány")](media/luis-quickstart-new-app/remove-domain.png)
 
 ## <a name="intents-and-entities"></a>Szándékok és entitások
 
@@ -63,7 +63,7 @@ A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) e
 
 Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék olyan kimondott szövegek listáját tartalmazza, amelyek entitásokkal vannak feliratozva.
 
-[![](media/luis-quickstart-new-app/home-automation-turnon.png "A HomeAutomation.TurnOff szándék képernyőképe")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![Képernyőkép a HomeAutomation.TurnOff szándékot](media/luis-quickstart-new-app/home-automation-turnon.png "képernyőképe a HomeAutomation.TurnOff leképezés")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
@@ -80,7 +80,7 @@ Ellenőrizze, hogy a legmagasabb pontszámú leképezés megfelel-e az egyes kim
 
 Ebben a példában „A világítás kikapcsolását” a rendszer helyesen azonosítja a „HomeAutomation.TurnOff” legmagasabb pontszámú leképezéseként.
 
-[![](media/luis-quickstart-new-app/test.png "A tesztelési ablaktábla képernyőképe a kiemelt kimondott szöveggel")](media/luis-quickstart-new-app/test.png)
+[![Képernyőfelvétel: a teszt panel az utterance (kifejezés) kiemelésével](media/luis-quickstart-new-app/test.png "képernyőképe a teszt panel az utterance (kifejezés) kiemelésével")](media/luis-quickstart-new-app/test.png)
 
 
 Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához. 
@@ -97,7 +97,7 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `turn off the living room light`, majd nyomja le az Enter billentyűt. A böngésző megjeleníti a HTTP-végpont JSON-válaszát.
 
-    [![](media/luis-quickstart-new-app/turn-off-living-room.png "A böngésző képernyőképe, amelyen a JSON-eredmény a TurnOff szándékot észleli")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    [![Képernyőkép a böngészőben a JSON-eredményt észleli a szándék Kikapcsolás](media/luis-quickstart-new-app/turn-off-living-room.png "Képernyőkép a böngészőben a JSON-eredményt észleli a szándék kikapcsolása")](media/luis-quickstart-new-app/turn-off-living-room.png)
     
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

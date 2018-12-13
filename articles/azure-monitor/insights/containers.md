@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 010d3b5f2993f1bc652f9947317f81b0ba5cfb9e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 49acb9a7945f380c354440823294c9afb43c7afc
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097165"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52892360"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -100,7 +100,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:
-    - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+    - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../log-analytics/log-analytics-quick-collect-linux-computer.md).  
     - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Felülvizsgálat [többek között a CoreOS Linux tárológazdagép](#for-all-linux-container-hosts-including-coreos) vagy [CoreOS többek között az Azure Government Linux tárológazdagép](#for-all-azure-government-linux-container-hosts-including-coreos) Ha tárolók az Azure Government felhőben dolgozik.
     - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd kösse adatainak összegyűjtése, majd azokat elküldi a Log Analytics-ügynököt. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
   - A Docker-gazdagép több vezénylési:
@@ -116,7 +116,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 Tekintse át a [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) ismertető cikkben talál további információt a telepítése és konfigurálása a Docker-motor a Windows rendszerű számítógépeken.
 
 > [!IMPORTANT]
-> Docker futnia kell **előtt** telepíti a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md) a tároló-gazdagépeken. Ha már telepítette az ügynököt a Docker telepítése előtt, telepítse újra a Linuxhoz készült Log Analytics-ügynököt szeretné. Docker kapcsolatos további információkért lásd: a [Docker webhely](https://www.docker.com).
+> Docker futnia kell **előtt** telepíti a [Linuxhoz készült Log Analytics-ügynök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) a tároló-gazdagépeken. Ha már telepítette az ügynököt a Docker telepítése előtt, telepítse újra a Linuxhoz készült Log Analytics-ügynököt szeretné. Docker kapcsolatos további információkért lásd: a [Docker webhely](https://www.docker.com).
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Telepítse és konfigurálja a Linux-tároló gazdagépek
@@ -145,7 +145,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Váltás a Linux-tárolóban egy telepített ügynök használatával**
 
-Ha korábban a közvetlenül telepített ügynököt használja, és szeretné inkább használja a tárolóban futó ügynök, először el kell távolítania a Linuxhoz készült Log Analytics-ügynököt. Lásd: [a Linuxhoz készült Log Analytics-ügynök eltávolítása](../../azure-monitor/learn/quick-collect-linux-computer.md) megtudhatja, hogyan sikerült az ügynök eltávolítása.  
+Ha korábban a közvetlenül telepített ügynököt használja, és szeretné inkább használja a tárolóban futó ügynök, először el kell távolítania a Linuxhoz készült Log Analytics-ügynököt. Lásd: [a Linuxhoz készült Log Analytics-ügynök eltávolítása](../../log-analytics/log-analytics-quick-collect-linux-computer.md) megtudhatja, hogyan sikerült az ügynök eltávolítása.  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>A Log Analytics-ügynököket a Docker Swarmra konfigurálása
 
@@ -189,8 +189,8 @@ A Docker Swarm a titkos kulcsot, a munkaterület-Azonosítót és elsődleges ku
 #### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>A Log Analytics-ügynököket, a Red Hat OpenShift konfigurálása
 Red Hat OpenShift elindításához a tároló monitorozási adatok gyűjtése a Log Analytics-ügynököket hozzáadandó három módja van.
 
-* [A Linuxhoz készült Log Analytics-ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md) közvetlenül a OpenShift csomópontokon  
-* [Log Analytics Virtuálisgép-bővítmény engedélyezése](../../azure-monitor/learn/quick-collect-azurevm.md) minden OpenShift csomóponton levő az Azure-ban  
+* [A Linuxhoz készült Log Analytics-ügynök telepítése](../../log-analytics/log-analytics-quick-collect-linux-computer.md) közvetlenül a OpenShift csomópontokon  
+* [Log Analytics Virtuálisgép-bővítmény engedélyezése](../../log-analytics/log-analytics-quick-collect-azurevm.md) minden OpenShift csomóponton levő az Azure-ban  
 * A Log Analytics-ügynök telepítése egy OpenShift démon-készletben  
 
 Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift démon beállított szükséges lépéseket.  
@@ -523,9 +523,9 @@ A Docker-démon konfigurációját, használja a Windows-tárolókkal kapcsolato
 
 #### <a name="install-windows-agents"></a>Windows-ügynökök telepítése
 
-Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Log Analytics használatával az [virtuálisgép-bővítmény](../../azure-monitor/learn/quick-collect-azurevm.md).
+Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Log Analytics használatával az [virtuálisgép-bővítmény](../../log-analytics/log-analytics-quick-collect-azurevm.md).
 
-A Service Fabricen futó Windows-tárolók figyelése Azonban csak [az Azure-ban futó virtuális gépek](../../azure-monitor/learn/quick-collect-azurevm.md) és [a helyszíni környezetben Windows rendszerű számítógépek](../../azure-monitor/platform/agent-windows.md) Service Fabric jelenleg támogatja.
+A Service Fabricen futó Windows-tárolók figyelése Azonban csak [az Azure-ban futó virtuális gépek](../../log-analytics/log-analytics-quick-collect-azurevm.md) és [a helyszíni környezetben Windows rendszerű számítógépek](../../azure-monitor/platform/agent-windows.md) Service Fabric jelenleg támogatja.
 
 Ellenőrizheti, hogy a a Tárolómonitorozási megoldás megfelelően van-e állítva a Windows. Annak ellenőrzéséhez, hogy a felügyeleti csomag megfelelően lett-e letöltése, keressen *ContainerManagement.xxx*. A fájlok a C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management szervizcsomagok mappában kell lennie.
 
@@ -541,9 +541,9 @@ A Tárolómonitorozási megoldás tároló-gazdagépek és -tárolók használat
 
 A következő ügynök típusú percen át 3 percenként adatokat gyűjti.
 
-- [A Linuxhoz készült log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md)
+- [A Linuxhoz készült log Analytics-ügynök](../../log-analytics/log-analytics-quick-collect-linux-computer.md)
 - [Windows-ügynök](../../azure-monitor/platform/agent-windows.md)
-- [Log Analytics Virtuálisgép-bővítmény](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Log Analytics Virtuálisgép-bővítmény](../../log-analytics/log-analytics-quick-collect-azurevm.md)
 
 
 ### <a name="container-records"></a>Tárolórekordok

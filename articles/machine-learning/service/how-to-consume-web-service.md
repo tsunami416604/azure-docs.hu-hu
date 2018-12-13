@@ -1,5 +1,6 @@
 ---
-title: Webszolgáltatások üzembe helyezéséhez – az Azure Machine Learning szolgáltatás használata
+title: Üzembe helyezett webszolgáltatások felhasználása
+titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhat egy webszolgáltatás, amelyet jött létre, amikor egy modell telepítve lett az Azure Machine Learning-modellel. A webszolgáltatás által elérhetővé tett REST API-t. Hozzon létre az ügyfelek számára az API-t az Ön által választott programozási nyelvet.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 0cf585ec3eb95b71080436791fd47d96239dfa9f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016640"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100452"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -124,6 +125,43 @@ Például a modell a [Train belül notebook](https://github.com/Azure/MachineLea
 ``` 
 
 A webszolgáltatás egy kérelem több adatkészletek tud fogadni. Egy JSON-dokumentum, amely egy tömböt adott vissza.
+
+### <a name="binary-data"></a>Bináris adatok
+
+Ha a modell fogad bináris adatot, például egy kép, módosítania kell a `score.py` nyers HTTP-kérelmek fogadásához az üzembe helyezéshez használt fájlt. Íme egy példa egy `score.py` , amely elfogadja a bináris adatokat, és adja vissza a POST kérésekhez a fordított bájt. A GET-kérésekhez, a válasz törzsében a teljes URL-címet adja vissza:
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> A dolgokat a `azureml.contrib` névtér változnak gyakran, dolgozunk a szolgáltatás fejlesztéséhez. Ezért semmit a névtérben lévő kell előzetes minősül és nincs teljes egészében a Microsoft támogatja.
+>
+> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevők a contrib névtér a következő paranccsal telepíthető:
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ## <a name="call-the-service-c"></a>Meghívja a szolgáltatást (C#)
 
@@ -447,7 +485,3 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>További lépések
-
-Most, hogy megtanulhatta, hogyan hozhat létre egy ügyfél egy üzembe helyezett modell, megtudhatja, hogyan [modell üzembe helyezése az IoT Edge-eszköz](how-to-deploy-to-iot.md).

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0971122ee7b9cde0664ee661454a8b7824f4b7d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345759"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093903"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -404,7 +404,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 
    1. `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaz.
    2. `rowDelimiter` meg kell **\n**.
-   3. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` nem hamis értékre van állítva.
+   3. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` alapértelmezett, balra, vagy állítsa true.
    4. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
    5. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
    6. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.

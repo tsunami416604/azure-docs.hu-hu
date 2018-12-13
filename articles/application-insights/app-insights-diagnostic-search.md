@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bff5c5cfd022134c1d86883a267528717969c59
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c595695f3643522d36b53091656c3655f83a9345
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721680"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877836"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
 
-(Az adatok összetettebb lekérdezésekhez használja [Analytics](../log-analytics/query-language/get-started-analytics-portal.md).)
+(Az adatok összetettebb lekérdezésekhez használja [Analytics](../azure-monitor/log-query/get-started-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Ahol látható keresési?
 
@@ -101,7 +101,7 @@ Keresse meg az azonos tulajdonság értéke az összes elemet:
 ## <a name="search-the-data"></a>Az adatok keresése
 
 > [!NOTE]
-> Összetettebb lekérdezéseket írni, nyissa meg a [ **Analytics** ](../log-analytics/query-language/get-started-analytics-portal.md) a keresés panel tetején.
+> Összetettebb lekérdezéseket írni, nyissa meg a [ **Analytics** ](../azure-monitor/log-query/get-started-portal.md) a keresés panel tetején.
 > 
 
 A tulajdonságértékek bármelyikét feltételek kereshet. Ez különösen hasznos adatszolgáltatót [egyéni események](app-insights-api-custom-events-metrics.md) és a tulajdonságértékek. 
@@ -163,7 +163,7 @@ Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a na
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Következő lépések
-* [Összetett lekérdezéseket írni az Analyticsben](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Összetett lekérdezéseket írni az Analyticsben](../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetriát küldjön az Application Insightsba](app-insights-asp-net-trace-logs.md)
 * [Állítsa be a rendelkezésre állás és a válaszképesség tesztek](app-insights-monitor-web-app-availability.md)
 * [hibaelhárítással](app-insights-troubleshoot-faq.md)

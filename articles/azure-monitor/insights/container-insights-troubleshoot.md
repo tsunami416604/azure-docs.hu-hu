@@ -1,5 +1,5 @@
 ---
-title: Hogyan hibaelhárítása az Azure Monitor tárolók (előzetes verzió) |} A Microsoft Docs
+title: Hogyan hibaelhárítása az Azure Monitor-tárolókhoz |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan hibaelhárítása és tárolók az Azure Monitor szolgáltatással kapcsolatos problémák megoldásához.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: magoedte
-ms.openlocfilehash: f5b08efda80eefad736386cd74ec1d40f05a6f3a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 4957665391dab5a88941fa84c03152e33718de3b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994825"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095261"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Hibaelhárítás az Azure Monitor tárolók (előzetes verzió)
+# <a name="troubleshooting-azure-monitor-for-containers"></a>Hibaelhárítás az Azure Monitor for containers szolgáltatásban
 
 Az Azure Kubernetes Service (AKS)-fürt figyelése az Azure Monitor szolgáltatással tárolók konfigurálásakor előfordulhat, hogy hibába ütközik megakadályozza az adatok gyűjtése vagy állapotát. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
 

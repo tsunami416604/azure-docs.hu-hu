@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684613"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872941"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Az SQL Data Sync monitorozása a Log Analytics szolgáltatással 
 
@@ -97,7 +97,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
     2.  Szinkronizálási csoport adatokat.
 
-    3.  Log Analytics információkat. Az Azure portálon található – ezt az információt |} Beállítások |} A csatlakoztatott források. A Log Analyticshez való adatküldés kapcsolatos további információkért lásd: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) a Log Analytics](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Log Analytics információkat. Az Azure portálon található – ezt az információt |} Beállítások |} A csatlakoztatott források. A Log Analyticshez való adatküldés kapcsolatos további információkért lásd: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) a Log Analytics](../azure-monitor/platform/data-collector-api.md).
 
 11. A runbook futtatása a teszt panelt. Ellenőrizze, hogy sikeres volt.
 

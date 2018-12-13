@@ -1,5 +1,5 @@
 ---
-title: Eszközök frissítése a legújabb verzióra, az Azure IoT Edge |} A Microsoft Docs
+title: Frissítés az IoT Edge verziója az Azure IoT Edge-eszközök – |} A Microsoft Docs
 description: A biztonság-démont és az IoT Edge-futtatókörnyezet legfrissebb verzióit futtatni az IoT Edge-eszközök frissítése
 keywords: ''
 author: kgremban
@@ -9,14 +9,15 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1522d9c9bc4fda178d8571fb57cb9c94ed1044ae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 8b8638d8fa428b1b867e3f126ac8b5cc992cc273
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567791"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095154"
 ---
-# <a name="update-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet frissítése
+# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
 Amint az IoT Edge szolgáltatás kiadja az új verziók, érdemes frissíteni szeretné, hogy a legújabb funkciókat és biztonsági fejlesztések az IoT Edge-eszközökön. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
 
@@ -63,7 +64,7 @@ Az Edge agentet és az Edge hub-tárolók frissítése módja attól függ, hogy
 
 Az IoT Edge-ügynök és az Edge hub-modulok jelenleg az eszközön a parancsokkal verziójának ellenőrzése `iotedge logs edgeAgent` vagy `iotedge logs edgeHub`. 
 
-  ![Tároló verzió megtekintése](./media/how-to-update-iot-edge/container-version.png)
+  ![A naplókat tároló verzió azonosításához](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>IoT Edge-címkék ismertetése
 

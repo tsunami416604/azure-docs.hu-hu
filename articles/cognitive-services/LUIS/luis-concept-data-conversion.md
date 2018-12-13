@@ -1,23 +1,24 @@
 ---
-title: A LUIS - Language Understanding Data átalakítás kapcsolatos fogalmak
-titleSuffix: Azure Cognitive Services
+title: Adatok átalakítása
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ismerje meg, hogyan utterances is módosítható előtt előrejelzések a Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9324f7b4f7bed844f16d17b8960878892be4b165
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: dc9040661eee4cafc655deb2436130f1abcfcfd5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638392"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094797"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>A LUIS átalakítás – fogalmak
+# <a name="convert-data-format-of-utterances"></a>Beszédmódok adatok formátumának konvertálása
 LUIS a Cognitive Services beszéd szolgáltatást használja a beszélt utterances kimondott szöveg átalakítása előtt előrejelzés szöveges utterances. 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>Beszéd szándékának átalakítás alapelveinek

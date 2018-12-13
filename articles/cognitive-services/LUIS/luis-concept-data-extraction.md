@@ -1,23 +1,24 @@
 ---
-title: Adatok kinyerése fogalmait a LUIS - hangfelismerés
-titleSuffix: Azure Cognitive Services
+title: Adatok kinyerése
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638341"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098651"
 ---
-# <a name="data-extraction"></a>Adatok kinyerése
+# <a name="data-extraction-from-intents-and-entities"></a>Adatok kinyerése a szándékok és entitások felismerésére
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
 
 A kinyerni kívánt nagyon nehéz adatok átadott gép megtanult adatot, mivel nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap.
@@ -47,7 +48,7 @@ Az elsődleges adatokat a felső pontozási **leképezés neve**. Használatáva
 
 |Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|
-|Szándék|Sztring|topScoringIntent.intent|"GetStoreInfo"|
+|Szándék|Karakterlánc|topScoringIntent.intent|"GetStoreInfo"|
 
 Ha a csevegőrobot, vagy a LUIS-hívása alkalmazás meghozta a döntést, egynél több leképezés pontszám alapján, lépjen vissza a leképezések pontszámok a lekérdezési karakterlánc paraméter által `verbose=true`. A végpont válasz a következő:
 
@@ -76,8 +77,8 @@ A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
 |Objektum|Adattípus|Az adatok helye|Érték|Pontszám|
 |--|--|--|--|:--|
-|Szándék|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
-|Szándék|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
+|Szándék|Karakterlánc|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
+|Szándék|Karakterlánc|[1]. szándék .intent|"Nincs"|0.0168218873|
 
 Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi, hogy a tartományhoz, mint például `Utilties` vagy `Communication` valamint célja:
 
@@ -107,9 +108,9 @@ Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi,
 
 |Domain|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|--|
-|Közművek|Szándék|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
-|Kommunikáció|Szándék|Sztring|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
-||Szándék|Sztring|[a(z) 2]. szándék .intent|"Nincs"|
+|Közművek|Szándék|Karakterlánc|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
+|Kommunikáció|Szándék|Karakterlánc|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
+||Szándék|Karakterlánc|[a(z) 2]. szándék .intent|"Nincs"|
 
 
 ## <a name="data-from-entities"></a>Entitások adatainak
