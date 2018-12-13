@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: d88a82921e5baee06aacc09fafe274a8c56780c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0ffd07269570b26b527286f1a0b5a57a6b5c6018
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972405"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093420"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 
@@ -47,7 +47,7 @@ Azt javasoljuk, hogy az alábbi ellenőrzőlista, amelyen adatbázis-rendszerek 
 - Kiszolgálók a védett adatközpontok fizikai védelme
 - Minősítések
 
-Bár nyilvánvaló, legutóbbi tűnhet [nagyméretű adatbázis kapcsolatos problémák esetén](http://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztesse velünk a kapcsolatot a egyszerű, de a kritikus fontosságú az alábbi követelményeket:
+Bár nyilvánvaló, legutóbbi tűnhet [nagyméretű adatbázis kapcsolatos problémák esetén](https://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztesse velünk a kapcsolatot a egyszerű, de a kritikus fontosságú az alábbi követelményeket:
 - Javítva, amely mindig naprakész kiszolgálók
 - Alapértelmezett/SSL-titkosítás által HTTPS
 - Erős jelszót a rendszergazdai fiókok

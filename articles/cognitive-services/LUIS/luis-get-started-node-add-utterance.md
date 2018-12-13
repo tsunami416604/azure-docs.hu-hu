@@ -1,21 +1,22 @@
 ---
-title: Rövid Node.js-útmutató – modell módosítása és LUIS-alkalmazás betanítása
+title: Módosíthatja, a Node.js alkalmazás betanítása
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid Node.js-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+description: Ebben a rövid Node.js-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a487f44e164830928367d9f6ea737e793e38c0a8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 048579aa6d22144b9de8129042ab9fd2a36d4d00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036150"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092688"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Rövid útmutató: Modell módosítása a Node.js használatával
 
@@ -78,7 +79,7 @@ Futtassa az alkalmazást a parancssorból a Node.js nyelv használatával.
 
 Az `npm start` hívása hozzáadja a kimondott szövegeket, betanítást végez és lekéri a betanítás állapotát.
 
-```CMD
+```console
 > npm start 
 ```
 

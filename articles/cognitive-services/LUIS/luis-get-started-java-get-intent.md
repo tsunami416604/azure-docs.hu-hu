@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: első beszédszándék – Java'
+title: Szándékkal, a Java beolvasása
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Java nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
+description: Ez a Java a rövid útmutatóban elérhető nyilvános LUIS alkalmazás használatával határozza meg a felhasználó szándékának természetes nyelvi szövegből.
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 417b1138d581a54a3a0a992cebf18ea20fa8dbee
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c55721e803b85c536067a90019f75dd5aa0f7845
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013594"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085348"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rövid útmutató: Szándék lekérése a Java használatával
 

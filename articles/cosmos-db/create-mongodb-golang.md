@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836168"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089559"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása a Golang és az Azure Portal használatával
 
@@ -63,7 +63,7 @@ Klónozza a mintaalkalmazást, és telepítse a szükséges csomagokat.
     go get gopkg.in/mgo.v2
     ```
 
-A [mgo](http://labix.org/mgo) illesztőprogram egy [MongoDB](http://www.mongodb.org/) illesztőprogramját a [Go nyelvhez](http://golang.org/) , amely megvalósítja a funkciók mellett egy nagyon egyszerű API-t a következő standard Go egy hatékony és alaposan tesztelt kiválasztása nyelv szintaxisát.
+A [mgo](https://labix.org/mgo) illesztőprogram egy [MongoDB](https://www.mongodb.com/) illesztőprogramját a [Go nyelvhez](https://golang.org/) , amely megvalósítja a funkciók mellett egy nagyon egyszerű API-t a következő standard Go egy hatékony és alaposan tesztelt kiválasztása nyelv szintaxisát.
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Az alábbi kódrészletek mind a main.go fájlból származnak.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Az alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
-Az Azure Cosmos DB támogatja az SSL-kompatibilis MongoDB-t. Egy SSL-kompatibilis MongoDB-hez való csatlakozáshoz definiálja a **DialServer** függvényt az [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) fájlban, és használja a [tls.*Dial* ](http://golang.org/pkg/crypto/tls#Dial) függvényt a csatlakozás végrehajtására.
+Az Azure Cosmos DB támogatja az SSL-kompatibilis MongoDB-t. Egy SSL-kompatibilis MongoDB-hez való csatlakozáshoz definiálja a **DialServer** függvényt az [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) fájlban, és használja a [tls.*Dial* ](https://golang.org/pkg/crypto/tls#Dial) függvényt a csatlakozás végrehajtására.
 
 A következő Golang kódrészlet csatlakoztatja a Go-alkalmazást az Azure Cosmos DB MongoDB API-hoz. A *DialInfo* osztály egy MongoDB-fürttel munkamenetet létrehozó beállításokat tartalmaz.
 

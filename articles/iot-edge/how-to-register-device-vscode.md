@@ -1,6 +1,6 @@
 ---
-title: Regisztráljon egy új Azure IoT Edge-eszköz (a VS Code) |} A Microsoft Docs
-description: Hozzon létre egy új IoT Edge-eszköz az Azure IoT hub a Visual Studio Code használatával
+title: A Visual Studio Code - az Azure IoT Edge egy új eszköz regisztrálása |} A Microsoft Docs
+description: A Visual Studio Code használatával hozzon létre egy új IoT Edge-eszköz az Azure IoT hub és a kapcsolati karakterlánc
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: cc812cc7f628f533cbf342edee66e01ce703678f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578705"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099784"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>A Visual Studio Code-ból egy új Azure IoT Edge-eszköz regisztrálása
 
@@ -35,7 +36,7 @@ Használhatja a Visual Studio Code az Azure IoT-bővítmények az IoT hub-művel
 
 2. Az Explorer alján bontsa ki a **Azure IoT Hub-eszközök** szakaszban. 
 
-   ![Bontsa ki az Azure IoT Hub-eszközök](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
+   ![Az Azure IoT Hub-eszközök a szakaszt kibontva](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
 3. Kattintson a **...**  a a **Azure IoT Hub-eszközök** szakaszcímben. Ha nem látja a három pontra, kattintson a, vagy vigye a kurzort a fejléc fölé. 
 
@@ -63,7 +64,7 @@ A képernyőn a parancs eredménye látható. Az eszközinformáció nyomtatott,
 
 Az IoT hubhoz csatlakozó eszközök szerepelnek az **Azure IoT Hub-eszközök** a Visual Studio Code Explorerben szakaszában. IoT Edge-eszközök különböznek egymástól, egy másik ikon és a tényt, hogy azok az adott eszközön üzembe helyezett modulok megjeleníthető bővíthetők nem peremhálózati eszközökön. 
 
-   ![A VS Code-ban eszközök megtekintése](./media/how-to-register-device-vscode/view-devices.png)
+   ![Az IoT hub IoT Edge-eszközök megtekintése](./media/how-to-register-device-vscode/view-devices.png)
 
 ## <a name="retrieve-the-connection-string"></a>A kapcsolati karakterlánc
 

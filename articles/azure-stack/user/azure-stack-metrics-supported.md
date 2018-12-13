@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: f8ef54393f3de00ae231c45c117e3a16a8d1aad1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7ebb9d683803a6c5a5a0fa25308b348eeea586c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725607"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097896"
 ---
 # <a name="supported-metrics-with-azure-monitor-on-azure-stack"></a>A támogatott mérőszámok az Azure monitorral, az Azure Stackben
 
@@ -26,7 +26,7 @@ ms.locfileid: "52725607"
 
 A metrikák kérdezhet le Azure monitor az Azure Stacken ugyanaz, mint az Azure globális. A mértékek létrehozása a portálon, beszerezheti őket a REST API-ból, vagy lekérdezheti, ha a PowerShell vagy parancssori felület.
 
-Az alábbi táblázatok sorolják fel a metrikák elérhető az Azure Monitor metrika folyamatot az Azure Stacken. Lekérdezése, és hozzáférhetnek ezekhez a metrikákhoz, kell a **2018-01-01** api-version verzióját az API-profil. API-profilok és az Azure Stack kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
+Az alábbi táblázatok sorolják fel a metrikák elérhető az Azure Monitor metrika folyamatot az Azure Stacken. Lekérdezése, és hozzáférhetnek ezekhez a metrikákhoz, meg kell használnia a **2018-01-01** api-version verzióját az API-profil. API-profilok és az Azure Stack kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 

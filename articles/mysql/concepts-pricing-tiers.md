@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: e3d0e54c32a08c613407f1a90c78cc63be929078
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: MT
+ms.openlocfilehash: 0e316bf06cc6e2915adca5e7961083e6668bbfc1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091793"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889123"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -23,7 +23,7 @@ Létrehozhat egy Azure Database for MySQL-kiszolgáló három különböző tari
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | A gen 4, 5 általános | A gen 4, 5 általános | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
+| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32 vagy 64 |2, 4, 8, 16 és 32 |
 | Memória / virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
 | Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |

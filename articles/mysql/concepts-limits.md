@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982878"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090992"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL-hez korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai. További tájékoztatás [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL-adatbázismotor alkalmazható.
@@ -31,10 +31,12 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Általános rendeltetés| 8| 1250|
 |Általános rendeltetés| 16| 2500|
 |Általános rendeltetés| 32| 5000|
+|Általános rendeltetés| 64| 10000|
 |Memóriára optimalizált| 2| 600|
 |Memóriára optimalizált| 4| 1250|
 |Memóriára optimalizált| 8| 2500|
 |Memóriára optimalizált| 16| 5000|
+|Memóriára optimalizált| 32| 10000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > 1040 (08004). hiba: Túl sok kapcsolat

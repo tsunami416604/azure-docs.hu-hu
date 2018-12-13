@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972371"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097777"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: függőségi nyomon követése
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -32,7 +32,7 @@ A-a-beépített függőségi figyelő jelenleg az ilyen típusú függőségek h
 * Weblapok
   * AJAX-hívások
 
-Works figyelése használatával [bájt kód instrumentation](https://msdn.microsoft.com/library/z9z62c29.aspx) kiválasztott metódusok köré. Teljesítménybeli terhelést okoz a minimális.
+Works figyelése használatával [bájt kód instrumentation](https://msdn.microsoft.com/library/z9z62c29.aspx) körülbelül módszerek kiválasztása vagy DiagnosticSource visszahívások (a legújabb .NET SDK-k), a .NET-keretrendszer alapján. Teljesítménybeli terhelést okoz a minimális.
 
 Saját SDK-hívásokat figyelése egyéb függőségeket, mind az ügyfél és kiszolgáló kódban is kiírhatja használatával a [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 

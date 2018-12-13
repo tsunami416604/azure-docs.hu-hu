@@ -1,21 +1,22 @@
 ---
-title: 'Oktatóanyag: Létrehozás, közzététel és válaszadás tudásbázisból – REST, C# – QnA Maker'
-titleSuffix: Azure Cognitive Services
+title: Hozzon létre, közzététel, választ
+titleSuffix: QnA Maker - Azure Cognitive Services
 description: Ez a REST-alapú oktatóanyag végigvezeti egy tudásbázis programozott módon történő létrehozásának és közzétételének, majd egy kérdés a tudásbázisból való megválaszolásának folyamatán.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: 5ed5564692e65a36ed5178e21a2e7b56a718ffcc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299561"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091992"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: a C# használata tudásbázis létrehozásához és kérdések megválaszolásához
 

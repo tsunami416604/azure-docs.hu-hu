@@ -1,6 +1,6 @@
 ---
-title: Hogyan kérhet támogatást az Azure Active Directoryhoz |} A Microsoft Docs
-description: Megtudhatja, hogyan kérhet támogatást az Azure Active Directoryban.
+title: Segítség keresése és a egy támogatási jegyet – Azure Active Directory |} A Microsoft Docs
+description: Segítséget kaphat, és nyisson egy támogatási jegyet az Azure Active Directory kapcsolatos utasításokat.
 services: active-directory
 documentationcenter: na
 author: eross-msft
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: d67b53d80b74d0a6ad3c4264a55a5e277acffd20
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729389"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083903"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>Hogyan: kérhet támogatást az Azure Active Directory
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése, és nyisson egy támogatási jegyet az Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Segítség keresése támogatási jegy megnyitása nélkül
@@ -89,6 +89,6 @@ Tekintse meg a [forduljon a Microsoft támogatás](https://portal.office.com/Sup
 
 ##  <a name="next-steps"></a>További lépések
 
-* [A Microsoft technikai Közösség](https://techcommunity.microsoft.com/)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
 * [Műszaki dokumentációja a docs.microsoft.com webhelyen](https://docs.microsoft.com/azure/active-directory/)

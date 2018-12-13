@@ -1,21 +1,22 @@
 ---
 title: 'Oktatóanyag: Nyelvi modell létrehozása a Speech Service segítségével'
 titlesuffix: Azure Cognitive Services
-description: Megismerheti a nyelvi modellek létrehozását a Speech Service segítségével.
+description: Megismerheti a nyelvi modellek létrehozását a Speech Service segítségével. A Microsoft meglévő állapota-a-a legújabb beszédmodellekké együtt a testreszabott nyelvi modell használatával beszédfelismerési interakció hozzáadása az alkalmazáshoz.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468993"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093462"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Oktatóanyag: Egyéni nyelvi modell létrehozása
 
@@ -48,7 +49,7 @@ A mondatoknak nem kell teljesnek vagy nyelvtanilag helyesnek lenniük, és ponto
 
 A nyelvi modell adatait UTF-8 BOM kódolásban kell megadni. A szövegfájlnak soronként egy példát (mondatot, kimondott szöveget vagy lekérdezést) kell tartalmaznia.
 
-Ha egyes kifejezésekhez nagyobb súlyt (fontosságot) szeretne rendelni, vegyen fel több olyan kimondott szöveget az adatok közé, amely tartalmazza az adott kifejezést. 
+Ha egyes kifejezésekhez nagyobb súlyt (fontosságot) szeretne rendelni, vegyen fel több olyan kimondott szöveget az adatok közé, amely tartalmazza az adott kifejezést.
 
 A nyelvi adatokra vonatkozó főbb követelményeket az alábbi táblázat foglalja össze.
 
@@ -75,7 +76,7 @@ Kattintson a **Language Datasets** (Nyelvi adatkészletek) sorban az **Import** 
 
 Amikor készen áll importálni a nyelvi adatkészletet, jelentkezzen be a [Speech Services portálra](https://customspeech.ai). Először is kattintson a felső sávon a **Custom Speech** legördülő menüre. Ezután válassza az **Adaptation Data** (Adaptációs adatok) lehetőséget. Amikor először próbál adatokat feltölteni a Speech Servicesbe, egy üres tábla jelenik meg **Datasets** (Adatkészletek) néven.
 
-Új adatkészlet importálásához kattintson a **Language Datasets** (Nyelvi adatkészletek) sorban az **Import** (Importálás) gombra. A webhely megjeleníti az új adatkészlet feltöltésére szolgáló oldalt. Adja meg a **nevet** és egy **leírást**, amelyek alapján később azonosíthatja az adatkészletet, majd válassza ki a területi beállítást. 
+Új adatkészlet importálásához kattintson a **Language Datasets** (Nyelvi adatkészletek) sorban az **Import** (Importálás) gombra. A webhely megjeleníti az új adatkészlet feltöltésére szolgáló oldalt. Adja meg a **nevet** és egy **leírást**, amelyek alapján később azonosíthatja az adatkészletet, majd válassza ki a területi beállítást.
 
 Ezután a **Choose File** (Fájl kiválasztása) gombra kattintva keresse meg a nyelvi adatokat tartalmazó szövegfájlt. Kattintson az **Import** (Importálás) gombra, és a rendszer feltölti az adatkészletet. Az adatkészlet méretétől függően az importálás eltarthat néhány percig.
 
@@ -97,9 +98,9 @@ Ha a nyelvi adatok készen vannak, válassza a **Menu** legördülő menü **Lan
 
 Bármely művelet elvégzése előtt ki kell választani a megfelelő területi beállítást. Az aktuális területi beállítás minden adat-, modell- és üzembehelyezési oldalon megjelenik a táblázat címében. A területi beállítás módosításához kattintson a táblázat címe alatt található **Change Locale** (Területi beállítás módosítása) gombra.  Ez a területi beállítás jóváhagyási oldalára irányítja át. A táblázathoz való visszatéréshez kattintson az **OK** gombra.
 
-A Create Language Model (Nyelvi modell létrehozása) lapon a **Name** (Név) és a **Description** (Leírás) mezők kitöltésével követheti nyomon a modellel kapcsolatos információkat, például azt, hogy milyen adatkészletet használ. Ezután válassza ki a legördülő menü **Base Language Model** (Alap nyelvi modell) elemét. Ez a modell szolgál a testreszabás kiindulópontjaként. 
+A Create Language Model (Nyelvi modell létrehozása) lapon a **Name** (Név) és a **Description** (Leírás) mezők kitöltésével követheti nyomon a modellel kapcsolatos információkat, például azt, hogy milyen adatkészletet használ. Ezután válassza ki a legördülő menü **Base Language Model** (Alap nyelvi modell) elemét. Ez a modell szolgál a testreszabás kiindulópontjaként.
 
-Két alap nyelvi modell közül választhat. A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el. 
+Két alap nyelvi modell közül választhat. A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el.
 
 A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el. Egy új, „Universal” (Univerzális) nevű modell is általánosan elérhetővé vált. A Universal (Univerzális) modell célja, hogy a használatával minden beszédhelyzet kezelhető legyen, és a jövőben felváltsa a Search and Dictation (Keresési és diktálási) és Conversational (Beszélgetési) modelleket.
 

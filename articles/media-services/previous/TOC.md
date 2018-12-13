@@ -126,13 +126,13 @@
 ### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)
 ### [Specifikáció: darabolt MP4 élő feldolgozása](media-services-fmp4-live-ingest-overview.md)
 
-## [Klipekkel kapcsolatos tartalmak](media-services-azure-media-clipper-overview.md)
-### [Bevezetés](media-services-azure-media-clipper-getting-started.md)
-### [Videók betöltése](media-services-azure-media-clipper-load-assets.md)
-### [Billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
-### [Honosítás konfigurálása](media-services-azure-media-clipper-localization.md)
-### [Klipekkel kapcsolatos feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
-### [Azure Portal](media-services-azure-media-clipper-portal.md)
+<!-- ## [Clip content](media-services-azure-media-clipper-overview.md)
+### [Getting started](media-services-azure-media-clipper-getting-started.md)
+### [Load videos](media-services-azure-media-clipper-load-assets.md)
+### [Configure keyboard shortcuts](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Configure localization](media-services-azure-media-clipper-localization.md)
+### [Submit clipping jobs](media-services-azure-media-clipper-submit-job.md)
+### [Azure portal](media-services-azure-media-clipper-portal.md) -->
 
 ## [Tartalom védelme](media-services-content-protection-overview.md)
 ### [Storage-titkosítás](media-services-rest-storage-encryption.md)

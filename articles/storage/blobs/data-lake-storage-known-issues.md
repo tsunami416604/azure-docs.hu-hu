@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: fb0a67a9b3b556a85a2b28989fe15dfeea1f0d72
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995431"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099586"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -27,11 +27,23 @@ Ha szeretne dolgozni a fiókjába feltöltött tartalom mindegyikét a ugyanazon
 
 ## <a name="blob-storage-apis"></a>A BLOB storage API-k
 
-A BLOB storage API-k még nem érhetők el az Azure Data Lake Storage általános 2 fiókokhoz.
+A BLOB storage API-k még nem érhetők el az Azure Data Lake Storage Gen2-fiókokhoz.
 
 Ezen API-k sikerült merülnek fel, mert a Blob Storage API-k még nem működik együtt az Azure Data Lake Gen2 API-k nem szándékos adatok hozzáférési problémák elkerülése érdekében le vannak tiltva.
 
-Virtuális gép (VM) a nem felügyelt lemezek ezen API-k attól függenek, ezért ha engedélyezi a hierarchikus névterek, a storage-fiók, érdemes a nem felügyelt Virtuálisgép-lemezek elhelyezését a storage-fiók, amely nem rendelkezik a hierarchikus névterek engedélyezettek.
+Ha ezekkel az API-adatok betöltése előtt letiltottuk azokat, és a, termelési adatokhoz való hozzáférést, majd lépjen kapcsolatba Microsoft Support a következő információkat:
+
+* Előfizetés-azonosító (GUID azonosítója, nem a név)
+
+* Storage-fiók neve
+
+* Éles környezetben aktívan érinti-e, és ha igen, melyik storage-fiókok?
+
+* Akkor is, ha az aktívan nem érintett éles környezetben, akkor mondja el, hogy ezeket az adatokat a valamilyen okból egy másik tárfiókba másolni kell, és ha igen, hogy miért?
+
+Ilyen körülmények azt is visszaállíthatók hozzáférés a Blob API-t egy korlátozott ideig, hogy a storage-fiókra, amely nem rendelkezik a hierarchikus névterek engedélyezettek az adatokat másolja.
+
+Virtuális gép (VM) a nem felügyelt lemezek a letiltott Blob Storage API-k attól függenek, ezért ha engedélyezi a hierarchikus névterek, a storage-fiók, érdemes elhelyezését a nem felügyelt Virtuálisgép-lemezek egy storage-fiókot, amely nem rendelkezik a hierarchikus névterek engedélyezettek.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 

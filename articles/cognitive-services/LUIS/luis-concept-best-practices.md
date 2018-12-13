@@ -1,21 +1,22 @@
 ---
-title: Ajánlott eljárások az alkalmazásfejlesztés az intelligens hangfelismerési szolgáltatással – beszédfelismerés
-titleSuffix: Azure Cognitive Services
-description: A legjobb eredmények eléréséhez a LUIS ajánlott eljárások megismerése.
+title: Ajánlott eljárások
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Ismerje meg, a LUIS gyakorlati tanácsok a legjobb eredményt a LUIS-alkalmazás modellből.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6b7b9c8a2a3e7da1628ef3e6f93a4b632ce38615
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e63d6ed584c0e8afc823bbcdc6e70ceabbf43db6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637780"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085280"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
 Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
@@ -50,10 +51,10 @@ A két szándék közötti szószedet megegyezik, ha a leképezés egyesítése,
 
 Vegye figyelembe a következő példa kimondott szöveg:
 
-```
-Book a flight
-Book a hotel
-```
+|Példák kimondott szövegekre|
+|--|
+|Könyvet a repülőút|
+|Egy szállodai Vendég könyv|
 
 "Például book repülőjegyet" és a "egy szállodai Vendég például Book" használata a azonos szóhasználatát "könyv egy". Ez átfedésben van így azonosnak kell lennie a flight és Szálloda különböző szóból álló szándékot kinyert entitásokat. 
 

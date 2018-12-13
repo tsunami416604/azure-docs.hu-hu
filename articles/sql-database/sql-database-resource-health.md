@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 8b982dbddf22393e276437c77007e18bc4d40042
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867189"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083886"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 
@@ -67,11 +67,11 @@ Amikor az SQL Database állásidő, elemzési történik egy okának megállapí
 
 #### <a name="planned-maintenance"></a>Tervezett karbantartás
 
-Az Azure-infrastruktúra rendszeres időközönként hajtja végre a tervezett karbantartás – frissítse az adatközpontban található hardveres vagy szoftveres összetevőket. Az adatbázis karbantartási megy keresztül, míg az SQL néhány meglévő megszakítja, és újakat utasítania. A bejelentkezés tervezett karbantartás során észlelt hibák általában átmeneti jellegű, és az újrapróbálkozási logika segítségével csökkentésében. Ha továbbra is jelentkezik a bejelentkezési hibák, kérjük forduljon az ügyfélszolgálathoz.
+Az Azure-infrastruktúra rendszeres időközönként hajtja végre a tervezett karbantartás – frissítse az adatközpontban található hardveres vagy szoftveres összetevőket. Az adatbázis karbantartási megy keresztül, míg az SQL néhány meglévő megszakítja, és újakat utasítania. A tervezett karbantartás során észlelt sikertelen általában átmenetiek, és [újrapróbálkozási logika](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) segít csökkentésében. Ha továbbra is jelentkezik a bejelentkezési hibák, kérjük forduljon az ügyfélszolgálathoz.
 
 #### <a name="reconfiguration"></a>Reconfiguration
 
-Reconfigurations átmeneti feltételek minősülnek, és várhatóan időről időre. Ezeket az eseményeket is elindítható a terhelés terheléselosztási vagy a szoftver vagy hardver meghibásodása. Bármilyen termelési ügyfélalkalmazás, amely csatlakozik egy felhőbeli adatbázis-szolgáltatás meg kell valósítania egy robusztus kapcsolat újrapróbálkozási logika leállítási logikát, és segít az ilyen helyzetekben csökkentése és általánosan győződjön meg a hibákat átlátható a végfelhasználók számára.
+Reconfigurations átmeneti feltételek minősülnek, és várhatóan időről időre. Ezeket az eseményeket is elindítható a terhelés terheléselosztási vagy a szoftver vagy hardver meghibásodása. Minden olyan éles ügyfélalkalmazás, amely csatlakozik egy felhőalapú adatbázis meg kell valósítania egy robusztus kapcsolat [újrapróbálkozási logika](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), ahogy ez segít az ilyen helyzetekben csökkentése, és általában győződjön meg a hibákat átlátható a végfelhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
 

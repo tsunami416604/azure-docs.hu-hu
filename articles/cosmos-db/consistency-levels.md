@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 075f79707dda4683c288163ec7bfdbf9807e153f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834868"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089734"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
-Elosztott adatbázisok által használt, magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön meg az olvasás következetes és a rendelkezésre állási, teljesítmény és késés alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. A [linearizálhatósági](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) , vagy az erős konzisztencia modell adatok programozhatóság gold színvonalát. De ad hozzá egy nagy ahhoz, díja (a stabil állapotot) nagyobb késést, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások. 
+Elosztott adatbázisok által használt, magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön meg az olvasás következetes és a rendelkezésre állási, teljesítmény és késés alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. A [linearizálhatósági](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) , vagy az erős konzisztencia modell adatok programozhatóság gold színvonalát. De ad hozzá egy nagy ahhoz, díja (a stabil állapotot) nagyobb késést, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások. 
 
 Az Azure Cosmos DB választási helyett két szélsőséges spektrumát, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia vége, de vannak számos konzisztenciaszint mentén az értéktartományon. A fejlesztők ezek a beállítások segítségével győződjön meg arról, pontosan lehetőségeket és részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. 
 
@@ -38,7 +38,7 @@ Az alapértelmezett konzisztenciaszint bármikor konfigurálhatja a Azure Cosmos
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Konzisztenciaszintek társított garanciák
 
-Az átfogó SLA-k az Azure Cosmos DB garantálja, hogy az olvasási kérések 100 %-os teljesíti-e megfelelő konzisztenciagaranciának bármely konzisztenciaszint választja által biztosított. A konzisztenciaszint társított összes konzisztenciagaranciákat teljesülése esetén egy olvasási kérést megfelel-e a konzisztencia SLA-t. Az öt konzisztenciaszintek az Azure Cosmos DB használatával pontos meghatározását a [TLA + specifikációs nyelv](http://lamport.azurewebsites.net/tla/tla.html) szerepelnek a [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub-adattárban. 
+Az átfogó SLA-k az Azure Cosmos DB garantálja, hogy az olvasási kérések 100 %-os teljesíti-e megfelelő konzisztenciagaranciának bármely konzisztenciaszint választja által biztosított. A konzisztenciaszint társított összes konzisztenciagaranciákat teljesülése esetén egy olvasási kérést megfelel-e a konzisztencia SLA-t. Az öt konzisztenciaszintek az Azure Cosmos DB használatával pontos meghatározását a [TLA + specifikációs nyelv](https://lamport.azurewebsites.net/tla/tla.html) szerepelnek a [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub-adattárban. 
 
 Az öt konzisztenciaszintek szemantikáját ebben a témakörben találhatók:
 
@@ -85,7 +85,7 @@ Konzisztencia fogalmak kapcsolatos további információkért olvassa el a köve
 - [A replikált adatok konzisztencia kifejtett keresztül Baseball (tanulmány) Doug Terry által](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Munkamenet garanciákat, kis mértékben konzisztens replikált adatok](https://dl.acm.org/citation.cfm?id=383631)
 - [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis rendszerek kialakításában: korlát a történetet csak egy részét képezi.](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
-- [A gyakorlati részleges határozatképességére valószínűségi korlátozott frissesség (PBS)](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+- [A gyakorlati részleges határozatképességére valószínűségi korlátozott frissesség (PBS)](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Végül konzisztens – javított változat](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
 ## <a name="next-steps"></a>További lépések

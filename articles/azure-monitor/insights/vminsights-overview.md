@@ -14,47 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: d37ca7d46f1231a8e1b0b258c10089fe6ba81fba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.openlocfilehash: c7d2004da52d83ceda62dc31583797d9a218ef48
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715549"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085451"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Mi az Azure Monitor-beli virtuális gépek (előzetes verzió)?
 
-A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM) és az Azure-beli virtuálisgép-méretezési csoportok ipari méretekben elemzésével, a teljesítmény és a Windows és Linux rendszerű virtuális gépekhez, beleértve a különböző folyamatok és az egyéb összekapcsolt függőségek állapotát erőforrások és a külső folyamatok. A megoldás tartalmaz a teljesítmény figyelése támogatása, és a virtuális gépek alkalmazásfüggőségek üzemeltetett a helyszínen vagy egy másik felhőszolgáltatóval. Három legfontosabb funkcióit, hogy az ilyen részletes elemzések benne:
+A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. A szolgáltatás elemzi a teljesítmény és a Windows és Linux rendszerű virtuális gépek, a folyamatok és az egyéb erőforrások és a külső folyamatok függőségi figyelési állapotát. 
 
-* Windows és Linux operációs rendszert futtató Azure virtuális gépek logikai összetevőit alapján előre konfigurált állapotára vonatkozó feltételek és a riasztások alapján a kiértékelt feltétel teljesülése esetén.  
-* Alapvető teljesítmény-mérőszámok a processzor, memória, lemez és a Vendég virtuális gép operációs rendszerének a hálózati adapter gyűjtött és előre definiált felkapott teljesítményét a diagramokban.
-* Függőségi térkép, amely a virtuális Gépeket a felderített összekapcsolt összetevők több erőforráscsoportok és előfizetések.  
+Az Azure Monitor-beli virtuális gépek a megoldás, a teljesítmény- és alkalmazásfüggőségek figyelés, a virtuális gépek, amelyek üzemeltethető a helyszínen vagy egy másik felhőszolgáltatóval támogatását is tartalmazza. Három főbb funkcióiról részletes betekintést biztosít:
 
-Ezek a funkciók vannak szervezve három szempontok:
+* **Windows és Linux rendszerű Azure virtuális gépek logikai összetevőit**: mérése történik, szemben az előre konfigurált állapotára vonatkozó feltételek, és azok riasztást küld, ha a kiértékelt feltétel nem teljesül.  
+
+* **Előre meghatározott, népszerű teljesítménydiagramok**: alapvető teljesítmény-mérőszámokat a Vendég virtuális gép operációs rendszer megjelenítéséhez.
+
+* **Függőségi térkép**: a virtuális géppel a különböző erőforráscsoportokban és előfizetésekben összekapcsolt összetevőket jeleníti meg.  
+
+Az funkciók vannak szervezve három szempontok:
 
 * Állapot
 * Teljesítmény
 * Térkép
 
 >[!NOTE]
->Jelenleg az állapotfigyelő szolgáltatás csak kínáljuk az Azure virtuális gépek és virtuálisgép-méretezési csoportok. Teljesítmény és a térkép támogatja az Azure virtuális gépek és a környezet vagy a más felhőszolgáltatók által futtatott virtuális gépek is.
->
+>Jelenleg az állapotfigyelő szolgáltatás kínáljuk csak Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok. A teljesítmény és a térkép funkciója a környezet vagy a más felhőszolgáltatók támogatja az Azure virtuális gépek és a futó virtuális gépekről.
 
-A Log Analytics-integráció kínál hatékony összesítését, szűrés és az adatok tendenciája végrehajtása idővel. A számítási feladatok átfogó figyelést nem érhető el önmagában az Azure Monitor, a Service Map vagy a Log Analytics.  
+A Log Analytics-integráció biztosít hatékony összesítési és szűrés, és idővel elemezheti adatait trendeket. Az ilyen az átfogó munkaterhelés-figyelés nem érhető el az Azure Monitor, a Service Map vagy önálló Log Analytics.  
 
-Megtekintheti az adatok közvetlenül a környezetében egyetlen virtuális Gépet a virtuális gépről, vagy az Azure Monitor szolgáltatással biztosít a virtuális gépeket az egyes szolgáltatásokhoz, a következő perspektívát alapján összesített nézete:
+Megtekintheti az adatok közvetlenül a virtuális gép egyetlen virtuális gépen, vagy használhatja az Azure Monitor, hogy a virtuális gépek összesített nézete. Ebben a nézetben minden egyes szolgáltatás perspektíva alapul:
 
-* Egy erőforráscsoportba kapcsolódó virtuális gépek állapota –
-* Térkép és a teljesítmény - virtuális gépek konfigurálva, hogy egy adott Log Analytics-munkaterület
+* **Egészségügyi**: A virtuális gépeket kapcsolódó egy erőforráscsoportot.
+* **Térkép** és **teljesítmény**: A virtuális gépek úgy vannak konfigurálva, a jelentés egy adott Log Analytics-munkaterületet.
 
-![Virtuális gép insights perspektíva portálról](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
+![Az Azure Portalon a virtuális gép insights perspektíva](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 
-Fejlesztési és üzemeltetési hatékonyan kiszámítható teljesítményt és a fontos alkalmazások rendelkezésre állásának biztosításához azonosításával, az operációs rendszer kritikus események és a teljesítmény szűk hálózati problémákat, és ismerje meg, ha egy probléma kapcsolatos egyéb függőségek.  
+Az Azure DevOps is biztosít, kiszámítható teljesítményt és a fontos alkalmazások rendelkezésre állását. Az operációs rendszer kritikus események, teljesítmény szűk keresztmetszeteket és hálózati problémák azonosítja. Az Azure DevOps segítségével megismerheti, hogy más függőségek kapcsolatos probléma.  
 
 ## <a name="data-usage"></a>Adathasználat 
 
-A virtuális gépek esetében a virtuális gépek által gyűjtött adatok előkészítése az Azure Monitor, amint azt betöltött és az Azure Monitor tárolja. A virtuális gépek az Azure Monitor történik az adatok betöltött és őrzi, a metrika idősorozat-figyelt, a riasztási szabályok létrehozott értesítéseket küldeni, díjszabás szerint az Azure monitoron közzétett állapotára vonatkozó feltételek száma [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/monitor/)
+Az Azure Monitor-beli virtuális gépek telepítésekor a virtuális gépek által összegyűjtött adatok betöltött és az Azure Monitor tárolja. A közzétett díjszabás alapján a [díjszabását ismertető oldalt az Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/), a virtuális gépek az Azure Monitor alapján:
+* Az adatokat, amelyeket betöltött tárolja.
+* A health feltételek metrikát idősorozat-figyelt száma.
+* A riasztási szabályok, amelyek akkor jönnek létre.
+* Az értesítéseket küldött. 
 
-A napló méretét karakterlánc hosszának számlálói alapján változik, és növelheti a logikai lemezek és hálózati adapterek számát. Ha már rendelkezik egy munkaterületet, és ezeket a számlálókat gyűjti, nem kell a alkalmazni ismétlődő díjakat. A Service Map már használ, az egyetlen változás megjelenik-e a kapcsolat további adatokat küld a Azure Monitor.
+A karakterlánc hosszának számlálók eltérő a napló méretét, és azt a logikai lemezek és hálózati adapterek száma növelhető. Ha már rendelkezik egy munkaterületet, és ezeket a számlálókat gyűjti, nem ismétlődő díjak érvényesek. A Service Map már használ, az egyetlen változás megjelenik-e a kapcsolat további adatokat az Azure Monitor küldött.
 
 ## <a name="next-steps"></a>További lépések
-Felülvizsgálat [előkészítése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.
+A követelmények és a módszereket, amelyek segítenek a virtuális gépek figyelése céljából, tekintse át [-beli virtuális gépek üzembe helyezése az Azure Monitor](vminsights-onboard.md).

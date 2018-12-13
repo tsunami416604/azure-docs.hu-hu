@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964253"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098100"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -275,6 +275,12 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 3179561 - IS --> 
 - Felügyelt lemezek használatának órában jelentett, leírtak szerint a [Azure Stack-használat – gyakori kérdések](azure-stack-usage-related-faq.md#managed-disks). Azonban az Azure Stack a számlázás a havi díjak; ezek helyett használja, akkor előfordulhat, hogy nem megfelelően kell fizetnie a Managed Disks-használat vagy az előtt szeptember 27. Azt ideiglenesen felfüggesztette a díjak a Managed Disks után szeptember mindaddig, amíg a számlázási kérdést 27. Ha Ön felszámítani, nem megfelelően a Managed Disks-használat, lépjen kapcsolatba a Microsoft számlázási támogatást.
 Az Azure Stack-használati API-k készült használati jelentések megfelelő mennyiséget, és használható.
+
+<!-- 3507629 - IS, ASDK --> 
+- Felügyelt lemezeket hoz létre két új [kvótatípusok számítási](azure-stack-quota-types.md#compute-quota-types) korlátozhatja a felügyelt lemezek, amelyek kioszthatóak maximális kapacitását. Alapértelmezés szerint a 2048 GiB az egyes felügyelt lemezek kvóta van lefoglalva. Azonban előfordulhat, hogy problémák merülnek fel a következő:
+
+   - Kvóták 1808 frissítés előtt létrehozott a Managed Disks kvóta jelennek meg 0 értéket a felügyeleti portálon, bár 2048 GiB le van foglalva. Növelheti vagy csökkentheti a tényleges igényeinek és az újonnan beállított értéket kvótaérték felülbírálja a 2048 GiB alapértelmezett.
+   - Ha a kvóta értékének 0-ra frissít, egyenértékű, 2048 GiB alapértelmezett értékét. A probléma megoldásához állítsa a kvótaérték 1.
 
 <!-- 2869209 – IS, ASDK --> 
 - Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 

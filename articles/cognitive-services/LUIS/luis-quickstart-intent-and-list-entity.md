@@ -1,21 +1,22 @@
 ---
-title: '4. oktatóanyag: Pontos szövegegyezés – LUIS listaentitás'
+title: Pontos egyezés egyeztetése
 titleSuffix: Azure Cognitive Services
 description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425071"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096689"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>4. oktatóanyag: Pontos szövegegyezések kinyerése
 Ebben az oktatóanyagban megismerheti, hogyan kérheti le az elemek előre meghatározott listájával egyező adatokat. A lista minden eleme tartalmazhatja szinonimák egy listáját. Az Emberi erőforrások alkalmazásban egy alkalmazottat számos kulcsfontosságú információ azonosíthat, például a név, az e-mail-cím, a telefonszám és az USA-beli szövetségi adóazonosító szám. 
@@ -106,11 +107,11 @@ Az egyes elemek elsődleges, _kanonikus_ neve az alkalmazotti szám. Ebben a tar
 
 3. A felugró párbeszédpanelen adja meg az `Employee` értéket az entitás neveként, és a **List** (Lista) értéket az entitás típusaként. Válassza a **Done** (Kész) lehetőséget.  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Új entitás létrehozása előugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Új entitás felugró párbeszédpanel létrehozásának képernyőképe](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "létrehozása új entitás felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. Az Employee entity (Alkalmazottentitás) lapon az új értéknek adja meg a következőt: `Employee-24612`.
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Érték megadásának képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![Képernyőkép a érték megadása](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "érték megadása képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. Szinonimák esetében vegye fel az alábbi értékeket:
 
@@ -122,7 +123,7 @@ Az egyes elemek elsődleges, _kanonikus_ neve az alkalmazotti szám. Ebben a tar
     |Saját mobiltelefonszám|425-555-1212|
     |USA-beli szövetségi társadalombiztosítási szám (SSN)|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Szinonimák megadásának képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![Képernyőkép a szinonimák megadásáról](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Képernyőkép a szinonimák megadása")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. Új értékként írja be a következőt: `Employee-45612`.
 
@@ -150,7 +151,7 @@ Az egyes elemek elsődleges, _kanonikus_ neve az alkalmazotti szám. Ebben a tar
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `shift 123-45-6789 from Z-1242 to T-54672`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a `Employee` szándékot kell visszaadnia, kinyerve a következőt: `MoveEmployee`.
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310041"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091628"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -34,13 +35,13 @@ A Stream Analytics az Azure Data Lake Store-kimenet jelenleg nem érhető el az 
 
 1. Data Lake Storage kiválasztásakor az Azure Portalon kimenetként egy kapcsolat egy meglévő Data Lake Store engedélyezésére kéri.  
 
-   ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![Engedélyezze a Data Lake Store kapcsolatot](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. Ha már rendelkezik hozzáféréssel a Data Lake Store, válassza ki a **engedélyezése most** és a egy lapot kap, miszerint jelző **engedélyezési átirányítása**. Miután engedélyezési sikeres, megjelennek az oldal, amely lehetővé teszi, hogy a Data Lake Store kimenetének konfigurálásához.
 
 3. A Data Lake Store-fiók hitelesítése után a Data Lake Store kimeneti konfigurálhatja a tulajdonságait. Az alábbi táblázatban látható a tulajdonság nevét és azok leírását a Data Lake Store kimenetének konfigurálásához listája.
 
-   ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![Data Lake Store meghatározni a Stream Analytics-kimenetben](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | Tulajdonság neve | Leírás | 
 | --- | --- |
@@ -59,7 +60,7 @@ A Data Lake Store-fiók hitelesítse magát újra, ha a jelszó megváltozott, m
 
 Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési...** . A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
 
-![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![A kimenet a Data Lake Store engedély megújítása](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
 [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként, amely a relációs jellegű adatokhoz vagy alkalmazásokhoz, amelyek egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni egy létező táblázat egy Azure SQL Database-ben.  A következő tábla sémáját pontosan egyeznie kell a mezőket és azok típusát, hogy a feladat kimenete. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) is megadható kimenetként, valamint az SQL Database output paraméter használatával. Írási teljesítmény javítására kapcsolatos további információkért tekintse meg a [Stream Analytics és az Azure SQL Database kimenetként](stream-analytics-sql-output-perf.md) cikk. Az alábbi táblázat felsorolja a tulajdonságnevek és a egy SQL Database-kimenet létrehozása leírását.
@@ -133,11 +134,11 @@ A Stream Analytics a Power BI-kimenet jelenleg nem érhető el az Azure China (2
 ### <a name="authorize-a-power-bi-account"></a>Engedélyezze a Power BI-fiókkal
 1. Az Azure Portalon kimenetként kiválasztásakor a Power BI, kéri engedélyezésére egy meglévő Power BI-t, vagy hozzon létre egy új Power BI-fiókot.  
    
-   ![Engedélyezze a Power BI-t](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![Kimenet konfigurálása Power BI-felhasználók engedélyezése](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. Hozzon létre egy új fiókot, ha nem, de rendelkezik ilyennel, majd kattintson az engedélyezés most.  A következő oldal jelenik meg:
    
-   ![Azure-fiókját Power bi-ban](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![A Power bi-bA az Azure-fiók hitelesítése](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. Ebben a lépésben adja meg a munkahelyi vagy iskolai fiókkal, amelyek engedélyezik a Power BI-kimenet. Ha nem már jelentkezett a Power bi-hoz, válassza az Jelentkezzen most ki. A munkahelyi vagy iskolai fiókkal, használhatja a Power bi-hoz az Azure-előfizetés fiókból, amely a jelenleg használt a következővel eltérő lehet.
 
@@ -190,11 +191,11 @@ Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | Karakterlá
 ### <a name="renew-power-bi-authorization"></a>A Power BI engedély megújítása
 Ha a Power BI-fiókja jelszavát megváltozik, miután a Stream Analytics-feladat létrehozásának vagy utolsó hitelesített, hitelesítse magát újra a Stream Analytics szeretne. Ha a multi-factor Authentication (MFA) az Azure Active Directory (AAD) bérlőre van konfigurálva, is újítsa meg a Power BI engedélyezési kéthetente kell. A probléma tünete nincs feladatkimenet és a "hitelesítés felhasználói hibája" a műveletnaplók:
 
-  ![A Power bi-ban frissítési jogkivonat hiba](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![A Power BI hitelesítés felhasználói hiba](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI-kimenet.  Válassza ki a **engedély megújítása** hivatkozásra, és indítsa újra a feladatot a **leállt utoljára** adatvesztés elkerülése érdekében.
 
-  ![A Power BI megújítja a hitelesítési](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![A kimenet a Power BI engedély megújítása](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Az Azure Table storage](../storage/common/storage-introduction.md) rugalmasan méretezhető, magas rendelkezésre állású tárolási kínál, hogy az alkalmazás automatikusan skálázhatja a felhasználói igények. TABLE storage szolgáltatás a Microsoft NoSQL kulcs-/ attribútumtár, melyik a séma kevesebb korlátozásaihoz kihasználhatják a strukturált adatok esetében. Az Azure Table storage segítségével tárolja az adatok megőrzését és a hatékony lekéréséhez.

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431595"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088877"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
  
@@ -58,7 +58,7 @@ Egyszerű felhasználói JavaScript-függvény meglévő Stream Analytics-felada
 4.  Az **Új függvény** panel **Függvénytípus** részén válassza a **JavaScript** lehetőséget. A szerkesztőben megjelenik egy alapértelmezett függvénysablon.
 5.  Az **UDF-alias** mezőben adja meg a **hex2Int** értéket, és módosítsa a függvény implementálását az alábbiak szerint:
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ Egyszerű felhasználói JavaScript-függvény meglévő Stream Analytics-felada
 1. A lekérdezésszerkesztő **FELADATTOPOLÓGIA** részén válassza a **Lekérdezés** lehetőséget.
 2.  Módosítsa a lekérdezést, majd hívja meg a felhasználói függvényt az alábbiak szerint:
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -99,7 +99,7 @@ Stream Analytics | JavaScript
 bigint | Szám (a JavaScript legfeljebb pontosan a 2^53-ig tudja a számokat kezelni)
 DateTime | Dátum (a JavaScript csak az ezredmásodperceket támogatja)
 double | Szám
-nvarchar(MAX) | Sztring
+nvarchar(MAX) | Karakterlánc
 Record | Objektum
 Tömb | Tömb
 NULL | Null
@@ -112,7 +112,7 @@ JavaScript | Stream Analytics
 --- | ---
 Szám | Bigint (ha a szám kerek és a long.MinValue és a long.MaxValue közé esik, máskülönben double)
 Dátum | DateTime
-Sztring | nvarchar(MAX)
+Karakterlánc | nvarchar(MAX)
 Objektum | Record
 Tömb | Tömb
 Null, nem definiált | NULL
@@ -129,14 +129,14 @@ Ha van még egy további feldolgozási lépés, amely a Stream Analytics-feladat
 
 **Felhasználói JavaScript-függvény definíciója:**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **Mintalekérdezés:**
-```
+```SQL
 SELECT
     DataString,
     DataValue,

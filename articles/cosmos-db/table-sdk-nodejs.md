@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 7ffcf656762c82d81c86eb394b028722566dafdb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 04e4337581337a467fc49927f0f353d42c7b801a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864417"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089667"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a node.js-hez: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "52864417"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API-dokumentáció**|[NODE.js API dokumentációja](http://azure.github.io/azure-storage-node/)|
+|**API-dokumentáció**|[NODE.js API dokumentációja](https://azure.github.io/azure-storage-node/)|
 |**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

@@ -1,19 +1,20 @@
 ---
-title: 'Az Azure ExpressRoute Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: PowerShell |} A Microsoft Docs'
+title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: PowerShell: Azure |} A Microsoft Docs'
 description: Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonalszűrők konfigurálása
 documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: d4ef500185675ab84485c5dd6a9af4034c57b060
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419265"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096296"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: PowerShell
 > [!div class="op_single_selector"]

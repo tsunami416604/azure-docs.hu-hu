@@ -11,27 +11,27 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: c270fef40b732f170add32ef52eeadc790d8cd83
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913501"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092366"
 ---
 # <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>Rövid útmutató: Go használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) egy Azure SQL Database-adatbázishoz való csatlakozáshoz. Emellett az adatok lekérdezéséhez és módosításához használatos Transact-SQL-utasításokat is bemutatja.
+Ez a rövid útmutató használatát mutatja be a [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelv, az Azure SQL Database-adatbázishoz csatlakozhat, és futtasson Transact-SQL-utasításokat az adatok lekérdezéséhez és módosításához. [Nyissa meg](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti az egyszerű, megbízható és hatékony építhet ki.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
+- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) a számítógép nyilvános IP-cím beállítva.
 
-- Telepítette a Gót és az operációs rendszerének megfelelő kapcsolódó szoftvereket:
+- A go és a telepített operációs rendszerhez kapcsolódó szoftvereket:
 
     - **MacOS**: Telepítse a Homebrew-t és a GoLangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
     - **Ubuntu**: Telepítse a GoLangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
@@ -49,7 +49,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
    mkdir SqlServerSample
    ```
 
-2. Lépjen az **SqlServerSample** könyvtárba, majd telepítse a Go SQL Server-illesztőjét.
+2. Módosítsa a könyvtárat a **SqlServerSample** , és telepítse az SQL Server illesztőprogramját a Góhoz készült.
 
    ```bash
    cd SqlServerSample
@@ -59,7 +59,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="create-sample-data"></a>Mintaadatok létrehozása
 
-1. Egy szövegszerkesztővel hozzon létre egy **CreateTestData.sql** nevű fájlt, és mentse az **SqlServerSample** mappába. Másolja ki és illessze be a következő T-SQL kódot a létrehozott fájlba. Ez a kód létrehoz egy sémát és egy táblát, és beszúr néhány sort.
+1. Tetszőleges szövegszerkesztőben hozzon létre egy nevű fájlt **CreateTestData.sql** a a **SqlServerSample** mappát. A fájlban másolás és beillesztés, az alábbi T-SQL kód, amely létrehoz egy sémát, tábla, és beszúr néhány sort.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -82,7 +82,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
    GO
    ```
 
-2. Csatlakozzon az adatbázishoz az sqlcmd használatával, majd futtassa az SQL-szkriptet, hogy létrehozzon egy sémát és egy táblát, és beszúrjon néhány sort. Helyettesítse be a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót.
+2. Használat `sqlcmd` kapcsolódni az adatbázishoz, és az újonnan létrehozott SQL-szkript futtatásához. Helyettesítse be a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót.
 
    ```bash
    sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
@@ -92,7 +92,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 1. Hozzon létre egy **sample.go** nevű fájlt az **SqlServerSample** mappában.
 
-2. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót. Ez a példa a GoLang Context metódusainak használatával gondoskodik róla, hogy aktív kapcsolat álljon fenn az adatbázis-kiszolgálóval.
+2. Nyissa meg a fájlt, és illessze be az alábbi kódot. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót. Ez a példa a GoLang Context metódusainak használatával győződjön meg arról, hogy az adatbázis-kiszolgáló aktív kapcsolat van.
 
    ```go
    package main
@@ -288,13 +288,13 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Futtassa az alábbi parancsokat a parancssorban:
+1. A parancssorban futtassa a következő parancsot.
 
    ```bash
    go run sample.go
    ```
 
-2. Ellenőrizze a kimenetet:
+2. A kimenet ellenőrzése
 
    ```text
    Connected!
@@ -311,6 +311,6 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 ## <a name="next-steps"></a>További lépések
 
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
-- [Go illesztő a Microsoft SQL Serverhez](https://github.com/denisenkom/go-mssqldb)
+- [Go illesztő a Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Problémák jelentése és kérdezés](https://github.com/denisenkom/go-mssqldb/issues)
 

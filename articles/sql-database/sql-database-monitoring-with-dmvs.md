@@ -1,5 +1,5 @@
 ---
-title: Figyelés dinamikus felügyeleti nézetek használatával az Azure SQL Database |} A Microsoft Docs
+title: Az Azure SQL Database használatával DMV-kkel teljesítményének figyelése |} A Microsoft Docs
 description: Megtudhatja, hogyan észlelheti és diagnosztizálhatja a teljesítményproblémákat gyakran figyelése a Microsoft Azure SQL Database dinamikus felügyeleti nézetek használatával.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288527"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876313"
 ---
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Azure SQL Database teljesítményének figyelése dinamikus felügyeleti nézetek használatával
 
 A Microsoft Azure SQL Database lehetővé teszi, hogy a dinamikus felügyeleti nézetek által letiltott vagy hosszú ideig futó lekérdezéseket, erőforrás-keresztmetszetek, gyenge lekérdezési tervek és így tovább okozhatta teljesítményproblémák diagnosztizálásához egy részét. Ez a témakör információt nyújt az gyakori teljesítményproblémák észlelése dinamikus felügyeleti nézetek használatával.
 

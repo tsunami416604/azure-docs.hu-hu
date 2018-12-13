@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 918ffaf42e7216313a385c866f73bd57a529784a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838888"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090754"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
@@ -94,13 +94,12 @@ Hozzon létre az Azure-erőforrások – Azure Cosmos DB, Storage-fiókot, Event
 
 Most már létrehozhat egy gyűjteményt, amely tárolja az e-kereskedelmi webhely eseményeket. Amikor egy felhasználó megtekinti egy elem, egy elemet ad hozzá a kosárhoz vagy cikket vásárol, a gyűjtemény fog kapni egy rekordot, amely tartalmazza a művelet ("megtekintett", "hozzáadott" vagy "vásárolt"), érintett elem nevét, az ár, az érintett elem és a felhasználó a bevásárlókocsi i azonosító száma nvolved.
 
-1. Lépjen a [az Azure Portal](http://portal.azure.com/) , és keresse meg a **Azure Cosmos DB-fiók** a sablon üzembe helyezéséhez létrehozott.  
+1. Lépjen a [az Azure Portal](https://portal.azure.com/) , és keresse meg a **Azure Cosmos DB-fiók** a sablon üzembe helyezéséhez létrehozott.  
 
 2. Az a **adatkezelő** ablaktáblán válassza **új gyűjtemény** , és töltse ki az űrlapot a következő adatokat:  
 
    * Az a **adatbázis-azonosító** mezőben válassza **új létrehozása**, majd adja meg **changefeedlabdatabase**. Hagyja a **kiépítése adatbázis átviteli** mező nincs bejelölve.  
    * Az a **gyűjtemény** azonosító mezőben adja meg **changefeedlabcollection**.  
-   * A **tárolókapacitás**válassza **korlátlan**.  
    * Az a **partíciókulcs** írja be a következőt **/cikk**. Ez a kis-és nagybetűket, ezért győződjön meg arról, hogy írja be azt megfelelően.  
    * Az a **átviteli** írja be a következőt **10000**.  
    * Kattintson az **OK** gombra.  
@@ -119,7 +118,7 @@ Most már létrehozhat egy gyűjteményt, amely tárolja az e-kereskedelmi webhe
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Az Azure Cosmos DB kapcsolati sztring lekérése
 
-1. Lépjen a [az Azure Portal](http://portal.azure.com/) , és keresse meg a **Azure Cosmos DB-fiók** a sablon üzembe helyezéséhez létrehozott.  
+1. Lépjen a [az Azure Portal](https://portal.azure.com/) , és keresse meg a **Azure Cosmos DB-fiók** a sablon üzembe helyezéséhez létrehozott.  
 
 2. Keresse meg a **kulcsok** panelen másolja az elsődleges KAPCSOLATI KARAKTERLÁNCOT, és másolja a Jegyzettömbbe vagy egy másik dokumentumba, hogy a labor teljes hozzáférést kap. Címkével kell **Cosmos DB kapcsolati sztring**. Szüksége lesz később másolja a karakterláncot a kódban, ezért jegyezze fel, és ne felejtse el, ahol tárolja azt.
 
@@ -179,7 +178,7 @@ Megtekintéséhez hogyan módosítási hírcsatorna új műveletek egy e-kereske
  
 6. Várjon, amíg a futtatni kívánt programot. A csillag jelenti azt, hogy adatok várható! Hagyja futni a programot – fontos, hogy nagy mennyiségű adatot gyűjt.  
 
-7. Ha manuálisan lép [az Azure Portal](http://portal.azure.com/) , majd az a Cosmos DB-fiókot az erőforráscsoportban, majd **adatkezelő**, látni fogja a véletlenszerű importált adatokat a  **changefeedlabcollection** .
+7. Ha manuálisan lép [az Azure Portal](https://portal.azure.com/) , majd az a Cosmos DB-fiókot az erőforráscsoportban, majd **adatkezelő**, látni fogja a véletlenszerű importált adatokat a  **changefeedlabcollection** .
  
    ![A portál létrehozott adatok](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -187,7 +186,7 @@ Megtekintéséhez hogyan módosítási hírcsatorna új műveletek egy e-kereske
 
 Az Azure Stream Analytics egy teljes körűen felügyelt felhőszolgáltatás, a streamelési adatok valós idejű feldolgozásra. A tesztkörnyezetben használhatjuk a stream analytics az Eseményközpontból érkező új események feldolgozni (azaz ha elem tekinthetők meg, a bevásárlókocsihoz hozzáadott, vagy megvásárolható), események építhet be valós idejű adatok elemzése és elküldheti a vizualizációt Power BI-bA.
 
-1. Az a [az Azure Portal](http://portal.azure.com/), keresse meg az erőforráscsoportot, majd a **streamjob1** (a stream analytics-feladat, amelyet a prelab).  
+1. Az a [az Azure Portal](https://portal.azure.com/), keresse meg az erőforráscsoportot, majd a **streamjob1** (a stream analytics-feladat, amelyet a prelab).  
 
 2. Válassza ki **bemenetek** ahogyan alább is látható.  
 
@@ -322,11 +321,11 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
 
 Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-kereskedelmi webhely kapcsolódni. Az e-kereskedelmi webhely készítéséhez használni egy Azure Cosmos DB-adatbázis (nők, férfi, Uniszex) termékkategóriák listája, a termékkatalógus és a legnépszerűbb elemek listáját.
 
-1. Lépjen vissza a [az Azure Portal](http://portal.azure.com/), majd a **Cosmos DB-fiók**, majd a **adatkezelő**.  
+1. Lépjen vissza a [az Azure Portal](https://portal.azure.com/), majd a **Cosmos DB-fiók**, majd a **adatkezelő**.  
 
    A két gyűjteményt felvehet **changefeedlabdatabase** - **termékek** és **kategóriák** rögzített tárolási kapacitással.
 
-   Adjon hozzá egy másik gyűjteményt az **changefeedlabdatabase** nevű **topItems** a **korlátlan** tárolási kapacitást. Írási **/cikk** partíciókulcsként.
+   Adjon hozzá egy másik gyűjteményt az **changefeedlabdatabase** nevű **topItems** és **/cikk** partíciókulcsként.
 
 2. Válassza ki a **topItems** gyűjteményt, majd a **méretezés és beállítások** állítsa be a **élettartama** kell **30 másodperc** úgy, hogy topItems frissítése Ez lehet 30 másodperc.
 
@@ -392,7 +391,7 @@ Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-ke
 
 ## <a name="delete-the-resources"></a>Az erőforrások törlése
 
-A laborgyakorlat során létrehozott erőforrások törléséhez keresse meg az erőforráscsoportot a [az Azure Portal](http://portal.azure.com/), majd **erőforráscsoport törlése** az oldal felső részén látható menüben, és kövesse az utasításokat a megadott.
+A laborgyakorlat során létrehozott erőforrások törléséhez keresse meg az erőforráscsoportot a [az Azure Portal](https://portal.azure.com/), majd **erőforráscsoport törlése** az oldal felső részén látható menüben, és kövesse az utasításokat a megadott.
 
 ## <a name="next-steps"></a>További lépések 
   

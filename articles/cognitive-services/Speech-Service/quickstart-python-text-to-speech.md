@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, Python - beszédszolgáltatás'
+title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, Python - beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Python és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz. A REST API-t is támogatja egyszerű szöveg (ASCII vagy UTF-8), azonban ha egyszerű szöveges áll rendelkezésre a Speech Service alapértelmezett beszédfelismerési és nyelvi visszahelyezi a választ.
+description: Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Python és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 38bcd67dfb6d9b1a1955658872fee7b8b7a14a0c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090057"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Gyors útmutató: Konvertálása szöveg-hang transzformációs Python használatával
 

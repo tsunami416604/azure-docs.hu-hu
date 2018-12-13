@@ -1,8 +1,9 @@
 ---
-title: A LUIS előre összeállított entitások dimenzió hivatkozási – Azure |} A Microsoft Docs
+title: Dimenzió előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) dimenzióban.
 services: cognitive-services
+ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 138cf1d2fbc050797c133afaffdb2a9820e2717f
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: 775c7800c2ea9abe4b960a2e82cebb85e3c74d3b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332918"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098771"
 ---
 # <a name="dimension-entity"></a>Dimenzió entitás
 Az előre összeállított dimenzió entitás észleli a különféle típusú dimenziókat, függetlenül a LUIS alkalmazás kulturális környezet. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a dimenziókat tartalmazó példa beszédmódok hozzáadása. Dimenzió entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
@@ -28,7 +29,7 @@ Dimenzió felügyelje a [felismerő szöveges](https://github.com/Microsoft/Reco
 ## <a name="resolution-for-dimension-entity"></a>Dimenzió entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.dimension** entitás.
 
-```JSON
+```json
 {
   "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
   "topScoringIntent": {

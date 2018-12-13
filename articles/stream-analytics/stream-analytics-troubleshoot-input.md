@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/11/2018
-ms.openlocfilehash: 2b2dc3ba78cfa682c4a326754bdddfa9bc81f836
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: MT
+ms.openlocfilehash: 0098d532f09ca2fa7ef4434add90729a15809ac5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346703"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087456"
 ---
 # <a name="troubleshoot-input-connections"></a>A bemeneti kapcsolatok hibaelhárítása
 
@@ -35,7 +35,7 @@ A deszerializálás problémák vannak az okozza, ha a Stream Analytics-feladat 
  
 Ha egy Stream Analytics-feladat bemenete egy helytelenül formázott üzenetet kap, elveti az üzeneteket, és figyelmeztetéssel értesíti. Egy figyelmeztető szimbólum jelenik meg a **bemenetek** csempe a Stream Analytics-feladat. Ez a figyelmeztetés bejelentkezési létezik mindaddig, amíg a feladat futó állapotban van:
 
-![Az Azure Stream Analytics-bemenetek csempe](media/stream-analytics-malformed-events/inputs_tile.png)
+![Az Azure Stream Analytics-bemenetek csempe](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Engedélyezze a diagnosztikai naplók a figyelmeztetést részleteinek megtekintéséhez. Helytelen formátumú bemeneti események a feladatvégrehajtási naplók tartalmaznak egy bejegyzést a következőhöz hasonló üzenetet: 
 <code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
@@ -47,8 +47,8 @@ Az alábbi lépéseket a bemeneti események beolvasni a Deszerializálási hiba
 
 2. A bemenet részletei csempét az összes hiba részleteit a figyelmeztetések listáját jeleníti meg. Az alábbi példa figyelmeztető üzenet is tartalmaz, a partíció, az eltolást és sorozatszámok helytelen formátumú JSON-adatok esetén. 
 
-   ![Az eltolás figyelmeztető üzenet](media/stream-analytics-malformed-events/warning_message_with_offset.png)
-
+   ![Az eltolás figyelmeztető üzenet](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   
 3. A helytelen formátumú JSON-adatok megkereséséhez futtassa a CheckMalformedEvents.cs kód érhető el a [GitHub-mintaadattár](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). A kód olvasást a Partícióazonosító, eltolás és megrendelése adott eltolás található adatok. 
 
 4. Az adatok beolvasása után elemezheti és kijavíthatja a szerializáció formátumát.

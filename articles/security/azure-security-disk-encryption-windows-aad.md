@@ -1,20 +1,21 @@
 ---
-title: Az Azure AD-alkalmazás az Azure Disk Encryption engedélyezése a Windows IaaS virtuális gépekhez (előző kiadás) |} A Microsoft Docs
+title: Az Azure Disk Encryption az Azure AD-alkalmazás Windows IaaS virtuális gépek (előző kiadás)
 description: Ez a cikk útmutatást nyújt a Microsoft Azure lemez titkosítása a Windows IaaS virtuális gépek engedélyezése.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/04/2018
-ms.openlocfilehash: 407ea9adaaae4df15054dc4da3391b870dd8dcc7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 347fe1de15661d63ac96444f704e2da919fc54bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622142"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083954"
 ---
-#  <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Engedélyezze az Azure Disk titkosítás a Windows IaaS virtuális gépek (előző kiadás)
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Engedélyezze az Azure Disk titkosítás a Windows IaaS virtuális gépek (előző kiadás)
 
 **Az Azure Disk Encryption új kiadása így nem egy Azure AD-alkalmazás paramétert, amelyek biztosítják a virtuális gép lemez-titkosítás engedélyezéséhez. Az új kiadással, már nem kell az Azure AD hitelesítő adatok titkosítás engedélyezése lépés során. Valamennyi új virtuális gépeket titkosítani kell az Azure AD alkalmazás paramétereit az új kiadás használata nélkül. Ahhoz, hogy az új kiadással VM lemeztitkosítás utasítások megtekintése: [Azure Disk Encryption Windows virtuális gépek](azure-security-disk-encryption-windows.md). Az Azure AD-alkalmazás paraméterekkel már titkosított virtuális gépek továbbra is támogatottak, és továbbra is fenn kell tartani az AAD-szintaxissal.**
 

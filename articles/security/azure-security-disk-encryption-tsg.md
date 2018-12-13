@@ -1,18 +1,19 @@
 ---
-title: Az Azure Disk Encryption hibáinak elhárítása |} A Microsoft Docs
+title: Hibaelhárítás – IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
 description: Ez a cikk a hibaelhárítási tippek a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 3d52e031d6c3266ba9d15a2283adcdbce7a6b929
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: a6cf415112f245421b3225c2e2ccb07a7bbf9332
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347681"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098296"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 

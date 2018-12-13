@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: d22103a049d62f48e8b9b9d3f71138842fbfaa89
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5558409c3a3b0aef3757ebb73b2046a7018e4150
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262488"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088187"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Tároló létrehozása az Azure Cosmos DB-ben
 
@@ -30,7 +30,6 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 
    * Hozzon létre egy új adatbázist, vagy használjon egy meglévőt.
    * Adja meg egy gyűjtemény azonosítóját.
-   * Válassza a **Korlátlan** tárolási kapacitás lehetőséget.
    * Adjon meg egy partíciókulcsot.
    * Adjon meg egy átviteli sebességet, például 1000 kérelemegységet.
    * Kattintson az **OK** gombra.

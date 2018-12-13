@@ -1,5 +1,5 @@
 ---
-title: Az Azure ExpressRoute figyelése, mérőszámok és riasztások |} A Microsoft Docs
+title: Figyelés, mérőszámok és riasztások – az Azure ExpressRoute |} A Microsoft Docs
 description: Ez az oldal ismerteti az ExpressRoute monitorozása
 services: expressroute
 author: cherylmc
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: 90735ac04c95ee3d270853c18eddebd3f11dd8c1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725955"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091764"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
-Ez a cikk segítségével megismerheti az ExpressRoute monitorozása, mérőszámok és riasztások. Az Azure Monitor riasztási, az összes Azure diagnosztikai naplók egy helyen érheti minden metrika.
+Ez a cikk segít megérteni a ExpressRoute-monitorozás, mérőszámok és riasztások az Azure Monitor használatával. Az Azure Monitor riasztási, az összes Azure diagnosztikai naplók egy helyen érheti minden metrika.
  
 >[!NOTE]
->Használatával **klasszikus metrikák** nem ajánlott. 
+>Használatával **klasszikus metrikák** nem ajánlott.
 >
 
 ## <a name="circuit-metrics"></a>Kapcsolatcsoport metrikák
@@ -46,7 +47,7 @@ Magánhálózati, nyilvános és a Microsoft a társviszony-létesítés bit/má
 
 2. Kattintson a **+ cél kiválasztása** , és válassza ki az ExpressRoute-átjáró kapcsolati erőforrás.
 
-  ![Cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+  ![cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. A riasztás részleteinek megadása.
 
   ![Műveletcsoport](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
