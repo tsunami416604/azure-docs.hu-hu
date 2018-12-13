@@ -1,21 +1,22 @@
 ---
-title: A LUIS-alkalmazások verziók kezelése
-titleSuffix: Azure Cognitive Services
+title: Verziók kezelése
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Verzió létrehozása és közzététele a különböző modellek lehetővé teszik. Bevált gyakorlat, hogy az alkalmazás más verzióra az aktuális aktív modell klónozza a modell módosítása előtt.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033787"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082696"
 ---
 # <a name="manage-versions"></a>Verziók kezelése
 
@@ -25,7 +26,7 @@ Verzióival működnek, nyissa meg az alkalmazás nevére a kiválasztásával *
 
 Verziók listáját bemutatják, hogy melyik verzió közzététele, ahol azok közzététele megtörténik, és melyik verziója jelenleg aktív. 
 
-[![](./media/luis-how-to-manage-versions/versions-import.png "Verziók lap szakaszban kezelése")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![Kezelés szakaszhoz, verziók lap](./media/luis-how-to-manage-versions/versions-import.png "kezelés szakaszhoz, verziók lap")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klónozza a verzió
 
@@ -44,7 +45,7 @@ Verziók listáját bemutatják, hogy melyik verzió közzététele, ahol azok k
 
 Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,** az eszköztáron. 
 
-[![](./media/luis-how-to-manage-versions/versions-other.png "Verziók lap szakaszban kezelése")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Kezelés szakaszhoz, verziók lap](./media/luis-how-to-manage-versions/versions-other.png "kezelés szakaszhoz, verziók lap")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Importálás verzió
 

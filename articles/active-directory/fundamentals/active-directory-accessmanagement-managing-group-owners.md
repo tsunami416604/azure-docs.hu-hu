@@ -1,6 +1,6 @@
 ---
-title: Hogyan lehet hozzáadni, vagy távolítsa el az Azure Active Directory csoporttulajdonosok |} A Microsoft Docs
-description: Megtudhatja, hogyan hozzáadása vagy eltávolítása a csoportok tulajdonosainak Azure Active Directory használatával.
+title: Adja hozzá, vagy távolítsa el a csoportok tulajdonosainak – Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directoryval csoporttulajdonosok hozzáadása vagy eltávolítása kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
-ms.custom: it-pro
-ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 8c70378993e0155cbe730a5a351848ca1a1daa0a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139720"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087150"
 ---
-# <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Hogyan: hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
 Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok rendeli hozzá egy csoportot és annak tagjait kezelheti az erőforrás tulajdonosa (rendszergazda). Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges. Miután a csoport tulajdonosa hozzá lett rendelve, csak egy erőforrás tulajdonosa hozzáadhat vagy eltávolíthat tulajdonosai.
 
 Bizonyos esetekben a rendszergazda dönthet nem rendelhet hozzá a csoport tulajdonosával. Ebben az esetben a csoport tulajdonosa lesz. Tulajdonosok hozzárendelését is elvégezheti további tulajdonosok folyamatokhoz a csoporthoz, kivéve, ha korlátozott Ez a csoport beállításainál.

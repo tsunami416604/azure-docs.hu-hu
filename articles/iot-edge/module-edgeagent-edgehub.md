@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT EdgeAgent és EdgeHub leírása |} A Microsoft Docs
+title: EdgeAgent és EdgeHub kívánt tulajdonságok referencia – Azure IoT Edge |} A Microsoft Docs
 description: Tekintse át az adott tulajdonságok és azok értékei a edgeAgent és edgeHub ikermodulokkal
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a0834e5886a1a088486109f967baf357e375ad05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568920"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100280"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Az Edge agentet és az Edge hub ikermodulokkal tulajdonságai
 

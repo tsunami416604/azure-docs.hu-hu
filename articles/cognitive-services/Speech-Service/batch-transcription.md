@@ -1,32 +1,36 @@
 ---
-title: Az Azure Batch Beszédátírási API használata
+title: Batch Beszédátírási – beszédszolgáltatások használata
 titlesuffix: Azure Cognitive Services
-description: Nagy mennyiségű hanganyaga átírás minták.
+description: Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b4e7c11a6077104e874d67b75f5d00e8f481f739
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495597"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086929"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
-Batch beszédátírási ideális, ha nagy mennyiségű hang storage-ban. A dedikált REST API használatával hangfájlok átirányítása a közös hozzáférésű jogosultságkód (SAS) URI-t, és aszinkron módon fogadni az beszédátírás.
+Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
+
+>[!NOTE]
+> Beszédszolgáltatások (S0) standard előfizetést kell használnia a batch beszédátírási. Ingyenes előfizetési kulcsok (F0) nem fog működni. További információkért lásd: [díjszabás és korlátok](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="the-batch-transcription-api"></a>A Batch Beszédátírási API
 
 A Batch Beszédátírási API aszinkron hang-szöveg transzformációs átírást, valamint olyan kiegészítő funkciókat kínál. Egy REST API-t, amely metódusokat tárja fel:
 
 1. Kötegelt feldolgozási kérelmek létrehozása
-1. Lekérdezés állapota 
+1. Lekérdezés állapota
 1. Beszédátírás letöltése
 
 > [!NOTE]
@@ -75,7 +79,7 @@ Ezeket a paramétereket a lekérdezési karakterláncban a REST-kérés szerepel
 
 ## <a name="authorization-token"></a>Engedélyezési jogkivonat
 
-A beszédfelismerési szolgáltatás összes funkcióját, és egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com) a következő a [útmutató első lépésekhez](get-started.md). Ha azt tervezi, a beszédátírás kérhet az eredeti modellt, a kulcs létrehozása még minden kell tennie. 
+A beszédfelismerési szolgáltatás összes funkcióját, és egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com) a következő a [útmutató első lépésekhez](get-started.md). Ha azt tervezi, a beszédátírás kérhet az eredeti modellt, a kulcs létrehozása még minden kell tennie.
 
 Ha azt tervezi, testreszabása és a egy egyéni modellt használja, hozzá az előfizetési kulcsot a custom speech-portál a következő módon:
 
@@ -106,19 +110,19 @@ Testre szabhatja az alábbi mintakód egy előfizetési kulcsot és a egy API-ku
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-         
+
             return new CrisClient(client);
         }
 ```
 
-Miután a jogkivonatot kap, adja meg a SAS URI-t, hogy a hangfájl beszédátírási igénylő mutat. A többi, a kód végighalad a állapotát, és megjeleníti az eredményeket. Először beállíthatja a kulcsot, régió, modellek használata, és a biztonsági Társítás az alábbi kódrészletben látható módon. Következő lépésként hozza létre az ügyfél és a POST-kérés. 
+Miután a jogkivonatot kap, adja meg a SAS URI-t, hogy a hangfájl beszédátírási igénylő mutat. A többi, a kód végighalad a állapotát, és megjeleníti az eredményeket. Először beállíthatja a kulcsot, régió, modellek használata, és a biztonsági Társítás az alábbi kódrészletben látható módon. Következő lépésként hozza létre az ügyfél és a POST-kérés.
 
 ```cs
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
-    
-            // SAS URI 
+
+            // SAS URI
             private const string RecordingsBlobUri = "SAS URI pointing to the file in Azure Blob Storage";
 
             // adapted model Ids
@@ -127,14 +131,14 @@ Miután a jogkivonatot kap, adja meg a SAS URI-t, hogy a hangfájl beszédátír
 
             // Creating a Batch Transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
-            
+
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
 ```
 
 Most, hogy a kérelem végrehajtott, lekérdezheti, és töltse le az átírási eredmények az alábbi kódrészletben látható módon:
 
 ```cs
-  
+
             // get all transcriptions for the user
             transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
 
@@ -152,9 +156,9 @@ Most, hogy a kérelem végrehajtott, lekérdezheti, és töltse le az átírási
                             // not created from here, continue
                             continue;
                         }
-                            
+
                         completed++;
-                            
+
                         // if the transcription was successful, check the results
                         if (transcription.Status == "Succeeded")
                         {
@@ -166,7 +170,7 @@ Most, hogy a kérelem végrehajtott, lekérdezheti, és töltse le az átírási
                             Console.WriteLine("Transcription succeeded. Results: ");
                             Console.WriteLine(results);
                         }
-                    
+
                     break;
                     case "Running":
                     running++;
@@ -174,7 +178,7 @@ Most, hogy a kérelem végrehajtott, lekérdezheti, és töltse le az átírási
                     case "NotStarted":
                     notStarted++;
                     break;
-                    
+
                     }
                 }
             }
@@ -188,7 +192,7 @@ Részletes információ az előző hívás, tekintse meg a [swagger-dokumentumok
 
 Jegyezze fel a könyvelési hang és a fogadás beszédátírási állapot aszinkron beállítása. Az ügyfél, amely létrehoz egy .NET-HTTP-alapú. Van egy `PostTranscriptions` módszer küldi a hangfájl részleteit és a egy `GetTranscriptions` metódus az eredményeket fogadására. `PostTranscriptions` a fogópont adja vissza és `GetTranscriptions` annak használatával hozzon létre egy leírót beszédátírási állapotának beolvasása.
 
-A jelenlegi mintakód nem adja meg egy egyéni modell. A szolgáltatás használ a kiindulási modelleket alkalmazhatnak lefényképezheti a fájlt vagy fájlokat. A modellek megadásához meg ugyanezt a módszert, a modell azonosítóját a akusztikai és a nyelvi modell adhat át. 
+A jelenlegi mintakód nem adja meg egy egyéni modell. A szolgáltatás használ a kiindulási modelleket alkalmazhatnak lefényképezheti a fájlt vagy fájlokat. A modellek megadásához meg ugyanezt a módszert, a modell azonosítóját a akusztikai és a nyelvi modell adhat át.
 
 Ha nem szeretné használni az alaptervhez, írjon be modellazonosítóját egyaránt akusztikai és nyelvi modellek esetén.
 

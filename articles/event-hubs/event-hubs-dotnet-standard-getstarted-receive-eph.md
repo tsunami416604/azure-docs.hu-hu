@@ -1,6 +1,6 @@
 ---
-title: Események fogadása az Azure Event Hubsba a .NET Core-kódtár használatával |} A Microsoft Docs
-description: Az EventProcessorHost üzenetek fogadása a .NET Core első lépések
+title: Események fogadása a .NET Core - az Azure Event Hubs használatával |} A Microsoft Docs
+description: Ez a cikk a forgatókönyv létrehozásához, amely fogadja az üzeneteket az eventprocessorhosttal .NET Core-alkalmazást.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fb99307182ba3ce8ba49a9ae09c12af173799c87
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963351"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082381"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Az Event Processor Host-üzenetek fogadása a .NET Core – első lépések
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.

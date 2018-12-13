@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415831"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078208"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -79,7 +79,12 @@ A Marketo-beli társított szolgáltatás a következő tulajdonságok támogato
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Marketo-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulajdonság, az adatkészlet **MarketoObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulajdonság, az adatkészlet **MarketoObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **MarketoObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -91,7 +96,8 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -100,14 +106,14 @@ Adatok másolása a Marketo szoftveréből származó, állítsa be a type tulaj
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Marketo-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="marketosource-as-source"></a>MarketoSource forrásként
+### <a name="marketo-as-source"></a>Marketo forrásként
 
 Adatok másolása a Marketo, állítsa be a forrás típusaként a másolási tevékenység **MarketoSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MarketoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Activitiy_Types"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Activitiy_Types"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

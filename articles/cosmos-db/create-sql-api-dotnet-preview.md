@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
 clicktale: true
-ms.openlocfilehash: 7686baf2476942748a67ae7c73b02596b6588607
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4422e656759418d715fb0bd26643581a0ca99a4f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853141"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089122"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rövid útmutató: ASP.NET-webalkalmazás létrehozása az Azure Cosmos DB SQL API-t és az Azure portal használatával
 
@@ -117,7 +117,7 @@ Az alábbi kódrészletek az ToDoItemService.cs fájlból kerül.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon válassza a **Kulcsok** elemet, majd válassza az **Írási/olvasási kulcsok** lehetőséget. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a web.config fájlba.
+1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon válassza a **Kulcsok** elemet, majd válassza az **Írási/olvasási kulcsok** lehetőséget. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a web.config fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 

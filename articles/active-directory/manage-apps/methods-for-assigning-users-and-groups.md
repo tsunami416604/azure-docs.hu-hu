@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d99209af9b1b6697419a046812928e75fed70321
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076954"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
 Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
@@ -57,7 +57,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
 6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 
@@ -95,7 +95,7 @@ Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövess
 
 5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
 6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
 

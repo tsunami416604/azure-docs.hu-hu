@@ -1,21 +1,22 @@
 ---
-title: A Speech C# SDK használata a LUIS szolgáltatással
+title: Beszéd használata C# SDK
 titleSuffix: Azure Cognitive Services
 description: A Speech Service-szel egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech NuGet-csomagot használja, amelyet referenciaként már tartalmaz.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 92db504ebfd0f8ad0bef9282bafd62fa9780d5e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139091"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099307"
 ---
 # <a name="integrate-speech-service"></a>A Speech Service integrálása
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -65,7 +66,7 @@ Ebben a cikkben a számítógép audioeszközét használjuk. Ez lehet egy mikro
 
 A projekt már tartalmazza referenciaként a Speech SDK-t. 
 
-[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "A Visual Studio 2017 képernyőképe a Microsoft.CognitiveServices.Speech NuGet-csomaggal")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag](./media/luis-tutorial-speech-to-intent/nuget-package.png "képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
 Nyissa meg a `Program.cs` fájlt, és módosítsa a következő változókat:

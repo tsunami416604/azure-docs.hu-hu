@@ -1,21 +1,22 @@
 ---
-title: A feltételek az Azure IoT Edge-szószedet |} A Microsoft Docs
+title: Szószedet - az Azure IoT Edge |} A Microsoft Docs
 description: Alapelvei – az Azure IoT Edge kapcsolatos gyakori kifejezések.
 author: menchi
-manager: bzurcher
+manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: menchi
-ms.openlocfilehash: 79864b765282f2efbf7016cba7138efa4e1d3dc4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.custom: seodec18
+ms.openlocfilehash: 4267a60911b02615e8482f8616f889ad2c1df02d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597792"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093904"
 ---
-# <a name="glossary-of-iot-edge-terms"></a>IoT Edge kifejezések jegyzéke
+# <a name="glossary-of-terms-for-azure-iot-edge"></a>Az Azure IoT Edge kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Edge-cikkekben használt gyakori kifejezések.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]

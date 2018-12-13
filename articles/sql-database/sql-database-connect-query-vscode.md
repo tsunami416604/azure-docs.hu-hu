@@ -12,32 +12,32 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 627d4a353e2e6582ed7b579a3f9d74594c6c10fb
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912968"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098984"
 ---
-# <a name="quickstart-azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Rövid útmutató: Azure SQL Database: Csatlakozás, majd adatok lekérdezése a Visual Studio Code használatával
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code csatlakoztatása és az Azure SQL Database-adatbázis lekérdezéséhez
 
-A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus kódszerkesztő Linux, macOS és Windows rendszerekre, amely támogatja a bővítményeket, beleértve az [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ez a rövid útmutató azt ismerteti, hogyan használható a Visual Studio Code egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.
+[A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ez a rövid útmutató bemutatja a Visual Studio Code egy Azure SQL Database-adatbázishoz csatlakozhat, és futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissítése és adatok törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrásokat használja kiindulási pontként:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-vs-code"></a>A VS Code telepítése
+#### <a name="install-visual-studio-code"></a>A Visual Studio Code telepítése
 
-A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://code.visualstudio.com/Download) legújabb verziója van telepítve, és be van töltve az [mssql bővítmény](https://aka.ms/mssql-marketplace). Az mssql bővítmény telepítési lépéseinek megismeréséhez olvassa el [a VS Code telepítését](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) és a [Visual Studio Code-hoz használható mssql-t](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ismertető cikkeket. 
+Győződjön meg arról, hogy telepítette a legújabb [Visual Studio Code](https://code.visualstudio.com/Download) és betölti a [mssql bővítményt](https://aka.ms/mssql-marketplace). Az mssql bővítmény telepítésével kapcsolatos útmutatásért lásd: [VS Code telepítését](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) és [a Visual Studio Code mssql ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql). 
 
-## <a name="configure-vs-code"></a>A VS Code konfigurálása 
+## <a name="configure-visual-studio-code"></a>A Visual Studio Code konfigurálása 
 
 ### <a name="mac-os"></a>**Mac OS**
-macOS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt .Net Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
+MacOS rendszeren, akkor telepítenie kell OpenSSL, amely előfeltétele a .net Core, hogy mssql bővítményt használ. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -58,58 +58,53 @@ Nincs szükség különleges konfigurációra.
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
-Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
-
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 ## <a name="set-language-mode-to-sql"></a>A nyelvmód SQL értékre állítása
 
-Az mssql-parancsok és a T-SQL IntelliSense engedélyezéséhez ügyeljen arra, hogy a nyelvmód beállítása **SQL** legyen a Visual Studio Code-ban.
+A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a T-SQL IntelliSense engedélyezéséhez.
 
 1. Nyisson meg egy új Visual Studio Code-ablakot. 
 
-2. Kattintson az **Egyszerű szöveg** elemre az állapotsor jobb alsó sarkában.
-3. A megnyíló **Nyelvmód kiválasztása** legördülő menübe írja be az **SQL** kifejezést, majd nyomja le az **ENTER** billentyűt a nyelvmód SQL értékre állításához. 
+2. Nyomja meg **CTRL**+**N**. Megnyílik egy új egyszerű szöveges fájlt. 
 
-   ![SQL nyelvmód](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
+3. Válassza ki **egyszerű szöveges** az állapotsor jobb alsó sarkában található.
+
+4. Az a **nyelvmód kiválasztása** legördülő menüben, amely megnyílik, válassza ki **SQL**. 
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
 A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
 
 > [!IMPORTANT]
-> A folytatás előtt győződjön meg arról, hogy rendelkezésére állnak a kiszolgálóval és az adatbázissal kapcsolatos, valamint a bejelentkezési adatok. Ha elkezdi beírni a csatlakozási profil információit, és áthelyezi a fókuszt a Visual Studio Code-ról, újra kell kezdenie a csatlakozási profil létrehozását.
+> A folytatás előtt győződjön meg arról, hogy rendelkezik-e a kiszolgáló és a bejelentkezési adatait, készen áll-e. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.
 >
 
-1. A VS Code-ban nyomja le a **CTRL+SHIFT+P** billentyűkombinációt (vagy az **F1** billentyűt) a parancskatalógus megnyitásához.
+1. A Visual Studio Code-ban nyomja le a **Ctrl + Shift + P** (vagy **F1**) a Parancskatalógus megnyitásához.
 
-2. Írja be az **sqlcon** parancsot, és nyomja le az **ENTER** billentyűt.
+2. Válassza ki **MS SQL: Csatlakozás** nyomja le az ENTER **Enter**.
 
-3. A **Kapcsolati profil létrehozása** kiválasztásához nyomja le az **ENTER** billentyűt. Ezzel létrehoz egy kapcsolati profilt az SQL Server-példányhoz.
+3. Válassza ki **kapcsolati profil létrehozása**.
 
-4. Az útmutatást követve adja meg az új kapcsolati profil kapcsolati tulajdonságait. Az egyes értékek kiválasztása után a folytatáshoz nyomja le az **ENTER** billentyűt. 
+4. Kövesse az utasításokat követve adja meg az új profil kapcsolati tulajdonságait. Egyes értékek kiválasztása után nyomja le az ENTER **Enter** folytatásához. 
 
-   | Beállítás       | Ajánlott érték | Leírás |
+   | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Kiszolgálónév | A teljes kiszolgálónév | A névnek valami ehhez hasonlónak kell lennie: **mynewserver20170313.database.windows.net**. |
-   | **Adatbázis neve** | mySampleDatabase | A kiszolgáló neve, amelyhez kapcsolódni szeretne. |
-   | **Hitelesítés** | SQL-bejelentkezés| Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
-   | **Felhasználónév** | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
-   | **Jelszó (SQL-bejelentkezés)** | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
-   | **Menti a jelszót?** | Igen vagy nem | Válassza az Igen lehetőséget, ha nem szeretné minden alkalommal megadni a jelszót. |
-   | **Adja meg a profil kívánt nevét** | Egy profilnév, például: **mySampleDatabase** | A mentett profilnév felgyorsítja a csatlakozást a későbbi bejelentkezések során. | 
+   | **Kiszolgálónév** | A teljes kiszolgálónév | Hasonló: **mynewserver20170313.database.windows.net**. |
+   | **Adatbázis neve** | mySampleDatabase | Az adatbázis való csatlakozáshoz. |
+   | **Hitelesítés** | SQL-bejelentkezés| Ez az oktatóanyag az SQL-hitelesítést használ. |
+   | **Felhasználónév** | Felhasználónév | A kiszolgálói rendszergazdai fiókkal, a kiszolgáló létrehozásához használt felhasználónév. |
+   | **Jelszó (SQL-bejelentkezés)** | Jelszó | A kiszolgáló létrehozásához használt, a kiszolgálói rendszergazdai fiók jelszava. |
+   | **Menti a jelszót?** | Igen vagy Nem | Válassza ki **Igen** Ha nem szeretné, hogy minden alkalommal, amikor adja meg a jelszót. |
+   | **Adja meg a profil kívánt nevét** | Egy profilnév, például **mySampleProfile** | A mentett profil felgyorsítja a csatlakozást a későbbi bejelentkezések során. | 
 
-5. Az **ESC** billentyűt lenyomva zárja be a profil létrehozásáról és csatlakoztatásáról tájékoztató üzenetet.
-
-6. Ellenőrizze a kapcsolatot az állapotsávon.
-
-   ![A kapcsolat állapota](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
+   Ha ez sikeres, megjelenik egy értesítés, a profil létrehozásáról és arról tájékoztatja.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
+Használja a következő [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) kategóriánként az első 20 terméket a lekérdezést Transact-SQL utasítást.
 
-1. A **szerkesztő** ablakában írja be a következő lekérdezést az üres lekérdezési ablakba:
+1. A szerkesztő ablakban illessze be a következő SQL-lekérdezést.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -118,15 +113,15 @@ A következő kód használatával lekérdezheti kategóriánként az első 20 t
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. A **CTRL+SHIFT+E** billentyűkombinációt lenyomva lekérheti az adatokat a Product és ProductCategory táblából.
+2. Nyomja meg **Ctrl**+**Shift**+**E** hajtsa végre a lekérdezést, és az eredményeket megjeleníteni a `Product` és `ProductCategory` táblákat.
 
-    ![Lekérdezés](./media/sql-database-connect-query-vscode/query.png)
+    ![2 táblákból származó adatok beolvasására irányuló lekérdezés](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
+Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az új termék hozzáadása a `SalesLT.Product` tábla.
 
-1. A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
+1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -148,13 +143,13 @@ A következő kód használatával beszúrhat egy új terméket a SalesLT.Produc
            ,GETDATE() );
    ```
 
-2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva beszúrhat egy új sort a Product táblába.
+2. Nyomja meg **Ctrl**+**Shift**+**E** az új sor beszúrásához a `Product` tábla.
 
 ## <a name="update-data"></a>Adatok frissítése
 
-A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
+Használja a következő [frissítése](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást a hozzáadott termék frissítése.
 
-1.  A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
+1. Cserélje le az előző lekérdezés erre:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -162,23 +157,23 @@ A következő kód használatával frissítheti az előzőleg hozzáadott új te
    WHERE Name = 'myNewProduct';
    ```
 
-2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva frissítheti a megadott sort a Product táblában.
+2. Nyomja meg **Ctrl**+**Shift**+**E** egy megadott sorának frissítéséhez a `Product` tábla.
 
 ## <a name="delete-data"></a>Adat törlése
 
-A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL-utasítással.
+Használja a következő [törlése](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL utasítást az új termék eltávolítása.
 
-1. A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
+1. Cserélje le az előző lekérdezés erre:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva törölheti a megadott sort a Product táblából.
+2. Nyomja meg **Ctrl**+**Shift**+**E** egy megadott sorának törléséhez a `Product` tábla.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az SQL Server Management Studióval történő csatlakozáshoz és lekérdezéshez lásd [az SSMS segítségével történő csatlakozással és lekérdezéssel](sql-database-connect-query-ssms.md) foglalkozó témakört.
-- Az Azure Portal használatával történő csatlakozásról és lekérdezésről lásd az [Azure Portal SQL-lekérdezésszerkesztővel végzett csatlakozásról és lekérdezésről](sql-database-connect-query-portal.md) szóló témakört.
+- Csatlakozás és lekérdezés az SQL Server Management Studio használatával: [a rövid útmutató: az SQL Server Management Studio csatlakozni egy Azure SQL Database és adatok lekérdezése](sql-database-connect-query-ssms.md).
+- Csatlakozás és lekérdezés az Azure portal használatával: [a rövid útmutató: az Azure Portalon az SQL-Lekérdezésszerkesztő használatával csatlakozhat és kérdezhet le adatokat](sql-database-connect-query-portal.md).
 - Az MSDN magazin Visual Studio Code használatáról szóló cikkéhez lásd az [Adatbázis IDE létrehozása az MSSQL bővítménnyel blogbejegyzést](https://msdn.microsoft.com/magazine/mt809115).

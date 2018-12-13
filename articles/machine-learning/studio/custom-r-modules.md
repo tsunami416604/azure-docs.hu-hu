@@ -1,10 +1,10 @@
 ---
-title: Adja meg az egyéni R-modulok az Azure Machine Learning Studióban |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning Studio-munkaterületen üzembe helyezéshez a modul regisztrálása.
+title: Adja meg az egyéni R-modulok – Azure Machine Learning Studióban |} A Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: b8ab22f1567102ed79ccf6e0bf49dbdbc3f42ea9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 5cddc767b4652df6753cc57eb7305b46ec45e19d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308431"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098637"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 

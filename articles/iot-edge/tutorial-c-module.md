@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge C – oktatóanyag | Microsoft Docs
+title: Az oktatóanyag egyéni C modul - létrehozása az Azure IoT Edge |} A Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult C-kóddal, és hogyan helyezheti üzembe azt peremhálózati eszközökön.
 services: iot-edge
 author: shizn
@@ -8,13 +8,13 @@ ms.author: xshi
 ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: bc66e143dc8cb98f08080092af95661ba50be9a3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.custom: mvc, seodec18
+ms.openlocfilehash: fb2f0162eeacddf83c166619fe356d117a9304a6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317704"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099795"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 

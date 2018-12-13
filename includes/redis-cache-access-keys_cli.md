@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: d32ea8af6ad8282872572076db4b9eef34e05166
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 03abefb50ddafca599edc289123c5fb3090971a2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011863"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091878"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Gazdagépnév, portok és hozzáférési kulcsok lekérése az Azure CLI-vel
 
@@ -24,10 +24,10 @@ Az állomásnév és portok használata az Azure CLI segítségével meghívhatj
 
 # Retrieve the hostname, ports, and keys for contosoCache located in contosoGroup
 
-# Retrieve the hostname and ports for an Azure Azure Cache for Redis instance
+# Retrieve the hostname and ports for an Azure Cache for Redis instance
 redis=($(az redis show --name contosoCache --resource-group contosoGroup --query [hostName,enableNonSslPort,port,sslPort] --output tsv))
 
-# Retrieve the keys for an Azure Azure Cache for Redis instance
+# Retrieve the keys for an Azure Cache for Redis instance
 keys=($(az redis list-keys --name contosoCache --resource-group contosoGroup --query [primaryKey,secondaryKey] --output tsv))
 
 # Display the retrieved hostname, keys, and ports
@@ -39,4 +39,4 @@ echo "Primary Key:" ${keys[0]}
 echo "Secondary Key:" ${keys[1]}
 ```
 
-A szkripttel kapcsolatos további információkért lásd: [a gazdagépnév, portok és kulcsok lekérése az Azure az Azure Cache Redis](../articles/azure-cache-for-redis/scripts/cache-keys-ports.md). További információ az Azure CLI-vel: [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+A szkripttel kapcsolatos további információkért lásd: [a gazdagépnév, portok és kulcsok lekérése az Azure Cache Redis](../articles/azure-cache-for-redis/scripts/cache-keys-ports.md). További információ az Azure CLI-vel: [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

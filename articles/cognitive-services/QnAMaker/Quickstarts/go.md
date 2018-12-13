@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b9451d51bf0c0c684cebf89ad448b66fee59d9ea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 6777765e4ae57aefc5944d0dde597d2becfe0430
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210703"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091441"
 ---
-# <a name="qna-maker-rest-api-with-go"></a>A QnA Maker REST API-t a Go 
+# <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>A QnA Maker REST API-t a Go használatával 
 <a name="HOLTop"></a>
 
 Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) a Go, tegye a következőket.

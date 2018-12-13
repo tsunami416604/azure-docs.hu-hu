@@ -1,6 +1,6 @@
 ---
-title: Service Fabric-alkalmazás üzembe helyezése folyamatos integrációval (Azure DevOps Services) az Azure-ban | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Service Fabric-alkalmazáshoz az Azure DevOps Services használatával.
+title: A folyamatos integrációt és az Azure-folyamatok az Azure Service Fabric-alkalmazás üzembe helyezése |} A Microsoft Docs
+description: Ebben az oktatóanyagban megismerheti, hogyan állíthat be folyamatos integrációt és üzembe helyezése egy Service Fabric-alkalmazás Azure-folyamatok használatával.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
+ms.date: 12/02/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853738"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094956"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
-Ez az oktatóanyag, amely egy sorozat negyedik része, azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-alkalmazáshoz az Azure DevOps használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
+Ez az oktatóanyag része, amely egy sorozat negyedik, és bemutatja, hogyan állíthat be folyamatos integrációt és üzembe helyezés Azure folyamatok használatával az Azure Service Fabric-alkalmazáshoz.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Forráskezelés hozzáadása a projekthez
-> * Buildfolyamat létrehozása az Azure DevOpsban
-> * Kiadási folyamat létrehozása az Azure DevOpsban
+> * Buildelési folyamat létrehozása az Azure Pipelinesban
+> * Kiadási folyamat létrehozása az Azure Pipelinesban
 > * Alkalmazás automatikus üzembe helyezése és frissítése
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdése előtt:
 * [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 * Hozzon létre egy Service Fabric-fürtöt az Azure-ban, például [ennek az útmutatónak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Hozzon létre egy [Azure DevOps-szervezetet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
+* Hozzon létre egy [Azure DevOps-szervezetet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Ez lehetővé teszi, hogy az Azure DevOps-projekt létrehozása és használata az Azure-folyamatok.
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Közzétételi profil előkészítése
 
-Most, hogy [létrehozott egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) és [telepítette azt az Azure-ba](service-fabric-tutorial-deploy-app-to-party-cluster.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt az alkalmazáson belül az Azure DevOpsban végrehajtott üzembehelyezési folyamat számára.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
+Most, hogy [létrehozott egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) és [telepítette azt az Azure-ba](service-fabric-tutorial-deploy-app-to-party-cluster.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt, az alkalmazásban való használatra Azure folyamatok lefutó üzembe helyezési folyamat.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
 
 Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció munkafolyamata számára. Ilyen lehet például a Cloud.  Adja meg a fürt csatlakozási végpontját.  Jelölje be az **Upgrade the Application** (Alkalmazás frissítése) jelölőnégyzetet, hogy az alkalmazás az Azure DevOpsban levő összes üzemelő példány esetében frissüljön.  A **Save** (Mentés) hiperhivatkozásra kattintva mentse a beállításokat a közzétételi profilba, majd kattintson a **Cancel** (Mégse) gombra a párbeszédpanel bezárásához.
 
@@ -84,11 +84,11 @@ Ellenőrizze az e-mail-címet, és válassza ki a saját fiókját az **Azure De
 
 Az adattár közzétételével egy új projekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő projektben kíván adattárat létrehozni, az **Adattár** neve mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a projektet. A kód megtekintéséhez a weben válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>Folyamatos továbbítás konfigurálása az Azure DevOps használatával
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatok
 
-Az Azure DevOps buildfolyamata egy olyan munkafolyamatot ír le, amely egymás után végrehajtott létrehozási lépések sorozatából áll. Hozzon létre egy buildfolyamatot, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További tudnivalók az [Azure DevOps buildfolyamatairól](https://www.visualstudio.com/docs/build/define/create). 
+Azure folyamatokat hozhat létre folyamatot ismerteti egy munkafolyamatot, amely egymás után végrehajtott létrehozási lépések készlete áll. Hozzon létre egy buildfolyamatot, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://www.visualstudio.com/docs/build/define/create). 
 
-Az Azure DevOps kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildfolyamat és a kiadási folyamat a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További tudnivalók az Azure DevOps [kiadási folyamatairól](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Egy Azure-folyamatok kiadási folyamatot ismerteti egy munkafolyamatot, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildfolyamat és a kiadási folyamat a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. Tudjon meg többet [Azure folyamatok folyamatok felszabadítása](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 
@@ -156,11 +156,11 @@ A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet
 
 ![Az összes véglegesítése][changes]
 
-Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot az Azure DevOps Services/TFS szolgáltatásban.
+Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. Válassza ki **leküldéses** Azure folyamatokban a kód frissítése.
 
 ![Módosítások leküldése][push]
 
-Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a buildfolyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
+A módosítások leküldése az Azure-folyamatok automatikusan aktiválnak egy buildet.  Ha a buildfolyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
 
 A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási folyamatot, amely telepíti az alkalmazást egy fürtre.
 

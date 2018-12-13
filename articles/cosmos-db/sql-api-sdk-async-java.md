@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fadefe09f9f744fabe0f0f3f3cb519b3abb50b41
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872893"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098883"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB aszinkron Java SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "52872893"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatása az eltér az SQL API-t a Java SDK-t a [Netty könyvtár](http://netty.io/). A már meglévő [SQL API-t a Java SDK](sql-api-sdk-java.md) nem támogatja az aszinkron műveleteket. 
+Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatása az eltér az SQL API-t a Java SDK-t a [Netty könyvtár](https://netty.io/). A már meglévő [SQL API-t a Java SDK](sql-api-sdk-java.md) nem támogatja az aszinkron műveleteket. 
 
 <table>
 
@@ -113,7 +113,7 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 * Rögzített Java fejlécfájlok megfelelő java doc létrehozása céljából.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Általánosan elérhető SDK-val nem blokkoló i/o-használatával teljes körű támogatása a [Netty könyvtár](http://netty.io/) átjáró módban. 
+* Általánosan elérhető SDK-val nem blokkoló i/o-használatával teljes körű támogatása a [Netty könyvtár](https://netty.io/) átjáró módban. 
 
 ## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
 A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.

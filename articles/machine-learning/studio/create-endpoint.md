@@ -1,10 +1,10 @@
 ---
-title: A Machine Learning – az Azure Machine Learning Studio webszolgáltatás-végpontok létrehozásával |} A Microsoft Docs
-description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása
+title: Webszolgáltatás-végpontok - létrehozása az Azure Machine Learning Studióban |} A Microsoft Docs
+description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: ac4eb79d3b1505472113189a9e2b234212755244
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314013"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077103"
 ---
-# <a name="creating-endpoints"></a>Végpontok létrehozása 
+# <a name="creating-endpoints-for-deployed-web-services"></a>Az üzembe helyezett webszolgáltatások végpontok létrehozása
 > [!NOTE]
 >  Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatás.
 > 

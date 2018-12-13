@@ -4,11 +4,7 @@ description: Ez az útmutató bemutatja, hogyan hozhat létre alapszintű nyilv�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: hero-article
@@ -17,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2e4e4e7cb1ae49a856bbfed0716936b7b5b13d19
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 9cf1fcda8651cccb82b2de58487becf25541a6e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635101"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098678"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal
 
@@ -80,10 +76,7 @@ Ezután hozzon létre egy virtuális hálózatot és két virtuális gépet az a
    - **Példány részletei** > **rendelkezésre állási beállítások**: 
      1. Legördülő listára, és válassza ki **rendelkezésre állási csoport**. 
      2. Válassza ki **új létrehozása**, típus *MyAvailabilitySet*, és válassza ki **OK**.
-   - **Rendszergazdai fiók** > **felhasználónév**: típus *azureuser*.
-   - **Rendszergazdai fiók** > **jelszó**: típus *Azure1234567*. 
-     Írja be újra a jelszót a **jelszó megerősítése** mező.
-   
+  
 1. Válassza ki a **hálózatkezelés** lapon, vagy válasszon **tovább: lemezek**, majd **tovább: hálózatkezelés**. 
    
    Győződjön meg arról, hogy a következő kijelölt:
@@ -136,7 +129,7 @@ Ebben a szakaszban létrehozott hálózati biztonsági csoport (NSG) szabályai 
 
 Ebben a szakaszban a terheléselosztó-beállításai a háttér címkészletet, az állapotfigyelő mintavételező és a egy terheléselosztó-szabályt konfigurálja.
 
-### <a name="create-a-back-end-address-pool"></a>Háttércímkészlet létrehozása
+### <a name="create-a-backend-address-pool"></a>Hátércímkészlet létrehozása
 
 A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a háttér címkészletet. A háttér-címkészletet a terheléselosztóhoz csatlakozó virtuális hálózati adaptereket (NIC) IP-címét tartalmazza. 
 
@@ -158,7 +151,7 @@ A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a h
    
 1. Kattintson az **OK** gombra.
    
-   ![Adja hozzá a háttér-címkészletet](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+   ![Adja hozzá a háttércímkészlethez](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
    
 1. Az a **háttérkészletek** lapon, bontsa ki a **MyBackendPool** , és győződjön meg arról, hogy mindkét **VM1** és **VM2** szerepelnek.
 
@@ -232,7 +225,7 @@ Telepítse az Internet Information Services (IIS) a virtuális gépeken a terhel
    
 1. A Windows biztonsági képernyőn válassza ki a **további lehetőségek** , majd **másik fiók használata**. 
    
-   Adjon meg egy felhasználónevet *azureuser* és a jelszó *Azure1234567*, és válassza ki **OK**.
+   Adja meg a felhasználónevét és jelszavát, és válassza ki **OK**.
    
 1. Válasz **Igen** a minden tanúsítvány-kérdésre. 
    
@@ -258,9 +251,7 @@ Telepítse az Internet Information Services (IIS) a virtuális gépeken a terhel
 
 ### <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-Az egyes virtuális Gépeken, nyisson meg egy böngészőt, és reagáljon **OK** bármely konfiguráció kéri. 
-
-Illessze be a terheléselosztó nyilvános IP-címet a böngésző címsorában. Az IIS kiszolgáló alapértelmezett weblap kell megjelennie a böngészőben.
+Nyisson meg egy böngészőt, és illessze be a terheléselosztó nyilvános IP-címet a böngésző címsorában. Az IIS kiszolgáló alapértelmezett weblap kell megjelennie a böngészőben.
 
 ![IIS-webkiszolgáló](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 

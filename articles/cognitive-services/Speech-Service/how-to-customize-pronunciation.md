@@ -1,24 +1,26 @@
 ---
-title: Testre szabhatja a Speech szolgáltatással kiejtése
+title: Testre szabhatja a írásmódja – beszédszolgáltatások
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan szabhatja testre a Speech szolgáltatással írásmódja.
+description: Ismerje meg, hogyan szabhatja testre a Speech szolgáltatással írásmódja. Az egyéni írásmódja meghatározhatja fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: c7f82e9fb286e53f9408e2134dbdc9c2b24ff267
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 6d57bdd8444f5bd6d763400c4df4395bb33a7bdd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837698"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100004"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
-Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
+
+Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt.
 
 Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni írásmódja bejegyzést is megadhatja. A struktúra a következőképpen történik:
 
@@ -41,10 +43,10 @@ Minden egyes .txt fájl rendelkezhet több bejegyzés a következő képen láth
 
 ![Példák a betűszó kiejtése](media/stt/custom-speech-pronunciation-file.png)
 
-A beszédből kinyert képernyő az fonetikus sorrendje a megjelenített képernyő. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy szabványgyűjtemény állítson össze a kimondott űrlap segítségével. 
+A beszédből kinyert képernyő az fonetikus sorrendje a megjelenített képernyő. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy szabványgyűjtemény állítson össze a kimondott űrlap segítségével.
 
 ## <a name="supported-pronunciation-characters"></a>Támogatott írásmódja karakter
-Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amellyel a kimondott képernyőt a kifejezés (az egyéni írásmódja fájlt) expressz az alábbi táblázatban láthatók: 
+Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amellyel a kimondott képernyőt a kifejezés (az egyéni írásmódja fájlt) expressz az alábbi táblázatban láthatók:
 
 | Nyelv | Karakterek |
 |---------- |----------|
@@ -55,10 +57,10 @@ Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A ka
 > Egy kifejezés megjelenítési űrlap (fájlban írásmódja) nyelven kell megírni ugyanúgy nyelvi betanítás adatkészlet.
 
 ## <a name="requirements-for-the-display-form"></a>A megjelenítési űrlap követelményei
-Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy összetett szavak, amelyek meglévő szavak is lehet. A gyakori szavakat egyéb kiejtés is megadhat. 
+Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy összetett szavak, amelyek meglévő szavak is lehet. A gyakori szavakat egyéb kiejtés is megadhat.
 
 >[!NOTE]
->Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
+>Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó.
 
 ## <a name="requirements-for-the-file-size"></a>A fájl mérete követelményei
 A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 MB (ingyenes szint kulcsok 1KB). Általában nem szükséges nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
@@ -66,4 +68,3 @@ A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 
 ## <a name="next-steps"></a>További lépések
 * Pontosságának javítása hozzon létre egy [importálni akusztikai modell](how-to-customize-acoustic-models.md).
 * Pontosságának javítása hozzon létre egy [egyéni nyelvi modell](how-to-customize-language-model.md).
- 

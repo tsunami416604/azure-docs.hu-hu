@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8b2d49d9df2cc8db98004ad9c186511d8d5e2b87
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156646"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087208"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 
@@ -44,7 +44,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 1. Nyisson meg egy parancssort vagy a Git Basht. Klónozza a `azure-utpm-c` GitHub-adattárat:
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-utpm-c.git
+    git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
 1. Keresse meg a GitHub gyökérmappáját, és futtassa a [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) szimulátort. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárja be ezt a parancsablakot; a rövid útmutató végéig futnia kell ennek a szimulátornak. 

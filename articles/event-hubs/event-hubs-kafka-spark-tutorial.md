@@ -1,21 +1,21 @@
 ---
-title: Apache Spark-alkalmazás csatlakoztatása a Kafka-kompatibilis Azure Event Hubshoz | Microsoft Docs
-description: Az Apache Spark használata a Kafkához készült Azure Event Hubs szolgáltatással.
+title: Csatlakozás az Apache Spark-alkalmazás – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk a Kafka használata az Apache Spark az Azure Event Hubs ismertetése.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 10/30/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a2ab9a77728509b794c2f5b810fb939f6d1a16e3
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 93fdd85d1fd1b91e01d8f38b4890e1b588a5c704
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286775"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091237"
 ---
 # <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Apache Spark-alkalmazás csatlakoztatása a Kafka-kompatibilis Azure Event Hubshoz
 Ez az oktatóanyag azt mutatja be, hogyan csatlakoztathat egy Spark-alkalmazást a Kafka-kompatibilis Event Hubshoz, ha valós időben szeretne streamelni. Ez az integráció anélkül engedélyezi a streamelést, hogy módosítani kellene hozzá a protokollügyfeleket, vagy saját Kafka- vagy Zookeeper-fürtöket kellene futtatnia. Az oktatóanyaghoz az Apache Spark 2.4-es vagy újabb, illetve az Apache Kafka 2.0-s vagy újabb verziójára lesz szükség.

@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások keyphrase referencia – Azure |} A Microsoft Docs
+title: Keyphrase előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk tartalmaz keyphrase előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: a543e60c6e77ed9fdb825ad6cb2a936119677671
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: fb23c136a24e0c09705061b8893b532a21c1df74
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081799"
 ---
 # <a name="keyphrase-entity"></a>keyPhrase entitás
 keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés). Nem kell az alkalmazás keyPhrase tartalmazó példa beszédmódok hozzáadása. támogatott keyPhrase entitás [számos országban](luis-language-support.md#languages-supported) részeként a [szövegelemzés](../text-analytics/overview.md) funkciókat. 
@@ -23,7 +24,7 @@ keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés).
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Előre összeállított keyPhrase entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.keyPhrase** entitás.
 
-```JSON
+```json
 {
   "query": "where is the educational requirements form for the development and engineering group",
   "topScoringIntent": {

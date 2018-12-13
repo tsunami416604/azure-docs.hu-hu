@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 028a06a7fb627fd69bdd2f0a2084bbdef11eaed4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335827"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077240"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>A Linuxos ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
@@ -54,7 +54,7 @@ Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldol
 
 ### <a name="oms-agent"></a>Az OMS-ügynök
 
-Ezen ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+Ezen ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="oms-agent-status"></a>Az OMS-ügynök állapota

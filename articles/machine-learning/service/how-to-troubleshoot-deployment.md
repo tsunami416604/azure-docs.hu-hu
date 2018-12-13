@@ -1,5 +1,6 @@
 ---
-title: Hibaelhárítási útmutató Azure Machine Learning szolgáltatás a központi telepítés
+title: Üzembehelyezési hibaelhárítási útmutató
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan megkerülő megoldásként megoldásában, és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: haining
 author: hning86
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865369"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100514"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
 
@@ -222,10 +224,6 @@ def run(input_data):
 ## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről: 
-* [Az aci Szolgáltatásban üzembe helyezése](how-to-deploy-to-aci.md)
+* [Hogyan helyezhet üzembe, és ahol](how-to-deploy-and-where.md)
 
-* [Az aks üzembe helyezése](how-to-deploy-to-aks.md)
-
-* [Az oktatóanyag 1. rész: modell betanítása](tutorial-train-models-with-aml.md)
-
-* [Az oktatóanyag 2. rész: modell üzembe helyezése](tutorial-deploy-models-with-aml.md)
+* [Oktatóanyag: Betanítása és a modellek üzembe helyezése](tutorial-train-models-with-aml.md)

@@ -1,6 +1,6 @@
 ---
-title: További információ az alkalmazások és erőforrások Azure Active Directory-csoportok használata a kezelési |} A Microsoft Docs
-description: Ismerje meg a szervezet felhőalapú alkalmazásokat, a helyszíni alkalmazások és-erőforrások Azure Active Directory-csoportok hozzáférés-kezelés.
+title: Alkalmazás- és erőforrás-hozzáférés kezelése a csoportok – Azure Active Directory |} A Microsoft Docs
+description: Ismerje meg a hozzáférést a szervezet felhőalapú alkalmazásokat, a helyszíni alkalmazások és -erőforrások Azure Active Directory-csoportok kezelése.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 5a706a2a879ae3b4c4adb2690faa77846474ce49
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223972"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087286"
 ---
-# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Erőforráshozzáférés-kezelés az Azure Active Directory-csoportok ismertetése
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Alkalmazás- és erőforrás-hozzáférés kezelése Azure Active Directory-csoportok
 Az Azure Active Directory (Azure AD) segítségével felügyelheti felhőalapú alkalmazásait, a helyszíni alkalmazások és használatával a szervezet erőforrásaihoz. Az erőforrások a címtár, például való kezelése a szerepkörök a címtárnak, vagy a könyvtárba, külső objektumok, például a szoftverek (SaaS) Szolgáltatottszoftver-alkalmazásokat, az Azure-szolgáltatásokat, SharePoint-webhelyekre és a helyszíni erőforrások része lehet.
 
 >[!NOTE]

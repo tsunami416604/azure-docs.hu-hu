@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
-ms.custom: ''
-ms.openlocfilehash: b244c7347b458439e9c1c088cf83cff3d0ec5a2e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001115"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097216"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása
 
@@ -35,7 +35,7 @@ Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-b
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Határozza meg, hogy engedélyezi-e kiterjesztett metrikák
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 2. A **virtuális gépek**, válasszon ki egy virtuális Gépet, majd a **figyelés**válassza **metrikák**. Elérhető mérőszámok listája látható.
 3. Bizonyos metrikák, és a egy graph adatait jeleníti meg őket.  
     ![A példában a metrika – gazdagép százalékos Processzorhasználat](./media/azure-vm-extended-metrics/metric01.png)
@@ -55,18 +55,18 @@ Ne feledje, hogy a tárfiók Azure és a Linux vendégszintű monitorozás szük
 1. A **virtuális gépek**, a virtuális gépek listájának megtekintése, és válassza ki a virtuális Gépet.
 2. A **figyelés**válassza **diagnosztikai beállítások**.
 3. A diagnosztikai beállítások oldalon kattintson a **vendégszintű figyelés engedélyezése**.  
-    ![Vendég szinten figyelés engedélyezése](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+    ![Vendég szinten figyelés az Áttekintés lap engedélyezése](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Néhány perc elteltével az Azure diagnostics-ügynök telepítve van a virtuális gépen. Egy alapvető házirendcsoport metrikák kerülnek. Frissítse az oldalt. A hozzáadott teljesítményszámlálók az Áttekintés lapon jelennek meg.
 5. Válassza ki a figyelés területen **metrikák**.
 6. A metrikák diagram alatt **metrika Namespace**válassza **Vendég (klasszikus)**.
 7. A metrika listában megtekintheti az összes rendelkezésre álló teljesítményszámlálók vonatkozóan a Vendég virtuális Gépen.  
-    ![Kiterjesztett metrikák](./media/azure-vm-extended-metrics/extended-metrics.png)
+    ![kiterjesztett példa mérőszámok listája](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Vendégszintű figyelés új virtuális gépeken
 
 Amikor hoz létre új virtuális gépeket, a kezelés lapon, válassza ki a **a** a **operációs rendszer Vendég diagnosztikai**.
 
-![A vendég operációs rendszer diagnosztika engedélyezése](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![a vendég operációs rendszer diagnosztika beállítása](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 Kiterjesztett metrikák az Azure-beli virtuális gépek engedélyezésével kapcsolatos további információkért lásd: [megértését és az Azure Linux-ügynök használatával](../virtual-machines/extensions/agent-linux.md) és [Azure-beli virtuálisgép-ügynök – áttekintés](../virtual-machines/extensions/agent-windows.md).
 
@@ -82,7 +82,7 @@ Engedélyezheti a VM-metrikák az Azure PowerShell-parancsfájlokkal. Ha azt sze
 
 A Cloudyn portálon az Azure-példányokon futó teljesítmény-mérőszámok megtekintéséhez lépjen **eszközök** > **számítási** > **példány Explorer**. A Virtuálisgép-példányok listáját bontsa ki a példány, és ezután bontsa ki az erőforrást, a részletek megtekintéséhez.
 
-![Példány Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Példány Explorer látható példa információk](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>További lépések
 

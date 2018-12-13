@@ -1,5 +1,5 @@
 ---
-title: Mi a Translator Text API?
+title: Mi a Translator Text API? – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba való integrálásával többnyelvű felhasználói felületeket hozhat létre.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
-ms.date: 05/10/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: eed06d64e81196bbd6964aa33840f37dc5f14dbc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037447"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091611"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 

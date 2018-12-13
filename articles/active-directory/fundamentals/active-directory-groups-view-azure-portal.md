@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató a vállalat csoportjainak és tagjainak megtekintéséhez az Azure Active Directoryban | Microsoft Docs
-description: Rövid útmutató a vállalat csoportjai és a csoportokhoz rendelt tagok kereséséhez és megtekintéséhez az Azure Portalon.
+title: 'Gyors útmutató: a munkahelyi csoportok és tagok – Azure Active Directory megtekintése |} A Microsoft Docs'
+description: Keresse meg, és megtekintheti a szervezet és a hozzárendelt tagjaik kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,14 +10,14 @@ ms.component: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056403"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087474"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 

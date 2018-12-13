@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 41ee462fb071309a5a41eabb37646f353bf4a085
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: a4eaa6f45d164e54d88569f6cba06d91ed35db83
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995667"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099797"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rövid útmutató – Költségek feltérképezése és elemzése a Költségelemzés szolgáltatás használatával
 
@@ -43,7 +43,7 @@ A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.mic
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
 
@@ -63,7 +63,7 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába:
 
 **Kimutatásdiagramok (fánkdiagramok)** – Dinamikus kimutatásokat tesznek lehetővé a teljes költséget alapvető jellemzők alapján lebontva. Az adott hónap költségeit jelenítik meg a legmagasabb halmozott költségtől a legalacsonyabb felé. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségek alapértelmezetten a következő kategóriákba vannak sorolva: szolgáltatás (fogyasztásmérő kategória), hely (régió), valamint gyermekhatókör. Például a regisztrációs fiókok a számlázási fiókok alatt, az erőforráscsoportok az előfizetések alatt, az erőforrások, pedig az erőforráscsoportok alatt jelennek meg.
 
-![A költségelemzés kezdőnézete](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+![Az Azure Portalon költségelemzés kezdeti nézete](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
@@ -76,21 +76,21 @@ Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszab�
 
 Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A választómező segítségével gyorsan átválthat az előző hónap, az aktuális hónap, az aktuális negyedév, az aktuális év, vagy egy egyénileg választott dátumtartomány adatainak megjelenítésére. A előző hónap lehetőség választásával könnyedén kielemezheti legfrissebb Azure-számláját és egyeztetheti kiadásait. Az aktuális negyedév és aktuális év lehetőségek segítenek költségeit nyomon követni a hosszabb távú költségvetések viszonyában is. Egyedi dátumtartományt is megadhat. Kiválaszthat például egyetlen napot, az elmúlt hét napot, vagy bármilyen időtartamot az aktuális hónaptól számítva egy évre visszamenőleg.
 
-![Dátumválasztó](./media/quick-acm-cost-analysis/date-selector.png)
+![Dátum-választó megjelenítése egy példa kiválasztása ebben a hónapban](./media/quick-acm-cost-analysis/date-selector.png)
 
 A költségelemzés alapértelmezetten a **Halmozott** költségeket jeleníti meg. A halmozott költségek az egyes napok költségét, valamint a megelőző napok költségeit foglalják magukba, tehát a napi költségek folyamatos halmozódásának nyomon követésére szolgálnak. A nézetet arra optimalizáltuk, hogy megvizsgálhassa, hogyan alakulnak költségei az adott időszakban a tervezett költségvetéshez képest.
 
 Emellett a **napi** nézet használatával az egyes napok költségeit is megtekintheti. A napi nézet nem jeleníti meg a növekedési trendeket. A nézet célja a szabálytalanságok, vagyis a kiugróan magas vagy alacsony értékek megjelenítése a napról napra jelentkező költségekben. Ha költségvetést is kiválasztott, a napi nézet egy becslést is megjelenít az egy napra vonatkozó költségkeretet illetően. Ha a napi költségei következetesen meghaladják a becsült napi költségkeretet, várhatóan havi költségkeretét is túl fogja lépni. A becsült napi költségkeret egy olyan eszköz, amellyel könnyebben megjelenítheti költségvetése alacsonyabb szintjeit. Ha napi költségei ingadozóak, a becsült napi költségkeret viszonya a havi költségkeretével kevésbé lesz pontos.
 
-![Napi nézet](./media/quick-acm-cost-analysis/daily-view.png)
+![Az aktuális hónapra például napi költségek megjelenítő napi megtekintése](./media/quick-acm-cost-analysis/daily-view.png)
 
 A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás megfigyelhessük, hogyan költségeit kategorizálta gyakori erőforrás- és használati tulajdonságai, például az erőforráscsoport vagy erőforrás-címkék teszi lehetővé. Címkék szerint kell csoportosítani, válassza ki a címke kulcs szerint kell csoportosítani kívánt, és láthatja, hogy minden egyes, amely a címke értéke az erőforrások, amelyekre vonatkozóan nincs engedélyezve a alkalmazni a címkét egy extra szegmens szerinti bontásban költségeket. Vegye figyelembe a Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja. Erőforráscímkék csoport jelenleg nem támogatottak. Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
 
-![Csoportosított napi halmozott költségek megtekintése](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
+![Csoportosított napi halmozott nézet-példa az Azure szolgáltatási költségei teszik a múlt hónapban](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
 Kimutatásdiagramok a fő diagram megjelenítése különböző csoportosítások, amelyek egy szélesebb körű képet az általános költségek a kijelölt időszak és a szűrők alapján. Válasszon egy tulajdonságot vagy címke minden dimenzió összesített költségeit megtekintésére. Teljes nézet adatok teljes készlete áll a képernyő alján kibontásával a **adatok** navigációs menüben, vagy válassza **exportálása > CSV letöltése** a képernyő tetején. Íme egy példa az erőforráscsoportokra vonatkozó adatok fiókot.
 
-![A jelenlegi nézet összes adata](./media/quick-acm-cost-analysis/full-data-set.png)
+![Összes adat megjelenítése az erőforrás csoportnevek aktuális nézet](./media/quick-acm-cost-analysis/full-data-set.png)
 
 Az előző képen az erőforráscsoportok nevei olvashatóak. Címke megtekintéséhez a teljes költség / címke szerint csoportosíthatja, amíg nem érhető el cost analysis nézetek megtekintése az erőforrás vagy erőforráscsoport összes címkéjét.
 

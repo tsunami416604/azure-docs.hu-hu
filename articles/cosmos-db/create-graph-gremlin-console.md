@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 7f23ddc5b8f58403e5d2e69f11bd39b859f8d548
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b3077920f08688d2cc84997ef8712183e8d7a09a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844455"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098066"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
 
@@ -28,11 +28,11 @@ ms.locfileid: "52844455"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja egy Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Gremlin API adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
+Ez a rövid útmutató bemutatja egy Azure Cosmos DB [Gremlin API](graph-introduction.md)-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Gremlin API adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
-A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](http://tinkerpop.apache.org/downloads.html) tölthető le.
+A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://tinkerpop.apache.org/downloads.html) tölthető le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell lennie. A 3.2.5-ös vagy újabb verziót használja. (A Windows Gremlin-konzol használatához telepítenie kell [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
+Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell lennie. A 3.2.5-ös vagy újabb verziót használja. (A Windows Gremlin-konzol használatához telepítenie kell [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -80,7 +80,7 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
 
-3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
+3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
 4. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]

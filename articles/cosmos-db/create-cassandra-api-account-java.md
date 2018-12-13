@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 1220bcc8445f13a4573f1a6d3181c172799638fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 57b255fc3875adfd411ee8508f238f0e10af85f6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741785"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089836"
 ---
 # <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Oktatóanyag: Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Szerezze be a [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) legfrissebb verzióját 
 
-* [Töltse le](http://maven.apache.org/download.cgi) és [telepítse](http://maven.apache.org/install.html) a [Maven](http://maven.apache.org/) bináris archívumot 
+* [Töltse le](https://maven.apache.org/download.cgi) és [telepítse](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) bináris archívumot 
   - Ubuntu rendszeren futtathatja az  `apt-get install maven`  parancsot a Maven telepítéséhez. 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása 
@@ -62,7 +62,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Kérje le a kapcsolati sztringet az Azure Portalon, majd másolja be a Java konfigurációs fájlba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az  [Azure Portalon](http://portal.azure.com/) lépjen a Cosmos DB-fiókra. 
+1. Az  [Azure Portalon](https://portal.azure.com/) lépjen a Cosmos DB-fiókra. 
 
 2. Nyissa meg a  **Kapcsolati sztring** panelt.  
 

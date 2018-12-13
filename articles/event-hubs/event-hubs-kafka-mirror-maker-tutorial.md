@@ -1,21 +1,21 @@
 ---
-title: Az Azure Event hubs szolgáltatással Apache Kafka MirrorMaker használata a Kafka-ökoszisztéma |} A Microsoft Docs
-description: Kafka MirrorMaker használatával Kafka-fürt, az Event Hubs tükrözéséhez.
+title: Az Apache Kafka Mirrormakerrel – használja az Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk ismertetése Kafka MirrorMaker használata a Kafka-fürt AzureEvent hubs tükrözéséhez.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: mirror-maker
-ms.custom: mvc
-ms.date: 08/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b79d62175c29dfc1671f0cb59c36f4bd2a8857e1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 83f51d2980e5cb5bc2e2a415bb3ee96778667ed7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282821"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095035"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Az Event Hubs-beli Apache kafka Kafka MirrorMaker használata
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan egy Kafka-közvetítő egy Kafka engedélye
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
-> * A példa-projekt klónozása
+> * A példaprojekt klónozása
 > * Kafka-fürt beállítása
 > * A Kafka Mirrormakerrel konfigurálása
 > * Futtassa a Kafka Mirrormakerrel
@@ -56,9 +56,9 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Event Hubs-névtér küldeni és fogadni az összes Event Hubs szolgáltatás szükséges. Lásd: [létrehozott Kafka engedélyezve van az Event Hubs](event-hubs-create.md) Event Hubs Kafka végpont beszerzésével kapcsolatban. Ellenőrizze, hogy az Event Hubs kapcsolati karakterláncot a későbbi használatra.
+Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. Az Event Hubs Kafka-végpont beszerzésével kapcsolatban olvassa el a [Kafka-kompatibilis eseményközpont létrehozásáról](event-hubs-create.md) szóló cikket. Ellenőrizze, hogy az Event Hubs kapcsolati karakterláncot a későbbi használatra.
 
-## <a name="clone-the-example-project"></a>A példa-projekt klónozása
+## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
 Most, hogy a Kafka engedélyezve van az Event Hubs kapcsolati karakterláncot, az Azure Event Hubs, Kafka-tárház klónozása, és keresse meg a `mirror-maker` almappát:
 
@@ -125,19 +125,19 @@ A MirrorMaker fut a forrás-Kafka-fürt bármely esemény mindkét a Kafka-fürt
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
-> * A példa-projekt klónozása
+> * A példaprojekt klónozása
 > * Kafka-fürt beállítása
 > * A Kafka Mirrormakerrel konfigurálása
 > * Futtassa a Kafka Mirrormakerrel
 
-További információ az Event Hubs és az Event Hubs a Kafka, a következő témakörben talál:  
+Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
-- [Az Event Hubs-beli Apache kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [A Kafka létrehozása az Event Hubs engedélyezve](event-hubs-create-kafka-enabled.md)
-- [Stream az Event Hubsba, a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Csatlakozás az Apache Spark egy Kafka-kompatibilis event hubs](event-hubs-kafka-spark-tutorial.md)
-- [Az Apache Flink csatlakozni egy Kafka-kompatibilis eseményközpont](event-hubs-kafka-flink-tutorial.md)
-- [Egy Kafka-kompatibilis eseményközpont Kafka csatlakozás integrálása](event-hubs-kafka-connect-tutorial.md)
-- [Egy Kafka-kompatibilis eseményközpont Akka Streamek csatlakozni](event-hubs-kafka-akka-streams-tutorial.md)
-- [Minták megtekintése a githubon](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
+- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create-kafka-enabled.md)
+- [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Az Apache Spark csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
+- [Az Apache Flink csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
+- [A Kafka Connect integrálása egy Kafka-kompatibilis eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [Az Akka Streams csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)

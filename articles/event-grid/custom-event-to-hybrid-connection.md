@@ -1,21 +1,22 @@
 ---
-title: Egyéni Azure Event Grid-események küldése hibrid kapcsolatba | Microsoft Docs
+title: Egyéni eseményeket küldeni, a hibrid kapcsolat – Event Grid, Azure CLI-vel
 description: Az Azure Event Grid és az Azure CLI segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre. Végpontként egy hibrid kapcsolatot használunk.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/30/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 1f66c75333b41cf399a72b801a7e362672744775
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747779"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099587"
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átvitele hibrid Azure Relay-kapcsolatokon keresztül az Azure CLI és az Event Grid segítségével
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: Egyéni események átirányítása az Azure CLI és az Event Grid Azure Relay hibrid kapcsolatai esetében
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid Azure Relay-kapcsolat az egyik támogatott eseménykezelő. A hibrid kapcsolatok eseménykezelőként való használatára akkor lehet szükség, ha olyan alkalmazásokból kell eseményeket kezelnie, amelyek nem rendelkeznek nyilvános végponttal. A vállalati hálózaton belül is lehetnek ilyen alkalmazások. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az egyéni témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket hibrid kapcsolatokba küldjük.
 

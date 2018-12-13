@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1b7499990a049f276bf1af9e31b639ea4944d8f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 8e2b65f83395c9e8991338864d2037d0572dd269
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167568"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078006"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával 
 
@@ -80,7 +80,12 @@ Ez a szakasz felsorolja, amely támogatja a Netezza adatkészlet tulajdonságai.
 
 Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). 
 
-Adatok másolása Netezza, állítsa be a **típusa** tulajdonság, az adatkészlet **NetezzaTable**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása Netezza, állítsa be a **típusa** tulajdonság, az adatkészlet **NetezzaTable**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **NetezzaTable** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -92,7 +97,8 @@ Adatok másolása Netezza, állítsa be a **típusa** tulajdonság, az adatkész
         "linkedServiceName": {
             "referenceName": "<Netezza linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,7 +116,7 @@ Adatok másolása Netezza, állítsa be a **forrás** írja be a másolási tev�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **NetezzaSource**. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

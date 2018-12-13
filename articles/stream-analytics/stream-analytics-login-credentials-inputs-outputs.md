@@ -2,19 +2,19 @@
 title: Az Azure Stream Analytics-feladatok bejelentkezési hitelesítő adatok forgatása
 description: Ez a cikk bemutatja, hogyan frissítse a hitelesítő adatokat a bemeneti és kimeneti fogadók az Azure Stream Analyticsben feladatok.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978766"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099069"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>A bemenetek és kimenetek egy Stream Analytics-feladat a bejelentkezési hitelesítő adatok forgatása
 
@@ -27,20 +27,20 @@ Ebben a szakaszban a Microsoft végigvezeti újragenerálása hitelesítő adato
 ### <a name="blob-storagetable-storage"></a>A BLOB storage és Table storage
 1. Jelentkezzen be az Azure Portalon > Tallózás a storage-fiók, amely a Stream Analytics-feladat részeként bemeneti/kimeneti használja.    
 2. A beállítások területen nyissa meg a **hozzáférési kulcsok**. A két alapértelmezett kulcsok (1. kulcs, 2. kulcs) között válassza ki azt, amelyik nem használja a feladat, majd ismét:  
-   ![Storage-fiók kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![Storage-fiók kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Másolja ki az újonnan létrehozott kulcsot.    
 4. Az Azure Portalon keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
 5. Keresse meg a Blob/Table storage bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
 6. Keresse meg a **Tárfiókkulcs** mezőbe, majd illessze be az újonnan létrehozott kulcs > kattintson **mentése**.    
 7. A kapcsolat tesztelése automatikusan elindul, amikor a módosítások mentése, az értesítések lapon megtekintheti. Nincsenek a két értesítések egy az egyhez felel meg a frissítés mentése, és más felel meg a kapcsolat tesztelése:  
-   ![A kulcs módosítása után értesítések](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![A kulcs módosítása után értesítések](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Lépjen tovább a [indítsa el a feladatot az utolsó leállított időpont](#start-your-job-from-the-last-stopped-time) szakaszban.
 
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Jelentkezzen be az Azure Portalon > Tallózás az Eseményközpontba, amely a Stream Analytics-feladat részeként bemeneti/kimeneti használja.    
 2. A beállítások területen nyissa meg a **megosztott elérési házirendek** , és válassza ki a hozzáférési házirendet. Között a **elsődleges kulcs** és **másodlagos kulcs**, válassza ki azt, amelyik nem használja a feladatot, majd ismét:  
-   ![Eseményközpont kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![Az Event Hubs kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Másolja ki az újonnan létrehozott kulcsot.    
 4. Az Azure Portalon keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
 5. Keresse meg az Event hubs bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
@@ -54,7 +54,7 @@ Szeretne csatlakozni az SQL database egy meglévő felhasználó bejelentkezési
 
 1. Jelentkezzen be az Azure portal > keresse meg az SQL-adatbázis, amely a Stream Analytics-feladat kimeneti részeként használja.    
 2. A **adatkezelő**, bejelentkezési és csatlakozás az adatbázishoz > hitelesítési típusként válassza **SQL server-hitelesítés** > írja be a **bejelentkezési** és  **Jelszó** Részletek > Válasszon **Ok**.  
-   ![Hozza létre újra az SQL-adatbázishoz tartozó hitelesítő adatokat](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![Hozza létre újra az SQL-adatbázishoz tartozó hitelesítő adatokat](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. A lekérdezés lapon módosítható egy, a felhasználó jelszava a következő lekérdezés futtatásával (cserélje le `<user_name>` ezzel a felhasználónévvel és `<new_password>` az új jelszót):  
 
@@ -79,7 +79,7 @@ Szeretne csatlakozni az SQL database egy meglévő felhasználó bejelentkezési
 
 1. Keresse meg a feladatot **áttekintése** panelen > Válasszon **Start** elindítani a feladatot.    
 2. Válassza ki **utolsó leállítás időpontjában** > kattintson **Start**. Vegye figyelembe, hogy a "Ha az utolsó Leállítás" beállítás csak akkor jelenik meg, ha korábban már futtatta a feladatot, és néhány kimenetet kellett jönnek létre. A feladat az utolsó kimeneti értéket időben újraindításakor alapján.
-   ![A feladat indítása](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![A Stream Analytics-feladat indítása](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

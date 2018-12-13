@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning TensorFlow-modellek betanításához
+title: A TensorFlow-modellek betanításához
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan futtathat egy csomópontos és elosztott modellek TensorFlow-betanítás a TensorFlow estimator
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 5746180b894da265dfc02176c13b5f9b60f4df96
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872781"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094107"
 ---
-# <a name="how-to-train-tensorflow-models"></a>Hogyan TensorFlow modelleket taníthat be
+# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>TensorFlow-modellek Azure Machine Learning szolgáltatással
 
 Neurális hálózat (DNN) képzést nyújt tensorflow-hoz, az Azure Machine Learning biztosít egyéni `TensorFlow` osztályát az `Estimator`. Az Azure SDK `TensorFlow` estimator (, nem kell a conflated a [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) osztály) lehetővé teszi, hogy egyszerűen a tensorflow-hoz is egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok elküldéséhez.
 

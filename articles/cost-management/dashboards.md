@@ -1,21 +1,21 @@
 ---
 title: A Cloudyn irányítópultjain fontos metrikákat jeleníthet meg az Azure-ban |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan irányítópultokkal fontos metrikákat jeleníthet meg a Cloudyn.
+description: Ez a cikk bemutatja, hogyan irányítópultokat a fő mérőszámokat megtekintheti a Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: a058757c3b4ae5087d89cdbdc1ede5fe780606ea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997064"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094108"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Költségeket az irányítópultok metrikák nézet kulcs
 
@@ -43,7 +43,7 @@ A használatának gyors megkezdése egy egyéni irányítópult, duplikálhatja 
 Egyéni irányítópult létrehozása:
 
 1. A kezdőlapon kattintson **új hozzáadása +**. Saját irányítópult-oldalon jelenik meg.  
-    ![Saját irányítópult](./media/dashboards/my-dashboard.png)
+    ![Saját irányítópult-oldalon, ahol hozzáadhat új jelentések](./media/dashboards/my-dashboard.png)
 2. Kattintson a **adja hozzá az új jelentés**. A jelentés hozzáadása jelenik meg.
 3. Válassza ki a jelentést, az irányítópult-widgethez hozzáadni kívánt. A widget hozzá van adva az irányítópulthoz.
 4. Ismételje meg a fenti lépéseket, mindaddig, amíg befejeződik az irányítópulton.
@@ -63,7 +63,7 @@ Egyéni irányítópult megoszthatja másokkal, _nyilvános_ vagy _saját entit�
 A nyilvános egyéni irányítópult megosztása:
 
 1. Az irányítópulton kattintson **irányítópult beállításai**. Az irányítópult beállításai jelenik meg.  
-    ![Irányítópult beállításai](./media/dashboards/dashboard-options.png)
+    ![egyéni irányítópult irányítópult beállításai](./media/dashboards/dashboard-options.png)
 2. Az irányítópult beállításai a boxban, kattintson a nyílra, és kattintson a **nyilvános**. A nyilvános irányítópult megerősítő párbeszédpanel jelenik meg.
 3. Kattintson a **Igen**. Az irányítópult már másoknak is elérhető.
 
@@ -116,13 +116,13 @@ Az alapértelmezett állítható bármelyik irányítópult. Az alapértelmezett
 – Vagy –
 
 1. Kattintson a **irányítópult beállításai** elérhető irányítópultok listáját, és válassza ki az alapértelmezettként használni kívánt irányítópultot.  
-    ![Irányítópult beállításai](./media/dashboards/dashboard-options.png)
+    ![egy alapértelmezett irányítópultot az irányítópult beállításai](./media/dashboards/dashboard-options.png)
 2. Kattintson a **alapértelmezett** az irányítópult a sorban. Az alapértelmezett irányítópult a megerősítést kérő párbeszédpanelen jelenik meg.
 3. Kattintson a **Yes** (Igen) gombra. Az Irányítópult alapértelmezett értéke.
 
 ## <a name="management-dashboard"></a>Kezelési irányítópult
 A Management (vagy MSP-irányítópult MSP-felhasználók) irányítópultot tartalmazza a fő típusú emeli ki.  
-![Kezelési irányítópult](./media/dashboards/management-dash.png)
+![Felügyeleti irányítópultja, amelyen különböző jelentéseket](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>Költségelem összegzése (csak Enterprise)
 A widget a felügyelt költség entitásokkal, többek között, az entitások és fiókok számát foglalja össze.
@@ -158,7 +158,7 @@ A widget részlegek által használt tárolási szolgáltatások jeleníti meg. 
 
 ## <a name="cost-controller-dashboard"></a>Vezérlő irányítópultja költség
 A költségek vezérlő irányítópult jeleníti meg előre beállított költségek felosztási emeli ki.  
-![Vezérlő irányítópultja költség](./media/dashboards/cost-controller-dashboard.png)
+![Vezérlő irányítópultjáról és különböző jelentéseket költség](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>Költségek időbeli alakulása
 A widget segít a költségek trendek felismerése. Kiemeli a költségek az utolsó napjára, a trend az elmúlt 30 nap alapján.
@@ -198,7 +198,7 @@ A widget az elmúlt hat hónapban költségek emeli ki.
 ## <a name="asset-controller-dashboard"></a>Adategység-vezérlő irányítópultja
 
 Ez az irányítópult futó példányok, elérhető és a használatban lévő lemezek, a példányok típusai és a tároló terjesztési számát jeleníti meg.  
-![Adategység-vezérlő irányítópultja](./media/dashboards/asset-controller-dashboard.png)
+![Az eszközintelligencia vezérlő irányítópultjáról különböző jelentéseket](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Számítási példányok
 A widget az elmúlt 30 napban a használati trendek alapján futó számát jeleníti meg.
@@ -227,7 +227,7 @@ A widget kiemeli a futó a trend az elmúlt 30 nap alapján Amazon RDS-példány
 
 ## <a name="optimizer-dashboard"></a>Optimalizáló irányítópult
 Ez az irányítópult downsizing javaslatokat, a fel nem használt erőforrások és a lehetséges megtakarítás jeleníti meg.  
-![Optimalizáló irányítópult](./media/dashboards/optimizer-dashboard.png)
+![Optimalizáló irányítópultjáról és különböző jelentéseket](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>A fenntartott példányok Kalkulátor
 A widget fenntartott példány vásárlására vonatkozó javaslat számát jeleníti meg, és kiemeli az éves szinten lehetséges megtakarításokat.
@@ -257,7 +257,7 @@ Az optimalizálási javaslatokat vannak adatok alapján történő használatán
 
 ## <a name="s3-tracker-dashboard"></a>S3-követő irányítópult
 Az S3-követő Irányítópult segítségével keresse meg, elemzése és megjelenítése az aktuális storage használati és a trendek.  
-![S3-követő irányítópult](./media/dashboards/s3-tracker-dashboard.png)
+![S3-követő irányítópultjáról és különböző jelentéseket](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>Az összes gyűjtők
 A widget rávilágít arra, hogy minden a gyűjtők GB-ban, és a gyűjtők lévő objektumok teljes száma a teljes méretét.
@@ -281,7 +281,7 @@ A widget kiemeli a gyűjtőhöz a tényleges száma és százalékos aránya sze
 
 ## <a name="cloud-comparison-dashboard"></a>A cloud összehasonlító irányítópultja
 A felhő összehasonlító Irányítópult segítségével összehasonlíthatja a költségek a különböző felhőszolgáltatók, díjszabás, a Processzor típusa és a RAM mérete alapján.  
-![A cloud összehasonlító irányítópultja](./media/dashboards/cloud-comparison-dashboard.png)
+![A felhő összehasonlító irányítópultjáról és különböző jelentéseket](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Az Azure-ban, a példány típusának költség
 A widget kiemeli az elmúlt 30 nap használati az igény szerinti díjszabás. Összehasonlítja a költségek és a jelenlegi Amazon EC2-é cost vs az esetleges költségeket az Azure-ban.

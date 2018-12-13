@@ -1,21 +1,22 @@
 ---
-title: A Language Understanding (LUIS) alkalmazások megtervezése
-titleSuffix: Azure Cognitive Services
+title: Az alkalmazás megtervezése
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Megfelelő alkalmazást szándékok és entitások, és ezután terveket hozhat létre az alkalmazás a Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: e8e6c32eca932803acfe0e7854de885e7ab129fc
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e14b9f2930ed9c170f31bd654829efe3b5a99446
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267664"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091294"
 ---
 # <a name="plan-your-luis-app"></a>A LUIS-alkalmazás megtervezése
 
@@ -77,10 +78,10 @@ Egy lista entitás egy explicit módon megadott értékek listája. Minden egyes
 
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#list-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz lista entitások kinyeréséhez. Próbálja ki a [rövid](luis-quickstart-intent-and-list-entity.md) egy lista entitás használatával kapcsolatos további.
 
-### <a name="regular-expression-entity"></a>Reguláris kifejezés entitás
+### <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás
 A reguláris kifejezésnek entitás lehetővé teszi, hogy a helyes formátumú adatokat nyerhet ki az utterance (kifejezés) egy reguláris kifejezés alapján a LUIS.
 
-![Reguláris kifejezés entitás](./media/luis-plan-your-app/regex-entity.png)
+![Reguláriskifejezés-entitás](./media/luis-plan-your-app/regex-entity.png)
 
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#regular-expression-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz reguláris kifejezés entitások kinyeréséhez. Próbálja ki a [rövid](luis-quickstart-intents-regex-entity.md) egy reguláris kifejezésnek entitás használatával kapcsolatos további.
 

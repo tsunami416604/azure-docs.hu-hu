@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ed29fb99025dbc69b9dae6a996f444954a7d88d1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 81d4fc3032b7b69bb438d28e97b62f483e36018b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123419"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078072"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatmásolás az Impala Azure Data Factory (előzetes verzió) használatával
 
@@ -87,7 +87,12 @@ A következő tulajdonságok támogatottak az Impala-beli társított szolgálta
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz az Impala adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet **ImpalaObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet **ImpalaObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ImpalaObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -99,7 +104,8 @@ Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet *
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -115,7 +121,7 @@ Adatok másolása az Impala, állítsa be a forrás típusaként a másolási te
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **ImpalaSource**. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

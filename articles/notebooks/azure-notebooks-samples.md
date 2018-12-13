@@ -1,5 +1,5 @@
 ---
-title: A Jupyter notebooks minta Azure notebookokhoz |} A Microsoft Docs
+title: Mintául szolgáló Jupyter notebookok Azure notebookokhoz
 description: Minták nagyszerű módját az ingyenes Azure-jegyzetfüzetekben fut a cloud services, a Jupyter notebookok tapasztalhat.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c355996d7d02a4027e4b2be49dc5c661cce64abe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855979"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082329"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
 
@@ -32,10 +32,10 @@ Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhá
 ## <a name="great-sample-notebooks"></a>Nagyszerű mintafüzetek
 
 - [Azure notebookok alapszintű készlet](https://notebooks.azure.com/#sample-redirect) tartalmazza a Python, R, tudnivalókra és F#, bemutatásához az adatok elérése, az Azure Machine Learning-szolgáltatások és néhány data science gyakorlatok notebookok együtt.
-- [Bevezetés a Jupyter notebookok](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
+- [Bevezetés a Jupyter notebookok](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
 - [Bevezetés a Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) Jake Vanderplas szerint.
 - [Érdekes notebookok galériája](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt a Githubon)
-- [nbviewer.jupyter.org](http://nbviewer.jupyter.org)
+- [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Az utasítás-fizika a [fizika részleg Londonban angolszász College](https://notebooks.azure.com/cvanbreu/libraries)
 - [Az Azure Machine Learning – első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
 

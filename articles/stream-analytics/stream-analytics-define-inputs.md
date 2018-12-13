@@ -4,17 +4,17 @@ description: Ismerje meg az Azure Stream Analyticsben adatkapcsolat beállítás
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 66e57d95125bd6404ec23302e4c336ab0b71ea78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248744"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099732"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -29,7 +29,7 @@ Ezen a bemeneti források is élő Azure-előfizetéshez, a Stream Analytics-fel
 Stream Analytics támogatja a tömörítést minden stream bemeneti adatforrás esetében. Jelenleg támogatott referencia típusok a következők: None, GZip, és a Deflate tömörítést. A tömörítés támogatása nem érhető el a referenciaadatoknál. Ha a bemeneti formátum az Avro-adatok tömörített, azt transzparens módon történik. Adja meg a tömörítési típus szerializálása az Avro-nincs szükségünk. 
 
 ## <a name="create-edit-or-test-inputs"></a>Létrehozásához, szerkesztéséhez vagy bemenet tesztelése
-Használhatja a [az Azure portal](https://portal.azure.com) való [hozzon létre új bemenetei között meg](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) és megtekintése vagy szerkesztése a folyamatos átviteli feladat a meglévő bemenetei között. A bemeneti kapcsolatok is tesztelheti és [tesztlekérdezések](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) a mintaadatokat. Ha egy lekérdezést ír, a FROM záradékban található a bemeneti listázza. Megtekintheti az elérhető bemenetek listája a **lekérdezés** lapot a portálon. Ha több bemenet használni kívánt, `JOIN` őket vagy több írási `SELECT` lekérdezéseket.
+Használhatja a [az Azure portal](https://portal.azure.com) való [hozzon létre új bemenetei között meg](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) és megtekintése vagy szerkesztése a folyamatos átviteli feladat a meglévő bemenetei között. A bemeneti kapcsolatok is tesztelheti és [tesztlekérdezések](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) a mintaadatokat. Ha egy lekérdezést ír, a FROM záradékban található a bemeneti listázza. Megtekintheti az elérhető bemenetek listája a **lekérdezés** lapot a portálon. Ha több bemenet használni kívánt, `JOIN` őket vagy több írási `SELECT` lekérdezéseket.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Adatok streamelése az Event Hubsból

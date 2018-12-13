@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 70a7f17ed0ecb78337d13f68a260fc9f860e3a4a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 0ba551f09fff9996327d8eb1e49922bfc4c74b3b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837018"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100256"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
@@ -84,7 +84,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
 
     ![Tekintse meg és másolja a vágólapra a CONNECTION STRING (Kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán](./media/create-table-python/connection-string.png)
 

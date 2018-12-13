@@ -1,20 +1,20 @@
 ---
-title: Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja | Microsoft Docs
+title: Megjelenítheti az adatokat rendellenességek valós idejű események – Azure Event Hubs |} A Microsoft Docs
 description: Oktatóanyag – A Microsoft Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.author: shvija
-ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.custom: mvc
-ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
-ms.translationtype: HT
+ms.custom: seodec18
+ms.date: 12/06/2018
+ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004113"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091679"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 

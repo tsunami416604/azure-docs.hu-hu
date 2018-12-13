@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9907983a901062e5adf622fc6620f5f8432f6a87
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 107e8c340412e0b90e367331c15fa550dac1e858
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642346"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078667"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>A Log Analytics Virtuálisgép-bővítmény hibáinak elhárítása
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a Microsoft Azure platformon futó Windows és Linux rendszerű virtuális gépekhez a Log Analytics Virtuálisgép-bővítmény, és azok megoldását lehetséges megoldásokat javasol.
@@ -46,7 +46,7 @@ Ha a *Microsoft Monitoring Agent* Virtuálisgép-bővítmény telepítése nélk
 1. Ellenőrizze, hogy ha az Azure-beli Virtuálisgép-ügynök telepítve van és működik, a lépések használatával megfelelően [KB-os 2965986](https://support.microsoft.com/kb/2965986#mt1).
    * Emellett áttekintheti a Virtuálisgép-ügynök naplófájlját `C:\WindowsAzure\logs\WaAppAgent.log`
    * Ha a napló nem létezik, a Virtuálisgép-ügynök nincs telepítve.
-   * [Az Azure Virtuálisgép-ügynök telepítése](../../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [Az Azure Virtuálisgép-ügynök telepítése](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. Ellenőrizze a Microsoft Monitoring Agent bővítményt szívverés feladat fut-e az alábbi lépéseket követve:
    * Jelentkezzen be a virtuális gép
    * Nyissa meg a Feladatütemezőt, és keresse meg a `update_azureoperationalinsight_agent_heartbeat` feladat
@@ -66,7 +66,7 @@ Ha a *Linuxhoz készült Log Analytics-ügynök* Virtuálisgép-bővítmény tel
 
 1. Ha a bővítmény állapota *ismeretlen* ellenőrizze, hogy ha az Azure-beli Virtuálisgép-ügynök telepítve van-e, és megfelelően működik-e a Virtuálisgép-ügynök naplófájlját áttekintésével `/var/log/waagent.log`
    * Ha a napló nem létezik, a Virtuálisgép-ügynök nincs telepítve.
-   * [Az Azure Virtuálisgép-ügynök telepítése Linux rendszerű virtuális gépeken](../../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [Az Azure Virtuálisgép-ügynök telepítése Linux rendszerű virtuális gépeken](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. Többi nem kifogástalan állapot, tekintse át a Log Analytics-ügynök Linux Virtuálisgép-bővítmény-fájlokat naplókat `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` és `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Ha a bővítmény állapota kifogástalan állapotban, de nem feltöltött adatmennyiség tekintse át a Log Analytics-ügynököt a Linux-naplófájlok `/var/opt/microsoft/omsagent/log/omsagent.log`
 

@@ -1,20 +1,21 @@
 ---
-title: Az Azure Event Hubs – gyakori kérdések |} A Microsoft Docs
-description: Az Azure Event Hubs – gyakori kérdések (GYIK)
+title: Gyakori kérdések – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk az Azure Event Hubs és a válaszok a gyakori kérdések (GYIK) listája.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 10/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300675"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088230"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 

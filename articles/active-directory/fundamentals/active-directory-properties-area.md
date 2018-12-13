@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryban |} A Microsoft Docs
-description: Hogyan adhat hozzá a szervezet adatvédelmi információ az Azure Active Directory (Azure AD) tulajdonságai területen.
+title: Adja hozzá a szervezet adatvédelmi info – Azure Active Directory |} A Microsoft Docs
+description: Útmutatás a szervezet adatvédelmi információ hozzáadása az Azure Active Directory tulajdonságai területen.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 50fcafbdef4fc09532d03ae145183dd45c381c73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904197"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083835"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>Útmutató: Az adatvédelmi információ az Azure Active Directory hozzáadása
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryval
 Ez a cikk bemutatja, hogyan Bérlői rendszergazda adhat hozzá adatvédelemmel kapcsolatos adatokat a szervezet Azure Active Directory (Azure AD) bérlő az Azure Portalon keresztül.
 
 Erősen ajánlott hozzáadása a globális adatvédelmi partner és a szervezet adatvédelmi nyilatkozata is, így belső alkalmazottai és külső vendégek tekintheti át a szabályzatokat. Mivel egyedileg létrehozott és az egyes üzleti szabott adatvédelmi nyilatkozatai, erősen ajánlott, segítségért forduljon jogászhoz.

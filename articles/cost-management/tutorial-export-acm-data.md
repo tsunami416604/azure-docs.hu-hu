@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 734020f2e70d09b125867faafebf1e7f7332fec4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995559"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087933"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -48,13 +48,13 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Cost Management + Számlázás &gt; Cost Management &gt; válasszon ki egy előfizetést vagy egy előfizetésben szereplő erőforráscsoportot &gt; Exportálás &gt; **Hozzáadás**.
 
-Adjon meg egy nevet az exportálás, és válassza a "Hónap elejétől számított költségek naponta exportálása" lehetőséget. Kattintson a **Tovább** gombra.
+Adjon meg egy nevet az exportálás, és válassza a "Hónap elejétől számított költségek naponta exportálása" lehetőséget. Kattintson a **Tovább**gombra.
 
-![Új exportálási: exportálása típusa](./media/tutorial-export-acm-data/basics_exports.png)
+![Exportálás típust megjelenítő új exportálási példa](./media/tutorial-export-acm-data/basics_exports.png)
 
-Adja meg az Azure storage-fiók előfizetést, majd válassza ki a tárfiókját.  Adja meg a storage-tárolót és a könyvtár elérési útja, adja meg az exportfájl ugorhat.  Kattintson a **Tovább** gombra.
+Adja meg az Azure storage-fiók előfizetést, majd válassza ki a tárfiókját.  Adja meg a storage-tárolót és a könyvtár elérési útja, adja meg az exportfájl ugorhat.  Kattintson a **Tovább**gombra.
 
-![Új exportálási: storage](./media/tutorial-export-acm-data/storage_exports.png)
+![Tárfiók részleteit megjelenítő új exportálási példa](./media/tutorial-export-acm-data/storage_exports.png)
 
 Az Exportálás részleteiért tekintse át, és kattintson a **létrehozás**.
 
@@ -68,15 +68,15 @@ A Cost Management-adatainak gyűjtését egyszerűen ellenőrizheti, az exportá
 
 Az exportálási listában kattintson a tárfiók nevére. A tárfiók oldalán kattintson a Megnyitás az Explorerben elemre. Ha megjelenik egy megerősítési mező, kattintson az **Igen** gombra a fájl Azure Storage Explorerben való megnyitásához.
 
-![Tárfiók oldala](./media/tutorial-export-acm-data/storage-account-page.png)
+![Tárfiók oldalának példaadatok és Megnyitás az Explorerben mutató hivatkozást bemutató](./media/tutorial-export-acm-data/storage-account-page.png)
 
 A Storage Explorerben navigáljon ahhoz a tárolóhoz, amelyet meg szeretne nyitni, majd válassza ki az aktuális hónapnak megfelelő mappát. Ekkor egy CSV-fájlokból álló lista jelenik meg. Válasszon ki egy elemet, majd kattintson a **Megnyitás** gombra.
 
-![Storage Explorer](./media/tutorial-export-acm-data/storage-explorer.png)
+![A Storage Explorerben megjelenő példaadatok](./media/tutorial-export-acm-data/storage-explorer.png)
 
 A fájl abban a programban vagy alkalmazásban nyílik meg, amelyik a CSV kiterjesztésű fájlok megnyitásához van beállítva. Íme egy példa az Excelben.
 
-![Exportálási példaadatok](./media/tutorial-export-acm-data/example-export-data.png)
+![Példa az exportált CSV-adatok az Excel programban látható](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>Exportált adatokhoz való hozzáférés más rendszerekből
 

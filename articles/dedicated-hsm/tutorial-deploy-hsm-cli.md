@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure dedikált HSM telepítése HSM-EK egy meglévő virtuális hálózatban, CLI-vel |} A Microsoft Docs
-description: 'Oktatóanyag: hogyan kell telepíteni egy dedikált HSM, a parancssori felületről'
+title: Az oktatóanyag egy meglévő virtuális hálózatot az Azure CLI - Azure dedikált HSM használatával üzembe helyezése |} A Microsoft Docs
+description: 'Oktatóanyag: hogyan kell telepíteni a parancssori felület használatával a meglévő virtuális hálózatban egy dedikált HSM'
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679647"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080316"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag – üzembe helyezés HSM-EK egy meglévő virtuális hálózatban, CLI-vel
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM-EK telepítése egy meglévő virtuális hálózatban, CLI-vel
 
 Az Azure, a dedikált HSM biztosít egy fizikai eszköz az egyetlen ügyfél szolgáltatással, teljes körű rendszergazdai felügyeletet és a teljes felügyeleti feladata. Fizikai eszközök használata szükséges a Microsoft szabályozhatók az eszközök foglalási kapacitás hatékonyan felügyelt hoz létre. Ennek eredményeképpen egy Azure-előfizetésen belül a dedikált HSM-szolgáltatást nem általában lesz látható az erőforrás-kiépítés. A dedikált HSM szolgáltatáshoz való hozzáférést igénylő bármely Azure-ügyfél először kapcsolatba kell lépnie a kérelem regisztráció a Microsoft fiókért a dedikált HSM-szolgáltatás. Csak egyszer, a folyamat sikeresen befejeződött-kiépítés nem lehetséges. 
 
@@ -130,7 +130,7 @@ Miután beállította a paraméterértékeket, a fájlokat fel kell tölteni a p
 
 A parancs-rendszerhéj elemre az eszköztárban feltöltési/letöltési lehetősége van, és ezzel a sablonnal és paraméterfájlokkal fájlok feltöltése a fájlmegosztás választhat:
 
-![előfizetés állapota](media/tutorial-deploy-hsm-cli/file-share.png)
+![fájlmegosztás](media/tutorial-deploy-hsm-cli/file-share.png)
 
 A fájlok feltöltése után készen áll az erőforrások létrehozásához. Új HSM létrehozása előtt biztosítania kell néhány előfeltételként erőforrás erőforrások érvényben vannak. Számítási, a HSM-EK és az átjáró-alhálózat címtartományai rendelkező virtuális hálózaton kell rendelkeznie. A következő parancsokat szolgálja ki, mit kell létrehoznia egy virtuális hálózat egy példa.
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![Kiépítés állapota](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![regisztrációs kimenet](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 Most is kell az erőforrások használatával megtekintheti a [Azure erőforrás-kezelő](https://resources.azure.com/).   Egyszer az a Explorerben bontsa ki a bal oldali "előfizetések", bontsa ki az adott dedikált HSM-előfizetést, bontsa ki a "erőforráscsoportok", bontsa ki a használt erőforráscsoportot, és végül válassza ki a "resources" elemet.
 

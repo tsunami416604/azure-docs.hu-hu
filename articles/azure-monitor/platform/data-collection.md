@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19d448634998f01505c0e274377e1aa8cd788728
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: caab6083bc12ffafe669c86bea4824ea0b31339a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993800"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079670"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -138,7 +138,7 @@ Az Azure Monitor által gyűjtött naplók vannak tárolva a Log Analytics szolg
 A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. A Log Analytics szolgáltatásba írt adatok forrásai az alábbiak:
 
 - [Tevékenységnaplók](../../azure-monitor/platform/collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
-- Az ügynökök [Windows](../../log-analytics/log-analytics-windows-agent.md) és [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../../azure-monitor/platform/agent-data-sources.md) , konfigurálja.
+- Az ügynökök [Windows](../../log-analytics/log-analytics-windows-agent.md) és [Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../../azure-monitor/platform/agent-data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
 - Biztonsági adatok által gyűjtött [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).

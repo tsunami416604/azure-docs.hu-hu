@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632806"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Azure Active Directory-integráció az végtelen Campus
 
@@ -111,11 +111,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
 
-5. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl** (lépés **11.b**), hajtsa végre az alábbi lépéseket:
+5. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl** (ugorjon **11.c**), hajtsa végre az alábbi lépéseket:
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
-    ![image](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
@@ -128,9 +128,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet (a tartományt üzemeltető modell számától függ) a következő minta használatával: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > Megjelenik a **szolgáltató metaadatait tartalmazó fájl** az oktatóanyag későbbi részében ismertetett végtelen Campus SSO szolgáltató konfigurációja oldalon.
+    > Megjelenik a **szolgáltató metaadatait tartalmazó fájl** az oktatóanyag későbbi részében ismertetett végtelen Campus SSO szolgáltató konfigurációja oldalon. Ha új SAML-szolgáltató konfigurálása során a végtelen Campus mire az első, ugorjon a **11. lépés** a szolgáltató metaadatfájl az Exportálás befejeződik.
 
-6. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
+6. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre a következő lépéseket (vegye figyelembe, hogy a tartomány gyártmányától üzemeltetési modell):
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
@@ -169,10 +169,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Az egyszeri bejelentkezés](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. Válassza ki **engedélyezése SAML egyszeri bejelentkezési**.
+    
+    b. Az a **válassza ki a Identity Provider (IDP) kiszolgáló adatainak beolvasása** szakaszban válassza ki **metaadatok URL-címe**, illessze be a **alkalmazás összevonási metaadatainak URL-címe** a mezőbe, majd Kattintson a **szinkronizálási**.
 
-    b. Kattintson a **Service Provider metaadatok** kattintva mentheti a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz polulate a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon (lásd 5. lépés).
-
-    c. Az a **válassza ki a Identity Provider (IDP) kiszolgáló adatainak beolvasása** szakaszban válassza ki **metaadatok URL-címe** , és illessze be a **alkalmazás összevonási metaadatainak URL-címe** be a szövegmezőbe, és Kattintson a **szinkronizálási**.
+    c. Kattintson a **Service Provider metaadatok** menteni a kapcsolat a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz Töltse fel a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon (4. lépés a fel- és az értékek az automatikus feltöltési tekintse meg, vagy manuális bejegyzést az 5. lépés).
 
     d. Kattintás után **szinkronizálási** az értékek első automatikusan kitölti a **SSO szolgáltató konfigurációja** lapot.
 

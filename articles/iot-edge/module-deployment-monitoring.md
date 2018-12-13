@@ -1,6 +1,6 @@
 ---
-title: Modulok telepítése az Azure IoT Edge |} A Microsoft Docs
-description: Ismerje meg hogyan modulok telepítve, a peremeszközökre
+title: Automatikus központi telepítési eszközcsoportok – Azure IoT Edge |} A Microsoft Docs
+description: Az automatikus központi telepítéseket használ az Azure IoT Edge-eszközök megosztott címkék alapján csoportok kezelése
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584842"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100106"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Az automatikus központi IoT Edge egy eszközök vagy ipari méretekben ismertetése
 
@@ -44,7 +45,7 @@ Csak az IoT Edge-eszközökön konfigurálható egy központi telepítést. A k�
 * A felügyeleti rendszer, például Moby vagy a Docker
 * Az IoT Edge-futtatókörnyezet kiépítése 
 
-### <a name="deployment-manifest"></a>Manifest nasazení
+### <a name="deployment-manifest"></a>Üzembehelyezési jegyzék
 
 A manifest nasazení egy JSON-dokumentum, amely leírja a modulokat az érintett IoT Edge-eszközökön konfigurálható. Az összes modult, beleértve a szükséges rendszer-modulok (kifejezetten az IoT Edge-ügynök és hub az IoT Edge) konfigurációs metaadatok tartalmazza.  
 

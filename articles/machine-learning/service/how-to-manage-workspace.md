@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 1565c54779278b440cfe631951e964921cc85720
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 647af189319a1fa7b80b10410ad96f3297c18192
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51709882"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083767"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Hozzon létre, és az Azure Machine Learning szolgáltatás munkaterületek kezelése
 
@@ -36,11 +37,11 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
 1. Az eredmények szűréséhez válassza **Machine Learning szolgáltatás munkaterületén** egy a-munkaterületek listájának megjelenítéséhez. 
 
-   ![Keresse meg az Azure Machine Learning szolgáltatás munkaterület](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Az Azure Machine Learning szolgáltatás munkaterületek listája](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. Nézze át a találhatók munkaterületek listáját. Szűrhet előfizetés alapján, erőforráscsoportok és helyek.  
 
-   ![Az Azure Machine Learning szolgáltatás munkaterület listája](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Munkaterület megtekintése](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. Válassza ki a munkaterületet, újonnan létrehozott a tulajdonságainak megjelenítéséhez.
 
@@ -50,7 +51,7 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
 Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
 
-  ![PNG](media/how-to-manage-workspace/delete-workspace.png)
+  ![Törlés gomb](media/how-to-manage-workspace/delete-workspace.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 

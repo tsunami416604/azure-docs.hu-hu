@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával függőlegesen |} Microsoft Docs
-description: 'Útmutató: adatok másolása függőlegesen támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával Vertica |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a Vertica támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,40 +11,40 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d4399fd26c4c536f89bb15e16bfc67fb1d0940fa
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4e13050715927fb0b158c32393b56b32290cf175
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058912"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078089"
 ---
-# <a name="copy-data-from-vertica-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával függőlegesen 
+# <a name="copy-data-from-vertica-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Vertica 
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni függőlegesen. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a Vertica módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok bármely támogatott fogadó adattárolóhoz függőlegesen másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Másolhat adatokat Vertica bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
+Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 ## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+.NET SDK-t, Python SDK-t, az Azure PowerShell, REST API-t vagy az Azure Resource Manager-sablon használatával másolási tevékenységgel rendelkező folyamatot hozhat létre. Lásd: [másolási tevékenység oktatóanyagát](quickstart-create-data-factory-dot-net.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-A következő szakaszok részletesen bemutatják való függőlegesen összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Vertica-összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok függőlegesen kapcsolódó szolgáltatás támogatottak:
+Vertica társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **függőlegesen** | Igen |
-| connectionString | Egy függőlegesen kapcsolódni az ODBC kapcsolati karakterlánc. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type | A type tulajdonság értékre kell állítani: **Vertica** | Igen |
+| kapcsolati Sztringje | Egy kapcsolódni a Vertica ODBC kapcsolati karakterlánc. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -69,9 +69,14 @@ A következő tulajdonságok függőlegesen kapcsolódó szolgáltatás támogat
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a témakör függőlegesen dataset által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz Vertica adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása függőlegesen, az adatkészlet típus tulajdonságának beállítása **VerticaTable**. Nincs ilyen típusú dataset további típusra vonatkozó tulajdonság.
+Vertica adatmásolás, állítsa be a type tulajdonság, az adatkészlet **VerticaTable**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **VerticaTable** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -83,23 +88,24 @@ Adatok másolása függőlegesen, az adatkészlet típus tulajdonságának beál
         "linkedServiceName": {
             "referenceName": "<Vertica linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör függőlegesen forrás által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz Vertica forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="vertica-as-source"></a>Forrásként függőlegesen
+### <a name="vertica-as-source"></a>Vertica forrásként
 
-Adatok másolása függőlegesen, állítsa be a forrás típusa a másolási tevékenység **VerticaSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása Vertica, állítsa be a forrás típusaként a másolási tevékenység **VerticaSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **VerticaSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM MyTable"`. | Igen |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **VerticaSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -134,4 +140,4 @@ Adatok másolása függőlegesen, állítsa be a forrás típusa a másolási te
 ```
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

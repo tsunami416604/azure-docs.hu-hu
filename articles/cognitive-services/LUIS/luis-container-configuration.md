@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 0cb82cfcecbb719b357cda46bf969acf6c6cefe7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015296"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080265"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -84,7 +84,7 @@ A `Eula` beállítás azt jelzi, hogy Ön már elfogadta a licencet, a tároló.
 |--|------|-----------|-------------|
 |Igen| `Eula` | Karakterlánc | Licencfeltételek elfogadásának<br><br>Példa:<br>`Eula=accept` |
 
-Cognitive Services-tárolók licencelése az Azure használatát szabályozó a szerződés keretében. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy az Azure használatát szabályozó megállapodást-e a Microsoft Online előfizetői szerződés (amely magában foglalja az Online szolgáltatások használati feltételeit). Az előnézetben is elfogadja a kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó. A tároló használatával elfogadja ezeket a feltételeket.
+Cognitive Services-tárolók licence alapján [a szerződés](https://go.microsoft.com/fwlink/?linkid=2018657) az Azure használatát szabályozó. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy van-e az Azure használatát szabályozó megállapodást a [Microsoft Online előfizetői szerződés](https://go.microsoft.com/fwlink/?linkid=2018755), amely magában foglalja a [Online szolgáltatások használati feltételeit ](https://go.microsoft.com/fwlink/?linkid=2018760). Az előnézetben, is elfogadja a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://go.microsoft.com/fwlink/?linkid=2018815). A tároló használatával elfogadja ezeket a feltételeket.
 
 ## <a name="fluentd-settings"></a>Fluentd beállításai
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 78e432bf526ad270ae8543ad1be40727ed560d4b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f155ee7dbea697c72bbd53b933a7410faa828b6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367899"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089921"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Phoenix 
 
@@ -85,7 +85,12 @@ A Phoenix társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Phoenix adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatokat másol a Phoenix, az adatkészlet, a type tulajdonság beállítása **PhoenixObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Adatokat másol a Phoenix, az adatkészlet, a type tulajdonság beállítása **PhoenixObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **PhoenixObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -97,7 +102,8 @@ Adatokat másol a Phoenix, az adatkészlet, a type tulajdonság beállítása **
         "linkedServiceName": {
             "referenceName": "<Phoenix linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,14 +112,14 @@ Adatokat másol a Phoenix, az adatkészlet, a type tulajdonság beállítása **
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Phoenix forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="phoenixsource-as-source"></a>PhoenixSource forrásként
+### <a name="phoenix-as-source"></a>A Phoenix forrásként
 
 Adatok másolása a Phoenix, állítsa be a forrás típusaként a másolási tevékenység **PhoenixSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **PhoenixSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

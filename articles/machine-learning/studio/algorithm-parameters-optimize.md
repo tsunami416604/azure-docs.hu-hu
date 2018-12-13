@@ -1,10 +1,10 @@
 ---
-title: Algoritmusok optimalizálása az Azure Machine Learning Studióban |} A Microsoft Docs
+title: Algoritmusok – az Azure Machine Learning Studio optimalizálása |} A Microsoft Docs
 description: Válassza ki az optimális paraméter beállítása az Azure Machine Learning Studióban az algoritmusok ismerteti.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: f4b7ba04f643fc823ca627e279faea31dee9d2a4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: b0494a9da422b7c0effc14ff4188d3a5b20b8e9d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314712"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081931"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel
 

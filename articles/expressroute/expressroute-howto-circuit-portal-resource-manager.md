@@ -1,26 +1,19 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport: az Azure portal |} A Microsoft Docs'
-description: Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
-documentationcenter: na
+title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport – portal: Azure |} A Microsoft Docs'
+description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/20/2017
+ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235326"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091527"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -31,7 +24,7 @@ ms.locfileid: "51235326"
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Ez a cikk ismerteti az Azure ExpressRoute-kapcsolatcsoport létrehozása az Azure portal és az Azure Resource Manager üzemi modell használatával. Az alábbi lépéseket is bemutatják, hogyan ellenőrizheti a kapcsolatcsoport állapotát, a frissítés után, vagy törlése és megszüntetése azt.
+Ez a cikk segít az Azure portal és az Azure Resource Manager üzemi modell használatával egy ExpressRoute-kapcsolatcsoportot létrehozni. Azt is ellenőrizze az állapotát, frissítése, törlése, vagy egy kapcsolatcsoport megszüntetése.
 
 
 ## <a name="before-you-begin"></a>Előkészületek

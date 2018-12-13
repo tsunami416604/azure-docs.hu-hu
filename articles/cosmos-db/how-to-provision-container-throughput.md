@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3b766cfa339e6cbb568cf57383667d270153401f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262420"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097665"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Azure Cosmos DB-tároló átviteli sebességének kiosztása
 
@@ -28,6 +28,7 @@ Ez a cikk ismerteti, hogyan oszthatja ki az átviteli sebességet egy (gyűjtem�
 
    * Hozzon létre egy új adatbázist, vagy használjon egy meglévőt.
    * Adja meg egy gyűjtemény azonosítóját (illetve egy táblázatét vagy gráfét).
+   * Adja meg például a partíciókulcs-értékkel, `/userid`.
    * Adjon meg egy átviteli sebességet, például 1000 kérelemegységet.
    * Kattintson az **OK** gombra.
 

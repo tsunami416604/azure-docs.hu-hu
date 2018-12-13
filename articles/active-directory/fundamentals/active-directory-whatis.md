@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory – áttekintés |} A Microsoft Docs
+title: Mi az az Azure Active Directory? | Microsoft Docs
 description: További információ az Azure Active Directoryban, beleértve a szükséges terminológia célközönség, licencelés alapjai és társított szolgáltatások.
 services: active-directory
 author: eross-msft
@@ -8,12 +8,13 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686585"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085926"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory? 
 Az Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD segítségével az alkalmazottak bejelentkezhet és elérheti az erőforrásokat:

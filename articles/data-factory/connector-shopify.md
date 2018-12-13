@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8d2550d6a1f99adaec7423997365412eb61ffbdf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e9271081b36681c4011d96b329de5058aeaf8472
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124695"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090618"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Shopify
 
@@ -74,7 +74,12 @@ Shopify társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz Shopify adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **ShopifyObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
+Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **ShopifyObject**. A következő tulajdonságok támogatottak:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **ShopifyObject** | Igen |
+| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -86,7 +91,8 @@ Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Shopi
         "linkedServiceName": {
             "referenceName": "<Shopify linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -95,14 +101,14 @@ Shopify adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Shopi
 
 Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz Shopify forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="shopifysource-as-source"></a>ShopifySource forrásként
+### <a name="shopify-as-source"></a>Shopify forrásként
 
 Adatok másolása Shopify, állítsa be a forrás típusaként a másolási tevékenység **ShopifySource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ShopifySource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

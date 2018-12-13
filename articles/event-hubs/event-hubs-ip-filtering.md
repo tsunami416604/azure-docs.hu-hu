@@ -1,5 +1,5 @@
 ---
-title: Az Azure Event Hubs IP-szűrők használatával való hozzáférés korlátozása |} A Microsoft Docs
+title: IP-szűrők – Azure Event Hubs-hozzáférés korlátozása |} A Microsoft Docs
 description: Használja az IP-szűrés blokk-kapcsolatokat, az adott IP-címek az Azure Event Hubsba.
 services: event-hubs
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 5ed952421186210e55d6065cee51f4d54b4c0d46
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: d21bf32ce804d2c8f6177eb7f789474bc41c9733
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014395"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087507"
 ---
 # <a name="restrict-access-to-azure-event-hubs-using-ip-filters"></a>Az Azure Event Hubs IP-szűrők használatával való hozzáférés korlátozása
 Forgatókönyvek, amelyben az Azure Event Hubs elérhetőnek kell lenniük csak bizonyos ismert helyek a *IP-szűrő* funkciója lehetővé teszi visszautasítja, vagy a forgalom származik az adott IPv4-címeket fogad szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
