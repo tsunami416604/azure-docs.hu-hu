@@ -1,5 +1,5 @@
 ---
-title: A webalkalmazás-sablon – az Azure Machine Learning Studio webszolgáltatás felhasználása |} A Microsoft Docs
+title: Webalkalmazás-sablon – az Azure Machine Learning Studio-Studio-webszolgáltatás felhasználása |} A Microsoft Docs
 description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
 keywords: webszolgáltatás, operacionalizálás, REST API-t, a machine learning
 services: machine-learning
@@ -7,7 +7,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 3eaf881ea1b8831891588310bfcec5e8fb146978
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078582"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273884"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning Studio webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
 
 A prediktív modellek fejlesztése, és helyezze üzembe, az Azure web service használatával:
 - Az Azure Machine Learning Studióban.
@@ -36,7 +35,7 @@ Nincsenek számos módon a REST API felhasználására, és a hozzáférés a we
 
 A leggyorsabb és legegyszerűbb módszert kínálja a webszolgáltatás elérésére keresztül a webalkalmazás-sablonokat érhető el, de a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/web-applications/all/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Azure Machine Learning web app-sablonok
 A webalkalmazás-sablonokat elérhető az Azure piactéren, hogy ismeri a webszolgáltatás bemeneti adatokat és várt eredmény egyéni webalkalmazásokat hozhat létre. Mást nem kell tennie a webes alkalmazás hozzáférést adhat a webszolgáltatás és az adatokat, és a sablon végzi.

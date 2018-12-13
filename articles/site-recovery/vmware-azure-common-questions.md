@@ -4,15 +4,15 @@ description: Ez a cikk gyakori kérdésekre foglalja össze, amikor, vészhelyre
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 83216091c950593b16f158ea3d8df5a194ecee02
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: mayg
+ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869823"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256510"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -27,8 +27,8 @@ Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft
 A replikáció során az adatok az Azure storage replikációja, és nem kell fizetnie a virtuális gép módosításokat. Ha feladatátvételt végez az Azure-ba, a Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket. Ezt követően a számlázás az Azure-ban felhasznált számítási erőforrások.
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Mire használhatom az Azure-bA VMware-rel?
-- **Vész-helyreállítási**: teljes vész-helyreállítási beállíthat. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően a helyszíni infrastruktúra nem érhető el, ha is átadja a feladatokat az Azure-bA. Amikor feladatátvételt hajt végre, az Azure virtuális gépek jönnek létre a replikált adatok felhasználásával. Alkalmazások és számítási feladatok az Azure virtuális gépeken, amíg a helyszíni adatközpont újra elérhetővé hozzáférhet. Ezután Ön is nem az Azure-ból a helyszíni helyre.
-- **Áttelepítési**: a Site Recovery segítségével a helyszíni VMware virtuális gépek áttelepítése az Azure-bA. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően átadja a feladatokat a helyszínről az Azure-bA. A feladatátvételt követően az alkalmazások és számítási feladatok rendelkezésre állnak és futó Azure virtuális gépeken.
+- **Vész-helyreállítási**: Beállíthat teljes vészhelyreállítás. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően a helyszíni infrastruktúra nem érhető el, ha is átadja a feladatokat az Azure-bA. Amikor feladatátvételt hajt végre, az Azure virtuális gépek jönnek létre a replikált adatok felhasználásával. Alkalmazások és számítási feladatok az Azure virtuális gépeken, amíg a helyszíni adatközpont újra elérhetővé hozzáférhet. Ezután Ön is nem az Azure-ból a helyszíni helyre.
+- **Áttelepítési**: A Site Recovery használatával a helyszíni VMware virtuális gépek áttelepítése az Azure-bA. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően átadja a feladatokat a helyszínről az Azure-bA. A feladatátvételt követően az alkalmazások és számítási feladatok rendelkezésre állnak és futó Azure virtuális gépeken.
 
 
 
@@ -146,11 +146,14 @@ Igen. Töltse le a MySQL, és elhelyezheti a **C:\Temp\ASRSetup** mappát. Ezut�
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kerülje a MySQL letöltése azonban telepíteni a Site Recovery segítségével?
 Igen. Töltse le a MySQL-telepítőt, és elhelyezheti a **C:\Temp\ASRSetup** mappát.  Ha beállította a konfigurációs kiszolgáló virtuális gép, fogadja el a feltételeket, majd kattintson a **töltse le és telepítse**, a portálon a telepítő a MySQL telepítése hozzáadott fogja használni.
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>A konfigurációs kiszolgáló virtuális Géphez használni semmi másra CanL?
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Használhatom-e a konfigurációs kiszolgáló virtuális gép semmi másra?
 Nem, csak használja a virtuális gép a konfigurációs kiszolgáló. 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Klónozza a konfigurációs kiszolgáló és vezénylési használni?
+Nem, telepítenie kell egy friss konfigurációs kiszolgáló regisztrációjával kapcsolatos problémák elkerülése érdekében.
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Módosíthatom a tárolót a konfigurációs kiszolgáló regisztrálva?
-Nem. Egy tárolót a konfigurációs kiszolgáló regisztrálása után nem módosítható.
+Nem. Egy tárolót a konfigurációs kiszolgáló regisztrálása után nem módosítható. Felülvizsgálat [Ez a cikk](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) Újraregisztrálás lépéseit.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Használható a ugyanazon konfigurációs kiszolgáló VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítási
 Igen, de vegye figyelembe, hogy a fizikai gép is lehet csak akkor nem vissza a VMware virtuális gép.

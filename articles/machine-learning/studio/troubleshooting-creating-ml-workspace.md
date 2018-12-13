@@ -4,9 +4,8 @@ description: Ez az útmutató egyes megoldások gyakran közben kihívásokat á
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 878b26b72263ddd640e1cfa936c1e4ade1af6d68
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312055"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275278"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: létrehozás és csatlakozás egy Machine Learning Studio-munkaterülethez
+# <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: Létrehozás és csatlakozás az Azure Machine Learning Studio-munkaterülethez
 Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="workspace-owner"></a>Munkaterület tulajdonosa
 A Machine Learning studióban megnyit egy munkaterületet, akkor be kell jelentkeznie a munkaterület létrehozásához használt Microsoft-Account, vagy egy meghívót kap a munkaterület tulajdonosa kell. Az Azure Portalról kezelheti a munkaterületet, amely lehetővé teszi a hozzáférés konfigurálásához.

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt identitások, az App Service-ben és az Azure Functions |} A Microsoft Docs
+title: Felügyelt identitások áttekintése – Azure App Service-ben |} A Microsoft Docs
 description: Fogalmi referencia és beállítási útmutató a felügyelt identitások az Azure App Service és az Azure Functions
 services: app-service
 author: mattchenderson
@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 033667500f627a090c6ba6d686224126d217b833
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 40ae45eb401aeb302b2474cd181d29c0ee26c611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971402"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254360"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -158,7 +158,7 @@ Ahol `<TENANTID>` és `<PRINCIPALID>` cserélése GUID-azonosítói. A tenantId 
 ## <a name="adding-a-user-assigned-identity-preview"></a>A felhasználó által hozzárendelt identitás (előzetes verzió) hozzáadása
 
 > [!NOTE] 
-> Felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhető el. Sovreign felhőkben még nem támogatott.
+> Felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhető el. Független felhőkben még nem támogatott.
 
 Alkalmazás létrehozása egy felhasználó által hozzárendelt identitással kell létrehozni az identitást, és hozzáadhatja az erőforrás-azonosító az alkalmazás konfigurációja.
 
@@ -299,7 +299,7 @@ Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokka
 > |access_token|A kért hozzáférési jogkivonatot. A hívó webszolgáltatás a jogkivonat használatával hitelesítik magukat a fogadó webszolgáltatás.|
 > |expires_on|A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál.|
 > |erőforrás|Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás.|
-> |token_type|Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [az OAuth 2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |token_type|Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [az OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
 Ez a válasz megegyezik a [válasza az AAD-service-to-service hozzáférési jogkivonat kérése](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: ccdee1963d3d37966f6784e7a7421c500d6a8a51
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994212"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190560"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -48,11 +48,11 @@ A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de 
 ## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
 Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalmazások és az alkalmazás, a bármely operációs rendszer és a szolgáltatások támaszkodik, lefelé a platform saját maga a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:
 
-- **Alkalmazásfigyelési adatok**: adatok teljesítményéről és a kód funkciójának írt, a platformtól függetlenül.
-- **Vendég operációs rendszerek monitorozási adatai**: az operációs rendszer, amelyen fut az alkalmazás adatait. Ez az Azure, egy másik felhőalapú vagy helyszíni fut. 
-- **Azure-erőforrások monitorozási adatok**: egy Azure-erőforrás a művelet adatait.
-- **Azure-előfizetés monitorozási adatok**: a művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. 
-- **Az Azure-bérlő monitorozási adatok**: bérlői szintű Azure-szolgáltatások, például az Azure Active Directory vonatkozó adatokkal.
+- **Alkalmazásfigyelési adatok**: A teljesítmény és a kódot írt, függetlenül a hozzá tartozó platform funkciójának adatait.
+- **Vendég operációs rendszerek monitorozási adatai**: Az operációs rendszer, amelyen fut az alkalmazás adatait. Ez az Azure, egy másik felhőalapú vagy helyszíni fut. 
+- **Azure-erőforrások monitorozási adatok**: Egy Azure-erőforrás a művelet adatait.
+- **Azure-előfizetés monitorozási adatok**: A művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. 
+- **Az Azure-bérlő monitorozási adatok**: A bérlői szintű Azure-szolgáltatások, például az Azure Active Directory művelettel kapcsolatos adatokat.
 
 Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
 
@@ -96,7 +96,7 @@ Mellett lehetővé teszi, hogy a monitorozási adatok interaktív elemzéséhez,
 ### <a name="alerts"></a>Riasztások
 [Az Azure monitorban riasztásokat](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesíti kritikus feltételek és potenciálisan próbál végezni a javítási műveleteket. Riasztási szabályok metrikák alapján közel valós idejű riasztási numerikus érték alapján, amíg a naplók alapján szabályok átvitelét teszi lehetővé az összetett logikát a több forrásból származó adatokat.
 
-Riasztási szabályok az Azure Monitor használata [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md), amelyek tartalmaznak egyedi címzettek és műveleteket, amelyeket több szabály is megoszthatók. Igényei alapján Műveletcsoportok, webhookok segítségével indítsa el a külső műveletek riasztások vagy integrálása az ITSM-eszközeit az olyan műveleteket hajthat végre.
+Riasztási szabályok az Azure Monitor használata [Műveletcsoportok](../azure-monitor/platform/action-groups.md), amelyek tartalmaznak egyedi címzettek és műveleteket, amelyeket több szabály is megoszthatók. Igényei alapján Műveletcsoportok, webhookok segítségével indítsa el a külső műveletek riasztások vagy integrálása az ITSM-eszközeit az olyan műveleteket hajthat végre.
 
 ![Riasztások](media/overview/alerts.png)
 

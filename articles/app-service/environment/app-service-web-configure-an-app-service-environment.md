@@ -1,5 +1,5 @@
 ---
-title: Egy App Service konfigurálása környezet v1
+title: Egy App Service konfigurálása környezet v1 – Azure
 description: Konfigurációs, felügyeleti és az App Service Environment-környezet v1 figyelése
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 60e086197b61d14394cad3d54a7efc4baede1f7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 85353b68673ea91711e0c3d93e68bec662f406df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965820"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272133"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurálása az App Service környezet v1
 
@@ -44,7 +45,7 @@ Az erőforráskészletek (előtérrendszerekből és) lévő gazdagépek nem ér
 Erőforrás-készlet mennyisége és mérete állíthatja be. Az ASE környezetben négy mérete lehetőségeket, amelyek P1-P4 szintű keresztül címkével rendelkezik. Méretek és a díjszabás részleteiért lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
 A mennyiség vagy méretének módosítása a skálázási művelet neve.  Egyszerre csak egy skálázási művelet folyamatban lehet.
 
-**Előtér-vége**: az előtérrendszerek a HTTP/HTTPS-végpontok az üzenetsorokban található az ASE nem alkalmazások. Az előtérrendszerek a számítási feladatok ne futtassa.
+**Előtér-vége**: Az előtérrendszerek a HTTP/HTTPS-végpontok az üzenetsorokban található az ASE nem alkalmazások. Az előtérrendszerek a számítási feladatok ne futtassa.
 
 * Az ASE két P2s kezdődik, ez elegendő fejlesztési/tesztelési feladatokhoz és alacsony szintű éles számítási feladatokhoz. Javasoljuk, hogy P3s a közepes (nagy erőforrásigényű) éles számítási feladatokhoz.
 * Közepes (nagy erőforrásigényű) éles számítási feladatok javasoljuk, hogy rendelkezik-e legalább négy P3s nincsenek futó, ütemezett karbantartás esetén elegendő kezelőfelületek biztosítása érdekében. Ütemezett karbantartási tevékenységek egyszerre egy előtér rendszer leállásához. Ez csökkenti a teljes rendelkezésre álló előtér-kapacitás karbantartásának idejére.
@@ -68,7 +69,7 @@ Ha az alkalmazások a nagyobb számítási erőforrás mérete, nem előnyeit a 
 * Az App Service-csomagok, amelyek egy nagyobb méretű, az újonnan konfigurált feldolgozói készlethez kell rendelni. Ez az egy gyors művelet, amellyel egy percen belül befejeződik.  
 * Az első feldolgozókészlet csökkentheti, ha többé már nincs szüksége a fel nem használt ezekhez a példányokhoz. Ez a művelet néhány percet vesz igénybe.
 
-**Az automatikus skálázás**: az eszközök, amelyek segítségével kezelheti a számítási erőforrás-használat egyik automatikus skálázást. Használhatja az automatikus skálázás az előtér- vagy feldolgozókészletek. Műveleteket, mint növelje a készlet típustól példányok reggel, és csökkenteni esténként. Vagy esetleg adhat hozzá példányok, amikor egy meghatározott küszöbérték alá csökken, elérhető egy feldolgozókészletben száma.
+**Az automatikus skálázás**: Az eszközök, amelyek segítségével kezelheti a számítási erőforrás-használat egyik automatikus skálázást. Használhatja az automatikus skálázás az előtér- vagy feldolgozókészletek. Műveleteket, mint növelje a készlet típustól példányok reggel, és csökkenteni esténként. Vagy esetleg adhat hozzá példányok, amikor egy meghatározott küszöbérték alá csökken, elérhető egy feldolgozókészletben száma.
 
 Ha szeretné körül számítási erőforrás készletekkel kapcsolatos metrikák az automatikus skálázási szabályok, akkor a tartsa szem előtt szükséges időt. Automatikus méretezés App Service Environment-környezetek kapcsolatos további információkért lásd: [konfigurálása az automatikus méretezés App Service Environment-környezetben][ASEAutoscale].
 
@@ -132,13 +133,13 @@ Az ASE környezetben az App Service-csomagok összes dedikált App Service-csoma
 ### <a name="settings"></a>Beállítások
 Az ASE panelen van egy **beállítások** számos fontos funkciókat tartalmazó szakaszt:
 
-**Beállítások** > **tulajdonságok**: A **beállítások** panel automatikusan megnyitja az ASE panel be állapotba állításakor. Felső **tulajdonságok**. Számos itt megjelenik a redundáns elemeinek **Essentials**, de mi nagyon hasznos **virtuális IP-cím**, valamint **kimenő IP-címek**.
+**Beállítások** > **tulajdonságok**: A **beállítások** panel automatikusan megnyitja, ha, az ASE panel megjelenítéséhez. Felső **tulajdonságok**. Számos itt megjelenik a redundáns elemeinek **Essentials**, de mi nagyon hasznos **virtuális IP-cím**, valamint **kimenő IP-címek**.
 
 ![Beállítások panel és a Tulajdonságok][4]
 
-**Beállítások** > **IP-címek**: Ha az ASE környezetben létrehoz egy IP Secure Sockets Layer (SSL) alkalmazást, egy IP SSL-címmel kell rendelkeznie. Annak érdekében, hogy beszerzése utólag, az ASE kell IP SSL-címek azt birtokló oszthat ki. Az ASE létrehozását követően erre a célra egy IP SSL-címmel rendelkezik, de többet is hozzáadhat. Van számítunk fel további IP SSL-címekhez, ahogyan [App Service díjszabását] [ AppServicePricing] (SSL-kapcsolatok szakaszában). A szolgáltatás az IP SSL ár további díja.
+**Beállítások** > **IP-címek**: Az ASE környezetben létrehoz egy IP Secure Sockets Layer (SSL) alkalmazást, amikor egy IP SSL-cím szükséges. Annak érdekében, hogy beszerzése utólag, az ASE kell IP SSL-címek azt birtokló oszthat ki. Az ASE létrehozását követően erre a célra egy IP SSL-címmel rendelkezik, de többet is hozzáadhat. Van számítunk fel további IP SSL-címekhez, ahogyan [App Service díjszabását] [ AppServicePricing] (SSL-kapcsolatok szakaszában). A szolgáltatás az IP SSL ár további díja.
 
-**Beállítások** > **Front End-készlet** / **Feldolgozókészletek**: ezek erőforráspanelek készlet minden egyes lehetőséget biztosít az adatokat csak az adott erőforráskészlethez, megtekintheti a Emellett a szolgáltató vezérlők teljes mértékben az adott erőforrás-készlet méretezésére.  
+**Beállítások** > **előtérkiszolgáló-készlet** / **Feldolgozókészletek**: A készlet erőforráspanelek mindegyike lehetőséget biztosít az információk megtekintéséhez, csak az adott erőforráskészlethez, teljes körűen az adott erőforrás-készlet méretezésére vezérlők biztosítása mellett.  
 
 Az alap panel minden erőforráskészlet készít egy grafikont, metrikákkal adott erőforráskészlethez. Csakúgy, mint az ASE panelen diagramokkal megnyithatja a diagramra és riasztásokat tetszés szerint állíthat be. Ugyanaz, mint az erőforráskészlet ezt beállítást a riasztást az ASE panelen egy adott erőforráskészlet végzi. A feldolgozó készletből **beállítások** panelen hozzáfér minden alkalmazás vagy a feldolgozókészlet futó App Service-csomagok.
 

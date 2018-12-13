@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service Web Apps szolgáltatásban PHP konfigurálása
+title: PHP-futtatókörnyezet – az Azure App Service konfigurálása
 description: Ismerje meg, hogyan konfigurálhatja az alapértelmezett PHP-telepítés, vagy adjon hozzá egy egyéni PHP-telepítés az Azure App Service Web Apps.
 services: app-service
 documentationcenter: php
@@ -13,12 +13,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965786"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273194"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps szolgáltatásban PHP konfigurálása
 
@@ -28,7 +29,7 @@ Ez az útmutató bemutatja, hogyan a beépített PHP-futtatókörnyezet konfigur
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-built-in-php-version"></a>Útmutató: a beépített PHP-verzió módosítása
+## <a name="how-to-change-the-built-in-php-version"></a>Útmutató: Módosítsa a beépített PHP-verzió
 
 Alapértelmezés szerint a PHP 5.6-os telepítve és vehető használatba azonnal egy App Service-webalkalmazás létrehozásakor. Tekintse meg a rendelkezésre álló kiadási változat, az alapértelmezett konfigurációban és az engedélyezett bővítmények a legjobb módszer az, hogy üzembe helyezése egy szkript, amely meghívja a [phpinfo()] függvény.
 
@@ -39,10 +40,10 @@ PHP 7.0 és a PHP 7.2-verziók is rendelkezésre állnak rendelkezésre, de alap
 1. Tallózással keresse meg a web app szolgáltatásban a [az Azure portal](https://portal.azure.com) , majd kattintson a a **beállítások** gombra.
 
     ![A webalkalmazás-beállítások][settings-button]
-1. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások** , és válassza ki az új PHP-verzió.
+2. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások** , és válassza ki az új PHP-verzió.
 
     ![Alkalmazásbeállítások][application-settings]
-1. Kattintson a **mentése** gombot a felső részén a **WebApp beállításai** panelen.
+3. Kattintson a **mentése** gombot a felső részén a **WebApp beállításai** panelen.
 
     ![Konfigurációs beállítások mentése][save-button]
 
@@ -78,7 +79,7 @@ Az Azure parancssori felület használatához be kell [az Azure CLI telepítése
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Útmutató: a beépített PHP-konfiguráció módosítása
+## <a name="how-to-change-the-built-in-php-configurations"></a>Útmutató: A beépített PHP-konfiguráció módosítása
 
 Minden olyan beépített PHP-futtatókörnyezet, az alábbi lépéseket követve módosíthatja a konfigurációs beállításokat. (A php.ini fájl irányelvek kapcsolatos információkért lásd: [A php.ini fájl irányelvek].)
 
@@ -109,7 +110,7 @@ Használata helyett egy `.user.ini` fájlt, használhatja a [ini_set()] függvé
         wincache.maxfilesize=512
 1. Töltse be újra a módosításokat, hogy indítsa újra a webalkalmazást.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Útmutató: az alapértelmezett PHP-futtatókörnyezet engedélyezéséhez
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Útmutató: Az alapértelmezett PHP-futtatókörnyezet engedélyezéséhez
 
 Az előző szakaszban feljegyzett-e a legjobb módszer az alapértelmezett PHP-verzió, az alapértelmezett konfigurációban és az engedélyezett bővítmények telepítéséhez egy parancsprogramot, amely meghívja ezt [phpinfo()]. További kiterjesztések engedélyezése az alábbi lépéseket:
 
@@ -144,7 +145,7 @@ Az előző szakaszban feljegyzett-e a legjobb módszer az alapértelmezett PHP-v
 
 A Zend bővítmények használatával is támogatottak egy **PHP_ZENDEXTENSIONS** kulcsot. Ahhoz, hogy több bővítményt, vesszővel elválasztott listáját tartalmazza `.dll` fájlok esetében az alkalmazás-beállítás értékét.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Útmutató: egyéni PHP-futtatókörnyezet használata
+## <a name="how-to-use-a-custom-php-runtime"></a>Útmutató: Egyéni PHP-futtatókörnyezet használata
 
 Helyett az alapértelmezett PHP-futtatókörnyezet az App Service Web Apps használhatja egy PHP-futtatókörnyezet, a PHP-szkriptek végrehajtása egészíti ki. Az Ön által megadott modul is konfigurálható, hogy egy `php.ini` fájlt, amely azt adja meg. Egyéni PHP-futtatókörnyezet használata a Web Apps, a következő lépéseket.
 
@@ -165,7 +166,7 @@ Helyett az alapértelmezett PHP-futtatókörnyezet az App Service Web Apps haszn
 
 <a name="composer" />
 
-## <a name="how-to-enable-composer-automation-in-azure"></a>Útmutató: az Azure-ban Composer-automatizálás engedélyezése
+## <a name="how-to-enable-composer-automation-in-azure"></a>Útmutató: Az Azure-ban Composer-automatizálás engedélyezése
 
 Alapértelmezés szerint az App Service nem csinál semmi a composer.json, ha rendelkezik ilyennel, a PHP-projekt. Ha [Git üzemelő példánnyal](app-service-deploy-local-git.md), engedélyezheti a composer.json feldolgozása során `git push` Composer bővítményt engedélyezésével.
 

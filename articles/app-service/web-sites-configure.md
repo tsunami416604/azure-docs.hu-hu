@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazások konfigurálása az Azure App Service-ben
+title: Webalkalmazások – az Azure App Service konfigurálása
 description: Webalkalmazás konfigurálása az Azure App Servicesben
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 60675d7d40dbab863677ea120c25986cff61a308
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960141"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269430"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -38,10 +39,10 @@ A **Alkalmazásbeállítások** panel alatt különböző kategóriákba vannak 
 ### <a name="general-settings"></a>Általános beállítások
 **Keretrendszer-verziókat**. Állítsa be ezeket a beállításokat, ha az alkalmazás használja, minden ezek a keretrendszerek: 
 
-* **.NET-keretrendszer**: állítsa be a .NET-keretrendszer verzióját. 
-* **A PHP**: állítsa be a PHP-verzió vagy **OFF** PHP letiltása. 
-* **Java**: válassza ki a Java-verzió vagy **OFF** Java letiltásához. Használja a **webes tároló** választhat a Tomcat és a Jetty-verziót.
-* **Python**: jelölje be a Python-verzió vagy **OFF** Python letiltása.
+* **.NET-keretrendszer**: Állítsa be a .NET-keretrendszer verzióját. 
+* **A PHP**: A PHP-verzió beállítása vagy **OFF** PHP letiltása. 
+* **Java**: Válassza ki a Java-verzió vagy **OFF** Java letiltásához. Használja a **webes tároló** választhat a Tomcat és a Jetty-verziót.
+* **Python**: Válassza ki a Python-verzió vagy **OFF** Python letiltása.
 
 Technikai okokból Java engedélyezése az alkalmazás letiltja a .NET, PHP és Python-beállításokat.
 
@@ -164,7 +165,7 @@ Az üzembe helyezési pontok megtekintéséhez kattintson **minden beállítás*
 ### <a name="monitoring"></a>Figyelés
 Alap vagy Standard módban tesztelheti a rendelkezésre állási HTTP vagy HTTPS-végpontot, legfeljebb három földrajzilag elosztott helyekről. Egy figyelési teszt sikertelen, ha HTTP-válaszkódot (4xx vagy 5xx) hiba vagy a válasz több mint 30 másodperc. A végpont érhető el, ha a figyelési tesztek összes meghatározott helyeiről származó sikeres számít. 
 
-További információkért lásd: [Útmutató: webes végpont állapotának figyelése].
+További információkért lásd: [kézikönyv: Webes végpont állapotának figyelése].
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az App Service kipróbálása] oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
@@ -184,7 +185,7 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
 [Átmeneti környezetek, az Azure App Service Web Apps üzembe helyezése]: ./web-sites-staged-publishing.md
 [HTTPS engedélyezése az Azure App Service-alkalmazás]: ./app-service-web-tutorial-custom-ssl.md
-[Útmutató: webes végpont állapotának figyelése]: https://go.microsoft.com/fwLink/?LinkID=279906
+[kézikönyv: Webes végpont állapotának figyelése]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Megfigyelési alapismeretek az Azure App Service Web Apps]: ./web-sites-monitor.md
 [folyamatkezelési mód]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Webalkalmazások méretezése az Azure App Service-ben]: ./web-sites-scale.md

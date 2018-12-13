@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a5177293b24ec400714d8f87be4198a76d59214a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 11a421a30508774d976def8d5836451743ecb6ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878720"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270382"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -49,11 +49,11 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
-* **Függő kérelmek elemzése**: Ha a beállítás be van jelölve, a teszt lekéri a tesztelt weblap képeit, szkriptjeit, stílusfájljait és más erőforrásait. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
+* **Függő kérelmek elemzése**: Ha ez a beállítás be van jelölve, a teszt lekéri a tesztelt lemezképek, parancsprogramok, stílusfájljait és más fájlok esetében a tesztelt weblap. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
 
-* **Újrapróbálkozások engedélyezése**: Ha ez a beállítás be van jelölve, és a teszt meghiúsul, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.
+* **Újrapróbálkozások engedélyezése**:  Ha ez a beállítás be van jelölve, a teszt meghiúsul, akkor a rendszer rövid idő után. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.
 
-* **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
+* **Tesztelési gyakoriság**: Megadja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
 
 * A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Az ajánlott teszthelyszín minimális száma: öt biztosítására, hogy megkülönböztethesse problémák webhelye a hálózati hibáktól. Legfeljebb 16 hely választható ki.
 
@@ -63,13 +63,13 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 * **Sikeresség feltétele**:
 
-    **Teszt időkorlátja:** Ha csökkenti az értéket, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.
+    **Teszt időkorlátja**: Csökkenti az értéket, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.
 
-    **HTTP-válasz**: A visszaadott, sikert jelző állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
+    **HTTP-válasz**: Akkor számít sikeres, a visszaadott állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
 
     **Tartalmi egyezés**: egy sztring, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
 
-* **Riasztási hely küszöbértéke**: azt javasoljuk, hogy legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **teszthelyszín száma** – 2-ától legalább öt tesztelése helyek.
+* **Riasztási hely küszöbértéke**: Ajánlott legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **teszthelyszín száma** – 2-ától legalább öt tesztelése helyek.
 
 ## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
@@ -160,8 +160,8 @@ Ha további adatokat szeretne látni egy konkrét időszakról, válassza ki a m
 
 A nyers eredményeken kívül két rendelkezésre állási metrika is elérhető a Metrikaböngészőben: 
 
-1. Rendelkezésre állás: Az összes végrehajtott teszt közül a sikeresen végrehajtott tesztek százalékos aránya. 
-2. Tesztek időtartama: A tesztek átlagos időtartama az összes végrehajtás alapján.
+1. Rendelkezésre állás: Tesztek százalékos aránya, hogy sikerült-e, különböző összes végrehajtott teszt közül. 
+2. Tesztek időtartama: Teszt átlagos időtartama az összes végrehajtott teszt közül.
 
 Az eredményeket szűrheti a teszt neve vagy a hely alapján adott tesztek és/vagy helyek trendjeinek elemzéséhez.
 
@@ -202,7 +202,7 @@ Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály k
 
 ![Hozzon létre felhasználói élményt](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
-**Fontos**: az a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), a riasztási szabály fontossága és értesítési beállításai [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **kell** konfigurált a riasztások tapasztalható. A következő lépések nélkül csak a portálon értesítések fog kapni. 
+**Fontos**: Az a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), a riasztási szabály fontossága és értesítési beállításai [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **kell** riasztásainak konfigurált. A következő lépések nélkül csak a portálon értesítések fog kapni. 
 
 1. A rendelkezésre állási teszt mentése, után kattintson az új vizsgálat nevére kattintva nyissa meg a részletek. Kattintson a "értesítés szerkesztése" ![szerkesztése Mentés után](./media/app-insights-monitor-web-app-availability/editaftersave.png)
 
@@ -217,7 +217,7 @@ Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály k
 ### <a name="alert-on-availability-metrics"></a>Riasztás a rendelkezésre állási metrikák
 Használatával a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), szegmentált összesített rendelkezésre állási riasztás és a teszt időtartamának metrikákat is:
 
-1. Application Insights-erőforrás a metrikák felületen válassza ki és a egy rendelkezésre állási metrika: ![rendelkezésre állási metrikák kiválasztása](./media/app-insights-monitor-web-app-availability/selectmetric.png)
+1. Application Insights-erőforrás a metrikák felületen válassza ki és a egy rendelkezésre állási metrika:  ![Rendelkezésre állási metrikák kiválasztása](./media/app-insights-monitor-web-app-availability/selectmetric.png)
 
 2. Lehetőséget a menüből léphet az új felhasználói felület, amelyen kiválaszthatja meghatározott vizsgálatok vagy a riasztási szabály beállítása a riasztásokat konfigurálni. A Műveletcsoportok a riasztási szabály is konfigurálhatja.
     ![Rendelkezésre állási riasztások konfigurálása](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
@@ -281,7 +281,7 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
 ## <a name="automation"></a>Automation
 * [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
-* Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
+* Állítson be egy [webhookot](../azure-monitor/platform/alerts-webhooks.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="qna"></a> GYAKORI KÉRDÉSEK
 
@@ -309,7 +309,7 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
     A „protokollmegsértés... A CR karakter után LF karakternek kell következnie” hiba a kiszolgáló (vagy a függőségek) problémáját jelzi. Ez akkor történik, amikor hibás formátumú fejlécek vannak beállítva a válaszban. Ezt a terheléselosztók vagy a CDN-ek okozhatják. Előfordulhat, hogy néhány fejléc nem a CRLF-fel jelzi a sor végét, ami nem felel meg a HTTP-specifikációnak, ezért az ellenőrzés meghiúsul a .NET WebRequest szintjén. Vizsgálja meg, hogy nincsenek-e a válaszban nem megfelelő fejlécek.
     
-    Megjegyzés: Lehet, hogy az URL nem hiúsul meg olyan böngészőkön, amelyek kevésbé szigorúan ellenőrzik a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    Megjegyzés: Az URL nem hiúsul meg, amelyek olyan böngészőkön a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
 * *Nem látok kapcsolódó kiszolgálóoldali telemetriát a teszthibák diagnosztizálásához*
     

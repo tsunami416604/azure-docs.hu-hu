@@ -4,9 +4,8 @@ description: Betanítási kísérlet átalakítása prediktív kísérletté, te
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: d96755f00aa5023d57c9c4c2b2457902c337e29d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314268"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269923"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio-webszolgáltatás üzembe helyezése
 Az Azure Machine Learning segítségével hozhat létre, tesztelheti és üzembe helyezése a prediktív elemzési megoldásokat is.
@@ -32,7 +31,7 @@ Magas szintű pont-az-nézetben ez történik, három lépésben:
 * **[Alakítsa át a prediktív kísérletté]**  – Miután a modell rendelkezik betanítva a adatokkal, és készen áll az új adatok pontozása céljából, előkészítése, és korszerűsítheti az kísérlet ismeretekkel.
 * **[Helyezze üzembe webszolgáltatásként]**  -a prediktív kísérletet, telepíthet egy [új] vagy [klasszikus] Azure webes szolgáltatás. A felhasználók adatokat küldeni a modell és a modell-előrejelzéseket kap.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="create-a-training-experiment"></a>Betanítási kísérlet létrehozása
 Prediktív elemzési modellek betanítása, használhatja az Azure Machine Learning Studio betanítási kísérlet létrehozásához vegye fel a betanítási adatok betöltése, szükség esetén az adatok előkészítése, alkalmazza a gépi tanulási algoritmusok és az eredmények kiértékelése különböző modulok. Egy kísérlet iterálása, és próbálja meg a különböző gépi tanulási algoritmusokat és kiértékelése az eredmények összehasonlítása.

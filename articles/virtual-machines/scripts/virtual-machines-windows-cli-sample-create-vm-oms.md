@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Windows Server 2016 virtuális gép létrehozása Log Analytics-monitorozással | Microsoft Docs
-description: Azure CLI-példaszkript – Windows Server 2016 virtuális gép létrehozása Log Analytics-monitorozással
+title: Az Azure CLI – Log Analytics-figyelési futtató Azure virtuális gép létrehozása |} A Microsoft Docs
+description: Az Azure CLI – Windows Server 2016 virtuális gép és a Log Analytics-figyelési futtató Azure virtuális gép létrehozása.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.custom: mvc
-ms.openlocfilehash: d4b73981e3cb21f7b4caefaf443014853929b708
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: mvc,seodec18
+ms.openlocfilehash: a3dcb7a7c15c3bf8e5578371e05519e802355fdc
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403389"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188163"
 ---
 # <a name="monitor-a-vm-with-log-analytics"></a>Virtuális gép monitorozása a Log Analytics használatával
 

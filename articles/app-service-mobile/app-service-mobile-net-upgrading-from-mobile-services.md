@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4fd896e3b26ae66621ba49d1bb8a5d86c0dd63ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963266"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278608"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>App Service-ben a .NET Azure meglévő Mobile Service frissítése
 Az App Service Mobile egy új módja a Microsoft Azure mobile alkalmazásokat hozhat létre. További tudnivalókért lásd: [Mi a Mobile Apps szolgáltatás?].
@@ -68,7 +68,7 @@ Az első lépése a frissítés, ha a mobilalkalmazás erőforrás, amely az alk
 
 Ezután hozza létre a második alkalmazáspéldány követve a [.NET-háttérrendszer létrehozásának utasításokat](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Amikor a rendszer kéri, válassza ki a App Service-csomag vagy a "szolgáltatási csomag" az áttelepített alkalmazás a csomag kiválasztása.
 
-Valószínűleg érdemes ugyanabban az adatbázisban és értesítési központ használják, mint a Mobile Services. Nyissa meg ezeket az értékeket másolhatja [Azure Portal] ellenőrizheti, hogy az eredeti alkalmazást, majd kattintson **beállítások** > **Alkalmazásbeállítások**. A **kapcsolati karakterláncok**, másolatot `MS_NotificationHubConnectionString` és `MS_TableConnectionString`. Keresse meg az új hely frissítése, és illessze be őket, minden meglévő érték felülírása. Ez a folyamat bármely más Alkalmazásbeállítások ismételje meg az alkalmazás igényeinek megfelelően. Ha nem használja az áttelepített szolgáltatás, kapcsolati karakterláncok és a beállításokat alkalmazás olvashat a **konfigurálása** fülre a Mobile Services szakaszának a [klasszikus Azure portál].
+Valószínűleg érdemes ugyanabban az adatbázisban és értesítési központ használják, mint a Mobile Services. Nyissa meg ezeket az értékeket másolhatja [Azure Portal] ellenőrizheti, hogy az eredeti alkalmazást, majd kattintson **beállítások** > **Alkalmazásbeállítások**. A **kapcsolati karakterláncok**, másolatot `MS_NotificationHubConnectionString` és `MS_TableConnectionString`. Keresse meg az új hely frissítése, és illessze be őket, minden meglévő érték felülírása. Ez a folyamat bármely más Alkalmazásbeállítások ismételje meg az alkalmazás igényeinek megfelelően.
 
 Győződjön meg arról, az ASP.NET-projekt az alkalmazás egy példányát, és tegye közzé az új hely. Frissítve az új URL-címmel az ügyfélalkalmazás egy példányát használja, ellenőrizze, hogy minden a várt módon működik.
 
@@ -280,7 +280,6 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[klasszikus Azure portál]: https://manage.windowsazure.com/
 [Mi a Mobile Apps szolgáltatás?]: app-service-mobile-value-prop.md
 [Mobil alkalmazások kiszolgálói SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
