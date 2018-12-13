@@ -12,15 +12,15 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056641"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315214"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Egy több-bérlős SQL szilánkokra osztott adatbázisok használó SaaS-alkalmazásban séma kezelése
- 
+
 Ez az oktatóanyag a legnagyobb kihívás a szoftver (saas biztosított) alkalmazás-adatbázisok egy járműflotta karbantartása megvizsgálja. Megoldások a sémamódosítások ki az adatbázisok repülőkről szellőztető találja meg.
 
 Mint minden alkalmazás a Wingtip Tickets SaaS-alkalmazás idővel fejlődik, és az adatbázis-módosítások szükségesek. Változások a hatással van a séma vagy a referencia-adatok, vagy adatbázis-karbantartási feladatokat a alkalmazni. A mintában a bérlői adatbázis SaaS-alkalmazásokkal a módosítások valószínűleg nagyszámú bérlői adatbázison keresztül kell koordinált. Ezenkívül ezek a változások kell tartalmaznia az adatbázisba a kiépítési folyamat végrehajtásával biztosítható szerepelnek az új adatbázisok azok létrehozásakor.
@@ -64,12 +64,12 @@ A több-bérlős szilánkokra osztott adatbázis modellt a jelen példában hasz
 ## <a name="elastic-jobs-limited-preview"></a>Az Elastic Jobs korlátozott előzetes verziója
 
 Nincs, amely mostantól az Azure SQL Database integrált funkciója Elastic Jobs új verziója. Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. A korlátozott előzetes jelenleg támogatja hozhat létre egy feladatot az ügynök és a T-SQL feladatok létrehozása és kezelése a PowerShell használatával.
-> [!NOTE] 
+> [!NOTE]
 > Ez az oktatóanyag az SQL Database szolgáltatás, amely egy korlátozott előzetes verzió (rugalmas adatbázis-feladatok) funkcióit használja. Ha szeretné elvégezni ezt az oktatóanyagot, adja meg az előfizetés-Azonosítóját az SaaSFeedback@microsoft.com a subject = Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetés engedélyezve van, töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait. Ebben az előzetes verzióban korlátozva, ezért forduljon SaaSFeedback@microsoft.com kapcsolatos kérdésekre, vagy támogatást.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip Tickets SaaS több-bérlős adatbázis forráskódjához és parancsfájlok
 
-A Wingtip Tickets SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) tárházban a Githubon. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása. 
+A Wingtip Tickets SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) tárházban a Githubon. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása.
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>Hozzon létre egy feladatot az ügynök, adatbázis és az új feladat ügynök
 
@@ -84,9 +84,9 @@ A *Demo-SchemaManagement.ps1* szkript a *Deploy-SchemaManagement.ps1* parancsfá
 
 #### <a name="prepare"></a>Előkészítés
 
-Minden bérlői adatbázis helyszíntípuskészleteket tartalmaznak a készletét tartalmazza a **VenueTypes** tábla. Minden helyszín típusának felhasználásával határozza meg, hogy milyen típusú eseményeket, amelyek üzemeltethető a helyszínen. Ezek a helyszíntípusok megfelelnek a háttérben képeket a bérlő események alkalmazásban látható.  Ebben a gyakorlatban frissítést telepít az összes adatbázis két további helyszíntípus hozzáadásához: *motorkerékpár-verseny* és *Úszóklub*. 
+Minden bérlői adatbázis helyszíntípuskészleteket tartalmaznak a készletét tartalmazza a **VenueTypes** tábla. Minden helyszín típusának felhasználásával határozza meg, hogy milyen típusú eseményeket, amelyek üzemeltethető a helyszínen. Ezek a helyszíntípusok megfelelnek a háttérben képeket a bérlő események alkalmazásban látható.  Ebben a gyakorlatban, frissítést helyezhet üzembe az összes adatbázis két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
 
-Először tekintse át az egyes bérlői adatbázisok szerepelnek a helyszíntípusok. A bérlői adatbázisokat az SQL Server Management Studio (SSMS) egyik csatlakozhat, és vizsgálja meg a VenueTypes tábla.  Is lekérdezheti, ha ezt a táblázatot a Lekérdezésszerkesztő az Azure Portalon érhető el, amely az adatbázis oldal. 
+Először tekintse át az egyes bérlői adatbázisok szerepelnek a helyszíntípusok. A bérlői adatbázisokat az SQL Server Management Studio (SSMS) egyik csatlakozhat, és vizsgálja meg a VenueTypes tábla.  Is lekérdezheti, ha ezt a táblázatot a Lekérdezésszerkesztő az Azure Portalon érhető el, amely az adatbázis oldal.
 
 1. Nyissa meg az ssms-ben és a bérlői kiszolgálóhoz csatlakozni: *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
 1. Ellenőrizze, hogy a *motorkerékpár-verseny* és *Úszóklub* **nem** jelenleg foglalt, keresse meg a *contosoconcerthall* az adatbázis a *tenants1-dpt -&lt;felhasználói&gt;*  kiszolgáló és a lekérdezés a *VenueTypes* tábla.

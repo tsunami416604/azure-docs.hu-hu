@@ -1,5 +1,5 @@
 ---
-title: Azure Policy minta – Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
+title: Minta - használatra engedélyezett virtuális hálózat virtuális hálózati adapterek
 description: Ez a mintaszabályzat megköveteli egy jóváhagyott virtuális hálózat használatát a hálózati adaptereken.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 2a0b3ac82d6ff8e7c6df850e5303c342cc269834
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9e99e6614a5ddfb1f692e5db99c95b3907051fa5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959172"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308798"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

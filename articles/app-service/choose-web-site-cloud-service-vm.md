@@ -1,5 +1,5 @@
 ---
-title: App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás | Microsoft Docs
+title: Hasonlítsa össze az App Service-ben, a virtuális gép, a Service Fabric és Cloud Services – Azure |} A Microsoft Docs
 description: Ismerje meg, mi alapján választhat az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services szolgáltatások között, ha webalkalmazásokat szeretne üzemeltetni.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f04279b63ee5133b9900c475537798f6fa16bff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958703"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313615"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 
-Az Azure számos lehetőséget nyújt a webhelyek üzemeltetéséhez: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] és [Cloud Services][Cloud Services]. Ez a cikk segít Önnek megérteni a különbségeket az egyes lehetőségek között, így a webalkalmazása számára leginkább megfelelő döntést hozhatja meg.
+Az Azure webhelyek üzemeltetéséhez számos különféle módot kínál: [Az Azure App Service][Azure App Service], [virtuális gépek][Virtual Machines], [Service Fabric][Service Fabric], és [Cloud Services][Cloud Services]. Ez a cikk segít Önnek megérteni a különbségeket az egyes lehetőségek között, így a webalkalmazása számára leginkább megfelelő döntést hozhatja meg.
 
 A legtöbb webalkalmazás esetében az Azure App Service a legjobb választás. Az üzembe helyezés és a kezelés integrálva van a platformba, a webhelyek gyorsan méretezhetők a nagyobb adatforgalom kezeléséhez, a beépített terheléselosztás és az adatforgalom-kezelő pedig biztosítja a magas rendelkezésre állást. Egyszerűen áthelyezheti a meglévő helyeket az Azure App Service-be egy [online migrálási eszköz][migrate-tool] segítségével, nyílt forráskódú alkalmazásokat használhat a Web Application Galleryből, vagy akár egy új webhelyet is létrehozhat egy tetszőleges keretrendszer és eszközök használatával. A [WebJobs][WebJobs] funkció megkönnyíti a háttérfeladatok feldolgozását az App Service webalkalmazásba.
 

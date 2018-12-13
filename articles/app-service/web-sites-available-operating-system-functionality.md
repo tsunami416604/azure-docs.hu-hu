@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-ben az operációs rendszer funkcionalitása
+title: Az App Service szolgáltatásban – Azure operációs rendszer funkcionalitása
 description: 'További tudnivalók: web apps, mobil-háttéralkalmazások és az Azure App Service API Apps-alkalmazások számára elérhető OS-funkciók'
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: ebb95093d96a3c1fd36565831215355b18ac5d1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: bb17748968d0875cae132730a02f490eab966690
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968425"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269488"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
 Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 

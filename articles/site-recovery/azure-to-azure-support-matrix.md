@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 67a236f592392744978b7d1d7f7e7d129515a9a0
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994640"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321801"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -42,7 +42,7 @@ Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikál�
 
 ## <a name="region-support"></a>Régió támogatása
 
-Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi fürtön belül bármely két régió között.
+Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi fürtön belül bármely két régió között. Földrajzi fürtök és az adatok szem vannak meghatározva.
 
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
@@ -52,13 +52,14 @@ Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli r
 Ausztrália   | Kelet-Ausztrália, Délkelet-Ausztrália, Ausztrália középső régiója, Ausztrália 2. középső régiója
 Azure Government    | USA-beli Államigazgatás – Virginia, USA-beli Államigazgatás – Iowa, USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Texas, US DOD keleti régiója, USA védelmi Minisztériuma – középső régiója
 Németország | Közép-India, Németország északkelet-Németország
-Kína | Kelet-Kína, Észak-Kína
+Kína | Kelet-Kína, Észak-Kína, Kína North2, Kína East2
 
 >[!NOTE]
 >
-> Dél-brazíliai régióban, hogy replikálhat és átadja a feladatokat a következők egyikét: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban.
+> Dél-brazíliai régióban hogy replikálhat, és átadja a feladatokat az alábbi lehetőségek közül: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban.</br>
+> Megjegyzendő, hogy a Site Recovery csak engedélyezve Dél-brazíliai régióban, ahol a virtuális gépek védhetők a forrásrégióban, használható. Azt nem használható egy cél DR régióban bármely, az USA déli középső Régióját például az Azure-régióban. Folyamatban van a késés okát megfigyelt földrajzi távolságtól miatt javasoljuk, hogy válassza ki a Dél-Brazília kivételével bármely más amerikai régióban.  
 
-## <a name="cache-storage"></a>A gyorsítótárban
+## <a name="cache-storage"></a>Gyorsítótár
 
 Ez a táblázat összefoglalja a Site Recovery által replikáció közben használt gyorsítótárfiók támogatása.
 
@@ -126,7 +127,7 @@ Debian 8 | 9.17, 9.18 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.69-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.88-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.126-94.22-default SP3 4.4.73-5-default |
@@ -135,7 +136,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3
 
 * Fájlrendszer: ext3, ext4, ReiserFS (Suse Linux Enterprise Server csak), XFS
 * Kötetek kezelése: LVM2
-* A többutas szoftver: eszköz leképezője
+* A többutas szoftver: Eszköz leképezője
 
 
 ## <a name="replicated-machines---compute-settings"></a>A replikált gépek – a számítási beállítások
@@ -178,6 +179,7 @@ Adatlemez - standard storage-fiók | Támogatott |
 Adatlemez - premium storage-fiók | Támogatott | Ha a virtuális gép lemezei prémium és standard szintű tárfiókok helyezkednek el, kiválaszthatja az egyes lemezek, ellenőrizze, hogy azonos tárolási konfigurációval a célrégióban egy másik céloldali tárfiókkal.
 Felügyelt lemez – standard | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |  
 Felügyelt lemez – prémium szintű | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
+Standard SSD | Nem támogatott |
 Redundancia | Az LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatják a ritka és gyakori elérésű tárolási
 A tárolóhelyek | Támogatott |         
@@ -199,6 +201,18 @@ Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha a tárfió
 >[!IMPORTANT]
 > Győződjön meg arról, hogy a virtuális gép lemez méretezhetőségi és teljesítménycéljai az erőforrásigények [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek semmilyen teljesítménybeli problémák elkerülése érdekében. Ha követi az alapértelmezett beállításokat, a Site Recovery létrehozza a lemezek szükséges és a storage-fiókokat az adatforrás-konfiguráció alapján. Ha testre szabhatja, és válassza ki a saját beállításait, győződjön meg arról, hogy a forrás virtuális gépek esetében kövesse a lemez méretezhetőségi és teljesítménycéljai.
 
+## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Az adatok replikálása az Azure Site Recovery korlátai rátáról
+Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. Azt is vegye figyelembe, hogy két korlátozva van, érdemes lehet lemezenként data churn, és egy virtuális gép adatainak adatváltozás.
+Például, ha megnézzük a prémium szintű P20 lemez az alábbi táblázatban, a Site Recovery lemez az öt ilyen lemezek virtuális gépenkénti miatt a 25 MB/s összes adatforgalom virtuális gépenként legfeljebb 5 MB/s adatváltozással képes kezelni.
+
+**Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
+---|---|---|---
+Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
+Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
+Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
+Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
+Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
+Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MB/s | Lemezenként 842 GB
 ## <a name="replicated-machines---networking"></a>A replikált gépek – hálózatkezelés
 **Konfigurálás** | **Támogatás** | **Részletek**
 --- | --- | ---

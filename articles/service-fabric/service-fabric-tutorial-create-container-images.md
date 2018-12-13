@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f2e8ce7dc6102471f95f6332d9cb01a6cb4f4f54
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947534"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313785"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux-alapú Service Fabric-fürtön
 
 Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -208,7 +208,7 @@ Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Containe
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy alkalmazást kértünk le a GitHubról, és tárolórendszerképeket hoztunk létre és küldtünk le egy regisztrációs adatbázisba. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy alkalmazást kértünk le a Githubról, és tárolórendszerképeket létrehozott és leküldte a tárolójegyzékbe. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról

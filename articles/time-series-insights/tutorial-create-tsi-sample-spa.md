@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
+title: Hozzon létre egy Azure Time Series Insights egyoldalas webalkalmazást |} A Microsoft Docs
 description: Megismerheti, hogyan hozhat létre egyoldalas webalkalmazást, amely adatokat kér le és renderel egy TSI-környezetből.
 author: ashannon7
 ms.service: time-series-insights
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626755"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275839"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -33,8 +34,8 @@ Emellett telepítenie kell a Visual Studiót, ha még nem tette meg. Ehhez az ok
 
 Ahogy említettük, a jelen oktatóanyagban használt kialakítás és kód alapja a TSI-mintaalkalmazás. A kód a TSI-ügyfél JavaScript-kódtárát használja. A TSI-ügyfélkódtár két fő API-kategória absztrakcióját nyújtja:
 
-- **A TSI-lekérdezési API-k hívására szolgáló burkoló módszerek**: Olyan REST API-k, amelyek lehetővé teszik a TSI-adatok lekérdezését JSON-alapú kifejezésekkel. A módszerek a kódtár `TsiClient.server` névterében vannak rendezve.
-- **A diagramvezérlők néhány típusának létrehozására és kitöltésére szolgáló módszerek**: A weboldalon lévő TSI-adatok vizualizációjára szolgálnak. A módszerek a kódtár `TsiClient.ux` névterében vannak rendezve.
+- **A TSI lekérdezési API-k meghívására szolgáló burkoló módszerek**: REST API-k, amelyek lehetővé teszik, hogy a lekérdezés TSI adatok JSON-alapú kifejezések használatával. A módszerek a kódtár `TsiClient.server` névterében vannak rendezve.
+- **Módszerek a létrehozása és feltöltése számos különböző típusú vezérlők diagramkészítési**: A TSI vizualizációja egy weblap által használt módszerek. A módszerek a kódtár `TsiClient.ux` névterében vannak rendezve.
 
 Ez az oktatóanyag a mintaalkalmazás TSI-környezetéből származó adatokat is használja. További részletek a TSI-mintaalkalmazás szerkezetéről és a TSI-ügyfélkódtár használatáról: [Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése](tutorial-explore-js-client-lib.md).
 
@@ -91,7 +92,7 @@ Mielőtt létrehozna egy alkalmazást, regisztrálnia kell azt az Azure AD-ben. 
    > A használt böngészőtől függően előfordulhat, hogy a mentés előtt javítania kell a fájlok kiterjesztését (HTML-re vagy CSS-re).
 
    - **index.html**: a https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html oldal HTML- és JavaScript-kódja
-   - **sampleStyles.css**: CSS-stíluslap: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
+   - **sampleStyles.css:** Stíluslap: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
 1. Indítsa el a Visual Studiót, jelentkezzen be, és hozzon létre egy projektet a webalkalmazáshoz. A **Fájl** menüben válassza ki a **Megnyitás**, majd a **Webhely** lehetőséget. A **Webhely megnyitása** párbeszédpanelen válassza ki a munkakönyvtárat, ahol a HTML- és CSS-fájlok találhatók, majd kattintson a **Megnyitás** lehetőségre:
 
@@ -177,8 +178,8 @@ Mielőtt létrehozna egy alkalmazást, regisztrálnia kell azt az Azure AD-ben. 
 
 Hibakód/állapot | Leírás
 ---------------------| -----------
-*AADSTS50011: Nincs válaszcím regisztrálva az alkalmazáshoz.* | Az Azure AD-regisztrációból hiányzik a „Válasz-URL” tulajdonság. Lépjen az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** oldalára. Ellenőrizze, hogy meg van-e adva az a **bejelentkezési** URL-cím, amelyet [Az alkalmazás regisztrálása az Azure AD-ben](#register-the-application-with-azure-ad) 3. lépésében megadott. 
-*AADSTS50011: A kérelemben megadott válasz URL nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: „<Application ID GUID>”.* | A [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.b lépésében megadott `postLogoutRedirectUri` értéknek ugyanannak kell lennie, mint az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** tulajdonságánál megadott érték. Módosítsa a **Cél URL-címet** `https` használatára, a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 5.e lépésében leírtak szerint.
+*AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van.* | Az Azure AD-regisztrációból hiányzik a „Válasz-URL” tulajdonság. Lépjen az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** oldalára. Ellenőrizze, hogy meg van-e adva az a **bejelentkezési** URL-cím, amelyet [Az alkalmazás regisztrálása az Azure AD-ben](#register-the-application-with-azure-ad) 3. lépésében megadott. 
+*AADSTS50011: A válasz URL-címe a kérelemben megadott nem egyezik az alkalmazáshoz konfigurált válasz URL: "<Application ID GUID>".* | A [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.b lépésében megadott `postLogoutRedirectUri` értéknek ugyanannak kell lennie, mint az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** tulajdonságánál megadott érték. Módosítsa a **Cél URL-címet** `https` használatára, a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 5.e lépésében leírtak szerint.
 A webalkalmazás betöltődik, de egy stílus nélküli, csak szöveges bejelentkezési oldalt jelenít meg fehér háttérrel. | Ellenőrizze, hogy a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.a lépésében megadott elérési utak helyesek-e. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

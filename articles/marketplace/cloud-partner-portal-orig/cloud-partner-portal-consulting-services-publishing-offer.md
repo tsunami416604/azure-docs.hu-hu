@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7ea4a58f072071f60cf87d1e8817ae19658be5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037762"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310419"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és Dynamics 365 tanácsadási szolgáltatási ajánlat
 
 <table> <tr> <td>Ez a szakasz azt ismerteti, hogyan közzététel tanácsadási szolgáltatást vagy a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a> vagy a <a href="https://appsource.microsoft.com">az AppSource piactérről</a>. Megoldások a Microsoft alapján <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, és <a href="https://powerapps.microsoft.com">PowerApps</a> jogosultak arra, hogy az appsource-on szerepelnie. Más Microsoft-alapján más ajánlatokra <a href="https://azure.microsoft.com/services">Azure-szolgáltatások</a> is jogosult, ha az Azure Marketplace-en. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
 
 
-# <a name="publishing-benefits"></a>Közzétételi lehetőségekről
+## <a name="publishing-benefits"></a>Közzétételi lehetőségekről
 
 Vagy a Microsoft piacterein való közzététel jelentős előnyökkel jár:
 
@@ -36,13 +36,11 @@ Vagy a Microsoft piacterein való közzététel jelentős előnyökkel jár:
 - A szolgáltatások által a Microsoft a mező és telefonos értékesítést csapat előléptetett beolvasása.
 
 
-<a name="define-your-consulting-services-offer"></a>A tanácsadási szolgáltatási ajánlat megadása
--------------------------------------
+## <a name="define-your-consulting-services-offer"></a>A tanácsadási szolgáltatási ajánlat megadása
 
 A csomagolt tanácsadási szolgáltatási ajánlat megadása. Rögzített ár rögzített hatókörét, a rögzített becsült, időtartam összpontosíthat (vagy ingyenes), és elsősorban előtti sales jellegű egyetlen ügyfél számára. Válassza ki, amely már a népszerű és hatékony, új üzleti vezetői, megismételhető csomagolt marketingmódszerek.
 
-<a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
-----------------------------------
+## <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
 
 A következő szakaszok ismertetik a tanácsadási szolgáltatási ajánlat közzétételi folyamata
 
@@ -62,7 +60,7 @@ Hozzon létre egy új ajánlatunk, hajtsa végre az alábbi lépéseket:
 
 ### <a name="define-offer-settings"></a>Az ajánlat beállításainak megadása
 
-Az új ajánlat képernyőn az első lépés, ha az ajánlat identitást.  Az ajánlat identitás három részből áll: **Ajánlatazonosító**, **közzétevő-azonosító**, és **neve**.  Ezek a részek mindegyike terjed ki az alábbi szakaszokban található.
+Az új ajánlat képernyőn az első lépés, ha az ajánlat identitást.  Az ajánlat identitás három részből áll: **Ajánlat azonosítója**, **közzétevő-azonosító**, és **neve**.  Ezek a részek mindegyike terjed ki az alábbi szakaszokban található.
 
 #### <a name="offer-id"></a>Ajánlat azonosítója
 
@@ -80,7 +78,7 @@ Ez az azonosító van a fiókjával kapcsolatban. Ha a szervezeti fiókkal jelen
 
 Ez a karakterlánc, mi az appsource-on vagy az Azure Marketplace-en ajánlat nevét jeleníti meg.
 
-**Fontos:** csak adja meg a tényleges szolgáltatás nevét. Szolgáltatás típusa és időtartama, valamint nem tartalmazzák.
+**Fontos:** Csak adja meg a tényleges szolgáltatás nevét. Szolgáltatás típusa és időtartama, valamint nem tartalmazzák.
 
 Edgewater Fullscope szerint a következő példa bemutatja, hogyan van-e összeállítva ajánlat nevét. Az ajánlat neve jelenik meg:
 
@@ -95,17 +93,17 @@ Az ajánlat neve négy részből áll:
 
 Az alábbi lista tartalmazza a több jól elnevezett ajánlat neve:
 
--   A professzionális szolgáltatások Essentials: 1-Hr Briefing
--   Felhőplatform-áttelepítés: 1-Hr Briefing
--   A PowerApps és a Microsoft Flow: 1 napos Workshop
+-   Professzionális szolgáltatások alapok: 1 – hr Briefing
+-   Felhőplatform-áttelepítés: 1 – hr Briefing
+-   A PowerApps és Microsoft Flow: 1 napos Workshop
 -   Az Azure Machine Learning-szolgáltatások: 3 – hét PoC
--   A tégla, majd kattintson a megoldás kiskereskedelmi: 1-Hr Briefing
+-   A tégla, majd kattintson a kiskereskedelmi megoldást: 1 – hr Briefing
 -   Saját adatok importálása: 1 – hét Workshop
 -   Felhőbeli elemzési: 3 napos Workshop
 -   A Power BI képzés: 3 napos Workshop
 -   Értékesítési megoldásról: 1 – hét végrehajtása
 -   CRM rövid útmutató: 1 napos Workshop
--   Dynamics 365 for Sales: 2 nap-értékelés
+-   Dynamics 365 for Sales: Értékelés 2 nap
 
 Befejezése után a **ajánlat beállítások** lapon mentheti a beküldött elemet. Az ajánlat neve megjelenik a szerkesztő felett, és visszaállítja az összes kínál található.
 
@@ -131,28 +129,28 @@ Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az aj
 
 *1. példa*
 
--   **Ajánlat neve:** Felhőanalitika: 3 napos Workshop
--   **Ajánlat-összefoglaló:** áttekintése a Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése.
+-   **Ajánlat neve:** Felhőbeli elemzési: 3 napos Workshop
+-   **Ajánlat-összefoglaló:** A Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése áttekintése.
 
 *2. példa*
 
--   **Ajánlat neve:** ipari Azure IoT: 30 napos a koncepció igazolása
--   **Ajánlat-összefoglaló:** hozzon létre egy ipari csatlakoztatott termék próbaüzem való biztonságos csatlakozáshoz berendezések a mezőben egy Azure IoT Hub-megoldás az irányítópultok, jelentések és értesítések.
+-   **Ajánlat neve:** Az Azure IoT ipari: 30 napos a koncepció igazolása
+-   **Ajánlat-összefoglaló:** Hozzon létre egy ipari csatlakoztatott termék próbaüzem való biztonságos csatlakozáshoz berendezések a mezőben egy Azure IoT Hub-megoldás az irányítópultok, jelentések és értesítések.
 
 *3. példa*
 
--   **Ajánlat neve:** szakmai szolgáltatásoknál: 1-Hr Briefing
--   **Ajánlat-összefoglaló:** áttekintés és bemutató előre konfigurálva van, a Dynamics 365 kiterjesztett Operations megoldást biztosít a projektek, a számlázás és professzionális szolgáltatások erőforrásait felügyeleti bővített.
+-   **Ajánlat neve:** Professzionális szolgáltatások: 1 – hr Briefing
+-   **Ajánlat-összefoglaló:** Áttekintés és előre konfigurálva, a kiterjesztett Dynamics 365 professzionális szolgáltatások biztosítása a projektek, a számlázással és az erőforrások továbbfejlesztett kezelési műveletek megoldás bemutatója.
 
 *4. példa*
 
--   **Ajánlat neve:** Power bi-ban a világ: 4 – Hr Workshop
--   **Ajánlat-összefoglaló:** megkezdheti az első irányítópultját, és ajánlott eljárások megismerése. Legfeljebb 12 diákoknak végzett fejlesztés.
+-   **Ajánlat neve:** A világon a Power bi-ban: 4 – hr Workshop
+-   **Ajánlat-összefoglaló:** Megkezdheti az első irányítópultját, és ajánlott eljárások megismerése. Legfeljebb 12 diákoknak végzett fejlesztés.
 
 *5. példa*
 
--   **Ajánlat neve:** Dynamics és projektek: 3 napos értékelése
--   **Ajánlat-összefoglaló:** adatgyűjtési követelmények és professzionális szolgáltatásokat nyújtó cégek és vállalatok projekt adatvezérelt ERP-megoldás.
+-   **Ajánlat neve:** A Dynamics és projektek: Értékelés 3 napos
+-   **Ajánlat-összefoglaló:** Adatgyűjtési követelmények és professzionális szolgáltatásokat nyújtó cégek és vállalatok projekt adatvezérelt ERP-megoldás.
 
 ##### <a name="offer-description"></a>Az ajánlat leírása
 
@@ -168,11 +166,11 @@ Az ajánlat leírása rövid tartani, és a maximális karakterszámot, a felhas
 
 A következő példa bemutatja egy jól szintből ajánlat leírása és a kapcsolódó neve és összegzése:
 
-**Ajánlat neve:** Felhőanalitika: 3 napos Workshop
+**Ajánlat neve:** Felhőbeli elemzési: 3 napos Workshop
 
-**Ajánlat-összefoglaló:** áttekintése a Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése.
+**Ajánlat-összefoglaló:** A Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése áttekintése.
 
-**Ajánlat leírása:** a 3 napos workshop technikai és üzleti vezetők számára, és az ügyfél létesítményben helyszíni tárolt.
+**Az ajánlat leírása:** A 3 napos workshop technikai és üzleti vezetők és az ügyfél létesítményben helyszíni tárolt.
 
 ***Napirend***
 
@@ -236,11 +234,11 @@ A Microsoft a fókuszáló kizárólag a rögzített hatókör, meghatározott i
 
 A következő öt típusú ajánlatok foglalja magában:
 
--   **Értékelés:** ügyfél környezet alkalmazhatósági megoldások meghatározása és becsült költségek és az időzítési értékelését.
--   **Tájékoztató:** megoldást vagy ügyfél érdeklődés keretrendszereket, bemutatók és példák ügyfelektől megrajzolásához tanácsadási szolgáltatás bemutatása. Tájékoztatói vezetett helyszíni kell lennie.
--   **Megvalósítás:** teljes telepítéséhez, amely egy teljes mértékben működő megoldást eredményez. A próbaüzem a Microsoft azt javasolja, korlátozza az megoldásokat, amelyekkel egy hét múlva megvalósított vagy kevesebb is lehet.
--   **A koncepció igazolása:** meghatározni, ha a megoldás felel meg az ügyfél követelményei és A korlátozott hatókörű megvalósítás.
--   **Workshop:** egy interaktív engagement be tevékenységeik az ügyfél helyszíni képzés, tájékoztatói, értékelések vagy a vásárlói adatok vagy a környezetben létrehozott bemutatókat tartalmazó.
+-   **Értékelés:** Alkalmazhatósági megoldások meghatározása és becsült költségek és az időzítési ügyfél környezet értékelése.
+-   **Tájékoztató:** A megoldás vagy felhasználói érdeklődés keretrendszereket, bemutatók és példák ügyfelektől megrajzolásához tanácsadási szolgáltatás bemutatása. Tájékoztatói vezetett helyszíni kell lennie.
+-   **Végrehajtás:** A telepítés befejezéséhez, amely egy teljes mértékben működő megoldást eredményez. A próbaüzem a Microsoft azt javasolja, korlátozza az megoldásokat, amelyekkel egy hét múlva megvalósított vagy kevesebb is lehet.
+-   **A koncepció igazolása:** A korlátozott hatókörű megvalósítás meghatározni, ha a megoldás felel meg az ügyfél követelményei.
+-   **Workshop:** Egy interaktív engagement ügyfél helyi képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy a környezetben létrehozott tartalmazni képes elvégezni.
 
 **Elérhetőség ország/régió**
 

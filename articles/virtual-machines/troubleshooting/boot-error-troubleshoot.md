@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b467618815f2bad8a6816425764fe60707c1db3d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351486"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308141"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure virtuális gépek rendszerindítási hibák elhárítása
 
@@ -29,9 +29,13 @@ Ez a cikk felsorolja a gyakori rendszerindítási hibák, amely egy Windows virt
 * [A BitLocker rendszerindítási hibák](troubleshoot-bitlocker-boot-error.md) 
 * [Windows megjelenítése "Annak ellenőrzése file system" rendszerindítás során](troubleshoot-check-disk-boot-error.md)
 * [Kék képernyő hibák](troubleshoot-common-blue-screen-error.md)
+* [Virtuális gép indítási elakadt az első Windows kész"](troubleshoot-vm-boot-configure-update.md)
+* [Kék képernyő jelenik meg "Kritikus szolgáltatás sikertelen"](troubleshoot-critical-service-failed-boot-error.md)
+* [Indítsa újra a hurok probléma](troubleshoot-reboot-loop.md)
+* [Virtuális gép indítási Windows-frissítési fázis megakadt](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A rendszerindítási diagnosztika](boot-diagnostics.md)
+- [Rendszerindítási diagnosztika](boot-diagnostics.md)
 - [Virtuális gép soros konzol](../windows/serial-console.md)
 - [Hibaelhárítás Windows virtuális gép egy helyreállítási virtuális Gépet az operációsrendszer-lemez csatolása](../windows/troubleshoot-recovery-disks.md)

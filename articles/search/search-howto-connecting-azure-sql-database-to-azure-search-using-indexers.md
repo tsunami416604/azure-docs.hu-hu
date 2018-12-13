@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure SQL Database az Azure Search Indexelőinek használatával |} A Microsoft Docs
-description: Ismerje meg az adatok lekérése az Azure SQL Database-ből az Azure Search-index, indexelő használatával.
+title: Csatlakozás és tartalmának indexelőket – Azure Search használatával az Azure SQL Database indexelése
+description: Ismerje meg, hogyan feltérképezi az adatok teljes szöveges kereséshez, az Azure Search indexelők használatával Azure SQL Database-ben. Ez a cikk ismerteti, az indexelő konfigurációjának, valamint az adatok betöltése céljából.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245647"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313394"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás az Azure SQL Database az Azure Search indexelők használatával
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
 
 Mielőtt lekérdezheti, ha egy [Azure Search-index](search-what-is-an-index.md), meg kell az adatokkal való feltöltéséhez. Ha az adattárolás helyén, egy Azure SQL database-ben egy **az Azure SQL Database az Azure Search-indexelőt** (vagy **Azure SQL-indexer** röviden) az indexelési folyamat, amely azt jelenti, hogy kevesebb kódot írni, és kevésbé automatizálható infrastruktúrája számára.
 
@@ -34,7 +35,7 @@ Egy **indexelő** egy erőforrás, amely csatlakozik egy adatforráshoz célzott
 * Index frissítése a változások az adatforrás egy ütemezés szerint.
 * Igény szerinti frissítéséhez az index, igény szerint futtatni.
 
-Egyetlen indexelő csak felhasználhat egy táblát vagy nézetet, de több indexelők hozhat létre, ha azt szeretné, több search-index feltöltéséhez. Fogalmakról további információkért lásd: [Indexelőműveletek: általános munkafolyamat](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Egyetlen indexelő csak felhasználhat egy táblát vagy nézetet, de több indexelők hozhat létre, ha azt szeretné, több search-index feltöltéséhez. Fogalmakról további információkért lásd: [Indexelőműveletek: Jellemző munkafolyamat](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Állítsa be, és konfigurálni egy Azure SQL indexelő használatával:
 
@@ -314,31 +315,31 @@ Ezek a beállítások szerepelnek a `parameters.configuration` az indexelő defi
 
 ## <a name="faq"></a>GYIK
 
-**K: az Azure SQL-indexelő használhatják az Azure IaaS virtuális gépeken futó SQL-adatbázisok?**
+**KÉRDÉS: Használhatom az Azure SQL-indexelő az Azure IaaS virtuális gépeken futó SQL-adatbázisok?**
 
 Igen. Azonban meg kell, hogy a keresési szolgáltatás kapcsolódni az adatbázishoz. További információkért lásd: [konfigurálása egy kapcsolatot az Azure Search indexelők és az SQL Server-beli virtuális gépen](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**K: az Azure SQL-indexelő használhatják a helyszínen futó SQL-adatbázisok?**
+**KÉRDÉS: Használható a helyszínen futó SQL-adatbázisok Azure SQL-indexer?**
 
 Közvetlenül nem. Nem javasolt és nem támogatják a közvetlen kapcsolat, ezzel lenne megkövetelik, hogy nyissa meg az adatbázisok, az internetes forgalmat. Ügyfeleink a jelen forgatókönyvben híd technológiák használatával például az Azure Data Factory sikeres volt. További információkért lásd: [adatok leküldése az Azure Search-index, az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**K: használhatok az Azure SQL-indexelő az iaas Azure-on futó SQL Serveren kívül más adatbázisok?**
+**KÉRDÉS: Használhatom az Azure SQL-indexelő iaas Azure-on futó SQL Serveren kívül más adatbázisok?**
 
 Nem. Ebben a forgatókönyvben nem támogatjuk, mert még nem teszteltük az indexelő az SQL Serveren kívül más adatbázisokhoz.  
 
-**K: hozható létre ütemezés szerint futó több indexelők?**
+**KÉRDÉS: Ütemezés szerint futó több indexelő is létrehozható?**
 
 Igen. Azonban csak egy indexelő is fut egy csomóponton egyszerre. Ha párhuzamosan fut több indexelők van szüksége, fontolja meg, a keresési szolgáltatás több keresési egység vertikális felskálázása.
 
-**K: a lekérdezési számítási feladatot futtat egy indexelő hatással?**
+**KÉRDÉS: Az indexelők futtatása hatással a számítási feladatok?**
 
 Igen. Indexelő az egyik csomópontot a search szolgáltatás fut, és a csomópont erőforrásokat indexelést és lekérdezést forgalom és az egyéb API-kérések kiszolgáló között megosztott. Ha nagy számításigényű indexelés és a lekérdezési számítási feladatok futtatásához, és 503-as hibák vagy egyre nagyobb válaszidők nagy mértékű észlel, fontolja meg [a keresési szolgáltatás vertikális felskálázásával](search-capacity-planning.md).
 
-**K: használhatok egy másodlagos replika egy [feladatátvevő fürt](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) adatforrásként?**
+**KÉRDÉS: Használható a másodlagos replika egy [feladatátvevő fürt](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) adatforrásként?**
 
 Ez a konkrét licenctől függ. Teljes indexelése, egy tábla vagy nézet, használhatja egy másodlagos replikára. 
 
-Növekményes indexelést, az Azure Search által támogatott két szabályzatok módosítása: az SQL integrált nyomkövetési és magas Vízjelbe beleszámított módosítása.
+Növekményes indexelést, az Azure Search két változás szabályzatok használatát támogatja: Az SQL integrált változáskövetés és a magas vízjel.
 
 A csak olvasható replikák a SQL database nem támogatja az integrált változáskövetés. Ezért magas Vízjelbe beleszámított házirendet kell használnia. 
 
@@ -348,7 +349,7 @@ Ha egy csak olvasható replika rowversion használja, a következő hiba jelenik
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**K: használhatok egy alternatív, nem rowversion oszlop a magas vízjelbe beleszámított change Tracking szolgáltatáshoz?**
+**KÉRDÉS: Használhatom-e egy másik, nem rowversion oszlop magas vízjelbe beleszámított változáskövetési?**
 
 Nem ajánlott. Csak **rowversion** lehetővé teszi, hogy megbízható az adatszinkronizálásra használható. Azonban az alkalmazáslogika függően előfordulhat, hogy lehet biztonságos ha:
 

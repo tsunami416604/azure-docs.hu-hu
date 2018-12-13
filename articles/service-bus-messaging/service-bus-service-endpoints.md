@@ -1,35 +1,53 @@
 ---
 title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure Service Bus |} A Microsoft Docs
 description: A Microsoft.ServiceBus szolgáltatás végpont hozzáadása egy virtuális hálózatot.
-services: event-hubs
+services: service-bus
 documentationcenter: ''
 author: clemensv
 manager: timlt
-ms.service: event-hubs
+ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 05930dfce64378d792213ccaefa3d15057bd5dfd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405001"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276128"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Service busszal
 
-A Service Bus-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok] [ vnet-sep] lehetővé teszi a biztonságos hozzáférést üzenetkezelési képességeket, például a virtuális gépek, virtuális hálózatok vannak kötve , a hálózati forgalom elérési út védeni kívánt mindkét végén. 
+A Service Bus-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok] [ vnet-sep] lehetővé teszi a biztonságos hozzáférést üzenetkezelési képességeket, például a virtuális gépek, virtuális hálózatok vannak kötve , a hálózati forgalom elérési út védeni kívánt mindkét végén.
 
 Legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kell kötni konfigurálása után a megfelelő Service Bus-névtér már nem fogadják el a forgalmat bárhonnan, de engedélyezett a virtuális hálózat. A virtuális hálózati szempontból a Service Bus-névtér kötése egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be.
 
 Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő Service Bus-névtér értéket a megfigyelhető hálózati cím az az üzenetkezelési szolgáltatás végpontja egy nyilvános IP-címtartomány kötött számítási feladatok között.
 
+>[!WARNING]
+> Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatások Service Bus szolgáltatással való interakcióhoz.
+>
+> A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok vannak megvalósítva, és a rendszer hamarosan közzétesszük.
+>
+> Gyakori Azure forgatókönyvek, amelyek nem használhatók a virtuális hálózatok (vegye figyelembe, hogy a lista **nem** teljes körű) –
+> - Azure Monitor
+> - Azure Stream Analytics
+> - Az Azure Event Grid-integráció
+> - Az Azure IoT Hub-útvonalak
+> - Az Azure IoT Device Explorer
+> - Azure Data Explorer
+>
+> Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton
+> - Azure Web Apps
+> - Azure Functions
+
+> [!IMPORTANT]
+> Virtuális hálózatok csak a támogatott [prémium szintű](service-bus-premium-messaging.md) Service Bus-névterek.
+
 ## <a name="enable-service-endpoints-with-service-bus"></a>Engedélyezze a szolgáltatásvégpontokat a Service busszal
 
-Virtuális hálózatok csak a támogatott [prémium szintű](service-bus-premium-messaging.md) Service Bus-névterek. 
-
-A Service Bus virtuális hálózati Szolgáltatásvégpontok használata esetén fontos szempont az, hogy ne engedélyezze ezeket a végpontokat az alkalmazásokat, amelyek vegyesen Standard és prémium szintű Service Bus-névterek. Standard szintű csomag nem támogatja a virtuális hálózatok, mert a végpont korlátozódik, csak a prémium szintű névteret. A virtuális hálózatok közötti forgalom a standard szintű névtér blokkolja. 
+A Service Bus virtuális hálózati Szolgáltatásvégpontok használata esetén fontos szempont az, hogy ne engedélyezze ezeket a végpontokat az alkalmazásokat, amelyek vegyesen Standard és prémium szintű Service Bus-névterek. Standard szintű csomag nem támogatja a virtuális hálózatok, mert a végpont korlátozódik, csak a prémium szintű névteret. A virtuális hálózatok közötti forgalom a standard szintű névtér blokkolja.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
@@ -45,7 +63,7 @@ Azt jelenti, hogy a bizalmas felhőmegoldások csak nem férnek hozzá az Azure-
 
 Virtuális hálózat és egy Service Bus-névtér kötés két lépésből áll. Először hozzon létre egy **virtuális hálózati szolgáltatásvégpont** egy virtuális hálózat alhálózatán, és engedélyezze a Microsoft.servicebus"", azt mutatjuk be a [szolgáltatási végpont áttekintő] [ vnet-sep]. Miután hozzáadta a szolgáltatásvégpont, azt a kötést létrehozni a Service Bus-névtér egy *virtuális hálózati szabályt*.
 
-A virtuális hálózati szabályt egy elnevezett társítást a Service Bus-névtér egy virtuális hálózat alhálózatához. A szabály létezik, míg az alhálózat kötött összes számítási feladatokhoz, amelyekhez hozzáférést a Service Bus-névtér. Service Bus maga soha nem kimenő kapcsolatot hoz létre, nem kell hozzáférést, és ezért soha nem kap hozzáférést az alhálózat szerint ez a szabály engedélyezése.
+A virtuális hálózati szabály a Service Bus-névtér egy virtuális hálózat alhálózatához van társítva. A szabály létezik, míg az alhálózat kötött összes számítási feladatokhoz, amelyekhez hozzáférést a Service Bus-névtér. Service Bus maga soha nem kimenő kapcsolatot hoz létre, nem kell hozzáférést, és ezért soha nem kap hozzáférést az alhálózat szerint ez a szabály engedélyezése.
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokkal a virtuális hálózati szabály létrehozása
 
@@ -53,47 +71,121 @@ A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hál
 
 Sablon paraméterei:
 
-* **namespaceName**: Service Bus-névteret.
-* **vnetRuleName**: létrehozni a virtuális hálózati szabály nevét.
-* **virtualNetworkingSubnetId**: teljesen minősített erőforrás-kezelő elérési útját a virtuális hálózat alhálózatához; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
+* **namespaceName**: A Service Bus-névtér.
+* **virtualNetworkingSubnetId**: A virtuális hálózat alhálózatához; teljesen minősített erőforrás-kezelő elérési útja Ha például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
+
+> [!NOTE]
+> Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
+> Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
+> 
+> forrás:
+> ```json
+> "defaultAction": "Allow"
+> ```
+> erre:
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
 
 Sablon:
 
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "vnetRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "virtualNetworkSubnetId":{  
-             "type":"string",
-             "metadata":{  
-                "description":"subnet Azure Resource Manager ID"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "virtualNetworkName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Virtual Network Rule"
+        }
+      },
+      "subnetName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Virtual Network Sub Net"
+        }
+      },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+      "subNetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]"
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('vnetRuleName'))]",
-            "type":"Microsoft.ServiceBus/namespaces/VirtualNetworkRules",           
-            "properties": {             
-                "virtualNetworkSubnetId": "[parameters('virtualNetworkSubnetId')]"  
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2017-09-01",
+        "name": "[parameters('virtualNetworkName')]",
+        "location": "[parameters('location')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/23"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[parameters('subnetName')]",
+              "properties": {
+                "addressPrefix": "10.0.0.0/23",
+                "serviceEndpoints": [
+                  {
+                    "service": "Microsoft.ServiceBus"
+                  }
+                ]
+              }
             }
-        } 
-    ]
-}
+          ]
+        }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": 
+          [
+            {
+              "subnet": {
+                "id": "[variables('subNetId')]"
+              },
+              "ignoreMissingVnetServiceEndpoint": false
+            }
+          ],
+          "ipRules":[<YOUR EXISTING IP RULES>],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 A sablon üzembe helyezéséhez kövesse az utasításokat [Azure Resource Manager][lnk-deploy].

@@ -1,13 +1,11 @@
 ---
-title: Az Azure Standard Load Balancer diagnosztikai |} A Microsoft Docs
+title: Az Azure Standard Load Balancer-diagnosztika
+titlesuffix: Azure Load Balancer
 description: Diagnosztika az Azure Standard Load Balancer a rendelkezésre álló metrikák és egészségügyi adatok használata.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 258e093acd50946e95360416f89b2ceb96ee35d3
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426468"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189047"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>A Standard Load Balancer metrikák és egészségügyi diagnosztikája
 
 Az Azure Standard Load Balancer az Azure Standard Load Balancer lehetővé teszi az erőforrások az alábbi diagnosztikai képességeket tesz elérhetővé:
-* **Többdimenziós metrikák**: olyan új többdimenziós diagnosztikai funkciók révén [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) nyilvános, mind a belső terheléselosztó konfigurációjában betölteni. Figyelése, kezelése és a load balancer-erőforrások hibaelhárítása.
+* **Többdimenziós metrikák**: Olyan új többdimenziós diagnosztikai funkciók révén [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) nyilvános, mind a belső terheléselosztó konfigurációjában betölteni. Figyelése, kezelése és a load balancer-erőforrások hibaelhárítása.
 
-* **A Resource health**: A terheléselosztó oldal az Azure Portalon és a Resource Health lap (figyelő) teszi közzé a Resource Health szakaszban, a Standard Load Balancer nyilvános load balancer konfigurációját.
+* **A Resource health**: A Load Balancer lap az Azure Portalon, és a Resource Health lap (figyelő) teszi közzé a Resource Health szakaszban, a Standard Load Balancer nyilvános load balancer konfigurációját.
 
 Ez a cikk végigvesszük az ezeket a képességeket nyújt, és azt használni őket a Standard Load Balancer lehetőséget kínál.
 
@@ -59,7 +57,7 @@ A metrikák, a Standard Load Balancer-erőforrások megtekintése:
 
 ![A Standard Load Balancer metrikák megtekintése](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*. Ábra: DIP rendelkezésre állás és egészségügyi mintavételi állapot metrikát a Standard Load Balancer*
+*Ábra: Dedikált IP-CÍMMEL rendelkezésre állását és egészségügyi mintavételi állapot metrikát a Standard Load Balancer*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API-k használatával programozott módon többdimenziós metrikák beolvasása
 
@@ -82,7 +80,7 @@ A virtuális IP-cím rendelkezésre állását a Standard Load Balancer-erőforr
 
 ![VIP-tesztelés](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Ábra: Terheléselosztói VIP-tesztelés részletei*
+*Ábra: Terheléselosztói VIP-tesztelés részleteinek betöltése*
 
 A metrika egy aktív, a sávon kívüli mérési hozza létre. Egy ellenőrzési szolgáltatás a régión belül a mérték a forgalom származik. A szolgáltatás aktiválva van, amint egy nyilvános előtéri egy központi telepítés létrehozásához, és hogy továbbra is fennáll, amíg el nem távolítja az előtér. 
 
@@ -109,7 +107,7 @@ A Standard Load Balancer-erőforrások rendelkezésre állásának DIP lekérés
 
 ![Dedikált IP-CÍMMEL rendelkezésre állása](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
 
-*. Ábra: Terheléselosztói VIP-elérhetősége*
+*Ábra: A terheléselosztó virtuális IP-cím rendelkezésre állás*
 
 Állapot-mintavételei sikertelen a következő okok miatt:
 - Konfigurál egy állapotminta-porthoz, amely nem figyel, vagy nem válaszol, vagy a nem megfelelő protokollt használja. Ha a szolgáltatás közvetlen kiszolgálói válasz (DSR vagy a nem fix IP) használja a szabályok, győződjön meg arról, hogy a szolgáltatás figyel-e a hálózati adapter IP-konfigurációja IP-címét, és nem csak a visszacsatolási, amelynek része az előtérbeli IP-cím.
@@ -157,7 +155,7 @@ Bájt vagy a csomag száma statisztikák lekéréséhez:
 
 ![Bájtok száma](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Ábra: Terheléselosztó bájtok száma*
+*Ábra: Load Balancer bájtok száma*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>Hogyan diagnosztizálhatom a load balancer az üzembe helyezés?
 
@@ -169,7 +167,7 @@ Hajtsa végre ezt a lépést további, és betekintést nyerhet hogyan az Azure 
 
 ![VIP-diagnosztika](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*Ábra: Kombinálásával dedikált IP-CÍMMEL és virtuális IP-cím rendelkezésre állási metrikák*
+*Ábra: Dedikált IP-CÍMMEL és virtuális IP-cím rendelkezésre állási metrikák egyesítésével.*
 
 A diagram az alábbi információkat jeleníti meg:
 - Az infrastruktúra magát kifogástalan állapotú, az infrastruktúra, a virtuális gépeket üzemeltet volt elérhető, és egynél több virtuális Gépet helyezte a háttérben. A kék VIP rendelkezésre állást, amely 100 százalék-nyomkövetési jelzi ezt az információt. 
@@ -193,7 +191,7 @@ A nyilvános Standard Load Balancer-erőforrások állapotának megtekintése:
 
    ![A figyelő lap](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Ábra: A Service Health-hivatkozás az Azure Monitor*
+   *Ábra: Az Azure Monitor Service Health-hivatkozás*
 
 2. Válassza ki **Resource Health**, és győződjön meg arról, hogy **előfizetés-azonosító** és **erőforrástípus = terheléselosztó** ki van jelölve.
 
@@ -205,7 +203,7 @@ A nyilvános Standard Load Balancer-erőforrások állapotának megtekintése:
 
     ![A Load Balancer állapot állapota](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Ábra: Terheléselosztó erőforrás állapota nézetben*
+   *Ábra: Load Balancer erőforrás állapota nézetben*
  
 A resource health különböző állapotok, és ezek leírását az alábbi táblázatban láthatók: 
 

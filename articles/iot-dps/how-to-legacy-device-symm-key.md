@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60321b2463a535c3f7a0c73e0922010bd12a3e82
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456558"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323235"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -35,7 +35,7 @@ Egy egyedi regisztrációs Azonosítót fogja definiálni minden egyes eszközh�
 
 Egy regisztrációs csoportnak, amely [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md) jön létre a Device Provisioning Service szolgáltatással. A regisztrációs csoport csoport főkulcs tartalmazza. A főkulcs kivonatához minden egyedi regisztrációs azonosító minden eszközhöz egyedi eszközkulcs létrehozásához használható. Az eszköz kulcsot fogja használni a származtatott eszköz egyedi regisztrációs Azonosítóval rendelkező igazolja a Device Provisioning Service szolgáltatással, és a egy IoT hubot kell rendelni.
 
-Ebben a cikkben bemutatott eszközkóddal, ugyanezt a mintát követi a [a rövid útmutató: a szimmetrikus kulcsokat a szimulált eszköz kiépítése](quick-create-simulated-device-symm-key.md). A kód fogja-minta használatával eszköz szimulálása a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). A szimulált eszközt egy regisztrációs csoport helyett egyéni regisztrációt a bizonyítja, ahogyan az a rövid útmutató is.
+Ebben a cikkben bemutatott eszközkóddal, ugyanezt a mintát követi a [a rövid útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md). A kód fogja-minta használatával eszköz szimulálása a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). A szimulált eszközt egy regisztrációs csoport helyett egyéni regisztrációt a bizonyítja, ahogyan az a rövid útmutató is.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -90,7 +90,7 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
 4. Futtassa az alábbi parancsot, amely létrehozza az SDK fejlesztői ügyfélplatformra szabott verzióját. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -98,7 +98,7 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -122,13 +122,13 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
 
     - **Csoport neve**: Adja meg **mylegacydevices**.
 
-    - **Tanúsítvány típusa**: válasszon **szimmetrikus kulcs**.
+    - **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
 
-    - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
+    - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
 
-    - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: válasszon **statikus konfiguráció** így hozzárendelhet egy adott hubhoz.
+    - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **statikus konfiguráció** így hozzárendelhet egy adott hubhoz.
 
-    - **Válassza ki az IoT-központok ennek a csoportnak rendelhetők**: válassza ki a hub egyikét.
+    - **Válassza ki az IoT-központok ennek a csoportnak rendelhetők**: Válassza ki a hub egyikét.
 
     ![Adja hozzá a szimmetrikus kulcsát a kulcsigazoláshoz regisztrációs csoportot](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
@@ -290,7 +290,7 @@ Vegye figyelembe, hogy ennek következtében a származtatott eszköz kulcsát a
 ## <a name="next-steps"></a>További lépések
 
 * További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
-* [Gyors útmutató: A szimmetrikus kulcsokat a szimulált eszköz kiépítése](quick-create-simulated-device-symm-key.md)
+* [Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
 * Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése ](how-to-unprovision-devices.md) 
 
 

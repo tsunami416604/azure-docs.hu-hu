@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 61e1a02c3f1c194432750dce8ddf8162a981771d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002537"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271470"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -109,7 +108,7 @@ A megoldások kezelése az **megoldások** a munkaterület menüje.
 Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../insights/solutions.md#install-a-management-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../insights/solutions.md#remove-a-management-solution) telepített megoldások listájából.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Hogyan hozzon létre és kezelheti a riasztásokat?
-Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../../monitoring-and-diagnostics/alert-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
+Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../../azure-monitor/platform/alerts-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../../azure-monitor/platform/alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Hogyan érhetem el az irányítópultokat?
 A [saját irányítópult](dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../learn/tutorial-logs-dashboards.md) az Azure-irányítópultok.

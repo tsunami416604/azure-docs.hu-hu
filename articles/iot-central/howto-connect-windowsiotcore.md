@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5be556ca13b9e4f681239998205aac073cc0fb99
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974755"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309450"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -57,9 +57,9 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows
 
 ### <a name="what-youll-need"></a>Az alábbiak szükségesek
 
-Egy fizikai Windows 10 IoT Core-eszköz beállításához kell rendelkeznie a Windows 10 IoT Core-es eszközök. Ismerje meg, hogyan állítható be a Windows 10 IoT Core-eszköz [Itt](https://docs.microsoft.com/en-us/windows/iot-core/tutorials/quickstarter/devicesetup).
+Egy fizikai Windows 10 IoT Core-eszköz beállításához kell rendelkeznie a Windows 10 IoT Core-es eszközök. Ismerje meg, hogyan állítható be a Windows 10 IoT Core-eszköz [Itt](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-Egy ügyfélalkalmazás, amely képes kommunikálni az Azure IoT Central is szüksége lesz. Az Azure SDK-val saját egyéni alkalmazások készítése és üzembe helyezése a Visual Studio-eszközök az, vagy letöltheti egy [előre elkészített mintát](https://developer.microsoft.com/en-us/windows/iot/samples) és egyszerűen telepítheti és futtathatja az eszközt. 
+Egy ügyfélalkalmazás, amely képes kommunikálni az Azure IoT Central is szüksége lesz. Az Azure SDK-val saját egyéni alkalmazások készítése és üzembe helyezése a Visual Studio-eszközök az, vagy letöltheti egy [előre elkészített mintát](https://developer.microsoft.com/windows/iot/samples) és egyszerűen telepítheti és futtathatja az eszközt. 
 
 ### <a name="deploying-the-sample-client-application"></a>A mintaalkalmazás-ügyfél telepítése
 

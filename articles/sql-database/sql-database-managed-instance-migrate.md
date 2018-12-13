@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5e2599c2089cbd9961b54966df5f0f98d6badcce
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345305"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274666"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -117,8 +117,7 @@ Nyomon követheti az alkalmazások működését és teljesítményét az áttel
 
 A migrálás kockázatainak csökkentése érdekében módosítsa az adatbázis-kompatibilitási szint csak azután alkalmazásteljesítmény-figyelő. Használja Query Store előtt és után az adatbázis kompatibilitási szint módosítása, a számítási feladatok teljesítményére kapcsolatos információk lekérése, amint azt az optimális eszközként [teljesítmény stabilitását tartsa a frissítés során az SQL Server újabb verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 
-Miután egy teljes körűen felügyelt platformon, igénybe az SQL Database szolgáltatás részeként automatikusan biztosított előnyöket. Például a biztonsági mentések létrehozását a felügyelt példány nincs – a szolgáltatás hajtja végre biztonsági mentés meg automatikusan. Ön már nem kell aggódnia a ütemezheti, véve, és felügyelheti a biztonsági mentések. Felügyelt példány lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). A nyilvános előzetes verzióban rögzítik a megőrzési időtartam hét nap.
-Ezenkívül nem kell aggódnia, magas rendelkezésre állás kialakítása [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
+Miután egy teljes körűen felügyelt platformon, igénybe az SQL Database szolgáltatás részeként automatikusan biztosított előnyöket. Például a biztonsági mentések létrehozását a felügyelt példány nincs – a szolgáltatás hajtja végre biztonsági mentés meg automatikusan. Ön már nem kell aggódnia a ütemezheti, véve, és felügyelheti a biztonsági mentések. Felügyelt példány lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). Ezenkívül nem kell aggódnia, magas rendelkezésre állás kialakítása [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
 
 A biztonság megszilárdítása, fontolja meg néhány elérhető funkcióját:
 

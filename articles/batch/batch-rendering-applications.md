@@ -2,16 +2,16 @@
 title: A Batch renderelő alkalmazásokkal
 description: Előre telepített Batch renderelő alkalmazásokkal
 services: batch
-author: mscurrell
-ms.author: markscu
-ms.date: 08/02/2018
+author: laurenhughes
+ms.author: lahugh
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.openlocfilehash: 28acd1b7275694d38a52f14d2b2c32b79cc8183e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 7cc19c8def9e162c752efab776d0b6f5118bfde2
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034782"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320948"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>A renderelési Virtuálisgép-rendszerképek előre telepített alkalmazásokkal
 
@@ -34,11 +34,11 @@ Egyes alkalmazások csak a Windows támogatják, de a legtöbb Windows és Linux
 ## <a name="applications-on-windows-server-2016-rendering-nodes"></a>Alkalmazások a Windows Server 2016 renderelési csomópontokon
 
 * Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
-* Autodesk Maya I/O 2018 Update 3 (18.3.0.7040 verzió)  
-* Autodesk 3ds Max i/o 2019 1. frissítés (21.10.1314 verzió)
+* Autodesk Maya I/O 2018 Update 4 (18.4.0.7622 verzió)  
+* Autodesk 3ds Max i/o 2019 1. frissítés (21.2.0.2219 verzió)
 * Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió)
-* Autodesk Arnold for Maya (Arnold verzió: 5.0.1.1) MtoA-2.0.1.1-2017
-* Autodesk Arnold for Maya (Arnold verzió: 5.0.1.4) MtoA-2.0.2.3-2018
+* Autodesk Arnold for Maya 2017 (Arnold 5.2.0.1 verzió) MtoA-3.1.0.1 – 2017
+* Autodesk Arnold for Maya 2018-as (Arnold verzió 5.2.0.1) MtoA-3.1.0.1 – 2018
 * Autodesk Arnold for 3ds Max (Arnold verzió 5.0.2.4)(version 1.2.926)
 * Chaos Group V-Ray for Maya (3.52.03-as verzió)
 * Chaos Group V-Ray for 3ds Max (3.60.02-es verzió)

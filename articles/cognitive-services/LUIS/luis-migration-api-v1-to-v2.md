@@ -1,7 +1,7 @@
 ---
 title: V1-v2 API-k áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan migrálhatja a a legújabb API-készlet.
+description: Az 1-es verziójú végpont és az Authoring Tool API-k elavulttá váltak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 7514390593b4afca4793923089516f3393db0428
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105835"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138823"
 ---
-# <a name="api-v2-migration-guide"></a>API v2-Migrálási útmutató
-Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
+Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
 
 ## <a name="new-azure-regions"></a>Új Azure-régió
 A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS régiócsoportok biztosít egy másik webhelyre. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.

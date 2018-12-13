@@ -1,6 +1,6 @@
 ---
-title: A szinonimák C#-oktatóanyaga az Azure Search szolgáltatásban | Microsoft Docs
-description: Ebben az oktatóanyagban a szinonimák szolgáltatást adja hozzá egy indexhez az Azure Searchben.
+title: A szinonimák C# oktatóanyag – Azure Search
+description: A jelen C# az oktatóanyagban megtudhatja, hogyan adja hozzá a szinonimák szolgáltatást az Azure Search-indexbe. A szinonimák térkép az egyenértékű kifejezések listája. Mezők szinonimát támogatásával, bontsa ki a lekérdezés tartalmazza a felhasználó által megadott kifejezést, és az összes kapcsolódó szinonimák.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990561"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309229"
 ---
-# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Oktatóanyag: Szinonimák hozzáadása az Azure Searchhöz C# nyelven
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Oktatóanyag: Szinonimák felvétele az Azure SearchC#
 
 A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák. 
 

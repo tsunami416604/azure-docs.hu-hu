@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: 5d6510c1e069abe1fc295f2fccd9f2c0a9aad5bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837564"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251028"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -148,6 +148,9 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
 7. Honnan tölthetem le tároló regisztrációs kulcsokat?
 
     Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. Válassza ki a kiszolgálók **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
+8. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
+
+    **Nem**, klónozott konfigurációs kiszolgáló összetevő nem támogatott. 
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

@@ -11,24 +11,24 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/07/2018
+ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: e37b127b112768cd09989e1a4b5edf99ca101983
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f1d95534fb553c6a6d1be4d72a3251ad6a573f20
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141866"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317202"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintő lapján
 
 Az Azure Standard Load Balancer segítségével összes porton a TCP és UDP-folyamatok terheléselosztás egyszerre egy belső load balancer használatakor. 
 
-Egy magas rendelkezésre ÁLLÁS portok szabály valamely változatában egy terheléselosztási szabályt, egy belső Standard Load Balancer konfigurálva. Terheléselosztás egyetlen szabállyal egy belső Standard Load Balancer-az összes porton érkező összes TCP és UDP-folyamatok biztosításával egyszerűsítheti a terheléselosztó használatát. A terheléselosztás döntési folyamat kiszolgálónként történik. Ez a művelet a következő 5 rekordos kapcsolat alapul: forrás IP címe, forrásport, cél IP-cím, céloldali port és protokoll.
+Egy magas rendelkezésre ÁLLÁS portok terheléselosztási szabály egy terheléselosztási szabályt, egy belső Standard Load Balancer konfigurált változata. Terheléselosztás egyetlen szabállyal egy belső Standard Load Balancer-az összes porton érkező összes TCP és UDP-folyamatok biztosításával egyszerűsítheti a terheléselosztó használatát. A terheléselosztás döntési folyamat kiszolgálónként történik. Ez a művelet a következő 5 rekordos kapcsolat alapul: forrás IP címe, forrásport, cél IP-cím, céloldali port és protokoll
 
-A magas rendelkezésre ÁLLÁSÚ portok a szolgáltatás segít a kritikus esetekhez, például a magas rendelkezésre állás és a méretezési csoport hálózati virtuális berendezések (nva-k) belüli virtuális hálózatok. A funkció segíthet is, ha nagy számú portok kell lennie, elosztott terhelésű. 
+A magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok segíti a kritikus fontosságú, például a magas rendelkezésre állás és a méretezési csoport hálózati virtuális berendezések (nva-k) belüli virtuális hálózatok. A funkció segíthet is, ha nagy számú portok kell lennie, elosztott terhelésű. 
 
-A magas rendelkezésre ÁLLÁSÚ portok szolgáltatás van konfigurálva, amikor az előtér- és portok **0** és a protokoll **összes**. A belső terheléselosztó-erőforráshoz ezután elosztja az összes TCP és UDP-folyamatok, függetlenül attól, port száma.
+A magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok van konfigurálva, amikor az előtér- és portok **0** és a protokoll **összes**. A belső terheléselosztó-erőforráshoz ezután elosztja a összes TCP és UDP-folyamatok, függetlenül attól, port száma
 
 ## <a name="why-use-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok miért érdemes használni?
 
@@ -44,8 +44,9 @@ Az NVA magas rendelkezésre ÁLLÁS forgatókönyvek magas rendelkezésre ÁLLÁ
 - Adja meg *n*– aktív és aktív-passzív forgatókönyvek
 - Szükségtelenné teszi összetett megoldások, például az Apache ZooKeeper-csomópont monitorozáshoz készülékek
 
-Az alábbi ábrán egy Központ-küllő virtuális hálózat üzembe helyezési mutat be. A küllők kényszerített bújtatás forgalmukat a központi virtuális hálózaton, és az nva-n, mielőtt a megbízható területet. Az nva-k, amelyek egy magas rendelkezésre ÁLLÁSÚ portok konfigurációval egy belső Standard terheléselosztó mögött találhatók. Minden forgalmat is feldolgozott és továbbított ennek megfelelően.
+Az alábbi ábrán egy Központ-küllő virtuális hálózat üzembe helyezési mutat be. A küllők kényszerített bújtatás forgalmukat a központi virtuális hálózaton, és az nva-n, mielőtt a megbízható területet. Az nva-k, amelyek egy magas rendelkezésre ÁLLÁSÚ portok konfigurációval egy belső Standard terheléselosztó mögött találhatók. Minden forgalmat is feldolgozott és továbbított ennek megfelelően. Konfigurálva, az alábbi ábrán megjelenítése, ha egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály emellett biztosít a flow szimmetrikus bejövő és kimenő forgalomra.
 
+<a node="diagram"></a>
 ![Központ-küllő virtuális hálózat magas rendelkezésre ÁLLÁSÚ módban rendszerbe állított nva ábrája](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
@@ -99,7 +100,7 @@ Konfigurálható *egy* nyilvános Standard Load Balancer-erőforrás a háttér-
 
 - A magas rendelkezésre ÁLLÁSÚ portok funkció az IPv6 nem érhető el.
 
-- Csak egyetlen hálózati adapterrel folyamat szimmetrikus NVA-forgatókönyvek esetén támogatott. Tekintse meg a leírást és a diagram [hálózati virtuális berendezések](#nva). Azonban a cél a forgatókönyv NAT is képes működni, használhatja azt, hogy a belső terheléselosztó küld a visszatérő forgalom ugyanazon az nva-t.
+- Háttér-példány és a egy egyetlen hálózati adapter (és egyetlen IP-konfiguráció) támogatott folyamat szimmetrikus (elsősorban az NVA-forgatókönyv) csak akkor, ha a használt, ahogyan a [diagram](#diagram) fenti és a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok. Nincs megadva, a bármilyen más forgatókönyvhöz. Ez azt jelenti, hogy két vagy több Load Balancer-erőforrások és a megfelelő szabályok független döntéseket hozhat, és soha ne legyenek. Tekintse meg a leírást és a diagram [hálózati virtuális berendezések](#nva). Ha egy több hálózati adapter használatával, vagy az NVA egy nyilvános és belső Load Balancer között sandwiching, a flow szimmetrikus nem érhető el.  Előfordulhat, hogy a bejövő forgalom áramlását az IP-cím a készülék engedi meg válaszok írását az azonos nva érkezzen NAT'ing forrás szerint ez megoldható.  Azonban erősen ajánlott egy egyetlen hálózati adapter, valamint a referencia-architektúra látható használatához a [diagram](#diagram) felett.
 
 
 ## <a name="next-steps"></a>További lépések

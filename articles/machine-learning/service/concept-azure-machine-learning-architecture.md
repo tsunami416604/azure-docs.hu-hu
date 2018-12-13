@@ -1,5 +1,5 @@
 ---
-title: Hogyan működik?
+title: 'A felhőben a Machine Learning: használati feltételek architektúra'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg az architektúra, a terminológiáról és az Azure Machine Learning szolgáltatás alkotó fogalmak. Emellett megismerjük a szolgáltatást, és az Azure-szolgáltatások az Azure Machine Learning szolgáltatás által használt általános munkafolyamata kapcsolatos.
 services: machine-learning
@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e006c3ac9684cc9e51e8b3505659864123758d7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3966d4b27f0e3d42f47d84fb5c9f5c8519a27b6c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097998"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184729"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
@@ -75,7 +75,7 @@ Futtatás az Azure Machine Learning-modell elő. Egy kívül az Azure Machine Le
 
 Az Azure Machine Learning szolgáltatás keretrendszer független. Egy modellt, például a scikit létrehozásakor használhatja bármely közkedvelt machine learning keretrendszer-xgboost, a PyTorch, a TensorFlow, a Chainer és a CNTK megismeréséhez.
 
-A modell tanítása példát talál a [a rövid útmutató: hozzon létre a machine learning-munkaterület szolgáltatási](quickstart-get-started.md) dokumentumot.
+A modell tanítása példát talál a [a rövid útmutató: Hozzon létre a machine learning-munkaterület szolgáltatási](quickstart-get-started.md) dokumentumot.
 
 ### <a name="model-registry"></a>Modell beállításjegyzék
 
@@ -99,8 +99,8 @@ Képek hardvermódosításainak megbízhatóan helyezhet üzembe modelleket, a m
 
 Amellyel az Azure Machine Learning hozható létre két típusa van:
 
-* FPGA-kép: a mező-programmable gate array az Azure-felhőben való üzembe helyezése során használt.
-* Docker-rendszerkép: célok FPGA eltérő számítási üzembe helyezése során használt. Ha például az Azure Container Instances és az Azure Kubernetes Service-ben.
+* FPGA-lemezképet: A mező-programmable gate array az Azure-felhőben való üzembe helyezése során használt.
+* Docker-rendszerképet: Számítási céljainak FPGA kívül üzembe helyezése során használt. Ha például az Azure Container Instances és az Azure Kubernetes Service-ben.
 
 Lemezkép létrehozása a példát talál a [üzembe helyezése egy kép osztályozási modell az Azure-Tárolópéldányon](tutorial-deploy-models-with-aml.md) dokumentum.
 
@@ -148,13 +148,13 @@ Futtatás a következő egy rekordot, amely a következő információkat tartal
 
 Futtatás a modell betanításához parancsfájl elküldésekor jön létre. Futtató rendelkezhet, nulla vagy több alárendelt futtatások. Így előfordulhat, hogy a legfelső szintű futtatás két gyermek futtatásakor a rendelkezhetnek, amelyek mindegyike saját gyermek futtatja.
 
-Példa megtekintése a modell által előállított fut, lásd: a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentumot.
+Egy példa megtekintése a modell által előállított fut, lásd: a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentumot.
 
 ## <a name="experiment"></a>Kísérlet
 
 Kísérlet egy adott parancsfájlból származó számos futtatások csoportja. Mindig tartozik egy munkaterülethez. Ha elküldi egy futtatás, meg kell adnia egy kísérlet neve. A kísérlet keretében a Futtatás adatait tárolja. Ha futtató nyújt, és adja meg, egy kísérlet neve, amely nem létezik, a rendszer automatikusan létrehoz egy ilyen nevű új kísérlet.
 
-Egy kísérlet használatának példájáért lásd a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentum.
+Egy kísérlet használatának példájáért lásd a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentumot.
 
 ## <a name="pipeline"></a>Folyamat
 
@@ -227,5 +227,5 @@ Tevékenységek is biztosítanak értesítéseket az SDK-t vagy a webes felhaszn
 Az alábbi hivatkozások segítségével az Azure Machine Learning használatának első lépései:
 
 * [Az Azure Machine Learning szolgáltatás ismertetése](overview-what-is-azure-ml.md)
-* [Rövid útmutató: Munkaterület létrehozása Python használatával](quickstart-get-started.md)
-* [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)
+* [Gyors útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
+* [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)

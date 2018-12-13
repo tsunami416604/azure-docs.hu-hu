@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service Linux rendszeren Java Enterprise támogatása |} A Microsoft Docs
+title: A Java Enterprise támogatási linuxon – az Azure App Service |} A Microsoft Docs
 description: Fejlesztői útmutató a Java Enterprise alkalmazások Wildfly használata a Linuxon futó Azure App Service üzembe helyezése.
 keywords: az Azure app service, webalkalmazás, linux, oss, java, wildfly, nagyvállalati
 services: app-service
@@ -12,12 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: b632ef49f49768c86b7a7ce2efc601f036532a29
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: e473326e9f337bfb2fd1202bc3b76e468dd6015e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017586"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315077"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
@@ -81,7 +82,7 @@ Az adatforrás-kapcsolat Wildfly konfigurálásához kövesse a modulok telepít
 2. Kövesse a lépéseket vázlat "Modul és függőségei" létrehoznia és feltöltenie az XML-modul leíró, JBoss CLI-példaszkript, indítási szkriptet és .jar JDBC-függőséget a.
 
 
-A Wildfly konfigurálásáról [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7) , [MySQL](https://dev.mysql.com/doc/connector-j/5.1/connector-j-usagenotes-jboss.html), és [SQL Database](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) érhető el. Ezeket testre szabott útmutatót, valamint a fent az általános megközelítés segítségével adatforrás-definíciók ad hozzá a kiszolgálóhoz.
+A Wildfly konfigurálásáról [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7) , [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource), és [SQL Database](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) érhető el. Ezeket testre szabott útmutatót, valamint a fent az általános megközelítés segítségével adatforrás-definíciók ad hozzá a kiszolgálóhoz.
 
 ## <a name="messaging-providers"></a>Üzenetkezelési szolgáltatók
 

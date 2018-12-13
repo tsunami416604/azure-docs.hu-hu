@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124980"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162222"
 ---
-# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: A Service Fabric Java-alkalmazás engedélyezése a CI/CD a Jenkins-környezet konfigurálása
 
-Ez az oktatóanyag egy sorozat ötödik része. Azt mutatja be, hogy a Jenkins segítségével hogyan helyezheti üzembe egy alkalmazás frissítéseit. Ebben az oktatóanyagban a Service Fabric Jenkins beépülő moduljával és a szavazóalkalmazást üzemeltető GitHub-adattárral helyezi üzembe az alkalmazást a fürtön.
+Ez az oktatóanyag egy sorozat ötödik része. Azt mutatja be, hogy a Jenkins segítségével hogyan helyezheti üzembe egy alkalmazás frissítéseit. Ebben az oktatóanyagban a Service Fabric Jenkins beépülő modul segítségével kombinálva a szavazóalkalmazást üzemeltető GitHub-adattárral üzembe az alkalmazást egy fürtön.
 
 A sorozat ötödik részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -84,7 +84,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins-feladatok létrehozása és konfigurálása
 
-1. Először is, ha még nem rendelkezik adattárral, amellyel üzemeltethetné a szavazási projektet a GitHubon, hozzon létre egyet. Az oktatóanyag a továbbiakban **dev_test** néven hivatkozik erre az adattárra.
+1. Először is ha nem rendelkezik egy adattár, amellyel üzemeltethetné a szavazási projektet a Githubon, hozzon létre egyet. Az oktatóanyag a továbbiakban **dev_test** néven hivatkozik erre az adattárra.
 
 1. Hozzon létre egy **új elemet** a Jenkins irányítópultján a ``http://<HOST-IP>:8080`` címen.
 
@@ -181,7 +181,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </CodePackage>
     ```
 
-1. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához küldje le az új módosításokat a GitHub-adattárba.
+1. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához, küldje le az új módosításokat a GitHub-tárban.
 
 1. A Service Fabric Explorerben kattintson az **Applications** (Alkalmazások) legördülő menüre. A frissítés állapotának megtekintéséhez kattintson az **Upgrades in Progress** (Folyamatban lévő frissítések) fülre.
 

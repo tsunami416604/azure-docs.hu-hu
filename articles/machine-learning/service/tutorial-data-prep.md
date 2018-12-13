@@ -1,5 +1,5 @@
 ---
-title: 'Regressziós modell oktatóanyag: adatok előkészítése'
+title: 'Regressziós modell oktatóanyag: Adatok előkészítése'
 titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag első részében meg fogjuk útmutató előkészítheti az adatokat a Python, az Azure Machine Learning SDK-val regressziós modellezéshez.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14be60977ef0be3e88a0cb01356446b59ca374e2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076440"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314686"
 ---
-# <a name="tutorial-part-1-prepare-data-for-regression-modeling"></a>(1. rész) oktatóanyag: adatok előkészítése az regressziós modellezéshez
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan előkészítheti az adatokat a regressziós modellezéshez, az Azure Machine Learning Data Prep SDK használatával. Különféle átalakításokat szűrését, és kombinálja a két különböző NYC Taxi adatkészletet. A végső cél, ez az oktatóanyag beállított taxi belépőt költsége alapján a data-funkciókat, beleértve a felvételi óra, a modell képes előre jelezni, nap, hét, az utasok és a koordináták száma. Ebben az oktatóanyagban a kétrészes oktatóanyag-sorozat része.
 
@@ -1077,4 +1077,4 @@ Ebben az oktatóanyagban egyik részben meg:
 Ez az oktatóanyag-sorozat következő részére, a betanítási adatok használandó készen áll:
 
 > [!div class="nextstepaction"]
-> [#2. oktatóanyag: Regressziós modell betanításához.](tutorial-auto-train-models.md)
+> [#2. oktatóanyag: Tanítási regressziós modell](tutorial-auto-train-models.md)

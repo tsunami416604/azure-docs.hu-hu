@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 9ec8cbe3d2467714a4b2586db79566aaef30d6d7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 60e0485c28d90050a6ff775db41f8696a09fe033
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627423"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165758"
 ---
 # <a name="train-a-model"></a>Modell betanítása
 
@@ -26,21 +26,17 @@ A modell betanításához:
 
 2.  A projekt az adatok lapon jelennek meg a projekt nyelvi pár vonatkozó összes dokumentumot. Manuálisan válassza ki a dokumentumok, a modell betanításához használandó. Kiválaszthatja a képzés, a beállítás, és a tesztelés dokumentumok ezen a képernyőn. Is, csak a betanítási készletének kiválasztása, és egyéni Translator létrehozása, a hangolási és tesztelése a csoportok az Ön számára.
 
-    -  Dokumentum neve: a dokumentum nevét.
+    -  Dokumentum neve: A dokumentum nevét.
 
-    -  Párosítás: Ha ez a dokumentum egy párhuzamos vagy monolingual dokumentum.
+    -  Párosítás: Ha ez a dokumentum egy párhuzamos vagy monolingual dokumentumot. Monolingual dokumentumok jelenleg nem támogatottak a betanításhoz.
 
-    - Monolingual dokumentumok jelenleg nem támogatottak a betanításhoz.
+    -  A dokumentum típusa: Képzés, hangolása, tesztelési vagy szótár lehet.
 
-    -  A dokumentum típusa: képzési, hangolása, tesztelési vagy szótár is lehet.
+    -  Nyelvi párt: Ez mutatja a forrás- és a projekt Célnyelv.
 
-    -  Nyelvi pár: Ez a forrás- és a projekt Célnyelv mutatja.
+    -  Forrás mondatokat: A forrásfájl kinyert mondatokat számát jeleníti meg.
 
-    -  Mondatok forrás: kinyert mondatokat számát jeleníti meg a
-    - forrásfájl.
-
-    -  Mondatok cél: kinyert mondatokat számát jeleníti meg a
-    - célfájl.
+    -  Cél mondatokat: A célfájl kinyert mondatokat számát jeleníti meg.
 
     ![Tanítási modell](media/how-to/how-to-train-model.png)
 
@@ -67,7 +63,7 @@ A Szerkesztés hivatkozásra használó modell részleteit megjelenítő oldalon
 
 2.  A párbeszédpanelen módosítsa a
 
-    1.  Minta (kötelező): a modell egy kifejező nevet adni.
+    1.  Modell neve (kötelező): Adjon meg egy kifejező nevet a modellt.
 
         ![További párbeszédpanel szerkesztése](media/how-to/how-to-edit-model-dialog.png)
 

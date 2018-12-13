@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73876d950a34317365c9fceb865a3c473a75780a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 4452484379b73b978cac7391bce5c71b0f6c32cd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874345"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257199"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -57,6 +57,16 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
+
+* A hozzáadott új constuctor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+
+* Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
+
+* Továbbfejlesztett gyűjtemény gyorsítótár érvényesítése.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -109,7 +119,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: az olvasási munkamenet nem érhető el a bemeneti munkamenet-jogkivonat" hibák munkamenet konzisztenciaszint használatakor.
+* Kijavítva a hiba, amely bizonyos fajta feltételek elérte az eredmények az időszakos "Microsoft.Azure.Documents.NotFoundException: Az olvasási munkamenet a bemeneti munkamenet-jogkivonat nem érhető el"hiba munkamenet konzisztenciaszint használatakor.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -182,7 +192,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Egy WebException alkalmanként okozó probléma: A távoli név nem oldható fel.
+* Javítás a WebException alkalmanként okozó hibát: A távoli név nem oldható fel.
 * A beírt dokumentumok közvetlenül olvasásakor ReadDocumentAsync API új hozzáadásával támogatása hozzáadva.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -206,17 +216,18 @@ Az Azure Cosmos DB .NET Core SDK lehetővé teszi, hogy hozhat létre gyors és 
 Az Azure Cosmos DB .NET Core előzetes SDK lehetővé teszi, hogy hozhat létre gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux rendszereken futó alkalmazások.
 
 Az Azure Cosmos DB .NET Core előzetes SDK funkcióparitás legújabb verziójával rendelkezik a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) és a következőket támogatja:
-* Az összes [csatlakozási mód](performance-tips.md#networking): az átjáró mód, közvetlen TCP és közvetlen HTTPs. 
-* Az összes [konzisztenciaszintek](consistency-levels.md): erős, munkamenet, korlátozott frissesség és végleges.
+* Az összes [csatlakozási mód](performance-tips.md#networking): Átjáró mód, a közvetlen TCP és közvetlen HTTPs. 
+* Az összes [konzisztenciaszintek](consistency-levels.md): Erős, munkamenet, korlátozott frissesség, és végleges.
 * [A particionált gyűjtemények](partition-data.md). 
 * [Többrégiós adatbázisfiókhoz és georeplikáció útján](distribute-data-globally.md).
 
-Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), vagy be a problémát a [github-adattár](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy be a problémát a [github-adattár](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2018. december 07. |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |

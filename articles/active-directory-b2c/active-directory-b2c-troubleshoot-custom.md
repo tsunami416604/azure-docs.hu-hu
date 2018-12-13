@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4b33552c4b070164b55a84f1d8586422aced2f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c733c148994b06e6d7cd13ee98e1a8157f26010a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446673"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163176"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Az Azure Active Directory B2C: A naplók gyűjtésére
+# <a name="azure-active-directory-b2c-collecting-logs"></a>Az Azure Active Directory B2C: Naplók gyűjtése
 
 Ez a cikk lépéseit a naplók gyűjtésére az Azure AD B2C-ből, így diagnosztizálhatja a problémákat az egyéni házirendeknek.
 
@@ -108,7 +108,7 @@ A megjelenítő, amely eseményeket olvas az Application Insights-verzió nem ta
 >[!NOTE]
 >Jelenleg úgy tervezték, a részletes tevékenységnaplókat, az itt leírtak szerint **csak** , ezzel elősegítve az egyéni szabályzatok fejlesztését. Fejlesztői mód nem használható éles környezetben.  Naplók összegyűjtése minden jogcím küldött és az identitás-szolgáltatóktól származó fejlesztés során.  Ha éles környezetben használja, a fejlesztői felelősséget személyazonosításra alkalmas adatok (közvetlenül a Microsoftnak azonosításra alkalmas adatokat) a saját App Insights napló gyűjtése.  Ezek a részletes naplók csak gyűjtött, ha a házirend a **fejlesztői mód**.
 
-[Github-tárházat a nem támogatott egyéni szabályzat minták és a kapcsolódó eszközök](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
+[GitHub-tárházat a nem támogatott egyéni szabályzat minták és a kapcsolódó eszközök](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 

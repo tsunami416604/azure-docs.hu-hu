@@ -10,12 +10,12 @@ ms.service: azure-portal
 ms.custom: ''
 manager: dougeby
 ms.author: cwatson
-ms.openlocfilehash: b2bf674dbb253c7ec698b18776d8752ed6a4c1c8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 8bbba504f95233db7cf65556b57148771962f507
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394080"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308583"
 ---
 # <a name="export-or-delete-settings-in-the-azure-portal"></a>Exportálása vagy az Azure Portalon beállítások törlése
 Exportálhatja, és törölje a következő beállításokat az Azure-portál beállítások menüből:
@@ -23,13 +23,13 @@ Exportálhatja, és törölje a következő beállításokat az Azure-portál be
 * Kedvenc előfizetéseket vagy címtárakat, például felhasználói beállításokat és a directory utoljára bejelentkezett
 * A témák és testreszabása
 
-Határozottan javasoljuk, hogy exportálni, és tekintse át a beállításokat, mielőtt törölné ezeket. Az irányítópultok újraépítéséhez, és adja hozzá újra a testre szabást a időigényes lehet.
+Határozottan javasoljuk, hogy exportálni, és tekintse át a beállításokat, mielőtt törölné ezeket. Építse újra az irányítópultok és a szerepkörtagok a testre szabást a időigényes lehet.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 **Exportálja, vagy törölje a portál beállításait**
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső kiválasztása a portálon, a jobb **beállítások**.
 
     ![A beállítások fogaskerék bemutató képernyőkép](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)

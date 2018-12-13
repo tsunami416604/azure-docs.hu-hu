@@ -1,21 +1,21 @@
 ---
-title: Rövid útmutató – Alkalmazás futtatása az Azure Container Instances szolgáltatásban
-description: Ebben a rövid útmutatóban az Azure PowerShell használatával helyezhet üzembe egy Docker-tárolóban futó alkalmazást az Azure Container Instances szolgáltatásban
+title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban – PowerShell
+description: Ebben a rövid útmutatóban az Azure PowerShell használatával tároló üzembe helyezése a Docker Azure Container Instances szolgáltatásban az Azure PowerShell használatával
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b17cca7f0c00aba260b97b29345ff33156a50138
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854643"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183947"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rövid útmutató: Alkalmazás futtatása az Azure Container Instances szolgáltatásban
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure PowerShell használatával
 
 Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ebben a rövid útmutatóban létre fog hozni az Azure Portalon egy Azure-beli Windows-tárolót, és egy teljes tartománynévvel (FQDN) elérhetővé fogja tenni az alkalmazását. Egyetlen üzembe helyezési parancsot kell végrehajtania, ami után néhány másodperccel már meg is nyithatja a futó alkalmazást:
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.5-ös vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
@@ -39,7 +39,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Ahhoz, hogy tárolópéldányt hozzon létre az Azure PowerShell-lel, meg kell adnia az erőforráscsoport és a tárolópéldány nevét, valamint a Docker-tároló rendszerképét a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmagnak. Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy olyan DNS-névcímkével ellátott tárolót fog üzembe helyezni, amely egy Nano Serveren futó Internet Information Servicest (IIS) üzemeltet.
+Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ahhoz, hogy tárolópéldányt hozzon létre az Azure PowerShell-lel, meg kell adnia az erőforráscsoport és a tárolópéldány nevét, valamint a Docker-tároló rendszerképét a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmagnak. Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy olyan DNS-névcímkével ellátott tárolót fog üzembe helyezni, amely egy Nano Serveren futó Internet Information Servicest (IIS) üzemeltet.
 
 A tárolópéldány indításához futtassa az alábbi parancsot. A `-DnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 

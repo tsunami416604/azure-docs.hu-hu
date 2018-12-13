@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287234"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311065"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 Ha Android-alkalmazást fejleszt, a Microsoft egyszerűvé és egyértelművé teszi a felhasználók bejelentkeztetését az Azure Active Directory (Azure AD) szolgáltatásba. Az Azure AD lehetővé teszi, hogy alkalmazása hozzáférjen a felhasználók adataihoz a Microsoft Graph vagy az Ön saját védett webes API-ja használatával.
 
-Az Azure AD Authentication Library (ADAL) Android-kódtár lehetővé teszi alkalmazása számára a [Microsoft Azure Cloud](https://cloud.microsoft.com) & [Microsoft Graph API](https://developer.microsoft.com/graph) használatának elkezdését olyan módon, hogy az OAuth 2.0 és az OpenID Connect iparági szabvánnyal támogatja a [Microsoft Azure Active Directory-fiókok](https://azure.microsoft.com/services/active-directory/) használatát.
+Az Azure AD Authentication Library (ADAL) Androidos függvénytár lehetővé teszi az alkalmazás használatának megkezdéséhez a [Microsoft Azure Felhőszolgáltatásbeli](https://cloud.microsoft.com) és [Microsoft Graph API](https://developer.microsoft.com/graph) támogatásával [Microsoft Azure Active Directory-fiókok](https://azure.microsoft.com/services/active-directory/) használatával az iparági szabványos OAuth 2.0 és OpenID Connect.
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja a következőket:
 
@@ -43,7 +43,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja a következőket:
 
 Első lépésként szüksége lesz egy Azure AD-bérlőre, ahol felhasználókat hozhat létre és regisztrálhat egy alkalmazást. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
 
-## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Forgatókönyv: Felhasználók bejelentkeztetése és a Microsoft Graph meghívása
+## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Forgatókönyv: A felhasználók, és hívja a Microsoft Graph
 
 ![Topológia](./media/quickstart-v1-android/active-directory-android-topology.png)
 
@@ -51,23 +51,23 @@ Az alkalmazást minden Azure AD-fiókhoz használhatja. Az egybérlős és a tö
 
 ## <a name="sample-code"></a>Mintakód
 
-A teljes mintakódot a [GitHub](https://github.com/Azure-Samples/active-directory-android) webhelyén érheti el.
+A minta teljes kódját megtalálja [a Githubon](https://github.com/Azure-Samples/active-directory-android).
 
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -76,7 +76,7 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="step-1-register-and-configure-your-app"></a>1. lépés: Az alkalmazás regisztrálása és konfigurálása
+## <a name="step-1-register-and-configure-your-app"></a>1. lépés: Regisztráljon, és az alkalmazás konfigurálása
 
 Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](https://portal.azure.com) keresztül regisztrálva lett a Microsoftnál.
 
@@ -95,13 +95,13 @@ Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](http
     - Válassza a **Hozzáadás** elemet, majd az **API kiválasztása** elemen belül válassza a ***Microsoft Graph*** lehetőséget.
     - Válassza ki a **Beléptetés és felhasználói profil olvasása** elemet, majd kattintson a **Kiválasztás** gombra a mentéshez.
         - Ez az engedély a következő hatókörre lesz leképezve: `User.Read`.
-    - Opcionális: A **Szükséges engedélyek > Windows Azure Active Directory** elemen belül távolítsa el a **Beléptetés és felhasználói profil olvasása** engedélyt. Így elkerülhető, hogy a felhasználói hozzájárulások oldala kétszer listázza az engedélyt.
+    - Nem kötelező: Belül **szükséges engedélyek > Windows Azure Active Directory**, távolítsa el a kiválasztott engedélyt **jelentkezzen be a felhasználói profil olvasása és**. Így elkerülhető, hogy a felhasználói hozzájárulások oldala kétszer listázza az engedélyt.
 
 4. Gratulálunk! Az alkalmazás konfigurálása kész. A következő szakaszban a következőre lesz szüksége:
     - `Application ID`
     - `Redirect URI`
 
-## <a name="step-2-get-the-sample-code"></a>2. lépés: A mintakód beszerzése
+## <a name="step-2-get-the-sample-code"></a>2. lépés: A mintakód letöltése
 
 1. Klónozza a kódot.
     ```
@@ -117,7 +117,7 @@ A mintakódhoz tartozó összes konfigurációt megtalálja az ***src/main/java/
 1. Cserélje le a `CLIENT_ID` állandót az `ApplicationID` értékére.
 2. Cserélje le a `REDIRECT URI` állandót az előbb konfigurált `Redirect URI`-értékre (`http://localhost`).
 
-## <a name="step-4-run-the-sample"></a>4. lépés: A minta futtatása
+## <a name="step-4-run-the-sample"></a>4. lépés: Minta futtatása
 
 1. Válassza a **Build > Clean Project** (Létrehozás > Új projekt) lehetőséget.
 2. Válassza a **Run > Run app** (Futtatás > Alkalmazás futtatása) lehetőséget.

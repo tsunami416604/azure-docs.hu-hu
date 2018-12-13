@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure WebJobs SDK-val
+title: A WebJobs SDK - Azure használatának első lépései
 description: Bevezetés a WebJobs SDK-val eseményvezérelt háttérbeli feldolgozásra. Megtudhatja, hogyan érhetik el az Azure-szolgáltatások és a külső szolgáltatások adatait.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 95fd44d5865eb804cb91d7adc2cc17bb5f957b5c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140349"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275210"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
@@ -63,9 +63,9 @@ Ez a cikk feltételezi, hogy [az Azure-fiók](https://azure.microsoft.com/free/?
 
 1. A Visual Studióban válassza ki a **fájl > Új projekt**.
 
-1. Válassza ki **Windows klasszikus Asztalialkalmazás > Console App (.NET Framework)**.
+2. Válassza ki **Windows klasszikus Asztalialkalmazás > Console App (.NET Framework)**.
 
-1. Adja a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
+3. Adja a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
 
    ![New Project (Új projekt) párbeszédpanel](./media/webjobs-sdk-get-started/new-project.png)
 

@@ -4,14 +4,14 @@ description: Ismerteti, amellyel pontosíthatja az értékelést a csoport függ
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 3b75e8607c85f79bb64c57c2154115c41ebe8366
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835506"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255261"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -24,6 +24,9 @@ Ez a cikk ismerteti, amellyel pontosíthatja a csoportot a csoportban lévő ös
 
 ## <a name="prepare-for-dependency-visualization"></a>Előkészítéséhez a függőségek képi megjelenítése
 Az Azure Migrate a Log Analytics engedélyezése a függőségek vizualizációjához a Service Map megoldást használja.
+
+> [!NOTE]
+> A függőségek képi megjelenítésének funkcióival nem érhető el az Azure Government szolgáltatásban.
 
 ### <a name="associate-a-log-analytics-workspace"></a>Log Analytics-munkaterület társítása
 Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet. Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
@@ -55,7 +58,7 @@ Az ügynök telepítése a Windows-gépen:
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappa**, megtartani, vagy módosítsa az alapértelmezett telepítési mappa > **tovább**.
 4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
-5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **Tovább** gombra.
+5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **Tovább**gombra.
 
 
 Az ügynök telepítése Linux rendszerű gépen:

@@ -4,598 +4,135 @@ description: Adatok exportálása az Azure IoT Central alkalmazásból
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cba0bad2e81ffddedfc4ca04e82e17e4286b389b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962792"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312119"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
 *Ez a témakör a rendszergazdák vonatkozik.*
 
-Ez a cikk ismerteti a folyamatos exportálási szolgáltatás segítségével az Azure IoT Central rendszeres időközönként exportál adatokat az Azure Blob storage-fiókot. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** a fájlok a [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátumban. Az exportált adatok például az Azure Machine Learning betanítási modellek vagy hosszú távú tendenciája, a Microsoft Power bi-ban a ritka elérésű útvonal elemzéshez használható.
+Ez a cikk bemutatja, hogyan használható a folyamatos exportálás funkció az Azure IoT Central exportálhatja az adatokat a saját **Azure Blob Storage**, **Azure Event Hubs**, és **Azure Service Bus** példányok. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** saját célra a meleg folyamatból és a ritka elérésű útvonal analitika. Hosszú távú trendek elemzése a Microsoft Power bi-ban való futtatásához a Blob storage-adatok exportálása, vagy exportálja az adatokat az Event Hubs és a Service Bus, átalakíthatja és kiegészítheti a közel valós idejű az Azure Logic Apps vagy az Azure Functions-adatok.
 
 > [!Note]
 > Folyamatos adatexportálás bekapcsolásakor kap csak az adatok ettől a pillanattól kezdve. Jelenleg adatokat nem lehet beolvasni egy alkalommal, amikor folyamatos adatexportálás ki volt kapcsolva. További korábbi adatok megőrzése, kapcsolja be a folyamatos exportálás korai.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A használatalapú fizetés alkalmazás.
-- A rendszergazda az IoT-központ alkalmazásában rendelkezik:
-    - az Azure-előfizetést, az IoT-központ alkalmazás szerepel az Azure-fiók
-    - egy tároló létrehozásához szükséges engedélyek fiókkal vagy egy meglévő tárfiókot az Azure-előfizetés eléréséhez
+- Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
 
-## <a name="types-of-data-to-export"></a>Az exportálandó adattípusokat
+## <a name="export-to-blob-storage"></a>Blob Storage-bA exportálása
 
-### <a name="measurements"></a>Mérések
+Mértékek, eszközök és sablonok eszközadatok lesznek exportálva az percenként egyszer, a tárfiók az egyes fájlt, amely tartalmazza a változások a batch, mivel az utolsó exportált fájl. Az exportált adatok [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátumban.
 
-A mértékeket, az eszközök elküldik percenként egyszer a tárfiókba exportálja. Az adatok az új üzenetek IoT-központ által fogadott összes eszközről idő alatt van. Az exportált AVRO-fájlok ugyanazt a formátumot használja az exportált fájlokat [IoT Hub üzenet-útválasztása](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) a Blob storage.
+Tudjon meg többet [exportálása a Blob storage](howto-export-data-blob-storage.md).
 
-> [!NOTE]
-> Az eszközöket, amelyek a mérések küldése (lásd a következő szakaszok) eszköz azonosítóját képviseli. Az eszközök nevei lekéréséhez exportálja az eszköz pillanatképeket. Vesse össze az egyes üzenetrekordok használatával a **connectionDeviceId** , amely megfelel a **deviceId** eszköz rekord.
+## <a name="export-to-event-hubs-and-service-bus"></a>Az Event Hubs és a Service Bus exportálása
 
-Az alábbi példa bemutatja egy rekordot egy dekódolt AVRO fájlban:
+Mértékek, eszközök és eszközadatok sablonok exportálja az event hubs vagy a Service Bus-üzenetsorba vagy témakörbe. Exportált mérések adatok közel valós idejű érkezik, és tartalmazza a teljes az üzenetet küld az IoT-központ, az eszközök nem csak a maguk mérések értékeinek. Exportált eszközök adatok percenként kötegekben érkezik, és tulajdonságokat és beállításokat az összes eszköz módosításokat tartalmaz, és exportált eszközsablonok összes eszközsablonok módosításokat tartalmaz.
 
-```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
-}
-```
 
-### <a name="devices"></a>Eszközök
+Tudjon meg többet [exportálna az Event Hubs és a Service Bus](howto-export-data-event-hubs-service-bus.md).
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz egyetlen pillanatkép exportálása. Egyes eszközök a következőket tartalmazza:
-- `id` az eszköz az IoT-központ
-- `name` az eszköz
-- `deviceId` a [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
-- Eszköz sablon adatai
-- Tulajdonságok értékei
-- Beállításértékek
+## <a name="set-up-export-destination"></a>Exportálási cél beállítása
 
-Új pillanatkép percenkénti van megírva. A pillanatkép tartalmazza:
+Ha nem rendelkezik egy meglévő tároló/Event Hubs/Service Bus exportálása, kövesse az alábbi lépéseket:
 
-- A legutolsó pillanatfelvétel óta hozzáadott új eszközök.
-- Az eszközök módosított tulajdonsággal, és állítsa az értékeket a legutolsó pillanatfelvétel óta.
+### <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-> [!NOTE]
-> Az eszközök történt, a legutolsó pillanatfelvétel nem exportálható. A pillanatképek jelenleg nem rendelkezik a törölt eszközök mutatók.
->
-> Az eszköz a sablon, amely minden eszközhöz tartozik egy eszközazonosítót sablon. által jelölt A kiszolgáló nevének az eszköz sablon exportálása az eszköz sablon pillanatképeket.
+1. Hozzon létre egy [új storage-fiókot az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További a [Azure Storage-docs](https://aka.ms/blobdocscreatestorageaccount).
+2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
+3. Válasszon egy előfizetést. 
 
-Egy rekordot a dekódolt AVRO-fájl is látható:
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
 
-```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
-    },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
-    }
-}
-```
+4. Hozzon létre egy tárolót a tárfiókjában. Lépjen a tárfiókhoz. A **Blob Service**válassza **Blobok tallózása**. Válassza ki **+ tároló** hozzon létre egy új tárolót a tetején.
 
-### <a name="device-templates"></a>Eszköz-sablonok
+### <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Amikor először folyamatos adatexportálás van kapcsolva, az összes eszköz-sablonokkal egyetlen pillanatkép exportálása. Minden eszköz sablon tartalmazza:
-- `id` az eszköz sablon
-- `name` az eszköz sablon
-- `version` az eszköz sablon
-- Mérési az adattípusok és a minimális/maximális értékei.
-- Vlastnost adattípusokat és az alapértelmezett értékeket.
-- A beállítás az adattípusok és az alapértelmezett értékeket.
+1. Hozzon létre egy [új Event Hubs-névtér az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.EventHub). További a [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+2. Válasszon egy előfizetést. 
 
-Új pillanatkép percenkénti van megírva. A pillanatkép tartalmazza:
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+3. Az Event Hubs-névtér az eseményközpont létrehozásához. Lépjen a névteréhez, majd válassza **+ Event Hub** felső hozhat létre egy event hubs-példánnyal.
 
-- A legutolsó pillanatfelvétel óta hozzáadott új eszközsablonok.
-- Eszköz-sablonok módosított mérések, tulajdonságot és definíciókat beállítása a legutolsó pillanatfelvétel óta.
+### <a name="create-service-bus-namespace"></a>A Service Bus-névtér létrehozása
 
-> [!NOTE]
-> A legutolsó pillanatfelvétel óta törölve eszközsablonok nem exportálható. A pillanatképek jelenleg nem rendelkezik a törölt sablonok mutatók.
+1. Hozzon létre egy [új Service Bus-névteret, az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . További a [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+2. Válasszon egy előfizetést. 
 
-A dekódolt AVRO-fájlt egy rekordot fog kinézni:
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
 
-```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
-    },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
-    }
-}
-```
+3. Nyissa meg a Service Bus-névteret, és válassza ki **+ üzenetsor** vagy **+ témakör** hozhat létre egy üzenetsorba vagy témakörbe történő exportálása tetején.
 
 ## <a name="set-up-continuous-data-export"></a>Állítsa be a folyamatos exportálás
 
-1. Ha nem rendelkezik Azure storage-fiók [hozzon létre egy új tárfiókot](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) az Azure Portalon. A storage-fiók létrehozása **az Azure-előfizetésben, amely rendelkezik az IoT-központ alkalmazás**.
-    - Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
-    - Válassza ki az előfizetést, amely rendelkezik az IoT Central alkalmazáshoz. Ha nem látja az előfizetés, szüksége lehet bejelentkezni egy másik Azure-fiók vagy a kérelem hozzáférést az előfizetéshez.
-    - Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ismerje meg [új tárfiók létrehozása](https://aka.ms/blobdocscreatestorageaccount).
+Most, hogy a tárolási és Event Hubs és a Service Bus cél exportálhatja az adatokat, kövesse az alábbi lépéseket a folyamatos exportálás beállítása. 
 
-2. Hozzon létre egy tárolót a storage-fiókban exportálhatja az IoT Central-adatokat. Lépjen a tárfiókhoz. A **Blob Service**válassza **Blobok tallózása**. Válassza ki **tároló** hozhat létre egy új tárolót.
+1. Jelentkezzen be az IoT Central alkalmazáshoz.
 
-   ![Tároló létrehozása](media/howto-export-data/createcontainer.png)
+2. A bal oldali menüben kattintson a **folyamatos adatexportálás**.
 
-3. Jelentkezzen be az IoT Central alkalmazásnak ugyanazon Azure-fiók használatával.
+    > [!Note]
+    > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
 
-4. A **felügyeleti**válassza **adatexportálás**.
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
 
-5. Az a **tárfiók** legördülő listában jelölje ki a tárfiók. Az a **tároló** legördülő listában jelölje ki a tárolót. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
+3. Kattintson a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Blob Storage**, **Azure Event Hubs**, vagy **Azure Service Bus** az exportálás céljaként. 
 
-6. Folyamatos adatexportálás bekapcsolásához állítsa **adatexportálás** való **a**. Kattintson a **Mentés** gombra.
+    > [!NOTE] 
+    > Export alkalmazásonként maximális száma öt. 
 
-  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/continuousdataexport.PNG)
+    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new.PNG)
 
-7. Néhány perc elteltével az adatok a tárfiókban található meg. Keresse meg a tárfiók. Válassza ki **blobok tallózása** > a tárolót. Láthatja, hogy az adatok exportálása a három mappát. Az AVRO-fájlok, az adatok exportálása az alapértelmezett elérési útjait a következők:
-    - Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Eszközök: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Eszközsablonok: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+4. A legördülő listában jelölje ki a **tárolási fiók és az Event Hubs-névtér/Service Bus-névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
 
-## <a name="read-exported-avro-files"></a>Olvassa el a AVRO-fájlok exportálása
+    > [!NOTE] 
+    > Storage-fiókok és az Event Hubs névterekben/Service Bus-névterek az csak akkor jelenik meg a **megegyező előfizetésben, az IoT-központ alkalmazás**. Ha szeretne exportálni egy célhelyre kívül ehhez az előfizetéshez, válasszon **adjon meg egy kapcsolati karakterláncot** , és tekintse meg az 5. lépés.
 
-Avro-hoz, a bináris formátum, így a fájlok nyers állapotban nem olvasható. A fájlok vissza tudja fejteni JSON formátumba. Az alábbi példák bemutatják, hogyan elemezhető a mérést, eszközök és eszközsablonok AVRO-fájlok. A példák megegyeznek az előző szakaszban leírt példák.
+    > [!NOTE] 
+    > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-### <a name="read-avro-files-by-using-python"></a>AVRO-fájlok olvasása a Python használatával
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_create.PNG)
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Pandas és a pandavro csomag telepítése
+5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
+    - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
+        - A **beállítások**, kattintson a **hozzáférési kulcsok**
+        - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
+    - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
+        - A **beállítások**, kattintson a **megosztott hozzáférési házirendek**
+        - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
+        - Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
+ 
+6. A legördülő listából válassza ki a tároló vagy Event hub/üzenetsor vagy témakör.
 
-```python
-pip install pandas
-pip install pandavro
-```
+7. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
 
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az AVRO-fájl elemzése
+6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
 
-```python
-import json
-import pandavro as pdx
-import pandas as pd
+  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list.PNG)
 
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    measurements = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The SystemProperties column contains a dictionary
-    # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(lambda x: x["connectionDeviceId"])
-
-    # The Body column is a series of UTF-8 bytes that is stringified
-    # and parsed as JSON. This example pulls the humidity property
-    # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
-
-    # Finally, print the new DataFrame with our device IDs and humidities.
-    print(transformed)
-
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz AVRO-fájl elemzése
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    devices = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The device ID is available in the id column.
-    transformed["device_id"] = devices["deviceId"]
-
-    # The template ID and version are present in a dictionary under
-    # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(lambda x: x["version"])
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az AVRO-fájl elemzése
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    templates = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The template and version are available in the id and version columns.
-    transformed["template_id"] = templates["id"]
-    transformed["template_version"] = templates["version"]
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-```
-
-### <a name="read-avro-files-by-using-c"></a>Olvassa el az AVRO-fájlok C# használatával
-
-#### <a name="install-the-microsofthadoopavro-package"></a>A Microsoft.Hadoop.Avro csomag telepítése
-
-```csharp
-Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az AVRO-fájl elemzése
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-using Newtonsoft.Json;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    var systemProperties = record.GetField<IDictionary<string, object>>("SystemProperties");
-                    var deviceId = systemProperties["connectionDeviceId"] as string;
-                    Console.WriteLine("Device ID: {0}", deviceId);
-
-                    using (var stream = new MemoryStream(record.GetField<byte[]>("Body")))
-                    {
-                        using (var streamReader = new StreamReader(stream, Encoding.UTF8))
-                        {
-                            var body = JsonSerializer.Create().Deserialize(streamReader, typeof(IDictionary<string, dynamic>)) as IDictionary<string, dynamic>;
-                            var humidity = body["humidity"];
-                            Console.WriteLine("Humidity: {0}", humidity);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz AVRO-fájl elemzése
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("deviceId");
-
-                    // The device template information is stored in a sub-record
-                    // under the deviceTemplate field.
-                    var deviceTemplateRecord = record.GetField<AvroRecord>("deviceTemplate");
-                    var templateId = deviceTemplateRecord.GetField<string>("id");
-                    var templateVersion = deviceTemplateRecord.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
-                        deviceId,
-                        templateId,
-                        templateVersion,
-                        fanSpeed
-                    );
-                }
-            }
-        }
-    }
-}
-
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az AVRO-fájl elemzése
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var id = record.GetField<string>("id");
-                    var version = record.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "ID: {1}, Version: {2}, Fan Speed: {3}",
-                        id,
-                        version,
-                        fanSpeed
-                    );
-                }
-            }
-        }
-    }
-}
-```
-
-### <a name="read-avro-files-by-using-javascript"></a>Olvassa el az AVRO-fájlok a Javascript használatával
-
-#### <a name="install-the-avsc-package"></a>A avsc csomag telepítése
-
-```javascript
-npm install avsc
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>A mértékek az AVRO-fájl elemzése
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device ID and humidity from each record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the system properties.
-        const deviceId = record.SystemProperties.connectionDeviceId;
-
-        // Convert the body from a buffer to a string and parse it.
-        const body = JSON.parse(record.Body.toString());
-
-        // Get the humidty property from the body.
-        const humidity = body.humidity;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`Device ID: ${deviceId}`);
-        console.log(`Humidity: ${humidity}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Egy eszköz AVRO-fájl elemzése
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the deviceId property.
-        const deviceId = record.deviceId;
-
-        // Fetch the template ID and version from the deviceTemplate property.
-        const deviceTemplateId = record.deviceTemplate.id;
-        const deviceTemplateVersion = record.deviceTemplate.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Egy eszköz sablonok az AVRO-fájl elemzése
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
-        const templateId = record.id;
-        const templateVersion = record.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device id and humidity.
-        console.log(`Template ID: ${templateId}, Template Version: ${templateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
+7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy tudja, hogyan exportálhatja az adatokat, folytassa a következő lépéssel:
+
+> [!div class="nextstepaction"]
+> [Az Azure Blob Storage-adatok exportálása](howto-export-data-blob-storage.md)
+
+> [!div class="nextstepaction"]
+> [Adatok exportálása az Azure Event Hubs és Azure Service Bus](howto-export-data-event-hubs-service-bus.md)
 
 > [!div class="nextstepaction"]
 > [Hogyan jelenítheti meg az adatok a Power bi-ban](howto-connect-powerbi.md)

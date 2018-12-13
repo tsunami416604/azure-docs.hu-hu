@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search szolgáltatással az Azure Table storage indexelése |} A Microsoft Docs
-description: Ismerje meg, az Azure Search szolgáltatással az Azure Table storage-ban tárolt adatok indexelése
+title: Tartalom indexelése az Azure Table storage, az Azure Search – a teljes szöveges keresés
+description: Útmutató az Azure Search szolgáltatással az Azure Table storage-ban tárolt adatok indexelésére.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 39455669dd739309ac0201de49b390c2390e0067
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406925"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317270"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
 Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.
@@ -66,9 +67,9 @@ Adatforrás létrehozása API további információkért lásd: [adatforrás lé
 
 A hitelesítő adatokat megadhatja a tábla a következő módszerek egyikével: 
 
-- **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` kérheti a kapcsolati karakterláncot az Azure Portalról nyissa meg a **Tárfiók panelén** > **beállítások**  >  **Kulcsok** (a klasszikus tárfiókokkal) vagy **beállítások** > **hozzáférési kulcsok** (az Azure Resource Manager-tárba fiókok esetében).
-- **Tárfiók megosztott hozzáférési aláírást kapcsolati karakterlánc**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` a közös hozzáférésű jogosultságkód kell rendelkeznie a listában, és olvasási jogosultságokkal (ebben az esetben táblák) tárolókkal és objektumokkal (táblázat sorai).
--  **Tábla közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` a közös hozzáférésű jogosultságkód lekérdezés (olvasás) engedélyekkel kell rendelkeznie a táblában.
+- **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Kérheti a kapcsolati karakterláncot az Azure Portalról nyissa meg a **Tárfiók panelén** > **beállítások** > **kulcsok** (a klasszikus üzemi modell esetén Storage-fiókok esetében) vagy **beállítások** > **hozzáférési kulcsok** (az Azure Resource Manager-tárfiókok).
+- **Tárfiók megosztott hozzáférési aláírást kapcsolati karakterlánc**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` A közös hozzáférésű jogosultságkód kell rendelkeznie a listában, és olvasási jogosultságokkal (ebben az esetben táblák) tárolókkal és objektumokkal (táblázat sorai).
+-  **Tábla közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` A közös hozzáférésű jogosultságkód lekérdezés (olvasás) engedélyekkel kell rendelkeznie a tábla.
 
 További információ a megosztott tároló eléréséhez aláírásokat, lásd: [a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -94,7 +95,7 @@ Index létrehozása:
 
 Indexek létrehozásával kapcsolatos további információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-### <a name="step-3-create-an-indexer"></a>3. lépés: Hozzon létre egy indexelőt
+### <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
 Az indexelő a cél keresési indexhez datasource csatlakozik, és biztosítja az Adatfrissítés automatizálásához ütemezés szerint. 
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:

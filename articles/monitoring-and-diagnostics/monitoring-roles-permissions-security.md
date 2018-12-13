@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d160eb377c3d4d73105cdb61b5722a147d22ed37
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680497"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321176"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
 
 ## <a name="built-in-monitoring-roles"></a>Beépített figyelési szerepkörök
-Az Azure Monitor beépített szerepkörök tervezett korlátozza miközben beszerzéséhez és konfigurálásához szükséges adatok infrastruktúra felügyeletért felelős továbbra is egy adott előfizetés erőforrásokhoz való hozzáférést. Az Azure Monitor két-a-beépített szerepkört kínál: A figyelési olvasó és közreműködő figyelése.
+Az Azure Monitor beépített szerepkörök tervezett korlátozza miközben beszerzéséhez és konfigurálásához szükséges adatok infrastruktúra felügyeletért felelős továbbra is egy adott előfizetés erőforrásokhoz való hozzáférést. Az Azure Monitor két-a-beépített szerepkört biztosít: Egy figyelési olvasó és a egy figyelési közreműködő.
 
-### <a name="monitoring-reader"></a>Olvasó figyelése
+### <a name="monitoring-reader"></a>Figyelési olvasó
 A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monitorozási adat egy előfizetésben, de nem bármely erőforrás módosítása beállításainak megtekintése vagy szerkesztése bármilyen kapcsolódó erőforrások figyeléséhez. Ez a szerepkör a következő megfelelő szervezetekben, például a műveletek vagy támogatási mérnökök, tudnia, hogy a felhasználók számára:
 
 * Figyelési irányítópult megtekintése a portálon, és a saját privát figyelési irányítópultokat hozhat létre.
 * Meghatározott riasztási szabályok megtekintése [Azure-riasztások](monitoring-overview-alerts.md)
-* Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen CLI](insights-cli-samples.md).
+* Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen CLI](../azure-monitor/platform/cli-samples.md).
 * A lekérdezés a tevékenységnaplóban a portálon, az Azure Monitor REST API, PowerShell-parancsmagok vagy többplatformos parancssori felület használatával.
 * Nézet a [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erőforrás.
 * Nézet a [naplóprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) -előfizetéssel.
@@ -45,7 +45,7 @@ A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monito
 > 
 > 
 
-### <a name="monitoring-contributor"></a>Közreműködő figyelése
+### <a name="monitoring-contributor"></a>Figyelési közreműködő
 A figyelés közreműködői szerepkörrel mások is láthatják az összes monitorozási adat, előfizetés és a létrehozása vagy módosítása a figyelési beállításokat, de nem módosítható az összes többi erőforrást. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és a szervezet figyelési csapat vagy akik mellett a fenti, engedélyeket is képesnek kell lenniük a felügyelt szolgáltatóknak tagjai számára megfelelő:
 
 * Tegye közzé a figyelési irányítópult, egy megosztott irányítópultot.

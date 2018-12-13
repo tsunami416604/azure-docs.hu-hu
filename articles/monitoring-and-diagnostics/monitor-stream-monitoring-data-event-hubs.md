@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 4c6765e54dc881c35e344f111e82721be0852052
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3bf2135e7d4cb0e34d6e38e8673d5d69f262979c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823758"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322397"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -21,17 +21,17 @@ Az Azure Monitor hozzáférni az összes monitorozási adatai az Azure-környeze
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>Milyen adatokat lehet küldeni egy eseményközpontba való? 
+## <a name="what-data-can-i-send-into-an-event-hub"></a>Milyen adatokat lehet küldeni egy eseményközpontba való?
 
 Az Azure-környezet van több "csomag" figyelési adatok, és a metódus az adathozzáférés az egyes szintekről-sablonoktól. Általában ezek a rétegek írható le:
 
-- **Alkalmazásfigyelési adatok:** adatait a teljesítményének és funkcionalitásának írásos engedélye szükséges, és az Azure-ban futtatja a kódot. Alkalmazásfigyelési adatok közé a teljesítmény-nyomkövetés, alkalmazásnaplókat és telemetriai felhasználói. Alkalmazásfigyelési adatokat általában a következő módokon gyűjti:
+- **Alkalmazás figyelési adatok:** Adatait a teljesítményének és funkcionalitásának írásos engedélye szükséges, és az Azure-ban futtatja a kódot. Alkalmazásfigyelési adatok közé a teljesítmény-nyomkövetés, alkalmazásnaplókat és telemetriai felhasználói. Alkalmazásfigyelési adatokat általában a következő módokon gyűjti:
   - Alakíthatja ki például a kód egy SDK-val a [Application Insights SDK](../application-insights/app-insights-overview.md).
-  - A monitorozási ügynök, amely figyeli az új alkalmazás-naplókat a gépen futó az alkalmazás futtatásának, mint például a [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md).
-- **Vendég operációs rendszerek monitorozási adatai:** az operációs rendszer, amelyen fut az alkalmazás adatait. Példák a vendég operációs rendszer monitorozási adatok lenne a Linux rendszernaplójából vagy a Windows rendszer eseményeket. Ilyen típusú adatok gyűjtéséhez, például ügynököt telepíteni kell a [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md).
-- **Azure-erőforrás monitorozási adatai:** egy Azure-erőforrás a művelet adatait. Egyes Azure-erőforrástípus, például a virtuális gépek van egy vendég operációs rendszereket és figyelése, hogy az Azure szolgáltatáson belüli alkalmazások. Más Azure-erőforrások, például a hálózati biztonsági csoportok az erőforrás monitorozási adatok legmagasabb szintű rendelkezésre álló adatok (mivel az nem áll fenn a vendég operációs rendszer vagy alkalmazás ezeket az erőforrásokat futtató). Ezeket az adatokat lehessen gyűjteni használatával [erőforrás diagnosztikai beállításait](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
-- **Azure-előfizetés monitorozási adatai:** a művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. A [tevékenységnapló](./monitoring-overview-activity-logs.md) monitorozási adatok, például a service health incidens- és Azure Resource Manager-naplók a legtöbb előfizetést tartalmazza. Ezek az adatok Log profilt használó gyűjtheti.
-- **Az Azure-bérlő monitorozási adatok:** bérlői szintű Azure-szolgáltatások, például az Azure Active Directory vonatkozó adatokkal. Naplózza az Azure Active Directory és a bejelentkezések a monitorozási adatok bérlői példái. Ezeket az adatokat egy bérlő diagnosztikai beállítás használatával gyűjthetők össze.
+  - A monitorozási ügynök, amely figyeli az új alkalmazás-naplókat a gépen futó az alkalmazás futtatásának, mint például a [Windows Azure diagnosztikai ügynök](./../azure-monitor/platform/diagnostics-extension-overview.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md).
+- **A vendég operációs rendszer monitorozási adatok:** Az operációs rendszer, amelyen fut az alkalmazás adatait. Példák a vendég operációs rendszer monitorozási adatok lenne a Linux rendszernaplójából vagy a Windows rendszer eseményeket. Ilyen típusú adatok gyűjtéséhez, például ügynököt telepíteni kell a [Windows Azure diagnosztikai ügynök](./../azure-monitor/platform/diagnostics-extension-overview.md) vagy [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md).
+- **Azure-erőforrás monitorozási adatai:** Egy Azure-erőforrás a művelet adatait. Egyes Azure-erőforrástípus, például a virtuális gépek van egy vendég operációs rendszereket és figyelése, hogy az Azure szolgáltatáson belüli alkalmazások. Más Azure-erőforrások, például a hálózati biztonsági csoportok az erőforrás monitorozási adatok legmagasabb szintű rendelkezésre álló adatok (mivel az nem áll fenn a vendég operációs rendszer vagy alkalmazás ezeket az erőforrásokat futtató). Ezeket az adatokat lehessen gyűjteni használatával [erőforrás diagnosztikai beállításait](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+- **Azure-előfizetés monitorozási adatai:** A művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. A [tevékenységnapló](./monitoring-overview-activity-logs.md) monitorozási adatok, például a service health incidens- és Azure Resource Manager-naplók a legtöbb előfizetést tartalmazza. Ezek az adatok Log profilt használó gyűjtheti.
+- **Az Azure-bérlő monitorozási adatok:** A bérlői szintű Azure-szolgáltatások, például az Azure Active Directory művelettel kapcsolatos adatokat. Naplózza az Azure Active Directory és a bejelentkezések a monitorozási adatok bérlői példái. Ezeket az adatokat egy bérlő diagnosztikai beállítás használatával gyűjthetők össze.
 
 Az egyik csomagunkban adatküldés egy eseményközpontba, ahol azt tölthetők be a partner eszközt. A következő szakaszokban az egyes szintekről az eseményközpontok felé is streamelhetők adatok konfigurálása. A lépések feltételezik, hogy már rendelkezik eszközöket lehet figyelni a rétegben.
 
@@ -91,7 +91,7 @@ A [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostic
 
 ### <a name="windows-data"></a>Windows-adatok
 
-A [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) küldéséhez használható monitorozási adatok egy Windows-gépről egy eseményközpontba. Ehhez adja hozzá az event hubs a WAD-konfigurációs fájl a privateConfig szakaszában fogadóként. [Ebben a cikkben további információt az event hub fogadó ad hozzá a Windows Azure diagnosztikai ügynök](./azure-diagnostics-streaming-event-hubs.md).
+A [Windows Azure diagnosztikai ügynök](./../azure-monitor/platform/diagnostics-extension-overview.md) küldéséhez használható monitorozási adatok egy Windows-gépről egy eseményközpontba. Ehhez adja hozzá az event hubs a WAD-konfigurációs fájl a privateConfig szakaszában fogadóként. [Ebben a cikkben további információt az event hub fogadó ad hozzá a Windows Azure diagnosztikai ügynök](./../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 > [!NOTE]
 > Nem tudja beállítani streamelési vendég operációs rendszer monitorozási adatok a portálon egy eseményközpontba. Ehelyett manuálisan kell szerkeszteni a konfigurációs fájlban.
@@ -114,10 +114,10 @@ A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor
     2. Ha kiegészítő szolgáltatást nem lehet telepíteni a Splunk-példány (például) Ha proxyt használ, vagy a Splunk-felhőben futó), ezeket az eseményeket a Splunk HTTP Eseménygyűjtő történő továbbítás [ezt az eseményközpontban lévő üzenetek által aktivált függvény](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic** – egy adott eseményközpontból adatok felhasználásához SumoLogic beállításával kapcsolatos utasítások [itt érhető el](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
 * **ArcSight** -érhető el a ArcSight Azure Event Hub intelligens összekötő része [Itt a ArcSight intelligens összekötő gyűjtemény](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852).
-* **Syslog-kiszolgáló** – Ha szeretne közvetlenül a syslog-kiszolgálók, az Azure Monitor-adatok streamelése megtekinthet [a github-adattár](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+* **Syslog-kiszolgáló** – Ha szeretne közvetlenül a syslog-kiszolgálók, az Azure Monitor-adatok streamelése megtekinthet [a GitHub-adattár](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>További lépések
 * [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
-* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](monitor-alerts-unified-log-webhook.md)
+* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../azure-monitor/platform/alerts-log-webhook.md)
 

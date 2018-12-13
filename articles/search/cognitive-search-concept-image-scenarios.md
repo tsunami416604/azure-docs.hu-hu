@@ -1,5 +1,5 @@
 ---
-title: Dolgozza fel, és a szöveg kinyerése a rendszerképeket az Azure Search szolgáltatásban |} A Microsoft Docs
+title: A kognitív keresés – Azure Search-rendszerképeket feldolgozása és kinyerése szöveg
 description: Feldolgozása és kinyerése szöveg- és egyéb információkat cognitive rendszerképekből keresési folyamatok az Azure Search szolgáltatásban.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5ee821f3d1e81e581f376d4b14b3e8393a8f190c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444633"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312612"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
@@ -90,7 +91,7 @@ Ha a *imageAction* "generateNormalizedImages," értékre van állítva az új *n
 
 ## <a name="image-related-skills"></a>Lemezképpel kapcsolatos ismereteit
 
-Nincsenek a két beépített kognitív képességeket, amelyek rendszerképeket bemenetként: [OCR](cognitive-search-skill-ocr.md) és [képelemzés](cognitive-search-skill-image-analysis.md). 
+Nincsenek két beépített kognitív képességeket, amelyek rendszerképeket bemenetként: [Optikai Karakterfelismerés](cognitive-search-skill-ocr.md) és [elemzési kép](cognitive-search-skill-image-analysis.md). 
 
 Ezek a képességek jelenleg csak működik a dokumentum krakkolás. lépésben létrehozott képekkel. Mint ilyen, az egyetlen támogatott bemeneti az `"/document/normalized_images"`.
 

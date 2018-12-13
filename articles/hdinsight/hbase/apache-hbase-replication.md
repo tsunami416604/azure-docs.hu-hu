@@ -1,5 +1,5 @@
 ---
-title: HBase-fürt replikációja az Azure virtuális hálózatok beállítása
+title: Állítsa be az Azure virtuális hálózatok – Azure HDInsight HBase-fürt replikációja
 description: Ismerje meg, hogyan lehet HBase-replikálás beállítása egy HDInsight-verzióról a másikra a terheléselosztást, magas rendelkezésre állású, üzemszünet nélküli áttelepítés és a frissítések és vész-helyreállítási.
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584179"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163836"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -262,11 +262,11 @@ Hozzon létre egy [Apache HBase](http://hbase.apache.org/) fürtben az egyes a k
 
 - **Erőforráscsoport neve**: használja ugyanazt az erőforráscsoport-nevet a virtuális hálózatok létrehozott.
 - **Fürt típusa**: HBase
-- **Verzió**: HBase 1.1.2 (HDI 3.6)
-- **Hely**: a virtuális hálózatnak ugyanazt a helyet használja.  Alapértelmezés szerint a vnet1 *USA nyugati RÉGIÓJA*, pedig a vnet2 *USA keleti Régiójában*.
-- **Tárolási**: hozzon létre egy új tárfiókot, a fürt számára.
-- **Virtuális hálózat** (a Speciális beállítások a portálon): válassza ki az utolsó eljárás során létrehozott vnet1.
-- **Alhálózat**: az alapértelmezett név a sablonban használt **subnet1**.
+- **Verzió**: A HBase 1.1.2 (HDI 3.6)
+- **Hely**: A virtuális hálózatnak ugyanazt a helyet használja.  Alapértelmezés szerint a vnet1 *USA nyugati RÉGIÓJA*, pedig a vnet2 *USA keleti Régiójában*.
+- **Tárolási**: Hozzon létre egy új tárfiókot, a fürt számára.
+- **Virtuális hálózat** (a Speciális beállítások a portálon): Válassza ki az utolsó eljárás során létrehozott vnet1.
+- **Alhálózat**: Az alapértelmezett név a sablonban használt **subnet1**.
 
 Annak érdekében, hogy a környezet megfelelően van konfigurálva, az átjárócsomópont teljesen minősített Tartományneve, a fürtök közötti pingelni kell lennie.
 
@@ -274,7 +274,7 @@ Annak érdekében, hogy a környezet megfelelően van konfigurálva, az átjár�
 
 Ha egy fürt replikálja, meg kell adnia a táblákat, amelyet replikálni szeretne. Ebben a szakaszban a kiindulási fürt adatokat betölteni azt. A következő szakaszban a fürtök közötti replikáció lehetővé teszi.
 
-Hozhat létre egy **névjegyek** táblában és adatok beszúrása a táblázatban, kövesse az utasításokat, [Apache HBase-oktatóanyag: a HDInsight Apache HBase használatának első lépései](apache-hbase-tutorial-get-started-linux.md).
+Hozhat létre egy **névjegyek** táblában és adatok beszúrása a táblázatban, kövesse az utasításokat, [Apache HBase-oktatóanyag: A HDInsight Apache HBase használatának első lépései](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
@@ -290,8 +290,8 @@ A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlm�
 
   1. **Név**: Adja meg **engedélyezze a replikációt**.
   2. **Bash-szkript URL-cím**: Adja meg **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **A fő**: Ellenőrizze, hogy ez van kijelölve. A csomóponttípusok törölje.
-  4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és másolja az összes adat a forrás-fürtről a cél-fürthöz:
+  3.  **A fő**: Győződjön meg arról, ez van kiválasztva. A csomóponttípusok törölje.
+  4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és majd átmásolhatja a kiindulási fürt a célfürt az összes adat:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     

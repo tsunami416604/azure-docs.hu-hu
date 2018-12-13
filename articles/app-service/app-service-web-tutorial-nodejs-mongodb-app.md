@@ -1,5 +1,5 @@
 ---
-title: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban | Microsoft Docs
+title: Node.js alkalmazás létrehozása a MongoDB - az Azure App Service |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Node.js-alkalmazásra, amely MongoDB kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a74360575f1dbaeb86886e0e04240eb97baa521a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971691"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251504"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Oktatóanyag: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban
 
@@ -49,10 +49,10 @@ Ismertetett témák:
 Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
-1. [Telepítse a Node.js-t és az NPM-et](https://nodejs.org/)
-1. [Telepítse a Bowert](https://bower.io/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
-1. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
-1. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/). 
+2. [Telepítse a Node.js-t és az NPM-et](https://nodejs.org/)
+3. [Telepítse a Bowert](https://bower.io/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+4. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+5. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/). 
 
 ## <a name="test-local-mongodb"></a>Helyi MongoDB tesztelése
 

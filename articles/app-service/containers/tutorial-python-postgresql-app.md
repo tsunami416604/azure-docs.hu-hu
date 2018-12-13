@@ -1,5 +1,5 @@
 ---
-title: Python- és PostgreSQL-webalkalmazás létrehozása az Azure App Service-ben | Microsoft Docs
+title: Python-webalkalmazás és PostgreSQL létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
 description: Ismerje meg, hogyan futtathat egy PostgreSQL-adatbáziskapcsolattal rendelkező, adatvezérelt Python-alkalmazást az Azure-ban.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: dda5a0cda284effdb795d4fb1960ac5fb94799cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865624"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276383"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>A Python és PostgreSQL-webalkalmazás létrehozása az Azure App Service-ben
 

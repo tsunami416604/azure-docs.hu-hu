@@ -2,21 +2,21 @@
 title: Jelenetek renderelése a felhőben – Azure Batch
 description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnolddal a Batch renderelési szolgáltatás és az Azure parancssori felület használatával
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 10/24/2018
-ms.author: danlep
+ms.date: 12/11/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: 0b9f6e440140edbec59d1bf837a0dfb16ab44d5f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024392"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323422"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Az Azure Batch álló jelenet renderelése 
 
 Az Azure Batch felhőméretű renderelési képességeket biztosít használatalapú fizetéssel. Az Azure Batch támogatja renderelési alkalmazások, például az Autodesk Maya, a 3ds Max, az Arnold és a V-Ray használatát. Ez az oktatóanyag azt mutatja be, hogy milyen lépésekkel renderelhet kisebb jeleneteket a Batch és az Azure parancssori felület használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -96,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Például:
+Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Példa:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -124,7 +124,7 @@ Hozzon létre egy Batch-készletet a rendereléshez az [az batch pool create](/c
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.2.1"
+      "version": "1.3.1"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Például:
+A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Példa:
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +309,7 @@ az batch task list \
     --output table
 ```
 
-Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Például:
+Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Példa:
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch) paranccsal. Például:
+A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch) paranccsal. Példa:
 
 ```azurecli-interactive
 az storage blob download-batch \

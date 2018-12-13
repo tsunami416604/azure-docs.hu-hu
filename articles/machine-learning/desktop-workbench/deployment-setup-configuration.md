@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/6/2017
+ms.date: 12/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84068376f35bc4df6672cffcc0ac3438b12edbb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d912f559af98045aaef8fe6fcaa1d83ab5f96bd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979675"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269362"
 ---
 # <a name="model-management-setup"></a>Modell-kezelés beállítása
 
@@ -68,7 +68,7 @@ pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
 ### <a name="configuring-docker-on-linux"></a>Docker konfigurálása linuxon
-Annak érdekében, hogy konfigurálja a Docker Linux rendszeren nem legfelső szintű felhasználók általi használatra, az alábbi utasításokat: [telepítés utáni lépések Linux rendszeren](https://docs.docker.com/engine/installation/linux/linux-postinstall/)
+Annak érdekében, hogy konfigurálja a Docker Linux rendszeren nem legfelső szintű felhasználók általi használatra, az alábbi utasításokat: [Telepítés utáni lépések Linux rendszeren](https://docs.docker.com/engine/installation/linux/linux-postinstall/)
 
 >[!NOTE]
 > Egy Linux rendszerű adatelemző virtuális GÉPET a Docker megfelelően állítja be az alábbi szkriptet futtathatja. **Ne felejtse el, jelentkezzen ki, és jelentkezzen be újra a szkript futtatása után.**
@@ -85,7 +85,7 @@ Először szüksége az üzembe helyezési környezetet. A környezet beállít�
 
 Ha a környezet a telepítés befejezése:
 - Jelentkezzen be Azure kéri. Jelentkezzen be, használja egy webböngészőben nyissa meg a https://aka.ms/devicelogin , és adja meg a megadott kódot a hitelesítéshez.
-- A hitelesítési folyamat során kell megadnia egy olyan fiók való hitelesítéshez. Fontos: Válasszon egy érvényes Azure-előfizetést és a fiókban lévő erőforrások létrehozásához szükséges engedélyekkel rendelkező fiókkal. A bejelentkezési befejeződése után az előfizetési adatai jelennek meg, és a rendszer megkérdezi, hogy folytatja az adott fiókkal.
+- A hitelesítési folyamat során kell megadnia egy olyan fiók való hitelesítéshez. Fontos: Válasszon egy érvényes Azure-előfizetést és a fiókban lévő erőforrások létrehozásához szükséges engedélyekkel rendelkező fiókot. A bejelentkezési befejeződése után az előfizetési adatai jelennek meg, és a rendszer megkérdezi, hogy folytatja az adott fiókkal.
 
 ### <a name="environment-setup"></a>Környezet beállítása
 A telepítési folyamat elindításához a következő parancsok beírásával néhány környezet szolgáltatót regisztrálnia kell:

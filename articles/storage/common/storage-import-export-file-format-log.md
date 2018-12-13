@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525518"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316588"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájljainak formátuma
 Ha a Microsoft Azure Import/Export szolgáltatás végrehajt egy műveletet az importálási feladat vagy exportálási feladat részeként egy meghajtón, naplók írja a blokkblobok az adott feladathoz társított storage-fiókban.  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -105,15 +105,15 @@ A következő táblázat ismerteti az elemek a naplófájl.
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML-elem|Meghajtó a napló jelöli.|  
 |`Version`|Attribútum, karakterlánc|A napló formátuma verziója.|  
-|`DriveId`|Sztring|A meghajtó hardver sorozatszáma.|  
-|`Status`|Sztring|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alatt további információt.|  
+|`DriveId`|Karakterlánc|A meghajtó hardver sorozatszáma.|  
+|`Status`|Karakterlánc|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alatt további információt.|  
 |`Blob`|Beágyazott XML-elem|Egy blob jelöli.|  
-|`Blob/BlobPath`|Sztring|A blob URI azonosítója.|  
-|`Blob/FilePath`|Sztring|A meghajtón található a fájl relatív elérési útja.|  
+|`Blob/BlobPath`|Karakterlánc|A blob URI azonosítója.|  
+|`Blob/FilePath`|Karakterlánc|A meghajtón található a fájl relatív elérési útja.|  
 |`Blob/Snapshot`|DateTime|A blob, csak exportálási feladatokhoz pillanatfelvétel-verzió.|  
 |`Blob/Length`|Egész szám|A teljes hossza (bájt) a blob.|  
 |`Blob/LastModified`|DateTime|A dátum/idő, amelyet a blob, csak exportálási feladatokhoz.|  
-|`Blob/ImportDisposition`|Sztring|Importálás rendezése, a blob csak importálási feladatokhoz.|  
+|`Blob/ImportDisposition`|Karakterlánc|Importálás rendezése, a blob csak importálási feladatokhoz.|  
 |`Blob/ImportDisposition/@Status`|Attribútum, karakterlánc|Az importálás disposition állapota.|  
 |`PageRangeList`|Beágyazott XML-elem|Egy lapblobra laptartomány listáját jelöli.|  
 |`PageRange`|XML-elem|Tartományt jelöli.|  
@@ -130,19 +130,19 @@ A következő táblázat ismerteti az elemek a naplófájl.
 |`Block/@Status`|Attribútum, karakterlánc|A blokk feldolgozási állapotát.|  
 |`Metadata`|Beágyazott XML-elem|A blob metaadatait jelöli.|  
 |`Metadata/@Status`|Attribútum, karakterlánc|A blob metaadatainak feldolgozási állapotát.|  
-|`Metadata/GlobalPath`|Sztring|A globális metaadatait tartalmazó fájl relatív elérési útja.|  
+|`Metadata/GlobalPath`|Karakterlánc|A globális metaadatait tartalmazó fájl relatív elérési útja.|  
 |`Metadata/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális metaadatait tartalmazó fájl.|  
-|`Metadata/Path`|Sztring|A metaadatok fájl relatív elérési útja.|  
+|`Metadata/Path`|Karakterlánc|A metaadatok fájl relatív elérési útja.|  
 |`Metadata/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a metaadatait tartalmazó fájl.|  
 |`Properties`|Beágyazott XML-elem|A blob tulajdonságai jelöli.|  
 |`Properties/@Status`|Attribútum, karakterlánc|Állapotát, például a fájl nem található, a blobtulajdonságok feldolgozása befejeződött.|  
-|`Properties/GlobalPath`|Sztring|A globális tulajdonságok fájl relatív elérési útját.|  
+|`Properties/GlobalPath`|Karakterlánc|A globális tulajdonságok fájl relatív elérési útját.|  
 |`Properties/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális tulajdonságok fájl.|  
-|`Properties/Path`|Sztring|A tulajdonságok fájl relatív elérési útját.|  
+|`Properties/Path`|Karakterlánc|A tulajdonságok fájl relatív elérési útját.|  
 |`Properties/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a tulajdonságok fájl.|  
-|`Blob/Status`|Sztring|A blob feldolgozási állapotát.|  
+|`Blob/Status`|Karakterlánc|A blob feldolgozási állapotát.|  
   
-# <a name="drive-status-codes"></a>Meghajtó állapotkódok  
+## <a name="drive-status-codes"></a>Meghajtó állapotkódok  
 A következő táblázat felsorolja a meghajtó feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  

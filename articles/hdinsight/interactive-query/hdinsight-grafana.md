@@ -6,23 +6,21 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/17/2018
-ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/11/2018
+ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308154"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322294"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
 
 
 [Grafana](https://grafana.com/) egy népszerű, nyílt forráskódú graph és az irányítópult szerkesztő van. Grafana funkciója gazdag; nem csak nem, hogy a felhasználók létrehozásához, testre szabható és megosztható irányítópultok is kínál sablonalapú/parancsfájlalapú irányítópultokat, LDAP-integráció, több adatforrást és egyéb.
 
-Grafana jelenleg csak az interaktív lekérdezési fürt típus szerint az Azure HDInsight támogatást.
-
+Jelenleg az Azure HDInsight, a Grafana használata támogatott a Hbase és interaktív lekérdezési fürt típusú.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -65,7 +63,7 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
    
     ![A HDInsight (Linux) használatának első lépései – erőforráscsoport](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-alapú fürt erőforráscsoportja")
     
-5. A csempe a fürthöz tartozó alapértelmezett tárterületet is felsorolja. Minden egyes fürt egy [Azure Storage-fióktól](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake-fióktól](../hdinsight-hadoop-use-data-lake-store.md) függ. Ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett tárfióknak ugyanabban az Azure-régióban kell lennie. A fürtök törlésével a tárfiók nem törlődik.
+5. A csempe a fürthöz tartozó alapértelmezett tárterületet is felsorolja. Minden egyes fürt egy [Azure Storage-fióktól](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake-fióktól](../hdinsight-hadoop-use-data-lake-store.md) függ. Ez az alapértelmezett tárfiók. HDInsight-fürt és az alapértelmezett tárfióknak ugyanazon Azure-régióban kell felhőátjárónak. A fürtök törlésével a tárfiók nem törlődik.
     
 
 > [!NOTE]
@@ -76,16 +74,22 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
 ## <a name="access-the-grafana-dashboard"></a>Hozzáférés a lesz a Grafana irányítópultja
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+
 2. Válassza ki **HDInsight-fürtök**, majd válassza ki az előző szakaszban létrehozott fürt nevét.
+
 3. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**.
 
     ![HDInsight-fürt irányítópult portál](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight-fürt irányítópultja a portálon")
 
-4. Az irányítópultról, kattintson a **Grafana** csempére.
+4. Az irányítópultról, kattintson a **Grafana** csempére. Azt is megteheti, keresse meg a `/grafana/` elérési útját a fürt URL-CÍMÉT. Például: `https://<clustername>.azurehdinsight.net/grafana/`.
+
 5. Adja meg a Hadoop-fürt felhasználói hitelesítő adatait.
-6. A Grafana irányítópult hasonlóan néz ki:
+
+6. A Grafana irányítópult jelenik meg, és a példához hasonlóan néz ki:
 
     ![HDInsight lesz a Grafana irányítópultja](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight lesz a Grafana irányítópultja")
+
+   
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. 
@@ -137,5 +141,3 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

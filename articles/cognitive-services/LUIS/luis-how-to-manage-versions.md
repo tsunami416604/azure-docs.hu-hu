@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a1594d3dfe449049258e5ee12bc173c413459f8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082696"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132874"
 ---
 # <a name="manage-versions"></a>Verziók kezelése
 
@@ -45,7 +45,7 @@ Verziók listáját bemutatják, hogy melyik verzió közzététele, ahol azok k
 
 Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,** az eszköztáron. 
 
-[![Kezelés szakaszhoz, verziók lap](./media/luis-how-to-manage-versions/versions-other.png "kezelés szakaszhoz, verziók lap")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Kezelés szakaszhoz, verziók lap, győződjön meg arról, egy verzió művelet](./media/luis-how-to-manage-versions/versions-other.png "kezelés szakaszhoz, verziók lap, győződjön meg arról, egy verzió művelet")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Importálás verzió
 
@@ -53,7 +53,7 @@ Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,*
 
 2. Az a **importálása új verzió** előugró ablak, írja be az új tíz karakter verzió neve. Csak egy beállítani, ha a verzió a JSON-fájl már létezik az alkalmazásban kell.
 
-    ![Verziók lap szakaszban kezelése](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Verziók lap, új verzió importálása a szakaszban kezelése](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     -Verziót importált, miután az új verzió válik az aktív verziót.
 

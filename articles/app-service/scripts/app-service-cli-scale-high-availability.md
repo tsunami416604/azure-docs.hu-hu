@@ -1,10 +1,10 @@
 ---
-title: Az Azure CLI-Példaszkript – webalkalmazások globális egy magas rendelkezésre állású architektúrával rendelkező méretezési csoport |} A Microsoft Docs
+title: Az Azure CLI-Példaszkript – az alkalmazás méretezése világszerte a Traffic Managerrel |} A Microsoft Docs
 description: Az Azure CLI-Példaszkript – webalkalmazások globális egy magas rendelkezésre állású architektúrával rendelkező méretezési csoport
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 4403e0081df3120c889b93d642670895252ac47e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 61e47128369bbf7b76f0626241ba024afc0e65ab
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567967"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314618"
 ---
-# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Webalkalmazások globális skálázása magas rendelkezésre állású architektúrával
+# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Webalkalmazások globális skálázása az Azure CLI használatával magas rendelkezésre állású architektúrával
 
 Ez a példaszkript egy erőforráscsoportot, két App Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot hoz létre. A gyakorlat végrehajtása után egy magas rendelkezésre állású architektúrával rendelkezik majd, amely a legkisebb hálózati késéssel biztosítja a webalkalmazás globális rendelkezésre állását.
 

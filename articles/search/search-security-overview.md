@@ -1,5 +1,5 @@
 ---
-title: Biztonsági és az adatvédelem az Azure Search szolgáltatásban |} A Microsoft Docs
+title: Biztonság és az adatvédelem – Azure Search
 description: Az Azure Search egy megfelelő, a SOC 2, a HIPAA és egyéb tanúsítványok. Kapcsolat és az titkosítással, hitelesítéssel és identitás való hozzáférés felhasználó és csoport biztonsági azonosítói az Azure Search segítségével szűri.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.custom: seodec2018
+ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092631"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311711"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonsági és az adatvédelem az Azure Search szolgáltatásban
 
@@ -21,7 +22,7 @@ ms.locfileid: "44092631"
 
 Az Azure Search biztonsági architektúra kiterjedő fizikai biztonság, titkosított adatátvitel, titkosított tárolást és platform kiterjedő szabványoknak való megfelelés. Azure Search, csak hitelesített kéréseket fogad el. Szükség esetén – a biztonsági szűrők felhasználónkénti hozzáférés-vezérlést a tartalomhoz is hozzáadhat. Ez a cikk a biztonság minden egyes rétegben koppint, de elsősorban arra összpontosít, hogy milyen adatok és a műveletek biztonságosak az Azure Search.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Szabványoknak való megfelelés: ISO 27001, a SOC 2, a HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Szabványoknak való megfelelés: AZ ISO 27001, A SOC 2, A HIPAA
 
 Az Azure Search minősítéssel az alábbi előírásoknak, mint [2018 június bejelentett](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
@@ -99,7 +100,7 @@ Az index tartalmát felhasználónkénti hozzáférés biztonsági szűrőket a 
 |[Biztonsági elrejtés identitás szűrők alapján.](search-security-trimming-for-azure-search.md)  | A felhasználói identitás hozzáférés-vezérlés megvalósításához alapvető munkafolyamat dokumentumok. Az index hozzáadása a biztonsági azonosítók ismerteti, és ezután bemutatja ezt a mezőt, és a záró szóközöket tiltott tartalom eredmények szűrése. |
 |[Az Azure Active Directory-identitások alapján biztonsági elrejtés](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk a következő lépéseket biztosít az identitásokat az Azure Active Directory (AAD), egy előző cikket kibővíti a [ingyenes szolgáltatások](https://azure.microsoft.com/free/) az Azure-felhőplatformon. |
 
-## <a name="table-permissioned-operations"></a>Táblázat: Permissioned műveletek
+## <a name="table-permissioned-operations"></a>Tábla: Permissioned műveletek
 
 A következő táblázat összefoglalja az Azure Search engedélyezett műveletek, valamint melyik kulcsot lehetővé teszi a hozzáférést egy adott művelethez.
 

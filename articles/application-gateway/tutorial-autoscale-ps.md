@@ -1,48 +1,50 @@
 ---
-title: Fenntartott IP-címmel rendelkező, automatikus skálázású, zónaredundáns Application Gateway létrehozása – Azure PowerShell
-description: Megtudhatja, hogy hozhat létre fenntartott IP-címmel rendelkező, automatikus skálázású, zónaredundáns Application Gatewayt az Azure PowerShell használatával.
+title: 'Oktatóanyag: Fenntartott IP-címmel rendelkező, automatikus skálázású, zónaredundáns Application Gateway létrehozása – Azure PowerShell'
+description: Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy automatikus skálázás, a zónaredundáns az application gateway az Azure PowerShell-lel fenntartott IP-cím.
 services: application-gateway
 author: amitsriva
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 9/26/2018
+ms.date: 11/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 99fa5d6f0ba74b56a53f2d1af1b99c7e5c2896a7
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016934"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323200"
 ---
-# <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>Oktatóanyag: Fenntartott IP-címmel rendelkező, automatikus skálázású, zónaredundáns Application Gateway létrehozása az Azure PowerShell használatával
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Oktatóanyag: Hozzon létre egy application gateway, amely javítja a webes alkalmazás-hozzáférés
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure Application Gateway az Azure PowerShell-parancsmagok és az Azure Resource Manager-alapú üzemi modell segítségével. Ez az oktatóanyag az új automatikus skálázású termékváltozat és a meglévő standard termékváltozat közötti különbségekre összpontosít. Pontosabban az automatikus skálázást, a zónaredundanciát és a fenntartott virtuális IP-címeket (statikus IP-címeket) támogató funkciókról lesz szó.
+Ha Ön rendszergazda a webes alkalmazás-hozzáférés javítása az érintett, optimalizálhatja az application gateway az alapján ügyfél méretezése igény és a span több rendelkezésre állási zónában. Ez az oktatóanyag segítséget nyújt, amely ehhez az Azure Application Gateway-szolgáltatások konfigurálása: az automatikus skálázás, a redundancia zónát, és a fenntartott virtuális IP-címek (statikus IP-cím). Azure PowerShell-parancsmagok és az Azure Resource Manager üzemi modell fogja használni, ha a probléma megoldásához.
 
-Az Application Gateway automatikus skálázásával és zónaredundanciájával kapcsolatban további információt az [automatikus skálázású és zónaredundáns Application Gatewayt (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md) bemutató cikk tartalmaz.
-
-> [!IMPORTANT]
-> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> [!IMPORTANT] 
+> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az automatikus skálázás konfigurációs paraméterének beállítása
-> * A zóna paraméter használata
-> * Statikus virtuális IP-cím használata
+> * Az automatikus skálázási virtuális hálózat létrehozása
+> * Fenntartott nyilvános IP-cím létrehozása
+> * Az application gateway infrastruktúra beállítása
+> * Automatikus méretezés megadása
 > * Application Gateway létrehozása
-
+> * Az alkalmazásátjáró tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
+## <a name="prerequisites"></a>Előfeltételek
+
 Ehhez az oktatóanyaghoz az Azure PowerShellt helyileg kell futtatnia. Az Azure PowerShell-modul 6.9.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzureRmAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
-## <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 ```azurepowershell
 Connect-AzureRmAccount
 Select-AzureRmSubscription -Subscription "<sub name>"
 ```
+
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot az elérhető helyek egyikén.
 
@@ -54,8 +56,9 @@ $rg = "<rg name>"
 New-AzureRmResourceGroup -Name $rg -Location $location
 ```
 
-## <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
-Hozzon létre virtuális hálózatot egy automatikus skálázású Application Gatewayhez tartozó dedikált alhálózattal. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+
+Az automatikus skálázás application Gateway egy kijelölt alhálózatot a virtuális hálózat létrehozása. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -67,7 +70,7 @@ $vnet = New-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Fenntartott nyilvános IP-cím létrehozása
 
-A PublicIPAddress kiosztási módszere legyen **statikus**. Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
+Adja meg a nyilvános IP-címre, a kiosztási módszert **statikus**. Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
 
 ```azurepowershell
 #Create static public IP
@@ -77,7 +80,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Részletek beolvasása
 
-Az erőforráscsoport, az alhálózat és az IP-cím beolvasása helyi objektumban az Application Gateway IP-konfiguráció részleteinek létrehozásához.
+Kérje le az IP-konfiguráció részleteit az application Gateway létrehozása egy helyi objektumban, az erőforráscsoport, alhálózatot és IP-adatait.
 
 ```azurepowershell
 $resourceGroup = Get-AzureRmResourceGroup -Name $rg
@@ -85,8 +88,10 @@ $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP"
 $vnet = Get-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
 ```
-## <a name="configure-application-gateway-infrastructure"></a>Az Application Gateway infrastruktúrájának konfigurálása
-Az IP-konfigurációt, az előtérbeli IP-konfigurációt, a háttérkészletet, a HTTP-beállításokat, a tanúsítványt, a portot, a figyelőt és a szabályokat a meglévő standard Application Gatewaynek megfelelő formátumban kell konfigurálnia. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
+
+## <a name="configure-the-infrastructure"></a>Az infrastruktúra konfigurálása
+
+Konfigurálja az IP config, előtér-IP-config, háttérkészlet-, HTTP beállítások, tanúsítvány, port, figyelő és szabály meglévő Standard application Gateway egy azonos formátumban. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
 
 ```azurepowershell
 $ipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -114,14 +119,15 @@ $rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleTyp
 
 ## <a name="specify-autoscale"></a>Automatikus méretezés megadása
 
-Most megadhatja az Application Gateway automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
+Most már adhatja meg az application gateway az automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
 
-- **Rögzített kapacitású mód**. Ebben a módban az Application Gateway nem automatikus skálázású, és rögzített skálázásiegység-kapacitással működik.
+* **Rögzített kapacitású mód**. Ebben a módban az Application Gateway nem automatikus skálázású, és rögzített skálázásiegység-kapacitással működik.
 
    ```azurepowershell
    $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
-- **Automatikus skálázási mód**. Ebben a módban az Application Gateway az alkalmazás forgalmi mintázata alapján automatikus skálázású.
+
+* **Automatikus skálázási mód**. Ebben a módban az Application Gateway az alkalmazás forgalmi mintázata alapján automatikus skálázású.
 
    ```azurepowershell
    $autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 2
@@ -130,9 +136,7 @@ Most megadhatja az Application Gateway automatikus skálázási konfigurációj�
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozzon létre egy Application Gatewayt redundanciazónákkal. 
-
-A zóna konfigurációja csak azokban a régiókban támogatott, ahol az Azure-zónák elérhetők. Ne használja a zóna paramétert azokban a régiókban, ahol az Azure-zónák nem érhetők el. Application Gateway egyetlen zónában, két zónában vagy akár mindhárom zónában is üzembe helyezhető. A PublicIPAddressnek az egyzónás Application Gateway esetén ugyanahhoz a zónához kell kötődnie. Két vagy három zónás redundáns Application Gateway esetén a PublicIPAddressnek is zónaredundánsnak kell lennie, ezért nem lehet megadva zóna.
+Az application gateway létrehozása és a redundancia zónák és az automatikus skálázási konfigurációját.
 
 ```azurepowershell
 $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
@@ -145,24 +149,17 @@ $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A [Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsmaggal kérje le az alkalmazásátjáró nyilvános IP-címét. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
+Az application Gateway nyilvános IP-címének lekéréséhez használja a Get-AzureRmPublicIPAddress. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
 
 `Get-AzureRmPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Először tekintse át az Application Gatewayjel együtt létrehozott erőforrásokat, majd ha már nincs rájuk szüksége, az `Remove-AzureRmResourceGroup` paranccsal távolítsa el az eszközcsoportot, az Application Gatewayt és a kapcsolódó erőforrásokat.
+
+Először Fedezze fel az erőforrásokat, az application gateway-ekkel hozta létre. Ezután, amikor szükség van rájuk már nem, használhatja a `Remove-AzureRmResourceGroup` paranccsal törölheti az erőforráscsoportot, az application gateway és az összes kapcsolódó erőforrás.
 
 `Remove-AzureRmResourceGroup -Name $rg`
 
 ## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Statikus virtuális IP-cím használata
-> * Az automatikus skálázás konfigurációs paraméterének beállítása
-> * A zóna paraméter használata
-> * Application Gateway létrehozása
 
 > [!div class="nextstepaction"]
 > [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

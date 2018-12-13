@@ -13,17 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0b6fae59fbe0fa86cb16b176eb1df47e031d04f1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138789"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317192"
 ---
-<a id="preparemachines"></a>
-
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Megtervezheti és előkészítheti a Service Fabric önálló fürtök üzembe helyezése
-Az alábbi lépések végrehajtásával, a fürt létrehozása előtt.
+
+<a id="preparemachines"></a>Az alábbi lépések végrehajtásával, a fürt létrehozása előtt.
 
 ## <a name="plan-your-cluster-infrastructure"></a>A fürt-infrastruktúra megtervezése
 Ön egy Service Fabric-fürtöt létrehozni a gépeken "saját", így eldöntheti, milyen típusú hibák azt szeretné, a fürt stabilitást biztosít. Például tegye meg kell külön power vonalak vagy hálózati kapcsolatok használata esetén ezek a gépek megadott? Ezenkívül fontolja meg ezek a gépek fizikai biztonságát. Hol találhatók a gépek, és ki kell őket a hozzáférést? Ezek a döntések után logikailag leképezheti a gépek különböző tartalék tartományokra (lásd a következő lépés). Az infrastruktúra tervezésének éles fürtök esetén a bonyolultabb, mint a tesztfürtök esetében.
@@ -66,7 +65,7 @@ Az alábbiakban néhány javasolt adatait tartalmazza az egyes gépek, a fürth�
 * Legalább 40 GB szabad lemezterület
 * Egy 4 mag, vagy nagyobb CPU
 * Kapcsolat egy biztonságos hálózati vagy a hálózatok minden gép
-* A Windows Server operációs rendszer telepítve van (érvényes verzió: 2012 R2, a 2016-ot, a 1709-es vagy a 1803)
+* A Windows Server operációs rendszer telepítve van (érvényes verzió: A 2012 R2, a 2016, a 1709-es vagy a 1803)
 * [.NET-keretrendszer 4.5.1-es vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes verzióként
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * A [RemoteRegistry szolgáltatás](https://technet.microsoft.com/library/cc754820) minden gépen kell futnia
@@ -104,13 +103,13 @@ Amikor a fürt rendszergazdája konfigurálja a különálló Service Fabric-fü
    * A távoli beállításjegyzék szolgáltatás (a távoli beállításjegyzék) engedélyezve van
    * Fájl megosztási (SMB) engedélyezve van
    * Rendelkezik a szükséges portokat lett megnyitva, a fürt konfiguráció portok alapján
-   * Rendelkezik a szükséges, a Windows az SMB és a távoli beállításjegyzék szolgáltatás megnyitott portok: 135-ös, 137-es, 138, 139-es és a 445-ös
+   * Rendelkezik a szükséges portok megnyitása a Windows az SMB és a távoli beállításjegyzék szolgáltatás: a 135-ös, 137-es, 138, 139-es és a 445-ös
    * Egy másik hálózati kapcsolat
 3. A fürt csomópont gépek egyike egy tartományvezérlő legyen.
 4. Ha a fürt üzembe lesz helyezve egy biztonságos fürt, ellenőrizze a szükséges biztonsági előfeltételeket helyezze el, és megfelelően van konfigurálva a konfiguráció alapján.
 5. Ha a fürt gépek nem internetről elérhető, a fürt konfigurációját a állítsa be a következőket:
-   * Telemetria letiltása: alatt *tulajdonságok* beállítása *"enableTelemetry": hamis*
-   * Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: alatt *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
+   * Telemetria letiltása: A *tulajdonságok* beállítása *"enableTelemetry": hamis*
+   * Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: A *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
    * Azt is megteheti, ha hálózati internet-hozzáférés korlátozott fehér felsorolt tartományokhoz, az alábbi tartományok szükségesek az automatikus frissítés: go.microsoft.com jövőben a Microsoft
 
 6. Állítsa be a megfelelő Service Fabric víruskereső – kizárások:

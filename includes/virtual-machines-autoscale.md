@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7bafc30bbf8661f7054e49c36af420507f37c989
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226536"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326499"
 ---
-Könnyen [automatikus méretezése](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md) a [virtuális gépeken (VM)](../articles/virtual-machines/windows/overview.md) használatakor [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) és a [az Azure automatikus skálázási funkcióval A figyelő](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). A virtuális gépek kell lennie egy méretezési csoport automatikus skálázását tagjai. Ez a cikk nyújt információt, amely lehetővé teszi, hogy jobban megértheti a virtuális gépek vertikális és horizontális skálázást végezhet módszerekkel automatikus és manuális méretezése.
+Könnyen [automatikus méretezése](../articles/azure-monitor/platform/autoscale-best-practices.md) a [virtuális gépeken (VM)](../articles/virtual-machines/windows/overview.md) használatakor [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) és a [az Azure automatikus skálázási funkcióval A figyelő](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). A virtuális gépek kell lennie egy méretezési csoport automatikus skálázását tagjai. Ez a cikk nyújt információt, amely lehetővé teszi, hogy jobban megértheti a virtuális gépek vertikális és horizontális skálázást végezhet módszerekkel automatikus és manuális méretezése.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vízszintes vagy függőleges skálázás
 
@@ -35,7 +35,7 @@ Engedélyezheti az automatikus skálázás segítségével a méretezési létre
  
 ### <a name="metrics"></a>Mérőszámok
 
-Az Azure monitor automatikus méretezési funkciója lehetővé teszi futó virtuális gépek számának méretezését, illetve lefelé alapján [metrikák](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md). Alapértelmezés szerint a virtuális gépei lemez, hálózati és CPU-használat alapszintű állomásszintű metrikákat. A diagnosztikai bővítmény használata a diagnosztikai adatok gyűjtését konfigurálásakor a további vendég operációs rendszer teljesítményszámlálók lemez, a CPU és memória elérhetővé válnak.
+Az Azure monitor automatikus méretezési funkciója lehetővé teszi futó virtuális gépek számának méretezését, illetve lefelé alapján [metrikák](../articles/azure-monitor/platform/autoscale-common-metrics.md). Alapértelmezés szerint a virtuális gépei lemez, hálózati és CPU-használat alapszintű állomásszintű metrikákat. A diagnosztikai bővítmény használata a diagnosztikai adatok gyűjtését konfigurálásakor a további vendég operációs rendszer teljesítményszámlálók lemez, a CPU és memória elérhetővé válnak.
 
 ![Metrikai feltétel](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Ha az alkalmazás kell skálázni alapján mérőszámok, amelyek nem érhetők 
  
 ### <a name="notifications"></a>Értesítések
 
-Is [eseményindítók beállítása](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md) , hogy meghatározott webes URL-címek nevezzük, vagy e-maileket is küldi el a rendszer az Ön által létrehozott automatikus méretezési szabályokat. Webhookok lehetővé teszik az Azure-riasztási értesítések átirányítása utófeldolgozási vagy egyéni értesítések más rendszerekre.
+Is [eseményindítók beállítása](../articles/azure-monitor/platform/autoscale-webhook-email.md) , hogy meghatározott webes URL-címek nevezzük, vagy e-maileket is küldi el a rendszer az Ön által létrehozott automatikus méretezési szabályokat. Webhookok lehetővé teszik az Azure-riasztási értesítések átirányítása utófeldolgozási vagy egyéni értesítések más rendszerekre.
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Manuális méretezése méretezési csoportban lévő virtuális gépek
 

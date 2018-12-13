@@ -1,5 +1,6 @@
 ---
-title: Mi az Azure Machine Learning szolgáltatás?
+title: Névjegy
+titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning szolgáltatáshoz – egy integrált, teljes körű adatelemzési megoldás adatszakértők fejlesztése, kísérletezhet, és üzembe helyezéséhez a fejlett elemzési alkalmazások felhőhöz méretezett számára áttekintése.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c3c0697af739c151f9aa7cbaed65283a365be7a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f0860982da6a06a3529539768179f9bc28a0695a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077222"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272983"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -48,7 +49,7 @@ A már üzembe helyezett modelleket kezelheti és futásukat nyomon követheti, 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Mire használhatom az Azure Machine Learning szolgáltatást?
 
 Az Azure Machine Learning szolgáltatás is automatikus-train-model és hangolni, az Ön számára.
-Egy vonatkozó példáért lásd: [Oktatóanyag: Osztályozási modell automatikus betanítása az Azure Automated Machine Learning szolgáltatással](tutorial-auto-train-models.md).
+Egy vonatkozó példáért lásd: [oktatóanyag: Automatikusan a az Azure automatikus Machine Learning egy osztályozási modell betanításához](tutorial-auto-train-models.md).
 
 Az Azure Machine Learning használatával <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> Python, a nyílt forráskódú Python-csomagokat, valamint létrehozása és betanítása rendkívül pontos gépi tanulási és deep learning a modellek saját maga az Azure Machine Learning szolgáltatás munkaterületen.
 Számos nyílt forráskódú Python-csomagban elérhető gépi tanulási-összetevő közül választhat, például:
@@ -78,7 +79,10 @@ A Machine Learning szolgáltatást pedig akkor, amikor Python környezetben dolg
 > Az Azure Machine Learning Studioban létrehozott modellek nem helyezhetők üzembe és nem kezelhetők az Azure Machine Learning szolgáltatással.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak
-Ha nincs még előfizetése, [ingyen létrehozhat egy Azure-fiókot](https://aka.ms/amlfree). Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Lehetőségként [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), amely kreditek minden hónapban biztosít Önnek, akkor használhat a fizetős Azure-szolgáltatások.
+
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+
+Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Lehetőségként [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), amely kreditek minden hónapban biztosít Önnek, akkor használhat a fizetős Azure-szolgáltatások.
 
 ## <a name="next-steps"></a>További lépések
 

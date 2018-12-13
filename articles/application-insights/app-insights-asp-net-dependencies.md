@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 77e78e6052e1477696eafa84a3e1c913593ec87e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097777"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268835"
 ---
-# <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: függőségi nyomon követése
+# <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
 
 A-a-beépített függőségi figyelő jelenleg az ilyen típusú függőségek hívásainak jelentések:
@@ -208,8 +208,9 @@ Tekintse meg az alábbi táblázat, és úgy döntött, hogy a helyes konfigurá
 | Platform | Telepítés |
 | --- | --- |
 | Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md). Vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](https://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| Az IIS Express |Használja helyette az IIS-kiszolgálón. |
 | Azure Web App |A WebApp Vezérlőpultját, a [nyissa meg az Application Insights paneljén a WebApp Vezérlőpultját](app-insights-azure-web-apps.md) , és válassza ki a telepítés, ha a rendszer kéri. |
-| Azure Cloud Service |[Használat indítási feladat](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Azure Cloud Service |[Használat indítási feladat](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Videó
 

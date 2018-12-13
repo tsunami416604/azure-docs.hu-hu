@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 3ce0b63c579412d9d8d35b835803becab09f7ef4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: d71b0c020fb9ceb305b56216d466bacb42ad21e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494152"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278151"
 ---
 # <a name="sfctl-compose"></a>sfctl-összeállítás
 Létrehozása, törlése és a Docker Compose alkalmazások kezeléséhez.
@@ -33,6 +33,7 @@ Létrehozása, törlése és a Docker Compose alkalmazások kezeléséhez.
 | eltávolítás | Törli a meglévő Service Fabric compose üzemelő példánya fürtből. |
 | status | A compose üzemelő példánya a Service Fabric információ beolvasása. |
 | frissítés | Elindítja a frissíti compose központi telepítés a Service Fabric-fürtben. |
+| frissítés-visszaállítás | Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben. |
 | frissítés – állapot | A compose üzemelő példánya a legújabb frissítés a Service Fabric végrehajtott részleteinek beolvasása. |
 
 ## <a name="sfctl-compose-create"></a>sfctl-összeállítás létrehozása
@@ -137,24 +138,46 @@ A megadott frissítési paraméterek érvényesíti, és elindítja az üzemelő
 | --- | --- |
 | – [kötelező] üzembe helyezés neve | Az üzemelő példány neve. |
 | --fájlútvonal [kötelező] | Elérési út a cél a Docker compose fájlt. |
-| --default-svc-type-health-map | JSON kódolású tartalmaz, amely a szolgáltatások állapotának értékeléséhez használt állapotházirend ismerteti. |
+| --default-svc-type-health-map | JSON kódolású szolgáltatások állapotának értékeléséhez használt állapotházirend leíró szótárban. |
 | --titkosított fázis | Ahelyett, hogy a tárolójegyzék jelszavát kéri, használjon egy már a titkosított hozzáférési kódot. |
 | --failure-action | Lehetséges értékek a következők\: "Érvénytelen", "Visszaállítás" Manual (manuális). |
-| --kényszerített újraindítás | Kényszerített újraindítás. |
+| --kényszerített újraindítás | Folyamatok kényszerített újraindítása a frissítés során, akkor is, ha a kód verziója nem változott. <br><br> A frissítés csak akkor változik, a konfiguráció vagy. |
 | --rendelkezik fázis | A tároló-beállításjegyzék jelszó fogja kérni. |
-| --health-check-retry | Állapotellenőrzéssel való újrapróbálkozás időkorlátja ezredmásodpercben. |
-| – állapot-ellenőrzés – stabil | Állapotának ellenőrzése stabilitásának időtartama ezredmásodpercben. |
-| – állapot-ellenőrzés-wait | Állapotellenőrzés várakozási időtartama ezredmásodpercben. |
-| --replica-set-check | Replikakészlet frissítési ellenőrzés időkorlátja, másodpercben. |
+| --health-check-retry | Mennyi ideig állapotellenőrzéseket hajthat végre, ha az alkalmazás vagy a fürt nem kifogástalan való próbálkozások között. |
+| – állapot-ellenőrzés – stabil | Mennyi ideig, hogy az alkalmazás vagy a fürt kell megfelelő állapotú marad a következő frissítési tartományra abból a frissítés előtt. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| – állapot-ellenőrzés-wait | Az eltelt idő eltelte után a frissítési tartomány befejezése előtt a folyamat kezdési állapotát ellenőrzi. |
+| --replica-set-check | A maximális mennyisége, és letiltja a frissítési tartomány feldolgozása és váratlan problémák esetén a rendelkezésre állás az adatvesztés elkerülése érdekében. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása folytatódik a rendelkezésre állás elvesztése problémák függetlenül. Az időkorlát minden frissítési tartomány elején alaphelyzetbe áll. Érvényes értékek: 0 és 42949672925 között lehet. |
 | --svc-típusa-állapot – térkép | JSON kódolású objektumok, amelyek a különféle szolgáltatástípusokról állapotának értékeléséhez használt házirendek listáját. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 | --unhealthy-app | A maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. <br><br> Ahhoz, hogy 10 %-a nem megfelelő állapotú, hogy az alkalmazások, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő alkalmazások jelöli. Ha a százalékos tiszteletben tartják, de legalább egy sérült alkalmazás, az egészségügyi figyelmeztetés minősül. Ez kiszámítása a nem megfelelő állapotú alkalmazások száma keresztül alkalmazáspéldányok a fürt teljes száma. |
-| --frissítés-tartomány-időkorlátja | Frissítési tartomány időkorlátja ezredmásodpercben. |
+| --frissítés-tartomány-időkorlátja | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
 | --egyedülálló frissítése | Alapértelmezett\: működés közbeni. |
 | --frissítés-mód | Lehetséges értékek a következők\: "Érvénytelen", 'UnmonitoredAuto', 'UnmonitoredManual', "Figyelt".  Alapértelmezett\: UnmonitoredAuto. |
-| --frissítés – időtúllépés | Frissítési időkorlát ezredmásodpercben. |
+| --frissítés – időtúllépés | Mennyi ideig a teljes frissítés rendelkezik befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
 | --user | Felhasználónév a tárolóregisztrációs adatbázis csatlakozni. |
-| --warning-as-error | Figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
+| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
+## <a name="sfctl-compose-upgrade-rollback"></a>sfctl-összeállítás frissítés-visszaállítás
+Visszaállítása egy új üzembe helyezési útmutatók frissítése a Service Fabric-fürtben.
+
+Visszaállítás egy service fabric compose üzemelő példány frissítése.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – [kötelező] üzembe helyezés neve | Az üzembe helyezés identitását. |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 

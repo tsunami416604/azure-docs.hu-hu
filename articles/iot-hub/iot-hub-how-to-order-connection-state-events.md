@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582452"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184049"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
@@ -200,11 +200,11 @@ A logikai alkalmazás munkafolyamatának a feltételek segítenek, hogy adott fe
 
 2. Töltse ki a feltétel, csak végrehajtani a csatlakoztatott eszköz és az eszköz leválasztott események alább látható módon:
 
-  * Válasszon egy értéket: **esemény típusa**
-  * Módosítási "egyenlő" való **végződik.**
-  * Válasszon egy értéket: **nected**
+   * Válasszon egy értéket: **esemény típusa**
+   * Módosítási "egyenlő" való **végződik.**
+   * Válasszon egy értéket: **nected**
 
-   ![Töltse ki a feltétel](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Töltse ki a feltétel](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. Ha a feltétel teljesül, kattintson a **művelet hozzáadása**.
   
@@ -248,9 +248,9 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
 
-   * **Esemény típusa**: törölje a jelet előfizetés összes eseménytípusok, és válassza **csatlakoztatott eszköz** és **eszköz leválasztott** a menüből.
+   * **Esemény típusa**: Törölje a jelet az előfizetés az összes eseménytípusra, és válassza ki **csatlakoztatott eszköz** és **eszköz leválasztott** a menüből.
 
-   * **Végpont részletei**: A Végpont típusánál válassza a **Webhook** elemet, kattintson a végpont kiválasztása elemre, majd illessze be a logikai alkalmazásból kimásolt URL-címet, és hagyja jóvá a kiválasztást.
+   * **Végpont részletei**: Válassza ki a végpont típusa szerint **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
 
        ![végpont url-jének kiválasztása](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 

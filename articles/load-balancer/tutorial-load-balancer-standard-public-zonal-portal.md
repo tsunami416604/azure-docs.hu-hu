@@ -1,14 +1,11 @@
 ---
-title: 'Oktatóanyag: Terheléselosztó virtuális gépek egy zónában – Azure Portal | Microsoft Docs'
+title: 'Oktatóanyag: A terheléselosztó virtuális gépek betöltése az Azure portal – zónán belül'
+titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy standard Load Balancert zónaszintű előtérrel a rendelkezésre állási zónában lévő virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637293"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262095"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard Load Balancerrel az Azure Portal használatával
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónában belül a Standard Load Balancer az Azure portal használatával
 
 Az oktatóanyag egy nyilvános [Azure Standard Load Balancer-példányt](https://aka.ms/azureloadbalancerstandard) hoz létre zónaszintű előtérrel, amely nyilvános, szabványos IP-címet használ az Azure Portal használatával. Ennek a forgatókönyvnek a követésével megadhat egy adott zónát az előtér- és háttérpéldányokhoz, hogy hozzáigazíthassa az adatútvonalat és az erőforrásokat a meghatározott zónához. A következő függvények végrehajtásának módját ismerheti meg:
 
@@ -53,7 +50,7 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
 2. A **Terheléselosztó létrehozása** lapon adja meg az alábbi értékeket a terheléselosztó számára:
     - A terheléselosztó neve: **myLoadBalancer**
     - A terheléselosztó típusa: **Nyilvános**
-     - A létrehozott új nyilvános IP-cím: **myPublicIPZonal**. Válassza kis a **Válasszon egy nyilvános IP-címet** elemet. Ezután kattintson az **Új létrehozása** elemre. A névhez írja be a következőt: **myPublicIP**. A termékváltozat alapértelmezés szerint a standard. A **Rendelkezésre állási zóna** kiválasztásánál válassza az **1. zóna** elemet.
+      - A létrehozott új nyilvános IP-cím: **myPublicIPZonal**. Válassza kis a **Válasszon egy nyilvános IP-címet** elemet. Ezután kattintson az **Új létrehozása** elemre. A névhez írja be a következőt: **myPublicIP**. A termékváltozat alapértelmezés szerint a standard. A **Rendelkezésre állási zóna** kiválasztásánál válassza az **1. zóna** elemet.
     - A létrehozott új erőforráscsoport neve: **myResourceGroupZLB**.
     - A hely: **westeurope**.
 3. A terheléselosztó létrehozásához válassza a **Létrehozás** elemet.
@@ -81,7 +78,7 @@ Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebbe
     - A hálózati biztonsági csoport neve: **myNetworkSecurityGroup**.
     - A létező erőforráscsoport neve: **myResourceGroupBAZ**.
    
-    ![Hálózati biztonsági csoport létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![Hálózati biztonsági csoport létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>NSG-szabályok létrehozása
 
@@ -100,7 +97,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és Microsoft távo
     - **Leírás**: **HTTP engedélyezése**
 4. Kattintson az **OK** gombra.
  
- ![NSG-szabályok létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![NSG-szabályok létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. Ismételje meg a 2–4. lépést egy másik, **myRDPRule** nevű szabály létrehozásához. Ez a szabály engedélyezi a 3389-es portot használó bejövő RDP-kapcsolatokat a következő értékekkel:
     - **Forrás**: **Szolgáltatáscímke**
@@ -112,7 +109,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és Microsoft távo
     - **Név**: **myRDPRule**
     - **Leírás**: **RDP engedélyezése**
 
-    ![RDP-szabály létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![RDP-szabály létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 

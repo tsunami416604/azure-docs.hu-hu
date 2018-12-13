@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492789"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276332"
 ---
 # <a name="sfctl-is"></a>sfctl értéke
 Lekérdezés, és parancsokat küldjön az infrastruktúra-szolgáltatás.
@@ -41,7 +41,7 @@ Az infrastruktúra-szolgáltatás konfigurált egy vagy több példányban fürt
 |Argumentum|Leírás|
 | --- | --- |
 | – [kötelező] parancsot | Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
-| --service-id | Az infrastruktúra-szolgáltatás identitásának. <br><br> Ez az, hogy az infrastruktúra-szolgáltatás a "fabric" URI-séma nélküli teljes nevét. Ez a paraméter csak a fürt, amelyben több példányát futtató infrastruktúra-szolgáltatás szükséges. |
+| --service-id | Az infrastruktúra-szolgáltatás identitásának. <br><br> Az infrastruktúra-szolgáltatás nélkül teljes neve a "fabric\:" URI-séma. Ez a paraméter csak a fürt, amelyben több példányát futtató infrastruktúra-szolgáltatás szükséges. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok

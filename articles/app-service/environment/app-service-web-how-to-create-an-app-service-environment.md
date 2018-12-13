@@ -1,5 +1,5 @@
 ---
-title: Hogyan hozhat létre egy App Service környezet v1
+title: Hogyan hozhat létre egy App Service környezet v1 – Azure
 description: Folyamat leírásának létrehozása az app service-környezet v1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 289ff76e533497a731a4fc51b3e54101a9d34a68
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1cfe8dae750cb113dd5346bfba261099fd3b6044
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958366"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276740"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Hogyan hozhat létre egy App Service környezet v1 
 
@@ -62,14 +63,14 @@ Csak az egy ASE létezhet az ASE által használt alhálózaton. Az alhálózat 
 ### <a name="after-app-service-environment-v1-creation"></a>App Service Environment-környezet v1 létrehozása után
 ASE létrehozása után módosíthatja:
 
-* Az előtér-mennyiség (minimum: 2)
-* A munkavállalók mennyiség (minimum: 2)
+* Az előtér-mennyiség (minimális: 2)
+* A munkavállalók mennyiség (minimális: 2)
 * IP-címeket az IP SSL-hez elérhető mennyiségét
 * Az előtér- vagy a dolgozók által használt erőforrás méretek COMPUTE (előtér minimális mérete P2)
 
 Nincsenek további információ a Manuális méretezés, felügyeleti és figyelési az App Service Environment-környezetek itt: [App Service-környezet konfigurálása][ASEConfig] 
 
-Az automatikus skálázás információ van itt egy útmutató: [az automatikus méretezés App Service-környezet konfigurálása][ASEAutoscale]
+Az automatikus skálázás információ van itt egy útmutató: [Az automatikus méretezés App Service-környezet konfigurálása][ASEAutoscale]
 
 Vannak, amelyek nem érhetők el a testreszabás, például az adatbázis- és további függőségeket. Ezek az Azure által kezelt és a rendszer kapható. A fájlrendszer-tárhely a teljes App Service-környezet támogatja a legfeljebb 500 GB-ig, és az adatbázis az Azure módosul, a rendszer a méretezési csoport szükség szerint.
 

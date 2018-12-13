@@ -1,6 +1,6 @@
 ---
-title: Egy Azure Cosmos DB az adatforrás indexelése az Azure Search |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre az Azure Search indexelők egy Azure Cosmos DB-adatforrásból.
+title: Egy Azure Cosmos DB adatforrás - az Azure Search index
+description: Feltérképezi az Azure Cosmos DB az adatforrást, és kiolvasni az adatokat az Azure Search a kereshető teljes szöveges index. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Cosmos DB.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747541"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311813"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Csatlakozás a Cosmos DB az Azure Search indexelők használatával
 
@@ -95,18 +96,18 @@ Hozzon létre egy adatforrást, tegye a POST:
 
 A kérés törzse tartalmazza az adatforrás-definíciót, amely a következő mezőket kell tartalmaznia:
 
-* **név**: válassza ki bármely, amelyek az adatbázis nevét.
-* **típus**: kell `documentdb`.
+* **Név**: Válassza ki bármelyik, amelyek az adatbázis nevét.
+* **Típus**: Meg kell `documentdb`.
 * **hitelesítő adatok**:
   
-  * **connectionString**: megadása kötelező. A következő formátumban adja meg a kapcsolati adatokat az Azure Cosmos DB-adatbázishoz: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` a MongoDB-gyűjtemény, adjon hozzá **ApiKind = MongoDb** kapcsolati karakterláncot: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **connectionString**: Kötelező. A következő formátumban adja meg a kapcsolati adatokat az Azure Cosmos DB-adatbázishoz: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB-gyűjtemény, vegye fel az **ApiKind = MongoDb** kapcsolati karakterláncot: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Kerülje a végpont URL-címben portszámokat. Ha a port számát adja meg, az Azure Search nem tudja indexelése az Azure Cosmos DB-adatbázist.
 * **tároló**:
   
-  * **név**: megadása kötelező. Adja meg az adatbázis-gyűjtemény indexelendő azonosítója.
-  * **lekérdezés**: nem kötelező. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába. A MongoDB-gyűjtemények lekérdezések nem támogatottak. 
-* **dataChangeDetectionPolicy**: ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakaszban.
-* **dataDeletionDetectionPolicy**: nem kötelező. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakaszban.
+  * **Név**: Kötelező. Adja meg az adatbázis-gyűjtemény indexelendő azonosítója.
+  * **lekérdezés**: Választható. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába. A MongoDB-gyűjtemények lekérdezések nem támogatottak. 
+* **dataChangeDetectionPolicy**: Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakaszban.
+* **dataDeletionDetectionPolicy**: Választható. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakaszban.
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Az alakzat lekérdezésekkel indexelt adatok
 Adja meg a beágyazott tulajdonságok vagy tömbök, projekt JSON-tulajdonságokkal simítják SQL-lekérdezést, és az adatok indexelése. 
@@ -192,7 +193,7 @@ Győződjön meg arról, hogy a célindex sémája kompatibilis sémáját, a fo
 
 <a name="CreateIndexer"></a>
 
-## <a name="step-3-create-an-indexer"></a>3. lépés: Hozzon létre egy indexelőt
+## <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
 

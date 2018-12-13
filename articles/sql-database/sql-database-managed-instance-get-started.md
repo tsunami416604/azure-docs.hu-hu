@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Felügyelt SQL-példány létrehozása | Microsoft Docs'
+title: 'Az Azure Portalon: SQL felügyelt példány létrehozása |} A Microsoft Docs'
 description: Felügyelt SQL-példányt, hálózati környezetet és ügyféloldali virtuális gépet hozhat létre a hozzáféréshez.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: c45c4476bbe8d825071e335bfab9e7b73fc31d51
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890500"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256485"
 ---
-# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rövid útmutató: Felügyelt Azure SQL Database-példány létrehozása
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Felügyelt Azure SQL Database-példány létrehozása
 
 Ez a rövid útmutató lépésről lépésre ismerteti, hogyan hozhat létre egy Azure SQL Database-beli [felügyelt példányt](sql-database-managed-instance.md) az Azure Portalon.
 
@@ -48,7 +48,7 @@ A következő lépések azt mutatják be, hogyan hozhat létre egy felügyelt p�
    |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "serveradmin", mivel ez egy fenntartott kiszolgálói szintű szerepkört.|
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Hely**|Az a hely, ahol a felügyelt példányt létre szeretné hozni|A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket.|
-   |**Virtuális hálózat**|Ezek közül bármelyikre **új virtuális hálózat létrehozása** vagy egy virtuális hálózatot, amely a korábban létrehozott, amely az űrlap korábban megadott erőforráscsoportban.| További információ virtuális hálózat konfigurálásáról felügyelt példány esetében egyéni beállításokkal: [Felügyelt SQL-példány virtuális hálózat környezeti sablonjának konfigurálása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) a Githubon. A hálózati környezet konfigurálása a felügyelt példány számára vonatkozó követelményekkel kapcsolatos információkért lásd: [virtuális hálózat konfigurálása az Azure SQL Database felügyelt példányába](sql-database-managed-instance-vnet-configuration.md). |
+   |**Virtuális hálózat**|Ezek közül bármelyikre **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózatot, és az alhálózatot.| Egy alhálózaton szürke esetén kell lennie [módosítani kell a hálózati követelményeknek megfelelő](sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances) kiválasztása előtt, célként az új felügyelt példány. A hálózati környezet konfigurálása a felügyelt példány számára vonatkozó követelményekkel kapcsolatos információkért lásd: [virtuális hálózat konfigurálása az Azure SQL Database felügyelt példányába](sql-database-managed-instance-vnet-configuration.md). |
    |**Erőforráscsoport**|Egy új vagy létező erőforráscsoport|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
 
    ![felügyelt példány űrlap](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

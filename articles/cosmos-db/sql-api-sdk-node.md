@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5616ee6f6b855cb366f24c79c73d12a03b69b2ac
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 9a859c2a8feeaf60be56404367f126bbd252771b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865658"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164857"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -106,8 +106,8 @@ ms.locfileid: "52865658"
 ### <a name="1.12.1"/>1.12.1</a>
 * Kijavítva a hiba a executeStoredProcedure, ahol a dokumentumok részt vevő kellett speciális Unicode-karaktert (LS-, PS-).
 * Kijavítva a hiba, a partíciókulcs a Unicode-karaktert tartalmazó dokumentumok kezelése.
-* Gyűjtemények létrehozása a neve-media rögzített támogatása. Github-problémát #114.
-* Engedély engedélyezési jogkivonat rögzített támogatása. Github-problémát #178.
+* Gyűjtemények létrehozása a neve-media rögzített támogatása. GitHub-problémát #114.
+* Engedély engedélyezési jogkivonat rögzített támogatása. GitHub-problémát #178.
 
 ### <a name="1.12.0"/>1.12.0</a>
 * Támogatás hozzáadva az új [konzisztenciaszint](consistency-levels.md) nevű új ConsistentPrefix.
@@ -119,8 +119,8 @@ ms.locfileid: "52865658"
 * A partíciós lekérdezések közötti párhuzamosság való hozzáadása.
 * A beállítás letiltja az SSL-ellenőrzést, amikor futtat az Azure Cosmos DB Emulatort hozzá.
 * Süllyesztett minimálisan 2500 RU/s 10,100 RU/s a particionált gyűjtemények átviteli sebességet.
-* Egypartíciós gyűjtemény a folytatási token hiba kijavítva. Github-problémát #107.
-* Rögzített 0 kezelésében, egyetlen param executeStoredProcedure hibát. Github-problémát #155.
+* Egypartíciós gyűjtemény a folytatási token hiba kijavítva. GitHub-problémát #107.
+* Rögzített 0 kezelésében, egyetlen param executeStoredProcedure hibát. GitHub-problémát #155.
 
 ### <a name="1.10.2"/>1.10.2</a>
 * Rögzített felhasználói ügynök fejléc tartalmazza az SDK-verzió.
@@ -152,10 +152,10 @@ ms.locfileid: "52865658"
 * Kijavított RangePartitionResolver.resolveForRead hiba, ahol ez volt nem visszaadó hivatkozások a hibás concat eredmények miatt.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Rögzített hashPartitionResolver resolveForRead(): Ha nincs megadva partíciós kulcs lett kivétel a kivétel, minden regisztrált hivatkozások listájának visszaadása helyett.
+* Rögzített hashPartitionResolver resolveForRead(): Ha nincs megadva partíciós kulcs lett értesítő kivétel, minden regisztrált hivatkozások listájának visszaadása helyett.
 
 ### <a name="1.5.4"/>1.5.4</a>
-* Javítva [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – HTTPS ügynök dedikált: az Azure Cosmos DB célokra globális ügynök módosítása. Használja a dedikált ügynököt az összes a lib kérelmek.
+* Javítva [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – dedikált HTTPS ügynök: Kerülje az Azure Cosmos DB célokra globális ügynök módosítása. Használja a dedikált ügynököt az összes a lib kérelmek.
 
 ### <a name="1.5.3"/>1.5.3</a>
 * Javítva [#81](https://github.com/Azure/azure-documentdb-node/issues/81) – megfelelően kötőjelek szerepelhetnek, az adathordozó-azonosítók kezelésére.

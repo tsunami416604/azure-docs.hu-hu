@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: d8dec2b056107962e3e8abd4aa7073adb1ae898d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883185"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186242"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Log Analytics-lekérdezéseket a karakterláncokkal való munka
 
@@ -99,7 +98,7 @@ countof(text, search [, kind])
 - `search` – Egyszerű karakterlánc- vagy reguláris kifejezésnek megfelelő szöveg belül.
 - `kind` - _Normál_ | _regex_ (alapértelmezett: normál).
 
-### <a name="returns"></a>adja vissza
+### <a name="returns"></a>Visszatérési érték
 
 A tároló a keresési karakterlánc nem egyező száma. Egyszerű karakterlánc-egyezés átfedésbe, amíg megfelel a reguláris kifejezés nem.
 
@@ -141,7 +140,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` – Egy karakterlánc keresése.
 - `typeLiteral` – Egy nem kötelező típusú konstans (például typeof(long)). Ha meg van adva, a kinyert karakterláncrészletet ilyen alakítja át.
 
-### <a name="returns"></a>adja vissza
+### <a name="returns"></a>Visszatérési érték
 A jelzett rögzítési csoport captureGroup összeveti a karakterláncrészletet typeLiteral igény szerint konvertálja.
 Ha nem egyezik meg, vagy a típus átalakítás sikertelen, nesmí vracet hodnotu null.
 
@@ -247,7 +246,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` – A megfelelő regex bármilyen egyezés helyettesítő regex. \0 használatával tekintse meg a teljes egyezik, az első rögzítési csoport \1, \2, és így tovább a következő rögzítési csoportok.
 - `input_text` – A Keresés a bemeneti karakterlánc.
 
-### <a name="returns"></a>adja vissza
+### <a name="returns"></a>Visszatérési érték
 A szöveg írja újra az értékelést az összes regex-egyezés lecserélése után. Egyezések nincsenek átfedésben.
 
 ### <a name="examples"></a>Példák

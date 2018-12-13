@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 305ea27e787196f648fcb4c536f33b12c924c015
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315450"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164695"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: Párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 
 Futtassa párhuzamos R számítási feladatait skálázva a kis méretű [doAzureParallel](http://www.github.com/Azure/doAzureParallel) R-csomag segítségével, amely lehetővé teszi az Azure Batch használatát közvetlenül az R-munkamenetből. A doAzureParallel csomag a népszerű [foreach](http://cran.r-project.org/web/packages/foreach/index.html) R-csomagra épül. A doAzureParallel a foreach ciklus minden ismétlését Azure Batch-műveletként küldi el.
 
@@ -45,7 +45,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>A doAzureParallel telepítése
 
-Telepítse a [doAzureParallel Github csomagot](http://www.github.com/Azure/doAzureParallel) az RStudio konzoljában. Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
+Az RStudio konzoljában, telepítse a [doAzureParallel GitHub csomagot](http://www.github.com/Azure/doAzureParallel). Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
 
 ```R
 # Install the devtools package  

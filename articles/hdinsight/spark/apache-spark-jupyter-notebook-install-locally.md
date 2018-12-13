@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3cd6ef1716d455c5ac755122b8696dbc43fdf459
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581867"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163378"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 
@@ -36,9 +36,9 @@ Az itt felsorolt előfeltételeket nem a Jupyter telepítése. Ezek a, a Jupyter
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter notebook telepítse a számítógépre
 
-A Jupyter notebooks telepítése előtt telepítenie kell az Python. Python és a Jupyter állnak rendelkezésre, része a [Anaconda terjesztési](https://www.continuum.io/downloads). Anaconda telepítésekor telepíti a Python egy terjesztési. Anaconda telepítése után adja hozzá a Jupyter telepítése megfelelő parancsok futtatásával.
+A Jupyter notebooks telepítése előtt telepítenie kell az Python. Python és a Jupyter állnak rendelkezésre, része a [Anaconda terjesztési](https://www.anaconda.com/download/). Anaconda telepítésekor telepíti a Python egy terjesztési. Anaconda telepítése után adja hozzá a Jupyter telepítése megfelelő parancsok futtatásával.
 
-1. Töltse le a [Anaconda telepítő](https://www.continuum.io/downloads) a platform és futtassa a telepítőt. A varázsló futtatásakor ellenőrizze, hogy Anaconda hozzáadása a PATH változóban lehetőséget választotta.
+1. Töltse le a [Anaconda telepítő](https://www.anaconda.com/download/) a platform és futtassa a telepítőt. A varázsló futtatásakor ellenőrizze, hogy Anaconda hozzáadása a PATH változóban lehetőséget választotta.
 1. A következő parancsot a Jupyter telepítése.
 
         conda install jupyter
@@ -138,12 +138,12 @@ Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan cs
 >
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

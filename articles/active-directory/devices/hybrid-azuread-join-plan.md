@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e273568a04ec2a3758684025acf8034b8e788627
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871338"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274564"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -112,7 +112,6 @@ Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az inter
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
 
-
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Tekintse át a hibrid Azure AD join eszköz vezérlése
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ez a példa true, ellenőrizze, hogy minden megfelelően működik-e a kezdeti bevezetés során.
@@ -145,7 +144,22 @@ Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti 
  Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatív bejelentkezési azonosító-támogatás a hibrid Azure AD-csatlakozás
 
+Korlátozott támogatást nyújt a Windows 10-es hibrid Azure AD-csatlakozás [alternatív bejelentkezési azonosítók](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) alapján a másodlagos bejelentkezési azonosítót, [hitelesítési módszer](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Nincsenek másodlagos felhasználói azonosítók, amelyek a környezetében létezhet két típusát.
+
+ - Irányítható másodlagos bejelentkezési azonosítót: Egy útválasztós alternatív bejelentkezési azonosítóval rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például, ha az elsődleges tartomány, a contoso.com contoso.org contoso.co.uk jsou Contoso tulajdonában lévő érvényes tartományok és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)
+ 
+ - A nem irányítható másodlagos bejelentkezési azonosítót: Olyan nem átirányítható alternatív bejelentkezési azonosító nem rendelkezik egy ellenőrzött tartomány. Akkor csak a szervezet magánhálózaton belül. Például ha az elsődleges tartomány, a contoso.com contoso.local nem egy ellenőrizhető az internetes tartományához de szolgál a Contoso hálózatán belül.
+ 
+Az alábbi táblázat részletesen vagy a Windows 10-es hibrid Azure AD-csatlakozás ezek alternatív bejelentkezési azonosítók támogatása
+
+|Alternatív bejelentkezési azonosító típusa|Alkalmazási tartomány típusa|Windows 10-es verzió|Leírás|
+|-----|-----|-----|-----|
+|Irányítható|Összevont |A 1703-as kiadás|Általánosan elérhető|
+|Irányítható|Managed|Az 1709-es kiadás|Jelenleg előzetes verzióban érhető el privát. Az Azure AD SSPR nem támogatott. |
+|A nem irányítható|Összevont|1803 kiadásáról|Általánosan elérhető|
+|A nem irányítható|Managed|Nem támogatott||
 
 
 

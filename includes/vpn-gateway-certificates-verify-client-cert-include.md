@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9fa18b14b82376a25bb434acd770d340b1ef9262
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: c0ce4e882f270f5e0c789a608aaada5c6c9cba92
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197087"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323729"
 ---
-Ha problémákat tapasztal a csatlakozás során, ellenőrizze a következőket:
+Ha ütközik a csatlakozás, ellenőrizze a következőket:
 
-- Győződjön meg arról, hogy az exportált ügyféltanúsítványt .pfx fájlként exportálta az alapértelmezett „Minden tanúsítvány belefoglalása a tanúsítványláncba” beállítással. Ha az exportálást ezzel az értékkel végzi, a rendszer a főtanúsítvány információit is exportálja. Az ügyféltanúsítvány az ügyfélszámítógépre való telepítésekor az alkalmazás a .pfx fájlban lévő főtanúsítványt is telepíti az ügyfélszámítógépre. Az ügyfélszámítógépen telepítve kell lennie a főtanúsítvány adatainak. Ennek ellenőrzéséhez lépjen a **Felhasználói tanúsítványok kezelése** felületre, és navigáljon a **Megbízható legfelső szintű hitelesítésszolgáltatók\Tanúsítványok** részhez. Ellenőrizze, hogy a főtanúsítvány szerepel-e a listában. A főtanúsítvány a hitelesítés működéséhez szükséges.
+- Ha az ügyféltanúsítványokat exportált **Tanúsítványexportáló varázsló**, ellenőrizze, hogy exportálta a .pfx-fájlként, és kiválasztott **minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges**. Ha az ezt az értéket az exportálást, a főtanúsítvány információit is exportálja. Miután telepítette a tanúsítványt az ügyfélszámítógépen, a .pfx fájlban a legfelső szintű tanúsítvány is telepítve van. Győződjön meg arról, hogy telepítve van-e a legfelső szintű tanúsítványt, nyissa meg a **felhasználói tanúsítványok kezelése** válassza **megbízható legfelső szintű hitelesítésszolgáltatók\Tanúsítványok**. Győződjön meg arról, hogy a legfelső szintű tanúsítvány szerepel a listán, amelynek hitelesítés működéséhez jelen kell lennie.
 
-- Ha vállalati hitelesítésszolgáltatói megoldás használatával kiadott tanúsítványt használ, és problémák merülnek fel a hitelesítés során, ellenőrizze a hitelesítési sorrendet az ügyféltanúsítványon. A hitelesítési lista sorrendjének ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és lépjen a **Részletek > Kibővített kulcshasználat** részre. Ellenőrizze, hogy a listán az „ügyfél-hitelesítés” jelenik-e meg első helyen. Ha nem, ki kell adnia egy ügyféltanúsítványt, amely az ügyfél-hitelesítést a lista első helyén tartalmazó felhasználói sablonon alapul.
+- Ha vállalati Hitelesítésszolgáltatói megoldás által kiállított tanúsítványt használt, és nem tudják hitelesíteni magukat, ellenőrizze a hitelesítési sorrendet az ügyféltanúsítványon. A hitelesítési lista sorrendjének ellenőrzéséhez kattintson duplán az ügyféltanúsítvány kiválasztása a **részletek** fülre, majd kiválasztja az **kibővített kulcshasználat**. Győződjön meg arról, hogy *ügyfél-hitelesítés* az első elem a listában. Ellenkező esetben adja ki a felhasználó sablont, amelynek alapján ügyféltanúsítvány *ügyfél-hitelesítés* a lista első helyén.
 
 - A pont–hely (P2S) hibaelhárítással kapcsolatos további információkért lásd: [Troubleshoot P2S connections](../articles/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) (Pont–hely kapcsolatok hibaelhárítása).

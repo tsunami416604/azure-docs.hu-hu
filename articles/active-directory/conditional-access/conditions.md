@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: eb7d5dc2d38d814625e904d1270446f5f1671624
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056384"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321101"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
 
-Szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Egy feltételes hozzáférési szabályzatot határoz meg a választ ("majd ehhez"), az az oka a szabályzat elindítása ("e hiba megjelenésekor"). 
+Szabályozhatja a felhasználók miként férhetnek hozzá a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Egy feltételes hozzáférési szabályzatot határoz meg a választ ("majd ehhez"), az az oka a szabályzat elindítása ("e hiba megjelenésekor"). 
 
 ![OK és válasz](./media/conditions/10.png)
 
@@ -50,7 +50,7 @@ Ha bejelöli **minden felhasználó**, minden felhasználó a címtárban, bele�
 
 Ha Ön **felhasználók és csoportok kiválasztása**, beállíthatja a következő beállításokat:
 
-* **Minden vendégfelhasználó** célozza meg, olyan szabályzatot, amely B2B vendégfelhasználókat. Ez a feltétel megegyezik bármilyen felhasználói fiókot, amely rendelkezik a **userType** attribútum beállítása **vendég**. Ezt a beállítást is használhatja, ha egy szabályzatot kell alkalmazni, amint az a fiók létrejön a meghívó folyamatban, az Azure ad-ben.
+* **Minden vendégfelhasználó** célozza meg, olyan szabályzatot, amely B2B vendégfelhasználókat. Ez a feltétel megegyezik bármilyen felhasználói fiókot, amely rendelkezik a **userType** attribútum beállítása **vendég**. Akkor használja ezt a beállítást, ha egy szabályzatot kell alkalmazni, amint az a fiók létrejön a meghívó folyamatban, az Azure ad-ben.
 
 * **Címtárbeli szerepkörök** célozza meg benne egy szabályzatot a felhasználó szerepkör-hozzárendelés alapján. Ez a feltétel támogatja a címtárbeli szerepköröket, például **globális rendszergazdai** vagy **jelszókezelő**.
 
@@ -82,7 +82,7 @@ Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azon
 
 ## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-A bejelentkezési kockázat azt jelzi, hogy annak a valószínűségét (magas, közepes vagy alacsony), amely egy bejelentkezés nem volt kísérlet egy felhasználói fiók jogos tulajdonosa. Az Azure AD számítja ki a bejelentkezési kockázati szint alatt egy felhasználó a bejelentkezést. A számított bejelentkezési kockázati szint használhatja feltételként egy feltételes hozzáférési házirendben.
+A bejelentkezési kockázat azt jelzi, hogy annak a valószínűségét (magas, közepes vagy alacsony) egy bejelentkezés nem volt végrehajtott egy felhasználói fiók jogos tulajdonosa. Az Azure AD számítja ki a bejelentkezési kockázati szint alatt egy felhasználó a bejelentkezést. A számított bejelentkezési kockázati szint használhatja feltételként egy feltételes hozzáférési házirendben.
 
 ![Bejelentkezési kockázati szintek](./media/conditions/22.png)
 
@@ -93,7 +93,7 @@ Ez a feltétel gyakori alkalmazási helyzetei, amelyek rendelkeznek a következ�
 - A magas bejelentkezési kockázat a felhasználók blokkolása. Ez a védelem megakadályozza, hogy a felhasználók vélhetően feldolgozásától a felhőalkalmazásokhoz hozzáférő. 
 - Egy közepes méretű bejelentkezési kockázat rendelkező felhasználók számára a többtényezős hitelesítés szükséges. A többtényezős hitelesítés kényszerítése, megadhat további bizalom, hogy a bejelentkezési végzi el a fiók jogos tulajdonosa.
 
-További információkért lásd a [kockázatos bejelentkezésekkel](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins) foglalkozó részt.  
+További információkért lásd: [letiltja a hozzáférést, a munkamenet kockázata észlelésekor](app-sign-in-risk.md).  
 
 ## <a name="device-platforms"></a>Eszközplatformok
 
@@ -111,13 +111,12 @@ Egy közös használati eset, ez a feltétel van egy szabályzatot, amely korlá
 
 ## <a name="device-state"></a>Eszköz állapota
 
-Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csatlakoztatott eszközökre és a egy feltételes hozzáférési szabályzatot megfelelőként megjelölve eszközökre. Ez az állapot akkor hasznos, ha a szabályzat csak további munkamenetek biztonsága nem felügyelt eszközről kell alkalmazni. Ha például csak a Microsoft Cloud App Security munkamenet-vezérlő érvényesítési Ha egy eszköz nem felügyelt. 
+Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csatlakoztatott eszközökre és a egy feltételes hozzáférési szabályzatot megfelelőként megjelölve eszközökre. 
 
 
 ![Eszközállapot konfigurálása](./media/conditions/112.png)
 
-Ha azt szeretné, a nem felügyelt eszközök hozzáférésének letiltására, alkalmazzon [eszközalapú feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
+Ez az állapot akkor hasznos, ha a szabályzat csak további munkamenetek biztonsága nem felügyelt eszközről kell alkalmazni. Ha például csak a Microsoft Cloud App Security munkamenet-vezérlő érvényesítési Ha egy eszköz nem felügyelt. 
 
 ## <a name="locations"></a>Helyek
 
@@ -136,98 +135,67 @@ További információkért lásd: [a helyfeltétel Mi az Azure Active Directory 
 
 ## <a name="client-apps"></a>Ügyfélalkalmazások
 
-Az ügyfél alkalmazások feltétel használatával különböző típusú alkalmazás egy házirendet alkalmazhatja. Példák webhelyek, szolgáltatások, mobilalkalmazások és asztali alkalmazásokhoz. 
+Alapértelmezés szerint a feltételes hozzáférési szabályzat vonatkozik a következő alkalmazásokat:
+
+- [Böngészőben megjelenő alkalmazásokba](technical-reference.md#supported-browsers) -böngésző alkalmazások közé tartoznak a webhelyeken a SAML, WS-Federation, vagy az OpenID Connect webes egyszeri bejelentkezés protokollok. Ez bármely webhelyre vagy webalkalmazásra szolgáltatás, amely regisztrálva van az OAuth bizalmas ügyfélként is vonatkozik. Ha például az Office 365 SharePoint-webhely. 
+
+- [Mobil- és asztali alkalmazások modern hitelesítést használó](technical-reference.md#supported-mobile-applications-and-desktop-clients) – az alkalmazások tartalmazzák az Office asztali alkalmazásokban, és a telefonos alkalmazások. 
 
 
+Ezenkívül célként a szabályzat adott ügyfélalkalmazásokra nem modern hitelesítést használó, például:
 
-Egy alkalmazás osztályozása a következő:
+- A Microsoft Exchange ActiveSync protokollt használó ügyfélalkalmazások. Ha a szabályzat akkor tiltja az Exchange ActiveSync segítségével, az érintett felhasználók beolvasása egyetlen karanténüzenetet információkat, miért van letiltva. Ha szükséges, akkor az e-mailben regisztrálták az eszközüket az Intune-nal útmutatást tartalmaz.
 
-- Egy webhelyre vagy szolgáltatásba, ha azt webes egyszeri bejelentkezés protokollokat használ, SAML, WS-Fed, vagy az OpenID Connect bizalmas ügyfél számára.
+- Más ügyfelek számára. Az alkalmazások tartalmazzák a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó ügyfelek számára. További információkért lásd: [modern hitelesítés működéséről, az Office 2013 és az Office 2016 ügyfélalkalmazások](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
-- A mobilalkalmazás vagy asztali alkalmazás, ha a mobilalkalmazás, OpenID Connect egy natív ügyfél használ.
+![Ügyfélalkalmazások](./media/conditions/41.png)
 
-Az ügyfélalkalmazások, használhatja a feltételes hozzáférési házirend listájáért lásd: [ügyfél alkalmazások feltétel](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition) az Azure Active Directory feltételes hozzáférés műszaki útmutatóban.
+Ez a feltétel gyakori alkalmazási helyzetei azok szabályzatok a következő követelményekkel:
 
-Gyakori alkalmazási esetei ezt az állapotot a következő védelmi szabályzatok: 
+- **[Egy felügyelt eszköz megkövetelése](require-managed-devices.md)**  adatletöltéshez eszköz mobil- és asztali alkalmazások esetében. Egy időben bármilyen eszközről böngészőalapú hozzáférés engedélyezése. Ebben a forgatókönyvben megakadályozza, hogy a dokumentum mentése folyamatban van, és szinkronizálja egy nem felügyelt eszközhöz. Ezzel a módszerrel csökkentheti annak valószínűsége az adatvesztést, ha az eszköz elveszett vagy ellopták.
 
-- Szükséges egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) mobil- és asztali alkalmazásokhoz, amelyek nagy mennyiségű adat letöltése az eszközön. Egy időben bármilyen eszközről böngészőalapú hozzáférés engedélyezése.
+- **[Egy felügyelt eszköz megkövetelése](require-managed-devices.md)**  alkalmazások az ActiveSync használatával az Exchange Online-hoz.
+
+- **[Az örökölt hitelesítés letiltása](block-legacy-authentication.md)**  az Azure AD (más ügyfelek)
 
 - Webes alkalmazásokhoz való hozzáférés letiltása, de a mobil és asztali alkalmazásokhoz való hozzáférés.
 
-Ezt az állapotot webes egyszeri bejelentkezés és a modern hitelesítési protokollok is alkalmazható. Is alkalmazhat, levelezési alkalmazásokban, amely a Microsoft Exchange ActiveSync programot használ. Például a legtöbb okostelefonok natív levelezőalkalmazásait. 
 
-Az ügyfél alkalmazások feltétel csak válassza ki, ha a Microsoft Office 365 Exchange Online az egyetlen olyan kiválasztott felhőalapú alkalmazás.
 
-![Felhőalkalmazások](./media/conditions/32.png)
+### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-ügyfelek
 
-Kiválasztásával **Exchange ActiveSync** ügyfélként alkalmazások feltétel csak akkor, ha nincs más házirendben konfigurált feltételek támogatott. Azonban szűkíthető hatóköre csak a támogatott platformokra alkalmazza ezt az állapotot.
+Bejelölheti a **Exchange ActiveSync-ügyfelek** ha:
 
+
+- A Microsoft Office 365 Exchange Online az egyetlen olyan kiválasztott felhőalapú alkalmazás.
+
+    ![Felhőalkalmazások](./media/conditions/32.png)
+
+- Nem kell más házirendben konfigurált feltételeknek. Azonban ez az állapot csak a alkalmazni hatókörének szűkíthető [által támogatott platformok](technical-reference.md#device-platform-condition).
  
-![Házirend alkalmazása csak a támogatott platformokra](./media/conditions/33.png)
-
-Ez a feltétel alkalmazása csak a támogatott platformokra megegyezik az összes eszközplatformot egy [eszköz platform feltétel](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
-
-![Eszközplatformok konfigurálása](./media/conditions/34.png)
+    ![Házirend alkalmazása csak a támogatott platformokra](./media/conditions/33.png)
 
 
- További információval a következő cikkek szolgálnak:
+Ha a hozzáférés blokkolva van-e mert egy [felügyelt eszközök](require-managed-devices.md) van szükség esetén az érintett felhasználók beolvasása egyetlen e-mail, amely segítséget nyújt számukra az Intune-nal. 
+
+Ha szükség egy jóváhagyott alkalmazáshoz, az érintett felhasználók beolvasása a szabályokat, telepítheti és használhatja az Outlook mobile ügyfél.
+
+Egyéb esetben például MFA megadása kötelező, ha az érintett felhasználók le lesznek tiltva, mert az alapszintű hitelesítést használó ügyfelek nem támogatják a többtényezős hitelesítés.
+
+Ezzel a beállítással a felhasználók és csoportok csak célba. Nem támogatja a Vendégek vagy szerepköröket. Ha Vendég vagy szerepkör feltétel van konfigurálva, minden felhasználó le lesznek tiltva, mert a feltételes hozzáférés nem tudja megállapítani, ha a alkalmazni kell a szabályzatot a felhasználó vagy nem.
+
+
+ További információkért lásd:
 
 - [Az Azure Active Directory feltételes hozzáférés beállítása a SharePoint Online és Exchange online-hoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
 - [Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
-### <a name="legacy-authentication"></a>Örökölt hitelesítés  
-
-Feltételes hozzáférés mostantól a régebbi Microsoft Office ügyfelekről, amelyek nem támogatják a modern hitelesítést vonatkozik. Levelezési protokollok, például a POP, IMAP és SMTP használó ügyfelek is vonatkozik. Az örökölt hitelesítés használata esetén is beállítható szabályzatok, például **más ügyfelek hozzáférésének blokkolása**.
-
-
-![Ügyfélalkalmazások konfigurálása](./media/conditions/160.png)  
-
-
-#### <a name="known-issues"></a>Ismert problémák
-
-- A házirend beállítása **más ügyfelek** letiltja az egyes ügyfelek, például SPConnect az egész munkahely számára. Ezt a blokkot, mert a régebbi ügyfelek hitelesítése nem várt módon történik. A probléma nem vonatkozik a fő Office-alkalmazások, például a régebbi Office-ügyfelekhez. 
-
-- A házirend érvénybe lép, akár 24 órát is igénybe vehet. 
-
-
-#### <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-**K:** letiltja ezt a hitelesítést a Microsoft Exchange-webszolgáltatások?
-
-Ez a hitelesítési protokoll által használt webes Exchange-szolgáltatások függ. Az Exchange-webszolgáltatások alkalmazás modern hitelesítést használja, ha alá tartozó a **mobilalkalmazások és asztali ügyfelek** ügyfélalkalmazás. Alapszintű hitelesítés hatálya alá tartozik a **más ügyfelek** ügyfélalkalmazás.
-
-
-**K:** vezérlési lehetőségeket is felhasználhatom **más ügyfelek**?
-
-Bármilyen vezérlőt is konfigurálható a **más ügyfelek**. A végfelhasználói élmény lesz azonban minden esetben a hozzáférés blokkolva. **Más ügyfelek** nem támogatják a vezérlők, például a többtényezős hitelesítés, a megfelelő eszköz és a tartományhoz való csatlakozást. 
- 
-**K:** milyen feltételek mellett is felhasználhatom **más ügyfelek**?
-
-Tetszőleges feltételt is konfigurálható a **más ügyfelek**.
-
-**K:** Does Exchange ActiveSync támogatja az összes feltételeit és szabályzóit?
-
-Nem. A következő lista foglalja össze az Exchange ActiveSync-támogatását: 
-
-- Exchange ActiveSync csak a felhasználó és a csoportokat fognak megcélozni támogatja. Nem támogatja a Vendégek vagy szerepköröket. Ha Vendég vagy szerepkör feltétel van konfigurálva, az összes felhasználók le lesznek tiltva. Exchange ActiveSync minden felhasználó letiltja, mert nem tudja megállapítani, ha a alkalmazni kell a szabályzatot a felhasználó vagy nem.
-
-- Exchange ActiveSync csak a Microsoft Exchange online-hoz a cloud app működik. 
-
-- Exchange ActiveSync kivételével az ügyféloldali alkalmazás bármilyen feltétel nem támogatja. 
-
-- Exchange ActiveSync bármilyen vezérlőt is konfigurálhatók. Eszközmegfelelőség kivételével az összes vezérlő egy blokk vezethet.
-
-**K:** a házirendek vonatkoznak az összes ügyfél-alkalmazások a jövőben alapértelmezés szerint?
-
-Nem. Nem történik változás az alapértelmezett házirend viselkedés. A házirendek továbbra is a böngésző és a mobilalkalmazások és asztali ügyfelek alapértelmezés szerint vonatkozik.
-
-
 
 ## <a name="next-steps"></a>További lépések
 
-- Feltételes hozzáférési szabályzat konfigurálása, lásd: [a rövid útmutató: többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Feltételes hozzáférési szabályzat konfigurálása, lásd: [a rövid útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
 
 - Feltételes hozzáférési házirendjei a környezet konfigurálásához tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
 

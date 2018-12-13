@@ -1,5 +1,5 @@
 ---
-title: Az ILB App Service-környezet integrálható az Azure Application Gateway
+title: ILB App Service Environment-környezet integrálható az Application Gateway – Azure
 description: Az ILB App Service-környezet az alkalmazások integrálása egy Application Gateway a forgatókönyv
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: f1e527918086fb003696c09828969e371ff9ca96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968817"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273816"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Az ILB App Service-környezet integrálható az Azure Application Gateway #
 
@@ -64,7 +65,7 @@ Az átjáró, amely az ILB App Service-környezetben használja az alhálózat n
 
 1. Az Azure Portalon lépjen a **új** > **hálózati** > **Application Gateway**.
 
-1. Az a **alapjai** terület:
+2. Az a **alapjai** terület:
 
    a. A **neve**, adja meg az Application Gateway neve.
 
@@ -78,7 +79,7 @@ Az átjáró, amely az ILB App Service-környezetben használja az alhálózat n
 
    ![Új Application Gateway létrehozása alapjai][2]
 
-1. Az a **beállítások** terület:
+3. Az a **beállítások** terület:
 
    a. A **virtuális hálózati**, válassza ki az App Service Environment-környezet virtuális hálózatot.
 
@@ -94,25 +95,25 @@ Az átjáró, amely az ILB App Service-környezetben használja az alhálózat n
 
    ![Új Application Gateway-létrehozási beállítások][3]
     
-1. Az a **összefoglalás** részen tekintse át a beállításokat, és válassza ki **OK**. Az Application Gateway is igénybe vehet egy kicsit több mint 30 perc a telepítés befejezéséhez.  
+4. Az a **összefoglalás** részen tekintse át a beállításokat, és válassza ki **OK**. Az Application Gateway is igénybe vehet egy kicsit több mint 30 perc a telepítés befejezéséhez.  
 
-1. Az Application Gateway telepítés befejezése után nyissa meg az Application Gateway-portálról. Válassza ki **háttérkészlet**. ILB-címét adja meg az ILB App Service-környezet.
+5. Az Application Gateway telepítés befejezése után nyissa meg az Application Gateway-portálról. Válassza ki **háttérkészlet**. ILB-címét adja meg az ILB App Service-környezet.
 
    ![Háttérkészlet konfigurálása][4]
 
-1. A háttérkészlet konfigurálása a folyamat befejezése után jelölje ki a **állapotadat-mintavételek**. Hozzon létre egy állapotmintát az alkalmazáshoz használni kívánt tartománynév esetében. 
+6. A háttérkészlet konfigurálása a folyamat befejezése után jelölje ki a **állapotadat-mintavételek**. Hozzon létre egy állapotmintát az alkalmazáshoz használni kívánt tartománynév esetében. 
 
    ![Állapotminták konfigurálása][5]
     
-1. Az állapot-mintavételei konfigurálásának folyamatán befejezése után jelölje ki a **HTTP-beállítások**. Válassza ki a meglévő beállítások szerkesztése **az egyéni mintavétel**, és válassza ki a mintavételt, amelyet a konfigurált.
+7. Az állapot-mintavételei konfigurálásának folyamatán befejezése után jelölje ki a **HTTP-beállítások**. Válassza ki a meglévő beállítások szerkesztése **az egyéni mintavétel**, és válassza ki a mintavételt, amelyet a konfigurált.
 
    ![HTTP-beállítások konfigurálása][6]
     
-1. Nyissa meg az Application Gateway **áttekintése** szakaszt, és másolja a nyilvános IP-címet, amely az Application Gateway használja. Állítsa be az IP-cím, egy A rekordot az alkalmazás tartománynevet, vagy egy CNAME rekordot a DNS-név arra a címre használata. Válassza ki a nyilvános IP-címet, és másolja a nyilvános IP-cím felhasználói felületről helyett másolja azt a hivatkozásból az Application Gateway az egyszerűbb **áttekintése** szakaszban. 
+8. Nyissa meg az Application Gateway **áttekintése** szakaszt, és másolja a nyilvános IP-címet, amely az Application Gateway használja. Állítsa be az IP-cím, egy A rekordot az alkalmazás tartománynevet, vagy egy CNAME rekordot a DNS-név arra a címre használata. Válassza ki a nyilvános IP-címet, és másolja a nyilvános IP-cím felhasználói felületről helyett másolja azt a hivatkozásból az Application Gateway az egyszerűbb **áttekintése** szakaszban. 
 
    ![Application Gateway-portál][7]
 
-1. Állítsa be az alkalmazás számára az egyéni tartománynév az ILB App Service Environment környezetben. Nyissa meg az alkalmazás a portálon, és a **beállítások**válassza **egyéni tartományok**.
+9. Állítsa be az alkalmazás számára az egyéni tartománynév az ILB App Service Environment környezetben. Nyissa meg az alkalmazás a portálon, és a **beállítások**válassza **egyéni tartományok**.
 
    ![Egyéni tartománynév beállítása az alkalmazásban][8]
 

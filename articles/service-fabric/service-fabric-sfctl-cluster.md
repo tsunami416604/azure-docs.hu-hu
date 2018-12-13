@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b0491d59e4ac495750a338ad743aab69ff47a4e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cf283803dfa45c362330ccf73fc5eea198d3a5e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494243"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278644"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
 Válassza ki, kezelése és üzemeltetése a Service Fabric-fürtök.
@@ -30,7 +30,7 @@ Válassza ki, kezelése és üzemeltetése a Service Fabric-fürtök.
 | --- | --- |
 | kód-verziók | Service Fabric-fürtben üzembe helyezett kód verziók fabric listáját kéri le. |
 | config-versions | Service Fabric-fürtben üzembe helyezett konfigurációs verziók fabric listáját kéri le. |
-| állapot | Service Fabric-fürt állapotának beolvasása. |
+| egészségügy | Service Fabric-fürt állapotának beolvasása. |
 | Manifest | A Service Fabric fürtjegyzék beolvasása. |
 | művelet – Mégse | Egy felhasználó által előidézett hibák művelet megszakítása. |
 | művelet – lista | A megadott adatok alapján szűrt felhasználó által előidézett hibák műveletek listájának beolvasása. |
@@ -140,9 +140,9 @@ A Service Fabric fürtjegyzék beolvasása. A fürtjegyzék tartalmazza a fürt 
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl fürt művelet megszakítás
 Egy felhasználó által előidézett hibák művelet megszakítása.
 
-A következő API-kat, indítsa el CancelOperation használatával törlődhet tartalék műveletek: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Ha kényszerített false (hamis), majd a megadott felhasználó által kiváltott művelet szabályosan leállítja, majd törlődik.  Kényszerített értéke igaz, ha a rendszer megszakítja a parancs, és egyes belső állapot maradhatnak.  Adja meg a force TRUE körültekintően kell használni. Kényszerített igaz értékű-e API meghívása nem engedélyezett, amíg az API már meghívta a kényszerített értéke FALSE (hamis) első ugyanazt a teszt parancsot, vagy, ha a vizsgálat parancs már van egy OperationState.RollingBack OperationState. 
+A következő API-kat, indítsa el CancelOperation használatával törlődhet tartalék műveletek\: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Ha kényszerített false (hamis), majd a megadott felhasználó által kiváltott művelet szabályosan leállítja, majd törlődik.  Kényszerített értéke igaz, ha a rendszer megszakítja a parancs, és egyes belső állapot maradhatnak.  Adja meg a force TRUE körültekintően kell használni. Kényszerített igaz értékű-e API meghívása nem engedélyezett, amíg az API már meghívta a kényszerített értéke FALSE (hamis) első ugyanazt a teszt parancsot, vagy, ha a vizsgálat parancs már van egy OperationState.RollingBack OperationState. 
 
- Pontosítás\: OperationState.RollingBack azt jelenti, hogy a rendszer lesz/törli az belső állapot parancs végrehajtása okozta. Ez lesz nem esetén az adatok helyreállítását a vizsgálat parancs lett az adatvesztést okozhat.  Például ha StartDataLoss hívja meg az API meghívásához, a rendszer fogja csak a törlés belső állapot a következő parancs futtatásával. Ez lesz nem a célpartíción esetén az adatok helyreállítását, a parancs elegendő haladt előre a adatvesztést okozhat. 
+Pontosítás\: OperationState.RollingBack azt jelenti, hogy a rendszer lesz/törli az belső állapot parancs végrehajtása okozta.  Ez lesz nem esetén az adatok helyreállítását a vizsgálat parancs lett az adatvesztést okozhat.  Például ha StartDataLoss hívja meg az API meghívásához, a rendszer fogja csak a törlés belső állapot a következő parancs futtatásával. Ez lesz nem a célpartíción esetén az adatok helyreállítását, a parancs elegendő haladt előre a adatvesztést okozhat. 
 
 > [!NOTE]
 > Ha ez az API meghívása kényszerített == igaz, belső állapot maradhatnak.
@@ -243,13 +243,13 @@ A jelentésnek tartalmaznia kell a forrás az egészségügyi jelentés és, ame
 | --- | --- |
 | – rendszerállapot-tulajdonság [kötelező] | A tulajdonság az állapotadatokat. <br><br> Egy entitás különböző tulajdonságaihoz állapotjelentések rendelkezhet. Egy karakterláncot és a nem rögzített enumerálása, hogy az Eszközállapot-feltételt, amely elindítja a jelentés kategorizálása riporter rugalmasan tulajdonság. Például egy riporter a SourceId "LocalWatchdog" figyelheti az állapotot, a rendelkezésre álló lemez egy csomóponton, ezen a csomóponton, jelentést "AvailableDisk" tulajdonság. A ugyanolyan jelentéskészítői figyelheti a csomópont-kapcsolatban –, jelentést ugyanazon a csomóponton "Kapcsolat" tulajdonságot. A health Store adatbázisban ezek a jelentések az adott csomópont számára külön állapotesemények kell kezelni. A SourceId együtt a tulajdonság egyedileg azonosítja az egészségügyi adatokat. |
 | --állapota [kötelező] | Lehetséges értékek a következők\: "Érvénytelen", "Ok", "Figyelmeztetés", "Error", "Ismeretlen". |
-| – [kötelező] adatforrás-azonosítója | Az adatforrás neve azonosítja az ügyfél, a figyelő vagy a system összetevője, amely az egészségügyi információk jönnek létre. |
+| – [kötelező] adatforrás-azonosítója | Az adatforrás neve, amely azonosítja az ügyfél, a figyelő vagy a system összetevő által generált üzemállapotával kapcsolatos adatokat. |
 | – Leírás | Az egészségügyi információk leírását. <br><br> Azt jelöli, szabad szöveges adja hozzá a jelentés az emberi olvasható információk segítségével. A leírás karakterlánc maximális hossza 4096 karakternél. Ha a megadott karakterlánc hosszabb, akkor automatikusan csonkolva lesz. Csonkolva, amikor az utolsó karakter, a leírás tartalmaz egy "[Truncated]" jelölő, és teljes karaktersorozat 4096 karakternél. Jelenlétét, a jelölő azt jelzi, hogy a felhasználók számára, hogy a csonkolási történt. Vegye figyelembe, hogy csonkolva, a leírásnak legalább 4096 karakternél, az eredeti karakterláncot. |
-| – azonnali | Azt a jelzőt, amely azt jelzi, hogy a jelentés azonnal kell küldeni. <br><br> Egy jelentés küld egy Service Fabric gateway alkalmazás, amely továbbítja a health Store adatbázisban. Ha az Immediate értékre van állítva. igaz, a jelentés azonnal címről érkezik a health Store adatbázisban, függetlenül a fabric-ügyfélbeállításokat a http-átjáró alkalmazások által használt HTTP-átjáró. Ez akkor hasznos, a kritikus fontosságú jelentések, amelyek a lehető leghamarabb kell küldeni. Attól függően, ütemezését és egyéb feltételek a jelentés elküldése továbbra is sikertelen lehet, például ha a HTTP-átjáró le van zárva, vagy az üzenet az átjáró nem érhető el. Ha Immediate hamis értékre van állítva, a jelentés alapján lesz elküldve az egészségügyi ügyfélbeállításokat a HTTP-átjáró. Ezért azt fogja kötegelni HealthReportSendInterval konfigurációjának megfelelően. Ez az az ajánlott beállítás, mivel így az egészségügyi ügyfél állapotfigyelő jelentési üzenetek a health Store adatbázisban, valamint az egészségügyi jelentés feldolgozása optimalizálása érdekében. Alapértelmezés szerint a rendszer a jelentések nem küldése azonnal. |
+| – azonnali | Azt a jelzőt, amely azt jelzi, hogy a jelentést közvetlenül kell küldeni. <br><br> Egy jelentés küld egy Service Fabric gateway alkalmazás, amely továbbítja a health Store adatbázisban. Ha az Immediate értékre van állítva. igaz, a jelentés azonnal címről érkezik a health Store adatbázisban, függetlenül a fabric-ügyfélbeállításokat a http-átjáró alkalmazások által használt HTTP-átjáró. Ez akkor hasznos, a kritikus fontosságú jelentések, amelyek a lehető leghamarabb kell küldeni. Attól függően, ütemezését és egyéb feltételek a jelentés elküldése továbbra is sikertelen lehet, például ha a HTTP-átjáró le van zárva, vagy az üzenet az átjáró nem érhető el. Ha Immediate hamis értékre van állítva, a jelentés alapján lesz elküldve az egészségügyi ügyfélbeállításokat a HTTP-átjáró. Ezért azt fogja kötegelni HealthReportSendInterval konfigurációjának megfelelően. Ez az az ajánlott beállítás, mivel így az egészségügyi ügyfél állapotfigyelő jelentési üzenetek a health Store adatbázisban, valamint az egészségügyi jelentés feldolgozása optimalizálása érdekében. Alapértelmezés szerint a rendszer a jelentések nem küldése azonnal. |
 | --eltávolítása akkor, ha lejárt | Érték, amely azt jelzi, hogy a jelentés törlődik a health store adatbázisból, a lejárat után. <br><br> Ha igaz értékű, a jelentés távolítja el a health Store adatbázisban után jár le. Ha az értéke HAMIS, a jelentés egy hibát, ha lejárt számít. Ez a tulajdonság értéke alapértelmezés szerint False (hamis). Amikor az ügyfelek rendszeresen készít jelentést, akkor állítsa be RemoveWhenExpired false (alapértelmezett). Ezzel a módszerrel a riporter veti fel (pl. holtpont), és nem készíthető jelentés, az entitás értékeli ki a hiba, ha lejár az állapotjelentés. Az entitás hibaállapot állapottal megőrzendő tartalomként jelöli. |
 | --sorszám | A numerikus karakterláncként egészségügyi jelentés sorszáma. <br><br> A jelentés sorszám használják a health Store adatbázisban elavult jelentések észleléséhez. Ha nincs megadva, egy megfelelő sorszám health-ügyfél által automatikusan létrehozott jelentések hozzáadásakor. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| – élettartam | Az időtartam, amelynek a jelentés érvénytelen. Ez a mező ISO8601 formátumot használ a időtartam megadása. <br><br> Amikor az ügyfelek rendszeresen készít jelentést, élettartam-nál nagyobb gyakorisággal kell küldenek jelentéseket. Az ügyfelek jelentés az átmenet, ha azok time to live végtelen, állíthatja be. Élettartam lejár, az egészségügyi adatokat tartalmazó állapotesemény esetén vagy eltávolítja a health Store adatbázisban, ha RemoveWhenExpired igaz értékre, vagy értékelhető a hiba, ha RemoveWhenExpired hamis. Ha nem a végtelen érték az alapértelmezett élettartam adott, ideje. |
+| – élettartam | Az időtartam, amelynek a jelentés érvénytelen. Ebben a mezőben adja meg az időtartamot ISO8601 formátumot használja. <br><br> Amikor az ügyfelek rendszeresen készít jelentést, élettartam-nál nagyobb gyakorisággal kell küldenek jelentéseket. Az ügyfelek jelentés az átmenet, ha azok time to live végtelen, állíthatja be. Élettartam lejár, az egészségügyi adatokat tartalmazó állapotesemény esetén vagy eltávolítja a health Store adatbázisban, ha RemoveWhenExpired igaz értékre, vagy értékelhető a hiba, ha RemoveWhenExpired hamis. Ha nem a végtelen érték az alapértelmezett élettartam adott, ideje. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -264,7 +264,7 @@ A jelentésnek tartalmaznia kell a forrás az egészségügyi jelentés és, ame
 ## <a name="sfctl-cluster-select"></a>sfctl-fürt kiválasztása
 A Service Fabric-fürt végpontja csatlakozik.
 
-Ha a biztonságos fürthöz csatlakozik, adja meg egy tanúsítványt (.crt) és a kulcs fájlját (.key) vagy egy fájl abszolút elérési útnak mindkét (.pem). Adja meg mindkettőt. Ha a biztonságos fürthöz csatlakozik, megadhat is egy hitelesítésszolgáltató csomag fájl vagy könyvtár megbízható CA-tanúsítványok az abszolút elérési útját.
+Ha a biztonságos fürthöz csatlakozik, adja meg egy tanúsítványt (.crt) és a kulcs fájlját (.key) vagy egy fájl abszolút elérési útnak mindkét (.pem). Adja meg mindkettőt. Ha a biztonságos fürthöz csatlakozik, is megadhat egy hitelesítésszolgáltató csomag fájl vagy könyvtár megbízható CA-tanúsítványok az abszolút elérési útját. Ha egy CA-tanúsítványok könyvtárat használja `c_rehash <directory>` által biztosított OpenSSL először futnia kell a tanúsítvány-kivonatok számítási és a megfelelő symbolics hivatkozások létrehozása.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -340,19 +340,19 @@ Ellenőrizze a megadott frissítési paraméterek, és indítsa el a Service Fab
 | --különbözeti-állapot-értékelést | Lehetővé teszi, hogy mindegyik frissítési tartományon befejezése után abszolút állapotának kiértékelését helyett a különbözeti állapotának kiértékelését. |
 | – a különbözeti sérült csomópontok | A maximálisan engedélyezett csomópontok százaléka egészségügyi teljesítménycsökkenés fürt frissítések során engedélyezett.  Alapértelmezett\: 10. <br><br> A különbözeti mérik a frissítés kezdetén csomópontok állapotát, és a health kiértékelés idején a csomópontok állapotát. Az ellenőrzés minden frissítési tartomány frissítési művelet befejezését követően ellenőrizze, hogy a fürt a globális állapot eltűrt korlátokon belül történik. |
 | --failure-action | Lehetséges értékek a következők\: "Érvénytelen", "Visszaállítás" Manual (manuális). |
-| --kényszerített újraindítás | Kényszerített újraindítás. |
-| --health-check-retry | Állapotellenőrzéssel való újrapróbálkozás időkorlátja ezredmásodpercben. |
-| – állapot-ellenőrzés – stabil | Állapotának ellenőrzése stabilitásának időtartama ezredmásodpercben. |
-| – állapot-ellenőrzés-wait | Állapotellenőrzés várakozási időtartama ezredmásodpercben. |
-| --replica-set-check-timeout | Replikakészlet frissítési ellenőrzés időkorlátja, másodpercben. |
+| --kényszerített újraindítás | Folyamatok kényszerített újraindítása a frissítés során, akkor is, ha a kód verziója nem változott. <br><br> A frissítés csak akkor változik, a konfiguráció vagy. |
+| --health-check-retry | Mennyi ideig állapotellenőrzéseket hajthat végre, ha az alkalmazás vagy a fürt nem kifogástalan való próbálkozások között. |
+| – állapot-ellenőrzés – stabil | Mennyi ideig, hogy az alkalmazás vagy a fürt kell megfelelő állapotú marad a következő frissítési tartományra abból a frissítés előtt. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| – állapot-ellenőrzés-wait | Az eltelt idő eltelte után a frissítési tartomány befejezése előtt a folyamat kezdési állapotát ellenőrzi. |
+| --replica-set-check-timeout | A maximális mennyisége, és letiltja a frissítési tartomány feldolgozása és váratlan problémák esetén a rendelkezésre állás az adatvesztés elkerülése érdekében. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása folytatódik a rendelkezésre állás elvesztése problémák függetlenül. Az időkorlát minden frissítési tartomány elején alaphelyzetbe áll. Érvényes értékek: 0 és 42949672925 között lehet. |
 | – működés közbeni frissítés-mód | Lehetséges értékek a következők\: "Érvénytelen", 'UnmonitoredAuto', 'UnmonitoredManual', "Figyelt".  Alapértelmezett\: UnmonitoredAuto. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 | – nem megfelelő alkalmazások | A maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. <br><br> Ahhoz, hogy 10 %-a nem megfelelő állapotú, hogy az alkalmazások, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő alkalmazások jelöli. Ha a százalékos tiszteletben tartják, de legalább egy sérült alkalmazás, az egészségügyi figyelmeztetés minősül. Ez kiszámítása a nem megfelelő állapotú alkalmazások száma teljes száma a fürtben, kivéve az alkalmazásokat, amelyek szerepelnek a ApplicationTypeHealthPolicyMap alkalmazástípusok alkalmazáspéldányok keresztül. A számítási kerekít egy sikertelen kérelmek kis számú működését. |
 | – sérült csomópontok | A maximálisan engedélyezett százalékos arányát sérült csomópontok előtt egy hibát jelez. <br><br> Ahhoz, hogy sérült csomópontok 10 %-át, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő állapotú csomópontokat jelöli. Ha a százalékos tiszteletben tartják, de legalább egy nem megfelelő állapotú csomóponti, az egészségügyi figyelmeztetés minősül. Százalékos kiszámítása a nem megfelelő állapotú csomópontok számát a fürtben található csomópontok száma keresztül. Felfelé kerekít a számítási csomópontok kis számú egy hiba elviselni. Nagy fürtjein található egyes csomópontok minden esetben le- illetve felskálázni a javításához, ezért ezt a százalékos arányt, amely ugyan úgy kell konfigurálni. |
 | --upgrade-domain-delta-unhealthy-nodes | A maximálisan engedélyezett frissítési tartományi csomópontok százaléka egészségügyi teljesítménycsökkenés fürt frissítések során engedélyezett.  Alapértelmezett\: 15. <br><br> A különbözeti mérik a frissítés kezdetén frissítési tartományi csomópontok állapotát és a health kiértékelés idején a frissítési tartományi csomópontok állapotát. Minden frissítési tartomány összes frissítési befejezése után, hogy a frissítési tartományok állapota megengedett korláton belüli frissítési tartományok a-ellenőrzést hajtanak végre. |
-| --frissítés-tartomány-időkorlátja | Frissítési tartomány időkorlátja ezredmásodpercben. |
-| --frissítés – időtúllépés | Frissítési időkorlát ezredmásodpercben. |
-| --warning-as-error | Figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
+| --frissítés-tartomány-időkorlátja | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| --frissítés – időtúllépés | Mennyi ideig a teljes frissítés rendelkezik befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -389,7 +389,7 @@ Győződjön meg a fürt frissítésének léphet tovább a következő frissít
 ## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl fürt frissítés-visszaállítás
 Állítsa vissza a Service Fabric-fürt frissítését.
 
-Visszaállítás a Service Fabric-fürt kódírásra vagy konfigurálásra frissítését.
+Állítsa vissza a Service Fabric-fürt kódírásra vagy konfigurálásra frissítését.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -440,20 +440,20 @@ Frissítés a Service Fabric-fürt frissítése frissítési paramétereit.
 | --különbözeti-állapot-értékelést | Lehetővé teszi, hogy mindegyik frissítési tartományon befejezése után abszolút állapotának kiértékelését helyett a különbözeti állapotának kiértékelését. |
 | – a különbözeti sérült csomópontok | A maximálisan engedélyezett csomópontok százaléka egészségügyi teljesítménycsökkenés fürt frissítések során engedélyezett.  Alapértelmezett\: 10. <br><br> A különbözeti mérik a frissítés kezdetén csomópontok állapotát, és a health kiértékelés idején a csomópontok állapotát. Az ellenőrzés minden frissítési tartomány frissítési művelet befejezését követően ellenőrizze, hogy a fürt a globális állapot eltűrt korlátokon belül történik. |
 | --failure-action | Lehetséges értékek a következők\: "Érvénytelen", "Visszaállítás" Manual (manuális). |
-| --kényszerített újraindítás | Kényszerített újraindítás. |
-| --health-check-retry | Állapotellenőrzéssel való újrapróbálkozás időkorlátja ezredmásodpercben. |
-| – állapot-ellenőrzés – stabil | Állapotának ellenőrzése stabilitásának időtartama ezredmásodpercben. |
-| – állapot-ellenőrzés-wait | Állapotellenőrzés várakozási időtartama ezredmásodpercben. |
-| --replica-set-check-timeout | Replikakészlet frissítési ellenőrzés időkorlátja, másodpercben. |
+| --kényszerített újraindítás | Folyamatok kényszerített újraindítása a frissítés során, akkor is, ha a kód verziója nem változott. <br><br> A frissítés csak akkor változik, a konfiguráció vagy. |
+| --health-check-retry | Mennyi ideig állapotellenőrzéseket hajthat végre, ha az alkalmazás vagy a fürt nem kifogástalan való próbálkozások között. |
+| – állapot-ellenőrzés – stabil | Mennyi ideig, hogy az alkalmazás vagy a fürt kell megfelelő állapotú marad a következő frissítési tartományra abból a frissítés előtt. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| – állapot-ellenőrzés-wait | Az eltelt idő eltelte után a frissítési tartomány befejezése előtt a folyamat kezdési állapotát ellenőrzi. |
+| --replica-set-check-timeout | A maximális mennyisége, és letiltja a frissítési tartomány feldolgozása és váratlan problémák esetén a rendelkezésre állás az adatvesztés elkerülése érdekében. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása folytatódik a rendelkezésre állás elvesztése problémák függetlenül. Az időkorlát minden frissítési tartomány elején alaphelyzetbe áll. Érvényes értékek: 0 és 42949672925 között lehet. |
 | – működés közbeni frissítés-mód | Lehetséges értékek a következők\: "Érvénytelen", 'UnmonitoredAuto', 'UnmonitoredManual', "Figyelt".  Alapértelmezett\: UnmonitoredAuto. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 | – nem megfelelő alkalmazások | A maximálisan engedélyezett sérült alkalmazások százaléka előtt egy hibát jelez. <br><br> Ahhoz, hogy 10 %-a nem megfelelő állapotú, hogy az alkalmazások, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő alkalmazások jelöli. Ha a százalékos tiszteletben tartják, de legalább egy sérült alkalmazás, az egészségügyi figyelmeztetés minősül. Ez kiszámítása a nem megfelelő állapotú alkalmazások száma teljes száma a fürtben, kivéve az alkalmazásokat, amelyek szerepelnek a ApplicationTypeHealthPolicyMap alkalmazástípusok alkalmazáspéldányok keresztül. A számítási kerekít egy sikertelen kérelmek kis számú működését. |
 | – sérült csomópontok | A maximálisan engedélyezett százalékos arányát sérült csomópontok előtt egy hibát jelez. <br><br> Ahhoz, hogy sérült csomópontok 10 %-át, például ez az érték lenne 10. A százalékos eltűrt maximális százalékos aránya, amely előtt a fürt hibás lehet nem megfelelő állapotú csomópontokat jelöli. Ha a százalékos tiszteletben tartják, de legalább egy nem megfelelő állapotú csomóponti, az egészségügyi figyelmeztetés minősül. Százalékos kiszámítása a nem megfelelő állapotú csomópontok számát a fürtben található csomópontok száma keresztül. Felfelé kerekít a számítási csomópontok kis számú egy hiba elviselni. Nagy fürtjein található egyes csomópontok minden esetben le- illetve felskálázni a javításához, ezért ezt a százalékos arányt, amely ugyan úgy kell konfigurálni. |
 | --upgrade-domain-delta-unhealthy-nodes | A maximálisan engedélyezett frissítési tartományi csomópontok százaléka egészségügyi teljesítménycsökkenés fürt frissítések során engedélyezett.  Alapértelmezett\: 15. <br><br> A különbözeti mérik a frissítés kezdetén frissítési tartományi csomópontok állapotát és a health kiértékelés idején a frissítési tartományi csomópontok állapotát. Minden frissítési tartomány összes frissítési befejezése után, hogy a frissítési tartományok állapota megengedett korláton belüli frissítési tartományok a-ellenőrzést hajtanak végre. |
-| --frissítés-tartomány-időkorlátja | Frissítési tartomány időkorlátja ezredmásodpercben. |
+| --frissítés-tartomány-időkorlátja | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
 | --egyedülálló frissítése | Lehetséges értékek a következők\: "Érvénytelen', 'Működés közbeni',"Rolling_ForceRestart".  Alapértelmezett\: működés közbeni. |
-| --frissítés – időtúllépés | Frissítési időkorlát ezredmásodpercben. |
-| --warning-as-error | Figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
+| --frissítés – időtúllépés | Mennyi ideig a teljes frissítés rendelkezik befejezését, mielőtt FailureAction hajtja végre. <br><br> Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. |
+| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -464,6 +464,7 @@ Frissítés a Service Fabric-fürt frissítése frissítési paramétereit.
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
 | – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
 
 ## <a name="next-steps"></a>További lépések
 - [A telepítő](service-fabric-cli.md) a Service Fabric parancssori felület.

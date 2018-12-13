@@ -1,12 +1,11 @@
 ---
 title: '3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet – Azure |} A Microsoft Docs'
-description: 'A fejlesztés egy prediktív megoldás bemutatója 3. lépés: új betanítási kísérlet létrehozása az Azure Machine Learning Studióban.'
+description: 'Az a Develop egy prediktív megoldás bemutatója. 3. lépés: Hozzon létre egy új betanítási kísérlet Azure Machine Learning Studióban.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317528"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260786"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Az útmutató 3. lépés: Hozzon létre egy új Azure Machine Learning Studio-kísérlet
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Az útmutató 3. lépés: Egy új Azure Machine Learning Studio-kísérlet létrehozása
 Ez a forgatókönyv harmadik lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
@@ -56,7 +55,7 @@ Ez az útmutató a következő lépés, ha kísérlet a Machine Learning Studió
     ![Adja hozzá az adathalmazt a kísérletvászonra][7]
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
-Az első 100 sor az adatok és a teljes adatkészlet néhány statisztikai adatot is megtekintheti: kattintson a kimeneti portra, az adatkészlet (a kis kör alul), és válassza ki **Visualize**.  
+Az első 100 sor az adatok és a teljes adatkészlet néhány statisztikai adatot tekintheti meg: Kattintson a kimeneti portra, az adatkészlet (a kis kör alul), és válassza ki **Visualize**.  
 
 Az adatfájl nem kapott oszlopfejléceket, mert Studio biztosított általános fejlécek (Col1, Col2, *stb.*). Jó fejlécek nem alapvető fontosságú a modell létrehozásához, de azok egyszerűbb legyen az adatok a kísérletben. Is a web service-ben a ebben a modellben végül közzétételekor a fejlécek segít azonosítani az oszlopokat a felhasználónak a szolgáltatás.  
 
@@ -164,7 +163,7 @@ A kísérletet most alábbihoz hasonlóan jelenik meg:
 
 A kísérletek R-parancsfájlokkal további információkért lásd: [kísérlet kiterjesztése az R](extend-your-experiment-with-r.md).
 
-**A következő: [Train a modellek és kiértékelése](walkthrough-4-train-and-evaluate-models.md)**
+**Következő: [A modellek betanítása és kiértékelése](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

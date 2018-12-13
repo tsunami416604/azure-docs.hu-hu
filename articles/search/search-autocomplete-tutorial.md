@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Automatikus kitöltés hozzáadása a keresőmezőhöz az Azure Search használatával | Microsoft Docs'
+title: Oktatóanyag az automatikus kiegészítés, a keresési mezőbe – Azure Search hozzáadása
 description: Az adatközpontú alkalmazások végfelhasználói élménye javításának példái az Azure Search automatikus kitöltésével és javaslati API-kkal.
 manager: pablocas
 author: mrcarter8
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578174"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316182"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Oktatóanyag: Automatikus kitöltés hozzáadása a keresőmezőhöz az Azure Search használatával
+# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Oktatóanyag: Automatikus kiegészítés, a keresési mezőbe, használja az Azure Search hozzáadása
 
 Ez az oktatóanyag ismerteti, hogyan használhatja a [javaslatokat](https://docs.microsoft.com/rest/api/searchservice/suggestions), az [automatikus kitöltést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) és az [aspektusokat](search-faceted-navigation.md) az [Azure Search REST API-ban](https://docs.microsoft.com/rest/api/searchservice/) és a [.NET SDK-ban](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) egy hatékony keresőmező felépítéséhez. A *javaslatok* a tényleges találatokat ajánlanak annak alapján, amit a felhasználó eddig begépelt. Az *automatikus kitöltés*, amely az Azure Search [új előzetes verziójú funkciója](search-api-preview.md), kifejezéseket nyújt az indexből, amelyekkel kiegészíthető a felhasználó által jelenleg beírt kifejezés. Több módszert hasonlítunk össze a felhasználói termelékenység növelése és a keresett elemek gyors és könnyű megtalálása érdekében. Ehhez közvetlenül biztosítjuk a felhasználónak a beíráskor a keresés gazdag funkcióit.
 
@@ -126,7 +127,7 @@ Most, hogy megtekintettük a minta JavaScript-kódját, nézzük azt a C#-vezér
 
 1. Nyissa meg a Controllers könyvtárban lévő HomeController.cs fájlt. 
 
-1. Először az osztály tetején lévő, InitSearch nevű metódust veheti észre.  Ez hitelesített HTTP-indexügyfelet hoz létre az Azure Search szolgáltatáshoz.  Ennek a működéséről a következő oktatóanyagban talál további információt: [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. Először az osztály tetején lévő, InitSearch nevű metódust veheti észre.  Ez hitelesített HTTP-indexügyfelet hoz létre az Azure Search szolgáltatáshoz.  Ha szeretne további információt ennek működéséről, tekintse meg a következő oktatóanyaggal: [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Lépjen a Suggest függvényre.
 

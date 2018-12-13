@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e5943dde86b96dc0f95df0620212daf9a972fccf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: bc3ab808234ee0759abea0520ea0336489fc60d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882549"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309603"
 documentType: LandingData
 title: Az Azure SQL Database - önálló adatbázis
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 12/01/2018
   ms.author: jovanpop-msft
 abstract:
-  description: Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+  description: Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. SQL Database egy olyan nagy teljesítményű, könnyen használható, megbízható, és segítségével hozhat létre új alkalmazások, webhelyek és az Ön által választott programozási nyelven mikroszolgáltatások anélkül, hogy az infrastruktúra felügyelete biztonságos adatbázisban. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:
     image:
       alt: 
@@ -68,6 +68,17 @@ sections:
       html: <p>Gondoskodjon adatbázisa védelméről Azure AD-hitelesítéssel, virtuális hálózatokkal, tűzfalakkal és Always Encrypted-kapcsolatokkal. A beépített biztonsági funkciókkal azonosíthatja a fenyegetéseket és a sebezhető pontokat.</p>
       image:
         src: media/index/i_security.svg
+- title: Új és előzetes verziójú funkciók
+  items:
+  - type: paragraph
+    text: 'Folyamatosan fejleszteni az SQL Database új funkciókkal és az alábbi új szolgáltatásokkal kapcsolatos visszajelzését hallani szeretnénk:'
+  - type: list
+    style: unordered
+    items:
+    - html: (Előzetes verzió) <a href="sql-database-service-tier-hyperscale">Nagy kapacitású</a> szint, amely legfeljebb 100 TB méretű adatbázisokhoz, és több olvasható replika.
+    - html: (Előzetes verzió) Új SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligens lekérdezés-feldolgozás</a> funkciók, például <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">táblaváltozót késleltetve fordítási</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">kötegelt mód sortárindex táblákon</a>, és <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skaláris UDF inlining</a>.
+    - html: (Előzetes verzió) Új Transact-SQL nyelvi funkciókat, például <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT összesítés</a> és <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">TÖMEGES IMPORTÁLÁS az Azure Blob storage</a>.
+    - html: (Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a FÜRTÖZÖTT OSZLOPCENTRIKUS index műveleteket.
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph

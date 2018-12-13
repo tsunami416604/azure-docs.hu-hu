@@ -1,9 +1,9 @@
 ---
-title: Az Azure PowerShell-Példaszkript – webalkalmazás egy másik előfizetésben egy biztonsági másolatból visszaállítása |} A Microsoft Docs
+title: Az Azure PowerShell-Példaszkript – egy másik előfizetéshez visszaállítási alkalmazás biztonsági másolatának |} A Microsoft Docs
 description: Az Azure PowerShell-Példaszkript – webalkalmazás egy másik előfizetésben biztonsági visszaállítása
 services: app-service\web
 documentationcenter: ''
-author: cephalin
+author: msangapu
 manager: jpconnoc
 editor: ''
 tags: azure-service-management
@@ -13,16 +13,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 7ed593e408b57246ef155ff8e36f054aacb2e063
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 6e06ddf5f8cc814fe2fa5fa48105cf6bf976d63c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292165"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307852"
 ---
-# <a name="restore-a-web-app-from-a-backup-in-another-subscription"></a>Webalkalmazás visszaállítása biztonsági másolatból egy másik előfizetésben
+# <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Webalkalmazás visszaállítása biztonsági másolatból egy másik előfizetésben, PowerShell-lel
 
 Ez a példaszkript egy korábban elvégzett biztonsági mentés beolvassa egy meglévő web Apps, és annak visszaállítására egy másik előfizetésben található webalkalmazás. 
 

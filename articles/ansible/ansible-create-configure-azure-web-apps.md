@@ -1,5 +1,5 @@
 ---
-title: Azure-webalkalmazás létrehozása az Ansible (előzetes verzió) használatával
+title: Az Azure web Apps alkalmazások létrehozása az Ansible segítségével
 description: Megtudhatja, hogyan hozhat létre az Ansible használatával Linux rendszeren webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, forgatókönyv, Azure App Service, webalkalmazás, Java
@@ -7,16 +7,16 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2018
-ms.openlocfilehash: 48b4c201b2b96bd4662e8c90be7298a4f418af53
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.date: 12/08/2018
+ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426554"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261755"
 ---
-# <a name="create-azure-app-service-web-apps-by-using-ansible-preview"></a>Azure App Service Web Apps létrehozása az Ansible (előzetes verzió) használatával
-Az [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltet. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
+# <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások létrehozása az Ansible segítségével
+[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobilalkalmazások háttérkomponensei. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
 
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogyan hozhat létre az Ansible segítségével webalkalmazásokat Java futtatókörnyezet használatával. 
 
@@ -25,19 +25,20 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. Az Ansible 2.7 RC verziót a `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti. Az Ansible 2.7-es kiadását követően nem kell megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz. 
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges.
 
 ## <a name="create-a-simple-app-service"></a>Egyszerű App Service létrehozása
 Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőforrásokat határozza meg:
 - Erőforráscsoport, amelyben az App Service-csomagot és a webalkalmazást üzembe helyezi
 - Webalkalmazás Java 8-cal és a Tomcat-tároló futtatókörnyezettel az App Service-ben, Linux rendszeren
 
-```
+```yml
 - hosts: localhost
   connection: local
   vars:
-    resource_group: myfirstResourceGroup
+    resource_group: myResourceGroup
     webapp_name: myfirstWebApp
+    plan_name: myAppServicePlan
     location: eastus
   tasks:
     - name: Create a resource group
@@ -51,7 +52,7 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
         name: "{{ webapp_name }}"
         plan:
           resource_group: "{{ resource_group }}"
-          name: myappplan
+          name: "{{ plan_name }}"
           is_linux: true
           sku: S1
           number_of_workers: 1
@@ -71,17 +72,22 @@ ansible-playbook firstwebapp.yml
 
 Az Ansible-forgatókönyv futtatásából származó kimenetben látható, hogy a webalkalmazás sikeresen létrejött:
 
-```
+```Output
+PLAY [localhost] *************************************************
+
+TASK [Gathering Facts] *************************************************
+ok: [localhost]
+
 TASK [Create a resource group] *************************************************
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] ******************************
- [WARNING]: Azure API profile latest does not define an entry for
-WebSiteManagementClient
+TASK [Create App Service on Linux with Java Runtime] *************************************************
+ [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
+
 changed: [localhost]
 
-PLAY RECAP *********************************************************************
-localhost                  : ok=2    changed=2    unreachable=0    failed=0   
+PLAY RECAP *************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>App Service létrehozása a Traffic Manager használatával
@@ -98,33 +104,33 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 - Traffic Manager-profil
 - Traffic Manager-végpont, a létrehozott webhellyel
 
-```
+```yml
 - hosts: localhost
   connection: local
   vars:
+    resource_group_webapp: myResourceGroupWebapp
     resource_group: myResourceGroup
-    plan_resource_group: planResourceGroup
-    app_name: myLinuxWebApp
+    webapp_name: myLinuxWebApp
+    plan_name: myAppServicePlan
     location: eastus
-    linux_plan_name: myAppServicePlan
     traffic_manager_profile_name: myTrafficManagerProfile
     traffic_manager_endpoint_name: myTrafficManagerEndpoint
 
   tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
-        name: "{{ resource_group }}"
+        name: "{{ resource_group_webapp }}"
         location: "{{ location }}"
 
   - name: Create secondary resource group
     azure_rm_resourcegroup:
-        name: "{{ plan_resource_group }}"
+        name: "{{ resource_group }}"
         location: "{{ location }}"
 
   - name: Create App Service Plan
     azure_rm_appserviceplan:
-      resource_group: "{{ plan_resource_group }}"
-      name: "{{ linux_plan_name }}"
+      resource_group: "{{ resource_group }}"
+      name: "{{ plan_name }}"
       location: "{{ location }}"
       is_linux: true
       sku: S1
@@ -132,11 +138,11 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 
   - name: Create App Service on Linux with Java Runtime
     azure_rm_webapp:
-        resource_group: "{{ resource_group }}"
-        name: "{{ app_name }}"
+        resource_group: "{{ resource_group_webapp }}"
+        name: "{{ webapp_name }}"
         plan:
-          resource_group: "{{ plan_resource_group }}"
-          name: "{{ linux_plan_name }}"
+          resource_group: "{{ resource_group }}"
+          name: "{{ plan_name }}"
           is_linux: true
           sku: S1
           number_of_workers: 1
@@ -151,13 +157,13 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 
   - name: Get web app facts
     azure_rm_webapp_facts:
-      resource_group: "{{ resource_group }}"
-      name: "{{ app_name }}"
+      resource_group: "{{ resource_group_webapp }}"
+      name: "{{ webapp_name }}"
     register: webapp
     
   - name: Create Traffic Manager Profile
     azure_rm_trafficmanagerprofile:
-      resource_group: "{{ resource_group }}"
+      resource_group: "{{ resource_group_webapp }}"
       name: "{{ traffic_manager_profile_name }}"
       location: global
       routing_method: performance
@@ -171,13 +177,12 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 
   - name: Add endpoint to traffic manager profile, using created web site
     azure_rm_trafficmanagerendpoint:
-      resource_group: "{{ resource_group }}"
+      resource_group: "{{ resource_group_webapp }}"
       profile_name: "{{ traffic_manager_profile_name }}"
       name: "{{ traffic_manager_endpoint_name }}"
       type: azure_endpoints
       location: "{{ location }}"
       target_resource_id: "{{ webapp.webapps[0].id }}"
-
 ```
 Mentse a fenti forgatókönyvet **webapp.yml** néven, vagy [töltse le a forgatókönyvet](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
@@ -187,7 +192,12 @@ ansible-playbook webapp.yml
 ```
 
 Az Ansible-forgatókönyv futtatásából származó kimenetben látható, hogy az App Service-csomag, a webalkalmazás, a Traffic Manager-profil és a végpont sikeresen létrejött:
-```
+```Output
+PLAY [localhost] *************************************************
+
+TASK [Gathering Facts] *************************************************
+ok: [localhost]
+
 TASK [Create resource group] ****************************************************************************
 changed: [localhost]
 
@@ -222,4 +232,4 @@ localhost                  : ok=9    changed=6    unreachable=0    failed=0
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)
+> [Az Azure App Service web Apps alkalmazások méretezése Ansible-lel](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)

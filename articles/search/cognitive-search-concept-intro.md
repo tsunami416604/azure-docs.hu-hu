@@ -1,6 +1,6 @@
 ---
-title: Adatok kinyerése, a kognitív keresés természetes nyelvi mesterséges Intelligencia feldolgozása az Azure Search szolgáltatásban |} A Microsoft Docs
-description: Tartalom kinyerés, természetes nyelvi feldolgozási (NLP) és kereshető tartalom létrehozása az Azure Search szolgáltatásban az indexelés kognitív képességek és AI-algoritmusokat képfeldolgozó
+title: Adatok kinyerése, a kognitív keresés természetes nyelvi mesterséges Intelligencia feldolgozása – Azure Search
+description: Tartalom kinyerés, természetes nyelvi feldolgozási (NLP) és képfeldolgozó kereshető tartalom létrehozása az Azure Search szolgáltatásban az indexelés kognitív képességek és AI-algoritmusokat.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 5d7f275be1f04658f9901aba9faca83375a9bbf5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec2018
+ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956193"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315606"
 ---
-# <a name="what-is-cognitive-search"></a>Mi a cognitive search?
+# <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
 A kognitív keresés nem kereshető tartalmak kereshető adatokat hoz létre AI-algoritmusokat csatolása egy indexelési folyamat. AI-integrációját keresztül van *kognitív képességeket*, forrás dokumentumok útközben a keresési index bővítését. 
 
@@ -26,12 +27,14 @@ A kognitív keresés nem kereshető tartalmak kereshető adatokat hoz létre AI-
 
 ![A kognitív keresés adatfolyamat ábrája](./media/cognitive-search-intro/cogsearch-architecture.png "Cognitive Search folyamat áttekintése")
 
-A kognitív képességek az Azure Search szolgáltatásban a Cognitive Services API-k használt azonos AI-algoritmusokat alapul: [nevű entitás Recognition API](cognitive-search-skill-named-entity-recognition.md), [Key kifejezés kinyerése API](cognitive-search-skill-keyphrases.md), és [OCR API](cognitive-search-skill-ocr.md) néhány. 
+A kognitív képességek az Azure Search szolgáltatásban a Cognitive Services API-k használt azonos AI-algoritmusokat alapul: [Megnevezett entitások felismerése API](cognitive-search-skill-named-entity-recognition.md), [Key kifejezés kinyerése API](cognitive-search-skill-keyphrases.md), és [OCR API](cognitive-search-skill-ocr.md) néhány. 
 
 Természetes nyelvi és képfeldolgozás alkalmazni az adatok betöltési fázisban az eredményeket a dokumentum létrehozása az Azure Search a kereshető indexet az részévé. Az adatok egy Azure data beállított tárolási forrása és egy indexelési folyamat használatával, amelyik keresztül továbbítja [beépített képességek](cognitive-search-predefined-skills.md) van szüksége. Az architektúra olyan bővíthető, így ha a beépített képességek nem elegendő, létrehozása és csatolása [egyéni képesség](cognitive-search-create-custom-skill-example.md) egyéni feldolgozási integrálásához. Példa lehet egy adott tartományban, például a pénzügyi, a tudományos vagy orvosi célzó egyéni entitás modul vagy a dokumentum besorolás.
 
 > [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
+> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
+>
+> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="components-of-cognitive-search"></a>A kognitív keresés összetevői
 
@@ -45,7 +48,7 @@ A folyamat elején rendelkezik strukturálatlan szöveges vagy nem szöveges tar
 
 ![Fázis dokumentumleképezési](./media/cognitive-search-intro/document-cracking-phase-blowup.png "dokumentumfeltörést")
 
- Támogatott az adatforrásokba tartoznak az Azure blob storage-ba, az Azure table storage, Azure SQL Database és Azure Cosmos DB-hez. Szöveges tartalmát a következő típusú kinyerésének: PDF, Word, PowerPoint-és CSV-fájlok. A teljes listát lásd: [támogatott formátumok](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
+ Támogatott az adatforrásokba tartoznak az Azure blob storage-ba, az Azure table storage, Azure SQL Database és Azure Cosmos DB-hez. A következő típusú szöveges tartalom kinyerésének: PDF-, Word, PowerPoint-és CSV-fájlok. A teljes listát lásd: [támogatott formátumok](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
 ### <a name="cognitive-skills-and-enrichment-phase"></a>Kognitív képességeket és Adatbővítés fázis
 
@@ -88,7 +91,7 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
 
-**1. lépés: Hozzon létre egy keresési szolgáltatás olyan régióban, így az API-k** 
+**1. lépés: Egy régióban, az API-kat biztosít a search szolgáltatás létrehozása** 
 
 + USA nyugati középső régiója
 + USA déli középső régiója

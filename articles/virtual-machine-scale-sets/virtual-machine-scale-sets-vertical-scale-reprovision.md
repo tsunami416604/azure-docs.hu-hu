@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741572"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321375"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automatikus méretezés a virtuálisgép-méretezési csoportok
 Ez a cikk bemutatja, hogyan vertikális skálázása az Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) vagy reprovisioning nélkül. Virtuális gépek, amelyek nem szerepelnek a méretezési csoportok vertikális skálázás, tekintse meg [vertikális skálázása az Azure virtuális gépen az Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -84,7 +84,7 @@ Runbookok importálása után hozzáadása egy webhookot a runbookhoz, úgy is e
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporton
-Alább egy PowerShell-parancsprogram bemutatja, hogyan riasztás hozzáadása egy virtuálisgép-méretezési csoport beállítása. A mérőszám a riasztás triggerfuttatáskor aktiválandó nevének lekérése a következő cikkben: [Azure Monitor automatikus skálázás gyakori metrikák](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+Alább egy PowerShell-parancsprogram bemutatja, hogyan riasztás hozzáadása egy virtuálisgép-méretezési csoport beállítása. Tekintse meg a mérőszám a riasztás triggerfuttatáskor aktiválandó nevét a következő cikket: [Gyakori metrikák az Azure Monitor automatikus skálázás](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -120,7 +120,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 Riasztások létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Az Azure Monitor PowerShell rövid minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Az Azure platformfüggetlen parancssori figyelő rövid minták](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Az Azure platformfüggetlen parancssori figyelő rövid minták](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Összegzés
 Ez a cikk bemutatta, egyszerű vertikális méretezési példákat. Ezek építőelemei – Automation-fiók, runbookok, a webhookok, riasztások - az egyéni műveletek egy csoportját, gazdag különféle eseményekre is kapcsolódni.

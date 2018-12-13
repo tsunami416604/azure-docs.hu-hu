@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights-környezet az adatmegőrzés ismertetése |} A Microsoft Docs
+title: Az Azure Time Series Insights adatmegőrzési - az Azure Time Series Insights-környezet az adatmegőrzés ismertetése |} A Microsoft Docs
 description: Ez a cikk ismerteti az adatok megőrzése az Azure Time Series Insights-környezet szabályozó két beállítást.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: c46e385caaa343fe9ba64e1aa4516f1335039cd3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364128"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272150"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>A Time Series Insightsban az adatmegőrzés ismertetése
 
@@ -47,7 +48,7 @@ Hasonlítsa össze az adatok megőrzési viselkedés:
 - A legrégebbi a feldolgozott adatokat van üríti ki az első (FIFO megközelítés).
 
 ### <a name="example-1"></a>1. példa:
-Fontolja meg egy példakörnyezetet megőrzési viselkedés **továbbra is a bejövő és a régi adatok törlése**: Ebben a példában **adatmegőrzési idő** 400 napos értékre van állítva. **Kapacitás** S1-egység, amely tartalmazza a teljes kapacitás 30 GB értékre van állítva.   Tegyük fel, a bejövő adatok gyűlnek 500 MB naponta átlagosan. Ebben a környezetben csak is megőrizheti az adatok adott mértéke a bejövő adatokat, mert elérte a maximális kapacitás 60 napon belül 60 napos. A bejövő adatokat gyűlnek: 500 MB-ot minden nap × 60 nap = 30 GB. 
+Fontolja meg egy példakörnyezetet megőrzési viselkedés **továbbra is a bejövő és a régi adatok törlése**: Ebben a példában **adatmegőrzési idő** 400 napos értékre van állítva. **Kapacitás** S1-egység, amely tartalmazza a teljes kapacitás 30 GB értékre van állítva.   Tegyük fel, a bejövő adatok gyűlnek 500 MB naponta átlagosan. Ebben a környezetben csak is megőrizheti az adatok adott mértéke a bejövő adatokat, mert elérte a maximális kapacitás 60 napon belül 60 napos. A bejövő adatokat összegzi: Minden nap × 60 nap = 30 GB 500 MB. 
 
 Ebben a példában a 61st napon a környezet a legfrissebb adatokat jelenít meg, de a legrégebbi, 60 napnál régebbi adatok kiürítése. A kiürítés, hogy az új adatok továbbra is vizsgálhatók lehetővé teszi a hely számára az új adatok, a streamelési. 
 

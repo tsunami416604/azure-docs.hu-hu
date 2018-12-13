@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: eb60afc21b7f8e21c4573e46165696c3461d3613
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 06f6db35d5a16e7e6ad3583d4e5e8a1b32991067
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963863"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322874"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
@@ -235,7 +235,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentáció a dynatrace-szel."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic dokumentációjában."
 [grafana-doc]: ./monitor-send-to-grafana.md "Az Azure Monitor Grafana integráció."
-[influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Az Azure Monitor Influxdata Telegraf integráció."
+[influxdata-doc]: ./../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Az Azure Monitor Influxdata Telegraf integráció."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logikai dokumentációja."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft dokumentációját."
 [newrelic-doc]: https://newrelic.com/azure "NewRelic dokumentációját."

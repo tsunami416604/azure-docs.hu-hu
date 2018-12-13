@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997481"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310334"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -31,7 +31,7 @@ Az Application Insights meghatározása egy [adatmodell](application-insights-da
 
 Elosztott logikai művelet jellemzően kisebb műveletek – a egyik által feldolgozott kérelmek egy készlete áll. Ezek a műveletek által meghatározott [telemetriai kérelem](application-insights-data-model-request-telemetry.md). Minden kéréstelemetria rendelkezik a saját `id` , amely globálisan egyedi módon azonosítja. Minden telemetriai adat - nyomkövetéseket, kivételek, stb. Ehhez a kérelemhez társított kell beállítania, és a `operation_parentId` értékével a kérés `id`.
 
-Minden kimenő művelet, például a http-hívás egy másik összetevő által képviselt [– függőségi telemetria](application-insights-data-model-dependency-telemetry.md). Függőségek telemetriáját is meghatározza a saját `id` , amely globálisan egyedi. Kérelmek telemetriai adatai, a függőségi hívás által kezdeményezett használja, mint `operation_parentId`.
+Minden kimenő művelet (például egy másik összetevő http-hívás) által jelölt [– függőségi telemetria](application-insights-data-model-dependency-telemetry.md). Függőségek telemetriáját is meghatározza a saját `id` , amely globálisan egyedi. Kérelmek telemetriai adatai, a függőségi hívás által kezdeményezett használja, mint `operation_parentId`.
 
 A nézet az elosztott logikai művelet használatával hozhat létre `operation_Id`, `operation_parentId`, és `request.id` a `dependency.id`. Ezek a mezők is meghatározhat, a telemetriai adatok hívások okozati sorrendjét.
 

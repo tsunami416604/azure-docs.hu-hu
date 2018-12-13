@@ -1,6 +1,6 @@
 ---
-title: Egy Azure tervezet életciklus megismerése
-description: Ismerje meg az életciklus-tervrajz halad át, és minden egyes szakaszhoz részleteit.
+title: Tervrajz életciklusának ismertetése
+description: Ismerje meg a életciklussal, amely végighalad a tervezet és az egyes szakaszok részleteit.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,19 +8,20 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 882279019a5f321c6af9beab1f4d0f220781bc5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094159"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309806"
 ---
-# <a name="understand-the-life-cycle-of-an-azure-blueprint"></a>Egy Azure tervezet életciklus megismerése
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure tervezet életciklusának ismertetése
 
-Számos Azure-erőforrások, például az Azure-tervek tervrajz rendelkezik egy tipikus és természetes eszközéletciklus. Ezek már létrehozott, telepítve, és véglegesen törlődnek, ha már nem szükséges és a vonatkozó.
-Tervezetek standard életciklus-műveleteket támogatja. Majd épít állapota további szinteket, amelyek közös folyamatos integrációt és folyamatos üzembe helyezési folyamatok támogatják a szervezet számára, hogy az infrastruktúra kódként – fejlesztési és üzemeltetési kulcsfontosságú eleme felügyelő szerződtünk velük.
+Számos Azure-erőforrások, például egy Azure-tervek a tervezet egy természetes és a szokásos életciklussal. Ezek már létrehozott, telepítve, és véglegesen törlődnek, ha már nem szükséges és a vonatkozó.
+Tervezetek támogatja a standard szintű életciklusához kapcsolódó műveletek. Majd épít állapota további szinteket, amelyek közös folyamatos integrációt és folyamatos üzembe helyezési folyamatok támogatják a szervezet számára, hogy az infrastruktúra kódként – fejlesztési és üzemeltetési kulcsfontosságú eleme felügyelő szerződtünk velük.
 
-Teljes mértékben megérteni a tervezet és a szakaszok, egy szabványos életciklus-foglalkozik:
+Teljes mértékben megérteni a tervezet és a szakaszok, egy szokásos életciklussal foglalkozik:
 
 > [!div class="checklist"]
 > - Létrehozása és tervrajz szerkesztése
@@ -68,7 +69,7 @@ A tervezet egyes verzióihoz egy egyedi objektum, és külön-külön lehet **k�
 > [!NOTE]
 > Nem alkalmas, amely rendelkezik aktív hozzárendelések tervrajz törlése. Először törölje a hozzárendeléseket, és törölje az eltávolítani kívánt verzió.
 
-1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
 1. Válassza ki **Tervezetdefiníciók** az oldalról, a bal oldalon a szűrőbeállítások keresse meg a tervezet törli egy verziójának használatát. Kattintson rá a lap megnyitásához.
 
@@ -87,7 +88,7 @@ A tervrajz törlése a [az Azure portal](../create-blueprint-portal.md#delete-a-
 
 ## <a name="assignments"></a>Hozzárendelések
 
-Tervrajz hozzárendelheti egy előfizetési életciklusa alatt számos olyan pontja van. Ha a módot a tervezet verziójához van **közzétett**, akkor azt a verziót előfizetéshez rendelhető. Az életciklus-lehetővé teszi, hogy a használt, és aktívan rendelve, amíg egy újabb verzióra még fejlesztés alatt tervrajz verzióit.
+A tervrajz hozzárendelheti egy előfizetési életciklusa alatt számos olyan pontja van. Ha a módot a tervezet verziójához van **közzétett**, akkor azt a verziót előfizetéshez rendelhető. Ennek az életciklusnak lehetővé teszi, hogy a használt, és aktívan rendelve, amíg egy újabb verzióra még fejlesztés alatt tervrajz verzióit.
 
 Hozzárendelt tervezetek verzióit, fontos tudni, ha hozzá vannak rendelve, és a paramétereket, hogy hozzá van rendelve. A paraméterek lehet statikus vagy dinamikus. További tudnivalókért lásd: [statikus és dinamikus paraméterek](parameters.md).
 

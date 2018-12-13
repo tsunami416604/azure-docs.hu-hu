@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239049"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310997"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
 ##  <a name="introduction"></a>Bevezetés
@@ -149,9 +149,7 @@ Az Azure számítási platformra alapuló gép virtualizációs – jelentése, 
 
 Minden egyes csomópontot egy speciális legfelső szintű virtuális gép, amely a gazda operációs rendszer fut is tartalmaz. Kritikus fontosságú a határok elkülönítése a legfelső szintű a Vendég virtuális gépek és a Vendég virtuális gépeket egy másik, a hipervizor és a gyökér operációs rendszer kezeli a virtuális gép. Az operációs rendszer hipervizor/root párosítás használ az operációs rendszer felhasználói élmény és a Microsoft Hyper-v, a Vendég virtuális gépek erős elkülönítést biztosító újabb tanulás a Microsoft évtizedes.
 
-Az Azure platform virtualizált környezetet használ. A felhasználói példányok működnek, önálló virtuális gépekről, amelyek nem rendelkeznek fizikai gazdagép-kiszolgálóhoz való hozzáférést, és ez az elkülönítés kikényszeríti a fizikai processzor (kör-0/ring-3) jogosultsági szintek használatával.
-
-A „Ring 0” a legmagasabb, a „Ring 3” a legalacsonyabb jogosultsági szint. A vendég operációs rendszer egy alacsonyabb jogosultsági szintű Ring 1 fut, és a legalacsonyabb jogosultsági szintű Ring 3 alkalmazások futnak. A fizikai erőforrások ilyen módszerrel történő virtualizálása következtében egyértelműen elkülönül a vendég operációs rendszer és a hipervizor, ez pedig a két rendszer további biztonsági elkülönülését eredményezi.
+Az Azure platform virtualizált környezetet használ. A felhasználói példányok működnek, önálló virtuális gépekről, amelyek nem rendelkeznek fizikai gazdagép-kiszolgálóhoz való hozzáférést.
 
 Az Azure hipervizor úgy viselkedik, mint a micro-kernel és az összes hardver hozzáférési kéréseket továbbít a Vendég virtuális gépek a gazdagépnek feldolgozásra a VMBus nevű megosztottmemória-felületen. Ez megakadályozza, hogy a felhasználók nyers olvasási, írási és végrehajtási hozzáférést szerezzenek a rendszerhez, és csökkenti a rendszererőforrások megosztásának kockázatát.
 
@@ -187,9 +185,9 @@ Alapértelmezés szerint minden forgalmat blokkol, amikor egy virtuális gépet 
 
 Programozott szabályok két kategóriába sorolhatók:
 
--   **A gép konfigurációs vagy infrastrukturális szabályok:** alapértelmezés szerint minden kommunikáció blokkolva van. Nincsenek a kivételeket úgy, hogy engedélyezi egy virtuális gép DHCP és DNS-forgalmat küldjön és fogadjon. Virtuális gépek küldhetnek forgalmat a "nyilvános" internetre és az azonos Azure Virtual Network és az operációs rendszer aktiválási kiszolgáló belüli más virtuális gépek küldhetnek forgalmat is. Engedélyezett kimenő célok a virtuális gépek listája nem tartalmazza az Azure útválasztó-alhálózatok, az Azure felügyeleti és más Microsoft-tulajdonságok.
+-   **Gép konfigurációs vagy infrastrukturális szabályok:** Alapértelmezés szerint minden kommunikáció blokkolva van. Nincsenek a kivételeket úgy, hogy engedélyezi egy virtuális gép DHCP és DNS-forgalmat küldjön és fogadjon. Virtuális gépek küldhetnek forgalmat a "nyilvános" internetre és az azonos Azure Virtual Network és az operációs rendszer aktiválási kiszolgáló belüli más virtuális gépek küldhetnek forgalmat is. Engedélyezett kimenő célok a virtuális gépek listája nem tartalmazza az Azure útválasztó-alhálózatok, az Azure felügyeleti és más Microsoft-tulajdonságok.
 
--   **Szerepkör-konfigurációs fájl:** a bejövő hozzáférés-vezérlési listák (ACL) a bérlő szolgáltatási modell alapján határozza meg.
+-   **Szerepkör-konfigurációs fájl:** A bejövő hozzáférés-vezérlési listák (ACL) a bérlő szolgáltatási modell alapján határozza meg.
 
 ### <a name="vlan-isolation"></a>VLAN elkülönítése
 Minden egyes fürt három VLAN-OK szerepelnek:
@@ -295,7 +293,7 @@ Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoro
 
 [A Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) adatbázis az SQL Server-technológiákra épülő felhőalapú relációsadatbázis-szolgáltatás. Egy magas rendelkezésre állású, méretezhető, több-bérlős adatbázis-szolgáltatás a felhőben a Microsoft által üzemeltetett biztosít.
 
-Az alkalmazás szempontjából SQL Azure biztosít a következő hierarchia: minden szinthez tartozik egy-a-többhöz tartalmazottsági szintek az alábbi.
+Egy alkalmazás perspektíva SQL Azure biztosít a következő hierarchia: Minden egyes szintjét egy-a-többhöz tartalmazottsági szintek az alábbi rendelkezik.
 
 ![SQL Azure alkalmazásmodell](./media/azure-isolation/azure-isolation-fig10.png)
 

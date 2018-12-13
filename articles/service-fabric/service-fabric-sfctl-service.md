@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 84c2faaf137e19d78e7e17527feb50baebf8041b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dbe234b3c6aaeed90f0b95e5118c1ff2f9e2bb24
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494574"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276876"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Létrehozása, törlése és kezelése a service, a szolgáltatástípusok és a szolgáltatáscsomagok.
@@ -36,7 +36,7 @@ Létrehozása, törlése és kezelése a service, a szolgáltatástípusok és a
 | üzembe helyezett-type-list | A Service Fabric-fürt egyik csomópontján üzembe helyezett alkalmazások szolgáltatástípusok információt tartalmazó lista beolvasása. |
 | leírás | Beolvassa egy meglévő Service Fabric-szolgáltatás leírását. |
 | get-container-logs | Lekéri a tároló naplóit tároló üzembe helyezett egy Service Fabric-csomóponton. |
-| állapot | A megadott Service Fabric-szolgáltatás állapotának beolvasása. |
+| egészségügy | A megadott Service Fabric-szolgáltatás állapotának beolvasása. |
 | információ | A Service Fabric-alkalmazáshoz tartozó szolgáltatás adatainak beolvasása. |
 | lista | Az alkalmazás által meghatározott az alkalmazáshoz tartozó összes szolgáltatás adatainak beolvasása |
 | Manifest | A jegyzékfájl szolgáltatástípus leíró beolvasása. |
@@ -114,7 +114,7 @@ Hozza létre a megadott Service Fabric-szolgáltatást.
 | --dns-name | A létrehozandó szolgáltatás DNS-nevét. A Service Fabric DNS rendszer szolgáltatás ezzel a beállítással kell engedélyezni. |
 | --példányszám | A példányok száma. Ez csak állapotmentes szolgáltatások esetében érvényes. |
 | – int-séma | Azt jelzi, hogy a szolgáltatás egységesen kell particionálni előjel nélküli egész számoknak számos. |
-| – int-séma-száma | Az egész kulcstartományhoz szeretne létrehozni, ha egy egységes egész partícióséma használatával belül partíciók száma. |
+| – int-séma-száma | Az egész kulcstartományhoz szeretne létrehozni, ha egységes egész partícióséma használatával belül partíciók száma. |
 | – int-séma – nagy | A kulcs egész szám tartományának, ha egy egységes egész partícióséma használatával végén. |
 | – int-séma – alacsony | A kulcs egész szám tartományának, ha egy egységes egész partícióséma használatával kezdete. |
 | --terhelés-metrikák | JSON kódolású használatos, ha a csomópont közötti terheléselosztás services metrikáinak listája látható. |
@@ -491,13 +491,13 @@ A jelentés a megadott Service Fabric-szolgáltatás állapotát. A jelentésnek
 | – rendszerállapot-tulajdonság [kötelező] | A tulajdonság az állapotadatokat. <br><br> Egy entitás különböző tulajdonságaihoz állapotjelentések rendelkezhet. Egy karakterláncot és a nem rögzített enumerálása, hogy az Eszközállapot-feltételt, amely elindítja a jelentés kategorizálása riporter rugalmasan tulajdonság. Például egy riporter a SourceId "LocalWatchdog" figyelheti az állapotot, a rendelkezésre álló lemez egy csomóponton, ezen a csomóponton, jelentést "AvailableDisk" tulajdonság. A ugyanolyan jelentéskészítői figyelheti a csomópont-kapcsolatban –, jelentést ugyanazon a csomóponton "Kapcsolat" tulajdonságot. A health Store adatbázisban ezek a jelentések az adott csomópont számára külön állapotesemények kell kezelni. A SourceId együtt a tulajdonság egyedileg azonosítja az egészségügyi adatokat. |
 | --állapota [kötelező] | Lehetséges értékek a következők\: "Érvénytelen", "Ok", "Figyelmeztetés", "Error", "Ismeretlen". |
 | – [kötelező] szolgáltatás azonosítója | A szolgáltatás identitásának. <br><br> Ez általában a nélkül a szolgáltatás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha a szolgáltatás neve "fabric\:/myapp/app1/svc1", a felügyeltszolgáltatás-identitás lenne "myapp\~app1\~svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban. |
-| – [kötelező] adatforrás-azonosítója | Az adatforrás neve azonosítja az ügyfél, a figyelő vagy a system összetevője, amely az egészségügyi információk jönnek létre. |
+| – [kötelező] adatforrás-azonosítója | Az adatforrás neve, amely azonosítja az ügyfél, a figyelő vagy a system összetevő által generált üzemállapotával kapcsolatos adatokat. |
 | – Leírás | Az egészségügyi információk leírását. <br><br> Azt jelöli, szabad szöveges adja hozzá a jelentés az emberi olvasható információk segítségével. A leírás karakterlánc maximális hossza 4096 karakternél. Ha a megadott karakterlánc hosszabb, akkor automatikusan csonkolva lesz. Csonkolva, amikor az utolsó karakter, a leírás tartalmaz egy "[Truncated]" jelölő, és teljes karaktersorozat 4096 karakternél. Jelenlétét, a jelölő azt jelzi, hogy a felhasználók számára, hogy a csonkolási történt. Vegye figyelembe, hogy csonkolva, a leírásnak legalább 4096 karakternél, az eredeti karakterláncot. |
-| – azonnali | Azt a jelzőt, amely azt jelzi, hogy a jelentés azonnal kell küldeni. <br><br> Egy jelentés küld egy Service Fabric gateway alkalmazás, amely továbbítja a health Store adatbázisban. Ha az Immediate értékre van állítva. igaz, a jelentés azonnal címről érkezik a health Store adatbázisban, függetlenül a fabric-ügyfélbeállításokat a http-átjáró alkalmazások által használt HTTP-átjáró. Ez akkor hasznos, a kritikus fontosságú jelentések, amelyek a lehető leghamarabb kell küldeni. Attól függően, ütemezését és egyéb feltételek a jelentés elküldése továbbra is sikertelen lehet, például ha a HTTP-átjáró le van zárva, vagy az üzenet az átjáró nem érhető el. Ha Immediate hamis értékre van állítva, a jelentés alapján lesz elküldve az egészségügyi ügyfélbeállításokat a HTTP-átjáró. Ezért azt fogja kötegelni HealthReportSendInterval konfigurációjának megfelelően. Ez az az ajánlott beállítás, mivel így az egészségügyi ügyfél állapotfigyelő jelentési üzenetek a health Store adatbázisban, valamint az egészségügyi jelentés feldolgozása optimalizálása érdekében. Alapértelmezés szerint a rendszer a jelentések nem küldése azonnal. |
+| – azonnali | Azt a jelzőt, amely azt jelzi, hogy a jelentést közvetlenül kell küldeni. <br><br> Egy jelentés küld egy Service Fabric gateway alkalmazás, amely továbbítja a health Store adatbázisban. Ha az Immediate értékre van állítva. igaz, a jelentés azonnal címről érkezik a health Store adatbázisban, függetlenül a fabric-ügyfélbeállításokat a http-átjáró alkalmazások által használt HTTP-átjáró. Ez akkor hasznos, a kritikus fontosságú jelentések, amelyek a lehető leghamarabb kell küldeni. Attól függően, ütemezését és egyéb feltételek a jelentés elküldése továbbra is sikertelen lehet, például ha a HTTP-átjáró le van zárva, vagy az üzenet az átjáró nem érhető el. Ha Immediate hamis értékre van állítva, a jelentés alapján lesz elküldve az egészségügyi ügyfélbeállításokat a HTTP-átjáró. Ezért azt fogja kötegelni HealthReportSendInterval konfigurációjának megfelelően. Ez az az ajánlott beállítás, mivel így az egészségügyi ügyfél állapotfigyelő jelentési üzenetek a health Store adatbázisban, valamint az egészségügyi jelentés feldolgozása optimalizálása érdekében. Alapértelmezés szerint a rendszer a jelentések nem küldése azonnal. |
 | --eltávolítása akkor, ha lejárt | Érték, amely azt jelzi, hogy a jelentés törlődik a health store adatbázisból, a lejárat után. <br><br> Ha igaz értékű, a jelentés távolítja el a health Store adatbázisban után jár le. Ha az értéke HAMIS, a jelentés egy hibát, ha lejárt számít. Ez a tulajdonság értéke alapértelmezés szerint False (hamis). Amikor az ügyfelek rendszeresen készít jelentést, akkor állítsa be RemoveWhenExpired false (alapértelmezett). Ezzel a módszerrel a riporter veti fel (pl. holtpont), és nem készíthető jelentés, az entitás értékeli ki a hiba, ha lejár az állapotjelentés. Az entitás hibaállapot állapottal megőrzendő tartalomként jelöli. |
 | --sorszám | A numerikus karakterláncként egészségügyi jelentés sorszáma. <br><br> A jelentés sorszám használják a health Store adatbázisban elavult jelentések észleléséhez. Ha nincs megadva, egy megfelelő sorszám health-ügyfél által automatikusan létrehozott jelentések hozzáadásakor. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| – élettartam | Az időtartam, amelynek a jelentés érvénytelen. Ez a mező ISO8601 formátumot használ a időtartam megadása. <br><br> Amikor az ügyfelek rendszeresen készít jelentést, élettartam-nál nagyobb gyakorisággal kell küldenek jelentéseket. Az ügyfelek jelentés az átmenet, ha azok time to live végtelen, állíthatja be. Élettartam lejár, az egészségügyi adatokat tartalmazó állapotesemény esetén vagy eltávolítja a health Store adatbázisban, ha RemoveWhenExpired igaz értékre, vagy értékelhető a hiba, ha RemoveWhenExpired hamis. Ha nem a végtelen érték az alapértelmezett élettartam adott, ideje. |
+| – élettartam | Az időtartam, amelynek a jelentés érvénytelen. Ebben a mezőben adja meg az időtartamot ISO8601 formátumot használja. <br><br> Amikor az ügyfelek rendszeresen készít jelentést, élettartam-nál nagyobb gyakorisággal kell küldenek jelentéseket. Az ügyfelek jelentés az átmenet, ha azok time to live végtelen, állíthatja be. Élettartam lejár, az egészségügyi adatokat tartalmazó állapotesemény esetén vagy eltávolítja a health Store adatbázisban, ha RemoveWhenExpired igaz értékre, vagy értékelhető a hiba, ha RemoveWhenExpired hamis. Ha nem a végtelen érték az alapértelmezett élettartam adott, ideje. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -520,7 +520,7 @@ Oldja meg a Service Fabric service partíció beolvasása a végpontok a szolgá
 | --- | --- |
 | – [kötelező] szolgáltatás azonosítója | A szolgáltatás identitásának. Ez az azonosító általában nélkül a szolgáltatás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha a szolgáltatás neve "fabric\:/myapp/app1/svc1", a felügyeltszolgáltatás-identitás lenne "myapp\~app1\~svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban. |
 | --key-partíciótípusnak | A partíciós kulcs típusa. A paraméter megadása kötelező, ha a szolgáltatás partícióséma Int64Range vagy elnevezett. A lehetséges értékek követi. – None (1) – azt jelzi, hogy a PartitionKeyValue paraméter nincs megadva. Ez a particionálási séma egypéldányosnak a partíciók esetén érvényes. Ez az alapértelmezett érték. Az érték az 1. -Int64Range (2) – azt jelzi, hogy a PartitionKeyValue paraméter egy int64 partíciókulcsot. Ez a particionálási séma Int64Range a partíciók esetén érvényes. A 2 érték. -Nevű (3) – azt jelzi, hogy a PartitionKeyValue paraméter a partíció nevét. Ez az a particionálási séma elnevezett partíciók esetén érvényes. Az érték 3. |
-| --partíció-kulcs-érték | Partíciókulcs. Ez azért szükséges, ha a szolgáltatás partícióséma Int64Range vagy elnevezett. |
+| --partíció-kulcs-érték | Partíciókulcs. Ez azért szükséges, ha a szolgáltatás partícióséma Int64Range vagy elnevezett. Ez a nem a Partícióazonosító, de a, vagy az egész szám kulcs értékét, vagy a partícióazonosító. neve Például ha a szolgáltatás előre partíciók 0 és 10 használja, majd azok PartitionKeyValue lenne egy egész számot, a tartományba. A lekérdezés tekintse meg a tartományt vagy a neve, leírása. |
 | --previous-rsp-version | A korábban kapott válasz a verzió mező értéke. Ez azért szükséges, ha a felhasználó tudja, hogy az eredmény, hogy közben lett korábban már elavult. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 

@@ -1,10 +1,10 @@
 ---
-title: Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása Docker-tárolóban | Microsoft Docs
+title: Az Azure CLI Példaszkript – ASP.NET Core-alkalmazás létrehozása a Docker Hubból |} A Microsoft Docs
 description: Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása Docker-tárolóban
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 98b15b494905d93cf0d413b5fc89ad342e2fb196
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 20635e3dd83184b6e024c9e954f64f6d9a90ff09
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992609"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309309"
 ---
-# <a name="create-an-aspnet-core-web-app-in-a-docker-container"></a>ASP.NET Core-alapú webalkalmazás létrehozása Docker-tárolóban
+# <a name="create-an-aspnet-core-web-app-in-a-docker-container-using-azure-cli"></a>Az ASP.NET Core-webalkalmazás létrehozása Docker-tárolóban az Azure CLI használatával
 
 Ez a példaszkript egy erőforráscsoportot, egy linuxos App Service-csomagot és egy webalkalmazást hoz létre. Ezután üzembe helyez ASP.NET Core-alapú alkalmazást egy Docker-tároló használatával.
 

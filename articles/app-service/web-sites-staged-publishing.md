@@ -1,5 +1,5 @@
 ---
-title: Állítsa be átmeneti környezeteket az Azure App Service web Apps-alkalmazások |} A Microsoft Docs
+title: Átmeneti környezetek a web apps – az Azure App Service beállítása |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja a szakaszos közzétételt a web apps az Azure App Service-ben.
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 17bc8fe2e5ccd9888777e11f3ca98e6afefb56b7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970858"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277386"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -124,8 +125,8 @@ Használatakor a **felcserélés előnézettel** beállítás (lásd: [üzembehe
 - Biztosítja, hogy a céltárhely változatlan marad, hogy a tárolóhely (például az éles környezet) a meglévő számítási feladatok nem változik.
 - A forrás tárolóhely, beleértve a tárolóhely-specifikus kapcsolati karakterláncok és a beállítások a céltárhely konfigurációs elemeinek vonatkozik.
 - A forrás-tárolóhely a fent említett konfigurációs elemek használatával munkavégző folyamatok újraindul.
-- Amikor befejezte a lapozófájl-kapacitás: a forrás előtti warmed felfelé tárolóhely helyezi át a céltárhely. A céltárhely átkerül a forrás tárolóhely, mint egy manuális lapozófájl-kapacitás.
-- Ha megszakítja a lapozófájl-kapacitás: újra alkalmazza a konfigurációs elemek a forrás bővítőhely átirányítja a forrás.
+- Ha a felcserélés befejezése: A forrás előtti warmed felfelé tárolóhely helyezi át a céltárhely. A céltárhely átkerül a forrás tárolóhely, mint egy manuális lapozófájl-kapacitás.
+- Ha megszakítja a lapozófájl-kapacitás: Újra alkalmazza a konfigurációs elemek a forrás bővítőhely átirányítja a forrás.
 
 Megtekintheti, hogy pontosan hogyan az alkalmazást fog viselkedni a céltárhely konfigurációval. Miután elvégezte az ellenőrzés, hogy egy külön lépésben felcserélés befejezése. Ebben a lépésben az előnye, hogy a forrás tárolóhely már bemelegíteni megfelelő kívánt beállításokkal rendelkezik, és az ügyfelek nem működik az állásidő.  
 

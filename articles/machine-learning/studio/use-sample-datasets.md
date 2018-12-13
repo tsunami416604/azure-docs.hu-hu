@@ -4,9 +4,8 @@ description: A Machine Learning Studióban szereplő minta modellek használt ad
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 57d9e1c7b501b67a441dc3490356261fa29ebb7d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308834"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270484"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -34,7 +33,7 @@ A munkaterület alatt érhető el a többi ezek mintaadatkészletek **mentett ad
 Is használhatja ezeket az adatkészleteket bármelyikét a saját kísérletben húzza a kísérletvászonra.
 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <table>
 
@@ -48,7 +47,7 @@ Is használhatja ezeket az adatkészleteket bármelyikét a saját kísérletben
   <td>
 > 100 módosított jövedelem indexű 16 idősebb működő felnőttek használatával 1994 népszámlálási adatbázis egy részét.
 <p></p>
-<b>Használat:</b> demográfiai használatával előre, hogy egy személy bevétele évente több mint 50 ezer személyek besorolását.
+<b>Használat:</b> Személyek demográfiai használatával előre, hogy egy személy bevétele évente több mint 50 ezer besorolása.
 <p></p>
 <b>Kapcsolódó Research:</b> Kohavi, r, Becker, b, (1996). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -69,7 +68,7 @@ Győződjön meg arról, és az árat, beleértve a modell a szolgáltatások, p
 <p></p>
 A kockázati pontszám először kapcsolódik automatikus ár. Ezután módosul, a tényleges kockázat a biztosítási matematikusok, symboling a folyamatot. + 3 érték azt jelzi, hogy az automatikus kockázatos, és a -3 értéket, hogy biztonságos-e valószínűleg.
 <p></p>
-<b>Használat:</b> a kockázati pontszám funkciók, vagy a többváltozós regresszió besorolás alapján képes előre jelezni. 
+<b>Használat:</b> Előrejelezheti a kockázati pontszám funkcióihoz, regressziós vagy többváltozós besorolást. 
 <p></p>
 <b>Kapcsolódó Research:</b> Schlimmer, J.C. (1987). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -100,7 +99,7 @@ A vérátömlesztésben Service Center, Hsin-Chu város, Tajvan vér donor adatb
 <p></p>
 Donor szerepel a hónap utolsó összeg egyeztetéséről óta), és a gyakoriság, vagy termékadományainak, utolsó összeg egyeztetéséről óta eltelt idő teljes száma, és szóló vér mennyiségét.
 <p></p>
-<b>Használat:</b> előre besorolási keresztül, akár a donor szóló vér március 2007, ahol 1, 0 és a célként megadott időszak során ország nem ország célja. 
+<b>Használat:</b> A cél, hogy-e a donor szóló vér március 2007, ahol 1, 0 és a célként megadott időszak során ország nem ország előrejelzése besorolási keresztül. 
 <p></p>
 <b>Kapcsolódó Research:</b> Yeh, úgy, (2008). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
 <p></p>
@@ -113,7 +112,7 @@ Yeh, e-Cheng, Yang, King-Jang, és sítése, címke-PN-Roaming, "Knowledge disco
   <td>
 A machine learning elsajátításához gyakran megjelenő Oncology Institute által biztosított három rák kapcsolódó adatkészletek egyikét. Egyesíti a körülbelül 300 darab laboratóriumi elemzési funkciók diagnosztikai adatokat.
 <p></p>
-<b>Használat:</b> besorolása a rák típusát, 9 attribútumok alapján, amelyek némelyike lineáris és kategorikus. 
+<b>Használat:</b> A rák típusát besorolása, 9 attribútumok alapján, amelyek némelyike lineáris, és kategorikus. 
 <p></p>
 <b>Kapcsolódó Research:</b> Wohlberg, W.H., utca, W.N. & Mangasarian, O.L. (1995). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -166,7 +165,7 @@ A évi Versenysorozatából Cup 2009 ügyfél kapcsolat előrejelzési kihívás
   <td>
 Szimulált energia-profilok alapján 12 épület különböző alakzatok gyűjteménye. Az épületek nyolc funkcióihoz különbözteti meg. Ide tartoznak a terület, a üveg terület terjesztési és a tájolás üveg.
 <p></p>
-<b>Használat:</b> előrejelzése alapján két valós értékű válaszok egyik minősítés energiahatékonyság regressziós vagy a besorolási használja. A többcsoportos besoroláshoz a válasz változó pedig a legközelebbi egész round van. 
+<b>Használat:</b> A két valós értékű válaszok egyik alapú energiahatékonyság minősítés előrejelzése regressziós vagy a besorolási használja. A többcsoportos besoroláshoz a válasz változó pedig a legközelebbi egész round van. 
 <p></p>
 <b>Kapcsolódó Research:</b> Xifara, A. & Tsanas, területen. (2012). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -181,7 +180,7 @@ Az adatkészlet az adott időszakban 2013. április október ismerteti. Mielőtt
   <li>Az adatkészlet az Egyesült Államok szárazföldi területén csak 70 legforgalmasabb repülőterek terjed ki lett szűrve</li>
   <li>Megszakított repülőjáratok legális, legfeljebb 15 perccel késleltetve vannak</li>
   <li>Forgalomelterelés repülőjáratok ki lett szűrve</li>
-  <li>A következő oszlopok kijelölve: év, hónap, DayofMonth, DayOfWeek, szolgáltatója, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, megszakított</li>
+  <li>A következő oszlopok kijelölve: Év, hónap, DayofMonth, DayOfWeek, szolgáltatója, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay ArrDel15, megszakítva</li>
 </ul>
 </td>
 </tr>
@@ -191,9 +190,9 @@ Az adatkészlet az adott időszakban 2013. április október ismerteti. Mielőtt
   <td>
 Repülőgép repülési beérkező kérelmek és az Egyesült Államokon a 2011. október távozás rekordjait.
 <p></p>
-<b>Használat:</b> előre jelezni a járatok késésének. 
+<b>Használat:</b> A járatok késésének előrejelzésére. 
 <p></p>
-<b>Kapcsolódó Research:</b> az Egyesült Államok közlekedési részleg <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
+<b>Kapcsolódó Research:</b> Az Egyesült Államok közlekedési részleg <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
@@ -222,7 +221,7 @@ Az adatkészlet személyek, attribútumok, kis vagy nagy hitelkockázatok által
 <tr>
   <td>IMDB film címe</td>
   <td>
-Az adatkészlet is minősített, a Twitter-tweetek filmek információt tartalmaz: IMDB film-azonosító, a film, a műfaj és a gyártási év. Az adatkészlet 17K filmek találhatók. A tanulmány "S. a jelent meg az adatkészlet Dooms, T. De Pessemier és L. Martens-féle. MovieTweetings: adatkészlet minősítés film gyűjteni a Twitteren. Workshop közösségi és emberi számítási ajánló rendszerek esetén: RecSys 2013 CrowdRec."
+Az adatkészlet is minősített, a Twitter-tweetek filmek kapcsolatos információkat tartalmazza: IMDB movie azonosító, a film, a műfaj és a gyártási év. Az adatkészlet 17K filmek találhatók. A tanulmány "S. a jelent meg az adatkészlet Dooms, T. De Pessemier és L. Martens-féle. MovieTweetings: adatkészlet minősítés film gyűjteni a Twitteren. Workshop közösségi és emberi számítási ajánló rendszerek esetén: RecSys 2013 CrowdRec."
   </td>
 </tr>
 
@@ -231,7 +230,7 @@ Az adatkészlet is minősített, a Twitter-tweetek filmek információt tartalma
   <td>
 Talán ez az a legjobb ismert adatbázis található, a minta felismerés elsajátításához. Az adatkészlet viszonylag kicsi, 50 példák egyes szirom mérések három iris fajtáinak tartalmazó.
 <p></p>
-<b>Használat:</b> Írisz típusának a mérések.  
+<b>Használat:</b> Előrejelezheti a mérések Írisz típusát.  
 <p></p>
 <b>Kapcsolódó Research:</b> Fisher, R.A. (1988). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -250,7 +249,7 @@ Ez az adatkészlet egy kis mértékben módosított verzióját az adatkészlete
 <p></p>
 Az adatok különböző autók fogyasztási az üzemanyag fogyasztás sorolja fel. Például a hengerszám, motor elmozdulást, lóerő, teljes súlya és gyorsítás számát információkat is tartalmaz.
 <p></p>
-<b>Használat:</b> üzemanyag-fogyasztási többértékű diszkrét attribútumok három és öt folyamatos attribútumok alapján előre jelezni. 
+<b>Használat:</b> Előrejelezheti az üzemanyag-fogyasztási többértékű diszkrét attribútumok három és öt folyamatos attribútumok alapján. 
 <p></p>
 <b>Kapcsolódó Research:</b> StatLib, Carnegie Mellon University (1993). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -260,7 +259,7 @@ Az adatok különböző autók fogyasztási az üzemanyag fogyasztás sorolja fe
   <td>
 A küzdő National Institute és emésztőtraktus és vese betegségek adatbázis származó adatok egy részét. Az adatkészlet Pima indiai örökségének női betegek fókusz lett szűrve. Egészségügyi adatok, például glükóz és inulin szintek, valamint lifestyle tényezők szerepel.
 <p></p>
-<b>Használat:</b> előre jelezni, hogy rendelkezik-e a tulajdonos küzdő (bináris osztályozás). 
+<b>Használat:</b> Előrejelezheti, hogy rendelkezik-e a tulajdonos küzdő (bináris osztályozás). 
 <p></p>
 <b>Kapcsolódó Research:</b> Sigillito, V. (1990). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
@@ -270,7 +269,7 @@ A küzdő National Institute és emésztőtraktus és vese betegségek adatbázi
   <td>
 Azokról az ügyfelekről, többek között demográfiai adatok és beállítások metaadatainak gyűjteménye.
 <p></p>
-<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
+<b>Használat:</b> A másik két éttermi adatkészletet, és ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
 <b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
@@ -281,7 +280,7 @@ Azokról az ügyfelekről, többek között demográfiai adatok és beállítás
   <td>
 Éttermek és a hozzájuk tartozó funkciók, például az élelmiszer-típus, étkeztetés stílus és a hely metaadatait készlete.
 <p></p>
-<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
+<b>Használat:</b> A másik két éttermi adatkészletet, és ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
 <b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
@@ -292,7 +291,7 @@ Azokról az ügyfelekről, többek között demográfiai adatok és beállítás
   <td>
 Minősítések által adott felhasználók éttermek a méretezési csoport 0 2 tartalmazza.
 <p></p>
-<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
+<b>Használat:</b> A másik két éttermi adatkészletet, és ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
 <b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
@@ -303,7 +302,7 @@ Minősítések által adott felhasználók éttermek a méretezési csoport 0 2 
   <td>
 Ez az adatkészlet kísérletek primerek acélból rekordjait tartalmazza. (Szélesség, vastagsága, típusa (tekercse, lap stb.) a létrejövő acélszürke típusok a fizikai attribútumokat tartalmaz.
 <p></p>
-<b>Használat:</b> előrejelzése bármely két numerikus osztályattribútumokhoz; keménység vagy erősségét. Előfordulhat, hogy is elemezheti az attribútumok közötti összefüggéseket.
+<b>Használat:</b> Két numerikus osztály attribútumokat; előrejelzése keménység vagy erősségét. Előfordulhat, hogy is elemezheti az attribútumok közötti összefüggéseket.
 <p></p>
 Acélszürke osztályzatainak kövesse a szabvány, SAE és más szervezetek által definiált. Egy adott "osztály" (Ez az osztály változó) keres, és szeretné tudni, hogy a szükséges értékeket. 
 <p></p>
@@ -322,9 +321,9 @@ A szimuláció szándéka volt az alapoktól-alapú légköri Cherenkov gamma te
 <p></p>
 Az adatok Előfeldolgozott lett a hosszú-nyújtott alakú fürt létrehozása a tengely felé a kamera center összpontosul. A három pontra (más néven Hillas paraméterek) jellemzőit megkülönböztetés használható kép paraméterek közé tartoznak.
 <p></p>
-<b>Használat:</b> előre jelezni, hogy mulatni képe jelöl jel vagy a háttérben zaj.
+<b>Használat:</b> Előrejelezheti, hogy mulatni képe jelöl jel vagy a háttérben zaj.
 <p></p>
-<b>Megjegyzések:</b> egyszerű besorolás pontossága nem értelmezhető adatok, egy háttér-esemény besorolása, mert jel rosszabb, mint az Írisz egy jel esemény háttereként óta. Különböző deklarációkkal összehasonlításáért a ROC graph kell használni. A valószínűsége annak, egy háttér-eseményt fogad, jel egyet az alábbi küszöbértékek alá kell lenniük: 0,01, 0,02, 0,05, 0,1 vagy 0.2-es.
+<b>Megjegyzések</b>: Egyszerű besorolás pontossága nem értelmezhető adatok, a Írisz egy háttér-esemény, mivel jel rosszabb, mint az Írisz egy jel esemény háttereként óta. Különböző deklarációkkal összehasonlításáért a ROC graph kell használni. A valószínűsége annak, egy háttér-eseményt fogad, jel egyet az alábbi küszöbértékek alá kell lenniük: 0,01, 0,02, 0,05, 0,1 vagy 0.2-es.
 <p></p>
 Továbbá vegye figyelembe, hogy alábecsülte van-e a háttérben futó események (hadronic zuhanyozók h) száma. A h vagy zaj osztály valós mérések események többsége jelenti. 
 <p></p>
@@ -341,7 +340,7 @@ Az időjárási adatok repülőtér időjárási állomásokon, az adott idősza
   <li>Időjárásjelző azonosítók megfelelő repülőtér azonosítók hozzá lettek rendelve</li>
   <li>Időjárás-állomások 70 legforgalmasabb repülőterek hozzá nem rendelt kiszűrte az</li>
   <li>A dátum oszlop külön év, hónap és nap oszlopok lett felosztva.</li>
-  <li>A következő oszlopok kijelölve: AirportID, év, hónap, nap, Time, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, magasságmérő</li>
+  <li>A következő oszlopok kijelölve: AirportID, év, hónap, nap, ideje, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, magasságmérő</li>
 </ul>
   </td>
 </tr>

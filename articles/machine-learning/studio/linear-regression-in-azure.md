@@ -5,9 +5,8 @@ metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311058"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276679"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Lineáris regresszió használata az Azure Machine Learning Studióban
 > *Kate Baroni* és *Ben Boatman* vannak a vállalati Microsoft Data Insights kiváló Center a megoldástervezők. Ebben a cikkben bemutatják egy meglévő regressziós elemzési suite egy felhőalapú megoldás segítségével az Azure Machine Learning-ba való migrálás tapasztalataikról. 
@@ -31,7 +30,7 @@ ms.locfileid: "52311058"
 
 &nbsp; 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="goal"></a>Cél
 A projekt lépések két célok elérésére: 
@@ -73,8 +72,8 @@ Először az Excel-modell egyértelműen outperformed a Machine Learning Studio-
 Problémába ütköztünk a folyamat és az eredmények és az adatelemzők által a Machine Learning-csapat, amikor azok gyorsan megadott néhány hasznos tippeket. 
 
 * Használatakor a [lineáris regressziós] [ linear-regression] modul a Machine Learning Studióban, a két módszer találhatók:
-  * Online színátmenet Grádiens: Lehet, megfelelőbbek, nagyobb léptékben kapcsolatos problémák
-  * Szokásos legkisebb négyzetek: Ez a legtöbb ember úgy, ha azok hall, lineáris regresszió mód. A kis adatkészletekhez a szokásos legkisebb négyzetek több optimális választás lehet.
+  * Online gradiens módszeres: A nagyobb méretű problémákat megfelelőbb lehet
+  * Szokásos legkisebb négyzetek: Ez a legtöbb ember úgy, ha azok hall, lineáris regresszió módszer. A kis adatkészletekhez a szokásos legkisebb négyzetek több optimális választás lehet.
 * Vegye figyelembe, hogy a teljesítmény javítása érdekében L2 Regularizációs súly paraméter finomhangolása. Alapértelmezés szerint 0,001 van beállítva, de a kisméretű adatkészlet esetében azt állítsa 0,005 teljesítmény javítása érdekében. 
 
 ### <a name="mystery-solved"></a>Megoldott titokzatos!
@@ -86,8 +85,8 @@ A javaslatok alkalmazásakor azt ugyanazon alapteljesítményének a Machine Lea
 | Tanuló |Az Excel -> Data Analysis -> regresszió |Lineáris regresszió. |Lineáris regresszió |
 | Learner beállításai |– |Alapértelmezés |szokásos legkisebb négyzetek<br />L2 = 0.005 |
 | Adatkészlet |26 sort, 3 funkciók, 1 címkét. Az összes numerikus. |Azonos |Azonos |
-| Split: Train |Az Excel tanított először 18 sort, a legutóbbi 8 sorok tesztelve. |Azonos |Azonos |
-| Split: teszt |Excel-alkalmazása a legutóbbi 8 regressziós képlet |Azonos |Azonos |
+| Split: Betanítás |Az Excel tanított először 18 sort, a legutóbbi 8 sorok tesztelve. |Azonos |Azonos |
+| Split: Tesztelés |Excel-alkalmazása a legutóbbi 8 regressziós képlet |Azonos |Azonos |
 | **Teljesítmény** | | | |
 | R-négyzet igazítva |0.96 |– | |
 | Coefficient of Determination |– |0.78 |0.952049 |
@@ -145,7 +144,7 @@ Lehetővé teszi a prediktív elemzési előrejelzése a Machine Learning Excel 
 
 * Regresszió az Excelben. Ha soha nem próbálta regressziós az Excelben, ez az oktatóanyag segítségével egyszerűen: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * Előrejelzés regressziós vs. Tyler Chessman írtam egy blog a cikk elmagyarázza, hogyan time series előrejelzési az Excelben, amely lineáris regressziós modell futtatása egy jó kezdőknek leírását tartalmazza. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Szokásos legkisebb négyzetek lineáris regresszió: Hibái, problémák és Alkalmazásmegoldásokra. A bevezetés és regressziós veszik górcső alá: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Szokásos legalább Squares lineáris regressziós modell futtatása: Hibái, problémák és Alkalmazásmegoldásokra. A bevezetés és regressziós veszik górcső alá: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

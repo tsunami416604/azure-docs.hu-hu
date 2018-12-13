@@ -12,14 +12,14 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7ab1c0f918b5e5b9135e8d1b91f0f97a6c95d05e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9175ed0b4f362a40e1d29a20a8378854b5f4cc81
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685429"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310386"
 ---
-# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: Azure SQL Database és a helyszíni SQL Server közötti adatokat beállítása az SQL Data Sync szolgáltatással
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy hibrid szinkronizálási csoport, amely tartalmazza az Azure SQL Database és az SQL Server-példányok Azure SQL Data Sync beállítása. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
 
@@ -199,7 +199,7 @@ Miután létrehozott és telepített, 3. lépés az új szinkronizálási csopor
 
 ### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Milyen gyakran is Data Sync szinkronizálni az adatokat
 
-A minimális gyakoriság 5 percenként van.
+A riasztást kiváltó szinkronizálások közötti minimális időtartama öt perc alatt.
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Nem az SQL Data Sync teljes létrehozása és kiépítése az táblák
 

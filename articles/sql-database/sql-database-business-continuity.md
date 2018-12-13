@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: c391df27b8ee0d5ceadcd388fffcafe0f756ec40
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: aecfecda08a6008b931738802bb89054f9d3963c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866169"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274120"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
-Az Azure SQL Database az SQL Server adatbázismotor konfigurált és optimalizált Azure felhőalapú környezetet biztosít, a legújabb stabil megvalósítását [magas rendelkezésre állású](sql-database-high-availability.md) és a rugalmasság, a hibákat, amelyek hatással lehetnek a üzleti folyamatok. **Üzletmenet-folytonossági** a mechanizmusok, szabályzatokat és eljárásokat, amelyek lehetővé teszik egy üzleti megszakadását, különösen a számítástechnikai infrastruktúra esetén is hivatkozik az Azure SQL Database-ben. A legtöbb esetben az Azure SQL Database fogja kezelni az azokat a káros eseményeket, előfordulhat, hogy a felhőalapú környezetben történik, és folyamatosan futó üzleti folyamatait. Vannak azonban bizonyos azokat a káros eseményeket, amelyek például nem kezeli az SQL Database:
+**Üzletmenet-folytonossági** a mechanizmusok, szabályzatokat és eljárásokat, amelyek lehetővé teszik, hogy továbbra is fennállnak megszakadását, különösen a számítástechnikai infrastruktúra esetén hivatkozik az Azure SQL Database-ben. A legtöbb esetben az Azure SQL Database az azokat a káros eseményeket, amelyek a felhőalapú környezetben történik és tartsa az alkalmazások és üzleti folyamatok futtatása fogja kezelni. Vannak azonban bizonyos azokat a káros eseményeket, amelyek például nem kezeli az SQL Database:
 
 - Felhasználó véletlenül törölt vagy frissített egy sort a táblában.
 - Rosszindulatú támadó sikeresen törli az adatokat, vagy töröl egy adatbázist.
@@ -48,7 +48,8 @@ Ezt követően megismerheti a további mechanizmusok, amelyek segítségével he
 - [Beépített automatikus biztonsági mentések](sql-database-automated-backups.md) és [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását néhány pontra az elmúlt 35 napon belül.
 - Is [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md#deleted-database-restore) a pont, ahol azt törölték, ha a **nem lett törölve a logikai kiszolgáló**.
 - [Hosszú távú adatmegőrzés](sql-database-long-term-retention.md) lehetővé teszi, hogy a biztonsági mentések tartani 10 évre.
-- [Automatikus feladatátvételi csoport](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan Recovery egy méretezési csoport adatközponti üzemkimaradások esetére.
+- [Aktív georeplikáció](sql-database-active-geo-replication.md) hozhatók létre olvasható replikát, és manuális feladatátvétel esetén a data center kimaradás vagy alkalmazás frissítése bármely replika.
+- [Automatikus feladatátvételi csoport](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan Recovery esetén egy adatközpont-meghibásodás után.
 
 Minden egyes funkció más paraméterekkel rendelkezik a becsült helyreállítási idő (ERT) és a legutóbbi tranzakciók során előforduló esetleges adatvesztés tekintetében. Miután megismerkedett ezekkel a lehetőségekkel, szabadon válogathat közülük, és egyes forgatókönyvekben együtt is alkalmazhatja őket. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb Adatfrissítés (időintervallum) az alkalmazás működését elvesztése a zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert.
 
@@ -75,8 +76,7 @@ Használja az automatikus biztonsági másolatokat és [időponthoz visszaállí
 - Kis mértékű adatmódosításra lehet számítani (alacsony óránkénti tranzakciószám), és egy órányi adatmódosítás elvesztése elfogadható.
 - Költségérzékeny.
 
-Ha gyorsabb helyreállítás szükséges, használja a [feladatátvételi csoportok](sql-database-geo-replication-overview.md#auto-failover-group-capabilities
-) (lásd az alábbiakban). Ha szeretné tudni 35 napot meghaladó időszakból másolatból szeretne adatokat helyreállítani, használja a [hosszú távú megőrzés](sql-database-long-term-retention.md).
+Ha gyorsabb helyreállítás szükséges, használja a [aktív georeplikáció](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md). Ha szeretné tudni 35 napot meghaladó időszakból másolatból szeretne adatokat helyreállítani, használja a [hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region"></a>Adatbázis helyreállítása egy másik régióba az
 
@@ -84,14 +84,14 @@ Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Le�
 
 - Az egyik lehetőség, hogy megvárja, amíg az adatközpont leállását követően az adatbázis újra elérhető lesz. Ez az olyan alkalmazások esetében működik, amelyek esetében megengedhető, hogy az adatbázis offline állapotú legyen. Például egy fejlesztési projekt vagy egy ingyenes próbaverzió esetében, amelyeken nem kell folyamatosan dolgoznia. Amikor egy adatközpontban szolgáltatáskimaradás következik, nem tudja, mennyi ideig a szolgáltatáskimaradás elhárítása után előfordulhat, hogy a legutóbbi, így ez a beállítás csak akkor működik, ha már nincs szüksége az adatbázis egy ideig.
 - Egy másik lehetőség az, hogy egyetlen kiszolgálón, az minden olyan Azure-régió-adatbázis visszaállítása [georedundáns adatbázis biztonsági másolatait](sql-database-recovery-using-backups.md#geo-restore) (georedundáns visszaállítást). A GEO-visszaállítás georedundáns biztonsági másolat használja forrásként, és segítségével helyreállíthat egy adatbázist, akkor is, ha az adatbázis vagy az Adatközpont-leállás miatt elérhetetlenné.
-- Végül állíthatja helyre a kimaradás utáni Ha konfigurálta a [automatikus feladatátvételi csoport](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) az adatbázis vagy -adatbázisok számára. A feladatátvételi szabályzat automatikus vagy kézi feladatátvételi testre szabhatja. Feladatátvételi magát csupán néhány másodpercet vesz igénybe, amíg a szolgáltatás legalább egy órával az aktiválás vesz igénybe. Ez azért szükséges, győződjön meg arról, hogy a feladatátvétel indokolt-e a skála, a szolgáltatáskiesés megszüntetése után. Is a feladatátvétel aszinkrón replikáció természete miatt kis adatvesztést eredményezhet. Lásd a táblázatot az Automatikus feladatátvétel RTO és RPO részleteket a cikk korábbi részében.
+- Végül állíthatja helyre a kimaradás utáni Ha bármelyik geo-replikák használatával konfigurált [aktív georeplikáció](sql-database-active-geo-replication.md) vagy egy [automatikus feladatátvételi csoport](sql-database-auto-failover-group.md) az adatbázis vagy -adatbázisok számára. Ezek a technológiák válaszaitól függően manuális vagy automatikus feladatátvételt is használhat. Feladatátvételi magát csupán néhány másodpercet vesz igénybe, amíg a szolgáltatás legalább egy órával az aktiválás vesz igénybe. Ez azért szükséges, győződjön meg arról, hogy a feladatátvétel indokolt-e a skála, a szolgáltatáskiesés megszüntetése után. Is a feladatátvétel aszinkrón replikáció természete miatt kis adatvesztést eredményezhet. Lásd a táblázatot az Automatikus feladatátvétel RTO és RPO részleteket a cikk korábbi részében.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 > [!IMPORTANT]
 > Aktív georeplikáció és automatikus feladatátvételi csoportok szeretné használni, kell lennie az előfizetés tulajdonosa vagy az SQL Server rendszergazdai jogosultságok. Konfigurálhatja, és átadja a feladatokat az Azure portal, PowerShell vagy a REST API használatával az Azure-előfizetés engedélyek vagy a Transact-SQL használatával az SQL Server engedélyei.
 
-Aktív automatikus feladatátvételi csoportok használata, ha az alkalmazás megfelel a következő feltételeknek:
+Automatikus feladatátvételi csoportok használata, ha az alkalmazás megfelel a következő feltételeknek:
 
 - Az üzletmenet szempontjából kritikus fontosságú.
 - Rendelkezik egy szolgáltatásiszint-szerződés (SLA), amely nem engedélyezi a 12 óra vagy több állásidőt.

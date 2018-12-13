@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 87aa1c30bb567c6820e2d9ecacfc3f8cd2338339
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a1bb841c1218be0a418583af8ca95b2dff2f67d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137769"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309501"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja az adatok áthelyezése egy helyszíni SQL Server-adatbázis
 
 Egy táblázat foglalja össze különböző lehetőségei az adatok áthelyezése az Azure SQL Database, lásd: [adatok áthelyezése az Azure SQL Database az Azure Machine Learning](move-sql-azure.md).
 
-## <a name="intro"></a>Bevezetés: Mi az ADF, és amikor azt használható adatok migrálása?
+## <a name="intro"></a>Bemutatása: Mi az ADF, és ha ez használható az adatok áttelepítéséhez?
 Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatáthelyezési és -átalakítási adatok. A kulcs az ADF modell koncepciójuk folyamat. Egy folyamat olyan tevékenységek logikus csoportosításai, amelyek mindegyike meghatározza az adatkészletekben található adatokon végrehajtandó műveleteket. Társított szolgáltatások meghatározzák azokat az információkat a Data Factory az adatforrásokhoz való kapcsolódáshoz szolgálnak.
 
 Az ADF használatával a meglévő adatfeldolgozási szolgáltatások összeállítható alakíthatók ki adatcsatornák, amelyek magas rendelkezésre állású, felügyelt felhőben. Ezek adatfolyamatok ütemezhető a betöltési, előkészítése, átalakíthatja, elemezheti és adatok közzététele, és az ADF felügyeli, és az összetett adatokat és a feldolgozási függőségek koordinálja. Megoldások is gyorsan létrehozott és a felhőben üzembe helyezett helyszíni egyre nagyobb számban csatlakoztatása és felhőbeli adatforrásokból.
@@ -43,7 +43,7 @@ Beállítjuk az ADF-folyamatot, amely composes két az áttelepítési tevékeny
 * adatok másolása az Azure Blob Storage-fiókhoz az Azure SQL Database.
 
 > [!NOTE]
-> A lépéseket, látható itt lett a részletes oktatóanyag az ADF csapatunk igazítani: [adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal/) témakör vonatkozó szakaszaihoz vezetnek mutató hivatkozások találhatók, mikor a megfelelő.
+> Az itt látható lépéseket igazítani a részletes oktatóanyag az ADF csapatunk voltak: [Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) témakör vonatkozó szakaszaihoz vezetnek mutató hivatkozások találhatók, szükség esetén.
 >
 >
 
@@ -71,7 +71,7 @@ Egy új Azure Data Factory és a egy erőforráscsoportban létrehozására vona
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Telepítse és konfigurálja az Azure Data Factory integrációs modul 
 Az integrációs modul az egy ügyfél által kezelt adatintegrációs infrastruktúra különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt. Ez a modul nevén "Adatkezelési átjáró" volt. 
 
-Állítsa be, hogy [kövesse a folyamat létrehozására szolgáló instrutions](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Állítsa be, hogy [kövesse a folyamat létrehozására szolgáló instrutions](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Az adatforrásokhoz való kapcsolódáshoz társított szolgáltatások létrehozása
 A társított szolgáltatás határozza meg az információkat, amelyeket az Azure Data Factory egy adatforrás, melyhez csatlakozni. Három erőforrást van ebben a forgatókönyvben, amelyhez a társított szolgáltatások szükségesek:

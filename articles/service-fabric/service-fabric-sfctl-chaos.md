@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669174"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278287"
 ---
 # <a name="sfctl-chaos"></a>sfctl-káosz
 Indítása, leállítása és a chaos jelentés tesztelheti a szolgáltatást.
@@ -47,9 +47,9 @@ A következő szegmenst a Chaos események beolvasása, megadhatja a continuatio
 |Argumentum|Leírás|
 | --- | --- |
 | ---folytatási kód | A folytatási token paraméter eredmények következő készletét beszerzésére használatos. Az eredményeket a rendszer nem férnek el egyetlen válasz egy folytatási tokent egy nem üres értékkel szerepel az API-válasz. Ha ez az érték átadott, a következő API-hívás az API-t az eredmények tovább készletet ad vissza. Ha nincsenek további eredmények, a folytatási token neobsahuje értéket. Ez a paraméter értéke nem lehet URL-kódolású. |
-| --end-time-utc | A Windows fájl jelölő az időtartomány, amelynek a Chaos jelentést generáló van befejezésének időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) részleteiről. |
+| --end-time-utc | A Windows fájl jelölő az időtartomány, amelynek a Chaos jelentést generáló van befejezésének időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
 | --max-results | A lapozható lekérdezés részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg, visszaadott eredmények számának felső határnál. Az eredmények vissza is lehet kisebb, mint a megadott maximális eredményeket, ha azok nem férnek el megfelelően az üzenetek maximális mérete korlátozások az üzenetben a konfigurációban meghatározott. Ha ez a paraméter értéke nulla, vagy nincs megadva, a lapozható lekérdezés annyi eredmények, amelyek illeszkednek az visszaadott üzenet a lehető tartalmazza. |
-| --start-time-utc | A Windows fájl az időtartományt, amelyhez a Chaos jelentést, hogy jöjjön létre, kezdési idejét jelölő időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) részleteiről. |
+| --start-time-utc | A Windows fájl az időtartományt, amelyhez a Chaos jelentést, hogy jöjjön létre, kezdési idejét jelölő időpontja. Tekintse meg [DateTime.ToFileTimeUtc metódus](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) részleteiről. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -104,7 +104,7 @@ A Chaos már nem fut a fürtben, ha először a Chaos az átadott a Chaos param�
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 | --wait-time-között-hibák | Várakozási idő (másodpercben) belül egyetlen iteráció egymást követő hibák között.  Alapértelmezett\: 20. <br><br> Minél nagyobb az értéke, annál kisebb az átfedő hibák és az egyszerűbb közötti állapot sorozatát értékre vált, amely a fürt halad át. A javaslat, hogy kezdje mozgatása 1 és 5 és a gyakorlatban körültekintő közötti értéket. |
 | --wait-idő-között – az ismétlések | Idő-elkülönülését (másodpercben) a Chaos két egymást követő ismétlésének. Minél nagyobb az érték, annál alacsonyabbra tartalék injektálási sebessége.  Alapértelmezett\: 30. |
-| --warning-as-error | A figyelmeztetési hibaként állapotházirend állítja be. |
+| --warning-as-error | Azt jelzi, hogy e figyelmeztetések az azonos súlyossági hibákként kell kezelni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -136,6 +136,7 @@ A Chaos leállítja a végrehajtás alatt álló új hibát. Hajtsa végre, amí
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
 | – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
 
 ## <a name="next-steps"></a>További lépések
 - [A telepítő](service-fabric-cli.md) a Service Fabric parancssori felület.

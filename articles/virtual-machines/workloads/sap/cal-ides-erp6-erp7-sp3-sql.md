@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441459"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194198"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0 az Azure-ban
 Ez a cikk ismerteti, hogyan helyezhet üzembe egy Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3.0-n keresztül futtatja az SQL Server és a Windows operációs rendszer SAP IDES rendszer. A képernyőfelvételek bemutatják a részletes folyamat. Egy másik megoldás telepítéséhez kövesse a lépéseket.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe egy Azure-ban az SAP Cloud Applian
 Az SAP CAL indításához nyissa meg a [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén. SAP is rendelkezik az új blog [SAP Cloud Appliance könyvtár 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
+> 2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
 
 Ha már létrehozott egy SAP CAL-fiókot a klasszikus modellt használó *egy másik SAP CAL-fiók létrehozásához szükséges*. Ezt a fiókot kizárólag telepítse az Azure-bA a Resource Manager-modell segítségével kell.
 
@@ -96,7 +96,7 @@ A SAP IDES megoldás, amely Windows és az SQL Server telepítése előtt szüks
 ### <a name="deploy-a-solution"></a>Megoldás üzembe helyezése
 1. Egy SAP CAL-fiók beállítása után válassza ki a **megoldás a SAP IDES Windows és az SQL Server** megoldás. Kattintson a **példány létrehozása**, és erősítse meg a használat és a használati feltételeket. 
 
-1. Az a **egyszerű módban: példány létrehozása** lapon kell tennie:
+1. Az a **alapszintű mód: Példány létrehozása** lapon kell tennie:
 
     a. Adjon meg egy példányt **neve**.
 

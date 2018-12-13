@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3d096a2b62dec0eb1ef2bb68099aef2353f29d68
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c7d38538b3876ae91c0ae3794e14ab11f08993c6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084158"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162885"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -44,7 +44,7 @@ Ha továbbra is szeretne létrehozni ebben a forgatókönyvben egy külön fiók
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) RBAC Event hubs szolgáltatás előzetes támogató Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy **Nyugat-Európa** . 
+Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) RBAC Event hubs szolgáltatás előzetes támogató Azure-régiók egyikében: **USA keleti régiója**, **USA keleti régiója 2**, vagy **Nyugat-Európa**. 
 
 Miután létrejött a névteret, lépjen a **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** az Azure AD felhasználói fiók hozzáadása a tulajdonosi szerepkör. Saját felhasználói fiókját használja, és létrehozta a névteret, ha Ön már a tulajdonosi szerepkör. Egy másik fiókot ad hozzá a szerepkört, keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felhasználói fiókot most már hozzáférhet az Event Hubs-névtér és az event hubs korábban hozott létre.
  
@@ -60,10 +60,10 @@ A részletes regisztrációs lépéseket mutatjuk be [ebben az oktatóanyagban](
 
 A minta futtatása előtt szerkessze az App.config fájlt, és a forgatókönyvtől függően adja meg a következő értékeket:
 
-- `tenantId`: Állítsa **TenantId** értéket.
-- `clientId`: Állítsa **ApplicationId** értéket. 
+- `tenantId`: Állítsa be **TenantId** értéket.
+- `clientId`: Állítsa be **ApplicationId** értéket. 
 - `clientSecret`: Ha azt szeretné, jelentkezzen be az ügyfél titkos kulcsát, hozza létre az Azure ad-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
-- `eventHubNamespaceFQDN`: Állítsa az újonnan létrehozott Event Hubs-névtér; teljesen minősített DNS-nevét Ha például `example.servicebus.windows.net`.
+- `eventHubNamespaceFQDN`: Az újonnan létrehozott Event Hubs-névtér; teljesen minősített DNS-nevének beállítása Ha például `example.servicebus.windows.net`.
 - `eventHubName`: Állítsa be a létrehozott eseményközpont nevére.
 - Az átirányítási URI-t az alkalmazásba az előző lépésben megadott.
  

@@ -1,12 +1,11 @@
 ---
-title: Dedikált kapacitás a kötegelt végrehajtási szolgáltatás feladatok – az Azure Machine Learning Studióban |} A Microsoft Docs
+title: Az Azure Batch szolgáltatás a Machine Learning Studio-feladatok |} A Microsoft Docs
 description: Machine Learning-feladatok Azure Batch szolgáltatás áttekintése. Batch-készlet feldolgozási lehetővé teszi, hogy hozhat létre készleteket, amelyre elküldheti a batch-feladatok.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: seodec18
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
 ms.component: studio
@@ -15,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3a7adba53f271cd2f6bb2985d034821136d521b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 44b63a51049e663e55cc59a623837cf65cab9ccc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075414"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275193"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning-feladatok az Azure Batch szolgáltatás
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Az Azure Batch szolgáltatás az Azure Machine Learning Studio-feladatok
 
 Machine Learning Batch-készlet feldolgozási ügyfél által felügyelt méretezési biztosít az Azure Machine Learning kötegelt végrehajtási szolgáltatás. Klasszikus kötegelt feldolgozása, egy több-bérlős környezet, amely korlátozza az egyidejűleg futó feladatainak számát a sor kerül a machine learning küldhet, és a feladatok sorba állva várják első-az-érkezési idősorrendben történik. Ez a bizonytalanság azt jelenti, hogy Ön nem előre pontosan mikor fog futni a feladat.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Search szolgáltatás tarifacsomag vagy SKU kiválasztása |} A Microsoft Docs
-description: 'Az Azure Search bővítheti, Termékváltozatokban: ingyenes, alapszintű és standard szintű, ahol Standard érhető el a különböző erőforrás-konfigurációk és a kapacitás szintek.'
+title: Az Azure Search szolgáltatás – Azure Search tarifacsomag vagy SKU kiválasztása
+description: 'Az Azure Search Termékváltozatokban is üzembe helyezve: Ingyenes, alapszintű és standard szintű, ahol Standard érhető el a különböző erőforrás-konfigurációk és a kapacitás szintek.'
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785307"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315553"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -43,7 +44,7 @@ Az Azure Search szolgáltatásban a legfontosabb számlázási megértéséhez k
 
 SU, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
 
-Mindegyik szolgáltatás az a minimális 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák vagy 3 partíció x 12 replikákat, hogy néhányat említsünk. 
+Mindegyik szolgáltatás az a minimális 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák, illetve 3 partíció x 12 replikákat, hogy néhányat említsünk. 
 
 Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. 
 

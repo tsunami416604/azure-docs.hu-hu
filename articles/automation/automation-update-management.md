@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/04/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961620"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277505"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -145,7 +145,7 @@ Heartbeat
 
 A Windows-számítógépen tekintse át, ellenőrizze az ügynök kapcsolatot a Log Analytics használatával a következő információkat:
 
-1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent**. Az a **Azure Log Analytics** fülön az ügynök a következő üzenettel: **a Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics**.
+1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent**. Az a **Azure Log Analytics** fülön az ügynök a következő üzenet jelenik meg: **A Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics**.
 2. Nyissa meg a Windows eseménynaplóban. Lépjen a **alkalmazás- és Services Logs\Operations Manager** , és keresse meg az eseményt azonosító 3000 és a forrás-esemény azonosítója 5002 **Service Connector**. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületet, és konfigurációt kap.
 
 Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikáljon az internettel egy tűzfalon vagy proxykiszolgálón keresztül van konfigurálva, győződjön meg arról, hogy a tűzfal vagy proxy server megfelelően van-e konfigurálva. Győződjön meg arról, hogy megfelelően van-e konfigurálva a tűzfal vagy proxy-kiszolgáló kezelésével kapcsolatos információkért lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
@@ -219,6 +219,21 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
 Frissítéstelepítések programozott módon is létrehozhatók. Frissítéstelepítés létrehozása a REST API-val kapcsolatban lásd: [Update - konfigurációkat létrehozni](/rest/api/automation/softwareupdateconfigurations/create). Emellett van egy heti központi telepítés létrehozásához használható példa runbook. Ez a forgatókönyv kapcsolatos további információkért lásd: [egy heti központi telepítés létrehozása egy erőforráscsoportba tartozó egy vagy több virtuális](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+### <a name="multi-tenant"></a>Több-bérlős központi telepítések
+
+Ha gépeket egy másik Azure-bérlőhöz, amely javítani kell az Update Management a jelentéskészítés, használja a következő megkerülő megoldással, hogy az ütemezett szüksége. Használhatja a [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) parancsmag és a kapcsoló `-ForUpdate` ütemezés létrehozása és használata a [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) parancsmag paraméterével a a többi bérlő számára a gépek a `-NonAzureComputer` paraméter. Az alábbi példa bemutatja egy példa, hogyan teheti ezt meg:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
 
@@ -310,7 +325,7 @@ Javasoljuk, hogy a címek kivételek meghatározásakor. Az IP-címeket, letölt
 
 Mellett a részleteit, amelyet az Azure Portalon szemben a naplókban keresést végezhet. Válassza ki a megoldás lapokon **Log Analytics**. A **naplóbeli keresés** panel nyílik meg.
 
-Emellett megismerheti a lekérdezések testreszabásához, vagy különböző ügyfelek és több funkcionáló használják őket: [Log Analytics-értesítés API keresése dokumentációját](
+Emellett megismerheti a lekérdezések testreszabásához, vagy különböző ügyfelek és több funkcionáló használják őket:  [Log Analytics-értesítés API keresése dokumentációja](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Mintalekérdezések

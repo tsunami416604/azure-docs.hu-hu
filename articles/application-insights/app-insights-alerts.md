@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ac91632656e83fc4262f28240525c8fb106b99ec
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 4400430e012dee7caceba62637db1bf626d02b61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679130"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277342"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -43,7 +43,7 @@ A riasztási szabályok panel megnyitásához, és használja a Hozzáadás gomb
 * Ügyeljen arra, hogy vegye figyelembe az egységeket, amelyben kéri, hogy adja meg a küszöbértéket.
 * Ha bejelöli a jelölőnégyzetet "E-mail küldése a tulajdonosoknak...", riasztások által küldött e-mailek mindenki számára, aki hozzáfér az ebben az erőforráscsoportban. Bontsa ki a csoport, akik, adja hozzá őket a [erőforráscsoportba vagy előfizetésbe](app-insights-resources-roles-access-control.md) (nem az erőforrás).
 * Ha megadja a "További e-mailek", riasztást kap az adott személyek vagy csoportok (függetlenül attól, be van jelölve az "e-mail-tulajdonosok..." mezőben). 
-* Állítsa be a [webhook cím](../monitoring-and-diagnostics/insights-webhooks-alerts.md) Ha meg van adva egy webalkalmazást, amely válaszol a riasztásokra. A riasztás aktiválásakor mind a megoldott nevezzük. (De vegye figyelembe, hogy jelenleg lekérdezési paraméterek nem továbbítódnak tulajdonságokként webhook.)
+* Állítsa be a [webhook cím](../azure-monitor/platform/alerts-webhooks.md) Ha meg van adva egy webalkalmazást, amely válaszol a riasztásokra. A riasztás aktiválásakor mind a megoldott nevezzük. (De vegye figyelembe, hogy jelenleg lekérdezési paraméterek nem továbbítódnak tulajdonságokként webhook.)
 * Letilthatja a riasztás engedélyezése vagy: a gombok a panel tetején.
 
 *A riasztás hozzáadása gomb nem látható.* 
@@ -51,7 +51,7 @@ A riasztási szabályok panel megnyitásához, és használja a Hozzáadás gomb
 * Szervezeti fiók használatával? Beállíthat riasztásokat, ha rendelkezik tulajdonosi vagy közreműködői hozzáférést az alkalmazás-erőforrást. Vessen egy pillantást az Access Control panelen. [További tudnivalók a hozzáférés-vezérlés][roles].
 
 > [!NOTE]
-> A riasztások panelen láthatja, hogy már van egy riasztási csoport: [proaktív diagnosztika](app-insights-proactive-failure-diagnostics.md). Az automatikus riasztás figyeli egy adott mérőszám, kérelmek hibaaránya. Kivéve, ha úgy dönt, hogy a proaktív riasztás letiltása, nem kell beállítani a saját riasztás kérelmek hibaaránya. 
+> A riasztások panelen láthatja, hogy már van egy riasztási csoport: [Proaktív diagnosztika](app-insights-proactive-failure-diagnostics.md). Az automatikus riasztás figyeli egy adott mérőszám, kérelmek hibaaránya. Kivéve, ha úgy dönt, hogy a proaktív riasztás letiltása, nem kell beállítani a saját riasztás kérelmek hibaaránya. 
 > 
 > 
 
@@ -69,7 +69,7 @@ Nincs friss tevékenység a riasztások összegzését legördülő:
 ![Az Áttekintés panelen kattintson a beállítások, a vizsgálati naplók](./media/app-insights-alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>A riasztások működése
-* Riasztás három állapota van: "Soha nem aktiválódik", "Aktiválva" és "Megoldódott". Legutóbbi értékelésének volt igaz, aktivált azt jelenti, hogy a megadott feltétel.
+* Riasztás három állapota van: "Soha nem aktiválódik", "Aktiválva" és "Megoldva." Legutóbbi értékelésének volt igaz, aktivált azt jelenti, hogy a megadott feltétel.
 * Értesítés jön létre, ha egy riasztás állapota. (Ha a riasztási feltétel, a riasztás létrehozásakor már volt igaz, nem kaphat értesítést mindaddig, amíg a feltétel hamis kerül.)
 * Minden értesítés e-mailt állít elő, ha be van jelölve az e-mailek mezőbe, vagy a megadott e-mail-címeket. Az értesítések legördülő listája is megjeleníthető.
 * Riasztás minden alkalommal, amikor egy metrika megérkezik, de más módon nem értékeli ki.
@@ -93,7 +93,7 @@ Ne feledje, hogy [proaktív hibadiagnosztika arány](app-insights-proactive-fail
 
 ## <a name="automation"></a>Automation
 * [Riasztások beállítása automatizálása a PowerShell használatával](app-insights-powershell-alerts.md)
-* [Webhookok használatával automatizálhatja a riasztásokra való reagálásról](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Webhookok használatával automatizálhatja a riasztásokra való reagálásról](../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Videó
 

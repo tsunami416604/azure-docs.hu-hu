@@ -4,9 +4,8 @@ description: 'Szintaxisa a Net # Neurális hálózatok specifikációs nyelv egy
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315307"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272235"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -29,8 +28,8 @@ NET # nyelv, amely a Neurális hálózat architektúráinak definiálására has
 
 Ezek a környezetek a Net # architektúra specifikációjának használhatja:
 
-+ A Microsoft Azure Machine Learning Studióban az összes Neurális hálózati modulok: [osztályú Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), és [Neurális hálózat regresszió](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML Neurális hálózat függvényei: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) Pythonhoz készült.
++ A Microsoft Azure Machine Learning Studióban az összes Neurális hálózati modulok: [Multiclass Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [két osztályú Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), és [Neurális hálózat regresszió](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ MicrosoftML Neurális hálózat függvények: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) Pythonhoz készült.
 
 
 Ez a cikk ismerteti az alapvető fogalmait és a egy egyéni, használatával Net # Neurális hálózat kialakításához szükséges szintaxist: 
@@ -39,7 +38,7 @@ Ez a cikk ismerteti az alapvető fogalmait és a egy egyéni, használatával Ne
 + Szintaxisát és kulcsszavait a Net # specifikációs nyelv
 + Példák be egyéni Neurális hálózatokra létrehozott Net # használatával 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>Neurális hálózat alapjai
 
@@ -219,7 +218,7 @@ Nincsenek két készletnyi kitöltési, a folyamatban, egymást kölcsönösen k
     
     Egy dimenzió értéke HAMIS, ha a kernelekkel határozzák meg, hogy mindkét oldalon, amely ki van hátra a csomópontok száma (legfeljebb 1 számít) megegyezik. Ez az attribútum alapértelmezett értéke egy rekord összes összetevőkkel egyenlő a False (hamis).
 
-+ **UpperPad** és **LowerPad**: (nem kötelező) adjon meg nagyobb mértékben vezérelheti a használandó található Kitöltés mennyisége. **Fontos:** lehet, hogy ezek az attribútumok meghatározott if, és csak akkor, ha a **Padding** fenti tulajdonság ***nem*** definiálva. Az értékek egész értékű rekordokat, amelyek a csomagot a arity hosszúságú lehet. Ha ezek az attribútumok meg van adva, a bemeneti réteg minden dimenzió az alsó és felső végén "üres" csomópontokat ad hozzá. Minden dimenzió az alsó és felső célból hozzáadott csomópontok száma határozza meg **LowerPad**[i] és **UpperPad**[i] jelölik. 
++ **UpperPad** és **LowerPad**: (nem kötelező) adjon meg nagyobb mértékben vezérelheti a használandó található Kitöltés mennyisége. **Fontos:** Lehet, hogy ezek az attribútumok meghatározott if, és csak akkor, ha a **Padding** fenti tulajdonság ***nem*** definiálva. Az értékek egész értékű rekordokat, amelyek a csomagot a arity hosszúságú lehet. Ha ezek az attribútumok meg van adva, a bemeneti réteg minden dimenzió az alsó és felső végén "üres" csomópontokat ad hozzá. Minden dimenzió az alsó és felső célból hozzáadott csomópontok száma határozza meg **LowerPad**[i] és **UpperPad**[i] jelölik. 
 
     Győződjön meg arról, hogy a kernelt csak "valódi" csomópontok és a "üres" csomópontok megfelelnek-e, hogy a következő feltételeknek kell teljesülniük:
       - Minden egyes összetevője **LowerPad** kell feltétlenül kevesebb mint `KernelShape[d]/2`. 
@@ -375,7 +374,7 @@ A rövid űrlapot is használhatja, csak ha a rétegek szerepel a csomagban. Meg
 
 Ez a témakör néhány példát, hogyan használhatja a Net # rejtett réteget hozzáadásához adja meg a módon, hogy rejtett réteget egyéb biztonsági interaktívan, konvolúciós hálózatokat hozhat létre.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Egy egyszerű egyéni Neurális hálózat meghatározása: "Hello World" példa
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Adja meg egy egyszerű egyéni Neurális hálózat: A példában a "Hello World"
 
 Ebben az egyszerű példában bemutatja, hogyan hozhat létre, amely rendelkezik egy rejtett rétegben Neurális hálózat modell.
 

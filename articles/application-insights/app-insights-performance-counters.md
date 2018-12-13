@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: da6cc943c310b627626b3d2081ffa88ef3185013
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcfb3a52793ba0daca980564d5d2248629b5caf4
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727834"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323012"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insights rendszerteljesítmény-számlálók
 Windows széles körének biztosít [teljesítményszámlálók](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) például a Processzor foglaltsága, memória, lemez és hálózat használatának. Emellett megadhatja a saját. [Az Application Insights](app-insights-overview.md) megjelenítheti a teljesítményszámlálók az alkalmazás futásának IIS alatt egy helyi gazdagépen vagy virtuális gép, amely rendszergazdai hozzáféréssel rendelkezik. A diagramok jelzik az élő alkalmazás számára elérhető erőforrásokat, és segíthet azonosítani kiegyensúlyozatlan terhelés server-példányok között.
@@ -26,7 +26,7 @@ Teljesítményszámlálók a kiszolgálók panel, amely tartalmaz egy táblát a
 
 ![Az Application Insights által jelentett teljesítményszámlálókat](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(A teljesítményszámlálók nem érhetők el az Azure Web Appshez. De [Azure Diagnostics küldése az Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
+(A teljesítményszámlálók nem érhetők el az Azure Web Appshez. De [Azure Diagnostics küldése az Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).)
 
 ## <a name="view-counters"></a>Nézet számlálók
 A kiszolgálók panel teljesítményszámlálók alapértelmezett halmazát tartalmazza. 

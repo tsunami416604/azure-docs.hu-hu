@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9303f20d84547dee62e7012e0dca50f47ad54083
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839585"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259154"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -23,11 +23,11 @@ ms.locfileid: "52839585"
 
 A folyamatos felderítési berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-- Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+- További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
    ![Felderítés leállítása](./media/troubleshooting-general/stop-discovery.png)
 
-- Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+- Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Migrálási projekt létrehozása nem sikerült hiba *kérelmek felhasználó identitást meghatározó fejléceket kell tartalmaznia.*
 
@@ -41,23 +41,31 @@ Ha nem tudja az értékelési jelentés exportálása a portálról, próbálkoz
 
 1. Telepítés *armclient* a számítógépen (Ha még nincs telepítve):
 
-a. Egy rendszergazdai parancssort, futtassa a következő parancsot:  *@powershell - NoProfile - ExecutionPolicy megkerülése - parancs "iex ((New-Object System.Net.WebClient). DownloadString('https://chocolatey.org/install.ps1')) "& & ÁLLÍTSA"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"*
+  a. Egy rendszergazdai parancssort futtassa a következő parancsot: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-b.In egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: *choco armclient telepítése*
+  b. Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```choco install armclient```
 
 2.  A letöltési URL-cím lekérése az Azure Migrate REST API használatával az értékelési jelentéshez tartozó
 
-a.  Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: *armclient bejelentkezési* ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
+  a.    Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```armclient login```
 
-b.  Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
+  Ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
 
-       *armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02*
+  b.    Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
 
-Mintakérelem és kimenet:
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-PS C:\WINDOWS\system32 > armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2 018_12_16_21/downloadUrl? api-version = 2018-02-02 {" assessmentReportUrl":"https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r","expirationTime":" 2018-11-20T22:09:30.5681954 + 05:30 "
+       Mintakérelem és kimenet:
+
+       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+018_12_16_21/downloadUrl?api-version=2018-02-02
+{
+  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Másolja az URL-címet a válaszból, és nyissa meg böngészőben az értékelési jelentés letöltése.
+
 4. A jelentéskészítő letöltését követően Excel segítségével keresse meg a letöltött mappát, és nyissa meg a fájlt az Excelben a megtekintéséhez.
 
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Lemezek és a hálózat adapterek teljesítményadatokat nullák állapota
@@ -74,7 +82,7 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 
 ## <a name="collector-errors"></a>Naplógyűjtők hibái
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a hiba: Érvénytelen a megadott jegyzékfájl: Érvénytelen OVF-jegyzékfájl bejegyzés.
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a következő hibával: Érvénytelen a megadott jegyzékfájl: OVF jegyzékfájl bejegyzés érvénytelen.
 
 1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a következő [cikket](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonatérték ellenőrzéséhez. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
 2. Ha továbbra is sikertelen, és a VMware vSphere-ügyfelet használja az OVF telepítéséhez, próbálja meg a vSphere webes ügyfélen keresztül telepíteni. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
@@ -138,7 +146,7 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer hiba
 
-A következő hiba miatt nem lehet csatlakozni a „Servername.com:9443” vCenter-kiszolgálóhoz: nem figyelt olyan végpont a https://Servername.com:9443/sdk címen, amely fogadni tudta volna az üzenetet.
+Nem lehet csatlakozni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: Hiba történt a nincs végpont a következő https://Servername.com:9443/sdk , amely fogadni tudta az üzenetet.
 
 Ha Ön a gyűjtőberendezés legújabb verzióját futtatja, ha nem, frissítse a berendezés ellenőrizze a [legújabb verzió](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -150,6 +158,10 @@ Ha a probléma továbbra is történik a legújabb verzió, annak oka az lehet, 
 4. Végezetül pedig ellenőrizze, hogy a vCenter-kiszolgáló fut-e.
 
 ## <a name="dependency-visualization-issues"></a>Függőségek képi megjelenítés kapcsolatos problémák
+
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nem található a függőségek képi megjelenítésének funkcióival az Azure Government-projektekhez vagyok.
+
+A függőségek képi megjelenítésének funkcióival a Service Map függ az Azure Migrate, és mivel a Service Map jelenleg nem érhető el az Azure Government szolgáltatásban, ez a funkció nem érhető el az Azure Government szolgáltatásban.
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>A Microsoft Monitoring Agent (MMA) és a függőségi ügynök telepítése a helyszíni virtuális gépek, de a függőségek most jelennek meg az Azure Migrate portálon.
 
@@ -245,7 +257,7 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Gyűjtő hibakódok és ajánlott műveletek
 
-| Hibakód | Hiba neve   | Üzenet   | Lehetséges okok | Javasolt művelet  |
+| Hibakód | Hiba neve   | Üzenet   | A lehetséges okok | Javasolt művelet  |
 | --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | A gyűjtő érvényessége lejárt.                                                        | A gyűjtő érvényessége lejárt.                                                                                    | Töltse le a gyűjtő egy új verzióját, majd próbálkozzon újra.                                                                                      |
 | 751       | UnableToConnectToServer        | Nem sikerült csatlakozni a(z) %Name; vCenter Server-kiszolgálóhoz a következő hiba miatt: %ErrorMessage;.     | További részletekért tekintse meg a hibaüzenetet.                                                             | Hárítsa el a problémát, és próbálkozzon újra.                                                                                                           |

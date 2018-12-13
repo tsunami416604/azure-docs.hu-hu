@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887695"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278219"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló használata
 
@@ -100,7 +100,7 @@ A hatás (gyakorolt hatás) a tulajdonság azt mutatja, hogy mekkora észlelt vi
 
 ### <a name="impacted-queries"></a>Érintett lekérdezések
 
-A következő szakaszban az Intelligent Insights napló adott lekérdezések érintette észlelt teljesítményével kapcsolatos problémákat ismerteti. Ezek az információk nyilvánosságra impact_s tulajdonság a beágyazott objektumok tömbjeként. A hatás tulajdonság entitások és a metrikák áll. Entitások hivatkozni egy adott lekérdezés (típus: lekérdezés). Az egyedi lekérdezési kivonat felfedett value (érték) tulajdonsága alapján. Emellett minden egyes közzétett lekérdezések követ egy metrika- és egy értéket, amely jelzi a észlelt teljesítménybeli problémát.
+A következő szakaszban az Intelligent Insights napló adott lekérdezések érintette észlelt teljesítményével kapcsolatos problémákat ismerteti. Ezek az információk nyilvánosságra impact_s tulajdonság a beágyazott objektumok tömbjeként. A hatás tulajdonság entitások és a metrikák áll. Entitások hivatkozni egy adott lekérdezés (típusa: A lekérdezés). Az egyedi lekérdezési kivonat felfedett value (érték) tulajdonsága alapján. Emellett minden egyes közzétett lekérdezések követ egy metrika- és egy értéket, amely jelzi a észlelt teljesítménybeli problémát.
 
 A következő naplófájl-példában a lekérdezés a kivonat 0x9102EXZ4 észlelte, hogy-végrehajtás megnövekedett időtartama (metrika: DurationIncreaseSeconds). 110 másodperc értékét azt jelzi, hogy ez a lekérdezés végrehajtásához szükséges már 110 másodperc. Több lekérdezés észlelhető, mert az adott szakasz tartalmazhat több lekérdezés bejegyzést.
 

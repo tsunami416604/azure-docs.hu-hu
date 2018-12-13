@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search egyszerű lekérdezés példák |} A Microsoft Docs
+title: Egyszerű lekérdezési példa – Azure Search
 description: A teljes szöveges keresés, filter, search, földrajzi keresés, többszempontú keresés és más lekérdezési karakterláncok az Azure Search-index lekérdezése használt egyszerű lekérdezés példákat.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 2d9e69a900f6665aa0ee3034cd6f9d7c394e8f0b
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.custom: seodec2018
+ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058104"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316267"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Az Azure Searchben a lekérdezések létrehozásához Példák egyszerű szintaxisú lekérdezésekre
 
@@ -84,7 +85,7 @@ Ez a lekérdezés válasza az alábbi képernyőfelvételhez hasonlóan kell kin
 
 Előfordulhat, hogy észrevette a keresési pontszámtól a válaszban. 1 egységes pontszámok fordulhat elő, esetén nincs rank, vagy mert a keresés nem volt a teljes szöveges keresés, vagy mert a feltétel nem lett alkalmazva. A feltétel nem null értékű Search sorok visszatérhet tetszőleges sorrendben. Is tartalmazó tényleges feltételek, látni fogja a keresési pontszámok jelentéssel bíró értékekké fejlesztheti tovább.
 
-## <a name="example-2-look-up-by-id"></a>2. példa: Keresése azonosító alapján
+## <a name="example-2-look-up-by-id"></a>2. példa Keresése azonosító alapján
 
 Ebben a példában egy kicsit szokatlan, de keresési viselkedések kiértékelésekor érdemes tudni, miért lett foglalt vagy kizárt eredmények egy adott dokumentumot teljes tartalmának vizsgálata. Egyetlen dokumentum ebben az esetben használja a [Fiókkeresési műveletben](https://docs.microsoft.com/rest/api/searchservice/lookup-document) megadni a dokumentum azonosítója.
 
@@ -100,7 +101,7 @@ A következő példában egy keresési lekérdezést egy adott dokumentum alapj�
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
  ```
 
-## <a name="example-3-filter-queries"></a>3. példa: Szűrés lekérdezések
+## <a name="example-3-filter-queries"></a>3. példa: Szűrő lekérdezések
 
 [Szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) van egy is használhatja az OData-kifejezésnek **keresési** vagy önállóan. Egy önálló szűrőt a keresési paramétert, akkor célszerű, ha a szűrőkifejezés nem tudja a lényeges dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nem nincs lexikális vagy nyelvi elemzés, nincs (az összes pontszámok 1), és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
 
@@ -132,7 +133,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 A függvénnyel kapcsolatos további információkért lásd: ["Szűrő példákban" search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
 
-## <a name="example-4-range-filters"></a>4. példa: Tartomány szűrők
+## <a name="example-4-range-filters"></a>4. példa: Tartományszűrő
 
 Tartomány szűrés keresztül támogatott **`$filter`** bármilyen típusú adatot a kifejezéseket. Az alábbi példák a numerikus és karakterlánc-mezők kereshet. 
 
@@ -202,7 +203,7 @@ Is kipróbálhatja ezt a Postman-GET használatával:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>6. példa: Keresési pontosság
+## <a name="example-6-search-precision"></a>6. példa: Keresés pontosság
 
 Kifejezés lekérdezések ugyanazon használati feltételek, például számos őket, egymástól függetlenül kiértékelt. Lekérdezések kifejezést idézőjelek és tömbként lesz szó karakterlánc. Egyezés pontossága operátorok és searchMode vezérlik majd.
 
@@ -224,7 +225,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>7. példa: SearchMode a logikai
+## <a name="example-7-booleans-with-searchmode"></a>7. példa: A searchMode logikai értékek
 
 Egyszerű szintaxis karakterek formájában támogatja a logikai operátorokkal (`+, -, |`). A searchMode paraméter tájékoztatja között pontosság és a már ismert, és kompromisszumot kínál a `searchMode=any` beállítva visszahívási (a dokumentum egy az eredményhalmaz semmilyen feltételt az egyező címtársémának megfelelően), és `searchMode=all` (az összes feltétel egyeztetni) pontosság beállítva. Az alapértelmezett érték `searchMode=any`, amely zavaró, ha meg vannak rétegezést lekérdezést több operátorokkal és szélesebb körű helyett szűkebb eredmények beolvasása. Ez különösen igaz a NOT, ahol eredmények tartalmazzák a "nem tartalmazó" dokumentumokat egy keresett kifejezést.
 
@@ -243,7 +244,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```
   ![az összes keresési mód](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>8. példa: Strukturálja eredmények
+## <a name="example-8-structuring-results"></a>8. példa: Eredmények rendszerezéséhez
 
 Számos olyan paramétereket szabályozhatja, hogy mely mezők szerepelnek a keresési eredmények, az egyes batch és a rendezési sorrend visszaadott dokumentumok számát. Ebben a példában az eredmények használatával meghatározott mezőkre korlátozza az előző példák néhány resurfaces a **$select** utasítás és szó keresési feltételeknek, 82 egyezések visszaadása 
 

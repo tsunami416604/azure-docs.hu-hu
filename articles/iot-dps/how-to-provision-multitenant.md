@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457391"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320692"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
 A foglalási szabályzatok a kiépítési szolgáltatás által definiált elosztási forgatókönyveket különféle támogatja. Két gyakori forgatókönyvek a következők:
 
-* **Földrajzi hely meghatározásának / GeoLatency**: egy eszköz között helyezi át, mert az eszköz kiépítése az IoT hub és az egyes helyekre legközelebbi küszöbölni növelése a hálózati késés. Ebben a forgatókönyvben az IoT-központok span-régiók között, egy csoportot ki van jelölve regisztrációk. A **legkisebb késés** ezek regisztrációk foglalási szabályzat van kiválasztva. Ez a szabályzat eszköz késés kiértékeléséhez, és határozza meg a szekrényben tartották ki a csoport az IoT hub az IoT hub Device Provisioning Service okoz. 
+* **Földrajzi hely meghatározásának / GeoLatency**: Eszköz helye között helyezi át, mert hálózati késés létesíteni az eszköz kiépítése az IoT hub és az egyes helyekre legközelebbi lett fejlesztve. Ebben a forgatókönyvben az IoT-központok span-régiók között, egy csoportot ki van jelölve regisztrációk. A **legkisebb késés** ezek regisztrációk foglalási szabályzat van kiválasztva. Ez a szabályzat eszköz késés kiértékeléséhez, és határozza meg a szekrényben tartották ki a csoport az IoT hub az IoT hub Device Provisioning Service okoz. 
 
-* **Több-bérlős**: IoT-megoldás belül használt eszközök hozzá kell rendelni egy adott IoT hubot vagy IoT-központok szükségessé. A megoldás egy adott csoportjában, IoT-központok kommunikálni egy adott bérlő összes eszköz lehet szükség. Bizonyos esetekben a bérlő saját IoT-központok és hozzá kell rendelni a saját IoT-központok eszközök megkövetelése.
+* **Több-bérlős**: IoT-megoldás belül használt eszközök lesznek hozzárendelve az egy adott IoT hub és IoT-központok csoportja szükségessé. A megoldás egy adott csoportjában, IoT-központok kommunikálni egy adott bérlő összes eszköz lehet szükség. Bizonyos esetekben a bérlő saját IoT-központok és hozzá kell rendelni a saját IoT-központok eszközök megkövetelése.
 
 Szokás úgy, hogy ezen két forgatókönyvet. Például egy több-bérlős IoT-megoldás gyakran hozzárendelése bérlői eszközök egy csoportját apró IoT-központok régióban. Bérlő ezeket az eszközöket az IoT hub benne, amely a legkisebb késéssel földrajzi helye alapján is hozzárendelhető.
 
@@ -94,11 +94,11 @@ Ez a cikk az egyszerűség kedvéért használja [szimmetrikus kulcsát a kulcsi
 
     **Csoport neve**: Adja meg **contoso-us-eszközök**.
 
-    **Tanúsítvány típusa**: válasszon **szimmetrikus kulcs**.
+    **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
 
-    **Kulcsok automatikus létrehozása**: már ellenőrizni kell a ezt a jelölőnégyzetet.
+    **Kulcsok automatikus létrehozása**: A jelölőnégyzet már ellenőrizni kell.
 
-    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: válasszon **legkisebb késés**.
+    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **legkisebb késés**.
 
     ![Több-bérlős regisztrációs csoportot szimmetrikus kulcsát a kulcsigazoláshoz hozzáadása](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
@@ -107,9 +107,9 @@ Ez a cikk az egyszerűség kedvéért használja [szimmetrikus kulcsát a kulcsi
 
     **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, ahol létrehozta a regionális IoT-központok.
 
-    **Az IoT hub**: válassza ki a létrehozott regionális központok egyikét.
+    **Az IoT hub**: Válassza ki a létrehozott regionális központok egyikét.
 
-    **Hozzáférési szabályzat**: válasszon **iothubowner**.
+    **Hozzáférési szabályzat**: Válasszon **iothubowner**.
 
     ![A regionális IoT hubok az eszközkiépítési szolgáltatás csatolása](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
@@ -130,11 +130,11 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
 
 1. Az Azure Cloud Shellt, hajtsa végre a következő parancsot hozhat létre egy **USA keleti Régiójában** módosítása után a következő paraméter a parancsot a virtuális gép régió:
 
-    **--name**: Adjon meg egy egyedi nevet a **USA keleti Régiójában** regionális eszköz virtuális gép. 
+    **--name**: Adjon meg egy egyedi nevet a **USA keleti Régiójában** regionális eszköz virtuális Gépet. 
 
-    **– felügyeleti-username**: használja a saját rendszergazdai felhasználóneve.
+    **– felügyeleti-username**: A saját rendszergazdai felhasználónév használata.
 
-    **– a rendszergazdai jelszó-**: használja a saját rendszergazdai jelszót.
+    **– a rendszergazdai jelszó-**: Használja a saját rendszergazdai jelszót.
 
     ```azurecli-interactive
     az vm create \
@@ -151,11 +151,11 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
 
 1. Az Azure Cloud Shellt, hajtsa végre a parancsot hozhat létre egy **USA nyugati RÉGIÓJA** módosítása után a következő paraméter a parancsot a virtuális gép régió:
 
-    **--name**: Adjon meg egy egyedi nevet a **USA nyugati RÉGIÓJA** regionális eszköz virtuális gép. 
+    **--name**: Adjon meg egy egyedi nevet a **USA nyugati RÉGIÓJA** regionális eszköz virtuális Gépet. 
 
-    **– felügyeleti-username**: használja a saját rendszergazdai felhasználóneve.
+    **– felügyeleti-username**: A saját rendszergazdai felhasználónév használata.
 
-    **– a rendszergazdai jelszó-**: használja a saját rendszergazdai jelszót.
+    **– a rendszergazdai jelszó-**: Használja a saját rendszergazdai jelszót.
 
     ```azurecli-interactive
     az vm create \
@@ -220,7 +220,7 @@ Ebben a szakaszban az egyes virtuális Gépeken az Azure IoT C SDK fogja klónoz
 1. Mindkét virtuális gép futtassa az alábbi parancsot, amely létrehozza egy adott a fejlesztési fejlesztésiügyfél-platformhoz SDK verziója. 
 
     ```bash
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:

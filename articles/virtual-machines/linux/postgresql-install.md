@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: zarhoads
-ms.openlocfilehash: dc7bb0eab9004b9c818a4a7cbbf6102f01b24f45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465231"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322056"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.
@@ -76,7 +76,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
 ## <a name="configure-postgresql"></a>PostgreSQL konfigurálása
 1. (Nem kötelező) Hozzon létre egy szimbolikus hivatkozást, így rövidítve a PostgreSQL hivatkozást tartalmaz a verziószám:
    
-        # ln -s /opt/pgsql9.3.5 /opt/pgsql
+        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
 2. Hozzon létre egy könyvtárat, az adatbázis számára:
    
         # mkdir -p /opt/pgsql_data
@@ -119,6 +119,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
 7. A PostgreSQL-verzió is keresheti:
    
         $ psql -V
+
 8. Az adatbázis inicializálása:
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W

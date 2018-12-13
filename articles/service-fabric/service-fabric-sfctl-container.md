@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495128"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274904"
 ---
 # <a name="sfctl-container"></a>sfctl-tároló
 Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
@@ -28,22 +28,22 @@ Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
 
 |Parancs|Leírás|
 | --- | --- |
-| api meghívása | Tároló REST API meghívásához. |
-| naplók | Tároló naplóinak beolvasása során. |
+| api meghívása | Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához. |
+| naplók | A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása. |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl tároló invoke-api
-Tároló REST API meghívásához.
+Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] alkalmazás-azonosító | Identita aplikace. |
-| --code-package-példány-id [kötelező] | Kód csomag példány azonosítója, amelyet a "service code-package-list" lekérheti. |
-| – [kötelező] code-package-neve | Csomag neve. |
+| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
+| --code-package-példány-id [kötelező] | Amely egyedileg azonosítja az egy kódot csomag-példány üzembe helyezett egy service fabric-csomópont azonosítója. <br><br> "Szolgáltatás code-package-list" lekérhetők. |
+| – [kötelező] code-package-neve | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált megadott kód csomag neve. |
 | --container-api-uri-elérési út [kötelező] | Tároló REST API-URI elérési út a(z) {id} használata helyett a tároló neve vagy azonosítója. |
 | --csomópontnév [kötelező] | A csomópont neve. |
-| --service-jegyzékfájl-name [kötelező] | Jegyzékfájl neve. |
+| --service-jegyzékfájl-name [kötelező] | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált neve. |
 | --container-api – törzs | HTTP-kérés törzse REST API-tárolóhoz. |
 | --container-api-content-type | Typ obsahu tároló REST API-t alapértelmezés szerint az "application/json". |
 | --container-api-http-művelet | Alapértelmezés szerint GET REST API-t tároló HTTP-műveletet. |
@@ -60,18 +60,18 @@ Tároló REST API meghívásához.
 | – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-container-logs"></a>sfctl-tároló naplóit
-Tároló naplóinak beolvasása során.
+A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [kötelező] alkalmazás-azonosító | Identita aplikace. |
+| – [kötelező] alkalmazás-azonosító | Az alkalmazás identitását. <br><br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric\:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric\:/myapp/app1", az identitása lenne "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban. |
 | --code-package-példány-id [kötelező] | Kód csomag példány azonosítója, amelyet a "service code-package-list" lekérheti. |
-| – [kötelező] code-package-neve | Csomag neve. |
+| – [kötelező] code-package-neve | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált megadott kód csomag neve. |
 | --csomópontnév [kötelező] | A csomópont neve. |
-| --service-jegyzékfájl-name [kötelező] | Jegyzékfájl neve. |
-| --tail | Csak a naplókat végéről a napló sorok számát adja vissza. Adja meg egy egész számot vagy az összes kimeneti minden napló sort. Alapértelmezés szerint az "all". |
+| --service-jegyzékfájl-name [kötelező] | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált neve. |
+| --tail | A naplók végéről sorok száma. Alapértelmezett érték 100. az "összes" a teljes körű naplók megjelenítése. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok

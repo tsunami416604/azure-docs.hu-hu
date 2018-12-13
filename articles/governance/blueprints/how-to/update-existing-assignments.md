@@ -1,5 +1,5 @@
 ---
-title: Egy meglévő Azure tervezet-hozzárendelés frissítése
+title: A meglévő hozzárendelések frissítése
 description: További információ az Azure-tervek a meglévő hozzárendelések módosítása a mechanizmust.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 2c9f660e54da50e32ce1d0dc43b0efeacd643c57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093785"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314829"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
 
@@ -25,13 +26,13 @@ A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő 
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
 1. Válassza a **Hozzárendelt tervek** lehetőséget a lap bal oldalán.
 
 1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **frissítési hozzárendelés** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **frissítési hozzárendelés**.
 
-   ![Frissítési hozzárendelés](../media/update-existing-assignments/update-assignment.png)
+   ![Hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
 
 1. A **tervezet hozzárendelése** lap betöltése az eredeti hozzárendelés az összes értékeivel előre kitöltött lesz. Módosíthatja a **tervrajz-definíció verziója**, a **zárolási hozzárendelés** állapotot, és a tervezetdefiníciót a dinamikus paraméterek egyikét. Kattintson a **hozzárendelése** Amikor végzett a módosításokkal.
 

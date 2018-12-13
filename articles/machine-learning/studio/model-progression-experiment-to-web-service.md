@@ -4,9 +4,8 @@ description: Beállítás esetén hogyan az Azure Machine Learning modell külö
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310099"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253867"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
@@ -95,7 +94,7 @@ Attól függ, hogy frissíteni szükséges:
 
 Ha nem módosítja a modellt, de csak változnak, hogyan kezeli a Web service a adatokat, szerkesztheti a prediktív kísérletet, és kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése** újra. A webes szolgáltatás le van állítva, a frissített prediktív kísérletté telepíti, és a webes szolgáltatás újraindításakor.
 
-Íme egy példa: Tegyük fel, hogy a prediktív kísérletet az előre jelzett eredménye a bemeneti adatok az egész sort adja vissza. Dönthet úgy, hogy szeretné-e a Web service egyszerűen vissza az eredményt. Így adhat hozzá egy **Projektoszlopok** modulban, a prediktív kísérletet, közvetlenül a kimeneti portra, az eredmény eltérő oszlopok kizárása előtt. Kattintva **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése** újra, a Web service frissül.
+Például: Tegyük fel, hogy a prediktív kísérletet az előre jelzett eredménye a bemeneti adatok az egész sort adja vissza. Dönthet úgy, hogy szeretné-e a Web service egyszerűen vissza az eredményt. Így adhat hozzá egy **Projektoszlopok** modulban, a prediktív kísérletet, közvetlenül a kimeneti portra, az eredmény eltérő oszlopok kizárása előtt. Kattintva **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése** újra, a Web service frissül.
 
 **A modell új adatokkal újratanítás szeretné**
 
@@ -119,6 +118,6 @@ Fejlesztés és a kísérlet a további részletekért tekintse meg a következ�
 
 A teljes folyamat példákért lásd:
 
-* [Machine learning-oktatóanyag: az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md)
-* [Forgatókönyv: A hitelkockázat értékelése az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+* [Machine learning-oktatóanyag: Az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md)
+* [Forgatókönyv: Az Azure Machine Learning hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 

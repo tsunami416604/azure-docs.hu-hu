@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: b1a63862444969bbb7058841fb755e147dcf6909
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015840"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321886"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -28,7 +28,7 @@ Az Azure HDInsight Hadoop fürt több verzió telepítését követően bármiko
 
 A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthatók: 
 
-> [!NOTE]
+> [!NOTE]  
 > A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és a klasszikus Azure CLI-fürtök létrehozásakor.
 
 | Összetevő | HDInsight 4.0-s (előzetes verzió) | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
@@ -60,9 +60,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 
 Társított fürtverziók HDInsight Hadoop-ökoszisztéma összetevő verziók a frissítések HDInsight módosíthatja. Ellenőrizze a Hadoop-összetevők, és ellenőrizze, hogy mely verziói vannak használatban a fürt, az Ambari REST API használata. A **GetComponentInformation** a paranccsal kérdezhető le információ a szolgáltatás-összetevők. További információkért lásd: a [Apache Ambari dokumentáció][ambari-docs].
 
-Windows-fürtök másik módja, hogy az összetevők verziójának ellenőrzéséhez, hogy jelentkezzen be a fürthöz a távoli asztal használatával, és vizsgálja meg a C:\apps\dist\ könyvtár tartalmát.
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További információkért lásd: [a HDInsight Windows kivezetési](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Kibocsátási megjegyzések
@@ -84,7 +82,7 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 
 *&ast; HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
 
-> [!NOTE]
+> [!NOTE]  
 > Támogatási után a lejárt verziót, nem lehet elérhető a Microsoft Azure-portálon keresztül. Azonban fürtverziók továbbra is elérhetők az a `Version` paramétert a Windows PowerShellben [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) parancs, és a .NET SDK, amíg a verzió kivezetési dátuma.
 >
 
@@ -104,7 +102,7 @@ A következő táblázat felsorolja a verziókat HDInsight **nem** elérhető az
 | HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
 | HDInsight 1.6-os |1.1 HDP | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
 
-> [!NOTE]
+> [!NOTE]  
 > Két fő csomópont a magas rendelkezésre állású fürtök HDInsight verzió a 2.1-es és újabb verziók esetében alapértelmezés szerint települnek. Ezek nem érhető el a HDInsight-fürtökben 1.6-os.
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>A HDInsight vállalati biztonsági csomag
@@ -193,12 +191,12 @@ A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight-fürt verziók szolgáltatásiszint-szerződés
 A szolgáltatásiszint-szerződés (SLA) van meghatározva, hogy egy _támogatási ablak_. A támogatási időszak az az időtartam, a Microsoft ügyfélszolgálata és a egy HDInsight-fürt verziója támogatott. A verzió-e egy _támogatja a lejárati dátum_ , amely megfelelt, a HDInsight-fürt a támogatási időszakon kívül. További információ a támogatott verziók listájának megtekintéséhez [támogatott HDInsight-fürt verziók](hdinsight-migrate-from-windows-to-linux.md). A megadott verzió (miután elérhetővé vált egy újabb X + 1) X HDInsight támogatás lejárati dátuma számítjuk ki, hogy a későbbi a:  
 
-* Képlet 1: 180 nap hozzáadása a dátum, amikor a HDInsight-fürt verziója X fel lett oldva.
-* Képlet 2: 90 nap hozzáadása a dátum, amikor a HDInsight-fürt verziója X + 1 szeretné elérhetővé tenni az Azure Portalon.
+* 1. képlet: 180 nap hozzáadása a dátum, amikor a HDInsight-fürt verziója X fel lett oldva.
+* 2. képlet: 90 nap hozzáadása a dátum, amikor a HDInsight-fürt verziója X + 1 szeretné elérhetővé tenni az Azure Portalon.
 
 A _kivezetési dátum_ az a dátum, amely után a fürt verziója nem hozható létre a HDInsight. 2017. július 31-én kezdve a kivezetési dátum után egy HDInsight-fürt nem méretezhető. 
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight Windows-fürtök (beleértve verzió 2.1-es, 3.0-s, 3.1, 3.2-es és 3.3-as) futtatása Azure Vendég operációsrendszer-család 4-es verzió, amely a Windows Server 2012 R2 64 bites verzióját használja. Azure vendég operációs rendszerek 4. verziójú támogatja a .NET-keretrendszer 4.0-s, 4.5-ös, 4.5.1 és 4.5.2-es.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Hortonworks kibocsátási megjegyzéseket, társított a HDInsight-verziók
@@ -214,7 +212,7 @@ A szakasz a kibocsátási megjegyzések a Hortonworks Data Platform disztribúci
   * [Kibocsátási megjegyzések az Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) az Apache webhelyen érhető el.
 * HDInsight fürt 3.2-es verziójú használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.2][hdp-2-2].
 
-  * Kibocsátási megjegyzések a meghatározott Apache-összetevők a következők érhető el: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [közös](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [0.9.3-as Storm](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), és [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Kibocsátási megjegyzések a meghatározott Apache-összetevők a következők érhető el: [Hive-0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [2,6 millió/R](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [közös](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [0.9.3-as Storm](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), és [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * HDInsight-fürt verziója 3.1-et használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.1.7][hdp-2-1-7]. Létrehozott, 7, 2014. November előtti HDInsight 3.1-fürtök alapuló [Hortonworks Data Platform 2.1.1][hdp-2-1-1].
 * HDInsight fürt 3.0-s verzió használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.0][hdp-2-0-8].
 * HDInsight fürt 2.1-es verzió használ egy Hadoop-változat alapján [Hortonworks Data Platform 1.3][hdp-1-3-0].
@@ -222,41 +220,36 @@ A szakasz a kibocsátási megjegyzések a Hortonworks Data Platform disztribúci
 
 
 
-
-
-
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Alapértelmezett csomópont konfigurációs és virtuális gépek méretei fürtök
-Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapértelmezett virtuális gép (VM) méretek.
+Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapértelmezett virtuális gép (VM) méretek.  Ez a diagram szükség a HDInsight-fürtök üzembe helyezése a PowerShell vagy az Azure CLI parancsfájlok létrehozásakor a virtuális gépek méreteinek ismertetése.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha egy fürtben több mint 32 feldolgozó csomópontokat, jelöljön ki egy fő csomópontméretet legalább 8 maggal és 14 GB RAM.
-> 
-> 
 
 * Az összes támogatott, kivéve Dél-Brazíliát és Nyugat-japán régióban:
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | Machine Learning-kiszolgáló |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark  | Machine Learning-kiszolgáló |
   | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2 | D13, D14 |A4 v2 |D12 v2 |D12 v2 |
-  | A fő: javasolt Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A4 v2, A8 v2, A2m v2 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
-  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
-  | Feldolgozó: javasolt Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | A fő: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | A fő: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
+  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Feldolgozó: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
   | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 | |A2 v2 | | |
-  | ZooKeeper: javasolt Virtuálisgép-méretek | |A4 v2, A8 v2, A2m v2 | | A2 v2, A4 v2, A8 v2 | | |
-  | Edge: virtuális gépek alapértelmezett mérete | | | | | |Windows: D12 v2; Linux: D4 v2 |
-  | Edge: Virtuálisgép-méretet ajánlott | | | | | |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | ZooKeeper: javasolt Virtuálisgép-méretek | |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 | | A2 v2-ben<br/> A4 v2-ben<br/> A8 v2 | | |
+  | Edge: virtuális gépek alapértelmezett mérete | | | | | |D4 v2 |
+  | Edge: Virtuálisgép-méretet ajánlott | | | | | |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
   | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D3 |D3  | D13, D14 |A3 |D12 |D12 |
-  | A fő: javasolt Virtuálisgép-méretek |D4, D3, D12 CSOMAG |D4, D3, D12 CSOMAG  | D13, D14 |A3, A4, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |
-  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Feldolgozó: javasolt Virtuálisgép-méretek |D4, D3, D12 CSOMAG |D4, D3, D12 CSOMAG  | D13, D14 |D4, D3, D12 CSOMAG |Windows: D12, D13, D14; Linux: D4, D13, D12, D14 |Windows: D12, D13, D14; Linux: D4, D13, D12, D14 |
+  | A fő: virtuális gépek alapértelmezett mérete |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | A fő: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4.<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
+  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Feldolgozó: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | ZooKeeper: virtuális gépek alapértelmezett mérete | |A2 | | A2 | | |
-  | ZooKeeper: javasolt Virtuálisgép-méretek | |A2, A3, A4 | |A2, A3, A4 | | |
-  | Edge: alapértelmezett Virtuálisgép-méretek | | | | | |Windows: D12; Linux: D4 |
-  | Edge: javasolt Virtuálisgép-méretek | | | | | |Windows: D12, D13, D14; Linux: D4, D13, D12, D14 |
+  | ZooKeeper: javasolt Virtuálisgép-méretek | |A2-ES<br/> A3<br/> A4 | |A2-ES<br/> A3<br/> A4 | | |
+  | Edge: alapértelmezett Virtuálisgép-méretek | | | | | |D4 |
+  | Edge: javasolt Virtuálisgép-méretek | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
 > [!NOTE]
 > - A fő néven *Nimbus* a Storm a fürt típusát.

@@ -11,19 +11,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 2fcd5a784801c3591d76b4c4569a7dda9472686e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103982"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138058"
 ---
-# <a name="deprecated-entities"></a>Elavult entitások
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>A LUIS-alkalmazásokon elavult előre összeállított entitások
 A következő előre összeállított entitások elavultak, és nem adható hozzá új LUIS-alkalmazások.
 
-* **Dátum és idő**: használó meglévő LUIS-alkalmazások **datetime** áttelepítendő **datetimeV2**, noha a dátum és idő entitás továbbra is működik, a már meglévő alkalmazások, amelyek használják azt.
-* **Földrajzi hely**: használó meglévő LUIS-alkalmazások **földrajzi** 2018. December támogatott.
-* **Enciklopédiájában**: használó meglévő LUIS-alkalmazások **enciklopédiájában** 2018. December támogatott.
+* **Dátum és idő**: Használó meglévő LUIS-alkalmazások **datetime** áttelepítendő **datetimeV2**, noha a dátum és idő entitás továbbra is működik, a már meglévő alkalmazások, amelyek használják azt.
+* **Földrajzi hely**: Használó meglévő LUIS-alkalmazások **földrajzi** 2018. December támogatott.
+* **Enciklopédiájában**: Használó meglévő LUIS-alkalmazások **enciklopédiájában** 2018. December támogatott.
 
 ## <a name="geography-culture"></a>Földrajzi hely kulturális környezet
 **Földrajzi hely** csak érhető el a `en-us` területi beállítás.
@@ -43,7 +43,7 @@ Előre összeállított entitások   |   Példa kimondott szöveg   |   JSON
 **Enciklopédiájában** csak érhető el a `en-US` területi beállítás.
 
 #### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípus
-Enciklopédiájában beépített entitás több mint 100 alárendelt típusokat tartalmaz a következő táblázatban: emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez: 
+Enciklopédiájában beépített entitás több mint 100 altípusok a következő táblázat tartalmazza: Emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez: 
 
 ```json
 {

@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/16/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395079"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139044"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata
 
@@ -40,7 +41,7 @@ Ez a cikk a [DRM használatával való titkosítás](https://github.com/Azure-Sa
 
         Az alkalmazás egy JWT-jogkivonat típusú korlátozást állít be a szabályzaton.
 
-* Hozzon létre egy StreamingLocatort a megadott objektumhoz a megadott streamelési szabályzat nevével. Ebben az esetben az előre meghatározott szabályzatot használjuk. Ez két tartalomkulcsot állít be a StreamingLocatoron: AES-128 (envelope) és CENC (PlayReady és Widevine).  
+* Hozzon létre egy StreamingLocatort a megadott objektumhoz a megadott streamelési szabályzat nevével. Ebben az esetben az előre meghatározott szabályzatot használjuk. Két tartalomkulcs található a StreamingLocator állítja be: AES-128 (boríték) és CENC (PlayReady és Widevine).  
     
     A StreamingLocator létrehozása után a rendszer közzéteszi a kimeneti objektumot, amelyek elérhetővé válnak az ügyfelek számára lejátszásra.
 
@@ -51,14 +52,14 @@ Ez a cikk a [DRM használatával való titkosítás](https://github.com/Azure-Sa
 
     Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, amellyel elindíthatja az Azure Media Player bemutató oldalát az előre kitöltött URL-lel és jogkivonattal.  
 
-    ![védelem drm használatával](./media/protect-with-drm/playready_encrypted_url.png)
+    ![DRM védelme](./media/protect-with-drm/playready_encrypted_url.png)
 
 > [!NOTE]
 > Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](content-protection-overview.md#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
 
 A cikkben leírt minta a következőt eredményezi:
 
-![védelem drm használatával](./media/protect-with-drm/ams_player.png)
+![AMS DRM-védelemmel a videó](./media/protect-with-drm/ams_player.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -116,7 +117,7 @@ Ebben az oktatóanyagban egy olyan fájl alapján hozzuk létre a feladat bemene
 
 A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Az alábbi kódminta bemutatja, hogyan kérdezheti le a [feladat](https://docs.microsoft.com/rest/api/media/jobs) állapotát a szolgáltatásból. Éles alkalmazások esetében nem javasolt a lekérdezés használata a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt. További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
-A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
+A **feladat** általában halad végig a következő állapotok: **Ütemezett**, **várólistán**, **feldolgozása**, **befejezett** (a végleges állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 

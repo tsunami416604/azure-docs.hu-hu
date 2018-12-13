@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: f5865cf72f413db49e70a08305de54aff955607b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a97a7be0eaa8438a4df27b610106ec6ab9f60d30
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075233"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184391"
 ---
 # <a name="azure-monitor-for-vms-preview-faq"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) – gyakori kérdések
 Ez a cikk a virtuális gépek az Azure Monitor kapcsolatos gyakori kérdésekre ad választ. Ha a megoldásról a további kérdése van, lépjen a [Azure vitafórumunkban](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Gyakori kérdések kéri, ha azt hozzá őket az ebben a cikkben található gyorsan és egyszerűen.
@@ -67,7 +66,7 @@ Virtuális gépek térkép funkció az Azure Monitor Service Map alapul, de rend
 * Figyelt virtuális gépek vannak, most az ügyfél csoport csomópontot, és a fánkdiagram diagram a figyelt a nem monitorozott virtuális gépek arányát jeleníti meg. Ha ki van bontva, a csoport is szűrheti a gépek listáját.
 * Figyelt virtuális gépek mostantól a port csoport csomópontok, és a fánkdiagram figyelt a nem figyelt gépeket arányát jeleníti meg. Ha ki van bontva, a csoport is szűrheti a gépek listáját.
 * A térkép stílus több konzisztens az Azure Application insights az Alkalmazástérkép frissítve lett.
-* A kiszolgálóoldali panelek frissítve lett-e, de még nem rendelkezik a Service Map támogató Integrációk teljes készlete: frissítéskezelés, változáskövetés, biztonsági és ügyfélszolgálat. 
+* A kiszolgálóoldali panelek frissítve lett-e, de még nem rendelkezik a Service Map támogató Integrációk teljes készlete: A frissítéskezelés, változáskövetés, biztonsági és ügyfélszolgálat. 
 * Frissítve lett való leképezéséhez a csoportok és számítógépek kiválasztására vonatkozó beállítás. Az előfizetések, erőforráscsoportok, Azure-beli virtuálisgép-méretezési csoportok és a Cloud services mostantól támogatja.
 * Az Azure Monitor szolgáltatás virtuális gépek térkép nem hozhat létre új Service Map gépcsoportok. 
 

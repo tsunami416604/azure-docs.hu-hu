@@ -1,6 +1,6 @@
 ---
-title: Azure Search SQL Virtuálisgép-kapcsolat |} Microsoft Docs
-description: Engedélyezze a titkosított kapcsolatokat, és a tűzfalon engedélyezni az SQL Server egy Azure virtuális gépen (VM) az Azure Search indexelőt konfigurálása.
+title: Az Azure SQL virtuális gép virtuális gép kapcsolatának a keresési indexelő - Azure-keresés
+description: Engedélyezze a titkosított kapcsolatokat, és konfigurálja a tűzfalat a kapcsolatok engedélyezése, hogy az SQL Server-beli virtuális gépen (VM) az Azure Search-indexelőt.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,78 +8,79 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec2018
+ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366460"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312026"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Egy kapcsolat egy Azure Search-indexelőt, és az SQL Server konfigurálása az Azure virtuális gépen
-Leírtaknak megfelelően [csatlakozás az Azure SQL Database az Azure Search használatával az indexelők](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), elleni indexelők létrehozása **az Azure virtuális gépeken futó SQL Server** (vagy **SQL Azure virtuális gépek** röviden) Azure Search által támogatott, de néhány biztonsági Előfeltételek az első végrehajtására. 
+# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Az SQL Server az Azure Search indexelők a kapcsolat konfigurálása egy Azure-beli virtuális gépen
+Leírtaknak [csatlakoztatása az Azure SQL Database az Azure Search indexelők használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), szemben az indexelők létrehozása **SQL Server Azure virtuális gépeken** (vagy **SQL Azure-beli virtuális gépek** röviden) használata támogatott az Azure Search de van néhány biztonsággal kapcsolatos előfeltételek irányuló első. 
 
-**Tevékenység időtartama:** körülbelül 30 percet, feltéve, hogy már telepített egy tanúsítványt a virtuális Gépen.
+**Tevékenység időtartama:** Körülbelül 30 perc alatt, ha már tanúsítványt telepített a virtuális gépen.
 
 ## <a name="enable-encrypted-connections"></a>Engedélyezze a titkosított kapcsolatokat
-Az Azure Search van szükség, egy nyilvános internetkapcsolaton keresztül egy titkosított csatornán indexelő minden olyan kérelem esetében. Ez a rész felsorolja a lépéseket működnek.
+Az Azure Search egy titkosított csatornán szükséges összes indexelő kérelem nyilvános internetkapcsolaton keresztül. Ez a szakasz felsorolja a lépéseket, hogy ezt a munkát.
 
-1. Ellenőrizze a tanúsítványt, ellenőrizze a tulajdonos nevét a teljesen minősített tartományneve (FQDN) az Azure virtuális gép tulajdonságait. Egy eszköz, például CertUtils vagy a tanúsítványok beépülő modul segítségével a tulajdonságok megtekintéséhez. Letölthető a teljes Tartománynevet a virtuális gép szolgáltatás panelre Essentials szakaszban, a a **nyilvános IP-cím/DNS-névcímke** mező mellett a [Azure-portálon](https://portal.azure.com/).
+1. Ellenőrizze a tanúsítványt, ellenőrizze a tulajdonos nevét a teljesen minősített tartománynevét (FQDN) az Azure virtuális gépek tulajdonságait. Egy eszköz, például CertUtils vagy a tanúsítványok beépülő modul segítségével megtekintheti a tulajdonságait. Megtekintheti a teljes Tartománynevet az Essentials szakaszban a virtuális gép szolgáltatás paneljén, az **nyilvános IP-cím/DNS-névcímke** mezőbe, a [az Azure portal](https://portal.azure.com/).
    
-   * Az újabb használatával létrehozott virtuális gépek **erőforrás-kezelő** sablon, a teljes tartománynév formátuma `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Régebbi virtuális gépek jönnek létre például egy **klasszikus** VM, a teljes tartománynév formátuma `<your-cloud-service-name.cloudapp.net>`. 
-2. SQL Server a Beállításszerkesztő (regedit) használatával. a tanúsítvány használatára konfigurálja. 
+   * Az újabb használatával létrehozott virtuális gépek **Resource Manager** sablonban vannak formázva, a teljes tartománynév `<your-VM-name>.<region>.cloudapp.azure.com`. 
+   * A régebbi virtuális gépeket létrehozni, mivel egy **klasszikus** virtuális Gépen vannak formázva, a teljes tartománynév `<your-cloud-service-name.cloudapp.net>`. 
+2. SQL Server használatával a beállításjegyzék-szerkesztővel (regedit) a tanúsítvány használatára konfigurálható. 
    
-    Bár ez a feladat gyakran használják az SQL Server Configuration Manager, a forgatókönyv nem használható. Az importált tanúsítvány, nem található, mert az Azure virtuális gép teljes Tartományneve nem egyezik meg a teljes tartománynév, a virtuális gép (azonosítja a tartomány vagy a helyi számítógépen, vagy a hálózati tartomány, amelyhez csatlakozik) alapján. Nevei nem egyeznek meg, amikor a regedit használatával adja meg a tanúsítványt.
+    Ez a feladat gyakran használják az SQL Server Configuration Manager, bár ebben a forgatókönyvben nem használható. Az importált tanúsítvány, nem található, mert az Azure-beli virtuális gép teljes Tartományneve nem egyezik meg a teljes tartománynév, a virtuális gép (azonosítja a tartományt a helyi számítógépen vagy a hálózati tartomány, amelyhez csatlakozik) határoz meg. Ha nevei nem egyeznek, a regedit használatával adja meg a tanúsítványt.
    
-   * A regedit, keresse meg a beállításkulcs a: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * A regedit, keresse meg a beállításkulcs: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
      
-     A `[MSSQL13.MSSQLSERVER]` része verzióján és példányán neve alapján változik. 
-   * Állítsa a **tanúsítvány** kulcs a **ujjlenyomat** a virtuális gép az importált SSL-tanúsítvány.
+     A `[MSSQL13.MSSQLSERVER]` rész verzióján és példányán neve alapján változik. 
+   * Az értékét állítsa be a **tanúsítvány** kulcs a **ujjlenyomat** a virtuális gép az importált SSL-tanúsítvány.
      
-     Az ujjlenyomat beolvasása néhány jobban számos módon lehet. Ha másolja le a **tanúsítványok** beépülő MMC-ben, akkor valószínűleg felveszi egy láthatatlan kezdő karakter [támogatási cikkben leírtak szerint](https://support.microsoft.com/kb/2023869/), amelyek hibát eredményez a kapcsolat tett kísérlet során. Néhány lehetséges megoldások a probléma kijavítása létezik. A legegyszerűbb, hogy backspace keresztül, és írja be újra az ujjlenyomat regedit kulcsérték mezőjében a kezdő karakter eltávolítása az első karakter. Egy másik eszköz segítségével azt is megteheti, másolja le az ujjlenyomatot.
+     Többféleképpen is lehet az ujjlenyomat beolvasása néhány jobban, mint mások. Ha másolja azt a **tanúsítványok** beépülő MMC-ben, akkor valószínűleg kiesik láthatatlan bevezető jellegű [támogatási cikkben leírtak szerint](https://support.microsoft.com/kb/2023869/), amely hibát eredményez a kapcsolat megkísérlésekor . Számos kell megadni. a probléma kijavítása létezik. A legegyszerűbb, ha backspace keresztül, és írja be újra az ujjlenyomat eltávolítása a vezető karaktert a kulcs értékét a mező a regedit első karaktere. Másik lehetőségként egy másik eszköz használatával másolja az ujjlenyomatot.
 3. Adja meg a szolgáltatás fiók engedélyeket. 
    
-    Győződjön meg arról, hogy az SQL Server szolgáltatásfiókja megfelelő engedélyekkel az SSL-tanúsítvány a titkos kulcsot kap. Ha eltéveszthetők ezt a lépést, az SQL Server nem fog elindulni. Használhatja a **tanúsítványok** beépülő modul vagy **CertUtils** ehhez a feladathoz.
+    Ellenőrizze, hogy az SQL Server szolgáltatási fiókja SSL-tanúsítvány a titkos kulcsot a megfelelő engedélyt kap. Ha Ön eltéveszthetők, ezt a lépést, az SQL Server nem indul el. Használhatja a **tanúsítványok** beépülő modul vagy **CertUtils** erre a célra.
 4. Indítsa újra az SQL Server szolgáltatást.
 
-## <a name="configure-sql-server-connectivity-in-the-vm"></a>A virtuális gép az SQL Server-kapcsolat konfigurálása
-Miután beállította az Azure Search által igényelt titkosított kapcsolati, nincsenek további konfigurációs lépések az Azure virtuális gépeken futó SQL Server belső. Ha még nem tette meg, a következő lépés befejezéséhez a konfigurációval vagy az egyik ezek a cikkek:
+## <a name="configure-sql-server-connectivity-in-the-vm"></a>Az SQL Server-kapcsolat konfigurálása a virtuális gépen
+Miután beállította a titkosított kapcsolatot hoz létre az Azure Search által igényelt, nincsenek további konfigurációs lépések belső SQL Server Azure virtuális gépeken. Ha még nem tette meg, a következő lépés befejezéséhez vagy egy, az alábbi cikkek segítségével konfigurációs:
 
-* Az egy **erőforrás-kezelő** virtuális gép, lásd: [csatlakozás az SQL Server virtuális gép az Azure Resource Manager használatával](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
-* Az egy **klasszikus** virtuális gép, lásd: [csatlakozás az SQL Server virtuális gép Azure klasszikus](../virtual-machines/windows/classic/sql-connect.md).
+* Az egy **Resource Manager** virtuális Gépet, tekintse meg [Csatlakozás SQL Server virtuális gépekhez az Azure Resource Manager használatával](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* Az egy **klasszikus** virtuális Gépet, tekintse meg [csatlakozás az SQL Server virtuális gép a klasszikus Azure](../virtual-machines/windows/classic/sql-connect.md).
 
-Különösen tekintse át az egyes cikk "az interneten keresztül csatlakozó" című szakasza.
+Mindenekelőtt tekintse át a minden egyes cikk "az interneten keresztül összekötő" című szakaszában.
 
-## <a name="configure-the-network-security-group-nsg"></a>Hálózati biztonsági csoport (NSG) konfigurálása
-Nincs szokatlan konfigurálása az NSG és megfelelő Azure-végpont vagy a hozzáférés-vezérlési lista (ACL) az Azure virtuális gép más felek számára. Valószínűleg ezt a, mielőtt engedélyezi a saját alkalmazáslogikát, hogy az SQL Azure virtuális gép csatlakozni. Nem különbözik, az Azure Search-kapcsolat az SQL Azure virtuális géphez. 
+## <a name="configure-the-network-security-group-nsg"></a>A hálózati biztonsági csoport (NSG) konfigurálása
+Már nem ritka, hogy az NSG-t és a megfelelő Azure-végpont vagy hozzáférés-vezérlési lista (ACL) az Azure virtuális gép elérhetővé a többi fél konfigurálása. Valószínűleg ez előtt, hogy az SQL Azure virtuális Géphez való csatlakozáshoz a saját alkalmazáslogika végezze el. Nem különbözik, az Azure Search-kapcsolatot az SQL Azure virtuális gép számára. 
 
-A lenti hivatkozásokra kattintva utasításokkal láthatja el a Virtuálisgép-telepítések NSG-konfigurációban. Használja az IP-címe alapján Azure Search a végpont ACL ezeket az utasításokat.
+Az alábbi hivatkozások a virtuális gépek üzembe helyezése az NSG konfigurációs utasításokkal. Kövesse ezeket az utasításokat az ACL-t egy Azure Search-végpont az IP-címe alapján.
 
 > [!NOTE]
-> Háttér, lásd: [Mi az a hálózati biztonsági csoport?](../virtual-network/security-overview.md)
+> A háttér-információkért lásd: [Mi az a hálózati biztonsági csoport?](../virtual-network/security-overview.md)
 > 
 > 
 
-* Az egy **erőforrás-kezelő** virtuális gép, lásd: [NSG-k létrehozása az ARM-telepítések](../virtual-network/tutorial-filter-network-traffic.md). 
-* Az egy **klasszikus** virtuális gép, lásd: [NSG-k létrehozása a klasszikus telepítések](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Az egy **Resource Manager** virtuális Gépet, tekintse meg [NSG-k létrehozása az ARM üzemelő példányok](../virtual-network/tutorial-filter-network-traffic.md). 
+* Az egy **klasszikus** virtuális Gépet, tekintse meg [NSG-k létrehozása a klasszikus üzembe helyezéssel](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
-IP-címeit, amelyek könnyen vannak megoldásához, ha a probléma és a lehetséges megoldások tudatában néhány kihívást jelenthet. A fennmaradó szakaszokban javaslatok IP-címek a hozzáférés-vezérlési listában kapcsolatos problémák kezelésére.
+IP-címkezelés jelenthetnek néhány kihívásokat, amely egyszerűen elhárítja a Ha a probléma és kerülő megoldásait. Fennmaradó javaslatokkal IP-címek hozzáférés-vezérlési kapcsolatos problémák kezelésére.
 
 #### <a name="restrict-access-to-the-search-service-ip-address"></a>Korlátozza a hozzáférést a keresési szolgáltatás IP-címe
-Erősen ajánlott a hozzáférés korlátozása a hozzáférés-vezérlési listában tételére SQL Azure virtuális gépeken, nyílt bármely kapcsolatkérelmeknek helyett a keresőszolgáltatása IP-címét. Könnyedén megtalálhatja az IP-cím történő megpingelésével a teljes Tartománynevet (például `<your-search-service-name>.search.windows.net`), a keresési szolgáltatáshoz.
+Határozottan javasoljuk, hogy az ACL-t, már nem kell az SQL Azure-beli virtuális gépek nyílt, bármilyen csatlakozási kérések a search szolgáltatás az IP-címre korlátozhatja a hozzáférést. Megtalálhatja az IP-cím pingelésével a teljes Tartománynevet (például `<your-search-service-name>.search.windows.net`) a keresési szolgáltatás.
 
-#### <a name="managing-ip-address-fluctuations"></a>IP-cím ingadozását kezelése
-Ha a keresési szolgáltatást (Ez azt jelenti, hogy egy másodpéldány és egy partíció) csak egy keresési egység, az IP-cím rutin szolgáltatás újraindul, a keresési szolgáltatás IP-címmel meglévő ACL érvénytelenítése során fogja módosítani.
+#### <a name="managing-ip-address-fluctuations"></a>IP-cím ingadozások által megkövetelt kezelése
+Ha a keresési szolgáltatás csak egy keresési egységet (azaz egy replika és a egy partíció), az IP-cím változik rutin szolgáltatás újraindul, a keresési szolgáltatás IP-címmel rendelkező meglévő ACL érvénytelenítése során.
 
-Egy az ezt követő csatlakozási hiba elkerülése érdekében módja az Azure Search egynél több replika és egy partíció használjon. Ez növeli a költségeket, de azt is megoldja a IP-cím problémát. Az Azure Search IP-címek ne módosítsa, ha egynél több keresési egység.
+Egyik módja a későbbi csatlakozási hiba elkerülése érdekében, hogy egynél több replika és a egy partíció használata az Azure Search szolgáltatásban. Ez növeli a költségeket, de az is megoldást kínál az IP-cím probléma. Az Azure Search szolgáltatásban IP-címek ne módosítsa, ha egynél több keresési egység.
 
-Egy második megoldás, a kapcsolat nem sikerül, és konfigurálja újra az NSG ACL engedélyezéséhez. IP-címek módosítása néhány hetente átlagosan számíthat. Azok számára, aki elvégzi a alkalomszerű alapon ellenőrzött indexelő Ez a megközelítés életképes lehet.
+A második megközelítéssel, hogy a csatlakozás nem sikerül, és újra kell konfigurálnia az NSG ACL-ek engedélyezése. Átlagosan várható IP-címek módosítása néhány hetente. Azok a vásárlóknak, akik tegye ellenőrzött indexelő alkalmi alapon akkor lehet működőképes.
 
-Egy harmadik életképes (de nem a különösen biztonságos) megoldás, az IP-címtartományt az Azure-régió, ahol a keresési szolgáltatás ki van építve, ha. Nyilvános IP-címek, amelyből Azure-erőforrások számára kiosztott IP-címtartománylista közzé van téve a [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). 
+A harmadik életképes (de nem a különösen biztonságos) megközelítés, hogy adja meg az IP-címtartományt, ahol a keresési szolgáltatás ki van építve az Azure-régióban. Azure-erőforrások számára kiosztott nyilvános IP-címet, amelyről IP-címtartományok listája közzé van téve [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). 
 
-#### <a name="include-the-azure-search-portal-ip-addresses"></a>Tartalmazza az Azure Search portál IP-címek
-Ha az Azure portál segítségével hozzon létre egy indexelőt, Azure Search portál logikát is létrehozás közbeni hozzá kell férnie az SQL Azure virtuális gép. Az Azure search portál IP-címek található történő megpingelésével `stamp2.search.ext.azure.com`.
+#### <a name="include-the-azure-search-portal-ip-addresses"></a>Az Azure Search portál IP-címeket tartalmazza.
+Az Azure portal használatakor egy indexelő létrehozása Azure Search portál logikát is hozzá kell férnie az SQL Azure virtuális gép létrehozásának ideje alatt. Az Azure search portál IP-címek találhatók pingelésével `stamp2.search.ext.azure.com`.
 
 ## <a name="next-steps"></a>További lépések
-A bevezetés konfigurációval megadhat egy SQL Server Azure virtuális gépen egy Azure Search-indexelőt adatok forrásaként. Lásd: [csatlakozás az Azure SQL Database az Azure Search használatával az indexelők](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) további információt.
+A konfiguráció így most már megadhatja egy SQL Server Azure virtuális gépen az Azure Search indexelők adatok forrásaként. Lásd: [csatlakoztatása az Azure SQL Database az Azure Search indexelők használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) további információt.
 

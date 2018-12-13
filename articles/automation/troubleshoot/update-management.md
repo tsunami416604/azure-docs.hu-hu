@@ -4,16 +4,16 @@ description: Ismerje meg, az Update Management hibáinak elhárítása
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092627"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275652"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -23,7 +23,7 @@ Van egy ügynök hibaelhárító hibrid feldolgozó ügynök határozza meg a hi
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="components-enabled-not-working"></a>Forgatókönyv: Az "Update Management" megoldás összetevői engedélyezve van, és most a virtuális gép konfigurálása
+### <a name="components-enabled-not-working"></a>Forgatókönyv: Az "Update Management" megoldás összetevői engedélyezve van, és most már a virtuális gép konfigurálása
 
 #### <a name="issue"></a>Probléma
 
@@ -44,6 +44,35 @@ Ez a hiba oka lehet a következő okok miatt:
 
 1. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, az Update Management működjön.
 2. Ha egy klónozott lemezképét, a sysprep lemezkép használatával először, és az MMA-ügynök telepítése után az a tény.
+
+### <a name="multi-tenant"></a>Forgatókönyv: A társított előfizetés hibaüzenetet kapja, amikor a gépek a frissítéstelepítések létrehozásához egy másik Azure-bérlőhöz.
+
+#### <a name="issue"></a>Probléma
+
+Egy másik Azure-bérlőhöz frissítéstelepítés gépek létrehozására tett kísérlet közben a következő hibaüzenetet kapja:
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez akkor fordul elő, amikor létrehoz egy központi telepítést, amely rendelkezik az Azure-beli virtuális gépek szerepelnek a frissítéstelepítés egy másik bérlőben.
+
+#### <a name="resolution"></a>Megoldás:
+
+Az alábbi megkerülő megoldást használja, hogy az ütemezett kell. Használhatja a [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) parancsmag és a kapcsoló `-ForUpdate` ütemezés létrehozása és használata a [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) parancsmag paraméterével a a többi bérlő számára a gépek a `-NonAzureComputer` paraméter. Az alábbi példa bemutatja egy példa, hogyan teheti ezt meg:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="windows"></a>Windows
 
@@ -69,7 +98,7 @@ A gép már egy másik munkaterület az Update Management előkészítve.
 
 Hajtsa végre a régi összetevők tisztítását által a gépen [a hibrid runbook-csoport törlése](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group) , és próbálkozzon újra.
 
-### <a name="machine-unable-to-communicate"></a>Forgatókönyv: A gép nem tud kommunikálni a szolgáltatás
+### <a name="machine-unable-to-communicate"></a>Forgatókönyv: Gép nem tud kommunikálni a szolgáltatás
 
 #### <a name="issue"></a>Probléma
 
@@ -113,7 +142,7 @@ A hibrid Runbook-feldolgozó nem tudta önaláírt tanúsítvány létrehozása
 
 Ellenőrizze a rendszer fiók olvasási hozzáféréssel rendelkezik mappába **C:\ProgramData\Microsoft\Crypto\RSA** , és próbálkozzon újra.
 
-### <a name="nologs"></a>Forgatókönyv: Az Update Management adatokat a Log Analytics a gép nem látható
+### <a name="nologs"></a>Forgatókönyv: A Log Analytics a gép nem látható a felügyeleti adatok frissítése
 
 #### <a name="issue"></a>Probléma
 
@@ -127,7 +156,7 @@ A hibrid Runbook-feldolgozó újra regisztrálni és telepíteni kell.
 
 Kövesse a lépéseket [Windows hibrid Runbook-feldolgozó üzembe helyezése](../automation-windows-hrw-install.md) újra kell telepítenie a hibrid feldolgozó.
 
-### <a name="hresult"></a>Forgatókönyv: Gép nincs értékelve, és bemutatja a kivétel HResult mutatja
+### <a name="hresult"></a>Forgatókönyv: Számítógép nincs értékelve, és megjeleníti a kivétel HResult jelenik meg
 
 #### <a name="issue"></a>Probléma
 

@@ -1,5 +1,6 @@
 ---
-title: 'Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal | Microsoft Docs'
+title: 'Gyors útmutató: Alapszintű nyilvános Load Balancer létrehozása az Azure portal használatával'
+titlesuffix: Azure Load Balancer
 description: Ez az útmutató bemutatja, hogyan hozhat létre alapszintű nyilvános terheléselosztót az Azure Portal használatával.
 services: load-balancer
 documentationcenter: na
@@ -12,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 9cf1fcda8651cccb82b2de58487becf25541a6e2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e7055e016abd06d20206d25cb1d7b9eac35142f0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098678"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260225"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal
+# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Gyors útmutató: Alapszintű nyilvános load balancer létrehozása az Azure portal használatával
 
 Terheléselosztási a bejövő kérelmeket virtuális gépeken (VM) között osztja szét a magasabb rendelkezésre állást és méretezést biztosít. Az Azure portal használatával létrehozhat egy terheléselosztót, és a virtuális gépek közötti forgalom elosztására. Ez a rövid útmutató bemutatja, hogyan hozhat létre és konfigurálja a terheléselosztó háttér-kiszolgálók és hálózati erőforrások, az alapszintű díjcsomagot.
 
@@ -36,13 +37,13 @@ Először hozzon létre egy nyilvános alapszintű load balancer a portál haszn
    
 1. Az a **terheléselosztó létrehozása** panelen adja meg ezeket az értékeket:
    
-   - **Név**: típus *MyLoadBalancer*.
-   - **Típus**: válasszon **nyilvános**. 
-   - **Termékváltozat**: válasszon **alapszintű**.
-   - **Nyilvános IP-cím:** kiválasztása **új létrehozása**. 
-     - **Nyilvános IP-cím** mező: típus *MyPublicIP*.
-     - **Nyilvános IP-cím konfigurálása** > **hozzárendelés**: válasszon **dinamikus**.
-   - **Erőforráscsoport**: válassza ki **új létrehozása**, majd adja meg *MyResourceGroupLB*, és válassza ki **OK**. 
+   - **Név**: Típus *MyLoadBalancer*.
+   - **Típus**: Válassza ki **nyilvános**. 
+   - **TERMÉKVÁLTOZAT**: Válassza az **Alapszintű** lehetőséget.
+   - **Nyilvános IP-cím:** Válassza az **Új létrehozása** lehetőséget. 
+     - **Nyilvános IP-cím** mező: Típus *MyPublicIP*.
+     - **Nyilvános IP-cím konfigurálása** > **hozzárendelés**: Válassza ki **dinamikus**.
+   - **Erőforráscsoport**: Válassza ki **új létrehozása**, majd adja meg *MyResourceGroupLB*, és válassza ki **OK**. 
    
 1. Kattintson a **Létrehozás** gombra.
    
@@ -58,9 +59,9 @@ Ezután hozzon létre egy virtuális hálózatot és két virtuális gépet az a
    
 1. Az a **virtuális hálózat létrehozása** panelen adja meg ezeket az értékeket:
    
-   - **Név**: típus *MyVnet*.
-   - **Erőforráscsoport**: legördülő lista **válasszon meglévő** válassza **MyResourceGroupLB**. 
-   - **Alhálózat** > **neve**: típus *MyBackendSubnet*.
+   - **Név**: Típus *MyVnet*.
+   - **Erőforráscsoport**: Legördülő lista **válasszon meglévő** válassza **MyResourceGroupLB**. 
+   - **Alhálózat** > **neve**: Típus *MyBackendSubnet*.
    
 1. Kattintson a **Létrehozás** gombra.
 
@@ -71,16 +72,16 @@ Ezután hozzon létre egy virtuális hálózatot és két virtuális gépet az a
 1. A portál bal felső oldalán válassza **erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter**. 
    
 1. A **hozzon létre egy virtuális gépet**adja meg a következő értékeket a **alapjai** lapon:
-   - **Előfizetés** > **erőforráscsoport**: le, és válassza a legördülő **MyResourceGroupLB**.
-   - **Példány részletei** > **virtuális gép neve**: típus *MyVM1*.
+   - **Előfizetés** > **erőforráscsoport**: Legördülő listára, és válassza ki **MyResourceGroupLB**.
+   - **Példány részletei** > **virtuális gép neve**: Típus *MyVM1*.
    - **Példány részletei** > **rendelkezésre állási beállítások**: 
      1. Legördülő listára, és válassza ki **rendelkezésre állási csoport**. 
      2. Válassza ki **új létrehozása**, típus *MyAvailabilitySet*, és válassza ki **OK**.
   
-1. Válassza ki a **hálózatkezelés** lapon, vagy válasszon **tovább: lemezek**, majd **tovább: hálózatkezelés**. 
+1. Válassza ki a **hálózatkezelés** lapon, vagy válasszon **tovább: Lemezek**, majd **tovább: Hálózatkezelés**. 
    
    Győződjön meg arról, hogy a következő kijelölt:
-   - **Virtuális hálózat**: **MyVnet**
+   - **Virtuális hálózat**: **myVnet**
    - **Alhálózat**: **MyBackendSubnet**
    - **Nyilvános IP-cím**: **MyVM1-ip**
    
@@ -106,24 +107,24 @@ Ebben a szakaszban létrehozott hálózati biztonsági csoport (NSG) szabályai 
    
 1. Az a **bejövő biztonsági szabály felvétele** párbeszédpanelen írja be vagy válassza ki a következő HTTP-szabály:
    
-   - **Forrás**: válasszon **Szolgáltatáscímke**.  
-   - **Forrás szolgáltatáscímkéje**: válasszon **Internet**. 
-   - **Célporttartományok**: típus *80-as*.
-   - **Protokoll**: válasszon **TCP**. 
-   - **A művelet**: válasszon **engedélyezése**.  
-   - **Prioritás**: típus *100*. 
-   - **Név**: típus *MyHTTPRule*. 
-   - **Leírás**: típus *HTTP engedélyezése*. 
+   - **forrás**: Válassza ki **Szolgáltatáscímke**.  
+   - **Forrás szolgáltatáscímkéje**: Válassza ki **Internet**. 
+   - **Célporttartományok**: Típus *80-as*.
+   - **Protokoll**: Válassza ki **TCP**. 
+   - **A művelet**: Válassza ki **engedélyezése**.  
+   - **Prioritás**: Típus *100*. 
+   - **Név**: Típus *MyHTTPRule*. 
+   - **Leírás**: Típus *HTTP engedélyezése*. 
    
 1. Válassza a **Hozzáadás** lehetőséget. 
    
    ![NSG-szabály létrehozása](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
    
 1. A bejövő RDP-szabályban, az alábbi eltérő értékekkel ismételje meg a lépéseket:
-   - **Célporttartományok**: típus *3389-es*.
-   - **Prioritás**: típus *200*. 
-   - **Név**: típus *MyRDPRule*. 
-   - **Leírás**: típus *RDP engedélyezése*. 
+   - **Célporttartományok**: Típus *3389-es*.
+   - **Prioritás**: Típus *200*. 
+   - **Név**: Típus *MyRDPRule*. 
+   - **Leírás**: Típus *RDP engedélyezése*. 
 
 ## <a name="create-resources-for-the-load-balancer"></a>A load Balancer-erőforrások létrehozása
 
@@ -141,9 +142,9 @@ A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a h
    
 1. Az a **háttérkészlet hozzáadása** lapon adja meg a következő értékeket:
    
-   - **Név**: típus *MyBackEndPool*.
-   - **Társított**: le, és válassza a legördülő **rendelkezésre állási csoport**.
-   - **A rendelkezésre állási csoport**: válasszon **MyAvailabilitySet**.
+   - **Név**: Típus *MyBackEndPool*.
+   - **Társított**: Legördülő listára, és válassza ki **rendelkezésre állási csoport**.
+   - **A rendelkezésre állási csoport**: Válassza ki **MyAvailabilitySet**.
    
 1. Válassza ki **cél IP-konfiguráció hozzáadása**. 
    1. Adja hozzá az egyes virtuális gépek (**MyVM1** és **MyVM2**), amely az Ön hozott létre a háttércímkészletet.
@@ -167,12 +168,12 @@ Ahhoz, hogy a load balancer monitorozhassa a virtuális gép állapotát, állap
    
 1. Az a **állapotadat-mintavétel hozzáadása** lapon adja meg a következő értékeket:
    
-   - **Név**: típus *MyHealthProbe*.
-   - **Protokoll**: le, és válassza a legördülő **HTTP**. 
-   - **Port**: típus *80-as*. 
-   - **Elérési út**: fogadja el */* az alapértelmezett URI-t. Ez az érték lecserélheti bármely más URI-t. 
-   - **Intervallum**: típus *15*. Az időköz a mintavételi kísérletek között eltelt másodpercek száma.
-   - **Nem kifogástalan állapot küszöbértéke**: típus *2*. Ez az érték az egymást követő mintavételi hiba, amely a virtuális gép nem megfelelő állapotúnak számít még azelőtt számát jelenti.
+   - **Név**: Típus *MyHealthProbe*.
+   - **Protokoll**: Legördülő listára, és válassza ki **HTTP**. 
+   - **Port**: Típus *80-as*. 
+   - **Elérési út**: Fogadja el */* az alapértelmezett URI-t. Ez az érték lecserélheti bármely más URI-t. 
+   - **Intervallum**: Típus *15*. Az időköz a mintavételi kísérletek között eltelt másodpercek száma.
+   - **Nem kifogástalan állapot küszöbértéke**: Típus *2*. Ez az érték az egymást követő mintavételi hiba, amely a virtuális gép nem megfelelő állapotúnak számít még azelőtt számát jelenti.
    
 1. Kattintson az **OK** gombra.
    
@@ -193,13 +194,13 @@ A nevű terheléselosztási szabályt **MyLoadBalancerRule** az előtér-alkalma
    
 1. Az a **terheléselosztási szabály hozzáadása** lapon adja meg a következő értékeket:
    
-   - **Név**: típus *MyLoadBalancerRule*.
-   - **Előtérbeli IP-cím:** típus *LoadBalancerFrontend*.
-   - **Protokoll**: válasszon **TCP**.
-   - **Port**: típus *80-as*.
-   - **Háttérport**: típus *80-as*.
-   - **Háttérkészlet**: válasszon **MyBackendPool**.
-   - **Az állapotfigyelő mintavételező**: válasszon **MyHealthProbe**. 
+   - **Név**: Típus *MyLoadBalancerRule*.
+   - **Előtérbeli IP-cím:** Típus *LoadBalancerFrontend*.
+   - **Protokoll**: Válassza ki **TCP**.
+   - **Port**: Típus *80-as*.
+   - **Háttérport**: Típus *80-as*.
+   - **Háttérkészlet**: Válassza ki **MyBackendPool**.
+   - **Az állapotfigyelő mintavételező**: Válassza ki **MyHealthProbe**. 
    
 1. Kattintson az **OK** gombra.
    

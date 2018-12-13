@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Tasks használatával'
+title: Oktatóanyag – hozhat létre tárolórendszerképeket a felhő - Azure Container Registry feladatok
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7ac4fb62c6832920634de96c3e5befb15ce3b3a4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eafd6a75b4297056bcf4c5415f77179cefde6541
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854728"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256689"
 ---
-# <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Tasks használatával
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Hozhat létre és helyezhet üzembe rendszerképeket az Azure Container Registry feladatokat a felhőben
 
 Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
 
@@ -220,8 +220,8 @@ az keyvault secret set \
 
 Létrehozott egy Azure Key Vault-tárolót, és eltárolt benne két titkos kulcsot:
 
-* `$ACR_NAME-pull-usr`: A szolgáltatásnév azonosítója, amely a tárolóregisztrációs adatbázis **felhasználóneveként** szolgál.
-* `$ACR_NAME-pull-pwd`: A szolgáltatásnév jelszava, amely a tárolóregisztrációs adatbázis **jelszavaként** szolgál.
+* `$ACR_NAME-pull-usr`: A szolgáltatásnév-Azonosítót, a tároló-beállításjegyzék használható **felhasználónév**.
+* `$ACR_NAME-pull-pwd`: Az egyszerű szolgáltatás jelszava, a tároló-beállításjegyzék használható **jelszó**.
 
 Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy az alkalmazások és szolgáltatások rendszerképeket kérnek le a regisztrációs adatbázisból.
 

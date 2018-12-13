@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service Environment hálózati megfontolások
+title: Hálózati megfontolások az App Service-környezet – Azure
 description: Ismerteti az ASE-hálózati forgalom és NSG-ket és az ASE az udr-EK beállítása
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: b39ff01fec9fa51f6e208728b5c8f78c68654484
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964883"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271011"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -26,10 +27,10 @@ ms.locfileid: "52964883"
 
  Azure [App Service Environment-környezet] [ Intro] üzembe helyezése az Azure App Service-ben az Azure virtuális hálózat (VNet) lévő egyik alhálózatában van. Az App Service environment (ASE) két központi telepítési típusa van:
 
-- **Külső ASE**: tesz közzé az ASE-ban üzemeltetett alkalmazásokat az internetről elérhető IP-címet. További információkért lásd: [külső ASE létrehozása][MakeExternalASE].
-- **ILB ASE**: tesz közzé az ASE-ban üzemeltetett alkalmazásokat, az IP-címet a virtuális hálózaton belül. A belső végpont egy belső terheléselosztó (ILB), ezért az ILB ASE neve. További információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
+- **Külső ASE**: Az ASE-ban üzemeltetett alkalmazásokat az internetről elérhető IP-címet tesz elérhetővé. További információkért lásd: [külső ASE létrehozása][MakeExternalASE].
+- **ILB ASE**: Az IP-címet a virtuális hálózaton belül az ASE-ban üzemeltetett alkalmazásokat tesz elérhetővé. A belső végpont egy belső terheléselosztó (ILB), ezért az ILB ASE neve. További információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
 
-Az App Service Environment-környezet két verziója: ASEv1 és ASEv2. Az ASEv1 információkért lásd: [App Service Environment v1 bemutatása][ASEv1Intro]. Az ASEv1 is üzembe helyezhetők a klasszikus vagy Resource Manager. Csak telepíthető, az Resource Manager VNet ASEv2 is.
+Nincsenek App Service Environment-környezet két verziója: Az ASEv1 és ASEv2. Az ASEv1 információkért lásd: [App Service Environment v1 bemutatása][ASEv1Intro]. Az ASEv1 is üzembe helyezhetők a klasszikus vagy Resource Manager. Csak telepíthető, az Resource Manager VNet ASEv2 is.
 
 Az ASE összes hívásait az interneten keresztül egy hozzárendelt az ASE virtuális IP-CÍMEK a virtuális hálózat hagyja üresen. A nyilvános IP-címét a virtuális IP-cím a forrás IP-címe összes híváshoz az ASE-ről, amely az interneten. Ha az alkalmazások az ASE környezetben hívásokat erőforrások a virtuális hálózat vagy virtuális Magánhálózatok, a forrás IP-címe az az alhálózatot az ASE által használt IP-egyik. Mivel az ASE-t a virtuális hálózaton belül, azt is elérhető erőforrások további konfiguráció nélkül a virtuális hálózaton belül. Ha a virtuális hálózat a helyszíni hálózathoz van csatlakoztatva, az ASE-alkalmazások is erőforrásokhoz további konfiguráció nélkül való hozzáférést.
 
@@ -58,7 +59,7 @@ Ez akkor igaz, ha Ön a külső ASE vagy ILB ASE környezetben. Ha Ön a külső
 
 ## <a name="ase-subnet-size"></a>ASE alhálózat mérete ##
 
-Az ASE üzemeltetéséhez használt alhálózat mérete nem módosítható, az ASE üzembe helyezése után.  Az ASE minden infrastruktúra-szerepkör, valamint meghajtóbetűjeleket izolált App Service-csomag mindegyiknek egy címet használ.  Emellett nincsenek igénylő összes alhálózat létrehozott Azure-hálózat által használt 5 címeket.  Nincsenek App Service-csomagok egy ASE minden 12-címeket fogják használni az alkalmazás létrehozása előtt.  Ha az ILB ASE majd fogja használni 13 címek ahhoz, hogy az ASE környezetben létrehoz egy alkalmazást. Horizontális felskálázás az ASE-t, infrastruktúra-szerepkörök kerülnek minden 15 – 20 az App Service-csomag üzemelő példányok többszöröse.
+Az ASE-környezetek üzemeltetéséhez használt alhálózatok mérete az ASE-környezet üzembe helyezése után már nem módosítható.  Az ASE minden infrastruktúra-szerepkör, valamint meghajtóbetűjeleket izolált App Service-csomag mindegyiknek egy címet használ.  Emellett nincsenek igénylő összes alhálózat létrehozott Azure-hálózat által használt 5 címeket.  Nincsenek App Service-csomagok egy ASE minden 12-címeket fogják használni az alkalmazás létrehozása előtt.  Ha az ILB ASE majd fogja használni 13 címek ahhoz, hogy az ASE környezetben létrehoz egy alkalmazást. Horizontális felskálázás az ASE-t, infrastruktúra-szerepkörök kerülnek minden 15 – 20 az App Service-csomag üzemelő példányok többszöröse.
 
    > [!NOTE]
    > Semmi más lehet az alhálózaton, de az ASE-t. Mindenképp válassza ki a jövőbeli növekedést is lehetővé teszi egy címtér. Ezt a beállítást később nem módosítható. Azt javasoljuk, hogy egy méretű `/24` 256-címekkel.
@@ -73,10 +74,10 @@ Az ASE bejövő hozzáférést függőségei vannak:
 
 | Használat | Ettől: | Művelet |
 |-----|------|----|
-| Kezelés | App Service felügyeleti címek | ASE-alhálózattal: 454, 455 |
-|  Belső ASE-kommunikáció | ASE-alhálózattal: minden port | ASE-alhálózattal: minden port
-|  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE-alhálózattal: minden port
-|  Az alkalmazás IP-címek | Alkalmazás-címek | ASE-alhálózattal: minden port
+| Kezelés | App Service felügyeleti címek | ASE alhálózat: a 454, 455 |
+|  Belső ASE-kommunikáció | ASE alhálózat: Minden port | ASE alhálózat: Minden port
+|  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE alhálózat: Minden port
+|  Az alkalmazás IP-címek | Alkalmazás-címek | ASE alhálózat: Minden port
 
 A bejövő felügyeleti forgalmak parancs és vezérlés figyelése mellett az ASE biztosít. Ezt a forgalmat a forrás-címek szerepelnek a [ASE felügyeleti címek] [ ASEManagement] dokumentumot. A hálózati biztonsági konfiguráció engedélyezi a hozzáférést a 454 és a 455 portot az összes IP-címekről származó kell. Ha letiltja a hozzáférést a ezt a címet, az ASE nem megfelelő állapotú lesz, és ezután lesz felfüggesztve.
 
@@ -136,10 +137,10 @@ Funkciók és a webes feladatok az SCM helyet függ, de akkor is, ha alkalmazás
 
 Az ASE érdemes figyelembe vennie néhány IP-címmel rendelkezik. Ezek a következők:
 
-- **Nyilvános bejövő IP-cím**: külső ASE app-forgalom és felügyeleti forgalom külső ASE környezetben és a egy ILB ASE környezetben is használható.
-- **Kimenő nyilvános IP-cím**: a kimenő kapcsolatok számára az ASE-ről, amely a virtuális hálózathoz, hagyja le a VPN nem irányítja, amely a "feladó" IP-címként használja.
+- **Nyilvános bejövő IP-cím**: Külső ASE app-forgalom és felügyeleti forgalom külső ASE környezetben és a egy ILB ASE környezetben is használható.
+- **Kimenő nyilvános IP-cím**: Használja a kimenő kapcsolatok számára az ASE-ről, amely a virtuális hálózathoz, hagyja le a VPN nem irányítja, amely a "feladó" IP-cím.
 - **ILB IP-cím**: Ha az ILB ASE használata.
-- **Alkalmazáshoz hozzárendelt IP-alapú SSL-címeket**: csak akkor lehetséges, a külső ASE és IP-alapú SSL konfigurálva van.
+- **Alkalmazáshoz hozzárendelt IP-alapú SSL-címeket**: Csak akkor lehetséges a külső ASE környezetben, és ha IP-alapú SSL van konfigurálva.
 
 Ezen IP-címek az Azure Portalon az ASEv2 jól látható, az ASE felhasználói felületen. Ha az ILB ASE rendelkezik, az ILB-hez a IP-cím szerepel a listán.
 

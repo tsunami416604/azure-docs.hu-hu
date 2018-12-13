@@ -2,19 +2,20 @@
 title: Az Azure Search szolgáltatásban a több-Bérlős modellezés |} A Microsoft Docs
 description: További információ a gyakori tervezési minták több-bérlős SaaS-alkalmazások Azure Search használata során.
 manager: jlembicz
-author: ashmaka
+author: LiamCavanagh
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
-ms.author: ashmaka
-ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: liamca
+ms.custom: seodec2018
+ms.openlocfilehash: 1da9756df4fa05b367665a5fe024528939f22578
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232378"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313037"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Tervezési minták több-bérlős SaaS-alkalmazások és az Azure Search az
 Egy több-bérlős alkalmazás, amelyik azonos szolgáltatásokat és képességeket biztosít a bérlők számára, akik nem látható, vagy ossza meg az adatokat semmilyen más bérlővel, tetszőleges számú. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák az Azure Search-alapú több-bérlős alkalmazásokhoz.
@@ -57,20 +58,20 @@ Az S3 szintű szolgáltatáscsomagban konkrétan, 1 és 200 indexeket, amelyek e
 ## <a name="considerations-for-multitenant-applications"></a>Szempontok a több-bérlős alkalmazásokban
 Több-bérlős alkalmazások hatékony el kell juttatnia a erőforrások a bérlők közötti adatvédelmi a különböző bérlők között bizonyos fokú megőrzése mellett. Ilyen alkalmazás architektúrájának tervezése során, van néhány szempont:
 
-* *Bérlők elkülönítésének:* alkalmazás fejlesztők kell a megfelelő intézkedéseket annak biztosítására, hogy nem bérlő nem jogosult-e vagy nemkívánatos más bérlők adataihoz való hozzáférés. Túl az adatvédelem szempontjából a bérlő elkülönítési stratégiák szükség a megosztott erőforrások és a védelem a zajos szomszédok hatékony kezelése.
-* *A felhő átköltöztetéssel:* , minden más alkalmazás, a szoftveres megoldások költség versenyképes egy több-bérlős alkalmazás részeként kell maradnia.
-* *Műveletek könnyű:* egy több-bérlős architektúra fejlesztésével, az alkalmazás-műveletek és összetettségi gyakorolt esetén fontos szempont. Az Azure Search rendelkezik egy [99,9 %-os SLA-t](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Globális lefedettséggel:* több-Bérlős alkalmazásokban előfordulhat, hogy hatékonyan szolgálja ki a bérlők számára, amely a világ különböző pontjain lévő kell.
-* *Méretezhetőség:* alkalmazásfejlesztők figyelembe kell vennie, hogyan azok egyeztetése közötti alkalmazás összetettségét elég alacsony szintű karbantartásáért, valamint az alkalmazás méretezése a bérlők számának és a bérlők adatok mérete, tervezése és számítási feladatok.
+* *Bérlő elszigetelése:* Alkalmazás a fejlesztőknek kell a megfelelő intézkedéseket annak érdekében, hogy nem a bérlők számára nem engedélyezett vagy nemkívánatos más bérlők adataihoz való hozzáférés. Túl az adatvédelem szempontjából a bérlő elkülönítési stratégiák szükség a megosztott erőforrások és a védelem a zajos szomszédok hatékony kezelése.
+* *Felhőalapú erőforrások költség:* Mint minden más alkalmazás, a szoftveres megoldások költség versenyképes egy több-bérlős alkalmazás részeként kell maradnia.
+* *A könnyű műveletek:* Egy több-bérlős architektúra fejlesztésével, az alkalmazás-műveletek és összetettségi gyakorolt esetén fontos szempont. Az Azure Search rendelkezik egy [99,9 %-os SLA-t](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Globális lefedettséggel:* Több-bérlős alkalmazások hatékony szolgálja ki a bérlők számára, amely a világ különböző pontjain szükségessé.
+* *Méretezhetőség:* Az alkalmazásfejlesztők kell figyelembe venni, hogyan azok egyeztetése karbantartása elég alacsony szintű alkalmazás összetettségét és az alkalmazás méretezése a bérlők száma és a bérlők adatok méretétől és számítási feladatot tervez között.
 
 Az Azure Search kínál néhány határok bérlők adatait és a számítási feladatok elkülönítése használható.
 
 ## <a name="modeling-multitenancy-with-azure-search"></a>Az Azure Search szolgáltatással a több-bérlős modellezés
 Egy több-bérlős forgatókönyvben az alkalmazás fejlesztőjének egy vagy több keresési szolgáltatást használ fel, és felosztani a bérlőik számára többek között a szolgáltatások, az indexek vagy mindkettőt. Az Azure Search rendelkezik néhány gyakori minták, ha egy több-bérlős forgatókönyvben modellezés:
 
-1. *Index bérlőnként:* minden bérlőnek a saját index belül egy keresési szolgáltatás, amely a többi bérlő van megosztva.
-2. *Bérlőnként szolgáltatás:* minden egyes bérlő rendelkezik a saját dedikált Azure Search szolgáltatást kínál az adatok és a számítási feladatok elkülönítése legmagasabb szintű.
-3. *Mindkét vegyesen:* nagyobb, több aktív bérlők dedikált szolgáltatások vannak hozzárendelve, amíg a kisebb bérlőknek vannak hozzárendelve a megosztott szolgáltatások az egyedi indexek.
+1. *Index bérlőnként:* Minden bérlőnek a saját index belül egy keresési szolgáltatás, amely a többi bérlő van megosztva.
+2. *Bérlőnként szolgáltatás:* Minden bérlő rendelkezik a saját dedikált Azure Search szolgáltatást kínál az adatok és a számítási feladatok elkülönítése legmagasabb szintű.
+3. *Mindkét vegyesen:* Nagyobb, több aktív bérlők dedikált szolgáltatások vannak rendelve, amíg a kisebb bérlőknek vannak hozzárendelve a megosztott szolgáltatások az egyedi indexek.
 
 ## <a name="1-index-per-tenant"></a>1. Bérlőnként indexelése
 ![Az index bérlőnkénti modell egy portrayal](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)

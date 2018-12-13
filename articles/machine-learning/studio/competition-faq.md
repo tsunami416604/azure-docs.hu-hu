@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: c423438e5c8088dba5b9d71e8e50a2e9de1371c6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104961"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268903"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-versenyek – GYIK
 **Mi a Cortana Intelligence-versenyek?**
@@ -70,7 +69,7 @@ A verseny platform jelenleg nem támogatja a csapat részvételét. Minden verse
 
 Versenyek használata ingyenes, hogy részt vesz. , Azonban hozzáférésre van szüksége az Azure Machine Learning-munkaterület való részvételre. Létrehozhat egy ingyenes munkaterületet bankkártya nélkül-egyszerűen naplózás be egy érvényes Microsoft-fiókot, vagy az Office 365-fiókkal. Ha Ön már az Azure-ban vagy a Cortana Intelligence Suite ügyfele, hozzon létre, és a Standard munkaterületen alatt az Azure-előfizetéshez. Ha szeretné vásárolni az Azure-előfizetéssel, folytassa a [az Azure díjszabása](https://azure.microsoft.com/pricing) lapot. Vegye figyelembe, hogy a standard szintű árszabás érvényes lesz, amikor kísérletek létrehozására a Standard munkaterület használatával. További információkért lásd: [Azure Machine Learning díjszabási információinak](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **Mik azok a nyilvános és privát pontszámok?**
 

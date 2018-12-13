@@ -1,7 +1,7 @@
 ---
-title: Létrehozhat és használhat a számítási célokhoz modell betanítása
+title: Számítási céljainak modell betanítása
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan válassza ki, és a gépi tanulási modellek betanításához használja (számítási céljainak) képzési környezet. Az Azure Machine Learning szolgáltatás lehetővé teszi egyszerű kapcsoló képzési környezet. Indítsa el a helyi képzés, és ha horizontális felskálázásra van szüksége, váltson át a felhőalapú számítási célt.
+description: Konfigurálja a machine learning-modell betanítása (számítási céljainak) képzési környezet. Könnyedén válthat képzési környezet. Indítsa el a helyi képzés, és ha horizontális felskálázásra van szüksége, váltson át a felhőalapú számítási célt. Databricks
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,12 +12,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a6533c1ec25eb8500f67cb98494463d7daf752b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c91cc8dabc1fcf4918e64c18e5d5975dc7720c30
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080095"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315995"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -29,9 +29,9 @@ Számítási célokhoz, amely támogatja az Azure Machine Learning három tág k
 
 * __Helyi__: A helyi gépen, vagy egy felhőalapú virtuális Gépen a fejlesztői és kísérleti környezetben használni. 
 
-* __Felügyelt számítási__: az Azure Machine Learning Compute számítási ajánlat, amely az Azure Machine Learning szolgáltatás által kezelt. Lehetővé teszi, hogy egyszerűen hozzon létre egy vagy több node számítási képzés, a tesztelés és a batch következtetési.
+* __Felügyelt számítási__: Az Azure Machine Learning Compute egy számítási kínál, amelynek az Azure Machine Learning szolgáltatás kezeli. Lehetővé teszi, hogy egyszerűen hozzon létre egy vagy több node számítási képzés, a tesztelés és a batch következtetési.
 
-* __Csatolt számítási__: is a saját Azure-felhő számítási használata, és csatlakoztassa azt az Azure Machine Learning. További információ alább támogatott számításicsomópont-típusok és azok használatát.
+* __Csatolt számítási__: Is használata a saját Azure-felhő számítási és csatlakoztassa azt az Azure Machine Learning. További információ alább támogatott számításicsomópont-típusok és azok használatát.
 
 
 ## <a name="supported-compute-targets"></a>Támogatott számítási célnak
@@ -43,7 +43,7 @@ Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezi
 |[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Távoli virtuális Gépen](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
 |[Az Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
@@ -169,8 +169,8 @@ Egy állandó Azure Machine Learning COMPUTE számítási feladatok több felhas
 
 Az Azure Machine Learning Compute állandó erőforrás létrehozása, adja meg a `vm_size` és `max_nodes` paramétereket. Az Azure Machine Learning intelligens alapértelmezett beállítások ezután használja a többi paramétert.  Például a számítási automatikus lefelé nulla csomópontokat, amikor nincs használatban, és dedikált virtuális gépek létrehozásához történő futtatásra van beállítva a feladatok igény szerint. 
 
-* **vm_size**: a hozott létre az Azure Machine Learning COMPUTE számítási csomópontok Virtuálisgép-család.
-* **max_nodes**: az automatikus méretezés, miközben a feladat futtatása az Azure Machine Learning COMPUTE számítási csomópontok maximális.
+* **vm_size**: A hozott létre az Azure Machine Learning COMPUTE számítási csomópontok Virtuálisgép-család.
+* **max_nodes**: Az automatikus méretezés, miközben a feladat futtatása az Azure Machine Learning COMPUTE számítási csomópontok maximális száma.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -198,12 +198,12 @@ Néhány speciális tulajdonságok konfigurálhatja az Azure Machine Learning Co
 
 Mellett `vm_size` és `max_nodes`, használhatja az alábbi tulajdonságokat:
 
-* **min_nodes**: minimális csomópontok (alapértelmezés szerint a 0 csomópontra), miközben a feladat futtatása az Azure Machine Learning Compute linearity.
-* **vm_priority**: "dedikált" (alapértelmezett) és "lowpriority" virtuális gépek között válassza az Azure Machine Learning Compute létrehozásakor. Alacsony prioritású virtuális gépek használata az Azure többletkapacitással, és így olcsóbb, de a Futtatás folyamatban van a felfüggesztett kockázati.
-* **idle_seconds_before_scaledown**: tétlen (alapértelmezett érték 120 másodperc) várakozási idő előtt min_nodes automatikus skálázás futtatási befejezése után.
-* **vnet_resourcegroup_name**: erőforráscsoport, a __meglévő__ virtuális hálózatot. Az Azure Machine Learning Compute a virtuális hálózaton belül jön létre.
-* **vnet_name**: virtuális hálózat neve. A virtuális hálózat az Azure Machine Learning-munkaterület ugyanabban a régióban kell lennie.
-* **subnet_name**: a virtuális hálózatban lévő alhálózat neve. Azure Machine Learning Compute-erőforrások hozzá lesz rendelve IP-cím az alhálózat címtartományából.
+* **min_nodes**: Csomópontok minimális száma (alapértelmezés szerint a 0 csomópontra), miközben a feladat futtatása az Azure Machine Learning Compute linearity való.
+* **vm_priority**: "Dedikált" (alapértelmezett) és "lowpriority" virtuális gépek választhat az Azure Machine Learning Compute létrehozásakor. Alacsony prioritású virtuális gépek használata az Azure többletkapacitással, és így olcsóbb, de a Futtatás folyamatban van a felfüggesztett kockázati.
+* **idle_seconds_before_scaledown**: Az automatikus skálázás min_nodes, mielőtt futtatási befejezése után várjon üresjárati idő (alapértelmezett érték 120 másodperc)
+* **vnet_resourcegroup_name**: Az erőforráscsoport a __meglévő__ virtuális hálózatot. Az Azure Machine Learning Compute a virtuális hálózaton belül jön létre.
+* **vnet_name**: Virtuális hálózat neve. A virtuális hálózat az Azure Machine Learning-munkaterület ugyanabban a régióban kell lennie.
+* **subnet_name**: A virtuális hálózatban lévő alhálózat neve. Azure Machine Learning Compute-erőforrások hozzá lesz rendelve IP-cím az alhálózat címtartományából.
 
 > [!TIP]
 > Egy állandó Azure Machine Learning COMPUTE számítási erőforrás létrehozásakor a tulajdonságait, például a min_nodes vagy a max_nodes frissíthetik is rendelkezik. Egyszerűen hívja a `update()` függvény azt.
@@ -312,8 +312,8 @@ Az Azure Databricks egy Apache Spark-alapú környezetben az Azure-felhőben. Az
 
 Csatlakoztassa az Azure Databricks, egy számítási célnak, az Azure Machine Learning SDK, és adja meg a következő információkat:
 
-* __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
-* __Databricks-munkaterület neve__: az Azure Databricks-munkaterület nevét.
+* __Számítási neve__: A számítási erőforrás hozzárendelni kívánt nevét.
+* __Databricks-munkaterület neve__: Az Azure Databricks-munkaterület neve.
 * __Hozzáférési jogkivonat__: A hozzáférési jogkivonatot az Azure databricks hitelesítéséhez. Hozzáférési jogkivonat létrehozásához, tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentumot.
 
 A következő kód bemutatja, hogyan csatlakoztathat Azure Databricks, egy számítási célnak mutat be:
@@ -357,7 +357,7 @@ Az Azure Data Lake Analytics egy big data-elemzési platform az Azure-felhőben.
 
 Csatlakoztassa a Data Lake Analytics számítási célként, az Azure Machine Learning SDK, és adja meg a következő információkat:
 
-* __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
+* __Számítási neve__: A számítási erőforrás hozzárendelni kívánt nevét.
 * __Erőforráscsoport__: A Data Lake Analytics-fiókot tartalmazó erőforráscsoportot.
 * __Fiók neve__: A Data Lake Analytics-fiók nevét.
 
@@ -571,6 +571,6 @@ Tekintse meg a következő helyeken notebookok:
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Machine Learning SDK-referencia](https://aka.ms/aml-sdk)
-* [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)
+* [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)
 * [Az üzembe helyezés modellek](how-to-deploy-and-where.md)
 * [Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással](concept-ml-pipelines.md)

@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 787d6549eb8413c9dcfc0c906167cc36d4cff6b0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135712"
+ms.locfileid: "53184542"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Javítsa ki a hibákat az erőforrás-szolgáltatói regisztrációt
 
@@ -47,9 +47,9 @@ A következő hibaüzenet jelenik a támogatott helyek és az API-verziók javas
 
 Ezek a hibák három okok egyike jelenhet meg:
 
-1. Az erőforrás-szolgáltató nem lett regisztrálva az előfizetéshez
-1. Az erőforrástípus esetében nem támogatott API-verzió
-1. Az erőforrástípus esetében nem támogatott helye
+* Az erőforrás-szolgáltató nem lett regisztrálva az előfizetéshez
+* Az erőforrástípus esetében nem támogatott API-verzió
+* Az erőforrástípus esetében nem támogatott helye
 
 ## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search jellemzőalapú navigációs megvalósításához |} Microsoft Docs
-description: Adja hozzá Jellemzőalapú navigációs alkalmazásokat, amelyekbe beépül az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, Microsoft Azure-on.
+title: Jellemzőalapú navigáció megvalósítása a category hierarchiához – Azure Search az
+description: Adja hozzá a értékkorlátozó navigációs alkalmazásokhoz, amelyekbe beépül az Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure-ban.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,109 +8,110 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195294"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313938"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
-Jellemzőalapú navigáció, amely az alkalmazások keresése irányuló részletezési navigációs szűrési mechanizmus. A kifejezés "jellemzőalapú navigációs" ismeretlen, de Ön már valószínűleg használta. Ahogy az alábbi példában látható, jellemzőalapú navigációs értéke "Nothing" több mint eredmények szűréséhez kategóriákat.
+Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
 
  ![Az Azure Search feladat portál bemutató][1]
 
-Jellemzőalapú navigáció egy másik belépési pont keresése. Az alternatívája összetett keresési kifejezést kézzel beírja a. Értékkorlátozás segítséget, amit keresünk, biztosítva, hogy nem kapott eredmény. Fejlesztőként értékkorlátozás lehetővé teszik, hogy teszi közzé a leghasznosabb keresési feltételeknek, a keresési corpus navigáláshoz. Online kereskedelmi alkalmazások jellemzőalapú navigációs gyakran-t márkákat, szervezeti egységek (kid tartozó helyébe), méret, ár, időben népszerűvé vált és minősítése. 
+Jellemzőalapú navigáció egy másik belépési pont keresése. Ez egy kényelmes alternatívát nyújt a kézzel beírja az összetett keresési kifejezéseket. Értékkorlátozással segítségével keresse meg azt, amit keres, közben biztosítva, hogy eredmény nem kap. A fejlesztők értékkorlátozással lehetővé teszik elérhetővé a leghasznosabb keresési feltételeknek, a keresési forrásgyűjteményébe navigáláshoz. Online kereskedelmi alkalmazások, a jellemzőalapú navigáció gyakran beépített márkákat, szervezeti egységek (gyerek a cipőeladásai), méret, ár, népszerűsége és minősítések keresztül. 
 
-Végrehajtási jellemzőalapú navigációs eltérő keresési technológiák között. Az Azure Search jellemzőalapú navigációs-t időben, a séma attribútummal mezőket.
+Jellemzőalapú navigáció megvalósítása között a keresési technológiák eltérő. Az Azure Search szolgáltatásban jellemzőalapú navigáció lekérdezéskor a beépített, amely a séma teljesítménykapacitást mezőkkel.
 
--   A lekérdezések, amelyek az alkalmazás létrehozta, egy lekérdezést kell küldenie a *értékkorlátozás lekérdezési paraméterek* lekérése a rendelkezésre álló dimenzió szűrőértékek, hogy a dokumentum eredményhalmaz.
+-   A lekérdezések, amelyek az alkalmazás létrejött, el kell küldenie egy lekérdezést a *értékkorlátozás lekérdezési paraméterek* beolvasni a rendelkezésre álló dimenzió szűrési értékek alapján, hogy a dokumentum eredményhalmaz.
 
--   A dokumentum eredmény ténylegesen trim állítsa be, az alkalmazást is telepíteni kell egy `$filter` kifejezés.
+-   Valójában az azokat a dokumentum eredményt állítsa be, az alkalmazást is telepíteni kell egy `$filter` kifejezés.
 
-Az alkalmazásfejlesztés jelent, amely hoz létre a lekérdezések programozás a munka nagy részét. Az alkalmazás viselkedéseket, amelyek a jellemzőalapú navigáció teheti meg számos beépített támogatása tartományok definiálása és a dimenzió eredmények száma a szolgáltatás által biztosított. A szolgáltatás is tartalmaz, amelyek segítenek ésszerű alapértelmezett kezelése nehézkessé navigációs struktúrák elkerülése érdekében. 
+Az alkalmazások fejlesztéséhez jelent létrehozó alkalmazáskódban lekérdezések írása a munka nagy részét. Számos, az alkalmazás viselkedése, a jellemzőalapú navigáció meg a szolgáltatást, ideértve a beépített támogatást nyújt a tartományok definiálása és a darabszámokat értékkorlátozás eredményeket által biztosított. A szolgáltatás is magában foglalja a észszerű alapértelmezett értékeket, amelyek segítségével nehézkessé navigációs struktúrát elkerülése érdekében. 
 
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
-Ez a cikk feladat keresési portál használ példaként. A példa egy ASP.NET MVC alkalmazás valósul meg.
+Ez a cikk egy feladat keresési portált használja példaként. A példában egy ASP.NET MVC alkalmazás van megvalósítva.
 
--   Tekintse meg, és tesztelje a működő bemutató online, [Azure keresési feladat Portal bemutató](http://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
 
--   Töltse le a kódot a [tárház Azure-minták a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 ## <a name="get-started"></a>Bevezetés
-Ha most ismerkedik fejlesztési kereséséhez, a jellemzőalapú navigáció gondol legkönnyebben irányuló keresési lehetőségeit mutatja. Olyan típusú leásási keresési élményt biztosít, a keresési eredmények keresztül pont, és kattintson a műveletek gyorsan szűkíteni használt előre definiált szűrők alapján. 
+Ha most ismerkedik a keresse development, a jellemzőalapú navigáció gondolja át, hogy a legjobb módszer, hogy látható-e önállóan irányított keresés lehetőségeit. Olyan típusú Lehatolás keresési funkciót, a keresési eredményeket a pont, és kattintson a műveletek segítségével gyorsan szűkítheti használt előre definiált szűrők alapján. 
 
 ### <a name="interaction-model"></a>Interakció modell
 
-A keresési élményt biztosít a jellemzőalapú navigáció iteratív, így érdemes megismerni azt a lekérdezések, amelyek felhasználói műveletek válaszul unfold sorozatot.
+A keresési funkciót, a jellemzőalapú navigáció meghatározási, így érdemes megismerni, lekérdezések, amelyek a felhasználói műveleteknek kibontása sorozataként indítása.
 
-A kiindulási pontja egy alkalmazás-lap, amely általában helyezve kerülete jellemzőalapú navigáció. A faszerkezetben, minden értéknek vagy kattintható jelölőnégyzetekkel jellemzőalapú navigációs gyakran. 
+A kiindulási pont egy jellemzőalapú navigáció, általában a peremétől helyezett biztosító alkalmazások lap. Jellemzőalapú navigáció legtöbbször jelölőnégyzeteket tartalmazó elemlistává változik, minden értéket vagy kattintható szöveg fastruktúrában. 
 
-1. Egy lekérdezést küld az Azure Search a jellemzőalapú navigáció struktúra egy vagy több dimenzió lekérdezési paraméterek segítségével határozza meg. Például a lekérdezés tartalmazhat `facet=Rating`, lehet, hogy az egy `:values` vagy `:sort` tovább pontosíthatja a megjelenítési beállítást.
-2. A bemutató réteg képezi le egy keresése oldal, amely használatával a típushoz a kérésben megadott jellemzőalapú navigáció.
-3. Egy jellemzőalapú navigációs szerkezetben, amely tartalmazza az értékelést kap, akkor kattintson a "4" annak jelzésére, hogy csak egy minősítés 4 vagy újabb termékek megjelenjenek-e. 
-4. A válasz az alkalmazás küld egy lekérdezést, amely tartalmazza `$filter=Rating ge 4` 
-5. A bemutató réteg frissíti a lapot, amely az csökkentett eredménykészletet, csak a megadott elemeket, amelyek megfelelnek az új feltételeket tartalmazó (ebben az esetben a termékek besorolású 4 és legfeljebb).
+1. Egy lekérdezést küld az Azure Search megadja a jellemzőalapú navigációs struktúrát egy vagy több értékkorlátozás lekérdezési paraméterek használatával. A lekérdezés lehetnek például `facet=Rating`, például az egy `:values` vagy `:sort` tovább finomíthatja a bemutató lehetőséget.
+2. A megjelenítési réteggel rendereli a jellemzőalapú navigáció, a kérésben megadott aspektusait használatával biztosító keresési lapot.
+3. Adja meg egy jellemzőalapú navigációs struktúrát, amely tartalmazza a minősítést, akkor kattintson a "4" jelzi, hogy csak egy minősítése 4 vagy újabb termékek jelenjenek meg. 
+4. Válaszként az alkalmazás elküld egy lekérdezést, amely magában foglalja `$filter=Rating ge 4` 
+5. A megjelenítési réteggel frissíti a lapot, amely egy korlátozott eredményhalmaz, csak azok az elemek, amelyek megfelelnek az új feltételek tartalmazó (ebben az esetben a termékek minősített 4 és újabb).
 
-Egy dimenzió egy lekérdezési paraméter, de ne tévessze össze az lekérdezés bevitellel. A lekérdezésben kiválasztási feltételek, soha nem használható. Ehelyett gondolja, hogy a dimenzió lekérdezési paraméterek ismét elérhető lesz a válaszban szereplő szerkezeti bemeneteként. Minden dimenzió lekérdezési paraméter, akkor adja meg, az Azure Search értékeli ki, hány dokumentumok minden értékkorlátozás értéke részleges eredményei nem.
+Egy dimenzió egy lekérdezési paraméter, de ne keverje össze, a lekérdezés bemenete. Kiválasztási feltételek a lekérdezésben, soha nem használható. Tekintsen inkább értékkorlátozás lekérdezési paraméterek a navigációs szerkezet, amely a válaszban bemeneteként. Egyes értékkorlátozás lekérdezési paraméterhez, akkor adja meg az Azure Search értékeli ki, hány dokumentumok vannak az egyes értékkorlátozás értéke a részleges eredményeket.
 
-Figyelje meg a `$filter` a 4. lépésben. A szűrő jellemzőalapú navigációs fontos eleme. Annak ellenére, hogy facets és a szűrők függetlenek az API-ban, mind a kívánt élmény szüksége. 
+Figyelje meg a `$filter` 4. lépésben. A szűrő abban az fontos szempont a jellemzőalapú navigáció. Annak ellenére, hogy értékkorlátozással és szűrők függetlenek az API-ban, mind a kívánt felhasználói élményt nyújthat szüksége. 
 
-### <a name="app-design-pattern"></a>Alkalmazás-kialakítási mintája
+### <a name="app-design-pattern"></a>Alkalmazás-tervezési minta
 
-Az alkalmazás kódjában a minta nem térjen vissza a jellemzőalapú navigációs szerkezetben értékkorlátozás eredményeket, valamint a $filter kifejezés együtt értékkorlátozás lekérdezési paraméterek használatával.  A szűrőkifejezés kezeli az kattintson eseményt értékkorlátozás értéke. Gondoljon a `$filter` kifejezés a tényleges levágási tartozó kódot, a keresési eredmények a bemutató réteghez adja vissza. Egy színek dimenzió megadott, a vörös színt kattintva keresztül történik egy `$filter` kifejezés, amely csak a vörös színt rendelkező elem kijelölése. 
+Az alkalmazás kódjában az egyik értékkorlátozás lekérdezési paraméterek használatával adja vissza a jellemzőalapú navigációs struktúrát értékkorlátozás eredményeket, és a egy $filter kifejezés együtt.  A szűrőkifejezés kezeli a kattintás eseményt, értékkorlátozás értéke. Gondoljon a `$filter` kifejezést a tényleges levágási mögötti kódként a keresési eredmények vissza a megjelenítési réteggel. Adja meg a színek értékkorlátozás, kattintson a szín vörös keresztül valósul egy `$filter` kifejezés, amely kiválasztja a csak azok az elemek, amelyek egy vörös színt. 
 
 ### <a name="query-basics"></a>Lekérdezés alapjai
 
-Az Azure Search, egy kérelem egy vagy több lekérdezési paraméterek keresztül megadott (lásd: [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) minden egyes leírása). A lekérdezés-paraméterek egyike sem kötelező, de kell ahhoz, hogy a lekérdezés érvényes legyen, legalább egy.
+Az Azure Search szolgáltatásban egy kérelem egy vagy több lekérdezési paraméterek keresztül megadott (lásd: [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) mindegyiknél leírása). A lekérdezési paraméterek egyike sem kötelező, de rendelkeznie kell legalább egy ahhoz, hogy egy lekérdezést, hogy érvényesek legyenek.
 
-Pontosság, megértettem, a lehetőség nem számít találatok sorrendekben legalább ezek a kifejezések egyike:
+Pontosság, érthető módon irreleváns találatok szűréséhez lehetővé teszi a gazdafájlon keresztül, egyik vagy mindkét ezek a kifejezések:
 
--   **keresési =**  
-    Ez a paraméter értékének a keresési kifejezés számít. Előfordulhat, hogy egy darab szöveg vagy egy összetett keresési kifejezés, amely tartalmazza a feltételeket és a kezelők. A kiszolgálón a keresési kifejezés használható teljes szöveges keresés az index az egyező kifejezések, eredményt visszaadó sorrend a kereshető mezők lekérdezése. Ha `search` be NULL értékre, lekérdezés végrehajtása során a teljes index van (Ez azt jelenti, hogy `search=*`). Ebben az esetben a lekérdezés egyéb elemek, mint egy `$filter` vagy pontozási profil, a dokumentumok visszaadott érintő elsődleges tényezők `($filter`), hogy milyen sorrendben (`scoringProfile` vagy `$orderby`).
+-   **Keresés =**  
+    Ez a paraméter értékét a keresési kifejezés jelent. Érdemes lehet egy darab szöveg vagy egy összetett keresési kifejezés, amely tartalmazza a feltételeket és a kezelők. A kiszolgálón teljes szöveges keresés, kereshető mezőket a feltételeket, eredményt adnak vissza a sorrend egyeztetéséhez az index lekérdezése a keresési kifejezés használható. Ha `search` , null, a lekérdezés végrehajtása során a teljes indexre van (azaz `search=*`). Ebben az esetben a lekérdezés többi elemének például egy `$filter` vagy relevanciaprofil, mely dokumentumokat visszaadott befolyásoló legfontosabb tényezők `($filter`), és milyen sorrendben (`scoringProfile` vagy `$orderby`).
 
 -   **$filter =**  
-    A szűrő akkor egy rendkívül erős eszköz korlátozza a keresési eredmények között, az adott dokumentum attribútum értékei alapján méretét. A `$filter` először értékeli ki, a értékkorlátozás logika, amely a rendelkezésre álló értékeket, és az értékek megfelelő számát követi
+    Szűrő az adott dokumentum attribútumának alapuló keresési eredményeknek méretét korlátozó egy hatékony mechanizmusa. A `$filter` először értékeli ki, a többnyelvűséget logika, amely létrehozza az elérhető értékek és a megfelelő száma minden egyes érték követ.
 
-Összetett keresési kifejezések csökkentse a lekérdezés teljesítményét. Ahol lehetséges, segítségével jól felépített szűrőkifejezéseket pontosság növeléséhez, és javíthatja a lekérdezések teljesítményét.
+Összetett keresési kifejezések csökkentse a lekérdezés teljesítményét. Ahol lehetséges, használjon jól felépített szűrőkifejezésekben pontosság növeléséhez, és javíthatja a lekérdezések teljesítményét.
 
-Jobb megértése, hogyan szűrőt ad pontosabb, hasonlítsa össze egy összetett keresési kifejezés, amely tartalmazza a szűrőkifejezést:
+Segít jobban megérteni, hogyan ad hozzá a szűrőt a pontosabb, hasonlítsa össze egy összetett keresési kifejezés, amely tartalmaz egy kifejezést:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
 -   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
 
-Mindkét lekérdezések érvényes, de a második pedig jobb, ha a keresett nem motelek a budapesti várakozást.
--   Az első lekérdezés listázzák említett vagy a nem szerepel a karakterlánc típusú, például a nevét, leírását és bármely más kereshető adatokat tartalmazó mező támaszkodik.
--   A második lekérdezés a strukturált adatok pontos egyezés keresi, és várhatóan lényegesen pontosabban.
+Mindkét lekérdezést érvényes, de a második kiváló, ha a keresett nem motelek a budapesti várakozást.
+-   Az első lekérdezés listázzák említett vagy a nem szerepelnek a karakterlánc-mezők, például a nevét, leírását és bármely más mező kereshető adatokat tartalmazó támaszkodik.
+-   A második lekérdezés a strukturált adatok pontos egyezés keres, és valószínűleg sokkal pontos.
 
-Olyan alkalmazások, amelyek tartalmazzák a jellemzőalapú navigáció győződjön meg arról, hogy minden egyes felhasználói művelet egy jellemzőalapú navigációs szerkezetben keresztül csatolni a keresési eredmények szűkítését. Eredmények szűkítéséhez használja egy kifejezést.
+Olyan alkalmazások, amelyek tartalmazzák a jellemzőalapú navigáció győződjön meg arról, hogy minden egyes felhasználói művelet felett egy jellemzőalapú navigációs struktúrát csatolni a keresési eredmények szűkítheti. Eredmények szűkítéséhez használjon egy kifejezést.
 
 <a name="howtobuildit"></a>
 
-## <a name="build-a-faceted-navigation-app"></a>Hozza létre a jellemzőalapú navigáció alkalmazását
-Az Azure Search jellemzőalapú navigációs az alkalmazás kódjában, a keresési kérelem épülő valósítja meg. A jellemzőalapú navigáció a sémában, amely a korábban meghatározott elemek támaszkodik.
+## <a name="build-a-faceted-navigation-app"></a>Jellemzőalapú navigáció alkalmazás készítése
+Jellemzőalapú navigáció az Azure Search szolgáltatással az alkalmazás kódjában, amely összeállítja a keresési kérelem valósíthatja meg. A jellemzőalapú navigáció a sémában, amely a korábban meghatározott elemek támaszkodik.
 
-Az előre megadott a keresésben a indexe a `Facetable [true|false]` index attribútum, állítsa be a kijelölt mezőket engedélyezheti vagy tilthatja le a használatukat jellemzőalapú navigációs szerkezetben. Nélkül `"Facetable" = true`, egy mező nem lehet felhasználni dimenzió navigációs.
+Az előre meghatározott a keresési index van a `Facetable [true|false]` index attribútumkészlet, engedélyezni vagy letiltani a használatukat jellemzőalapú navigációs szerkezetben kiválasztott mező alapján. Nélkül `"Facetable" = true`, értékkorlátozó navigációs egy mező nem használható.
 
-A bemutató réteg a kódban a felhasználói élményt nyújt. Az szerepelnie kell a jellemzőalapú navigáció, például a címke értékek, jelölőnégyzeteket vagy a szám a része. Az Azure Search REST API platform független, ezért bármilyen nyelvet és a kívánt platform. Fontos, hogy tartalmazza a felhasználói felületi elemei, amelyek támogatják a növekményes frissítést, a frissített felhasználói felület állapota, minden további értékkorlátozás ki van. 
+A megjelenítési réteggel, a kódban a felhasználói élményt nyújt. Szerepelnie kell, a jellemzőalapú navigáció, például a címke, értékeket, jelölőnégyzetet és a szám a része. Az Azure Search REST API platform-agnosztikus, ezért bármilyen nyelv és platform. A lényeg az, hogy tartalmazza a felhasználói felületi elemeket, amelyek támogatják a növekményes frissítést, a frissített felhasználói felület állapota minden további tényező van kiválasztva. 
 
-A lekérdezés idejét, az alkalmazás kódjában kérést hoz létre, amely tartalmazza az `facet=[string]`, egy kérelem paraméter, amely a dimenzió által mező. Lekérdezés például rendelkezhet több facets `&facet=color&facet=category&facet=rating`, egymástól által az ampersand (&) karaktert.
+Lekérdezéskor, az alkalmazás kódjában, amely tartalmazza az kérést hoz létre `facet=[string]`, egy kérelem paraméter, amely a mező szerint értékkorlátozás biztosít. A lekérdezés több metszettel, például rendelkezhet `&facet=color&facet=category&facet=rating`, mindegyik az ampersand (&) karakterrel elválasztva.
 
-Alkalmazás kódja is kell létrehozni egy `$filter` kifejezés kezelni a jellemzőalapú navigációs eseményeit. A `$filter` csökkenti a keresési eredmények között, a dimenzióértéknél használja, mint szűrési feltételeket.
+Alkalmazáskód is kell összeállítani egy `$filter` kifejezés, a jellemzőalapú navigáció kattintás események. A `$filter` csökkenti a keresési eredmények között, az értékkorlátozás értéke használatával szűrési feltételeket.
 
-Az Azure Search adja vissza a keresési eredmények között, egy vagy több ad meg, és a jellemzőalapú navigációs szerkezetben frissítések feltételek alapján. Az Azure Search jellemzőalapú navigációs egy egyszintű konstrukció értékkorlátozás értékekkel, és megjeleníti, hogy hány eredmények találhatók minden egyes.
+Az Azure Search a keresési eredmények között, egy vagy több olyan feltételek, amelyek ad meg, és a jellemzőalapú navigációs szerkezetben frissítések alapján ad vissza. Az Azure Search szolgáltatásban jellemzőalapú navigáció egy egyszintű konstrukció értékkorlátozás értékekkel, és hány eredmények találhatók minden egyes száma.
 
-A következő szakaszokban azt hogyan hozhat létre minden egyes részben közelebbről is igénybe vehet.
+A következő szakaszokban azt, hogyan hozhat létre az egyes részek közelebbről is.
 
 <a name="buildindex"></a>
 
 ## <a name="build-the-index"></a>Az index létrehozása
-Értékkorlátozás engedélyezve van az indexben, az index attribútum keresztül mező által alapon: `"Facetable": true`.  
-Minden mező típusok, amelyeket esetleg használhatnak jellemzőalapú navigációs `Facetable` alapértelmezés szerint. Az ilyen típusú tartalmaznak `Edm.String`, `Edm.DateTimeOffset`, és a számmező típusok (alapvetően a minden mező típusok a következők kivételével kategorizálható `Edm.GeographyPoint`, jellemzőalapú navigációs nem használható). 
+Jellemzőalapú engedélyezve van az indexben, az index attribútum keresztül mező szerint történik: `"Facetable": true`.  
+Minden mező típusok valószínűleg használható jellemzőalapú navigációs `Facetable` alapértelmezés szerint. Az ilyen mező típusok a következők `Edm.String`, `Edm.DateTimeOffset`, és minden mező numerikus típus (alapvetően a minden mező típusok a következők kivételével kategorizálható `Edm.GeographyPoint`, a jellemzőalapú navigáció nem használható). 
 
-Az index létrehozásakor a jellemzőalapú navigáció ajánlott explicit módon kikapcsolása értékkorlátozás mezőben, amely soha nem használható mint egy dimenzió.  Különösen a singleton értékek, például az azonosító vagy a termék nevét, a karakterlánc típusú meg `"Facetable": false` jellemzőalapú navigációs véletlen (és hatástalan) használatuk megelőzése érdekében. Értékkorlátozás nem kell ki bekapcsolása segít, hogy maradjon kicsi a index méretét, és általában javítja a teljesítményt.
+Egy index létrehozását, a jellemzőalapú navigáció az ajánlott eljárás az explicit módon kikapcsolása jellemzőkezelés értékkorlátozásként soha nem használt mezők.  Különösen a singleton értékek, például egy azonosító vagy a termék nevét, a karakterlánc típusú meg `"Facetable": false` jellemzőalapú navigációs véletlen (és hatástalan) használati elkerülése érdekében. Kapcsolja ki, ha nincs szüksége arra jellemzőkezelés teszi lehetővé, az index mérete kisebb, és általában javítja a teljesítményt.
 
-Az alábbiakban olvashat a feladat Portal bemutató mintát alkalmazás esetén a rövidített méretének csökkentése érdekében egyes attribútumok séma részeként:
+Következő része a feladat portál bemutató mintaalkalmazást, vágott egyes attribútumok méretének csökkentése érdekében a sémában:
 
 ```json
 {
@@ -138,37 +139,37 @@ Az alábbiakban olvashat a feladat Portal bemutató mintát alkalmazás esetén 
 }
 ```
 
-Ahogy látja, a minta sémában `Facetable` , értékkorlátozás, például az azonosító értékek nem használható a karakterlánc típusú ki van kapcsolva. Értékkorlátozás nem kell ki bekapcsolása segít, hogy maradjon kicsi a index méretét, és általában javítja a teljesítményt.
+Amint láthatja, hogy a minta sémában `Facetable` ki van kapcsolva, amely nem használható metszettel, például a Azonosítóinak értékeit tartalmazó karakterláncot tartalmazó mezők esetében. Kapcsolja ki, ha nincs szüksége arra jellemzőkezelés teszi lehetővé, az index mérete kisebb, és általában javítja a teljesítményt.
 
 > [!TIP]
-> Ajánlott eljárásként minden mező attribútum teljes készletét tartalmazza. Bár a `Facetable` alapértelmezés szerint be szinte minden mező szándékosan beállítása minden attribútum segítségével gondolja, hogy minden egyes séma döntési következményeit keresztül. 
+> Ajánlott eljárásként például az egyes mezőkhöz tartozó indexattribútumokat teljes készletét. Bár a `Facetable` alapértelmezés szerint be szinte minden mezők beállítása szándékosan minden attribútum segítségével úgy gondolja, hogy minden egyes séma döntési következményei keresztül. 
 
 <a name="checkdata"></a>
 
-## <a name="check-the-data"></a>Az adatok ellenőrzése
-Az adatok minőségének közvetlen hatással van a hogy a jellemzőalapú navigációs szerkezetben megvalósul a várt módon. Hatással van a könnyű úgy, hogy csökkentse az eredményhalmaz hozhat létre.
+## <a name="check-the-data"></a>Ellenőrizze az adatokat
+Az adatok minőségét e megvalósul a jellemzőalapú navigációs struktúrát, a várt módon közvetlen hatással van. Is hozhat létre szűrőket, hogy csökkentse az eredményhalmaz könnyű hatással van.
 
-Ha szeretné a márka vagy árlista dimenzió, egyes dokumentumok tartalmaznia kell értékeinek *márkanév* és *ProductPrice* , amelyek érvényes, egységes, és a termelékenység szűrő beállításként.
+Értékkorlátozás márkájáról vagy ár szerint szeretné, ha minden egyes dokumentum tartalmaznia kell-e értékeit *BrandName* és *ProductPrice* , amelyek érvényes, egységes és a egy szűrőlehetőség érhető el hatékonyan dolgozhat.
 
-Az alábbiakban néhány emlékeztetők, mit a megtisztítás:
+Az alábbiakban néhány emlékeztetőket, hogy el kell távolítani a Mi:
 
-* Minden mező által értékkorlátozás kívánt tegye fel magának hogy tartalmaz-e a irányuló keresési szűrőként megfelelő értékeket. Az értékeket rövid leíró és eléggé jellegzetes versengő lehetőségek közötti választási lehetőséget biztosítani kell lennie.
-* Talál helyesírási hibát vagy majdnem egyező értékek. Ha a színt és a mezőértékek értékkorlátozás közé tartozik a narancssárga és Ornage (helyesírási), egy dimenzió szín mező alapján lenne érvényesítéséhez mindkét.
-* Vegyes eset szöveget is képes teszi pusztítást jellemzőalapú navigációs narancssárga és narancssárga két különböző értékként jelenik meg. 
-* Egyetlen és többes számú verziók ugyanazt az értéket az egyes egy külön dimenzió eredményezhet.
+* Minden mező szerint értékkorlátozás kívánt tegye fel magának e önállóan irányított keresés szűrőként megfelelő értékeket tartalmaz. Az értékek rövid leíró és eléggé jellegzetes versengő beállításai között választási lehetőséget kínáló kell lennie.
+* Elírások vagy szinte egyező értékek. Ha a dimenzió a színt és a mezők értékeit tartalmazza, Orange és Ornage (helyesírási), egy dimenzió szín mező alapján szeretne csomópontmetrikák is.
+* Vegyes megkülönbözteti a kis szöveges is is teszi károkat, a jellemzőalapú navigáció, az orange és az Orange két különböző értékként jelennek meg. 
+* Egyetlen és többes számú verzióit ugyanazt az értéket az egyes egy külön dimenzió eredményezhet.
 
-Módon is tekinthető, az adatok előkészítése az gondossággal hatékony jellemzőalapú navigációs lényeges eleme.
+Belegondolunk, az adatok legkörültekintőbben hatékony jellemzőalapú navigáció alapvető aspektusaihoz.
 
 <a name="presentationlayer"></a>
 
 ## <a name="build-the-ui"></a>A felhasználói felület létrehozása
-Vissza a bemutató rétegből működő segítséget nyújt a követelményeket, ellenkező esetben előfordulhat, hogy hiányzik, és megismerje milyen lehetőségek állnak a keresési élményt biztosít alapvető fontosságú fedik le.
+Vissza a megjelenítési réteggel való munka segíthet milyen lehetőségek állnak a keresési funkció alapvető fontosságú, ellenkező esetben előfordulhat, hogy kimarad, és tudomásul követelmények elemzése révén.
 
-Jellemzőalapú navigációs tekintetében a webhely vagy alkalmazás lap megjeleníti a jellemzőalapú navigációs szerkezetben, észleli a lap felhasználói bevitelt és a módosított elemek beszúrása. 
+Tekintetében jellemzőalapú navigáció, a webhely vagy alkalmazás oldal megjeleníti a jellemzőalapú navigációs szerkezetben, észleli a felhasználói bevitel az oldalon és a szúr be a módosított elemeket. 
 
-Webes alkalmazásokhoz az AJAX gyakran használják a bemutató rétegben mivel lehetővé teszi a növekményes változásokat frissítéséhez. ASP.NET MVC vagy bármely más képi megjelenítés platform, amely HTTP-kapcsolaton keresztül képes csatlakozni az Azure Search szolgáltatást is használhatja. Ebben a cikkben – hivatkozott mintaalkalmazást a **Azure keresési feladat Portal bemutató** – történik, az ASP.NET MVC alkalmazások kell.
+Webalkalmazások esetén AJAX gyakran használják a megjelenítési réteggel, mivel lehetővé teszi, hogy frissítse a növekményes változásokat. ASP.NET MVC- vagy bármely más vizualizációt platform, amely HTTP-n keresztül kapcsolódhat az Azure Search szolgáltatást is használhatja. A hivatkozott ebben a cikkben – mintaalkalmazás a **Azure Search feladat portál bemutató** – történetesen az ASP.NET MVC alkalmazásnak.
 
-A minta jellemzőalapú navigációs beépített a keresési eredmények oldalát. A következő példában venni a `index.cshtml` fájl a mintaalkalmazásnak jeleníti meg a statikus HTML-szerkezet jellemzőalapú navigációs megjelenítése a keresési eredmények. Értékkorlátozás listájának beépített vagy az újonnan létrehozott dinamikusan küldje el a kívánt keresőkifejezést, vagy válassza ki vagy egy dimenzió törölje.
+A mintában a jellemzőalapú navigáció a keresési eredmények oldalának be van építve. A következő példában a származik a `index.cshtml` fájlt annak a mintaalkalmazásnak, a jellemzőalapú navigáció megjelenítése a Search mutat be a statikus HTML-szerkezet eredményeit tartalmazó lap. Értékkorlátozással listájának beépített vagy az újonnan létrehozott dinamikusan elküldése egy keresési kifejezést, vagy válassza ki vagy egy dimenzió törlése.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -195,7 +196,7 @@ A minta jellemzőalapú navigációs beépített a keresési eredmények oldalá
 </div>
 ```
 
-A következő kódrészletet a a `index.cshtml` lap dinamikusan összeállít az első értékkorlátozás, üzleti cím megjelenítése a HTML. Hasonló funkciókat dinamikusan létrehozni a HTML-KÓDBAN, a másik típushoz. Minden dimenzió rendelkezik egy címke és számát, amely dimenzió eredményező talált elemek számát jeleníti meg.
+A következő kódrészletet a a `index.cshtml` lap dinamikusan összeállít első aspektus, üzleti cím megjelenítéséhez a HTML-kódot. Hasonló funkciókat dinamikusan hozhat létre a HTML-egyéb aspektusait. Minden egyes értékkorlátozás rendelkezik, egy címke és a egy számláló, amely megjeleníti a dimenzió eredmény található elemek száma.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -209,16 +210,16 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> Amikor a keresési eredmények oldalát, akkor ne felejtse el hozzáadni egy olyan mechanizmus clearing értékkorlátozás. Ha jelölőnégyzeteket, hogyan kell a szűrő törlése könnyen láthatja. Más elrendezés esetén szükség lehet egy webhely-navigációs mintát vagy egy másik kreatív megközelítés. Például a feladat keresési portál mintaalkalmazást, válassza a `[X]` után törölje a dimenzió egy kijelölt dimenzió.
+> Amikor a keresési eredmények oldalát, ne felejtse el hozzáadni egy mechanizmust, az aspektusokat. Ha hozzá jelölőnégyzetéből, könnyedén megtudhatja hogyan a szűrő törlése. Más elrendezések szükség lehet egy webhely-navigációs minta vagy más kreatív funkciót. Ha például a feladat portál mintaalkalmazás kattintva a `[X]` után törölje a dimenzió egy kijelölt dimenzió.
 
 <a name="buildquery"></a>
 
 ## <a name="build-the-query"></a>A lekérdezés
-Készítéséhez lekérdezéseket írhat kódot adjon meg érvényes lekérdezést, beleértve a keresési kifejezéseket, értékkorlátozás, szűrők, pontozási profilok – semmit állítson össze egy kérelem használt minden részén. Ez a szakasz azt megismerkedhet ahol értékkorlátozás felelnek meg a lekérdezés, és hogyan szűrők megnyilvánulása biztosításához használt csökkentett eredménykészletet.
+A lekérdezések létrehozásához írt kóddal meg kell adnia egy érvényes lekérdezést, beleértve a keresési kifejezéseket, értékkorlátozással, szűrőket, pontozási profilok – semmi állítson össze egy kérelmet használt minden része. Ebben a szakaszban tárgyaljuk, ahol értékkorlátozással illik-e egy lekérdezést, és a szűrők használata az aspektusokat, hogy egy kisebb eredményhalmaz.
 
-Figyelje meg, hogy a mintaalkalmazást a részét képezik-e értékkorlátozást. A keresési élményt a feladat Portal bemutató jellemzőalapú navigáció és a szűrők ellátására van kialakítva. Az oldalon jellemzőalapú navigációs jól láthatóan elhelyezett elhelyezését az fontos mutatja be. 
+Figyelje meg, hogy ez a mintaalkalmazás a részét képezik-e metszettel. A keresési funkciót, a feladat portál bemutató a jellemzőalapú navigáció és a szűrők tervezték. Jellemzőalapú navigáció az oldalon neves elhelyezését az fontos mutatja be. 
 
-Példa: gyakran remek megkezdéséhez. A következő példában venni a `JobsSearch.cs` fájl, a kérelmeket, amelyek hoz létre a dimenzió navigációs alapján üzleti cím, a helyet, a könyvelési típusa és a minimális fizetés buildek. 
+Ilyen például, gyakran egy nagyszerű hely megkezdéséhez. A következő példában a származik a `JobsSearch.cs` fájlt, egy kérelmet, amely létrehozza az értékkorlátozó navigációs üzleti címét, a hely, a könyvelési típusa és a minimális bér alapján buildek. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -229,11 +230,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Egy dimenzió lekérdezési paraméter értéke egy mező, és attól függően, írja be az adatokat, is lehet további paraméterezni vesszővel tagolt listája, amely tartalmazza az `count:<integer>`, `sort:<>`, `interval:<integer>`, és `values:<list>`. Értékek listáját támogatott numerikus tartományok beállítása során. Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a használat részleteiről.
+Egy dimenzió lekérdezési paraméter értéke egy mezőt, és attól függően, írja be az adatokat, további rendelkeznek által vesszővel tagolt listája, amely tartalmazza az `count:<integer>`, `sort:<>`, `interval:<integer>`, és `values:<list>`. Értékek listáját támogatott numerikus adatokat tartományok beállítása során. Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) használattal kapcsolatos részleteket.
 
-Értékkorlátozás, valamint a kérelem, az alkalmazás által megfogalmazott is összeállítsa-e úgy, hogy leszűkítheti jelölt dokumentumok értékkorlátozás értéke a kijelölés alapján. Egy kerékpárt Store jellemzőalapú navigációs biztosít keresik kérdésekre, például *érhetők el a milyen színek, gyártók és kerékpárt típusú?*. Szűrés kérdésekre ad választ például *hegyi kerékpárt, mely pontos kerékpárt piros, tartomány ár ezen?*. Kattintson a "Red" annak jelzésére, hogy megjelenjenek-e csak piros termékek, tartalmaz-e az alkalmazás a következő lekérdezés `$filter=Color eq ‘Red’`.
+Metszettel, valamint a kérést, az alkalmazás által megfogalmazott is kialakítson szűrők értékkorlátozás értéke a kijelölés alapján jelölt dokumentumok köre szűkítéséhez. Kerékpár áruházbeli, a jellemzőalapú navigáció biztosít a keresőmotorok kérdésekre, például *érhetők el a milyen színeket, gyártók és kerékpár típusú?*. Például a szűrés kérdésekre *mountain Bike-OK, mely pontos kerékpárok piros, tartomány díjszabása a jelen?*. Ha jelzi, hogy csak a piros termékek jelenjenek meg a "Red" gombra kattint, a következő lekérdezés az alkalmazás elküld tartalmaz `$filter=Color eq ‘Red’`.
 
-A következő kódrészletet a a `JobsSearch.cs` lap ad a szűrőt a kiválasztott üzleti címe, ha értéket választja ki az üzleti cím értékkorlátozás.
+A következő kódrészletet a a `JobsSearch.cs` lap a szűrőt a kiválasztott üzleti cím ad hozzá, ha kiválaszt egy értéket, az üzleti cím értékkorlátozás.
 
 ```cs
 if (businessTitleFacet != "")
@@ -245,162 +246,162 @@ if (businessTitleFacet != "")
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 
 ### <a name="indexing-tips"></a>Az indexelő tippek
-**Növelje a index hatékonyságát, ha nem adja meg a keresési mezőbe**
+**Index hatékonyság növelése, ha nem használja a keresőmezőt**
 
-Ha az alkalmazás jellemzőalapú navigációs kizárólag (Ez azt jelenti, hogy nincs keresőmezőbe) jelölheti meg a mező `searchable=false`, `facetable=true` tömörebb index létrehozásához. Ezenkívül indexelő akkor következik be, csak a teljes dimenzióértéknek nem szóhatárolással vagy az indexelő összetevő részből álló több word értéket.
+Ha az alkalmazás jellemzőalapú navigáció kizárólag (azaz nincs keresőmezőbe), a mező szerint jelölheti meg `searchable=false`, `facetable=true` egy összefogottabb index létrehozásához. Emellett az indexelés akkor fordul elő, csak a teljes értékkorlátozás értékek, nincs szóhatárolással vagy Többszavas értéket összetevő részei az indexelés.
 
-**Adja meg, melyik mezőkre értékkorlátozás használható**
+**Adja meg, melyik mezők értékkorlátozással is használható**
 
-Az index a séma határozza meg, hogy mely mezők érhetők el kívánja használni, mint egy dimenzió visszaírási. Feltéve, hogy egy mező kategorizálható, a lekérdezés határoz meg, amely mező a dimenzió által. A mező, amellyel értékkorlátozás program jeleníti meg a címke alatt jelennek meg. 
+Ne felejtse el, hogy a séma az index határozza meg, melyik mezők érhetők el egy dimenzió adatokként. Feltéve, hogy az adott mező kitöltése kategorizálható, a lekérdezés határoz meg, amely mező a dimenzió által. A mező, amely jellemzőkezelés biztosít az értékeket, amelyeket a felirat alatt jelennek meg. 
 
-Az értékek, amelyek az egyes címkék jelennek meg az index lekért. Például, ha a dimenzió mező *szín*, a rendelkezésre álló további szűréséhez értékek mező - értékek piros, fekete és így tovább.
+Az értékek, amelyek minden címke alatt jelennek meg az index lekért. Például, ha a dimenzió mező *szín*, a további szűréshez elérhető értékek az értékeket az adott mező – piros, fekete és így tovább.
 
-A numerikus és DateTime típusú értékek csak, explicit módon megadhatja értékeket a dimenzió mező (például `facet=Rating,values:1|2|3|4|5`). Mező típusaival egyszerűbbé teheti a dimenzió eredmények való összefüggő tartományok (vagy numerikus értékek vagy időszakoknak alapján tartományok) az engedélyezett értékek listáját. 
+A numerikus és dátum/idő értékek csak explicit módon megadhatja azt értékeket a dimenzió mező (például `facet=Rating,values:1|2|3|4|5`). Ezek mezőtípusok egyszerűsítése érdekében az összefüggő tartomány (vagy számértékeket vagy időszakoknak-alapú tartományok) értékkorlátozás eredményeket elválasztása engedélyezett értékek listáját. 
 
-**Alapértelmezés szerint csak akkor jellemzőalapú navigációs egy szintjének összecsukása** 
+**Alapértelmezés szerint akkor legfeljebb egyetlen szinten jellemzőalapú navigáció** 
 
-Amint, nincs beágyazási értékkorlátozás a hierarchiában nincs közvetlen támogatása. Alapértelmezés szerint az Azure Search jellemzőalapú navigációs csak egy szintjének összecsukása szűrők támogatja. Azonban lehetséges megoldások léteznek. A dimenzió hierarchikus struktúra is kódol egy `Collection(Edm.String)` egy belépési pont száma hierarchiánként. A megoldás nem ez a cikk a terjed. 
+Feljegyzett, nincs beágyazása értékkorlátozással a hierarchiában nincs közvetlen támogatásához. Alapértelmezés szerint a jellemzőalapú navigáció az Azure Search csak egy szinttel, a szűrők támogatja. Azonban lehetséges megoldások léteznek. Egy dimenzió hierarchikus struktúra a kódolhatja egy `Collection(Edm.String)` egy belépési pont száma hierarchiánként. Ez a megoldás megvalósításához van ez a cikk nem foglalkozik. 
 
-### <a name="querying-tips"></a>Tippek lekérdezése
-**Ellenőrizze a mezőket**
+### <a name="querying-tips"></a>Lekérdezési tippek
+**Mező érvényesítése**
 
-Ha értékkorlátozás nem megbízható felhasználói bevitel alapján dinamikusan listája, ellenőrizze, hogy érvényesek-e a jellemzőalapú mezők nevét. Vagy a nevek escape-URL-címek használatával vagy fejlesztéskor `Uri.EscapeDataString()` .NET, vagy az ezzel egyenértékű jogosultságokkal a kiválasztott platformon.
+Készít a nem megbízható felhasználói bemenet alapján dinamikusan értékkorlátozással listáját, ellenőrizze, hogy érvényesek-e a jellemzőalapú mezők nevét. Vagy, a nevek escape-URL-címek egyikével készítésekor `Uri.EscapeDataString()` a .NET vagy a választott platformnak megfelelő.
 
 ### <a name="filtering-tips"></a>Szűrési tippek
-**Keresési pontosság növeléséhez szűrőkkel**
+**Keresés pontosság növeléséhez szűrőkkel**
 
-Szűrők használata. Ha csak keresési kifejezés önmagában, amelynek támadó egy dokumentumot, amely nem rendelkezik a pontos értékkorlátozás értéke a mezők valamelyikében kell állítani.
+Szűrők használata. Ha csak keresési kifejezés önmagában, a dokumentum, amely nem rendelkezik a pontos értékkorlátozás értéke a bármelyik mezőjét adja vissza, amely szerint okozhat támaszkodnak.
 
-**A szűrők keresési teljesítményének javítása**
+**Keresés a teljesítmény növelése szűrőkkel**
 
-Szűrők jelölt dokumentumok Search leszűkítheti, és kizárja őket rangsorolási. Ha nagy számú dokumentumok, egy szelektív dimenzió leásási gyakran használata lehetővé teszi az jobb teljesítmény érdekében.
+Szűrők leszűkítheti jelölt dokumentumok kereséshez, és ennek a területnek zárja ki őket. Ha nagy számú dokumentumok, gyakran használatával egy szelektív dimenzió Lehatolás jobb teljesítményt biztosítja.
   
 **Csak a jellemzőalapú mezők szűrése**
 
-Jellemzőalapú leásási általában érdemes csak a dokumentumok az értékkorlátozás értéke egy adott (jellemzőalapú) mező nem bárhol közötti összes kereshető mezőt tartalmaz. A célmező hozzáad egy szűrőt megerősíti úgy irányítja a szolgáltatást, hogy csak a megfelelő érték a jellemzőalapú mezőben keressen.
+Jellemzőalapú Lehatolás, általában szeretné csak a dokumentumokon, amelyek az értékkorlátozás értéke a megadott (jellemzőalapú) mezőben, bárhol nem között az összes kereshető mezőket tartalmazzák. A szolgáltatást, hogy csak a megfelelő érték a jellemzőalapú mezőben keressen megkérnek egy szűrő hozzáadása biztonságérzetet ad a cél mezőben.
 
-**Trim értékkorlátozás eredmények további szűrőkkel**
+**Trim értékkorlátozás eredményeket további szűrőkkel**
 
-Értékkorlátozás eredményei dokumentumok, a keresési eredmények, amelyek megfelelnek egy dimenzió-kifejezés szerepel. A következő példában a keresési eredmények *a felhőalapú informatika*, 254 elemek is *belső előírás* tartalom típusként. Elemek már nem szükségszerűen kölcsönösen kizárják egymást. Ha egy cikk mindkét szűrők feltételeknek, a minden egyes számít. A lemezmásolási kell lehetséges, ha a értékkorlátozás `Collection(Edm.String)` mezők, amelyek gyakran használják a dokumentum címkézése végrehajtásához.
+Értékkorlátozás eredményeket a keresési eredmények között, amelyek megfelelnek egy értékkorlátozó kifejezés található dokumentumok is. A következő példában a keresési eredmények *felhő-számítástechnika*, 254 elemeket is, hogy *belső előírás* tartalom típusként. Elemek, amelyek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel a feltételeknek a mindkét szűrők, az egyes akkor számít. A duplikáció kötelező lehetséges, ha a többnyelvűséget `Collection(Edm.String)` mezők, amelyek gyakran használják a dokumentum címkézése megvalósításához.
 
         Search term: "cloud computing"
         Content type
            Internal specification (254)
            Video (10) 
 
-Általánosságban elmondható Ha talál meg, hogy a dimenzió eredmények következetesen túl nagyok, azt javasoljuk, hogy hozzáadhat további szűrők lehetőséget nyújt a felhasználóknak a keresés szűkítését több lehetősége.
+Általánosságban elmondható Ha úgy találja, hogy értékkorlátozás eredményeket következetesen túl nagy, azt javasoljuk, hogy hozzáadhat további szűrők megadásával szűkítheti a keresést a további lehetőségeket biztosít a felhasználóknak.
 
-### <a name="tips-about-result-count"></a>Eredményszám kapcsolatos tippek
+### <a name="tips-about-result-count"></a>Eredményszámot kapcsolatos tippek
 
-**A dimenzió navigációs tételszámának korlátozása**
+**Az értékkorlátozó navigációs elemek számának korlátozása**
 
-Minden jellemzőalapú navigációs fában mezőhöz nincs alapértelmezett maximális száma 10 értékből. Ez az alapértelmezett szabálykészletében navigációs struktúrákhoz mert kezelhető méretre tartja az értékek listája. Az alapértelmezett érték felülírható rendelhet a count érték.
+A navigációs fa jellemzőalapú mezők 10 értékből álló alapértelmezett korlátozva van. Ez az alapértelmezett értelme navigációs struktúrákhoz, mert az értékek listája a kezelhető mérettel szinkronban tartja. A megszámlálandó értékeket rendelne a felülírhatja az alapértelmezett.
 
-* `&facet=city,count:5` Meghatározza, hogy csak az első öt városokat szerint rangsorolunk eredmények tetején található dimenzió emiatt kerüljenek vissza. Fontolja meg a kívánt keresőkifejezést "repülőtéri" és a 32 megegyezik a mintalekérdezést. Ha a lekérdezés `&facet=city,count:5`, csak az első öt egyedi város dokumentumokkal a legtöbb a a találatok között szerepelnek a dimenzió eredmények.
+* `&facet=city,count:5` Itt adhatja meg, hogy csak az első öt városok eredmények rangsorolt felső értékkorlátozás eredményeként visszaadott. Fontolja meg a keresési kifejezés "repülőtér" és a 32 egyezések mintalekérdezés. Ha a lekérdezés határoz meg `&facet=city,count:5`, csak az első öt egyedi városok a legtöbb dokumentumot a keresési eredmények között szerepelnek a értékkorlátozás eredményeket.
 
-Figyelje meg értékkorlátozás eredmények és a keresési eredmények közötti különbségtételt. A program, amelyek megfelelnek a lekérdezés összes dokumentumot. Értékkorlátozás eredményei az egyes értékkorlátozás értéke megfelelő találat. A példában a találatok között szerepelnek a városnév, amelyek nem szerepelnek a dimenzió problémabesorolások listája (ebben a példában 5). Keresztül válnak láthatóvá értékkorlátozás törölje, vagy válassza a város mellett egyéb facets jellemzőalapú navigációs kiszűrt eredményeket. 
+Figyelje meg értékkorlátozás eredményeket és a keresési eredmények közötti különbséget. Keresési eredmények megfelelnek a lekérdezésnek megfelelő összes dokumentumot. Értékkorlátozás eredményeket az egyes értékkorlátozás értéke találat. A példában a keresési eredmények tartalmazzák a városok nevei, amelyek nem szerepelnek a értékkorlátozás a problémabesorolások listája (a példánkban 5). Jellemzőalapú navigáció keresztül kiszűrt eredményeket értékkorlátozással törölje, vagy válasszon más aspektusokat mellett az városa láthatóvá válhat. 
 
 > [!NOTE]
-> Témák megvitatásához `count` Ha egynél több típus zavaró lehet. Az alábbi táblázat röviden összefoglalva a hogyan kifejezés Azure Search API, a mintakódot, és a dokumentációja nyújt. 
+> Témák megvitatásához `count` esetén több zavaró lehet. Az alábbi táblázat röviden összefoglalva a hogyan kifejezés az Azure Search API, mintakódokat és dokumentáció kínál. 
 
 * `@colorFacet.count`<br/>
-  A bemutató kódban megjelenik egy count paraméter a dimenzió értékkorlátozás eredmények számának megjelenítésére használatos. Értékkorlátozás eredmények száma a dimenzió kifejezés vagy a tartomány megfelelő dokumentumok számát jelzi.
+  Bemutató kódban látnia kell egy count paraméter a omezující podmínka eredmények számát jeleníti meg. Az értékkorlátozás eredményeket száma, amelyek megfelelnek a dimenzió kifejezés vagy a tartomány a dokumentumok számát jelzi.
 * `&facet=City,count:12`<br/>
-  A dimenzió lekérdezésben száma értéket állíthat be.  Az alapértelmezett érték 10, de be lehet állítani magasabb vagy alacsonyabb. Beállítás `count:12` dokumentum száma szerint a dimenzió eredmények megfelel az első 12 lekérdezi.
+  A facet lekérdezésben beállíthat száma értékre.  Az alapértelmezett érték 10-es, de magasabbra vagy alacsonyabbra állíthatja. Beállítás `count:12` lekérdezi az első 12 megfelelő értékkorlátozás eredményeket a dokumentum száma szerint.
 * „`@odata.count`”<br/>
-  Válaszban az érték adja meg a keresési eredmények egyező elemek száma. Átlagosan kombinálja, a található elemek, amelyek megfelelnek a keresési kifejezés miatt az összes dimenzió eredmények összege nagyobb, de nincs értékkorlátozás értéke megegyezik kell.
+  A lekérdezésekre adott válaszok Ez az érték azt jelzi, hogy a keresési eredmények megfelelő elemek száma. Átlagosan együttesen elemek, amelyek megfelelnek a keresési kifejezést, mert az összes értékkorlátozás eredményeket összege nagyobb, de rendelkezik nincs értékkorlátozás értéke megegyezik.
 
-**Értékkorlátozás eredmények összesítése beolvasása**
+**Értékkorlátozás eredményeket kaphat száma**
 
-Amikor jellemzőalapú lekérdezést adjon hozzá egy szűrőt, előfordulhat, hogy szeretné megőrizni a dimenzió utasítás (például `facet=Rating&$filter=Rating ge 4`). Technikai szempontból értékkorlátozás = minősítő nem szükséges, de a számát is dimenzióértéknek értékelések lekapcsolva tartja ad vissza, 4 és újabb rendszer. Például ha "4" kattint, és a lekérdezés szűrője nagyobbnak vagy azzal egyenlő "4", számok pedig visszaadott minden besorolása, amely 4 és újabb rendszer.  
+Ha szűrőt ad hozzá egy jellemzőalapú lekérdezés, előfordulhat, hogy szeretné megőrizni az értékkorlátozás utasítás (például `facet=Rating&$filter=Rating ge 4`). Technikailag értékkorlátozó = besorolása nem szükséges, de lekapcsolva tartja, az értékelésekhez értékkorlátozás értékek számát adja vissza, 4 és újabb. Például ha "4" gombra kattint, és a lekérdezés tartalmazza a szűrőt, amely nagyobb vagy egyenlő "4", számok pedig visszaadott egyes besorolása, amely a 4 és újabb verzióit.  
 
-**Ellenőrizze, hogy elérhetővé pontos értékkorlátozás száma**
+**Ellenőrizze, hogy a számlálás pontos értékkorlátozás kap**
 
-Bizonyos esetekben előfordulhat, hogy értékkorlátozás száma nem egyezik a eredményhalmazt (lásd: [az Azure Search (fórumbejegyzést) Jellemzőalapú navigációs](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+Bizonyos körülmények között, előfordulhat, hogy értékkorlátozás száma nem egyezik az eredménykészlet (lásd: [Jellemzőalapú navigáció az Azure Search (fórumbejegyzést)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
 
-Értékkorlátozás száma miatt a horizontális architektúrát pontatlan lehet. Minden keresési index több szilánkok rendelkezik, és minden shard jelent a felső N értékkorlátozás dokumentum száma, amelyek majd egyesítve egyetlen eredmény szerint. Ha néhány szilánkok sok egyező értékek, míg mások kisebb értékre, előfordulhat, hogy néhány dimenzióértéknek hiányzik, vagy a felvenni az eredmények között.
+Értékkorlátozás száma miatt a horizontális skálázás architektúra pontatlan lehet. Minden keresési index több szegmenst tartalmaz, és minden egyes szegmens a felső N értékkorlátozással jelentések szerint dokumentumok száma, amelyek egyetlen eredmény, majd összesítve. Ha egyes szegmensek több egyező értékek, míg mások kisebb, előfordulhat, hogy néhány értékkorlátozás érték hiányzik, vagy alatt-tranzakciónak az eredmények között.
 
-Bár ez a viselkedés módosulhatnak bármikor, ha ez a viselkedés ma, akkor azt úgy kerülheti mesterségesen fúvódnia az a szám:<number> sok kényszerítéséhez minden egyes shard teljes jelentést. Ha a count értékének: nagyobb vagy egyenlő egyedi értékek mezőjében számával, akkor garantáltan pontos eredményeket. Azonban amikor magas a dokumentumok számát, nincs-e a teljesítményét, ezért ez a beállítás használatakor.
+Bár ez a viselkedés bármikor módosulhatnak, ha ezt a viselkedést tapasztal még ma, megkerüléséhez azt a számát mesterségesen fúvódnia:<number> kényszeríteni a teljes jelentés az egyes szegmensek nagy számú. Ha a számláló értéke: nagyobb vagy a mezőben egyedi értékek számának egyenlőnek, garantáltan pontos eredményeket. Azonban ha nagy dokumentumok számát, a teljesítményét van, ezért ezt a beállítást megfontoltan.
 
 ### <a name="user-interface-tips"></a>Felhasználói felület tippek
-**Adja hozzá a címkék az egyes mezők értékkorlátozás navigációs sáv**
+**Adja hozzá a címkéket az egyes mezőkhöz tartozó értékkorlátozó navigációs**
 
-Címkék általában definiálják HTML vagy formátumban (`index.cshtml` a mintaalkalmazás). Nincs az Azure Search értékkorlátozás navigációs feliratainak nincs API vagy bármely egyéb metaadatokat.
+Címkék általában határozzák meg a HTML- vagy az űrlap (`index.cshtml` a mintaalkalmazásban). Nincs nem értékkorlátozó navigációs címkéket az Azure Search API-t vagy bármely más metaadatokat.
 
 <a name="rangefacets"></a>
 
-## <a name="filter-based-on-a-range"></a>Szűrő alapján
-Értékkorlátozás értékek tartományok keresztül egy közös keresési alkalmazás követelményeinek. Tartományok numerikus adatokat és a dátum/idő értékek vannak támogatva. További kapcsolatos mindkét megközelítés a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+## <a name="filter-based-on-a-range"></a>Szűrés annak alapján, a tartomány
+Jellemzőalapú értéktartományokat keresztül keresése alkalmazás általános követelmény. Tartományok numerikus adatokat és a dátum/idő értékek támogatottak. Tudjon meg többet a mindkét megközelítés kapcsolatos [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
-Az Azure Search tartomány konstrukció két megközelítés biztosít a számítási tartomány egyszerűbbé teszi. Mindkét megközelítés az Azure Search hoz létre a megfelelő tartományokon a megadott bemeneti adatok megadott. Például ha megadja a tartomány értékének 10 |} 20 |} 30, automatikusan létrehozza a 0 – 10, 10-20, 20 – 30 tartományait. Az alkalmazás opcionálisan eltávolíthatja bármely intervallumok üres. 
+Az Azure Search egyszerűbbé teszi a tartomány konstrukció számítástechnika széles két módszer megadásával. Mindkét módszerénél az Azure Search a megfelelő tartományokon a megadott bemeneti adatok hoz létre. Például ha adja meg a 10 tartományértékeknek |} 20 |} 30, automatikusan létrehoz tartományokat, a 0 – 10, 10 – 20, a 20-30. Az alkalmazás bármely az üres intervallumok eltávolításával. 
 
-**1. módszer: A időköz paraméter használható.**  
-Árlista értékkorlátozás $10 lépésekben beállításához megadni: `&facet=price,interval:10`
+**1. módszer: Az intervallum paraméter használata**  
+10 USD lépésekben ár értékkorlátozással beállításához megadni: `&facet=price,interval:10`
 
 **2. módszer: Értékek listáját használja**  
-A numerikus adatok értékek listáját is használhatja.  Érdemes lehet a dimenzió értéktartományán egy `listPrice` mező megjelenítése az alábbiak szerint:
+Numerikus adatok, az értékek listáját is használhatja.  Fontolja meg értékkorlátozás tartományát egy `listPrice` mezőben jelenik meg a következők szerint:
 
-  ![A minta értékek listája][5]
+  ![Minta értékek listája][5]
 
-Az a fenti képernyőfelvételen hasonló értékkorlátozás széles megadásához használja az értékek listáját:
+Adja meg az előző képernyőképen látható egy hasonló értékkorlátozás széles, használja az értékek listáját:
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-Minden tartományban épül, 0 a kiindulási pontként, a listában a végpontok közötti értéket, és majd levágja a korábbi tartomány diszkrét intervallumok létrehozásához. Az Azure Search jellemzőalapú navigációs részeként hajtja végre ezeket a módosításokat. Nincs írhat kódot minden időköz rendszerezésére szolgál.
+Minden tartomány 0 használja kiindulási pontként egy értéket végpontként, a listából, és a korábbi tartomány létrehozása diszkrét időközök majd vágott épül. Az Azure Search jellemzőalapú navigáció részeként hajtja végre ezeket a módosításokat. Nem kell minden egyes időköz rendszerezéséhez kód írására.
 
-### <a name="build-a-filter-for-a-range"></a>Összeállítása szűrőt, amely a tartomány
-Dokumentumok választja alapján szűrni, használhatja a `"ge"` és `"lt"` operátorokat egy kétlépéses kifejezés, amely meghatározza a tartomány a végpontok szűrése. Ha úgy dönt, hogy a tartomány 10-25 a például a `listPrice` mezőt, a szűrő lenne `$filter=listPrice ge 10 and listPrice lt 25`. Példakód, használja a szűrőkifejezés **priceFrom** és **priceTo** paraméterek a végpontokat. 
+### <a name="build-a-filter-for-a-range"></a>Szűrheti a tartomány létrehozása
+Dokumentumok választja számos alapján szűrheti, használhatja a `"ge"` és `"lt"` szűrése, amely meghatározza a tartomány a végpontok kétlépéses kifejezésben operátorok. Például, ha úgy dönt, hogy 10-25 tartományát egy `listPrice` mező, a szűrő lenne `$filter=listPrice ge 10 and listPrice lt 25`. A mintakód a szűrőkifejezés használ **priceFrom** és **priceTo** paraméterek a végpontok beállításához. 
 
-  ![A kívánt értéktartományt lekérdezés][6]
+  ![Különböző értékeket, lekérdezés][6]
 
 <a name="geofacets"></a> 
 
-## <a name="filter-based-on-distance"></a>Távolság alapján szűrhet
-Az common megjelenítéséhez, amelyek segítik a tároló, éttermi vagy a cél az az aktuális hely közelében alapján választja szűrők. Bár az ilyen típusú szűrő jellemzőalapú navigációs nézhet, ez a beállítás csak egy szűrő. A Microsoft említse meg itt azok az Ön kifejezetten keres, hogy adott kialakítás probléma megvalósítási tanácsokat.
+## <a name="filter-based-on-distance"></a>A távolságskála alapján szűrése
+Annak közös megtekintéséhez, amelyek segítenek úgy dönt, hogy egy tároló, éttermi vagy cél helyezkedik el saját tartózkodási helye alapján szűri. Az ilyen típusú szűrő hasonló lehet jellemzőalapú navigáció, miközben csak egy szűrő. Itt azoknak, akik kifejezetten adott kialakítás problémát megvalósítási javaslatokat azt említik.
 
-Két olyan földrajzi funkció van az Azure Search **geo.distance** és **geo.intersects**.
+Nincsenek két térinformatikai funkciók az Azure Search szolgáltatásban **geo.distance** és **geo.intersects**.
 
-* A **geo.distance** függvény adja vissza kilométerben két pont között. Egy pont mező, másik megnevezése a szűrő egy konstans. 
-* A **geo.intersects** függvény igaz értéket ad vissza egy adott sokszögön belül egy adott pont esetén. A pont mező, a szűrő megnevezése koordináták állandó listáját a sokszög van megadva.
+* A **geo.distance** függvényt ad vissza a távolságot adja meg kilométerben két pont között. Egy pont mező másik pedig a szűrő részeként átadott konstans. 
+* A **geo.intersects** függvény igaz értéket ad vissza, ha egy adott időpontra van egy adott sokszög belül. A pont egy mezőt, és a sokszög a szűrő részeként átadott koordináták állandó listaként van megadva.
 
-A szűrő példák található [OData-kifejezésszintaxist (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+A szűrő példái annak [OData-kifejezések szintaxisa (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>Próbálja ki a demót
-Az Azure Search feladat Portal bemutató cikkben hivatkozott példák tartalmazza.
+Az Azure Search feladat portál bemutató példák ebben a cikkben tartalmazza.
 
--   Tekintse meg, és tesztelje a működő bemutató online, [Azure keresési feladat Portal bemutató](http://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
 
--   Töltse le a kódot a [tárház Azure-minták a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-Munka a keresési eredmények között, nézze meg az URL-cím, a lekérdezés konstrukció változásokat. Ez az alkalmazás értékkorlátozás hozzáfűzése az URI, minden egyes kiválasztásakor történik.
+Végzett munka, a keresési eredmények között, nézze meg az URL-cím lekérdezési konstrukció változásairól. Ez az alkalmazás értékkorlátozással hozzáfűzése az URI-t, jelölje ki egyenként történik.
 
-1. A bemutató alkalmazás leképezési funkcióinak használatához a Bing Maps kulcsot az beszerzése a [a Bing térképek fejlesztői központjához](https://www.bingmapsportal.com/). Illessze be a meglévő kulcshoz keresztül a `index.cshtml` lap. A `BingApiKey` beállítást azokban a `Web.config` fájl nincs használatban. 
+1. A bemutató alkalmazás hozzárendelési funkcióinak használatához kérje le a Bing térképek-kulcs a [Bing térképek fejlesztői központjában](https://www.bingmapsportal.com/). A meglévő kulcsot a illessze a `index.cshtml` lapot. A `BingApiKey` beállítását a `Web.config` fájlt nem használja. 
 
-2. Futtassa az alkalmazást. Ismerkedés a nem kötelező, vagy zárja be a párbeszédpanelt.
+2. Futtassa az alkalmazást. Ismerkedés a nem kötelező, vagy a párbeszédpanel bezárásához.
    
-3. Adja meg a kívánt keresőkifejezést, például a "elemző", és kattintson a keresés ikonra. A lekérdezés gyorsan hajtja végre.
+3. Adjon meg egy keresési kifejezést, például a "elemző", és kattintson a keresés ikonra. A lekérdezés gyorsan hajtja végre.
    
-   A keresési eredmények között is lett visszaadva egy jellemzőalapú navigációs szerkezetben. A keresési eredmények oldalát a jellemzőalapú navigációs szerkezetben tartalmaz minden dimenzió eredmény hány példányban. Nincs facets vannak kijelölve, ezért minden egyező eredményeinek.
+   A keresési eredmények között is is visszaad egy jellemzőalapú navigációs struktúrát. A keresési eredmények oldalon a jellemzőalapú navigációs struktúrát tartalmaz darabszáma – minden értékkorlátozás eredmény. Nincs értékkorlátozással van jelölve, így az összes megfelelő eredményeket ad vissza.
    
-   ![Keresési eredmények értékkorlátozás kiválasztása előtt][11]
+   ![Keresési eredmények értékkorlátozással kiválasztása előtt][11]
 
-4. Kattintson egy üzleti cím, a hely vagy a minimális fizetés. Értékkorlátozás a kezdeti Search null értékű, de mivel azok az értékek, a keresési eredmények nem egyező elemek lesz.
+4. Kattintson egy üzleti cím, a hely vagy a minimális fizetés. Értékkorlátozással voltak a kezdeti Search null értékű, de értékek igénybe vehet, mivel a keresési eredmények között már nem megfelelő elemek lesz.
    
-   ![Keresési eredmények értékkorlátozás kiválasztása után][12]
+   ![Keresési eredmények értékkorlátozással kiválasztása után][12]
 
-5. Így eltérő lekérdezési viselkedés próbálkozhat a jellemzőalapú lekérdezés törléséhez kattintson a `[X]` után törölje a Decimal típushoz kiválasztott típushoz.
+5. Úgy, hogy próbálja meg más lekérdezési viselkedés a jellemzőalapú lekérdezés törléséhez kattintson a `[X]` után törölje a értékkorlátozással kiválasztott aspektusait.
    
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Részletek
-A Watch [az Azure Search mélyreható](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). A 45:25 van egy bemutató facets megvalósításához.
+Tekintse meg [részletes ismertetése az Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). 45:25, jelenleg nincs egy bemutatót értékkorlátozással megvalósítása.
 
-További áttekinthetik a jellemzőalapú navigáció tervezési alapelvek a következőket javasoljuk:
+A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, hogy az alábbi hivatkozásokat:
 
-* [A Jellemzőalapú keresési tervezése](http://www.uie.com/articles/faceted_search/)
-* [Kialakítási minták: Jellemzőalapú navigációs](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Jellemzőalapú keresés tervezése](http://www.uie.com/articles/faceted_search/)
+* [Tervezési minták: Jellemzőalapú navigáció](http://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->

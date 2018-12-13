@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Image Search API'
+title: 'Oktatóanyag: Hozzon létre egy egyoldalas webalkalmazást – a Bing Image Search API'
 titleSuffix: Azure cognitive services
 description: A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: e2013b28e8c829d49efe662a9b0eba245c6d5fab
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297451"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253952"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Image Search API használatával
 
 A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket. Ez az oktatóanyag hasonló a Bing Web Searchre vonatkozó [ugyanilyen típusú oktatóanyaghoz](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md).
 
@@ -34,7 +34,7 @@ Az oktatóanyaghoz tartozó teljes forráskód elérhető a [GitHubon](https://g
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/) legújabb verziója.
-* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési útmutatója a GitHubon elérhető minta információs fájljában (readme) található meg.
+* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A GitHub-minta információs fájl telepítési utasításokat a forráskódja számára érhetők el.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

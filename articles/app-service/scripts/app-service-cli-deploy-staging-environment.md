@@ -1,10 +1,10 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben
+title: Azure CLI-szkript mintát - alkalmazás létrehozása és kód üzembe helyezése előkészítési ponton történő |} A Microsoft Docs
+description: Azure CLI-Példaszkript – webalkalmazás létrehozása és kód egy előkészítési ponton történő üzembe helyezése
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 8f6bcbf87e998c97b1631e159418d82c6c53f779
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2ee0d4f5b53bbe8395dccdb8426d06fe946740f3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979422"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314432"
 ---
-# <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben
+# <a name="create-a-web-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben az Azure CLI használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben egy további, staging nevű üzembehelyezési ponttal együtt, majd egy mintaalkalmazást telepít a staging pontba.
 

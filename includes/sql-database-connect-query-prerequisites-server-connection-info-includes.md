@@ -2,28 +2,28 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/06/2018
 ms.author: genemi
-ms.openlocfilehash: b78d52f23de8d02189f10b32d26e070fb6deea68
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3b7027e5ae252eb899d2a44d171ea9c9795ab54
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52339656"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53285937"
 ---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
-## SQL server connection information
+## Get SQL server connection information
 -->
 
-Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
+Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. Szüksége lesz a teljes kiszolgálónevet, adatbázis nevét és bejelentkezési adatait a következő eljárásokat.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az adatbázisra az **SQL-adatbázisok** oldalon.
+1. Válassza ki **SQL-adatbázisok** a bal oldali menüben, majd válassza az adatbázis a a **SQL-adatbázisok** lapot.
 
-1. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Fölé a **kiszolgálónév** viszi, megjelenik a **kattintson a másoláshoz** lehetőséget.  
+1. Az a **áttekintése** az adatbázishoz tartozó lap, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév**. Másolja ki a kiszolgáló nevét, fölé, és válassza a **másolási** ikonra.  
 
-   ![server-name](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
+![server-name](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
 
-1. Ha elfelejtette a kiszolgálója bejelentkezési adatait, rákattinthat a a **kiszolgálónév** navigálhat a **az SQL server** oldal és a nézet a **kiszolgáló-rendszergazdai** neve. Ha szükséges, válassza ki a **jelszó alaphelyzetbe állítása**.
+Ha elfelejti a bejelentkezési adatait, válassza ki a kiszolgáló nevére kattintva megnyílik a **az SQL server** lapot. Itt megtekintheti a **kiszolgáló-rendszergazdai** nevet, és válassza ki **jelszó alaphelyzetbe állítása** szükség esetén.

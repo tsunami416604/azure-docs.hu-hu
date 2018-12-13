@@ -1,21 +1,21 @@
 ---
-title: Az Azure Container Instances oktatóanyaga – Az Azure Container Registry előkészítése
-description: Az Azure Container Instances oktatóanyaga, 2/3. rész – Az Azure Container Registry előkészítése
+title: Oktatóanyag – Azure Container Instances a container registry előkészítése
+description: Egy Azure container registry előkészítése és a rendszerkép leküldése az Azure Container Instances oktatóanyag 2. rész – 3
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eeb0fe5b19f23e101eab9393dca64e1e13bf6922
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855442"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188917"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Oktatóanyag: Egy Azure container registry üzembe helyezése és a egy tároló rendszerképének leküldése
 
 Ez az oktatóanyag egy háromrészes sorozat második része. Az oktatóanyag [első részében](container-instances-tutorial-prepare-app.md) egy Docker-tároló rendszerképét hoztuk létre egy Node.js-webalkalmazáshoz. Ebben az oktatóanyagban leküldéssel továbbítjuk a rendszerképet az Azure Container Registrybe. Ha még nem hozta létre a tárolórendszerképet, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](container-instances-tutorial-prepare-app.md) részhez.
 
@@ -24,7 +24,7 @@ Az Azure Container Registry az Ön privát Docker-tárolójegyzéke az Azure-ban
 > [!div class="checklist"]
 > * Azure Container Registry-példány létrehozása
 > * Egy tárolórendszerkép címkézése az Azure Container Registry-példányhoz
-> * A rendszerkép feltöltése a tárolójegyzékbe
+> * A rendszerkép feltöltése az adatbázisba
 
 A következő cikkben, amely a sorozat utolsó oktatóanyaga, üzembe helyezzük a tárolót a privát tárolójegyzékből az Azure Container Instancesbe.
 
@@ -168,7 +168,7 @@ Annak ellenőrzésére, hogy az imént leküldött rendszerkép valóban az Ön 
 az acr repository list --name <acrName> --output table
 ```
 
-Például:
+Példa:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

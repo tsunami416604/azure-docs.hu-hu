@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: b2eff49f94dfcd67cb9741055520d990429051cd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098559"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322704"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Ismerje meg, hogyan válassza ki a legmegfelelőbb egyszeri bejelentkezési módszer, ha alkalmazások konfigurálása az Azure Active Directoryban (Azure AD). 
@@ -67,7 +67,7 @@ Egy alkalmazás az SAML-alapú egyszeri bejelentkezés beállítása: [konfigur�
 Az SAML-protokoll működésével kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="password-based-sso"></a>Jelszóalapú egyszeri bejelentkezés
-Jelszóalapú bejelentkezés az alkalmazás hitelesíti magát az alkalmazást a felhasználónevet és jelszót. Végfelhasználók jelentkezzen be az alkalmazás az első alkalommal. Miután az első bejelentkezés Azure Active Directory felhasználónevet és jelszót az alkalmazáshoz választékát kínálja. 
+Jelszóalapú bejelentkezés, a végfelhasználók jelentkezzen be az alkalmazást az első használatakor a felhasználónevet és jelszót. Miután az első bejelentkezés Azure Active Directory felhasználónevet és jelszót az alkalmazáshoz választékát kínálja. 
 
 Jelszavas egyszeri bejelentkezést használ a meglévő hitelesítési folyamatot, az alkalmazás által biztosított. Ha engedélyezi a jelszó egyszeri bejelentkezést az alkalmazáshoz, az Azure ad-ben gyűjt, és biztonságosan tárolja a felhasználói neveket és jelszavakat az alkalmazás. Felhasználói hitelesítő adatok titkosítására a könyvtárban vannak tárolva. 
 
@@ -177,6 +177,6 @@ További információk: [Azure Active Directory editions](../fundamentals/active
 * [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](../saas-apps/tutorial-list.md)
 * [Oktatóanyag az egyszeri bejelentkezés konfigurálása](configure-single-sign-on-portal.md)
 * [Alkalmazásokhoz való hozzáférés kezelése bemutatása](what-is-access-management.md)
-* Letöltési hivatkozás: [egyszeri bejelentkezéses telepítési tervének](https://aka.ms/SSODeploymentPlan).
+* Letöltési hivatkozás: [Egyszeri bejelentkezés telepítési tervének](https://aka.ms/SSODeploymentPlan).
 
 

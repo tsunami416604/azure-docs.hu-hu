@@ -1,5 +1,5 @@
 ---
-title: 'Kép besorolási oktatóanyag: modelleket taníthat be'
+title: 'Kép besorolási oktatóanyag: Modellek betanítása'
 titleSuffix: Azure Machine Learning service
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell betanítására a scikit-learn alkalmazásával egy Python Jupyter-notebookban. Ez az oktatóanyag egy kétrészes sorozat első része.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc61465615e35c071466c7a1350c8e9794a7f78e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099107"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310113"
 ---
-# <a name="tutorial-part-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: (1. rész): egy kép osztályozási modell Azure Machine Learning szolgáltatással betanítása
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
 Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. A képzés és az üzembe helyezést megvalósító munkafolyamat a Python Jupyter notebook az Azure Machine Learning szolgáltatás fogja használni.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
@@ -35,7 +35,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 A modellek kiválasztásával és üzembe helyezésével később, az [oktatóanyag második részében](tutorial-deploy-models-with-aml.md) fog megismerkedni. 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
 > Ebben a cikkben kód tesztelés az Azure Machine Learning SDK-val 1.0.2-es verzióját
@@ -384,15 +384,15 @@ Az első futtatás összesen **nagyjából 10 percig tart**. A későbbi futtat�
 
 Ez történik, amíg várakozik:
 
-- **Rendszerkép létrehozása**: A Docker-rendszerkép létrehozása a becslő által meghatározott Python-környezetnek megfelelően történik. A rendszerkép feltöltődik a munkaterületre. A rendszerkép létrehozása és feltöltése **körülbelül 5 percet** vesz igénybe. 
+- **Rendszerkép létrehozása**: Docker-rendszerkép jön létre a Python-környezetet a estimator által megadott megfelelő. A rendszerkép feltöltődik a munkaterületre. A rendszerkép létrehozása és feltöltése **körülbelül 5 percet** vesz igénybe. 
 
   Ez a lépés egyszer meg végbe minden Python-környezet esetében, mert a tároló megmarad a gyorsítótárban a későbbi futtatásoknál való felhasználáshoz.  A kép létrehozása során a rendszer a futási előzményekbe streameli a naplókat. A kép létrehozásának folyamata ezekkel a naplókkal monitorozható.
 
-- **Skálázás**: Ha a távoli fürtnek a jelenleg elérhetőnél több csomópontra van szüksége a futtatás végrehajtásához, a rendszer automatikusan hozzáad új csomópontokat. A skálázás **körülbelül 5 percet** vesz igénybe.
+- **Skálázás**: A távoli fürt csomópontjait a Futtatás mint a jelenleg elérhető végrehajtásához szükség van, így további csomópontok hozzáadása automatikusan történik. A skálázás **körülbelül 5 percet** vesz igénybe.
 
-- **Futtatás**: Ebben a szakaszban a rendszer elküldi a szükséges szkriptek és a fájlokat a számítási célnak, majd csatlakoztatja/másolja az adattárakat, végül pedig futtatja az entry_script szkriptet. Amíg a feladat fut, a rendszer a futási előzményekbe streameli az stdoutot és a ./logs könyvtárat. A futtatás folyamata ezekkel a naplókkal monitorozható.
+- **Futó**: Ebben a szakaszban a szükséges szkriptek és a fájlokat a számítási célnak kapja majd adattárak csatlakoztatott/másolni, akkor a entry_script futtatása. Amíg a feladat fut, a rendszer a futási előzményekbe streameli az stdoutot és a ./logs könyvtárat. A futtatás folyamata ezekkel a naplókkal monitorozható.
 
-- **Utófeldolgozás**: A rendszer a futtatás ./outputs könyvtárát a munkaterület futási előzményeibe másolja be, hogy Ön hozzáférhessen ezekhez az eredményekhez.
+- **Utófeldolgozási**: A. / kimenete a Futtatás directory át van másolva a munkaterület a futtatási előzmények tud elérni ezeket az eredményeket.
 
 
 A futó feladatok állapota többféleképpen ellenőrizhető. Ez az oktatóanyag egy Jupyter-vezérlőt, valamint egy `wait_for_completion` metódust használ erre. 

@@ -1,6 +1,7 @@
 ---
-title: 'Rövid útmutató: Képkeresés Python használatával – Bing Image Search API'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Python-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
+title: 'Gyors útmutató: Képkeresés – a Bing Image Search REST API és a Python használatával'
+titleSuffix: Azure Cognitive Services
+description: Ez a rövid útmutató segítségével kép keresési kérelmeket küldjön a Bing Image Search REST API-be a Python, és JSON-válaszok kap.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -9,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: a51935300238235338ec30ec7061101745b0e0e5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: a93a044279cccd883de5f946bb236cad4b088ae2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314388"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261977"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Rövid útmutató: Keresési lekérdezések küldése a REST API és a Python használatával
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a Python használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Python-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 

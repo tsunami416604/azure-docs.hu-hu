@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 86ad385488d9661abd52a2bd1a2d561956f0cbb3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4f2a8431e353246b1f7304e7bfe30d13a7b4af4b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082560"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139299"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQL query példák használatával adatokat lekérdezni az Azure Cosmos DB-ből
 
@@ -21,7 +21,7 @@ Az Azure Cosmos DB lekérdezése elemek SQL (Structured Query Language) használ
 
 * Az Azure Cosmos DB JavaScript programozási modellt használ a lekérdezési nyelv alapjaként. Az SQL API a JavaScript, kifejezés kiértékelése, valamint függvény meghívási feltörték. Ez a-kapcsolja be a természetes programozási modell révén leképezések relációs, hierarchikus navigációs biztosít a JSON-elemek, Önillesztések, térinformatikai lekérdezéseket, és hívja meg a felhasználó által definiált függvények (UDF), teljes mértékben javascriptben írt, többek.
 
-Ez a cikk végigvezeti néhány példa SQL-lekérdezések használatával egyszerű JSON-elemek. Azure Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-sql-query-reference.md) cikk.
+Ez a cikk végigvezeti néhány példa SQL-lekérdezések használatával egyszerű JSON-elemek. Azure Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-query-reference.md) cikk.
 
 ## <a id="GettingStarted"></a>Ismerkedés az SQL-parancsok
 
@@ -86,7 +86,7 @@ Hozzunk létre két egyszerű JSON-elemek és az adatokat a lekérdezéshez. Ké
 
 Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Azure Cosmos DB SQL lekérdező nyelve fő szempontja részének megértésében.
 
-**Lekérdezés1**: például az alábbi lekérdezés azon elemeit adja vissza, az id mezője megegyezik-e `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés kimenete a teljes JSON-elem, a szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT utasítás](sql-api-sql-query-reference.md#select-query):
+**Lekérdezés1**: Ha például az alábbi lekérdezés azon elemeit adja vissza, az id mezője megegyezik-e `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés kimenete a teljes JSON-elem, a szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT utasítás](sql-api-query-reference.md#select-query):
 
 ```sql
     SELECT *
@@ -116,7 +116,7 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     }]
 ```
 
-**Lekérdezés2:** most Vegyük azt az esetet, ahol kell formáznia a JSON-kimenet egy másik minősége. Ez a lekérdezés egy új JSON-objektumot két kijelölt mezővel, nevét és az városa, projektek, ha a cím:' város ugyanazzal a névvel rendelkezik, az állapot. Ebben az esetben a "NY, NY" illeszkedik.
+**Lekérdezés2:** Most vegyük azt az esetet, ahol kell formáznia a JSON-kimenet egy másik minősége. Ez a lekérdezés egy új JSON-objektumot két kijelölt mezővel, nevét és az városa, projektek, ha a cím:' város ugyanazzal a névvel rendelkezik, az állapot. Ebben az esetben a "NY, NY" illeszkedik.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -166,7 +166,7 @@ Az alábbiakban néhány aspektusait a Cosmos DB lekérdezési nyelv bemutatott 
 
 ## <a id="SelectClause"></a>SELECT záradék
 
-Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás JSON-elemek egy részhalmazához lekéréséhez. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. A szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT szintaxissal](sql-api-sql-query-reference.md#bk_select_query).
+Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás JSON-elemek egy részhalmazához lekéréséhez. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. A szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT szintaxissal](sql-api-query-reference.md#bk_select_query).
 
 Az alábbi példa bemutatja egy tipikus SELECT-lekérdezésben.
 
@@ -260,7 +260,7 @@ Nézzük, szerepe `$1` itt. A `SELECT` záradék létre kell hoznia egy JSON-obj
 
 ## <a id="FromClause"></a>FROM záradékban
 
-Az a < from_specification > záradék nem kötelező, kivéve ha a forrás van szűrve, vagy később a lekérdezést az előre jelzett. A szintaxissal kapcsolatos további tudnivalókért lásd: [a szintaxis](sql-api-sql-query-reference.md#bk_from_clause). A lekérdezés, például `SELECT * FROM Families` azt jelzi, hogy a teljes családok tárolót a forrást, amelyen számbavétele. Egy legfelső szintű különleges azonosító segítségével a tároló neve helyett a tárolót képviseli.
+Az a < from_specification > záradék nem kötelező, kivéve ha a forrás van szűrve, vagy később a lekérdezést az előre jelzett. A szintaxissal kapcsolatos további tudnivalókért lásd: [a szintaxis](sql-api-query-reference.md#bk_from_clause). A lekérdezés, például `SELECT * FROM Families` azt jelzi, hogy a teljes családok tárolót a forrást, amelyen számbavétele. Egy legfelső szintű különleges azonosító segítségével a tároló neve helyett a tárolót képviseli.
 Az alábbi lista tartalmazza a szabályokat, amelyek lekérdezésenként érvényben vannak:
 
 * A tároló lehet aliassal, például `SELECT f.id FROM Families AS f` vagy egyszerűen csak `SELECT f.id FROM Families f`. Itt `f` megfelelője `Families`. `AS` azonosító érték egy nem kötelező kulcsszó használatával alias.  
@@ -313,7 +313,7 @@ A forrás egy kisebb részhalmazra is csökkenteni lehet. Például számbavéte
     ]
 ```
 
-A fenti példában egy tömb használja forrásként, amíg egy objektumot is lehet alkalmazni a forrásaként, amely az alábbi példában is látható: a lekérdezés eredménye, hogy bármilyen érvényes JSON-értéket (nem a nem meghatározott), amely a forrásban található számít. Ha egyes termékcsaládok nem rendelkeznek egy `address.state` érték, a lekérdezés eredményei ki vannak zárva.
+A fenti példában egy tömb használja forrásként, amíg egy objektumot is használható a forrásaként, amely az alábbi példában is látható: Bármely érvényes JSON-értéket (nem a nem meghatározott), amely megtalálható a forrás számít, hogy a lekérdezés eredménye. Ha egyes termékcsaládok nem rendelkeznek egy `address.state` érték, a lekérdezés eredményei ki vannak zárva.
 
 **Lekérdezés**
 
@@ -333,7 +333,7 @@ A fenti példában egy tömb használja forrásként, amíg egy objektumot is le
 
 ## <a id="WhereClause"></a>WHERE záradék
 
-A WHERE záradékban (**`WHERE <filter_condition>`**) megadása nem kötelező. Azt adja meg a feltételeket, amelyek a forrás által biztosított a JSON-elemek meg kell felelniük ahhoz, hogy az eredmény része. Bármely JSON-elem "igaz" eredmény figyelembe kell venni a megadott feltételeknek kell kiértékelni. A WHERE záradékban az index réteg használják annak érdekében, hogy a forrás elemek, amelyek az eredmény része lehet abszolút legkisebb részhalmazát határozza meg. A szintaxissal kapcsolatos további tudnivalókért lásd: [WHERE szintaxis](sql-api-sql-query-reference.md#bk_where_clause).
+A WHERE záradékban (**`WHERE <filter_condition>`**) megadása nem kötelező. Azt adja meg a feltételeket, amelyek a forrás által biztosított a JSON-elemek meg kell felelniük ahhoz, hogy az eredmény része. Bármely JSON-elem "igaz" eredmény figyelembe kell venni a megadott feltételeknek kell kiértékelni. A WHERE záradékban az index réteg használják annak érdekében, hogy a forrás elemek, amelyek az eredmény része lehet abszolút legkisebb részhalmazát határozza meg. A szintaxissal kapcsolatos további tudnivalókért lásd: [WHERE szintaxis](sql-api-query-reference.md#bk_where_clause).
 
 A következő lekérdezés kérelmek elemek, amelyek tartalmazzák a name tulajdonság, amelynek az értéke `AndersenFamily`. Bármely elem, amely nem rendelkezik a name tulajdonság, vagy ha az érték nem egyezik `AndersenFamily` ki van zárva.
 
@@ -1627,7 +1627,7 @@ Az alábbi képen a Cosmos DB használatával LINQ-lekérdezéseket támogató a
 
 ### <a name="net-and-json-mapping"></a>.NET és a JSON-leképezés
 
-.NET-objektumokat és JSON-elemek közötti természetes - minden tag adatmező le van képezve egy JSON-objektumot, ahol a mező neve "kulcs" részére, amelyben az objektum le van képezve pedig a "value" rész rekurzív módon leképezve az objektum érték részét. Vegye figyelembe az alábbi példa: A család létrehozott objektum le van képezve a JSON-elem alább látható módon. És ez fordítva is igaz, a JSON-elem le van képezve vissza .NET-objektumokat.
+.NET-objektumokat és JSON-elemek közötti természetes - minden tag adatmező le van képezve egy JSON-objektumot, ahol a mező neve "kulcs" részére, amelyben az objektum le van képezve pedig a "value" rész rekurzív módon leképezve az objektum érték részét. Vegye figyelembe az alábbi példában: Alább látható módon létrehozott család objektum a JSON-elem van leképezve. És ez fordítva is igaz, a JSON-elem le van képezve vissza .NET-objektumokat.
 
 **C#-osztály**
 
@@ -1735,19 +1735,19 @@ Először írja be a rendszer, támogatjuk az összes JSON egyszerű típusok �
 
 Íme a LINQ szolgáltatója az SQL .NET SDK-val támogatott LINQ-operátorokat listáját.
 
-* **Válassza ki**: leképezések objektumkonstrukciók többek között SQL SELECT fordítás
-* **Ahol**: szűrők az SQL, fordítás, és támogatja a közötti címfordítás & &, || és! az SQL-operátorok
-* **SelectMany**: lehetővé teszi a tömbök, az SQL JOIN záradék visszagörgetésének. Lánc és beágyazott tömbelemek rekordsémáját szűrés kifejezések segítségével
-* **OrderBy és OrderByDescending**: a rendszer lefordítja arra az ORDER BY növekvő vagy csökkenő sorrendben
+* **Válassza ki**: Az SQL, jelölje be például objektumkonstrukciók fordítása kivetítések
+* **Ahol**: Szűrők az SQL, fordítás, és támogatja a közötti címfordítás & &, || és! az SQL-operátorok
+* **SelectMany**: Lehetővé teszi a tömbök, az SQL JOIN záradék visszagörgetésének. Lánc és beágyazott tömbelemek rekordsémáját szűrés kifejezések segítségével
+* **OrderBy és OrderByDescending**: A rendszer lefordítja arra az ORDER BY növekvő vagy csökkenő sorrendben
 * **Száma**, **Sum**, **Min**, **maximális**, és **átlagos** összesítő és a aszinkron megfelelőjükre operátorok**CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, és **AverageAsync**.
-* **Compareto metódus végrehajtása**: a rendszer lefordítja arra tartomány összehasonlítást. Általánosan használt karakterláncok, mivel azok még nem összehasonlítható a .NET-ben
-* **Igénybe**: a rendszer lefordítja arra az SQL felső korlátozza a lekérdezés eredményei
-* **Matematikai függvények**: támogatja a fordítást. A NET Abs, Acos, Asin, Atan, felső határa, Cos, Exp, emelet, Log, Log10, Pow, ciklikus, bejelentkezési, Sin, Sqrt, Tan, Truncate, a megfelelő SQL a beépített funkciók.
-* **Karakterlánc-függvények**: támogatja a fordítást. NET a Concat, tartalmazza, EndsWith, IndexOf, Count, ToLower, TrimStart, cserélje le, fordított, TrimEnd, StartsWith, Karakterláncrészletet, a megfelelő SQL a beépített funkciók ToUpper.
-* **A tömb funkciók**: támogatja a fordítást. A NET Concat, tartalmazza, és a megfelelő SQL a beépített funkciók száma.
-* **Térinformatikai bővítmény függvények**: támogatja a megfelelő SQL a beépített funkciók helyettes módszerek távolság IsValid és IsValidDetailed belül a fordítást.
-* **Felhasználó által definiált függvény bővítmény függvény**: a megfelelő felhasználó által definiált függvény a helyettes metódus UserDefinedFunctionProvider.Invoke fordítási támogatja.
-* **Vegyes**: támogatja a coalesce, és a feltételes operátorok fordítását. Lefordítja karakterláncot tartalmaz, ARRAY_CONTAINS vagy az SQL a környezettől függően tartalmazza.
+* **Compareto metódus végrehajtása**: A rendszer lefordítja arra tartomány összehasonlítást. Általánosan használt karakterláncok, mivel azok még nem összehasonlítható a .NET-ben
+* **Igénybe**: A rendszer lefordítja arra az SQL felső korlátozza a lekérdezés eredményei
+* **Matematikai függvények**: A fordítási támogatja. A NET Abs, Acos, Asin, Atan, felső határa, Cos, Exp, emelet, Log, Log10, Pow, ciklikus, bejelentkezési, Sin, Sqrt, Tan, Truncate, a megfelelő SQL a beépített funkciók.
+* **Karakterlánc-függvények**: A fordítási támogatja. NET a Concat, tartalmazza, EndsWith, IndexOf, Count, ToLower, TrimStart, cserélje le, fordított, TrimEnd, StartsWith, Karakterláncrészletet, a megfelelő SQL a beépített funkciók ToUpper.
+* **A tömb funkciók**: A fordítási támogatja. A NET Concat, tartalmazza, és a megfelelő SQL a beépített funkciók száma.
+* **Térinformatikai bővítmény függvények**: A megfelelő SQL a beépített funkciók helyettes módszerek távolság IsValid és IsValidDetailed belül a fordítási támogatja.
+* **Felhasználó által definiált függvény bővítmény függvény**: A megfelelő felhasználó által definiált függvény a helyettes metódus UserDefinedFunctionProvider.Invoke fordítási támogatja.
+* **Vegyes**: A coalesce, és a feltételes operátorok fordítási támogatja. Lefordítja karakterláncot tartalmaz, ARRAY_CONTAINS vagy az SQL a környezettől függően tartalmazza.
 
 ### <a name="sql-query-operators"></a>SQL-lekérdezés operátorok
 
@@ -2117,7 +2117,7 @@ Lekérdezések az adatok konzisztencia-szabályzat kezeléséhez használja a `x
 
 Ha a beállított indexelési házirendet a tárolón a megadott lekérdezés nem támogatja, az Azure Cosmos DB kiszolgáló 400 "Hibás kérés" adja vissza. Ez a hibaüzenet a tartomány-lekérdezéseket az elérési utak kivonata (egyenlőség) kereséseket, valamint az indexelő kifejezetten kizárva elérési utak a konfigurált adja vissza. A `x-ms-documentdb-query-enable-scan` fejléc adható meg, hogy a lekérdezést, hogy vizsgálatot végezzen, ha az index nem érhető el.
 
-Megjelenik a részletes mérőszámokat a lekérdezés-végrehajtás beállításával `x-ms-documentdb-populatequerymetrics` fejlécet `True`. További információkért lásd: [az Azure Cosmos DB SQL-lekérdezés metrikák](sql-api-sql-query-metrics.md).
+Megjelenik a részletes mérőszámokat a lekérdezés-végrehajtás beállításával `x-ms-documentdb-populatequerymetrics` fejlécet `True`. További információkért lásd: [az Azure Cosmos DB SQL-lekérdezés metrikák](sql-api-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 
@@ -2263,8 +2263,8 @@ Az alábbi példa bemutatja, hogyan használható a queryDocuments az API a Java
 9. Értékelés technikák nagy méretű adatbázisok lekérdezése [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel
 11. Lu, Ooi, Tan, párhuzamos relációs adatbázis-rendszerek, nyomja meg a számítógép IEEE Egyesületre, 1994 fel.
-12. Christopher Olston, Benjamin Reed Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: a Pig Latin: egy nem így idegen nyelvű adatfeldolgozási vagy SIGMOD 2008.
-13. G. Graefe. A lekérdezés optimalizálásához kaszkádokban keretében. IEEE-adatok Eng. Bull., 18(3): 1995.
+12. Christopher Olston, Benjamin Reed Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: A Pig Latin: Nem így idegen nyelvű adatfeldolgozási vagy SIGMOD 2008.
+13. G. Graefe. A lekérdezés optimalizálásához kaszkádokban keretében. IEEE-adatok Eng. BULL., 18(3): 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png
 [introduction]: introduction.md

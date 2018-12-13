@@ -1,5 +1,5 @@
 ---
-title: Az Azure-ban nem megfelelő erőforrások azonosításához a szabályzat-hozzárendelés létrehozása
+title: Hozzon létre egy házirendet a nem megfelelő erőforrások azonosításához
 description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására.
 services: azure-policy
 author: DCtheGeek
@@ -7,16 +7,16 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a48a3b8df88a434b59ff200ec6d36fb32ee7122b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: ddf30f6a7bc00be9ac24952adf0ba41e6151bd10
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079262"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311167"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
 Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.

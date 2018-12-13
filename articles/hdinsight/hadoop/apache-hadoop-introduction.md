@@ -1,20 +1,20 @@
 ---
-title: Mik azok a HDInsight és az Apache Hadoop és az Apache Spark-technológia? – Azure
+title: Mik azok az Apache Hadoop és az Apache Spark-technológia? – Azure HDInsight
 description: A HDInsight és az Apache Hadoop és az Apache Spark-technológiák és összetevők, mint a big data-elemzéshez a Kafka, Hive, Storm és HBase bemutatása.
 keywords: azure hadoop, hadoop azure, hadoop bevezetés, hadoop bemutatása, hadoop-technológiák, bevezetés a hadoop szolgáltatásba, a hadoop bemutatása, mi az a hadoop-fürt, mi a hadoop-fürt, mire való a hadoop
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017, mvc
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 05/07/2018
-ms.openlocfilehash: 259cef465f39f027c6db81d5d7de137b6a089581
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.date: 12/07/2018
+ms.openlocfilehash: dc11f6dc780cdd548b4f7aa1854b08c705d37d06
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017705"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166438"
 ---
 # <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Mi az Azure HDInsight és az Apache Hadoop-technológiák
 
@@ -61,42 +61,43 @@ A kinyerési, átalakítási és betöltési (ETL) folyamat során a rendszer st
 
 A HDInsight segítségével petabájtos nagyságrendű interaktív lekérdezéseket végezhet strukturált vagy strukturálatlan adatokon. Modelleket is létrehozhat BI-eszközökhöz való csatlakoztatással. További információkért [olvassa el ezt az ügyféltörténetet](https://customers.microsoft.com/story/milliman). 
 
-![HDInsight-architektúra: Adatraktározás](./media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "A HDInsight adatraktározási architektúrája")
+![HDInsight-architektúra: Az adattárházak](./media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight adattárház-architektúra")
 
 ### <a name="internet-of-things-iot"></a>Eszközök internetes hálózata (IoT)
 
 A HDInsight segítségével számos eszközről fogadott streamelési adatok dolgozhatók fel valós időben. További információkért [olvassa el ezt az Azure-blogbejegyzést, amely az Azure Managed Disksben HDInsight alatt futó Apache Kafka nyilvános előzetes verzióját jelenti be](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
-![HDInsight-architektúra: Eszközök internetes hálózata](./media/apache-hadoop-introduction/hdinsight-architecture-iot.png "A HDInsight IoT-architektúrája") 
+![HDInsight-architektúra: Az eszközök internetes hálózatát](./media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT-architektúra") 
 
 ### <a name="data-science"></a>Adatelemzés
 
 A HDInsight segítségével olyan alkalmazásokat hozhat létre, amelyek kritikus fontosságú elemzéseket nyernek ki az adatokból. Az Azure Machine Learning segítségével ezen felül a vállalata várható trendjeiről is kaphat előrejelzéseket. További információkért [olvassa el ezt az ügyféltörténetet](https://customers.microsoft.com/story/pros).
 
-![HDInsight-architektúra: Adatelemzés](./media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "A HDInsight adatelemzési architektúrája")
+![HDInsight-architektúra: Az adatelemzés](./media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight data science-architektúra")
 
 ### <a name="hybrid"></a>Hibrid
 
 A HDInsight segítségével kiterjesztheti a meglévő helyszíni big data-infrastruktúráját az Azure-ba, hogy kihasználhassa a felhő fejlett elemzési képességeit.
 
-![HDInsight-architektúra: Hibrid](./media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "A HDInsight hibrid architektúrája")
+![HDInsight-architektúra: Hibrid](./media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight hibrid architektúra")
 
 ## <a name="cluster-types-in-hdinsight"></a>Fürttípusok a HDInsightban
+
 A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tartalmaz, például lehetővé teszi összetevők, segédprogramok és nyelvek hozzáadását. A HDInsight a következő fürttípusokat kínálja:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: egy keretrendszer, amely HDFS-t, YARN erőforrás-kezelést, és egy egyszerű MapReduce programozási modellt használ az adatok párhuzamos feldolgozásához és elemzéséhez.
+* **[Az Apache Hadoop](https://wiki.apache.org/hadoop)**: Egy keretrendszer, amelyben HDFS, a YARN erőforrás-kezelés és a egy egyszerű MapReduce programozási modell a batch-adatok párhuzamos feldolgozásához és elemzéséhez.
 
-* **[Apache Spark](https://spark.apache.org/)**: egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data-elemző alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a HDInsight-alapú Apache Spark?](../spark/apache-spark-overview.md).
+* **[Az Apache Spark](https://spark.apache.org/)**: Egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a HDInsight-alapú Apache Spark?](../spark/apache-spark-overview.md).
 
-* **[Apache HBase](https://hbase.apache.org/)**: egy Hadoopra épülő NoSQL-adatbázis, amely közvetlen hozzáférést és nagymértékű következetességet biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára, akár egy több milliárd sorból és több millió oszlopból álló táblázat esetén is. Lásd: [Mi a HDInsight-alapú HBase?](../hbase/apache-hbase-overview.md)
+* **[Az Apache HBase](https://hbase.apache.org/)**: A Hadoop, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot – sorok potenciálisan több milliárd épülő NoSQL-adatbázis túllépi az oszlopok millió. Lásd: [Mi a HDInsight-alapú HBase?](../hbase/apache-hbase-overview.md)
 
-* **[ML-szolgáltatások](https://msdn.microsoft.com/microsoft-r/rserver)**: egy párhuzamos, elosztott R-folyamatok üzemeltetésére és felügyeletére használt kiszolgáló. Skálázható, elosztott elemzési módszereket kínál az adatszakértők, statisztikusok és R-programozók számára a HDInsightban. Tekintse meg az [ML-szolgáltatások használatának áttekintését a HDInsighton](../r-server/r-server-overview.md).
+* **[Machine Learning-szolgáltatások](https://msdn.microsoft.com/microsoft-r/rserver)**: A kiszolgáló és párhuzamos, elosztott R-folyamatok kezelésére szolgál. Skálázható, elosztott elemzési módszereket kínál az adatszakértők, statisztikusok és R-programozók számára a HDInsightban. Tekintse meg az [ML-szolgáltatások használatának áttekintését a HDInsighton](../r-server/r-server-overview.md).
 
-* **[Apache Storm](https://storm.incubator.apache.org/)**: egy elosztott, valós idejű számítási rendszer a nagy méretű adatfolyamok gyors feldolgozására. A Storm a HDInsightban felügyelt fürtként érhető el. Lásd: [Analyze real-time sensor data using Storm and Hadoop](../storm/apache-storm-sensor-data-analysis.md) (Valós idejű érzékelőadatok elemzése a Storm és a Hadoop segítségével).
+* **[Az Apache Storm](https://storm.incubator.apache.org/)**: Egy elosztott, valós idejű számítási rendszer a nagy méretű adatfolyamok gyors feldolgozására. A Storm a HDInsightban felügyelt fürtként érhető el. Lásd: [Analyze real-time sensor data using Storm and Hadoop](../storm/apache-storm-sensor-data-analysis.md) (Valós idejű érzékelőadatok elemzése a Storm és a Hadoop segítségével).
 
-* **[Apache interaktív lekérdezés – előzetes verzió (avagy Hosszú és eredményes feldolgozást!)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: memóriában történő gyorsítótárazás az interaktív és gyorsabb Hive-lekérdezésekhez. Lásd: [Az interaktív lekérdezés használata a HDInsightban](../interactive-query/apache-interactive-query-get-started.md).
+* **[Apache interaktív lekérdezés előzetes verzió (AVAGY: Élő hosszú, és feldolgozása)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: Memóriában történő gyorsítótárazás az interaktív és gyorsabb Hive-lekérdezésekhez. Lásd: [Az interaktív lekérdezés használata a HDInsightban](../interactive-query/apache-interactive-query-get-started.md).
 
-* **[Apache Kafka](https://kafka.apache.org/)**: nyílt forráskódú platform streamelt adatfolyamatok és alkalmazások létrehozásához. A Kafka egy Üzenetsor funkciót is biztosít, amelynek segítségével közzétehet adatstreameket vagy feliratkozhat rájuk. Lásd: [A HDInsight alatt futó Apache Kafka bemutatása](../kafka/apache-kafka-introduction.md).
+* **[Az Apache Kafka](https://kafka.apache.org/)**: Egy nyílt forráskódú platform streamelt adatfolyamatok és alkalmazások létrehozásához használt. A Kafka egy Üzenetsor funkciót is biztosít, amelynek segítségével közzétehet adatstreameket vagy feliratkozhat rájuk. Lásd: [A HDInsight alatt futó Apache Kafka bemutatása](../kafka/apache-kafka-introduction.md).
 
 ## <a name="open-source-components-in-hdinsight"></a>Nyílt forráskódú összetevők a HDInsightban
 
@@ -112,9 +113,9 @@ A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a H
 |Alapértelmezés szerint támogatott programozási nyelvek     | Alapértelmezés szerint a HDInsight-fürtök a következőket támogatják:<ul><li>Java</li><li>Python</li></ul> [Szkriptműveletek](../hdinsight-hadoop-script-actions-linux.md) használatával további nyelveket is telepíthet.       |
 |JVM (Java virtuális gép) nyelvek     | A Java-alapú virtuális gépeken (JVM) a Javán kívül számos más nyelv is futtatható. Előfordulhat azonban, hogy egyes nyelvek futtatásához további összetevőket is telepítenie kell a fürtön. A HDInsight-fürtök az alábbi JVM-alapú nyelveket támogatják: <ul><li>Clojure</li><li>Jython (Python a Javához)</li><li>Scala</li></ul>     |
 |Hadoop-specifikus nyelvek     | A HDInsight-fürtök az alábbi, a Hadoop-technológiákra jellemző nyelveket támogatják: <ul><li>Pig Latin a Pig-feladatokhoz</li><li>HiveQL a Hive-feladatokhoz és a SparkSQL-hez</li></ul>        |
- 
 
-## <a name="development-tools-for-hdinsight"></a>A HDInsight fejlesztői eszközei 
+## <a name="development-tools-for-hdinsight"></a>A HDInsight fejlesztői eszközei
+
 A HDInsight fejlesztői eszközei (köztük az IntelliJ, az Eclipse, a Visual Studio Code és a Visual Studio) használatával HDInsight-adatlekérdezéseket és feladatokat szerkeszthet és küldhet be Azure-ral zökkenőmentesen együttműködve.
 
 * [Az IntelliJ-hez készült Azure-eszközkészlet](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
@@ -126,6 +127,7 @@ A HDInsight fejlesztői eszközei (köztük az IntelliJ, az Eclipse, a Visual St
 * [A Visual Studióhoz készült Azure Data Lake-eszközök](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
 
 ## <a name="business-intelligence-on-hdinsight"></a>Üzleti intelligencia a HDInsighton
+
 A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő modul vagy a Microsoft Hive ODBC-illesztő segítségével kérik le, elemzik és jelentik a HDInsight rendszerébe integrált adatokat:
 
 * [Az Apache Spark BI adatvizualizációs eszközeinek használata az Azure HDInsighttal](../spark/apache-spark-use-bi-tools.md)
@@ -134,14 +136,13 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 
 * [Interaktív lekérdezéses Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 
-* [Az Excel csatlakozása a Hadoophoz a Power Queryvel](apache-hadoop-connect-excel-power-query.md) (Windows rendszert igényel) 
+* [Az Excel csatlakozása a Hadoophoz a Power Queryvel](apache-hadoop-connect-excel-power-query.md) (Windows rendszert igényel)
 
 * [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztővel](apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows rendszert igényel) 
 
 * [Az SQL Server Analysis Services használata a HDInsighttal](https://msdn.microsoft.com/library/dn749857.aspx)
 
 * [Az SQL Server Reporting Services használata a HDInsighttal](https://msdn.microsoft.com/library/dn749856.aspx)
-
 
 ## <a name="next-steps"></a>További lépések
 

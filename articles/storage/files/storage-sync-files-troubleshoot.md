@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0787d023676c707a987b4b69cb5601394db4bd3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6ee16a0483b13471f12654f82ef6972b41ace634
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728378"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316939"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -38,9 +38,9 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 Tekintse át a telepítési hiba okának megállapításához installer.log.
 
 <a id="agent-installation-on-DC"></a>**Ügynök telepítése sikertelen lesz az Active Directory-tartományvezérlő**  
-Ha a szinkronizálási ügynök telepítése az Active Directory tartományvezérlővel, ahol a PDC-szerepkör tulajdonosa van-e egy Windows Server 2008R2 operációsrendszer-verziónál, ütközhet a probléma, ahol a sync-ügynök telepítése sikertelen lesz.
+Ha a szinkronizálási ügynök telepítése egy Active Directory tartományvezérlővel, ahol a PDC-szerepkör tulajdonosa van-e egy Windows Server 2008 R2 verziónál régebbi verziójú operációs rendszer, ütközhet a probléma, ahol a sync-ügynök telepítése sikertelen lesz.
 
-Oldja meg, a PDC-szerepkör átvitele egy másik tartomány tartományvezérlő futó Windows Server 2012 R2 vagy újabb, majd telepítse a szinkronizálási.
+Háríthatja el vigye át az elsődleges szerepkört egy másik tartományvezérlő Windows Server 2012 R2 rendszerű vagy újabb, majd telepítse a szinkronizálást.
 
 <a id="server-registration-missing"></a>**Kiszolgáló nem szerepel a regisztrált kiszolgálókat, az Azure Portalon**  
 Ha a kiszolgáló nem szerepel a **regisztrált kiszolgálókat** a Társzinkronizálási szolgáltatás:
@@ -48,7 +48,7 @@ Ha a kiszolgáló nem szerepel a **regisztrált kiszolgálókat** a Társzinkron
 2. Nyissa meg a Fájlkezelőt, és keresse meg a Storage Sync-ügynök telepítési könyvtárát (az alapértelmezett hely a C:\Program Files\Azure\StorageSyncAgent). 
 3. ServerRegistration.exe futnak, és fejezze be a varázslót a Storage Sync Service regisztrálni a kiszolgálót.
 
-<a id="server-already-registered"></a>**Kiszolgáló regisztrálása az Azure File Sync ügynök telepítése közben a következő üzenetet jeleníti meg: "a kiszolgáló már regisztrálva van"** 
+<a id="server-already-registered"></a>**Kiszolgáló regisztrálása Azure File Sync ügynök telepítése közben a következő üzenetet jeleníti meg: "A kiszolgáló már regisztrálva van"** 
 
 ![A "kiszolgáló már regisztrálva van" hiba miatt a kiszolgáló regisztrálása párbeszédpanel képernyőképe üzenet](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -84,9 +84,9 @@ Ha az üzenet és az Azure-fájlmegosztás jelenleg nem használja a felhőbeli 
 Ez a probléma akkor fordul elő, ha a felhasználó fiókja nem rendelkezik megfelelő jogosultsággal a felhőbeli végpont létrehozásához. 
 
 Felhőbeli végpont létrehozása, a felhasználói fiókot a következő Microsoft Authorization engedélyekkel kell rendelkeznie:  
-* Olvasás: Szerepkör-definíció beolvasása
-* Írás: Hozzon létre, vagy egyéni szerepkör-definíció frissítése
-* Olvasás: Szerepkör-hozzárendelés beolvasása
+* Olvasás: Szerepkör-definíció lekérése
+* Írás: Egyéni szerepkör-definíció létrehozása vagy módosítása
+* Olvasás: Szerepkör-kijelölés lekérése
 * Írás: Szerepkör-hozzárendelés létrehozása
 
 A következő beépített szerepkör rendelkezik a szükséges Microsoft Authorization engedélyekkel:  
@@ -132,7 +132,7 @@ A probléma akkor fordulhat elő, ha a tárterület-figyelő szinkronizálási f
 
 A probléma megoldásához hajtsa végre az alábbi lépéseket:
 
-1. A kiszolgálón nyissa meg a Feladatkezelőt, és ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat. A folyamat nem fut, ha először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, frissítse az Azure File Sync ügynök verzióra [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) Ha jelenleg nem telepített.
+1. A kiszolgálón nyissa meg a Feladatkezelőt, és ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat. A folyamat nem fut, ha először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, frissítsen a legújabb Azure File Sync [ügynökverzió](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
 2. Ellenőrizze a tűzfalakról és Proxykról beállításai megfelelően vannak konfigurálva:
     - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
     - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
@@ -249,7 +249,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
 Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
@@ -448,7 +448,7 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ez a beállításazonosító beállításával az Azure File Sync ügynök fogad el minden olyan helyi megbízható SSL-tanúsítványt a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
 
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 | | |
@@ -541,7 +541,7 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 | **Hibakarakterlánc** | ECS_E_SYNC_INVALID_PATH |
 | **Szervizelés szükséges** | Igen |
 
-Győződjön meg arról, az elérési út létezik, a helyi NTFS-köteten, és nem egy újraelemzési pontot vagy a meglévő kiszolgálói végpontot.
+Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
 
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 | | |

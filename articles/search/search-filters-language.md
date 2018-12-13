@@ -1,6 +1,6 @@
 ---
-title: Nyelvi szűrők az Azure Search szolgáltatásban |} A Microsoft Docs
-description: Szűrési feltételek szerint a felhasználó biztonsági azonosítóját, nyelvi, földrajzihely- vagy numerikus értékek keresési eredményei között az Azure Search szolgáltatásban a Microsoft Azure-ban üzemeltetett felhőalapú keresési szolgáltatás lekérdezések csökkentése érdekében.
+title: A keresési index – Azure Search többnyelvű tartalmához nyelvi szűrők
+description: Szűrési feltételt, több nyelvű keresés nyelvspecifikus mezők hatókörkezelési lekérdezés végrehajtása támogatja.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,12 +9,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 2bacffe64fed3e2ee0cc2eb983776b4ab7086e51
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec2018
+ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466585"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311184"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Az Azure Search nyelven szűrése 
 

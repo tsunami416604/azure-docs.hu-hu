@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee4b504cf26456baa7d10eab05305eee5e36c35a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623825"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191903"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -63,6 +63,8 @@ A következő lépéshez a [Microsoft SQL Server Management Studióra](https://d
 
 - [Univerzális hitelesítés az SQL Database és az SQL Data Warehouse használatával (SSMS-támogatás az MFA-hoz)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Azure Active Directory-hitelesítés konfigurálása és kezelése az SQL Database vagy az SQL Data Warehouse használatával](/azure/sql-database/sql-database-aad-authentication-configure)
+
+Az SQL DB szükséges egyedi AAD megjelenítendő nevét. Ennek az AAD-fiókok például a felhasználók, csoportok és az egyszerű szolgáltatások (alkalmazások), és felügyelt identitás számára engedélyezve van egy virtuális gép neve egyedileg kell meghatározni az aad-ben megjelenített neveinek kapcsolatban. Az SQL DB ellenőrzi az aad-ben az ilyen felhasználók T-SQL-létrehozása során megjelenített neve, és ha nem egyedi, a parancs sikertelen kér, adja meg egy adott fiókon egy egyedi AAD megjelenítendő nevét.
 
 1.  Indítsa el az SQL Server Management Studiót.
 2.  A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédablakban írja be az SQL-kiszolgáló nevét a **Server name** (Kiszolgáló neve) mezőbe.

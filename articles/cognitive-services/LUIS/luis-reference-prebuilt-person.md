@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: ad19aa8eef72234e034fe9c0e1905e848ace0650
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 31dce870e99cbe74e2795a3ba661b0caf92dd48e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091747"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140234"
 ---
-# <a name="personname-entity"></a>PersonName entitás
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName előre összeállított entitások a LUIS-alkalmazások
 Az előre összeállított personName entitás emberek neveinek észleli. Az entitás már be van tanítva, mert nem kell való az alkalmazás leképezések personName tartalmazó példa beszédmódok hozzáadása. az angol és kínai támogatott personName entitás [kulturális környezetek](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>PersonName entitás feloldása

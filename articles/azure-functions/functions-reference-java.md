@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e4d96fa558e1122ef9e0fe0b265166757c45e678
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686892"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321050"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -105,7 +105,9 @@ Itt látható a létrehozott megfelelő `function.json` által a [azure-function
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK futásidejű rendelkezésre állásával és támogatásával 
 
-Töltse le és használja a [Azul Zulu Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Segítségével Windows, Linux és MacOS rendszeren érhetők el. [Az Azure-támogatás](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+Töltse le és használja a [Azul Zulu Enterprise Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Az Azure Functions az Azul Java 8 JDK-modul használ, a függvényalkalmazásokat a felhőbe való központi telepítésekor.
+
+[Az Azure-támogatás](https://azure.microsoft.com/en-us/support/) a segítségével és a függvény problémáinak alkalmazások érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Külső gyártó kódtárait 
 
@@ -361,11 +363,11 @@ Fájlrendszer naplózása az Azure Portal vagy Azure CLI-vel a parancs futtatás
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények [Alkalmazásbeállítások](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezeket a beállításokat a, elérheti `System.getenv("AzureWebJobsStorage")`
+A függvények [Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezeket a beállításokat a, elérheti `System.getenv("AzureWebJobsStorage")`
 
 Példa:
 
-Adjon hozzá [Alkalmazásbeállítás](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) neve testAppSetting és érték testAppSettingValue az
+Adjon hozzá [Alkalmazásbeállítás](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) neve testAppSetting és érték testAppSettingValue az
 
 ```java
 

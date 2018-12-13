@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 034ae29b5fabae15aa2b6b96e7fefaef23c1c5a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492335"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275227"
 ---
 # <a name="sfctl-store"></a>sfctl-tároló
 Hajtsa végre a fürt lemezképtárolójába alapvető szolgáltatói műveletek.
@@ -35,7 +35,7 @@ Hajtsa végre a fürt lemezképtárolójába alapvető szolgáltatói műveletek
 ## <a name="sfctl-store-delete"></a>sfctl-tároló törlése
 Törli a meglévő lemezkép tartalom tárolásához.
 
-Törli a lemezképet tároló tartalmat a megadott lemezképben található meglévő relatív elérési útját tárolja. Ez törli a feltöltött alkalmazáscsomagok kiépítésüket követően is használható.
+Törli a lemezképet tároló tartalmat a megadott lemezképben található meglévő relatív elérési útját tárolja. Ez a parancs segítségével törölheti a feltöltött alkalmazás csomagokat kiépítésüket követően.
 
 ### <a name="arguments"></a>Argumentumok
 

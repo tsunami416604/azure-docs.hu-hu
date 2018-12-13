@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Indexelés, lekérdezés és szűrés az Azure Searchben a portál használatával | Microsoft Docs
+title: Indexelés, lekérdezés és szűrés az Azure portal – Azure Search-oktatóanyag
 description: Ebben az oktatóanyagban az Azure Portal és előre meghatározott mintaadatok segítségével indexet hozhat létre az Azure Searchben. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592755"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314023"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>Oktatóanyag: Beépített eszközök használata indexeléshez és lekérdezésekhez az Azure Searchben
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Oktatóanyag: Beépített portal-eszközök használata az Azure Search-indexelő és a lekérdezések
 
 Az Azure Search alapfogalmainak gyors áttekintéséhez használhatja az Azure Portalon, az Azure Search szolgáltatás lapján elérhető beépített eszközöket. Ezek az eszközök ugyan nem biztosítják a .NET és a REST API-k összes funkcióját, de a varázslókkal és a szerkesztőkkel kód írása nélkül megismerkedhet az Azure Search használatával, és azonnal érdekes lekérdezéseket állíthat össze egy mintaadatkészleten.
 
@@ -55,7 +56,7 @@ A keresési lekérdezések egy [*index*](search-what-is-an-index.md) alapján is
 
 Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely könnyedén bejárható egy [*indexelővel*](search-indexer-overview.md) az **Adatok importálása** varázslón keresztül. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. A portálon az indexelők az **Adatok importálása** varázslóban érhetők el. Később az indexelőket programozott módon, független erőforrásként hozhatja létre és kezelheti.
 
-### <a name="step-1-start-the-import-data-wizard"></a>1. lépés: Az Adatok importálása varázsló elindítása
+### <a name="step-1-start-the-import-data-wizard"></a>1. lépés: Adatok importálása varázsló indítása
 
 1. Az Azure Search szolgáltatás irányítópultján kattintson a parancssávon található **Adatok importálása** elemre a varázsló indításához. A varázsló segítségével létrehozhat egy keresési indexet, majd feltöltheti adatokkal.
 

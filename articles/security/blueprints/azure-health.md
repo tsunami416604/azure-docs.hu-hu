@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ca844c89b657bc3286f3472af3acbf937ef1e20f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891061"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315774"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -61,7 +61,7 @@ Alapvető architektúrája a következő összetevőkből áll:
 
 -   **[Állapotának áttekintése.](https://aka.ms/healthreviewpaper)** A megoldás felülvizsgálták Coalfire Systems, Inc. Az egészségügyi megfelelőségi (a HIPAA és a HITRUST) felülvizsgálati és megvalósítási útmutatást nyújt egy auditor\'s át kell tekinteni a megoldás és a egy éles használatra kész telepítéshez a tervezet átalakítása szempontjai.
 
-# <a name="architectural-diagram"></a>Architekturális diagramja
+## <a name="architectural-diagram"></a>Architekturális diagramja
 
 
 ![](images/ra2.png)
@@ -76,22 +76,22 @@ A tervezet határozza meg a két szerepkört azon rendszergazda felhasználók (
 
 A hely rendszergazdájának felelős az ügyfél Azure-előfizetést. Általános üzembe helyezését, de nem férhetnek hozzá a betegek kartonjai.
 
--   Alapértelmezett szerepkör-hozzárendeléseit: [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+-   Alapértelmezett szerepkör-hozzárendeléseit: [Tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Egyéni szerepkör-hozzárendeléseit: N/A
+-   Egyéni szerepkör-hozzárendeléseit: –
 
--   Hatókör: előfizetés
+-   Hatály: Előfizetés
 
 ### <a name="database-analyst"></a>Adatbázis-elemző
 
 Az adatbázis-elemző felügyeli, az SQL Server-példány és az adatbázist.
 A betegek kartonjai nincs hozzáféréssel rendelkeznek.
 
--   Beépített szerepkör-hozzárendeléseit: [SQL DB Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+-   Beépített szerepkör-hozzárendeléseit: [SQL-Adatbázisok Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Egyéni szerepkör-hozzárendeléseit: N/A
+-   Egyéni szerepkör-hozzárendeléseit: –
 
--   Hatókör: erőforráscsoport
+-   Hatály: ResourceGroup
 
  ### <a name="data-scientist"></a>Adatelemzési szakértő
 
@@ -100,16 +100,16 @@ Az adatszakértő működik, az Azure Machine Learning Studio. Ezek is importál
 
 -   Beépített szerepkör-hozzárendeléseit: [Tárfiók-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Egyéni szerepkör-hozzárendeléseit: N/A
+-   Egyéni szerepkör-hozzárendeléseit: –
 
--   Hatókör: erőforráscsoport
+-   Hatály: ResourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>Informatikai Medical igazgató (Fontos)
 
 
 Az egészségügyi Informatikai igazgató a informatikusait/technológiai szakértőit az egészségügyi egészségügyi szervezet közötti szakadékot feladata. A feladataik rendszerint elemzés segítségével határozza meg, ha erőforrások kerülnek lefoglalásra megfelelően a szervezeten belül.
 
--   Beépített szerepkör-hozzárendeléseit: nincs
+-   Beépített szerepkör-hozzárendeléseit: None
 
 ### <a name="care-line-manager"></a>Betegápolási vezető
 
@@ -117,22 +117,22 @@ Az egészségügyi Informatikai igazgató a informatikusait/technológiai szaké
 A betegápolási vezető van közvetlenül is részt vesz a betegek ellátásában.
 Az e munkakörben dolgozók feladata, hogy nyomon kövessék az egyes betegek állapotát, valamint garantálják, hogy a dolgozók megfeleljenek a hozzájuk rendelt betegek ellátási igényeinek. A betegápolási vezető felelős hozzáadása és a betegek kartonjai frissítése.
 
--   Beépített szerepkör-hozzárendeléseit: nincs
+-   Beépített szerepkör-hozzárendeléseit: None
 
--   Egyéni szerepkör-hozzárendeléseit: jogosultsággal ehhez mindkét beteg már a Betegfelvétel, HealthcareDemo.ps1 futtatásához és lezárására.
+-   Egyéni szerepkör-hozzárendeléseit: Mindkét beteg már a Betegfelvétel, ehhez HealthcareDemo.ps1 futtatásához jogosultsággal és lezárására.
 
--   Hatókör: erőforráscsoport
+-   Hatály: ResourceGroup
 
 ### <a name="auditor"></a>Auditor
 
 
 Az auditor kiértékeli megfelelőség szempontjából a megoldás. A hálózat nincs közvetlen hozzáféréssel rendelkeznek.
 
--   Beépített szerepkör-hozzárendeléseit: [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Beépített szerepkör-hozzárendeléseit: [Olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Egyéni szerepkör-hozzárendeléseit: N/A
+-   Egyéni szerepkör-hozzárendeléseit: –
 
--   Hatókör: előfizetés
+-   Hatály: Előfizetés
 
 ## <a name="example-use-case"></a>Példa használati esetekhez
 
@@ -184,7 +184,7 @@ Az egyéni közvetlenül betegek már a betegfelvétel és Contosoclinic, a kibo
 Han egy hitelesített auditor rendelkező, az ISO, SOC és a HiTrust naplózásának élmény. Han volt felvett Contosoclinc a hálózati áttekintéséhez. Han tekintheti át az ügyfél felelőssége mátrix a megoldáshoz mellékelt győződjön meg arról, hogy a tervezet és LOS megoldás tárol, dolgoz fel, és jelenítheti meg a személyes adatok használhatók.
 
 
-# <a name="design-configuration"></a>Tervezési konfiguráció
+## <a name="design-configuration"></a>Tervezési konfiguráció
 
 
 Ez a szakasz részletesen a meghatározott alapértelmezett konfigurációk és a tervezet vázolt a beépített biztonsági intézkedéseket:
@@ -267,8 +267,8 @@ Az azure-függvény ezen kívül úgy lett kialakítva, és a minta adatkészlet
 
 **2. Új betegek beléptetéséhez**
 
-Ha a bemutató-parancsfájl használatával. . \\A HealthcareDemo.ps1 a **BulkPatientadmission** leírt módon váltson **üzembe helyezése és futtatása a bemutató** a következő feldolgozási folyamat végrehajtása: ![](images/securetransact.png) 
- **1. Azure-függvény** aktiválódik, és a függvény vonatkozó kérések egy [tulajdonosi jogkivonat](/rest/api/) az Azure Active Directoryból.
+Ha a bemutató-parancsfájl használatával. . \\A HealthcareDemo.ps1 a **BulkPatientadmission** leírt módon váltson **üzembe helyezése és futtatása a bemutató** a következő feldolgozási folyamat végrehajtása: ![](images/securetransact.png)
+**1. Azure-függvény** aktiválódik, és a függvény vonatkozó kérések egy [tulajdonosi jogkivonat](/rest/api/) az Azure Active Directoryból.
 
 **2. A Key Vault** kért a titkos kulcs, amely a kért jogkivonatot társítva van.
 

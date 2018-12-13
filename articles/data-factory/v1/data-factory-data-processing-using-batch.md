@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976859"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317525"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -41,7 +41,7 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 * [A Batch alapjai](../../batch/batch-technical-overview.md)
 * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
 
-Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch documentatnion](https://docs.microsoft.com/en-us/azure/batch/).
+Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch documentatnion](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
 A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory segítségével felügyelt adatfolyamatokat állíthat össze, amelyek az adatok áthelyezése a helyszíni és felhőbeli adattárolókból egy központi adattárban való létrehozásához. Ilyen például, az Azure Blob storage. A Data Factory használatával feldolgozhatók és átalakíthatók adatok például az Azure HDInsight és az Azure Machine Learning services használatával. Adatfolyamatok ütemezett módon (például óránként, naponta, és hetente) futtatását is ütemezheti. Akkor is folyamatok figyelése és felügyelete a ránézésre azonosíthatja a problémákat, és hajtsa végre műveletet.
@@ -51,7 +51,7 @@ A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel elők
 * [Data Factory bemutatása](data-factory-introduction.md)
 * [Az első adatfolyamat kiépítése](data-factory-build-your-first-pipeline.md)   
 
-Szükség esetén a Data Factory kapcsolatos további információkért lásd: [a Data Factory-dokumentáció](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory).
+Szükség esetén a Data Factory kapcsolatos további információkért lásd: [a Data Factory-dokumentáció](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>A Data Factory és a Batch együtt
 A Data Factory beépített tevékenységeket magában foglalja. Ha például a másolási tevékenység van elvégezni adatok másolása vagy áthelyezése egy forrásadattárból egy céladattárba. A Hive-tevékenység segítségével az Azure-on Hadoop-fürtök (HDInsight) használatával adatokat feldolgozni. Támogatott Adatátalakítási tevékenységek listáját lásd: [adat-átalakítási tevékenységeket](data-factory-data-transformation-activities.md).
@@ -84,7 +84,7 @@ A következő lista ismerteti a folyamat alapvető lépéseit. A megoldás magá
 ## <a name="implementation-of-the-sample-solution"></a>A minta megoldás megvalósítása
 A mintául szolgáló megoldás, szándékosan egyszerű. Feladata, hogy bemutatják, hogyan használható a Data Factory és Batch folyamat adatkészletekhez együtt. A megoldás megszámlálja előfordulását a bemeneti fájlokat, amelyek időbeli adatsorok vannak rendszerezve a "Microsoft" keresőkifejezést. Majd megjeleníti a kimeneti fájlok száma.
 
-**Idő:** Ha ismeri az Azure Data Factory és a Batch alapjait, és befejeződött a következő előfeltételek vonatkoznak, ez a megoldás egy vagy két óra alatt.
+**Idő:** Ha ismeri az Azure Data Factory és a Batch alapjait, és befejeződött a következő előfeltételek vonatkoznak, ez a megoldás egy-két órát vesz igénybe.
 
 ### <a name="prerequisites"></a>Előfeltételek
 #### <a name="azure-subscription"></a>Azure-előfizetés
@@ -155,7 +155,7 @@ Telepítse a Visual Studio 2012 vagy újabb a egyéni kötegelt tevékenység ha
 ### <a name="create-the-custom-activity"></a>Az egyéni tevékenység létrehozása
 A data factory egyéni tevékenység a minta megoldás legfontosabb céljait segítik. A Mintamegoldás Batch használja az egyéni tevékenység futtatásához. Fejleszthetők egyéni tevékenységek, és használja őket az adat-előállító folyamatok kapcsolatos információkért lásd: [egyéni tevékenységek használata egy data factory-folyamatot](data-factory-use-custom-activities.md).
 
-.NET egyéni tevékenység használható egy data factory-folyamatot létrehozni, hozzon létre egy .NET-osztálytár projektet egy olyan osztállyal, amely megvalósítja az IDotNetActivity felület végrehajtási. Ez az interfész már csak egy ezek közül: hajtható végre. Íme a podpis metody:
+.NET egyéni tevékenység használható egy data factory-folyamatot létrehozni, hozzon létre egy .NET-osztálytár projektet egy olyan osztállyal, amely megvalósítja az IDotNetActivity felület végrehajtási. Ez az interfész már csak egy ezek közül: Hajtsa végre. Íme a podpis metody:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -546,7 +546,7 @@ A következő forgatókönyv további részleteket biztosít.
 
    ![Adat-előállító lap](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>2. lépés: A társított szolgáltatások létrehozása
+#### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
 Társított szolgáltatások adattárakat vagy számítási szolgáltatások adat-előállító. Ebben a lépésben társítani fogja a storage-fiók és a Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
@@ -932,9 +932,9 @@ Bővítheti ezt a mintát, ha többet szeretne megtudni a Data Factory és a Bat
 
 1. Adja hozzá a következő almappákhoz a `inputfolder`: 2015-11-16-05, 2015-11-16-06 201-11-16-07, 2011-11-16-08 és 2015. 11-16-09-. A bemeneti fájlokat helyezze mappákat. Módosítsa a folyamat a befejezési `2015-11-16T05:00:00Z` való `2015-11-16T10:00:00Z`. Az a **Diagram** kattintson duplán **InputDataset** , és győződjön meg arról, hogy készen áll-e a bemeneti szeletek. Kattintson duplán a **OutputDataset** a kimeneti szeleteket állapotának megtekintéséhez. Ha a **készen** állapotban van, ellenőrizze a kimeneti mappát a kimeneti fájlokat.
 
-1. Növelheti vagy csökkentheti a **egyidejűségi** beállítás megérteni, hogyan érinti a megoldását, különösen a kötegelt végzett feldolgozás teljesítményét. További információ a **egyidejűségi** beállítását, lásd: "4. lépés: hozzon létre, és futtatjuk a folyamatot az egyéni tevékenységek."
+1. Növelheti vagy csökkentheti a **egyidejűségi** beállítás megérteni, hogyan érinti a megoldását, különösen a kötegelt végzett feldolgozás teljesítményét. További információ a **egyidejűségi** beállítását, lásd: "4. lépés: Hozzon létre, és az egyéni tevékenységet a folyamat futtatása."
 
-1. Készlet létrehozása magasabb/alacsonyabb **virtuális gépenkénti feladatok maximális**. Használni létrehozott új készletet, frissítse a Batch társított szolgáltatást a data factory-megoldás. További információ a **virtuális gépenkénti feladatok maximális** beállítását, lásd: "4. lépés: hozzon létre, és futtatjuk a folyamatot az egyéni tevékenységek."
+1. Készlet létrehozása magasabb/alacsonyabb **virtuális gépenkénti feladatok maximális**. Használni létrehozott új készletet, frissítse a Batch társított szolgáltatást a data factory-megoldás. További információ a **virtuális gépenkénti feladatok maximális** beállítását, lásd: "4. lépés: Hozzon létre, és az egyéni tevékenységet a folyamat futtatása."
 
 1. A Batch-készlet létrehozása a **automatikus skálázási** funkció. Egy Batch-készletben lévő számítási csomópontok automatikus méretezése a feldolgozási teljesítményt az alkalmazása által használt dinamikus igazítását. 
 
@@ -956,13 +956,13 @@ Bővítheti ezt a mintát, ha többet szeretne megtudni a Data Factory és a Bat
 
 1. A minta megoldásban a **Execute** metódus meghívja a **Calculate** metódushoz, amely egy bemeneti adatszelet előállít egy kimeneti adatszeletet dolgozza fel. Írhat saját módszer dolgozza fel a bemeneti adatokat, és cserélje le a **Calculate** metódust hívja meg a **Execute** metódust a metódus hívásával.
 
-### <a name="next-steps-consume-the-data"></a>Következő lépések: az adatok felhasználása
+### <a name="next-steps-consume-the-data"></a>Következő lépések: Az adatok felhasználása
 Miután az adatok feldolgozására, online eszközökkel, mint a Power BI használhatja fel. Az alábbiakban a hivatkozások segítenek megérteni a Power bi-ban, és hogyan használható az Azure-ban:
 
 * [Ismerje meg egy adatkészletet a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Ismerkedés a Power BI Desktopban](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Adatfrissítés a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Az Azure és a Power bi-ban: alapszintű áttekintése](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Az Azure és a Power bi-ban: Alapszintű áttekintése](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Referencia
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)

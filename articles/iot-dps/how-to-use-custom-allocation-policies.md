@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f2c9194b07774443a70eef8e879d895efeb338e9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9d75195656581021253b5787a8bfd46639cc1754
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458190"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323132"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
@@ -28,7 +28,7 @@ Például lehetséges, meg szeretne vizsgálni, a tanúsítvány eszköz kiépí
 Ez a cikk bemutatja egy egyéni foglalási szabályzat egy C# nyelven írt Azure-függvény használatával. Két új IoT-központok jönnek létre jelölő egy *Contoso kenyérpirítók osztás* és a egy *Contoso megadott Hőtérképrészlet szivattyújának osztás*. Kiépítés biztosíthat telepítéshez el kell fogadni a következő utótag egyikével regisztrációs Azonosítót kell rendelkeznie:
 
 - **– contoso-tstrsd-007**: Contoso kenyérpirítók körzet
-- **– contoso-hpsd-088**: Contoso megadott Hőtérképrészlet szivattyúk körzet
+- **– contoso-hpsd-088**: Contoso megadott Hőtérképrészlet szivattyújának körzet
 
 Az eszközök megkapják ezeket a regisztrációs azonosítót. a szükséges utótagokat egyike alapján Ezek az eszközök fog szimulált üzembe helyezési mintájával szerepel a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
@@ -98,11 +98,11 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
 
     **Csoport neve**: Adja meg **contoso-egyéni lefoglalt – eszközök**.
 
-    **Tanúsítvány típusa**: válasszon **szimmetrikus kulcs**.
+    **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
 
-    **Kulcsok automatikus létrehozása**: már ellenőrizni kell a ezt a jelölőnégyzetet.
+    **Kulcsok automatikus létrehozása**: A jelölőnégyzet már ellenőrizni kell.
 
-    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: válasszon **egyéni (használata Azure-függvény)**.
+    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **egyéni (használja az Azure-függvényt)**.
 
     ![Egyéni hozzárendelés regisztrációs csoportot szimmetrikus kulcsát a kulcsigazoláshoz hozzáadása](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -113,9 +113,9 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
 
     **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, ahol létrehozta a részlegszintű IoT-központok.
 
-    **Az IoT hub**: Válasszon egyet a részlegszintű hubs hozott létre.
+    **Az IoT hub**: Válassza ki a létrehozott részlegszintű hubs egyikét.
 
-    **Hozzáférési szabályzat**: válasszon **iothubowner**.
+    **Hozzáférési szabályzat**: Válasszon **iothubowner**.
 
     ![A részlegszintű IoT hubok az eszközkiépítési szolgáltatás csatolása](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
@@ -131,9 +131,9 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
 
     **Alkalmazásnév**: Adjon meg egy egyedi függvényalkalmazás-nevét. **Contoso-függvény-alkalmazás-1098** példaként jelenik meg.
 
-    **Erőforráscsoport**: válasszon **meglévő használata** és a **contoso-us-resource-group** tartani egymáshoz a jelen cikkben létrehozott összes erőforrást.
+    **Erőforráscsoport**: Válassza ki **meglévő használata** és a **contoso-us-resource-group** tartani egymáshoz a jelen cikkben létrehozott összes erőforrást.
 
-    **Az Application Insights**: ehhez a gyakorlathoz kikapcsolhatja ez.
+    **Az Application Insights**: Ehhez a gyakorlathoz kikapcsolhatja ez.
 
     ![A függvényalkalmazás létrehozása](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
@@ -390,7 +390,7 @@ Ebben a szakaszban egy Windows-alapú munkaállomás felé objektumorientált. A
 4. Futtassa az alábbi parancsot, amely létrehozza az SDK fejlesztői ügyfélplatformra szabott verzióját. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -398,7 +398,7 @@ Ebben a szakaszban egy Windows-alapú munkaállomás felé objektumorientált. A
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -526,12 +526,12 @@ Az alábbi táblázat bemutatja a várt forgatókönyvek és az eredmények hiba
 
 | Forgatókönyv | Eszközkiépítési szolgáltatás regisztrációs eredménye | Kiépítési SDK eredmények |
 | -------- | --------------------------------------------- | ------------------------ |
-| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Állapot eredmény: hozzárendelve  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
-| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Állapot eredmény: nem sikerült<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK-t PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED adja vissza. |
-| A webhook adja vissza a 401-es nem engedélyezett | Állapot eredmény: nem sikerült<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
-| Egyéni regisztrációt létrejött, az eszköz letiltása | Eredmény állapotának: letiltott | SDK-t PROV_DEVICE_RESULT_DISABLED adja vissza. |
-| A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növelje: 9-es | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
-| A webhook bármely más állapotkódot adja vissza. | Állapot eredmény: nem sikerült<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK-t PROV_DEVICE_RESULT_DEV_AUTH_ERROR adja vissza. |
+| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Kiosztva  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
+| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Meghiúsult<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK-t PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED adja vissza. |
+| A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
+| Egyéni regisztrációt létrejött, az eszköz letiltása | Eredmény állapota: Letiltva | SDK-t PROV_DEVICE_RESULT_DISABLED adja vissza. |
+| A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növekmény: 9-es | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
+| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationFailed (400207) | SDK-t PROV_DEVICE_RESULT_DEV_AUTH_ERROR adja vissza. |
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

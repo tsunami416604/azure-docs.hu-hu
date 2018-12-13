@@ -1,6 +1,6 @@
 ---
 title: Python használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használhatja a Pythont egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
+description: Ez a témakör bemutatja, hogyan használhatja a Pythont egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,67 +11,73 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 2ab5b7a5b17daef00cb62f69a7d2a798c18456bb
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: b9c33da4f002504a55802e4253d648ff87847d92
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912951"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271827"
 ---
-# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rövid útmutató: Python használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Gyors útmutató: Python használata Azure SQL Database-adatbázis lekérdezéséhez
 
- Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL Database-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. Az SDK-val kapcsolatos további részletekért tekintse meg a [referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql), a [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started) és a [pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) GitHub-adattárat.
+ Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL Database-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. További részletekért SDK-t, tekintse meg a [referencia](https://docs.microsoft.com/python/api/overview/azure/sql) dokumentációjában, a [pyodbc GitHub-adattár](https://github.com/mkleehammer/pyodbc/wiki/), és a egy [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
+  
 - A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
+  
+- Python és az operációs rendszerhez kapcsolódó szoftvereket:
+  
+  - **macOS**: Telepítse a homebrew-t és a Python, telepítse az ODBC-illesztőt és az Sqlcmd-t, és telepítse az SQL Server a Python-illesztőt. 1.2, 1.3 és 2.1-es, a lépések [létrehozása Python-alkalmazásokat macOS rendszeren az SQL Server használata](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). További információkért lásd: [a Microsoft ODBC-illesztő telepítése Linux és macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+    
+  - **Ubuntu**: Telepítse a Python és a többi szükséges csomagot `sudo apt-get install python python-pip gcc g++ build-essential`. Töltse le és telepítse az ODBC-illesztő Sqlcmd-t és a Python illesztőprogram SQL Serverhez készült. Útmutatásért lásd: [egy fejlesztési környezet konfigurálása a Python fejlesztési pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+    
+  - **Windows**: Telepítse a Python, az ODBC-illesztő és az Sqlcmd-t és a Python-illesztőt SQL Serverhez. Útmutatásért lásd: [egy fejlesztési környezet konfigurálása a Python fejlesztési pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
 
-- Telepítette a Pythont és az operációs rendszerének megfelelő kapcsolódó szoftvereket:
-
-    - **MacOS**: Telepítse a Homebrew-t és a Pythont, telepítse az ODBC-illesztőt és az SQLCMD-t, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
-    - **Ubuntu**: Telepítse a Pythont és a többi szükséges csomagot, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu/).
-    - **Windows**: Telepítse a Python legújabb verzióját (a környezeti változó konfigurálása automatikusan megtörténik), telepítse az ODBC-illesztőt és az SQLCMD-t, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/python/windows/). 
-
-## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
+## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
     
-## <a name="insert-code-to-query-sql-database"></a>Kód beszúrása SQL-adatbázis lekérdezéséhez 
+## <a name="create-code-to-query-your-sql-database"></a>Az SQL-adatbázis lekérdezéséhez kód létrehozása 
 
-1. Egy tetszőleges szövegszerkesztőben hozza létre a **sqltest.py** nevű új fájlt.  
-
-2. Cserélje le a tartalmat a következő kódra, és adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
-
-```Python
-import pyodbc
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-driver= '{ODBC Driver 13 for SQL Server}'
-cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
-cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
-row = cursor.fetchone()
-while row:
-    print (str(row[0]) + " " + str(row[1]))
-    row = cursor.fetchone()
-```
+1. Egy szövegszerkesztőben hozzon létre egy új fájlt *sqltest.py*.  
+   
+1. Adja hozzá a következő kódot. A saját értékeit helyettesítse \<kiszolgáló >, \<adatbázis >, \<username >, és \<jelszó >.
+   
+   >[!IMPORTANT]
+   >Ebben a példában a kódot az AdventureWorksLT mintaadatokat, amely forrásként is választja, az adatbázis létrehozásakor használ. Ha az adatbázis különböző adatokat, használja a saját adatbázis tábláinak a SELECT-lekérdezésben. 
+   
+   ```python
+   import pyodbc
+   server = '<server>.database.windows.net'
+   database = '<database>'
+   username = '<username>'
+   password = '<password>'
+   driver= '{ODBC Driver 17 for SQL Server}'
+   cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+   cursor = cnxn.cursor()
+   cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
+   row = cursor.fetchone()
+   while row:
+       print (str(row[0]) + " " + str(row[1]))
+       row = cursor.fetchone()
+   ```
+   
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Futtassa az alábbi parancsokat a parancssorban:
+1. Egy parancssorban futtassa a következő parancsot:
 
-   ```Python
+   ```cmd
    python sqltest.py
    ```
 
-2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
+1. Győződjön meg arról, hogy a felső 20 kategória/Product sorokat adja vissza, majd zárja a parancsablakot.
 
 ## <a name="next-steps"></a>További lépések
 

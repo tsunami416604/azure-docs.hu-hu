@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 32fdafc01f90b687f6fb7bcd147710e0122338ad
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784775"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278168"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használjon olyan riasztást, egy Azure Automation-runbook elindítása
 
-Használhat [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) figyelése base-szintű metrikákat és naplókat a legtöbb szolgáltatás az Azure-ban. Azure Automation-runbookok használatával meghívhatja [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) vagy a klasszikus riasztások segítségével automatizálhatja a feladatokat a riasztások alapján. Ez a cikk bemutatja, hogyan konfigurálásához és a egy runbook futtatására riasztások használatával.
+Használhat [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) figyelése base-szintű metrikákat és naplókat a legtöbb szolgáltatás az Azure-ban. Azure Automation-runbookok használatával meghívhatja [Műveletcsoportok](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) vagy a klasszikus riasztások segítségével automatizálhatja a feladatokat a riasztások alapján. Ez a cikk bemutatja, hogyan konfigurálásához és a egy runbook futtatására riasztások használatával.
 
 ## <a name="alert-types"></a>Riasztástípusok
 
@@ -31,9 +31,9 @@ Riasztás a runbookot hívja, a tényleges hívás esetén, a webhook HTTP POST-
 
 |Riasztás  |Leírás|Adattartalom-séma  |
 |---------|---------|---------|
-|[Klasszikus metrikariasztás](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha bármely platformszintű metrika megfelel egy adott feltételnek. Például, ha az érték **százalékos processzorhasználatról** a virtuális gép értéke nagyobb, mint **90** az elmúlt 5 percben.| [Metrikaalapú riasztás adattartalom-osztályséma](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
-|[Tevékenységnapló-riasztás](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld minden olyan új esemény, az Azure tevékenységnaplójában megegyezik a megadott feltételeknek. Például, hogy amikor egy `Delete VM` művelethez az szükséges, **myProductionResourceGroup** , vagy ha egy új Azure Service Health-esemény az egy **aktív** állapot jelenik meg.| [Műveletnapló-adattartalom riasztási séma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrikariasztás](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés gyorsabban metrikákhoz kapcsolódó riasztások küldése, ha egy vagy több platform-szintű metrikákat megfelel egy bizonyos feltételnek. Például, hogy amikor értéke **processzorhasználatról** a virtuális gép értéke nagyobb, mint **90**, és az értéke **bejövő** nagyobb, mint **500 MB-os** az elmúlt 5 perc.| [Közel valós idejű metrikaalapú riasztási adattartalom-séma](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Klasszikus metrikariasztás](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha bármely platformszintű metrika megfelel egy adott feltételnek. Például, ha az érték **százalékos processzorhasználatról** a virtuális gép értéke nagyobb, mint **90** az elmúlt 5 percben.| [Metrikaalapú riasztás adattartalom-osztályséma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
+|[Tevékenységnapló-riasztás](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld minden olyan új esemény, az Azure tevékenységnaplójában megegyezik a megadott feltételeknek. Például, hogy amikor egy `Delete VM` művelethez az szükséges, **myProductionResourceGroup** , vagy ha egy új Azure Service Health-esemény az egy **aktív** állapot jelenik meg.| [Műveletnapló-adattartalom riasztási séma](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Közel valós idejű metrikariasztás](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés gyorsabban metrikákhoz kapcsolódó riasztások küldése, ha egy vagy több platform-szintű metrikákat megfelel egy bizonyos feltételnek. Például, hogy amikor értéke **processzorhasználatról** a virtuális gép értéke nagyobb, mint **90**, és az értéke **bejövő** nagyobb, mint **500 MB-os** az elmúlt 5 perc.| [Közel valós idejű metrikaalapú riasztási adattartalom-séma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Mivel az adatok különböző típusú riasztás által biztosított különböző, az egyes riasztástípusok eltérően kell kezelni. A következő szakaszban megismerheti, hogyan kezelje a különböző típusú riasztásokat runbook létrehozása.
 
@@ -211,7 +211,7 @@ A műveletcsoport létrehozása egy értesítési műveletet:
    ![Adja hozzá a műveleti csoport oldalán](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. A műveletcsoport létrehozásához válassza **OK**.
 
-Ez a művelet a csoport is használhatja a [tevékenységnapló-riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és [közel valós idejű riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) létrehozott.
+Ez a művelet a csoport is használhatja a [tevékenységnapló-riasztások](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és [közel valós idejű riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) létrehozott.
 
 ## <a name="classic-alert"></a>Klasszikus riasztás
 
@@ -230,5 +230,5 @@ Egy klasszikus riasztás létrehozása:
 
 * Automation-runbook indítása egy webhook használatával kapcsolatos további információkért lásd: [runbook indítása webhookból](automation-webhooks.md).
 * Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
-* Tevékenységnapló-riasztás létrehozása kapcsolatban lásd: [tevékenységnapló-riasztások létrehozása](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json).
+* Tevékenységnapló-riasztás létrehozása kapcsolatban lásd: [tevékenységnapló-riasztások létrehozása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).

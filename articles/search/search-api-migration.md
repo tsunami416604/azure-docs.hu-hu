@@ -1,6 +1,6 @@
 ---
-title: A legújabb Azure Search szolgáltatás REST API-verzióra való frissítést |} A Microsoft Docs
-description: Az Azure Search szolgáltatás REST API legújabb verziójára
+title: Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra – Azure Search
+description: Tekintse át az API-verziók közötti különbségek, és ismerje meg, milyen műveleteket végezzen a meglévő kód áttelepítése a legújabb Azure Search szolgáltatás REST API-verzióra van szükség.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,14 +9,15 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.custom: seodec2018
+ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620229"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312187"
 ---
-# <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>Az Azure Search szolgáltatás REST API legújabb verziójára
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra
 Ha egy korábbi verzióját használja, a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/), ez a cikk segít frissíteni az alkalmazást a legújabb általánosan elérhető API-verzió, 2017-11-11.
 
 REST API-verzió 2017-11-11 tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább visszamenőlegesen kompatibilis, így a kód módosítása csak minimális erőfeszítéssel, attól függően, melyik verziót használja előtt érdemes beállítani. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új API-verzió használatára.

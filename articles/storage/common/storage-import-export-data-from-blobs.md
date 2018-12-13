@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821242"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315179"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -67,8 +67,8 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
          ![Összes exportálása](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
     - Megadhatja, hogy mely tárolók és blobok exportálása.
-        - **Exportálandó blobok megadásához**: használja a **Equal To** választó. Adja meg a blob, a tároló nevét kezdetű relatív elérési útját. Használat *$root* , adja meg a gyökérszintű tárolóban.
-        - **Adja meg az összes BLOB előtaggal kezdődik,**: használja a **kezdődik** választó. Adja meg az előtag, kezdve a perjellel (/). Az előtag lehet az előtag a tároló nevét, a teljes körű neve vagy a teljes körű neve követ a blobnév előtagja. Ezen a képernyőfelvételen látható módon meg kell adnia a blob elérési útjának érvényes formátumban a feldolgozás során hibák elkerülése érdekében. További információkért lásd: [érvényes blob elérési útjának példái](#examples-of-valid-blob-paths). 
+        - **Exportálandó blobok megadásához**: Használja a **Equal To** választó. Adja meg a blob, a tároló nevét kezdetű relatív elérési útját. Használat *$root* , adja meg a gyökérszintű tárolóban.
+        - **Adja meg az összes BLOB előtaggal kezdődik,**: Használja a **kezdődik** választó. Adja meg az előtag, kezdve a perjellel (/). Az előtag lehet az előtag a tároló nevét, a teljes körű neve vagy a teljes körű neve követ a blobnév előtagja. Ezen a képernyőfelvételen látható módon meg kell adnia a blob elérési útjának érvényes formátumban a feldolgozás során hibák elkerülése érdekében. További információkért lásd: [érvényes blob elérési útjának példái](#examples-of-valid-blob-paths). 
    
            ![Kiválasztott tárolók és blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -105,7 +105,7 @@ Ha nem tudja, hány meghajtót van szüksége, lépjen a [ellenőrizze, hány me
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>3. lépés: A feladat frissítése a nyomkövetési adatokat
+## <a name="step-3-update-the-job-with-tracking-information"></a>3. lépés: A nyomkövetési adatokat a feladat frissítése
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
@@ -127,7 +127,7 @@ Az exportálás befejeződött. Jelenleg is törli a feladatot, vagy automatikus
 
 Ez *választható* . lépés: azt határozza meg, hány meghajtót az exportálási feladat végrehajtásához szükséges segít. Hajtsa végre ezt a lépést a Windows a rendszert egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
 
-1. [Töltse le az 1. verziójának WAImportExport](https://www.microsoft.com/en-us/download/details.aspx?id=42659) a Windows rendszeren. 
+1. [Töltse le az 1. verziójának WAImportExport](https://aka.ms/waiev1) a Windows rendszeren. 
 2. Csomagolja ki az alapértelmezett mappába kívánja `waimportexportv1`. Például: `C:\WaImportExportV1`.
 3. Nyissa meg a PowerShell vagy a parancssori ablakot rendszergazdai jogosultságokkal. A kicsomagolt mappába könyvtár módosításához futtassa a következő parancsot:
     

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Time Series Insights (előzetes verzió) adatok lekérdezése |} A Microsoft Docs
-description: Az Azure Time Series Insights (előzetes verzió) adatok lekérdezése
+title: Az Azure Time Series Insights előzetes verziója adatok lekérdezése |} A Microsoft Docs
+description: Az Azure Time Series Insights előzetes verziója az adatok lekérdezéséhez.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,76 +9,77 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 00ef6eed23d1645320c28123d6670230cdd725c9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 48a9a1d0f79a7a36b90fa87651a5283cba87de20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964917"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275805"
 ---
 # <a name="data-querying"></a>Adatok lekérdezése
 
-Az Azure Time Series Insights (TSI) lehetővé teszi, hogy az adatok lekérdezéséhez az események, és felület nyilvános API-kon keresztül a környezetben tárolt metaadatok. Az API-k is használhatók a [TSI explorer](./time-series-insights-update-explorer.md).
+Az Azure Time Series Insights előzetes verziója lehetővé teszi, hogy az adatok lekérdezéséhez az események, és felület nyilvános API-kon keresztül a környezetben tárolt metaadatok. Ezen API-k is használatban vannak a [Time Series Insights előzetes verziója explorer](./time-series-insights-update-explorer.md).
 
-Az Azure TSI által biztosított három elsődleges API kategóriába sorolhatók:
+A Time Series Insights három elsődleges API-kategóriák érhetők el:
 
-* Környezet API-k engedélyezése a TSI-környezet maga lekérdezése, például környezetek listája hívó férhet hozzá, környezet metaadatokat, és így tovább.
+* **Környezet API-k**: A Time Series Insights-környezet maga lekérdezéseket tesz lehetővé. Lekérdezések példák hozzáfér a hívó környezetek és a környezet metaadatok listája.
 
-* Time series modell-lekérdezés (TSM-Q) API-k engedélyezése létrehozása, olvasása, frissítése és törlés műveletekhez az idősorozat-modell környezet részében tárolt metaadatok. Például a példányok típusok, hierarchiák, stb.
+* **Time Series modell-lekérdezés (TSM-Q) API-k**: Lehetővé teszi, hogy létrehozása, olvasása, frissítése és törlés műveletekhez az idősorozat-modell környezet részében tárolt metaadatok. Példák példányok, típusok és hierarchiák.
 
-* Time series lekérdezés (TSQ) API-k engedélyezése az események adatok lekérése adatforrás-szolgáltatója rögzíti, vagy átalakítása, Összevonás és idősorozat-adatok számításokat hajthat végre műveleteket hajthat végre.
+* **Time Series (TSQ) API-k lekérdezése**: Az adatforrás-szolgáltatója a bejegyzett lehetővé teszi, hogy az események adatok lekéréséhez. Ezen API-k átalakítása, Összevonás és idősorozat-adatok számításokat hajthat végre műveleteket hajthat végre.
 
-A [Time Series kifejezésnyelveket](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) (TSX) egy hatékony, a negyedik, kategória. Time Series modellek (TSM) használ a speciális számítási összeállítás engedélyezése.
+A [Time Series kifejezés (TSX) nyelvi](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) egy hatékony negyedik kategória. Time Series modelleket használ a speciális számítási összeállítás engedélyezése.
 
-## <a name="azure-time-series-insights-core-apis"></a>Az Azure Time Series Insights core API-k
+## <a name="azure-time-series-insights-preview-core-apis"></a>Az Azure Time Series Insights előzetes verziója core API-k
 
-Az alábbiakban alapvető fontosságú API-k is nyújtunk támogatást.
+A következő fő API-k használata támogatott.
 
 ![tsq][1]
 
-### <a name="the-environment-apis"></a>A környezet API-k
+### <a name="environment-apis"></a>Környezet API-k
 
-Környezet API-kat a következők:
+A következő környezet API-k érhetők el:
 
-* [Környezet API beszerzésének](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): a környezetek listáját adja vissza, hogy a hívó jogosult-e el.
-* [Környezet rendelkezésre állási API beszerzésének](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): az esemény időbélyegzője keresztül eloszlás események száma `$ts`. Ez az API segítségével határozza meg, ha más eseményeket az időbélyeg visszaadó események száma, ha az létezik.
-* [Első esemény séma API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): az esemény séma-metaadatok meg egy adott keresés adja vissza. Ez az API segít az összes metaadat/tulajdonság meg a megadott keresés a sémában érhető el.
+* [API-környezet](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): A környezetek listáját adja vissza, hogy a hívó jogosult-e el.
+* [Környezet rendelkezésre állás API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Az esemény időbélyegzője keresztül eloszlás események száma `$ts`. Ez az API segít meghatározni, hogy van-e más eseményeket történő küldés időbélyegzője legyen a visszatérő száma, események, ha vannak ilyenek.
+* [Eseményséma API első](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Az esemény séma-metaadatok meg egy adott keresés adja vissza. Ez az API segít a metaadatok és a tulajdonságok a séma meg a megadott keresés érhetők el.
 
 ### <a name="time-series-model-query-tsm-q-apis"></a>Time Series modell-lekérdezés (TSM-Q) API-k
 
-Time Series modell-Query API-kat a következők:
+A következő alkalommal sorozat modell-lekérdezés API-k érhetők el:
 
-* [Beállítások API minta](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): lehetővé teszi a első és az alapértelmezett típusától és a modell neve, a környezet javítására.
-* [API-típusok](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): a Time Series típusok és azok kapcsolódó változók lehetővé teszi a CRUD.
-* [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): CRUD lehetővé teszi, hogy a Time Series hierarchiák és azok kapcsolódó mező elérési utak.
-* [API-példányok](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): CRUD lehetővé teszi, hogy az idő sorozat példányai és a kapcsolódó szolgáltatáspéldány-mezők.
+* [Beállítások API minta](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): Lehetővé teszi, hogy kaphat, és az alapértelmezett típusától és a modell neve, a környezet javítására.
+* [API-típusok](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): A Time Series-típusok és azok kapcsolódó változók lehetővé teszi a CRUD-MŰVELETEKKEL.
+* [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): A Time Series-hierarchiát és azok kapcsolódó mező elérési utak lehetővé teszi a CRUD-MŰVELETEKKEL.
+* [API-példányok](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): A Time Series-példányok és a társított példány mezők lehetővé teszi a CRUD-MŰVELETEKKEL.
 
-### <a name="the-time-series-query-tsq-apis"></a>A Time Series lekérdezés (TSQ) API-k
+### <a name="time-series-query-tsq-apis"></a>Time Series lekérdezés (TSQ) API-k
 
-Time Series lekérdezési API-kat a következők:
+A következő alkalommal sorozat lekérdezési API-k érhetők el:
 
-* [Események API beszerzésének](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): az első események API lehetővé teszi a lekérdezés és a TSI-események adatainak lekéréséhez az Azure TSI az adatforrás-szolgáltatója a rögzített.
+* [Események API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): Lehetővé teszi a lekérdezés és a Time Series Insights-események adatainak lekéréséhez, már rögzített a Time Series Insightsban az az adatforrás-szolgáltatója.
 
-* [Adatsorozat API beszerzésének](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): a modell vagy megadott soron belüli definiálása lehetővé teszi, hogy lekérdezés és a változók használata a vezetéken rögzített adatok nyújtotta előnyöket kihasználva rögzített események Azure TSI-adatainak beolvasása.
+* [Adatsorozat API első](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): Lehetővé teszi, hogy lekérdezést, illetve a Time Series Insights adatait a rögzített események adatok használatával rögzíti a keresztülhaladnak a hálózaton. A visszaadott értékek a változókat, amelyek a modellben meghatározott vagy a beágyazott megadott alapulnak.
 
     >[!NOTE]
-    > Az összesítési záradék figyelmen kívül hagyja, akkor is, ha a modellben megadott vagy beágyazott megadva.
+    > A rendszer figyelmen kívül hagyja az összesítési záradék, még akkor is, ha a modellben megadott vagy beágyazott megadott.
 
-  A sorozat első API adja vissza egy TSV (sorozat időérték TSI használja a lekérdezés eredményének JSON formátumban) minden egyes változójánál minden egyes időtartam alatt, a megadott alapján **Time Series azonosító** , valamint a megadott változókat.
+  A sorozat első API minden egyes változójánál Time Series értéket ad vissza minden egyes időtartam alatt. Egy időértéket sorozat formátuma a Time Series Insights használ a kimeneti JSON-lekérdezésből. A visszaadott értékek a Time Series-azonosító és a egy megadott változók alapulnak.
 
-* [Adatsorozat API összesített](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): lehetővé teszi, hogy a lekérdezés és a TSI-mintavétel és összesítés által rögzített események adatainak lekéréséhez rögzített adatokat.
+* [Adatsorozat API összesített](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): Lehetővé teszi, hogy lekérdezést, illetve a mintavételi és összesítés által rögzített események a Time Series Insights adatait rögzíti az adatokat.
 
-  Az összesített sorozat API minden egyes időtartam alatt, a megadott alapján adja vissza egy TSV minden egyes változójánál **Time Series azonosító** , valamint a megadott változókat. A sorozat összesített API csökkentése TSM tárolt vagy beágyazott összesítés vagy mintát adatokhoz megadott változók használatával éri el.
+  A sorozat összesített API minden egyes változójánál Time Series értéket ad vissza minden egyes időtartam alatt. Az értékeket a Time Series-azonosító és a egy megadott változók alapulnak. A sorozat összesített API csökkentése az Idősorozat-modellben tárolva, vagy a beágyazott összesítés vagy mintát adatokhoz megadott változók használatával éri el.
 
   Támogatott összesített típusok: `Min`, `Max`, `Sum`, `Count`, `Average`
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Storage (előzetes verzió) az Azure TSI a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
+További információ:
 
-További információ [adatmodellezés](./time-series-insights-update-tsm.md).
-
-További információ [ajánlott eljárásokat, amikor kiválasztja a Time Series ID](./time-series-insights-update-how-to-id.md).
+- [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
+- [Adatmodellezés](./time-series-insights-update-tsm.md)
+- [Ajánlott eljárások a Time Series ID kiválasztásakor](./time-series-insights-update-how-to-id.md)
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

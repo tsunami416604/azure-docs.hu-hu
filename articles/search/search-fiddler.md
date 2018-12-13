@@ -1,5 +1,5 @@
 ---
-title: REST API-k vizsgálata a Fiddlerben vagy a Postmanben (Azure Search REST) | Microsoft Docs
+title: A Fiddler vagy Postman Protokol HTTP webu tesztelési eszközök – Azure Search REST API-k felfedezése
 description: HTTP-kérések és REST API-hívások küldése az Azure Searchbe a Fiddler vagy Postman használatával.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190185"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312982"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Az Azure Search REST API-k vizsgálata a Fiddlerrel vagy a Postmannel
 
@@ -65,7 +66,7 @@ A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból
 
 ### <a name="fiddler"></a>Fiddler
 
-Állítson össze egy, az alábbi képernyőfelvételen láthatóhoz hasonló kérelmet. Ebben használja a **PUT** parancsot. A Fiddler beszúrja a `User-Agent=Fiddler` paramétert. A két további kérelemfejléc ez alá új sorokba illeszthető be. A szolgáltatás tartalomtípusát és API-kulcsát illessze be a szolgáltatás rendszergazdai hozzáférési kulcsának használatával.
+Állítson össze egy kérelmet, amely a következő képernyőképhez hasonlóan néz ki. Ebben használja a **PUT** parancsot. A Fiddler beszúrja a `User-Agent=Fiddler` paramétert. A két további kérelemfejléc ez alá új sorokba illeszthető be. A szolgáltatás tartalomtípusát és API-kulcsát illessze be a szolgáltatás rendszergazdai hozzáférési kulcsának használatával.
 
 ![Fiddler-kérelem fejléce][1]
 
@@ -74,7 +75,7 @@ A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból
 
 ### <a name="postman"></a>Postman
 
-Állítson össze egy, az alábbi képernyőfelvételen láthatóhoz hasonló kérelmet. Ebben használja a **PUT** parancsot. 
+Állítson össze egy kérelmet, amely a következő képernyőképhez hasonlóan néz ki. Ebben használja a **PUT** parancsot. 
 
 ![Postman-kérelem fejléce][6]
 
@@ -82,9 +83,9 @@ A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból
 
 A kérelem törzse tartalmazza az indexdefiníciót. A kérelemtörzs hozzáadása teszi teljessé az indexet létrehozó kérelmet.
 
-Az index neve mellett a mezők gyűjteménye a kérelem legfontosabb összetevője. A mezők gyűjteménye határozza meg az indexsémát. Mindegyik mező esetében határozza meg annak típusát. A keresésekben a karakterláncokat tartalmazó mezők vesznek részt, ezért a numerikus adatokat is érdemes karakterláncként beállítani, ha azt szeretné, hogy a keresés kiterjedjen rájuk.
+Az index neve mellett a mezők gyűjteménye a kérelem legfontosabb összetevője. A mezők gyűjteménye határozza meg az indexsémát. Mindegyik mező esetében határozza meg annak típusát. A keresésekben a sztringekat tartalmazó mezők vesznek részt, ezért a numerikus adatokat is érdemes sztringként beállítani, ha azt szeretné, hogy a keresés kiterjedjen rájuk.
 
-Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden karakterlánc kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor kell attribútumokat beállítania, ha valamely viselkedést ki szeretné kapcsolni. Az attribútumokkal kapcsolatos további információk: [Index létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden sztring kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor kell attribútumokat beállítania, ha valamely viselkedést ki szeretné kapcsolni. Az attribútumokkal kapcsolatos további információk: [Index létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
           {
          "name": "hotels",  
@@ -110,13 +111,13 @@ Ha 504-es HTTP-választ kap, ellenőrizze, hogy az URL-címben a HTTPS előtag v
 
 ### <a name="fiddler"></a>Fiddler
 
-Másolja az indexdefiníciót a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, majd kattintson a jobb felső sarokban az **Execute** (Végrehajtás) parancsra a befejezett kérelem elküldéséhez.
+Másolja az indexdefiníciót a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, és kattintson a **Execute** felső jobb a befejezett kérelem elküldéséhez.
 
 ![Fiddler-kérelem törzse][7]
 
 ### <a name="postman"></a>Postman
 
-Másolja az indexdefiníciót a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, majd kattintson a jobb felső sarokban a **Send** (Küldés) parancsra a befejezett kérelem elküldéséhez.
+Másolja az indexdefiníciót a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, és kattintson a **küldése** felső jobb a befejezett kérelem elküldéséhez.
 
 ![Postman-kérelem törzse][8]
 
@@ -200,13 +201,13 @@ Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült f
 
 ### <a name="fiddler"></a>Fiddler
 
-Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tartalmazza a `/docs/index` útvonalat. Másolja a dokumentumokat a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, majd hajtsa végre a kérelmet.
+Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tartalmazza a `/docs/index` útvonalat. Másolja a dokumentumokat a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, és ezután hajtsa végre a kérést.
 
 ![Fiddler-kérelem hasznos adatai][9]
 
 ### <a name="postman"></a>Postman
 
-Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tartalmazza a `/docs/index` útvonalat. Másolja a dokumentumokat a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, majd hajtsa végre a kérelmet.
+Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tartalmazza a `/docs/index` útvonalat. Másolja a dokumentumokat a kérelemtörzsbe az alábbi képernyőfelvételhez hasonlóan, és ezután hajtsa végre a kérést.
 
 ![Postman-kérelem hasznos adatai][10]
 
@@ -214,16 +215,16 @@ Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tart
 Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket. További információ erről az API-ról: [Dokumentumok keresése (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents)  
 
 + Ebben a lépésben a parancsot cserélje a **GET** parancsra.
-+ Módosítsa a végpontot, hogy tartalmazza a lekérdezési paramétereket, köztük a keresett karakterláncokat is. A lekérdezési URL például a következőképp nézhet ki: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Módosítsa a végpontot, hogy tartalmazza a lekérdezési paramétereket, köztük a keresett sztringekat is. A lekérdezési URL például a következőképp nézhet ki: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + A kérelemfejléceket ne módosítsa
 
-Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szereplő dokumentumok számát adja vissza. A **Send** (Küldés) gombra kattintva a Postman-kérelem és -válasz az alábbi képernyőképhez hasonló lesz. Az állapotkódnak 200-nak kell lennie.
+Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szereplő dokumentumok számát adja vissza. A kérések és válaszok hasonlóan kell kinéznie az alábbi képernyőképen a Postman számára kattintás után **küldése**. Az állapotkódnak 200-nak kell lennie.
 
  ![Postman-lekérdezés válasza][11]
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Tippek a mintalekérdezések Fiddlerben való futtatásához
 
-A következő példalekérdezés az [A keresési index működése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) cikkből származik. A cikkben szereplő számos példalekérdezés szóközt is tartalmaz, amely a Fiddler esetében nem engedélyezett. Minden szóközt cseréljen le + karakterre, mielőtt beillesztené a lekérdezési karakterláncot a lekérdezés Fiddler használatával történő megkísérléséhez.
+A következő példalekérdezés az [A keresési index működése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) cikkből származik. A cikkben szereplő számos példalekérdezés szóközt is tartalmaz, amely a Fiddler esetében nem engedélyezett. Minden szóközt cseréljen le + karakterre, mielőtt beillesztené a lekérdezési sztringet a lekérdezés Fiddler használatával történő megkísérléséhez.
 
 **A szóközök cseréje előtt (a „lastRenovationDate desc” részben):**
 
@@ -240,7 +241,7 @@ A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szere
 
  ![Postman-rendszerlekérdezés][12]
 
-Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A ? karakter választja el az URL-címet a lekérdezési karakterlánctól, az & karakter pedig az egyes „név=érték” párokat a lekérdezési karakterláncon belül. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési karakterlánc.
+Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A ? karakter választja el az URL-címet a lekérdezési sztringtől, az &amp; karakter pedig az egyes „név=érték” párokat a lekérdezési sztringen belül. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
 
 További információk erről az API-ról: [Indexstatisztikák lekérdezése (REST)](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics).
 

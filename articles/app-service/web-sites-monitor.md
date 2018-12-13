@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-alkalmazások figyelése |} A Microsoft Docs
+title: – Az Azure App Service-alkalmazások figyelése |} A Microsoft Docs
 description: Ismerje meg az Azure App Service-alkalmazások figyelése az Azure portal használatával.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 6334b4cc50bfa6dca709fdc9d65938f0fec3ad1c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956750"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321579"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: az Azure App Service-alkalmazások figyelése
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: Alkalmazások figyelése az Azure App Service-ben
 [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714) a beépített monitorozási funkciókat biztosít a [az Azure portal](https://portal.azure.com).
 Az Azure Portalon lehetőség tekintse át **kvóták** és **metrikák** az alkalmazás, valamint az App Service-csomag, beállítása **riasztások** és még **méretezése**  metrikák alapján automatikusan.
 
@@ -53,7 +54,7 @@ Az alkalmazás működik, ha egy **alapszintű**, **Standard** vagy **prémium**
 
 A csak lévő üzemeltetett alkalmazások vonatkozó kvóta **alapszintű**, **Standard**, és **prémium** tervek van **fájlrendszer**.
 
-További információ a konkrét kvóták, korlátozások és a másik App Service Termékváltozatai elérhető funkciók itt található: [Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md#app-service-limits)
+További információ a konkrét kvóták, korlátozások és a másik App Service Termékváltozatai elérhető funkciók itt található: [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Kvóta kényszerítése
 Ha egy alkalmazás nagyobb, mint a **CPU (rövid)**, **CPU (nap)**, vagy **sávszélesség** kvóta majd az alkalmazás le van állítva, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban az összes bejövő kéréseket eredményez olyan **HTTP 403**.
@@ -75,7 +76,7 @@ Az egy **alkalmazás**, a rendelkezésre álló metrikák:
 * **Átlagos memória-munkakészlet**
   * Az átlagos MIB-adatbázisból az alkalmazás által használt memória mennyiségét.
 * **CPU-idő**
-  * Az alkalmazás által felhasznált másodpercek alatt CPU mérete. Ez a metrika kapcsolatos további információkért lásd: [időhányad vs CPU Processzor (%)](#cpu-time-vs-cpu-percentage)
+  * Az alkalmazás által felhasznált másodpercek alatt CPU mérete. Ez a metrika kapcsolatos további információkért lásd: [Processzorhasználat idő vs CPU (%)](#cpu-time-vs-cpu-percentage)
 * **Az adatok**
   * A MIB-alkalmazás által használt bejövő sávszélesség mennyiségét.
 * **Kimenő adatforgalom**
@@ -144,15 +145,15 @@ Megtekintheti a különböző állapotának **kvóták** és **metrikák** hatá
 **Kvóták** találja a beállítások >**kvóták**. A felhasználói felület lehetővé teszi, hogy tekintse át: (1) a kvóták nevét, (2) a átállítási időközt, (3) az aktuális korlát és (4) a jelenlegi érték.
 
 ![][metrics]
-**Metrikák** elérhető közvetlenül az erőforrás-oldalon. A diagram a testre is szabhatja: (1) **kattintson** , és (2) válassza a **diagram szerkesztése**.
+**Metrikák** elérhető közvetlenül az erőforrás-oldalon. Testre szabhatja a diagram: (1) **kattintson** , és (2) válassza a **diagram szerkesztése**.
 Itt módosíthatja a (3) **időtartomány**, (4) **diagramtípus**, és (5) **metrikák** megjelenítéséhez.  
 
-További információk a metrikákról itt: [Monitorozza a szolgáltatások mérőszámait](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+További információk a metrikákról itt: [Szolgáltatási metrikák figyelése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Riasztások és az automatikus méretezés
 Egy alkalmazás vagy az App Service-csomagra metrikák riasztásokat is lehet csatolja. További tudnivalókért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Alapszintű, standard vagy prémium szintű App Service-csomagok támogatási üzemeltetett App Service-alkalmazások **automatikus skálázási**. Automatikus skálázási szabályokat, amelyek az App Service-csomag metrikái figyelése konfigurálását teszi lehetővé. Szabályok növelheti vagy csökkentheti a példányszám igény szerint a további erőforrások rendelkezésre bocsátása. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve. További tudnivalók itt az automatikus skálázás: [méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md) és itt [ajánlott eljárások az Azure Monitor automatikus skálázáshoz](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Alapszintű, standard vagy prémium szintű App Service-csomagok támogatási üzemeltetett App Service-alkalmazások **automatikus skálázási**. Automatikus skálázási szabályokat, amelyek az App Service-csomag metrikái figyelése konfigurálását teszi lehetővé. Szabályok növelheti vagy csökkentheti a példányszám igény szerint a további erőforrások rendelkezésre bocsátása. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve. Automatikus skálázás Itt többet tudhat meg: [A méretezési csoport hogyan](../monitoring-and-diagnostics/insights-how-to-scale.md) és itt [ajánlott eljárások az Azure Monitor automatikus skálázáshoz](../azure-monitor/platform/autoscale-best-practices.md)
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
