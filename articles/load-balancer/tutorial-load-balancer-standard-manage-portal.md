@@ -195,7 +195,7 @@ Előfordulhat, hogy karbantartás kell végeznie az alkalmazást futtató virtu�
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a háttérkészlet listájában kattintson a **myBackendPool** elemre.
 3. A **myBackendPool** lap **Célhálózat IP-konfigurációja** területén kattintson a **Virtuális gép: myVM1** melletti törlés ikonra a *VM1* a háttérből való eltávolításához
 
-Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. A *VM1** nélkül a terhelés most a *myVM2* és a *myVM3* között van elosztva. 
+Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. A \*VM1\*\* nélkül a terhelés most a *myVM2* és a *myVM3* között van elosztva. 
 
 Ha újra hozzá szeretné adni a *myVM1* virtuális gépet a háttérkészlethez, kövesse jelen cikk *Virtuális gépek hozzáadása a háttérkészlethez* szakaszát.
 
