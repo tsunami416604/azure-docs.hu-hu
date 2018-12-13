@@ -10,7 +10,7 @@ ms.date: 07/11/2018
 ms.author: ramkris
 ms.openlocfilehash: b52305d59803d9fb8e70d89ae13cd5006c74129f
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52865454"

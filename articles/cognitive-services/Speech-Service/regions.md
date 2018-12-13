@@ -1,5 +1,5 @@
 ---
-title: Beszéd szolgáltatási régiók
+title: Régió – beszédszolgáltatások
 titlesuffix: Azure Cognitive Services
 description: A beszédfelismerési szolgáltatás régiók referenciája.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: mahilleb
-ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712891"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091645"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -45,7 +46,7 @@ A beszédfelismerés SDK érhető el ezekben a régiókban a **beszédfelismeré
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 
-**Szándékfelismerés** a Speech SDK megosztások régió támogatja az intelligens hangfelismerési szolgáltatással. Az elérhető régiók teljes listáját lásd: [régiók és a végpontok – intelligens HANGFELISMERÉSI közzététele](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
+**Szándékfelismerés** a Speech SDK megosztások régió támogatja az intelligens hangfelismerési szolgáltatással. Az elérhető régiók teljes listáját lásd: [régiók és a végpontok – intelligens HANGFELISMERÉSI közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
 
 Választható régiók **szándékának felismerése** a Speech SDK-n keresztül jelennek meg a [Language Understanding szolgáltatásoldal régió](/azure/cognitive-services/luis/luis-reference-regions).
 
@@ -55,13 +56,13 @@ Minden felsorolt közzétételi régió, használja a megadott **API régió nev
 
 A beszédfelismerési szolgáltatás is elérhetővé teszi a hang-szöveg és a szöveg-hang transzformációs kérések REST-végpontokat.
 
-### <a name="speech-to-text"></a>Speech-to-text
+### <a name="speech-to-text"></a>Hang-szöveg
 
 Referencia a hang-szöveg transzformációs dokumentációjáért lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
-### <a name="text-to-speech"></a>Text-to-speech
+### <a name="text-to-speech"></a>Szövegfelolvasás
 
 Szöveg-hang transzformációs dokumentációja, lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
 

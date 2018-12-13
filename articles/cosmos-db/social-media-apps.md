@@ -1,21 +1,19 @@
 ---
-title: 'Az Azure Cosmos DB-tervezési minta: közösségimédia-alkalmazások |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB-tervezési minta: közösségimédia-alkalmazások'
 description: Ismerje meg a kialakítási mintában a közösségi hálózatokkal a storage rugalmas Azure Cosmos DB és más Azure-szolgáltatások kihasználásával.
 keywords: közösségimédia-alkalmazások
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c2911ac65b95ea0a705944fdd8fb9288af28498
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: MT
+ms.openlocfilehash: 73f9de856ac81fcd475f9d77b234ae778f7397fb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165679"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871854"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 

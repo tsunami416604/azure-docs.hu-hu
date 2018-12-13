@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: bfa36cfeda514be0941481b0e4ed5ab9b3669b54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2da89e674b967287150b2e8f3a98fc25df2af81e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238097"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878261"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Bootstrap használatával HDInsight-fürtök testre szabása
 
@@ -50,7 +50,7 @@ További összetevők telepítése HDInsight-fürtön a létrehozás ideje alatt
 * [Fürtök testreszabása a HDInsight használatával Script Action (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
-A következő PowerShell-kódot egy Hive-konfiguráció személyre szabható:
+A következő PowerShell-kóddal személyre szabható- [Apache Hive](https://hive.apache.org/) konfiguráció:
 
 ```powershell
 # hive-site.xml configuration
@@ -128,11 +128,11 @@ Rendszerindítási használhatja a Resource Manager-sablon:
 ![HDInsight Hadoop fürt bootstrap Azure Resource Manager-sablon testre szabása](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Lásd még
-* [A HDInsight Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
+* [A HDInsight Apache Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight][hdinsight-write-script]
-* [Spark telepítése és használata HDInsight-fürtökön][hdinsight-install-spark]
-* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
-* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
+* [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]
+* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
+* [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

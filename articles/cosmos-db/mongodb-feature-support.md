@@ -1,21 +1,19 @@
 ---
-title: Azure Cosmos DB szolgáltatástámogatás a MongoDB-hez | Microsoft Docs
+title: Az Azure Cosmos DB-funkciók támogatása a mongodb-hez
 description: Ismerje meg az Azure Cosmos DB MongoDB API a MongoDB 3.4 számára biztosított szolgáltatástámogatását.
 services: cosmos-db
 author: alekseys
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: d9616f87e76231c3bb587c2018572b7526b471a5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 01e8af08ff5059867cc49cb9d55ae92f2ae21cdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050340"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879672"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>A MongoDB API támogatása a MongoDB funkcióihoz és szintaxisához
 

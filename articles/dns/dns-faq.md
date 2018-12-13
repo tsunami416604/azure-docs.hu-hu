@@ -1,24 +1,18 @@
 ---
-title: Az Azure DNS – gyakori kérdések |} A Microsoft Docs
+title: Az Azure DNS – gyakori kérdések
 description: Az Azure DNS – gyakran ismételt kérdések
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 9/25/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: daf65b00ffa753568ab99e64365cc0625792f593
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092678"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880148"
 ---
 # <a name="azure-dns-faq"></a>Az Azure DNS – gyakori kérdések
 
@@ -26,7 +20,7 @@ ms.locfileid: "50092678"
 
 ### <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
-A tartománynévrendszer (DNS) a rendszer lefordítja, vagy az IP-címét a webhely vagy szolgáltatás nevének feloldása. Az Azure DNS a DNS-tartományok egy üzemeltetési szolgáltatás. Névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. A tartományok Azure-ban üzemelteti, azonos hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal más Azure-szolgáltatások által a DNS-rekordok is kezelheti.
+A tartománynévrendszer (DNS) a rendszer lefordítja, vagy az IP-címét a webhely vagy szolgáltatás nevének feloldása. Az Azure DNS a DNS-tartományok egy üzemeltetési szolgáltatás. Névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
 DNS-tartományok Azure DNS-ben üzemeltetett DNS-kiszolgálók neve az Azure globális hálózatán. A rendszer használja, a csomópontválasztásos hálózat úgy, hogy minden DNS-lekérdezést a legközelebbi elérhető DNS-kiszolgáló válaszolt. Az Azure DNS által nyújtott, gyors teljesítményt és magas rendelkezésre állást a tartomány.
 
@@ -46,7 +40,7 @@ További információkért lásd: a [Azure DNS SZOLGÁLTATÁSSZINT-szerződésü
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Mi a DNS-zóna? Ugyanaz, mint a DNS-tartomány? 
 
-A tartomány egy egyedi nevet a tartománynévrendszerben. Például a contoso.com.
+A tartomány egy egyedi nevet a tartománynévrendszerben. Például: contoso.com.
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok egy levelezési kiszolgálóhoz mail.contoso.com és a egy webhely www.contoso.com tartalmazhatnak. Ezeket a rekordokat a contoso.com DNS-zónában üzemelnek.
 
@@ -102,9 +96,9 @@ Igen. Az Azure DNS támogatja a kiterjesztett ASCII-set txt típusú rekordhalma
 
 Például egy felhasználó előfordulhat, hogy adjon meg egy karakterláncot értékeként egy txt típusú rekordot, amely rendelkezik a kiterjesztett ASCII karaktert \128. Ilyen például, "abcd\128efgh." Az Azure DNS belső ábrázolás ezt a karaktert, amely 128 bájt értékét használja. A DNS-feloldás időpontjában a bájtérték a választ adja vissza. Azt is vegye figyelembe, hogy "abc" és "\097\098\099" felcserélhetők feloldási illeti. 
 
-Követjük [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna a fájl fő formátum escape txt típusú rekordok szabályait. Például "\" most ténylegesen lehet kilépni mindent az RFC száma. Ha a "A\B" a txt típusú rekord értékeként adja meg, megjelenjen, és Megoldva mint csak "AB-ből." Ha a TXT-rekord "A\B" megoldás, hogy valóban szeretné karaktert kell a "\" újra. Tegyük fel, adja meg az "A\\B". 
+Követjük [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna a fájl fő formátum escape txt típusú rekordok szabályait. Ha például `\` most ténylegesen lehet kilépni mindent az RFC száma. Ha megad `A\B` txt típusú rekord értékét jelöli, és egyszerűen megoldott `AB`. Ha a TXT-rekordot, hogy valóban szeretné `A\B` karaktert kell felbontású, a `\` újra. Tegyük fel, adja meg a `A\\B`.
 
-Ez a támogatás jelenleg nem érhető el az Azure portálon létrehozott txt típusú rekordok. 
+Ez a támogatás jelenleg nem érhető el az Azure portálon létrehozott txt típusú rekordok.
 
 ## <a name="alias-records"></a>Aliasrekordok
 
@@ -119,6 +113,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támoga
 - CNAME 
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Alias rekordhalmazok célként által támogatott?
+
 - **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** Egy A vagy AAAA típusú rekordhalmaz létrehozása, és adja meg egy alias rekordhalmaz átirányítása nyilvános IP-erőforrást.
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Alias rekordok hivatkozhat, más azonos típusú rekordhalmazok. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
@@ -197,49 +192,63 @@ Konfigurálja az IDN formátumú tartománynevek az Azure DNS-ben, konvertálja 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 ### <a name="does-azure-dns-support-private-domains"></a>Támogatja az Azure DNS saját tartományok?
+
 Saját tartomány támogatása a saját zónák funkció segítségével van megvalósítva. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. Privát zónák jól ismert eszközökkel, mint az Azure DNS-zónák az internet felé néző kezeli. A megadott virtuális hálózaton belül csak a feloldható zajlik. További információkért lásd: a [áttekintése](private-dns-overview.md).
 
 Jelenleg a privát zónák az Azure Portalon nem támogatottak. 
 
 Információk az egyéb belső DNS-beállítások az Azure-ban: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-### <a name="whats-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Mi a különbség, regisztrációs virtuális hálózatok és a feloldási virtuális hálózat között a privát zónák kontextusában? 
+### <a name="whats-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Mi a különbség, regisztrációs virtuális hálózatok és a feloldási virtuális hálózat között a privát zónák kontextusában?
+
 Kapcsolat virtuális hálózatok privát DNS-zóna egy regisztrációs virtuális hálózatként vagy feloldási virtuális hálózatot. Mindkét esetben a virtuális hálózatban lévő virtuális gépek sikeresen fel kell oldania a saját zóna rekordjait ellen. Regisztráció a virtuális hálózat DNS-rekordok automatikusan regisztrált a zónához, a virtuális gépek a virtuális hálózatban. Ha egy virtuális géphez a virtuális hálózat törlése egy regisztrációt, a rendszer automatikusan eltávolítja a megfelelő DNS-rekord a csatolt titkos zónából. 
 
 ### <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Működni fog az Azure DNS Private Zones Azure-régióban?
+
 Igen. Saját zónák DNS-feloldás Azure-régiók közötti virtuális hálózatok között támogatott. Saját zónák nélkül is a virtuális társhálózatok explicit módon működik. A virtuális hálózatok kell megadni, feloldási virtuális hálózatok a privát zónához. Az ügyfeleknek kell előfordulhat, hogy a virtuális hálózatok társviszonyba állíthatók, a TCP/HTTP-adatforgalom megvalósulását egyik régióból egy másikba.
 
 ### <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Az Internet kapcsolat van a virtuális hálózatok privát zónák szükséges?
+
 Nem. Privát zónák működik együtt a virtuális hálózatok. Ügyfelek ezek segítségével virtuális gépeket vagy egyéb erőforrások belül és azok a virtuális hálózatok között a tartományok kezelése. Internetkapcsolat nem szükséges a névfeloldáshoz. 
 
-### <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>A megoldás több virtuális hálózatokban használható privát ugyanabban a zónában? 
+### <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>A megoldás több virtuális hálózatokban használható privát ugyanabban a zónában?
+
 Igen. Ügyfelek társíthat legfeljebb 10 feloldási virtuális hálózatok csak egy privát zónához.
 
-### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat lehet hozzáadni a feloldási virtuális hálózatot, egy privát zónák? 
+### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat lehet hozzáadni a feloldási virtuális hálózatot, egy privát zónák?
+
 Igen. A felhasználó kell írási engedélye a művelet a virtuális hálózatok és a privát DNS-zónát. Az írási engedély adható számos RBAC-szerepkört. Például a klasszikus hálózati közreműködő RBAC szerepkör rendelkezik írási engedéllyel a virtuális hálózatokhoz. További információ az RBAC-szerepkörök: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>A privát zónák automatikusan regisztrált virtuális gép DNS-rekordok automatikusan törölve lesznek az ügyfél által a virtuális gépek törlése esetén?
+
 Igen. Ha törli a regisztrációs virtuális hálózaton belüli virtuális gépek, a DNS-rekordokat a zónában történő regisztrált automatikusan törlődnek. 
 
-### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>A privát zónák regisztrációs virtuális hálózatról egy automatikusan regisztrált virtuális gép bejegyzéséhez törölhetők manuálisan? 
+### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>A privát zónák regisztrációs virtuális hálózatról egy automatikusan regisztrált virtuális gép bejegyzéséhez törölhetők manuálisan?
+
 Nem. A virtuális gép DNS-rekordokat, amelyek automatikusan regisztrálva lettek a regisztrációs virtuális hálózatról privát zónák nem látható vagy ügyfél által szerkeszthető. Az automatikus regisztrált DNS-rekordok felülírhatja a manuálisan létrehozott DNS-rekordot a zónában. A következő kérdést és választ címe ebben a témakörben.
 
-### <a name="what-happens-when-we-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Mi történik, előfordulhat, hogy manuálisan hozzon létre új DNS-rekord egy privát zónához, a regisztrációs virtuális hálózatban automatikusan regisztrált meglévő virtuális gépként az azonos állomásnévvel rendelkező? 
+### <a name="what-happens-when-we-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Mi történik, előfordulhat, hogy manuálisan hozzon létre új DNS-rekord egy privát zónához, a regisztrációs virtuális hálózatban automatikusan regisztrált meglévő virtuális gépként az azonos állomásnévvel rendelkező?
+
 Próbálja meg manuálisan hozzon létre új DNS-rekord egy privát zónához, amely rendelkezik az azonos állomásnévvel meglévő, automatikusan regisztrált virtuális gépként a regisztrációs virtuális hálózatban. Ha így tesz, az új DNS-rekord felülírja az automatikusan regisztrált virtuális gép rekord. Ha törli a kézzel létrehozott DNS-rekordot a zóna újra megpróbálja a törlés sikeres lesz. Az automatikus regisztráció mindaddig, amíg a virtuális gép még létezik, és a egy magánhálózati IP-Címmel csatlakoztatott újra jelentkezik. A DNS-rekord nem hozza létre újra automatikusan a zónában.
 
 ### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>Mi történik, ha azt a privát zónák regisztrációs virtuális hálózat leválasztása? A virtuális hálózat automatikusan regisztrált virtuális gép rekordját törlődni fognak a zóna túl?
+
 Igen. Leválasztja a regisztrációs virtuális hálózatnak a privát zónák, eltávolítja a kapcsolódó regisztrációs virtuális hálózat DNS-zóna frissítése. Ez a folyamat automatikusan regisztrált virtuális gép rekordokat a zóna törlődnek. 
 
 ### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Mi történik, ha egy privát zónához társított regisztrációs vagy feloldási virtuális hálózat töröljük? Rendelkezünk a saját zóna leválasztja a virtuális hálózat egy regisztrációs vagy feloldási virtuális hálózatot a zónából manuálisan frissíteni?
+
 Igen. Ha töröl egy regisztrációs vagy feloldási virtuális hálózatot a privát zónák leválasztása nélkül, a törlési művelet sikeres lesz. De a virtuális hálózat nem automatikusan leválasztása a privát zónából, ha van ilyen. Manuálisan kell megszünteti a virtuális hálózattal a saját zóna. Ebből kifolyólag leválasztása a virtuális hálózaton lévő a privát zónák azok törlése előtt.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>DNS-feloldás az alapértelmezett teljes Tartományneve (internal.cloudapp.net) használatával továbbra is működni fognak még akkor is, ha a privát zónák (például contoso.local) van csatolva a virtuális hálózat? 
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>DNS-feloldás az alapértelmezett teljes Tartományneve (internal.cloudapp.net) használatával továbbra is működni fognak még akkor is, ha a privát zónák (például contoso.local) van csatolva a virtuális hálózat?
+
 Igen. Saját zónák nem lecseréli a alapértelmezett DNS-megoldások az Azure által biztosított internal.cloudapp.net zóna használatával. További szolgáltatások vagy a fejlesztés érhető el. E használ, az Azure által biztosított internal.cloudapp.net, illetve a saját privát zónák, használja a feloldás kívánt zóna teljes Tartománynevét. 
 
-### <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>A DNS-utótagot a társított virtuális hálózaton belüli virtuális gépek változik, valamint a saját zóna? 
+### <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>A DNS-utótagot a társított virtuális hálózaton belüli virtuális gépek változik, valamint a saját zóna?
+
 Nem. Az alapértelmezett Azure által biztosított utótag változatlan marad a virtuális gépek, a társított virtuális hálózat DNS-utótag ("*. internal.cloudapp.net"). A privát zónák a a virtuális gépeken manuálisan módosíthatja a DNS-utótagot. 
 
 ### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>Vonatkozik valamilyen korlátozás a saját zónák az előzetes verzió használata során?
+
 Igen. A nyilvános előzetes verzióban létezik a következő korlátozások vonatkoznak.
 * Egy regisztrációs virtuális hálózat privát zónánként.
 * Legfeljebb 10 feloldási virtuális hálózatok privát zónánkénti.
@@ -252,9 +261,11 @@ Igen. A nyilvános előzetes verzióban létezik a következő korlátozások vo
 * Feltételes továbbítás nem támogatott például ahhoz, hogy a megoldás az Azure és helyszíni hálózat között. Ismerje meg, hogyan valósíthat meg ügyfelek is ez a forgatókönyv más mechanizmusok használatával. Lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Bármely kvóták vagy zónák vagy a saját zónák rekordok vonatkozó korlátozások vannak-e?
+
 A zónák a saját zónák előfizetésenként engedélyezett száma nincs korlátozva van. A saját zónák zónánként rekordhalmazok száma nincs korlátozva van. Nyilvános és privát zónák beleszámítanak az összesített DNS-korlátok. További információkért lásd: a [Azure-előfizetés- és Szolgáltatáskorlátok](../azure-subscription-service-limits.md#dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Van-e a saját zónák portal-támogatást?
+
 API-k, PowerShell, CLI és SDK-k használatával már létrehozott privát zónák láthatók az Azure Portalon. De ügyfelek nem új privát zónák létrehozása és kezelése virtuális hálózatokkal társítások. Kapcsolódó regisztrációs virtuális hálózatok, virtuális hálózatok automatikusan regisztrált virtuális gép rekordok nem látható a portálon. 
 
 ## <a name="next-steps"></a>További lépések

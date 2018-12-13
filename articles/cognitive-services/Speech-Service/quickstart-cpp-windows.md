@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd felismerése C++ nyelven Windows rendszeren a Speech Service SDK használatával'
+title: 'Gyors útmutató: Recognize speech, C++ (Windows) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát asztali Windows rendszeren, C++ nyelven a Speech Service SDK segítségével.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218736"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075187"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C++ nyelven a Speech SDK segítségével
 
@@ -31,11 +31,11 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
 1. Indítsa el a Visual Studio 2017-et.
 
-1. Győződjön róla meg, hogy elérhető az **Asztali fejlesztés a C++ segítségével** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha már engedélyezve van ez a számítási feladat, ugorjon a következő lépésre. 
+1. Győződjön róla meg, hogy elérhető az **Asztali fejlesztés a C++ segítségével** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha már engedélyezve van ez a számítási feladat, ugorjon a következő lépésre.
 
     ![A Visual Studio Számítási feladatok lapjának képernyőképe](media/sdk/vs-enable-cpp-workload.png)
 
-    Ha még nincs, jelölje be az **Asztali fejlesztés a C++ segítségével** lehetőség mellett található jelölőnégyzetet. 
+    Ha még nincs, jelölje be az **Asztali fejlesztés a C++ segítségével** lehetőség mellett található jelölőnégyzetet.
 
 1. Ellenőrizze, hogy a **NuGet-csomagkezelő** összetevő elérhető-e. Váltson a Visual Studio telepítési párbeszédpaneljének **Egyéni összetevők** lapjára, és válassza ki a **NuGet-csomagkezelő** lehetőséget, ha még nincs engedélyezve.
 

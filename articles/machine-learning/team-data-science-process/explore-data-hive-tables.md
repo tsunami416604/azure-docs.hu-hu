@@ -1,6 +1,6 @@
 ---
 title: Fedezze fel az adatokat a Hive-lekérdezéseket a Hive-táblákban |} A Microsoft Docs
-description: Fedezze fel az adatokat a Hive-lekérdezések használatával Hive-táblákban.
+description: A Hive-táblákban egy HDInsight Hadoop-fürtön az adatok által használt minta Hive parancsfájlok használata.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: c50c6de28c60bbe6a6c0d510e62f35cd037d6e95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 87ac0d61a51231970916b35337e313921b7f966b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443312"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091907"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>A Hive-táblákban tárolt adatok megismerése Hive-lekérdezésekkel
 

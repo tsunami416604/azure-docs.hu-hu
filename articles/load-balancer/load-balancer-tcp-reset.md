@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: 3cc4db387c33388d5692fa25ac26f2b6399cd185
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883635"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879837"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
@@ -76,7 +76,17 @@ Ezt a paramétert a következő régiók jelenleg hatékony.  A régióban nem s
 | Régió |
 |---|
 | Délkelet-Ázsia |
+| Dél-Brazília |
+| Közép-Kanada |
 | Nyugat-Európa |
+| Közép-India |
+| Nyugat-India |
+| Nyugat-Japán |
+| Korea középső régiója |
+| Korea déli régiója |
+| Egyesült Királyság északi régiója |
+| Egyesült Királyság 2. déli régiója |
+| USA keleti régiója |
 | USA 2. keleti régiója |
 | USA északi régiója |
 | USA nyugati régiója |

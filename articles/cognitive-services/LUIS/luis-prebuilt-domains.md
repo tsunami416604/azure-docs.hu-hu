@@ -1,21 +1,22 @@
 ---
-title: Előre összeállított tartományok a Language Understanding (LUIS)
+title: A nyelvi Understa előre összeállított tartományok
 titleSuffix: Azure Cognitive Services
 description: A LUIS előre összeállított tartományok esetében gyakori, természetes nyelvi felhasználói esetek rövid idő alatt hozzáadhat egy készletét tartalmazza.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: b1c7ced4a934ea5d094e0c54a295870986f09933
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 05c6981c4962827154764df0e874824e5398d96d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651877"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074400"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>Gyakori használati forgatókönyvek az előre összeállított tartományok hozzáadása 
 
@@ -49,7 +50,7 @@ Teszt új célja a végponton által hozzáadott értéket a **q** paraméter: `
 
 A LUIS értéket ad vissza, a megfelelő leképezés és értekezlet tulajdonos:
 
-```JSON
+```json
 {
   "query": "Schedule a meeting with John Smith in Seattle next week",
   "topScoringIntent": {

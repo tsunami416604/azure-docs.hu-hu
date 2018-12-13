@@ -1,21 +1,22 @@
 ---
-title: Azure Blob Storage-események átirányítása egyéni webes végpontra | Microsoft Docs
-description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
+title: Webes végpont – Azure CLI az Azure Blob storage-események küldése |} A Microsoft Docs
+description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre. Az eseményeket küld egy Webhookot. Az események egy webes alkalmazásban kezelni.
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735087"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073720"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Azure Blob Storage-események átirányítása egyéni webes végpontra az Azure CLI használatával
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Gyors útmutató: A tárolási események átirányítása az Azure CLI-vel webes végpont
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez.
 
@@ -30,9 +31,9 @@ A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadato
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy az Azure CLI legújabb verzióját futtatja-e (2.0.24 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
+Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/31/2018
-ms.openlocfilehash: d4ecfe700c90beb94455e3607cee4ea30227bd0e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f98c09a7e51fa729ef4a940e5f3c03de55d8dfd2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166232"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875280"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Teljesítményszámlálók a szilánkleképezés-kezelőhöz
 Teljesítményének rögzítése egy [szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md), különösen akkor használ, [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md). Számlálók Microsoft.Azure.SqlDatabase.ElasticScale.Client osztály-módszerekkel együtt jönnek létre.  
@@ -31,7 +31,7 @@ Számlálók teljesítményének nyomon követésére használt [Adatfüggő út
 * Hozzon létre egy teljesítményszámláló-példány, és frissíti a számlálókat, a felhasználó tagja kell lennie a **rendszergazdák** vagy **Teljesítményfigyelő felhasználók** csoport. 
 
 ## <a name="create-performance-category-and-counters"></a>Teljesítmény kategória és -számlálók létrehozása
-A számlálók létrehozásához hívja CreatePeformanceCategoryAndCounters módszer a [ShardMapManagmentFactory osztály](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Csak a rendszergazda hajthat végre a metódus: 
+A számlálók létrehozásához hívja CreatePeformanceCategoryAndCounters módszer a [ShardMapManagementFactory osztály](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Csak a rendszergazda hajthat végre a metódus: 
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 

@@ -1,21 +1,22 @@
 ---
-title: Földrajzi hely V2 előre összeállított entitások - LUIS-referencia
+title: Földrajzi hely V2 előre összeállított entitások
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk tartalmaz geographyV2 előre összeállított entitások információ a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cjgronlund
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 3559bc02944f88f486104d4d9553f0c45a1f1754
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 07bbb8e17a9f75bd878c384b5b8d90798d043814
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983412"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086221"
 ---
 # <a name="geographyv2-entity"></a>GeographyV2 entitás
 Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Angol nyelven támogatott GeographyV2 entitás [kulturális környezet](luis-reference-prebuilt-entities.md).
@@ -35,7 +36,7 @@ A földrajzi helyeket altípus rendelkezik:
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
 
-```JSON
+```json
 {
     "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
     "topScoringIntent": {

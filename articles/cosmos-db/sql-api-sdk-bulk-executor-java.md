@@ -1,22 +1,20 @@
 ---
-title: 'Az Azure Cosmos DB: tömeges végrehajtó Java API, SDK és -erőforrások |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB: tömeges végrehajtó Java API, SDK és -erőforrások'
 description: Mindent megtudhat a tömeges végrehajtó Java API-t és az SDK-val többek között a kiadási dátum, használatból való kivonást egyaránt dátumokat és az Azure Cosmos DB Java SDK tömeges végrehajtó minden verziója között végrehajtott módosítások.
 services: cosmos-db
 author: tknandu
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 3483a2cf30421e96bc408516bab5c3c304fdce0d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: fbfbe6e5df74e5ad24b0a5fe69b370f64be1758b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632506"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867358"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtár: adatok letöltése
 

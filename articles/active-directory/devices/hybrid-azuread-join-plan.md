@@ -18,7 +18,7 @@ ms.author: markvi
 ms.reviewer: sandeo
 ms.openlocfilehash: e273568a04ec2a3758684025acf8034b8e788627
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52871338"

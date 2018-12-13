@@ -8,22 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: edc1dac05a8ab4281eee3ee0eb4c5e6b7571b404
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: 17528b148c04f48fa8222f64900bdf5c3b95ee25
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856436"
+ms.locfileid: "52873648"
 ---
 # <a name="shaping-events-with-azure-time-series-insights-preview"></a>Alakításra eseményeket az Azure Time Series Insights (előzetes verzió)
 
-Ez a cikk ismerteti, amelyeket formázhat JSON útmutatást, maximalizálása érdekében a hatékonyság érdekében, még az Azure Time Series Insights (előzetes verzió) lekérdezéseket.
+Ez a cikk nyújt útmutatást, amelyeket formázhat JSON-t, az Azure Time Series Insights (TSI) előzetes lekérdezések hatékonyságának maximalizálása érdekében.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-
-> [!NOTE]
-> Az Azure TSI (előzetes verzió) az S1/S2 600 – 800 tulajdonság korlátozásai nem vonatkoznak.
 
 Fontos, milyen események küldése az Azure TSI állításoknak. Nevezetesen akkor mindig:
 
@@ -108,7 +105,7 @@ Time Series-példány (Megjegyzés: a **Time Series azonosító** van *deviceId*
   },
 ```
 
-A TSI tartományhoz (után az egybesimítás) tábla lekérdezési idő alatt. Írja be például a további oszlopok a tábla tartalmazza. Ez a példa bemutatja, hogyan átalakíthatja a telemetriai adatok:
+A TSI tartományhoz (után az egybesimítás) tábla lekérdezési idő alatt. Írja be például a további oszlopok a tábla tartalmazza. Ez a példa bemutatja, hogyan zajlik [alakzat](./time-series-insights-send-events.md#json) a telemetriai adatok:
 
 | deviceId  | Típus | L1 | 2. | időbélyeg | adatsorozat. A folyamat arány láb3/s | adatsorozat. Olaj nyomás psi motor |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -130,3 +127,5 @@ Megjegyzés: az előző példában a következőket:
 ## <a name="next-steps"></a>További lépések
 
 Ezeket az irányelveket a gyakorlatba, tekintse meg [Azure TSI lekérdezési szintaxis](./time-series-insights-query-data-csharp.md) további információ a lekérdezés szintaxisa a TSI adatelérési REST API számára.
+
+További információ a támogatott JSON-alakzatok, olvassa el [támogatott JSON-alakzatok](./time-series-insights-send-events.md#json).

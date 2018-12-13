@@ -1,18 +1,19 @@
 ---
-title: Az Azure AD alkalmazás előfeltételeknek (előző kiadás) az Azure Disk Encryption |} A Microsoft Docs
+title: Az Azure Disk Encryption az Azure AD alkalmazás előfeltételeknek (előző kiadás)
 description: Ez a cikk ismerteti a Microsoft Azure Disk Encryption használatával IaaS-beli virtuális gépek előfeltételei.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: d81925589eefa0ea5851180c83db5bc3540aabda
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ff9f06f3ff062889c9e77163f66527af97bb527d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262686"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094492"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -259,7 +260,7 @@ Titkosítási titkos kulcsok egy megadott Key Vault ír, az Azure Disk Encryptio
 > Az Azure Disk Encryption megköveteli, hogy az Azure AD-ügyfélalkalmazásnak a következő hozzáférési szabályzatok konfigurálhatók: _WrapKey_ és _beállítása_ engedélyeket.
 
 ### <a name="bkmk_KVAPPSH"></a> A kulcstartó hozzáférési szabályzat az Azure AD-alkalmazás az Azure PowerShell használatával
-Az Azure AD-alkalmazást a és a tárolóban lévő titkos hozzáférési jogokkal kell. Használja a [Set-AzureKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) engedélyeket az alkalmazást, az ügyfél-azonosító (amely lett létrehozva, amikor az alkalmazás regisztrálva lett) használatával a parancsmag a _– ServicePrincipalName_ paraméter értéke. További tudnivalókért tekintse meg a következő blogbejegyzésben: [Azure Key Vault - lépésről lépésre](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+Az Azure AD-alkalmazást a és a tárolóban lévő titkos hozzáférési jogokkal kell. Használja a [Set-AzureKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) engedélyeket az alkalmazást, az ügyfél-azonosító (amely lett létrehozva, amikor az alkalmazás regisztrálva lett) használatával a parancsmag a _– ServicePrincipalName_ paraméter értéke. További tudnivalókért tekintse meg a következő blogbejegyzésben: [Azure Key Vault - lépésről lépésre](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
 
 1. Ha szükséges, [csatlakozhat az Azure-előfizetés](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
 2. Állítsa be a kulcstartó hozzáférési szabályzatot az AD-alkalmazás, a PowerShell használatával.

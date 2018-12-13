@@ -1,6 +1,6 @@
 ---
-title: Állapot Store az Azure Service Fabric-háló alkalmazások csatlakoztatja az Azure Files-alapú kötet tárolón belül |} A Microsoft Docs
-description: Megtudhatja, hogyan állapot tárolásához az Azure Service Fabric-háló alkalmazások az Azure Files-alapú köteten a tárolóban, az Azure CLI használatával csatlakoztatja.
+title: Használhatja az Azure Files-alapú kötet egy Service Fabric-háló alkalmazásban |} A Microsoft Docs
+description: Megtudhatja, hogyan állapot tárolásához az Azure Service Fabric-háló alkalmazások az Azure Files-alapú kötet belül az Azure CLI használatával csatlakoztatja.
 services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
@@ -12,86 +12,236 @@ ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2018
+ms.date: 11/21/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 9bce2d0e6d01813fd376b2505838defc9c772d70
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614259"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891095"
 ---
-# <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Az Azure Service Fabric-háló alkalmazások csatlakoztatja az Azure Files Store állapota alapján kötet tárolón belül
+# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Az Azure Files-alapú kötet egy Service Fabric-háló alkalmazás csatlakoztatása 
 
-Ez a cikk bemutatja, hogyan állapot tárolásához az Azure Files egy Service Fabric-háló alkalmazás a tároló kötetek csatlakoztatja. Ebben a példában a számláló alkalmazás rendelkezik egy ASP.NET Core-szolgáltatás, amely egy weblap, amelyen a teljesítményszámláló értéke látható a böngészőben. 
+Ez a cikk ismerteti, hogyan csatlakoztathat a Service Fabric-háló-alkalmazásba szolgáltatásként az Azure Files-alapú kötet.  Az Azure Files kötet illesztőprogramja csatlakoztatása egy Azure-fájlmegosztási egy tárolóba, amellyel szolgáltatás állapotának megőrzéséhez használja a Docker kötet illesztőprogramot. Kötetek általános célú a file storage biztosítanak, és lehetővé teszi olvasási/írási fájlt normál lemez i/o-fájl API-k használatával.  További információ a kötetek és alkalmazások adatainak tárolására szolgáló beállításai, olvassa el [állapot tárolására](service-fabric-mesh-storing-state.md).
 
-A `counterService` rendszeres időközönként olvassa be a számláló értéke egy fájl növekszik, és vissza a fájl írása. A fájl, amely az Azure-fájlmegosztási alapját a kötet csatlakoztatva van egy mappában tárolódik.
+Egy szolgáltatásban kötet csatlakoztatása, kötet erőforrás létrehozása a Service Fabric-háló alkalmazásban, és majd hivatkozni az adott kötet a szolgáltatásban.  A köteterőforrás deklaráló és hivatkozna rá a szolgáltatás-erőforrás végezhető vagy a [YAML-alapú erőforrásfájlok](#declare-a-volume-resource-and-update-the-service-resource-yaml) vagy a [JSON-alapú központi telepítési sablont](#declare-a-volume-resource-and-update-the-service-resource-json). Mielőtt a kötet csatlakoztatása, először hozzon létre egy Azure storage-fiókot és a egy [fájlmegosztás az Azure Files](/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a feladat végrehajtásához használhatja az Azure Cloud Shell vagy az Azure parancssori felület helyi telepítése. Ez a cikk az Azure CLI-vel használni, győződjön meg arról, hogy `az --version` adja vissza a legalább `azure-cli (2.0.43)`.  Az Azure Service Fabric háló parancssori bővítmény modul a következő telepítéséhez (vagy frissítéséhez) [utasításokat](service-fabric-mesh-howto-setup-cli.md).
+Ez a cikk végrehajtásához használhatja az Azure Cloud Shell vagy az Azure parancssori felület helyi telepítése. 
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Az Azure CLI helyileg használja ezt a cikket, ellenőrizze, hogy `az --version` adja vissza a legalább `azure-cli (2.0.43)`.  Az Azure Service Fabric háló parancssori bővítmény modul a következő telepítéséhez (vagy frissítéséhez) [utasításokat](service-fabric-mesh-howto-setup-cli.md).
 
-Jelentkezzen be az Azure-ba, és állítsa be az előfizetését.
+Jelentkezzen be az Azure-ba, és az előfizetés beállításához:
 
-```azurecli-interactive
+```azurecli
 az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
-
-Az Azure-fájlmegosztás létrehozása a következő [utasításokat](/azure/storage/files/storage-how-to-create-file-share). A tárfiók nevét, a tárfiók-kulcsot és a fájlmegosztás nevét néven hivatkozott `<storageAccountName>`, `<storageAccountKey>`, és `<fileShareName>` az az alábbi utasításokat. Ezeket az értékeket az Azure Portalon érhetők el:
-* <storageAccountName> -A **Tárfiókok**, a fájlmegosztás létrehozásakor használt tárfiók neve.
-* <storageAccountKey> – Válassza ki a storage-fiókja alatt **Tárfiókok** majd **hozzáférési kulcsok** az értéket, és **key1**.
-* <fileShareName> -Válassza ki a storage-fiókja alatt **Tárfiókok** majd **fájlok**. Használandó név az imént létrehozott fájlmegosztás neve.
-
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-
-Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs létrehoz egy erőforráscsoportot, nevű `myResourceGroup` kelet-USA-beli helyen.
+## <a name="create-a-storage-account-and-file-share-optional"></a>Hozzon létre egy storage-fiók és -fájlmegosztást (nem kötelező)
+Az Azure Files-kötet csatlakoztatási szükséges egy storage-fiók és -fájlmegosztást.  Használhat meglévő Azure storage-fiók és a fájl megosztást, vagy hozzon létre erőforrásokat:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
+
+az storage account create --name myStorageAccount --resource-group myResourceGroup --location eastus --sku Standard_LRS --kind StorageV2
+
+$current_env_conn_string=$(az storage account show-connection-string -n myStorageAccount -g myResourceGroup --query 'connectionString' -o tsv)
+
+az storage share create --name myshare --quota 2048 --connection-string $current_env_conn_string
 ```
 
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>A tárfiók nevét és kulcsát, és a fájlmegosztás nevét
+A fájlmegosztás nevét, a tárfiók nevét és tárfiókkulcs néven hivatkozott `<storageAccountName>`, `<storageAccountKey>`, és `<fileShareName>` az alábbi szakaszokban található. 
 
-Az alkalmazás és a kapcsolódó erőforrások az alábbi paranccsal hozzon létre, és adja meg a tartozó értékeket `storageAccountName`, `storageAccountKey` és `fileShareName` , a korábbi [fájlmegosztás létrehozása](#create-a-file-share) . lépés.
-
-A `storageAccountKey` egy biztonságos karakterláncot paraméter a sablonban. Nem jelennek az üzembe helyezési állapot és `az mesh service show` parancsokat. Győződjön meg arról, hogy ezt helyesen van megadva a következő parancsban.
-
-A következő parancsot helyez üzembe egy Linux alkalmazás használja a [counter.azurefilesvolume.linux.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json). Windows-alkalmazás üzembe helyezése, használja a [counter.azurefilesvolume.windows.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Vegye figyelembe, hogy nagyobb tárolórendszerképek hosszabb időt vehet igénybe üzembe helyezéséhez.
-
+A tárfiókok listája, és a tárfiók a fájlmegosztáshoz használni kívánt nevét:
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az storage account list
 ```
 
-Néhány perc alatt a parancs a kell visszaadnia `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`
-
-## <a name="open-the-application"></a>Az alkalmazás megnyitása
-
-A telepítési parancs visszaadja a szolgáltatásvégpont nyilvános IP-címét. Miután sikeresen üzembe helyezte az alkalmazást, a nyilvános IP-cím beszerzése a szolgáltatási végpont, és a egy böngészőben nyissa meg. A számláló értéke másodpercenként frissítése a weblap jelenik meg.
-
-Ez az alkalmazás a hálózati erőforrás neve nem `counterAppNetwork`. Az alkalmazás például annak leírása, tartózkodási hely, erőforráscsoport, stb. További információ a következő paranccsal tekintheti meg:
-
+Kérje le a fájlmegosztás neve:
 ```azurecli-interactive
-az mesh network show --resource-group myResourceGroup --name counterAppNetwork
+az storage share list --account-name <storageAccountName>
 ```
 
-## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Győződjön meg arról, hogy az alkalmazás használhatja a kötet
-
-Az alkalmazás létrehoz egy fájlt `counter.txt` a fájl megosztása belül `counter/counterService` mappát. Ez a fájl tartalma a számláló értéke nem szeretné megjeleníteni a weblapot.
-
-A fájl minden olyan eszköz, amely lehetővé teszi az Azure Files-fájlmegosztást, például böngészési segítségével lehet letölteni a [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-
-## <a name="delete-the-resources"></a>Az erőforrások törlése
-
-Gyakran törölje az erőforrásokat, amelyek nem használják az Azure-ban. Ebben a példában a kapcsolódó erőforrások törléséhez törölje az erőforráscsoportot, amelyben üzembe lett helyezve, (Ez töröl Mindent az erőforráscsoporthoz társított) a következő paranccsal:
-
+Kérje le a tárfiók-kulcsot ("1. kulcs"):
 ```azurecli-interactive
-az group delete --resource-group myResourceGroup
+az storage account keys list --account-name <storageAccountName> --query "[?keyName=='key1'].value"
+```
+
+Ezeket az értékeket is megkeresheti a [az Azure portal](https://portal.azure.com):
+* `<storageAccountName>` -A **Tárfiókok**, a fájlmegosztás létrehozásához használja a tárfiók nevére.
+* `<storageAccountKey>` – Válassza ki a storage-fiókja alatt **Tárfiókok** majd **hozzáférési kulcsok** az értéket, és **key1**.
+* `<fileShareName>` -Válassza ki a storage-fiókja alatt **Tárfiókok** majd **fájlok**. A nevét, a létrehozott fájlmegosztás neve.
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklaráljon egy kötet erőforrás és a szolgáltatás-erőforrás (JSON) frissítése
+
+Paraméterek hozzáadása a `<fileShareName>`, `<storageAccountName>`, és `<storageAccountKey>` , az előző lépésben található értékekre. 
+
+Az alkalmazás erőforrás társ hozzon létre egy kötet erőforrás. Adjon meg egy nevet és a szolgáltató (az Azure Files-alapú mennyiségi használandó "SFAzureFile" jelöli). A `azureFileParameters`, adja meg a paramétereket a `<fileShareName>`, `<storageAccountName>`, és `<storageAccountKey>` , az előző lépésben található értékekre.
+
+A szolgáltatás a kötet csatlakoztatásához, adjon hozzá egy `volumeRefs` , a `codePackages` elem a szolgáltatás.  `name` az erőforrás-azonosító, a kötet (vagy egy központi telepítési sablon paramétert a köteterőforrás) és a volume.yaml erőforrás fájlban deklarált a kötet nevét.  `destinationPath` a helyi könyvtárban, amely a kötet csatlakoztatva van.
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "EastUS",
+      "type": "String",
+      "metadata": {
+        "description": "Location of the resources."
+      }
+    },
+    "fileShareName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure Files file share that provides the volume for the container."
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure storage account that contains the file share."
+      }
+    },
+    "storageAccountKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Access key for the Azure storage account that contains the file share."
+      }
+    },
+    "stateFolderName": {
+      "type": "string",
+      "defaultValue": "TestVolumeData",
+      "metadata": {
+        "description": "Folder in which to store the state. Provide a empty value to create a unique folder for each container to store the state. A non-empty value will retain the state across deployments, however if more than one applications are using the same folder, the counter may update more frequently."
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "VolumeTest",
+      "type": "Microsoft.ServiceFabricMesh/applications",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "Microsoft.ServiceFabricMesh/networks/VolumeTestNetwork",
+        "Microsoft.ServiceFabricMesh/volumes/testVolume"
+      ],
+      "properties": {
+        "services": [
+          {
+            "name": "VolumeTestService",
+            "properties": {
+              "description": "VolumeTestService description.",
+              "osType": "Windows",
+              "codePackages": [
+                {
+                  "name": "VolumeTestService",
+                  "image": "volumetestservice:dev",
+                  "volumeRefs": [
+                    {
+                      "name": "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]",
+                      "destinationPath": "C:\\app\\data"
+                    }
+                  ],
+                  "environmentVariables": [
+                    {
+                      "name": "ASPNETCORE_URLS",
+                      "value": "http://+:20003"
+                    },
+                    {
+                      "name": "STATE_FOLDER_NAME",
+                      "value": "[parameters('stateFolderName')]"
+                    }
+                  ],
+                  ...
+                }
+              ],
+              ...
+            }
+          }
+        ],
+        "description": "VolumeTest description."
+      }
+    },
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "testVolume",
+      "type": "Microsoft.ServiceFabricMesh/volumes",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "description": "Azure Files storage volume for the test application.",
+        "provider": "SFAzureFile",
+        "azureFileParameters": {
+          "shareName": "[parameters('fileShareName')]",
+          "accountName": "[parameters('storageAccountName')]",
+          "accountKey": "[parameters('storageAccountKey')]"
+        }
+      }
+    }
+    ...
+  ]
+}
+```
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklaráljon egy kötet erőforrás és a szolgáltatás-erőforrás (YAML) frissítése
+
+Vegyen fel egy új *volume.yaml* fájlt a *alkalmazás-erőforrások* könyvtárat az alkalmazás.  Adjon meg egy nevet és a szolgáltató (az Azure Files-alapú mennyiségi használandó "SFAzureFile" jelöli). `<fileShareName>`, `<storageAccountName>`, és `<storageAccountKey>` jelennek meg az előző lépésben található értékek.
+
+```yaml
+volume:
+  schemaVersion: 1.0.0-preview2
+  name: testVolume
+  properties:
+    description: Azure Files storage volume for counter App.
+    provider: SFAzureFile
+    azureFileParameters: 
+        shareName: <fileShareName>
+        accountName: <storageAccountName>
+        accountKey: <storageAccountKey>
+```
+
+Frissítés a *service.yaml* fájlt a *szolgáltatási erőforrások* könyvtár a szolgáltatásban a kötet csatlakoztatásához.  Adja hozzá a `volumeRefs` elem a `codePackages` elemet.  `name` az erőforrás-azonosító, a kötet (vagy egy központi telepítési sablon paramétert a köteterőforrás) és a volume.yaml erőforrás fájlban deklarált a kötet nevét.  `destinationPath` a helyi könyvtárban, amely a kötet csatlakoztatva van.
+
+```yaml
+## Service definition ##
+application:
+  schemaVersion: 1.0.0-preview2
+  name: VolumeTest
+  properties:
+    services:
+      - name: VolumeTestService
+        properties:
+          description: VolumeTestService description.
+          osType: Windows
+          codePackages:
+            - name: VolumeTestService
+              image: volumetestservice:dev
+              volumeRefs:
+                - name: "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]"
+                  destinationPath: C:\app\data
+              endpoints:
+                - name: VolumeTestServiceListener
+                  port: 20003
+              environmentVariables:
+                - name: ASPNETCORE_URLS
+                  value: http://+:20003
+                - name: STATE_FOLDER_NAME
+                  value: TestVolumeData
+              resources:
+                requests:
+                  cpu: 0.5
+                  memoryInGB: 1
+          replicaCount: 1
+          networkRefs:
+            - name: VolumeTestNetwork
 ```
 
 ## <a name="next-steps"></a>További lépések

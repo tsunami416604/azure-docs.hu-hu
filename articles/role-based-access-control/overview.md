@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9a28ea43e732c53afb75e96f20cb13b9bbb27a6
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632616"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867898"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -57,7 +57,7 @@ A *rendszerbiztonsági tag* olyan objektum, amely egy felhasználó, csoport, sz
 - Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 - Csoport – Felhasználók az Azure Active Directoryban létrehozott csoportja. Ha egy csoporthoz rendel hozzá egy szerepkört, a csoportban lévő összes felhasználó rendelkezik majd az adott szerepkörrel. 
 - Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
-- Felügyelt identitás – az Azure Active Directoryban, hogy automatikusan által felügyelt Azure-identitás. Általában [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) hitelesítéséhez az Azure-szolgáltatások a hitelesítő adatok kezelése a felhőalkalmazások fejlesztése során.
+- Felügyelt identitás - identitás az Azure Active Directoryban, amelyet az Azure automatikusan kezel. Általában [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) hitelesítéséhez az Azure-szolgáltatások a hitelesítő adatok kezelése a felhőalkalmazások fejlesztése során.
 
 ### <a name="role-definition"></a>Szerepkör-definíció
 

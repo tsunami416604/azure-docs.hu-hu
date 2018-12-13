@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben | Microsoft Docs
-description: Ez a rövid útmutató bemutatja az ASP.NET Core-webhelyek létrehozását és közzétételét az Azure Service Fabric Mesh-ben.
+title: Rövid útmutató – Azure Service Fabric háló-webalkalmazás üzembe helyezése |} A Microsoft Docs
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy ASP.NET Core-webhelyen, és közzé kell tennie az Azure Service Fabric-háló Visual Studio használatával.
 services: service-fabric-mesh
 documentationcenter: .net
 author: tylermsft
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7e324b80968017e0160f41b88fa1824669050ac9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 35ce19d796a9889d734bd5dde20a7c56485656f1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407399"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888541"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rövid útmutató: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
 
@@ -88,7 +88,7 @@ A Service Fabric Mesh-alkalmazás Azure-ban történő üzembe helyezéséhez ka
 
 Az Azure-ban történő első közzététel alkalmával továbbítani kell a docker-rendszerképet az Azure Container Registrybe (ACR), és ez a kép méretétől függően időbe telhet. Ugyanebben a projektben a további közzétételek már gyorsabbak lesznek. Az üzembe helyezés állapotának figyeléséhez a Visual Studio **Output** (Kimenet) ablak legördülő listájában válassza a **Service Fabric-eszközök** ablakot. Az üzembe helyezés befejeztével a **Service Fabric-eszközök** kimenete egy URL-cím formájában jeleníti meg az alkalmazás IP-címét és portját.
 
-```json
+```
 Packaging Application...
 Building Images...
 Web1 -> C:\Code\ServiceFabricMesh1\Web1\bin\Any CPU\Release\netcoreapp2.0\Web1.dll

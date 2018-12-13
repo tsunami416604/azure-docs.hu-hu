@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 35d2234ee52516c4ebf3e354e1ab6890144cdd5d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231821"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879468"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítési: egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások Újratárolása
 
@@ -186,14 +186,14 @@ Contoso-rendszergazdák a következőképpen állítsa be a virtuális hálózat
     - **SQLMI-DS-EUS2** (10.235.0.0.25)
     - **SQLMI-SAW-EUS2** (10.235.0.128/29). Ez az alhálózat egy címtár csatlakoztatása a felügyelt példány szolgál.
 
-    ![Felügyelt példány – virtuális hálózat létrehozása](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
+      ![Felügyelt példány – virtuális hálózat létrehozása](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
 4. Miután a virtuális hálózat és alhálózatok vannak telepítve, azokat hálózatok között is létesíthet a következő:
 
     - Partnerek **VNET-SQLMI-EUS2** a **VNET-HUB-EUS2** (a központi virtuális hálózaton esetében az USA keleti RÉGIÓJA 2).
     - Partnerek **VNET-SQLMI-EUS2** a **VNET-ÉLES-EUS2** (az éles hálózati környezetben).
 
-    ![Hálózatok közötti társviszony](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
+      ![Hálózatok közötti társviszony](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
 
 5. Ezek egyéni DNS-beállítások megadása DNS először a Contoso Azure tartományvezérlők mutat. Az Azure DNS egy másodlagos. A Contoso Azure-tartományvezérlőket az alábbi helyeken találhatók:
 
@@ -202,7 +202,7 @@ Contoso-rendszergazdák a következőképpen állítsa be a virtuális hálózat
     - **CONTOSODC4** cím: 10.245.42.5
     - Az Azure DNS-feloldási: 168.63.129.16
 
-     ![Hálózati DNS-kiszolgálók](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
+      ![Hálózati DNS-kiszolgálók](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
 
 *További segítségre van szüksége?*
 
@@ -254,7 +254,7 @@ Contoso-rendszergazdák mostantól építhető ki egy SQL Database felügyelt p�
     - A case Contoso virtuális fürtöt több felügyelt példánnyal rendelkezik.
     - A felügyelt példány az SQL Server-adatbázist. 
 
-    ![Felügyelt példány](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
+      ![Felügyelt példány](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
 
 *További segítségre van szüksége?*
 
@@ -615,7 +615,7 @@ További információ a biztonsági eljárások a virtuális gépek, lásd: [aj�
 
 Az üzletmenet-folytonossági és vészhelyreállítási (bcdr) funkciók a Contoso fogadja a következő műveleteket:
 
-- Adatok biztonsága: Contoso biztonsági másolatot készít az adatok a virtuális gépeken az Azure Backup szolgáltatással. [További információ] https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Adatok biztonsága: Contoso biztonsági másolatot készít az adatok a virtuális gépeken az Azure Backup szolgáltatással. [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Bízhatja alkalmazások: Contoso Site Recovery használatával egy másodlagos régióba replikálja az alkalmazást az Azure-beli virtuális gépek. [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 - Contoso megtanulja tájékozódhat felügyelt SQL-példányra, beleértve a [biztonsági másolatairól](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
 
