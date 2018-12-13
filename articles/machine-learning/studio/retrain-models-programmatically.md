@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: da3edf7bc17240dabcb5519317f38bdb468be9f2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099987"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257393"
 ---
-# <a name="retrain-machine-learning-studio-models-programmatically"></a>A Machine Learning Studio-modellek újbóli betanítása
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Az Azure Machine Learning Studio-modellek újbóli betanítása
 Ebben a forgatókönyvben megtudhatja, hogyan való programozott újratanítás PowerShell használatával az Azure Machine Learning Studio webes szolgáltatás C# és a Machine Learning Batch Execution service.
 
 Ha a modell rendelkezik retrained, a következő forgatókönyvek bemutatják, hogyan a prediktív webszolgáltatásait a modell frissítése:
@@ -36,14 +35,14 @@ A megőrzési folyamat áttekintését lásd: [egy gépi tanulási modellek szof
 Ha el szeretné indítani a meglévő új Azure Resource Manager-alapú webes szolgáltatáshoz, talál [meglévő prediktív webszolgáltatás újratanítása](retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Betanítási kísérlet létrehozása
-Ebben a példában használandó "5 minta: Train, tesztelési, kiértékelése a bináris osztályozás: felnőtt adatkészlet" a Microsoft Azure Machine Learning-minták. 
+Ebben a példában használandó "5. példa: A vonat, tesztelhetők, kiértékeléséhez bináris osztályozás: Felnőtt adathalmaz az"a Microsoft Azure Machine Learning-mintákat. 
 
 A kísérlet létrehozása:
 
 1. Jelentkezzen be a Microsoft Azure Machine Learning Studióba. 
 2. Kattintson a jobb alsó sarokban az irányítópult **új**.
 3. Jelölje ki a Microsoft Samples minta 5.
-4. Nevezze át a kísérletet a kísérlet vászon tetején válassza a kísérlet neve "5. példa: a bináris osztályozási Train, tesztelési, Evaluate: felnőtt adatkészlet".
+4. Nevezze át a kísérletet a kísérlet vászon tetején válassza a kísérlet neve "5. példa: A vonat, tesztelhetők, kiértékeléséhez bináris osztályozás: Felnőtt adatkészlet".
 5. Írja be a modell népszámlálási.
 6. A kísérlet vászon alján kattintson **futtatása**.
 7. Kattintson a **Set Up webszolgáltatás** válassza **webszolgáltatás Átképezési**. 
@@ -93,7 +92,7 @@ Ebben a példában használja C# a megőrzési alkalmazás létrehozásához. En
 
 Az Átképezési API-k meghívásához:
 
-1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban: **új** > **projekt** > **Visual C#** > **Windows Klasszikus asztal** > **Console App (.NET Framework)**.
+1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
 2. Jelentkezzen be a Machine Learning Web Service portálhoz.
 3. Ha a klasszikus webszolgáltatás dolgozik, kattintson a **klasszikus webszolgáltatások**.
    1. Kattintson a web service dolgozik.
@@ -159,7 +158,7 @@ Lásd a következő példát:
 
 ![Kimeneti átképezési][6]
 
-4. ábra: A kimeneti Átképezési.
+4. ábra: Kimeneti átképezési.
 
 ## <a name="evaluate-the-retraining-results"></a>Megőrzési eredmények értékelése
 Az alkalmazás futtatásakor a kimenete tartalmazza az értékelési eredmények eléréséhez szükséges URL-CÍMÉT és a SAS jogkivonat.

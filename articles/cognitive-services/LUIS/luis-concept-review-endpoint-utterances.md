@@ -1,5 +1,5 @@
 ---
-title: Tekintse át a felhasználói kimondott szöveg
+title: Tekintse át a felhasználói utterance (kifejezés)
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/07/2018
 ms.author: diberry
-ms.openlocfilehash: ca8a6b05722ac2edc91d7459c64c2bdb312a7016
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0eaf411afdcd66345f64c2b6dd93e4799183de78
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080962"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141033"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Aktív tanulás engedélyezésének végpont utterances áttekintésével kapcsolatos fogalmak
 Aktív tanulás az előrejelzési pontosság és a legegyszerűbb megvalósításához három stratégia egyik. Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.

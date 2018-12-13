@@ -1,5 +1,5 @@
 ---
-title: 'A HDInsight Apache hadoop-keretrendszer hibakeresése: megtekinthetők a naplófájlok és a hibaüzenetek – Azure értelmezése '
+title: 'Az Apache hadoop-keretrendszer hibakeresése: A naplók megtekintéséhez és a hibaüzenetek – Azure HDInsight értelmezése'
 description: További tudnivalók a hibaüzenetek kaphat, ha a PowerShell használatával HDInsight felügyelete és helyreállítása lépéseket.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c997b2644be3798629afce6d826c53b1d9492597
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d52a9411863962528eb0693f735ca0c4ee4c9991
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017014"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166506"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop-naplók elemzése
 
@@ -72,7 +72,7 @@ A Power Query telepíthető [Excelhez készült Microsoft Power Query](https://w
    
     ![Az Azure Table storage szolgáltatásban tárolt HDInsight Hadoop-naplók](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
 5. Kattintson a jobb gombbal a hadoopservicelog táblájában a **kezelő** ablaktáblán, és válassza ki **szerkesztése**. Négy oszlopot kell megjelennie. Szükség esetén törölje a **partíciókulcs**, **Sorkulcs**, és **időbélyeg** oszlopok őket, majd kattintson a **oszlopok eltávolítása** a a beállítások a menüszalagon.
-6. Kattintson a Kibontás ikonra a tartalom oszlopában az Excel-munkafüzetbe importálni kívánt oszlopok kiválasztásához. Ebben a bemutatóban a kiválasztott TraceLevel és ComponentName: témakörébe me néhány alapvető információ, amelyre összetevők problémák rendelkezett.
+6. Kattintson a Kibontás ikonra a tartalom oszlopában az Excel-munkafüzetbe importálni kívánt oszlopok kiválasztásához. Ebben a bemutatóban a kiválasztott TraceLevel és ComponentName: Témakörébe me néhány alapvető információ, amelyre összetevők problémák rendelkezett.
    
     ![HDInsight Hadoop-naplók oszlopok kiválasztása](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
 7. Kattintson a **OK** az adatok importálásához.
@@ -136,179 +136,179 @@ Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDIn
 * **Kockázatcsökkentési**: A felhasználónak van szüksége, adjon meg egy érvényes SQL Azure-metaadattár, és ismételje meg a kérelmet.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **Leírás**: nem sikerült létrehozni a fürtöt a régióban *nameOfYourRegion*. Egy érvényes HDInsight régiót használni, és próbálkozzon újra a kérelmet.
-* **Kockázatcsökkentési**: ügyfél kell létrehoznia a fürt régió jelenleg támogatja az ilyen: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.  
+* **Leírás**: Nem sikerült létrehozni a fürtöt a régióban *nameOfYourRegion*. Egy érvényes HDInsight régiót használni, és próbálkozzon újra a kérelmet.
+* **Kockázatcsökkentési**: Ügyfél kell létrehozni az jelenleg támogatja az ilyen fürt régió: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
 * **Leírás**: A kiszolgáló nem található a kért fürt rekord.  
-* **Kockázatcsökkentési**: próbálja megismételni a műveletet.
+* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Leírás**: fürt DNS-név *yourDnsName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
+* **Leírás**: Fürt DNS-név *yourDnsName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
 * **Kockázatcsökkentési**: Ellenőrizze, hogy használja a egy érvényes DNS-nevet a fürt, amely elindítja és alfanumerikus végződik, és nincsenek különleges tartalmazza a kötőjelet más karaktereket az '-', és próbálkozzon újra a művelettel.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
-* **Leírás**: fürtnév *yourClusterName* nem érhető el. Válasszon egy másik nevet.  
-* **Kockázatcsökkentési**: A felhasználó kell adjon meg egy egyedi clustername, és nem létezik, és próbálkozzon újra. Ha a felhasználó nem használja a portálon, a felhasználói felület értesíteni fogjuk őket, ha a fürt neve már használatban a létrehozás lépések során.
+* **Leírás**: Fürt neve *yourClusterName* nem érhető el. Válasszon egy másik nevet.  
+* **Kockázatcsökkentési**: A felhasználó kell adjon meg egy egyedi clustername és nem létezik, és ismételje meg. Ha a felhasználó nem használja a portálon, a felhasználói felület értesíteni fogjuk őket, ha a fürt neve már használatban a létrehozás lépések során.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Leírás**: fürt jelszó érvénytelen. Jelszó legalább 10 karakter hosszúságúnak kell lennie, és tartalmaznia kell legalább egy szám, nagybetű, kisbetű és speciális karaktert a szóközök nélküli, és nem tartalmazhatja a felhasználónevet, részeként.  
-* **Kockázatcsökkentési**: Adjon meg egy érvényes fürttel jelszót, majd próbálja megismételni a műveletet.
+* **Leírás**: Fürt jelszó érvénytelen. Jelszó legalább 10 karakter hosszúságúnak kell lennie, és tartalmaznia kell legalább egy szám, nagybetű, kisbetű és speciális karaktert a szóközök nélküli, és nem tartalmazhatja a felhasználónevet, részeként.  
+* **Kockázatcsökkentési**: Adjon meg egy érvényes fürttel jelszót, és próbálja megismételni a műveletet.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **Leírás**: fürt felhasználónév érvénytelen. Ellenőrizze, hogy felhasználónév nem tartalmazhat különleges karaktereket.  
+* **Leírás**: Fürt felhasználónév érvénytelen. Ellenőrizze, hogy felhasználónév nem tartalmazhat különleges karaktereket.  
 * **Kockázatcsökkentési**: Adjon meg egy érvényes fürttel felhasználónévvel, és próbálja megismételni a műveletet.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Leírás**: fürt DNS-név *yourDnsClusterName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
+* **Leírás**: Fürt DNS-név *yourDnsClusterName* je neplatná. Ellenőrizze, hogy a neve kezdődik és végződik alfanumerikus, és csak "-" speciális karakter  
 * **Kockázatcsökkentési**: Adjon meg egy érvényes DNS-fürt felhasználónevet, és próbálja megismételni a műveletet.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
 * **Leírás**: URI-Tárolónév *yourcontainerURI* és DNS-név *yourDnsName* a kérelem törzsében meg kell egyeznie.  
-* **Kockázatcsökkentési**: Ellenőrizze, hogy a tároló neve és a DNS-neve azonos, és próbálja megismételni a műveletet.
+* **Kockázatcsökkentési**: Győződjön meg arról, hogy a tároló neve és a DNS-név azonos, és próbálja megismételni a műveletet.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **Leírás**: Érvénytelen fürtkonfiguráció. Nem található minden adat csomópont definíciókat a csomópont méretét.  
-* **Kockázatcsökkentési**: próbálja megismételni a műveletet.
+* **Leírás**: Érvénytelen a fürt konfigurációját. Nem található minden adat csomópont definíciókat a csomópont méretét.  
+* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Leírás**: a fürt nem sikerült törölni a központi telepítés  
-* **Kockázatcsökkentési**: a törlési művelettel próbálkozhat újra.
+* **Leírás**: Nem sikerült telepíteni a fürt törlése  
+* **Kockázatcsökkentési**: A törlési művelettel próbálkozhat újra.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Leírás**: a szolgáltatás konfigurációs hiba. Szükséges DNS-hozzárendelést az információk nem találhatók.  
-* **Kockázatcsökkentési**: törölje a fürtöt, és hozzon létre egy új fürtöt.
+* **Leírás**: Konfigurációs hiba. Szükséges DNS-hozzárendelést az információk nem találhatók.  
+* **Kockázatcsökkentési**: Fürt törlése, és hozzon létre egy új fürtöt.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **Leírás**: ismétlődő fürt tároló létrehozási kísérlet. Bejegyzés létezik *nameOfYourContainer* , de az ETag nem egyezik.
+* **Leírás**: Ismétlődő fürt tároló létrehozási kísérlet. Bejegyzés létezik *nameOfYourContainer* , de az ETag nem egyezik.
 * **Kockázatcsökkentési**: Adjon meg egy egyedi nevet a tároló, és ismételje meg a létrehozási művelet.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Leírás**: üzemeltetett szolgáltatás *nameOfYourHostedService* már tartalmaz egy fürtöt. Üzemeltetett szolgáltatás nem tartalmazhat több fürt  
-* **Kockázatcsökkentési**: a fürt egy másik üzemeltetett szolgáltatásban futó üzemeltetéséhez.
+* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* már tartalmaz egy fürtöt. Üzemeltetett szolgáltatás nem tartalmazhat több fürt  
+* **Kockázatcsökkentési**: A gazdagép a fürt egy másik üzemeltetett szolgáltatásban.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Leírás**: A kiszolgáló nem tudta frissíteni a fürt központi telepítésének állapotát.  
-* **Kockázatcsökkentési**: próbálja megismételni a műveletet. Ha ez történik, hogy többször is feldolgozza, lépjen kapcsolatba a CSS.
+* **Kockázatcsökkentési**: Próbálja megismételni a műveletet. Ha ez történik, hogy többször is feldolgozza, lépjen kapcsolatba a CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Leírás**: fürt *yourClusterName* karbantartás részeként törölve lett. Hozza létre újra a fürtöt.
-* **Kockázatcsökkentési**: hozza létre újra a fürtöt.
+* **Leírás**: Fürt *yourClusterName* karbantartás részeként törölve lett. Hozza létre újra a fürtöt.
+* **Kockázatcsökkentési**: Hozza létre újra a fürtöt.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **Leírás**: Érvénytelen fürtkonfiguráció. Nem található csomópontok méretét a fő csomópont-konfiguráció szükséges.
-* **Kockázatcsökkentési**: próbálja megismételni a műveletet.
+* **Leírás**: Érvénytelen a fürt konfigurációját. Nem található csomópontok méretét a fő csomópont-konfiguráció szükséges.
+* **Kockázatcsökkentési**: Próbálja megismételni a műveletet.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Leírás**: nem sikerült létrehozni az üzemeltetett szolgáltatás *nameOfYourHostedService*. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: ismételje meg a kérelmet.
+* **Leírás**: Nem sikerült létrehozni az üzemeltetett szolgáltatás *nameOfYourHostedService*. Ismételje meg a kérelmet.  
+* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Leírás**: az üzemeltetett szolgáltatást *nameOfYourHostedService* már rendelkezik az éles környezet. Üzemeltetett szolgáltatás nem tartalmazhat több éles környezetekben üzemelő példányok. Próbálja megismételni a kérelmet egy másik fürtnevet.
-* **Kockázatcsökkentési**: használja egy másik fürtnevet, és ismételje meg a kérelmet.
+* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* már rendelkezik az éles környezet. Üzemeltetett szolgáltatás nem tartalmazhat több éles környezetekben üzemelő példányok. Próbálja megismételni a kérelmet egy másik fürtnevet.
+* **Kockázatcsökkentési**: Használjon egy másik fürtnevet, és ismételje meg a kérelmet.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Leírás**: az üzemeltetett szolgáltatást *nameOfYourHostedService* esetében a fürt nem található.  
+* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* esetében a fürt nem található.  
 * **Kockázatcsökkentési**: Ha a fürt hibás állapotú, törölje azt, és próbálkozzon újra.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Leírás**: az üzemeltetett szolgáltatást *nameOfYourHostedService* nincs társított központi telepítés nem.  
+* **Leírás**: Üzemeltetett szolgáltatás *nameOfYourHostedService* nincs társított központi telepítés nem.  
 * **Kockázatcsökkentési**: Ha a fürt hibás állapotú, törölje azt, és próbálkozzon újra.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
 * **Leírás**: A SubscriptionId *yourSubscriptionId* hozhat létre fürtöt nincs magok balra *yourClusterName*. Kötelező: *resourcesRequired*, elérhető: *resourcesAvailable*.  
-* **Kockázatcsökkentési**: az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
+* **Kockázatcsökkentési**: Az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **Leírás**: előfizetés-azonosító *yourSubscriptionId* nem rendelkezik egy új üzemeltetett szolgáltatás létrehozása a fürt kvótával *yourClusterName*.  
-* **Kockázatcsökkentési**: az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
+* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* nem rendelkezik egy új üzemeltetett szolgáltatás létrehozása a fürt kvótával *yourClusterName*.  
+* **Kockázatcsökkentési**: Az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Leírás**: A kiszolgáló belső hibába ütközött. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: ismételje meg a kérelmet.
+* **Leírás**: Belső kiszolgálóhiba történt. Ismételje meg a kérelmet.  
+* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Leírás**: Azure tárolási hely *dataRegionName* út nem egy érvényes hely. Ellenőrizze, hogy a régió megfelelő, és próbálkozzon újra a kérelmet.
-* **Kockázatcsökkentési**: válasszon, amely támogatja a HDInsight tárolási helyet, ellenőrizze, hogy a fürt ugyanott, és próbálja megismételni a műveletet.
+* **Leírás**: Az Azure tárolási hely *dataRegionName* út nem egy érvényes hely. Ellenőrizze, hogy a régió megfelelő, és próbálkozzon újra a kérelmet.
+* **Kockázatcsökkentési**: Válasszon tárolási helyet, amely támogatja a HDInsight, ellenőrizze, hogy a fürt ugyanott, és próbálja megismételni a műveletet.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **Leírás**: adatcsomópontok érvénytelen Virtuálisgép-méretét. Csak a "Nagy virtuális gép" mérete adatok minden csomópont esetében támogatott.  
-* **Kockázatcsökkentési**: Adja meg az adatok csomópont esetében támogatott csomópont méretét, és próbálja megismételni a műveletet.
+* **Leírás**: Érvénytelen a virtuális gép mérete adatcsomópontok számára. Csak a "Nagy virtuális gép" mérete adatok minden csomópont esetében támogatott.  
+* **Kockázatcsökkentési**: Adja meg a támogatott csomópont méretét, az adatok csomóponthoz, és próbálja megismételni a műveletet.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **Leírás**: átjárócsomópont érvénytelen Virtuálisgép-méretét. Csak a "ExtraLarge VM" mérete fő csomópontja esetében támogatott.  
+* **Leírás**: Érvénytelen Virtuálisgép-méretét fő csomópontot. Csak a "ExtraLarge VM" mérete fő csomópontja esetében támogatott.  
 * **Kockázatcsökkentési**: Adja meg az átjárócsomópont támogatott csomópont méretét, és próbálja megismételni a műveletet
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **Leírás**: előfizetés-azonosító *yourSubscriptionId* használt nem rendelkezik megfelelő engedélyekkel a fürt delete műveletet végrehajtani *yourClusterName*.  
-* **Kockázatcsökkentési**: Ha a fürt hibás állapotú, dobja el, és próbálkozzon újra.  
+* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* használt nem rendelkezik megfelelő engedélyekkel a fürt delete műveletet végrehajtani *yourClusterName*.  
+* **Kockázatcsökkentési**: Ha a fürt hibás állapotú, akkor dobja el, és próbálkozzon újra.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Leírás**: külső tárfiók a blob tároló neve *yourContainerName* je neplatná. Ellenőrizze, hogy nevének betűvel kezdődik, és csak kisbetűket, számokat és kötőjelet tartalmaz.  
+* **Leírás**: Külső tárfiók a blob tároló neve *yourContainerName* je neplatná. Ellenőrizze, hogy nevének betűvel kezdődik, és csak kisbetűket, számokat és kötőjelet tartalmaz.  
 * **Kockázatcsökkentési**: Adja meg a tárfiók érvényes blob tároló nevének, és próbálja megismételni a műveletet.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **Leírás**: külső tárfiók konfigurációja *yourStorageAccountName* kell rendelkeznie a titkos kulcs adatai kell beállítani.  
+* **Leírás**: Külső tárfiók konfigurációja *yourStorageAccountName* kell rendelkeznie a titkos kulcs adatai kell beállítani.  
 * **Kockázatcsökkentési**: Adja meg a tárfiók érvényes titkos kulcsot, és próbálja megismételni a műveletet.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **Leírás**: Version fejlécnek *yourVersionHeader* nem szerepel az érvényes formátum az éééé-hh-nn.  
+* **Leírás**: Verzió fejléce *yourVersionHeader* nem szerepel az érvényes formátum az éééé-hh-nn.  
 * **Kockázatcsökkentési**: Adja meg a verziófejléc érvényes formátumú, és ismételje meg a kérelmet.
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **Leírás**: Érvénytelen fürtkonfiguráció. Egynél több fő csomópont-konfiguráció található.  
+* **Leírás**: Érvénytelen a fürt konfigurációját. Egynél több fő csomópont-konfiguráció található.  
 * **Kockázatcsökkentési**: Upraví konfiguraci úgy, hogy csak egy fő csomópontja van megadva.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
 * **Leírás**: A művelet nem fejeződött be a rendelkezésre álló időn belül, vagy az újrapróbálkozási kísérletek maximális száma lehetséges. Ismételje meg a kérelmet.  
-* **Kockázatcsökkentési**: ismételje meg a kérelmet.
+* **Kockázatcsökkentési**: Ismételje meg a kérelmet.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **Leírás**: a paraméter *yourParameterName* nem lehet null értékű vagy üres.  
+* **Leírás**: A paraméter *yourParameterName* nem lehet null értékű vagy üres.  
 * **Kockázatcsökkentési**: Adjon meg egy érvényes értéket a paraméterhez.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Leírás**: egy vagy több fürt létrehozási kérés bemenet nem érvényes. Győződjön meg arról, hogy a bemeneti értékek helyesek, és próbálkozzon újra a kérelmet.  
+* **Leírás**: Egy vagy több fürt létrehozási kérés bemenet érvénytelen. Győződjön meg arról, hogy a bemeneti értékek helyesek, és próbálkozzon újra a kérelmet.  
 * **Kockázatcsökkentési**: Győződjön meg arról, hogy a bemeneti értékek helyesek, és próbálkozzon újra a kérelmet.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Leírás**: régió funkció nem érhető el a régióban *yourRegionName* és előfizetés-azonosító *yourSubscriptionId*.  
-* **Kockázatcsökkentési**: Adjon meg egy régióban, amely a HDInsight-fürtöket támogatja. A nyilvánosan támogatott régiók: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.
+* **Leírás**: Régió funkció nem érhető el a régióban *yourRegionName* és előfizetés-azonosító *yourSubscriptionId*.  
+* **Kockázatcsökkentési**: Adjon meg egy régióban, amely a HDInsight-fürtöket támogatja. A nyilvánosan támogatott régiók a következők: Délkelet-Ázsia, Nyugat-Európa, Észak-Európa, USA keleti RÉGIÓJA vagy USA nyugati RÉGIÓJA.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Leírás**: tárfiók *yourStorageAccountName* régióban található *currentRegionName*. Ugyanaz, mint a fürt a régióban kell lennie *yourClusterRegionName*.  
+* **Leírás**: Storage-fiók *yourStorageAccountName* régióban található *currentRegionName*. Ugyanaz, mint a fürt a régióban kell lennie *yourClusterRegionName*.  
 * **Kockázatcsökkentési**: Adja meg a storage-fiók ugyanabban a régióban, amely a fürt, vagy ha az adatok már a storage-fiókban, új fürt létrehozása a meglévő tárfiókot ugyanabban a régióban. A portált használja, ha a felhasználói felület előzetes értesíteni fogjuk őket a problémát.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **Leírás**: előfizetés-Azonosítót adott *yourSubscriptionId* még nem aktív.  
-* **Kockázatcsökkentési**: aktiválja újra előfizetését, vagy szerezze be egy új, érvényes előfizetéssel.
+* **Leírás**: A megadott előfizetés-azonosító *yourSubscriptionId* még nem aktív.  
+* **Kockázatcsökkentési**: Az előfizetés újraaktiválásához, vagy készítsen egy új, érvényes előfizetéssel.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **Leírás**: előfizetés-azonosító *yourSubscriptionId* nem található.  
-* **Kockázatcsökkentési**: Ellenőrizze, hogy az előfizetés-azonosító érvényes, majd próbálja megismételni a műveletet.
+* **Leírás**: Előfizetés-azonosító *yourSubscriptionId* nem található.  
+* **Kockázatcsökkentési**: Ellenőrizze, hogy az előfizetés-azonosító érvényes, és próbálja megismételni a műveletet.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Leírás**: nem oldható fel DNS *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
+* **Leírás**: Nem oldható fel DNS *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
 * **Kockázatcsökkentési**: Adjon meg egy érvényes blob URL-címet. Teljesen érvényes, beleértve a kezdve az URL-címet kell lennie *http://* és a záró *.com*.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **Leírás**: nem sikerült ellenőrizni az erőforráscsoport helyét *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
+* **Leírás**: Nem sikerült ellenőrizni az erőforráscsoport helyét *yourDnsUrl*. Ellenőrizze, hogy a teljes URL-címet a blob-végpont.  
 * **Kockázatcsökkentési**: Adjon meg egy érvényes blob URL-címet. Teljesen érvényes, beleértve a kezdve az URL-címet kell lennie *http://* és a záró *.com*.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Leírás**: verzió funkció nem érhető el a verzió *specifiedVersion* és előfizetés-azonosító *yourSubscriptionId*.  
+* **Leírás**: Verzió funkció nem érhető el a verzió *specifiedVersion* és előfizetés-azonosító *yourSubscriptionId*.  
 * **Kockázatcsökkentési**: Válasszon egy olyanra, amely érhető el, és próbálja megismételni a műveletet.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Leírás**: verzió *specifiedVersion* nem támogatott.
+* **Leírás**: Verzió *specifiedVersion* nem támogatott.
 * **Kockázatcsökkentési**: Válasszon egy támogatott verzióra, és próbálja megismételni a műveletet.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Leírás**: verzió *specifiedVersion* nem érhető el az Azure-régiókban *specifiedRegion*.  
+* **Leírás**: Verzió *specifiedVersion* nem érhető el az Azure-régiókban *specifiedRegion*.  
 * **Kockázatcsökkentési**: Válasszon egy olyanra, amely a megadott régióban támogatott, és próbálja megismételni a műveletet.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **Leírás**: Érvénytelen fürtkonfiguráció. Szükséges WASB fiók konfigurációja nem található a külső fiókokat.  
+* **Leírás**: Érvénytelen a fürt konfigurációját. Szükséges WASB fiók konfigurációja nem található a külső fiókokat.  
 * **Kockázatcsökkentési**: Ellenőrizze az, hogy a fiók létezik és megfelelően megadva a konfigurációban, és próbálja megismételni a műveletet.
 
 ## <a name="next-steps"></a>További lépések

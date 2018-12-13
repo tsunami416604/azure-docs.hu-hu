@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: 9affaaaf38fbba8a374824aeccf70663693e1cb0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ba450258a03fc21a06476a6bdd81dc5a886056de
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092553"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137624"
 ---
-# <a name="train-your-luis-app-version"></a>A LUIS Alkalmazásverzió betanítása
+# <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás az aktív Ön betanítása 
 
 Képzési az a folyamat, a Language Understanding (LUIS) alkalmazásával a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után. 
 

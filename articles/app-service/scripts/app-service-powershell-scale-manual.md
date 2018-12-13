@@ -3,8 +3,8 @@ title: Azure PowerShell-példaszkript – Webalkalmazások manuális skálázás
 description: Azure PowerShell-példaszkript – Webalkalmazások manuális skálázása
 services: app-service\web
 documentationcenter: ''
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: bb4f4dbb0486687353f60667f158539df492dcf2
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 176101df6a0be8ee6d98d0286bc191ffc1accc28
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325751"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187415"
 ---
-# <a name="scale-a-web-app-manually"></a>Webalkalmazások manuális skálázása
+# <a name="scale-a-web-app-manually-using-powershell"></a>Manuálisan a PowerShell használatával webalkalmazások méretezése
 
 Ebben a forgatókönyvben megtanulja, hogyan lehet erőforráscsoportot, App Service-csomagot és webalkalmazást létrehozni. Ezután egy példányból több példányra skálázza az App Service-csomagot.
 

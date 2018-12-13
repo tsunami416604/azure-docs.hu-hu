@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07be154f05441c94e32b05fc8354f59b88713929
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 46eebf6b7d68267765ded5ff91610e94960c3679
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323524"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára
+# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat eszközszimulátort a Windows rendszerű fejlesztői gépeken. A szimulált eszközt arra konfiguráljuk, hogy egy szimmetrikus kulcs használatával hitelesítse magát egy Device Provisioning Service-példánynál és hozzárendelésre kerüljön egy IoT-központhoz. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) mintakódját használva fogjuk szimulálni az eszközindítási szekvenciát, amely a kiosztás folyamatát fogja elindítani. A rendszer az eszközt a regisztrációs szolgáltatáspéldányban való egyéni regisztrációja alapján ismeri fel, és ez alapján társítja egy IoT-központhoz.
 
@@ -83,7 +83,7 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
 4. Futtassa az alábbi parancsot, amely létrehozza az SDK fejlesztői ügyfélplatformra szabott verzióját. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -91,7 +91,7 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -114,13 +114,13 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
-    - **Eljárás**: Identitásazonosító *eljárásnak* válassza a **Szimmetrikus kulcs** lehetőséget.
+    - **Mechanizmus**: Válassza ki **szimmetrikus kulcs** elemet az identitás igazolási *mechanizmus*.
 
-    - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
+    - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
 
-    - **Regisztrációs azonosító**: Adja meg a regisztráció azonosításra szolgáló Regisztrációs azonosítót. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
+    - **Regisztrációs azonosító**: Adja meg a regisztrációs Azonosítót a regisztráció azonosításához. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
 
-    - **IoT Hub-eszközazonosító**: Adjon meg egy eszközazonosítót. Például: **device-007**
+    - **IoT Hub-Eszközazonosító:** Adjon meg egy eszközazonosítót. Például: **device-007**
 
     ![Egyéni regisztráció hozzáadása szimmetrikus kulcsú igazoláshoz a Portalon](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 

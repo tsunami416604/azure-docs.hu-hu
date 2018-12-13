@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422796"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255074"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Felkészülés az Azure virtuális gépek biztonsági mentése
 
@@ -34,12 +34,12 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 
 ## <a name="supported-operating-systems-for-backup"></a>Támogatott operációs rendszerek biztonsági mentés
 
- * **Linux**: az Azure Backup támogatja [disztribúciókat, amely Azure vannak jóváhagyva](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux és a 32 bites operációs rendszert. Fájlok visszaállítása a támogató Linux operációs rendszerek listáját lásd: [fájlok helyreállítása a virtuális gépek biztonsági mentésének](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux**: Az Azure Backup támogatja [disztribúciókat, amely Azure vannak jóváhagyva](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux és a 32 bites operációs rendszert. Fájlok visszaállítása a támogató Linux operációs rendszerek listáját lásd: [fájlok helyreállítása a virtuális gépek biztonsági mentésének](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Más bring-your-saját Linux-disztribúciók működnek, mindaddig, amíg a Virtuálisgép-ügynök nem érhető el a virtuális gépen, és támogatja a pythont. Azonban ezeket a disztribúció nem támogatottak.
     >
- * **A Windows Server**, **Windows ügyfél**: Windows Server 2008 R2 vagy Windows 7-nél régebbi verziók nem támogatottak.
+ * **A Windows Server**, **Windows ügyfél**:  A Windows Server 2008 R2 vagy Windows 7-nél régebbi verziók nem támogatottak.
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Korlátozások a biztonsági mentése és visszaállítása egy virtuális gép esetén
@@ -177,7 +177,7 @@ A Backup bővítmény működjön, az Azure [Virtuálisgép-ügynök](../virtual
 
 A következő információ olyan esetekben, ahol Ön *nem* használatával egy virtuális gép létrehozása az Azure Marketplace-ről. **Például át a virtuális gép egy helyszíni adatközpontból. Ebben az esetben a virtuális gép ügynökét telepíteni kell a virtuális gép védelmét.**
 
-**Megjegyzés:**: a Virtuálisgép-ügynök telepítése után is használnia kell az Azure PowerShell a ProvisionGuestAgent tulajdonság frissíteni, így az Azure tudja, hogy a virtuális gépen az ügynök telepítve van.
+**Megjegyzés:**: A Virtuálisgép-ügynök telepítése után is a Azure PowerShell használatával frissítse a ProvisionGuestAgent tulajdonságát, így Azure tudja, hogy a virtuális gépen telepített ügynök
 
 Ha rendelkezik az Azure virtuális gép biztonsági mentésével kapcsolatos problémák, a következő táblázat segítségével ellenőrizze, hogy az Azure-beli Virtuálisgép-ügynök megfelelően telepítve van a virtuális gépen. A táblázat a Virtuálisgép-ügynök további információt a Windows és Linux rendszerű virtuális gépekhez.
 
@@ -238,7 +238,7 @@ Egy HTTP-proxy használatával kommunikálnak a nyilvános interneten, kövesse 
 > [!NOTE]
 > Ezeket a lépéseket ebben a példában használja az adott neveit és értékeit. Amikor a rendszer megadása (vagy beillesztése) részletei elhelyezni a kódban, a neveket és értékeket a központi telepítéshez használni.
 
-#### <a name="step-1-configure-outgoing-network-connections"></a>1. lépés: Konfigurálja a kimenő hálózati kapcsolatokat
+#### <a name="step-1-configure-outgoing-network-connections"></a>1. lépés: A kimenő hálózati kapcsolatok konfigurálása
 ###### <a name="for-windows-machines"></a>Windows-gépek
 Ez az eljárás beállítja a proxykiszolgáló beállításait a helyi rendszer fiók számára.
 
@@ -283,7 +283,7 @@ HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
 ```
 
-#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>2. lépés: A proxykiszolgálót a bejövő kapcsolatok engedélyezése
+#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>2. lépés: A proxykiszolgáló bejövő kapcsolatok engedélyezése
 1. Nyissa meg a proxykiszolgáló, a Windows tűzfal. A tűzfal eléréséhez legegyszerűbb módja a keresendő **fokozott biztonságú Windows tűzfal**.
 1. Az a **fokozott biztonságú Windows tűzfal** párbeszédpanelen kattintson a jobb gombbal **bejövő szabályok** válassza **új szabály**.
 1. Az új bejövő szabály varázsló a a **szabálytípus** lapon válassza ki a **egyéni** lehetőséget, majd válassza ki **tovább**.

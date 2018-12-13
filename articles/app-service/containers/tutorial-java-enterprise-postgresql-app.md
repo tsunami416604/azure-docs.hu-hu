@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-ben a Java Enterprise-webalkalmazás összeállítása linuxon |} A Microsoft Docs
+title: Nagyvállalati Java-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
 description: Ismerje meg, hogyan üzembe a Linuxon futó Azure App Service Wildfly a Java Enterprise-alkalmazást.
 author: JasonFreeberg
 manager: routlaw
@@ -10,12 +10,13 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 2b8151117a9093cb58ffe6db45bc5ee1a9abd54b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165458"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259256"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
@@ -32,8 +33,8 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. [A git letöltése és telepítése](https://git-scm.com/)
-1. [Töltse le és telepítse a Maven 3](https://maven.apache.org/install.html)
-1. [Töltse le és telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [Töltse le és telepítse a Maven 3](https://maven.apache.org/install.html)
+3. [Töltse le és telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>Klónozza, és szerkesztheti a mintaalkalmazás
 
@@ -161,9 +162,9 @@ Következő lépésként a Java tranzakció API (JPA) konfiguráció szerkeszté
 Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. Konfigurálja a kiszolgálót, szükségünk lesz a négy fájlt a `wildfly_config/` könyvtár:
 
 - **postgresql-42.2.5.jar**: A JAR-fájlt a Postgres készült JDBC-illesztőprogram. További információkért lásd: a [hivatalos webhely](https://jdbc.postgresql.org/index.html).
-- **postgres-module.xml**: A XML-fájl deklarálja a Postgres-modul (org.postgres) nevét. Az erőforrások és a használt modul szükséges függőségeket is meghatározza.
+- **postgres-module.xml**: Az XML-fájl deklarálja a Postgres-modul (org.postgres) nevét. Az erőforrások és a használt modul szükséges függőségeket is meghatározza.
 - **jboss_cli_commands.cl**: Ez a fájl tartalmazza a konfigurációs parancsok, amelyek a JBoss CLI való fogja végrehajtani. A parancsok a Postgres-modul hozzáadása a WildFly application server, adja meg a hitelesítő adatokat, deklarálja JNDI nevét, állítsa be az időkorlát küszöbértéke stb. Ha ismeri a JBoss CLI-vel, tekintse meg a [dokumentációs](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.SH**: végül, ez a héjparancsfájl lesz végrehajtva, amikor elindul az App Service-példányhoz. A parancsfájl csak egy függvényt hajtja végre: szereplő parancsok átirányításával `jboss_cli_commands.cli` JBoss CLI.
+- **startup_script.SH**: Végül Ez a héjparancsfájl fog hajtható végre, amikor elindul az App Service-példányhoz. A parancsfájl csak egy függvényt hajtja végre: szereplő parancsok átirányításával `jboss_cli_commands.cli` JBoss CLI.
 
 Erősen javasoljuk, hogy a fájlok tartalmának olvasása különösen _jboss_cli_commands.cli_.
 

@@ -10,17 +10,15 @@ ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7a8f2fc0d8b9f023e20cf8c4d4939aa3094a13e8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890177"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184118"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -119,32 +117,32 @@ Is **exportálása** exportálhatja az eredményeket az Excelbe. Az adatok expor
 ![exportált AD replikációs állapota hibák az Excelben](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>AD-replikáció állapota – gyakori kérdések
-**Kérdés: milyen gyakran van a replikációs adatokat AD frissíteni?**
-V: az adatokat öt naponta frissül.
+**KÉRDÉS: Milyen gyakran az AD replikálás állapotadatainak frissítése?**
+VÁLASZ: Az adatokat öt naponta frissül.
 
-**K: van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
-V: jelenleg nem.
+**KÉRDÉS: Van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
+VÁLASZ: Jelenleg nem.
 
-**K: van szükségem ahhoz, hogy a replikációs állapot hozzáadása összes saját tartományvezérlő a Log Analytics-munkaterület?**
-V: nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
+**KÉRDÉS: Kell adja hozzá az összes saját tartományvezérlők, a Log Analytics-munkaterület ahhoz, hogy a replikációs állapot megtekintéséhez?**
+VÁLASZ: Nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
 
-**K: nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
-V: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**KÉRDÉS: Nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
+VÁLASZ: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
-**K: Mi a neve, amely az adatok gyűjtése a folyamat?**
-A: AdvisorAssessment.exe
+**KÉRDÉS: Mi a neve, a folyamat, amely az adatgyűjtés?**
+VÁLASZ: AdvisorAssessment.exe
 
-**K: mennyi ideig tart a gyűjtendő adatokat?**
-V: adatok gyűjtése idő az Active Directory-környezet méretétől függ, de általában kisebb, mint 15 perc alatt.
+**KÉRDÉS: Mennyi ideig tart a gyűjtendő adatokat?**
+VÁLASZ: Adatok gyűjtése idő az Active Directory-környezet méretétől függ, de általában kisebb, mint 15 perc alatt.
 
-**Kérdés: milyen típusú adatokat gyűjt?**
-V: replikációs gyűjtött LDAP-n keresztül.
+**KÉRDÉS: Milyen típusú adatokat gyűjt?**
+VÁLASZ: LDAP-n keresztül gyűjt replikációs adatokat.
 
-**K: van konfigurálni az adatgyűjtés mód?**
-V: jelenleg nem.
+**KÉRDÉS: Van mód a konfigurálását, amikor az adatgyűjtés történik?**
+VÁLASZ: Jelenleg nem.
 
-**Kérdés: milyen engedélyekkel van szükségem adatok gyűjtésére?**
-V: normál felhasználói engedélyek az Active Directory elegendőek.
+**KÉRDÉS: Milyen engedélyekkel van szükségem adatok gyűjtésére?**
+VÁLASZ: Az Active Directory normál felhasználói engedélyek elegendőek.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
 Annak érdekében, hogy az adatok gyűjtéséhez az AD Replication Status megoldáscsomag szükséges legalább egy tartományvezérlő, a Log Analytics-munkaterületre kell csatlakoztatni. Mindaddig, amíg a tartományvezérlő csatlakozott, megjelenik egy üzenet jelzi, hogy **adatok összegyűjtése még folyamatban van**.

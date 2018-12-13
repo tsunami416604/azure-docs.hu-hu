@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1ea99c045d5f1bfaacaefab04322b2d4f1123c84
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097573"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183506"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -77,20 +76,20 @@ A következő lépések bemutatják, hogyan konfigurálása a Log Analytics lesz
 5. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.<br><br> ![A log Analytics konfigurálása adatkorlát](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>Riasztás, ha elérte a korlátot
-Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További tudnivalókért lásd: [létrehozása, megtekintése és kezelése a riasztások](../../monitoring-and-diagnostics/alert-metric.md).      
+Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További tudnivalókért lásd: [létrehozása, megtekintése és kezelése a riasztások](../../azure-monitor/platform/alerts-metric.md).      
 
 Az első lépésekhez, az alábbiakban a riasztás az ajánlott beállításokat:
 
 * Cél: Válassza ki a Log Analytics-erőforrás
 * Feltételek: 
-   * Jel neve: egyéni naplók keresése
-   * Keresési lekérdezés: a művelet |} Ha részletes rendelkezik-e "termékváltozatként használja:
-   * Alapján: eredmények száma
+   * Jel neve: Egyéni naplók keresése
+   * Keresési lekérdezés: A művelet |} Ha részletes rendelkezik-e "termékváltozatként használja:
+   * Alapján: Eredmények száma
    * Feltétel: Nagyobb, mint
    * Küszöbérték: 0
    * Időszak: 5 (perc)
-   * Gyakoriság: 5 (perc)
-* Riasztási szabály neve: elérte a napi korlátot
+   * Gyakorisága: 5 (perc)
+* Riasztási szabály neve: Elérte a napi korlátot
 * Súlyosság: Figyelmeztetés (Sev 1)
 
 Riasztás van definiálva, és a eléri a korlátot, riasztás akkor aktiválódik, és hajtja végre a választ a műveletcsoport meghatározott. Küldjön értesítést munkatársainak e-mailek és SMS-EK, valamint automatizálja a műveleteket webhookok, Automation-runbookok használatával vagy [integrálása egy külső ITSM-megoldással](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
@@ -103,10 +102,10 @@ Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konf
 5. A panelen a csúszka segítségével növelheti vagy csökkentheti a napok számát, és kattintson a **OK**.  Ha a *ingyenes* szint, nem tudja módosítani az Adatmegőrzés időtartama, és annak érdekében, hogy ez a beállítás szabályozza a fizetős csomagra frissíteni szeretne.<br><br> ![Munkaterület megőrzése beállításának módosítása](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-**Kérdés**: hogyan háríthatom el, ha a Log Analytics már nem gyűjt adatokat? 
-**Válasz**: vannak a az ingyenes tarifacsomag, és a egy nap alatt több mint 500 MB mennyiségű adatot küldő, ha az adatgyűjtés a nap hátralevő leáll. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  
+**Kérdés**: Hogyan háríthatom el, ha a Log Analytics már nem gyűjt adatokat? 
+**válasz**:  Ha vannak a az ingyenes tarifacsomag, és a egy nap alatt több mint 500 MB mennyiségű adatot küldő, a nap hátralevő leállítja az adatgyűjtés. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  
 A log Analytics művelet típusú eseményt hoz létre, amikor adatgyűjtés indítása és leállítása.  
-Futtassa a következő lekérdezést a keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak: művelet |} ahol OperationCategory == 'adatgyűjtés állapota:   
+A keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak a következő lekérdezés futtatásával: A művelet |} ahol OperationCategory == 'adatgyűjtés állapota:   
 Ha leállítja az adatgyűjtést, a OperationStatus figyelmeztetés. Amikor megkezdi az adatgyűjtést, akkor a OperationStatus sikeres volt.  
 A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést javasolt művelet:  
 
@@ -121,7 +120,7 @@ A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, �
 A log Analytics UTC időt használja. Visszaállítás függ, hogy egy időben tölt be adatot az összes díjkorlát munkaterületek kezdő munkaterületek között. Ha a munkaterület eléri a napi korlátot, feldolgozás után folytatja a meghatározott a visszaállítási idő **napi korlát lesz beállítva**.<br><br> ![A log Analytics korlátozza az UTC időzónára](media/manage-cost-storage/data-volume-mgmt-limit-utc.png)
 
 **Kérdés**: Hogyan kaphatok értesítést adatgyűjtés leállása esetén? 
-**Válasz**: a leírt lépésekkel *létrehozás napi adatkorlátjának* , ami arról értesíti, ha leállítja az adatgyűjtést, és kövesse a lépéseket használja leírt lépések hozzáadása a műveletek a riasztási szabályok az e-mail, webhook vagy runbook konfigurálása a riasztási szabály művelet. 
+**válasz**: Az ismertetett lépésekkel *létrehozás napi adatkorlátjának* , ami arról értesíti, ha leállítja az adatgyűjtést, és kövesse a lépéseket használja leírt lépéseket követve adja hozzá a riasztási szabályokhoz műveletek egy e-mail, webhook vagy runbook műveletet a riasztási szabály konfigurálása . 
 
 ## <a name="next-steps"></a>További lépések  
 

@@ -1,5 +1,5 @@
 ---
-title: Újdonságok
+title: A kiadás újdonságai?
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg az Azure Machine Learning szolgáltatást a legújabb frissítéseket.
 services: machine-learning
@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea9f8e07b627b7f3554e390063d61ef984f30dad
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105138"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185715"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
 
-## <a name="2018-12-04-general-availability"></a>2018-12-04: általánosan elérhető
+## <a name="2018-12-04-general-availability"></a>2018-12-04: Általános rendelkezésre állás
 
 Az Azure Machine Learning szolgáltatás már általánosan elérhető.
 
@@ -235,7 +235,7 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (nyilvános előzetes verzió frissítése)
 
-Egy új, teljesen frissülnek az Azure Machine Learning kiadás: Ebben a kiadásban további információk: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
+Egy új, teljes mértékben frissítés az Azure Machine Learning a kiadásban: További információ az ebben a kiadásban: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 ## <a name="older-notes-sept-2017---jun-2018"></a>Régebbi megjegyzések: Szeptembertől 2017 – 2018. június
 ### <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
@@ -542,7 +542,7 @@ Alább az Azure Machine Learning a sprint minden egyes összetevő terület rés
 - Jupyter server most már megfelelően leállítja a felhasználó bejelentkezésekor ki az alkalmazásból.
 
 ##### <a name="azure-portal"></a>Azure Portal
-- Kísérletezési fiók és a Modellkezelési fiókot most hozható létre a két új Azure-régió: Nyugat-Európa és Délkelet-Ázsia.
+- Kísérletezési fiók és a Modellkezelési fiókot most már két új Azure-régióban hozható létre: Nyugat-Európa és Délkelet-Ázsia.
 - Modell felügyeleti fiók DevTest terv most csak akkor használható amikor kell létrehozni az előfizetést az elsőt. 
 - Az Azure Portalon látható Súgó hivatkozásra frissül, hogy a megfelelő dokumentációs oldalon mutasson.
 - A Leírás mező Docker rendszerkép részleteit megjelenítő oldalon törlődik, mivel nem alkalmazható.

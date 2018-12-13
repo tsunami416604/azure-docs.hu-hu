@@ -1,5 +1,5 @@
 ---
-title: .NET Core- és SQL Database-webalkalmazás összeállítása Linuxon futó Azure App Service-ben | Microsoft Docs
+title: Hozhat létre a .NET Core-alkalmazás és SQL Database linuxon – az Azure App Service |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő .NET Core-alkalmazásra, amely csatlakozik az SQL Database-hez.
 services: app-service\web
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: ddea4621277303dd6c153205b683b4eea0151db0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: cb81699671bd2a0e86838d043ad0a4442eb79a6c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432262"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254241"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>.NET Core- és SQL Database-webalkalmazás összeállítása Linuxon futó Azure App Service-ben
 
@@ -330,7 +330,7 @@ Keresse meg a `asp-action` címke-segítőket tartalmazó `<td>` elemet. Az elem
 
 ```csharp
 <td>
-    @Html.DisplayFor(modelItem => item.CreatedDate)
+    @Html.DisplayFor(modelItem => item.Done)
 </td>
 ```
 

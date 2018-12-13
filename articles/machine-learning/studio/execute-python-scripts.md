@@ -5,9 +5,8 @@ keywords: Python gépi tanulási, pandas, a python pandas, a python-szkriptek, p
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 958dd91277a81a9082a4149d2b0026fc11bf882a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f0fa2401e37e15137e9d5387d1395baf64b0fe61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317585"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274071"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
@@ -52,7 +51,7 @@ Python-munkafolyamat a machine learning modellezési jellemzően használt össz
 
 Az Azure Machine Learning Studióban be egy machine learning-kísérlet, és zökkenőmentesen is közzé őket a Microsoft Azure-webszolgáltatásként különböző részeivel beágyazási Python-szkriptek támogatja.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 ## <a name="design-principles-of-python-scripts-in-machine-learning"></a>A Machine Learning Python-szkriptek tervezési alapelvek

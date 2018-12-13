@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238131"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273058"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk-lemez? (Előzetes verzió)
 
@@ -59,7 +59,7 @@ A.  A Data Box Disk az előzetes időszakban elérhető az USA-ban, Kanadában, 
 A. A Data Box Disk előzetes verziója támogatott az USA minden régiójában, Kanadában, Ausztráliában és Nyugat-, valamint Észak-Európában. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
-A. Ha bármilyen probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban, kérjük, forduljon a [Data Box Disk támogatásához](mailto:expresspodsupport@microsoft.com).
+A. Ha problémába ütközik a Data Box-lemezeit, [forduljon a Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
@@ -108,7 +108,7 @@ A.  Az adatok egy SMB-másoló eszköz, például a Robocopy vagy a Diskboss has
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A ténylegesen használt parancsokkal kapcsolatban további információkat a következő oktatóanyagban talál: [Oktatóanyag: Adatok másolása az Azure Data Box Disk-lemezre, és az adatok ellenőrzése](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancsát további információért látogasson el [oktatóanyag: Adatok másolása az Azure Data Box-lemezek, és ellenőrizze](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyre a lemezeket csatlakoztatja.
 - Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.

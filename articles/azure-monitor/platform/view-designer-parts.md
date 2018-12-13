@@ -10,17 +10,15 @@ ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866678"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193875"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -28,7 +26,7 @@ Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat 
 Nézettervező kapcsolatos további információkért lásd:
 
 * [Megtekintheti a tervező](view-designer.md): Nézettervező és eljárások áttekintést nyújt a létrehozásának és szerkesztésének egyéni nézeteket.
-* [Csempe referencia](view-designer-tiles.md): tartalmaz egy hivatkozást az egyéni nézetekben elérhető csempékhez beállításait.
+* [Csempe referencia](view-designer-tiles.md): Az egyéni nézetekben elérhető csempékhez beállításait egy hivatkozást tartalmaz.
 
 
 A rendelkezésre álló Nézettervező csempe típusokat az alábbi táblázat ismerteti:
@@ -143,7 +141,7 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **fánkdiagram** |**> Center** |
 | Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
-| Művelet |A value tulajdonság együtt, egyetlen értékként kell elvégezni a műveletet.<ul><li>Összeg: Hozzáadja az összes rekord értékeit.</li><li>Százalékban: A szereplő értékek által visszaadott rekordok arány **center művelet során használt értékek eredmény** a teljes rekordot a lekérdezésben.</li></ul> |
+| Művelet |A value tulajdonság együtt, egyetlen értékként kell elvégezni a műveletet.<ul><li>Összeg: Hozzáadja az összes rekord értékeit.</li><li>Százalékos aránya: A rekordok szereplő értékek által visszaadott aránya **center művelet során használt értékek eredmény** a teljes rekordot a lekérdezésben.</li></ul> |
 | A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **További beállítások** |**> Színek** |
 | 1 színe<br>2. szín<br>Szín 3 |Válassza ki a színt a fánkdiagramon megjelenő értékeit. |
@@ -182,7 +180,7 @@ A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kih
 | Jelmagyarázat |A kihívás az első adatsor alatt megjelenő szöveg. |
 | Szín |Az a sorozat az oszlopok használandó színt. |
 | Lekérdezés |A lekérdezés futtatása az első adatsorozathoz. Minden egyes idő alatt rekordok számát a tábla oszlopainak képviseli. |
-| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Összeg: Az összes rekord értékek összegét.</li><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Először minta: az első időközt, amely megtalálható a diagramon az értékét.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li></ul> |
+| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Összeg: Az összes rekord értékek összegét.</li><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Első minta: Az első időközt, amely megtalálható a diagramon az értékét.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li></ul> |
 | **List** | |
 | Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
 | Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
@@ -238,7 +236,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | **Vonaldiagram** |**> Képfelirat** |
 | Képfelirat címe |A képfelirat értéke felett megjelenő szöveg. |
 | Adatsorozat neve |A képfelirat értékéhez használandó adatsor tulajdonság értéke. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
-| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Maximális száma: A maximális értékét az intervallumok, a diagram szerepelnek.</li><li>Min.: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
+| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Maximális száma: Az időközök, amelyek szerepelnek a diagram a maximális értékét.</li><li>Min.: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
 | Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
@@ -344,7 +342,7 @@ Az alábbi táblázat az Értékgörbék vonatkozó beállításait ismerteti:
 | Beállítás | Leírás |
 |:--- |:--- |
 | Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. |
-| Művelet |Ha Értékgörbék engedélyezve vannak, akkor az értékgörbe értékeinek kiszámítása a listában lévő minden egyes tulajdonság elvégezni a műveletet.<ul><li>Utolsó minta: az idő alatt a sorozat utolsó értékét.</li><li>Maximális száma: A maximális érték az idő alatt az adatsorozathoz.</li><li>Min.: A minimális érték az idő alatt az adatsorozathoz.</li><li>Összeg: Az idő alatt az adatsorozathoz értékeinek összegét.</li><li>Összefoglalás: Ugyanazokkal a `measure` parancsot, mivel a lekérdezés a fejlécben.</li></ul> |
+| Művelet |Ha Értékgörbék engedélyezve vannak, akkor az értékgörbe értékeinek kiszámítása a listában lévő minden egyes tulajdonság elvégezni a műveletet.<ul><li>Legutóbbi minta: Az idő alatt a sorozat utolsó értékét.</li><li>Maximális száma: A maximális érték az idő alatt az adatsorozathoz.</li><li>Min.: A minimális érték az idő alatt az adatsorozathoz.</li><li>Összeg: Az idő alatt az adatsorozathoz értékeinek összegét.</li><li>Összefoglalás: Ugyanazokkal a `measure` parancsot, mivel a lekérdezés a fejlécben.</li></ul> |
 
 ### <a name="thresholds"></a>Küszöbértékek
 Küszöbértékek használatával megjelenítheti, hogy egy színes ikon mellett az egyes elemek listáját. Küszöbértékek teszik lehetővé, amely meghaladja az egy adott érték vagy egy adott tartományon belüli elemek gyors láthatja. Például egy elfogadható érték, a sárga, ha az érték, amely figyelmeztet, egy tartományon belül, és a piros elemek zöld ikonnal megjelenítése, ha ez meghaladja a hibát.

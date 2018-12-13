@@ -1,12 +1,11 @@
 ---
 title: '5. lépés: Webes szolgáltatás telepítése – Azure Machine Learning Studióban |} A Microsoft Docs'
-description: 'A fejlesztés egy prediktív megoldás bemutatója 5. lépés: egy prediktív kísérletet a Machine Learning Studióban webszolgáltatásként üzembe helyezése.'
+description: 'Az a Develop egy prediktív megoldás bemutatója. 5. lépés: Egy prediktív kísérletet a Machine Learning Studióban üzembe webszolgáltatásként.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: b0da85625ab938ea050ec6ae7bb1d66b095370b6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ab23636aa0480532606268efedcc76ea1ddd339a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077137"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253731"
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Az útmutató 5. lépés: Az Azure Machine Learning Studio webszolgáltatás üzembe helyezése
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Az útmutató 5. lépés: Az Azure Machine Learning Studio-webszolgáltatás üzembe helyezése
 Ez a forgatókönyv az minden ötödik lépés a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
@@ -205,7 +204,7 @@ A webszolgáltatás teljesítményének figyelésére:
 4. Kattintson a **irányítópult**
 
 - - -
-**A következő: [hozzáférés a webszolgáltatáshoz](walkthrough-6-access-web-service.md)**
+**Következő: [Hozzáférés a webszolgáltatáshoz](walkthrough-6-access-web-service.md)**
 
 [3]: ./media/walkthrough-5-publish-web-service/publish3.png
 [3a]: ./media/walkthrough-5-publish-web-service/publish3a.png

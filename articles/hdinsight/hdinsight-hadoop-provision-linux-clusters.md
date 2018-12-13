@@ -1,5 +1,5 @@
 ---
-title: Hadoop, Spark, Kafka, HBase és az R Server – Azure HDInsight-fürt beállítása
+title: A telepítő az Apache Hadoop, az Apache Spark, az Apache Kafka, az Apache HBase vagy az R Server – Azure HDInsight-fürt
 description: Beállítani az Hadoop, a Kafka, a Spark, HBase, R Server vagy a Storm-fürtöket a HDInsight egy böngészőt, a klasszikus Azure CLI, Azure PowerShell, REST vagy SDK-t.
 keywords: hadoop-fürt beállítása, a kafka-fürt beállítása, a spark-fürt beállítása, mi a hadoop-fürt
 services: hdinsight
@@ -7,17 +7,17 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: ca3a4b4ffc8639b2636b917e656255c2c1b10d33
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4efbf3ec13820892b2abf88919b6ea9ed9df0e45
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005478"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164330"
 ---
-# <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>A Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása
+# <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan állíthatja be, és a HDInsight Hadoop, Spark, Kafka, inter
 Hadoop-fürt több virtuális gépek (csomópontok), elosztott feldolgozási feladatok által használt áll. Azure HDInsight megvalósítási részletei telepítési és konfigurációs egyes csomópontjainak kezeli, így csak meg kell adnia az általános konfigurációs adatait. 
 
 > [!IMPORTANT]
->A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban. Ismerje meg, hogyan [fürt törlése.](hdinsight-delete-cluster.md)
+>A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ismerje meg, hogyan [fürt törlése.](hdinsight-delete-cluster.md)
 >
 
 ## <a name="cluster-setup-methods"></a>Fürt telepítési módszer
@@ -42,7 +42,7 @@ Az alábbi táblázat a különböző módszerek használatával egy HDInsight-f
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |
 | [Az Azure Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="quick-create-basic-cluster-setup"></a>Gyors létrehozás: alapszintű fürt beállítása
+## <a name="quick-create-basic-cluster-setup"></a>Gyors létrehozás: Alapszintű fürt beállítása
 Ez a cikk végigvezeti a telepítés a [az Azure portal](https://portal.azure.com), ahol létrehozhat egy HDInsight fürt a *Gyorslétrehozás* vagy *egyéni*. 
 
 ![hdinsight létrehozása a Gyorslétrehozás egyéni beállítások](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-options.png)
@@ -96,8 +96,8 @@ További információ a tartományhoz csatlakoztatott HDInsight létrehozása a 
 ## <a name="cluster-login-and-ssh-user-name"></a>Fürt bejelentkezési adatai és SSH-felhasználónév
 A HDInsight-fürtökkel a fürt létrehozásakor két felhasználói fiókot konfigurálhat:
 
-* A HTTP-felhasználó: az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
-* SSH-felhasználó (Linux-fürtök): a fürt ssh-n keresztül csatlakozik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+* A HTTP-felhasználó: Az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
+* SSH-felhasználó (Linux-fürtök): Csatlakozhat a fürthöz ssh-n keresztül. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A vállalati biztonsági csomag lehetővé teszi, hogy a HDInsight integrálható az Active Directory és az Apache Ranger. Több felhasználó is létrehozható, a vállalati biztonsági csomag használatával.
 
@@ -114,7 +114,7 @@ Bár a Hadoop helyszíni telepítve a Hadoop elosztott fájlrendszer (HDFS) hasz
 
 Konfigurálása során az alapértelmezett tárolási végpont, adja meg az Azure Storage-fiókot vagy egy Data Lake Store egy blob-tárolóba. Az alapértelmezett tárolóként tartalmazza az alkalmazás- és naplókat. Szükség esetén további társított Azure Storage-fiókok és a fürt által elérhető Data Lake Store-fiókok is megadhat. A HDInsight-fürt és a függő tárfiókot ugyanazon Azure-beli helyen kell lennie.
 
-![Tároló beállításai: HDFS-kompatibilis tárolási végpontok](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
+![Fürt-tárolási beállítások: HDFS-kompatibilis tárolási végpontok](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -161,11 +161,11 @@ Mindaddig, amíg a fürt létezik számlázása a csomópont használatra. A sz�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Mindegyik fürttípus csomópontok száma
 Mindegyik fürttípus rendelkezik a saját csomópontok, a csomópontok és a virtuális gépek alapértelmezett mérete terminológiája száma. Az alábbi táblázatban az egyes csomóponttípusok csomópontok számát zárójelek között van.
 
-| Type (Típus) | Csomópontok | Diagram |
+| Típus | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |A fő csomópont (2), adatcsomópont (1 +) |![HDInsight Hadoop-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |A fő kiszolgáló (2), régióbeli kiszolgálók (1 +), mester/ZooKeeper-csomópont (3) |![HDInsight HBase-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| A Storm |Nimbus csomóponttal (2) felügyeleti kiszolgáló (1 +), ZooKeeper-csomópont (3) |![HDInsight Storm-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Storm |Nimbus csomóponttal (2) felügyeleti kiszolgáló (1 +), ZooKeeper-csomópont (3) |![HDInsight Storm-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |A fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (a1-es ZooKeeper Virtuálisgép-méret ingyenes) |![HDInsight Spark-fürt csomópontjain](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 További információkért lásd: [csomópont konfigurációs és virtuális gépek méretei fürtök alapértelmezett](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) a "Mik azok a Hadoop-összetevők és verziók a HDInsight?"
@@ -193,8 +193,8 @@ Az Azure portal használatával konfigurálja a fürtöt, amikor a csomópont m�
 
 ### <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek 
 Fürt központi telepítése esetén válassza ki a számítási erőforrásokat tervez üzembe helyezni, a megoldás alapján. HDInsight-fürtök a következő virtuális gépek használják:
-* A és a D1-4-sorozat virtuális gépei: [General-purpose Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11-14-es sorozatú virtuális gépek: [memóriaoptimalizált Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A és a D1-4-sorozat virtuális gépei: [Általános célú Linuxos Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
+* D11-14-es sorozatú virtuális gépek: [A memóriaoptimalizált Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 Ismerje meg, mi az értékre kell használatával adja meg a virtuális gép méretét a különböző SDK-k használatával fürt létrehozása közben, vagy során Azure PowerShell-lel, tekintse meg [Virtuálisgép-méretek használata a HDInsight-fürtök](../cloud-services/cloud-services-sizes-specs.md#size-tables). Az értéket használja a hivatkozott cikk a **mérete** a táblázatok oszlopát.
 
@@ -238,7 +238,7 @@ Egyes esetekben szeretné a létrehozási folyamat során a következő konfigur
 
 További információkért lásd: [Bootstrap használatával testre szabhatja a HDInsight-fürtök](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Speciális beállítások: fürtök és a virtuális hálózat kiterjesztése
+## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Speciális beállítások: Fürtök és a virtuális hálózat kiterjesztése
 Ha a megoldáshoz szükséges technológiákról, amelyeket több HDInsight-fürttípusok, vannak elosztva egy [az Azure virtual network](https://docs.microsoft.com/azure/virtual-network) csatlakozni tud a szükséges típusokat. Ez a konfiguráció lehetővé teszi, hogy a fürtöket, és bármilyen kód telepít őket közvetlenül kommunikálni egymással.
 
 Az Azure-beli virtuális hálózathoz használata a HDInsight további információkért lásd: [HDInsight kiterjesztése az Azure virtual Network szolgáltatással](hdinsight-extend-hadoop-virtual-network.md).

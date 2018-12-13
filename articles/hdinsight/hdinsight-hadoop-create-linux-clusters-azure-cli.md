@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03d51cfb03de071f63578717a65eeda4b119bf0d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497849"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191580"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel HDInsight-fürtök létrehozása
 
@@ -80,7 +80,7 @@ Például a PowerShell vagy a Bash-parancssorból a következő lépéseket kell
     * Cserélje le `groupname` az az erőforráscsoport nevét.
     * Cserélje le `storagename` a tárfiók nevére.
 
-     A visszaadott adatok mentése a `key` értékét `key1`.
+      A visszaadott adatok mentése a `key` értékét `key1`.
 
 6. Hozzon létre egy HDInsight-fürtön.
 
@@ -90,8 +90,8 @@ Például a PowerShell vagy a Bash-parancssorból a következő lépéseket kell
 
     * Cserélje le `Hadoop` a létrehozni kívánt fürt típus. Ha például `Hadoop`, `HBase`, `Kafka`, `Spark`, vagy `Storm`.
 
-     > [!IMPORTANT]
-     > HDInsight fürtöket a különféle, amelyek megfelelnek a számítási feladatok vagy technológia, amely a fürt van hangolva származnak. Nincs támogatott módszer, amely ötvözi az több típus, például a Storm és a egy fürtön a HBase-fürt létrehozásához.
+      > [!IMPORTANT]
+      > HDInsight fürtöket a különféle, amelyek megfelelnek a számítási feladatok vagy technológia, amely a fürt van hangolva származnak. Nincs támogatott módszer, amely ötvözi az több típus, például a Storm és a egy fürtön a HBase-fürt létrehozásához.
 
     * Cserélje le `location` az előző lépésekben használt ugyanazon a helyen.
 
@@ -105,12 +105,12 @@ Például a PowerShell vagy a Bash-parancssorból a következő lépéseket kell
 
     * Cserélje le `sshuser` és `sshuserpassword` a felhasználónévvel és a jelszót kívánja használni, amikor a fürthöz SSH használatával éri el
 
-    > [!IMPORTANT]
-    > Ebben a példában egy fürtöt hoz létre két feldolgozó csomóponttal. A méretezési műveletek végrehajtásával fürt létrehozása után is módosíthatja a munkavégző csomópontok számát. Ha több mint 32 munkavégző csomópontok használatával, majd jelöljön ki egy fő csomópont méretének legalább 8 maggal és 14 GB RAM. Beállíthatja a fő csomópont méretét használatával a `--headNodeSize` paraméter a fürt létrehozásakor.
-    >
-    > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
-
-    A Fürtlétrehozási folyamat befejezéséhez több percig is eltarthat. Általában körülbelül 15.
+      > [!IMPORTANT]
+      > Ebben a példában egy fürtöt hoz létre két feldolgozó csomóponttal. A méretezési műveletek végrehajtásával fürt létrehozása után is módosíthatja a munkavégző csomópontok számát. Ha több mint 32 munkavégző csomópontok használatával, majd jelöljön ki egy fő csomópont méretének legalább 8 maggal és 14 GB RAM. Beállíthatja a fő csomópont méretét használatával a `--headNodeSize` paraméter a fürt létrehozásakor.
+      >
+      > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
+      
+      A Fürtlétrehozási folyamat befejezéséhez több percig is eltarthat. Általában körülbelül 15.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

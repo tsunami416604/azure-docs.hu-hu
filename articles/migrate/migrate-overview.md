@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839734"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250581"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -22,10 +22,10 @@ Az Azure Migrate szolgáltatás a helyszíni számítási feladatokat értékeli
 
 Az Azure Migrate az alábbiakban nyújt segítséget:
 
-- **Az Azure használatához szükséges állapot felmérése**: segít megállapítani, hogy a helyszíni számítógépek alkalmasak-e az Azure-ban való futtatásra.
-- **Javaslatok a méretekkel kapcsolatban**: méretezési javaslatokat kaphat az Azure-beli virtuális gépekhez, a helyszíni virtuális gépek korábbi teljesítménye alapján.
-- **Becsült havi költség**: megkaphatja a helyszíni gépek Azure-ban való futtatásának költségbecslését.  
-- **Megbízható migrálás**: megjelenítheti a helyszíni virtuális gépek függőségeit olyan gépcsoportok létrehozásához, amelyeket együtt fog értékelni és migrálni.
+- **Az Azure készen állásának felmérése**: Annak ellenőrzéséhez, hogy a helyszíni gépek Azure-ban futó alkalmasak.
+- **Javaslatok a méretekkel kapcsolatban**: Méretezési javaslatokat kaphat az Azure-beli virtuális gépek, a helyszíni virtuális gépek korábbi teljesítménye alapján.
+- **Becsült havi költség**: Becsült költségek a helyszíni gépek Azure-ban futó beolvasása.  
+- **Megbízható migrálás**: Gépek, amelyek fog értékelni és migrálása együtt csoportok létrehozása a helyszíni gépek függőségeit, jelenítheti meg.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -34,10 +34,14 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
--  Azure Migrate-projektet csak egyesült államokbeli földrajzi helyen lehet létrehozni. Azonban bármilyen Azure-beli célhelyre tervezhet migrálást.
-    - A migrálási projekt régiója csak a helyszíni környezetből felderített metaadatokat tárolja.
-    - Metaadatait tárolja a kiválasztott földrajzi régiók egyikében: USA nyugati középső RÉGIÓJA és kelet Régiója.
-    - Ha függőségmegjelenítést használ, hozzon létre egy új Log Analytics-munkaterületet, a munkaterület létrehozását a projekt ugyanabban a régióban.
+-  Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban ez nem korlátozza az értékelések más létrehozásának lehetősége cél Azure-helyen.
+    **Régiócsoport** | **Tárolási hely**
+    --- | ---
+    Több egység állapotok | USA nyugati középső RÉGIÓJA és USA keleti RÉGIÓJA
+    Azure Government | USA-beli államigazgatás – Virginia
+
+    A migrálási projekthez tartozó földrajzi a helyszíni környezetből felderített metaadatok tárolására szolgál. Metaadatok alapján a migrálási projekt megadott földrajzi régiók egyikében tárolódik. Ha függőségmegjelenítést használ, hozzon létre egy új Log Analytics-munkaterületet, a munkaterület létrehozását a projekt ugyanabban a régióban.
+- A függőségek képi megjelenítésének funkcióival nem érhető el az Azure Government szolgáltatásban.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
@@ -93,8 +97,8 @@ Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Mic
 
 Miután értékelte a helyszíni gépeket, többféle eszközzel is végrehajthatja a migrálást:
 
-- **Azure Site Recovery**: Az Azure Site Recovery segítségével az Azure-ba végezhet migrálást. Ehhez [elő kell készítenie a szükséges Azure-összetevőket](../site-recovery/tutorial-prepare-azure.md), például a tárfiókot és a virtuális hálózatot. A helyszínen [a VMware-környezetet kell előkészítenie](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Ha minden készen áll, állítsa be és engedélyezze az Azure-ba való replikációt, majd migrálja a virtuális gépeket. [További információk](../site-recovery/vmware-azure-tutorial.md).
-- **Azure Database Migration**: Ha a helyszíni gépek adatbázist futtatnak (például SQL Servert, MySQL-t vagy Oracle-t), az Azure-ba való migráláshoz használhatja az [Azure Database Migration Service](../dms/dms-overview.md)-t is.
+- **Az Azure Site Recovery**: Az Azure Site Recovery segítségével Azure-bA migrálásához. Ehhez [elő kell készítenie a szükséges Azure-összetevőket](../site-recovery/tutorial-prepare-azure.md), például a tárfiókot és a virtuális hálózatot. A helyszínen [a VMware-környezetet kell előkészítenie](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Ha minden készen áll, állítsa be és engedélyezze az Azure-ba való replikációt, majd migrálja a virtuális gépeket. [További információk](../site-recovery/vmware-azure-tutorial.md).
+- **Azure Database Migration**: Ha például az SQL Server, MySQL és Oracle-adatbázis a helyszíni gépeket futtat, akkor használhatja a [Azure Database Migration Service](../dms/dms-overview.md) áttelepítheti az Azure-bA.
 
 
 ## <a name="next-steps"></a>További lépések

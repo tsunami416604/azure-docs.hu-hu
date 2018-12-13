@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: ce434369ad7ede7f82f5af4395e096526759932a
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 7c567cc70a87e7856f511112d3bff692f5af3993
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892315"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194011"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -40,7 +40,7 @@ Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamké
 | [Azure Diagnostics](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
 | [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
-| [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
 | [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Nem | Közvetlen kapcsolat legyen az Operations Manager-ügynök a Log Analytics szolgáltatáshoz a megoldás nem használja. |
 
 ## <a name="configuration"></a>Konfiguráció
@@ -185,7 +185,7 @@ A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
-Könnyen [riasztásokat hozhat létre](../../monitoring-and-diagnostics/alert-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [lekérdezések naplózását](../../azure-monitor/log-query/log-query-overview.md) naplóriasztás használható:
+Könnyen [riasztásokat hozhat létre](../../azure-monitor/platform/alerts-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [lekérdezések naplózását](../../azure-monitor/log-query/log-query-overview.md) naplóriasztás használható:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Az Azure SQL Database magas CPU
 

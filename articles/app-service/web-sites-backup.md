@@ -1,5 +1,5 @@
 ---
-title: Adatok biztonsági mentése az Azure-ban
+title: Alkalmazás – az Azure App Service biztonsági mentése
 description: Megtudhatja, hogyan hozhat létre az alkalmazások biztonsági mentését az Azure App Service-ben.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 95fc4567248ca8201174494eee2da5922b7d0f0e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227841"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269226"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](app-service-web-overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -75,7 +76,7 @@ A következő adatbázis-megoldások biztonsági mentési szolgáltatás támoga
 
 2. Az a **Backup** lapon kattintson **konfigurálása**
 ![kattintson konfigurálása](./media/web-sites-backup/ClickConfigure1.png)
-3. A a **biztonsági mentés konfigurációja** kattintson **tároló: nincs konfigurálva** storage-fiókok konfigurálása.
+3. Az a **biztonsági mentés konfigurációja** kattintson **tároló: Nincs konfigurálva** tárfiók konfigurálásához.
    
     ![Tárfiók kiválasztása][ChooseStorageAccount]
 4. Válassza ki a biztonsági mentés célhelye kiválasztásával egy **Tárfiók** és **tároló**. A tárfiók ugyanahhoz az előfizetéshez, a kívánt alkalmazást, készítsen biztonsági másolatot kell tartoznia. Ha szeretné, létrehozhat egy új tárfiókot vagy egy új tárolót a megfelelő oldalain. Ha elkészült, kattintson a **kiválasztása**.

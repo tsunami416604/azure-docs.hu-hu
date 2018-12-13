@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 22a22789f7eed6402d7bf3abd3b356dbcb4caa37
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134886"
+ms.locfileid: "53166642"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL-adatbázisok dokumentumadatok modellezése
 
@@ -38,7 +38,7 @@ Ahhoz hogy közelebbről túl sokkal tovább, ossza meg velünk vissza néhány 
 
 Relációs adatbázisok használata, amikor azt már lett színesített normalizálása, normalizálása, normalizálása évig.
 
-Az adatok általában normalizálása magában foglalja a véve egy entitás, például egy személy és bontásához, adatok diszkrét darabokra. A fenti példában egy személy kapcsolattartási adatait több rekord, valamint több cím rekord rendelkezhet fut. Hogy még egy lépéssel tovább, és felosztania kapcsolattartási adatok oly módon, további közös mezők, például egy típusa. Ugyanazt a címet, itt minden rekord típussal rendelkező például *kezdőlap* vagy *üzleti* 
+Az adatok általában normalizálása magában foglalja egy entitás, például egy személy véve, és ossza fel az adatok diszkrét darab. A fenti példában egy személy rendelkezhet több ügyfél részletes rekordok, valamint több cím rekord. Hogy még egy lépéssel tovább, és felosztania kapcsolattartási adatok oly módon, további közös mezők, például egy típusa. Ugyanazt a címet, itt minden rekord típussal rendelkező például *kezdőlap* vagy *üzleti* 
 
 A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns adattárolás** az egyes rögzíti, és inkább az adatokra hivatkoznak. Ebben a példában egy személyt, a kapcsolattartási adatait és a címek, olvassa el szüksége ÖSSZEKAPCSOLÁSOK használatával hatékonyan összesítés is történik a futási időben.
 

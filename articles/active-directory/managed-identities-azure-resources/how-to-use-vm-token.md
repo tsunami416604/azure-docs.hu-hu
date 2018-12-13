@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 9c1c833046c7dff0f26621be57768021dc036846
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888987"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323320"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -51,6 +51,7 @@ Egy ügyfélalkalmazás is kérhető az Azure-erőforrások felügyelt identitá
 | [HTTP-n keresztül egy token beszerzése](#get-a-token-using-http) | Az Azure-erőforrások felügyelt identitások protokoll részletei jogkivonat-végpont |
 | [A .NET-hez a Microsoft.Azure.Services.AppAuthentication kódtár használatával egy token beszerzése](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | A Microsoft.Azure.Services.AppAuthentication kódtár a .NET-kliens használatával – példa
 | [C# használatával egy token beszerzése](#get-a-token-using-c) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy C# ügyfél – példa |
+| [Java használatával egy token beszerzése](#get-a-token-using-java) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy Java-ügyfél – példa |
 | [Go használatával egy token beszerzése](#get-a-token-using-go) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy Go-ügyfél – példa |
 | [Azure PowerShell-lel egy token beszerzése](#get-a-token-using-azure-powershell) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy PowerShell-ügyfél – példa |
 | [A CURL használatával egy token beszerzése](#get-a-token-using-curl) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy Bash vagy a CURL ügyfél – példa |
@@ -172,6 +173,50 @@ catch (Exception e)
     string errorText = String.Format("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
 }
 
+```
+
+## <a name="get-a-token-using-java"></a>Java használatával egy token beszerzése
+
+Ezzel [JSON könyvtár](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) Java használatával jogkivonat beszerzésére.
+
+```Java
+import java.io.*;
+import java.net.*;
+import com.fasterxml.jackson.core.*;
+ 
+class GetMSIToken {
+    public static void main(String[] args) throws Exception {
+ 
+        URL msiEndpoint = new URL("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
+        HttpURLConnection con = (HttpURLConnection) msiEndpoint.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Metadata", "true");
+ 
+        if (con.getResponseCode()!=200) {
+            throw new Exception("Error calling managed identity token endpoint.");
+        }
+ 
+        InputStream responseStream = con.getInputStream();
+ 
+        JsonFactory factory = new JsonFactory();
+        JsonParser parser = factory.createParser(responseStream);
+ 
+        while(!parser.isClosed()){
+            JsonToken jsonToken = parser.nextToken();
+ 
+            if(JsonToken.FIELD_NAME.equals(jsonToken)){
+                String fieldName = parser.getCurrentName();
+                jsonToken = parser.nextToken();
+ 
+                if("access_token".equals(fieldName)){
+                    String accesstoken = parser.getValueAsString();
+                    System.out.println("Access Token: " + accesstoken.substring(0,5)+ "..." + accesstoken.substring(accesstoken.length()-5));
+                    return;
+                }
+            }
+        }
+    }
+}
 ```
 
 ## <a name="get-a-token-using-go"></a>Go használatával egy token beszerzése
@@ -327,7 +372,7 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumok. A "200 OK" állapota sike
 
 | Állapotkód | Hiba | Hibaleírás | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Hibás kérés | invalid_resource | AADSTS50001: Nevű alkalmazás *\<URI\>* nem található az nevű bérlőben  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy a hitelesítési kérést részére elküldött rossz bérlőhöz. \ | (Csak Linux) |
+| 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű *\<URI\>* nem található az nevű bérlőben  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy a hitelesítési kérést részére elküldött rossz bérlőhöz. \ | (Csak Linux) |
 | 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | Vagy a `Metadata` kérelem fejléce mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, csupa kisbetű szerepel. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) példaként.|
 | 401-es nem engedélyezett | unknown_source | Ismeretlen forrásból származó  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérés URI formátuma helytelen. A `scheme:host/resource-path` részét kell megadni, `http://localhost:50342/oauth2/token`. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) példaként.|
 |           | invalid_request | A kérelem hiányzik egy kötelező paraméter, tartalmaz egy érvénytelen paraméterérték, egy paraméter egynél többször tartalmazza vagy egyéb helytelen formátumú. |  |

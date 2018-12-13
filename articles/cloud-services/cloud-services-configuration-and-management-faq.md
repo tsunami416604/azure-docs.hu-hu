@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fe096efba5419b283981f27e16c3e30a791412da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979199"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322670"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálása és felügyelete hibák: gyakran ismételt kérdések (GYIK)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services: Gyakori kérdések (GYIK)
 
 Ez a cikk tartalmazza a konfigurációs és felügyeleti kapcsolatos problémák – gyakori kérdések [a Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Is tud kezelni a [Cloud Services Virtuálisgép-méretet lapján](cloud-services-sizes-specs.md) mérete információt.
 
@@ -53,7 +53,7 @@ Ez a cikk tartalmazza a konfigurációs és felügyeleti kapcsolatos problémák
 **Engedélyek**
 
 - [A Microsoft belső mérnökei távoli asztal Felhőszolgáltatás-példányok engedélye nélkül is?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Hiba követések beolvasása: hitelesítési hiba történt (hibakód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Követések beolvasása e hiba: Hitelesítési hiba történt (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Méretezés**
 
@@ -170,7 +170,7 @@ A szolgáltatás definíciós (csdef) fájlban ehhez hasonló az időkorlát adh
     </Endpoints>
   </WorkerRole>
 ```
-Lásd: [új: az Azure Load Balancer konfigurálható üresjárati időkorlát](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) további információt.
+Lásd: [új: Az Azure Load Balancer konfigurálható üresjárati időkorlát](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) további információt.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hogyan társítható egy statikus IP-címet a Cloud Service?
 Statikus IP-cím beállításához szeretne létrehozni a fenntartott IP-cím. A fenntartott IP-Címek társíthatók a egy új Felhőszolgáltatást vagy egy meglévő üzemelő példányt. A következő dokumentumokat a részleteket lásd:
@@ -190,7 +190,7 @@ A Microsoft folyamatosan figyeli a kiszolgálók, hálózatok és alkalmazásoka
 Windows 10 és Windows Server 2016 kapható HTTP/2 támogatása ügyfél és a kiszolgáló oldalán. Ha csatlakozik, az ügyfél (böngésző) TLS protokollon keresztüli az IIS-kiszolgálóra, amely egyezteti a HTTP/2 keresztüli TLS-bővítményeket, akkor nem kell semmilyen módosítást a kiszolgálói oldalon. Ez azért, mert a h2-14 fejléc adja meg a HTTP/2 használatát keresztüli TLS, alapértelmezés szerint továbbítja. Ha azonban az ügyfél egy frissítési fejléc frissítése a HTTP/2 küldi, majd szüksége módosítás alatt annak érdekében, hogy a frissítés működését, és végül egy HTTP/2-kapcsolatot a kiszolgálói oldalon. 
 
 1. Futtassa a regedit.exe.
-2. Keresse meg a beállításkulcs: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új DWORD értéket **DuoEnabled**.
 4. Állítsa az értékét 1-re.
 5. Indítsa újra a kiszolgálót.
@@ -199,7 +199,7 @@ Windows 10 és Windows Server 2016 kapható HTTP/2 támogatása ügyfél és a k
 További információkért lásd:
 
 - [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2)
-- [Videó: A Windows 10-es HTTP/2: böngésző, az alkalmazások és a webalkalmazás-kiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Videó: A Windows 10-es HTTP/2: Böngésző, az alkalmazások és a webalkalmazás-kiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Ezeket a lépéseket sikerült automatikus egy indítási feladaton keresztül, így, amikor új PaaS-példány jön létre, azt megteheti a beállításjegyzék változásainak fent. További információkért lásd: [konfigurálása és a egy felhőalapú szolgáltatás indítási feladatok futtatásának](cloud-services-startup-tasks.md).
@@ -224,7 +224,7 @@ Lásd: [megismerheti az Azure-ban a különféle szerepkörök](../role-based-ac
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>A Microsoft belső mérnökei távoli asztal Felhőszolgáltatás-példányok engedélye nélkül is?
 A Microsoft szigorú folyamat, amely nem teszi lehetővé a távoli asztal belső mérnökei azokat a Felhőszolgáltatás (e-mailben vagy egyéb írásbeli kommunikációs) írásos engedélye nélkül a webhely tulajdonosa vagy az általa kijelölt szervet követi.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Hiba követések beolvasása: hitelesítési hiba történt (hibakód: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Cloud Service virtuális géphez a távoli asztal nem lehet az RDP-fájl használatával. Követések beolvasása e hiba: Hitelesítési hiba történt (kód: 0x80004005)
 
 Ez a hiba akkor fordulhat elő, ha az Azure Active Directory tartományhoz csatlakozó gépről az RDP-fájlt használ. A probléma megoldásához kövesse az alábbi lépéseket:
 
@@ -244,7 +244,7 @@ Ez a probléma megoldásához használhatja az Application Insights. Automatikus
 
 Hogyan hasznosítható egy egyéni metrika az Application Insights konfigurálása az automatikus méretezés a Cloud Services használatával a további részletekért lásd: [első lépésként az automatikus skálázás egyéni metrika az Azure-ban](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
 
-A Cloud Services integrálása az Azure Diagnostics az Application Insights további információkért lásd: [diagnosztikai adatok küldése a felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+A Cloud Services integrálása az Azure Diagnostics az Application Insights további információkért lásd: [diagnosztikai adatok küldése a felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
 További információ az Application Insights engedélyezése a Cloud Services szolgáltatáshoz, talál [Application Insights az Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
@@ -303,7 +303,7 @@ Kártevőirtó központi telepítési forgatókönyvei és engedélyezését a p
 
 A Cloud Services SNI engedélyezheti az alábbi módszerek egyikének használatával:
 
-**1. módszer: A PowerShell használata**
+**1. módszer: PowerShell-lel**
 
 Az SNI-kötés a PowerShell-parancsmag használatával konfigurálható **New-WebBinding** az egy indítási feladat egy felhőalapú szolgáltatás a szerepkörpéldányhoz, az alábbi:
     
@@ -318,7 +318,7 @@ Amint [Itt](https://technet.microsoft.com/library/ee790567.aspx), a $sslFlags az
 |2 |Kötelező központi tanúsítvány Store használó nem SNI|
 |3|SNI-kötést használó központi tárolására |
  
-**2. módszer: A kód használata**
+**2. módszer: Kód használata**
 
 Az SNI-kötés sikerült is konfigurálni a szerepkör elindítása a kód keresztül ez leírt [blogbejegyzés](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 

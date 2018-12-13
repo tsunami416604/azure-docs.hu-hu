@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 51ae734a62de79d765ef1adc46b59fb98a5ca7e8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 348030d888383c497d80259b279056d8ff892bfe
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089189"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165522"
 ---
-# <a name="temperature-entity"></a>Hőmérséklet entitás
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Hőmérséklet a LUIS-alkalmazásokon előre összeállított entitások
 Hőmérséklet kibontja a hőmérséklet-típusok különböző. Az entitás már be van tanítva, mert nem kell az alkalmazás hőmérséklet tartalmazó példa beszédmódok hozzáadása. Hőmérséklet-entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-temperature"></a>Hőmérséklet-típusok
-Hőmérséklet felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) Github-adattár
+Hőmérséklet felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub-adattár
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Előre összeállított hőmérséklet entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.temperature** entitás.

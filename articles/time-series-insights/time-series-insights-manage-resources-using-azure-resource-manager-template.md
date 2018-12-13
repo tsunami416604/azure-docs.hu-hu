@@ -1,5 +1,5 @@
 ---
-title: Az Azure Resource Manager-sablonok az Azure Time Series Insights-környezet kezelése |} A Microsoft Docs
+title: Az Azure Time Series Insights sablon management – az Azure Resource Manager-sablonok az Azure Time Series Insights-környezet kezelése |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan kezeli az Azure Time Series Insights-környezetet, programozott módon az Azure Resource Manager használatával.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627127"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270620"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
@@ -91,7 +92,7 @@ Hozzon létre egy paramétereket tartalmazó fájlt, másolja át a [201-timeser
    | --- | --- |
    | eventHubNamespaceName | Az adatforrás event hubs-névtér. |
    | eventHubName | A forrás eseményközpont neve. |
-   | consumerGroupName | A fogyasztói csoportot, amelynek használatával a Time Series Insights szolgáltatás az adatok olvasásához az event hubs neve. **Megjegyzés:** Erőforrásverseny elkerülése érdekében, hogy ezt a fogyasztói csoportot kell a Time Series Insights szolgáltatás számára dedikált és más olvasók sincs megosztva. |
+   | consumerGroupName | A fogyasztói csoportot, amelynek használatával a Time Series Insights szolgáltatás az adatok olvasásához az event hubs neve. **MEGJEGYZÉS:** Az Erőforrásverseny elkerülése érdekében, a fogyasztói csoportot lehet a Time Series Insights szolgáltatás számára dedikált, és más olvasók sincs megosztva. |
    | EnvironmentName | A környezeti változó nevére. A neve nem tartalmazhat: "<", ">", '%', 'és', ": ','\\','?", "/" karakterek vezérlőkaraktereket és. Minden egyéb karakter engedélyezett.|
    | eventSourceName | Az esemény forrás gyermek-erőforrás neve. A neve nem tartalmazhat: "<", ">", '%', 'és', ": ','\\','?", "/" karakterek vezérlőkaraktereket és. Minden egyéb karakter engedélyezett. |
 
@@ -99,7 +100,7 @@ Hozzon létre egy paramétereket tartalmazó fájlt, másolja át a [201-timeser
 
    | Paraméter | Leírás |
    | --- | --- |
-   | existingEventHubResourceId | Egy nem kötelező erőforrás-azonosítója egy meglévő Eseményközponttal, amelyek a Time Series Insights-környezet az eseményforrás keresztül fog csatlakozni. **Megjegyzés:** helyezi üzembe a sablont a felhasználónak rendelkeznie kell az Event Hubs listkeys műveletének művelet végrehajtására. Ha nem ad meg értéket fogad el, egy új eseményközpont létrejön a sablon által. |
+   | existingEventHubResourceId | Egy nem kötelező erőforrás-azonosítója egy meglévő Eseményközponttal, amelyek a Time Series Insights-környezet az eseményforrás keresztül fog csatlakozni. **MEGJEGYZÉS:** A felhasználó helyezi üzembe a sablont az Event Hubs listkeys műveletének művelethez jogosultsággal kell rendelkeznie. Ha nem ad meg értéket fogad el, egy új eseményközpont létrejön a sablon által. |
    | environmentDisplayName | A környezet neve helyett azokat az eszközöket, vagy a felhasználói felületen megjelenítendő nem kötelező rövid neve. |
    | environmentSkuName | A termékváltozat neve. További információkért lásd: a [Time Series Insights díjszabása oldalon](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
    | environmentSkuCapacity | A termékváltozat egység kapacitását. További információkért lásd: a [Time Series Insights díjszabása oldalon](https://azure.microsoft.com/pricing/details/time-series-insights/).|
@@ -221,7 +222,7 @@ Futtatásához egy [teljes](../azure-resource-manager/deployment-modes.md) közp
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 Ha az erőforrások telepítése sikeresen megtörtént, a központi telepítés összegzését a PowerShell-ablakban jelenik meg:
 

@@ -1,5 +1,5 @@
 ---
-title: Alakítsa, és előkészítheti az adatokat a Data Prep Python SDK-val
+title: 'Átalakítások: adat-előkészítési Python SDK-t'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg a átalakítása és az Azure Machine Learning Data Prep SDK adattisztítást. Átalakítás módszerekkel oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c734605cd67fcd2490aef0ddc6732dad112424b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d32244cd49ebd42192b2388215f79a64cacb3caa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101789"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186140"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 

@@ -1,7 +1,7 @@
 ---
-title: 'Kép besorolási oktatóanyag: modellek üzembe helyezése'
+title: 'Kép besorolási oktatóanyag: Modellek üzembe helyezése'
 titleSuffix: Azure Machine Learning service
-description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell üzembe helyezésére a scikit-learn alkalmazásával egy Python Jupyter-notebookban.  Ez az oktatóanyag egy kétrészes sorozat második része.
+description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell üzembe helyezésére a scikit-learn alkalmazásával egy Python Jupyter-notebookban. Ez az oktatóanyag egy sorozat első két közül a második.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,42 +11,42 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe8fed71711e10af94ff41d1bb4ca4b0c1952374
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101178"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312170"
 ---
-# <a name="tutorial-part-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Az oktatóanyag (2. rész): egy kép besorolási modell az Azure Container Instance (ACI) üzembe helyezése
+# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Oktatóanyag:  Egy rendszerkép besorolási modell az Azure-Tárolópéldányon üzembe helyezése
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az [előző oktatóanyagban](tutorial-train-models-with-aml.md) gépi tanulási modelleket tanított be, majd regisztrált egy modellt a felhőbeli munkaterületen.  
 
-Most készen áll a modell webszolgáltatásként való üzembe helyezésére az [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) szolgáltatásban. A webszolgáltatás egy rendszerkép, ebben az esetben egy Docker-rendszerkép, amely magában foglalja a pontozási logikát, illetve magát a modellt is. 
+Most már készen áll a modellt üzembe helyezzük webszolgáltatásként, amely a [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). A webszolgáltatás egy rendszerkép, ebben az esetben egy Docker-rendszerkép, amely magában foglalja a pontozási logikát, illetve magát a modellt is. 
 
-Az oktatóanyagnak ebben a részében az Azure Machine Learning szolgáltatás segítségével a következőket hajtja végre:
+Az oktatóanyag ezen részében használja az Azure Machine Learning szolgáltatásban:
 
 > [!div class="checklist"]
 > * A tesztkörnyezet beállítása
 > * A modell lekérése a munkaterületről
 > * A modell helyi tesztelése
-> * A modell üzembe helyezése az ACI-ban
+> * A modell üzembe helyezése a Container Instances szolgáltatásban
 > * Az üzembe helyezett modell tesztelése
 
-Az ACI termelési környezetekhez nem ideális, teszteléshez és a munkafolyamatok megértéséhez azonban nagyszerűen használható. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
+Container Instances szolgáltatásban nem éles környezetekben üzemelő példányok ideális, de ez ideális megoldás a teszteléshez és a munkafolyamat ismertetése. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: [üzembe helyezése és hol](how-to-deploy-and-where.md).
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. A `tutorials/img-classification-part2-deploy.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. Futtassa a `tutorials/img-classification-part2-deploy.ipynb` jegyzetfüzet, vagy az Azure-jegyzetfüzetek vagy a saját Jupyter notebook server.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> Ebben a cikkben kód tesztelés az Azure Machine Learning SDK-val 1.0.2-es verzióját
+> Ebben a cikkben kód az Azure Machine Learning SDK-val 1.0.2-es verzióját lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a modell betanítását az [1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md) című notebookkal.  
+Hajtsa végre a következő jegyzetfüzet a modell betanítása: [#1. oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
@@ -122,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>A keveredési mátrix vizsgálata
 
-Hozzon létre egy keveredési mátrixot, és ellenőrizze, hogy a tesztkészletből hány minta kapott helyes besorolást. Figyelje meg a helytelen előrejelzéseknél szereplő hibás besorolási értéket. 
+Hozzon létre egy keveredési mátrixot, és ellenőrizze, hogy a tesztkészletből hány minta kapott helyes besorolást. Figyelje meg, hogy a megfelelő előrejelzéseket misclassified értékét. 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -147,10 +147,10 @@ A kimenet a keveredési mátrixot jeleníti meg:
     Overall accuracy: 0.9204
    
 
-Használja a `matplotlib` kódtárat a keveredési mátrix grafikonként való megjelenítéséhez. Ezen a grafikonon az X tengely képviseli a tényleges értékeket, az Y tengely pedig az előre jelzett értékeket. Az egyes rácsok színe a hibaarányt jelöli. Minél világosabb a szín, annál magasabb a hibaarány. Például sok 5-ös hibásan 3-as besorolást kapott. Ezért az (5,3) helyen világos rács jelenik meg.
+Használja a `matplotlib` kódtárat a keveredési mátrix grafikonként való megjelenítéséhez. Ezen a grafikonon az X tengely képviseli a tényleges értékeket, az Y tengely pedig az előre jelzett értékeket. Az egyes rácsok színe a hibaarányt jelöli. Minél világosabb a szín, annál magasabb a hibaarány. Például sok 5 misclassified vannak, a 3. Ezért egy Világos rács (5,3), láthatja.
 
 ```python
-# normalize the diagnal cells so that they don't overpower the rest of the cells when visualized
+# normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
 row_sums = conf_mx.sum(axis=1, keepdims=True)
 norm_conf_mx = conf_mx / row_sums
 np.fill_diagonal(norm_conf_mx, 0)
@@ -170,23 +170,23 @@ plt.savefig('conf.png')
 plt.show()
 ```
 
-![keveredési mátrix](./media/tutorial-deploy-models-with-aml/confusion.png)
+![Diagram megjelenítése keveredési mátrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
 ## <a name="deploy-as-web-service"></a>Üzembe helyezés webszolgáltatásként
 
-Ha tesztelte a modellt és elégedett az eredményekkel, helyezze üzembe a modellt az ACI-ban üzemeltetett webszolgáltatásként. 
+Miután tesztelte a modell, és elégedett az eredményeket, a modellt üzembe helyezzük webszolgáltatásként, amely a Container Instances szolgáltatásban üzemeltetett. 
 
-Az ACI-hoz megfelelő környezet kialakításához biztosítsa az alábbiakat:
+Container Instances szolgáltatásban hozhat létre a megfelelő környezettel, a következőket biztosítják:
 * Pontozószkript a modell használatának bemutatásához
 * A telepítendő csomagokat bemutató környezeti fájl
-* Az ACI létrehozásához szükséges konfigurációs fájl
+* Egy konfigurációs fájlt a tárolópéldány létrehozása
 * Az imént betanított modell
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Pontozószkript létrehozása
 
-Hozzon létre egy score.py nevű pontozószkriptet, amelyet a webszolgáltatás felé irányuló hívás használ a modell használatának bemutatásához.
+Hozzon létre a pontozó szkript, score.py nevezik. A webszolgáltatás-hívások használ, ez a modell használatának megjelenítéséhez.
 
 A pontozószkriptnek két függvényt kell tartalmaznia:
 * Az `init()` függvényt, amely általában a modellt tölti be a globális objektumba. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
@@ -241,7 +241,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="create-configuration-file"></a>Konfigurációs fájl létrehozása
 
-Hozzon létre egy telepítési konfigurációs fájlt, és adja meg az ACI-tárolóhoz szükséges processzorok számát, illetve a RAM gigabájtban mért mennyiségét. Bár ez a modelltől is függ, az alapértelmezettként megadott 1 mag és 1 gigabyte RAM számos modell használatához elegendő. Ha később többre lenne szüksége, akkor újra létre kell hoznia a rendszerképet, és újra üzembe kell helyeznie a szolgáltatást.
+Hozzon létre egy központi telepítési konfigurációs fájlt, és adja meg a processzorok számának és GB RAM szükséges a Container Instances-tároló. Bár ez a modelltől is függ, az alapértelmezettként megadott 1 mag és 1 gigabyte RAM számos modell használatához elegendő. Ha később többre lenne szüksége, akkor újra létre kell hoznia a rendszerképet, és újra üzembe kell helyeznie a szolgáltatást.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -252,18 +252,18 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
                                                description='Predict MNIST with sklearn')
 ```
 
-### <a name="deploy-in-aci"></a>Üzembe helyezés az ACI-ban
+### <a name="deploy-in-container-instances"></a>A Container Instances üzembe helyezése
 A feladat elvégzéséhez szükséges várható időtartam **7-8 perc**.
 
 Konfigurálja, majd helyezze üzembe a rendszerképet. Az alábbi kód a következő lépéseket hajtja végre:
 
-1. Rendszerkép létrehozása a következőkkel:
-   * A pontozófájl (`score.py`)
-   * A környezeti fájl (`myenv.yml`)
-   * A modellfájl
+1. Állítson össze egy rendszerképet használatával:
+   * A pontozófájl (`score.py`).
+   * A környezet fájlt (`myenv.yml`).
+   * A modellfájl.
 1. A rendszerkép regisztrálása a munkaterületen. 
-1. A rendszerkép feltöltése az ACI tárolóba.
-1. Tároló indítása az ACI-ban a rendszerkép használatával.
+1. A kép küldése a Container Instances-tároló.
+1. A Container Instances-tároló indítása a lemezkép használatával.
 1. A webszolgáltatás HTTP-végpontjának lekérése.
 
 
@@ -286,7 +286,7 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Kérje le a pontozási webszolgáltatás REST-ügyfélhívásokat fogadó HTTP-végpontját. Ez a végpont bárkivel megosztható, aki tesztelni szeretné a webszolgáltatást vagy integrálni szeretné azt egy alkalmazásban. 
+Kérje le a pontozási webszolgáltatás REST-ügyfélhívásokat fogadó HTTP-végpontját. Ez a végpont megoszthatja bárki tesztelheti a webszolgáltatás vagy integrálnia kell az alkalmazás által. 
 
 ```python
 print(service.scoring_uri)
@@ -295,14 +295,14 @@ print(service.scoring_uri)
 
 ## <a name="test-deployed-service"></a>Üzembe helyezett szolgáltatás tesztelése
 
-Az előzőekben a tesztadatok pontozását a modell helyi verziójával végezte el. Most egy, a tesztadatok közül 30 véletlenszerű rendszerképet tartalmazó mintával tesztelheti az üzembe helyezett modellt.  
+Korábban, a modell helyi verzióját az összes teszt adatai pontozunk. Most egy, a tesztadatok közül 30 véletlenszerű rendszerképet tartalmazó mintával tesztelheti az üzembe helyezett modellt.  
 
 Az alábbi kód a következő lépéseket hajtja végre:
-1. Az adatok elküldése egy JSON-tömbként az ACI-ban üzemeltetett webszolgáltatásba. 
+1. Az adatok egy JSON-fájlként a web Service, Container Instances szolgáltatásban lévő üzemeltetett tömböt küld. 
 
-1. A szolgáltatás meghívása az SDK `run` API-jának használatával. A curl vagy bármely egyéb HTTP-eszköz használatával nyers hívásokat is indíthat.
+1. A szolgáltatás meghívása az SDK `run` API-jának használatával. Nyers hívás végezhet egy HTTP-eszközt, például a curl használatával is.
 
-1. A kapott előrejelzések kinyomtatása és a bemeneti képekkel való ábrázolása. A piros betűk és az inverz (fekete alapon fehér) képek kiemelik a tévesen besorolt mintákat. 
+1. A visszaadott előrejelzéseket nyomtatása, és a bemeneti képekhez együtt jeleníti meg őket. A piros betűk és az inverz (fekete alapon fehér) képek kiemelik a tévesen besorolt mintákat. 
 
  Mivel a modell pontossága magas, előfordulhat, hogy a tévesen besorolt minta megtekintése előtt néhány alkalommal futtatnia kell a következő kódot.
 
@@ -339,7 +339,7 @@ for s in sample_indices:
 plt.show()
 ```
 
-Itt láthatók egy tesztképekből álló véletlenszerű minta eredményei: ![eredmények](./media/tutorial-deploy-models-with-aml/results.png)
+Íme egy véletlenszerűen vett minta teszt lemezképek eredménye: ![Eredmények ábrája](./media/tutorial-deploy-models-with-aml/results.png)
 
 A webszolgáltatás teszteléséhez nyers HTTP-kérést is küldhet.
 
@@ -367,7 +367,7 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha további oktatóanyagokhoz vagy a rendszerrel való ismerkedéshez meg szeretné őrizni az erőforráscsoportot és a munkaterületet, akkor megteheti, hogy az alábbi API-hívás használatával csak az ACI üzemelő példányt törli:
+Az erőforráscsoportot és a munkaterület más oktatóanyagokat és feltárási megtartásához törölheti csak a Container Instances üzembe helyezési az API-hívás használatával:
 
 ```python
 service.delete()
@@ -378,13 +378,6 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az Azure Machine Learning szolgáltatáshoz kapcsolódó oktatóanyagban a következőkhöz használta a Pythont:
++ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md), többek között az ACI, Azure Kubernetes Service-ben, FPGA-kban vagy az IoT Edge.
 
-> [!div class="checklist"]
-> * A tesztkörnyezet beállítása
-> * A modell lekérése a munkaterületről
-> * A modell helyi tesztelése
-> * A modell üzembe helyezése az ACI-ban
-> * Az üzembe helyezett modell tesztelése
- 
-Az [automatikus algoritmuskiválasztásról](tutorial-auto-train-models.md) szóló oktatóanyagot is kipróbálhatja, ha kíváncsi, hogyan képes az Azure Machine Learning szolgáltatás a modell számára legmegfelelőbb algoritmus automatikus kiválasztására és hangolására, valamint a modell létrehozására.
++ Bemutatjuk, hogyan Azure Machine Learning szolgáltatás is automatikus kiválasztás és a legjobb algoritmus a modell finomhangolása, és az Ön számára, hogy a modell létrehozása. Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 

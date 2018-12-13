@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 1988f5790b719acf4e5dad1a378139c8d74b56f9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 133e617cd6bac1155ba22276887cf0790221e9de
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995329"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186973"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -103,19 +102,19 @@ Log Analytics szolgáltatással integrálható a következő lépések elvégzé
 1. Nyissa meg az Operatív konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
 1. Kattintson a **Register to Operations Management Suite** (Regisztráció az Operations Management Suite-be) hivatkozásra.
-1. Az **Operations Management Suite Előkészítési varázsló Hitelesítés lapján** adja meg az OMS-előfizetésével társított rendszergazdai fiók e-mail-címét vagy telefonszámát és jelszavát, és kattintson a **Bejelentkezés** gombra.
+1. Az a **Operations Management Suite előkészítési varázslója: Hitelesítési** lapon adja meg az e-mail cím vagy telefonszám és jelszót a rendszergazdai fiók, amely az OMS-előfizetés társítva van, és kattintson a **jelentkezzen be a**.
 
    >[!NOTE]
    >OMS most már a Log Analytics nevezik.
    
-1. Sikeres hitelesítés után, az a **Operations Management Suite előkészítési varázslója: Munkaterület kiválasztása** lap kéri, válassza ki az Azure-bérlő, az előfizetést és a Log Analytics-munkaterületet. Ha több munkaterülettel is rendelkezik, válassza ki a legördülő listából azt, amelyiket az Operations Manager felügyeleti csoportba regisztrálni szeretne, majd kattintson a **Tovább** gombra.
+1. Sikeres hitelesítés után, az a **Operations Management Suite előkészítési varázslója: Válassza ki a munkaterület** lap kéri, válassza ki az Azure-bérlő, az előfizetést és a Log Analytics-munkaterületet. Ha több munkaterülettel is rendelkezik, válassza ki a legördülő listából azt, amelyiket az Operations Manager felügyeleti csoportba regisztrálni szeretne, majd kattintson a **Tovább** gombra.
    
    > [!NOTE]
    > Az Operations Manager egyszerre csak egy Log Analytics-munkaterület használatát támogatja. Az előző munkaterület a Log Analyticsbe regisztrált kapcsolati és a számítógépekre vonatkozó adatai törölve lesznek a Log Analyticsből.
    > 
    > 
-1. Az **Operations Management Suite Előkészítési varázsló Összefoglalás lapján** ellenőrizze a beállításokat, és ha rendben találja azokat, kattintson a **Létrehozás** gombra.
-1. Az **Operations Management Suite Előkészítési varázsló Befejezés lapján** kattintson a **Bezárás** gombra.
+1. Az a **Operations Management Suite előkészítési varázslója: Összefoglalás** lapon hagyja jóvá a beállításokat, ha azok a helyes, kattintson **létrehozás**.
+1. Az a **Operations Management Suite előkészítési varázslója: Befejezés** kattintson **Bezárás**.
 
 ### <a name="add-agent-managed-computers"></a>Ügynök által felügyelt számítógépek hozzáadása
 Integrációjának konfigurálása után az a Log Analytics-munkaterülethez, csak a szolgáltatás kapcsolatot létesít, nem a gyűjtött adatokat a felügyeleti csoportnak jelentő ügynököktől. Ez nem fordulhat elő, amíg mely adott ügynök által felügyelt számítógépek gyűjt adatokat a Log Analytics konfigurálása után. A számítógép-objektumokat kiválaszthatja egyenként, vagy kiválaszthat egy Windows számítógép-objektumokat tartalmazó csoportot. Nem választhat olyan csoportot, amely egy másik osztályba tartozó példányokat, például logikai lemezeket vagy SQL-adatbázisokat tartalmaz.
@@ -133,7 +132,7 @@ Hajtsa végre az alábbi lépéseket, ha egy belső proxykiszolgáló a felügye
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki a Microsoft Operations Management Suite elemet, majd kattintson a **Kapcsolatok** gombra.
 1. Az OMS Connection (OMS-kapcsolat) nézetben kattintson a **Configure Proxy Server** (Proxykiszolgáló konfigurálása) lehetőségre.
-1. Az **Operational Management Suite varázsló Proxykiszolgáló lapján** válassza a **Use a proxy server to access the Operations Management Suite** (Proxykiszolgáló használata az Operations Management Suite eléréséhez) lehetőséget, majd írja be az URL-címet a portszámmal együtt (például: http://corpproxy:80), majd kattintson a **Befejezés** gombra.
+1. A **Operations Management Suite varázslója: Proxykiszolgáló** lapon jelölje be **proxykiszolgáló használata az Operations Management Suite eléréséhez**, majd írja be például a port számát, az URL-CÍMÉT http://corpproxy:80 majd **Befejezés** .
 
 Ha a proxykiszolgáló hitelesítést igényel, hajtsa végre az alábbi lépések végrehajtásával konfigurálhatja a hitelesítő adatokat és beállításokat, amelyeket a felügyelt számítógépekre, amelyek a felügyeleti csoportban a Log Analytics szolgáltatásba jelentések propagálni kell.
 
@@ -171,7 +170,7 @@ Folytassa a meglévő vezérlő folyamatának szabályozni a felügyeleti csomag
 1. Kövesse a **Log Analytics előkészítési varázslója** , és adja meg az e-mail címet vagy telefonszámot számát és a jelszót a rendszergazdai fiók, amely az új Log Analytics-munkaterület társítva van.
    
    > [!NOTE]
-   > Az **Operations Management Suite Előkészítési Varázsló: Munkaterület Kiválasztása** lap azt a meglévő munkaterületet mutatja be, amely használatban van.
+   > A **Operations Management Suite előkészítési varázslója: Válassza ki a munkaterület** lapján megadja a meglévő munkaterületet, amely használatban van.
    > 
    > 
 

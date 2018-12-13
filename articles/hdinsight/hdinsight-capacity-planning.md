@@ -2,19 +2,19 @@
 title: A fürtök kapacitástervezése az Azure HDInsight
 description: Adjon meg egy HDInsight-fürtöt, a kapacitás és teljesítmény hogyan.
 services: hdinsight
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/22/2017
-ms.author: maxluk
-ms.openlocfilehash: b8b562e1f783a9da7621b29fbf6d5bd1ff6ca5ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.date: 12/04/2018
+ms.author: hrasheed
+ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013509"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193858"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -32,7 +32,7 @@ A kulcs kérdéseket tehet fel és a kapacitástervezés a következők:
 
 Az Azure-régió határozza meg, ahol a fürt fizikailag van kiépítve. Az olvasási és írási késés minimalizálása érdekében a fürt az adatok közel kell lennie.
 
-HDInsight számos Azure-régióban érhető el. Keresse meg a legközelebbi régió, tekintse meg a *HDInsight Linux* bejegyzés alatt *adatok + analitika* a [Azure termékek rendelkezésre álló régiók szerint](https://azure.microsoft.com/regions/services/).
+HDInsight számos Azure-régióban érhető el. Keresse meg a legközelebbi régió, tekintse meg a *HDInsight* bejegyzés alatt *Analytics* a [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/).
 
 ## <a name="choose-storage-location-and-size"></a>Válassza ki a tároló helye és mérete
 
@@ -57,7 +57,7 @@ A fürt különböző tárfiókokban kombinációját férhetnek hozzá. Tipikus
 * Ha azt szeretné, hogy az adatok, már feltöltötte a fürt számára elérhetővé blob-tárolóba.
 * Mikor érdemes elkülöníteni a tárolási, biztonsági okokból különböző részeit, vagy amelyekkel leegyszerűsíthető a felügyelet.
 
-48 csomópontos fürt javasoljuk, hogy a tárfiókok 4 – 8. Már elegendő tárterület teljes lehet, bár egyes tárfiók további hálózati sávszélességet biztosít a számítási csomópontok. Ha több tárfiók, minden olyan tárfiókhoz előtag nélkül véletlenszerű nevet használhat. Véletlenszerű elnevezési célját összes fiók csökkenthető a tárolási szűk keresztmetszetek (szabályozás) vagy a közös módú hibák esélyét. A jobb teljesítmény érdekében használja a storage-fiókonként csak egy tároló.
+48 csomópontos fürt esetén javasoljuk, hogy a tárfiókok 4 – 8. Már elegendő tárterület teljes lehet, bár egyes tárfiók további hálózati sávszélességet biztosít a számítási csomópontok. Ha több tárfiók, minden olyan tárfiókhoz előtag nélkül véletlenszerű nevet használhat. Véletlenszerű elnevezési célját összes fiók csökkenthető a tárolási szűk keresztmetszetek (szabályozás) vagy a közös módú hibák esélyét. A jobb teljesítmény érdekében használja a storage-fiókonként csak egy tároló.
 
 ## <a name="choose-a-cluster-type"></a>Fürt típusának kiválasztása
 
@@ -73,9 +73,9 @@ A virtuális gép méretét és típusát határozza meg a Processzor feldolgoz�
 
 * CPU: A Virtuálisgép-méret előírja a magok számát. A több mag, annál nagyobb mértékű párhuzamos számítási csomópontokra érheti el. Néhány virtuális gép típusa is gyorsabb magok.
 
-* Memória: A Virtuálisgép-méret engedélyezi a virtuális Gépet a rendelkezésre álló RAM mennyisége is futtassanak. A számítási feladatokhoz, amely tárolja az adatokat a feldolgozáshoz memória az ahelyett, hogy ellenőrizze a lemezről való olvasása, a feldolgozó csomópontokat, rendelkezik elég memória a az adatokat.
+* MEMÓRIA: A virtuális gép méretét is előírja a virtuális Gépet a rendelkezésre álló RAM mennyiségét. A számítási feladatokhoz, amely tárolja az adatokat a feldolgozáshoz memória az ahelyett, hogy ellenőrizze a lemezről való olvasása, a feldolgozó csomópontokat, rendelkezik elég memória a az adatokat.
 
-* Hálózat: A legtöbb fürt esetében, az adatok a fürt által feldolgozott a nem a helyi lemezen, hanem egy külső tárolási szolgáltatás, például a Data Lake Store vagy az Azure Storage. Vegye figyelembe a hálózati sávszélesség és a csomópont virtuális gép és a storage szolgáltatás közötti átviteli sebesség. A virtuális gép számára elérhető sávszélesség általában nagyobb méretű egyenes arányban növekszik. További információkért lásd: [Virtuálisgép mérete – áttekintés](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Hálózat: A legtöbb fürt esetében a fürt által feldolgozott adatokat nem a helyi lemezen, hanem egy külső tárolási szolgáltatás, például a Data Lake Store vagy az Azure Storage van. Vegye figyelembe a hálózati sávszélesség és a csomópont virtuális gép és a storage szolgáltatás közötti átviteli sebesség. A virtuális gép számára elérhető sávszélesség általában nagyobb méretű egyenes arányban növekszik. További információkért lásd: [Virtuálisgép mérete – áttekintés](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Válassza ki a fürt vertikális
 
@@ -95,7 +95,7 @@ A fürt élettartama díjkötelesek. Ha csak vannak, hogy kell-e a fürt felfel�
 
 ### <a name="isolate-cluster-job-errors"></a>Fürt feladathibák elkülönítése
 
-Időnként hibák több térkép párhuzamos végrehajtása miatt fordulhat elő, és csökkentse az összetevők a több csomópontos a fürt. A problémát, próbálja meg egyidejűleg futó elosztott tesztelése a segítségével több feladat egy egy csomópontos fürtre, majd ezt a megközelítést több feladat egyidejű futtatását több csomópontot tartalmazó fürtök bontsa ki. Az Azure-ban egy egy csomópontos HDInsight-fürt létrehozásához használja a *speciális* lehetőséget.
+Időnként hibák több maps párhuzamos végrehajtása miatt fordulhat elő, és csökkentse az összetevők a több csomópontos a fürt. A problémát, próbálja meg egyidejűleg futó elosztott tesztelése a segítségével több feladat egy egy csomópontos fürtre, majd ezt a megközelítést több feladat egyidejű futtatását több csomópontot tartalmazó fürtök bontsa ki. Az Azure-ban egy egy csomópontos HDInsight-fürt létrehozásához használja a *speciális* lehetőséget.
 
 Egy egy csomópontos fejlesztési környezet telepítése a helyi számítógépen is, és tesztelje a megoldást itt. Hortonworks Hadoop-alapú megoldások egy egycsomópontos helyi fejlesztési környezetet, amely hasznos kezdeti, megvalósíthatósági, fejlesztési és tesztelési biztosít. További információkért lásd: [hortonworks – tesztkörnyezet](https://hortonworks.com/products/hortonworks-sandbox/).
 
@@ -103,11 +103,31 @@ Helyi egycsomópontos fürtre a probléma azonosításához futtassa újra a sik
 
 ## <a name="quotas"></a>Kvóták
 
-Után, amely meghatározza, hogy a fürt virtuális célgép méretét, a méretezési csoport és a típus, ellenőrizze az előfizetés az aktuális kvóta kapacitásának korlátjáig. Ha egyenlege eléri a kvótát, nem lehet új fürtök üzembe helyezése, vagy a meglévő fürtök horizontális további munkavégző csomópontok hozzáadásával. A leggyakrabban használt kvótát elérte a Processzormagok kvóta, amely az előfizetés, a régiót és a virtuális gép sorozat szinten. Az előfizetés például rendelkezhet egy 200 teljes magkorlátja, és a egy 30 magkorlátja 30 core korlátozza az Ön régiójában a Virtuálisgép-példányokon. Is [kérje egy kvótájának növelését az ügyfélszolgálattól](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Után, amely meghatározza, hogy a fürt virtuális célgép méretét, a méretezési csoport és a típus, ellenőrizze az előfizetés az aktuális kvóta kapacitásának korlátjáig. Ha egyenlege eléri a kvótát, nem lehet új fürtök üzembe helyezése, vagy a meglévő fürtök horizontális további munkavégző csomópontok hozzáadásával. A csak kvótahatár: a Processzormagok kvóta, amely létezik a régió szintjén minden egyes előfizetés esetén. Ha például az előfizetés lehet magkorlátja 30 az USA keleti régiójában. Ha a kvóta növelésére van szüksége, kövesse az alábbi lépéseket:
+
+1. Az Azure Portal megnyitása
+1. Kattintson a **Súgó és támogatás** az oldal bal alsó részén.
+1. Kattintson a **új támogatási kérelem**.
+1. Az a **új támogatási kérelem** lap **alapjai** lapra, válassza ki a következő beállításokat:
+    - **Probléma típusa**: **Szolgáltatás és az előfizetések korlátai (kvóták)**
+    - **Előfizetés**: a módosítani kívánt előfizetés
+    - **Kvóta típusa**: **HDInsight**
+    
+    ![Hozzon létre egy támogatási kérést a HDInsight magkvóta növeléséhez](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+
+1. Kattintson a **Tovább**gombra.
+1. Az a **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, és válassza ki a kívánt kapcsolattartási formát.
+1. Kattintson a **tovább: Felülvizsgálat + létrehozás**.
+1. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.
+
+> [!Note]
+> Ha szeretne egy privát régióban a HDInsight magkvóta növeléséhez [be egy engedélyezési kérést](https://aka.ms/canaryintwhitelist).
+
+Is [kérje egy kvótájának növelését az ügyfélszolgálattól](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 Azonban néhány rögzített kvóta korlátozva van, például egy Azure-előfizetéssel is rendelkezik, legfeljebb 10 000 magok. Ezek a korlátok a részletekért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Apache Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md): ismerje meg, hogyan állíthatja be, és a HDInsight Apache Hadoop, Spark, Kafka, interaktív Hive, HBase, Machine Learning-szolgáltatások vagy a Storm-fürtök konfigurálása.
+* [Az Apache Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md): Megtudhatja, hogyan állíthatja be, és a HDInsight Apache Hadoop, Spark, Kafka, interaktív Hive, HBase, Machine Learning-szolgáltatások vagy a Storm-fürtök konfigurálása.
 * [Fürtteljesítmény monitorozása](hdinsight-key-scenarios-to-monitor.md): További információ a HDInsight-fürthöz, amelyek hatással lehetnek a fürt kapacitásának figyelése főbb forgatókönyvek megvalósítását.

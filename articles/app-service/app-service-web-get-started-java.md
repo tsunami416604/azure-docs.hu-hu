@@ -1,5 +1,5 @@
 ---
-title: Az első Java-webalkalmazás létrehozása az Azure-ban
+title: Java webalkalmazás – az Azure App Service létrehozása
 description: Egy alapszintű Java-alkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4b812cfa2c551e9d2f365f74bebee96626f4dd94
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968312"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253160"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
@@ -121,9 +121,9 @@ A **Create App Service** (App Service létrehozása) párbeszédpanelen:
 * Válasszon ki egy Azure-előfizetést.
 * Az **App service plan** (App Service-csomag) lapon:
 
-  * **Create new** (Új létrehozása): tartsa meg az alapértelmezettet, amely az App Service-csomag neve.
-  * **Location** (Hely): válassza a **West Europe** (Nyugat-Európa) lehetőséget vagy egy Önhöz közeli helyet.
-  * **Pricing tier** (Tarifacsomag): válassza az ingyenes lehetőséget. A szolgáltatások díját az [App Service díjszabás](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) részben találja.
+  * **Hozzon létre új**: Tartsa meg az alapértelmezett, amely az App Service-csomag neve.
+  * **Hely**: Válassza ki **Nyugat-Európa** vagy egy Önhöz közeli helyet.
+  * **A tarifacsomag**: Válassza ki az ingyenes lehetőséget. A szolgáltatások díját az [App Service díjszabás](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) részben találja.
 
    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 

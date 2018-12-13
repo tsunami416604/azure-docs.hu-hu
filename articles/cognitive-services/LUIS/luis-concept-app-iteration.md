@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: e3472258cacea4ad0d9d8467d0cd06822a3acc6b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c86805527d6ac79fa31496fe06695d448a8b835b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090499"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134081"
 ---
-# <a name="authoring-cycle"></a>Tartalomkészítési ciklus
+# <a name="authoring-cycle-for-your-luis-app"></a>A LUIS-alkalmazás az Authoring Tool ciklus
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
 
 ![Tartalomkészítési ciklus](./media/luis-concept-app-iteration/iteration.png)

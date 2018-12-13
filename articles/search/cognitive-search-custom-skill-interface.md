@@ -1,5 +1,5 @@
 ---
-title: Csatoló definíciója egyéni képesség a kognitív keresés folyamat (Azure Search) |} A Microsoft Docs
+title: A kognitív keresés folyamat – Azure Search egyéni képesség illesztőjének definícióját
 description: Egyéni adatok kinyerése felület webes-API-t egyéni ismeretek a kognitív keresés folyamatban, az Azure Search szolgáltatásban.
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
-ms.openlocfilehash: 2218a96702a02a32df18da9640ea9946d05acdb1
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.custom: seodec2018
+ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054296"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314652"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egy egyéni ismeretek hozzáadása a cognitive search folyamat
 
@@ -148,7 +149,7 @@ Amikor létrehoz egy webes API-t enricher, a kérelem részeként HTTP-fejlécek
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Példa: Egyéni szakértelem hoz létre a fordítás API](cognitive-search-create-custom-skill-example.md)
++ [Példa: A fordítás API hoz létre egy egyéni szakértelem](cognitive-search-create-custom-skill-example.md)
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 + [Képességcsoport (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)

@@ -11,14 +11,14 @@ ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 5ed5564692e65a36ed5178e21a2e7b56a718ffcc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: dd5bc95be3959e7af5911d8a765791718680581a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091992"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162936"
 ---
-# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: a C# használata tudásbázis létrehozásához és kérdések megválaszolásához
+# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: Használatával C#, hozzon létre alapszintű majd kapcsolatos kérdésére választ kaphat
 
 Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon történő létrehozásának és közzétételének, majd egy ügyféltől származó kérdés a tudásbázisból való megválaszolásának folyamatán. 
 
@@ -44,7 +44,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
 
 > [!NOTE] 
-> A teljes megoldásfájlok az [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base) érhetők el.
+> A teljes megoldás fájl(ok) érhetők el a [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 

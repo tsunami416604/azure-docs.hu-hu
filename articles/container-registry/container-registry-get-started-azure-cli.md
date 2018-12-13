@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban az Azure CLI-vel
+title: Rövid útmutató – privát Docker-tárolójegyzék létrehozása az Azure-ban – Azure CLI-vel
 description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure CLI-vel.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, H1Hack27Feb2017, mvc
+ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855238"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255924"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure CLI-vel
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Gyors útmutató: Az Azure CLI használatával privát tárolóregisztrációs adatbázis létrehozása
 
 Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató a következőket ismerteti: Azure Container Registry-példány létrehozása az Azure CLI-vel, tárolórendszerkép továbbítása a regisztrációs adatbázisba, végül a tároló üzembe helyezése a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 

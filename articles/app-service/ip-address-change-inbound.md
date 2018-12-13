@@ -1,5 +1,5 @@
 ---
-title: Egy bejövő IP-cím módosítása – az Azure előkészítése
+title: Bejövő IP-cím módosítása – az Azure App Service előkészítése
 description: Ha a bejövő IP-cím lehet módosítani, megtudhatja, mit kell tennie, hogy az alkalmazása továbbra is működik, a módosítás után.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 28741e858b0c938ec8b2b2ff983106c6b08e18fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 2a494b318011d601609033bc877134f0b0eeff09
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578218"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249328"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Hogyan készíti elő a bejövő IP-cím módosítása
 
@@ -25,7 +26,7 @@ Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás bejövő IP-c�
 
 * 1. lehetőség: Az App Service-alkalmazás nem rendelkezik egy egyéni tartományt, ha semmit nem kell.
 
-* 2. lehetőség: Ha csak egy CNAME-rekordot (DNS-rekord mutató URI-t) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) konfigurálva van, semmit nem kell.
+* 2. lehetőség: Ha csak egy CNAME-rekordot (DNS-rekord mutató URI-t) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, akkor semmit nem kell.
 
 * 3. lehetőség: Ha egy A rekordot (közvetlenül a IP-címre mutató DNS-rekord) a tartomány regisztrációs portálon (harmadik féltől származó DNS-szolgáltató vagy az Azure DNS-ben) van konfigurálva, cserélje le a meglévő IP-cím az újat. Az új IP-cím a következő utasításokat a következő szakaszban találja.
 
@@ -41,7 +42,7 @@ Az új bejövő IP-cím, az alkalmazás adott van, a portál a **virtuális IP-c
 
 3.  Válassza ki az App Service-alkalmazást a listából.
 
-4.  Ha az alkalmazás egy függvényalkalmazást, lásd: [függvényalkalmazás bejövő IP-cím](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+1.  Ha az alkalmazás egy függvényalkalmazást, lásd: [függvényalkalmazás bejövő IP-cím](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
 4.  Alatt a **beállítások** fejléc, kattintson a **tulajdonságok** a bal oldali navigációs és a keresés feliratú szakasz **virtuális IP-cím**.
 

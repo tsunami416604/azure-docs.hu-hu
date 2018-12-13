@@ -5,9 +5,8 @@ keywords: a rövid útmutató, az r nyelv, az r programozási nyelv, az r progra
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317670"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278661"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studióban
 
@@ -33,7 +32,7 @@ Ez a rövid útmutató segítségével gyorsan elindíthatja az Azure Machine Le
 
 A Microsoft Azure Machine Learning tartalmaz számos hatékony gépi tanulási és adatmanipulációs modulok. A hatékony R nyelvvel, a nyelv franca Analytics leírása. Boldogan elemzési és adatkezelési az Azure Machine Learning r használatával is kiterjeszthető Ebben együttes használata biztosít a méretezhetőség és a könnyű üzembe helyezés az Azure Machine Learning a rugalmasságot és részletes elemzést R.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>Előrejelzés és az adatkészlet
 Előrejelzés a széles körben alkalmazott és igen hasznos elemzési módszer. Közös értékesítési szezonális elemek optimális leltári állományt, jelezni makrogazdasági változók meghatározása előrejelzésére közé eső használ. Előrejelzés általában time series modellel történik.
@@ -61,7 +60,7 @@ Az RStudio fejlesztéséhez, teszteléséhez és kis léptékű R-kód hibaelhá
 ### <a name="the-execute-r-script-module"></a>Az R-szkript végrehajtása modul
 Machine Learning studióban R-parancsfájlok futtathatók a [R-szkript végrehajtása] [ execute-r-script] modul. Példa a [R-szkript végrehajtása] [ execute-r-script] modul a Machine Learning Studióban az 1. ábrán látható.
 
- ![Az R programozási nyelv: végrehajtás R-szkriptet a modul kiválasztva a Machine Learning Studióban][1]
+ ![Az R programozási nyelv: Az R-szkript végrehajtása modul kiválasztva a Machine Learning Studióban][1]
 
 *1. ábra A Machine Learning Studio környezet az R-szkript végrehajtása modul kiválasztva megjelenítése.*
 
@@ -1228,7 +1227,7 @@ Az RStudio meglehetősen megfelelően legyen dokumentálva, így az ebben a füg
    
    A töréspont hibaelhárítási funkciók vannak dokumentálva https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
-## <a id="appendixb"></a>B függelék: További információ
+## <a id="appendixb"></a>B FÜGGELÉK: További olvasnivalók
 Az R programozási oktatóanyag kell az R nyelv használata az Azure Machine Learning Studio alapjait ismerteti. Ha nem ismeri a R, a CRAN két tudnivalókra érhetők el:
 
 * R által Emmanuel Paradis kezdőknek remek indítás a http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
@@ -1236,7 +1235,7 @@ Az R programozási oktatóanyag kell az R nyelv használata az Azure Machine Lea
 
 Nincsenek számos könyvek R, amelyek segíthetnek a kezdéshez. Íme néhány hasznos találhatók:
 
-* Az R programozási korszerű: egy bemutatót a statisztikai szoftver kialakítást is Norman Matloff az r programozási kiváló bemutatása  
+* Az R programozási Art: A bemutató a statisztikai szoftver kialakítást is Norman Matloff az r programozási kiváló bemutatása  
 * R Cookbook Paul Teetor által probléma és megoldás r segítségével módszert biztosít a  
 * Robert Kabacoff által működés az R egy másik hasznos bevezető könyv. A kiegészítő gyors R webhely egy olyan hasznos, erőforrás: http://www.statmethods.net/.
 * R Inferno Patrick Burns által egy meglepően szorult könyv, hogy kezelje a számos bonyolult és nehezen észlelt is, ha az r programozási témakörök A könyv érhető el ingyenesen http://www.burns-stat.com/documents/books/the-r-inferno/.
@@ -1248,7 +1247,7 @@ A könyv bevezető Time Series Paul Cowpertwait és Andrew Metcalfe r mutatja be
 
 Néhány nagyszerű internetes erőforrások:
 
-* DataCamp: DataCamp útmutatást ad az R a böngészőjében az videó leckékben és kódolási gyakorlatok kényelmes. Nincsenek interaktív oktatóanyagok a legújabb R technikák és csomagokat. Jelenleg ingyenes interaktív R oktatóanyag elvégzése https://www.datacamp.com/courses/introduction-to-r
+* DataCamp: DataCamp R a böngészőjében az videó leckékben és kódolási gyakorlatok kényelmes azzal foglalkozunk. Nincsenek interaktív oktatóanyagok a legújabb R technikák és csomagokat. Jelenleg ingyenes interaktív R oktatóanyag elvégzése https://www.datacamp.com/courses/introduction-to-r
 * Útmutató az első lépések Programiz az R-rel https://www.programiz.com/r-programming
 * R Tibor fekete Clarkson egyetemen által rövid oktatóanyagot http://www.cyclismo.org/tutorial/R/
 * Több mint 60 R felsorolt forrásokat: http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html

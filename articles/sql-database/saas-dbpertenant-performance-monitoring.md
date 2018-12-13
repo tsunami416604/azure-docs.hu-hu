@@ -1,5 +1,5 @@
 ---
-title: 'Saas-alkalmazás: számos Azure SQL-adatbázis teljesítményének figyelése |} A Microsoft Docs'
+title: 'Saas-alkalmazás: Számos Azure SQL-adatbázis teljesítményének figyelése |} A Microsoft Docs'
 description: Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353900"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259137"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
@@ -75,7 +75,7 @@ Ha egy korábbi oktatóanyagban már kiépített bérlők egy kötegét, ugorjon
 
 A szkript kevesebb mint öt perc alatt 17 bérlőt helyez üzembe.
 
-A *New-TenantBatch* a szkript egy beágyazott vagy hivatkozott készletét [Resource Manager](../azure-resource-manager/index.md) sablonokat, hozzon létre egy batch-bérlőkkel, amely alapértelmezés szerint az adatbázis másolja **basetenantdb**a katalóguskiszolgálón adatbázisok létrehozására az új bérlőhöz, majd regisztrálja ezeket a katalógusban, és végül pedig inicializálja őket a bérlő nevével és a helyszíntípussal típusát. Ez az alkalmazás kiosztja az új bérlő módja összhangban. Végzett módosítások *basetenantdb* kiépített bérlőre érvényesek. Tekintse meg a [Sémakezeléssel foglalkozó oktatóanyag](saas-tenancy-schema-management.md) a séma módosításával kapcsolatos *meglévő* bérlői adatbázisok (beleértve a *basetenantdb* adatbázis).
+A *New-TenantBatch* a szkript egy beágyazott vagy hivatkozott készletét [Resource Manager](../azure-resource-manager/index.yml) sablonokat, hozzon létre egy batch-bérlőkkel, amely alapértelmezés szerint az adatbázis másolja **basetenantdb**a katalóguskiszolgálón adatbázisok létrehozására az új bérlőhöz, majd regisztrálja ezeket a katalógusban, és végül pedig inicializálja őket a bérlő nevével és a helyszíntípussal típusát. Ez az alkalmazás kiosztja az új bérlő módja összhangban. Végzett módosítások *basetenantdb* kiépített bérlőre érvényesek. Tekintse meg a [Sémakezeléssel foglalkozó oktatóanyag](saas-tenancy-schema-management.md) a séma módosításával kapcsolatos *meglévő* bérlői adatbázisok (beleértve a *basetenantdb* adatbázis).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 

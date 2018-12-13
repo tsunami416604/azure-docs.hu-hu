@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ed226ff689649b7eb6a4717fd07be043e1cdfc1e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966940"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189013"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszköz kiépítése IoT Hubra az Azure IoT Hub Device Provisioning Service használatával
 
@@ -40,12 +40,12 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
     - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*, amely a TPM-lapka gyártójától szerezhető be.  További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
     - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez az azonosító nem feltétlenül egyezik az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. TPM-alapú eszközök esetén a regisztrációs azonosító magából a TPM-ből származhat, például a TPM-ellenőrzőkulcs SHA-256 kivonata lehet.
 
-    [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
+      [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
     - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer eszközönkénti *aláíró tanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt* kell használni. 
 
-    [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 

@@ -1,22 +1,22 @@
 ---
-title: Üzembe helyezett webszolgáltatások felhasználása
+title: Ügyfél használhat már üzembe helyezett webszolgáltatás létrehozása
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhat egy webszolgáltatás, amelyet jött létre, amikor egy modell telepítve lett az Azure Machine Learning-modellel. A webszolgáltatás által elérhetővé tett REST API-t. Hozzon létre az ügyfelek számára az API-t az Ön által választott programozási nyelvet.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.author: raymondl
-author: raymondlaghaeian
+ms.author: aashishb
+author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0cf585ec3eb95b71080436791fd47d96239dfa9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100452"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251130"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 

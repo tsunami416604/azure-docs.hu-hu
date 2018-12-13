@@ -1,5 +1,5 @@
 ---
-title: PHP- és MySQL-webalkalmazás létrehozása Linuxon futó Azure App Service-ben | Microsoft Docs
+title: PHP-MySQL-webalkalmazás összeállítása linuxon – az Azure App Service |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban.
 services: app-service\web
 author: cephalin
@@ -10,13 +10,13 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 2f69f3f8864fc196e9bdc4deec13580fd4b816ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: a8fc0b9dee8b496eabf7efded7ab83be0b958244
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967708"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274853"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>PHP- és MySQL-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -47,7 +47,7 @@ Az oktatóanyag elvégzéséhez:
 * [A Git telepítése](https://git-scm.com/)
 * [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
 * [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
-* Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+* Engedélyezze a következő PHP-bővítményeket Laravel van szüksége: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
 * [Telepítse és indítsa el a MySQL-t](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>A helyi MySQL előkészítése
@@ -62,7 +62,7 @@ Csatlakozzon a helyi MySQL-kiszolgálóhoz egy terminálablakban. Ezzel a termin
 mysql -u root -p
 ```
 
-Ha a rendszer jelszót kér, adja meg a `root` fiókhoz tartozó jelszót. Ha nem emlékszik a rendszergazdafiók jelszavára, tekintse meg a [MySQL-ben a rendszergazdai jelszó alaphelyzetbe állítását](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html) ismertető cikket.
+Ha a rendszer jelszót kér, adja meg a `root` fiókhoz tartozó jelszót. Ha nem emlékszik a rendszergazdafiók jelszavára, tekintse meg [MySQL: A gyökér szintű jelszó alaphelyzetbe állítása](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
 Ha a parancs futtatása sikeres, akkor a MySQL-kiszolgáló fut. Ha nem, mindenképp a [MySQL telepítése utáni lépéseket](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html) követve indítsa el a helyi MySQL-kiszolgálót.
 

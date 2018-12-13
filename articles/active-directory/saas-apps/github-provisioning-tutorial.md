@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: bc82f0b71c6963c4f5a356180a1eabbca1b166c4
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cf66a257ef176ab6f8d58ab558d2582a811609a4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156952"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166557"
 ---
-# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása GitHub konfigurálása
+# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a GitHub beállítása
 
 
 Ez az oktatóanyag célja mutatni, a lépéseket kell elvégeznie a GitHub és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből a Githubra. 
@@ -36,7 +36,7 @@ Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön m�
 *   Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik a Githubon 
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [GitHub SCIM API](https://developer.github.com/v3/scim/), a Github csapatoknak a Business csomag érhető el vagy jobb.
+> Az Azure AD létesítési integrációs támaszkodik a [GitHub SCIM API](https://developer.github.com/v3/scim/), a GitHub csapatoknak a Business csomag érhető el vagy jobb.
 
 ## <a name="assigning-users-to-github"></a>Felhasználók hozzárendelése a Githubon
 
@@ -80,7 +80,7 @@ Ez a szakasz végigvezeti a GitHub felhasználói fiók üzembe helyezési API a
 
     ![Engedélyezési párbeszédpanel](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Az Azure Portalon adjon **bérlői URL-cím** kattintson **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a GitHub-alkalmazás. Ha a kapcsolat hibája esetén, győződjön meg arról, a GitHub-fiók rendszergazdai engedélyekkel rendelkező és **bérlői URL-cím** megfelelően van-e képkockák, majd próbálkozzon újra az "Engedélyezés" lépés (is jelentenek **bérlői URL-cím** szabály: `https://api.github.com/scim/v2/organizations/<Organization_name>` a szervezetek a GitHub-fiókja alatt található: **beállítások** > **szervezetek**).
+7. Az Azure Portalon adjon **bérlői URL-cím** kattintson **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a GitHub-alkalmazás. Ha a kapcsolat hibája esetén, győződjön meg arról, a GitHub-fiók rendszergazdai engedélyekkel rendelkező és **bérlői URL-cím** megfelelően van-e képkockák, majd próbálkozzon újra az "Engedélyezés" lépés (is jelentenek **bérlői URL-cím** szabály: `https://api.github.com/scim/v2/organizations/<Organization_name>` , a szervezetek a GitHub-fiókja alatt található: **Beállítások** > **szervezetek**).
 
     ![Engedélyezési párbeszédpanel](./media/github-provisioning-tutorial/GitHub3.png)
 

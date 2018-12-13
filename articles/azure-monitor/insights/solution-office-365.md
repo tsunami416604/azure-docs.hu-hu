@@ -9,16 +9,15 @@ editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: cc2fe3c71a3da58a00a3b3c65e709f2e371872e8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889361"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185205"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -52,13 +51,13 @@ Ez az eljárás megkezdése előtt gyűjtse össze a következő információkat
 A Log Analytics-munkaterület:
 
 - Munkaterület neve: A munkaterület az Office 365-adatok hova legyenek összegyűjtve.
-- Erőforráscsoport neve: az erőforráscsoport, amely tartalmazza a munkaterületen.
-- Azure-előfizetés azonosítója: az a munkaterületet tartalmazó előfizetés.
+- Erőforráscsoport neve: A munkaterületet tartalmazó erőforráscsoportot.
+- Azure-előfizetés azonosítója: Az előfizetés, amely tartalmazza a munkaterületen.
 
 Az Office 365-előfizetés:
 
-- Felhasználónév: E-mail-cím egy rendszergazdai fiók.
-- Bérlőazonosító: Egyedi azonosítója az Office 365-előfizetéssel.
+- Felhasználónév: Egy rendszergazdai fiók e-mail-cím.
+- Bérlő azonosítója: Office 365-előfizetéssel egyedi azonosítója.
 - Ügyfél-azonosító: 16 karakter hosszúságú karakterlánc, amely az Office 365-ügyfél jelöli.
 - Titkos Ügyfélkód: Titkosított karakterlánc-hitelesítéshez szükséges.
 

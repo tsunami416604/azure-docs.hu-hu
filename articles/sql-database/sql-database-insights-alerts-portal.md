@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 56beb9779b0dde7074a2f49fab156c8b6e6577b3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870180"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273347"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -38,8 +38,8 @@ Tegye a következőket, amikor elindítja a riasztásokat lehet beállítani:
 Konfigurálhatja és riasztási szabályok használatával kapcsolatos információk lekérése
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Parancssori felület (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [Parancssori felület (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Hozzon létre egy riasztási szabályt a metrika az Azure portal használatával
@@ -48,7 +48,7 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
    
      ![Figyelés](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **CSAK az SQL DW**: kattintson a **DWU-felhasználás** grafikon. Válassza ki **klasszikus riasztások megtekintése**
+   - **CSAK AZ SQL DW**: Kattintson a **DWU-felhasználás** grafikon. Válassza ki **klasszikus riasztások megtekintése**
 
 3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** gombra, és töltse ki a mezőket.
    
@@ -116,6 +116,6 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure monitoring áttekintése](../monitoring-and-diagnostics/monitoring-overview.md) többek között a különböző információkat gyűjthet, és figyelheti.
-* Tudjon meg többet [webhookok konfigurálásáról a riasztások](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+* Tudjon meg többet [webhookok konfigurálásáról a riasztások](../azure-monitor/platform/alerts-webhooks.md).
 * Get- [diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és részletes nagy gyakoriságú metrikákat gyűjt be a szolgáltatás.
 * Get- [metrikák gyűjtési áttekintése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , győződjön meg arról, hogy szolgáltatása elérhető és válaszkész.

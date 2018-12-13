@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 12/10/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 4f4d30b483d0740261d85921d5dc66e053b5bcf0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5bea4c655e9a8970d8d0d946827cc3e46e7efa7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890959"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255159"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,7 +25,8 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
-| . Decemberi kumulatív - [KB4459988](https://support.microsoft.com/help/4459988)| 4.1.0.0 | 2018. december 4. | Támogatott (ajánlott verzió) |
+| . Decemberi kumulatív - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018. december 10. | Támogatott (ajánlott verzió) |
+| . Decemberi kumulatív frissítés | 4.1.0.0 | 2018. december 4. | Támogatott |
 | V4 kiadás | 4.0.1.0 | 2018. november 13. | Támogatott |
 | Szeptember. kumulatív frissítés | 3.3.0.0 | 2018. szeptember 24. | Támogatott |
 | Augusztus. kumulatív frissítés | 3.2.0.0 | 2018. augusztus 15. | Támogatott |
@@ -44,13 +45,19 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-4200"></a>Ügynök verziója 4.2.0.0
+Az alábbi kibocsátási megjegyzések olyan verziójának 4.2.0.0 az Azure File Sync ügynök kiadás dátuma: 2018. December 10. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 4.0.1.0 kívül vannak.
+
+Ebben a kiadásban megoldott problémák listája:  
+- Leállási hiba 0x3B vagy 0x1E leállási hiba fordulhat elő, amikor a VSS-pillanatkép jön létre.  
+- Memóriavesztés fordulhat elő, amikor felhőbeli rétegezés engedélyezve van  
+
 ## <a name="agent-version-4100"></a>Ügynök verziója 4.1.0.0
 A következő kiadási megjegyzések 4.1.0.0 az Azure File Sync ügynök verziója kiadás dátuma: 2018. December 4 vonatkoznak. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 4.0.1.0 kívül vannak.
 
 Ebben a kiadásban megoldott problémák listája:  
-- Leállási hiba 0x3B vagy 0x1E leállási hiba fordulhat elő, amikor a VSS-pillanatkép jön létre.  
 - A kiszolgáló felhőbeli rétegezés memóriavesztés miatt válhat nem válaszol.  
-- Ügynök telepítése meghiúsul a következő hibával: hiba 1921. Nem sikerült leállítani a szolgáltatást a "Storage szinkronizálási ügynök" (FileSyncSvc).  Győződjön meg arról, hogy van-e megfelelő jogosultsággal a rendszerszolgáltatások leállításához.  
+- Ügynök telepítése meghiúsul a következő hibával: Hiba történt a 1921. Nem sikerült leállítani a szolgáltatást a "Storage szinkronizálási ügynök" (FileSyncSvc).  Győződjön meg arról, hogy van-e megfelelő jogosultsággal a rendszerszolgáltatások leállításához.  
 - A Storage Sync-ügynök (FileSyncSvc) szolgáltatás összeomolhat, ha túl magas a memóriahasználat.  
 - Vegyes megbízhatóság fejlesztései a felhőbeli rétegezés és szinkronizálása.
 
@@ -121,7 +128,7 @@ A következő kiadási megjegyzések 3.3.0.0 az Azure File Sync ügynök verzió
 Ebben a kiadásban megoldott problémák listája:
 - Regisztrált kiszolgáló állapota "Offline jelenik meg" az Azure File Sync ügynök 3.1-es vagy 3.2-es verzióra való frissítése után.
 - Tárolási szinkronizálási ügynök (FileSyncSvc) szolgáltatás összeomlik miatt olyan fájlra, amely elérési utakat.
-- Kiszolgáló regisztrálása hibával meghiúsul: nem sikerült betölteni a fájlt vagy a szerelvény Kailani.Afs.StorageSyncProtocol.V3.
+- Kiszolgáló regisztrálása hibával meghiúsul: Nem sikerült betölteni fájl vagy a szerelvény Kailani.Afs.StorageSyncProtocol.V3.
 
 ## <a name="agent-version-3200"></a>Ügynök verziója 3.2.0.0
 A következő kiadási megjegyzések 3.2.0.0 az Azure File Sync ügynök verziója kiadás dátuma: 2018. augusztus 15 vonatkoznak. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 3.1.0.0-s kívül vannak.

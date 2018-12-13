@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc03a5f43ef65ec8feaccb82fc3d31debbc6e7b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523376"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275688"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Az Azure Portal tárfiók figyelése
 
@@ -98,7 +98,7 @@ Arra az esetre, amikor a küszöbértékeket a rendszer elérte a tárolási er�
 3. Adjon meg egy **neve** és **leírás** az Új riasztási szabály.
 4. Válassza ki a **metrika** szeretné hozzáadni egy riasztást a riasztás a **feltétel**, és a egy **küszöbérték**. A küszöbérték egység írja be a mérőszám úgy döntött, attól függően változik. Például a "count" nem egység típusú *ContainerCount*, miközben az egység a *percentnetworkerror értéket mutatnak* metrika százalékos.
 5. Válassza ki a **időszak**. Metrikák, amely eléri vagy meghaladja a küszöbértéket a időszakon belül megjelenik egy figyelmeztetés.
-6. (Nem kötelező) Konfigurálása **E-mail** és **Webhook** értesítések. További információk a webhookok,: [webhook konfigurálása az Azure metrikariasztás](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Ha nem adja meg e-mailben vagy webhook értesítések, riasztások csak az Azure Portalon fog megjelenni.
+6. (Nem kötelező) Konfigurálása **E-mail** és **Webhook** értesítések. További információk a webhookok,: [webhook konfigurálása az Azure metrikariasztás](../../azure-monitor/platform/alerts-webhooks.md). Ha nem adja meg e-mailben vagy webhook értesítések, riasztások csak az Azure Portalon fog megjelenni.
 
 ![Az Azure Portalon "A riasztási szabály hozzáadása" panel](./media/storage-monitor-storage-account/add-alert-rule.png)
 

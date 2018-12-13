@@ -1,5 +1,5 @@
 ---
-title: Többtárolós (előzetes verziójú) alkalmazás létrehozása a Web App for Containersben
+title: Többtárolós alkalmazás létrehozása a Web App for containers szolgáltatásban – Azure App Service-ben
 description: Megtudhatja, hogyan használhat több tárolót az Azure-ban Docker Compose és Kubernetes konfigurációs fájlokkal, egy WordPress- és MySQL-alkalmazással.
 keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, több tárolós, webalkalmazás tárolókhoz, több tároló, tároló, kubernetes, wordpress, mysql-hez készült azure db, éles adatbázis tárolókkal
 services: app-service
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 68e53be5c12eb8032b91e644600dded5467342e7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 7feb168d9cbcb9fc19e6fcd320bbf87c15077a50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956533"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251640"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containersben
+# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verziójú) alkalmazás létrehozása a Web App for Containersben
 
 A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ezen oktatóanyagból megtudhatja, hogyan hozhat létre egy többtárolós alkalmazást a WordPress és a MySQL használatával. Ezt az oktatóanyagot a Cloud Shellben végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) parancssori eszköz (2.0.32-es vagy újabb verzió) használatával.
 

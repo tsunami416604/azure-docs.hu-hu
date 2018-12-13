@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: fa19cdbb6c51248b5361ba747829c4f9e617ce6a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865386"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251113"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
-Az Azure Backup Server V2, és később a System Center 2016 Data Protection Manager Modern biztonsági mentési tár. Modern Backup Storage kínál bánhat 50 %-os, háromszor gyorsabb és hatékonyabb tárolási biztonsági mentéseket. Munkaterhelés-támogató tárhely is kínál.
+Az Azure Backup Server V2 és újabb verziók támogatják a Modern Backup Storage által kínált bánhat 50 %-os, biztonsági mentések, háromszor gyorsabb és hatékonyabb tárolás szempontjából. Munkaterhelés-támogató tárhely is kínál.
 
 > [!NOTE]
 > Modern Backup Storage használatára, futtatnia kell Backup Server V2 és V3 a Windows Server 2016 vagy Windows Server verzióját 2019 V3.
@@ -75,7 +75,7 @@ Munkaterhelés-támogató tárhellyel kiválaszthatja a köteteket, amelyek rés
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Munkaterhelés-támogató tárhely beállítása a PowerShell-parancsmaggal Update-DPMDiskStorage parancsmag frissíti a a kötet tulajdonságait a Data Protection Manager-kiszolgálón a tárolókészletben.
+Munkaterhelés-támogató tárhely beállítása a PowerShell-parancsmaggal Update-DPMDiskStorage parancsmag frissíti a tárolókészlet egy Azure Backup Server a kötet tulajdonságait. 
 
 Szintaxis:
 

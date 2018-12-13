@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135559"
+ms.locfileid: "53163769"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Ajánlott eljárások a költségszámítás és méretezési számítási feladatok migrálása az Azure-bA
 
@@ -34,21 +34,21 @@ Ebben a szakaszban a gyakorlati tanácsok segítséget költségbecslést, hajts
 
 
 
-## <a name="best-practice-estimate-monthly-workload-costs"></a>Ajánlott eljárás: havi számítási Költségbecslés
+## <a name="best-practice-estimate-monthly-workload-costs"></a>Ajánlott eljárás: Havi számítási Költségbecslés
  
 Az előrejelzéshez az áttelepített alkalmazások és szolgáltatások a havi számla, nincsenek számos olyan eszközt is használhat.
 
-- **Azure díjkalkulátor**: választja, a termékeket, például virtuális gépek és a tároló becsült szeretné. A díjkalkulátor hozhat létre a becsült költségek bemeneteként.
+- **Azure díjkalkulátor**: Kiválaszthatja a termékeket, például virtuális gépek és a tároló becsült szeretné. A díjkalkulátor hozhat létre a becsült költségek bemeneteként.
 
  ![Azure díjkalkulátor](./media/migrate-best-practices-costs/pricing.png) *Azure díjkalkulátor*
 
-- **Az Azure Migrate**: költségeinek kiszámításához kell tekintse át és az Azure-ban a számítási feladatok futtatásához szükséges összes erőforrást. Beszerezni ezeket az adatokat, az eszközök, beleértve a kiszolgálók, virtuális gépek, adatbázisok és tárolás készlet hoz létre. Az Azure Migrate használatával ezt az információt.
+- **Az Azure Migrate**: Becsült költség, szüksége, tekintse át és az Azure-ban a számítási feladatok futtatásához szükséges összes erőforrást. Beszerezni ezeket az adatokat, az eszközök, beleértve a kiszolgálók, virtuális gépek, adatbázisok és tárolás készlet hoz létre. Az Azure Migrate használatával ezt az információt.
 
  - Az Azure Migrate deríti fel, és felméri a helyszíni környezetet egy leltárat biztosít.
  - Az Azure Migrate is csatlakoztathatók, és, virtuális gépek közötti függőségek megjelenítése, hogy teljes képet.
  - Az Azure Migrate értékelés becsült költség tartalmazza.
-    - Számítási költségeit: használata ajánlott az értékelés létrehozása az Azure Virtuálisgép-méret esetén az Azure Migrate a számlázási API-t használja becsült havi VM-költségek kiszámításához. A becslés úgy ítéli meg, az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállításai. A költségek összesíti az értékelésben minden virtuális gépen, és kiszámítja a teljes havi számítási költségeket.
-    - Adattárolási költség: az Azure Migrate számítja ki a teljes havi tárolási költségek, a tárolási költségeket az összes virtuális gép tartalmaz egy értékelés összesítésével. Kiszámíthatja a havi tárolási költségek egy adott gép csatlakoztatott összes lemez havi költségének összesítésével. 
+    - A számítási költségek: Ajánlott az értékelés létrehozása az Azure Virtuálisgép-méretet használja, az Azure Migrate használja a számlázási API becsült havi VM-költségek kiszámítása. A becslés úgy ítéli meg, az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállításai. A költségek összesíti az értékelésben minden virtuális gépen, és kiszámítja a teljes havi számítási költségeket.
+    - Adattárolási költség: Az Azure Migrate teljes havi tárolási költségek a tárolási költségeket az összes virtuális gép tartalmaz egy értékelés összesítésével számítja ki. Kiszámíthatja a havi tárolási költségek egy adott gép csatlakoztatott összes lemez havi költségének összesítésével. 
 
     ![Az Azure Migrate](./media/migrate-best-practices-costs/assess.png) *Azure Migrate az értékelés*
 
@@ -58,7 +58,7 @@ Az előrejelzéshez az áttelepített alkalmazások és szolgáltatások a havi 
 - [További információ](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation) Azure Migrate-értékelések.
 - [További](https://docs.microsoft.com/azure/dms/dms-overview) a Database Migration Service (DMS) kapcsolatos.
 
-## <a name="best-practice-right-size-vms"></a>Ajánlott eljárás: méretezése virtuális gépek
+## <a name="best-practice-right-size-vms"></a>Ajánlott eljárás: Jobb méretű virtuális gépek
 
 Számos lehetőség közül választhat, a munkaterhelés Azure virtuális gépek telepítésekor. Minden virtuális gép rendelkezik a funkciók és a Processzor, memória és a lemezek eltérő kombinációja. Virtuális gépek a következőképpen vannak csoportosítva.
 
@@ -80,7 +80,7 @@ Számos lehetőség közül választhat, a munkaterhelés Azure virtuális gépe
 - [Csomag](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs) Virtuálisgép-méretezési.
 - [Felülvizsgálat](https://docs.microsoft.com/azure/migrate/contoso-migration-assessment) a fiktív Contoso vállalat egy minta értékelés.
 
-## <a name="best-practice-select-the-right-storage"></a>Ajánlott eljárás: válassza ki a megfelelő tárolási
+## <a name="best-practice-select-the-right-storage"></a>Ajánlott eljárás: Válassza ki a megfelelő tárolási
 
 Finomhangolásához és a helyszíni tárolók (TÁROLÓHÁLÓZATI és NAS) és a hálózatok támogatja azokat, költséges és időigényes lehet. A fájladatok (tárolás) gyakran áttelepítése a felhőbeli operatív kiküszöbölése érdekében és az ezzel járó adatkezelési nehézségeket. Adatok áthelyezése az Azure számos lehetőséget kínál a Microsoft, és ezek a lehetőségek döntéseket kell. Adatok a megfelelő tárolótípus kiadási mentheti a szervezet több ezer dollárt minden hónapban. Néhány megfontolandó szempont:
 
@@ -96,7 +96,7 @@ Az Azure storage-adatok különböző típusú biztosít.
 --- | --- |  ---
 **Blobok** | Optimalizáltuk, hogy nagy mennyiségű strukturálatlan objektumok, például szöveg vagy bináris adatok tárolására<br/><br/> | Adatok elérése bárhonnan HTTP/HTTPS-kapcsolaton keresztül. | Streamelés és véletlenszerű adathozzáférési forgatókönyvek esetében használható. Ha például képek és a dokumentumokat közvetlenül a böngészőben szolgáltatására, video- és hangtartalom streamelése, és biztonsági mentési és vész-helyreállítási adatok tárolása.
 **Fájlok** | Felügyelt fájlmegosztások SMB 3.0 protokollon keresztül érhető el | Akkor használja, ha a migrálás a helyszíni fájlmegosztásokat, és több/kapcsolatok fájlokban tárolt adatokhoz.
-**Lemezek** | A lapblobok alapján.<br/><br/> Lemez típusa (sebesség): (HDD vagy SSD) Standard vagy prémium szintű (SSD).<br/><br/>Lemez kezelése: nem felügyelt (felügyelt lemez beállításait és tárolás) vagy felügyelt (választja, a lemez típusát és az Azure felügyeli a lemezt Ön helyett). | Prémium szintű lemezek használata virtuális gépek számára. Felügyelt lemezek használata egyszerű kezelés és a méretezést.
+**Lemezek** | A lapblobok alapján.<br/><br/> Lemez típusa (sebesség): Standard szintű (HDD vagy SSD) vagy a prémium szintű (SSD).<br/><br/>Lemezkezelés: Nem felügyelt (felügyelt lemez beállításait és tárolás) vagy felügyelt (választja, a lemez típusát és az Azure felügyeli a lemezt Ön helyett). | Prémium szintű lemezek használata virtuális gépek számára. Felügyelt lemezek használata egyszerű kezelés és a méretezést.
 **üzenetsorok** | Store és a nagy számú (HTTP vagy HTTPS) hitelesített hívásokon keresztül elért üzenetek beolvasása | Alkalmazás-összetevők találkozzon aszinkron Üzenetsor-kezelés.
 **Táblák** | Táblák Store. | Most már része az Azure Cosmos DB Table API.
 
@@ -129,7 +129,7 @@ Storage-fiókok használhatja a különböző típusú redundancia a rugalmassá
 **Típus** | **Részletek** | **Használat**
 --- | --- | ---
 **Helyileg redundáns tárolás (LRS)** | Egy egyetlen tárolási egység egy külön tartalék és frissítési tartományban lévő replikálásával védi a helyi üzemkimaradások esetére. Megőrzi az adatok több példányban egyazon adatközpontban. Itt legalább 99,999999999 %-os (11 9\'s) tárolt objektumok számára egy adott évben. | Fontolja meg, ha az alkalmazás tárolja-e az adatokat, amelyek egyszerűen rekonstruálható.
-**Zónaredundáns tárolás (ZRS)** | Védi újra egy adatközpont-meghibásodás után három tárolási fürtöket egy régió közötti replikálásával. Minden egyes tárolási fürt fizikailag elkülönített és a saját rendelkezésre állási zónában található. Itt legalább 99,9999999999 %-os (12 9\'s) tárolt objektumok tartja, hogy az adatok több példányát több adatközpontban vagy régióban egy adott évben. | Figyelembe vennie, ha a konzisztencia, tartósság és magas rendelkezésre állás. Előfordulhat, hogy nem ellen regionális katasztrófa Ha több zóna permenently érintett.
+**Zónaredundáns tárolás (ZRS)** | Védi újra egy adatközpont-meghibásodás után három tárolási fürtöket egy régió közötti replikálásával. Minden egyes tárolási fürt fizikailag elkülönített és a saját rendelkezésre állási zónában található. Itt legalább 99,9999999999 %-os (12 9\'s) tárolt objektumok tartja, hogy az adatok több példányát több adatközpontban vagy régióban egy adott évben. | Figyelembe vennie, ha a konzisztencia, tartósság és magas rendelkezésre állás. Előfordulhat, hogy nem ellen regionális katasztrófa során több zónában véglegesen érintett.
 **Georedundáns tárolás (GRS)** | Egy másodlagos régióban több száz mérföld erről az elsődleges adatok replikálásával védi egy teljes régióra üzemkimaradások esetére. Itt 99,99999999999999 %-ában (16 9\'s) tárolt objektumok számára egy adott évben. | Replika nem érhető el, kivéve, ha a Microsoft kezdeményezi egy feladatátvételt a másodlagos régióba. Ha feladatátvételt hajt végre, olvasási és írási hozzáférés érhető el.
 **Írásvédett Georedundáns tárolás (RA-GRS)** | GRS hasonló. Itt 99,99999999999999 %-ában (16 9\'s) tárolt objektumok számára egy adott évben | Itt és 99,99 %-os olvasási rendelkezésre állás azáltal, hogy olvasási hozzáférés Georedundáns tároláshoz használt második régióban.
 
@@ -144,7 +144,7 @@ Storage-fiókok használhatja a különböző típusú redundancia a rugalmassá
 
 
 
-## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Ajánlott eljárás: kihasználhatja az Azure Hybrid benefits
+## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Ajánlott eljárás: Használja ki az Azure Hybrid benefits
 
 Év rendszerek – például a Windows Server és SQL Server szoftver befektetés, mert a Microsoft egyedi helyzetben, hogy kínálja fel a felhőben, jelentős kedvezményeket, amely nem feltétlenül adja meg az egyéb felhőszolgáltatók, érték szerepel. 
 
@@ -157,7 +157,7 @@ Az integrált Microsoft helyszíni/Azure-termék portfóliójának állít elő,
 - [Felülvizsgálat](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) az SQL Server Azure virtuális gépek díjszabási útmutatóját.
 
 
-## <a name="best-practice-use-reserved-vm-instances"></a>Ajánlott eljárás: használja a fenntartott VM-példányok
+## <a name="best-practice-use-reserved-vm-instances"></a>Ajánlott eljárás: Fenntartott VM-példányok használata
 
 A legtöbb felhőalapú platform, használatalapú fizetéses beállítása. A modell megadja hátrányait, mivel a dinamikus számítási feladatok nem feltétlenül tudja lesz. Ha megad egy munkaterhelés számára egyértelmű céljaira, hozzájárul az infrastruktúra.
 
@@ -177,7 +177,7 @@ Azure Reserved VM instances használatával, akkor fizessen elő az egy vagy há
 - [Útmutató díjszabási](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) SQL Server Azure virtuális gépekhez.
 
 
-## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Ajánlott eljárás: összesített felhő költsége előfizetések között
+## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Ajánlott eljárás: Összesített felhő költsége előfizetések között
 
 Fontos elkerülhetetlen, hogy végül fog egynél több Azure-előfizetéssel rendelkezik. Például szükség lehet további-előfizetéseket külön fejlesztési és éles környezetek határokat, vagy előfordulhat, hogy egy platform, amely minden ügyfél számára különálló előfizetés szükséges. Összesített adatok egységes platformban az összes előfizetés jelentéskészítés lehetővé teszi, akkor olyan valuable funkció.
 
@@ -197,7 +197,7 @@ A sikeres áttelepítéshez a számítási feladatok, és néhány hét használ
 
 Ebben a szakaszban szereplő eljárások közé tartozik az Azure Cost Managementtel a költségek a költségvetés és -elemzés, az erőforrások figyelése és erőforrás-csoport költségvetése végrehajtási és optimalizálása a figyelés, tárolási és virtuális gépek.
 
-## <a name="best-practice-use-azure-cost-management"></a>Ajánlott eljárás: használja az Azure Cost Management
+## <a name="best-practice-use-azure-cost-management"></a>Ajánlott eljárás: Az Azure Cost Management használata
 
 A Microsoft biztosít az Azure Cost Management segítségével nyomon követheti a Költekezési, a következő:
 
@@ -210,21 +210,21 @@ A Microsoft biztosít az Azure Cost Management segítségével nyomon követheti
 Cost Management, a következőket teheti:
 
 
-- **Hozzon létre egy költségvetés**: pénzügyi elszámoltathatóság költségvetés létrehozása.
-    - Azt is figyelembe a szolgáltatások felhasználásához, vagy iratkozzon fel egy adott időszakra (havonta, negyedévente, évente) és ascope (előfizetések vagy erőforráscsoportok). Például egy havi, negyedéves és éves időszakra egy Azure-előfizetés költségvetés hozhat létre.
+- **Hozzon létre egy költségvetés**: Hozzon létre egy pénzügyi elszámoltathatóság költségvetés.
+    - Azt is figyelembe a szolgáltatások felhasználásához, vagy iratkozzon fel egy adott időszakra (havonta, negyedévente, évente) és a egy hatókör (előfizetések vagy erőforráscsoportok). Például egy havi, negyedéves és éves időszakra egy Azure-előfizetés költségvetés hozhat létre.
     - Miután létrehozta a költségvetést, a költségek elemzése jelenik meg. Megtekintés ellen aktuális költségeket a költségvetés az egyik első lépéseként van szükség, amikor a költségek elemzése és a költségek.
     - E-mail-értesítések küldhetők költségvetési küszöbértékek elérésekor.
     - Az Azure storage, elemzés céljából exportálhatja a költségek felügyeleti adatokat.
 
     ![A Cost Management költségvetés](./media/migrate-best-practices-costs/budget.png) *Azure Cost Management költségvetés*
 
-- **Hajtsa végre a cost analysis**: Get-költségelemzés vizsgálata és elemzése a szervezeti költségeket, a segítségével megismerheti, hogyan miatt felmerülő költségekkel, és a költési trendek azonosítására.
+- **Hajtsa végre a költségelemzés**: Get-költségelemzés vizsgálata és elemzése a szervezeti költségeket, a segítségével megismerheti, hogyan miatt felmerülő költségekkel, és a költési trendek azonosítására.
     - Költségelemzés a nagyvállalati szerződéssel rendelkező felhasználók számára érhető el.
     - Megtekintheti a cost analysis-adatok különböző hatókörök, például úgy, hogy részleg, fiók, előfizetésekhez vagy erőforráscsoportokhoz.
     - A költségek elemzése, amely megjeleníti az aktuális hónap a teljes költségét, és összesített napi költségek kérheti le. 
 
     ![Felügyeleti elemzés](./media/migrate-best-practices-costs/analysis.png) *Azure Cost Management elemzése*
-- **Javaslatok**: Get Advisor-javaslatok, amelyek bemutatják, hogyan lehet optimalizálni, és növelheti a hatékonyságot.
+- **Javaslatok**: Javaslatok az Advisor, amelyek bemutatják, hogyan lehet optimalizálni, és növelheti a hatékonyságot.
 
 
 **tudj meg többet:**
@@ -235,9 +235,9 @@ Cost Management, a következőket teheti:
 - [Első oktatóanyag](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json) a javaslatok a költségek optimalizálásához.
 - [Felülvizsgálat](https://docs.microsoft.com/rest/api/consumption/budgets) az Azure-használati API-t.
 
-## <a name="best-practice-monitor-resource-utilization"></a>Ajánlott eljárás: erőforrás-használat figyelése
+## <a name="best-practice-monitor-resource-utilization"></a>Ajánlott eljárás: Erőforrás-használat figyelése
 
-Az Azure-ban fizet, amit ténylegesen használ, amikor amikor erőforrásokat vesznek igénybe, és hogy nem kell fizetnie, ha nem. A virtuális gépek esetében a számlázás következik be egy virtuális gép le van foglalva, és nem kell fizetnie után a virtuális gép fel van szabadítva. Ezt szem kell használatban lévő virtuális gépek figyelése, és ellenőrizze a virtuális gép méretezése.
+Az Azure-ban fizet, amit ténylegesen használ erőforrásokat vesznek igénybe, és hogy nem kell fizetnie, ha nem. A virtuális gépek esetében a számlázás következik be egy virtuális gép le van foglalva, és nem kell fizetnie után a virtuális gép fel van szabadítva. Ezt szem kell használatban lévő virtuális gépek figyelése, és ellenőrizze a virtuális gép méretezése.
 
 - Folyamatosan értékelni alaptervek meghatározni a virtuális gépek számítási feladataihoz.
 - Például ha a számítási feladatok használt erősen hétfőtől péntekig 6 között 8 -kor, de ezen az időszakon kívül alig használja, akkor sikerült Visszaléptetés a virtuális gépek kívüli időszakokban. Ez arra utalhat, Virtuálisgép-méretek módosítása, vagy a virtuális gép méretezési csoportokat használ az automatikus skálázási virtuális gépekhez felfelé vagy lefelé.
@@ -251,7 +251,7 @@ Az Azure-ban fizet, amit ténylegesen használ, amikor amikor erőforrásokat ve
 - [Megtudhatja, hogyan [optimalizálhatja a költségeket a javaslatok](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), és [váratlan költségek elkerülése](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
 - [Ismerje meg](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) az Azure-erőforrás-optimalizálási (ARO) eszközkészlet
 
-## <a name="best-practice-implement-resource-group-budgets"></a>Ajánlott eljárás: erőforrás-csoport költségvetése megvalósítása
+## <a name="best-practice-implement-resource-group-budgets"></a>Ajánlott eljárás: Erőforrás-csoport költségvetése megvalósítása
 
 Erőforráscsoportok gyakran költség határok képviselő használhatók. Együtt ez a használati minta az Azure-csapat továbbra is nyomon követheti és elemezheti a költségkeret-beállítási különböző szinteken, beleértve a költségvetés az erőforráscsoportot és az erőforrások létrehozására erőforrás új és továbbfejlesztett módon fejleszthet.  
 
@@ -264,7 +264,7 @@ Erőforráscsoportok gyakran költség határok képviselő használhatók. Egy�
 - [Kövesse az oktatóanyag](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json) létrehozása és kezelése az Azure-költségvetési.
 
 
-## <a name="best-practice-optimize-azure-monitor-retention"></a>Ajánlott eljárás: az Azure Monitor megőrzési optimalizálása
+## <a name="best-practice-optimize-azure-monitor-retention"></a>Ajánlott eljárás: Az Azure Monitor megőrzési optimalizálása
 
 Erőforrások áthelyezése az Azure-ba, és azokat a diagnosztikai naplózás engedélyezése, a naplóadatok sok hozza létre. Általában a naplózási adatokat küld egy tárfiókot, amelyet a Log Analytics-munkaterület van leképezve.
 
@@ -278,7 +278,7 @@ Erőforrások áthelyezése az Azure-ba, és azokat a diagnosztikai naplózás e
 
 - [Ismerje meg](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs) felhasználás és becsült költségek figyelése.
  
-## <a name="best-practice-optimize-storage"></a>Ajánlott eljárás: a tárolási költségek optimalizálására
+## <a name="best-practice-optimize-storage"></a>Ajánlott eljárás: A tárolási költségek optimalizálására
 
 Ha követte a lépéseket ajánlott eljárások az áttelepítés előtt storage kiválasztása, valószínűleg az előnyöket összekötőkkel vannak. Vannak azonban valószínűleg további tárolási költségek, amelyek továbbra is optimalizálhatja. Idővel blobok és fájlok elavulttá váltak. Adatok előfordulhat, hogy nem használható többé, de jogszabályi követelmények arra utalhat, hogy szeretne-e egy bizonyos ideig legyen. Mint ilyen előfordulhat, hogy nem kell tárolni, a nagy teljesítményű tárolást, az eredeti áttelepítés során használt.
 
@@ -291,7 +291,7 @@ Azonosításával és elavult adatok áthelyezése a olcsóbb tárolására szol
 - [További](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) hozzáférés szintekről.
 - [Áttekintés](https://docs.microsoft.com/azure/azure-monitor/overview) storsimple, és [StorSimple díjszabás](https://azure.microsoft.com/pricing/details/storsimple/).
 
-## <a name="best-practice-automate-vm-optimization"></a>Ajánlott eljárás: automatizálhatja a virtuális gép optimalizálása
+## <a name="best-practice-automate-vm-optimization"></a>Ajánlott eljárás: Automatizálhatja a virtuális gép optimalizálása
 
 A végleges célja az, hogy egy virtuális Gépet a felhőben futó, hogy a CPU, memória és az lemezt használ. Ha a nem optimalizált virtuális gépek felderítése, vagy ha a virtuális gépek nem használható fel a gyakori egymást, logikus leállíthatja őket, vagy linearity azokat a Virtuálisgép-méretezési csoportok használatával.
 
@@ -304,7 +304,7 @@ Egy virtuális Gépet az Azure Automation, a virtuális gép méretezési csopor
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/automation/automation-solution-vm-management) indítása és leállítása a virtuális gépek munkaidőn az Azure Automationben.
 - [További információ] [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview), és a [Azure erőforrás-optimalizálás (ARO) eszközkészlet](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/).
 
-## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Ajánlott eljárások: használja a Logic Apps és a runbook költségvetése API-val
+## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Ajánlott eljárások: A Logic Apps és a runbook használata költségvetése API-val
 
 Az Azure biztosít egy REST API-t, amely hozzáfér a bérlő számlázási adatokat.
 
@@ -320,7 +320,7 @@ Az Azure biztosít egy REST API-t, amely hozzáfér a bérlő számlázási adat
 - [Elemzések lekérése](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) be Azure-használat a számlázási API-val.
 
 
-## <a name="best-practice-implement-serverless-technologies"></a>Ajánlott eljárás: kiszolgáló nélküli technológiák megvalósítása
+## <a name="best-practice-implement-serverless-technologies"></a>Ajánlott eljárás: Kiszolgáló nélküli technológiák megvalósítása
 
 Virtuális gépek számítási feladataihoz gyakran települnek át, "adott állapotában" üzemszünet elkerülése érdekében. Virtuális gépek gyakran akkor is tartalmazhat, feladatok, amelyek időszakos futtatását, egy rövid ideig tart, vagy másik lehetőségként több órával. Például például a Windows ütemezett feladatokat futtató virtuális gépek feladat scheduler vagy a PowerShell-parancsfájlokat. Ezek a feladatok nem futnak, amikor meg azonban üzemeltetést a virtuális gép és a tárolási költségeket lemez.
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cad0ec8c2e2f8972cd856b34b8abdd5afd3a6316
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 15d243218632ce9010d0f4542fb97f311e8a3166
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515199"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182638"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal
 
@@ -36,12 +36,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 3. Adja meg az alábbi információkat az új Device Provisioning Service-példányra vonatkozóan, és kattintson a **Létrehozás** gombra.
 
-    * **Név:** Adjon egy egyedi nevet az új Device Provisioning Service-példánynak. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
-    * **Előfizetés:** Válassza ki a Device Provisioning Service-példány létrehozásához használni kívánt előfizetést.
-    * **Erőforráscsoport:** A mezőben létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévőt, amely az új példányt tartalmazza majd. Válassza ugyanazt az erőforráscsoportot, amely a fent létrehozott IoT Hubot tartalmazza, például: **TestResources**. Ha az összes kapcsolódó erőforrást egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlése például az adott csoportban található összes erőforrást is törli. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről](../azure-resource-manager/resource-group-portal.md) szóló cikkben olvashat.
-    * **Hely:** Válassza ki azt a helyet, amely az eszközökhöz legközelebb esik.
+    * **név:** Adjon meg egy egyedi nevet az új Device Provisioning szolgáltatás példányát. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
+    * **Előfizetés:** Válassza ki a Device Provisioning service-példány létrehozásához használni kívánt előfizetést.
+    * **Erőforráscsoport:** Ebben a mezőben lehetővé teszi, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon egy meglévőt, hogy az új példányt tartalmaz. Válassza ugyanazt az erőforráscsoportot, amely a fent létrehozott IoT Hubot tartalmazza, például: **TestResources**. Ha az összes kapcsolódó erőforrást egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlése például az adott csoportban található összes erőforrást is törli. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről](../azure-resource-manager/resource-group-portal.md) szóló cikkben olvashat.
+    * **Hely:** Válassza ki az Önhöz legközelebbi helyet az eszközökön.
 
-    ![A Device Provisioning Service-példány alapvető adatainak megadása a portálpanelen](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
+      ![A Device Provisioning Service-példány alapvető adatainak megadása a portálpanelen](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
 4. Kattintson az értesítés gombra az erőforráspéldány létrehozásának monitorozásához. A szolgáltatás sikeres üzembe helyezése után kattintson a **Rögzítés az irányítópulton** elemre, majd az **Erőforrás megnyitása** gombra.
 
@@ -57,11 +57,11 @@ Ebben a szakaszban egy konfigurációt fog hozzáadni az irányítópulton a Dev
 
 3. A **Hivatkozás hozzáadása IoT Hubhoz** lapon adja meg az alábbi adatokat, hogy az új Device Provisioning Service-példányt egy IoT Hubhoz kapcsolja. Ezután kattintson a **Mentés** gombra. 
 
-    * **Előfizetés:** Válassza ki az új Device Provisioning Service-példányhoz kapcsolni kívánt IoT Hubot tartalmazó előfizetést.
-    * **IoT Hub:** Válassza ki az új Device Provisioning Service-példányhoz kapcsolni kívánt IoT Hubot.
-    * **Hozzáférési szabályzat:** Válassza az **iothubowner** hitelesítő adatait az IoT Hubra mutató kapcsolat kiépítéséhez.  
+    * **Előfizetés:** Válassza ki az előfizetést, amely tartalmazza az IoT hub, az új Device Provisioning service-példánnyal csatolni kívánt.
+    * **Az IOT hub:** Válassza ki az IoT hub csatolása az új Device Provisioning service-példánnyal.
+    * **Hozzáférési szabályzat:** Válassza ki **iothubowner** a hivatkozásra, és az IoT hub létrehozásához szükséges hitelesítő adatként.  
 
-    ![A Hub nevének csatolása a Device Provisioning Service-példányhoz a portálpanelen](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
+      ![A Hub nevének csatolása a Device Provisioning Service-példányhoz a portálpanelen](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
 3. Most látnia kell a kiválasztott hubot a **Csatolt IoT Hubok** panelen. Lehetséges, hogy a **Frissítés** gombra kell kattintania az **Összekapcsolt IoT-központok** megjelenítéséhez.
 

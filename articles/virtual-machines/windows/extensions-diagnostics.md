@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: db4208c8fef27d2e2085e63ba3a986456d0544bf
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: fe24307f7ed01c64217bcb1f9f7645a30bce7f44
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429116"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322823"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Az Azure Diagnostics bővítmény Windows virtuális gépek számára
 
@@ -37,7 +37,7 @@ Az Azure Diagnostics bővítmény szükséges, hogy a céloldali virtuális gép
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-[Ez a dokumentum ismerteti az Azure Diagnostics bővítmény séma- és értékeket.](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+[Ez a dokumentum ismerteti az Azure Diagnostics bővítmény séma- és értékeket.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
@@ -80,12 +80,12 @@ Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azu
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Ebben a cikkben](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md) átfogóbb hibaelhárítási útmutató az Azure Diagnostics bővítmény.
+[Ebben a cikkben](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) átfogóbb hibaelhárítási útmutató az Azure Diagnostics bővítmény.
 
 ### <a name="support"></a>Támogatás
 
 Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>További lépések
-* [További információ az Azure Diagnostics bővítmény](../../monitoring-and-diagnostics/azure-diagnostics.md)
-* [Tekintse át a séma kiterjesztése és -verziók](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+* [További információ az Azure Diagnostics bővítmény](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [Tekintse át a séma kiterjesztése és -verziók](../../azure-monitor/platform/diagnostics-extension-schema.md)

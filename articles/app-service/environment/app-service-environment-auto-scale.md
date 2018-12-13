@@ -1,5 +1,5 @@
 ---
-title: Automatikus skálázás és az App Service Environment-környezet 1-es verzió
+title: Automatikus skálázás és az App Service Environment v1 – Azure
 description: Automatikus skálázás és az App Service Environment-környezet
 services: app-service
 documentationcenter: ''
@@ -14,215 +14,216 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 0feb6e4862f643c35a58c0321181bdda22b032e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23837133"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270025"
 ---
-# <a name="autoscaling-and-app-service-environment-v1"></a>Automatikus skálázás és az App Service Environment-környezet 1-es verzió
+# <a name="autoscaling-and-app-service-environment-v1"></a>Automatikus skálázás és az App Service Environment-környezet v1
 
 > [!NOTE]
-> Ez a cikk az App Service Environment-környezet v1 tárgya.  Az App Service-környezet, amely könnyebben használható, és nagyobb teljesítményű infrastruktúra fut egy újabb verziója van telepítve. További információt az új verzió útmutató a [az App Service Environment bemutatása](intro.md).
+> Ez a cikk az App Service Environment-környezet v1 szól.  Nincs az App Service-környezet, amely egyszerűbb és nagyobb teljesítményű infrastruktúra fut egy újabb verziója. További információ az új verzió elindítása a [az App Service Environment bemutatása](intro.md).
 > 
 
-Támogatja az Azure App Service-környezetek *automatikus skálázás*. Használhatja az automatikus skálázás egyedi feldolgozókészletek metrikák vagy ütemezés alapján.
+Támogatja az Azure App Service-környezetek *az automatikus skálázás*. Egyéni feldolgozókészletek automatikus méretezését metrika vagy ütemezés szerint is.
 
-![A feldolgozókészleten automatikus skálázás beállításai.][intro]
+![A feldolgozókészletek automatikus skálázási beállítások.][intro]
 
-Automatikus skálázás optimalizálja az erőforrás-használat automatikusan növekvő és zsugorítását App Service-környezet elférjen a költségvetést, és vagy betöltése.
+Az automatikus skálázás automatikusan növekvő és zsugorítását a költségvetéshez igazodó, és vagy profil betöltése az App Service environment optimalizálja az erőforrások kihasználtságát.
 
-## <a name="configure-worker-pool-autoscale"></a>Munkavégző készlet automatikus skálázás konfigurálása
-Az automatikus skálázás funkciói végezheti el a **beállítások** lapján a munkavégző készletét.
+## <a name="configure-worker-pool-autoscale"></a>Feldolgozó készlet automatikus skálázás konfigurálása
+Automatikus skálázási funkcióit is elérheti a **beállítások** feldolgozókészletként lapján.
 
-![A feldolgozókészleten beállítások lapján.][settings-scale]
+![A feldolgozói készlethez tartozó beállítások lapon.][settings-scale]
 
-Ezekből a felületet kell viszonylag jól ismert, mert ugyanazt a felhasználói élményt, hogy látni, ha az App Service-csomag méretezni. 
+Itt a felületen lehet viszonylag jól, mert ugyanazt a felhasználói élményt, hogy mikor méretezése App Service-csomag. 
 
-![Manuális skálázási beállításokat.][scale-manual]
+![Manuális skálázás beállításai.][scale-manual]
 
-Az automatikus skálázási profilok is konfigurálhatja.
+Automatikus skálázási profil is konfigurálhatja.
 
-![Automatikus skálázási beállításokat.][scale-profile]
+![Az automatikus méretezési beállítások.][scale-profile]
 
-Automatikus skálázási profilok hasznosak a skála korlátozható. Ezzel a módszerrel lehet egy egységes élmény úgy, hogy egy felső határa (2) egy alsó határ skálaértéknél (1) és egy előre jelezhető ráfordítás cap beállításával teljesítmény.
+Automatikus méretezési profilok hasznosak lehetnek a méretezési korlátok beállításához. Ebben az esetben akkor is egy egységes teljesítményt élményt olyan alsó határérték értéke (1) és a egy előre jelezhető költségek korlát beállításával egy felső határérték (2) beállításával.
 
-![A profil beállítását.][scale-profile2]
+![A profil beállításait.][scale-profile2]
 
-Egy profil megadása után az automatikus skálázási szabályok méretezési felfelé vagy lefelé a munkavégző készletét. a profil által meghatározott határain belül található példányok száma is hozzáadhat. Automatikus skálázási szabályok metrikák alapulnak.
+A profil határozza meg, miután automatikus skálázási szabály-vagy leskálázhatja a munkavégző készletét. a profil által meghatározott határán belül a példányok száma is hozzáadhat. Az automatikus skálázási szabályok metrikák alapulnak.
 
 ![Skálázási szabályhoz.][scale-rule]
 
- A feldolgozókészleten vagy előtér-metrikák automatikus skálázási szabályok meghatározásához használható. Ezeket a mérési metrikák az erőforrás panel diagramokban figyelése, vagy állítson be riasztásokat a rendszer.
+ Bármennyi feldolgozókészlet vagy előtérmetrika használható az automatikus skálázási szabályok meghatározásához. Ezek a metrikák olyan metrikák figyelheti az erőforrás panel grafikonok, vagy a riasztásokat állíthat be.
 
-## <a name="autoscale-example"></a>Automatikus skálázás – példa
-Egy App Service Environment-környezet automatikus skálázás legjobb érdekében a forgatókönyv segítségével mutatható be.
+## <a name="autoscale-example"></a>Automatikus skálázási példa
+Az automatikus méretezés App Service Environment-környezetek a legjobban, ajánljuk figyelmébe a forgatókönyv által mutatható be.
 
-Ez a cikk ismerteti a szükséges szempontok, automatikus skálázás beállításához. A cikk végigvezeti az olyan műveleteket, amelyek, ha a figyelembe a automatikus skálázás App Service-környezetek, amelyek App Service Environment-környezet.
+Ez a cikk leírja a szükséges szempontok, automatikus méretezés beállítása során. A cikk végigvezeti Önt, ha a Ön figyelembe vennie az automatikus skálázás App Service-környezetek, amelyek az App Service-környezetben üzemeltetett interakciókat.
 
 ### <a name="scenario-introduction"></a>A forgatókönyv bemutatása
-Frank a sysadmin (rendszergazda), akik az App Service-környezetek át a munkaterheléseket, általa része lett telepítve a vállalati.
+Frank a sysadmin (rendszergazda), aki a számítási feladatok, amelyek kezel egy része lett migrálva az App Service-környezet a vállalati.
 
-Az App Service Environment-környezet van konfigurálva manuális méretezési az alábbiak szerint:
+Az App Service-környezet konfigurációja manuális skálázás, a következő:
 
-* **Első végződik:** 3
-* **A feldolgozókészleten 1**: 10
-* **A feldolgozókészleten 2**: 5
-* **A feldolgozókészleten 3**: 5
+* **Az előtérrendszerek:** 3
+* **Feldolgozókészlet 1**: 10
+* **Feldolgozókészlet 2**: 5
+* **Feldolgozókészlet 3**: 5
 
-1 feldolgozókészletek használjuk a termelési számítási feladatokhoz, feldolgozókészletek 2 és 3 feldolgozókészletek a minőségi megbízhatósági (QA) és a fejlesztői munkaterhelések szolgálnak.
+Feldolgozókészlet 1 használatos a termelési számítási feladatokhoz, míg feldolgozókészlet 2 és 3 feldolgozókészlet minőségbiztosítás (Tesztelés) és a fejlesztési számítási feladatokhoz.
 
-Az App Service-csomagokról QA és fejlesztői manuális méretezési vannak konfigurálva. Az App Service-csomag üzemi automatikus skálázási értéke változások a terhelési és a forgalom kezelésére.
+Az App Service-csomagok QA és fejlesztési manuális skálázás vannak konfigurálva. Az App Service-csomag éles terhelés és forgalom kezelésére van beállítva az automatikus méretezés.
 
-Frank tisztában van az alkalmazás. Tudja, hogy a terhelést csúcsidőszakon 9:00-kor és 18:00:00 közé esnek, mivel ez egy alkalmazottak által használt során az office-üzletági (LOB) alkalmazás. Ezt követően használati elutasítja azokat a felhasználókat adott napon szabásakor. Csúcsidőszakon kívüli nincs még néhány betöltése mert felhasználók férhetnek hozzá az alkalmazás távolról a mobileszközök és az otthoni számítógépek használatával. Az üzemi App Service-csomag már be van állítva a következő szabályokat a CPU-használat alapján automatikus skálázásra:
+Frank tisztában van az alkalmazás. Tudja, hogy a terhelés csúcsidőszakon 9:00 és 18:00:00 között van, mivel ez egy – üzletági (LOB) alkalmazás, amely az alkalmazottak használata során az office. Ezt követően használati csökken, amikor a felhasználók az adott napra történik. Csúcsidőn kívül van még néhány terhelést, mert a felhasználók férhetnek hozzá az alkalmazás távolról a mobil eszközök és az otthoni számítógépeket használ. Az üzemi App Service-csomag már konfigurálva van a következő szabályokat a processzorhasználat alapján automatikus skálázást:
 
-![Az ÜZLETÁGI alkalmazás beállításait.][asp-scale]
+![LOB-alkalmazás vonatkozó beállításokat.][asp-scale]
 
-| **Automatikus skálázási profil – létrehozását – az App Service-csomag** | **Automatikus skálázási profil – hétvégéket – az App Service-csomag** |
+| **Automatikus skálázási profil – Weekdays – App Service-csomag** | **Automatikus skálázási profil – szabadnapok – App Service-csomag** |
 | --- | --- |
-| **Name:** hétköznap profil |**Name:** hétvégi profil |
-| **A skála:** ütemezés és a teljesítmény szabályok |**A skála:** ütemezés és a teljesítmény szabályok |
-| **Profil:** hétköznapokon |**Profil:** hétvégi |
-| **Típus:** ismétlődési |**Típus:** ismétlődési |
-| **Tartomány cél:** 5-20 példányok |**Tartomány cél:** 3 – 10 példányok |
-| **Nap:** hétfő, kedd, szerda, csütörtök, péntek |**Nap:** , szombat és vasárnap |
-| **Kezdési időpont:** 9:00-kor |**Kezdési időpont:** 9:00-kor |
+| **név:** Hét napja profil |**név:** Hétvégi profil |
+| **A skálázás:** Ütemezési és teljesítményszabályok |**A skálázás:** Ütemezési és teljesítményszabályok |
+| **Profil:** Hétköznap |**Profil:** Hétvége |
+| **Írja be:** Ismétlődés |**Írja be:** Ismétlődés |
+| **Cél porttartomány:** 5 – 20 példány |**Cél porttartomány:** 3 – 10-példányok |
+| **Nap:** Hétfő, kedd, szerda, csütörtök, péntek |**Nap:** Szombat, vasárnap |
+| **Kezdő időpont:** 9:00-KOR |**Kezdő időpont:** 9:00-KOR |
 | **Időzóna:** UTC-08 |**Időzóna:** UTC-08 |
 |  | |
 | **Automatikus skálázási szabály (vertikális Felskálázás)** |**Automatikus skálázási szabály (vertikális Felskálázás)** |
-| **Erőforrás:** éles (App Service Environment-környezet) |**Erőforrás:** éles (App Service Environment-környezet) |
-| **A metrika:** CPU % |**A metrika:** CPU % |
-| **Művelet:** nagyobb, mint 60 % |**Művelet:** 80 %-nál nagyobb |
+| **erőforrás:** Éles (App Service Environment-környezet) |**erőforrás:** Éles (App Service Environment-környezet) |
+| **Metrika:** CPU-használat (%) |**Metrika:** CPU-használat (%) |
+| **Művelet:** Nagyobb, mint 60 % |**Művelet:** 80 %-nál nagyobb |
 | **Időtartam:** 5 perc |**Időtartam:** 10 perc |
-| **Összesítési idő:** átlagos |**Összesítési idő:** átlagos |
-| **Művelet:** számának növeléséhez a 2. régiója |**Művelet:** számának növeléséhez 1 |
-| **Ritkán használt adatok le (perc):** 15 |**Ritkán használt adatok le (perc):** 20 |
+| **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség növelése a következővel 2 |**Művelet:** Mennyiség növelése a következővel 1 |
+| **Lehűlés (percben):** 15 |**Lehűlés (percben):** 20 |
 |  | |
-| **Automatikus skálázási szabály (méretezési le)** |**Automatikus skálázási szabály (méretezési le)** |
-| **Erőforrás:** éles (App Service Environment-környezet) |**Erőforrás:** éles (App Service Environment-környezet) |
-| **A metrika:** CPU % |**A metrika:** CPU % |
-| **Művelet:** 30 %-nál kisebb |**Művelet:** 20 %-nál kisebb |
+| **Automatikus skálázási szabály (Scale le)** |**Automatikus skálázási szabály (Scale le)** |
+| **erőforrás:** Éles (App Service Environment-környezet) |**erőforrás:** Éles (App Service Environment-környezet) |
+| **Metrika:** CPU-használat (%) |**Metrika:** CPU-használat (%) |
+| **Művelet:** Kevesebb mint 30 % |**Művelet:** Kevesebb mint 20 % |
 | **Időtartam:** 10 perc |**Időtartam:** 15 perc |
-| **Összesítési idő:** átlagos |**Összesítési idő:** átlagos |
-| **Művelet:** számának csökkentése 1 |**Művelet:** számának csökkentése 1 |
-| **Ritkán használt adatok le (perc):** 20 |**Ritkán használt adatok le (perc):** 10 |
+| **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség csökkentése a következővel 1 |**Művelet:** Mennyiség csökkentése a következővel 1 |
+| **Lehűlés (percben):** 20 |**Lehűlés (percben):** 10 |
 
-### <a name="app-service-plan-inflation-rate"></a>Az alkalmazásszolgáltatási csomag inflációja
-App Service-csomagokról konfigurált automatikus skálázásra ehhez óránként sebességet. Ezt az értéket a megadott automatikus skálázási szabály megadott értékek alapján lehet kiszámolni.
+### <a name="app-service-plan-inflation-rate"></a>Az App Service-csomag infláció arány
+App Service-csomagok konfigurált automatikus ehhez óránként sebességet. Ez a díjszabás az automatikus skálázási szabály a megadott értékek alapján számítható.
 
-Megismerés és kiszámítása a *App Service-csomag inflációja* fontos az App Service-környezet automatikus skálázás, mert a feldolgozókészleten méretezési módosításai nincsenek azonnali.
+Megismerés és kiszámítása a *App Service-csomag infláció arány* fontos az App Service-környezet automatikus, mivel a méretezési csoport módosításai a feldolgozókészletek nem azonnali.
 
-Az App Service-csomag inflációja kiszámítása a következőképpen történik:
+Az App Service csomag infláció sebesség számítása a következőképpen:
 
-![Az alkalmazásszolgáltatási csomag inflációja számítási.][ASP-Inflation]
+![Az App Service csomag infláció sebesség kiszámítása.][ASP-Inflation]
 
-Az automatikus skálázás – a hét napja profil a termelési App Service-csomag vertikális Felskálázás szabály alapján:
+Automatikus skálázási – a hét napja profil a termelési App Service-csomag vertikális Felskálázás szabály alapján:
 
-![App Service csomag infláció arány alapján automatikus skálázás – vertikális Felskálázás szabály létrehozását.][Equation1]
+![Az App Service csomag infláció aránya hétköznap, az automatikus méretezés – vertikális Felskálázás szabály alapján.][Equation1]
 
-Automatikus skálázási – a hétvégi profil a termelési App Service-csomag vertikális Felskálázás szabály esetében a képlet kellene tartoznia:
+Az automatikus méretezés a hétvégi profil a termelési App Service-csomag vertikális Felskálázás szabály esetén a képlet szeretné feloldani:
 
-![App Service csomag infláció arány hétvégéket automatikus skálázás – vertikális Felskálázás szabály alapján.][Equation2]
+![Az App Service csomag infláció aránya hétvégeken, az automatikus méretezés – vertikális Felskálázás szabály alapján.][Equation2]
 
-Ez az érték is kerülhet sor, lefelé méretezéshez műveletekhez.
+Ez az érték is kiszámítható skálázási műveletek.
 
-Az automatikus skálázás – a hét napja profil az App Service-csomag, az üzemi méretezési le szabály alapján ez lenne az alábbiak szerint:
+Az automatikus méretezés méretezési le a termelési App Service-csomag, a hét napja profil szabály alapján ez lenne hasonlítania:
 
-![App Service csomag infláció arány alapján automatikus skálázás – méretezési le szabály létrehozását.][Equation3]
+![Az App Service csomag infláció aránya hétköznap, automatikus méretezés méretezési le szabály alapján.][Equation3]
 
-Automatikus skálázási – az App Service-csomag üzemi hétvégi profiljának méretezési le szabály esetében a képlet kellene tartoznia:  
+Az automatikus méretezés méretezési le a szabály a hétvégi profil a termelési App Service-csomag esetén a képlet szeretné feloldani:  
 
-![App Service csomag infláció arány hétvégéket automatikus skálázás – méretezési le szabály alapján.][Equation4]
+![Az App Service csomag infláció aránya hétvégeken, automatikus méretezés méretezési le szabály alapján.][Equation4]
 
-Az App Service-csomag üzemi milyen mértékben növelhető a maximális sebesség nyolc példányok/óra a héten és négy példányok/óra a hétvégén. Azt is megjelenhetnek példányok négy példányok/óra során a hét sebességet és hat példányok/óra során tartozik.
+Az App Service-csomag éles növelhető a héten nyolc példányok/óra maximális száma és négy példány/óra a hétvégén. Azt is megjelenhetnek a példányok négy példány/óra hétre esik-e a maximális gyakorisággal és hétvégi hat példány/óra.
 
-Ha több App Service-csomagokról a feldolgozókészleten alatt tárolt, kell számítani a *teljes inflációja* az összes az App Service-csomagok, amelyeket a inflációja összege az adott munkavégző készletét tartalmazó.
+Ha több App Service-csomagok folyamatban van az feldolgozókészletek, kell számítani a *teljes infláció arány* folyamatban van az összes App Service-csomagok infláció díjának összege üzemeltetése az adott feldolgozókészlet.
 
-![A feldolgozókészleten üzemeltetett több App Service-csomagokról teljes inflációja számítását.][ASP-Total-Inflation]
+![Több App Service-csomagokban üzemeltetett feldolgozókészletek teljes infláció sebesség számítása.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Az App Service-csomag inflációja segítségével munkavégző készlet automatikus skálázási szabályok definiálása
-Munkavégző készletbe üzemeltető App Service-csomagokról konfigurált automatikus skálázásra kell kapacitás puffert lefoglalni. A puffer lehetővé teszi, hogy az automatikus skálázási művelet növelhető vagy csökkenthető az App Service-csomag, igény szerint. A minimális puffer lenne a számított teljes App Service megtervezése inflációja.
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Használja az App Service csomag infláció arány feldolgozó készlet automatikus skálázási szabályok meghatározásához
+Feldolgozó készletek App Service-csomagok konfigurált automatikus skálázást, amelyet ki kell álló kapacitást kell a gazdagépen. A puffer lehetővé teszi, hogy az automatikus skálázási műveletek növelhető vagy csökkenthető az App Service-csomag szükséges. A minimális puffer lenne számított összes App Service csomag infláció átviteli sebessége.
 
-App Service-környezet skálázási műveleteinek néhány történő alkalmazása időbe telhet, mert további fordulhat elő, amíg folyamatban van egy skálázási műveletet igény szerinti módosítások változásait kell fiókot. Ez a késés teljesítése érdekében azt javasoljuk, hogy használ a számított teljes App Service megtervezése inflációja a hozzáadott példányok minimális számának minden automatikus skálázási művelet.
+App Service-környezet skálázási műveletek némi időt a alkalmazni, mert további fordulhat elő, amíg folyamatban van egy skálázási művelet igények változásainak bármilyen változás kell figyelni. Befogadásához a késés, javasoljuk, hogy használjon számított összes App Service csomag infláció átviteli sebessége, a hozzáadott példányok minimális száma minden automatikus skálázási művelet.
 
-Az információ Frank határozhatja meg a következő automatikus skálázási profil és a szabályok:
+Ezekkel az információkkal Frank határozhatja meg a következő automatikus skálázási profil és szabályok:
 
 ![Automatikus skálázási profil szabályok LOB például.][Worker-Pool-Scale]
 
-| **Automatikus skálázási profil – hétköznapokon** | **Automatikus skálázási profil – hétvégéket** |
+| **Automatikus skálázási profil – hétköznap** | **Automatikus skálázási profil – szabadnapok** |
 | --- | --- |
-| **Name:** hétköznap profil |**Name:** hétvégi profil |
-| **A skála:** ütemezés és a teljesítmény szabályok |**A skála:** ütemezés és a teljesítmény szabályok |
-| **Profil:** hétköznapokon |**Profil:** hétvégi |
-| **Típus:** ismétlődési |**Típus:** ismétlődési |
-| **Tartomány cél:** 13-25 példányok |**Tartomány cél:** 6 – 15 példányok |
-| **Nap:** hétfő, kedd, szerda, csütörtök, péntek |**Nap:** , szombat és vasárnap |
-| **Kezdési időpont:** 7:00-kor |**Kezdési időpont:** 9:00-kor |
+| **név:** Hét napja profil |**név:** Hétvégi profil |
+| **A skálázás:** Ütemezési és teljesítményszabályok |**A skálázás:** Ütemezési és teljesítményszabályok |
+| **Profil:** Hétköznap |**Profil:** Hétvége |
+| **Írja be:** Ismétlődés |**Írja be:** Ismétlődés |
+| **Cél porttartomány:** 13 – 25-példányok |**Cél porttartomány:** 6. és 15-példányok |
+| **Nap:** Hétfő, kedd, szerda, csütörtök, péntek |**Nap:** Szombat, vasárnap |
+| **Kezdő időpont:** 7:00-KOR |**Kezdő időpont:** 9:00-KOR |
 | **Időzóna:** UTC-08 |**Időzóna:** UTC-08 |
 |  | |
 | **Automatikus skálázási szabály (vertikális Felskálázás)** |**Automatikus skálázási szabály (vertikális Felskálázás)** |
-| **Erőforrás:** feldolgozókészletek 1 |**Erőforrás:** feldolgozókészletek 1 |
-| **A metrika:** WorkersAvailable |**A metrika:** WorkersAvailable |
-| **Művelet:** legalább 8 |**Művelet:** legalább 3 |
+| **erőforrás:** Feldolgozókészlet 1 |**erőforrás:** Feldolgozókészlet 1 |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Művelet:** Kevesebb mint 8 |**Művelet:** Kevesebb mint 3 |
 | **Időtartam:** 20 perc |**Időtartam:** 30 perc |
-| **Összesítési idő:** átlagos |**Összesítési idő:** átlagos |
-| **Művelet:** számának növeléséhez 8 |**Művelet:** növeléséhez száma 3 |
-| **Ritkán használt adatok le (perc):** 180 |**Ritkán használt adatok le (perc):** 180 |
+| **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség növelése a következővel 8 |**Művelet:** Mennyiség növelése a következővel 3 |
+| **Lehűlés (percben):** 180 |**Lehűlés (percben):** 180 |
 |  | |
-| **Automatikus skálázási szabály (méretezési le)** |**Automatikus skálázási szabály (méretezési le)** |
-| **Erőforrás:** feldolgozókészletek 1 |**Erőforrás:** feldolgozókészletek 1 |
-| **A metrika:** WorkersAvailable |**A metrika:** WorkersAvailable |
-| **Művelet:** 8-nál nagyobb |**Művelet:** 3-nál nagyobb |
+| **Automatikus skálázási szabály (Scale le)** |**Automatikus skálázási szabály (Scale le)** |
+| **erőforrás:** Feldolgozókészlet 1 |**erőforrás:** Feldolgozókészlet 1 |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Művelet:** 8-nál nagyobb |**Művelet:** Nagyobb, mint 3 |
 | **Időtartam:** 20 perc |**Időtartam:** 15 perc |
-| **Összesítési idő:** átlagos |**Összesítési idő:** átlagos |
-| **Művelet:** számának csökkentése 2 |**Művelet:** csökkentése száma 3 |
-| **Ritkán használt adatok le (perc):** 120 |**Ritkán használt adatok le (perc):** 120 |
+| **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség csökkentése a következővel 2 |**Művelet:** Mennyiség csökkentése a következővel 3 |
+| **Lehűlés (percben):** 120 |**Lehűlés (percben):** 120 |
 
-A célként megadott tartomány-profilban megadott az App Service-csomag + puffer-profilban megadott minimális példányainak számítja ki.
+A minimális példányok, az App Service-csomag + puffer-profilban megadott számolható ki a céltartomány-profilban megadott.
 
-A maximális tartomány lenne a munkavégző készletben tárolt összes App Service-csomagokról az összes maximális tartomány összege.
+A maximális tartomány lenne az összes App Service-csomagok, a feldolgozó készletben lévő üzemeltetett összes maximális tartományok összege.
 
-A skálázási szabályok növekedése számát létre kell hozni legalább az App Service csomag inflációja bővített X 1.
+A szabályokat a méretezési csoport mennyiség növelése a következővel kell beállítani, legalább 1 X méretezés App Service csomag infláció díjaival.
 
-Csökkentse száma módosítható egy 1/2 X vagy az App Service csomag inflációja bővített X 1 közötti le.
+Mennyiség csökkentése a módosítható egy 1/2 X vagy 1 X méretezés App Service csomag infláció díjaival között le.
 
-### <a name="autoscale-for-front-end-pool"></a>Automatikus skálázás előtér-készlet
-Az előtér-automatikus skálázási szabályok egyszerűbbek, mint a feldolgozókészletek. Elsősorban akkor  
-Győződjön meg arról, hogy a mérés és a cooldown időzítők időtartama fontolja meg, hogy az App Service-csomagot a skálázási műveletek nem azonnali.
+### <a name="autoscale-for-front-end-pool"></a>Automatikus előtér-készlet
+Az előtér-automatikus skálázási szabályok egyszerűbbek, mint a feldolgozókészletek. Elsősorban érdemes  
+Győződjön meg arról, hogy a mérés és az utáni időzítők időtartama vegye figyelembe, hogy az App Service-csomag skálázási műveletek nem azonnali állnak.
 
-Ebben a forgatókönyvben a Frank tudja, hogy a Hibaarány előtér-webkiszolgálóinak eléri a 80 %-os processzorhasználatot megnő, és beállítja az automatikus skálázási szabály, amely növeli következőképpen példányok:
+Ebben a forgatókönyvben a Frank tudja, hogy a hibák aránya előtérrendszerek eléri a 80 %-os CPU-kihasználtság megnő, és beállítja az automatikus skálázási szabály növelje a példányok a következő:
 
-![Automatikus skálázási beállításokat előtér-készlet.][Front-End-Scale]
+![Automatikus skálázási beállítások előtér-készlet.][Front-End-Scale]
 
-| **Automatikus skálázási profil – első karakterlánccal végződik-e** |
+| **Automatikus skálázási profil – előtérrendszer** |
 | --- |
-| **Name:** automatikus skálázás – első karakterlánccal végződik-e |
-| **A skála:** ütemezés és a teljesítmény szabályok |
-| **Profil:** mindennapi |
-| **Típus:** ismétlődési |
-| **Tartomány cél:** 3 – 10 példányok |
-| **Nap:** mindennapi |
-| **Kezdési időpont:** 9:00-kor |
+| **név:** Automatikus méretezés előtérrendszer |
+| **A skálázás:** Ütemezési és teljesítményszabályok |
+| **Profil:** mindennap |
+| **Írja be:** Ismétlődés |
+| **Cél porttartomány:** 3 – 10-példányok |
+| **Nap:** mindennap |
+| **Kezdő időpont:** 9:00-KOR |
 | **Időzóna:** UTC-08 |
 |  |
 | **Automatikus skálázási szabály (vertikális Felskálázás)** |
-| **Erőforrás:** előtér-készlet |
-| **A metrika:** CPU % |
-| **Művelet:** nagyobb, mint 60 % |
+| **erőforrás:** Előtér-készlet |
+| **Metrika:** CPU-használat (%) |
+| **Művelet:** Nagyobb, mint 60 % |
 | **Időtartam:** 20 perc |
-| **Összesítési idő:** átlagos |
-| **Művelet:** növeléséhez száma 3 |
-| **Ritkán használt adatok le (perc):** 120 |
+| **Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség növelése a következővel 3 |
+| **Lehűlés (percben):** 120 |
 |  |
-| **Automatikus skálázási szabály (méretezési le)** |
-| **Erőforrás:** feldolgozókészletek 1 |
-| **A metrika:** CPU % |
-| **Művelet:** 30 %-nál kisebb |
-| **Időtartam:** 20 perc |
-| **Összesítési idő:** átlagos |
-| **Művelet:** csökkentése száma 3 |
-| **Ritkán használt adatok le (perc):** 120 |
+| **Automatikus skálázási szabály (Scale le)** |
+| **erőforrás:** Feldolgozókészlet 1 |
+| **Metrika:** CPU-használat (%) |
+| **Művelet:** Kevesebb mint 30 % |
+| **Időtartam:** 20 perc alatt |
+| **Idő összesítése:** Átlag |
+| **Művelet:** Mennyiség csökkentése a következővel 3 |
+| **Lehűlés (percben):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

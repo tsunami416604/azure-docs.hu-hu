@@ -1,6 +1,6 @@
 ---
-title: Nyelvi támogatás Java Linuxon futó Azure App Service |} A Microsoft Docs
-description: Fejlesztői útmutató és az Azure App Service Linux rendszeren Java-alkalmazások üzembe helyezését.
+title: Java fejlesztői útmutatója az App Service linuxon – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja a linuxon futó Azure App Service-ben futó Java alkalmazásokat.
 keywords: az Azure app service, webalkalmazás, linux, oss, a java
 services: app-service
 author: rloutlaw
@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 12/10/2018
 ms.author: routlaw
-ms.openlocfilehash: cf3e5bf6752311881e1266d2fb49aa5b7108e68a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 75410b1338909f98a01b02c0ff86be9b81ab3faf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965564"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250916"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 

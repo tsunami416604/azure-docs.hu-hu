@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b206d7b56fc8a65c422a4ce22b2f5585e71c8da
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219425"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315757"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
-Ez az oktatóanyag bemutatja, hogyan szerkesztheti a távoli figyelési megoldásban a mikroszolgáltatások egyik, egy a mikroszolgáltatás-rendszerkép létrehozásához, a rendszerkép üzembe helyezése a docker hub és indítására használhatja a távoli figyelési megoldás. Bevezetni a fogalom, az oktatóanyagban egy egyszerű forgatókönyvet, amelyen mikroszolgáltatások API hívása és módosíthatja az állapotüzenet tartalmazza a "Tartási és jól" "Új szerkeszti Made itt!"
+Ez az oktatóanyag bemutatja, hogyan szerkesztheti az egyik a [mikroszolgáltatások](http://azure.com/microservices) a távoli figyelési megoldás létrehozása a mikroszolgáltatási képe, a rendszerkép üzembe helyezése a docker hub és indítására használhatja a távoli figyelési megoldás. Bevezetni a fogalom, az oktatóanyagban egy egyszerű forgatókönyvet, amelyen mikroszolgáltatások API hívása és módosíthatja az állapotüzenet tartalmazza a "Tartási és jól" "Új szerkeszti Made itt!"
 
 Távoli megfigyelési megoldás használ, amelyek felhasználásával történik, amely a docker hub kikerülnek docker-rendszerképeket. 
 
@@ -54,25 +54,31 @@ Ez a rész az alapértelmezett IoT hub manager mikroszolgáltatás API hívható
 Módosítsa az "Új módosításokat az itt végzett!" az Iot Hub-kezelőből mikroszolgáltatás állapotüzenet és ezután építse újra az új állapot a docker-rendszerképet. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
 
 1. Ellenőrizze, hogy meg nyitva a terminált, és váltson arra a könyvtárra, amelybe klónozta van a távoli figyelési megoldás. 
-2. Módosítsa a címtárban "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers".
-3. Nyissa meg StatusController.cs bármilyen szövegszerkesztővel, vagy IDE, adja meg. 
-4. Keresse meg a következő kódot:
+1. Módosítsa a címtárban "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services".
+1. Nyissa meg StatusService.cs bármilyen szövegszerkesztővel, vagy IDE, adja meg. 
+1. Keresse meg a következő kódrészletet:
 
     ```csharp
-    return new StatusApiModel(true, "Alive and well");
+    var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
     és módosítsa az alábbi kódot, és mentse azt.
 
     ```csharp
-    return new StatusApiModel(true, "New Edits Made Here!");
+    var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
 5. Lépjen vissza a terminálban, de módosítsa a következő könyvárra: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
 6. Írja be az új docker-rendszerkép létrehozásához
 
-    ```cmd/sh
+    ```sh
     sh build
+    ```
+    
+    vagy a Windows:
+    
+    ```
+    ./build.cmd
     ```
 
 7. Annak ellenőrzéséhez, hogy az új rendszerkép sikeresen létrejött, írja be a
@@ -115,7 +121,7 @@ Akkor most frissítenie kell a helyi docker-compose.yml lekérni az új docker-r
 
 1. Lépjen vissza a terminálon, és módosítsa a következő könyvtárban: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
 2. Nyissa meg a docker-compose.yml bármilyen szövegszerkesztővel, vagy IDE, adja meg.
-3. Keresse meg a következő kódot:
+3. Keresse meg a következő kódrészletet:
 
     ```docker
     image: azureiotpcs/iothub-manager-dotnet:testing
@@ -138,7 +144,7 @@ Végül újbóli üzembe helyezés a távoli figyelési megoldás helyi példán
     ```
 
 3. Keresse meg a letöltött Postman, és nyissa meg.
-4. A Postman adja meg a következő GET kérelmet: http://localhost:8080/iothubmanager/v1/status. Meg kell jelennie, "Állapot": "OK: az itt végzett módosítások új!".
+4. A Postman adja meg a következő GET kérelmet: http://localhost:8080/iothubmanager/v1/status. Meg kell jelennie, "Állapot": "OK: Új, az itt végzett módosítások! ".
 
 ![Új szerkesztése Itt a végrehajtott postman üzenet](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

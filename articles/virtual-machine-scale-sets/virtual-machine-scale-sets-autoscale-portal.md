@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: 6ce737cb221b948a1cc25b8a441d3b623915662b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ceb3f1da742c79d80398b87b9c4880781175690c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466518"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321511"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Az Azure portal virtuális gép méretezési csoport automatikus méretezése
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
@@ -131,4 +131,4 @@ Ebben a cikkben megtanulta, hogyan automatikus skálázási szabályok használa
 
 A Virtuálisgép-példányok kezeléséről további információért lásd: [kezelése virtuális gép méretezési csoportok az Azure PowerShell-lel](virtual-machine-scale-sets-windows-manage.md).
 
-Riasztást generál, ha az automatikus méretezési szabályok eseményindító kezelésével kapcsolatos információkért lásd: [küldése e-mailt és webhookot riasztási értesítéseket az Azure Monitor automatikus skálázási műveletek használatával](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md). Emellett [használati naplók küldése e-mailt és webhookot riasztási értesítéseket az Azure monitorban](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Riasztást generál, ha az automatikus méretezési szabályok eseményindító kezelésével kapcsolatos információkért lásd: [küldése e-mailt és webhookot riasztási értesítéseket az Azure Monitor automatikus skálázási műveletek használatával](../azure-monitor/platform/autoscale-webhook-email.md). Emellett [használati naplók küldése e-mailt és webhookot riasztási értesítéseket az Azure monitorban](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).

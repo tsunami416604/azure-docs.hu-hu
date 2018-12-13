@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure HDInsight-alapú Apache Spark?
+title: Mi az Apache Spark – Azure HDInsight
 description: Ez a cikk bemutatja a HDInsight-alapú Spark rendszert, és azokat az eseteket, amelyekben a HDInsight-alapú Spark-fürt használható.
 services: hdinsight
 author: hrasheed-msft
@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 05/07/2018
+ms.date: 12/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: afd40298679375ed5dffcd35cdf5c877277dab8c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 35c063435e5524b5be473f6a71d8aa64ed74513c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498133"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166421"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
-Az *Apache Spark* egy párhuzamos feldolgozást végző keretrendszer, amely támogatja a memóriabeli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. Az Azure HDInsight-alapú Apache Spark az Apache Spark felhőbeli megvalósítása, a Microsoft terméke. A HDInsight segítségével leegyszerűsíthető a Spark-fürtök létrehozása és konfigurálása az Azure-ban. A HDInsight-alapú Spark-fürtök kompatibilisek az Azure Storage és az Azure Data Lake Store szolgáltatásokkal is. A HDInsight-alapú Spark-fürtök segítségével tehát elvégezheti az Azure-ban tárolt adatok feldolgozását. Az összetevők és a verzióinformációk: [Apache Hadoop-összetevők és verziók az Azure HDInsight](../hdinsight-component-versioning.md).
+*Az Apache Spark* van egy párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. Az Azure HDInsight-alapú Apache Spark az Apache Spark felhőbeli megvalósítása, a Microsoft terméke. A HDInsight segítségével leegyszerűsíthető a Spark-fürtök létrehozása és konfigurálása az Azure-ban. A HDInsight-alapú Spark-fürtök kompatibilisek az Azure Storage és az Azure Data Lake Store szolgáltatásokkal is. A HDInsight-alapú Spark-fürtök segítségével tehát elvégezheti az Azure-ban tárolt adatok feldolgozását. Az összetevők és a verzióinformációk: [Apache Hadoop-összetevők és verziók az Azure HDInsight](../hdinsight-component-versioning.md).
 
 ![Spark: egyesített keretrendszer](./media/apache-spark-overview/hdinsight-spark-overview.png)
-
 
 ## <a name="what-is-spark"></a>Mi a Spark?
 
@@ -79,16 +78,16 @@ A HDInsight-alapú Spark-fürtök a következő főbb forgatókönyvek megvalós
 
     A HDInsight-alapú Apache Spark az Azure Storage vagy az Azure Data Lake Store tárhelyein tárolja az adatokat. Az üzleti szakértők és a legfontosabb döntéshozók ezen adatok alapján elemzéseket végezhetnek és jelentéseket állíthatnak elő, illetve a Microsoft Power BI használatával az elemzett adatokból interaktív jelentéseket készíthetnek. Az elemzők a fürtbeli tárolón található strukturálatlan, illetve részben strukturált adatokból kiindulva, notebookok használatával sémát adhatnak meg, majd a Microsoft PowerBI használatával adatmodelleket építhetnek fel. A HDInsight-alapú Spark-fürtök számos olyan külső BI-eszközt is támogatnak, mint például a Tableau, így leegyszerűsítik az adatelemzők, az üzleti szakértők és a fő döntéshozók munkáját.
 
-    [Oktatóanyag: Spark-adatok vizualizációja a Power BI használatával](apache-spark-use-bi-tools.md)
+    [Oktatóanyag: A Power BI használata Spark-adatok megjelenítése](apache-spark-use-bi-tools.md)
 - Spark Machine Learning
 
     Az Apache Spark tartalmazza a Sparkra épülő [MLlib](http://spark.apache.org/mllib/) Machine Learning-könyvtárat, amelyet egy HDInsight-alapú Spark-fürtből használhat. A HDInsight-alapú Spark-fürt tartalmazza a Python által terjesztett, számos gépi tanulási csomaggal rendelkező Anaconda rendszert. Ha ehhez hozzáveszi a Jupyter és Zeppelin notebookok beépített támogatását is, a gépi tanulási alkalmazásokhoz megfelelő környezetet kap.
 
-    [Oktatóanyag: Épület-hőmérsékletek előrejelzése HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md) [Oktatóanyag: Élelmiszer-vizsgálati eredmények előrejelzése](apache-spark-machine-learning-mllib-ipython.md)    
+    [Oktatóanyag: HVAC-adatok épület-hőmérsékletek előrejelzése](apache-spark-ipython-notebook-machine-learning.md) [oktatóanyag: Élelmiszervizsgálati eredmények előrejelzése](apache-spark-machine-learning-mllib-ipython.md)    
 - Spark-alapú streamelés és valós idejű adatelemzés
 
     A HDInsight-alapú Spark széles körű támogatást nyújt a valós idejű elemzési megoldások kiépítéséhez. Amíg a Spark számos adatforrást (például Kafka, Flume, Twitter, ZeroMQ vagy TCP-szoftvercsatornák) támogató összekötőkkel rendelkezik, a Spark on HDInsight az Azure Event Hubs eseményközpontokból származó adatok magas szintű feldolgozását is támogatja. Az Event Hubs az Azure legnépszerűbb várólista-szolgáltatása. Az azonnal használható Event Hubs-támogatással a HDInsight-alapú Spark-fürtök ideális platformot nyújtanak a valós idejű elemzési folyamatok kiépítéséhez.
-    
+
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
 
 Használhatja a következő cikkekben talál további információt az Apache Spark on HDInsight:
@@ -104,4 +103,3 @@ Használhatja a következő cikkekben talál további információt az Apache Sp
 Ebben az áttekintésben néhány alapszintű információt ismertetünk az Azure HDInsight-alapú Apache Sparkról. Folytassa a következő cikkel, amelyből megtudhatja, hogyan hozhat létre HDInsight Spark-fürtöt és futtathat Spark SQL-lekérdezéseket:
 
 - [A HDInsight egy Apache Spark-fürt létrehozása](./apache-spark-jupyter-spark-sql.md)
-

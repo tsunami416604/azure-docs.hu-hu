@@ -1,5 +1,5 @@
 ---
-title: Az Azure Traffic Manager az Azure App Service-forgalom szabályozása
+title: Forgalom szabályozása a Traffic Manager – Azure App Service-ben
 description: Ez a cikk nyújt összefoglaló információkat az Azure Traffic Manager kapcsolódik az Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 5e4dfec4bdc9deaf1a57413c1cba4ceefa5195d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246344"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270110"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Az Azure Traffic Manager az Azure App Service-forgalom szabályozása
 > [!NOTE]

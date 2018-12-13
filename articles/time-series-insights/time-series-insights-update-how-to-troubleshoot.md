@@ -1,6 +1,6 @@
 ---
-title: Hogyan diagnosztizálása és hibaelhárítása az Azure Time Series Insights (előzetes verzió) |} A Microsoft Docs
-description: Megértse, hogyan diagnosztizálása és hibaelhárítása az Azure Time Series insights (előzetes verzió)
+title: Az Azure Time Series Insights előzetes verzió – diagnosztika és hibaelhárítás |} A Microsoft Docs
+description: Megtudhatja, hogyan diagnosztizálása és hibaelhárítása az Azure Time Series Insights előzetes verziójával.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,107 +9,107 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4fdb7cf0007af5f92794ebe5f616c1c8a28af0e4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e35439c80dea8ac47033464eeb57f7e9859fdcf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099658"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275299"
 ---
-# <a name="how-to-diagnose-and-troubleshoot"></a>Hogyan diagnosztika és hibaelhárítás
+# <a name="diagnose-and-troubleshoot"></a>Diagnosztika és hibaelhárítás
 
-Ez a cikk számos gyakori problémák merülhetnek fel az Azure Time Series Insights (TSI) környezetében működő foglalja össze. A cikk ismerteti az egyes lehetséges okait és megoldásait is.
+Ez a cikk összefoglalja számos gyakori problémák merülhetnek fel az Azure Time Series Insights – előzetes környezettel való munka során. A cikk is ismerteti a lehetséges okait és megoldásait minden probléma.
 
-## <a name="problem-i-cant-find-my-environment-in-the-time-series-insights-preview-explorer"></a>Probléma: nem található a környezetben a Time Series Insights (előzetes verzió) Explorerben
+## <a name="problem-i-cant-find-my-environment-in-the-time-series-insights-preview-explorer"></a>Probléma: A Time Series Insights előzetes verziója Explorer nem találom a saját környezetben
 
-Ez akkor fordulhat elő, ha nem rendelkezik engedélyekkel a TSI-környezet eléréséhez. A felhasználóknak kell "olvasó" szintű hozzáféréssel szerepkör TSI környezetükben megtekintéséhez. Előfordulhat, hogy ellenőrizze a jelenlegi hozzáférési szintet, és további hozzáférést biztosít az adathozzáférési házirendek a szakasz a TSI-erőforráson felkeresésével [az Azure Portal](https://portal.azure.com/).
+Ez a probléma akkor fordulhat elő, ha nem rendelkezik engedélyekkel a Time Series Insights-környezet eléréséhez. Felhasználók megtekintése a Time Series Insights-környezet olvasó szintű hozzáférés szerepkörre van szüksége. Ellenőrizze a jelenlegi hozzáférési szintekkel, és további hozzáférést biztosítani, keresse fel az adathozzáférési házirendek a szakasz a Time Series Insights-erőforrás a a [az Azure portal](https://portal.azure.com/).
 
-  ![environment][1]
+  ![Környezet][1]
 
-## <a name="problem-no-data-is-seen-in-the-time-series-insights-preview-explorer"></a>Probléma: Adatok nem látható a Time Series Insights (előzetes verzió) Explorerben
+## <a name="problem-no-data-is-seen-in-the-time-series-insights-preview-explorer"></a>Probléma: Adatot nem látható a Time Series Insights előzetes verziója Explorerben
 
-Miért nem láthatja az adatokat számos gyakori oka lehet a [(előzetes verzió) az Azure TSI explorer](https://insights.timeseries.azure.com/preview):
+Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series Insights – előzetes explorer](https://insights.timeseries.azure.com/preview).
 
-1. Előfordulhat, hogy nem fogad adatokat az eseményből.
+- Előfordulhat, hogy nem fogad adatokat az eseményből.
 
-    Győződjön meg arról, hogy az eseményforrás (Event Hub vagy az IoT Hub) adatokat fogad a címkék / példányok. Ezt az erőforrást az Azure Portal áttekintés oldalán navigálva teheti meg.
+    Győződjön meg arról, hogy az eseményforrás, amely egy event hubot vagy az IoT hub, a címkék vagy a példányok kapja az adatokat. Győződjön meg arról, hogy nyissa meg az erőforrást az Azure Portal áttekintés oldalán.
 
     ![Irányítópult – elemzések][2]
 
-1. Az eseményadatok forrása nem a JSON formátumban van.
+- Az eseményadatok forrása nem JSON formátumú.
 
-    Az Azure TSI támogatja a csak a JSON-adatokat. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+    A Time Series Insights támogatja a csak a JSON-adatokat. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
-1. Az esemény forrása kulcs hiányzik egy szükséges engedély
+- Az esemény forrása kulcs hiányzik egy szükséges engedéllyel.
 
-    * IoT hub meg kell adnia a kulcsot, amelynek a connect engedély szolgáltatás.
+    * Egy IoT hubot, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedéllyel.
 
-    ![konfiguráció][3]
+    ![Konfiguráció][3]
 
-    * A szabályzatok közül választhat az előző képen látható módon *iothubowner* és a szolgáltatás akkor működik, mert mindkét szolgáltatás a connect engedély.
-    * Az eseményközpontok felé meg kell adnia a kulcsot, amely figyelési engedéllyel rendelkezik.
+    * A házirendek mindkét az előző képen látható módon **iothubowner** és **szolgáltatás** működik, mert az **szolgáltatás csatlakozása** engedéllyel.
+    * Az eseményközpontok felé, meg kell adnia a kulcsot, amelynek **figyelésére** engedéllyel.
   
-    ![engedélyek][4]
+    ![Engedélyek][4]
 
-    * A szabályzatok közül választhat az előző képen látható módon **olvasása** és **kezelése** akkor működik, mert egyaránt rendelkezik **figyelésére** engedéllyel.
+    * Mindkét az előző képen látható módon a **olvasási** és **kezelése** házirendek működik, mert az **figyelésére** engedéllyel.
 
-1. A megadott fogyasztói csoportot nem kizárólagos, a TSI
+- A megadott fogyasztói csoportot nem kizárólagos, a Time Series Insights.
 
-    Az IoT Hub- vagy Event Hub-regisztráció során adja meg a fogyasztói csoportot, amely az adatok olvasása kell használni. Adott felhasználói csoportban nem kell megosztani. A fogyasztói csoportot meg van osztva, ha az alapul szolgáló Eseményközpont automatikusan bontja a kapcsolatot az olvasók egy véletlenszerűen. Adjon meg egy egyedi felhasználói csoport a TSI olvasni.
+    Az IoT hub- vagy event hub-regisztráció során adja meg a fogyasztói csoportot, amellyel beolvashatja az adatokat. Ne ossza meg adott felhasználói csoportban. A fogyasztói csoportot meg van osztva, ha az alapul szolgáló eseményközpont automatikusan bontja a kapcsolatot az olvasók egy véletlenszerűen kiválasztott. Adjon meg egy egyedi felhasználói csoport számára a Time Series Insights olvasni.
 
-1. A Time Series azonosító a megadott kiépítési időpontjában tulajdonság helytelen, hiányzik vagy null értékű
+- A Time Series azonosító a megadott kiépítési időpontjában tulajdonság helytelen, hiányzik vagy null értékű.
 
-    Ez akkor fordulhat elő, ha a **Time Series azonosító** tulajdonság helytelenül van konfigurálva a környezet kiépítési időpontjában. Tekintse át a [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md). Jelenleg nem frissíthető, egy meglévő Time Series Insights frissítési környezet egy másik **Time Series azonosító**.
+    Ez a probléma akkor fordulhat elő, ha a Time Series azonosító tulajdonság helytelenül van konfigurálva a környezet kiépítési időpontjában. További információkért lásd: [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md). Jelenleg nem frissíthető, egy meglévő Time Series Insights-környezet használatára egy különböző Time Series azonosítóját.
 
-## <a name="problem-some-data-is-shown-but-some-is-missing"></a>Probléma: Néhány adat jelenik meg, de néhány hiányzik
+## <a name="problem-some-data-shows-but-some-is-missing"></a>Probléma: Bizonyos adatokat jeleníti meg, de néhány hiányzik
 
-1. A Time Series azonosító nélkül adatok küldése
+Előfordulhat, hogy anélkül, hogy a Time Series azonosító. adatokat küldő
 
-    Ez a hiba akkor fordulhat elő, ha a Time Series azonosító mező az adattartalomban szereplő nélkül események küldése folyamatban van. Lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md) további információt.
+- A probléma akkor fordulhat elő, amikor eseményeket küldeni a Time Series azonosító mező, a hasznos adatok nélkül. További információkért lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
-1. Ez akkor fordulhat elő, mert a környezet szabályozás alatt áll.
+- Ez a probléma akkor fordulhat elő, mert a környezet szabályozás alatt áll.
 
     > [!NOTE]
-    > Jelenleg az Azure TSI 6 MB/s maximális betöltési sebesség támogatja.
+    > Jelenleg a Time Series Insights támogatja a maximális feldolgozási sebessége 6 MB/s.
 
-## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probléma: A forrás timestamp tulajdonság neve beállítás nem működik
+## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probléma: A forrás Timestamp tulajdonság neve beállítás nem működik
 
 Győződjön meg arról, hogy a nevét és értékét megfelelnek-e a következő szabályok:
 
-* A **időbélyeg** tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* A **időbélyeg** tulajdonság értéke, amely egy JSON-karakterlánc, mint az eseményforrás származó kell rendelkeznie a formátum `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Az ilyen típusú például `“2008-04-12T12:53Z”`.
+* A időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
+* A Timestamp tulajdonság értéke, amely egy JSON-karakterlánc, mint az eseményforrás származik formátuma a `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Az ilyen típusú például `“2008-04-12T12:53Z”`.
 
-Győződjön meg arról, hogy az időbélyegző-tulajdonság neveként rögzített, és megfelelően működik a TSI Explorerben engedélyezett használandó legegyszerűbb módja. A TSI Explorerben használja a diagram egy bizonyos idő után az időbélyegző-tulajdonság neveként a megadott kiválasztásához. Kattintson a jobb gombbal a kijelölt, és válassza ki a **események tallózása** lehetőséget. Az első oszlop fejlécére kell lennie a **időbélyeg** tulajdonság nevét, és rendelkeznie kell egy `($ts)` mellett a word `Timestamp`, helyett:
+Győződjön meg arról, hogy az időbélyegző-tulajdonság neveként rögzített, és megfelelően működik a Time Series Insights előzetes verziója kezelővel legegyszerűbb módja. A Time Series Insights előzetes verziója Explorerben használja a diagram egy bizonyos idő után az időbélyegző-tulajdonság neveként a megadott kiválasztásához. Kattintson a jobb gombbal a kijelölt, és válassza ki a **események tallózása** lehetőséget. Az első oszlop fejlécére a időbélyegző-tulajdonság neve. Rendelkeznie kell `($ts)` mellett a word `Timestamp`, helyett:
 
-* `(abc)`, azt jelzi, amely a TSI az adatértékek karakterláncként van olvasása
-* Naptár ikonra, amely azt jelzi a TSI éppen olvas az adatérték, mint a dátum és idő
-* `#`, amely azt jelzi a TSI éppen olvas az adatértékek egész számként
+* `(abc)`, ami azt jelenti, hogy a Time Series Insights olvassa be az adatértékek karakterláncként.
+* Naptár ikonra, amely azt jelzi, hogy a Time Series Insights olvassa be az értéket, datetime.
+* `#`, ami azt jelenti, hogy ha a Time Series Insights az adatértékek olvassa be a egész számként.
 
-Ha a **időbélyeg** tulajdonság nincs explicit módon beállítva, hogy használja egy eseményt az IoT Hub- vagy Event Hub **sorba helyezésekor** a alapértelmezett időbélyegzőként.
+Az időbélyeg-tulajdonság nincs explicit módon meghatározva, ha egy eseményt az IoT hub- vagy event hub sorba helyezésekor használatos, az alapértelmezett időbélyeg.
 
-## <a name="problem-i-cant-edit-or-view-my-time-series-model"></a>Probléma: nem szerkesztheti vagy saját Idősorozat-modell megtekintése
+## <a name="problem-i-cant-edit-or-view-my-time-series-model"></a>Probléma: Nem szerkeszthetők vagy saját Idősorozat-modell megtekintése
 
-1. A Time Series Insights S1 vagy S2 környezetet, előfordulhat, hogy elérése
+- Lehetséges, hogy a Time Series Insights S1 vagy S2 környezetet használja.
 
-   Csak a Time Series modellek támogatottak **PAYG** környezetekben. A Time Series Insights előzetes verziója Explorer az S1/S2 környezet elérésével további információkért lásd: [megjelenítheti az Intéző adatait](./time-series-insights-update-explorer.md).
+   Time Series modellek támogatottak, csak a Használatalapú környezetekben. A Time Series Insights előzetes verziója Explorer az S1/S2 környezet elérésével további információkért lásd: [megjelenítheti az Intéző adatait](./time-series-insights-update-explorer.md).
 
-   ![hozzáférés][5]
+   ![Hozzáférés][5]
 
-1. Előfordulhat, hogy nincs engedélye megtekintése és szerkesztése a modell
+- Előfordulhat, hogy nincs engedélyek megtekintése és szerkesztése a modellt.
 
-   A felhasználóknak kell "közreműködő" szintű hozzáféréssel, szerkesztheti és megtekintheti az Idősorozat-modellben. Előfordulhat, hogy ellenőrizze a jelenlegi hozzáférési szintet, és az adathozzáférési házirendek szakaszban ellátogat az Azure Portalon a Time Series Insights-erőforrás a további hozzáférés biztosítása.
+   A felhasználóknak kell szerkesztheti és megtekintheti az Idősorozat-modell közreműködője szintű hozzáféréssel. Ellenőrizze a jelenlegi hozzáférési szintekkel, és további hozzáférést biztosítani, keresse fel az adathozzáférési házirendek a szakasz a Time Series Insights-erőforrást az Azure Portalon.
 
-## <a name="problem-all-my-instances-in-time-series-insights-preview-explorer-dont-have-a-parent"></a>Probléma: A Time Series Insights (előzetes verzió) explorer szereplő összes példányt nem rendelkezik a szülő
+## <a name="problem-all-my-instances-in-the-time-series-insights-preview-explorer-dont-have-a-parent"></a>Probléma: A Time Series Insights előzetes verziója Explorer összes saját példány nem rendelkezik a szülő
 
-Ez akkor fordulhat elő, ha a környezet nem rendelkezik egy **Idősorozat-modell** definiált hierarchiában. Ez a cikk további információt talál a [Time Series modellek használata](./time-series-insights-update-how-to-tsm.md).
+Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott Idősorozat-modell hierarchiába. További információkért lásd: [Time Series modellek](./time-series-insights-update-how-to-tsm.md).
 
-  ![TSM][6]
+  ![Time Series modellek][6]
 
 ## <a name="next-steps"></a>További lépések
 
-Olvasási [Time Series modellek használata](./time-series-insights-update-how-to-tsm.md).
-
-Olvasási [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+- Olvasási [Time Series modellek](./time-series-insights-update-how-to-tsm.md).
+- Olvasási [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 <!-- Images -->
 [1]: media/v2-update-diagnose-and-troubleshoot/environment.png

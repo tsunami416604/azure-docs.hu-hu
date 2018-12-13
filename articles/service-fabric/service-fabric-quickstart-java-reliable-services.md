@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7e71b4f93f3b890ea73e36052570f9047fc8f32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228232"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312578"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rövid útmutató: Java Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
+# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Gyors útmutató: Egy Java Service fabric reliable services-alkalmazás üzembe helyezése
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
@@ -67,7 +67,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 2. Nyissa meg az Eclipse környezetet.
 3. Kattintson a File (Fájl) -> Import (Importálás) -> Gradle -> Existing Gradle Project (Meglévő Gradle-projekt) elemre, és kövesse a varázsló utasításait.
-4. Kattintson a Directory (Címtár) elemre, és válassza ki a `Voting` könyvtárat abból a `service-fabric-java-quickstart` mappából, amelyet a GitHubról klónozott. Kattintson a Befejezés gombra. 
+4. Kattintson a címtár lehetőségre, és válassza ki a `Voting` könyvtárat abból a `service-fabric-java-quickstart` a Githubról klónozott mappa. Kattintson a Befejezés gombra.
 
     ![Az Eclipse importálási párbeszédablaka](./media/service-fabric-quickstart-java/eclipseimport.png)
 
@@ -114,11 +114,11 @@ A parancssori felület használatához létre kell hoznia egy PEM-fájlt a letö
 
 A Service Fabric Explorer használatához importálnia kell a tanúsítvány PFX-fájlját, amelyet a nyilvános fürt webhelyéről a tanúsítványtárolóba (Windows vagy Mac) vagy magába a böngészőbe (Ubuntu) töltött le. Szüksége van a PFX titkos kulcs jelszavára, amelyet a **ReadMe** oldalról szerezhet be.
 
-Tetszőleges módszerrel importálhatja a tanúsítványt a rendszerre. Például:
+Tetszőleges módszerrel importálhatja a tanúsítványt a rendszerre. Példa:
 
-* Windows rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a `Certificates - Current User\Personal\Certificates` személyes tárolóban való telepítéséhez. Másik lehetőségként használhatja a **ReadMe** utasításokban lévő PowerShell-parancsot is.
-* Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
-* Ubuntu rendszeren: A Mozilla Firefox az alapértelmezett böngésző az Ubuntu 16.04-en. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
+* Windows rendszeren: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat követve telepítse a tanúsítványt a személyes tárban `Certificates - Current User\Personal\Certificates`. Másik lehetőségként használhatja a **ReadMe** utasításokban lévő PowerShell-parancsot is.
+* Mac gépen: Kattintson duplán a PFX-fájlt, és kövesse az utasításokat a tanúsítvány a kulcskarikában telepítéséhez.
+* az ubuntu rendszeren: Mozilla Firefox az alapértelmezett böngésző az Ubuntu 16.04. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
 
    ![Tanúsítvány telepítése Firefoxon](./media/service-fabric-quickstart-java/install-cert-firefox.png)
 
@@ -132,7 +132,7 @@ A tanúsítvány ujjlenyomatát hozzá kell adnia az alkalmazáshoz, mert a Serv
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. A `Voting/VotingApplication/ApplicationManifest.xml` fájlban adja a következő kódrészletet az **ApplicationManifest** címke alá. Az **X509FindValue** elemnek az előző lépésből származó ujjlenyomatnak kell lennie (pontosvessző nélkül). 
+2. A `Voting/VotingApplication/ApplicationManifest.xml` fájlban adja a következő kódrészletet az **ApplicationManifest** címke alá. Az **X509FindValue** elemnek az előző lépésből származó ujjlenyomatnak kell lennie (pontosvessző nélkül).
 
     ```xml
     <Certificates>

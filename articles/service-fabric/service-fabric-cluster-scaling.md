@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0890ce0342024229b99d92a2eddba5b49cc59595
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1410d61fed2dc98f5fa657541c3863e09b803166
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633937"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321783"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Méretezés az Azure Service Fabric-fürtök
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Fürtök potenciálisan több ezer csomóponton is tartalmazhat. Egy Service Fabric-fürt létrehozását követően, horizontálisan a fürt (módosíthatja a csomópontok számát), vagy függőlegesen (módosíthatja a csomópontok az erőforrások).  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
@@ -29,8 +29,8 @@ A fürt átméretezése miért? Alkalmazások számára az idő előrehaladtáva
 ## <a name="scaling-in-and-out-or-horizontal-scaling"></a>Skálázás be és ki, vagy a horizontális skálázás
 Módosíthatja a fürtben található csomópontok számát.  Miután az új csomópontok csatlakoztatását a fürthöz, a [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások helyezi őket, ami csökkenti a meglévő csomópontok terhelése.  A csomópontok számát is csökkentheti, ha a fürt erőforrásait nem hatékonyan használ.  Csomópontok hagyja a fürt, szolgáltatások áthelyezése ki azokat a csomópontokat, és a terhelés növekedésével a többi csomóponton.  Egy Azure-ban futó fürtben található csomópontok számának csökkentése pénzt takaríthat meg, mivel után kell fizetni, a virtuális gépek száma, használata és a virtuális gépeken a munkaterhelés nem.  
 
-- Előnyök: Korlátlan méretű, elméletileg.  Ha az alkalmazás t méretezhetőségre tervezték, korlátlan növekedési további fürtcsomópontok hozzáadásával engedélyezheti.  Az eszközkészlet a felhőalapú környezetek megkönnyíti a hozzáadása vagy eltávolítása a csomópontokra, így egyszerűen módosíthatja a kapacitást, és csak kell fizetnie az erőforrások után.  
-- Hátrányok: Csak azok az alkalmazások [méretezhetőséghez tervezett](service-fabric-concepts-scalability.md).  Alkalmazás-adatbázisok és az adatmegőrzés szükség lehet további architekturális munka, valamint méretezését.  [A Reliable collections](service-fabric-reliable-services-reliable-collections.md) a Service Fabric állapotalapú szolgáltatások azonban sokkal könnyebb méretezését, az alkalmazásadatok.
+- Előnyök: Korlátlan méretű elméletileg.  Ha az alkalmazás t méretezhetőségre tervezték, korlátlan növekedési további fürtcsomópontok hozzáadásával engedélyezheti.  Az eszközkészlet a felhőalapú környezetek megkönnyíti a hozzáadása vagy eltávolítása a csomópontokra, így egyszerűen módosíthatja a kapacitást, és csak kell fizetnie az erőforrások után.  
+- Hátrányait: Csak azok az alkalmazások [méretezhetőséghez tervezett](service-fabric-concepts-scalability.md).  Alkalmazás-adatbázisok és az adatmegőrzés szükség lehet további architekturális munka, valamint méretezését.  [A Reliable collections](service-fabric-reliable-services-reliable-collections.md) a Service Fabric állapotalapú szolgáltatások azonban sokkal könnyebb méretezését, az alkalmazásadatok.
 
 Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek csoportként gyűjtemény használható. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus majd leskálázható vagy el egymástól függetlenül, más-más részhalmazához nyitott portokkal rendelkezik, és eltérő kapacitásmetrikái. 
 
@@ -50,7 +50,7 @@ Sok esetben [fürt méretezése manuális vagy automatikus skálázási szabály
 - Manuális skálázás megköveteli, hogy jelentkezzen be, és igényelhetnek a méretezési műveletek. Ha a méretezési műveletek szükségesek gyakran vagy kiszámíthatatlan időpontokban, ezzel a módszerrel nem lehet nagyon jó megoldásnak.
 - Automatikus méretezési szabályok egy példányt egy virtuálisgép-méretezési csoportot eltávolítja, ha azok ne automatikusan távolítsa el az adott csomópont Tudásbázis Service Fabric-fürthöz társított, ha a csomópont típusa Silver vagy Gold szintű tartósságot. Automatikus skálázási szabályok, a méretezési szint (nem a Service Fabric szintjén) működik, mert az automatikus skálázási szabályok eltávolíthatja őket szabályosan leállítása nélkül Service Fabric csomópontjaival. Goromba csomópont eltávolítása hagyja "ghost" a Service Fabric-csomópont állapota horizontális leskálázási műveletek után. Egyéni (vagy egy szolgáltatás) kellene rendszeres karbantartása eltávolított csomópont állapota a Service Fabric-fürtben.
 - Egy csomópont típusa, arany és ezüst szintű tartósságot automatikusan megtisztítja eltávolított csomópontokat, ezért semmilyen további karbantartási van szükség.
-- Bár vannak [számos metrikák](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) az automatikus skálázási szabályok támogatja, akkor ez még mindig korlátozott. Ha a forgatókönyv nem vonatkozik a készletben lévő egyes mérőszám alapján méretezését, majd automatikus skálázási szabályok esetleg nem jó választás.
+- Bár vannak [számos metrikák](../azure-monitor/platform/autoscale-common-metrics.md) az automatikus skálázási szabályok támogatja, akkor ez még mindig korlátozott. Ha a forgatókönyv nem vonatkozik a készletben lévő egyes mérőszám alapján méretezését, majd automatikus skálázási szabályok esetleg nem jó választás.
 
 A forgatókönyvtől függ, hogy hogyan kell módszerrel érdemes a Service Fabric-méretezés. Ha a skálázás nem szokványos, valószínűleg elegendő arra, hogy adja hozzá, vagy távolítsa el manuálisan a csomópontok. Az összetettebb esetekhez automatikus skálázási szabályok és az SDK-adatokhoz hozzáférést biztosító programozott módon méretezhető kínál hatékony alternatívák.
 
@@ -66,8 +66,8 @@ Ezek a korlátozások alapján, érdemes [megvalósításához több egyéni aut
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>Felfelé és lefelé skálázást, vagy a vertikális skálázás 
 Az erőforrások (CPU, memória, vagy tárolási) a fürtben található csomópontok változik.
-- Előnyök: Szoftver és az alkalmazásarchitektúrát változatlan marad.
-- Hátrányok: Véges méretezhető, mivel az IP-címek fenntartási, növelheti az egyes csomópontokon erőforrások korlátozva van. Állásidő, mert szüksége lesz a fizikai vagy virtuális gépek offline annak érdekében, hogy erőforrásainak hozzáadása vagy eltávolítása.
+- Előnyök: Szoftver- és alkalmazás architektúra változatlan marad.
+- Hátrányait: A véges méretezhető, mivel az IP-címek fenntartási, növelheti az egyes csomópontokon erőforrások korlátozva van. Állásidő, mert szüksége lesz a fizikai vagy virtuális gépek offline annak érdekében, hogy erőforrásainak hozzáadása vagy eltávolítása.
 
 Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek csoportként gyűjtemény használható. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön.  Typ uzlu kiterjesztése vagy szűkítése, a méretezési csoportban lévő virtuálisgép-példánya a Termékváltozat módosítása is hozzátartozik. 
 

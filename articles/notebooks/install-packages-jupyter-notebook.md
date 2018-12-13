@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ed57cb458cc1f71c5d6fd2475c54cc712257dd84
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5baa392d098b0b0e40986bc426c88785db025a29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084872"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255295"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Egy jegyzetfüzetet a csomagok telepítése
 
@@ -40,7 +40,7 @@ Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azur
 
 ## <a name="r"></a>R
 
-R-csomagok CRAN vagy a Github használatával is telepíthető a `install.packages` egy kódcellába függvény:
+R-csomagok CRAN vagy a GitHub használatával is telepíthető a `install.packages` egy kódcellába függvény:
 
 ```r
 install.packages("package_name")
@@ -73,5 +73,5 @@ Paket.Package
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
-- [Hogyan: diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [kézikönyv: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
+- [kézikönyv: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)

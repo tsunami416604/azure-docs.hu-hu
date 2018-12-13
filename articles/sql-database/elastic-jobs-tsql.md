@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: ead7b92640262a1c386fc9b8c3def803d2525843
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 3c40c6721651864b9e0d64d4eeda415bfd3e181a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868956"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164517"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -210,9 +210,9 @@ EXEC jobs.sp_add_jobstep
 @credential_name='myjobcred',
 @target_group_name='PoolGroup',
 @output_type='SqlDatabase',
-@output_credential_name=’myjobcred’,
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’<resultsdb>',
+@output_credential_name='myjobcred',
+@output_server_name='server1.database.windows.net',
+@output_database_name='<resultsdb>',
 @output_table_name='<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
@@ -257,8 +257,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @target_group_name='MasterGroup',
 @output_type='SqlDatabase',
 @output_credential_name='myjobcred',
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’resultsdb',
+@output_server_name='server1.database.windows.net',
+@output_database_name='resultsdb',
 @output_table_name='resutlstable'
 ```
 
@@ -330,7 +330,7 @@ Csatlakozás a [ *feladat adatbázis* ](elastic-jobs-overview.md#job-database) ,
 ```sql
 --Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named ‘ResultsPoolJob’
+--View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC
@@ -339,7 +339,7 @@ ORDER BY start_time DESC
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC
 
---View all execution statuses for job named ‘ResultsPoolsJob’
+--View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' 
 ORDER BY start_time DESC
@@ -1011,14 +1011,14 @@ Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.
 
 ```sql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
-         [ @membership_type = ] ‘membership_type’ ]   
-        [ , [ @target_type = ] ‘target_type’ ]   
-        [ , [ @refresh_credential_name = ] ‘refresh_credential_name’ ]   
-        [ , [ @server_name = ] ‘server_name’ ]   
-        [ , [ @database_name = ] ‘database_name’ ]   
-        [ , [ @elastic_pool_name = ] ‘elastic_pool_name’ ]   
-        [ , [ @shard_map_name = ] ‘shard_map_name’ ]   
-        [ , [ @target_id = ] ‘target_id’ OUTPUT ]
+         [ @membership_type = ] 'membership_type' ]   
+        [ , [ @target_type = ] 'target_type' ]   
+        [ , [ @refresh_credential_name = ] 'refresh_credential_name' ]   
+        [ , [ @server_name = ] 'server_name' ]   
+        [ , [ @database_name = ] 'database_name' ]   
+        [ , [ @elastic_pool_name = ] 'elastic_pool_name' ]   
+        [ , [ @shard_map_name = ] 'shard_map_name' ]   
+        [ , [ @target_id = ] 'target_id' OUTPUT ]
 ```
 
 #### <a name="arguments"></a>Argumentumok
@@ -1101,7 +1101,7 @@ A cél a csoporttag eltávolítása egy célcsoportot.
 
 ```sql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
-        [ , [ @target_id = ] ‘target_id’]
+        [ , [ @target_id = ] 'target_id']
 ```
 
 
@@ -1225,7 +1225,7 @@ Látható feladat-végrehajtási előzményei.
 |**end_time**|  datetime2(7)    |Dátum és idő a feladat végrehajtása befejeződött. NULL értékű, ha még nem lett végrehajtva a feladat, vagy nem rendelkezik még végrehajtása befejeződött.
 |**current_attempts**   |int    |Kísérelte meg a lépés hányszor. Szülő feladat lesz 0, gyermek feladatvégrehajtások 1 lesz, vagy a végrehajtási házirend nagyobb alapján.
 |**current_attempt_start_time** |datetime2(7)|  Dátum és idő a feladat végrehajtási elindult. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**last_message**   |típus: nvarchar(max)| Feladat és lépés előzmények üzenet. 
+|**last_message**   |nvarchar(max)| Feladat és lépés előzmények üzenet. 
 |**target_type**|   nvarchar(128)   |Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_group_name**  |nvarchar(128)  |A célcsoport neve. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
@@ -1279,7 +1279,7 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**step_name**  |nvarchar(128)  |(A feladathoz) egyedi neve a lépéshez.|
 |**command_type**   |nvarchar(50)   |A feladat lépésben végrehajtandó parancs típusa. V1, az értéknek meg kell egyeznie a és "TSql" az alapértelmezett érték.|
 |**command_source** |nvarchar(50)|  A parancs helye. A 1-es "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
-|**A parancs**|   típus: nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
+|**A parancs**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
 |**credential_name**|   nvarchar(128)   |Végrehajtási a feladat segítségével az adatbázishoz kötődő hitelesítő adat nevét.|
 |**target_group_name**| nvarchar(128)   |A célcsoport neve.|
 |**target_group_id**|   UniqueIdentifier|   A célként megadott csoport egyedi azonosítója.|
@@ -1294,8 +1294,8 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**output_resource_group_name** |nvarchar(128)| A célkiszolgáló tartalmazó erőforráscsoport neve.|
 |**output_server_name**|    nvarchar(256)   |Az eredménykészletet a célkiszolgáló nevét.|
 |**output_database_name**   |nvarchar(128)| Az eredménykészletet a céladatbázis neve.|
-|**output_schema_name** |típus: nvarchar(max)| A cél séma neve. Alapértelmezés szerint a dbo, ha nincs megadva.|
-|**output_table_name**| típus: nvarchar(max)|  Az eredmények, adja meg a lekérdezés eredményeinek tárolására a tábla neve. Táblázat az eredmények, ha még nem létezik a séma alapján automatikusan létrejön. Séma meg kell egyeznie az eredménykészletet sémája.|
+|**output_schema_name** |nvarchar(max)| A cél séma neve. Alapértelmezés szerint a dbo, ha nincs megadva.|
+|**output_table_name**| nvarchar(max)|  Az eredmények, adja meg a lekérdezés eredményeinek tárolására a tábla neve. Táblázat az eredmények, ha még nem létezik a séma alapján automatikusan létrejön. Séma meg kell egyeznie az eredménykészletet sémája.|
 |**max_parallelism**|   int|    Adatbázisok száma, amelyek a feladat lépésének fut egyszerre rugalmas készlet maximális számát. Az alapértelmezett érték NULL, tehát nincs korlátozva. |
 
 

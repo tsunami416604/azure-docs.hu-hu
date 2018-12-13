@@ -1,5 +1,5 @@
 ---
-title: A webalkalmazások áttekintése | Microsoft Docs
+title: Az App Service áttekintése – Azure |} A Microsoft Docs
 description: Ismerje meg, hogy az Azure App Service segítségével miként fejleszthet és üzemeltethet webalkalmazásokat.
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: d8940a305a672f032f2e4e170f99a2cd70ca2b12
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 17f90d54b31fbc46fc831fca0650417c50937fe6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318095"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253354"
 ---
-# <a name="web-apps-overview"></a>A webalkalmazások áttekintése
+# <a name="app-service-overview"></a>App Service – áttekintés
 
-Az *Azure App Service Web Apps* (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Egyszerűen futtathat és méretezhet alkalmazásokat Windows-alapú környezetekben. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
+*Az Azure App Service* egy szolgáltatás REST API-k, a webalkalmazások üzemeltetéséhez és mobilháttereket. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Egyszerűen futtathat és méretezhet alkalmazásokat Windows-alapú környezetekben. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
 
 A Web Apps nem csak arra szolgál, hogy a Microsoft Azure funkcióival egészítse ki az alkalmazását, mint például a biztonság, a terheléselosztás, az automatikus skálázás és az automatikus kezelés. DevOps-képességeket is biztosít, mint például a folyamatos üzembe helyezés az Azure DevOpsból, a GitHubról, a Docker Hubról és más forrásokból, a csomagkezelés, az átmeneti környezetek, az egyéni tartomány és az SSL-tanúsítványok. 
 

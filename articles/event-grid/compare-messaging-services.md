@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 12/07/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 7e78dd77d5bd3d9e5aee55aaeffa933a21c3b477
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084957"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166523"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Válassza ki az Azure üzenetkezelési szolgáltatások – Event Grid, az Event Hubs és a Service Bus közötti
 
@@ -34,7 +34,7 @@ Az eseményeket továbbító és az üzeneteket továbbító szolgáltatások k�
 
 Az események egy állapotról vagy állapotváltozásról szóló, kis méretű értesítések. Az esemény közzétevőjének nincsenek elvárásai az esemény kezelésével kapcsolatban. Az esemény fogyasztója dönti el, hogy mit tesz az értesítéssel. Az események lehetnek különálló egységek vagy egy sorozat részei.
 
-A különálló események az állapotváltozást jelentik, és műveletindításra lehet használni őket. A következő lépéshez a fogyasztónak csak azt kell tudnia, hogy valami történt. Az eseményadatok arra vonatkozó információt tartalmaznak, hogy mi történt, de nem tartalmazzák az eseményt kiváltó adatokat. Egy esemény például arról értesíti a fogyasztót, hogy létrejött egy fájl. Tartalmazhatja a fájl általános információit, de maga a fájl nem szerepel benne. A különálló események ideális megoldást jelentenek a skálázható, kiszolgáló nélküli megoldásokhoz.
+A különálló események az állapotváltozást jelentik, és műveletindításra lehet használni őket. A következő lépéshez a fogyasztónak csak azt kell tudnia, hogy valami történt. Az eseményadatok arra vonatkozó információt tartalmaznak, hogy mi történt, de nem tartalmazzák az eseményt kiváltó adatokat. Egy esemény például arról értesíti a fogyasztót, hogy létrejött egy fájl. Tartalmazhatja a fájl általános információit, de maga a fájl nem szerepel benne. Különálló események ideális megoldást jelentenek [kiszolgáló nélküli](http://azure.com/serverless) megoldásokat, amelyek szeretné méretezni.
 
 A sorozatesemények állapotot jelentenek és elemezhetők. Az események időrendi sorrendben vannak és egymáshoz kapcsolódnak. A fogyasztónak az események sorba állított sorozatára van szüksége a történtek elemzéséhez.
 

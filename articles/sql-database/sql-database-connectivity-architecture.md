@@ -12,65 +12,73 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 986741a68113da00800a18cb58648ac66b1de116
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978401"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322022"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra
 
-Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint azt ismerteti, hogyan a különböző összetevőket az Azure SQL Database-példány forgalmat működni. Ezek az Azure SQL Database kapcsolat összetevők függvény irányítani a hálózati forgalom az Azure-adatbázishoz csatlakozó ügyféltől Azure-ban és az Azure-on kívül csatlakozó ügyféltől. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
+Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint, hogy hogyan a különböző összetevők működéséhez forgalomnak az Azure SQL Database-példányra. Ezek az Azure SQL Database kapcsolat összetevők függvény irányítani a hálózati forgalom az Azure-adatbázishoz csatlakozó ügyféltől Azure-ban és az Azure-on kívül csatlakozó ügyféltől. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
+
+> [!IMPORTANT]
+> **[Közelgő változás] Azure SQL-kiszolgáló, végpont kapcsolatok szolgáltatás egy `Default` kapcsolat viselkedés vált `Redirect`.**
+>
+> Módosítsa a Dél-Brazíliát és Nyugat-európai régióban már 2019. November 10 lép érvénybe. Minden régió esetében módosítsa a 2019. január 2. től lép érvénybe.
+>
+> Ebből a változásból meglévő környezetekben használhatatlanná tévő szolgáltatási végponton keresztüli kapcsolat megakadályozása érdekében használjuk telemetriai hajtsa végre a következő:
+> - -Kiszolgálók, hogy a rendszer azt észleli, hogy a módosítás előtt a szolgáltatásvégpontokon keresztül elért, hogy váltson a kapcsolat típusát `Proxy`.
+> - További kiszolgálók, hogy váltson a kapcsolat típusa fognak váltani `Redirect`.
+>
+> Szolgáltatási végpont felhasználók továbbra is hatással lehetnek a következő esetekben: 
+> - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése 
+> - Automatizált üzembehelyezési logikai létrehoz egy logikai kiszolgálót, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy` 
+>
+> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags). Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
 Az alábbi ábra az Azure SQL Database kapcsolati architektúra magas szintű áttekintést nyújt.
 
-![az architektúra áttekintése](./media/sql-database-connectivity-architecture/architecture-overview.png)
+![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat egy Azure SQL Database az Azure SQL Database software load balancer (SLB) és az Azure SQL Database-átjárón keresztül.
+Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat az Azure SQL Database-adatbázishoz:
 
-- Ügyfelek csatlakoznak a szoftveres Terheléselosztó, amely egy nyilvános IP-címmel rendelkezik, és a 1433-as portot figyeli.
-- A szoftveres Terheléselosztó továbbítja a forgalmat az Azure SQL Database-átjáróra.
-- Az átjáró, attól függően, a hatékony kapcsolódási szabályzat, az átirányítások vagy a proxyk a forgalom a megfelelő proxyt közbenső szoftverek.
-- A proxy közbenső továbbítja a forgalmat a megfelelő Azure SQL Database-adatbázishoz.
-
-> [!IMPORTANT]
-> Ezek az összetevők mindegyike rendelkezik elosztott szolgáltatásmegtagadásos (DDoS-) szolgáltatás védelem beépített a hálózat és az app-réteget.
+- Az ügyfelek csatlakozni az átjáróhoz, nyilvános IP-címmel rendelkezik, és a 1433-as portot figyeli.
+- Az átjáró, attól függően, a hatékony kapcsolódási szabályzat, az átirányítások vagy a proxyk a forgalom a megfelelő adatbázis-fürthöz.
+- Az adatbázisban fürt forgalmat továbbítja a megfelelő Azure SQL Database-adatbázishoz.
 
 ## <a name="connection-policy"></a>Kapcsolat-házirend
 
 Az Azure SQL Database támogatja a kapcsolat egy SQL Database-kiszolgáló házirend-beállítás a következő három módon:
 
-- **Átirányítási (ajánlott):** ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban (próbálja ki a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)), nem csak az Azure SQL Database átjáró IP-címek. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
-- **Proxy:** ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül webszolgáltatásokhoz használják. Ahhoz, hogy a kapcsolat, az ügyfél kimenő tűzfalszabályokat, amelyek lehetővé teszik a csak az Azure SQL Database átjáró IP-címek (általában két IP-címek régiónként) kell rendelkeznie. Ez a mód kiválasztása nagyobb késést és alacsonyabb átviteli sebességet a számítási feladatok természetétől függően eredményezhet. Erősen ajánlott az átirányítási kapcsolódási szabályzat keresztül a Proxy kapcsolódási szabályzat a legkisebb késés és a legnagyobb átviteli sebességet.
-- **Alapértelmezett:** Ez a kapcsolódási szabályzat érvényben az összes kiszolgáló létrehozása után hacsak nem változtatja meg a kapcsolódási szabályzat vagy a Proxy vagy átirányítási. A tényleges házirend attól függ, hogy kapcsolatok származik (átirányítási) Azure-ban, vagy (Proxy) Azure-on kívül.
+- **Az átirányítási (ajánlott):** Az ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)), nem csak az Azure SQL Database átjáró IP-címek. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
+- **Proxy:** Ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül webszolgáltatásokhoz használják proxyként. Ahhoz, hogy a kapcsolat, az ügyfél kimenő tűzfalszabályokat, amelyek lehetővé teszik az Azure SQL Database-átjáró IP-címek (általában két IP-címek régiónként) kell rendelkeznie. Ez a mód kiválasztása nagyobb késést és alacsonyabb átviteli sebességet a számítási feladatok természetétől függően eredményezhet. Kifejezetten ajánljuk a `Redirect` keresztül a kapcsolódási szabályzat a `Proxy` kapcsolódási szabályzat a legkisebb késés és a legnagyobb átviteli sebességet.
+- **alapértelmezett érték:** Ez a kapcsolat-házirend érvényben minden kiszolgálón létrehozása után hacsak nem változtatja meg a kapcsolódási szabályzat vagy `Proxy` vagy `Redirect`. A tényleges házirend attól függ, hogy Azure-ban származik kapcsolatok (`Redirect`) vagy Azure-on kívül (`Proxy`).
 
 ## <a name="connectivity-from-within-azure"></a>Csatlakozás Azure-ban
 
-Csatlakozik Azure-ban egy kiszolgálón, November 10, 2018 után létrehozott kapcsolatok van-e, a kapcsolódási szabályzat **átirányítási** alapértelmezés szerint. Egy szabályzatot a **átirányítási** azt jelenti, hogy kapcsolatok az Azure SQL Database, a TCP-munkamenet az ügyfél-munkamenet létrehozása után a rendszer ezután átirányítja a proxy közbenső és a cél virtuális IP-címhez módosul, valamint az Azure Az SQL Database átjárója, amely a proxy közbenső szoftverek. Ezt követően minden további csomagokat folyamat közvetlenül keresztül, a proxy közbenső szoftverek, az Azure SQL Database átjárója kihagyásával. A következő ábra szemlélteti a forgalom áramlását.
+Azure-on belül csatlakozik a kapcsolatok van-e, a kapcsolódási szabályzat `Redirect` alapértelmezés szerint. Egy szabályzatot a `Redirect` azt jelenti, hogy az Azure SQL Database-adatbázishoz a TCP-munkamenet létrehozása után az ügyfél munkamenet ezután átirányítja a megfelelő adatbázis-fürt és a cél virtuális IP-címhez, az Azure SQL Database-átjáró, valamint a módosul a a fürt. Ezt követően a fürt, az Azure SQL Database átjárója megkerülésével közvetlenül a flow további csomagokat. A következő ábra szemlélteti a forgalom áramlását.
 
-![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
-
-> [!IMPORTANT]
-> Ha a kapcsolódási szabályzat létrehozott SQL Database-kiszolgáló 2018. November 10. előtt volt beállítva az explicit módon **Proxy**. A Szolgáltatásvégpontok használatakor az erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási**, nem lesz elegendő ahhoz, hogy engedélyezze a kimenő az alább felsorolt IP-címek az Azure SQL Database átjárója az NSG-t, engedélyeznie kell a kimenő célja: minden Azure SQL Database IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags).
+![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Csatlakozás Azure-on kívül
 
-Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódási szabályzat, **Proxy** alapértelmezés szerint. Egy szabályzatot a **Proxy** azt jelenti, hogy a TCP-munkamenet létrehozását az Azure SQL Database-átjárón keresztül, és további csomagokat flow az átjárón keresztül. A következő ábra szemlélteti a forgalom áramlását.
+Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódási szabályzat, `Proxy` alapértelmezés szerint. Egy szabályzatot a `Proxy` azt jelenti, hogy a TCP-munkamenet létrehozását az Azure SQL Database-átjárón keresztül, és további csomagokat flow az átjárón keresztül. A következő ábra szemlélteti a forgalom áramlását.
 
-![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
+![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Az Azure SQL Database átjárója IP-címek
 
-Csatlakozhat egy Azure SQL database a helyszíni erőforrásairól, szüksége, hogy a kimenő hálózati forgalom az Azure SQL Database-átjáróhoz, az az Azure-régióban. A kapcsolatokat csak nyissa meg az átjárón keresztül a Proxy módban, amely az alapértelmezett történő csatlakozás helyszíni erőforrásokhoz való csatlakozáskor.
+Csatlakozhat egy Azure SQL database a helyszíni erőforrásairól, szüksége, hogy a kimenő hálózati forgalom az Azure SQL Database-átjáróhoz, az az Azure-régióban. A kapcsolatokat csak nyissa meg az átjárón keresztül a csatlakozáskor `Proxy` üzemmódot, amely az alapértelmezett érték, amikor csatlakozik a helyszíni erőforrások.
 
 Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden régió esetében az Azure SQL Database-átjáró. Az egyes régiókban vannak két IP-címet. Ezekben a régiókban az elsődleges IP-cím az átjáró aktuális IP-címe pedig a második IP-cím feladatátvételi IP-címet. A feladatátvétel a címet, amelyre nem lehet áthelyezni, hogy a szolgáltatás magas rendelkezésre állását a kiszolgáló címe. Ezekben a régiókban javasoljuk, hogy engedélyezi a kimenő mindkét IP-címet. A második IP-cím a Microsoft tulajdonában van, és nem figyel a függő szolgáltatások mindaddig, amíg aktívvá válik, az Azure SQL Database-kapcsolatok fogadására által.
 
-| Régió neve | Elsődleges IP-cím | Másodlagos IP-cím |
+| Régiónév | Elsődleges IP-cím | Másodlagos IP-cím |
 | --- | --- |--- |
-| Kelet-Ausztrália | 191.238.66.109 | 13.75.149.87 |
+| Kelet-Ausztrália | 13.75.149.87 | 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109 | 13.73.109.251 |
 | Dél-Brazília | 104.41.11.5 | |
 | Közép-Kanada | 40.85.224.249 | |
@@ -107,14 +115,14 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | USA nyugati régiója, 2. | 13.66.226.202 | |
 ||||
 
-\* **Megjegyzés:** *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
+\* **MEGJEGYZÉS:** *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database-kapcsolat házirend módosítása
 
 Az Azure SQL Database egy Azure SQL Database-kiszolgáló kapcsolódási szabályzat módosításához használja a [kap-házirend](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) parancsot.
 
-- Ha a kapcsolat-házirend **Proxy**, az összes hálózati csomagok folyamatot az Azure SQL Database-átjárón keresztül. A beállítás csak az Azure SQL Database IP átjáró kimenő engedélyeznie kell. Beállítás használatával **Proxy** további beállítás késést rendelkezik **átirányítási**.
-- Ha a kapcsolódási szabályzat beállítása **átirányítási**, az összes hálózati csomagok folyamat közvetlenül és a közbenső szoftver proxy. Ehhez a beállításhoz több IP-cím kimenő engedélyeznie kell.
+- Ha a kapcsolat-házirend `Proxy`, az összes hálózati csomagok folyamatot az Azure SQL Database-átjárón keresztül. A beállítás csak az Azure SQL Database IP átjáró kimenő engedélyeznie kell. Beállítás használatával `Proxy` további beállítás késést rendelkezik `Redirect`.
+- Ha a kapcsolódási szabályzat beállítása `Redirect`, az összes hálózati csomagok folyamat közvetlenül az adatbázis-fürt. Ehhez a beállításhoz több IP-cím kimenő engedélyeznie kell.
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Módosítja a kapcsolati beállításokat PowerShell-szkript
 
@@ -125,55 +133,17 @@ Az Azure SQL Database egy Azure SQL Database-kiszolgáló kapcsolódási szabál
 A következő PowerShell-parancsfájl bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName <Subscription Name>
+# Get SQL Server ID
+$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
-# Azure Active Directory ID
-$tenantId = "<Azure Active Directory GUID>"
-$authUrl = "https://login.microsoftonline.com/$tenantId"
+# Set URI
+$id="$sqlserverid/connectionPolicies/Default"
 
-# Subscription ID
-$subscriptionId = "<Subscription GUID>"
+# Get current connection policy
+(Get-AzureRmResource -ResourceId $id).Properties.connectionType
 
-# Create an App Registration in Azure Active Directory.  Ensure the application type is set to NATIVE
-# Under Required Permissions, add the API:  Windows Azure Service Management API
-
-# Specify the redirect URL for the app registration
-$uri = "<NATIVE APP - REDIRECT URI>"
-
-# Specify the application id for the app registration
-$clientId = "<NATIVE APP - APPLICATION ID>"
-
-# Logical SQL Server Name
-$serverName = "<LOGICAL DATABASE SERVER - NAME>"
-
-# Resource Group where the SQL Server is located
-$resourceGroupName= "<LOGICAL DATABASE SERVER - RESOURCE GROUP NAME>"
-
-
-# Login and acquire a bearer token
-$AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$result = $AuthContext.AcquireToken(
-"https://management.core.windows.net/",
-$clientId,
-[Uri]$uri,
-[Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
-)
-
-$authHeader = @{
-'Content-Type'='application\json; '
-'Authorization'=$result.CreateAuthorizationHeader()
-}
-
-#Get current connection Policy
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method GET -Headers $authHeader
-
-#Set connection policy to Proxy
-$connectionType="Proxy" <#Redirect / Default are other options#>
-$body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
-
-# Apply Changes
-Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
+# Update connection policy
+Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Módosítja a kapcsolati beállításokat az Azure CLI-szkript
@@ -184,9 +154,8 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 
 ```azurecli-interactive
-<pre>
 # Get SQL Server ID
-sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
 
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
@@ -196,8 +165,6 @@ az resource show --ids $id
 
 # Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
-
-</pre>
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -1,5 +1,5 @@
 ---
-title: Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben | Microsoft Docs
+title: Mongodb-hez a Node.js-alkalmazás létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: feaaf0df96a1742d071dec5f98b57a69ea85b1ac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 59173550c0cdff44931e0b686308b39e985dddcf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972320"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254955"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -49,9 +49,9 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
-1. [Telepítse a Node.js 6.0-s vagy újabb verzióját és az NPM-et](https://nodejs.org/).
-1. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
-1. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/).
+2. [Telepítse a Node.js 6.0-s vagy újabb verzióját és az NPM-et](https://nodejs.org/).
+3. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+4. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/).
 
 ## <a name="test-local-mongodb"></a>Helyi MongoDB tesztelése
 

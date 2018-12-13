@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 07fe8a0d48d59da89ad76f1648b75332d23005a2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1cb12bdc362955da907fb5a5ed64c2a1a43fdc32
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074074"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140863"
 ---
-# <a name="email-entity"></a>E-mail entitás
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mailben a LUIS-alkalmazásokon előre összeállított entitások
 E-mailek kinyerése a teljes e-mail-címét az utterance (kifejezés) tartalmaz. Az entitás már be van tanítva, mert nem kell tartalmazó e-mailben az alkalmazás leképezések példa beszédmódok hozzáadása. A támogatott e-mail entitás `en-us` culture csak. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Előre összeállított e-mailek felbontás

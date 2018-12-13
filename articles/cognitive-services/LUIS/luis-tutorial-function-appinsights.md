@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4461ac71ba5f9ab5901c5d7b72c15c0c165621e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103965"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255601"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>A LUIS-eredményeket ad hozzá az Application Insights és az Azure functions
 Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ebben az oktatóanyagban kódja érhető el a [LUIS-minták github-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
+Ebben az oktatóanyagban kódja érhető el a [LUIS-minták GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
 
 ## <a name="web-app-bot-with-luis"></a>Web app bot az intelligens hangfelismerési szolgáltatással
 Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-nodejs-tutorial-build-bot-framework-sample.md): 

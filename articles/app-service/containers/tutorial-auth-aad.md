@@ -1,5 +1,5 @@
 ---
-title: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben Linux rendszeren | Microsoft Docs
+title: Hitelesítés és engedélyezés felhasználóknak – teljes körű linuxon – az Azure App Service |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan használhatja az App Service-hitelesítést és -engedélyezést az App Service-alkalmazások védelmének biztosításához, beleértve a távoli API-khoz történő hozzáférést.
 keywords: app service, azure app service, authN, authZ, védelem, biztonság, többrétegű, azure active directory, azure ad
 services: app-service\web
@@ -14,16 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: aa57e6198050b7e250c42f4bb019009e59ca4ba7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766359"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254088"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben Linux rendszeren
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Az oktatóanyag ASP.NET Core-alkalmazást használ Angular.js előtérrendszerrel, de ez csak példaként szolgál. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, az oktatóanyag elvégzésével pedig megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Az oktatóanyag ASP.NET Core-alkalmazást használ Angular.js előtérrendszerrel, de ez csak példaként szolgál. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
 
 Az oktatóanyag a mintaalkalmazás segítségével ismerteti, hogyan tehet biztonságossá egy önálló alkalmazást (a [Hitelesítés és engedélyezés háttéralkalmazáshoz történő engedélyezéséről](#enable-authentication-and-authorization-for-back-end-app) szóló szakaszban).
 
@@ -135,7 +136,7 @@ git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-A helyi terminálablakban futtassa a következő Git-parancsokat ugyanezen kód az előtér-alkalmazásba történő telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-front-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett.
+A helyi terminálablakban futtassa a következő Git-parancsokat ugyanezen kódnak az előtér-alkalmazásba történő telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-front-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett.
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -199,7 +200,7 @@ return Content(data, "application/json");
 
 Az első sor `POST /api/Todo` hívást indít a háttérrendszeri API-alkalmazás felé.
 
-Ezt követően keresse meg a `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
+Ezt követően keresse meg az `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
 
 ```cs
 var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
@@ -241,7 +242,7 @@ Az Azure Active Directoryt fogja használni identitásszolgáltatóként. Továb
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Hitelesítés és engedélyezés engedélyezése a háttéralkalmazás számára
 
-Az [Azure Portalon](https://portal.azure.com) nyissa meg a háttéralkalmazás felügyeleti oldalát a bal oldali menüben a következő elemekre kattintva: **Erőforráscsoportok** > **myAuthResourceGroup** > _\<háttér\_rendszeri\_alkalmazás\_neve>_.
+Az a [az Azure portal](https://portal.azure.com), a háttér-alkalmazás kezelése lap megnyitásához kattintson a bal oldali menüből: **Erőforráscsoportok** > **myAuthResourceGroup** > _\<vissza\_záró\_alkalmazás\_neve >_.
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 

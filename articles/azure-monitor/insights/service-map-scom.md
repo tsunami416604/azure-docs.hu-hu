@@ -8,22 +8,21 @@ manager: jwhit
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: b590a6ce6d92c78f2020d5ef7cffe6d7f277433c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828324"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187211"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
   > [!NOTE]
-  > Ez a funkció jelenleg nyilvános előzetes verzióban.
+  > Ez a funkció nyilvános előzetes verzióban érhető el.
   > 
   
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálók az Ön gondol rájuk, rendszerekként, amelyek kritikus fontosságú szolgáltatásokat módon teszi lehetővé. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok minden olyan TCP-kapcsolattal összekötött architektúrában, nem szükséges az ügynök telepítése mellett konfiguráció között. További információkért lásd: a [Szolgáltatástérkép dokumentációja]( service-map.md).
@@ -77,7 +76,7 @@ A Service Map integráció konfigurálásához tegye a következőket:
 
     ![Az Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
 
-6. Választható lehetőség: Válassza ki a Log Analytics kommunikálni a felügyeleti kiszolgálókat tartalmazó erőforráskészlet, és kattintson a **munkaterület hozzáadása**.
+6. Nem kötelező: Válassza ki a Log Analytics kommunikálni, és kattintson a felügyeleti kiszolgálókat tartalmazó erőforráskészlet **munkaterület hozzáadása**.
 
     ![Az Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-pool.png)
 
@@ -92,17 +91,17 @@ Miután a Log Analytics-munkaterülethez van csatlakoztatva, egy új mappát, a 
 ![Az Operations Manager figyelés ablaktáblán](media/service-map-scom/scom-monitoring.png)
 
 A Service Map mappa négy csomóponttal rendelkezik:
-* **Aktív riasztások**: az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager. 
+* **Aktív riasztások**: Az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager. 
 
 * **Kiszolgálók**: Megjeleníti a figyelt kiszolgálók konfigurált való szinkronizálása a Service Map.
 
     ![Az Operations Manager figyelési kiszolgálók panel](media/service-map-scom/scom-monitoring-servers.png)
 
-* **A gép függőségi Csoportnézeteket**: minden, a Service Map szinkronizált gépcsoportok sorolja fel. Minden csoport az elosztottalkalmazás-diagram megtekintése gombra.
+* **Gép függőségi Csoportnézeteket**: A Service Map szinkronizált összes számítógép-csoportok listája. Minden csoport az elosztottalkalmazás-diagram megtekintése gombra.
 
     ![Az Operations Manager elosztottalkalmazás-diagram](media/service-map-scom/scom-group-dad.png)
 
-* **Kiszolgáló függőségi nézetek**: minden olyan kiszolgáló, a Service Map szinkronizált sorolja fel. Bármely kiszolgáló az elosztottalkalmazás-diagram megtekintése gombra.
+* **Kiszolgáló függőségi nézetek**: A Service Map szinkronizált összes kiszolgálók listája. Bármely kiszolgáló az elosztottalkalmazás-diagram megtekintése gombra.
 
     ![Az Operations Manager elosztottalkalmazás-diagram](media/service-map-scom/scom-dad.png)
 
@@ -121,10 +120,10 @@ Egy szabály _Microsoft.SystemCenter.ServiceMapImport.Rule_, rendszeres időköz
 
 ![Az Operations Manager felülbírálások tulajdonságok ablak](media/service-map-scom/scom-overrides.png)
 
-* **Engedélyezett**: engedélyezi vagy letiltja az automatikus frissítések. 
-* **IntervalMinutes**: alaphelyzetbe állítása a frissítések közötti idő. Az alapértelmezett érték egy óra. Kiszolgáló maps gyakrabban szinkronizálni szeretné, ha az értéke módosíthatja.
-* **TimeoutSeconds**: alaphelyzetbe mennyi ideig, mielőtt a kérés túllépi az időkorlátot. 
-* **TimeWindowMinutes**: alaphelyzetbe állítása az adatok lekérdezése időtartományából. Alapértelmezett érték 60 perces ablak. A Service Map által engedélyezett maximális értéke 60 perc.
+* **Engedélyezett**: Engedélyezi vagy letiltja az automatikus frissítések. 
+* **IntervalMinutes**: Állítsa vissza a frissítések közötti idő. Az alapértelmezett érték egy óra. Kiszolgáló maps gyakrabban szinkronizálni szeretné, ha az értéke módosíthatja.
+* **TimeoutSeconds**: Állítsa alaphelyzetbe a mennyi ideig, mielőtt a kérés túllépi az időkorlátot. 
+* **TimeWindowMinutes**: Adatok lekérdezése időtartományából alaphelyzetbe. Alapértelmezett érték 60 perces ablak. A Service Map által engedélyezett maximális értéke 60 perc.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 

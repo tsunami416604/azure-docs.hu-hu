@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 60d19f6d598c6090e0dc00c61817a0f8aed35003
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889497"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273935"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -109,7 +109,7 @@ Optimalizálja, vagy távolítsa el a írnokok a legmagasabb memóriahasználat 
 
 A számítási feladatok optimalizálása vagy szétosztása több adatbázis is csökkentheti. Vagy juttathatja el a számítási feladatok több adatbázis között. Ha ezek a megoldások nem lehetséges, érdemes megfontolni az SQL adatbázis-előfizetés növeléséhez, az adatbázis számára elérhető memória-erőforrások tarifacsomagja.
 
-További hibaelhárítási javaslatokat, lásd: [memória meditation biztosít: az SQL Server frusztráló memória fogyasztói több névvel](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+További hibaelhárítási javaslatokat, lásd: [memória meditation biztosít: Az SQL Server frusztráló memória fogyasztói több névvel](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Zárolás
 
@@ -227,7 +227,7 @@ A cserélhető eszközként észlelhetőnek teljesítmény minta azt jelzi, hogy
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai naplót a tempDB versengés részleteket jelenít meg. Az információk kiindulási pontként használhatja a hibaelhárításhoz. Két dolgot lehet szerezni a versengés az ilyen típusú elmondja, és növelhető a a teljes számítási feladatnak: állítsa le az ideiglenes táblák használata. A memóriaoptimalizált táblák is használhatja. 
+A diagnosztikai naplót a tempDB versengés részleteket jelenít meg. Az információk kiindulási pontként használhatja a hibaelhárításhoz. Két dolgot lehet szerezni a versengés az ilyen típusú elmondja, és növelhető a a teljes számítási feladatnak: Állítsa le az ideiglenes táblák használata. A memóriaoptimalizált táblák is használhatja. 
 
 További információkért lásd: [Bevezetés a memóriaoptimalizált táblák](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
@@ -281,7 +281,7 @@ További információkért lásd: [megtudhatja, hogyan megakadályozza az SQL Se
 
 A cserélhető eszközként észlelhetőnek teljesítmény minta azt jelzi, hogy egy feltételt, amelyben az adatbázishoz kötődő konfiguráció módosítása hatására a teljesítmény regressziós észlelt az elmúlt hét nap adatbázis-munkaterhelések viselkedésére képest. Ez a minta azt jelzi, hogy végzett az adatbázis-hatókörű konfiguráció változtatása nem a Microsoft hasznosabb lehet, ha az adatbázis teljesítményét.
 
-Minden egyes adatbázis adatbázis-specifikus konfigurációs módosításokat is állítható be. Ez a konfiguráció szolgál – eseti alapon az adatbázis egyes teljesítményének optimalizálásához. Minden egyes adatbázis a következő beállítások konfigurálhatók: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és egyértelmű PROCEDURE_CACHE.
+Minden egyes adatbázis adatbázis-specifikus konfigurációs módosításokat is állítható be. Ez a konfiguráció szolgál – eseti alapon az adatbázis egyes teljesítményének optimalizálásához. Minden egyes adatbázis a következő beállításokat konfigurálhatja: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és egyértelmű PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

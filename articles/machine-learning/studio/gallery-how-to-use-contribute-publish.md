@@ -4,9 +4,8 @@ description: Fedezzen fel és analytics-erőforrásokat, és további, az Azure 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
@@ -16,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 99742e8b25a406dcc08371812b943c0d01dde113
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c9acd902eb536bbd252f0aca6d162ff92d9e6e00
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310611"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270960"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Az Azure AI-katalógusban található erőforrások Fedezzen fel és
 
 **[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com)**  felderítéséhez közösségi helyet, és az Azure AI-megoldások megosztása beépített.
 A gyűjtemény-erőforrások, amelyek segítségével a saját elemzési megoldásokat fejleszthet különböző rendelkezik.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Mi található a katalógusban?
 Az Azure AI-katalógusban az erőforrásokat, használhatja a saját elemzési megoldásokat fejleszthet különböző tartalmazza.

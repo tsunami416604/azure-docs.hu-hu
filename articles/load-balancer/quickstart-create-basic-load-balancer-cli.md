@@ -1,14 +1,13 @@
 ---
-title: 'Rövid útmutató: Nyilvános Load Balancer létrehozása – Azure CLI | Microsoft Docs'
+title: 'Gyors útmutató: Egy alapszintű Load Balancer létrehozása – Azure CLI'
+titlesuffix: Azure Load Balancer
 description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
+ms.custom: mvc
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 3eb7ae721b0c275ffa39e04904e19c067b949214
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 60cdf251d9a862f8bae80f4f782c6ad94c0b85ce
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965496"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260769"
 ---
-# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: Azure CLI használatával virtuális gépek terhelésének elosztásához load balancer létrehozása
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Load Balancert. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
+Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Azure Load Balancer betöltése az Azure-beli virtuális gépek közötti internetes forgalom elosztására. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 

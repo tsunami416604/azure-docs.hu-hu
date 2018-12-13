@@ -1,0 +1,58 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: d1ed4fe7c4b2ffd287ce95e7a4a09e08305feb30
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53285311"
+documentType: LandingData
+title: Az Azure SQL Database - méretezhetőség
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Az Azure SQL Database - méretezhetőség
+  meta.description: Learn how to scale your Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Az Azure SQL Database lehetővé teszi, hogy könnyedén méretezheti, adatbázis hozzáadásával a nagyobb számítási teljesítmény (növelheti), vagy további adatbázisegység (horizontális felskálázás) hozzáadása.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Vertikális felskálázás
+      href: /azure/sql-database/sql-database-scale-resources
+      html: <p>Könnyedén erőforrásainak hozzáadása vagy eltávolítása az SQL-adatbázisban található, a legjobb ár-teljesítmény arányt, vagy kezelheti teljesítményével kapcsolatos problémákat.</p>
+    - title: Felskálázás olvasása
+      href: /azure/sql-database/sql-database-read-scale-out
+      html: <p>Kritikus fontosságú üzleti szint egy ingyenes, – ingyenes replika adatbázis, ahol futtathatja jelentéseket, elemzéseket és más csak olvasási lekérdezések adatokat biztosít.</p>
+    - title: Adatbázis horizontális skálázása
+      href: /azure/sql-database/sql-database-elastic-scale-introduction
+      html: <p>Adatbázisok több szegmens kibővített meghaladja a maximális számítási és tárolási korlátok az adatbázis az egyetlen adatbázis-egységek használatával.</p>
+    - title: Rugalmas lekérdezések
+      href: /azure/sql-database/sql-database-elastic-query-overview
+      html: <p>Rugalmas lekérdezések futtatása standard Transact-SQL lekérdezések egy globálisan elosztott adatbázis-szilánkból csoportján engedélyezze.</p>
+    - title: Rugalmas tranzakciók
+      href: /azure/sql-database/sql-database-elastic-transactions-overview
+      html: <p>Használja a globálisan elosztott tranzakciók tranzakciós szempontból konzisztens az elosztott adatok elérhetőségét.</p>
+    - title: Adatbázisközi feladatok
+      href: /azure/sql-database/elastic-jobs-overview
+      html: <p>Adatbázisközi rugalmas feladatok használatával adatbázisok karbantartása.</p>
+- title: További erőforrások
+  items:
+  - type: paragraph
+    text: Ismerje meg a további funkciók, amelyek segítségével az adatok méretezését.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">A csatolt kiszolgáló</a> core SQL Server adatbázismotor-szolgáltatás, amely lehetővé teszi, hogy hajtsa végre az elosztott lekérdezések Transact-SQL-kódot egy másik adatbázismotorokat is.
+    - html: <a href="sql-database-geo-replication-overview.md">Georeplikáció</a> lehetővé teszi tetszőleges számú olvasható replikát helyezni különböző régiókban.

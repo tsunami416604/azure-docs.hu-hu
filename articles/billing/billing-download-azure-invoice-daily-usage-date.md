@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: cwatson
-ms.openlocfilehash: 80721fc82a54c62c982298cb8eabb999caaf1dfb
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: fe3cb2d15602407b54ff47763d409c2e77614f0a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583108"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311133"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 
@@ -72,7 +72,7 @@ Ha nem szeretne kapni a számla e-mailben, kattintson a **tilthatják le az e-ma
 
 4. A napi használat a számlázási időszak kattintva is megtekintheti. 
 
-A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md). Költségek kezelése kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
+A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md). A költségek kezelésével kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
 
 ### <a name="noinvoice"></a> Miért nem látom számla alapján az előző elszámolási időszakban?
 
@@ -116,13 +116,13 @@ Számos oka lehet annak, hogy nem jelenik meg számla:
 
 Csak a fiók rendszergazdája hozzáférhet az Azure fiókkezelési központjába. Egyéb számlázási adminisztrátorok, tulajdonosa, például a használati információk használatával lekérheti a [számlázási API-k](billing-usage-rate-card-overview.md).
 
-A napi használati adatokra vonatkozó további információért lásd: [Microsoft Azure számlájának megértése](billing-understand-your-bill.md). Költségek kezelése kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
+A napi használati adatokra vonatkozó további információért lásd: [Microsoft Azure számlájának megértése](billing-understand-your-bill.md). A költségek kezelésével kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
 
 ### <a name="download-usage-for-ea-customers"></a>Nagyvállalati szerződéssel rendelkező ügyfeleink a használati adatok letöltése
 
 Megtekintéséhez és a egy nagyvállalati szerződéssel rendelkező ügyfél, a használati adatok letöltése, kell lennie egy vállalati rendszergazdaként vagy a fiók tulajdonosa vagy a részleg felügyeleti nézet díjak szabályzat engedélyezve van.
 
-1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Keresés **Cost Management és számlázás**.
 
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

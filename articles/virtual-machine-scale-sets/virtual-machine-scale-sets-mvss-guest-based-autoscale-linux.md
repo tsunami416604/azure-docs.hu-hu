@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: manayar
-ms.openlocfilehash: 0718ad7112c759dd3fdd363f38b863186ec9a978
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e30fdb684fbabbdcea334115e3f645e63dec6623
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740162"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322636"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Az automatikus méretezés egy Linux rendszerű méretezési csoport sablonjában Vendég mérőszámok segítségével
 
 Metrikák az Azure-ban, amely gyűjti az adatokat a virtuális gépek és a méretezési csoportokat két típusa van: néhány virtuális gazdagép származnak, illetve mások származik a Vendég virtuális Gépen. Magas szinten Ha standard Processzor, lemez és a hálózati metrikák, használja majd a gazda mérőszámok valószínűleg jó megoldás. Ha azonban egy nagyobb kijelölt mérőszámok van szüksége, majd Vendég mérőszámok valószínűleg jobb megfelel. Vessünk egy pillantást a kettő közötti különbségeket:
 
-Gazdagép metrikáinak egyszerűbb és megbízhatóbb. Nincs szükségük további telepítési, mert a gazdagép virtuális gép által gyűjtött, mivel a Vendég mérőszámok megkövetelése, hogy telepítse a [Windows Azure Diagnostics bővítmény](../virtual-machines/windows/extensions-diagnostics-template.md) vagy a [Linux Azure diagnosztikai bővítmény](../virtual-machines/linux/diagnostic-extension.md)a Vendég virtuális Gépen. Vendég mérőszámok használata helyett a gazda mérőszámok egyik gyakori oka az, hogy a Vendég mérőszámok biztosítja, mint a gazda mérőszámok mérőszámok nagyobb kijelölés. Ilyen például a memória-felhasználási mérőszámok, amely csak vendég mérőszámok keresztül érhető el. A támogatott gazdagépmetrikák felsorolt [Itt](../monitoring-and-diagnostics/monitoring-supported-metrics.md), és a gyakran használt Vendég mérőszámok felsorolt [Itt](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan lehet módosítani a [minimális működőképes méretezési csoport sablon](./virtual-machine-scale-sets-mvss-start.md) használata Linux rendszerű méretezési csoportokhoz tartozó Vendég mérőszámok alapján automatikus skálázási szabályokat.
+Gazdagép metrikáinak egyszerűbb és megbízhatóbb. Nincs szükségük további telepítési, mert a gazdagép virtuális gép által gyűjtött, mivel a Vendég mérőszámok megkövetelése, hogy telepítse a [Windows Azure Diagnostics bővítmény](../virtual-machines/windows/extensions-diagnostics-template.md) vagy a [Linux Azure diagnosztikai bővítmény](../virtual-machines/linux/diagnostic-extension.md)a Vendég virtuális Gépen. Vendég mérőszámok használata helyett a gazda mérőszámok egyik gyakori oka az, hogy a Vendég mérőszámok biztosítja, mint a gazda mérőszámok mérőszámok nagyobb kijelölés. Ilyen például a memória-felhasználási mérőszámok, amely csak vendég mérőszámok keresztül érhető el. A támogatott gazdagépmetrikák felsorolt [Itt](../monitoring-and-diagnostics/monitoring-supported-metrics.md), és a gyakran használt Vendég mérőszámok felsorolt [Itt](../azure-monitor/platform/autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan lehet módosítani a [minimális működőképes méretezési csoport sablon](./virtual-machine-scale-sets-mvss-start.md) használata Linux rendszerű méretezési csoportokhoz tartozó Vendég mérőszámok alapján automatikus skálázási szabályokat.
 
 ## <a name="change-the-template-definition"></a>A Sablondefiníció módosítása
 
@@ -111,7 +111,7 @@ Ezután módosítsa a méretezési `extensionProfile` a diagnosztikai bővítmé
        }
 ```
 
-Végül adja hozzá egy `autoscaleSettings` erőforrás automatikus konfigurálása a metrikák alapján. Az erőforrás rendelkezik egy `dependsOn` záradékban hivatkozott a méretezési csoport, győződjön meg arról, hogy a méretezési létezik, mielőtt megpróbálná automatikus beállítása. Ha úgy dönt, az automatikus skálázást egy másik metrikát, akkor kell használnia a `counterSpecifier` , mint a diagnosztikai bővítmény konfigurációjának a `metricName` a az automatikus skálázási konfigurációját. Az automatikus skálázási konfigurációjának további információkért lásd: a [automatikus méretezés ajánlott eljárásairól](..//monitoring-and-diagnostics/insights-autoscale-best-practices.md) és a [Azure Monitor REST API forrásdokumentáció](https://msdn.microsoft.com/library/azure/dn931928.aspx).
+Végül adja hozzá egy `autoscaleSettings` erőforrás automatikus konfigurálása a metrikák alapján. Az erőforrás rendelkezik egy `dependsOn` záradékban hivatkozott a méretezési csoport, győződjön meg arról, hogy a méretezési létezik, mielőtt megpróbálná automatikus beállítása. Ha úgy dönt, az automatikus skálázást egy másik metrikát, akkor kell használnia a `counterSpecifier` , mint a diagnosztikai bővítmény konfigurációjának a `metricName` a az automatikus skálázási konfigurációját. Az automatikus skálázási konfigurációjának további információkért lásd: a [automatikus méretezés ajánlott eljárásairól](..//azure-monitor/platform/autoscale-best-practices.md) és a [Azure Monitor REST API forrásdokumentáció](https://msdn.microsoft.com/library/azure/dn931928.aspx).
 
 ```diff
 +    },

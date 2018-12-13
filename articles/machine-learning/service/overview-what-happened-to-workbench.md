@@ -1,5 +1,5 @@
 ---
-title: Mi történt az Azure Machine Learning Workbench alkalmazással?
+title: Mi történt a Workbenchcsel?
 titleSuffix: Azure Machine Learning service
 description: 'További tudnivalók: Mi történt a Workbench alkalmazás, mi változott, az Azure Machine Learning szolgáltatás és a támogatási idősor van.'
 services: machine-learning
@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2d97ee70c8456bb3b21a14b646756c8024eab018
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c9559e07cc70cbd7adafd75c23b9e67d45bee48a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090125"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184305"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Mi történik a Workbench az Azure Machine Learning szolgáltatás?
 
@@ -113,5 +113,5 @@ A [Computer Vision, a Text Analytics és a Forecasting](../desktop-workbench/ref
 Ismerje meg [az Azure Machine Learning szolgáltatás legújabb architektúráját](concept-azure-machine-learning-architecture.md), és próbálja ki az egyik rövid útmutatót vagy oktatóanyagot:
 
 * [Az Azure Machine Learning szolgáltatás ismertetése](overview-what-is-azure-ml.md)
-* [Rövid útmutató: Munkaterület létrehozása Python használatával](quickstart-get-started.md)
-* [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)
+* [Gyors útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
+* [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)

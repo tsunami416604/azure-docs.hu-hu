@@ -1,5 +1,5 @@
 ---
-title: Javítsa ki a 502 Hibás átjáró, 503 a szolgáltatás nem érhető el |} A Microsoft Docs
+title: Javítsa ki a 502 Hibás átjáró, 503-as szolgáltatás nem érhető el hiba – az Azure App Service |} A Microsoft Docs
 description: Végezzen hibaelhárítást 502 Hibás átjáró és 503-as szolgáltatás nem érhető el hibák az Azure App Service-ben üzemeltetett webalkalmazásban.
 services: app-service\web
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 71842f9dbc8d0454da1847c956dea3b063208836
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316344"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259290"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" az Azure web apps a HTTP-hibáinak elhárítása
 "502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" gyakori hibák a lévő üzemeltetett webalkalmazásban [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a cikk segít a hibák elhárítása.

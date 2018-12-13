@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 15ba584e882dd5a28b74094f949843ed653ad400
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104067"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163786"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Események küldése az Azure Event Hubs Node.js használatával
 
@@ -36,10 +36,10 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
 Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag további lépéseivel.
 
-A kapcsolati sztring lekérése az eseményközpont-névtér kövesse a cikkben szereplő: [kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
+A kapcsolati sztring lekérése az eseményközpont-névtér kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
 
 ## <a name="clone-the-sample-git-repository"></a>Klónozza a mintatárházat Git
-Klónozza a mintatárházat Git [Github](https://github.com/Azure/azure-event-hubs-node) a gépen. 
+Klónozza a mintatárházat Git [GitHub](https://github.com/Azure/azure-event-hubs-node) a gépen. 
 
 ## <a name="install-nodejs-package"></a>Node.js-csomag telepítése
 Telepítse a Node.js-csomagot az Azure Event hubs a gépen. 

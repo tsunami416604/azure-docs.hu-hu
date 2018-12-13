@@ -1,12 +1,11 @@
 ---
-title: Több modell létrehozása egy kísérletből – Azure Machine Learning Studióban |} A Microsoft Docs
+title: Több modell létrehozása egy kísérletből Studio – Azure Machine Learning Studióban |} A Microsoft Docs
 description: A powershellel hozhat létre több Machine Learning-modellek és webszolgáltatás Szolgáltatásvégpontok ugyanazt az algoritmust, de a különböző képzési adathalmazok alapján.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
 ms.service: machine-learning
@@ -16,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: b6e54fb7fe852ca4e12dc9a9e0f63eac2382c5c8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f54f9f9ff4b55ef1e2e68f61b709cef6635dc231
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093019"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250263"
 ---
-# <a name="use-powershell-to-create-models-and-web-service-endpoints-from-one-experiment"></a>Modellek és webszolgáltatás service végpontok létrehozása egy kísérletből a PowerShell használatával
+# <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Studio-modellek és webszolgáltatás-végpontok létrehozása egy kísérletből a PowerShell használatával
 
-Íme a machine learning gyakran okoz problémát: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzés és az azonos algoritmust használja számos modellt. De azt szeretné, hogy különböző képzési adathalmazok alapján bemenetként. Ez a cikk bemutatja, hogyan ipari méretekben az Azure Machine Learning Studióban ehhez csupán egyetlen kísérletben használatával.
+Machine learning gyakran okoz problémát a következő: Szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzés és az azonos algoritmust használja számos modellt. De azt szeretné, hogy különböző képzési adathalmazok alapján bemenetként. Ez a cikk bemutatja, hogyan ipari méretekben az Azure Machine Learning Studióban ehhez csupán egyetlen kísérletben használatával.
 
 Például tegyük fel, a saját egy globális uci kerékpárkölcsönzési névhasználati üzleti. Szeretné az előzményadatok alapján bérleti kereslet előrejelzésére regressziós modell létrehozása. 1000 bérleti helyek rendelkezik világszerte, és egy adatkészletet, mindegyik helyen már összegyűjtött. Fontos szolgáltatások például a dátum, idő, időjárás és a forgalom és az egyes helyekre vonatkozó tartalmazzák.
 

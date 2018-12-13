@@ -1,6 +1,6 @@
 ---
-title: Adatok feltöltése (.NET – Azure Search) | Microsoft Docs
-description: Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe, a .NET SDK használatával.
+title: .NET SDK-t – Azure Search használatával az adatok feltöltése
+description: Ismerje meg, hogyan tölthet fel adatokat az Azure Search-kereshető teljes szöveges index C# példa kód és a .NET SDK-t.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258765"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313292"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Adatfeltöltés az Azure Search szolgáltatásba, a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -204,7 +205,7 @@ public partial class Hotel
 }
 ```
 
-Az első szembetűnő dolog, hogy a `Hotel` minden egyes nyilvános tulajdonsága az indexdefiníció egy-egy mezőjének felel meg, egy lényeges különbséggel: a mezők neve minden esetben kisbetűvel, míg a `Hotel` nyilvános tulajdonságainak neve nagybetűvel kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
+Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `Hotel` felel meg az index definícióját, de egy lényeges különbséggel mező: Az egyes mezők neve során minden egyes nyilvános tulajdonsága neve kezdődik ("nagybetűs"), kisbetűvel `Hotel` egy nagybetűt ("Pascal eset") kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
 > Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információk: [Egyéni szerializálás a JSON.NET használatával](search-howto-dotnet-sdk.md#JsonDotNet). Erre mutat példát a fenti mintakódban a `[JsonProperty]` attribútum használata a `DescriptionFr` tulajdonság esetében.
@@ -224,7 +225,7 @@ A saját osztályok dokumentumokként történő használatának képessége min
 
 Az Azure Search-indexre leképezést végző, saját modellosztályok létrehozásakor javasoljuk, hogy például a `bool` és `int` értéktípusok tulajdonságainak megadása nullázhatóként történjen (például `bool` helyett `bool?`). Nem nullázható tulajdonság használatakor **garantálnia** kell, hogy az index egyetlen dokumentuma sem tartalmaz az adott mezőben null értéket. Ennek kényszerítéséhez sem az SDK, sem az Azure Search szolgáltatás nem nyújt segítséget.
 
-Ennek nem csupán elméleti jelentősége van: képzeljünk el például egy olyan alkalmazási helyzetet, ahol egy `DataType.Int32` típusú, meglévő indexhez új mezőt kell hozzáadnunk. Az indexdefiníció frissítését követően ehhez a mezőhöz minden dokumentumban null érték tartozik (mivel az Azure Search szolgáltatásban az összes értéktípus nullázható). Ha ezt követően egy modellosztályt úgy alkalmaz, hogy ehhez a mezőhöz nem nullázható `int` tulajdonságot ad meg, a dokumentumok lekérdezésének megkísérlésekor egy ehhez hasonló `JsonSerializationException` választ kap:
+Ez nem csupán elméleti szempont: Képzelje el egy forgatókönyvet, ahol hozzáadhat egy új mezőt típusú, meglévő indexhez `DataType.Int32`. Az indexdefiníció frissítését követően ehhez a mezőhöz minden dokumentumban null érték tartozik (mivel az Azure Search szolgáltatásban az összes értéktípus nullázható). Ha ezt követően egy modellosztályt úgy alkalmaz, hogy ehhez a mezőhöz nem nullázható `int` tulajdonságot ad meg, a dokumentumok lekérdezésének megkísérlésekor egy ehhez hasonló `JsonSerializationException` választ kap:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

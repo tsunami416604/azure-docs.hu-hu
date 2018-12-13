@@ -1,19 +1,18 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: signalr
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: c74a0726bbbe635793b48b6fe6ebd6f0c72f95f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 1e01db73f58c77ff62f7abe707884fc2649fd042
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006230"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262773"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -24,4 +23,3 @@ Ha nem használja tovább az alkalmazást, akkor a következő lépésekkel a mi
 1. Az ekkor megnyíló új ablakban válassza ki az erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
 1. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés**  elemre.
-

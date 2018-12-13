@@ -4,9 +4,8 @@ description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Lear
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -16,25 +15,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 501a9834e598fc8b1c11a86ef0ae9db1c19a66a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311495"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269940"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>A modellek teljesítményének kiértékelése az Azure Machine Learning rendszerben
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban
+
 Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít. Három gyakori felügyelt tanítás forgatókönyvek jelennek meg: 
 
 * Regresszió
 * Bináris osztályozás 
 * többosztályos osztályozási
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Modellek teljesítményének kiértékelése az egyik fő szakaszai az adatelemzési folyamat. Ez azt jelzi, hogy hogyan sikeres adatkészlet pontozási (előrejelzés) lett egy betanított modell. 
 
-Az Azure Machine Learning támogatja a modell értékelése keresztül két a fő machine learning-modulok: [Evaluate Model] [ evaluate-model] és [Halmazokra modell] [ cross-validate-model]. Ezek a modulok lehetővé teszik, láthatja, hogyan hajtja végre a modell szempontjából a gépi tanulás és statisztikai gyakran használt mérőszámokat.
+Modell értékelése keresztül két a fő machine learning-modulok az Azure Machine Learning támogatja: [Modell értékelése] [ evaluate-model] és [Halmazokra modell][cross-validate-model]. Ezek a modulok lehetővé teszik, láthatja, hogyan hajtja végre a modell szempontjából a gépi tanulás és statisztikai gyakran használt mérőszámokat.
 
 ## <a name="evaluation-vs-cross-validation"></a>Értékelés vs. Keresztellenőrzés
 Kiértékelési és a keresztellenőrzési a modell a teljesítmény méréséhez szokásos módon. Értékelési mérőszámok, vizsgálja meg, vagy más modellek az összehasonlításhoz mindkettő létre.
@@ -64,7 +64,7 @@ Csatlakozás a portokat, 1. ábra az alábbiak szerint, és állítsa be a címk
 1. ábra Egy regressziós modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
-Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* az értékelési eredmények megtekintéséhez. A kiértékelés metrikák elérhető regressziós modellek: *Mean Absolute Error*, *Root Mean Absolute Error*, *relatív Absolute Error*,  *Relatív négyzet hiba*, és a *Coefficient of Determination*.
+Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* az értékelési eredmények megtekintéséhez. Az értékelési mérőszámok rendelkezésre regressziós modellek a következők: *Mean Absolute Error*, *Mean Absolute Error kiváltó*, *relatív abszolút hiba*, *relatív négyzet hiba*, és a *együttható Meghatározása*.
 
 Az előfizetési időszak "error" Itt az előre jelzett érték és a true érték közötti eltérést jelöli. Az abszolút értékét, vagy ez a különbség négyzetes általában számított hiba teljes mértékű rögzítése minden példányára, lehet, hogy az előre jelzett és a true érték közötti különbség bizonyos esetekben negatív. A hiba metrikák mérik a prediktív teljesítmény szempontjából az előrejelzések a valódi értékek középértékét összehasonlítással regressziós modell. Alacsonyabb hibaértékek jelenti azt, hogy a modell a pontos előrejelzések készítése során. Egy általános hiba a mérőszám értéke nulla, az azt jelenti, hogy a modell tökéletesen megfelel-e az adatokat.
 
@@ -106,7 +106,7 @@ Csatlakozás a portokat, 5. ábra az alábbiak szerint, és állítsa be a címk
 5. ábra Egy bináris osztályozási modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
-Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* megtekintéséhez a kiértékelésének eredménye (7. ábra). A bináris osztályozási modell érhető el értékelési mérőszámok vannak: *pontossága*, *pontosság*, *visszahívása*, *F1 pontszám*, és  *AUC*. Emellett a modul adja vissza egy keveredési mátrixot azokról a valódi pozitívok, a téves negatív, a vakriasztások és a true negatív, valamint *ROC*, *pontosság/visszaírási*, és  *Átemelés* görbék.
+Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* megtekintéséhez a kiértékelésének eredménye (7. ábra). A bináris osztályozási modell érhető el értékelési mérőszámok a következők: *Pontosság*, *pontosság*, *visszahívása*, *F1 pontszám*, és *AUC*. Emellett a modul adja vissza egy keveredési mátrixot azokról a valódi pozitívok, a téves negatív, a vakriasztások és a true negatív, valamint *ROC*, *pontosság/visszaírási*, és  *Átemelés* görbék.
 
 Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány. Ez általában a megtekinti egy osztályozó kiértékelésekor a első metrikát. Azonban, ha a Tesztadatok van kiegyensúlyozatlan (ahol a példányok a legtöbb tartozik az osztályok egyikét), vagy több érdekli az osztályok egyikét a teljesítmény, a pontosság nem igazán rögzíti egy osztályozó hatékonyságát. Bevétel szintű besorolási esetben néhány adatot, ahol a 99 %-a-példányok legfeljebb 50 k évenként megszerzésére személyek képviselik a tesztelt feltételezik. Lehetséges egy 0.99 pontosság alapján az osztály eléréséhez "< = 50K" minden példány esetében. Az osztályozó által igénybe vett ebben az esetben lehet előkészítésétől általános jó feladat jelenik meg, de a valóságban ez nem sikerül megfelelően besorolni bármelyik nagyjövedelmű felhasználók (1 %).
 
@@ -116,7 +116,7 @@ Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány
 
 6. ábra Bináris osztályozás keveredési mátrixot.
 
-Visszatérve a bevételek besorolása problémát, akkor szeretnénk tehet fel és számos értékelési kérdést, hogy segítsen megérteni a használt besorolás teljesítményét. Nagyon természetes kérdése van: "ki az egyéni felhasználók számára, akikkel a modell meghalad kell megszerzéséhez > 50 ezer (TP + pi), hány sorolták megfelelően (TP)?" Erre a kérdésre választ megnézzük a **pontosság** a modell, amely megfelelően besorolt pozitívok az időarány, amíg: TP/(TP+FP). Egy másik gyakori kérdés az "kívül az összes nagy megszerzéséhez jövedelem az alkalmazottak > 50 ezer (TP + FN), hány volt az osztályozó által igénybe vett besorolása megfelelően (TP)". Ez valójában a **visszahívása**, vagy a valódi pozitív gyakorisága: az osztályozó TP/(TP+FN). Észreveheti, hogy nincs-e egy nyilvánvaló kompromisszum pontosság és a visszahívás közötti. Például adja meg egy viszonylag elosztott terhelésű adatkészletet, besorolás, amely előrejelzi a leginkább pozitív példányok kell magas visszaírási, de sok téves eredményez a negatív példányok annyi meglehetősen alacsony pontossága lenne misclassified. Egy diagram, hogyan változnak a két metrikák megtekintéséhez rákattinthat a a **PONTOSSÁG/VISSZAÍRÁSI** görbe az értékelés eredmény kimeneti oldalon (7. ábra bal felső része).
+Visszatérve a bevételek besorolása problémát, akkor szeretnénk tehet fel és számos értékelési kérdést, hogy segítsen megérteni a használt besorolás teljesítményét. Nagyon természetes kérdése van: "Ki az egyéni felhasználók számára, akikkel a modell meghalad kell megszerzéséhez > 50 ezer (TP + pi), hány sorolták megfelelően (TP)?" Erre a kérdésre választ megnézzük a **pontosság** a modell, amely megfelelően besorolt pozitívok az időarány, amíg: TP/(TP+FP). Egy másik gyakori kérdés az "kívül az összes nagy megszerzéséhez jövedelem az alkalmazottak > 50 ezer (TP + FN), hány volt az osztályozó által igénybe vett besorolása megfelelően (TP)". Ez valójában a **visszahívása**, vagy a valódi pozitív gyakorisága: Az osztályozó TP/(TP+FN). Észreveheti, hogy nincs-e egy nyilvánvaló kompromisszum pontosság és a visszahívás közötti. Például adja meg egy viszonylag elosztott terhelésű adatkészletet, besorolás, amely előrejelzi a leginkább pozitív példányok kell magas visszaírási, de sok téves eredményez a negatív példányok annyi meglehetősen alacsony pontossága lenne misclassified. Egy diagram, hogyan változnak a két metrikák megtekintéséhez rákattinthat a a **PONTOSSÁG/VISSZAÍRÁSI** görbe az értékelés eredmény kimeneti oldalon (7. ábra bal felső része).
 
 ![Bináris osztályozás kiértékelésének eredménye](./media/evaluate-model-performance/7.png)
 

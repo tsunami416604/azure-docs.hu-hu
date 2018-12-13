@@ -1,21 +1,22 @@
 ---
-title: Keresési találatok – a Bing Web Search API
+title: A Bing Web Search API válasz struktúra és válasz típusa
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a válasz típusát és a Bing Web Search API által érkező válaszokat.
+description: Ismerje meg a válasz típusát és a Bing Web Search API által használt válaszokat.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.custom: seodec2018
+ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123776"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250499"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>A Bing Web Search API válasz struktúra és válasz típusa  
 
@@ -128,7 +129,7 @@ Az alábbiakban látható egy példa a kapcsolódó lekérdezések használatát
 
 ## <a name="videos-answer"></a>Videók válasz
 
-A [videók](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) válasz videókat a Bing úgy Gondoltuk, is a lekérdezést a listáját tartalmazza. Minden egyes [videó](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) a lista tartalmazza az URL-címét a videót, az időtartam, a dimenziók és a kódolási formátum. A videó objektum tartalmazza a videó és a miniatűr dimenziók Miniatűr URL-CÍMÉT is.
+A [videók](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) válasz videókat a Bing úgy Gondoltuk, is a lekérdezést a listáját tartalmazza. Minden egyes [videó](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) a lista tartalmazza az URL-címét a videót, az időtartam, a dimenziók és a kódolási formátum. A videóobjektum a videó miniatűrjének URL-címét, illetve a miniatűr méreteit is tartalmazza.
 
 ```json
 {
@@ -166,13 +167,13 @@ A felhasználó eszközén, attól függően, általában jeleníti meg, a vide�
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Ahogy a felhasználó rámutat a miniatűr használhatja `motionThumbnailUrl` lejátszani a videót egy miniatűr verzióját. Győződjön meg arról, az attribútum a mozgásban lévő adatoknak egyaránt miniatűr, amikor megjeleníti azt.
+Ahogy a felhasználó rámutat a miniatűr használhatja `motionThumbnailUrl` lejátszani a videót egy miniatűr verzióját. Ügyeljen arra, hogy megjelenítse a mozgó miniatűr forrását.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Ha a felhasználó rákattint a miniatűr, az alábbiakban a videó a megjelenítési beállítások:
+Ha a felhasználó a miniatűrre kattint, a következő videómegtekintési lehetőségek állnak rendelkezésre:
 
 - Használat `hostPageUrl` a videó megtekintéséhez a gazdagép-webhelyen (például YouTube-on)
 - Használat `webSearchUrl` a videó megtekintéséhez a Bing video böngészőben
@@ -182,7 +183,7 @@ A videó válasz és videók kapcsolatos részletekért lásd: [Video Search API
 
 ## <a name="news-answer"></a>Hírek válasz
 
-A [hírek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) választ, amely a Bing úgy Gondoltuk, is a lekérdezést a hírek listáját tartalmazza. Minden egyes [hír](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) a lista tartalmazza a cikkhez tartozó nevét, leírását és URL-címet a cikket a gazdagép webhelyén. Ha a cikk tartalmaz egy képet, az objektum tartalmaz egy miniatűr kép.
+A [hírek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) választ, amely a Bing úgy Gondoltuk, is a lekérdezést a hírek listáját tartalmazza. A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét.
 
 ```json
 {
@@ -205,7 +206,7 @@ A [hírek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v
 }, ...
 ```
 
-Attól függően, a felhasználó eszközén egy részét a hírek, melyre a felhasználó a fennmaradó cikkek jeleníthető meg. Használat `name` és `url` hozhat létre egy hivatkozás, amely a felhasználót, hogy a news a cikk a gazdagép webhelyen. Ha a cikk tartalmaz egy képet, ellenőrizze a kattintható rendszerképpel `url`. Ügyeljen arra, hogy `provider` végző a cikket.
+Attól függően, a felhasználó eszközén egy részét a hírek, melyre a felhasználó a fennmaradó cikkek jeleníthető meg. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz egy képet, ellenőrizze a kattintható rendszerképpel `url`. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -295,7 +296,7 @@ A kifejezésnek a következő szimbólumokat tartalmazhatja:
 |*|Szorzás|
 |^|Energiagazdálkodási|
 |!|Faktoriális|
-|.|tizedes tört|
+|.|Tizedes tört|
 |()|Sorrend-csoportosítás|
 |[]|Függvény|
 

@@ -7,34 +7,33 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 ms.author: juliako
-ms.openlocfilehash: 2261b8fa496beaf2a14c9b949047b6a5cbc6ea32
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292378"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253204"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
-Ez a cikk bemutatja, hogyan tölthet fel videókat az Azure Video Indexerrel. A Video Indexer API két lehetőséget kínál a feltöltésre: 
+A Video Indexer API videók feltöltésekor feltöltése két lehetősége van: 
 
 * videó feltöltése egy URL-címről (előnyben részesített),
 * küldje el a videó fájlt, egy bájttömböt a kérelem törzsében szereplő
 * Használja meglévő Azure Media Services eszköz azáltal, hogy a [eszközazonosító](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (fizetős fiókok csak a támogatott).
 
-A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt.  
+A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt. <br/>A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
 
-A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
-
-> [!Note]
-> A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). <br/>Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
+A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a cikkben tárgyalt). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
     
 - A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
-- A bájttömb lehetőség 2 GB-ra van korlátozva, és 30 perc után átlépi az időkorlátot
+- Az URL-cím beállítással feltöltési mérete legfeljebb 10GB
+- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2GB 
+- A bájt tömb beállítás túllépi az időkorlátot 30 perc után
 - A `videoURL` paraméterben megadott URL-címet kódolni kell
 
 > [!Tip]
@@ -91,7 +90,7 @@ Az árat a kiválasztott indexelési lehetőség határozza meg.
 
 ### <a name="priority"></a>prioritás
 
-Videók a Video Indexer által indexelt prioritásuk szerint. Használja a **prioritású** paraméterrel adja meg az index prioritás. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett), és **magas**.
+Videók a Video Indexer által indexelt prioritásuk szerint. Használja a **prioritású** paraméterrel adja meg az index prioritás. A következő értékek érvényesek: **Alacsony**, **normál** (alapértelmezett), és **magas**.
 
 **Prioritás** paraméter csak a díjköteles fiók támogatott.
 

@@ -1,7 +1,7 @@
 ---
-title: Automatizált ML távoli számítási célnak beállítása
+title: Automatizált ML távoli számítási célnak
 titleSuffix: Azure Machine Learning service
-description: Ez a cikk azt ismerteti, hogyan hozhat létre automatizált gépi tanulás használatával az Azure Machine Learning szolgáltatással Data Science virtuális gép (DSVM) távoli számítási célt
+description: Ismerje meg, hogyan hozhat létre automatizált gépi tanulás használatával az Azure Machine Learning szolgáltatással Data Science virtuális gép (DSVM) távoli számítási célt
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8761b0671de38e7934df56847a5d0a7eafd3649
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097710"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256060"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 
@@ -41,7 +41,7 @@ ws = Workspace.from_config()
 
 A dsvm-hez a munkaterület létrehozása (`ws`) Ha még nem létezik. A DSVM korábban jött létre, ha ez a kód kihagyja a létrehozási folyamat, és betölti azokat a meglévő erőforrás részletei a `dsvm_compute` objektum.  
 
-**Becsült időtartam**: a virtuális gép létrehozása körülbelül 5 percet vesz igénybe.
+**Becsült időtartam**: A virtuális gép létrehozása körülbelül 5 percet vesz igénybe.
 
 ```python
 from azureml.core.compute import DsvmCompute
@@ -250,12 +250,12 @@ A DSVM alatt található naplók `/tmp/azureml_run/{iterationid}/azureml-logs`.
 
 Modell magyarázata adatok beolvasása lehetővé teszi a modellek átlátható képet adnak a háttér-futó növelése részletes információinak megtekintéséhez. Ebben a példában csak a legjobb regressziós modellt a modell magyarázatok fogja futtatni. Ha a folyamat minden modell futtat, azt jelentős futási idő eredményez. Modell magyarázata adatokat tartalmazza:
 
-* shape_values: alakzat lib által létrehozott információk magyarázata
-* expected_values: a modell X_train adatok beállítása a alkalmazni a várt értékkel.
+* shap_values: Alakzatadatok lib által létrehozott információk magyarázata
+* expected_values: A modell X_train adatok beállítása a alkalmazni a várt értékkel.
 * overall_summary: A modell szintű funkció fontossági értékek csökkenő sorrendben rendezve
 * overall: A szolgáltatások neveit, mint overall_summary ugyanabban a sorrendben rendezve
-* per_class_summary: az osztály szintű funkció fontossági értékek szerint rendezve csökkenő sorrendben. Csak besorolás esetben érhető el
-* per_class: hasonlóan per_class_summary ugyanabban a sorrendben rendezi a szolgáltatás nevét. Csak besorolás esetben érhető el
+* per_class_summary: Az osztály szintű funkció fontossági értékek csökkenő sorrendbe rendezve. Csak besorolás esetben érhető el
+* per_class: A szolgáltatások neveit, ugyanabban a sorrendben, ahogy per_class_summary rendezve. Csak besorolás esetben érhető el
 
 A következő kód használatával válassza ki a legjobb folyamatot, az ismétlések. A `get_output` metódus visszaadja a legjobb Futtatás és illesztett modell az utolsó hívás szélességhez tartozó.
 
@@ -268,7 +268,7 @@ Importálás a `retrieve_model_explanation` funkciót, és futtassa a legjobb mo
 ```python
 from azureml.train.automl.automlexplainer import retrieve_model_explanation
 
-shape_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
+shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
     retrieve_model_explanation(best_run)
 ```
 

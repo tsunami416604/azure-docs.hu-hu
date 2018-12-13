@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074418"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140608"
 ---
-# <a name="application-dashboard"></a>Alkalmazás irányítópult
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>Az irányítópult-modell és a használati statisztikáit
 Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 
 
 > [!CAUTION]
@@ -71,7 +71,7 @@ A **szándékot lebontása** jelenít meg információkat a leképezések címk�
 
 Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
 
-1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
+1. Kattintson a **további beállítás** ![további beállítások gomb-hozzáférési listához](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
 
     ![Leképezési lebontása listája](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
 2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
@@ -83,7 +83,7 @@ Az irányítópult egy bontása entitások címkézett utterances vagy a végpon
 
 Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
 
-1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
+1. Kattintson **további beállítás** ![további beállítások megadására szolgáló gombra listájának lekérése](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
 
     ![Entitáslista lebontása](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
 2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram ennek megfelelően megjelenítéséhez.

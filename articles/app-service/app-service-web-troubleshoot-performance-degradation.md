@@ -1,5 +1,5 @@
 ---
-title: Az App Service-WebApp teljesítményének lassú |} A Microsoft Docs
+title: Teljesítménycsökkenés – az Azure App Service – hibaelhárítás |} A Microsoft Docs
 description: Ez a cikk segítenek elhárítani a lassú webalkalmazások teljesítménybeli problémáinak Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 6ea0037611c1712e341bab601bdf14c2d742d1f8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: c0642b24fc8eefd210d5b6b58e7d0c772408166a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311585"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261041"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Lassú webalkalmazás teljesítménybeli problémáinak az Azure App Service hibaelhárítása
 Ez a cikk segítséget nyújt a lassú webalkalmazások alkalmazás teljesítménnyel kapcsolatos problémáinak elhárítása [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).

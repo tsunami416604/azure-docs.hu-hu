@@ -1,11 +1,10 @@
 ---
-title: Hogyan választható ki a gépi tanulási algoritmusok – Azure Machine Learning Studióban |} A Microsoft Docs
+title: Algoritmusok kiválasztása az Azure Machine Learning Studióban |} A Microsoft Docs
 description: Hogyan lehet felügyelt és nem felügyelt tanítás Learning az Azure Machine Learning Studio algoritmusok kiválasztása a fürtözés, a besorolási vagy regressziós kísérletekben.
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=pakalra, author=pakalra)
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: cgronlun
 tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
@@ -13,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 7ddfb98a884779385cde643e213bebb98b050436
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312418"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256927"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -44,7 +43,7 @@ Olvassa el a diagram elérési útja és algoritmus címkéinek "a  *&lt;görbe 
 Néha egyikük sem tökéletes választás. Arra szolgálnak, hogy a szabály az USB javaslatok, így nem kell aggódnia, hogy pontos lehet.
 E volt szó, az említett, amelyek több az adatszakértők a csak hogy keresse meg a legjobb algoritmus módja kipróbálni az összes őket.
 
-Íme egy példa a a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredményeket: [többcsoportos deklarációkkal összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Íme egy példa a a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.

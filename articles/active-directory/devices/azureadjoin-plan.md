@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309362"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310369"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD join implementáció megtervezésébe
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
 
 Az Azure AD join eszközök csatlakoztatása közvetlenül az Azure ad-ben csatlakoztatása a helyszíni Active Directory, miközben gondoskodik a felhasználók számára a hatékony és biztonságos nélkül teszi lehetővé. Az Azure AD join a nagyvállalatok igényeire felkészített ipari méretekben és a hatókörrel rendelkező üzemelő példányok esetében.   
@@ -91,9 +91,9 @@ Ezekben az esetekben nincs szükség, hogy konfiguráljon egy összevonási kisz
 
 Egy összevont környezetben, amely támogatja a WS-Trust, mind a WS-Fed protokollok Identitásszolgáltatóként kell rendelkeznie:
 
-- **WS-Fed:** eszköz csatlakoztatása az Azure ad-ben Ez a protokoll szükséges.
+- **WS-Fed:** Eszköz csatlakoztatása az Azure ad-ben Ez a protokoll szükséges.
 
-- **WS-Trust:** ezen protokoll megadása kötelező bejelentkezni egy az Azure AD-csatlakoztatott eszközön. 
+- **WS-Trust:** Ez a protokoll megadása kötelező bejelentkezni egy az Azure AD-csatlakoztatott eszközön. 
 
 Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD-csatlakozás nem natív módon működik. A Windows 10-es 1809 verziótól kezdve a felhasználók bejelentkezhet egy Azure AD-csatlakoztatott eszközre a SAML-alapú identitásszolgáltatóval keresztül [jelentkezzen be a Windows 10-es webalkalmazás](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Webes bejelentkezés jelenleg csak előzetes funkció.
 
@@ -102,7 +102,7 @@ Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD
 
 Intelligens kártyák vagy Tanúsítványalapú hitelesítés nem használható eszközök csatlakoztatása az Azure ad-ben. Intelligens kártyák azonban használható az Azure AD-csatlakoztatott eszközök bejelentkezni, ha az AD FS konfigurálva van.
 
-**Javaslat:** megvalósítása Windows Hello for Business erős, a jelszó nélküli hitelesítés Windows 10 rendszerű eszközökre.
+**Javaslat:** Alkalmazzon Windows Hello for Business erős, a jelszó nélküli hitelesítés Windows 10 rendszerű eszközökre.
 
 
 ### <a name="user-configuration"></a>Felhasználó konfigurációja
@@ -127,7 +127,7 @@ Az Azure AD join:
 
 - Nem alkalmazható a Windows- vagy más operációs rendszer korábbi verzióiban. Ha Windows 7 vagy 8.1 rendszerű eszközökön, frissítenie kell az Azure AD-csatlakozás telepítése Windows 10-re.
  
-**Javaslat:** mindig használja a legújabb Windows 10-es kiadásra frissített funkciók előnyeinek kihasználása érdekében.
+**Javaslat:** Mindig használja a legújabb Windows 10-es kiadásra frissített funkciókat.
 
 
 ### <a name="management-platform"></a>Felügyeleti platform
@@ -155,7 +155,7 @@ Ha az MDM-megoldáson keresztül az Azure AD-alkalmazásgyűjtemény nem érhet�
 
 Megosztott kezelés – SCCM segítségével felügyelheti az eszközöket a bizonyos elemeinek keresztül az MDM-platformmal kézbesítési házirendek. A Microsoft Intune lehetővé teszi, hogy a megosztott kezelési az SCCM. További információkért lásd: [megosztott kezelés Windows 10-es eszközök](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Ha használ egy kivételével az Intune mobileszköz-kezelési termékkel, ellenőrizni kell a megfelelő közös felügyeleti forgatókönyvek MDM-szolgáltatónál.
 
-**Javaslat:** fontolja meg a mobileszköz-kezelési csak kezelése az Azure ad-hez csatlakoztatott eszközök.
+**Javaslat:** Fontolja meg a mobileszköz-kezelési, csak a webszolgáltatások az Azure AD-hez csatlakoztatott eszközök.
 
 
 
@@ -185,13 +185,13 @@ Ha az alkalmazások egyéni beépített és/vagy a helyszínen üzemeltetett kel
 
 Ha az AD FS használja, lásd: [ellenőrzése és felügyelete egyszeri bejelentkezéssel az AD FS-sel](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Javaslat:** fontolja meg a felhőben (például Azure) üzemeltetési és integrálása az Azure AD-hez jobb felhasználói élményt.
+**Javaslat:** Vegye figyelembe a felhőben (például Azure) üzemeltetési és integrálása az Azure AD-hez jobb felhasználói élményt.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Örökölt protokollok hagyatkoznia a helyszíni alkalmazások
 
 Ha az eszköz egy olyan tartományvezérlőre, amely hozzáféréssel rendelkezik felhasználók get egyszeri bejelentkezés az Azure AD-hez csatlakoztatott eszközök. 
 
-**Javaslat:** telepítés [Azure AD alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ahhoz, hogy biztonságos hozzáférést ezekhez az alkalmazásokhoz.
+**Javaslat:** Üzembe helyezése [Azure AD alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ahhoz, hogy biztonságos hozzáférést ezekhez az alkalmazásokhoz.
 
 
 ### <a name="on-premises-network-shares"></a>A helyszíni hálózati megosztások
@@ -209,11 +209,11 @@ Nyomtatók nem található meg a csak felhőalapú környezetekben, miközben a 
 
 Az Azure AD-csatlakoztatott eszközök nem támogatják a helyszíni alkalmazások hagyatkoznia a számítógép-hitelesítés. 
 
-**Javaslat:** fontolja meg ezek az alkalmazások kivonása és a modern alternatívák áthelyezése.
+**Javaslat:** Fontolja meg ezek az alkalmazások kivonása és a modern alternatívák áthelyezése.
 
 ### <a name="remote-desktop-services"></a>Távoli asztali szolgáltatások
 
-Az Azure AD-csatlakoztatott eszközök távoli asztali kapcsolatot igényel a gazdagépen vagy az Azure AD-hez csatlakoztatott kell vagy hibrid Azure AD-hez. A távoli asztal nem csatlakozó vagy nem Windows-eszközről nem támogatott. További információkért lásd: [távoli az Azure ad Connect csatlakozó számítógépek](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
+Az Azure AD-csatlakoztatott eszközök távoli asztali kapcsolatot igényel a gazdagépen vagy az Azure AD-hez csatlakoztatott kell vagy hibrid Azure AD-hez. A távoli asztal nem csatlakozó vagy nem Windows-eszközről nem támogatott. További információkért lásd: [távoli az Azure ad Connect csatlakozó számítógépek](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Az üzembe helyezési lehetőségek ismertetése
@@ -232,7 +232,7 @@ Az Azure AD-csatlakozás a következő módszerekkel helyezheti üzembe a:
 A következő három módszer összehasonlítása 
 
  
-||A telepítő önkiszolgáló|Windows Autopilot|Csoportos regisztráció|
+||A telepítő önkiszolgáló|Windows Autopilot|Tömeges regisztrálás|
 |---|---|---|---|
 |Állítsa be a felhasználói műveletet igényel|Igen|Igen|Nem|
 |Informatikai erőfeszítésekre van szükség|Nem|Igen|Igen|
@@ -310,9 +310,9 @@ Válassza ki **néhány** vagy **összes** a telepítés hatóköre alapján.
 
 A hatókör alapján, az alábbiak történnek az alábbi lehetőségek közül: 
 
-- **Felhasználó szerepel a mobileszköz-kezelési hatókör**: Ha az Azure AD Premium előfizetéssel rendelkezik, együtt az Azure AD-csatlakozás automatikus MDM-regisztráció. Az összes hatókörön belüli felhasználók rendelkeznie kell a megfelelő licenccel a mobileszköz-kezelést. MDM-regisztráció ebben a forgatókönyvben sikertelen lesz, ha az Azure AD-csatlakozás is vissza lesz állítva.
+- **Felhasználó szerepel a mobileszköz-kezelési hatókör**: Ha az Azure AD Premium előfizetéssel rendelkezik, és az Azure AD-csatlakozás automatizált MDM-regisztráció. Az összes hatókörön belüli felhasználók rendelkeznie kell a megfelelő licenccel a mobileszköz-kezelést. MDM-regisztráció ebben a forgatókönyvben sikertelen lesz, ha az Azure AD-csatlakozás is vissza lesz állítva.
     
-- **Felhasználó nem szerepel a mobileszköz-kezelési hatókör**: Ha a felhasználók nem szerepelnek a mobileszköz-kezelési hatókör, az Azure AD-csatlakozás bármely MDM-regisztráció nélkül befejeződött-e. Az eredmény egy nem felügyelt eszközt.
+- **Felhasználó nem szerepel a mobileszköz-kezelési hatókör**: Ha a felhasználók nem szerepelnek a mobileszköz-kezelési hatókör, az Azure AD-csatlakozás semmilyen MDM-regisztráció nélkül befejeződött. Az eredmény egy nem felügyelt eszközt.
 
 
 ### <a name="mdm-urls"></a>MDM URL-címek
@@ -340,7 +340,7 @@ Az Azure AD-csatlakozás a MAM nem vonatkozik.
 
 Ha szeretné engedélyezni, állapothordozás az Azure ad-hez, hogy a felhasználók a beállítások szinkronizálhatja különböző eszközökön, lásd: [engedélyezése vállalati állapot központi az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable). 
 
-**Az ajánlás**: Ezzel a beállítás akkor is a hibrid Azure AD-csatlakoztatott eszközök.
+**Az ajánlás**: Engedélyezze ezt a beállítást akkor is a hibrid Azure AD-csatlakoztatott eszközök.
 
 
 ## <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása

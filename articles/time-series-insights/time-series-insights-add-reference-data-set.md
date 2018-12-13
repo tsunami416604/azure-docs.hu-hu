@@ -1,5 +1,5 @@
 ---
-title: Referencia-adatkészlet hozzáadása Azure Time Series Insights-környezete
+title: Az Azure Time Series Insights referencia - adatok hogyan a referencia-adatkészlet hozzáadása Azure Time Series Insights-környezethez |} A Microsoft Docs
 description: Ez a cikk ismerteti, mivel megvédi az adatokat Azure Time Series Insights-környezete egy referencia-adatkészlet hozzáadása.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: de5f4735e7dde7a3e631d14c83d42ccb9fd5c9db
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364737"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273834"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>A Time Series Insights-környezethez az Azure portal használatával egy referencia-adatkészlet létrehozása
 
@@ -59,9 +60,9 @@ Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Ez azt jelent
    - Illessze be az adatokat a szövegszerkesztőben. Ezután válassza ki **referenciaadatok elemzése** gombra.
    - Válassza ki **fájl kiválasztása** gombra kattintva adhat hozzá adatokat egy helyi szöveges fájlból. 
 
-   Illessze be például a CSV-adatokat: ![beillesztett CSV-adatokat](media/add-reference-data-set/csv_data_pasted.png)
+   Illessze be például a CSV-adatokat: ![A beillesztett CSV-adatokat](media/add-reference-data-set/csv_data_pasted.png)
 
-   Illessze be például a JSON-tömb adatok: ![illessze be a JSON-adatok](media/add-reference-data-set/json_data_pasted.png)
+   Illessze be például a JSON-tömb adatokat: ![Illessze be a JSON-adatok](media/add-reference-data-set/json_data_pasted.png)
 
    Az adatértékek elemzése hiba történik, ha a hiba vörös színnel jelenik meg a lap alján például `CSV parsing error, no rows extracted`.
 

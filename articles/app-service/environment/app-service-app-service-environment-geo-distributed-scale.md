@@ -1,5 +1,5 @@
 ---
-title: Földrajzi alapú méretezés App Service-környezetekkel
+title: Földrajzilag elosztott méretezés App Service Environment-környezetek – Azure
 description: Ismerje meg, hogyan horizontális skálázása a Traffic Manager és az App Service Environment-környezetek a földrajzi elosztás használó alkalmazásokat.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.custom: seodec18
+ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213248"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273867"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
 ## <a name="overview"></a>Áttekintés
@@ -42,18 +43,18 @@ Ez a témakör további részében a mintaalkalmazást, több App Service Enviro
 ## <a name="planning-the-topology"></a>A topológia tervezése
 Egy elosztott alkalmazás üzembe helyezésének előkészítése kialakítására, mielőtt segít előre néhány információt az adatokat.
 
-* **Az alkalmazás egyéni tartomány:** Mi az az egyéni tartománynév használó ügyfelek számára a hozzáférést az alkalmazáshoz?  A mintaalkalmazás az egyéni tartománynév van *www.scalableasedemo.com*
-* **Traffic Manager-tartományra:** egy tartománynevet kell választani, amikor létrehozza az [Azure Traffic Manager-profil][AzureTrafficManagerProfile].  Ezt a nevet a rendszer kombinálja a *trafficmanager.net* regisztrálni egy tartományban bejegyzést a Traffic Manager által felügyelt utótag.  A mintaalkalmazás a név kiválasztott van *méretezhető ase bemutató*.  Ennek eredményeképpen a teljes tartománynévnek a Traffic Manager által felügyelt rendszer *méretezhető ase demo.trafficmanager.net*.
-* **Az alkalmazás üzembe helyezésének előkészítése méretezési stratégia:** az alkalmazás erőforrás-igényű között szétosztani több App Service-környezetek egy adott régióban?  Több régióban?  A vegyes plaformspecifikus mindkét megközelítés?  A döntést kell alapulnia elvárásainak, ahonnan az ügyfél forgalom lesz származnak, valamint arról, hogy a többi egy alkalmazást támogató háttér-infrastruktúra is méretezhető.  Például egy 100 %-os állapot nélküli alkalmazással egy alkalmazást rugalmasan méretezhetők több App Service Environment-környezetek kombinációját használó Azure-régiónként, szorozva a több Azure-régióban üzembe helyezett App Service-környezetek.  A 15 + nyilvános Azure-régióban elérhető közül választhat ügyfelei valóban hozhat létre egy világméretű kapacitású alkalmazás üzembe helyezésének előkészítése.  Az ebben a cikkben használt mintaalkalmazás három App Service Environment-környezetek létrehozott egy Azure-régióban (USA déli középső Régiója).
-* **Az App Service Environment-környezetek elnevezési:** minden App Service Environment-környezet megköveteli egy egyedi nevet.  Egy vagy két App Service Environment-környezetek túl hasznos van egy elnevezési konvenciója segítségével azonosíthatja az egyes App Service Environment-környezet.  A mintaalkalmazás egy egyszerű elnevezési konvenciót lett megadva.  A neve, a három App Service Environment-környezetek *fe1ase*, *fe2ase*, és *fe3ase*.
-* **Az alkalmazások elnevezési:** az alkalmazás több példánya telepítve lesz, mivel egy nevet az üzembe helyezett alkalmazás minden példánya esetében van szükség.  App Service Environment-környezetek egy kis ismert, de igen kényelmes funkciója, hogy használható-e az alkalmazás névvel több App Service Environment-környezetek között.  Mivel minden App Service Environment-környezet rendelkezik egy egyedi tartományutótagot, a fejlesztők választhat újrafelhasználását pontos ugyanazon alkalmazás neve minden környezetben.  Egy fejlesztő például rendelkezhet elnevezése a következő alkalmazásokat: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*stb.  A mintaalkalmazás azonban minden alkalmazáspéldány is rendelkezik egy egyedi nevet.  A használt alkalmazás-példány neve *webfrontend1*, *webfrontend2*, és *webfrontend3*.
+* **Az alkalmazás egyéni tartomány:**  Mi az az egyéni tartománynév használó ügyfelek számára a hozzáférést az alkalmazáshoz?  A mintaalkalmazás az egyéni tartománynév van *www.scalableasedemo.com*
+* **Traffic Manager-tartományt:**  Egy tartománynevet kell választani, amikor létrehozza az [Azure Traffic Manager-profil][AzureTrafficManagerProfile].  Ezt a nevet a rendszer kombinálja a *trafficmanager.net* regisztrálni egy tartományban bejegyzést a Traffic Manager által felügyelt utótag.  A mintaalkalmazás a név kiválasztott van *méretezhető ase bemutató*.  Ennek eredményeképpen a teljes tartománynévnek a Traffic Manager által felügyelt rendszer *méretezhető ase demo.trafficmanager.net*.
+* **Az alkalmazás üzembe helyezésének előkészítése méretezési stratégia:**  Több App Service-környezetek egy régió között szétosztani a alkalmazás erőforrás-igényű?  Több régióban?  A vegyes plaformspecifikus mindkét megközelítés?  A döntést kell alapulnia elvárásainak, ahonnan az ügyfél forgalom lesz származnak, valamint arról, hogy a többi egy alkalmazást támogató háttér-infrastruktúra is méretezhető.  Például egy 100 %-os állapot nélküli alkalmazással egy alkalmazást rugalmasan méretezhetők több App Service Environment-környezetek kombinációját használó Azure-régiónként, szorozva a több Azure-régióban üzembe helyezett App Service-környezetek.  A 15 + nyilvános Azure-régióban elérhető közül választhat ügyfelei valóban hozhat létre egy világméretű kapacitású alkalmazás üzembe helyezésének előkészítése.  Az ebben a cikkben használt mintaalkalmazás három App Service Environment-környezetek létrehozott egy Azure-régióban (USA déli középső Régiója).
+* **Az App Service Environment-környezetek elnevezési:**  Minden App Service Environment-környezet megköveteli egy egyedi nevet.  Egy vagy két App Service Environment-környezetek túl hasznos van egy elnevezési konvenciója segítségével azonosíthatja az egyes App Service Environment-környezet.  A mintaalkalmazás egy egyszerű elnevezési konvenciót lett megadva.  A neve, a három App Service Environment-környezetek *fe1ase*, *fe2ase*, és *fe3ase*.
+* **Az alkalmazások elnevezési:**  Mivel az alkalmazás több példányát telepíti, egy nevet az üzembe helyezett alkalmazás minden egyes példányánál van szükség.  App Service Environment-környezetek egy kis ismert, de igen kényelmes funkciója, hogy használható-e az alkalmazás névvel több App Service Environment-környezetek között.  Mivel minden App Service Environment-környezet rendelkezik egy egyedi tartományutótagot, a fejlesztők választhat újrafelhasználását pontos ugyanazon alkalmazás neve minden környezetben.  Egy fejlesztő például rendelkezhet elnevezése a következő alkalmazásokat: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*stb.  A mintaalkalmazás azonban minden alkalmazáspéldány is rendelkezik egy egyedi nevet.  A használt alkalmazás-példány neve *webfrontend1*, *webfrontend2*, és *webfrontend3*.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager-profil beállítása
 Ha egy alkalmazás több példánya telepítve vannak, több App Service Environment-környezetek, az egyes alkalmazás-példányok regisztrálható a Traffic Managerrel.  A mintaalkalmazás egy Traffic Manager profil van szükség a *méretezhető ase demo.trafficmanager.net* ügyfelek, amelyek is irányíthatja a következő telepített alkalmazás-példányra:
 
-* **webfrontend1.fe1ase.p.azurewebsites.NET:** a mintaalkalmazás az első App Service-környezetben telepített példányát.
-* **webfrontend2.fe2ase.p.azurewebsites.NET:** a mintaalkalmazást, a második App Service-környezetben telepített példányát.
-* **webfrontend3.fe3ase.p.azurewebsites.NET:** a mintaalkalmazást a harmadik App Service-környezetben telepített példányát.
+* **webfrontend1.fe1ase.p.azurewebsites.NET:**  A mintaalkalmazás az első App Service-környezetben telepített példányát.
+* **webfrontend2.fe2ase.p.azurewebsites.NET:**  A mintaalkalmazás a második App Service-környezetben telepített példányát.
+* **webfrontend3.fe3ase.p.azurewebsites.NET:**  A mintaalkalmazás a harmadik App Service-környezetben telepített példányát.
 
 Több Azure App Service végpontot, az összes futó regisztrálja a legegyszerűbb módja a **ugyanazon** az PowerShell-lel az Azure-régióban, [Azure Resource Manager Traffic Manager-támogatás] [ ARMTrafficManager].  
 

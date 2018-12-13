@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 51c1a9a6fe997249f543348c95c0c02dfa47ceaf
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e929ddec084c4abbdb572943f11f135cddd49045
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101619"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254843"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
-Ha egy Azure IoT Hubhoz Modbus TCP vagy RTU protokollt használó IoT-eszközöket kíván csatlakoztatni, használjon egy IoT Edge-eszközt átjáróként. Az átjáróeszköz beolvassa az adatokat a Modbus-eszközökből, majd elküldi ezeket az adatokat a felhőbe egy támogatott protokoll használatával. 
+Ha egy Azure IoT Hubhoz Modbus TCP vagy RTU protokollt használó IoT-eszközöket kíván csatlakoztatni, használjon egy IoT Edge-eszközt átjáróként. Az átjáróeszköz beolvassa az adatokat a Modbus-eszközökből, majd elküldi ezeket az adatokat a felhőbe egy támogatott protokoll használatával.
 
 ![Az IoT Hubhoz Edge-átjárón keresztül csatlakozó Modbus-eszközök](./media/deploy-modbus-gateway/diagram.png)
 
-Ez a cikk bemutatja, hogyan hozható létre saját tárolórendszerkép egy Modbus-modulhoz (vagy használhat előre létrehozott mintát), és ezután ez hogyan helyezhető üzembe az átjáróként szolgáló IoT Edge-eszközön. 
+Ez a cikk bemutatja, hogyan hozható létre saját tárolórendszerkép egy Modbus-modulhoz (vagy használhat előre létrehozott mintát), és ezután ez hogyan helyezhető üzembe az átjáróként szolgáló IoT Edge-eszközön.
 
-A cikk azt feltételezi, hogy Modbus TCP protokollt használ. A modul Modbus RTU támogató konfigurálásával kapcsolatos további információkért lásd: a [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. 
+A cikk azt feltételezi, hogy Modbus TCP protokollt használ. A modul Modbus RTU támogató konfigurálásával kapcsolatos további információkért lásd: a [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure IoT Edge-eszköz. Az eszköz beállítását bemutató cikkek: [Azure IoT Edge üzembe helyezése szimulált eszközön Windows](quickstart.md) vagy [Linux rendszeren](quickstart-linux.md). 
+* Azure IoT Edge-eszköz. Az eszköz beállítását bemutató cikkek: [Azure IoT Edge üzembe helyezése szimulált eszközön Windows](quickstart.md) vagy [Linux rendszeren](quickstart-linux.md).
 * Az IoT Edge-eszköz elsődleges kulcsának kapcsolati sztringje.
 * A Modbus TCP-t támogató fizikai vagy szimulált Modbus-eszköz.
 
 ## <a name="prepare-a-modbus-container"></a>Modbus-tároló előkészítése
 
-Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A mintamodul használatához lépjen [A megoldás futtatása](#run-the-solution) szakaszhoz, és adja meg az alábbiakat a Rendszerkép URI-ja értékeként: 
+Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A mintamodul használatához lépjen [A megoldás futtatása](#run-the-solution) szakaszhoz, és adja meg az alábbiakat a Rendszerkép URI-ja értékeként:
 
 ```URL
 mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
-Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez, nincs-e egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, a tárolórendszerképek beállításjegyzékbe való közzétételének módjáról és az egyéni modulok az eszközén való üzembe helyezéséről a [C# IoT Edge-modul fejlesztését és üzembe helyezését](tutorial-csharp-module.md) ismertető részben talál útmutatást. 
+Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez, nincs-e egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, a tárolórendszerképek beállításjegyzékbe való közzétételének módjáról és az egyéni modulok az eszközén való üzembe helyezéséről a [C# IoT Edge-modul fejlesztését és üzembe helyezését](tutorial-csharp-module.md) ismertető részben talál útmutatást.
 
 
 ## <a name="run-the-solution"></a>A megoldás futtatása
@@ -54,14 +54,14 @@ Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez
    5. Másolja az alábbi JSON-t a szövegmezőbe. Módosítsa a **SlaveConnection** értékét a Modbus-eszköz IPv4-címére.
 
       ```JSON
-      {  
+      {
         "properties.desired":{
           "PublishInterval":"2000",
           "SlaveConfigs":{
             "Slave01":{
               "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
               "Operations":{
-                "Op01":{  
+                "Op01":{
                   "PollingInterval": "1000",
                   "UnitId":"1",
                   "StartAddress":"400001",
@@ -77,7 +77,7 @@ Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez
 
    6. Kattintson a **Mentés** gombra.
 5. Az **Add Modules** (Modulok hozzáadása) lépésben kattintson a **Next** (Tovább) gombra.
-7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. Ebben az útvonalban a „modbusOutput” az a végpont, amelyet a Modbus-modul használ az adatok kimenetének küldéséhez, az „upstream” pedig egy speciális cél, amely alapján az Edge Hub az IoT Hubnak küldi az üzeneteket. 
+7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. Ebben az útvonalban a „modbusOutput” az a végpont, amelyet a Modbus-modul használ az adatok kimenetének küldéséhez, az „upstream” pedig egy speciális cél, amely alapján az Edge Hub az IoT Hubnak küldi az üzeneteket.
    ```JSON
    {
     "routes": {
@@ -86,8 +86,8 @@ Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez
    }
    ```
 
-8. Kattintson a **Tovább** gombra. 
-9. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre. 
+8. Kattintson a **Tovább** gombra.
+9. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre.
 10. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Látható, az új **modbus** modul futtatása az IoT Edge-futtatókörnyezettel együtt.
 
 ## <a name="view-data"></a>Adatok megtekintése
@@ -96,7 +96,7 @@ Tekintse meg a Modbus-modulon keresztül érkező adatokat:
 docker logs -f modbus
 ```
 
-Az eszköz által küldött telemetriát is megtekintheti a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Az eszköz által küldött telemetriát is megtekintheti a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ## <a name="next-steps"></a>További lépések
 

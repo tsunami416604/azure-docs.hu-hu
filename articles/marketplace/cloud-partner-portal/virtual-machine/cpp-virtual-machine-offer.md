@@ -12,23 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3682d18fb849b2d851bae0986f9e61f216aaf2c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639777"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188758"
 ---
 # <a name="virtual-machine-offer"></a>Virtuálisgép-ajánlat
 
-Ez a szakasz ismerteti a közzététele egy virtuális gép (VM) elemét, és célja az, a közzétevő számára készült útmutató a [Azure Marketplace-en](https://azuremarketplace.microsoft.com).  A szempontból azt a következő fő részre oszlik:
+|    |    |
+|-----------------------------------------------------------------|------------------------------------------|
+| Ez a szakasz ismerteti, hogyan tehet közzé egy új virtuális gép ajánlattal a [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Mind a Windows-alapú és Linux-alapú virtuális gépek, egy operációs rendszer virtuális merevlemezről (VHD) és a nulla vagy több adatokat VHD-ket tartalmazó biztosítunk támogatást. | ![virtuális gép ikonja](./media/virtual-machine-icon.png)  |
 
-- [Előfeltételek](./cpp-prerequisites.md) – műszaki és üzleti követelményeit létrehozása vagy egy Virtuálisgép-ajánlat közzététele előtt
-- [Hozzon létre Virtuálisgép-ajánlat](./cpp-create-offer.md) -listák az új virtuális gép létrehozásához szükséges lépéseket kínálnak bejegyzés használatával a [Cloud Partner portálra](https://cloudpartner.azure.com)
-- [Hozzon létre a virtuális gép technikai eszközök](./cpp-create-technical-assets.md) – a műszaki létrehozása eszközök egy Virtuálisgép-megoldás és a egy virtuális Gépet, a csomag konfigurálása az Azure Marketplace-en ajánlat
-- [Virtuálisgép-ajánlat közzététele](./cpp-publish-offer.md) – az ajánlat közzététele az Azure piactér bejelentése
+
+## <a name="publishing-overview"></a>Közzétételi áttekintése
+
+Az alábbi videó [optimalizálása az Azure Marketplace-en ajánlat](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), megadja az alkalmazásukhoz az Azure piactéren, beleértve a felhasználói élmény optimalizálása (egy virtuális gép megoldás használatával), a marketplace-en közzététele a termék oldalát és választható Test Drive felhasználói élményt hogyan felhasználói érdeklődők jönnek létre, és hogyan lehet felhasználni azokat, és optimalizálhatja a customer engagement.
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
 
 
 ## <a name="vm-publishing-process-flow"></a>Virtuális gép közzétételi folyamata

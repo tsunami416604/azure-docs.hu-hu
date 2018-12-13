@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282139"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166132"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js használatával Beszélgetéstanuló modell létrehozása
 
@@ -61,7 +61,7 @@ Projekt Beszélgetéstanuló egy SDK-t ad hozzá a robot és a egy felhőalapú 
     > [!NOTE]
     > Során `npm install`, figyelmen kívül hagyhatja ezt a hibát, akkor fordul elő, ha: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Adja meg:
+2. Konfigurálás:
 
    Hozzon létre egy fájlt nevű `.env` a címtárban `cl-bot-01`.  A fájl tartalmának kell lennie:
 
@@ -164,11 +164,11 @@ Ez az a szabványos konfigurációt, amely lehetővé teszi a robot helyileg tö
 
 - Kérdéseit [Stack Overflow](https://stackoverflow.com) az "a microsoft cognitive"
 - A szolgáltatás igénylése a [User Voice lap](https://aka.ms/conversation-learner-uservoice)
-- Nyisson egy problémát a a [github-adattár](https://github.com/Microsoft/ConversationLearner-Samples)
+- Nyisson egy problémát a a [GitHub-adattár](https://github.com/Microsoft/ConversationLearner-Samples)
 
 ## <a name="contributing"></a>Közreműködő
 
-A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információ: a [Gyakori](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon [ opencode@microsoft.com ](mailto:opencode@microsoft.com) a további kérdéseit és észrevételeit.
+A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információért tekintse át a [viselkedési szabályzat GYIK dokumentumát](https://opensource.microsoft.com/codeofconduct/faq/), illetve további kérdések vagy megjegyzések esetén írjon az [opencode@microsoft.com](mailto:opencode@microsoft.com) e-mail-címre.
 
 ## <a name="source-repositories"></a>Verziókezelők
 

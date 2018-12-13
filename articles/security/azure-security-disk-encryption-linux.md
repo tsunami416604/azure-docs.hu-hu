@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7c8833f2c6d9a4ae8fdd9eba8ca6bb4f850b5ca7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d0c9d2084e3dd6b0b6b4bd85a60ad998b54f45a7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100786"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317491"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése 
 
@@ -65,7 +65,7 @@ A kulcs-titkosítás – key paraméter értékének szintaxisa a KEK, mint a te
      az vm encryption show --name "MySecureVM" --resource-group "MySecureRg"
      ```
 
-- **Tiltsa le a titkosítást:** titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.
+- **Tiltsa le a titkosítást:** Titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.
 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type DATA
@@ -74,7 +74,7 @@ A kulcs-titkosítás – key paraméter értékének szintaxisa a KEK, mint a te
 ### <a name="bkmk_RunningLinuxPSH"> </a> Engedélyezheti a titkosítást egy meglévő vagy futó Linux rendszerű virtuális gép PowerShell-lel
 Használja a [Set-azurermvmdiskencryptionextension parancs](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) parancsmag, amellyel engedélyezheti a titkosítást az Azure-ban futó IaaS virtuális gép. 
 
--  **Egy futó virtuális gép titkosítása:** az alábbi parancsfájlt inicializálja a változók és a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket. Szükség lehet a – VolumeType paraméter hozzáadása, ha épp titkosít, adatlemez, és nem az operációsrendszer-lemez. 
+-  **Egy futó virtuális gép titkosítása:** Az alábbi parancsfájlt inicializálja a változók és a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket. Szükség lehet a – VolumeType paraméter hozzáadása, ha épp titkosít, adatlemez, és nem az operációsrendszer-lemez. 
 
      ```azurepowershell-interactive
       $rgName = 'MySecureRg';
@@ -86,7 +86,7 @@ Használja a [Set-azurermvmdiskencryptionextension parancs](/powershell/module/a
 
       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
     ```
-- **Futó virtuális gépek KEK használatával titkosítása:** szükség lehet a – VolumeType paraméter hozzáadása, ha épp titkosít, adatlemez, és nem az operációsrendszer-lemez. 
+- **Futó virtuális gépek KEK használatával titkosítása:** Szükség lehet a – VolumeType paraméter hozzáadása, ha épp titkosít, adatlemez, és nem az operációsrendszer-lemez. 
 
      ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -111,7 +111,7 @@ Használja a [Set-azurermvmdiskencryptionextension parancs](/powershell/module/a
      Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName MySecureRg -VMName MySecureVM
      ```
     
-- **Tiltsa le a lemeztitkosítás:** letiltja a titkosítást, használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.
+- **Lemeztitkosítás letiltása:** A titkosítás letiltásához használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.
      
      ```azurepowershell-interactive 
      Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM'
@@ -173,13 +173,13 @@ Használja a [az vmss-titkosítás engedélyezése](/cli/azure/vmss/encryption#a
      az vmss encryption enable --resource-group "MySecureRG" --name "MySecureVmss" --disk-encryption-keyvault "MySecureVault" --key-encryption-key "MyKEK" --key-encryption-keyvault "MySecureVault" 
 
      ```
-- **Egy virtuálisgép-méretezési csoportot a titkosítási állapot beolvasása:** használata [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show)
+- **Adattitkosítás állapotának lekérése egy virtuálisgép-méretezési csoportot:** Használat [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show)
 
     ```azurecli-interactive
      az vmss encryption show --resource-group "MySecureRG" --name "MySecureVmss"
     ```
 
-- **Egy virtuálisgép-méretezési csoportot titkosításának letiltása**: használata [az vmss titkosítás letiltása](/cli/azure/vmss/encryption#az-vmss-encryption-disable)
+- **Egy virtuálisgép-méretezési csoportot titkosításának letiltása**: Használat [az vmss titkosítás letiltása](/cli/azure/vmss/encryption#az-vmss-encryption-disable)
     ```azurecli-interactive
      az vmss encryption disable --resource-group "MySecureRG" --name "MySecureVmss"
     ```
@@ -199,7 +199,8 @@ Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-###  <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>Virtuálisgép-méretezési csoportok az Azure PowerShell használatával titkosítása
+### <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>Virtuálisgép-méretezési csoportok az Azure PowerShell használatával titkosítása
+
 Használja a [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension) parancsmag, amellyel engedélyezheti a titkosítást egy Windows virtuálisgép-méretezési csoportot. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket.
 
 -  **A futó virtuálisgép-méretezési titkosítása**:
@@ -225,19 +226,29 @@ Használja a [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/azurerm
      Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
     ```
 
-- **Egy virtuálisgép-méretezési csoportot a titkosítási állapot beolvasása:** használja a [Get-AzureRmVmssVMDiskEncryption](/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption) parancsmagot.
+- **Adattitkosítás állapotának lekérése egy virtuálisgép-méretezési csoportot:** Használja a [Get-AzureRmVmssVMDiskEncryption](/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption) parancsmagot.
     
     ```powershell
     get-AzureRmVmssVMDiskEncryption -ResourceGroupName "MySecureRG" -VMScaleSetName "MySecureVmss"
     ```
 
-- **Egy virtuálisgép-méretezési csoportot titkosításának letiltása**: használja a [Disable-AzureRmVmssDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption) parancsmagot. 
+- **Egy virtuálisgép-méretezési csoportot titkosításának letiltása**: Használja a [Disable-AzureRmVmssDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption) parancsmagot. 
 
     ```powershell
     Disable-AzureRmVmssDiskEncryption -ResourceGroupName "MySecureRG" -VMScaleSetName "MySecureVmss"
     ```
 
+### <a name="azure-resource-manager-templates-for-linux-virtual-machine-scale-sets"></a>Az Azure Resource Manager-sablonokkal Linux virtuálisgép-méretezési csoportok
 
+Titkosítása és visszafejtése Linux virtuálisgép-méretezési csoportok, az Azure Resource Manager-sablonokkal és az alábbi utasításokat:
+
+- [Linux rendszerű virtuális gép méretezési titkosításának engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [Virtuálisgép-méretezési készlet Linuxos virtuális gépek a jumpbox üzembe, és engedélyezheti a titkosítást a Linux rendszerű Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+- [Linux Virtuálisgép-méretezési készlet titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+     1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
+     2. Töltse ki a kötelező mezőket, majd fogadja el a feltételeket és kikötéseket.
+     3. Kattintson a **beszerzési** a sablon üzembe helyezéséhez.
 
 ## <a name="bkmk_EFA"> </a>A Linux rendszerű IaaS virtuális gépek adatlemezét EncryptFormatAll szolgáltatással
 A **EncryptFormatAll** paraméter lerövidíti a Linux data lemezek titkosítását. Partíciók megfelelnek bizonyos feltételeknek lesz formázva (az aktuális fájlrendszer). Majd azok lesz újra kell csatlakoztatni vissza a hol történt a parancs végrehajtása előtt. Ha kizár egy olyan adatok lemezt, amely megfelel a feltételeknek, válassza le azt a parancs futtatása előtt.
@@ -271,7 +282,7 @@ Használja a [az vm encryption engedélyezése](/cli/azure/vm/encryption#az-vm-e
 ### <a name="bkmk_EFAPSH"> </a> Használja a EncryptFormatAll paraméterrel együtt egy PowerShell-parancsmag
 Használja a [Set-azurermvmdiskencryptionextension parancs](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) parancsmagot a [EncryptFormatAll paraméter](https://www.powershellgallery.com/packages/AzureRM/5.0.0). 
 
-**EncryptFormatAll egy futó virtuális gép titkosítása:** tegyük fel, az alábbi parancsfájlt inicializálja a változók és a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja a EncryptFormatAll paraméterrel. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket.
+**EncryptFormatAll egy futó virtuális gép titkosítása:** Tegyük fel az alábbi parancsfájlt inicializálja a változók és a EncryptFormatAll paraméter a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket.
   
    ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -360,7 +371,7 @@ Powershell-szintaxis szakembereket a CLI nem igényel egy egyedi verziója szolg
  Új lemez titkosítása Linux rendszeren a Powershell segítségével, amikor egy új verziója kell adni. A feladatütemezési verziójában található egyedinek kell lennie. Az alábbi parancsfájlt előállít egy GUID Azonosítót a verziója. 
  
 
--  **Az adatkötetek futó virtuális gépek titkosítása:** az alábbi parancsfájlt inicializálja a változók és a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket. A - VolumeType paraméter elfogadható értékek: All, az operációs rendszer és az adatok. Ha a virtuális gép korábban titkosított "OS" vagy "All" típusú kötet, majd a - VolumeType paraméter kell módosítani az összes, hogy az operációs rendszer és az új adatlemezt is tartalmazza.
+-  **Az adatkötetek futó virtuális gépek titkosítása:** Az alábbi parancsfájlt inicializálja a változók és a Set-azurermvmdiskencryptionextension parancs parancsmagot futtatja. Az erőforráscsoport, a virtuális gép és a key vault kell rendelkezik már létre van hozva előfeltételeket. MySecureRg MySecureVM és MySecureVault cserélje le az értékeket. A - VolumeType paraméter elfogadható értékek: All, az operációs rendszer és az adatok. Ha a virtuális gép korábban titkosított "OS" vagy "All" típusú kötet, majd a - VolumeType paraméter kell módosítani az összes, hogy az operációs rendszer és az új adatlemezt is tartalmazza.
 
      ```azurepowershell-interactive
       $sequenceVersion = [Guid]::NewGuid();
@@ -373,7 +384,7 @@ Powershell-szintaxis szakembereket a CLI nem igényel egy egyedi verziója szolg
 
       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion;
     ```
-- **Az adatkötetek KEK használó, futó virtuális gépek titkosítása:** - VolumeType paraméter elfogadható értékek: All, az operációs rendszer és az adatok. Ha a virtuális gép korábban titkosított "OS" vagy "All" típusú kötet, majd a - VolumeType paraméter kell módosítani az összes, hogy az operációs rendszer és az új adatlemezt is tartalmazza.
+- **Az adatkötetek KEK használó, futó virtuális gépek titkosítása:** A - VolumeType paraméter elfogadható értékek: All, az operációs rendszer és az adatok. Ha a virtuális gép korábban titkosított "OS" vagy "All" típusú kötet, majd a - VolumeType paraméter kell módosítani az összes, hogy az operációs rendszer és az új adatlemezt is tartalmazza.
 
      ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -399,16 +410,16 @@ Letilthatja a titkosítás az Azure PowerShell, az Azure CLI használatával vag
 >[!IMPORTANT]
 >Letiltja a titkosítást a Linuxos virtuális gépeken az Azure Disk Encryption csak a támogatott adatköteteket. Nem támogatott a adatok vagy operációsrendszer-kötettel, ha az operációsrendszer-kötet titkosított.  
 
-- **Letiltja a lemeztitkosítást, az Azure PowerShell használatával:** letiltja a titkosítást, használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. 
+- **Tiltsa le a lemeztitkosítást, az Azure PowerShell használatával:** A titkosítás letiltásához használja a [Disable-AzureRmVMDiskEncryption](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) parancsmagot. 
      ```azurepowershell-interactive
      Disable-AzureRmVMDiskEncryption -ResourceGroupName 'MySecureRG' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
      ```
 
-- **Tiltsa le a titkosítást az Azure CLI-vel:** titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
+- **Tiltsa le a titkosítást az Azure CLI-vel:** Titkosítás letiltásához használja a [letiltása az vm encryption](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type [ALL, DATA, OS]
      ```
-- **Tiltsa le a Resource Manager-sablonnal titkosítást:** használja a [futó Linux rendszerű virtuális gépek titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) sablon titkosítás letiltásához.
+- **Tiltsa le a Resource Manager-sablonnal titkosítást:** Használja a [futó Linux rendszerű virtuális gépek titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) sablon titkosítás letiltásához.
      1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
      2. Válassza ki az előfizetés, erőforráscsoport, hely, virtuális gép, jogi feltételeket és szerződés.
      3.  Kattintson a **beszerzési** letiltja a lemeztitkosítást a futó Windows virtuális gépek. 

@@ -1,5 +1,5 @@
 ---
-title: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+title: PHP-alkalmazás és MySQL - az Azure App Service létrehozása |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban.
 services: app-service\web
 documentationcenter: php
@@ -14,13 +14,13 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: e5574eee1ac553151f073fe4e398a84c596c55f2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968221"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251674"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Oktatóanyag: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -51,7 +51,7 @@ Az oktatóanyag elvégzéséhez:
 * [A Git telepítése](https://git-scm.com/)
 * [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
 * [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
-* Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+* Engedélyezze a következő PHP-bővítményeket Laravel van szüksége: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
 * [Telepítse és indítsa el a MySQL-t](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>A helyi MySQL előkészítése
@@ -66,7 +66,7 @@ Csatlakozzon a helyi MySQL-kiszolgálóhoz egy terminálablakban. Ezzel a termin
 mysql -u root -p
 ```
 
-Ha a rendszer jelszót kér, adja meg a `root` fiókhoz tartozó jelszót. Ha nem emlékszik a rendszergazdafiók jelszavára, tekintse meg a [MySQL-ben a rendszergazdai jelszó alaphelyzetbe állítását](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html) ismertető cikket.
+Ha a rendszer jelszót kér, adja meg a `root` fiókhoz tartozó jelszót. Ha nem emlékszik a rendszergazdafiók jelszavára, tekintse meg [MySQL: A gyökér szintű jelszó alaphelyzetbe állítása](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
 Ha a parancs futtatása sikeres, akkor a MySQL-kiszolgáló fut. Ha nem, mindenképp a [MySQL telepítése utáni lépéseket](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html) követve indítsa el a helyi MySQL-kiszolgálót.
 
@@ -600,7 +600,7 @@ A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
 > [!TIP]
 > A PHP-alkalmazások használhatják a normál [error_log()](https://php.net/manual/function.error-log.php) függvényt a kimenet konzolra küldéséhez. A mintaalkalmazás ezt a megközelítést alkalmazza az _app/Http/routes.php_ fájlban.
 >
-> Webes keretrendszerként a [Laravel a Monologot használja](https://laravel.com/docs/5.4/errors) naplózási szolgáltatóként. Ha szeretné megtudni, hogyan érheti el, hogy a Monolog-üzeneteket jelenítsen meg a konzolon, tekintse meg a [PHP: A Monolog használata a konzolba való naplózáshoz (php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out) című cikket.
+> Webes keretrendszerként a [Laravel a Monologot használja](https://laravel.com/docs/5.4/errors) naplózási szolgáltatóként. Kimeneti üzenetek a konzolhoz beszerzése a Monolog megtekintéséhez lásd: [PHP: Monolog használata a konzolba (php://out) való](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 772807fc0a1378eea662a7c4a7e3c720d7092bef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013014"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320658"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -87,8 +87,8 @@ Konfigurálja a _visszaélési riasztás_ funkciót, hogy a felhasználók jelen
 
 ### <a name="configuration-options"></a>Beállítási lehetőségek
 
-* **Felhasználó blokkolása visszaélés jelentésekor**: Ha egy felhasználó a csalás jelentéseket, a fiók le van tiltva 90 napig, vagy amíg a rendszergazda feloldja a fiók. A rendszergazdák, tekintse át a bejelentkezések bejelentkezési jelentés használatával, és megfelelő lépéseket a jövőbeli csalások megakadályozásához. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
-* **Csalást jelent a kezdeti üdvözlés során kódot**: amikor a felhasználók megkapják a telefonhívás, a kétlépéses hitelesítés végrehajtására, azokat általában nyomja le az **#** a bejelentkezés megerősítéséhez. Csalást jelent be, hogy a felhasználó nem ír kódot előtt **#**. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
+* **Felhasználó blokkolása visszaélés jelentésekor**: Ha egy felhasználó a csalás jelentéseket, a fiók le van tiltva, 90 napig, vagy amíg a rendszergazda feloldja a fiók. A rendszergazdák, tekintse át a bejelentkezések bejelentkezési jelentés használatával, és megfelelő lépéseket a jövőbeli csalások megakadályozásához. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
+* **Csalást jelent a kezdeti üdvözlés során kódot**: Amikor a felhasználók megkapják a telefonhívás, a kétlépéses hitelesítés végrehajtására, azokat általában nyomja le az **#** a bejelentkezés megerősítéséhez. Csalást jelent be, hogy a felhasználó nem ír kódot előtt **#**. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
 
    >[!NOTE]
    >Az alapértelmezett hangalapú üdvözletek, a Microsoft nyomja meg a felhasználók felkérése **0#** a csalási riasztás küldéséhez. Ha szeretné más, a kód használata **0**, jegyezze fel, és töltse fel a saját egyéni hangalapú üdvözletek, a felhasználók megfelelő utasításokat.
@@ -257,12 +257,15 @@ Felhasználók is hozhatnak létre alkalmazásjelszókat regisztráció után. A
 
 A _megbízható IP-címek_ felügyelt vagy összevont bérlők rendszergazdái által használt Azure multi-factor Authentication szolgáltatás. A funkció figyelmen kívül hagyja a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten. A szolgáltatás az Azure multi-factor Authentication teljes verzióját, és a nem rendszergazdák számára ingyenes verzió érhető el. További információ az Azure multi-factor Authentication teljes verziójának beszerzése: [Azure multi-factor Authentication](multi-factor-authentication.md).
 
+> [!NOTE]
+> MFA megbízható IP-címek és a feltételes hozzáférés – nevesített helyek csak az IPV4-címekkel működik.
+
 Ha a szervezete biztosít a helyszíni alkalmazások Megjegyzés MFA NPS-bővítményének üzembe helyezi a forrás IP-cím mindig megjelenik a hálózati házirend-kiszolgáló, a hitelesítési kísérlet végig kell.
 
 | Az Azure AD-bérlő típusa | Megbízható IP-címek funkció beállításai |
 |:--- |:--- |
-| Managed |**Megadott IP-címek**: Rendszergazdák, adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten.|
-| Összevont |**Minden összevont felhasználó**: jelentkezhessen be a szervezeten belüli összes összevont felhasználók megkerülhetik a kétlépéses ellenőrzést. A felhasználók az Active Directory összevonási szolgáltatások (AD FS) által kiadott jogcím ellenőrzés megkerülését.<br/>**Megadott IP-címek**: Rendszergazdák, adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten. |
+| Managed |**Megadott IP-címek**: A rendszergazdák adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten.|
+| Összevont |**Az összes összevont felhasználók**: Jelentkezhessen be a szervezeten belüli összes összevont felhasználók megkerülhetik a kétlépéses ellenőrzést. A felhasználók az Active Directory összevonási szolgáltatások (AD FS) által kiadott jogcím ellenőrzés megkerülését.<br/>**Megadott IP-címek**: A rendszergazdák adjon meg egy IP-címtartományt, amely megkerülhetik a kétlépéses ellenőrzés felhasználók számára, akik jelentkezzen be a vállalati intraneten. |
 
 A megbízható IP-címek megkerülése a vállalati intraneten belül csak a működését. Ha a **minden összevont felhasználó** lehetőséget és a egy felhasználó bejelentkezik a vállalati intraneten kívülről a felhasználó rendelkezik a kétlépéses ellenőrzés használatával történő hitelesítéshez. A folyamat megegyezik akkor is, ha a felhasználó megadja az AD FS-jogcímek. 
 
@@ -293,11 +296,11 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 3. Válassza ki **konfigurálása MFA megbízható IP-címek**.
 4. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, bármelyik a következő két lehetőség közül választhat:
 
-   * **Az összevont felhasználók intranetről származó**: válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:
+   * **Az összevont felhasználók intranetről származó**: Válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **Egy nyilvános IP-címek tartományát kéréseit**: ezt a lehetőséget a mezőben adja meg az IP-címeket a CIDR formátum használatával.
+   * **Egy nyilvános IP-címek tartományát kéréseit**: Ezt a lehetőséget a mezőben adja meg az IP-címeket a CIDR formátum használatával.
       * Az IP-címeket, amely a címtartomány xxx.xxx.xxx.1 xxx.xxx.xxx.254 keresztül vannak, használja a hasonló jelöléssel **xxx.xxx.xxx.0/24**.
       * Egyetlen IP-címet használja a hasonló jelöléssel **xxx.xxx.xxx.xxx/32**.
       * Adja meg legfeljebb 50 IP-címtartományok. Ezen IP-címek a bejelentkező felhasználóknak a kétlépéses ellenőrzés megkerülését.
@@ -312,11 +315,11 @@ Függetlenül attól, hogy a megbízható IP-címek szolgáltatás engedélyezve
 4. Válassza ki a multi-factor Authentication hitelesítés **Szolgáltatásbeállítások**.
 5. Az a **Szolgáltatásbeállítások** lap **megbízható IP-címek**, a következő két lehetőség egyikét (vagy mindkettőt):
 
-   * **Az összevont felhasználók intranetről**: válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:
+   * **Az összevont felhasználók intranetről**: Válassza ezt a lehetőséget, jelölje be a jelölőnégyzetet. Az összes összevont felhasználók, akik jelentkezzen be a vállalati hálózatról a kétlépéses ellenőrzés megkerülését az AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy az AD FS rendelkezik-e a megfelelő forgalmat az intranetes jogcím hozzáadása egy szabályt. Ha a szabály nem létezik, hozza létre a következő szabályt az AD FS-ben:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **A megadott IP-címek alhálózatait kéréseit**: ezt a lehetőséget a mezőben adja meg az IP-címeket a CIDR formátum használatával.
+   * **A megadott IP-címek alhálózatait kéréseit**: Ezt a lehetőséget a mezőben adja meg az IP-címeket a CIDR formátum használatával.
       * Az IP-címeket, amely a címtartomány xxx.xxx.xxx.1 xxx.xxx.xxx.254 keresztül vannak, használja a hasonló jelöléssel **xxx.xxx.xxx.0/24**.
       * Egyetlen IP-címet használja a hasonló jelöléssel **xxx.xxx.xxx.xxx/32**.
       * Adja meg legfeljebb 50 IP-címtartományok. Ezen IP-címek a bejelentkező felhasználóknak a kétlépéses ellenőrzés megkerülését.
@@ -385,6 +388,6 @@ A funkció csökkenti a web apps szolgáltatásban, amely minden alkalommal ált
 
 Miután engedélyezte a tárolása a multi-factor Authentication szolgáltatás, felhasználók jelölheti meg, ha megbízható eszköz kiválasztásával bejelentkezés **ne kérdezzen rá ismét**.
 
-# <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Azure AD bejelentkezési oldal márkajelzési módosítása](..\fundamentals\customize-branding.md)
+[Az Azure AD bejelentkezési oldal márkajelzési módosítása](../fundamentals/customize-branding.md)

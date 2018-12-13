@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Node.js-alkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez'
+title: 'Az Azure Cosmos DB: Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK segítségével a Node.js-alkalmazás létrehozása'
 description: Egy Node.js kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
 author: deborahc
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 10dcdd1c9660f37e272251aba181828405eb07ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae935157264dd5fa33df9afd0d8f7d5447855a92
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106583"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161289"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez
+# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK segítségével a Node.js-alkalmazás létrehozása
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -59,7 +59,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, és futtatjuk az alkalmazást.
+Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapcsolati sztringet, és futtassa az alkalmazást.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

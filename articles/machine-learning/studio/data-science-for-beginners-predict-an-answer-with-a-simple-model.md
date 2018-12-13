@@ -4,10 +4,9 @@ description: Hogyan lehet létrehozni egy egyszerű regressziós modell előre j
 keywords: létrehozása modell, egyszerű modell, árának előrejelzése, egyszerű regressziós modell
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 155b853ef46c54fbb6e230573b860189bacc0d64
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092930"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253583"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
 ## <a name="video-4-data-science-for-beginners-series"></a>4. Videó: Adatelemzés kezdőknek sorozat
@@ -38,13 +37,13 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [adatelemzési készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: Egy egyszerű modellel válasz előrejelzése
-* 5. Videó: [más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4. Videó: Válasz előrejelzése egy egyszerű modell segítségével
+* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>A szövegben: Egy egyszerű modellel válasz előrejelzése
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>A szövegben: Válasz előrejelzése egy egyszerű modell segítségével
 Üdvözli a negyedik videót a "Data Science a kezdők" sorozat. Ezt az eszközt hogy fog egy egyszerű modellt és előrejelzést.
 
 A *modell* egy egyszerűsített történetet az adataival kapcsolatban van. Bemutatom, mi értem.
@@ -66,7 +65,7 @@ Valójában létrehoztunk egy kisméretű adatkészlet itt – egy táblát. Fig
 * És láthatjuk, ahogy rendelkezik **elegendő** a kérdés megválaszolásában.
 
 ## <a name="ask-a-sharp-question"></a>Éles kérdés feltevése
-Most éles módon azt fogjuk jelentenek a kérdést: "Ez mennyibe kerül a 1.35 karátot rombusz megvásárlása?"
+Most már azt fogja jelentenek a a kérdés éles módon: "Ez mennyibe kerül a 1.35 karátot rombusz megvásárlása?"
 
 A lista nem rendelkezik egy 1.35 karátot rombuszos, úgy kell beolvasni a választ a kérdésére, az adatok a rest használata.
 
@@ -97,18 +96,18 @@ Az a tény, hogy minden pont nem pontosan a sor rendben. Az adatszakértők táj
 Mivel azt a választ a kérdésre próbál *mennyi?* ezt nevezik a *regressziós*. Mivel egy egyenes vonallal használunk, és van egy *lineáris regressziós*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>A modell használatával találja a választ
-Most már van egy modellt, és megkérjük, a kérdés: a 1.35 karátot rombusz mennyibe kerül?
+Most már van egy modellt, és megkérjük azt a kérdést: Egy 1.35 karátot gyémánt mennyibe kerül?
 
-A kérdés megválaszolásához azt 1.35 karát szem és a egy függőleges vonal rajzolása. Ha a modell sor azt átlép azt eyeball dollár tengelyhez vízszintes vonal. 10 000, jobb elér. Bumm! Ez a válasz: egy 1.35 karátot gyémánt körülbelül 10 000 dollárt költségeit.
+A kérdés megválaszolásához azt 1.35 karát szem és a egy függőleges vonal rajzolása. Ha a modell sor azt átlép azt eyeball dollár tengelyhez vízszintes vonal. 10 000, jobb elér. Bumm! Ez a válasz: Egy 1.35 karátot gyémánt 10 000 dollárt kapcsolatos költségek.
 
 ![Keresse meg a választ a modell](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Hozzon létre egy megbízhatósági intervallum
-Természetes wonder hogyan pontos ez előrejelzésére szolgáló funkció. Érdemes tudni, hogy a 1.35 karátot rombusz lesz nagyon közel 10 000 dollárt, vagy sokkal magasabb vagy alacsonyabb legyen. . Ábra ezt ki, nézzük rajzoljon boríték a regressziós egyenes, amely tartalmazza a legtöbb pont körül. A boríték nevezzük az *megbízhatósági intervallum*: vagyunk viszonylag abban, hogy árak tartoznak-e a boríték, mert az elmúlt többsége rendelkezik. Két további vízszintes vonal, ahol a 1.35 karátot sor átlép felső és alsó részén borítékot rajzolhat azt.
+Természetes wonder hogyan pontos ez előrejelzésére szolgáló funkció. Érdemes tudni, hogy a 1.35 karátot rombusz lesz nagyon közel 10 000 dollárt, vagy sokkal magasabb vagy alacsonyabb legyen. . Ábra ezt ki, nézzük rajzoljon boríték a regressziós egyenes, amely tartalmazza a legtöbb pont körül. A boríték nevezzük az *megbízhatósági intervallum*: Sajnáljuk, viszonylag abban, hogy árak tartoznak-e a boríték, mert az elmúlt többsége rendelkezik. Két további vízszintes vonal, ahol a 1.35 karátot sor átlép felső és alsó részén borítékot rajzolhat azt.
 
 ![Megbízhatósági intervallum](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Most azt is ismertetés a megbízhatósági intervallum: magabiztosan tudjuk mondani, hogy egy 1.35 karátot gyémánt díja körülbelül $ 10 000 -, de akár $ 8000-re is lehet, és lehet magas, mint 12 000 $.
+Most már azt is ismertetés a megbízhatósági intervallum:  Azt is tegyük fel, hogy magabiztosan, hogy egy 1.35 karátot gyémánt díja körülbelül $ 10 000 -, de akár $ 8000-re is lehet, és lehet magas, mint 12 000 $.
 
 ## <a name="were-done-with-no-math-or-computers"></a>Már nincs, nincs matematikai vagy számítógépek
 Milyen az adatszakértők első fizetős ehhez végrehajtott, és csak a rajzolási tettük:

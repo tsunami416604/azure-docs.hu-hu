@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 496a24f79cee1323077c357789628123d082ceac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16a392d83cc24aafc7a84b4fa4c50b752508d9c2
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716194"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215915"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft-hitelesítési tár (MSAL) segítségével a felhasználók bejelentkeztetése
 
@@ -129,7 +129,7 @@ else {
 
 Miután egy felhasználó rákattint a **bejelentkezés** gomb, először a `signIn` metódust hívja `loginPopup` bejelentkezni a felhasználó. Ez a módszer eredményezi az előugró ablak megnyitása a *Microsoft Azure Active Directory v2.0-végpont* kérni, és a felhasználó hitelesítő adatainak ellenőrzésére. Eredményeként a bejelentkezés sikeres, a felhasználó visszatérhet az eredeti átirányítási *index.html* oldalon, és a egy jogkivonat érkezett, által feldolgozott `msal.js` és a jogkivonatban található az adatbázisban tárolja. Ez a token más néven a *azonosító jogkivonat* és alapvető információkat szeretne a felhasználó, például a felhasználó megjelenítendő nevét tartalmazza. Ha azt tervezi, bármilyen célból a token által biztosított adatokat használja, ellenőrizze, hogy ez a token érvényesíti a háttérkiszolgáló garantálja, hogy a jogkivonat érvényes felhasználónak az alkalmazáshoz kiállított szeretne.
 
-Az ez által generált SPA hívások útmutató `acquireTokenSilent` és/vagy `acquireTokenPopup` beszerezni egy *hozzáférési jogkivonat* kérdezhetők le a Microsoft Graph API a felhasználói profil adatait. Ha egy mintát, amely ellenőrzi az azonosító jogkivonat, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github-minta") mintaalkalmazás github – a mintát használja egy ASP .NET webes API a jogkivonat érvényesítésére.
+Az ez által generált SPA hívások útmutató `acquireTokenSilent` és/vagy `acquireTokenPopup` beszerezni egy *hozzáférési jogkivonat* kérdezhetők le a Microsoft Graph API a felhasználói profil adatait. Ha egy mintát, amely ellenőrzi az azonosító jogkivonat, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 GitHub-minta") mintaalkalmazás github – a mintát használja egy ASP .NET webes API a jogkivonat érvényesítésére.
 
 #### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 

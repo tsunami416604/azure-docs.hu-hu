@@ -2,8 +2,8 @@
 title: Az Azure Machine Learning-modell felügyeleti beállítás és konfiguráció |} A Microsoft Docs
 description: Ez a dokumentum ismerteti a lépéseket és fogalmak vesz részt az Azure Machine Learning Modellkezelés telepítési és beállítási folyamatán.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10f61e6276b1ce0a0237e3cf2e35a68edf4a0cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968713"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257580"
 ---
 # <a name="model-management-setup"></a>Modell-kezelés beállítása
 
@@ -91,7 +91,7 @@ Először szüksége az üzembe helyezési környezetet. A környezet beállít�
 
 Ha a környezet a telepítés befejezése:
 - Jelentkezzen be Azure kéri. Jelentkezzen be, használja egy webböngészőben nyissa meg a https://aka.ms/devicelogin , és adja meg a megadott kódot a hitelesítéshez.
-- A hitelesítési folyamat során kell megadnia egy olyan fiók való hitelesítéshez. Fontos: Válasszon egy érvényes Azure-előfizetést és -erőforrások létrehozása a fiókban. megfelelő engedélyekkel rendelkező fiók – a bejelentkezési befejeződése után az előfizetési adatai jelennek meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiók.
+- A hitelesítési folyamat során kell megadnia egy olyan fiók való hitelesítéshez. Fontos: Válasszon egy érvényes Azure-előfizetést és -erőforrások létrehozása a fiókban. megfelelő engedélyekkel rendelkező fiók – az előfizetési adatai jelennek meg a bejelentkezési befejeződése után a rendszer felkéri, hogy folytatja az adott fiókkal .
 
 ### <a name="environment-setup"></a>Környezet beállítása
 A telepítés megkezdéséhez szüksége a környezet-szolgáltató regisztrálásához a következő parancs beírásával:
@@ -114,7 +114,7 @@ A helyi környezetben setup parancs az előfizetésben hoz létre az alábbi for
 - Egy erőforráscsoport (Ha nincs megadva)
 - Storage-fiók
 - Egy Azure Container Registryt (ACR)
-- Application Insights
+- Az Application insights
 
 Miután a telepítés sikeresen befejeződött, állítsa be a környezetben a következő parancs használható:
 
@@ -136,7 +136,7 @@ A fürt környezet setup parancs az előfizetésben hoz létre az alábbi forrá
 - Storage-fiók
 - Egy Azure Container Registryt (ACR)
 - Egy üzemelő Kubernetes-példányt az Azure Container Service (ACS) fürtön
-- Application Insights
+- Az Application insights
 
 Az erőforráscsoport, a storage-fiók és az ACR gyorsan jönnek létre. Az ACS telepítési akár 20 percet is igénybe vehet. 
 

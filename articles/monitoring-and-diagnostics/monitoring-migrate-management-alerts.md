@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 63eb5f39d5ac8ba6c92a2b500766bc538959595c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245766"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274190"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Az Azure felügyeleti eseményriasztások át a tevékenységnapló-riasztások
 
@@ -92,18 +92,18 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 Minden riasztás szaggatott vonal választja el egymástól, és szerepel a riasztás és az adott szabályokat a figyelt erőforrás-Azonosítóját.
 
-Ez a funkció átváltott [Azure Monitor tevékenységnapló-riasztások](monitoring-activity-log-alerts.md). Ezek a riasztások lehetővé teszi a tevékenységnapló eseményei állítson be feltételt, és értesítést kaphat, ha új esemény megfelel a feltételnek. A felügyeleti események riasztásokból számos fejlesztést is elérhető:
-* A csoport az értesítés címzettjeinek ("műveletek") között számos riasztásokról felhasználhatja [Műveletcsoportok](monitoring-action-groups.md), egyszerűsíteni módosítása, akik egy riasztást kell fogadnia.
+Ez a funkció átváltott [Azure Monitor tevékenységnapló-riasztások](../azure-monitor/platform/activity-log-alerts.md). Ezek a riasztások lehetővé teszi a tevékenységnapló eseményei állítson be feltételt, és értesítést kaphat, ha új esemény megfelel a feltételnek. A felügyeleti események riasztásokból számos fejlesztést is elérhető:
+* A csoport az értesítés címzettjeinek ("műveletek") között számos riasztásokról felhasználhatja [Műveletcsoportok](../azure-monitor/platform/action-groups.md), egyszerűsíteni módosítása, akik egy riasztást kell fogadnia.
 * Értesítést kaphat közvetlenül a Műveletcsoportok SMS használata telefonon.
-* Is [tevékenységnapló-riasztások létrehozása a Resource Manager-sablonok](alert-activity-log.md).
+* Is [tevékenységnapló-riasztások létrehozása a Resource Manager-sablonok](../azure-monitor/platform/alerts-activity-log.md).
 * Feltételek és nagyobb rugalmasságot és igények kielégítéséhez is létrehozhat.
 * Értesítések a gyorsabban érkeznek.
  
 ## <a name="how-to-migrate"></a>Migrálási eljárás
  
 Szeretne létrehozni egy új tevékenység Log riasztási, közül választhat:
-* Hajtsa végre a [útmutatónk bemutatja a riasztás létrehozása az Azure Portalon](monitoring-activity-log-alerts.md)
-* Ismerje meg, hogyan [hozzon létre egy riasztást, Resource Manager-sablon használatával](alert-activity-log.md)
+* Hajtsa végre a [útmutatónk bemutatja a riasztás létrehozása az Azure Portalon](../azure-monitor/platform/activity-log-alerts.md)
+* Ismerje meg, hogyan [hozzon létre egy riasztást, Resource Manager-sablon használatával](../azure-monitor/platform/alerts-activity-log.md)
  
 Riasztások a korábban létrehozott felügyeleti események nem lesz automatikusan áttelepítve a tevékenységnapló-riasztásokra. Az előző PowerShell-parancsfájl használatával, hogy van konfigurálva, és manuálisan hozza létre őket újra, a tevékenységnapló-riasztások felügyeleti események riasztások felsorolása kell. Ez október 1., utána felügyeleti eseményriasztások többé nem jelenik meg az Azure-előfizetés előtt kell elvégezni. Más típusú Azure-riasztások, beleértve az Azure Monitor metrikákhoz kapcsolódó riasztások, az Application Insights-riasztások és a Log Analytics-riasztások nem érinti a változás. Ha bármilyen kérdése van, az alábbi megjegyzések közzététele.
 
@@ -111,8 +111,8 @@ Riasztások a korábban létrehozott felügyeleti események nem lesz automatiku
 ## <a name="next-steps"></a>További lépések
 
 * Tudjon meg többet [tevékenységnapló](monitoring-overview-activity-logs.md)
-* Konfigurálása [tevékenységnapló-riasztások Azure-portálon](monitoring-activity-log-alerts.md)
-* Konfigurálása [Resource Manageren keresztül tevékenységnapló-riasztások](alert-activity-log.md)
-* Tekintse át a [tevékenység log riasztási webhook sémáról](monitoring-activity-log-alerts-webhook.md)
+* Konfigurálása [tevékenységnapló-riasztások Azure-portálon](../azure-monitor/platform/activity-log-alerts.md)
+* Konfigurálása [Resource Manageren keresztül tevékenységnapló-riasztások](../azure-monitor/platform/alerts-activity-log.md)
+* Tekintse át a [tevékenység log riasztási webhook sémáról](../azure-monitor/platform/activity-log-alerts-webhook.md)
 * Tudjon meg többet [szolgáltatási értesítések](monitoring-service-notifications.md)
-* Tudjon meg többet [Műveletcsoportok](monitoring-action-groups.md)
+* Tudjon meg többet [Műveletcsoportok](../azure-monitor/platform/action-groups.md)

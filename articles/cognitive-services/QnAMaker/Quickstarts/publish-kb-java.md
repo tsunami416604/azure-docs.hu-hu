@@ -11,14 +11,14 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: b46c794283fce59bbca12511bdd6d9845a86fad1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a115c5180044da1fe66349fefd9c28824fdd2e51
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094389"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163956"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Java használatával
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis közzététele a QnA Maker Java használatával
 
 A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
@@ -38,10 +38,10 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-csharp.md).
+    Ha például egy Tudásbázis még nem rendelkezik, a minta használata ebben a rövid útmutatóban egy hozhat létre: [Hozzon létre egy új Tudásbázis](create-new-kb-csharp.md).
 
 > [!NOTE] 
-> A teljes megoldásfájl(ok) az [**Azure-Samples/cognitive-services-qnamaker-java** GitHub-adattárban](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base) érhető(k) el.
+> A teljes megoldás fájl(ok) érhetők el a [ **Azure-minták/cognitive-services-qnamaker – java** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-a-java-file"></a>Hozzon létre egy Java-fájlt
 

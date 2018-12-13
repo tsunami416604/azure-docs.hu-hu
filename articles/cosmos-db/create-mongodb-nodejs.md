@@ -1,23 +1,22 @@
 ---
-title: MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez a Node.js használatával
-description: Megtudhatja, hogyan csatlakoztathat egy meglévő Node.js MongoDB-alkalmazást az Azure Cosmos DB adatbázishoz.
-services: cosmos-db
+title: Az Azure Cosmos DB Node.js MongoDB-alkalmazás csatlakoztatása
+description: Ez a rövid útmutató bemutatja, hogyan csatlakozhat az Azure Cosmos DB Node.js-ben írt, meglévő MongoDB alkalmazások.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc, devcenter, seodec2018
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/19/2017
-ms.openlocfilehash: 1a5d0c7c2e44d934658434b8ea0b048c238a9bef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: d9754cf66b05059c986c7ffbff94290e207f706a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097863"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141380"
 ---
-# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Meglévő Node.js MongoDB-webalkalmazás migrálása 
+# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Az Azure Cosmos DB: Egy meglévő Node.js MongoDB-webalkalmazás migrálása 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

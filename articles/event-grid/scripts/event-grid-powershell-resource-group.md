@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1a3a32003c76c0132ee0503af996e3f323a08577
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: fe36336bb1bcc3b0d1cc718724ca05f6d23110c7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425870"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270535"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>Feliratkozás egy erőforráscsoport eseményeire a PowerShell-lel
 
@@ -25,9 +25,15 @@ Ez a szkript létrehoz egy Event Grid-előfizetést egy erőforráscsoport esem�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Példaszkript
+Az előzetes verzió minta a szkripthez az Event Grid-modul. Telepítéséhez futtassa `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+
+## <a name="sample-script---stable"></a>Példaszkript – stabil
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-resource-group/subscribe-to-resource-group.ps1 "Subscribe to resource group")]
+
+## <a name="sample-script---preview-module"></a>A példaszkript – előzetes verzió modul
+
+[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-resource-group-preview/subscribe-to-resource-group-preview.ps1 "Subscribe to resource group")]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 

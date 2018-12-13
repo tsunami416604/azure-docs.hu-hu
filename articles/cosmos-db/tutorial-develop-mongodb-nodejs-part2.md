@@ -1,23 +1,23 @@
 ---
-title: MongoDB, Angular és Node oktatóanyag az Azure-ban – 2. rész
+title: Nodejs-hez (Part2) MongoB API-val Angular-alkalmazás
+titleSuffix: Azure Cosmos DB
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 2. része.
-services: cosmos-db
 author: johnpapa
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 8e2bce1943096613dab3975863f787fcc904f827
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 842a321f63bce11207e6144705e9c4f68df21760
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868123"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133975"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 2. rész: Node.js Express alkalmazás létrehozása az Angular CLI parancssori felülettel 
+# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 2. rész: Node.js Express alkalmazás létrehozása
 
 Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-ben írt új [MongoDB API](mongodb-introduction.md)-alkalmazást az Express, az Angular és az Azure Cosmos DB-adatbázis használatával.
 

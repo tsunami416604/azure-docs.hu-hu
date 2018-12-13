@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 526c89a83a102c80bf1ddb5a5d950b0367a9cd69
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b929608d64e747d6e768da4ee6627f9e6b09a83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076373"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270086"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata
 Az Azure Machine Learning webszolgáltatás tegye közzé konfigurálható paraméterek és modulokat tartalmazó kísérlet jön létre. Bizonyos esetekben előfordulhat, hogy módosítani szeretné a modul viselkedését a webszolgáltatás futtatása közben. *Webalkalmazás-paraméterek* lehetővé teszi, hogy a feladat végrehajtásához. 
@@ -30,7 +29,7 @@ Ilyenek például állítsa be a [adatok importálása] [ reader] modul úgy, ho
 
 Állítsa be a webszolgáltatás-paraméterek, és rendelje azokat egy vagy több modulja paraméter a kísérlet során, és megadhatja, hogy azok a szükséges és választható. A felhasználó a webszolgáltatás majd megadhat értékeket a paraméterekhez, a webszolgáltatás hívásakor. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="how-to-set-and-use-web-service-parameters"></a>Állítsa be, és webszolgáltatás-paraméterek használata
 A paraméter egy modul melletti ikonra kattintva, majd válassza a "Webes szolgáltatás paraméter beállítása" meghatározhat egy webes szolgáltatás paramétert. Ez létrehoz egy új webes szolgáltatás paramétert, és csatlakoztatja, hogy a modul paraméter. Ezután a web service érhető el, amikor a felhasználó egyik értékét adhatja meg a Web Service paraméterhez, és a modul paramétert alkalmazza a rendszer.

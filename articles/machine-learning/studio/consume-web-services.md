@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 7f1950afc8e84f0bfeba7d51aa68ee126db38e2e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075132"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273782"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio webszolgáltatás használata
 
@@ -33,7 +32,7 @@ További információ az hozhat létre és telepíthet egy Machine Learning Web 
 * További információ a webszolgáltatás üzembe helyezése: [egy Machine Learning Web Service szolgáltatásának telepítése](publish-a-machine-learning-web-service.md).
 * További információ a Machine Learning általában látogasson el a [Machine Learning dokumentációs központban](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Machine Learning Web Service egy külső alkalmazás a Machine Learning munkafolyamatának pontozási modelljével valós időben kommunikál. A Machine Learning webszolgáltatás-hívások visszaadják az előrejelzés eredményét a külső alkalmazásnak. Ahhoz, hogy egy Machine Learning webszolgáltatás felé irányuló hívások, amikor telepít egy előrejelzési API-kulcs adja át. A Machine Learning webszolgáltatás a webprogramozási projektekben népszerű architektúra választott REST alapul.
@@ -102,13 +101,13 @@ Csatlakozás egy Machine Learning Web Service a **Microsoft.AspNet.WebApi.Client
 
 **Telepítse a Microsoft.AspNet.WebApi.Client NuGet a Visual Studióban**
 
-1. A UCI letöltési adatkészlet közzététele: felnőtt 2 osztály adatkészlet webszolgáltatáshoz.
+1. A UCI letöltési adatkészlet közzététele: Felnőtt tartalom 2 osztály adatkészlet webszolgáltatáshoz.
 2. Kattintson a **Tools** (Eszközök)  > **NuGet Package Manager** (NuGet-csomagkezelő) > **Package Manager Console** (Csomagkezelő konzol) elemre.
 3. Válasszon **Install-Package Microsoft.AspNet.WebApi.Client**.
 
 **A mintakód futtatásához**
 
-1. Közzététele "1. példa: adatkészlet UCI töltheti le: felnőtt 2 osztály adatkészlet" kísérlet, a Machine Learning minta gyűjtemény része.
+1. Közzététele "1 mintát: Töltse le a dataset igénybecslést Szemlélteti: Felnőtt tartalom 2 osztály adatkészlet"kísérlet, a Machine Learning minta gyűjtemény része.
 2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Lásd: **Azure Machine Learning hitelesítési kulcs beszerzése** felett.
 3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
 
@@ -204,7 +203,7 @@ A Machine Learning webszolgáltatás csatlakozni, használja a **urllib2** kódt
 
 **A mintakód futtatásához**
 
-1. Üzembe helyezése "1. példa: adatkészlet UCI töltheti le: felnőtt 2 osztály adatkészlet" kísérlet, a Machine Learning minta gyűjtemény része.
+1. Üzembe helyezése "1 mintát: Töltse le a dataset igénybecslést Szemlélteti: Felnőtt tartalom 2 osztály adatkészlet"kísérlet, a Machine Learning minta gyűjtemény része.
 2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Tekintse meg a **Azure Machine Learning hitelesítési kulcs beszerzése** mellékmondatokat című szakaszát.
 3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
 

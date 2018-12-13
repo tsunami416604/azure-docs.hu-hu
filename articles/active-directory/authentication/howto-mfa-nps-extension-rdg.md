@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 410e9df588ad4aba52d1d69349f5df67fa1826a3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100939"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277981"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -24,6 +24,9 @@ Ez a cikk részletes adatokat biztosít a távoli asztali átjáró infrastrukt�
 A hálózati házirend-kiszolgáló (NPS) kiterjesztése az Azure lehetővé teszi a felhasználóknak a védelme érdekében távoli Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítés az Azure a felhőalapú [multi-factor Authentication (MFA)](multi-factor-authentication.md). Ez a megoldás második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat kétlépéses ellenőrzést biztosít.
 
 Ebben a cikkben részletes útmutatást nyújt a hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure MFA számára a hálózati házirend-bővítmény használata az Azure-hoz. Ez lehetővé teszi a távoli asztali átjáró bejelentkezni próbáló felhasználók biztonságos ellenőrzése.
+
+> [!NOTE]
+> Ez a cikk nem használható az MFA-kiszolgáló központi csak az Azure MFA (felhőalapú).
 
 A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szervezetek a következőket teszi:
 
@@ -68,10 +71,10 @@ Ez a szakasz részletesen előtt az Azure MFA integrálása a távoli asztali á
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Távoli asztali szolgáltatások (RDS) infrastruktúra
 
-Rendelkeznie kell egy működő infrastruktúra a távoli asztali szolgáltatások (RDS) helyen. Ha nem, akkor az Azure-ban az alábbi gyors üzembe helyezési sablon használatával gyorsan létrehozhat erre az infrastruktúrára: [hozzon létre távoli asztali munkamenet-gyűjtemény üzembe helyezési](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
+Rendelkeznie kell egy működő infrastruktúra a távoli asztali szolgáltatások (RDS) helyen. Ha nem, majd gyorsan létrehozhat az infrastruktúra az Azure-ban az alábbi gyors üzembe helyezési sablon használatával: [Távoli asztali munkamenet-gyűjteményhez. üzemelő példány létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
 
 Ha szeretné manuálisan létrehozni egy helyszíni távoli asztali szolgáltatások infrastruktúrát gyorsan tesztelésre, lépésekkel üzembe helyez egyet. 
-**További**: [távoli asztali szolgáltatások üzembe helyezése az Azure gyors üzembe helyezés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) és [alapszintű RDS-infrastruktúra telepítése](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
+**További**: [A távoli asztali szolgáltatások telepítése az Azure gyors üzembe helyezés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) és [alapszintű RDS-infrastruktúra telepítése](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
 
 ### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
 
@@ -83,7 +86,7 @@ Az NPS-bővítményének megköveteli a Windows Server 2008 R2 SP1 vagy újabb v
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Hálózati házirend- és hozzáférés-szolgáltatások (NPS) szerepkör
 
-A hálózati házirend-kiszolgáló szerepkör-szolgáltatást biztosít a RADIUS-kiszolgáló és az ügyfél funkcióit, valamint a hálózati házirend-Állapotfigyelő szolgáltatás. Az infrastruktúra legalább két számítógépre telepíteni kell a szerepet: A távoli asztali átjáró és a egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már létezik a számítógépen, a távoli asztali átjáró konfigurálva.  Emellett telepítenie kell az NPS szerepkör a legalább egy másik számítógépre, például egy tartományvezérlő vagy tagkiszolgáló.
+A hálózati házirend-kiszolgáló szerepkör-szolgáltatást biztosít a RADIUS-kiszolgáló és az ügyfél funkcióit, valamint a hálózati házirend-Állapotfigyelő szolgáltatás. Ez a szerepkör az infrastruktúra legalább két számítógépre kell telepíteni: A távoli asztali átjáró és a egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már létezik a számítógépen, a távoli asztali átjáró konfigurálva.  Emellett telepítenie kell az NPS szerepkör a legalább egy másik számítógépre, például egy tartományvezérlő vagy tagkiszolgáló.
 
 Az NPS szerepkör telepítéséről további információt a Windows Server 2012 vagy régebbi szolgáltatás, lásd: [egy NAP állapotházirend-kiszolgálókon telepítse](https://technet.microsoft.com/library/dd296890.aspx). Ajánlott eljárások a hálózati házirend-kiszolgáló, beleértve azt javasoljuk, hogy a hálózati házirend-kiszolgáló telepítése egy tartományvezérlőn leírását lásd: [ajánlott eljárások a hálózati házirend-kiszolgáló](https://technet.microsoft.com/library/cc771746).
 

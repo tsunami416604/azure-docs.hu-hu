@@ -1,5 +1,5 @@
 ---
-title: Python-alkalmazások konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
+title: Python-alkalmazások konfigurálása linuxon – az Azure App Service-ben
 description: Ez az oktatóanyag a Python-alkalmazások szerzői műveleteit és konfigurálási lehetőségeit ismerteti az Azure App Service-hez Linux rendszeren.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 22afdc0ae483959940776aecd20b0a29854097d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970756"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249634"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Python-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogy a [Linuxon futó Azure App Service](app-service-li
 
 ## <a name="set-python-version"></a>Python-verzió beállítása
 
-Két alaplemezképek érhetők el: Python 3.6-os és a Python 3.7-es verzióját. A Python-alapú lemezképhez hozhat létre egy alkalmazást. Ha például létrehoz egy alkalmazást a Python 3.7, futtassa a következő parancsot a a Cloud shellben:
+Két alaplemezképek érhetők el: A Python 3.6-os és a Python 3.7-es verzióját. A Python-alapú lemezképhez hozhat létre egy alkalmazást. Ha például létrehoz egy alkalmazást a Python 3.7, futtassa a következő parancsot a a Cloud shellben:
 
 ```azurecli-interactive
 az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
@@ -59,9 +59,9 @@ Ez a tároló a következő jellemzőkkel rendelkezik:
 Rendszerindítás során a Linux-tárolóban lévő App Service a következő lépéseket futtatja:
 
 1. Keresse meg és alkalmazza a megfelelő indítási parancsot, ha az meg van adva.
-1. Ellenőrizze, hogy létezik-e a Django-alkalmazás *wsgi.py* fájlja, és ha igen, annak használatával indítsa el a Gunicornt.
-1. Keresse meg az *application.py* nevű fájlt, és ha megtalálta, indítsa el a Gunicornt a(z) `application:app` használatával, Flask-alkalmazást feltételezve.
-1. Ha más alkalmazás nem található, indítson el egy alapértelmezett alkalmazást, amely a tárolóba van beépítve.
+2. Ellenőrizze, hogy létezik-e a Django-alkalmazás *wsgi.py* fájlja, és ha igen, annak használatával indítsa el a Gunicornt.
+3. Keresse meg az *application.py* nevű fájlt, és ha megtalálta, indítsa el a Gunicornt a(z) `application:app` használatával, Flask-alkalmazást feltételezve.
+4. Ha más alkalmazás nem található, indítson el egy alapértelmezett alkalmazást, amely a tárolóba van beépítve.
 
 A következő szakaszok további információkkal szolgálnak az egyes beállításokról.
 

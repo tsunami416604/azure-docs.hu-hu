@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan határozhatja meg az adatelemzés kezdőknek vi
 keywords: Data science problémák, data science kérdése van, állítson össze a kérdéseket, regressziós kérdések, besorolási kérdése van, éles kérdés
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310837"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250978"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
-## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Az adatelemzés kezdőknek sorozat
+## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adatelemzés kezdőknek sorozat
 Megtudhatja, hogyan határozhatja meg a data science probléma, az adatelemzés kezdőknek videó 3 kérdést. Ez a videó besorolási és regressziós algoritmus kérdések összehasonlítását tartalmazza.
 
 A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
@@ -38,18 +37,18 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [adatelemzési készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: Tegyen fel kérdést, az adatok a válasz
-* 4. Videó: [egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3. Videó: Adatokkal megválaszolható kérdések megfogalmazása
+* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>A szövegben: Tegyen fel kérdést, az adatok a válasz
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>A szövegben: Adatokkal megválaszolható kérdések megfogalmazása
 Üdvözli az a sorozat harmadik videó "Adatelemzés kezdőknek."  
 
 Ezt az eszközt a kap néhány tipp a-kérdések megfogalmazása adatokkal kidolgozásában.
 
-Kaphat további ki ezt a videót, ha először tekintse meg az oktatóanyag-sorozatban a két korábbi videók: "az 5 kérdések adatelemző meg tudja válaszolni" és "Az adatelemzés készen áll az adatok?"
+Kaphat további ki ezt a videót, ha először tekintse meg az oktatóanyag-sorozatban a két korábbi videókat: "Az 5 kérdések adatelemző meg tudja válaszolni" és "Az adatelemzés készen áll az adatok?"
 
 ## <a name="ask-a-sharp-question"></a>Éles kérdés feltevése
 Beszéltünk hogyan adatelemzés során a rendszer egy kérdésre adott válasz előrejelzése (más néven kategóriákat vagy címkéket) nevek és számok használatával. Nem lehet egyszerűen bármelyik kérdés; azonban kell egy *éles kérdést.*
@@ -62,7 +61,7 @@ Ha a kérdés feltevése országról, például a "Mi történik meg a készlet?
 
 De ha voltak-e éles kérdése, mint például a "Mi a készlet eladási ár lesz jövő héten?", a genie nem, de ez adjon meg egy adott választ, és előre jelezni egy eladási ár.
 
-## <a name="examples-of-your-answer-target-data"></a>A válasz-példákat: célalkalmazás adatok
+## <a name="examples-of-your-answer-target-data"></a>A válasz példái: Cél-adatok
 Után, a kérdés megfogalmazásához, ellenőrizze, hogy rendelkezik-e a válasz-példákat az adatokban.
 
 Ha a kérdést a "Mi a készlet eladási ár lesz a jövő héten?" Ezután van, hogy az adatok a tőzsdei árfolyam előzményeit tartalmazza.

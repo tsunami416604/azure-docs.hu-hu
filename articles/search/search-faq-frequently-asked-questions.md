@@ -1,6 +1,6 @@
 ---
-title: Azure Search kapcsolatos gyakori kérdések (GYIK) |} A Microsoft Docs
-description: A Microsoft Azure Search szolgáltatás kapcsolatos gyakori kérdésekre adott válaszok
+title: Gyakori kérdések (GYIK) – Azure Search
+description: A Microsoft Azure Search szolgáltatás, a Microsoft Azure-ban üzemeltetett felhőalapú keresési szolgáltatás kapcsolatos gyakori kérdésekre adott válaszok.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841677"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312816"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Az Azure Search – gyakori kérdések (GYIK)
 
@@ -95,6 +96,6 @@ Egy hiányzó szolgáltatás vagy funkció a kérdése van? A szolgáltatás ké
 
 ## <a name="see-also"></a>Lásd még
 
- [StackOverflow: Az Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [A StackOverflow: Az Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Teljes szöveges keresés működése az Azure Search szolgáltatásban](search-lucene-query-architecture.md)  
  [Mi az az Azure Search?](search-what-is-azure-search.md)

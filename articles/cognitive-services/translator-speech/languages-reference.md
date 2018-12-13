@@ -10,20 +10,20 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: aa0af6f0c075dc555757a9c716a1d0569197287d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345203"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256396"
 ---
-# <a name="translator-speech-api-languages"></a>Beszédfordító API: nyelv
+# <a name="translator-speech-api-languages"></a>Beszédfordító API: Nyelvek
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Fordítói beszéd folyamatosan bővíti a szolgáltatás által támogatott nyelvek listáját. Ez az API segítségével a jelenleg elérhető a Translator Speech szolgáltatással való használatra nyelvek készletét felderíteni.
 
-Az API-t elérhető nyelvek beolvasása használatának bemutatásához Kódminták érhetők el a [a Microsoft Translator Github-webhelyről](https://github.com/MicrosoftTranslator).
+Az API-t elérhető nyelvek beolvasása használatának bemutatásához Kódminták érhetők el a [a Microsoft Translator GitHub-webhelyről](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 
@@ -33,9 +33,9 @@ A beszéd, hogy az átírt szöveg lefordítása, és a fordítás szintetizált
 
 Ügyfél használ a `scope` lekérdezési paraméter meghatározásához, hogy mely csoportok nyelveken, van érdekelné.
 
-* **Hang-szöveg:** lekérdezési paraméterrel `scope=speech` lefényképezze beszéd szöveggé számára elérhető nyelveket a készletét lekéréséhez.
-* **Szövegfordítás:** lekérdezési paraméterrel `scope=text` beolvasni az átírt szöveg lefordítása számára elérhető nyelveket készletét.
-* **Szöveg-hang transzformációs:** lekérdezési paraméterrel `scope=tts` nyelvek és beszédhangot szintetizálásához lefordított szöveget beszéddé vissza lehet lekérdezni.
+* **Hang-szöveg:** Lekérdezési paraméter használata `scope=speech` lefényképezze beszéd szöveggé számára elérhető nyelveket a készletét lekéréséhez.
+* **Szövegfordítás:** Lekérdezési paraméter használata `scope=text` beolvasni az átírt szöveg lefordítása számára elérhető nyelveket készletét.
+* **Szöveg-hang transzformációs:**  Lekérdezési paraméter használata `scope=tts` nyelvek és beszédhangot szintetizálásához lefordított szöveget beszéddé vissza lehet lekérdezni.
 
 Egy ügyfél egyszerre lekérheti több választási lehetőségek vesszővel tagolt listájának megadásával. Például: `scope=speech,text,tts`.
 
@@ -63,8 +63,8 @@ Az egyes tulajdonság megadott értéke a következő.
 
 A hang-szöveg transzformációs tulajdonság társított értéket `speech`, egy szótár (kulcs, érték) párok. Minden egyes kulcs azonosítja a hang-szöveg transzformációs támogatja. A kulcs az azonosítója, amely az API-t, hogy az ügyfél továbbítja. A kulcshoz tartozó érték a következő tulajdonságokkal rendelkező objektum:
 
-* `name`: A nyelv megjelenített neve.
-* `language`: Annak a társított nyelven írt nyelvi címkéje. Olvassa el a "Szöveg traznakció".
+* `name`: A nyelv nevének megjelenítéséhez.
+* `language`: A társított nyelven írt, nyelvcímke. Olvassa el a "Szöveg traznakció".
 A következő egy példa:
 
 ```
@@ -79,8 +79,8 @@ A következő egy példa:
 
 Az értéket a `text` tulajdonság akkor is egy szótár, ahol minden egyes kulcs azonosítja az szövegfordítás támogatott nyelvet. A kulcshoz tartozó érték a nyelv ismerteti:
 
-* `name`: A nyelv megjelenített neve.
-* `dir`: Azaz írásmód `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
+* `name`: A nyelv nevének megjelenítéséhez.
+* `dir`: Amely írásmód `rtl` jobbról balra író nyelvek vagy `ltr` jobbról balra író nyelvek.
 
 A következő egy példa:
 
@@ -96,12 +96,12 @@ A következő egy példa:
 
 A szöveg-hang transzformációs tulajdonság, szöveg-beszéd átalakítás, társított érték is egy szótár, ahol minden egyes kulcs azonosítja az egy támogatott hangalapú. Egy hang-objektum attribútumai a következők:
 
-* `displayName`: A hang megjelenített neve.
-* `gender`: A voice (Férfi vagy női) neme.
-* `locale`: A hang és az elsődleges nyelv alkód régió alkód nyelvi címkéjét.
-* `language`: Annak a társított nyelven írt nyelvi címkéje.
-* `languageName`: A nyelv megjelenített neve.
-* `regionName`: Megjelenített neve a régióban ehhez a nyelvhez.
+* `displayName`: A szóbeli megjelenített neve.
+* `gender`: A szóbeli (Férfi vagy női) neme.
+* `locale`: A hang és az elsődleges nyelv alkód régió alkód nyelvcímke.
+* `language`: A társított nyelven írt, nyelvcímke.
+* `languageName`: A nyelv nevének megjelenítéséhez.
+* `regionName`: Megjelenítendő név a régióban ehhez a nyelvhez.
 
 A következő egy példa:
 
@@ -140,7 +140,7 @@ X-RequestId:|Érték a kiszolgáló azonosításához a kérelem által generál
 |Paraméter|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|
 |API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|sztring|
-|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A speech lefényképezze a támogatott nyelvek készletét nyújtja.</li><li>`tts`: Az a szöveg-beszéd átalakítás támogatott beszédhangot készletét nyújtja.</li><li>`text`: Az a szöveg fordítása támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
+|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
 |X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|sztring|
 |Fogadja el nyelv    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|sztring|
     

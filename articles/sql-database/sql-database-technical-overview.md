@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256935"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270008"
 ---
 # <a name="the-azure-sql-database-service"></a>Az Azure SQL Database szolgáltatásban
 
@@ -60,7 +60,7 @@ Az SQL Database minden egyes adatbázis el különítve a önálló, hordozható
 
 Az SQL Database a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) vagy a [vCore-alapú vásárlási modellt](sql-database-service-tiers-vcore.md) kínálja.
 
-- A DTU-alapú vásárlási modell a számítás, memória és IO-erőforrások egyvelegét kínálja három szolgáltatásszinten az adatbázisok kis és nagy terheléssel járó számítási feladatainak támogatása érdekében. Ezek a szintek az Alapszintű, a Standard és a Prémium. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
+- A DTU-alapú vásárlási modell számítási, memória és IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja: Alapszintű, Standard és prémium. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
 - A vCore-alapú vásárlási modell lehetővé teszi a virtuális magok számának, a memória mennyiségének, illetve a tárterület mennyiségének és sebességének a kiválasztását.
 
 Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron az általános célú szolgáltatási szinten a havonta, és ezután váltson szolgáltatásszintet manuálisan vagy programon keresztül bármikor, ha a megoldás a kritikus fontosságú üzleti szolgáltatási szintet. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
@@ -93,9 +93,9 @@ Hogyan hasonlítható össze az önálló adatbázisok és a rugalmas készletek
 
 Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
-- **Azure Storage**: Nagy tömegű telemetriai adat alacsony költségű archiválására
-- **Azure Event Hub**: Az SQL Database telemetriai adatainak integrálásra saját egyedi figyelési megoldásokkal vagy élő adatfolyamatokkal
-- **Azure Log Analytics**: Beépített monitorozási megoldás jelentéskészítő, riasztó és enyhítő funkciókkal.
+- **Az Azure Storage**: Alacsony költségű archiválására telemetriai adatok hatalmas mennyiségű
+- **Az Azure Event Hub**: Az SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal
+- **Az Azure Log Analytics**: A beépített monitorozási megoldás jelentéskészítő, riasztó és enyhítő funkciókkal.
 
     ![architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -109,10 +109,10 @@ Az Azure szolgáltatói szerződésében [(SLA)](https://azure.microsoft.com/sup
 - **[Időponthoz visszaállítás](sql-database-recovery-using-backups.md)**:
 
   Az SQL Database bármely időpontra történő helyreállítás támogatja az automatikus biztonsági mentések megőrzési időszakon belül.
-- **[Aktív georeplikáció](sql-database-geo-replication-overview.md)**:
+- **[Aktív georeplikáció](sql-database-active-geo-replication.md)**:
 
   SQL Database lehetővé teszi legfeljebb négy olvasható másodlagos adatbázis konfigurálását akár az azonos vagy globálisan elosztott Azure-beli adatközpontok.  Ha például egy SaaS-alkalmazás nagyszámú egyidejű csak olvasási tranzakciót kiszolgáló katalógus-adatbázisra épül, akkor az aktív georeplikáció által növelhető az olvashatóság, és megszűnik az elsődleges adatbázis magas olvasási terhelése miatti szűk keresztmetszet.
-- **[Feladatátvételi csoportok](sql-database-geo-replication-overview.md)**:
+- **[Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)**:
 
   Az SQL Database lehetővé teszi magas rendelkezésre állást és terheléselosztást kínáljon globális léptékben, beleértve a transzparens georeplikációt és feladatátvételét a Nagy adatkészleteken, adatbázisok és rugalmas készletek. A feladatátvételi csoportok és az aktív georeplikáció által a lehető legkevesebb adminisztrációs többletmunkával hozhatók létre globálisan elosztott SaaS-alkalmazások úgy, hogy a figyelés, útválasztás és feladatátvétel összetett feladatát az SQL Database-re bízzuk.
 - **[Zónaredundáns adatbázisok](sql-database-high-availability.md)**:
@@ -135,8 +135,8 @@ Jelenleg számos partnerünk, akik [több-bérlős SaaS-alkalmazásokat](sql-dat
 
 Az [SQL Database](sql-database-automatic-tuning.md) két szempont alapján képes automatikus finomhangolást végezni:
 
-- **Automatikus indexkezelés**: Azonosítja az adatbázishoz hozzáadandó és az abból eltávolítandó indexeket.
-- **Automatikus tervkorrekció**: Azonosítja a hibás terveket, és javítja az SQL-tervek teljesítményproblémáit (hamarosan megjelenik, az SQL Server 2017-ben már elérhető).
+- **Automatikus Indexkezelés**: Azonosítja az adatbázisban az új indexeket és az indexek, el kell távolítani.
+- **Automatikus terv-korrekció**: Azonosítja a hibás terveket és javítja az SQL tervek teljesítmény-problémáit (hamarosan megjelenik, az SQL Server 2017-ben már elérhető).
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
@@ -197,11 +197,11 @@ Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmaz
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
 
-- [DBA-veremcsere](https://dba.stackexchange.com/questions/tagged/sql-server): Kérdések az adatbázis rendszergazdájának
-- [Veremtúlcsordulás](http://stackoverflow.com/questions/tagged/sql-server): Kérdések a fejlesztőknek
-- [MSDN fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Műszaki kérdések
-- [Visszajelzés](https://aka.ms/sqlfeedback): Hibák jelentése és funkciók kérése
-- [Reddit](https://www.reddit.com/r/SQLServer/): Az SQL Server megvitatása
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Adatbázis-felügyeleti kérdéseket
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Kérdések
+- [MSDN fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Tegyen fel műszaki kérdéseket
+- [Visszajelzés](https://aka.ms/sqlfeedback): Hibák bejelentése és funkciók kérése
+- [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server megvitatása
 
 ## <a name="next-steps"></a>További lépések
 

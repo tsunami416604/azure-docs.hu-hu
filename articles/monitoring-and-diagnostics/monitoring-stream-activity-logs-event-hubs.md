@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8a932ac06b58a8e683e326f082a3a2c038dba66
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011833"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273705"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
@@ -24,7 +24,7 @@ Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md)
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Mit tehet a tevékenységnapló és az Event Hubs
 Az alábbiakban két módon használható a tevékenységnaplóban a streamelési funkciót:
 
-* **Külső naplózás és a telemetriai rendszer Stream**: idővel az Azure Event Hubs streamelési a mechanizmus, amellyel a Tevékenységnaplót kanálu be külső siem-EK és a log analytics-megoldások válnak.
+* **Külső naplózás és a telemetriai rendszer Stream**: Idővel az Azure Event Hubs streamelési lesz a mechanizmus, amellyel a Tevékenységnaplót kanálu be külső siem-EK és a log analytics-megoldások.
 * **Hozhat létre egy egyéni telemetriát és a naplózás platform**: Ha már rendelkezik egy személyre szabott telemetriai platform vagy szem előtt tartva létrehozására, rugalmasan skálázható közzétételi és előfizetési jellege az Event Hubs lehetővé teszi, hogy rugalmasan a tevékenységnaplóban. További információkért lásd: [Dan Rosanova videó, globális méretű telemetriai platform az Event Hubs használatával kapcsolatban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="enable-streaming-of-the-activity-log"></a>A tevékenységnapló streamelésének engedélyezéséhez
@@ -101,5 +101,5 @@ A tevékenységnapló sémája érhető el a [figyelése az Azure-tevékenységn
 ## <a name="next-steps"></a>További lépések
 * [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
-* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](monitor-alerts-unified-log-webhook.md)
+* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../azure-monitor/platform/alerts-log-webhook.md)
 

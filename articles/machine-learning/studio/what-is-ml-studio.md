@@ -4,9 +4,9 @@ description: Az Azure ML Studio áttekintése. Az Azure ML Studio olyan, egérre
 keywords: azure machine learning,azure ml, ml studio
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
+ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: cc76c7c4b4db448e9ba5b6aaf9c876143aa0e65c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091696"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250518"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -41,7 +41,7 @@ A prediktív elemzési modell összeállításához nincs szükség programozás
 > 
 > 
 
-![Az Azure ML Studio diagramja: kísérletek létrehozása, adatok beolvasása számos forrásból, pontozott adatok és modellek írása.][ml-studio-overview]
+![Az Azure ML Studio diagramja: Kísérletek létrehozása, olvasása, adatok számos forrásból, pontozott adatok, modellek írása.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
 Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
@@ -146,19 +146,19 @@ Felügyelt tanítás során, például a csalásészlelő modell tanítása eset
 Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével értékelje ki a modellt. Ilyenkor olyan adatokat kell használni, amelyeknél tisztában van az eredményekkel, mivel így állapítható meg, hogy milyen pontosságú előrejelzésre képes a modell.
 
 ## <a name="other-common-machine-learning-terms"></a>A gépi tanulás tárgykörében gyakran használt egyéb kifejezések
-* **algoritmus**: A szabályok olyan önálló készlete, amely adatfeldolgozás, matematikai műveletek vagy automatikus indoklás alkalmazásával segít a problémák megoldásában.
-* **anomáliaészlelés**: Olyan modell, amely képes a szokatlan események vagy értékek megjelölésére, és így segíti a problémák észlelését. A rosszindulatú bankkártyahasználat észlelése során például a rendszer szokatlan vásárlásokat keres.
-* **kategorizált adatok**: különböző kategóriákba sorolt, és különféle csoportokra osztható adatok. Egy gépjárműveket tartalmazó kategorizált adathalmazban például meg van adva a gyártás éve, a márka, a típus és az ár.
-* **besorolás**: az adatpontok kategóriákba sorolására használható modell, amely egy kategóriacsoportokkal már ellátott adathalmazt vesz alapul.
-* **jellemzőkiemelés**: az a folyamat, amikor bizonyos jellemzőket kinyerünk vagy kiválasztunk egy adathalmazból az adathalmaz és az eredmények minőségének javítása érdekében. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. További információk: [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md) (Jellemzőkiválasztás és -kiemelés az Azure Machine Learngingben).
-* **modul**: A Machine Learning Studio-modell funkcionális része, például az Enter Data (Adatbevitel) modul, amely kis adatkészletek bevitelét és szerkesztését teszi lehetővé. A Machine Learning Studióban az algoritmusok is a modulok egyik típusának számítanak.
-* **modell**: Egy Machine Learning-kísérlet eredményeként létrejövő felügyelt tanítási modell, amely betanítási adatokból, algoritmusmodulból és különböző funkcionális modulokból (például a Score Model (Modell pontozása) modul) áll.
-* **numerikus adatok**: mérésekként (folytonos adatok) vagy megszámlált értékekként (diszkrét adatok) értelmezhető adatok. A numerikus adatokat *kvantitatív adatoknak* is nevezzük.
-* **particionálás**: az a folyamat, amikor az adatokat mintákra osztjuk. További információk: [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) (Particionálás és minták létrehozása).
-* **előrejelzés**: a gépi tanulási modellek által előrejelzett értékeket előrejelzéseknek nevezzük. Az „előrejelzett pontszám” kifejezés is előfordulhat. Az előrejelzett pontszámok azonban nem a modellek végső kimenetei. A modell értékelése a pontszám alapján történik.
-* **regresszió**: Olyan modell, amely a különböző értékek előrejelzését független változók alapján végzi el, például egy autó árát annak gyártási éve és márkája alapján becsüli meg.
-* **pontszám**: betanított besorolási vagy regressziós modell által, a Machine Learning Studio [Score Model](https://msdn.microsoft.com/library/azure/dn905995.aspx) (Modell pontozása) modulja segítségével generált előre jelzett érték. A besorolási modell az előre jelzett érték valószínűségét jelző pontszámot is visszaad. Ha a modell már alkalmas pontszámok generálására, ellenőrizze a modell pontosságát az [Evaluate Model](https://msdn.microsoft.com/library/azure/dn905915.aspx) (Modell kiértékelése) modul segítségével.
-* **minta**: az adathalmaz olyan része, amely az adathalmaz egészére vonatkozóan is reprezentatívnak tekinthető. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
+* **algoritmus**: Az adatfeldolgozás, matematikai műveletek vagy automatikus indoklás alkalmazásával segít a problémák megoldásában használt szabályok olyan önálló készlete.
+* **anomáliadetektálás**: Egy modellt, amely észleli, ha szokatlan események vagy értékek, és segít a problémák észlelését. A rosszindulatú bankkártyahasználat észlelése során például a rendszer szokatlan vásárlásokat keres.
+* **kategorikus adatok**: Amely kategóriák szerint vannak rendszerezve, és, amely csoportokra osztható adatok. Egy gépjárműveket tartalmazó kategorizált adathalmazban például meg van adva a gyártás éve, a márka, a típus és az ár.
+* **Besorolási**: Az adatpontok egy adatkészlet, amely csoportosításokat már ismert alapján kategóriákba sorolására használható modell.
+* **jellemzőkiemelés**: A folyamat, vagy kiválasztunk annak érdekében, hogy növelje az adatkészlet, és javíthatja az eredményeket egy adatkészlet kapcsolódó szolgáltatások. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. További információk: [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md) (Jellemzőkiválasztás és -kiemelés az Azure Machine Learngingben).
+* **a modul**: A Machine Learning Studio modellben, például az adatbevitel modul, amely lehetővé teszi a bevitelét és szerkesztését a kis adatkészletekhez funkcionális része. A Machine Learning Studióban az algoritmusok is a modulok egyik típusának számítanak.
+* **Modell**: Felügyelt tanítási modell, amely az a machine learning-kísérletből a betanítási adatok, algoritmusmodul és funkcionális modulok, például a Score Model-modul áll.
+* **numerikus adatok**: Adatok, amelyek mérésekként (folytonos adatok), vagy megszámlálják (a diszkrét adatok). A numerikus adatokat *kvantitatív adatoknak* is nevezzük.
+* **partíció**: A módszer osztjuk adatokat mintákra. További információk: [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) (Particionálás és minták létrehozása).
+* **előrejelzési**: Előrejelzett értékeket egy gépi tanulási modellt az nevezzük. Az „előrejelzett pontszám” kifejezés is előfordulhat. Az előrejelzett pontszámok azonban nem a modellek végső kimenetei. A modell értékelése a pontszám alapján történik.
+* **Regresszió**: Egy érték előrejelzésére szolgáló modell független változók, például az egy autó árát annak év alapján előrejelzésére alapján, és győződjön meg arról.
+* **pontszám**: Egy betanított besorolási vagy regressziós modell generált előre jelzett érték használatával a [Score Model-modul](https://msdn.microsoft.com/library/azure/dn905995.aspx) a Machine Learning Studióban. A besorolási modell az előre jelzett érték valószínűségét jelző pontszámot is visszaad. Ha a modell már alkalmas pontszámok generálására, ellenőrizze a modell pontosságát az [Evaluate Model](https://msdn.microsoft.com/library/azure/dn905915.aspx) (Modell kiértékelése) modul segítségével.
+* **minta**: Egy adatkészlet is reprezentatívnak tekinthető, az egész részét. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
 
 ## <a name="next-steps"></a>További lépések
 A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](create-experiment.md) vagy [bővíthető mintáinkat](sample-experiments.md).  

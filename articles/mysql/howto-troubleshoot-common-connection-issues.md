@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: cf447ddef0639c35efeb0f396a61ae7bc5fe9781
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 901c8f0c903a7e26e82d89209ea4b0ec69057d23
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890585"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165408"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
 
@@ -49,9 +49,9 @@ Csatlakozási problémák oka lehet a különböző dolgok, többek között:
 
 Ha az alkalmazás nem állandó csatlakozás az Azure Database for MySQL, azt általában azt jelzi, hogy probléma az alábbi lehetőségek közül:
 
-* Tűzfal-konfiguráció: az Azure Database for MySQL-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
-* Az ügyféloldalon újrakonfigurálás hálózati: új IP-cím vagy a proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: például elírta kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó *@servername* utótagot a felhasználó nevében.
+* Kiszolgálói tűzfal-konfiguráció: Győződjön meg arról, hogy az Azure Database for MySQL-kiszolgáló tűzfalához az ügyfélről, beleértve a proxy-kiszolgálók és az átjárók kapcsolatok engedélyezésére van konfigurálva.
+* Ügyfél tűzfal-konfiguráció: Az ügyfélen a tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz csatlakozhat. IP-címek és portok nem lehet a kiszolgáló és az egyes tűzfalak például MySQL alkalmazásnevek engedélyezni kell.
+* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte *@servername* utótagot a felhasználó nevében.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
 

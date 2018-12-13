@@ -1,5 +1,5 @@
 ---
-title: Az Azure Resource Manager-sablonok használatával ILB ASE létrehozása |} A Microsoft Docs
+title: ILB ASE használata az Azure Resource Manager-sablonok – az App Service létrehozása |} A Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre egy belső load balancer ASE Azure Resource Manager-sablonok használatával.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: a136234c6645e7f88fc16a5f7a5d84580906c0f7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964849"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276359"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>ILB ASE létrehozása Azure Resource Manager-sablonokkal
 
@@ -41,9 +42,9 @@ Egy példa az Azure Resource Manager-sablon és a kapcsolódó paramétereket ta
 
 A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl akkor is ILB ASE, valamint egy nyilvános virtuális IP-CÍMEK kötött ASE létrehozása.  Hívások különösen fontos paraméterek meg az alábbi listán, vagy, amelyek egyediek, az ILB ASE létrehozása során:
 
-* *interalLoadBalancingMode*: A legtöbb esetben az FTP-szolgáltatás, az ASE által figyelt ezt a 3, ami azt jelenti, hogy a HTTP/HTTPS-forgalmat a 80-as/443-as portokon, és a vezérlő/adatok portok beállítása társítani kívánt lefoglalt virtuális hálózat belső ILB cím.  Ha ehelyett Ez a tulajdonság értéke 2, csak az FTP-szolgáltatás kapcsolatos, portok (egyaránt vezérlési és csatornák) társítani kívánt ILB-címmel, amíg változatlan marad a HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím.
-* *DNS-utótagja*: Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely hozzá lesz rendelve az ASE-t.  Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*.  Azonban mivel az ILB ASE egy ügyfél virtuális hálózatán belüli, akkor nem értelme használata a nyilvános service alapértelmezett legfelső szintű tartományt.  Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül.  Egy kitalált, Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* feloldható és elérhető-e a Contoso virtuális hálózaton belül csak nem igénylő alkalmazások számára. 
-* *ipSslAddressCount*: Ez a paraméter automatikus alapértelmezés szerint a 0 értéket, a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik.  Nincsenek explicit IP-SSL címek az ILB ASE környezetben, és ezért az IP SSL-címkészletet az ILB ASE nulla értékre kell állítani, ellenkező esetben egy üzembe helyezési hiba történik. 
+* *interalLoadBalancingMode*:  A legtöbb esetben készlet ezt 3, ami azt jelenti, HTTP/HTTPS-forgalmat a 80-as/443-as portokon, mind a control-adatok a csatornát, az ASE az FTP-szolgáltatás által figyelt portok, a társítani kívánt ILB lefoglalt virtuális hálózat belső cím.  Ha ehelyett Ez a tulajdonság értéke 2, csak az FTP-szolgáltatás kapcsolatos, portok (egyaránt vezérlési és csatornák) társítani kívánt ILB-címmel, amíg változatlan marad a HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím.
+* *DNS-utótagja*:  Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely hozzá lesz rendelve az ASE-t.  Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*.  Azonban mivel az ILB ASE egy ügyfél virtuális hálózatán belüli, akkor nem értelme használata a nyilvános service alapértelmezett legfelső szintű tartományt.  Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül.  Egy kitalált, Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* feloldható és elérhető-e a Contoso virtuális hálózaton belül csak nem igénylő alkalmazások számára. 
+* *ipSslAddressCount*:  Ez a paraméter automatikus alapértelmezés szerint a 0 értéket, a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik.  Nincsenek explicit IP-SSL címek az ILB ASE környezetben, és ezért az IP SSL-címkészletet az ILB ASE nulla értékre kell állítani, ellenkező esetben egy üzembe helyezési hiba történik. 
 
 Miután a *azuredeploy.parameters.json* fájl ki van töltve az ILB ASE környezetben, az ILB ASE majd hozható létre a következő Powershell-kódrészletet.  A fájl elérési utak, hol található a gépen az Azure Resource Manager-sablonfájlokat megfelelően módosítsa.  Ne feledje a adja meg a saját Azure Resource Manager üzemelő példány neve és erőforráscsoport-nevet.
 
@@ -59,8 +60,8 @@ Az ILB ASE létrehozása után egy SSL-tanúsítványt kell társítva az ASE-t 
 
 Nincsenek többféle módon, beleértve a belső hitelesítésszolgáltatók, a vásárol egy tanúsítványt külső kiállítótól és a egy önaláírt tanúsítvány használatával érvényes SSL-tanúsítvány beszerzése.  Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
-* *Tulajdonos*: ezt az attribútumot állítsa **.az-gyökér-domain-here.com*
-* *Tulajdonos alternatív neve*: ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com*, és a **.az-gyökér-domain-here.com*.  A második bejegyzés oka, hogy SSL-kapcsolatok az egyes alkalmazásokhoz hozzárendelt SCM/Kudu helyhez lesz-e az űrlap egy címmel *your-app-name.scm.your-root-domain-here.com*.
+* *Tulajdonos*:  Ezt az attribútumot állítsa **.az-gyökér-domain-here.com*
+* *Tulajdonos alternatív neve*:  Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com*, és a **.az-gyökér-domain-here.com*.  A második bejegyzés oka, hogy SSL-kapcsolatok az egyes alkalmazásokhoz hozzárendelt SCM/Kudu helyhez lesz-e az űrlap egy címmel *your-app-name.scm.your-root-domain-here.com*.
 
 Az érvényes SSL-tanúsítványt az aktuális két további előkészítő lépések szükségesek.  Az SSL-tanúsítványt kell lennie egy .pfx-fájlba konvertálja/elmentve.  Ne feledje, hogy a .pfx-fájl összes köztes és főtanúsítványok van szükség, és jelszóval kell védeni kell is.
 
@@ -84,12 +85,12 @@ Az SSL-tanúsítvány sikeresen létrehozott és alakítani egy base64-kódolás
 
 A paramétereket a *azuredeploy.parameters.json* fájlt az alábbiak:
 
-* *appServiceEnvironmentName*: az ILB ASE konfigurált nevét.
-* *existingAseLocation*: az Azure-régióban, az ILB ASE környezetben telepített tartalmazó szöveges karakterlánc.  Például: "USA déli középső Régiója".
-* *pfxBlobString*: A based64 kódolású karakterláncos leképezését a .pfx-fájlt.  Használja a korábban bemutatott kódrészletet, kívánja másolni a "exportedcert.pfx.b64" foglalt karakterlánc, majd illessze be az értéket a *pfxBlobString* attribútum.
-* *jelszó*: A jelszót a .pfx-fájlt védi.
-* *certificateThumbprint*: A tanúsítvány ujjlenyomata.  Ha ez az érték lekérése Powershell (pl. *$certificate. Ujjlenyomat* a korábbi kódrészlet), használhatja a értékével megegyező-van.  A Windows-tanúsítvány párbeszédpanelről másolja az értéket, ha azonban ne felejtse el a felesleges szóközöket ki.  A *certificateThumbprint* hasonlóan kell kinéznie: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*: a tanúsítvány identitás használt saját egy rövid karakterlánc-azonosító.  A név részeként az Azure Resource Manager egyedi azonosítóját használja a *Microsoft.Web/certificates* az SSL-tanúsítvány képviselő entitás.  A név **kell** a következő utótaggal végződik: \_yourASENameHere_InternalLoadBalancingASE.  Ennek az utótagnak azt jelzi, hogy a tanúsítvány egy ILB-kompatibilis ASE biztonságossá tételéhez van használva, a portál által használt.
+* *appServiceEnvironmentName*:  Az ILB ASE konfigurált neve.
+* *existingAseLocation*:  Az Azure-régióban, az ILB ASE környezetben telepített tartalmazó szöveges karakterlánc.  Példa:  "USA déli középső RÉGIÓJA".
+* *pfxBlobString*:  A based64 kódolású karakterláncos leképezését a .pfx-fájlt.  Használja a korábban bemutatott kódrészletet, kívánja másolni a "exportedcert.pfx.b64" foglalt karakterlánc, majd illessze be az értéket a *pfxBlobString* attribútum.
+* *Jelszó*:  A .pfx fájl védelméhez használt jelszó.
+* *certificateThumbprint*:  A tanúsítvány ujjlenyomata.  Ha ez az érték lekérése Powershell (pl. *$certificate. Ujjlenyomat* a korábbi kódrészlet), használhatja a értékével megegyező-van.  A Windows-tanúsítvány párbeszédpanelről másolja az értéket, ha azonban ne felejtse el a felesleges szóközöket ki.  A *certificateThumbprint* hasonlóan kell kinéznie:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateName*:  Identitás a tanúsítvány használja saját kiválasztása egy rövid karakterlánc-azonosító.  A név részeként az Azure Resource Manager egyedi azonosítóját használja a *Microsoft.Web/certificates* az SSL-tanúsítvány képviselő entitás.  A név **kell** a következő utótaggal végződik: \_yourASENameHere_InternalLoadBalancingASE.  Ennek az utótagnak azt jelzi, hogy a tanúsítvány egy ILB-kompatibilis ASE biztonságossá tételéhez van használva, a portál által használt.
 
 Rövidített például *azuredeploy.parameters.json* az alábbiakban látható:
 

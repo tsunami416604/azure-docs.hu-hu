@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -16,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: b0494a9da422b7c0effc14ff4188d3a5b20b8e9d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081931"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269413"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel
 
 A témakör az megfelelő hiperparaméter beállítása az Azure Machine Learning algoritmus kiválasztása. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. Az optimális paraméterek készletét folyamata más néven *kijelölés modell*.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Különböző módon modellezheti kiválasztása. A gépi tanulásban a kereszt-ellenőrzés a leggyakrabban használt módszerek egyikét a modell kiválasztása, és azt az alapértelmezett modell kijelölés mechanizmus az Azure Machine Learning. Mivel az Azure Machine Learning R- és Python támogatja, mindig is alkalmazható a saját modell kijelölés mechanizmusok R vagy Python.
 
 A legjobb paraméterkészletet keresése folyamatban négy lépésben történik:
 
-1. **Adja meg a paraméter terület**: algoritmust, először döntse el, érdemes figyelembe venni kívánt pontos paraméter értékét.
-2. **Kereszt-ellenőrzési beállítások meghatározásához**: döntse el, az adatkészlet kereszt-ellenőrzési modellrész kiválasztása.
-3. **A mérőszám meghatározása**: döntse el, milyen metrikát alkalmasak a legjobb paraméterkészlet, mint a pontossága, root mean-készlet négyzet hiba, a pontosság, a visszaírási vagy az f-pontszám.
-4. **Betanítását, kiértékelheti és hasonlítsa össze**: minden egyéni kombinációja paraméter értékét, a kereszt-ellenőrzési által végzett és határoz meg a hiba-metrika alapján. Értékelés és összehasonlítása, után kiválaszthatja a legjobban teljesítő modell.
+1. **Adja meg a paraméter terület**: Az algoritmus először döntse el, érdemes figyelembe venni kívánt pontos paraméter értékét.
+2. **Kereszt-ellenőrzési beállítások meghatározásához**: Annak eldöntése, hogyan válassza ki a kereszt-ellenőrzési modellrész az adatkészlet.
+3. **A mérőszám meghatározása**: Döntse el, milyen metrikát alkalmasak a legjobb paraméterkészlet, mint a pontossága, root mean-készlet négyzet hiba, a pontosság, a visszaírási vagy az f-pontszám.
+4. **Betanítását, kiértékelheti és hasonlítsa össze**: Minden egyéni kombinációja paraméter értékét, a kereszt-ellenőrzési által végzett és a határoz meg hiba-metrika alapján. Értékelés és összehasonlítása, után kiválaszthatja a legjobban teljesítő modell.
 
 Az alábbi ábrán látható, hogy ez elérhető az Azure Machine Learning.
 
 ![A legjobb paraméterkészletet keresése](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>A paraméter tér definiálása
-A paraméter a modell alkalmazásinicializálási lépéshez beállítva határozhatja meg. A machine learning-algoritmusok paraméter panelnek kétféle trainer: *egyetlen paramétert* és *paraméter tartomány*. Válassza ki a paraméter tartomány módban. Paraméter tartomány módban az egyes paraméterekhez tartozó több értékeket adhat meg. A szövegmezőben vesszővel elválasztott értékeket adhat meg.
+A paraméter a modell alkalmazásinicializálási lépéshez beállítva határozhatja meg. Az összes gépi tanulási algoritmusok paraméter ablaktábla kétféle trainer rendelkezik: *Egyetlen paraméter* és *paraméter tartomány*. Válassza ki a paraméter tartomány módban. Paraméter tartomány módban az egyes paraméterekhez tartozó több értékeket adhat meg. A szövegmezőben vesszővel elválasztott értékeket adhat meg.
 
 ![Kétosztályos gyorsított döntési fa, egyetlen paramétert](./media/algorithm-parameters-optimize/fig2.png)
 

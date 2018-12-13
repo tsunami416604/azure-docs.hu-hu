@@ -12,38 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959026"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185732"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Főbb funkcióiról és koncepciójáról az Azure Stackben
 Ha most ismerkedik a Microsoft Azure Stack, ezeket a feltételeket és a szolgáltatások leírása akkor lehet hasznos.
 
 ## <a name="personas"></a>Szerepek
-Nincsenek a felhő üzemeltetője (szolgáltató) és a bérlő (felhasználói) a Microsoft Azure Stack felhasználói két fajta.
+Nincsenek a felhasználók a Microsoft Azure Stack, az operátor és a felhasználó két fajta.
 
-* A **felhőüzemeltető** Azure Stack konfigurálhatja és kezelheti az ajánlatok, tervek, szolgáltatások, kvóták és díjszabás erőforrásokat biztosít a bérlők.  Felhő üzemeltetői is kapacitás kezelése és válaszadás a riasztásokra.  
-* A **bérlői** (más néven a felhasználó) használ fel szolgáltatásokat kínál a felhő rendszergazdájához. Bérlők kiépítéséhez, figyeléséhez és azok feliratkozott, például a Web Apps, a Storage és a virtuális gépek szolgáltatások felügyeletéhez.
+* Az Azure Stackkel **operátor** kezelése ajánlatok, tervek, szolgáltatások, kvóták és erőforrásokat biztosít a bérlőhöz tartozó felhasználók díjszabása szerint konfigurálhatja az Azure Stack. Operátorok is kapacitás kezelése és válaszadás a riasztásokra.  
+* Az Azure Stackkel **felhasználói** (más néven a bérlői) használ a szolgáltatások, amelyek az operátor kínál fel. Felhasználók kiépítéséhez, figyeléséhez és azok feliratkozott, például a web apps, a storage és a virtuális gépek szolgáltatások felügyeletéhez.
 
 ## <a name="portal"></a>Portál
 Az elsődleges használata a Microsoft Azure Stack módszereket a felügyeleti portálon, a felhasználói portál és a PowerShell.
 
-Az Azure Stack portálon minden egyes biztonsági külön példányok az Azure Resource Manager által.  A felhő üzemeltetője használ a felügyeleti portálon, kezelheti az Azure Stack, valamint a van például az ajánlatok bérlő létrehozása.  A felhasználói portál (más néven a bérlői portál) önkiszolgáló élményt nyújt a felhőbeli erőforrások, például a virtuális gépek, tárfiókok és a Web Apps fogyasztását. További információkért lásd: [az Azure Stack rendszergazdai és felhasználói portálok használata](azure-stack-manage-portals.md).
+Az Azure Stack portálon minden egyes biztonsági külön példányok az Azure Resource Manager által. Az operátornak használ a felügyeleti portálon, kezelheti az Azure Stack, valamint a van például az ajánlatok bérlő létrehozása. A felhasználói portál (más néven a bérlői portál) önkiszolgáló élményt nyújt a felhőbeli erőforrások, például a virtuális gépek, tárfiókok és a web apps fogyasztását. További információkért lásd: [az Azure Stack rendszergazdai és felhasználói portálok használata](azure-stack-manage-portals.md).
 
 ## <a name="identity"></a>Identitás 
-Az Azure Stack használ vagy az Azure Active Directory (AAD), vagy az Active Directory összevonási szolgáltatások (AD FS) identitás-szolgáltatóként.  
+Az Azure Stack használ vagy az Azure Active Directory (Azure AD), vagy az Active Directory összevonási szolgáltatások (AD FS) identitás-szolgáltatóként.  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Az Azure Active Directory a Microsoft felhőalapú, több-bérlős identitásszolgáltató.  A legtöbb hibrid forgatókönyvek az ügyfélidentitás-tárolóval, az Azure Active Directory használja.
+Az Azure AD a Microsoft felhőalapú, több-bérlős identitásszolgáltató. A legtöbb hibrid forgatókönyvek Azure AD használatára az ügyfélidentitás-tárolóval.
 
 ### <a name="active-directory-federation-services"></a>Active Directory összevonási szolgáltatások
-Előfordulhat, hogy használni kívánja az Active Directory összevonási szolgáltatások (AD FS) az Azure Stack kapcsolat nélküli telepítésekhez.  Az Azure Stack, erőforrás-szolgáltatók és más alkalmazások működnek az AD FS-sel ugyanolyan módon, az Azure Active Directoryval. Az Azure Stack saját AD FS és az Active Directory-példány és a egy Active Directory Graph API-t tartalmaz. Az Azure Stack Development Kit a következő az AD FS-forgatókönyveket teszi lehetővé:
+Előfordulhat, hogy használni kívánja az Active Directory összevonási szolgáltatások (AD FS) az Azure Stack kapcsolat nélküli telepítésekhez. Az Azure Stack erőforrás-szolgáltatók és más alkalmazások működnek az AD FS-sel ugyanolyan módon, az Azure ad-ben. Az Azure Stack saját Active Directory-példányból, és a egy Active Directory Graph API is tartalmaz. Az Azure Stack Development Kit a következő az AD FS-forgatókönyveket teszi lehetővé:
 
 - Jelentkezzen be az üzembe helyezés az AD FS használatával.
 - A virtuális gép létrehozása Key Vault titkos
@@ -93,9 +93,9 @@ A rendszergazdák számára a szolgáltatói előfizetés alapértelmezett üzem
 Az Azure Resource Managerrel, az infrastruktúra-erőforrások, sablon-alapú, deklaratív modellben dolgozhat.   Üzembe helyezés és kezelés a megoldás-összetevőket segítségével egyetlen felületet biztosít. Teljes körű információkat és útmutatást lásd: a [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Erőforráscsoportok
-Erőforráscsoportok erőforrások, szolgáltatások és alkalmazások gyűjteményei, és minden erőforrás rendelkezik egy típus, például a virtuális gépek, virtuális hálózatok, nyilvános IP-címek, tárfiókok és webhelyeket. Minden erőforrás egy erőforráscsoportba tartozó legyen, és így az erőforráscsoportok segítségével logikailag erőforrások rendszerezése, például a számítási feladat vagy a hely szerint.  A Microsoft Azure Stack erőforrások, például a csomagokat és ajánlatokat is felügyelt erőforráscsoport.
+Erőforráscsoportok erőforrások, szolgáltatások és alkalmazások gyűjteményei, és minden erőforrás rendelkezik egy típus, például a virtuális gépek, virtuális hálózatok, nyilvános IP-címek, tárfiókok és webhelyeket. Minden erőforrás egy erőforráscsoportba tartozó legyen, és így az erőforráscsoportok segítségével logikailag erőforrások rendszerezése, például a számítási feladat vagy a hely szerint. Az Azure Stackben erőforrások, például a csomagokat és ajánlatokat is felügyelt erőforráscsoport.
 
-Ellentétben [Azure](../azure-resource-manager/resource-group-move-resources.md), hogy erőforrások nem helyezhetők át erőforráscsoportok között. Az Azure Stack felügyeleti portálon egy erőforrás vagy erőforráscsoport tulajdonságainak megtekintésekor a *áthelyezése* gomb akkor érhető el, és nem érhető el. 
+Ellentétben [Azure](../azure-resource-manager/resource-group-move-resources.md), erőforráscsoportok között az Azure Stack-erőforrások nem helyezhetők át. Az Azure Stack felügyeleti portálján, egy erőforrás vagy erőforráscsoport tulajdonságainak megtekintésekor a *áthelyezése* gomb akkor érhető el, és nem érhető el. Ezenkívül a használatát a **Váltás másik erőforráscsoportra** vagy **előfizetés módosítása** műveletek erőforráscsoport vagy erőforrás-elem tulajdonságok nem is támogatott. Összes áthelyezése műveletek sikertelenek lesznek.
  
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 Az Azure Resource Managerrel, létrehozhat olyan sablonokat (JSON formátumban), amely meghatározza, üzembe helyezését és konfigurálását az alkalmazás. Ez a sablon egy Azure Resource Manager-sablon nevezik, és lehetővé teszi a deklaratív üzembe helyezési meghatározása. A sablonok segítségével az alkalmazást ismételten telepítheti az alkalmazás életciklusa során, és biztos lehet abban, hogy az erőforrások telepítése konzisztens lesz.
@@ -103,7 +103,7 @@ Az Azure Resource Managerrel, létrehozhat olyan sablonokat (JSON formátumban),
 ## <a name="resource-providers-rps"></a>Erőforrás-szolgáltatók (RPs)
 Erőforrás-szolgáltatók olyan webes szolgáltatásokat, amelyek alapját alkotják, az összes Azure-alapú IaaS és PaaS-szolgáltatások. Az Azure Resource Manager-szolgáltatásokhoz való hozzáférés biztosításához a különböző RPs támaszkodik.
 
-Nincsenek négy alapvető RPs: hálózati, tárolási, számítási és KeyVault. Ezek RPs mindegyike segítségével konfigurálhatja, és szabályozhatja a megfelelő erőforrásokkal. Szolgáltatás-rendszergazdákat is hozzáadhat új egyéni erőforrás-szolgáltatók.
+Nincsenek négy alapvető RPs: Hálózati, tárolási, számítási és KeyVault. Ezek RPs mindegyike segítségével konfigurálhatja, és szabályozhatja a megfelelő erőforrásokkal. Szolgáltatás-rendszergazdákat is hozzáadhat új egyéni erőforrás-szolgáltatók.
 
 ### <a name="compute-rp"></a>Helyreállítási pont Védettként COMPUTE
 A Compute Resource Provider (CRP) lehetővé teszi, hogy az Azure Stack-bérlők számára saját virtuális gépek létrehozása. A CRP képes létrehozni virtuális gépeket, valamint a virtuális gépi bővítmények tartalmazza. A virtuálisgép-bővítmény szolgáltatás segít az IaaS-képességeket nyújt a Windows és Linux rendszerű virtuális gépek.  Tegyük fel a KSZT használatával egy Linux rendszerű virtuális gép üzembe helyezése és futtatása a Bash-szkriptek konfigurálása a virtuális gép üzembe helyezése során.
@@ -129,7 +129,7 @@ Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások ö
 A KeyVault RP biztosít a felügyeleti és a titkos kulcsokat, például a jelszavak és tanúsítványok naplózását. Például egy bérlő segítségével a KeyVault RP rendszergazdai jelszavak vagy -kulcsok adja meg a virtuális gép üzembe helyezése során.
 
 ## <a name="high-availability-for-azure-stack"></a>Magas rendelkezésre állás az Azure Stackben
-*A következőkre vonatkozik: Azure Stack 1802-es vagy újabb verziók*
+*Vonatkozik: Az Azure Stack 1802-es vagy újabb verziók*
 
 Magas rendelkezésre állás az Azure-beli virtuális gépre kiterjedő éles rendszer, a virtuális gépek kerülnek egy rendelkezésre állási csoportban, a azokat több tartalék tartomány és frissítési tartományok. Ezzel a módszerrel [a rendelkezésre állási csoportokban üzembe helyezett virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) fizikailag elkülönített egymással a különálló kiszolgálóra állványokon, hogy hiba rugalmasság, az alábbi ábrán látható módon:
 
@@ -150,7 +150,7 @@ Virtuálisgép-méretezési csoportokhoz tartozó rendelkezésre állási csopor
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 Az RBAC használatával hozzáférést rendszer engedéllyel rendelkező felhasználók, csoportok és szolgáltatások egy előfizetés, erőforráscsoport vagy egyéni erőforrás szintjén szerepkörök hozzárendelésével. Minden egyes szerepkör a felhasználó, csoport vagy szolgáltatás rendelkezik a Microsoft Azure Stack-erőforrások hozzáférési szint határozza meg.
 
-Az Azure RBAC rendelkezik három alapvető szerepkörök, amelyek érvényesek az összes erőforrástípus: tulajdonos, közreműködő és olvasó. Tulajdonos az összes olyan erőforrásokhoz, beleértve a jogot arra, hogy mások való hozzáférés delegálására teljes hozzáféréssel rendelkezik. Közreműködői hozhat létre és az Azure-erőforrások összes típusa felügyelhető, de nem adhat hozzáférést másoknak. Olvasó csak megtekintheti a meglévő Azure-erőforrások. A többi Azure-beli RBAC-szerepkörök lehetővé teszik az adott Azure-erőforrások kezelése. A virtuális gépek Közreműködője szerepkör például-virtuális gépek létrehozása és kezelése lehetővé teszi, de nem teszi lehetővé a virtuális hálózat és az alhálózathoz, amelyhez csatlakozik a virtuális gép felügyeletét.
+Az Azure RBAC rendelkezik, amelyek érvényesek az összes erőforrástípus három alapvető szerepkörök: Tulajdonos, közreműködő és olvasó. Tulajdonos az összes olyan erőforrásokhoz, beleértve a jogot arra, hogy mások való hozzáférés delegálására teljes hozzáféréssel rendelkezik. Közreműködői hozhat létre és az Azure-erőforrások összes típusa felügyelhető, de nem adhat hozzáférést másoknak. Olvasó csak megtekintheti a meglévő Azure-erőforrások. A többi Azure-beli RBAC-szerepkörök lehetővé teszik az adott Azure-erőforrások kezelése. A virtuális gépek Közreműködője szerepkör például-virtuális gépek létrehozása és kezelése lehetővé teszi, de nem teszi lehetővé a virtuális hálózat és az alhálózathoz, amelyhez csatlakozik a virtuális gép felügyeletét.
 
 ## <a name="usage-data"></a>Használati adatok
 A Microsoft Azure Stack gyűjti és összesíti az összes erőforrás-szolgáltató különböző használati adatait, és továbbítja azt az Azure-bA a feldolgozáshoz az Azure kereskedelmi. Az Azure Stacken az összegyűjtött használati adatok a REST API-n keresztül is megtekinthetők. Van egy egységes Azure-bérlői API-t, valamint a szolgáltató és delegált szolgáltató API-k az összes bérlő előfizetés használati adatainak beolvasásához. Ezeket az adatokat egy külső eszközzel vagy a szolgáltatás számlázási vagy költséghelyi elszámolás integrálásához használható. Használat az Azure kereskedelmi által feldolgozott, amint azt az Azure számlázási portálján lehet megtekinteni.

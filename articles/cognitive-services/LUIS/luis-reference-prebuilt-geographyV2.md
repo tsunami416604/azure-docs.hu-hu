@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 07bbb8e17a9f75bd878c384b5b8d90798d043814
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a81c97cf8883d2a3629d1eb1b9f6137609c6edda
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086221"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135100"
 ---
-# <a name="geographyv2-entity"></a>GeographyV2 entitás
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeállított entitások a LUIS-alkalmazások
 Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Angol nyelven támogatott GeographyV2 entitás [kulturális környezet](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Altípus

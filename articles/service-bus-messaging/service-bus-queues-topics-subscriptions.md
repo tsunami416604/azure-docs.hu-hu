@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409761"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312884"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
@@ -32,15 +32,15 @@ Az összetevők közötti egy rejlő laza kapcsolódásokra köztes közötti ü
 
 ### <a name="create-queues"></a>Várólista létrehozása
 
-Üzenetsorok használatával létrehozhat a [az Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md), vagy [Resource Manager-sablonok](service-bus-resource-manager-namespace-queue.md). Ezután küldött és fogadott üzenetek egy [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektum. 
+Üzenetsorok használatával létrehozhat a [az Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md), vagy [Resource Manager-sablonok](service-bus-resource-manager-namespace-queue.md). Ezután küldött és fogadott üzenetek egy [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektum.
 
-Gyors útmutató: hozzon létre egy üzenetsort, majd üzeneteket küldhet és fogadhat, és a várólistából, tekintse meg a [útmutatóink](service-bus-quickstart-portal.md) minden módszer esetén. Üzenetsorok használata a részletesebb oktatóanyagért lásd: [Ismerkedés a Service Bus-üzenetsorok](service-bus-dotnet-get-started-with-queues.md). 
+Gyors útmutató: hozzon létre egy üzenetsort, majd üzeneteket küldhet és fogadhat, és a várólistából, tekintse meg a [útmutatóink](service-bus-quickstart-portal.md) minden módszer esetén. Üzenetsorok használata a részletesebb oktatóanyagért lásd: [Ismerkedés a Service Bus-üzenetsorok](service-bus-dotnet-get-started-with-queues.md).
 
 Egy működő minta: a [BasicSendReceiveUsingQueueClient minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) a Githubon.
 
 ### <a name="receive-modes"></a>Módok fogadása
 
-Megadhatja, amelyben a Service Bus fogadja az üzeneteket kétféle: *ReceiveAndDelete* vagy *PeekLock*. Az a [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) mód, a receive műveletet egylépéses; azt jelenti, amikor a Service Bus a kérelmet kap, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. **ReceiveAndDelete** mód a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Szeretné megtudni, ebben a forgatókönyvben, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. A Service Bus jelöli meg az üzenetet, a rendszer, elérheti, ha az alkalmazás újraindításakor és megkezdésekor üzeneteket, mert ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+A Service Bus, amelyben fogadja az üzeneteket kétféle módon adhatja meg: *ReceiveAndDelete* vagy *PeekLock*. Az a [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) mód, a receive műveletet egylépéses; azt jelenti, amikor a Service Bus a kérelmet kap, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. **ReceiveAndDelete** mód a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Szeretné megtudni, ebben a forgatókönyvben, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. A Service Bus jelöli meg az üzenetet, a rendszer, elérheti, ha az alkalmazás újraindításakor és megkezdésekor üzeneteket, mert ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
 
 A [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód, a receive műveletet válik két szakaszból álló, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. A Service Bus a kérelmet kap, amikor azt talál a következő feldolgozandó üzenetet, zárolja azt, hogy más fogyasztók számára fogadni, és majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) a fogadott üzenethez. Amikor a Service Bus látja a **CompleteAsync** hívások esetén megjelöli az üzenetet.
 
@@ -56,7 +56,7 @@ Várólisták, amelyben minden üzenetet dolgoz fel egy-egy fogyasztó, szakembe
 
 ### <a name="create-topics-and-subscriptions"></a>Üzenettémák és előfizetések létrehozása
 
-A témakör létrehozása nagyon hasonlít egy üzenetsort, az előző szakaszban leírtak szerint. Elküldendő üzenetek a [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) osztály. Üzenetek fogadásához hozzon létre egy vagy több előfizetés a témakörbe. Üzenetsorok hasonlóan fogadása egy előfizetés az egy [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) objektumazonosító helyett egy [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektum. Hozzon létre az előfizetés-ügyfelet, az üzenettéma nevére, a neve, az előfizetés, és (opcionálisan) a fogadás mód átadása paraméterekként. 
+A témakör létrehozása nagyon hasonlít egy üzenetsort, az előző szakaszban leírtak szerint. Elküldendő üzenetek a [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) osztály. Üzenetek fogadásához hozzon létre egy vagy több előfizetés a témakörbe. Üzenetsorok hasonlóan fogadása egy előfizetés az egy [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) objektumazonosító helyett egy [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektum. Hozzon létre az előfizetés-ügyfelet, az üzenettéma nevére, a neve, az előfizetés, és (opcionálisan) a fogadás mód átadása paraméterekként.
 
 Egy teljes működik például lásd a [BasicSendReceiveUsingTopicSubscriptionClient minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient) a Githubon.
 
@@ -66,14 +66,14 @@ Sok esetben üzeneteket, amelyek meghatározott jellemzőkkel rendelkeznek, kül
 
 Egy teljes működik például lásd a [TopicSubscriptionWithRuleOperationsSample minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) a Githubon.
 
-Lehetséges szűrőértéket kapcsolatos további információkért lásd: a dokumentációban a [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) és [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) osztályokat. 
+Lehetséges szűrőértéket kapcsolatos további információkért lásd: a dokumentációban a [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) és [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) osztályokat.
 
 ## <a name="next-steps"></a>További lépések
 
 További információk és példák a Service Bus-üzenetkezelés használatával tekintse meg az alábbi speciális témakörök:
 
 * [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
-* [Gyors útmutató: Üzenetek küldése és fogadása az Azure portal és a .NET használatával](service-bus-quickstart-portal.md)
+* [Gyors útmutató: Az Azure portal és a .NET használatával üzenetek küldése és fogadása](service-bus-quickstart-portal.md)
 * [Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

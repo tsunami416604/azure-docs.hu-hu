@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284880"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185069"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -41,7 +41,7 @@ Ez a funkció a kulcs biztonsági beállításait az alábbiak:
 - Csak szabványos portot (80-as és 443-as) az Azure AD a hitelesítési ügynököktől származó kimenő kommunikációra szolgálnak. Nem kell megnyitni a bejövő portra a tűzfalon. 
   - 443-as port az összes hitelesített kimenő kommunikációra szolgál.
   - 80-as port szolgál csak a visszavont tanúsítványok listájának (CRL) letöltése esetén győződjön meg arról, hogy ez a szolgáltatás által használt tanúsítványok egyike visszavonták.
-  - A hálózati követelmények teljes listáját lásd: [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+  - A hálózati követelmények teljes listáját lásd: [Azure Active Directory átmenő hitelesítés: Gyors üzembe helyezési](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Hogy a felhasználók a bejelentkezés során adja meg a felhőben vannak titkosítva, előtt a helyszíni hitelesítési ügynökök fogadja el az Active Directory érvényesítésre.
 - Az Azure AD között a HTTPS-csatorna és a helyszíni hitelesítési ügynök a kölcsönös hitelesítés védi.
 - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../conditional-access/conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
@@ -49,10 +49,10 @@ Ez a funkció a kulcs biztonsági beállításait az alábbiak:
 ## <a name="components-involved"></a>Részt vevő összetevők
 
 További működési, Azure AD szolgáltatás és adat biztonsági kapcsolatos általános információkért lásd: a [biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/). A következő összetevőket is igényel, a felhasználói bejelentkezés az átmenő hitelesítés használatakor:
-- **Az Azure AD-STS**: állapot nélküli biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS), amely feldolgozza a bejelentkezési kérelmek és a biztonsági jogkivonatokat bocsát felhasználói böngészők, ügyfelek vagy szolgáltatásokhoz szükség szerint.
-- **Az Azure Service Bus**: biztosítja a felhőalapú vállalati üzenetkezeléssel és továbbítók kommunikációt, amely segítséget nyújt a helyszíni megoldások csatlakoztatása a felhő segítségével.
-- **Az Azure AD Connect hitelesítési ügynökének**: egy a helyszíni összetevő, amely figyeli és a jelszó érvényesítése kérésekre válaszol.
-- **Az Azure SQL Database**: a bérlő hitelesítési ügynökök, ideértve a metaadatok és a titkosítási kulcsok kapcsolatos információkat tartalmazza.
+- **Az Azure AD STS**: Állapot nélküli biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS), amely feldolgozza a bejelentkezési kérelmek és a biztonsági jogkivonatokat bocsát felhasználói böngészők, ügyfelek vagy szolgáltatásokhoz szükség szerint.
+- **Az Azure Service Bus**: Biztosítja a felhőalapú vállalati üzenetkezeléssel és továbbítók kommunikációt, amely segítséget nyújt a helyszíni megoldások csatlakoztatása a felhő segítségével.
+- **Az Azure AD Connect hitelesítési ügynökének**: Egy helyszíni összetevő, amely figyeli és a jelszó érvényesítése kérésekre válaszol.
+- **Az Azure SQL Database**: A bérlő hitelesítési ügynökök, ideértve a metaadatok és a titkosítási kulcsok kapcsolatos információkat tartalmazza.
 - **Az Active Directory**: A helyszíni Active Directory, a felhasználói fiókokhoz és a jelszavukat tárolására.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Telepítési és regisztrációs a hitelesítési ügynökök
@@ -97,8 +97,8 @@ A hitelesítési ügynökök a következő lépések segítségével regisztrál
 5. Ezután az Azure AD jelentkezik, és a egy digitális identitásokat tanúsítványt küld vissza a hitelesítési ügynök.
     - Az Azure ad-ben a legfelső szintű hitelesítésszolgáltató a tanúsítvány aláírására használatos. 
 
-     >[!NOTE]
-     > A hitelesítésszolgáltató _nem_ Windows megbízható legfelső szintű tanúsítványok tárolójában tárolja.
+      > [!NOTE]
+      > A hitelesítésszolgáltató _nem_ Windows megbízható legfelső szintű tanúsítványok tárolójában tárolja.
     - A hitelesítésszolgáltató csak az átmenő hitelesítés szolgáltatást használják. A hitelesítésszolgáltató van csak aláírásához használt tanúsítvány-aláírási kérelmeinek a hitelesítési ügynök regisztrációja során.
     -  A CA használja a további Azure AD-szolgáltatások egyike.
     - A tanúsítvány tulajdonosának (megkülönböztető nevét vagy megkülönböztető) értéke a bérlő azonosítója. A DN-t egy GUID Azonosítót, amely egyedileg azonosítja a bérlő. A DN-t a tanúsítványt a bérlő csak a hatóköröket.
@@ -207,11 +207,11 @@ Az automatikus frissítés hitelesítési ügynök:
 
 
 ## <a name="next-steps"></a>További lépések
-- [Aktuális korlátozások](how-to-connect-pta-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
-- [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
+- [Aktuális korlátozások](how-to-connect-pta-current-limitations.md): Ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
+- [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): Első lépésekhez az Azure AD átmenő hitelesítés.
 - [Az AD FS át az átmenő hitelesítés](https://aka.ms/adfstoptadpdownload) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
-- [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
-- [Hogyan működik](how-to-connect-pta-how-it-works.md): kapcsolatos alapismereteket tartalmazza az Azure AD átmenő hitelesítés működéséről.
-- [Gyakori kérdések](how-to-connect-pta-faq.md): választ találhat a gyakori kérdésekre.
-- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.
+- [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): Az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
+- [Hogyan működik](how-to-connect-pta-how-it-works.md): Alapismeretek a Mobilfunkciók Azure AD átmenő hitelesítés működéséről.
+- [Gyakori kérdések](how-to-connect-pta-faq.md): Válaszok a gyakori kérdésekre.
+- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): Ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.
 - [Az Azure AD közvetlen egyszeri bejelentkezés](how-to-connect-sso.md): További információ a kiegészítő funkció.

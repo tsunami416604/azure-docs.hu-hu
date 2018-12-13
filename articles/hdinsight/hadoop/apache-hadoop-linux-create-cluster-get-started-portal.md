@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával '
+title: 'Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure portal – Azure HDInsight használatával'
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket az Azure Portal használatával, és hogyan kérdezhet le adatokat a Hive segítségével.
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cdb19de75a96df386c76ef49e7bab50e80f9097
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8917e193b3c7abbbd915746aada2e76822e44eed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012861"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163480"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával
 
@@ -173,7 +173,7 @@ Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsi
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
 * További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](../hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
-* A [fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt arról, hogyan hozhat létre egy HDInsight-fürtöt a Data Lake Storage segítségével.
+* Egy HDInsight-fürt létrehozása a Data Lake Storage módjáról további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:

@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés és engedélyezés az Azure App Service szolgáltatásban |} A Microsoft Docs
+title: Hitelesítés és engedélyezés – az Azure App Service |} A Microsoft Docs
 description: Fogalmi referenciája és áttekintése a hitelesítési / engedélyezési funkció az Azure App Service-ben
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 27726f261b2d9c88f1544a6e66ea352fbb98d253
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: add470aec1b19a8862a17d4a5a84bc221b8582b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685667"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250875"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -91,8 +92,8 @@ Ha engedélyezi a hitelesítés és engedélyezés az egyik ilyen szolgáltatók
 
 A hitelesítési folyamat megegyezik az összes, de az eltér attól függően, hogy a szolgáltató SDK felhasználóval való bejelentkezéshez:
 
-- Szolgáltatói SDK nélkül: az alkalmazás összevont bejelentkezés App Service-ben irányelvmodulnak delegálja. Ez általában a helyzet a böngészőben megjelenő alkalmazásokba, amelyhez a felhasználónak a szolgáltató bejelentkezési oldal is jelenthet. A kiszolgálói kód a bejelentkezési folyamat kezeli, ezért a más néven _kiszolgáló által vezérelt folyamat_ vagy _server flow_. Ebben az esetben a webes alkalmazásokra vonatkozik. Natív alkalmazások, a Mobile Apps ügyfél-SDK használatával, mert az SDK-t, amelyekben az App Service-hitelesítés bejelentkezhetnek a felhasználók a webes nézet nyílik meg a felhasználók bejelentkezhetnek is vonatkozik. 
-- A szolgáltatói SDK: a szolgáltató a felhasználók manuálisan aláírja az alkalmazást, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából. Ez általában a helyzet böngésző nélküli alkalmazásokkal, amelyek a szolgáltató bejelentkezési oldal nem jelenik meg a felhasználónak. Az alkalmazás kódjának a bejelentkezési folyamat kezeli, ezért a más néven _ügyfél által vezérelt folyamat_ vagy _client flow_. Ebben az esetben a REST API-k, érvényes [Azure Functions](../azure-functions/functions-overview.md), és a JavaScript webböngésző-ügyfelek számára, valamint a bejelentkezési folyamat nagyobb rugalmasságot igénylő webes alkalmazások. Natív mobilalkalmazásokban, a szolgáltató SDK-val a felhasználók bejelentkezhetnek is vonatkozik.
+- SDK-szolgáltató: nélkül Az alkalmazás összevont bejelentkezés App Service-ben irányelvmodulnak delegálja. Ez általában a helyzet a böngészőben megjelenő alkalmazásokba, amelyhez a felhasználónak a szolgáltató bejelentkezési oldal is jelenthet. A kiszolgálói kód a bejelentkezési folyamat kezeli, ezért a más néven _kiszolgáló által vezérelt folyamat_ vagy _server flow_. Ebben az esetben a webes alkalmazásokra vonatkozik. Natív alkalmazások, a Mobile Apps ügyfél-SDK használatával, mert az SDK-t, amelyekben az App Service-hitelesítés bejelentkezhetnek a felhasználók a webes nézet nyílik meg a felhasználók bejelentkezhetnek is vonatkozik. 
+- Az SDK-szolgáltató: A szolgáltató a felhasználók manuálisan aláírja az alkalmazást, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából. Ez általában a helyzet böngésző nélküli alkalmazásokkal, amelyek a szolgáltató bejelentkezési oldal nem jelenik meg a felhasználónak. Az alkalmazás kódjának a bejelentkezési folyamat kezeli, ezért a más néven _ügyfél által vezérelt folyamat_ vagy _client flow_. Ebben az esetben a REST API-k, érvényes [Azure Functions](../azure-functions/functions-overview.md), és a JavaScript webböngésző-ügyfelek számára, valamint a bejelentkezési folyamat nagyobb rugalmasságot igénylő webes alkalmazások. Natív mobilalkalmazásokban, a szolgáltató SDK-val a felhasználók bejelentkezhetnek is vonatkozik.
 
 > [!NOTE]
 > Az App Service szolgáltatásban egy megbízható böngészőalkalmazás hívásait meghívja a REST API-t egy másik App Service-ben vagy [Azure Functions](../azure-functions/functions-overview.md) lehet hitelesíteni a kiszolgáló által vezérelt folyamatot. További információkért lásd: [testre szabhatja a hitelesítés és engedélyezés az App Service-ben](app-service-authentication-how-to.md).
@@ -139,7 +140,7 @@ Ez a beállítás a névtelen kérelmek kezelése nagyobb rugalmasságot nyújt.
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű az Azure App Service-ben (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok az Azure App Service-ben (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű az Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  
 [Testre szabhatja a hitelesítés és engedélyezés az App Service-ben](app-service-authentication-how-to.md)
 
@@ -150,7 +151,7 @@ Szolgáltatóspecifikus útmutatókat:
 * [Az alkalmazások a Google-bejelentkezés konfigurálása][Google]
 * [Az alkalmazások a Microsoft Account login konfigurálása][MSA]
 * [Az alkalmazások a Twitter-bejelentkezés konfigurálása][Twitter]
-* [Útmutató: az alkalmazás egyéni hitelesítés használata][custom-auth]
+* [kézikönyv: Az alkalmazás egyéni hitelesítés használata][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md

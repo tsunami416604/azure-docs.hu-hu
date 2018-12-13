@@ -1,6 +1,6 @@
 ---
-title: Értékelje az SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhookokkal korlátozása
-description: Ismerje meg, hogyan Azure lehetséges SMS, az e-mailek, az Azure App leküldéses vagy webhook értesítéseket művelet csoportból számának korlátozása.
+title: Értékelje, korlátozza az SMS, e-mailek, az Azure-alkalmazások leküldéses értesítései és webhookok
+description: Ismerje meg, hogyan Azure lehetséges SMS, az e-mailek, az Azure App leküldéses vagy webhook értesítéseket a műveletcsoport számát korlátozza.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 3/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 1acea47638c75971bad62f28dcd7e96823d84c1d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 7ac5890769809e3f6f8afe320922facc04195042
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262956"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166013"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzéseket a hang, SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhook korlátozása
-Az értesítések, amelyek akkor fordul elő, ha túl sok küld egy adott telefonszám, az e-mail cím vagy az eszköz felfüggesztés sebességkorlátozást. Sebességkorlátozást biztosítja, hogy riasztások kezelhető és hajtható végre.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzések a hangalapú, SMS, e-mailek, az Azure-alkalmazások leküldéses értesítései és webhook korlátozása
+Az értesítések, amelyek akkor fordul elő, ha túl sok küld egy adott telefonszám, e-mail címét vagy eszköz felfüggesztés sebességkorlátozással. Sebességkorlátozással biztosítja, hogy riasztások kezelhető, és a gyakorlatban is használható.
 
-A sebesség korlátot küszöbértékeit a következők:
+A sebesség korlát küszöbértékek a következők:
 
- - **SMS**: 1-nél több SMS 5 percenként.
- - **Hangalámondás**: 1-nél több hang hívás 5 percenként.
- - **E-mailek**: egy óra alatt legfeljebb 100 e-maileket.
+ - **SMS**: Az SMS 5 percenként legfeljebb 1.
+ - **Beszédfelismerési**: Legfeljebb 1 hanghívás 5 percenként.
+ - **e-mailek**: Legfeljebb 100 e-mailek egy órán belül.
  
- Egyéb műveletek csak korlátozott sebessége.
+ Egyéb műveletek nem korlátozott sebességű el.
 
-## <a name="rate-limit-rules"></a>Sebesség korlát szabályok
-- Egy adott telefonszámát vagy e-mail sebessége korlátozott, ha a küszöb által engedélyezettnél több üzenetet kapott.
-- Telefonos vagy e-mailek sok előfizetésekhez művelet csoportok része lehet. Minden előfizetésekhez sebességkorlátozást vonatkozik. Amint a küszöbérték elérésekor vonatkozik, akkor is, ha több előfizetéssel az üzenetküldés.
-- Amikor egy e-mail címet sebessége korlátozott, egy további értesítést küld a sebesség korlátozása kommunikációhoz. A e-mailek állapotokat, ha a lejár a sebesség korlátozása.
+## <a name="rate-limit-rules"></a>Forgalmi korlát szabályok
+- Egy adott telefonszámot vagy e-mail sebessége korlátozott, ha az a küszöbérték engedélyezettnél több üzenetet kap.
+- Telefonos vagy e-mailek számos előfizetésekben Műveletcsoportok része lehet. Az összes előfizetés arány korlátozása vonatkozik. Érvényes, amint az küszöbérték elérése esetén akkor is, ha több előfizetés üzeneteket küldi.
+- Ha egy e-mail-cím sebessége korlátozott, egy további értesítést küld a sebességkorlátozás kommunikációhoz. Az e-mailek államok, ha lejár a sebességkorlátozás.
 
 ## <a name="next-steps"></a>További lépések ##
-* További információ [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md).
-* Első egy [tevékenység napló riasztások áttekintése](monitoring-overview-alerts.md), és megtudhatja, hogyan szeretné megkapni a riasztásokat.  
-* Megtudhatja, hogyan [riasztások konfigurálása, ha az állapotfigyelő szolgáltatáshoz értesítést visszaküldi](monitoring-activity-log-alerts-on-service-notifications.md).
+* Tudjon meg többet [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md).
+* Get- [tevékenységnapló-riasztások áttekintése](monitoring-overview-alerts.md), és a riasztások fogadása.  
+* Ismerje meg, hogyan [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../azure-monitor/platform/alerts-activity-log-service-notifications.md).

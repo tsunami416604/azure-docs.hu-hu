@@ -1,5 +1,5 @@
 ---
-title: Azure App Service-környezet létrehozása a Resource Manager-sablon használatával
+title: A Resource Manager-sablon – az Azure App Service Environment-környezet létrehozása
 description: Azt ismerteti, hogyan hozhat létre a külső vagy ILB Azure App Service environment egy Resource Manager-sablon használatával
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: bdd8ac47f709153b17e2dcf44ff9a2c568e650cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958747"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277471"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Az ASE létrehozása Azure Resource Manager-sablon használatával
 
@@ -49,7 +50,7 @@ A Resource Manager-sablon, amely létrehoz egy ASE Környezethez és a kapcsoló
 
 Ha azt szeretné, hogy az ILB ASE környezetben, használja a Resource Manager-sablon [példák][quickstartilbasecreate]. Ezek méretformátumok figyelembe vétele, amely a kis-és nagybetűhasználattal. A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl közösek az ILB ASE és a külső ASE létrehozását. Az alábbi lista felhívja paraméterek különösen fontos, vagy az egyedi, az ILB ASE létrehozásakor:
 
-* *internalLoadBalancingMode*: A legtöbb esetben az FTP-szolgáltatás, az ASE által figyelt ezt a 3, ami azt jelenti, hogy a HTTP/HTTPS-forgalmat a 80-as/443-as portokon, és a vezérlő/adatok portok beállítása társítani kívánt az ILB-lefoglalt virtuális hálózat belső cím. Ha ez a tulajdonság értéke 2, csak az FTP szolgáltatással kapcsolatos portok (egyaránt vezérlési és csatornák) ILB-címmel vannak kötve. A HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím nem marad.
+* *internalLoadBalancingMode*: A legtöbb esetben az FTP-szolgáltatás, az ASE által figyelt ezt a 3, ami azt jelenti, hogy a HTTP/HTTPS-forgalmat a 80-as/443-as portokon, és a vezérlő/adatok portok beállítása társítani kívánt belső ILB-lefoglalt virtuális hálózati címhez. Ha ez a tulajdonság értéke 2, csak az FTP szolgáltatással kapcsolatos portok (egyaránt vezérlési és csatornák) ILB-címmel vannak kötve. A HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím nem marad.
 * *DNS-utótagja*: Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely az ASE van rendelve. Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*. Mivel az ILB ASE környezetben egy ügyfél virtuális hálózatán belüli, a nyilvános service alapértelmezett legfelső szintű tartományt használja, hogy nincs értelme. Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül. Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* az alkalmazásokhoz, melyek nem oldható fel és csak a Contoso virtuális hálózaton belül elérhető. 
 * *ipSslAddressCount*: Ez a paraméter alapértelmezett értéke automatikusan a 0 értéket a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik. Nincsenek explicit IP-SSL címek ILB ASE esetében. Ezért az ILB ASE IP SSL-címkészletet kell beállítani a nulla. Ellenkező esetben egy üzembe helyezési hiba történik. 
 
@@ -69,8 +70,8 @@ SSL-tanúsítvány az ASE társítva kell lennie az "alapértelmezett" SSL-tanú
 
 Szerezze be egy érvényes SSL-tanúsítvány használatával a belső tanúsítványszolgáltatót, vásárol egy tanúsítványt külső kiállítótól vagy egy önaláírt tanúsítvány használatával. Az SSL-tanúsítvány forrásától függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
 
-* **Tulajdonos**: ezt az attribútumot állítsa **.az-gyökér-domain-here.com*.
-* **Tulajdonos alternatív neve**: ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com* és **.az-gyökér-domain-here.com*. Az SCM/Kudu helyhez társított SSL-kapcsolatok használata a képernyő címének *your-app-name.scm.your-root-domain-here.com*.
+* **Tulajdonos**: Ezt az attribútumot állítsa **.az-gyökér-domain-here.com*.
+* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com* és **.az-gyökér-domain-here.com*. Az SCM/Kudu helyhez társított SSL-kapcsolatok használata a képernyő címének *your-app-name.scm.your-root-domain-here.com*.
 
 Az érvényes SSL-tanúsítványt az aktuális két további előkészítő lépések szükségesek. Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. Ne feledje, hogy a .pfx-fájlt kell összes köztes és főtanúsítványok. Jelszóval gondoskodjon a védelméről.
 
@@ -103,12 +104,12 @@ Miután az SSL-tanúsítvány sikeresen létrehozott és base64-kódolású kara
 
 A paramétereket a *azuredeploy.parameters.json* fájl itt találhatók:
 
-* *appServiceEnvironmentName*: az ILB ASE konfigurált nevét.
-* *existingAseLocation*: az Azure-régióban, az ILB ASE környezetben telepített tartalmazó szöveges karakterlánc.  Például: "USA déli középső Régiója".
-* *pfxBlobString*: A based64-kódolású karakterláncos leképezését a .pfx-fájlt. A korábban bemutatott kódrészletet használja, és másolja a "exportedcert.pfx.b64" foglalt karakterlánc. Illessze be az értéket a *pfxBlobString* attribútum.
-* *jelszó*: A jelszót a .pfx-fájlt védi.
+* *appServiceEnvironmentName*: Az ILB ASE konfigurált neve.
+* *existingAseLocation*: Az Azure-régióban, az ILB ASE környezetben telepített tartalmazó szöveges karakterlánc.  Példa: "USA déli középső RÉGIÓJA".
+* *pfxBlobString*: A .pfx-fájlt based64-kódolású karakterlánc-ábrázolása. A korábban bemutatott kódrészletet használja, és másolja a "exportedcert.pfx.b64" foglalt karakterlánc. Illessze be az értéket a *pfxBlobString* attribútum.
+* *Jelszó*: A .pfx fájl védelméhez használt jelszó.
 * *certificateThumbprint*: A tanúsítvány ujjlenyomata. Ha ez az érték lekérése PowerShell (például *$certificate. Ujjlenyomat* a korábbi kódrészlet), az értéket, használhatja. Ha a Windows-tanúsítvány párbeszédpanelről másolja az értéket, ne feledje, távolítsa el a felesleges szóközöket. A *certificateThumbprint* AF3143EB61D43F6727842115BB7F17BBCECAECAE hasonlóan kell kinéznie.
-* *certificateName*: a tanúsítvány identitás használt saját egy rövid karakterlánc-azonosító. A név szolgál az erőforrás-kezelő egyedi azonosítóját részeként a *Microsoft.Web/certificates* entitás, amely az SSL-tanúsítvány jelöli. A név *kell* a következő utótaggal végződik: \_yourASENameHere_InternalLoadBalancingASE. Az Azure Portalon ezt az utótagot használja azt, hogy a tanúsítvány egy ILB-kompatibilis az ASE védelme használható.
+* *certificateName*: Identitás a tanúsítvány használja saját kiválasztása egy rövid karakterlánc-azonosító. A név szolgál az erőforrás-kezelő egyedi azonosítóját részeként a *Microsoft.Web/certificates* entitás, amely az SSL-tanúsítvány jelöli. A név *kell* a következő utótaggal végződik: \_yourASENameHere_InternalLoadBalancingASE. Az Azure Portalon ezt az utótagot használja azt, hogy a tanúsítvány egy ILB-kompatibilis az ASE védelme használható.
 
 Rövidített például *azuredeploy.parameters.json* itt látható:
 
@@ -155,7 +156,7 @@ A sablon befejezését követően az ILB ASE alkalmazások HTTPS-kapcsolaton ker
 Csakúgy, mint a nyilvános több-bérlős szolgáltatás rendszeren futtatott alkalmazások, azonban a fejlesztők konfigurálhatja az egyes alkalmazások egyéni állomásnevek. Egyedi SNI SSL-tanúsítványok kötései az egyes alkalmazások is konfigurálhatja.
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
-Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat.
+App Service Environment-környezet két verziója van: Az ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat.
 
 Az asev1-ben kezelheti az összes olyan erőforrást manuálisan. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Ki lehet terjeszteni az App Service-csomag, mielőtt ki kell terjeszteni a az üzemeltetni kívánt feldolgozókészlet.
 

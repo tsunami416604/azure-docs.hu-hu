@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 992abf97751695c10f28f355e1086a12530b9456
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982608"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165231"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -73,7 +73,7 @@ A vendégfelhasználók kezelését rábízhatja a felhasználó tulajdonosokra,
 
 Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 - A [B2B együttműködés meghívó API-kat](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) használva egyénre szabhatja a felvételi folyamatot, az önkiszolgáló regisztrációs portál létrehozását is beleértve. 
-- Használja a [GitHubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) elérhetővé tett önkiszolgáló portál mintakódot.
+- Önkiszolgáló portál kínálunk mintakód [a Githubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
 ![regisztrációs portál](media/what-is-b2b/sign-up-portal.png)
 

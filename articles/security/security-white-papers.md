@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 5feedcd750841be159a7cf4a31f408aec2fffd38
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 214598291e69acfec2064738f798a48180ad05a6
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712976"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322995"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
@@ -31,7 +31,7 @@ ms.locfileid: "51712976"
 |[Az Azure data encryption inaktív](azure-security-encryption-atrest.md)|Az adatok védelme a tárolt Azure-ban és a különböző összetevők vesz részt a data protection megvalósítás összpontosít. Ellenőrzi, és a hátrányai a különböző kulcskezelés védelmi megközelítés.|
 |[Azure-naplózás](azure-log-audit.md)|Ismerteti az generálása, összegyűjtése és az Azure-ban üzemeltetett szolgáltatások biztonsági naplóinak elemzéséhez. Ezek a naplók segíthetnek a biztonsági betekintést nyerhet az Azure-környezetek. |
 |[Azure hálózati biztonság](abstract-azure-network-security.md)|Bemutatja a hálózati vezérlők konfigurálhatja, üzembe helyezése az Azure-megoldások biztonságának széles körét. A fókusz a ügyfél felé irányuló hálózati biztonsági vezérlők.|
-|[Az Azure Functions és a kiszolgáló nélküli platformon biztonság](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Ez a letölthető tanulmány a művelet során gondoskodik a biztonsági szempontok és a megoldások a környezetében az Azure kiszolgáló nélküli számítástechnika előnyeit ismerteti. |
+|[Az Azure Functions és a kiszolgáló nélküli platformon biztonság](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/Microsoft%20Serverless%20Platform.pdf)|Ez a letölthető tanulmány a művelet során gondoskodik a biztonsági szempontok és a megoldások a környezetében az Azure kiszolgáló nélküli számítástechnika előnyeit ismerteti. |
 |[Tárolóbiztonság Microsoft Azure-ban](abstract-container-security-microsoft-azure.md)|Tárolók, a tárolók üzembe helyezése és a felügyeleti és a natív alkalmazásplatform írja le. Azt is ismerteti modul biztonsági problémák merülnek fel a tárolók használatát az Azure platformon. |
 |[Az Azure működési biztonság](abstract-azure-operational-security.md)|Átfogó tekintse meg a ügyfél felé irányuló operatív biztonsági technológiák és szolgáltatások rendelkezésre álló biztosít az Azure-ral.|
 |[Az Azure biztonságtechnikai képességek](azure-security-technical-capabilities.md)|Megoldásai a biztonsági funkciókat és képességeket támogatja az Azure Storage, Azure SQL Database, az Azure virtuális gép modell és az eszközök és infrastruktúra, amely minden kezelheti.|

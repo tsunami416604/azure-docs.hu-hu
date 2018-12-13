@@ -8,13 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 6eade4a09ee797469d0046715f57d2799b1cba8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097828"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311831"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -49,18 +48,18 @@ Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyama
 
 Az Azure Policy biztosítunk számos beépített szabályzatok alapértelmezés szerint elérhető. Példa:
 
-- **Szükséges SQL Server 12.0-s**: ellenőrzi, hogy minden SQL-kiszolgáló 12.0-s verziót használja-e. Hatás az, hogy ezek a feltételek nem felelnek meg az összes kiszolgáló megtagadja.
-- **Engedélyezett termékváltozatok a tárolási fiók**: meghatározza, hogy parancsfájlműveletekkel tárfiók a Termékváltozat-méretek belül. Annak hatását, hogy megtagadja az összes storage-fiókok, amelyek nem a Termékváltozat-méretek meghatározott készletét.
-- **Engedélyezett erőforrástípus**: határozza meg az üzembe helyezhető erőforrástípusok. Hatás az összes olyan erőforrást, amely nem része a definiált listában elutasítása.
-- **Engedélyezett helyek**: korlátozza az elérhető helyek új erőforrások. Biztosítja a földrajzi megfelelőségi követelmények betartását.
-- **Engedélyezett virtuálisgép-termékváltozatok**: virtuális gépek azon Termékváltozatai, amely központilag telepíthető egy halmazát határozza meg.
-- **Címke és címke alapértelmezett értékének alkalmazása**: vonatkozik egy címke és az alapértelmezett értékére, ha a telepítés kérelemben nincs megadva.
-- **Címke és címke értékének kényszerítése**: kényszerít egy címkét és a hozzá tartozó érték megadását egy erőforráshoz.
-- **Nem engedélyezett erőforrástípusok**: erőforrástípusok listája megakadályozza, hogy parancsfájlműveletekkel.
+- **SQL Server 12.0-s verziójának megkövetelése**: Ellenőrzi, hogy minden SQL-kiszolgáló 12.0-s verziót használja-e. Hatás az, hogy ezek a feltételek nem felelnek meg az összes kiszolgáló megtagadja.
+- **Engedélyezett termékváltozatok a tárolási fiók**: Meghatározza, hogy parancsfájlműveletekkel tárfiók a Termékváltozat-méretek belül. Annak hatását, hogy megtagadja az összes storage-fiókok, amelyek nem a Termékváltozat-méretek meghatározott készletét.
+- **Engedélyezett erőforrástípus**: Határozza meg az üzembe helyezhető erőforrástípusok. Hatás az összes olyan erőforrást, amely nem része a definiált listában elutasítása.
+- **Engedélyezett helyek**: Korlátozza az elérhető helyek új erőforrások. Biztosítja a földrajzi megfelelőségi követelmények betartását.
+- **Engedélyezett virtuálisgép-termékváltozatok**: Virtuális gépek azon Termékváltozatai, amely központilag telepíthető egy halmazát határozza meg.
+- **Címke és címke alapértelmezett értékének alkalmazása**: Érvényes egy címke és az alapértelmezett értékére, ha a telepítés kérelemben nincs megadva.
+- **Címke és címke értékének kényszerítése**: Kényszerít egy címkét és a hozzá tartozó érték megadását egy erőforráshoz.
+- **Nem engedélyezett erőforrástípusok**: Megakadályozza, hogy erőforrástípusok listája üzembe helyezve.
 
 Megvalósítani a ezeket a szabályzatdefiníciók (mind a beépített és egyéni-definíciók), kell rendelni őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
 
-Számos különböző műveletek, például a szabályzat-hozzárendelést vagy a házirend-frissítési szabályzat-kiértékelés történik. Teljes listáját lásd: [házirend kiértékelése eseményindítók](./how-to/getting-compliance-data.md#evaluation-triggers).
+Számos különböző műveletek, például a szabályzat-hozzárendelést vagy a házirend-frissítési szabályzat-kiértékelés történik. Teljes listáját lásd: [házirend kiértékelése eseményindítók](./how-to/get-compliance-data.md#evaluation-triggers).
 
 További, a szabályzatdefiníciók szerkezetéről szóló információkért lásd a [szabályzatdefiníciók szerkezetével](./concepts/definition-structure.md) foglalkozó témakört.
 
@@ -111,7 +110,7 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
 
-- A kezdeményezésen belüli szabályzatdefiníciók paramétereinek használata. Ebben az esetben az *allowedLocations* és az *allowedSingleLocation* lesz a **C kezdeményezés** kezdeményezési paramétere.
+- A kezdeményezés belüli szabályzatdefiníciók paramétereinek használata: Ebben a példában *allowedLocations* és *allowedSingleLocation* válnak a kezdeményezési paraméterek **kezdeményezés**.
 - Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben az esetben megadhat egy helylistát az **A szabályzat paramétere – allowedLocations** és a **B szabályzat paramétere – allowedSingleLocation** számára. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
 - Adjon meg egy listát mindazon lehetséges *értékekről*, amelyeket használhat a kezdeményezés hozzárendelésekor. A kezdeményezés hozzárendelésekor a kezdeményezésen belüli szabályzatdefiníciók örökölt paraméterei csak olyan értékekkel rendelkezhetnek, amelyek ebben a listában szerepelnek.
 

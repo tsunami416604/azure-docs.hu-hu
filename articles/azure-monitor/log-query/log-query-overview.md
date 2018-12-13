@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2c1949fe991b599e9b002caf4c98c305a3791977
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 26030764544189ae7b075711f0405bf5c0b4ab8f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000860"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193824"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
@@ -31,7 +30,7 @@ Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure 
 
 ## <a name="log-queries"></a>Napló lekérdezések
 
-Adatok lekérése a Log Analytics naplózási lekérdezés van szüksége.  Van-e [adatelemzés a portálon](../../azure-monitor/log-query/portals.md), [egy riasztási szabály konfigurálása](../../monitoring-and-diagnostics/alert-metric.md) egy adott feltétel, vagy lekérése során adatokat az értesítést a [Log Analytics API](https://dev.loganalytics.io/), akkor egy lekérdezést fogja használni, adja meg a kívánt adatokat.  Ez a cikk ismerteti a Log Analytics naplóbeli lekérdezések használata, és megadja a fogalmakat, amelyek egy létrehozása előtt ismerje meg.
+Adatok lekérése a Log Analytics naplózási lekérdezés van szüksége.  Van-e [adatelemzés a portálon](../../azure-monitor/log-query/portals.md), [egy riasztási szabály konfigurálása](../../azure-monitor/platform/alerts-metric.md) egy adott feltétel, vagy lekérése során adatokat az értesítést a [Log Analytics API](https://dev.loganalytics.io/), akkor egy lekérdezést fogja használni, adja meg a kívánt adatokat.  Ez a cikk ismerteti a Log Analytics naplóbeli lekérdezések használata, és megadja a fogalmakat, amelyek egy létrehozása előtt ismerje meg.
 
 
 

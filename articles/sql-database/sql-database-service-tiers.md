@@ -11,19 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 102a00ac79c91ac4d571c0254570f14e8f2af46f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239083"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164398"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
 Az Azure SQL Database lehetővé teszi, hogy teljes körűen felügyelt PaaS adatbázismotor, válassza ki a teljesítménnyel és költségekkel igényeinek megfelelő könnyű vásárlás. Az Azure SQL Database üzembe helyezési modelltől, függően válassza ki a vásárlási modell, amely a legjobban az igényeinek:
+- [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) (ajánlott), amely lehetővé teszi, hogy válassza ki a tárolási kapacitás pontos mennyisége és a számítási, hogy a számítási feladathoz szükséges.
+- [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) elosztott terhelésű gyakori munkaterhelés például a számítás és tárolás csomagok adja meg a csomagokban.
 
-- [Logikai kiszolgálók](sql-database-logical-servers.md) a [Azure SQL Database](sql-database-technical-overview.md) számítási, tárolási és i/o-erőforrások két vásárlási modellt kínál: egy [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a egy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). A beszerzési modell választhat [önálló adatbázisok](sql-database-single-databases-manage.md) vagy [rugalmas készletek](sql-database-elastic-pool.md).
+Az Azure SQL Database üzemi modellekben található különböző vásárlási modell érhetők el:
+- [Logikai kiszolgálók](sql-database-logical-servers.md) a [Azure SQL Database](sql-database-technical-overview.md) is kínálnak [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). A beszerzési modell választhat [önálló adatbázisok](sql-database-single-databases-manage.md) vagy [rugalmas készletek](sql-database-elastic-pool.md).
 - [Felügyelt példányok](sql-database-managed-instance.md) az egyetlen Azure SQL Database-ajánlatok a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -51,7 +54,7 @@ A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól f�
 
 > [!IMPORTANT]
 > Számítási, IOs-, adat, és a naplók tárolásához díját adatbázis vagy a rugalmas készletet. Biztonsági másolatok tárolási számlázása az egyes adatbázisokhoz. További részleteket a felügyelt példány díjak, [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
-> **Régió korlátozások:** a Virtuálismag-alapú vásárlási modell még nem áll rendelkezésre a következő régiókban: Nyugat-Európa, közép-Franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója és Délkelet-Ausztrália.
+> **Régió korlátozások:** A Virtuálismag-alapú vásárlási modell még nem áll rendelkezésre a következő régióban: Nyugat-Európa, Franciaország közép-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója és Délkelet-Ausztrália.
 
 Ha az adatbázis vagy a rugalmas készlet dtu-k több mint 300 átalakítása virtuális mag fogyaszt csökkentheti költségeit. A választott API-val vagy az Azure Portallal, leállás nélkül konvertálhatja. Azonban átalakítás, nem szükséges. Ha a DTU-vásárlási modell felel meg a teljesítmény- és üzleti követelményeinek, akkor továbbra is használja azt. Ha úgy dönt, hogy a DTU-modellből átalakítása virtuális mag – modell, választhat a számítási méret használatával a következő tapasztalatok: minden egyes 100 DTU standard szintű csomag szükséges általános célú csomagban; legalább 1 virtuális mag minden egyes 125 DTU prémium szintű üzletileg kritikus legalább 1 virtuális mag szükséges.
 

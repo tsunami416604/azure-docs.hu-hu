@@ -1,5 +1,6 @@
 ---
-title: 'Rövid útmutató: Standard Load Balancer létrehozása – Azure PowerShell | Microsoft Docs'
+title: 'Gyors útmutató: Egy Standard Load Balancer létrehozása – Azure PowerShell-lel'
+titlesuffix: Azure Load Balancer
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert a PowerShell használatával
 services: load-balancer
 documentationcenter: na
@@ -13,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578552"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256315"
 ---
-# <a name="get-started"></a>Rövid útmutató: Standard Load Balancer létrehozása az Azure PowerShell használatával
+# <a name="get-started"></a>Gyors útmutató: Azure PowerShell-lel Standard Load Balancer létrehozása
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert az Azure PowerShell használatával. A terheléselosztó teszteléséhez két, Windows kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését. További információk a Standard Load Balancerről: [Mi a Standard Load Balancer?](load-balancer-standard-overview.md).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

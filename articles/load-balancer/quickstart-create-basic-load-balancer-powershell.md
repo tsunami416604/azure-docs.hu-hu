@@ -1,11 +1,11 @@
 ---
-title: 'Rövid útmutató: Alapszintű terheléselosztó létrehozása – Azure PowerShell | Microsoft Docs'
+title: 'Gyors útmutató: Egy alapszintű Load Balancer létrehozása – Azure PowerShell-lel'
+titlesuffix: Azure Load Balancer
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót a PowerShell használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: c21d5618b3e3223297ddd97dc5c98e5eb8c18c0b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms:custom: seodec18
+ms.openlocfilehash: 5d76a1ac58606df82fc7e25dc8071d91da8298f5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974818"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261024"
 ---
-# <a name="get-started"></a>Rövid útmutató: Nyilvános terheléselosztó létrehozása az Azure PowerShell használatával
+# <a name="get-started"></a>Gyors útmutató: Azure PowerShell-lel nyilvános load balancer létrehozása
 Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót az Azure PowerShell használatával. A terheléselosztó teszteléséhez két, Windows kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

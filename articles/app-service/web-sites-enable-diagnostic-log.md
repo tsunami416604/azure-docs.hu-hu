@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
+title: Webalkalmazások – az Azure App Service diagnosztikai célú naplózásának engedélyezése
 description: További információk a diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 90f82dcdf60a3a7182f77b3fe028366e079bc2ec
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636968"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273799"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -63,6 +64,11 @@ Amikor engedélyezi a **az application diagnostics**, azt is választhatja a **s
 
 A **alkalmazásnaplózás**, bekapcsolhatja a hibakeresési célokra az ideiglenes fájl helyrendszer-beállítást. 12 óra múlva automatikusan kikapcsolja ezt a beállítást. A blob beállítást válassza ki a naplók írhat egy blob-tárolóba is bekapcsolhatja.
 
+> [!NOTE]
+> A blob storage .NET-alkalmazás jelenleg csak naplók csak írható. A Java, PHP, Node.js, Python, az alkalmazásnaplókat csak a fájlrendszeren (nélkül naplók írni a külső tárhelyen) kell tárolni.
+>
+>
+
 A **webkiszolgálói naplózás**, választhat **tárolási** vagy **fájlrendszer**. Kiválasztásával **tárolási** lehetővé teszi, hogy válasszon egy tárfiókot, és egy blobtárolót a naplók írt. 
 
 Ha a naplók tárolása a fájlrendszer, a fájlok elérhető FTP, és letöltött Zip-archívumot, Azure parancssori felület használatával.
@@ -85,7 +91,7 @@ Mindkét tárolási helyek naplózott események az ugyanazon alapvető adatok m
 > A tárolt adatok **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Hogyan: naplók letöltése
+## <a name="download"></a> kézikönyv: Letöltési naplók
 Diagnosztikai adatok tárolása a webes alkalmazáshoz fájlrendszerben közvetlenül az FTP használatával is elérhetők. Le is tölthetők, egy Zip-archívumot az Azure CLI használatával.
 
 A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történik:
@@ -114,7 +120,7 @@ Ez a parancs menti a naplókat a webalkalmazás neve "webappname" nevű fájlba 
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Hogyan: naplók megtekintése az Application insights szolgáltatásban
+## <a name="how-to-view-logs-in-application-insights"></a>Útmutató: Naplók megtekintése az Application insights szolgáltatásban
 A Visual Studio Application Insights a szűréshez és a naplók keresése, és a kérésekkel és más eseményekkel való korreláláshoz a naplók eszközöket biztosít.
 
 1. Az Application Insights SDK hozzáadása a projekthez a Visual Studióban.
@@ -126,7 +132,7 @@ A Visual Studio Application Insights a szűréshez és a naplók keresése, és 
 
 [További tudnivalók a teljesítmény nyomon követése az Application insights segítségével](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a> Útmutató: Stream naplók
+## <a name="streamlogs"></a> kézikönyv: Naplók streamelése
 Az alkalmazások fejlesztése során hasznos gyakran közel valós idejű naplóinformációkat tekinthet. Naplózási információk streamelheti a fejlesztői környezetbe az Azure CLI használatával.
 
 > [!NOTE]
@@ -157,7 +163,7 @@ Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **�
 >
 >
 
-## <a name="understandlogs"></a> Hogyan: megismerheti a diagnosztikai naplók
+## <a name="understandlogs"></a> kézikönyv: Diagnosztikai naplók megértése
 ### <a name="application-diagnostics-logs"></a>Application diagnostics-naplók
 Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a file system vagy a blob Storage tárolja. 
 

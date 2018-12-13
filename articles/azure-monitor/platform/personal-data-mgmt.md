@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: be14b560eb48adc2fcf0ad0a1cf7fe27792a402a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002520"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192430"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és az Application Insights tárolt személyes adatok
 
@@ -44,30 +43,30 @@ A log Analytics egy rugalmas tárolja, ami előíró egy sémát az adatokhoz, m
 
 ### <a name="log-data"></a>Naplóadatok
 
-* *IP-címek*: a Log Analytics különböző IP-adatokat gyűjt a számos különböző táblákon. Például a következő lekérdezés látható összes tábla ahol IPv4-címek összegyűjtése az elmúlt 24 órában:
+* *IP-címek*: A log Analytics különböző IP-adatokat gyűjt a számos különböző táblákon. Például a következő lekérdezés látható összes tábla ahol IPv4-címek összegyűjtése az elmúlt 24 órában:
     ```
     search * 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Felhasználói azonosítók*: felhasználói azonosítók találhatók megoldások és a táblák nagy különböző. Egy adott felhasználónév között a teljes adatkészlet, a keresési paranccsal megkeresheti:
+* *Felhasználói azonosítók*: Megoldások és a táblák nagy különböző felhasználói azonosítókat találhatók. Egy adott felhasználónév között a teljes adatkészlet, a keresési paranccsal megkeresheti:
     ```
     search "[username goes here]"
     ```
 Keresse meg a nemcsak a természetes nyelven olvasható felhasználónevek, hanem közvetlenül visszakövethető egy adott felhasználó GUID-azonosítói. ne felejtse el!
-* *Az eszközazonosítókat*: például a "felhasználói azonosítókat, eszközazonosítókat néha titkosnak számítanak". Használja ugyanazt a megközelítést felhasználói azonosítók a fent felsorolt azonosítja, ha ez egy potenciálisan veszélyes lehet. 
-* *Egyéni adatok*: a Log Analytics lehetővé teszi, hogy a különböző módszereiről ad a gyűjteményhez: egyéni naplók és az egyéni mezők a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) , és egyéni adatokat gyűjteni a rendszer eseménynaplóit részeként. Ezek mindegyikét ki van téve a titkos adatokat tartalmazó, és ellenőrizze, hogy létezik-e ilyen jellegű adatokat meg kell vizsgálni.
-* *Megoldás rögzített adatoknak*: mivel a megoldás mechanizmus egy nyílt, ajánlott áttekinteni a megoldások a megfelelőség biztosítása által létrehozott összes tábla.
+* *Az eszközazonosítókat*: Felhasználói azonosítókat, például az eszközazonosítókat néha minősülnek "privát". Használja ugyanazt a megközelítést felhasználói azonosítók a fent felsorolt azonosítja, ha ez egy potenciálisan veszélyes lehet. 
+* *Egyéni adatok*: A log Analytics lehetővé teszi, hogy a különböző módszereiről ad a gyűjteményhez: egyéni naplók és az egyéni mezők a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) , és egyéni adatokat gyűjteni a rendszer eseménynaplóit részeként. Ezek mindegyikét ki van téve a titkos adatokat tartalmazó, és ellenőrizze, hogy létezik-e ilyen jellegű adatokat meg kell vizsgálni.
+* *Megoldás rögzített adatoknak*: Mivel a megoldás mechanizmus egy nyílt, javasoljuk, hogy a megfelelőség biztosítása megoldások által létrehozott összes táblák áttekintésével.
 
 ### <a name="application-data"></a>Alkalmazásadatok
 
-* *IP-címek*: Bár az Application Insights lesz alapértelmezés szerint rejtse "0.0.0.0" az összes IP-mezők, mert viszonylag gyakori minta felülbírálhatja ezt az értéket a tényleges felhasználói IP-cím munkamenet-információk karbantartásához. Az alábbi elemzési lekérdezés használható bármely az elmúlt 24 órában az IP-cím oszlopot "0.0.0.0" eltérő értékeket tartalmazó táblázat található:
+* *IP-címek*: Az Application Insights lesz alapértelmezés szerint rejtse "0.0.0.0" az összes IP-mezők, amíg viszonylag gyakori minta felülbírálhatja ezt az értéket a tényleges felhasználói IP-cím munkamenet-információk karbantartásához. Az alábbi elemzési lekérdezés használható bármely az elmúlt 24 órában az IP-cím oszlopot "0.0.0.0" eltérő értékeket tartalmazó táblázat található:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Felhasználói azonosítók*: alapértelmezés szerint az Application Insights fogja használni véletlenszerűen létrehozott azonosítókat a felhasználó és a munkamenet-követési. Azonban szokás ezen felül tárolásához egy további, az alkalmazáshoz kapcsolódó azonosító mező megjelenítéséhez. Például: AAD GUID, felhasználónevek, stb. Ezek az azonosítók gyakran kell tekinteni releváns személyes adatokat, és ezért kezelje megfelelően. Azt javasoljuk, mindig megpróbálja rejtse vagy anonimizálása azonosítóit a részletekben. Ha ezek az értékek gyakran találnak mezők munkamenet-azonosítónak, a USER_ID paraméter értékét, user_AuthenticatedId, user_AccountId, valamint customDimensions tartalmazza.
+* *Felhasználói azonosítók*: Alapértelmezés szerint az Application Insights felhasználó és a munkamenet-követési fogja használni véletlenszerűen létrehozott azonosítókat. Azonban szokás ezen felül tárolásához egy további, az alkalmazáshoz kapcsolódó azonosító mező megjelenítéséhez. Például: AAD GUID, felhasználónevek, stb. Ezek az azonosítók gyakran kell tekinteni releváns személyes adatokat, és ezért kezelje megfelelően. Azt javasoljuk, mindig megpróbálja rejtse vagy anonimizálása azonosítóit a részletekben. Ha ezek az értékek gyakran találnak mezők munkamenet-azonosítónak, a USER_ID paraméter értékét, user_AuthenticatedId, user_AccountId, valamint customDimensions tartalmazza.
 * *Egyéni adatok*: Application Insights lehetővé teszi, hogy az egyéni készletét hozzáfűzése a bármilyen típusú adatot. Ezeknek a dimenzióknak lehet *bármely* adatokat. Az elmúlt 24 órában gyűjtött minden olyan egyéni dimenziók azonosításához használja a következő lekérdezést:
     ```
     search * 
@@ -75,7 +74,7 @@ Keresse meg a nemcsak a természetes nyelven olvasható felhasználónevek, hane
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *A memóriában, és az átvitel közbeni adatok*: Application Insights fogja követni a kivételeket, a kérelmek, a függőségi hívások és a nyomkövetéseket. Személyes adatok gyakran a kód és a HTTP-hívás szintjén lehessen gyűjteni. Tekintse át a kivételek, kérelmeket, függőségeket és nyomkövetési táblák azonosításához az ilyen jellegű adatokat. Használat [telemetriai inicializálók](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) ahol lehetséges, a rejtse ezeket az adatokat.
+* *A memóriában, és az átvitel közbeni adatok*: Az Application Insights fogja követni a kivételeket, a kérelmek, a függőségi hívások és a nyomkövetéseket. Személyes adatok gyakran a kód és a HTTP-hívás szintjén lehessen gyűjteni. Tekintse át a kivételek, kérelmeket, függőségeket és nyomkövetési táblák azonosításához az ilyen jellegű adatokat. Használat [telemetriai inicializálók](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) ahol lehetséges, a rejtse ezeket az adatokat.
 * *Pillanatkép-hibakereső rögzíti*: A [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) az Application Insights szolgáltatás lehetővé teszi, amikor egy kivétel történt az alkalmazás az éles üzemelő példányok a hibakeresési pillanatképek összegyűjtése. A pillanatképek megmutatják a teljes híváslánc és a kivételeket, valamint a verem minden lépésnél helyi változók értékeit. Sajnos ez a funkció nem engedélyezi az illesztési pont vagy programozott hozzáférést a pillanatkép lévő adatok szelektív törlését. Ezért ha az alapértelmezett pillanatkép megtartási aránya nem felel meg a megfelelőségi előírásokat, a javaslat, hogy kapcsolja ki a szolgáltatást.
 
 ## <a name="how-to-export-and-delete-private-data"></a>És törölje a személyes adatok exportálása

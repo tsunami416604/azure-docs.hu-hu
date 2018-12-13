@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/05/2018
 ms.author: wesmc
-ms.openlocfilehash: 66c1380070c9f9732369cb0d209e428525d53ce8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427904"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164313"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT-telemetriát küld egy Android-eszközön
 
@@ -49,7 +49,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
 
-   **YourIoTHubName**: alább a helyőrzőt cserélje le a úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
    **MyAndroidDevice**: MyAndroidDevice az eszköz a megadott név. Használjon MyAndroidDevice látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
@@ -60,7 +60,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-    **YourIoTHubName**: alább a helyőrzőt cserélje le a úgy dönt, az IoT hub nevét.
+    **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidDevice --output table
@@ -74,7 +74,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="send-telemetry"></a>Telemetria küldése
 
-1. Az Android Studióban nyissa meg a github-minta Androidos projekt. Klónozott vagy letöltött példány a következő könyvtárban található a projekt [azure-iot-minta – java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház.
+1. Az Android Studióban nyissa meg a GitHub-minta Androidos projekt. Klónozott vagy letöltött példány a következő könyvtárban található a projekt [azure-iot-minta – java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház.
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
@@ -99,7 +99,7 @@ Ebben a szakaszban az Azure Cloud Shell-fogja használni a [IoT-bővítmény](ht
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
-   **YourIoTHubName**: alább a helyőrzőt cserélje le a úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -120,5 +120,5 @@ Ez a rövid útmutatóban beállított egy IoT hubot, regisztrált egy eszközt,
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-android.md)
+> [Gyors útmutató: Csatlakozik az IoT hub eszköz vezérlése](quickstart-control-device-android.md)
 

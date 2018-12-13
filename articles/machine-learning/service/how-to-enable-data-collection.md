@@ -1,5 +1,5 @@
 ---
-title: Adatgyűjtés engedélyezése az üzemi modellek számára
+title: Adatok gyűjtése a az üzemi modellekben
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan gyűjtheti az Azure Machine Learning bemeneti modell adatokat egy Azure Blob Storage.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: e6b6a8e1dd1b3746977062341013b92acff132c4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2a4f0f1100064010405c3d0bc599e7add1041074
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100542"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271572"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
@@ -50,7 +50,7 @@ A kimeneti adatokat a BLOB elérési útja ezt a szintaxist követi:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLfree), mielőtt hozzákezd.
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 - Egy Azure Machine Learning szolgáltatás munkaterületén, a parancsprogramok, és az Azure Machine Learning SDK-t tartalmazó Python telepítve van egy helyi könyvtárba. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
 
@@ -81,7 +81,7 @@ Az engedélyezéshez kell tennie:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *Korrelációs azonosító* egy nem kötelező paraméter, nem kell állítsa be, ha a modell nem van szükség. A correlationId kellene helyen könnyíti meg az egyéb adatokkal, a könnyebb leképezés. (Példák: LoanNumber, a CustomerId, stb.)
+    *Korrelációs azonosító* egy nem kötelező paraméter, nem kell állítsa be, ha a modell nem van szükség. A correlationId kellene helyen könnyíti meg az egyéb adatokkal, a könnyebb leképezés. (Példák: LoanNumber CustomerId, stb.)
     
     *Azonosító* későbbi a mappastruktúra a BLOB létrehozására használt, használat "feldolgozott" vagy "raw" adatok felosztásához.
 

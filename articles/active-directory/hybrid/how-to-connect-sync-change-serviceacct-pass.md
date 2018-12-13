@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: az Azure AD Connect szinkronizálási szolgáltatás szolgáltatásfiók módosítása |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása:  Az Azure AD Connect szinkronizálási szolgáltatás szolgáltatásfiók módosítása |} A Microsoft Docs'
 description: Ez a témakör a dokumentum a titkosítási kulcsot és a jelszó módosítása után feloldandó zárolású ismerteti.
 services: active-directory
 keywords: Az Azure AD sync szolgáltatásfiók, a jelszót
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a0cdaa54d0da58a02cbe9fcda36cbaff6b1fab4a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747252"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184899"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása
 Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása esetén a szinkronizálási szolgáltatás nem lesz képes kezdő megfelelően mindaddig, amíg a titkosítási kulcs hagyva, és az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának újrainicializálva. 
@@ -38,13 +38,13 @@ Két dolgot kell végrehajtani, amikor módosítja a szolgáltatásfiók jelszav
 Először a csoportban a Windows szolgáltatásvezérlő jelszó módosítására.  A probléma elhárításáig nem jelenik meg a következő hibák:
 
 
-- Indítsa el a Synchronization Service Windows szolgáltatásvezérlő meg, ha a hibaüzenetet kapja "**Windows nem tudta elindítani a Microsoft Azure AD Sync szolgáltatás a helyi számítógépen**". **1069. hiba: A szolgáltatás nem indult el bejelentkezési hiba miatt.** "
-- A Windows eseménynaplót, a rendszer eseménynaplójában található hiba **Event ID 7038** és az üzenet "**az ADSync szolgáltatás nem tudott bejelentkezni, csakúgy, mint a jelenleg konfigurált jelszóval a következő hiba miatt: A felhasználó vagy a jelszó helytelen.** "
+- Indítsa el a Synchronization Service Windows szolgáltatásvezérlő meg, ha a hibaüzenetet kapja "**Windows nem tudta elindítani a Microsoft Azure AD Sync szolgáltatás a helyi számítógépen**". **1069. hiba: A szolgáltatás nem indult el a bejelentkezési hiba miatt.** "
+- A Windows eseménynaplót, a rendszer eseménynaplójában található hiba **Event ID 7038** és az üzenet "**az ADSync szolgáltatás nem tudott bejelentkezni, csakúgy, mint a jelenleg konfigurált jelszóval a következő hiba miatt: A felhasználónév vagy jelszó helytelen.** "
 
 Második bizonyos körülmények között, ha frissítik a jelszót, a szinkronizálási szolgáltatás már nem lekérheti a titkosítási kulcs DPAPI-n keresztül. A titkosítási kulcs nélkül a szinkronizálási szolgáltatás nem tudja visszafejteni a jelszavak szinkronizálása és-tárolókról a helyszíni AD és az Azure AD szükséges.
 Hibák például jelenik meg:
 
-- A Windows szolgáltatásvezérlőben, ha a szinkronizálási szolgáltatás indításakor, és nem tudja lekérni a titkosítási kulcs, sikertelen, és "** Windows nem tudta elindítani a Microsoft Azure AD Sync a helyi számítógépen. További információkért tekintse át a rendszer-eseménynaplójában. Ha ez egy nem Microsoft-szolgáltatás, a szállítót, és tekintse meg a szolgáltatásspecifikus hibakód: **-21451857952 x. "
+- A Windows szolgáltatásvezérlőben, ha a szinkronizálási szolgáltatás indításakor, és nem tudja lekérni a titkosítási kulcs, sikertelen, és "<strong>Windows nem tudta elindítani a Microsoft Azure AD Sync a helyi számítógépen. További információkért tekintse át a rendszer-eseménynaplójában. Ha ez egy nem Microsoft-szolgáltatás, a szállítót, és a szolgáltatásspecifikus hibakódhoz-21451857952</strong>. "
 - A Windows eseménynaplót, az alkalmazás eseménynaplója tartalmaz hibát **Event ID 6028** és hibaüzenet *"**a kiszolgáló titkosítási kulcs nem érhető el.**"*
 
 Győződjön meg arról, hogy nem jelenik meg ezeket a hibákat, kövesse az ismertetett [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs megszakítása](#abandoning-the-azure-ad-connect-sync-encryption-key) a jelszó módosításakor.
@@ -121,6 +121,6 @@ Most, hogy a szinkronizálási szolgáltatás hozzáfér a titkosítási kulcsot
 ## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
-* [Az Azure AD Connect szinkronizálása: ismertetése, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
 
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

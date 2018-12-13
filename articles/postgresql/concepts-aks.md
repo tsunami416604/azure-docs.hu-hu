@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.date: 11/27/2018
 ms.topic: article
-ms.openlocfilehash: 86474fe612fb93f3a5853f9fea98eb9ab2dd00e5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 770a583ad09ec1aaa8191f5dafb3db61b2386e68
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336979"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166234"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for postgresql-hez
 
@@ -39,7 +39,7 @@ Ellenőrizheti, hogy az AKS-fürt rendelkezik gyorsított hálózatkezelést:
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Nyissa meg a Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) lehetővé teszi a közvetlenül a Kubernetes vagy a Cloud Foundry Azure-szolgáltatások kiépítése. Ez egy [Open Service Broker API](https://www.openservicebrokerapi.org/) megvalósítása az Azure-hoz.
 
-Az OSBA hozzon létre egy Azure Database for PostgreSQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for postgresql-hez együtt a [OSBA Github-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
+Az OSBA hozzon létre egy Azure Database for PostgreSQL-kiszolgálóhoz, és kösse az AKS-fürt Kubernetes általi natív nyelv használatával. Megtudhatja, hogyan használandó OSBA és az Azure Database for postgresql-hez együtt a [OSBA GitHub-oldalon](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
 
 
 ## <a name="connection-pooling"></a>Kapcsolatkészletezést

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -16,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 74791c3dce543ae9c0489a6c6124e4edba9204d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096961"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269301"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Fedezze fel az Azure AI-katalógusban kísérletek
+# <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Fedezze fel az Azure Machine Learning Studio-kísérletek az Azure AI-katalógusban
 
 [Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com) különböző [kísérletek](https://gallery.cortanaintelligence.com/experiments) a fejlesztett [Azure Machine Learning Studio](https://studio.azureml.net). A gyors proof-of-concept kísérletek, amelyek bemutatják a machine learning-technika, az összetett gépi tanulási problémák teljes mértékben saját fejlesztésű megoldások adott tartomány kísérletek.
 
 > [!NOTE]
-> Egy ***kísérletezhet*** van a vásznon, a Machine Learning Studio prediktív elemzési modellek létrehozására használhatja. A modell különböző elemzési modulok csatlakoztatásával adatokat hoz létre. Próbálja ki a különböző ötleteket, próbafuttatások tegye, és végül helyezi üzembe a modellt webszolgáltatásként, amely az Azure-ban. Egy egyszerű kísérlet létrehozása példa: [Machine learning-oktatóanyag: az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md). Prediktív elemzési megoldások létrehozása egy átfogóbb leírását lásd: [forgatókönyv: a hitelkockázat értékelése az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
+> Egy ***kísérletezhet*** van a vásznon, a Machine Learning Studio prediktív elemzési modellek létrehozására használhatja. A modell különböző elemzési modulok csatlakoztatásával adatokat hoz létre. Próbálja ki a különböző ötleteket, próbafuttatások tegye, és végül helyezi üzembe a modellt webszolgáltatásként, amely az Azure-ban. Egy egyszerű kísérlet létrehozása példa: [Machine learning-oktatóanyag: Az első kísérlet létrehozása az Azure Machine Learning Studio](create-experiment.md). Prediktív elemzési megoldások létrehozása egy átfogóbb leírását lásd: [forgatókönyv: Az Azure Machine Learning hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
 >
 >
 
@@ -189,4 +188,4 @@ Miután megadta a címkét, adjon meg egy másik címke, nyomja le a Tab billent
 
 **[A katalógus megnyitása](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

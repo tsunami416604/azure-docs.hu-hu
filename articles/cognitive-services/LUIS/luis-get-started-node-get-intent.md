@@ -1,7 +1,7 @@
 ---
 title: Szándékkal, a Node.js beolvasása
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Node.js nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
+description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Node.js nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: e173e8af525c1d4239720adc504f8e5bbf14c062
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 92e10b1f4ec8be1dc67ff449df32ef76e365b5f2
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090557"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162664"
 ---
-# <a name="quickstart-get-intent-using-nodejs"></a>Rövid útmutató: Szándék lekérése a Node.js használatával
+# <a name="quickstart-get-intent-using-nodejs"></a>Gyors útmutató: Get-leképezés Node.js használatával
 
 Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 
 
 > [!NOTE] 
-> A teljes Node.js megoldás letölthető a [**LUIS-Samples** GitHub-adattárból](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node).
+> A teljes Node.js-megoldás érhető el a [ **LUIS-Samples** GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node).
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 

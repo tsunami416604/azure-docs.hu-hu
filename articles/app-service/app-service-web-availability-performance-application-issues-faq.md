@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások teljesítményének – gyakori kérdések az Azure web appshez |} A Microsoft Docs
+title: Alkalmazások teljesítményének – gyakori kérdések – Azure App Service-ben |} A Microsoft Docs
 description: Az Azure App Service Web Apps funkcióját a rendelkezésre állási, teljesítmény és alkalmazásproblémák kapcsolatos gyakori kérdésekre választ kaphat.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 62039d379861e9981eb1bf556a78e85fc64e2478
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748119"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255193"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -83,7 +84,7 @@ Három feltétel ezt a hibát okozhatják:
 * A webalkalmazás le lett állítva a portálon.
 * A webalkalmazás elérte a alkalmazni lehet egy ingyenes, vagy megosztott scale service-csomag erőforráskvóta határát.
 
-Tekintse meg, mi okozza a hibát, és a probléma megoldásához, kövesse a lépéseket a [Web Apps: "A 403-as hiba – Ez a webalkalmazás leállt"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Tekintse meg, mi okozza a hibát, és a probléma megoldásához, kövesse a lépéseket a [Web Apps: "403-as hiba – Ez a webalkalmazás leállt"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Hol találhatok további többet kvótái és korlátai a különféle App Service-csomagok?
 
@@ -166,7 +167,7 @@ Webjobs-feladatok háttérben történő feldolgozás van tervezve. Legtöbb há
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core alkalmazásokhoz, amelyek az App Service-ben néha nem válaszol. Hogyan lehet kijavítani a hibát a probléma?
 
-Egy ismert probléma, amely egy korábbi [Kestrel verzió](https://github.com/aspnet/KestrelHttpServer/issues/1182) időnként nem válaszol az App Service-ben futó ASP.NET Core 1.0-s alkalmazás vezethet. Emellett előfordulhat, hogy megjelenik ez az üzenet: "a megadott CGI-alkalmazás hibába ütközött, és a kiszolgáló leállt, a folyamat."
+Egy ismert probléma, amely egy korábbi [Kestrel verzió](https://github.com/aspnet/KestrelHttpServer/issues/1182) időnként nem válaszol az App Service-ben futó ASP.NET Core 1.0-s alkalmazás vezethet. Emellett előfordulhat, hogy megjelenik ez az üzenet: "A megadott CGI-alkalmazás hibába ütközött, és a kiszolgáló leállt, a folyamat."
 
 Ezt a problémát megoldottuk a Kestrel 1.0.2-es verzióját. Ez a verzió része az ASP.NET Core 1.0.3 frissítés. A probléma megoldásához ellenőrizze az alkalmazás függőségei a Kestrel 1.0.2-es használatához frissítenie. Azt is megteheti, hogy is két kerülő megoldások valamelyikével azt ebben a blogbejegyzésben leírt [ASP.NET Core 1.0-s lassú teljesítmény az App Service web apps problémák](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
 

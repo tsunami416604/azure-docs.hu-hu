@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347936"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322772"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zendesk konfigurálása
 
@@ -77,6 +77,10 @@ Felhasználók automatikus kiépítés engedélyezése és konfigurálása, miel
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Felhasználók hozzárendelése Zendesk fontos tippek
 
+*    Zendesk-szerepköröket a rendszer dinamikusan és automatikusan kitölti az Azure Portal felhasználói felület még ma. Zendesk-szerepkörök hozzárendelése a felhasználókhoz, mielőtt biztosítására, hogy egy kezdeti szinkronizálást ellen a legújabb szerepköröket, a Zendesk-bérlő lekéréséhez Zendesk befejeződjön.
+
+*    Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Zendeskhez a kezdeti felhasználók automatikus konfiguráció tesztelése. További felhasználók és csoportok rendelhetők később követően a tesztek sikere esetén.
+  
 *   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Zendeskhez a felhasználók automatikus konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 
 *   Való hozzárendelésekor a felhasználó a Zendeskhez, a hozzárendelés párbeszédpanelen jelölje ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
@@ -111,7 +115,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
     *   Az a **titkos jogkivonat** mezőben töltse fel a titkos jogkivonat, 6. lépésben leírtak szerint.
 
     *   Az a **tartomány** mezőt, a Zendesk-bérlőjének altartomány feltöltéséhez.
-    Például: A fiók a bérlő URL-címet https://my-tenant.zendesk.com, az altartomány lenne **saját bérlő**.
+    Példa: A bérlői URL-címet egy olyan fiók https://my-tenant.zendesk.com, az altartomány lenne **saját bérlő**.
 
 6. A **titkos jogkivonat** a Zendesk fiók találhatók **Admin > API > Beállítások**. 
 

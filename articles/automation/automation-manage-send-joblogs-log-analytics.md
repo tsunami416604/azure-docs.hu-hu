@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6170b69d213470b1f5b7e75c9b102e5e07c09209
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682883"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269566"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapota és a feladatstreamek automatizálást továbbítása a Log Analyticsbe
 
@@ -138,10 +138,10 @@ A kiemelt ügyfeleknek küldtük egyik kéri arra, hogy küldjön egy e-mailt va
 Létrehoz egy riasztási szabályt, hogy először létrehozni egy naplókeresést kell meghívnia a riasztás runbook-feladat rekordok. Kattintson a **riasztás** gombot létrehozni és konfigurálni a riasztási szabályt.
 
 1. A Log Analytics áttekintése oldalon kattintson **naplóbeli keresés**.
-2. A riasztás számára, egy naplóbeli keresési lekérdezés létrehozásához írja be a következő keresési az lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` is szerint csoportosíthatók az RunbookName használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. Hozzon létre egy naplóbeli keresési lekérdezés a riasztás a következő keresési beírni a szöveget a lekérdezési mezőtől: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  Emellett szerint csoportosíthatók az RunbookName használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Ha beállította naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók. Automation-fiók neve JobLogs keresése erőforrás mezőjében található.
-1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [Naplóriasztások az Azure-ban](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
+1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [Naplóriasztások az Azure-ban](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Keresse meg az összes feladatot, amely hibákkal fejeződött be
 Mellett hibák riasztást küld, amikor egy runbook-feladat nem megszakító hibát tartalmaz találja. Ezekben az esetekben a PowerShell-hibafolyam eredményez, de a megszakítást nem okozó hibákat nem okoznak a feladat felfüggesztése vagy sikertelen.    

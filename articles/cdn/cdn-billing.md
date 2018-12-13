@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091811"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309277"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -30,7 +30,7 @@ A számlázási régióban egy földrajzi területen határozza meg, milyen díj
 
 - 1. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
 
-- 2. zóna: Ázsia és a csendes-óceáni térség (és Japán)
+- 2. zóna: Ázsia Csendes-óceáni (és japán)
 
 - 3. zóna: Dél-Amerika
 
@@ -40,7 +40,7 @@ A számlázási régióban egy földrajzi területen határozza meg, milyen díj
 
 Jelenléti pontok (POP) régiókkal kapcsolatos információkért lásd: [Azure CDN POP-helyek régiónként](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Mexikói található POP például Észak-amerikai régióban található, és ezért része a 1. zóna. 
 
-További információ az Azure CDN-tarifacsomag: [Content Delivery Network díjszabása](https://azure.microsoft.com/is-is/pricing/details/cdn/).
+További információ az Azure CDN-tarifacsomag: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
 ## <a name="how-are-delivery-charges-calculated-by-region"></a>Hogyan számítják ki kézbesítési díjak régióban?
 Az Azure CDN számlázási régióban a forráskiszolgálón, a tartalom jusson el a felhasználó helye alapján. A cél (fizikai helyének) az ügyfél nem tekinthető a számlázási régióban.
@@ -55,19 +55,19 @@ Néhány az objektumok a forrásként használt szolgáltatásokra vonatkozó ha
 
 Az Azure Blob storage, a forrás-tartalomra vonatkozó használ, ha a gyorsítótár kitölti a következő tárolási díjakat is díjak:
 
-- Tényleges GB felhasználva: A tényleges az adatforrás-objektumok tárolására.
+- Tényleges GB felhasználva: Az adatforrás-objektumok a tényleges tároló.
 
-- GB adatátvitel: Adja meg a CDN-gyorsítótárak továbbított adatok mennyisége.
+- Adatforgalom GB-ban: Töltse ki a CDN-gyorsítótárak át adatok mennyisége.
 
-- Tranzakciók: megtöltené a gyorsítótárat igény szerint.
+- Tranzakciók: Szükséges megtöltené a gyorsítótárat.
 
 Azure Storage szolgáltatás számlázásának kapcsolatos további információkért lásd: [ismertetése az Azure Storage Billing – sávszélesség, tranzakciók és a kapacitás](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
 Ha használ *üzemeltetett szolgáltatás*, díjat számolunk a következő:
 
-- Azure-beli számítási idő: a forrás-kiszolgálóként működő számítási példányokért.
+- Azure-beli számítási idő: A forrás-kiszolgálóként működő számítási példányokért.
 
-- Azure-beli számítási átvitel: az adatátvitel a számítási példányok az Azure CDN-gyorsítótárak kitöltéséhez.
+- Azure-beli számítási átvitel: Az adatok a számítási példányok töltse ki az Azure CDN-gyorsítótárak másolja át.
 
 Ha az ügyfél bájttartomány-kérelmek (függetlenül a forrás-szolgáltatás) használ, a következő szempontokat kell figyelembe venni:
 
@@ -80,9 +80,9 @@ Minden egyes alkalommal, amikor a CDN összes jelenléti Pontjára kell töltse 
 
 - Hogyan gyorsítótárazható tartalom van: Ha a tartalom még magas TTL (time-to-live) / lejárati értékeli és gyakran elérni, hogy marad a gyorsítótárban, majd a terhelés túlnyomó többsége népszerű kezeli a CDN-t. Egy tipikus jó gyorsítótár találati arány, jól több mint 90 %-át, tehát, hogy kevesebb mint 10 %-a-ügyfélkérelmek kell térni a forrás, vagy egy gyorsítótár-tévesztés vagy az objektum frissítése.
 
-- Hány csomóponttal kell betölteni az objektum: minden alkalommal, amikor egy csomópont objektum tölt be a forrás tekintetében a számlázható tranzakciók. Több globális tartalom (több csomópont elérhető), ezért több számlázható tranzakciók eredményez.
+- Hány csomóponttal kell betölteni az objektum: Minden alkalommal, amikor egy csomópont objektum betölti a forrásból a számlázható tranzakciók tekintetében. Több globális tartalom (több csomópont elérhető), ezért több számlázható tranzakciók eredményez.
 
-- Befolyással élettartam: egy objektum nagyobb TTL azt jelenti, kell lennie a forrásból kevésbé gyakran lehívott. Azt is jelenti, ügyfelek, például böngészők, az objektumot, ami csökkentheti a tranzakciók és a CDN hosszabb, képes gyorsítótárazni.
+- Befolyással élettartam: Nagyobb TTL-objektum, az azt jelenti, kell lennie a forrásból kevésbé gyakran lehívott. Azt is jelenti, ügyfelek, például böngészők, az objektumot, ami csökkentheti a tranzakciók és a CDN hosszabb, képes gyorsítótárazni.
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hogyan kezelhetem a költségeket a leghatékonyabban?
 A leghosszabb élettartam a tartalom lehet beállítani. 

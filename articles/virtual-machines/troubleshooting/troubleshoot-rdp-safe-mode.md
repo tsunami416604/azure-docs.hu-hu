@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 097b7efd7643e3b8450284d19e13a428dfd48ac2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138857"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316981"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nem hajtható végre egy virtuális gép RDP-vel, mert a virtuális gép csökkentett módban indul.
 
 Ez a cikk bemutatja, hogyan, amelyben nem lehet csatlakoztatni az Azure Windows Virtual Machines (VM), mert a virtuális gép úgy van beállítva. a probléma megoldásához indítsa el a csökkentett módban való.
 
 > [!NOTE]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -111,23 +111,24 @@ Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következ�
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
 
     reg unload HKLM\BROKENSYSTEM
+    ```
 
-#### Configure the Windows to boot into normal mode
+#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>A Windows, indítsa el a normál mód konfigurálása
 
-1. Open an elevated command prompt session (**Run as administrator**).
-2. Check the boot configuration data. In the following commands, we assume that the drive letter that is assigned to the attached OS disk is F. Replace this drive letter with the appropriate value for your VM.
+1. Nyisson meg egy rendszergazda jogú parancssort munkamenetet (**Futtatás rendszergazdaként**).
+2. Ellenőrizze a rendszerindítási konfigurációs adatok. A következő parancsokat feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
 
         bcdedit /store F:\boot\bcd /enum
-    Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".
+    Jegyezze fel a azonosítója azon partíció neve, amely rendelkezik a **\windows** mappát. Alapértelmezés szerint az azonosító neve a "Alapértelmezett".
 
-    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
+    Ha a virtuális gép úgy van beállítva. csökkentett módban indul, egy extra jelzőt alatt megjelenik a **Windows rendszertöltő** nevű szakaszt **csökkentett mód**. Ha nem látja a **csökkentett mód** jelző, ez a cikk nem vonatkozik a forgatókönyvéhez.
 
-    ![The image about boot Identifier](./media/troubleshoot-rdp-safe-mode/boot-id.png)
+    ![Rendszerindító azonosító bemutató kép](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
-3. Remove the **safeboot** flag, so the VM will boot into normal mode:
+3. Távolítsa el a **csökkentett mód** jelzőt, így a virtuális gép normál üzemmódban fog elindulni:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Check the boot configuration data to make sure that the **safeboot** flag is removed:
+4. Győződjön meg arról, hogy a rendszerindítási konfigurációs adatok ellenőrzése a **csökkentett mód** jelző eltávolítása:
 
         bcdedit /store F:\boot\bcd /enum
-5. [Detach the OS disk and recreate the VM](../windows/troubleshoot-recovery-disks-portal.md). Then check whether the issue is resolved.
+5. [Az operációsrendszer-lemez leválasztása, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md). Ezután ellenőrizze, hogy a probléma megoldódott-e.

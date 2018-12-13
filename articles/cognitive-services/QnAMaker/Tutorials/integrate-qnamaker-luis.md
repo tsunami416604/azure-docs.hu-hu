@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dd030eeefd731ae176e1fe7907d941fff56a9db1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080027"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163312"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A QnA Maker és terjeszteni a Tudásbázis LUIS integrálása
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A robot használata a QnA Maker és a LUIS terjeszteni a Tudásbázis
 A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
 
 Bár a QnA Maker több tudásbázisok létrehozása egyszerű, szüksége lesz egy logikai irányíthatja a bejövő kérdést a megfelelő tudásbázisba. Ez a LUIS használatával teheti meg.

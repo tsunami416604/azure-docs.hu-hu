@@ -4,10 +4,9 @@ description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen �
 keywords: a vonatkozó adatok adatok kiértékelése, adatok, data feltételek, készen adatok előkészítése
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
@@ -17,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 3408130e97b6b38de58300244f884257c179230c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092884"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261228"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
-## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Az adatelemzés kezdőknek sorozat
+## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adatelemzés kezdőknek sorozat
 Útmutató: az adatok, hogy megfelel-e, készen áll az adatelemzés alapvető feltételek.
 
 A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
@@ -38,13 +37,13 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: Adatelemzés készen áll az adatok?
-* 3. Videó: [tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: Készen állnak adatai az elemzésre?
+* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>A szövegben: Adatelemzés készen áll az adatok?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>A szövegben: Készen állnak adatai az elemzésre?
 Üdvözli az "Az adatok készen áll a data science?" az a sorozat második videó *adatelemzés kezdőknek*.  
 
 Előtt adatelemzési adhat meg a kívánt válaszokat, akkor adjon meg néhány kiváló minőségű nyersanyagok dolgozhat. Csakúgy, mint egy kétpizzás, annál jobbak az összetevők, először a, annál jobb végtermékben elvégzése. 

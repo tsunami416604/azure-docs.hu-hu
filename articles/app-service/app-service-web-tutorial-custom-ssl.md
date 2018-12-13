@@ -1,5 +1,5 @@
 ---
-title: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez | Microsoft Docs
+title: Meglévő egyéni SSL-tanúsítvány kötése – az Azure App Service |} A Microsoft Docs
 description: Megtudhatja, hogyan köthet egyéni SSL-tanúsítványt a webalkalmazáshoz, egy mobilalkalmazás hátérrendszeréhez vagy egy API-alkalmazáshoz az Azure App Service-ben.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,15 +14,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: df2ab9b16201cdb408cbe028b1814de7a3dfb4c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962892"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256995"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány hozzárendelése az Azure Web Appshez
 
 Az Azure Web Apps egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan köthet megbízható hitelesítésszolgáltatótól vásárolt egyéni SSL-tanúsítványt az [Azure Web Appshez](app-service-web-overview.md). Amikor végzett, a webalkalmazást az egyéni DNS-tartomány HTTPS-végpontján érheti el.
 

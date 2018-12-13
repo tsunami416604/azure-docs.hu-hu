@@ -1,12 +1,11 @@
 ---
-title: Meglévő prediktív webszolgáltatás újratanítása – Azure Machine Learning Studióban |} A Microsoft Docs
+title: Meglévő prediktív Studio webszolgáltatás újratanítása – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Ismerje meg, hogyan modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning Studióban.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -16,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311296"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250552"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Prediktív Azure Machine Learning Studióba meglévő webszolgáltatás újratanítása
+
 Ez a dokumentum azt ismerteti, hogyan megőrzési az alábbi forgatókönyvet:
 
 * Betanítási kísérlet és a egy prediktív kísérletet, webszolgáltatásig központilag telepített rendelkezik.
@@ -66,7 +66,7 @@ Ebben a példában használunk a C# megőrzési-alkalmazás létrehozása. Haszn
 
 A megőrzési API-k meghívásához:
 
-1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban: **új** > **projekt** > **Visual C#** > **Windows Klasszikus asztal** > **Console App (.NET Framework)**.
+1. Hozzon létre egy C# a Visual Studio-Konzolalkalmazás: **Új** > **projekt** > **Visual C#**   >  **Windows klasszikus Asztalialkalmazás**  >   **Console App (.NET Framework)**.
 2. Jelentkezzen be a Machine Learning webszolgáltatások portálján.
 3. Kattintson a webszolgáltatás, amelyet dolgozik.
 4. Kattintson a **felhasználása**.

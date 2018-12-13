@@ -1,33 +1,26 @@
 ---
-title: Oktatóanyag az Azure SignalR Service-ügyfelek hitelesítéséhez | Microsoft Docs
+title: Oktatóanyag az Azure SignalR Service ügyfelek hitelesítése
 description: Ez az oktatóanyag bemutatja, hogyan hitelesítheti az Azure SignalR Service-ügyfeleket
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
-ms.workload: tbd
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: HT
+ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268512"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254122"
 ---
-# <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Azure SignalR Service-hitelesítés
+# <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Az Azure SignalR Service-hitelesítés
 
-Ez az oktatóanyag a rövid útmutatóban bemutatott csevegőszoba-alkalmazásra épít. Ha még nem végezte el a [Csevegőszoba létrehozása SignalR szolgáltatással](signalr-quickstart-dotnet-core.md) gyakorlatot, először végezze el azt. 
+Ez az oktatóanyag a rövid útmutatóban bemutatott csevegőszoba-alkalmazásra épít. Ha még nem végezte el a [Csevegőszoba létrehozása SignalR szolgáltatással](signalr-quickstart-dotnet-core.md) gyakorlatot, először végezze el azt.
 
-Ebben az oktatóanyagban megtanulhatja, hogyan implementálhatja a saját hitelesítését, és hogyan integrálhatja azt a Microsoft Azure SignalR Service szolgáltatással. 
+Ebben az oktatóanyagban megtanulhatja, hogyan implementálhatja a saját hitelesítését, és hogyan integrálhatja azt a Microsoft Azure SignalR Service szolgáltatással.
 
-A rövid útmutató csevegőszoba-alkalmazásában eredetileg használt hitelesítés túl egyszerű a valós forgatókönyvekhez. Az alkalmazás lehetővé teszi, hogy az ügyfelek megadják a személyazonosságukat, a kiszolgáló pedig egyszerűen elfogadja azt. Ez a módszer nem túl hasznos a valós alkalmazások esetében, ahol a rosszindulatú felhasználók megszemélyesíthetnek más felhasználókat, hogy hozzáférjenek a bizalmas adatokhoz. 
+A rövid útmutató csevegőszoba-alkalmazásában eredetileg használt hitelesítés túl egyszerű a valós forgatókönyvekhez. Az alkalmazás lehetővé teszi, hogy az ügyfelek megadják a személyazonosságukat, a kiszolgáló pedig egyszerűen elfogadja azt. Ez a módszer nem túl hasznos a valós alkalmazások esetében, ahol a rosszindulatú felhasználók megszemélyesíthetnek más felhasználókat, hogy hozzáférjenek a bizalmas adatokhoz.
 
 A [GitHub](https://github.com/) hitelesítési API-kat biztosít egy népszerű, [OAuth](https://oauth.net/) nevű iparági szabványoknak megfelelő protokoll alapján. Ezek az API-k lehetővé teszik a GitHub-fiókok hitelesítését a külső alkalmazások számára. Az oktatóanyag során ezekkel az API-kkal fogja megvalósítani a hitelesítést egy GitHub-fiókon keresztül, mielőtt engedélyezné az ügyfelek számára, hogy bejelentkezzenek a csevegőszoba-alkalmazásba. A GitHub-fiók hitelesítése után a fiókadatok cookie-ként lesznek hozzáadva, amelyet a webes ügyfél a hitelesítéshez fog használni.
 
@@ -37,9 +30,7 @@ A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A
 
 Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjából](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat).
 
-
 ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
-
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -56,10 +47,9 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 * Egy [GitHubon](https://github.com/) létrehozott fiók
 * [Git](https://git-scm.com/)
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows) 
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [Konfigurált Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* Töltse le vagy klónozza az [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub-adattárat.
-
+* Töltse le vagy klónozza a [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub-adattárban.
 
 ## <a name="create-an-oauth-app"></a>OAuth-alkalmazás létrehozása
 
@@ -71,16 +61,15 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
     | Beállítás neve | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
-    | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználóknak fel kell ismerniük és megbízhatónak kell tartaniuk a hitelesítéshez használt alkalmazást.   |
+    | Alkalmazásnév | *Azure SignalR Chat* | A GitHub felhasználói tudja majd felismerni és az alkalmazás végzik a hitelesítést a megbízhatósági kell lennie.   |
     | Kezdőlap URL-címe | *http://localhost:5000/home* | |
-    | Alkalmazás leírása | *Egy csevegőszoba-minta, amely az Azure SignalR Service szolgáltatást használja GitHub-hitelesítéssel* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
+    | Alkalmazás leírása | *Az Azure SignalR Service segítségével a GitHub-hitelesítéssel csevegőszoba minta* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
     | Az engedélyezési visszahívás URL-címe | *http://localhost:5000/signin-github* | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
 
         dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
         dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
-
 
 ## <a name="implement-the-oauth-flow"></a>Az OAuth-folyamat megvalósítása
 
@@ -127,7 +116,7 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
         });
     ```
 
-4. Adja hozzá a `GetUserCompanyInfoAsync` segédmetódust a `Startup` osztályhoz.    
+4. Adja hozzá a `GetUserCompanyInfoAsync` segédmetódust a `Startup` osztályhoz.
 
     ```csharp
     private static async Task GetUserCompanyInfoAsync(OAuthCreatingTicketContext context)
@@ -149,14 +138,14 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
             });
             context.Principal.AddIdentity(companyIdentity);
         }
-    }        
+    }
     ```
 
 5. Frissítse a Startup osztály `Configure` metódusát az alábbi kódsorral, majd mentse a fájlt.
 
-        app.UseAuthentication();
-
-
+    ```csharp
+    app.UseAuthentication();
+    ```
 
 ### <a name="add-an-authentication-controller"></a>Hitelesítésvezérlő hozzáadása
 
@@ -189,14 +178,14 @@ Ebben a szakaszban meg fog valósítani egy `Login` API-t, amely a GitHub OAuth-
                 return Redirect("/");
             }
         }
-    }    
+    }
     ```
 
-3. Mentse a módosításokat.    
+3. Mentse a módosításokat.
 
 ### <a name="update-the-hub-class"></a>A Hub osztály frissítése
 
-Alapértelmezés szerint amikor a webes ügyfél csatlakozni próbál a SignalR Service szolgáltatáshoz, a csatlakozás egy belsőleg megadott hozzáférési token alapján lesz engedélyezve. Ez a hozzáférési token nincs hozzárendelve hitelesített identitáshoz. Ez a hozzáférés valójában névtelen hozzáférés. 
+Alapértelmezés szerint amikor a webes ügyfél csatlakozni próbál a SignalR Service szolgáltatáshoz, a csatlakozás egy belsőleg megadott hozzáférési token alapján lesz engedélyezve. Ez a hozzáférési token nincs hozzárendelve hitelesített identitáshoz. Ez a hozzáférés valójában névtelen hozzáférés.
 
 Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy hozzáadja a Hub osztályhoz az `Authorize` attribútumot, és frissíti a központ metódusait, hogy azok beolvassák a felhasználónevet a hitelesített felhasználó jogcíméből.
 
@@ -265,7 +254,7 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
         }
         return '';
     }
-    var username = getCookie('githubchat_username');    
+    var username = getCookie('githubchat_username');
     ```
 
 2. Adja hozzá az alábbi definíciót az `appendMessage` függvényhez, közvetlenül a cookie használatához hozzáadott kódsor alá:
@@ -327,8 +316,8 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
             messageInput.focus();
             event.preventDefault();
         });
-    }    
-    ```    
+    }
+    ```
 
 4. Az *index.html* fájl végén frissítse a `connection.start()` hibakezelőjét a lent látható módon ahhoz, hogy a rendszer felkérje a felhasználót a bejelentkezésre.
 
@@ -349,13 +338,11 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
         });
     ```
 
-5. Mentse a módosításokat.    
-
-
+5. Mentse a módosításokat.
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás létrehozása és futtatása helyben
 
-1. Mentse az összes fájl módosításait. 
+1. Mentse az összes fájl módosításait.
 
 2. Buildelje az alkalmazást a .NET Core CLI használatával, majd futtassa a következő parancsot a parancsrendszerhéjban:
 
@@ -371,22 +358,21 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
         Hosting environment: Production
         Content root path: E:\Testing\chattest
         Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+        Application started. Press Ctrl+C to shut down.
 
-4. Nyisson meg egy böngészőablakot, és navigáljon a `http://localhost:5000` helyre. A GitHubbal való bejelentkezéshez kattintson a fenti **itt** hivatkozásra. 
+4. Nyisson meg egy böngészőablakot, és navigáljon a `http://localhost:5000` helyre. A GitHubbal való bejelentkezéshez kattintson a fenti **itt** hivatkozásra.
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    A rendszer fel fogja kérni, hogy engedélyezze a csevegőalkalmazás hozzáférését a GitHub-fiókjához. Kattintson az **Engedélyezés** gombra. 
-    
+    A rendszer fel fogja kérni, hogy engedélyezze a csevegőalkalmazás hozzáférését a GitHub-fiókjához. Kattintson az **Engedélyezés** gombra.
+
     ![Az OAuth-alkalmazás engedélyezése](media/signalr-authenticate-oauth/signalr-authorize-oauth-app.png)
-    
+
     A rendszer visszairányítja a csevegőalkalmazásba, és belépteti a GitHub-fiókja nevével. A fióknév megállapításához a webalkalmazás az újonnan hozzáadott hitelesítéssel hitelesítette Önt.
 
     ![Azonosított fiók](media/signalr-authenticate-oauth/signalr-oauth-account-identified.png)
 
-    Most, hogy a csevegőalkalmazás hitelesítést végez a GitHubbal és cookie-ként tárolja a hitelesítési adatokat, üzembe helyezheti azt az Azure-ban, hogy más felhasználók is hitelesítést végezhessenek a fiókjaikkal, illetve kommunikálhassanak más munkaállomásokról. 
-
+    Most, hogy a csevegőalkalmazás hitelesítést végez a GitHubbal és cookie-ként tárolja a hitelesítési adatokat, üzembe helyezheti azt az Azure-ban, hogy más felhasználók is hitelesítést végezhessenek a fiókjaikkal, illetve kommunikálhassanak más munkaállomásokról.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -401,7 +387,6 @@ az extension add -n signalr
 ```
 
 Az alábbi erőforrások létrehozásakor ügyeljen arra, hogy ugyanazt az erőforráscsoportot használja, mint amelyben a SignalR Service-erőforrás is található. Ha ezt a megközelítést alkalmazza, sokkal könnyebb dolga lesz később, amikor el akarja távolítani az erőforrásokat. A példák feltételezik, hogy a korábbi oktatóanyagokban javasolt *SignalRTestResources* csoportnevet használta.
-
 
 ### <a name="create-the-web-app-and-plan"></a>A webalkalmazás és a csomag létrehozása
 
@@ -426,18 +411,13 @@ az appservice plan create --name $WebAppPlan --resource-group $ResourceGroupName
 # Create the new Web App
 az webapp create --name $WebAppName --resource-group $ResourceGroupName \
     --plan $WebAppPlan
-
-
 ```
-
 
 | Paraméter | Leírás |
 | -------------------- | --------------- |
-| ResourceGroupName | Ezt az erőforráscsoport-nevet a korábbi oktatóanyagokban javasoltuk. Az oktatóanyag-erőforrásokat érdemes egy csoportban tárolni. Használja ugyanazt az erőforráscsoportot, mint amelyet a korábbi oktatóanyagokban használt. | 
-| WebAppPlan | Adjon meg egy új egyedi nevet App Service-csomaghoz. | 
-| WebAppName | Ez lesz az új webalkalmazás neve, illetve az URL-cím egy része. Egyedi nevet használjon. Például: signalrtestwebapp22665120.   | 
-
-
+| ResourceGroupName | Ezt az erőforráscsoport-nevet a korábbi oktatóanyagokban javasoltuk. Az oktatóanyag-erőforrásokat érdemes egy csoportban tárolni. Használja ugyanazt az erőforráscsoportot, mint amelyet a korábbi oktatóanyagokban használt. |
+| WebAppPlan | Adjon meg egy új egyedi nevet App Service-csomaghoz. |
+| WebAppName | Ez lesz az új webalkalmazás neve, illetve az URL-cím egy része. Egyedi nevet használjon. Például: signalrtestwebapp22665120.   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>Alkalmazásbeállítások hozzáadása a webalkalmazáshoz
 
@@ -467,7 +447,7 @@ WebAppName=myWebAppName
 signalRhostname=$(az signalr show --name $SignalRServiceResource \
     --resource-group $ResourceGroupName --query hostName -o tsv)
 
-# Get the SignalR primary key 
+# Get the SignalR primary key
 signalRprimarykey=$(az signalr key list --name $SignalRServiceResource \
     --resource-group $ResourceGroupName --query primaryKey -o tsv)
 
@@ -477,27 +457,24 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure__SignalR__ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring"
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "GitHubClientId=$GitHubClientId" 
+    --settings "GitHubClientId=$GitHubClientId"
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "GitHubClientSecret=$GitHubClientSecret" 
-
+    --settings "GitHubClientSecret=$GitHubClientSecret"
 ```
 
 | Paraméter | Leírás |
 | -------------------- | --------------- |
 | GitHubClientId | Rendelje hozzá ezt a változót a GitHub OAuth-alkalmazás titkos ügyfél-azonosítójához. |
 | GitHubClientSecret | Rendelje hozzá ezt a változót a GitHub OAuth-alkalmazás titkos jelszavához. |
-| ResourceGroupName | Frissítse ezt a változót ugyanarra az erőforráscsoport-névre, mint amelyet az előző szakaszban használt. | 
-| SignalRServiceResource | Frissítse ezt a változót a rövid útmutatóban létrehozott SignalR Service-erőforrás nevére. Például: signalrtestsvc48778624. | 
-| WebAppName | Frissítse ezt a változót az előző szakaszban létrehozott új webalkalmazás nevére. | 
-
-
+| ResourceGroupName | Frissítse ezt a változót ugyanarra az erőforráscsoport-névre, mint amelyet az előző szakaszban használt. |
+| SignalRServiceResource | Frissítse ezt a változót a rövid útmutatóban létrehozott SignalR Service-erőforrás nevére. Például: signalrtestsvc48778624. |
+| WebAppName | Frissítse ezt a változót az előző szakaszban létrehozott új webalkalmazás nevére. |
 
 ### <a name="configure-the-web-app-for-local-git-deployment"></a>A webalkalmazás konfigurálása a Git helyi üzemelő példányához
 
@@ -524,19 +501,16 @@ az webapp deployment user set --user-name $DeploymentUserName \
 az webapp deployment source config-local-git --name $WebAppName \
     --resource-group $ResourceGroupName \
     --query [url] -o tsv
-
 ```
 
 | Paraméter | Leírás |
 | -------------------- | --------------- |
 | DeploymentUserName | Válasszon egy nevet az új üzembe helyező felhasználó számára. |
 | DeploymentUserPassword | Válasszon egy jelszót az új üzembe helyező felhasználó számára. |
-| ResourceGroupName | Használja ugyanazt az erőforráscsoport-nevet, mint amelyet az előző szakaszban használt. | 
-| WebAppName | Ez lesz a korábban létrehozott új webalkalmazás neve. | 
-
+| ResourceGroupName | Használja ugyanazt az erőforráscsoport-nevet, mint amelyet az előző szakaszban használt. |
+| WebAppName | Ez lesz a korábban létrehozott új webalkalmazás neve. |
 
 Jegyezze fel a Git üzemelő példány parancs által visszaadott URL-címét. Ezt az URL-címet később fogja használni.
-
 
 ### <a name="deploy-your-code-to-the-azure-web-app"></a>A kód üzembe helyezése az Azure-webalkalmazásban
 
@@ -544,24 +518,32 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 1. Lépjen a projekt gyökérkönyvtárába. Ha nem Git-adattárral inicializálta a projektet, hajtsa végre a következő parancsot:
 
-        git init
+    ```bash
+    git init
+    ```
 
 2. Adjon hozzá egy távoli végpontot a Git üzemelő példány korábban feljegyzett URL-címéhez:
 
-        git remote add Azure <your git deployment url>
+    ```bash
+    git remote add Azure <your git deployment url>
+    ```
 
 3. Készítse elő az inicializált adattárban található összes fájlt, és adjon hozzá egy véglegesítést.
 
-        git add -A
-        git commit -m "init commit"
+    ```bash
+    git add -A
+    git commit -m "init commit"
+    ```
 
-4. Helyezze üzembe a kódot az Azure-webalkalmazásban.        
+4. Helyezze üzembe a kódot az Azure-webalkalmazásban.
 
-        git push Azure master
+    ```bash
+    git push Azure master
+    ```
 
     A rendszer fel fogja kérni, hogy végezzen hitelesítést a kód Azure-ban való üzembe helyezéséhez. Adja meg a fent létrehozott üzembe helyező felhasználó felhasználónevét és jelszavát.
 
-### <a name="update-the-github-oauth-app"></a>A GitHub OAuth-alkalmazás frissítése 
+### <a name="update-the-github-oauth-app"></a>A GitHub OAuth-alkalmazás frissítése
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
@@ -574,33 +556,27 @@ A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Home
     | Kezdőlap URL-címe | https://signalrtestwebapp22665120.azurewebsites.net/home |
     | Az engedélyezési visszahívás URL-címe | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
 
-
 3. Nyissa meg a webalkalmazás URL-címét, és tesztelje az alkalmazást.
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
+Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
-> 
-> 
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
 A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *SignalRTestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
 
-   
 ![Törlés](./media/signalr-authenticate-oauth/signalr-delete-resource-group.png)
 
-
 A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
-   
+
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
 ## <a name="next-steps"></a>További lépések

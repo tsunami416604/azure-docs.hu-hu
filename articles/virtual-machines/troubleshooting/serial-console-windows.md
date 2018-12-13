@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 6905db3c042693fabea368bfd57547914fa01206
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141135"
+ms.locfileid: "53185331"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>A Windows virtuális gépek soros konzolja
 
@@ -124,15 +124,15 @@ Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, 
 
 A soros konzol segítségével egy Azure-beli virtuálisgép-NMI küldje el a billentyűzet ikon használatával a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer. Windows beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása egy NMI fogadásakor.
 
+![NMI küldése](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+Windows összeomlási memóriaképfájl létrehozásához, amikor kap egy NMI konfigurálásával kapcsolatos további információkért lásd: [egy összeomlási memóriakép létrehozása egy NMI használatával](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
+
 ### <a name="use-function-keys-in-serial-console"></a>Függvény-kulcsok használata a soros konzol
 Funkcióbillentyűk engedélyezve vannak a soros konzol a Windows virtuális gépek használatát. A soros konzol legördülő listában az F8 biztosít, egyszerűen írja be a speciális rendszerindítási beállítások menü a kényelem érdekében, de a soros konzol kompatibilis a függvény minden más kulcsok. Nyomja le az szeretne **Fn** + **F1** (vagy, F2 és F3, stb) függően a számítógépen a billentyűzet a soros konzol használata.
 
 ### <a name="use-wsl-in-serial-console"></a>A soros konzol WSL használata
 A Windows alrendszer Linux (WSL) engedélyezve van a Windows Server 2019 vagy újabb verzió, így is lehet engedélyezni WSL soros konzolon belüli használatra, ha futtatja a Windows Server 2019 vagy újabb verziója. Egy Linux-parancsok ismeretét rendelkező felhasználók számára előnyös lehet. A Windows Server WSL engedélyezéséhez utasításokért lásd: a [telepítési útmutató](https://docs.microsoft.com/windows/wsl/install-on-server).
-
-![NMI küldése](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
-
-Windows összeomlási memóriaképfájl létrehozásához, amikor kap egy NMI konfigurálásával kapcsolatos további információkért lásd: [egy összeomlási memóriakép létrehozása egy NMI használatával](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. A soros konzol vagy az előfizetés vagy a virtuális gép szintjén is letilthatja.
@@ -210,7 +210,7 @@ Forgatókönyv          | A soros konzol műveletek
 Helytelen tűzfal-szabályok | Soros konzolon, és javítsa a Windows tűzfalszabályok eléréséhez.
 Fájlrendszer sérülése és ellenőrzése | A soros konzol eléréséhez, és a fájlrendszer helyreállítani.
 RDP-konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat. További információkért lásd: a [RDP-dokumentáció](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Rendszer hálózati zárolása | A soros konzol eléréséhez a rendszer kezelését az Azure Portalról. Egyes hálózati parancsok felsorolt [Windows-parancsok: CMD és a PowerShell](serial-console-cmd-ps-commands.md).
+Rendszer hálózati zárolása | A soros konzol eléréséhez a rendszer kezelését az Azure Portalról. Egyes hálózati parancsok felsorolt [Windows parancsokat: CMD és a PowerShell](serial-console-cmd-ps-commands.md).
 A rendszertöltő használata | Hozzáférés a BCD soros konzolon keresztül. További információ: [engedélyezése a soros konzol a Windows rendszerindítási menüjében](#enable-the-windows-boot-menu-in-the-serial-console).
 
 
@@ -266,6 +266,6 @@ A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez.
 A. Jelenleg a virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-* A részletes útmutatót a cmd Parancsot, és a PowerShell parancsokat is használhat, a Windows SAC, lásd: [Windows-parancsok: CMD és a PowerShell](serial-console-cmd-ps-commands.md).
+* A részletes útmutatót a cmd Parancsot, és a PowerShell parancsokat is használhat, a Windows SAC, lásd: [Windows parancsokat: CMD és a PowerShell](serial-console-cmd-ps-commands.md).
 * A soros konzolon érhető el is [Linux](serial-console-linux.md) virtuális gépeket.
 * Tudjon meg többet [rendszerindítási diagnosztika](boot-diagnostics.md).

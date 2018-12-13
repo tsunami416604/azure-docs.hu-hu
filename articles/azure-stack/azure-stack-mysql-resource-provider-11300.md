@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 6354212eb95fbefb217dd5339613d050da55f4ba
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 2f300e496873c0b048ccc1acc078bf1650e6bd9c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688139"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166285"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>MySQL erőforrás-szolgáltató 1.1.30.0 kibocsátási megjegyzései
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A kibocsátási megjegyzések a fejlesztéseket és a MySQL erőforrás-szolgáltató verziója 1.1.30.0 az ismert problémákat ismertetik.
 
@@ -56,13 +56,26 @@ Az Azure Stack MySQL erőforrás-szolgáltató ezen verziója tartalmazza a köv
 
 - **MySQL termékváltozatot órát is igénybe vehet egy lesznek láthatók a portálon**. Is igénybe vehet egy órát újonnan létrehozott termékváltozatok lesznek láthatók a használatra, amikor új MySQL-adatbázisok létrehozásához. 
 
-    **Megkerülő megoldás**: nincs.
+    **Megkerülő megoldás**: Nincs.
 
 - **Újra felhasználhatók a MySQL-bejelentkezések**. Hozzon létre egy új MySQL próbál jelentkezzen be a felhasználónevet, egy meglévő bejelentkezést egy előfizetésen belül eredményez újbóli felhasználása ugyanazokat a bejelentkezési adatokat és a meglévő jelszót. 
 
-    **Megkerülő megoldás**: azonos előfizetéshez tartozó új bejelentkezéseket létrehozásakor különböző felhasználónevet használ, vagy hozzon létre bejelentkezések a különböző előfizetéseknél felhasználónevet.
+    **Megkerülő megoldás**: Azonos előfizetéshez tartozó új bejelentkezéseket létrehozásakor különböző felhasználónevet használ, vagy hozzon létre bejelentkezések a különböző előfizetéseknél felhasználónevet.
 
+- **A TLS 1.2 támogatási követelmények**. Ha megpróbálja telepíteni vagy frissíteni a MySQL erőforrás-szolgáltató egy olyan számítógépről, amelyen nincs engedélyezve a TLS 1.2-es, a művelet sikertelen lehet. Futtassa a következő PowerShell-parancsot a számítógépen használt telepíteni vagy frissíteni az erőforrás-szolgáltatót, győződjön meg arról, hogy a TLS 1.2 támogatott adja vissza:
 
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  Ha **Tls12** van a parancs kimenete nem szerepel, a TLS 1.2 nincs engedélyezve a számítógépen.
+
+    **Megkerülő megoldás**: Futtassa a következő PowerShell-parancsot a TLS 1.2-es és indítsa el az erőforrás-szolgáltató üzembe helyezés, vagy frissítse a parancsfájlt a ugyanebben a PowerShell-munkamenetben:
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
+ 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Azure Stack működő felhő rendszergazdái számára ismert problémák
 A dokumentáció a [Azure Stack kibocsátási megjegyzések](azure-stack-servicing-policy.md).
 

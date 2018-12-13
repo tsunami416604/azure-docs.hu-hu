@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106243"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140965"
 ---
-# <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>A LUIS-alkalmazás az előre összeállított útmutatója
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
 
 [Egyéni tartományok](luis-how-to-start-new-app.md), ezzel szemben az elindításához nincs leképezések és a modellek. Egy egyéni modell bármilyen előre összeállított tartományban szándékok és entitások adhat hozzá.
@@ -116,7 +116,7 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | TurnForwardingOff| Telefonhívás.|<br/><br/>|
 | Újratárcsázás| Újratárcsázás, vagy egy szám hívja meg újra.|Újratárcsázás.<br/>A legutóbbi hívásának Újratárcsázás.|
 | Elutasítás| Bejövő hívás elutasítása.|Hívás elutasítása<br/>Most már nem válaszol<br/>Jelenleg nem érhető el, és meghívja vissza később.|
-| Sendemail művelet| E-mail küldése. Ez a leképezés e-mailt, de nem a szöveges üzenetek vonatkozik.|E-mailek Mike víz: Mike, hogy az elmúlt hét vacsora splendid volt-e.<br/>Bob e-mail küldése<br/>|
+| Sendemail művelet| E-mail küldése. Ez a leképezés e-mailt, de nem a szöveges üzenetek vonatkozik.|E-mailek víz Mike: Mike, hogy az elmúlt hét vacsora splendid volt-e.<br/>Bob e-mail küldése<br/>|
 | SendMessage| Szöveges üzenet vagy azonnali üzenet küldése.|Chris és Carol szöveg küldése|
 | SetSpeedDial| Sebesség tárcsázás parancsikon be a telefonszámát.|Carol egy gyors tárcsázás be.<br/>Állítsa be a mom sebesség bármekkora munkát képes elvégezni.|
 | ShowNext| Lásd a következő elem, például a szöveges üzenetben vagy e-mailek listáját.|Megjelenítés a következő parancsot.<br/>A következő oldalra lépéshez.|
@@ -242,11 +242,12 @@ A HomeAutomation tartományban szándékok és entitások intelligens otthoni es
 A MovieTickets tartományi biztosítja, leképezések és a egy filmet mozi filmeket foglalási jegyeket kapcsolódó entitások.
 
 ### <a name="examples"></a>Példák
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|Példák|
+|--|
+|Könyv me kapitány Omar és a két Musketeers két jegyek|
+|Jegyek megszakítása|
+|Ha látható a kapitány Omar?|
 
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |

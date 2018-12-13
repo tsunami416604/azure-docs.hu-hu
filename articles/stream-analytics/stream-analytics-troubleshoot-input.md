@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 0098d532f09ca2fa7ef4434add90729a15809ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087456"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164381"
 ---
 # <a name="troubleshoot-input-connections"></a>A bemeneti kapcsolatok hibaelhárítása
 
@@ -47,7 +48,7 @@ Az alábbi lépéseket a bemeneti események beolvasni a Deszerializálási hiba
 
 2. A bemenet részletei csempét az összes hiba részleteit a figyelmeztetések listáját jeleníti meg. Az alábbi példa figyelmeztető üzenet is tartalmaz, a partíció, az eltolást és sorozatszámok helytelen formátumú JSON-adatok esetén. 
 
-   ![Az eltolás figyelmeztető üzenet](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Stream Analytics figyelmeztető üzenetet, és az eltolás](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. A helytelen formátumú JSON-adatok megkereséséhez futtassa a CheckMalformedEvents.cs kód érhető el a [GitHub-mintaadattár](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). A kód olvasást a Partícióazonosító, eltolás és megrendelése adott eltolás található adatok. 
 
@@ -89,9 +90,9 @@ A streamelési lekérdezési szintaxis hivatkozik az ugyanazon bemeneti Event Hu
 
 Forgatókönyvek, amelyekben az olvasók partíciónként az Event Hubs legfeljebb öt meghaladja a következők:
 
-* Több SELECT utasítás: Ha több SELECT utasítás, amely hivatkozik **ugyanazon** event hub bemeneti, minden egyes SELECT utasítás hatására létrejön egy új fogadó.
+* Több SELECT utasítás: Ha több SELECT utasítás hivatkozó **ugyanazon** event hub bemeneti, minden egyes SELECT utasítás hatására létrejön egy új fogadó.
 * UNION: Használja a UNION, esetén előfordulhat, hogy több bemenet, amely hivatkozik a **ugyanazon** event hub és a fogyasztói csoportot.
-* ÖNÁLLÓAN csatlakozni: Amikor egy ÖNKISZOLGÁLÓ JOIN műveletet használ, akkor lehet tekintse meg a **ugyanazon** eseményközpont több alkalommal.
+* ÖNÁLLÓAN CSATLAKOZNI: Ha egy ÖNKISZOLGÁLÓ JOIN műveletet használ, akkor lehet tekintse meg a **ugyanazon** eseményközpont többször.
 
 A következő gyakorlati tanácsok segíthet csökkenteni az forgatókönyvek, amelyekben az olvasók partíciónként meghaladja az Event Hubs legfeljebb öt.
 
@@ -101,7 +102,7 @@ A WITH záradékkal egy ideiglenes elnevezett eredményhalmazt, amely hivatkozha
 
 Ha például helyett Ez a lekérdezés:
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +115,7 @@ FROM inputEventHub
 
 Használja ezt a lekérdezést:
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

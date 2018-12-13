@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 95ab686961687829526bb00ed87d43d08aeb7db8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972269"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190016"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -102,7 +102,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
-|Windows-beállításkulcs   | A fájl elérési útja, például: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|Windows-beállításkulcs   | Például ellenőrizze a fájl elérési útja: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
 
 ### <a name="add-a-windows-file"></a>Windows-fájl hozzáadása
 
@@ -117,7 +117,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”         |
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
-|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **hamis**.|
 
 ### <a name="add-a-linux-file"></a>Linux-fájl hozzáadása
 
@@ -135,7 +135,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
-|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **hamis**.|
 
    > [!NOTE]
    > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
@@ -193,7 +193,7 @@ A **Riasztási logika** területen a **Küszöbérték** legyen **0**. Ha elkés
 
 ![Jellogika konfigurálása](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-A **Műveletcsoportok**válassza **hozzon létre új**. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
+A **Műveletcsoportok**válassza **hozzon létre új**. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 A **riasztás részletei**, adjon meg egy nevet és leírást a riasztás. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)**, **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)**.
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 3b07485d4168e38736c12a74b0d36bcc8a276748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7b8276281b8b550492fed17adc516e9539380987
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233065"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269736"
 ---
 # <a name="azure-stack-capacity-planner"></a>Az Azure Stack Capacity Planner
 Az Azure Stack Capacity Planner egy táblázatot, használja az Azure Stack resource kapacitástervezés. A capacity planner lehetőséget nyújt a számítási erőforrások különböző hozzárendelések tervezéséhez, és tekintse meg, hogyan ezek lenne elférjenek hardver ajánlatok kijelölés. Az Azure Stack Számológép használatára vonatkozó részletes útmutatást az alábbiakban találhatók.
@@ -61,7 +61,7 @@ Létrehoz egy modellt használ a különböző méretű és virtuális gépek me
 3. Most már készen áll, kezdje el hozzáadni a különböző méretű virtuális gépeket a modell az. Adja meg egy adott virtuális gép típusát, írjon be egy mennyiség értéket, a kék bekeretezett bal oldalán, a virtuális gép bejegyzést.
 
   > [!NOTE]
-  > Minden virtuális gép egy kezdetben hozzárendelt tárméret kezdődik. Tárméret használatával egy lista jelenik meg, és a tárolási erőforrás kívánt szintjét igazítás minden egyes Azure Stack virtuális gép módosítható. Ha a használni kívánt tároló mérete nincs megadva, a 10 kezdeti méret, az oldal jobb oldalán található "Használható tárolási konfigurációk" listában szereplő bármelyik módosításával adhat hozzá.<br><br>Minden virtuális gép egy kezdetben hozzárendelt helyi ideiglenes tárhely kezdődik. Ideiglenes tárterület kiosztás megfelelően a helyi-temp szám szeletének a legördülő menüből, beleértve a maximális megengedett ideiglenes tárterület-mennyiség módosítható.
+  > Virtuális gép tárterületének teljes kapacitását az adatlemezt a virtuális gép hivatkozik (a támogatott lemezek száma * (1 TB) egyetlen lemez maximális kapacitása). A konfigurációs mutatók alapján azt ki vannak töltve a rendelkezésre álló tárolási konfigurációk táblában, így előfordulhat, hogy válassza ki a kívánt szint tárolási erőforrás minden egyes Azure Stack virtuális gép. Azonban fontos megjegyezni, hogy adhatók hozzá, vagy a rendelkezésre álló tárolási konfigurációk táblát, szükség szerint módosítsa.<br><br>Minden virtuális gép egy kezdetben hozzárendelt helyi ideiglenes tárhely kezdődik. Ideiglenes tárterület kiosztás megfelelően a helyi-temp szám szeletének a legördülő menüből, beleértve a maximális megengedett ideiglenes tárterület-mennyiség módosítható.
 
 4. Virtuális gépek hozzáadásakor, látni fogja a diagramok, amelyek megmutatják a rendelkezésre álló SKU-erőforrások módosítása. Ez lehetővé teszi különböző méretű és tranzakciómennyiségek, amelyek virtuális gépek hozzáadása a modellezési folyamat során a hatásukat. Változások megtekintése egy másik úgy, hogy tekintse meg a consumed oszlopban látható, és továbbra is elérhető számok közvetlenül alábbi elérhető virtuális gépek listáját. Ezek a számok az aktuálisan kiválasztott hardver SKU alapuló becsült értékek tükrözik.
 5. Miután létrehozta a virtuális gépek csoportját, megtalálhatja a javasolt hardver SKU közvetlenül az "Aktuális Termékváltozat" címke alatt az oldal jobb felső sarokban található "Javasolt Termékváltozat" gombra kattintva. Ez a gomb használata esetén, módosíthatja a Virtuálisgép-konfigurációk és hardver támogatja-e az egyes konfigurációkhoz.

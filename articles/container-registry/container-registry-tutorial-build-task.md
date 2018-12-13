@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Tárolórendszerképek összeállításának automatizálása az Azure Container Registry Tasks használatával
-description: Ez az oktatóanyag azt mutatja be, hogyan konfigurálhatók a feladatok úgy, hogy automatikusan aktiválják a tárolórendszerképek összeállítását a felhőben, amikor forráskódot véglegesít egy Git-adattárban.
+title: Oktatóanyag – tároló rendszerképek létrehozásának – az Azure Container Registry feladatok automatizálása
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan konfigurálhatja egy Azure Container beállításjegyzék feladattal automatikusan indítható a felhőalapú tároló-rendszerképek létrehozásának, ha véglegesítése a forráskód Git-tárházba.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 2d3f4ca269e204a84a10d60aa953dc2f49195c7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857227"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254666"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolórendszerképek összeállításának automatizálása az Azure Container Registry Build használatával
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Felhőalapú tároló-rendszerképek létrehozásának automatizálása, ha forráskódot véglegesítése
 
 A [gyors feladat](container-registry-tutorial-quick-task.md) mellett az ACR Tasks a Docker tárolórendszerképek automatikus összeállítását is támogatja az *összeállítási feladattal*. Ez az oktatóanyag azt mutatja be, hogyan lehet az Azure CLI használatával olyan feladatot létrehozni, amely automatikusan aktiválja a rendszerképek összeállítását a felhőben, amikor forráskódot véglegesít egy Git-adattárban.
 
@@ -41,7 +41,7 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 ### <a name="container-registry"></a>Tárolóregisztrációs adatbázis
 
-Az oktatóanyag elvégzéséhez rendelkeznie kell egy Azure-beli tárolóregisztrációs adatbázissal az Azure-előfizetésében. Amennyiben létre kell hoznia a regisztrációs adatbázist, tekintse meg az [előző oktatóanyagot](container-registry-tutorial-quick-task.md) vagy a [Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md) című cikket.
+Az oktatóanyag elvégzéséhez rendelkeznie kell egy Azure-beli tárolóregisztrációs adatbázissal az Azure-előfizetésében. Ha a beállításjegyzék van szüksége, tekintse meg a [előző oktatóanyagban](container-registry-tutorial-quick-task.md), vagy [a rövid útmutató: Hozzon létre egy tároló-beállításjegyzéket az Azure CLI-vel](container-registry-get-started-azure-cli.md).
 
 ## <a name="overview-of-acr-tasks"></a>Az ACR Tasks áttekintése
 

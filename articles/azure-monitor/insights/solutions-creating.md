@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24ffe9eded908c82750ce5a6d6fbe87991bdae72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 03a7454aec43963a093dc0d7fcc347dac3ef5d43
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192923"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -58,7 +57,7 @@ Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhaszn�
 
 Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd általában létrehozhat egy runbook az Azure Automationben a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatások kezelhetők [parancsmagok](/powershell/azure/overview) , amely a runbook szeretné kihasználni a funkció végrehajtásához.
 
-Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../../monitoring-and-diagnostics/alert-metric.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
+Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../../azure-monitor/platform/alerts-metric.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
 
 ### <a name="views"></a>Nézetek
 A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../../azure-monitor/platform/view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.

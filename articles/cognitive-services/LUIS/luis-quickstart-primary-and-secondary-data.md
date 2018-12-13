@@ -1,7 +1,7 @@
 ---
 title: Egyszerű entitás, kifejezéslista
 titleSuffix: Azure Cognitive Services
-description: Gépi tanulással létrejött adatok kinyerése kimondott szövegből
+description: Ebben az oktatóanyagban adatok kinyerése az gép megismerte az alkalmazási projekt neve az utterance (kifejezés) használatával az egyszerű entitás. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a783491ca04f19964cc66f1faef5e2fdba142e24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094440"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166268"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>7. oktatóanyag: Nevek kinyerése egyszerű entitással és kifejezéslistával
+# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>7. oktatóanyag: Bontsa ki az egyszerű entitás- és kifejezés lista neve
 
 Ebben az oktatóanyagban egy állás nevével kapcsolatos gépi tanulással létrejött adatokat nyer ki egy kimondott szövegből az **Egyszerű** entitás használatával. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 
@@ -284,7 +284,7 @@ Mivel a név bármi lehet, a LUIS pontosabban jósolja meg az entitásokat, ha r
 
 ## <a name="to-boost-signal-add-phrase-list"></a>A jel erősítéséhez vegyen fel egy kifejezéslistát.
 
-Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) fájlt a LUIS-minták GitHub-adattárából. A lista több mint ezer, állásokkal kapcsolatos szót és kifejezést tartalmaz. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
+Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) a LUIS-minták GitHub-adattárból. A lista több mint ezer, állásokkal kapcsolatos szót és kifejezést tartalmaz. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
 
 1. A LUIS-alkalmazás **Build** (Létrehozás) szakaszában válassza a **Phrase lists** (Kifejezéslisták) lehetőséget az **Improve app performance** (Az alkalmazás teljesítményének növelése) menüben.
 

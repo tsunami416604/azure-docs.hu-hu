@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bcb448296313eedebb8f8389b320c5da5f1a80dd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ef86c9ee00fdd4673774640d33eec93e2ead876d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311786"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193093"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
@@ -72,7 +72,7 @@ Az átmenő hitelesítés ügynök naplók megtekintéséhez nyissa meg a **Esem
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>A hitelesítési ügynök nyomkövetési naplófájlok törlése
 
-Rendszeresen ellenőrizni kell a tartalmát **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\**  , és törölje a mappa tartalma minden 48 óra. 
+Rendszeresen ellenőrizni kell a tartalmát <strong>%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\</ strong > és ez a mappa tartalmának törlése 48 óránként. 
 
 >[!IMPORTANT]
 >Ha a hitelesítési ügynök szolgáltatás fut, nem fogja kattintva törölheti az aktuális fájl a mappában. Állítsa le a szolgáltatást, majd próbálkozzon újra. Felhasználói bejelentkezési hibák elkerülése érdekében már konfigurálni kell az átmenő hitelesítés [magas rendelkezésre állású](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).

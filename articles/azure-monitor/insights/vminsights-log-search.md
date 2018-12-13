@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 17d663873639cc36e9727881d990a3f32697c798
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 676baa6947eaf8b3842b0100657f42a1e6438061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872152"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184882"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -29,8 +28,8 @@ Egy rekord minden egyedi számítógép és a folyamat a rekordokat, amelyek akk
 
 Belsőleg generált tulajdonságaiként segítségével egyedi folyamatokat és a számítógépek azonosításához:
 
-- Számítógép: Használata *ResourceId* vagy *ResourceName_s* egy számítógépen belül a Log Analytics-munkaterület egyedi azonosításához.
-- A folyamat: Használja *ResourceId* egy folyamatot egy Log Analytics-munkaterületen belül egyedi azonosításához. *ResourceName_s* egyedi, a gép, amelyen a folyamatot futtató (MachineResourceName_s) környezetében 
+- Számítógép: Használat *ResourceId* vagy *ResourceName_s* egy számítógépen belül a Log Analytics-munkaterület egyedi azonosításához.
+- Folyamat: Használat *ResourceId* egy folyamatot egy Log Analytics-munkaterületen belül egyedi azonosításához. *ResourceName_s* egyedi, a gép, amelyen a folyamatot futtató (MachineResourceName_s) környezetében 
 
 Több rekord megadott folyamat és a egy adott időtartományban számítógép is létezik, mivel a lekérdezések adhat vissza ugyanazon a számítógépen vagy folyamat egynél több rekordot. Adja meg a legújabb bejegyzést, adja hozzá a "|} a deduplikáció erőforrás-azonosító"a lekérdezéshez.
 

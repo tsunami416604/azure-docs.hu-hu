@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search összetett adattípusú modellek hogyan |} Microsoft Docs
-description: A beágyazott vagy hierarchikus adatstruktúrák modellezhető az Azure Search-index egybesimított sorhalmaz és gyűjtemények adattípus használatával.
+title: Összetett adattípusok modellezése – Azure Search hogyan
+description: A beágyazott vagy hierarchikus datové struktury modellezhető az Azure Search-index egybesimított sorkészlet és gyűjtemények adattípus használatával.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,20 +9,21 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799073"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311983"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Hogyan modell összetett adattípusú az Azure Search
-Az Azure Search-index néha feltöltésére használt külső adatkészletek hierarchikus vagy beágyazott alépítményeit, amely nem felosztása szépen táblázatos sorhalmazt tartalmaz. Példa ilyen struktúrák előfordulhat, hogy több helyről és telefonszámok tartalmazza az egy ügyfél több színek és méretek egyetlen termékváltozat, több szerzők egy könyv, és így tovább. A modellezési feltételeit, ezen szerkezetek néven megjelenhet *összetett adattípusú*, *összetett adattípusú*, *összetett adattípusok*, vagy *összesített adattípusok*, csak hogy néhányat említsünk.
+# <a name="how-to-model-complex-data-types-in-azure-search"></a>Összetett adattípusok modellezése az Azure Search hogyan
+Azure Search-index feltöltéséhez néha használt külső adathalmazok, amelyek nem felosztása eligazíthatja táblázatos sorhalmaz hierarchikus vagy beágyazott alépítményeit tartalmazza. Példák ilyen struktúrák előfordulhat, hogy több helyről és telefonszámok tartalmazza az egyetlen ügyfél több színt és méretet egyetlen termékváltozat, több készítői könyvet, és így tovább. Feltételek modellező, láthatja a továbbiakban ezen szerkezetek *összetett adattípusok*, *összetett adattípusok*, *összetett adattípusok*, vagy *összesített az adattípusok*, hogy néhányat említsünk.
 
-Összetett adattípusú nem natív módon támogatja az Azure Search, de bevált megoldás tartalmaz egy kétlépéses folyamat egybesimítását szerkezetét, és használata a **gyűjtemény** adattípus meglévő kölcsönökre a belső struktúrában. A cikkben leírt eljárást követve lehetővé teszi a tartalom keres, jellemzőalapú, és szűrhetők.
+Összetett adattípusok nem natív módon támogatja az Azure Search szolgáltatásban, de egy jól bevált megoldást tartalmaz, az egybesimítás struktúráját, majd egy kétlépéses folyamat egy **gyűjtemény** adattípust, belső szerkezetét pótlására. A cikkben bemutatott módszert követve lehetővé teszi a tartalom keres, jellemzőalapú, és szűrhetők.
 
-## <a name="example-of-a-complex-data-structure"></a>Összetett adatszerkezet – példa
-Általában a szóban forgó adatok JSON- vagy XML-dokumentumot, vagy egy NoSQL-tároló, például az Azure Cosmos DB elem található. Szerkezete a kihívás ered, több gyermek elemeket kell keresni és szűrt rendelkezik.  A bemutató a megoldás kiindulási pontként hajtsa végre a következő JSON-dokumentum, amely számos olyan példaként ügyfelek:
+## <a name="example-of-a-complex-data-structure"></a>Összetett adatstruktúra – példa
+A szóban forgó adatok általában JSON vagy XML-dokumentumot, vagy elemek, például az Azure Cosmos DB egy nosql-alapú tárolóban található. A kihívás szerkezete, nem kell keresni és szűrt több gyermekelemek jelentik.  A megoldás csoportjaként kiindulási pontként hajtsa végre a következő JSON-dokumentum, amely a partnerek mutat be példaként:
 
 ~~~~~
 [
@@ -58,22 +59,22 @@ Az Azure Search-index néha feltöltésére használt külső adatkészletek hie
 }]
 ~~~~~
 
-Amíg a mezőket "id" nevű, "name" és "Vállalati" csak egyszerűen képezhető le egy az egyhez típusú mezői belül az Azure Search-index, a "helyek" mező a helyek, hogy mindkét egy csoportja hely azonosítók, valamint a hely leírása tömböt tartalmaz. Fényében, hogy az Azure Search nem rendelkezik olyan adattípusú, amely támogatja ezt, igazolnia kell a következő modellre: Ez az Azure Search különböző módokon. 
+Bár a mezők "id" nevű, "name" és "Céges" egyszerűen leképezhetők egy az egyhez belül az Azure Search-index a mezők, a "hely" mező a helyeken, hogy mindkét egy csoportja hely azonosítóit, valamint a hely leírása egy számtömböt. Tekintve, hogy az Azure Search nincs adattípusú, amely támogatja ezt, szükségünk modell Ez az Azure Search szolgáltatásban is. 
 
 > [!NOTE]
-> Ezzel a módszerrel is blogbejegyzés ismerteti által Kirk Evans [Azure Cosmos DB indexelése az Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), amely mutatja a technika nevű, "az adatok egybesimítását", amely lehetővé teszi, akkor egy egy nevű mező `locationsID` és `locationsDescription` amelyek [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok).   
+> Ezzel a módszerrel is blogbejegyzés ismerteti Kirk Evans által [Azure Cosmos DB indexelése az Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), amely jelzi, hogy olyan módszer, nevű, "az adatok egybesimítását", amely lehetővé teszi, hogy mezője `locationsID` és `locationsDescription` amelyek [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok).   
 > 
 > 
 
-## <a name="part-1-flatten-the-array-into-individual-fields"></a>1. lépés: A tömb egyes mezőkbe Egybesimítására
-Ez az adatkészlet tervezhetők Azure Search-index, hozzon létre a beágyazott tartóelemeket egyes mezőket: `locationsID` és `locationsDescription` adatok típussal rendelkező [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok). A mezők be kellene index "1" vagy "2" érték a `locationsID` a John Smith és az értékeket a "3" & "4" mezőben a `locationsID` Ilona Campbell mezőt.  
+## <a name="part-1-flatten-the-array-into-individual-fields"></a>1. rész: Simítja egybe a tömböt az egyes mezők
+Azure Search-index, amely ehhez az adatkészlethez megfelelő, hozzon létre egyéni mezőket a beágyazott alépítményhez: `locationsID` és `locationsDescription` típusú adatok [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok). Az ezekben a mezőkben be kellene index az "1" és a '2' értéket a `locationsID` adatmérték-mezőt Kovács János és "3" & "4". az értékeket a `locationsID` Ilona Campbell mezőjét.  
 
-Az adatok Azure Search belül néz ki: 
+Az adatait az Azure Search kellene kinéznie: 
 
-![mintaadatokat, 2 sor](./media/search-howto-complex-data-types/sample-data.png)
+![mintaadatok, 2 sor](./media/search-howto-complex-data-types/sample-data.png)
 
-## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>2. lépés: Az index definícióját gyűjtemény mező felvétele
-A sémát indexeli az a mező definíciók hasonlóan néznének ki ebben a példában.
+## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>2. rész: Az Indexdefiníció egy gyűjtemény mező hozzáadása
+Az indexsémát az Meződefiníciók ebben a példában hasonlóan néznének ki.
 
 ~~~~
 var index = new Index()
@@ -90,18 +91,18 @@ var index = new Index()
 };
 ~~~~
 
-## <a name="validate-search-behaviors-and-optionally-extend-the-index"></a>Keresési viselkedések érvényesítése és kiterjeszti az index
-Ha létrehozta az indexet, és az adatok betöltése, most tesztelheti a megoldás a dataset keresési lekérdezés végrehajtásának ellenőrzése. Minden egyes **gyűjtemény** mező lehet **kereshető**, **szűrhető** és **kategorizálható**. Érdemes, például a lekérdezések futtatása:
+## <a name="validate-search-behaviors-and-optionally-extend-the-index"></a>Ellenőrizze a keresési viselkedések, és kiterjeszti az index
+Ha létrehozta az indexet, és az adatok betöltése, most tesztelheti a megoldás a keresési lekérdezés végrehajtása az élelmiszer-ellenőrzése. Minden egyes **gyűjtemény** mező lehet **kereshető**, **szűrhető** és **kategorizálható**. Meg kell tudni például a lekérdezések futtatása:
 
-* Az Adventureworks központban dolgozó összes személyek keresése.
-* Megszámlálása egy otthoni Office dolgozó személyek számát.  
-* Annak a személynek egy otthoni irodában dolgozó bemutatják, milyen többi iroda működnek együtt az egyes helyeken a személyek számát.  
+* Az összes "Adventureworks központjában" dolgozó személyek keresése.
+* Megszámlálása egy otthoni irodai dolgozó személyek számát.  
+* Egy otthoni irodában dolgozó személyek milyen más iroda működnek együtt az egyes helyeken a személyek számát mutatják.  
 
-Ha ezzel a technikával egymástól esik esetén végre kell hajtani egy keresést, hogy mind a helyazonosító, valamint a hely leírása. Példa:
+Ha ezt a technikát későbbre esik akkor, ha kell tennie egy keresést, amely ötvözi az a hely azonosítója és is a hely leírása. Példa:
 
-* Minden személyek keresése, ahol egy otthoni Office rendelkeznek, és egy helyet azonosító, a 4.  
+* Amelyek egy otthoni Office összes személyek keresése és a egy hely azonosítója a 4-ből.  
 
-Ha Emlékezzen vissza az eredeti tartalom ehhez hasonló keresést végrehajtani:
+Ha a már ismert módon kikeresi az eredeti tartalom:
 
 ~~~~
    {
@@ -110,26 +111,26 @@ Ha Emlékezzen vissza az eredeti tartalom ehhez hasonló keresést végrehajtani
    }
 ~~~~
 
-Azonban most, hogy külön mezőkbe azt választotta el az adatokat, tudunk afelől, hogy ha nincs lehetőség a Kezdőlap Office Ilona Campbell vonatkozik a `locationsID 3` vagy `locationsID 4`.  
+Azonban most, hogy rendelkezik az adatok elkülönített külön mezőkben, hogy akkor sem afelől, hogy ha a Kezdőlap Office Ilona Campbell vonatkozik a `locationsID 3` vagy `locationsID 4`.  
 
-Ebben az esetben kezelésére, ad meg, amely egyesíti az összes adat egyetlen gyűjtemény indexe másik mezőt.  A példa kedvéért nevezzük fog ebben a mezőben `locationsCombined` , és azt fogja a tartalmat egy `||` Bár választhat, amely úgy gondolja, hogy bármely elválasztó karakter a tartalom egyedi készletének lenne. Példa: 
+Ebben az esetben kezelése érdekében adja meg az index, amely egyesíti az összes adat egy gyűjteményt, amely egy másik mező.  A példánkban ez a mező fog nevezzük `locationsCombined` , és hogy a tartalmat az elkülönített egy `||` Bár választhat, amelyek úgy gondolja, hogy bármely elválasztó lenne a tartalom egyedi karakterkészlet. Példa: 
 
-![mintaadatokat, 2 sor elválasztóval](./media/search-howto-complex-data-types/sample-data-2.png)
+![mintaadatok, 2 sor elválasztóval](./media/search-howto-complex-data-types/sample-data-2.png)
 
-Ennek segítségével `locationsCombined` mezőben azt most már képes még több lekérdezések, többek között:
+Ez `locationsCombined` mezőben azt most már képes még több lekérdezéseket, például:
 
-* Egy szám irodában egy"otthoni" helyen lévő azonosítója "4" dolgozó személyek megjelenítése.  
-* Egy otthoni irodában dolgozó személyek keresése helyen lévő "4" azonosítójú. 
+* A "Home irodában" helyen azonosítója "4" dolgozó személyek számát mutatják.  
+* Keresse meg a kezdőlap irodában dolgozó személyek "4" azonosítójú helyét. 
 
 ## <a name="limitations"></a>Korlátozások
-Ez a módszer akkor hasznos, ha több forgatókönyvet, de nincs minden esetben alkalmazható.  Példa:
+Ez a módszer akkor hasznos, ha számos forgatókönyv esetében, de nem alkalmazható, minden esetben.  Példa:
 
-1. Ha Ön az összetett adattípusú nem rendelkezik a statikus mezők halmaza alapján, és nem lehetett azon lehetséges típusait hozzárendelése egy mező. 
-2. A beágyazott objektumok frissítése néhány extra munkát annak meghatározására, hogy mit kell frissíteni az Azure Search-index szükséges
+1. Ha az összetett típusban nem rendelkezik statikus a mezők halmaza, és semmilyen módon nem lehet egyetlen mező összes lehetséges típusait leképezése történt. 
+2. A beágyazott objektumok frissítése szükséges elvégzését meghatározni, hogy mit kell frissíteni kell az Azure Search-index
 
 ## <a name="sample-code"></a>Mintakód
-Látható egy példa egy összetett JSON-adatkészlet index Azure Search szolgáltatásba történő, és képes lekérdezések száma ehhez az adatkészlethez ezzel [GitHub-tárház](https://github.com/liamca/AzureSearchComplexTypes).
+Látható egy példa JSON adatkészlet összetett index Azure Search szolgáltatásba történő, és jelenleg ez az adatkészlet-lekérdezések száma végre [GitHub-adattárat](https://github.com/liamca/AzureSearchComplexTypes).
 
 ## <a name="next-step"></a>Következő lépés
-[Natív támogatást az összetett adattípusú szavazzon](https://feedback.azure.com/forums/263029-azure-search) az Azure Search UserVoice lapon, és adjon meg semmilyen további bemeneti szeretné, hogy a szolgáltatás megvalósítási kapcsolatban fontolja meg. Is érhető el nekem közvetlenül a Twitteren: @liamca.
+[Összetett adattípusok natív támogatását szavazzon](https://feedback.azure.com/forums/263029-azure-search) a az Azure Search UserVoice lapon, és adjon meg semmilyen további bemenetet, adja meg, hogy fontolja meg a szolgáltatás végrehajtásával kapcsolatos. Is elérhető számomra közvetlenül a Twitteren: @liamca.
 

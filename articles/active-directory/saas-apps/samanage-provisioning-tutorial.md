@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Samanage konfigurálása |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Samanage |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Samanage felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634506"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322430"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Samanage konfigurálása
 
@@ -76,7 +76,9 @@ Felhasználók automatikus kiépítés engedélyezése és konfigurálása, miel
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>Felhasználók hozzárendelése Samanage fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Samanage a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+*    Samanage szerepköröket a rendszer dinamikusan és automatikusan kitölti az Azure Portal felhasználói felület még ma. Mielőtt Samanage szerepkörök hozzárendelése a felhasználókhoz, győződjön meg arról, hogy egy kezdeti szinkronizálást befejeződött-e lekérni a legújabb szerepkörök Samanage bérlőben Samanage ellen.
+
+*    Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Samanage a kezdeti felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok rendelhetők később követően a tesztek sikere esetén.
 
 *   Amikor egy felhasználó hozzárendelése Samanage, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
 

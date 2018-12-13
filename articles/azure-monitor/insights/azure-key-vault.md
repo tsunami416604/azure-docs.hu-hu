@@ -10,17 +10,15 @@ ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.component: ''
-ms.openlocfilehash: 28246e89d798fa86561930ed52f0c84e433f0d9d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838741"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192770"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
@@ -138,9 +136,9 @@ A frissített megoldás használata:
 1. [A Key Vaultból közvetlenül a Log Analyticshez való küldésének diagnosztika konfigurálása](#enable-key-vault-diagnostics-in-the-portal)  
 2. Az Azure Key Vault megoldás engedélyezése leírt folyamatot követve [kövesse a megoldástárban adja hozzá a Log Analytics-megoldások](../../azure-monitor/insights/solutions.md)
 3. Bármely mentett lekérdezések, az irányítópultok vagy a riasztások az új adattípus használandó frissítése
-  + Típus módosítása a: AzureDiagnostics való KeyVaults. Az erőforrástípus segítségével szűrheti a Key Vault-naplók.
+  + A típus a módosítása: A: AzureDiagnostics KeyVaults. Az erőforrástípus segítségével szűrheti a Key Vault-naplók.
   - Helyett: `KeyVaults`, használata `AzureDiagnostics | where ResourceType'=="VAULTS"`
-  + Mezők: (mezőnevek számítanak a kis-és nagybetűket)
+  + Mezők: (A mezőnevek olyan kis-és nagybetűket)
   - Bármely mező, amely rendelkezik, amik utótagja \_s, \_d, vagy \_a nevét, a g módosítása az első karakter kisbetűsre
   - Bármely mező, amely rendelkezik, amik utótagja \_o a neve, az adatok az egyes mezők a beágyazott mezők neve alapján van felosztva. Például az egyszerű felhasználónév a hívó mező tárolva van `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    - A mező CallerIpAddress CallerIPAddress értékre módosult

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Functions futtatása Azure Stream Analytics-feladatokkal | Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Functions futtatása Azure Stream Analytics-feladatokkal |} A Microsoft Docs'
 description: Ebben az oktatóanyagban megtanulhatja, hogy hogyan konfigurálhatja az Azure Functionst a Stream Analytics-feladatok kimeneti fogadójaként.
 services: stream-analytics
 author: jasonwhowell
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: b4f234099cb39e524beb2d2e5a5d138355d5cb80
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013704"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164160"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -207,6 +207,8 @@ Ha hiba történik az események Azure Functionsbe való küldése során, a Str
 ## <a name="known-issues"></a>Ismert problémák
 
 Amikor az Azure Portalon megpróbálja üres (alapértelmezett) értékre visszaállítani a Maximális kötegméret/Maximális kötegszám értékét, mentéskor az érték visszavált a korábban megadott értékre. Ebben az esetben manuálisan adja meg az alapértelmezett értékeket ezekben a mezőkben.
+
+Használatát [Http útválasztás](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) az Azure Functions jelenleg nem támogatott a Stream Analytics.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

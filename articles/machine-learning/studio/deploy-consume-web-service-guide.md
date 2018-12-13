@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a596fe572e31a330fa976470d31dc7d0de5b0398
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073737"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268427"
 ---
-# <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning webszolgáltatások: telepítés és használat
+# <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Az Azure Machine Learning Studio-webszolgáltatások: Telepítés és használat
 Az Azure Machine Learning segítségével telepítheti a machine learning-munkafolyamatok és a modellek webszolgáltatásként. Ezekhez a webszolgáltatásokhoz majd hívja a gépi tanulási modellek alkalmazásokból az interneten-t az előrejelzések valós időben vagy kötegelt módban használható. Mivel a webes szolgáltatások RESTful, meghívhatja azokat a különböző programozási nyelvekhez és platformokhoz, mint például a .NET, a Java, és az alkalmazások, például az Excel.
 
 A következő szakaszok forgatókönyvek, kód és a dokumentációt, első lépések megtételéhez mutató hivatkozásokat.
@@ -37,7 +36,7 @@ Az alábbi hivatkozások új webszolgáltatásként üzembe helyezésével kapcs
 
 * Azure Resource Manageren alapuló új webszolgáltatásként üzembe helyezésével kapcsolatos áttekintéséhez lásd: [egy új webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
 * Egy webszolgáltatás üzembe helyezésével kapcsolatos általános bemutatóért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
-* Hogyan hozhat létre, és a egy webszolgáltatás üzembe helyezése kapcsolatos teljes forgatókönyv, lásd: [forgatókönyv 1. lépés: hozzon létre a Machine Learning-munkaterület](walkthrough-1-create-ml-workspace.md).
+* Hogyan hozhat létre, és a egy webszolgáltatás üzembe helyezése kapcsolatos teljes forgatókönyv, lásd: [forgatókönyv 1. lépés: Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md).
 * Webszolgáltatás üzembe helyezése konkrét példákat lásd:
 
   * [Az útmutató 5. lépés: Az Azure Machine Learning webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md)

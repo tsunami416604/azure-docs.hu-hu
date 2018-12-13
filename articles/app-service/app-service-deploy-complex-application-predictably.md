@@ -1,5 +1,5 @@
 ---
-title: Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
+title: Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon – az Azure App Service-ben
 description: Ismerje meg, hogyan helyezhet üzembe egy alkalmazás mikroszolgáltatásokból álló, az Azure App Service egyetlen egységként, és a egy erőforráscsoport-sablonok JSON és a PowerShell-parancsfájlok használatával kiszámítható módon.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: aa7cf765a523f319850528b29316e254ebcabc13
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243214"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256587"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
 Ez az oktatóanyag bemutatja, hogyan létrehozása és üzembe helyezése egy alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](https://azure.microsoft.com/services/app-service/) egyetlen egységként, és a egy erőforráscsoport-sablonok JSON használatával kiszámítható módon és PowerShell-parancsprogramok. 
@@ -161,7 +162,7 @@ A kapcsolati karakterláncok egy beágyazott erőforrást is vannak meghatározv
 Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is definiálva van: név-érték párban, meghatározott formátumban `"<name>" : {"value": "…", "type": "…"}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
 
 > [!TIP]
-> A kapcsolati karakterlánc típusú végleges listájának megjelenítéséhez futtassa a következő parancsot az Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> A kapcsolati karakterlánc típusú végleges listáját a következő parancsot az Azure PowerShell-lel: \[Enum]::GetNames("Microsoft.WindowsAzure.commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

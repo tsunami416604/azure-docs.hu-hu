@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 2d7b50eadc130900cbd69d579f5ebb2997ad46a0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 4d77f8aad07d2fd4b3e2c4ec42b5b0ec328f779d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872942"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269515"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 
@@ -64,10 +64,10 @@ Szolgáltatást egy előfizetéshez, vannak bizonyos korlátozások számú pár
 |Rugalmas készlet (készletenként)|4|200|
 ||||
 
-Tömeges visszaállítás beépített funkció sem van. A [Azure SQL Database: a teljes kiszolgáló helyreállítási](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) parancsfájl Ez a feladat teljesítéséért egyik módja egy példát.
+Tömeges visszaállítás beépített funkció sem van. A [az Azure SQL Database: Kiszolgáló-helyreállítás teljes](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) parancsfájl Ez a feladat teljesítéséért egyik módja egy példát.
 
 > [!IMPORTANT]
-> Szeretné használni az automatikus biztonsági másolatokból, csak az előfizetés az SQL Server közreműködői szerepköre tagjának és tekintse meg az előfizetés tulajdonosa - kell [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md). A helyreállítást az Azure Portal, a PowerShell vagy a REST API használatával végezheti. A Transact-SQL nem használható.
+> Szeretné használni az automatikus biztonsági másolatokból, csak az előfizetés az SQL Server közreműködői szerepköre tagjának és tekintse meg az előfizetés tulajdonosa - kell [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md). A helyreállítást az Azure Portal, a PowerShell vagy a REST API használatával végezheti. A Transact-SQL nem használható.
 
 ## <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
@@ -129,7 +129,7 @@ A GEO-visszaállítás az alapértelmezett helyreállítási lehetőséget arra 
 Időponthoz visszaállítást a geo-secondary jelenleg nem támogatott. Csak az elsődleges adatbázisok időponthoz visszaállítási teheti meg. A kimaradás utáni helyreállítása geo-visszaállítás használatával kapcsolatos részletes információkért lásd: [helyreállítás szolgáltatáskimaradás](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Biztonsági másolatokból való helyreállítás a legalapvetőbb a vészhelyreállítási megoldások az SQL Database, a leghosszabb helyreállítási időkorlátot (RPO) és a becsült helyreállítási idő (ERT). Megoldások (például alapszintű szolgáltatásszint vagy bérlői adatbázisok, rugalmas készletek a kis méretű) kis méretű adatbázisok használata esetén a geo-visszaállítás gyakran egy ésszerű Vészhelyreállítási megoldás egy ERT akár 12 órát (általában sokkal kevesebb). Megoldások használatával nagy méretű adatbázisokhoz, és rövidebb helyreállítási megkövetelése, akkor érdemes megfontolni [feladatátvételi csoportok és az aktív georeplikáció](sql-database-geo-replication-overview.md). Aktív georeplikáció sokkal alacsonyabb ERT és RPO kínál csak szükséges, hogy a folyamatosan replikált másodlagos feladatátvétel. Az üzletmenet-folytonossági lehetőségeket további információkért lásd: [üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md).
+> Biztonsági másolatokból való helyreállítás a legalapvetőbb a vészhelyreállítási megoldások az SQL Database, a leghosszabb helyreállítási időkorlátot (RPO) és a becsült helyreállítási idő (ERT). Megoldások (például alapszintű szolgáltatásszint vagy bérlői adatbázisok, rugalmas készletek a kis méretű) kis méretű adatbázisok használata esetén a geo-visszaállítás gyakran egy ésszerű Vészhelyreállítási megoldás egy ERT akár 12 órát (általában sokkal kevesebb). Megoldások használatával nagy méretű adatbázisokhoz, és rövidebb helyreállítási megkövetelése, akkor érdemes megfontolni [aktív georeplikáció](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md). Aktív georeplikáció sokkal alacsonyabb ERT és RPO kínál csak szükséges, hogy a folyamatosan replikált másodlagos feladatátvétel. Automatikus feladatátvételi csoportok az adatbázisok csoport automatikus feladatátvétel engedélyezéséhez. Az üzletmenet-folytonossági lehetőségeket további információkért lásd: [üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md).
 
 ### <a name="geo-restore-using-the-azure-portal"></a>A GEO-visszaállítás az Azure portal használatával
 
@@ -177,4 +177,4 @@ Automatikus biztonsági mentést a felhasználói és az alkalmazáshibák, vél
 - Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 - További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
 - Hosszú távú megőrzés kapcsolatos további információkért lásd: [hosszú távú megőrzés](sql-database-long-term-retention.md).
-- Gyorsabb helyreállítási beállítások kapcsolatos további információkért lásd: [feladatátvételi csoportok és az aktív georeplikáció](sql-database-geo-replication-overview.md).
+- Gyorsabb helyreállítási beállítások kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).

@@ -1,21 +1,21 @@
 ---
-title: Azure Container Registry – oktatóanyag – Webalkalmazás üzembe helyezése az Azure Container Registryből
-description: Linux-alapú webalkalmazás üzembe helyezése egy georeplikált Azure tárolóregisztrációs adatbázis tárolórendszerképével. Ez egy háromrészes sorozat második része.
+title: Oktatóanyag – georeplikált Docker-beállításjegyzék Azure-ban az alkalmazás üzembe helyezése
+description: Két különböző Azure-régiókhoz való használatával egy tárolórendszerképet a georeplikált Azure tárolóregisztrációs adatbázisból egy Linux-alapú webalkalmazás üzembe helyezéséhez. Ez egy háromrészes sorozat második része.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: d1924d730f2c2a64063496d4be759194cef99175
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853861"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253833"
 ---
-# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Oktatóanyag: Webalkalmazás üzembe helyezése az Azure Container Registryből
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Webalkalmazás üzembe helyezése egy georeplikált Azure container registryből
 
 Ez egy háromrészes oktatóanyag-sorozat második része. Az [első részben](container-registry-tutorial-prepare-registry.md) létrehozott egy privát, georeplikált tárolóregisztrációs adatbázist, valamint felépített egy tárolórendszerképet a forrásból, és leküldte a regisztrációs adatbázisba. Az ebben a cikkben leírtakat követve kihasználhatja a georeplikált regisztrációs adatbázis hálózatközeli aspektusát a tároló két, különböző Azure-régióban található webalkalmazás-példányban történő üzembe helyezésével. Ekkor mindegyik példány a legközelebbi regisztrációs adatbázisból kéri le a tárolólemezképet.
 

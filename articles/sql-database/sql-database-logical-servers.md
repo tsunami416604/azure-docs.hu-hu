@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470659"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269617"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Az Azure SQL Database logikai kiszolgálóiról és azok kezelése
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Mi az az Azure SQL logikai kiszolgáló
 
-Egy logikai kiszolgáló több egyetlen központi felügyeleti pontjaként működik vagy [készletezett](sql-database-elastic-pool.md) adatbázisok [bejelentkezések](sql-database-manage-logins.md), [tűzfalszabályok](sql-database-firewall-configure.md), [szabályoknaplózás](sql-database-auditing.md), [fenyegetésészlelési szabályzatok](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-geo-replication-overview.md). Egy logikai kiszolgáló az erőforráscsoportot, mint egy másik régióban is lehet. A logikai kiszolgáló létrehozása az Azure SQL database előtt léteznie kell. A kiszolgáló összes adatbázisára belül és a logikai kiszolgáló ugyanabban a régióban jönnek létre.
+Egy logikai kiszolgáló több egyetlen központi felügyeleti pontjaként működik vagy [készletezett](sql-database-elastic-pool.md) adatbázisok [bejelentkezések](sql-database-manage-logins.md), [tűzfalszabályok](sql-database-firewall-configure.md), [szabályoknaplózás](sql-database-auditing.md), [fenyegetésészlelési szabályzatok](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-auto-failover-group.md) egy logikai kiszolgáló az erőforráscsoportot, mint egy másik régióban is lehet. A logikai kiszolgáló létrehozása az Azure SQL database előtt léteznie kell. A kiszolgáló összes adatbázisára belül és a logikai kiszolgáló ugyanabban a régióban jönnek létre.
 
 Egy logikai kiszolgálón egy logikai szerkezet, amely nem azonos az SQL Server-példányt, akkor előfordulhat, hogy ismernie kell a helyszíni világ. Az SQL Database szolgáltatás nem garantálja az adatbázisok helyét a logikai kiszolgálójukhoz képest, valamint nem kínál példányszintű hozzáférést és funkciókat. Ezzel szemben egy kiszolgálót az SQL Database felügyelt példánya a SQL Server-példányt, akkor előfordulhat, hogy ismernie kell a helyszíni világ hasonlít.
 
@@ -162,7 +162,7 @@ Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Trans
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Adatbázisszintű tűzfal beállítása az Azure SQL Database vagy az SQL Data Warehouse eltávolítja. |
 
 > [!TIP]
-> Ehhez a rövid útmutatóhoz, a Microsoft Windows SQL Server Management Studio használatával, lásd: [Azure SQL Database: az SQL Server Management Studio való csatlakozás és adatlekérdezés](sql-database-connect-query-ssms.md). A rövid útmutató a macOS, Linux vagy Windows Visual Studio Code használatával, lásd: [Azure SQL Database: a Visual Studio Code való csatlakozás és adatlekérdezés](sql-database-connect-query-vscode.md).
+> Ehhez a rövid útmutatóhoz, a Microsoft Windows SQL Server Management Studio használatával, lásd: [Azure SQL Database: SQL Server Management Studio használatával csatlakozhat, és adatokat kérdezhet le](sql-database-connect-query-ssms.md). A rövid útmutató a macOS, Linux vagy Windows Visual Studio Code használatával, lásd: [Azure SQL Database: Csatlakozás és adatok lekérdezése a Visual Studio Code használatával](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Kezelheti az Azure SQL-kiszolgálók, adatbázisok és tűzfalak a REST API használatával
 

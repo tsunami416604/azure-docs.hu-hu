@@ -1,5 +1,5 @@
 ---
-title: Azure Policy-minta – Egyéni VM-lemezképek engedélyezése egy adott erőforráscsoportból
+title: Példa – egyéni Virtuálisgép-rendszerkép engedélyezése egy erőforráscsoportból
 description: Ez a mintaszabályzat megköveteli, hogy az egyéni lemezképek a jóváhagyott erőforráscsoportból származzanak.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 1eed7dc0348336d69d0b8ad9206c71fd72c1f012
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 17cf4c4fdfd270ee21f7f01d1c8f89ff1a1d11ea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971229"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315332"
 ---
 # <a name="allow-custom-vm-image-from-a-resource-group"></a>Egyéni VM-lemezképek engedélyezése egy adott erőforráscsoportból
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

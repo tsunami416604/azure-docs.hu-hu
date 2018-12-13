@@ -3,8 +3,8 @@ title: Azure CLI-példaszkript – Webalkalmazás visszaállítása biztonsági 
 description: Azure CLI-példaszkript – Webalkalmazás visszaállítása biztonsági másolatból
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.service: app-service-web
@@ -12,16 +12,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 34b71d6c1553ad6803eabe32252af57ae08064c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu;cephalin
+ms.custom: seodec18
+ms.openlocfilehash: a2c8c3568dcdafee3039d6ec1a198fab255af528
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948604"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183335"
 ---
-# <a name="restore-a-web-app-from-a-backup"></a>Webalkalmazás visszaállítása biztonsági másolatból
+# <a name="restore-a-web-app-from-a-backup-using-cli"></a>Webalkalmazás visszaállítása biztonsági másolatból parancssori felület használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd egyszeri biztonsági mentést hajt végre. 
 

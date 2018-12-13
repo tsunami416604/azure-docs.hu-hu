@@ -1,5 +1,5 @@
 ---
-title: A machine learning-a Microsoft termék-lehetőségek összehasonlítása
+title: Hasonlítsa össze a machine learning a Microsoft termék-beállítások
 description: Összehasonlíthat a Microsoft kínálatában található számos különféle terméket, hogy megalkothassa, üzembe helyezhesse és kezelhesse a gépi tanuláson alapuló modelljeit. Eldöntheti, mely terméket válassza ki a saját megoldásához.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: a778a371e28b0406d43aa07bbc0c0c039654f7b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073771"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274119"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Mik azok a machine learning-termékek, a Microsoft?
 
@@ -41,8 +41,7 @@ A Microsoft számos különféle terméket kínál, amelyekkel megalkothatja, ü
 
 Az Azure Machine Learning szolgáltatással a Python és a CLI használatával taníthat be, helyezhet üzembe és kezelhet gépi tanuláson alapuló modelleket ipari méretekben.
 
->[!Note]
-> Az Azure Machine Learning ingyenesen kipróbálható. Nincs szükség hitelkártyára vagy Azure-előfizetésre. Első lépések. https://azure.microsoft.com/free/
+Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 

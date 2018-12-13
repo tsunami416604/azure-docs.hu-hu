@@ -1,5 +1,5 @@
 ---
-title: Betanítása és a modellek üzembe helyezése a Visual Studio Code használatával
+title: Be & VS Code-ból a modellek üzembe helyezése
 titleSuffix: Azure Machine Learning service
 description: További információ az Azure Machine Learning Visual Studio Code és a képzés és üzembe helyezése gépi tanulási és deep learning-modellek a Visual Studio Code az Azure Machine Learning szolgáltatás elindítása.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 62c3dd051f9f4c06d8d5b5cd08422b34cf565f2f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100667"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271708"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Betanítása és gépi tanulási modellek üzembe helyezése a Visual Studio Code használatával
 
@@ -27,11 +27,11 @@ Az intranetes és ezek a modellek tesztelési és éles igényeinek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
++ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+
 + Rendelkezik a [Azure Machine Learning a VS Code](how-to-vscode-tools.md) bővítmény beállítása.
 
 + Rendelkezik a [Azure Machine Learning SDK telepítve van a Pythonhoz készült](how-to-vscode-tools.md) VS Code használatával.
-
-+ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-and-manage-compute-targets"></a>Létrehozni és kezelni a számítási célnak
 
@@ -43,7 +43,7 @@ Ez a bővítmény az Azure Machine Learning számos különböző távoli szám�
 
 **Egy számítási célnak létrehozása:**
 
-1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: A Machine Learning oldalsáv jelenik meg.
+1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: Machine Learning oldalsáv jelenik meg.
 
 2. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén. Az animált képen az előfizetés neve "Ingyenes próbaverzió" pedig a munkaterület "TeamWorkspace". 
 
@@ -55,7 +55,7 @@ Ez a bővítmény az Azure Machine Learning számos különböző távoli szám�
 
 6. Ha elkészült a számítási célnak konfigurálásával, kattintson a **küldés** jobb alsó sarokban.
 
-Íme egy példa az Azure Machine Learning Compute (AMLCompute): [ ![AML számítási létrehozása a VS Code-ban](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
+Íme egy példa az Azure Machine Learning Compute (AMLCompute): [![A VS Code AML számítási létrehozása](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
 
 ### <a name="use-remote-computes-for-experiments-in-vs-code"></a>Távoli számítási erőforrások kísérletek a VS Code-ban
 
@@ -117,7 +117,7 @@ A VS Code (előzetes verzió) az Azure Machine Learning segítségével rövid i
 
 **A kísérlet futtatásához az Azure Machine Learning:**
 
-1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: A Machine Learning oldalsáv jelenik meg.
+1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: Machine Learning oldalsáv jelenik meg.
 
 1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén. 
 
@@ -137,7 +137,7 @@ A regisztrált modellek nyomon követi és telepíteni kell.
 
 **Regisztrálja a modellt:**
 
-1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: A Machine Learning oldalsáv jelenik meg.
+1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: Machine Learning oldalsáv jelenik meg.
 
 1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén.
 
@@ -163,7 +163,7 @@ Tudjon meg többet [üzembe helyezés az Azure Machine Learning](how-to-deploy-a
 
 **A webszolgáltatás üzembe helyezéséhez:**
 
-1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: A Machine Learning oldalsáv jelenik meg.
+1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure: Machine Learning oldalsáv jelenik meg.
 
 1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén.
 
@@ -185,6 +185,6 @@ A web service most már telepítve van.
 
 ## <a name="next-steps"></a>További lépések
 
-A VS Code-en kívül a Machine Learning betanítási útmutatót szeretne, olvassa el a [oktatóanyag: az Azure Machine Learning-modellek betanításához](tutorial-train-models-with-aml.md).
+A VS Code-en kívül a Machine Learning betanítási útmutatót szeretne, olvassa el a [oktatóanyag: Az Azure Machine Learning-modellek betanításához](tutorial-train-models-with-aml.md).
 
 A szerkesztési lépésenkénti útmutatóért fut, és helyileg, a kód hibakeresése lásd: a [Python Hello World oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial)

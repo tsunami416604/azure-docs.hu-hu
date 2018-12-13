@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 57e3a444c9de951fdd974d98679908eb5a744ad1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099816"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257590"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Az Azure Machine Learning Studio-modell újratanítása
 A machine learning-modellek az Azure Machine Learning operacionalizálás folyamat részeként a modell betanított és mentve. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel. 
@@ -43,7 +42,7 @@ Ezekben az esetekben egy programozható API-t, hogy Ön közzéteszi vagy az API
 > 
 
 ## <a name="end-to-end-workflow"></a>Teljes körű munkafolyamat
-A folyamat magában foglalja az alábbi összetevőket: A tanítási kísérletet, és a egy prediktív kísérletet közzététele webszolgáltatásként. A betanított modell átképezési engedélyezéséhez a tanítási kísérlet közzé kell tenni a betanított modell kimenete webszolgáltatásként. Ez lehetővé teszi az átképezési API a modell hozzáférést. 
+A folyamat a következő összetevőkből áll: Betanítási kísérlet és a egy prediktív kísérletet közzététele webszolgáltatásként. A betanított modell átképezési engedélyezéséhez a tanítási kísérlet közzé kell tenni a betanított modell kimenete webszolgáltatásként. Ez lehetővé teszi az átképezési API a modell hozzáférést. 
 
 Új és a klasszikus Web services vonatkoznak az alábbi lépéseket:
 

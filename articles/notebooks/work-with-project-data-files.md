@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0b52fc32b2895fdcd994bad5bfc73dbf938add2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102078"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309246"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 
@@ -46,13 +46,13 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
     ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
 
-    - **A számítógép**: húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
+    - **A számítógép**: Húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
 
     ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
 
 1. Importálás után a notebook kód tartalmazó mappába relatív forráskódfájlok használatával érhető el, és fájlokat a projekt irányítópultján jelenik meg.
 
-### <a name="import-files-from-the-data-menu-in-a-notebook"></a>Importálja a fájlokat egy jegyzetfüzetet az adatok menüjéből
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>A Fájl menüből egy jegyzetfüzetet a fájlok importálása
 
 1. Belül futó jegyzetfüzet, válassza ki a **fájl** > **feltöltése** parancsot:
 
@@ -62,7 +62,7 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Az a **feltöltési állapot** előugró ablak, amely akkor jelenik meg, válassza ki a **célmappa** a legördülő listából:
 
-    - Munkamenet-mappa (*~/* ): feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /*.
+    - Munkamenet-mappa (*~/* ): Feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /*.
 
         A munkamenet mappa használata Kísérletezési hasznos, és elkerülhető, hogy a projekt elárasztanák rendelkező fájlokat is, illetve előfordulhat, hogy nem kell a hosszú távon. A munkamenet-mappába, amelyeket azonos nevek a projekt fájlokat anélkül, hogy ez ütközéseket, és nevezze át a fájlokat anélkül is feltölthet fájlokat. Tegyük fel például, a egy verziójával rendelkezik *data.csv* a projektben már, de szeretné kísérletezhet a különböző verzióit *data.csv*. A fájl feltöltésével a munkamenet-mappába, a jegyzetfüzet-adatok a feltöltött fájl a futtathatja (az arra való hivatkozás a kód használatával *... /Data.csv*) ahelyett, hogy a projekt fájlban lévő adatokat.
 

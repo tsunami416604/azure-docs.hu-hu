@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: e0ea6a82b1dbd9b3fa4a273fae2b79cdc3629904
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890721"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193790"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -33,13 +31,13 @@ A Network Performance Monitor észleli a hálózati problémák, például az ad
 
 A Network Performance Monitor három széles körű lehetőségeket biztosítja: 
 
-* [A Teljesítményfigyelő](network-performance-monitor-performance-monitor.md): hálózati kapcsolat figyelése-alapú telepítések és a helyszíni helyeken, több adatközpontokban, és a fiókirodák és a többrétegű alkalmazások üzleti szempontból kritikus vagy mikroszolgáltatás-alapú. A Teljesítményfigyelő képes észlelni a hálózati problémákat, mielőtt felhasználói panaszok.
+* [A Teljesítményfigyelő](network-performance-monitor-performance-monitor.md): Hálózati kapcsolat figyelése-alapú telepítések és a helyszíni helyeken, több adatközpontokban, és a fiókirodák és a többrétegű alkalmazások üzleti szempontból kritikus vagy mikroszolgáltatás-alapú. A Teljesítményfigyelő képes észlelni a hálózati problémákat, mielőtt felhasználói panaszok.
 
-* [Szolgáltatás Kapcsolatfigyelő](network-performance-monitor-service-endpoint.md): figyelheti a felhasználóktól a kapcsolat a szolgáltatások érdeklik, határozza meg, milyen infrastruktúra képes legyen az elérési út és azonosítása, ahol a hálózati szűk keresztmetszeteket történik. Tudnivalók mint a felhasználók előtt, és tekintse meg a problémák pontos helyét a hálózati elérési út mentén. 
+* [Kapcsolatfigyelő szolgáltatás](network-performance-monitor-service-endpoint.md): A szolgáltatások érdeklik, határozza meg, milyen infrastruktúra képes legyen az elérési út és azonosítása, ahol a hálózati szűk keresztmetszeteket fordulnak elő a kapcsolat a felhasználók a figyelheti meg. Tudnivalók mint a felhasználók előtt, és tekintse meg a problémák pontos helyét a hálózati elérési út mentén. 
 
     Ez a funkció segítségével hajtsa végre a tesztek alapján a HTTP, HTTPS, TCP és az ICMP figyelése a közel valós idejű és korábbi adatát a rendelkezésre állás és a szolgáltatás válaszideje. A hozzájárulását a hálózatot a csomagvesztés és a késés is figyelheti. A hálózati topológia térképek elkülönítheti a hálózati lassulást. Azonosíthatja a probléma területek, amely a hálózati elérési úton történik a csomópont a szolgáltatásba, az egyes ugrások késési adatokkal. Beépített tesztek segítségével figyelheti a hálózati kapcsolat az Office 365 és Dynamics CRM és minden előzetes beállítás nélkül. Ez a képesség figyelemmel kísérheti a hálózati kapcsolat bármely TCP-kompatibilis végpont, például a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok.
 
-* [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): végpontok közötti kapcsolatait és teljesítményét a fiókirodák és az Azure közötti monitorozása az Azure expressroute-on keresztül.  
+* [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): Figyelheti a végpontok közötti kapcsolatot és a teljesítményt az Azure ExpressRoute-on keresztül az Azure és a fiókirodák között.  
 
 További információ a különböző funkciók által támogatott [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) online is elérhető.
  
@@ -65,19 +63,19 @@ Az alapszintű folyamatok használatával, ügynökök telepítése [Azure Log A
 
 ### <a name="where-to-install-the-agents"></a>Az ügynökök telepítési helyét 
 
-* **A Teljesítményfigyelő**: telepítse a Log Analytics-ügynökök legalább egy csomópont minden egyes, amelyről a hálózati kapcsolat más alhálózatokra és figyelni kívánt alhálózati csatlakozik.
+* **A Teljesítményfigyelő**: Log Analytics-ügynökök telepítéséhez legalább egy csomóponton, minden egyes, amelyről a hálózati kapcsolat más alhálózatokra és figyelni kívánt alhálózati csatlakozik.
 
     Egy hálózati kapcsolat figyeléséhez, telepítse az ügynökök mindkét végponton, hogy a hivatkozás. Ha bizonytalan a hálózat topológiáját, telepítse az ügynököket a kritikus fontosságú számítási feladatokhoz, amelyekhez hozzá szeretné a hálózati teljesítmény nyomon követése a kiszolgálókon. Például ha azt szeretné, a webkiszolgáló és a egy futó SQL server közötti hálózati kapcsolat figyeléséhez, az ügynöktelepítéshez mindkét kiszolgálón. Ügynökök figyelik a hálózati kapcsolat (hivatkozások) gazdagép, nem magukat a gazdagépek között. 
 
-* **Szolgáltatás Kapcsolatfigyelő**: egy Log Analytics-ügynök telepítése minden egyes csomóponton, ahonnan a szolgáltatásvégpont a hálózati kapcsolat figyeléséhez. Ilyen például, hogy szeretné-e hálózati kapcsolatait figyelheti az Office 365-höz a címkével ellátott O1 O2 és O3 office helyekről. A Log Analytics-ügynököt telepíteni legalább egy csomópontja egyes O1 O2 és O3. 
+* **Kapcsolatfigyelő szolgáltatás**: Egy Log Analytics-ügynök telepítése minden egyes csomóponton, ahonnan a szolgáltatásvégpont a hálózati kapcsolat figyeléséhez. Ilyen például, hogy szeretné-e hálózati kapcsolatait figyelheti az Office 365-höz a címkével ellátott O1 O2 és O3 office helyekről. A Log Analytics-ügynököt telepíteni legalább egy csomópontja egyes O1 O2 és O3. 
 
-* **ExpressRoute-figyelő**: legalább egy Log Analytics-ügynök telepítése az Azure virtuális hálózaton. A helyszíni alhálózati, amely ExpressRoute privát társviszony-létesítésen keresztül csatlakozik a legalább egy ügynököt is telepítheti.  
+* **ExpressRoute-figyelő**: Legalább egy Log Analytics-ügynök telepítése az Azure virtuális hálózaton. A helyszíni alhálózati, amely ExpressRoute privát társviszony-létesítésen keresztül csatlakozik a legalább egy ügynököt is telepítheti.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Figyelés a Log Analytics-ügynökök konfigurálása 
 
 A Network Performance Monitor szintetikus tranzakciók használatával a forrás és cél ügynökök közötti hálózati teljesítmény nyomon követése. Választhat a TCP és az ICMP protokoll Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket figyelését. Csak a TCP figyelési protokollként az ExpressRoute-figyelő érhető el. Győződjön meg arról, hogy a tűzfal engedélyezi-e a Log Analytics-ügynökök az protokollt választja a figyeléshez használt közötti kommunikációt. 
 
-* **A TCP protokoll**: Ha a TCP protokoll figyeléséhez, nyissa meg a tűzfalport az ügynökökhöz a Network Performance Monitor és az ExpressRoute-figyelő segítségével győződjön meg arról, hogy az ügynökök kapcsolódik egymáshoz. Nyissa meg a portot, futtassa a [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet egy PowerShell-ablakot rendszergazdai jogosultságokkal a paraméterek nélkül.
+* **A TCP protokoll**: Ha úgy dönt, a TCP protokoll figyeléséhez, nyissa meg a tűzfalport az ügynökökhöz a Network Performance Monitor és az ExpressRoute-figyelő segítségével győződjön meg arról, hogy az ügynökök kapcsolódik egymáshoz. Nyissa meg a portot, futtassa a [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet egy PowerShell-ablakot rendszergazdai jogosultságokkal a paraméterek nélkül.
 
     A parancsfájl létrehozza a megoldáshoz szükséges beállításkulcsokat. Windows tűzfal-szabályokat, hogy a TCP-kapcsolatok létrehozása az egyes ügynökök is létrehoz. A beállításkulcsok, a szkript által létrehozott adja meg, hogy a naplófájl a hibakeresési naplók és a naplók fájl elérési útját. A parancsfájl a ügynök-kommunikációhoz használt TCP-portot is meghatározza. Ezek a kulcsok értékeit a parancsfájl által automatikusan beállítva. Ezek a kulcsok manuális ne módosítsa. A port, alapértelmezés szerint megnyílik az 8084. Azáltal, hogy a paraméter portszám a parancsfájlt egy egyéni portot is használhatja. Használja a portot, az összes olyan számítógépen, ahol a szkriptet futtatják. 
 
@@ -89,7 +87,7 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
     
 
-* **Az ICMP protokollt**: Ha az ICMP protokoll figyeléséhez, a következő tűzfalszabályokat, hogy megbízhatóan az ICMP engedélyezése:
+* **Az ICMP protokollt**: Ha úgy dönt, az ICMP protokoll figyeléséhez, engedélyezze a következő tűzfalszabályokat, hogy megbízhatóan az ICMP:
     
    ```
    netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -111,15 +109,15 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
 4. Az a **telepítő** lapon megjelenik a Log Analytics-ügynökök telepítése és az ügynökök konfigurálása a figyelés beállítást a **közös beállítások** megtekintése. Amint azt korábban, ha telepítve és konfigurálva a Log Analytics-ügynökök, válassza ki a **telepítő** használni kívánt megtekintése a funkció konfigurálása. 
 
-   **A Teljesítményfigyelő**: válassza ki a szintetikus tranzakciókhoz használandó protokollt a **alapértelmezett** Teljesítményfigyelő szabályt, és válassza ki **mentés és folytatás**. A protokoll kiválasztása csak tárolja a rendszer által létrehozott alapértelmezett szabály. Válassza ki a protokollt, minden alkalommal, amikor olyan szabályt hoz létre a Teljesítményfigyelő explicit módon kell. Mindig áthelyezheti a **alapértelmezett** -szabályának beállításait a **Teljesítményfigyelő** (megjelenik a nap-0 konfiguráció befejezése után) lapra, és később a protokoll módosítása. Ha nem szeretné a rPerfomance figyelő képesség, letilthatja az alapértelmezett szabály az **alapértelmezett** -szabályának beállítások a **Teljesítményfigyelő** fülre.
+   **A Teljesítményfigyelő**: Válassza ki a szintetikus tranzakciókhoz használandó protokollt a **alapértelmezett** Teljesítményfigyelő szabályt, és válassza ki **mentés és folytatás**. A protokoll kiválasztása csak tárolja a rendszer által létrehozott alapértelmezett szabály. Válassza ki a protokollt, minden alkalommal, amikor olyan szabályt hoz létre a Teljesítményfigyelő explicit módon kell. Mindig áthelyezheti a **alapértelmezett** -szabályának beállításait a **Teljesítményfigyelő** (megjelenik a nap-0 konfiguráció befejezése után) lapra, és később a protokoll módosítása. Ha nem szeretné a rPerfomance figyelő képesség, letilthatja az alapértelmezett szabály az **alapértelmezett** -szabályának beállítások a **Teljesítményfigyelő** fülre.
 
    ![Teljesítmény-figyelő nézet](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Szolgáltatás Kapcsolatfigyelő**: A képesség nyújt beépített, előre konfigurált teszteket az ügynököket az Office 365 és Dynamics 365, a hálózati kapcsolat figyeléséhez. Válassza ki a mellettük a jelölőnégyzetek bejelölésével figyelni kívánt Office 365 és Dynamics 365-szolgáltatások. Válassza ki a figyelni kívánt ügynököket, jelölje be **ügynökök hozzáadása**. Ha nem szeretné, ez a funkció vagy kívánt beállítás később használatával, nem bármit válassza ki, és válassza a **mentés és folytatás**.
+   **Kapcsolatfigyelő szolgáltatás**: A képesség nyújt a beépített, előre konfigurált teszteket az ügynököket az Office 365 és Dynamics 365, a hálózati kapcsolat figyeléséhez. Válassza ki a mellettük a jelölőnégyzetek bejelölésével figyelni kívánt Office 365 és Dynamics 365-szolgáltatások. Válassza ki a figyelni kívánt ügynököket, jelölje be **ügynökök hozzáadása**. Ha nem szeretné, ez a funkció vagy kívánt beállítás később használatával, nem bármit válassza ki, és válassza a **mentés és folytatás**.
 
    ![Szolgáltatásvégpont-figyelő nézet](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **ExpressRoute-figyelő**: válassza ki **felderítése most** minden az ExpressRoute privát társviszony-létesítéseket, amely csatlakozik a virtuális hálózatok az Azure-előfizetést a Log Analytics-munkaterülettel társított felderítéséhez. 
+   **ExpressRoute-figyelő**: Válassza ki **felderítése most** minden az ExpressRoute privát társviszony-létesítéseket, amely csatlakozik a virtuális hálózatok az Azure-előfizetést a Log Analytics-munkaterülettel társított felderítéséhez. 
 
    >[!NOTE] 
    > A megoldás jelenleg csak az ExpressRoute privát társviszony-létesítéseket deríti fel. 
@@ -193,15 +191,15 @@ Miután engedélyezte a Network Performance Monitor megoldás, a megoldás csemp
 
 ### <a name="network-performance-monitor-dashboard"></a>Network Performance Monitor-irányítópult 
 
-* **Legfontosabb hálózatállapot-események**: ezen a lapon a rendszer és az idő a legutóbbi hálózatállapot-események és riasztások listáját tartalmazza a óta az események volt aktív. Egy adott állapottal kapcsolatos esemény vagy riasztás jön létre, amikor a figyelési szabály (adatvesztés, késés, válasz vagy sávszélesség-használat) kiválasztott metrika értéke meghaladja a küszöbértéket. 
+* **Legfontosabb hálózatállapot-események**: Ezen a lapon a legutóbbi hálózatállapot-események és riasztások listáját tartalmazza a rendszer és az idő óta aktív volt az események. Egy adott állapottal kapcsolatos esemény vagy riasztás jön létre, amikor a figyelési szabály (adatvesztés, késés, válasz vagy sávszélesség-használat) kiválasztott metrika értéke meghaladja a küszöbértéket. 
 
-* **ExpressRoute-figyelő**: ezen a lapon minden állapot-összefoglalók a különböző társviszony-létesítési ExpressRoute-kapcsolatok megoldást figyelőket. A **topológia** csempe a hálózaton keresztül figyelt ExpressRoute-Kapcsolatcsoportok hálózati elérési utak számát jeleníti meg. Válassza ki a csempére a **topológia** megtekintése.
+* **ExpressRoute-figyelő**: Ez az oldal nyújt állapot-összefoglalók a különböző társviszony-létesítési ExpressRoute-kapcsolatok a megoldás figyelőket. A **topológia** csempe a hálózaton keresztül figyelt ExpressRoute-Kapcsolatcsoportok hálózati elérési utak számát jeleníti meg. Válassza ki a csempére a **topológia** megtekintése.
 
-* **Szolgáltatás Kapcsolatfigyelő**: ezen a lapon állapot-összefoglalók kínál a különböző tesztek hozott létre. A **topológia** csempe megjeleníti a figyelt végpontok száma. Válassza ki a csempére a **topológia** megtekintése.
+* **Kapcsolatfigyelő szolgáltatás**: Ezen a lapon állapot-összefoglalók biztosít a különböző tesztek hozott létre. A **topológia** csempe megjeleníti a figyelt végpontok száma. Válassza ki a csempére a **topológia** megtekintése.
 
-* **Teljesítményfigyelő**: Ez az oldal nyújt az egészségügyi összesítések a **hálózati** hivatkozásokat és **alhálózati** hivatkozásokat, amelyek a megoldás figyeli. A **topológia** csempe figyelt hálózati elérési utak számát jeleníti meg a hálózaton. Válassza ki a csempére a **topológia** megtekintése. 
+* **A Teljesítményfigyelő**: Ez az oldal nyújt az egészségügyi összesítések a **hálózati** hivatkozásokat és **alhálózati** hivatkozásokat, amelyek a megoldás figyeli. A **topológia** csempe figyelt hálózati elérési utak számát jeleníti meg a hálózaton. Válassza ki a csempére a **topológia** megtekintése. 
 
-* **Gyakori lekérdezések**: ezen a lapon a keresési lekérdezések raw hálózatfigyelési adatokat közvetlenül készletét tartalmazza. Ezek a lekérdezések használhatja kiindulási pontként a saját testre szabott jelentéskészítési lekérdezések létrehozása. 
+* **Gyakori lekérdezések**: Ezen a lapon a keresési lekérdezések raw hálózatfigyelési adatokat közvetlenül, egy készletét tartalmazza. Ezek a lekérdezések használhatja kiindulási pontként a saját testre szabott jelentéskészítési lekérdezések létrehozása. 
 
    ![Network Performance Monitor-irányítópult](media/network-performance-monitor/npm-dashboard.png)
 
@@ -281,9 +279,9 @@ Díjszabási információk érhetők el [online](network-performance-monitor-pri
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése 
 
-* **Uservoice-on:** bejegyzéseket tehet közzé, amelyeket szeretne dolgozhat a Network Performance Monitor funkciók ötleteit. Látogasson el a [UserVoice-lapunkon](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
+* **Uservoice-on:** Network Performance Monitor-funkciók dolgozhat a kívánt ötleteit felteheti. Látogasson el a [UserVoice-lapunkon](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Csatlakozzon a kohorsz:** mindig érdekel rendelkező új ügyfeleket a kohorsz csatlakozzon. Részeként, az új szolgáltatásokat és segítsen még jobbá tenni a Network Performance Monitor lehetőséget a korai hozzáférést kap. Ha érdekli a csatlakozás, töltse ki ezt [rövid felmérés](https://aka.ms/npmcohort). 
+* **Csatlakozás a kohorsz a következő:** Mindig érdekel rendelkező új ügyfeleket a kohorsz csatlakozzon. Részeként, az új szolgáltatásokat és segítsen még jobbá tenni a Network Performance Monitor lehetőséget a korai hozzáférést kap. Ha érdekli a csatlakozás, töltse ki ezt [rövid felmérés](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>További lépések 
 Tudjon meg többet [Teljesítményfigyelő](network-performance-monitor-performance-monitor.md), [szolgáltatás Kapcsolatfigyelő](network-performance-monitor-performance-monitor.md), és [ExpressRoute-figyelő](network-performance-monitor-expressroute.md). 

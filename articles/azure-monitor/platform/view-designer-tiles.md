@@ -10,17 +10,15 @@ ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 53837573daef56bad12f627400f7db1ccd1c26cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836967"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186803"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempék a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -28,7 +26,7 @@ Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat 
 Nézettervező kapcsolatos további információkért lásd:
 
 * [Megtekintheti a tervező](view-designer.md): Nézettervező és eljárások áttekintést nyújt a létrehozásának és szerkesztésének egyéni nézeteket.
-* [Vizualizációs rész referenciája](view-designer-parts.md): biztosít egy referencia-útmutató a beállítások a vizualizációs rész, amely az egyéni nézetek érhetők el.
+* [Vizualizációs rész referenciája](view-designer-parts.md): Itt egy referencia-útmutató a beállítások a vizualizációs rész, amely az egyéni nézetek érhetők el.
 
 
 Nézettervező csempe érhető el az alábbi táblázat ismerteti:  
@@ -142,7 +140,7 @@ Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból 
 | **Vonaldiagram** |**> Képfelirat** |
 | Képfelirat címe | A képfelirat értéke felett megjelenő szöveg. |
 | Az adatsorozat neve |A sorozat tulajdonság értéke, a képfelirat értéke használható. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
-| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon értékét.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok.</li><li>Min.: A telepítésben lévő diagram intervallumok minimális értéke.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
+| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon értéke.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok.</li><li>Min.: A diagram szerepelnek az intervallumok minimális értéke.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
 | Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
@@ -166,12 +164,12 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 | Jelmagyarázat |A kihívás az első adatsor alatt megjelenő szöveg. |
 | Szín |Az oszlopok az első sorozat használt szín. |
 | Diagramlekérdezés |A lekérdezés futtatása az első adatsorozathoz. Minden egyes idő alatt a rekordok számát a tábla oszlopainak képviseli. |
-| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon értékét.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok.</li></ul> |
+| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon értéke.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok.</li></ul> |
 | **Második diagram** | |
 | Jelmagyarázat |A kihívás, a második adatsor alatt megjelenő szöveg. |
 | Szín |A második sor az oszlopokat használt szín. |
 | Diagramlekérdezés |A lekérdezés, amely a második adatsorozathoz. Minden egyes idő alatt a rekordok számát a tábla oszlopainak képviseli. |
-| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon értékét.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok. |
+| Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon értéke.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |

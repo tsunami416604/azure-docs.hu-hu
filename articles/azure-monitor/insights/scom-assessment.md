@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ddf749dd033771ae9bad09f4548c277c279c2bb5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839364"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186123"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -99,7 +97,7 @@ Most, hogy a futtató fiók jön létre, a cél felügyeleti kiszolgálókat a f
 2. Az a **terjesztési** lapra, majd **Hozzáadás** számára a **kijelölt számítógépek** mezőbe, majd adja hozzá a felügyeleti kiszolgáló és a fiók terjesztését.  Kattintson a **OK** gombra kétszer a módosítások mentéséhez.
 3. A **futtató konfiguráció**, kattintson a **profilok**.
 4. Keresse meg a *SCOM értékelés profil*.
-5. A profil nevének kell lennie: *a Microsoft System Center Advisor SCOM értékelés futtató profil*.
+5. A profil nevének kell lennie: *SCOM-elemzés a Microsoft System Center Advisor futtató profil*.
 6. Kattintson a jobb gombbal, és a tulajdonságait frissíteni, és adja hozzá a legutóbb létrehozott futtató fiókot a korábban létrehozott.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Részletes engedélyezés a futtató fiókot az SQL-szkript
@@ -161,8 +159,8 @@ Alapértelmezés szerint a Microsoft System Center Advisor SCOM értékelés fut
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>A szabály egy adott felügyeleti kiszolgáló engedélyezése
 
 1. Az a **szerzői műveletek** munkaterületen keresse meg a szabály az Operations Manager operatív konzol *Microsoft System Center Advisor SCOM értékelés futtatása Assessment szabály* a a **szabályok** ablaktáblán.
-2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályt, és kattintson a **felülbírálások** > **osztály egy adott objektumához: felügyeleti kiszolgáló**.
+2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: Felügyeleti kiszolgáló*.
+3. Kattintson a jobb gombbal a szabályt, és kattintson a **felülbírálások** > **osztály egy adott objektumához: Felügyeleti kiszolgáló**.
 4.  Az elérhető felügyeleti kiszolgálók listában válassza ki a felügyeleti kiszolgáló, ahol a szabályt kell futnia.  Ez lehet társítani a futtató fiókot a korábban beállított azonos felügyeleti kiszolgálóhoz.
 5.  Győződjön meg arról, hogy a felülbírálás értékét módosítja **igaz** számára a **engedélyezve** paraméter értéke.<br><br> ![bírálja felül a paraméter](./media/scom-assessment/rule.png)
 
@@ -173,8 +171,8 @@ Alapértelmezés szerint a Microsoft System Center Advisor SCOM értékelés fut
 Alapértelmezés szerint az értékelés futtatása minden 10 080 perc (vagy a hét napja) van konfigurálva. A minimális értékét 1440 perc (vagy egy nap) felül lehet bírálni. Az érték az egymást követő assessment futtatásai között szükséges minimális kihagyást jelöli. Bírálja felül az időközt, használja az alábbi lépéseket.
 
 1. Az a **szerzői műveletek** munkaterületen az Operations Manager-konzolon keresse meg a szabály *Microsoft System Center Advisor SCOM értékelés futtatása Assessment szabály* a a **szabályok** a szakasz.
-2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályt, és kattintson a **szabály felülbírálása** > **a következő osztály összes objektumához: felügyeleti kiszolgáló**.
+2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: Felügyeleti kiszolgáló*.
+3. Kattintson a jobb gombbal a szabályt, és kattintson a **szabály felülbírálása** > **a következő osztály összes objektumához: Felügyeleti kiszolgáló**.
 4. Módosítsa a **időköz** paraméterérték a kívánt értéket. Az alábbi példában a értéke 1440 perc (egy nap).<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
 
     Ha az értéke kisebb, mint 1440 perc, a szabály az adott egy nap alatt futtat. Ebben a példában a szabály figyelmen kívül hagyja az intervallum értéke, és a egy nap gyakorisággal futtatja.

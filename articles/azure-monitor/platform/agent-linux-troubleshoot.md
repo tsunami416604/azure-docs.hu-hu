@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080674"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192692"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -175,7 +173,7 @@ Alább a kimeneti beépülő modult, állítsa vissza a következő szakasz elt�
     |*.blob.core.windows.net | 443-as port| Bejövő és kimenő |  
     |*.azure-automation.net | 443-as port| Bejövő és kimenő | 
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probléma: 403-as hibaüzenetet kap előkészítése tett kísérlet során
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probléma: A 403-as hibaüzenetet kapja, amikor megpróbálja üzembe helyezni
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * Dátum és idő nem megfelelő Linux-kiszolgálón 
@@ -187,7 +185,7 @@ Alább a kimeneti beépülő modult, állítsa vissza a következő szakasz elt�
 2. Ellenőrizze, hogy telepítette a Linuxhoz készült Log Analytics-ügynök legújabb verzióját.  A legújabb verzióra most már értesítést küld, ha időeltérési a bevezetési hibát okozó.
 3. Használja a megfelelő munkaterület-Azonosítót és a cikk korábbi telepítési utasításai Munkaterületkulcsot Reonboard.
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probléma: Egy 500 és 404-es hibaüzenetet látja a naplófájlban közvetlenül az előkészítés után
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probléma: Lásd: 500 és 404-es hiba történt a naplófájl a közvetlenül az előkészítés után
 Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterület az első Linux adatok feltöltése. Ez nem befolyásolja a adat rangsorát elküldött vagy service felhasználói élményt.
 
 ## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probléma: Nem jelennek meg adatok az Azure Portalon
@@ -208,7 +206,7 @@ Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterül
     >Az ügynök verziója 1.1.0-28 és újabb verzióiban ez a problémát megoldottuk.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probléma: Nem láthatóak a továbbított Syslog-üzeneteket 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probléma: Nem jelennek meg a továbbított Syslog-üzeneteket 
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * A Linux-kiszolgálón a alkalmazni a konfigurációt nem teszi lehetővé az elküldött létesítmények és/vagy a naplózási szintek gyűjteménye
@@ -243,7 +241,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
 3. Indítsa újra a omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Indítsa újra a syslog-szolgáltatást.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Probléma: Nem tudja végleges törlése lehetőséggel omsagent eltávolítása
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Probléma: Nem végleges törlése lehetőséggel omsagent eltávolítása
 
 ### <a name="probable-causes"></a>Lehetséges okok
 
@@ -254,7 +252,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
 1. Távolítsa el a Linux diagnosztikai bővítmény (LAD).
 2. Linux diagnosztikai bővítmény fájlok eltávolítása a számítógépről, ha ezek meg adva, a következő helyen: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` és `/var/opt/microsoft/omsagent/LAD/`.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Probléma: Nem látható adatok Nagios adatok 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Probléma: Meg nem jelennek meg adatok Nagios adatok 
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * Omsagent felhasználó nem rendelkezik engedélyekkel Nagios log fájl
@@ -295,7 +293,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
 5. Egyes Azure terjesztési rendszerekben omid OMI kiszolgáló démon nem indul el a virtuális gép újraindítása után. Nem jelennek meg a naplózási, Change Tracking vagy UpdateManagement megoldás kapcsolatos adatokat eredményez. A megoldás az, hogy manuálisan indítsa el az omi-kiszolgáló futtatásával `sudo /opt/omi/bin/service_control restart`.
 6. OMI csomag manuális frissítése újabb verzióra, után rendelkezik Log Analytics-ügynököket, hogy tovább működjenek, manuálisan újra kell indítani. Ebben a lépésben szükség néhány disztribúciókhoz ahol OMI-kiszolgáló nem indul el automatikusan az átalakítás után. Futtatás `sudo /opt/omi/bin/service_control restart` OMI újraindítására.
 7. Ha látja a DSC-erőforrás *osztály nem található* hiba omsconfig.log, futtassa a `sudo /opt/omi/bin/service_control restart`.
-8. Bizonyos esetekben, amikor a Linuxhoz készült Log Analytics-ügynököt a Log Analytics szolgáltatás nem tud kommunikálni az adatai az ügynökön biztonsági másolatot a a teljes pufferméret: 50 MB-ot. Az ügynök újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart`.
+8. Bizonyos esetekben amikor a Linuxhoz készült Log Analytics-ügynököt a Log Analytics szolgáltatás nem tud kommunikálni az adatai az ügynökön biztonsági másolatot a a teljes puffer mérete: 50 MB-OT. Az ügynök újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Ez a probléma kijavítása ügynök verziója 1.1.0-28 vagy újabb verzió
@@ -347,7 +345,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Probléma: A portálon a Syslog- vagy Linux-teljesítményszámlálók gyűjtése konfigurálásakor a beállítások nem lesznek alkalmazva
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Probléma: A portálon a Syslog- vagy Linux-teljesítményszámlálók gyűjtése konfigurálásakor a rendszer nem alkalmazza a beállításokat
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * A Linuxhoz készült Log Analytics-ügynök még nem követi a legújabb konfigurációt
@@ -380,14 +378,14 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
 
 2. Ellenőrizze, hogy a `omsconfig` ügynök kommunikálhatnak a Log Analytics szolgáltatással, a következő parancs futtatásával `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  Ez a parancs visszaadja a konfiguráció az ügynök kap a szolgáltatástól, beleértve a Syslog beállításai, Linux-teljesítményszámlálók és egyéni naplókat. Ha ez a parancs sikertelen, futtassa a következő parancsot `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Ez a parancs kikényszeríti a omsconfig ügynök kommunikáljon a Log Analytics szolgáltatásnak, és a legújabb konfigurációt lekéréséhez.
 
-**Háttér:** helyett a Log Analytics-ügynök Linux futtatásához emelt szintű felhasználói - `root`, az ügynök fut, a `omsagent` felhasználói. A legtöbb esetben kifejezett engedélyt kell adni a felhasználónak ahhoz, hogy bizonyos fájlokat kell olvasni. Hogy adjon engedélyt `omsagent` felhasználói, futtassa a következő parancsokat:
+**Háttér:** A Log Analytics-ügynök Linux futtatásához emelt szintű felhasználói - helyett `root`, az ügynök fut, a `omsagent` felhasználói. A legtöbb esetben kifejezett engedélyt kell adni a felhasználónak ahhoz, hogy bizonyos fájlokat kell olvasni. Hogy adjon engedélyt `omsagent` felhasználói, futtassa a következő parancsokat:
 
 1. Adja hozzá a `omsagent` felhasználó adott csoportra `sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Univerzális olvasási hozzáférést biztosít a szükséges fájl `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Nincs Linux-verzió 1.1.0-217-nél korábbi Log Analytics-ügynökkel rendelkező versenyhelyzet ismert problémái. A legújabb ügynök frissítését követően futtassa a következő parancsot, a kimeneti beépülő modul legújabb verziójának beszerzéséhez `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`.
 
-## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>A probléma leírása: Egy új munkaterületet reonboard próbált
+## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probléma: Egy új munkaterületet reonboard kívánt
 Amikor egy új munkaterületet ügynököt próbál reonboard, a Log Analytics-ügynök konfigurációjának reonboarding előtt törölni kell. Régi konfiguráció az ügynök karbantartása, a rendszerhéj-csomagot a futtatja `--purge`
 
 ```
@@ -401,7 +399,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Reonboard használata után továbbra is a `--purge` lehetőség
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics-ügynök bővítmény az Azure Portalon a hibás állapotban van megjelölve: nem sikerült létrehozni
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics-ügynök bővítmény az Azure Portalon a hibás állapotban van megjelölve: Kiépítés sikertelen
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * Log Analytics-ügynököket el lett távolítva az operációs rendszer
@@ -415,7 +413,7 @@ Hajtsa végre az alábbi lépéseket a probléma.
 * Várjon néhány percet, és a kiépítési állapot **sikeres kiépítés**.
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Probléma: A Log Analytics-ügynökök frissítésének igény szerinti
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Probléma: A Log Analytics az ügynök frissítési igény szerinti
 
 ### <a name="probable-causes"></a>Lehetséges okok
 

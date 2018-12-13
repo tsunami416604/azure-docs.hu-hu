@@ -1,19 +1,20 @@
 ---
-title: Biztonsági szűrők a tisztítás Azure keresési eredmények az Active Directory fiókjaikkal |} A Microsoft Docs
-description: Hozzáférés-vezérlést a biztonsági szűrők és az Active Directory-identitásokkal Azure Search-tartalom.
-author: revitalbarletz
+title: Biztonsági szűrők szűkítheti az eredményeket az Active Directory identitások – Azure Search
+description: Hozzáférés-vezérlést a biztonsági szűrők és identitások Azure Active Directory (AAD) használatával az Azure Search-tartalom.
+author: brjohnstmsft
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
-ms.author: revitalb
-ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684637"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308823"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
 
@@ -92,12 +93,12 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>3. lépés: A felhasználók és csoportok társítása
+### <a name="step-3-associate-user-and-group"></a>3. lépés: Felhasználók és csoportok hozzárendelése
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: Csoportok azonosítók gyorsítótárazása
+### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: A csoportok azonosítók gyorsítótárazása
 Igény szerint hálózati késés csökkentése érdekében gyorsítótárazhatja a felhasználócsoport-társítások úgy, hogy egy keresési kérelmet ad ki, amikor csoportokat a rendszer adja vissza a gyorsítótár mentése folyamatban van egy körbejárási aad-ben. Használhat [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) több felhasználóval rendelkező egyetlen Http-kérés küldése és a gyorsítótár létrehozása.
 
 A Microsoft Graph úgy lett kialakítva, nagy mennyiségű kérelmet kezelni. Ha túlságosan sok kérelem fordul elő, a Microsoft Graph 429-es HTTP-állapotkód: a kérelem sikertelen lesz. További információkért lásd: [Microsoft Graph-szabályozás](https://developer.microsoft.com/graph/docs/concepts/throttling).
@@ -164,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>2. lépés: A keresési kérelem Compose
+### <a name="step-2-compose-the-search-request"></a>2. lépés: Állítsa össze a keresési kérelem
 
 Feltételezve, hogy a felhasználói csoportok tagságát, a megfelelő szűrési értékekkel a keresési kérelem adhat ki.
 

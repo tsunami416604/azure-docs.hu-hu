@@ -1,5 +1,5 @@
 ---
-title: Használat és statisztikák az Azure Search szolgáltatás figyelése |} A Microsoft Docs
+title: Használat és statisztikák egy keresési szolgáltatás – Azure Search figyelése
 description: Nyomon követheti az erőforrás-felhasználás, és az index mérete az Azure Search, egy üzemeltetett felhőalapú keresési szolgáltatás a Microsoft Azure-ban.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 274513c7e8ad1ca9ed0452f6237eec4ebb38e9cd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134862"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314159"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Az Azure Search-szolgáltatás figyelése
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Az Azure portal Azure Search szolgáltatás figyelése
 
 Az Azure Search keresési szolgáltatások teljesítményét és kihasználtságát követési különböző erőforrásokat kínál. Hozzáférést biztosít a metrikák, naplók, indexstatisztikáit és kiterjesztett figyelési képességekkel a Power bi-ban. Ez a cikk ismerteti a különböző figyelési stratégiái engedélyezése és az eredményül kapott adatok értelmezése.
 
@@ -26,9 +27,9 @@ Metrikák közel valós idejű betekintést a keresési szolgáltatás biztosít
 
 Az Azure Search számára gyűjti az adatokat három különböző metrikák:
 
-* Keresési késés: a keresési szolgáltatás keresési lekérdezéseket, percenként összesítve feldolgozásához szükséges időt.
-* Keresési lekérdezések másodpercenkénti (lekérdezési QPS): keresési száma percenként összesítve másodpercenként fogadott lekérdezések.
-* Szabályozott lekérdezések százalékos aránya: percenkénti összesítése szabályozva lettek keresési lekérdezések aránya.
+* Keresési késés: A keresési szolgáltatás keresési lekérdezéseket, percenként összesítve feldolgozásához szükséges időt.
+* Keresési lekérdezések másodpercenkénti (lekérdezési QPS): Keresés száma percenként összesítve másodpercenként fogadott lekérdezések.
+* Szabályozott lekérdezések százalékos aránya: Keresési lekérdezések voltak szabályozva, percenként összesítve, százalékos értéke.
 
 ![Képernyőkép a QPS tevékenység][1]
 
@@ -71,7 +72,7 @@ A műveletnaplók exportálhatja a szolgáltatás és a metrikák az előző sza
 ### <a name="enabling-monitoring"></a>Figyelés engedélyezése
 Nyissa meg az Azure Search szolgáltatás az [az Azure portal](http://portal.azure.com) alatt a Monitorozás engedélyezése lehetőséget.
 
-Válassza ki az adatokat szeretne exportálni: naplók, metrikák, vagy mindkettőt. Másolja a tárfiókhoz, küldje el az eseményközpontok felé, vagy exportálhatja, és a Log Analytics.
+Válassza ki az exportálandó adatokat: Naplók, mérőszámok vagy mindkettőt. Másolja a tárfiókhoz, küldje el az eseményközpontok felé, vagy exportálhatja, és a Log Analytics.
 
 ![A portálon figyelés engedélyezése][3]
 
@@ -99,7 +100,7 @@ Minden egyes blob rendelkezik a művelet, amely során az adott órán következ
 | operationName |sztring |"Query.Search" |A művelet neve |
 | operationVersion |sztring |"2015-02-28" |A használt api-verzió |
 | category |sztring |"OperationLogs" |állandó |
-| resultType |sztring |"Sikeres" |A lehetséges értékek: sikeres vagy sikertelen |
+| resultType |sztring |"Sikeres" |Érvényes értékek: Sikeres vagy sikertelen |
 | resultSignature |int |200 |HTTP-eredménykód |
 | durationMS |int |50 |Ennyi ezredmásodpercig tart a művelet időtartama |
 | properties |objektum |az alábbi táblázatban foglaltuk össze |A művelet-specifikus adatokat tartalmazó objektum |

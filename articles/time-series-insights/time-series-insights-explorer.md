@@ -1,5 +1,5 @@
 ---
-title: Fedezze fel az adatokat az Azure Time Series Insights explorer |} A Microsoft Docs
+title: Az Azure Time Series Insights explorer adatfeltárás – Fedezze fel az adatokat az Azure Time Series Insights explorer |} A Microsoft Docs
 description: Ez a cikk ismerteti a böngészőben az Azure Time Series Insights explorer segítségével gyorsan megjelenítheti a globális a big data- és az IoT-környezet ellenőrzése.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364230"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273136"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Az Azure Time Series Insights explorer
 Ez a cikk ismerteti a különböző funkciók és lehetőségek a Time Series Insights explorer webalkalmazáson belül. Használhatja a Time Series Insights explorer webböngészőben az adatok vizualizációkat hozhat létre.
@@ -55,22 +56,22 @@ Az eseményforrás kapcsolódni a Time Series Insights-környezet percen belül 
 
 5. Ezután megjelenik egy diagram, amely az összes esemény száma a kiválasztott időtartam során.  Itt számos olyan vezérlőt rendelkezik:
 
-    **Editor Panel feltételek**: A kifejezés hely, ahol lekérdezheti, ha a környezetben.  Lehetővé teszi, hogy a képernyő bal oldalán található 
-      - **Mérték**: A legördülő lista látható összes numerikus oszlopot (Double típusú értékekkel)
-      - **Felosztás által**: legördülő menü mutatja az kategorikus oszlopok (karakterlánc)
+    **Editor Panel feltételek**:  A kifejezés hely, ahol lekérdezheti, ha a környezetben.  Lehetővé teszi, hogy a képernyő bal oldalán található 
+      - **Mérték**:  Legördülő menü mutatja az összes numerikus oszlopok (Double típusú értékekkel)
+      - **Felosztási szempont**: Legördülő menü mutatja az kategorikus oszlopok (karakterlánc)
       - Lépcsőzetes interpoláció engedélyezheti, minimális és maximális megjelenítése, és állítsa be a következő és mérhető, a Vezérlőpult y tengely.  Emellett módosíthatja-e megjelenített adatok a száma, átlagos vagy az adatok összege.
       - Ugyanazt az x tengelyen megtekintéséhez legfeljebb öt feltételeket adhat hozzá.  Használja a **másolási legördülő** gombra, és adjon hozzá egy további kifejezést, vagy kattintson a **Hozzáadás** friss kifejezés hozzáadása gombra.
      
         ![Kifejezések szerkesztő panel](media/time-series-insights-explorer/explorer2.png)
 
-      - **Predikátum**: A predikátum lehetővé teszi, hogy gyorsan szűrheti az eseményeket, az alább felsorolt operandusok használatával. Keresés kiválasztása/kattintva végrehajtása, ha a predikátum lesz alapján automatikusan frissülnek, hogy a keresés.      Operand támogatott típusok a következők:
+      - **Predikátum**:  A predikátum lehetővé teszi, hogy gyorsan szűrheti az eseményeket, az alább felsorolt operandusok használatával. Keresés kiválasztása/kattintva végrehajtása, ha a predikátum lesz alapján automatikusan frissülnek, hogy a keresés.      Operand támogatott típusok a következők:
 
          |Művelet  |Támogatott típusok  |Megjegyzések  |
          |---------|---------|---------|
          |<, >, <=, >=     |  Double, DateTime, időtartam       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, az időtartam, NULL értékű        |         |
-         |INDIA     | String, Bool, Double, DateTime, az időtartam, NULL értékű        |  Az összes operandusok azonos típusú legyen vagy NULL állandó.        |
-         |RENDELKEZIK     | Sztring        |  Csak állandó karakterlánc-literálnak engedélyezett jobb oldalán. Üres karakterlánc, és a NULL nem engedélyezettek.       |
+         |IN     | String, Bool, Double, DateTime, az időtartam, NULL értékű        |  Az összes operandusok azonos típusú legyen vagy NULL állandó.        |
+         |RENDELKEZIK     | Karakterlánc        |  Csak állandó karakterlánc-literálnak engedélyezett jobb oldalán. Üres karakterlánc, és a NULL nem engedélyezettek.       |
 
       - **Példák a lekérdezések**
       
@@ -102,7 +103,7 @@ Az eseményforrás kapcsolódni a Time Series Insights-környezet percen belül 
 
    ![Intenzitástérkép](media/time-series-insights-explorer/explorer6.png)
 
-12. **Események**: Ha úgy dönt, Fedezze fel az eseményeket, amikor kiválasztja, vagy kattintson a jobb gombbal fent, az események panel szeretné elérhetővé tenni.  Itt láthatja az összes a nyers események és exportálása az eseményeket JSON vagy CSV-fájlként. Vegye figyelembe, hogy a Time Series Insights minden nyers adatot tárol.
+12. **Események**:  Ha úgy dönt, Fedezze fel az eseményeket, amikor kiválasztja, vagy kattintson a jobb gombbal a fenti panel szeretné elérhetővé tenni az események.  Itt láthatja az összes a nyers események és exportálása az eseményeket JSON vagy CSV-fájlként. Vegye figyelembe, hogy a Time Series Insights minden nyers adatot tárol.
 
    ![Események](media/time-series-insights-explorer/explorer7.png)
 
@@ -110,7 +111,7 @@ Az eseményforrás kapcsolódni a Time Series Insights-környezet percen belül 
 
    - **Minták**: Ez a funkció proaktív módon elérhetővé teszi a kiválasztott adatterületen a legtöbb statisztikailag minták. Ön nem kell megérteni, milyen minták legtöbb indokolják időt és energiát események ezer meg ez mentesíti. További a Time Series Insights lehetővé teszi a közvetlenül belevágjon folytatja az elemzést végző statisztikailag mintákkal. Ez a funkció menthet vizsgálatot előzményadatokat is hasznos lehet. 
 
-   - **Oszlopstatisztikák**: oszlopstatisztikák diagramkészítési és a táblákat, amelyek az egyes oszlopok kiválasztott adatsorozat adatainak felosztania az adott időtartam biztosítanak.  
+   - **Oszlopstatisztikák**:  Oszlopstatisztikák diagramkészítési és a táblákat, amelyek az egyes oszlopok kiválasztott adatsorozat adatainak felosztania az adott időtartam biztosítanak.  
  
       ![STATISZTIKA](media/time-series-insights-explorer/explorer8.png) 
 

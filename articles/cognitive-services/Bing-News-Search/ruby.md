@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Bing News Search API, Ruby'
+title: 'Gyors útmutató: Hajtsa végre a hírkeresési Ruby-Bing News Search REST API használatával'
 titlesuffix: Azure Cognitive Services
-description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
+description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API Ruby használatával, és a egy JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 714f28166b8d24a5b8a69fe4f76ba1737de56e1d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 02b603c0a7e1f84b2677511f73f96eee20a613d9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315086"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250229"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Rövid útmutató a Bing News Search API Rubyval való használatához
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a hírkeresési, Ruby és a Bing News Search REST API használatával
 
 Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing News Search API az Azure-on. Bár ez a cikk Rubyt használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 

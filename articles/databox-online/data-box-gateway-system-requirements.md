@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157360"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256672"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Az Azure Data Box Gateway rendszerkövetelményei (előzetes verzió)
 
@@ -26,6 +26,19 @@ A Data Box-átjáró virtuális eszköz rendszerkövetelményei a következők:
 
 > [!IMPORTANT]
 > A Data Box Gateway előzetes verzióban érhető el. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+
+## <a name="specifications-for-the-virtual-device"></a>A virtuális eszköz használata estén
+
+A mögöttes gazdagép rendszere a Data Box átjáró viszont rendelnie a virtuális eszköz kiépítése az alábbi forrásanyagokat:
+
+| Specifikációk                                          | Leírás              |
+|---------------------------------------------------------|--------------------------|
+| Virtuális processzorok (magok)   | Minimum 4 |            
+| Memory (Memória)  | Minimum 8 GB|
+| Rendelkezésre állás|Egyetlen csomópont|
+| Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: 2 TB-os minimális, dinamikusan kiosztott és SSD-k által kell készíteni|
+| Hálózati illesztők|1 vagy több virtuális hálózati adapter|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszer
 

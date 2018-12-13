@@ -1,23 +1,23 @@
 ---
-title: 'Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben'
-description: Megtudhatja, hogyan fejleszthet az Azure Cosmos DB Table API-jával a .NET-keretrendszerben
-services: cosmos-db
+title: Fejlesztés a Table API .NET SDK használatával
+titleSuffix: Azure Cosmos DB
+description: Ismerje meg, hogyan fejleszthet az Azure Cosmos DB Table API .NET SDK-val
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
+ms.date: 12/07/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: c3749657ae432d8a6c85522b7dac31e31e39ea77
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075915"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251181"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Fejlesztés az Azure Cosmos DB Table API .NET SDK használatával
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 

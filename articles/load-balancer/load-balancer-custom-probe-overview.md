@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2018
+ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: 89ceb6134d19354831a76f814d2ee55053252f62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d3e0fd510968abed55e0e3fea2a8689027713a2b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083580"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310402"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -186,7 +186,7 @@ Load Balancer állapot-mintavételei mellett a következő műveletek használat
 - Lehetővé teszi, hogy a Virtuálisgép-ügynök való kommunikációhoz. a platformot, hogy jelezze a "Kész" állapotban van
 - Lehetővé teszi a kommunikációt a szűrt névfeloldást biztosítanak az ügyfelek számára az egyéni DNS-kiszolgálókat nem határoznak meg a DNS-kiszolgáló.  Ez a szűrés biztosítja, hogy ügyfeleink csak oldható meg a gazdagép az üzemelő példány neve.
 
-A terheléselosztó állapotmintát való megjelöléséhez a példány, meg **kell** bármely Azure-ban az IP-címének engedélyezéséhez [biztonsági csoportok](../virtual-network/security-overview.md) és a helyi tűzfal-házirendek.
+A terheléselosztó állapotmintát való megjelöléséhez a példány, meg **kell** bármely Azure-ban az IP-címének engedélyezéséhez [biztonsági csoportok](../virtual-network/security-overview.md) és a helyi tűzfal-házirendek.  Alapértelmezés szerint minden hálózati biztonsági csoport tartalmazza a [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer állapot-mintavételi forgalom engedélyezéséhez.
 
 Ha a tűzfal-házirendek IP-cím nem engedélyezett, az állapotminta sikertelen lesz, mivel nem tudja elérni a példány.  Load Balancer megjelöli, a példány a állapot-mintavételi hiba miatt le.  Emiatt az elosztott terhelésű szolgáltatás leáll. 
 

@@ -4,21 +4,20 @@ description: Nyomtatható machine learning algoritmus-Adatlap segít az Azure Ma
 keywords: algoritmus-Adatlap, Adatlap, gépi tanulási algoritmus
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=pakalra, author=pakalra)
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 307a2d442fc8cf82630b111b6ea73e180c740c64
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7ddc3a9829dc05ac1c1df450091789e4cad2b2f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307411"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274513"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Gépi tanulási algoritmus-Adatlap az Azure Machine Learning Studióban
 
@@ -26,11 +25,11 @@ A **Azure Machine Learning algoritmus Adatlap lap** segítségével válassza ki
 
 [Az Azure Machine Learning Studio](https://studio.azureml.net/) rendelkezik egy nagy származó algoritmusok könyvtára a ***regressziós***, ***besorolási***, ***Fürtszolgáltatás***, és  ***anomáliadetektálás*** családhoz. Minden egyes célja egy más típusú machine learning a probléma megoldása érdekében.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Letöltés: A Machine learning algoritmus-Adatlap
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Letöltés: Gépi tanulási algoritmus-Adatlap
 
-**A Adatlap letöltése: [Machine Learning algoritmus Adatlap lap (11 x 17)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+**A Adatlap letöltése: [A Machine Learning algoritmus-Adatlap (11 x 17)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Gépi tanulási algoritmus-Adatlap: ismerje meg, hogyan válassza ki a Machine Learning algoritmus.][cheat-sheet]
+![A Machine learning algoritmus-Adatlap: Ismerje meg, egy gépi tanulási algoritmus kiválasztása.][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
@@ -43,7 +42,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 * A javaslat érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-bütykének. Néhány hajlított, és néhány is lehet flagrantly megsértve. Ennek célja, és kiindulási pontot javasolja. Ne féljen head-to-head versenyt között számos algoritmust az adatokon való futtatásához. Nincs egyszerűen nincs helyettesítő egyes algoritmus alapelveinek ismertetése, és a rendszer az adatokat létrehozó ismertetése.
 
-* Minden gépi tanulási algoritmus rendelkezik a saját style vagy *induktív eltérés*. Egy meghatározott problémára vonatkozó számos algoritmust célszerű lehet, és a egy algoritmus lehet, mint a többi jobban megfelel. De nem mindig lehetséges tudja előre, azaz az ideális megoldást. Ilyen esetekben számos algoritmust szerepelnek együtt a Adatlap. Próbáljon meg egy algoritmust, és ha az eredmények egyelőre nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. Íme egy példa a a [Azure AI-katalógusban](http://gallery.azure.ai/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredményeket: [többcsoportos deklarációkkal összehasonlítása: felismerés betűs](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+* Minden gépi tanulási algoritmus rendelkezik a saját style vagy *induktív eltérés*. Egy meghatározott problémára vonatkozó számos algoritmust célszerű lehet, és a egy algoritmus lehet, mint a többi jobban megfelel. De nem mindig lehetséges tudja előre, azaz az ideális megoldást. Ilyen esetekben számos algoritmust szerepelnek együtt a Adatlap. Próbáljon meg egy algoritmust, és ha az eredmények egyelőre nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. Íme egy példa a a [Azure AI-katalógusban](http://gallery.azure.ai/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 * A gépi tanulás három fő kategóriába sorolhatók: **felügyelt tanítással**, **tanítást**, és **megerősítő tanulást**.
 
@@ -73,7 +72,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 * Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list

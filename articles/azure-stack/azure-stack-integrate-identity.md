@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300710"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257376"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -131,7 +131,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
-|CustomAdfsName|A jogcímeket szolgáltató neve. <cr>Úgy tűnik, így az AD FS kezdőlapján.|Contoso|
+|CustomAdfsName|A jogcímeket szolgáltató neve.<br>Ezzel a módszerrel a az AD FS kezdőlapja jelenik meg.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|Összevonási metaadatok hivatkozás|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 

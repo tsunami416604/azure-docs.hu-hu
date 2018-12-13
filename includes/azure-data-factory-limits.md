@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/20/2018
+ms.date: 12/12/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 4aa4809c57eaf26b10053d432f9191580ec143a0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44381080"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326487"
 ---
 Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértelmezett korlátozások, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok számos egyszerűen kiváltható az előfizetéséhez, a maximális korlátig lépjen kapcsolatba az ügyfélszolgálattal.
 
@@ -24,8 +24,7 @@ Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértel
 | Az Azure-előfizetés adat-előállítók | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Adat-előállító entitások (Pipeline, adatkészletek, eseményindítók, társított szolgáltatásokat, integrációs modulok) teljes száma | 5000 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy előfizetéshez tartozó Azure-SSIS integrációs Runtime(s) teljes Processzormagok | 128 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egyidejű folyamat / folyamat fut | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egyidejű folyamatfuttatások száma a data factory | 10,000  | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egyidejű folyamatfuttatások száma a data factory (előállító összes folyamatok között megosztott) | 10,000  | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maximális tevékenységek / folyamat (beleértve a belső tevékenységek tárolók) | 40 | 40 |
 | Egy folyamat maximális paraméterek | 50 | 50 |
 | ForEach-elemek | 100 000 | 100 000 |

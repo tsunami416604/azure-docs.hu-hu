@@ -1,14 +1,11 @@
 ---
-title: 'Oktatóanyag: Terheléselosztó virtuális gépek a rendelkezésre állási zónák között – Azure Portal | Microsoft Docs'
+title: 'Oktatóanyag: Load Balancer virtuális gépek rendelkezésre állási zónában – Azure portal'
+titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozzon létre egy standard terheléselosztót zónaredundáns előtérrel a rendelkezésre állási zónák közötti virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 18b5f82a5181f0bbf7024b302b802684ef676c8f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304460"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255336"
 ---
-# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez az útmutató egy olyan nyilvános Load Balancer Standard létrehozását ismerteti, amely a rendelkezésre állási zónák közötti virtuális gépek terhelését osztja el. Így biztosíthatja az alkalmazások és az adatok védelmét nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére. A zónaredundanciával az adatok elérési útja egy vagy több zóna meghibásodása után is ép marad mindaddig, amíg a régióban legalább egy zóna megfelelően működik. Az alábbiak végrehajtásának módját ismerheti meg:
 

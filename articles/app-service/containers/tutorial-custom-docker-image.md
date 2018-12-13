@@ -1,5 +1,5 @@
 ---
-title: Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban – Azure | Microsoft Docs
+title: Egyéni Docker-rendszerkép használata a Web App for containers szolgáltatásban – Azure App Service-ben |} A Microsoft Docs
 description: Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban.
 keywords: azure app service, web app, linux, docker, container
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 0811b8e81d8c2c4327885007685e15a8d2aea88e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963402"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256077"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 

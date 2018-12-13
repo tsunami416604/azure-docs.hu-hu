@@ -1,10 +1,10 @@
 ---
-title: Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása az Azure Container Registryben található Docker-tárolóban | Microsoft Docs
+title: Az Azure CLI Példaszkript – ASP.NET Core-alkalmazás létrehozása az Azure Container Registryben |} A Microsoft Docs
 description: Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása Azure Container Registryben található Docker-tárolóban
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: e73b853e5f08d8f4e91b15b261eab5d8824a101c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 952745c60f875c21ce64e4d1b0a819be60a76262
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981675"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309323"
 ---
 # <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása az Azure Container Registryben található Docker-tárolóban
 

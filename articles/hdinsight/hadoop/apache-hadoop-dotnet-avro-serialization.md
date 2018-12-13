@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 9727a990548977e0b07710d879881669161c7a4c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015262"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259987"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Az Apache Hadoop, a Microsoft Avro Library segítségével az adatok szerializálása
 
 >[!NOTE]
->Az Avro SDK-t a Microsoft már nem támogatott. A kódtár támogatja a nyílt forráskódú fejlesztői Közösség. A források a könyvtárban található [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
+>Az Avro SDK-t a Microsoft már nem támogatott. A kódtár támogatja a nyílt forráskódú fejlesztői Közösség. A források a könyvtárban található [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
 
 Ez a témakör bemutatja, hogyan használhatja a [Microsoft Avro Library](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) megőrizni azokat a memória, adatbázis vagy fájl alakíthatók objektumok és más adatszerkezetek szerializálásához. Azt is bemutatja, hogyan lehet őket helyreállítani az eredeti objektum deszerializálása.
 
@@ -53,7 +53,7 @@ A következőkre szükség a kódtár telepítése előtt:
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 vagy újabb)
 
 > [!Note]
-> A Microsoft Avro Library NuGet-csomagként már nem érhető el. Ha szeretné használni az Avro Libraryvel Klónozás a [Microsoft.Hadoop.Avro Github-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) és állíthat össze a kódot a gépen.
+> A Microsoft Avro Library NuGet-csomagként már nem érhető el. Ha szeretné használni az Avro Libraryvel Klónozás a [Microsoft.Hadoop.Avro GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) és állíthat össze a kódot a gépen.
 
 ## <a name="compile-schemas-using-avro-library"></a>Fordítsa le a sémák használata az Avro Libraryvel
 A Microsoft Avro Library tartalmaz egy code generation segédprogram, amely lehetővé teszi, hogy a korábban meghatározott JSON-sémája alapján automatikusan C# típusok létrehozása. A code generation segédprogram nem elosztott bináris futtatható, de az alábbi eljárás segítségével könnyen építhető:
@@ -69,7 +69,7 @@ A segédprogram teszteléséhez a forráskódja megadott minta JSON-fájl a C# o
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:
 
-Ez az aktuális könyvtárban található fájlok két C# előállításához kellene: SensorData.cs és Location.cs.
+Ez feltételezhetően előállításához két C# az aktuális könyvtárban található fájlok: SensorData.cs és Location.cs.
 
 A logika, amely a code generation segédprogramot használja, miközben átalakítja őket a JSON-sémájában C# típusok megismeréséhez tekintse meg a fájl GenerationVerification.feature C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc található.
 
@@ -224,7 +224,7 @@ Ebben a példában a séma az olvasók és írók, között lehetnek megosztva, 
     // Press any key to exit.
 
 
-## <a name="sample-2-serialization-with-a-generic-record"></a>2. példa: Szerializálási egy általános rekorddal
+## <a name="sample-2-serialization-with-a-generic-record"></a>2. példa: Általános rekordot tartalmazó szerializáció
 JSON-séma adható explicit módon meg egy általános rekordban amikor tükröződés nem használható, mivel az adatok nem jeleníthetők meg egy adategyezményben a .NET-osztályok keresztül. Ez a módszer lassabb, mint a tükröződés használatával. Ezekben az esetekben az adatok sémáját is lehet dinamikus, azt jelenti, a fordítás során nem ismert. Szerinti vesszővel elválasztott értékeket (CSV) fájlok, amelyeknek séma nem ismeretlen, amíg a futási időben az Avro formátum az átalakított adatok, amelyek az ilyen jellegű dinamikus forgatókönyv.
 
 Ez a példa bemutatja, hogyan hozhat létre és használhat egy [ **AvroRecord** ](https://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) explicit módon kell megadni a JSON-séma, hogyan lehet az adatokkal való feltöltéséhez, majd hogyan szerializálható és deszerializálható azt. Az eredmény ezután a rendszer összehasonlítja a kezdeti példány erősítse meg, hogy a rekord helyreállítása az eredeti azonos.
@@ -849,7 +849,7 @@ Az adatok ezután a következő fájl és deszerializálni az objektumok egy gy�
 
 
 
-## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>5. példa: Szerializálási objektum tárolófájlokat használata egy egyéni tömörítési kodek
+## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>5. példa: Objektum tárolófájlokat használata egy egyéni tömörítési kodek szerializáció
 Az ötödik példa bemutatja egy egyéni tömörítési kodeket használata az Avro-objektum tárolófájlokat. Az ebben a példában tölthető le, amely tartalmazza a kódot egy minta a [Azure-Kódminták](https://code.msdn.microsoft.com/Serialize-data-with-the-67159111) hely.
 
 A [Avro specifikációjában](https://avro.apache.org/docs/current/spec.html#Required+Codecs) lehetővé teszi, hogy egy nem kötelező tömörítési kodeket használatát (mellett **Null** és **Deflate** alapértelmezett érték). Ebben a példában nem implementálja az egy új kodek például Snappy (egy támogatott választható kodek az említett a [Avro specifikációjában](https://avro.apache.org/docs/current/spec.html#snappy)). Ez bemutatja, hogyan használhatja a .NET-keretrendszer 4.5 megvalósítása a [ **Deflate** ] [ deflate-110] kodek, amely alapján hatékonyabb tömörítési algoritmust biztosít a [zlib ](https://zlib.net/) tömörítési könyvtárban, mint az alapértelmezett .NET-keretrendszer 4 verziót.

@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az Azure Search használatába Java nyelven | Microsoft Docs
+title: Ismerkedés az Azure Search Java – Azure Search szolgáltatással
 description: Üzemeltetett felhőalapú keresőalkalmazás felépítése az Azure rendszerben a Java programozási nyelv használatával.
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419299"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316969"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -45,13 +46,13 @@ Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https:/
 ## <a name="about-the-program-files"></a>Tudnivalók a programfájlokról
 Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 
-* Search.jsp: a felhasználói felületet biztosítja
-* SearchServlet.java: a módszereket biztosítja (az MVC-vezérlőhöz hasonló)
-* SearchServiceClient.java: a HTTP-kérelmeket kezeli
-* SearchServiceHelper.java: egy statikus módszereket biztosító segítőosztály
-* Document.Java: az adatmodellt biztosítja
-* Config.Properties: beállítja a Search szolgáltatás URL-címét és API-kulcsát
-* Pom.XML: Maven-függőség
+* Search.jsp: A felhasználói felületet biztosítja
+* SearchServlet.java: (Az MVC-vezérlőhöz hasonló) módszert is biztosít
+* SearchServiceClient.java: HTTP-kérelmeket kezeli
+* SearchServiceHelper.java: Egy statikus módszereket biztosító segítőosztály
+* Document.Java: Az adatmodellt biztosítja
+* a Config.Properties: Beállítja a Search szolgáltatás URL-CÍMÉT és api-kulcsát
+* pom.XML: Maven-függőség
 
 <a id="sub-2"></a>
 
@@ -104,7 +105,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 7. Kattintson a **Befejezés** gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
-10. Kattintson a **Tovább** gombra.
+10. Kattintson a **Tovább**gombra.
 11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
 12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
 13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.

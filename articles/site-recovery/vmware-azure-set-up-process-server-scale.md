@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: 2ef08831706a018422ea3700c8eb63bd6f95c469
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834952"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253680"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Méretezési csoport és további folyamatkiszolgálók feladat-visszavételhez
 
@@ -23,6 +23,9 @@ Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgál
 ### <a name="capacity-planning"></a>Kapacitástervezés
 
 Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware replikálásához. Ennek segítségével azonosíthatja módjának és további folyamatkiszolgálók üzembe kell helyeznie.
+
+>[!NOTE]
+Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.
 
 ### <a name="sizing-requirements"></a>Méretezési követelményei 
 

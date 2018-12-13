@@ -12,17 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 60e3e3d81b07bf7ae681b5cef2d6d9681877a35f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810892"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193586"
 ---
-<a name="lead-management-instructions-for-azure-table"></a>Az Azure Table utasítások felügyeleti vezethet
-============================================
+# <a name="lead-management-instructions-for-azure-table"></a>Az Azure Table utasítások felügyeleti vezethet
 
 Ez a cikk ismerteti a konfigurálása az Azure Table potenciális vásárlók tárolásához. Az Azure Table lehetővé teszi, hogy tárolhatja, és testre szabhatja a vásárlói adatokat.
 
@@ -42,140 +41,111 @@ Ez a cikk ismerteti a konfigurálása az Azure Table potenciális vásárlók t�
 Használhat [az Azure storage explorer](http://azurestorageexplorer.codeplex.com/) vagy más eszköz a storage-táblába az adatok megtekintéséhez. Az Azure-táblában lévő adatokat exportálhatja is.
 adatok.
 
-## <a name="optional-to-use-azure-functions-with-an-azure-table"></a>**(Nem kötelező)**  Azure Functions használata az Azure-tábla
+## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(Nem kötelező)**  Használja a Microsoft Flow az Azure-tábla
 
-Ha hogyan azért küldtük Önnek, használja az érdeklődők testreszabni kívánt [Azure Functions](https://azure.microsoft.com/services/functions/) az Azure-tábla. Az Azure Functions szolgáltatás lehetővé teszi az Érdeklődők generálása folyamat automatizálása.
+Használhat [Microsoft Flow](https://docs.microsoft.com/flow/) automatizálhatja az értesítéseket, amikor érdeklődőt kerül az Azure-tábla. Ha nem olyan fiókkal, használhatja [regisztrálhat egy ingyenes fiókot](https://flow.microsoft.com/).
 
-A következő lépések bemutatják, hogyan hozhat létre Azure-függvény, amely egy időzítő. 5 percenként a függvény az új rekordokat az Azure-tábla és e-mail-értesítés küldése a SendGrid szolgáltatás használja.
+### <a name="lead-notification-example"></a>Értesítési példában vezethet
 
+Ebben a példában használja útmutatóként egy egyszerű folyamatot, amely automatikusan egy e-mailben értesítést küld, amikor egy új érdeklődővel bővül az Azure-tábla létrehozásához. Ebben a példában úgy állít be, egy ismétlődési érdeklődők adatait óránként küld, ha a table storage frissül.
 
-1.  [Hozzon létre](https://portal.azure.com/#create/SendGrid.SendGrid) SendGrid ingyenes szolgáltatásfiók az Azure-előfizetésében.
+1. Jelentkezzen be a Microsoft Flow-fiók.
+2. A bal oldali navigációs sávján válassza **saját folyamatok**.
+3. A felső navigációs sávban válassza **+ új**.  
+4. A legördülő listából válassza ki a **+ üres folyamat létrehozása**
+5. Hozzon létre egy folyamatot az alapoktól, válassza a **üres folyamat létrehozása**.
 
-    ![A SendGrid létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/createsendgrid.png)
+   ![Hozzon létre egy új üres](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-2.  A SendGrid API-kulcs létrehozása 
-    - Válassza ki **kezelés** , nyissa meg a SendGrid felhasználói felület
-    - Válassza ki **beállítások**, **API-kulcsok**, majd hozzon létre egy kulcsot, amelynek a levelek küldése –\> teljes hozzáférés
-    - Az API-kulcs mentése
+6. Az összekötők és eseményindítók keresése oldal, válassza ki a **eseményindítók**.
+7. A **eseményindítók**válassza **ismétlődési**.
+8. Az a **ismétlődési** ablakban megtartani az alapértelmezett beállítás 1- **időköz**. Az a **gyakorisága** legördülő listában válassza **óra**.
 
+   >[!NOTE] 
+   >Bár ebben a példában egy 1 órás időszakban, kiválaszthatja a időközét és gyakoriságát, hogy a legjobb, az üzleti igényeknek megfelelően.
 
-    ![A SendGrid API-kulcs](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridkey.png)
+   ![Állítsa be 1 órás ismétlődési gyakorisága](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
+9. Válassza ki **+ új lépés**.
+10. Keresse meg a "Get múltbeli idő", és válassza **múltbeli időpont beolvasása** műveletek alatt. 
 
-3.  [Hozzon létre](https://portal.azure.com/#create/Microsoft.FunctionApp) egy Azure-függvényalkalmazást a csomag lehetőséggel nevű, "Használatalapú csomagban".
+    ![Keresse meg és válassza ki a get múltbeli idő művelet](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-    ![Azure-Függvényalkalmazás létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/createfunction.png)
+11. Az a **múltbeli időpont beolvasása** ablakban állítsa be a **időköz** 1-re.  Az a **időegység** legördülő listában válassza **óra**.
+    >[!IMPORTANT] 
+    >Győződjön meg arról, hogy az időköz és az idő egysége időközét és gyakoriságát ismétlődési konfigurált megegyezik-e.
 
+    ![Lejárt az idő alatt set get](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
-4.  Hozzon létre egy új függvény definíciója.
+    >[!TIP] 
+    >Ellenőrizheti a folyamat, és ellenőrizze, hogy az egyes lépések megfelelően van konfigurálva. A folyamat ellenőrzéséhez válassza **folyamat ellenőrző** a Flow menüsoron.
 
-    ![Azure-függvény definíciójának létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/createdefinition.png)
- 
+A következő készletét a lépéseket is kapcsolódni az Azure-tábla, és állítsa be a feldolgozó logika kezelni az új érdeklődők.
 
-5.  A függvény, amely egy adott időben frissítést küld lekéréséhez válassza ki a **TimerTrigger-CSharp** alapszintű paramétert.
+1. Múltbeli idő lépés Get után válassza ki a **+ új lépés**, és keressen a "Get-entitások".
+2. Alatt **műveletek**válassza **kéri le az entitást**, majd válassza ki **speciális beállítások megjelenítése**.
+3. Az a **kéri le az entitást** ablakban adjon meg információt a következő mezőket:
 
-     ![Az Azure függvény idő eseményindító lehetőség](./media/cloud-partner-portal-lead-management-instructions-azure-table/timetrigger.png)
+   - **Tábla** – adja meg az Azure Table Storage nevét. "MarketPlaceLeads" is meg kell adni ehhez a példához a következő képernyőfelvétel-készítés mutatja a rendszer kéri. 
 
+     ![Válasszon egy egyéni értéket az Azure-tábla neve](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-6.  Cserélje le a "Fejlesztés" kódot az alábbi kódmintát. A küldő és fogadó használni kívánt címekkel e-mail címek módosítása.
+   - **Szűrőlekérdezés** – ebben a mezőben kattintson, és a egy felugró ablakban jelenik meg a Get múltbeli idő ikonra. Válassza ki **múltbeli időpont** időbélyegzőként Ez a lekérdezés szűrése használatára. Ez a függvény azt is megteheti, beillesztheti az mezőbe: `gt datetime'@{body('Get_past_time')}'`
 
-        #r "Microsoft.WindowsAzure.Storage"
-        #r "SendGrid"
-        using Microsoft.WindowsAzure.Storage.Table;
-        using System;
-        using SendGrid;
-        using SendGrid.Helpers.Mail;
-        public class MyRow : TableEntity
-        {
-            public string Name { get; set; }
-        }
-        public static void Run(TimerInfo myTimer, IQueryable<MyRow> inputTable, out Mail message, TraceWriter log)
-        {
-            // UTC datetime that is 5.5 minutes ago while the cron timer schedule is every 5 minutes
-            DateTime dateFrom = DateTime.UtcNow.AddSeconds(-(5 * 60 + 30));
-            var emailFrom = "YOUR EMAIL";
-            var emailTo = "YOUR EMAIL";
-            var emailSubject = "Azure Table Notification";
-            // Look in the table for rows that were added recently
-            var rowsList = inputTable.Where(r => r.Timestamp > dateFrom).ToList();
-            // Check how many rows were added
-            int rowsCount = rowsList.Count;
-            if (rowsCount > 0)
-            {
-                log.Info($"Found {rowsCount} rows added since {dateFrom} UTC");
-                // Configure the email message describing how many rows were added
-                message = new Mail
-                {
-                    From = new Email(emailFrom),
-                    Subject = emailSubject + " (" + rowsCount + " new rows)"
-                };
-                var personalization = new Personalization();
-                personalization.AddTo(new Email(emailTo));
-                message.AddPersonalization(personalization);
-                var content = new Content
-                {
-                    Type = "text/plain",
-                    Value = "Found " + rowsCount + " new rows added since " + dateFrom.ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
-                };
-                message.AddContent(content);
-            }
-            else
-            {
-                // Do not send the email if no new rows were found
-                message = null;
-            }
-        }
+     ![Szűrő lekérdezés függvény beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
-    ![Az Azure függvény kódrészlet](./media/cloud-partner-portal-lead-management-instructions-azure-table/code.png)
+4. Válassza ki **új lépés** vizsgálata az Azure-tábla új érdeklődők feltétel hozzáadása.
 
+   ![Új lépés használja az Azure table vizsgálata feltétel hozzáadása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
 
-7.  Válassza ki **integráció** és **bemenetek** meghatározásához az Azure Table-kapcsolat.
+5. Az a **válasszon ki egy műveletet** ablakban válassza **műveletek**, majd válassza ki a **feltétel** vezérlő.
 
-    ![Azure-függvény integrálása](./media/cloud-partner-portal-lead-management-instructions-azure-table/integrate.png)
+     ![A feltétel vezérlőelem felvétele](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
+6. Az a **feltétel** ablakban válassza ki a **válasszon egy értéket** mezőben, majd válassza ki **kifejezés** az előugró ablakban.
+7. Beillesztés `length(body('Get_entities')?['value'])` be a ***fx*** mező. Válassza ki **OK** hozzáadni ezt a funkciót. A feltétel beállításának befejezéséhez:
 
-8.  Adja meg a táblázat nevét, és állítsa be a kapcsolati karakterlánc megfelelő **új**.
+   - Jelölje ki a "nagyobb, mint" lehetőséget a legördülő listából.
+   - Adjon meg 0 értéket 
 
+     ![Függvény hozzáadása a feltételhez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-fx0.png)
 
-    ![Azure-függvény táblát kapcsolat](./media/cloud-partner-portal-lead-management-instructions-azure-table/configtable.png)
+8. Állítsa be a művelet a feltétel eredménye alapján érvénybe.
 
-9.  Most a kimeneti definiálhatja a SendGrid, és hagyja változatlanul az alapértelmezett beállításokat.
+     ![A feltétel eredménye alapján a művelet beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
 
-    ![A SendGrid-kimenet](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridoutput.png)
+9. Ha a feltétel **Ha nincsenek**, nincs teendője. 
+10. Ha a feltétel **Ha Igen**, egy műveletet, amely kapcsolódik az e-mail küldése az Office 365-fiókjába. Válassza ki **művelet hozzáadása**.
+11. Válassza ki **e-mail küldése**. 
+12. Az a **e-mail küldése** ablakban adjon meg információt a következő mezőket:
 
-    ![A SendGrid kimeneti alapértelmezései](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridoutputdefaults.png)
+    - **A** – adja meg egy e-mail-címet, amely ezt az értesítést fog kapni minden tagja számára.
+    - **Tulajdonos** – adja meg az e-mail tárgyát. Példa: Új érdeklődők!
+    - **Törzs**:   Adja hozzá a szöveget, amely tartalmazza minden e-mailben (opcionális), és illessze be a szervezet `('Get_entities')?['value']` függvényében, érdeklődő információit.
 
-10. Függvényalkalmazás-beállításokat a neve "SendGridApiKey" és az API-kulcsokat a SendGrid felhasználói felületen kapott értéket a SendGrid API-kulcs hozzáadása
+      >[!NOTE] 
+      >Ez az e-mail szövegtörzséhez további statikus vagy dinamikus adatok pontok beszúrásához.
 
-    ![A SendGrid kezelése](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridmanage.png)
-    ![SendGrid kulcs kezelése](./media/cloud-partner-portal-lead-management-instructions-azure-table/sendgridmanagekey.png)
+       ![Állítsa be a érdeklődő értesítési e-mailben](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
-Ha végzett a függvény konfigurálása, a kód az integrálás szakaszban a következő példához hasonlóan kell kinéznie.
+13. Válassza ki **mentése** a folyamat mentéséhez. Microsoft Flow automatikusan teszteli a folyamatot a hibákat. Ha nincsenek hibák, a folyamat elindul, Miután elmentette futtatása.
 
-    {
-      "bindings": [
-        {
-          "name": "myTimer",
-          "type": "timerTrigger",
-          "direction": "in",
-          "schedule": "0 */5 * * * *"
-        },
-        {
-          "type": "table",
-          "name": "inputTable",
-          "tableName": "MarketplaceLeads",
-          "take": 50,
-          "connection": "yourstorageaccount_STORAGE",
-          "direction": "in"
-        },
-        {
-          "type": "sendGrid",
-          "name": "message",
-          "apiKey": "SendGridApiKey",
-          "direction": "out"
-        }
-      ],
-      "disabled": false
-    }
+A következő képernyőfelvétel-készítés azt szemlélteti, hogyan kell kinéznie a végső folyamatot.
 
-11. Az utolsó lépés az, hogy keresse meg a függvény fejlesztése felhasználói felületén, majd **futtatása** az időzítő indítására. Most már értesítést fog kapni minden alkalommal, amikor új érdeklődő érhető el.
+ ![A folyamat utolsó feladatütemezési](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+
+### <a name="managing-your-flow"></a>A folyamat kezelése
+
+A folyamat kezelése futás után sem ördöngösség.  Teljes körű, a folyamat rendelkezik. Például akkor is állítsa le, szerkeszthetik, tekintse meg a futtatási előzmények és elemzések lekérése. A következő képernyő-rögzítési folyamat kezeléséhez rendelkezésre álló lehetőségeket mutatja. 
+
+ ![Folyamatok kezelése](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
+
+A folyamat továbbra is működik, amíg használatával állítsa le a **folyamat kikapcsolása** lehetőséget.
+
+Nem érdeklődő e-mail értesítéseket kap, ha az azt jelenti, hogy az új érdeklődők még nem sikerült hozzáadni az Azure-tábla. Ha a folyamat hibákat, a példához hasonló e-mailt kap a következő képernyőfelvételen.
+
+ ![A folyamat sikertelen e-mail-értesítés](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+
+## <a name="next-steps"></a>További lépések
+
+[Ügyfélérdeklődések konfigurálása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)

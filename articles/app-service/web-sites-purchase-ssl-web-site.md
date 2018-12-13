@@ -1,5 +1,5 @@
 ---
-title: Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány |} A Microsoft Docs
+title: Az Azure - App Service egy SSL-tanúsítvány vásárlása és konfigurálása |} A Microsoft Docs
 description: App Service-tanúsítvány vásárlása és kösse az App Service-alkalmazás
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 67d27587e8a5f85eb339efb83e661c061b621ed1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959835"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268716"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -158,4 +159,4 @@ Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális me
 * [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben](app-service-web-ssl-cert-load.md)
-* [– Gyakori kérdések: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [GYAKORI KÉRDÉSEK: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

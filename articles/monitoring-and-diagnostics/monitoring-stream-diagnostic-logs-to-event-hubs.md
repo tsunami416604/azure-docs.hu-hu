@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b7c2c28ab049f0cce26f306736ec938955156ebb
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959273"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322584"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
 **[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure parancssori felület.
@@ -44,14 +44,14 @@ Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a di
 Streamelési diagnosztikai naplók a portálon keresztül programozás útján vagy a használatával engedélyezheti a [Azure Monitor REST API-k](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). Mindkét esetben hoz létre egy diagnosztikai beállítás található, amely megadott Event Hubs-névtér és naplókategóriák és metrikák is szeretne küldeni névtérhez. Egy eseményközpont engedélyezi a napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **naplókategória** napló, amely egy erőforrás gyűjthet olyan típusú.
 
 > [!WARNING]
-> Engedélyezése és számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplóinak streamelési [szükséges lépések külön készletét](azure-diagnostics-streaming-event-hubs.md).
+> Engedélyezése és számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplóinak streamelési [szükséges lépések külön készletét](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 Az Event Hubs névterének nem muszáj ugyanabban az előfizetésben a naplókat kibocsátó mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC hozzáféréssel rendelkezik mind az előfizetések, és mindkét előfizetés erőforrásként kell az azonos AAD-bérlő részét képezik.
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
+> *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 
@@ -191,7 +191,7 @@ Megtekintheti az összes erőforrás-szolgáltató, amely támogatja a streamel�
 
 ## <a name="stream-data-from-compute-resources"></a>A számítási erőforrások Stream adatait
 
-A Windows Azure Diagnostics-ügynök használatával, a számítási erőforrások diagnosztikai naplóinak streamelheti is. [Ebben a cikkben](azure-diagnostics-streaming-event-hubs.md) , hogy hogyan állította be.
+A Windows Azure Diagnostics-ügynök használatával, a számítási erőforrások diagnosztikai naplóinak streamelheti is. [Ebben a cikkben](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md) , hogy hogyan állította be.
 
 ## <a name="next-steps"></a>További lépések
 

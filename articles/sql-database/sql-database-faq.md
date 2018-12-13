@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d7e5553ec48cfda858f2a463a2df0cc60f0e5c65
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242823"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270399"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
 
@@ -196,9 +196,9 @@ Példa:
 > [!NOTE]
 > Korlátozott ideig ingyenesen biztonsági mentésért és i/o.
 
-## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Hogyan történik az aktív georeplikáció egy rugalmas készlet jelennek meg a számlámon a használatát
+## <a name="how-does-the-use-of-active-geo-replication-or-auto-failover-groups-in-an-elastic-pool-show-up-on-my-bill"></a>Hogyan jelenik rugalmas készletben található aktív georeplikáció vagy automatikus feladatátvételi csoportok használata meg a számlámon
 
-Önálló adatbázisok használatával ellentétben [aktív georeplikáció](sql-database-geo-replication-overview.md) a rugalmas adatbázisoknak nem közvetlen hatást számlázási.  Csak díjkötelesek minden, a készletek (készlet elsődleges és másodlagos készlet) kiosztott erőforrásokat
+Önálló adatbázisok használatával ellentétben [aktív georeplikáció](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) a rugalmas adatbázisoknak nem közvetlen hatást számlázási. Csak díjkötelesek minden, a készletek (készlet elsődleges és másodlagos készlet) kiosztott erőforrásokat
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>Milyen hatással van a a naplózási funkció használata a számlámon
 
@@ -217,7 +217,7 @@ Lásd: [adatbázisok és bejelentkezések kezelése](sql-database-manage-logins.
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Hogyan ellenőrizhetem, hogy csak engedélyezett IP-címek engedélyezettek a kiszolgálóhoz való hozzáférést
 
-Lásd: [Útmutató: az SQL Database tűzfalbeállításainak konfigurálása](sql-database-configure-firewall-settings.md).
+Lásd: [hogyan: Az SQL Database tűzfalbeállításainak konfigurálása](sql-database-configure-firewall-settings.md).
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Mi az a várt replikációs késés replikáláskor geo adatbázis Azure azonos földrajzi helyen belül két régió között
 

@@ -6,19 +6,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 11/27/2018
-ms.openlocfilehash: b3e2beb0245fa790dc60cf742d6ad8938de187f4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/12/2018
+ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832581"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314397"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
-Mobilitási szolgáltatás telepítésének legfontosabb lépése replikálás engedélyezése során. Ez a lépés sikeres kizárólag Előfeltételek teljesítése és a támogatott konfigurációk használata attól függ. A mobilitási szolgáltatás telepítése során között leggyakoribb hibák miatt
+Mobilitási szolgáltatás telepítésének legfontosabb lépése replikálás engedélyezése során. Ez a lépés sikeres kizárólag Előfeltételek teljesítése és a támogatott konfigurációk használata attól függ. A mobilitási szolgáltatás telepítése során között leggyakoribb hibák a következők miatt:
 
 * Hitelesítő adatok vagy jogosultsági hibák
+* Sikertelen bejelentkezések
 * Kapcsolódási hibák
 * Nem támogatott operációs rendszerek
 * VSS telepítési hibák
@@ -28,23 +29,63 @@ A replikáció engedélyezése az Azure Site Recovery megpróbálja küldje le a
 ## <a name="credentials-check-errorid-95107--95108"></a>Hitelesítő adatok ellenőrzése (ErrorID: 95107 & 95108)
 
 * Győződjön meg arról, ha a felhasználói fiók, a replikáció engedélyezése közben kiválasztott, **érvényes, a pontos**.
-* Az Azure Site Recovery igényel **rendszergazdai jogosultsággal** ügyfélleküldéses telepítés végrehajtásához.
-  * Windows, ellenőrizze, ha a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel, helyi vagy a tartományban, a forrásgépen.
+* Az Azure Site Recovery igényel **legfelső szintű** fiók vagy felhasználói fiók **rendszergazdai jogosultságokkal** ügyfélleküldéses telepítés végrehajtásához. Más esetben ügyfélleküldéses telepítést le lesz tiltva a forrásgépen.
+  * A Windows (**95107-es**), győződjön meg arról, ha a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel, helyi vagy a tartományban, a forrásgépen.
   * Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlés a helyi számítógépen szeretné.
     * Tiltsa le a távoli felhasználói hozzáférés-vezérlést, a localaccounttokenfilterpolicy beállításjegyzékbeli kulcs hozzáadása egy új DWORD: LocalAccountTokenFilterPolicy. Állítsa az értékét 1-re. Ez a lépés végrehajtásához futtassa a következő parancsot a parancssorba:
 
          `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Linux esetén ki kell választania a mobilitási ügynök sikeres telepítéséhez rendszergazdai fiók.
+  * Linux (**95108-as**), ki kell választania a mobilitási ügynök sikeres telepítéséhez rendszergazdai fiók. Ezenkívül az SFTP-szolgáltatások kell futtatnia. Ahhoz, hogy az SFTP alrendszer és a jelszó hitelesítését az sshd_config fájlban:
+    1. Jelentkezzen be gyökérszintű felhasználóként.
+    2. /Etc/ssh/sshd_config keresse meg, keresse meg a sort, amely PasswordAuthentication kezdődik.
+    3. Állítsa vissza a sort, és módosítsa az Igen értéket.
+    4. Keresse meg a sort, amely alrendszer kezdődik, és állítsa vissza a sort.
+    5. Indítsa újra az sshd szolgáltatást.
 
 Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adatait, hajtsa végre az adott utasítások [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="connectivity-check-errorid-95117--97118"></a>**Kapcsolat-ellenőrzés (ErrorID: 95117 & 97118)**
+## <a name="insufficient-privileges-failure-errorid-95517"></a>Nincs megfelelő jogosultsága hiba (ErrorID: 95517)
+
+Ha a mobilitási ügynök telepítéséhez választott felhasználó nem rendelkezik rendszergazdai jogosultságokkal, konfigurációs kiszolgáló vagy kibővíthető folyamatkiszolgáló nem engedélyezett a mobilitási ügynök szoftver forrásgép be másolni. Tehát ez a hiba nem a hozzáférés megtagadva hiba eredménye. Győződjön meg arról, hogy a felhasználói fiók rendelkezik-e rendszergazdai jogosultságokkal.
+
+Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adatait, hajtsa végre az adott utasítások [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+
+## <a name="insufficient-privileges-failure-errorid-95518"></a>Nincs megfelelő jogosultsága hiba (ErrorID: 95518)
+
+Tartomány megbízhatósági kapcsolat létrehozása az elsődleges tartomány és a munkaállomás közötti jelentkezzen be a forrásgép tett kísérlet során nem sikerül, a mobilitási ügynök telepítése sikertelen lesz, 95518 hiba azonosítója. Ezért győződjön meg arról, hogy a mobilitási ügynök telepítéséhez használt felhasználói fiók rendelkezik-e rendszergazdai jogosultságokkal a forrásgép elsődleges tartományon keresztül bejelentkezni.
+
+Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adatait, hajtsa végre az adott utasítások [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+
+## <a name="login-failure-errorid-95519"></a>Bejelentkezési hiba történt (ErrorID: 95519)
+
+A replikálás engedélyezése során kiválasztott felhasználói fiók le van tiltva. A felhasználói fiók engedélyezéséhez tekintse meg a cikk [Itt](https://aka.ms/enable_login_user) vagy futtassa a következő parancsot a szöveg cseréje *felhasználónév* tényleges felhasználónévvel.
+`net user 'username' /active:yes`
+
+## <a name="login-failure-errorid-95520"></a>Bejelentkezési hiba történt (ErrorID: 95520)
+
+Több sikertelen újrapróbálkozási erőfeszítések eléréséhez egy gép zárolja a felhasználói fiókot. A hiba oka lehet:
+
+* Konfigurációs beállítás során megadott hitelesítő adatok helytelenek, vagy
+* A replikálás engedélyezése során kiválasztott felhasználói fiók nem megfelelő.
+
+Ezért, módosítsa a kiválasztott megadott utasítások szerint hitelesítő adatok [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) , majd próbálja megismételni a műveletet később.
+
+## <a name="login-failure-errorid-95521"></a>Bejelentkezési hiba történt (ErrorID: 95521)
+
+Ez a hiba akkor fordul elő, ha a bejelentkezési kiszolgálók nem érhetők el a forrásgépen. Bejelentkezési kiszolgálók hiányában sikertelen bejelentkezési kérelem vezet, és így nem lehet telepíteni a mobilitási ügynök. Sikeres bejelentkezés győződjön meg arról, hogy a bejelentkezési kiszolgálók érhetők el a forrásgépen, és indítsa el a bejelentkezési szolgáltatás. Részletes utasításokért kattintson [Itt](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+
+## <a name="login-failure-errorid-95522"></a>Bejelentkezési hiba történt (ErrorID: 95522)
+
+A bejelentkezési szolgáltatás a forrásgépen nem fut, és a bejelentkezési kérelem hibáját okozta. Így nem lehet telepíteni a mobilitási ügynök. Megoldásához, győződjön meg arról, hogy bejelentkezési szolgáltatás fut a forrásgépen a sikeres bejelentkezés. A bejelentkezési szolgáltatás elindításához futtassa a parancsot "net start bejelentkezési" parancssorból, vagy indítsa el a "NetLogon" szolgáltatást a Feladatkezelő.
+
+## <a name="connectivity-failure-errorid-95117--97118"></a>**Csatlakozási hiba (ErrorID: 95117 & 97118)**
+
+Konfigurációs kiszolgáló / horizontális felskálázási folyamatkiszolgáló úgy próbál csatlakozni a forrás virtuális Gépen a mobilitási ügynök telepítése. Ez a hiba akkor fordul elő, ha a forrásgép hálózati kapcsolódási problémák miatt nem érhető el. Háríthatja el
 
 * Ellenőrizze, hogy pingelni a forrásgép a konfigurációs kiszolgálóról. Ha úgy döntött, hogy kibővíthető folyamatkiszolgáló a replikáció engedélyezése során, ellenőrizze, hogy a forrásgép folyamatkiszolgálóról pingelni.
   * A forráskiszolgáló gép parancssorból, a Telnet használatával a konfigurációs kiszolgáló pingelése / horizontális felskálázási folyamatkiszolgáló a https (135-ös port) megtekintéséhez, ha vannak-e hálózati kapcsolat hibái vagy tűzfal port hátráltató alább látható módon.
 
      `telnet <CS/ scale-out PS IP address> <135>`
-  * Szolgáltatás állapotának ellenőrzése **InMage Scout VX Agent – Sentinel/Outpost**. Ha nem fut, indítsa el a szolgáltatást.
 * Ezenkívül a **Linux rendszerű virtuális gép**,
   * Ellenőrizze, ha telepítve vannak-e a legfrissebb openssh, openssh-server és openssl csomagokat.
   * Ellenőrizze, és győződjön meg arról, hogy a Secure Shell (SSH) engedélyezve van és fut a 22-es portot.
@@ -55,11 +96,15 @@ Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adat
     * Keresse meg azt a sort, alrendszer kezdődik, és állítsa vissza a sort
     * Indítsa újra az sshd szolgáltatást.
 * Kapcsolódási kísérlet van nem sikerült, ha nem érkezik válasz megfelelő, egy idő után, vagy a kialakított kapcsolat meghibásodott, mert a csatlakoztatott állomás nem válaszolt.
-* Kapcsolat/hálózati/tartomány lehet okozza. Azt is okozhatja, hogy a probléma vagy a TCP-port Erőforrásfogyás probléma megoldásának DNS-név. Tekintse meg van-e olyan ismert problémákat a tartományban.
+* Kapcsolat/hálózati/tartomány lehet okozza. Azt is okozhatja, hogy a probléma vagy a TCP-port Erőforrásfogyás probléma megoldásának DNS-név. Ellenőrizze, hogy van-e olyan ismert problémákat a tartományban.
+
+## <a name="connectivity-failure-errorid-95523"></a>Csatlakozási hiba (ErrorID: 95523)
+
+Ez a hiba akkor fordul elő, ha a hálózatot, amelyben a forrásgépen található nem található, vagy lehet, hogy törölték, vagy már nem érhető el. A hiba megoldásához egyetlen módja, biztosítva, hogy létezik-e a hálózathoz.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>A fájl- és nyomtatómegosztási szolgáltatások ellenőrzése (ErrorID: 95105 & 95106)
 
-Kapcsolat-ellenőrzés után ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás engedélyezésének a virtuális gépen.
+Kapcsolat-ellenőrzés után ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás engedélyezésének a virtuális gépen. Ezek a beállítások másolása a forrásgépen a mobilitási ügynök szükséges.
 
 A **windows 2008 R2 és korábbi verziók**,
 
@@ -68,16 +113,16 @@ A **windows 2008 R2 és korábbi verziók**,
   * Keresse meg a fájlt, és nyomtatómegosztás (NetBIOS-munkamenet-) és a fájl- és nyomtatómegosztás (SMB, bejövő) szabályok. Az egyes szabályokhoz, kattintson a jobb gombbal a szabályt, és kattintson **szabály engedélyezése**.
 * A csoportházirenddel, fájlmegosztási engedélyezése
   * Ugrás a kezdő, írja be a gpmc.msc, és keressen.
-  * A navigációs ablaktáblán nyissa meg a következő mappák: helyi számítógép-házirend, a felhasználói konfiguráció, a felügyeleti sablonok, a Windows-összetevők és a hálózati megosztás.
+  * A navigációs ablakban nyissa meg a következő mappák: Helyi számítógép-házirend, felhasználói konfigurációs, felügyeleti sablonok, Windows-összetevők és hálózati megosztás.
   * A részleteket tartalmazó ablaktáblán kattintson duplán a **megakadályozhatja a felhasználókat a profilon belül a fájlok megosztása**. Tiltsa le a csoportházirend-beállítást, és engedélyezze a felhasználó engedélyének fájlokat, kattintson a le van tiltva. Kattintson az OK gombra a módosítások mentéséhez. További tudnivalókért kattintson [Itt](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
 A **újabb verzió**, kövesse a megjelenő utasításokat [Itt](vmware-azure-install-mobility-service.md) fájl- és nyomtatómegosztás engedélyezése.
 
-## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Windows Management Instrumentation (WMI) konfigurációjának ellenőrzése
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Windows Management Instrumentation (WMI) konfigurációjának ellenőrzése (hibakód: 95103)
 
-Ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás, engedélyezze a WMI-szolgáltatás tűzfalán keresztül.
+Ellenőrizze a fájl- és nyomtatómegosztás szolgáltatás, engedélyezze a WMI-szolgáltatás a privát, nyilvános és a tartomány profilok tűzfalon keresztül. Ezek a beállítások a forrásgépen távoli végrehajtás végrehajtásához szükségesek. Ha engedélyezni szeretné,
 
-* A Vezérlőpulton kattintson a biztonsági, és kattintson a Windows tűzfal.
+* Nyissa meg a Vezérlőpultot, kattintson a biztonsági és majd a Windows tűzfal elemre.
 * Kattintson a beállítások módosítása gombra, és kattintson a Kivételek lapon.
 * A kivételek ablakban válassza ki a jelölőnégyzetet a Windows Management Instrumentation (WMI) a WMI-forgalom tűzfalon való engedélyezéséhez. 
 
@@ -93,6 +138,24 @@ Az alábbi cikkekben talál további WMI hibaelhárítási cikkek található.
 Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója.
 
 Ha szeretné megtudni, melyik operációs rendszerek támogatottak az Azure Site Recovery, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
+
+## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Rendszerindító és a rendszerpartíciók / kötetek nem ugyanazon a lemezen (ErrorID: 95309)
+
+Mielőtt 9.20 verzió, rendszerindító és a rendszerpartíciók / eltérő lemezeken lévő kötetek volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
+
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Több lemezen található rendszerpartíció (ErrorID: 95313)
+
+9.20 verziónál korábbi verziókban a legfelső szintű partíción vagy köteten több lemezen meghatározott volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
+
+## <a name="lvm-support-from-920-version"></a>LVM támogatási 9.20 verzióról
+
+Csak az adatlemezek 9.20 verziónál korábbi verziókban LVM volt támogatott. gyökérpartíció lemezpartíción kell és nem kell az LVM-kötet.
+
+A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), [operációsrendszer-lemez az LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) támogatott. A támogatási használja a legújabb verziót.
+
+## <a name="insufficient-space-errorid-95524"></a>Nincs elég hely (ErrorID: 95524)
+
+Ha a forrásgépen a mobilitási ügynök másolja, legalább 100 MB szabad terület megadása kötelező. Ezért győződjön meg arról, hogy a forrásgép szabad lemezterület szükséges, és próbálja megismételni a műveletet.
 
 ## <a name="vss-installation-failures"></a>VSS telepítési hibák
 

@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6435c866f6cdf5abea3862a718579f3a6e4d7378
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: seodec18
+ms.openlocfilehash: 50e5dfa21cf7a8f7203e7d96640e3cf5215130a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493064"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191461"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Oracle-megoldásokról és azok üzembe helyezését, a Microsoft Azure
 Ez a cikk ismerteti a különféle, Microsoft Azure-on Oracle-megoldásokról sikeres telepítéséhez szükséges információkat. Ezek a megoldások az Azure piactéren elérhető Oracle által közzétett virtuálisgép-lemezképek alapul. Jelenleg az elérhető rendszerképek listájának lekéréséhez futtassa a következő parancsot:
@@ -57,7 +58,7 @@ Oracle az Azure-ban futó Oracle DB 12.1 Standard és Enterprise kiadás támoga
 Csatlakoztatott lemezek az Azure Blob storage szolgáltatás támaszkodnak. Minden standard szintű lemezes elméleti legfeljebb körülbelül 500 bemeneti/kimeneti műveletek másodpercenként (IOPS) alkalmas állapotban. Prémium szintű lemez ajánlat részesíti előnyben, kiemelkedő teljesítményű adatbázisokat számítási feladatokhoz, és érhet el akár 5000 iops-érték lemezenként. Egyetlen használhatja, ha a teljesítmény igényeinek, amely – a hatékony IOPS-teljesítmény növelheti több csatlakoztatott lemezek használatakor, amíg adathalmazainak elosztva, és Oracle automatikus Storage szolgáltatásfelügyelet (ASM) használja. Lásd: [Oracle automatikus Storage áttekintése](http://www.oracle.com/technetwork/database/index-100339.html) Oracle ASM adott bővebben. Megpróbálhatja telepítéséről és a egy Linux rendszerű Azure virtuális gépen – Oracle ASM konfigurálása egy példát a [telepítése és az Oracle automatikus Tároláskezelés konfigurálása](configure-oracle-asm.md) oktatóanyag.
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle alkalmazás valós fürt (Oracle RAC)
-Oracle jogosultságifiók-tanúsítványok célja a több csomópontos fürt helyi konfigurációkban egyetlen csomópont a hiba elhárításához. Két helyszíni technológia, amely nem natív, rendkívül nagy kapacitású nyilvános felhő környezeteiben támaszkodik: hálózati csoportos küldéses és a megosztott lemez. Ha az adatbázis-megoldástól igényel Oracle jogosultságifiók-tanúsítványok az Azure-ban, 3. fél szoftverrel, hogy ezek a technológiák kell.  A **Microsoft Azure Certified** nevű ajánlat [Oracle RAC FlashGrid csomópont](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) érhető el az Azure piactéren közzétett FlashGrid Inc. Ez a megoldás, és hogyan működik az Azure-ban további információkért tekintse meg a [FlashGrid megoldást lapon](https://www.flashgrid.io/oracle-rac-in-azure/).
+Oracle jogosultságifiók-tanúsítványok célja a több csomópontos fürt helyi konfigurációkban egyetlen csomópont a hiba elhárításához. Két helyszíni technológia, amely nem natív, rendkívül nagy kapacitású nyilvános felhő környezeteiben támaszkodik: hálózati csoportos küldéses és a megosztott lemez. Ha az adatbázis-megoldástól igényel Oracle jogosultságifiók-tanúsítványok az Azure-ban, 3. fél szoftverrel, hogy ezek a technológiák kell. Oracle jogosultságifiók-tanúsítványok további információkért tekintse meg a [FlashGrid megoldást lapon](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vészhelyreállítás kapcsolatos szempontok
 Az Azure-ban Oracle-adatbázisok használatakor Ön felelős végrehajtási egy magas rendelkezésre állási és vészhelyreállítási megoldás állásidő elkerülése érdekében. 

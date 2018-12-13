@@ -1,7 +1,7 @@
 ---
-title: Mi a Machine Learning automatikus
+title: Automatizált gépi Tanulási algoritmus kiválasztása és hangolás
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg hogyan Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt, hogy mentse a paramétereket, és az Ön által megadott feltételeknek, válassza ki a legjobb algoritmus a modell használatával ideje.
+description: Ismerje meg, hogyan Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt, hogy időt takaríthat meg a paramétereket, és az Ön által megadott feltételeknek, a legjobb algoritmust határozza meg a modellhez.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8c1641c975ff235b581f784f0965caf203a9562f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142533"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270926"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -59,7 +59,7 @@ Az automatikus machine learning egy közös adatelemekkel tekintse meg a teljes 
 
 Példák, és ismerje meg, hogyan hozhat létre automatizált Machine Learning használatával:
 
-+ [Oktatóanyag: Automatikusan az Azure automatikus Machine Learning egy osztályozási modell betanítása](tutorial-auto-train-models.md)
++ [Oktatóanyag: Az Azure automatikus Machine Learning egy osztályozási modell automatikusan betanítása](tutorial-auto-train-models.md)
 
 + [Automatikus képzési beállításainak konfigurálása](how-to-configure-auto-train.md)
 

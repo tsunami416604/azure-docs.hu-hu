@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: fb23c136a24e0c09705061b8893b532a21c1df74
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 684bba0c2f0c6fbaf05ce25ce543da413f1b71e2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081799"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141220"
 ---
-# <a name="keyphrase-entity"></a>keyPhrase entitás
+# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase előre összeállított entitások a LUIS-alkalmazások
 keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés). Nem kell az alkalmazás keyPhrase tartalmazó példa beszédmódok hozzáadása. támogatott keyPhrase entitás [számos országban](luis-language-support.md#languages-supported) részeként a [szövegelemzés](../text-analytics/overview.md) funkciókat. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Előre összeállított keyPhrase entitás feloldása

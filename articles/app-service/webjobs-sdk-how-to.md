@@ -1,5 +1,5 @@
 ---
-title: Az Azure WebJobs SDK használata
+title: Az Azure WebJobs SDK - használata
 description: További információ a WebJobs SDK-hoz készült kód írásával. Hozzon létre eseményvezérelt háttér-feldolgozási feladataikat az Azure-szolgáltatások és a külső szolgáltatások által adatok elérésére.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: d2a0e14ec4708539c7fd8640c8dd3dacef10f508
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6df707f0315603d30446a17bf941d5ab6028dde4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961892"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270467"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 

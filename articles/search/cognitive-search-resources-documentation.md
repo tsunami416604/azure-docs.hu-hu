@@ -1,5 +1,5 @@
 ---
-title: A kognitív keresés dokumentációja erőforrások (Azure Search) |} A Microsoft Docs
+title: A kognitív keresés dokumentációja erőforrások – Azure Search
 description: Jegyzettel ellátott listája cikkeket, oktatóanyagok, minták és blog kapcsolódó a cognitive search számítási feladatokat az Azure Search tesz közzé.
 services: search
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165677"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314601"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentációs forrásanyagot cognitive search számítási feladatokhoz
 

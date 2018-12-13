@@ -10,25 +10,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 12/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 3c829819748309ecbca248afe35cd59f54b202a6
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d2000e626166304e92556e3c965df175a27046ad
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085410"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321067"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
 Ez a cikk bemutatja, hogyan hozható létre egy Azure-SSIS integrációs modul az Azure Data Factory-szolgáltatásidentitás. Használhatja az Azure Active Directory (Azure AD) hitelesítési azokat a felügyelt identitáshoz az Azure Data Factory SQL-hitelesítés helyett egy Azure-SSIS integrációs modul létrehozása.
 
-A felügyelt identitást az ADF használatával kapcsolatos további információkért lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+A data Factory a felügyelt identitás kapcsolatos további információkért lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 > Ha már létrehozott egy Azure-SSIS integrációs modul az SQL-hitelesítéssel, újra az integrációs modul az Azure AD-hitelesítés használatához a PowerShell-lel jelenleg nem lehet konfigurálni.
 
-## <a name="create-a-group-in-azure-ad-and-make-the-managed-identity-for-your-adf-a-member-of-the-group"></a>Hozzon létre egy csoportot az Azure ad-ben és a felügyelt identitás létrehozása az ADF a csoport tagjai
+## <a name="enable-azure-ad-on-azure-sql-database"></a>Az Azure SQL Database az Azure AD engedélyezése
+
+Az Azure SQL Database támogatja az adatbázis létrehozása az Azure AD-felhasználót. Ennek eredményeképpen az Active Directory-rendszergazda állítja be az Azure AD-felhasználó, és ezután jelentkezzen be, az SQL Server Management Studio (SSMS) használatával az Azure AD-felhasználót. Létrehozhat egy felhasználó számára az Azure AD-csoport ahhoz, hogy az integrációs modul létrehozása az SQL Server Integration Services (SSIS) katalógust a kiszolgálón.
+
+### <a name="create-a-group-in-azure-ad-and-make-the-managed-identity-for-your-data-factory-a-member-of-the-group"></a>Hozzon létre egy csoportot az Azure ad-ben, és adja hozzá a felügyelt identitás a data Factory a csoport
 
 Meglévő Azure AD-csoportot is használhat, de újat is létrehozhat az Azure AD PowerShell-lel.
 
@@ -53,7 +57,7 @@ Meglévő Azure AD-csoportot is használhat, de újat is létrehozhat az Azure A
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  A felügyelt identitás számára az ADF hozzáadása a csoporthoz. Követheti [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) beolvasni az egyszerű SZOLGÁLTATÁSIDENTITÁS azonosítója (például 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója).
+3.  A data Factory a felügyelt identitás hozzáadása a csoporthoz. Követheti [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) beolvasni az egyszerű SZOLGÁLTATÁSIDENTITÁS azonosítója (például 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -64,10 +68,6 @@ Meglévő Azure AD-csoportot is használhat, de újat is létrehozhat az Azure A
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
-
-## <a name="enable-azure-ad-on-azure-sql-database"></a>Az Azure SQL Database az Azure AD engedélyezése
-
-Az Azure SQL Database támogatja az adatbázis létrehozása az Azure AD-felhasználót. Ennek eredményeképpen az Active Directory-rendszergazda állítja be az Azure AD-felhasználó, és majd jelentkezzen be az SSMS használatával az Azure AD-felhasználót. Létrehozhat egy felhasználó számára az Azure AD-csoport ahhoz, hogy az integrációs modul létrehozása az SQL Server Integration Services (SSIS) katalógust a kiszolgálón.
 
 ### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Az Azure SQL Database az Azure AD-hitelesítés engedélyezése
 
@@ -121,21 +121,52 @@ A következő lépéshez szükséges [Microsoft SQL Server Management Studio](h
 
 ## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány az Azure AD engedélyezése
 
-Az Azure SQL Database felügyelt példánya nem támogatja a-adatbázis létrehozása az Azure AD-felhasználók eltérő AD-rendszergazdával. Ennek eredményeképpen kell az Azure AD-csoport állítja be az Active Directory-rendszergazdával. Hozzon létre a felhasználó nincs szükségünk.
+Az Azure SQL Database felügyelt példánya támogatja a közvetlenül az MSI-vel egy adatbázis létrehozása. Nem kell a data factory MSI csatlakozzon egy Active Directory-csoportba, vagy hozza létre a felhasználó MI.
 
-Is [konfigurálása az Azure AD-hitelesítés az SQL Database felügyelt példányain kiszolgáló](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) az alábbi lépéseket követve:
+### <a name="enable-azure-ad-authentication-for-the-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példányát az Azure AD-hitelesítés engedélyezése
 
-7.  Az Azure Portalon válassza ki a **minden szolgáltatás** -> **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
+1.   Az Azure Portalon válassza ki a **minden szolgáltatás** -> **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
 
-8.  Válassza ki az SQL server az Azure AD-hitelesítés engedélyezni kell.
+1.   Válassza ki az SQL server az Azure AD-hitelesítés engedélyezni kell.
 
-9.  Az a **beállítások** a panel, válassza ki a szakasz **Active Directory-rendszergazda**.
+1.   Az a **beállítások** a panel, válassza ki a szakasz **Active Directory-rendszergazda**.
 
-10. A parancssávon válassza ki a **rendszergazda beállítása**.
+1.   A parancssávon válassza ki a **rendszergazda beállítása**.
 
-11. Keresés és az Azure AD-csoport (például SSISIrGroup) válassza ki és **válassza ki.**
+1.   Válassza ki az Azure AD felhasználói fiók lehet végezni a kiszolgáló rendszergazdája, és válassza ki a **kiválasztása**.
 
-12. A parancssávon válassza ki a **mentéséhez.**
+1.   A parancssávon válassza ki a **mentése**.
+
+### <a name="add-data-factory-msi-as-a-user-to-the-azure-sql-database-managed-instance"></a>A data factory MSI felhasználóként hozzá az Azure SQL Database felügyelt példánya
+
+1.  Indítsa el az SQL Server Management Studiót.
+
+2.  Jelentkezzen be egy SQL-rendszergazdai fiókkal vagy az Active Directory-rendszergazdai fiókkal.
+
+3.  Az Object Explorerben bontsa ki az adatbázisokat -> rendszer-adatbázisok mappát.
+
+4.  Kattintson a jobb gombbal a master adatbázisban, és válassza ki **új lekérdezés**.
+
+5.  Kövesse a cikk [Azure Data Factory-szolgáltatásidentitás](data-factory-service-identity.md) beolvasni az egyszerű szolgáltatás IDENTITÁS alkalmazásazonosítóját. (Ne használja SZOLGÁLTATÁSIDENTITÁS azonosítója erre a célra.)
+
+6.  A lekérdezési ablakban futtassa a következő szkriptet a bináris típusú, a SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója konvertálni:
+
+    ```sql
+    DECLARE @applicationId uniqueidentifier = {your service identity application id}
+    select CAST(@applicationId AS varbinary)
+    ```
+
+7.  Az eredmény ablakból beszerezheti az értéket.
+
+8.  A lekérdezési ablakban törölje, és futtassa a következő szkriptet:
+
+    ```sql
+    CREATE LOGIN [{MSI name}] FROM EXTERNAL PROVIDER with SID ={your service identity application id in binary type}, TYPE = E
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{MSI name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{MSI name}]
+    ```
+
+9.  A parancs futtatása sikeresen befejeződik.
 
 ## <a name="provision-the-azure-ssis-ir-in-the-portal"></a>A portálon az Azure-SSIS integrációs modul üzembe helyezése
 

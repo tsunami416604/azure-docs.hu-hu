@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: aa163d215f4b9c396585dbba63883a3d1beff457
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638375"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164262"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az az elosztott nyomkövetési?
 
-Modern felhő- és mikroszolgáltatás-architektúrák megjelenésével növekedését egyszerű, függetlenül üzembe helyezhető szolgáltatások, amelyek segítségével csökkentheti a költségeket a rendelkezésre állási és az átviteli sebesség növelése mellett. Azonban amíg ezek áthelyezések száma – az egyes szolgáltatások végzett megérteni a teljes, igazi érdeme, átfogó rendszerek nehezebb kapcsolatos okból és a hibakereséshez.
+A modern felhőalapú megjelenésével és [mikroszolgáltatások](http://azure.com/microservices) architektúrák növekedését egyszerű, függetlenül üzembe helyezhető szolgáltatások, amelyek segítségével csökkentheti a költségeket a rendelkezésre állási és az átviteli sebesség növelése mellett. Azonban amíg ezek áthelyezések száma – az egyes szolgáltatások végzett megérteni a teljes, igazi érdeme, átfogó rendszerek nehezebb kapcsolatos okból és a hibakereséshez.
 
 A monolitikus architektúrák közben használtunk a hívási hibakereséséről. Hívási azok ragyogó eszközök megjelenítéséhez, a folyamat-végrehajtás (módszer A hívott metódus B, c. módszer neve), valamint a részletek és a paraméterek egyes ezeket a hívásokat. Ez a nagyszerű kódtömbök vagy egyetlen folyamat futó szolgáltatások esetén, de hogyan tegye azt debug mikor a hívás nem egy folyamat határán, nem csak a helyi veremben hivatkozást? 
 

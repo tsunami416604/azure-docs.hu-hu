@@ -1,11 +1,11 @@
 ---
-title: Konfigurálja a Load Balancer TCP időtúllépést |} Microsoft Docs
-description: Konfigurálja a Load Balancer TCP üresjárati időtúllépés
+title: Load Balancer TCP üresjárati időkorlát konfigurálása az Azure-ban
+titlesuffix: Azure Load Balancer
+description: Load Balancer TCP üresjárati időkorlát konfigurálása
 services: load-balancer
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: 4625c6a8-5725-47ce-81db-4fa3bd055891
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24a7d2354693e362d7709b8817c438555caae0e3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855228"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256196"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer TCP üresjárati időtúllépés beállításainak konfigurálása
+# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>TCP üresjárati időkorlátjának az Azure Load Balancer konfigurálása
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Az alapértelmezett konfiguráció esetén Azure Load Balancer rendelkezik egy üresjárati időtúllépés beállítás 4 perces. Ha adott ideig tartó tétlenség hosszabb, mint az időtúllépési értéket, nincs nem biztos, hogy a TCP- vagy HTTP-munkamenetben megmarad az ügyfél és a felhőalapú szolgáltatás között.
+Az alapértelmezett konfigurációban az Azure Load Balancerhez egy 4 perces üresjárati időkorlátot beállítás tartozik. Ha egy tétlen időszak hosszabb, mint az időtúllépési érték, nincs garancia arra, amely a TCP- vagy HTTP-munkamenetben megmarad az ügyfél és a felhőszolgáltatás között.
 
-Ha a kapcsolat megszakad, az ügyfélalkalmazás jelenhet meg a következő hibaüzenet: "a kapcsolat lezárva: egy nyitott állapotban tartandó kapcsolatot bezárt a kiszolgáló."
+Ha a kapcsolat megszakad, az ügyfélalkalmazás a következő hibaüzenet jelenhet meg: "A kapcsolat lezárva: Egy kapcsolatot, amely a várt tartandó bezárta a kiszolgálóhoz."
 
-Általános gyakorlat, hogy egy életben tartási TCP használja. Ez az eljárás tartja a kapcsolat aktív hosszabb ideig. További információkért lásd: ezek [.NET példák](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Életben tartási engedélyezve van, a rendszer küld csomagokat, a kapcsolat tétlen időszak. Ezek a életben tartási csomagok győződjön meg arról, hogy az üresjárati időkorlátot a rendszer soha nem éri el a kapcsolat megmarad, hosszú ideig.
+Általános gyakorlat, hogy a keep-alive TCP. Ez az eljárás biztosítja, hogy a kapcsolat aktív hosszabb ideig. További információkért lásd: ezek [.NET-példáit](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Életben tartási engedélyezve van, és csomagok küldése a kapcsolat inaktív időszakai alatt. Ezek a életben tartási csomagok győződjön meg arról, hogy az üresjárati időkorlátja soha nem elérni, és a egy hosszú ideig változatlan marad a kapcsolatot.
 
-Ez a beállítás csak a bejövő kapcsolatok működik. A kapcsolat elvesztésének elkerülése, konfigurálja a TCP életben tartási időközzel kisebb, mint az üresjárati időkorlát, vagy növelje az üresjárati időkorlát értékét. Az ilyen helyzetek feltételeinek megteremtésére, vettünk konfigurálható üresjárati időtúllépés támogatása. Beállíthatja azt az a 4-30 perces időtartamot.
+Ez a beállítás csak a bejövő kapcsolatok esetében működik. A kapcsolat elvesztésének elkerüléséhez életben tartási TCP időközt kevesebb, mint az üresjárati időkorlát konfigurálása, vagy növelje az üresjárati időkorlát értékét. Az ilyen forgatókönyvek támogatása érdekében hozzáadtunk egy konfigurálható üresjárati időkorlát támogatása. Most már beállíthatja a 4 – 30 perc alatt az időtartam.
 
-TCP életben tartási forgatókönyvekben, ahol eszközakkumulátor élettartamának nem korlátozás esetén működik. Nem ajánlott, az alkalmazásokat. A TCP életben mobilalkalmazás használatával a telep eszköz gyorsabb.
+Életben tartási TCP jól működik olyan forgatókönyvekben, ahol akkumulátor-élettartamát nem egy korlátozás. Nem ajánlott a mobilalkalmazásokhoz. A TCP életben tartási mobilalkalmazás használatával a telep eszköz gyorsabban.
 
-![TCP-időtúllépés](./media/load-balancer-tcp-idle-timeout/image1.png)
+![A TCP időtúllépési](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Az alábbi szakaszok azt ismertetik, hogyan időtúllépést módosítása a virtuális gépek és a felhőalapú szolgáltatások.
+Az alábbi szakaszok ismertetik a virtuális gépek üresjárati időkorlátjának módosítása és a felhőszolgáltatások.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Konfigurálja a TCP-időtúllépés a példányszintű nyilvános IP-cím és 15 perc
+## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>A TCP-időtúllépést állítsa a példányszintű nyilvános IP-címek és 15 perc
 
 ```powershell
 Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 ```
 
-A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs megadva, az alapértelmezett időtúllépési érték 4 perces. Elfogadható időtúllépés tartománya 4 – 30 perc.
+A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúllépési érték 4 perc. Az elfogadható időtúllépési tartománya 4 – 30 perc.
 
-## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Az üresjárati időkorlát be, ha egy virtuális gépen egy Azure-végpont létrehozása
+## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Az időtúllépést beállítani, ha egy Azure-végpont létrehozása egy virtuális gépen
 
-Az időkorlát a végpont módosításához használja a következő:
+A végpont a timeout beállítás módosításához használja a következőt:
 
 ```powershell
 Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
 ```
 
-Az üresjárati időkorlát konfigurációs lekéréséhez használja a következő parancsot:
+Az üresjárati időkorlát konfigurálása lekéréséhez használja a következő parancsot:
 
     PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
@@ -74,17 +74,17 @@ Az üresjárati időkorlát konfigurációs lekéréséhez használja a követke
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>A TCP időtúllépési be egy elosztott terhelésű végpont készletének
+## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>A TCP időtúllépési egy elosztott terhelésű végpont készletének beállítása
 
-Ha végpont egy elosztott terhelésű végpont készletének részét képezik, az TCP időtúllépési az elosztott terhelésű végpont készletének be kell állítani. Példa:
+Ha a végpont egy elosztott terhelésű végpont készletének részét képezik, a TCP időtúllépési az elosztott terhelésű végpont készletének be kell állítani. Példa:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
 ```
 
-## <a name="change-timeout-settings-for-cloud-services"></a>Cloud services időtúllépés beállításainak módosítása
+## <a name="change-timeout-settings-for-cloud-services"></a>A cloud services-időtúllépési beállításainak módosítása
 
-Az Azure SDK használatával a felhőalapú szolgáltatás frissítése. A felhőszolgáltatások végpontbeállításokat elvégezte a .csdef fájlban. A központi telepítés frissítésének a felhőszolgáltatás üzemelő példányának TCP időtúllépés frissítése szükséges. Kivétel, ha a TCP időtúllépési csak a nyilvános IP-cím van megadva. Nyilvános IP-beállításokat a .cscfg fájlban, és frissítheti azokat a központi telepítés update és a frissítés.
+Az Azure SDK segítségével a felhőszolgáltatása frissítését. A cloud services végpontbeállítások választja ki a .csdef fájl. Egy üzemelő példány frissítése a TCP időtúllépési számára egy felhőszolgáltatás üzemelő példányának frissítése szükséges. Egy kivétel az, ha a TCP időtúllépési csak a nyilvános IP-cím van megadva. Nyilvános IP-beállításokat a .cscfg fájlban, és frissítheti azokat a központi telepítési update és a frissítés.
 
 A végpont beállításait a .csdef változások a következők:
 
@@ -111,9 +111,9 @@ A nyilvános IP-címek a timeout beállítás a .cscfg változások a következ�
 </NetworkConfiguration>
 ```
 
-## <a name="rest-api-example"></a>REST API – példa
+## <a name="rest-api-example"></a>Példa REST API-val
 
-A szolgáltatáskezelő API használatával konfigurálhatja a TCP üresjárati időkorlátját. Győződjön meg arról, hogy a `x-ms-version` fejléc értéke verzió `2014-06-01` vagy újabb. A megadott terhelésű bemeneti végpontja egy központi telepítésben lévő összes virtuális gép konfigurációjának frissítése.
+A TCP üresjárati időkorlát konfigurálhatja a service management API használatával. Győződjön meg arról, hogy a `x-ms-version` fejléc értéke verzió `2014-06-01` vagy újabb. A megadott kiegyenlített terhelésű vstupní koncové body egy központi telepítésben lévő összes virtuális gép konfigurációjának frissítése.
 
 ### <a name="request"></a>Kérés
 
@@ -152,10 +152,10 @@ A szolgáltatáskezelő API használatával konfigurálhatja a TCP üresjárati 
 </LoadBalancedEndpointList>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Belső terheléselosztó áttekintése](load-balancer-internal-overview.md)
+[Belső load balancer áttekintése](load-balancer-internal-overview.md)
 
-[Első lépések egy internetre irányuló terheléselosztót konfigurálása](load-balancer-get-started-internet-arm-ps.md)
+[Ismerkedés az internetkapcsolattal rendelkező terheléselosztó konfigurálása](load-balancer-get-started-internet-arm-ps.md)
 
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)

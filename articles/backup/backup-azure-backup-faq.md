@@ -1,6 +1,6 @@
 ---
 title: Azure Backup – Gyakori kérdések
-description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
+description: 'Gyakori kérdésekre adott válaszok: Azure Backup-funkciók többek között a Recovery Services tárolók, biztonsági, hogyan működik, titkosítás és korlátozások. '
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 647ed64d405424431419da1e693abea2bdf07ace
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261666"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262265"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -235,8 +235,8 @@ Igen. Adatok titkosítása az AES256 használatával a helyszíni gépen. Az ada
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Az adatokról készült biztonsági másolat az Azure-on is titkosított?
 
 Igen. Az adatok, az Azure-ban a titkosított inaktív.
-- A helyi biztonságimásolat-készítési titkosítás, a visszaállítás biztosított Azure-ba való biztonsági mentéshez adjon meg a jelszót használja.
-- Az Azure virtuális gépek adatok el vannak titkosítva-a-visszaállítási Storage Service Encryption (SSE) használatával.
+- A helyszíni biztonsági mentés inaktív titkosítási biztosított Azure-ba való biztonsági mentéshez adjon meg a jelszót használja.
+- Az Azure virtuális gépek az adatok titkosítása inaktív Storage Service Encryption (SSE) használatával el.
 
 A Microsoft soha nem fejt vissza adatokat.
 

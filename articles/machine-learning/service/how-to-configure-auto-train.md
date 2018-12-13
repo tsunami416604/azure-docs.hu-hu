@@ -1,5 +1,5 @@
 ---
-title: Automatizált machine learning-példakísérleteket konfigurálása
+title: Automatizált Machine Learning-kísérletek létrehozása
 titleSuffix: Azure Machine Learning service
 description: Automatizált gépi tanulási algoritmus választja ki az Ön számára, és készen áll a központi telepítési modell generál. Ismerje meg a beállításokat, amelyek segítségével automatizált machine learning-példakísérleteket konfigurálása.
 author: nacharya1
@@ -11,22 +11,22 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f5237ab2b6970772e1f08264bb44223640c33a37
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140166"
+ms.locfileid: "53187262"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
 Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja. Ebben az útmutatóban megtudhatja, hogyan különböző konfigurációs beállításainak megadásához.
 
-Egy automatizált machine learning-példakísérleteket Példák megtekintése: [oktatóanyag: egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md) vagy [és a felhőbenautomatizáltmachinelearning-modellekbetanításához](how-to-auto-train-remote.md).
+Egy automatizált machine learning-példakísérleteket Példák megtekintése: [oktatóanyag: Egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md) vagy [és a felhőben automatizált machine learning-modellek betanításához](how-to-auto-train-remote.md).
 
 Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 
-* Válassza ki a kísérlet típusát: besorolás, regressziós és előrejelzés
+* A kísérlet típusának kiválasztása: Besorolás, regressziós és előrejelzés
 * Az adatforrás, formátumokat és adatok újbóli lekérésére
 * Válassza a compute-cél: helyi vagy távoli
 * Automatizált machine learning-kísérlet beállításai
@@ -219,7 +219,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `iteration_timeout_minutes` |   Korlátozza egy adott iterációhoz szükséges idő (perc). Ha egy iterációját meghaladja a megadott mennyiséget, a iteráció beolvasása megszakítva. Ha nincs megadva, a rendszer az iteráció továbbra is fut, amíg befejeződik. |   None
 `n_cross_validations`   |A keresztellenőrzés felosztásainak száma| None
 `validation_size`   |Állítsa be az összes képzési minta százalékában érvényesítési mérete.|  None
-`preprocess` | Igaz/hamis <br/>Igaz lehetővé teszi, hogy a bemeneti adatok az előfeldolgozási végrehajtásához kísérletezhet. Következő része a előfeldolgozása<li>Hiányzó adatok: Biztosítják a hiányzó adatokat-numerikus az átlag, a legtöbb előfordulásával szöveg </li><li>Kategorikus értékek: Adattípusa szám és egyedi száma értékek e kevesebb mint 5 %-os, az egyik gyakori kódolási alakíthatók át egymásba </li><li>Stb. Ellenőrizze a teljes listát [a GitHub-adattár](https://aka.ms/aml-notebooks)</li><br/>Megjegyzés: Ha az adatok ritka nem használhat előfeldolgozása = true |  False (Hamis) | 
+`preprocess` | Igaz/hamis <br/>Igaz lehetővé teszi, hogy a bemeneti adatok az előfeldolgozási végrehajtásához kísérletezhet. Következő része a előfeldolgozása<li>Hiányzó adatok: Biztosítják a hiányzó adatokat-numerikus az átlag, a legtöbb előfordulásával szöveg </li><li>Kategorikus értékek: Adattípus esetén a numerikus és egyedi értékek száma a kevesebb mint 5 %-os, az egyik gyakori kódolási alakíthatók át egymásba </li><li>Stb. Ellenőrizze a teljes listát [a GitHub-adattár](https://aka.ms/aml-notebooks)</li><br/>Megjegyzés: Ha az adatok ritka nem használhat előfeldolgozása = true |  False (Hamis) | 
 `blacklist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja az egyes algoritmusok kizárása a kísérlet. Akkor hasznos, ha vegye figyelembe, hogy aránytól nem működnek jól az adatkészlet. Kivéve a algoritmusok is takaríthat meg számítási erőforrásokat és képzési időt.<br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   None
 `whitelist_models`  | Automatizált machine learning-kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja úgy, hogy bizonyos algoritmust a kísérlethez tartalmazza. Akkor hasznos, ha vegye figyelembe, hogy aránytól esetén működik megfelelően az adatkészlet. <br/>Besorolási megengedett értékek<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Engedélyezett értékek regresszió<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Megengedett értékek az előrejelzés<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  None
 `verbosity` |Folyamatban van a részletes és a kritikus folyamatban információval azt szabályozza, a naplózási szint a legkevésbé. Részletességi szint ugyanazokat az értékeket vesz igénybe, a python-naplózás csomagban meghatározott módon. Engedélyezett értékek a következők:<br/><li>logging.INFO</li><li>a naplózás. FIGYELMEZTETÉS</li><li>a naplózás. HIBA TÖRTÉNT</li><li>a naplózás. KRITIKUS</li>  | logging.INFO</li> 
@@ -244,8 +244,8 @@ Ha `preprocess=True`, a következő adatok előfeldolgozása lépések végrehaj
     *   Numerikus funkciók imputálására a hiányzó értékek az oszlopban szereplő értékek átlaga.
     *   Kategorikus funkciók imputálására leggyakoribb értéket a hiányzó értékeket.
 1.  További funkciók létrehozása
-    * Dátum és idő funkciók: év, hónap, nap, hét napja, nap, év, negyedév, az év, óra, perc, másodperc.
-    * Szöveg funkciók: kifejezés gyakorisága word unigram, bi-gramokat és tri-gram, Count vectorizer alapján.
+    * A dátum és idő jellemzői: Év, hónap, nap, hét napja, nap, év, negyedév, az év, óra, perc, másodperc.
+    * Az SMS jellemzők: Kifejezés gyakorisága word unigram, bi-gramokat és tri-gram, Count vectorizer alapján.
 1.  Átalakítások és kódolásokat
     * Numerikus nagyon kevés egyedi értékkel kategorikus funkciók alakítja át a funkciókat.
     * Függően Számosság kategorikus funkcióját hajtsa végre a kódolás vagy (ujjlenyomat) egy gyakori kódolási címke.

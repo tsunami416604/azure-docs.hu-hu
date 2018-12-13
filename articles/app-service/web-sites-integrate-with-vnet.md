@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások integrálása az Azure-beli virtuális hálózathoz
+title: Alkalmazások integrálása az Azure Virtual Network – az Azure App Service-ben
 description: Bemutatja, hogyan csatlakozhat egy új vagy meglévő Azure virtuális hálózat az Azure App Service-alkalmazás
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
-ms.openlocfilehash: e086c187129799e499c7ac057b1755a35f1f2327
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971147"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273357"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -30,7 +31,7 @@ Az Azure App Service rendelkezik két formában.
 
 Ez a dokumentum halad végig a VNet-integráció szolgáltatást, amely a több-bérlős App Service-ben a használatra szántak.  Ha az alkalmazás [App Service Environment-környezet][ASEintro], akkor már egy virtuális hálózatban, és nem igényli a VNet-integráció funkció az azonos virtuális hálózatban található erőforrások eléréséhez.
 
-VNet-integráció a webes alkalmazás hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló, de nem titkos való hozzáférést biztosít a webes alkalmazás a virtuális hálózatról. Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. Privát hozzáférést csak akkor használható a konfigurált egy belső Load Balancer (ILB) rendelkező ASE. Az ILB ASE használata részletesen, kezdje Itt a cikk: [létrehozása és a egy ILB ASE használatával][ILBASE]. 
+VNet-integráció a webes alkalmazás hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló, de nem titkos való hozzáférést biztosít a webes alkalmazás a virtuális hálózatról. Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. Privát hozzáférést csak akkor használható a konfigurált egy belső Load Balancer (ILB) rendelkező ASE. Az ILB ASE használata részletesen indítsa el a cikk itt: [Létrehozásáról és használatáról az ILB ASE][ILBASE]. 
 
 VNet-integráció-adatbázisok az alkalmazások elérésének lehetővé tétele és a virtuális hálózatban futó webszolgáltatások gyakran használják. A VNet-integráció nem kell egy nyilvános végpontot elérhetővé az alkalmazások is, de a gép nem internetes irányítható Magáncímeket helyette használja. 
 
@@ -161,7 +162,7 @@ Nincsenek három kapcsolódó költségek a VNet-integráció funkció használa
 * Adatátviteli költségek
 * VPN-átjáró költségek.
 
-Az alkalmazások kell lennie a Standard, prémium szintű vagy PremiumV2 App Service-csomag. A költségekre Itt láthatja a további részletek: [App Service díjszabását][ASPricing]. 
+Az alkalmazások kell lennie a Standard, prémium szintű vagy PremiumV2 App Service-csomag. További részleteket a költségekre Itt tekintheti meg: [App Service díjszabását][ASPricing]. 
 
 Nincs kimenő adatforgalom díja akkor is, ha a virtuális hálózat ugyanabban az adatközpontban. Ezeket a díjakat olyan [Data Transfer Díjszabásának részletei][DataPricing]. 
 

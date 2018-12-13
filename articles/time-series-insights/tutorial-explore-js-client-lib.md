@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
+title: Ismerkedés az Azure Time Series Insights JavaScript ügyféloldali kódtár |} A Microsoft Docs
 description: Megismerheti az Azure Time Series Insights JavaScript ügyfélkódtárat és a kapcsolódó programozási modellt.
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706993"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269974"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -82,7 +83,7 @@ Először tekintsük meg a böngészőben renderelt oldal mögött lévő HTML �
 
 3. Bontsa ki a `<div class="chartsWrapper">` elemet, és további alárendelt `<div>` elemeket talál. Ezekkel helyezhetők el az egyes diagramvezérlő példák. Figyelje meg, hogy néhány `<div>` elempár látható, egy-egy mindegyik diagrampéldához:
 
-   - Az első (`class="rowOfCardsTitle"`) elem egy leíró címet tartalmaz, amely összegzi a diagramok által bemutatott elemeket. Például: „Statikus vonaldiagramok teljes méretű jelmagyarázatokkal”.
+   - Az első (`class="rowOfCardsTitle"`) elem egy leíró címet tartalmaz, amely összegzi a diagramok által bemutatott elemeket. Példa: "Statikus rendelkező vonaldiagramok miniatűrhöz jelmagyarázatok."
    - A második (`class="rowOfCards"`) elem egy szülő, amely további alárendelt `<div>` elemeket tartalmaz, amelyek elhelyezik a sorokon belüli tényleges diagramvezérlő(ke)t.
 
    ![Törzs div elemei](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
@@ -95,8 +96,8 @@ Először tekintsük meg a böngészőben renderelt oldal mögött lévő HTML �
 
 Bár nem tekintjük át részletesen, a TSI-ügyfélkódtár (**tsclient.js**) alapvetően két fontos kategória absztrakcióját nyújtja:
 
-- **A TSI-lekérdezési API-k hívására szolgáló burkoló módszerek**: Olyan REST API-k, amelyek lehetővé teszik a TSI-adatok lekérdezését összesítő kifejezésekkel. A módszerek a kódtár `TsiClient.Server` névterében vannak rendezve.
-- **A diagramvezérlők néhány típusának létrehozására és kitöltésére szolgáló módszerek**: A weboldalon lévő összesített TSI-adatok renderelésére szolgálnak. A módszerek a kódtár `TsiClient.UX` névterében vannak rendezve.
+- **A TSI lekérdezési API-k meghívására szolgáló burkoló módszerek**: REST API-k, amelyek lehetővé teszik, hogy a lekérdezés a TSI-adatok összesítő kifejezések használatával. A módszerek a kódtár `TsiClient.Server` névterében vannak rendezve.
+- **Módszerek a létrehozása és feltöltése számos különböző típusú vezérlők diagramkészítési**: A TSI egy weblap összesített adatok használt módszerek. A módszerek a kódtár `TsiClient.UX` névterében vannak rendezve.
 
 A következő alapelvek univerzálisak, és általában érvényesek a TSI-ügyfélkódtár API-kra.
 
@@ -235,15 +236,15 @@ Tekintse meg az `// Example 13/14/15` megjegyzés alatt lévő HTML-szakasz mög
 
 1. A rendszer először egyéni műveletek sorozatát definiálja. Mindegyik művelet egy egy vagy több elemből álló tömböt tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
 
-   - `barChartActions`: Ez a művelet a tortadiagram helyi menüjét határozza meg, amely egy egyetlen elemet definiáló elemet tartalmaz:
-     - `name`: A menüelemhez használt szöveg: „Print parameters to console” (Paraméterek nyomtatása konzolra).
-     - `action`: A menüelemhez tartozó művelet. Ez a művelet mindig egy névtelen funkció, amely három argumentumot vesz fel a diagram létrehozásához használt összesítő kifejezés alapján. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
-       - `ae`: az összesítő kifejezések tömbje.
-       - `splitBy`: a splitBy érték.
-       - `timestamp`: az időbélyeg.
+   - `barChartActions`: Ez a művelet a helyi menü meghatározásához egy elem egy elemet tartalmaz kördiagram határozza meg:
+     - `name`: A szöveg, amely a menüelem szolgál: "Nyomtassa ki a konzol paramétereit."
+     - `action`: A menüelem tartozó művelet. Ez a művelet mindig egy névtelen funkció, amely három argumentumot vesz fel a diagram létrehozásához használt összesítő kifejezés alapján. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
+       - `ae`: Az összesítő kifejezés tömb.
+       - `splitBy`: A splitBy érték.
+       - `timestamp`: Az időbélyeg.
 
-   - `pieChartActions`: Ez a művelet a sávdiagram helyi menüjét határozza meg, amely egy egyetlen elemet definiáló elemet tartalmaz. Az alakzat és a séma megegyezik az előző `barChartActions` elemmel, de figyelje meg, hogy az `action` funkció jelentősen eltér: példányosítja és rendereli a sávdiagramot. Azt is figyelje meg, hogy az `ae` argumentum használatával határozható meg az összesítő kifejezések tömbje, amelyet a rendszer a futásidőben ad át a menüelem megnyílásakor. A funkció az `ae.contextMenu` tulajdonságot is beállítja a `barChartActions` helyi menüvel.
-   - `contextMenuActions`: Ez a művelet a vonaldiagram helyi menüjét határozza meg, amely a három menüelemet definiáló három elemet tartalmaz. Az egyes elemek alakja és sémája megegyezik az előzőleg leírt elemekével. Akárcsak a `barChartActions` elem, az első elem a böngésző konzolablakába írja a három funkcióargumentumot. A `pieChartActions` elemhez hasonlóan a második két elem a torta- és a sávdiagramokat példányosítja és jeleníti meg. A második két elem az `ae.contextMenu` tulajdonságukat is beállítja a `pieChartActions` és `barChartActions` helyi menükkel.
+   - `pieChartActions`: Ez a művelet az oszlopdiagramot, meghatározásához egy elem egy elemet tartalmazó helyi menüjére határozza meg. Az alakzat és a séma megegyezik az előző `barChartActions` elemmel, de figyelje meg, hogy az `action` funkció jelentősen eltér: példányosítja és rendereli a sávdiagramot. Azt is figyelje meg, hogy az `ae` argumentum használatával határozható meg az összesítő kifejezések tömbje, amelyet a rendszer a futásidőben ad át a menüelem megnyílásakor. A funkció az `ae.contextMenu` tulajdonságot is beállítja a `barChartActions` helyi menüvel.
+   - `contextMenuActions`: Ez a művelet határozza meg a helyi menüben a vonaldiagram, amelyek három-három menü elemeinek definiálásához elemeket tartalmazza. Az egyes elemek alakja és sémája megegyezik az előzőleg leírt elemekével. Akárcsak a `barChartActions` elem, az első elem a böngésző konzolablakába írja a három funkcióargumentumot. A `pieChartActions` elemhez hasonlóan a második két elem a torta- és a sávdiagramokat példányosítja és jeleníti meg. A második két elem az `ae.contextMenu` tulajdonságukat is beállítja a `pieChartActions` és `barChartActions` helyi menükkel.
 
 2. Ezután két összesítő kifejezés kerül az `aes` összesítőkifejezés-tömbbe, meghatározva mindegyik `contextMenuActions` elem tömbjét. Ezeket a kifejezéseket a rendszer a vonaldiagram vezérlőjével használja.
 
@@ -262,10 +263,10 @@ Az ecsetekkel időtartományok korlátozhatók olyan műveletek meghatározásá
 Az ecsetek bemutatásához használt kód az előző „Line Chart with Context Menu to Create Pie/Bar Chart” (Vonaldiagram torta-/sávdiagram létrehozására szolgáló helyi menüvel) példában látható, amely az [előugró helyi menüket](#popup-context-menus-section) ismerteti.
 
 1. Az ecsetműveletek abból a szempontból hasonlítanak a helyi menükhöz, hogy egy egyéni műveletsorozatot határoznak meg az ecsethez. Mindegyik művelet egy egy vagy több elemből álló tömböt tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
-   - `name`: A menüelemhez használt szöveg: „Print parameters to console” (Paraméterek nyomtatása konzolra).
-   - `action`: A menüelemmel társított művelet, amely mindig egy névtelen funkció, és két argumentumot vesz fel. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
-      - `fromTime`: az ecset kiválasztásának „ettől” időbélyege.
-      - `toTime`: az ecset kiválasztásának „eddig” időbélyege.
+   - `name`: A szöveg, amely a menüelem szolgál: "Nyomtassa ki a konzol paramétereit."
+   - `action`: A menüelem, így mindig egy névtelen-függvény, amely két argumentumot tartozó művelet. Ebben az esetben az argumentumok a böngésző konzolablakába vannak írva:
+      - `fromTime`: A "feladó" időbélyeg az ecset kijelölés.
+      - `toTime`: A "záró" időbélyeg az ecset kijelölés.
 
 2. Az ecsetműveletek egy másik diagrambeállítási tulajdonságként vannak hozzáadva. Figyelje meg a `linechart.Render` hívásnak átadott `brushContextMenuActions: brushActions` tulajdonságot.
 
@@ -285,6 +286,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 A fentiekben taglaltak szerint a TSI-mintaalkalmazás bemutató adatkészletet használ. Ha szeretné megtudni, hogy hogyan hozhatja létre saját TSI-környezetét és -adatkészletét, lépjen tovább a következő cikkre:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure Time Series Insights-környezet létrehozása](tutorial-create-populate-tsi-environment.md)
+> [Oktatóanyag: Az Azure Time Series Insights-környezet létrehozása](tutorial-create-populate-tsi-environment.md)
 
 
