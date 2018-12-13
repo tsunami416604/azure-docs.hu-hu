@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 04f634406eacd05e772d2b672cdfb2af6fb42054
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2e18f07748801e50db644588146e7867ba84095
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081506"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-webalkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez
 
@@ -49,7 +49,7 @@ A jelen cikkben lévő utasítások követése előtt győződjön meg arról, h
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * A [Node.js][Node.js] 6.10-es vagy újabb verziója.
-* [Express generator](http://www.expressjs.com/starter/generator.html) (az Expresst az `npm install express-generator -g` segítségével telepítheti)
+* [Express generator](https://www.expressjs.com/starter/generator.html) (az Expresst az `npm install express-generator -g` segítségével telepítheti)
 * Telepítse a [Git][Git] szoftvert a helyi munkaállomáson.
 
 ## <a name="_Toc395637761"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
@@ -60,7 +60,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
 ## <a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
-Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-projektet az [Express](http://expressjs.com/)-keretrendszer használatával.
+Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-projektet az [Express](https://expressjs.com/)-keretrendszer használatával.
 
 1. Nyissa meg kedvenc terminálját, például a Node.js parancssort.
 
@@ -483,7 +483,7 @@ Ebben az oktatóanyagban megismerhette, hogyan hozhat létre Node.js-webalkalmaz
 > [Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB használatával](mobile-apps-with-xamarin.md)
 
 
-[Node.js]: http://nodejs.org/
-[Git]: http://git-scm.com/
+[Node.js]: https://nodejs.org/
+[Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
 

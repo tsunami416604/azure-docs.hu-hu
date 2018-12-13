@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422960"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Oktatóanyag: Azure Active Directory-integráció a Cloud Security fabrickel
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Cloud Security fabrickel, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy a Felhőbeli biztonsági háló egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD-be a felhő biztonsági háló integráció konfigurálásához, hoz
 
 **A Felhőbeli biztonsági háló hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -108,12 +108,14 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![A Felhőbeli biztonsági háló tartomány és URL-címek egyszeri bejelentkezési adatait](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -166,7 +168,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>A Felhőbeli biztonsági háló tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon meghívta a Felhőbeli biztonsági háló hoz létre. Együttműködve [támogatási csapatával a Felhőbeli biztonsági háló](mailto:support@cloudlock.com) a felhasználók hozzáadása a Felhőbeli biztonsági háló platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy felhasználói Britta Simon meghívta a Felhőbeli biztonsági háló hoz létre. Együttműködve [támogatási csapatával a Felhőbeli biztonsági háló](mailto:support@cloudlock.com) a felhasználók hozzáadása a Felhőbeli biztonsági háló platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -198,7 +200,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéses ho
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

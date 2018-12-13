@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Azure-jegyzetfüzetek projektet egy egyéni környezettel rendelkező |} A Microsoft Docs
+title: Egyéni környezettel rendelkező Azure notebookok projekt létrehozása
 description: A telepített csomagokat, és az indítási parancsfájlok egy meghatározott készletével együtt konfigurált Azure-jegyzetfüzetekben hozzon létre egy új projektet.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 48579f797d0ff94a86fdbb25fa1fc814f63d7788
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9e5f4d6f2086048e428f313bc49cc6f599ee1bec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856604"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085331"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Egyéni környezettel rendelkező-projekt létrehozása
 

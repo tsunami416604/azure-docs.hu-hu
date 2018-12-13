@@ -1,5 +1,5 @@
 ---
-title: Üzenetek küldése és fogadása az Azure Event Hubsból a Python használatával |} A Microsoft Docs
+title: Használhatja a Pythont küldhet és fogadhat üzeneteket – Azure Event Hubs |} A Microsoft Docs
 description: Ismerje meg, hogyan küldhet eseményeket származó eseményeket fogadni, és a Python használatával az Event Hubs keresztüli adatfolyamküldés események rögzítése.
 keywords: ''
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 9c9c1bd909222ebb3fed57fb31c4f19404382cd4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730196"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084974"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Python-alkalmazás az Azure Event Hubs használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. További információkért lásd: [az Event Hubs bemutatása](event-hubs-what-is-event-hubs.md). 

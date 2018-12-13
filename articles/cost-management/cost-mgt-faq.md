@@ -1,21 +1,21 @@
 ---
 title: Gyakori kérdések az Azure a Cloudyn |} A Microsoft Docs
-description: Cloudyn kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
+description: Ez a cikk ismerteti a Cloudyn kapcsolatos gyakori kérdésekre adott válaszokat.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: e387ba0a4e20d9b584d88f7d6388ab6472ccc04c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997296"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098088"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
@@ -62,7 +62,7 @@ Egy fiók aktiválása:
 1.  A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
 2.  A Microsoft Azure-fiókok lapon keresse meg a fiókokat, amelyeket egy **aktivált** előfizetés.
 3.  Kattintson a jobb oldalán egy aktivált fiókhoz, a **szerkesztése** szimbólum, amely hasonlít egy ceruza.
-4.  A bérlő azonosítója és sebessége azonosítója automatikusan észleli. Kattintson a **Tovább** gombra.
+4.  A bérlő azonosítója és sebessége azonosítója automatikusan észleli. Kattintson a **Tovább**gombra.
 5.  A program átirányítja az Azure Portalon. Jelentkezzen be a portálra, és engedélyezze a Cloudyn gyűjtő el az Azure-beli adatait.
 6.  Ezután a program átirányítja a Cloudyn-fiókok kezelése lapon, és az előfizetésben **aktív** fiók állapota. Egy zöld pipa szimbólumot jeleníti meg.
 7.  Ha egy zöld pipa szimbólumot egy vagy több előfizetés nem jelenik meg, az azt jelenti, hogy egy levélolvasó alkalmazás (CloudynCollector) az előfizetés létrehozásához szükséges engedélyek nem rendelkeznek. Egy magasabb szintű jogosultságokkal rendelkező felhasználónak kell ismételje meg a 3. és 4.  

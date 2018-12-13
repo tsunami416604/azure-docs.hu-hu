@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970841"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088051"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -70,17 +70,6 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 - <!-- 2702741 -  IS, ASDK --> Kijavítva a hiba melyik nyilvános IP-címek, amelyek a dinamikus kiosztási használatával lettek telepítve a metódus nem garantált, hogy egy állítsa le és vonja vissza kiadása után megőrzi. Most már megmaradnak.
 
 - <!-- 3078022 - IS, ASDK --> Ha egy virtuális gép felszabadítva 1808 előtt nem lehet újból lefoglalni a 1808 frissítés után.  Ezt a problémát megoldottuk a 1809. A javítás 1809 is indítható el, amelyek ebben az állapotban vannak, és nem indítható el. A javítás is megakadályozza, hogy a probléma került.
-
-<!-- 3090289 – IS, ASDK --> 
-- Javítva lett a probléma, ahol a 1808 frissítés telepítését követően, a következő problémák léphetnek ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
-
-   1. Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
-      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
-      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
-   2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
-      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4481066).
-      2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
-
 
 ### <a name="changes"></a>Módosítások
 
@@ -173,7 +162,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 > Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép, amely szerint a következő csomag engedélyezve van. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md).  
-- [KB 4477849 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
+- [KB 4481548 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 
@@ -226,7 +215,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    
   Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
 
-  A probléma a legújabb javított [1809 gyorsjavítás kiadási](https://support.microsoft.com/help/4477849/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll. 
+  A probléma a legújabb javított [1809 gyorsjavítás kiadási](https://support.microsoft.com/help/4481548/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll. 
 
 <!-- 1264761 - IS ASDK -->  
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
@@ -292,7 +281,18 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
    Keresse meg a mérőszámadatokat, például a processzor-diagram a virtuális gép, nyissa meg a metrikák ablakot, és a támogatott Windows virtuális gép vendég mérőszámok megjelenítése.
 
+<!-- 3507629 - IS, ASDK --> 
+- Felügyelt lemezeket hoz létre két új [kvótatípusok számítási](azure-stack-quota-types.md#compute-quota-types) korlátozhatja a felügyelt lemezek, amelyek kioszthatóak maximális kapacitását. Alapértelmezés szerint a 2048 GiB az egyes felügyelt lemezek kvóta van lefoglalva. Azonban előfordulhat, hogy problémák merülnek fel a következő:
 
+   - Kvóták 1808 frissítés előtt létrehozott a Managed Disks kvóta jelennek meg 0 értéket a felügyeleti portálon, bár 2048 GiB le van foglalva. Növelheti vagy csökkentheti a tényleges igényeinek és az újonnan beállított értéket kvótaérték felülbírálja a 2048 GiB alapértelmezett.
+   - Ha a kvóta értékének 0-ra frissít, egyenértékű, 2048 GiB alapértelmezett értékét. A probléma megoldásához állítsa a kvótaérték 1.
+
+<!-- TBD - IS ASDK --> Frissítse a 1809 alkalmazása után, a következő problémák léphetnek a felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezésekor:
+
+   - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
+      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
+      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
+   2. Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 ### <a name="networking"></a>Hálózat  
 

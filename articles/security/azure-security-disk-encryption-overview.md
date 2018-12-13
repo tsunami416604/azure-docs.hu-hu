@@ -1,26 +1,29 @@
 ---
-title: Az Azure Disk Encryption IaaS virtuális gépek – áttekintés |} A Microsoft Docs
+title: Áttekintés – IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
 description: Ez a cikk a Microsoft Azure Disk Encryption áttekintést nyújt az IaaS virtuális gépekhez.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913206"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093284"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>Az Azure Disk Encryption IaaS virtuális gépekhez 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>Az Azure Disk Encryption IaaS virtuális gépekhez
+
 A Microsoft Azure számára fontos, hogy az adatvédelem és az adatok elkülönítése. Az Azure segítségével szabályozható a titkosítása, szabályozhatja és titkosítási kulcsokat, és az adatok ellenőrzésére és hozzáférés kezelése a fejlett technológiák számos Azure-ban tárolt adatait. Ez a vezérlő biztosít az Azure-ügyfelek rugalmasan választhatja ki a saját üzleti igényeinek leginkább megfelelő megoldást. Ez a cikk bemutatja a technológiai megoldásokat: "Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek (VM)." Ez a technológia segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>Áttekintés
+
 Az Azure Disk Encryption egy olyan funkció, amely segítséget nyújt a Windows és Linux rendszerű IaaS VM-lemezek titkosítása. Lemeztitkosítás kihasználja az iparági szabvány [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) Windows szolgáltatása és a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít az operációs rendszer és az adatlemezek kötettitkosítását Linux funkcióját. A megoldás integrált [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsok. A megoldás emellett biztosítja, hogy a Virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure storage-ban.
 
 Általában minden nyilvános Azure-régióban és a standard szintű virtuális gépek és az Azure Premium Storage virtuális gépek Azure Government-régiók rendelkezésre állása Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez. Amikor alkalmazza a lemeztitkosítás felügyeleti megoldás, akkor a következő üzleti igényekre is képes kielégíteni:
@@ -37,6 +40,7 @@ Az Azure Security Center, ha rögtön riasztást kap, ha azok nem titkosított v
 
 
 ## <a name="encryption-scenarios"></a>Titkosítási megoldások
+
 A Disk Encryption megoldás a következő ügyfél-forgatókönyveket teszi lehetővé:
 
 * Új Windows IaaS virtuális gépek előzetes titkosítással VHD-t és a titkosítási kulcsok alapján létrehozott titkosításának engedélyezése.
@@ -87,6 +91,7 @@ A megoldás a következő forgatókönyvek, szolgáltatások és technológiák 
 * Windows virtuális gépek, amelyeken a szoftveres RAID-rendszerekkel.
 
 ## <a name="encryption-features"></a>Titkosítási funkciók
+
 Engedélyezi, és az Azure IaaS virtuális gépek üzembe helyezése a Lemeztitkosítást, ha az alábbi képességeket engedélyezve vannak a megadott konfigurációtól függően:
 
 * Az operációsrendszer-kötet védelmét a rendszerindító kötet a tárolás titkosítása.

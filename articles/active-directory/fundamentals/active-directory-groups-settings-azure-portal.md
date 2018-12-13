@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory csoport adatainak szerkesztése |} A Microsoft Docs
-description: Útmutató az Azure Active Directory-csoport adatainak szerkesztése.
+title: Szerkessze a csoport adatait – Azure Active Directory |} A Microsoft Docs
+description: Szerkessze a csoport adatait az Azure Active Directoryval kapcsolatos utasításokat.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: a02987fdce3a15cd5d416234e3717df6d33622ec
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: b857b0bd56b479d4301535a4e1f734d8002dcc8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731342"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099052"
 ---
-# <a name="how-to-edit-your-group-information-using-azure-active-directory"></a>Útmutató: az Azure Active Directory használatával csoport adatainak szerkesztése
+# <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatait az Azure Active Directoryval
 
-Az Azure Active Directoryval, szerkesztheti a csoport beállításait, többek között a neve, leírása és tagságtípusának frissítése.
+Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport beállításait, többek között a nevét, leírását és tagsági típusa frissítése.
 
 ## <a name="to-edit-your-group-settings"></a>A csoport beállításainak módosítása
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **csoportok**.
 
@@ -46,7 +46,7 @@ Az Azure Active Directoryval, szerkesztheti a csoport beállításait, többek k
 
     - **Csoport neve.** Szerkessze a meglévő csoportnevet.
     
-    - **A csoport leírása.** Szerkessze a meglévő csoport leírását.
+    - **A csoport ismertetése.** Szerkessze a meglévő csoport leírását.
 
     - **Csoport típusa.** Miután létrejött a csoport típusa nem módosítható. Módosíthatja a **csoporttípust**, akkor törölje a csoportot, majd hozzon létre egy új.
     
@@ -57,7 +57,7 @@ Az Azure Active Directoryval, szerkesztheti a csoport beállításait, többek k
 ## <a name="next-steps"></a>További lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
-- [A csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)
+- [Csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)
 
 - [Hozzon létre egy alapszintű csoportot, és tagokat vehet fel](active-directory-groups-create-azure-portal.md)
 
@@ -67,6 +67,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 - [Csoporttagságok kezelése](active-directory-groups-membership-azure-portal.md)
 
-- [Csoportok használata erőforrásaihoz való hozzáférés kezelése](active-directory-manage-groups.md)
+- [Az erőforrásokhoz való hozzáférés kezelése csoportokkal](active-directory-manage-groups.md)
 
-- [Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md)
+- [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md)

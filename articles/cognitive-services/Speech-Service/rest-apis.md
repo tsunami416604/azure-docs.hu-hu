@@ -1,5 +1,5 @@
 ---
-title: Beszédfelismerési szolgáltatás REST API-k – beszédszolgáltatás
+title: Speech Services REST API-k – beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy a hang-szöveg és a szöveg-hang transzformációs REST API-k használata. Ebben a cikkben megismerkedhet engedélyezési beállítások, a lekérdezési beállítások, struktúra kérést és választ kapnak.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 5a3c160fcb550fc4f0c92145733aa993b95bd112
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584859"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089344"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -30,7 +31,7 @@ A REST API-k használatával, mielőtt megismerése:
 
 Vagy a hang-szöveg transzformációs vagy szöveg-hang transzformációs REST API minden kérelemhez szükséges engedélyeztetési fejléc. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
 
-| Támogatott engedélyezési fejléceket | Speech-to-text | Text-to-speech |
+| Támogatott engedélyezési fejléceket | Speech-to-text | Szövegfelolvasás |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Igen | Nem |
 | Engedélyezési: tulajdonosi | Igen | Igen |

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid és az Event Hubs integrációja
-description: A cikk azt ismerteti, hogyan lehet az Azure Event Grid és az Event Hubs használatával adatokat migrálni az Azure SQL Data Warehouse-ba.
+title: Küldés az Event Hubs-adatok a data warehouse – Event Grid
+description: Ismerteti, hogyan lehet az Azure Event Grid és az Event Hubs használatával telepítse át az adatokat egy SQL Data Warehouse. Azure-függvény használatával kérje le a rögzítési fájlt.
 services: event-grid
 author: tfitzmac
 manager: timlt
@@ -8,14 +8,14 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: aad7a24d8b0e0bc74815cad3604db1cc21a6db96
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: 0b77d0cc32464fe8b7ac28f491f2cb23b0790ba7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163226"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097607"
 ---
-# <a name="stream-big-data-into-a-data-warehouse"></a>Big Data típusú adatok streamelése adattárházba
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: Stream big Data típusú adatok egy data warehouse-bA
 
 Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amellyel reagálhat az alkalmazásokból és szolgáltatásokból érkező értesítésekre. Például aktiválhat egy Azure Functions-függvényt, amely egy Azure Blob Storage-ben vagy Data Lake Store-ban rögzített Event Hubs-adatokat dolgoz fel, majd migrálja az adatokat más adattárakba. Ez az [Event Hubs Capture- és Event Grid-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogy az Event Hubs Capture és az Event Grid használatával hogyan lehet zökkenőmentesen migrálni az Event Hubs-adatokat a Blob Storage-ből egy SQL Data Warehouse-adattárházba.
 

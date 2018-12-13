@@ -1,10 +1,10 @@
 ---
-title: '6. lépés: A Machine Learning Studio webes sservice eléréséhez |} A Microsoft Docs'
+title: '6. lépés: Hozzáférés a webszolgáltatáshoz – az Azure Machine Learning Studióban |} A Microsoft Docs'
 description: 'A fejlesztés egy prediktív megoldás bemutatója 6. lépés: az aktív Azure Machine Learning Studio-webszolgáltatás eléréséhez.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 5402f228a650a1a3d3282180a52f9e9f9cc10a3a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 5c7db2c2c6e21197eac0296d2a9a42d447adfb66
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306454"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091111"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>Az útmutató 6. lépés: Az Azure Machine Learning Studio webszolgáltatás eléréséhez
 

@@ -3,7 +3,7 @@ title: Az Azure Backup Server telepítése az Azure Stackben |} A Microsoft Docs
 description: Az Azure Backup Server használatával védeni, vagy az Azure Stack-munkaterhelések biztonsági mentéséhez.
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: az Azure backup server; számítási feladatok; védelme számítási feladatainak biztonsági mentése
@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 6/5/2018
-ms.author: markgal
-ms.openlocfilehash: 14379d82b4b60c0ea555388ac61c9c7b8fbe9e4f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: raynew
+ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721433"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877167"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 

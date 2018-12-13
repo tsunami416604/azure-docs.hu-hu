@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Edge-modulok (CLI) telepítése |} A Microsoft Docs
+title: Modulok parancssorból – Azure IoT Edge üzembe helyezése |} A Microsoft Docs
 description: Az Azure CLI-hez az IoT-bővítmény használatával üzembe helyezhet modulok IoT Edge-eszköz
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564986"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093573"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Az Azure CLI-vel az Azure IoT Edge-modulok telepítése
 
@@ -117,7 +118,7 @@ A következő parancsot használja a alkalmazni a konfigurációt egy IoT Edge-e
 
 Az eszköz azonosító paraméter értéke a kis-és nagybetűket. A tartalom paraméter mutat az üzembe helyezés manifest mentett fájlt. 
 
-   ![Modulok beállítása](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot edge set-modul kimenete](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>Modulok megjelenítése az eszközön
 
@@ -131,7 +132,7 @@ A modulok megtekintése az IoT Edge-eszközön:
 
 Az eszköz azonosító paraméter értéke a kis-és nagybetűket.
 
-   ![Modulok listázása](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub modul-identity list kimeneti](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>További lépések
 

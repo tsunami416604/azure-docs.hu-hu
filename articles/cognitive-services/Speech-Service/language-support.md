@@ -1,21 +1,22 @@
 ---
 title: Nyelvi támogatás – Beszédszolgáltatási API Használatába
 titleSuffix: Azure Cognitive Services
-description: Beszédfelismerési szolgáltatás által támogatott természetes nyelvek listáját.
+description: Az Azure Speech Services számos nyelv támogatása a hang-szöveg és a szöveg-beszéd átalakítás, beszédalapú fordítási együtt. Ez a cikk a szolgáltatás által nyelvi támogatás átfogó listáját tartalmazza.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284761"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094576"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -36,8 +37,8 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  en-GB | angol (Egyesült Királyság) | Nem | Igen | Igen
  en-IN | Angol (India) | Igen | Igen | Igen
  en-NZ | angol (Új-Zéland) | Nem | Igen | Igen  
- hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
- es-ES | spanyol (spanyolországi) | Nem | Igen | Nem
+ en-US | angol (Egyesült Államok) | Igen | Igen | Igen
+ es-ES | spanyol (spanyolországi) | Igen | Igen | Nem
  es-MX | spanyol (Mexikó) | Nem | Igen | Nem
  fi-FI | finn (Finnország) | Nem | Nem | Nem
  FR-hitelesítésszolgáltató | francia (Kanada) | Nem | Igen | Nem
@@ -49,7 +50,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  nb-NO | Norvég (bokmal) (Norvégia) | Nem | Nem | Nem
  NL-NL | holland (Hollandia) | Nem | Igen | Nem
  pl-PL | lengyel (Lengyelország) | Nem | Nem | Nem
- pt-BR | portugál (brazíliai) | Nem | Igen | Nem
+ pt-BR | portugál (brazíliai) | Igen | Igen | Nem
  PT-PT | portugál (általános) | Nem | Igen | Nem
  ru-RU | orosz (Oroszország) | Igen | Igen | Nem
  SV-SE | svéd (Svédország) | Nem | Nem | Nem
@@ -158,7 +159,7 @@ Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), fr
 
 ## <a name="speech-translation"></a>Beszédfordítás
 
-A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages). 
+A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
 
 ### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
 

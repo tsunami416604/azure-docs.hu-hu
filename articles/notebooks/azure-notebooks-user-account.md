@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be az Azure notebookok |} A Microsoft Docs
+title: Jelentkezzen be az Azure notebookok
 description: Konfigurálja a felhasználói fiók Azure notebookokhoz Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a4f672f1c89323ca8dff4cb34242dd74ad01c85a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f95edde6a501cf33c45daccc2dbd2605c077217d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855932"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092608"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>A felhasználói fiók Azure-notebookokhoz
 

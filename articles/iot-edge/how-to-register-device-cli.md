@@ -1,6 +1,6 @@
 ---
-title: Regisztráljon egy új Azure IoT Edge-eszköz (CLI) |} A Microsoft Docs
-description: Egy új IoT Edge-eszköz regisztrálása az IoT-bővítmény, az Azure CLI használatával
+title: Regisztráljon egy új eszközt parancssorból – Azure IoT Edge |} A Microsoft Docs
+description: Le a kapcsolati karakterláncot, és a egy új IoT Edge-eszköz regisztrálása az IoT-bővítmény, az Azure CLI használatával
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 737a2dfe5c3b3382db00785b3465147143b17e9e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 28f20157de603cf20cb33e9db569064f87922bf8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569250"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081833"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Egy új Azure IoT Edge-eszköz regisztrálása az Azure CLI-vel
 
@@ -43,7 +44,7 @@ Ez a parancs három paramétereket tartalmazza:
 * **eseményközpont-neve**: Adja meg az IoT hub nevét.
 * **Edge-kompatibilis**: Ez a paraméter kijelenti, hogy az eszköz IoT Edge való használatra.
 
-   ![IoT Edge-eszköz létrehozása](./media/how-to-register-device-cli/Create-edge-device.png)
+   ![az iot hub-eszközidentitást create kimenete](./media/how-to-register-device-cli/Create-edge-device.png)
 
 ## <a name="view-all-devices"></a>Minden eszköz megjelenítése
 

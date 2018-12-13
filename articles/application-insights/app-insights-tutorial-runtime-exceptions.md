@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230597"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084012"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -75,20 +75,20 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
     ![Kivétel részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Sikertelen kód azonosítása
-A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezután a pillanatfelvételt letöltve és Visual Studio 2017 alkalmazásban megnyitva hibakeresést végezhet a forráskódon.
+A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezt követően lehetősége van a forráskód hibakeresése a pillanatfelvételt letöltve, és nyissa meg a Visual Studio 2017 Enterprise szerint.
 
 1. A kivétel tulajdonságaiban kattintson a **Hibakeresési pillanatfelvétel megnyitása** elemre.
 2. A **Hibakeresési pillanatfelvétel** panel a kérés hívásvermével nyílik meg.  Az egyes metódusokra kattintva megtekintheti az összes helyi változónak a kérés időpontjában rögzített értékeit.  Ebben a példában a legfelső metódustól kezdve olyan változókat láthatunk, amelyeknek nincs értéke.
 
     ![Hibakeresési pillanatkép](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. A **ValidZipCode** az első hívás, amely érvényes értékkel rendelkezik, és láthatjuk, hogy egy olyan, betűkkel megadott irányítószámot kaptunk, amelyet nem lehet egész számra fordítani.  Úgy tűnik, ez az a hiba, amelyet ki kell javítani.
+3. A **ValidZipCode** az első hívás, amely érvényes értékkel rendelkezik, és láthatjuk, hogy egy olyan, betűkkel megadott irányítószámot kaptunk, amelyet nem lehet egész számra fordítani.  Úgy tűnik, ez az a hiba, amelyet ki kell javítani.
 
     ![Hibakeresési pillanatkép](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. Ahhoz, hogy letöltse ezt a pillanatfelvételt a Visual Studióba, ahol megkereshetjük a javításra szoruló kódot, kattintson a **Pillanatfelvétel letöltése** elemre.
-6. A rendszer betölti a pillanatfelvételt a Visual Studióba.
-7. Most már elindíthat egy hibakeresési munkamenetet, amely gyorsan azonosítja a kivételt okozó kódsort.
+4. Ezután vannak arra, hogy letöltse ezt a pillanatfelvételt a Visual studióba, ahol megkereshetjük a javításra szoruló kódot. Ehhez kattintson **Pillanatfelvétel letöltése**.
+5. A rendszer betölti a pillanatfelvételt a Visual Studióba.
+6. Most futtathatja a hibakeresési munkamenet a Visual Studio Enterprise, amely gyorsan azonosítja a kivételt okozó kódsorra.
 
     ![Kivétel a kódban](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 

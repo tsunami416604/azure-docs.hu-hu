@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: c43b2e265903b119812d16ef4ef329393c725e71
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 0c75926943ceb2e77335732445f56099961f7667
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992988"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099035"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
@@ -80,7 +80,7 @@ A központi hely megvalósításához a Log Analytics két lehetőség van:
 
 ## <a name="next-steps"></a>További lépések
 * Létrehozási és munkaterületeket konfigurációjának automatizálása [Resource Manager-sablonok](template-workspace-configuration.md)
-* Munkaterületek használatával létrehozásának automatizálása [PowerShell](../../log-analytics/log-analytics-powershell-workspace-configuration.md) 
+* Munkaterületek használatával létrehozásának automatizálása [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 
 * Használat [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) a meglévő rendszerekkel való integrációt segítik
 * Összegző jelentéseket használatával [Power bi-ban](../../azure-monitor/platform/powerbi.md)
 * Tekintse át a folyamat [konfigurálása a Log Analytics és a Power BI több CSP-ügyfeleinek figyelése](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

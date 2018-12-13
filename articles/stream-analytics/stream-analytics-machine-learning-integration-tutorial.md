@@ -2,19 +2,19 @@
 title: Az Azure Machine Learning az Azure Stream Analytics-integráció
 description: Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning, a felhasználó által definiált függvény használatával.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/16/2018
-ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685752"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093331"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
 Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
@@ -28,7 +28,7 @@ Alkalmazhat témák Ez a cikk a például a következő forgatókönyvekre:
 
 A való életből vett helyzet számíthat az adatok közvetlenül a Twitter adatstream. Az oktatóanyag leegyszerűsítése írás, hogy a Streaming Analytics-feladat beolvassa a tweeteket CSV-fájlból az Azure Blob storage-ban. Létrehozhat saját CSV-fájl, vagy használhat egy CSV-mintafájlt, az alábbi képen látható módon:
 
-![minta tweeteket egy CSV-fájl](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+![CSV-fájl látható minta tweetek](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
 A Streaming Analytics-feladat által létrehozott alkalmazza a róluk szóló véleményeket elemzési modellek, felhasználó által definiált függvény (UDF) szöveget a mintaadatokat a blob-tárolóból. A kimenet (a hangulatelemzés eredménye) ugyanarra a blob-tároló egy másik CSV-fájl írása. 
 
@@ -58,15 +58,15 @@ Ehhez a lépéshez, például a githubról elérhető bármely CSV-fájl is hasz
 
 3. Adjon meg egy meglévő erőforráscsoportot, és adjon meg egy helyet. A helyen azt javasoljuk, hogy ebben az oktatóanyagban létrehozott összes erőforrást használja ugyanazt a helyet.
 
-    ![Adja meg a tárfiók részletei](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
+    ![Adja meg a tárfiók részletei](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
 4. Az Azure Portalon válassza ki a tárfiókot. A storage-fiók panelén kattintson **tárolók** majd  **+ &nbsp;tároló** létrehozása a blob storage-bA.
 
-    ![blobtároló létrehozása](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+    ![Bemeneti blob storage-tároló létrehozása](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
 5. Adja meg a tároló nevét (`azuresamldemoblob` a példában), és ellenőrizze, hogy **típus eléréséhez** értékre van állítva **Blob**. Ha végzett, kattintson az **OK** gombra.
 
-    ![Adja meg a blob-tároló részletei](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+    ![Adja meg a blob-tároló részletei](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
 6. Az a **tárolók** panelen jelölje ki az új tárolót, és megnyílik a panel a tároló.
 
@@ -123,7 +123,7 @@ Mostantól létrehozhat egy Stream Analytics-feladatot, amely a minta tweetek be
 
 3. Nevezze el a feladat `azure-sa-ml-demo`, adja meg az előfizetés, adjon meg egy meglévő erőforráscsoportot vagy hozzon létre egy új, és válassza ki a feladat helyét.
 
-   ![új Stream Analytics-feladat beállításainak megadása](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
+   ![új Stream Analytics-feladat beállításainak megadása](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
 ### <a name="configure-the-job-input"></a>A feladat bemenetének konfigurálásához
@@ -143,7 +143,7 @@ A feladat lekéri a bemeneti korábban a blobtárolóba feltöltött CSV-fájlb�
    |**Tároló**  | Válassza ki a korábban létrehozott tárolót (`azuresamldemoblob`)        |
    |**Eseményszerializációs formátum**  |  Válassza ki **CSV**       |
 
-   ![Új feladat bemenete beállításai](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Új Stream Analytics-feladat bemenete beállításai](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 
@@ -163,7 +163,7 @@ A feladat küldése eredmények ugyanezen a blobtárolón belül hol lekérdezi 
    |**Tároló**  | Válassza ki a korábban létrehozott tárolót (`azuresamldemoblob`)        |
    |**Eseményszerializációs formátum**  |  Válassza ki **CSV**       |
 
-   ![Új feladat kimenetének beállításai](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+   ![Új Stream Analytics-feladat kimenete beállításai](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. Kattintson a **Save** (Mentés) gombra.   
 
@@ -185,7 +185,7 @@ Az oktatóanyag ezen szakaszában adja meg a Stream állapotelemzési feladat eg
    | **URL-cím**| Illessze be a web service URL-CÍMÉT.|
    |**Kulcs** | Illessze be az API-kulcsot. |
   
-   ![A Machine Learning-függvény hozzáadása a Stream Analytics-feladat beállításai](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![Machine Learning-függvény hozzáadása a Stream Analytics-feladat beállításai](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. Kattintson a **Save** (Mentés) gombra.
 

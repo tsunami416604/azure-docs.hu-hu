@@ -6,13 +6,13 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.openlocfilehash: 34db8900d285baa7e9c4f97874023bbb52d5e864
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008045"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087898"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>YARN hibaelhárítása az Azure HDInsight használatával
 
@@ -20,13 +20,12 @@ A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozhatok létre egy új YARN-üzenetsorba egy fürtön?
 
-
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
 Ambari az alábbi lépések segítségével hozzon létre egy új YARN-várólistát, és ezután elosztja a kapacitás lefoglalása valamennyi üzenetsorok között. 
 
 Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thriftsvr**) is úgy módosul, 50 %-os kapacitásból 25 %-os kapacitását, amely az új várólista (spark) 50 %-os kapacitást biztosít.
-| Queue | Kapacitás | Maximális kapacitás |
+| Várólista | Kapacitás | Maximális kapacitás |
 | --- | --- | --- | --- |
 | alapértelmezett | 25% | 50% |
 | thrftsvr | 25% | 50% |
@@ -138,10 +137,3 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
 
 ### <a name="see-also"></a>Lásd még:
 [Hibaelhárítás az Azure HDInsight segítségével](hdinsight-troubleshoot-guide.md)
-
-
-
-
-
-
-

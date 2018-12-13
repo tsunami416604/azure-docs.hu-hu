@@ -1,21 +1,22 @@
 ---
-title: A LUIS előre összeállított entitások phone hivatkozás – Azure |} A Microsoft Docs
+title: Telefon száma előre összeállított entitások
 titleSuffix: Azure
 description: Ez a cikk a telefonszám előre összeállított entitások-információ a Language Understanding (LUIS) tartalmazza.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8fcbaf946f936d7a6d6d883a0416fce9d0c158
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: MT
+ms.openlocfilehash: 3c2a873514c7355cdf7fa08372e1e17409021d56
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441710"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081064"
 ---
 # <a name="phonenumber-entity"></a>Telefonszám entitás
 A `phonenumber` entitás kinyeri a telefonszámokat, beleértve az országkódot különböző. Az entitás már be van tanítva, mert nem kell példa beszédmódok hozzáadása az alkalmazáshoz. A `phonenumber` entitás támogatott `en-us` culture csak. 
@@ -26,7 +27,7 @@ Telefonszám felügyelje a [felismerő szöveges](https://github.com/Microsoft/R
 ## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Előre összeállított phonenumber entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.phonenumber** entitás.
 
-```JSON
+```json
 {
   "query": "my mobile is 00 44 161 1234567",
   "topScoringIntent": {

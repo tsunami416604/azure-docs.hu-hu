@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 67d4da0a57e38863cc73faab1e3ed8d4b271ceb3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 54fad2e830ae7ff1d07cc8f67e50d2b5bc4fe8a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864162"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096577"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a Javához készült: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "52864162"
 |   |   |
 |---|---|
 |**SDK letöltése**|[Letöltési beállítások](https://github.com/azure/azure-storage-java#download)|
-|**API-dokumentáció**|[Java API dokumentációja](http://azure.github.io/azure-storage-java/)|
+|**API-dokumentáció**|[Java API dokumentációja](https://azure.github.io/azure-storage-java/)|
 |**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]

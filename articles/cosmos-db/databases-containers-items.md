@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684858"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090268"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -53,7 +53,7 @@ Egy Azure Cosmos-tároló létrehozásakor átviteli konfigurálja a következő
 
 * **Megosztott kiosztott átviteli sebesség** mód: ezek a tárolók a kiosztott átviteli sebesség megosztása más tárolók ugyanabban az adatbázisban (kivéve azokat, amelyek dedikált kiosztott átviteli sebesség a konfigurált tárolók). Más szóval a kiosztott átviteli sebesség az adatbázison a "megosztott" tárolók megosztják egymással. További tudnivalókért lásd: [kiosztott átviteli sebesség konfigurálása az Azure Cosmos database](how-to-provision-database-throughput.md).
 
-Egy tároló is skálázhatóság, tárolók vagy a "megosztás" létrehozott-e az Azure Cosmos- vagy "dedikált" kiosztott átviteli sebesség módok, azaz rendelkezhetnek korlátlan tárolási és átviteli sebességet biztosítanak.  
+Az Azure Cosmos-tárolókat rugalmasan méretezhető, hogy hoz létre a tárolót vagy a "megosztás" vagy "dedikált" kiosztott átviteli mód.
 
 Az Azure Cosmos-tárolókat az elemek sémafüggetlen tárolója. Tárolóban lévő elemek is tetszőleges sémákkal rendelkeznek. Ha például egy elemet egy személyt jelölő, egy autó jelölő elem helyezhető ugyanabban a tárolóban. Alapértelmezés szerint adja hozzá a tároló az összes elem automatikus indexelése semmilyen kifejezett index vagy séma kezelése nélkül. Testre szabhatja, hogy az indexelés viselkedésének az egy tárolót az indexelési házirend konfigurálásával. 
 

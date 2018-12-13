@@ -1,21 +1,22 @@
 ---
-title: '8. oktatóanyag: kulcskifejezések kinyerése a LUIS-ban'
+title: A kulcsfontosságú kifejezések kinyerése
 titleSuffix: Azure Cognitive Services
 description: A kimondott szöveg kulcstémájának kinyeréséhez használja az előre összeállított keyPhrase entitást. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424812"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096927"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>8. oktatóanyag: Kimondott szövegek kulcsszavainak kinyerése
 Ebben az oktatóanyagban az előre összeállított keyPhrase entitást használhatja kulcstémák a kimondott szövegekből történő kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
@@ -31,7 +32,6 @@ Az ügyfélalkalmazás használhatja ezeket az értékeket csakúgy, mint más k
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Meglévő oktatóalkalmazás használata
 > * keyPhrase entitás hozzáadása 
@@ -84,7 +84,7 @@ A kimondott szöveg témájának kinyeréséhez adja hozzá az előre összeáll
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `does form hrf-123456 cover the new dental benefits and medical plan`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

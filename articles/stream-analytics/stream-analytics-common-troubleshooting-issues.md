@@ -2,19 +2,19 @@
 title: Gyakori problémák elhárítása az Azure Stream Analytics szolgáltatásban
 description: Ez a cikk ismerteti a problémák elhárítása Azure Stream Analytics és lépések több gyakori problémák.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978439"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090975"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Gyakori problémák a Stream Analytics és a lépések hibaelhárítása
 
@@ -24,7 +24,7 @@ ms.locfileid: "50978439"
  
  Ha egy Stream Analytics-feladat bemenete egy helytelenül formázott üzenetet kap, elveti az üzeneteket, és értesíti a felhasználót egy figyelmeztetéssel együtt. Egy figyelmeztető szimbólum jelenik meg a **bemenetek** csempe a Stream Analytics-feladat (Ez a figyelmeztetés bejelentkezési létezik mindaddig, amíg a feladat futó állapotban van):
 
-![Bemenetek csempéjén](media/stream-analytics-malformed-events/inputs_tile.png)
+![Bemenetek csempéjén Azure Stream Analytics-irányítópult](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 További információk jelennek meg, engedélyezze a diagnosztikai naplók a figyelmeztetést részleteinek megtekintéséhez. Helytelen formátumú bemeneti események, a feladatvégrehajtási naplók tartalmaz bejegyzést a következőhöz hasonló üzenetet: "üzenet: erőforrás bemeneti eseménye(i) nem deszerializálható(k) <blob URI> json-ként". 
 
@@ -34,7 +34,7 @@ További információk jelennek meg, engedélyezze a diagnosztikai naplók a fig
 
 2. A bemenet részletei csempe megjeleníti a figyelmeztetéseket a probléma részleteivel együtt. Az alábbiakban egy példa figyelmeztető üzenetet a, a figyelmeztető üzenetet jeleníti meg, a partíció, az eltolást és sorozatszámok helytelen formátumú JSON-adatok esetén. 
 
-   ![Az eltolás figyelmeztető üzenet](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![Az eltolás bemeneti figyelmeztető üzenet](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. Helytelen formátumú JSON-adatok lekéréséhez futtassa a CheckMalformedEvents.cs kódot. Ebben a példában érhető el a [GitHub-mintaadattár](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). A kód olvasást a Partícióazonosító, eltolás és megrendelése adott eltolás található adatok. 
 

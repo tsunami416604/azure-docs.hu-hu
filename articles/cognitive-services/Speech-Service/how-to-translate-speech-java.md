@@ -1,21 +1,22 @@
 ---
 title: SDK-val a Speech Java speech fordítása
 titleSuffix: Azure Cognitive Services
-description: Bemutatja, hogyan speech lefordítani a Speech SDK Java használatával.
+description: Ez a cikk tartalmazza a kódminta fordítása a beszéd, a beszéd SDK-val Java-környezetben.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 53d15e56284c24e6bacf382aa9aab7548b930191
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 233c6b33a4b6dea8ae5aea56272d43bee228d71f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464114"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092247"
 ---
 # <a name="translate-speech-with-the-speech-sdk-for-java"></a>Beszédfelismerés, beszédfelismerési SDK for Java fordítása
 

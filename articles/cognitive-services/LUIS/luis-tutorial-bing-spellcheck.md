@@ -1,21 +1,22 @@
 ---
-title: Adja hozzá a Bing Spell Check API 7-es verziója a LUIS-lekérdezésekre |} A Microsoft Docs
+title: Megfelelő kijavítsa a hibásan leírt szavakat
 titleSuffix: Azure
 description: Beszédmódok LUIS végpont lekérdezések ad hozzá a Bing Spell ellenőrzés API 7-es megfelelő kijavítsa a hibásan leírt szavakat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6d197b014d6936b12b34a6d8783d1ebd29dfa28a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 478970c6b5f4035949c8b6579f1021dfa161fd39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443329"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096791"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>A Bing Spell Check megfelelő kijavítsa a hibásan leírt szavakat
 
@@ -75,7 +76,7 @@ A végpont URL-címnek megfelelően átadandó igénylő több értéket. A Bing
 
 4. A LUIS fűzi hozzá egy JSON-eredményt a `How far is the mountain?`. Ha a Bing Spell Check API 7-es verzióját észleli a helyesírási, a `query` a LUIS-alkalmazás JSON-válasz mező tartalmazza az eredeti lekérdezés és a `alteredQuery` mező tartalmazza a LUIS küldött javított lekérdezés.
 
-```
+```json
 {
   "query": "How far is the mountainn?",
   "alteredQuery": "How far is the mountain?",

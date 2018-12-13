@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure AD identitásbiztonsági pontszáma? – előzetes verzió | Microsoft Docs
-description: Ismerje meg, hogyan használhatja az identitásbiztonsági pontszámot Azure AD-bérlője biztonságának javításához.
+title: Mi a biztonságos identitás-pontszám? – Az azure Active Directory (nyilvános előzetes verzió) |} A Microsoft Docs
+description: Leírja, hogyan használhatja az identitáskezelési biztonságos pontszám javítása az Azure AD-bérlő biztonsági állapotát.
 services: active-directory
 keywords: identitásbiztonsági pontszám, Azure AD, biztonságos hozzáférés vállalati erőforrásokhoz
 documentationcenter: ''
@@ -16,14 +16,15 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a9bb22cae2e9fcd607a81d442f4fb51f12c43454
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.custom: it-pro
+ms.openlocfilehash: 5a133d0a38852ca3e95e3ae07716c4fbd3c87f5d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224137"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092083"
 ---
-# <a name="what-is-the-identity-secure-score-in-azure-ad---preview"></a>Mi az Azure AD identitásbiztonsági pontszáma? – előzetes verzió
+# <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Mi az az identitás biztonságos pontszám, az Azure Active Directoryban? (Nyilvános előzetes verzió)
 
 Mennyire biztonságos az Ön Azure AD-bérlője? Ha nem tudja a választ erre a kérdésre, a cikket elolvasva megismerheti, hogyan segítheti az identitásbiztonsági pontszám az identitásvédelem felügyeletében és javításában. 
 

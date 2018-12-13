@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: a9078d2f8a738700a30d265d9cfa3cd77ad72f08
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 4fdb7cf0007af5f92794ebe5f616c1c8a28af0e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015449"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099658"
 ---
 # <a name="how-to-diagnose-and-troubleshoot"></a>Hogyan diagnosztika és hibaelhárítás
 
@@ -91,13 +91,13 @@ Ha a **időbélyeg** tulajdonság nincs explicit módon beállítva, hogy haszn�
 
 1. A Time Series Insights S1 vagy S2 környezetet, előfordulhat, hogy elérése
 
-   Csak a Time Series modellek támogatottak **PAYG** környezetekben. Az S1/S2 környezet eléréséhez a Time Series Insights frissítés Explorer jelenik meg ebben a cikkben talál további információt.
+   Csak a Time Series modellek támogatottak **PAYG** környezetekben. A Time Series Insights előzetes verziója Explorer az S1/S2 környezet elérésével további információkért lásd: [megjelenítheti az Intéző adatait](./time-series-insights-update-explorer.md).
 
    ![hozzáférés][5]
 
 1. Előfordulhat, hogy nincs engedélye megtekintése és szerkesztése a modell
 
-   Felhasználók "közreműködő" szintű szerkeszthet, és megtekintheti az Idősorozat-modell hozzá kell férniük. Előfordulhat, hogy ellenőrizze a jelenlegi hozzáférési szintet, és az adathozzáférési házirendek szakaszban ellátogat az Azure Portalon a Time Series Insights-erőforrás a további hozzáférés biztosítása.
+   A felhasználóknak kell "közreműködő" szintű hozzáféréssel, szerkesztheti és megtekintheti az Idősorozat-modellben. Előfordulhat, hogy ellenőrizze a jelenlegi hozzáférési szintet, és az adathozzáférési házirendek szakaszban ellátogat az Azure Portalon a Time Series Insights-erőforrás a további hozzáférés biztosítása.
 
 ## <a name="problem-all-my-instances-in-time-series-insights-preview-explorer-dont-have-a-parent"></a>Probléma: A Time Series Insights (előzetes verzió) explorer szereplő összes példányt nem rendelkezik a szülő
 

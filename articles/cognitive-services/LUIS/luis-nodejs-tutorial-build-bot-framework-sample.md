@@ -1,25 +1,26 @@
 ---
-title: A LUIS-robot a Node.js - webalkalmazás app Bot - Bot Framework 3.0-s SDK
+title: A LUIS-robot a node.js használatával
 titleSuffix: Azure Cognitive Services
 description: A robot a LUIS-alkalmazás a Bot keretrendszer használatával integrálva hozhat létre.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 7229155b9fbfb93babd45c746d0f36fbab812013
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042329"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093403"
 ---
-# <a name="luis-bot-in-nodejs"></a>A robot a LUIS Node.js-ben
+# <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A Bot keretrendszer Node.js-ben a LUIS-robot 3.x és az Azure Web app bot
 
-A language understanding (LUIS) szolgáltatással integrált csevegőrobotot Node.js használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
+A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -27,7 +28,7 @@ Mielőtt létrehozna a robot, kövesse a [hozzon létre egy alkalmazást](./luis
 
 A robot a HomeAutomation tartományból, amelyek a LUIS alkalmazás válaszol szándék fog vonatkozni. Minden egyes ezeket a leképezéseket a LUIS-alkalmazás biztosítja a megjelölésű, amely hozzá van leképezve. A robot biztosít egy párbeszédpanel, amely kezeli a szándéka, hogy a LUIS észleli.
 
-| Szándék | Példa utterance (kifejezés) | A robot funkció |
+| Szándék | Példa kimondott szöveg | A robot funkció |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Kapcsolja be a lámpák. | A robot meghívja a `TurnOnDialog` amikor a `HomeAutomation.TurnOn` észlel. Ezen a párbeszédpanelen, ahol szeretné hívhat meg egy IoT-szolgáltatás, kapcsolja be az eszközön, és ossza meg a felhasználót, hogy az eszköz be van kapcsolva. |
 | HomeAutomation.TurnOff | Kapcsolja ki a szobája lámpa. | A robot meghívja a `TurnOffDialog` amikor a `HomeAutomation.TurnOff` észlel. A párbeszédpanel, ahol szeretné meghívni egy IoT-szolgáltatás, kapcsolja ki az eszközt, és ossza meg a felhasználót, hogy az eszköz ki lett kapcsolva a. |
@@ -78,7 +79,7 @@ Az NPM-csomagok telepítéséhez az alábbi lépéseket követve:
 
 5. Egy új böngészőablakban nyílik meg. A konzolon adja meg a következő parancsot:
 
-    ```
+    ```console
     cd site\wwwroot && npm install
     ```
 
@@ -115,7 +116,7 @@ Továbbra is nyissa meg vagy válassza ki az első böngészőablakban nyissa me
 
 A kódszerkesztőben nyissa meg a `app.js`. A következő kódot tartalmazza:
 
-```javascript
+```nodejs
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -206,7 +207,7 @@ A meglévő leképezéseket az App.js fájl a rendszer figyelmen kívül hagyja.
 
 Másolja az alábbi kódot, majd adja hozzá a `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -223,7 +224,7 @@ A [megegyezik] [ matches] beállítást a [triggerAction] [ triggerAction] csatl
 
 Másolja az alábbi kódot, majd adja hozzá a `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
@@ -241,7 +242,7 @@ Az Azure Portalon válassza ki a **tesztelni, webes csevegési** a robot tesztel
 > [!TIP]
 > Ha azt tapasztalja, hogy a robot nem mindig ismeri fel a megfelelő leképezés vagy entitásokat, növelheti a teljesítményt a LUIS-alkalmazás adná azt betanításához további példa utterances. A LUIS-alkalmazás a robot kód módosítás nélkül ténytábláknál. Lásd: [példa beszédmódok hozzáadása](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [taníthat vagy tesztelhet a LUIS-alkalmazás](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test).
 
-## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Framework
+## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 Tudjon meg többet [Bot Framework](https://dev.botframework.com/) és a [3.x](https://github.com/Microsoft/BotBuilder) és [4.x](https://github.com/Microsoft/botbuilder-js) SDK-k.
 
 ## <a name="next-steps"></a>További lépések

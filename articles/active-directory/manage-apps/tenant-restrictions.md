@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: ca3396024fdab31217b00ef7cdd39e4e61504d27
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851094"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096706"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások használati Bérlőkorlátozások SaaS való hozzáférés kezelése
 
@@ -129,18 +129,18 @@ A fiddler egy ingyenes webes hibaelhárító proxy, amely segítségével rögz�
 1.  [Töltse le és telepítse a Fiddler](https://www.telerik.com/fiddler).
 2.  Fiddler-HTTPS-forgalom visszafejtése konfigurálása [Fiddler a Súgó dokumentációját](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
 3.  Konfigurálja a Fiddler beszúrása a *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet* fejlécek egyéni szabályok használatával:
-  1. A Fiddler webes hibakereső eszközben válassza ki a **szabályok** menüre, majd válassza **szabályok testreszabása...** a customrules fájl egynél fájl megnyitásához.
-  2. Adja hozzá a következő sorokat elején a *OnBeforeRequest* függvény. Cserélje le \<bérlői tartomány\> egy tartomány regisztrálva a bérlővel, például contoso.onmicrosoft.com. Cserélje le \<címtár-azonosító\> a bérlő Azure AD GUID azonosítóval.
+    1. A Fiddler webes hibakereső eszközben válassza ki a **szabályok** menüre, majd válassza **szabályok testreszabása...** a customrules fájl egynél fájl megnyitásához.
+    2. Adja hozzá a következő sorokat elején a *OnBeforeRequest* függvény. Cserélje le \<bérlői tartomány\> egy tartomány regisztrálva a bérlővel, például contoso.onmicrosoft.com. Cserélje le \<címtár-azonosító\> a bérlő Azure AD GUID azonosítóval.
 
-  ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
-  ```
+    ```
+    if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
+    ```
 
-  Ha több bérlő engedélyeznie kell, a bérlő neveket használjon vesszőt. Példa:
+    Ha több bérlő engedélyeznie kell, a bérlő neveket használjon vesszőt. Példa:
 
-  ```
-  oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
-  ```
+    ```
+    oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
+    ```
 
 4. Mentse és zárja be a customrules fájl egynél fájlt.
 

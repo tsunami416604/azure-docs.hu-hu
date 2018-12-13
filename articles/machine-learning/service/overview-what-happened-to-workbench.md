@@ -1,5 +1,6 @@
 ---
 title: Mi történt az Azure Machine Learning Workbench alkalmazással?
+titleSuffix: Azure Machine Learning service
 description: 'További tudnivalók: Mi történt a Workbench alkalmazás, mi változott, az Azure Machine Learning szolgáltatás és a támogatási idősor van.'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6df86d63e897d5cde34fb697ad2364c107a8fbe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 2d97ee70c8456bb3b21a14b646756c8024eab018
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011137"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090125"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Mi történik a Workbench az Azure Machine Learning szolgáltatás?
 
@@ -83,13 +84,13 @@ Ismerje meg, hogyan kezdheti el [a Python használatát a fő SDK-val](quickstar
  
 Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. Ezt megteheti, ha [letölti a modelleket, és újból regisztrálja őket](how-to-migrate.md) az új munkaterületen. 
 
-A rendszerképeket, amelyet a régi rendszerkép-regisztrációs adatbázisban hozott létre, újra létre kell hozni az új munkaterületen, hogy továbbra is használhassa őket. Ezt megteheti a [Docker-rendszerkép létrehozása](how-to-deploy-to-aci.md#configure-an-image) szakasz útmutatását követve. 
+A rendszerképeket, amelyet a régi rendszerkép-regisztrációs adatbázisban hozott létre, újra létre kell hozni az új munkaterületen, hogy továbbra is használhassa őket. Ezt megteheti a következő is a [konfigurálása és a rendszerkép létrehozása](how-to-deploy-and-where.md#configureimage) szakaszokat. 
 
 ## <a name="what-about-deployed-web-services"></a>Mi a helyzet az üzembe helyezett webszolgáltatásokkal?
 
 A Machine Learning Modellkezelés-fiókban webszolgáltatásként üzembe helyezett modellek továbbra is működni fognak, amíg az Azure Container Service (ACS) támogatott. Ezek a webszolgáltatások még azután is működni fognak, miután megszűnt a Machine Learning Modellkezelés-fiókok támogatása. Azonban, amikor véget ér a régi CLI támogatása, többé nem fogja tudni kezelni ezeket a webszolgáltatásokat.
 
-Az újabb verzióban a modellek webszolgáltatásként vannak telepítve az [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) szolgáltatásban vagy az [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS) fürtjeiben. Emellett [üzembe is helyezheti az FPGA-kban és az IoT Edge-ben](how-to-deploy-and-where.md). Az új SDK vagy CLI használatával újratelepítheti a modelleket, anélkül, hogy módosítania kellene bármelyik pontozási fájlt, függőséget vagy sémát. 
+Az újabb verzióra, a modellek webszolgáltatásként az Azure Container Instances(ACI) vagy az Azure Kubernetes Service (AKS)-fürtöket üzembe helyezve. FPGA-kban és az IoT Edge-ben is telepítheti. További információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot. Az új SDK vagy CLI használatával újratelepítheti a modelleket, anélkül, hogy módosítania kellene bármelyik pontozási fájlt, függőséget vagy sémát. 
 
 ## <a name="what-about-the-old-sdk--cli"></a>Mi a helyzet a régi SDK-val és CLI-vel?
 

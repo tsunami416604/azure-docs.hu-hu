@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0d96844d9e156c702a5a6273b5181db04e5a79c5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: a27513f9ae3d2b4cfff77f4fd410fdc77e060feb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994716"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081676"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -218,7 +218,7 @@ V: hozzá kell "etag" az API-t, vagy az Azure Resource Manager-sablon tulajdons�
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>K. Mennyi adatot lehet küldeni az ügynökön keresztül a Log Analytics? Van egy minden ügyfél adatok maximális mérete?
 A. Az ingyenes csomag 500 MB-os maximális napi adatmennyiséget Munkaállomásonként állítja be. A standard és prémium szintű csomag is feltöltött adatok mennyisége nincs korlátozva van. Felhőalapú szolgáltatás, a Log Analytics célja, hogy az automatikus vertikális felskálázás legfeljebb leíró a kötet érkező ügyfél –, akkor is, ha több terabájtnyi naponta.
 
-A Log Analytics-ügynököket úgy lett kialakítva, annak érdekében, hogy egy kis erőforrás-igényű rendelkezik. Engedélyezi a megoldások adatmennyiség függvényében. Adatmennyiség részletes információkat találhat, és tekintse meg a táblázat összefoglalja a megoldással a [használati](../../log-analytics/log-analytics-usage.md) lapot.
+A Log Analytics-ügynököket úgy lett kialakítva, annak érdekében, hogy egy kis erőforrás-igényű rendelkezik. Engedélyezi a megoldások adatmennyiség függvényében. Adatmennyiség részletes információkat találhat, és tekintse meg a táblázat összefoglalja a megoldással a [használati](../../azure-monitor/platform/data-usage.md) lapot.
 
 További információt talál a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) eredményeket megjelenítő az erőforrás-használat (jelenlét), az OMS-ügynök kiértékelése után.
 
@@ -234,7 +234,7 @@ A. Az ügynök / küldött adatok mennyiségét függ:
 * A naplók és a gyűjtött teljesítményszámlálók számát
 * A naplók adatmennyiség
 
-Az ingyenes tarifacsomag jó módja a előkészítése több kiszolgálók és a tipikus adatmennyiség mérőműszer. Összesített használat jelenik meg a [használati](../../log-analytics/log-analytics-usage.md) lapot.
+Az ingyenes tarifacsomag jó módja a előkészítése több kiszolgálók és a tipikus adatmennyiség mérőműszer. Összesített használat jelenik meg a [használati](../../azure-monitor/platform/data-usage.md) lapot.
 
 A számítógépeken, amelyek a WireData-ügynök futhasson használja a következő lekérdezést megtekintéséhez, hogy mennyi adatot küld:
 

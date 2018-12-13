@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning PyTorch modelleket taníthat be
+title: A PyTorch modelleket taníthat be
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan futtathat egy csomópontos és elosztott képzési PyTorch modellek a PyTorch estimator
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +11,14 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: dcd7b58e2c1f4d6e556515ad7db778f2989588b9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017423"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100563"
 ---
-# <a name="pytorch-models-with-azure-machine-learning-service"></a>PyTorch modellek Azure Machine Learning szolgáltatással
+# <a name="train-pytorch-models-with-azure-machine-learning-service"></a>PyTorch modellek Azure Machine Learning szolgáltatással
 
 Neurális hálózat (DNN) képzést nyújt PyTorch, az Azure Machine Learning biztosít egyéni `PyTorch` osztályát az `Estimator`. Az Azure SDK `PyTorch` estimator lehetővé teszi, hogy könnyedén beküldhető PyTorch mind egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok.
 

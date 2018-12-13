@@ -1,7 +1,7 @@
 ---
 title: Megbízhatósági pontszám – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Elmagyarázza, megbízhatósági pontszám
+description: A megbízhatósági pontszám azt jelzi, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan.
 services: cognitive-services
 author: tulasim88
 manager: pchoudh
@@ -10,14 +10,15 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: b1126b2cdb7a5cd7451a916558bc928653bc0027
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577923"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081319"
 ---
-# <a name="confidence-score"></a>Megbízhatósági pontszám
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
 
 A megbízhatósági pontszám értéke 0 és 100 közötti szám. A pontszám: 100, valószínűleg pontos egyezést, egy pontszám, a 0 azt jelenti, nem egyező válasz nem található, miközben. Minél nagyobb a pontszám - a a választ a nagyobb biztonsággal. Egy adott lekérdezésre vonatkozó lehet több választ ad vissza. Ebben az esetben a válaszokat a rendszer magabiztossági pontszámot csökkenő sorrendben adja vissza.
@@ -78,15 +79,15 @@ Nem megfelelő talál egyezést szerint a rangsorolás, amikor a 0,0 vagy "None"
 
 2. Ide kattintva megnyithatja a **App Service-ben**.
 
-    ![Hozzáférés az App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Az Azure Portalon férhet hozzá a QnA Maker az App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
 3. Kattintson a **Alkalmazásbeállítások** és szerkesztheti a **DefaultAnswer** a kívánt alapértelmezett válasz mező. Kattintson a **Save** (Mentés) gombra.
 
-    ![Alapértelmezett válasz módosítása](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Válassza ki az alkalmazás beállításait, és szerkesztheti a QnA Maker DefaultAnswer](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. Indítsa újra az App service
 
-    ![A QnA Maker az App Service-újraindítás](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Miután a DefaultAnswer módosítja, indítsa újra a QnA Maker App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>További lépések

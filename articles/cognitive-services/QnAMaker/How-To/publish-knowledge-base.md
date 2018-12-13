@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: eceb0554d35935f1aee77c4c054cb7e65b327845
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 9c3d1009742f9ca0df6dc2f2d1a2d1904397275a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033415"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087847"
 ---
-# <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
+# <a name="publish-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis közzététele
 
 Az utolsó lépés a kérdés megválaszolásával-végpontként elérhetővé a Tudásbázis közzététele. 
 
@@ -33,7 +34,7 @@ Tudásbázis közzététele, amikor a kérdések és válaszok tartalmát a Tud�
 
 2. Válassza ki **közzététel** ismételt használatával ellenőrizheti a végpont adatait az alkalmazás vagy robot kódjában használható.
 
-    ![Tudásbázis közzététele](../media/qnamaker-how-to-publish-kb/publish-success.png)
+    ![Tudásbázis közzététele sikerült](../media/qnamaker-how-to-publish-kb/publish-success.png)
     
 ## <a name="next-steps"></a>További lépések
 

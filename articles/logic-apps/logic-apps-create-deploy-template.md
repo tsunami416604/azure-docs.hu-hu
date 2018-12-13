@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304237"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089701"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 
@@ -168,12 +168,12 @@ Ha rendelkezik egy meglévő erőforráscsoport-projektet, a logikai alkalmazás
     
 4. Az a **erőforrás hozzáadása** párbeszédpanelen keresse meg és válassza ki **logikai alkalmazás**. Nevezze el a logikai alkalmazást, és válassza a **Hozzáadás**.
 
-    ![Erőforrás felvétele](./media/logic-apps-create-deploy-template/addresource.png)
+    ![Erőforrás hozzáadása](./media/logic-apps-create-deploy-template/addresource.png)
 
 
 ## <a name="deploy-a-logic-app-template"></a>Logic app-sablon üzembe helyezése
 
-A sablon olyan eszközöket, mint például a PowerShell, REST API segítségével telepíthet [Azure DevOps-Kiadáskezelés](#team-services), és a sablon telepítése az Azure Portalon keresztül.
+A sablon olyan eszközöket, mint például a PowerShell, REST API segítségével telepíthet [Azure DevOps Azure folyamatok](#team-services), és a sablon telepítése az Azure Portalon keresztül.
 Emellett szeretné tárolni a paraméterek értékeit, javasoljuk, hogy hozzon létre egy [paraméterfájl](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
 Ismerje meg, hogyan [erőforrások üzembe helyezése Azure Resource Manager-sablonok és PowerShell](../azure-resource-manager/resource-group-template-deploy.md) vagy [erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és az Azure Portalon](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,11 +185,11 @@ OAuth-kapcsolatok hitelesítéséhez, nyissa meg a logikai alkalmazás a Logic A
 Példa parancsfájl van a githubon a [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projekt.
 
 <a name="team-services"></a>
-## <a name="azure-devops-release-management"></a>Az Azure DevOps-Kiadáskezelés
+## <a name="azure-devops-azure-pipelines"></a>Az Azure DevOps Azure folyamatok
 
-Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például Release Management az Azure DevOps, a logikai alkalmazás központi telepítési sablont. Az Azure DevOps tartalmaz egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási folyamathoz hozhat létre.
+Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például az Azure-folyamatok az Azure DevOps, a logikai alkalmazás központi telepítési sablont. Az Azure DevOps tartalmaz egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási folyamathoz hozhat létre.
 
-1. A Kiadáskezelés, válassza ki **üres** úgy, hogy létrehoz egy üres folyamatot.
+1. Válassza ki az Azure-folyamatok, **üres** úgy, hogy létrehoz egy üres folyamatot.
 
     ![Üres folyamat létrehozása][1]
 

@@ -1,20 +1,20 @@
 ---
-title: Fejlesztés és a C# modul hibakeresése a Visual Studio 2017 Azure IoT Edge |} A Microsoft Docs
+title: Fejlesztés és hibakeresés C# modulok a Visual Studio – Azure IoT Edge |} A Microsoft Docs
 description: A Visual Studio 2017 használatával fejlesztése, és C# modul hibakeresése az Azure IoT Edge-hez
 services: iot-edge
-keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 86f0867389ce6ee1c83190e03ba17362db29d6f7
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: seodec18
+ms.openlocfilehash: 547989152320678ec195c4e8a93965cfbbd0f341
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975873"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097845"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Fejlesztés és az Azure IoT Edge (előzetes verzió) C# modul hibakeresése a Visual Studio 2017 használatával
 

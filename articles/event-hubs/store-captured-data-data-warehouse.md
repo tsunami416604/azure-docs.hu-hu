@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs-adatok migrálása az SQL Data Warehouse-ba | Microsoft Docs
+title: Esemény-adatok áttelepítése az SQL Data Warehouse – Azure Event Hubs |} A Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy eseményrács által meghívott Azure-függvénnyel.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 56701f039ae2de6d136a2a06fbeb9e99359a0029
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017065"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086283"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Rögzített az Event Hubs-adatok áttelepítése SQL Data Warehouse Event Grid és az Azure Functions használatával
 

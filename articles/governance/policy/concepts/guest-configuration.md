@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan Azure Policy segítségével Vendég konfigurá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ca96aea8f359f1df7da48f84a3317a2d8c7b52e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 19bc8a58c1ad2115afdfd1d7e59b714ba19cadec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167944"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078888"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -29,7 +29,7 @@ A naplózási beállítások egy virtuális gépen egy [virtuálisgép-bővítm�
 
 ### <a name="register-guest-configuration-resource-provider"></a>Vendég-konfigurációs erőforrás-szolgáltató regisztrálása
 
-Vendég-konfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltató. Ehhez a portálon keresztül vagy a Powershellen keresztül.
+Vendég-konfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltató. A portálon keresztül vagy a Powershellen keresztül lehet regisztrálni.
 
 #### <a name="registration---portal"></a>Regisztráció – portál
 
@@ -54,7 +54,7 @@ Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguratio
 
 ### <a name="validation-tools"></a>Érvényesítési eszközök
 
-A virtuális gépen belül a Vendég konfigurációs ügyfél az ellenőrzés végrehajtásához használja a helyi eszközök.
+A virtuális gépen belül a Vendég konfigurációs ügyfélnél a helyi eszközök futtatásához a naplózási.
 
 Az alábbi táblázat az egyes támogatott operációs rendszeren használja a helyi eszközök listáját:
 
@@ -90,23 +90,23 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 
-Vendég-konfiguráció által végrehajtott minden egyes naplózási igényel két szabályzatdefiníció egy **DeployIfNotExists** és **AuditIfNotExists**. **DeployIfNotExists** a virtuális gép előkészítése a Vendég konfigurációs ügynök és a más összetevőkkel támogatására szolgál a [érvényesítési eszközök](#validation-tools).
+Minden egyes naplózási Vendég konfiguráció futtatása szükséges két szabályzatdefiníció egy **DeployIfNotExists** és **AuditIfNotExists**. **DeployIfNotExists** a virtuális gép előkészítése a Vendég konfigurációs ügynök és a más összetevőkkel támogatására szolgál a [érvényesítési eszközök](#validation-tools).
 
-A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a következőket:
+A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a következő elemek:
 
-- Győződjön meg arról, a virtuális gép egy konfigurációs kiértékelheti, hogy hozzá lett rendelve. Ha nincs hozzárendelés nem található, a hozzárendelés beolvasása, és készítse elő a virtuális gép által:
+- Ellenőrizze a virtuális gép egy konfigurációs kiértékelheti, hogy hozzá lett rendelve. Ha nincs hozzárendelés nem található, a hozzárendelés beolvasása, és készítse elő a virtuális gép által:
   - A virtuális gép történő hitelesítése egy [identitás](../../../active-directory/managed-identities-azure-resources/overview.md)
   - A legújabb verziójának telepítése a **Microsoft.GuestConfiguration** bővítmény
   - Telepítés [érvényesítési eszközök](#validation-tools) és függőségei, szükség esetén
 
-Egyszer a **DeployIfNotExists** megfelelő, akkor a **AuditIfNotExists** szabályzat-definíció a helyi érvényesítés eszközök segítségével határozza meg, a hozzárendelt konfigurációs hozzárendelés megfelelő-e, vagy Nem megfelelő. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfelet, amely a Vendég-konfigurációs erőforrás-szolgáltatón keresztül elérhető legyen a Vendég bővítmény továbbítja azokat az eredményeket.
+Egyszer a **DeployIfNotExists** megfelelő, akkor a **AuditIfNotExists** szabályzat-definíció a helyi érvényesítés eszközök segítségével határozza meg, a hozzárendelt konfigurációs hozzárendelés megfelelő-e, vagy Nem megfelelő. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
 
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > Minden egyes vendég konfigurációs definíciós mind a **DeployIfNotExists** és **AuditIfNotExists** szabályzatdefiníciók léteznie kell.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: naplózási jelszó biztonsági beállításokat a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció biztosítja, hogy csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: naplózási jelszó biztonsági beállításokat a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -115,5 +115,5 @@ Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó defin�
 - Felülvizsgálat [házirend hatások ismertetése](effects.md)
 - Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md)
 - Ismerje meg, hogyan [megfelelőségi adatok lekérése](../how-to/getting-compliance-data.md)
-- Fedezze fel hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md)
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md)
 - A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/index.md) ismertető részt.

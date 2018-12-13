@@ -2,19 +2,20 @@
 title: 'Oktatóanyag: Az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiók'
 description: Ebből az oktatóanyagból megtudhatja, hogyan másolhat adatokat egy Apache Cassandra-ból az Azure Cosmos DB Cassandra API-fiók a CQL Másolás parancs és a Spark használatával.
 author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.author: govindk
 ms.topic: tutorial
 ms.date: 12/03/2018
-ms.reviewer: sngun
+ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: 604cab3bed73366ce28c8bb35b63df6379985cfb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ed86ce20a6230d487dfbd968a31507953400fab6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867460"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100455"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiók
 
@@ -72,12 +73,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A meglévő Cassandra-számításifeladatokból a következő lehetőségekkel migrálhatja az adatokat az Azure Cosmos DB-be:
 
-* [A cqlsh COPY parancsával](#using-cqlsh-copy-command)  
-* [A Spark használatával](#using-spark) 
+* [A cqlsh COPY parancsával](#migrate-data-using-cqlsh-copy-command)  
+* [A Spark használatával](#migrate-data-using-spark) 
 
 ## <a name="migrate-data-using-cqlsh-copy-command"></a>Adatok migrálása a cqlsh COPY paranccsal
 
-A [CQL Másolás parancs](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) a Cassandra API-fiókot az Azure Cosmos DB helyi adatok másolása szolgál. Az adatok másolásához hajtsa végre a következő lépéseket:
+A [CQL Másolás parancs](https://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) a Cassandra API-fiókot az Azure Cosmos DB helyi adatok másolása szolgál. Az adatok másolásához hajtsa végre a következő lépéseket:
 
 1. A Cassandra API-fiók kapcsolatisztring-adatainak lekérése:
 

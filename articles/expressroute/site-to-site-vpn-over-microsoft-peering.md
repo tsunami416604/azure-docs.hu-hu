@@ -1,5 +1,5 @@
 ---
-title: A site-to-site VPN konfigurálása Microsoft társviszony-létesítést az Azure expressroute keresztül |} A Microsoft Docs
+title: Site-to-site VPN konfigurálása a Microsoft Azure – az ExpressRoute - társviszony-létesítés feletti |} A Microsoft Docs
 description: Site-to-site VPN gateway használatával egy ExpressRoute Microsoft társviszony-létesítési kapcsolatcsoport keresztül az Azure IPsec/IKE-kapcsolat konfigurálása.
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240907"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094202"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Site-to-site VPN konfigurálása ExpressRoute Microsoft társviszony-létesítésen keresztül
 
-Ez a cikk segít a helyszíni hálózat és az Azure virtuális hálózatok (Vnetek) között biztonságos, titkosított kapcsolat konfigurálása egy privát ExpressRoute-kapcsolaton keresztül. Egy biztonságos alagúton konfigurálása expressroute-on keresztül lehetővé teszi, hogy az adatcseréhez bizalmas, visszajátszás, hitelességét és integritását.
+Ez a cikk segít a helyszíni hálózat és az Azure virtuális hálózatok (Vnetek) között biztonságos, titkosított kapcsolat konfigurálása egy privát ExpressRoute-kapcsolaton keresztül. A Microsoft társviszony-létesítést úgy, hogy ki a kijelölt helyszíni hálózatokhoz és az Azure virtuális hálózatok között helyek közötti IPsec/IKE VPN-alagutat is használhatja. Egy biztonságos alagúton konfigurálása expressroute-on keresztül lehetővé teszi, hogy az adatcseréhez bizalmas, visszajátszás, hitelességét és integritását.
 
-## <a name="architecture"></a>Architektúra
-
-Kihasználhatja a Microsoft társviszony-létesítést úgy, hogy ki a kijelölt helyszíni hálózatokhoz és az Azure virtuális hálózatok között helyek közötti IPsec/IKE VPN-alagutat.
-
-  >[!NOTE]
+>[!NOTE]
 >Amikor beállít site-to-site VPN keresztül a Microsoft társviszony-létesítés, díjkötelesek a VPN-átjáró és a VPN-forgalom. További információkért lásd: [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+## <a name="architecture"></a>Architektúra
+
 
   ![kapcsolat – áttekintés](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

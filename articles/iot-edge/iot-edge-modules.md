@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge-modulok megismerése |} A Microsoft Docs
-description: 'További tudnivalók az Azure IoT Edge-modulok és azok miként vannak konfigurálva:'
+title: Ismerje meg, hogyan modulok futtatása az Azure IoT Edge - eszközökön logikai |} A Microsoft Docs
+description: Az Azure IoT Edge-modulok olyan tárolóalapú egységet logika, amely telepíthető és kezelhető távolról, hogy futtathatja üzleti logikát az IoT Edge-ben eszközök
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567332"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094185"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
@@ -31,7 +32,7 @@ A képek a felhőben található, és azok frissíthetők, megváltozott, és k�
 
 Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul lemezképet; azonban minden egyes kellene saját modulpéldány a modul indításakor az eszközön. 
 
-![A modul képeket a felhőben – modul példányok az eszközökön](./media/iot-edge-modules/image_instance.png)
+![Diagram - modul képek a felhőben, a modul példányok az eszközökön](./media/iot-edge-modules/image_instance.png)
 
 Végrehajtására, a modulok képek jelen vannak egy tárházban lévő tárolórendszerképek, és modul példányok olyan tárolók, az eszközökön. 
 
@@ -46,7 +47,7 @@ Az identitás, a modul-példányhoz társított függ az eszköz az identitássa
 
 Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképének többször ugyanazon az eszközön, amikor üzembe helyezéséhez használható többször, különböző neveket ugyanazt a lemezképet.
 
-![A modul identitások egyediek.](./media/iot-edge-modules/identity.png)
+![Diagram - modul identitások egyediek-e az eszközök és az eszközök között](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Ikermodulokkal
 
