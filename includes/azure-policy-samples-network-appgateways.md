@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 40256f0bdd9f4c15fe48c825bda0e11bb10f9da6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 369423f762dc977db7da0432ec217906d1e7ef1c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47003761"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53318213"
 ---
 ### <a name="application-gateways"></a>Application Gateway-átjárók
 
 |  |  |
 |---------|---------|
-| [Engedélyezett Application Gateway termékváltozatok](../articles/governance/policy/samples/allowed-app-gate-sku.md) | Ehhez az alkalmazásátjáróknak jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy jóváhagyott termékváltozatokat tartalmazó tömböt. |
+| [Engedélyezett Application Gateway termékváltozatok](../articles/governance/policy/samples/allowed-app-gateway-sku.md) | Ehhez az alkalmazásátjáróknak jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy jóváhagyott termékváltozatokat tartalmazó tömböt. |

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c8edaba8de597e3e76e760e1f5109006338a663c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238820"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888460"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Az Azure Maps támogatott térkép stílusok
-Az Azure maps négy különböző beépített térkép stílusok támogatja. A stílusok ezek leírását az alábbiakban láthatók.
+Az Azure maps számos különféle beépített térkép stílusok támogatja, az alább ismertetett.
 
 ## <a name="road"></a>Közúti
 A **közúti** térkép a szokásos természetes utak megjelenítő térképet és mesterséges szolgáltatások, a címkék esetében ezek a funkciók mellett.
@@ -49,6 +49,14 @@ A térkép stílus egy hibrid utak és címkék, műholdas és a légi képanyag
 **Szürkeárnyalatos sötét** közúti térképes styl sötét verziója.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+
+**Megfelelő API-kat:**
+* A térkép vezérlőelem-JS 
+
+## <a name="night"></a>az éjszakai
+**az éjszakai** színes utak és szimbólumok közúti térképes styl sötét verziója.
+
+![az éjszakai](./media/supported-map-styles/night.PNG)
 
 **Megfelelő API-kat:**
 * A térkép vezérlőelem-JS 

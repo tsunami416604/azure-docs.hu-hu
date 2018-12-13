@@ -8,24 +8,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: b52305d59803d9fb8e70d89ae13cd5006c74129f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081591"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865454"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
  
-Az Apache Spark és az Azure Cosmos DB közötti összekötő lehetővé teszi, hogy az Azure Cosmos DB legyen az Apache Spark-feladatok bemenete vagy kimenete. Csatlakozás [Spark](https://spark.apache.org//) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan használja az Azure Cosmos DB által felügyelt natív indexeket. Az indexek lehetővé teszik a frissíthető oszlopok használatát, amikor elemzéseket és leküldéses predikátumszűréseket végez gyorsan változó, globálisan elosztott adatokon. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
+Az Apache Spark és az Azure Cosmos DB közötti összekötő lehetővé teszi, hogy az Azure Cosmos DB legyen az Apache Spark-feladatok bemenete vagy kimenete. Csatlakozás [Spark](http://spark.apache.org/) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan használja az Azure Cosmos DB által felügyelt natív indexeket. Az indexek lehetővé teszik a frissíthető oszlopok használatát, amikor elemzéseket és leküldéses predikátumszűréseket végez gyorsan változó, globálisan elosztott adatokon. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
 
 ## <a name="connector-components"></a>Összekötő-összetevők
 
 A Spark az Azure Cosmos DB-összekötő a következő összetevőket tartalmazza:
 
-* [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) kiépítése és rugalmasan méretezhető átviteli sebesség és a storage, tetszőleges számú földrajzi régió között.  
+* [Az Azure Cosmos DB](http://documentdb.com) kiépítése és rugalmasan méretezhető átviteli sebesség és a storage, tetszőleges számú földrajzi régió között.  
 
-* [Az Apache Spark](https://spark.apache.org/) egy hatékony nyílt forráskódú motor, sebessége, a könnyű használat és a kifinomult elemzési épülnek.  
+* [Az Apache Spark](http://spark.apache.org/) egy hatékony nyílt forráskódú motor, sebessége, a könnyű használat és a kifinomult elemzési épülnek.  
 
 * [Apache Spark-fürt az Azure databricks szolgáltatásban](https://docs.azuredatabricks.net/getting-started/index.html) lehetővé teszi, hogy a Spark-feladatokat futtathat a Spark-fürtön.
 
@@ -177,7 +177,7 @@ Spark és az Azure Cosmos DB közötti kommunikáció a jelentősen gyorsabb, me
 
 4. Bontsa ki a Twitter-hírcsatornáján minta tartalmát, és nyissa meg a config.py fájlt. Frissítse a masterKey, a gazdagépet, a databaseId, a collectionId és a preferredlocations listában.  
 
-5. Lépjen a `https://apps.twitter.com/`, és a Twitter-hírcsatornáján az alkalmazás regisztrálásához. Miután kiválasztotta az alkalmazás nevét, hogy megkapják a egy **fogyasztói kulcs, a fogyasztói titkos kulcs, a hozzáférési jogkivonatot és a hozzáférési jogkivonat titkos kulcs**. Másolja ki ezeket az értékeket, és frissítse azokat a config.py fájlt adja meg a Twitter-hírcsatorna alkalmazás programozott hozzáférést a Twitteren.   
+5. Lépjen a `http://apps.twitter.com/`, és a Twitter-hírcsatornáján az alkalmazás regisztrálásához. Miután kiválasztotta az alkalmazás nevét, hogy megkapják a egy **fogyasztói kulcs, a fogyasztói titkos kulcs, a hozzáférési jogkivonatot és a hozzáférési jogkivonat titkos kulcs**. Másolja ki ezeket az értékeket, és frissítse azokat a config.py fájlt adja meg a Twitter-hírcsatorna alkalmazás programozott hozzáférést a Twitteren.   
 
 6. Mentse a config.py fájlt. Nyisson meg egy parancssort, és a Python-alkalmazás futtatása a következő paranccsal:
 
@@ -511,4 +511,4 @@ Ha még nem tette, töltse le a Spark az Azure Cosmos DB-összekötő a [azure-c
 * [Összesítések példák](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Mintaszkriptek és -jegyzetfüzetek](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Emellett érdemes áttekinteni a [adatkészletek útmutató, Apache Spark SQL és DataFrames](https://spark.apache.org/docs/latest/sql-programming-guide.html), és a [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) cikk.
+Emellett érdemes áttekinteni a [adatkészletek útmutató, Apache Spark SQL és DataFrames](http://spark.apache.org/docs/latest/sql-programming-guide.html), és a [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) cikk.

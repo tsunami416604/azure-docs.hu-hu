@@ -3,7 +3,7 @@ title: Azure SQL rugalmas adatbázis-feladatok | Microsoft Docs
 description: Rugalmas adatbázis-feladatok használatával Transact-SQL- (T-SQL-) szkripteket futtathat egy vagy több Azure SQL-adatbáziskészleten
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: a029697c2fdd3c9bd3b3da2c2b5a1420d0dd0a8c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054727"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087133"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Adatbáziscsoportok kezelése rugalmas adatbázis-feladatokkal
 
@@ -127,7 +127,7 @@ A **4. példában** olyan célcsoport szerepel, amely célhelyként egy rugalmas
 
 ![Példák célcsoportokra](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-Az **5. példában** és a *6. példában* olyan speciális forgatókönyvek szerepelnek, ahol Azure SQL Server-kiszolgálók, rugalmas készletek és adatbázisok kombinálásával foglalunk bele vagy zárunk ki szabályokat.<br>
+Az **5. példában** és a **6. példában** olyan speciális forgatókönyvek szerepelnek, ahol Azure SQL Server-kiszolgálók, rugalmas készletek és adatbázisok kombinálásával foglalunk bele vagy zárunk ki szabályokat.<br>
 A **7. példa** azt mutatja be, hogy a feladat futtatása során a szilánkleképezésben szereplő szilánkok is kiértékelhetők.
 
 ### <a name="job"></a>Feladat

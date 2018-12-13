@@ -1,21 +1,22 @@
 ---
-title: Együttműködhet más közreműködőkkel párhozamosan LUIS-alkalmazások
-titleSuffix: Azure Cognitive Services
+title: Együttműködés másokkal a
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Az alkalmazások tulajdonosai közreműködők adhat hozzá az alkalmazást. A közreműködők módosíthatja a modell betanítását és tegye közzé az alkalmazást.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b7d108bfc0c4283e7856b93daba3f4f92af4cc5b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086419"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Szerzők és a közreműködők kezelése 
 
@@ -31,7 +32,7 @@ Egy alkalmazás egyetlen Szerző, a tulajdonos, rendelkezik, de sok közreműkö
 
 2. Válassza ki **adja hozzá a közreműködő** az eszköztáron.
 
-    [![](./media/luis-how-to-collaborate/add-collaborator.png "Adja hozzá a közreműködő")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![Hozzáadás közreműködő](./media/luis-how-to-collaborate/add-collaborator.png "Hozzáadás közreműködő")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 3. Adja meg az e-mail-cím, a közreműködő segítségével jelentkezzen be a LUIS-portálon.
 

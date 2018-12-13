@@ -8,12 +8,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: aacd41eef250577681a9910c9b7c68f3b7000f5c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b6831e9c6b679d2fd4fa585331213290d67068c2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870792"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084016"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Az Azure Cosmos DB: A lambda architektúra megvalósítása az Azure platformon 
 
@@ -34,7 +34,7 @@ Lambda architektúra általános, méretezhető, és hibatűrő adatfeldolgozás
 
 Forrás: http://lambda-architecture.net/
 
-Lambda architektúra alapelveinek ismertetett megfelelően a fenti ábrán [ https://lambda-architecture.net ](http://lambda-architecture.net/).
+Lambda architektúra alapelveinek ismertetett megfelelően a fenti ábrán [ http://lambda-architecture.net ](http://lambda-architecture.net/).
 
  1. Az összes **adatok** leküldéssel kerülnek *mindkét* a *kötegelt réteg* és *gyors réteg*.
  2. A **kötegelt réteg** fő adatkészletet (nyers adatok nem módosítható, csak set) rendelkezik, és előre kiszámítja a batch-nézeteket.
@@ -278,4 +278,4 @@ Ha még nem tette, töltse le a Spark az Azure Cosmos DB-összekötő a [azure-c
 * [A változáscsatorna bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [A Stream feldolgozni a módosításokat az Azure Cosmos DB módosítási hírcsatorna és az Apache Spark használatával](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 
-Emellett érdemes áttekinteni a [adatkészletek útmutató, Apache Spark SQL és DataFrames](http://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) cikk.
+Emellett érdemes áttekinteni a [adatkészletek útmutató, Apache Spark SQL és DataFrames](https://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Apache Spark on Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) cikk.

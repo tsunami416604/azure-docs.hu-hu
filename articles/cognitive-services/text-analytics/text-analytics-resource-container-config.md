@@ -1,21 +1,22 @@
 ---
 title: Tárolók konfigurálása
-titlesuffix: Text Analytics - Cognitive Services - Azure
-description: Szövegelemzés tárolók konfigurációs beállításait.
+titlesuffix: Text Analytics - Azure Cognitive Services
+description: Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 61f435c55d7925554facd9bbaa63767023a779d4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7e993b9ccc57359ac64186765b7b704535eb5a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965019"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086674"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -104,7 +105,7 @@ A `Eula` konfigurációs beállítás azt jelzi, hogy Ön már elfogadta a licen
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-configuration-setting) konfigurációs beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom őket. Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](how-tos/text-analytics-how-to-install-containers.md#billing).
 
-Cognitive Services-tárolók licencelése az Azure használatát szabályozó a szerződés keretében. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy az Azure használatát szabályozó megállapodást-e a Microsoft Online előfizetői szerződés (amely magában foglalja az Online szolgáltatások használati feltételeit). Az előnézetben is elfogadja a kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó. A tároló használatával elfogadja ezeket a feltételeket.
+Cognitive Services-tárolók licence alapján [a szerződés](https://go.microsoft.com/fwlink/?linkid=2018657) az Azure használatát szabályozó. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy van-e az Azure használatát szabályozó megállapodást a [Microsoft Online előfizetői szerződés](https://go.microsoft.com/fwlink/?linkid=2018755) (amely magában foglalja a [Online szolgáltatások használati feltételeit ](https://go.microsoft.com/fwlink/?linkid=2018760)). Az előnézetben, is elfogadja a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://go.microsoft.com/fwlink/?linkid=2018815). A tároló használatával elfogadja ezeket a feltételeket.
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd konfigurációs beállításai
 

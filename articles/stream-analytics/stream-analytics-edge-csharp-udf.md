@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan írhat felhasználói C# függvényt Azure Stre
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: d593930705c7455d03e20af2affd2de3c418d4a5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389068"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086903"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-an-azure-stream-analytics-edge-job-in-visual-studio-preview"></a>Oktatóanyag: Felhasználói C# függvény írása Azure Stream Analytics Edge-feladathoz a Visual Studióban (előzetes verzió)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Oktatóanyag: Írhat egy C# felhasználó által definiált függvény Azure Stream Analytics Edge-feladat (előzetes verzió)
 
 A Visual Studióban létrehozott felhasználói C# függvényekkel (UDF-ekkel) kiterjesztheti az Azure Stream Analytics lekérdezéseinek nyelvét a saját függvényeire. A C#-pal meglévő kódokat használhat újra (így DLL-eket is), valamint matematikai vagy összetett logikát alkalmazhat. Az UDF-ek implementálásának három módja van: CodeBehind-fájlok egy Stream Analytics-projektben, UDF-ek egy helyi C#-projektből, valamint UDF-ek egy tárfiók meglévő csomagjából. Ez az oktatóanyag a CodeBehind metódussal implementál egy alapszintű C# függvényt. A Stream Analytics-feladatokhoz használható UDF funkció jelenleg előzetes verzióban érhető el, így használata nem javasolt éles környezetekben.
 
@@ -115,11 +115,11 @@ A CodeBehind egy olyan C#-fájl, amely egyetlen ASA Edge-beli lekérdezésszkrip
 
 2. A **Megoldáskezelőben** bontsa ki a **Bemenetek** csomópontot, majd kattintson a jobb gombbal az **Input.json** fájlra, és válassza a **Helyi bemenet hozzáadása** lehetőséget.
 
-   ![Helyi bemenet hozzáadása az Azure Stream Analytics-feladathoz a Visual Studióban](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
+   ![Adja hozzá a helyi bemeneti Stream Analytics-feladatot a Visual Studióban](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
 3. Adja meg a helyi bemeneti fájl útvonalát a letöltött mintaadatokban, majd **mentse** a módosításokat.
 
-    ![Helyi bemenet konfigurálása az Azure Stream Analytics-feladathoz a Visual Studióban](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
+    ![Stream Analytics-feladatot a Visual Studióban helyi bemeneti konfigurációja](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
 4. A szkriptszerkesztőben kattintson a **Helyi futtatás** lehetőségre. Miután a helyi futtatás elmentette a kimeneti eredményeket, nyomjon le egy billentyűt az eredmények táblázatos megjelenítéséhez. 
 
@@ -134,11 +134,11 @@ A C# UDF-en helyileg, a szabványos C#-kódokhoz hasonlóan végezhet hibakeres�
 
 1. Adjon töréspontokat a C# függvényhez.
 
-    ![Töréspontok hozzáadása az Azure Stream Analytics Edge-feladat felhasználói függvényéhez a Visual Studióban](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
+    ![Felvehet töréspontokat a kiválasztott felhasználó által definiált függvény Stream Analytics Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
 2. Nyomja le az **F5** billentyűt a hibakeresés megkezdéséhez. A program a várt módon leáll a töréspontoknál.
 
-    ![Azure Stream Analytics Edge-feladatok felhasználói függvényének megtekintése a Visual Studióban a hibakeresés után](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
+    ![Stream Analytics felhasználói függvény hibakeresés eredmények megtekintése](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>A feladat közzététele az Azure-ban
 A lekérdezés helyi tesztelése után válassza a szkriptszerkesztő **Küldés az Azure-ba** lehetőségét a feladat az Azure-ban való közzétételéhez.
@@ -155,4 +155,4 @@ Ebben az oktatóanyagban létrehozott egy egyszerű, felhasználói C# függvén
 Ha többet szeretne megtudni a felhasználói C# függvények Stream Analytics-feladatokban történő alkalmazásának módjairól, tekintse meg a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Felhasználói C# függvények írása az Azure Stream Analytics szolgáltatáshoz](stream-analytics-edge-csharp-udf-methods.md)
+> [Írási C# funkciók az Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)
