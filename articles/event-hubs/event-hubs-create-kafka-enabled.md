@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre Apache Kafka engedélyezve van az Azure Event Hubs |} A Microsoft Docs
-description: Hozzon létre egy Kafka engedélyezve van az Azure Event Hubs-névtér az Azure portal használatával
+title: Az Apache Kafka engedélyezett esemény központ létrehozása – Azure Event Hubs |} A Microsoft Docs
+description: Ez a cikk ismerteti egy bemutató létrehozott Apache Kafka az Azure Event Hubs-névtér engedélyezte az Azure portal használatával.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b72f6b190aad436398629c67f271020ffd0a8da9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf78ac6bce23b739ed661929f6fe90eddc9b4d94
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090778"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Az Apache Kafka engedélyezve van az event hubs létrehozása
 

@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezés és monitorozás modulok az Azure IoT Edge (CLI) |} A Microsoft Docs
-description: A peremhálózati eszközökön futó modulok kezelése
+title: Az automatikus központi telepítés létrehozása a parancssorból – Azure IoT Edge |} A Microsoft Docs
+description: Eszközök automatikus csoportok az IoT Edge üzemelő példány létrehozása az IoT-bővítmény, az Azure CLI használatával
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f2e7de6b32b4cca6320933050775f843e2cdf39
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567933"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094151"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Üzembe helyezés és monitorozás az Azure CLI használatával nagy mennyiségű IoT Edge-modulok
 

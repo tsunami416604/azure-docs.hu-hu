@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be64d299ac61a47dd3c44ee2e422abd09785189e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002541"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097573"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -67,7 +67,7 @@ Ha a Log Analytics-munkaterület létrehozása az Azure Portalon, és válassza 
 A napi korlátot, a gyűjtemény számlázható adattípusok leállítja az a nap hátralevő. Egy figyelmeztetés szalagcím jelenik meg a kiválasztott Log Analytics-munkaterületet a lap tetején, és a egy műveletet a rendszer a *művelet* tábla alatt **LogManagement** kategória. Az adatgyűjtés után a visszaállítási idő alatt meghatározott folytatja *napi korlát lesz beállítva*. Azt javasoljuk, hogy arra az esetre, ha a napi korlátot elérte a konfigurált Ez a művelet események alapján riasztási szabály meghatározása. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása 
-Felülvizsgálat [Log Analytics-használat és becsült költségek](../../log-analytics/log-analytics-usage.md) megtudhatja, hogy az adatok betöltési trend és mi az a napi mennyiségi korlát meghatározásához. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
+Felülvizsgálat [Log Analytics-használat és becsült költségek](../../azure-monitor/platform/data-usage.md) megtudhatja, hogy az adatok betöltési trend és mi az a napi mennyiségi korlát meghatározásához. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
 
 ### <a name="manage-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése 
 A következő lépések bemutatják, hogyan konfigurálása a Log Analytics lesz képes feldolgozni naponta adatmennyiség kezelése korlátozva.  
@@ -125,4 +125,4 @@ A log Analytics UTC időt használja. Visszaállítás függ, hogy egy időben t
 
 ## <a name="next-steps"></a>További lépések  
 
-Annak eldöntéséhez, hogy mennyi adatot gyűjteni, mely források küldenek, és a különböző típusú adatokat küldtek használat és költségek kezelését segítik, lásd: [adathasználat elemzése a Log Analytics](../../log-analytics/log-analytics-usage.md).
+Annak eldöntéséhez, hogy mennyi adatot gyűjteni, mely források küldenek, és a különböző típusú adatokat küldtek használat és költségek kezelését segítik, lásd: [adathasználat elemzése a Log Analytics](../../azure-monitor/platform/data-usage.md).

@@ -1,21 +1,22 @@
 ---
-title: Egyéni események az Azure Event Gridhez a PowerShell használatával | Microsoft Docs
-description: Az Azure Event Grid és a PowerShell segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre.
+title: Webes végpont – Event Grid PowerShell egyéni eseményeket küldeni
+description: Azure Event Grid és a PowerShell használatával közzététele egy egyéni témakör és feliratkozás témakör eseményeire. Az események a webalkalmazás kezeli.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 08/23/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 13620fbd6393c747285574cf16b519b9b6a1f324
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 46278d0663cd748f88fcfa13d0688ec89a17bd89
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745184"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096671"
 ---
-# <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure PowerShell-lel és az Event Griddel
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Gyors útmutató: Egyéni események átirányítása a PowerShell és az Event Grid webes végpont
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure PowerShell-lel, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -43,7 +44,7 @@ New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Ezenkívül kell 3 – 50 karakter hosszúságú lehet, és tartalmaznia csak a-z, A-Z, 0-9, értékek és a "-"
 
 ```powershell-interactive
 $topicname="<your-topic-name>"

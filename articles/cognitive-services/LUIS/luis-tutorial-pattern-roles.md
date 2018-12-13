@@ -1,7 +1,8 @@
 ---
-title: '4. oktatóanyag: Mintaszerepkörök a környezethez kapcsolódó adatokhoz'
+title: A minta-szerepkörök
 titleSuffix: Azure Cognitive Services
 description: Egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427488"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094406"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Szövegkörnyezet szerint kapcsolódó minták kinyerése
 
@@ -128,7 +129,7 @@ Az ezekben a lépésekben szereplő entitások címkézése egyszerűbb lehet, h
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Wayne Berry from Miami to Mount Vernon`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -258,7 +259,7 @@ A városok nevei a személyek neveihez hasonlóan összetettek lehetnek abból a
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move wayne berry from miami to mount vernon`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

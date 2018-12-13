@@ -1,25 +1,26 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele – REST, C# – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ez a REST-alapú rövid útmutató végigvezeti a tudásbázisok közzétételének folyamatán, amely során a tudásbázis legutolsó tesztelt verzióját leküldéssel továbbítja egy dedikált Azure Search-indexre, amely a közzétett tudásbázist képviseli. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
+title: REST, a Tudásbázis közzétételeC#
+titleSuffix: QnA Maker- Azure Cognitive Services
+description: Ez C# REST-alapú a rövid útmutató végigvezeti a közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/18/2018
 ms.author: diberry
-ms.openlocfilehash: ce027abb75423d0174a7175c3bbafe5c0fb3e157
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0fef4a22179cafbce40868c86e3bceabcebe26a9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646262"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094372"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a C# használatával
 
-Ez a rövid útmutató végigvezeti a tudásbázisok (KB) programozott módon való közzétételén. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
@@ -32,99 +33,47 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-csharp.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-csharp.md).
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+> [!NOTE] 
+> A teljes megoldásfájlok az [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base) érhetők el.
 
 ## <a name="create-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+1. Nyissa meg a Visual Studio 2017 Community Editiont.
+1. Hozzon létre egy új **konzolalkalmazás- (.NET Core-)** projektet, és adja neki a `QnaMakerQuickstart` nevet. Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-required-dependencies"></a>Szükséges függőségek hozzáadása
 
-[!INCLUDE [Add required dependencies to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)] 
+A Program.cs tetején cserélje le az önálló using utasítást a következő sorokkal, hogy felvegye a szükséges függőségeket a projektbe:
+
+[!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=1-2 "Add the required dependencies")]
 
 ## <a name="add-required-constants"></a>Szükséges konstansok hozzáadása
 
-[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)]  
+Az a **fő** metódust, adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Cserélje le az értékeket a saját.
 
-## <a name="add-knowledge-base-id"></a>Tudásbázis-azonosító hozzáadása
+[!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=11-14 "Add the required constants")]
 
-[!INCLUDE [Add knowledge base ID as constant](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-kb-id.md)] 
+## <a name="add-post-request-to-publish-knowledge-base"></a>Adja hozzá a POST-kérés Tudásbázis közzététele
 
-## <a name="add-supporting-functions-and-structures"></a>Támogató függvények és struktúrák hozzáadása
+A szükséges állandókat után adja hozzá a következő kódra, amely egy HTTPS-kérést küld a QnA Maker API Tudásbázis közzététele, és megkapja a választ:
 
-Adja hozzá a következő kódblokkot a Program osztályon belül:
+[!code-csharp[Add HTTP Post request and response](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=16-29&dedent=8 "Add HTTP Post request and response")]
 
-```csharp
-static string PrettyPrint(string s)
-{
-    return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
-}
-```
-
-## <a name="add-post-request-to-publish-kb"></a>POST-kérés hozzáadása a KB közzétételére
-
-A következő kód egy HTTPS-kérést küld a QnA Maker API-ra egy KB közzétételéhez, és a következő választ kapja:
-
-```csharp
-async static void PublishKB()
-{
-    string responseText;
-
-    var uri = host + service + method + kb;
-    Console.WriteLine("Calling " + uri + ".");
-    using (var client = new HttpClient())
-    using (var request = new HttpRequestMessage())
-    {
-        request.Method = HttpMethod.Post;
-        request.RequestUri = new Uri(uri);
-        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-        var response = await client.SendAsync(request);
-
-        // successful status doesn't return an JSON so create one
-        if (response.IsSuccessStatusCode)
-        {
-            responseText = "{'result' : 'Success.'}";
-        }
-        else
-        {
-            responseText =  await response.Content.ReadAsStringAsync();
-        }
-    }
-    Console.WriteLine(PrettyPrint(responseText));
-    Console.WriteLine("Press any key to continue.");
-}
-```
-
-Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugtázására. A válasz törzsében nem található tartalom. A kód adja hozzá a 204-es válaszok tartalmát.
-
-Bármely egyéb válasz esetében a rendszer a választ változtatás nélkül adja vissza.
+Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugtázására. A válasz törzsében nem található tartalom. 
  
-## <a name="add-the-publishkb-method-to-main"></a>A PublishKB metódus hozzáadása a Main metódushoz
-
-Módosítsa a Main metódust, hogy a CreateKB metódust hívja meg:
-
-```csharp
-static void Main(string[] args)
-{
-
-    // Call the PublishKB() method to publish a knowledge base.
-    PublishKB();
-
-    // The console waits for a key to be pressed before closing.
-    Console.ReadLine();
-}
-```
-
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozza létre és futtassa a programot. A program automatikusan elküldi a kérést a QnA Maker API-nak a KB közzétételéhez, majd kiírja a választ a konzolablakban.
+Hozza létre és futtassa a programot. A kérelem automatikusan elküldi a QnA Maker API a Tudásbázis közzététele, majd a konzolablakban a választ ki a program.
 
 Miután a tudásbázis közzé lett téve, lekérdezheti a tartalmát a végpontról egy ügyfélalkalmazás vagy csevegőrobot használatával. 
 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+
 ## <a name="next-steps"></a>További lépések
+
+A Tudásbázis közzététele után kell a [végponti URL-cím létrehozásához választ](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

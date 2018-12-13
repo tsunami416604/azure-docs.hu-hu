@@ -5,33 +5,33 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
-ms.translationtype: HT
+ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30921308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111914"
 ---
-A Virtuális hálózatok közötti kapcsolat – gyakori kérdések szakasz a VPN Gateway-kapcsolatokra vonatkozik. Ha társviszonyt szeretne létesíteni virtuális hálózatok között, lásd: [Társviszony létesítése virtuális hálózatok között](../articles/virtual-network/virtual-network-peering-overview.md)
+A VNet – VNet – gyakori kérdések VPN gateway-kapcsolatok vonatkozik. További információ a virtuális hálózatok közötti társviszony-létesítés: [virtuális hálózatok közötti társviszony](../articles/virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Felszámol az Azure díjat a virtuális hálózatok közötti adatforgalomért?
 
-Az azonos régión belüli virtuális hálózatok közötti adatforgalom ingyenes mindkét irányban VPN-átjárókapcsolat használata esetén. A régiókon átívelő virtuális hálózatok közötti kimenő forgalom díjának megállapítása a virtuális hálózatok közötti kimenő adatátviteli tarifák alapján történik a forrásrégiók alapján. A részletekért tekintse meg a [VPN-átjáró díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/vpn-gateway/). Ha VPN-átjáró helyett virtuális hálózatok közötti társviszonnyal csatlakoztatja a virtuális hálózatokat, tekintse meg a [virtuális hálózat díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-network/).
+Az azonos régión belüli virtuális hálózatok közötti forgalom a VPN gateway-kapcsolat használata esetén ingyenes mindkét irányban. Régiók közötti virtuális hálózatok közötti kimenő forgalom díjának megállapítása a kimenő virtuális hálózatok közötti adatátvitelt, amely a forrásrégiók alapján. További információkért lásd: [VPN-átjáró díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/vpn-gateway/). Ha a virtuális hálózatok közötti társviszony-létesítés helyett egy VPN-átjáró használatával csatlakoztatja a virtuális hálózatokat, tekintse meg a [Virtual network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>A virtuális hálózatok közötti adatforgalom az interneten halad át?
+### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>A virtuális hálózatok közötti adatforgalom az interneten keresztül továbbítani nem?
 
-Nem. A virtuális hálózatok közötti adatforgalom a Microsoft Azure gerinchálózatán halad át, nem az interneten.
+Nem. A virtuális hálózatok közötti forgalom a Microsoft Azure gerinchálózatán keresztül, nem az interneten halad át.
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Létrehozhatok virtuális hálózatok közötti kapcsolatot AAD-bérlőkön keresztül?
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>Is a VNet – VNet kapcsolat is létesíteni az Azure Active Directory (AAD) bérlők között?
 
-Igen, az Azure VPN-átjárókat használó virtuális hálózatok közötti kapcsolatok működnek az AAD-bérlőkön keresztül.
+Igen, a VNet – VNet kapcsolat arra az Azure VPN-átjárókkal AAD-bérlők között működik.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Biztonságos-e a virtuális hálózatok közötti adatforgalom?
 
-Igen, az adatforgalmat IPsec/IKE-titkosítás védi.
+Igen, akkor az IPsec/IKE-titkosítás által védett.
 
 ### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Szükségem van VPN-eszközre a virtuális hálózatok egymáshoz kapcsolásához?
 
@@ -41,13 +41,13 @@ Nem. Az Azure Virtual Networkök összekapcsolása nem igényel VPN-eszközöket
 
 Nem. A virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban (helyeken).
 
-### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>Ha a virtuális hálózatok nem ugyanabban az előfizetésben szerepelnek, az előfizetéseket társítani kell ugyanazzal az AD-bérlővel?
+### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>Ha a virtuális hálózatok ugyanabban az előfizetésben nem találhatók, az előfizetések szükséges társítható ugyanahhoz az Active Directory-bérlőhöz?
 
 Nem.
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>Összekapcsolhatok egymással különböző Azure-példányokban található virtuális hálózatokat? 
 
-Nem. A virtuális hálózatok közötti kapcsolat az azonos Azure-példányon belüli virtuális hálózatok csatlakoztatását támogatja. Például nem hozható létre kapcsolat nyilvános Azure- és kínai/német/az Amerikai Egyesült Államok kormánya által használt Azure-példányok között. Ezekben az esetekben érdemes lehet inkább helyek közötti VPN-kapcsolatot használni.
+Nem. A virtuális hálózatok közötti kapcsolat az azonos Azure-példányon belüli virtuális hálózatok csatlakoztatását támogatja. Például egy globális Azure-ban és kínai/német/US government Azure közötti kapcsolat nem hozható létre példányok. Fontolja meg az ilyen feladatokhoz szükséges Site-to-Site VPN-kapcsolat használatával.
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>A virtuális hálózatok közötti kapcsolatot használhatom többhelyes kapcsolatokhoz?
 
@@ -55,23 +55,23 @@ Igen. A virtuális hálózati kapcsolat használható többhelyes virtuális VPN
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>Hány helyszíni helyhez és virtuális hálózathoz kapcsolódhat egyetlen virtuális hálózat?
 
-Lásd [Az átjáróra vonatkozó követelmények](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements) táblázatot.
+Tekintse meg a [átjáróra vonatkozó követelmények](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements) tábla.
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>A virtuális hálózatok közötti kapcsolattal csatlakoztathatok a virtuális hálózaton kívüli virtuális gépeket vagy felhőszolgáltatásokat?
 
-Nem. A virtuális hálózatok közötti kapcsolat támogatja a virtuális hálózatok csatlakoztatását, Nem támogatja a nem virtuális hálózatban lévő virtuális gépek és felhőszolgáltatások csatlakoztatását.
+Nem. A virtuális hálózatok közötti kapcsolat támogatja a virtuális hálózatok csatlakoztatását, Nem támogatja a csatlakozó virtuális gépeket vagy felhőszolgáltatásokat, amelyek nem a virtuális hálózat.
 
-### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>A felhőszolgáltatások és a terheléselosztási végpontok átívelhetnek több virtuális hálózaton?
+### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Képes a felhőszolgáltatás és a terheléselosztási végpont átívelhetnek több virtuális hálózaton?
 
-Nem. A felhőszolgáltatás és a terheléselosztási végpont nem ívelhet át több virtuális hálózaton, akkor sem, ha ezek össze vannak kapcsolva.
+Nem. A felhőszolgáltatás és a terheléselosztási végpont nem ívelhet át több virtuális hálózaton, akkor is, ha ezek össze van kapcsolva.
 
-### <a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Használhatok házirendalapú VPN-típust a virtuális hálózatok közötti vagy többhelyes kapcsolatokhoz?
+### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Használhatok házirendalapú VPN-típussal virtuális hálózatok közötti vagy többhelyes kapcsolatokhoz?
 
-Nem. A virtuális hálózatok közötti és többhelyes kapcsolatokhoz útvonalalapú (korábbi nevén dinamikus útválasztású) VPN-típussal rendelkező Azure VPN Gateway átjárók szükségesek.
+Nem. Virtuális hálózatok közötti és többhelyes kapcsolatokhoz Azure VPN-átjárók az Útvonalalapú (korábbi nevén dinamikus útválasztású) VPN-típussal.
 
 ### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Összekapcsolhatok egy RouteBased (útvonalapú) VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
 
-Nem, mindkét virtuális hálózatnak útvonalalapú (korábban dinamikus útválasztású) VPN-t KELL használnia.
+Nem, mindkét virtuális hálózatnak útvonalalapú (korábban dinamikus útválasztású) VPN-eket kell használnia.
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>A VPN-alagutak osztoznak a sávszélességen?
 

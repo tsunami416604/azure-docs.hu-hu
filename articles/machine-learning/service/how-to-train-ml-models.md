@@ -1,5 +1,6 @@
 ---
-title: Az Azure Machine Learning szolgáltatás egy Estimator osztály használatával gépi Tanulási modelleket taníthat be
+title: Egy Estimator osztály használatával gépi Tanulási modelleket taníthat be
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hajthat végre egy csomópontos és elosztott képzési hagyományos gép tanulási és deep learning-modellek Azure Machine Learning services Estimator osztály használatával
 ms.author: minxia
 author: mx-iao
@@ -9,13 +10,13 @@ ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 53462fc0aecbb8f5aeef0bb9208264c714ce8394
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: e7157b9546d1f9ca40bab35d9e643c38051db04e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011420"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100752"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Az Azure Machine Learning-modellek betanításához
 

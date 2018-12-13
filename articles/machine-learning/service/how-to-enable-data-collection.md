@@ -1,5 +1,6 @@
 ---
-title: Az éles környezet – az Azure Machine Learning-modellek az adatgyűjtés engedélyezése
+title: Adatgyűjtés engedélyezése az üzemi modellek számára
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan gyűjtheti az Azure Machine Learning bemeneti modell adatokat egy Azure Blob Storage.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3033b049b3d4bbe49b6a30be7ec78e1c2caf49ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: e6b6a8e1dd1b3746977062341013b92acff132c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011138"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100542"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
@@ -55,7 +56,7 @@ A kimeneti adatokat a BLOB elérési útja ezt a szintaxist követi:
 
 - Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) üzembe helyezni. Ha még nincs fiókja, tekintse meg a [kép osztályozási modell betanításához](tutorial-train-models-with-aml.md) oktatóanyag.
 
-- Egy [AKS-fürt](how-to-deploy-to-aks.md).
+- Azure Kubernetes Service-fürt. A létrehozása és központi telepítését egy további információkért lásd: a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 
 - [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [figyelési SDK](https://aka.ms/aml-monitoring-sdk).
 
@@ -103,7 +104,7 @@ Az engedélyezéshez kell tennie:
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [Hozzon létre új rendszerképet, és a szolgáltatás üzembe helyezése.](how-to-deploy-to-aks.md) 
+5. Hozzon létre egy új rendszerképet, és telepítse a szolgáltatást, tekintse meg a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot.
 
 
 Ha már van egy szolgáltatás telepíti a függőségeket a **környezet fájl** és **pontozófájl**, által az adatgyűjtés engedélyezése:

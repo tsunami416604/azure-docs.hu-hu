@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, .NET Core - beszédszolgáltatás'
+title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, .NET Core - beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutatóban megismerheti, hogyan átalakítandó szöveg-hang transzformációs szöveg-hang transzformációs REST API-val fog. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: d3fbe3f566ca25d94496b3a89a9488ae52e96c42
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890602"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089870"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Konvertálása szöveg-hang transzformációs .NET Core használatával
 

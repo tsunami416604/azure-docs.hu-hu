@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: a7212f64a550b3567affb1f6369ab5655dabafb1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001666"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093607"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú
 
 Egy példa a jelentésekre:
 
-![példa jelentésre](./media/tutorial-review-usage/actual-cost01.png)
+![A példában a tényleges időalapú költségeket tartalmazó jelentés](./media/tutorial-review-usage/actual-cost01.png)
 
 A jelentés az elmúlt 30 nap összes kiadását megjeleníti. Ha csak az Azure-szolgáltatásokhoz tartozó költségeket szeretné megtekinteni, alkalmazza a Service (Szolgáltatás) csoportot, és szűrjön rá az összes Azure-szolgáltatásra. A következő képen a szűrt szolgáltatások láthatók.
 
-![szűrt szolgáltatások](./media/tutorial-review-usage/actual-cost02.png)
+![Példa megjelenítő szűrt Azure-szolgáltatások](./media/tutorial-review-usage/actual-cost02.png)
 
 Az előző példában 2018. október 29-től kezdve a korábbinál kevesebb kiadás volt tapasztalható. Ha túl sok az oszlop, az megnehezítheti a trendek értelmezését. A jelentés nézetét módosíthatja vonal- vagy területdiagramra, hogy az adatok másképp jelenjenek meg. Az alábbi képen a trend sokkal jobban kirajzolódik.
 
-![trend a jelentésben](./media/tutorial-review-usage/actual-cost03.png)
+![Azure virtuális gép költsége csökkenő tendenciát mutat bemutató példa](./media/tutorial-review-usage/actual-cost03.png)
 
 A példára visszatérve látható, hogy az Azure-beli virtuális gépekhez kapcsolódó költségek lecsökkentek. A többi Azure-szolgáltatáshoz kapcsolódó költségek is azon a napon kezdtek csökkenni. Mi okozta vajon a kiadások csökkenését? Ebben a példában befejeződött egy nagyobb munkaprojekt, ezért több Azure-szolgáltatás használata is visszaesett.
 
@@ -77,15 +77,15 @@ A költséghatékony méretezési javaslatokat tartalmazó jelentés a virtuáli
 
 A portál tetején lévő menüben kattintson az **Optimizer** (Optimalizáló) > **Sizing Optimization** (Méretezés optimalizálása) > **Cost Effective Sizing Recommendations** (Költséghatékony méretezési javaslatok) elemre. Ha hasznosnak gondolja, szűrő használatával szűkítheti az eredményeket. Íme egy példa.
 
-![Azure-beli virtuális gépek](./media/tutorial-review-usage/sizing01.png)
+![Hatékony méretezése a javaslat a jelentés az Azure virtuális gépek költség](./media/tutorial-review-usage/sizing01.png)
 
 Példánkban 2382 dollár takarítható meg a virtuálisgép-példánytípusok módosítására vonatkozó javaslatok elfogadásával. Kattintson a plusz (+) jelre az első javaslat **Details** (Részletek) oszlopában. Megjelennek az első javaslat részletei.
 
-![javaslat részletei](./media/tutorial-review-usage/sizing02.png)
+![Példa ábrázoló javaslat részletei](./media/tutorial-review-usage/sizing02.png)
 
 A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek listája) melletti plusz (+) jelre kattintva tekintheti meg.
 
-![Jelöltek listája](./media/tutorial-review-usage/sizing03.png)
+![Méretezze át a virtuális gép jelöltek listája bemutató példa](./media/tutorial-review-usage/sizing03.png)
 
 A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását a Cloudynben](https://youtu.be/1xaZBNmV704).
 
@@ -99,7 +99,7 @@ Riasztásokat bármely kiadáshoz és bármely költségjelentés alapján létr
 
 A jelentés mentésére vagy ütemezésére szolgáló mező **Scheduling** (Ütemezés) lapján állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. Ha a teljes költségvetése 20 000 dollár, és szeretne értesítést kapni, amikor a költségek elérik ennek a felét, hozzon létre egy **vörös riasztást** 10 000 és egy **sárga riasztást** 9000 dollárra. A megadott értékekben ne használjon vesszőt. Ezután válassza ki az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. Mentse az ütemezett jelentést.
 
-![példa jelentésre](./media/tutorial-review-usage/schedule-alert01.png)
+![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/tutorial-review-usage/schedule-alert01.png)
 
 Azt is megteheti, hogy a Cost Percentage vs. Budget (Költségszázalék a költségvetési küszöbértékhez képest) mutatót választja a riasztások alapjául. Ennek a mutatónak a használatával pontos összegek helyett a költségvetés százalékos arányában határozhatja meg a küszöböket.
 

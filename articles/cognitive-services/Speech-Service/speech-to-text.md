@@ -1,7 +1,7 @@
 ---
-title: Tudnivalók a beszédfelismerés
+title: Tudnivalók a beszédfelismerés – beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
-description: A Speech to Text API-funkcióinak áttekintése.
+description: A hang-szöveg transzformációs API transcribes audiostreamek lejátszásával, amely az alkalmazás megjeleníti vagy reagálhat rájuk bemenetként is szövegre. A szolgáltatás az SDK-t és a egy RESTful-végpont keresztül érhető el.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 050d395614fa4a08e6d0d0967200029e8fc36010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471339"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094712"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 

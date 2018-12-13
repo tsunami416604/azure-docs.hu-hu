@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 1c50b1bc362a66b17097575336bcb2c9bd4856ca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866083"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093020"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: SQL API Java-konzolalkalmazás létrehozása
 
@@ -56,7 +56,7 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * [Git](https://git-scm.com/downloads).
 * [Java fejlesztői készlet (JDK) 7+](https://aka.ms/azure-jdks).
-* [Maven](http://maven.apache.org/download.cgi).
+* [Maven](https://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A GitHub-projekt klónozása](#GitClone) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor beállításához, majd ugorjon [A GitHub-projekt klónozása](#GitClone) című lépésre.

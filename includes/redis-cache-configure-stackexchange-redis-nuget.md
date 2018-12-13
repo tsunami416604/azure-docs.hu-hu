@@ -4,12 +4,12 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 570ed080e208a890bec867b665c4344c502e4d71
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f38ebade035697f505d5e66f6fa2d990a8d2c259
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019785"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111846"
 ---
 A .NET-alkalmazások képesek használni a **StackExchange.Redis** gyorsítótárügyfelet, amely a Visual Studióban konfigurálható a gyorsítótár-ügyfélalkalmazások konfigurálását leegyszerűsítő NuGet-csomagokkal. 
 
@@ -31,7 +31,7 @@ Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag h
 
 ![StackExchange.Redis NuGet-csomag](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás és Azure Azure Cache a Redis a StackExchange.Azure gyorsítótár, a Redis-ügyfél számára szükséges szerelvényhivatkozásokat.
+A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás el az Azure Cache a Redis-ügyfél StackExchange.Azure gyorsítótár redis számára szükséges szerelvényhivatkozásokat.
 
 > [!NOTE]
 > Ha a projektet korábban a StackExchange.Redis használatára konfigurálta, a **NuGet-csomagkezelőben** ellenőrizheti, hogy elérhető-e új frissítés a csomaghoz. Keressen, és telepítheti a StackExchange.Redis NuGet-csomag frissített verzióját, kattintson a **frissítések** a a **NuGet-Csomagkezelő** ablak. Ha a StackExchange.Redis NuGet-csomaghoz elérhetővé válik egy frissítés, frissítheti a projektjét is, hogy az a csomag frissített verzióját használja.

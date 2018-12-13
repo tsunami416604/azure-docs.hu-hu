@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 57ba02049d6008d8b68a5a5d217d4e28cc55dcb4
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 727c1ce79fbd20252f7455f95ad00a6c44d67c65
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892368"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090516"
 ---
 # <a name="implement-cicd-for-stream-analytics-using-apis"></a>CI/CD megvalósításához a Stream Analytics API-k használatával
 
@@ -253,7 +253,7 @@ Manifest Nasazení mintát:
 } 
 ```
 
-Manifest nasazení konfigurációját követően tekintse meg [üzembe helyezése az Azure IoT Edge-modulok az Azure CLI-vel](/iot-edge/how-to-deploy-modules-cli) üzembe helyezéshez.
+Manifest nasazení konfigurációját követően tekintse meg [üzembe helyezése az Azure IoT Edge-modulok az Azure CLI-vel](/iot-edge/how-to-deploy-modules-cli.md) üzembe helyezéshez.
 
 
 ## <a name="next-steps"></a>További lépések 

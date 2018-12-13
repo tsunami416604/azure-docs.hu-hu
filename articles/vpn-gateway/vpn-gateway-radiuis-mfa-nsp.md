@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412499"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095234"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN gateway RADIUS-hitelesítés integrálása az NPS-kiszolgálóval a multi-factor Authentication 
 
@@ -58,7 +58,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
     - **(IP- vagy DNS-) cím**: írja be az 1. lépésben létrehozott átjáró-alhálózatot.
     - **Közös titkos kulcsot**: írja be a bármely titkos kulcsot, és ne felejtse el későbbi használatra.
 
-    ![A kép RADUIS ügyfélbeállítások konfigurálása](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![A kép RADUIS ügyfélbeállítások konfigurálása](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Az a **speciális** lapon, a szállító nevét állítsa **RADIUS Standard** , és ellenőrizze, hogy a **további beállítások** jelölőnégyzet nincs bejelölve.
@@ -77,7 +77,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
     - **Hitelesítési típus**: válasszon **RADIUS-hitelesítés**.
     - **Kiszolgáló IP-cím**: írja be a hálózati házirend-kiszolgáló IP-címét.
 
-    ![Mutasson a hely beállításait bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+      ![Mutasson a hely beállításait bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5c52de14368896f77e48ebfd4ba7e4b4f38b67
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: bf02fb315162ffa183ed4137734ff8041ef75fe5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096618"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
 
@@ -53,7 +53,7 @@ A Log Analytics ezeket az Azure diagnosztikai naplók gyűjtésére a naplók a 
 >
 >
 
-Virtuális gépek telepítésének lehetősége van a [Log Analytics-ügynököket](../../log-analytics/log-analytics-quick-collect-azurevm.md) további elemzések engedélyezése a virtuális géphez. Mellett elemzése az IIS-naplók és -eseménynaplók, többek között a konfigurációs változások követése SQL-felmérés és a frissítésfelmérés további elemzést végezhet.
+Virtuális gépek telepítésének lehetősége van a [Log Analytics-ügynököket](../../azure-monitor/learn/quick-collect-azurevm.md) további elemzések engedélyezése a virtuális géphez. Mellett elemzése az IIS-naplók és -eseménynaplók, többek között a konfigurációs változások követése SQL-felmérés és a frissítésfelmérés további elemzést végezhet.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Engedélyezze az Azure diagnostics egy virtuális gépen az Eseménynapló és az IIS naplót
 Az alábbi eljárás segítségével engedélyezze az Azure diagnostics Eseménynapló és az IIS naplógyűjtést a Microsoft Azure Portalon a virtuális gépen.
@@ -148,7 +148,7 @@ Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfió
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Engedélyezze az Azure diagnostics egy virtuális gépen az Eseménynapló és az IIS naplót PowerShell-lel
-Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](../../log-analytics/log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
+Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
 
 Azure PowerShell használatával pontosabban megadhatja az Azure Storage írt események.
 További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

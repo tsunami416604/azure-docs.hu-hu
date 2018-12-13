@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Edge biztonsági manager |} A Microsoft Docs
+title: Ismerje meg, hogyan védi a kezelő az eszközök, szoftverek – Azure IoT Edge |} A Microsoft Docs
 description: Az IoT Edge-eszköz biztonsági forgalmazóval és biztonsági szolgáltatások biztonságának kezelése.
 services: iot-edge
 keywords: biztonság, a biztonságos elem, az enklávé, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567689"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091924"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Az Azure IoT Edge-biztonságkezelő
 
@@ -33,7 +34,7 @@ Az IoT Edge-biztonságkezelő feladatai (de nem kizárólag) a következők:
 * A forgalomirányító eszköz hardveres legfelső szintű megbízhatóság közjegyző szolgáltatásokon keresztül.
 * IoT Edge-műveletek futásidőben sértetlenségének figyelésére.
 
-IoT Edge-biztonságkezelő három fő összetevőből áll:
+IoT Edge-biztonságkezelő három összetevőt tartalmaz:
 
 * IoT Edge biztonsági démon.
 * Hardveres biztonsági modul platform absztrakciós réteg (HSM-PAL).

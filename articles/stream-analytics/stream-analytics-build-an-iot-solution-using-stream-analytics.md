@@ -2,19 +2,19 @@
 title: IoT-megoldás készítése az Azure Stream Analytics használatával
 description: A Stream Analytics IoT-megoldás egy őrbódét forgatókönyv a kezdeti lépéseket ismertető oktatóanyag
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 230318dc8e352a3adc970b13f20fa992954e3b15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978791"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091094"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás készítése a Stream Analytics használatával
 
@@ -36,7 +36,7 @@ Ez a megoldás befejezéséhez az alábbi előfeltételek lesz szüksége:
 ## <a name="scenario-introduction-hello-toll"></a>A forgatókönyv bevezető: "Helló, nem ingyenes!"
 Díjmentesen hívható állomás egy gyakori jelenség. Tapasztal őket a sok gyorsforgalmi, hidat és alagutak világszerte. Minden nem ingyenes állomás van több díjmentesen fülkéit foglalja magában. A manuális fülkéit foglalja magában le kell fizetnem a nem ingyenes egy kísérő. Automatizált fülkéit foglalja magában: minden egyes érzékelőadatainak felett érzékelő megvizsgálja az RFID-kártyán, hogy rögzíteni a szélvédőkeret a jármű méretét, ha a nem ingyenes érzékelőadatainak. Ezek nem ingyenes állomások járműveknek áthaladását megjelenítése az eseménystream, amelyen érdekes műveleteket is elvégezhető, könnyebbé vált.
 
-![Kép autó díjmentesen fülkéit foglalja magában:](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+! [Nem ingyenes fülkéit foglalja magában: autó kép] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth .jpg)
 
 ## <a name="incoming-data"></a>A bejövő adatok
 Ez a megoldás két adatfolyamot együttműködik. Érzékelő telepítve van a be- és a nem ingyenes állomások hozhat létre az első stream. A második streamben egy statikus keresési adatkészletet, amely a vehicle regisztrációs adatokat.
@@ -44,7 +44,7 @@ Ez a megoldás két adatfolyamot együttműködik. Érzékelő telepítve van a 
 ### <a name="entry-data-stream"></a>Bejegyzés adatfolyam
 A bejegyzés adatfolyam autók kapcsolatos információt tartalmazza, ajtónál vagy kapunál díjmentesen állomásokat. A kilépési adatok események olyan élő streameli az Event Hubs üzenetsorába szereplő mintaalkalmazás egy webalkalmazásból.
 
-| TollID | EntryTime | LicensePlate | Állapot | Győződjön meg arról | Modell | VehicleType | VehicleWeight | Díjmentesen hívható | Címke |
+| TollID | EntryTime | LicensePlate | Állapot | Fordítás | Modell | VehicleType | VehicleWeight | Díjmentesen hívható | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -61,7 +61,7 @@ A következő oszlopok rövid leírása:
 | EntryTime |Dátuma és időpontja (UTC) a nem ingyenes érzékelőadatainak a jármű-bejegyzés |
 | LicensePlate |A járműtelemetria licenc lemez száma |
 | Állapot |Olyan állapotban, az Egyesült Államokban |
-| Győződjön meg arról |Az autó gyártója |
+| Fordítás |Az autó gyártója |
 | Modell |Az autó modell száma |
 | VehicleType |Kereskedelmi járművek közül többnek 2 vagy utas járművek vagy 1 |
 | WeightType |Járműtelemetria súly tonna; 0 utas járművekhez |
@@ -310,7 +310,7 @@ Vertikális felskálázása a folyamatos átviteli feladat több folyamatos átv
 ## <a name="monitor-the-job"></a>A feladat figyelése
 A **FIGYELŐ** terület tartalmazza a futó feladat statisztikája. Első konfigurációs van szükség (például a dokumentum többi részén neve nem ingyenes) ugyanabban a régióban a storage-fiókot használni.   
 
-![A figyelő képernyőképe](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Az Azure Stream Analytics feladat figyelése](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 Elérheti **tevékenységeket tartalmazó naplók** a projekt irányítópultján **beállítások** területen is.
 

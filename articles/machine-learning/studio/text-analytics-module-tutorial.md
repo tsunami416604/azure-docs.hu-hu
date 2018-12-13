@@ -1,10 +1,10 @@
 ---
-title: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban |} A Microsoft Docs
+title: Szövegelemzési modellek – az Azure Machine Learning Studio létrehozása |} A Microsoft Docs
 description: Hogyan szövegelemzési modellek létrehozása az Azure Machine Learning Studióban szöveg előfeldolgozása, N-gramokat vagy a szolgáltatáskivonatolás modulok használata
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=roastala, author=rastala)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: cgronlun
 editor: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 10b4f8a494a9effc04db731f05eeb010f4fb0b6a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: MT
+ms.openlocfilehash: ebb5fed079d674a0a8a590f7a955a2fe878807fd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262482"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090463"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Szövegelemzési modellek létrehozása az Azure Machine Learning Studio használatával
 Az Azure Machine Learning segítségével hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.

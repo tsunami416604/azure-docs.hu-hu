@@ -1,23 +1,24 @@
 ---
-title: LUIS-robot létrehozása a Node.js használatával – Oktatóanyag – Webalkalmazás-robot – Bot Framework SDK 4.0
+title: A LUIS-robot a node.js használatával
 titleSuffix: Azure Cognitive Services
 description: A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d9645c1d1c5ee153a4d24ae18f253f33c6557bd1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385906"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099086"
 ---
-# <a name="tutorial-luis-bot-in-nodejs"></a>Oktatóanyag: LUIS-robot a Node.js-ben
+# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot Node.js-ben a Bot keretrendszer 4.x-es és az Azure Web app bot
 A Node.js használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
@@ -32,8 +33,6 @@ A Node.js használatával létrehozhat egy integrált nyelvfelismerési (LUIS) k
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-<!--* Samples from 
-https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp-with-luis-->
 * [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -115,7 +114,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
 6. Nyissa meg a bot.js fájlt, és keresse meg a `const results = await this.luisRecognizer.recognize(context);` kifejezést. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz.
 
-    ```javascript
+    ```nodejs
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -214,7 +213,7 @@ A kód vagy a beállítások módosítása előtt ellenőrizze a robot működé
 
 5. A robot indulásakor a terminálablakban megjelennek azok a porton, amelyeket a robot használ:
 
-    ```
+    ```console
     > basic-bot@0.1.0 start C:\Users\pattiowens\repos\BFv4\luis-nodejs-bot-src
     > node ./index.js NODE_ENV=development
 
@@ -248,7 +247,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 1. A fájl tetején keresse meg a **Támogatott LUIS-szándékok** szakaszt, és adja hozzá a HomeAutomation-szándékokhoz tartozó állandókat:
 
-    ```javascript
+    ```nodejs
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -262,7 +261,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 2. Keresse meg az **isTurnInterrupted** kifejezést, amely a kimondott szöveg LUIS-előrejelzését fogadja, és adjon hozzá egy sort az eredmény konzolon való kiíratásához.
 
-    ```node
+    ```nodejs
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -277,7 +276,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
     A robot nem pontosan ugyanazt a választ adja, mint a LUIS REST API-kérés, ezért fontos, hogy a válaszként kapott JSON-ban ellenőrizze a különbségeket. A szöveg és a szándék tulajdonságai azonosak, de az entitások tulajdonságértékei módosultak. 
 
-    ```JSON
+    ```json
     {
         "$instance": {
             "HomeAutomation_Device": [
@@ -310,7 +309,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 3. Adja hozzá a szándékokat az onTurn metódus switch utasításához a `DialogTurnStatus.empty` esetben:
 
-    ```javascript
+    ```nodejs
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);
@@ -343,7 +342,7 @@ A `bot.js` fájlban adja hozzá az új szándékok kezeléséhez szükséges kó
 
 2. A robot a következővel válaszol:
 
-    ```JSON
+    ```json
     TurnOn intent found, entities included: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
     ```
 

@@ -1,21 +1,22 @@
 ---
-title: '1. oktatóanyag: Szándékok keresése egyéni LUIS-alkalmazásban'
+title: Céljaira előrejelzése
 titleSuffix: Azure Cognitive Services
 description: Hozzon létre egy egyéni alkalmazást, amely előrejelzi a felhasználók szándékát. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426859"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097794"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>1. oktatóanyag: Egyéni alkalmazás létrehozása felhasználói szándék meghatározására
 
@@ -43,11 +44,11 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 
 2. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "A Language Understanding (LUIS) My Apps (Saját alkalmazások) lapjának képernyőképe")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![Képernyőkép a Language Understanding (LUIS) saját alkalmazások lap](media/luis-quickstart-intents-only/app-list.png "képernyőképe a Language Understanding (LUIS) saját alkalmazások lap")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. Az előugró párbeszédpanelen írja be a következő nevet: `HumanResources`. Hagyja meg az alapértelmezett kulturális környezet, amely az **English** (angol). A leírást hagyja üresen.
 
-    ![LUIS – új alkalmazás](./media/luis-quickstart-intents-only/create-app.png)
+    ![A LUIS új emberi alkalmazás létrehozása](./media/luis-quickstart-intents-only/create-app.png)
 
     Ezután az alkalmazás megjeleníti az **Intents** (Szándékok) lapot és rajta a **None** szándékot.
 
@@ -55,7 +56,7 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 
 1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. A rendszer ezt a szándékot jelzi előre, ha a felhasználó a vállalatnál elérhető állásokról szeretne információt kapni.
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "A Language Understanding (LUIS) New intent (Új szándék) párbeszédablakának képernyőképe")
+    ![Új leképezési párbeszédpanel képernyőképe a Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "új szándék párbeszédpanel képernyőképe a Language Understanding (LUIS)")
 
 2. _Kimondott példaszövegek_ megadásával betaníthatja a LUIS-t arra, milyen típusú kimondott szövegeket kell előre jeleznie ehhez a szándékhoz. Ehhez a szándékhoz számos olyan kimondott példaszöveget is hozzáadhat, amelyet a felhasználók várhatóan használni fognak, például:
 
@@ -69,7 +70,7 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
     |Új állások?|
     |Vannak új állások meghirdetve a seattle-i irodában?|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Új kimondott szövegek megadásának képernyőképe a MyStore szándékhoz")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Képernyőkép MyStore szándékot az új utterances megadásáról](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "képernyőkép megadásáról MyStore szándékot az új kimondott szöveg")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ Térjen vissza a LUIS-webhelyre, és hozzon létre egy új szándékot, amely me
     |Ez az önéletrajzom a 654234. számú álláshoz|
     |567890. számú állás és a dokumentumaim|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "Új kimondott szövegek megadásának képernyőképe az ApplyForJob szándékhoz")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![Képernyőkép ApplyForJob szándékot az új utterances megadásáról](media/luis-quickstart-intents-only/utterance-applyforjob.png "képernyőkép megadásáról ApplyForJob szándékot az új kimondott szöveg")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     A címkézett szándék piros színnel van bekeretezve, mert LUIS nem biztos a szándék helyességében. Az alkalmazás betanítása megtanítja LUIS-t arra, hogy a kimondott szövegek a megfelelő szándékhoz tartoznak. 
 
@@ -168,7 +169,7 @@ Térjen vissza a LUIS-webhelyre, és hozzon létre egy új szándékot, amely me
 
 2. Az új böngészőablakban az URL-cím végén adja meg a következőt: `Can I submit my resume for job 235986`. 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

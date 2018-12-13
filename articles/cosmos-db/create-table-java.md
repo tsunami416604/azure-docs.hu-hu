@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: f647e2fd551a8d7581f280eed5562c5ede6b4cb0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 0f65335ecc9fde5a578a50116821134f45e27075
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846385"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089156"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Rövid útmutató: Table API-alkalmazás felépítése a Java és az Azure Cosmos DB használatával
 
@@ -40,7 +40,7 @@ Továbbá:
 * [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
-* [Maven](http://maven.apache.org/download.cgi) bináris archívum [letöltése](http://maven.apache.org/install.html) és [telepítése](http://maven.apache.org/)
+* [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 * [Git](https://www.git-scm.com/)
     * Ubuntu rendszeren futtathatja a `sudo apt-get install git` parancsot a Git telepítéséhez.
@@ -87,7 +87,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
 
    ![Tekintse meg a kapcsolati sztring szükséges adatait a Kapcsolati sztring ablaktáblán, és másolja őket](./media/create-table-java/connection-string.png)
 

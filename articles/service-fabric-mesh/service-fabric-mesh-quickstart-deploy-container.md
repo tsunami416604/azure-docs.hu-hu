@@ -9,12 +9,12 @@ ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: ce3001a2984726332b036eea69d4e18e3d7d300b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 4be24b00c3ac4ffadf7eafdc7397f59113ec03b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890432"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088363"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
@@ -48,10 +48,10 @@ az group create --name myResourceGroup --location eastus
 Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment create` paranccsal.  Futtassa a következőt:
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
+az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Az előző parancs Linux-alkalmazást helyez üzembe a [mesh_rp.linux.json sablonnal](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Ha Windows-alkalmazást szeretne üzembe helyezni, használja a [mesh_rp.windows.json sablont](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
+Az előző parancs helyez üzembe egy Linux használó [linux.json sablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha szeretne Windows-alkalmazás üzembe helyezése, [windows.json sablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
 Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. Alatt a ```outputs``` a JSON-kimenetet másolási szakaszában a ```publicIPAddress``` tulajdonság.
 

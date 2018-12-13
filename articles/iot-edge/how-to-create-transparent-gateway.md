@@ -1,6 +1,6 @@
 ---
-title: Transzparens átjáró létrehozása az Azure IoT Edge |} A Microsoft Docs
-description: Az Azure IoT Edge-eszköz használata, amely képes feldolgozni az adatokat több eszközön is transzparens átjáróként
+title: Transzparens átjáró eszköz - létrehozása az Azure IoT Edge |} A Microsoft Docs
+description: Az Azure IoT Edge-eszköz használata, amely képes feldolgozni az információkat az alsóbb rétegbeli eszközök transzparens átjáróként
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681194"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094355"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -31,7 +32,7 @@ Lehet, hogy egy alsóbb rétegbeli eszköz bármilyen alkalmazás vagy a platfor
 
 Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk feltételezzük, hogy az azonos tanúsítvány beállítása, hogy engedélyezni szeretné használni [x.509-es Hitelesítésszolgáltatói biztonsági](../iot-hub/iot-hub-x509ca-overview.md) az IoT Hub, amelyek egy adott IoT hub (az IoT hub tulajdonos CA), és a egy sorozat tanúsítványok társított X.509 Hitelesítésszolgáltatói tanúsítvány, a hitelesítésszolgáltató és hitelesítésszolgáltató aláírt az Edge-eszköz számára.
 
-![Átjáró beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Átjáró tanúsítvány beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Az átjáró a peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványát az alsóbb rétegbeli eszközre során a kapcsolat kezdeményezése mutat be. Az alsóbb rétegbeli eszköz ellenőrzi, hogy a peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványt a tulajdonos Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszközök annak ellenőrzéséhez, hogy az átjáró egy megbízható forrásból származik.
 

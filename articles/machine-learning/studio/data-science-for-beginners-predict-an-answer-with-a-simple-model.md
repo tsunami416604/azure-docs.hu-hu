@@ -1,11 +1,11 @@
 ---
-title: Egy egyszerű regressziós modell – az Azure Machine Learning Studio-válasz előrejelzése |} A Microsoft Docs
+title: Regressziós modellek – az Azure Machine Learning Studio a válaszok előrejelzése |} A Microsoft Docs
 description: Hogyan lehet létrehozni egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 áron. Tartalmaz egy lineáris regressziós cél adatokkal.
 keywords: létrehozása modell, egyszerű modell, árának előrejelzése, egyszerű regressziós modell
 services: machine-learning
 documentationcenter: na
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2862310623b2725cbeeaa4f5972a89ffcef44ff6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 155b853ef46c54fbb6e230573b860189bacc0d64
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092930"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
 ## <a name="video-4-data-science-for-beginners-series"></a>4. Videó: Adatelemzés kezdőknek sorozat
