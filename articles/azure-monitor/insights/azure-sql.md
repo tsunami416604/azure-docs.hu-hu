@@ -13,7 +13,7 @@ ms.date: 11/26/2018
 ms.author: v-daljep
 ms.openlocfilehash: ce434369ad7ede7f82f5af4395e096526759932a
 ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52892315"

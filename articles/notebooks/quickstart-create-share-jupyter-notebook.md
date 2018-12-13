@@ -15,7 +15,7 @@ ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52865116"

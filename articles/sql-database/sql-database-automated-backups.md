@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 6fe9a95c891ecd560682d02f14485cc9d198a0a4
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52879149"

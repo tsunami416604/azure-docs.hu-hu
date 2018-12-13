@@ -11,7 +11,7 @@ ms.date: 11/29/2018
 ms.author: moderakh
 ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52872893"

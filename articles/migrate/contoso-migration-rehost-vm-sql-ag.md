@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 18041c95405614768845399f92efac229db53b20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250730"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880216"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás Újratárolása
 
@@ -186,11 +186,11 @@ Contoso-rendszergazdák az alábbiak szerint állíthatja a fürt:
     - Ezek a gépet helyez az éles hálózati környezetben, az USA keleti RÉGIÓJA 2 elsődleges régió (**VNET-ÉLES-EUS2**), az adatbázis-alhálózat (**ÉLES-DB-EUS2**).
     - Akkor hozzon létre egy új rendelkezésre állási csoportot: **SQLAOGAVSET**, a két tartalék tartomány és öt frissítési tartománnyal.
 
-    ![SQL VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
+      ![SQL-ALAPÚ VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
 4. A **SQL Server-beállítások**, korlátozhatja a virtuális hálózathoz (személyes), SQL-kapcsolat az alapértelmezett 1433-as porton. A hitelesítési, használhatja ugyanazokat a hitelesítő adatokat használnak a helyszíni (**contosoadmin**).
 
-    ![SQL VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
+    ![SQL-ALAPÚ VIRTUÁLIS GÉP](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
 
 **További segítségre van szüksége?**
 
@@ -235,11 +235,11 @@ Mielőtt beállítaná a fürtöt, a Contoso-rendszergazdák az operációsrends
 
 ![pillanatkép](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. Ezután futnak, hogy helyezze parancsfájl a Windows feladatátvevő fürt létrehozása.
+1. Ezután futnak, hogy helyezze parancsfájl a Windows feladatátvevő fürt létrehozása.
 
     ![Fürt létrehozása](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. Miután a fürt az általuk létrehozott, azok győződjön meg arról, hogy a virtuális gépek fürtcsomópontokként jelennek meg.
+2. Miután a fürt az általuk létrehozott, azok győződjön meg arról, hogy a virtuális gépek fürtcsomópontokként jelennek meg.
 
      ![Fürt létrehozása](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
@@ -351,7 +351,7 @@ Contoso rendszergazdák ezeket az alábbiak szerint állíthatja:
     - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
     - A fióknak és a tárolónak ugyanabban a régióban kell lennie.
 
-    ![Site Recovery-tároló](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+      ![Site Recovery-tároló](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
 3. A helyen lévő hálózati és tárolási fiókkal, akkor most hozzon létre egy Recovery Services-tároló (**ContosoMigrationVault**), és elhelyezheti a **ContosoFailoverRG** erőforráscsoport, az elsődleges régióban USA keleti RÉGIÓJA 2 .
 
@@ -403,15 +403,15 @@ A feladatátvételt követően Contoso szeretne csatlakozni az Azure virtuális 
 
 1. Az interneten keresztüli eléréshez azokat:
 
- - A feladatátvétel előtt a helyszíni virtuális gép RDP engedélyezése
- - Győződjön meg arról, hogy a TCP és UDP-szabályokat a adják a **nyilvános** profilt.
- - Ellenőrizze, hogy az RDP engedélyezve van-e **Windows tűzfal** > **engedélyezett alkalmazások** az összes profil számára.
+   - A feladatátvétel előtt a helyszíni virtuális gép RDP engedélyezése
+   - Győződjön meg arról, hogy a TCP és UDP-szabályokat a adják a **nyilvános** profilt.
+   - Ellenőrizze, hogy az RDP engedélyezve van-e **Windows tűzfal** > **engedélyezett alkalmazások** az összes profil számára.
  
 2. Site-to-site VPN, keresztüli eléréshez azokat:
 
- - Engedélyezze az RDP a helyszíni gépen.
- - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és privát** hálózatok.
- - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális gép **OnlineAll**.
+   - Engedélyezze az RDP a helyszíni gépen.
+   - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és privát** hálózatok.
+   - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális gép **OnlineAll**.
 
 Emellett a feladatátvétel futtatásakor szükségük ellenőrizze az alábbiakat:
 

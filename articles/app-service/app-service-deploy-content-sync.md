@@ -15,7 +15,7 @@ ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.openlocfilehash: 10a33163b2bfe6a1c9c24b9de58f83813e7534a6
 ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
 ms.locfileid: "52863924"

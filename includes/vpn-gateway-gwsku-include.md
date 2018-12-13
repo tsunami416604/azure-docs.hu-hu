@@ -29,7 +29,7 @@ VPN-átjárók új Termékváltozatai leegyszerűsítheti az átjárókon elérh
 
 | **Termékváltozat**| **Szolgáltatások**|
 | ---    | ---         |
-|**Alapszintű** (*)   | **Útvonalalapú VPN**: 10 alagút S2S-kapcsolatok; p2s RADIUS-hitelesítés nélkül IKEv2 for P2S nélkül<br>**Házirendalapú VPN**: (IKEv1): 1 S2S/kapcsolat alagút; P2S nélkül|
+|**Alapszintű** (\*\*)   | **Útvonalalapú VPN**: 10 alagút S2S-kapcsolatok; p2s RADIUS-hitelesítés nélkül IKEv2 for P2S nélkül<br>**Házirendalapú VPN**: (IKEv1): 1 S2S/kapcsolat alagút; P2S nélkül|
 | **VpnGw1, VpnGw2 és VpnGw3** | **Útvonalalapú VPN**: legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/VPN együttes használata |
 |        |             |
 
@@ -44,7 +44,7 @@ SLA-k és szolgáltatások eltérései miatt fejlesztési-tesztelési és éles 
 | **Számítási feladat**                       | **Termékváltozatok**               |
 | ---                                | ---                    |
 | **Termelés, kritikus fontosságú számítási feladatok** | VpnGw1, VpnGw2, VpnGw3 |
-| **Dev-test vagy a koncepció igazolása**   | Alapszintű (*)                 |
+| **Dev-test vagy a koncepció igazolása**   | Alapszintű (\*\*)                 |
 |                                    |                        |
 
 (\*\*) Az alapszintű Termékváltozat örökölt Termékváltozat számít, és a funkció korlátozásokkal rendelkezik. Győződjön meg arról, hogy támogatott-e a szolgáltatás, amely van szüksége, az alapszintű Termékváltozat használata előtt.

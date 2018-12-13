@@ -12,7 +12,7 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.openlocfilehash: cf447ddef0639c35efeb0f396a61ae7bc5fe9781
 ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52890585"
