@@ -125,7 +125,7 @@ Windows virtuális gép, a lemezek vagy a tárolási készletek konfigurációt,
 | A következő helyen nyomkövetési                       |                            |                                    |                          |                      | Igen                  |
 | StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
 | Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| A Diskspd referenciaalap nyomkövetési x       |                            | Igen                                |                          |                      |                      |
+| A Diskspd referenciaalap nyomkövetési ***       |                            | Igen                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítménybeli problémák diagnosztizálása a nyomkövetési (*)
@@ -140,7 +140,7 @@ Az adatok gyűjtéséhez és a folyamatban lévő teljesítménybeli problémák
 > [!NOTE] 
 > Jelenleg a Windows-verziókat, amelyek tartalmazzák a .NET-keretrendszer 4.5-ös vagy újabb verziói támogatottak.
 
-### <a name="performance-counter-trace-"></a>Teljesítmény-számláló nyomkövetési (*)
+### <a name="performance-counter-trace-"></a>Teljesítmény-számláló nyomkövetési (\*\*)
 
 Gyűjti a következő teljesítményszámlálókkal:
 
@@ -156,7 +156,7 @@ Gyűjti a következő teljesítményszámlálókkal:
 #### <a name="for-azure-files"></a>Az Azure Files szolgáltatáshoz
 \SMB Ügyfélmegosztások
 
-### <a name="diskspd-benchmark-trace-"></a>A Diskspd referenciaalap nyomkövetési (*)
+### <a name="diskspd-benchmark-trace-"></a>A Diskspd referenciaalap nyomkövetési (\*\*\*)
 A Diskspd-i/o terhelési tesztek (operációsrendszer-lemez [írási] és [olvasási/írási] készlet meghajtók)
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>A PerfInsights eszköz futtatásához a virtuális Gépen
