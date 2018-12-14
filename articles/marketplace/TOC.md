@@ -1,16 +1,18 @@
 # [Az Azure Marketplace és az AppSource dokumentációja](index.md)
-## [Minősítési és felülvizsgálati szabályzatok](./rating-review-policies.md)   
+
 ## [Azure Marketplace és AppSource – áttekintés és előnyök](./marketplace-publishers-guide.md)  
 
 ### [Hogyan válhat közzétevővé a Marketplace-en](./become-publisher.md)  
 #### [Microsoft-fiók létrehozása](./guidelines.md)
 #### [Regisztrálás a fejlesztői központban](./register-dev-center.md) 
 #### [Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése](./azure-partner-customer-usage-attribution.md)
-#### [Érdeklődők kezelése a felhőbeli piactérhez](./lead-management-for-cloud-marketplace.md)
 
-### [Áruházak](./comparing-appsource-azure-marketplace.md)  
+### [Két áruház, közös Marketplace](./comparing-appsource-azure-marketplace.md)  
 
-### [A megoldás közzétételi beállításának meghatározása](./determine-your-listing-type.md)  
+### [Közzétételi lehetőségek és szempontok](./determine-your-listing-type.md)
+#### [Érdeklődők kezelése](./lead-management-for-cloud-marketplace.md)
+#### [Tranzakciók az Azure Marketplace-en](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [Személyes ajánlatok](./private-offers.md)
 
 ### [Közzétételi útmutató ajánlattípusok szerint](./publisher-guide-by-offer-type.md)
 #### [Virtuális gépek](./marketplace-virtual-machines.md)
@@ -26,8 +28,7 @@
 ### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 
 #### [Marketplace-tartalmak érvényesítése](./marketplace-criteria-content-validation.md)
-#### [Személyes ajánlatok](./private-offers.md)
-#### [Marketplace ‎Kereskedelmi tranzakcióval kapcsolatos képességek és szempontok](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [Minősítési és felülvizsgálati szabályzatok](./rating-review-policies.md)   
 
 ### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 
@@ -67,8 +68,15 @@
 #### [Gyakori VHD-létrehozási problémák](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 #### [Kapcsolódás egy virtuális géphez](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
 #### [Virtuális gép konfigurálása](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
-#### [Virtuális gépek üzembe helyezése VHD-kból](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
-##### [VHD-üzembehelyezési sablon (JSON)](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+#### [Rendszerfelügyeleti webszolgáltatások](./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md) 
+##### [A rendszerfelügyeleti webszolgáltatások konfigurálása a virtuális gép létrehozása után](./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md)
+#### [A virtuális gép üzembe helyezése](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [Felhasználói virtuális gép rendszerképének létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-user-image.md)
+##### [Key vault-tanúsítvány létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md)
+###### [Key vault üzembehelyezési sablonja](./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md)
+#### [Virtuális gépek üzembe helyezése felhasználói VHD-ból](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md)
+##### [VHD-üzembehelyezési sablon](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+##### [Virtuális gépek üzembe helyezése a Marketplace-ről](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 #### [Virtuálisgép-rendszerkép tanúsítása](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
 #### [SAS URI beszerzése](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 #### [A SAS URL-címmel kapcsolatos gyakori problémák](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
@@ -88,21 +96,53 @@
 ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
+<!-- new section for Azure apps -->
 
-## [Azure-alkalmazásajánlat](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
-### [Felügyelt alkalmazás létrehozása](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
-### [Megoldássablon létrehozása](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
-### [Felügyeleti megoldás közzététele](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
-### [Útmutatás a keresőmotor optimalizálásához](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Élő ajánlattétel](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
-### [Létező ajánlat frissítése](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
-### [Ajánlat törlése](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
+## [Azure-alkalmazásajánlat](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
+### [Előfeltételek](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
+### [Azure-alkalmazásajánlat létrehozása](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
+#### [Ajánlatbeállítási lap](./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md)
+#### [Termékváltozatok lap](./cloud-partner-portal/azure-applications/cpp-skus-tab.md)
+#### [Tesztverzió lap](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
+#### [Marketplace lap](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
+#### [Támogatási lap](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
+<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Azure-alkalmazásajánlat közzététele](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+### [Létező ajánlat frissítése](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
-## [SaaS-alkalmazásajánlat](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
-### [SaaS-alkalmazás – műszaki közzétételi útmutató](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
-### [SaaS-értékesítés az Azure-on keresztül](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+<!-- Legacy Azure App section replaced
+## [Azure application offer](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
+    Obsolete ### [Author managed application](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
+### [Author solution template](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
+### [Publish a Management Solution](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
+### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
+### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
+### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
+   Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
+-->
+
+<!-- new for SaaS 12/05/2018 -->
+## [SaaS-alkalmazásajánlat](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
+### [Előfeltételek](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
+### [SaaS-alkalmazásajánlat létrehozása](./cloud-partner-portal/saas-app/cpp-create-offer.md)
+#### [Ajánlatbeállítási lap](./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md)
+#### [Technikai információs lap](./cloud-partner-portal/saas-app/cpp-technical-info-tab.md)
+#### [Csomagok lap](./cloud-partner-portal/saas-app/cpp-plans-tab.md)
+#### [Csatornainformációs lap](./cloud-partner-portal/saas-app/cpp-channel-info-tab.md)
+#### [Tesztverzió lap](./cloud-partner-portal/saas-app/cpp-testdrive-tab.md)
+#### [Áruház részletei lap](./cloud-partner-portal/saas-app/cpp-storefront-tab.md)
+#### [Névjegyek lap](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
+### [Ajánlat közzététele](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
+### [Létező ajánlat frissítése](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [SaaS API-k](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+
+<!-- Legacy SaaS Offer replaced
+## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
+### [SaaS apps technical publishing guide](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
+### [SaaS Sell through Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+### [SaaS APIs](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+-->
 
 ## [Tárolók ajánlat](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [Előfeltételek](./cloud-partner-portal/containers/cpp-prerequisites.md)

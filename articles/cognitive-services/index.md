@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 5f5e4ae85f18870ab6ed22ca010977efc28be058
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d82809a4ed88ee5f84b812955e6979df2ae6070
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633886"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322073"
 ---
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
@@ -58,6 +58,26 @@ ms.locfileid: "51633886"
                 </div>
             </a>
         </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Kérelem hitelesítése</h3>
+                                <p>Útmutató kérelmek hitelesítéséhez az Azure Cognitive Servicesben.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">

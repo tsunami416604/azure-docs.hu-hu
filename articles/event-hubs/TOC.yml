@@ -65,6 +65,8 @@ items:
   - name: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
     href: ../azure-databricks/databricks-stream-from-eventhubs.md
     maintainContext: true
+  - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
+    href: event-hubs-tutorial-virtual-networks-firewalls.md
   - name: Az Apache Kafkához készült Event Hubs
     items:
     - name: Kafka-közvetítő tükrözése Apache Kafka-kompatibilis eseményközpontokba
@@ -134,7 +136,7 @@ items:
     items:
     - name: Kivételek
       href: event-hubs-messaging-exceptions.md
-  - name: IP-szűrők használata
+  - name: Tűzfalak használata
     href: event-hubs-ip-filtering.md
   - name: Virtuális hálózati szolgáltatásvégpontok használata
     href: event-hubs-service-endpoints.md
@@ -186,9 +188,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: d6fb88ed6bfcf48cb35da068e50b670f4b1b685c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2ce3523843713bd2e00536922f7bcfeebaa54798
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726967"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53267985"

@@ -9,31 +9,31 @@ items:
     href: time-series-insights-update-overview.md
 - name: Gyors útmutatók
   items:
-  - name: Azure Time Series Insights (általánosan elérhető)
+  - name: Az Azure Time Series Insights általánosan elérhető verziója
     items:
     - name: Ismerkedés a Time Series Insightsszal
       href: time-series-quickstart.md
-  - name: Azure Time Series Insights (előzetes verzió)
+  - name: Az Azure Time Series Insights előzetes verziója
     items:
-    - name: Ismerkedés a Time Series Insightsszal (előzetes verzió)
+    - name: Ismerkedés a Time Series Insights előzetes verziójával
       href: time-series-insights-update-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Ismerkedés a TSI JavaScript ügyfélkönyvtárával
+  - name: A Time Series Insights JavaScript ügyfélkódtár felderítése
     href: tutorial-explore-js-client-lib.md
-  - name: TSI egylapos webalkalmazás létrehozása
+  - name: Time Series Insights egyoldalas webalkalmazás létrehozása
     href: tutorial-create-tsi-sample-spa.md
-  - name: Azure Time Series Insights (általánosan elérhető)
+  - name: Az Azure Time Series Insights általánosan elérhető verziója
     items:
-    - name: TSI-környezet létrehozása
+    - name: Time Series Insights-környezet létrehozása
       href: tutorial-create-populate-tsi-environment.md
-  - name: Azure Time Series Insights (előzetes verzió)
+  - name: Az Azure Time Series Insights előzetes verziója
     items:
-    - name: Azure TSI (előzetes verzió) oktatóanyag
+    - name: Oktatóanyag az Azure Time Series Insights előzetes verziójához
       href: time-series-insights-update-create-environment.md
 - name: Alapelvek
   items:
-  - name: Azure Time Series Insights (általánosan elérhető)
+  - name: Az Azure Time Series Insights általánosan elérhető verziója
     items:
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-overview.md
@@ -43,7 +43,7 @@ items:
       href: time-series-insights-explorer.md
     - name: Az adatmegőrzés ismertetése
       href: time-series-insights-concepts-retention.md
-  - name: Azure Time Series Insights (előzetes verzió)
+  - name: Az Azure Time Series Insights előzetes verziója
     items:
     - name: A környezet megtervezése
       href: time-series-insights-update-plan.md
@@ -71,13 +71,13 @@ items:
   items:
   - name: Adathozzáférés biztosítása
     href: time-series-insights-data-access.md
-  - name: Csatlakozás az eseményközponthoz
+  - name: Csatlakozás az Event Hubshoz
     href: time-series-insights-how-to-add-an-event-source-eventhub.md
   - name: Csatlakozás az IoT Hubhoz
     href: time-series-insights-how-to-add-an-event-source-iothub.md
   - name: Erőforrások kezelése sablonokkal
     href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
-  - name: Azure Time Series Insights (általánosan elérhető)
+  - name: Az Azure Time Series Insights általánosan elérhető verziója
     items:
     - name: Környezet létrehozása
       href: time-series-insights-get-started.md
@@ -95,8 +95,10 @@ items:
       href: time-series-insights-environment-mitigate-latency.md
     - name: Diagnosztika és hibaelhárítás
       href: time-series-insights-diagnose-and-solve-problems.md
-  - name: Azure Time Series Insights (előzetes verzió)
+  - name: Az Azure Time Series Insights előzetes verziója
     items:
+    - name: Kiépítés és kezelés
+      href: time-series-insights-update-how-to-manage.md
     - name: Time Series-azonosító kiválasztása
       href: time-series-insights-update-how-to-id.md
     - name: Diagnosztika és hibaelhárítás
@@ -109,7 +111,7 @@ items:
   items:
   - name: Time Series Insights
     items:
-    - name: Azure Time Series Insights (általánosan elérhető)
+    - name: Az Azure Time Series Insights általánosan elérhető verziója
       href: /rest/api/time-series-insights/ga
       items:
       - name: Lekérdezés
@@ -121,7 +123,7 @@ items:
           href: /rest/api/time-series-insights/ga-query-syntax
       - name: Reference Data API
         href: /rest/api/time-series-insights/ga-reference-data-api
-    - name: Azure Time Series Insights (előzetes verzió)
+    - name: Az Azure Time Series Insights előzetes verziója
       href: /rest/api/time-series-insights/preview
       items:
       - name: Time Series-lekérdezés
@@ -130,7 +132,7 @@ items:
         href: /rest/api/time-series-insights/preview-model
       - name: Time Series Environment API
         href: /rest/api/time-series-insights/preview-env
-      - name: Time Series-kifejezés és -szintaxis
+      - name: Time Series Expression és szintaxis
         href: /rest/api/time-series-insights/preview-tsx
 - name: Kapcsolódó témakörök
   items:
@@ -180,9 +182,9 @@ items:
     href: https://azure.microsoft.com/support/options/
   - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=time-series-insights
-ms.openlocfilehash: c75c034e0f54b33e28aa7f0ef5d0c18ad0004e55
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3ae33ba02eb21c748fcea541f3eecff689fb2e8e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889991"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250637"

@@ -1,77 +1,71 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef0ecc7a9e89168ed57c75ab24c3233692d77151
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 865f7421172c3302333b1cbf465f66806b296759
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863567"
-documentType: LandingData
-title: Az Azure Machine Learning dokumentációja
-metadata:
-  title: Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
-  services: machine-learning
-  author: j-martens
-  ms.service: machine-learning
-  ms.component: core
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/04/2018
-  ms.author: jmartens
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314380"
 abstract:
   description: Megtudhatja, hogyan építhet be intelligens algoritmusokat az alkalmazásokba és webhelyekbe ezekkel az Azure Machine Learning-termékekkel.  Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+documentType: LandingData
+metadata:
+  author: j-martens
+  description: Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+  ms.author: jmartens
+  ms.component: core
+  ms.date: 12/04/2018
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 sections:
 - items:
-  - type: list
-    style: cards
-    className: cardsM
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését és kezelését<br/> a CLI és a Python eszközeinek és kódtárainak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával. További információ...</p>
+      html: <p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését és kezelését<br/> az Azure CLI és a Python eszközeinek és kódtárainak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával. További információ...</p>
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
       title: Azure Machine Learning szolgáltatás
-- title: Rövid útmutatók és oktatóanyagok
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogy állíthatja be gyorsan és használhatja az Azure Machine Learning szolgáltatást:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/i_machine-learning.svg
-    rows:
-    - title: Bevezetés a szolgáltatás használatába az Azure Portalon
-      values:
-      - href: /azure/machine-learning/service/quickstart-get-started
-    - title: Bevezetés a szolgáltatás használatába a Pythonban
-      values:
-      - href: /azure/machine-learning/service/quickstart-create-workspace-with-python
-    - title: Adatok előkészítése modellezéshez
-      values:
-      - href: /azure/machine-learning/service/tutorial-data-prep
-    - title: Saját gépi tanulási modell létrehozása
-      values:
-      - href: /azure/machine-learning/service/tutorial-train-models-with-aml
-    - title: Algoritmusok automatikus létrehozása és hangolása
-      values:
-      - href: /azure/machine-learning/service/tutorial-auto-train-models
-    - title: Modell üzembe helyezése webszolgáltatásként
-      values:
-      - href: /azure/machine-learning/service/tutorial-deploy-models-with-aml
-    - title: Gépi tanulási modellek felhasználása
-      values:
-      - href: /azure/machine-learning/service/how-to-consume-web-service
-    - title: Machine Learning-folyamatok létrehozása és felügyelete
-      values:
-      - href: /azure/machine-learning/service/how-to-create-your-first-pipeline
-- title: Egyéb Microsoft Machine Learning-technológiák
-  items:
-  - type: list
     style: cards
-    className: cardsM
+    type: list
+- items:
+  - text: 'Az Azure Machine Learning service beállítása és használatának megkezdése:'
+    type: paragraph
+  - text: <b>Rövid útmutatók:</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/quickstart-create-workspace-with-python">Az első lépések a Python használatával</a>
+    - html: <a href="service/quickstart-get-started">Az első lépések az Azure Portal használatával</a>
+    style: unordered
+    type: list
+  - text: <b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>
+    type: paragraph
+  - items:
+    - html: '1. rész: <a href="service/tutorial-train-models-with-aml">Saját modell betanítása</a>'
+    - html: '2. rész: <a href="service/tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
+    style: unordered
+    type: list
+  - text: <b>Regressziós modellezési oktatóanyag NYC Taxi adataival:</b>
+    type: paragraph
+  - items:
+    - html: '1. rész: <a href="service/tutorial-data-prep">Adatok előkészítése modellezéshez</a>'
+    - html: '2. rész: <a href="service/tutorial-auto-train-models">Az automatizált gépi tanulás betanítja a modelleket Ön helyett</a>'
+    style: unordered
+    type: list
+  - text: <b>Modellek felhasználása:</b>
+    type: paragraph
+  - items:
+    - html: <a href="service/how-to-consume-web-service">Kérés-válasz modell felhasználása</a>
+    - html: <a href="service/how-to-run-batch-predictions">Kötegelt előrejelzések gépi tanulási folyamatokkal</a>
+    style: unordered
+    type: list
+  title: Rövid útmutatók és oktatóanyagok
+- items:
+  - className: cardsM
     columns: 2
     items:
     - href: /azure/cognitive-services/
@@ -80,7 +74,7 @@ sections:
         src: /azure/machine-learning/media/index/cognitive-services.png
       title: Cognitive Services
     - href: /azure/machine-learning/studio/
-      html: <p>Ismerje meg, hogyan használhatja ezt az együttműködést támogató, egérrel kezelhető eszközt az adataira alkalmazható prediktív elemzési megoldások létrehozására, tesztelésére és üzembe helyezésére. További információ... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      html: <p>Együttműködést támogató, egérrel kezelhető eszköz az adataira alkalmazható prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez R vagy Python használatával. </p>
       image:
         src: /azure/machine-learning/media/index/machine-learning-studio.svg
       title: Azure Machine Learning Studio
@@ -104,3 +98,7 @@ sections:
       image:
         src: /azure/machine-learning/media/index/virtualmachine.svg
       title: Adatelemzési virtuális gép
+    style: cards
+    type: list
+  title: Egyéb Microsoft Machine Learning-technológiák
+title: Az Azure Machine Learning dokumentációja

@@ -3,12 +3,12 @@ items:
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-  - name: Tudnivalók a HDInsight-alapú Hadoopról
+  - name: Tudnivalók a HDInsight-alapú Apache Hadoopról
     href: apache-hadoop-introduction.md
-  - name: Hadoop-architektúra a HDInsightban
+  - name: Apache Hadoop-architektúra a HDInsightban
     href: ../hdinsight-hadoop-architecture.md
     maintainContext: true
-  - name: Hadoop-összetevők a HDInsighton
+  - name: HDInsight-alapú Apache Hadoop-összetevők
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -16,9 +16,9 @@ items:
     maintainContext: true
 - name: Első lépések
   items:
-  - name: Hadoop-fürt létrehozása – Portál
+  - name: Apache Hadoop-fürt létrehozása – Portál
     href: apache-hadoop-linux-create-cluster-get-started-portal.md
-  - name: Hadoop-fürt létrehozása – Resource Manager
+  - name: Apache Hadoop-fürt létrehozása – Resource Manager
     href: apache-hadoop-linux-tutorial-get-started.md
 - name: Oktatóanyagok
   items:
@@ -41,7 +41,7 @@ items:
     maintainContext: true
 - name: Útmutató
   items:
-  - name: Hadoop-tesztkörnyezet használata
+  - name: Apache Hadoop-tesztkörnyezet használata
     href: apache-hadoop-emulator-get-started.md
   - name: Fürttároló használata
     items:
@@ -51,9 +51,9 @@ items:
     - name: Az Azure Data Lake Store használata
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
-  - name: Kötegelt lekérdezések a Hadoop használatával
+  - name: Kötegelt lekérdezések az Apache Hadoop használatával
     items:
-    - name: A Hive és a Hadoop
+    - name: Apache Hive és Apache Hadoop
       href: hdinsight-use-hive.md
       items:
       - name: A HDInsight tools for VSCode használata
@@ -61,7 +61,7 @@ items:
         maintainContext: true
       - name: A HDInsight Tools for Visual Studio használata
         href: apache-hadoop-use-hive-visual-studio.md
-      - name: A Hive-nézet használata
+      - name: Az Apache Hive-nézet használata
         href: apache-hadoop-use-hive-ambari-view.md
       - name: A Beeline használata
         href: apache-hadoop-use-hive-beeline.md
@@ -77,7 +77,7 @@ items:
         href: apache-hadoop-use-hive-query-console.md
     - name: Java UDF-használata a Hive-val
       href: apache-hadoop-hive-java-udf.md
-    - name: A MapReduce használata a Hadooppal
+    - name: A MapReduce használata az Apache Hadooppal
       href: hdinsight-use-mapreduce.md
       items:
       - name: Az SSH használata
@@ -92,10 +92,10 @@ items:
         href: apache-hadoop-use-mapreduce-dotnet-sdk.md
       - name: A MapReduce-minták futtatása
         href: apache-hadoop-run-samples-linux.md
-    - name: A Pig használata a Hadooppal
+    - name: Az Apache Pig használata az Apache Hadooppal
       href: hdinsight-use-pig.md
       items:
-      - name: Az SSH és a Pig
+      - name: Az SSH és az Apache Pig használata
         href: apache-hadoop-use-pig-ssh.md
       - name: Azure PowerShell használatával
         href: apache-hadoop-use-pig-powershell.md
@@ -105,13 +105,13 @@ items:
         href: apache-hadoop-use-pig-curl.md
       - name: A Távoli asztal használata
         href: apache-hadoop-use-pig-remote-desktop.md
-    - name: A DataFu és a Pig együttes használata
+    - name: A DataFu használata az Apache Piggel
       href: apache-hadoop-use-pig-datafu-udf.md
-    - name: Hadoop-feladatok elküldése
+    - name: Apache Hadoop-feladatok elküldése
       href: submit-apache-hadoop-jobs-programmatically.md
   - name: Fejlesztés
     items:
-    - name: Egyéni MapReduce programok futtatása
+    - name: Egyéni Apache Hadoop MapReduce-programok futtatása
       href: apache-hadoop-run-custom-programs.md
     - name: Streamelő MapReduce programok fejlesztése C# nyelven
       href: apache-hadoop-dotnet-csharp-mapreduce-streaming.md
@@ -132,7 +132,7 @@ items:
       href: apache-hadoop-dotnet-avro-serialization.md
     - name: Felhasználó által definiált C#-függvények használata
       href: apache-hadoop-hive-pig-udf-dotnet-csharp.md
-    - name: A Python használata a Hive-val és a Piggel
+    - name: A Python használata az Apache Hive-val és az Apache Piggel
       href: python-udf-hdinsight.md
     - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
       href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -155,20 +155,20 @@ items:
     - name: A Power BI csatlakoztatása az interaktív lekérdezéshez
       href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
       maintainContext: true
-    - name: A Power BI csatlakoztatása a Hadoophoz
+    - name: A Power BI csatlakoztatása az Apache Hadoophoz
       href: apache-hadoop-connect-hive-power-bi.md
-    - name: Az Excel csatlakozása a Hadoophoz
+    - name: Az Excel csatlakoztatása az Apache Hadoophoz
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
-    - name: Kapcsolódás a Hive JDBC-illesztővel
+    - name: Kapcsolódás az Apache Hive JDBC-illesztővel
       href: apache-hadoop-connect-hive-jdbc-driver.md
     - name: Tárolt érzékelőadatok elemzése
       href: apache-hive-analyze-sensor-data.md
     - name: Tárolt tweetek elemzése
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
-    - name: Javaslatok létrehozása a Mahout használatával
+    - name: Javaslatok létrehozása az Apache Mahout használatával
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Webhelynaplók elemzése a Hive használatával
+    - name: Webhelynaplók elemzése az Apache Hive-val
       href: apache-hive-analyze-website-log.md
     - name: Application Insights-telemetrianaplók elemzése
       href: ../spark/apache-spark-analyze-application-insight-logs.md
@@ -204,16 +204,16 @@ items:
     - name: Hive-kódtárak hozzáadása
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: A Giraph használata
+    - name: Az Apache Giraph használata
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: A Hue használata
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: A Solr használata
+    - name: Az Apache Solr használata
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
-    - name: A Zeppelin használata
+    - name: Az Apache Zeppelin használata
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: HDInsight-alkalmazások fejlesztése
@@ -252,7 +252,7 @@ items:
     - name: Adatokhoz hozzáférésének korlátozása
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Az Ambari Views használatának engedélyezése felhasználók számára
+    - name: Az Apache Ambari Views használatának engedélyezése felhasználók számára
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Migrate (Áttelepítés)
@@ -299,7 +299,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Hadoop-fürtök kezelése
+    - name: Apache Hadoop-fürtök kezelése
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: A .NET SDK használata
@@ -312,13 +312,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Fürtök kezelése az Ambari webes felülettel
+    - name: Fürtök kezelése az Apache Ambari webes felülettel
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Fürtök optimalizálása az Ambari webes felülettel
+      - name: Fürtök optimalizálása az Apache Ambari webes felülettel
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Az Ambari REST API használata
+      - name: Az Apache Ambari REST API használata
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -334,13 +334,13 @@ items:
     - name: Tárfiókok hozzáadása
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Adatok feltöltése Hadoop-feladatokhoz
+    - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Több HDInsight-fürt a Data Lake Store-ral
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Adatok importálása és exportálása a Sqoop használatával
+    - name: Adatok importálása és exportálása az Apache Sqoop használatával
       href: hdinsight-use-sqoop.md
       items:
       - name: Kapcsolódás az SSH-val
@@ -354,10 +354,10 @@ items:
     - name: Adatelemzési folyamat üzembe helyezése
       href: ../hdinsight-operationalize-data-pipeline.md
       maintainContext: true
-    - name: Az Oozie használata a munkafolyamatokhoz
+    - name: Az Apache Oozie használata a munkafolyamatokhoz
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Időalapú Oozie-koordinátorok használata
+    - name: Időalapú Apache Oozie-koordinátorok használata
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Fürt- és szolgáltatásportok, valamint URI-k
@@ -378,13 +378,13 @@ items:
     - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS-hibaelhárítás
+    - name: Apache Hadoop HDFS-hibaelhárítás
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: HIVE-hibaelhárítás
+    - name: Apache HIVE-hibaelhárítás
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: YARN-hibaelhárítás
+    - name: Apache Hadoop YARN-hibaelhárítás
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: További források
@@ -392,25 +392,25 @@ items:
       - name: Információk a HDInsight Linuxon való használatáról
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop – memória és teljesítmény
+      - name: Apache Hadoop – memória és teljesítmény
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
+      - name: Apache Hadoop YARN-alkalmazásnaplók elérése Linuxon
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+      - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat-hibák megértése és megoldása
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Hive-beállítások a Nincs elég memória hiba javításához
+      - name: Apache Hive-beállítások a Nincs elég memória hiba javításához
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari-nézetek használata a Tez-feladatok hibakereséséhez
+      - name: Apache Ambari Views használata az Apache Tez-feladatok hibakereséséhez
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive-lekérdezések optimalizálása
+      - name: Apache Hive-lekérdezések optimalizálása
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -430,7 +430,7 @@ items:
     - name: Vállalati biztonság konfigurálása a HDInsightban az Azure AD DS-sel
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Hive-házirendek konfigurálása
+    - name: Apache Hive-szabályzatok konfigurálása
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Fürtök felügyelete vállalati biztonsági megoldásokkal
@@ -458,7 +458,7 @@ items:
     - name: Fürtteljesítmény monitorozása
       href: ../hdinsight-key-scenarios-to-monitor.md
       maintainContext: true
-    - name: Hadoop-naplók elemzése
+    - name: Apache Hadoop-naplók elemzése
       href: apache-hadoop-debug-jobs.md
 - name: Referencia
   items:
@@ -474,13 +474,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Kapcsolódó témakörök
   items:
@@ -492,34 +492,34 @@ items:
     - name: .NET–megoldások áttelepítése Linux-fürtökre
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Hadoop MapReduce-minták futtatása
+    - name: Apache Hadoop MapReduce-minták futtatása
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: A Solr használata fürtökön
+    - name: Az Apache Solr használata fürtökön
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
-    - name: A Giraph használata nagyméretű gráfok feldolgozásához
+    - name: Az Apache Giraph használata nagyméretű gráfok feldolgozásához
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
-    - name: Az Oozie használata a munkafolyamatokhoz
+    - name: Az Apache Oozie használata a munkafolyamatokhoz
       href: ../hdinsight-use-oozie.md
       maintainContext: true
-    - name: Storm-topológiák üzembe helyezése és kezelése
+    - name: Apache Storm-topológiák üzembe helyezése és kezelése
       href: ../storm/apache-storm-deploy-monitor-topology.md
       maintainContext: true
-    - name: A Maven használata Java-alkalmazások létrehozásához
+    - name: Az Apache Maven használata Java-alkalmazások létrehozásához
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: A Tez felhasználói felület használata a Tez-feladatok hibakereséséhez
+    - name: Az Apache Tez felhasználói felület használata a Tez-feladatok hibakereséséhez
       href: ../hdinsight-debug-tez-ui.md
       maintainContext: true
     - name: Testreszabás szkriptműveletekkel
       href: ../hdinsight-hadoop-customize-cluster.md
       maintainContext: true
-    - name: YARN-alkalmazásnaplók elérése
+    - name: Apache Hadoop YARN-alkalmazásnaplók elérése
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
-    - name: Filmajánlók létrehozása a Mahout használatával
+    - name: Filmajánlók létrehozása az Apache Mahout használatával
       href: ../hdinsight-mahout.md
       maintainContext: true
     - name: Repülőjáratok késési adatainak elemzése
@@ -534,7 +534,7 @@ items:
     - name: Fürtök felügyelete az Azure Portalon
       href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
-    - name: Fürtök figyelése az Ambari API-val
+    - name: Fürtök figyelése az Apache Ambari API-val
       href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
 - name: További források
@@ -559,9 +559,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 99ee7d4fd5830c9416ff9a9ffaf37afa1504096e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 43ebb63bdda8c484ce1c2d2828293032ea90013c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962613"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321152"

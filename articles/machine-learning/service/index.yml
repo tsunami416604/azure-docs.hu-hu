@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 30a415fb0df910333b81f36cfb925faafd1c8c1b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: da46b78d764465d8b9e5ce438b0843e0b79e16a9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080163"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271147"
 documentType: LandingData
-title: Dokumentáció – Azure Machine Learning szolgáltatás
+title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
-  title: Az Azure Machine Learning szolgáltatás dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  title: Dokumentáció – Azure Machine Learning service – oktatóanyagok és API-referencia | Microsoft Docs
   description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
   services: machine-learning
   author: j-martens
@@ -27,13 +27,13 @@ sections:
 - items:
   - type: list
     style: cards
-    className: cardsB
-    columns: 1
+    className: cardsFTitle
     items:
-    - html: <p>ML-modellek betanítása és üzembe helyezése egy Azure-felhőszolgáltatásban. <a href="overview-what-is-azure-ml.md">További információ a szolgáltatásról...</a></p>
+    - title: Ismerkedés az Azure Machine Learning service-szel
+      href: /azure/machine-learning/service/overview-what-is-azure-ml
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Azure Machine Learning szolgáltatás
+        href: /azure/machine-learning/service/overview-what-is-azure-ml
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -46,16 +46,23 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: '<b>Útmutatók</b>: Megtudhatja, hogyan állítson be egy kísérletet, illetve hogyan működtesse modelljeit.'
+    text: Megtudhatja, hogyan állítson be egy kísérletet, illetve hogyan működtesse modelljeit.
+  - type: paragraph
+    text: <b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>
   - type: list
     style: unordered
     items:
-    - html: Képbesorolás (1. rész)&#58; <a href="tutorial-train-models-with-aml">Saját gépi tanulási modell betanítása</a>
-    - html: Képbesorolás (2. rész)&#58; <a href="tutorial-deploy-models-with-aml">A modell üzembe helyezése</a></br>&nbsp;
-    - html: Regresszió (1. rész)&#58; <a href="tutorial-data-prep">NYC Taxi adatainak előkészítése modellezéshez</a>
-    - html: Regresszió (2. rész)&#58; <a href="tutorial-auto-train-models">Modell létrehozása automatizált gépi tanulás használatával</a>
+    - html: '1. rész: <a href="tutorial-train-models-with-aml">Saját gépi tanulási modell betanítása</a>'
+    - html: '2. rész: <a href="tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
   - type: paragraph
-    text: '<b>Mintanotebookok</b>: Az Azure Machine Learning használatának megismerése a GitHubon elérhető <a href="https://aka.ms/aml-notebooks">Jupyter-notebookokkal</a>.'
+    text: <b>Regressziós modellezési oktatóanyag NYC Taxi adataival:</b>
+  - type: list
+    style: unordered
+    items:
+    - html: '1. rész: <a href="tutorial-data-prep">NYC Taxi adatainak előkészítése modellezéshez</a>'
+    - html: '2. rész: <a href="tutorial-auto-train-models">Automatizált gépi tanulás használata modellek létrehozásához</a>'
+  - type: paragraph
+    text: '<b>Mintanotebookok</b>: Ismerkedjen meg a szolgáltatással ezekkel a <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://aka.ms/aml-notebooks">Jupyter-notebookokkal</a> a GitHubon.'
 - title: Referencia
   items:
   - type: list
