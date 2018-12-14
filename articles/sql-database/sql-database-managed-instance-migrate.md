@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 5e2599c2089cbd9961b54966df5f0f98d6badcce
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274666"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337478"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -60,7 +60,7 @@ Választhat a számítási és tárolási erőforrások üzembe helyezéskor id�
 Ismerje meg, hogyan hozhat létre a virtuális hálózati infrastruktúra és a egy felügyelt példányt, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
-> Fontos, hogy a cél virtuális hálózatot és alhálózatot mindig összhangban [felügyelt példány a virtuális hálózat követelményei](sql-database-managed-instance-vnet-configuration.md#requirements). Bármilyen inkompatibilitás megakadályozhatja, új példányok jöjjenek létre, vagy azokkal, amelyek már létrehozott használatával.
+> Fontos, hogy a cél virtuális hálózatot és alhálózatot mindig összhangban [felügyelt példány a virtuális hálózat követelményei](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Bármilyen inkompatibilitás megakadályozhatja, új példányok jöjjenek létre, vagy azokkal, amelyek már létrehozott használatával. Tudjon meg többet [új létrehozása](sql-database-managed-instance-create-vnet-subnet.md) és [konfigurálása a meglévő](sql-database-managed-instance-configure-vnet-subnet.md) hálózatok.
 
 ## <a name="select-migration-method-and-migrate"></a>Áttelepítési módszer kiválasztása és áttelepítése
 

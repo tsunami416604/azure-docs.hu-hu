@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 394897976fc7453d0639d985806d7226cc059a6c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0548cbc9c84de27dd7278d1b4ae3228993d6a49f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956482"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338279"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Az Azure Security Center és az Azure-beli virtuális gépek
 [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
@@ -58,7 +58,7 @@ A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét,
 ![Biztonsági házirend](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
 
 > [!NOTE]
-> További információ az egyes elérhető **Megelőzési házirendekről**: [Biztonsági házirendek beállítása](security-center-azure-policy.md).
+> További információ az egyes elérhető **Megelőzési házirendekről**: [Biztonsági házirendek beállítása](tutorial-security-policy.md).
 > 
 > 
 
@@ -85,7 +85,7 @@ Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ö
 > 
 
 ## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-azure-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  A **Resource Security Health** (Erőforrás biztonsági állapota) panelen megtekintheti az erőforrások biztonsági állapotát, valamint az esetleg felmerülő problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  A **Resource Security Health** (Erőforrás biztonsági állapota) panelen megtekintheti az erőforrások biztonsági állapotát, valamint az esetleg felmerülő problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
 
 ![Biztonsági állapot](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -99,7 +99,7 @@ Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riaszt�
 ## <a name="see-also"></a>Lásd még
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 

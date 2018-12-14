@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bc9341d7e078b0ae69cc9a734c02f257df6d96a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: beb6650125bdf7526b8167ba0f076b079e4e84a8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643354"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342867"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions - Phone minta az emberi beavatkozást igényel
 
@@ -45,8 +45,8 @@ Ez a cikk végigvezeti a mintaalkalmazást a következő funkciókat:
 * **E4_SendSmsChallenge**
 
 Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelést, és a JavaScript által használt kódot. A Visual Studio fejlesztési kód a cikk végén található meg.
- 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Az SMS ellenőrzési vezénylési (Visual Studio Code és az Azure portal minta kód) 
+
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Az SMS ellenőrzési vezénylési (Visual Studio Code és az Azure portal minta kód)
 
 A **E4_SmsPhoneVerification** a funkció a standard *function.json* az orchestrator-funkciók.
 
@@ -58,7 +58,7 @@ A kód, amely megvalósítja a függvény a következő:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
@@ -72,7 +72,7 @@ Megkezdése után az orchestrator-funkció a következőket teszi:
 A felhasználó kap egy SMS-üzenet egy négyjegyű kóddal. 90 másodperc alatt, hogy ugyanolyan 4 számjegyű kód küldi vissza az orchestrator függvény példány az ellenőrzési folyamat elvégzéséhez rendelkeznek. Ha ezek a hibás kódot küldenek, kapnak egy további három megpróbálja beolvasni a jobb oldali (belül ugyanebben a 90 másodperces ablakban).
 
 > [!NOTE]
-> Nem lehet első, de az orchestrator nyilvánvaló függvény teljesen determinisztikus. Ennek az az oka az `CurrentUtcDateTime` tulajdonság rendszer kiszámítja az időzítő lejárati időt, és ezt a tulajdonságot minden egyes ismétlés ezen a ponton az orchestrator-kódban a ugyanazt az értéket adja vissza. Ez fontos annak érdekében, hogy azonos `winner` eredménye minden ismétlődő meghívásához `Task.WhenAny`.
+> Nem lehet első, de az orchestrator nyilvánvaló függvény teljesen determinisztikus. Ennek az az oka az `CurrentUtcDateTime` (.NET) és `currentUtcDateTime` (JavaScript) tulajdonságok rendszer kiszámítja az időzítő lejárati időt, és ezek a Tulajdonságok ugyanazt az értéket ad vissza minden egyes ismétlés ezen a ponton az orchestrator-kódban. Ez fontos annak érdekében, hogy azonos `winner` eredménye minden ismétlődő meghívásához `Task.WhenAny` (.NET) vagy `context.df.Task.any` (JavaScript).
 
 > [!WARNING]
 > Fontos, hogy [időzítők Mégse](durable-functions-timers.md) Ha már nincs szükség van rájuk jár le, amikor egy kérdés-válasz elfogadja a fenti példában látható módon.
@@ -89,7 +89,7 @@ Ez pedig a kódot, amely a 4-jegyű ellenőrző kódot állít elő, és az SMS-
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
@@ -106,6 +106,7 @@ Content-Type: application/json
 
 "+1425XXXXXXX"
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 695
@@ -115,12 +116,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-   > [!NOTE]
-   > Jelenleg a JavaScript vezénylési alapszintű funkciók nesmí vracet hodnotu példány felügyeleti URI-k. Ez a funkció egy későbbi kiadásban fog bővülni.
-
 Az orchestrator függvény kap a megadott telefonszámot, és azonnal elküldi egy véletlenszerűen létrehozott 4 jegyű ellenőrző kódot tartalmazó SMS-ben &mdash; például *2168*. A függvény majd vár 90 másodpercet a válaszra.
 
-Válasz a kóddal, használhatja `RaiseEventAsync` másik függvényt, vagy hívja a **sendEventUrl** felett, és cserélje le a 202-es válaszban hivatkozott HTTP POST webhook `{eventName}` az esemény nevét `SmsChallengeResponse`:
+Válasz a kóddal, használhatja [ `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) másik függvényt, vagy hívja a **sendEventUrl** a 202-es válaszban a fenti hivatkozott HTTP POST-webhook , és cserélje le `{eventName}` az esemény nevét `SmsChallengeResponse`:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -135,6 +133,7 @@ Küld ez az időzítő lejárata előtt, ha a vezénylési befejezése és a `ou
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 144

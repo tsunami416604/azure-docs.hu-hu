@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 88a4c6dbe9311a054c6ed93df0005d32e6d21672
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271793"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386536"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -64,13 +64,13 @@ Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy au
 
 - Használat [Azure folyamatok](/azure/devops/pipelines) folyamatos üzembe helyezés implementálását és automatizálását a CI/CD-tesztek alapján éles kód véglegesítésétől a teljes folyamatot.
 - Használat [minőségi kapuk](/devops/pipelines/release/approvals/gates) integrálható a központi telepítés előtti vagy utáni figyelést. Ez biztosítja, hogy a kulcs egészségügyi/teljesítmény-mérőszámokat (KPI-k) a megfelel, az alkalmazások éles és az infrastruktúra-környezetben a különbségeket válthatnak fejlesztési vagy a méretezési csoport nem negatív negatív hatással van a KPI-ket.
-- [Különálló figyelési példány karbantartása](../application-insights/app-insights-separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../monitoring-and-diagnostics/monitoring-metric-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
+- [Különálló figyelési példány karbantartása](../application-insights/app-insights-separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Műveletek a gyakorlatban hasznosítható riasztások létrehozása
 Monitorozás kritikus fontosságú tényezője van pontos rendszergazdák aktuális és előrejelzett problémákról. 
 
-- Hozzon létre [az Azure monitorban riasztásokat](../monitoring-and-diagnostics/monitoring-overview-alerts.md) naplók és metrikák azonosítása sikertelen előrelátható állapotok alapján. A célja az, hogy az összes riasztás végrehajtható, ami azt jelenti, hogy tényleges kritikus feltételeket képviselő, és csökkenti a vakriasztások igyekszik kell rendelkeznie. Használat [dinamikus küszöbértékek](platform/alerts-dynamic-thresholds.md) metrikaadatok helyett a saját statikus küszöbértékek alaptervek automatikusan kiszámításához. 
+- Hozzon létre [az Azure monitorban riasztásokat](../azure-monitor/platform/alerts-overview.md) naplók és metrikák azonosítása sikertelen előrelátható állapotok alapján. A célja az, hogy az összes riasztás végrehajtható, ami azt jelenti, hogy tényleges kritikus feltételeket képviselő, és csökkenti a vakriasztások igyekszik kell rendelkeznie. Használat [dinamikus küszöbértékek](platform/alerts-dynamic-thresholds.md) metrikaadatok helyett a saját statikus küszöbértékek alaptervek automatikusan kiszámításához. 
 - Riasztások használata a leghatékonyabb azt jelenti, hogy a rendszergazdák értesítése a műveletek határozhatók meg. Rendelkezésre álló [értesítési műveletek](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, e-mailek, leküldéses értesítéseket vagy hanghívás vannak.
 - Speciális műveletek használata [az ITSM-eszközhöz való csatlakoztatása](platform/itsmc-overview.md) vagy más riasztáskezelés-rendszerekhez [webhookok](platform/activity-log-alerts-webhook.md).
 - A riasztásokat, valamint az azonosított helyzetekben szervizelése [Azure Automation-runbookok](../automation/automation-webhooks.md) vagy [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , amely a riasztást, webhookok segítségével lehet elindítani. 

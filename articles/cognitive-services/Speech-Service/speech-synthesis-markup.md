@@ -8,23 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0c3c2fdddada3b90c84b3f06f8639bde7db50f95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073550"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341133"
 ---
 # <a name="speech-synthesis-markup-language"></a>Beszéd összefoglaló Markup Language
 
-A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú jelölőnyelv, amely lehetővé teszi a kiejtés szabályozhatja és *prosody* , szöveg-hang transzformációs. Prosody hivatkozik a munkatevékenységhez és a terv lényegét beszéd – a zene, ha a rendszer. Adja meg a szavak fonetikusan, tegyen számok értelmezéséhez, szünetel, vezérlőelem lényegét, kötet, és a sebesség és egyéb beszúrása.
+A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú jelölőnyelv, amely lehetővé teszi a kiejtés szabályozhatja és *prosody* , szöveg-hang transzformációs. Prosody hivatkozik a munkatevékenységhez és a terv lényegét beszéd – a zene, ha a rendszer. Adja meg a szavak fonetikusan, tegyen számok értelmezéséhez, szünetel, vezérlőelem lényegét, kötet, és a sebesség és egyéb beszúrása. További információkért lásd: [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
 
-További információkért lásd: [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) a W3C címen.
+Beszédhangot (Neurális és standard), támogatott nyelvek és területi beállítások teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
 
-Az alábbi példák bemutatják, hogyan SSML használata közös speech összefoglaló igényei szerint:
+A következő szakaszok minták közös beszéd összefoglaló feladatok.
+
+>[!IMPORTANT]
+> Címkézés prosody jelenleg csak standard beszédhangot érhető el.
 
 ## <a name="add-a-break"></a>Szünet
 ```xml
@@ -90,5 +93,4 @@ Az alábbi példák bemutatják, hogyan SSML használata közös speech összefo
 
 ## <a name="next-steps"></a>További lépések
 
-* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)
+* [Nyelvi támogatás: beszédhangot, a területi beállításokat, a nyelvek](language-support.md)

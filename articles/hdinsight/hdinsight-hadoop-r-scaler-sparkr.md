@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013275"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386900"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
 
 Ez a dokumentum bemutatja, hogy miként jelezhetők előre a járatok érkezési késésének használatával egy **ScaleR** logisztikai regressziós modellt. A példában repülési késleltetés és az időjárási adatok, illesztve **SparkR**.
 
-Bár mindkét csomagot futtatja a Hadoop Spark-végrehajtó motor, azok hozzáférése a memóriában lévő adatok megosztása, tesztelhető, mindegyik a saját megfelelő Spark-munkamenetet. Ezzel a problémával ML Server egy jövőbeli verziójában, amíg a megoldás, hogy egymást nem átfedő Spark-munkameneteket, valamint az exchange-adatok köztes fájlok között. Az itt leírt utasításokat mutatja, hogy ezek a követelmények egyszerű eléréséhez.
+Bár mindkét csomagot futtatja, az Apache Hadoop Spark-végrehajtó motor, azok hozzáférése a memóriában lévő adatok megosztása, tesztelhető, mindegyik a saját megfelelő Spark-munkamenetet. Ezzel a problémával ML Server egy jövőbeli verziójában, amíg a megoldás, hogy egymást nem átfedő Spark-munkameneteket, valamint az exchange-adatok köztes fájlok között. Az itt leírt utasításokat mutatja, hogy ezek a követelmények egyszerű eléréséhez.
 
 Ebben a példában először megosztott egy előadás Strata 2016 a Mario Inchiosa és Roni Burd. Ez az előadás címen található [létrehozása egy méretezhető adatelemzési Platform r](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>A pontozás máshol
 
-Azt is használhatja a modell pontozási adatok egy másik platformon. Mentése folyamatban van egy távoli asztali fájl és átvitel, és a cél környezetekben, például az SQL Server R Services pontozási való importálásakor, a távoli asztali szolgáltatások. Fontos győződjön meg arról, hogy az adatok pontozandó tényező szintek egyeznek, amelyen a modell lett létrehozva. Megfelelést kiváltó elérhető kinyeréséhez és az oszlopadatokat a ScaleR-n keresztül a modellezési adatok társított `rxCreateColInfo()` függvény és előrejelzési bemeneti adatok forrásának majd alkalmazza az adott oszlopra vonatkozó információ. A következő azt menteni a tesztelési adatkészletnél néhány sornyi és bontsa ki és használja ezt a mintát oszlop adatait az előrejelzési szkriptben:
+Azt is használhatja a modell pontozási adatok egy másik platformon. Mentése folyamatban van egy távoli asztali fájl és átvitel, és a cél környezetekben, például a MIcrosoft SQL Server R Services pontozási való importálásakor, a távoli asztali szolgáltatások. Fontos győződjön meg arról, hogy az adatok pontozandó tényező szintek egyeznek, amelyen a modell lett létrehozva. Megfelelést kiváltó elérhető kinyeréséhez és az oszlopadatokat a ScaleR-n keresztül a modellezési adatok társított `rxCreateColInfo()` függvény és előrejelzési bemeneti adatok forrásának majd alkalmazza az adott oszlopra vonatkozó információ. A következő azt menteni a tesztelési adatkészletnél néhány sornyi és bontsa ki és használja ezt a mintát oszlop adatait az előrejelzési szkriptben:
 
 ```
 # save the model and a sample of the test dataset 
@@ -529,13 +529,13 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fejlesztéséhez, a Hadoop Spark SparkR használata lehetőség. Ehhez a forgatókönyvhöz szükséges, hogy karbantartása külön Spark-munkameneteket, csak egy időben futnak egy munkamenetet, és exchange-adatok CSV-fájlok használatával. Bár ez egyszerűnek tűnik, ez a folyamat lehet még egyszerűbbé teszi a Machine Learning Services egy soron következő kiadásban SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így a Spark DataFrames megosztása.
 
 ## <a name="next-steps-and-more-information"></a>Következő lépések és további információ
 
-- A Spark ML-kiszolgáló használatára további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Az Apache Spark Machine Learning-kiszolgáló használatának további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
 - A Machine Learning-kiszolgáló általános információkért lásd: a [R – első lépések](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
 

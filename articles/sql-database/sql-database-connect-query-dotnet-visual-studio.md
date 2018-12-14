@@ -1,6 +1,6 @@
 ---
-title: Visual Studio és .NET használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használhatja a Visual Studiót egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
+title: A Visual Studio használata a .NET-tel és C# Azure SQL Database-adatbázis lekérdezéséhez |} A Microsoft Docs
+description: A Visual Studio segítségével készítsen egy C# alkalmazást, amely az Azure SQL Database csatlakozik és kérdezi le azt a Transact-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,127 +11,121 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 5b458c881496a887d1415e115bf2b94c674be029
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/11/2018
+ms.openlocfilehash: 04a0abd0fba7ec53aebeb481ac80d36653d118b6
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50911761"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384938"
 ---
-# <a name="quickstart-use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Rövid útmutató: A .NET (C#) használata a Visual Studióval Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéséhez
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Gyors útmutató: A .NET használata és C# csatlakozhat, és a egy Azure SQL database lekérdezése a Visual studióban
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [.NET-keretrendszer](https://www.microsoft.com/net/) olyan C#-program a Visual Studióval való létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.
+Ez a rövid útmutató bemutatja, hogyan használhatja a [.NET-keretrendszer](https://www.microsoft.com/net/) és C# lekérdezni egy Azure SQL database Transact-SQL-utasítások a Visual Studio code.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
+A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+  
+- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) , hogy a használt számítógép nyilvános IP-címét.
+  
+- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) közösségi, Professional vagy Enterprise edition.
 
-- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
-
-- A [Visual Studio Community 2017, a Visual Studio Professional 2017 vagy a Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/) telepítése.
-
-## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
+## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-#### <a name="for-adonet"></a>ADO.NET esetén
+## <a name="create-code-to-query-the-sql-database"></a>Az SQL Database-adatbázis lekérdezéséhez kód létrehozása
 
-1. A folytatáshoz kattintson az **Adatbázis-kapcsolati sztringek megjelenítése** elemre.
-
-2. Tekintse át az **ADO.NET** teljes kapcsolati sztringjét.
-
-    ![ADO.NET kapcsolati sztring](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
-
-> [!IMPORTANT]
-> Rendelkeznie kell egy tűzfalszabállyal azon számítógép nyilvános IP-címéhez, amelyen ezt az oktatóanyagot elvégzi. Ha más számítógépet használ, vagy más nyilvános IP-címe van, hozzon létre egy [kiszolgálószintű tűzfalszabályt az Azure Portalon](sql-database-get-started-portal-firewall.md). 
->
-  
-## <a name="create-a-new-visual-studio-project"></a>Új Visual Studio-projekt létrehozása
-
-1. A Visual Studióban válassza a **Fájl**, **Új**, **Projekt** lehetőséget. 
-2. Az **Új projekt** párbeszédpanelen bontsa ki a **Visual C#** elemet.
-3. Válassza a **Konzolalkalmazás** elemet, és írja be az *sqltest* projektnevet.
-4. Kattintson az **OK** gombra az új projekt létrehozásához és megnyitásához a Visual Studióban
-4. A Megoldáskezelőben kattintson a jobb gombbal az **sqltest** elemre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra. 
-5. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
-6. A **System.Data.SqlClient** oldalon kattintson a **Telepítés** elemre.
-7. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához. 
-8. Ha megjelenik egy **License Acceptance** (Licenc elfogadása) ablak, kattintson az **I Accept** (Elfogadom) gombra.
-
-## <a name="insert-code-to-query-sql-database"></a>Kód beszúrása SQL-adatbázis lekérdezéséhez
-1. Váltson a **Program.cs** fájlra (vagy szükség esetén nyissa meg)
-
-2. Cserélje le a **Program.cs** tartalmát a következő kódra, és adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
-
-```csharp
-using System;
-using System.Data.SqlClient;
-using System.Text;
-
-namespace sqltest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            try 
-            { 
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "your_server.database.windows.net"; 
-                builder.UserID = "your_user";            
-                builder.Password = "your_password";     
-                builder.InitialCatalog = "your_database";
-
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-                {
-                    Console.WriteLine("\nQuery data example:");
-                    Console.WriteLine("=========================================\n");
-                    
-                    connection.Open();       
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                    sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                    sb.Append("JOIN [SalesLT].[Product] p ");
-                    sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                    String sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }                    
-                }
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            Console.ReadLine();
-        }
-    }
-}
-```
+1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**. 
+   
+1. Az a **új projekt** párbeszédablakban válassza **Visual C#** , majd válassza ki **Console App (.NET Framework)**.
+   
+1. Adja meg *sqltest* a projekt nevét, és válassza ki a **OK**. Az új projekt jön létre. 
+   
+1. Válassza ki **projekt** > **NuGet-csomagok kezelése**. 
+   
+1. A **NuGet-Csomagkezelő**, jelölje be a **Tallózás** fülre, majd keresse meg és válassza ki **System.Data.SqlClient**.
+   
+1. Az a **System.Data.SqlClient** lapon jelölje be **telepítése**. 
+   - Ha a rendszer kéri, válassza ki a **OK** a telepítés folytatásához. 
+   - Ha egy **licencfeltételek elfogadását** ablak megjelenik, válassza ki **elfogadom**.
+   
+1. Ha a telepítés befejeződött, bezárhatja **NuGet-Csomagkezelő**. 
+   
+1. A code szerkesztőben cserélje le a **Program.cs** tartalmát az alábbira. Helyettesítse be a saját értékeit `<server>`, `<username>`, `<password>`, és `<database>`.
+   
+   >[!IMPORTANT]
+   >Ebben a példában a kódot az AdventureWorksLT mintaadatokat, amely forrásként is választja, az adatbázis létrehozásakor használ. Ha az adatbázis különböző adatokat, használja a saját adatbázis tábláinak a SELECT-lekérdezésben. 
+   
+   ```csharp
+   using System;
+   using System.Data.SqlClient;
+   using System.Text;
+   
+   namespace sqltest
+   {
+       class Program
+       {
+           static void Main(string[] args)
+           {
+               try 
+               { 
+                   SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                   builder.DataSource = "<server>.database.windows.net"; 
+                   builder.UserID = "<username>";            
+                   builder.Password = "<password>";     
+                   builder.InitialCatalog = "<database>";
+   
+                   using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                   {
+                       Console.WriteLine("\nQuery data example:");
+                       Console.WriteLine("=========================================\n");
+                       
+                       connection.Open();       
+                       StringBuilder sb = new StringBuilder();
+                       sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
+                       sb.Append("FROM [SalesLT].[ProductCategory] pc ");
+                       sb.Append("JOIN [SalesLT].[Product] p ");
+                       sb.Append("ON pc.productcategoryid = p.productcategoryid;");
+                       String sql = sb.ToString();
+   
+                       using (SqlCommand command = new SqlCommand(sql, connection))
+                       {
+                           using (SqlDataReader reader = command.ExecuteReader())
+                           {
+                               while (reader.Read())
+                               {
+                                   Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                               }
+                           }
+                       }                    
+                   }
+               }
+               catch (SqlException e)
+               {
+                   Console.WriteLine(e.ToString());
+               }
+               Console.ReadLine();
+           }
+       }
+   }
+   ```
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
-2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
+1. Futtassa az alkalmazást, válassza **hibakeresése** > **hibakeresés indítása**, vagy válasszon ki **Start** az eszköztáron, vagy nyomja meg **F5**.
+1. Győződjön meg arról, hogy az első 20 kategória/Product az adatbázis azon sorait adja vissza, és zárja be az alkalmazás ablakának.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [az Azure SQL Database-adatbázisokhoz való csatlakozásról és a .NET Core-ral való lekérdezésükről](sql-database-connect-query-dotnet-core.md) Windows/Linux/macOS rendszeren.  
+- Ismerje meg, hogyan [kapcsolódás és lekérdezés a .NET Core használata Azure SQL database](sql-database-connect-query-dotnet-core.md) Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - További információ [az első Azure SQL Database-adatbázisának SSMS-sel való megtervezéséről](sql-database-design-first-database.md) és [az első Azure SQL Database-adatbázisának .NET-tel való megtervezéséről](sql-database-design-first-database-csharp.md).
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.
-- [Példa újrapróbálkozási logikára: Rugalmas csatlakozás az SQL-hez az ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- Példa újrapróbálkozási: [Logikára kapcsolódni az SQL és ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->

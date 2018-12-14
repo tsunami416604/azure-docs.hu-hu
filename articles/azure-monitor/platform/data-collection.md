@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: c9929149c029d15d496eac0eb530371418e1e1f2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3795db2928e23b16d93e544c4f148b049eccfdef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323507"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384836"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -96,9 +96,9 @@ Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrása
 ### <a name="what-can-you-do-with-metrics"></a>Tudja, mire a metrikák?
 Metrikákkal elvégezhető feladatok a következők:
 
-- Használat [metrikaböngésző](../../monitoring-and-diagnostics/monitoring-metric-charts.md) elemezheti az összegyűjtött metrikák és a egy diagramon jeleníti meg őket. Egy erőforrás (például egy virtuális Gépet, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követésével diagramok rögzítésével egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
+- Használat [metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) elemezheti az összegyűjtött metrikák és a egy diagramon jeleníti meg őket. Egy erőforrás (például egy virtuális Gépet, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követésével diagramok rögzítésével egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurálja egy [a metrikaalapú riasztási szabály](alerts-metric.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a metrika átlép egy küszöbértéket.
-- Használat [automatikus skálázási](../../monitoring-and-diagnostics/monitoring-overview-autoscale.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
+- Használat [automatikus skálázási](../../azure-monitor/platform/autoscale-overview.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
 - Metrikák irányíthatja a Log Analytics metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja. 
 - Metrikák Stream- [Eseményközpont](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
 - [Archív](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.
@@ -109,7 +109,7 @@ Metrikákkal elvégezhető feladatok a következők:
 ### <a name="viewing-metrics"></a>Metrikák megtekintése
 Az Azure-ban metrikákat gyűjt az Azure Monitor-metrikák adatbázisban. Ez az idősor lépésközi 93 napig gyors lekérési és a tárolók metrikaértékek optimalizált adatbázis. Másolja a Log Analytics metrikák hosszú távú elemzésekhez és népszerű.
 
-Metrikaadatok többféle módon szerepel, a fent leírt módon. Használat [metrikaböngésző](../../monitoring-and-diagnostics/monitoring-metric-charts.md) közvetlenül elemezheti az adatokat a metrika-tárolót, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Metrikaadatok többféle módon szerepel, a fent leírt módon. Használat [metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) közvetlenül elemezheti az adatokat a metrika-tárolót, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Metrikaböngésző](media/data-collection/metrics-explorer.png)
 
@@ -174,7 +174,7 @@ Metrikák másolhatja a Log Analyticsben, hogy más típusú adatokat tartalmaz�
 ### <a name="logs-to-metrics"></a>Naplók, metrikák
 A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. A log Analytics jelentős mennyiségű, metrikák alkalmas lenne, de nem az Azure-metrikagyűjtéshez adatbázisban tárolt numerikus adatokat gyűjt.  Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike átmásolható a metrikák adatbázisba, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez.
 
-A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
+A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](../../azure-monitor/platform/alerts-metric-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Stream data a külső rendszerekkel
 Mellett az Azure-ban az eszközök használatával elemezheti a monitorozási adatok, szükség lehet a követelmény, hogy egy külső eszköz, például a biztonsági információk és az esemény (SIEM) termékben továbbítja. Közvetlenül a figyelt erőforrások keresztül általában történik a továbbító [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 

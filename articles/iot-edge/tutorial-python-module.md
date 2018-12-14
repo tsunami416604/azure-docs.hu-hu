@@ -9,14 +9,14 @@ ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e0fa7585246da9f187c428142f31248fbd3acea
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a8edf8d67c55cad856eacf883a6449606e594887
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078378"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343768"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Fejlesztése és üzembe helyezése egy Python IoT Edge-modul a szimulált eszköz
 
 Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
@@ -103,9 +103,9 @@ A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megold�
 
 3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
-4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure: Jelentkezzen be a** , és kövesse az utasításokat követve jelentkezzen be az Azure-fiókjával. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
-5. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
+5. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
    | Mező | Érték |
    | ----- | ----- |
@@ -243,9 +243,9 @@ A tárolórendszerkép teljes címét a címkével a VS Code integrált terminá
 
 ## <a name="deploy-and-run-the-solution"></a>A megoldás üzembe helyezése és futtatása
 
-Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual Studio Code Azure IoT-eszközkészlet bővítményével is üzembe helyezhet modulokat. Már elő van készítve egy üzembehelyezési jegyzék a forgatókönyvhöz, a **deployment.json** fájl. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
+Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. Az Azure IoT Hub-eszközkészlet bővítmény (korábbi nevén Azure IoT-eszközkészlet bővítmény) használata a Visual Studio Code-modulok is telepítheti. Már elő van készítve egy üzembehelyezési jegyzék a forgatókönyvhöz, a **deployment.json** fájl. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
-1. A VS Code parancskatalógusában futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
+1. Futtassa a VS Code parancskatalógus **Azure IoT hubbal: Válassza ki az IoT Hub**. 
 
 2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. 
 
@@ -273,7 +273,7 @@ Az IoT Hubra beérkező üzenetek a Visual Studio Code segítségével tekinthet
 
 1. Az IoT Hub-központra érkező adatok monitorozásához válassza a három pont (**...**) elemet, majd a **Start Monitoring D2C Messages** (D2C üzenetek monitorozásának megkezdése) lehetőséget.
 2. Egy adott eszköz D2C üzeneteinek monitorozásához kattintson a listában a jobb gombbal az eszközre, és válassza ki a **Start Monitoring D2C Messages** (D2C üzenetek monitorozásának megkezdése) lehetőséget.
-3. Az adatok monitorozásának leállításához futtassa a parancskatalógusban az **Azure IoT Hub: Stop monitoring D2C message** (Azure IoT Hub: D2C üzenetek monitorozásának leállítása) parancsot. 
+3. Adatok monitorozásának leállításához futtassa a parancsot **Azure IoT hubbal: D2C üzenet monitorozásának leállítása** a parancskatalógus. 
 4. A modul ikerdokumentumának megtekintéséhez vagy frissítéséhez kattintson a listában a jobb gombbal a modulra, és válassza az **Edit module twin** (Modul ikerdokumentumának szerkesztése) lehetőséget. A modul ikerdokumentumának frissítéséhez mentse az ikerdokumentum JSON-fájlját, kattintson a jobb gombbal a szerkesztési területre, majd válassza az **Update Module Twin** (Modul ikerdokumentumának frissítése) lehetőséget.
 5. A Docker-naplók megtekintéséhez telepítse a [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) for VS Code (Docker a VS Code-hoz) eszközt. A helyi rendszerben a futó modulokat a Docker Explorerben találja meg. A helyi menüben kattintson a **Show Logs** (Naplók megjelenítése) elemre az integrált terminálban való megtekintéshez. 
 

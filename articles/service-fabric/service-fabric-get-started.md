@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
 ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726508"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386426"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 
 * [Az első Service Fabric-alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
 * [Ismerje meg az alkalmazások helyi fürtön történő üzembe helyezését és kezelését](service-fabric-get-started-with-a-local-cluster.md)
-* [További tudnivalók a programozási modellekről: Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
+* [További tudnivalók a programozási modellekről: A Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

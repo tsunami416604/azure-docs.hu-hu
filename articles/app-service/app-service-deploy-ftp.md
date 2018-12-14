@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: f48dc4d91fd5fafda88f518c27c79e151e5b1ebe
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3b8c97fa772467d1e0aff830eec51d212045be39
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260072"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339705"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -96,7 +96,7 @@ Egy alkalmazás futtatókörnyezeti probléma általában eredményez az alkalma
 A központi telepítés vagy a futásidejű probléma megállapításához lásd: [memóriafelhasználás problémákat és üzembe helyezési](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>E nem lehet FTP, és tegye közzé a saját kódját. Hogyan lehet megoldani a problémát?
-Ellenőrizze, hogy megadta a helyes állomásnevet és [hitelesítő adatok](#step-1--set-deployment-credentials). Ellenőrizze továbbá, hogy a gépen a következő FTP-portokat nem blokkolja tűzfal:
+Ellenőrizze, hogy megadta a helyes állomásnevet és [hitelesítő adatok](#open-ftp-dashboard). Ellenőrizze továbbá, hogy a gépen a következő FTP-portokat nem blokkolja tűzfal:
 
 - FTP-vezérlőkapcsolati port: 21
 - FTP-adatkapcsolati port: 989, 10001-10300

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: d38fc727ed7e9e3c47d2fcb9af7894f8a2a7c7a7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262333"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341745"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -46,6 +46,8 @@ A következő elemek ismert korlátozások a nyilvános előzetes verzió:
 - [Elosztott rendelkezésre állási csoportok biztonsági mentései](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) korlátozások is érvényesek.
 - Az SQL Server mindig a Feladatátvevőfürt-példányokat (példányoktól) nem támogatottak.
 - Az Azure portal segítségével konfigurálhatja az Azure Backup az SQL Server-adatbázisok védelmét. Az Azure PowerShell, az Azure CLI és a REST API-k jelenleg nem támogatottak.
+- Tükrözött adatbázisokat, adatbázis-pillanatképeket és FCI tartozó adatbázisok biztonsági mentési és visszaállítási műveletek nem támogatottak.
+- Nagy mennyiségű fájlt az adatbázist nem lehet bekapcsolni. Támogatott fájlok maximális száma nem nagyon determinisztikus szám, mert nem csak a fájlok száma attól függ, de a fájlok elérési út hossza attól is függ. Ezekben az esetekben azonban kevésbé gyakran előforduló. Ennek kezelése megoldás készítünk.
 
 Tekintse meg [gyakori kérdésekkel foglalkozó szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) további részleteket a támogatás/nem támogatott forgatókönyvek.
 
@@ -105,6 +107,7 @@ Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a köve
 - Azonosítsa vagy [hozzon létre egy Recovery Services-tároló](backup-azure-sql-database.md#create-a-recovery-services-vault) ugyanabban a régióban vagy területi beállítás a virtuális gép, amelyen az SQL Server-példány is.
 - [Ellenőrizze az engedélyeit a virtuális gépen](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) , amely az SQL-adatbázisok biztonsági mentéséhez szükségesek.
 - Ellenőrizze, hogy a [SQL virtuális gép rendelkezik hálózati kapcsolattal](backup-azure-sql-database.md#establish-network-connectivity).
+- Ellenőrizze, hogy az SQL-adatbázisok megfelelően vannak-e elnevezve a [pokyny Pro pojmenování](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) Azure Backup a sikeres biztonsági másolatok készítése.
 
 > [!NOTE]
 > Az SQL Server-adatbázisok biztonsági mentése egyszerre csak egy biztonsági mentési megoldás is rendelkezhet. Tiltsa le a többi SQL biztonsági másolatainak; Ez a funkció használata előtt Ellenkező esetben a biztonsági mentések zavarja és sikertelen lesz. Engedélyezheti az Azure Backup IaaS virtuális gép együtt az SQL biztonsági mentése bármely konfliktus nélkül.
@@ -133,7 +136,7 @@ A kompromisszumot kínál a beállítások között a következők: kezelhetős�
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>A nem Marketplace-en az SQL virtuális gépek engedélyeinek beállítása
 
-A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT Service\AzureWLBackupPluginSvc**. Az Azure Backup SQL-adatbázisok felderítéséhez a **NT Service\AzureWLBackupPluginSvc** fióknak rendelkeznie kell az SQL és az SQL rendszergazdai jogosultságokkal. Az alábbi eljárás ismerteti ezen engedélyek megadása.
+A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. Csak a virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT Service\AzureWLBackupPluginSvc**. Ez a fiók használatos biztonsági mentési és visszaállítási, és SQL-rendszergazdai jogosultsággal kell rendelkeznie kell. Ezen túlmenően az Azure Backup használja **NT AUTHORITY\SYSTEM** DB felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
 Engedélyek beállítása:
 
@@ -201,6 +204,14 @@ A telepítés során, ha a hibaüzenet `UserErrorSQLNoSysadminMembership`, SQL S
 
 Miután társította az adatbázis a Recovery Services-tárolóval, a következő lépés az, hogy [a biztonsági mentési feladat konfigurálása](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
+## <a name="sql-database-naming-guidelines-for-azure-backup"></a>Pokyny Pro pojmenování az Azure Backup SQL-adatbázis
+Ahhoz, hogy az SQL Server IaaS-beli virtuális gépen az Azure Backup használatával biztonsági mentések zökkenőmentes lefutását, kerülje az adatbázisok elnevezésekor a következő:
+
+  * Kezdő/záró szóköz
+  * Záró '!'
+
+Az Azure-tábla nem támogatott karaktereket aliasképző van, de javasoljuk, hogy kerülje ezek is. További információ: Ez [cikk](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>Az SQL Server-adatbázisok felderítése
@@ -215,7 +226,7 @@ Az Azure Backup felderíti az összes adatbázis egy SQL Server-példányon. Az 
 
 3. Az a **minden szolgáltatás** párbeszédpanelen adja meg **Recovery Services**. Írja be, mert a bemeneti szűri az erőforrások listájában. Válassza ki **Recovery Services-tárolók** a listában.
 
-    ![Adja meg, és válassza ki a Recovery Services-tárolók](./media/backup-azure-sql-database/all-services.png) <br/>
+  ![Adja meg, és válassza ki a Recovery Services-tárolók](./media/backup-azure-sql-database/all-services.png) <br/>
 
     Az előfizetés Recovery Services-tárolók listája megjelenik.
 
@@ -301,16 +312,9 @@ SQL-adatbázis védelmének konfigurálása:
     > Biztonsági mentési terhelés optimalizálása érdekében az Azure Backup bontja nagy biztonsági mentési feladatok több köteg. Egy biztonsági mentési feladat adatbázisok maximális száma érték az 50.
     >
 
-    Azt is megteheti, engedélyezheti az automatikus védelem a teljes példány vagy AlwaysOn rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT** oszlop. Az automatikus védelem funkció nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
+      Azt is megteheti, engedélyezheti [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) az egész példány vagy AlwaysOn rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT**  oszlop. A [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) szolgáltatás nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
 
       ![Az Always On rendelkezésre állási csoport automatikus védelmének engedélyezése](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-      Abban az esetben, ha egy példány vagy rendelkezésre állási csoport már hozzá tartozó védett adatbázisok némelyike, továbbra is kapcsolhatja **ON** auto-protect lehetőséget. Ebben az esetben a következő lépésben meghatározott biztonsági mentési szabályzat csak lesz a nem védett adatbázisokra vonatkozó közben az már védett adatbázisok továbbra is a megfelelő szabályzatokkal védett.
-
-      Egy go get kiválasztott adatbázisok száma nincs korlátozva használatával automatikus védelmet funkció (a számos adatbázis, mint a tároló választható).  
-
-      Javasoljuk, hogy kapcsolja be a példányok és a Always On rendelkezésre állási csoportok automatikus védelme Ha azt szeretné, hogy a későbbiekben automatikusan konfigurálható a védelem az adatbázisokhoz.
-
 
 7. Hozzon létre vagy válassza ki a biztonsági mentési házirend, a a **biztonsági mentési** menüjében válassza **biztonsági mentési szabályzat**. A **biztonsági mentési szabályzat** menü megnyitása.
 
@@ -340,6 +344,22 @@ SQL-adatbázis védelmének konfigurálása:
 
     ![Értesítési terület](./media/backup-azure-sql-database/notifications-area.png)
 
+
+## <a name="auto-protect-sql-server-in-azure-vm"></a>SQL Server automatikus védelme az Azure-beli virtuális gépen  
+
+Automatikus védelem egy olyan funkció, amely lehetővé teszi a meglévő adatbázisok, valamint a jövőbeli adatbázis lenne egy önálló SQL Server-példány és a egy SQL Server Always On rendelkezésre állási csoport automatikus védelmét.
+
+Abban az esetben, ha egy példány vagy rendelkezésre állási csoport már hozzá tartozó védett adatbázisok némelyike, továbbra is kapcsolhatja **ON** auto-protect lehetőséget. Ebben az esetben a biztonsági mentési házirend, így meghatározott csak nem védett adatbázisokon alkalmazható közben lesz a már védett adatbázisok továbbra is a megfelelő szabályzatokkal védett.
+
+![Az Always On rendelkezésre állási csoport automatikus védelmének engedélyezése](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+Egy go get kiválasztott adatbázisok száma nincs korlátozva használatával automatikus védelmet a szolgáltatás. Konfigurálása biztonsági mentés akkor aktiválódik, az adatbázisokat együtt, és követhető nyomon a **biztonsági mentési feladatok**.
+
+Ha valamilyen okból módosítania tiltsa le az automatikus védelem-példányon, kattintson a példány neve alatt **biztonsági mentés konfigurálása** , nyissa meg a jobb oldali információk panelt, amelyen **letiltása Autoprotect** a a felső. Kattintson a **letiltása Autoprotect** azon a példányon automatikus védelem letiltásához.
+
+![Tiltsa le az automatikus védelmét azon a példányon](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+Ebben az esetben az összes adatbázis továbbra is védeni kell. Azonban ez a művelet letiltja a bármely később hozzáadott adatbázisok az automatikus védelem.
 
 ### <a name="define-a-backup-policy"></a>Biztonsági mentési szabályzat meghatározása
 
@@ -736,15 +756,9 @@ Egy adatbázis védelmének megszüntetése:
 
 7. Válassza ki **biztonsági mentés leállítása** kikapcsolni a védelmet az adatbázison.
 
-  Vegye figyelembe, hogy **biztonsági mentés leállítása** lehetőség nem működik egy adatbázis automatikusan védett példány. Ez az adatbázis védelmének megszüntetése csak úgy, hogy tiltsa le az automatikus védelme a példányon zajlik, és válassza a **biztonsági mentés leállítása** lehetőség **biztonsági másolati elemek** az adatbázishoz.  
+  Vegye figyelembe, hogy **biztonsági mentés leállítása** lehetőség nem működik egy adatbázis- [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) példány. Ez az adatbázis védelmének megszüntetése csak úgy, hogy tiltsa le a [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) zajlik a példányon majd válassza a **biztonsági mentés leállítása** lehetőség **biztonsági másolati elemek**az adatbázishoz.<br>
+  Automatikus védelem le van tiltva, miután **biztonsági mentés leállítása** alatt az adatbázis **biztonsági másolati elemek**. A példány újra engedélyezheti az automatikus védelemhez most.
 
-  Letilthatja az automatikus védelem a példány vagy AlwaysOn rendelkezésre állási csoport alatt **biztonsági mentés konfigurálása**. A példány nevét a jobb oldali adatai, melynek megnyitásához kattintson **letiltása Autoprotect** felső. Kattintson a **letiltása Autoprotect** azon a példányon automatikus védelem letiltásához.
-
-    ![Tiltsa le az automatikus védelmét azon a példányon](./media/backup-azure-sql-database/disable-auto-protection.png)
-
-Ebben az esetben az összes adatbázis továbbra is védeni kell. Azonban ez a művelet letiltja a bármely később hozzáadott adatbázisok az automatikus védelem.
-
-Automatikus védelem le van tiltva, miután **biztonsági mentés leállítása** alatt az adatbázis **biztonsági másolati elemek**. A példány újra engedélyezheti az automatikus védelemhez most.
 
 ### <a name="resume-protection-for-a-sql-database"></a>Az SQL-adatbázis védelmének folytatása
 
@@ -835,22 +849,22 @@ Az Azure Backup helyreállítási tár a is észleli, és és a Recovery Service
 
 ### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>Szeretne a legtöbb példány az adatbázisok védelmét, miközben szeretnék néhány kizárása. Az továbbra is használható az automatikus védelem funkció?
 
-Nem, az egész példány automatikus védelmének vonatkozik. Szelektív védelme nem adatbázis-példány automatikus védelmének használatával.
+Nem, [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) a teljes példányra vonatkozik. Szelektív védelme nem adatbázis-példány automatikus védelmének használatával.
 
 ### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>Használhatok különböző házirendeket különböző adatbázisai számára automatikusan védett példány?
 
-Ha már rendelkezik néhány védett adatbázis egyik példányában, továbbra is a megfelelő szabályzatokkal védett bekapcsolása után, akár **ON** az automatikus védelem beállítás. Azonban a nem védett adatbázisok együtt, amelyekre a jövőben jelentene csak egyetlen szabályzatot, amely alatt kell **biztonsági mentés konfigurálása** után az adatbázisok ki van jelölve. Valójában a ellentétben más védett adatbázisok nem is módosítható a házirend-adatbázis automatikusan védett példány alatt.
+Ha már rendelkezik néhány védett adatbázis egyik példányában, továbbra is a megfelelő szabályzatokkal védett bekapcsolása után, akár **ON** a [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) lehetőséget. Azonban a nem védett adatbázisok együtt, amelyekre a jövőben jelentene csak egyetlen szabályzatot, amely alatt kell **biztonsági mentés konfigurálása** után az adatbázisok ki van jelölve. Valójában a ellentétben más védett adatbázisok nem is módosítható a házirend-adatbázis automatikusan védett példány alatt.
 Ha azt szeretné, ehhez a kizárólag az tiltsa le az automatikus védelme a példányon zajlik, és módosíthatja a szabályzatot, hogy az adatbázis. Most már engedélyezheti újra ez a példány automatikus védelmét.
 
 ### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>Ha törlök egy adatbázis automatikusan védett példány az, hogy az adatbázis biztonsági másolatainak leállítja a?
 
 Nem, az adatbázis automatikusan védett példányából megszakadása, a biztonsági mentéseket, hogy az adatbázis vannak továbbra is kísérlet. Ez azt jelenti, hogy a törölt adatbázisok alatt állapotúként jelenik meg kezdődik-e **biztonsági másolati elemek** és továbbra is védett módon kezelik.
 
-Ez az adatbázis védelmének megszüntetése csak úgy, hogy tiltsa le az automatikus védelme a példányon zajlik, és válassza a **biztonsági mentés leállítása** lehetőség **biztonsági másolati elemek** az adatbázishoz. Most már engedélyezheti újra ez a példány automatikus védelmét.
+Ez az adatbázis védelmének megszüntetése csak úgy, hogy tiltsa le a [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) zajlik a példányon majd válassza a **biztonsági mentés leállítása** lehetőség **biztonsági másolati elemek**az adatbázishoz. Most már engedélyezheti újra ez a példány automatikus védelmét.
 
 ###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>Miért nem látom, hogy az újonnan hozzáadott adatbázis automatikusan védett példányhoz a védett elemek alatt?
 
-Nem láthatók azonnal védett automatikusan védett példányhoz egy újonnan hozzáadott adatbázisait. Ennek oka az, a felderítés általában 8 óránként futtatja. Azonban a felhasználó segítségével futtathat egy kézi felderítés **adatbázisok helyreállításához** azonnal látható módon adatbázisok felderítéséhez és védelme az új lehetőség a kép alatt:
+Nem láthatók az újonnan hozzáadott adatbázis- [automatikusan védett](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) azonnal védett példány. Ennek oka az, a felderítés általában 8 óránként futtatja. Azonban a felhasználó segítségével futtathat egy kézi felderítés **adatbázisok helyreállításához** azonnal látható módon adatbázisok felderítéséhez és védelme az új lehetőség a kép alatt:
 
   ![Újonnan hozzáadott adatbázisait megtekintése](./media/backup-azure-sql-database/view-newly-added-database.png)
 

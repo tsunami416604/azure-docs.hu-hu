@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839506"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341048"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Az első tartós függvény létrehozása a C\#
 
@@ -76,7 +76,7 @@ A Visual Studio létrehoz egy üres függvényalkalmazás projektjét.  Az alkal
 
 Egy új tartós függvény megjelenik az alkalmazáshoz.  Nyissa meg az új fájl a tartalom megtekintéséhez.  A tartós funkciója láncolás – példa egy egyszerű függvényt.  
 
-* A `RunOrchestrator` módszer társítva az orchestrator-funkció.  Ez a függvény elindítja, hozzon létre egy listát, és adja hozzá a lista három függvény meghívásával eredményét.  A három függvényhívások befejezése után a listát ad vissza.  A függvény azt hívja a `SayHello` metódus (alapértelmezett fogja meghívni "<NameOfFile>_Hello").
+* A `RunOrchestrator` módszer társítva az orchestrator-funkció.  Ez a függvény elindítja, hozzon létre egy listát, és adja hozzá a lista három függvény meghívásával eredményét.  A három függvényhívások befejezése után a listát ad vissza.  A függvény azt hívja a `SayHello` metódus (alapértelmezett fogja meghívni `<NameOfFile>_Hello`).
 * A `SayHello` a függvény egy hello adja vissza.
 * A `HttpStart` módszer bemutatja a függvényt, amely megkezdi a vezénylési példánya.  Társítva van egy [HTTP-eseményindító](../functions-bindings-http-webhook.md) , amely elindítja az orchestrator egy új példányát, és visszaadja a jelölőnégyzet állapotának választ.
 
@@ -92,7 +92,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
     ![Az Azure helyi futtatókörnyezete](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Illessze be a HTTP-kérelem URL-CÍMÉT a böngésző címsorában, és hajtsa végre a kérést. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz: 
+3. Illessze be a HTTP-kérelem URL-CÍMÉT a böngésző címsorában, és hajtsa végre a kérést. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz:
 
     ![A függvény által visszaadott localhost válasz a böngészőben](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

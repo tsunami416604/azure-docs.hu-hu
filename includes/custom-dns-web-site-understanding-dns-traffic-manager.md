@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 73e95f6259c916b06fe61cb47fd36beac4c7a427
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572248"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344587"
 ---
 A tartománynévrendszer (DNS) segítségével keresse meg a dolgok az interneten. Például amikor adjon meg egy címet a böngészőben, vagy kattintson egy hivatkozásra a weblapon, az DNS segítségével a tartomány lefordítása IP-címet. Az IP-cím rendezését, például egy utca, házszám van, de nem nagyon emberi rövid. Például sokkal egyszerűbb legyen a DNS-név, például ne feledje **contoso.com** ne felejtse el IP-címet, például 192.168.1.88 vagy 2001:0:4137:1f67:24a2:3888:9cce:fea3, mint.
 
@@ -32,7 +32,7 @@ Egy CNAME rekord leképezi egy *adott* DNS-nevet, például **mail.contoso.com**
 Miután a forgalom érkezik, a Traffic Manager, majd irányítja a forgalmat a webhelyre, és a terheléselosztási mód konfigurálva van a használatával. Ez a teljes mértékben átlátható a webhely látogatói. Az egyéni tartománynév böngészőjükben csak akkor fogja látni.
 
 > [!NOTE]
-> Néhány tartomány regisztráló szervezetek leképezheti altartományt, mint például a CNAME rekord, használatakor csak engedélyezése **www.contoso.com**, és nem legfelső szintű hitelesítésszolgáltatója nevét, például **contoso.com**. A CNAME-rekordokat további információkért lásd: a dokumentáció a regisztráló térképein <a href="http://en.wikipedia.org/wiki/CNAME_record">a CNAME-rekordot a Wikipedia bejegyzés</a>, vagy a <a href="http://tools.ietf.org/html/rfc1035">IETF tartománynevek - megvalósítási és meghatározása</a> dokumentumot.
+> Néhány tartomány regisztráló szervezetek leképezheti altartományt, mint például a CNAME rekord, használatakor csak engedélyezése **www.contoso.com**, és nem legfelső szintű hitelesítésszolgáltatója nevét, például **contoso.com**. A CNAME-rekordokat további információkért lásd: a dokumentáció a regisztráló térképein <a href="https://en.wikipedia.org/wiki/CNAME_record">a CNAME-rekordot a Wikipedia bejegyzés</a>, vagy a <a href="https://tools.ietf.org/html/rfc1035">IETF tartománynevek - megvalósítási és meghatározása</a> dokumentumot.
 > 
 > 
 

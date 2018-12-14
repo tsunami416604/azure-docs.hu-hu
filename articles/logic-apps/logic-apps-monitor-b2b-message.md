@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 2c1bac07d5086cffb99082520b05c7e42982c6f7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996606"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385465"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Az Azure Log Analytics az Azure Logic Apps B2B-üzenetek monitorozása
 
@@ -121,7 +121,7 @@ Ha elkészült, válassza ki a **diagnosztikai beállítás hozzáadása**.
 
 Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
 
-* [Azure Diagnostics-naplók az Azure Storage-archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Azure Diagnostics-naplók az Azure Storage-archívum](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
 Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../azure-monitor/platform/powerbi.md). Példa:

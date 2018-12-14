@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d638c9d2805d903247c5dbe615602ee8474096a7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6a1b9c110c79e428ab0cc182d0da370e59bc4f30
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285388"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386213"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
-Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
+Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
 
 Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md)
+> Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Log search riasztásiszabály - definíció- és típusok
@@ -32,7 +32,7 @@ Log search szabályok határozzák meg a következő adatokat:
 - **Lekérdezés jelentkezzen**.  Akkor következik be, a lekérdezést, amely minden alkalommal lefut a riasztási szabályt.  A lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy létrejöjjön-e riasztást. Analytics-lekérdezés is tartalmazhatnak [alkalmazások közti hívások](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [munkaterület-hívások közötti és [erőforrások közötti hívások](../../azure-monitor/log-query/cross-workspace-query.md) biztosított a felhasználó rendelkezik hozzáférési jogokat a külső alkalmazások számára. 
 
     > [!IMPORTANT]
-    > Felhasználónak rendelkeznie kell [Azure Monitoring közreműködői](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md) szerepkör létrehozása, módosítása és frissítése naplóriasztások az Azure monitorban; valamint & lekérdezése az analytics cél(ok) riasztási szabály vagy a riasztási lekérdezés végrehajtási jogokat. Ha a felhasználó létrehozása nem fér hozzá a riasztási szabály vagy a riasztási lekérdezés – az összes analytics cél(ok) a szabály létrehozása meghiúsulhat, vagy a riasztási szabály lesz végrehajtva a részleges eredményeket.
+    > Felhasználónak rendelkeznie kell [Azure Monitoring közreműködői](../../azure-monitor/platform/roles-permissions-security.md) szerepkör létrehozása, módosítása és frissítése naplóriasztások az Azure monitorban; valamint & lekérdezése az analytics cél(ok) riasztási szabály vagy a riasztási lekérdezés végrehajtási jogokat. Ha a felhasználó létrehozása nem fér hozzá a riasztási szabály vagy a riasztási lekérdezés – az összes analytics cél(ok) a szabály létrehozása meghiúsulhat, vagy a riasztási szabály lesz végrehajtva a részleges eredményeket.
 
 - **Időszak**.  Meghatározza az időtartományt a lekérdezés. A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre. Adott időszakban korlátozza az adatokat, a visszaélések megelőzése érdekében naplólekérdezés beolvasott, és minden olyan alkalommal parancs megkerüli (például ezelőtt) napló lekérdezésben használt. <br>*Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatásakor: 1:15-kor, csak a rekordok között 12:15-kor és 1:15-kor létrehozott ad vissza log lekérdezés végrehajtásához. Ha a napló lekérdezés paranccsal például ezelőtt időt használ (7 nap), a naplólekérdezés fogja futtatni a rendszer csak a 12:15-kor és 1:15 PM - adatait, mintha az adatok csak az elmúlt 60 perc alatt állnak. Hét nap adatait a lekérdezési napló esetében nem.*
 - **Gyakoriság**.  Itt adhatja meg, hogy milyen gyakran kell futtatni a lekérdezést. 5 perc és 24 óra között bármilyen érték lehet. Egyenlő vagy kisebb, mint az adott időszakban kell lennie.  Ha az értéke nagyobb, mint az adott időszakban, majd, kockázati éppen nem talált rekordokat.<br>*Vegyük példaként egy 30 perces időtartammal és 60 perces gyakoriságot is.  Ha a lekérdezés fut, 1:00-kor, 12:30 és 1:00 Órakor közötti rekordok adja vissza.  Amikor legközelebb szeretné futtatni a lekérdezést 2:00-t, ha ad vissza rekordok 1:30 és 2:00 között.  1:00 és 1:30 között létrehozott rekordokat szeretne soha nem értékelhető ki.*
@@ -120,6 +120,6 @@ Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monit
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [létrehozása a naplóriasztások az Azure-ban](../../azure-monitor/platform/alerts-log.md).
 * Megismerheti [naplóriasztások az Azure-ban a webhookok](alerts-log-webhook.md).
-* Ismerje meg [Azure-riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Ismerje meg [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md).
 * Tudjon meg többet [Application Insights](../../application-insights/app-insights-analytics.md).
 * Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    

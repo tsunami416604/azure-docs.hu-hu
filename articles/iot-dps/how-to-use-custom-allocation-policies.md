@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d75195656581021253b5787a8bfd46639cc1754
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323132"
+ms.locfileid: "53340052"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
@@ -449,20 +449,24 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
 
 6. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
 
+
 #### <a name="simulate-the-contoso-toaster-device"></a>A Contoso toaster eszköz szimulálása
 
-1. A Visual Studio *Megoldáskezelő* ablakában keresse meg a **hsm\_security\_client** projektet és bontsa ki. Bontsa ki a **Forrásfájlokat** és nyissa meg a **hsm\_client\_key.c** fájlt. 
-
-    Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. Módosítsa a fájlt a következő módon majd mentse el.
-
-    Frissítse az értéket, a `REGISTRATION_NAME` a toaster eszköz regisztrációs Azonosítót az állandó **breakroom499-contoso-tstrsd-007**.
-    
-    Frissítse az értéket, a `SYMMETRIC_KEY_VALUE` állandó eszközkulcs számára létrehozott a toaster eszköz. Az érték **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** van csak példaként.
+1. A toaster eszköz szimulálása, keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
 
     ```c
-    static const char* const REGISTRATION_NAME = "breakroom499-contoso-tstrsd-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
+
+    Állítsa vissza a függvény hívásához szükséges, és cserélje le a helyőrző értékeket (beleértve a csúcsos zárójeleket) a toaster regisztrációs Azonosítót és a korábban létrehozott származtatott eszköz kulcsát. A kulcsérték **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** látható az alábbiakban például csak adott.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
+    ```
+   
+    Mentse a fájlt.
 
 2. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
 
@@ -485,20 +489,16 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>A Contoso megadott hőtérképrészlet szivattyú eszköz szimulálása
 
-1. Vissza a Visual Studióban *Megoldáskezelőben* ablakban keresse meg a **hsm\_biztonsági\_ügyfél** projektre, és bontsa ki azt. Bontsa ki a **Forrásfájlokat** és nyissa meg a **hsm\_client\_key.c** fájlt. 
-
-    Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. Módosítsa a fájlt a következő módon majd mentse el.
-
-    Frissítse az értéket, a `REGISTRATION_NAME` állandó, a regisztrációs azonosítót a megadott hőtérképrészlet szivattyú eszköz **mainbuilding167-contoso-hpsd-088**.
-    
-    Frissítse az értéket, a `SYMMETRIC_KEY_VALUE` állandó eszközkulcs számára létrehozott a toaster eszköz. Az érték **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** van csak példaként.
+1. A megadott hőtérképrészlet szivattyú eszköz szimulálása, frissítse a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** újra a megadott hőtérképrészlet szivattyú regisztrációs Azonosítót és a származtatott eszközkulcs létrehozott korábban . A kulcsérték **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** látható az alábbiakban például csak is kap.
 
     ```c
-    static const char* const REGISTRATION_NAME = "mainbuilding167-contoso-hpsd-088";
-    static const char* const SYMMETRIC_KEY_VALUE = "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
+   
+    Mentse a fájlt.
 
-7. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
+2. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
 
     A következő kimenet sikeresen másolatából, és hogyan csatlakozhat a kiépítési szolgáltatás példánya a Contoso megadott hőtérképrészlet pedig előre felkészülhet az IoT hub által az egyéni foglalási szabályzat hozzárendelését a szimulált megadott hőtérképrészlet szivattyú eszköz példája:
 
@@ -515,8 +515,6 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
 
     Press enter key to exit:
     ```
-
-
 
 
 ## <a name="troubleshooting-custom-allocation-policies"></a>Egyéni elosztási házirendek hibaelhárítása

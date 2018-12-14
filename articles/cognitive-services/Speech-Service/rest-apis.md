@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5a3c160fcb550fc4f0c92145733aa993b95bd112
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089344"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338890"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -34,7 +34,7 @@ Vagy a hang-szöveg transzformációs vagy szöveg-hang transzformációs REST A
 | Támogatott engedélyezési fejléceket | Speech-to-text | Szövegfelolvasás |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Igen | Nem |
-| Engedélyezési: tulajdonosi | Igen | Igen |
+| Hitelesítés: Tulajdonosi | Igen | Igen |
 
 Használatakor a `Ocp-Apim-Subscription-Key` fejléc, már csak számára meg kell adnia az előfizetési kulcs. Példa:
 
@@ -322,9 +322,20 @@ Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökke
 A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
 
 ```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-
     /*
     * Open a request stream and write 1024 byte chunks in the stream one at a time.
     */
@@ -424,20 +435,10 @@ Ez a jellemző választ `detailed` felismerése.
 
 ## <a name="text-to-speech-api"></a>Szöveg-hang transzformációs API
 
-Ezekben a régiókban támogatottak, a szöveg-hang transzformációs a REST API használatával. Győződjön meg arról, hogy a végpontot, amely megfelel az előfizetés régiót választja.
+A szöveg-hang transzformációs REST API támogatja a Neurális és a standard szintű szöveg-hang transzformációs beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-A beszédfelismerési szolgáltatás 24-KHz hang kimenetet, és a Bing Speech által is támogatott 16-Khz kimenetek támogatja. Négy 24-KHz kimeneti formátumok és két 24-KHz beszédhangot támogatottak.
-
-### <a name="voices"></a>Hangok
-
-| Területi beállítás | Nyelv   | Nem | Társítás |
-|--------|------------|--------|---------|
-| en-US  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" |
-| en-US  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)" |
-
-Rendelkezésre álló beszédhangot teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+* Beszédhangot teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
+* Régiónkénti rendelkezésre állás kapcsolatos információkért lásd: [régiók](regions.md#text-to-speech).
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
@@ -452,7 +453,7 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szö
 
 ### <a name="audio-outputs"></a>Hang kimenetek
 
-Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Microsoft-OutputFormat` fejléc. Minden egyes magában foglalja egy átviteli sebesség és a kódolási típusként.
+Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Microsoft-OutputFormat` fejléc. Minden egyes magában foglalja egy átviteli sebesség és a kódolási típusként. A beszédfelismerési szolgáltatás 24-KHz és 16-KHz hang kimenetek támogatja.
 
 |||
 |-|-|

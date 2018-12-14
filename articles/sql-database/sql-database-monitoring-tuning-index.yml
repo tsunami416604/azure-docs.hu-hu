@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 87fea5f033568303408f923d0a59c626cf72d4cc
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53388917"
+documentType: LandingData
+title: Az Azure SQL Database - megfigyelés és finomhangolás
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Az Azure SQL Database - megfigyelés és finomhangolás
+  meta.description: Learn how to monitor and tune your Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 12/12/2018
+  ms.author: jovanpop
+sections:
+- items:
+  - type: paragraph
+    text: Az Azure SQL Database lehetővé teszi, hogy egyszerűen figyelése és finomhangolása az adatbázis-munkaterhelés.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Lekérdezési teljesítmény Elemzéseihez
+      href: /azure/sql-database/sql-database-query-performance
+      html: <p>Könnyedén figyelheti az erőforrás-használat az Azure SQL Database (önálló adatbázis) beépített figyelési funkciók használata az Azure Portalon.</p>
+    - title: Azure SQL Analytics
+      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
+      html: <p>Az Azure SQL Analytics figyelése lehetővé teszi egy nagy méretű adatbázisok, rugalmas készletek és üvegből egyetlen példánya járműflotta könnyedén figyelheti.</p>
+    - title: Automatikus hangolás
+      href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>Az automatikus hangolás automatikusan azt javasolja, és a lekérdezési terv hibákat javít, létrehozása és elveti a teljesítmény javítása.</p>
+    - title: Intelligens Terheléselemző
+      href: /azure/sql-database/sql-database-intelligent-insights
+      html: <p>Az Azure SQL Database beépített intelligenciával észleli azokat a káros eseményeket, amelyek gyenge teljesítményhez vezethetnek az adatbázisokban, és ha lehetséges kockázatcsökkentési javaslatot is tartalmaz.</p>
+    - title: Teljesítménnyel kapcsolatos javaslatok
+      href: /azure/sql-database/sql-database-advisor
+      html: <p>Az Azure SQL Database biztosít a javaslatok, amelyek segítségével optimalizálhatja adatbázisát az Azure Portalon.</p>
+    - title: Metrikák és naplózás
+      href: /azure/sql-database/sql-database-metrics-diag-logging
+      html: <p>Az adatbázis diagnostics telemetriai adatainak az Azure SQL Analytics, Azure Event Hub vagy az Azure Blob Storage egyéni Integrációk Stream.</p>
+- title: További erőforrások
+  items:
+  - type: paragraph
+    text: Ismerje meg a további funkciók, amelyek segítségével optimalizálhatja az adatbázis teljesítményét.
+  - type: list
+    style: unordered
+    items:
+    - html: Tudjon meg többet <a href="sql-database-monitor-tune-overview.md">figyelése és finomhangolása</a> Azure SQL Database-ben.
+    - html: Ismerje meg, hogyan <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">intelligens lekérdezés-feldolgozás</a> javíthatja az adatbázis teljesítményét.
+    - html: Beállítása és működtetése <a href="sql-database-operate-query-store.md">lekérdezéstár</a> – az SQL Server-technológia, amely lehetővé teszi, hogy a valós idejű elemzéseket kaphat a lekérdezési teljesítmény alapvető.
+    - html: Ismerje meg, hogyan használható <a href="sql-database-operate-query-store.md">dinamikus felügyeleti nézetek</a> elemezheti a számítási feladatok teljesítményére.
+    - html: Ismerje meg az adatbázis-tevékenységek figyelése <a href="sql-database-xevent-db-diff-from-svr.md">xevent típusú eseményekhez</a>.
+    - html: Ismerje meg, hogyan <a href="sql-database-performance-guidance.md">manuális hangolás az adatbázis</a>.

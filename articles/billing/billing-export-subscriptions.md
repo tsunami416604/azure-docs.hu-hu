@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 5c32b90c8a291ff744b4894af12f8d623cb95137
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 09231ab69276f3b4763f07c51230921d15333f63
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391404"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339433"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Exportálás és a legfelső szintű előfizetés adatainak megtekintése
 Ha szeretne az előfizetés azonosítókat a felhasználói hitelesítő adatokhoz tartozó megtekintése [töltse le egy .JSON kiterjesztésű fájlt, amely az előfizetés adatait az Azure Account Center](http://account.azure.com/subscriptions/download).
@@ -28,12 +28,13 @@ Ha szeretne az előfizetés azonosítókat a felhasználói hitelesítő adatokh
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 A letöltött .JSON kiterjesztésű fájlt a következő információkat biztosítja:
-- E-mail cím: Az a fiókjához társított e-mail-cím.
-- PUID: Egyedi azonosítója a számlázási fiókjához.
-- SubscriptionIds: Az előfizetések listája, amely számba veszi az előfizetés-azonosító. a fiók tartozik
+- E-mail: A fiókjához társított e-mail-cím.
+- PUID azonosítója: Az Ön számlázási fiókjához tartozó egyedi azonosítója.
+- SubscriptionIds: A fiókjához, előfizetés-azonosító. a felsorolt tartozó előfizetések listája
 
 ### <a name="subscriptionsjson-sample"></a>Subscriptions.JSON minta
-~~~~
+
+```json
 {
   "Email":"admin@contoso.com",
   "Puid":"00052xxxxxxxxxxx",
@@ -46,4 +47,4 @@ A letöltött .JSON kiterjesztésű fájlt a következő információkat biztos�
     "90757cdc-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   ]
 }
-~~~~
+```

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2b8151117a9093cb58ffe6db45bc5ee1a9abd54b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259256"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344227"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
-Ez az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](http://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [linuxos App Service](app-service-linux-intro.md).
+Ez az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [linuxos App Service](app-service-linux-intro.md).
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 > [!div class="checklist"]

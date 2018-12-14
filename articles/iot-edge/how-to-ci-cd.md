@@ -4,45 +4,43 @@ description: Folyamatos integráció és folyamatos üzembe helyezés – Azure 
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4db5fce89df0b5974261788608b785cf16917f1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074798"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386825"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
-Is könnyen elfogadják az Azure IoT Edge-alkalmazásokkal és a beépített Azure IoT Edge feladatait az Azure-folyamatok fejlesztési és üzemeltetési vagy [Jenkins beépülő modul az Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge) a Jenkins-kiszolgálón. Ez a cikk bemutatja, hogyan használhatja a folyamatos integráció és folyamatos üzembe helyezési funkcióival az Azure-folyamatok és az Azure DevOps-kiszolgáló hozhat létre, tesztelése és üzembe helyezése az alkalmazások gyorsan és hatékonyan az Azure IoT Edge. 
+Is könnyen elfogadják az Azure IoT Edge-alkalmazásokkal és a beépített Azure IoT Edge feladatait az Azure-folyamatok fejlesztési és üzemeltetési vagy [Jenkins beépülő modul az Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge) a Jenkins-kiszolgálón. Ez a cikk bemutatja, hogyan segítségével a folyamatos integráció és folyamatos üzembe helyezési funkcióival az Azure-folyamatok létrehozása, tesztelése és gyorsan és hatékonyan helyezhetnek üzembe alkalmazásokat az Azure IoT Edge-ben. 
 
 Ez a cikk azt ismerteti, hogyan lehet:
 * Hozzon létre, és ellenőrizze a minta az IoT Edge-megoldás.
 * Állítsa be a folyamatos integrációs (CI) a megoldás létrehozásához.
 * Állítsa be a folyamatos készregyártás (CD) a megoldás üzembe helyezése, és megtekintheti a válaszokat.
 
-A jelen cikkben ismertetett lépések 20 percet vesz igénybe.
-
 ![Diagram – a CI és CD ágak fejlesztési és termelési célra](./media/how-to-ci-cd/cd.png)
 
 
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Hozzon létre egy minta Azure IoT Edge megoldást a Visual Studio Code használatával
 
-Ebben a szakaszban létrehoz egy mintául szolgáló IoT Edge megoldást tartalmazó egységteszteket, amely az összeállítási folyamat részeként hajthat végre. Ebben a szakaszban található útmutatást követve, előtt hajtsa végre a [egyszerre több modul a Visual Studio Code egy IoT Edge-megoldás fejlesztése](tutorial-multiple-modules-in-vscode.md).
+Ebben a szakaszban létrehoz egy mintául szolgáló IoT Edge megoldást tartalmazó egységteszteket, amely az összeállítási folyamat részeként hajthat végre. Ebben a szakaszban található útmutatást követve, előtt hajtsa végre a [egyszerre több modul a Visual Studio Code egy IoT Edge-megoldás fejlesztése](how-to-develop-multiple-modules-vscode.md).
 
-1. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Azure IoT Edge: IoT-Edge új megoldás**. Válassza ki a munkaterület-mappába, adja meg a megoldás nevét (alapértelmezés szerint ez **EdgeSolution**), és hozzon létre egy C# modul (**FilterModule**) Ez a megoldás első felhasználói modulként. Az első modulhoz meg kell adnia a Docker rendszerképadattárat is. Az alapértelmezett lemezképtárban alapul egy helyi Docker-beállításjegyzék (`localhost:5000/filtermodule`). Módosítsa az Azure Container Registrybe (`<your container registry address>/filtermodule`) vagy a Docker Hub további folyamatos integrációhoz.
+1. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. Válassza ki a munkaterület-mappába, adja meg a megoldás nevét (alapértelmezés szerint ez **EdgeSolution**), és hozzon létre egy C# modul (**FilterModule**) Ez a megoldás első felhasználói modulként. Az első modulhoz meg kell adnia a Docker rendszerképadattárat is. Az alapértelmezett lemezképtárban alapul egy helyi Docker-beállításjegyzék (`localhost:5000/filtermodule`). Módosítsa az Azure Container Registrybe (`<your container registry address>/filtermodule`) vagy a Docker Hub további folyamatos integrációhoz.
 
     ![Állítsa be az Azure Container Registrybe](./media/how-to-ci-cd/acr.png)
 
-2. A VS Code-ablak betölti az IoT Edge-megoldás munkaterülethez. Szükség esetén írja be és futtassa **Azure IoT Edge: hozzáadása IoT Edge-modul** további modulok hozzáadása. Van egy `modules` mappában egy `.vscode` mappát, és a egy központi telepítési jegyzékfájl sablon fájl a gyökérmappában. Minden felhasználó modul kód lesz a mappa almappái `modules`. A `deployment.template.json` az alkalmazásjegyzék központi telepítési sablon. Egyes paraméterek a fájlban a fog értelmezni a `module.json`, amely minden modul mappában van.
+2. A VS Code-ablak betölti az IoT Edge-megoldás munkaterülethez. Szükség esetén írja be és futtassa **Azure IoT Edge: IoT Edge-modul hozzáadása** további modulok hozzáadása. Van egy `modules` mappában egy `.vscode` mappát, és a egy központi telepítési jegyzékfájl sablon fájl a gyökérmappában. Minden felhasználó modul kód lesz a mappa almappái `modules`. A `deployment.template.json` az alkalmazásjegyzék központi telepítési sablon. Egyes paraméterek a fájlban a fog értelmezni a `module.json`, amely minden modul mappában van.
 
 3. A minta az IoT Edge-megoldást most már készen áll. Az alapértelmezett C# modul egy függőleges vonal üzenet-modult funkcionál. Az a `deployment.template.json`, látni fogja, ez a megoldás két lehetővé tevő modulokat tartalmaz. Az üzenet akkor jöjjön létre a `tempSensor` modult, és a rendszer kell közvetlenül adatcsatornán keresztül `FilterModule`, majd az IoT hubnak küldött.
 
-4. Ezek a projektek mentse, majd ellenőrizze azt az Azure-Adattárakkal vagy az Azure DevOps Server adattárba.
+4. Ezek a projektek mentse, majd be az Azure-Adattárakkal véglegesítéséhez.
     
 > [!NOTE]
 > Az Azure-kódtárak használatával kapcsolatos további információkért lásd: [megosztani a kódot a Visual Studio és az Azure-Adattárakkal](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -59,7 +57,7 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
 
     ![Új buildfolyamat létrehozása](./media/how-to-ci-cd/add-new-build.png)
 
-1. Ha a rendszer kéri, válassza ki a **Azure DevOps Git** a forrás típusaként. Ezután válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
+1. Ha a rendszer kéri, válassza ki az Azure-kódtárak a forrás. Ezután válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
 
     ![Válassza ki az Azure-Adattárakkal Git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -101,7 +99,7 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Folyamatos üzembe helyezés Azure folyamatok konfigurálása
 Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan futnak, amikor a buildelési folyamat csökken összetevők van beállítva, és annak üzembe helyezési naplók az Azure-folyamatok mutatja.
 
-1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra.  
+1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra, és kattintson a **+ új kibocsátásában**.  
 
     ![Adja hozzá a kibocsátási folyamat](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -109,7 +107,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
     ![Egy üres feladat indítása](./media/how-to-ci-cd/start-with-empty-job.png)
 
-2. A kiadási folyamathoz szeretné inicializálni egy szakaszhoz, majd: **1. fázis**. Nevezze át a **1. fázis** való **QA** és a egy tesztkörnyezetet, kezelje azt. Egy tipikus folyamatos üzembe helyezés folyamatban több szakaszok általában létezik, még a fejlesztési és üzemeltetési eljárások alapján is létrehozhat.
+2. Majd a kibocsátási folyamat inicializálása lenne egy szakaszhoz: **1. szakasz**. Nevezze át a **1. fázis** való **QA** és a egy tesztkörnyezetet, kezelje azt. Egy tipikus folyamatos üzembe helyezés folyamatban több szakaszok általában létezik, még a fejlesztési és üzemeltetési eljárások alapján is létrehozhat.
 
     ![Tesztelési környezet szakasz létrehozása](./media/how-to-ci-cd/QA-env.png)
 

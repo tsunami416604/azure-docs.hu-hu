@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 36cdb8a84c7ec7e05917be1144ae008f90cad03a
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c589d1a11903f761fa791f36014fe235c1973514
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321135"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386909"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -245,7 +245,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Az Azure adatbázis-Migrálás
 * Azure Databricks
 * Azure Migrate
-* Batch AI
 * Tanúsítványok – App Service-tanúsítványok is áthelyezhetők, de a feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Tárolópéldányok
 * Container Service

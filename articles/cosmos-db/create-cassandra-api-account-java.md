@@ -1,42 +1,42 @@
 ---
-title: Hozzon létre egy Java-alkalmazás – Azure Cosmos DB Cassandra API-fiókot
-description: Ez a cikk bemutatja, hogyan hozhat létre Cassandra API-fiókot, és hogyan adhat hozzá adatbázist (más néven kulcsteret) és táblát egy Java-alkalmazás segítségével.
+title: 'Oktatóanyag: Cassandra API-fiók létrehozása a Java-alkalmazás – Azure Cosmos DB használatával'
+description: Ez az oktatóanyag bemutatja, hogyan Cassandra API-fiók létrehozása, adjon hozzá egy (más néven a kulcstér) adatbázis és tábla hozzáadása a fiókhoz a Java-alkalmazás használatával.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
-services: cosmos-db
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0bff57d91a777619b825dacef5988dda010c794b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: c3f193479a5446c0cd51c252a5079cbd65826928
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138840"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384971"
 ---
-# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-by-using-a-java-application"></a>Oktatóanyag: Egy Azure Cosmos DB Cassandra API-fiók létrehozása a Java-alkalmazás használatával
+# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása az Azure Cosmos DB Java-alkalmazások a kulcs/érték típusú adatok tárolására
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Java-alkalmazás segítségével egy Cassandra API-fiókot az Azure Cosmos DB-ben, és hogyan adhat hozzá a fiókhoz egy adatbázist (más néven kulcsteret) és egy táblát. A Java-alkalmazás a [Java illesztőprogramot](https://github.com/datastax/java-driver) használja egy felhasználói adatbázis létrehozásához, amely olyan adatokat tartalmaz, mint a felhasználók azonosítója, neve és városa.  
+A fejlesztők lehetséges, hogy alkalmazásokat, amelyek használják a kulcs-érték párokat. Az Azure Cosmos DB Cassandra API-fiók használatával a kulcs/érték típusú adatok tárolására. Ez az oktatóanyag leírja, hogyan használható a Java-alkalmazás az Azure Cosmos DB Cassandra API-fiók létrehozása, adjon hozzá egy (más néven a kulcstér) adatbázis és tábla hozzáadása. A Java-alkalmazás használja a [Java illesztőprogram](https://github.com/datastax/java-driver) hozhat létre, amely tartalmazza a részleteket, például a felhasználói Azonosítóját, a felhasználónév és a felhasználó városa felhasználói adatbázist.  
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Cassandra-adatbázisfiók létrehozása
 > * A fiók kapcsolati sztringjének lekérése
-> * Maven-projekt és függőségek létrehozása
+> * Hozzon létre egy Maven-projekt és függőségek
 > * Egy adatbázis és egy tábla hozzáadása
 > * Az alkalmazás futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy  [ingyenes](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  fiókot. Alternatív lehetőségként  [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/)  Azure-előfizetés, díjfizetés és elköteleződés nélkül. 
+* Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy  [ingyenes](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  fiókot. 
 
-* Szerezze be a [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) legfrissebb verzióját 
+* A legújabb verziójának beszerzéséhez [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks). 
 
-* [Töltse le](https://maven.apache.org/download.cgi) és [telepítse](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) bináris archívumot 
+* [Töltse le](https://maven.apache.org/download.cgi) és [telepítése](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) bináris archívum. 
   - Ubuntu rendszeren futtathatja az  `apt-get install maven`  parancsot a Maven telepítéséhez. 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása 
@@ -45,35 +45,35 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 2. Válassza az  **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** lehetőséget. 
 
-3. Az  **Új fiók**  panelen adja meg az új Azure Cosmos DB-fiók beállításait. 
+3. Az a **új fiók** panelen adja meg az új Azure Cosmos-fiók beállításait. 
 
    |Beállítás   |Ajánlott érték  |Leírás  |
    |---------|---------|---------|
-   |ID (Azonosító)   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához. <br/><br/>A rendszer a cassandra.cosmosdb.azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
-   |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza a **Cassandra** lehetőséget, mivel ebben a cikkben olyan széles oszlopú adatbázist fog létrehozni, amely CQL szintaxis használatával kérdezhető le.  |
-   |Előfizetés    |  Az Ön előfizetése        |  Válassza ki az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetést.        |
-   |Erőforráscsoport   | Név megadása    |  Válassza ki az  **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
-   |Hely    |  Válassza ki a felhasználóihoz legközelebb eső régiót    |  Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos DB-fiókot üzemeltetni fogja. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.    |
+   |ID (Azonosító)   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos-fiók azonosításához. <br/><br/>A rendszer a cassandra.cosmosdb.azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
+   |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza ki **Cassandra**, mert ebben a cikkben létrehoz egy széles oszlopú adatbázist, amely a Cassandra Query Language (CQL)-szintaxissal lekérdezhetők.  |
+   |Előfizetés    |  Az Ön előfizetése        |  Válassza ki az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést.        |
+   |Erőforráscsoport   | Név megadása    |  Válassza ki **hozzon létre új**, majd adja meg a fiók új erőforráscsoport nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
+   |Hely    |  Válassza ki a felhasználóihoz legközelebb eső régiót    |  Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos-fiókot üzemeltetni szeretné. Tegye lehetővé számukra a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz a felhasználók legközelebb eső helyet használja.    |
 
    ![Fiók létrehozása a portál használatával](./media/create-cassandra-api-account-java/create-account.png)
 
-4. Ezután kattintson a  **Létrehozás** gombra. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozását követően a portál jobb sarkában megjelenik **Az üzembe helyezés sikeres** értesítés.
+4. Válassza ki **létrehozása**. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után láthatja a **üzembe helyezés sikeres** értesítést a portál jobb oldalán.
 
 ## <a name="get-the-connection-details-of-your-account"></a>A fiók kapcsolati adatainak lekérése  
 
-Kérje le a kapcsolati sztringet az Azure Portalon, majd másolja be a Java konfigurációs fájlba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
+A kapcsolati sztringek adatainak lekérése az Azure Portalról, és másolja be a Java-konfigurációs fájl azokat. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
-1. Az  [Azure Portalon](https://portal.azure.com/) lépjen a Cosmos DB-fiókra. 
+1. Az a [az Azure portal](https://portal.azure.com/), lépjen az Azure Cosmos-fiókjába. 
 
 2. Nyissa meg a  **Kapcsolati sztring** panelt.  
 
 3. Másolja ki a **CONTACT POINT**, **PORT**, **USERNAME** és **PRIMARY PASSWORD** értékeket, amelyekre a következő lépések során lesz szüksége.
 
-## <a name="create-maven-project-dependencies-and-utility-classes"></a>Maven-projekt, függőségek és segédeszközosztályok létrehozása 
+## <a name="create-the-project-and-the-dependencies"></a>A projekt és függőségek létrehozása 
 
-A cikkben használt Java-mintaprojekt a GitHubon érhető el. Az [azure-cosmos-db-cassandra-java-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) adattárból tölthető le. 
+A Java mintaprojektet, amelyet használhat ez a cikk a githubon üzemel. Ez a dokumentum lépéseinek futtatása, vagy töltse le a mintát a a [azure-cosmos-db-cassandra-java-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) tárház. 
 
-Miután letöltötte a fájlokat, frissítse a kapcsolati sztringet a `java-examples\src\main\resources\config.properties` fájlban, majd futtassa a fájlt.  
+Miután letöltötte a fájlokat, frissítse a kapcsolati sztring adatait belül a `java-examples\src\main\resources\config.properties` fájlt, és futtassa azt.  
 
 ```java
 cassandra_host=<FILLME_with_CONTACT POINT> 
@@ -82,7 +82,7 @@ cassandra_username=<FILLME_with_USERNAME>
 cassandra_password=<FILLME_with_PRIMARY PASSWORD> 
 ```
 
-Másik lehetőségként az alapoktól is létrehozhatja a mintát.  
+Használja az alábbi lépéseket a minta teljesen új létrehozása: 
 
 1. A terminálból vagy parancssorból hozzon létre egy Cassandra-demo nevű új Maven-projektet. 
 
@@ -92,29 +92,29 @@ Másik lehetőségként az alapoktól is létrehozhatja a mintát.
  
 2. Keresse meg a `cassandra-demo` mappát. Egy szövegszerkesztővel nyissa meg a létrejött `pom.xml` fájlt. 
 
-   Adja hozzá a projekthez szükséges Cassandra-függőségeket és beépülő modulokat, amelyeket a [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) fájl sorol fel.  
+   Adja hozzá a Cassandra-függőségeket, és beépülő modulokat a projekt által igényelt hozhat létre, ahogyan az a [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) fájlt.  
 
 3. A `cassandra-demo\src\main` mappában hozzon létre egy új mappát `resources` néven.  Az erőforrások mappájában adja hozzá a config.properties és log4j.properties fájlokat:
 
-   - A [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) fájl tartalmazza az Azure Cosmos DB Cassandra API kapcsolatának végpont és kulcs értékeit. 
+   - A [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) fájl tárolja a Cassandra API-fiók kapcsolati végpont és a kulcs értékét. 
    
-   - A [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) fájl adja meg, hogy a Cassandra API-val való kommunikációt milyen szinten kell naplózni.  
+   - A [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) fájl szükséges a Cassandra API-val folytatott interakcióra szolgáló naplózási szintet határozza meg.  
 
-4. Ezután lépjen a `src/main/java/com/azure/cosmosdb/cassandra/` mappába. A cassandra mappán belül hozzon létre egy másik mappát `utils` néven. Ez az új mappa tartalmazza a Cassandra API-fiókhoz való csatlakozáshoz szükséges segédeszközosztályokat. 
+4. Keresse meg a `src/main/java/com/azure/cosmosdb/cassandra/` mappát. A cassandra mappán belül hozzon létre egy másik mappát `utils` néven. Ez az új mappa tartalmazza a Cassandra API-fiókhoz való csatlakozáshoz szükséges segédeszközosztályokat. 
 
-   Adja hozzá a [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) osztályt a fürt létrehozásához és a Cassandra-munkamenetek megnyitásához és bezárásához. A fürt csatlakozik az Azure Cosmos DB Cassandra API-hoz, és hozzáférésre visszaad egy munkamenetet. Használja a [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) osztályt a kapcsolati sztring adatainak olvasásához a config.properties fájlból. 
+   Adja hozzá a [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) osztályt a fürt létrehozásához és a Cassandra-munkamenetek megnyitásához és bezárásához. A fürt az Azure Cosmos DB Cassandra API-fiókhoz kapcsolódik, és visszaad egy munkamenetet eléréséhez. Használja a [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) osztályt a kapcsolati sztring adatainak olvasásához a config.properties fájlból. 
 
-5. A Java-minta létrehoz egy adatbázist, amely az olyan felhasználói információkat tartalmazza, mint például a felhasználók neve, azonosítója és városa. Meg kell adnia a get és set metódusokat a fő függvényben található felhasználói adatok eléréséhez.
+5. A Java-minta felhasználói információkat, például felhasználónév, felhasználói azonosító és felhasználó város egy adatbázist hoz létre. Meg kell adnia a get és set metódusokat a fő függvényben található felhasználói adatok eléréséhez.
  
-   Hozzon létre egy [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) osztályt a `src/main/java/com/azure/cosmosdb/cassandra/` mappában a get és set metódusokkal. 
+   Hozzon létre egy [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) osztály alatt a `src/main/java/com/azure/cosmosdb/cassandra/` get mappa és a metódusok beállítása. 
 
 ## <a name="add-a-database-and-a-table"></a>Egy adatbázis és egy tábla hozzáadása  
 
-Ez a szakasz ismerteti, hogyan adhat hozzá adatbázist (kulcsteret) és táblát a Cassandra lekérdezési nyelv (CQL) használatával. E parancsok CQL szintaxisával kapcsolatban lásd a [kulcstér létrehozása](https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateKeyspace.html) és [tábla létrehozása](https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#cqlCreateTable) lekérdezési szintaxisok ismertetését. 
+Ez a szakasz ismerteti az adatbázis (kulcstér) és a egy táblázat hozzáadása CQL használatával.
 
-1. Az `src\main\java\com\azure\cosmosdb\cassandra` mappában hozzon létre egy új mappát `repository` néven. 
+1. A `src\main\java\com\azure\cosmosdb\cassandra` mappában hozzon létre egy új mappát `repository` néven. 
 
-2. Ezután hozza létre a `UserRepository` Java-osztályt és adja hozzá a következő kódot: 
+2. Hozzon létre a `UserRepository` Java osztályt, és adja hozzá a következő kód azt: 
 
    ```java
    package com.azure.cosmosdb.cassandra.repository; 
@@ -161,7 +161,7 @@ Ez a szakasz ismerteti, hogyan adhat hozzá adatbázist (kulcsteret) és táblá
 
 3. Lépjen az `src\main\java\com\azure\cosmosdb\cassandra` mappába, és hozzon létre egy új almappát `examples` néven.
 
-4. Ezután hozza létre a `UserProfile` Java-osztályt. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat: 
+4. Hozzon létre a `UserProfile` Java-osztály. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat: 
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 
@@ -208,7 +208,7 @@ Ez a szakasz ismerteti, hogyan adhat hozzá adatbázist (kulcsteret) és táblá
 
 1. Nyisson meg egy parancssort vagy terminálablakot. Illessze be az alábbi kódblokkot. 
 
-   Ez a kód annak a mappának az elérési útjára módosítja a könyvtárat (cd), ahol a projektet létrehozta. Ezután futtatja az `mvn clean install` parancsot a `cosmosdb-cassandra-examples.jar` fájl célmappán belüli létrehozásához. Végül futtatja a Java-alkalmazást.
+   Ez a kód a mappa elérési útja, ahol létrehozta a projektet a könyvtárat (cd) változik. Ezután futtatja az `mvn clean install` parancsot a `cosmosdb-cassandra-examples.jar` fájl célmappán belüli létrehozásához. Végül futtatja a Java-alkalmazást.
 
    ```bash
    cd cassandra-demo
@@ -224,7 +224,7 @@ Ez a szakasz ismerteti, hogyan adhat hozzá adatbázist (kulcsteret) és táblá
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure Cosmos DB Cassandra API-fiókot, adatbázist és táblát egy Java-alkalmazással. Továbbléphet a következő cikkre:
+Ebben az oktatóanyagban bemutattuk Cassandra API-fiók létrehozása az Azure Cosmos DB adatbázis és tábla a Java-alkalmazás használatával. Továbbléphet a következő cikkre:
 
 > [!div class="nextstepaction"]
 > [mintaadatok betöltése a Cassandra API-táblába](cassandra-api-load-data.md).

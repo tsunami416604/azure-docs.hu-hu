@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 56234562f64073e2b772f6ebf302ddba9ea56188
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a006e9a9eb3fe4d9dc049e29eb404e5edf8f35c9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189541"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342136"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Log Analyticsben, hogy azok állapotáról, a Surface hubok monitorozása
 
@@ -82,8 +82,8 @@ A Surface Hubokban figyelés a Log Analytics használata lényegében ugyanúgy 
 
    ![Surface Hub-irányítópulton](./media/surface-hubs/surface-hub-dashboard.png)
 
-Létrehozhat [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) meglévő vagy egyéni naplókeresések alapján. Használja az adatok Log Analytics gyűjti össze a Surface Hubokban, kereshet problémákat és az eszközök meghatározó feltételeket meg a riasztás.
+Létrehozhat [riasztások](../../azure-monitor/platform/alerts-overview.md) meglévő vagy egyéni naplókeresések alapján. Használja az adatok Log Analytics gyűjti össze a Surface Hubokban, kereshet problémákat és az eszközök meghatározó feltételeket meg a riasztás.
 
 ## <a name="next-steps"></a>További lépések
 * Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) Surface Hub részletes adatainak megtekintéséhez.
-* Hozzon létre [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) arra az esetre, ha a probléma lép fel a Surface Hubokban.
+* Hozzon létre [riasztások](../../azure-monitor/platform/alerts-overview.md) arra az esetre, ha a probléma lép fel a Surface Hubokban.

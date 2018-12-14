@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7daefc1de06ac704f0449d065ed748bbe0f1ac61
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307655"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341151"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Újgenerációs tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja egy új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelheti a védelmet. Ez a dokumentum végigvezeti erre egy példát.
@@ -62,7 +62,7 @@ Ez a dokumentum láthatta, hogyan valósíthat meg a Security Center javaslatait
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket.
+* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

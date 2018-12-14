@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5a3fccba6465e6043db3f95ffdb65f1a8d8a7009
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: bcd550ac8f4b75002648f2e4737a4683349aa45f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279355"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384632"
 ---
-# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
+# <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val
 
-Ismerje meg, hogyan használhatja a [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) eszközt az Azure HDInsight-alapú Hadoop-hoz való biztonságos csatlakozáshoz. 
+Ismerje meg, hogyan használható [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) biztonságosan kapcsolódhat az Azure HDInsight az Apache Hadoop. 
 
 A HDInsight használhatja a Linux (Ubuntu) rendszert a Hadoop-fürt csomópontjainak operációs rendszereként. Ha egy SSH-ügyfél használatával Linux rendszerű HDInsighthoz csatlakozik, az alábbi táblázatban látható cím-és portinformációkra lesz szükség:
 
@@ -30,7 +30,7 @@ A HDInsight használhatja a Linux (Ubuntu) rendszert a Hadoop-fürt csomópontja
 | `<clustername>-ssh.azurehdinsight.net` | 22 | Elsődleges átjárócsomópont |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | Másodlagos átjárócsomópont |
 
-> [!NOTE]
+> [!NOTE]  
 > Cserélje le az `<edgenodename>` elemet az élcsomópont nevére.
 >
 > Cserélje le a `<clustername>` elemet a fürt nevére.
@@ -39,7 +39,7 @@ A HDInsight használhatja a Linux (Ubuntu) rendszert a Hadoop-fürt csomópontja
 >
 > Az élcsomópontok használatával kapcsolatban további információért lásd: [Élcsomópontok használata a HDInsightban](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
-> [!TIP]
+> [!TIP]  
 > Amikor első alkalommal csatlakozik a HDInsighthoz, az SSH-ügyfél olyan figyelmeztetést jeleníthet meg, amely szerint a gazdaszámítógép nem hitelesíthető. Amikor a rendszer erre felkéri, válassza a „yes” (igen) lehetőséget ahhoz, hogy a gazdaszámítógép felvegye az SSH-ügyfél megbízható kiszolgálókat tartalmazó listába.
 >
 > Ha korábban már csatlakozott egy ilyen nevű kiszolgálóhoz, előfordulhat, hogy a rendszer figyelmezteti rá, hogy a tárolt gazdaszámítógép-kulcs nem egyezik meg a kiszolgáló gazdaszámítógép-kulcsával. A kiszolgálónévhez tartozó, meglévő bejegyzés eltávolításához tekintse meg az SSH-ügyfél dokumentációját.
@@ -50,22 +50,22 @@ Az `ssh` és `scp` parancs elérhető a Linux, Unix és macOS rendszerekben. Az 
 
 A Microsoft Windows alapértelmezés szerint nem telepít SSH-ügyfelet. Az `ssh`- és az `scp`-ügyfél az alábbi csomagokban érhető el a Windows rendszerhez:
 
-* OpenSSH-ügyfél (béta): A Fall Creators Update-ben lépjen a __Beállítások__ > __Alkalmazások és szolgáltatások__ > __Választható funkciók kezelése__ > __Funkció hozzáadása__ menüponthoz, és válassza az __OpenSSH-ügyfél__ lehetőséget. 
+* OpenSSH-ügyfél (béta): A Fall Creators Update-lépjen a __beállítások__ > __alkalmazások és szolgáltatások__ > __választható funkciók kezelése__  >  __Funkció hozzáadása__ , és válassza ki a __OpenSSH-ügyfél__. 
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha az `ssh` és az `scp` parancsok a funkció engedélyezése után sem érhetők el a PowerShellben, jelentkezzen ki, majd jelentkezzen be újra.
 
-* [Windows 10-en futó Ubuntu Bash-környezet](https://msdn.microsoft.com/commandline/wsl/about): Az `ssh` és az `scp` parancs a Windows rendszeren futó Bash parancssorából érhető el.
+* [Bash on Ubuntu on Windows 10-es](https://msdn.microsoft.com/commandline/wsl/about): A `ssh` és `scp` parancs a Bash on Windows parancssori keresztül érhető el.
 
-* [OpenSSH-ügyfél (béta)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Ez egy, a Windows 10 Fall Creators Update-ben bevezetett választható szolgáltatás.
+* [OpenSSH-ügyfél (béta)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Ez a Windows 10 Fall Creators Update-ben bevezetett választható szolgáltatás.
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shell Bash-környezetet biztosít a böngészőben, továbbá lehetővé teszi az `ssh`, az `scp`, és egyéb gyakori Linux-parancsok használatát.
+* [Az Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shellben a böngészőben a Bash-környezetet biztosít, és biztosítja a `ssh`, `scp`, és egyéb gyakori Linux-parancsok.
 
-* [Git https://git-scm.com/)](https://git-scm.com/): Az `ssh` és az `scp` parancs a GitBash parancssorából érhető el.
+* [Git (https://git-scm.com/)](https://git-scm.com/): A `ssh` és `scp` parancs a GitBash parancssorából érhető el.
 
 Számos grafikus SSH-ügyfél is létezik, például a [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) és a [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Bár ezek az ügyfelek használhatók a HDInsighthoz történő kapcsolódáshoz, a kapcsolódás folyamata más, mint az `ssh` segédprogram használatakor. További információt az Ön által használt grafikus ügyfél dokumentációjában talál.
 
-## <a id="sshkey"></a>Hitelesítés: SSH-kulcsok
+## <a id="sshkey"></a>Hitelesítés: SSH kulcsok
 
 Az SSH-kulcsok [nyilvános kulcsú titkosítással](https://en.wikipedia.org/wiki/Public-key_cryptography) hitelesítik az SSH-munkameneteket. Az SSH-kulcsok biztonságosabbak a jelszavaknál, és egyszerű módszert kínálnak a Hadoop-fürt biztonságos elérésére.
 
@@ -77,8 +77,7 @@ Ha az SSH-fiókja kulccsal van védve, az ügyfélnek meg kell adnia az egyező 
 
 * Ha __több titkos kulccsal__ rendelkezik, amelyeket különböző kiszolgálókhoz használ, fontolja meg az olyan segédprogramok használatát, mint például az [ssh-ügynök (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent). Az `ssh-agent` segédprogram segítségével automatikusan választhatja ki a kulcsot az SSH-munkamenet megkezdéséhez.
 
-> [!IMPORTANT]
->
+> [!IMPORTANT]  
 > Ha jelszóval védi a titkos kulcsot, a kulcs használatakor be kell írnia a jelszót. Az `ssh-agent` és hasonló segédprogramokkal a kényelmes használat érdekében gyorsítótárazhatja a jelszót.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
@@ -93,7 +92,7 @@ A kulcs létrehozása során a rendszer információk megadását kéri. Példá
 
 * A __titkos kulccsal__ hitelesíthető az ügyfél a HDInsight-fürtön.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A kulcsokat jelszóval védheti. Ez a jelszó lényegében egy kód a titkos kulcson. Ilyen esetekben még ha valaki meg is szerzi a titkos kulcsát, a jelszóra is szüksége van a kulcs használatához.
 
 ### <a name="create-hdinsight-using-the-public-key"></a>HDInsight létrehozása a nyilvános kulccsal
@@ -109,10 +108,10 @@ A kulcs létrehozása során a rendszer információk megadását kéri. Példá
 
 Az SSH-fiókok jelszóval védhetők. Amikor SSH-fiókkal csatlakozik a HDInsighthoz, a rendszer jelszót kér.
 
-> [!WARNING]
+> [!WARNING]  
 > A Microsoft nem javasolja jelszavas hitelesítés használatát az SSH-hoz. A jelszavakat ki lehet találni, és védtelenek a találgatásos támadásokkal szemben. Ehelyett azt javasoljuk, hogy használjon [SSH-kulcsokat a hitelesítéshez](#sshkey).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az SSH-fiók jelszava 70 nappal a HDInsight-fürt létrehozása után jár le. Ha a jelszó lejár, a [HDInsight kezelése](hdinsight-administer-use-portal-linux.md#change-passwords) dokumentumban foglaltak szerint változtathatja meg.
 
 ### <a name="create-hdinsight-using-a-password"></a>HDInsight létrehozása jelszóval
@@ -168,12 +167,12 @@ Az átjárócsomópontokhoz és az élcsomóponthoz (ha van) az interneten, a 22
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az előző példák azt feltételezik, hogy jelszavas hitelesítést használ, vagy automatikus tanúsítványalapú hitelesítés történik. Ha SSH-kulcspárt használ a hitelesítéshez, és a tanúsítvány használata nem automatikus, az `-i` paraméterrel adja meg a titkos kulcsot. Például: `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`.
 
 A csatlakozás után a parancssor megváltozik, és megjeleníti az SSH-felhasználónevet és a csomópontot, amelyhez csatlakozik. Ha például az `sshuser` felhasználóként csatlakozik az elsődleges átjárócsomóponthoz, a parancssor az `sshuser@hn0-clustername:~$`.
 
-### <a name="connect-to-worker-and-zookeeper-nodes"></a>Csatlakozás a feldolgozó és Zookeeper-csomópontokhoz
+### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>Csatlakozás a feldolgozó és az Apache Zookeeper-csomópontok
 
 A feldolgozó és Zookeeper-csomópontok nem közvetlenül az internetről, hanem a fürt átjáró- vagy élcsomópontjain keresztül érhetők el. A következő általános lépésekkel csatlakozhat más csomópontokhoz:
 
@@ -185,20 +184,20 @@ A feldolgozó és Zookeeper-csomópontok nem közvetlenül az internetről, hane
 
         ssh sshuser@wn0-myhdi
 
-    A csomópontok névlistájának lekéréséhez lásd: [A HDInsight kezelése az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+    A csomópont nevének listájának lekéréséhez tekintse meg a [kezelése a HDInsight az Apache Ambari REST API-val](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentumot.
 
 Ha az SSH-fiókot __jelszó__ védi, a kapcsolódáshoz adja meg a jelszót.
 
 Ha az SSH-fiókot __SSH-kulcsok__ védik, győződjön meg róla, hogy az SSH-továbbítás engedélyezve van az ügyfélen.
 
-> [!NOTE]
+> [!NOTE]  
 > A fürtben lévő összes csomópont közvetlen elérésének másik módja, ha a HDInsightot Azure virtuális hálózatra telepíti. Ezután csatlakoztathatja a távoli gépet ugyanehhez a virtuális hálózathoz, és közvetlenül érheti el a fürtben lévő összes csomópontot.
 >
 > További információ: [Virtuális hálózat használata HDInsighttal](hdinsight-extend-hadoop-virtual-network.md).
 
 ### <a name="configure-ssh-agent-forwarding"></a>SSH-ügynöktovábbítás konfigurálása
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A következő lépések Linux vagy UNIX-alapú rendszert feltételeznek, és a Windows 10-en futó Bash-környezet esetén működnek. Ha a lépések nem működnek a rendszerén, lehet, hogy át kell tekintenie az SSH-ügyfél dokumentációját.
 
 1. Egy szövegszerkesztővel nyissa meg a `~/.ssh/config` fájlt. Ha a fájl nem létezik, létrehozhatja a parancssoron az `touch ~/.ssh/config` karakterlánc beírásával.
@@ -244,7 +243,7 @@ A következő parancs a `test.txt` fájlt az elsődleges átjárócsomóponton t
 scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az `scp` csak a fürt egyes csomópontjainak fájlrendszeréhez képes hozzáférni. Nem használható a fürt HDFS-kompatibilis tárolójában tárolt adatok eléréséhez.
 >
 > Ha egy SSH-munkamenetből kíván feltölteni egy használni kívánt erőforrást, használja az `scp` segédprogramot. Például töltsön fel egy Python-szkriptet, majd futtassa a szkriptet egy SSH-munkamenetből.

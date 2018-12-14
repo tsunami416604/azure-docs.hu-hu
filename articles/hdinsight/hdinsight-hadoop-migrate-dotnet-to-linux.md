@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008113"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384198"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET – megoldások áttelepítése Linux-alapú HDInsight a Windows-alapú HDInsight esetében
 
@@ -26,7 +26,7 @@ Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További info
 
 A .NET és a Mono között további információkért lásd: a [monó kompatibilitási (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentumot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az SCP.NET keretrendszer Mono esetén. A Mono való használatához készült SCP.NET további információkért lásd: [C#-topológiák fejlesztése a HDInsight az Apache stormmal történő használatát a Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="automated-portability-analysis"></a>Automatizált hordozhatóságot elemzése
@@ -47,7 +47,7 @@ A [.NET hordozhatóságot Analyzer](https://marketplace.visualstudio.com/items?i
 
     ![Hordozhatóságot analyzer eredmények párbeszédpanel](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az elemző nem tényleges minden egyes probléma megoldását. Ha például egy fájl elérési útját `c:\temp\file.txt` akkor megfelelő, ha a Mono Windows fut-e. Az azonos elérési út nem egy Linux platformon érvényes.
 
 ## <a name="manual-portability-analysis"></a>Manuális hordozhatóságot elemzése
@@ -64,12 +64,12 @@ Miután módosította a használatával a javaslatokat, a .NET-hordozhatóságot
 
 További információ a naplók elérése az alábbi dokumentumokban talál:
 
-* [YARN-alkalmazásnaplók elérése Linux-alapú HDInsighton](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Az Apache Hadoop YARN-alkalmazásnaplók elérése Linux-alapú HDInsight a](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>További lépések
 
 * [C# használata a HDInsight MapReduce](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [C# felhasználó által definiált függvények használata a Hive és a Piggel](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Használat C# az Apache Hive- és Apache Pig, felhasználó által definiált függvények](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [C#-topológiák fejlesztése HDInsight alatt futó Stormmal](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Fejlesztés C# a HDInsight Apache Storm-topológiák](storm/apache-storm-develop-csharp-visual-studio-topology.md)

@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275652"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342885"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -73,6 +73,20 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="nologs"></a>Forgatókönyv: A Log Analytics a gép nem látható a felügyeleti adatok frissítése
+
+#### <a name="issue"></a>Probléma
+
+Olyan gépeket azt mutatják be, mint **nincs értékelve** alatt **megfelelőségi**, de a Log Analytics a szívverési adatok jelennek meg a hibrid Runbook-feldolgozó, de nem az Update Management.
+
+#### <a name="cause"></a>Ok
+
+A hibrid Runbook-feldolgozó újra regisztrálni és telepíteni kell.
+
+#### <a name="resolution"></a>Megoldás:
+
+Kövesse a lépéseket [Windows hibrid Runbook-feldolgozó üzembe helyezése](../automation-windows-hrw-install.md) újra kell telepítenie a Windows hibrid feldolgozói vagy [üzembe helyezése egy hibrid Runbook-feldolgozója Linuxra](../automation-linux-hrw-install.md) Linux rendszeren.
 
 ## <a name="windows"></a>Windows
 
@@ -141,20 +155,6 @@ A hibrid Runbook-feldolgozó nem tudta önaláírt tanúsítvány létrehozása
 #### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze a rendszer fiók olvasási hozzáféréssel rendelkezik mappába **C:\ProgramData\Microsoft\Crypto\RSA** , és próbálkozzon újra.
-
-### <a name="nologs"></a>Forgatókönyv: A Log Analytics a gép nem látható a felügyeleti adatok frissítése
-
-#### <a name="issue"></a>Probléma
-
-Olyan gépeket azt mutatják be, mint **nincs értékelve** alatt **megfelelőségi**, de a Log Analytics a szívverési adatok jelennek meg a hibrid Runbook-feldolgozó, de nem az Update Management.
-
-#### <a name="cause"></a>Ok
-
-A hibrid Runbook-feldolgozó újra regisztrálni és telepíteni kell.
-
-#### <a name="resolution"></a>Megoldás:
-
-Kövesse a lépéseket [Windows hibrid Runbook-feldolgozó üzembe helyezése](../automation-windows-hrw-install.md) újra kell telepítenie a hibrid feldolgozó.
 
 ### <a name="hresult"></a>Forgatókönyv: Számítógép nincs értékelve, és megjeleníti a kivétel HResult jelenik meg
 

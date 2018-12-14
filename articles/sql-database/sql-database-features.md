@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 328dd39c3ff82666c327bc5d1d106a019fb2247b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 77291029dd15b887ea9d2fd3f0e3a31e71a2f537
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275822"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384360"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -79,7 +79,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [DMV-k](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Most – tekintse meg az egyes DMV-kkel |  Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 |[Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Igen](sql-database-dynamic-data-masking-get-started.md)| [Igen](sql-database-dynamic-data-masking-get-started.md) |
 | [Rugalmas készletek](sql-database-elastic-pool.md) | Igen | Beépített – egyetlen felügyelt példány, amelyek ugyanazt a készletet az erőforrások több adatbázis is rendelkezhet. |
-| [Eseményértesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem – lásd: [riasztások](sql-database-insights-alerts-portal.md) | Igen |
+| [Eseményértesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem – lásd: [riasztások](sql-database-insights-alerts-portal.md) | Nem |
 | [Kifejezések](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Igen |
 | [Bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [bővített események SQL Database-ben](sql-database-xevent-db-diff-from-svr.md) | Igen – lásd: [bővített események különbségek](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Bővített tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nem | Nem |
@@ -109,6 +109,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [A Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nem | Nem |
 | [Házirendalapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
 | [Predikátumokat](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Igen | Igen |
+| [Lekérdezés értesítések](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nem | Igen |
 | [R-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Előzetes kiadás; Lásd: [machine learning újdonságai](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nem |
 | [Erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nem | Igen |
 | [RESTORE utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nem | Igen – lásd: [különbségek visszaállítása](sql-database-managed-instance-transact-sql-information.md#restore-statement) |

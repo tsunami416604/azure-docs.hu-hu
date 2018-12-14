@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 46b00e102cbf5e981ac7036de65232e869dc9651
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9b2566458bc32f9b1d7a36790fbdd5fbb2419ec1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272701"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384294"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -33,11 +33,11 @@ A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diag
 A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-parancsmagok használatával lehet lekérdezni események és az Azure Monitor REST API-t.
 
 > [!NOTE]
-> [Az újabb riasztások](monitoring-overview-alerts.md) ajánlat hatékonyabb, ha jelentkeznek be riasztási szabályok létrehozása és kezelése a tevékenység.  [További információk](../azure-monitor/platform/alerts-activity-log.md).
+> [Az újabb riasztások](../azure-monitor/platform/alerts-overview.md) ajánlat hatékonyabb, ha jelentkeznek be riasztási szabályok létrehozása és kezelése a tevékenység.  [További információk](../azure-monitor/platform/alerts-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
-A tevékenységnapló megjelenítése és adatokat. További részletek a sémák szerializálása e kategóriák közül a [ebben a cikkben](monitoring-activity-log-schema.md). Ezek a következők:
+A tevékenységnapló megjelenítése és adatokat. További részletek a sémák szerializálása e kategóriák közül a [ebben a cikkben](../azure-monitor/platform/activity-log-schema.md). Ezek a következők:
 * **Felügyeleti** – ezt a kategóriát tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
 * **A Service Health** – Ez a kategória tartalmazza a service health az Azure-ban bekövetkezett események rekord. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "SQL Azure, az USA keleti régiójában üzemen kívül van." A Szolgáltatásállapot-események az öt fajta származnak: Beavatkozás szükséges, helyreállítási eszközkapcsolat, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforráshoz lenne hatással lehet az esemény-előfizetés.
 * **A Resource Health** – Ez a kategória tartalmazza azt a rekordot a az Azure-erőforrások előfordult resource health események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Virtuális gép állapot nem érhető el értékre módosult." Közelmúltbeli állapotesemények hozhat létre négy egészségügyi állapotok egyike: Elérhető, nem érhető el, csökkentett teljesítményű vagy ismeretlen. Emellett a resource health-események csoportosíthatók, hogy a Platform vagy a felhasználó által kezdeményezett.
@@ -48,7 +48,7 @@ A tevékenységnapló megjelenítése és adatokat. További részletek a sémá
 * **A házirend** – Ez a kategória nem tartalmaz eseményeket; későbbi használatra van fenntartva. 
 
 ## <a name="event-schema-per-category"></a>Kategória szerinti eseménysémája
-[Ebből a cikkből megismerheti a tevékenységnapló eseménysémája kategória szerinti megtekintéséhez.](monitoring-activity-log-schema.md)
+[Ebből a cikkből megismerheti a tevékenységnapló eseménysémája kategória szerinti megtekintéséhez.](../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Mire képes az Activity Log a
 Az alábbiakban néhány, a tevékenységnapló megteheti:
@@ -60,7 +60,7 @@ Az alábbiakban néhány, a tevékenységnapló megteheti:
 * [Egy tevékenységnapló eseményéhez, hozzon létre egy riasztást.](../azure-monitor/platform/activity-log-alerts.md)
 * [Stream, hogy egy **Eseményközpont** ](monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 * A Power bi használatával elemezhetők a [ **Power bi-tartalomcsomag**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-* [Mentse azt egy **Tárfiók** archív vagy manuális ellenőrzést](monitoring-archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **Naplóprofil**.
+* [Mentse azt egy **Tárfiók** archív vagy manuális ellenőrzést](../azure-monitor/platform/archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **Naplóprofil**.
 * PowerShell-parancsmagot, a CLI vagy a REST API-n keresztül lekérdezéseket futtathat rajta.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Lekérdezés a tevékenységnapló az Azure Portalon

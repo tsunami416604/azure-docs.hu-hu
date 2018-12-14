@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4f5b0661f67dd63177309905079ee68716e9e721
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4b78675de2902736b90afa1df9ad66e2df2b0f77
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315740"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386230"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg, hogyan hívhat meg kognitív API-k (előzetes verzió)
 
@@ -79,7 +79,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
 
-A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
+A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Vegye figyelembe, hogy az Azure Table Storage a kognitív keresés nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
 1. [Töltse le a mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). A mintaadatokat különböző típusú fájlok egy kis készlete alkotja. 
 

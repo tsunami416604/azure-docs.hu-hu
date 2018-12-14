@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e9e92254db37edbd978b5799b13e63652e227f86
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014514"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385431"
 ---
-# <a name="optimize-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések optimalizálása
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight az Apache Hive-lekérdezések optimalizálása
 
 Az Azure HDInsight, a számos több fürttípusokat és technológiákat, amelyek Apache Hive-lekérdezéseket is futtathat. A HDInsight-fürt létrehozásakor válassza ki a megfelelő fürt segítségével optimalizálják a teljesítményt a munkaterhelés igényei szerint. 
 
@@ -38,7 +38,7 @@ Egy HDInsight-fürtön a munkavégző csomópontok számának növelése lehető
 
 HDInsight méretezésével kapcsolatos további információkért lásd: [méretezési HDInsight-fürtök](hdinsight-scaling-best-practices.md)
 
-## <a name="use-tez-instead-of-map-reduce"></a>Helyett a Mapreduce használata a Tez
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Az Apache Tez használhatja a Mapreduce helyett
 
 [Az Apache Tez](https://hortonworks.com/hadoop/tez/) van egy alternatív végrehajtó motorja a MapReduce-motor. Linux-alapú HDInsight-fürtök Tez alapértelmezés szerint engedélyezve van.
 
@@ -124,16 +124,16 @@ További információkért lásd: [particionált táblák](https://cwiki.apache.
 ## <a name="use-the-orcfile-format"></a>Használja az ORCFile formátumot
 Hive különböző fájlformátumokban támogatja. Példa:
 
-* **Szöveg**: az alapértelmezett fájlformátum, és a legtöbb esetben működik
-* **Az Avro**: jól használható az együttműködési forgatókönyvek
-* **ORC/Parquet**: teljesítmény számára a leginkább megfelelő
+* **Szöveg**: az alapértelmezett fájlformátum, és a legtöbb esetben működik.
+* **Az Avro**: együttműködési forgatókönyvek esetében is működik.
+* **ORC/Parquet**: a teljesítmény a legmegfelelőbb.
 
 (Optimalizált sor Oszlopalapú) ORC formátum nagyon hatékony módja a Hive-adatok tárolására. ORC rendelkezik más formátumú képest, a következő előnyökkel jár:
 
-* komplexní typy DateTime és összetett és részben strukturált típusok támogatása
-* akár 70 %-os tömörítés
-* minden 10 000 sort, amelyek lehetővé teszik a rendszer kihagyja a sorokat indexel
-* jelentősen csökkentek a futásidejű végrehajtási
+* komplexní typy DateTime és összetett és részben strukturált típusok támogatása.
+* akár 70 %-os tömörítést.
+* indexek minden 10 000 sort, amelyek lehetővé teszik a rendszer kihagyja a sorokat.
+* futásidejű végrehajtási jelentős csökkenését.
 
 ORC formátum engedélyezéséhez először hozzon létre egy táblát a záradékkal *ORC tárolva*:
 
@@ -171,7 +171,7 @@ Ezután, adatok beszúrása az ORC-táblára, az előkészítési táblában. P�
     FROM lineitem;
    ```
    
-Tudjon meg többet az ORC formátumnak a [Hive nyelv manuális](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Tudjon meg többet az ORC formátumnak a [Apache Hive-nyelv manuális](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Vektorizációt
 
@@ -196,10 +196,10 @@ Nincsenek további optimalizálást módszereket is fontolóra veheti, például
 Ebben a cikkben megismerkedett a számos gyakori Hive lekérdezés módszereit. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Repülőjáratok késési adatainak elemzése a Hive a HDInsight használatával](hdinsight-analyze-flight-delay-data.md)
-* [Hive HDInsight használatával egy Twitter-adatok elemzése](hdinsight-analyze-twitter-data.md)
-* [Érzékelőadatok elemzése a Hive-lekérdezés konzol segítségével a HDInsight a Hadoop](hadoop/apache-hive-analyze-sensor-data.md)
-* [A Hive használata a HDInsight, a webhelyek naplóinak elemzése](hadoop/apache-hive-analyze-website-log.md)
+* [Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával](hdinsight-analyze-flight-delay-data.md)
+* [Az Apache Hive a HDInsight használatával Twitter-adatok elemzése](hdinsight-analyze-twitter-data.md)
+* [Érzékelőadatok elemzése a HDInsight az Apache Hadoop az Apache Hive-lekérdezés konzol segítségével](hadoop/apache-hive-analyze-sensor-data.md)
+* [Az Apache Hive használata a HDInsight webhelyek naplóinak elemzése](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

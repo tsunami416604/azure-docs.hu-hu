@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2ac1baea3c4ef677f9c0927a038e15828683b851
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f10365f4acf62ba4719e89932f18433e70925ebf
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308749"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341762"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Az Azure Security Center hálózati biztonsági csoportok engedélyezése
 Az Azure Security Center javasolja, hogy egy hálózati biztonsági csoport (NSG) engedélyezése, ha egy nem engedélyezett. NSG-k, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a virtuális hálózatban futó Virtuálisgép-példányokat hozzáférés-vezérlési lista (ACL) szabályok listáját tartalmazzák. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett a forgalmat egy adott virtuális gépre is lehet korlátozni további korlátozásokat egy NSG-t közvetlenül a virtuális Gépre. További tudnivalókért tekintse meg [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
 
-Ha nem rendelkezik NSG-k engedélyezve van, a Security Center két ajánlásokat jelenít meg: hálózati biztonsági csoportok engedélyezése az alhálózatok és a hálózati biztonsági csoportok engedélyezése a virtuális gépek. Kiválaszthatja, melyik szint, alhálózatot vagy a alkalmazni az NSG-ket a virtuális gép.
+Ha nem rendelkezik NSG-k engedélyezve van, a Security Center ajánlásokat két Önnek: Hálózati biztonsági csoportok engedélyezése az alhálózatok és a hálózati biztonsági csoportok engedélyezése virtuális gépeken. Kiválaszthatja, melyik szint, alhálózatot vagy a alkalmazni az NSG-ket a virtuális gép.
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
@@ -53,7 +53,7 @@ Ez a cikk láthatta, hogyan valósíthat meg a Security Center javaslatait "A h�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

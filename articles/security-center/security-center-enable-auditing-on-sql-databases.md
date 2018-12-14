@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0bd49f831655f5ffaf7f1d943aca552ddd8447a0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3de11b88f0bbf10cc0f1716cc0cefd128797cd5f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309157"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341575"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisok az Azure Security Centerben
 Az Azure Security Center javasolni fogja, hogy bekapcsolja a naplózás és fenyegetésészlelés az SQL-adatbázisok, ha a naplózás és fenyegetésészlelés már nem érhető. Naplózás és fenyegetés-észlelési segíthet a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
@@ -51,7 +51,7 @@ Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Enab
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

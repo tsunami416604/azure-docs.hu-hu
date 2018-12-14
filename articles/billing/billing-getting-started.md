@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: c19769dda281f4346c23b823ea00eac83790b618
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582530"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341660"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
-Feliratkozás az Azure-hoz, több dolgot is van az Ön által megvilágításához. A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) költségek becslést ad egy Azure-erőforrás létrehozása előtt. A [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) biztosítja az aktuális költségek részletezése és előrejelzés az előfizetéshez. Ha a csoportot, és költségeit a különböző projektek vagy fejlesztőcsapatok számára szeretne, keresse meg [erőforrás-címkézési](../azure-resource-manager/resource-group-using-tags.md). Ha a szervezete jelentési rendszer, amely szeretné használni, tekintse meg a [számlázási API-jai](billing-usage-rate-card-overview.md). 
+Feliratkozás az Azure-hoz, több dolgot is van az Ön által megvilágításához. A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) költségek becslést ad egy Azure-erőforrás létrehozása előtt. A [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) biztosítja az aktuális költségek részletezése és előrejelzés az előfizetéshez. Ha a csoportot, és költségeit a különböző projektek vagy fejlesztőcsapatok számára szeretne, keresse meg [erőforrás-címkézési](../azure-resource-manager/resource-group-using-tags.md). Ha a szervezete jelentési rendszer, amely szeretné használni, tekintse meg a [számlázási API-jai](billing-usage-rate-card-overview.md).
 
 - Ha az előfizetés egy nagyvállalati szerződés (EA), a nyilvános előzetes jelennek meg a költségek az Azure Portalon érhető el. Ha az előfizetés Cloud Solution Provider (CSP) vagy az Azure sponsorship ajánlattal keresztül, majd a következő funkciók némelyike nem alkalmazható Önnek. Lásd: [további erőforrások az EA, CSP és szponzorálási](#other-offers) további információ.
 
-- Ha az előfizetés egy ingyenes próbaverzióra [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (aio-ra), vagy a BizSpark, az előfizetés automatikusan letiltja, ha az a kreditek felhasználása. Ismerje meg [költségkorlátozási](#spending-limit) unexpectantly le van tiltva az előfizetés ne kelljen.
+- Ha az előfizetés egy ingyenes próbaverzióra [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (aio-ra), vagy a BizSpark, az előfizetés automatikusan letiltja, ha az a kreditek felhasználása. Ismerje meg [költségkorlátozási](#spending-limit) váratlanul le van tiltva az előfizetés ne kelljen.
 
-- Ha a regisztrált [ingyenes Azure-fiók](https://azure.microsoft.com/free/), [néhány, a legnépszerűbb Azure-szolgáltatások 12 hónapig ingyenesen használható](billing-create-free-services-included-free-account.md). Lásd az alábbi javaslatokat, valamint [elkerülése az ingyenes fiók számolják](billing-avoid-charges-free-account.md).
+- Ha már regisztrált a [ingyenes Azure-fiók](https://azure.microsoft.com/free/), [néhány, a legnépszerűbb Azure-szolgáltatások 12 hónapig ingyenesen használható](billing-create-free-services-included-free-account.md). Lásd az alábbi javaslatokat, valamint [elkerülése az ingyenes fiók számolják](billing-avoid-charges-free-account.md).
 
 > [!div class="nextstepaction"]
 > [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
@@ -75,17 +75,17 @@ A támogatott szolgáltatások címkék a számlázási adatokhoz csoport is has
 
 ![Képernyőkép a címkék beállítása a portálon](./media/billing-getting-started/tags.PNG)
 
-A címkék jelennek meg egész nézetek reporting különböző költség. Például, hogy látható a [költségek elemzése nézet](#costs) azonnal és [használati .csv részletességi](#invoice-and-usage) az első számlázási időszak után.
+A címkék jelennek meg egész nézetek reporting különböző költség. Például, azok megjelennek a [költségek elemzése nézet](#costs) most és a részletes használati .csv az első számlázási időszak után.
 
 További információkért lásd: [az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md).
 
 ### <a name="costs"></a> Rendszeresen ellenőrizze a portálon a költségek részletezése és írási sebesség
 
-Miután beszerezte a futó szolgáltatások, rendszeresen ellenőrzi azok, amelyek IP-címek fenntartási ára van. Tekintse meg az aktuális költségek, és írási sebesség az Azure Portalon. 
+Miután beszerezte a futó szolgáltatások, rendszeresen ellenőrzi azok, amelyek IP-címek fenntartási ára van. Tekintse meg az aktuális költségek, és írási sebesség az Azure Portalon.
 
-1. Látogasson el a [Azure portal előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , és válasszon ki egy előfizetést.
+1. Látogasson el a [előfizetések az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , és válasszon ki egy előfizetést.
 
-2. Tekintse meg a költségek lebontását kell, és sebesség írása a helyi menü panelen. Ez nem támogatott az ajánlatban (egy figyelmeztetés fog megjelenni tetején).
+2. Ha azt az előfizetéséhez, tekintse meg a költségek lebontását, és írási sebesség.
 
     ![Képernyőkép a írási sebesség és az Azure Portalon lebontása](./media/billing-getting-started/burn-rate.PNG)
 
@@ -95,19 +95,19 @@ Miután beszerezte a futó szolgáltatások, rendszeresen ellenőrzi azok, amely
 
 4. Különböző tulajdonságok, például szűrhet [címkék](#tags), erőforráscsoport és az időtartam. Kattintson a **alkalmaz** megerősítéséhez a szűrőket és **letöltése** Ha azt szeretné, exportálhatja a nézet egy Comma-Separated értékeket tartalmazó (.csv) fájlt.
 
-5. Ezenkívül, kattintson egy erőforrás előzmények és az IP-címek fenntartási költségei az az erőforrás a minden nap napi megtekintéséhez.
+5. Ezenkívül, kattintson egy erőforrás előzmények és az IP-címek fenntartási költségei az az erőforrás a minden nap a napi megtekintéséhez.
 
     ![A költségek előzmények megtekintése az Azure portal képernyőképe](./media/billing-getting-started/costhistory.PNG)
 
-Azt javasoljuk, hogy ellenőrizze a becsléseket látott a szolgáltatások kiválasztásakor megjelenik a költségeket. Ha a költségek becslése kampánya különböznek, gondosan ellenőrizze az erőforrások kiválasztott díjszabási csomag (a1-es vagy A0 VM, a példában). 
+Javasoljuk, hogy ellenőrizze a becsléseket látott a szolgáltatások kiválasztásakor megjelenik a költségeket. Ha a kampánya eltér a becslések, a díjszabással az erőforrások kiválasztott ellenőrizze díjakat.
 
-### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Fontolja meg a virtuális gépek költség általános szolgáltatások, mint az automatikus rendszerleállítás engedélyezése
+### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Érdemes lehet engedélyezni az általános költségek szolgáltatások, mint az automatikus leállítás a virtuális gépek
 
-A forgatókönyvtől függően automatikus leállítása sikerült konfigurálni a virtuális gépek az Azure Portalon. További információkért lásd: [az Azure Resource Manager-beli virtuális gépek automatikus leállítási](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
+A forgatókönyvtől függően konfigurálhatja úgy az automatikus leállítás a virtuális gépek az Azure Portalon. További információkért lásd: [az Azure Resource Manager-beli virtuális gépek automatikus leállítási](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
-![Automatikus leállítási funkció használatát a portál képernyőképe](./media/billing-getting-started/auto-shutdown.PNG)
+![Képernyőkép az automatikus Leállítás lehetőséget a portálon](./media/billing-getting-started/auto-shutdown.PNG)
 
-Automatikus leállítási nem ugyanaz, mint amikor leállítja a virtuális gépen az Energiagazdálkodási lehetőségek. Automatické vypnutí leállítja és felszabadítja a virtuális gépek leállítása további használati díjak. További információkért tekintse meg a díjszabással kapcsolatos gyakori kérdések a [Linux rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) kapcsolatos virtuális gépek állapotáról.
+Automatikus leállítás nem ugyanaz, mint amikor leállítja a virtuális gépen az Energiagazdálkodási lehetőségek. Automatikus leállítás leállítja és felszabadítja a virtuális gépek leállítása további használati díjak. További információkért tekintse meg a díjszabással kapcsolatos gyakori kérdések a [Linux rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) kapcsolatos virtuális gépek állapotáról.
 
 További költség általános funkciókat a fejlesztési és tesztelési környezetek esetében, tekintse meg [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
@@ -147,25 +147,26 @@ Ha a felügyeli informatikai egy nagy szervezet, javasoljuk, hogy olvassa [Azure
 #### <a name="EA"></a> Előzetes verzió nagyvállalati szerződés Azure Portalon nézetek költség 
 
 Vállalati költségek nézet jelenleg nyilvános előzetes verzióban érhető el. Figyelembe veendő elemek:
-- Előfizetés költségeket a használat alapulnak, és veszi figyelembe az előre fizetett összegek, túlhasználattal, benne foglalt tranzakciómennyiségek, módosítását és adók. Tényleges költségek a regisztráció szintjén vannak kiszámítva. 
-- Az Azure Portalon megjelenített értékek a vállalati portál képest késésével.  
-- Ha nem jelennek meg költségeit, az alábbi okok egyike miatt lehet:
-    - Nincs elegendő az RBAC-engedély az előfizetés szintjén. Vállalati költségek nézet jelenik meg, hogy egy számlázási olvasó, olvasó, közreműködő vagy tulajdonos az előfizetés szintjén kell lennie.
-    - Fiók tulajdonosa, és a beléptetés adminisztrátora letiltotta a "AO költségek megtekintése" beállítást.  Hozzáférhet a költségeket a regisztráció rendszergazdájához forduljon. 
-    - Részleg rendszergazdaként, és a beléptetés adminisztrátora letiltotta a "DA költségek megtekintése" beállítást.  Hozzáfér a regisztráció rendszergazdájához forduljon. 
-    - Azure csatorna-partneren keresztül vásárolta meg, és a partner nem jelent meg a díjszabási információkat.  
-- Költség hozzáféréssel kapcsolatos beállítások frissítése esetén a vállalati portálon, van néhány percet, mielőtt a módosítások megjelennek az Azure Portalon késés.
+
+- Előfizetés költségek használati alapulnak, és nem tartalmazza az előre fizetett összegek, túlhasználattal, benne foglalt tranzakciómennyiségek, módosítását és adók. Tényleges költségek a regisztráció szintjén vannak kiszámítva.
+- Mi az a vállalati portál az Azure Portalon látható összegek eltérhet. A vállalati portál frissítései is igénybe vehet néhány percet, mielőtt a módosítások megjelennek az Azure Portalon.
+- Ha nem találja a költségek, a következő okok valamelyike lehet:
+    - Nincs engedélye az előfizetés szintjén. Vállalati költségek nézet jelenik meg, hogy egy számlázási olvasó, olvasó, közreműködő vagy tulajdonos az előfizetés szintjén kell lennie.
+    - Ön a fiók tulajdonosa, és a beléptetés adminisztrátora letiltotta a "AO költségek megtekintése" beállítást.  Hozzáférhet a költségeket a regisztráció rendszergazdájához forduljon. 
+    - A részleg rendszergazdája, és a beléptetés adminisztrátora letiltotta a "DA költségek megtekintése" beállítást.  Lépjen kapcsolatba a regisztrációs rendszergazdától kérhet hozzáférést.
+    - Azure csatorna-partneren keresztül vásárolta, és a partner nem kiadás díjszabási információkat.  
+- Hozzáférés a vállalati portál költség kapcsolatos beállítások frissítéséhez van-e késleltetés néhány percig, amíg a módosítások megjelennek az Azure Portalon.
 - A költségkeret, és a számla útmutatást EA-előfizetések nem vonatkoznak.
 
 ### <a name="check-your-subscription-and-access"></a>Az előfizetés és a hozzáférés ellenőrzése
 
-Megtekintésre költségeket igényelnek [számlázási adatokat előfizetés-szintű hozzáférést](billing-manage-access.md), csak a fiókadminisztrátor férhet hozzá, de a [Account Center](https://account.azure.com/Subscriptions), módosítsa a számlázási információkat és -előfizetések kezelése. A fiókadminisztrátor az a személy, aki a regisztrációs folyamat végrehajtása. További információkért lásd: [hozzáadása vagy módosítása az előfizetést vagy szolgáltatásokat kezelő Azure-rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md).
+Költségek megtekintéséhez rendelkeznie [számlázási adatokat előfizetés-szintű hozzáférést](billing-manage-access.md). Csak a Fiókadminisztrátor férhet hozzá a [Account Center](https://account.azure.com/Subscriptions), módosíthatja a számlázási adatokat, és -előfizetések kezelése. A Fiókadminisztrátor az a személy, aki a regisztrációs folyamat végrehajtása. További információkért lásd: [hozzáadása vagy módosítása az előfizetést vagy szolgáltatásokat kezelő Azure-rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md).
 
-Ha Ön a fiókadminisztrátor megtekintéséhez nyissa meg a [az Azure Portal előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) és a hely hozzáfér az előfizetések listáját. Keresse meg a **a szerepkör**. Ugyanakkor *fiókadminisztrátor*, akkor Ön ok. Ugyanakkor más hasonló *tulajdonosa*, akkor nem rendelkezik teljes jogosultsággal.
+Ha Ön a fiókadminisztrátor megtekintéséhez lépjen a [előfizetések az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Tekintse meg a hozzáfér az előfizetések listáját. Keresse meg a **a szerepkör**. Ugyanakkor *fiókadminisztrátor*, akkor Ön ok. Ugyanakkor más hasonló *tulajdonosa*, akkor nem rendelkezik teljes jogosultsággal.
 
 ![A szerepkör az előfizetések nézetben az Azure Portal képernyőképe](./media/billing-getting-started/sub-blade-view.PNG)
 
-Ha Ön nem a fiókadminisztrátor, akkor valaki valószínűleg kaptunk részleges elérését [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) (RBAC). Előfizetések és a számlázási adatokat, módosítás kezeléséhez [keresse meg a fiókadminisztrátor](billing-subscription-transfer.md#whoisaa) meg, hogy a feladatok elvégzéséhez vagy [vigye át az előfizetést,](billing-subscription-transfer.md).
+Ha Ön nem a fiókadminisztrátor, akkor valaki valószínűleg kaptunk részleges hozzáférés használatával [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) (RBAC). Előfizetések és a számlázási adatokat, módosítás kezeléséhez [keresse meg a Fiókadminisztrátor](billing-subscription-transfer.md#whoisaa). Kérje meg a feladatokat végezheti el a Fiókadminisztrátor vagy [az előfizetés átvitele](billing-subscription-transfer.md).
 
 Ha a fiókadminisztrátor már nem a szervezeténél, és Önnek kell kezelnie a számlázási [lépjen kapcsolatba velünk](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

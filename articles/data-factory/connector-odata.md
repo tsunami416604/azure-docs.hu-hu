@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: c8bee6902fb74cb77c34395fd05c1c861b4f630e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 349d3a6eacf22a0ce3f842dd30df19964cdf7f23
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166134"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337325"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>OData forrásból származó adatok másolása az Azure Data Factory használatával
 
@@ -35,7 +35,7 @@ Másolhat adatokat egy OData-forráshoz bármely támogatott fogadó adattárba.
 Pontosabban az OData-összekötő támogatja:
 
 - OData 3.0 és 4.0-s verzióját.
-- Adatok másolása a következő hitelesítések egyikének használatával: **névtelen**, **alapszintű**, vagy **Windows**.
+- Adatok másolása a következő hitelesítések egyikének használatával: **Névtelen**, **alapszintű**, **Windows**, **AAD-szolgáltatásnév**, és **Felügyeltszolgáltatás-identitás**.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -51,12 +51,19 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **OData**. |Igen |
 | url | A gyökér URL-címe az OData-szolgáltatás. |Igen |
-| authenticationType | Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Engedélyezett értékek a következők **névtelen**, **alapszintű**, és **Windows**. OAuth nem támogatott. | Igen |
+| authenticationType | Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **Windows**, **AadServicePrincipal**, és **ManagedServiceIdentity** . A felhasználó alapján OAuth nem támogatott. | Igen |
 | Felhasználónév | Adja meg **felhasználónév** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
 | jelszó | Adja meg **jelszó** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett képes [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| servicePrincipalId | Adja meg az Azure Active Directory-alkalmazás ügyfél-azonosítót. | Nem |
+| aadServicePrincipalCredentialType | Adja meg a szolgáltatás egyszerű hitelesítéshez használandó hitelesítő adatok típusa. Engedélyezett értékek a következők: `ServicePrincipalKey` vagy `ServicePrincipalCert`. | Nem |
+| servicePrincipalKey | Adja meg az Azure Active Directory-alkalmazás kulcsa. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| servicePrincipalEmbeddedCert | Adja meg az alkalmazás az Azure Active Directoryban a base64-kódolású tanúsítványt. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| servicePrincipalEmbeddedCertPassword | Adja meg a tanúsítvány jelszavát, ha a tanúsítvány jelszóval védett. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).  | Nem|
+| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Nem |
+| aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez.| Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Kiválaszthatja az Azure integrációs modul vagy a saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**1. példa: Névtelen hitelesítés használatával**
+**1. példa: A névtelen hitelesítés használatával**
 
 ```json
 {
@@ -75,7 +82,7 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
 }
 ```
 
-**2. példa: Alapszintű hitelesítést használ**
+**2. példa: Alapszintű hitelesítés használata**
 
 ```json
 {
@@ -119,6 +126,64 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
         }
+    }
+}
+```
+
+**4. példa: Szolgáltatás egyszerű kulcsos hitelesítés használatával**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of on-premises OData source>",
+            "authenticationType": "AadServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "aadServicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "aadResourceId": "<AAD resource>"
+        }
+    },
+    "connectVia": {
+        "referenceName": "<name of Integration Runtime>",
+        "type": "IntegrationRuntimeReference"
+    }
+}
+```
+
+**5. példa: Szolgáltatás egyszerű tanúsítvány-hitelesítés használatával**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of on-premises OData source>",
+            "authenticationType": "AadServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "aadServicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalEmbeddedCert": { 
+                "type": "SecureString", 
+                "value": "<base64 encoded string of (.pfx) certificate data>"
+            },
+            "servicePrincipalEmbeddedCertPassword": { 
+                "type": "SecureString", 
+                "value": "<password of your certificate>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "aadResourceId": "<AAD resource e.g. https://tenant.sharepoint.com>"
+        }
+    },
+    "connectVia": {
+        "referenceName": "<name of Integration Runtime>",
+        "type": "IntegrationRuntimeReference"
     }
 }
 ```
@@ -169,7 +234,7 @@ Adatok másolása az OData, állítsa be a **forrás** írja be a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **RelationalSource**. | Igen |
-| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés:**: az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés:**: Az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
@@ -213,7 +278,7 @@ OData-adatok másolása esetén a következő hozzárendeléseket használják O
 | Edm.Boolean | Logikai |
 | Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | tizedes tört |
+| Edm.Decimal | Tizedes tört |
 | Edm.Double | Dupla |
 | Edm.Single | Önálló |
 | Edm.Guid | GUID |
@@ -221,7 +286,7 @@ OData-adatok másolása esetén a következő hozzárendeléseket használják O
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Sztring |
+| Edm.String | Karakterlánc |
 | Edm.Time | Időtartam |
 | Edm.DateTimeOffset | DateTimeOffset |
 

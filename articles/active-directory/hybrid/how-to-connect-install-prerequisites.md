@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Előfeltételek és hardver |} A Microsoft Docs'
+title: 'Azure AD Connect: Előfeltételek és a hardver |} A Microsoft Docs'
 description: Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252989"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384053"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -41,7 +41,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
 * Az AD séma verziója és az erdő működési szintje Windows Server 2003 vagy újabb verzióját kell lennie. A tartományvezérlőkön futtatható bármely verziója mindaddig, amíg a séma és az erdő szintű követelmények teljesülnek-e.
-* Ha azt tervezi, hogy a funkció használatához **jelszóvisszaíró**, akkor a tartományvezérlőket kell lennie (a legújabb SP) a Windows Server 2008 vagy újabb. Ha a tartományvezérlők 2008 (R2 előtti), akkor is telepítenie kell [gyorsjavítás KB2386717](https://support.microsoft.com/kb/2386717).
+* Ha azt tervezi, hogy a funkció használatához **jelszóvisszaíró**, akkor a tartományvezérlőket kell lennie a Windows Server 2008 R2 vagy újabb.
 * Az Azure AD által használt tartományvezérlő írhatónak kell lennie. Ez **nem támogatott** használata egy írásvédett tartományvezérlő (csak olvasható tartományvezérlő) és az Azure AD Connect nem minden írási átirányítások követése.
 * Ez **nem támogatott** használata a helyszíni erdők/tartományok használatával "pontozott" (nevében pont szerepel ".") NetBios-nevét.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](how-to-connect-sync-recycle-bin.md).
@@ -49,8 +49,8 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
-* Az Azure AD Connect telepíteni kell a Windows Server 2008 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehetnek önálló, és nem kell tartományhoz csatlakoztatni.
-* Az Azure AD Connect telepítése a Windows Server 2008 vagy Windows Server 2008 R2 esetén, mindenképpen a legújabb gyorsjavítások alkalmazására a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
+* Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehetnek önálló, és nem kell tartományhoz csatlakoztatni.
+* Ha az Azure AD Connect telepíti a Windows Server 2008 R2 rendszeren, majd győződjön meg arról, a alkalmazni a legújabb gyorsjavítások a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
 * Ha azt tervezi, hogy a funkció használatához **jelszó-szinkronizálás**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2008 R2 SP1 vagy újabb.
 * Ha azt tervezi, hogy használjon egy **csoportosan felügyelt szolgáltatásfiók**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2012 vagy újabb.
 * Rendelkeznie kell az Azure AD Connect-kiszolgáló [.NET-keretrendszer 4.5.1-es](#component-prerequisites) vagy újabb és [Microsoft PowerShell 3.0](#component-prerequisites) vagy újabb verziója szükséges.
@@ -77,7 +77,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 * Ha az intraneten lévő tűzfalak vannak, és az Azure AD Connect kiszolgálók és a tartományvezérlők közötti portok megnyitásához, majd tekintse meg kell [az Azure AD Connect portok](reference-connect-ports.md) további információt.
 * Ha a proxy vagy tűzfal korlátozása, mely URL-címek érhetők el, akkor az URL-címeket részletes ismertetését lásd: [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) kell megnyitni.
   * Ha a Microsoft Cloud németországi vagy a Microsoft Azure Government felhőben használ, tekintse meg [az Azure AD Connect szinkronizálási szolgáltatás példányai szempontok](reference-connect-instances.md) URL-címek.
-* Az Azure AD Connect (1.1.614.0 verziót, és utána) alapértelmezés szerint használja a TLS 1.2 a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. A TLS 1.2-es nem érhető el az alapul szolgáló operációs rendszer, ha az Azure AD Connect növekményes visszavált a régebbi protokollok (a TLS 1.1 és TLS 1.0-s). Például a Windows Server 2008 rendszeren futó Azure AD Connect használja a TLS 1.0, mivel a Windows Server 2008 nem támogatja a TLS 1.1 és TLS 1.2.
+* Az Azure AD Connect (1.1.614.0 verziót, és utána) alapértelmezés szerint használja a TLS 1.2 a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. A TLS 1.2-es nem érhető el az alapul szolgáló operációs rendszer, ha az Azure AD Connect növekményes visszavált a régebbi protokollok (a TLS 1.1 és TLS 1.0-s).
 * 1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. A TLS 1.2-es, kövesse a lépéseket a [engedélyezze a TLS 1.2 az Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
 * Ha csatlakozik az internetre, az a következő beállítást használ egy kimenő proxy a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájlt hozzá kell adni a telepítési varázsló és az Azure ad-ben A csatlakozni az internethez, és az Azure AD sync csatlakoztatása. Ez a szöveg, meg kell adni a fájl alján. Ebben a kódban &lt;PROXYADRESS&gt; tényleges proxy IP-cím vagy a gazdagép nevét jelöli.
 
@@ -113,7 +113,7 @@ További információkért tekintse meg az MSDN a [alapértelmezett proxy elem](
 További információk, problémák adódnak a kapcsolódással, amikor: [csatlakozási problémák hibaelhárítása](tshoot-connect-connectivity.md).
 
 ### <a name="other"></a>Egyéb
-* Választható lehetőség: Egy tesztfelhasználói fiókja szinkronizálási ellenőrzése.
+* Nem kötelező: Egy tesztfelhasználói fiókja szinkronizálási ellenőrzése.
 
 ## <a name="component-prerequisites"></a>Összetevő-Előfeltételek
 ### <a name="powershell-and-net-framework"></a>PowerShell és a .net Framework
@@ -122,18 +122,16 @@ Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es fü
 * Windows Server 2012R2
   * A Microsoft PowerShell alapértelmezés szerint telepítve van. Semmit nem kell.
   * .NET-keretrendszer 4.5.1-es vagy újabb Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpulton.
-* A Windows Server 2008R2 és a Windows Server 2012
+* Windows Server 2008 R2 és Windows Server 2012
   * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).
   * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](https://www.microsoft.com/downloads).
-* Windows Server 2008
-  * A PowerShell legújabb támogatott verziót érhető el a **Windows Management Framework 3.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).
-  * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](https://www.microsoft.com/downloads).
+
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Engedélyezze a TLS 1.2-es, az Azure AD Connect
 1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor kiszolgáló és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. TLS 1.2 használatára a kiszolgálón alapértelmezés szerint a .net-alkalmazások konfigurálásával módosíthatja. További információ a TLS 1.2 található [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358).
 
-1. A TLS 1.2-es nem engedélyezhető a Windows Server 2008. A Windows Server 2008R2 van szüksége, vagy később. Győződjön meg arról, hogy a .net 4.5.1 gyorsjavítás telepítve van az operációs rendszer, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Előfordulhat, hogy ez a gyorsjavítás vagy egy későbbi kiadásban már van telepítve a kiszolgálón.
-2. Ha használja a Windows Server 2008R2, majd győződjön meg arról, a TLS 1.2 engedélyezve van. A kiszolgáló Windows Server 2012 és újabb verzióiban a TLS 1.2 már engedélyezni kell.
+1. A TLS 1.2-es nem lehet engedélyezni, előtt a Windows Server 2008 R2 vagy újabb. Győződjön meg arról, hogy a .net 4.5.1 gyorsjavítás telepítve van az operációs rendszer, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Előfordulhat, hogy ez a gyorsjavítás vagy egy későbbi kiadásban már van telepítve a kiszolgálón.
+2. Ha használja a Windows Server 2008 R2, majd győződjön meg arról, a TLS 1.2 engedélyezve van. A kiszolgáló Windows Server 2012 és újabb verzióiban a TLS 1.2 már engedélyezni kell.
    ```
    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -206,7 +204,7 @@ Az AD FS- vagy webalkalmazás-kiszolgálón futó számítógépekre vonatkozó 
 
 * CPU: Kettős alapvető 1,6 GHz-es vagy újabb
 * MEMÓRIA: 2 GB-os vagy újabb
-* Az Azure virtuális gép: A2-es konfigurációs vagy újabb
+* Azure virtuális Gépen: Konfigurációs a2-es vagy újabb
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

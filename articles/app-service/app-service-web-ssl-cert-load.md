@@ -1,6 +1,6 @@
 ---
 title: Alkalmazáskód – az Azure App Service használata ügyfél SSL-tanúsítvány |} A Microsoft Docs
-description: ''
+description: Ismerje meg az ügyféltanúsítványok használata a távoli erőforrásokhoz, amelyek azt igénylik.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8041d86e21f464e1dee4fba543be7d2c54c10367
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 763aadc50a8760b4265dbfc21e9278f909b68433
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254326"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342017"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben
 

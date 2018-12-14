@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 7dceed4d81f1e1767cbf91804573043d1204beee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838905"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340897"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
@@ -44,66 +44,35 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
 
+## <a name="install-the-durable-functions-npm-package"></a>Durable Functions npm-csomag telepítése
+
+1. Telepítse a `durable-functions` npm-csomag futtatásával `npm install durable-functions` függvényalkalmazás gyökérkönyvtárában.
+
 ## <a name="create-a-starter-function"></a>Alapszintű függvény létrehozása
 
 Először hozzon létre egy HTTP által aktivált függvényt, amely egy tartós függvény vezénylési elindítja.
 
-1. Az **Azure: Functions** menüben válassza a függvény létrehozására szolgáló ikont.
+1. A **Azure: Függvények**, kattintson a Create Function ikonra.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
-1. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont.
+2. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont.
 
     ![A HTTP-eseményindító sablon kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-1. A függvénynek adja a `HttpStart` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
+3. A függvénynek adja a `HttpStart` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
 
     ![A névtelen hitelesítés kiválasztása](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
     A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indított függvények sablonjának használatával.
 
-1. Cserélje le az index.js a JavaScript alatt:
+4. Cserélje le az index.js a JavaScript alatt:
 
-    ```javascript
-    const df = require("durable-functions");
-    
-    module.exports = async function (context, req) {
-        const client = df.getClient(context);
-        const instanceId = await client.startNew(req.params.functionName, undefined, req.body);
-    
-        context.log(`Started orchestration with ID = '${instanceId}'.`);
-    
-        return client.createCheckStatusResponse(context.bindingData.req, instanceId);
-    };
-    ```
+    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-1. Cserélje le a function.json az alábbi JSON-ban:
+5. Cserélje le a function.json az alábbi JSON-ban:
 
-    ```JSON
-    {
-      "bindings": [
-        {
-          "authLevel": "anonymous",
-          "name": "req",
-          "type": "httpTrigger",
-          "direction": "in",
-          "route": "orchestrators/{functionName}",
-          "methods": ["post"]
-        },
-        {
-          "name": "$return",
-          "type": "http",
-          "direction": "out"
-        },
-        {
-          "name": "starter",
-          "type": "orchestrationClient",
-          "direction": "in"
-        }
-      ],
-      "disabled": false
-    }
-    ```
+    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 Ezzel létrehoztunk egy belépési pont a tartós függvény. Adjunk hozzá egy orchestrator.
 
@@ -113,11 +82,11 @@ Ezután hozzon létre egy másik függvényt az orchestrator lennie. A HTTP-esem
 
 1. Ismételje meg az előző szakaszban hozhat létre egy másik függvény használatával a HTTP-eseményindító sablonjához. Most adja a függvénynek `OrchestratorFunction`.
 
-1. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
+2. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-1. Nyissa meg a function.json fájlt, és cserélje le a következő JSON-ra:
+3. Nyissa meg a function.json fájlt, és cserélje le a következő JSON-ra:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
@@ -127,11 +96,11 @@ Hozzáadtunk egy orchestrator tevékenységfüggvényeket koordinálására. Mos
 
 1. Ismételje meg a használatával a HTTP-eseményindító sablonjához harmadik függvény létrehozásához az előző szakaszokban. De ezúttal adja a függvénynek `SayHello`.
 
-1. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
+2. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
 
     [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-1. Cserélje le a function.json az alábbi JSON-ban:
+3. Cserélje le a function.json az alábbi JSON-ban:
 
     [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
@@ -141,19 +110,20 @@ Hozzáadtunk egy vezénylési és lánc együttesen tevékenységfüggvényeket 
 
 Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studio Code-ból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.  
 
-1. Telepítse az npm-durable-functions csomag futtatásával `npm install durable-functions` függvényalkalmazás gyökérkönyvtárában.
-
 1. A Windows-számítógépen indítsa el az Azure Storage Emulator, és ellenőrizze, hogy a **AzureWebJobsStorage** local.settings.json tulajdonságának értéke `UseDevelopmentStorage=true`. A Mac vagy Linux rendszerű számítógépen kell állítani a **AzureWebJobsStorage** tulajdonságát egy meglévő Azure-tárfiók kapcsolati sztringjét. A cikk későbbi részében egy storage-fiókot hoz létre.
 
-1. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha ez az első alkalommal használja a Durable Functions, a Durable Functions bővítmény telepítve van, és a build néhány másodpercig is eltarthat.
+2. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha ez az első alkalommal használja a Durable Functions, a Durable Functions bővítmény telepítve van, és a build néhány másodpercig is eltarthat.
 
-1. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
+    > [!NOTE]
+    > JavaScript-Durable Functions-verzió megkövetelése **1.7.0-ás** vagy nagyobb, mint a **Microsoft.Azure.WebJobs.Extensions.DurableTask** bővítmény. Ellenőrizze a Durable Functions bővítmény verzióját a `extensions.csproj` fájl megfelel a követelményeknek. Ha nem jelenik meg, állítsa le a függvényalkalmazás, módosítsa a verzióját, és nyomja le az F5 billentyűt, indítsa újra a függvényalkalmazás.
+
+3. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 
     ![Az Azure helyi kimenete](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-1. Illessze be a HTTP-kérelem URL-CÍMÉT a böngésző címsorában, és a vezénylési állapotának megtekintéséhez.
+4. Illessze be a HTTP-kérelem URL-CÍMÉT a böngésző címsorában, és a vezénylési állapotának megtekintéséhez.
 
-1. A hibakeresés leállításához nyomja le a Shift + F1 billentyűkombinációt.
+5. A hibakeresés leállításához nyomja le a Shift + F1 billentyűkombinációt.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
@@ -165,9 +135,9 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>
+        http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 
-1. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az azonos állapotot Válasz való előtt szerezheti be a közzétett alkalmazás használatakor.
+2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az azonos állapotot Válasz való előtt szerezheti be a közzétett alkalmazás használatakor.
 
 ## <a name="next-steps"></a>További lépések
 

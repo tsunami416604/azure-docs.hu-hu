@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 750c184dfc0adb92f26114d1911f27bc741ceb23
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 17402911fee5363d707547e73df7da30be6dcd0e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265256"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343802"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Megismerheti, és az IoT hubról közvetlen metódusok meghívása
 
@@ -36,7 +36,7 @@ Közvetlen metódusok vannak megvalósítva, az eszközön, és szükség lehet 
 > Ön közvetlen metódus meghívása az eszköz, nevét és értékeit tartalmazhatnak US-ASCII nyomtatható alfanumerikus, kivéve az alábbi: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-Közvetlen módszerek a következők szinkron, és akár sikeres, vagy az időkorlát után sikertelen (alapértelmezés: 30 másodperc, állítható be 3600 másodperc). Közvetlen metódusok interaktív forgatókönyvek, ahol azt szeretné, hogy egy eszköz való működésre, csak ha az eszköz nem online és a fogadó parancsok hasznosak. Például ne tudják bekapcsolni a telefonon egy világos. Ezekben az esetekben meg szeretné tekinteni egy azonnali sikeres vagy sikertelen, így a felhőszolgáltatás működhet-e az eredmény a lehető leghamarabb. Az eszköz bizonyos üzenettörzs eredményeként a metódus adhatnak vissza, de ez nem szükséges ehhez a metódushoz. Nincs a rendezés nem tudunk garanciát vagy bármely egyidejűségi szemantika metódust hívja meg.
+Közvetlen metódusok szinkron, és akár sikeres vagy sikertelen után az időkorlát (alapértelmezett: 30 másodperc, állítható be 3600 másodperc). Közvetlen metódusok interaktív forgatókönyvek, ahol azt szeretné, hogy egy eszköz való működésre, csak ha az eszköz nem online és a fogadó parancsok hasznosak. Például ne tudják bekapcsolni a telefonon egy világos. Ezekben az esetekben meg szeretné tekinteni egy azonnali sikeres vagy sikertelen, így a felhőszolgáltatás működhet-e az eredmény a lehető leghamarabb. Az eszköz bizonyos üzenettörzs eredményeként a metódus adhatnak vissza, de ez nem szükséges ehhez a metódushoz. Nincs a rendezés nem tudunk garanciát vagy bármely egyidejűségi szemantika metódust hívja meg.
 
 Közvetlen metódusok vannak csak HTTPS-felhő oldalon, és az MQTT vagy AMQP az eszköz oldaláról.
 
@@ -203,4 +203,4 @@ Most megtanulhatta, hogyan használhatja a közvetlen metódusok, érdekelheti, 
 Ha szeretné, és próbálja ki azokat a jelen cikkben ismertetett fogalmakat, érdekelheti, a következő IoT Hub-oktatóanyag:
 
 * [Közvetlen metódusok használata](quickstart-control-device-node.md)
-* [Eszközfelügyelet a VS Code az Azure IoT-eszközkészlet](iot-hub-device-management-iot-toolkit.md)
+* [Eszközfelügyelet a VS Code az Azure IoT Hub-eszközkészlet](iot-hub-device-management-iot-toolkit.md)

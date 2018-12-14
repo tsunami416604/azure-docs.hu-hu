@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495479"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339399"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -112,7 +112,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Az lehet az SQL virtuális gép erőforrás-szolgáltató a saját telepített SQL Server virtuális gépek regisztrálni?**
 
-   Igen. Ha adathordozóról a saját telepített SQL Server, az SQL virtuális gép regisztrálhatja az az erőforrás-szolgáltató kihasználni a kezelhetőségi biztosítják az SQL IaaS-bővítményt. Azonban Ön nem alakítható át a saját telepített SQL virtuális gépek használatalapú fizetéses. 
+   Igen. Ha a saját adathordozóról SQL-kiszolgálót helyezett üzembe, és telepítve van az SQL Server virtuális gép regisztrálhatja kihasználni a kezelhetőségi biztosítják az SQL IaaS-bővítményt az erőforrás-szolgáltató az SQL IaaS-bővítményt. Azonban Ön nem alakítható át a saját telepített SQL virtuális gépek használatalapú fizetéses előfizetésre.  
 
 ## <a name="administration"></a>Adminisztráció
 
@@ -122,7 +122,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Eltávolíthatja az SQL Server alapértelmezett példányát?**
 
-   Igen, de van néhány szempontot. Amint azt az előző választ, Funkciók, amelyek működéséhez a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) csak működnek az alapértelmezett példányon található. Ha az alapértelmezett példányt távolítja el, a bővítmény továbbra is fennáll, akkor a keresett és Eseménynapló hibák léphetnek fel. Ezeket a hibákat a következő két forrásból származnak: **Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. A hibák egyike az alábbihoz hasonló lehet:
+   Igen, de van néhány szempontot. Amint azt az előző választ, Funkciók, amelyek működéséhez a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) csak működnek az alapértelmezett példányon található. Ha az alapértelmezett példányt távolítja el, a bővítmény továbbra is fennáll, akkor a keresett és Eseménynapló hibák léphetnek fel. Ezeket a hibákat a következő két forrásból származnak: **A Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. A hibák egyike az alábbihoz hasonló lehet:
 
       A hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Server-kapcsolat létrehozásakor. A kiszolgáló nem található vagy nem érhető el.
 
@@ -153,7 +153,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Mi a különbség az SQL virtuális gépek és az SQL Database szolgáltatás?**
 
-   Elméleti szinten fut az SQL Server-beli virtuális gépen eltér, hogy nem fut az SQL Server egy távoli adatközpontban. Ezzel szemben a [SQL Database](../../../sql-database/sql-database-technical-overview.md) kínál az adatbázis--szolgáltatásként. Az SQL Database nem rendelkezik hozzáféréssel a az adatbázisokat üzemeltető gépeken. Teljes összehasonlításáért lásd: [felhőalapú SQL Server option: Azure SQL (PaaS) adatbázis vagy SQL Server Azure virtuális gépeken (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
+   Elméleti szinten fut az SQL Server-beli virtuális gépen eltér, hogy nem fut az SQL Server egy távoli adatközpontban. Ezzel szemben a [SQL Database](../../../sql-database/sql-database-technical-overview.md) kínál az adatbázis--szolgáltatásként. Az SQL Database nem rendelkezik hozzáféréssel a az adatbázisokat üzemeltető gépeken. Teljes összehasonlításáért lásd: [felhőalapú SQL Server option: Az Azure SQL (PaaS) adatbázis vagy SQL Server Azure virtuális gépeken (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
 1. **Hogyan kell telepíteni az SQL Data eszközök a saját Azure virtuális gépen**
 

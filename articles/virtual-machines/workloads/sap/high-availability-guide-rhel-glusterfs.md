@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: bbb0bbc6ddbbabb37932edc6946394b020631231
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637463"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342323"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>A Red Hat Enterprise Linux for SAP NetWeaver-alapú virtuális gépek Azure GlusterFS
 
@@ -110,10 +110,10 @@ Először a virtuális gépek a fürt létrehozásához. Ezt követően hozzon l
 1. Egy rendelkezésre állási csoport létrehozása  
    Maximális frissítési tartomány beállítása
 1. 1 virtuális gép létrehozása  
-   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási  
 1. 2 virtuális gép létrehozása  
-   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási  
 1. Minden egyes SAP-rendszerhez egy adatlemez hozzá virtuális gépeket is.
 

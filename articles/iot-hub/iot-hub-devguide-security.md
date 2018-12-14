@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 5e671c4eb47b56adf62a23791c403257c2538973
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 87df2731d45ffa51bc2fd298aa1b678b10e38515
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018927"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344329"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -91,7 +91,7 @@ HTTPS érvényes token felvételével hitelesítést valósít meg a **engedély
 
 Felhasználónév (az Eszközanosító megkülönbözteti a kis-és nagybetűket): `iothubname.azure-devices.net/DeviceId`
 
-Jelszó (is létrehozhat egy SAS-token az a [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
+Jelszó (is létrehozhat egy SAS-token az a [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Visual Studióhoz készült Azure IoT Hub-eszközkészlet bővítmény Kód](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -142,7 +142,7 @@ Az alábbiakban a várt értékek:
 | {URL-encoded-resourceURI} |Lower használatieset-URL-Címének kódolása a kisbetűs erőforrás URI azonosítója |
 | {policyName} |Ez a token által hivatkozott megosztott elérési házirend neve. Hiányzik, ha a jogkivonat-eszközt a tárolójegyzék hitelesítő adatainak hivatkozik. |
 
-**Megjegyzés: az előtag**: az URI-előtag karakteres szegmens és nem számítja ki. Például `/a/b` az előtagja `/a/b/c` esetében nem `/a/bc`.
+**Megjegyzés: az előtag**: Az URI-előtag karakteres szegmens és nem számítja ki. Például `/a/b` az előtagja `/a/b/c` esetében nem `/a/bc`.
 
 Az alábbi Node.js látható a hívott függvény **generateSasToken** , amely kiszámítja a jogkivonatot a bemeneti adatok `resourceUri, signingKey, policyName, expiresInMins`. A következő szakaszok bemutatják, hogyan lehet inicializálni a különböző adatbevitelek esetében különböző token használati eseteit.
 
@@ -272,7 +272,7 @@ Az eredmény, amely hozzáférést biztosít minden funkció esetében device1, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Lehetséges a SAS-token létrehozásához a [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Lehetséges, az SAS-token létrehozásához a [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszközzel, a CLI-bővítmény parancs [az iot hub létrehozása sas-jogkivonat](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Visual Studióhoz készült Azure IoT Hub-eszközkészlet bővítmény Kód](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Megosztott elérési házirendet használja
 

@@ -8,24 +8,24 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 12/07/2018
 ms.author: glenga
-ms.openlocfilehash: 00735293d8fa8c6056f1ecf89fd312fe4b90bcac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642703"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338107"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions közzétételét az Azure Event Grid (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan állítható be Azure Durable Functions egyéni vezénylési életciklussal kapcsolatos események (például a létrehozott, befejezett, és a sikertelen) közzétételére [Azure Event Grid-témakör](https://docs.microsoft.com/azure/event-grid/overview). 
+Ez a cikk bemutatja, hogyan állítható be Durable Functions egyéni vezénylési életciklussal kapcsolatos események (például a létrehozott, befejezett, és a sikertelen) közzétételére [Azure Event Grid-témakör](https://docs.microsoft.com/azure/event-grid/overview).
 
 Az alábbiakban néhány olyan forgatókönyvekben, ahol ez a funkció hasznos:
 
-* **DevOps-forgatókönyvekre, mint kék vagy zöld üzembe**: érdemes tudni, hogy ha implementálása előtt minden feladatot futtatja a [egymás melletti központi telepítési stratégiát](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **DevOps-forgatókönyvekre, mint kék vagy zöld üzembe**: Ha bármely feladatokat futtató implementálása előtt tudni érdemes az [egymás melletti központi telepítési stratégiát](durable-functions-versioning.md#side-by-side-deployments).
 
-* **Speciális monitorozás és diagnosztika támogatási**: Ön is nyomon követheti, orchestration állapotinformációit, például SQL-adatbázis vagy a cosmos DB lekérdezésekhez optimalizált külső tárban.
+* **Speciális monitorozás és diagnosztika támogatási**: Azt is nyomon követheti, orchestration állapotinformációit, például SQL-adatbázis vagy a cosmos DB lekérdezésekhez optimalizált külső tárban.
 
 * **Hosszan futó háttértevékenység**: Durable Functions egy hosszú ideig futó háttérben futó tevékenység használja, ha ez a funkció funkció könnyíti meg a jelenlegi állapota.
 
@@ -39,12 +39,12 @@ Az alábbiakban néhány olyan forgatókönyvekben, ahol ez a funkció hasznos:
 
 Hozzon létre egy Event Grid-témakör Durable Functions származó események küldéséhez. Az alábbi utasításokat a témakör létrehozásához az Azure CLI-vel szemléltetik. Megtudhatja, hogyan teheti a PowerShell vagy az Azure portal használatával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-* [EventGrid rövid útmutató: Egyéni esemény létrehozása – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid rövid útmutató: Egyéni esemény létrehozása – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid Gyorsútmutatók: Egyéni esemény létrehozása – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid Gyorsútmutatók: Egyéni esemény létrehozása – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Event Grid áttekintése](https://docs.microsoft.com/azure/event-grid/overview). 
+Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Event Grid áttekintése](https://docs.microsoft.com/azure/event-grid/overview).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -55,7 +55,7 @@ az group create --name eventResourceGroup --location westus2
 Egy Event Grid-témakört, amelyben közzéteheti az esemény felhasználó által meghatározott végpontot biztosít. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés lesz.
 
 ```bash
-az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup 
+az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
 ## <a name="get-the-endpoint-and-key"></a>A végpont és a kulcs beszerzése
@@ -119,7 +119,7 @@ Hozzon létre egy Függvényalkalmazást. Érdemes úgy elhelyezni, az Event Gri
 
 ### <a name="create-an-event-grid-trigger-function"></a>Event Grid eseményindító függvényének létrehozása
 
-Hozzon létre egy függvényt az életciklus-események fogadására. Válassza ki **egyéni függvény**. 
+Hozzon létre egy függvényt az életciklus-események fogadására. Válassza ki **egyéni függvény**.
 
 ![Válassza ki a hozzon létre egy egyéni függvényt.](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -131,7 +131,7 @@ Adja meg a függvény nevét, és válassza `Create`.
 
 ![Az Event Grid-Trigger létrehozása.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Létrejön egy függvény a következő kóddal: 
+Létrejön egy függvény a következő kóddal:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -153,11 +153,11 @@ Válassza ki `Event Grid Topics` a **témakörtípus**. Válassza ki az erőforr
 
 ![Event Grid-előfizetés létrehozása.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Most már készen áll életciklussal kapcsolatos események fogadásához. 
+Most már készen áll életciklussal kapcsolatos események fogadásához.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Durable Functions szeretné küldeni az eseményeket létrehozásához.
+## <a name="create-durable-functions-to-send-the-events"></a>Durable Functions szeretné küldeni az eseményeket létrehozásához
 
-A Durable Functions-projekt elindításához a helyi gépen hibakeresés.  Az alábbi kód megegyezik a sablonban lévő kód a tartós függvények. Már konfigurált `host.json` és `local.settings.json` a helyi gépen. 
+A Durable Functions-projekt elindításához a helyi gépen hibakeresés.  Az alábbi kód megegyezik a sablonban lévő kód a tartós függvények. Már konfigurált `host.json` és `local.settings.json` a helyi gépen.
 
 ```csharp
 using System.Collections.Generic;
@@ -217,7 +217,7 @@ Tekintse meg a naplókat, a függvény, amely az Azure Portalon létrehozott.
 ```
 2018-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
 2018-04-20T09:28:21.104 [Info] {
-    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",    
+    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",
     "subject": "durable/orchestrator/Running",
     "data": {
         "hubName": "DurableFunctionsHub",
@@ -258,19 +258,19 @@ Tekintse meg a naplókat, a függvény, amely az Azure Portalon létrehozott.
 
 Az alábbi lista ismerteti az életciklus-események séma:
 
-* **ID**: az Event Grid-esemény egyedi azonosítója.
-* **tulajdonos**: az esemény tárgya elérési útját. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
-* **adatok**: Durable Functions-specifikus paramétereket.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) nevét.
-    * **Függvénynév**: Orchestrator függvény neve.
-    * **instanceId**: instanceId Durable Functions.
-    * **OK**: a követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
-    * **runtimeStatus**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva. 
+* **ID**: Az Event Grid-esemény egyedi azonosítója.
+* **Tulajdonos**: Az esemény tárgya elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
+* **Adatok**: Durable Functions-specifikus paramétereket.
+  * **hubName**: [TaskHub](durable-functions-task-hubs.md) nevét.
+  * **Függvénynév**: Az orchestrator függvény neve.
+  * **instanceId**: Durable Functions instanceId.
+  * **OK**: A követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](durable-functions-diagnostics.md)
+  * **runtimeStatus**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva.
 * **esemény típusa**: "orchestratorEvent"
-* **eventTime**: esemény időpontja (UTC).
-* **dataVersion**: életciklus esemény séma verziója.
-* **metadataVersion**: a metaadatok verziója.
-* **a témakör**: EventGrid témakör erőforrás.
+* **eventTime**: Esemény időpontja (UTC).
+* **dataVersion**: Az életciklus-esemény séma verziója.
+* **metadataVersion**:  A metaadatok verziója.
+* **a témakör**: A témakör EventGrid erőforrás.
 
 ## <a name="how-to-test-locally"></a>Helyi tesztelése
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739566"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339875"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>A méretezési csoport sablonjának konvertálása a felügyelt lemezes méretezésicsoport-sablonná
 
@@ -126,7 +126,7 @@ A méretezésicsoport-konfigurációt a felügyelt vagy nem felügyelt lemez has
 
 ## <a name="data-disks"></a>Adatlemezek
 
-A fenti változások a méretezési csoport felügyelt lemezeket használ az operációs rendszer a lemez, de mi a helyzet az adatlemezeket? Hozzáadhat adatlemezeket, adja hozzá a "dataDisks" tulajdonság "storageProfile" a "osDisk" ugyanazon a szinten. A tulajdonság értéke JSON objektumok listáját, tartoznak tulajdonságok "logikai" (amely egy adatlemezt a virtuális gép egyedinek kell lennie), "createOption" ("üres" jelenleg csak a támogatott lehetőség), és a "diskSizeGB" (gigabájtban; a lemez mérete nagyobbnak kell lennie 0 és legfeljebb 1024) az alábbi példában látható módon: 
+A fenti változások a méretezési csoport felügyelt lemezeket használ az operációs rendszer a lemez, de mi a helyzet az adatlemezeket? Hozzáadhat adatlemezeket, adja hozzá a "dataDisks" tulajdonság "storageProfile" a "osDisk" ugyanazon a szinten. A tulajdonság értéke JSON objektumok listáját, tartoznak tulajdonságok "logikai" (amely egy adatlemezt a virtuális gép egyedinek kell lennie), "createOption" ("üres" jelenleg csak a támogatott lehetőség), és a "diskSizeGB" (gigabájtban; a lemez mérete nagyobbnak kell lennie 0 és legfeljebb 1024) az alábbi példában látható módon:
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ Adatlemezek használata méretezési csoportokkal kapcsolatos további informác
 
 
 ## <a name="next-steps"></a>További lépések
-Például Resource Manager-sablonok használata a méretezési csoportokat, keressen rá a "vmss" kifejezésre a [Azure gyorsindítási sablonok github-adattárat](https://github.com/Azure/azure-quickstart-templates).
+Például Resource Manager-sablonok használata a méretezési csoportokat, keressen rá a "vmss" kifejezésre a [Azure gyorsindítási sablonok GitHub-tárház](https://github.com/Azure/azure-quickstart-templates).
 
 További általános információkért tekintse meg a [kezdőlapja a méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

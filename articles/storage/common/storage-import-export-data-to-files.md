@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: cb14a23fbffb5ca9b7d3240a42e14aa17060f935
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820307"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384768"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -29,7 +29,7 @@ Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt 
 - Legalább egy Azure Storage-fiók rendelkezik. Listájának megtekintéséhez [az Import/Export szolgáltatás által támogatott storage-fiókok és a tárolási típusok](storage-import-export-requirements.md). Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
 - A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
-- [Töltse le a 2. verzió WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexport`. Például: `C:\WaImportExport`.
+- [Töltse le a 2. verzió WAImportExport](https://aka.ms/waiev2) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexport`. Például: `C:\WaImportExport`.
 - FedEx/DHL fiókkal rendelkeznie. 
     - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
     - Követési szám az exportálási feladat létrehozása.
@@ -40,7 +40,7 @@ Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt 
  
 
 
-## <a name="step-1-prepare-the-drives"></a>1. lépés: Készítse elő a meghajtók
+## <a name="step-1-prepare-the-drives"></a>1. lépés: A meghajtó előkészítése
 
 Ebben a lépésben létrehoz egy naplót fájlt. A naplófájl alapvető információkat, például a meghajtó sorozatszáma, a titkosítási kulcsot és a storage-fiók adatait tárolja.
 
@@ -50,14 +50,14 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 2. Hozzon létre egy NTFS-kötetet egyes meghajtókon. A kötet rendeljen hozzá meghajtóbetűjelet. Ne használjon akkor csatlakozási.
 3. Módosítsa a *dataset.csv* fájl a gyökérmappában található, ahol az eszköz található. Attól függően, hogy importálása egy fájl vagy mappa vagy mindkettő, a tételek hozzáadása a *dataset.csv* fájlt a következő példákhoz hasonló.  
 
-    - **Fájl importálása**: a következő példában az adatok másolása a C: meghajtón található. A fájl *MyFile1.txt* gyökerében másolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókot létrehozták. Gyökérmappa-szerkezetében változatlan marad.
+    - **Fájl importálása**: A következő példában a C: meghajtón található adatokat. A fájl *MyFile1.txt* gyökerében másolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókot létrehozták. Gyökérmappa-szerkezetében változatlan marad.
 
         ```
             BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **Importálásához**: összes fájl és mappa alatt *MyFolder2* rekurzív módon másolja fájlmegosztás. Gyökérmappa-szerkezetében változatlan marad.
+    - **Egy mappa importálása**: Minden fájl és mappa alatt *MyFolder2* rekurzív módon másolja fájlmegosztás. Gyökérmappa-szerkezetében változatlan marad.
 
         ```
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
@@ -112,7 +112,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 
 További példákat talál [-minták az adatbázisnapló-fájlok](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>2. lépés: Az importálási feladat létrehozása 
+## <a name="step-2-create-an-import-job"></a>2. lépés: Importálási feladat létrehozása 
 
 A következő lépésekkel importálási feladat létrehozása az Azure Portalon.
 1. Jelentkezzen be https://portal.azure.com/.
@@ -137,7 +137,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
 3. A **feladat részletei**:
     
-    - A naplófájlok az előző során létrehozott feltöltése [1. lépés: készítse elő a meghajtók](#step-1-prepare-the-drives). 
+    - A naplófájlok az előző során létrehozott feltöltése [1. lépés: Készítse elő a meghajtók](#step-1-prepare-the-drives). 
     - Válassza ki a tárfiókot, amely az adatokat importálja a rendszer. 
     - Dropoff helyét a rendszer automatikusan kitölti a kiválasztott tárfiók a régióhoz igazodik.
    
@@ -166,11 +166,11 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A feladat frissítése a nyomkövetési adatokat
+## <a name="step-4-update-the-job-with-tracking-information"></a>4. lépés: A nyomkövetési adatokat a feladat frissítése
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>5. lépés: Ellenőrizze az adatok feltöltése az Azure-bA
+## <a name="step-5-verify-data-upload-to-azure"></a>5. lépés: Az Azure-ba történő adatfeltöltés ellenőrzése
 
 Nyomon követheti a feladat befejezését. A feladat befejeződése után győződjön meg arról, hogy az adatok feltöltötte-e az Azure-bA. Törli a helyszíni adatokat, csak azt követően, ha megbizonyosodott arról, hogy a feltöltés sikeres volt.
 

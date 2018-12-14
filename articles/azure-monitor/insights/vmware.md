@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9ee835978325968e1a61633ca868ed091b5b2484
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192515"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338804"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -163,7 +163,7 @@ Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Riasztások létrehozása a lekérdezések
-Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
+Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../../azure-monitor/platform/alerts-overview.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell az ESXi a gazdagép beállítást? Milyen hatással legyen benne a jelenlegi környezetemet?
@@ -206,4 +206,4 @@ Több oka lehet:
 ## <a name="next-steps"></a>További lépések
 * Használat [Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
 * [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) VMware gazdagép adatainak megjelenítése.
-* [Riasztások létrehozása](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott VMware gazdagép események történnek.
+* [Riasztások létrehozása](../../azure-monitor/platform/alerts-overview.md) amikor adott VMware gazdagép események történnek.

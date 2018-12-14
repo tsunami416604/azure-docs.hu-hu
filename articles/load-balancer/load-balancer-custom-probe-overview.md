@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: d3e0fd510968abed55e0e3fea2a8689027713a2b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8ffc2a84850254451bb8356ceb0c08cd56823afd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310402"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344210"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -56,6 +56,9 @@ Használata esetén [magas rendelkezésre ÁLLÁSÚ portok terheléselosztási s
 Meg kell, nem a NAT- és egy állapotminta a példány, amely egy másik példányhoz az állapotminta kap a virtuális hálózatban található, mivel ez a hiba egész hibasorozatot indíthat ebben az esetben proxy.
 
 Ha szeretné egészségügyi mintavételi hiba tesztelése, vagy egy egyéni példány le megjelölése, explicit letiltása az állapotminta egy biztonsági csoportot használhatja (cél vagy [forrás](#probesource)).
+
+>[!IMPORTANT]
+> Ne engedélyezze a [TCP időbélyegeket](https://tools.ietf.org/html/rfc1323).  Engedélyezése TCP időbélyegek miatt állapotadat-mintavételek TCP-csomagokat a virtuális gép vendég operációs rendszer TCP protokollkészlet, ami való megjelölése a megfelelő végpont a terheléselosztó által eldobott miatt meghiúsul.
 
 ### <a name="tcpprobe"></a> TCP-mintavétel
 

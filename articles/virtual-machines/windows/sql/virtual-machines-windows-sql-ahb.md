@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9a62dd6e50d2d2e9cd4b825a95d2a20e8469ff30
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cd784163047f4fe15fde719ce56aba64eed60dd2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997501"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336985"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét erőforrás-szolgáltató az SQL - **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server - használatalapú-per-használatot, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most már, PowerShell vagy az Azure CLI használatával, módosíthatja licencelési modellt az SQL virtuális gép használja. 
@@ -33,7 +33,7 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
 
 
 ## <a name="register-existing-sql-vm-with-new-resource-provider"></a>Az új erőforrás-szolgáltató meglévő SQL virtuális gép regisztrálása
-Lehetséges váltani a licencmodellek szükségesek az új SQL virtuális gép erőforrás-szolgáltató (Microsoft.SqlVirtualMachine) által biztosított funkciója. Jelenleg tudni váltani a licencelési modellt, először az új szolgáltató előfizetésének regisztrálása és majd regisztrálja a meglévő virtuális Gépet az új SQL virtuális gép erőforrás-szolgáltatónál. 
+Lehetséges váltani a licencmodellek szükségesek az új SQL virtuális gép erőforrás-szolgáltató (Microsoft.SqlVirtualMachine) által biztosított funkciója. Jelenleg tudni váltani a licencelési modellt, először az új szolgáltató előfizetésének regisztrálása és majd regisztrálja a meglévő virtuális Gépet az új SQL virtuális gép erőforrás-szolgáltatónál. Az SQL virtuális gép erőforrás-szolgáltató használatához, is telepítenie kell az SQL IaaS-bővítményt. Így lehetővé teheti, hogy regisztrálja a telepített virtuális gép VHD-vel. További információkért lásd: [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md). 
 
   >[!IMPORTANT]
   > Törölte-e az SQL virtuális gép erőforrást, állítja vissza a kép megszegi licenc beállítása módosítva lett. 
@@ -97,7 +97,7 @@ $SqlVm | Set-AzureRmResource -Force
 ```
 
   >[!NOTE]
-  > Licencek közötti váltáshoz kell használnia az új SQL virtuális gép erőforrás-szolgáltató. Ezek a parancsok futtatása előtt az új szolgáltató az SQL virtuális gép regisztrálása meg, ha ez a hiba jelentkezik: `Get-AzureRmResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` ezt a hibaüzenetet, ha [regisztrálja az új erőforrás-szolgáltató az SQL virtuális gép](#register-existing-SQL-vm-with-new-resource-provider). 
+  > Licencek közötti váltáshoz kell használnia az új SQL virtuális gép erőforrás-szolgáltató. Futtassa az alábbi parancsokat az új szolgáltató az SQL virtuális gép regisztrálása előtt meg, ha előfordulhat, hogy ez a hiba jelentkezik: `Get-AzureRmResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` Ha ezt a hibát látja, [regisztrálja az új erőforrás-szolgáltató az SQL virtuális gép](#register-existing-SQL-vm-with-new-resource-provider). 
  
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
@@ -116,7 +116,7 @@ az resource update -g <resource_group_name> -n <sql_virtual_machine_name> --reso
 ```
 
   >[!NOTE]
-  >Licencek közötti váltáshoz kell használnia az új SQL virtuális gép erőforrás-szolgáltató. Ezek a parancsok futtatása előtt az új szolgáltató az SQL virtuális gép regisztrálása meg, ha ez a hiba jelentkezik: `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. ` ezt a hibaüzenetet, ha [regisztrálja az új erőforrás-szolgáltató az SQL virtuális gép](#register-existing-SQL-vm-with-new-resource-provider). 
+  >Licencek közötti váltáshoz kell használnia az új SQL virtuális gép erőforrás-szolgáltató. Futtassa az alábbi parancsokat az új szolgáltató az SQL virtuális gép regisztrálása előtt meg, ha előfordulhat, hogy ez a hiba jelentkezik: `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. ` Ha ezt a hibát látja, [regisztrálja az új erőforrás-szolgáltató az SQL virtuális gép](#register-existing-SQL-vm-with-new-resource-provider). 
 
 ## <a name="view-current-licensing"></a>Számítógép aktuális licencelési megtekintése 
 

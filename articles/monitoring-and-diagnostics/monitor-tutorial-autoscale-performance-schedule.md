@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.component: autoscale
-ms.openlocfilehash: b63e1fa316e9ebeaa564731b8bb0bc3ed5ba9036
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: adf3fdf694216353c5e6a0df8726cb5cd337ddf8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264061"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385992"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
 1. Kattintson az **Erőforrás létrehozása** lehetőségre a bal oldali navigációs ablaktáblán.
@@ -181,7 +181,7 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 > * Az erőforrások törlése
 
 
-Az automatikus méretezési beállításokkal kapcsolatos további információért folytassa az [automatikus méretezés áttekintésével](monitoring-overview-autoscale.md).
+Az automatikus méretezési beállításokkal kapcsolatos további információért folytassa az [automatikus méretezés áttekintésével](../azure-monitor/platform/autoscale-overview.md).
 
 > [!div class="nextstepaction"]
 > [Monitorozási adatok archiválása](monitor-tutorial-archive-monitoring-data.md)

@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7df61cad250663d4b08c8c8d32257718e2f37db
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012845"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384240"
 ---
-# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>A Maven használata Java-alkalmazások, amelyek Windows-alapú HDInsight (hadoop eszközzel) HBase használata
-Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás javában az Apache Maven segítségével. Ezután használja az alkalmazást az Azure HDInsight (Hadoop).
+# <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Az Apache Maven használata Java-alkalmazások, amelyek Apache HBase használata a Windows-alapú HDInsight (Apache Hadoop)
+Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás javában az Apache Maven segítségével. Ezután használja az alkalmazást az Azure HDInsight (Apache Hadoop).
 
-[Maven](http://maven.apache.org/) olyan szoftver project management és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre. Ebből a cikkből megismerheti, hogyan hozzon létre egy egyszerű Java-alkalmazást hoz létre, lekérdezések, és törli az Azure HDInsight-fürtön egy HBase-tábla használatával.
+[Az Apache Maven](http://maven.apache.org/) olyan szoftver project management és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre. Ebből a cikkből megismerheti, hogyan hozzon létre egy egyszerű Java-alkalmazást hoz létre, lekérdezések, és törli az Azure HDInsight-fürtön egy HBase-tábla használatával.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések szükség egy HDInsight-fürt által használt Windows. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Követelmények
 * [A Java platform JDK](https://aka.ms/azure-jdks) 7 vagy újabb verzió
-* [Maven 3](http://maven.apache.org/)
+* [Apache Maven](http://maven.apache.org/)
 * Egy Windows-alapú HDInsight-fürtöt, a hbase-ben
 
-    > [!NOTE]
+    > [!NOTE]  
     > A jelen dokumentumban leírt lépések fürtverziók HDInsight 3.2-es és 3.3-as teszteltük. Példák a megadott alapértelmezett értékek vannak a HDInsight 3.3-as fürt.
 
 ## <a name="create-the-project"></a>A projekt létrehozása
@@ -40,8 +40,8 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
 
     Ez a parancs létrehoz egy könyvtárat az aktuális helyen, által megadott név a **artifactID** paraméter (**hbaseapp** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * **pom.xml**: A projekt Hálózatiobjektum-modellt ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
-   * **src**: A címtár, amely tartalmazza a **main\java\com\microsoft\examples** könyvtárat, ahol az alkalmazás fogja készíthet.
+   * **pom.xml**:  A projekt Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
+   * **src**: A könyvtár, amely tartalmazza a **main\java\com\microsoft\examples** könyvtárat, ahol az alkalmazás fogja készíthet.
 3. Törölje a **src\test\java\com\microsoft\examples\apptest.java** fájlhoz, mert nem szerepel ebben a példában.
 
 ## <a name="update-the-project-object-model"></a>Frissítse a projekt Hálózatiobjektum-modellje
@@ -53,9 +53,9 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
           <version>1.1.2</version>
         </dependency>
 
-    Ez a szakasz arra utasítja a Maven, hogy szükséges-e a projekt **hbase-ügyfél** verzió **1.1.2**. A fordítás során a függőség az alapértelmezett Maven tárházból letölti. Használhatja a [Maven központi tárházban keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
+    Ez a szakasz arra utasítja a Maven, hogy szükséges-e a projekt **hbase-ügyfél** verzió **1.1.2**. A fordítás során a függőség az alapértelmezett Maven tárházból letölti. Használhatja a [Apache Maven központi tárházban keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > A verziószámnak meg kell egyeznie a HBase a HDInsight-fürt a megadott verzióját. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
    >
    >
@@ -65,7 +65,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
    | 3.2 |0.98.4-hadoop2 |
    | 3.3 |1.1.2 |
 
-    A HDInsight-verziók és -összetevők további információkért lásd: [Mik azok a különböző elérhető, a HDInsight Hadoop-összetevők](hdinsight-component-versioning.md).
+    A HDInsight-verziók és -összetevők további információkért lásd: [Mik azok a különböző HDInsight elérhető az Apache Hadoop-összetevő](hdinsight-component-versioning.md).
 2. Ha a HDInsight 3.3-as fürtöt használ, a következő is hozzá kell adnia a `<dependencies>` szakaszban:
 
         <dependency>
@@ -122,12 +122,12 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
 
     A `<resources>` szakaszban konfigurálja egy erőforrást (**conf\hbase-site.xml**), amely tartalmazza a konfigurációs adatait a hbase-hez.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Beállíthatja a konfigurációs értékek kód segítségével is. A Megjegyzések a **CreateTable** ehhez a következő példában.
    >
    >
 
-    Ez `<plugins>` szakaszban konfigurálja a [Maven fordító beépülő modul](http://maven.apache.org/plugins/maven-compiler-plugin/) és [Maven Shade beépülő modul](http://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez használható oka az, hogy az ismétlődő licencfájlok futási időben, a HDInsight-fürtön hibát okozhat. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy ezt a hibát.
+    Ez `<plugins>` szakaszban konfigurálja a [Apache Maven fordító beépülő modul](http://maven.apache.org/plugins/maven-compiler-plugin/) és [Apache Maven Shade beépülő modul](http://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez használható oka az, hogy az ismétlődő licencfájlok futási időben, a HDInsight-fürtön hibát okozhat. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy ezt a hibát.
 
     A maven-shade-beépülő modul is hoz létre, az uber jar (vagy az fat jar), amely tartalmazza az alkalmazás számára szükséges összes függőséget.
 4. Mentse a **pom.xml** fájlt.
@@ -173,7 +173,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
 
     Ez a fájl betöltése egy HDInsight-fürt konfigurációját a HBase használható.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ez egy minimális hbase-site.xml fájlt, és a HDInsight-fürtöt operációs rendszer nélküli helyreállításra minimális beállításait tartalmazza.
 
 6. Mentse a **hbase-site.xml** fájlt.
@@ -357,11 +357,11 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
     Ez törli a bármely korábbi build-összetevőket, letölti a függőségek, amelyek még nem telepítette, majd összeállít és csomagok, az alkalmazás.
 3. A parancs befejeződésekor a **hbaseapp\target** könyvtár tartalmaz egy fájlt **hbaseapp – 1.0-SNAPSHOT.jar**.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A **hbaseapp – 1.0-SNAPSHOT.jar** fájl az uber jar (más néven egy fat jar), amely tartalmazza az alkalmazás futtatásához szükséges összes függőséget.
 
 ## <a name="upload-the-jar-file-and-start-a-job"></a>A JAR-fájl feltöltése és a egy feladat indítása
-Számos módon feltölthet egy fájlt a HDInsight-fürthöz leírtak szerint [feltölteni az adatokat a HDInsight Hadoop-feladatokhoz](hdinsight-upload-data.md). Az alábbi lépéseket az Azure PowerShell-lel.
+Számos módon feltölthet egy fájlt a HDInsight-fürthöz leírtak szerint [Upload data for HDInsight az Apache Hadoop-feladatok](hdinsight-upload-data.md). Az alábbi lépéseket az Azure PowerShell-lel.
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 

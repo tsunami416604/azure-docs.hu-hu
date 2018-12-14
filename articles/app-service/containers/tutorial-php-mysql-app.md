@@ -1,6 +1,6 @@
 ---
 title: PHP-MySQL-webalkalmazás összeállítása linuxon – az Azure App Service |} A Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban.
+description: Ismerje meg, hogyan tehet szert az Azure App Service Linux rendszeren dolgozik az Azure-ban MySQL-hez a PHP-alkalmazás.
 services: app-service\web
 author: cephalin
 manager: erikre
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a8fc0b9dee8b496eabf7efded7ab83be0b958244
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5d9843eecfed56f09c3a6d659976ca1ce5f42d80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274853"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342359"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>PHP- és MySQL-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](http://www.whatsmyip.org/).
+Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>

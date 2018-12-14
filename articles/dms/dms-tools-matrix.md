@@ -10,24 +10,24 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: a3580c2939f03e6ede6341e7afb293e7f7c5f885
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.date: 12/13/2018
+ms.openlocfilehash: 2eb263c6776453c4cae217168af969221485bfa3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016129"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386791"
 ---
-# <a name="service-and-tools-for-data-migration"></a>Szolgáltatás és eszközök az adatáttelepítés
+# <a name="services-and-tools-available-for-data-migration-scenarios"></a>A szolgáltatások és eszközök érhető el áttelepítési forgatókönyvek
 
 Ez a cikk foglalja össze a Microsoft és külső szolgáltatások segítségére lehetnek a különböző adatbázis és az adatok áttelepítési forgatókönyvek és speciális feladatok rendelkezésre álló eszközöket.
 
-Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen tervezése és annak különböző szakaszaiban befejezéséhez használható eszközök azonosítása.
+Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen tervezése és annak különböző fázisait befejezéséhez használható eszközök azonosítása.
 
 > [!NOTE]
 > Az alábbi táblázatban a csillaggal (*) jelölt elemek harmadik felektől származó eszközök képviseli.
 
-## <a name="business-justification-stage"></a>Üzleti indoklás fázis
+## <a name="business-justification-phase"></a>Üzleti indoklás fázis
 
 | **Forrás** | **Target** | **Fedezze fel és**<br/>**Szoftverleltár** | **Cél- és a Termékváltozat**<br/>**Az ajánlás** | **Teljes birtoklási költség/ROI és**<br/>**Vállalkozását** |
 | --- | --- | --- | --- | --- |
@@ -41,15 +41,17 @@ Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |  |
 | Cassandra | Cosmos DB |  |  |  |
-| A távoli asztali szolgáltatások vagy helyi MySQL | MySQL-hez készült Azure DB |  |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
-| A távoli asztali szolgáltatások vagy a helyszíni PostgreSQL | Azure DB for PostgreSQL |  |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
 | MySQL | Az Azure SQL DB, MI, virtuális gép | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [A felhő Atlas *](https://www.unifycloud.com/cloud-migration-tool/) | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
+| MySQL | MySQL-hez készült Azure DB | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
+| RDS MySQL | MySQL-hez készült Azure DB |  |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
+| PostgreSQL | Azure DB for PostgreSQL | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
+| A távoli asztali szolgáltatások PostgreSQL | Azure DB for PostgreSQL |  |  | [Költségkalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Az Azure SQL DB, MI, virtuális gép |  |  |  |
 | Hozzáférés | Az Azure SQL DB, MI, virtuális gép |  |  |  |
 | Sybase | Az Azure SQL DB, MI, virtuális gép |  |  |  |
 | | | | | |
 
-## <a name="pre-migration-stage"></a>Az áttelepítés előtti szakasz
+## <a name="pre-migration-phase"></a>Az áttelepítés előtti fázist
 
 | **Forrás** | **Target** | **Alkalmazás-adatok elérése**<br/>**Réteg értékelése** | **Adatbázis**<br/>**Értékelés** | **Teljesítmény**<br/>**Értékelés** |
 | --- | --- | --- | --- | --- |
@@ -63,15 +65,17 @@ Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB |  | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |  |  |
-| A távoli asztali szolgáltatások vagy helyi MySQL | MySQL-hez készült Azure DB |  |  |  |
-| A távoli asztali szolgáltatások vagy a helyszíni PostgreSQL | Azure DB for PostgreSQL |  |  |  |
 | MySQL | Az Azure SQL DB, MI, virtuális gép |  | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[A felhő Atlas *](https://www.unifycloud.com/cloud-migration-tool/) |  |
+| MySQL | MySQL-hez készült Azure DB |  |  |  |
+| RDS MySQL | MySQL-hez készült Azure DB |  |  |  |
+| PostgreSQL | Azure DB for PostgreSQL |  |  |  |
+| A távoli asztali szolgáltatások PostgreSQL | Azure DB for PostgreSQL |  |  |  |
 | DB2 | Az Azure SQL DB, MI, virtuális gép |  | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Hozzáférés | Az Azure SQL DB, MI, virtuális gép |  | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase | Az Azure SQL DB, MI, virtuális gép |  | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | | | | | |
 
-## <a name="migration-stage"></a>Áttelepítési fázis
+## <a name="migration-phase"></a>Migrálási fázis
 
 | **Forrás** | **Target** | **séma** | **Adatok**<br/>**(Kapcsolat nélküli módban)** | **Adatok**<br/>**(Online)** |
 | --- | --- | --- | --- | --- |
@@ -85,15 +89,17 @@ Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Cosmos DB | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Cassandra | Cosmos DB | [Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis adatok *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) |
-| A távoli asztali szolgáltatások vagy helyi MySQL | MySQL-hez készült Azure DB | [MySQL memóriakép *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| A távoli asztali szolgáltatások vagy a helyszíni PostgreSQL | Azure DB for PostgreSQL | [PG memóriakép *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | MySQL | Az Azure SQL DB, MI, virtuális gép | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| MySQL | MySQL-hez készült Azure DB | [MySQL memóriakép *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| RDS MySQL | MySQL-hez készült Azure DB | [MySQL memóriakép *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| PostgreSQL | Azure DB for PostgreSQL | [PG memóriakép *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| A távoli asztali szolgáltatások PostgreSQL | Azure DB for PostgreSQL | [PG memóriakép *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [A DMS](https://azure.microsoft.com/services/database-migration/) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Az Azure SQL DB, MI, virtuális gép | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Hozzáférés | Az Azure SQL DB, MI, virtuális gép | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
 | Sybase | Az Azure SQL DB, MI, virtuális gép | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA-BAN](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [A DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Az Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | | | | | |
 
-## <a name="post-migration-stage"></a>Áttelepítés utáni szakasz
+## <a name="post-migration-phase"></a>Áttelepítés utáni fázist
 
 | **Forrás** | **Target** | **Optimalizálás** |
 | --- | --- | --- |
@@ -107,9 +113,11 @@ Az alábbi táblázatok a szolgáltatás és az adatok áttelepítése sikeresen
 | Oracle | Azure DB for PostgreSQL |  |
 | MongoDB | Cosmos DB | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |
-| A távoli asztali szolgáltatások vagy helyi MySQL | MySQL-hez készült Azure DB |  |
-| A távoli asztali szolgáltatások vagy a helyszíni PostgreSQL | Azure DB for PostgreSQL |  |
 | MySQL | Az Azure SQL DB, MI, virtuális gép |  |
+| MySQL | MySQL-hez készült Azure DB |  |
+| RDS MySQL | MySQL-hez készült Azure DB |  |
+| PostgreSQL | Azure DB for PostgreSQL |  |
+| A távoli asztali szolgáltatások PostgreSQL | Azure DB for PostgreSQL |  |
 | DB2 | Az Azure SQL DB, MI, virtuális gép |  |
 | Hozzáférés | Az Azure SQL DB, MI, virtuális gép |  |
 | Sybase | Az Azure SQL DB, MI, virtuális gép |  |

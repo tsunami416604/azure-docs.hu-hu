@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/12/2018
+ms.openlocfilehash: b3509917f0473795ec204c6672a630b2857ff37c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962144"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343921"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Mi az az Azure Database Migration Service?
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure data platformokra minimális állásidővel (online áttelepítések).
@@ -33,7 +33,9 @@ Naprakész információk az Azure Database Migration Service regionális elérhe
 Azure Database Migration Service-tarifacsomag naprakész információk: [Azure Database Migration Service díjszabása](https://azure.microsoft.com/pricing/details/database-migration/).
 
 ## <a name="next-steps"></a>További lépések
+- [Az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotát](resource-scenario-status.md).
 - [Az Azure Database Migration Service példányát létre az Azure portal használatával](quickstart-create-data-migration-service-portal.md).
 - [SQL Server migrálása az Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
 - [Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése](pre-reqs.md).
 - [Az Azure Database Migration Service használatával kapcsolatos gyakori kérdések](faq.md).
+- [A szolgáltatások és eszközök érhető el áttelepítési forgatókönyvek](dms-tools-matrix.md).

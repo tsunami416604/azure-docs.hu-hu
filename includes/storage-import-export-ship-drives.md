@@ -5,21 +5,22 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 104fe53271e04980f2bd68876e0edb22f76a1d8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f907e8c0d10c2972bde852192883e7268f78baaa
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684519"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387794"
 ---
-FedEx, UPS vagy DHL küldje el a csomagot a Azure-adatközpontban használható. 
+Az Azure-adatközpontba csomag tehetnek FedEx, UPS vagy DHL használható. 
 
-- Adjon meg egy érvényes FedEx, UPS vagy DHL szolgáltatónként fiók száma, hogy a Microsoft a meghajtók vissza szállítási fogja használni. 
+- Adjon meg egy érvényes FedEx, UPS vagy DHL szolgáltató fiók száma, hogy a Microsoft tehetnek vissza a meghajtókat használja. 
     
-    - Egy FedEx, UPS vagy DHL szám meghajtók szállítási vissza a helyekről amerikai és Európai szükség. 
-    - Egy DHL szám részesíti előnyben a meghajtók szállítási Ázsia és a Ausztrália helyekről vissza. 
-    - Ha nincs egy fiók számát, hozzon létre egy [FedEx](http://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) vivőjel-fiók.
-- Ha a csomagok szállítási, hajtsa végre a [Microsoft Azure szolgáltatási feltételek](https://azure.microsoft.com/support/legal/services-terms/).
+    - Egy FedEx, UPS vagy DHL szám megadása kötelező a meghajtók szállítási vissza helyekről az Egyesült Államok és Európa 
+    - Egy DHL szám részesíti előnyben a meghajtók szállítási Ázsia és Ausztrália helyekről vissza. 
+    - Ha nincs egy fiók száma, hozzon létre egy [FedEx](http://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) Szállítmányozói fiókjára.
+- A csomagok szállítási, amikor Ön köteles betartani a [a Microsoft Azure szolgáltatási feltételek](https://azure.microsoft.com/support/legal/services-terms/).
+- Csomag megfelelően Öné lemezek potenciális károknak és a feldolgozási késedelmeket elkerülése érdekében.

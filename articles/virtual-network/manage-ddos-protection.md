@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 1283f84b4a45f5eedc98e6b16e5277e5347be1a4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fae4fffbe9e4b0be0f2edacf3e86b6268cc58608
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270246"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384649"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -156,7 +156,7 @@ A támadás kockázatcsökkentési jelentések összesített értéket jelenít 
 5. Válassza ki **nyilvános IP-cím** a **erőforrástípus**, majd válassza ki az adott nyilvános IP-cím metrikáinak bejelentkezik.
 6. Válassza ki **engedélyezze a diagnosztikát a DDoSMitigationReports napló gyűjtése** majd válassza az alábbi lehetőségek közül, amennyi szükséges:
 
-    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -178,7 +178,7 @@ Támadás kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse á
 5. Válassza ki **nyilvános IP-cím** a **erőforrástípus**, majd válassza ki az adott nyilvános IP-cím metrikáinak bejelentkezik.
 6. Válassza ki **engedélyezze a diagnosztikát a DDoSMitigationFlowLogs napló gyűjtése** majd válassza az alábbi lehetőségek közül, amennyi szükséges:
 
-    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Az Azure analytics irányítópulton tekintheti meg a forgalmi naplók adatai, importálhatja a minta-irányítópult https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip

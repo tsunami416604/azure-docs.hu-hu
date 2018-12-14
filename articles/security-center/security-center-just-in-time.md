@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6281b79e374db164bbd11b602e92336162cae089
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841761"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339042"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -49,7 +49,11 @@ Amikor egy felhasználó egy virtuális Géphez való hozzáférés, a Security 
 >
 >
 
-## <a name="using-jit-access-in-azure-security-center"></a>Igény szerinti hozzáférés használata az Azure Security Centerben
+Igény szerinti keresztül érhető el:
+- [Igény szerinti hozzáférés használata az Azure Security Centerben](#jit-asc)
+- [Igény szerinti hozzáférés használata egy Azure virtuális gép paneljén](#jit-vm)
+
+## Igény szerinti hozzáférés használata az Azure Security Centerben <a name="jit-asc"></a>
 
 1. Nyissa meg a **Security Center** irányítópultját.
 
@@ -121,7 +125,7 @@ A virtuális gépek meglévő just-in-time-házirend szerkesztése:
 3. A **virtuális gépek igény szerinti hozzáférés konfigurációs**, szerkesztheti a meglévő beállítások már védett port vagy adjon hozzá egy új egyéni portot. További információkért lásd: [just-in-time-hozzáférési házirend beállítása](#jit-config). 
   ![igény szerinti virtuálisgép-hozzáférés](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="using-jit-access-in-an-azure-vm-blade"></a>Igény szerinti hozzáférés használata egy Azure virtuális gép paneljén
+## Igény szerinti hozzáférés használata egy Azure virtuális gép paneljén <a name="jit-vm"></a>
 
 Az Ön kényelme érdekében-alapú virtuális gép JIT közvetlenül a virtuális gép paneljén, az Azure-ban belül csatlakozhat.
 
@@ -187,7 +191,7 @@ Kioszthatók *műveletek* a szerepkörhöz:
 -    Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
    - Microsoft.Compute/virtualMachines/write 
 
-Ezek a jogosultságok engedélyezése a felhasználó sikeresen igényelhet egy virtuális Gépet igény szerinti hozzáférést beállítani: kioszthatók *műveletek* a felhasználó számára:
+Állítsa be ezeket a jogosultságokat, a felhasználót, hogy sikeresen megtörtént a virtuális gép igény szerinti hozzáférés kérése engedélyezése: Kioszthatók *műveletek* a felhasználó számára:
 -   Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
    - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ kezdeményezése/művelet
 -    Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
@@ -264,7 +268,7 @@ Ebben a cikkben megtanulta, hogyan just-in-time VM access a Security Center seg�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-- [Biztonsági szabályzatok beállítása](security-center-azure-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+- [Biztonsági szabályzatok beállítása](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
 - [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 - [Biztonsági állapotfigyelés](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 - [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.

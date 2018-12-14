@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e301e7da36e7ca549609da942f6e6d6dd3a3e791
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103347"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344030"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Azure Machine Learning, az IoT Edge-modul (előzetes verzió) üzembe helyezése
 
 Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. Az IoT Edge-en futó Azure ML-el kapcsolatos további információkat [az Azure Machine Learning dokumentációjában](../machine-learning/service/how-to-deploy-to-iot.md) talál.
 
@@ -174,7 +174,7 @@ Ha ezeket a parancsokat Linux-eszközön hajtja végre, lehetséges, hogy haszn�
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Az IoT-központba érkező adatok megtekintése
 
-Az IoT Hub által fogadott, az eszközről a felhőbe küldött üzeneteket a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) tekintheti meg.
+Az eszköz a felhőbe irányuló üzeneteket az IoT hub által fogadott használatával megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény).
 
 A következő lépések azt mutatják be, hogyan állítható be a Visual Studio Code az IoT-központba érkező, eszközről a felhőbe küldött üzenetek monitorozására. 
 

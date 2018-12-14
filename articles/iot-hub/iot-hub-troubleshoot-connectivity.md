@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 197b15baee81c7ceff5d76dd21ceb6db1f0f5fdf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424663"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339756"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Észlelése és elhárítása bontja a kapcsolatot az Azure IoT Hub szolgáltatással
 
@@ -50,7 +50,7 @@ További tudnivalókért lásd: [Azure IoT Hub állapotának Monitorozásához �
 
    ![Metrikariasztás ajánlott][3]
 
-További tudnivalókért lásd: [Mik azok a Microsoft Azure klasszikus riasztások?](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+További tudnivalókért lásd: [Mik azok a Microsoft Azure klasszikus riasztások?](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="resolve-connectivity-errors"></a>Kapcsolódási hibák megoldása
 

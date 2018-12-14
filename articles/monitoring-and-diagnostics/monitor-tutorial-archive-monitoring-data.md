@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: ab91ac3eb115504727e5ee9e912d070262027cc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eb99718fb2b39ded01abb075990fccb25a482cab
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834077"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386129"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -103,7 +103,7 @@ Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
+> *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 
@@ -150,7 +150,7 @@ Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 
 Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
-1. Néhány adattípus, például a tevékenységnapló esetében szükség van egy olyan tevékenységre, amely eseményt hoz létre a tárfiókban. Tevékenység létrehozásához tevékenységnaplóban kövesse [ezeket az utasításokat](./monitor-quick-audit-notify-action-in-subscription.md). Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megjelenik a tárfiókban.
+1. Néhány adattípus, például a tevékenységnapló esetében szükség van egy olyan tevékenységre, amely eseményt hoz létre a tárfiókban. Tevékenység létrehozásához tevékenységnaplóban kövesse [ezeket az utasításokat](./../azure-monitor/platform/quick-audit-notify-action-subscription.md). Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megjelenik a tárfiókban.
 
 2. A portálban navigáljon a bal oldali navigációs sávon található **Tárfiókok** szakaszhoz.
 

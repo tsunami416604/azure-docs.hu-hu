@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2018
+ms.date: 12/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: f46837751901015fd80d3ecc7a620878cadb3f12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317874"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343870"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>App Service-ben az Azure Security Center védelme
 Ez a cikk segít az Azure Security Center segítségével történő figyeléséhez és védelméhez az alkalmazások futtatása az App Service.
 
-Az App Service segítségével hozhat létre és üzemeltethet webalkalmazásokat az Ön által választott programozási nyelven infrastruktúra kezelése nélkül is. Az App Service automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és Linux, valamint automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely Git-tárház. 
+Az App Service segítségével hozhat létre és üzemeltethet webalkalmazásokat az Ön által választott programozási nyelven infrastruktúra kezelése nélkül is. Az App Service automatikus méretezést és magas rendelkezésre állást kínál, mind Windows és Linux rendszerű, valamint automatikus telepítéseket a GitHub-, Azure DevOps, vagy minden Git-tárházat támogatja. 
 
 Webes alkalmazások biztonsági réseinek gyakran sérülékenységeket, mert az egy közös és dinamikus felületet szinte minden szervezetnek az interneten. Az App Service futó alkalmazások kérelmek halad át több átjáró üzembe helyezett Azure-adatközpontokban világszerte, a megfelelő alkalmazás az egyes kérelmek útválasztás felelős. 
 
@@ -34,7 +34,7 @@ A Security Center az az App Service-alkalmazások ellen indított támadások az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Figyelheti, és az App Service biztonságos, rendelkeznie kell egy App Service-csomag, amely dedikált gépek társítva van. Ezek az előfizetések a következők: alapszintű, Standard, prémium szintű, elkülönített vagy Linux. Az Azure Security Center nem támogatja az ingyenes, megosztott vagy Használatalapú csomagok. További információkért lásd: [App Service-csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Figyelheti, és az App Service biztonságos, rendelkeznie kell egy App Service-csomag, amely dedikált gépek társítva van. Ezek a csomagok a következők: Alapszintű, Standard, prémium szintű, elkülönített, vagy Linux. Az Azure Security Center nem támogatja az ingyenes, megosztott vagy Használatalapú csomagok. További információkért lásd: [App Service-csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 ## <a name="security-center-protection"></a>A Security Center védelme
 
@@ -63,8 +63,8 @@ Tiltsa le a figyelés és javaslatok az App Service, ismételje meg a folyamat �
 ## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md): Megtudhatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
+* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
+* [Partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
+* [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Gyakori kérdések a szolgáltatás használatával kapcsolatban.
+* [Az Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

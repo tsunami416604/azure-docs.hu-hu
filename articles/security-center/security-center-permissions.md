@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: de9186faa9c6228f1938a94016ef449ce8bb1899
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313439"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335931"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -29,8 +29,8 @@ A Security Center a biztonsági problémák és biztonsági rések azonosítás�
 
 Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
-* **Biztonsági olvasó**: ehhez a szerepkörhöz tartozó felhasználó rendelkezik megtekintése a Security Center jogosultságait. A felhasználó megtekintheti a javaslatok, riasztások, a biztonsági szabályzatot és biztonsági állapotok, de nem végezhet módosításokat.
-* **Biztonsági rendszergazda**: ehhez a szerepkörhöz tartozó felhasználó ugyanazokat a jogosultságokat, a biztonsági olvasó rendelkezik, és is frissítheti a biztonsági házirend és riasztások és javaslatok elvetése.
+* **Biztonsági olvasó**: Ehhez a szerepkörhöz tartozó felhasználó rendelkezik megtekintése a Security Center jogosultságait. A felhasználó megtekintheti a javaslatok, riasztások, a biztonsági szabályzatot és biztonsági állapotok, de nem végezhet módosításokat.
+* **Biztonsági rendszergazda**: Ehhez a szerepkörhöz tartozó felhasználó ugyanazokat a jogosultságokat, a biztonsági olvasó rendelkezik és is frissíteni a biztonsági szabályzatot, és hagyja figyelmen kívül riasztások és javaslatok.
 
 > [!NOTE]
 > A biztonsági szerepkörök, biztonsági olvasó és a biztonsági rendszergazda, csak a Security Center rendelkezik hozzáféréssel. A biztonsági szerepkörök nem rendelkeznek hozzáféréssel, például a Storage, Web & Mobile vagy az eszközök internetes hálózatát az Azure egyéb szolgáltatási területeihez.
@@ -59,7 +59,7 @@ Az alábbi táblázat megjeleníti a szerepköröket, és a műveletek a Securit
 ## <a name="next-steps"></a>További lépések
 Ez a cikk részletesen a Security Center általi RBAC engedélyek hozzárendelése a felhasználókhoz, és az engedélyezett műveletek az egyes szerepkörökhöz meghatározott. Most, hogy már ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges a szerepkör-hozzárendeléseket, szerkesztheti a biztonsági szabályzatokat, és alkalmazhatja a javaslatokat, megtudhatja, hogyan lehet:
 
-- [Biztonsági szabályzatok beállítása a Security Centerben](security-center-azure-policy.md)
+- [Biztonsági szabályzatok beállítása a Security Centerben](tutorial-security-policy.md)
 - [A Security Centerben a biztonsági javaslatok kezelése](security-center-recommendations.md)
 - [Az Azure-erőforrások biztonsági állapotának figyelése](security-center-monitoring.md)
 - [A biztonsági riasztások kezelése és a riasztásokra való válaszadás a Security Centerben](security-center-managing-and-responding-alerts.md)

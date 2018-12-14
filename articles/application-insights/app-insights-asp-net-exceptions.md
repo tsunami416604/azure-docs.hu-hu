@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 21c1a92a71ac52a47a8b9d73d5e715afb6dc73d0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997053"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343411"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
@@ -25,9 +25,9 @@ Az élő webalkalmazását kivételek által jelentett [Application Insights](ap
 ## <a name="set-up-exception-reporting"></a>Kivétel jelentéskészítés beállítása
 * A kiszolgálóalkalmazás által jelentett kivételek rendelkezik:
   * Telepítés [Application Insights SDK](app-insights-asp-net.md) az alkalmazáskód, vagy
-  * Az IIS-webkiszolgálón: futtassa [Application Insights-ügynökkel](app-insights-monitor-performance-live-website-now.md); vagy
+  * IIS-kiszolgálók: Futtatás [Application Insights-ügynökkel](app-insights-monitor-performance-live-website-now.md); vagy
   * Az Azure web apps: Adja hozzá a [Application Insights-bővítmény](app-insights-azure-web-apps.md)
-  * Java-webalkalmazások: telepítse a [Java-ügynök](app-insights-java-agent.md)
+  * Java-webalkalmazások: Telepítse a [Java-ügynök](app-insights-java-agent.md)
 * Telepítse a [JavaScript-kódrészletet](app-insights-javascript.md) a weblapok a böngésző kivételeket.
 * Egyes alkalmazás-keretrendszerek, vagy az egyes beállítások kell venni néhány további lépést több kivételeket:
   * [Web Forms keretrendszerre](#web-forms)
@@ -50,14 +50,15 @@ Figyelje meg, hogy a jelentést, hogy csak kivételek szűrheti.
 *Nincsenek kivételek megjelenítő? Lásd: [kivételek rögzítése](#exceptions).*
 
 Kattintson egy kivétel jelentést, hogy annak veremkiíratási adataival.
-Kattintson a megfelelő kódot fájl megnyitása a híváslánc-sor hivatkozást.  
+Kattintson a megfelelő kódot fájl megnyitása a híváslánc-sor hivatkozást.
 
 A kód figyelje meg, hogy a Codelensben a kivételek adatait jeleníti meg:
 
 ![A CodeLens értesítés a kivételeket.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Az Azure portal használatával hibák diagnosztizálása
-Az Application Insights segít a figyelt alkalmazások hibáinak diagnosztizálása használt APM felülettel rendelkezik. Elindításához kattintson a vizsgálat szakaszában található Application Insights-erőforrás menü hibák esetén. A teljes képernyős nézetben, amely bemutatja, a kérelmek, ezek közül hány sikertelen, és hány felhasználó érintett hiba arány trendjeit kell megjelennie. A jobb oldalon láthatja a leghasznosabb a kijelölt adott disztribúciók sikertelen volt a művelet, beleértve a 3 leggyakoribb válaszkódok, 3 leggyakoribb kivételtípus és felső 3 sikertelen függőségi típusnál. 
+Az Application Insights segít a figyelt alkalmazások hibáinak diagnosztizálása használt APM felülettel rendelkezik. Elindításához kattintson a vizsgálat szakaszában található Application Insights-erőforrás menü hibák esetén.
+A teljes képernyős nézetben, amely bemutatja, a kérelmek, ezek közül hány sikertelen, és hány felhasználó érintett hiba arány trendjeit kell megjelennie. A jobb oldalon láthatja a leghasznosabb a kijelölt adott disztribúciók sikertelen volt a művelet, beleértve a 3 leggyakoribb válaszkódok, 3 leggyakoribb kivételtípus és felső 3 sikertelen függőségi típusnál.
 
 ![Hibák megtekintése (operations lap) osztályozása](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
@@ -98,7 +99,7 @@ A kérelem részletes adatainak az alkalmazáshoz a POST híváson a küldött a
 
 * [Az SDK telepítése](app-insights-asp-net.md) az alkalmazás-projektben.
 * Szúrja be a kódot az alkalmazásban való meghívása [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). A POST data küldenek az üzenet-paraméter. Az engedélyezett mérete korlátozva van, meg kell próbálnia az alapvető adatok küldése.
-* Ha a sikertelen kérelmek vizsgálatához keresse meg a társított nyomkövetési.  
+* Ha a sikertelen kérelmek vizsgálatához keresse meg a társított nyomkövetési.
 
 ![Áthatoló részletezést](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -178,7 +179,7 @@ De ha aktív átirányítások, adja hozzá a következő sorokat Global.asax.cs
 ```csharp
     void Application_Error(object sender, EventArgs e)
     {
-      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
+      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError () != null)
       {
          var ai = new TelemetryClient(); // or re-use an existing instance
 
@@ -199,12 +200,13 @@ Számos esetben működőképes, amely a kivétel szűrők nem tudja kezelni. P�
 * Kivétel történt az alkalmazás indítási során.
 * Kivétel történt a háttérben futó feladatok.
 
-Minden kivétel *kezelt* alkalmazás továbbra is nyomon kell követni manuálisan. Általában a tartományvezérlők származó nem kezelt kivételek 500 "Belső kiszolgálóhiba" választ eredményeznek. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) eredményeként jön létre, a megfelelő kérelmek telemetriai adatai, a nyomon követett `ResultCode` 500, azonban az Application Insights SDK nem tud nyomon követni a megfelelő kivétel.
+Minden kivétel *kezelt* alkalmazás továbbra is nyomon kell követni manuálisan.
+Általában a tartományvezérlők származó nem kezelt kivételek 500 "Belső kiszolgálóhiba" választ eredményeznek. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) eredményeként jön létre, a megfelelő kérelmek telemetriai adatai, a nyomon követett `ResultCode` 500, azonban az Application Insights SDK nem tud nyomon követni a megfelelő kivétel.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha MVC 4 (és az előzetes) és Application Insights webes SDK 2.5-ös (előzetes) használ, tekintse meg az alábbi példák kivételeinek követéséről.
 
-Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurációs van `Off`, akkor kivételeket lesz elérhető a [HTTP-modulja](https://msdn.microsoft.com/library/ms178468.aspx) gyűjtéséhez. Azonban ha `RemoteOnly` (alapértelmezett), vagy `On`, akkor a kivétel lesz bejelölve, és nem érhető el az Application Insights segítségével automatikusan begyűjtik. Letiltásával megoldhatja, amely a [System.Web.Mvc.HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx), és alkalmazza a felülbírált osztály, ahogy az alábbi különböző MVC-verziók ([github forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurációs van `Off`, akkor kivételeket lesz elérhető a [HTTP-modulja](https://msdn.microsoft.com/library/ms178468.aspx) gyűjtéséhez. Azonban ha `RemoteOnly` (alapértelmezett), vagy `On`, akkor a kivétel lesz bejelölve, és nem érhető el az Application Insights segítségével automatikusan begyűjtik. Letiltásával megoldhatja, amely a [System.Web.Mvc.HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx), és alkalmazza a felülbírált osztály, ahogy az alábbi különböző MVC-verziók ([GitHub forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;
@@ -222,7 +224,7 @@ Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurá
             {
                 //If customError is Off, then AI HTTPModule will report the exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
-                {   //or reuse instance (recommended!). see note above  
+                {   //or reuse instance (recommended!). see note above
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
                 }
@@ -239,9 +241,9 @@ Cserélje le a HandleError attribútum a tartományvezérlőket az új attribút
 ```csharp
     namespace MVC2App.Controllers
     {
-       [AiHandleError]
-       public class HomeController : Controller
-       {
+        [AiHandleError]
+        public class HomeController : Controller
+        {
     ...
 ```
 
@@ -290,7 +292,8 @@ Számos esetben működőképes, amely a kivétel szűrők nem tudja kezelni. P�
 * Kivétel történt az alkalmazás indítási során.
 * Kivétel történt a háttérben futó feladatok.
 
-Minden kivétel *kezelt* alkalmazás továbbra is nyomon kell követni manuálisan. Általában a tartományvezérlők származó nem kezelt kivételek 500 "Belső kiszolgálóhiba" választ eredményeznek. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) eredményeként jön létre a megfelelő kérést a telemetriai adatok követi nyomon, `ResultCode` 500, azonban az Application Insights SDK nem tud nyomon követni a megfelelő kivétel.
+Minden kivétel *kezelt* alkalmazás továbbra is nyomon kell követni manuálisan.
+Általában a tartományvezérlők származó nem kezelt kivételek 500 "Belső kiszolgálóhiba" választ eredményeznek. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) eredményeként jön létre a megfelelő kérést a telemetriai adatok követi nyomon, `ResultCode` 500, azonban az Application Insights SDK nem tud nyomon követni a megfelelő kivétel.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha WebAPI-1 (és az előzetes) és Application Insights webes SDK 2.5-ös (előzetes) használ, tekintse meg az alábbi példák kivételeinek követéséről.
@@ -311,7 +314,7 @@ Override System.Web.Http.Filters.ExceptionFilterAttribute:
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
             {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
-                ai.TrackException(actionExecutedContext.Exception);    
+                ai.TrackException(actionExecutedContext.Exception);
             }
             base.OnException(actionExecutedContext);
         }
@@ -481,7 +484,7 @@ Ez eltér a "Kivétel" száma az Application Insights portálon TrackException j
 
 ## <a name="video"></a>Videó
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>További lépések
 * [REST, SQL és más, a függőségek hívásainak figyelése](app-insights-asp-net-dependencies.md)

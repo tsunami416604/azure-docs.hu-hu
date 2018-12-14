@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277505"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342391"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
 A frissítéskezelési megoldás az Azure Automation segítségével operációs rendszer frissítéseinek kezelése az Azure-ban, a helyszíni környezetben vagy az egyéb felhőszolgáltatók üzembe helyezett Windows és Linux számítógépek. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
-Az Update Management a virtuális gépek közvetlenül az Azure Automation-fiókjából engedélyezheti. Az Update Management engedélyezése a virtuális gépek az Automation-fiókjából kapcsolatban lásd: [több virtuális gép frissítéseinek kezelése](manage-update-multi.md). Az Update Management egyetlen virtuális gép az Azure Portalon a virtuális gép panelről is engedélyezheti. Ebben a forgatókönyvben érhető el a [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépeket.
+Az Update Management a virtuális gépek közvetlenül az Azure Automation-fiókjából engedélyezheti. Az Update Management engedélyezése a virtuális gépek az Automation-fiókjából kapcsolatban lásd: [több virtuális gép frissítéseinek kezelése](manage-update-multi.md). Az Update Management egy virtuális gép az Azure Portalon a virtuális gép oldaláról is engedélyezheti. Ebben a forgatókönyvben érhető el a [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépeket.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -41,7 +41,7 @@ Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékel�
 
 A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat, tömegesen az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
 
-Az ütemezett vizsgálat mellett a frissítési megfelelőség szempontjából vizsgálatot kezdeményez frissítés telepítése előtt, ha az MMA újraindítása után 15 percen belül és frissítés telepítése után.
+A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
 
 Linux rendszerű számítógépen a megfelelőségi vizsgálat három óránként történik alapértelmezés szerint. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
 
@@ -148,7 +148,7 @@ A Windows-számítógépen tekintse át, ellenőrizze az ügynök kapcsolatot a 
 1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent**. Az a **Azure Log Analytics** fülön az ügynök a következő üzenet jelenik meg: **A Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics**.
 2. Nyissa meg a Windows eseménynaplóban. Lépjen a **alkalmazás- és Services Logs\Operations Manager** , és keresse meg az eseményt azonosító 3000 és a forrás-esemény azonosítója 5002 **Service Connector**. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületet, és konfigurációt kap.
 
-Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikáljon az internettel egy tűzfalon vagy proxykiszolgálón keresztül van konfigurálva, győződjön meg arról, hogy a tűzfal vagy proxy server megfelelően van-e konfigurálva. Győződjön meg arról, hogy megfelelően van-e konfigurálva a tűzfal vagy proxy-kiszolgáló kezelésével kapcsolatos információkért lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
+Ha az ügynököt a Log Analytics és az ügynök nem tud kommunikálni az interneten egy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon-e, ellenőrizze, hogy a tűzfal vagy proxy server megfelelően van konfigurálva van konfigurálva. Ismerje meg, hogyan ellenőrizheti, hogy a tűzfal vagy proxy server megfelelően van konfigurálva, lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Ha Linux rendszerei való kommunikációhoz proxykiszolgáló beállítva, vagy a Log Analytics-átjáró, és máris bevezetési a megoldást, frissítse a *proxy.conf* engedélyeket biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz használatával a a következő parancsokat:
@@ -285,7 +285,7 @@ Az Update Management a Windows-frissítések letöltése és telepítése a Wind
 
 ### <a name="pre-download-updates"></a>Előre frissítések letöltése
 
-Frissítések automatikus letöltése a csoportházirend konfigurálásához beállíthatja a [automatikus frissítések konfigurálása beállítás](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) való **3**. Ez letölti a frissítéseket, a háttérben szükséges, de nem telepíti azokat. Ez az Update Management megőrizheti feletti ellenőrzési képességét ütemezéseket, de lehetővé teszik a frissítések letöltése az Update Management karbantartási időszakon kívül. Ez megakadályozhatja az **karbantartási időszak túllépve** az Update Management hibákat.
+Frissítések automatikus letöltése a csoportházirend konfigurálásához beállíthatja a [automatikus frissítések konfigurálása beállítás](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) való **3**. Ez letölti a frissítéseket, a háttérben szükséges, de nem telepít. Ez az Update Management megőrizheti feletti ellenőrzési képességét ütemezéseket, de lehetővé teszik a frissítések letöltése az Update Management karbantartási időszakon kívül. Ez megakadályozhatja az **karbantartási időszak túllépve** az Update Management hibákat.
 
 Akkor is állíthatja ezt a PowerShell-lel, futtassa a következő PowerShell-automatikus letöltés frissítések kívánt rendszeren.
 
@@ -297,7 +297,7 @@ $WUSettings.Save()
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>Engedélyezi a frissítéseket, más Microsoft-termékek
 
-Alapértelmezés szerint Windows Update csak frissítéseket kínál a Windows. Ha engedélyezi a **frissítéseinek fogadása más Microsoft-termékek Windows frissítésekor**, más termékek esetében rendelkezésre álló frissítések ilyen dolgot biztonsági javítások többek között az SQL Server- vagy egyéb első helyezését. Ezt a beállítást a csoportházirend által nem konfigurálható. Futtassa az alábbi PowerShell-lel a rendszereken, engedélyezze a más gyártótól származó első javítást a kívánt, és az Update Management betartja ezt a beállítást.
+Alapértelmezés szerint Windows Update csak frissítéseket kínál a Windows. Ha engedélyezi a **frissítéseinek fogadása más Microsoft-termékek Windows frissítésekor**, ilyen dolgot biztonsági javítások más termékek esetében, a frissítések megadott van többek között az SQL Server- vagy egyéb első helyezését. Ezt a beállítást a csoportházirend által nem konfigurálható. Futtassa az alábbi PowerShell-lel a rendszereken, engedélyezze a más gyártótól származó első javítást a kívánt, és az Update Management betartja ezt a beállítást.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -305,6 +305,11 @@ $ServiceManager.Services
 $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
+
+## <a name="third-party"></a> A Windows külső javítások
+
+Frissítéskezelés a WSUS támaszkodik, vagy Windows Update javítására irányuló támogatott Windows rendszereken. Eszközök, például a [System Center frissítés-közzétevő](/sccm/sum/tools/updates-publisher
+) (frissítés-közzétevő) lehetővé teszi, hogy a WSUS egyéni frissítések közzétételi. Ebben a forgatókönyvben lehetővé teszi, hogy a frissítéskezelési javítás gépek azok tárházához harmadik felek WSUS használni. Frissítés-közzétevő konfigurálása kapcsolatban lásd: [telepítése az Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Hálózattervezés
 
@@ -319,13 +324,13 @@ A következő címekre kifejezetten az Update Management szükségesek. Ezek a c
 
 A hibrid Runbook-feldolgozó által igényelt portokat kapcsolatos további információkért lásd: [hibrid feldolgozói szerepkör portok](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
-Javasoljuk, hogy a címek kivételek meghatározásakor. Az IP-címeket, letöltheti a [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl-címlistája hetente frissül, és tükrözi a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat.
+Azt javasoljuk, hogy a címek kivételek meghatározásakor. Az IP-címeket, letöltheti a [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl-címlistája hetente frissül, és tükrözi a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat.
 
 ## <a name="search-logs"></a>Keresés naplókban
 
 Mellett a részleteit, amelyet az Azure Portalon szemben a naplókban keresést végezhet. Válassza ki a megoldás lapokon **Log Analytics**. A **naplóbeli keresés** panel nyílik meg.
 
-Emellett megismerheti a lekérdezések testreszabásához, vagy különböző ügyfelek és több funkcionáló használják őket:  [Log Analytics-értesítés API keresése dokumentációja](
+Emellett megismerheti a lekérdezések testreszabásához, vagy különböző ügyfelek és több funkcionáló használják őket:  [A log Analytics keresési API-dokumentáció](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Mintalekérdezések
@@ -334,7 +339,7 @@ Az alábbi szakaszok nyújtanak naplózási mintalekérdezések Ez a megoldás �
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure Virtuálisgép-kiértékelés lekérdezések (Windows)
 
-A VMUUID értékét cserélje le a virtuális gép kérdez le a virtuális gép GUID Azonosítóját. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+A VMUUID értékét cserélje le a virtuális gép lekérdezésekor a virtuális gép GUID Azonosítóját. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
 
@@ -584,7 +589,7 @@ Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhán
 
 Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a gép, hogy a megfelelő frissítés további adatait, mert nem megfelelő.
 
-Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper használatával korlátozása. Bizonyos esetekben, előfordulhat, hogy kell futtassa újra a frissítés telepítése, ellenőrizze, ellenőrizze a frissítési napló.
+Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a viselkedés zypper korlátozva. Bizonyos esetekben a szükséges futtassa újra a frissítések telepítését. Győződjön meg arról, hogy a frissítés naplóban.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

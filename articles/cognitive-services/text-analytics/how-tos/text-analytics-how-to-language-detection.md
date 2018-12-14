@@ -9,14 +9,14 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 984a027a1fe2f9c894701058452490bdf12b66c4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633564"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338736"
 ---
-# <a name="example-how-to-detect-language-in-text-analytics"></a>Példa: Hogyan ismerhető fel a nyelv a Text Analytics-ben
+# <a name="example-how-to-detect-language-in-text-analytics"></a>Példa: A Text Analytics nyelv észlelése
 
 A [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) minden dokumentumra kiértékeli a szöveges bemenetet és visszaadja a nyelv azonosítót az elemzés erősségét jelző pontszámmal együtt. A Text Analytics 120 nyelv felismerésére képes.
 
@@ -52,17 +52,17 @@ A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 
             },                
             {
                 "id": "5",
-                "text": "Этот документ находится на английском языке."
+                "text": "Этот документ на английском языке."
             }
         ]
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérelem struktúra
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [API nyelvfelismerés](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
 + Állítsa be a HTTP-végpontot nyelvfelismerés, Szövegelemzés erőforrás használata az Azure- vagy egy példányosított [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/languages` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
@@ -73,7 +73,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

@@ -3,7 +3,7 @@ title: Az Azure Media Services - jelzés időzített metaadatok jelzése az él�
 description: Ez az meghatározás Media Services élő streamelési belül jelképző időzített metaadatok által támogatott kétféle vázolja fel. Ez az általános időzített metaadatok jelek, valamint SCTE – 35 splice beillesztését számára jelzés támogatását tartalmazza.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: cfowler
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2018
+ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249574"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384683"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés időzített metaadatok jelzése az élő Streamelés
 
@@ -46,7 +46,7 @@ A kulcs szavak "kell", "Nem", "Kötelező", "SHALL", "NOT kell", "SHOULD", "NOT 
 | Csatorna fogadó      | Az Azure Media élő adatfolyam-szolgáltatást                                                                                                                                                                                           |
 | HLS               | Apple HTTP Live Streaming protokoll                                                                                                                                                                                               |
 | KÖTŐJEL              | Dinamikus adaptív Streamelés HTTP-n keresztül                                                                                                                                                                                             |
-| Zökkenőmentes            | Zökkenőmentes Streamelési protokoll                                                                                                                                                                                                        |
+| Sima            | Zökkenőmentes Streamelési protokoll                                                                                                                                                                                                        |
 | MPEG2-TS          | MPEG-2 Transport Streams                                                                                                                                                                                                         |
 | RTMP              | Valós idejű multimédiás protokoll                                                                                                                                                                                                    |
 | uimsbf            | Előjel nélküli egész számokat legjelentősebb először bit.                                                                                                                                                                                    |
@@ -81,7 +81,7 @@ Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő form
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | Köteg        | Karakterlánc     | Szükséges | Az eseményüzenet.  [SCTE – 35]-üzenetek a Base64-kódolású kell lennie (IETF RFC 4648) bináris kódolású splice_info_section() ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket.                                              |
-| type       | Karakterlánc     | Szükséges | Egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s".  [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie.  |
+| type       | Karakterlánc     | Szükséges | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie.  |
 | id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik.|
 | időtartam   | Szám     | Szükséges | Az esemény vagy ad splice-szegmens, ha ismert időtartama. Ismeretlen, ha az érték lehet 0.                                                                 |
 | elapsed    | Szám     | Optional | A [SCTE – 35] hirdetési jel esetén ismételt alatt annak érdekében, hogy hallgassa meg, ezt a mezőt kell bemutató a splice kezdete óta eltelt idő mennyisége. Egységek törtmásodpercek. [SCTE – 35] módban Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens.                                                  |
@@ -105,7 +105,7 @@ A ritka fájlok nyomon követése deklarálni kell a kiszolgáló Manifest élő
 | parentTrackName    | Karakterlánc         | Szükséges      | A szülő pálya, amelyhez a ritka fájlok nyomon követése időkódját igazítva időskálára nevének kell lennie. A szülő nyomon követése nem lehet egy ritka nyomon követése.                                                                                                                    |
 | manifestOutput     | Logikai        | Szükséges      | "True", annak jelzésére, hogy a ritka fájlok nyomon követése ágyazva a zökkenőmentes ügyfél jegyzékfájl kell lennie.                                                                                                                                                               |
 | Altípus            | Karakterlánc         | Szükséges      | KELL lennie a négy karaktert code "Adatok".                                                                                                                                                                                                                         |
-| Séma             | Karakterlánc         | Szükséges      | KELL lennie egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. |
+| Séma             | Karakterlánc         | Szükséges      | Kell egy URN vagy URL-cím azonosítására az üzenet sémát. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. |
 | TrackName          | Karakterlánc         | Szükséges      | A ritka fájlok nyomon követése a nevének kell lennie. A trackName ugyanazt a sémát használja több esemény-adatfolyamok megkülönböztetéséhez használható. Minden egyedi esemény-adatfolyam követése egyedi névvel kell rendelkeznie.                                                                           |
 | időskálára          | Szám         | Optional      | Csökkentse a szülő követése kell lennie.                                                                                                                                                                                                                      |
 
@@ -226,7 +226,7 @@ A Szegmens-lista egy egyéni M3U címkében időzített metaadatok az Apple HTTP
 | **Attribútum neve** | **Típus**                      | **Kötelező?**                             | **Leírás**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | KÖTEG                | Idézett karakterlánc                 | Szükséges                                  | Az ismertetett módon Base64 kódolású karakterláncként kódolt üzenet [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). [SCTE – 35] üzeneteket ez nem a base64-kódolású splice_info_section().                                                                                                |
-| TÍPUS               | Idézett karakterlánc                 | Szükséges                                  | Egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35] üzenetek esetében a típus a speciális értéket "scte35" vesz fel.                                                                                                                                |
+| TÍPUS               | Idézett karakterlánc                 | Szükséges                                  | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35] üzenetek esetében a típus a speciális értéket "scte35" vesz fel.                                                                                                                                |
 | ID (Azonosító)                 | Idézett karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
 | IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték lehet 0. Egységek factional másodpercek alatt.                                                                                                                                                                                           |
 | ELTELT IDŐ            | decimális lebegőpontos szám | Nem kötelező, de szükség szerint eltoltan | A jel ismételt folyamatban van egy bemutató csúszóablakban támogatásához, ezt a mezőt a bemutatót, hogy mennyi ideig az esemény kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens. |
@@ -240,30 +240,17 @@ A HLS-lejátszó alkalmazásréteg a típus használatával azonosítására az 
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-MEDIA-SEQUENCE:346
 #EXT-X-TARGETDURATION:6
-#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXT-X-I-FRAMES-ONLY
+#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
+#EXTINF:4.000000,no-desc
+KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
 #EXTINF:6.000000,no-desc
-Fragments(video=0,format=m3u8-aapl)
+KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
+#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
 #EXTINF:6.000000,no-desc
-Fragments(video=60000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-#EXT-X-CUE: ID=”metadata-12.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”12.000000”, DURATION=”18.000000”,CUE=”HrwOi8vYmWVkaWEvhhaWFRlRDa=”
-Fragments(video=120000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=180000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=240000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=300000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=360000000,format=m3u8-aapl)
-#EXT-X-CUE: ID=”metadata-42.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”42.000000”, DURATION=”60.000000”,CUE=”PD94bWwgdm0iMS4wIiBlbmNvpD4=”
-#EXTINF:6.000000,no-desc
-Fragments(video=420000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=480000000,format=m3u8-aapl)
-…
+KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
 ~~~
 
 #### <a name="hls-message-handling"></a>HLS-üzenet kezelése
@@ -293,7 +280,7 @@ Az EventStream elem a következő tulajdonságokkal rendelkezzen:
 
 | **Attribútum neve** | **Típus**                | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s".                                                                |
+| scheme_id_uri      | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet séma; azonosítása Ha például "urn: scte:scte35:2013a:bin".                                                                |
 | érték              | sztring                  | Optional      | Az üzenet szemantikáját testreszabása a tulajdonosok között, a rendszer által használt egy további karakterláncértéket. Annak érdekében, hogy megkülönböztethető több esemény-adatfolyamok ugyanazt a sémát használja, az értéket kell beállítani az eseménystream (betöltési Smooth trackName vagy AMF üzenet neve az RTMP betöltési) nevére. |
 | Időskála          | 32 bites, előjel nélküli egész | Szükséges      | A időskálára órajel során végbemenő másodpercenként hányszor és időtartam mezők a "emsg" mezőben található.                                                                                                                                                                                                       |
 
@@ -335,11 +322,14 @@ Nulla vagy több esemény elemek találhatók meg az EventStream elemben találh
 
 
 <!-- Example Section in MPD -->
-
-<EventStream schemeIdUri=”urn:example:signaling:1.0” timescale=”1000” value=”player-statistics”>
-  <Event presentationTime=”0” duration=”10000” id=”0”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-  <Event presentationTime=”20000” duration=”10000” id=”1”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-</EventStream>
+  <EventStream schemeIdUri="urn:scte:scte35:2013a:bin" value="scte35_track_001_000" timescale="10000000">
+        <Event presentationTime="15447165200227600" duration="300000000" id="1026">/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w==</Event>
+        <Event presentationTime="15447166250227600" duration="300000000" id="1027">/DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==</Event>
+        <Event presentationTime="15447167300227600" duration="600000000" id="1028">/DAlAAAAAAAAAP/wFAUAAAQEf+//KjkknP4AUmXAAAAAAAAAWcEldA==</Event>
+        <Event presentationTime="15447168350227600" duration="600000000" id="1029">/DAlAAAAAAAAAP/wFAUAAAQFf+//KslyqP4AUmXAAAAAAAAAvKNt0w==</Event>
+        <Event presentationTime="15447169400227600" duration="300000000" id="1030">/DAlAAAAAAAAAP/wFAUAAAQGf+//K1mIvP4AKTLgAAAAAAAAt2zEbw==</Event>
+        <Event presentationTime="15447170450227600" duration="600000000" id="1031">/DAlAAAAAAAAAP/wFAUAAAQHf+//K+hc/v4AUmXAAAAAAAAANNRzVw==</Event>
+    </EventStream>
 ~~~
 
 >[!NOTE]
@@ -375,7 +365,7 @@ A mezők a DASHEventMessageBox az alábbi vannak meghatározva:
 
 | **Mező neve**          | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35] üzenetek esetében ez értéket vesz fel a speciális "urn: scte:scte35:2013a:bin", bár [SCTE-67-es] más javasolja. |
+| scheme_id_uri           | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35] üzenetek esetében ez értéket vesz fel a speciális "urn: scte:scte35:2013a:bin", bár [SCTE-67-es] más javasolja. |
 | Érték                   | sztring                  | Szükséges      | Az üzenet szemantikáját testreszabása a tulajdonosok között, a rendszer által használt egy további karakterláncértéket. Annak érdekében, hogy megkülönböztethető több esemény-adatfolyamok ugyanazt a sémát használja, az értéke lesz az eseménystream (betöltési Smooth trackName vagy AMF üzenet neve az RTMP betöltési) nevére.                                                                  |
 | Időskála               | 32 bites, előjel nélküli egész | Szükséges      | A időskálára órajel során végbemenő másodpercenként hányszor és időtartam mezők a "emsg" mezőben található.                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32 bites, előjel nélküli egész | Szükséges      | A media bemutató eltelt időtartam a bemutatót az esemény időpontja és a legkorábbi bemutató idő a szegmensben. A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12].                                                                                            |
@@ -398,9 +388,9 @@ Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tar
 
 **[SCTE – 35]**  ANSI/SCTE 35 2013a – csatlakoztassa, 2013a digitális Program beszúrási Cueing üzenet
 
-**[SCTE-67-ES]**  ANSI/SCTE 67-es 2014 – ajánlott eljárás, SCTE 35: digitális Program beszúrási Cueing üzenet kábel
+**[SCTE-67-ES]**  ANSI/SCTE 67-es 2014 – ajánlott eljárás, SCTE 35: Digitális Program beszúrási Cueing üzenet kábel
 
-**[DASH]**  ISO/IEC 23009-1 2014 – információtechnológiai – dinamikus adaptív streamelés keresztül HTTP (DASH) – 1. rész: Media bemutató leírását és a szegmens formátumát, a 2. kiadás
+**[DASH]**  ISO/IEC 23009-1 2014 – információtechnológiai – dinamikus adaptív streamelés keresztül HTTP (DASH) – 1. rész: Bemutató média leírása és a szegmens formátum, 2. kiadás
 
 **[HLS]**  ["HTTP Live Streaming", draft-pantos-http-live-streaming-14, 2014. október 14-én](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
@@ -410,7 +400,7 @@ Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tar
 
 **[LIVE-FMP4]**  [Specifikáció: darabolt MP4 élő azure Media Services feldolgozása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496 – 12]**  ISO/IEC 14496 – 12: rész 12 ISO alap médiafájl formátum, a negyedik kiadása 2012-07-15.
+**[ISO-14496 – 12]**  ISO/IEC 14496 – 12: Rész 12 ISO alap médiafájl-formátumban, a negyedik kiadása 2012-07-15.
 
 **[RTMP]**  ["Adobe valós idejű üzenetkezelő protokoll", 2012. December 21.](https://www.adobe.com/devnet/rtmp.html) 
 

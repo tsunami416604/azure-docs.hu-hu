@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b2efbbccedc2478b30a05fe2cd60c063de2a64d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 35493d9a7f47bda3344dbc8b0ea415d4492c5741
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309484"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340053"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Manager használatával
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -71,8 +71,6 @@ Miután befejezte a hozzáadásával vagy módosításával a tartományszolgál
 
 ## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/).
-
-[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 

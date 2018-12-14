@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 06/21/2018
+ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 7d3361b44d47fd97c14f677e5e4bbc6c1ee5ad3f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608297"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385125"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -39,7 +39,7 @@ Is könnyedén biztosíthatja, hogy vendég felhasználók rendelkeznek-e megfel
 
 A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások). Az ezt a funkciót használó összes felhasználónak, beleértve a felülvizsgálatot létrehozó, a felülvizsgálatot kitöltő és a hozzáférését megerősítő felhasználóknak is licencre van szükségük. 
 
-Ha azt tervezi, tekintse át a saját hozzáférését vendégfelhasználók kérje meg, olvassa el a Vendég felhasználói licenceléssel kapcsolatos. További információkért lásd: [Azure AD B2B-együttműködés licencelése](../b2b/licensing-guidance.md).
+Vendégfelhasználók tekintse át a saját hozzáférését is kérhet. Minden fizetős Azure AD Premium P2-licenc, amely a saját szervezet felhasználói egyik rendel B2B használatával a külső felhasználó keretet alatt legfeljebb öt vendégfelhasználók meghívása. Ezek a vendég felhasználók is az Azure AD Premium P2-funkciók is használhatók. További információkért lásd: [Azure AD B2B-együttműködés licencelése](../b2b/licensing-guidance.md).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzon létre, és a vendégek hozzáférési felülvizsgálat végrehajtása
 

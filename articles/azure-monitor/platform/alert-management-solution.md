@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 3e547a1ee077f8c8ac87395b38f8707a6467fbc9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1dee53f633d8b5edf893e2f6c83430d7c1a69022
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184287"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341592"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
 ![Kezelési figyelmeztető ikon](media/alert-management-solution/icon.png)
 
-A riasztási felügyeleti megoldás segít dolgozhatják fel a riasztások a Log Analytics-adattárban.  Ezek a riasztások előfordulhat, hogy többféle forrásból, többek között olyan forrásból kell származnia [Log Analytics által létrehozott](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) vagy [Nagios vagy Zabbix importált](../../azure-monitor/learn/quick-collect-linux-computer.md). A megoldás is importálja a riasztások bármelyik [csatlakoztatott felügyeleti csoportok System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
+A riasztási felügyeleti megoldás segít dolgozhatják fel a riasztások a Log Analytics-adattárban.  Ezek a riasztások előfordulhat, hogy többféle forrásból, többek között olyan forrásból kell származnia [Log Analytics által létrehozott](../../azure-monitor/platform/alerts-overview.md) vagy [Nagios vagy Zabbix importált](../../azure-monitor/learn/quick-collect-linux-computer.md). A megoldás is importálja a riasztások bármelyik [csatlakoztatott felügyeleti csoportok System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 A megoldás együttműködik a Log Analytics-tárházban típussal rendelkező rekordok **riasztási**, így bármilyen konfigurációra szükség, ezeket a rekordokat gyűjtéséhez kell végrehajtania.
 
-- A Log Analytics-riasztásokkal [riasztási szabályok létrehozásával](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) riasztási-rekordok létrehozása közvetlenül a tárházban.
+- A Log Analytics-riasztásokkal [riasztási szabályok létrehozásával](../../azure-monitor/platform/alerts-overview.md) riasztási-rekordok létrehozása közvetlenül a tárházban.
 - Nagios- és Zabbix-riasztások esetén [konfigurálja az ezeken a kiszolgálókon](../../azure-monitor/learn/quick-collect-linux-computer.md) riasztások a Log Analyticshez való küldéséhez.
 - A System Center Operations Manager riasztásaihoz [az Operations Manager felügyeleti csoport csatlakozni a Log Analytics-munkaterület](../../azure-monitor/platform/om-agents.md).  A System Center Operations Managerben létrehozott riasztásokat is importálja a Log Analytics.  
 
@@ -121,4 +121,4 @@ Az alábbi táblázat riasztási, a megoldás által összegyűjtött rekordokka
 
 
 ## <a name="next-steps"></a>További lépések
-* A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../../azure-monitor/platform/alerts-overview.md).

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b05fd9571494dfc3680e2d56fabb02de17920378
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197067"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336493"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 
-Az Azure monitorban metrikákhoz kapcsolódó riasztások hardvermódosításainak értesítést kaphat, amikor egy, a mérőszámok átlépnek egy küszöbértéket. Metrikákhoz kapcsolódó riasztások platform többdimenziós metrikák, egyéni metrikákat, az Application Insights standard és egyéni mérőszámok széles működik. Ebben a cikkben azt azt ismerteti, hogyan hozhat létre, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal és az Azure CLI használatával. Metrikaalapú riasztási szabályok ismertetett Azure Resource Manager-sablonok használatával is létrehozhat [egy külön cikk](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+Az Azure monitorban metrikákhoz kapcsolódó riasztások hardvermódosításainak értesítést kaphat, amikor egy, a mérőszámok átlépnek egy küszöbértéket. Metrikákhoz kapcsolódó riasztások platform többdimenziós metrikák, egyéni metrikákat, az Application Insights standard és egyéni mérőszámok széles működik. Ebben a cikkben azt azt ismerteti, hogyan hozhat létre, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal és az Azure CLI használatával. Metrikaalapú riasztási szabályok ismertetett Azure Resource Manager-sablonok használatával is létrehozhat [egy külön cikk](../../azure-monitor/platform/alerts-enable-template.md).
 
 Több hogyan metrika kapcsolatos riasztások dolgozhassanak további [metrika riasztások – áttekintés](alerts-metric-overview.md).
 
@@ -128,6 +128,6 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzon létre az Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+- [Hozzon létre az Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-enable-template.md).
 - [Megismerheti, hogyan riasztást küld a metrika a munkahelyi](alerts-metric-overview.md).
 - [A web hook sémáját metrikákhoz kapcsolódó riasztások ismertetése](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)

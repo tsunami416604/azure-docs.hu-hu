@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 54a88188a432a23476af6a1670635a23fb72eea7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643144"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341168"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -33,7 +33,7 @@ Vezénylési példányát kell futtatni, ha a korábbi tábla megfelelő sorait 
 
 A **példányok** táblában egy másik Azure Storage-táblába, amely tartalmaz egy feladat központ összes vezénylési példányok válik. Példányok létrehozásakor új sorok hozzáadódnak ebben a táblában. Ezt a táblázatot a partíciókulcs a vezénylési-példány Azonosítóját, a sorkulcs pedig egy rögzített konstans. Vezénylési példányonként egy sor van.
 
-Ez a tábla szolgál a példány a lekérdezésekre vonatkozó kérelmek teljesítéséhez a [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) API-t, valamint a [vonatkozó lekérdezés HTTP API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Folyamatosan idővel konzisztenssé váljanak a tartalmát a **előzmények** azt korábban említettük a táblában. Egy külön Azure Storage-táblába példány lekérdezési műveletek ily módon való hatékony felhasználása befolyásolja a [Command and Query Responsibility Segregation (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Ez a tábla szolgál a példány a lekérdezésekre vonatkozó kérelmek teljesítéséhez a [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET) és `getStatus` (JavaScript) API-k, valamint a [vonatkozó lekérdezés HTTP API](durable-functions-http-api.md#get-instance-status). Folyamatosan idővel konzisztenssé váljanak a tartalmát a **előzmények** azt korábban említettük a táblában. Egy külön Azure Storage-táblába példány lekérdezési műveletek ily módon való hatékony felhasználása befolyásolja a [Command and Query Responsibility Segregation (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Belső eseményindítók
 
@@ -53,10 +53,24 @@ Vezérlő várólisták többféle vezénylési életciklus üzenet típusú tar
 
 Az üzenetsorok, táblák és blobok Durable Functions által használt hozza létre a konfigurált Azure Storage-fiókban. A használni kívánt fiók használatával adható meg a `durableTask/azureStorageConnectionStringName` beállításával **host.json** fájlt.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+    }
   }
 }
 ```
@@ -67,6 +81,8 @@ Ha nincs megadva, az alapértelmezett `AzureWebJobsStorage` tárfiókot használ
 
 Tevékenység függvények olyan állapot nélküli és a méretezett ki automatikusan adja hozzá a virtuális gépeket. Az orchestrator-függvények, másrészt olyan *particionált* egy vagy több vezérlő várólistában. Vezérlő várólisták száma van definiálva a **host.json** fájlt. A következő példa host.json kódrészlet készletek a `durableTask/partitionCount` tulajdonságot `3`.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
@@ -74,6 +90,19 @@ Tevékenység függvények olyan állapot nélküli és a méretezett ki automat
   }
 }
 ```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "partitionCount": 3
+    }
+  }
+}
+```
+
 Egy feladat hub is konfigurálhatók, 1 és 16 partíciók között. Ha nincs megadva, az alapértelmezett partíciók száma az **4**.
 
 Ha horizontális felskálázás több függvény gazdagép példányra (általában a különböző virtuális gépek), minden példány zárolva van egy vezérlő üzenetsorok szerez be. Zárolás belső használatra vannak megvalósítva, a blob storage bérleteket, és győződjön meg arról, hogy egy vezénylési példányt csak egyetlen példány időpontban lefut egy. Ha egy feladat hub három vezérlő által kezelt üzenetsorok van konfigurálva, orchestration példányok lehet kiegyenlített terhelésű három virtuális gép között. További virtuális gépeket is hozzáadhatók növeli a kapacitást tevékenység függvény végrehajtásához.
@@ -106,11 +135,26 @@ Az Azure Functions támogatja, egyszerre egy egyetlen példányt belül több f�
 
 Mindkét tevékenység függvény és az orchestrator függvény egyidejűségi korlátját konfigurálható a **host.json** fájlt. A megfelelő beállítások `durableTask/maxConcurrentActivityFunctions` és `durableTask/maxConcurrentOrchestratorFunctions` jelölik.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10
+    }
   }
 }
 ```
@@ -121,15 +165,31 @@ Az előző példában legfeljebb 10 az orchestrator-funkciók és 10 tevékenys�
 > Ezek a beállítások hasznosak, memória és CPU-használat a egyetlen virtuális gép kezeléséhez. Viszont ha több virtuális gép között horizontálisan minden virtuális gép lesz korlátok külön készlete. Ezek a beállítások nem használható globális szinten vezérlésére.
 
 ## <a name="orchestrator-function-replay"></a>Az orchestrator függvény visszajátszás
+
 Ahogy korábban említettük, az orchestrator funkciók vannak játssza vissza a tartalma a **előzmények** tábla. Alapértelmezés szerint minden alkalommal, amikor egy üzenetköteget vezérlő üzenetsorból vannak az orchestrator függvénykód játssza vissza.
 
 Ez a viselkedés agresszív visszajátszását letiltható engedélyezésével **bővített munkamenet**. Bővített munkamenet engedélyezve vannak, ha az orchestrator függvény példányok tartják hosszabb és az új üzenetek teljes ismétlés nélküli feldolgozható memóriában. Bővített munkamenet engedélyezve vannak a beállításával `durableTask/extendedSessionsEnabled` való `true` a a **host.json** fájlt. A `durableTask/extendedSessionIdleTimeoutInSeconds` beállítás van annak vezérlésére szolgál, hogy mennyi ideig-üresjárat vissza lesz tartva, a memória:
+
+### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
   "durableTask": {
     "extendedSessionsEnabled": true,
     "extendedSessionIdleTimeoutInSeconds": 30
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "extendedSessionsEnabled": true,
+      "extendedSessionIdleTimeoutInSeconds": 30
+    }
   }
 }
 ```

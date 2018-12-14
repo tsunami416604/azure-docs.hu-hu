@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393982"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338462"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
 
@@ -76,7 +76,7 @@ Kívül, a rendszer által biztosított kézbesítetlen levelek kezelése alkalm
 
 Üzeneteket küld az átvitel kézbesítetlen levelek várólistájára vonatkozik az alábbi feltételek:
 
-- Egy üzenet legfeljebb 3 várólisták és témakörök, amelyek áthalad [összeláncolt](service-bus-auto-forwarding.md).
+- Több mint 4 várólisták és témakörök, amelyek áthalad egy üzenet [összeláncolt](service-bus-auto-forwarding.md).
 - A cél-üzenetsor vagy témakör le van tiltva vagy törölve.
 - A cél-üzenetsor vagy témakör meghaladja a maximális entitás.
 

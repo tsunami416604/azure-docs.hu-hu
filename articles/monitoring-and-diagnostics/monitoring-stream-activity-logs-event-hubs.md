@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: c8a932ac06b58a8e683e326f082a3a2c038dba66
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ac3b87f8db89df4b766fee1a27707877a2d12ba3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273705"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383357"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
@@ -99,7 +99,7 @@ Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő
 A tevékenységnapló sémája érhető el a [figyelése az Azure-tevékenységnapló előfizetés](monitoring-overview-activity-logs.md). Minden esemény van egy JSON-blobok nevű tömbben *rekordok*.
 
 ## <a name="next-steps"></a>További lépések
-* [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
+* [A tárfiókhoz a tevékenységnapló archiválása](../azure-monitor/platform/archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
 * [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../azure-monitor/platform/alerts-log-webhook.md)
 

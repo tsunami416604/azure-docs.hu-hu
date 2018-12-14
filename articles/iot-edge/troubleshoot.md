@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 448fe3e7d6f3129ce6a40494abcf993f6dc4e4f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cd9ff1a1a7730ae870ef4e80fbca2d934aa5c8e2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081404"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342663"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -101,7 +101,7 @@ Windows rendszeren:
 
 ### <a name="check-container-logs-for-issues"></a>Ellenőrizze a tároló naplóinak problémák
 
-Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók a hibák észlelése. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
+Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók a hibák észlelése. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezet alkotó tárolókat: Az Edge Agent és az Edge hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
 
    ```cmd
    iotedge logs <container name>
@@ -147,7 +147,7 @@ Cserélje le `env: {}` együtt:
 
 Mentse a fájlt, és indítsa újra a IoT Edge-kezelő.
 
-Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További információkért lásd: [hasznos eszközt az Azure IoT fejlesztése során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezek az üzenetek megtekintéséhez használja a [Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) Visual Studio Code-bővítmény (korábbi nevén Azure IoT-eszközkészlet bővítmény). További információkért lásd: [hasznos eszközt az Azure IoT fejlesztése során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Indítsa újra a tárolók
 Miután megvizsgálta a naplók és üzenetek információit, próbálja meg újraindítani a tárolók:

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/13/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55226204d148239b7c32d1abc6f61fddcfc5b913
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 116f1f0a93c09ed751f0720ae74a2c24df7541eb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104978"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342510"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -28,7 +28,7 @@ A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára a
 ## <a name="bkmk_OSs"></a> A támogatott operációs rendszerek
 Az Azure Disk Encryption a következő operációs rendszereken támogatott:
 
-- Windows Server-verzió: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016-ban.
+- A Windows Server következő verziói: A Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016-ban.
     - A Windows Server 2008 R2, a .NET-keretrendszer 4.5 telepítve van az Azure-ban titkosítás engedélyezése előtt kell rendelkeznie. Telepítse a Windows Update a választható frissítés a Microsoft .NET-keretrendszer 4.5.2-es verziója a Windows Server 2008 R2 x64 alapú rendszerekhez ([KB2901983](https://support.microsoft.com/kb/2901983)).    
 - Windows-ügyfélverziókat: Windows 8-ügyfél és a Windows 10-ügyfeleknek.
 - Az Azure Disk Encryption, csak a meghatározott Azure-katalógus-alapú Linux-kiszolgáló disztribúciók és verziók. A jelenleg támogatott verziók listájáért tekintse meg a [Azure Disk Encryption – gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
@@ -37,7 +37,7 @@ Az Azure Disk Encryption a következő operációs rendszereken támogatott:
 ## <a name="bkmk_LinuxPrereq"></a> Linux rendszerű Iaas virtuális gépek további Előfeltételek 
 
 - Az Azure Disk Encryption for Linux 7 GB RAM a virtuális gép operációs rendszer lemeztitkosítás engedélyezve a szükséges [által támogatott lemezképek](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Az operációs rendszer lemez titkosítási folyamat befejeződése után a virtuális gép futtatása kevesebb memóriával konfigurálható.
-- Titkosítás engedélyezése előtt titkosítani az adatlemezek kell /etc/fstab megfelelően szerepel. Ez a bejegyzés állandó blokk eszköz nevét a "/ dev/sdX" formátumban nevek nem támaszkodnak társítani kell ugyanazon a lemezen újraindítások, különösen akkor, ha a rendszer titkosítást alkalmaz eszközként használja. Ezt a viselkedést a további részletekért lásd: [elhárítása Linux rendszerű virtuális gép eszköznév módosítása](../virtual-machines/linux/troubleshoot-device-names-problems.md)
+- Titkosítás engedélyezése előtt titkosítani az adatlemezek kell /etc/fstab megfelelően szerepel. Ez a bejegyzés állandó blokk eszköz nevét a "/ dev/sdX" formátumban nevek nem támaszkodnak társítani kell ugyanazon a lemezen újraindítások, különösen akkor, ha a rendszer titkosítást alkalmaz eszközként használja. Ezt a viselkedést a további részletekért lásd: [Hibaelhárítás a Linux rendszerű virtuális gép eszköznév módosítása](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Ellenőrizze, hogy a /etc/fstab beállításokat a csatlakoztatáshoz szükséges megfelelően van beállítva. Ezeket a beállításokat, a mount - parancs futtatása vagy a virtuális gépet, és aktiválja a újracsatlakoztatást ezzel a módszerrel. Miután ez befejeződött, ellenőrizze, ellenőrizze, hogy a meghajtó is csatlakoztatva van a lsblk parancs kimenete. 
     - Ha a /etc/fstab fájl megfelelően titkosítás engedélyezése előtt nem csatlakoztatja a meghajtót, az Azure Disk Encryption nem lehet megfelelően csatlakoztatásához.
     - Az Azure Disk Encryption folyamat kerül át a csatlakoztatási adatokat /etc/fstab és a saját konfigurációs fájlba a titkosítási folyamat részeként. Nem lehet terekbe megtekintéséhez a data encryption meghajtó után a /etc/fstab hiányzó bejegyzés befejeződött.
@@ -58,7 +58,7 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
 **Csoportházirend:**
  - Az Azure Disk Encryption megoldás a BitLocker külső kulcsvédő Windows IaaS virtuális gépekhez használja. Tartományhoz csatlakozó virtuális gépek esetén nem leküldéses bármely csoportházirendek, amelyeket a TPM-védőt. "A BitLocker engedélyezése a kompatibilis TPM nélküli" a csoportházirenddel kapcsolatos információkért lásd: [a BitLocker csoportházirend-hivatkozás](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup).
 
--  Egyéni csoportházirend-tartományhoz csatlakoztatott virtuális gépeken a BitLocker-házirendnek tartalmaznia kell a következő beállítást: [-> engedélyezése 256 bites helyreállítási kulcs felhasználói tárolás konfigurálása a bitlocker helyreállítási adatainak](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Az Azure Disk Encryption sikertelen lesz, ha egyéni csoportházirend-beállítások a BitLocker nem kompatibilis. Gépeken, amelyek nem rendelkeznek a megfelelő házirend-beállítást, az új szabályzat alkalmazásának frissítése (a gpupdate.exe/Force) az új szabályzat kényszerítése és indítsa újra lehet szükség.  
+-  Egyéni csoportházirend-tartományhoz csatlakoztatott virtuális gépeken a BitLocker-házirendnek tartalmaznia kell a következő beállítást: [Felhasználói tárolás konfigurálása a bitlocker helyreállítási adatainak engedélyezése 256 bites helyreállítási kulcs ->](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Az Azure Disk Encryption sikertelen lesz, ha egyéni csoportházirend-beállítások a BitLocker nem kompatibilis. Gépeken, amelyek nem rendelkeznek a megfelelő házirend-beállítást, az új szabályzat alkalmazásának frissítése (a gpupdate.exe/Force) az új szabályzat kényszerítése és indítsa újra lehet szükség.  
 
 
 ## <a name="bkmk_PSH"></a> Azure PowerShell-lel
@@ -195,40 +195,40 @@ Az Azure platform a titkosítási kulcsok vagy titkos kódok, hogy elérhetők l
 ### <a name="bkmk_KVperPSH"></a> Speciális hozzáférési szabályzatok az Azure PowerShell használatával a key vault beállítása
  A key vault PowerShell-parancsmag [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) lemez titkosítása a key vault engedélyezése.
 
-  - **A Key Vault engedélyezése lemeztitkosítás:** EnabledForDiskEncryption szükség az Azure Disk encryption.
+  - **Lemeztitkosítás Key Vault engedélyezése:** EnabledForDiskEncryption szükség az Azure Disk encryption.
       
      ```azurepowershell-interactive 
      Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDiskEncryption
      ```
 
-  - **A Key Vault engedélyezése a központi telepítéshez, szükség esetén:** lehetővé teszi, hogy a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
+  - **Szükség esetén engedélyezze a Key Vault üzembe helyezés:** Lehetővé teszi a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
 
      ```azurepowershell-interactive
       Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDeployment
      ```
 
-  - **A Key Vault engedélyezése a sablon üzembe helyezéshez, szükség esetén:** Azure Resource Manager lehetővé teszi, hogy a titkos kódok lekéréséhez a kulcstartóban, ha a kulcstartó hivatkozik egy sablon telepítése.
+  - **A Key Vault engedélyezése központi telepítési sablont, szükség esetén:** Lehetővé teszi, hogy a kulcstartóban titkos kódok lekéréséhez, ha a kulcstartó hivatkozik egy sablon telepítése Azure Resource Managerrel.
 
      ```azurepowershell-interactive             
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment`
+     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
      ```
 
 ### <a name="bkmk_KVperCLI"></a> Set a key vault speciális hozzáférési szabályzatok az Azure CLI használatával
 Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) lemez titkosítása a key vault engedélyezése. 
 
- - **A Key Vault engedélyezése lemeztitkosítás:** engedélyezve a lemez titkosításra szükség. 
+ - **Lemeztitkosítás Key Vault engedélyezése:** Engedélyezve van-az-lemez-titkosításra szükség. 
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MySecureRG" --enabled-for-disk-encryption "true"
      ```  
 
- - **A Key Vault engedélyezése a központi telepítéshez, szükség esetén:** lehetővé teszi, hogy a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
+ - **Szükség esetén engedélyezze a Key Vault üzembe helyezés:** Lehetővé teszi a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MySecureRG" --enabled-for-deployment "true"
      ``` 
 
- - **A Key Vault engedélyezése a sablon üzembe helyezéshez, szükség esetén:** Resource Manager lehetővé teszi a titkos kódok lekérése a tárolóból.
+ - **A Key Vault engedélyezése központi telepítési sablont, szükség esetén:** Lehetővé teszi a Resource Manager beolvasni a titkos kulcsok a tárolóból.
      ```azurecli-interactive  
      az keyvault update --name "MySecureVault" --resource-group "MySecureRG" --enabled-for-template-deployment "true"
      ```

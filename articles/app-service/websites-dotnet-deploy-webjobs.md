@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 300ccf5da3528be63ae618338b8953d05b0e799d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965342"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337461"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure App Service webjobs-feladatok
 
@@ -142,7 +142,7 @@ Amikor konfigurál egy Konzolalkalmazást WebJobs üzembe helyezéshez, a Visual
           "runMode": "Continuous"
         }
 
-Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ http://schemastore.org ](http://schemastore.org/schemas/json/webjob-publish-settings.json) ott lehet megtekinteni.  
+Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ https://schemastore.org ](https://schemastore.org/schemas/json/webjob-publish-settings.json) ott lehet megtekinteni.  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 A WebJobs-kompatibilis projekt kapcsol egy web projektet, ha a Visual Studio a webjobs-feladatok projekt nevét tárolja egy *webjobs-list.json* fájlt a webalkalmazás-projektben *tulajdonságok* mappát. A lista tartalmazhatja több WebJobs projekteket, a következő példában látható módon:
@@ -159,7 +159,7 @@ A WebJobs-kompatibilis projekt kapcsol egy web projektet, ha a Visual Studio a w
           ]
         }
 
-Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ http://schemastore.org ](http://schemastore.org/schemas/json/webjobs-list.json) ott lehet megtekinteni.
+Közvetlenül szerkesztheti ezt a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolt [ https://schemastore.org ](https://schemastore.org/schemas/json/webjobs-list.json) ott lehet megtekinteni.
 
 ## <a id="deploy"></a>A WebJobs-projekt üzembe helyezése
 Egy WebJobs-projektet, amelyet összekapcsolt, hogy webes projektet a webes projekt automatikusan üzembe helyezi. További információ a webes projekt telepítése: **útmutató végigvezeti a** > **üzembe helyezés alkalmazás** a bal oldali navigációs.

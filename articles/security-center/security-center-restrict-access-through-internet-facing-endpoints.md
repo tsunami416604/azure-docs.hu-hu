@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 487b9d8d02909913f251ae7547d75669fa90f8d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a1677e2c5518fec4412adb87cd058571bd435dd4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313300"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338488"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben az Internet felé néző végpontok hozzáférésének korlátozása
 Az Azure Security Center javasolni fogja, hogy az Internet felé néző végpontok hozzáférésének korlátozása, ha bármely a hálózati biztonsági csoportok (NSG) egy vagy több bejövő szabályt, amely engedélyezi a hozzáférést a "bármely" forrás IP-címről. Nyissa meg a "bármely" való hozzáférést lehetővé teheti a támadók számára az erőforrások eléréséhez. A Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.
@@ -60,7 +60,7 @@ Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Hozz
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági házirendek beállítása az Azure Security Centerben](security-center-azure-policy.md) – Annak bemutatása, hogy miként konfigurálhat biztonsági házirendeket Azure-előfizetéseihez és az erőforráscsoportokhoz.
+* [Biztonsági házirendek beállítása az Azure Security Centerben](tutorial-security-policy.md) – Annak bemutatása, hogy miként konfigurálhat biztonsági házirendeket Azure-előfizetéseihez és az erőforráscsoportokhoz.
 * [Biztonsági javaslatok kezelése az Azure Security Centerben](security-center-recommendations.md) – Miként könnyítik meg a javaslatok az Azure-erőforrások védelmét?
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

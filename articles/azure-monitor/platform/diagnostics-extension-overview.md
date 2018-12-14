@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1219090c4608d5c87bfe967444122b61d7fdbf5f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326126"
+ms.locfileid: "53338158"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
 Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../../azure-monitor/overview.md).
@@ -47,7 +47,7 @@ Emellett elküldheti az, hogy [Application Insights](../../application-insights/
 ### <a name="azure-monitor"></a>Azure Monitor
 Is választhat, hogy az Azure Monitor az adatok küldésére. Jelenleg ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy a virtuális Gépen, VMSS, gyűjtött teljesítményszámlálók küldése vagy a felhőalapú szolgáltatás az Azure monitornak egyéni mérőszámokként. Az Azure Monitor-fogadó támogatja:
 * Az Azure Monitor használatával küldött összes teljesítményszámlálók beolvasása a [Azure Monitor-metrikák API-k.](https://docs.microsoft.com/rest/api/monitor/)
-* Az Azure Monitor használatával az új riasztást küld minden teljesítményszámlálót küldött [egységes riasztások kezelőfelület](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) az Azure monitorban
+* Az Azure Monitor használatával az új riasztást küld minden teljesítményszámlálót küldött [egységes riasztások kezelőfelület](../../azure-monitor/platform/alerts-overview.md) az Azure monitorban
 * Helyettesítő operátor kezelni a teljesítményszámlálók a metrika a "Példány" dimenzió.  Például ha összegyűjtött a "logikai lemez (\*) / DiskWrites/mp" számláló tudni szűrőt, és minden egyes logikai lemez (C:, d, stb.) a virtuális gépen a "Példány" dimenzión diagram vagy a Lemezírások/mp riasztások felosztása
 
 A fogadó konfigurálásáról további tudnivalókért tekintse meg a [az Azure diagnostics-séma dokumentációját.](diagnostics-extension-schema-1dot3.md)

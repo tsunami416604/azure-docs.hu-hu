@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 0338ffa13d1b141bb40deaf43fd04fe37bfaf5d2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252107"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338583"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -291,7 +291,7 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
     ![Irányítópult, amely a virtuális hálózatok eloszlása](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - A virtuális hálózati topológia látható a felső szalagon kiválasztása hasonlóan a virtuális hálózat (belső virtuális hálózati kapcsolatok/Active/Inactive) paraméterek, a külső kapcsolatokat, aktív forgalommal és rosszindulatú forgalmat a virtuális hálózat.
-- A virtuális hálózati topológiát, előfizetések, munkaterületek, resouece csoportok és időintervallum alapján szűrhetők. További szűrőket, amelyek segítenek megérteni, a folyamat vannak: Flow típusa (virtuális hálózatok közötti, IntraVNET stb.), a Flow irányát (bejövő, kimenő), a folyamat állapota (engedélyezett, letiltva) virtuális hálózatok (a megcélzott és a csatlakoztatott), a (társviszony-létesítés vagy átjáró - P2S és S2S) kapcsolat típusa és NSG-t. Ezek a szűrők használatával részletesen vizsgálni kívánt virtuális hálózatok összpontosíthat.
+- A virtuális hálózati topológiát, előfizetések, munkaterületek, erőforráscsoportok és időintervallum alapján szűrhetők. További szűrőket, amelyek segítenek megérteni, a folyamat vannak: Flow típusa (virtuális hálózatok közötti, IntraVNET stb.), a Flow irányát (bejövő, kimenő), a folyamat állapota (engedélyezett, letiltva) virtuális hálózatok (a megcélzott és a csatlakoztatott), a (társviszony-létesítés vagy átjáró - P2S és S2S) kapcsolat típusa és NSG-t. Ezek a szűrők használatával részletesen vizsgálni kívánt virtuális hálózatok összpontosíthat.
 - A virtuális hálózati topológia például egy virtuális hálózathoz (engedélyezett/letiltott/bejövő/kimenő/Benign/kártékony) folyamatokat, protokoll és hálózati biztonsági csoportok, érdemes forgalom elosztását mutatja:
 
     ![Virtuális hálózati topológiától, amely a forgalom terjesztési és a folyamat részletei](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

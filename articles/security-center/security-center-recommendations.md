@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3e8333b521832579a942d3fffb06103ad0431acc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d0c61f6e905ca109f3f178996a08f353c36e7880
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316617"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337206"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használatát az Azure Security Centerben az Azure-erőforrások védelmére.
@@ -34,13 +34,13 @@ A Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapo
 
 ## <a name="implementing-security-recommendations"></a>Biztonsági javaslatok alkalmazása
 ### <a name="set-recommendations"></a>Set-javaslatok
-A [biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md), fog megismerkedni:
+A [biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md), fog megismerkedni:
 
 * Biztonsági szabályzatok konfigurálása.
 * Kapcsolja be az adatgyűjtést.
 * Válassza ki, melyik javaslatok a biztonsági szabályzat részeként megtekintéséhez.
 
-Aktuális javaslatok szabályzatközpontban Rendszerfrissítések, az alapkonfigurációs szabályok, a kártevőirtó programok, körül [hálózati biztonsági csoportok](../virtual-network/security-overview.md) alhálózatok és a hálózati adapterek, SQL database naplózási szolgáltatása, az SQL database transzparens adattitkosítás, és a webalkalmazás-tűzfalak.  [Biztonsági szabályzatok beállítása](security-center-azure-policy.md) minden javaslat beállítás leírását.
+Aktuális javaslatok szabályzatközpontban Rendszerfrissítések, az alapkonfigurációs szabályok, a kártevőirtó programok, körül [hálózati biztonsági csoportok](../virtual-network/security-overview.md) alhálózatok és a hálózati adapterek, SQL database naplózási szolgáltatása, az SQL database transzparens adattitkosítás, és a webalkalmazás-tűzfalak.  [Biztonsági szabályzatok beállítása](tutorial-security-policy.md) minden javaslat beállítás leírását.
 
 ### <a name="monitor-recommendations"></a>A figyelő javaslatok
 Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ön erőforrásainak állapotát, hogy észlelhesse a potenciális biztonsági réseket. A **javaslatok** alatt csempe **áttekintése** lehetővé teszi, hogy ismeri a Security Center által azonosított javaslatok teljes száma.
@@ -55,14 +55,14 @@ Javaslatok szűrheti. A javaslatok szűréséhez válasszon **szűrő** a a **ja
 
 A javaslatok egy tábla formájában jelennek meg, amelyben minden egyes sor egy adott javaslatot tartalmaz. Ez a tábla oszlopait a következők:
 
-* **Leírás**: bemutatja a javaslat, és mit kell végrehajtani, e-mail-címeit.
-* **ERŐFORRÁS**: sorolja fel az erőforrásokat, amelyekre ez a javaslat vonatkozik.
-* **ÁLLAPOT**: a javaslat aktuális állapotát ismerteti:
-  * **Nyissa meg**: A javaslattal egyelőre még nem foglalkoztak.
-  * **Folyamatban lévő**: A javaslat jelenleg alkalmaznak az erőforrásokhoz, és ilyenkor Ön nem szükséges.
-  * **Megoldott**: A javaslatot már befejeződött (ebben az esetben a sor szürkén jelenik meg).
-* **SEVERITY** (Súlyosság): az adott javaslat súlyosságát határozza meg:
-  * **Magas**: biztonsági rés fontos erőforrásnál (például egy alkalmazást, a virtuális gép vagy a hálózati biztonsági csoport) létezik, és beavatkozást igényel.
+* **LEÍRÁS**: Ismerteti a javaslat, és mit kell végrehajtani, e-mail-címeit.
+* **ERŐFORRÁS**: Listázza az erőforrásokat, amelyekre ez a javaslat vonatkozik.
+* **ÁLLAPOT**: Ismerteti a javaslat aktuális állapota:
+  * **Nyissa meg**: Az javaslattal egyelőre még nem foglalkoztak.
+  * **Folyamatban lévő**: Az ajánlás jelenleg alkalmaznak az erőforrásokhoz, és ilyenkor Ön nem szükséges.
+  * **Megoldott**: Az ajánlás már befejeződött (ebben az esetben a sor szürkén jelenik meg).
+* **SÚLYOSSÁG**: Ismerteti, hogy az adott javaslat súlyosságát:
+  * **Magas**: Biztonsági rés fontos erőforrásnál (például egy alkalmazást, a virtuális gép vagy a hálózati biztonsági csoport) létezik, és beavatkozást igényel.
   * **Közepes**: A biztonsági rés, és nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy ezt meg kell szüntetni.
   * **Alacsony**: A biztonsági rés, amelyek beavatkozást igényel, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint alacsony súlyosságú javaslatok nem jelennek meg, de Ön is szűrővel bekapcsolhatja, ha meg szeretné tekinteni azokat.)
 
@@ -135,7 +135,7 @@ A fenti ajánlásokat tábla válasszon ki egy javaslatot, és haladjon végig, 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerhette a Security Center biztonsági javaslatokat. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.

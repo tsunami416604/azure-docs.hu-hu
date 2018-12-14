@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7b02f5b55b12b9e35e749ff845e2af2f6598364b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0524e38f155049c630ace7f33805ef230c8dccca
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285493"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344244"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
 A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
@@ -479,5 +479,5 @@ Minden egyes hibához szervizelés lépései a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az új [Azure Alerts élmény](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* További információ az új [Azure Alerts élmény](../../azure-monitor/platform/alerts-overview.md).
 * Ismerje meg [naplóriasztások az Azure Alerts](alerts-unified-log.md).

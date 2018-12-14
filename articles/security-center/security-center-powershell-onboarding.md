@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ce410e69427f29ce70f8b2136a08bd7e6d00113c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249713"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340368"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Előkészítés a PowerShell-lel az Azure Security Center automatizálása
 
@@ -40,7 +40,7 @@ Ebben a példában azt engedélyezi a Security Center egy adott előfizetés-azo
 
 5. Állítsa be a szervezet [CISO, mint a biztonsági kapcsolattartó ASC riasztások és a jelentős események](security-center-provide-security-contact-details.md).
 
-6. Rendelje hozzá a Security Center [alapértelmezett biztonsági házirendek](security-center-azure-policy.md).
+6. Rendelje hozzá a Security Center [alapértelmezett biztonsági házirendek](tutorial-security-policy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,6 +111,6 @@ Hogyan automatizálhatja a Security Center bevezetése használhatja PowerShell 
 
 A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

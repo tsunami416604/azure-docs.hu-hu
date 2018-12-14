@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281353"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386502"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
 
@@ -46,7 +46,7 @@ Ismerje meg, hogyan keresse meg a HDInsight-fürthöz adott mérőszámok.
 
 5. A bal oldali ablaktáblában alatt **típusa**, válassza ki a részletes megismerésére, és válassza ki a használni kívánt metrikát **alkalmaz**. Az alábbi képernyőfelvételen a `metrics_resourcemanager_queue_root_default_CL` típus van kiválasztva.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Előfordulhat, hogy ki kell választania a **[+] további** gombra kattintva keresse meg a keresett metrikát. Emellett a **alkalmaz** gombra a lista alján van, úgy kell görgessen lefelé való megtekintéshez.
 
     Figyelje meg, hogy a lekérdezés a szövegmezőben módosul, a kiemelt mezőbe az alábbi képernyőfelvételen is látható:
@@ -115,7 +115,7 @@ Szerkesztéséhez, vagy egy meglévő riasztás törléséhez:
 1. Az Azure Portalról nyissa meg a Log Analytics-munkaterületet.
 2. A bal oldali menüben válassza ki a **riasztási**.
 3. Válassza ki a kívánt riasztásra, szerkesztéséhez vagy törléséhez.
-4. Az alábbi lehetőségek állnak rendelkezésére: **mentése**, **elveti**, **letiltása**, és **törlése**.
+4. A következő lehetőségek közül választhat: **Mentés**, **elveti**, **letiltása**, és **törlése**.
 
     ![HDInsight a Log Analytics – törlés szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

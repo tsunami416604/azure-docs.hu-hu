@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
-ms.openlocfilehash: 4535b141d177e49567d99a88d0c3883f5ddf746a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 839c8bfe6748c1aeaf7c8804ef4388cf8a623bdb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956806"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337835"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Az Azure Security Center és Azure SQL Database szolgáltatás
 [Az Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
@@ -60,7 +60,7 @@ Beállíthat egy szabályzatot, amely az SQL-naplózás és az SQL transzparens 
 Biztonsági szabályzat beállításához válassza ki a **házirend** csempe a Security Center panel. Az a **biztonsági házirend** panelen válassza ki az előfizetést, amelyen szeretné engedélyezni a biztonsági szabályzatot. Válassza ki **megelőzési szabályzat** kapcsolja **a** a biztonsági javaslatok láthatók, amelyet az előfizetésnél használni szeretne.
 ![Biztonsági szabályzat][3]
 
-További tudnivalókért lásd: [biztonsági szabályzatok beállítása](security-center-azure-policy.md).
+További tudnivalókért lásd: [biztonsági szabályzatok beállítása](tutorial-security-policy.md).
 
 ## <a name="manage-security-recommendation"></a>Biztonsági javaslatok kezelése
 A Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik Önt a szükséges vezérlők konfigurálásának folyamatán.
@@ -85,7 +85,7 @@ Kövesse a [az Azure Portalon az SQL Database fenyegetésészlelési](../sql-dat
 Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
 
 ## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-azure-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  Az erőforrások biztonsági állapotát is megtekintheti a **erőforrás biztonsági állapota** csempére. Kattintva **adatok** a a **erőforrás biztonsági állapota** csempére a **adatforrások** panelt, amelynek SQL-javaslatok, például a naplózási és átlátható adatok nem engedélyezhető a titkosítás. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  Az erőforrások biztonsági állapotát is megtekintheti a **erőforrás biztonsági állapota** csempére. Kattintva **adatok** a a **erőforrás biztonsági állapota** csempére a **adatforrások** panelt, amelynek SQL-javaslatok, például a naplózási és átlátható adatok nem engedélyezhető a titkosítás. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
 ![Erőforrás biztonsági állapota][6]
 
 További tudnivalókért lásd: [biztonsági állapotfigyelés](security-center-monitoring.md).

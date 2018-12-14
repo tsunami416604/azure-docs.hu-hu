@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023747"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342238"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
@@ -51,7 +51,7 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |---------|---------|
 |Forrás vezérlő neve     | Egy rövid nevet a verziókövetés        |
 |Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure DevOps (Git)</br> Az Azure DevOps (TFVC)        |
-|Tárház     | A tárház vagy projekt nevét. Ezt az értéket a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
+|Adattár     | A tárház vagy projekt nevét. Ezt az értéket a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem áll rendelkezésre a TFVC verziókövetési típusa számára.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks         |
 |Automatikus szinkronizálása     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
@@ -62,7 +62,7 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 
 ## <a name="syncing"></a>Szinkronizálás…
 
-Automatikusan autosync konfigurálása a verziókövetés integrációja konfigurálása során, elindítja a kezdeti szinkronizálás. Ha automatikus szinkronizálása nem lett beállítva, válassza ki a forrás a tábla a a **verziókövetés (előzetes verzió)** lapot. Kattintson a **szinkronizálás indítása** a szinkronizálási folyamat elindításához.  
+Automatikusan autosync konfigurálása a verziókövetés integrációja konfigurálása során, elindítja a kezdeti szinkronizálás. Ha automatikus szinkronizálása nem lett beállítva, válassza ki a forrás a tábla a a **verziókövetés (előzetes verzió)** lapot. Kattintson a **szinkronizálás indítása** a szinkronizálási folyamat elindításához.
 
 A jelenlegi szinkronizálási feladat vagy a korábbiakat kattintva állapotát is megtekintheti a **feladatok szinkronizálása** fülre. Az a **verziókövetés** legördülő menüben válassza ki a verziókövetési.
 

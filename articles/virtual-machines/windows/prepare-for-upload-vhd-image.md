@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/10/2018
+ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 6aa13096b61fc1bf44d370b3d7dcc01a0df74e8d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 74132c436670247f3eb84859216274d3e1363d07
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321341"
+ms.locfileid: "53338702"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -73,6 +73,16 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     ```PowerShell
     netsh winhttp reset proxy
     ```
+
+    Ha a virtuális gép kell semmilyen speciális proxykat, hozzá kell adnia a proxy-kivétel az Azure IP-cím ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)), így a virtuális gép kapcsolódik az Azure-ban:
+    ```
+    $proxyAddress="<your proxy server>"
+    $proxyBypassList="<your list of bypasses>;168.63.129.16"
+
+    netsh winhttp set proxy $proxyAddress $proxyBypassList
+    ```
+
 3. A lemez a SAN-szabályzat beállítása [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell

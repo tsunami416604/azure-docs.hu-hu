@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/10/2018
+ms.date: 12/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 448ef296af3ceaffffa1a4a69060916afd9abdc4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6ec3ca7c1323b342612293c5ea3ca1443370c9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185681"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386384"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -313,6 +313,8 @@ A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez tör
 ## <a name="b2b-guests-preview"></a>B2B-vendégek (előzetes verzió)
 
 A legtöbb szervezet tartalmaznak egy folyamat a felhasználók számára, hogy engedélyt adjanak a cég használati feltételei és adatvédelmi nyilatkozatok. De hogyan is kényszeríti az azonos hozzájárulást az Azure AD-vállalatok (B2B), amikor hozzáadják a SharePoint vagy a Teams vendégek? Feltételes hozzáférési és használati feltételeket tartalmazó fájl segítségével, akkor olyan szabályzatot alkalmazhatnak közvetlenül a B2B-vendég felhasználók felé. A meghívó érvényesítési folyamat során a felhasználó a használati feltételek egyike. Ez a támogatás jelenleg előzetes verzióban érhető el.
+
+Használati feltételek csak jelenik meg, ha a felhasználó egy vendégfiókba rendelkezik az Azure ad-ben. SharePoint online-ban jelenleg rendelkezik egy [ad hoc külső megosztási címzett felülettel](/sharepoint/what-s-new-in-sharing-in-targeted-release) megosztani egy dokumentumot vagy egy mappát, amely nem igényel a felhasználót, hogy a Vendég fiókkal rendelkezik. Ebben az esetben a használati feltételeket tartalmazó fájl nem jelenik meg.
 
 ![Minden vendégfelhasználó](./media/active-directory-tou/b2b-guests.png)
 

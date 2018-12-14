@@ -1,24 +1,24 @@
 ---
-title: Azure IoT-eszközkészlet használata a VS Code Azure IoT Hub létrehozása |} A Microsoft Docs
-description: Hogyan hozzon létre egy IoT hubot a VS Code Azure IoT-eszközkészlet használatával.
+title: Azure IoT Hub-eszközkészlet használata a VS Code Azure IoT Hub létrehozása |} A Microsoft Docs
+description: IoT hub létrehozása az Azure IoT Hub-eszközkészlet a VS Code használatával hogyan.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: junhan
-ms.openlocfilehash: 5097d7e1f6a0b9e94919ccc8731702206c0a1568
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: cee71ddfbf1a20cc7417976d60b04bff6f0deac8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047233"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339025"
 ---
-# <a name="create-an-iot-hub-using-the-azure-iot-toolkit-for-visual-studio-code"></a>A Visual Studio Code az Azure IoT-eszközkészlet használatával IoT hub létrehozása
+# <a name="create-an-iot-hub-using-the-azure-iot-hub-toolkit-for-visual-studio-code"></a>A Visual Studio Code az Azure IoT Hub-eszközkészlet használatával IoT hub létrehozása
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Ez a cikk bemutatja, hogyan használható a [a Visual Studio Code az Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) egy Azure IoT hub létrehozása. 
+Ez a cikk bemutatja, hogyan használható a [Visual Studio Code az Azure IoT Hub eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet) az Azure IoT hub létrehozása. 
 
 Ez a cikk a következőkre lesz szüksége:
 
@@ -26,7 +26,7 @@ Ez a cikk a következőkre lesz szüksége:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+- [Az Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -56,10 +56,10 @@ Ez a cikk a következőkre lesz szüksége:
 
 ## <a name="next-steps"></a>További lépések
 
-Most már telepített egy IoT hubot, a Visual Studio Code az Azure IoT-eszközkészlet használatával. Vizsgálódáshoz, tekintse meg a következő cikkeket:
+Most már telepített egy IoT hubot, a Visual Studio Code az Azure IoT Hub-eszközkészlet használatával. Vizsgálódáshoz, tekintse meg a következő cikkeket:
 
-* [Az eszköz és a egy IoT Hub közötti üzenetek küldése és fogadása az Azure IoT-eszközkészlet bővítmény a Visual Studio Code használatával](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+* [Az eszköz és a egy IoT Hub közötti üzenetek küldése és fogadása az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code használatával](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-* [A Visual Studio Code az Azure IoT-eszközkészlet bővítmény használata az Azure IoT Hub-Eszközfelügyelet](iot-hub-device-management-iot-toolkit.md)
+* [A Visual Studio Code az Azure IoT Hub-eszközkészlet bővítmény használata az Azure IoT Hub-Eszközfelügyelet](iot-hub-device-management-iot-toolkit.md)
 
-* [Tekintse meg az Azure IoT-eszközkészlet wikioldal](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Tekintse meg az Azure IoT Hub-eszközkészlet wikioldal](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

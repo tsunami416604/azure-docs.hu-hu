@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b552918f6b415bcd55c7c27c80ff721df77ca99f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4a9f9c2592c7bf27e1caeb09dd492e4700768117
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276077"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383476"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
 
-Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](monitoring-overview-alerts.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](../azure-monitor/platform/alerts-classic.overview.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
+Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](../azure-monitor/platform/alerts-overview.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](../azure-monitor/platform/alerts-classic.overview.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
 
 
-Használhatja a újabb metrikákhoz kapcsolódó riasztások a népszerű Log Analytics naplók, metrikák, ki kell olvasni. További információkért tekintse meg [metrika riasztások naplók](monitoring-metric-alerts-logs.md).
+Használhatja a újabb metrikákhoz kapcsolódó riasztások a népszerű Log Analytics naplók, metrikák, ki kell olvasni. További információkért tekintse meg [metrika riasztások naplók](../azure-monitor/platform/alerts-metric-logs.md).
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, CLI, REST-támogatással
-Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts/), vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). Konfigurálása a PowerShell és az Azure CLI 2.0-s és újabb verziók használata újabb riasztások támogatása hamarosan elérhető lesz.
+Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts/), vagy [Resource Manager-sablonok](../azure-monitor/platform/alerts-metric-create-templates.md). Konfigurálása a PowerShell és az Azure CLI 2.0-s és újabb verziók használata újabb riasztások támogatása hamarosan elérhető lesz.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metrikák és a támogatott méretek
-Újabb metrikákhoz kapcsolódó riasztások támogatja a dimenziók használó metrikákhoz riasztásokat. Dimenziók segítségével szűrheti a metrika a megfelelő szintre. Az összes támogatott mérőszámok együtt alkalmazható dimenziók fel és az ábrázolt [Azure Monitor - Metrikaböngésző](monitoring-metric-charts.md).
+Újabb metrikákhoz kapcsolódó riasztások támogatja a dimenziók használó metrikákhoz riasztásokat. Dimenziók segítségével szűrheti a metrika a megfelelő szintre. Az összes támogatott mérőszámok együtt alkalmazható dimenziók fel és az ábrázolt [Azure Monitor - Metrikaböngésző](../azure-monitor/platform/metrics-charts.md).
 
 A következő teljes listája megtalálható az Azure monitor metrika források által az újabb riasztások támogatott:
 
@@ -121,6 +121,6 @@ A POST művelet a következő JSON-adattartalom és séma tartalmazza a közelé
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az új [élmény riasztások](monitoring-overview-alerts.md).
+* További információ az új [élmény riasztások](../azure-monitor/platform/alerts-overview.md).
 * Ismerje meg [naplóriasztások az Azure-ban](../azure-monitor/platform/alerts-unified-log.md).
-* Ismerje meg [riasztások az Azure-ban](monitoring-overview-alerts.md).
+* Ismerje meg [riasztások az Azure-ban](../azure-monitor/platform/alerts-overview.md).

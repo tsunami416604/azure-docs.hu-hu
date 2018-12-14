@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 79e4d15c79a7f905a33fe471bcfda3e7ca367b01
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0d2b7a5e3239cf46c41db0a086b804c34df5d6e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996456"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386944"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
@@ -155,7 +155,7 @@ Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza ki a **+ Hoz
 
 Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
 
-* [Azure Diagnostics-naplók az Azure Storage-archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Azure Diagnostics-naplók az Azure Storage-archívum](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
 Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../azure-monitor/platform/powerbi.md). Példa:
@@ -174,7 +174,7 @@ Alapján állítsa be a kívánt beállításokat, győződjön meg arról, hogy
 
 ## <a name="set-up-alerts-for-your-logic-app"></a>A logikai alkalmazás riasztások beállítása
 
-Adott mérőszámok vagy túllépte a logikai alkalmazás küszöbértékek monitorozásához beállítása [riasztások az Azure-ban](../monitoring-and-diagnostics/monitoring-overview-alerts.md). Ismerje meg [mérőszámok az Azure-ban](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
+Adott mérőszámok vagy túllépte a logikai alkalmazás küszöbértékek monitorozásához beállítása [riasztások az Azure-ban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [mérőszámok az Azure-ban](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
 Riasztások nélkül beállítása [Azure Log Analytics](../log-analytics/log-analytics-overview.md), kövesse az alábbi lépéseket. Speciális riasztások feltételek és műveletek [Log Analytics beállítása](#azure-diagnostics) túl.
 
@@ -247,7 +247,7 @@ Például a `ActionCompleted` esemény a `clientTrackingId` és `trackedProperti
 
 * `clientTrackingId`: Ha nincs megadva, az Azure automatikusan hoz létre ezt az Azonosítót eszközazonosítóként, és események között a logikai alkalmazás futtatását, beleértve a beágyazott munkafolyamatokat, amely lehet meghívni a a logikai alkalmazás. Ez az azonosító egy eseményindítóból átadásával manuálisan megadhatja egy `x-ms-client-tracking-id` a saját egyéni azonosító értékét a trigger kérelem fejléce. Egy kérelem típusú trigger, HTTP-eseményindító vagy egy webhook-eseményindító is használhatja.
 
-* `trackedProperties`: A bemeneti vagy kimeneti a diagnosztikai adatok nyomon követéséhez a nyomon követett tulajdonságokat adhat hozzá műveleteket hajthat végre a logikai alkalmazás JSON-definíciójában. A nyomon követett tulajdonságok menüpontban követheti nyomon, csak egyetlen művelet bemeneteit és kimeneteit, de használhatja a `correlation` eseményeinek korrelációját, ha különböző műveletek futtatása tulajdonságait.
+* `trackedProperties`: Bemeneti vagy kimeneti a diagnosztikai adatok nyomon követéséhez a nyomon követett tulajdonságokat adhat hozzá műveleteket hajthat végre a logikai alkalmazás JSON-definíciójában. A nyomon követett tulajdonságok menüpontban követheti nyomon, csak egyetlen művelet bemeneteit és kimeneteit, de használhatja a `correlation` eseményeinek korrelációját, ha különböző műveletek futtatása tulajdonságait.
 
   Egy vagy több tulajdonságának nyomon követéséhez adja hozzá a `trackedProperties` szakaszban, és a művelet definíciójának kívánt tulajdonságokat. Tegyük fel, hogy adatokat – például egy "order ID" a telemetria a követni kívánt:
 

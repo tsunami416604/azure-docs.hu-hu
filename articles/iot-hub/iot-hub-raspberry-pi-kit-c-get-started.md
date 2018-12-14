@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 20c26c5daa66edd7705e850f14a79a2cbe2964fc
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: edbdd12ed292ac2e2953219d6f50da8e6c5c995f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515675"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343088"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hub (C)
 
@@ -209,6 +209,6 @@ Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket 
 
 ## <a name="next-steps"></a>További lépések
 
-Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott. A Raspberry Pi a Raspberry Pi az IoT hub- vagy küldés üzeneteket küldött üzenetek, olvassa el a [Azure IoT-eszközkészlet használata az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása a Visual Studio Code-bővítmény](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott. A Raspberry Pi a Raspberry Pi az IoT hub- vagy küldés üzeneteket küldött üzenetek, olvassa el a [Azure IoT Hub-eszközkészlet használata az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása a Visual Studio Code-bővítmény](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

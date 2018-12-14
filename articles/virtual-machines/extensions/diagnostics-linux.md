@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994802"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387046"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai bővítmény használatával figyelheti a metrikák és naplók
 
@@ -38,9 +38,7 @@ Ez a bővítmény mind az Azure üzembe helyezési modellel működik.
 
 ## <a name="installing-the-extension-in-your-vm"></a>A bővítmény telepítése a virtuális gépen
 
-Ez a bővítmény az Azure PowerShell-parancsmagok, Azure CLI-szkriptek vagy az Azure üzembehelyezési sablonok használatával engedélyezheti. További információkért lásd: [bővítmény szolgáltatásai](features-linux.md).
-
-Az Azure Portalon engedélyezheti vagy LAD 3.0 konfigurálása nem használható. Ehelyett azt telepíti, és konfigurálja a 2.3-as verzióhoz. Az Azure portal diagramok és értesítések a bővítmény verzióját is származó adatokkal dolgozott.
+Ez a bővítmény az Azure PowerShell-parancsmagokat, Azure CLI-szkriptek, ARM-sablonok vagy az Azure portal használatával engedélyezheti. További információkért lásd: [bővítmény szolgáltatásai](features-linux.md).
 
 Ezen telepítési utasításokat és a egy [letölthető, mintául szolgáló konfigurációs](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) LAD 3.0-s verziójának konfigurálása:
 
@@ -55,7 +53,7 @@ A letölthető konfigurációs csak egy példa; Módosítsa azt a saját igénye
 
 * **Az Azure Linux-ügynök 2.2.0-ás verzió vagy újabb**. A legtöbb Azure-beli virtuális gép Linuxos katalógus lemezképek tartalmaznak 2.2.7 verzió vagy újabb. Futtatás `/usr/sbin/waagent -version` a virtuális gépen telepített verzió megerősítéséhez. Ha a virtuális gép a vendégügynök egy régebbi verziója fut, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) frissíteni.
 * **Azure parancssori felület (CLI)**. [Az Azure parancssori felület beállítása](https://docs.microsoft.com/cli/azure/install-azure-cli) környezet a gépen.
-* A wget parancs, ha már nincs: futtassa `sudo apt-get install wget`.
+* A wget parancs, ha már nincs: Futtassa az `sudo apt-get install wget` parancsot.
 * Meglévő Azure-előfizetése és a egy meglévő tárfiókot, benne az adatok tárolásához.
 * Támogatott Linux-disztribúciók listáját be van kapcsolva https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
@@ -174,7 +172,7 @@ Elem | Érték
 név | Egy karakterlánc lehet hivatkozni a fogadó máshol a bővítmény konfigurációjába.
 type | A folyamatban meghatározott fogadó típusa. Meghatározza, hogy a többi értéket (ha vannak) az ilyen típusú példányok.
 
-A Linux diagnosztikai bővítmény 3.0-s verziója két fogadó típust támogat: az EventHub és JsonBlob.
+A Linux diagnosztikai bővítmény 3.0-s verziója támogatja a két fogadó típusa: Az EventHub, és JsonBlob.
 
 #### <a name="the-eventhub-sink"></a>Az EventHub fogadó
 
@@ -316,7 +314,7 @@ Elem | Érték
 fogadóként | (nem kötelező) Melyik LAD küld összesített eredmények metrika fogadóként nevei vesszővel tagolt listája. Az összes összesített mérőszámok egyes felsorolt fogadó vannak közzétéve. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
 type | A mérőszám a tényleges szolgáltató azonosítja.
 osztály | "Számláló", és azonosítja az adott metrika belül a szolgáltatói névteret.
-A számláló | "Class", és azonosítja az adott metrika belül a szolgáltatói névteret.
+számláló | "Class", és azonosítja az adott metrika belül a szolgáltatói névteret.
 counterSpecifier | Azonosítja az adott metrika az Azure-mérőszámok névtérben.
 feltétel | (nem kötelező) Kiválaszt egy adott példányán, az objektumot, amelyhez a metrika vonatkozik, vagy az összesítés kiválasztja az adott objektum minden példányán. További információkért lásd: a [ `builtin` metrikadefinícióinak](#metrics-supported-by-builtin).
 sampleRate | VAN, amely beállítja a változási gyakoriság, amellyel ez a metrika-nyers minták gyűjtött 8601 időszak. Ha nincs megadva, az adatgyűjtési időköz értéke alapján [sampleRateInSeconds](#ladcfg). A legrövidebb támogatott mintavételi gyakoriság érték 15 másodperc (PT15S).
@@ -432,7 +430,7 @@ A beépített predict metrika szolgáltató legjobban érdekli felhasználók sz
 
 A mérőszámok a processzor osztály a virtuális gép processzor használati információkat biztosít. Százalékos összesítésekor az eredmény az átlagos processzorok esetében. Két vcpu-nkénti virtuális gépen Ha egy vCPU 100 %-os foglalt volt, és a másik tétlen, 100 % volt a jelentett PercentIdleTime pedig 50. Ha minden egyes vCPU foglalt azonos időszakára vonatkozó 50 % volt, a jelentett eredmény is pedig 50. Négy vcpu-nkénti rendelkező virtuális gép, egy vCPU 100 % foglalt, és a többi tétlen a jelentett PercentIdleTime 75 lenne.
 
-A számláló | Jelentés
+számláló | Jelentés
 ------- | -------
 PercentIdleTime | Az, hogy a processzorok is végrehajtása a kernel üresjárati hurok összesítési időszak alatt az idő százaléka
 PercentProcessorTime | Egy nem várakozó szál végrehajtása idő százaléka
@@ -450,7 +448,7 @@ Szerezze be az összes processzor vonatkozó összesített érték csak egyetlen
 
 A metrikák memória osztályát lapozás és érvényesítheti a memóriahasználat információkat biztosít.
 
-A számláló | Jelentés
+számláló | Jelentés
 ------- | -------
 AvailableMemory | MIB fizikai memória
 PercentAvailableMemory | A teljes memória százalékos rendelkezésre álló fizikai memória
@@ -470,7 +468,7 @@ Ez az osztály metrikák csak egyetlen példány van. A "feltétel" attribútum 
 
 Metrikák hálózati osztályát rendszerindítás óta hálózati tevékenység információt nyújt az egyes hálózati adapterek. LAD nem biztosít sávszélesség-mérőszámok, amely a gazda mérőszámok lekérhetők.
 
-A számláló | Jelentés
+számláló | Jelentés
 ------- | -------
 BytesTransmitted | Rendszerindítás óta küldött bájtok teljes száma
 BytesReceived | Rendszerindítás óta fogadott bájtok teljes száma
@@ -487,7 +485,7 @@ TotalCollisions | Az ütközések rendszerindítás óta a hálózati portok ál
 
 A fájlrendszer osztály mérőszámok fájlrendszer használati információkat biztosít. Abszolút és a százalékos értékek jelentett, akkor megjelenik egy szokásos felhasználónak (nem legfelső szintű).
 
-A számláló | Jelentés
+számláló | Jelentés
 ------- | -------
 FreeSpace | Szabad lemezterület (bájt)
 UsedSpace | A felhasznált lemezterület (bájt)
@@ -508,7 +506,7 @@ Az összes fájl rendszerekből összesített értékeket is beszerezhetők beá
 
 A lemez osztály mérőszámok eszköz lemezhasználat információkat biztosít. A statisztika a teljes meghajtót vonatkoznak. Ha egy eszközön több fájlrendszereket, az eszközön a számlálók lényegében, összesített érték azokat.
 
-A számláló | Jelentés
+számláló | Jelentés
 ------- | -------
 ReadsPerSecond | Olvasási műveletek száma másodpercenként
 WritesPerSecond | Írási műveletek száma másodpercenként

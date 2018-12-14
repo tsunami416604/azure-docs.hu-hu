@@ -8,52 +8,49 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 32f8872737fdf6dd766ae8df8ef3ed47692e2c9c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: df4cfd8cdf720dd085c3f14ad518c557f270ffa4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642276"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340861"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) az alárendelt vezénylések
 
 Mellett tevékenységfüggvényeket hívja meg, az orchestrator-funkciók meghívhatja az orchestrator-függvényekkel. Ha például hozhat létre egy nagyobb vezénylési orchestrator funkciók kívül egy könyvtár. Vagy egy orchestrator-függvényt több példánya is futtatható egyszerre.
 
-Az orchestrator függvény meghívhat egy másik orchestrator függvény meghívásával a [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) vagy a [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metódust. A [hibakezelés & kompenzációs](durable-functions-error-handling.md#automatic-retry-on-failure) cikk tartalmaz további információkat az automatikus újrapróbálkozáskor.
+Az orchestrator függvény meghívhat egy másik orchestrator függvény meghívásával a [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) vagy a [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) módszerek a .NET-ben, vagy a `callSubOrchestrator` vagy `callSubOrchestratorWithRetry` módszerek a JavaScript. A [hibakezelés & kompenzációs](durable-functions-error-handling.md#automatic-retry-on-failure) cikk tartalmaz további információkat az automatikus újrapróbálkozáskor.
 
 Alárendelt orchestrator funkciók csak a hívó szempontból tevékenységfüggvényeket viselkednek. Akkor adhat vissza értéket, kivételt, és a szülő orchestrator függvény által is kell várni.
-
-> [!NOTE]
-> A `CallSubOrchestratorAsync` és `CallSubOrchestratorWithRetryAsync` módszerek még nem érhető el a JavaScript.
 
 ## <a name="example"></a>Példa
 
 Az alábbi példa egy ("IOT-") IoT-forgatókönyvet mutatja be, ha több eszköz, amely szükség lesz. Egy adott vezénylési az szükségességéről a következőhöz hasonló a következő eszközre van:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
-    [OrchestrationTrigger] DurableOrchestrationContext ctx)
+    [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string deviceId = ctx.GetInput<string>();
+    string deviceId = context.GetInput<string>();
 
     // Step 1: Create an installation package in blob storage and return a SAS URL.
-    Uri sasUrl = await ctx.CallActivityAsync<Uri>("CreateInstallationPackage", deviceId);
+    Uri sasUrl = await context.CallActivityAsync<Uri>("CreateInstallationPackage", deviceId);
 
     // Step 2: Notify the device that the installation package is ready.
-    await ctx.CallActivityAsync("SendPackageUrlToDevice", Tuple.Create(deviceId, sasUrl));
+    await context.CallActivityAsync("SendPackageUrlToDevice", Tuple.Create(deviceId, sasUrl));
 
     // Step 3: Wait for the device to acknowledge that it has downloaded the new package.
-    await ctx.WaitForExternalEvent<bool>("DownloadCompletedAck");
+    await context.WaitForExternalEvent<bool>("DownloadCompletedAck");
 
     // Step 4: ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -74,24 +71,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Az orchestrator függvény is használható – van az egyszeri eszközök üzembe helyezését, vagy pedig egy nagyobb vezénylési része lehet. Az utóbbi esetben a szülő orchestrator függvény példányait is ütemezheti `DeviceProvisioningOrchestration` használatával a `CallSubOrchestratorAsync` (C#) vagy `callSubOrchestrator` (node.js) API-t.
+Az orchestrator függvény is használható – van az egyszeri eszközök üzembe helyezését, vagy pedig egy nagyobb vezénylési része lehet. Az utóbbi esetben a szülő orchestrator függvény példányait is ütemezheti `DeviceProvisioningOrchestration` használatával a `CallSubOrchestratorAsync` (C#) vagy `callSubOrchestrator` (JavaScript) API-t.
 
 Íme egy példa, amely bemutatja, hogyan párhuzamosan több orchestrator függvények futnak.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
 public static async Task ProvisionNewDevices(
-    [OrchestrationTrigger] DurableOrchestrationContext ctx)
+    [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string[] deviceIds = await ctx.CallActivityAsync<string[]>("GetNewDeviceIds");
+    string[] deviceIds = await context.CallActivityAsync<string[]>("GetNewDeviceIds");
 
     // Run multiple device provisioning flows in parallel
     var provisioningTasks = new List<Task>();
     foreach (string deviceId in deviceIds)
     {
-        Task provisionTask = ctx.CallSubOrchestratorAsync("DeviceProvisioningOrchestration", deviceId);
+        Task provisionTask = context.CallSubOrchestratorAsync("DeviceProvisioningOrchestration", deviceId);
         provisioningTasks.Add(provisionTask);
     }
 
@@ -101,7 +98,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");

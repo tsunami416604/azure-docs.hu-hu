@@ -1,27 +1,31 @@
 ---
-title: Media Encoder Standard-formátumok és -kodekek
+title: Media Encoder Standard-formátumok és -kodekek – Azure
 description: Ez a témakör áttekintést nyújt a Media Encoder Standard-formátumok és -kodekek.
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: f334b1ce-2f56-4968-a019-f0a2b0016d9f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/12/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 9c6e26b082fb52f7d23bb1a827af30483f7fbd4f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe1d681fa5f9ab49fec9112398ed03c87c975176
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255710"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384734"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [2-es verzió](media-services-media-encoder-standard-formats.md)
+> * [3-as verzió](../latest/media-encoder-standard-formats.md)
+
 Ez a dokumentum a legismertebb importálható és exportálható fájlformátumokat is használhatja a Media Encoder Standard listáját tartalmazza.
 
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátum
@@ -52,8 +56,6 @@ Media Encoder Standard támogatja a következő hangformátumok a bemeneti táro
 vagy
 
 * MXF, GXF és QuickTime-fájlok, a hanganyag van külön PCM nyomon követi, de a csatornaleképezés (sztereó vagy 5.1) a fájlok metaadataiból kitűnő
-
-Explicit vagy felhasználó által megadott csatornaleképezés támogatása a közeljövőben biztosítjuk.
 
 ## <a name="input-video-codecs"></a>Bemeneti videókodekek
 | Bemeneti videókodekek | Támogatott |

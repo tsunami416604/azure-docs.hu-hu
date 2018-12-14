@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5237ab2b6970772e1f08264bb44223640c33a37
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 67995b4cc9c212f1798a37b54873bd349ac36576
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187262"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384921"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -232,8 +232,9 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `run_configuration` |   RunConfiguration objektum.  Távoli Futtatás használja. |None
 `data_script`  |    A get_data metódus tartalmazó fájl elérési útja.  Távoli Futtatás szükséges.   |None
 `model_explainability` | _Nem kötelező_ igaz/hamis <br/>  Igaz lehetővé teszi, hogy minden egyes ismétléskor végrehajtani a funkció fontos kísérletezhet. Használhatja explain_model() módszert is egy adott iteráció engedélyezése funkció fontosságát, igény szerinti, az iteráció kísérlet befejezése után. | False (Hamis)
-`enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.|
-`ensemble_iterations`|Során, ami lehetőséget választjuk, a végső ensemble részét illesztett folyamat ismétlések száma.|
+`enable_ensembling`|Ez a jelző azt ensembling iteráció engedélyezése az összes többi ismétlésének befejezését követően.| True (Igaz) 
+`ensemble_iterations`|Során, ami lehetőséget választjuk, a végső ensemble részét illesztett folyamat ismétlések száma.| 15
+`experiment_timeout_minutes`| Korlátozza a (minues), hogy mennyi ideig tarthat a teljes kísérlet futtatása | None
 
 ## <a name="data-pre-processing-and-featurization"></a>Üzem előtti adatfeldolgozás és a featurization
 

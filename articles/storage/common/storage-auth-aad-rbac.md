@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 911b8051530daca57fe26fb22c6dc1be845c6d6d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e1482b4238211db45a7f317d874bbb3a8c974cb2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321426"
+ms.locfileid: "53337903"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Hozzáférési jogosultsággal az Azure Blob- és üzenetsoradatot RBAC (előzetes verzió) használata kezelheti
 
@@ -27,11 +27,11 @@ Az Azure AD identity előfordulhat, hogy egy felhasználó, csoport vagy alkalma
 
 Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepkörökhöz. Az Azure Storage ezeket az Azure ad-vel használható beépített RBAC-szerepkör kínál:
 
-- [Storage-Blobadatok Közreműködője (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Storage-Blobadatok olvasója (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Tárolási Blob adatok tulajdonosa (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
-- [Storage-Üzenetsorbeli adatok Közreműködője (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Storage-Üzenetsorbeli adatok olvasója (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Tárolási Blob adatok tulajdonosa (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview): Állíthatja be az Azure Data Lake Storage Gen2 tulajdon- és hozzáférés-vezérlési listák (előzetes verzió). További információkért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md).
+- [Storage-Blobadatok Közreműködője (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview): A Blob storage-erőforrások olvasási, írási és törlési engedélyek használatával.
+- [Storage-Blobadatok olvasója (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview): Használja a Blob storage-erőforrások csak olvasható engedélyek.
+- [Storage-Üzenetsorbeli adatok Közreműködője (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview): Olvasási, írási és törlési engedélyt az Azure-üzenetsorok használatával.
+- [Storage-Üzenetsorbeli adatok olvasója (előzetes verzió)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview): Csak olvasási engedélyeket az Azure-üzenetsorok használatával.
 
 További információ a beépített szerepkörök határozza meg az Azure Storage, lásd: [megismerheti a szerepkör-definíciók](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
@@ -45,10 +45,10 @@ Az RBAC szerepkör hozzárendelése egy Azure-identitás engedélyeket lehet biz
 
 |Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blobadatok olvasója|Üzenetsorbeli adatok Közreműködője|Üzenetsorbeli adatok olvasója|
 |---|---|---|---|---|---|
-|Előfizetési szinten|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést| Olvasási hozzáférés tárolók és blobok az előfizetésben|Olvasási/írási hozzáférést az előfizetés összes várólista|Olvasási hozzáférés az előfizetésben található összes várólista|
-|Erőforráscsoport szintjén|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási hozzáférés tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférés az erőforráscsoportban lévő összes várólista|Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor|
-|Storage-fiók szintjén|Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban|Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban|Olvasási hozzáférés tárolók és a BLOB storage-fiókban|Olvasási/írási hozzáférést a storage-fiókban lévő összes várólista|Olvasási hozzáférés a tárfiókban lévő összes üzenetsor|
-|Tároló/várólista szint|Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz|Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz|A megadott tárolóhoz és annak blobjaihoz olvasási hozzáférés|Olvasási/írási hozzáférést a megadott várólista|Olvasási hozzáférés a megadott várólista|
+|Előfizetési szinten|Állítsa be a tulajdonosi és a hozzáférés-vezérlési LISTÁK Data Lake Storage erőforrásokhoz az előfizetésben|A tárolók és blobok az előfizetés olvasási, írási és törlési hozzáférés| Olvasási hozzáférés tárolók és blobok az előfizetésben|Az előfizetés összes várólista olvasási, írási és törlési hozzáférés|Olvasási hozzáférés az előfizetésben található összes várólista|
+|Erőforráscsoport szintjén|Állítsa be a tulajdonosi és a hozzáférés-vezérlési LISTÁK Data Lake Storage-erőforrások az erőforráscsoportban|A tárolók és blobok az erőforráscsoportban lévő olvasási, írási és törlési hozzáférés|Olvasási hozzáférés tárolók és blobok az erőforráscsoportban|Az erőforráscsoportban lévő összes üzenetsor, olvasási, írási és törlési hozzáférés|Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor|
+|Storage-fiók szintjén|Állítsa be a tulajdonosi és a hozzáférés-vezérlési LISTÁK Data Lake Storage-erőforrások, a storage-fiókban|A tárolókhoz és a BLOB storage-fiókban olvasási, írási és törlési hozzáférés|Olvasási hozzáférés tárolók és a BLOB storage-fiókban|A storage-fiókban lévő összes üzenetsor, olvasási, írási és törlési hozzáférés|Olvasási hozzáférés a tárfiókban lévő összes üzenetsor|
+|Rendszer/tárolók/várólista szint|A fájlrendszer Data Lake Storage-erőforrások tulajdonosi és a hozzáférés-vezérlési LISTÁK beállítása|A megadott tárolóhoz és annak blobjaihoz olvasási, írási és törlési hozzáférés|A megadott tárolóhoz és annak blobjaihoz olvasási hozzáférés|A megadott várólista, olvasási, írási és törlési hozzáférés|Olvasási hozzáférés a megadott várólista|
 
 > [!NOTE]
 > Az Azure Storage-fiók tulajdonosai akkor nem lesznek automatikusan hozzárendelve engedélyeket az adatok eléréséhez. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor szintjén rendelhet.

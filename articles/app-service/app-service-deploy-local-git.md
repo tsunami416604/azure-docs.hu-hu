@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 242eb906c95b373b2edd538be5f06756cac1e8c9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 47949ca5cd0fad498f3d383f4c530e75787387e2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256509"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344015"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezése a legegyszerűbb módja, hogy a Cloud Shellt használja.
 
-### <a name="create-a-deployment-user"></a>Üzembe helyező felhasználó létrehozása
+### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
@@ -86,7 +86,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>A projekt üzembe helyezése
 
-A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ webhelyről származó alkalmazásazonosítóra távoli Git URL-címével [Git engedélyezése az alkalmazás](#enable-git-for-you-app).
+A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ webhelyről származó alkalmazásazonosítóra távoli Git URL-címével [Git engedélyezése az alkalmazás](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>

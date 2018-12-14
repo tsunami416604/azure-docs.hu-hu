@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: c6001b0c95186dff53f33c73833b4cea30688db2
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a19cdac54fff641f72d0628c7b0d47060baba9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094892"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384122"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage Service Encryption az inaktív adatok
 Inaktív adatok az Azure Storage Service Encryption segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok védelme. Ezzel a funkcióval az Azure storage-platform automatikusan titkosítja az adatokat előtt, az Azure Managed Disks, az Azure Blob, üzenetsor vagy Table storage vagy az Azure Files megőrzése, és mindig visszafejti az adatokat lekérés előtt. A titkosítás és a rest, visszafejtési és kulcskezelési a Storage Service Encryption titkosítás kezelése a felhasználók számára átlátható. Az Azure storage-platformra írt összes adat titkosítva van segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
@@ -33,7 +33,7 @@ A funkció automatikusan titkosítja az adatokat:
 
 A Storage Service Encryption az Azure storage szolgáltatások teljesítményét nem befolyásolja.
 
-A Storage Service Encryptionnel is használhatja a Microsoft által felügyelt titkosítási kulcsokat, vagy használhatja a saját titkosítási kulcsokat. A saját kulcsok használatával kapcsolatos további információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
+Használhat a Microsoft által felügyelt titkosítási kulcsokat a Storage Service Encryptionnel, vagy használhatja a saját titkosítási kulcsait. A saját kulcsok használatával kapcsolatos további információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
 
 ## <a name="view-encryption-settings-in-the-azure-portal"></a>Nézet titkosítási beállítások az Azure Portalon
 A Storage Service Encryption beállításainak megtekintéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com) és a egy tárfiók kiválasztását. Az a **beállítások** panelen válassza a **titkosítási** beállítás.
@@ -81,7 +81,7 @@ Igen, a storage-fiók összes másolatát vannak titkosítva. Beállítások tá
 A Storage Service Encryption az összes régióban érhető el.
 
 **Storage Service Encryption FIPS 140-2 szabványnak megfelelő van?**  
-Igen, a Storage Service Encryption a FIPS 140-2 szabványnak megfelelő.
+Igen, a Storage Service Encryption a FIPS 140-2 szabványnak megfelelő. Az alapul szolgáló a Storage Service Encryption titkosítási modulokkal kapcsolatos további információkért lásd: [titkosítási API: Új generációs](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
 **Hogyan vehetem fel a kapcsolatot valaki Ha I problémába ütközik, vagy visszajelzést szeretne biztosítani?**  
 Kapcsolattartó [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) bármilyen problémák és a Storage Service Encryption szolgáltatással kapcsolatos visszajelzéseket.

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248307"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383833"
 ---
-# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Egy kevés a memória az Azure HDInsight Hive javítása
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Kevés a memória az Azure HDInsight egy Apache Hive javítása
 
-Ismerje meg, hogyan háríthatja el a Hive, kevés a memória nagy táblák folyamat Hive memória beállításainak konfigurálásával.
+Ismerje meg, hogyan háríthatja el a kevés a memória (OOM) az Apache Hive nagy táblák Hive memória beállításainak konfigurálásával feldolgozásakor.
 
 ## <a name="run-hive-query-against-large-tables"></a>Nagy táblák Hive-lekérdezés futtatásához
 
@@ -52,7 +52,7 @@ A Hive-lekérdezést a a3 méretű HDInsight-fürtön 24 csomópont 26 percet ve
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-A Tez végrehajtómotor használatával. Ugyanazon lekérdezés 15 percig futott, és ezután a következő hibát okozta:
+Az Apache Tez végrehajtómotor használatával. Ugyanazon lekérdezés 15 percig futott, és ezután a következő hibát okozta:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -101,11 +101,11 @@ A **hive.auto.convert.join.noconditionaltask** a hive-site.xml fájl állított�
 
 Valószínűleg térképen való csatlakozás lett okát a halommemória a Java terület, a memória hiba. A blogbejegyzésben leírtaknak megfelelően [HDInsight a Hadoop Yarn memória beállításainak](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), a Tez végrehajtómotor van használt halommemória felhasznált lemezterület ténylegesen a Tez-tároló tartozik. Az alábbi képen a Tez tároló memória ismertető témakörben talál.
 
-![Tez tároló memória diagramja: kevés a memória Hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez tároló memória diagramja: Hive-elfogyott a memória](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
 A blogbejegyzés javasol, a következő két memória beállításainak megadása a tároló memória halommemória: **hive.tez.container.size** és **hive.tez.java.opts**. Tapasztalataink a memóriából fakadó kivétel kívüli nem jelenti a tároló mérete túl kicsi. Azt jelenti, hogy a Java halommemória (hive.tez.java.opts) mérete túl kicsi. Ezért, amikor nincs elég memória látja, próbálja meg növelni **hive.tez.java.opts**. Szükség esetén szükség lehet növelni a **hive.tez.container.size**. A **java.opts** beállítás körülbelül 80 %-a legyen **container.size**.
 
-> [!NOTE]
+> [!NOTE]  
 > A beállítás **hive.tez.java.opts** mindig kisebbnek kell lennie **hive.tez.container.size**.
 > 
 > 
@@ -119,4 +119,4 @@ Az új beállítások a lekérdezés sikeresen futtatta-e legfeljebb 10 perc ala
 
 ## <a name="next-steps"></a>További lépések
 
-OOM hibaüzenet nem feltétlenül jelenti azt, a tároló mérete túl kicsi. Ehelyett konfigurálnia kell a memória beállításait, hogy a halommemória mérete nő, és a tároló memória mérete legalább 80 %-át. Hive-lekérdezések optimalizálása, lásd: [optimalizálása Hive-lekérdezések a hadoop együttes használata a HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+OOM hibaüzenet nem feltétlenül jelenti azt, a tároló mérete túl kicsi. Ehelyett konfigurálnia kell a memória beállításait, hogy a halommemória mérete nő, és a tároló memória mérete legalább 80 %-át. Hive-lekérdezések optimalizálása, lásd: [optimalizálása Apache Hive-lekérdezések a HDInsight Apache hadoop](hdinsight-hadoop-optimize-hive-query.md).

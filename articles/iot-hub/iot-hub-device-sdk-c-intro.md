@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 97f1c9e16ae6be9e6bece69d0923f6290a8cd072
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024715"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339263"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -75,11 +75,11 @@ Nincsenek számos nyílt forráskódú eszközöket, amelyek segítségével kez
 
 * Egy Windows-alkalmazás nevű [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* A platformok közötti átjárhatóságról a Visual Studio Code bővítmény nevű [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+* A platformok közötti átjárhatóságról a Visual Studio Code bővítmény nevű [Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet).
 
 * Egy Python platformfüggetlen CLI nevű [az IoT-bővítmény, az Azure CLI-vel](https://github.com/Azure/azure-iot-cli-extension).
 
-Ebben az oktatóanyagban a grafikus *device explorer* eszközt. Használhatja a *a VS Code Azure IoT-eszközkészlet bővítmény* Ha fejleszt, a VS Code-ban. Is használhatja a *az IoT-bővítmény, az Azure CLI 2.0* eszközt, ha szeretné használni a CLI eszközt.
+Ebben az oktatóanyagban a grafikus *device explorer* eszközt. Használhatja a *a VS Code Azure IoT Hub-eszközkészlet bővítmény* Ha fejleszt, a VS Code-ban. Is használhatja a *az IoT-bővítmény, az Azure CLI 2.0* eszközt, ha szeretné használni a CLI eszközt.
 
 A device explorer eszköz különböző funkciókat hajthatja végre az IoT Hub, beleértve az eszközök hozzáadása az Azure IoT service kódtárak használja. Ha hozzáad egy eszközt a device explorer eszköz használatával, kap egy kapcsolati karakterláncot az eszközt. Ezt a kapcsolati karakterláncot a mintaalkalmazások futtatásához szüksége lesz.
 
@@ -410,7 +410,7 @@ END_NAMESPACE(WeatherStation);
 
 A **MEGKEZDÉSÉHEZ\_NÉVTÉR** és **záró\_NÉVTÉR** makrók is igénybe vehet a névteret a modell argumentumként. Valószínű, hogy bármit, ezek a makrók között-e a modell vagy modelleket, és a modellek használó adatstruktúrák definíciója.
 
-Ebben a példában van egy adott modellt nevű **ContosoAnemometer**. Ez a modell határozza meg, hogy az eszköz IoT hubbal küldhet adatokat kétféle információra: **DeviceId** és **szélsebesség**. Az eszköz megkaphatja három műveleteket (üzenetek) is definiálja: **TurnFanOn**, **TurnFanOff**, és **SetAirResistance**. Összes adatelemének típussal rendelkező, és minden műveletet nevét (és opcionálisan különböző paraméterek).
+Ebben a példában van egy adott modellt nevű **ContosoAnemometer**. Ez a modell meghatározza, két darab, amelyek az eszköz küldhet az IoT hubhoz: **DeviceId** és **szélsebesség**. Is meghatározza, hogy az eszköz megkaphatja három műveletet (üzenetek): **TurnFanOn**, **TurnFanOff**, és **SetAirResistance**. Összes adatelemének típussal rendelkező, és minden műveletet nevét (és opcionálisan különböző paraméterek).
 
 Az adatok és a modellben meghatározott műveletek határozza meg, hogy üzeneteket küldenek az IoT Hub használatával, és az eszközre küldött üzenetek válaszol egy API-felületet. Ez a modell használatát legjobban értendő egy példán keresztül.
 

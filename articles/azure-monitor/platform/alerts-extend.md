@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7896a205cd281f0d11724f6f549b9aa247180bac
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285017"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385499"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 
@@ -27,7 +27,7 @@ Nincsenek számos előnnyel jár. a létrehozása és kezelése például a rias
 
 - Eltérően az Operations Management Suite portálján, ahol csak 250 riasztások létrehozása sikerült, és tekinthetők meg, az Azure Alerts rendelkezik ilyen korlátozás nélkül.
 - Az Azure Alerts kezelése, enumerálásához és megtekintheti a riasztási típusokat. Korábban a sikerült csak ekkor a Log Analytics-riasztásokkal.
-- A figyelés és riasztások, a felhasználók számára hozzáférést korlátozhatja a [Azure Monitor szerepkör](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+- A figyelés és riasztások, a felhasználók számára hozzáférést korlátozhatja a [Azure Monitor szerepkör](../../azure-monitor/platform/roles-permissions-security.md).
 - Az Azure Alerts használhat [Műveletcsoportok](../../azure-monitor/platform/action-groups.md). Ez lehetővé teszi, hogy egynél több olyan művelet végrehajtását. Akkor is, az SMS küldése a telefonhívás, egy Azure Automation-runbook meghívása, egy webhook meghívása és az IT Service Management (ITSM)-összekötő konfigurálása. 
 
 ## <a name="process-of-extending-your-alerts"></a>A riasztások kiterjesztésének folyamata
@@ -52,7 +52,7 @@ Után a riasztások bővítve lettek az Azure Alerts szolgáltatáshoz, ezek tov
 Ha egy meglévő riasztást szerkesztheti, vagy hozzon létre egy új riasztás az Operations Management Suite portálon próbál, automatikusan átirányítjuk az Azure Alerts szolgáltatáshoz.  
 
 > [!NOTE]
-> Győződjön meg arról, hogy az egyéni felhasználók számára, akik hozzáadása vagy szerkesztése a riasztások rendelt engedélyek megfelelően hozzárendeli az Azure-ban. Szeretné megtudni, hogy milyen engedélyeket kell biztosítania, lásd: [engedélyek az Azure Monitor és a riasztások](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).  
+> Győződjön meg arról, hogy az egyéni felhasználók számára, akik hozzáadása vagy szerkesztése a riasztások rendelt engedélyek megfelelően hozzárendeli az Azure-ban. Szeretné megtudni, hogy milyen engedélyeket kell biztosítania, lásd: [engedélyek az Azure Monitor és a riasztások](../../azure-monitor/platform/roles-permissions-security.md).  
 > 
 
 Hozzon létre a riasztások továbbra is a [Log Analytics API](../../azure-monitor/platform/api-alerts.md) és [Log Analytics-erőforrás sablon](../../azure-monitor/insights/solutions-resources-searches-alerts.md). Ha így tesz, meg kell adnia Műveletcsoportok.
@@ -60,5 +60,5 @@ Hozzon létre a riasztások továbbra is a [Log Analytics API](../../azure-monit
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az eszközöket, [kezdeményezési Log Analyticsből származó riasztások kiterjesztése az Azure-ba való](alerts-extend-tool.md).
-* Tudjon meg többet a [Azure Alerts élmény](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Tudjon meg többet a [Azure Alerts élmény](../../azure-monitor/platform/alerts-overview.md).
 * Ismerje meg, hogyan hozhat létre [naplóriasztások az Azure Alerts](alerts-unified-log.md).

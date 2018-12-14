@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7b210a774cfdb9b7f33ec08cc75886c77e3e6cc0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285549"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341525"
 ---
 # <a name="alerts-on-activity-log"></a>Riasztások a tevékenységnaplóban 
 
@@ -61,7 +61,7 @@ További információ a műveletcsoportokról, lásd: [létrehozása és kezelé
 
 
 ## <a name="next-steps"></a>További lépések
-- Get- [riasztások áttekintése](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+- Get- [riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md).
 - Ismerje meg [létrehozása és módosítása a tevékenységnapló-riasztások](../../azure-monitor/platform/alerts-activity-log.md).
 - Tekintse át a [tevékenység log riasztási webhookséma](activity-log-alerts-webhook.md).
 - Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../monitoring-and-diagnostics/monitoring-service-notifications.md).

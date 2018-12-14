@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 89e9b7190a3c419c256513e477f85313e4f9f3bd
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134165"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384887"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -31,14 +31,14 @@ Ezek a naplók különböznek a [tevékenységnapló](monitoring-overview-activi
 
 Ezek a naplók is a Vendég operációsrendszer-szintű diagnosztikai naplók különböznek. A vendég operációs rendszer a diagnosztikai naplók, ezek futhat virtuális gépen futó ügynök által gyűjtött vagy egyéb támogatott erőforrástípus. Diagnosztikai naplók erőforrásszintű nincs ügynök és a rögzítés erőforrás-specifikus adatok az Azure platform, igényelnek, miközben a Vendég operációsrendszer-szintű diagnosztikai naplók rögzítése az operációs rendszer és a egy virtuális gépen futó alkalmazások adatait.
 
-Nem minden szolgáltatás támogatja a diagnosztikai naplók, az itt leírtak szerint. [Ez a cikk tartalmazza, mely szolgáltatásokat támogatja a diagnosztikai naplók szakasz listaelem](./monitoring-diagnostic-logs-schema.md).
+Nem minden szolgáltatás támogatja a diagnosztikai naplók, az itt leírtak szerint. [Ez a cikk tartalmazza, mely szolgáltatásokat támogatja a diagnosztikai naplók szakasz listaelem](./../azure-monitor/platform/tutorial-dashboards.md).
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Mire képes a diagnosztikai naplók
 Az alábbiakban néhány, a diagnosztikai naplók segítségével teheti:
 
 ![Diagnosztikai naplók logikai elhelyezése](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-* Menti azokat egy [ **Tárfiók** ](monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
+* Menti azokat egy [ **Tárfiók** ](../azure-monitor/platform/archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
 * [Azokat a Stream **az Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 * Elemezheti a [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), ahol az adatok írása közvetlenül a Log Analytics és nincs szükség, először a tárolás az adatokat írni.  
 
@@ -68,13 +68,13 @@ Ezek a beállítások egyszerűen az Azure PowerShell és CLI-parancsokkal port�
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
+> *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 
 ## <a name="how-to-enable-collection-of-diagnostic-logs"></a>Diagnosztikai naplók gyűjtésének engedélyezése
 
-Diagnosztikai naplók gyűjtésének engedélyezhető [erőforrás létrehozása a Resource Manager-sablon részeként](./monitoring-enable-diagnostic-logs-using-template.md) vagy egy erőforrás létrehozása a portálon, hogy erőforrás oldaláról után. Gyűjtemény bármely pontján, az Azure PowerShell vagy parancssori felület parancsai, vagy az Azure Monitor REST API használatával is engedélyezheti.
+Diagnosztikai naplók gyűjtésének engedélyezhető [erőforrás létrehozása a Resource Manager-sablon részeként](./../azure-monitor/platform/diagnostic-logs-stream-template.md) vagy egy erőforrás létrehozása a portálon, hogy erőforrás oldaláról után. Gyűjtemény bármely pontján, az Azure PowerShell vagy parancssori felület parancsai, vagy az Azure Monitor REST API használatával is engedélyezheti.
 
 > [!TIP]
 > Ezek az utasítások nem alkalmazható erre a minden erőforrás. Tekintse meg a séma hivatkozásokat, amelyek érvényesek az egyes erőforrástípusok különleges lépések megértéséhez a lap alján.
@@ -229,7 +229,7 @@ Diagnosztikai beállítás hozzáadása megjeleníti a diagnosztikai beállítá
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Támogatott szolgáltatások, kategóriák és sémák a diagnosztikai naplók
 
-[Ebben a cikkben](monitoring-diagnostic-logs-schema.md) támogatott szolgáltatások, valamint naplókategóriák és ezek a szolgáltatások által használt sémák teljes listáját.
+[Ebben a cikkben](../azure-monitor/platform/tutorial-dashboards.md) támogatott szolgáltatások, valamint naplókategóriák és ezek a szolgáltatások által használt sémák teljes listáját.
 
 ## <a name="next-steps"></a>További lépések
 

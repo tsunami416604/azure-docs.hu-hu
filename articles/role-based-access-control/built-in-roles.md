@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f2143d15156c8f69430610eac2f467c5a6887300
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017817"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386961"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -66,19 +66,19 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [A cognitive Services-közreműködő](#cognitive-services-contributor) | Lehetővé teszi, hogy létrehozása, olvasása, frissítése, törlése és a Cognitive Services, kulcsok kezelése. |
 | [A cognitive Services-felhasználó](#cognitive-services-user) | Lehetővé teszi, hogy Ön elolvassa és a Cognitive Services, kulcsok listázását. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
-| [A Cost Management Közreműködője](#cost-management-contributor) | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
-| [A Cost Management olvasó](#cost-management-reader) | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
-| [Data Box Közreműködője](#data-box-contributor) | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
-| [Data Box-olvasó](#data-box-reader) | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
+| [A Cost Management Közreműködője](#cost-management-contributor) | Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetés, exportok) |
+| [A Cost Management olvasó](#cost-management-reader) | Megtekintheti a költségadatokat és a konfigurációt (például költségvetés, exportok) |
+| [Data Box Közreműködője](#data-box-contributor) | Engedélyezi a Data Box Service minden funkciójának kezelését, kivéve a hozzáférés másoknak való megadását. |
+| [Data Box-olvasó](#data-box-reader) | Engedélyezi a Data Box Service kezelését, kivéve a rendelések létrehozását, a rendelésadatok szerkesztését és a hozzáférés másoknak való megadását. |
 | [Data Factory Közreműködője](#data-factory-contributor) | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
 | [Data Lake Analytics-fejlesztő](#data-lake-analytics-developer) | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
 | [Adatok Purger](#data-purger) | Véglegesen törölheti az elemzési adatokat |
 | [DevTest Labs-felhasználó](#devtest-labs-user) | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
 | [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
-| [EventGrid EventSubscription Közreműködője (minta)](#eventgrid-eventsubscription-contributor-preview) | Lehetővé teszi EventGrid esemény-előfizetési műveletek kezelését. |
-| [EventGrid EventSubscription olvasója (minta)](#eventgrid-eventsubscription-reader-preview) | Olvassa el az esemény-előfizetések EventGrid teszi lehetővé. |
-| [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
+| [EventGrid EventSubscription Közreműködője (minta)](#eventgrid-eventsubscription-contributor-preview) | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
+| [EventGrid EventSubscription olvasója (minta)](#eventgrid-eventsubscription-reader-preview) | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
+| [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
 | [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Lab Creator](#lab-creator) | Felügyelt tesztkörnyezetek az Azure Lab-fiókokban való létrehozását, kezelését és törlését teszi lehetővé. |
@@ -86,15 +86,15 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Log Analytics olvasó](#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
 | [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi logikai alkalmazások kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
-| [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
+| [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Engedélyezi a felügyelt alkalmazások erőforrásainak olvasását és műveletek azokon való végrehajtását |
 | [Felügyelt alkalmazások Adatolvasó](#managed-applications-reader) | Olvassa el a felügyelt alkalmazás és igény szerinti hozzáférés kérése az erőforrások teszi lehetővé. |
 | [Felügyelt identitások Közreműködője](#managed-identity-contributor) | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
 | [Felügyelt identitások üzemeltetője](#managed-identity-operator) | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
 | [A felügyeleti csoport Közreműködője](#management-group-contributor) | Felügyeleti csoport közreműködői szerepköre |
 | [A felügyeleti csoport olvasó](#management-group-reader) | Felügyeleti csoport olvasói szerepköre |
-| [Közreműködő figyelése](#monitoring-contributor) | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
-| [Figyelési metrikák közzétevő](#monitoring-metrics-publisher) | Lehetővé teszi, hogy metrikákat az Azure-erőforrások közzététele |
-| [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+| [Közreműködő figyelése](#monitoring-contributor) | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
+| [Figyelési metrikák közzétevő](#monitoring-metrics-publisher) | Lehetővé teszi a metrikák Azure-erőforrásokhoz való közzétételét |
+| [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
@@ -102,9 +102,9 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
 | [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
 | [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
-| [Biztonsági rendszergazda](#security-admin) | A Security Center csak: megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
+| [Biztonsági rendszergazda](#security-admin) | A Security Center csak: Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
 | [Biztonságkezelő (örökölt)](#security-manager-legacy) | Ez az örökölt szerepkör. Használja helyette a biztonsági rendszergazda |
-| [Biztonsági olvasó](#security-reader) | A Security Center csak: megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
+| [Biztonsági olvasó](#security-reader) | A Security Center csak: Megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
 | [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi a Site Recovery szolgáltatás felügyeletét, kivéve a tárolók létrehozását és a szerepkör-hozzárendelést |
 | [Site Recovery-operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem biztosít egyéb Site Recovery-beli felügyeleti műveleteket |
 | [Site Recovery-olvasó](#site-recovery-reader) | Lehetővé teszi a Site Recovery állapotának megtekintését, de nem biztosít egyéb felügyeleti műveleteket |
@@ -121,9 +121,9 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Támogatáskérési közreműködő](#support-request-contributor) | Támogatási kérések létrehozását és kezelését teszi lehetővé |
 | [Traffic Manager-közreműködő](#traffic-manager-contributor) | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [Felhasználói hozzáférés rendszergazdája](#user-access-administrator) | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
-| [A virtuális gépre való rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | A portálon, és jelentkezzen be rendszergazdai virtuális számítógépek megtekintése |
+| [A virtuális gépre való rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | A virtuális gépek megtekintése a portálon, és bejelentkezés rendszergazdaként |
 | [Virtuális gépek közreműködője](#virtual-machine-contributor) | Lehetővé teszi a virtuális gépek kezelését, az azokhoz való hozzáférés nélkül, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
-| [A virtuális gépre való felhasználói bejelentkezés](#virtual-machine-user-login) | A portálon és a felhasználói bejelentkezési nézet a virtuális gépek. |
+| [A virtuális gépre való felhasználói bejelentkezés](#virtual-machine-user-login) | A virtuális gépek megtekintése a portálon, és bejelentkezés hagyományos felhasználóként. |
 | [Webes Tarifacsomagok Közreműködője](#web-plan-contributor) | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Webhelyek Közreműködője](#website-contributor) | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
 
@@ -149,8 +149,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Authorization/*/Delete | Nem lehet törölni a szerepkörök és szerepkör-hozzárendelések |
 > | Microsoft.Authorization/*/Write | Szerepkörök és szerepkör-hozzárendelések nem hozható létre |
 > | Microsoft.Authorization/elevateAccess/Action | Felhasználói hozzáférés rendszergazdai szerepkörének megadása a hívónak a bérlői hatókörben |
-> | Microsoft.Blueprint/blueprintAssignments/write | Létrehozás vagy frissítés tetszőleges tervezetösszetevők |
-> | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervezetösszetevők törlése |
+> | Microsoft.Blueprint/blueprintAssignments/write | Tetszőleges tervelemek létrehozása vagy frissítése |
+> | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
 
 ## <a name="reader"></a>Olvasó
 > [!div class="mx-tableFixed"]
@@ -348,7 +348,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Leírás** | Fürt rendszergazdai hitelesítő adatok a művelet listázza. |
 > | **Azonosító** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Műveletek** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Egy felügyelt fürt a clusterAdmin hitelesítő adatainak listázása |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Felügyelt fürt fürtadminisztrátori hitelesítő adatainak listázása |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Az Azure Kubernetes Service-fürt felhasználói szerepkör
 > [!div class="mx-tableFixed"]
@@ -357,7 +357,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Leírás** | Fürt felhasználói hitelesítő adatok a művelet listázza. |
 > | **Azonosító** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Műveletek** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Egy felügyelt fürt a clusterUser hitelesítő adatainak listázása |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Felügyelt fürt fürtfelhasználói hitelesítő adatainak listázása |
 
 ## <a name="azure-stack-registration-owner"></a>Azure Stack-regisztráció tulajdonosa
 > [!div class="mx-tableFixed"]
@@ -758,7 +758,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
+> | **Leírás** | Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetés, exportok) |
 > | **Azonosító** | 434105ed-43f6-45C7-a02f-909b2ba83430 |
 > | **Műveletek** |  |
 > | Microsoft.Consumption/* |  |
@@ -772,7 +772,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
+> | **Leírás** | Megtekintheti a költségadatokat és a konfigurációt (például költségvetés, exportok) |
 > | **Azonosító** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | **Műveletek** |  |
 > | Microsoft.Consumption/*/read |  |
@@ -786,7 +786,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
+> | **Leírás** | Engedélyezi a Data Box Service minden funkciójának kezelését, kivéve a hozzáférés másoknak való megadását. |
 > | **Azonosító** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -800,7 +800,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
+> | **Leírás** | Engedélyezi a Data Box Service kezelését, kivéve a rendelések létrehozását, a rendelésadatok szerkesztését és a hozzáférés másoknak való megadását. |
 > | **Azonosító** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -940,11 +940,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription Közreműködője (minta)
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid-eseményelőfizetés közreműködője (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi EventGrid esemény-előfizetési műveletek kezelését. |
+> | **Leírás** | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
 > | **Azonosító** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -957,11 +957,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription olvasója (minta)
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid-eseményelőfizetés olvasója (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvassa el az esemény-előfizetések EventGrid teszi lehetővé. |
+> | **Leírás** | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
 > | **Azonosító** | 2414bbcf-6497-4FAF-8c65-045460748405 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -975,7 +975,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
+> | **Leírás** | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
 > | **Azonosító** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | **Műveletek** |  |
 > | Microsoft.AAD/*/read |  |
@@ -1116,17 +1116,17 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Web/customApis/*/read | Olvassa el az egyéni API-t. |
 > | Microsoft.Web/serverFarms/read | Az App Service-csomag tulajdonságainak beolvasása |
 
-## <a name="managed-application-operator-role"></a>Felügyelt alkalmazás operátori szerepkör
+## <a name="managed-application-operator-role"></a>Felügyeltalkalmazás-operátori szerepkör
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
+> | **Leírás** | Engedélyezi a felügyelt alkalmazások erőforrásainak olvasását és műveletek azokon való végrehajtását |
 > | **Azonosító** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Műveletek** |  |
 > | * / olvasási | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
 > | Microsoft.Solutions/applications/read | Az alkalmazások listájának beolvasása. |
 
-## <a name="managed-applications-reader"></a>Felügyelt alkalmazások Adatolvasó
+## <a name="managed-applications-reader"></a>Felügyeltalkalmazás-olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1190,11 +1190,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
 
-## <a name="monitoring-contributor"></a>Közreműködő figyelése
+## <a name="monitoring-contributor"></a>Figyelési közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+> | **Leírás** | Az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **Azonosító** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Műveletek** |  |
 > | * / olvasási | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -1221,11 +1221,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 
-## <a name="monitoring-metrics-publisher"></a>Figyelési metrikák közzétevő
+## <a name="monitoring-metrics-publisher"></a>Figyelési metrikák közzétevője
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy metrikákat az Azure-erőforrások közzététele |
+> | **Leírás** | Lehetővé teszi a metrikák Azure-erőforrásokhoz való közzétételét |
 > | **Azonosító** | 3913510d-42f4-4E42-8a64-420c390055eb |
 > | **Műveletek** |  |
 > | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
@@ -1234,11 +1234,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | Metrikák írása |
 
-## <a name="monitoring-reader"></a>Olvasó figyelése
+## <a name="monitoring-reader"></a>Figyelési olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+> | **Leírás** | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **Azonosító** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Műveletek** |  |
 > | * / olvasási | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
@@ -1348,7 +1348,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A Security Center csak: megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
+> | **Leírás** | A Security Center csak: Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
 > | **Azonosító** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1394,7 +1394,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A Security Center csak: megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
+> | **Leírás** | A Security Center csak: Megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
 > | **Azonosító** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1790,7 +1790,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A portálon, és jelentkezzen be rendszergazdai virtuális számítógépek megtekintése |
+> | **Leírás** | A virtuális gépek megtekintése a portálon, és bejelentkezés rendszergazdaként |
 > | **Azonosító** | 1c0163c0-47E6-4577-8991-ea5c82e286e4 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
@@ -1852,7 +1852,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | A portálon és a felhasználói bejelentkezési nézet a virtuális gépek. |
+> | **Leírás** | A virtuális gépek megtekintése a portálon, és bejelentkezés hagyományos felhasználóként. |
 > | **Azonosító** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |

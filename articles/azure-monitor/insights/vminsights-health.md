@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7a11cc42c3d7fa8cd48de9338d0269d41cbc63f9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a2f654043146536ecf543ae2a0aa49537c2223e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190594"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344040"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -118,7 +118,7 @@ Az a **egészségügyi** lapon is tudja ismerje meg a következőket:
 * Hány virtuális gépet a processzor, a lemez, a memória vagy a hálózati adaptert az állapot alapján kategorizáljuk, az észlelt probléma miatt sérült állapotban?  
 * Hány virtuális gépet egy core operációs rendszer szolgáltatás állapota alapján kategorizáljuk által észlelt probléma miatt sérült állapotban?
 
-Itt gyorsan azonosíthatja a proaktív figyelése a virtuális gép állapotára vonatkozó feltételek által észlelt leggyakoribb kritikus hibák, és tekintse át a virtuális gép állapota riasztás részleteinek és a kapcsolódó ismeretcikk célja, hogy segítsenek a diagnosztikai és a szervizelés a probléma.  Válassza ki valamelyik megnyitásához a súlyossági szinten pedig a [minden riasztás](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) oldalon a súlyosság szerint szűrve.
+Itt gyorsan azonosíthatja a proaktív figyelése a virtuális gép állapotára vonatkozó feltételek által észlelt leggyakoribb kritikus hibák, és tekintse át a virtuális gép állapota riasztás részleteinek és a kapcsolódó ismeretcikk célja, hogy segítsenek a diagnosztikai és a szervizelés a probléma.  Válassza ki valamelyik megnyitásához a súlyossági szinten pedig a [minden riasztás](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) oldalon a súlyosság szerint szűrve.
 
 A **operációs rendszer által a virtuális gép terjesztési** lista mutatja azokat a Windows-kiadás vagy a Linux-disztribúció, és azok verziószáma szereplő virtuális gépek. Az egyes operációs rendszert, a virtuális gépek bontásban további a virtuális gép alapján. 
 
@@ -246,7 +246,7 @@ A fenti példában, amikor kiválaszt egy **/mnt (logikai lemez)**, a állapotá
 Frissített állapot megtekintéséhez kattintson is frissítheti az diagnosztikai oldalt a **frissítése** hivatkozásra.  Alapján előre definiált lekérdezési időközét az egészségügyi feltétel állapot frissítése esetén ez a feladat lehetővé teszi a várakozás elkerülése érdekében, és tükrözi a legfrissebb állapot.  A **feltételek állapota** szűrő engedélyezi-e a kiválasztott állapota – a eredményeket hatókörét kifogástalan állapotú, figyelmeztetés, kritikus, ismeretlen és az összes.  A **utolsó frissített** jobb felső sarokban az idő az utolsó időpont, amikor lett frissítve az diagnosztikai oldalt jelöli.  
 
 ## <a name="alerting-and-alert-management"></a>Riasztások és a riasztások kezelése 
-Virtuális gépek Állapotfigyelő szolgáltatás az Azure Monitor integrálható [Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) és riasztást jelenít meg, ha az előre meghatározott állapotára vonatkozó feltételek módosítása a kifogástalan állapotú sérült állapotba kerül a feltétel észlelése esetén. Riasztások súlyosság – Sev 0-tól 4, a Sev 0 jelölő a legmagasabb súlyossági szint szerint kategorizálhatók.  
+Virtuális gépek Állapotfigyelő szolgáltatás az Azure Monitor integrálható [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és riasztást jelenít meg, ha az előre meghatározott állapotára vonatkozó feltételek módosítása a kifogástalan állapotú sérült állapotba kerül a feltétel észlelése esetén. Riasztások súlyosság – Sev 0-tól 4, a Sev 0 jelölő a legmagasabb súlyossági szint szerint kategorizálhatók.  
 
 Virtuális gép állapota riasztások súlyosság szerint osztályozva száma érhető el a **egészségügyi** irányítópult a szakaszában **riasztások**. A riasztások teljes számát, vagy egy súlyossági szintet megfelelő számot kiválasztásakor a **riasztások** lap nyílik meg, és felsorolja a egyeztetésére vonatkozó beállítás az összes riasztás.  Például, ha a sor megfelelő a kiválasztott **Sev 1. szintű**, majd az alábbi nézet megjelenítéséhez:
 
@@ -254,7 +254,7 @@ Virtuális gép állapota riasztások súlyosság szerint osztályozva száma é
 
 Az a **riasztások** lap, akkor csak hatóköre nem a kijelölt megfelelő riasztások megjelenítése, de az is szűrve **erőforrástípus** csak az állapotriasztások váltotta ki a virtuális gép típusú erőforrást jeleníti meg.  Ez megjelenik a riasztások listája, az oszlop alatt **célerőforrás**, ahol az Azure virtuális Gépen, a riasztás kiadását okozó számára az adott feltételeknek nem megfelelő állapotú feltétel teljesülésekor jeleníti meg.  
 
-Más típusú erőforrások vagy szolgáltatások riasztásai nem célja, hogy ez a nézet szerepelnek, például a riasztások a lekérdezések alapján a Log Analytics vagy a mérőszám, amely riasztást küld, általában az alapértelmezett Azure Monitor lenne megtekintése [minden riasztás](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) lapot. 
+Más típusú erőforrások vagy szolgáltatások riasztásai nem célja, hogy ez a nézet szerepelnek, például a riasztások a lekérdezések alapján a Log Analytics vagy a mérőszám, amely riasztást küld, általában az alapértelmezett Azure Monitor lenne megtekintése [minden riasztás](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) lapot. 
 
 Ez a nézet legördülő listák az oldal tetején lévő értékek kijelölésével szűrheti.
 

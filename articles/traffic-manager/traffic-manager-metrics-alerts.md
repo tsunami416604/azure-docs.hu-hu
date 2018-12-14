@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: a85ec0bf126aa7a25edffdaaf7c7f8a16a370c40
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d0b2ac54f70fedc409c386243e1755704c1c332c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014344"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386366"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>A TRAFFIC Manager-mérőszámok és riasztások
 
@@ -34,7 +34,7 @@ Az alábbi példában az 1. ábra jelenik meg a Traffic Manager-profil által vi
   
 ![A TRAFFIC Manager mérőszámai – összes lekérdezés összesített nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*1. ábra: Összesített nézet az összes lekérdezés*
+*1. ábra: Az összes lekérdezés összesített nézet*
   
 2. ábra ugyanazokat az információkat jeleníti meg, azonban felosztási szempont végpontok. Ennek eredményeképpen a lekérdezési válaszok, amelyben egy adott végpontnak adott vissza a kötet látható.
 
@@ -52,12 +52,12 @@ Ez a metrika jeleníthetnek meg, vagy a mérőszámok (3. ábra) állapotát jel
 
 ![A TRAFFIC Manager metrikák - végpont állapota összetett nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-*3. ábra: Összetett végpont állapota metrika – kijelölt "Átlagos" összesítő nézete*
+*3. ábra: Végpont állapota metrika – kijelölt "Átlagos" összesítés összetett megtekintése*
 
 
 ![A TRAFFIC Manager-metrikák - felosztás végpont állapotának megtekintése](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-*4. ábra: Felosztása végpont állapota metrikák megtekintése*
+*4. ábra: Végpont állapota metrikák megtekintését felosztása*
 
 Használhatja fel ezeket a metrikákat keresztül [Azure Monitor szolgáltatásban](../monitoring-and-diagnostics/monitoring-supported-metrics.md)a portálon [REST API-val](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor), és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.insights), vagy – Traffic Manager portálja metrikáit ismertető szakaszban.
 
@@ -66,4 +66,4 @@ Feldolgozása és a Traffic Managerből metrikák megjelenítése mellett az Azu
 
 ## <a name="next-steps"></a>További lépések
 - Tudjon meg többet [Azure Monitor szolgáltatásban](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-- Ismerje meg, hogyan [hozzon létre egy új diagramot, az Azure Monitor használatával](../monitoring-and-diagnostics/monitoring-metric-charts.md#create-a-new-chart)
+- Ismerje meg, hogyan [hozzon létre egy új diagramot, az Azure Monitor használatával](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

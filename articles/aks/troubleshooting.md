@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025344"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384105"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 Amikor hoz létre, vagy a kezelő az AKS-fürtök, előfordulhat, hogy időnként problémák merülnek fel. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
@@ -59,8 +59,31 @@ Ha nem látja a kubernetes-irányítópultot, majd ellenőrizze a kube-proxy pod
 
 Győződjön meg róla, hogy az alapértelmezett NSG-t nem áll módosítás és a 22-es port nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze, hogy a tunnelfront pod fut-e a kube rendszer névtérben. Nem érhető el, ha kényszerített törlése, és újra fog.
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "message": "" imageReference"tulajdonság módosítása nem engedélyezett." Hiba történt.  Hogyan lehet kijavítani a hibát a probléma?
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "message": "" ImageReference"tulajdonság módosítása nem engedélyezett." Hiba.  Hogyan lehet kijavítani a hibát a probléma?
 
 Ez a hiba a bevezetés, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította lehetőség. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. A szolgáltatási szint Célkitűzésének az erőforrások mellett az MC_ * az AKS-fürtöt a módosítása működésképtelenné válik.
 
+### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Hogyan újíthatom meg a szolgáltatás egyszerű titka a egy AKS-fürtben?
 
+Alapértelmezés szerint az AKS-fürtök jönnek létre egy olyan egyszerű, amely rendelkezik egy egy évig lejárati ideje. Az Ön közelében egy éves lejárati dátumát alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat.
+
+Az alábbi példa a következő lépéseket hajtja végre:
+
+1. A szolgáltatásnév-Azonosítót, a fürt használatával lekérdezi a [az aks show](/cli/azure/aks#az-aks-show) parancsot.
+1. Megjeleníti a szolgáltatás egyszerű ügyfél titkos használata a [az ad sp hitelesítő adatok listája](/cli/azure/ad/sp/credential#az-ad-sp-credential-list)
+1. Az egyszerű szolgáltatás egy másik egyéves használatára vonatkozó kibővíti a [az ad sp reset hitelesítő adatok](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancsot. A szolgáltatás titkos ügyfélkódja megfelelő működéséhez az AKS-fürtöt a azonosnak kell maradnia.
+
+```azurecli
+# Get the service principal ID of your AKS cluster
+sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+
+# Get the existing service principal client secret
+key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
+
+# Reset the credentials for your AKS service principal and extend for 1 year
+az ad sp credential reset \
+    --name $sp_id \
+    --password $key_secret \
+    --years 1
+```

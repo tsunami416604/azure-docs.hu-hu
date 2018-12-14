@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 6d2e87c50eba293df7c5130ea6bf192ed7f83277
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679817"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344312"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
 Azure Media Services v3 lehetővé teszi, hogy adatokat nyerhet ki a video- és a Video Indexer segítségével keresztül fájlokat AMS v3 analyzer készletek (ebben a cikkben ismertetett). Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Tartalom a Media Services v3 készletek elemzéséhez, hozzon létre egy **átalakítása** , és küldje el a **feladat** , hogy ezen készletek egyikét használja: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset**. A következő cikk azt ismerteti, hogyan használhatja **VideoAnalyzerPreset**: [oktatóanyag: az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md).
+Tartalom a Media Services v3 készletek elemzéséhez, hozzon létre egy **átalakítása** , és küldje el a **feladat** , hogy ezen készletek egyikét használja: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset**. A következő cikk azt ismerteti, hogyan használhatja **VideoAnalyzerPreset**: [Oktatóanyag: Az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért olvassa el a [médiafeldolgozás méretezését](../previous/media-services-scale-media-processing-overview.md) ismertető cikket.
@@ -33,8 +33,7 @@ A Media Services a következő beépített analyzer készletek jelenleg támogat
 
 |**Készlet neve**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja.<br/>A hang hasznos nyelvét a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátumban is megadhat (például "hu-hu"). "en-US", "en-GB", "es-ES", "es-MX"
-"fr-FR", it-IT, ja-JP, pt-BR, zh-CN, "de-DE", "ar – pl.", "ru-RU", "hi-IN". Nyelvi nincs megadva vagy Null értékű, ha az automatikus nyelvfelismerést alkalmazzák. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket egyértelműen lekérdezésteljesítmény beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű fog megtörténni.|
+|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja. A hang hasznos nyelvét megadhatja a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátum használatával. Támogatott nyelvek a következők angol ("en-US" és "en-GB"), spanyol ("es-ES" és "MX-es"), francia ("fr-FR"), ("it-IT") olasz, japán ("ja-JP"), portugál ("pt-BR"), kínai ("zh-CN"), német ("de-DE"), arab ("ar – pl."), orosz ("ru-RU"), Hindi ("hi-IN" ), és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva, illetve NULL értékű, az automatikus nyelvfelismerést alkalmazzák. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket egyértelműen lekérdezésteljesítmény beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű vissza fog esni.|
 |**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

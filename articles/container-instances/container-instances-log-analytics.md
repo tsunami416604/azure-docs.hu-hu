@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 06123944072142187bfd5b875cbadd36b4d47bd2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958900"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337886"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Tárolópéldány-naplózás az Azure Log Analytics használatával
 
@@ -44,7 +44,7 @@ A Log Analytics-munkaterület azonosítóját és elsődleges kulcsát a követk
 
 Most, hogy lekérte a Log Analytics-munkaterület azonosítóját és elsődleges kulcsát, készen áll arra, hogy létrehozzon egy naplózható tárolócsoportot.
 
-A következő példák két módszert mutatnak be arra, hogyan hozható létre tárolócsoport egyetlen [fluentd][fluentd] tárolóval: Azure CLI és Azure CLI YAML-sablonnal. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+Az alábbi példák bemutatják, kétféle módon hozhat létre egy tárolócsoport egyetlen [fluentd] [ fluentd] tároló: Az Azure CLI és az Azure CLI-t egy YAML-sablont. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
 
 ### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 További tudnivalók a naplók lekérdezéséről és a riasztások beállításáról az Azure Log Analyticsben:
 
 * [A Log Analytics naplókereséseinek ismertetése](../log-analytics/log-analytics-log-search.md)
-* [Egyesített riasztások az Azure Monitorban](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+* [Egyesített riasztások az Azure Monitorban](../azure-monitor/platform/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Tárolók processzor- és memóriahasználatának monitorozása

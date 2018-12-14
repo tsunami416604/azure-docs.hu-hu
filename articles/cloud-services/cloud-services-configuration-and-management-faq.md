@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: fe096efba5419b283981f27e16c3e30a791412da
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322670"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386995"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services: Gyakori kérdések (GYIK)
 
@@ -242,7 +242,7 @@ Automatikus skálázás memória-metrikák alapján a Cloud Services jelenleg ne
 
 Ez a probléma megoldásához használhatja az Application Insights. Automatikus skálázás támogatja az Application Insights-metrikák forrásként, és skálázhatja a szerepkör-példányok számát, például a "Memória" Vendég mérőszám alapján.  Konfigurálja az Application Insights a Felhőszolgáltatás-projekt csomagfájl (csak *.cspkg), és a szolgáltatás a feat megvalósítása az Azure diagnosztikai bővítmény engedélyezése kell.
 
-Hogyan hasznosítható egy egyéni metrika az Application Insights konfigurálása az automatikus méretezés a Cloud Services használatával a további részletekért lásd: [első lépésként az automatikus skálázás egyéni metrika az Azure-ban](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
+Hogyan hasznosítható egy egyéni metrika az Application Insights konfigurálása az automatikus méretezés a Cloud Services használatával a további részletekért lásd: [első lépésként az automatikus skálázás egyéni metrika az Azure-ban](../azure-monitor/platform/autoscale-custom-metric.md)
 
 A Cloud Services integrálása az Azure Diagnostics az Application Insights további információkért lásd: [diagnosztikai adatok küldése a felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 

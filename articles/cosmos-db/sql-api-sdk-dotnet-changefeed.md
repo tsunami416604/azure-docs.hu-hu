@@ -9,14 +9,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: ab4831a4a84e1f96624c5de1e53f9b8688a5c2cd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1544d60d94a73326d2cd0430de8a1f61aaefe373
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871659"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343972"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -27,7 +27,7 @@ ms.locfileid: "52871659"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -41,6 +41,11 @@ ms.locfileid: "52871659"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* Támogatás hozzáadva a felosztása a gyűjtemények, amelyek használják a megosztott adatbázis átviteli sebesség kezelésére.
+  * Ebben a kiadásban elhárítottunk felosztása a gyűjtemények megosztott adatbázist átviteli sebesség, amikor eredmény ossza fel újra elosztására a csak egy gyermek partíciókulcs-tartományok létrehozni, ahelyett, hogy két partíció használata során esetlegesen jelentkező probléma. Ha ez történik, Változáscsatorna feldolgozói előfordulhat, hogy elakadnak a régi partíciókulcs-tartományok esetében a címbérlet törlésekor, és nem hozza létre az új bérleteket. Ebben a kiadásban a problémát megoldottuk.
+  * Kompatibilitástörő változás kisebb: hozzáadott új módszer IChangeFeedDocumentClient.ReadOffersFeedAsync, amellyel e colleciton dedikált adatkapacitás van hozzárendelve, vagy átviteli sebesség osztanak meg más az adatbázisban lévő gyűjtemények ellenőrzése. Biztosító IChangeFeedDocumentClient egyéni megvalósítását speciális forgatókönyv, és figyelésére használható összes híváshoz a Változáscsatorna feldolgozói a figyelt, és a gyűjtemények bérletbe. Ezzel IChangeFeedDocumentClient végrehajtása az új metódusának használatával lehet módosítani.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Hozzáadott új tulajdonság ChangeFeedProcessorOptions.StartContinuation kiindulási módosítása támogatásához a folytatási kérés hírcsatorna. Ez csak akkor használja, ha a bérletek gyűjteményének üres, vagy a címbérlet nincs beállítva continuationtoken argumentumot használja. A bérletek a bérletek gyűjteményének, amelyek rendelkeznek a continuationtoken argumentumot használja, állítsa be használja a continuationtoken argumentumot használja, és ChangeFeedProcessorOptions.StartContinuation a rendszer figyelmen kívül hagyja.

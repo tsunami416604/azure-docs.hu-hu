@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: e473326e9f337bfb2fd1202bc3b76e468dd6015e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315077"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338039"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
-Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (JEE) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](http://wildfly.org/) alkalmazáskiszolgáló.
+Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (JEE) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](https://wildfly.org/) alkalmazáskiszolgáló.
 
 Ez az útmutató főbb fogalmakat és utasításokat a Java vállalati fejlesztők, az App Service linuxos használatával. Soha nem telepítette a Java-alkalmazások az Azure App Service Linux rendszeren, ha, hajtsa végre a [Java rövid](quickstart-java.md) első. A Linux App Service-ről, amely nem elég konkrét, a Java Enterprise kérdéseire a a [Java developer's guide](app-service-linux-java.md) és a [App Service Linux – gyakori kérdések](app-service-linux-faq.md).
 
@@ -115,5 +115,5 @@ Alapértelmezés szerint a web sockets engedélyezve vannak az App Service-ben. 
 Az App Service biztosítja az eszközöket, az alkalmazással kapcsolatos problémák elhárításához.
 
 -   Kapcsolja be a naplózást kattintva **diagnosztikai naplók** a bal oldali navigációs ablaktáblán. Kattintson a **fájlrendszer** a storage-kvóták és -megőrzési időszak beállítása, és mentse a módosításokat. Ezek a naplók alatt található `/home/LogFiles/`.
--   [Az SSH használata a az alkalmazás-példányhoz való csatlakozáshoz](/app-service-linux-ssh-support) alkalmazások futtatásához a naplók megtekintéséhez.
+-   [Az SSH használata a az alkalmazás-példányhoz való csatlakozáshoz](app-service-linux-ssh-support.md) alkalmazások futtatásához a naplók megtekintéséhez.
 -   Ellenőrizze a diagnosztikai naplók az a **diagnosztikai naplók** panel a portálon, vagy az Azure CLI-paranccsal: ` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46eebf6b7d68267765ded5ff91610e94960c3679
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5899b2b667df4800bf98aa6ed7b70f2f8ba4f931
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323524"
+ms.locfileid: "53337104"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok
 
@@ -165,22 +165,25 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
-
-7. A Visual Studio *Megoldáskezelő* ablakában keresse meg a **hsm\_security\_client** projektet és bontsa ki. Bontsa ki a **Forrásfájlokat** és nyissa meg a **hsm\_client\_key.c** fájlt. 
-
-    Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. Módosítsa a fájlt a következő módon majd mentse el.
-
-    Frissítse a `REGISTRATION_NAME` konstans értékét a **regisztrációs azonosító** értékére.
-    
-    Frissítse a `SYMMETRIC_KEY_VALUE` konstans értékét az **Elsődleges kulcs** értékére.
+6. Keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
 
     ```c
-    static const char* const REGISTRATION_NAME = "symm-key-device-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "<enter your Symmetric primary key>";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
+    Állítsa vissza a függvény hívásához szükséges, és cserélje le a helyőrző értékeket (beleértve a csúcsos zárójeleket) a regisztrációs Azonosítót és elsődleges kulcs értékeit.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("symm-key-device-007", "your primary key here");
+    ```
+   
+    Mentse a fájlt.
+
+7. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
+
+8. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
 
     Az alábbi példakimeneten látható, hogy a szimulált eszköz sikeresen elindul és csatlakozik a regisztrációs szolgáltatáspéldányhoz, hogy az hozzárendelhesse egy IoT-központhoz:
 
@@ -198,7 +201,7 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
     Press enter key to exit:
     ```
 
-8. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
+9. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device/hub-registration.png) 
 

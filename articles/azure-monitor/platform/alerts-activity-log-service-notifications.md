@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b5c11517209b9dfea8a28ce09084abd76d789d78
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bb427575d7cff69f0db778c5eb0e0bdf0671d8dd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270943"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343289"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
@@ -197,7 +197,7 @@ Miután létrehozta a riasztást, legyen látható a **riasztások** szakaszába
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő probléma felügyeleti rendszerek](../../service-health/service-health-alert-webhook-guide.md).
 - Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Ismerje meg [értesítési sebességkorlátozással](../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md).
+- Ismerje meg [értesítési sebességkorlátozással](../../azure-monitor/platform/alerts-rate-limiting.md).
 - Tekintse át a [tevékenység log riasztási webhookséma](../../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Get- [tevékenységnapló-riasztások áttekintése](../../monitoring-and-diagnostics/monitoring-overview-alerts.md), és a riasztások fogadása. 
+- Get- [tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md), és a riasztások fogadása. 
 - Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).

@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011663"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383901"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>A Giraph telepítése a HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Telepítse az Apache Giraph HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
 
 Ismerje meg, az Apache Giraph telepítése egy HDInsight-fürtön. A szkript HDInsight művelet funkciója lehetővé teszi, hogy testre szabhatja a fürt egy bash-szkript futtatásával. Fürtök testreszabása során és a fürt létrehozása után használható parancsprogramok.
 
@@ -33,10 +33,10 @@ Ismerje meg, az Apache Giraph telepítése egy HDInsight-fürtön. A szkript HDI
 
 * Weblapok oldalon belüli rangjának kiszámítása.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak,-Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők, például a Giraph, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Microsoft Support lehet oldani a problémát. Ha nem, a nyílt forráskódú Közösségek részletes szakértelmét, hogy a technológiát találhatók egyeztetnie kell. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például a Giraph, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Microsoft Support lehet oldani a problémát. Ha nem, a nyílt forráskódú Közösségek részletes szakértelmét, hogy a technológiát találhatók egyeztetnie kell. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>A parancsfájl leírása
@@ -72,13 +72,13 @@ Ez a szakasz útmutatást az Azure portal használatával a fürt létrehozásak
 
    * **SZKRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **A fő**: Ez a bejegyzés ellenőrzése
+   * **A FŐ**: Ez a bejegyzés ellenőrzése.
 
-   * **FELDOLGOZÓ**: ne jelölje be ezt a bejegyzést
+   * **FELDOLGOZÓ**: Ne jelölje be ezt a bejegyzést.
 
-   * **ZOOKEEPER**: ne jelölje be ezt a bejegyzést
+   * **ZOOKEEPER**: Ne jelölje be ezt a bejegyzést.
 
-   * **PARAMÉTEREK**: hagyja üresen a mezőt
+   * **PARAMÉTEREK**: Hagyja üresen a mezőt.
 
 3. Alsó részén a **Parancsfájlműveletek**, használja a **kiválasztása** gombra a konfiguráció mentéséhez. Végül a **kiválasztása** gomb alsó részén a **opcionális konfigurációs** szakasz az opcionális konfigurációs adatok mentéséhez.
 
@@ -134,7 +134,7 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
 
     Ezzel a paranccsal használt paraméterek a következő táblázat ismerteti:
 
-   | Paraméter | Funkció |
+   | Paraméter | Művelet |
    | --- | --- |
    | `jar` |A példákat tartalmazó jar-fájlt. |
    | `org.apache.giraph.GiraphRunner` |Indítsa el a példákban használt osztály. |
@@ -172,4 +172,4 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
 
 * [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md).
 
-* [A Solr telepítése HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md).
+* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install-linux.md).

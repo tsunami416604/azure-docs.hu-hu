@@ -1,19 +1,19 @@
 ---
-title: Konfigurálja az Azure ExpressRoute globális elérhetőségű Azure parancssori felületével |} A Microsoft Docs
+title: 'Globális elérhetőség az ExpressRoute konfigurálása: Az Azure CLI |} A Microsoft Docs'
 description: Ez a cikk az ExpressRoute-Kapcsolatcsoportok privát hálózati a helyszíni hálózat között, és engedélyezze a globális elérhetőségű teszik hivatkozásra.
-documentationcenter: na
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 9a8e0a5df9383d8e3d7159aa916b0e4fbfeea948
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333260"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384052"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurálja az ExpressRoute globális elérhetőség az Azure CLI (előzetes verzió) használatával
 Ez a cikk segít konfigurálása ExpressRoute globális elérhetőségű Azure CLI használatával. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).
@@ -55,24 +55,22 @@ Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressR
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>A helyszíni hálózat közötti kapcsolat
 
-Futtassa a következő CLI két ExpressRoute-kapcsolatcsoporttal csatlakozhat.
+Kapcsolat a következő parancs futtatásával, vegye figyelembe a következő értékeket:
 
-> [!NOTE]
-> *társ-kapcsolatcsoport* kell lennie a teljes erőforrás-azonosító, például:
-> ```
-> */subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}*
-> ```
-> 
+* *társ-kapcsolatcsoport* kell lennie a teljes erőforrás-azonosítója. Példa: 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  ```
+* *-AddressPrefix* kell lennie egy/29 IPv4 alhálózati, például: "10.0.0.0/29". IP-címek használjuk ezt az alhálózatot a kapcsolatot a két ExpressRoute-Kapcsolatcsoportok között. Nem-címeket kell használnia az alhálózat az Azure Vnetekhez vagy a helyszíni hálózatokon.
+
+Futtassa a következő CLI két ExpressRoute-kapcsolatcsoporttal csatlakozhat. A következő példa paranccsal:
 
 ```azurecli
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* kell lennie egy/29 IPv4 alhálózati, például: "10.0.0.0/29". IP-címek használjuk ezt az alhálózatot a kapcsolatot a két ExpressRoute-Kapcsolatcsoportok között. Nem-címeket kell használnia az alhálózat az Azure Vnetekhez vagy a helyszíni hálózatokon.
-> 
-
-A CLI-kimenet az alábbihoz hasonló.
+A CLI-kimenet az alábbihoz hasonlóan néz ki:
 
 ```azurecli
 {

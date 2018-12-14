@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad6ddacad322e4c2f952591be786d46cbcb95a21
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7af204ad76cb04c3d71c5108948be4036be1d1e4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642689"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338838"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Időzítők a tartós függvények (az Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) biztosít *tartós időzítők* orchestrator funkciók megvalósításához az késleltetések vagy időtúllépések, az aszinkron műveletek beállításához használható. Tartós időzítők célszerű használni az orchestrator funkcióit `Thread.Sleep` és `Task.Delay` (C#), vagy `setTimeout()` és `setInterval()` (JavaScript).
 
-Létrehozhat egy tartós időzítő meghívásával a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metódus az [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html). A metódus egy feladatot, amely a megadott napon és időpontban folytatódik adja vissza.
+Létrehozhat egy tartós időzítő meghívásával a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metódusa [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) a .NET-ben, vagy a `createTimer` metódusa `DurableOrchestrationContext` a JavaScript. A metódus egy feladatot, amely a megadott napon és időpontban folytatódik adja vissza.
 
 ## <a name="timer-limitations"></a>Időzítő korlátozások
 
@@ -29,13 +29,13 @@ Amikor létrehoz egy időzítőt, amely egy üzenetet, amely csak a 4:30 = 19970
 
 > [!NOTE]
 > * Tartós időzítők nem még az Azure Storage-korlátozások miatt 7 napnál tovább. Folyamatban van egy [kiterjesztésére időzítők 7 napos időszak letelte után a szolgáltatás vonatkozó kérelem](https://github.com/Azure/azure-functions-durable-extension/issues/14).
-> * Mindig használjon [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) helyett `DateTime.UtcNow` , ahogyan az alábbi példák a tartós időzítő relatív határidő kiszámításakor.
+> * Mindig használjon [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) helyett `DateTime.UtcNow` .NET-keretrendszerben és `currentUtcDateTime` helyett `Date.now` vagy `Date.UTC` a JavaScript, ahogyan az alábbi példák a tartós időzítő relatív határidő kiszámításakor .
 
 ## <a name="usage-for-delay"></a>Késleltetés használata
 
 A következő példa szemlélteti a végrehajtási késleltetése tartós időzítők használata. A példában minden nap 10 nappal számlázási értesítést ad ki.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -51,7 +51,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```js
 const df = require("durable-functions");
@@ -68,13 +68,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Az orchestrator funkciók végtelen hurkok elkerülése érdekében. Biztonságosan és hatékonyan végtelen ciklust forgatókönyvek megvalósítása kapcsolatos információkért lásd: [külső Vezénylések](durable-functions-eternal-orchestrations.md). 
+> Az orchestrator funkciók végtelen hurkok elkerülése érdekében. Biztonságosan és hatékonyan végtelen ciklust forgatókönyvek megvalósítása kapcsolatos információkért lásd: [külső Vezénylések](durable-functions-eternal-orchestrations.md).
 
 ## <a name="usage-for-timeout"></a>Használati időkorlát
 
 Ebben a példában azt ábrázolja, hogyan használja a tartós időzítők időtúllépések megvalósításához.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -105,7 +105,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript"></a>JavaScript
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```js
 const df = require("durable-functions");
@@ -142,4 +142,3 @@ Időtúllépések megvalósítása az orchestrator funkciók részletesebb péld
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan előléptetése és kezeli a külső események](durable-functions-external-events.md)
-

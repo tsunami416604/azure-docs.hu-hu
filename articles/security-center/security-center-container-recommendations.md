@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1bb28f3ae972e4227265231080b8f37abaf8e130
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317545"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341303"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Az Azure Security Center tároló kapcsolatos javaslatok megértése
 
@@ -42,7 +42,7 @@ Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos tov�
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [A gépek és az alkalmazások az Azure Security Center védelme](security-center-virtual-machine-protection.md)
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a0fdab06606a88fafa803a9a112c05452578cfeb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3dcaba9c0512cbe2c4cf1cd14338a88209a80e85
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252864"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385312"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futtatókörnyezet javítása az Azure App Service-ben
 
@@ -81,7 +81,7 @@ Ha egy régebbi verziója elavult, így, megtervezheti ennek megfelelően a futt
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hogyan lehet az operációs rendszer és a futtatókörnyezet frissítési állapot lekérdezése saját példányokon?  
 
-Zárolt operációs rendszer kritikus fontosságú információkhoz le a hozzáférést (lásd: [Azure App Service-ben az operációs rendszer funkcionalitása](web-sites-available-operating-system-functionality.md)), a [Kudu konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) lehetővé teszi az App Service-példányhoz az operációs rendszer kapcsolatos lekérdezése verzió és a futtatókörnyezet-verzió. 
+Zárolt operációs rendszer kritikus fontosságú információkhoz le a hozzáférést (lásd: [Azure App Service-ben az operációs rendszer funkcionalitása](operating-system-functionality.md)), a [Kudu konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) lehetővé teszi az App Service-példányhoz az operációs rendszer kapcsolatos lekérdezése verzió és a futtatókörnyezet-verzió. 
 
 A következő táblázatban látható a verziók Windows és a nyelvi futtatókörnyezetet, hogy futnak az alkalmazások hogyan:
 

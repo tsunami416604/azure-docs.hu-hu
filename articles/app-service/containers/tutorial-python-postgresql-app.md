@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dda5a0cda284effdb795d4fb1960ac5fb94799cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276383"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337989"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>A Python és PostgreSQL-webalkalmazás létrehozása az Azure App Service-ben
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Ez a beállítás lehetővé teszi a hálózati kapcsolatok létesítését az Azure hálózatán belül található minden IP-címről. Éles környezetben próbálja meg a lehető legszigorúbb tűzfalszabályokat konfigurálni úgy, hogy [kizárólag az alkalmazása által használt kimenő IP-címeket használja](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](http://www.whatsmyip.org/).
+Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -287,7 +287,7 @@ Django érvényesíti a `HTTP_HOST` fejléc a bejövő kérelmeket. Az App Servi
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-Ezután nem támogatja a Django [éles környezetben statikus fájlok kiszolgálása](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), így ez manuálisan engedélyeznie kell. A jelen oktatóanyag esetében használja [WhiteNoise](http://whitenoise.evans.io/en/stable/). A WhiteNoise csomag már szerepel a _requirements.txt_. Egyszerűen Django a használatára konfigurálja. 
+Ezután nem támogatja a Django [éles környezetben statikus fájlok kiszolgálása](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), így ez manuálisan engedélyeznie kell. A jelen oktatóanyag esetében használja [WhiteNoise](https://whitenoise.evans.io/en/stable/). A WhiteNoise csomag már szerepel a _requirements.txt_. Egyszerűen Django a használatára konfigurálja. 
 
 A _azuresite/settings.py_, keresse meg a `MIDDLEWARE` beállítást, és adja hozzá a `whitenoise.middleware.WhiteNoiseMiddleware` közbenső szoftvert a listában csak az alábbiakban a `django.middleware.security.SecurityMiddleware` közbenső szoftver. A `MIDDLEWARE` beállítást kell kinéznie:
 
@@ -307,7 +307,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-WhiteNoise konfigurálásával kapcsolatos további információkért lásd: a [WhiteNoise dokumentáció](http://whitenoise.evans.io/en/stable/).
+WhiteNoise konfigurálásával kapcsolatos további információkért lásd: a [WhiteNoise dokumentáció](https://whitenoise.evans.io/en/stable/).
 
 > [!IMPORTANT]
 > Az adatbázis-beállítások szakaszban már követi a biztonsági szempontból ajánlott a környezeti változók használatával. A teljes üzembe helyezés javaslatokért lásd: [a Django dokumentációja: telepítési ellenőrzőlista](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).

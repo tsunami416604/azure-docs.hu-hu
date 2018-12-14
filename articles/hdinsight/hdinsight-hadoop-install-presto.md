@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687078"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383816"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Presto HDInsight Hadoop-fürtök
 
@@ -22,16 +22,16 @@ Ebből a dokumentumból megismerheti, hogyan Presto telepítése HDInsight Hadoo
 
 HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. További információkért lásd: [harmadik féltől származó alkalmazások telepítése Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések szükséges egy **HDInsight 3.5-ös Hadoop-fürt** , Linux rendszert használ. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight-verziók](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Presto mi?
 [Presto](https://prestodb.io/overview.html) gyors elosztott SQL lekérdezési motorja big Data-van. A presto ideális interaktív több petabájtnyi adat lekérdezését. Presto, és hogyan működnek együtt az összetevőkről további információkért lásd: [Presto fogalmak](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 > 
-> Egyéni összetevők, például Presto, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például Presto, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 > 
 > 
 
@@ -52,17 +52,17 @@ Ez a szakasz útmutatást a minta parancsfájl használatával, amikor egy új f
    
    * **NÉV**: Adjon egy rövid nevet a parancsprogram-művelet.
    * **Bash-szkript URI azonosítója**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
-   * **A fő**: ezt a beállítást választva
-   * **FELDOLGOZÓ**: ezt a beállítást választva
-   * **ZOOKEEPER**: hagyja üresen ezt a jelölőnégyzetet
-   * **PARAMÉTEREK**: hagyja üresen a mezőt
+   * **A FŐ**: Jelölje be ezt a beállítást.
+   * **FELDOLGOZÓ**: Jelölje be ezt a beállítást.
+   * **ZOOKEEPER**: Hagyja üresen ezt a jelölőnégyzetet.
+   * **PARAMÉTEREK**: Hagyja üresen a mezőt.
 
 
 3. Alsó részén a **Parancsfájlműveletek** területen kattintson a **válassza** gombra a konfiguráció mentéséhez. Végül kattintson a **kiválasztása** gomb alsó részén a **speciális beállítások** terület menteni a konfigurációs adatokat.
 
 4. A fürt kiépítése a leírtak szerint folytassa [Provision Linux-alapú HDInsight-fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Az Azure PowerShell, az Azure klasszikus parancssori felület, a HDInsight .NET SDK vagy az Azure Resource Manager-sablonok a alkalmazni parancsfájlműveletekkel is használható. Már fut a fürtök parancsfájlműveletekkel is alkalmazhat. További információkért lásd: [testreszabása HDInsight fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
     > 
     > 
@@ -86,7 +86,7 @@ A Presto egy HDInsight-fürtön, használja az alábbi lépéseket:
    
         select count (*) from hivesampletable;
    
-    Alapértelmezés szerint [Hive](https://prestodb.io/docs/current/connector/hive.html) és [TPCH](https://prestodb.io/docs/current/connector/tpch.html) Presto összekötők már konfigurálva vannak. Hive-összekötő az alapértelmezés szerint telepített Hive telepítést használ, így a Hive a táblák automatikus láthatók lesznek a Presto van konfigurálva.
+    Alapértelmezés szerint [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) és [TPCH](https://prestodb.io/docs/current/connector/tpch.html) Presto összekötők már konfigurálva vannak. Hive-összekötő az alapértelmezés szerint telepített Hive telepítést használ, így a Hive a táblák automatikus láthatók lesznek a Presto van konfigurálva.
 
     További információkért lásd: [Presto dokumentáció](https://prestodb.io/docs/current/index.html).
 
@@ -168,11 +168,11 @@ TPC-DS-ben az iparági szabvány számos döntést támogatási rendszerek, bele
 
 
 ## <a name="see-also"></a>Lásd még
-* [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md). A hue webes felhasználói felület, amely megkönnyíti a szeretne létrehozni, futtassa, és mentse a Pig and Hive-feladatok.
+* [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md). A hue webes felhasználói felület, amely megkönnyíti a létrehozása, futtatása és mentése Apache Pig- és Hive-feladatok.
 
-* [A Giraph telepítése HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md). Fürt testreszabása használatával a Giraph telepítése HDInsight Hadoop-fürtökön. A Giraph lehetővé teszi a Hadoop használatával diagramfeldolgozási végrehajtásához, és használható az Azure HDInsight.
+* [Az Apache Giraph telepítése HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md). Fürt testreszabása használatával a Giraph telepítése HDInsight Hadoop-fürtökön. A Giraph lehetővé teszi a Hadoop használatával diagramfeldolgozási végrehajtásához, és használható az Azure HDInsight.
 
-* [A Solr telepítése HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md). Fürt testreszabása használatával a Solr telepítése HDInsight Hadoop-fürtökön. A Solr lehetővé teszi a tárolt adatok hatékony keresési műveletek végrehajtásához.
+* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install-linux.md). Fürt testreszabása használatával a Solr telepítése HDInsight Hadoop-fürtökön. A Solr lehetővé teszi a tárolt adatok hatékony keresési műveletek végrehajtásához.
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

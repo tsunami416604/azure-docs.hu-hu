@@ -7,17 +7,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.openlocfilehash: 2c4ee73306262846424e02592bc4de712743407f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f0765e010cb40a89f3f57d143c51bdfba72a4ba0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272218"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341933"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan hozhat létre a régebbi klasszikus metrikariasztásokat. Az Azure Monitor most már támogatja a [újabb közel valós idejű metrikákhoz kapcsolódó riasztások és a egy riasztások új kezelőfelülete](../../monitoring-and-diagnostics/monitoring-overview-alerts.md). 
+> Ez a cikk ismerteti, hogyan hozhat létre a régebbi klasszikus metrikariasztásokat. Az Azure Monitor most már támogatja a [újabb közel valós idejű metrikákhoz kapcsolódó riasztások és a egy riasztások új kezelőfelülete](../../azure-monitor/platform/alerts-overview.md). 
 >
 
 Riasztások lehetővé teszik a feltételek konfigurálása adatokon, és értesüljön róla, ha a feltétel egyezik a legújabb figyelési adatok.
@@ -54,7 +54,7 @@ Klasszikus riasztások érhető el – metrikákhoz kapcsolódó riasztások és
 
 * **Klasszikus tevékenységnapló-riasztások** –, amely, amikor egy tevékenységnapló-esemény jön létre, hogy megfelel a keresési feltételeknek a hozzárendelt streamelési naplóriasztás. Ezek a riasztások rendelkezik csak egy állapota "Aktív", mivel a riasztás motor egyszerűen alkalmazza a szűrési feltételeket a bármilyen új eseményre. Ezek a riasztások is használható, hogy értesülhessen róla egy új Service Health-incidens esetén, vagy amikor egy felhasználó vagy alkalmazás egy műveletet végez az előfizetésében, például "Virtuális gép törlése."
 
-A diagnosztikai naplóadatokat Azure monitoron keresztül érhető el továbbíthatják az adatokat a Log analyticsbe (korábbi nevén OMS), és a Log Analytics-lekérdezés riasztás használni. Log Analytics most használja a [módszer új riasztás](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) 
+A diagnosztikai naplóadatokat Azure monitoron keresztül érhető el továbbíthatják az adatokat a Log analyticsbe (korábbi nevén OMS), és a Log Analytics-lekérdezés riasztás használni. Log Analytics most használja a [módszer új riasztás](../../azure-monitor/platform/alerts-overview.md) 
 
 A következő ábra összefoglalja az Azure Monitor és, illesztésekhez, hogyan lehet az adatok minden riasztás adatforrásokat.
 

@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255302"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383935"
 ---
 # <a name="monitor-cluster-performance"></a>Fürtteljesítmény monitorozása
 
 Figyelési állapotát és teljesítményét egy HDInsight-fürt elengedhetetlen biztosítják az optimális teljesítmény és az erőforrás-használatot. Figyelés is segíthet észlelni és -fürt konfigurációs hibák és felhasználói hibákat.
 
-Az alábbi szakaszok azt ismertetik, hogyan figyelheti és optimalizálhatja a fürtökhöz, a YARN-üzenetsorok a terhelés, és tárolási sávszélesség-szabályozási hibák észlelése.
+A következő szakaszok ismertetik a figyelése és -fürtök, az Apache Hadoop YARN-üzenetsorok a terhelés optimalizálása és tárolási szabályozási problémák észleléséhez.
 
 ## <a name="monitor-cluster-load"></a>A figyelő fürt betöltése
 
@@ -43,7 +43,7 @@ Válassza ki, sem a gazdagép részletes tekintse meg, hogy a gazdagép és a me
 
 ![gazdagép részletei](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) -riasztások beállítása és mérőszámok megtekintésével.
+Lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) -riasztások beállítása és mérőszámok megtekintésével.
 
 ## <a name="yarn-queue-configuration"></a>YARN üzenetek sorának konfigurációját
 
@@ -79,14 +79,14 @@ Ha Azure Storage, a storage szolgáltatással kapcsolatos problémák figyelési
 
 Ha a fürt háttértárban Azure Data Lake Store (ADLS), a szabályozás oka valószínűleg sávszélesség korlátozásai miatt. Szabályozás ebben az esetben sikerült azonosítható a feladat naplókban szabályozási hibákat észlelt problémát. ADLS tekintse meg a sávszélesség-szabályozási szakaszban a megfelelő szolgáltatás a következő cikkeket:
 
-* [Teljesítmény-finomhangolási útmutató a Hive on HDInsighthoz és az Azure Data Lake Store-hoz](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Teljesítmény-finomhangolási útmutató az Apache Hive a HDInsight és az Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsighthoz és az Azure Data Lake Store-hoz](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Teljesítmény-finomhangolási útmutató a Storm on HDInsighthoz és az Azure Data Lake Store-hoz](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Teljesítmény-finomhangolási útmutató a HDInsight és az Azure Data Lake Store az Apache stormmal](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>További lépések
 
 Látogasson el az alábbi hivatkozások további információ a hibaelhárítás és a fürtök figyelése:
 
 * [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
-* [Alkalmazások hibakeresése YARN-naplók használatával](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Az Apache Hadoop YARN-naplók használatával alkalmazások hibakeresése](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

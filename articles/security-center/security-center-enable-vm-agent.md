@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a059cd5c22306c42adc4c7c8fcc4e52c3ebcd00
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c4fff902614b3979fcc28833c5352afe2bdd84b0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313571"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341497"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Virtuálisgép-ügynök az Azure Security Center engedélyezése
 A virtuális gép ügynököt telepíteni kell a virtuális gépek (VM) annak érdekében, hogy [adatgyűjtés engedélyezése](security-center-enable-data-collection.md).  Azure Security Center segítségével láthatja, melyik virtuális gépeket a Virtuálisgép-ügynök igényelnek, és azt javasolja, hogy engedélyezze a virtuális gépeken a Virtuálisgép-ügynök.
@@ -40,7 +40,7 @@ Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtu�
 ## <a name="see-also"></a>Lásd még
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági házirendek beállítása az Azure Security Centerben](security-center-azure-policy.md) – Annak bemutatása, hogy miként konfigurálhat biztonsági házirendeket Azure-előfizetéseihez és az erőforráscsoportokhoz.
+* [Biztonsági házirendek beállítása az Azure Security Centerben](tutorial-security-policy.md) – Annak bemutatása, hogy miként konfigurálhat biztonsági házirendeket Azure-előfizetéseihez és az erőforráscsoportokhoz.
 * [Biztonsági javaslatok kezelése az Azure Security Centerben](security-center-recommendations.md) – Miként könnyítik meg a javaslatok az Azure-erőforrások védelmét?
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

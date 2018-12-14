@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0be2895bf08cc7d6aa0b2e55b62b2d6705b27725
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: eb407a1026ab62fa719600a3992dc3b4653f1583
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007296"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383918"
 ---
-# <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Az Ambari webes felhasználói felületen, JobHistory, NameNode, Oozie és egyéb webes eléréséhez használja a SSH-bújtatással
+# <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Az Apache Ambari webes felület, JobHistory, NameNode, az Apache Oozie és egyéb webes eléréséhez használja a SSH-bújtatással
 
-HDInsight-fürtök az Ambari webes Felülettel hozzáférést biztosítanak az interneten keresztül, de egyes szolgáltatásokhoz szükséges egy SSH-alagutat. Például a webes felhasználói felületen az Oozie-szolgáltatás nem érhető el anélkül, hogy az SSh-alagút az interneten keresztül.
+HDInsight-fürtök az Apache Ambari webes Felülettel hozzáférést biztosítanak az interneten keresztül, de egyes szolgáltatásokhoz szükséges egy SSH-alagutat. Például a webes felhasználói felületen az Apache Oozie-szolgáltatás nem érhető el anélkül, hogy az SSh-alagút az interneten keresztül.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Miért érdemes használni az SSH-alagút
 
@@ -34,7 +34,7 @@ A következő Web UI SSH-alagút van szükség:
 
 Ha Parancsfájlműveletek segítségével testre szabhatja a fürt, szolgáltatások vagy segédprogramok telepít, amely egy webes szolgáltatás elérhetővé van szükség az SSH-alagút. Például ha szkriptművelettel Hue telepítése egy SSH-alagutat a eléréséhez a Hue webes felhasználói felületen kell használnia.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha HDInsight virtuális hálózaton keresztül közvetlen hozzáféréssel rendelkezik, nem kell SSH-alagutak használatára. Közvetlenül a virtuális hálózaton keresztül férnek hozzá a HDInsight egy példa: a [HDInsight csatlakoztatása a helyszíni hálózathoz](connect-on-premises-network.md) dokumentumot.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Mi az az SSH-alagút
@@ -100,14 +100,14 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Használja az alagút a böngészőben
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen szakaszban ismertetett lépések a Mozilla FireFox böngésző ugyanazokat a proxykiszolgáló-beállításokat biztosít minden platformon használja. Egyéb modern böngészők, például a Google Chrome, például az alagút dolgozhat FoxyProxy bővítmény lehet szükség.
 
 1. Konfigurálja a használatát a böngésző számára **localhost** és használhatók, ha a port, az alagút létrehozása egy **SOCKS v5** proxy. Íme, mi a Firefox beállítások a következőhöz hasonlóak. Ha 9876, mint egy másik portot használta, módosítsa a portot, amelyet használ:
    
     ![a Firefox-beállításai](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Kiválasztásával **távoli DNS** oldja fel a tartománynévrendszer (DNS) kéréseket a HDInsight-fürt használatával. Ez a beállítás megszünteti a DNS, a fürt fő csomópontjának használatával.
 
 2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). A visszaadott IP-cím egy használják a Microsoft Azure-adatközpontban kell lennie.
@@ -118,7 +118,7 @@ Miután a fürt létrejött, a következő lépések segítségével győződjö
 
 1. A böngészőben nyissa meg http://headnodehost:8080. A `headnodehost` címet a fürthöz, és hárítsa el az átjárócsomóponthoz, amelyen fut az Ambari az alagúton keresztül zajlik. Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevet (rendszergazdai) és a jelszót a fürt számára. Felkérheti másodszor az Ambari webes felhasználói felület által. Ha igen, írja be újra az adatokat.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Használatakor a http://headnodehost:8080 oldja meg a fürthöz való csatlakozáshoz, az alagúton keresztül kapcsolódik. Kommunikáció HTTPS helyett az SSH-alagút használatával lett biztonságossá téve. HTTPS-en keresztül az interneten keresztül csatlakozni, használja a https://clustername.azurehdinsight.net, ahol **clustername** a fürt neve.
 
 2. Jelölje ki az Ambari webes Kezelőfelületen HDFS az oldal bal oldalán lévő listából.
@@ -129,7 +129,7 @@ Miután a fürt létrejött, a következő lépések segítségével győződjö
 
     ![A témakör Gyorshivatkozását menü kibontva lemezkép](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ha bejelöli __Gyorshivatkozások__, várjon mutató kaphat. Ez az állapot akkor fordulhat elő, ha lassú internetkapcsolattal rendelkezik. Várjon néhány percig is az adatok a kiszolgálótól kapott kell, majd próbálkozzon újra a listában.
    >
    > Az egyes bejegyzéseket a **Gyorshivatkozások** menü előfordulhat, hogy elszigeteli a képernyő jobb oldalán. Ha igen, bontsa ki az egér használatával, és használja a jobbra mutató nyílra, görgessen a képernyő jobb látható a menüben a többi.
@@ -138,14 +138,14 @@ Miután a fürt létrejött, a következő lépések segítségével győződjö
 
     ![A NameNode felhasználói felület képe](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Figyelje meg, hogy ez az oldal URL-címe legyen hasonló **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Ez az URI a csomópont a belső teljesen minősített tartománynevét (FQDN) használja, és csak érhető el, amikor SSH-alagút használatával.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulhatta, hogyan hozhat létre és használhat SSH-alagút, tekintse meg az Ambari használandó egyéb módjaira vonatkozóan a következő dokumentumot:
 
-* [HDInsight-fürtök kezelése az Ambari használatával](hdinsight-hadoop-manage-ambari.md)
+* [Az Apache Ambari használatával HDInsight-fürtök kezelése](hdinsight-hadoop-manage-ambari.md)
 
 Az SSH és a HDInsight további információkért lásd: [az SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 

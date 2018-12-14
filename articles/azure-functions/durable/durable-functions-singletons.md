@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 58e5b06d613ee3e3311b58af64abd2411c637449
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b083b9a09b478ca5ad68e19d3a2133fb529da851
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642612"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342952"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egyszeres vezénylők a tartós függvények (az Azure Functions)
 
@@ -23,7 +23,9 @@ A háttérben futó feladatok vagy az aktor stílusú vezénylések, hogy milyen
 
 ## <a name="singleton-example"></a>Egyedülálló – példa
 
-Az alábbi C#-példa egy HTTP-eseményindító függvény, amely létrehoz egy egypéldányos háttérben futó feladatok vezénylésével jeleníti meg. A kód biztosítja, hogy csak egy példány létezik a megadott példány azonosítóját.
+A következő C# és JavaScript-példák azt szemléltetik, egy HTTP-eseményindító függvény, amely létrehoz egy egypéldányos háttérben futó feladatok vezénylésével. A kód biztosítja, hogy csak egy példány létezik a megadott példány azonosítóját.
+
+### <a name="c"></a>C#
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -54,7 +56,39 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott GUID. Azonban ebben az esetben a példány azonosítója az URL-címből átadott útvonal adatai. A kód meghívja [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) ellenőrizze, hogy a megadott Azonosítóval rendelkező példány már fut-e. Ha nem, akkor egy példány jön létre, hogy az azonosítóval.
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+
+```javascript
+const df = require("durable-functions");
+
+modules.exports = async function(context, req) {
+    const client = df.getClient(context);
+
+    const instanceId = req.params.instanceId;
+    const functionName = req.params.functionsName;
+
+    // Check if an instance with the specified ID already exists.
+    const existingInstance = await client.getStatus(instanceId);
+    if (!existingInstance) {
+        // An instance with the specified ID doesn't exist, create one.
+        const eventData = req.body;
+        await client.startNew(functionName, instanceId, eventData);
+        context.log(`Started orchestration with ID = '${instanceId}'.`);
+        return client.createCheckStatusResponse(req, instanceId);
+    } else {
+        // An instance with the specified ID exists, don't create one.
+        return {
+            status: 409,
+            body: `An instance with ID '${instanceId}' already exists.`,
+        };
+    }
+};
+```
+
+Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott GUID. Azonban ebben az esetben a példány azonosítója az URL-címből átadott útvonal adatai. A kód meghívja [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) vagy `getStatus` (JavaScript) ellenőrizze, hogy a megadott Azonosítóval rendelkező példány már fut-e. Ha nem, akkor egy példány jön létre, hogy az azonosítóval.
+
+> [!WARNING]
+> A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
 > Ez a példa egy lehetséges versenyhelyzet szerepel. Ha két példánya **HttpStartSingle** hajtható végre párhuzamosan, az eredmény két különböző létrehozható az egyedülálló, gyakorlatilag felülírja a másik egy példányát. A követelményeitől függően ez lehet a nem kívánt mellékhatásokkal. Ezért fontos győződjön meg arról, hogy nincsenek két kérelmek egyidejűleg futtathatja az eseményindító függvény.

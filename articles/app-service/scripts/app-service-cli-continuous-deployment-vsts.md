@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Példaszkript – alkalmazás létrehozása az Azure-Adattárakkal történő folyamatos üzembe helyezéssel |} A Microsoft Docs
+title: Azure CLI-szkript mintát - alkalmazás létrehozása és folyamatos üzembe helyezés az Azure-Adattárakkal |} A Microsoft Docs
 description: Azure CLI-Példaszkript – webalkalmazás létrehozása az Azure-Adattárakkal történő folyamatos üzembe helyezéssel
 services: app-service\web
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: jeconnoc
 ms.custom: seodec18
-ms.openlocfilehash: cb2e427163d4a39c9286126b1774e09610fc328f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9331f23b93d2493295d63486ffbef14f04c29466
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308481"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342969"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-using-azure-cli"></a>Hozzon létre egy webalkalmazást a folyamatos üzembe helyezés az Azure CLI használatával
 

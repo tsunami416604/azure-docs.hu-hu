@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 36724c0934a68fa8b19b7fc69581275192f4ed36
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2347d82b8c2f5a08b944577e5b06cde3b68617b3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321323"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385006"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
 Az automatikus méretezési beállítások segítségével, győződjön meg arról, hogy a megfelelő mennyiségű erőforrást fut az alkalmazás változó terhelés kezelésére. Konfigurálhatja az automatikus méretezési beállítások betöltése vagy a teljesítmény jelző mérőszámok alapján, vagy aktivált, ütemezett dátum és idő aktiválását. Ez a cikk részletes tekintse meg az automatikus skálázási beállítás felhőtámadások vesz igénybe. A cikk a séma és a egy beállítás tulajdonságait kezdődik, és ezután bemutatja a konfigurálható különböző típusaival. Végül a cikk azt ismerteti, hogyan értékeli ki az automatikus skálázási funkció az Azure-ban a profilt egy adott időpontban végrehajtásához.
@@ -305,7 +305,7 @@ Például tegyük fel, van egy virtuálisgép-méretezési csoportot 10 aktuáli
 ## <a name="next-steps"></a>További lépések
 További információ az automatikus méretezés lépésként tekintse át a következőket:
 
-* [Az automatikus méretezés áttekintése](monitoring-overview-autoscale.md)
+* [Az automatikus méretezés áttekintése](../azure-monitor/platform/autoscale-overview.md)
 * [Gyakori metrikák az Azure Monitor automatikus méretezés](../azure-monitor/platform/autoscale-common-metrics.md)
 * [Ajánlott eljárások az Azure Monitor automatikus skálázása](../azure-monitor/platform/autoscale-best-practices.md)
 * [Automatikus skálázási műveletek használatával küldjön e-mailt és webhookot riasztási értesítések](../azure-monitor/platform/autoscale-webhook-email.md)

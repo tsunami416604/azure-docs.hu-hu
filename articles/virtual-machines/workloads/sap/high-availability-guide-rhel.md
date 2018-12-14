@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: 110f487d486ccd2f1a26065aa225838a3a83c197
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6fc3fc0b7717242b6949d93f0668d7c56525ac49
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167222"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342821"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux
 
@@ -157,10 +157,10 @@ Először a virtuális gépek a fürt létrehozásához. Ezt követően hozzon l
 1. Egy rendelkezésre állási csoport létrehozása  
    Maximális frissítési tartomány beállítása
 1. 1 virtuális gép létrehozása  
-   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási  
 1. 2 virtuális gép létrehozása  
-   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Legalább RHEL 7, ez például a Red Hat Enterprise Linux 7.4-lemezkép <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási  
 1. Mindkét virtuális gép legalább egy adatlemez hozzáadása  
    Az adatlemezek használtusr/sap/`<SAPSID`> könyvtár

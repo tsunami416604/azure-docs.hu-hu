@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f76c1676e21e1abdc3f23e2e2c4a7f6f721fefdb
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955378"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386570"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
@@ -34,7 +34,7 @@ Most egy másolási tevékenységgel belül is csak **adatok másolása az Offic
 >- A data factory és a fogadó adattár tartalmazó Azure-előfizetés, az Office 365-bérlő ugyanahhoz az Azure Active Directory (Azure AD) bérlőhöz kell tartozniuk.
 >- Győződjön meg, hogy a másolási tevékenységhez használt Azure integrációs modul régióban, valamint a cél van ugyanabban a régióban, ahol az Office 365 bérlői felhasználói postaláda. Tekintse meg [Itt](concepts-integration-runtime.md#integration-runtime-location) megérteni, hogyan határozza meg, az Azure integrációs modul helye. Tekintse meg [itt tábla](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) támogatott Office-régiók és a megfelelő Azure-régiók listáját.
 >-  Ha az Office 365-adatokat tölt be **Azure Blob Storage** célként, győződjön meg arról, hogy használ **[egyszerű szolgáltatásnév hitelesítése](connector-azure-blob-storage.md#service-principal-authentication)** a társított meghatározásakor Az Azure Blob Storage szolgáltatásra, és nem használ [fiókkulcs](connector-azure-blob-storage.md#account-key-authentication), [közös hozzáférésű jogosultságkód](connector-azure-blob-storage.md#shared-access-signature-authentication) vagy [felügyelt identitások az Azure-erőforrások](connector-azure-blob-storage.md#managed-identity) üzenetküldéshez használ.
->-  Ha az Office 365-adatokat tölt be **Azure Data Lake Storage Gen1** célként, győződjön meg arról, hogy használ [ **egyszerű szolgáltatásnév hitelesítése** ](connector-azure-data-lake-store.md#using-service-principal-authentication) meghatározásakor a Társított szolgáltatás az Azure Data Lake Storage Gen1 és nem használ [felügyelt identitások Azure-erőforrások hitelesítéshez](connector-azure-data-lake-store.md#managed-identity).
+>-  Ha az Office 365-adatokat tölt be **Azure Data Lake Storage Gen1** célként, győződjön meg arról, hogy használ [ **egyszerű szolgáltatásnév hitelesítése** ](connector-azure-data-lake-store.md#use-service-principal-authentication) meghatározásakor a Társított szolgáltatás az Azure Data Lake Storage Gen1 és nem használ [felügyelt identitások Azure-erőforrások hitelesítéshez](connector-azure-data-lake-store.md#managed-identity).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,7 +79,7 @@ Office 365-beli társított szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Office 365** | Igen |
+| type | A type tulajdonságot kell beállítani: **Office365** | Igen |
 | office365TenantId | Az Azure-bérlő azonosítója, amelyhez az Office 365-fiók tartozik. | Igen |
 | servicePrincipalTenantId | Adja meg a bérlő adatokat, amely alatt az Azure AD webes alkalmazás található. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |

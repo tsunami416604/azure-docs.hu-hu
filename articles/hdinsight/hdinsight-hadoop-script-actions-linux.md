@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005393"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384197"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
 Ismerje meg, hogyan szabhatja testre a Bash-szkriptek használata a HDInsight-fürt. A szkriptműveletek olyan testreszabhatja a HDInsight fürt létrehozás során vagy után.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Mik azok a Parancsfájlműveletek
@@ -43,7 +43,7 @@ Ezek a módszerek használatával a alkalmazni szkriptműveletek további inform
 
 Egy HDInsight-fürthöz tartozó egyéni parancsfájl fejlesztésekor van néhány ajánlott eljárásokat, és tartsa szem előtt:
 
-* [A cél a Hadoop-verzió](#bPS1)
+* [A cél az Apache Hadoop-verzió](#bPS1)
 * [Cél operációsrendszer-verzió](#bps10)
 * [Adja meg a parancsfájl stabil hivatkozását](#bPS2)
 * [Előre lefordított erőforrások használata](#bPS4)
@@ -54,10 +54,10 @@ Egy HDInsight-fürthöz tartozó egyéni parancsfájl fejlesztésekor van néhá
 * [ASCII-LF sorvégződések fájlok mentése](#bps8)
 * [Újrapróbálkozási logika átmeneti hibák használata](#bps9)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Szkriptműveletek 60 percen belül kell végeznie, vagy a folyamat sikertelen lesz. Csomópont üzembe helyezésekor, a parancsfájl futtatása egy időben alkalmazza a többi beállítási és konfigurációs folyamat. Verseny a erőforrások – például CPU-idő vagy a hálózati sávszélesség előfordulhat, hogy a parancsfájl, a fejlesztési környezet mint befejezése hosszabb időt vesz igénybe.
 
-### <a name="bPS1"></a>A cél a Hadoop-verzió
+### <a name="bPS1"></a>A cél az Apache Hadoop-verzió
 
 Különböző verzióit a HDInsight Hadoop-szolgáltatásokhoz és a telepített összetevők különböző verziója van. A szkript egy adott verzióját egy szolgáltatás vagy összetevő vár, ha csak használjon a szkriptet a HDInsight, amely tartalmazza a szükséges összetevők verziójával. A HDInsight használatával mellékelt összetevő verziókról információkat a [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md) dokumentumot.
 
@@ -110,7 +110,7 @@ A szkript és a kapcsolódó erőforrások mindvégig biztosítani kell a fürt 
 
 Az ajánlott eljárás, hogy töltse le, és archiválja mindent az Azure Storage-fiókot, az előfizetéséhez.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A storage-fiókot használni más storage-fiók a fürt vagy egy nyilvános, írásvédett tárolót az alapértelmezett tárfiókot kell lennie.
 
 Ha például a Microsoft által biztosított minták vannak tárolva a [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) storage-fiókot. Ez a hely egy nyilvános, írásvédett tárolót a HDInsight csapata tartja karban.
@@ -129,12 +129,12 @@ Ha például egy parancsfájlt, amely módosítja a konfigurációs fájlok nem 
 
 Linux-alapú HDInsight-fürtök, adja meg, amelyek aktív-e a fürtön belül két fő csomópont, és szkriptműveletek mindkét csomópont fut. Ha az összetevők telepítése csak egy fő csomópontot, az összetevők telepítésének a két fő csomópontra.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A HDInsight része a szolgáltatást tervezték, hogy igény szerint, a két fő csomópont közötti feladatátvételt. Ez a funkció nincs kibővítve a Parancsfájlműveletek segítségével telepítve egyéni összetevők. Ha egyéni összetevők magas rendelkezésre állásra van szüksége, meg kell valósítani a saját adatátvételi mechanizmus.
 
 ### <a name="bPS6"></a>Az Azure Blob storage használata az egyéni összetevők konfigurálása
 
-A fürtön telepítendő összetevők rendelkezhet alapértelmezett konfigurációja a Hadoop elosztott fájlrendszer (HDFS) a tárolót használja. HDInsight használja az Azure Storage vagy a Data Lake Store az alapértelmezett tárolóként. Mindkettő biztosít a HDFS-kompatibilis rendszerekben, amely az adatok továbbra is fennáll, akkor is, ha a fürt törlődik. Előfordulhat, hogy kell telepítenie a WASB vagy az ADL használja a HDFS helyett összetevők konfigurálása.
+A fürtön telepítendő összetevők lehet alapértelmezett konfigurációja a tárolót az Apache Hadoop elosztott fájlrendszer (HDFS) használja. HDInsight használja az Azure Storage vagy a Data Lake Store az alapértelmezett tárolóként. Mindkettő biztosít a HDFS-kompatibilis rendszerekben, amely az adatok továbbra is fennáll, akkor is, ha a fürt törlődik. Előfordulhat, hogy kell telepítenie a WASB vagy az ADL használja a HDFS helyett összetevők konfigurálása.
 
 A legtöbb műveletet nem kell megadnia a fájlrendszerben. Ha például a következő másol a giraph-examples.jar fájl a helyi fájlrendszerben fürttároló:
 
@@ -148,8 +148,8 @@ Ebben a példában a `hdfs` parancs átlátható módon használja az alapértel
 
 HDInsight-naplók STDOUT és STDERR írt parancsprogram kimenete. Megtekintheti az Ambari webes felhasználói felületen ezt az információt.
 
-> [!NOTE]
-> Az Ambari csak akkor használható, ha a fürt sikeresen létrejött. Ha használ egy parancsfájl művelet során a fürt létrehozása és a létrehozás sikertelen, tekintse meg a hibaelhárítási szakaszt [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) férnek hozzá a naplózott információk egyéb módjaira vonatkozóan.
+> [!NOTE]  
+> Az Apache Ambari csak akkor használható, ha a fürt sikeresen létrejött. Ha használ egy parancsfájl művelet során a fürt létrehozása és a létrehozás sikertelen, tekintse meg a hibaelhárítási szakaszt [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) férnek hozzá a naplózott információk egyéb módjaira vonatkozóan.
 
 A legtöbb segédprogramok és telepítőcsomagok már adatokat írni az STDOUT és STDERR, azonban előfordulhat, hogy szeretne további naplózás hozzáadása. Az STDOUT szöveg küldeni, használja a `echo`. Példa:
 
@@ -216,7 +216,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Egyéni parancsfájlok segédmetódusokat
 
-Parancsprogram-művelet segédmetódusokat olyan segédprogramok, amelyet használhat egyéni parancsfájlok írása közben. Ezek a metódusok tárolják a[ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) parancsfájlt. A következő használatával töltse le és használja őket a szkript részeként:
+Parancsprogram-művelet segédmetódusokat olyan segédprogramok, amelyet használhat egyéni parancsfájlok írása közben. Ezek a metódusok tárolják a [ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) parancsfájlt. A következő használatával töltse le és használja őket a szkript részeként:
 
 ```bash
 # Import the helper method module.
@@ -278,16 +278,16 @@ Egy fürt testreszabására szolgáló parancsfájlok mappájába kell menteni a
 
 * A __nyilvánosan olvasható URI__. Például egy URL-címe a OneDrive, Dropbox vagy egyéb üzemeltetési szolgáltatás fájl tárolt adatokat.
 
-* Egy __Azure Data Lake Store-fiók__ társítva a HDInsight-fürt. Az Azure Data Lake Store használata a HDInsight további információkért lásd: [a rövid útmutató: a HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Egy __Azure Data Lake Store-fiók__ társítva a HDInsight-fürt. Az Azure Data Lake Store használata a HDInsight további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > HDInsight Data Lake Store eléréséhez használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie.
 
 A parancsfájlhoz használt erőforrásokhoz is nyilvánosan elérhető kell lennie.
 
 Egy Azure Storage-fiók vagy az Azure Data Lake Store-fájlok tárolására gyors hozzáférést, mint belül az Azure-hálózatot is biztosít.
 
-> [!NOTE]
+> [!NOTE]  
 > A mutató hivatkozás a szkript URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított storage-fiókok esetében használjon `wasb://` vagy `wasbs://`. Nyilvánosan olvasható URI-k használata `http://` vagy `https://`. Használja a Data Lake Store, `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Az operációs rendszer verziójának ellenőrzése
@@ -332,8 +332,8 @@ Az egyes módszerek használatáról további információkért lásd: [szkriptm
 A Microsoft biztosít mintaszkriptek összetevők telepítéséhez egy HDInsight-fürtön. Tekintse meg az alábbi hivatkozások további példa parancsfájl műveletek.
 
 * [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md)
-* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md)
-* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
+* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md)
+* [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
 * [Telepítené vagy frissítené a Mono a HDInsight-fürtökön](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -342,13 +342,13 @@ Kialakítása a parancsfájlok használata során felmerülő hibák a következ
 
 **Hiba**: `$'\r': command not found`. Néha követ `syntax error: unexpected end of file`.
 
-*OK*: A hiba fordul elő, amikor a sorokat egy parancsfájlban CRLF végződhet. UNIX rendszerek várhatóan csak LF, a sor vége.
+*OK*: Ezt a hibát az okozza, ha a sorokat egy parancsfájlban CRLF végződhet. UNIX rendszerek várhatóan csak LF, a sor vége.
 
 Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létrehozott egy közös sor számára a Windows számos szövegszerkesztő befejezési CRLF-jébe.
 
-*Feloldási*: Ha a szövegszerkesztőben lehetőség, válassza ki Unix formátumban vagy LF a sor vége. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
+*Feloldási*: Ha a szövegszerkesztőben lehetőség, a sor vége válassza ki Unix formátumban vagy LF Karakterrel. Módosítsa a CRLF-LF UNIX operációs rendszeren is felhasználhatja a következő parancsokat:
 
-> [!NOTE]
+> [!NOTE]  
 > A következő parancsok pedig nagyjából, annak, hogy azok a CRLF sorvégződések kell módosítani a LF Karakterrel. Válasszon ki egy, a rendszer a segédprogramok alapján.
 
 | Parancs | Megjegyzések |
@@ -362,7 +362,7 @@ Ez a probléma leggyakrabban esetén a szkript egy Windows-környezetben létreh
 
 *OK*: Ez a hiba akkor fordul elő, ha a parancsfájl az UTF-8 és a egy bájt rendelés Mark (AJ) néven lett mentve.
 
-*Feloldási*: mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
+*Feloldási*: Mentse a fájlt, mint ASCII vagy UTF-8 AJ nélkül. Hozzon létre egy fájlt az Anyagjegyzék nélkül a Linux és Unix rendszeren is felhasználhatja a következő parancsot:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

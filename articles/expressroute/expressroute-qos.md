@@ -1,5 +1,5 @@
 ---
-title: 'QoS-követelmények – ExpressRoute: Azure |} A Microsoft Docs'
+title: 'A QoS - követelmények: az ExpressRoute: Azure |} A Microsoft Docs'
 description: Ezen a lapon konfigurálásához és kezeléséhez a QoS részletes követelményeit ismerteti. Skype vállalati verzió üzleti és hangvétel szolgáltatások ismertetése.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: cb9acb5434fad6cd7898be14404c5ed4125ab96a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e478475ea9b5a34315c9d46c2201263566398008
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141169"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336662"
 ---
 # <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
 A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
@@ -31,12 +31,12 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
 | --- | --- | --- |
 | **Hang** |EF (46) |Skype- / Lync-hang |
 | **Interaktív** |AF41 (34) |Videó, VBSS |
-| AF21 (18) |Alkalmazásmegosztás | |
+| |AF21 (18) |Alkalmazásmegosztás | 
 | **Alapértelmezett** |AF11 (10) |Fájlátvitel |
-| CS0 (0) |Bármi más | |
+| |CS0 (0) |Bármi más |
 
-* Osztályoznia kell a munkaterheléseket, és meg kell jelölnie a megfelelő DSCP-értékeket. A DSCP-jelöléseket az [itt](https://technet.microsoft.com/library/gg405409.aspx) leírt útmutatások alapján állíthatja be a hálózatban.
-* Több QoS várakozási sort kell konfigurálnia és támogatnia a hálózaton belül. A hangnak egy különálló osztálynak kell lennie, és az RFC 3246-ban meghatározott EF-kezelést kell fogadnia. 
+* Osztályoznia kell a munkaterheléseket, és meg kell jelölnie a megfelelő DSCP-értékeket. A DSCP-jelöléseket az [itt](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) leírt útmutatások alapján állíthatja be a hálózatban.
+* Több QoS várakozási sort kell konfigurálnia és támogatnia a hálózaton belül. Beszédfelismerési egy különálló osztálynak kell és meghatározott EF-kezelést [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt). 
 * Forgalomosztályonként meghatározhatja a várakozásisor-kezelési mechanizmust, a torlódásészlelési házirendet és a sávszélesség-kiosztást. Skype Vállalati verzió számítási feladatainak DSCP-jelölését azonban meg kell tartania. Ha a fenti listában nem szereplő DSCP-jelöléseket használ, például az AF31 (26) jelölést, ezt a DSCP-értéket 0 értékre kell felülírnia, mielőtt elküldi a csomagot a Microsoftnak. A Microsoft csak a fenti táblázatban szereplő DSCP-értékkel jelölt csomagokat küld. 
 
 ## <a name="next-steps"></a>További lépések

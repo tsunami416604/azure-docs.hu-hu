@@ -15,21 +15,21 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 379e5503900621381bbc27c6604cc8208cfdb80e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9e99e5f999c927ed0376a89b9f6d9f73fa8b2b2b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076457"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384173"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
  
-Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-collection.md#metrics) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) így értesítést kapjon a metrika eléri a megadott értéket. 
+Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-collection.md#metrics) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-overview.md) így értesítést kapjon a metrika eléri a megadott értéket. 
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
-Metrikák az Azure-erőforrások, amelyek használják az Azure Monitor szolgáltatás által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiókokban példa mérőszámok közé tartozik: készlet létrehozása esemény, alacsony prioritású csomópontok száma és a feladat befejezése események. 
+Metrikák az Azure-erőforrások, amelyek használják az Azure Monitor szolgáltatás által kibocsátott (más néven teljesítményszámlálók) Azure telemetriai adatokat. A Batch-fiókokban például metrikák a következők: Készlet létrehozása esemény, alacsony prioritású csomópontok száma és a feladat befejezéséhez eseményeket. 
 
 Tekintse meg a [Batch támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
 
@@ -71,7 +71,7 @@ Metrikariasztás konfigurálása a portálon:
 2. A **figyelés**, kattintson a **riasztási szabályok** > **metrikariasztás hozzáadása**.
 3. Válassza ki a metrika, egy riasztási feltétel (például ha egy metrika egy időszakban meghalad egy bizonyos értéket) és egy vagy több értesítés.
 
-A közel valós idejű riasztási használatával is konfigurálhatja a [REST API-val](https://docs.microsoft.com/rest/api/monitor/). További információkért lásd: [riasztások – áttekintés](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+A közel valós idejű riasztási használatával is konfigurálhatja a [REST API-val](https://docs.microsoft.com/rest/api/monitor/). További információkért lásd: [riasztások – áttekintés](../azure-monitor/platform/alerts-overview.md)
 
 ## <a name="batch-diagnostics"></a>Batch-diagnosztika
 
@@ -109,7 +109,7 @@ A diagnosztikai naplók számára más választható célok:
 
     ![Batch-diagnosztika](media/batch-diagnostics/diagnostics-portal.png)
 
-Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
+Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../azure-monitor/platform/diagnostic-logs-stream-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Hozzáférés diagnosztikai naplók storage-ban
@@ -133,7 +133,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 Mindegyik PT1H.json blob fájl tartalmazza a blob URL-CÍMBEN megadott egy órán belül bekövetkezett események JSON-formátumú (például h = 12). Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mert a diagnosztikai naplóesemények óránként külön blobokba vannak osztva. (UTC szerint is minden esetben.)
 
 
-További információ a tárfiókot a diagnosztikai naplók a séma: [archiválása az Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+További információ a tárfiókot a diagnosztikai naplók a séma: [archiválása az Azure diagnosztikai naplók](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
 A Storage API-k használatával programozott módon hozzáférni az a tárfiókban lévő naplókat. 
 

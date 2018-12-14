@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: b84a2c19fa7eda94e55d9bc473d9864e6d9c0193
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079783"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386454"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>HDInsight-fürtök figyelése az Azure Log Analytics használatával
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
   Egy HDInsight-fürt létrehozásával kapcsolatos utasításokért lásd: [Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Javasoljuk, hogy a HDInsight-fürt és a Log Analytics-munkaterületen helyezze a jobb teljesítmény érdekében ugyanabban a régióban. Az Azure Log Analytics az összes Azure-régióban nem érhető el.
 
 ## <a name="enable-log-analytics-by-using-the-portal"></a>A Log Analytics engedélyezése a portál használatával

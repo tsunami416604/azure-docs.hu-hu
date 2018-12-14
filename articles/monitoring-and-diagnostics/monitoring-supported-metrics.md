@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6ed4d0911dad8f8e36f941c4fa55622c49722377
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824914"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344397"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -21,7 +21,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
+> *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 
@@ -38,37 +38,37 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |QueryPoolBusyThreads|Lekérdezési készlet foglalt szálai|Darabszám|Átlag|A lekérdezési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
 |CommandPoolJobQueueLength|A parancs feladat-várólistájának hossza|Darabszám|Átlag|Az a parancs szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
 |ProcessingPoolJobQueueLength|Feldolgozási készlet feladat-várólistájának hossza|Darabszám|Átlag|Az a feldolgozási szálkészlet üzenetsorában lévő nem I/o feladatok száma.|ServerResourceType|
-|CurrentConnections|Kapcsolat: Aktuális kapcsolatok|Darabszám|Átlag|A létrehozott ügyfélkapcsolatok aktuális száma.|ServerResourceType|
+|CurrentConnections|Kapcsolat: Jelenlegi kapcsolatok száma|Darabszám|Átlag|A létrehozott ügyfélkapcsolatok aktuális száma.|ServerResourceType|
 |CleanerCurrentPrice|Memória: Tisztító – aktuális ár|Darabszám|Átlag|Aktuális ára $/ bájt/idő, a memória, 1000-re normalizálva.|ServerResourceType|
-|CleanerMemoryShrinkable|Memória: – Zsugorítható tisztító memória|Bájt|Átlag|Memória (bájt) vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|ServerResourceType|
-|CleanerMemoryNonshrinkable|Memória: Tisztító – nem zsugorítható memória|Bájt|Átlag|Memória (bájt) nem vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|ServerResourceType|
+|CleanerMemoryShrinkable|Memória: Tisztító – zsugorítható memória|Bájt|Átlag|Memória (bájt) vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|ServerResourceType|
+|CleanerMemoryNonshrinkable|Memória: Tisztább memória – nem zsugorítható|Bájt|Átlag|Memória (bájt) nem vonatkoznak a háttérben futó tisztító kiürítése mennyisége.|ServerResourceType|
 |MemoryUsage|Memória: Memóriahasználat|Bájt|Átlag|A kiszolgálói folyamat tisztító memória ár kiszámításakor memóriahasználat. Számláló Process\PrivateBytes plusz a memória által leképezett adatok figyelmen kívül hagyva amely leképezett vagy lefoglalt által az xVelocity memóriabeli elemzési motor (VertiPaq) az xVelocity motor memóriakorlátját mérete megegyezik.|ServerResourceType|
-|MemoryLimitHard|: Memória szigorú Memóriakorlát|Bájt|Átlag|Szigorú Memóriakorlát a konfigurációs fájlból.|ServerResourceType|
+|MemoryLimitHard|Memória: Szigorú Memóriakorlát|Bájt|Átlag|Szigorú Memóriakorlát a konfigurációs fájlból.|ServerResourceType|
 |MemoryLimitHigh|Memória: Felső Memóriakorlát|Bájt|Átlag|Felső Memóriakorlát a konfigurációs fájlból.|ServerResourceType|
 |MemoryLimitLow|Memória: Alsó Memóriakorlát|Bájt|Átlag|Alsó Memóriakorlát a konfigurációs fájlból.|ServerResourceType|
 |MemoryLimitVertiPaq|Memória: VertiPaq-Memóriakorlát|Bájt|Átlag|Memóriabeli korlát a konfigurációs fájlból.|ServerResourceType|
-|Kvóta|Memória: kvóta|Bájt|Átlag|Aktuális memóriakvóta bájtban. A memóriakvóta memória grant vagy a memória foglalás is nevezik.|ServerResourceType|
+|Kvóta|Memória: Kvóta|Bájt|Átlag|Aktuális memóriakvóta bájtban. A memóriakvóta memória grant vagy a memória foglalás is nevezik.|ServerResourceType|
 |QuotaBlocked|Memória: Blokkolt kvóta|Darabszám|Átlag|Aktuális száma, amelyek le vannak tiltva, amíg a további Memóriakvóták felszabadítását.|ServerResourceType|
 |VertiPaqNonpaged|Memória: VertiPaq, lapozható|Bájt|Átlag|Bájt memóriát a memóriabeli motor általi használatra munkakészletében lévő zárolva van.|ServerResourceType|
 |VertiPaqPaged|Memória: VertiPaq, lapozható|Bájt|Átlag|Lapozható memória, a memóriában lévő adatok bájt.|ServerResourceType|
 |RowsReadPerSec|Feldolgozás: Másodpercenként beolvasott sorok száma|Egység/s|Átlag|Sorok beolvasásának sebessége az összes relációs adatbázisból.|ServerResourceType|
 |RowsConvertedPerSec|Feldolgozás: Másodpercenként konvertált sorok|Egység/s|Átlag|Sorok konvertálásának sebessége a feldolgozás során.|ServerResourceType|
 |RowsWrittenPerSec|Feldolgozás: Másodpercenként írt sorok|Egység/s|Átlag|Sorok írásának sebessége a feldolgozás során.|ServerResourceType|
-|CommandPoolBusyThreads|Szálak: Parancskészlet – foglalt szálak parancsot|Darabszám|Átlag|A parancs szálkészletben lévő foglalt szálak száma.|ServerResourceType|
-|CommandPoolIdleThreads|Szálak: Parancskészlet – üresjárati szálak parancsot|Darabszám|Átlag|A parancsszálkészletben az üresjárati szálak száma.|ServerResourceType|
-|LongParsingBusyThreads|Szálak: Tartós folyamatok elemzése – foglalt szálak|Darabszám|Átlag|A tartós folyamatok elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
-|LongParsingIdleThreads|Szálak: Tartós folyamatok elemzése – üresjárati szálak|Darabszám|Átlag|A tartós folyamatok elemzési szálkészletében az üresjárati szálak száma.|ServerResourceType|
-|LongParsingJobQueueLength|Szálak: Tartós folyamatok elemzése – feladat üzenetsorának hossza|Darabszám|Átlag|A tartós folyamatok elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
-|ProcessingPoolBusyIOJobThreads|Szálak: Feldolgozási készlet foglalt i/o-feladat szálak|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatokat futtató szálak száma.|ServerResourceType|
-|ProcessingPoolBusyNonIOThreads|Szálak: Feldolgozási készlet foglalt nem I/o szálak|Darabszám|Átlag|A feldolgozási szálkészletben nem I/o feladatokat futtató szálak száma.|ServerResourceType|
+|CommandPoolBusyThreads|Szálak: A parancs parancskészlet – foglalt szálak|Darabszám|Átlag|A parancs szálkészletben lévő foglalt szálak száma.|ServerResourceType|
+|CommandPoolIdleThreads|Szálak: A parancs készlet – üresjárati szálak|Darabszám|Átlag|A parancsszálkészletben az üresjárati szálak száma.|ServerResourceType|
+|LongParsingBusyThreads|Szálak: Tartós folyamatok elemzési foglalt szálak|Darabszám|Átlag|A tartós folyamatok elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
+|LongParsingIdleThreads|Szálak: Tartós folyamatok elemzési üresjárati szálak|Darabszám|Átlag|A tartós folyamatok elemzési szálkészletében az üresjárati szálak száma.|ServerResourceType|
+|LongParsingJobQueueLength|Szálak: Tartós folyamatok elemzési feladat üzenetsorának hossza|Darabszám|Átlag|A tartós folyamatok elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
+|ProcessingPoolBusyIOJobThreads|Szálak: Készlet foglalt i/o-feladat szálak feldolgozása|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatokat futtató szálak száma.|ServerResourceType|
+|ProcessingPoolBusyNonIOThreads|Szálak: Feldolgozási készlet a nem I/o feladat foglalt szálai|Darabszám|Átlag|A feldolgozási szálkészletben nem I/o feladatokat futtató szálak száma.|ServerResourceType|
 |ProcessingPoolIOJobQueueLength|Szálak: Feldolgozási készlet – I/O feladat üzenetsorának hossza|Darabszám|Átlag|Az a feldolgozási szálkészlet üzenetsorában található I/O feladatok száma.|ServerResourceType|
 |ProcessingPoolIdleIOJobThreads|Szálak: Feldolgozási készlet – üresjárati i/o feladat szálak|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|ServerResourceType|
-|ProcessingPoolIdleNonIOThreads|Szálak: Feldolgozási készlet – üresjárati nem I/o szálak|Darabszám|Átlag|A feldolgozási szálkészletben nem I/o feladatok számára kijelölt üresjárati szálak száma.|ServerResourceType|
+|ProcessingPoolIdleNonIOThreads|Szálak: Feldolgozási készlet a nem I/o feladat üresjárati szálai|Darabszám|Átlag|A feldolgozási szálkészletben nem I/o feladatok számára kijelölt üresjárati szálak száma.|ServerResourceType|
 |QueryPoolIdleThreads|Szálak: Lekérdezési készlet – üresjárati szálak|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|ServerResourceType|
 |QueryPoolJobQueueLength|Szálak: Lekérdezési készlet – feladat üzenetsorának hossza|Darabszám|Átlag|Az a lekérdezési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
-|ShortParsingBusyThreads|Szálak: Rövid elemzési – foglalt szálak|Darabszám|Átlag|A rövid elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
-|ShortParsingIdleThreads|Szálak: Rövid elemzési – üresjárati szálak|Darabszám|Átlag|A rövid elemzési szálkészletben az üresjárati szálak száma.|ServerResourceType|
-|ShortParsingJobQueueLength|Szálak: Rövid elemzési – feladat üzenetsorának hossza|Darabszám|Átlag|A a rövid elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
+|ShortParsingBusyThreads|Szálak: Rövid elemzés a foglalt szálak|Darabszám|Átlag|A rövid elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
+|ShortParsingIdleThreads|Szálak: Rövid elemzési üresjárati szálak|Darabszám|Átlag|A rövid elemzési szálkészletben az üresjárati szálak száma.|ServerResourceType|
+|ShortParsingJobQueueLength|Szálak: Rövid elemzési feladat üzenetsorának hossza|Darabszám|Átlag|A a rövid elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
 |memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Átlagos memóriaakadozás.|ServerResourceType|
 |mashup_engine_qpu_metric|M motor qpu-ja|Darabszám|Átlag|Az adategyesítési motor folyamatainak QPU használatáról|ServerResourceType|
 |mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Az adategyesítési motor folyamatainak memóriafelhasználása|ServerResourceType|
@@ -1068,42 +1068,42 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |outgoing.allpns.badorexpiredchannel|Rossz vagy lejárt csatorna által okozott hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő csatorna, jogkivonat vagy regisztrációs azonosító lejárt vagy érvénytelen volt.|Nincs dimenzió|
 |outgoing.wns.success|WNS – sikeres értesítések|Darabszám|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.wns.invalidcredentials|WNS – hitelesítési hibák (érvénytelen hitelesítő adatok)|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva. (Windows Live nem ismeri fel a hitelesítő adatok).|Nincs dimenzió|
-|outgoing.wns.badchannel|WNS – rossz csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő csatorna-URI-azonosító ismeretlen (WNS-állapot: 404 Nem található).|Nincs dimenzió|
-|outgoing.wns.expiredchannel|WNS – lejárt csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a csatorna-URI-azonosító lejárt (WNS-állapot: 410 Megszűnt).|Nincs dimenzió|
-|outgoing.wns.throttled|WNS – szabályozott értesítések|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a WNS szabályozza az alkalmazást. (WNS-állapot: 406 Nem megfelelő).|Nincs dimenzió|
+|outgoing.wns.badchannel|WNS – rossz csatorna által okozott hiba|Darabszám|Összes|A leküldések száma nem sikerült, mert a regisztrációban ismeretlen (WNS-állapot: 404 nem található).|Nincs dimenzió|
+|outgoing.wns.expiredchannel|WNS – lejárt csatorna által okozott hiba|Darabszám|Összes|A leküldések száma nem sikerült, mert a regisztrációban lejárt (WNS-állapot: 410-es Gone).|Nincs dimenzió|
+|outgoing.wns.throttled|WNS – szabályozott értesítések|Darabszám|Összes|A leküldések száma nem sikerült, mert a WNS szabályozza az alkalmazást (WNS-állapot: 406 nem megfelelő).|Nincs dimenzió|
 |outgoing.wns.tokenproviderunreachable|WNS – hitelesítési hibák (nem érhető el)|Darabszám|Összes|A Windows Live szolgáltatás nem érhető el.|Nincs dimenzió|
-|outgoing.wns.invalidtoken|WNS – hitelesítési hibák (érvénytelen jogkivonat)|Darabszám|Összes|A WNS szolgáltatásnak megadott jogkivonat érvénytelen (WNS-állapot: 401 A hozzáférés megtagadva).|Nincs dimenzió|
+|outgoing.wns.invalidtoken|WNS – hitelesítési hibák (érvénytelen jogkivonat)|Darabszám|Összes|Wns megadott jogkivonat érvénytelen (WNS-állapot: 401-es nem engedélyezett).|Nincs dimenzió|
 |outgoing.wns.wrongtoken|WNS – hitelesítési hibák (nem megfelelő jogkivonat)|Darabszám|Összes|Wns megadott jogkivonat érvényes, de egy másik alkalmazás (WNS-állapot: 403 Tiltott). Ez akkor fordulhat elő, ha a regisztrációban rendelve egy másik alkalmazás. Ellenőrizze, hogy az ügyfélalkalmazás ugyanazt az alkalmazást, amelynek hitelesítő adatait az értesítési központban vannak társítva.|Nincs dimenzió|
-|outgoing.wns.invalidnotificationformat|WNS – érvénytelen értesítési formátum|Darabszám|Összes|Az értesítés formátuma érvénytelen (WNS-állapot: 400). Vegye figyelembe, hogy WNS nem utasít el minden érvénytelen adattartalmat.|Nincs dimenzió|
-|outgoing.wns.invalidnotificationsize|WNS – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az értesítési tartalom túl nagy (WNS-állapot: 413).|Nincs dimenzió|
-|outgoing.wns.channelthrottled|WNS – csatorna szabályozva|Darabszám|Összes|A rendszer elvetette az értesítést, mert a regisztrációban szereplő URI-azonosítójú csatorna szabályozott (WNS-válaszfejléc: X-WNS-NotificationStatus:channelThrottled).|Nincs dimenzió|
-|outgoing.wns.channeldisconnected|WNS – nincs kapcsolat a csatornával|Darabszám|Összes|A rendszer elvetette az értesítést, mert a regisztrációban szereplő URI-azonosítójú csatorna szabályozott (WNS-válaszfejléc: X-WNS-DeviceConnectionStatus: disconnected).|Nincs dimenzió|
+|outgoing.wns.invalidnotificationformat|WNS – érvénytelen értesítési formátum|Darabszám|Összes|Az értesítés formátuma érvénytelen (WNS-állapot: 400-as). Vegye figyelembe, hogy WNS nem utasít el minden érvénytelen adattartalmat.|Nincs dimenzió|
+|outgoing.wns.invalidnotificationsize|WNS – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az értesítési tartalom mérete túl nagy (WNS-állapot: 413).|Nincs dimenzió|
+|outgoing.wns.channelthrottled|WNS – csatorna szabályozva|Darabszám|Összes|Az értesítés el lett dobva, mert a regisztrációban szabályozott (WNS-válaszfejléc: X - WNS - Channelthrottled).|Nincs dimenzió|
+|outgoing.wns.channeldisconnected|WNS – nincs kapcsolat a csatornával|Darabszám|Összes|Az értesítés el lett dobva, mert a regisztrációban szabályozott (WNS-válaszfejléc: X-WNS-DeviceConnectionStatus: leválasztva).|Nincs dimenzió|
 |outgoing.wns.dropped|WNS – elvetett értesítések|Darabszám|Összes|A rendszer elvetette az értesítést, mert a regisztrációban szereplő URI-azonosítójú csatorna szabályozott (X-WNS-NotificationStatus: dropped, de nem X-WNS-DeviceConnectionStatus: disconnected).|Nincs dimenzió|
 |outgoing.wns.pnserror|WNS-hibák|Darabszám|Összes|Az értesítés nem lett kézbesítve, mert hiba történt a WNS szolgáltatással való kommunikáció közben.|Nincs dimenzió|
 |outgoing.wns.authenticationerror|WNS – hitelesítési hibák|Darabszám|Összes|Az értesítés nem lett kézbesítve, mert hiba történt a Windows Live szolgáltatással való kommunikáció közben; érvénytelenek a hitelesítő adatok vagy nem megfelelő a jogkivonat.|Nincs dimenzió|
 |outgoing.apns.success|APNS – sikeres értesítések|Darabszám|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.apns.invalidcredentials|APNS-hitelesítési hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|outgoing.apns.badchannel|APNS – rossz csatorna által okozott hiba|Darabszám|Összes|A jogkivonat érvénytelensége miatt sikertelen leküldések száma (APNS-állapotkód: 8).|Nincs dimenzió|
+|outgoing.apns.badchannel|APNS – rossz csatorna által okozott hiba|Darabszám|Összes|A leküldések száma nem sikerült, mert a jogkivonat érvénytelen (APNS-állapotkód: 8).|Nincs dimenzió|
 |outgoing.apns.expiredchannel|APNS – lejárt csatorna által okozott hiba|Darabszám|Összes|Az APNS visszajelzési csatornája által érvénytelenített jogkivonatok száma.|Nincs dimenzió|
-|outgoing.apns.invalidnotificationsize|APNS – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az adattartalom túl nagy mérete miatt sikertelen leküldések száma (APNS-állapotkód: 7).|Nincs dimenzió|
+|outgoing.apns.invalidnotificationsize|APNS – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az adattartalom túl nagy a sikertelen leküldések száma, (APNS-állapotkód: 7).|Nincs dimenzió|
 |outgoing.apns.pnserror|APNS-hibák|Darabszám|Összes|Az APNS szolgáltatással való kommunikáció közben történt hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
 |outgoing.gcm.success|GCM – sikeres értesítések|Darabszám|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.gcm.invalidcredentials|GCM – hitelesítési hibák (érvénytelen hitelesítő adatok)|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|outgoing.gcm.badchannel|GCM – rossz csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő regisztrációs azonosító ismeretlen (GCM-eredmény: Invalid Registration).|Nincs dimenzió|
-|outgoing.gcm.expiredchannel|GCM – lejárt csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő regisztrációs azonosító lejárt (GCM-eredmény: NotRegistered).|Nincs dimenzió|
-|outgoing.gcm.throttled|GCM – szabályozott értesítések|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a GCM szabályozta az alkalmazást. (GCM-állapotkód: 501-599 vagy GCM-eredmény: Unavailable).|Nincs dimenzió|
-|outgoing.gcm.invalidnotificationformat|GCM – érvénytelen értesítési formátum|Darabszám|Összes|Az adattartalom helytelen formátuma miatt sikertelen leküldések száma (GCM-eredmény: InvalidDataKey vagy InvalidTtl).|Nincs dimenzió|
-|outgoing.gcm.invalidnotificationsize|GCM – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az adattartalom túl nagy mérete miatt sikertelen leküldések száma (GCM-eredmény: MessageTooBig).|Nincs dimenzió|
-|outgoing.gcm.wrongchannel|GCM – nem megfelelő csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő regisztrációs azonosító nem a jelenlegi alkalmazáshoz van hozzárendelve (GCM-eredmény: InvalidPackageName).|Nincs dimenzió|
+|outgoing.gcm.badchannel|GCM – rossz csatorna által okozott hiba|Darabszám|Összes|A leküldések száma nem sikerült, mert a regisztrációban szereplő regisztrációs azonosító ismeretlen (GCM-eredmény: Érvénytelen regisztrációs).|Nincs dimenzió|
+|outgoing.gcm.expiredchannel|GCM – lejárt csatorna által okozott hiba|Darabszám|Összes|Leküldések száma, amely nem sikerült, mert a regisztrációban szereplő regisztrációs azonosító lejárt (GCM-eredmény: NotRegistered).|Nincs dimenzió|
+|outgoing.gcm.throttled|GCM – szabályozott értesítések|Darabszám|Összes|A leküldések száma nem sikerült, mert a GCM szabályozta az alkalmazást (GCM-állapotkód: 501-599 vagy eredmény: nem érhető el).|Nincs dimenzió|
+|outgoing.gcm.invalidnotificationformat|GCM – érvénytelen értesítési formátum|Darabszám|Összes|Leküldések száma, hogy nem sikerült, mert a tartalom formázása nem megfelelő (GCM-eredmény: InvalidDataKey vagy InvalidTtl).|Nincs dimenzió|
+|outgoing.gcm.invalidnotificationsize|GCM – érvénytelen értesítésméret által okozott hiba|Darabszám|Összes|Az adattartalom túl nagy a sikertelen leküldések száma, (GCM-eredmény: MessageTooBig).|Nincs dimenzió|
+|outgoing.gcm.wrongchannel|GCM – nem megfelelő csatorna által okozott hiba|Darabszám|Összes|Nem sikerült, mert a regisztrációban szereplő regisztrációs azonosító nem a jelenlegi alkalmazáshoz kapcsolódó leküldések száma (GCM-eredmény: InvalidPackageName).|Nincs dimenzió|
 |outgoing.gcm.pnserror|GCM-hibák|Darabszám|Összes|A GCM szolgáltatással való kommunikáció közben történt hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
-|outgoing.gcm.authenticationerror|GCM-hitelesítési hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva, vagy hogy a küldő azonosítója nincs megfelelően konfigurálva az alkalmazásban (GCM-eredmény: MismatchedSenderId).|Nincs dimenzió|
+|outgoing.gcm.authenticationerror|GCM-hitelesítési hibák|Darabszám|Összes|A PNS nem fogadta el a megadott hitelesítő adatokat a hitelesítő adatok miatt sikertelen leküldések száma le vannak tiltva, vagy hogy a nem megfelelően van konfigurálva az alkalmazásban (GCM-eredmény: MismatchedSenderId).|Nincs dimenzió|
 |outgoing.mpns.success|MPNS – sikeres értesítések|Darabszám|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.mpns.invalidcredentials|MPNS – érvénytelen hitelesítő adatok|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|outgoing.mpns.badchannel|MPNS – rossz csatorna által okozott hiba|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő csatorna-URI-azonosító ismeretlen (MPNS-állapot: 404 Nem található).|Nincs dimenzió|
-|outgoing.mpns.throttled|MPNS – szabályozott értesítések|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy az MPNS szabályozza az alkalmazást. (WNS MPNS: 406 Nem megfelelő).|Nincs dimenzió|
+|outgoing.mpns.badchannel|MPNS – rossz csatorna által okozott hiba|Darabszám|Összes|A leküldések száma nem sikerült, mert a regisztrációban ismeretlen (MPNS-állapot: 404 nem található).|Nincs dimenzió|
+|outgoing.mpns.throttled|MPNS – szabályozott értesítések|Darabszám|Összes|A leküldések száma nem sikerült, mert az MPNS szabályozza az alkalmazást (WNS MPNS: 406 nem megfelelő).|Nincs dimenzió|
 |outgoing.mpns.invalidnotificationformat|MPNS – érvénytelen értesítési formátum|Darabszám|Összes|Az értesítési tartalom túl nagy mérete miatt sikertelen leküldések száma.|Nincs dimenzió|
-|outgoing.mpns.channeldisconnected|MPNS – nincs kapcsolat a csatornával|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a regisztrációban szereplő URI-azonosítójú csatornával megszakadt a kapcsolat (MPNS-állapot: 412 Nem található).|Nincs dimenzió|
-|outgoing.mpns.dropped|MPNS – elvetett értesítések|Darabszám|Összes|A MPNS által elvetett leküldések száma (MPNS-válaszfejléc: X-NotificationStatus: QueueFull vagy Suppressed).|Nincs dimenzió|
+|outgoing.mpns.channeldisconnected|MPNS – nincs kapcsolat a csatornával|Darabszám|Összes|A leküldések száma nem sikerült, mert a regisztrációban le lett választva (MPNS-állapot: 412 nem található).|Nincs dimenzió|
+|outgoing.mpns.dropped|MPNS – elvetett értesítések|Darabszám|Összes|A MPNS által elvetett leküldések száma (MPNS-válaszfejléc: X-NotificationStatus: QueueFull vagy letiltott).|Nincs dimenzió|
 |outgoing.mpns.pnserror|MPNS-hibák|Darabszám|Összes|Az MPNS szolgáltatással való kommunikáció közben történt hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
 |outgoing.mpns.authenticationerror|MPNS – hitelesítési hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
 |notificationhub.pushes|Minden kimenő értesítés|Darabszám|Összes|Az értesítési központ minden kimenő értesítése|Nincs dimenzió|
@@ -1571,5 +1571,5 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 ## <a name="next-steps"></a>További lépések
 * [További információ a metrikák az Azure monitorban](../azure-monitor/platform/data-collection.md)
-* [Riasztások létrehozása metrikákhoz](monitoring-overview-alerts.md)
+* [Riasztások létrehozása metrikákhoz](../azure-monitor/platform/alerts-overview.md)
 * [A storage, az Event Hubs vagy a Log Analytics metrikák exportálása](monitoring-overview-of-diagnostic-logs.md)

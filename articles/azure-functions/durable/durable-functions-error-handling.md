@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a55e28f34f36cd02b67e56c6262b9e1f06dde8f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642661"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338192"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a hibák kezelése
 
@@ -27,7 +27,7 @@ Bármely, amely egy tevékenység függvényben történt kivétel vissza az orc
 
 Vegyük példaként a következő az orchestrator-függvény, amely alapok továbbítja az egyik fiókból a másikba:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -38,16 +38,16 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await context.CallActivityAsync("DebitAccount",
         new
-        { 
+        {
             Account = transferDetails.SourceAccount,
             Amount = transferDetails.Amount
         });
 
     try
     {
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.DestinationAccount,
                 Amount = transferDetails.Amount
             });
@@ -56,9 +56,9 @@ public static async Task Run(DurableOrchestrationContext context)
     {
         // Refund the source account.
         // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.SourceAccount,
                 Amount = transferDetails.Amount
             });
@@ -66,7 +66,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -108,7 +108,7 @@ Ha a hívást a **CreditAccount** függvény nem sikerül, a cél-fiók, az orch
 
 Tevékenységfüggvényeket vagy alárendelt vezénylési függvényt hívja, megadhat egy automatikus újrapróbálkozási szabályzat. Az alábbi példa meghívhat egy függvényt, legfeljebb három alkalommal próbál, és az egyes újrapróbálkozások közötti 5 másodpercet vár:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -118,41 +118,41 @@ public static async Task Run(DurableOrchestrationContext context)
         maxNumberOfAttempts: 3);
 
     await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-    
+
     // ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const retryOptions = new df.RetryOptions(5000, 3);
-    
+
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
     // ...
 });
 ```
 
-A `CallActivityWithRetryAsync` (C#) vagy `callActivityWithRetry` (node.js) API-t vesz igénybe egy `RetryOptions` paraméter. Suborchestration meghívja a használatával a `CallSubOrchestratorWithRetryAsync` (C#) vagy `callSubOrchestratorWithRetry` (node.js) API ezek azonos újrapróbálkozási szabályzatokat használhatja.
+A `CallActivityWithRetryAsync` (.NET) vagy `callActivityWithRetry` (JavaScript) API-t vesz igénybe egy `RetryOptions` paraméter. Suborchestration meghívja a használatával a `CallSubOrchestratorWithRetryAsync` (.NET) vagy `callSubOrchestratorWithRetry` (JavaScript) API-t ezek azonos újrapróbálkozási szabályzatokat használhatja.
 
 Többféle módon is automatikus újrapróbálkozási szabályzat testreszabása. Ezek a következők:
 
-* **Maximális számú kísérlet**: az újrapróbálkozások maximális számát.
-* **Első újrapróbálkozás**: mennyi ideig kell várni, mielőtt az első újrapróbálkozási kísérlet.
+* **Maximális számú kísérlet**: Az újrapróbálkozási kísérletek maximális számát.
+* **Első újrapróbálkozás**: Mennyi ideig kell várni az első újrapróbálkozási kísérlet előtt.
 * **Leállítási együttható**: A hányados leállítási üteme határozza meg. Alapértelmezett értéke 1.
-* **Maximális újrapróbálkozási időköz**: köztes várakozási idő maximális mennyisége újrapróbálkozások száma.
+* **Maximális újrapróbálkozási időköz**: A köztes várakozási idő maximális mennyisége újrapróbálkozások száma.
 * **Ismételje meg a timeout**: A legnagyobb ezzel időnk újrapróbálkozik. Az alapértelmezett viselkedést, hogy határozatlan ideig próbálja újra.
-* **Kezelni**: egy felhasználó által meghatározott visszahívást is adható meg, amely meghatározza, hogy e egy adott hívás meg kell ismételni.
+* **Kezelni**: Egy felhasználó által meghatározott visszahívást adható meg, amely meghatározza, hogy e egy adott hívás meg kell ismételni.
 
 ## <a name="function-timeouts"></a>Függvény időtúllépések
 
-Előfordulhat, hogy szeretné abandon egy függvény hívásához szükséges egy orchestrator függvényen belül, ha túl sokáig tart. A megfelelő módszer ehhez még ma, hozzon létre egy [tartós időzítő](durable-functions-timers.md) használatával `context.CreateTimer` együtt `Task.WhenAny`, ahogy az alábbi példában:
+Előfordulhat, hogy szeretné abandon egy függvény hívásához szükséges egy orchestrator függvényen belül, ha túl sokáig tart. A megfelelő módszer ehhez még ma, hozzon létre egy [tartós időzítő](durable-functions-timers.md) használatával `context.CreateTimer` (.NET) vagy `context.df.createTimer` (JavaScript) együtt `Task.WhenAny` (.NET) vagy `context.df.Task.any` (JavaScript), az alábbi példában látható módon:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -181,7 +181,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");

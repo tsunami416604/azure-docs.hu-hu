@@ -4,17 +4,17 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c09f1f5af8ef417fc4ed195b8ff17cc23c744319
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f1332e1622c34a33dd264a1115a0fd7f37ee8ba7
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313139"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383969"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -217,6 +217,7 @@ A következő mezők támogatottak:
 - `kind`
 - `type`
 - `location`
+  - Használat **globális** az erőforrásra, amely helyet független. Egy vonatkozó példáért lásd: [-minták – engedélyezett helyek](../samples/allowed-locations.md).
 - `identity.type`
   - Típusát adja vissza [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) engedélyezve van az erőforráson.
 - `tags`

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f51de6ded29f93d29dbf80dd68715f621b5cb06
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011034"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384615"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>A HDInsight Mono telepítése vagy frissítése
 
@@ -22,11 +22,11 @@ Ismerje meg, hogyan telepítheti egy adott verzióját [Mono](https://www.mono-p
 
 Mono a HDInsight 3.4 vagy újabb van telepítve, és a .NET-alkalmazások futtatására szolgál. A Mono minden HDInsight-verzióhoz mellékelt verzióját kapcsolatos tudnivalókat lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md). A fürt egy másik verziót telepíti, használja a parancsfájlművelet ebben a dokumentumban. 
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Ez a szkript a következő paramétert fogad el:
 
-* __Monó verziószám__: A Mono telepítése verzióját. A verzió elérhetőnek kell lennie [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Monó verziószám__: Mono telepítése verziója. A verzió elérhetőnek kell lennie [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
 A parancsfájl telepíti a következő monó csomagokat:
 
@@ -52,7 +52,7 @@ Következő a parancsprogram-művelet dokumentumban, míg a következő URI-t ha
 
 A monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek__ mező. Adja meg például `5.4` Mono 5.4 telepítése.
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a szkript HDInsight konfigurálásakor jelölje meg a parancsprogramot __megőrzött__. Ez a beállítás lehetővé teszi, hogy a HDInsight a parancsfájl alkalmazandó műveletek a méretezés során hozzáadott feldolgozó csomópontokat.
 
 ## <a name="next-steps"></a>További lépések
@@ -60,8 +60,8 @@ A monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek
 Megtanulhatta, hogyan frissítése vagy a HDInsight egy adott verzióját Mono telepítése. További információ a HDInsight a Mono való használatához a .NET-alkalmazások a következő dokumentumokban talál:
 
 * [A .NET használata a HDInsight MapReduce streameléshez](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [A Hive és a Piggel a HDInsight .NET használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [C#, HDInsight alatt futó Stormmal megoldásokat fejleszthet](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Az Apache Hive és a HDInsight Apache Pig a .NET használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Fejlesztés C# Apache Storm on HDInsight-megoldások](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [.NET – megoldások áttelepítése Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Szkriptműveletek használatával kapcsolatos további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
+Szkriptműveletek használatával kapcsolatos további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).

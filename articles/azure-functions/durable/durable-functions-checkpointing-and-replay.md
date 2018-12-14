@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ce930adc4cb2c635b54b3d41ea4a3ac272541698
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643165"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339365"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és a visszajátszás a tartós függvények (az Azure Functions)
 
@@ -27,7 +27,7 @@ Durable Functions értéket, ez biztosítja a vezénylések megbízható végreh
 
 Tegyük fel, a következő orchestrator függvényt:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -56,6 +56,7 @@ module.exports = df.orchestrator(function*(context) {
     output.push(yield context.df.callActivity("E1_SayHello", "Seattle"));
     output.push(yield context.df.callActivity("E1_SayHello", "London"));
 
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
     return output;
 });
 ```
@@ -77,47 +78,48 @@ Az ellenőrzőpont után az orchestrator függvény díjmentes segítségével e
 
 Befejezéskor előzményeit, a korábban bemutatott függvény a következőhöz hasonló lesz a következő az Azure Table Storage (az illusztráció rövidítése):
 
-| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | status | 
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL  | E1_HelloSequence |                                                           |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokió!" ""                                        |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Seattle!" ""                                      |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello London!" ""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Helló Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejezve           | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | status |
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokió!" ""                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Seattle!" ""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello London!" ""                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Helló Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejezve           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
 Néhány megjegyzés a kötegműveletekkel kapcsolatban az oszlopértékeket:
-* **PartitionKey**: a vezénylési példány Azonosítóját tartalmazza.
-* **Esemény típusa**: az esemény típusát jelzi. Előfordulhat, hogy a következők egyike lehet:
-    * **OrchestrationStarted**: az orchestrator függvény egy await újra, vagy az első alkalommal fut-e. A `Timestamp` oszlop determinisztikus értéke feltöltésére szolgál a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API-t.
-    * **ExecutionStarted**: az orchestrator függvény lépések végrehajtása az első alkalommal. Ez az esemény is tartalmazza, a függvény bemeneti a `Input` oszlop.
-    * **TaskScheduled**: egy tevékenység függvény lett ütemezve. A tevékenység függvény neve van rögzítve a `Name` oszlop.
-    * **TaskCompleted**: egy tevékenység függvény végre lett hajtva. A függvény eredménye a `Result` oszlop.
-    * **TimerCreated**: tartós időzítő lett létrehozva. A `FireAt` oszlop tartalmazza a megadott (UTC) időpont, amikor az időzítő lejár.
-    * **TimerFired**: tartós időzítő által aktivált.
-    * **EventRaised**: egy külső eseményre küldte el a vezénylés példány. A `Name` oszlop rögzíti az esemény nevét, és a `Input` oszlop rögzíti a az esemény hasznos.
-    * **OrchestratorCompleted**: az orchestrator függvény várni.
-    * **ContinueAsNew**: az orchestrator függvény befejeződött, és az új állapot újraindul magát. A `Result` oszlop tartalmazza az értéket, amely a-példány újraindítása sikeresen megtörtént a bemenetként szolgál.
-    * **ExecutionCompleted**: az orchestrator függvény lefutott befejezését (vagy sikertelen). A függvény vagy a hiba részleteit a kimenetek vannak tárolva a `Result` oszlop.
-* **Időbélyeg**: előzmények esemény időbélyegzője az UTC.
-* **Név**: A függvény meghívása nevére.
-* **A bemeneti**: a függvény a JSON-formátumú bemeneti.
-* **Eredmény**: a függvény kimenetének fiókerdőből, azaz a visszaadott érték.
+
+* **PartitionKey**: A vezénylési példány Azonosítóját tartalmazza.
+* **Esemény típusa**: Az esemény típusát jelzi. Előfordulhat, hogy a következők egyike lehet:
+  * **OrchestrationStarted**: Az orchestrator függvény egy await újra, vagy az első alkalommal fut-e. A `Timestamp` oszlop determinisztikus értéke feltöltésére szolgál a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API-t.
+  * **ExecutionStarted**: Az orchestrator függvény lépések végrehajtása az első alkalommal. Ez az esemény is tartalmazza, a függvény bemeneti a `Input` oszlop.
+  * **TaskScheduled**: Egy tevékenység függvény lett ütemezve. A tevékenység függvény neve van rögzítve a `Name` oszlop.
+  * **TaskCompleted**: Egy tevékenység függvény befejeződött. A függvény eredménye a `Result` oszlop.
+  * **TimerCreated**: Tartós időzítő jött létre. A `FireAt` oszlop tartalmazza a megadott (UTC) időpont, amikor az időzítő lejár.
+  * **TimerFired**: Tartós időzítő lép működésbe.
+  * **EventRaised**: Egy külső eseményre lett elküldve a vezénylési példányhoz. A `Name` oszlop rögzíti az esemény nevét, és a `Input` oszlop rögzíti a az esemény hasznos.
+  * **OrchestratorCompleted**: Az orchestrator függvény várni.
+  * **ContinueAsNew**: Az orchestrator függvény befejeződött, és magát az új állapot újraindul. A `Result` oszlop tartalmazza az értéket, amely a-példány újraindítása sikeresen megtörtént a bemenetként szolgál.
+  * **ExecutionCompleted**: Az orchestrator függvény lefutott befejezését (vagy sikertelen). A függvény vagy a hiba részleteit a kimenetek vannak tárolva a `Result` oszlop.
+* **Időbélyeg**: Az előzmények eseményt UTC-időbélyeg.
+* **Név**: A függvény meghívása neve.
+* **Bemeneti**: A JSON-formátumú bemeneti a függvény.
+* **Eredmény**: A kimenet a függvény; Ez azt jelenti, hogy a visszaadott érték.
 
 > [!WARNING]
 > Bár a hasznos hibakeresési eszköz, a tábla nem kell minden olyan függőséget. Mivel a Durable Functions bővítmény haladásával is megváltoztathatja.
 
-Minden alkalommal, amikor a függvény visszatér az egy `await`, tartós feladat keretében is Újrafuttatja a teljesen új orchestrator-függvény. Az egyes ismétlés meghatározhatja, hogy az aktuális aszinkron művelet rendelkezik, végrehajtási előzményeinek consults szintűre frissül, helyezze el.  A művelet került sor, ha a keretrendszer azonnal visszajátssza a művelet kimenetét, és áthelyezi a következő `await`. Ez a folyamat folytatódik, amíg a teljes előzmények rendelkezik lett játssza vissza, mely a helyi változókat az orchestrator függvényben visszaállnak az előző értékekre.
+Minden alkalommal, amikor a függvény visszatér az egy `await` (C#) vagy `yield` (JavaScript), a tartós feladat keretrendszer Újrafuttatja a teljesen új orchestrator-függvény. Az egyes ismétlés meghatározhatja, hogy az aktuális aszinkron művelet rendelkezik, végrehajtási előzményeinek consults szintűre frissül, helyezze el.  A művelet került sor, ha a keretrendszer azonnal visszajátssza a művelet kimenetét, és áthelyezi a következő `await` (C#) vagy `yield` (JavaScript). Ez a folyamat folytatódik, amíg a teljes előzmények rendelkezik lett játssza vissza, mely a helyi változókat az orchestrator függvényben visszaállnak az előző értékekre.
 
 ## <a name="orchestrator-code-constraints"></a>Az orchestrator kód megkötései
 
@@ -125,26 +127,36 @@ A visszajátszás viselkedését a kódot, amely az orchestrator függvényben c
 
 * Az orchestrator-kódot kell **determinisztikus**. Ez lesz többszöri megismétlését és a kell ugyanaz az eredmény minden alkalommal, amikor. Például nincs közvetlen hívások lekérése az aktuális dátumot és időpontot, véletlenszerű szám lekérése, véletlenszerű GUID azonosítókat létrehozni vagy hívásokat indítani olyan távoli végpontok.
 
-  Ha az orchestrator-kódot kell lekérni az aktuális dátumot és időpontot, azt kell használnia a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API-t, a visszajátszás biztonságos.
+  Ha az orchestrator-kódot kell lekérni az aktuális dátumot és időpontot, azt kell használnia a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) vagy `currentUtcDateTime` (JavaScript) API-t, a visszajátszás biztonságos.
 
-  Ha az orchestrator-kódot kell létrehozni a véletlenszerű GUID, azt kell használnia a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) API-t, a visszajátszás biztonságos.
+  Ha az orchestrator-kódot kell létrehozni a véletlenszerű GUID, azt kell használnia a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) API-t, amely ebben a példában a visszajátszás, vagy delegált GUID generációs tevékenység függvény (JavaScript), biztonságos:
+
+  ```javascript
+  const uuid = require("uuid/v1");
+
+  module.exports = async function(context) {
+    return uuid();
+  }
+  ```
 
   A tevékenység függvények nem determinisztikus műveleteket kell elvégezni. Ez magában foglalja a más bemeneti vagy kimeneti kötések végzett minden művelet. Ez biztosítja, hogy nem determinisztikus értéket az első végrehajtás után hozza létre és menti a futtatási előzményei. Az azt követő végrehajtások fogja használni, a mentett érték automatikusan.
 
-* Az orchestrator-kód legyen **nem blokkoló**. Ha például azt jelenti, hogy nem I/O- és a hívások nem `Thread.Sleep` vagy ezzel egyenértékű API-k.
+* Az orchestrator-kód legyen **nem blokkoló**. Ha például azt jelenti, hogy nem I/O- és a hívások nem `Thread.Sleep` (.NET) vagy ezzel egyenértékű API-k.
 
-  Ha az orchestrator késleltetésre van szüksége, használhat a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) API-t.
+  Ha az orchestrator késleltetésre van szüksége, használhat a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) vagy `createTimer` (JavaScript) API-t.
 
-* Az orchestrator-kódot kell **soha nem kezdeményez bármilyen aszinkron művelet** használatával, kivéve a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API-t. Ha például nem `Task.Run`, `Task.Delay` vagy `HttpClient.SendAsync`. Tartós feladat keretében hajtja végre az orchestrator-kódot egyetlen szálon, és bármely más olyan hozzászólásláncot, amelyet más API-k aszinkron sikerült ütemezni nem kezelheti.
+* Az orchestrator-kódot kell **soha nem kezdeményez bármilyen aszinkron művelet** használatával, kivéve a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API vagy `context.df` objektum API. Például nem `Task.Run`, `Task.Delay` vagy `HttpClient.SendAsync` a .NET-ben, vagy `setTimeout()` és `setInterval()` javascriptben. Tartós feladat keretében hajtja végre az orchestrator-kódot egyetlen szálon, és bármely más olyan hozzászólásláncot, amelyet más API-k aszinkron sikerült ütemezni nem kezelheti.
 
-* **Végtelen hurkok el kell kerülni** az orchestrator-kódban. Mivel a tartós feladat keretrendszer futtatási előzményei a vezénylési függvény előrehaladtával, végtelen ciklust eredményezheti egy orchestrator-példány futtatásához nincs elég memória. Végtelen ciklust esetekhez használhatja API-k például [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) indítsa újra a függvény végrehajtási és előző futtatási előzményei.
+* **Végtelen hurkok el kell kerülni** az orchestrator-kódban. Mivel a tartós feladat keretrendszer futtatási előzményei a vezénylési függvény előrehaladtával, végtelen ciklust eredményezheti egy orchestrator-példány futtatásához nincs elég memória. Végtelen ciklust esetekhez használhatja API-k például [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) vagy `continueAsNew` (JavaScript) indítsa újra a függvény végrehajtási és előző futtatási előzményei.
+
+* Az orchestrator JavaScript-függvények nem lehet `async`. Ezek a szinkron funkciók értékűként kell deklarálni.
 
 Bár ezek a korlátozások előfordulhat, hogy tűnhet, először a gyakorlatban nem nehéz kövesse. Tartós feladat keretében megkísérli a fenti szabályok megsértésének észlelése és jelez egy `NonDeterministicOrchestrationException`. Azonban ez a viselkedés észlelését a legjobb, és Ön nem függnek tőle.
 
 > [!NOTE]
 > Ezek a szabályok mindegyike csak érvényes által aktivált függvények a `orchestrationTrigger` kötést. Tevékenység függvények váltott a `activityTrigger` kötést, és a Funkciók, amelyek használják a `orchestrationClient` kötés esetén nincs ilyen korlátozásokkal rendelkezik.
 
-## <a name="durable-tasks"></a>Tartós feladatok
+## <a name="durable-tasks-net"></a>Tartós feladatok (.NET)
 
 > [!NOTE]
 > Ez a szakasz ismerteti a tartós feladat keretrendszer belső megvalósítási részletei. Durable Functions ezt az információt ismerete nélkül is használhatja. Célja, hogy csak a segítségével megismerheti a visszajátszás viselkedését.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
+ms.date: 12/11/2018
 ms.author: rkarlin
-ms.openlocfilehash: 08a16285a6e3e52fc9e2ddce6b6936dfd4639ba8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d0cdda4553808d1197d764d0a50e535515527443
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835573"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336441"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Átláthatóvá és ellenőrizhetővé hibrid felhőbeli számítási feladatokhoz, amely csökkenti a fenyegetéseket, és intelligens észlelés segít lépést tartani, gyorsan fejlődő kibertámadások aktív védelmet kínál.
@@ -33,8 +33,8 @@ A Security Center két szinten érhető el:
 
 További információkért lásd: a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="try-standard-free-for-60-days"></a>Próbálja ki 60 napig ingyenes Standard
-A Standard szint 60 napig ingyenesen használható. 60 nap végén kell kíván használni a szolgáltatást, automatikusan megkezdjük számlázni a használatot.
+## <a name="try-standard-free-for-30-days"></a>Próbálja ki 30 napig ingyenesen Standard
+A Standard szint az első 30 napban ingyenesen kínáljuk. 30 nap végén kell kíván használni a szolgáltatást, automatikusan megkezdjük számlázni a használatot.
 
 A Standard szintre, amely örökli az előfizetés összes erőforrásának frissítheti teljes Azure-előfizetéssel.
 

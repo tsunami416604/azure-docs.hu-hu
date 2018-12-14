@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Adatok betöltése az Azure Data Explorer Python-kódtárral'
+title: 'Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése'
 description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan tölthet be adatokat az Azure Data Explorerbe a Python használatával.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: fe405416e166b69ebe6b72e519ace4930c3062d8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 390cdddf09f6880368d4d199eef41be19b54d9f0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871727"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339246"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Rövid útmutató: Adatok betöltése az Azure Data Explorer Python-kódtárral
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid útmutatóban először létrehoz egy táblát és egy adatleképezést egy tesztfürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
 
@@ -73,7 +73,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE  = "<DatabaseName>"
 ```
 
-Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Emellett az AAD-alkalmazástanúsítványt, az AAD-alkalmazáskulcsot és az AAD-felhasználót és -jelszót is használhatja.
+Most hozza létre a kapcsolati sztringet. Ez a példa eszközhitelesítést használ a fürt eléréséhez. Is [AAD-alkalmazás tanúsítványának](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [AAD alkalmazáskulcsot](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), és [AAD felhasználójának és jelszavának](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 Egy későbbi lépésben fogja létrehozni a céltáblát és a leképezést.
 
@@ -105,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + CONTAINER + 
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Tábla létrehozása a tesztfürtön
 
-Hozzon létre egy táblát, amely megfelel a StormEvents.csv fájlban szereplő adatok sémájának. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az F3W4VWZDM kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
+Hozzon létre egy táblát, amely megfelel a StormEvents.csv fájlban szereplő adatok sémájának. Ez a kód futtatásakor a következőhöz hasonló üzenetet adja vissza: *Jelentkezzen be, használja egy webböngészőben nyissa meg a https://microsoft.com/devicelogin , és írja be a kódot a hitelesítéshez F3W4VWZDM*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)

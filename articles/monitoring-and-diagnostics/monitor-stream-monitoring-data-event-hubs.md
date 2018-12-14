@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 3bf2135e7d4cb0e34d6e38e8673d5d69f262979c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a65611c1e84bdd01bac525012553e6cd7c7fc4e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322397"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386859"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -58,7 +58,7 @@ Az Azure Active Directory-naplóból származó adatokat küldeni az Event Hubs-
 
 ## <a name="azure-subscription-monitoring-data"></a>Azure-előfizetés monitorozási adatai
 
-Azure-előfizetés monitorozási adatok érhető el a [Azure tevékenységnapló](./monitoring-overview-activity-logs.md). Ez tartalmazza a létrehozása, frissítése és törlési műveletek a Resource Manager, a változások [az Azure service health](../service-health/service-health-overview.md) , amely befolyásolhatja az erőforrást az előfizetésében, a [a resource health](../service-health/resource-health-overview.md) állapota átmenetekkel és számos egyéb típusú előfizetés-szintű eseményeit. [Ez a cikk részletesen jelennek meg az Azure-tevékenységnapló eseményeket az összes kategória](./monitoring-activity-log-schema.md).
+Azure-előfizetés monitorozási adatok érhető el a [Azure tevékenységnapló](./monitoring-overview-activity-logs.md). Ez tartalmazza a létrehozása, frissítése és törlési műveletek a Resource Manager, a változások [az Azure service health](../service-health/service-health-overview.md) , amely befolyásolhatja az erőforrást az előfizetésében, a [a resource health](../service-health/resource-health-overview.md) állapota átmenetekkel és számos egyéb típusú előfizetés-szintű eseményeit. [Ez a cikk részletesen jelennek meg az Azure-tevékenységnapló eseményeket az összes kategória](./../azure-monitor/platform/activity-log-schema.md).
 
 ### <a name="activity-log-data"></a>Tevékenységnapló adatainak
 
@@ -117,7 +117,7 @@ A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor
 * **Syslog-kiszolgáló** – Ha szeretne közvetlenül a syslog-kiszolgálók, az Azure Monitor-adatok streamelése megtekinthet [a GitHub-adattár](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>További lépések
-* [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
+* [A tárfiókhoz a tevékenységnapló archiválása](../azure-monitor/platform/archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
 * [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](../azure-monitor/platform/alerts-log-webhook.md)
 

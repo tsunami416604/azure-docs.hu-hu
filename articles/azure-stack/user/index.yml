@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7a813d091378a0cef3193f7da1937eb0db00c1d1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8dcf4fb44456dcdad82c4c6e44749d6aa2918658
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264029"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340793"
 documentType: LandingData
 title: Az Azure Stack felhasználói dokumentációja
 metadata:
@@ -69,7 +69,6 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Alkalmazások üzembe helyezése az Azure Stacken és az Azure-ban</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">A hibrid felhőbeli identitás konfigurálása az Azure és az Azure Stack-alkalmazásokkal</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-solution-machine-learning">Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Hozzon létre egy előkészített adatelemzési megoldással az Azure és az Azure Stackben </a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben</a>

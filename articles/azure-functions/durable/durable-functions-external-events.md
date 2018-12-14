@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98380cc5b9daff314283ac4e45e5edf7b5601e1b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: fefbdffdeb3db86447038a3b3d4d24e8c7cd3803
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642297"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340436"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a külső események kezelése
 
@@ -25,7 +25,7 @@ Az orchestrator-függvények, várjon, és a külső események figyelésére. E
 
 A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) módszer lehetővé teszi, hogy egy orchestrator-függvény aszinkron módon Várjon, és a egy külső eseményre figyelésére. A figyelő az orchestrator függvény deklarálja a *neve* az esemény, és a *adat alakzat* kíván kapni.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -90,7 +90,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -133,7 +133,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,15 +155,17 @@ module.exports = df.orchestrator(function*(context) {
 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) határozatlan ideig vár a bemeneti adatokat.  Lehet, hogy a függvényalkalmazás biztonságosan memóriából való várakozás során. Egy esemény érkezik a vezénylési példány, ha automatikusan aktiválva van, és azonnal dolgozza fel az eseményt.
 
 > [!NOTE]
-> Ha a függvényalkalmazást a Használatalapú csomagban, nincs számlázási számítunk fel díjat, míg egy orchestrator-függvényt vár a feladat `WaitForExternalEvent`, függetlenül attól, hogy mennyi ideig vár.
+> Ha a függvényalkalmazást a Használatalapú csomagban, nincs számlázási számítunk fel díjat, míg egy orchestrator-függvényt vár a feladat `WaitForExternalEvent` (.NET) vagy `waitForExternalEvent` (JavaScript), függetlenül attól, hogy mennyi ideig vár.
 
 A .NET-ben, ha az eseménytartalom nem konvertálható a várt típus `T`, függvény kivételt vált ki.
 
 ## <a name="send-events"></a>Események küldése
 
-A [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) módszere a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztályban küldi az eseményeket, amelyek `WaitForExternalEvent` vár.  A `RaiseEventAsync` módszer *eventName* és *eventData* paraméterekként. Az eseményadatok szerializálható JSON kell lennie.
+A [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) módszere a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztályban küldi az eseményeket, amelyek `WaitForExternalEvent` (.NET) vagy `waitForExternalEvent` megvárja, amíg (JavaScript).  A `RaiseEventAsync` módszer *eventName* és *eventData* paraméterekként. Az eseményadatok szerializálható JSON kell lennie.
 
 Alul látható egy példa üzenetsor által aktivált függvényt, amely a "Jóváhagyás" eseményt küld az orchestrator-funkció példányát. A vezénylési Példányazonosító származik az üzenetsorban található üzenet törzse.
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -175,38 +177,24 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
-A JavaScript kell meghívni a rest api-t, amelyhez a tartós függvényt vár esemény aktiválása.
-Az alábbi kódot a "kérés" csomagot használ. Az alábbi metódust segítségével bármely esemény bármely tartós függvény példány előléptetése
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
 
-```js
-function raiseEvent(instanceId, eventName) {
-        var url = `<<BASE_URL>>/runtime/webhooks/durabletask/instances/${instanceId}/raiseEvent/${eventName}?taskHub=DurableFunctionsHub`;
-        var body = <<BODY>>
-            
-        return new Promise((resolve, reject) => {
-            request({
-                url,
-                json: body,
-                method: "POST"
-            }, (e, response) => {
-                if (e) {
-                    return reject(e);
-                }
+```javascript
+const df = require("durable-functions");
 
-                resolve();
-            })
-        });
-    }
+module.exports = async function(context, instanceId) {
+    const client = df.getClient(context);
+    await client.raiseEvent(instanceId, "Approval", true);
+};
 ```
 
-<< BASE_URL >> lesz az alap URL-címét a függvényalkalmazásban. Ha helyileg futtatja a kódot, majd a következőhöz hasonlóan fog kinézni http://localhost:7071 vagy az Azure-ban, mint a https://<<functionappname>>. azurewebsites.net
-
-
-Belsőleg `RaiseEventAsync` enqueues egy üzenet, amely a Várakozás az orchestrator-funkció beolvasása észlelnie.
+Belsőleg `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript) enqueues egy üzenet, amely a Várakozás az orchestrator-funkció beolvasása észlelnie.
 
 > [!WARNING]
 > Ha nincs vezénylési példánya és a megadott *példány azonosítója* , vagy ha a példány nem vár a megadott *eseménynév*, a rendszer törli az eseményüzenet. Ezzel a viselkedéssel kapcsolatos további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+
+> [!WARNING]
+> A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -218,4 +206,3 @@ Belsőleg `RaiseEventAsync` enqueues egy üzenet, amely a Várakozás az orchest
 
 > [!div class="nextstepaction"]
 > [Futtasson egy mintát, amely emberi beavatkozás](durable-functions-phone-verification.md)
-

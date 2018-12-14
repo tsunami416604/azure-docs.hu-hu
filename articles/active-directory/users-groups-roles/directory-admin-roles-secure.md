@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 7f2b4d870fdcf250f62d41fa4f3ea5bf13d323c3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847065"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387080"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
@@ -58,21 +58,21 @@ Ez a dokumentum elsősorban felügyelt identitások biztonságát, és elérés�
 
 ## <a name="develop-a-roadmap"></a>A terv kidolgozása 
 
-A Microsoft javasolja, hogy fejleszthet, és hajtsa végre az internetes támadók emelt szintű hozzáférés biztonságossá tételéhez egy ütemtervet. Az ütemterv a már meglévő képességek és a szervezeten belül egyedi igényei mindig módosíthatja. Az ütemterv minden egyes fázisa kell támadásának költségét és nehézségét a támadók való emelt szintű hozzáférés a helyszíni, felhőbeli és hibrid eszközök. A Microsoft azt javasolja, a következő négy ütemterv fázisokra: Ez javasolt ütemterv ütemezések a leghatékonyabb és leggyorsabb először a Microsoft-elemeket a kibertámadás incidensek és a válasz végrehajtására alapján. Ütemterv megvizsgáltuk hozzávetőleges.
+A Microsoft javasolja, hogy fejleszthet, és hajtsa végre az internetes támadók emelt szintű hozzáférés biztonságossá tételéhez egy ütemtervet. Az ütemterv a már meglévő képességek és a szervezeten belül egyedi igényei mindig módosíthatja. Az ütemterv minden egyes fázisa kell támadásának költségét és nehézségét a támadók való emelt szintű hozzáférés a helyszíni, felhőbeli és hibrid eszközök. A Microsoft javasolja a következő négy ütemterv fázisokra: Ez a javasolt ütemterv ütemezések a leghatékonyabb és leggyorsabb először a Microsoft-elemeket a kibertámadás incidensek és a válasz végrehajtására alapján. Ütemterv megvizsgáltuk hozzávetőleges.
 
 ![Az ütemterv részét képezi a határidőinek fázisa](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* (24-48 óra) 1. fázis: azt javasoljuk, hogy kritikus elemek nincs azonnal
+* (24-48 óra) 1. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
 
-* (2 – 4 hét) 2. fázis: a leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
+* (2 – 4 hét) 2. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
 
-* (1 – 3 hónapos) 3. fázis: Build látható-e, és állítsa össze a felügyeleti tevékenység teljes hozzáférés
+* (1 – 3 hónapos) 3. fázis: Láthatóság hozhat létre, és állítsa össze a felügyeleti tevékenység teljes hozzáférés
 
 * 4. fázis (hat hónapos és azt követően): Proaktívabb tovább erősíti a biztonsági platform
 
 Az ütemterv keretrendszer célja maximalizálja a már telepített Microsoft-technológiák használatát. Jelenlegi és jövőbeli kulcsfontosságú technológiák előnyeit, és integrálhatja a már üzembe helyezte, vagy a releváns üzembe helyezése más gyártóktól származó biztonsági eszközöket is. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1. fázis: Javasoljuk, hogy kritikus elemek nincs azonnal
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
 
 ![1. fázis](./media/directory-admin-roles-secure/stage-one.png)
 
@@ -121,7 +121,7 @@ A vészelérési fiókok segítségével a szervezetek korlátozni a rendszerjog
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A multi-factor authentication bekapcsolása, és minden egyéb magas jogosultsági szintű egyfelhasználós nem összevont felügyeleti fiókok regisztrálása 
 
-Az Azure multi-factor Authentication (MFA) megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: globális rendszergazda, kiemelt szerepkörű rendszergazda, a rendszergazda az Exchange Online és SharePoint Online rendszergazdája. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókok](../authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy az összes számukra regisztrálták-e a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ található a 2. lépés és az útmutató 3. lépés [adatait és szolgáltatásait az Office 365-ben való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Az Azure multi-factor Authentication (MFA) megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: Globális rendszergazda, kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a rendszergazda a SharePoint online-hoz. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókok](../authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy az összes számukra regisztrálták-e a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ található a 2. lépés és az útmutató 3. lépés [adatait és szolgáltatásait az Office 365-ben való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
 
@@ -210,7 +210,7 @@ Microsoft-fiókjait az egyéb programok, például az Xbox Live és az Outlook n
 
 #### <a name="monitor-azure-activity"></a>Az Azure figyelése
 
-Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmazza. Aki létre, frissíthetők és törölhetők milyen erőforrásokat, és ezek az események előfordulásakor információkat biztosít. További információkért lásd: [naplózási és az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések](../../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md).
+Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmazza. Aki létre, frissíthetők és törölhetők milyen erőforrásokat, és ezek az események előfordulásakor információkat biztosít. További információkért lásd: [naplózási és az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépéseket a szervezet számára az Azure AD-n keresztül más felhőalapú alkalmazáshoz való hozzáférés kezelése 
@@ -220,7 +220,7 @@ Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmaz
 Készítse elő a feltételes hozzáférési szabályzatok a helyszíni és felhőben üzemeltetett alkalmazásokban. Ha a felhasználói munkahelyhez csatlakoztatott eszközök, részletes tájékoztatást a [beállítása a helyszíni feltételes hozzáférés által az Azure Active Directory eszközregisztrációjával](../active-directory-device-registration-on-premises-setup.md).
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3. fázis: Hozhat létre látható-e, és teljes mértékben vezérelhetik a rendszergazdai tevékenység
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3. fázis: Láthatóság hozhat létre, és teljes mértékben vezérelhetik a felügyeleti tevékenység
 
 ![3. fázis](./media/directory-admin-roles-secure/stage-three.png)
 
@@ -390,52 +390,52 @@ Ha szeretné meghatározni [Azure-előfizetés tulajdonjogának átruházása m�
 
 Hogyan kezeli a Microsoft Office 365-höz a biztonsági incidensek kapcsolatos további információkért lásd: [biztonsági incidensek kezelése a Microsoft Office 365-ben](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Gyakori kérdések: Gyakori kérdések léphetünk emelt szintű hozzáférés biztonságossá tétele  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYAKORI KÉRDÉSEK: Gyakori kérdések léphetünk emelt szintű hozzáférés biztonságossá tétele  
 
 
-**K:** Mit tegyek, ha még I még nincs megvalósítva a biztonságos hozzáférést összetevők?
+**KÉRDÉS:** Mit tegyek, ha még I még nincs megvalósítva a biztonságos hozzáférést összetevők?
 
-**Válasz:** legalább két break-vészhelyzeti fiók megadása, rendelje az MFA a kiemelt jogosultságú rendszergazdai fiókok, és külön felhasználói fiókokat globális rendszergazdai fiókkal.
-
-
-**K:** után megsértése, mi az a leggyakoribb probléma, amelyet elsőként?
-
-**Válasz:** mindenképpen, még a legerősebb hitelesítést igénylő magas kitett felhasználók számára.
+**Válasz:** Legalább két break-vészhelyzeti fiók megadása, rendelje az MFA a kiemelt jogosultságú rendszergazdai fiókok, és külön felhasználói fiókokat globális rendszergazdai fiókkal.
 
 
-**K:** mi történik, ha az emelt szintű rendszergazdák inaktiválták?
+**KÉRDÉS:** Egy illetéktelen behatolás után mit jelent a leggyakoribb probléma, amelyet elsőként?
 
-**Válasz:** hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész.
-
-
-**K:** mi történik, ha a bal oldalon a csak egy globális rendszergazdai, és azok nem érhető el? 
-
-**Válasz:** azonnali emelt szintű hozzáférés a break üvegből fiókok valamelyikével.
+**Válasz:** Győződjön meg arról, hogy Ön még a legerősebb hitelesítést igénylő magas kitett felhasználók számára.
 
 
-**K:** miként védhetők a rendszergazdák a szervezeten belül?
+**KÉRDÉS:** Mi történik, ha az emelt szintű rendszergazdák inaktiválták?
 
-**Válasz:** vannak olyan rendszergazdák, mint "jogosultságokkal nem rendelkező" általános jogú felhasználók napi üzleti mindig tegye.
+**Válasz:** Hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész.
+
+
+**KÉRDÉS:** Mi történik, ha csak egy globális rendszergazdai balra, és nem érhető el? 
+
+**Válasz:** A szünet üvegből fiókok valamelyikével azonnali emelt szintű hozzáférés.
+
+
+**KÉRDÉS:** Hogyan tudja megvédeni a szervezeten belül rendszergazdák?
+
+**Válasz:** Vannak olyan rendszergazdák mindig tegye a napi üzleti standard "jogosultságokkal nem rendelkező" felhasználóként.
  
 
-**K:** a rendszergazdai fiókok létrehozása az Azure AD-ben az ajánlott eljárások?
+**KÉRDÉS:** Mik az Azure AD-ben rendszergazdai fiókok létrehozásának ajánlott eljárásai?
 
-**Válasz:** tartalék, emelt szintű hozzáférés adott felügyeleti feladatokhoz.
+**Válasz:** Tartalék emelt szintű hozzáférés adott felügyeleti feladatokhoz.
 
 
-**K:** milyen eszközöket léteznek csökkentése állandó adminisztrátori hozzáférést?
+**KÉRDÉS:** Milyen eszközöket léteznek csökkentése állandó adminisztrátori hozzáférést?
 
 **Válasz:** Privileged Identity Management (PIM) és az Azure AD felügyeleti szerepkörök.
 
 
-**K:** Mi az a Microsoft álláspontja rendszergazdai fiókok Azure AD szinkronizálása?
+**KÉRDÉS:** Mi a Microsoft álláspontja rendszergazdai fiókok Azure AD szinkronizálása?
 
-**Válasz:** 0. rétegbeli rendszergazdai fiókok (beleértve a fiókok, csoportok, és más eszközök, amelyek közvetlen vagy közvetett ellenőrzést az AD-erdőhöz, tartományok és tartományvezérlők és az összes eszköz) felhasználtuk csak a helyszíni AD-fiókok és a általában nem szinkronizálja a felhőalapú Azure AD-hez. 
+**Válasz:** 0. rétegbeli rendszergazdai fiókok (beleértve a fiókok, csoportok, és más eszközök, amelyek közvetlen vagy közvetett ellenőrzést az AD-erdőhöz, tartományok és tartományvezérlők és az összes eszköz) felhasználtuk csak a helyszíni AD-fiókok alatt, és általában nem szinkronizálva az Azure ad-ben a felhőhöz. 
 
 
-**K:** hogyan tegye azt, hogy a rendszergazdák a portálon véletlenszerű felügyeleti hozzáférés hozzárendelése?
+**KÉRDÉS:** Hogyan tudjuk megtartja a rendszergazdák a portálon véletlenszerű felügyeleti hozzáférés hozzárendelése a?
 
-**Válasz:** minden felhasználó és a legtöbb rendszergazdák nem kiemelt jogosultságú fiókok használata. Első lépésként egy erőforrás-igényű, a szervezet, hogy mely néhány rendszergazdai fiókot kell lennie az emelt szintű fejlesztéséhez. És figyelje az újonnan létrehozott rendszergazda felhasználók.
+**Válasz:** Minden felhasználó és a legtöbb rendszergazdák nem kiemelt jogosultságú fiókokat kell használni. Első lépésként egy erőforrás-igényű, a szervezet, hogy mely néhány rendszergazdai fiókot kell lennie az emelt szintű fejlesztéséhez. És figyelje az újonnan létrehozott rendszergazda felhasználók.
 
 
 ## <a name="next-steps"></a>További lépések

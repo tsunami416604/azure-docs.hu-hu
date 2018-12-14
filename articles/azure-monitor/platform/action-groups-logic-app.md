@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 4b8547435293f26c7f22ed6d5181c64fbabcd574
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0ab496b884506b013c6a4abb2dff1e1feff4fc72
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285038"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342986"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
 
@@ -295,6 +295,6 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
 A Logic Apps rendelkezik, amelyekkel az eseményindító műveletek számos az alkalmazások és adatbázisok különböző összekötőket. A Slack, az SQL Server, Oracle, a Salesforce, néhány példa azt szemlélteti. Összekötők kapcsolatos további információkért lásd: [logikai alkalmazás-összekötők](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>További lépések
-* Get- [Azure tevékenységnapló-riasztások áttekintése](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) és riasztások fogadása.  
+* Get- [Azure tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md) és riasztások fogadása.  
 * Ismerje meg, hogyan [riasztások konfigurálása az Azure Service Health értesítési közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).

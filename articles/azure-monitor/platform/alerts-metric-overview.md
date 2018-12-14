@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 8eb23528391ffeccdad6ba92345d28b31e18f0a3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322107"
+ms.locfileid: "53342221"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
-Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák lehet platform mérőszámokat, [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md), [metrikák alakítani a Log Analytics népszerű naplók](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md), standard mérőszámok az Application Insights. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként egy vagy több metrikát idősorozat-igaz, és értesíti, amint az értékelések teljesülnek a feltételek. Metrikákhoz kapcsolódó riasztások állapotalapúak, azaz csak küldenek értesítéseket állapot.
+Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák lehet platform mérőszámokat, [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md), [metrikák alakítani a Log Analytics népszerű naplók](../../azure-monitor/platform/alerts-metric-logs.md), standard mérőszámok az Application Insights. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként egy vagy több metrikát idősorozat-igaz, és értesíti, amint az értékelések teljesülnek a feltételek. Metrikákhoz kapcsolódó riasztások állapotalapúak, azaz csak küldenek értesítéseket állapot.
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működik a metrikákhoz kapcsolódó riasztások
 
@@ -85,7 +85,7 @@ Megadhat egyetlen metrikariasztás három módszerrel a figyelés hatóköre:
 - egy vagy több erőforráscsoport az előfizetéshez (egy Azure-régióban) található összes virtuális gép
 - egy adott előfizetéshez (egy Azure-régióban) található összes virtuális gép
 
-Metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása jelenleg nem támogatott az Azure Portalon keresztül. Ezek a szabályok segítségével hozhat létre [Azure Resource Manager-sablonok](../../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Az egyes virtuális gépekhez egyedi értesítéseket fog kapni. 
+Metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása jelenleg nem támogatott az Azure Portalon keresztül. Ezek a szabályok segítségével hozhat létre [Azure Resource Manager-sablonok](../../azure-monitor/platform/alerts-metric-create-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Az egyes virtuális gépekhez egyedi értesítéseket fog kapni. 
 
 ## <a name="typical-latency"></a>Átlagos késés
 
@@ -134,5 +134,5 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 ## <a name="next-steps"></a>További lépések
 
 - [Ismerje meg, hogyan hozhat létre, megtekintése és kezelése az Azure-ban metrikákhoz kapcsolódó riasztások](alerts-metric.md)
-- [Ismerje meg, hogyan helyezhet üzembe Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md)
+- [Ismerje meg, hogyan helyezhet üzembe Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-create-templates.md)
 - [További információ a műveletcsoportokról](action-groups.md)

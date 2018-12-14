@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e060a18f1117a9392f867f0bf42ddfa80f68048d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277488"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344295"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -26,7 +26,7 @@ ms.locfileid: "53277488"
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.   
 
 
-[Felügyeleti megoldások](solutions.md) rendszerint tartalmazza a [mentett keresések](../../azure-monitor/log-query/log-query-overview.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) így is szerepelni a [felügyeleti megoldások](solutions-creating.md).
+[Felügyeleti megoldások](solutions.md) rendszerint tartalmazza a [mentett keresések](../../azure-monitor/log-query/log-query-overview.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../../azure-monitor/platform/alerts-overview.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) így is szerepelni a [felügyeleti megoldások](solutions-creating.md).
 
 > [!NOTE]
 > Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](solutions-creating.md)  
@@ -89,7 +89,7 @@ Mentett keresés minden egyes tulajdonsága a következő táblázatban leírt.
 [Az Azure naplóriasztások](../../azure-monitor/platform/alerts-unified-log.md) megadott naplózási lekérdezések futtatása rendszeres időközönként Azure riasztási szabályok alapján jönnek létre.  Ha a lekérdezés eredményeit a megadott feltételeknek, létrejön egy riasztásbejegyzés, és egy vagy több művelet futtatása használatával [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).  
 
 > [!NOTE]
-> Már 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összes riasztás kiterjesztése az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Már 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összes riasztás kiterjesztése az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 A felügyeleti megoldás riasztási szabályai a következő három különböző erőforrások épülnek fel.
 
@@ -145,7 +145,7 @@ Egy több művelet is lehet. Művelet egy vagy több folyamat végrehajtásához
 Műveletek használatával [műveletcsoport] erőforrás vagy a művelet erőforrás lehet definiálni.
 
 > [!NOTE]
-> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 
 A művelet által megadott erőforrás két típusa van a **típus** tulajdonság.  Egy ütemezés csak egy **riasztás** művelet, amely meghatározza a részleteit, valamint a riasztási szabály milyen műveleteket hajtja végre, ha riasztás jön létre. A művelet erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -227,7 +227,7 @@ Ez a szakasz nem kötelező.  Ez a szakasz tartalmazza, abban az esetben, ha kí
 #### <a name="azure-action-group"></a>Az Azure műveletcsoportot
 Az Azure-ban, az összeset műveletcsoport használja az alapértelmezett mechanizmusként műveletek kezelésére. A műveletcsoport adja meg a műveletet egyszer, és társíthatja a műveletcsoport több riasztás – az Azure-ban. Nem szükséges, ismételten deklarálja és újra ugyanazokat a műveleteket. Műveletcsoportok támogatja a több műveletek – például az e-mailben, SMS, hanghívás, az ITSM-kapcsolatot, Automation-Runbook, Webhook URI. 
 
-A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemezés most rendelkezik küszöbértéket, riasztást létrehozni a együtt átadott műveletcsoport részletei. E-mail adatai, a Webhook URL-címek, Runbook-automatizálási részleteit és más műveletek, kell lennie; riasztás létrehozása előtt műveletcsoport ügyféloldali meghatározott létrehozhat egy [műveleti csoport az Azure Monitor](../../azure-monitor/platform/action-groups.md) a portálon vagy [műveletcsoport - Resource-sablon](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemezés most rendelkezik küszöbértéket, riasztást létrehozni a együtt átadott műveletcsoport részletei. E-mail adatai, a Webhook URL-címek, Runbook-automatizálási részleteit és más műveletek, kell lennie; riasztás létrehozása előtt műveletcsoport ügyféloldali meghatározott létrehozhat egy [műveleti csoport az Azure Monitor](../../azure-monitor/platform/action-groups.md) a portálon vagy [műveletcsoport - Resource-sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
@@ -241,7 +241,7 @@ A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemez
 Minden ütemezve van egy **riasztási** művelet.  Ez meghatározza, hogy a riasztást, és igény szerint értesítési és javítási műveletek részleteit.  Értesítés e-mailt küld egy vagy több címet.  A szervizelés runbook elindítja az Azure Automation és próbálja meg elhárítani a probléma.
 
 > [!NOTE]
-> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Ez a szakasz nem kötelező adja meg, ha azt szeretné, hogy egy vagy több címzett e-mailt küldjön egy riasztást.

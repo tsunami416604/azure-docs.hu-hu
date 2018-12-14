@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 90e0f39b7c67866dbe5647f1392b766c91fa81ce
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d90c0c1ab1a6423a206345b7d7d6f34874d2366
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188809"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335727"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök Nagios-és Zabbix a Log Analytics-riasztások gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../../azure-monitor/platform/alerts-overview.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
  
 ## <a name="prerequisites"></a>Előfeltételek
 A Linuxhoz készült Log Analytics-ügynök verzióra Nagios gyűjtését riasztásai támogatja 4.2.x és Zabbix verzióra 2.x.
@@ -116,5 +116,5 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) a Log Analyticsben.
+* Ismerje meg [riasztások](../../azure-monitor/platform/alerts-overview.md) a Log Analyticsben.
 * Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

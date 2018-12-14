@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1109e72d00ccddd6fc0f120ee71c88adaae72fed
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316990"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337597"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
@@ -27,19 +27,19 @@ Ez a változás végpont észlelés és válasz (EDR) funkciókészletet biztos�
 
 Az Azure Security Center-ügyfelek már az funkcióit a Windows Defender ATP-ben:
 
-- **Következő generációs utáni incidensek észlelési érzékelők**: Windows-kiszolgálók a Windows Defender ATP-érzékelő viselkedési jelek hatalmas választékának gyűjtése.
+- **Következő generációs utáni incidensek észlelési érzékelők**: Windows-kiszolgálók a Windows Defender ATP-érzékelő gyűjtsön viselkedési jelek hatalmas választékát.
 
-- **Analytics-alapú, felhőalapú post illetéktelen behatolás-észlelési**: a Windows Defender ATP gyorsan alkalmazkodik a változó fenyegetések. Fejlett elemzés és big data használ. A Windows Defender ATP egészíteni együtt az Intelligent Security Graph hatékonyságával Windows, az Azure és Office ismeretlen fenyegetések észleléséhez. Gyakorlatban hasznosítható riasztásokat biztosít, és lehetővé teszi, hogy gyorsan reagálhat.
+- **Analytics-alapú, felhőalapú post illetéktelen behatolás-észlelési**: A Windows Defender ATP gyorsan alkalmazkodik a változó fenyegetések. Fejlett elemzés és big data használ. A Windows Defender ATP egészíteni együtt az Intelligent Security Graph hatékonyságával Windows, az Azure és Office ismeretlen fenyegetések észleléséhez. Gyakorlatban hasznosítható riasztásokat biztosít, és lehetővé teszi, hogy gyorsan reagálhat.
 
-- **Fenyegetések felderítése**: a Windows Defender ATP azonosítja a támadó eszközök technikák és eljárásokat. Ha ezek észlel, riasztásokat állít elő. Microsoft threat vadászok által létrehozott adatokat és biztonsági csapatok, partnerek által biztosított kiegészítve használ.
+- **Fenyegetések felderítése**: A Windows Defender ATP azonosítja a támadó eszközök technikák és eljárásokat. Ha ezek észlel, riasztásokat állít elő. Microsoft threat vadászok által létrehozott adatokat és biztonsági csapatok, partnerek által biztosított kiegészítve használ.
 
 Ezek a képességek, mostantól elérhetők az Azure Security Center:
 
-- **Bevezetési automatikus**: Windows-kiszolgálók, amelyek előkészítve az Azure Security Center automatikusan engedélyezve van a Windows Defender ATP-érzékelő.
+- **Bevezetési automatikus**: A Windows Defender ATP-érzékelő Windows kiszolgálók előkészítve az Azure Security Center automatikusan engedélyezve lesz.
 
-- **Egyetlen**: az Azure Security Center konzolján Windows Defender ATP riasztásokat jeleníti meg.
+- **Egyetlen**: Az Azure Security Center konzolján a Windows Defender ATP riasztásokat jeleníti meg.
 
-- **Részletes vizsgálat gép**: az Azure Security Center ügyfelek elérhetik a Windows Defender ATP konzol egy részletes vizsgálat elvégzésével nyújt betekintést a hatókör, a támadásokról végrehajtásához.
+- **Részletes vizsgálat gép**: Az Azure Security Center-ügyfelek hozzáférhetnek a Windows Defender ATP konzol végrehajtásához a részletes vizsgálat elvégzésével nyújt betekintést a hatókör, a támadásokról.
 
 ![Az Azure Security Center, riasztások és az egyes riasztásokkal kapcsolatos általános információk megjelenítése](media/security-center-wdatp/image1.png)
 
@@ -105,6 +105,6 @@ A Windows Defender ATP jóindulatú tesztriasztás generálása:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
-- [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md): megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-- [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md): Útmutató az Azure-erőforrások állapotának monitorozásához.
+- [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+- [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md): Megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+- [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.

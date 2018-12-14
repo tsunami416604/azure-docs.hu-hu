@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 956ffb298301aef914221a8d2e623b19191909c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2be11f97882a7c6353b214886ce6c5a3a66add89
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095363"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339110"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -251,7 +251,7 @@ Az Azure Security Center meghajtó biztonsági javaslatok és a figyelés az eng
 ### <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági szabályzatot?
 Biztonsági szabályzat módosításához a rendszergazda vagy a tulajdonosának vagy Közreműködőjének előfizetésben kell lennie.
 
-Biztonsági szabályzat konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md).
+Biztonsági szabályzat konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md).
 
 ### <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslatok?
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha az azonosított potenciális biztonsági réseket, javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlőt konfigurálásának folyamatán. Példák:

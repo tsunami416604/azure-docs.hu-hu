@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422439"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337138"
 ---
-# <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei 
+# <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei
 
 Függetlenül attól, hogy ha csupán rendszertől integrálása az Azure Active Directory, Microsoft identitások vagy a Microsoft Graph API-t, vagy amikor azt fontolgatja, hogy egy új szolgáltatást szeretne az alkalmazáshoz, vannak-e, hogy szüksége súgó beszerzése a Közösségtől, és megismerheti a támogatási lehetőségek, hogy a fejlesztők rendelkezésére. Ez a cikk segít megismerni, ezek a beállítások összegzése alatt:
 
@@ -38,7 +38,7 @@ Függetlenül attól, hogy ha csupán rendszertől integrálása az Azure Active
 
 ## <a name="search"></a>Keresés
 
-Ha fejlesztéssel kapcsolatos kérdése van, akkor lehet tudja megtalálni a választ a dokumentációban, szüksége a [github-minták](https://github.com/azure-samples), vagy adott válaszok [Stack Overflow](https://www.stackoverflow.com) kérdéseket.
+Ha fejlesztéssel kapcsolatos kérdése van, akkor lehet tudja megtalálni a választ a dokumentációban, szüksége a [GitHub-minták](https://github.com/azure-samples), vagy adott válaszok [Stack Overflow](https://www.stackoverflow.com) kérdéseket.
 
 ### <a name="scoped-search"></a>Hatókörön belüli keresés
 Gyorsabb eredmények hatókörét a keresést, hogy a Stack overflow-n, a dokumentációban és a a Kódminták a következő használatával a [kedvenc keresőmotor](https://bing.com):
@@ -76,7 +76,7 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 |A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> A Stack overflow-n a következő bejegyzések tippekkel szolgál az, hogy kérdéseket tartalmaz, és a hozzáadása a forráskódja - ezeket az irányelveket a következő tippek segíthetnek, növelheti annak esélyét segítségével mérheti fel, és gyorsan válaszolni a Közösség tagjai:  
+> A Stack overflow-n a következő bejegyzések tippekkel szolgál az, hogy kérdéseket tartalmaz, és a hozzáadása a forráskódja - ezeket az irányelveket a következő tippek segíthetnek, növelheti annak esélyét segítségével mérheti fel, és gyorsan válaszolni a Közösség tagjai:
 > - [Hogyan jó kérdések feltevése](https://stackoverflow.com/help/how-to-ask)
 > - [A minimális, a teljes és a ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
 

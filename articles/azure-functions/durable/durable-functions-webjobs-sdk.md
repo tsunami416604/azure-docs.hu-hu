@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 427c3601d6a4ca65407a98d54b0206cde9af4235
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643277"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343156"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Tartós függvények futtatása a webjobs-feladatok
 
@@ -35,7 +35,7 @@ A jelen cikkben ismertetett lépések végrehajtásához:
 
 * [Telepítse a Visual Studio 2017 15.6 vagy újabb verzió](https://docs.microsoft.com/visualstudio/install/) együtt a **Azure-fejlesztési** számítási feladatok.
 
-  Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladat, vegye fel a számítási feladatok kiválasztásával **eszközök > első eszközeivel és szolgáltatásaival**. 
+  Ha már rendelkezik a Visual Studióval, de nem rendelkezik az adott számítási feladat, vegye fel a számítási feladatok kiválasztásával **eszközök > első eszközeivel és szolgáltatásaival**.
 
   (Használható [Visual Studio Code](https://code.visualstudio.com/) ehelyett azonban az itt található utasításokat a Visual Studio jellemző.)
 
@@ -43,7 +43,7 @@ A jelen cikkben ismertetett lépések végrehajtásához:
 
 ## <a name="webjobs-sdk-versions"></a>A WebJobs SDK-verziókra
 
-Ez a cikk bemutatja, hogyan hozhat létre a WebJobs SDK 2.x project (Azure Functions verzióra egyenértékű 1.x). Verzióval kapcsolatos információ 3.x, lásd: [WebJobs SDK-val 3.x](#webjobs-sdk-3x) a cikk későbbi részében. 
+Ez a cikk bemutatja, hogyan hozhat létre a WebJobs SDK 2.x project (Azure Functions verzióra egyenértékű 1.x). Verzióval kapcsolatos információ 3.x, lásd: [WebJobs SDK-val 3.x](#webjobs-sdk-3x) a cikk későbbi részében.
 
 ## <a name="create-console-app"></a>Konzolalkalmazás létrehozása
 
@@ -190,9 +190,9 @@ Ez a szakasz futtatása áttekintést nyújt a [mintaprojektet](https://github.c
 
 1. Ha meg szeretné tekinteni az Application Insights-naplók, ha helyileg futtatja:
 
-  a. Hozzon létre egy Application Insights-erőforrást, alkalmazástípus **általános**.
+    a. Hozzon létre egy Application Insights-erőforrást, alkalmazástípus **általános**.
 
-  b. A kialakítási kulcsot az mentse a *App.config* fájlt.
+    b. A kialakítási kulcsot az mentse a *App.config* fájlt.
 
 1. Futtassa a projektet.
 
@@ -216,8 +216,8 @@ A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core haszn�
 
 1. Válassza ki az előzetes verziót, a következő csomagok 3.x:
 
-  * `Microsoft.Azure.WebJobs.Extensions`
-  * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
+    * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
 1. Változás `Main` metódus kód segítségével kérheti le a tárolási kapcsolati karakterlánc és az Application Insights-kialakítási kulcsot a egy *appsettings.json* fájlt, a .NET Core keretrendszerrel.  Például:
 
@@ -235,7 +235,7 @@ A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core haszn�
            var config = new JobHostConfiguration();
 
            config.DashboardConnectionString = "";
-           config.StorageConnectionString = 
+           config.StorageConnectionString =
                appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
            var instrumentationKey =
                appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
@@ -258,4 +258,3 @@ A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core haszn�
 ## <a name="next-steps"></a>További lépések
 
 A WebJobs SDK-val kapcsolatos további információkért lásd: [használata a WebJobs SDK](../../app-service/webjobs-sdk-how-to.md).
-

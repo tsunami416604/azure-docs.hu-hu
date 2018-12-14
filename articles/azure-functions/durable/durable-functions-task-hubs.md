@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 68771362c1b3904453eb7c32f58d28122e8660c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869467"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336900"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Feladatközpontok a tartós függvények (az Azure Functions)
 
@@ -27,7 +27,7 @@ Minden függvényalkalmazáshoz egy külön feladat központ rendelkezik. Ha tö
 
 ## <a name="azure-storage-resources"></a>Az Azure Storage-erőforrások
 
-Egy feladat hub a következő tároló-erőforrások áll: 
+Egy feladat hub a következő tároló-erőforrások áll:
 
 * Egy vagy több vezérlő üzenetsorok.
 * Egy munkaelem várólistát.
@@ -41,7 +41,8 @@ Egy feladat hub a következő tároló-erőforrások áll:
 
 Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a következő példában látható módon:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (Functions v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (1.x függvények)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkciók v2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (2.x függvények)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a
   }
 }
 ```
+
 Feladatközpontok is konfigurálhatja az alkalmazás beállításokkal, ahogyan az az alábbi *host.json* példa fájlt:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (Functions v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (1.x függvények)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ Feladatközpontok is konfigurálhatja az alkalmazás beállításokkal, ahogyan 
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkciók v2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (2.x függvények)
+
 ```json
 {
   "version": "2.0",
@@ -81,13 +88,14 @@ Feladatközpontok is konfigurálhatja az alkalmazás beállításokkal, ahogyan 
   }
 }
 ```
+
 A feladat hub name értékét állítja be a `MyTaskHub` alkalmazásbeállítást. A következő `local.settings.json` bemutatja, hogyan adhat meg a `MyTaskHub` fejléccé `samplehubname`:
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
 }
 ```
@@ -111,9 +119,10 @@ public static async Task<HttpResponseMessage> Run(
     return starter.CreateCheckStatusResponse(req, instanceId);
 }
 ```
+
 És alább a JavaScript szükséges konfigurációval. A feladat hub tulajdonságot a `function.json` fájl keresztül Alkalmazásbeállítás értéke:
 
-```javascript
+```json
 {
     "name": "input",
     "taskHub": "%MyTaskHub%",

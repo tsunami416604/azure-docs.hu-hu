@@ -8,21 +8,21 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094576"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342095"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
-Beszédfelismerési szolgáltatás különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
+Beszédszolgáltatások különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
 
-## <a name="speech-to-text"></a>Diktálás
+## <a name="speech-to-text"></a>Speech-to-text
 
 A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egyes nyelvekhez testreszabás szinteken érhetők el.
 
@@ -62,7 +62,24 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
-A beszédfelismerés összefoglaló API a következő beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk kínál.
+A szöveg-hang transzformációs REST API támogatja ezeket beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk.
+
+### <a name="neural-voices-preview"></a>Neurális beszédhangot (előzetes verzió)
+
+Neurális szöveg-hang transzformációs egy új típusú beszédszintézishez neurálishálózat működteti. Neurális hangalapú használatakor szintetizált szinte megkülönböztetni a az emberi felvételek.
+
+Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Emberszerű természetes prosody és egyértelmű tagolódását szavak Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás amikor AI rendszerek a felhasználók használják.
+
+Neurális beszédhangot és a régiónkénti rendelkezésre állás teljes listáját lásd: [régiók](regions.md#neural-voices).
+
+| Területi beállítás | Nyelv | Nem | A felhasználónév-leképezés|
+|--------|----------|---------|--------------------|
+| en-US | Angol (Egyesült Államok) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, GuyNeural)" |
+| en-US | Angol (Egyesült Államok) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaNeural)" |
+
+### <a name="standard-voices"></a>Standard beszédhangot
+
+Több mint 75 standard beszédhangot több mint 45 nyelvet és a területi beállításokat, amelyek lehetővé teszik, hogy a szöveg átalakítása beszéddé szintetizált érhetők el. Régiónkénti rendelkezésre állás kapcsolatos további információkért lásd: [régiók](regions.md#standard-voices).
 
 Területi beállítás | Nyelv | Nem | A felhasználónév-leképezés
 -------|----------|---------|--------------------
@@ -157,7 +174,7 @@ Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), fr
 > [!NOTE]
 > Francia, német, olasz és hang képzési elindítja egy adatkészlet 2000 + kimondott szöveg. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
 
-## <a name="speech-translation"></a>Beszédfordítás
+## <a name="speech-translation"></a>Tolmácsolás
 
 A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
 

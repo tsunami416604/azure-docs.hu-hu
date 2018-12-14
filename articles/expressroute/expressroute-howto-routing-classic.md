@@ -1,18 +1,19 @@
 ---
-title: 'Útválasztás (társviszony-létesítés) az expressroute-kapcsolatcsoport konfigurálása: Azure: klasszikus |} A Microsoft Docs'
+title: 'Adja meg az ExpressRoute - kapcsolatcsoport társviszony-létesítést: Azure: klasszikus |} A Microsoft Docs'
 description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
-ms.author: cherylmc;ganesr
-ms.openlocfilehash: 6e099d0cdf659aa6ed2ccbef1381021ae55c72c2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/11/2018
+ms.author: cherylmc
+ms.custom: seodec18
+ms.openlocfilehash: fbf97c984a00d6bdd7f79c26094ae36348e00236
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261842"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342034"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute-kapcsolatcsoport (klasszikus) társviszony létesítése és módosítása
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ ms.locfileid: "51261842"
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
-Ez a cikk végigvezeti a lépéseken, hozhat létre és kezelhet egy ExpressRoute-kapcsolatcsoporttal a PowerShell és a klasszikus üzemi modell használatával útválasztási konfigurációja. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket. Egy, kettő vagy az összes mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) ExpressRoute-kapcsolatcsoport konfigurálhatja. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
+Ez a cikk végigvezeti a PowerShell és a klasszikus üzemi modell használatával egy ExpressRoute-kapcsolatcsoport társviszony-létesítés/útválasztási konfigurációjának létrehozási és lépéseket. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket. Egy, kettő vagy az összes mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) ExpressRoute-kapcsolatcsoport konfigurálhatja. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
 
 Ezek az utasítások csak 2. rétegbeli kapcsolatot szolgáltatásokat kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt Layer 3 szolgáltatások (általában egy IPVPN, mint az MPLS), a kapcsolatszolgáltató konfigurálása és kezelése az útválasztást Ön helyett.
 
@@ -33,7 +34,7 @@ Ezek az utasítások csak 2. rétegbeli kapcsolatot szolgáltatásokat kínáló
 
 **Tudnivalók az Azure üzembe helyezési modelljeiről**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
@@ -329,8 +330,8 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg arról, hogy nincs másik társviszony-létesítés a kapcsolatcsoport használja az ugyanazon VLAN-azonosítót.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
    * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha azt tervezi, hogy az előtagok megadni küldhet egy vesszővel tagolt lista. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
-   * Ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-számra vannak regisztrálva, megadhatja az AS-számot, amelyre regisztrálva vannak. **Választható**.
-   * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
+   * Ügyfél ASN-ként: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak. **Választható**.
+   * Útválasztási jegyzék neve: Megadhatja az RIR / IRR jegyzék nevét, amely az AS-szám és az előtagok regisztrálva vannak.
    * Egy MD5-kivonat, ha használni kívánja. **Nem kötelező.**
      
   A következő parancsmag futtatásával konfigurálhatja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz:

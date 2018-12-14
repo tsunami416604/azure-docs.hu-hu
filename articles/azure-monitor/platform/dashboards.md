@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.openlocfilehash: 271d7518094982dcd1e973a7d51b231beae92b78
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 613001c8495ba6c6a259063b8d8d3bce21b66960
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185904"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336424"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>A Log Analyticsben használható egyéni irányítópult létrehozása
 
@@ -86,4 +86,4 @@ El szeretné távolítani a csempét, keresse meg a saját irányítópult-néze
 ![Egy csempe eltávolítása](./media/dashboards/oms-dashboards-remove-tile.png)
 
 ## <a name="next-steps"></a>További lépések
-* Hozzon létre [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) a Log Analytics legyen orvosolni a problémákat és az értesítések generálását.
+* Hozzon létre [riasztások](../../azure-monitor/platform/alerts-overview.md) a Log Analytics legyen orvosolni a problémákat és az értesítések generálását.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b633b1787fc34658a84a2810de6673f9530cbf3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310650"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343139"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Webalkalmazási tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja egy webalkalmazási tűzfal (WAF) hozzáadása egy Microsoft-partner, a webes alkalmazások biztonságossá tételéhez. Ez a dokumentum végigvezeti egy példát a alkalmazni ezt a javaslatot.
@@ -46,7 +46,9 @@ A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások 
 
 6. **Új webalkalmazási tűzfal** megnyílik, ahol hajthatja végre **Virtuálisgép-konfiguráció** lépéseit, és adja meg **WAF-információk**. Válassza ki **Virtuálisgép-konfiguráció**.
 7. A **Virtuálisgép-konfiguráció**, akkor adja meg a virtuális gépet, amely a WAF üzembe helyezése szükséges adatokat.
+
    ![Virtuálisgép-konfiguráció][4]
+   
 8. Lépjen vissza **új webalkalmazási tűzfal** válassza **WAF-információk**. A **WAF-információk**, konfigurálja magát a WAF. 7. lépés lehetővé teszi, hogy konfigurálja a virtuális gép, amelyen a WAF fut, és 8. lépés lehetővé teszi, hogy helyezze üzembe a WAF magát.
 
 ## <a name="finalize-application-protection"></a>Alkalmazásvédelem véglegesítése
@@ -73,7 +75,7 @@ Ez a dokumentum láthatta, hogyan valósíthat meg a Security Center javaslatait
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.

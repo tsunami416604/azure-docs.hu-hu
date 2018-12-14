@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 04dbc5c60e802e7861b9e2a98c51446281b7ae3f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: da866145f9c1ad39987b0f9a4449d4e5ff7f18f5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320607"
+ms.locfileid: "53337121"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -53,7 +53,7 @@ Monitorozási és riasztási régebbi klasszikus kivonjuk a forgalomból. júniu
 - Régebbi (klasszikus) platform, és egyéni metrikákat az Application Insights, valamint azokat jelenleg elérhető a riasztási [riasztások (klasszikus) szakasz](../azure-monitor/platform/alerts-classic.overview.md) az Azure Portalon, és elérhetőnek [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) erőforrás
 - Régebbi (klasszikus) rendellenes hibák riasztás jelenleg elérhető [belül az Application Insights intelligens detektálás](../application-insights/app-insights-proactive-diagnostics.md) ; riasztás konfigurálva az Azure Portalon látható [riasztások (klasszikus) szakasz](../azure-monitor/platform/alerts-classic.overview.md) Azure portál
 
-Az összes klasszikus monitorozási és riasztási rendszer, köztük a megfelelő [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../azure-monitor/platform/alerts-classic-portal.md), [CLI](../azure-monitor/platform/alerts-classic-portal.md), [oldala az Azure portal](../azure-monitor/platform/alerts-classic-portal.md), és [ Erőforrás-sablon](monitoring-enable-alerts-using-template.md) 2019. június végén marad használható. 
+Az összes klasszikus monitorozási és riasztási rendszer, köztük a megfelelő [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../azure-monitor/platform/alerts-classic-portal.md), [CLI](../azure-monitor/platform/alerts-classic-portal.md), [oldala az Azure portal](../azure-monitor/platform/alerts-classic-portal.md), és [ Erőforrás-sablon](../azure-monitor/platform/alerts-enable-template.md) 2019. június végén marad használható. 
 
 Június 2019, az Azure monitorban végén:
 
@@ -76,4 +76,4 @@ Ez a cikk lesz, folyamatosan frissített lesz hivatkozások & Részletek kapcsol
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [új, egységes Azure Monitor](../azure-monitor/overview.md).
-* További információ az új [Azure Alerts](monitoring-overview-alerts.md).
+* További információ az új [Azure Alerts](../azure-monitor/platform/alerts-overview.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 60321b2463a535c3f7a0c73e0922010bd12a3e82
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323235"
+ms.locfileid: "53341235"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -239,22 +239,25 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
-
-7. A Visual Studio *Megoldáskezelő* ablakában keresse meg a **hsm\_security\_client** projektet és bontsa ki. Bontsa ki a **Forrásfájlokat** és nyissa meg a **hsm\_client\_key.c** fájlt. 
-
-    Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. Módosítsa a fájlt a következő módon majd mentse el.
-
-    Frissítse az értéket, a `REGISTRATION_NAME` az állandó a **egyedi regisztrációs Azonosítót az eszköz**.
-    
-    Frissítse az értéket, a `SYMMETRIC_KEY_VALUE` az állandó a **eszközkulcs származtatott**.
+6. Keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
 
     ```c
-    static const char* const REGISTRATION_NAME = "sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6";
-    static const char* const SYMMETRIC_KEY_VALUE = "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
+    Állítsa vissza a függvény hívásához szükséges, és az eszköz és a származtatott eszközkulcs létrehozott egyedi regisztrációs azonosítóval (beleértve a csúcsos zárójeleket) helyőrzőértékeket cserélje le.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
+    ```
+   
+    Mentse a fájlt.
+
+7. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
+
+8. A Visual Studio menüjében válassza a **Debug** > **Start without debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
 
     Az alábbi példakimeneten látható, hogy a szimulált eszköz sikeresen elindul és csatlakozik a regisztrációs szolgáltatáspéldányhoz, hogy az hozzárendelhesse egy IoT-központhoz:
 
@@ -273,7 +276,7 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     Press enter key to exit:
     ```
 
-8. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
+9. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

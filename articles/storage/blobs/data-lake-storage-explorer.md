@@ -1,21 +1,22 @@
 ---
-title: 'Rövid útmutató: Blob létrehozása az objektumtárolóban az Azure Storage Explorer használatával'
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozzon létre egy könyvtárat és egy Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépen, és megtekintése az összes fájl egy könyvtár. Azt is megtudhatja, hogyan hozzon létre egy fájlt egy pillanatképet, könyvtár hozzáférési szabályzatok kezelése és egy közös hozzáférésű jogosultságkód létrehozása.
+title: 'Gyors útmutató: Használja az Azure Storage Explorer blob létrehozása objektumtárban az Azure Data Lake Storage Gen2 engedélyezve'
+description: Ez a rövid útmutatóban megismerheti, hogyan hozzon létre egy fájlrendszer egy Azure Data Lake Storage Gen2-fiókot, és a egy könyvtárat és a egy fájlt az Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépen, és megtekintése az összes fájl egy könyvtár.
 services: storage
 author: tamram
+ms.component: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: c5b674a33b400a1e920b10c839d4708897120a31
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e556dbe377f5bba6cbd727ac69c3d4fb9127a2c9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975886"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385618"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rövid útmutató: Blob létrehozása az objektumtárolóban az Azure Storage Explorer használatával
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban az Azure Storage Explorer használatával
 
 Ebben a rövid útmutató az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) hozhat létre egy könyvtárat és a egy blobot. Ezután megismerheti a blob letöltése a helyi számítógépen, és a egy könyvtár összes BLOB megtekintése. Azt is megtudhatja, hogyan hozzon létre egy pillanatképet egy blobról, könyvtár hozzáférési szabályzatok kezelése, és a egy közös hozzáférésű jogosultságkód létrehozása.
 

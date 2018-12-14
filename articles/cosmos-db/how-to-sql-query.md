@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4f2a8431e353246b1f7304e7bfe30d13a7b4af4b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: fb8e2b11ce6178c10fb9dc7d13c5c7d817ece821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139299"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344108"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQL query példák használatával adatokat lekérdezni az Azure Cosmos DB-ből
 
@@ -1411,14 +1411,14 @@ A típus ellenőrzése funkciók lehetővé teszik az SQL-lekérdezések belül 
 
 | **Használat** | **Leírás** |
 |-----------|------------|
-| [IS_ARRAY (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array) | Egy logikai érték, amely azt jelzi, ha az érték típusa tömböt ad vissza. |
-| [IS_BOOL (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool) | Egy logikai jelezve, hogy ha az érték típusa egy logikai érték beolvasása. |
-| [IS_NULL (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null) | Adja vissza egy logikai érték, amely azt jelzi, ha az érték típusa null. |
-| [IS_NUMBER (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy számot ad vissza. |
-| [IS_OBJECT (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy JSON-objektumot ad vissza. |
-| [IS_STRING (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterláncot ad vissza. |
-| [IS_DEFINED (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined) | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
-| [IS_PRIMITIVE (kifejezés)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null értékű beolvasása. |
+| [IS_ARRAY (kifejezés)](sql-api-query-reference.md#bk_is_array) | Egy logikai érték, amely azt jelzi, ha az érték típusa tömböt ad vissza. |
+| [IS_BOOL (kifejezés)](sql-api-query-reference.md#bk_is_bool) | Egy logikai jelezve, hogy ha az érték típusa egy logikai érték beolvasása. |
+| [IS_NULL (kifejezés)](sql-api-query-reference.md#bk_is_null) | Adja vissza egy logikai érték, amely azt jelzi, ha az érték típusa null. |
+| [IS_NUMBER (kifejezés)](sql-api-query-reference.md#bk_is_number) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy számot ad vissza. |
+| [IS_OBJECT (kifejezés)](sql-api-query-reference.md#bk_is_object) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy JSON-objektumot ad vissza. |
+| [IS_STRING (kifejezés)](sql-api-query-reference.md#bk_is_string) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterláncot ad vissza. |
+| [IS_DEFINED (kifejezés)](sql-api-query-reference.md#bk_is_defined) | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
+| [IS_PRIMITIVE (kifejezés)](sql-api-query-reference.md#bk_is_primitive) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null értékű beolvasása. |
 
 Ezek a függvények használatával, mostantól lekérdezéseket is futtathat az alábbi példában látható módon:
 
@@ -1440,22 +1440,22 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 
 | Használat | Leírás |
 | --- | --- |
-| [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza |
-| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
-| [KARAKTERLÁNCRÉSZLET (str_expr, num_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) | Egy karakterlánc-kifejezés részét adja vissza. |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik |
-| [TARTALMAZZA (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) | Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz. |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés található a megadott karakterlánc első kifejezés, vagy a -1, ha a karakterlánc nem található. |
-| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) | A megadott számú karakterből álló karakterlánc bal oldali részét adja vissza. |
-| [JOBB (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) | A megadott számú karaktert a karakterlánc jobb oldali részét adja vissza. |
-| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) | Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a vezető üres. |
-| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) | Egy karakterlánc-kifejezés után az összes záró szóközöket csonkolására adja vissza. |
-| [ALSÓ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
-| [FELSŐ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
-| [Cserélje le a (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) | A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték. |
+| [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza |
+| [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
+| [KARAKTERLÁNCRÉSZLET (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | Egy karakterlánc-kifejezés részét adja vissza. |
+| [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik |
+| [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik |
+| [TARTALMAZZA (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz. |
+| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés található a megadott karakterlánc első kifejezés, vagy a -1, ha a karakterlánc nem található. |
+| [LEFT (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | A megadott számú karakterből álló karakterlánc bal oldali részét adja vissza. |
+| [JOBB (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | A megadott számú karaktert a karakterlánc jobb oldali részét adja vissza. |
+| [LTRIM (str_expr)](sql-api-query-reference.md#bk_ltrim) | Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a vezető üres. |
+| [RTRIM (str_expr)](sql-api-query-reference.md#bk_rtrim) | Egy karakterlánc-kifejezés után az összes záró szóközöket csonkolására adja vissza. |
+| [ALSÓ (str_expr)](sql-api-query-reference.md#bk_lower) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
+| [FELSŐ (str_expr)](sql-api-query-reference.md#bk_upper) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
+| [Cserélje le a (str_expr, str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték. |
 | [REPLIKÁLÁS (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Egy karakterláncértéket a megadott számú alkalommal ismétlődik. |
-| [FORDÍTOTT (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) | A karakterlánc-érték megfelelő sorrendben adja vissza. |
+| [FORDÍTOTT (str_expr)](sql-api-query-reference.md#bk_reverse) | A karakterlánc-érték megfelelő sorrendben adja vissza. |
 
 Ezek a függvények használatával, mostantól lekérdezéseket is futtathat a következőhöz hasonló. Például lépjen vissza a családnevet nagybetűs módon:
 
@@ -1522,10 +1522,10 @@ A következő skaláris függvények végrehajtania egy műveletet a egy tömb b
 
 | Használat | Leírás |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |A megadott tömb kifejezés elemek számát adja vissza. |
-| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Egy tömb, amely az eredménye, összefűzi a két vagy több tömb értéket adja vissza. |
-| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Megadhatja, ha az egyezés-e a teljes vagy részleges. |
-| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Egy tömböt megadó kifejezést részét adja vissza. |
+| [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |A megadott tömb kifejezés elemek számát adja vissza. |
+| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |Egy tömb, amely az eredménye, összefűzi a két vagy több tömb értéket adja vissza. |
+| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Megadhatja, ha az egyezés-e a teljes vagy részleges. |
+| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |Egy tömböt megadó kifejezést részét adja vissza. |
 
 Tömb funkciók segítségével kezelheti a tömb JSON belül használható. Ha például itt látható egy lekérdezést, amely az összes elem visszaadása, ahol a szülők egyik "Robin Wakefield". 
 

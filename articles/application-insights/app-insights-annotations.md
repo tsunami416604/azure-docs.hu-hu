@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f852b04c2c666519f10e5e3bb148c50dae7add00
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d725c42a758a44fa872138dfaef7e1c05e4b688f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682520"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385686"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
 
 A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure fejlesztési és üzemeltetési szolgáltatásokat hozhat létre a rendszer](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
 
 > [!NOTE]
-> Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](app-insights-usage-workbooks.md)**. További információ a currrent metrikák tapasztal, olvassuk [Ez a cikk](../monitoring-and-diagnostics/monitoring-metric-charts.md).
+> Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](app-insights-usage-workbooks.md)**. További információ a currrent metrikák tapasztal, olvassuk [Ez a cikk](../azure-monitor/platform/metrics-charts.md).
 
 ![Jegyzetek kiszolgálói válaszidő látható korrelációkereséssel – példa](./media/app-insights-annotations/00.png)
 

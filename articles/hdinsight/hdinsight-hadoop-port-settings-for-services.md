@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 22e15f58f3d4e7f4db3ac3bd519dbb286a36ef95
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279712"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384139"
 ---
-# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight Hadoop-szolgáltatások által használt portok
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight az Apache Hadoop-szolgáltatások által használt portok
 
-Ez a dokumentum a Linux-alapú HDInsight-fürtökön futó Hadoop-szolgáltatások által használt portok listáját tartalmazza. A fürthöz SSH használatával való kapcsolódáshoz használt portokon információkat is biztosít.
+Ez a dokumentum a Linux-alapú HDInsight-fürtökön futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza. A fürthöz SSH használatával való kapcsolódáshoz használt portokon információkat is biztosít.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Nyilvános port és a nem nyilvános port
 
@@ -26,7 +26,7 @@ Linux-alapú HDInsight-fürtök csak nyilvánosan az interneten; három portokat
 
 Belső használatra a HDInsight van megvalósítva több Azure Virtual Machines szolgáltatás által (a fürtben lévő csomópontok) rendszert futtató Azure virtuális hálózatban. Az a virtuális hálózaton belül hozzáférhet portok nem teszi közzé az interneten keresztül. Például csatlakozni a átjárócsomópontjaihoz SSH egyikét, ha a fő csomópontot, majd közvetlenül hozzáférhet a fürtcsomópontokon futó szolgáltatásokat.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha nem ad meg az Azure Virtual Network konfigurációs beállítás, a HDInsight, az egyik automatikusan létrejön. Más gépeken (például más Azure virtuális gépek vagy az ügyfél fejlesztői gépen) azonban nem tud csatlakozni a virtuális hálózaton.
 
 
@@ -41,20 +41,20 @@ Egy HDInsight-fürt összes csomópontja egy Azure virtuális hálózatban talá
 | sshd |22 |SSH |Az ügyfelek az elsődleges átjárócsomóponton sshd kapcsolódik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Az ügyfelek csatlakozik, az élcsomóponton sshd. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Ügyfelek sshd meg a másodlagos átjárócsomóponthoz csatlakozik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Az Ambari webes felhasználói felületen. Lásd: [kezelése HDInsight az Ambari webes felhasználói felülettel](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Az Ambari REST API-t. Lásd: [kezelése HDInsight az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| Webhcat használatával |443 |HTTPS |HCatalog REST API-t. Lásd: [a Hive használata a Curl](hadoop/apache-hadoop-use-pig-curl.md), [a Pig használata a Curl](hadoop/apache-hadoop-use-pig-curl.md), [MapReduce használata a curl használatával](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| Ambari |443 |HTTPS |Az Ambari webes felhasználói felületen. Lásd: [kezelése HDInsight az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Az Ambari REST API-t. Lásd: [kezelése HDInsight az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| Webhcat használatával |443 |HTTPS |HCatalog REST API-t. Lásd: [Apache Hive használata a curl használatával](hadoop/apache-hadoop-use-pig-curl.md), [Apache Pig használata a Curl](hadoop/apache-hadoop-use-pig-curl.md), [MapReduce használata a curl használatával](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Hive ODBC segítségével csatlakozik. Lásd: [Excel csatlakoztatása a HDInsight a Microsoft ODBC-illesztőprogram](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 |443 |JDBC |A Hive JDBC segítségével csatlakozik. Lásd: [csatlakozás a Hive a HDInsight, a Hive JDBC-illesztővel](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |JDBC segítségével ApacheHive csatlakozik. Lásd: [csatlakozás az Apache Hive a HDInsight, a Hive JDBC-illesztővel](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Az alábbi funkciók érhetők el az adott fürttípusokat:
 
 | Szolgáltatás | Port | Protokoll | Fürttípus | Leírás |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API-t. Lásd: [HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [elküldése Spark-feladatok távolról a Livy használatával](spark/apache-spark-livy-rest-interface.md) |
-| A Spark Thrift-kiszolgáló |443 |HTTPS |Spark |Hive-lekérdezések elküldéséhez használt Spark Thrift-kiszolgáló. Lásd: [a Beeline használata a HDInsight Hive-val](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |A Storm webes felhasználói felületen. Lásd: [üzembe helyezése és kezelése a HDInsight Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |HBase REST API-t. Lásd: [Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [távolról az Apache Livy használatával nyújt az Apache Spark-feladatok](spark/apache-spark-livy-rest-interface.md) |
+| A Spark Thrift-kiszolgáló |443 |HTTPS |Spark |Hive-lekérdezések elküldéséhez használt Spark Thrift-kiszolgáló. Lásd: [a Beeline használata a HDInsight Apache Hive-val](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |A Storm webes felhasználói felületen. Lásd: [üzembe helyezése és kezelése a HDInsight Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Hitelesítés
 
@@ -67,10 +67,10 @@ Az interneten nyilvánosan elérhető az összes szolgáltatás hitelesíteni ke
 
 ## <a name="non-public-ports"></a>Nem nyilvános port
 
-> [!NOTE]
+> [!NOTE]  
 > Néhány szolgáltatás csak az adott fürttípusokat a érhetők el. Például HBase csak akkor használható, a HBase-fürt típusok.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Néhány szolgáltatás csak az egyik átjárócsomópontjával egyszerre futni. Megkísérli a szolgáltatást az elsődleges átjárócsomóponthoz csatlakozik, és hibaüzenetet kap, ha újra a másodlagos átjárócsomóponthoz használatával.
 
 ### <a name="ambari"></a>Ambari

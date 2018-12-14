@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1d580e6468044f14b6a206911c4da237f774af3b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959877"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386519"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Az Azure Monitor diagnosztikai naplók tárfiókba archivált formátum módosítás előkészítése
 
 > [!WARNING]
-> Ha küld [Azure erőforrás-diagnosztikai naplók vagy a storage-fiók erőforrás diagnosztikai beállításait mérőszámok](./monitoring-archive-diagnostic-logs.md) vagy [Tevékenységnaplók az a tárfiók tárfiókkulcsait naplóprofilok](./monitoring-archive-activity-log.md), az adatok formátumát a tárfiók 2018. november 1. a JSON-sorok változik. Az alábbi utasítások írja le, a hatás és az eszközök kezeléséhez az új formátum frissítése. 
+> Ha küld [Azure erőforrás-diagnosztikai naplók vagy a storage-fiók erőforrás diagnosztikai beállításait mérőszámok](./../azure-monitor/platform/archive-diagnostic-logs.md) vagy [Tevékenységnaplók az a tárfiók tárfiókkulcsait naplóprofilok](./../azure-monitor/platform/archive-activity-log.md), az adatok formátumát a tárfiók 2018. november 1. a JSON-sorok változik. Az alábbi utasítások írja le, a hatás és az eszközök kezeléséhez az új formátum frissítése. 
 >
 > 
 
@@ -31,9 +31,9 @@ Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az e
 * Diagnosztikai beállítás módosítása és November 1 továbbra is az aktuális formátumú adatokat küldik. November 1-ig.
 * Ez a változás az összes nyilvános régióban egyszerre történik. A módosítás nem történik az Azure China, az Azure Germany és az Azure Government még.
 * Ez a módosítás hatással van a következő adattípusokat:
-  * [Az Azure erőforrás-diagnosztikai naplók](./monitoring-archive-diagnostic-logs.md) ([itt erőforrások listájának megtekintéséhez](./monitoring-diagnostic-logs-schema.md))
+  * [Az Azure erőforrás-diagnosztikai naplók](./../azure-monitor/platform/archive-diagnostic-logs.md) ([itt erőforrások listájának megtekintéséhez](./../azure-monitor/platform/tutorial-dashboards.md))
   * [Az Azure erőforrás-metrikák diagnosztikai beállítások exportálása folyamatban](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)
-  * [Naplóprofilok által exportált Azure tevékenységnapló adatainak](./monitoring-archive-activity-log.md)
+  * [Naplóprofilok által exportált Azure tevékenységnapló adatainak](./../azure-monitor/platform/archive-activity-log.md)
 * Ez a változás nem érinti:
   * Hálózati forgalmi naplók
   * Az Azure naplói nem még a Azure Monitor érhetők el (például a diagnosztikai naplók az Azure App Service-ben, a storage analytics naplók)
@@ -135,5 +135,5 @@ Egyéni eszközök kezeléséhez az aktuális és a JSON-sorok formátumú a fen
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [archiválás tárfiókba erőforrás-diagnosztikai naplók](./monitoring-archive-diagnostic-logs.md)
-* Ismerje meg [archiválás tárfiókba tevékenységnapló adatainak](./monitoring-archive-activity-log.md)
+* Ismerje meg [archiválás tárfiókba erőforrás-diagnosztikai naplók](./../azure-monitor/platform/archive-diagnostic-logs.md)
+* Ismerje meg [archiválás tárfiókba tevékenységnapló adatainak](./../azure-monitor/platform/archive-activity-log.md)

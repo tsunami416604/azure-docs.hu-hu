@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271470"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384717"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -33,7 +33,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ![Log Analytics-munkaterület](media/oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Hogyan kezelhetem engedélyeket?
-A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../../role-based-access-control/role-assignments-portal.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../../role-based-access-control/role-assignments-portal.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../../azure-monitor/platform/roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Hogyan hozhatok létre egy új munkaterületet? 
 A munkaterület listája, az Azure Portalon, kattintson **Hozzáadás** munkaterületek listájában.  További információkat lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../learn/quick-create-workspace.md).

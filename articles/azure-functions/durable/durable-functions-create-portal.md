@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3381939e296009b0fd58366f7fff410ea01d1206
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864026"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339722"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
@@ -24,17 +24,43 @@ A [Durable Functions](durable-functions-overview.md) kiterjesztése az Azure Fun
 >[!NOTE]
 >
 >* Ha a tartós függvények fejleszt C#, Ehelyett érdemes [Visual Studio 2017 fejlesztői](durable-functions-create-first-csharp.md).
-* Tartós függvények használata Javascriptben fejleszt, Ehelyett érdemes **Visual Studio Code fejlesztési**.
->
->Tartós függvények létrehozása az JavaScript használatával még nem támogatott a portálon. Használja helyette a Visual Studio Code-ot.
+* Tartós függvények használata Javascriptben fejleszt, Ehelyett érdemes [Visual Studio Code fejlesztési](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a bármely függvény végrehajtása. A függvényalkalmazás a függvények egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a teszi lehetővé. Létre kell hoznia egy C# függvényalkalmazást, mivel a JavaScript-sablonok még nem támogatottak a Durable Functions.  
+Rendelkeznie kell egy függvényalkalmazással a bármely függvény végrehajtása. A függvényalkalmazás a függvények egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a teszi lehetővé. Egy .NET- vagy JavaScript-alkalmazást hozhat létre.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Alapértelmezés szerint létrehozott függvényalkalmazás használt verzió 2.x verzióját az Azure Functions futtatókörnyezettel. Mindkét verziót működik a Durable Functions bővítmény 1.x és a 2.x verzióját az Azure Functions futtatókörnyezettel. Azonban sablonok esetén csak érhetők el verzió célzó 2.x verziójú futtatókörnyezet.
+Alapértelmezés szerint létrehozott függvényalkalmazás használt verzió 2.x verzióját az Azure Functions futtatókörnyezettel. Mindkét verziót működik a Durable Functions bővítmény 1.x és a 2.x verzióját az Azure Functions runtime a C#, és verzió 2.x a JavaScript. Azonban sablonok esetén csak érhetők el verzió célzó 2.x verziójú futtatókörnyezet a kiválasztott nyelvtől függetlenül.
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Telepítse a durable-functions npm-csomagot (csak a JavaScript)
+
+Tartós JavaScript-függvények létrehozásakor, akkor telepítenie kell a [ `durable-functions` npm-csomag](https://www.npmjs.com/package/durable-functions).
+
+1. Jelölje be a függvényalkalmazás neve követ **Platformfunkciók**, majd **speciális eszközök (Kudu)**.
+
+   ![Függvények platformfunkciók Kudu kiválasztása](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. Válassza ki a Kudu konzol belül **hibakereső konzol** majd **CMD**.
+
+   ![Kudu hibakereső konzol](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. A függvényalkalmazás fájl könyvtárstruktúrát kell megjelenítenie. Navigáljon a `site/wwwroot` mappához. Itt feltöltheti a `package.json` fájlt a directory ablak történő húzásával. A minta `package.json` alatt van:
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Kudu package.json feltöltése](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. Miután a `package.json` töltenek fel, futtassa a `npm install` parancsot a távoli végrehajtás Kudu konzol.
+
+   ![Kudu futtatásához npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Az orchestrator-függvény létrehozása
 
@@ -92,7 +118,7 @@ Alapértelmezés szerint létrehozott függvényalkalmazás használt verzió 2.
         }
     ```
 
-1. Továbbra is hívása a `statusQueryGetUri` végpont addig, amíg a állapota **befejezve**, és a egy válasz az alábbi példához hasonlóan jelenik: 
+1. Továbbra is hívása a `statusQueryGetUri` végpont addig, amíg a állapota **befejezve**, és a egy válasz az alábbi példához hasonlóan jelenik:
 
     ```json
     {

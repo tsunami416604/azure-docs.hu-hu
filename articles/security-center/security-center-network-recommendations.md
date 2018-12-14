@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 449fdbceeb0b64d58c589fe5dbde61302ee27afb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309208"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338233"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -72,9 +72,9 @@ Az a **topológia** nézet a hálózati térkép, megtekintheti a következő in
 Mivel a térkép interaktív és dinamikus, minden csomópontnak számít kattintható, és a nézetben módosíthatja a szűrők alapján:
 
 1. Módosíthatja, amit lát a hálózati térképen tetején a szűrőkkel használatával. Ön arra összpontosíthat a térkép alapján:
-   -  **Biztonsági állapot**: a térkép (magas, közepes, alacsony), az Azure-erőforrások súlyosság alapján szűrheti.
-   - **Javaslatok**: kiválaszthatja, hogy mely erőforrások jelennek meg alapján mely ajánlások aktívak ezeket az erőforrásokat a. Ha például tekintheti meg, amelyhez a Security Center javasolja hálózati biztonsági csoportok engedélyezése csak az erőforrásokat.
-   - **Zónák hálózati**: alapértelmezés szerint a térképen jeleníti meg, csak internetkapcsolattal erőforrásokat, a belső virtuális gépeket is kiválaszthatja.
+   -  **Biztonsági állapot**: A térkép (magas, közepes, alacsony), az Azure-erőforrások súlyosság alapján szűrhetők.
+   - **Javaslatok**: Kiválaszthatja, hogy mely erőforrások jelennek meg alapján mely ajánlások aktívak ezeket az erőforrásokat a. Ha például tekintheti meg, amelyhez a Security Center javasolja hálózati biztonsági csoportok engedélyezése csak az erőforrásokat.
+   - **Zónák hálózati**: Alapértelmezés szerint a térképen jeleníti meg, csak az Internet felé néző erőforrásokat, kiválaszthatja, valamint a belső virtuális gépeket.
  
 2. Kattinthat **alaphelyzetbe** bal felső sarokban, és a térkép térjen vissza az alapértelmezett állapotba.
 
@@ -149,6 +149,6 @@ Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos tov�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320692"
+ms.locfileid: "53344091"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -139,7 +139,7 @@ Győződjön meg a karbantartás egyszerűbb, ezek a virtuális gépek, a rendsz
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceEest \
+    --name ContosoSimDeviceEast \
     --location eastus \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
@@ -327,28 +327,28 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-
-1. Nyissa meg **~/azure-iot-sdk-c/provisioning\_ügyfél/adapterek /-hsm\_ügyfél\_key.c** mindkét virtuális gépeken. 
-
-    ```bash
-     vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
-    ```
-
-1. Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. A következő módosításokat a fájlok mindkét regionális virtuális gépeken, és mentse a fájlokat.
-
-    Frissítse az értéket, a `REGISTRATION_NAME` az állandó a **egyedi regisztrációs Azonosítót az eszköz**.
-    
-    Frissítse az értéket, a `SYMMETRIC_KEY_VALUE` az állandó a **eszközkulcs származtatott**.
+1. Mindkét virtuális gép, keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
 
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-east";
-    static const char* const SYMMETRIC_KEY_VALUE = "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
+    Állítsa vissza a függvényhívások, és cserélje le a helyőrző értékeket (beleértve a csúcsos zárójeleket) az egyedi regisztrációs azonosítók és származtatott eszköz kulcsok minden egyes eszközhöz. Az alább látható kulcsai például kizárólag célra. Használja a korábban létrehozott kulcsokat.
+
+    USA keleti RÉGIÓJA:
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-west";
-    static const char* const SYMMETRIC_KEY_VALUE = "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
+
+    USA nyugati RÉGIÓJA:
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
+    ```
+
+    Mentse a fájlokat.
 
 1. Mindkét virtuális gépeken keresse meg az alább látható minta mappát, és hozza létre a mintát.
 
@@ -358,6 +358,13 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     ```
 
 1. A sikeres fordítás után futtassa **prov\_fejlesztési\_ügyfél\_sample.exe** minden régióból egy bérlő eszköz szimulálása mindkét virtuális gépeken. Figyelje meg, hogy minden eszközhöz hozzá van rendelve a bérlőhöz legközelebb eső régióban a szimulált eszközt az IoT hub.
+
+    A szimuláció futtatása:
+    ```bash
+    ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
+    ```
+
+    A virtuális gépről East US kimeneti példa:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -374,6 +381,7 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
 
     ```
 
+    A virtuális gépről West US kimeneti példa:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9

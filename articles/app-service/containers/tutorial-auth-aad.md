@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés és engedélyezés felhasználóknak – teljes körű linuxon – az Azure App Service |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan használhatja az App Service-hitelesítést és -engedélyezést az App Service-alkalmazások védelmének biztosításához, beleértve a távoli API-khoz történő hozzáférést.
+description: Ismerje meg, hogyan használhatja az App Service-hitelesítés és engedélyezés az App Service-alkalmazások, a linuxon futó, beleértve a távoli API-khoz való hozzáférés biztonságossá tételéhez.
 keywords: app service, azure app service, authN, authZ, védelem, biztonság, többrétegű, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa57e6198050b7e250c42f4bb019009e59ca4ba7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9ceb6d388bd4ff3c21b7c3c85e83fea2940b69af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254088"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337649"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
 

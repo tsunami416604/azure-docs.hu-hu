@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 53a6ae828009db24b56a11b1fdcbea19842191f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 454478fa02b8f4e71bc4efb61e1b8c194b927bc6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106617"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340827"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -74,20 +74,20 @@ Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Péld�
 
 **Rendszerfrissítések alkalmazása** rendelkezik grafikus formátumban, a Windows, és egy Linux-kritikus frissítések összegzése. A második részben az alábbi információkat tartalmazó táblázat található:
 
-- **NÉV** – A hiányzó frissítés neve.
--  **VIRTUÁLIS GÉPEK ÉS SZÁMÍTÓGÉPEK SZÁMA**: Azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
-- **FRISSÍTÉS SÚLYOSSÁGA**: azt ismerteti, hogy az adott javaslat súlyosságát:
+- **NÉV**: A hiányzó frissítés nevére.
+- **NO. Virtuális gépek és számítógépek**: Virtuális gépek és számítógépek, amelyekről frissítések hiányoznak a frissítés teljes száma.
+- **FRISSÍTÉS SÚLYOSSÁGA**: Ismerteti, hogy az adott javaslat súlyosságát:
 
-    - **Kritikus fontosságú**: biztonsági rés fontos erőforrásnál (alkalmazás, virtuális géphez vagy hálózati biztonsági csoport) létezik, és beavatkozást igényel.
-    - **Fontos**: nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
-    - **Mérsékelt**: biztonsági rés kell tömni, de nem igényel azonnali beavatkozást. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
+    - **Kritikus fontosságú**: Biztonsági rés fontos erőforrásnál (alkalmazás, virtuális géphez vagy hálózati biztonsági csoport) létezik, és beavatkozást igényel.
+    - **Fontos**: A nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
+    - **Mérsékelt**: Biztonsági rés kell tömni, de nem igényel azonnali beavatkozást. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
 
 
-- **STATE** (Állapot): a javaslat aktuális állapota:
+- **ÁLLAPOT**: A javaslat aktuális állapota:
 
-    - **Open** (Nyitott): a javaslattal egyelőre még nem foglalkoztak.
-    - **In Progress** (Folyamatban): folyamatban van a javaslat alkalmazása az érintett erőforrásokra, további lépésekre nincs szükség.
-    - **Resolved** (Megoldott): a javaslat alkalmazása megtörtént. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
+    - **Nyissa meg**: Az ajánlás még nem foglalkoztak.
+    - **Folyamatban lévő**: Az ajánlás jelenleg érvényesül ezeket az erőforrásokat, és ilyenkor Ön nem szükséges.
+    - **Megoldott**: Az ajánlás már befejeződött. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
 
 A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés nevére a listában.
 
@@ -249,7 +249,7 @@ Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos tov�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 

@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2a701f86b922924a7568cc1d906d7a3c6b1fdc9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e5c733ecd65482e4b02a5d4e28784e84e63f2231
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096859"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340521"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az SQL API-t az Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
@@ -28,7 +28,7 @@ ms.locfileid: "53096859"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 

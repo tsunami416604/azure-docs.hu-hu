@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642675"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339586"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions - Hello feladatütemezési minta a láncolási függvény
 
@@ -27,15 +27,16 @@ Függvény-láncolás a minta egy adott sorrendben hajtsa végre a funkciók sor
 
 Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 
-* `E1_HelloSequence`: Egy orchestrator-függvény, amely meghívja a `E1_SayHello` többször sorrendben. A kimenő adatait tárolja a `E1_SayHello` hívások, valamint rögzíti az eredményeket.
+* `E1_HelloSequence`: Az orchestrator-függvény, amely meghívja a `E1_SayHello` többször sorrendben. A kimenő adatait tárolja a `E1_SayHello` hívások, valamint rögzíti az eredményeket.
 * `E1_SayHello`: Egy tevékenység-függvény, amely lefoglalja a "Hello" karakterlánc.
 
 Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelést, és a JavaScript által használt kódot. A Visual Studio fejlesztési kód a cikk végén található meg.
 
 > [!NOTE]
-> Tartós függvények a v2 Functions futtatókörnyezete csak a JavaScript érhető el.
+> A Functions 2.x verziójú futtatókörnyezet csak JavaScript Durable Functions érhetők el.
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>Function.JSON fájlt
 
 Ha Visual Studio Code vagy az Azure portal-fejlesztéshez, Íme a tartalmát a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlokat, így szinte teljesen jelennek meg.
@@ -47,7 +48,7 @@ A lényeg az, a `orchestrationTrigger` typ vazby. Orchestrator összes függvén
 > [!WARNING]
 > Betartja a orchestrator funkciók a "nincs i/o" szabályt, nem használja minden olyan bemeneti vagy kimeneti kötés használatakor a `orchestrationTrigger` kötés aktiválásához.  Ha más bemeneti vagy kimeneti kötések van szükség, kell helyette használni őket kontextusában `activityTrigger` függvények, amelyek az orchestrator által meghívott.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#-szkript (Visual Studio Code és az Azure portal minta kód) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#-szkript (Visual Studio Code és az Azure portal minta kód)
 
 A következő kódot:
 
@@ -63,15 +64,16 @@ A következő kódot:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-JavaScript a vezénylési függvények tartalmaznia kell a `durable-functions` modul. Ez az egy JavaScript-függvénytárat, amely lefordítja a vezénylési függvény műveletek a tartós végrehajtás protokoll folyamaton kívüli nyelv be. Van egy vezénylési függvényt és egyéb JavaScript-függvények közötti három jelentős különbség:
+JavaScript a vezénylési függvények tartalmaznia kell a [ `durable-functions` modul](https://www.npmjs.com/package/durable-functions). Ez a kódtár, amely lehetővé teszi, hogy Durable Functions írását a JavaScript. Van egy vezénylési függvényt és egyéb JavaScript-függvények közötti három jelentős különbség:
 
 1. A függvény egy [generátor függvény.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. A függvény hívása van csomagolva az `durable-functions` modul (Itt `df`).
-3. A függvény meghívásával ér véget `return`, nem `context.done`.
+2. A függvény hívása van csomagolva az `durable-functions` modul `orchestrator` metódus (Itt `df`).
+3. A függvény szinkron replikáknak kell lenniük. A "orchestrator" metódus kezeli a hívási "context.done", mert a függvényt egyszerűen "adja vissza".
 
-A `context` az objektum tartalmaz egy `df` objektum teszi lehetővé más hívás *tevékenység* függvényeket, és adja át a bemeneti paramétereket használja a `callActivityAsync` metódus. A kód meghívja `E1_SayHello` háromszor sorrendben exportálásánál különböző paraméterértékekkel használatával `yield` jelzi a végrehajtás a tevékenység aszinkron függvényhívások vissza kell várnia kell. A visszaadott érték az egyes hívások adnak hozzá a `outputs` listát, amely a függvény végén adja vissza.
+A `context` az objektum tartalmaz egy `df` objektum teszi lehetővé más hívás *tevékenység* függvényeket, és adja át a bemeneti paramétereket használja a `callActivity` metódus. A kód meghívja `E1_SayHello` háromszor sorrendben exportálásánál különböző paraméterértékekkel használatával `yield` jelzi a végrehajtás a tevékenység aszinkron függvényhívások vissza kell várnia kell. A visszaadott érték az egyes hívások adnak hozzá a `outputs` listát, amely a függvény végén adja vissza.
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>Function.JSON fájlt
 
 A *function.json* fájl a tevékenység függvény `E1_SayHello` a hasonló `E1_HelloSequence` azzal a különbséggel, hogy használja egy `activityTrigger` kötéstípus helyett egy `orchestrationTrigger` typ vazby.
@@ -93,7 +95,7 @@ Ez a függvény típusú paraméterrel rendelkezik [DurableActivityContext](http
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-JavaScript-vezénylési függvény eltérően tevékenység JavaScript-függvény kell semmilyen speciális beállítást. A bemeneti az orchestrator függvény által átadott található a `context.bindings` objektum neve alatt található a `activitytrigger` kötés – ebben az esetben `context.bindings.name`. A kötés neve lehet állítja be az exportált függvény egy paramétert és érhető el közvetlenül, amely a mintakód leírása.
+Ellentétben a JavaScript-vezénylési függvény egy tevékenység függvényt kell semmilyen speciális beállítást. A bemeneti az orchestrator függvény által átadott található a `context.bindings` objektum neve alatt található a `activityTrigger` kötés – ebben az esetben `context.bindings.name`. A kötés neve lehet állítja be az exportált függvény egy paramétert és érhető el közvetlenül, amely a mintakód leírása.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -150,7 +152,7 @@ Az orchestration-fájlként egyetlen C# Visual Studio-projektet a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a minta egy egyszerű függvény-láncolás vezénylési bemutatta. A következő minta bemutatja a fan-kimenő/fan-a minta megvalósítása. 
+Ez a minta egy egyszerű függvény-láncolás vezénylési bemutatta. A következő minta bemutatja a fan-kimenő/fan-a minta megvalósítása.
 
 > [!div class="nextstepaction"]
 > [Fan-kimenő/fan-a minta futtatása](durable-functions-cloud-backup.md)

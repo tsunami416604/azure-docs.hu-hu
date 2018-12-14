@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6da397927a99c89f4cd82adccab9d7c0defc54e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310334"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386403"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -54,7 +54,7 @@ Elemezheti az eredményül kapott telemetriai adatokat, egy lekérdezés futtat�
 
 Az eredmény megtekintése vegye figyelembe, hogy az összes telemetriai elem megosztani a legfelső szintű a `operation_Id`. Amikor ajax hívás érkezett az lap – új egyedi azonosító `qJSXU` van rendelve a függőségek telemetriáját és oldalmegtekintés a azonosítója `operation_ParentId`. Viszont a kiszolgálói kérelem használja, az ajax-azonosító `operation_ParentId`stb.
 
-| ItemType   | név                      | id           | operation_ParentId | operation_Id |
+| ItemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | oldalmegtekintés   | Tőzsdei lap                |              | STYz               | STYz         |
 | függőség | GET/Home/készlet           | qJSXU        | STYz               | STYz         |
@@ -65,7 +65,7 @@ Mostantól Ha a hívás `GET /api/stock/value` érdemes figyelembe venni, hogy a
 
 ## <a name="correlation-headers"></a>Korrelációs fejlécek
 
-RFC javaslatot is dolgozunk a [korrelációs HTTP-protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Ez a javaslat két fejlécek határozza meg:
+Dolgozunk az RFC javaslatot a [korrelációs HTTP-protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Ez a javaslat két fejlécek határozza meg:
 
 - `Request-Id` a globálisan egyedi azonosító a hívás végrehajtása
 - `Correlation-Context` – a végrehajtott műveletek közül sokat elosztott nyomkövetési tulajdonságainak neve érték párok gyűjteménye
@@ -76,14 +76,14 @@ Az Application Insights határozza meg a [bővítmény](https://github.com/lmolk
 
 ### <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetést
 
-Hogy való [W3C elosztott nyomkövetést formátum](https://w3c.github.io/trace-context/). Azt határozza meg:
+Mi vagyunk való [W3C elosztott nyomkövetést formátum](https://w3c.github.io/trace-context/). Azt határozza meg:
 - `traceparent` – globálisan egyedi művelet azonosítója és a hívás egyedi azonosítója
-- `tracestate` -nyomkövetési rendszer adott környezetben végzi.
+- `tracestate` -nyomkövetés rendszerspecifikus környezetben végzi.
 
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>ASP.NET klasszikus alkalmazások elosztott W3C-nyomkövetés támogatásának engedélyezése
 
 Ez a funkció verzió 2.8.0-beta1 kezdve Microsoft.ApplicationInsights.Web és Microsoft.ApplicationInsights.DependencyCollector csomagokban érhető el.
-Ez **ki** alapértelmezés szerint az engedélyezéshez, módosítsa `ApplicationInsights.config`:
+Rendelkezik **ki** alapértelmezés szerint az engedélyezéshez, módosítsa `ApplicationInsights.config`:
 
 * a `RequestTrackingTelemetryModule` hozzáadása `EnableW3CHeadersExtraction` értékre állított elem `true`
 * a `DependencyTrackingTelemetryModule` hozzáadása `EnableW3CHeadersInjection` értékre állított elem `true`
@@ -91,7 +91,7 @@ Ez **ki** alapértelmezés szerint az engedélyezéshez, módosítsa `Applicatio
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core-alkalmazások elosztott W3C-nyomkövetés támogatásának engedélyezése
 
 Ez a funkció a verzió 2.5.0-beta1 és Microsoft.ApplicationInsights.DependencyCollector verzió 2.8.0-beta1 Microsoft.ApplicationInsights.AspNetCore van.
-Ez **ki** alapértelmezés szerint az engedélyezéshez beállítva `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` való `true`:
+Rendelkezik **ki** alapértelmezés szerint az engedélyezéshez beállítva `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` való `true`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -118,7 +118,6 @@ Az Application Insights-adatmodellen alapuló további információkért lásd: 
 
 Tekintse meg a nyitott nyomkövetés [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) nyílt nyomkövetés fogalmak definícióját.
 
-
 ## <a name="telemetry-correlation-in-net"></a>Telemetriai korreláció a .NET-ben
 
 Idővel .NET definiált számos módon telemetriai és a diagnosztikai naplók korrelációját. Nincs `System.Diagnostics.CorrelationManager` nyomon így [LogicalOperationStack és tevékenységazonosító](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` és Windows ETW határozza meg a metódus [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` használja a [Log hatókörök](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). A WCF és a Http átviteli "aktuális" környezeti propagálás fel.
@@ -142,8 +141,15 @@ A [Application Insights Java SDK](app-insights-java-get-started.md) támogatja a
 Több üzenetkezelési technológiák (például Kafka, RabbitMQ, Azure Service Bus) környezet automatikus propagálás jelenleg nem támogatott. Lehetőség azonban manuálisan hozhatna az ilyen forgatókönyvek például a `trackDependency` és `trackRequest` API-k, amellyel egy függőségi telemetria egy folyamatban lévő MIF-fájl a gyártó által üzenet és a kérelem egy fogyasztó által feldolgozott üzenet jelenti. Ebben az esetben is `operation_id` és `operation_parentId` kell propagálására, az üzenet tulajdonságai.
 
 <a name="java-role-name"></a>
-### <a name="role-name"></a>Szerepkör neve
-Időnként érdemes testre is szabhatja összetevők nevéhez megjelennek a [Alkalmazástérkép](app-insights-app-map.md). Ehhez manuálisan állíthatja a `cloud_roleName` tegye a következők egyikét:
+## <a name="role-name"></a>Szerepkör neve
+
+Időnként érdemes testre is szabhatja összetevők nevéhez megjelennek a [Alkalmazástérkép](app-insights-app-map.md). Ehhez manuálisan állíthatja a `cloud_RoleName` tegye a következők egyikét:
+
+Spring Boot az Application Insights Spring Boot starter használja, az egyetlen szükséges változás-e az egyéni nevet az alkalmazás beállítása a application.properties fájlban.
+
+`spring.application.name=<name-of-app>`
+
+A Spring Boot starter cloudRoleName automatikusan hozzárendeli a spring.application.name tulajdonság mezőben.
 
 Ha használja a `WebRequestTrackingFilter`, a `WebAppNameContextInitializer` automatikusan beállítja az alkalmazás nevét. A konfigurációs fájl (applicationinsights.xml fájlt), adja hozzá a következő:
 ```XML
@@ -151,7 +157,9 @@ Ha használja a `WebRequestTrackingFilter`, a `WebAppNameContextInitializer` aut
   <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
 </ContextInitializers>
 ```
+
 A felhőalapú környezet osztállyal:
+
 ```Java
 telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
@@ -159,6 +167,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni telemetriát írhat](app-insights-api-custom-events-metrics.md)
+- [Tudjon meg többet](app-insights-app-map.md#set-cloudrolename) cloud_RoleName más SDK-k beállítása.
 - Előkészítheti az Application Insights a micro szolgáltatás összes összetevőjét. Tekintse meg [által támogatott platformok](app-insights-platforms.md).
 - Lásd: [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
 - Ismerje meg, hogyan [bővítése és szűrőtelemetria](app-insights-api-filtering-sampling.md).

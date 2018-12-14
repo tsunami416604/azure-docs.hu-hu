@@ -1,6 +1,6 @@
 ---
-title: Másolja ki az adatok Azure Data Lake Storage Gen1 és a Data Factory használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan másolhat adatokat az Azure Data Lake Store támogatott forrás adattárakból származó (vagy) a Data Lake Store támogatott fogadó-áruházak a Data Factory segítségével.
+title: Adatok másolása, illetve az Azure Data Lake Storage Gen1 a Data Factory használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan másolhat adatokat az Azure Data Lake Store támogatott forrásadattárakból, vagy a Data Lake Store támogatott fogadó-áruházak, Data Factory használatával.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -12,31 +12,31 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 036bbed27457f28efd46e36822191946cbfa2e4b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 411223c2ef7b1400f2019ebc6704b3c4a5d41235
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075932"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387029"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-azure-datalake-connector.md)
 > * [Aktuális verzió](connector-azure-data-lake-store.md)
 
-Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolásához, és az Azure Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store). Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory másolási tevékenység használatával másolja az adatokat, és az Azure Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store). Épül a [másolási tevékenység áttekintése](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok másolása az Azure Data Lake Store bármilyen támogatott forrásadattárból, vagy adatok másolása az Azure Data Lake Store az összes támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatok másolása az Azure Data Lake Store bármilyen támogatott forrásadattárból, vagy adatok másolása az Azure Data Lake Store az összes támogatott fogadó adattárba. Tekintse meg a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Pontosabban az Azure Data Lake Store-összekötő támogatja:
 
-- Másolás a fájlok **egyszerű szolgáltatás** vagy **felügyelt identitások az Azure-erőforrások** hitelesítési.
-- Másolja a fájlokat,-, vagy fájlok az elemzés/létrehozása a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
+- Fájlok másolása az alábbi hitelesítési módszerek egyikének használatával: **szolgáltatásnév** vagy **felügyelt identitások az Azure-erőforrások**.
+- Másolja a fájlokat,-van, vagy elemzés vagy -fájlok létrehozása a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 > [!IMPORTANT]
-> Ha a helyi integrációs modul adatokat másol, állítsa be a vállalati tűzfalon a kimenő forgalom engedélyezésére `<ADLS account name>.azuredatalakestore.net` és `login.microsoftonline.com/<tenant>/oauth2/token` 443-as porton. Az utóbbi az Azure biztonsági jogkivonat szolgáltatás (STS) integrációs modul kommunikációs kell beolvasni a hozzáférési jogkivonatot.
+> Ha a saját üzemeltetésű integrációs modul adatokat másol, állítsa be a vállalati tűzfalon a kimenő forgalom engedélyezésére `<ADLS account name>.azuredatalakestore.net` és `login.microsoftonline.com/<tenant>/oauth2/token` 443-as porton. Az utóbbi az Azure biztonsági jogkivonat-szolgáltatás, amely az integrációs modul és a hozzáférési jogkivonat beszerzése az közötti kommunikációhoz szükséges.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -45,47 +45,44 @@ Pontosabban az Azure Data Lake Store-összekötő támogatja:
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Azure Data lake Store-tulajdonságokkal kapcsolatos részletekért.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Azure Data Lake Store-tulajdonságokkal kapcsolatos részletekért.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok támogatottak az Azure Data Lake Store-beli társított szolgáltatást:
+A következő tulajdonságok támogatottak a az Azure Data Lake Store-beli társított szolgáltatást:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot állítsa **AzureDataLakeStore**. | Igen |
+| type | A `type` tulajdonságot állítsa **AzureDataLakeStore**. | Igen |
 | dataLakeStoreUri | Az Azure Data Lake Store-fiókkal kapcsolatos információk. Ezt az információt a következő formátumok egyikét veheti fel: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/`. | Igen |
-| subscriptionId | Azure-előfizetés azonosítója, amelyhez a Data Lake Store-fiókhoz tartozik. | A fogadó megadása kötelező |
-| resourceGroupName | Azure erőforráscsoport neve, amelyhez a Data Lake Store-fiókhoz tartozik. | A fogadó megadása kötelező |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| subscriptionId | Az Azure-előfizetés azonosítója, amelyhez a Data Lake Store-fiókhoz tartozik. | A fogadó megadása kötelező |
+| resourceGroupName | A Azure erőforráscsoport-név, amely a Data Lake Store-fiókhoz tartozik. | A fogadó megadása kötelező |
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Azure integrációs modul használatára, de a saját üzemeltetésű integrációs modult, (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-Tekintse meg a következő szakaszok további tulajdonságok és JSON-minták az eltérő hitelesítési típusok jelölik:
+### <a name="use-service-principal-authentication"></a>Használja az egyszerű szolgáltatásnév hitelesítése
 
-- [Használja az egyszerű szolgáltatásnév hitelesítése](#using-service-principal-authentication)
-- [Felügyelt identitások használatával Azure-erőforrások hitelesítéshez](#managed-identity)
-
-### <a name="using-service-principal-authentication"></a>Használja az egyszerű szolgáltatásnév hitelesítése
-
-Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és hozzáférést biztosítani, Data Lake Store. Részletes lépéseiért lásd: [szolgáltatások közötti hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+Egyszerű szolgáltatásnév hitelesítése használandó entitás alkalmazás regisztrálása az Azure Active Directoryban, és hozzáférést biztosítani, Data Lake Store. Részletes lépéseiért lásd: [szolgáltatások közötti hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
 
 - Alkalmazásazonosító
 - Alkalmazáskulcs
 - Bérlőazonosító
 
 >[!IMPORTANT]
-> Győződjön meg arról, hogy engedélyeket a szolgáltatás egyszerű megfelelő az Azure Data Lake Store:
->- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
->- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
+> Győződjön meg arról, hogy engedélyeket a szolgáltatás egyszerű megfelelő a Data Lake Store:
+>- **Forrásként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **Olvasás + végrehajtás** listázása, és másolja a fájlokat a mappákban és almappáiban engedéllyel. Vagy biztosíthat **olvasási** engedéllyel egy fájl másolása. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Esetében nem követelmény a fiók fájlszintű hozzáférés-vezérlés (IAM).
+>- **Fogadóként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), az IAM, biztosítson legalább a **olvasó** szerepkör annak érdekében, hogy észlelni az Data Lake Store-régiót, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store. Rendelje azokat a Data Lake Store társított szolgáltatásban az alábbi példa szerint.
 
 >[!NOTE]
->Használata esetén **Copy Data eszköz** hozhat létre másolási folyamat, vagy használjon **ADF felhasználói felület** végre tesztelési kapcsolat/Navigálás mappák létrehozása alatt, az egyszerű szolgáltatás engedélymegadásaaengedélyrevanszüksége**gyökér szintű "Execute" engedéllyel rendelkező** sorrendben, kezdve a legfelső szintű mappák listázása. Másolási tevékenység-végrehajtási ideje, együttműködhet mindaddig, amíg a engedélyt kell másolni az adatokat. A szerzői műveletek, kihagyhatja, ha az engedély szükséges korlátozza.
+>A lista kezdve a legfelső szintű mappák, be kell az egyszerű szolgáltatás nyújtott engedélye **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
+>- **Adatok másolása eszköz** a szerző másolási folyamat.
+>- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
 
 A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
-| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy `SecureString` tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen |
 
 **Példa**
@@ -114,24 +111,26 @@ A következő tulajdonságok támogatottak:
 }
 ```
 
-### <a name="managed-identity"></a> Felügyelt identitások használatával Azure-erőforrások hitelesítéshez
+### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez használandó
 
-Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Data Lake Store hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Ez lehetővé teszi a kijelölt eléréséhez és másolásához a data factory a/a Data Lake Store.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Data Lake Store-hitelesítéshez, hasonlóan a saját egyszerű szolgáltatás használatával. A kijelölt factory eléréséhez és másolásához adatokhoz, illetve a Data Lake Store lehetővé teszi.
 
 Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 
-1. [Beolvasni a data factory-szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
-2. A szolgáltatás identitás hozzáférési jogot Data Lake Store a ugyanúgy szolgáltatás egyszerű következő alábbi megjegyzések.
+1. [A data factory-szolgáltatásidentitás lekéréséhez](data-factory-service-identity.md#retrieve-service-identity) másolása a "Szolgáltatásidentitás Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
+2. A szolgáltatás identitás hozzáférési jogot Data Lake Store, végezhet el, az egyszerű szolgáltatást, ezek a Megjegyzések a következő azonos módon.
 
 >[!IMPORTANT]
-> Győződjön meg arról, hogy a data factory szolgáltatás identitás megfelelő engedéllyel az Azure Data Lake Store biztosít:
->- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
->- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
+> Győződjön meg arról, hogy a data factory szolgáltatás identitás megfelelő engedéllyel a Data Lake Store biztosít:
+>- **Forrásként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **Olvasás + végrehajtás** listázása, és másolja a fájlokat a mappákban és almappáiban engedéllyel. Vagy biztosíthat **olvasási** engedéllyel egy fájl másolása. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Esetében nem követelmény a fiók fájlszintű hozzáférés-vezérlés (IAM).
+>- **Fogadóként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), az IAM, biztosítson legalább a **olvasó** szerepkör annak érdekében, hogy észlelni az Data Lake Store-régiót, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store. Rendelje azokat a Data Lake Store társított szolgáltatásban az alábbi példa szerint.
 
 >[!NOTE]
->Használata esetén **Copy Data eszköz** hozhat létre másolási folyamat, vagy használjon **ADF felhasználói felület** végre tesztelési kapcsolat/Navigálás mappák létrehozása alatt, az engedély megadása engedélyre van szüksége **gyökérkönyvtárában "az Execute" engedéllyel rendelkező szintű** sorrendben, kezdve a legfelső szintű mappák listázása. Másolási tevékenység-végrehajtási ideje, együttműködhet mindaddig, amíg a engedélyt kell másolni az adatokat. A szerzői műveletek, kihagyhatja, ha az engedély szükséges korlátozza.
+>A lista kezdve a legfelső szintű mappák, be kell az egyszerű szolgáltatás nyújtott engedélye **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
+>- **Adatok másolása eszköz** a szerző másolási folyamat.
+>- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
 
-Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános információk mellett társított szolgáltatást.
+Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános adatok mellett a társított szolgáltatás.
 
 **Példa**
 
@@ -155,20 +154,19 @@ Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az Azure Data Lake Store adatkészlet által támogatott tulajdonságok listáját tartalmazza.
-
-Adatok másolása és- tárolókról az Azure Data Lake Store, állítsa be a type tulajdonság, az adatkészlet **AzureDataLakeStoreFile**. A következő tulajdonságok támogatottak:
+Másolja az adatokat, és az Azure Data Lake Store, állítsa be a `type` tulajdonság, az adatkészlet **AzureDataLakeStoreFile**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **AzureDataLakeStoreFile** |Igen |
-| folderPath | A Data Lake Store az a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Ha nincs megadva, a legfelső szintű mutat. Példa: a gyökérmappa/almappa / |Nem |
-| fileName | **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a másolási tevékenység létrehozza a fájl neve a következő mintának: "*adatokat. [ tevékenység-végrehajtásonként azonosító GUID]. [GUID Ha FlattenHierarchy]. [Ha a konfigurált formátum]. [Ha konfigurálta a tömörítés]* ", például: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz"; tábla neve helyett lekérdezési táblázatos forrásból másol, ha van-e a névminta "*[táblanév]. [ formátum]. [Ha konfigurálta a tömörítés]* ", például: "MyTable.csv". |Nem |
-| Formátum | Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretné elemezni, vagy hozzon létre egy adott formátumú fájlok, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
+| folderPath | A Data Lake Store a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Ha nincs megadva, a legfelső szintű mutat. Példa: a gyökérmappa/almappa / |Nem |
+| fileName | **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a másolási tevékenység létrehozza a fájl neve a következő mintának: "*Adatokat. [tevékenység futtatási azonosító GUID]. [GUID Ha FlattenHierarchy]. [Ha a konfigurált formátum]. [Ha konfigurálta a tömörítés]* ". Ha például "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". Tábla neve helyett lekérdezési táblázatos forrásból másol, ha van-e a névminta "*[táblanév]. [ formátum]. [Ha konfigurálta a tömörítés]* ". Például "MyTable.csv." |Nem |
+| Formátum | Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretné elemezni, vagy hozzon létre egy adott formátumú fájlok formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
+| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimális** és **leggyorsabb**. |Nem |
+
 
 >[!TIP]
->Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Adja meg a megadott nevű egyetlen fájl másolásához **folderPath** mappára vonatkozó részt a és **fileName** nevére.<br>Másolja a fájlokat egy mappában egy részét, adja meg a **folderPath** mappára vonatkozó részt a és **fileName** helyettesítő szűrővel. 
+>Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Adjon meg egy adott nevű egyetlen fájl másolásához **folderPath** a mappára vonatkozó részt és **fileName** nevére.<br>Másolja a fájlokat egy mappában egy részét, adja meg a **folderPath** mappára vonatkozó részt a és **fileName** helyettesítő szűrővel. 
 
 **Példa**
 
@@ -200,16 +198,16 @@ Adatok másolása és- tárolókról az Azure Data Lake Store, állítsa be a ty
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az Azure Data Lake-adatforrások és adatfogadók által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). Ez a szakasz az Azure Data Lake Store-adatforrások és adatfogadók által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="azure-data-lake-store-as-source"></a>Az Azure Data Lake Store mint forrás
 
-Adatok másolása az Azure Data Lake Store, állítsa be a forrás típusaként a másolási tevékenység **AzureDataLakeStoreSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Adatok másolása a Data Lake Store, állítsa be a forrás típusaként a másolási tevékenység **AzureDataLakeStoreSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AzureDataLakeStoreSource** |Igen |
-| a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. Megjegyzés: Ha a rekurzív értéke igaz, és a fogadó fájlalapú tároló, üres mappa/alárendelt-folder nem lesz másolva vagy hozható létre, a fogadó.<br/>Engedélyezett értékek a következők: **igaz** (alapértelmezett), **false (hamis)** | Nem |
+| type | A `type` értékre kell állítani a másolási tevékenység forrás tulajdonságát: **AzureDataLakeStoreSource**. |Igen |
+| a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. Vegye figyelembe, hogy amikor `recursive` értéke igaz, és a fogadó egy fájlalapú tároló, egy üres mappát vagy almappát nem másolta, vagy hozza létre a fogadó. Engedélyezett értékek a következők: **igaz** (alapértelmezett), és **hamis**. | Nem |
 
 **Példa**
 
@@ -245,12 +243,12 @@ Adatok másolása az Azure Data Lake Store, állítsa be a forrás típusaként 
 
 ### <a name="azure-data-lake-store-as-sink"></a>Az Azure Data Lake Store mint fogadó
 
-Adatok másolása az Azure Data Lake Store, állítsa be a fogadó típusa a másolási tevékenység **AzureDataLakeStoreSink**. A következő tulajdonságok támogatottak a **fogadó** szakaszban:
+Adatok másolása a Data Lake Store, állítsa be a fogadó típusa másolási tevékenység **AzureDataLakeStoreSink**. A következő tulajdonságok támogatottak a **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **AzureDataLakeStoreSink** |Igen |
-| a copyBehavior | A másolási viselkedés határozza meg, ha a forrás fájlok fájlalapú adattárból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><b>-FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában az első szintjét is. A cél fájlok automatikusan létrehozott nevet adni. <br/><b>-MergeFiles</b>: egyesíti a forrásmappából egy fájl összes fájlt. Ha a fájl/Blob neve van megadva, az egyesített fájl neve lesz a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. | Nem |
+| type | A `type` értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataLakeStoreSink**. |Igen |
+| a copyBehavior | A másolási viselkedés határozza meg, ha a forrás fájlok fájlalapú adattárból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a hierarchiája a célmappában. A relatív elérési útját a forrásfájl, a megadott forrásmappához megegyezik a célmappában cél fájl relatív elérési útját.<br/><b>-FlattenHierarchy</b>: a forrásmappából a fájlok az első szintjét a célmappában található is. A cél fájlok automatikusan létrehozott névvel rendelkeznek. <br/><b>-MergeFiles</b>: egyesíti a forrásmappából egy fájl összes fájlt. A fájl/blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben a fájlnév formátuma automatikusan létrehozott. | Nem |
 
 **Példa**
 
@@ -284,18 +282,18 @@ Adatok másolása az Azure Data Lake Store, állítsa be a fogadó típusa a má
 ]
 ```
 
-### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
+### <a name="examples-of-behavior-of-the-copy-operation"></a>Példák a másolási művelet viselkedése
 
-Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.
+Ez a szakasz ismerteti a másolási művelet különböző kombinációihoz az eredményül kapott viselkedéstől `recursive` és `copyBehavior` értékeket.
 
 | a rekurzív | a copyBehavior | Forrás mappastruktúra | Eredményül kapott cél |
 |:--- |:--- |:--- |:--- |
-| true |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappában mappa1 szerkezete ugyanaz, mint a forrás hozzon létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél szerkezete ugyanaz, mint a forrás mappa1 hozzon létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
 | true |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
-| true |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájlba a fájl automatikusan létrehozott névvel egyesítésekor |
-| false |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
-| false |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
-| false |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + 2. fájl tartalmát egy fájlba a fájl automatikusan létrehozott névvel összefésülése megtörténjen. Automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| true |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájlba, egy automatikusan létrehozott fájlnévvel rendelkező egyesítésekor. |
+| false |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | A cél mappa1 jön létre az alábbi struktúra használatával:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + 2. fájl tartalmát egy fájlba a fájl automatikusan létrehozott névvel összefésülése megtörténjen. Automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
 
 ## <a name="next-steps"></a>További lépések
-A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).
+Az Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).
