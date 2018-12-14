@@ -115,7 +115,7 @@ Hozzon létre egy rekordot, először keresse meg a felhőszolgáltatás virtuá
      Mentse az IP-címet, szüksége lesz rá a rekord létrehozásakor.
 2. Jelentkezzen be a DNS-regisztráló webhelyén, és nyissa meg a DNS kezelésére szolgáló lap. Keresse meg az hivatkozások és a hely a következő címkét: területeit **tartománynév**, **DNS**, vagy **névkiszolgáló kezelése**.
 3. Most már található, jelölje be és ír egy bejegyzést. Előfordulhat, hogy a rekord típusa egy legördülő listából válassza le, vagy egy speciális beállítások lapot.
-4. Válassza ki vagy adja meg a tartomány vagy altartomány, amelyet ez A rekordot fog használni. Válassza ki például **www** Ha azt szeretné, hozzon létre egy aliast a **www.customdomain.com**. Ha szeretne létrehozni egy helyettesítő karaktert tartalmazó bejegyzést valamennyi altartományt, adja meg az "x". Ez azzal foglalkozik, hogy az összes altartományok például **mail.customdomain.com**, **login.customdomain.com**, és **www.customdomain.com**.
+4. Válassza ki vagy adja meg a tartomány vagy altartomány, amelyet ez A rekordot fog használni. Válassza ki például **www** Ha azt szeretné, hozzon létre egy aliast a **www.customdomain.com**. Ha szeretne létrehozni egy helyettesítő karaktert tartalmazó bejegyzést valamennyi altartományt, adja meg az "*****". Ez azzal foglalkozik, hogy az összes altartományok például **mail.customdomain.com**, **login.customdomain.com**, és **www.customdomain.com**.
    
     Szeretne létrehozni egy A rekordot a legfelső szintű tartomány, ha ez elérhetőként a "**@**" szimbólumot lát, az a regisztráló DNS-eszközök.
 5. A megadott mezőben adja meg a felhőszolgáltatás IP-címét. Ez hozzárendeli a tartomány bejegyzés az A rekord a felhőszolgáltatás üzembe helyezésének IP-címét használja.
@@ -126,7 +126,7 @@ Például a következő bejegyzés továbbítja érkező minden **contoso.com** 
 | --- | --- |
 | \@ |137.135.70.239 |
 
-Ez a példa bemutatja egy A rekordot a gyökértartomány létrehozása. Ha szeretné, hogy biztosítsák a altartományokkal helyettesítő bejegyzés létrehozása, kell beírnia "x", az altartomány.
+Ez a példa bemutatja egy A rekordot a gyökértartomány létrehozása. Ha szeretné, hogy biztosítsák a altartományokkal helyettesítő bejegyzés létrehozása, kell beírnia "*****", az altartomány.
 
 > [!WARNING]
 > Az Azure-beli IP-címek dinamikusak alapértelmezés szerint. Valószínűleg érdemes használni egy [fenntartott IP-cím](../virtual-network/virtual-networks-reserved-public-ip.md) annak érdekében, hogy az IP-címe nem változik.

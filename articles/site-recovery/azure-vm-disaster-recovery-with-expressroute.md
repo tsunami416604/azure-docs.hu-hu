@@ -93,7 +93,7 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
 - **Agyi virtuális hálózat**. Van egy agyi virtuális hálózat **forrás agyi virtuális hálózat**: 10.10.10.0/24.
     - Az agyi virtuális hálózat a forgalomirányító szerepét.
     - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
- - ****Hub Vnetet alhálózatokra**. Az agyi virtuális hálózat két alhálózattal rendelkezik:
+ - ** Hub Vnetet alhálózatokra**. Az agyi virtuális hálózat két alhálózattal rendelkezik:
      - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
      - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
 - A helyszíni adatközponthoz egy ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy partner edge Hongkong (KKT) rendelkezik.

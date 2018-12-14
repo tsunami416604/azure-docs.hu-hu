@@ -1668,7 +1668,7 @@ A tipikus SAP az alábbi táblázatban a kommunikációs portok vannak felsorolv
 
 *) Neurális hálózat = SAP-példányok száma
 
-*) sid SAP-rendszer-ID =
+**) sid SAP-rendszer-ID =
 
 További részletes információ a különböző SAP-termékekhez szükséges portokat vagy a szolgáltatások SAP-termékek szerint itt található <http://scn.sap.com/docs/DOC-17124>.
 Ebben a dokumentumban a dedikált portok megnyithatja az szükséges, adott SAP-termékekhez és-forgatókönyvek a VPN-eszköznek kell lennie.
