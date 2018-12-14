@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8b5b96f7a67dfbb33f470825b8ba4cabd3469dfc
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190560"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385193"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -35,11 +35,11 @@ Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A di
 ## <a name="monitoring-data-platform"></a>Figyelési adatplatform
 Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](../azure-monitor/platform/data-collection.md). [Metrikák](../azure-monitor/platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](../azure-monitor/platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
-Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrika explorer](../monitoring-and-diagnostics/monitoring-metric-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
+Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrika explorer](../azure-monitor/platform/metrics-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
 
 ![Mérőszámok](media/overview/metrics.png)
 
-A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../azure-monitor/log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../azure-monitor/log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../azure-monitor/platform/alerts-overview.md).
 
 A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](../azure-monitor/log-query/get-started-queries.md) elérhető.  Azon felhasználók számára, akik már ismerik az [SQL](../azure-monitor/log-query/sql-cheatsheet.md) és [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
@@ -94,7 +94,7 @@ Mellett lehetővé teszi, hogy a monitorozási adatok interaktív elemzéséhez,
 
 
 ### <a name="alerts"></a>Riasztások
-[Az Azure monitorban riasztásokat](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesíti kritikus feltételek és potenciálisan próbál végezni a javítási műveleteket. Riasztási szabályok metrikák alapján közel valós idejű riasztási numerikus érték alapján, amíg a naplók alapján szabályok átvitelét teszi lehetővé az összetett logikát a több forrásból származó adatokat.
+[Az Azure monitorban riasztásokat](../azure-monitor/platform/alerts-overview.md) proaktívan értesíti kritikus feltételek és potenciálisan próbál végezni a javítási műveleteket. Riasztási szabályok metrikák alapján közel valós idejű riasztási numerikus érték alapján, amíg a naplók alapján szabályok átvitelét teszi lehetővé az összetett logikát a több forrásból származó adatokat.
 
 Riasztási szabályok az Azure Monitor használata [Műveletcsoportok](../azure-monitor/platform/action-groups.md), amelyek tartalmaznak egyedi címzettek és műveleteket, amelyeket több szabály is megoszthatók. Igényei alapján Műveletcsoportok, webhookok segítségével indítsa el a külső műveletek riasztások vagy integrálása az ITSM-eszközeit az olyan műveleteket hajthat végre.
 
