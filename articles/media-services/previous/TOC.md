@@ -177,8 +177,8 @@
 ### [Tartalommoderátorral rendelkező folyamat](media-services-content-moderation.md)
 
 ## [Telemetria konfigurálása](media-services-telemetry-overview.md)
-###[.NET](media-services-dotnet-telemetry.md)
-###[REST](media-services-rest-telemetry.md)
+### [.NET](media-services-dotnet-telemetry.md)
+### [REST](media-services-rest-telemetry.md)
 
 ## Méretezés
 ### [Médiafeldolgozás](media-services-scale-media-processing-overview.md)

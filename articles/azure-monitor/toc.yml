@@ -121,13 +121,13 @@ items:
   - name: Reagálás incidensekre
     items:
     - name: Riasztások
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-overview.md
     - name: Klasszikus riasztások
       href: platform/alerts-classic.overview.md
     - name: Intelligens csoportok
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-smartgroups-overview.md
     - name: Automatikus méretezés
-      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
+      href: platform/autoscale-overview.md
     - name: Metrikákhoz kapcsolódó riasztások
       href: platform/alerts-metric-overview.md
     - name: Naplóriasztások
@@ -151,7 +151,7 @@ items:
     - name: Hozzáférés kezelése
       items:
       - name: Szerepköri engedélyek és biztonság
-        href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/roles-permissions-security.md
       - name: Munkaterületek
         href: platform/manage-access.md
       - name: Alkalmazások
@@ -217,7 +217,7 @@ items:
         - name: Hibaelhárítás
           href: platform/diagnostics-extension-troubleshooting.md
         - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonokkal
-          href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-stream-template.md
         - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: Virtuálisgép-vendég küldése a metrikatárba
@@ -441,9 +441,9 @@ items:
     - name: Adatok útválasztása
       items:
       - name: Tevékenységnapló archiválása
-        href: ../monitoring-and-diagnostics/monitoring-archive-activity-log.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-activity-log.md
       - name: Diagnosztikai naplók archiválása
-        href: ../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-diagnostic-logs.md
       - name: Diagnosztikai naplók tárolása
         href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
       - name: Tevékenységnapló streamelése az Event Hubs szolgáltatásba
@@ -655,7 +655,7 @@ items:
   - name: Adatok elemzése
     items:
     - name: Metrikadiagramok létrehozása a Metrikaböngészőben
-      href: ../monitoring-and-diagnostics/monitoring-metric-charts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-charts.md
     - name: Események megtekintése a tevékenységnaplóban
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: Szolgáltatási értesítések megtekintése
@@ -740,11 +740,11 @@ items:
         - name: Riasztások dinamikus küszöbértékekkel
           href: platform/alerts-dynamic-thresholds.md
         - name: Metrikariasztások konfigurálása naplókhoz
-          href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-logs.md
         - name: Új metrikariasztás létrehozása Resource Manager-sablonnal
-          href: ../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-create-templates.md
         - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
-          href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-enable-template.md
         - name: Webhook meghívatása klasszikus metrikariasztással
           href: platform/alerts-webhooks.md
       - name: Naplóriasztások használata
@@ -760,7 +760,7 @@ items:
         - name: Riasztások beállítása egy tevékenységnapló eseményéhez
           href: platform/alerts-activity-log.md
         - name: Migrálás a tevékenységnapló-riasztásokra
-          href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/migrate-management-alerts.md
         - name: Riasztások beállítása szolgáltatási értesítésekhez
           href: platform/alerts-activity-log-service-notifications.md
       - name: Alkalmazásriasztások használata
@@ -776,11 +776,11 @@ items:
         - name: Információ a webhook sémáról
           href: platform/activity-log-alerts-webhook.md
         - name: Az SMS-riasztás viselkedése
-          href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-sms-behavior.md
         - name: A riasztási arány korlátozása
-          href: ../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-rate-limiting.md
         - name: Műveletcsoportok létrehozása a Resource Managerrel
-          href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-create-resource-manager-template.md
         - name: Logikai alkalmazási művelet megvalósítása
           href: platform/action-groups-logic-app.md
       - name: Az Operations Manager riasztásai
@@ -790,11 +790,11 @@ items:
         - name: Riasztáspéldányok kezelése
           href: platform/alerts-managing-alert-instances.md
         - name: Intelligens csoportok kezelése
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-smart-groups.md
         - name: Riasztási és intelligenscsoport-állapotok kezelése
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-states.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-states.md
         - name: Egyéb monitorozási szolgáltatások riasztásainak kezelése
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-nagios-zabbix-scom.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-nagios-zabbix-scom.md
     - name: Automatikus méretezés
       items:
       - name: Az automatikus méretezés bemutatása
@@ -808,7 +808,7 @@ items:
       - name: Gyakori minták
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: Automatikus méretezés egyéni metrikával
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-custom-metric.md
       - name: Virtuálisgép-méretezési csoportok automatikus méretezése Resource Manager-sablonok használatával
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: Virtuálisgép-méretezési csoport gépeinek automatikus méretezése
@@ -958,9 +958,9 @@ items:
   - name: Sémák
     items:
     - name: Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák
-      href: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/tutorial-dashboards.md
     - name: Tevékenységnapló eseménysémája
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-schema.md
     - name: Azure Diagnostics-bővítményséma
       href: platform/diagnostics-extension-schema.md
       items:
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322550"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384429"
