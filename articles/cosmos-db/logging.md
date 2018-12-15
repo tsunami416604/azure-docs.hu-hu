@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c8d40587ec6feee9b1ae16e383341fc0f2d1ffb6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137894"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438506"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -75,14 +75,14 @@ Diagnosztikai naplózás az Azure Portalon engedélyezéséhez kövesse az aláb
 
 2. Az a **diagnosztikai beállítások** lapon, tegye a következőket: 
 
-    * **Név**: Adjon meg egy nevet a naplókat hozhat létre.
+    * **Név**: Adjon meg egy nevet, a naplókhoz hozhat létre.
 
-    * **Archiválás tárfiókba**: használja ezt a beállítást, egy meglévő tárfiókot csatlakozni kell. Új tárfiók létrehozása a portálon: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md) , és kövesse az utasításokat egy Azure Resource Managerrel, általános célú fiók létrehozásához. Ezt követően térjen vissza erre a lapra, válassza ki a tárfiókot a portálon. Eltarthat néhány percig, újonnan létrehozott tárfiókok jelennek meg a legördülő menüben.
-    * **Az eseményközpontok felé Stream**: használja ezt a beállítást, hogy egy meglévő Event Hubs névtér és az eseményközpont csatlakozni kell. Event Hubs-névtér létrehozása: [Event Hubs-névtér és eseményközpont létrehozása az Azure portal használatával](../event-hubs/event-hubs-create.md). Ezt követően térjen vissza erre a lapra a portálra, válassza ki az Event Hubs névtér és a házirend nevét.
-    * **Küldés a Log Analyticsnek**: szeretné használni ezt a beállítást, használhat egy meglévő munkaterületet, vagy létrehozhat egy új Log Analytics-munkaterületet a lépéseket követve [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Log Analytics kapcsolatos további információkért lásd: [naplók megtekintése a Log Analytics](#view-in-loganalytics).
-    * **Bejelentkezés DataPlaneRequests**: válassza ezt a beállítást, az alapul szolgáló Azure Cosmos DB elosztott platformot SQL, a Graph, a MongoDB, a Cassandra és a Table API-fiókok a háttér-kérelmek naplózása. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
-    * **Bejelentkezés MongoRequests**: válassza ezt a beállítást, a felhasználó által kezdeményezett kérések naplózása az előtértől Azure Cosmos DB MongoDB API-fiókok számára. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
-    * **Metrika kérelmek**: válassza ezt a beállítást, a részletes adatok tárolása [az Azure-metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
+    * **Archiválás tárfiókba**: Használja ezt a beállítást, egy meglévő tárfiókot csatlakozni kell. Új tárfiók létrehozása a portálon: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md) , és kövesse az utasításokat egy Azure Resource Managerrel, általános célú fiók létrehozásához. Ezt követően térjen vissza erre a lapra, válassza ki a tárfiókot a portálon. Eltarthat néhány percig, újonnan létrehozott tárfiókok jelennek meg a legördülő menüben.
+    * **Az eseményközpontok felé Stream**: Használja ezt a beállítást, egy meglévő Event Hubs névtér és az eseményközpont csatlakozni kell. Event Hubs-névtér létrehozása: [Event Hubs-névtér és eseményközpont létrehozása az Azure portal használatával](../event-hubs/event-hubs-create.md). Ezt követően térjen vissza erre a lapra a portálra, válassza ki az Event Hubs névtér és a házirend nevét.
+    * **Küldés a Log Analyticsnek**: Ez a beállítás használatához használja egy meglévő munkaterületet, vagy hozzon létre egy új Log Analytics-munkaterületet a lépéseket követve [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Log Analytics kapcsolatos további információkért lásd: [naplók megtekintése a Log Analytics](#view-in-loganalytics).
+    * **Bejelentkezés DataPlaneRequests**: Válassza ki ezt a beállítást, az alapul szolgáló Azure Cosmos DB elosztott platformot SQL, a Graph, a MongoDB, a Cassandra és a Table API-fiókok a háttér-kérelmek naplózása. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
+    * **Bejelentkezés MongoRequests**: Ezzel a lehetőséggel a felhasználó által kezdeményezett kérések naplózását az előtértől Azure Cosmos DB MongoDB API-fiókok számára. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
+    * **Metrika kérelmek**: Ezt a beállítást a részletes adatok tárolására [az Azure-metrikák](../azure-monitor/platform/metrics-supported.md). Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
 
 3. Kattintson a **Mentés** gombra.
 
@@ -442,11 +442,11 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 | **idő** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB-fiókot, amelynek a naplói engedélyezve vannak.|
 | **kategória** | **Kategória** | Az Azure Cosmos DB-naplók **DataPlaneRequests** az egyetlen elérhető érték. |
-| **OperationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: frissítés, olvasási, ReadFeed, Delete, cserélje le, hajtsa végre, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert létrehozása.   |
+| **OperationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: Hozzon létre, frissítés, olvasási, ReadFeed, törlés, csere, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert hajtható végre.   |
 | **Tulajdonságok** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
 | **activityId** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
 | **userAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
-| **resourceType** | **ResourceType** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
+| **resourceType** | **ResourceType** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: Adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
 | **statusCode** | **statusCode_s** | A válasz állapota a műveletet. |
 | **requestResourceId** | **ResourceId** | Az erőforrás-azonosító, amely a kérelem vonatkozik. Az érték databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |

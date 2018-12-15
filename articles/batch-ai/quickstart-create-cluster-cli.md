@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 0d4ba7edfb22a6710222c854ceb2bf86284d2d77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1ea12c9a544704ea91b85ae944e611e6769b5592
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057798"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407133"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Rövid útmutató: Fürt létrehozása Batch AI betanítási feladatokhoz az Azure CLI használatával
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Gyors útmutató: Az Azure CLI-vel a Batch AI betanítási feladatokat a fürt létrehozása
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy mesterségesintelligencia- és gépi tanulási modellek betanítására használható Batch AI-fürtöt az Azure CLI-vel. A Batch AI egy felügyelt szolgáltatás az adatelemzők és MI-kutatók számára, amely lehetővé teszi, hogy nagy számban tanítsanak be mesterségesintelligencia- és gépi tanulási modelleket Azure-beli virtuális gépek fürtjein.
 

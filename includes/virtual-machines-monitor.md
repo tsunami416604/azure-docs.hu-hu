@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 43615caf00bec79c1f87736b6ca0d2b74bfb95d7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857269"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399885"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/application-insights/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -31,7 +31,7 @@ A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése
 
 ## <a name="alerts"></a>Riasztások
 
-Létrehozhat [riasztások](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md) meghatározott teljesítmény-mérőszámok alapján. A problémák, akkor is értesítést szeretne többek között az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, vagy a rendelkezésre álló szabad lemezterület egy adott érték alá csökken. Riasztások konfigurálható a [az Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)révén [Azure PowerShell-lel](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), vagy a [Azure CLI-vel](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
+Létrehozhat [riasztások](../articles/azure-monitor/platform/alerts-overview.md) meghatározott teljesítmény-mérőszámok alapján. A problémák, akkor is értesítést szeretne többek között az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, vagy a rendelkezésre álló szabad lemezterület egy adott érték alá csökken. Riasztások konfigurálható a [az Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)révén [Azure PowerShell-lel](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), vagy a [Azure CLI-vel](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -50,7 +50,7 @@ Néhány, a tevékenységnapló is végezhet a következők:
 - Hozzon létre egy [riasztási egy tevékenységnapló eseményéhez](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 - [Az Eseményközpontok felé, Stream](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 - A Power bi használatával elemezhetők a [Power bi-tartalomcsomag](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-- [Mentse a tárfiókhoz](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md) archív vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) a napló-profillal.
+- [Mentse a tárfiókhoz](../articles/azure-monitor/platform/archive-activity-log.md) archív vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) a napló-profillal.
 
 Emellett tevékenységnapló adatainak használatával [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.insights/), a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor), vagy [Monitor REST API-k](https://docs.microsoft.com/rest/api/monitor/).
 
@@ -58,7 +58,7 @@ Emellett tevékenységnapló adatainak használatával [Azure PowerShell-lel](ht
 
 A diagnosztikai naplók a lehetőségek a következők:
 
-- [Mentse azokat egy storage-fiók](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) használata az erőforrás diagnosztikai beállításait.
+- [Mentse azokat egy storage-fiók](../articles/azure-monitor/platform/archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) használata az erőforrás diagnosztikai beállításait.
 - [Az Event Hubs Stream őket](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 - Elemezheti a [OMS Naplóelemzés](../articles/log-analytics/log-analytics-azure-storage.md).
 

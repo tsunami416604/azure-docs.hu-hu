@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0aa45ae807f153e6f1a3fde1d648571b29802dc2
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 721bb93dc259bd2b4cc9f51d8d0d665c9b921128
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632475"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436840"
 ---
 # <a name="run-apache-pig-jobs-using-the-net-sdk-for-apache-hadoop-in-hdinsight"></a>A .NET SDK használatával az Apache Hadoop, a HDInsight Apache Pig-feladatok futtatása
 
@@ -118,11 +118,11 @@ A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, ami jó hír műk�
 
 ## <a name="next-steps"></a>További lépések
 
-A HDInsight Pig kapcsolatos tudnivalókat lásd: [a Pig használata a hadooppal a HDInsight](hdinsight-use-pig.md).
+A HDInsight Pig kapcsolatos tudnivalókat lásd: [Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md).
 
 További információ a HDInsight a Hadoop használatával a következő dokumentumokban talál:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/

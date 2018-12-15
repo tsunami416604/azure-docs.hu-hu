@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391810"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409717"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>A Batch AI szolgáltatás kvótái és korlátai
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Mint Azure-szolgáltatásokat, korlátozva van az egyes erőforrásokat a Batch AI szolgáltatással kapcsolatos. Batch AI, ezek a korlátok a következők az előfizetés szintjén minden egyes régióban, ahol a szolgáltatás alkalmazott alapértelmezett kvóta [elérhető](https://azure.microsoft.com/global-infrastructure/services/). Ez a cikk ismerteti azokat az alapértelmezett beállításokat, és hogyan kérheti a kvóta növeli.
 
@@ -74,7 +77,7 @@ Kövesse az alábbi lépéseket egy kvótát növelheti a Batch AI előfizetés 
    
     d. **Támogatási csomag** > Válassza ki a támogatási csomagot.
 
-    Kattintson a **Tovább** gombra.
+    Kattintson a **Tovább**gombra.
 4. A **probléma**:
    
     a. Válassza ki a **súlyossági** a következők szerint a [üzletmenetre gyakorolt hatás][support_sev].
@@ -83,7 +86,7 @@ Kövesse az alábbi lépéseket egy kvótát növelheti a Batch AI előfizetés 
 
     c. Nem kötelező – a növekedés okát kapcsolatos további információkat az érintett fájlokat feltölteni.
    
-    Kattintson a **Tovább** gombra.
+    Kattintson a **Tovább**gombra.
 5. A **kapcsolattartási adatok**:
    
     a. Válassza ki a **elsődleges kapcsolattartási módszert**.

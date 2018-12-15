@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139656"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410397"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -147,7 +147,7 @@ Igen, az SQL API lehetővé teszi, hogy sémadefiníciók vagy mutatók nélkül
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Az SQL API támogatja az ACID-tranzakciókat?
 
-Igen, az SQL API támogatja a JavaScript-tárolt eljárásokkal és eseményindítókkal kifejezett dokumentumok közötti tranzakciókat. Tranzakciók hatóköre a tárolók belül egyetlen partícióra és ACID szemantikákkal, "mindent vagy semmit," végrehajtani más párhuzamosan kódtól vagy felhasználói kérelmektől elkülönítve. Ha a kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtási, a teljes tranzakció vissza lesz állítva. Tranzakciókkal kapcsolatos további információkért lásd: [adatbázis-program tranzakciókat](programming.md#database-program-transactions).
+Igen, az SQL API támogatja a JavaScript-tárolt eljárásokkal és eseményindítókkal kifejezett dokumentumok közötti tranzakciókat. Tranzakciók hatóköre a tárolók belül egyetlen partícióra és ACID szemantikákkal, "mindent vagy semmit," végrehajtani más párhuzamosan kódtól vagy felhasználói kérelmektől elkülönítve. Ha a kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtási, a teljes tranzakció vissza lesz állítva. 
 
 ### <a name="what-is-a-container"></a>Mi az a tároló?
 
@@ -234,7 +234,7 @@ MongoDB gyakori hibakódok és a MongoDB API-val rendelkezik a saját adott hiba
 | Hiba               | Kód  | Leírás  | Megoldás  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Felhasznált kérelemegységek teljes száma nagyobb, mint a gyűjteményben kiosztott kérelemegység díjaival, és megfelelően szabályozva lett. | Az átviteli sebességet rendelve egy tárolót vagy tárolók egy készletét az Azure portal vagy az újrapróbálkozás újra megfontolni. |
-| ExceededMemoryLimit | 16501 | A művelet több-bérlős szolgáltatás, az ügyfél memória kiosztása feletti csökkent. | Csökkentse a szigorúbb lekérdezési feltételek használatával művelet hatókörének, vagy forduljon az ügyfélszolgálathoz a a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {név: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | A művelet több-bérlős szolgáltatás, az ügyfél memória kiosztása feletti csökkent. | Csökkentse a szigorúbb lekérdezési feltételek használatával művelet hatókörének, vagy forduljon az ügyfélszolgálathoz a a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {név: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1}}<br> &nbsp; &nbsp; &nbsp;&nbsp;])*) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>A rendszer Simba illesztőprogramot használhatók az Azure cosmos DB MongoDB API a MongoDB-hez?
 
@@ -395,11 +395,11 @@ Igen, kihasználhatják az Azure Cosmos DB elosztott jellege kapcsolatos inform�
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>Ha engedélyezve van a globális terjesztés, mennyi ideig tart, replikálja az adatokat?
 
-Az Azure Cosmos DB az adatokat a helyi régióban tartósan véglegesítések, és leküldéses értesítések az adatok közvetlenül más régiókhoz csupán néhány ezredmásodperc. A fájlreplikációs szolgáltatás csak az üzenetváltási időt (RTT) az adatközpontok függ. Azure Cosmos DB globális terjesztési képességét kapcsolatos további információkért lásd: [Azure Cosmos DB: egy globálisan elosztott adatbázis-szolgáltatás az Azure-ban](distribute-data-globally.md).
+Az Azure Cosmos DB az adatokat a helyi régióban tartósan véglegesítések, és leküldéses értesítések az adatok közvetlenül más régiókhoz csupán néhány ezredmásodperc. A fájlreplikációs szolgáltatás csak az üzenetváltási időt (RTT) az adatközpontok függ. Azure Cosmos DB globális terjesztési képességét kapcsolatos további információkért lásd: [Azure Cosmos DB: Az Azure-ban egy globálisan elosztott adatbázis-szolgáltatás](distribute-data-globally.md).
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Módosíthatja az olvasási kérést konzisztenciaszint?
 
-Az Azure Cosmos DB a konzisztenciaszint beállíthatja a tároló szintjén (a leírásban). A .NET SDK használatával módosíthatja a szintet TableConsistencyLevel kulcsot az app.config fájlban az érték megadásával. A lehetséges értékek a következők: erős, PBS, munkamenet, konzisztens előtag és végleges. További információkért lásd: [adatok aprólékosan beállítható konzisztenciaszintek az Azure Cosmos DB](consistency-levels.md). A kulcs lényege, hogy nem állítható be a kérelem konzisztencia szint több, mint a beállítást a táblára vonatkozóan:. Például a konzisztenciaszint a táblához nem beállítása végleges, és a kérés konzisztenciaszint erős.
+Az Azure Cosmos DB a konzisztenciaszint beállíthatja a tároló szintjén (a leírásban). A .NET SDK használatával módosíthatja a szintet TableConsistencyLevel kulcsot az app.config fájlban az érték megadásával. A lehetséges értékek a következők: Erős, korlátozott frissesség, munkamenet, konzisztens előtag és végleges. További információkért lásd: [adatok aprólékosan beállítható konzisztenciaszintek az Azure Cosmos DB](consistency-levels.md). A kulcs lényege, hogy nem állítható be a kérelem konzisztencia szint több, mint a beállítást a táblára vonatkozóan:. Például a konzisztenciaszint a táblához nem beállítása végleges, és a kérés konzisztenciaszint erős.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Hogyan a Table API kezeli feladatátvételi Ha leáll egy régióban?
 
@@ -413,11 +413,11 @@ Igen, a Table API-t használja a biztonsági másolatokat az Azure Cosmos DB pla
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>A Table API index egy entitás összes attribútumának alapértelmezés szerint?
 
-Igen, egy entitás összes attribútumának indexelt alapértelmezés szerint. További információkért lásd: [Azure Cosmos DB: indexelési szabályzataihoz](index-policy.md).
+Igen, egy entitás összes attribútumának indexelt alapértelmezés szerint. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md).
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Nem, nem kell létrehoznunk jelent ez több, mint a lekérdezések kielégítéséhez több index?
 
-Igen, az Azure Cosmos DB Table API biztosít az összes attribútum bármely séma definíció nélküli automatikus indexelés. Ezt az automatizálást a fejlesztők számára, hogy az alkalmazás helyett az index létrehozásának és felügyeletének fókusz szabadít fel. További információkért lásd: [Azure Cosmos DB: indexelési szabályzataihoz](index-policy.md).
+Igen, az Azure Cosmos DB Table API biztosít az összes attribútum bármely séma definíció nélküli automatikus indexelés. Ezt az automatizálást a fejlesztők számára, hogy az alkalmazás helyett az index létrehozásának és felügyeletének fókusz szabadít fel. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md).
 
 ### <a name="can-i-change-the-indexing-policy"></a>Módosíthatja az indexelési házirendet?
 
@@ -536,13 +536,13 @@ Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tá
 
 Legtöbb natív Tinkerpop Gremlin-illesztőprogramok a lehetőséget, ha a lekérdezés-végrehajtáshoz paramétereket tartalmazó engedélyezése. Ez a példa bemutatja, hogyan a [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) és a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Miért jelenik meg a "Gremlin lekérdezésfordítási hiba: minden olyan metódus nem található" hiba?
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Miért jelenik meg a "Gremlin lekérdezésfordítási hiba: Nem található bármelyik módszert"hiba?
 
 Az Azure Cosmos DB Gremlin API valósítja meg a Gremlin támadási meghatározott funkciók egy részét. Támogatott lépések és további információkat lásd: [Gremlin-támogatás](gremlin-support.md) cikk.
 
 A legjobb megoldás, hogy a szükséges Gremlin-lépések újraírási a támogatott funkciókkal, mivel az Azure Cosmos DB által támogatott összes alapvető fontosságú gremlinnel kapcsolatos lépések.
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Miért jelenik meg a "WebSocketException: A kiszolgáló állapotkód:"200"adott vissza, ha a várt állapotkód:"101: "hiba?
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Miért jelenik meg a "WebSocketException: A kiszolgáló állapotkód: "200" adott vissza, ha a várt állapotkód: "101:" hiba?
 
 Ez a hiba valószínűleg akkor fordul elő, ha a nem megfelelő végpont van használatban. A végpont, amely állít elő, ez a hiba van a következő mintának:
 
@@ -777,11 +777,11 @@ A fiók, és szabályozhatja, ahol azt átveheti azáltal, hogy a feladatátvét
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Apache Cassandra API index egy entitás összes attribútumának alapértelmezés szerint?
 
-Igen, egy entitás összes attribútumának indexelt alapértelmezés szerint az Azure Cosmos DB-hez. További információkért lásd: [Azure Cosmos DB: indexelési szabályzataihoz](index-policy.md). Garantált konzisztens indexelő teljesítmény előnyeit kap, és véglegesített tartós kvórum mindig írja.
+Igen, egy entitás összes attribútumának indexelt alapértelmezés szerint az Azure Cosmos DB-hez. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md). Garantált konzisztens indexelő teljesítmény előnyeit kap, és véglegesített tartós kvórum mindig írja.
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Nem, nem kell létrehoznunk jelent ez több, mint a lekérdezések kielégítéséhez több index?
 
-Igen, az Azure Cosmos DB biztosít az összes attribútum bármely séma definíció nélküli automatikus indexelés. Ezt az automatizálást a fejlesztők számára, hogy az alkalmazás helyett az index létrehozásának és felügyeletének fókusz szabadít fel. További információkért lásd: [Azure Cosmos DB: indexelési szabályzataihoz](index-policy.md).
+Igen, az Azure Cosmos DB biztosít az összes attribútum bármely séma definíció nélküli automatikus indexelés. Ezt az automatizálást a fejlesztők számára, hogy az alkalmazás helyett az index létrehozásának és felügyeletének fókusz szabadít fel. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Használható az új Cassandra API SDK-t helyi emulátorral?
 

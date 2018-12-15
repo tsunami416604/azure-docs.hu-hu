@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342885"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434732"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -164,7 +164,7 @@ Olyan gépeket azt mutatják be, mint **nincs értékelve** alatt **megfelelős�
 
 #### <a name="cause"></a>Ok
 
-Windows update nincs megfelelően konfigurálva a gépen.
+Windows Update vagy a WSUS nem megfelelően van konfigurálva a gépen. Az Update Management támaszkodik a Windows Update vagy a WSUS szolgáltatást adja meg a szükséges, a frissítések állapota a javítást, és javítások vannak telepítve az eredményeket. Ezen adatok nélkül az Update Management is nem megfelelően jelentik a szükséges vagy telepített javítások.
 
 #### <a name="resolution"></a>Megoldás:
 

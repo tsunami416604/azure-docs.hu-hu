@@ -9,21 +9,31 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901328"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408357"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzései
+
+
+## <a name="december-12-2018"></a>2018. december 12.
+- Exportálás támogatása Objektumfelismerés modellek (bevezetett objektum észlelési kompakt tartomány).
+- Rögzített számos továbbfejlesztett képernyőolvasó és billentyűzet navigációs támogatási problémákat. 
+- UX frissítéseket képmegtekintő és a továbbfejlesztett címkézés gyorsabb címkézésre élmény objektumfelismerés.  
+- Frissített alapszintű modell objektum észlelési tartomány jobb minőségű objektum észleléséhez. 
+- Bugfixes.
+
+## <a name="november-6-2018"></a>2018. november 6.
+- Támogatás hozzáadva a embléma tartományt az Objektumfelismerés.
 
 ## <a name="october-9-2018"></a>2018. október 9.
 - Objektum észlelési fizetett előzetes verzióként kerül. Mostantól létrehozhat Objektumfelismerés projektek és a egy Azure-erőforrás.
 - A hozzáadott "Áthelyezése az Azure-bA" funkció webhelyre, hogy egyszerűbb legyen a korlátozott próbaverzió projektek az Azure-frissítése. erőforrás társított project (F0 vagy S0.) Megtalálhatja a beállítások lapon a termékhez.  
 - ONNX 1.2 Windows 2018. október frissítés verzióját, a Windows ML hozzáadott exportálás.
 Bugfixes, beleértve az ONNX-exportálás a különleges karakterek. 
-
 
 ## <a name="august-14-2018"></a>2018. augusztus 14.
 - A hozzáadott "Első lépések" widget végigvezetik a felhasználókat szóló customvision.ai helyet. 

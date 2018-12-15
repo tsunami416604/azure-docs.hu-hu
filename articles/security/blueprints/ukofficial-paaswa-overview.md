@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321988"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409020"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS webes alkalmazások üzemeltetése Egyesült Királyság hivatalos számítási feladatokhoz
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: Egyesült Királyság hivatalos számítási feladatokhoz üzemeltető PaaS webes alkalmazás
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure biztonsági és megfelelőségi tervek
 
@@ -79,7 +79,7 @@ A következő technológiákat biztosítja identitás az eszközkezelési funkci
 
 - [Az Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) van a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás. A megoldás összes felhasználó jöttek létre az Azure Active Directoryban, beleértve a felhasználók az SQL-adatbázis elérésére.
 - A webalkalmazás és a felügyelet az Azure-erőforrások hozzáférési szereplő hitelesítés az Azure AD használatával történik. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Oszloptitkosítás adatbázis az Azure AD az Azure SQL Database az alkalmazás hitelesítéséhez. További információkért lásd: [Always Encrypted: bizalmas adatok védelme az SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Oszloptitkosítás adatbázis az Azure AD az Azure SQL Database az alkalmazás hitelesítéséhez. További információkért lásd: [Always Encrypted: Bizalmas adatok védelme az SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - A webalkalmazáshoz használt állampolgári nyilvános hozzáférés van konfigurálva. A fióklétrehozás és a hitelesítés az active directory segítségével vagy a közösségi hálózati Identitásszolgáltatók engedélyezéséhez [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) integrálhatók, ha szükséges.
 - [Az Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) észleli a potenciális biztonsági réseket és a kockázatos fiókok ajánlásokkal növelése érdekében a szervezet identitásait biztonsági állapotát, konfigurálja a észlelt automatikus válaszok gyanús tevékenységeket a szervezet identitásait, kapcsolódó, és megvizsgálja a gyanús események és vesz igénybe a problémák megoldásához szükséges lépéseket.
 - [Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan fókuszban lévő hozzáférés-kezelés az Azure-hoz. Előfizetéshez való hozzáférés korlátozva, az előfizetés rendszergazdája, és az Azure Key Vault hozzáférés csak kulcskezelő hozzáférést igényelnek a felhasználók korlátozódik.
@@ -104,14 +104,14 @@ Adatok kívül az átvitel során, és az Azure-összetevők közötti védje [T
 
 Az Azure Web Apps egy teljes körűen felügyelt webes webalkalmazás fejlesztett infrastruktúra kezelése nélkül a Java, PHP, Node.js, Python, HTML és C# környezetet üzemeltetési biztosít. Automatikus méretezést biztosít, és magas rendelkezésre állás érdekében támogatja a Windows és Linux egyaránt, és lehetővé teszi, hogy az automatikus telepítéseket a [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) vagy bármely egyéb Git-alapú adattárból.
 
-App Service [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/) és hitelesítheti a felhasználókat a [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) vagy közösségi bejelentkezés ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), és [Microsoft hitelesítési](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
+App Service [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/) és hitelesítheti a felhasználókat a [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) vagy közösségi bejelentkezés ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), és [Microsoft hitelesítési](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
 
 Alapszintű, Standard és prémium csomag éles számítási feladatokra, és dedikált virtuálisgép-példányokon. Egyes példányok több alkalmazást és tartományt is támogathatnak. App services is támogatási [IP-címkorlátozások](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) , szükség esetén a megbízható IP-címek forgalmának biztonságossá tétele és is [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) más PaaS-szolgáltatások biztonságos kapcsolat például [Key Vault](https://azure.microsoft.com/services/key-vault/) és [az Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Ha további biztonsági szükség az izolált csomag az alkalmazások privát, dedikált Azure-környezetben üzemelteti, és az alkalmazásokhoz, amelyeknél a biztonságos kapcsolat a helyszíni hálózat, vagy további teljesítmény és skálázhatóság ideális.
 
 Ez a sablon a következő App Service-szolgáltatásokat telepíti:
 
 - [Standard szintű](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) Csomagszint App Service-ben
-- Több webalkalmazás [üzembe helyezési pontok](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): fejlesztési, előzetes verzió, QA, foglalja annak és természetesen éles (alapértelmezett tárhely).
+- Több webalkalmazás [üzembe helyezési pontok](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Fejlesztési, előzetes verzió, QA, foglalja annak és természetesen éles (alapértelmezett tárhely).
 - [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) csatlakozni [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (Ez a hozzáférés biztosítására is használható [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integráció a [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) teljesítményének figyelése
 - [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
@@ -230,9 +230,9 @@ Az Azure biztonsági és megfelelőségi tervezet Automation JSON konfiguráció
 Három módszer adtak meg a központi telepítése; Egy egyszerű "express" [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) gyorsan felépíthetők a teszt alkalmas környezet; egy paraméteres [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) megközelítés nagyobb számítási környezetek; konfigurációját és az Azure Portalon -alapú üzembe helyezés, ahol az operátor adhatja meg az üzembe helyezéshez megadott paraméterek az Azure Portalon keresztül. 
 
 1.  Klónozás vagy letöltés [ez](https://aka.ms/ukofficial-paaswa-repo) a helyi munkaállomáson GitHub-adattárban.
-2.  Felülvizsgálat [1. módszer: Azure parancssori felület 2 (Express verzió)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) , és hajtsa végre a megadott parancsokat.
-3.  Felülvizsgálat [metódus 1a: Azure parancssori felület 2 (konfigurálása a telepítési szkript argumentumai keresztül)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) , és hajtsa végre a megadott parancsok
-4.  Felülvizsgálat [2. módszer: Azure Portal központi telepítési folyamat](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) , és hajtsa végre a listán szereplő parancsok
+2.  Felülvizsgálat [1. módszer: Az Azure CLI 2 (Express verzió)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) , és hajtsa végre a megadott parancsokat.
+3.  Felülvizsgálat [metódus 1a: Az Azure CLI 2 (konfigurálása a telepítési szkript argumentumai keresztül)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) , és hajtsa végre a megadott parancsok
+4.  Felülvizsgálat [2. módszer: Az Azure Portalon üzembe helyezési folyamat](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) , és hajtsa végre a listán szereplő parancsok
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
 

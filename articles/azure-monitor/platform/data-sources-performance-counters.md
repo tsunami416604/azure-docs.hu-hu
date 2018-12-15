@@ -1,6 +1,6 @@
 ---
-title: Összegyűjtheti és elemezheti a teljesítményszámlálók az Azure Log Analyticsben |} A Microsoft Docs
-description: A Windows és Linux-ügynökök teljesítményének elemzése a Log Analytics által gyűjtött teljesítményszámlálók.  Ez a cikk ismerteti mind a Windows teljesítményszámláló-gyűjtemény konfigurálása és a Linux-ügynökök, azok részleteit a munkaterületet, és hogyan elemezheti őket az Azure Portalon lesznek tárolva.
+title: Összegyűjtheti és elemezheti az Azure monitorban teljesítményszámlálók |} A Microsoft Docs
+description: Az Azure Monitor, elemezheti a teljesítményt, a Windows és Linux-ügynökök által gyűjtött teljesítményszámlálók.  Ez a cikk ismerteti mind a Windows teljesítményszámláló-gyűjtemény konfigurálása és a Linux-ügynökök, azok részleteit a munkaterületet, és hogyan elemezheti őket az Azure Portalon lesznek tárolva.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: 23e416c510c3a6fff7c282406beaec1acf42b2ef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186871"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438370"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Log Analytics Windows és Linux rendszerű teljesítmény adatforrások
-Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A log Analytics képes teljesítményszámlálók gyűjtése gyakori időközönként teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzés céljából.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások
+Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  Az Azure Monitor teljesítményszámlálók gyűjthet a teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzéshez gyakori időközönként.
 
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
-Teljesítményszámlálók konfigurálása a [adatok Log Analytics-beállítások menüben](agent-data-sources.md#configuring-data-sources).
+Teljesítményszámlálók konfigurálása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).
 
-Amikor először konfigurálja egy új Log Analytics-munkaterület Windows vagy Linux-teljesítménye számlálói, akkor gyorsan létrehozhat több gyakran használt számlálót kapják meg.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a rendszer ellenőrzi a kezdetben a létrehozni kívánt számlálókat, és kattintson a **a kijelölt teljesítményszámlálók felvétele**.
+Amikor először konfigurálja egy új munkaterületet Windows vagy Linux-teljesítménye számlálói, akkor gyorsan létrehozhat több gyakran használt számlálót kapják meg.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a rendszer ellenőrzi a kezdetben a létrehozni kívánt számlálókat, és kattintson a **a kijelölt teljesítményszámlálók felvétele**.
 
 Windows-teljesítményszámlálókkal választhat egy adott példányt minden teljesítményszámláló esetében. Linuxos teljesítményszámlálókkal az Ön által választott átlagait példányát az összes gyermek-számlálók a szülő számláló vonatkozik. Az alábbi táblázat a Linux és a Windows-teljesítményszámlálók közös példányig.
 
@@ -88,7 +88,7 @@ Ez az elem a paramétereket az alábbi táblázatban ismertetett.
 | interval | A gyakoriság, amellyel a rendszer az objektum számlálókat gyűjti. |
 
 
-A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
+A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -182,7 +182,7 @@ Következő teljesítmény-mérőszámok az alapértelmezett konfigurációjána
     </source>
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A log Analytics adatokat gyűjt az összes megadott teljesítményszámlálók a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesítve, és a nyers adatokat az összes napló keresési nézetben érhető el az előfizetés által megadott időtartama alatt.
+Az Azure Monitor adatokat gyűjt az összes megadott teljesítményszámlálók a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesítve, és a nyers adatok érhető el az összes napló lekérdezési nézeteket az előfizetés által megadott időtartama alatt.
 
 ## <a name="performance-record-properties"></a>Teljesítmény rekord tulajdonságai
 Teljesítményrekordot rendelkezik olyan típusú **Teljesítményoptimalizált** , és a tulajdonságait az alábbi táblázatban.
@@ -203,8 +203,8 @@ Teljesítményrekordot rendelkezik olyan típusú **Teljesítményoptimalizált*
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>Teljesítmény rekordokat tartalmazó naplókeresések
-Az alábbi táblázat példákat különböző naplókeresések teljesítményrekordot lekérő.
+## <a name="log-queries-with-performance-records"></a>Teljesítményrekordot log lekérdezéseket.
+Az alábbi táblázat példákat különböző teljesítményrekordot lekérő log lekérdezéseket.
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
@@ -225,5 +225,5 @@ Az alábbi táblázat példákat különböző naplókeresések teljesítményre
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linuxos alkalmazások](data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
-* Az összegyűjtött adatok exportálása [Power BI](../../azure-monitor/platform/powerbi.md) további Vizualizációk és elemző.
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Az összegyűjtött adatok exportálása [Power BI](powerbi.md) további Vizualizációk és elemző.

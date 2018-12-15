@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8da2309a16c07440158c1de324eea1fa05b1c98b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 15aa80c5291854c937bdc128a597ed5bebd608a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189068"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437431"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -69,7 +69,7 @@ Az Azure Machine Learning szolgáltatás üzembe helyezése, kezelése és figye
 
 ### <a name="install-and-configure-onnx-runtime"></a>Telepítse és konfigurálja az ONNX-modul
 
-Az ONNX-modul egy olyan nyílt forráskódú nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. A Processzor és GPU, Python, a rendelkezésre álló API-kkal is biztosít a hardveres gyorsítás C#, és a c ONNX modul támogatja az 1.2-es + ONNX modelljei és futtatja a Linux, Windows és Mac rendszerre. Python-csomagok elérhetők az [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), és [ C# csomag](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) található [Nuget.org](https://www.nuget.org). A talál további információt a projekt [Github](https://github.com/Microsoft/onnxruntime). 
+Az ONNX-modul egy olyan nyílt forráskódú nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. A Processzor és GPU, Python, a rendelkezésre álló API-kkal is biztosít a hardveres gyorsítás C#, és a c ONNX modul támogatja az 1.2-es + ONNX modelljei és futtatja a Linux, Windows és Mac rendszerre. Python-csomagok elérhetők az [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), és [ C# csomag](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) található [Nuget.org](https://www.nuget.org). A talál további információt a projekt [GitHub](https://github.com/Microsoft/onnxruntime). 
 
 Pythonhoz készült ONNX-modul telepítéséhez használja:
 ```python
@@ -202,6 +202,6 @@ További információ az ONNX vagy járulnak hozzá a projekthez:
 + [Az ONNX-kódját a Githubon](https://github.com/onnx/onnx)
 
 További információ az ONNX-futtatókörnyezet, illetve járulnak hozzá a projekthez:
-+ [Az ONNX-futtatókörnyezet Github-adattár](https://github.com/Microsoft/onnxruntime)
++ [Az ONNX-futtatókörnyezet GitHub-adattár](https://github.com/Microsoft/onnxruntime)
 
 

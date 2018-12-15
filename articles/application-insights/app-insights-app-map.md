@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d1c95802889c80baf79eaf0a0af1e30d6bc3fdfd
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3929e4d2a915e58922d26f6d4b81c7d3a4fc8afe
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322277"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434103"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -200,6 +200,8 @@ Ha problémába ütközik az első alkalmazás-hozzárendelés a várt módon m�
 3. Az Azure Functions használata C#frissítsen a [funkciók V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Győződjön meg róla [cloud_RoleName](app-insights-app-map.md#Set-cloud-RoleName) megfelelően van konfigurálva.
+
+5. Ha egy függőség éppen hiányzik, ellenőrizze, hogy listájában [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Ha nem, továbbra is nyomon követheti azt manuálisan egy [függőségi hívás nyomon](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="portal-feedback"></a>Portál visszajelzés
 Visszajelzést, használja a portál visszajelzés lehetőség.

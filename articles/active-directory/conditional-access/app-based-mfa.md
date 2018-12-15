@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604195"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413151"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén 
 
@@ -79,17 +79,17 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
 
 2. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**. 
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. Az a **Azure Active Directory** lap a **kezelés** területén kattintson **feltételes hozzáférési**.
+3. Az a **Azure Active Directory** lap a **biztonsági** területén kattintson **feltételes hozzáférési**.
 
     ![Feltételes hozzáférés](./media/app-based-mfa/03.png)
  
-4. Az a **feltételes hozzáférési** oldalon, a felső eszköztáron kattintson **Hozzáadás**.
+4. Az a **feltételes hozzáférési** oldalon, a felső eszköztáron kattintson **új szabályzat**.
 
     ![Hozzáadás](./media/app-based-mfa/04.png)
 
@@ -153,7 +153,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció becslése a hatás bejelentkezési ebben a szabályzatok a, és a szimuláció jelentést hoz létre.  
+Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 A mi inicializálni a szabályzat kiértékelési eszközével, ha:
 
@@ -196,7 +196,7 @@ A mi inicializálni a szabályzat kiértékelési eszközével, ha:
 3. Kattintson a **mi történik, ha**.
 
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik. 
 

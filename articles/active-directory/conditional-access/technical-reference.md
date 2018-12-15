@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2018
+ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 2f9075cef671128cacc37f16e8bf29bf0f60401d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619639"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408578"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -179,22 +179,29 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 |---|---|---|
 |Az Azure távoli alkalmazás|Az Azure távoli App Service-ben|A Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
 |Dynamics CRM-alkalmazás|Dynamics CRM|A Windows 10, Windows 8.1, iOS és Android|
-|Mail/naptár/személyek alkalmazást, az Outlook 2016, az Outlook 2013 (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 10|
+|Mail/naptár/személyek alkalmazást, az Outlook 2016, az Outlook 2013-hoz |Az Office 365 Exchange online-hoz|Windows 10|
 |MFA- és helyszabályzat alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak. |Bármely saját alkalmazások app service|Android és iOS|
 |Microsoft Teams-szolgáltatások – ez vezérli a minden szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfélalkalmazások – Windows Desktop, iOS, Android, WP és webes ügyféllel|Microsoft Teams|A Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
-|Office 2016-alkalmazásokat, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Az Office 365 SharePoint Online|Windows 8.1, Windows 7|
-|Office 2016-os, univerzális Office-alkalmazásokat, Office 2013 (a modern hitelesítést), onedrive-on a Szinkronizáló ügyfél (lásd: [megjegyzések](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), az Office-csoportok támogatása a jövőben tervezünk, SharePoint-alkalmazások támogatása a jövőben tervezünk|Az Office 365 SharePoint Online|Windows 10|
+|Office 2016-alkalmazásokat, Office 2013, onedrive vállalati verzió szinkronizálóügyfél (lásd: [megjegyzések](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Az Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Office 2016-os, univerzális Office-alkalmazásokat, Office 2013, a onedrive vállalati verzió szinkronizálóügyfél (lásd: [megjegyzések](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), az Office-csoportok támogatása a jövőben tervezünk, SharePoint-alkalmazások támogatása a jövőben tervezünk|Az Office 365 SharePoint Online|Windows 10|
 |Office 2016 MacOS (a Word, Excel, PowerPoint, csak a OneNote). A jövőben tervezünk OneDrive for Business-támogatás|Az Office 365 SharePoint Online|Mac OS X|
 |Office-mobilalkalmazások|Az Office 365 SharePoint Online|Android, iOS|
 |Office Yammer-alkalmazás|Az Office 365 Yammeren|A Windows 10, iOS, Android|
 |Az Outlook 2016 (a macOS-hez készült Office)|Az Office 365 Exchange online-hoz|Mac OS X|
-|Az Outlook 2016, az Outlook 2013 (a modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
+|Az Outlook 2016, az Outlook 2013-hoz, a Skype vállalati verzió|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
 |Az Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
 |A Power bi alkalmazás|Power bi szolgáltatásban|A Windows 10, Windows 8.1, Windows 7, Android és iOS|
 |Skype Vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
 |Az Azure DevOps-alkalmazás|Azure DevOps|A Windows 10, Windows 8.1, Windows 7, iOS és Android|
 
 
+## <a name="support-for-legacy-authentication"></a>Az örökölt hitelesítés támogatása
+
+Kiválasztásával **más ügyfelek**, megadhat egy feltételt, amely hatással van a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó alkalmazásokhoz.  
+
+![Más ügyfelek](./media/technical-reference/11.png)
+
+További információkért lásd: [ügyfélalkalmazás](conditions.md#client-apps).
 
 ## <a name="approved-client-app-requirement"></a>Jóváhagyott alkalmazás megkövetelése 
 

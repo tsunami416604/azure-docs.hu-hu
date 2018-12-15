@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854687"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438472"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról Azure App Service-ben a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez szüksége ezeket az elemeket:
 
 * A [Jenkins](https://jenkins.io/) eszközökkel a Java fejlesztői készlet (JDK) és a Maven-beli Linux rendszerű virtuális gépen telepített kiszolgáló
 
-  Ha nem rendelkezik Jenkins-kiszolgáló, mostantól az Azure Portalon a lépések végrehajtása: [létrehozása a Jenkins-kiszolgáló-beli Linux rendszerű virtuális gépen](/azure/jenkins/install-jenkins-solution-template)
+  Ha nem rendelkezik Jenkins-kiszolgáló, hajtsa végre ezeket a lépéseket, most már az Azure Portalon: [Jenkins-kiszolgáló létrehozása az Azure Linux rendszerű virtuális gépen](/azure/jenkins/install-jenkins-solution-template)
 
 * A [GitHub](https://github.com) , így másolata fiókra ([elágazás](#fork)) a minta Java-webalkalmazás. 
 
@@ -92,7 +92,7 @@ Engedélyezni szeretné, hogy a Jenkins, GitHub figyelheti és reagálhat rájuk
 > 
 > Ezeket a lépéseket személyes hozzáférési jogkivonat hitelesítő adatok a Jenkins használata a GitHub használatával, a GitHub-felhasználónevét és jelszavát, és hozzon létre. 
 > Ha a GitHub-fiók kétfaktoros hitelesítést használ, a GitHub-tokenjének létrehozásához, és inkább ezt a jogkivonatot a használata a Jenkins beállítása. 
-> További információkért lásd: a [Jenkins-GitHub beépülő modul](https://wiki.jenkins.io/display/JENKINS/Github+Plugin) dokumentációját.
+> További információkért lásd: a [Jenkins-GitHub beépülő modul](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin) dokumentációját.
 
 1. Az a **Jenkins kezelése** lapon jelölje be **rendszer konfigurálása**. 
 
@@ -168,7 +168,7 @@ Ellenőrizze, hogy használja az egyszerű szolgáltatásnév idézőjelek köz�
    | **Ügyfél-azonosító** | <*yourAzureServicePrincipal-azonosító*> | A `appId` GUID érték, az Azure-szolgáltatás egyszerű korábban létrehozott | 
    | **Titkos Ügyfélkód** | <*yourSecurePassword*> | A `password` érték vagy a "secret" az Azure-szolgáltatás egyszerű megadott | 
    | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-azonosító*> | A `tenant` GUID azonosítót az Azure Active Directory-bérlő | 
-   | **ID** | <*yourAzureServicePrincipalName*> | A `displayName` az Azure-szolgáltatás egyszerű érték | 
+   | **Azonosító** | <*yourAzureServicePrincipalName*> | A `displayName` az Azure-szolgáltatás egyszerű érték | 
    |||| 
 
 1. Győződjön meg arról, hogy működik-e az egyszerű szolgáltatást, válassza a **egyszerű szolgáltatás ellenőrzése**. Ha elkészült, válassza ki a **OK**.

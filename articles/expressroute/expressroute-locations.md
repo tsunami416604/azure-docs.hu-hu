@@ -1,5 +1,5 @@
 ---
-title: 'Kapcsolatszolgáltatók és helyek: Azure ExpressRoute | Microsoft Docs'
+title: 'Kapcsolatszolgáltatók és helyek: Az Azure ExpressRoute |} A Microsoft Docs'
 description: A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról. Kapcsolatszolgáltatók szerint rendezve.
 services: expressroute
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 12/13/2018
 ms.author: pareshmu
-ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0e683fefd0905eb48149e676b26341b47ccd9abf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276057"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409785"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -42,16 +42,16 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 
 | **Geopolitikai régió** | **zóna** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- | --- |
-| **Ausztrália kormánya** |1. zóna | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
-| **Európa** |1. zóna |Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amszterdam2, Dublin, London, Marseille, Newport (Wales), Párizs |
-| **Észak-Amerika** |1. zóna |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, Washington, D.C., Montreal, Québec város, Toronto |
-| **Ázsia** |Zone 2 (2. zóna) |Kelet-Ázsia, Délkelet-Ázsia |Hongkong, Kuala Lumpur, Szingapúr, Szingapúr2 |
-| **Ausztrália** |Zone 2 (2. zóna) |Délkelet-Ausztrália, Kelet-Ausztrália |Melbourne, Sydney | 
-| **India** |Zone 2 (2. zóna) |Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
-| **Japán** |Zone 2 (2. zóna) |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
-| **Dél-Korea** |Zone 2 (2. zóna) |Korea középső régiója, Korea déli régiója |Busan, Szöul|
-| **Dél-Afrika** |3. zóna |[Dél-Afrika nyugati régiója+, Dél-Afrika északi régiója+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Fokváros, Johannesburg |
-| **Dél-Amerika** |3. zóna |Dél-Brazília |Sao Paulo |
+| **Ausztrália kormánya** | 1 | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
+| **Európa** | 1 |Közép-Franciaország, Dél-Franciaország, Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati régiója, az Egyesült Királyság déli régiója |Amszterdam, Amszterdam2, Dublin, London, Marseille, Newport (Wales), Párizs |
+| **Észak-Amerika** | 1 |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, Washington, D.C., Montreal, Québec város, Toronto |
+| **Ázsia** | 2 |Kelet-Ázsia, Délkelet-Ázsia |Hongkong, Kuala Lumpur, Szingapúr, Szingapúr2 |
+| **Ausztrália** | 2 |Délkelet-Ausztrália, Kelet-Ausztrália |Melbourne, Sydney | 
+| **India** | 2 |Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
+| **Japán** | 2 |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
+| **Dél-Korea** | 2 |Korea középső régiója, Korea déli régiója |Busan, Szöul|
+| **Dél-Afrika** | 3 |[Dél-Afrika nyugati régiója+, Dél-Afrika északi régiója+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Fokváros, Johannesburg |
+| **Dél-Amerika** | 3 |Dél-Brazília |Sao Paulo |
 
 
  **+** = hamarosan elérhető
@@ -62,8 +62,8 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
 | **Az Egyesült Államok kormányának felhője** |US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia, US DoD – középső régió, US DoD – keleti régió  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Szilícium-völgy, Washington, D.C. |
-| **Kelet-Kína** |Kelet-Kína, Kelet-Kína2 |Sanghaj |
-| **Észak-Kína** |Észak-Kína, Észak-Kína2 |Peking |
+| **Kelet-Kína** |Kelet-Kína, Kelet-Kína2 |Sanghaj, Shanghai2 |
+| **Észak-Kína** |Észak-Kína, Észak-Kína2 |Peking, Beijing2 |
 | **Németország** |Közép-Németország, Kelet-Németország |Berlin, Frankfurt |
 
 A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard ExpressRoute-termékváltozatokban. A globális kapcsolatok támogatásához engedélyeznie kell az ExpressRoute prémium bővítményt. Az országos felhőkörnyezetekhez való kapcsolódás nem támogatott. Igény esetén tájékozódjon kapcsolatszolgáltatójánál a lehetőségekről.
@@ -160,6 +160,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **Szolgáltató** | **Microsoft Azure** | **Office 365** | **Helyek** |
 | --- | --- | --- | --- |
 | **China Telecom** |Támogatott |Nem támogatott |Peking, Sanghaj |
+| **GDS** |Támogatott |Nem támogatott |Beijing2, Shanghai2 |
 
 További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsazure.cn/home/features/expressroute/).
 

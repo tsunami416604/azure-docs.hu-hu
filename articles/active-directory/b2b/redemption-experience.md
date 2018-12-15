@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: c0f384dafc4ba30eb3e735ee17ae051245378135
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f580c78fa2114905a0ef28f51feee50361717a27
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254989"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435327"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Az Azure Active Directory B2B együttműködés vendégmeghívás beváltása
 
@@ -52,6 +52,12 @@ Bármely Vendég felhasználó bejelentkezése után az első alkalommal egy fi�
 ![Képernyőfelvétel a hozzáférési panelen felhasználói beállításokat:](media/redemption-experience/ConsentScreen.png) 
 
 További információ a hogyan bérlői rendszergazdaként hozzákapcsolhatja a szervezete adatvédelmi nyilatkozatát: [Útmutató: Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryban](https://aka.ms/adprivacystatement).
+
+## <a name="terms-of-use"></a>Használati feltételek
+
+A kezdeti érvényesítési folyamat során, a vendégfelhasználó használati feltételeket tartalmazó fájl is jelenthet a az Azure AD használati feltételek funkció használatával. Az Azure Active Directoryban, ez a szolgáltatás alatt elérheti **kezelés** > **szervezeti kapcsolatok** > **használati feltételeket tartalmazó fájl** vagy alatt **Biztonsági** > **feltételes hozzáférési** > **használati feltételeket tartalmazó fájl**. További információkért lásd: [az Azure AD használati feltételek funkció](../governance/active-directory-tou.md).
+
+![Képernyőfelvétel: az új használati feltételek](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>További lépések
 

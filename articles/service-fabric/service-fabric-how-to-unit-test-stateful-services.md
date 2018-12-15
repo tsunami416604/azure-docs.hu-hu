@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 945cdf63a178a09f121f355aaa7635537e46e5ff
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703705"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413557"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>A Stateful Services egységtesztek létrehozása
 A Service Fabric állapotalapú szolgáltatások egységtesztelés tárja, akkor nem feltétlenül kell érint a hagyományos alkalmazás vagy a tartomány-specifikus egységtesztelés gyakori hibákat. Az állapotalapú szolgáltatások esetében egységteszteket fejlesztésekor nincsenek néhány szempontot, amelyeket figyelembe kell tárolni.
@@ -34,7 +34,7 @@ Ez a cikk feltételezi, hogy [a Service Fabric állapotalapú szolgáltatások E
 Verzió 3.3.0, kezdődően [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) utánzási mindkét a vezénylés, a replikák és az állapot-felügyeleti API-k biztosít. Ez lesz a példákban.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[Github](https://github.com/loekd/ServiceFabric.Mocks)
+[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *Nem birtokolt vagy a Microsoft által karbantartott ServiceFabric.Mocks. Ez azonban jelenleg a Microsoft által ajánlott egységtesztelés állapotalapú szolgáltatások könyvtára.*
 
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary 
+//promote idle secodary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary
@@ -100,7 +100,7 @@ PromoteNewReplicaToPrimaryAsync()
 PromoteNewReplicaToPrimaryAsync(4)
 ```
 
-## <a name="putting-it-all-together"></a>A teljes kép
+## <a name="putting-it-all-together"></a>Végső összeállítás
 A következő vizsgálat bemutatja egy három csomópontos replikakészlethez beállítása és ellenőrzése, hogy az adatok egy szerepkör módosítása után egy másodlagos érhető el. Ez előfordulhat, hogy a tényleges egy tipikus probléma, ha az adatok során hozzá `InsertAsync` valamit a memóriában vagy egy megbízható gyűjteményben futtatása nélkül lett mentve `CommitAsync`. Mindkét esetben a másodlagos nincs szinkronban az elsődleges lenne. Ez nem vezet inkonzisztens által küldött válaszokhoz után a szolgáltatás helyezi át.
 
 ```csharp

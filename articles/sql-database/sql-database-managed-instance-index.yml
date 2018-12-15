@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7f55d0591fbcbb274ab76b5bd17ce77703813cd3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 11832a3b7fb68dce6fb24f44ceec5ffb9a57eb69
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310035"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437554"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 12/05/2018
+  ms.date: 12/14/2018
   ms.author: jovanpop
 abstract:
   description: Az Azure SQL Database felügyelt példánya egy teljes körűen felügyelt SQL Server adatbázismotor-példánnyal az Azure-felhő üzemeltet. Ez a lehetőség ajánlott PaaS az SQL Server-adatbázis migrálása a felhőbe. Ismerje meg, hogyan hozhat létre, és a felügyelt példány használata a útmutatóink, oktatóanyagaink és példáink segítségével.
@@ -73,11 +73,12 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Üzleti kritikus fontosságú szolgáltatási szint</a> már <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">általánosan elérhető (GA)</a>.
-    - html: (Előzetes verzió) <a href="https://aka.ms/managed-instance-aadlogins">Létrehozása az Azure AD-bejelentkezések</a> használatával <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső SZOLGÁLTATÓ a bejelentkezés létrehozása</a> .
+    - html: (Előzetes verzió) Hozzon létre <a href="https://aka.ms/managed-instance-aadlogins">példányszintű az Azure AD-bejelentkezések</a> használatával <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső SZOLGÁLTATÓ a bejelentkezés létrehozása</a> .
     - html: (Előzetes verzió) A példányok létrehozásához <a href="https://aka.ms/managed-instance-collation">a választott a kiszolgálói szintű rendezés</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">A biztonsági másolatok konfigurálása mentése 35 napon belül</a> időponthoz visszaállításhoz. Vegye figyelembe, hogy hosszú távú megőrzésének (legfeljebb 10 évre) még nincs engedélyezve, így használhatja <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">csak másolatot biztonsági mentések</a> alternatívájaként.
     - html: (Előzetes verzió) Használat <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportok</a> adatpéldányok példány egy másik régióban, és győződjön meg arról, hogy az adatai akkor lesznek érhető el, még akkor is, a regionális vészhelyreállítási forgatókönyv.
     - html: (Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcsok használata</a> Bár a migrálás a helyszíni adatbázisok, amelyek már rendelkeznek engedélyezve van a transzparens adattitkosítás (TDE).
+    - html: Felügyelt példányok védett <a href="sql-database-managed-instance-endpoint-verify-built-in-firewall">beépített tűzfal</a>.
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -129,7 +130,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a> és <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">SQL nyelvi korlátozások</a>.
+    - html: Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a> és <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL nyelv különbségek</a>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">Érvényesítése</a> , hogy a meglévő Azure virtuális hálózat a felügyelt példányok üzembe helyezéséhez használható.
     - html: Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.
@@ -138,7 +139,7 @@ sections:
     - html: Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.
     - html: Alkalmazása <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.
     - html: Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.
-    - html: Terjesztheti az adatait az <a href="/azure/sql-database/replication-with-sql-database-managed-instance">tranzakciós replikáció</a>.
+    - html: További információ <a href="sql-database-howto-managed-instance.md">útmutató végigvezeti a</a> , amelyek alapján beállíthatja a felügyelt példányhoz.
 - title: Leírások
   items:
   - type: list

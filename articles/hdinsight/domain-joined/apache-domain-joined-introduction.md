@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ed735b8344c301be413dfe998ccf7f44bd686115
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011225"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436891"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
@@ -24,8 +24,8 @@ Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely
 
 A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](https://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
-> [!NOTE]
-> Az Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
+> [!NOTE]  
+> Az Apache Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Vállalati biztonság négy fő alappillérét tartalmazza: szegélyhálózat-alapú biztonság, hitelesítés, engedélyezés és titkosítás.
 
@@ -39,7 +39,7 @@ Szegélyhálózat-alapú biztonsági réteget a VPN-átjáró szolgáltatáson k
 ## <a name="authentication"></a>Hitelesítés
 Vállalati rendszergazda és az ESP hozhat létre egy HDInsight-fürtöt egy [virtuális hálózat](https://azure.microsoft.com/services/virtual-network/). A HDInsight-fürt összes csomópontján csatlakozott a tartományhoz, a vállalat által kezelt. Ez a gazdafájlon keresztül a [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-Ezzel a beállítással vállalat alkalmazottai bejelentkezhet a fürtcsomópontok tartományi hitelesítő adataik használatával. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, például az Ambari Views, ODBC, JDBC, PowerShell és REST API-k kommunikáljanak a fürttel való hitelesítéshez szolgáltatást is alkalmazhatja. A rendszergazda teljes mértékben vezérelheti a felhasználók száma, akik a fürt ezen végpontokon keresztül kommunikálhat.
+Ezzel a beállítással vállalat alkalmazottai bejelentkezhet a fürtcsomópontok tartományi hitelesítő adataik használatával. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például az Apache Ambari Views, ODBC, JDBC, PowerShell és REST API-k kommunikáljanak a fürttel való hitelesítéshez szolgáltatást is alkalmazhatja. A rendszergazda teljes mértékben vezérelheti a felhasználók száma, akik a fürt ezen végpontokon keresztül kommunikálhat.
 
 ## <a name="authorization"></a>Engedélyezés
 Amely a legtöbb vállalat kövesse az ajánlott eljárás, hogy így arról, hogy nem minden alkalmazott rendelkezik-e az összes vállalati erőforrásokhoz való hozzáférést. Hasonlóképpen a rendszergazda meghatározhatja a szerepköralapú hozzáférés-vezérlési házirendeket, a fürt erőforrásaihoz. 
@@ -63,6 +63,6 @@ A HDInsight-fürtök az Azure Blob storage és az Azure Data Lake Storage Gen1 �
 * [ESP HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [ESP HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md)
 * [ESP a HDInsight-fürtök kezelése](apache-domain-joined-manage.md)
-* [ESP HDInsight-fürtök esetén a Hive-házirendek konfigurálása](apache-domain-joined-run-hive.md)
+* [ESP az Apache Hive-házirendek a HDInsight-fürtök konfigurálása](apache-domain-joined-run-hive.md)
 * [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

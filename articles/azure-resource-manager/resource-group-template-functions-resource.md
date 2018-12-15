@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f2f086dbe5056ee3d83be2d8725f49fd502d1b2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b0aba4d2bf9cb666d1cb7ae30d0cbdefe3045b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139229"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438411"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -509,6 +509,8 @@ A visszaadott objektum a következő formátumban kell megadni:
 
 ### <a name="remarks"></a>Megjegyzések
 
+A `resourceGroup()` függvény nem használható sablont [az előfizetési szinten üzembe helyezett](deploy-to-subscription.md). Csak használható az erőforráscsoportban üzembe helyezett szolgáltatásokban.
+
 A resourceGroup függvény egyik gyakori felhasználási hozhat létre erőforrásokat az erőforráscsoport ugyanazon a helyen. Az alábbi példában az erőforráscsoport helyét egy webhely a hely hozzárendeléséhez.
 
 ```json
@@ -593,9 +595,9 @@ Az azonosító a következő formátumban adja vissza:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Az erőforrás-e az azonos előfizetésben és erőforráscsoportban tartozik, mint a jelenlegi üzemelő példány a megadott paraméterértékek függenek.
+Együtt használva egy [előfizetés-szintű üzembe helyezési](deploy-to-subscription.md), a `resourceId()` függvény csak kérheti le ezen a szinten üzembe helyezett erőforrásokhoz azonosítója. Például kaphat egy szabályzat-definíció vagy a szerepkör-definíció azonosítója, de nem a storage-fiók Azonosítóját. Egy erőforráscsoport központi telepítésére ennek az ellenkezője is igaz. Az előfizetési szinten üzembe helyezett erőforrások erőforrás-azonosítója nem lehet lekérdezni.
 
-Egy tárfiók ugyanabban az előfizetésben és erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
+Az erőforrás-e az azonos előfizetésben és erőforráscsoportban tartozik, mint a jelenlegi üzemelő példány a megadott paraméterértékek függenek. Egy tárfiók ugyanabban az előfizetésben és erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
@@ -617,6 +619,12 @@ Egy adatbázis egy másik erőforráscsoportban található az erőforrás-azono
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
+```
+
+Előfizetés-szintű erőforrás erőforrás-Azonosítóját az előfizetési hatókörben való telepítésekor használja:
+
+```json
+"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 Gyakran kell használatakor ez a függvény egy storage-fiók vagy a virtuális hálózat egy másik erőforráscsoportban. Az alábbi példa bemutatja, hogyan könnyen használható egy erőforrás egy külső erőforrás-csoportból:

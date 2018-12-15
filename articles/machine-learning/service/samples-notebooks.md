@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7affc60e3504b9b43d7663a4b7799c52fef79e7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082781"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434528"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez
 
@@ -29,7 +29,7 @@ Ismerje meg, hogyan lehet a szolgáltatás az a dokumentáció ezen a helyen, ma
 
 Végezze el a [Azure Machine Learning Python rövid](quickstart-get-started.md) hozzon létre egy munkaterületet, majd indítsa el az Azure-jegyzetfüzeteket.
 
-## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Próbálja ki az Azure notebookok: Ingyenes Jupyter-notebookjait a felhőben
+## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Próbálja ki az Azure notebookok: Ingyenes Jupyter notebookok a felhőben
 
 Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepített és konfigurált Önnek az Azure-jegyzetfüzeteket. A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
   
@@ -98,7 +98,7 @@ A fenti lehetőségek bármelyikét használhatja, amíg is a környezet telepí
    >[!NOTE]
    >Egy meglévő conda is használhat, például hosszú 4.4.10 verzió vagy újabb. Használat `conda -V` verzió megjelenítése. A paranccsal frissítheti a conda-verzió: `conda update conda`. Hiba esetén nem kell kifejezetten a mini-conda telepítéséhez.
 
-1. Töltse le a mintafüzetek a [Github](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
+1. Töltse le a mintafüzetek a [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
 ) zip és csomagolja ki a tartalmát egy helyi könyvtárba. Az alkalmazások automatikus machine learning-jegyzetfüzetek szerepelnek a `how-to-use-azureml/automated-machine-learning` mappát.
 
 1. Állítsa be egy új Conda-környezetet. 
@@ -116,9 +116,10 @@ A fenti lehetőségek bármelyikét használhatja, amíg is a környezet telepí
       + Konfigurálja a widget
       + Elindul a jupyter notebook
       
-      A parancsfájlnak a conda-környezet nevét nem kötelező paraméterként. Az alapértelmezett conda-környezet neve `azure_automl`. A pontos parancsát az operációs rendszertől függ. 
+   >[!NOTE]
+   > A parancsfájlnak a conda-környezet nevét nem kötelező paraméterként. Az alapértelmezett conda-környezet neve `azure_automl`. A pontos parancsát az operációs rendszertől függ. Ez akkor hasznos, ha egy új környezet létrehozása vagy egy új verziójára való frissítését. Például az "automl_setup.cmd azure_automl_sandbox" segítségével hozzon létre egy evironment neve azure_automl_sandbox. 
       
-      A szkript befejezése után látni fogja a Jupyter notebook kezdőlapja a böngészőben.
+1. A szkript befejezése után látni fogja a Jupyter notebook kezdőlapja a böngészőben.
 
 1. Keresse meg az elérési utat, ahová mentette a notebookok. 
 

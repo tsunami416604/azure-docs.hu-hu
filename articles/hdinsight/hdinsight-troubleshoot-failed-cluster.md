@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950714"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410278"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
@@ -22,15 +22,15 @@ Ha egy HDInsight-fürt vagy lassan fut, vagy hibakód miatt sikertelenül műkö
 
 Egy lassú vagy meghibásodott fürt diagnosztizálhatja, a környezetet, például a kapcsolódó Azure-szolgáltatások, fürtkonfiguráció és feladat-végrehajtási információt vonatkozó biztonságáért adatainak összegyűjtése. Egy hasznos diagnosztikai, hogy próbálja meg újra előállítani a hibás állapotú, egy másik fürtön.
 
-* 1. lépés: A problémával kapcsolatos adatok gyűjtéséhez
+* 1. lépés: Gyűjtse össze a problémát
 * 2. lépés: A HDInsight-fürt környezet ellenőrzése 
-* 3. lépés: A fürt állapotának megtekintéséhez.
+* 3. lépés: A fürt állapotának megtekintéséhez
 * 4. lépés: Tekintse át a környezet verem és -verziók
-* 5. lépés: Ellenőrizze a fürt naplófájlok
-* 6. lépés: A konfigurációs beállítások ellenőrzése
-* 7. lépés: Reprodukálni a hibát egy másik fürtön 
+* 5. lépés: Vizsgálja meg a fürt naplófájlok
+* 6. lépés: Ellenőrizze a konfigurációs beállítások
+* 7. lépés: Reprodukálja a hibát egy másik fürtön 
 
-## <a name="step-1-gather-data-about-the-issue"></a>1. lépés: A problémával kapcsolatos adatok gyűjtéséhez
+## <a name="step-1-gather-data-about-the-issue"></a>1. lépés: Gyűjtse össze a problémát
 
 HDInsight számos eszközöket biztosít, amelyek használatával a fürtökkel problémák azonosítása és elhárítása. A következő lépések végigvezetik ezen eszközök, és javaslatokat tesz a felügyelő a probléma.
 
@@ -65,7 +65,7 @@ Az Azure klasszikus parancssori felület is használható:
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Egy másik lehetőség van a PowerShell használatával. További információkért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
+Egy másik lehetőség van a PowerShell használatával. További információkért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. lépés: A HDInsight-fürt környezet ellenőrzése
 
@@ -103,11 +103,11 @@ Hasonlítsa össze a legfrissebb verzióját a HDInsight-fürt verziója. Minden
 
 Ha a lassulásokat tapasztal a fürtben, fontolja meg, az Ambari felhasználói felületén vagy a klasszikus Azure CLI segítségével a szolgáltatások újraindítása. Előfordulhat, hogy a fürt tapasztalt átmeneti hibák, és újraindítás a leggyorsabb mód a stabilizálódhatnak a környezetben, és esetleg javíthatja a teljesítményt.
 
-## <a name="step-3-view-your-clusters-health"></a>3. lépés: A fürt állapotának megtekintéséhez.
+## <a name="step-3-view-your-clusters-health"></a>3. lépés: A fürt állapotának megtekintéséhez
 
 HDInsight-fürtök különböző típusú virtuálisgép-példányokon futó csomópontok állnak. Minden egyes csomópont erőforráshiány, hálózati problémák léptek fel és egyéb problémák, ami lelassíthatja a fürt figyelhető. Minden fürt két fő csomópontot tartalmaz, és a legtöbb fürttípus tartalmazhatja feldolgozó és élcsomópontok. 
 
-Mindegyik fürttípus használ a különböző csomópontokhoz ismertetését lásd: [fürtök beállítása a HDInsight a Hadoop, Spark, Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
+Mindegyik fürttípus használ a különböző csomópontokhoz ismertetését lásd: [fürtök beállítása a HDInsight az Apache Hadoop, az Apache Spark, az Apache Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
 
 Az alábbi szakaszok ismertetik az egyes csomópontok és a teljes fürt állapotának ellenőrzése.
 
@@ -117,7 +117,7 @@ A [Ambari felhasználói felületének irányítópultja](#view-cluster-configur
 
 ### <a name="check-your-webhcat-service"></a>Ellenőrizze a WebHCat szolgáltatást
 
-Az egyik gyakori esetben Hive, Pig és a Sqoop-feladatok sikertelenek hiba a [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *templeton eszközön keresztül végzett*) szolgáltatás. WebHCat egy REST-felület, a távoli feladat végrehajtása, például a Hive, Pig, Scoop és a MapReduce. WebHCat a feladat beküldése kérelmek fordítja le YARN-alkalmazások, és visszaad egy állapotot, a YARN-alkalmazás állapotának származik.  A következő szakaszok ismertetik a közös WebHCat HTTP-állapotkódok.
+Sikertelen volt az Apache Hive-, Apache Pig vagy az Apache Sqoop-feladatok az egyik gyakori esetben hiba a [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *templeton eszközön keresztül végzett*) szolgáltatás. WebHCat egy REST-felület, a távoli feladat végrehajtása, például a Hive, Pig, Scoop és a MapReduce. WebHCat fordítja le a feladat beküldése kérelmek Apache Hadoop YARN-alkalmazások, és visszaad egy állapotot, a YARN-alkalmazás állapotának származik.  A következő szakaszok ismertetik a közös WebHCat HTTP-állapotkódok.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 állapotkód)
 
@@ -143,7 +143,7 @@ Ebben az esetben tekintse át a következő naplók kapcsolódnak a a `/var/log/
 * **webhcat-console.log** van a kiszolgáló indításakor a stdout
 * **webhcat-konzol-error.log** van az stderr a kiszolgálói folyamat
 
-> [!NOTE]
+> [!NOTE]  
 > Minden egyes `webhcat.log` frissítése naponta, generují se soubory nevű `webhcat.log.YYYY-MM-DD`. Válassza ki a megfelelő fájlt a vizsgált időtartományban.
 
 A következő szakaszok ismertetik a WebHCat időtúllépések lehetséges okai.
@@ -186,7 +186,7 @@ A YARN szintjén két típusa van időtúllépése:
 
     * Az összes feladat listázása: Ez a hívás időigényes. Ez a hívás az alkalmazások, a YARN ResourceManager, és az egyes befejezett alkalmazások enumerálása, az állapot olvas be a YARN JobHistoryServer. A magasabb számok újabb feladatot az a hívás időtúllépés is.
 
-    * 7 napnál régebbi feladatok listázása: A HDInsight YARN JobHistoryServer fenntartani befejezett feladat információkat hét napja van konfigurálva (`mapreduce.jobhistory.max-age-ms` érték). Feladatok törölve eredményez időtúllépés enumerálása közben.
+    * Lista feladatok 7 napnál régebbi: A HDInsight YARN JobHistoryServer fenntartani befejezett feladat információkat hét napja van konfigurálva (`mapreduce.jobhistory.max-age-ms` érték). Feladatok törölve eredményez időtúllépés enumerálása közben.
 
 Ezek a problémák diagnosztizálásához:
 
@@ -244,15 +244,15 @@ Egy HDInsight-fürtön az Azure-táblák és az Azure Blob storage írt naplóf�
 
 ### <a name="review-heap-dumps"></a>Felülvizsgálati készült halommemória-képek
 
-Halomürítések az alkalmazás memória, beleértve a változók értékeit, ugyanakkor amelynek hasznosak a futási időben bekövetkező problémák diagnosztizálása pillanatképet tartalmaz. További információkért lásd: [engedélyezése halommemória-képek a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
+Halomürítések az alkalmazás memória, beleértve a változók értékeit, ugyanakkor amelynek hasznosak a futási időben bekövetkező problémák diagnosztizálása pillanatképet tartalmaz. További információkért lásd: [engedélyezése halommemória-képek a Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
-## <a name="step-6-check-configuration-settings"></a>6. lépés: A konfigurációs beállítások ellenőrzése
+## <a name="step-6-check-configuration-settings"></a>6. lépés: Ellenőrizze a konfigurációs beállítások
 
 HDInsight-fürtök olyan előre konfigurált alapértelmezett beállításokat, a kapcsolódó szolgáltatások, például a Hadoop-, Hive, HBase és így tovább. Fürt, a hardverkonfigurációja, a csomópontok számát típusától függően a típusú feladatot futtat, és az adatok dolgozik (és az adatok feldolgozásának módja) szükség lehet optimalizálni a konfigurációt.
 
-Teljesítmény-konfigurációkat a legtöbb forgatókönyvhöz optimalizálására vonatkozó részletes utasításokért lásd: [optimalizálása az Ambari fürtkonfigurációk](hdinsight-changing-configs-via-ambari.md). A Spark használata esetén lásd: [a teljesítmény optimalizálása a Spark-feladatok](spark/apache-spark-perf.md). 
+Teljesítmény-konfigurációkat a legtöbb forgatókönyvhöz optimalizálására vonatkozó részletes utasításokért lásd: [optimalizálása az Apache Ambari fürtkonfigurációk](hdinsight-changing-configs-via-ambari.md). A Spark használata esetén lásd: [a teljesítmény optimalizálása az Apache Spark-feladatok](spark/apache-spark-perf.md). 
 
-## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>7. lépés: Reprodukálni a hibát egy másik fürtön
+## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>7. lépés: Reprodukálja a hibát egy másik fürtön
 
 Segítségével diagnosztizálhatja a fürt hiba forrását. Indítsa el az új fürt ugyanazzal a konfigurációval, majd küldje el újra a sikertelen feladat lépéseket egyenként. Ellenőrizze az egyes lépések eredményét a következő feldolgozása előtt. Ez a módszer lehetővé teszi, hogy javítsa ki, majd futtassa újból a sikertelen egyetlen lépésben. Ez a módszer is rendelkezik az előnye, hogy csak a bemeneti adatok egyszer betöltése.
 
@@ -265,8 +265,8 @@ Segítségével diagnosztizálhatja a fürt hiba forrását. Indítsa el az új 
 
 ## <a name="next-steps"></a>További lépések
 
-* [HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
-* [Hozzáférés a YARN napló a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Hozzáférés az Apache Hadoop YARN napló a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Ismert problémák a HDInsight az Apache Spark-fürt](hdinsight-apache-spark-known-issues.md)

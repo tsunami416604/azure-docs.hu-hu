@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fb77c7e8a511d9d97720066113217a39ffc23b24
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4f6dbb52778893de0468dbab82351b9020af2927
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197072"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412809"
 ---
 # <a name="create-an-azure-application-offer"></a>Hozzon létre egy Azure-alkalmazás ajánlatot
 
-Ez a cikk azt ismerteti, hogyan hozhat létre, és a egy Azure-alkalmazás ajánlat bejegyzés közzététele az Azure Marketplace-en. Minden ajánlat jelenik meg a saját entitás az Azure Marketplace-en, és a egy vagy több termékváltozatok társított. Az ajánlat az eszközök és a kiegészítő szolgáltatások a következő csoportosítás tevődik össze:
+Ez a cikk azt ismerteti, hogyan hozhat létre, és a egy Azure-alkalmazás ajánlat bejegyzés közzététele az Azure Marketplace-en. Minden ajánlat az Azure Marketplace-en a saját entitásként jelenik meg, és össze, a következő csoportosítás az eszközök és a kiegészítő szolgáltatások: az ajánlat részletei, SKU-k, marketing-összetevőket, és támogatási információk.
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap
 
@@ -33,7 +33,7 @@ Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), majd
 
 ## <a name="next-steps"></a>További lépések
 
-Az új ajánlat oldal az Azure ajánlat alkalmazástípus a lapok és az űrlap mezőit, amelyek segítségével hozzon létre egy új ajánlat biztosít. Az alábbi cikkekben egyes használatát ismerteti a lapon adható meg az eszközintelligencia-csoportok és az új ajánlat segítő szolgáltatás.
+Az új ajánlat oldal nyújt lapokat és az űrlap mezőit, amelyek segítségével hozzon létre egy új ajánlatot. A következő cikkek bemutatják, hogyan adható meg az eszközintelligencia-csoportok és az új ajánlat segítő szolgáltatás.
 
 * [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 * [Termékváltozatok lap](./cpp-skus-tab.md)

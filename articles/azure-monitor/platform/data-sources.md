@@ -6,17 +6,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: c5035356d9d55298d5b060a3ac2fd3a7cd41f8df
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 1612c2d47f88b6d065e5307be5ff3c99d8f6d405
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385550"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433440"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Az Azure monitorban adatok forrásai
 Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](data-collection.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
@@ -31,7 +32,7 @@ Az Azure-bérlőhöz kapcsolódó telemetriai adatokat gyűjt a bérlői szintű
 ![Az Azure-bérlő gyűjtemény](media/data-sources/tenant-collection.png)
 
 ### <a name="azure-active-directory-audit-logs"></a>Az Azure Active Directory-naplók
-[Jelentéskészítés az Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza. Ezek a naplók az elemzésük más naplózott adatokat a Log Analytics szolgáltatásba lehet írni.
+[Jelentéskészítés az Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza. Ezek a naplók csak írható Azure Monitor naplóira más log adatokkal elemezheti őket.
 
 
 ## <a name="azure-platform"></a>Azure-platform
@@ -40,12 +41,12 @@ Telemetriával kapcsolatos, az egészségügyi és működését az Azure maga a
 ![Azure-előfizetés gyűjtemény](media/data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure Service Health
-[Az Azure Service Health](../../monitoring-and-diagnostics/monitoring-service-notifications.md) az Azure-szolgáltatások az előfizetésében, amelyet az alkalmazás és-erőforrások állapotával kapcsolatos információkat nyújt. A jelenlegi és várt kritikus problémákra, amelyek hatással lehetnek az alkalmazás értesítést riasztásokat is létrehozhat. Tárolja a Service Health-rekordokat a [Azure tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), így az Activity Log Explorer ezeket is megtekintheti, és másolja őket a Log analyticsbe.
+[Az Azure Service Health](../../monitoring-and-diagnostics/monitoring-service-notifications.md) az Azure-szolgáltatások az előfizetésében, amelyet az alkalmazás és-erőforrások állapotával kapcsolatos információkat nyújt. A jelenlegi és várt kritikus problémákra, amelyek hatással lehetnek az alkalmazás értesítést riasztásokat is létrehozhat. Tárolja a Service Health-rekordokat a [Azure tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), így az Activity Log Explorer ezeket is megtekintheti, és másolja őket az Azure Monitor naplóira.
 
 ### <a name="azure-activity-log"></a>Azure-tevékenységnapló
 A [Azure-tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) együtt az Azure-erőforrások konfigurációs módosításai a rekordok service health rekordokat tartalmaz. A tevékenységnapló érhető el az összes Azure-erőforrások és jelöli a _külső_ megtekintése. A megadott típusú rekordok a tevékenységnaplóban ismertetett [Azure-tevékenységnapló eseménysémája](../../azure-monitor/platform/activity-log-schema.md).
 
-A tevékenységnapló egy bizonyos erőforrás esetén több erőforrást az Azure portal vagy a nézet naplóit a oldalán is megtekintheti a [Activity Log Explorer](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Ez különösen hasznos a naplóbejegyzéseket átmásolása a Log Analyticsben, hogy más figyelési adatokhoz való összevonásához. Is küldhet nekik segítségével más helyekre [az Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md).
+A tevékenységnapló egy bizonyos erőforrás esetén több erőforrást az Azure portal vagy a nézet naplóit a oldalán is megtekintheti a [Activity Log Explorer](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Ez különösen hasznos a naplóbejegyzéseket másolása az Azure Monitor egyesítheti a többi monitorozási adattal együtt. Is küldhet nekik segítségével más helyekre [az Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md).
 
 
 
@@ -56,7 +57,7 @@ Metrikák és erőforrás szintű diagnosztikai naplók kapcsolatos adatok megad
 
 
 ### <a name="metrics"></a>Mérőszámok
-A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](data-collection.md#metrics) , amely tükrözi a teljesítmény és működés. Az adott [metrikák változnak az olyan erőforrástípusok](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).  Elérhető a metrikaböngészőben és népszerű és más elemzéshez másolhatók a Log Analytics szolgáltatásba.
+A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](data-collection.md#metrics) , amely tükrözi a teljesítmény és működés. Az adott [metrikák változnak az olyan erőforrástípusok](../../azure-monitor/platform/metrics-supported.md).  Elérhető a metrikaböngészőben és népszerű és más elemzéshez másolhatók a Log Analytics szolgáltatásba.
 
 
 ### <a name="resource-diagnostic-logs"></a>Erőforrás-diagnosztikai naplók
@@ -65,7 +66,7 @@ Bár a tevékenységnapló egy Azure-erőforrások, erőforrásszintek simítás
 Diagnosztikai naplók nem közvetlenül tekintheti meg az Azure Portalon, de Ön is [küldje el azokat az Azure storage alacsony költségű](../../azure-monitor/platform/archive-diagnostic-logs.md) és exportálhatja őket [Eseményközpont](../../event-hubs/event-hubs-about.md) az átirányítás más szolgáltatások vagy [naplójába Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) elemzés céljából. Bizonyos erőforrások közvetlenül a Log Analytics írhat, míg mások írni egy storage-fiók mielőtt [importálja a Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Figyelési megoldások
- [Figyelési megoldások](../../azure-monitor/insights/solutions.md) nyújt további betekintést a művelet egy adott szolgáltatás vagy alkalmazás az adatok gyűjtéséhez. Hol lehet a Log analyticsbe gyűjtenek adatokat elemzi a a [lekérdezési nyelvet](../../azure-monitor/log-query/log-query-overview.md) vagy [nézetek](../../azure-monitor/platform/view-designer.md) , amelyek általában bekerülnek a megoldásban.
+ [Figyelési megoldások](../insights/solutions.md) nyújt további betekintést a művelet egy adott szolgáltatás vagy alkalmazás az adatok gyűjtéséhez. Azok összegyűjtötte az adatokat az Azure Monitor naplóira hol lehet elemezni az [lekérdezési nyelvet](../log-query/log-query-overview.md) vagy [nézetek](view-designer.md) , amelyek általában bekerülnek a megoldás.
 
 ## <a name="guest-operating-system"></a>Vendég operációs rendszer
 Az Azure-ban, az egyéb felhőkben, és a helyszíni számítási erőforrások figyeléséhez vendég operációs rendszer rendelkezik. Egy vagy több ügynökök telepítésére a figyelési eszközök, az Azure-szolgáltatások magukat az gyűjthet telemetriai adatokat a vendégről származó.
@@ -76,10 +77,10 @@ Az Azure-ban, az egyéb felhőkben, és a helyszíni számítási erőforrások 
 Az Azure Diagnostics bővítmény a naplók gyűjtésére a figyelés alapvető szintjének biztosít, és a teljesítményadatokat az ügyfél operációs rendszerét az Azure számítási erőforrásokat.   
 
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynököket
-Teljes körű figyelését és kezelését a Windows vagy Linux rendszerű virtuális gépek vagy fizikai számítógép kézbesíti a rendszer a Log Analytics-ügynökkel. Az ügynök csatlakozik-e a Log Analytics és a virtuális gépet futtathat az Azure, egy másik felhőalapú vagy helyszíni közvetlenül vagy a System Center Operations Manager keresztül, és lehetővé teszi, hogy az adatok gyűjtéséhez [adatforrások](../../azure-monitor/platform/agent-data-sources.md) , amikor konfigurálja vagy [figyelési megoldások](../../azure-monitor/insights/solutions.md) , amely a virtuális gépen futó alkalmazások további betekintést nyújtson.
+Teljes körű figyelését és kezelését a Windows vagy Linux rendszerű virtuális gépek vagy fizikai számítógép kézbesíti a rendszer a Log Analytics-ügynökkel. A virtuális gépet futtathat az Azure, egy másik felhőalapú vagy helyszíni és az ügynök csatlakozik az Azure-ba közvetlenül vagy a System Center Operations Manager figyelése, és lehetővé teszi az adatgyűjtést [adatforrások](agent-data-sources.md) során konfigurálja vagy [figyelési megoldások](../insights/solutions.md) , amely a virtuális gépen futó alkalmazások további betekintést nyújtson.
 
 ### <a name="dependency-agent"></a>Függőségi ügynök
-[A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../../azure-monitor/insights/vminsights-overview.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez integrálható a Log Analytics-ügynök gyűjti a virtuális gép és a külső folyamat függőségek futó folyamatok felderített adatait. Azt tárolja ezeket az adatokat a Log Analytics elérhetővé, és a felderített összekapcsolt összetevőket.  
+[A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez integrálható a Log Analytics-ügynök gyűjti a virtuális gép és a külső folyamat függőségek futó folyamatok felderített adatait. Azt tárolja ezeket az adatokat az Azure monitorban elérhetővé, és a felderített összekapcsolt összetevőket.  
 
 Az ügynökök és a felügyeleti követelményektől függően használandó közötti különbségekről további ismertetése: [figyelés ügynökök áttekintése](agents-overview.md).
 
@@ -90,7 +91,7 @@ Amellett, hogy az alkalmazás lehet írni a vendég operációs rendszer telemet
 
 
 ### <a name="application-data"></a>Alkalmazásadatok
-Amikor engedélyezi az Application Insights egy alkalmazás számára egy kialakítási csomag telepítése, gyűjti, metrikák és naplók a teljesítménnyel és az alkalmazás működésének kapcsolatos. Ez magában foglalja a lapmegtekintések alkalmazásokra irányuló kérések és kivételek kapcsolatos részletes információk. Az Application Insights összegyűjti az adatokat az Azure-mérőszámok és a Log Analytics tárolja. Adatok elemzésére szolgáló kiterjedt eszközöket tartalmaz, de a más forrásokból Metrikaböngészőt és a naplókeresések adatait is elemezheti.
+Amikor engedélyezi az Application Insights egy alkalmazás számára egy kialakítási csomag telepítése, gyűjti, metrikák és naplók a teljesítménnyel és az alkalmazás működésének kapcsolatos. Ez magában foglalja a lapmegtekintések alkalmazásokra irányuló kérések és kivételek kapcsolatos részletes információk. Az Application Insights összegyűjti az adatokat az Azure monitorban tárolja. Adatok elemzésére szolgáló kiterjedt eszközöket tartalmaz, de az eszközök, például a metrikaalapú analytics és a log analytics használatával más forrásokból származó adatokat is elemezheti.
 
 Is használhatja az Application Insights [hozzon létre egy egyéni metrika](../../application-insights/app-insights-api-custom-events-metrics.md).  Ez lehetővé teszi, hogy definiálja saját logika összeillesztésétől a numerikus értékek, és ezután tárolja ezt az értéket, amely a Metrikaböngésző érhető el, és használt más metrikákkal [automatikus skálázási](../../azure-monitor/platform/autoscale-custom-metric.md) és metrikákhoz kapcsolódó riasztások.
 
@@ -106,7 +107,7 @@ A standard csomagokhoz-alkalmazások, kívül szükség lehet egyéb telemetriai
 ![Egyéni adatok gyűjtése](media/data-sources/custom-collection.png)
 
 ### <a name="data-collector-api"></a>Data Collector API
-Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használatával a [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md). Ez lehetővé teszi, hogy hozzon létre egyéni figyelési helyzeteket, és kiterjesztheti az erőforrásokhoz, amelyek nem teszik elérhetővé a telemetriai adatok segítségével más adatforrások figyelését.
+Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használatával a [adatgyűjtő API](data-collector-api.md). Ez lehetővé teszi, hogy hozzon létre egyéni figyelési helyzeteket, és kiterjesztheti az erőforrásokhoz, amelyek nem teszik elérhetővé a telemetriai adatok segítségével más adatforrások figyelését.
 
 ## <a name="next-steps"></a>További lépések
 

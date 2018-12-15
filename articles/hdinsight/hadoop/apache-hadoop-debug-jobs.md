@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: d52a9411863962528eb0693f735ca0c4ee4c9991
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166506"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438812"
 ---
-# <a name="analyze-hadoop-logs"></a>Hadoop-naplók elemzése
+# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
 
-Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése Hadoop-fürtök a HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók megőrzése a tárfiókban, a fürt törlése után is.
+Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése az Apache Hadoop-fürtök a HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók megőrzése a tárfiókban, a fürt törlése után is.
 
 ## <a name="logs-written-to-azure-tables"></a>Azure-beli táblák írt naplók
 
@@ -101,9 +101,11 @@ Mostantól használhatja az Excel, a szűrési és rendezési szükség szerint.
 ## <a name="logs-written-to-azure-blob-storage"></a>Az Azure Blob Storage-írt naplók
 [A naplók az Azure-beli táblák írt](#log-written-to-azure-tables) abba, mi történik egy HDInsight-fürtöt egy szintjének megadása. Ezek a táblák azonban nem biztosítanak tevékenységszintű naplókat, amelyek akkor hasznosak, részletes elemzések kibontásáról további felmerülő problémákat. Adja meg a következő részletességi szintje, a HDInsight fürtök úgy vannak konfigurálva, a Blob Storage-fiók minden olyan feladat templeton eszközön keresztül végzett keresztül elküldött feladat naplók írni. Gyakorlatilag ez azt jelenti, hogy a Microsoft Azure PowerShell-parancsmagok vagy a .NET projekt beküldése API-k, nem az RDP/parancssori hozzáférést a fürthöz keresztül elküldött feladatok használatával elküldött feladatok. 
 
-A naplók megtekintéséhez lásd: [hozzáférés YARN-alkalmazásnaplók a Linux-alapú HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+A naplók megtekintéséhez lásd: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a Linux-alapú HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Protokoly aplikací kapcsolatos további információkért lásd: [leegyszerűsíti a felhasználó-naplók és a YARN hozzáférés](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
+Protokoly aplikací kapcsolatos további információkért lásd: [leegyszerűsíti a felhasználó-naplók és az Apache Hadoop YARN hozzáférés](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
 
 ## <a name="view-cluster-health-and-job-logs"></a>Fürt állapotának és a feladat naplóinak megtekintése
 ### <a name="access-the-ambari-ui"></a>Az Ambari felhasználói felületén eléréséhez
@@ -313,6 +315,6 @@ Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDIn
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ambari-nézetek használata a HDInsight a Tez-feladatok hibakereséséhez](../hdinsight-debug-ambari-tez-view.md)
-* [Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight-fürtök kezelése az Ambari webes felületével](../hdinsight-hadoop-manage-ambari.md)
+* [Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez](../hdinsight-debug-ambari-tez-view.md)
+* [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)

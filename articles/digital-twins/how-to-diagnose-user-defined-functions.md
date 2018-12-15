@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 85a85fa0a110ba91a423b1be4a24000340d25f8f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966840"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413013"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins problémák hibakeresése
 
@@ -42,7 +42,7 @@ Telemetria küldése után nyissa meg Azure Log Analytics használatával a napl
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | Érték lekérdezése | Csere erre |
@@ -53,7 +53,7 @@ Ha a felhasználó által definiált függvény jelentkezik, ezeket a naplókat 
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
 Hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Ismerkedés a lekérdezések](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).

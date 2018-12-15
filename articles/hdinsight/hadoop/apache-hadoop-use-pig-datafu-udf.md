@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7422e7d91edc9c190bee4300717b3d4c6fe8186b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017851"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436218"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>Az Apache DataFu a Pig használata a HDInsight az Apache Pig
 
@@ -29,21 +29,21 @@ A DataFu Pig további információkért lásd: [ https://datafu.apache.org/ ](ht
 
 * Egy Azure HDInsight-fürt (Linux vagy Windows-alapú)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Egy alapszintű ismeretét [a Pig használata a HDInsight](hdinsight-use-pig.md)
+* Egy alapszintű ismeretét [a HDInsight Apache Pig használatával](hdinsight-use-pig.md)
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight DataFu telepítése
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > DataFu 3.3 és magasabb szintű Linux-alapú fürtök verziója, valamint a Windows-alapú fürtök van telepítve. Nincs telepítve a Linux-alapú fürtök 3.3-as, mint korábban.
 >
 > Ha egy Windows-alapú fürt vagy egy magasabb, mint 3.3-as verziója Linux-alapú fürtöt használ, akkor kihagyhatja ezt a szakaszt.
 
 DataFu letölthető, és telepítve van a Maven tárházból. Használja a következő lépések szükségesek, és adja hozzá a HDInsight-fürt verzió azonosításához:
 
-> [!WARNING]
+> [!WARNING]  
 > DataFu verzióiban előfordulhat, hogy követelményei, amely a HDInsight nem teljesülnek. Például ha DataFu egy régebbi verzióját használja, szükség lehet a Pig egy eltérő verziójú, mint a HDInsight tartalmát is.
 
 ### <a name="find-a-version"></a>A verzió megkereséséhez
@@ -62,7 +62,7 @@ DataFu letölthető, és telepítve van a Maven tárházból. Használja a köve
 
 2. A következő paranccsal töltse le a DataFu jar-fájlt a wget segédprogrammal:
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A hivatkozás a parancsban cserélje le a korábban vágólapra másolt URL-CÍMÉT.
 
     ```
@@ -71,21 +71,21 @@ DataFu letölthető, és telepítve van a Maven tárházból. Használja a köve
 
 3. Ezután feltöltheti a fájlt a HDInsight-fürthöz tartozó alapértelmezett tároló. Helyezi el a fájlt az alapértelmezett tároló lehetővé teszi az összes csomóponton a fürtben.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Cserélje le a fájl nevét a verziószámot a letöltött verzió.
 
     ```
     hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Az előző parancs tárolja a fájlt `/example/jars` mivel ez a könyvtár már létezik a fürttároló. Használhat bármilyen olyan helyre, a HDInsight-fürt tárhely kívánja.
 
 ## <a name="use-datafu-with-pig"></a>A datafu és a Pig együttes
 
 A jelen szakaszban ismertetett lépések feltételezik, hogy Ön ismeri a Pig és HDInsight használatakor. A Pig használata a HDInsight további információkért lásd: [a Pig használata a HDInsight-](hdinsight-use-pig.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha manuálisan telepítette az előző szakaszban ismertetett lépések DataFu, regisztrálnia kell, mielőtt használja.
 >
 > * Ha a fürt használja az Azure Storage, használjon egy `wasb://` elérési útja. Például: `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
@@ -140,4 +140,4 @@ A következő kimenet állít elő:
 További információ a DataFu és a Pig a következő dokumentumokban talál:
 
 * [Ismerkedés az Apache DataFu Pig](https://datafu.apache.org/docs/datafu/getting-started.html).
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)

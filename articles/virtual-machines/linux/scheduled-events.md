@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744707"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437265"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: Ütemezett események a Linux rendszerű virtuális gépekhez
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: A Linux rendszerű virtuális gépeken ütemezett események
 
 Az ütemezett események az Azure Metadata szolgáltatás, amely révén az alkalmazás előkészítése a virtuális gép (VM) karbantartási idő. Információt ad a közelgő karbantartásokról események (például az újraindítás), hogy az alkalmazás előkészítése őket, és korlátozza megszakítása. Érhető el minden Azure virtuális gépek esetében, beleértve a PaaS és IaaS Windows és Linux rendszereken egyaránt. 
 
@@ -211,6 +211,6 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>További lépések 
 - Tekintse meg [ütemezett események az Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) bemutató megtekintéséhez. 
-- Tekintse át az ütemezett eseményekről Kódminták a [Azure példány metaadatok ütemezett események Github-adattár](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
+- Tekintse át az ütemezett eseményekről Kódminták a [Azure példány metaadatok ütemezett események GitHub-adattár](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - További információ az elérhető API-k a [Instance Metadata szolgáltatás](instance-metadata-service.md).
 - Ismerje meg [tervezett karbantartás az Azure-ban Linux rendszerű virtuális gépek](planned-maintenance.md).

@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: a1a31ec7ee0d1daea9f178e51dc860279d3787ec
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615347"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438013"
 ---
 # <a name="routing-events-and-messages"></a>Események és üzenetek útválasztása
 
@@ -23,9 +23,9 @@ IoT-megoldások gyakran több hatékony szolgáltatás, amely tartalmazza a tár
 
 Az Azure digitális Twins IoT-események integrálása más Azure-szolgáltatások vagy alkalmazások két lehetőséget kínál:
 
-* **Útválasztási Azure digitális Twins események**: a térbeli objektum graph a módosításokat, a telemetriai adatokat fogadott, vagy a felhasználó által definiált függvény, amely létrehoz egy előre meghatározott feltételek alapján értesítést is aktiválhatja az Azure digitális Twins eseményeket. A felhasználók elküldhetik ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus-üzenettémakörök](https://azure.microsoft.com/services/service-bus/), vagy [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) további feldolgozás céljából.
+* **Útválasztási Azure digitális Twins események**: A térbeli objektum graph a módosításokat, a telemetriai adatokat fogadott, vagy a felhasználó által definiált függvény, amely létrehoz egy előre meghatározott feltételek alapján értesítést is aktiválhatja az Azure digitális Twins eseményeket. A felhasználók elküldhetik ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus-üzenettémakörök](https://azure.microsoft.com/services/service-bus/), vagy [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) további feldolgozás céljából.
 
-* **Útválasztási eszköztelemetria**: útválasztási események mellett az Azure digitális Twins is irányíthatja nyers eszköz telemetriai üzeneteket az Event hubs szolgáltatásba a további információkhoz és elemzésekhez juthat. Az ilyen típusú üzenetek nem dolgozza fel az Azure digitális Twins. És csak az event hubs már továbbítva.
+* **Útválasztási eszköztelemetria**: Útválasztási események mellett az Azure digitális Twins is irányíthatja nyers eszköz telemetriai üzeneteket az Event hubs szolgáltatásba a további információkhoz és elemzésekhez juthat. Az ilyen típusú üzenetek nem dolgozza fel az Azure digitális Twins. És csak az event hubs már továbbítva.
 
 A felhasználók megadhatják a kimenő forgalom egy vagy több végpontot küldjön ki eseményt vagy üzenetek továbbítására. Események és üzeneteket küld a végpontokhoz ezek előre meghatározott útválasztási beállítások szerint. Más szóval a felhasználók megadhatnak egy bizonyos végpont graph művelet események fogadásához egy másik eszköz telemetriai események fogadásához, és így tovább.
 

@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 69eeadd8252d20dd25ac6d0abbbf0c6c158383d5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633342"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438625"
 ---
 # <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>A távoli asztali kapcsolat Apache Pig-feladatok futtatása
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Ez a dokumentum egy forgatókönyv biztosít az Apache Pig paranccsal futtassa a Pig Latin utasításokkal egy távoli asztali kapcsolaton keresztül egy Windows-alapú HDInsight-fürthöz. A Pig Latin adatátalakítások, azok MapReduce-alkalmazások létrehozása helyett leképezéséhez, és csökkentheti a functions teszi lehetővé.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A távoli asztal csak akkor használható a Windows operációs rendszert használó HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> A HDInsight 3.4 vagy újabb, lásd: [a Pig használata a HDInsight és az SSH](apache-hadoop-use-pig-ssh.md) információk interaktív módon Pig-feladatok közvetlenül a fürtön futó a parancssorból.
+> A HDInsight 3.4 vagy újabb, lásd: [Apache Pig használata a HDInsight és az SSH](apache-hadoop-use-pig-ssh.md) információk interaktív módon Pig-feladatok közvetlenül a fürtön futó a parancssorból.
 
 ## <a id="prereq"></a>Előfeltételek
 A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége.
@@ -78,7 +78,7 @@ A távoli asztal engedélyezése a HDInsight-fürt, majd csatlakozhat az utasít
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
-   > [!NOTE]
+   > [!NOTE]  
    > Az adatok fájlban található a megadott könyvtárban tárolt **. rész – nnnnn**. Ha a könyvtár már létezik, egy hibaüzenetet fog kapni.
    >
    >
@@ -119,9 +119,9 @@ Amint láthatja, a Pig parancs lehetővé teszi interaktív módon MapReduce mű
 ## <a id="nextsteps"></a>Következő lépések
 A HDInsight Pig általános tájékoztatást:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)

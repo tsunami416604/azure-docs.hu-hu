@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994142"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434008"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - architektúra ajánlott eljárásai
 
@@ -75,7 +75,9 @@ A számítási Azure-régióban elválasztása a számítási és tárolási já
 
 ## <a name="use-external-metadata-stores"></a>Külső metaadat-tárolók használata
 
-Vannak, amelyek együttműködnek a HDInsight-fürtök két fő metaadattárakat: [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/). A Hive-metaadattár a központi séma tárház, amely a Hadoop, Spark, az LLAP, beleértve a Presto adatokat feldolgozó motorokkal, és az Apache Pig által használható. Az Oozie-metaadattár tárolja a folyamatban lévő és befejezett Hadoop-feladatok ütemezési adatait és állapotát.
+
+Vannak, amelyek együttműködnek a HDInsight-fürtök két fő metaadattárakat: [Az Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/). A Hive-metaadattár a központi séma tárház, amely a Hadoop, Spark, az LLAP, beleértve a Presto adatokat feldolgozó motorokkal, és az Apache Pig által használható. Az Oozie-metaadattár tárolja a folyamatban lévő és befejezett Hadoop-feladatok ütemezési adatait és állapotát.
+
 
 HDInsight az Azure SQL Database, az Oozie és a Hive-metaadattárak. A HDInsight-fürtök metaadattár beállításához két módja van:
 

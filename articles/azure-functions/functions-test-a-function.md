@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 90eac2fda46dc5fbfff791e1fc0afb9858aa27a4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103455"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408034"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -93,11 +93,11 @@ namespace Functions.Tests
 
 A `ListLogger` osztály által szerződésben vállalt módon valósítja meg az alábbi tagokat az `ILogger` felületen:
 
-- **BeginScope**: hatókörök informatívabbá a naplózást. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) osztály, hogy a függvény tesztelése.
+- **BeginScope**: Hatókörök hozzáadása a naplózási környezetben. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) osztály, hogy a függvény tesztelése.
 
-- **IsEnabled**: alapértelmezett `false` van megadva.
+- **IsEnabled**: Alapértelmezés szerint `false` van megadva.
 
-- **Napló**: ezt a módszert használja a megadott `formatter` függvényt az üzenet formázásához és az eredményül kapott szöveg hozzáadja a `Logs` gyűjtemény.
+- **Napló**: Ezt a módszert használja a megadott `formatter` függvényt az üzenet formázásához és az eredményül kapott szöveg hozzáadja a `Logs` gyűjtemény.
 
 A `Logs` gyűjteménye egy példányát `List<string>` és a konstruktorban inicializálva van.
 
@@ -182,9 +182,9 @@ A `TestFactory` osztálya határozza meg a következő tagok:
 
 - **CreateDictionary**: Ez a módszer egy kulcs/érték pár fogadja argumentumként, és adja vissza egy új `Dictionary` létrehozásához használt `QueryCollection` a lekérdezési karakterlánc értékeit jelölik.
 
-- **CreateHttpRequest**: Ezzel a módszerrel hoz létre egy HTTP-kérelem inicializálása a megadott lekérdezési karakterlánc paraméterei.
+- **CreateHttpRequest**: Ez a módszer létrehoz egy HTTP-kérelem inicializálása a megadott lekérdezési karakterlánc paraméterei.
 
-- **CreateLogger**: naplózó típusa alapján, a metódus visszatérése tesztelésére naplózó osztály. A `ListLogger` nyomon követi a naplózott üzenetek tesztekben kiértékelésére.
+- **CreateLogger**: Naplózó típusa alapján, ezzel a módszerrel a teszteléshez használt naplózó osztály adja vissza. A `ListLogger` nyomon követi a naplózott üzenetek tesztekben kiértékelésére.
 
 Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **FunctionsTests.cs** , és adja meg a a következő kódot:
 
@@ -231,7 +231,7 @@ Ez az osztály megvalósított tagjai:
 
 - **Http_trigger_should_return_known_string**: Ez a vizsgálat kérést hoz létre a lekérdezés-karakterlánc értékét `name=Bill` egy HTTP-függvényt, és ellenőrzi, hogy a várt választ adja vissza.
 
-- **Http_trigger_should_return_string_from_member_data**: Ez a vizsgálat xUnit attribútumok használatával biztosítja a mintaadatokat a HTTP-függvénynek.
+- **Http_trigger_should_return_string_from_member_data**: Ez a vizsgálat xUnit attribútumok mintaadatokat a HTTP-függvényt használ.
 
 - **Timer_should_log_message**: Ez a vizsgálat létrehoz egy példányt a `ListLogger` , és átadja egy időzítő függvények. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
 
@@ -357,6 +357,6 @@ Ezután állítson be egy töréspontot a teszt- és nyomja le az **F5**.
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan írhat az Ön függvényeinek automatizált teszteket, folytassa a ezeket az erőforrásokat:
-
+- [Egy nem HTTP által aktivált függvény manuális futtatása](./functions-manually-run-non-http.md)
 - [Az Azure Functions hibakezelés](./functions-bindings-error-pages.md)
 - [Azure-függvény Event Grid eseményindító helyi hibakeresés](./functions-debug-event-grid-trigger-local.md)

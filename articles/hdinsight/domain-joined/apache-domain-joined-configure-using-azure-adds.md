@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5e5b8320459561ac2dbbf72a812e29e837e08cd6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166659"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436228"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -22,13 +22,13 @@ Vállalati biztonsági csomag (ESP) fürtök többfelhasználós hozzáférést 
 
 Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Azure Active Directory Domain Services (Azure AD DS) használatával.
 
->[!NOTE]
->ESP általánosan elérhető a HDI 3.6 a Spark, interaktív és Apache Hadoop. A HBase és a Kafka fürttípusok ESP az előzetes verzióban.
+>[!NOTE]  
+>ESP általánosan elérhető a HDI 3.6 Apache Spark, interaktív és Apache Hadoop. Az Apache HBase- és Apache Kafka fürttípusok ESP az előzetes verzióban.
 
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 
-> [!NOTE]
-> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Store (ADLS) Gen1 és Gen2, tiltsa le a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt kell. Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
+> [!NOTE]  
+> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, tiltsa le a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt kell. Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
 
 Azure ad-Tartományi engedélyezése előfeltétele az ESP használata egy HDInsight-fürt létrehozása előtt. További információkért lásd: [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
@@ -66,7 +66,7 @@ A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az
 
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
-> [!NOTE]
+> [!NOTE]  
 > Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. Tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) további részletekért.
 
 Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
@@ -114,5 +114,5 @@ A létrehozott felügyelt identitás lehet kiválasztani az a felhasználó ált
 
 
 ## <a name="next-steps"></a>További lépések
-* Hive-házirendek konfigurálása és Hive-lekérdezések futtatása: [Hive-házirendek konfigurálása a HDInsight-fürtök ESP](apache-domain-joined-run-hive.md).
-* Az SSH használatával csatlakozhat a HDInsight-fürtök ESP, lásd: [az SSH használata a Linux-based Hadoop on HDInsight Linux, Unix vagy OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Hive-házirendek konfigurálása és Hive-lekérdezések futtatása: [Apache Hive-házirendek konfigurálása a HDInsight-fürtök ESP](apache-domain-joined-run-hive.md).
+* Az SSH használatával csatlakozhat a HDInsight-fürtök ESP, lásd: [az SSH használata a Linux-alapú Apache Hadooppal a HDInsight Linux, Unix vagy OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016175"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409921"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférési aláírások használatával a HDInsight adatokhoz hozzáférésének korlátozása
 
 HDInsight a fürthöz társított Azure Storage-fiókokat az adatok teljes hozzáféréssel rendelkezik. A blob-tároló a közös hozzáférési aláírások használatával korlátozza a hozzáférést az adatokat. A közös hozzáférésű Jogosultságkódok (SAS) érhetők el Azure storage-fiókot, amely lehetővé teszi, hogy az adatokhoz való hozzáférés korlátozására. Például villámgyors csak olvasható adatok.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az Apache Ranger segítségével megoldások érdemes lehet tartományhoz csatlakoztatott HDInsight. További információkért lásd: a [tartományhoz csatlakoztatott HDInsight konfigurálása](./domain-joined/apache-domain-joined-configure.md) dokumentumot.
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight a fürthöz az alapértelmezett tároló teljes hozzáféréssel kell rendelkeznie.
 
 ## <a name="requirements"></a>Követelmények
@@ -34,9 +34,9 @@ HDInsight a fürthöz társított Azure Storage-fiókokat az adatok teljes hozz�
   * A Visual Studio 2013, 2015 vagy 2017 verziót kell lennie.
   * Python 2.7-es vagy újabb verzióját kell lennie.
 
-* Egy Linux-alapú HDInsight-fürt vagy [Azure PowerShell-lel] [ powershell] – Ha rendelkezik meglévő Linux-alapú fürt, az Ambari segítségével egy közös hozzáférésű Jogosultságkód hozzáadni a fürthöz. Ha nem, az Azure PowerShell segítségével hozzon létre egy fürtöt, és a egy közös hozzáférésű Jogosultságkód hozzáadása a fürt létrehozása során.
+* Egy Linux-alapú HDInsight-fürt vagy [Azure PowerShell-lel] [ powershell] – Ha rendelkezik meglévő Linux-alapú fürt, az Apache Ambari használhatja egy közös hozzáférésű Jogosultságkód hozzáadása a fürthöz. Ha nem, az Azure PowerShell segítségével hozzon létre egy fürtöt, és a egy közös hozzáférésű Jogosultságkód hozzáadása a fürt létrehozása során.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * A példa fájlt [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Ez a tárház a következő elemeket tartalmazza:
@@ -49,9 +49,9 @@ HDInsight a fürthöz társított Azure Storage-fiókokat az adatok teljes hozz�
 
 Kétféle közös hozzáférési aláírások van:
 
-* Az ad hoc: A kezdési idő, lejárati időpontot és engedélyeket a SAS az összes megadott SAS URI-n.
+* Ad hoc: A kezdési idő, lejárati időpontot és engedélyeket a SAS az összes megadott SAS URI-n.
 
-* Tárolt hozzáférési szabályzatot: egy tárolt hozzáférési szabályzat van definiálva egy erőforrás-tárolón, például egy blob-tárolóba. A házirend legalább egy közös hozzáférési aláírások megkötések kezelésére használható. SAS társítása egy tárolt hozzáférési szabályzatot, az SAS örökli a megkötések - a kezdési idő, lejárati idő és a tárolt hozzáférési szabályzat definiált - engedélyek.
+* Tárolt hozzáférési szabályzatot: Egy tárolt hozzáférési szabályzat van definiálva egy erőforrás-tárolón, például egy blob-tárolóba. A házirend legalább egy közös hozzáférési aláírások megkötések kezelésére használható. SAS társítása egy tárolt hozzáférési szabályzatot, az SAS örökli a megkötések - a kezdési idő, lejárati idő és a tárolt hozzáférési szabályzat definiált - engedélyek.
 
 A különbség a két formáját fontos egyik legfontosabb előny a: visszavont tanúsítványok. SAS egy URL-címe, így bárki, aki szerzi be a SAS használatával is, először aki kérte, függetlenül. Ha SAS nyilvánosan közzé van téve, használat szerint, a világ bármely részéről. Elosztott SAS nem érvényes, amíg a négy dolog történik:
 
@@ -66,7 +66,7 @@ A különbség a két formáját fontos egyik legfontosabb előny a: visszavont 
 
 4. A fiók SAS létrehozásához használt kulcs újragenerálása van. A kulcs újragenerálása hatására a minden alkalmazás, amely a korábbi kulcs használatával a hitelesítése sikertelen legyen. Frissítse az összes összetevő az új kulccsal.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A fiókkulcs aláírásának létrehozására használt társítva egy közös hozzáférésű jogosultságkód URI-t, és a társított tárolt hozzáférési szabályzat (ha van). Ha nincs tárolt hozzáférési szabályzat van megadva, a csak visszavonása a közös hozzáférésű jogosultságkód módja a fiókkulcs módosításához.
 
 Javasoljuk, hogy mindig használjon tárolt hozzáférési szabályzatok. Tárolt szabályzatok használatakor az aláírások visszavonása, vagy kiterjesztheti a lejárati dátum, igény szerint. Ez a dokumentum használatát a lépések tárolt hozzáférési szabályzatok SAS előállítása.
@@ -81,13 +81,13 @@ A közös hozzáférésű Jogosultságkódokat további információkért lásd:
 
 3. Válassza ki **beállítások** , és adja hozzá az értékeket az alábbi bejegyzéseket:
 
-   * StorageConnectionString: Szeretne létrehozni egy tárolt házirend- és az SAS-tároló tárfiók kapcsolati karakterláncát. A formátum `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` ahol `myaccount` a tárfiók neve és `mykey` a tárfiók kulcsa.
+   * StorageConnectionString: Azt szeretné, hozzon létre egy tárolt házirend és az SAS-tároló tárfiók kapcsolati karakterláncát. A formátum `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` ahol `myaccount` a tárfiók neve és `mykey` a tárfiók kulcsa.
 
    * ContainerName: A tároló, amely korlátozza a hozzáférést a kívánt storage-fiókban.
 
    * SASPolicyName: A nevét, a tárolt házirend létrehozásához.
 
-   * FileToUpload: A fájl elérési útja a tárolóba feltöltött.
+   * FileToUpload: A tárolóba feltöltött fájl elérési útja.
 
 4. Futtassa a projektet. Az alábbi szöveghez hasonló információt SAS létrehozása után jelenik meg:
 
@@ -99,15 +99,15 @@ A közös hozzáférésű Jogosultságkódokat további információkért lásd:
 
 1. Nyissa meg a SASToken.py fájlt, és módosítsa a következő értékeket:
 
-   * a házirend\_name: A nevét, a tárolt házirend létrehozásához.
+   * a házirend\_neve: A nevét, a tárolt házirend létrehozásához.
 
-   * tárolási\_fiók\_name: a tárfiók nevére.
+   * tárolási\_fiók\_neve: A tárfiók neve.
 
-   * tárolási\_fiók\_kulcs: az a tárfiók kulcsát.
+   * tárolási\_fiók\_kulcs: A tárfiók kulcsa.
 
-   * tárolási\_tároló\_name: A tároló, amely korlátozza a hozzáférést a kívánt storage-fiókban.
+   * tárolási\_tároló\_neve: A tároló, amely korlátozza a hozzáférést a kívánt storage-fiókban.
 
-   * Példa\_fájl\_elérési útja: a tárolóba feltöltött fájl elérési útját.
+   * Példa\_fájl\_elérési útja: A tárolóba feltöltött fájl elérési útja.
 
 2. Futtassa a szkriptet. A parancsfájl lefutásakor megjeleníti a SAS-jogkivonatát az alábbi szöveghez hasonló:
 
@@ -177,7 +177,7 @@ Egy HDInsight-fürt által használt SAS létrehozása egy példát tartalmaz a 
 
     Egy Linux-alapú fürt létrehozásakor egy SSH-felhasználói fiók nevét és a jelszó megerősítését. Ez a fiók segítségével távolról jelentkezzen be a fürthöz.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Ha a HTTP/HTTPS vagy SSH-felhasználónevet és jelszót kér, meg kell adnia egy jelszót, amely megfelel a következő feltételeknek:
    >
    > * Legalább 10 karakter hosszúságúnak kell lennie.
@@ -200,7 +200,7 @@ Ha rendelkezik meglévő Linux-alapú fürt, adhat hozzá az SAS a **hely** -kon
 4. Bontsa ki a **egyéni hely** szakaszban, majd görgessen lefelé a végfelhasználók, és válassza a **tulajdonság hozzáadása...**  hivatkozásra. A következő értékeket használja a **kulcs** és **érték** mezők:
 
    * **Key**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
-   * **Érték**: az SAS a korábban már futtatta a C#- vagy Python kérelem által visszaadott
+   * **Érték**: A SAS által visszaadott a C# vagy a korábban futtatott Python-alkalmazás
 
      Cserélje le **CONTAINERNAME** a C#- vagy SAS-alkalmazással használt tároló nevét. Cserélje le **STORAGEACCOUNTNAME** a a használt tárfiók nevét.
 
@@ -208,7 +208,7 @@ Ha rendelkezik meglévő Linux-alapú fürt, adhat hozzá az SAS a **hely** -kon
 
     Kattintson a **OK** Ha végrehajtotta a változásokat.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > A módosítás előtt újra kell indítania több szolgáltatást.
 
 6. Az Ambari webes felhasználói felületen válassza **HDFS** a bal oldali listából, majd **indítsa újra az összes érintett** a a **szolgáltatás műveletek** legördülő listában a jobb oldalon. Amikor a rendszer kéri, válassza ki a __megerősítése indítsa újra az összes__.
@@ -277,7 +277,7 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 
 ### <a name="a-task-was-canceled"></a>A feladatot törölték
 
-**A jelenség**: a PowerShell-szkripttel fürtöt hoz létre, amikor jelenhet meg a következő hibaüzenetet kapja:
+**A jelenség**: Ha egy fürtöt a PowerShell-parancsfájl használatával hoz létre, a következő hibaüzenet jelenhet meg:
 
     New-AzureRmHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
@@ -288,7 +288,7 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 
 **OK**: Ez a hiba akkor fordulhat elő, ha az SSH-felhasználó használata egy jelszót a rendszergazdai/HTTP-felhasználó, a fürt számára, vagy (Linux-alapú fürtök).
 
-**Feloldási**: használjon olyan jelszót, amely megfelel a következő feltételeknek:
+**Feloldási**: Használjon olyan jelszót, amely megfelel a következő feltételeknek:
 
 * Legalább 10 karakter hosszúságúnak kell lennie.
 * Legalább egy számjegyet kell tartalmaznia.
@@ -299,8 +299,8 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 
 Most, hogy, hogyan korlátozott hozzáférésű tár hozzáadása a HDInsight-fürthöz, ismerje meg, hogyan más adatokkal szeretne dolgozni a fürtön:
 
-* [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

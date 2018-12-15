@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata – Azure HDInsight '
+title: 'Oktatóanyag: Az Apache Kafka Producer és Consumer API-k – Azure HDInsight használata '
 description: Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával. Ez az oktatóanyag ezen API-k használatát mutatja be egy Java-alkalmazásból futtatott Kafka on HDInsighttal.
 services: hdinsight
 author: dhgoelmsft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313820"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413353"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -49,7 +49,7 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
 
 * `JAVA_HOME` – arra a könyvtárra mutasson, ahová a JDK telepítve lett.
 * `PATH` – a következő elérési utakat kell tartalmaznia:
-  
+
     * `JAVA_HOME` (vagy ezzel egyenértékű elérési út).
     * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési út).
     * A Maven telepítési könyvtára.
@@ -62,16 +62,16 @@ Az oktatóanyag elvégzéséhez az Apache Kafka on HDInsight 3.6-os verziójára
 
 A példaalkalmazás helye: [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) (`Producer-Consumer` alkönyvtár). Az alkalmazás elsődlegesen négy fájlból áll:
 
-* `pom.xml`: Ez a fájl határozza meg a projektfüggőségeket, a Java-verziót és a csomagolási módszereket.
-* `Producer.java`: Ez a fájl véletlenszerű mondatokat küld a Kafkának a Producer API használatával.
-* `Consumer.java`: Ez a fájl a Consumer API-t használatával olvas ki adatokat a Kafkából, és az STDOUT-ba küldi el azokat.
-* `Run.java`: A Producer- és Consumer-kód futtatásához a rendszer a parancssori felületet használja.
+* `pom.xml`: Ezt a fájlt a projekt függőségeit, Java-verzió és a csomagolási határozza meg.
+* `Producer.java`: Ezt a fájlt küld a véletlenszerű mondatokat Kafka az előállítói API-t.
+* `Consumer.java`: Ez a fájl gridre bocsáthatja ki az STDOUT és az adatok olvasása a Kafkából a fogyasztói API-t használja.
+* `Run.java`: A parancssori felület segítségével az előállítói és fogyasztói kódot futtatta.
 
 ### <a name="pomxml"></a>Pom.xml
 
 A `pom.xml` fájl fontosabb elemei a következők:
 
-* Függőségek: Ez a projekt a Kafka Producer és Consumer API-jaira támaszkodik, amelyeket a `kafka-clients` csomag tartalmaz. Ezt a függőséget a következő XML-kód határozza meg:
+* Függőségek: Ez a projekt támaszkodik a Kafka producer és consumer API-k által biztosított a `kafka-clients` csomagot. Ezt a függőséget a következő XML-kód határozza meg:
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
@@ -85,14 +85,14 @@ A `pom.xml` fájl fontosabb elemei a következők:
     > [!NOTE]
     > A `${kafka.version}` bejegyzés a `pom.xml` fájl `<properties>..</properties>` szakaszában van meghatározva, és a HDInsight-fürt Kafka-verziójához van konfigurálva.
 
-* Beépülő modulok: A Maven beépülő modulok különböző képességekkel rendelkeznek. Ebben a projektben a következő beépülő modulokat használjuk:
+* Beépülő modulok: Maven beépülő modulok különféle képességeket biztosítanak. Ebben a projektben a következő beépülő modulokat használjuk:
 
-    * `maven-compiler-plugin`: Ezzel állítható a projekt által használt Java-verzió a 8-as verzióra. A HDInsight 3.6 ezt a Java-verziót használja.
-    * `maven-shade-plugin`: Ez az alkalmazást és az esetleges függőségeket tartalmazó uber JAR-fájl létrehozására használható. Az alkalmazás belépési pontjának beállítására is használható, így közvetlenül futtathatja a JAR-fájlt anélkül, hogy a fő osztályt meg kellene határoznia.
+    * `maven-compiler-plugin`: Használja a projekt 8 által használt Java-verzió beállításához. A HDInsight 3.6 ezt a Java-verziót használja.
+    * `maven-shade-plugin`: Az uber jar, amely tartalmazza ezt az alkalmazást, valamint a függőségek létrehozásához használt. Az alkalmazás belépési pontjának beállítására is használható, így közvetlenül futtathatja a JAR-fájlt anélkül, hogy a fő osztályt meg kellene határoznia.
 
 ### <a name="producerjava"></a>Producer.java
 
-A Producer a Kafka közvetítő gazdagépeivel (feldolgozó csomópontjaival) kommunikál, és adatok küld egy Kafka-témakörnek. A következő kódrészlet a [GitHub-adattárban](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) található [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) fájlból származik, és azt mutatja be, hogyan állíthatók be a Producer tulajdonságai:
+A Producer a Kafka közvetítő gazdagépeivel (feldolgozó csomópontjaival) kommunikál, és adatok küld egy Kafka-témakörnek. A rendszer a következő kódrészletet a a [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) fájlt a [GitHub-adattár](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) , és bemutatja, hogyan állítsa be a gyártó tulajdonságokat:
 
 ```java
 Properties properties = new Properties();
@@ -145,11 +145,11 @@ A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/b
     A parancs létrehozza a `target` nevű könyvtárat, amely a `kafka-producer-consumer-1.0-SNAPSHOT.jar` nevű fájlt tartalmazza.
 
 3. Az alábbi parancsokkal másolja a `kafka-producer-consumer-1.0-SNAPSHOT.jar` fájlt a HDInsight-fürtbe:
-   
+
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-   
+
     Cserélje le az **SSHUSER** elemet a fürt SSH-felhasználójára, illetve a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
 
 ## <a id="run"></a> A példa futtatása
@@ -190,11 +190,11 @@ A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/b
     ```
 
 4. Az előállító futásának befejeződését követően használja az alábbi parancsot a témakörből történő olvasáshoz:
-   
+
     ```bash
     java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
-   
+
     A rendszer megjeleníti a beolvasott rekordokat a rekordok számával együtt.
 
 5. Használja a __Ctrl + C__ billentyűparancsot a fogyasztóból történő kilépéshez.
@@ -204,7 +204,7 @@ A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/b
 A Kafka-fogyasztók egy fogyasztói csoportot használnak a rekordok olvasásakor. Ugyanazon csoport használata több fogyasztó esetén a terhelés szempontjából kiegyensúlyozott olvasást eredményez a témakörökből történő olvasáskor. A csoport mindegyik fogyasztója a rekordok egy részét kapja meg.
 
 A fogyasztó alkalmazás elfogadja a csoportazonosítóként használt paramétert. Az alábbi parancs például elindít egy fogyasztót a `mygroup` csoportazonosítóval:
-   
+
 ```bash
 java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```

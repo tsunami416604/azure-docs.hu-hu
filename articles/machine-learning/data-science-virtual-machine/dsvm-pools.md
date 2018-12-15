@@ -14,36 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 12/10/2018
 ms.author: gokuma
-ms.openlocfilehash: acae59922f5a46f059e19db6865491f5186139f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 648b0818f07aca8763fa4af01380076ae307b0a2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103404"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408952"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Az adatelemző virtuális gépek megosztott készlet létrehozása
 
 Ez a cikk ismerteti, hogyan hozhat létre egy megosztott készletet az adatelemző virtuális gépek (Dsvm) egy csapat használatára. Közös használatának előnyei jobb erőforrás-használatot, megosztása és együttműködés megkönnyítése és hatékonyabb DSVM-erőforrások kezelését. 
 
-Számos módszer és technológiák használatával Dsvm készletét hozza létre. Ez a cikk a kötegelt feldolgozásra és interaktív virtuális gépek készletein foglalkozik.
-
-## <a name="batch-processing-pool"></a>Kötegelt feldolgozási készlet
-Ha szeretne beállítása Dsvm készletét, főleg offline kötegelt feladatok végrehajtásához, használhatja a [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) vagy [Azure Batch](https://docs.microsoft.com/azure/batch/) szolgáltatás. Ez a cikk az Azure Batch AI összpontosít.
-
-Az Azure Batch AI-rendszerképeket is támogatott, az Ubuntu kiadása a dsvm-hez. Az Azure CLI vagy a Python SDK-t, ahol az Azure Batch AI-fürtöt hoz létre, megadhatja a `image` paraméter, illetve beállíthatja `UbuntuDSVM`. Kiválaszthatja, hogy milyen típusú feldolgozó csomópontok kívánt: GPU-alapú példányok csak CPU-példányok, a processzorokat és memóriát száma és a egy [számos választási lehetőség a Virtuálisgép-példányok](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) elérhető az Azure-ban. 
-
-Használatakor a Ubuntu DSVM-rendszerkép a Batch AI GPU-alapú csomópont összes szükséges GPU-illesztők és deep learning-keretrendszerek előre telepítve. Az előtelepítési menti, jelentős időt a batch-csomópontok. Sőt Ha fejleszt egy Ubuntu DSVM az interaktív módon, láthatja, hogy a Batch AI csomópontok pontosan a azonos beállítás és konfiguráció a környezet. 
-
-Általában amikor létrehoz egy Batch AI-fürtöt, is létrehozhat egy fájlmegosztást, amely szerint az összes csomópont csatlakoztatva van. A fájlmegosztás a bemeneti és kimeneti adatok, valamint a batch-feladat-kód/parancsprogramok tárolásához használatos. 
-
-Miután létrehozott egy Batch AI-fürtöt, parancssori felület vagy a Python SDK használatával futtatandó feladatok elküldéséhez. Csak a kötegelt feladatok végrehajtásához használt időért kell fizetnie. 
-
-További információkért lásd:
-* Részletes útmutató segítségével [Azure CLI-vel](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) kezelése a Batch AI
-* Részletes útmutató segítségével [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) kezelése a Batch AI
-* [Batch AI-receptek](https://github.com/Azure/BatchAI) , amelyek bemutatják, hogyan használható a mesterséges Intelligencia és a deep learning-keretrendszerek, a Batch AI különböző
+Számos módszer és technológiák használatával Dsvm készletét hozza létre. Ez a cikk interaktív-beli virtuális gépek készletein foglalkozik. Egy alternatív felügyelt számítási infrastruktúra képes legyen az Azure Machine Learning Compute. Lásd: [állítsa be a számítási célokhoz](../service/how-to-set-up-training-targets.md#amlcompute) további információt.
 
 ## <a name="interactive-vm-pool"></a>Interaktív VM-készletet
 

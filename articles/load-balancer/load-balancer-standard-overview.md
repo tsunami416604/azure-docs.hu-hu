@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 845f991085a4427ab4f4301cab1dc60215374554
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185766"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438761"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer Standard áttekintése
 
@@ -229,7 +229,7 @@ Standard Load Balancer konfigurált terheléselosztási szabályok száma alapj�
 - Ismerje meg [állapotadat-mintavételek](load-balancer-custom-probe-overview.md).
 - Tudjon meg többet [rendelkezésre állási zónák](../availability-zones/az-overview.md).
 - Ismerje meg [Standard Load Balancer diagnosztikai](load-balancer-standard-diagnostics.md).
-- Ismerje meg [többdimenziós metrikák támogatott](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a diagnosztikai [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+- Ismerje meg [többdimenziós metrikák támogatott](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) a diagnosztikai [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md).
 - Ismerje meg [kimenő szabályok](load-balancer-outbound-rules-overview.md).
 - Ismerje meg [TCP üresjárati a alaphelyzetbe](load-balancer-tcp-reset.md).

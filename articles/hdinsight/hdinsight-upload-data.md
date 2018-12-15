@@ -10,14 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 08838fef472cd82f976579f70a4c6be33db9d009
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017560"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407094"
 ---
-# <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
+# <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>A HDInsight Apache Hadoop-feladatok adatok feltöltése
 
 Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) Azure Storage és az Azure Data Lake Storage (Gen1 és Gen2) biztosít. Az Azure Storage és Data lake Storage Gen1 és Gen2 célja HDFS bővítményként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage, Data Lake Storage Gen1 és Gen2 olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight][hdinsight-storage], [használata Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md) és [ Data Lake Storage Gen2 használata a HDInsight](../storage/data-lake-storage/use-hdi-cluster.md).
 
@@ -44,7 +44,7 @@ A Microsoft az Azure Storage használatához az alábbi segédprogramokat biztos
 | [Az AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop-parancs](#commandline) |✔ |✔ |✔ |
 
-> [!NOTE]
+> [!NOTE]  
 > Míg a klasszikus Azure CLI, az Azure PowerShell-lel és az AzCopy az összes használható Azure-on kívülről, a Hadoop-parancs érhető el csak a HDInsight-fürtön. Így a parancs csak a helyi fájlrendszerből adatok betöltése az Azure Storage-bA.
 >
 >
@@ -95,11 +95,11 @@ A klasszikus Azure-CLI egy platformfüggetlen eszköz, amellyel az Azure-szolgá
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
-> [!NOTE]
+> [!NOTE]  
 > Ha mindig ugyanazt a tárfiókot, a következő környezeti változókat a fiók megadása helyett, és minden parancshoz kulcs:
 >
-> * **AZURE\_tárolási\_fiók**: A tárfiók neve
-> * **AZURE\_tárolási\_hozzáférés\_kulcs**: A tárfiók kulcsa
+> * **AZURE\_TÁROLÁSI\_FIÓK**: A tárfiók neve
+> * **AZURE\_TÁROLÁSI\_HOZZÁFÉRÉS\_KULCS**: A tárfiók kulcsa
 >
 >
 
@@ -152,8 +152,8 @@ A Hadoop parancssor csak hasznos adatok tárolása az Azure storage-blobba, amik
 
 Annak érdekében, hogy a Hadoop parancsot használja, először csatlakoznia kell az átjárócsomóponthoz, a következő módszerek egyikével:
 
-* **Windows-alapú HDInsight**: [csatlakoztatása a távoli asztal használatával](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux-alapú HDInsight**: csatlakozás használatával [SSH- vagy putty-kapcsolaton keresztül](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Windows-alapú HDInsight**: [Csatlakozzon a távoli asztal használatával](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+* **Linux-alapú HDInsight**: Csatlakozás használatával [SSH- vagy putty-kapcsolaton keresztül](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A csatlakozás után az alábbi szintaxissal fájl feltöltése storage.
 
@@ -173,8 +173,8 @@ vagy
 
 Más Hadoop-parancsokat, amelyek együttműködnek a fájlok listáját lásd: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
-> [!WARNING]
-> A HBase fürtök esetén az alapértelmezett blokkméret használható, ha adatok 256 KB. Ez a jól működik a HBase API-k vagy REST API-k használatakor, miközben használata a `hadoop` vagy `hdfs dfs` parancsokat írhat adatokat ~ 12 GB-nál nagyobb hibát eredményez. További információkért lásd: a [írási a blob storage kivételt](#storageexception) szakasz ebben a cikkben.
+> [!WARNING]  
+> Az Apache HBase fürtök esetén az alapértelmezett blokkméret használható, ha adatok 256 KB. Ez a jól működik a HBase API-k vagy REST API-k használatakor, miközben használata a `hadoop` vagy `hdfs dfs` parancsokat írhat adatokat ~ 12 GB-nál nagyobb hibát eredményez. További információkért lásd: a [írási a blob storage kivételt](#storageexception) szakasz ebben a cikkben.
 >
 >
 
@@ -196,7 +196,7 @@ További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hado
 #### <a id="storageexplorer"></a>Azure Storage Explorer
 *Az Azure Storage Explorer* vizsgálatához és módosítása a nyerhető a blobok fontos eszköze. Egy ingyenes, nyílt forráskódú eszköz, amely letölthető a [ http://storageexplorer.com/ ](http://storageexplorer.com/). A forráskódja elérhető a hivatkozásból.
 
-Az eszköz használata előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs. Az alábbi információk kapcsolatos útmutatásért lásd: a "How to: megtekintése, másolása és újragenerálása storage hozzáférési kulcsok" szakaszában [létrehozása, kezelése vagy törlése a storage-fiók][azure-create-storage-account].
+Az eszköz használata előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs. Az alábbi információk kapcsolatos útmutatásért lásd a "How to: Megtekintése, másolása és újragenerálása storage hozzáférési kulcsok"szakaszában [létrehozása, kezelése vagy törlése a storage-fiók][azure-create-storage-account].
 
 1. Futtassa az Azure Storage Explorerben. Ha első alkalommal futtatnia kell a Storage Explorert, kéri a **tá_rolási fióknév** és **tárfiókkulcs**. Ha kell, mielőtt futtatja, a **Hozzáadás** gombra kattintva adhat hozzá egy új tárfiók neve és kulcsa.
 
@@ -243,7 +243,7 @@ Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [A
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 #### <a id="storageexception"></a>Írás a blob Storage kivétel
-**A jelenség**: használatakor a `hadoop` vagy `hdfs dfs` parancsokat írhat fájlokat, amelyek ~ 12 GB-os vagy nagyobb, a HBase-fürtöt, felmerülhet a következő hiba:
+**A jelenség**: Használatakor a `hadoop` vagy `hdfs dfs` parancsokat írhat fájlokat, amelyek ~ 12 GB vagy nagyobb, a HBase-fürtöt, felmerülhet a következő hibával:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -265,15 +265,15 @@ Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [A
             at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
             ... 7 more
 
-**OK**: a HDInsight-alapú HBase-fürtök alapértelmezett egy 256 KB-os blokkméret az Azure storage való írás esetén. A HBase API-k vagy REST API-k esetében működik, amíg ez hibát eredményez használatakor a `hadoop` vagy `hdfs dfs` parancssori segédeszközöket.
+**OK**: A HDInsight-alapú HBase-fürtök alapértelmezett egy 256 KB-os blokkméret az Azure storage való írás esetén. A HBase API-k vagy REST API-k esetében működik, amíg ez hibát eredményez használatakor a `hadoop` vagy `hdfs dfs` parancssori segédeszközöket.
 
-**Feloldási**: használata `fs.azure.write.request.size` a nagyobb blokkméret megadásához. Ezt megteheti is használati alapon használatával a `-D` paraméter. A következő parancs használatával ezt a paramétert a `hadoop` parancsot:
+**Feloldási**: Használat `fs.azure.write.request.size` a nagyobb blokkméret megadásához. Ezt megteheti is használati alapon használatával a `-D` paraméter. A következő parancs használatával ezt a paramétert a `hadoop` parancsot:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Az értékét növelje `fs.azure.write.request.size` globálisan az Ambari használatával. Módosítsa az Ambari webes Kezelőfelületen használható a következő lépéseket:
+Az értékét növelje `fs.azure.write.request.size` globálisan az Apache Ambari használatával. Módosítsa az Ambari webes Kezelőfelületen használható a következő lépéseket:
 
 1. A böngészőben nyissa meg az Ambari webes felhasználói Felületet, a fürt számára. Ez a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
@@ -284,15 +284,15 @@ Az értékét növelje `fs.azure.write.request.size` globálisan az Ambari haszn
 
 ![Az Ambari webes felhasználói felületen keresztül értékét képe](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
+Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a további elemzéseket végezhet a következő cikkeket:
 
 * [Azure HDInsight – első lépések][hdinsight-get-started]
-* [Programozott módon a Hadoop-feladatok elküldése][hdinsight-submit-jobs]
-* [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [A Pig használata a HDInsightban][hdinsight-use-pig]
+* [Programozott módon az Apache Hadoop-feladatok elküldése][hdinsight-submit-jobs]
+* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
+* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
 
 [azure-management-portal]: https://porta.azure.com
 [azure-powershell]: https://msdn.microsoft.com/library/windowsazure/jj152841.aspx

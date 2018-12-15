@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67d08379d98873fa88ef20b5cc8c87163c067e3a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310453"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409751"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service speciális használata
 
@@ -29,11 +29,11 @@ Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
 * [Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok az Azure App Service-ben (Windows)](app-service-web-tutorial-auth-aad.md)
 * [Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű az Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)
-* [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](app-service-mobile-how-to-configure-google-authentication.md)
-* [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára](configure-authentication-provider-aad.md)
+* [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](configure-authentication-provider-facebook.md)
+* [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](configure-authentication-provider-google.md)
+* [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára](configure-authentication-provider-microsoft.md)
+* [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Több bejelentkezési szolgáltató használata
 
@@ -183,7 +183,7 @@ Amikor a szolgáltató hozzáférési jogkivonat lejár, hitelesítse magát új
 - **Google**: Hozzáfűzése egy `access_type=offline` lekérdezési karakterlánc paraméter, a `/.auth/login/google` API-hívás. A Mobile Apps SDK használata esetén is hozzáadhat a paraméter az egyik a `LogicAsync` túlterheléssel (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Frissítési biztonsági jogkivonat nem biztosít. Hosszú élettartamú jogkivonatok 60 nap múlva megszűnik (lásd: [Facebook lejárati és hozzáférési jogkivonatok bővítmény](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter-**: Hozzáférési jogkivonatok nem jár le (lásd: [OAuth – gyakori kérdések Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Microsoft-fiók**: Amikor [konfigurálása a Microsoft-fiók hitelesítési beállításai](app-service-mobile-how-to-configure-microsoft-authentication.md), jelölje be a `wl.offline_access` hatókör.
+- **Microsoft-fiók**: Amikor [konfigurálása a Microsoft-fiók hitelesítési beállításai](configure-authentication-provider-microsoft.md), jelölje be a `wl.offline_access` hatókör.
 - **Az Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), tegye a következőket:
     1. A lap tetején válassza **olvasási/írási**.
     1. A bal oldali böngészőben navigáljon **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** > _**\<alkalmazás \_neve >**_ > **config** > **authsettings**. 

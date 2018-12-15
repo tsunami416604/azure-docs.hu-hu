@@ -14,19 +14,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2673a0ec1e9ed66c9a1bb6e369ad5300a570ba0a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0ba365096808954c24beb073f3570499fd23523
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240443"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408276"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Mi az a feltételes hozzáférés az Azure Active Directoryban?
 
 A biztonság elsődleges szempont a felhőt használó szervezetek számára. A felhő biztonságának egyik fontos eleme az identitás és a hozzáférés a felhőbeli erőforrások felügyelete során. Korunk mobileszközökre és felhőre építkező világában a felhasználók a legkülönfélébb eszközökről és alkalmazásokból érhetik el a szervezet erőforrásait. Ebből kifolyólag már nem elég csak azt figyelni, hogy ki próbálja elérni az adott erőforrást. A biztonság és a hatékonyság közötti megfelelő egyensúly eléréséhez a hozzáférés-vezérlési döntésekben azt is figyelembe kell venni, hogyan próbálják elérni az erőforrást. Az Azure Active Directory (Azure AD) feltételes hozzáférésével megfelelhet ennek a követelménynek. A feltételes hozzáférés az Azure Active Directory egyik képessége. A feltételes hozzáférés segítségével automatikus döntéshozatali képességeket valósíthat meg a felhőalkalmazásai eléréséhez különféle feltételek alapján. 
+
+Az első többtényezős hitelesítés befejezése után a rendszer érvényesíti a feltételes hozzáférési szabályzatokat. Más szóval a feltételes hozzáférés nem célja, hogy lehet egy olyan mechanizmust, például a számláló mérték-szolgáltatásmegtagadásos (DDoS-) támadások.  
 
 ![Vezérlés](./media/overview/81.png)
 
@@ -47,15 +49,20 @@ A feltételes hozzáférési szabályzatokkal mindig a megfelelő hozzáférés-
 
 
 
-- **[Bejelentkezési kockázatok](conditions.md#sign-in-risk)**: Az Azure AD Identity Protection észleli a bejelentkezési kockázatokat. Hogyan korlátozhatja a hozzáférést, ha egy észlelt bejelentkezési kockázat egy kártékony elemet jelez? Mit tehet, ha erősebb bizonyítékra van szüksége, hogy a bejelentkezést egy legitim felhasználó hajtotta végre? Mi történik, ha a kételyei elég megalapozottak, hogy akár adott felhasználók hozzáférését is letiltsa egy alkalmazáshoz?  
+- **[Bejelentkezési kockázati](conditions.md#sign-in-risk)**: Az Azure AD Identity Protection észleli a bejelentkezési kockázat. Hogyan korlátozhatja a hozzáférést, ha egy észlelt bejelentkezési kockázat egy kártékony elemet jelez? Mit tehet, ha erősebb bizonyítékra van szüksége, hogy a bejelentkezést egy legitim felhasználó hajtotta végre? Mi történik, ha a kételyei elég megalapozottak, hogy akár adott felhasználók hozzáférését is letiltsa egy alkalmazáshoz?  
 
-- **[Hálózati hely](location-condition.md)**: Az Azure AD bárhonnan elérhető. Mi a teendő, ha a hozzáférési kísérlet egy olyan hálózati helyről történik, amely nem tartozik az informatikai részleg irányítása alá? A felhasználónév és a jelszó kombinációja megfelelő bizonyíték lehet az identitás igazolására a vállalati hálózatról megkísérelt hozzáférések esetén. Mi a teendő, ha erősebb identitásigazolást szeretne az olyan hozzáférési kísérleteknél, amelyeket a világ más, váratlan országaiból vagy régióiból kezdeményeznek? Mi a teendő, ha egyes helyekről akár blokkolni is szeretné a hozzáférést?  
+- **[Hálózati hely](location-condition.md)**: Azure AD egy bárhonnan elérhető. Mi a teendő, ha a hozzáférési kísérlet egy olyan hálózati helyről történik, amely nem tartozik az informatikai részleg irányítása alá? A felhasználónév és a jelszó kombinációja megfelelő bizonyíték lehet az identitás igazolására a vállalati hálózatról megkísérelt hozzáférések esetén. Mi a teendő, ha erősebb identitásigazolást szeretne az olyan hozzáférési kísérleteknél, amelyeket a világ más, váratlan országaiból vagy régióiból kezdeményeznek? Mi a teendő, ha egyes helyekről akár blokkolni is szeretné a hozzáférést?  
 
-- **[Eszközkezelés](conditions.md#device-platforms)**: Az Azure AD-ben a felhasználók az eszközök széles választékáról próbálhatják elérni a felhőalkalmazásokat – mobileszközökről, sőt akár saját tulajdonú eszközökről is. Mi a teendő, ha azt szeretné, hogy csak a vállalat informatikai részlege által felügyelt eszközökről lehessen megkísérelni a hozzáférést? Mi a teendő, ha meg szeretné tiltani, hogy egyes eszköztípusok hozzáférhessenek a környezetében lévő felhőalkalmazásokhoz? 
+- **[Eszközkezelés](conditions.md#device-platforms)**: Azure ad-felhasználók érhessék el a felhőalapú alkalmazások az széles körét, beleértve a mobil eszközök és személyes eszközök is. Mi a teendő, ha azt szeretné, hogy csak a vállalat informatikai részlege által felügyelt eszközökről lehessen megkísérelni a hozzáférést? Mi a teendő, ha meg szeretné tiltani, hogy egyes eszköztípusok hozzáférhessenek a környezetében lévő felhőalkalmazásokhoz? 
 
-- **[Ügyfélalkalmazás](conditions.md#client-apps)**: Napjainkban számos felhőalkalmazás különböző alkalmazástípusokon, például webes, mobil- vagy asztali alkalmazásokon keresztül is elérhető. Mi a teendő, ha olyan típusú ügyfélalkalmazással történik hozzáférési kísérlet, amely ismert hibákat okoz? Mi a teendő, ha azt szeretné, hogy bizonyos típusú alkalmazásokat csak az informatikai részleg által felügyelt eszközökről lehessen elérni? 
+- **[Ügyfélalkalmazás](conditions.md#client-apps)**: Ma számos olyan felhőalkalmazások, például a webes alkalmazások, mobilalkalmazások és asztali alkalmazások különböző alkalmazástípust használatával is elérheti. Mi a teendő, ha olyan típusú ügyfélalkalmazással történik hozzáférési kísérlet, amely ismert hibákat okoz? Mi a teendő, ha azt szeretné, hogy bizonyos típusú alkalmazásokat csak az informatikai részleg által felügyelt eszközökről lehessen elérni? 
 
 Ezek a kérdések és a kapcsolódó válaszok gyakori hozzáférési forgatókönyveket vázolnak fel az Azure AD feltételes hozzáféréshez. A feltételes hozzáférés az Azure Active Directory egyik képessége, amellyel szabályzatalapú módon kezelheti a hozzáférés-kezelési forgatókönyveket.
+
+  
+
+
+> [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
 
 ## <a name="conditional-access-policies"></a>Feltételes hozzáférési szabályzatok
@@ -69,9 +76,9 @@ Az **Akkor ezt tegye** címszó alatt határozhatja meg a szabályzat válaszát
 
 Az **Amikor ez történik** címszó alatt adhatja meg a szabályzatot aktiváló okokat. Az okokat az jellemzi, hogy több feltétel teljesül. Az Azure AD feltételes hozzáférésekben a két hozzárendelési feltétel speciális szerepet játszik:
 
-- **[Felhasználók](conditions.md#users-and-groups)**: A hozzáférési kísérletet végrehajtó felhasználók (**Ki**). 
+- **[Felhasználók](conditions.md#users-and-groups)**: A felhasználó által végzett hozzáférési kísérlet (**akik**). 
 
-- **[Felhőalkalmazások](conditions.md#cloud-apps)**: A hozzáférési kísérlet célja (**Mit**).    
+- **[Felhőalkalmazások](conditions.md#cloud-apps)**: Egy hozzáférési kísérlet kereszthivatkozásoknak (**mi**).    
 
 Ennek a két feltételnek a megadása kötelező a feltételes hozzáférési szabályzatokban. A két kötelező feltétel mellett további feltételeket is megadhat, amelyek a hozzáférési kísérlet körülményeit írják le. Gyakori példa a mobileszközök használatával vagy a vállalati hálózaton kívüli helyekről megkísérelt hozzáférés. További információ: [Az Azure Active Directory feltételes hozzáférésének feltételei](conditions.md).   
 
@@ -107,7 +114,5 @@ A feltételes hozzáférés használatához Azure AD Prémium szintű licenc sz�
     - a hozzáférés-vezérlésről, olvassa el [az Azure Active Directory feltételes hozzáférés-vezérlését ismertető cikket](controls.md).
 
 - Ha szeretne gyakorlatot szerezni a feltételes hozzáférési szabályzatok konfigurálásában, lásd: [Többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
-
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 
 
 - Ha át szeretne tekinteni egy részletes üzembehelyezési tervet a javasolt szabályzatokkal, tekintse meg a [feltételes hozzáférés üzembe helyezésére vonatkozó tervet](https://aka.ms/conditionalaccessdeploymentplan).

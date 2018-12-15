@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: cf2dd013b0d6f8867129d2d53311af21af5a1fe2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4c32d6eccc996bf1a3670a521a7a86394a2f866f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385329"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434511"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Az Azure monitorozási adatok felhasználásához
 
@@ -23,7 +23,7 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 
 | Adattípus | Kategória | Támogatott szolgáltatások | Hozzáférési módok |
 | --- | --- | --- | --- |
-| Az Azure platform-szintű metrikák figyelése | Mérőszámok | [Itt a lista](monitoring-supported-metrics.md) | <ul><li>**REST API-VAL:** [Az Azure Monitor mérőszám API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Storage blob vagy eseményközpont:** [Diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
+| Az Azure platform-szintű metrikák figyelése | Mérőszámok | [Itt a lista](../azure-monitor/platform/metrics-supported.md) | <ul><li>**REST API-VAL:** [Az Azure Monitor mérőszám API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Storage blob vagy eseményközpont:** [Diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
 | COMPUTE a vendég operációs rendszer metrikákat (például) teljesítményszámlálók) | Mérőszámok | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) és Linux rendszerű virtuális gépek (v2), [Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**- Vagy blob Storage-táblába:** [Windows vagy Linux rendszerű Azure-diagnosztika](../azure-monitor/platform/diagnostics-extension-to-storage.md)</li><li>**Event hubs:** [Windows Azure diagnostics](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | Egyéni vagy alkalmazás-metrikák | Mérőszámok | Minden Application Insights révén utasított alkalmazás | <ul><li>**REST API-VAL:** [Az Application Insights REST API-val](https://dev.applicationinsights.io/reference)</li></ul> |
 | Storage-mérőszámok | Mérőszámok | Azure Storage | <ul><li>**Storage-táblához:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
@@ -37,7 +37,7 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 | Active Directory Premium reporting | Események | Azure Active Directory | <ul><li>**REST API-VAL:** [Az Azure Active Directory graph API](../active-directory/reports-monitoring/concept-reporting-api.md)</li></ul> |
 | A Security Center erőforrás-állapot | status | [Minden támogatott erőforrások](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST API-VAL:** [Biztonság állapota](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | Resource Health | status | Támogatott szolgáltatások | <ul><li>**REST API-VAL:** [A Resource health REST API-val](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
-| Az Azure Monitor metrikákhoz kapcsolódó riasztások | Értesítések | [Itt a lista](monitoring-supported-metrics.md) | <ul><li>**Webhook:** [Az Azure metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
+| Az Azure Monitor metrikákhoz kapcsolódó riasztások | Értesítések | [Itt a lista](../azure-monitor/platform/metrics-supported.md) | <ul><li>**Webhook:** [Az Azure metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
 | Azure Monitor tevékenységnapló-riasztások | Értesítések | Azure-szolgáltatásokhoz | <ul><li>**Webhook:** Azure tevékenységnapló-riasztások</li></ul> |
 | Automatikus méretezési értesítésekhez | Értesítések | [Itt a lista](../azure-monitor/platform/autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Automatikus skálázási értesítések adattartalom webhookséma](../azure-monitor/platform/autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | Keresési lekérdezés naplóriasztások | Értesítések | Log Analytics | <ul><li>**Webhook:** [Webhook művelettel a riasztási szabály](../monitoring-and-diagnostics/../azure-monitor/platform/alerts-log-webhook.md)</li></ul> |

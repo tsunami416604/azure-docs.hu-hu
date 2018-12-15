@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 99d864a5d519ce56a559bea4db7fe89a113e47b9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 979253021f5503295e0572759b510e074ceb1a6b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157922"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408068"
 ---
-# <a name="quickstart-train-a-deep-learning-model-with-batch-ai"></a>Rövid útmutató: Egy mélytanulási modell betanítása Batch AI segítségével
+# <a name="quickstart-train-a-deep-learning-model-with-batch-ai"></a>Gyors útmutató: A Batch AI egy deep learning-modell betanítása
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez a rövid útmutató bemutatja, hogyan taníthat be egy mélytanulási mintamodellt egy Batch AI által felügyelt GPU-kompatibilis virtuális gépen. A Batch AI egy felügyelt szolgáltatás az adatelemzők és MI-kutatók számára, amely lehetővé teszi, hogy nagy számban tanítsanak be mesterségesintelligencia- és gépi tanulási modelleket Azure-beli virtuális gépek fürtjein. 
 
@@ -275,7 +278,7 @@ stderr-wk-0.txt              1527  file
 stdout-wk-0.txt             11027  file
 ```
 
-Az `az storage file download` paranccsal letölthet egy vagy több fájlt a helyi munkakönyvtárba. Például:
+Az `az storage file download` paranccsal letölthet egy vagy több fájlt a helyi munkakönyvtárba. Példa:
 
 ```azurecli-interactive
 az storage file download \

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: eb407a1026ab62fa719600a3992dc3b4653f1583
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383918"
+ms.locfileid: "53409523"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Az Apache Ambari webes felület, JobHistory, NameNode, az Apache Oozie és egyéb webes eléréséhez használja a SSH-bújtatással
 
@@ -78,9 +78,19 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
 
 ## <a name="useputty"></a>Hozzon létre egy alagút a PuTTY használatával
 
-[A puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) grafikus SSH-ügyfelet a Windows rendszer. Az alábbi lépések segítségével hozzon létre SSH-alagút a PuTTY használatával:
+[A puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) grafikus SSH-ügyfelet a Windows rendszer. Ha nem ismeri a putty-t, tekintse meg a [dokumentáció PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Az alábbi lépések segítségével hozzon létre SSH-alagút a PuTTY használatával:
 
-1. Nyissa meg a putty-kapcsolaton keresztül, és adja meg a kapcsolat adatait. Ha nem ismeri a putty-t, tekintse meg a [dokumentáció PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+### <a name="create-or-load-a-session"></a>Nem tölthető be a munkamenet
+
+1. Nyissa meg a putty-kapcsolaton keresztül, és győződjön meg arról **munkamenet** van kiválasztva a bal oldali menüben. Ha egy munkamenet már mentette, válassza ki a munkamenet nevét a **mentett munkamenetek** listában, és kattintson a **terhelés**.
+
+1. Ha még nem rendelkezik egy mentett munkamenetet, adja meg a kapcsolati adatokat:
+    * **Host Name (vagy IP-cím)** – az SSH-címe a HDInsight-fürt. Ha például **mycluster-ssh.azurehdinsight.net**
+    * **Port** – 22
+    * **Kapcsolat típusa** - SSH
+1. Kattintson a **Mentés** gombra.
+
+    ![SSH-munkamenet létrehozása](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 2. Az a **kategória** a párbeszédpanel bal szakaszt, kibontja **kapcsolat**, bontsa ki a **SSH**, majd válassza ki **alagutak**.
 
@@ -88,7 +98,7 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
    
    * **Source port** (Forrásport) - Az ügyfélen az a port, amelyet továbbítani szeretne. Ha például **9876**.
 
-   * **Cél** – az SSH a Linux-alapú HDInsight fürt címét. Például: **mycluster-ssh.azurehdinsight.net**.
+   * **Cél** – az SSH-címe a HDInsight-fürt. Például: **mycluster-ssh.azurehdinsight.net**.
 
    * **Dynamic** (Dinamikus) - Lehetővé teszi a dinamikus SOCKS proxy útválasztást.
      

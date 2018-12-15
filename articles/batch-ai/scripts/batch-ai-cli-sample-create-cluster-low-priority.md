@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 1fb21ab754e85dd347ff3bd66bafc2fadd95f8b1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c56cd7d25ce391b67798c7833894e248f37300bf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058153"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406606"
 ---
-# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-low-priority-nodes"></a>CLI-példa: Alacsony prioritású csomópontokból álló Batch AI-fürt létrehozása és kezelése
+# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-low-priority-nodes"></a>CLI-példa: Alacsony prioritású csomópontok egy Batch AI-fürt létrehozása és kezelése
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Ez a szkript olyan Azure CLI-parancsokra mutat példákat, amelyekkel alacsony prioritású csomópontokból (virtuális gépekből) álló Batch AI-fürtök hozhatók létre és kezelhetők.
 

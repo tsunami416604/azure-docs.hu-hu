@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: HT
+ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918575"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409401"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Virtuálisgép-méretezési csoportok létrehozása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuálisgép-méretezési csoportokat (VMSS) az Azure-ban, ahogy azt bármely más Azure-erőforrással tenné. Ebből a cikkből megtudhatja, hogyan hozhat létre és skálázhat fel horizontálisan virtuálisgép-méretezési csoportokat az Ansible használatával. 
@@ -37,7 +37,7 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 
 Adja meg az *admin_password* értékhez tartozó jelszót.
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ Az Ansible-forgatókönyv futtatásához használja az **ansible-playbook** para
 
 A forgatókönyv futtatása után az alábbi példához hasonló kimenetben látható, hogy a virtuálisgép-méretezési csoport sikeresen létrejött:
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ A következő kimenethez hasonló eredmények jelennek meg:
 
 Most bővítsük ki a két példányt három példányra. Az Ansible-forgatókönyv alábbi kódja információt ad vissza a virtuális gép méretéről, és a kapacitást kettőről háromra módosítja. 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ Az alábbi parancs futtatja a forgatókönyvet:
 
 Az Ansible-forgatókönyv futtatásából származó kimenetben látható, hogy a virtuálisgép-méretezési csoport horizontális felskálázása sikeres volt:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -275,4 +275,6 @@ A parancs Cloud Shell-beli futtatásának eredménye azt jelzi, hogy jelenleg h�
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Ansible-mintaforgatókönyv VMSS-hez](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Virtuális gép méretezési csoportok használata az Ansible-alkalmazások központi telepítése](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+
+> [Az Ansible használatával virtuálisgép-méretezési csoport automatikus méretezése](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)
