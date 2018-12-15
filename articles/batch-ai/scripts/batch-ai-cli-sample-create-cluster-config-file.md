@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 41a3a801214ff00c01397034e26fde6946ab97f0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232800"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407813"
 ---
-# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI-példa: Batch AI-fürt létrehozása fürtkonfigurációs fájllal
+# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI-példa: Hozzon létre egy Batch AI-fürtöt egy fürt konfigurációs fájl használatával
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Ez a példaszkript bemutatja, hogyan adhatja meg egy Batch AI-fürt beállításait konfigurációs JSON-fájllal. Adja meg ezeket a beállításokat az `az batchai cluster create` parancs megfelelő parancssori paramétereiként. A konfigurációs fájlok akkor lehetnek hasznosak, ha több fájlrendszert kell csatlakoztatnia a fürtcsomópontokhoz, vagy ha több fürtön is ugyanazt a konfigurációt szeretné alkalmazni.
 

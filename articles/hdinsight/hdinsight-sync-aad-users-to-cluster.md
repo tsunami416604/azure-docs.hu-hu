@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984313"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407287"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Egy HDInsight-fürtön az Azure Active Directory-felhasználók szinkronizálása
 
@@ -40,11 +40,11 @@ A gazdagépek megtekintéséhez nyissa meg az Ambari webes Kezelőfelületen. Mi
 
 4. Kattintson a **Létrehozás** gombra.
 
-## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>Felhasználók szinkronizálása az Ambari REST API használatával
+## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Felhasználók szinkronizálása az Apache Ambari REST API használatával
 
 Felhasználói csoportok, a fürt létrehozása során megadott-nál több időt szinkronizálva legyenek. Felhasználók szinkronizálása automatikusan óránként egyszer történik. A felhasználók szinkronizálása azonnal, vagy egy csoport, mint a fürt létrehozásakor megadott csoportok szinkronizálása, az Ambari REST API használata.
 
-A következő metódust használja a POST az Ambari REST API-val. További információkért lásd: [kezelése a HDInsight-fürtök az Ambari REST API-val](hdinsight-hadoop-manage-ambari-rest-api.md).
+A következő metódust használja a POST az Ambari REST API-val. További információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari REST API-val](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 1. [Csatlakozás a fürthöz az ssh-val](hdinsight-hadoop-linux-use-ssh-unix.md). A fürt az Azure portal áttekintés ablaktábláján válassza ki a **Secure Shell (SSH)** gombra.
 
@@ -123,12 +123,12 @@ A következő metódust használja a POST az Ambari REST API-val. További infor
 
 5. Ez az eredmény azt mutatja, hogy az állapot **COMPLETE**, egy új felhasználó lett létrehozva, és a felhasználó a tagság hozzá volt rendelve. Ebben a példában a felhasználó hozzá van rendelve a "HiveUsers" szinkronizált LDAP-csoport, mivel a felhasználó hozzáadva a csoportot, az Azure ad-ben.
 
-> [!NOTE]
+> [!NOTE]  
 > Az előző metódus csak szinkronizálja a megadott Azure AD-csoportokat a **hozzáférési felhasználói csoport** tulajdonsága a fürt létrehozásakor a tartomány beállításait. További információkért lásd: [hozzon létre egy HDInsight-fürt](domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Ellenőrizze az újonnan hozzáadott Azure AD-felhasználó
 
-Nyissa meg a [az Ambari webes felhasználói felület](hdinsight-hadoop-manage-ambari.md) ellenőrizheti, hogy az új Azure AD-felhasználó lett felvéve. Az Ambari webes Kezelőfelületen eléréséhez megkeresve **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai felhasználónevet és jelszót.
+Nyissa meg a [Apache Ambari webes Kezelőfelületen](hdinsight-hadoop-manage-ambari.md) ellenőrizheti, hogy az új Azure AD-felhasználó lett felvéve. Az Ambari webes Kezelőfelületen eléréséhez megkeresve **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai felhasználónevet és jelszót.
 
 1. Az Ambari irányítópultján válassza ki **kezelése az Ambari** alatt a **rendszergazdai** menü.
 
@@ -148,6 +148,6 @@ Amikor az Ambari bejelentkezik az új felhasználó (vagy bármely más tartomá
 
 ## <a name="see-also"></a>Lásd még
 
-* [ESP a HDInsight Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
+* [ESP a HDInsight az Apache Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
 * [ESP a HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md)
-* [A felhasználóknak engedélyezik, Ambari](hdinsight-authorize-users-to-ambari.md)
+* [A felhasználóknak engedélyezik, az Apache Ambari](hdinsight-authorize-users-to-ambari.md)

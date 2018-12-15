@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 0d2b7a5e3239cf46c41db0a086b804c34df5d6e2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3779260d2dd6036e65be39b4a59ceb1459d01b9e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386944"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434256"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
@@ -207,7 +207,7 @@ Riasztások nélkül beállítása [Azure Log Analytics](../log-analytics/log-an
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Az Azure Diagnostics esemény beállításai és részletei
 
-Egyes diagnosztikai események adatait a logikai alkalmazás és a kapcsolódó eseményre, például az állapot, a start idő, befejezési időpontja, és így tovább. Programozott módon állítsa be a figyelés, a nyomon követés és a naplózás, használhatja az alábbi adatokat a [REST API-t az Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) és a [REST API-t az Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
+Egyes diagnosztikai események adatait a logikai alkalmazás és a kapcsolódó eseményre, például az állapot, a start idő, befejezési időpontja, és így tovább. Programozott módon állítsa be a figyelés, a nyomon követés és a naplózás, használhatja az alábbi adatokat a [REST API-t az Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) és a [REST API-t az Azure Diagnostics](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows).
 
 Például a `ActionCompleted` esemény a `clientTrackingId` és `trackedProperties` tulajdonságok, amelyek nyomon követése és figyelése is használhatja:
 

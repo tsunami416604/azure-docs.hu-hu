@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 5998396faf746bd54d4f2dbd9c633ad3b4003878
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193399"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409241"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](../../azure-monitor/platform/itsmc-overview.md).
@@ -291,7 +291,7 @@ Ellenőrizze, hogy az alábbi előfeltételek teljesülését:
 
 
 - ITSMC telepítve. További információ: [Felvétele az IT Service Management Connector megoldás](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Provance alkalmazást kell regisztrálni az Azure AD - és ügyfél-Azonosítóját szeretné elérhetővé tenni. Részletes információkért lásd: [active directory-hitelesítés konfigurálása](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+- Provance alkalmazást kell regisztrálni az Azure AD - és ügyfél-Azonosítóját szeretné elérhetővé tenni. Részletes információkért lásd: [active directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md).
 
 - Felhasználói szerepkör:  Rendszergazda.
 
@@ -319,7 +319,7 @@ A következő eljárással Provance kapcsolat létrehozása:
 | **Felhasználónév**   | Írja be a felhasználók kapcsolódhatnak az ITSMC.    |
 | **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés:** Felhasználónév és jelszó csak a hitelesítési tokenek létrehozásához használhatók, és nem bárhol tárolja a ITSMC szolgáltatásban. _|
 | **Kiszolgáló URL-címe**   | Írja be a példány URL-címét a Provance, amelyeket ITSMC csatlakozni szeretne. |
-| **Ügyfél-azonosító**   | Írja be az ügyfél-Azonosítót ehhez a kapcsolathoz, amelyre Provance példányában létrehozott hitelesítéséhez.  További információ az ügyfél-azonosító, lásd: [active directory-hitelesítés konfigurálása](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md). |
+| **Ügyfél-azonosító**   | Írja be az ügyfél-Azonosítót ehhez a kapcsolathoz, amelyre Provance példányában létrehozott hitelesítéséhez.  További információ az ügyfél-azonosító, lásd: [active directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md). |
 | **Adatszinkronizálás hatóköre**   | Válassza ki az Azure Log Analyticshez, keresztül ITSMC szinkronizálni kívánt Provance munkaelemek.  Ezen elemek is importálja a log analytics munka.   **Beállítások:**   Az incidensek, Változáskérések.|
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszerben. **Alapértelmezett**: le van tiltva.|

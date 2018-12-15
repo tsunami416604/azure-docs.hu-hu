@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9d7ec781fbc559b434b51db4a5dd8ffb1b6ef11f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d13f97ff7ec25fd638b92dc1c057afcaeecc2bf9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103230"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434069"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Események fogadása az Azure Event Hubs Node.js használatával
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag bemutatja, hogyan események fogadása az event hubs az Azure
 Ez a rövid útmutató kódja megtalálható [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/processor).
 
 > [!NOTE]
->  Események küldése az Event Hubsba Node.js használatával, lásd: Ez a cikk: [események küldése az Azure Event Hubs használatával Node.js](event-hubs-node-get-started-send.md). 
+>  Események küldése az Event Hubsba Node.js használatával, lásd: Ez a cikk: [Események küldése az Azure Event Hubs használatával Node.js](event-hubs-node-get-started-send.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

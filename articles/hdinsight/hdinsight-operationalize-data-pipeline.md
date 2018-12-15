@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251708"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436160"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -30,13 +30,13 @@ A következő esetben a bemeneti adatokat tartalmazó repülési adatok kötegel
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-A példa folyamat megvárja, amíg a egy új időszakban flight data érkezik, akkor a részletes repülőjáratokkal kapcsolatos információkat tartalmaz a hosszú távú elemzések Hive-data warehouse-bA tárolja. A folyamat is létrehoz egy sokkal kisebb adatkészletet, amely csak a napi flight data foglalja össze. A napi repülési összefoglaló adatokat egy SQL Database-adatbázishoz küldött adja meg a jelentések, például webhelyekhez.
+A példa folyamat megvárja, amíg a egy új időszakban flight data érkezik, akkor a részletes repülőjáratokkal kapcsolatos információkat tartalmaz a hosszú távú elemzések az Apache Hive data warehouse-bA tárolja. A folyamat is létrehoz egy sokkal kisebb adatkészletet, amely csak a napi flight data foglalja össze. A napi repülési összefoglaló adatokat egy SQL Database-adatbázishoz küldött adja meg a jelentések, például webhelyekhez.
 
 A következő ábra szemlélteti a példa folyamat.
 
 ![Repülési adatfolyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Az Oozie-megoldás áttekintése
+## <a name="apache-oozie-solution-overview"></a>Az Apache Oozie-megoldás áttekintése
 
 Ez a folyamat egy HDInsight Hadoop-fürtön futó Apache Oozie használja.
 
@@ -139,7 +139,7 @@ Most már készen áll az Azure SQL Database.
 
 Az Oozie Webkonzol segítségével megtekintheti az állapotát a koordinátor és a munkafolyamat-példányok, állítsa be a HDInsight-fürthöz egy SSH-alagutat. További információkért lásd: [SSH-alagút](hdinsight-linux-ambari-ssh-tunnel.md).
 
-> [!NOTE]
+> [!NOTE]  
 > A Chrome-ban is használhatja a [Foxy Proxy](https://getfoxyproxy.org/) bővítmény keresse meg a fürt webes erőforrások között az SSH-alagút használatával. Konfigurálja a proxykiszolgáló a gazdagépen keresztül az összes kérelem `localhost` 9876 az alagút porton. Ez a megközelítés akkor a Windows alrendszer, Linux, más néven a Bash on Windows 10-kompatibilis.
 
 1. Futtassa a következő parancsot a fürthöz az SSH-alagút megnyitásához:
@@ -430,7 +430,7 @@ Az alábbi táblázat foglalja össze az egyes tulajdonságok, és azt jelzi, ho
 | hónap | A hónap összetevőt, a nap melyik repülési összegzéseket számítja ki. Hagyja üresen, mivel. |
 | nap | Azon napja, a nap melyik repülési összegzéseket számítja ki a hónap összetevőt. Hagyja üresen, mivel. |
 
-> [!NOTE]
+> [!NOTE]  
 > Ne felejtse el frissíteni a példány a `job.properties` az adott környezetre jellemző, mielőtt üzembe helyezése és az Oozie-munkafolyamatokkal értékeket tartalmazó fájl.
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Üzembe helyezése és az Oozie-munkafolyamatokkal

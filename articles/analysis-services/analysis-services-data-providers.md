@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 12/14/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0c852b0b3de4edcf894d80ae397eae6c8980d49
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9589281654b74df8527bb7bcf58b0700482c3fed
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240409"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408969"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Kapcsolódás az Azure Analysis Services ügyfélkódtárak
 
@@ -23,10 +23,10 @@ ms.locfileid: "50240409"
 
 |Letöltés  |Termék verziószáma  | 
 |---------|---------|
-|[Az MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.2.39      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.2.39      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.7.0.2    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.7.0.2     |
+|[Az MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.2.183      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.2.183      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.8.0.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.8.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet-csomagok)
 
@@ -34,10 +34,10 @@ Analysis Services Management Objects (AMO) és ADOMD ügyféloldali függvényt�
 
 |Csomag  | Termék verziószáma  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.7.0.2    |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.7.02     |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.8.0.0    |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.8.0.0     |
 
-NuGet-csomag szerelvények AssemblyVersion hajtsa végre a szemantikus verziószámozást: jelentős. KISEBB. JAVÍTÁS. NuGet-hivatkozásokat a várt verzió betölteni, akkor is, ha van egy másik verziója (MSI telepítése eredő) a GAC-ban. JAVÍTÁS értéke akkor növekszik, egyes kiadásaihoz. AMO és ADOMD-verziók őrzi meg a szinkronizálva.
+NuGet-csomag szerelvények AssemblyVersion Szemantikus verziószámozást kövesse: FŐ. KISEBB. JAVÍTÁS. NuGet-hivatkozásokat a várt verzió betölteni, akkor is, ha van egy másik verziója (MSI telepítése eredő) a GAC-ban. JAVÍTÁS értéke akkor növekszik, egyes kiadásaihoz. AMO és ADOMD-verziók őrzi meg a szinkronizálva.
 
 ## <a name="understanding-client-libraries"></a>Ügyfélkódtárak ismertetése
 
@@ -55,7 +55,7 @@ A Microsoft ügyfélalkalmazások, mint a Power BI Desktop és az Excel mindhár
   
  Az Analysis Services OLE DB-szolgáltató automatikusan települ a legtöbb eszközök és az Analysis Services-adatbázis eléréséhez használt ügyfél-alkalmazások. Analysis Services-adatok elérésére használt számítógépekre kell telepíteni.  
   
- Kapcsolati karakterláncok OLE DB-szolgáltatók gyakran meg van adva. Egy Analysis Services-kapcsolati sztringet használ a különböző elnevezéseket tekintse meg az OLE DB-szolgáltató: MSOLAP. \<verzió > .dll.
+ Kapcsolati karakterláncok OLE DB-szolgáltatók gyakran meg van adva. Egy Analysis Services-kapcsolati sztringet, tekintse meg az OLE DB-szolgáltató különböző elnevezéseket használja: MSOLAP. \<verzió > .dll.
 
 ### <a name="amo"></a>AMO  
 

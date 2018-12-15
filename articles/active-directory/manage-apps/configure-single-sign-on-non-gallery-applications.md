@@ -15,12 +15,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622193"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408126"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
 
@@ -46,7 +46,7 @@ Egy alkalmazás egy alkalmazás-integráció sablon használatával csatlakozhat
 
 Az alkalmazáskatalógusban, kiválasztásával adhat hozzá egy listán nem szereplő alkalmazást a **katalógusban nem szereplő alkalmazás** csempét, amely a keresési eredmények között látható, ha a kívánt alkalmazás nem található. Miután megadta az alkalmazás nevét, konfigurálhatja az egyszeri bejelentkezésre vonatkozó beállításokat és viselkedését. 
 
-**Gyors tipp**: ajánlott eljárásként a keresési funkció segítségével ellenőrizze, hogy ha az alkalmazás már létezik-e az alkalmazás-katalógusában. Ha az alkalmazás megtalálható, és egyszeri bejelentkezés említi a leírását, majd az alkalmazás már támogatja az összevont egyszeri bejelentkezést.
+**Gyors tipp**:  Ajánlott eljárásként a keresési funkció segítségével ellenőrizze, hogy ha az alkalmazás már létezik-e az alkalmazás-katalógusában. Ha az alkalmazás megtalálható, és egyszeri bejelentkezés említi a leírását, majd az alkalmazás már támogatja az összevont egyszeri bejelentkezést.
 
   ![Keresés](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
@@ -163,7 +163,7 @@ A bejelentkezési oldal rögzített, felhasználók és csoportok rendelhetők, 
 >
 
 ## <a name="existing-single-sign-on"></a>Meglévő egyszeri bejelentkezés
-Válassza ki ezt a beállítást, hivatkozás hozzáadása egy alkalmazáshoz a szervezet Azure AD hozzáférési Panel vagy az Office 365 portálra. Ezzel a hivatkozásokat adhat hozzá egyéni webes alkalmazások, amelyek jelenleg használják az Azure Active Directory összevonási szolgáltatások (vagy más összevonási szolgáltatásból) az Azure AD-hitelesítés helyett. Vagy mélyhivatkozással hozzáadása adott SharePoint-oldalakba vagy más weblapokat csak át szeretné megjeleníteni a felhasználók hozzáférési Paneljein. 
+Válassza ki ezt a beállítást, hivatkozás hozzáadása egy alkalmazáshoz a szervezet Azure AD hozzáférési Panel vagy az Office 365 portálra. Ezzel a hivatkozásokat adhat hozzá egyéni webes alkalmazások, amelyek jelenleg használják az Active Directory összevonási szolgáltatások (vagy más összevonási szolgáltatásból) az Azure AD-hitelesítés helyett. Vagy mélyhivatkozással hozzáadása adott SharePoint-oldalakba vagy más weblapokat csak át szeretné megjeleníteni a felhasználók hozzáférési Paneljein. 
 
 Kiválasztása után **tovább**, meg kell adnia összekapcsolása az alkalmazás URL-címet. Miután végeztünk ezzel, felhasználók és csoportok rendelhetők hozzá az alkalmazásról, így az alkalmazás megjelenik a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](end-user-experiences.md) azoknak a felhasználóknak.
 

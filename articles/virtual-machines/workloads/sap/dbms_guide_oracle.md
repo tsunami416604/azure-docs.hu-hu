@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/07/2018
+ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288645"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435684"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz
 
@@ -321,13 +321,13 @@ Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP kapcsolatban a dokument
 
 | Megjegyzés száma | Beosztás |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-on: támogatott termékek és Azure-beli Virtuálisgép-típusok |
-| [2015553] |A Microsoft Azure-beli SAP: támogatás előfeltételei |
+| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure virtuális gépek típusai |
+| [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
 | [1999351] |Továbbfejlesztett Azure Monitoring for SAP hibaelhárítási |
 | [2178632] |Metrikák figyelése a Microsoft Azure-beli SAP-kulcs |
-| [2191498] |SAP használata Linux az Azure-ral: Enhanced Monitoring |
-| [2039619] |A Microsoft Azure-ban, az Oracle-adatbázishoz az SAP-alkalmazások: támogatott termékek és termékverziók |
-| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: SAP-licenccel kapcsolatos problémák |
+| [2191498] |SAP használata Linux az Azure-ral: Speciális figyelés |
+| [2039619] |SAP-alkalmazások a Microsoft Azure-ban, az Oracle-adatbázishoz: Támogatott termékek és termékverziók |
+| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: Az SAP-licenccel kapcsolatos problémák |
 | [2069760] |Oracle Linux 7.x SAP telepítése és frissítése |
 | [1597355] |Linux-lapozóterület javaslat |
 | [2171857] |Oracle Database 12c - fájlrendszer Linux-támogatás |
@@ -428,7 +428,9 @@ SAP telepítési kézikönyvek összhangban Oracle kapcsolatos fájlok ne legyen
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-A fájlrendszerek ext4, vagy xfs vagy Oracle ASMOnly az Azure-ban Oracle-adatbázis fájlok támogatottak. Ezekhez a fájlrendszerekhez VHD-k vagy a Managed Disks-alapú adatbázis összes fájlja kell tárolni. Ezeket a lemezeket az Azure virtuális géphez csatlakoztatott és a rendszer az Azure BLOB Storage-lap (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy [Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+A fájlrendszerek ext4, vagy xfs vagy Oracle ASM támogatja az Azure-ban Oracle-adatbázis fájlok. Ezekhez a fájlrendszerekhez VHD-k vagy a Managed Disks-alapú adatbázis összes fájlja kell tárolni. Ezeket a lemezeket az Azure virtuális géphez csatlakoztatott és a rendszer az Azure BLOB Storage-lap (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy [Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+
+Az Oracle Linux UEK kernelekkel, a minimális 4-es verziójú UEK támogatásához szükséges [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms).
 
 Ajánlott használandó [Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Azt is javasoljuk használatával [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) az Oracle Database üzemelő példányok.
 
@@ -493,7 +495,7 @@ Oracle Data Guard támogatott magas rendelkezésre állású és vész-helyreál
 Az Azure-ban Oracle-adatbázisok vész helyreállítási szempontjai jelennek meg a cikk [az Azure-környezet egy Oracle Database 12c adatbázis vészhelyreállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
 ### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-Az Oracle Linux 7 Update 5 (Oracle Linux 7.5) biztosítunk támogatást az Azure gyorsított hálózatkezelés Oracle Linux rendszeren. Ha nem tudja frissíteni a legújabb Oracle Linux 7.5 verziót, lehet egy megkerülő megoldás a RedHat kompatibilis Kernel (RHCK) helyett az Oracle UEK kernel. Az RHEL-kernelt belül Oracle Linux támogatott SAP-Jegyzetnek megfelelően [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Az Azure gyorsított hálózatkezelés a minimális RHCKL kernel kiadási kell lennie a 3.10.0-862.13.1.el7.
+Az Oracle Linux 7 Update 5 (Oracle Linux 7.5) biztosítunk támogatást az Azure gyorsított hálózatkezelés Oracle Linux rendszeren. Ha nem tudja frissíteni a legújabb Oracle Linux 7.5 verziót, lehet egy megkerülő megoldás a RedHat kompatibilis Kernel (RHCK) helyett az Oracle UEK kernel. Az RHEL-kernelt belül Oracle Linux támogatott SAP-Jegyzetnek megfelelően [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Az Azure gyorsított hálózatkezelés a minimális RHCKL kernel kiadási kell lennie a 3.10.0-862.13.1.el7. A UEK kernel, az Oracle Linux együtt a [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), kell használnia az Oracle UEK 5 kernelverzióját.
 
 Ha nem telepít virtuális gépeket nem Azure Marketplace-en alapuló rendszerképből, majd van szüksége további konfigurációs fájlokat kell másolni a virtuális gép végrehajtásával: 
 <pre><code># Copy settings from github to correct place in VM

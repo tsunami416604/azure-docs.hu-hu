@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341745"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410363"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -298,7 +298,7 @@ SQL-adatbázis védelmének konfigurálása:
 
     ![Válassza ki a biztonsági mentés konfigurálása](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Az Azure Backup szolgáltatás minden SQL Server-példányokat az önálló adatbázisok és az SQL Server Always On rendelkezésre állási csoportok jeleníti meg. Az önálló adatbázisok az SQL Server-példány megtekintéséhez jelölje ki a sávnyílra bal oldalán a példány nevét. Hasonló módon válassza ki a sávnyílra a bal oldalon, az Always On rendelkezésre állási csoport az adatbázisok listájának megtekintéséhez. Az alábbi képen egy példa egy különálló példány és a egy Always On rendelkezésre állási csoportban.
+    Az Azure Backup szolgáltatás minden SQL Server-példányokat az önálló adatbázisok és az SQL Server mindig a rendelkezésre állási csoportok jeleníti meg. Az önálló adatbázisok az SQL Server-példány megtekintéséhez jelölje ki a sávnyílra bal oldalán a példány nevét. Hasonló módon válassza ki a sávnyílra bal oldalán mindig a rendelkezésre állási csoport az adatbázisok listájának megtekintéséhez. Az alábbi képen egy példa egy különálló példány és a egy mindig a rendelkezésre állási csoportban.
 
       ![Az önálló adatbázisokhoz minden SQL Server-példányokat megjelenítése](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -312,7 +312,7 @@ SQL-adatbázis védelmének konfigurálása:
     > Biztonsági mentési terhelés optimalizálása érdekében az Azure Backup bontja nagy biztonsági mentési feladatok több köteg. Egy biztonsági mentési feladat adatbázisok maximális száma érték az 50.
     >
 
-      Azt is megteheti, engedélyezheti [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) az egész példány vagy AlwaysOn rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT**  oszlop. A [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) szolgáltatás nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
+      Engedélyezheti azt is megteheti, [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) a teljes példánya vagy mindig a rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT**  oszlop. A [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) szolgáltatás nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
 
       ![Az Always On rendelkezésre állási csoport automatikus védelmének engedélyezése](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -347,9 +347,7 @@ SQL-adatbázis védelmének konfigurálása:
 
 ## <a name="auto-protect-sql-server-in-azure-vm"></a>SQL Server automatikus védelme az Azure-beli virtuális gépen  
 
-Automatikus védelem egy olyan funkció, amely lehetővé teszi a meglévő adatbázisok, valamint a jövőbeli adatbázis lenne egy önálló SQL Server-példány és a egy SQL Server Always On rendelkezésre állási csoport automatikus védelmét.
-
-Abban az esetben, ha egy példány vagy rendelkezésre állási csoport már hozzá tartozó védett adatbázisok némelyike, továbbra is kapcsolhatja **ON** auto-protect lehetőséget. Ebben az esetben a biztonsági mentési házirend, így meghatározott csak nem védett adatbázisokon alkalmazható közben lesz a már védett adatbázisok továbbra is a megfelelő szabályzatokkal védett.
+Automatikus védelem lehetővé teszi, hogy minden meglévő és adatbázisok, akkor adja hozzá a jövőben az önálló SQL Server-példányt, vagy egy SQL Server mindig a rendelkezésre állási csoport automatikus védelmét. Bekapcsolásával **ON** automatikus védelem és a egy biztonsági mentési házirend kiválasztásához az újonnan védett adatbázisok vonatkoznak, a meglévő védett adatbázisok továbbra is az előző szabályzatot.
 
 ![Az Always On rendelkezésre állási csoport automatikus védelmének engedélyezése](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -479,7 +477,7 @@ Lehetőség kiválasztásával egy teljes vagy különbözeti biztonsági menté
     - **Adatbázis felülírása**: Állítsa vissza az adatokat az eredeti forrás, ugyanazon SQL Server-példányon. Ez a beállítás hatását, hogy az eredeti adatbázis felülírásához.
 
     > [!Important]
-    > Ha a kijelölt adatbázis Always On rendelkezésre állási csoporthoz tartozik, az SQL Server felülírja az adatbázis nem teszi lehetővé. Ebben az esetben, csak a **máshová** beállítás engedélyezve van.
+    > Ha a kijelölt adatbázis mindig a rendelkezésre állási csoporthoz tartozik, az SQL Server felülírja az adatbázis nem teszi lehetővé. Ebben az esetben, csak a **máshová** beállítás engedélyezve van.
     >
 
     ![Visszaállítási konfiguráció menü](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)

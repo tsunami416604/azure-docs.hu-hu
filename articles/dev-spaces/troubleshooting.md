@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104594"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413608"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -138,6 +138,18 @@ A hiba azt jelenti, hogy adott azds.exe nem szerepel a PATH környezeti változ�
 
 Indítsa el a VS Code a parancssorból, ahol a PATH környezeti változóhoz helyesen van beállítva.
 
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Hiba történt "fejlesztése és hibakeresése"projectname"szükséges eszközök elavultak."
+
+Ez a hiba, a Visual Studio Code látni fogja, ha az Azure fejlesztési tárolóhelyek, de az Azure fejlesztési tárolóhelyek CLI egy régebbi verzióját a VS Code-bővítmény egy újabb verziója.
+
+### <a name="try"></a>Kipróbálás
+
+Töltse le és telepítse az Azure fejlesztési tárolóhelyek CLI legújabb verzióját:
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
+
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>"Azds" hiba történt egy belső vagy külső parancs, működtethető program vagy parancsfájl nem ismerhető fel
  
 Ez a hiba megjelenhet, ha azds.exe nincs telepítve vagy megfelelően konfigurálva.
@@ -172,8 +184,8 @@ A tároló port nem érhető el. Ez a hiba akkor fordulhat elő, mert:
 ### <a name="try"></a>Próbálja ki:
 1. Ha a tároló folyamatban létrehozott és üzembe helyezése folyamatban van, várjon 2-3 másodpercet, és próbálkozzon újra a szolgáltatás elérésével. 
 1. Ellenőrizze a port konfigurációját. A megadott portszámot kell **azonos** az összes, az az alábbi eszközöket:
-    * **Docker-fájlban:** által meghatározott a `EXPOSE` utasítást.
-    * **[Helm-diagram](https://docs.helm.sh):** által meghatározott a `externalPort` és `internalPort` értékek szolgáltatáshoz (gyakran található egy `values.yml` fájl),
+    * **Docker-fájlban:** Azokat a `EXPOSE` utasítást.
+    * **[Helm-diagram](https://docs.helm.sh):** Azokat a `externalPort` és `internalPort` értékek szolgáltatáshoz (gyakran található egy `values.yml` fájl),
     * Az alkalmazás kódjában, például a node.js-ben az éppen megnyitott portokat: `var server = app.listen(80, function () {...}`
 
 
@@ -187,7 +199,7 @@ Kell futtatásakor `azds up` a kód gyökérkönyvtárából szeretné futtatni,
 1. Módosítsa az aktuális könyvtár a legfelső szintű mappát, amely tartalmazza a szolgáltatás kódot. 
 1. Ha nem rendelkezik egy _azds.yaml_ futtatása kód mappában található fájl `azds prep` Docker, Kubernetes- és Azure-fejlesztési tárolóhelyek eszközök létrehozásához.
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hiba: "a függőleges vonal program váratlanul kilépett, hibakód 126 azds."
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hiba: "A függőleges vonal program"azds"váratlanul kilépett, hibakód 126."
 A VS Code hibakereső indítása előfordulhat, hogy időnként ezt a hibát eredményez.
 
 ### <a name="try"></a>Próbálja ki:

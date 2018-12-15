@@ -4,25 +4,25 @@ description: Ismerje meg, az Update Management ügynökkel kapcsolatos problém�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/06/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 028a06a7fb627fd69bdd2f0a2084bbdef11eaed4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077240"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438642"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>A Linuxos ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
-Előfordulhat, hogy számos oka lehet az Azure machine nem látható **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti a hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
+Előfordulhat, hogy a gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Azure-beli gépek hibaelhárító futtatása az Azure Portalon és a nem Azure-gépek a [offline forgatókönyv](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
-Kattintson a **hibaelhárítás** mellett kapcsolni a **frissítési ügynök készültsége** oszlop a portálon, indítsa el a **hibaelhárítása Windows Update Agent** lap. Ezen a lapon látható az ügynök és a egy hivatkozás, ez a cikk segítséget nyújt a problémák elhárítása a kapcsolatos problémák.
+Azure-beli gépek, kattintson a **hibaelhárítás** hivatkozásra a **frissítési ügynök készültsége** oszlopa a portál elindítja a **hibaelhárítása Windows Update Agent** lap. Nem Azure-gépek a hivatkozás teszi elérhetővé, az ebben a cikkben. Tekintse meg a [offline utasításokat](#offline) egy nem Azure-beli gép hibaelhárítása.
 
 ![virtuális gép listáját tartalmazó lapon](../media/update-agent-issues-linux/vm-list.png)
 
@@ -54,12 +54,12 @@ Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldol
 
 ### <a name="oms-agent"></a>Az OMS-ügynök
 
-Ezen ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Ez az ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="oms-agent-status"></a>Az OMS-ügynök állapota
 
-Ez az ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök fut-e. Ha az ügynök nem fut, indítsa újra a sikertelen bejelentkezési kísérletet a következő parancsot futtathatja. Az ügynök hibaelhárítással kapcsolatos további információkért lásd: [Linux hibrid Runbook-feldolgozó hibaelhárítása](hybrid-runbook-worker.md#linux)
+Ez az ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök fut-e. Ha az ügynök nem fut, próbálja meg újraindítani a következő parancsot futtathatja. Az ügynök hibaelhárítással kapcsolatos további információkért lásd: [Linux hibrid Runbook-feldolgozó hibaelhárítása](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -71,7 +71,7 @@ Ez az ellenőrzés határozza meg, ha a ügynök több munkaterülethez is jelen
 
 ### <a name="hybrid-runbook-worker"></a>hibrid runbook-feldolgozó
 
-A Linuxhoz készült OMS-ügynök ne legyen a hibrid Runbook-feldolgozó csomag ellenőrzi. Ez a csomag az Update Management működéséhez szükség.
+Ez az ellenőrzés ellenőrzi, hogy rendelkezik-e a Linuxhoz készült OMS-ügynök a hibrid Runbook-feldolgozó csomag. Ez a csomag az Update Management működéséhez szükség.
 
 ### <a name="hybrid-runbook-worker-status"></a>A hibrid Runbook-feldolgozó állapota
 

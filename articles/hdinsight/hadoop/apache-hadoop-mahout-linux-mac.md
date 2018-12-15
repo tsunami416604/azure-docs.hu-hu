@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 9e0f614344372d08974bc7592ccb88e7382e4cb4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017542"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435191"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Filmajánlók Apache Mahout az Apache Hadoop Linux-alapú HDInsight (SSH) használatával
 
@@ -28,14 +28,14 @@ Mahout egy [gépi tanulás] [ ml] library for Apache Hadoop. Mahout adatok feldo
 
 * Egy Linux-alapú HDInsight-fürt. Az egyik létrehozásával kapcsolatos információkért lásd: [HDInsight Linux-alapú Hadoop használatának első lépései][getstarted].
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Egy SSH-ügyfél. További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="mahout-versioning"></a>Mahout verziószámozás
+## <a name="apache-mahout-versioning"></a>Az Apache Mahout verziószámozás
 
-A HDInsight létrehozása a Mahout verziójára vonatkozó további információkért lásd: [HDInsight verziója és a Hadoop-összetevők](../hdinsight-component-versioning.md).
+A HDInsight létrehozása a Mahout verziójára vonatkozó további információkért lásd: [HDInsight verziók és az Apache Hadoop-összetevők](../hdinsight-component-versioning.md).
 
 ## <a name="recommendations"></a>Javaslatok megértése
 
@@ -43,11 +43,11 @@ A Mahout által biztosított függvények egyikét egy ajánlattételi modul be�
 
 Az alábbi munkafolyamat egy egyszerű példa film adatait használó:
 
-* **Közös előfordulás**: János Alice és az összes tetszett Bob *Star Wars*, *vissza is a Empire*, és *visszaküldése az ereje*. Mahout határozza meg, hogy felhasználók, akik ezek filmek közül bármelyik is, mint például a másik kettőt.
+* **közös előfordulás**: János Alice és az összes tetszett Bob *Star Wars*, *vissza is a Empire*, és *visszaküldése az ereje*. Mahout határozza meg, hogy felhasználók, akik ezek filmek közül bármelyik is, mint például a másik kettőt.
 
-* **Közös előfordulás**: Bálint és Alice is tetszett *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*. Mahout határozza meg, hogy az előző három filmek is kedvelő felhasználók például ezek három filmek.
+* **közös előfordulás**: Bob és Alice is tetszett *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*. Mahout határozza meg, hogy az előző három filmek is kedvelő felhasználók például ezek három filmek.
 
-* **Hasonlósági javaslat**: mivel János tetszett az első három filmek, Mahout megvizsgálja filmek, hogy mások hasonló beállítások tetszett, de János rendelkezik nem figyelt (tetszett vagy magas). Ebben az esetben a Mahout javasolja *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*.
+* **Hasonlósági javaslat**: János az első három filmek tetszett, mert Mahout megvizsgálja filmek, hogy mások hasonló beállítások tetszett, de János rendelkezik nem figyelt (tetszett/névleges). Ebben az esetben a Mahout javasolja *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*.
 
 ### <a name="understanding-the-data"></a>Az adatok megismerése
 
@@ -59,8 +59,8 @@ A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, 
 
     196    242    3    881250949
     186    302    3    891717742
-    22    377    1    878887116
-    244    51    2    880606923
+    22     377    1    878887116
+    244    51     2    880606923
     166    346    1    886397596
 
 ## <a name="run-the-analysis"></a>Az elemzés futtatása
@@ -71,7 +71,7 @@ Alkalmazás a következő parancsot a fürthöz SSH-kapcsolatot, a javaslat fela
 mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > A feladat befejezése több percet is igénybe vehet, és előfordulhat, hogy több MapReduce-feladatok futtatásához.
 
 ## <a name="view-the-output"></a>A kimenet megtekintéséhez
@@ -188,7 +188,7 @@ Feladatok létrehozása a mahout ne távolítsa el a feladat feldolgozása sorá
 hdfs dfs -rm -f -r /temp/mahouttemp
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Ha szeretne futtassa újra a parancsot, a kimeneti könyvtárat is törölni kell. A címtár törléséhez használja a következő:
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
@@ -198,8 +198,8 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 Most, hogy, hogyan használható a Mahout hogyan, Fedezze fel az adatok használata a HDInsight egyéb módjait:
 
-* [Hive a HDInsight](hdinsight-use-hive.md)
-* [A HDInsight Pig](hdinsight-use-pig.md)
+* [Az Apache Hive a HDInsight](hdinsight-use-hive.md)
+* [A HDInsight Apache Pig](hdinsight-use-pig.md)
 * [A MapReduce és a HDInsight](hdinsight-use-mapreduce.md)
 
 [build]: https://mahout.apache.org/developers/buildingmahout.html

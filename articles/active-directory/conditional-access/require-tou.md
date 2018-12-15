@@ -13,17 +13,17 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901886"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413370"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: A felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése 
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése 
 
 Előtt fér hozzá az egyes felhőalapú alkalmazásokhoz a környezetében, érdemes hozzájárulási beolvasni a felhasználó elfogadja a használati feltételeket (feltételek) formájában. Az Azure Active Directory (Azure AD) feltételes hozzáférés a következőket tartalmazza: 
 
@@ -72,13 +72,13 @@ A szakasz ismerteti a lépéseket egy minta használati feltételek létrehozás
 
 2. Típus **a használati feltételeket tartalmazó fájl**, és a számítógépre, majd mentse a dokumentumot **mytou.pdf**.
 
-3. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
+3. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
 
 4. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**. 
 
     ![Azure Active Directory](./media/require-tou/02.png)
 
-5. Az a **Azure Active Directory** lap a **kezelés** területén kattintson **feltételes hozzáférési**.
+5. Az a **Azure Active Directory** lap a **biztonsági** területén kattintson **feltételes hozzáférési**.
 
     ![Feltételes hozzáférés](./media/require-tou/03.png) 
 
@@ -237,7 +237,7 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
 3. Kattintson a **mi történik, ha**.
 
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik. 
 

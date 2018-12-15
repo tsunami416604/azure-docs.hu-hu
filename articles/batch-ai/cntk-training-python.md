@@ -15,14 +15,17 @@ ms.devlang: Python
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0c805deb85a999d3c23be24b81c1d97ed5fe55eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 86ce9fd77ccf83ed6f5f1c722b4c8c809ef0eedf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057699"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407916"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>CNTK-betanítási feladatok futtatása az Azure Python SDK-val
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez a cikk bemutatja, hogyan tanítható be az Azure Python SDK használatával egy mintául szolgáló Microsoft Cognitive Toolkit- (CNTK-) modell a Batch AI szolgáltatással.
 

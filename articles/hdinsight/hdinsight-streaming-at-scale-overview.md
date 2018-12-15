@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016250"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407252"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
 Valós idejű big data-megoldások a mozgásban lévő adatok cselekedhet. Ezeket az adatokat általában a legértékesebb érkezési a időpontban. Ha a bejövő adatfolyam nagyobb, mint az adott időpontban lehet kezelni, szükség lehet a sávszélesség-szabályozási le erőforrásokat. Azt is megteheti egy HDInsight-fürtöt is méretezhető a folyamatos átviteli megoldás igény szerinti csomópontok hozzáadásával.
 
-A streamelési alkalmazások esetén egy vagy több adatforrás generál nélkül elvetését minden hasznos információt gyorsan betöltött-események (néha a másodpercenként több millió). A bejövő eseményeket kezeli a *streampufferelésnek*, más néven is néven *események üzenetsorba való helyezése*, mint például a szolgáltatás által [Kafka](kafka/apache-kafka-introduction.md) vagy [az Event Hubs](https://azure.microsoft.com/services/event-hubs/). Miután összegyűjtötte az eseményeket, belül valós idejű elemzési rendszert használ az adatok elemzésével aztán a *adatfolyam-feldolgozás* réteg, mint például [Storm](storm/apache-storm-overview.md) vagy [Spark Streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók a hosszú távú tárolási rendszerek, például [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/), és megjelennek az üzleti intelligencia irányítópulton, valós időben például [Power BI](https://powerbi.microsoft.com), Tableau vagy egy egyéni weblap .
+A streamelési alkalmazások esetén egy vagy több adatforrás generál nélkül elvetését minden hasznos információt gyorsan betöltött-események (néha a másodpercenként több millió). A bejövő eseményeket kezeli a *streampufferelésnek*, más néven is néven *események üzenetsorba való helyezése*, például a szolgáltatás által [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [az Event Hubs](https://azure.microsoft.com/services/event-hubs/). Miután összegyűjtötte az eseményeket, belül valós idejű elemzési rendszert használ az adatok elemzésével aztán a *adatfolyam-feldolgozás* réteg, mint például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók a hosszú távú tárolási rendszerek, például [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/), és megjelennek az üzleti intelligencia irányítópulton, valós időben például [Power BI](https://powerbi.microsoft.com), Tableau vagy egy egyéni weblap .
 
 ![HDInsight Streaming-minták](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ További információkért lásd: [Mi az Apache Storm on Azure HDInsight?](storm
 
 Spark Streaming az Spark, amely lehetővé teszi, hogy használja újra ugyanazt a kódot használhatja a kötegelt feldolgozáshoz kiterjesztése. Kombinálhatja a batch- és interaktív lekérdezések használata ugyanabban az alkalmazásban. Ellentétben a Storm, Spark Streaming biztosít állapotalapú pontosan-szemantika feldolgozása után. Az együttes alkalmazásával a [Kafka közvetlen API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html), amely biztosítja, hogy minden Kafka-adatok által fogadott Spark Streaming pontosan egyszer, lehetőség a teljes körű pontosan elérése-egyszer garantálja. Egyik erőssége a Spark Streaming annak és hibatűrő képességeit, a helyreállítás gyorsan meghibásodott csomópontok, amikor több csomóponton vannak használatban a fürtön belül.
 
-További információkért lásd: [Mi a Spark Streaming?](hdinsight-spark-streaming-overview.md).
+További információkért lásd: [Mi az Apache Spark Streaming?](hdinsight-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Fürt méretezése
 
@@ -65,5 +65,5 @@ Ezeket a paramétereket, minden alkalmazás, amely a fürtön futnak, és minden
 
 * [A HDInsight Apache Storm használatának első lépései](storm/apache-storm-tutorial-get-started-linux.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](storm/apache-storm-example-topology.md)
-* [A HDInsight-alapú Spark bemutatása](spark/apache-spark-overview.md)
+* [Az Apache Spark on HDInsight bemutatása](spark/apache-spark-overview.md)
 * [A HDInsight Apache Kafka használatának első lépései](kafka/apache-kafka-get-started.md)

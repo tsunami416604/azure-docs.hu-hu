@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b09f64e2183453b3656efa340d53682a241dd00e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017953"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410533"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -80,7 +80,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Az erdő felhasználói szabályozó beállításának beolvasása.<br>Példa – például ldapsuccessfulbinds, ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches MetricCounterName.<br>Beállításai, a felhasználói felület diagramok stb. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Erdő például erdő neve, ebben az erdőben a tartományok, helyek és a helyek részletek stb száma az adott erdőben összefoglaló beolvasása. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Lekérdezi a támogatott mérőszámok listája egy adott szolgáltatáshoz.<br>A példában a fiók zárolásának extranetes, összes sikertelen kérelem, szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), jogkivonat-kérelmeket/sec AD FS szolgáltatás stb.<br>Az NTLM-hitelesítések/mp, LDAP sikeres kötések/mp, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomainService a.<br>Futtassa a profil késés, a TCP-kapcsolatok létrehozott, Insights Agent a saját memória, exportálási statisztikák az Azure AD-hez ADSync szolgáltatás. |
-> | Műveletek | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: extranetes a fiók zárolásának, a sikertelen kérelmek teljes, a szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
+> | Műveletek | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | Az API-t egy premium-bérlő összes előkészítve ADDomainServices listájának beolvasása. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/read | A szolgáltatás részletei lekéri a megadott szolgáltatásnév. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | A megadott szolgáltatásnév számára a kiszolgálók replikálási adatainak beolvasása. |
@@ -115,9 +115,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ADHybridHealthService/services/exportstatus/read | Az Exportálás állapota lekéri egy adott szolgáltatáshoz. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | Riasztások visszajelzés lekéri egy adott szolgáltatás és -kiszolgálót. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/metricmetadata/read | Lekérdezi a támogatott mérőszámok listája egy adott szolgáltatáshoz.<br>A példában a fiók zárolásának extranetes, összes sikertelen kérelem, szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), jogkivonat-kérelmeket/sec AD FS szolgáltatás stb.<br>Az NTLM-hitelesítések/mp, LDAP sikeres kötések/mp, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomainService a.<br>Futtassa a profil késés, a TCP-kapcsolatok létrehozott, Insights Agent a saját memória, exportálási statisztikák az Azure AD-hez ADSync szolgáltatás. |
-> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Adja meg a szolgáltatás, az API-t az átlag az adott szolgáltatás metrikáinak beolvasása.<br>Például az API segítségével kapcsolatos információk: extranetes a fiók zárolásának, a sikertelen kérelmek teljes, a szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
-> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: extranetes a fiók zárolásának, a sikertelen kérelmek teljes, a szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
-> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Adja meg a szolgáltatás, az API lekérdezi a metrikák adott szolgáltatás összesített nézetet.<br>Például az API segítségével kapcsolatos információk: extranetes a fiók zárolásának, a sikertelen kérelmek teljes, a szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
+> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Adja meg a szolgáltatás, az API-t az átlag az adott szolgáltatás metrikáinak beolvasása.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
+> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
+> | Műveletek | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Adja meg a szolgáltatás, az API lekérdezi a metrikák adott szolgáltatás összesített nézetet.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | Adja hozzá, vagy egy szolgáltatás figyelési konfigurációjának frissítése. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | Lekéri egy adott szolgáltatáshoz a figyelési konfigurációhoz. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Adja hozzá, vagy frissíti a figyelési konfigurációk a szolgáltatáshoz. |
@@ -130,7 +130,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | Egy adott kiszolgálóhoz az API-t, amely a kiszolgálók és a legújabb idővel minden feltöltendő feltöltése adattípusokat listáját kéri le. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/delete | Törli a szolgáltatásban egy kiszolgálópéldányt. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | Lekéri egy adott szinkronizálási szolgáltatása a szinkronizálási exportálása hiba részletes adatait. |
-> | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: extranetes a fiók zárolásának, a sikertelen kérelmek teljes, a szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
+> | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/read | Beolvassa a kiszolgálópéldány a szolgáltatásban. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | Lekéri egy adott bérlő esetében a szolgáltatás konfigurációját. |
 > | Műveletek | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | Lekéri egy adott bérlő funkció engedélyezési állapota. |
@@ -600,38 +600,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Batch/register/action | A Batch erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása, és lehetővé teszi, hogy a Batch-fiókok létrehozása |
 > | Műveletek | Microsoft.Batch/unregister/action | A Batch erőforrás-szolgáltató megakadályozza, hogy a Batch-fiókok létrehozása az előfizetés regisztrációjának törlése |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Művelettípus | Művelet | Leírás |
-> | --- | --- | --- |
-> | Műveletek | Microsoft.BatchAI/clusters/read | Batch AI-fürtök listája vagy egy Batch AI-fürtön tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/fileservers/read | Batch AI fileservers sorolja fel, vagy egy Batch AI-fájlkiszolgáló tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/locations/operationresults/read | A megadott Azure-régiónál Batch AI az aszinkron művelet eredményének beolvasása |
-> | Műveletek | Microsoft.BatchAI/locations/operationstatuses/read | A megadott Azure-régiónál Batch AI az aszinkron művelet állapotának beolvasása |
-> | Műveletek | Microsoft.BatchAI/locations/usages/read | A megadott előfizetés Batch AI lebontott lekérdezi a megadott Azure-régiónál |
-> | Műveletek | Microsoft.BatchAI/register/action | A Batch AI erőforrás-szolgáltató előfizetésének regisztrálása és a Batch AI-erőforrások létrehozásának engedélyezése |
-> | Műveletek | Microsoft.BatchAI/unregister/action | A Batch AI erőforrás-szolgáltató megakadályozza, hogy a Batch AI-erőforrások létrehozása az előfizetés regisztrációjának törlése |
-> | Műveletek | Microsoft.BatchAI/workspaces/clusters/delete | A Batch AI-fürt törlése |
-> | Műveletek | Microsoft.BatchAI/workspaces/clusters/read | Batch AI-fürtök listája vagy egy Batch AI-fürtön tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/workspaces/clusters/remoteLoginInformation/action | Egy Batch AI-fürt távoli bejelentkezési adatokat listázza |
-> | Műveletek | Microsoft.BatchAI/workspaces/clusters/write | Létrehoz egy új Batch AI-fürtöt, vagy egy meglévő Batch AI-fürt frissítése |
-> | Műveletek | Microsoft.BatchAI/workspaces/delete | Egy Batch AI-munkaterület törlése |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/delete | Egy Batch AI kísérletet törlése |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/delete | Egy Batch AI-feladat törlése |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/listoutputfiles/action | A kimeneti fájlokat egy Batch AI-feladat listája |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/read | Batch AI-feladatok listája vagy egy Batch AI-feladat tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/remoteLoginInformation/action | Egy Batch AI-feladat távoli bejelentkezési adatokat listázza |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/terminate/action | Egy Batch AI-feladat leáll |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/jobs/write | Egy új Batch AI-feladat létrehozása vagy frissítése egy meglévő Batch AI-feladat |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/read | Batch AI listák kísérleteket, vagy egy Batch AI kísérletet tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/workspaces/experiments/write | Batch AI új kísérlet létrehozása vagy frissítése egy már meglévő Batch AI kísérlet |
-> | Műveletek | Microsoft.BatchAI/workspaces/fileservers/delete | Törli a Batch AI-fájlkiszolgáló |
-> | Műveletek | Microsoft.BatchAI/workspaces/fileservers/read | Batch AI fileservers sorolja fel, vagy egy Batch AI-fájlkiszolgáló tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/workspaces/fileservers/write | Egy új Batch AI-fájlkiszolgáló létrehozása vagy frissítése egy már meglévő Batch AI-fájlkiszolgáló |
-> | Műveletek | Microsoft.BatchAI/workspaces/read | Batch AI-munkaterületek listája vagy egy Batch AI-munkaterület tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.BatchAI/workspaces/write | Batch AI új munkaterület létrehozása vagy frissítése egy meglévő Batch AI-munkaterületet |
-
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -658,20 +626,20 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervezetösszetevők törlése |
-> | Műveletek | Microsoft.Blueprint/blueprintAssignments/read | Tetszőleges tervezetösszetevők olvasása |
-> | Műveletek | Microsoft.Blueprint/blueprintAssignments/write | Létrehozás vagy frissítés tetszőleges tervezetösszetevők |
-> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/delete | Tetszőleges tervezetösszetevők törlése |
-> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/read | Tetszőleges tervezetösszetevők olvasása |
-> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/write | Létrehozás vagy frissítés tetszőleges tervezetösszetevők |
-> | Műveletek | Microsoft.Blueprint/blueprints/delete | Tetszőleges tervezetek törlése |
-> | Műveletek | Microsoft.Blueprint/blueprints/read | Tetszőleges tervezetek olvasása |
-> | Műveletek | Microsoft.Blueprint/blueprints/versions/artifacts/read | Tetszőleges tervezetösszetevők olvasása |
-> | Műveletek | Microsoft.Blueprint/blueprints/versions/delete | Tetszőleges tervezetek törlése |
-> | Műveletek | Microsoft.Blueprint/blueprints/versions/read | Tetszőleges tervezetek olvasása |
-> | Műveletek | Microsoft.Blueprint/blueprints/versions/write | Bármely tervezetek létrehozása vagy frissítése |
-> | Műveletek | Microsoft.Blueprint/blueprints/write | Bármely tervezetek létrehozása vagy frissítése |
-> | Műveletek | Microsoft.Blueprint/register/action | Az Azure tervezetek erőforrás-szolgáltató regisztrálása |
+> | Műveletek | Microsoft.Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
+> | Műveletek | Microsoft.Blueprint/blueprintAssignments/read | Tetszőleges tervelemek olvasása |
+> | Műveletek | Microsoft.Blueprint/blueprintAssignments/write | Tetszőleges tervelemek létrehozása vagy frissítése |
+> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/delete | Tetszőleges tervelemek törlése |
+> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/read | Tetszőleges tervelemek olvasása |
+> | Műveletek | Microsoft.Blueprint/blueprints/artifacts/write | Tetszőleges tervelemek létrehozása vagy frissítése |
+> | Műveletek | Microsoft.Blueprint/blueprints/delete | Tetszőleges tervek törlése |
+> | Műveletek | Microsoft.Blueprint/blueprints/read | Tetszőleges tervek olvasása |
+> | Műveletek | Microsoft.Blueprint/blueprints/versions/artifacts/read | Tetszőleges tervelemek olvasása |
+> | Műveletek | Microsoft.Blueprint/blueprints/versions/delete | Tetszőleges tervek törlése |
+> | Műveletek | Microsoft.Blueprint/blueprints/versions/read | Tetszőleges tervek olvasása |
+> | Műveletek | Microsoft.Blueprint/blueprints/versions/write | Tetszőleges tervek létrehozása vagy frissítése |
+> | Műveletek | Microsoft.Blueprint/blueprints/write | Tetszőleges tervek létrehozása vagy frissítése |
+> | Műveletek | Microsoft.Blueprint/register/action | Az Azure Blueprints erőforrás-szolgáltatójának regisztrálása |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -1324,14 +1292,14 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerService/containerServices/delete | Egy tárolószolgáltatás törlése |
 > | Műveletek | Microsoft.ContainerService/containerServices/read | Egy tárolószolgáltatás beolvasása |
 > | Műveletek | Microsoft.ContainerService/containerServices/write | Új tárolószolgáltatás létrehozása vagy meglévő frissítése |
-> | Műveletek | Microsoft.ContainerService/locations/operationresults/read | Egy aszinkron művelet eredményének állapotát olvassa be |
+> | Műveletek | Microsoft.ContainerService/locations/operationresults/read | Aszinkron művelet eredményállapotának beolvasása |
 > | Műveletek | Microsoft.ContainerService/locations/operations/read | Egy aszinkron művelet állapotát olvassa be |
-> | Műveletek | Microsoft.ContainerService/locations/orchestrators/read | Sorolja fel az támogatott vezénylők |
+> | Műveletek | Microsoft.ContainerService/locations/orchestrators/read | A támogatott vezénylők listázása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Egy felügyelt fürt hozzáférési profiljának beolvasása szerepkörnév alapján a hitelesítő adatok listázásával |
 > | Műveletek | Microsoft.ContainerService/managedClusters/accessProfiles/read | Egy felügyelt fürt hozzáférési profiljának beolvasása szerepkörnév alapján |
 > | Műveletek | Microsoft.ContainerService/managedClusters/delete | Egy felügyelt fürt törlése |
-> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Egy felügyelt fürt a clusterAdmin hitelesítő adatainak listázása |
-> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Egy felügyelt fürt a clusterUser hitelesítő adatainak listázása |
+> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Felügyelt fürt fürtadminisztrátori hitelesítő adatainak listázása |
+> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Felügyelt fürt fürtfelhasználói hitelesítő adatainak listázása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/read | Egy felügyelt fürt beolvasása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | A fürt frissítési profiljának beolvasása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/write | Új felügyelt fürt létrehozása vagy meglévő frissítése |
@@ -1341,9 +1309,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/delete | Open Shift felügyelt fürt törlése |
 > | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/read | Felügyelt Open Shift-fürt létrehozása |
 > | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/write | Létrehoz egy új Open Shift felügyelt fürtöt, vagy egy meglévő frissítése |
-> | Műveletek | Microsoft.ContainerService/operations/read | Microsoft.ContainerService erőforrás-szolgáltató elérhető műveleteinek listázása |
-> | Műveletek | Microsoft.ContainerService/register/action | Az előfizetés regisztrálása a Microsoft.ContainerService erőforrás-szolgáltató |
-> | Műveletek | Microsoft.ContainerService/unregister/action | Előfizetés regisztrációjának Microsoft.ContainerService erőforrás-szolgáltatónál |
+> | Műveletek | Microsoft.ContainerService/operations/read | A Microsoft.ContainerService erőforrás-szolgáltató elérhető műveleteinek listázása |
+> | Műveletek | Microsoft.ContainerService/register/action | Előfizetés regisztrálása a Microsoft.ContainerService erőforrás-szolgáltatónál |
+> | Műveletek | Microsoft.ContainerService/unregister/action | Microsoft.ContainerService erőforrás-szolgáltatói előfizetés regisztrációjának törlése |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -1542,7 +1510,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.Databricks/register/action | Regisztrálás a Databricksben. |
 > | Műveletek | Microsoft.Databricks/workspaces/delete | Databricks-munkaterület eltávolítása. |
-> | Műveletek | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Az elérhető diagnosztikai beállításait adja meg a Databricks-munkaterület |
+> | Műveletek | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | A rendelkezésre álló diagnosztikai beállításait adja meg a Databricks munkaterület |
 > | Műveletek | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | Diagnosztikai beállítások hozzáadása vagy módosítása. |
 > | Műveletek | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | A Databricks-munkaterület elérhető naplódefinícióinak beolvasása |
 > | Műveletek | Microsoft.Databricks/workspaces/read | Databricks-munkaterületek listájának beolvasása. |
@@ -2169,7 +2137,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Fürtmetrikák erőforrások leírásai listájának beolvasása |
 > | Műveletek | Microsoft.EventHub/clusters/read | A fürterőforrás leírásának beolvasása |
 > | Műveletek | Microsoft.EventHub/clusters/write | A fürterőforrás leírásának beolvasása |
-> | Műveletek | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | A VNet-szabályok az EventHub erőforrás-szolgáltató törlése az adott virtuális hálózaton |
+> | Műveletek | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | A megadott virtuális hálózat EventHub erőforrás-szolgáltatójában található virtuális hálózati szabályok törlése |
 > | Műveletek | Microsoft.EventHub/namespaces/authorizationRules/action | Frissítések Namespace engedélyezési szabályt. Az API-t a put műveletet. Put művelet meghívásával használja helyette a a Namespace-engedélyezési szabály frissítése... Ez a művelet nem támogatott az API 2017-04-01-es verzióját. |
 > | Műveletek | Microsoft.EventHub/namespaces/authorizationRules/delete | Namespace engedélyezési szabály törlése. Az alapértelmezett Namespace-engedélyezési szabály nem törölhető.  |
 > | Műveletek | Microsoft.EventHub/namespaces/authorizationRules/listkeys/action | A névtérhez tartozó kapcsolati sztring beolvasása |
@@ -2680,24 +2648,24 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.LocationBasedServices/accounts/delete | (Elavult: /providers/Microsoft.Maps használja) Törölje a Location Based Services-fiók. |
-> | Műveletek | Microsoft.LocationBasedServices/accounts/listKeys/action | (Elavult: /providers/Microsoft.Maps használja) Location Based Services-fiók kulcsainak listázása |
-> | Műveletek | Microsoft.LocationBasedServices/accounts/read | (Elavult: /providers/Microsoft.Maps használja) Get-Location Based Services-fiók. |
-> | Műveletek | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Elavult: /providers/Microsoft.Maps használja) Hozzon létre új Location Based Services-fiók elsődleges vagy másodlagos kulcsot |
-> | Műveletek | Microsoft.LocationBasedServices/accounts/write | (Elavult: /providers/Microsoft.Maps használja) Hozzon létre vagy nem frissíthető a Location Based Services fiók. |
-> | Műveletek | Microsoft.LocationBasedServices/register/action | (Elavult: /providers/Microsoft.Maps használja) A szolgáltató regisztrálása |
+> | Műveletek | Microsoft.LocationBasedServices/accounts/delete | (Elavult: Használjon /providers/Microsoft.Maps) a Location Based Services fiók törlése. |
+> | Műveletek | Microsoft.LocationBasedServices/accounts/listKeys/action | (Elavult: Használja a Location Based Services-fiók kulcsok /providers/Microsoft.Maps)List |
+> | Műveletek | Microsoft.LocationBasedServices/accounts/read | (Elavult: Használjon /providers/Microsoft.Maps) a Location Based Services fiók beolvasása. |
+> | Műveletek | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Elavult: Használjon /providers/Microsoft.Maps) új Location Based Services-fiók elsődleges vagy másodlagos kulcs létrehozása |
+> | Műveletek | Microsoft.LocationBasedServices/accounts/write | (Elavult: Használjon /providers/Microsoft.Maps) létrehozás vagy frissítés egy Location Based Services fiók. |
+> | Műveletek | Microsoft.LocationBasedServices/register/action | (Elavult: Használjon /providers/Microsoft.Maps) regisztrálja a szolgáltatót |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.LocationServices/accounts/delete | (Elavult: /providers/Microsoft.Maps használja) Hely-Services-fiók törlése. |
-> | Műveletek | Microsoft.LocationServices/accounts/listKeys/action | (Elavult: /providers/Microsoft.Maps használja) Location Based Services-fiók kulcsainak listázása |
-> | Műveletek | Microsoft.LocationServices/accounts/read | (Elavult: /providers/Microsoft.Maps használja) Hely-Services-fiók beolvasása. |
-> | Műveletek | Microsoft.LocationServices/accounts/regenerateKey/action | (Elavult: /providers/Microsoft.Maps használja) Hozzon létre új Location Based Services-fiók elsődleges vagy másodlagos kulcsot |
-> | Műveletek | Microsoft.LocationServices/accounts/write | (Elavult: /providers/Microsoft.Maps használja) Létrehozása vagy frissítése egy Location Services-fiók. |
-> | Műveletek | Microsoft.LocationServices/register/action | (Elavult: /providers/Microsoft.Maps használja) A szolgáltató regisztrálása |
+> | Műveletek | Microsoft.LocationServices/accounts/delete | (Elavult: Használjon /providers/Microsoft.Maps) helyen Services-fiók törlése. |
+> | Műveletek | Microsoft.LocationServices/accounts/listKeys/action | (Elavult: Használja a Location Based Services-fiók kulcsok /providers/Microsoft.Maps)List |
+> | Műveletek | Microsoft.LocationServices/accounts/read | (Elavult: Használjon /providers/Microsoft.Maps) egy helyre Services-fiók létrehozása. |
+> | Műveletek | Microsoft.LocationServices/accounts/regenerateKey/action | (Elavult: Használjon /providers/Microsoft.Maps) új Location Based Services-fiók elsődleges vagy másodlagos kulcs létrehozása |
+> | Műveletek | Microsoft.LocationServices/accounts/write | (Elavult: Használjon /providers/Microsoft.Maps) létrehozás vagy frissítés egy helyre Services-fiókot. |
+> | Műveletek | Microsoft.LocationServices/register/action | (Elavult: Használjon /providers/Microsoft.Maps) regisztrálja a szolgáltatót |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 
@@ -3171,7 +3139,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Media/mediaservices/streamingPolicies/write | Hozzon létre vagy bármely adatfolyam-továbbítási szabályzat frissítése |
 > | Műveletek | Microsoft.Media/mediaservices/syncStorageKeys/action | Csatlakoztatott Azure-tárfiók tárolási Hívóbetűinek szinkronizálása |
 > | Műveletek | Microsoft.Media/mediaservices/transforms/delete | Minden átalakítási törlése |
-> | Műveletek | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Feladat megszakítása |
+> | Műveletek | Microsoft.Media/mediaservices/transforms/jobs/cancelJob/action | Feladat visszavonása |
 > | Műveletek | Microsoft.Media/mediaservices/transforms/jobs/delete | Minden olyan feladat törlése |
 > | Műveletek | Microsoft.Media/mediaservices/transforms/jobs/read | Minden olyan feladat olvasása |
 > | Műveletek | Microsoft.Media/mediaservices/transforms/jobs/write | Hozzon létre vagy bármilyen feladat frissítése |
@@ -4105,7 +4073,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Bármely vCenters olvasása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/write | Létrehozás vagy frissítés bármely vCenters |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/write | Létrehozás vagy frissítés bármely hálók |
-> | Műveletek | Microsoft.RecoveryServices/vaults/replicationJobs/cancel/action | Feladat megszakítása |
+> | Műveletek | Microsoft.RecoveryServices/vaults/replicationJobs/cancel/action | Feladat visszavonása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationJobs/read | Olvassa el a feladatok |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationJobs/restart/action | Feladat újraindítása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationJobs/resume/action | Feladat folytatása |
@@ -4357,7 +4325,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.ServiceBus/checkNameAvailability/action | A névtér adott előfizetésben való elérhetőségének ellenőrzése. |
 > | Műveletek | Microsoft.ServiceBus/checkNamespaceAvailability/action | A névtér adott előfizetésben való elérhetőségének ellenőrzése. Ez az API elavult. használja inkább a checknameavailabiltiy API-t. |
-> | Műveletek | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | A VNet-szabályok a ServiceBus erőforrás-szolgáltató törlése az adott virtuális hálózaton |
+> | Műveletek | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | A megadott virtuális hálózat ServiceBus erőforrás-szolgáltatójában található virtuális hálózati szabályok törlése |
 > | Műveletek | Microsoft.ServiceBus/namespaces/authorizationRules/action | Frissítések Namespace engedélyezési szabályt. Az API-t a put műveletet. Put művelet meghívásával használja helyette a a Namespace-engedélyezési szabály frissítése... Ez a művelet nem támogatott az API 2017-04-01-es verzióját. |
 > | Műveletek | Microsoft.ServiceBus/namespaces/authorizationRules/delete | Namespace engedélyezési szabály törlése. Az alapértelmezett Namespace-engedélyezési szabály nem törölhető.  |
 > | Műveletek | Microsoft.ServiceBus/namespaces/authorizationRules/listkeys/action | A névtérhez tartozó kapcsolati sztring beolvasása |

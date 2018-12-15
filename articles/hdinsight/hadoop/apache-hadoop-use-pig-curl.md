@@ -9,34 +9,35 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 65d94c4df3111e1ffe5a5340bba1db454681bb5e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016010"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434015"
 ---
-# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>A Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
+# <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Az Apache Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, így egy Azure HDInsight-fürtön. A curl használatával mutatja be, hogyan használhatja a WebHCat REST API-t használó HDInsight szolgál.
 
-> [!NOTE]
+> [!NOTE]  
 > Ha már ismeri a Linux-alapú Apache Hadoop-kiszolgálókat használ, de nem ismeri a HDInsight, [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Előfeltételek
 
 * Egy Azure HDInsight (Hadoop on HDInsight)-fürt (Linux-alapú vagy Windows-alapú)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [A curl](https://curl.haxx.se/)
 
 * [jq](https://stedolan.github.io/jq/)
 
-## <a id="curl"></a>A Pig-feladatok futtatása a Curl használatával
+## <a id="curl"></a>Az Apache Pig-feladatok futtatása a Curl használatával
+
 
 > [!NOTE]
 > A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication). Mindig kapcsolatos kéréseit: Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló HTTP Secure (HTTPS) használatával.
@@ -58,7 +59,7 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
     Ezen parancs paraméterei a következők:
 
     * **-u**: A felhasználónév és a kérés hitelesítésére használt jelszó
-    * **-G**: azt jelzi, hogy a kérelem a GET-kérés
+    * **-G**: Azt jelzi, hogy a kérelem a GET-kérés
 
      Az URL-cím elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, összes kérelem esetében azonos. Az elérési út **/status**, azt jelzi, hogy a kérelem visszaállíthatja az állapotot, a WebHCat (más néven templeton eszközön keresztül végzett) a kiszolgálón.
 
@@ -70,13 +71,13 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
 
     Ezen parancs paraméterei a következők:
 
-    * **-d**: mivel `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
+    * **-d**: Mivel `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
 
-    * **User.name**: a parancsot futtató felhasználó
+    * **User.name**: A parancsot futtató felhasználó
     * **hajtsa végre**: A Pig Latin utasításokkal futtathat
-    * **statusdir**: A feladat állapota írt könyvtár
+    * **statusdir**: A könyvtár írt Ez a feladat állapota
 
-    > [!NOTE]
+    > [!NOTE]  
     > Figyelje meg, hogy a tárolóhelyek a Pig Latin utasításokkal helyébe a `+` . amikor a curl használatával használt karakter.
 
     Ez a parancs használható, például a feladat állapota Feladatazonosítót kell visszaadnia:
@@ -93,14 +94,14 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
 
     Ha a feladat befejeződött, az állapot az **sikeres**.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ezt a kérelmet a Curl egy JavaScript Object Notation (JSON) dokumentumot a feladattal kapcsolatos információkat ad vissza, és csak az állapotérték beolvasásához használt jq.
 
 ## <a id="results"></a>Eredmények megtekintése
 
 Ha a feladat állapota megváltozott, hogy **sikeres**, kérheti le a feladat eredményét. A `statusdir` lekérdezése átadott paraméter tartalmazza a helyet, a kimeneti fájl; ebben az esetben `/example/pigcurl`.
 
-HDInsight használhatja Azure Storage vagy az Azure Data Lake Store alapértelmezett adattárként. Attól függően, melyiket használja az adatok lekérése különböző módja van. További információkért tekintse meg a tárterület szakaszában a [Linux-alapú HDInsight-információk](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentumot.
+HDInsight használhatja Azure Storage vagy az Azure Data Lake Storage alapértelmezett adattárként. Attól függően, melyiket használja az adatok lekérése különböző módja van. További információkért tekintse meg a tárterület szakaszában a [Linux-alapú HDInsight-információk](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentumot.
 
 ## <a id="summary"></a>Summary (Összefoglalás)
 
@@ -112,9 +113,9 @@ A cikk ezt használja a REST-felület kapcsolatos további információkért lá
 
 A HDInsight Pig általános tájékoztatást:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)

@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 10f3444f81dfaeac4331f0b7798ade7eefbd29fb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 643d2a5a600d018912f09d01f2e018100767f147
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058127"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410125"
 ---
-# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>CLI-példa: Dedikált csomópontokból álló Batch AI-fürt létrehozása és kezelése
+# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>CLI-példa: Dedikált csomópontok egy Batch AI-fürt létrehozása és kezelése
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Ez a szkript olyan Azure CLI-parancsokra mutat példákat, amelyekkel dedikált csomópontokból (virtuális gépekből) álló Batch AI-fürtök hozhatók létre és kezelhetők.
 

@@ -10,19 +10,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6b835dc300808453240dd3b9fe47957bd5feab9b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004587"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435225"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Több HDInsight-fürt használata az Azure Data Lake Store-fiók
 
 HDInsight 3.5-ös verziója kezdve létrehozhat HDInsight-fürtök az Azure Data Lake Store-fiókok, az alapértelmezett fájlrendszer.
-Data Lake Store támogatja a korlátlan tárolási, amelyek révén a szolgáltatás videóstreamelési nem csupán a nagy mennyiségű adat; üzemeltetése de üzemeltetéséhez-több HDInsight is fürtök adott megosztás egy Data Lake Store-fiók. Egy HDInsight-fürt létrehozása a Data Lake Store az tárolóként, lásd: [a rövid útmutató: a HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Store támogatja a korlátlan tárolási, amelyek révén a szolgáltatás videóstreamelési nem csupán a nagy mennyiségű adat; üzemeltetése de üzemeltetéséhez-több HDInsight is fürtök adott megosztás egy Data Lake Store-fiók. Egy HDInsight-fürt létrehozása a Data Lake Store az tárolóként, lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-Ez a cikk ismerteti a javaslatok a Data Lake tárolni a rendszergazda állít be egy önálló és megosztott Data Lake Store-fiók, amely több használható **aktív** HDInsight-fürtök. Ezekkel az ajánlásokkal üzemeltető több biztonságos, valamint a nem biztonságos Hadoop-fürtöket egy megosztott Data Lake store-fiókot a alkalmazni.
+Ez a cikk ismerteti a javaslatok a Data Lake tárolni a rendszergazda állít be egy önálló és megosztott Data Lake Store-fiók, amely több használható **aktív** HDInsight-fürtök. Ezekkel az ajánlásokkal üzemeltető több biztonságos, valamint a nem biztonságos Apache Hadoop-fürtöket egy megosztott Data Lake store-fiókot a alkalmazni.
 
 
 ## <a name="data-lake-store-file-and-folder-level-acls"></a>Data Lake Store-fájl- és hozzáférés-vezérlési listák szint
@@ -78,7 +78,7 @@ Ha egyszerű szolgáltatás létrehozása (amint az a fenti táblázatban) nevű
 
 Ez a szakasz a HDInsight a Data Lake Store és azok megoldását ismerteti az ismert hibákat sorolja fel.
 
-### <a name="publicly-visible-localized-yarn-resources"></a>Országom honosított YARN-erőforrások
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>Országom honosított Apache Hadoop YARN-erőforrások
 
 Egy új Azure Data Lake store-fiók létrehozásakor a rendszer automatikusan üzembe a gyökérkönyvtár hozzáférési-ACL-JÉNEK engedély bites 770 beállítása. A gyökérmappa a tulajdonos felhasználó a felhasználó, aki létrehozta a fiókot (a Data Lake Store-rendszergazda) értékre van állítva, és a tulajdonoscsoport a felhasználó által létrehozott fiók elsődleges csoportja lesz beállítva. Nincs hozzáférés "egyéb" biztosítunk.
 
@@ -93,6 +93,6 @@ Set olvasási-végrehajtási engedélyeket **mások** a hierarchián keresztül,
 
 ## <a name="see-also"></a>Lásd még
 
-* [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Gyors útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

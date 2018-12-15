@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
 ms.date: 10/04/2018
-ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801826"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408085"
 ---
 # <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 áttekintés (előzetes verzió)
 
-Az Azure HDInsight a legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Hadoop- és Spark-elemzésekhez az Azure-ban. A HDInsight (HDI) 4.0 a [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) Hadoop-összetevőinek felhőalapú disztribúciója. Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
+Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike. HDInsight (HDI) 4.0-s verzióját az Apache Hadoop-összetevők felhőalapú terjesztett a [Hortonworks Data Platform (HDP) 3.0-s](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
 
 ## <a name="whats-new-in-hdi-40"></a>A HDI 4.0 újdonságai
 
-### <a name="hive-30-and-llap"></a>Hive 3.0 és LLAP
+### <a name="apache-hive-30-and-llap"></a>Az Apache Hive, 3.0-s és az LLAP
 
-A Hive közel valós idejű elemzésfeldolgozási (LLAP) szolgáltatása állandó lekérdezéskiszolgálók és memórián belüli gyorsítótárazás használatával gyors SQL-lekérdezési eredményeket szolgáltat a távoli felhőtárolókban lévő adatok alapján. A Hive LLAP állandó démonok használatával hajtja végre a Hive-lekérdezések töredékeit. A lekérdezések végrehajtása az LLAP-vel nagyon hasonló az LLAP nélküli Hive-hoz, csak a feldolgozó feladatok a tárolók helyett LLAP-démonokban futnak.
+Az Apache Hive közel valós idejű analitikus feldolgozás (LLAP) kiszolgálók és a memórián belüli gyorsítótárazást gyors SQL lekérdezési eredményeket a távoli felhőalapú tárolás az adatok állandó lekérdezést használ. A Hive LLAP állandó démonok használatával hajtja végre a Hive-lekérdezések töredékeit. A lekérdezések végrehajtása az LLAP-vel nagyon hasonló az LLAP nélküli Hive-hoz, csak a feldolgozó feladatok a tárolók helyett LLAP-démonokban futnak.
 
 A Hive LLAP előnyei:
 
@@ -72,7 +72,7 @@ Nem kell amiatt aggódnia, hogy véletlenül közvetlenül éri el a tranzakció
 További tudnivalók az [Apache Sparkról](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Az Apache Oozie
 
 Az Apache Oozie 4.3.1 a HDI 4.0 részét képezi az alábbi módosításokkal:
 
@@ -90,7 +90,7 @@ Nincs támogatott frissítési útvonal a HDI korábbi verzióiról a HDI 4.0-ra
 
 ## <a name="limitations"></a>Korlátozások
 
-* A HDI 4.0 nem támogatja a MapReduce-t. Használja inkább a Tezt. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
+* A HDI 4.0 nem támogatja a MapReduce-t. Használja helyette az Apache Tez. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 
 * A Hive View a HDI 4.0-ban a továbbiakban nem érhető el. 
 

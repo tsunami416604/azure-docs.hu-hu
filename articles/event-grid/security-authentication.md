@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: f2bbcf0218291f91d3ee5b25e89a5f580e0c1c86
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105733"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413485"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -35,9 +35,9 @@ Event Grid számos más szolgáltatásokhoz hasonlóan webhookokat támogató va
 
 Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú Azure-függvényt használ, a végpont kódot kell részt egy érvényesítési kézfogás az Event GRID használatával. Event Grid kétféleképpen érvényesíteni az előfizetés támogatja.
 
-1. **(Programozott) ValidationCode kézfogás**: szabályozhatja a forráskódot a végponthoz, ha ez a módszer ajánlott. Esemény-előfizetés létrehozása idején az Event Grid egy előfizetés érvényesítési esemény küld a végponthoz. Ez az esemény sémája hasonlít bármilyen más Event Grid-esemény. Ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Az alkalmazás ellenőrzi, hogy az érvényesítési kérelmet egy várt esemény-előfizetés, és az érvényesítési kódot az Event Gridbe ad. A kézfogás mechanizmus az összes Event Grid-verziót támogatja.
+1. **(Programozott) ValidationCode kézfogás**: Ha a végpont szabályozhatja a forráskódot, ezt a módszert javasoljuk. Esemény-előfizetés létrehozása idején az Event Grid egy előfizetés érvényesítési esemény küld a végponthoz. Ez az esemény sémája hasonlít bármilyen más Event Grid-esemény. Ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Az alkalmazás ellenőrzi, hogy az érvényesítési kérelmet egy várt esemény-előfizetés, és az érvényesítési kódot az Event Gridbe ad. A kézfogás mechanizmus az összes Event Grid-verziót támogatja.
 
-2. **ValidationURL kézfogás (manuális)**: bizonyos esetekben nem férhet hozzá a forráskódot a végpont a ValidationCode kézfogás megvalósításához. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), hogy programozott módon nem tud reagálni az érvényesítési kóddal.
+2. **ValidationURL kézfogás (manuális)**: Bizonyos esetekben nem férhet hozzá a forráskódot a végpont a ValidationCode kézfogás megvalósításához. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), hogy programozott módon nem tud reagálni az érvényesítési kóddal.
 
    Verzió 2018-05-01-preview verziótól kezdődően Event Grid egy manuális érvényesítésre kézfogás támogatja. Ha egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview egy esemény-előfizetést hoz létre, vagy később, az Event Grid küld egy `validationUrl` az előfizetés érvényesítése esemény részén található adatok a tulajdonság. A kézfogás elvégzéséhez, keresse meg az eseményadatokat, és manuálisan az URL egy GET kérelmet küldeni. Is használhatja, vagy a REST-ügyféllel, vagy a böngészőjében.
 
@@ -79,6 +79,8 @@ Végpont tulajdonjogának igazolásához, echo vissza a validationResponse tulaj
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Egy HTTP 200 OK válasz állapotkódot kell visszaadnia. HTTP 202 elfogadott, hogy a rendszer nem ismeri fel érvényes Event Grid-előfizetés érvényesítési válaszhoz.
 
 Vagy manuálisan ellenőrizheti az előfizetés egy GET kérést küld az érvényesítési URL-címet. Az esemény-előfizetés mindaddig, amíg érvényesítve függő állapotban marad.
 
@@ -271,7 +273,7 @@ Ha adja meg az engedélyeket, amelyek eltérnek a beépített szerepkörök van 
 
 Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára a különböző műveleteket. Ezek egyéni szerepkörök nem azonosak a beépített szerepkörök, mivel azok csak az esemény-előfizetések, mint szélesebb körű hozzáférés biztosítása.
 
-**EventGridReadOnlyRole.json**: engedélyezése csak a csak olvasható műveletekhez.
+**EventGridReadOnlyRole.json**: Csak engedélyezze a csak olvasható műveletekhez.
 
 ```json
 {
@@ -290,7 +292,7 @@ Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé t
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: engedélyezi a korlátozott utáni műveletek, de a törlési műveletek letiltása.
+**EventGridNoDeleteListKeysRole.json**: Korlátozott utáni műveletek engedélyezése, de a törlési műveletek letiltása.
 
 ```json
 {
@@ -313,7 +315,7 @@ Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé t
 }
 ```
 
-**EventGridContributorRole.json**: lehetővé teszi az event grid összes műveletet.
+**EventGridContributorRole.json**: Lehetővé teszi az event grid összes műveletet.
 
 ```json
 {

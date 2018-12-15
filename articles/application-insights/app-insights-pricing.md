@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: a81cb9041b905cfb00183981036116fbc61f376a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000872"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436060"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insights árak és adatmennyiségek kezelése
 
 > [!NOTE]
 > Ez a cikk ismerteti, hogyan kell Application Insights adathasználat elemzése.  További kapcsolódó információt a következő cikkekben talál.
-> - [Használat és becsült költségek figyelése](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
+> - [Használat és becsült költségek figyelése](../azure-monitor/platform/usage-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
 
 A díjszabás [Azure Application Insights] [ start] alkalmazásonként adatmennyiség alapján. Minden Application Insights-erőforrást különálló szolgáltatásként kell fizetnie, és hozzájárul a az Azure-előfizetéshez tartozó számla.
 
-Az Application Insights két díjcsomagok rendelkezik: alapszintű és vállalati. Az alapszintű árképzési csomag található alapértelmezett csomagjában. Tartalmazza az összes vállalati csomag szolgáltatásai, további költségek nélkül. A Basic csomag számlák elsősorban a, betöltött adatok mennyiségét. 
+Az Application Insights két díjcsomagok rendelkezik: Alapszintű és vállalati. Az alapszintű árképzési csomag található alapértelmezett csomagjában. Tartalmazza az összes vállalati csomag szolgáltatásai, további költségek nélkül. A Basic csomag számlák elsősorban a, betöltött adatok mennyiségét. 
 
 A vállalati csomag csomópontonkénti használati díj tartozik, és minden csomópont kap egy napi adatkeret. A vállalati díjszabási, díjkötelesek a csomagban foglalt adatkeret felett betöltött adatokért. Ha az Operations Management Suite használja, a vállalati csomagot kell választania. 
 
@@ -86,14 +86,14 @@ Application Insights díjak az Azure-elszámolások kerülnek. A számlázás az
 ## <a name="data-rate"></a>Adatsebesség
 A küldött adatok mennyisége korlátozott három módon:
 
-* **Mintavételi**: mintavételi segítségével csökkentheti a kiszolgáló és az ügyfél alkalmazásoknak, a mérőszámok minimális torzulást által küldött telemetriát. Az elsődleges eszköz, amellyel küldött adatok mennyisége finomhangolása adatokra mintavétel alkalmazva. Tudjon meg többet [szolgáltatások mintavétel](app-insights-sampling.md). 
-* **Maximális napi adatmennyiséget**: Application Insights-erőforrás létrehozásakor az Azure Portalon a napi korlát 100 GB-os napi értékre van-e állítva. A Visual Studio Application Insights-erőforrás létrehozásakor az alapértelmezett érték a kicsi (csak 32,3 MB/nap). A napi korlát alapértelmezett értéke a tesztelés elősegítése érdekében. Célja, hogy a felhasználó az alkalmazás éles környezetbe való üzembe helyezés előtt kiváltja az a maximális napi adatmennyiséget. 
+* **Mintavételi**: Mintavételi segítségével csökkentheti a kiszolgáló és az ügyfélalkalmazások, a mérőszámok minimális torzulást által küldött telemetriát. Az elsődleges eszköz, amellyel küldött adatok mennyisége finomhangolása adatokra mintavétel alkalmazva. Tudjon meg többet [szolgáltatások mintavétel](app-insights-sampling.md). 
+* **Maximális napi adatmennyiséget**: Application Insights-erőforrás létrehozásakor az Azure Portalon a napi maximális értéke 100 GB/nap. A Visual Studio Application Insights-erőforrás létrehozásakor az alapértelmezett érték a kicsi (csak 32,3 MB/nap). A napi korlát alapértelmezett értéke a tesztelés elősegítése érdekében. Célja, hogy a felhasználó az alkalmazás éles környezetbe való üzembe helyezés előtt kiváltja az a maximális napi adatmennyiséget. 
 
     A maximális korlát 1000 GB/nap, kivéve, ha nagy forgalmú alkalmazásokhoz magasabb maximális kér. 
 
     Körültekintően járjon el a napi korlát beállításakor. A leképezés kell lennie a *soha nem eléri a maximális napi adatmennyiséget*. Ha eléri a maximális napi adatmennyiséget, elveszíti a nap fennmaradó részében adatait, és nem figyelheti az alkalmazást. A napi korlát módosításához használja a **napi mennyiségi korlát** lehetőséget. Ezt a lehetőséget is elérheti a **felhasználás és becsült költségek** (ezt részletesen ismerteti a cikk későbbi részében részletesebben) panelen.
     A korlátozás némi kreditjeiket, amely nem használható az Application Insights típusú előfizetésessel is eltávolítottuk. Korábban Ha az előfizetés a költségkeret van, a napi korlát párbeszédpanel utasításokat követve el kell távolítania a költségkeretet, és engedélyezheti a napi korlátot túli 32,3 MB/nap hatványra emelendő rendelkezik.
-* **Szabályozás**: 32 000 esemény / másodperc, hogy az adatokra vonatkozó szabályozási korlátait átlagolt kialakítási kulcsonként több mint 1 perce.
+* **Szabályozás**: Szabályozási korlátait a adatokra vonatkozó 32 000 esemény / másodperc, hogy átlagolni kialakítási kulcsonként több mint 1 perce.
 
 *Mi történik, ha az alkalmazás túllépi a sávszélesség-szabályozási arány?*
 

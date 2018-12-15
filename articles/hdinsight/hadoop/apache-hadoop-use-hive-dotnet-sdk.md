@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634566"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407167"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 Ismerje meg, hogyan lehet elküldeni az Apache Hive-lekérdezéseket a HDInsight .NET SDK használatával. C# program írása elküldeni a Hive-lekérdezést futtathat Hive-táblák listázásához, és megjeleníti az eredményeket.
 
-> [!NOTE]
+> [!NOTE]  
 > A jelen cikkben ismertetett lépések egy Windows ügyfél kell elvégezni. Információ a Hive használata a Linux, OS X or Unix-ügyfél használatával a cikk tetején látható lapon választómezőt használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -29,8 +29,8 @@ Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 
 * **A HDInsight Apache Hadoop-fürt**. Lásd: [HDInsight Linux-alapú Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
 
-    > [!WARNING]
-    > 2017. szeptember 15. a HDInsight .NET SDK vracející Hive lekérdezés eredményeit az Azure Storage-fiókok csak támogatja. Ebben a példában egy HDInsight-fürtöt, amely az Azure Data Lake Store használja elsődleges tárolóként használja, ha nem lehet lekérdezni a keresési eredmények a .NET SDK használatával.
+    > [!WARNING]  
+    > 2017. szeptember 15. a HDInsight .NET SDK vracející Hive lekérdezés eredményeit az Azure Storage-fiókok csak támogatja. Ebben a példában egy HDInsight-fürtöt, amely az Azure Data Lake Storage használja elsődleges tárolóként használja, ha nem lehet lekérdezni a keresési eredmények a .NET SDK használatával.
 
 * **Visual Studio 2013/2015/2017**.
 
@@ -138,11 +138,11 @@ Az alkalmazás kimenete kell hasonló lesz:
 Ebben a cikkben, hogyan hozhat létre HDInsight-fürtöt többféleképpen. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Azure HDInsight – első lépések](apache-hadoop-linux-tutorial-get-started.md)
-* [A HDInsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
-* [A HDInsight Hadoop-fürtök kezelése az Azure portal használatával](../hdinsight-administer-use-management-portal.md)
+* [A HDInsight Apache Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
+* [A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával](../hdinsight-administer-use-management-portal.md)
 * [HDInsight .NET SDK-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
-* [A Sqoop használata a HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
+* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
+* [A HDInsight Apache Sqoop használata](apache-hadoop-use-sqoop-mac-linux.md)
 * [Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
  
 

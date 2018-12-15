@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 663cf6ba2eec4b2abbc6ab4a37e05b756ee67ee9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016811"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438863"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk a kapcsolatos információkat nyújt a **legutóbbi** Azure HDInsight kibocsátási frissítéseket. A korábbi operációs információkért lásd: [HDInsight kibocsátási megjegyzései archív](hdinsight-release-notes-archive.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Az Azure HDInsight a legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Hadoop- és Spark-elemzésekhez az Azure-ban. Az a [50 %-os ár kivágása a HDInsight emellett](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), a felhőbe való áthelyezés ügyfelek vannak összekötőkkel, minden eddiginél nagyobb megtakarítást.
+Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike. Az a [50 %-os ár kivágása a HDInsight emellett](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), a felhőbe való áthelyezés ügyfelek vannak összekötőkkel, minden eddiginél nagyobb megtakarítást.
 
 ## <a name="new-features"></a>Új funkciók
 
@@ -33,9 +33,9 @@ Az új frissítések és funkciók esik, a következő kategóriákban:
 
 1.  ***Frissítse a Hadoop- és más nyílt forráskódú projektek*** – 1000 + hibajavítások között 20 + nyílt forráskódú projektek, a frissítés egy új verzióját tartalmazó mellett **Spark (2.3-as)** és **Kafka (1.0)**.
 
-    a.  [**A Spark 2.3 új funkciók**](https://spark.apache.org/releases/spark-release-2-3-0.html)
+    a.  [**Az Apache Spark 2.3 új funkciói**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**A Kafka 1.0 új funkciók**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Az Apache Kafka 1.0 új funkciói**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
 
 2.  ***Frissítse az R Server 9.1 Machine Learning szolgáltatás 9.3*** – ezzel a kiadással adjuk az adatszakértők és a mérnökök a nyílt forráskódú, kiegészítve az algoritmikus innovációkat, és a könnyű operacionalizálás, az összes elérhető legjobb azok elsődleges nyelv, az Apache Spark sebessége. Ebben a kiadásban érhető el az R Server-támogatás hozzáadva a Python, R Server ML szolgáltatásokkal, a fürt névváltoztatás vezető képességeitől bontja ki. 
 
@@ -89,141 +89,141 @@ Néhány Apache összetevők későbbi verziói néha mellett a fent felsorolt v
 
 Ebben a kiadásban Hadoop közös 2.7.3 és Apache javítást az alábbiak:
 
--   [HADOOP-13190](https://issues.apache.org/jira/browse/HADOOP-13190): Díjszabásunkban LoadBalancingKMSClientProvider KMS magas rendelkezésre ÁLLÁS dokumentációjában.
+-   [HADOOP-13190](https://issues.apache.org/jira/browse/HADOOP-13190): LoadBalancingKMSClientProvider díjszabásunkban KMS magas rendelkezésre ÁLLÁS dokumentációját.
 
--   [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227): AsyncCallHandler kell használnia az eseményvezérelt architektúra aszinkron hívásokat kezelésére.
+-   [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227): AsyncCallHandler az eseményvezérelt architektúra használatával kell kezelni az aszinkron hívásokat.
 
--   [HADOOP-14104](https://issues.apache.org/jira/browse/HADOOP-14104): ügyfél mindig namenode kérje a kms-szolgáltató elérési úthoz.
+-   [HADOOP-14104](https://issues.apache.org/jira/browse/HADOOP-14104): Ügyfél mindig kérdezzük namenode kms szolgáltató elérési útjával.
 
--   [HADOOP-14799](https://issues.apache.org/jira/browse/HADOOP-14799): nimbus-jose-jwt 4.41.1 való frissítéséhez.
+-   [HADOOP-14799](https://issues.apache.org/jira/browse/HADOOP-14799): Nimbus-jose-jwt 4.41.1 frissítse.
 
--   [HADOOP-14814](https://issues.apache.org/jira/browse/HADOOP-14814): a HADOOP-14104 FsServerDefaults inkompatibilis API-módosítás javítása.
+-   [HADOOP-14814](https://issues.apache.org/jira/browse/HADOOP-14814): Hárítsa el a nem kompatibilis API-módosítás az a HADOOP-14104 FsServerDefaults.
 
--   [HADOOP-14903](https://issues.apache.org/jira/browse/HADOOP-14903): json-intelligens pom.xml explicit módon hozzá.
+-   [HADOOP-14903](https://issues.apache.org/jira/browse/HADOOP-14903): Explicit módon hozzá pom.xml json-intelligens.
 
--   [HADOOP-15042](https://issues.apache.org/jira/browse/HADOOP-15042): Azure PageBlobInputStream.skip() adhat vissza negatív érték, ha numberOfPagesRemaining 0.
+-   [HADOOP-15042](https://issues.apache.org/jira/browse/HADOOP-15042): Az Azure PageBlobInputStream.skip() adhat vissza negatív érték, ha numberOfPagesRemaining 0.
 
--   [HADOOP-15255](https://issues.apache.org/jira/browse/HADOOP-15255): felső és alsó megkülönbözteti a kis konverziós támogatására az LdapGroupsMapping a nevekkel.
+-   [HADOOP-15255](https://issues.apache.org/jira/browse/HADOOP-15255): Felső és alsó megkülönbözteti a kis konverziós támogatás a LdapGroupsMapping a csoport nevét.
 
 -   [HADOOP-15265](https://issues.apache.org/jira/browse/HADOOP-15265): json-intelligens hadoop-alapú hitelesítés pom.xml explicit módon kizárása.
 
 -   [HDFS-7922](https://issues.apache.org/jira/browse/HDFS-7922): ShortCircuitCache\#lezárása nem ad ki ScheduledThreadPoolExecutors.
 
--   [HDFS-8496](https://issues.apache.org/jira/browse/HDFS-8496): FSDatasetImpl zárolás a hívó stopWriter() blokkolhatják a más szálak (cmccabe).
+-   [HDFS-8496](https://issues.apache.org/jira/browse/HDFS-8496): Hívása stopWriter() tárolt FSDatasetImpl LOCK blokkolhatják a más szálak (cmccabe).
 
--   [HDFS-10267](https://issues.apache.org/jira/browse/HDFS-10267): Extra "szinkronizálva" a FsDatasetImpl\#recoverAppend és FsDatasetImpl\#recoverClose.
+-   [HDFS-10267](https://issues.apache.org/jira/browse/HDFS-10267): Extra "szinkronizált" a FsDatasetImpl\#recoverAppend és FsDatasetImpl\#recoverClose.
 
--   [HDFS-10489](https://issues.apache.org/jira/browse/HDFS-10489): HDFS titkosítási zónák dfs.encryption.key.provider.uri Kivezetjük.
+-   [HDFS-10489](https://issues.apache.org/jira/browse/HDFS-10489): HDFS titkosítási zónák dfs.encryption.key.provider.uri kivezetjük.
 
--   [HDFS-11384](https://issues.apache.org/jira/browse/HDFS-11384): hozzáadása lehetőség kapunk getBlocks hívások, a NameNode rpc elkerülése érdekében, hogy a terheléselosztó számára. CallQueueLength kiugrás.
+-   [HDFS-11384](https://issues.apache.org/jira/browse/HDFS-11384): Adja hozzá beállítás kapunk getBlocks hívások, a NameNode rpc elkerülése érdekében, hogy a terheléselosztó számára. CallQueueLength kiugrás.
 
--   [HDFS-11689](https://issues.apache.org/jira/browse/HDFS-11689): DFSClient % isHDFSEncryptionEnabled által kiváltott új kivétel érvénytelenítése hacky hive-kódot.
+-   [HDFS-11689](https://issues.apache.org/jira/browse/HDFS-11689): DFSClient % isHDFSEncryptionEnabled által kiváltott új kivétel hacky hive kód érvénytelenítése.
 
 -   [HDFS-11711](https://issues.apache.org/jira/browse/HDFS-11711): DN-t a blokkot ne törölje a "túl sok a megnyitott fájl" kivétel.
 
 -   [HDFS-12347](https://issues.apache.org/jira/browse/HDFS-12347): TestBalancerRPCDelay\#testBalancerRPCDelay nagyon gyakran sikertelen lesz.
 
--   [HDFS-12781](https://issues.apache.org/jira/browse/HDFS-12781): után le Datanode, Namenode felhasználói felület Datanode lapon szűrész figyelmeztető üzenet.
+-   [HDFS-12781](https://issues.apache.org/jira/browse/HDFS-12781): Után le Datanode Namenode felhasználói felület Datanode lapon szűrész figyelmeztető üzenet.
 
--   [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054): kezelése PathIsNotEmptyDirectoryException DFSClient a hívás törlése.
+-   [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054): Kezelési PathIsNotEmptyDirectoryException DFSClient törlési hívásban.
 
--   [HDFS-13120](https://issues.apache.org/jira/browse/HDFS-13120): Snapshot diff megsérülhet concat után.
+-   [HDFS-13120](https://issues.apache.org/jira/browse/HDFS-13120): Pillanatkép diff után concat megsérülhet.
 
--   [YARN-3742](https://issues.apache.org/jira/browse/YARN-3742): a YARN erőforrás-kezelő le fog állni, ha ZKClient létrehozása túllépi az időkorlátot.
+-   [YARN-3742](https://issues.apache.org/jira/browse/YARN-3742): A YARN erőforrás-kezelő le fog állni, ha ZKClient létrehozása túllépi az időkorlátot.
 
 -   [YARN-6061](https://issues.apache.org/jira/browse/YARN-6061): Adja hozzá a kritikus fontosságú szálak egy UncaughtExceptionHandler RM.
 
 -   [YARN-7558](https://issues.apache.org/jira/browse/YARN-7558): a yarn-naplók szerezhet be naplófájlokat futó tárolók, ha a felhasználói felület hitelesítés engedélyezve van a parancs meghiúsul.
 
--   [YARN-7697](https://issues.apache.org/jira/browse/YARN-7697): kész alkalmazás naplók beolvasása sikertelen, annak ellenére, hogy a napló aggregáció befejeződött.
+-   [YARN-7697](https://issues.apache.org/jira/browse/YARN-7697): A kész alkalmazás sikertelen naplók beolvasása, annak ellenére, hogy a napló aggregáció befejeződött.
 
 HDP 2.6.4 megadott Hadoop közös 2.7.3 és Apache javítást az alábbiak:
 
--   [HADOOP-13700](https://issues.apache.org/jira/browse/HADOOP-13700): unthrown ioexception kivétel eltávolítása TrashPolicy\#inicializálni és \#getInstance aláírások.
+-   [HADOOP-13700](https://issues.apache.org/jira/browse/HADOOP-13700): Unthrown ioexception kivétel eltávolítása TrashPolicy\#inicializálni és \#getInstance aláírások.
 
--   [HADOOP-13709](https://issues.apache.org/jira/browse/HADOOP-13709): magában karbantartása lehetővé teszi Shell által generálandó, amikor a folyamat kilép.
+-   [HADOOP-13709](https://issues.apache.org/jira/browse/HADOOP-13709): Lehetővé teszi magában, ha a folyamat kilép Shell által generálandó karbantartása.
 
 -   [HADOOP-14059](https://issues.apache.org/jira/browse/HADOOP-14059): elgépelte s3a átnevezése (self, subdir) hibaüzenet jelenik meg.
 
--   [HADOOP-14542](https://issues.apache.org/jira/browse/HADOOP-14542): IOUtils.cleanupWithLogger hozzáadása, amely slf4j naplózó API-t.
+-   [HADOOP-14542](https://issues.apache.org/jira/browse/HADOOP-14542): Adja hozzá a fogadó slf4j naplózó API IOUtils.cleanupWithLogger.
 
--   [HDFS-9887](https://issues.apache.org/jira/browse/HDFS-9887): WebHdfs szoftvercsatorna időtúllépések konfigurálható kell lennie.
+-   [HDFS-9887](https://issues.apache.org/jira/browse/HDFS-9887): Lehet, hogy a WebHdfs-szoftvercsatorna időtúllépések konfigurálható.
 
--   [HDFS-9914](https://issues.apache.org/jira/browse/HDFS-9914): javítás konfigurálható WebhDFS connect/olvasás időkorlátja.
+-   [HDFS-9914](https://issues.apache.org/jira/browse/HDFS-9914): Csatlakozás/olvasás időkorlátja konfigurálható WebhDFS javítása.
 
--   [A MAPREDUCE-6698](https://issues.apache.org/jira/browse/MAPREDUCE-6698): növelje TestUnnecessaryBlockingOnHist oryFileInfo.testTwoThreadsQueryingDifferentJobOfSameUser időtúllépés miatt megszakadt.
+-   [A MAPREDUCE-6698](https://issues.apache.org/jira/browse/MAPREDUCE-6698): Növelje TestUnnecessaryBlockingOnHist oryFileInfo.testTwoThreadsQueryingDifferentJobOfSameUser időtúllépés miatt megszakadt.
 
--   [YARN-4550](https://issues.apache.org/jira/browse/YARN-4550): néhány TestContainerLanch a kísérletek sikertelenek, nem angol nyelvű területi beállítás környezetben.
+-   [YARN-4550](https://issues.apache.org/jira/browse/YARN-4550): Néhány tesztet TestContainerLanch a környezetben a nem angol nyelvű területi beállítása sikertelen.
 
 -   [YARN-4717](https://issues.apache.org/jira/browse/YARN-4717): TestResourceLocalizationService.testPublicResourceInitializesLocalDir időnként megszakad IllegalArgumentException miatt a tisztítás.
 
--   [YARN-5042](https://issues.apache.org/jira/browse/YARN-5042): Csatlakoztatás/sys/fs/cgroup Docker-tárolókat, mint readonly csatlakoztatási be.
+-   [YARN-5042](https://issues.apache.org/jira/browse/YARN-5042): Csatlakoztatás/sys/fs/cgroup Docker-tárolókat, mint readonly csatlakoztatási.
 
 -   [YARN-5318](https://issues.apache.org/jira/browse/YARN-5318): Javítsa ki az időszakos teszt meghiúsult az TestRMAdminService\#te stRefreshNodesResourceWithFileSystemBasedConfigurationProvider.
 
--   [YARN-5641](https://issues.apache.org/jira/browse/YARN-5641): lokalizáló hagy hátra tarballs, tároló befejeződése után.
+-   [YARN-5641](https://issues.apache.org/jira/browse/YARN-5641): Lokalizáló hagy hátra tarballs, tároló befejeződése után.
 
--   [YARN-6004](https://issues.apache.org/jira/browse/YARN-6004): Újrabontás TestResourceLocalizationService\#testDownloadingResourcesOnContainer, így ez lesz a kevesebb mint 150 sorokat.
+-   [YARN-6004](https://issues.apache.org/jira/browse/YARN-6004): Refaktorovat a TestResourceLocalizationService\#testDownloadingResourcesOnContainer, így ez lesz a kevesebb mint 150 sorokat.
 
--   [YARN-6078](https://issues.apache.org/jira/browse/YARN-6078): tárolók azaz állapotba kerültek.
+-   [YARN-6078](https://issues.apache.org/jira/browse/YARN-6078): Tárolók Localizing állapotba kerültek.
 
--   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805): NPE LinuxContainerExecutor null PrivilegedOperationException miatt a kilépési kód.
+-   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805): A NULL értékű PrivilegedOperationException miatt LinuxContainerExecutor NPE kilépési kód.
 
 ### <a name="hbase"></a>HBase
 
 Ebben a kiadásban HBase 1.1.2 és a következő Apache javítások.
 
--   [HBASE-13376](https://issues.apache.org/jira/browse/HBASE-13376): terheléselosztó Stochastic fejlesztései.
+-   [HBASE-13376](https://issues.apache.org/jira/browse/HBASE-13376): Sztochasztikus terheléselosztó fejlesztései.
 
--   [HBASE-13716](https://issues.apache.org/jira/browse/HBASE-13716): állítsa le a Hadoop FSConstants használatával.
+-   [HBASE-13716](https://issues.apache.org/jira/browse/HBASE-13716): Állítsa le a Hadoop FSConstants használatával.
 
--   [HBASE-13848](https://issues.apache.org/jira/browse/HBASE-13848): hozzáférés InfoServer SSL jelszavak hitelesítőadat-szolgáltató API-n keresztül.
+-   [HBASE-13848](https://issues.apache.org/jira/browse/HBASE-13848): Hozzáférés InfoServer SSL jelszavak hitelesítőadat-szolgáltató API-n keresztül.
 
--   [HBASE-13947](https://issues.apache.org/jira/browse/HBASE-13947): használata MasterServices AssignmentManager-kiszolgáló helyett.
+-   [HBASE-13947](https://issues.apache.org/jira/browse/HBASE-13947): Használja a MasterServices AssignmentManager-kiszolgáló helyett.
 
--   [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135): HBase biztonsági mentési és visszaállítási 3. fázis: a biztonsági másolat lemezképeit egyesíteni.
+-   [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135): A HBase biztonsági mentési és visszaállítási 3. fázis: A biztonsági másolat lemezképeit egyesíteni.
 
--   [HBASE-14473](https://issues.apache.org/jira/browse/HBASE-14473): párhuzamos számítási terület helye.
+-   [HBASE-14473](https://issues.apache.org/jira/browse/HBASE-14473): A számítási terület helye párhuzamosan.
 
--   [HBASE-14517](https://issues.apache.org/jira/browse/HBASE-14517): a fő állapotlapon regionserver a verzió megjelenítése.
+-   [HBASE-14517](https://issues.apache.org/jira/browse/HBASE-14517): A fő állapotlapon show regionserver verziója.
 
--   [HBASE-14606](https://issues.apache.org/jira/browse/HBASE-14606): apache épülnek TestSecureLoadIncrementalHFiles tesztek trönk túllépte az időkorlátot.
+-   [HBASE-14606](https://issues.apache.org/jira/browse/HBASE-14606): Lejárt az idő trönk TestSecureLoadIncrementalHFiles tesztek apache épülnek.
 
--   [HBASE-15210](https://issues.apache.org/jira/browse/HBASE-15210): agresszív load balancer naplózási sorok száma ezredmásodpercnél több tíz, visszavonás.
+-   [HBASE-15210](https://issues.apache.org/jira/browse/HBASE-15210): Agresszív load balancer naplózási sorok száma ezredmásodpercnél több tíz, visszavonása.
 
--   [HBASE-15515](https://issues.apache.org/jira/browse/HBASE-15515): a terheléselosztó LocalityBasedCandidateGenerator javítása.
+-   [HBASE-15515](https://issues.apache.org/jira/browse/HBASE-15515): A terheléselosztó LocalityBasedCandidateGenerator javítása.
 
--   [HBASE-15615](https://issues.apache.org/jira/browse/HBASE-15615): helytelen alvási idő, amikor RegionServerCallable szüksége van, próbálkozzon újra.
+-   [HBASE-15615](https://issues.apache.org/jira/browse/HBASE-15615): Helytelen az alvási idő, amikor RegionServerCallable szüksége van, próbálkozzon újra.
 
--   [HBASE-16135](https://issues.apache.org/jira/browse/HBASE-16135): alatt eltávolított társ rs PeerClusterZnode soha nem lehet törölni.
+-   [HBASE-16135](https://issues.apache.org/jira/browse/HBASE-16135): Eltávolított társ rs alatt PeerClusterZnode soha nem lesz törölve.
 
--   [HBASE-16570](https://issues.apache.org/jira/browse/HBASE-16570): indításkor párhuzamos számítási terület helye.
+-   [HBASE-16570](https://issues.apache.org/jira/browse/HBASE-16570): A számítási terület helye indításkor párhuzamosan.
 
 -   [HBASE-16810](https://issues.apache.org/jira/browse/HBASE-16810): HBase terheléselosztó ArrayIndexOutOfBoundsException jelez, ha regionservers /hbase/draining znode vannak, és a memóriából.
 
--   [HBASE-16852](https://issues.apache.org/jira/browse/HBASE-16852): ág-1.3 TestDefaultCompactSelection sikertelen volt.
+-   [HBASE-16852](https://issues.apache.org/jira/browse/HBASE-16852): Fiókiroda-1.3 TestDefaultCompactSelection sikertelen volt.
 
--   [HBASE-17387](https://issues.apache.org/jira/browse/HBASE-17387): csökkentheti a multi() kivétel RegionActionResult jelentést járó többletterhelést.
+-   [HBASE-17387](https://issues.apache.org/jira/browse/HBASE-17387): Csökkentse a multi() kivétel RegionActionResult jelentést járó többletterhelést.
 
--   [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850): biztonsági mentési rendszer javítási segédprogramot.
+-   [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850): Biztonsági mentési rendszer javítási segédprogramot.
 
--   [HBASE-17931](https://issues.apache.org/jira/browse/HBASE-17931): rendszertáblákra hozzárendelése kiszolgálók legmagasabb verzióval.
+-   [HBASE-17931](https://issues.apache.org/jira/browse/HBASE-17931): Rendszertáblák hozzárendelése kiszolgálók legmagasabb verzióval.
 
--   [HBASE-18083](https://issues.apache.org/jira/browse/HBASE-18083): Győződjön meg arról, nagy és kis fájl szál száma konfigurálható a HFileCleaner tiszta.
+-   [HBASE-18083](https://issues.apache.org/jira/browse/HBASE-18083): Győződjön meg arról, nagy és kis fájl szál száma konfigurálható a HFileCleaner törölni.
 
--   [HBASE-18084](https://issues.apache.org/jira/browse/HBASE-18084): CleanerChore javításához törölni a címtárból, amely szabadítson fel több lemezterületet használ fel.
+-   [HBASE-18084](https://issues.apache.org/jira/browse/HBASE-18084): Javíthatja a CleanerChore törölni a címtárból, amely szabadítson fel több lemezterületet használ fel.
 
--   [HBASE-18164](https://issues.apache.org/jira/browse/HBASE-18164): sokkal gyorsabb helye költség függvény és jelölt generátor.
+-   [HBASE-18164](https://issues.apache.org/jira/browse/HBASE-18164): Sokkal gyorsabb helye költség függvény és jelölt generátor.
 
--   [HBASE-18212](https://issues.apache.org/jira/browse/HBASE-18212): az önálló telepítés a helyi fájlrendszer HBase naplózza a figyelmeztető üzenet: "unbuffer" metódus az osztály osztály org.apache.hadoop.fs.FSDataInputStream meghívása sikertelen volt.
+-   [HBASE-18212](https://issues.apache.org/jira/browse/HBASE-18212): A helyi fájlrendszer önálló módban HBase naplózza a figyelmeztető üzenet: Az osztály osztály org.apache.hadoop.fs.FSDataInputStream unbuffer"metódus meghívása nem sikerült.
 
--   [HBASE-18808](https://issues.apache.org/jira/browse/HBASE-18808): BackupLogCleaner hatástalan konfiguráció-ellenőrzés\#getDeletableFiles().
+-   [HBASE-18808](https://issues.apache.org/jira/browse/HBASE-18808): A BackupLogCleaner hatástalan ellenőrzés\#getDeletableFiles().
 
 -   [HBASE-19052](https://issues.apache.org/jira/browse/HBASE-19052): FixedFileTrailer fel kell ismernie a fiókiroda-1.x CellComparatorImpl osztály.
 
 -   [HBASE-19065](https://issues.apache.org/jira/browse/HBASE-19065): HRegion\#bulkLoadHFiles() várnia kell egyidejű régió\#flush() befejezéséhez.
 
--   [HBASE-19285](https://issues.apache.org/jira/browse/HBASE-19285):-table késés hisztogramok hozzáadása.
+-   [HBASE-19285](https://issues.apache.org/jira/browse/HBASE-19285): Adja hozzá a tábla késés hisztogramok.
 
 -   [HBASE-19393](https://issues.apache.org/jira/browse/HBASE-19393): HTTP 413 teljes fő SSL használata HBase felhasználói felület használata közben.
 
@@ -245,39 +245,39 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-11266*](https://issues.apache.org/jira/browse/HIVE-11266): count (\*) eredménye alapján a külső táblákra vonatkozó táblastatisztikai adatok helytelen.
 
--   [*HIVE-12245*](https://issues.apache.org/jira/browse/HIVE-12245): támogatási oszlop megjegyzéseket egy HBase tábla biztonsági.
+-   [*HIVE-12245*](https://issues.apache.org/jira/browse/HIVE-12245): Támogatási oszlop megjegyzéseket egy HBase tábla biztonsági.
 
--   [*HIVE-12315*](https://issues.apache.org/jira/browse/HIVE-12315): Javítsa Vectorized Dupla nullával osztás.
+-   [*HIVE-12315*](https://issues.apache.org/jira/browse/HIVE-12315): Javítsa ki a Vectorized dupla osztási történő osztás.
 
--   [*HIVE-12360*](https://issues.apache.org/jira/browse/HIVE-12360): rossz tömörítetlen ORC-predikátum legördülő lista a keresés.
+-   [*HIVE-12360*](https://issues.apache.org/jira/browse/HIVE-12360): Rossz tömörítetlen ORC-predikátum legördülő lista a keresés.
 
--   [*HIVE-12378*](https://issues.apache.org/jira/browse/HIVE-12378): kivétel HBaseSerDe.serialize bináris mezőre.
+-   [*HIVE-12378*](https://issues.apache.org/jira/browse/HIVE-12378): Kivétel HBaseSerDe.serialize bináris mezőre.
 
--   [*HIVE-12785*](https://issues.apache.org/jira/browse/HIVE-12785): typ union nézet és a struct, UDF megszakad.
+-   [*HIVE-12785*](https://issues.apache.org/jira/browse/HIVE-12785): Typ union nézet és a struct, UDF megszakad.
 
--   [*HIVE-14013*](https://issues.apache.org/jira/browse/HIVE-14013): ismertetik tábla nem jelenik meg unicode megfelelően.
+-   [*HIVE-14013*](https://issues.apache.org/jira/browse/HIVE-14013): Írja le tábla nem jelenik meg unicode megfelelően.
 
 -   [*HIVE-14205*](https://issues.apache.org/jira/browse/HIVE-14205): Hive nem támogatja az AVRO formátum egyesítési típusban.
 
 -   [*HIVE-14421*](https://issues.apache.org/jira/browse/HIVE-14421): FS.deleteOnExit tárolja mutató hivatkozások \_tmp\_space.db fájlokat.
 
--   [*HIVE-15563*](https://issues.apache.org/jira/browse/HIVE-15563): szabálytalan műveletet figyelmen kívül hagyása állapot átmeneti kivétel SQLOperation.runQuery elérhetővé valós kivétel.
+-   [*HIVE-15563*](https://issues.apache.org/jira/browse/HIVE-15563): Érvénytelen művelet állapota átmenet kivétel SQLOperation.runQuery elérhetővé valós kivétel figyelmen kívül.
 
--   [*HIVE-15680*](https://issues.apache.org/jira/browse/HIVE-15680): helytelen eredmények amikor hive.optimize.index.filter=true és azonos ORC táblára hivatkozás található kétszer szerepel a lekérdezésben, MR módban.
+-   [*HIVE-15680*](https://issues.apache.org/jira/browse/HIVE-15680): Hibás eredményeket amikor hive.optimize.index.filter=true és azonos ORC táblára hivatkozás található kétszer szerepel a lekérdezésben, MR módban.
 
--   [*HIVE-15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase táblájába Hive beszúrás sikertelen a decimal leképezve.
+-   [*HIVE-15883*](https://issues.apache.org/jira/browse/HIVE-15883): A HBase leképezve a Beszúrás sikertelen decimális Hive tábla.
 
--   [*HIVE-16232*](https://issues.apache.org/jira/browse/HIVE-16232): támogatja a statisztikák számítási QuotedIdentifier oszlopai.
+-   [*HIVE-16232*](https://issues.apache.org/jira/browse/HIVE-16232): Támogatja a statisztikák számítási QuotedIdentifier oszlopai.
 
--   [*HIVE-16828*](https://issues.apache.org/jira/browse/HIVE-16828): A CBO engedélyezve, a lekérdezés a particionált nézet IndexOutOfBoundException jelez.
+-   [*HIVE-16828*](https://issues.apache.org/jira/browse/HIVE-16828): CBO engedélyezve van, az lekérdezés a particionált nézet IndexOutOfBoundException jelez.
 
--   [*HIVE-17013*](https://issues.apache.org/jira/browse/HIVE-17013): egy nézetben válassza ki a alapján segédlekérdezés-törlési kérelmet.
+-   [*HIVE-17013*](https://issues.apache.org/jira/browse/HIVE-17013): Kérelem törlése a segédlekérdezés egy nézetben válassza ki a alapján.
 
 -   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063): alakzatot a külső tábla sikertelen felülírása partíció beszúrása amikor először dobja el partíció.
 
--   [*HIVE-17259*](https://issues.apache.org/jira/browse/HIVE-17259): Hive JDBC nem ismeri fel UNIONTYPE oszlopokat.
+-   [*HIVE-17259*](https://issues.apache.org/jira/browse/HIVE-17259): A Hive JDBC UNIONTYPE oszlopok nem ismeri fel.
 
--   [*HIVE-17419*](https://issues.apache.org/jira/browse/HIVE-17419): elemzése... számítási statisztika a TÁBLÁZATOSZLOPOK a parancs megjeleníti a maszkolt táblák számított statisztikái.
+-   [*HIVE-17419*](https://issues.apache.org/jira/browse/HIVE-17419): ELEMZÉS... számítási statisztika a TÁBLÁZATOSZLOPOK a parancs megjeleníti a maszkolt táblák számított statisztikái.
 
 -   [*HIVE-17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException uniontype konvertálásakor.
 
@@ -285,11 +285,11 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): Adjon hozzá több\_blobstores agg.q teszt.
 
--   [*HIVE-17729*](https://issues.apache.org/jira/browse/HIVE-17729): adatbázis hozzáadása és magyarázat kapcsolódó blobtárhely teszteket.
+-   [*HIVE-17729*](https://issues.apache.org/jira/browse/HIVE-17729): Adja hozzá az adatbázis és a magyarázat kapcsolódó blobtárhely teszteket.
 
 -   [*HIVE-17731*](https://issues.apache.org/jira/browse/HIVE-17731): HIVE-11985 ad hozzá egy előző verziókkal való kompatibilitási lehetőséget külső felhasználók számára.
 
--   [*HIVE-17803*](https://issues.apache.org/jira/browse/HIVE-17803): Pig több lekérdezéssel, az ugyanazon a táblán történő 2 HCatStorers egymás kimenetek trample lesz.
+-   [*HIVE-17803*](https://issues.apache.org/jira/browse/HIVE-17803): Pig-lekérdezéshez több ugyanazon a táblán történő 2 HCatStorers fog trample egymás kimenetek.
 
 -   [*HIVE-17829*](https://issues.apache.org/jira/browse/HIVE-17829): ArrayIndexOutOfBoundsException - táblák HBASE-alapú Hive2 az Avro-sémában.
 
@@ -297,21 +297,21 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-17900*](https://issues.apache.org/jira/browse/HIVE-17900): statisztikák által aktivált oszlopokon elemzése Öntömörítős konténer állít elő, a hibás SQL &gt; 1 partícióoszlop.
 
--   [*HIVE-18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive webhcat egyszerű konfigurációs optimalizálás.
+-   [*HIVE-18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive-webhcat egyszerű konfigurációs optimalizálás.
 
--   [*HIVE-18031*](https://issues.apache.org/jira/browse/HIVE-18031): Alter Database művelet támogatási replikációját.
+-   [*HIVE-18031*](https://issues.apache.org/jira/browse/HIVE-18031): Az Alter Database művelet támogatja a replikációt.
 
 -   [*HIVE-18090*](https://issues.apache.org/jira/browse/HIVE-18090): acid szívverés sikertelen lesz, amikor metaadattár hadoop hitelesítő adat keresztül csatlakozik.
 
--   [*HIVE-18189*](https://issues.apache.org/jira/browse/HIVE-18189): nem megfelelő eredményt adnak vissza Hive-lekérdezés hive.groupby.orderby.position.alias beállítás értéke igaz.
+-   [*HIVE-18189*](https://issues.apache.org/jira/browse/HIVE-18189): Hive-lekérdezés nem megfelelő eredményt adnak vissza hive.groupby.orderby.position.alias beállítás értéke igaz.
 
--   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizációt: csökkentése mellett csoport által MERGEPARTIAL ismétlődő oszlopokkal megszakad.
+-   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizációt: Csökkentése mellett csoport által MERGEPARTIAL ismétlődő oszlopokkal megszakad.
 
--   [*HIVE-18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive tömörítése, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál nem működik.
+-   [*HIVE-18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál tömörítése sikertelen.
 
--   [*HIVE-18327*](https://issues.apache.org/jira/browse/HIVE-18327): távolítsa el a felesleges HiveConf függőség MiniHiveKdc számára.
+-   [*HIVE-18327*](https://issues.apache.org/jira/browse/HIVE-18327): Távolítsa el a felesleges HiveConf függőség MiniHiveKdc számára.
 
--   [*HIVE-18341*](https://issues.apache.org/jira/browse/HIVE-18341): repl terhelés támogatása a "raw" névtér hozzáadása a TDE ugyanolyan titkosítási kulcsokkal.
+-   [*HIVE-18341*](https://issues.apache.org/jira/browse/HIVE-18341): Adja hozzá a repl terhelés hozzáadásának támogatása a "raw" névtér TDE ugyanolyan titkosítási kulcsokkal.
 
 -   [*HIVE-18352*](https://issues.apache.org/jira/browse/HIVE-18352): vezeti be, hogy más eszközök integrációi REPL DUMP Mindeközben METADATAONLY lehetőséget.
 
@@ -319,85 +319,85 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-18390*](https://issues.apache.org/jira/browse/HIVE-18390): IndexOutOfBoundsException lekérdezésénél ColumnPruner a particionált nézet.
 
--   [*HIVE-18429*](https://issues.apache.org/jira/browse/HIVE-18429): tömörítési kezelje az esetet, ha ez nem hoz létre kimenetet.
+-   [*HIVE-18429*](https://issues.apache.org/jira/browse/HIVE-18429): Tömörítési kezelje egy esetet, ha ez nem hoz létre kimenetet.
 
 -   [*HIVE-18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Adja meg a cookie-k adatokat átadni a kapcsolati karakterlánc használatával JDBC-felhasználók.
 
--   [*HIVE-18460*](https://issues.apache.org/jira/browse/HIVE-18460): Öntömörítős konténer táblázat tulajdonságai nem adnak át az Orc-író.
+-   [*HIVE-18460*](https://issues.apache.org/jira/browse/HIVE-18460): Öntömörítős konténer táblázat tulajdonságai nem továbbítja az Orc-író.
 
 -   [*HIVE-18467*](https://issues.apache.org/jira/browse/HIVE-18467): támogatja a teljes adatraktár memóriakép / betöltése + létrehozása/drop database események (Anishek Agarwal, Sankar Hariappan véleményező).
 
--   [*HIVE-18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizációt: VectorMapOperator próbál írási túl sok vektoros oszlopok hibrid türelmi.
+-   [*HIVE-18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizációt: Írási vektor túl sok oszlop hibrid türelmi VectorMapOperator próbál.
 
 -   [*HIVE-18587*](https://issues.apache.org/jira/browse/HIVE-18587): insert DML esemény megkísérli a könyvtárak ellenőrzőösszeg számítása.
 
--   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613): kiterjesztése JsonSerDe bináris típusú támogatásához.
+-   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613): BINÁRIS típusú támogatásához JsonSerDe kiterjesztése.
 
--   [*HIVE-18626*](https://issues.apache.org/jira/browse/HIVE-18626): Repl terhelés "with" záradék nem felel meg a konfigurációs feladatok.
+-   [*HIVE-18626*](https://issues.apache.org/jira/browse/HIVE-18626): REPL terhelés "with" záradék nem felel meg a konfigurációs feladatok.
 
 -   [*HIVE-18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nem tesz különbséget a partíció- és virtuális oszlopai között.
 
--   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL állapot támogatnia kell a "with" záradékot.
+-   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): Replikációs állapot támogatnia kell a "with" záradékot.
 
--   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL állapot támogatnia kell a "with" záradékot.
+-   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): Replikációs állapot támogatnia kell a "with" záradékot.
 
--   [*HIVE-18788*](https://issues.apache.org/jira/browse/HIVE-18788): távolítsa el a JDBC PreparedStatement bemenetei között.
+-   [*HIVE-18788*](https://issues.apache.org/jira/browse/HIVE-18788): A Törlés a JDBC PreparedStatement bemenetei között.
 
--   [*HIVE-18794*](https://issues.apache.org/jira/browse/HIVE-18794): Repl terhelés "with" záradék nem felel meg a konfigurációs feladatok nem partíciós táblák esetében.
+-   [*HIVE-18794*](https://issues.apache.org/jira/browse/HIVE-18794): REPL terhelés "with" záradék nem felel meg a konfigurációs feladatok nem partíciós táblák esetében.
 
--   [*HIVE-18808*](https://issues.apache.org/jira/browse/HIVE-18808): tömörítési robusztusabb végrehajtani, ha a statisztikák frissítése sikertelen.
+-   [*HIVE-18808*](https://issues.apache.org/jira/browse/HIVE-18808): Tömörítési végrehajtani még robusztusabbá, ha a statisztikák frissítése sikertelen.
 
--   [*HIVE-18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds kivétel olvasás során ACID tábla.
+-   [*HIVE-18817*](https://issues.apache.org/jira/browse/HIVE-18817): Kivétel ArrayIndexOutOfBounds során ACID tábla olvasása.
 
--   [*HIVE-18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatikus egyesítés sikertelen mikor "orcfile könyvtárba beszúrása".
+-   [*HIVE-18833*](https://issues.apache.org/jira/browse/HIVE-18833): Automatikus egyesítés sikertelen lesz, ha "orcfile könyvtárba beszúrása".
 
--   [*HIVE-18879*](https://issues.apache.org/jira/browse/HIVE-18879): UDFXPathUtil igényeinek megfelelően működni, ha a beágyazott elem letiltása az osztályútvonal xercesImpl.jar.
+-   [*HIVE-18879*](https://issues.apache.org/jira/browse/HIVE-18879): Ne engedélyezze a beágyazott elem UDFXPathUtil kell működik, ha az osztályútvonal xercesImpl.jar.
 
--   [*HIVE-18907*](https://issues.apache.org/jira/browse/HIVE-18907): acid kulcsindex kapcsolatos problémák megoldásához a HIVE-18817 segédprogram létrehozása.
+-   [*HIVE-18907*](https://issues.apache.org/jira/browse/HIVE-18907): Hozzon létre acid kulcsindex kapcsolatos problémák megoldásához a HIVE-18817 segédprogramot.
 
 **Hive 2.1.0 Apache javítások:**
 
--   [*HIVE-14013*](https://issues.apache.org/jira/browse/HIVE-14013): ismertetik tábla nem jelenik meg unicode megfelelően.
+-   [*HIVE-14013*](https://issues.apache.org/jira/browse/HIVE-14013): Írja le tábla nem jelenik meg unicode megfelelően.
 
 -   [*HIVE-14205*](https://issues.apache.org/jira/browse/HIVE-14205): Hive nem támogatja az AVRO formátum egyesítési típusban.
 
--   [*HIVE-15563*](https://issues.apache.org/jira/browse/HIVE-15563): szabálytalan műveletet figyelmen kívül hagyása állapot átmeneti kivétel SQLOperation.runQuery elérhetővé valós kivétel.
+-   [*HIVE-15563*](https://issues.apache.org/jira/browse/HIVE-15563): Érvénytelen művelet állapota átmenet kivétel SQLOperation.runQuery elérhetővé valós kivétel figyelmen kívül.
 
--   [*HIVE-15680*](https://issues.apache.org/jira/browse/HIVE-15680): helytelen eredmények amikor hive.optimize.index.filter=true és azonos ORC táblára hivatkozás található kétszer szerepel a lekérdezésben, MR módban.
+-   [*HIVE-15680*](https://issues.apache.org/jira/browse/HIVE-15680): Hibás eredményeket amikor hive.optimize.index.filter=true és azonos ORC táblára hivatkozás található kétszer szerepel a lekérdezésben, MR módban.
 
--   [*HIVE-15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase táblájába Hive beszúrás sikertelen a decimal leképezve.
+-   [*HIVE-15883*](https://issues.apache.org/jira/browse/HIVE-15883): A HBase leképezve a Beszúrás sikertelen decimális Hive tábla.
 
--   [*HIVE-16757*](https://issues.apache.org/jira/browse/HIVE-16757): távolítsa el az elavult AbstractRelNode.getRows hívásokat.
+-   [*HIVE-16757*](https://issues.apache.org/jira/browse/HIVE-16757): Távolítsa el az elavult AbstractRelNode.getRows hívásokat.
 
--   [*HIVE-16828*](https://issues.apache.org/jira/browse/HIVE-16828): A CBO engedélyezve, a lekérdezés a particionált nézet IndexOutOfBoundException jelez.
+-   [*HIVE-16828*](https://issues.apache.org/jira/browse/HIVE-16828): CBO engedélyezve van, az lekérdezés a particionált nézet IndexOutOfBoundException jelez.
 
 -   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063): alakzatot a külső tábla sikertelen felülírása partíció beszúrása amikor először dobja el partíció.
 
--   [*HIVE-17259*](https://issues.apache.org/jira/browse/HIVE-17259): Hive JDBC nem ismeri fel UNIONTYPE oszlopokat.
+-   [*HIVE-17259*](https://issues.apache.org/jira/browse/HIVE-17259): A Hive JDBC UNIONTYPE oszlopok nem ismeri fel.
 
 -   [*HIVE-17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException uniontype konvertálásakor.
 
--   [*HIVE-17600*](https://issues.apache.org/jira/browse/HIVE-17600): Győződjön meg arról, OrcFile enforceBufferSize felhasználó állítható be.
+-   [*HIVE-17600*](https://issues.apache.org/jira/browse/HIVE-17600): Győződjön meg a OrcFile enforceBufferSize felhasználó állítható be.
 
 -   [*HIVE-17601*](https://issues.apache.org/jira/browse/HIVE-17601): LlapServiceDriver hibakezelés javítása.
 
 -   [*HIVE-17613*](https://issues.apache.org/jira/browse/HIVE-17613): távolítsa el a rövid, azonos-hozzászóláslánc hozzárendelések objektum-készleteket.
 
--   [*HIVE-17617*](https://issues.apache.org/jira/browse/HIVE-17617): összesítését, egy üres eredménykészlettel rendelkező tartalmaznia kell a csoportosítást, az üres csoportosítási készlet.
+-   [*HIVE-17617*](https://issues.apache.org/jira/browse/HIVE-17617): Összesítő, egy üres eredménykészlettel rendelkező tartalmaznia kell a csoportosítást, az üres csoportosítási készlet.
 
 -   [*HIVE-17621*](https://issues.apache.org/jira/browse/HIVE-17621): Hive-beállítások HCatInputFormat split-számítás során figyelmen kívül hagyja.
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: egy engedélyezett/blacklist config kell a táblák és partíciók szelektív gyorsítótárazását és olvasás közben prewarming engedélyezhetik.
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: A táblák és partíciók szelektív gyorsítótárazását és olvasás közben prewarming engedélyezhetik kell egy engedélyezett/blacklist config.
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): Adjon hozzá több\_blobstores agg.q teszt.
 
 -   [*HIVE-17702*](https://issues.apache.org/jira/browse/HIVE-17702): helytelen isRepeating kezelése, az ORC decimális olvasói.
 
--   [*HIVE-17729*](https://issues.apache.org/jira/browse/HIVE-17729): adatbázis hozzáadása és magyarázat kapcsolódó blobtárhely teszteket.
+-   [*HIVE-17729*](https://issues.apache.org/jira/browse/HIVE-17729): Adja hozzá az adatbázis és a magyarázat kapcsolódó blobtárhely teszteket.
 
 -   [*HIVE-17731*](https://issues.apache.org/jira/browse/HIVE-17731): HIVE-11985 ad hozzá egy előző verziókkal való kompatibilitási lehetőséget külső felhasználók számára.
 
--   [*HIVE-17803*](https://issues.apache.org/jira/browse/HIVE-17803): Pig több lekérdezéssel, az ugyanazon a táblán történő 2 HCatStorers egymás kimenetek trample lesz.
+-   [*HIVE-17803*](https://issues.apache.org/jira/browse/HIVE-17803): Pig-lekérdezéshez több ugyanazon a táblán történő 2 HCatStorers fog trample egymás kimenetek.
 
 -   [*HIVE-17845*](https://issues.apache.org/jira/browse/HIVE-17845): beszúrás sikertelen lesz, ha célként megadott tábla oszlopait nem kisbetűs.
 
@@ -405,29 +405,29 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-18006*](https://issues.apache.org/jira/browse/HIVE-18006): HLLDenseRegister memóriaigénye optimalizálása.
 
--   [*HIVE-18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive webhcat egyszerű konfigurációs optimalizálás.
+-   [*HIVE-18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive-webhcat egyszerű konfigurációs optimalizálás.
 
--   [*HIVE-18031*](https://issues.apache.org/jira/browse/HIVE-18031): Alter Database művelet támogatási replikációját.
+-   [*HIVE-18031*](https://issues.apache.org/jira/browse/HIVE-18031): Az Alter Database művelet támogatja a replikációt.
 
 -   [*HIVE-18090*](https://issues.apache.org/jira/browse/HIVE-18090): acid szívverés sikertelen lesz, amikor metaadattár hadoop hitelesítő adat keresztül csatlakozik.
 
--   [*HIVE-18189*](https://issues.apache.org/jira/browse/HIVE-18189): sorrend alapján nem működik, ha cbo le van tiltva.
+-   [*HIVE-18189*](https://issues.apache.org/jira/browse/HIVE-18189): Rendelést a pozíció nem működik, ha cbo le van tiltva.
 
--   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizációt: csökkentése mellett csoport által MERGEPARTIAL ismétlődő oszlopokkal megszakad.
+-   [*HIVE-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizációt: Csökkentése mellett csoport által MERGEPARTIAL ismétlődő oszlopokkal megszakad.
 
--   [*HIVE-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: gyors llap i/o-lassú feldolgozási folyamat OOM vezethet.
+-   [*HIVE-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: Gyors llap OOM i/o-lassú feldolgozási folyamat vezethet.
 
--   [*HIVE-18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive tömörítése, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál nem működik.
+-   [*HIVE-18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál tömörítése sikertelen.
 
--   [*HIVE-18318*](https://issues.apache.org/jira/browse/HIVE-18318): LLAP rekordot olvasó ellenőriznie kell a megszakítást, akkor is, ha az nem blokkolja-e.
+-   [*HIVE-18318*](https://issues.apache.org/jira/browse/HIVE-18318): Rekordot olvasó LLAP megszakítási ellenőrizze akkor is, ha az nem blokkolja-e.
 
 -   [*HIVE-18326*](https://issues.apache.org/jira/browse/HIVE-18326): LLAP Tez scheduler - feladatok csak visszasorolni, ha függőség van közöttük.
 
--   [*HIVE-18327*](https://issues.apache.org/jira/browse/HIVE-18327): távolítsa el a felesleges HiveConf függőség MiniHiveKdc számára.
+-   [*HIVE-18327*](https://issues.apache.org/jira/browse/HIVE-18327): Távolítsa el a felesleges HiveConf függőség MiniHiveKdc számára.
 
--   [*HIVE-18331*](https://issues.apache.org/jira/browse/HIVE-18331): relogin TGT lejártakor és néhány naplózási lambda hozzáadása.
+-   [*HIVE-18331*](https://issues.apache.org/jira/browse/HIVE-18331): Adja hozzá a TGT lejártakor relogin és néhány naplózási lambda.
 
--   [*HIVE-18341*](https://issues.apache.org/jira/browse/HIVE-18341): repl terhelés támogatása a "raw" névtér hozzáadása a TDE ugyanolyan titkosítási kulcsokkal.
+-   [*HIVE-18341*](https://issues.apache.org/jira/browse/HIVE-18341): Adja hozzá a repl terhelés hozzáadásának támogatása a "raw" névtér TDE ugyanolyan titkosítási kulcsokkal.
 
 -   [*HIVE-18352*](https://issues.apache.org/jira/browse/HIVE-18352): vezeti be, hogy más eszközök integrációi REPL DUMP Mindeközben METADATAONLY lehetőséget.
 
@@ -439,95 +439,95 @@ Ebben a kiadásban 1.2.1-es Hive és a Hive 2.1.0 mellett a következő javítá
 
 -   [*HIVE-18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Adja meg a cookie-k adatokat átadni a kapcsolati karakterlánc használatával JDBC-felhasználók.
 
--   [*HIVE-18460*](https://issues.apache.org/jira/browse/HIVE-18460): Öntömörítős konténer táblázat tulajdonságai nem adnak át az Orc-író.
+-   [*HIVE-18460*](https://issues.apache.org/jira/browse/HIVE-18460): Öntömörítős konténer táblázat tulajdonságai nem továbbítja az Orc-író.
 
--   [*HIVE-18462*](https://issues.apache.org/jira/browse/HIVE-18462): (magyarázat térkép join lekérdezéseket tartalmaz formázatlan oszlopnévvel columnExprMap formátumú).
+-   [*HIVE-18462*](https://issues.apache.org/jira/browse/HIVE-18462): (Azt ismertetik, formázott térkép join lekérdezéseket tartalmaz columnExprMap formázatlan oszlopnévvel).
 
 -   [*HIVE-18467*](https://issues.apache.org/jira/browse/HIVE-18467): támogatja a teljes adatraktár memóriakép / betöltése + adatbázis-események létrehozása/drop.
 
 -   [*HIVE-18488*](https://issues.apache.org/jira/browse/HIVE-18488): LLAP ORC-olvasók hiányoznak bizonyos null-ellenőrzések.
 
--   [*HIVE-18490*](https://issues.apache.org/jira/browse/HIVE-18490): lekérdezés EXISTS és nem EXISTS nem egyenlő a predikátum nem megfelelő eredményt hozhat létre.
+-   [*HIVE-18490*](https://issues.apache.org/jira/browse/HIVE-18490): Lekérdezés EXISTS és nem EXISTS nem egyenlő a predikátum nem megfelelő eredményt hozhat létre.
 
 -   [*HIVE-18506*](https://issues.apache.org/jira/browse/HIVE-18506): LlapBaseInputFormat - negatív konci indexu Pole.
 
--   [*HIVE-18517*](https://issues.apache.org/jira/browse/HIVE-18517): Vektorizációt: Javítsa VectorMapOperator VRBs fogadja el, és ellenőrizze vectorized jelző megfelelően LLAP gyorsítótárazás támogatása).
+-   [*HIVE-18517*](https://issues.apache.org/jira/browse/HIVE-18517): Vektorizációt: Javítás VectorMapOperator VRBs fogadja el, és ellenőrizze vectorized jelző megfelelően LLAP gyorsítótárazás támogatása).
 
 -   [*HIVE-18523*](https://issues.apache.org/jira/browse/HIVE-18523): Javítsa ki a összegző sor abban az esetben, ha nincsenek adatbevitel nélkül.
 
--   [*HIVE-18528*](https://issues.apache.org/jira/browse/HIVE-18528): összesített statisztikák ObjectStore a nem megfelelő eredményt kapja.
+-   [*HIVE-18528*](https://issues.apache.org/jira/browse/HIVE-18528): Összesített statisztikák ObjectStore a nem megfelelő eredményt kapja.
 
--   [*HIVE-18530*](https://issues.apache.org/jira/browse/HIVE-18530): replikációs ki kell hagyni az MM tábla (egyelőre).
+-   [*HIVE-18530*](https://issues.apache.org/jira/browse/HIVE-18530): (Egyelőre) replikációs MM tábla ki kell hagyni.
 
 -   [*HIVE-18548*](https://issues.apache.org/jira/browse/HIVE-18548): Javítsa ki a log4j importálása.
 
--   [*HIVE-18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizációt: VectorMapOperator próbál írási túl sok vektoros oszlopok hibrid türelmi.
+-   [*HIVE-18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizációt: Írási vektor túl sok oszlop hibrid türelmi VectorMapOperator próbál.
 
--   [*HIVE-18577*](https://issues.apache.org/jira/browse/HIVE-18577): SemanticAnalyzer.validate rendelkezik néhány értelme metaadattár hívás.
+-   [*HIVE-18577*](https://issues.apache.org/jira/browse/HIVE-18577): SemanticAnalyzer.validate néhány értelme metaadattár hívás tartozik.
 
 -   [*HIVE-18587*](https://issues.apache.org/jira/browse/HIVE-18587): insert DML esemény megkísérli a könyvtárak ellenőrzőösszeg számítása.
 
--   [*HIVE-18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: mindig csomag a org.apache.log4j log4j2 API fájlt.
+-   [*HIVE-18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: Mindig a csomag számára org.apache.log4j log4j2 API fájlt.
 
--   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613): kiterjesztése JsonSerDe bináris típusú támogatásához.
+-   [*HIVE-18613*](https://issues.apache.org/jira/browse/HIVE-18613): BINÁRIS típusú támogatásához JsonSerDe kiterjesztése.
 
--   [*HIVE-18626*](https://issues.apache.org/jira/browse/HIVE-18626): Repl terhelés "with" záradék nem felel meg a konfigurációs feladatok.
+-   [*HIVE-18626*](https://issues.apache.org/jira/browse/HIVE-18626): REPL terhelés "with" záradék nem felel meg a konfigurációs feladatok.
 
 -   [*HIVE-18643*](https://issues.apache.org/jira/browse/HIVE-18643): archivált ACID ops-partíciók ellenőrzése.
 
 -   [*HIVE-18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nem tesz különbséget a partíció- és virtuális oszlopai között.
 
--   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL állapot támogatnia kell a "with" záradékot.
+-   [*HIVE-18754*](https://issues.apache.org/jira/browse/HIVE-18754): Replikációs állapot támogatnia kell a "with" záradékot.
 
--   [*HIVE-18788*](https://issues.apache.org/jira/browse/HIVE-18788): távolítsa el a JDBC PreparedStatement bemenetei között.
+-   [*HIVE-18788*](https://issues.apache.org/jira/browse/HIVE-18788): A Törlés a JDBC PreparedStatement bemenetei között.
 
--   [*HIVE-18794*](https://issues.apache.org/jira/browse/HIVE-18794): Repl terhelés "with" záradék nem felel meg a konfigurációs feladatok nem partíciós táblák esetében.
+-   [*HIVE-18794*](https://issues.apache.org/jira/browse/HIVE-18794): REPL terhelés "with" záradék nem felel meg a konfigurációs feladatok nem partíciós táblák esetében.
 
--   [*HIVE-18808*](https://issues.apache.org/jira/browse/HIVE-18808): tömörítési robusztusabb végrehajtani, ha a statisztikák frissítése sikertelen.
+-   [*HIVE-18808*](https://issues.apache.org/jira/browse/HIVE-18808): Tömörítési végrehajtani még robusztusabbá, ha a statisztikák frissítése sikertelen.
 
--   [*HIVE-18815*](https://issues.apache.org/jira/browse/HIVE-18815): távolítsa el a fel nem használt szolgáltatás HPL/SQL-ben.
+-   [*HIVE-18815*](https://issues.apache.org/jira/browse/HIVE-18815): Távolítsa el a nem használt szolgáltatás HPL/SQL-ben.
 
--   [*HIVE-18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds kivétel olvasás során ACID tábla.
+-   [*HIVE-18817*](https://issues.apache.org/jira/browse/HIVE-18817): Kivétel ArrayIndexOutOfBounds során ACID tábla olvasása.
 
--   [*HIVE-18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatikus egyesítés sikertelen mikor "orcfile könyvtárba beszúrása".
+-   [*HIVE-18833*](https://issues.apache.org/jira/browse/HIVE-18833): Automatikus egyesítés sikertelen lesz, ha "orcfile könyvtárba beszúrása".
 
--   [*HIVE-18879*](https://issues.apache.org/jira/browse/HIVE-18879): UDFXPathUtil igényeinek megfelelően működni, ha a beágyazott elem letiltása az osztályútvonal xercesImpl.jar.
+-   [*HIVE-18879*](https://issues.apache.org/jira/browse/HIVE-18879): Ne engedélyezze a beágyazott elem UDFXPathUtil kell működik, ha az osztályútvonal xercesImpl.jar.
 
--   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944): Groupping csoportok pozíciója a DPP során helytelenül van beállítva.
+-   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944): GroupPing csoportok pozíció DPP során helytelenül van beállítva.
 
 ### <a name="kafka"></a>Kafka
 
 Ebben a kiadásban a Kafka 1.0.0-s és javítást az alábbiak Apache biztosít.
 
--   [A KAFKA-4827](https://issues.apache.org/jira/browse/KAFKA-4827): a Kafka csatlakoztatása: Hiba történt az összekötő neve speciális karaktereket.
+-   [A KAFKA-4827](https://issues.apache.org/jira/browse/KAFKA-4827): Csatlakozás a Kafka: Hiba történt az összekötő neve speciális karaktereket.
 
--   [A KAFKA-6118](https://issues.apache.org/jira/browse/KAFKA-6118): kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials átmeneti hibája.
+-   [A KAFKA-6118](https://issues.apache.org/jira/browse/KAFKA-6118): Kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials átmeneti hibája.
 
 -   [A KAFKA-6156](https://issues.apache.org/jira/browse/KAFKA-6156): JmxReporter stílus elérési utak a windows nem tudja kezelni.
 
--   [A KAFKA-6164](https://issues.apache.org/jira/browse/KAFKA-6164): ClientQuotaManager szál leállítási akadályozni a naplók betöltése hibába ütközik.
+-   [A KAFKA-6164](https://issues.apache.org/jira/browse/KAFKA-6164): Naplók betöltése hibát amikor ClientQuotaManager szálak megakadályozzák, hogy leállás.
 
--   [A KAFKA-6167](https://issues.apache.org/jira/browse/KAFKA-6167): időbélyeg Streamek könyvtárban kettősponttal, amely érvénytelen karaktert tartalmaz.
+-   [A KAFKA-6167](https://issues.apache.org/jira/browse/KAFKA-6167): Streamek directory célmappájában kettősponttal, amely érvénytelen karaktert tartalmaz.
 
 -   [A KAFKA-6179](https://issues.apache.org/jira/browse/KAFKA-6179): RecordQueue.clear() nem szünteti meg MinTimestampTracker által karbantartott lista.
 
--   [A KAFKA-6185](https://issues.apache.org/jira/browse/KAFKA-6185): választó memóriavesztés az átalakítás le az OOM magas valószínűségét.
+-   [A KAFKA-6185](https://issues.apache.org/jira/browse/KAFKA-6185): Választó memóriavesztés az átalakítás le az OOM magas valószínűségét.
 
--   [A KAFKA-6190](https://issues.apache.org/jira/browse/KAFKA-6190): GlobalKTable soha nem befejezése használatakor tranzakciós üzenetek visszaállítása.
+-   [A KAFKA-6190](https://issues.apache.org/jira/browse/KAFKA-6190): GlobalKTable nem fejeződik be használatakor tranzakciós üzenetek visszaállítása.
 
 -   [A KAFKA-6210](https://issues.apache.org/jira/browse/KAFKA-6210): IllegalArgumentException 1.0.0-s inter.broker.protocol.version vagy log.message.format.version használata esetén.
 
--   [A KAFKA-6214](https://issues.apache.org/jira/browse/KAFKA-6214): készenléti replikák használatával egy memória állapot store összeomlási hatására a Streamek.
+-   [A KAFKA-6214](https://issues.apache.org/jira/browse/KAFKA-6214): Készenléti replikákat használ a memória-állapot tárolásának hatására a Streamek összeomlási.
 
 -   [A KAFKA-6215](https://issues.apache.org/jira/browse/KAFKA-6215): KafkaStreamsTest trönk sikertelen lesz.
 
--   [A KAFKA-6238](https://issues.apache.org/jira/browse/KAFKA-6238): verze protokolu, ha a működés közbeni frissítésének 1.0.0-s problémái.
+-   [A KAFKA-6238](https://issues.apache.org/jira/browse/KAFKA-6238): Ha a működés közbeni frissítésének 1.0.0-s protokoll verziójával kapcsolatos problémák.
 
 -   [A KAFKA-6260](https://issues.apache.org/jira/browse/KAFKA-6260): AbstractCoordinator egyértelműen nem kezeli a kivétel null értékű.
 
--   [A KAFKA-6261](https://issues.apache.org/jira/browse/KAFKA-6261): naplózás kivételt jelez, ha a kérelem ACK = 0.
+-   [A KAFKA-6261](https://issues.apache.org/jira/browse/KAFKA-6261): Naplózás kivételt jelez, ha a kérelem ACK = 0.
 
--   [A KAFKA-6274](https://issues.apache.org/jira/browse/KAFKA-6274): KTable adatforrás javítása állapotának tárolásához automatikusan generált nevek.
+-   [A KAFKA-6274](https://issues.apache.org/jira/browse/KAFKA-6274): Javíthatja a KTable forrás állapot store automatikusan generált nevek.
 
 ### <a name="mahout"></a>Mahout
 
@@ -547,99 +547,99 @@ HDP-2.5.x és 2.6.x azt a "commons-httpclient" könyvtár létrehozása a Mahout
 
 Ebben a kiadásban az Oozie 4.2.0 az Apache javítást az alábbiak.
 
--   [Az OOZIE-2571](https://issues.apache.org/jira/browse/OOZIE-2571): spark.scala.binary.version Maven tulajdonság hozzáadása, hogy Scala 2.11-et is használható.
+-   [AZ OOZIE-2571](https://issues.apache.org/jira/browse/OOZIE-2571): Adja hozzá spark.scala.binary.version Maven tulajdonságot, hogy Scala 2.11-et is használható.
 
--   [Az OOZIE-2606](https://issues.apache.org/jira/browse/OOZIE-2606): állítsa be a Spark 2.0, az oozie-val megoldásához spark.yarn.jars.
+-   [AZ OOZIE-2606](https://issues.apache.org/jira/browse/OOZIE-2606): Állítsa be a Spark 2.0, az oozie-val megoldásához spark.yarn.jars.
 
 -   [Az OOZIE-2658](https://issues.apache.org/jira/browse/OOZIE-2658):--illesztőprogram-osztály-path felülírhatja az osztályútvonal SparkMain a.
 
--   [Az OOZIE-2787](https://issues.apache.org/jira/browse/OOZIE-2787): Oozie osztja el az alkalmazás jar kétszer így a spark-feladat sikertelen lesz.
+-   [AZ OOZIE-2787](https://issues.apache.org/jira/browse/OOZIE-2787): Oozie osztja el az alkalmazás jar kétszer így a spark-feladat sikertelen lesz.
 
--   [Az OOZIE-2792](https://issues.apache.org/jira/browse/OOZIE-2792): Hive2 művelet van nem elemzés naplófájl Spark Alkalmazásazonosítója megfelelően Spark struktúra esetén.
+-   [AZ OOZIE-2792](https://issues.apache.org/jira/browse/OOZIE-2792): Hive2 művelet van nem elemzés naplófájl Spark Alkalmazásazonosítója megfelelően Spark struktúra esetén.
 
--   [Az OOZIE-2799](https://issues.apache.org/jira/browse/OOZIE-2799): a spark sql, a hive beállítás napló helyét.
+-   [AZ OOZIE-2799](https://issues.apache.org/jira/browse/OOZIE-2799): A spark sql, a hive beállítás naplófájl helye.
 
--   [Az OOZIE-2802](https://issues.apache.org/jira/browse/OOZIE-2802): Spark-művelet hibája miatt ismétlődő sharelibs 2.1.0 Spark.
+-   [AZ OOZIE-2802](https://issues.apache.org/jira/browse/OOZIE-2802): Spark-művelet hibája miatt ismétlődő sharelibs 2.1.0 Spark.
 
--   [Az OOZIE-2923](https://issues.apache.org/jira/browse/OOZIE-2923): Spark javítása lehetőségek elemzése.
+-   [AZ OOZIE-2923](https://issues.apache.org/jira/browse/OOZIE-2923): Javíthatja a Spark lehetőségek elemzése.
 
--   [Az OOZIE-3109](https://issues.apache.org/jira/browse/OOZIE-3109): SCA: többhelyes Scripting: tükrözi.
+-   [AZ OOZIE-3109](https://issues.apache.org/jira/browse/OOZIE-3109): SCA: Többhelyes Scripting: Tükrözi.
 
--   [Az OOZIE-3139](https://issues.apache.org/jira/browse/OOZIE-3139): Oozie érvényesíti a munkafolyamat helytelen.
+-   [AZ OOZIE-3139](https://issues.apache.org/jira/browse/OOZIE-3139): Az Oozie helytelenül érvényesíti a munkafolyamat.
 
--   [Az OOZIE-3167](https://issues.apache.org/jira/browse/OOZIE-3167): Oozie 4.3 ág frissítési tomcat verziója.
+-   [AZ OOZIE-3167](https://issues.apache.org/jira/browse/OOZIE-3167): Frissítse a tomcat verzió Oozie 4.3 ágon.
 
 ### <a name="phoenix"></a>Phoenix
 
 Ebben a kiadásban Phoenix 4.7.0 és az Apache javítást az alábbiak:
 
--   [A PHOENIX-1751](https://issues.apache.org/jira/browse/PHOENIX-1751): hajtsa végre a rendezési stb., a preScannerNext postScannerOpen helyett az összesítésben.
+-   [A PHOENIX-1751](https://issues.apache.org/jira/browse/PHOENIX-1751): Hajtsa végre a rendezési stb., a preScannerNext postScannerOpen helyett az összesítésben.
 
--   [A PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714): megfelelő bájt BaseResultIterators becslés, és felület, elérhetővé tétele.
+-   [A PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714): Javítsa ki a BaseResultIterators bájt becslés, és elérhetővé tehettük adapterként.
 
--   [A PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724): nincs stats lassabban összehasonlítja guideposts nagy számú lekérdezést.
+-   [A PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724): Nincs stats lassabban összehasonlítja guideposts nagy számú lekérdezést.
 
--   [A PHOENIX-2855](https://issues.apache.org/jira/browse/PHOENIX-2855): a HBase 1.2-es nem szerializált megoldás növekmény TimeRange.
+-   [A PHOENIX-2855](https://issues.apache.org/jira/browse/PHOENIX-2855): Megkerülő megoldás növekmény TimeRange a HBase 1.2 nincsenek szerializálva.
 
--   [A PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023): teljesítménycsökkenés végrehajtásakor korlát lekérdezések párhuzamos alapértelmezés szerint.
+-   [A PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023): Lassú teljesítmény végrehajtásakor korlát lekérdezések párhuzamos alapértelmezés szerint.
 
--   [A PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040): guideposts nem használja a lekérdezések végrehajtása tárolókonfigurációhoz.
+-   [A PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040): Ne használjon guideposts tárolókonfigurációhoz végre lekérdezéseket.
 
--   [A PHOENIX-3112](https://issues.apache.org/jira/browse/PHOENIX-3112): részleges sor vizsgálat nem megfelelően kezeli.
+-   [A PHOENIX-3112](https://issues.apache.org/jira/browse/PHOENIX-3112): Részleges sor vizsgálat nem megfelelően kezeli.
 
--   [A PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240): a Pig betöltő ClassCastException.
+-   [A PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240): A Pig betöltő ClassCastException.
 
--   [A PHOENIX-3452](https://issues.apache.org/jira/browse/PHOENIX-3452): NULLÉRTÉKEK FIRST/NULL utolsó nem érinti-e a GROUP BY rendelés megőrizve.
+-   [A PHOENIX-3452](https://issues.apache.org/jira/browse/PHOENIX-3452): Null értékek FIRST/NULL utolsó nem érinti-e a GROUP BY rendelés megőrizve.
 
--   [A PHOENIX-3469](https://issues.apache.org/jira/browse/PHOENIX-3469): helytelen rendezési sorrend DESC elsődleges kulcs Null értékek az utolsó / ELŐSZÖR NULL ÉRTÉKEKET.
+-   [A PHOENIX-3469](https://issues.apache.org/jira/browse/PHOENIX-3469): Érvénytelen rendezési sorrend DESC elsődleges kulcs Null értékek az utolsó / NULL érték első.
 
--   [A PHOENIX-3789](https://issues.apache.org/jira/browse/PHOENIX-3789): közötti terület index karbantartási hívások postBatchMutateIndispensably hajtható végre.
+-   [A PHOENIX-3789](https://issues.apache.org/jira/browse/PHOENIX-3789): Hajtsa végre a régiók közötti index karbantartási hívások postBatchMutateIndispensably.
 
--   [A PHOENIX-3865](https://issues.apache.org/jira/browse/PHOENIX-3865): NULL nem ad vissza megfelelő eredményeket amikor első oszlopcsalád nem szűrt ellen.
+-   [A PHOENIX-3865](https://issues.apache.org/jira/browse/PHOENIX-3865): A NULL nem ad vissza megfelelő eredményeket, amikor az első oszlopcsalád nem szűrt ellen.
 
--   [A PHOENIX-4290](https://issues.apache.org/jira/browse/PHOENIX-4290): a tábla nem módosítható az indexek törlése teljes tábla beolvasásával hajtott végre.
+-   [A PHOENIX-4290](https://issues.apache.org/jira/browse/PHOENIX-4290): Teljes tábla beolvasásával törlése a tábla nem módosítható az indexek hajtott végre.
 
--   [A PHOENIX-4373](https://issues.apache.org/jira/browse/PHOENIX-4373): helyi változó hosszúságú Indexkulcs záró nullák upserting közben is rendelkezhet.
+-   [A PHOENIX-4373](https://issues.apache.org/jira/browse/PHOENIX-4373): Helyi változó hosszúságú Indexkulcs záró nullák upserting közben is rendelkezhet.
 
 -   [A PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466): java.lang.RuntimeException: válaszkód 500 - szeretne csatlakozni a phoenix lekérdezés kiszolgáló és az adatok betöltése a spark-feladatok végrehajtása.
 
--   [A PHOENIX-4489](https://issues.apache.org/jira/browse/PHOENIX-4489): a Phoenix MR feladatok HBase kapcsolat adatszivárgást.
+-   [A PHOENIX-4489](https://issues.apache.org/jira/browse/PHOENIX-4489): A Phoenix MR feladatok HBase kapcsolat adatszivárgást.
 
 -   [A PHOENIX-4525](https://issues.apache.org/jira/browse/PHOENIX-4525): GroupBy végrehajtási túlcsordulás egész szám.
 
--   [A PHOENIX-4560](https://issues.apache.org/jira/browse/PHOENIX-4560): ORDER BY a GROUP BY nem működik, ha nincs WHERE oszlophoz.
+-   [A PHOENIX-4560](https://issues.apache.org/jira/browse/PHOENIX-4560): Az ORDER BY a GROUP BY nem működik, ha nincs WHERE oszlophoz.
 
 -   [A PHOENIX-4586](https://issues.apache.org/jira/browse/PHOENIX-4586): UPSERT válassza ki a fiók összehasonlító operátorok segédlekérdezések nem használ.
 
--   [A PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588): kifejezés is klónozza, ha annak gyermekeihez Determinism.PER\_MEGHÍVÁSA.
+-   [A PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588): Kifejezés is klónozza, ha annak gyermekeihez Determinism.PER\_MEGHÍVÁSA.
 
 ### <a name="pig"></a>Pig
 
 Ebben a kiadásban a Pig 0.16.0 az Apache javítást az alábbiak.
 
--   [A PIG-5159](https://issues.apache.org/jira/browse/PIG-5159): Javítsa ki a grunt előzmények nem mentése Pig.
+-   [A PIG-5159](https://issues.apache.org/jira/browse/PIG-5159): Javítsa ki a Pig grunt előzmények nem mentése.
 
--   [A PIG-5175](https://issues.apache.org/jira/browse/PIG-5175): 1.7.26 jruby frissítése.
+-   [A PIG-5175](https://issues.apache.org/jira/browse/PIG-5175): Frissítse jruby 1.7.26.
 
 ### <a name="ranger"></a>Ranger
 
 Ebben a kiadásban Ranger 0.7.0 és Apache javítást az alábbiak:
 
--   [RANGER-1805](https://issues.apache.org/jira/browse/RANGER-1805): Code fokozása js az ajánlott eljárások követése.
+-   [RANGER-1805](https://issues.apache.org/jira/browse/RANGER-1805): Kód fejlesztése a node.js ajánlott eljárások követése.
 
--   [RANGER-1960](https://issues.apache.org/jira/browse/RANGER-1960): törlésre figyelembe kell venni a pillanatkép a tábla neve.
+-   [RANGER-1960](https://issues.apache.org/jira/browse/RANGER-1960): A törlés figyelembe venni a pillanatkép-tábla neve.
 
--   [RANGER-1982](https://issues.apache.org/jira/browse/RANGER-1982): hiba javítása a Ranger felügyeleti és a Ranger KMS Analytics metrika.
+-   [RANGER-1982](https://issues.apache.org/jira/browse/RANGER-1982): Hiba javítása a Ranger felügyeleti és a Ranger KMS Analytics metrika.
 
--   [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984): Hbase naplórekordtípus nem használt oszlop társított összes címke lehet, hogy megjelenítése.
+-   [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984): Hbase naplórekordtípus előfordulhat, hogy az összes címke használt oszlop társított jeleníti meg.
 
 -   [RANGER-1988](https://issues.apache.org/jira/browse/RANGER-1988): Javítsa ki a véletlenszerűségre azért nem biztonságos.
 
--   [RANGER-1990](https://issues.apache.org/jira/browse/RANGER-1990): hozzáadása One-way SSL MySQL támogatása a Ranger rendszergazdával.
+-   [RANGER-1990](https://issues.apache.org/jira/browse/RANGER-1990): Adja hozzá a One-way SSL MySQL-támogatást a Ranger rendszergazdával.
 
--   [RANGER-2006](https://issues.apache.org/jira/browse/RANGER-2006): statikus kód elemzés a ranger usersync ldap szinkronizálási forrás által észlelt problémák megoldásához.
+-   [RANGER-2006](https://issues.apache.org/jira/browse/RANGER-2006): Statikus kód elemzés a ranger usersync ldap szinkronizálási forrás által észlelt problémák megoldása.
 
--   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008): szabályzat-kiértékelés sikertelen többsoros házirend feltételei.
+-   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008): Szabályzat-kiértékelés sikertelen többsoros házirend feltételei.
 
 ### <a name="slider"></a>Csúszka
 
@@ -649,175 +649,175 @@ Ebben a kiadásban a további Apache javítások 0.92.0 csúszka.
 
 Ebben a kiadásban Spark 2.3.0-át és Apache javítást az alábbiak:
 
--   [SPARK-13587](https://issues.apache.org/jira/browse/SPARK-13587): támogatási virtualenv a pyspark.
+-   [SPARK-13587](https://issues.apache.org/jira/browse/SPARK-13587): Támogatja a virtualenv pyspark.
 
--   [SPARK-19964](https://issues.apache.org/jira/browse/SPARK-19964): elkerülése érdekében a SparkSubmitSuite távoli adattárakkal olvasásakor.
+-   [SPARK-19964](https://issues.apache.org/jira/browse/SPARK-19964): Kerülje a SparkSubmitSuite távoli adattárakkal olvasásakor.
 
--   [SPARK-22882](https://issues.apache.org/jira/browse/SPARK-22882): gépi Tanulási teszt strukturált Stream: ml.classification.
+-   [SPARK-22882](https://issues.apache.org/jira/browse/SPARK-22882): Strukturált streamelés a gépi tanulás teszt: ml.classification.
 
 -   [SPARK-22915](https://issues.apache.org/jira/browse/SPARK-22915): Streamelési spark.ml.feature, a – Z n teszteket.
 
 -   [SPARK-23020](https://issues.apache.org/jira/browse/SPARK-23020): Javítsa ki a másik versenyhelyzet a folyamaton belüli indítója teszt.
 
--   [SPARK-23040](https://issues.apache.org/jira/browse/SPARK-23040): értéket ad vissza megszakítható iterátor shuffle olvasó.
+-   [SPARK-23040](https://issues.apache.org/jira/browse/SPARK-23040): Shuffle olvasó megszakítható iterátor adja vissza.
 
--   [SPARK-23173](https://issues.apache.org/jira/browse/SPARK-23173): ne hozzon létre sérült parquet-fájlokat, JSON-adatok betöltésekor.
+-   [SPARK-23173](https://issues.apache.org/jira/browse/SPARK-23173): Ne hozzon létre sérült parquet-fájlokat, JSON-adatok betöltésekor.
 
 -   [SPARK-23264](https://issues.apache.org/jira/browse/SPARK-23264): Javítsa ki a scala. A literals.sql.out MatchError.
 
--   [SPARK-23288](https://issues.apache.org/jira/browse/SPARK-23288): javítás kimeneti fogadó parquet metrikák.
+-   [SPARK-23288](https://issues.apache.org/jira/browse/SPARK-23288): Javítsa ki a kimeneti metrikák a parquet eszközökben fogadó.
 
 -   [SPARK-23329](https://issues.apache.org/jira/browse/SPARK-23329): Javítsa ki a trigonometriai függvények dokumentációját.
 
--   [SPARK-23406](https://issues.apache.org/jira/browse/SPARK-23406): stream-stream engedélyezése Önillesztések a fiókiroda-2.3.
+-   [SPARK-23406](https://issues.apache.org/jira/browse/SPARK-23406): Engedélyezze a stream-stream Önillesztések a fiókiroda-2.3-as verzióját.
 
--   [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434): Spark nem figyelmeztetnek \`metaadatok directory\` a HDFS elérési út.
+-   [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434): Spark nem figyelmeztetnek \`metaadatok directory\` számára egy HDFS-fájl elérési útját.
 
--   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436): partíció kikövetkeztetni a dátum csak akkor, ha azt konvertálható is dátum.
+-   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436): Csak akkor, ha azt konvertálható is dátum kikövetkeztetni a partíció dátum.
 
--   [SPARK-23457](https://issues.apache.org/jira/browse/SPARK-23457): először regisztrálja a feladat befejezési figyelői ParquetFileFormat.
+-   [SPARK-23457](https://issues.apache.org/jira/browse/SPARK-23457): Először regisztrálja a feladat befejezési figyelői ParquetFileFormat.
 
 -   [SPARK-23462](https://issues.apache.org/jira/browse/SPARK-23462): Hiányzó mező hibaüzenet jelenik meg a javítása \`StructType\`.
 
--   [SPARK-23490](https://issues.apache.org/jira/browse/SPARK-23490): Ellenőrizze a meglévő tábla CreateTable storage.locationUri.
+-   [SPARK-23490](https://issues.apache.org/jira/browse/SPARK-23490): Meglévő tábla CreateTable storage.locationUri ellenőrizze.
 
--   [SPARK-23524](https://issues.apache.org/jira/browse/SPARK-23524): big Data típusú helyi shuffle blokkok nem sérült-e ellenőrizni kell.
+-   [SPARK-23524](https://issues.apache.org/jira/browse/SPARK-23524): Big Data típusú helyi shuffle blokkok nem sérült-e ellenőrizni kell.
 
--   [SPARK-23525](https://issues.apache.org/jira/browse/SPARK-23525): támogatási az ALTER TABLE módosítása oszlop megjegyzés a külső hive-tábla.
+-   [SPARK-23525](https://issues.apache.org/jira/browse/SPARK-23525): Az ALTER TABLE módosítása oszlop megjegyzés támogatja a külső hive-táblába.
 
--   [SPARK-23553](https://issues.apache.org/jira/browse/SPARK-23553): teszteket kell feltételezi azt az alapértelmezett érték \`spark.sql.sources.default\`.
+-   [SPARK-23553](https://issues.apache.org/jira/browse/SPARK-23553): Tesztek nem kell feltételezi az alapértelmezett érték \`spark.sql.sources.default\`.
 
--   [SPARK-23569](https://issues.apache.org/jira/browse/SPARK-23569): lehetővé teszi a pandas\_python3 style típusú feliratozva függvények udf.
+-   [SPARK-23569](https://issues.apache.org/jira/browse/SPARK-23569): Lehetővé teszi a pandas\_python3 style típusú feliratozva függvények udf.
 
--   [SPARK-23570](https://issues.apache.org/jira/browse/SPARK-23570): Spark 2.3.0-át HiveExternalCatalogVersionsSuite hozzáadása.
+-   [SPARK-23570](https://issues.apache.org/jira/browse/SPARK-23570): Adja hozzá a Spark 2.3.0-át HiveExternalCatalogVersionsSuite.
 
--   [SPARK-23598](https://issues.apache.org/jira/browse/SPARK-23598): közzététel módszerek a BufferedRowIterator egy nagy lekérdezés futásidejű hiba elkerülése érdekében.
+-   [SPARK-23598](https://issues.apache.org/jira/browse/SPARK-23598): Végezze el módszerek BufferedRowIterator nyilvános egy nagy lekérdezés futásidejű hiba elkerülése érdekében.
 
 -   [SPARK-23599](https://issues.apache.org/jira/browse/SPARK-23599): Adjon hozzá egy UUID generátort Pseudo-Random számértékéből.
 
--   [SPARK-23599](https://issues.apache.org/jira/browse/SPARK-23599): használata RandomUUIDGenerator Uuid kifejezésben.
+-   [SPARK-23599](https://issues.apache.org/jira/browse/SPARK-23599): Használja a RandomUUIDGenerator Uuid kifejezésben.
 
--   [SPARK-23601](https://issues.apache.org/jira/browse/SPARK-23601): .md5 fájlok eltávolítása a kiadásban.
+-   [SPARK-23601](https://issues.apache.org/jira/browse/SPARK-23601): Távolítsa el a .md5 fájlokat kiadást.
 
--   [SPARK-23608](https://issues.apache.org/jira/browse/SPARK-23608): hozzáadása a szinkronizálási SHS a Jetty kezelők számára egyidejű módosítása a probléma elkerülése érdekében attachSparkUI és detachSparkUI funkciók között.
+-   [SPARK-23608](https://issues.apache.org/jira/browse/SPARK-23608): Adja hozzá a szinkronizálási SHS Jetty kezelők számára egyidejű módosítása a probléma elkerülése érdekében attachSparkUI és detachSparkUI funkciók között.
 
--   [SPARK-23614](https://issues.apache.org/jira/browse/SPARK-23614): helytelen újbóli exchange javítása gyorsítótár használatakor.
+-   [SPARK-23614](https://issues.apache.org/jira/browse/SPARK-23614): Javítsa ki a hibás újbóli exchange gyorsítótárazás használata.
 
--   [SPARK-23623](https://issues.apache.org/jira/browse/SPARK-23623): kerülje gyorsítótárazott közvetítését a felhasználóknak (fiókiroda-2.3-as) CachedKafkaConsumer egyidejű használatát.
+-   [SPARK-23623](https://issues.apache.org/jira/browse/SPARK-23623): Kerülje a gyorsítótárazott közvetítését a felhasználóknak (fiókiroda-2.3-as) CachedKafkaConsumer egyidejű használatát.
 
--   [SPARK-23624](https://issues.apache.org/jira/browse/SPARK-23624): felügyel doc, metódus pushFilters Datasource V2-ben.
+-   [SPARK-23624](https://issues.apache.org/jira/browse/SPARK-23624): Vizsgálja felül a metódus pushFilters Datasource V2-ben a dokumentumot.
 
 -   [SPARK-23628](https://issues.apache.org/jira/browse/SPARK-23628): 1 + kifejezések num calculateParamLength nem adja vissza.
 
--   [SPARK-23630](https://issues.apache.org/jira/browse/SPARK-23630): lehetővé teszi a felhasználó hadoop conf testreszabások érvénybe léptetéséhez.
+-   [SPARK-23630](https://issues.apache.org/jira/browse/SPARK-23630): Lehetővé teszi a felhasználó hadoop conf testreszabások érvénybe léptetéséhez.
 
--   [SPARK-23635](https://issues.apache.org/jira/browse/SPARK-23635): Spark-végrehajtó env változó felülírják ugyanazon név AM env változó.
+-   [SPARK-23635](https://issues.apache.org/jira/browse/SPARK-23635): Spark-végrehajtó env változó felülírják AM env változó neve.
 
--   [SPARK-23637](https://issues.apache.org/jira/browse/SPARK-23637): a Yarn előfordulhat, hogy több erőforrás lefoglalásához, ha egy azonos végrehajtó többször van leállított.
+-   [SPARK-23637](https://issues.apache.org/jira/browse/SPARK-23637): Yarn előfordulhat, hogy több erőforrás lefoglalásához, ha egy azonos végrehajtó többször van leállított.
 
--   [SPARK-23639](https://issues.apache.org/jira/browse/SPARK-23639): init metaadattár ügyfél sparksql-hez CLI-ben előtt-jogkivonat beszerzése.
+-   [SPARK-23639](https://issues.apache.org/jira/browse/SPARK-23639): Mielőtt init metaadattár ügyfél sparksql-hez CLI-ben a jogkivonat beszerzése.
 
 -   [SPARK-23642](https://issues.apache.org/jira/browse/SPARK-23642): AccumulatorV2 alosztályát isZero scaladoc javítás.
 
--   [SPARK-23644](https://issues.apache.org/jira/browse/SPARK-23644): abszolút elérési utat a SHS REST-hívást.
+-   [SPARK-23644](https://issues.apache.org/jira/browse/SPARK-23644): REST-hívást a SHS abszolút elérési utat használja.
 
 -   [SPARK-23645](https://issues.apache.org/jira/browse/SPARK-23645): Adja hozzá a docs-RE \`pandas\_udf\` a kulcsszó argumentum.
 
--   [SPARK-23649](https://issues.apache.org/jira/browse/SPARK-23649): a rendszer kihagyja az UTF-8 nem engedélyezett karakter.
+-   [SPARK-23649](https://issues.apache.org/jira/browse/SPARK-23649): A rendszer kihagyja az UTF-8 nem engedélyezett karakter.
 
 -   [SPARK-23658](https://issues.apache.org/jira/browse/SPARK-23658): InProcessAppHandle getLogger a megfelelő osztályt használ.
 
--   [SPARK-23660](https://issues.apache.org/jira/browse/SPARK-23660): a yarn fürt üzemmód kivétel ki, amikor az alkalmazás gyors véget ért.
+-   [SPARK-23660](https://issues.apache.org/jira/browse/SPARK-23660): A yarn fürt üzemmód kivétel ki, ha az alkalmazás gyors véget ért.
 
--   [SPARK-23670](https://issues.apache.org/jira/browse/SPARK-23670): SparkPlanGraphWrapper a javítás memóriavesztés.
+-   [SPARK-23670](https://issues.apache.org/jira/browse/SPARK-23670): Memóriavesztés SparkPlanGraphWrapper rögzíti.
 
 -   [SPARK-23671](https://issues.apache.org/jira/browse/SPARK-23671): Javítsa ki a SHS szálkészlet engedélyezés.
 
--   [SPARK-23691](https://issues.apache.org/jira/browse/SPARK-23691): sql használata\_conf util a PySpark teszteli, ahol csak lehetséges.
+-   [SPARK-23691](https://issues.apache.org/jira/browse/SPARK-23691): Sql használata\_conf util a PySpark teszteli, ahol csak lehetséges.
 
--   [SPARK-23695](https://issues.apache.org/jira/browse/SPARK-23695): az adatfolyam-tesztek Kinesis a hibaüzeneteinek kijavítása.
+-   [SPARK-23695](https://issues.apache.org/jira/browse/SPARK-23695): Javítsa ki a következő hibaüzenet jelenik a tesztek streamelési Kinesis.
 
 -   [SPARK-23706](https://issues.apache.org/jira/browse/SPARK-23706): spark.conf.get (alapértelmezett érték = None) kell előállítania PySpark "nincs".
 
--   [SPARK-23728](https://issues.apache.org/jira/browse/SPARK-23728): Javítsa ki a gépi tanulás teszteli a várt streamelési tesztek futtatása kivétellel.
+-   [SPARK-23728](https://issues.apache.org/jira/browse/SPARK-23728): Javítsa ki a gépi tanulás tesztek várt streamelési tesztek futtatása kivétellel.
 
--   [SPARK-23729](https://issues.apache.org/jira/browse/SPARK-23729): tiszteletben URI töredék globs feloldásakor.
+-   [SPARK-23729](https://issues.apache.org/jira/browse/SPARK-23729): A tekintetben URI töredék globs feloldásakor.
 
--   [SPARK-23759](https://issues.apache.org/jira/browse/SPARK-23759): nem lehet kötést létrehozni a Spark felhasználói felületén megadott állomásnév / IP.
+-   [SPARK-23759](https://issues.apache.org/jira/browse/SPARK-23759): Nem lehet kötést létrehozni a Spark felhasználói felületén megadott állomásnév / IP.
 
 -   [SPARK-23760](https://issues.apache.org/jira/browse/SPARK-23760): CodegenContext.withSubExprEliminationExprs kell menteni/helyreállítani a ügyféloldali Bővítmény állapota megfelelő.
 
--   [SPARK-23769](https://issues.apache.org/jira/browse/SPARK-23769): távolítsa el a megjegyzéseket, szükségtelenül letiltása Scalastyle ellenőrzése.
+-   [SPARK-23769](https://issues.apache.org/jira/browse/SPARK-23769): Távolítsa el a megjegyzéseket, szükségtelenül letiltása Scalastyle ellenőrzése.
 
--   [SPARK-23788](https://issues.apache.org/jira/browse/SPARK-23788): StreamingQuerySuite a javítás versenyt.
+-   [SPARK-23788](https://issues.apache.org/jira/browse/SPARK-23788): A StreamingQuerySuite versenyhelyzet ki.
 
 -   [SPARK-23802](https://issues.apache.org/jira/browse/SPARK-23802): PropagateEmptyRelation hagyhatja a lekérdezésterv feloldatlan állapotban.
 
 -   [SPARK-23806](https://issues.apache.org/jira/browse/SPARK-23806): Broadcast.unpersist okozhat a dinamikus kiosztási együtt használva helyreállíthatatlan kivételt.
 
--   [SPARK-23808](https://issues.apache.org/jira/browse/SPARK-23808): Spark-munkamenet alapértelmezett beállítása az csak tesztelési spark-munkamenetet.
+-   [SPARK-23808](https://issues.apache.org/jira/browse/SPARK-23808): Állítson be alapértelmezett Spark-munkamenetet a csak tesztelési spark-munkamenetet.
 
--   [SPARK-23809](https://issues.apache.org/jira/browse/SPARK-23809): aktív SparkSession getOrCreate úgy kell beállítani.
+-   [SPARK-23809](https://issues.apache.org/jira/browse/SPARK-23809): Aktív SparkSession getOrCreate úgy kell beállítani.
 
--   [SPARK-23816](https://issues.apache.org/jira/browse/SPARK-23816): leállítva feladatok FetchFailures figyelmen kívül hagyja.
+-   [SPARK-23816](https://issues.apache.org/jira/browse/SPARK-23816): Elejtett feladatok figyelmen kívül hagyja-FetchFailures.
 
--   [SPARK-23822](https://issues.apache.org/jira/browse/SPARK-23822): hibaüzenet a parquet eszközökben schema-eltérések javítása.
+-   [SPARK-23822](https://issues.apache.org/jira/browse/SPARK-23822): Javíthatja a parquet eszközökben schema-eltérések hibaüzenetet.
 
--   [SPARK-23823](https://issues.apache.org/jira/browse/SPARK-23823): forrás transformExpression tartani.
+-   [SPARK-23823](https://issues.apache.org/jira/browse/SPARK-23823): Ne transformExpression forrása.
 
 -   [SPARK-23827](https://issues.apache.org/jira/browse/SPARK-23827): StreamingJoinExec biztosítania kell, hogy a bemeneti adatok között van felosztva adott partíciók száma.
 
--   [SPARK-23838](https://issues.apache.org/jira/browse/SPARK-23838): "kész" SQL lap is megjelenik futtató SQL-lekérdezést.
+-   [SPARK-23838](https://issues.apache.org/jira/browse/SPARK-23838): SQL-lekérdezés futtatása "kész" SQL lap is megjelenik.
 
--   [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881): javítás flaky teszt JobCancellationSuite. " shuffle olvasó megszakítható iterátor".
+-   [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881): Javítsa ki flaky teszt JobCancellationSuite." shuffle olvasó megszakítható iterátor".
 
 ### <a name="sqoop"></a>Sqoop
 
 Ebben a kiadásban a Sqoop, a további Apache javítások 1.4.6.
 
-### <a name="storm"></a>A Storm
+### <a name="storm"></a>Storm
 
 Ebben a kiadásban Storm 1.1.1 és Apache javítást az alábbiak:
 
--   [A STORM-2652](https://issues.apache.org/jira/browse/STORM-2652): kivétel történt az JmsSpout nyílt metódusban.
+-   [A STORM-2652](https://issues.apache.org/jira/browse/STORM-2652): Kivétel történt az JmsSpout nyílt metódusban.
 
 -   [A STORM-2841](https://issues.apache.org/jira/browse/STORM-2841): testNoAcksIfFlushFails UT NullPointerException sikertelen lesz.
 
--   [A STORM-2854](https://issues.apache.org/jira/browse/STORM-2854): IEventLogger elérhetővé tételéhez eseménynaplózás moduláris.
+-   [A STORM-2854](https://issues.apache.org/jira/browse/STORM-2854): Tegye elérhetővé tételéhez eseménynaplózással moduláris IEventLogger.
 
 -   [A STORM-2870](https://issues.apache.org/jira/browse/STORM-2870): FileBasedEventLogger elveszít nem démon ExecutorService, amely megakadályozza, hogy a folyamat befejezésére.
 
--   [A STORM-2960](https://issues.apache.org/jira/browse/STORM-2960): jobb terhelési megfelelő operációsrendszer-fiók beállítása, a Storm feldolgozza fontosságát.
+-   [A STORM-2960](https://issues.apache.org/jira/browse/STORM-2960): Jobb terhelési megfelelő operációsrendszer-fiók beállítása, a Storm feldolgozza fontosságát.
 
 ### <a name="tez"></a>Tez
 
 Ebben a kiadásban Tez 0.7.0 és Apache javítást az alábbiak:
 
--   [TEZ-1526](https://issues.apache.org/jira/browse/TEZ-1526): LoadingCache TezTaskID lassú nagy méretű feladatok számára.
+-   [TEZ-1526](https://issues.apache.org/jira/browse/TEZ-1526): A nagy méretű feladatok lassú TezTaskID LoadingCache.
 
 ### <a name="zeppelin"></a>Zeppelin
 
 Ebben a kiadásban a additionalApache javítások 0.7.3 Zeppelin biztosít.
 
--   [ZEPPELIN-3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072): Zeppelin felhasználói felület lassú vagy nem válaszol, ha túl sok notebookok válik.
+-   [ZEPPELIN-3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072): A Zeppelin felhasználói felület lassú vagy nem válaszol, ha túl sok notebookok válik.
 
--   [ZEPPELIN-3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): Zeppelin felhasználói felület nem jelentkezzen ki IE-ben.
+-   [ZEPPELIN-3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): A Zeppelin felhasználói felület az IE nem jelentkezzen ki.
 
--   [ZEPPELIN-903](https://issues.apache.org/jira/browse/ZEPPELIN-903): CXF Jersey2 cserélje le.
+-   [ZEPPELIN-903](https://issues.apache.org/jira/browse/ZEPPELIN-903): Cserélje le a CXF Jersey2.
 
 ### <a name="zookeeper"></a>ZooKeeper
 
 Ebben a kiadásban ZooKeeper 3.4.6- és Apache javítást az alábbiak:
 
--   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): ClientPortBindTest Mac OS x-en nem működik.
+-   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): Mac OS x-en ClientPortBindTest sikertelen.
 
 -   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[JDK8\] gyermekek AsyncOps tesztekben összehasonlítás rendezheti.
 
--   [ZOOKEEPER-2423](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): frissítési Netty verziója miatt a biztonsági rés (CVE – 2014-3488).
+-   [ZOOKEEPER-2423](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): Frissítési Netty verziója miatt a biztonsági rés (CVE – 2014-3488).
 
 -   [ZOOKEEPER-2693](https://issues.apache.org/jira/browse/ZOOKEEPER-2693): SZOLGÁLTATÁSMEGTAGADÁSI támadást wchp/wchc négy levél szavakat (4lw).
 
--   [ZOOKEEPER-2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): javítás az esetleges versenyhelyzet vezet be.
+-   [ZOOKEEPER-2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): A javítás lehetséges versenyhelyzet mutatja be.
 
 ## <a name="fixed-common-vulnerabilities-and-exposures"></a>Kijavítva a Common Vulnerabilities and Exposures
 
@@ -862,7 +862,7 @@ Ez a szakasz az összes gyakori biztonsági rések és Exposures (CVE) ebben a k
 
 | **Összefoglalás:** handler/ssl/OpenSslEngine.java Netty 4.0.x előtt 4.0.37.Final és 4.1.x előtt 4.1.1.Final lehetővé teszi, hogy a távoli támadók (végtelen ciklust) szolgáltatásmegtagadást okozhat a |
 |--------------------------------------------------------------------------------------------------|
-| **Súlyosság:** mérsékelt  |
+| **Súlyosság:** Mérsékelt  |
 | **Szállító:** Hortonworks  |
 | **Érintett verziók:** HDP 2.x.x 2.3.x óta  |
 | **Érintett felhasználók:** HDFS használó összes felhasználó. |
@@ -878,7 +878,7 @@ Ez a szakasz az összes gyakori biztonsági rések és Exposures (CVE) ebben a k
 | **Érintett verziók:** többek között az Apache Ranger verziók 0.6.0/0.6.1/0.6.2 minden HDP 2.5-ös verzió                                         |
 | **Érintett felhasználók:** a ranger-házirendet felügyeleti eszköz összes felhasználója.                                                                         |
 | **Hatás:** Ranger házirendmotor helytelenül megfelel bizonyos feltételek szereplő elérési utakat, ha a házirendek tartalmazzák a helyettesítő karaktereket és a rekurzív. |
-| **Javítsa ki a részletes:** házirend kiértékelési logika kijavítva                                                                                          |
+| **Javítsa ki a részletei:** Rögzített házirend kiértékelési logika                                                                                          |
 | **Javasolt művelet:** felhasználók frissítsen a HDP 2.5.4+ (az Apache Ranger 0.6.3+) vagy HDP 2.6 (az Apache Ranger 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE – 2016-8751**
@@ -907,12 +907,12 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 88774              | [HIVE-17617](https://issues.apache.org/jira/browse/HIVE-17617), [HIVE-18413](https://issues.apache.org/jira/browse/HIVE-18413), [HIVE-18523](https://issues.apache.org/jira/browse/HIVE-18523)                                                                                 | query36 sikertelen, sor száma eltérés                                                                                    |
 | HIBA – 89765              | [HIVE-17702](https://issues.apache.org/jira/browse/HIVE-17702)                                                                                                                                                                                                                 | helytelen isRepeating kezelése, az ORC decimális olvasói                                                                |
 | HIBA – 92293              | [HADOOP-15042](https://issues.apache.org/jira/browse/HADOOP-15042)                                                                                                                                                                                                             | Az Azure PageBlobInputStream.skip() adhat vissza negatív érték, ha numberOfPagesRemaining 0                            |
-| HIBA – 92345              | [ATLAS-2285](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | Felhasználói felület: Átnevezve mentett keresés dátum attribútummal.                                                                         |
+| HIBA – 92345              | [ATLAS-2285](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Mentett keresés dátuma attribútum neve.                                                                         |
 | HIBA – 92563              | [HIVE-17495](https://issues.apache.org/jira/browse/HIVE-17495), [HIVE-18528](https://issues.apache.org/jira/browse/HIVE-18528)                                                                                                                                                 | Összesített statisztikák ObjectStore a nem megfelelő eredményének beolvasása                                                                        |
 | HIBA – 92957              | [HIVE-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | Darabszám (\*) eredménye alapján a külső táblákra vonatkozó táblastatisztikai adatok helytelen                                                   |
 | HIBA – 93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Nem működik a rendszergazdai ellenőrzési művelet szűrő                                                                           |
 | HIBA – 93335              | [HIVE-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | vektorizációt\_rövid\_regress.q rendelkezik egy megfelelő eredmény probléma dupla számítás                                      |
-| HIBA – 93415              | [HIVE-18258](https://issues.apache.org/jira/browse/HIVE-18258), [HIVE-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizációt: Csökkentése mellett csoport BY MERGEPARTIAL ismétlődő oszlopokkal sérült                                      |
+| HIBA – 93415              | [HIVE-18258](https://issues.apache.org/jira/browse/HIVE-18258), [HIVE-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizációt: Csökkentése mellett csoport által MERGEPARTIAL ismétlődő oszlopokkal megszakad.                                      |
 | HIBA – 93939              | [ATLAS-2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Extra paraméternek "description" hozzáadott egy típust létrehozásakor                                                               |
 | HIBA – 94007              | [A PHOENIX-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [PHOENIX-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | A Phoenix lekérdezések sorát adja vissza a Null értékek miatt HBase részleges                                                          |
 | HIBA – 94266              | [HIVE-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | INSERT felülírása egyazon titkosított zóna csendes néhány meglévő fájlok eltávolítása nem sikerül                                   |
@@ -940,11 +940,11 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 93159              | [AZ OOZIE-3139](https://issues.apache.org/jira/browse/OOZIE-3139)                                                                         | Az Oozie érvényesíti a munkafolyamat helytelen                                                                                                       |
 | HIBA – 93936              | [ATLAS-2289](https://issues.apache.org/jira/browse/ATLAS-2289)                                                                         | Beágyazott kafka/zookeeper server indítása és leállítása kód KafkaNotification megvalósítási ki lesz áthelyezve                                        |
 | HIBA – 93942              | [ATLAS-2312](https://issues.apache.org/jira/browse/ATLAS-2312)                                                                         | Több szálon az egyidejű használat elkerülése érdekében ThreadLocal megadva DateFormat objektumok használata                                                         |
-| HIBA – 93946              | [ATLAS-2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | Felhasználói felület: Törlése egy címkét, ami a 25-ös + Átalánydíjjal és a fa struktúra címke listájában elhelyezése kell egy frissítést, hogy távolítsa el a címkét a listáról. |
+| HIBA – 93946              | [ATLAS-2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | FELHASZNÁLÓI FELÜLET: Egy címke, amely, 25 + vigye Átalánydíjjal és a fa szerkezetben vannak a listán törlése kell egy frissítést, hogy távolítsa el a címkét a listáról. |
 | HIBA – 94618              | [YARN-5037](https://issues.apache.org/jira/browse/YARN-5037), [YARN-7274](https://issues.apache.org/jira/browse/YARN-7274)             | Letiltási lehetőség levél várólista szintjén rugalmasság                                                                                          |
 | HIBA – 94901              | [HBASE-19285](https://issues.apache.org/jira/browse/HBASE-19285)                                                                       | Adja hozzá a tábla késés hisztogramok                                                                                                           |
 | HIBA – 95259              | [HADOOP-15185](https://issues.apache.org/jira/browse/HADOOP-15185), [HADOOP-15186](https://issues.apache.org/jira/browse/HADOOP-15186) | Adls-összekötő használatához ADLS SDK jelenlegi verziójának frissítése                                                                               |
-| HIBA – 95619              | [HIVE-18551](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Vektorizációt: Írhat vektor túl sok oszlop hibrid türelmi megpróbálja VectorMapOperator                                                   |
+| HIBA – 95619              | [HIVE-18551](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Vektorizációt: VectorMapOperator próbál vektor túl sok oszlop hibrid türelmi írása                                                   |
 | HIBA – 97223              | [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434)                                                                       | Spark nem figyelmeztetnek \`metaadatok directory\` a HDFS elérési út                                                                          |
 
 **Teljesítmény**
@@ -958,14 +958,14 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 93577              | [RANGER-1938](https://issues.apache.org/jira/browse/RANGER-1938)                                                                                                                                                                                                                                                                                                                                                                                                             | A Solr naplózási a telepítő nem hatékony használata DocValues                                                                              |
 | HIBA – 93910              | [HIVE-18293](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                               | Hive nem működik, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál tömörítése                     |
 | HIBA – 94345              | [HIVE-18429](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                               | Tömörítési kezelje az esetet, ha ez nem hoz létre kimenetet                                                                          |
-| HIBA – 94381              | [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | RequestHedgingProxyProvider RetryAction rendelést kezelő: sikertelen &lt; újra &lt; FELADATÁTVÉTELI\_és\_próbálkozzon újra.                                  |
+| HIBA – 94381              | [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | RequestHedgingProxyProvider RetryAction rendelést kezelő: SIKERTELEN &lt; ÚJRA &lt; FELADATÁTVÉTELI\_ÉS\_PRÓBÁLKOZZON ÚJRA.                                  |
 | HIBA – 94432              | [HIVE-18353](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                               | CompactorMR meg kell hívnia várnak jobclient.close()                                                                        |
 | HIBA – 94869              | [A PHOENIX-4290](https://issues.apache.org/jira/browse/PHOENIX-4290), [PHOENIX-4373](https://issues.apache.org/jira/browse/PHOENIX-4373)                                                                                                                                                                                                                                                                                                                                       | Kért sor engedélyezett tartományon kívül esik a HRegion Get helyi indexelt sózott phoenix tábla.                                               |
 | HIBA – 94928              | [HDFS-11078](https://issues.apache.org/jira/browse/HDFS-11078)                                                                                                                                                                                                                                                                                                                                                                                                               | Javítsa ki a NPE LazyPersistFileScrubber                                                                                                  |
 | HIBA – 94964              | [HIVE-18269](https://issues.apache.org/jira/browse/HIVE-18269), [HIVE-18318](https://issues.apache.org/jira/browse/HIVE-18318), [HIVE-18326](https://issues.apache.org/jira/browse/HIVE-18326)                                                                                                                                                                                                                                                                               | Több LLAP-javítás                                                                                                                 |
 | HIBA – 95669              | [HIVE-18577](https://issues.apache.org/jira/browse/HIVE-18577), [HIVE-18643](https://issues.apache.org/jira/browse/HIVE-18643)                                                                                                                                                                                                                                                                                                                                               | Ha futtatási frissítése/törlése lekérdezés ACID a tábla particionálva, a HS2 olvasási minden egyes partíciók.                                               |
 | HIBA – 96390              | [HDFS-10453](https://issues.apache.org/jira/browse/HDFS-10453)                                                                                                                                                                                                                                                                                                                                                                                                               | ReplicationMonitor szál sikerült a hosszú ideig miatt a versenyt közötti replikáció elakadt, és ugyanazt a fájlt egy nagy fürt, törölje. |
-| HIBA – 96625              | [HIVE-16110](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | A visszaállítás "Vektorizációt: 2 támogatásához érték helyett fall vissza a VectorUDFAdaptor eset"                                       |
+| HIBA – 96625              | [HIVE-16110](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | A visszaállítás "Vektorizációt: Támogatja a 2 érték helyett fall vissza a VectorUDFAdaptor eset"                                       |
 | HIBA – 97109              | [HIVE-16757](https://issues.apache.org/jira/browse/HIVE-16757)                                                                                                                                                                                                                                                                                                                                                                                                               | Elavult getRows() helyett új estimateRowCount(RelMetadataQuery...) használatát a teljesítményét súlyos hatással van                      |
 | HIBA – 97110              | [A PHOENIX-3789](https://issues.apache.org/jira/browse/PHOENIX-3789)                                                                                                                                                                                                                                                                                                                                                                                                           | Régiók közötti index karbantartási hívások végrehajtása postBatchMutateIndispensably                                                        |
 | HIBA – 98833              | [YARN-6797](https://issues.apache.org/jira/browse/YARN-6797)                                                                                                                                                                                                                                                                                                                                                                                                                 | TimelineWriter nem igényel teljes mértékben a POST-válasz                                                                             |
@@ -997,11 +997,11 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 94280              | [HIVE-12785](https://issues.apache.org/jira/browse/HIVE-12785)                                                                         | Nézet union típus és az UDF \`cast\` a struct megszakad.                                          |
 | HIBA – 94505              | [A PHOENIX-4525](https://issues.apache.org/jira/browse/PHOENIX-4525)                                                                     | GroupBy végrehajtás egész túlcsordulás                                                                  |
 | HIBA – 95618              | [HIVE-18506](https://issues.apache.org/jira/browse/HIVE-18506)                                                                         | LlapBaseInputFormat - negatív konci indexu Pole                                                             |
-| HIBA – 95644              | [HIVE-9152](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Hive-lekérdezés nem működik a Tez java.lang.IllegalArgumentException kivétel |
+| HIBA – 95644              | [HIVE-9152](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Hive-lekérdezést a tezben futtatja sikertelen java.lang.IllegalArgumentException kivétel |
 | HIBA – 96762              | [A PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588)                                                                     | Kifejezés is klónozza, ha annak gyermekeihez Determinism.PER\_MEGHÍVÁSA                                |
 | HIBA – 97145              | [HIVE-12245](https://issues.apache.org/jira/browse/HIVE-12245), [HIVE-17829](https://issues.apache.org/jira/browse/HIVE-17829)         | Támogatási oszlop megjegyzéseket egy HBase tábla biztonsági                                                      |
 | HIBA – 97741              | [HIVE-18944](https://issues.apache.org/jira/browse/HIVE-18944)                                                                         | GroupPing csoportok pozíciója a DPP során helytelenül van beállítva                                                  |
-| HIBA – 98082              | [HIVE-18597](https://issues.apache.org/jira/browse/HIVE-18597)                                                                         | LLAP: Mindig a csomagot a log4j2 API jar org.apache.log4j az                                           |
+| HIBA – 98082              | [HIVE-18597](https://issues.apache.org/jira/browse/HIVE-18597)                                                                         | LLAP: A org.apache.log4j log4j2 API fájlt mindig csomag                                           |
 | HIBA – 99849              | –                                                                                                                                    | Hozzon létre egy új táblát egy fájl varázsló megkísérli az alapértelmezett adatbázis                                    |
 
 **Biztonság**
@@ -1056,7 +1056,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 100430             | [HIVE-14483](https://issues.apache.org/jira/browse/HIVE-14483)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | java.lang.ArrayIndexOutOfBoundsException org.apache.orc.impl.TreeReaderFactory\$BytesColumnVectorUtil.commonReadByteArrays                     |
 | HIBA – 100432             | [HIVE-19219](https://issues.apache.org/jira/browse/HIVE-19219)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Növekményes REPL DUMP kell throw által kért események tisztítani fel, ha hiba történt.                                                                   |
 | HIBA – 100448             | [SPARK-23637](https://issues.apache.org/jira/browse/SPARK-23637), [SPARK-23802](https://issues.apache.org/jira/browse/SPARK-23802), [SPARK-23809](https://issues.apache.org/jira/browse/SPARK-23809), [SPARK-23816](https://issues.apache.org/jira/browse/SPARK-23816), [SPARK-23822](https://issues.apache.org/jira/browse/SPARK-23822), [ SPARK-23823](https://issues.apache.org/jira/browse/SPARK-23823), [SPARK-23838](https://issues.apache.org/jira/browse/SPARK-23838), [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Frissítse Spark2 2.3.0+ (4 és 11)                                                                                                                 |
-| HIBA – 100740             | [HIVE-16107](https://issues.apache.org/jira/browse/HIVE-16107)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | JDBC: HttpClient NoHttpResponseException még egyszer kell próbálkoznia                                                                         |
+| HIBA – 100740             | [HIVE-16107](https://issues.apache.org/jira/browse/HIVE-16107)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | JDBC: HttpClient NoHttpResponseException még egyszer kell próbálkoznia.                                                                         |
 | HIBA – 100810             | [HIVE-19054](https://issues.apache.org/jira/browse/HIVE-19054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hive-funkciók replikáció sikertelen lesz.                                                                                                               |
 | HIBA – 100937             | [A MAPREDUCE-6889](https://issues.apache.org/jira/browse/MAPREDUCE-6889)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Feladat hozzáadása\#zárja be az API-t, MR ügyfélszolgáltatások leállítása.                                                                                             |
 | HIBA – 101065             | [ATLAS-2587](https://issues.apache.org/jira/browse/ATLAS-2587)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Beállítani az ACL /apache számára olvasási\_atlas/aktív\_kiszolgáló\_info znode a Knox-proxyhoz, olvassa el a magas rendelkezésre ÁLLÁS.                                                       |
@@ -1074,7 +1074,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 87624              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Storm-események naplózásának folyamatosan die okok-feldolgozók engedélyezése                                                                                |
 | HIBA – 88929              | [HBASE-15615](https://issues.apache.org/jira/browse/HBASE-15615)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Helytelen az alvási idő, amikor RegionServerCallable szüksége van, próbálkozzon újra                                                                                          |
 | HIBA – 89628              | [HIVE-17613](https://issues.apache.org/jira/browse/HIVE-17613)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | objektum-készleteket rövid, azonos-hozzászóláslánc hozzárendelések eltávolítása                                                                                         |
-| HIBA – 89813              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | SCA: Code helyességét: nem szinkronizált módszert felülbírálja Synchronizovaná Metoda                                                                  |
+| HIBA – 89813              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | SCA: Kód osztály: Nem szinkronizált módszert felülbírálja Synchronizovaná Metoda                                                                  |
 | HIBA – 90437              | [ZEPPELIN-3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Zeppelin felhasználói felület nem válaszol lassú vagy ha túl sok notebookok                                                                          |
 | HIBA – 90640              | [HBASE-19065](https://issues.apache.org/jira/browse/HBASE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | HRegion\#bulkLoadHFiles() várnia kell egyidejű régió\#flush() befejezéséhez                                                                 |
 | HIBA – 91202              | [HIVE-17013](https://issues.apache.org/jira/browse/HIVE-17013)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Az egy nézetben válassza ki a alapján allekérdezés kérelem törlése                                                                                     |
@@ -1094,7 +1094,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 93361              | [HIVE-12360](https://issues.apache.org/jira/browse/HIVE-12360)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | A predikátum legördülő lista a tömörítetlen ORC rossz keresés                                                                                           |
 | HIBA – 93426              | [KALCIT-2086](https://issues.apache.org/jira/browse/CALCITE-2086)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | HTTP/413 nagy engedélyezési fejléceket miatt bizonyos körülmények között                                                                           |
 | HIBA – 93429              | [A PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | A Pig betöltő ClassCastException                                                                                                             |
-| HIBA – 93485              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Nem lehet beolvasni a tábla mytestorg.apache.hadoop.hive.ql.metadata.InvalidTableException: tábla nem található a futtatásakor LLAP oszlopok a tábla elemzése |
+| HIBA – 93485              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Nem olvasható be a táblázat mytestorg.apache.hadoop.hive.ql.metadata.InvalidTableException: Tábla nem található a futtatásakor LLAP oszlopok a tábla elemzése |
 | HIBA – 93512              | [A PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | java.lang.RuntimeException: válaszkód 500 - szeretne csatlakozni a phoenix lekérdezés kiszolgáló és az adatok betöltése a spark-feladatok végrehajtása                         |
 | HIBA – 93550              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | A Zeppelin %spark.r spark1 scala Verzióeltérés miatt nem működik                                                                      |
 | HIBA – 93910              | [HIVE-18293](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hive nem működik, amely nem tulajdonosa identitás HiveMetaStore fut egy adott mappában tárolt tábláknál tömörítése                                |
@@ -1110,7 +1110,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 94330              | [HADOOP-13190](https://issues.apache.org/jira/browse/HADOOP-13190), [HADOOP-14104](https://issues.apache.org/jira/browse/HADOOP-14104), [HADOOP-14814](https://issues.apache.org/jira/browse/HADOOP-14814), [HDFS-10489](https://issues.apache.org/jira/browse/HDFS-10489), [HDFS-11689](https://issues.apache.org/jira/browse/HDFS-11689)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | HDFS támogatnia kell a több KMS URI azonosítók                                                                                                      |
 | HIBA – 94345              | [HIVE-18429](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Tömörítési kezelje az esetet, ha ez nem hoz létre kimenetet                                                                                     |
 | HIBA – 94372              | [ATLAS-2229](https://issues.apache.org/jira/browse/ATLAS-2229)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | DSL lekérdezés: hive\_táblázat neve = \["t1", "t2"\] DSL-lekérdezés érvénytelen kivételt okoz                                                                |
-| HIBA – 94381              | [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | RequestHedgingProxyProvider RetryAction rendelést kezelő: sikertelen &lt; újra &lt; FELADATÁTVÉTELI\_és\_próbálkozzon újra.                                             |
+| HIBA – 94381              | [HADOOP-13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS-13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | RequestHedgingProxyProvider RetryAction rendelést kezelő: SIKERTELEN &lt; ÚJRA &lt; FELADATÁTVÉTELI\_ÉS\_PRÓBÁLKOZZON ÚJRA.                                             |
 | HIBA – 94432              | [HIVE-18353](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | CompactorMR meg kell hívnia várnak jobclient.close()                                                                                   |
 | HIBA – 94575              | [SPARK-22587](https://issues.apache.org/jira/browse/SPARK-22587)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Spark-feladat sikertelen lesz, ha fs.defaultFS és az alkalmazás jar különböző URL-címe                                                                          |
 | HIBA – 94791              | [SPARK-22793](https://issues.apache.org/jira/browse/SPARK-22793)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | A Spark Thrift-kiszolgáló memóriavesztés                                                                                                             |
@@ -1120,7 +1120,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 95200              | [HDFS-13061](https://issues.apache.org/jira/browse/HDFS-13061)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | SaslDataTransferClient\#checkTrustAndSend nem megbízhatónak kell tekintenie a részlegesen megbízható csatornán                                                         |
 | HIBA – 95201              | [HDFS-13060](https://issues.apache.org/jira/browse/HDFS-13060)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Vegye fel a BlacklistBasedTrustedChannelResolver-TrustedChannelResolver                                                                       |
 | HIBA – 95284              | [HBASE-19395](https://issues.apache.org/jira/browse/HBASE-19395)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | \[fiókiroda-1\] TestEndToEndSplitTransaction.testMasterOpsWhileSplitting meghiúsul, és NPE                                                           |
-| HIBA – 95301              | [HIVE-18517](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Vektorizációt: VRBs fogadja el, és ellenőrizze a javítás VectorMapOperator vectorized jelző megfelelően LLAP gyorsítótárazás támogatása                                |
+| HIBA – 95301              | [HIVE-18517](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Vektorizációt: Javítás VectorMapOperator VRBs fogadja el, és ellenőrizze vectorized jelző megfelelően LLAP gyorsítótárazás támogatása                                |
 | HIBA – 95542              | [HBASE-16135](https://issues.apache.org/jira/browse/HBASE-16135)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Eltávolított társ rs alatt PeerClusterZnode soha nem lehet törölni                                                                                 |
 | HIBA – 95595              | [HIVE-15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Érvénytelen művelet állapota átmenet kivétel SQLOperation.runQuery elérhetővé valós kivétel figyelmen kívül.                                         |
 | HIBA – 95596              | [YARN-4126](https://issues.apache.org/jira/browse/YARN-4126), [YARN-5750](https://issues.apache.org/jira/browse/YARN-5750)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | TestClientRMService meghiúsul                                                                                                                      |
@@ -1196,11 +1196,11 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 100045             | [HIVE-19056](https://issues.apache.org/jira/browse/HIVE-19056)                                                                                                                                                                                                                 | Amikor ORC fájl 0 sorral rendelkezik FixAcidKeyIndex a IllegalArgumentException                                                                                         |
 | HIBA – 100139             | [KNOX-1243](https://issues.apache.org/jira/browse/KNOX-1243)                                                                                                                                                                                                                   | A szükséges DNS-ben KnoxToken szolgáltatásban konfigurált normalizálása                                                                                          |
 | HIBA – 100570             | [ATLAS-2557](https://issues.apache.org/jira/browse/ATLAS-2557)                                                                                                                                                                                                                 | Javítsa ki, hogy a keresési hadoop LDAP-csoportok mikor UGI csoportok helytelenül vannak beállítva vagy nem üres                                                          |
-| HIBA – 100646             | [ATLAS-2102](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Atlas felhasználói felületének fejlesztései: Keresési eredményeket megjelenítő lap                                                                                                                   |
+| HIBA – 100646             | [ATLAS-2102](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Atlas felhasználói felületének fejlesztései: Keresési eredmények oldalát                                                                                                                   |
 | HIBA – 100737             | [HIVE-19049](https://issues.apache.org/jira/browse/HIVE-19049)                                                                                                                                                                                                                 | Támogatás hozzáadása az Alter table Druid oszlopok hozzáadása                                                                                                            |
 | HIBA – 100750             | [KNOX-1246](https://issues.apache.org/jira/browse/KNOX-1246)                                                                                                                                                                                                                   | A legújabb-konfigurációk támogatására a Ranger Knox szolgáltatás konfiguráció frissítése.                                                                                   |
-| HIBA – 100965             | [ATLAS-2581](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Hive-V2 hook értesítésekkel regressziós: egy másik adatbázishoz történő áthelyezésének tábla                                                                            |
-| HIBA – 84413              | [ATLAS-1964](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | Felhasználói felület: A támogatási keresési tábla oszlopainak sorrend                                                                                                                |
+| HIBA – 100965             | [ATLAS-2581](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Hive-V2 hook értesítésekkel regresszió: Egy másik adatbázishoz történő áthelyezésének tábla                                                                            |
+| HIBA – 84413              | [ATLAS-1964](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Támogatja a keresési tábla oszlopainak sorrend                                                                                                                |
 | HIBA – 90570              | [HDFS-11384](https://issues.apache.org/jira/browse/HDFS-11384), [HDFS-12347](https://issues.apache.org/jira/browse/HDFS-12347)                                                                                                                                                 | Adja hozzá beállítás kapunk getBlocks hívások, a NameNode rpc elkerülése érdekében, hogy a terheléselosztó számára. CallQueueLength kiugrás                                                            |
 | HIBA – 90584              | [HBASE-19052](https://issues.apache.org/jira/browse/HBASE-19052)                                                                                                                                                                                                               | FixedFileTrailer fel kell ismernie a fiókiroda-1.x CellComparatorImpl osztályban                                                                                     |
 | HIBA – 90979              | [KNOX-1224](https://issues.apache.org/jira/browse/KNOX-1224)                                                                                                                                                                                                                   | Knox Proxy HADispatcher Atlas támogatja a magas rendelkezésre ÁLLÁS.                                                                                                              |
@@ -1221,15 +1221,15 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 93933              | [ATLAS-2286](https://issues.apache.org/jira/browse/ATLAS-2286)                                                                                                                                                                                                                 | Előregyártott típusa "kafka\_témakör" egyediként "témakör" attribútum nem deklarálnia kell                                                                                 |
 | HIBA – 93938              | [ATLAS-2283](https://issues.apache.org/jira/browse/ATLAS-2283), [ATLAS-2295](https://issues.apache.org/jira/browse/ATLAS-2295)                                                                                                                                                 | Felhasználói felületi frissítések az besorolások                                                                                                                               |
 | HIBA – 93941              | [ATLAS-2296](https://issues.apache.org/jira/browse/ATLAS-2296), [ATLAS-2307](https://issues.apache.org/jira/browse/ATLAS-2307)                                                                                                                                                 | Az egyszerű keresés a fejlesztés altípusa entitásokat és alárendelt classification típusok igény szerint kizárása                                                                |
-| HIBA – 93944              | [ATLAS-2318](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | Felhasználói felület: Kétszer kattint alárendelt címke, felsőbbrendű címke van kiválasztva                                                                                                    |
-| HIBA – 93946              | [ATLAS-2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | Felhasználói felület: Törlése egy címkét, ami a 25-ös + Átalánydíjjal és a fa struktúra címke listájában elhelyezése kell egy frissítést, hogy távolítsa el a címkét a listáról.                   |
+| HIBA – 93944              | [ATLAS-2318](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Kétszer alárendelt címke kattint, felsőbbrendű címke van kiválasztva                                                                                                    |
+| HIBA – 93946              | [ATLAS-2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Egy címke, amely, 25 + vigye Átalánydíjjal és a fa szerkezetben vannak a listán törlése kell egy frissítést, hogy távolítsa el a címkét a listáról.                   |
 | HIBA – 93977              | [HIVE-16232](https://issues.apache.org/jira/browse/HIVE-16232)                                                                                                                                                                                                                 | Támogatja a statisztikák számítási QuotedIdentifier oszlopa                                                                                                     |
 | HIBA – 94030              | [ATLAS-2332](https://issues.apache.org/jira/browse/ATLAS-2332)                                                                                                                                                                                                                 | Attribútumokkal rendelkező beágyazott gyűjtemény datatype típus létrehozása meghiúsul                                                                                     |
 | HIBA – 94099              | [ATLAS-2352](https://issues.apache.org/jira/browse/ATLAS-2352)                                                                                                                                                                                                                 | Atlas-kiszolgáló konfigurációját, és adja meg a Kerberos DelegationToken érvényességi kell biztosítania.                                                                   |
 | HIBA – 94280              | [HIVE-12785](https://issues.apache.org/jira/browse/HIVE-12785)                                                                                                                                                                                                                 | Nézet union típus és az UDF \`cast\` a struct megszakad.                                                                                                |
 | HIBA – 94332              | [SQOOP-2930](https://issues.apache.org/jira/browse/SQOOP-2930)                                                                                                                                                                                                                 | Sqoop feladat exec nem szeretné felülbírálni a mentett feladat általános tulajdonságai                                                                                               |
 | HIBA – 94428              | –                                                                                                                                                                                                                                                                            | Adatsík Profiler ügynök REST API-t Knox-támogatás                                                                                                               |
-| HIBA – 94514              | [A TANÁCS ATLAS 2339](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | Felhasználói felület: A módosítások az egyszerű keresés eredményeinek nézetére "oszlop" hatással van DSL is.                                                                                |
+| HIBA – 94514              | [A TANÁCS ATLAS 2339](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Módosítások a "oszlop" az egyszerű keresés eredményeinek nézetére DSL is érinti.                                                                                |
 | HIBA – 94515              | [ATLAS-2169](https://issues.apache.org/jira/browse/ATLAS-2169)                                                                                                                                                                                                                 | Törlési kérelem törlése akkor, ha rögzített van konfigurálva.                                                                                                          |
 | HIBA – 94518              | [ATLAS-2329](https://issues.apache.org/jira/browse/ATLAS-2329)                                                                                                                                                                                                                 | Atlas felhasználói felület több mutat jelenik meg, ha a felhasználó kattintson a másik címkét, ami helytelen                                                                             |
 | HIBA – 94519              | [ATLAS-2272](https://issues.apache.org/jira/browse/ATLAS-2272)                                                                                                                                                                                                                 | Mentse a search API-t használó elhúzott oszlopok állapotának mentése.                                                                                                     |
@@ -1238,7 +1238,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 94793              | [HIVE-14013](https://issues.apache.org/jira/browse/HIVE-14013)                                                                                                                                                                                                                 | Írja le tábla nem jelenik meg unicode megfelelően                                                                                                                 |
 | HIBA – 94900              | [AZ OOZIE-2606](https://issues.apache.org/jira/browse/OOZIE-2606), [OOZIE-2658](https://issues.apache.org/jira/browse/OOZIE-2658), [OOZIE-2787](https://issues.apache.org/jira/browse/OOZIE-2787), [OOZIE-2802](https://issues.apache.org/jira/browse/OOZIE-2802)                 | Állítsa be a Spark 2.0, az oozie-val megoldásához spark.yarn.jars                                                                                                              |
 | HIBA – 94901              | [HBASE-19285](https://issues.apache.org/jira/browse/HBASE-19285)                                                                                                                                                                                                               | Adja hozzá a tábla késés hisztogramok                                                                                                                             |
-| HIBA – 94908              | [ATLAS-1921](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | Felhasználói felület: Keresés entitás- és is leálljon attribútumok használata: felhasználói felület nem hajtja végre a tartomány-ellenőrzést, és lehetővé teszi, hogy az egész szám és lebegőpontos szám adattípusok mimo rozsah értékek biztosítása.  |
+| HIBA – 94908              | [ATLAS-1921](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | FELHASZNÁLÓI FELÜLET: Keresés az entitás- és is leálljon attribútumok használata: Felhasználói felület nem hajtja végre a tartomány-ellenőrzést, és lehetővé teszi, hogy az egész szám és lebegőpontos szám adattípusok mimo rozsah értékek biztosítása.  |
 | HIBA – 95086              | [RANGER-1953](https://issues.apache.org/jira/browse/RANGER-1953)                                                                                                                                                                                                               | a felhasználó-vagy csoportlapot listaelem fokozása                                                                                                                       |
 | HIBA – 95193              | [CSÚSZKA – 1252-ES](https://issues.apache.org/jira/browse/SLIDER-1252)                                                                                                                                                                                                               | Csúszka ügynök meghiúsul, és a python 2.7.5-58 SSL-érvényesítési hibák                                                                                           |
 | HIBA – 95314              | [YARN-7699](https://issues.apache.org/jira/browse/YARN-7699)                                                                                                                                                                                                                   | queueUsagePercentage várható, INF getApp REST api-hívás                                                                                               |
@@ -1248,9 +1248,9 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 | HIBA – 95512              | [HIVE-18467](https://issues.apache.org/jira/browse/HIVE-18467)                                                                                                                                                                                                                 | támogatja a teljes adatraktár memóriakép / betöltése + létrehozása/drop database események                                                                                            |
 | HIBA – 95593              | –                                                                                                                                                                                                                                                                            | Az Oozie DB utils Spark2 sharelib létrehozás támogatottsága kiterjesztése                                                                                                    |
 | HIBA – 95595              | [HIVE-15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | Érvénytelen művelet állapota átmenet kivétel SQLOperation.runQuery elérhetővé valós kivétel figyelmen kívül.                                                       |
-| HIBA – 95685              | [ATLAS-2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Exportálás: Támogatja a-alapú exportálása                                                                                                                            |
+| HIBA – 95685              | [ATLAS-2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Exportálás: Támogatási-alapú exportálása                                                                                                                            |
 | HIBA – 95798              | [A PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714), [PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724), [PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023), [PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | Ne használjon guideposts a Feladattervek lekérdezések végrehajtása                                                                                                          |
-| HIBA – 95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828), [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063), [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | Az alábbi hibaüzenettel particionált nézet nem sikerült: IndexOutOfBoundsException Index: 1, méret: 1                                                                              |
+| HIBA – 95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828), [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063), [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | Particionált nézet meghiúsul, és nem sikerült: IndexOutOfBoundsException Index: 1, méret: 1                                                                              |
 | HIBA – 96019              | [HIVE-18548](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | Javítsa ki a log4j importálása                                                                                                                                             |
 | HIBA – 96288              | [HBASE-14123](https://issues.apache.org/jira/browse/HBASE-14123), [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135), [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850)                                                                           | Backport Hbase biztonsági mentési és visszaállítási 2.0                                                                                                                            |
 | HIBA – 96313              | [KNOX – 1119](https://issues.apache.org/jira/browse/KNOX-1119)                                                                                                                                                                                                                   | Pac4J OAuth és OpenID egyszerű kell lennie konfigurálható                                                                                                        |
@@ -1301,11 +1301,11 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 |**Az Apache-összetevő**|**Az Apache JIRA**|**összegzés**|**Részletek**|
 |--|--|--|--|
 |**A Spark 2.3.** |**N/A** |**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |– Nincs "Elavult" dokumentum és a egy "Megváltozott működés," Útmutató https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Az SQL részére van egy másik részletes "áttelepítési" guide (a 2.2-es 2.3-as), http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-feladat sikeresen befejeződik, de egy HDFS lemezhiba teljes kvóta |**Forgatókönyv:** futó **insert felülírása** mikor kvóta felhasználó futtatja a parancsot a kukában van beállítva.<br /><br />**Előző viselkedés:** a feladat sikeres volt, annak ellenére, hogy nem sikerül a Kukába helyezi át az adatokat. Az eredmény tévesen is tartalmazhat az egyes korábban a táblában található adatok.<br /><br />**Az új viselkedés:** a kukában való sikertelen lesz, amikor a rendszer véglegesen törli a fájlokat.|
+|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-feladat sikeresen befejeződik, de egy HDFS lemezhiba teljes kvóta |**Forgatókönyv:** Futó **insert felülírása** mikor kvóta felhasználó futtatja a parancsot a kukában van beállítva.<br /><br />**Előző viselkedés:** A feladat sikeres volt, annak ellenére, hogy nem sikerül a Kukába helyezi át az adatokat. Az eredmény tévesen is tartalmazhat az egyes korábban a táblában található adatok.<br /><br />**Az új viselkedés:** Ha a lépés a kukában nem sikerül, a fájlok véglegesen törlődnek.|
 |**A Kafka 1.0**|**N/A**|**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive-/ Ranger** | |További ranger hive-házirendek szükséges BESZÚRÁSA FELÜLÍRÁSA |**Forgatókönyv:** szükséges további ranger hive-házirendek **BESZÚRÁSA FELÜLÍRÁSA**<br /><br />**Előző viselkedés:** Hive **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések a megszokott módon sikeres legyen.<br /><br />**Az új viselkedés:** Hive **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések váratlanul sikertelen a következő hibával HDP-2.6.x verziófrissítés utáni teendők:<br /><br />Utasítás fordítása közben hiba: nem sikerült: HiveAccessControlException engedély megtagadva: jdoe felhasználó nem rendelkezik írási jogosultság /tmp/\*(állapot 42000, kód = = 40000)<br /><br />Hive-tól HDP-2.6.0, **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések megkövetelése a Ranger URI-házirendet, hogy az írási műveletek, még akkor is, ha a felhasználó nem rendelkezik írási jogosultság HDFS házirend megadásának módja.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:**<br /><br />1. Hozzon létre egy új házirendet a Hive-adattár alatt.<br />2. A legördülő listában, tekintse meg az adatbázist válassza ki az URI-t.<br />3. Módosítsa az elérési utat (például: / tmp / *)<br />4. Adja hozzá a felhasználókat és csoportokat, és mentse.<br />5. Ismételje meg a Beszúrás lekérdezést.|
+|**Hive-/ Ranger** | |További ranger hive-házirendek szükséges BESZÚRÁSA FELÜLÍRÁSA |**Forgatókönyv:** További ranger hive-házirendek szükséges **BESZÚRÁSA FELÜLÍRÁSA**<br /><br />**Előző viselkedés:** Hive- **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések a megszokott módon sikeres legyen.<br /><br />**Az új viselkedés:** Hive- **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések váratlanul sikertelen a következő hibával HDP-2.6.x verziófrissítés utáni teendők:<br /><br />Hiba az utasítás fordítása közben: NEM SIKERÜLT: HiveAccessControlException engedély megtagadva: jdoe felhasználó nem rendelkezik írási jogosultság /tmp/\*(állapot 42000, kód = = 40000)<br /><br />Hive-tól HDP-2.6.0, **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések megkövetelése a Ranger URI-házirendet, hogy az írási műveletek, még akkor is, ha a felhasználó nem rendelkezik írási jogosultság HDFS házirend megadásának módja.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:**<br /><br />1. Hozzon létre egy új házirendet a Hive-adattár alatt.<br />2. A legördülő listában, tekintse meg az adatbázist válassza ki az URI-t.<br />3. Módosítsa az elérési utat (például: / tmp / *)<br />4. Adja hozzá a felhasználókat és csoportokat, és mentse.<br />5. Ismételje meg a Beszúrás lekérdezést.|
 |**HDFS**|**N/A** |HDFS támogatnia kell a több KMS URI azonosítók |**Előző viselkedés:** dfs.encryption.key.provider.uri tulajdonság a KMS-szolgáltató elérési útjáról konfigurálásához használt.<br /><br />**Az új viselkedés:** dfs.encryption.key.provider.uri konfigurálhatja a KMS-szolgáltató elérési útjáról hadoop.security.key.provider.path értéke most már elavult.|
-|**A Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|A beállítás letiltja a Feladatütemező |**Érintett összetevőt:** Zeppelin-kiszolgáló<br /><br />**Előző viselkedés:** a Zeppelin a korábbi kiadásokban nem volt lehetőség a scheduler letiltása.<br /><br />**Az új viselkedés:** alapértelmezés szerint felhasználók többé nem látja a scheduler, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt ügyféltevékenység:** scheduler engedélyezni szeretné, ha szüksége lesz azeppelin.notebook.cron.enable az egyéni zeppelin webhelyen a true érték hozzáadása a Ambari Zeppelin beállításait.|
+|**A Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|A beállítás letiltja a Feladatütemező |**Az érintett összetevő:** Zeppelin-kiszolgáló<br /><br />**Előző viselkedés:** A Zeppelin a korábbi kiadásokban nem volt lehetőség a scheduler letiltása.<br /><br />**Az új viselkedés:** Alapértelmezés szerint felhasználók többé nem látja a scheduler, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:** A scheduler engedélyezni szeretné, ha szüksége lesz azeppelin.notebook.cron.enable az egyéni zeppelin webhelyen a true érték hozzáadása a Ambari Zeppelin beállításait.|
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -1328,11 +1328,11 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
 -   **Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba**
 
-    -   [RANGER-1607-es](https://issues.apache.org/jira/browse/RANGER-1607): megoldás Ranger szolgáltatás ellenőrzése sikertelen a HDP 2.6.2 egy korábbi HDP frissítése közben.
+    -   [RANGER-1607-ES](https://issues.apache.org/jira/browse/RANGER-1607): Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba HDP korábbi verziókról, HDP 2.6.2 frissítése közben.
 
-        >[!NOTE]
-        >Csak a ranger SSL engedélyezve van. 
-    
+        > [!NOTE]  
+        > Csak a ranger SSL engedélyezve van. 
+     
     A probléma akkor keletkezik, ha a korábbi HDP verziókról ambarival HDP-2.6.1 való frissítésére történt kísérlet. Az Ambari curl hívás szolgáltatás ellenőrzi, hogy az Ambari Ranger szolgáltatás használja. Ha a JDK-verziót használják az Ambari JDK-1.7-es, a curl-hívás sikertelen lesz, és az alábbi hiba:
     
     `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
@@ -1353,10 +1353,10 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
             
             AZ SSL\_RSA\_WITH\_RC4\_128\_MD5-TEL, SSL-\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_ WITH\_AES\_128\_CBC\_SHA, SSL-\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]
+    >[!NOTE]  
     >A felmerült értékek példák dolgozik, és nem lehet, a környezetében. Győződjön meg arról, hogy a Tulajdonságok módja megegyezik-e a környezet konfigurációjától.   
 
--   **RangerUI: A szabályzat megadott házirend feltétel szöveg Escape**
+-   **RangerUI: A szabályzat megadott házirend feltétel szöveg escape**
     
     **Érintett összetevőt:** Ranger
     
@@ -1396,7 +1396,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
         
         `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **A beállítás \#2: módosítja a alkalmazni Javascript**
+    - **A beállítás \#2: Javascript-módosítások alkalmazása**
         
         Lépések végrehajtásával frissítheti a JS-fájlt:
         
@@ -1412,7 +1412,7 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
 ## <a name="deprecation"></a>Elavulással kapcsolatos
 
--   **OMS-portálon:** eltávolítottuk a hivatkozás a HDInsight-erőforrások oldalának, amely az OMS-portálra mutató volt. A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat. Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani. HDInsight támogatást biztosít az OMS-portálon már elavult. Ügyfelek fogja használni a HDInsight Log Analytics-integráció az Azure Portalon.
+-   **OMS-portálon:** A hivatkozás eltávolítottuk a HDInsight-erőforrások oldalának, amely az OMS-portálra mutató volt. A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat. Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani. HDInsight támogatást biztosít az OMS-portálon már elavult. Ügyfelek fogja használni a HDInsight Log Analytics-integráció az Azure Portalon.
 
 -   **A Spark 2.3.**
 

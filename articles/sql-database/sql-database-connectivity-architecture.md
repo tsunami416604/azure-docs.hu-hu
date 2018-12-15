@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database kapcsolati architektúra |} A Microsoft Docs
-description: Ez a dokumentum ismerteti az Azure SQL Database kapcsolati architektúra az Azure-ban vagy az Azure-on kívül.
+title: Az Azure SQL Database és az SQL Data warehouse-bA az Azure forgalom átirányítása |} A Microsoft Docs
+description: Ez a dokumentum ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati architektúra az Azure-ban vagy az Azure-on kívül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/02/2018
-ms.openlocfilehash: 986741a68113da00800a18cb58648ac66b1de116
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 12/13/2018
+ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322022"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435718"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra
+# <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
-Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint, hogy hogyan a különböző összetevők működéséhez forgalomnak az Azure SQL Database-példányra. Ezek az Azure SQL Database kapcsolat összetevők függvény irányítani a hálózati forgalom az Azure-adatbázishoz csatlakozó ügyféltől Azure-ban és az Azure-on kívül csatlakozó ügyféltől. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
+Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati architektúra, valamint, hogy hogyan a különböző összetevők működéséhez forgalom az Azure SQL-példányra. E kapcsolat összetevők közvetlen hálózati forgalmat az Azure SQL Database vagy az SQL Data warehouse-bA az Azure-ban a csatlakozó ügyfelek és az Azure-on kívül csatlakozó ügyféltől függvény. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
 
 > [!IMPORTANT]
 > **[Közelgő változás] Azure SQL-kiszolgáló, végpont kapcsolatok szolgáltatás egy `Default` kapcsolat viselkedés vált `Redirect`.**
@@ -36,7 +36,10 @@ Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint, ho
 > - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése 
 > - Automatizált üzembehelyezési logikai létrehoz egy logikai kiszolgálót, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy` 
 >
-> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags). Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
+> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) portok 11000-12000. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
+
+> [!NOTE]
+> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
@@ -54,7 +57,7 @@ Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat az Azure SQL Dat
 
 Az Azure SQL Database támogatja a kapcsolat egy SQL Database-kiszolgáló házirend-beállítás a következő három módon:
 
-- **Az átirányítási (ajánlott):** Az ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)), nem csak az Azure SQL Database átjáró IP-címek. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
+- **Az átirányítási (ajánlott):** Az ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)) portok 11000-12000, nem csak az Azure SQL Database gateway-IP címek 1433-as portot. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
 - **Proxy:** Ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül webszolgáltatásokhoz használják proxyként. Ahhoz, hogy a kapcsolat, az ügyfél kimenő tűzfalszabályokat, amelyek lehetővé teszik az Azure SQL Database-átjáró IP-címek (általában két IP-címek régiónként) kell rendelkeznie. Ez a mód kiválasztása nagyobb késést és alacsonyabb átviteli sebességet a számítási feladatok természetétől függően eredményezhet. Kifejezetten ajánljuk a `Redirect` keresztül a kapcsolódási szabályzat a `Proxy` kapcsolódási szabályzat a legkisebb késés és a legnagyobb átviteli sebességet.
 - **alapértelmezett érték:** Ez a kapcsolat-házirend érvényben minden kiszolgálón létrehozása után hacsak nem változtatja meg a kapcsolódási szabályzat vagy `Proxy` vagy `Redirect`. A tényleges házirend attól függ, hogy Azure-ban származik kapcsolatok (`Redirect`) vagy Azure-on kívül (`Proxy`).
 

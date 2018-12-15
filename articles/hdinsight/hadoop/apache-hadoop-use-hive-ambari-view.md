@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632747"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407847"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari Hive nézete használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -26,7 +26,7 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
 * Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Egy webes böngésző
@@ -70,18 +70,18 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
     Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * `DROP TABLE`: Törli a tábla- és az adatfájl, abban az esetben, ha a tábla már létezik.
+   * `DROP TABLE`: Törli a tábla- és adatfájlt, abban az esetben, ha a tábla már létezik.
 
-   * `CREATE EXTERNAL TABLE`: Egy új táblát hoz létre "external" struktúrában.
+   * `CREATE EXTERNAL TABLE`: A Hive egy új "external" táblát hoz létre.
    Külső táblák csak a tábla definíciójának Hive tárolja. Az adatok az eredeti helyén marad.
 
-   * `ROW FORMAT`: Megjeleníti az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
+   * `ROW FORMAT`: Bemutatja, hogyan van formázva az adatok. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
 
-   * `STORED AS TEXTFILE LOCATION`: Az adatok tárolására és szövegként tárolt mutatja.
+   * `STORED AS TEXTFILE LOCATION`: Az adatok tárolására és szövegként tárolt jeleníti meg.
 
-   * `SELECT`: Egy száma, ahol az oszlop t4 [hiba] értéket tartalmazza az összes sor kijelölése.
+   * `SELECT`: Választja ki, ahol az oszlop t4 [hiba] értéket tartalmazza az összes sor számát.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Hagyja a __adatbázis__ a kijelölés __alapértelmezett__. Ebben a dokumentumban szereplő példák a HDInsight részét képező alapértelmezett adatbázist használja.
 
 5. A lekérdezés indításához használja a **Execute** gomb a munkalap alatt. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
@@ -93,7 +93,7 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
     Használhatja a **naplók** fülre kattintva megtekintheti a feladat által létrehozott adatok naplózása.
 
-   > [!TIP]
+   > [!TIP]  
    > Töltse le, vagy a-eredményeket menteni a **-eredményeket menteni** a bal felső legördülő párbeszédpanel a **lekérdezési folyamat eredményei** szakaszban.
 
 ### <a name="visual-explain"></a>Vizualizáció ismertetik.
@@ -106,7 +106,7 @@ A **Visual ismertetik** nézet a lekérdezés akkor hasznosak, a folyamat az ös
 
 A lekérdezés a Tez felhasználói felület megjelenítéséhez válassza a **Tez** fülre a munkalap alatt.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tez nem használatos az összes lekérdezés megoldásához. Több lekérdezés használata a Tez nélkül oldható meg. 
 
 Ha a Tez feloldani a lekérdezésben használt, az irányított aciklikus Graph (DAG) jelenik meg. Ha meg szeretné tekinteni a múltbeli futtatott lekérdezések DAG, vagy ha szeretné a Tez folyamat hibakeresése, használja a [Tez nézet](../hdinsight-debug-ambari-tez-view.md) helyette.
@@ -129,7 +129,7 @@ Az a **lekérdezés** lapon szükség esetén mentheti lekérdezéseket. Miután
 
 ![Mentett lekérdezések lap képe](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
-> [!TIP]
+> [!TIP]  
 > Mentett lekérdezések az alapértelmezett fürttárolóhoz vannak tárolva. A mentett lekérdezések az elérési út alatt található `/user/<username>/hive/scripts`. Ezek egyszerű szövegként tárolt `.hql` fájlokat.
 >
 > Ha törli a fürtöt, de tartsa a tárolót, például egy segédprogram használható [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (a a [az Azure Portal](https://portal.azure.com)) beolvasni a lekérdezéseket.
@@ -165,8 +165,8 @@ Ezután használhatja az UDF-ben a lekérdezésben. Például: `SELECT myawesome
 
 Az UDF-EK használata a HDInsight Hive-val további információkért tekintse meg a következő cikkeket:
 
-* [A Python használata a Hive és a Piggel a HDInsight](python-udf-hdinsight.md)
-* [Egyéni Hive UDF HDInsight hozzáadása](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Az Apache Hive és a HDInsight Apache Pig Python használatával](python-udf-hdinsight.md)
+* [A HDInsight egy egyéni Apache Hive-UDF hozzáadása](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-beállítások
 
@@ -176,9 +176,9 @@ Módosíthatja a különböző Hive-beállítások, például a Hive Tez (alapé
 
 Általános információk a HDInsight Hive:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
 Információk az egyéb módon használhatja a Hadoop on HDInsight:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)

@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 5acc9bfdd674d6677ad6da69b87bb8053cc43a19
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972218"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409326"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használata az Android rendszerhez
 
@@ -189,14 +189,14 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Megtudhatja, hogyan hozhat létre további táblákat a Mobile Apps-háttéralkalmazást, lásd: [hogyan: Adja meg egy] [ 15] (.NET-háttérrendszer) vagy [használata a dinamikus sémák definiálása táblák] [ 16] (Node.js-háttérrendszer).
+Megtudhatja, hogyan hozhat létre további táblákat a Mobile Apps-háttéralkalmazást, lásd: [hogyan: Adja meg a táblavezérlőnek] [ 15] (.NET-háttérrendszer) vagy [használata a dinamikus sémák definiálása táblák] [ 16] (Node.js-háttérrendszer).
 
 Az Azure Mobile Apps háttértáblára öt speciális mezők érhetők el az ügyfeleknek, amelyek négy határozza meg:
 
 * `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként, győződjön meg arról, az azonosítója a karakterláncos leképezését egy [UUID] [ 17] objektum.
 * `DateTimeOffset updatedAt`: A dátum/idő az utolsó frissítés.  A updatedAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
 * `DateTimeOffset createdAt`: A dátum/idő, hogy az objektumot létrehozták.  A createdAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
-* `byte[] version`: Egy karakterlánc-kiszolgálókként általában, a verzió is állítja be a kiszolgáló.
+* `byte[] version`: Általában jelölt karakterlánc, a verzió is állítja be a kiszolgáló.
 * `boolean deleted`: Azt jelzi, hogy a rekord törölve lett, de még nem lett kiürítve.  Ne használjon `deleted` tulajdonságként az osztályban található.
 
 Az `id` mező kötelező.  A `updatedAt` mező és `version` mező kapcsolat nélküli szinkronizálás használhatók (a növekményes szinkronizálás és az ütközés feloldásához jelölik).  A `createdAt` mező egy referencia-mezőt, és az ügyfél nem használja.  A neveket a Tulajdonságok "közötti átvitel közbeni" nevei, és nem állítható.  Azonban létrehozhat egy leképezési az objektum és a "közötti átvitel közbeni" neveket között a [gson] [ 3] könyvtár.  Példa:
@@ -446,7 +446,7 @@ Ezzel a módszerrel minden rekordnál kérelmet hoz létre, legalább két kére
 > [!TIP]
 > A megfelelő méretének kiválasztása a memóriahasználat, amíg a kérelem történik, a sávszélesség-használat és a késleltetés az adatok fogadása teljesen közötti egyensúly.  (50 rekordokat) alapértelmezés szerint minden eszköz alkalmas.  Ha kizárólag a nagyobb memória eszközökön, akár 500 növelése  Találtunk, amely a növekvő az oldalméret túl az elfogadhatatlan késéseket és nagy memóriaigényű problémák 500 rekord eredményez.
 
-### <a name="chaining"></a>Hogyan: fűzze össze a lekérdezési módszerek
+### <a name="chaining"></a>kézikönyv: Lekérdezési módszerek összefűzése
 
 A háttérrendszer táblákat kérdezi le a használt módszerek is kell fűzni. Lekérdezési módszerek láncolási lehetővé teszi a szűrt sorok rendezve és lapozható egyes oszlopok kiválasztásához. Összetett logikai szűrőket hozhat létre.  Minden egyes lekérdezés módszer egy lekérdezés objektummal adja vissza. A sorozat módszerek befejezését, majd futtatja ténylegesen a lekérdezést, hívja a **végrehajtása** metódus. Példa:
 
@@ -672,7 +672,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Útmutató: nem típusos adatok használata
+## <a name="untyped"></a>kézikönyv: Típusos adatok használata
 
 A típus nélküli programozási modell révén, JSON-szerializálás pontosan szabályozhatja.  Van néhány gyakori forgatókönyvet, ahol érdemes egy típusos programozási modellt használja. Ha például a háttértáblára sok oszlopot tartalmaz, és csak hivatkoznia kell az oszlopok egy része.  A beírt modell megköveteli, hogy az adatok osztály a Mobile Apps háttéralkalmazásból definiált összes oszlopát adja meg.  Az API-hívások adatainak elérése többsége hasonló gépelt programozási hívásnak. A fő különbség az, hogy a nem típusos modellben, metódusokat hívhat meg, a **MobileServiceJsonTable** -objektum helyett a **MobileServiceTable** objektum.
 
@@ -767,9 +767,9 @@ Ugyanazokat a szűrést, szűrés és a beírt modellben elérhető módszerek l
 
 Az Azure Mobile Apps ügyféloldali SDK kapcsolat nélküli szinkronizálás az adatok is SQLite-adatbázis segítségével tárolja a kiszolgáló adatainak helyi másolatát valósítja meg.  Egy kapcsolat nélküli táblán végrehajtott műveletek mobil kapcsolat működéséhez nem szükséges.  Kapcsolat nélküli szinkronizálás – célszerű a rugalmasság és teljesítmény rovására összetettebb logika ütközésfeloldáshoz.  Az Azure Mobile Apps-ügyfél SDK a következő funkciókat tartalmazza:
 
-* Növekményes szinkronizálás: Csak a frissített és új rekordok lesznek letöltve, sávszélesség-és memóriafelhasználás mentése.
-* Optimista párhuzamosság: Műveletek feltételezhető, hogy sikeres legyen.  Ütközésfeloldás van halasztott mindaddig, amíg a frissítéseket a kiszolgálón történik.
-* Ütközések feloldása: A az SDK észleli, ha egy ütköző módosítás történt a kiszolgálón, és biztosít beavatkozási pontjainak figyelmezteti a felhasználót.
+* Növekményes szinkronizálás: Csak frissített és új rekordok lesznek letöltve, sávszélesség-és memóriafelhasználás mentése.
+* Optimista párhuzamosság: Műveletek rendszer feltételezi, hogy sikeres legyen.  Ütközésfeloldás van halasztott mindaddig, amíg a frissítéseket a kiszolgálón történik.
+* Ütközések feloldása: Az SDK-t észleli, ha egy ütköző módosítás történt a kiszolgálón, és biztosít beavatkozási pontjainak figyelmezteti a felhasználót.
 * Helyreállítható törlés: A törölt rekordok törölt, így azok offline gyorsítótár frissítése más eszközök lesznek megjelölve.
 
 ### <a name="initialize-offline-sync"></a>Kapcsolat nélküli szinkronizálás – inicializálása
@@ -892,7 +892,7 @@ A **invokeApi** módszert hívja meg az ügyfélen, amely egy POST kérést kül
 
 Az oktatóanyagok már részletesen történő hozzáadását ismertetik ezeket a funkciókat.
 
-Az App Service támogatja [. alkalmazás felhasználóinak hitelesítése](app-service-mobile-android-get-started-users.md) használatával különböző külső Identitásszolgáltatók: Facebook, Google, Microsoft Account, Twitter és az Azure Active Directoryban. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a háttérszolgáltatásban is használhatja a hitelesített felhasználók identitását.
+Az App Service támogatja [. alkalmazás felhasználóinak hitelesítése](app-service-mobile-android-get-started-users.md) különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft-fiókkal, Twitter, és az Azure Active Directoryban. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a háttérszolgáltatásban is használhatja a hitelesített felhasználók identitását.
 
 Két hitelesítési folyamatok támogatottak: egy **kiszolgáló** folyamat és a egy **ügyfél** folyamat. A server flow nyújt a legegyszerűbb felhasználói hitelesítés támaszkodik a identity providers webes felületén.  Nincsenek további SDK-k megvalósításához server flow-hitelesítés szükséges. Kiszolgálóhitelesítés folyamat nem biztosít a mély integráció, a mobil eszköz, és csak ajánlott forgatókönyvek koncepció igazolása.
 
@@ -1314,6 +1314,6 @@ Ez a kód létrehozása egy mobilügyfél hivatkozás használata előtt végre 
 [19]: https://www.odata.org/documentation/odata-version-3-0/
 [20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[22]: ../app-service/configure-authentication-provider-aad.md
 [Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
 [AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

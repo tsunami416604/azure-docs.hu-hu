@@ -9,14 +9,17 @@ ms.topic: tutorial
 ms.date: 09/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de19b20865127fd37cd7bc1ac854288a95a68091
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 45255845d8645391ee33471830ac2ef27870a40d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058138"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408629"
 ---
-# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Oktatóanyag: Elosztott modell betanítása a Horovod használatával
+# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Oktatóanyag: Horovod elosztott modell betanítása
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ebben az oktatóanyagban elosztott mélytanulási modellt fog betanítani, párhuzamosan futtatva azt egy Batch AI-fürt több csomópontján. A Batch AI egy felügyelt szolgáltatás gépi tanulási és mesterségesintelligencia-modellek nagy léptékben történő betanítására Azure GPU-fürtökön. 
 
@@ -86,7 +89,7 @@ A fürt állapotát az `az batchai cluster show` parancs futtatásával tekinthe
 az batchai cluster show --name nc6cluster --workspace batchaidev --resource-group batchai.horovod --output table
 ```
 
-A fürt a létrehozási folyamat elején `resizing` állapotban van. A fürt állapota folyamatosan változik, ahogy végrehajtja az alábbi lépéseket. A fürt akkor áll készen a betanítási feladat futtatására, ha az állapota `steady`, a csomópontok pedig `idle` állapotúak. Például:
+A fürt a létrehozási folyamat elején `resizing` állapotban van. A fürt állapota folyamatosan változik, ahogy végrehajtja az alábbi lépéseket. A fürt akkor áll készen a betanítási feladat futtatására, ha az állapota `steady`, a csomópontok pedig `idle` állapotúak. Példa:
 
 ```
 Name        Resource Group    Workspace    VM Size       State      Idle    Running    Preparing    Leaving    Unusable

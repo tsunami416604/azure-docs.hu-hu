@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 96c51bb30f76ffe4d5efb3bb616c00554b7aab62
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011504"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408680"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Hadoop MapReduce-minták futtatása a Windows-alapú HDInsight
+# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows-alapú HDInsight az Apache Hadoop MapReduce-minták futtatása
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Minták segítséget nyújt az első lépések futó MapReduce-feladatok használata Azure HDInsight Hadoop-fürtök a van megadva. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
+Minták biztosítunk, amelyek elindított futó MapReduce-feladatok az Apache Hadoop-fürtöket az Azure HDInsight használatával. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
 
-* [**Szószámlálás**][hdinsight-sample-wordcount]: előfordulásait számláló egy szövegfájlba.
-* [**C# word-count streamelési**][hdinsight-sample-csharp-streaming]: előfordulásait számláló egy szövegfájlba, a Hadoop streamelési felületén.
-* [**A pi estimator**][hdinsight-sample-pi-estimator]: használja a statisztikai (látszólagos Monte Carlo) módszer a pi értékét.
-* [**10 GB-os Graysort**][hdinsight-sample-10gb-graysort]: egy általános célú GraySort futtatása egy 10 GB-os fájlt a HDInsight használatával. Három feladat futtatásához: létrehozza az adatokat, Terasort az adatokat, és ellenőrizze, hogy az adatok megfelelően rendezett Teravalidate Teragen.
+* [**Szószámlálás**][hdinsight-sample-wordcount]: Szövegfájl előfordulásait számláló számít.
+* [**C#a word-count streamelési**][hdinsight-sample-csharp-streaming]: A Hadoop streamelési felületén szövegfájl előfordulásait számláló számít.
+* [**A pi estimator**][hdinsight-sample-pi-estimator]: Egy statisztikai használ (látszólagos Monte Carlo) módszer a pi értékét.
+* [**10 GB-os Graysort**][hdinsight-sample-10gb-graysort]: Egy általános célú GraySort futtassa egy 10 GB-os fájlt a HDInsight használatával. Nincsenek három feladatok futtatását: Létrehozza az adatokat, Terasort az adatokat, és ellenőrizze, hogy az adatok megfelelően rendezett Teravalidate Teragen.
 
-> [!NOTE]
+> [!NOTE]  
 > A forráskód megtalálható a függelékben.
 
 A Hadoop-kapcsolódó technológiák, például a Java-alapú MapReduce programozási és a streamelési és a használt Windows PowerShell-parancsmagokkal kapcsolatos dokumentáció a weben létezik sokkal további dokumentáció parancsfájlok. Ezekkel az erőforrásokkal kapcsolatban további információkért lásd:
 
-* [Java MapReduce programok fejlesztése a HDInsight Hadoop számára](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Hadoop-feladatok elküldése a HDInsightban](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Java MapReduce programok fejlesztése a HDInsight az Apache Hadoophoz készült](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [A HDInsight Apache Hadoop-feladatok elküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Az Azure HDInsight bemutatása][hdinsight-introduction]
 
-Napjainkban sok ember válassza a Hive és Pig MapReduce keresztül.  További információkért lásd:
+Napjainkban sok ember válassza ki az Apache Hive- és Apache Pig MapReduce keresztül.  További információkért lásd:
 
-* [Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Előfeltételek**:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Egy HDInsight-fürt**. A különböző módszereket, amelyben az ilyen fürtök lehet létrehozni, lásd: [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* **Egy HDInsight-fürt**. A különböző módszereket, amelyben az ilyen fürtök lehet létrehozni, lásd: [Apache Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * **Munkaállomás Azure PowerShell-lel**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnik. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > Kövesse a [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs) telepítése az Azure PowerShell legújabb verzióját. Ha vannak olyan parancsprogramjai, amelyeket módosítani kell használni az új parancsmagok, amelyek együttműködnek az Azure Resource Manager, lásd: [Fejlesztőeszközök az Azure Resource Manager-alapú HDInsight-fürtök-ba való Migrálás](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -56,7 +56,7 @@ Küldje el egy MapReduce-projektet, először hozzon létre egy MapReduce-felada
 
 A forráskód megtalálható a [függelék](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Az eljárás egy Java MapReduce fejlődő programok, lásd: - [fejlesztés Java MapReduce programok számára a HDInsight hadoop-keretrendszer](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Az eljárás egy Java MapReduce fejlődő programok, lásd: - [fejlesztés Java MapReduce programok HDInsight az Apache Hadoophoz készült](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
 **A word száma MapReduce-feladatok elküldése**
 
@@ -120,7 +120,7 @@ Az eljárás egy Java MapReduce fejlődő programok, lásd: - [fejlesztés Java 
 ## <a name="hdinsight-sample-csharp-streaming"></a>Word-count – C# streaming
 Hadoop MapReduce, ami lehetővé teszi a térkép írni, és csökkentheti a függvényeket más nyelveken biztosít egy olyan streamelési API.
 
-> [!NOTE]
+> [!NOTE]  
 > A jelen oktatóanyagban szereplő lépések Windows-alapú HDInsight-fürtök csak a alkalmazni. Egy Linux-alapú HDInsight-fürtök streamelési példa: [fejlesztés Python-streamprogramok for HDInsight](hadoop/apache-hadoop-streaming-python.md).
 
 A példában a hozzárendelést és a nyomáscsökkentő is olvassa a bemeneti a végrehajtható fájlok [stdin] [ stdin-stdout-stderr] (--soronként) és a kimenetet kibocsátható [stdout] [ stdin-stdout-stderr]. A program megszámolja a szöveget az összes szó.
@@ -207,10 +207,10 @@ Három feladat a példaszkript, egyes megfelelő bevezető ismertetett MapReduce
 ## <a name="next-steps"></a>További lépések
 Ez a cikk és az egyes, a minták a cikkeket útmutatóból megtudhatta, hogyan az Azure PowerShell-lel a HDInsight-fürtök a minta futtatásához. A Pig, Hive és a MapReduce használata a HDInsight kapcsolatos oktatóanyagok és az alábbi témakörökben található:
 
-* [Hadoop első lépései a HDInsight Hive-val elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-pig]
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-hive]
-* [A HDInsight Hadoop-feladatok elküldése][hdinsight-submit-jobs]
+* [Az Apache Hadoop-használatának Apache Hive a HDInsight elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-pig]
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-hive]
+* [A HDInsight Apache Hadoop-feladatok elküldése][hdinsight-submit-jobs]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>A függelék – a Word száma forráskód
 

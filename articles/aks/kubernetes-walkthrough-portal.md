@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833644"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437350"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Gyors útmutató: Az Azure Kubernetes Service (AKS)-fürt üzembe helyezése
 
 Ebben a rövid útmutatóban egy AKS-fürtöt helyezünk üzembe az Azure Portal használatával. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 
@@ -36,27 +36,27 @@ Az Azure Portal bal felső sarkában válassza az **Erőforrás létrehozása** 
 AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
 
 1. **Alapvető beállítások** – Konfigurálja a következő beállításokat:
-    - *PROJEKT ADATAI*: Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
-    - *FÜRT ADATAI*: Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
-    - *MÉRET*: Válassza ki a virtuális gép méretét az AKS-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
+    - *A PROJECT DETAILS*: Válassza ki az Azure-előfizetéssel, majd válassza ki vagy hozzon létre egy Azure-erőforráscsoportot, mint például *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
+    - *FÜRT RÉSZLETES ADATAI*: Válassza ki a régió, a Kubernetes-verziót és a DNS-név előtagja az AKS-fürtöt.
+    - *MÉRETEZÉSI CSOPORT*: Válassza ki az AKS-csomópontok Virtuálisgép-méretét. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
         - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is **módosítható**.
     
     ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Ha kész, válassza a **Következő: Hitelesítés** elemet.
+    Válassza ki **tovább: Hitelesítési** teljes.
 
-1. **Hitelesítés**: Konfigurálja a következő beállításokat:
+1. **Hitelesítési**: Konfigurálja a következő beállításokat:
     - Hozzon létre egy új szolgáltatásnevet, vagy *konfigurálja* a rendszert valamelyik meglévő használatára. Meglévő SPN használata esetén meg kell adnia az SPN ügyfélazonosítóját és kulcsát.
     - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ezekkel a vezérlőkkel pontosabban szabályozhatja a hozzáférést az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz.
 
-    Ha kész, válassza a **Következő: Hálózat** elemet.
+    Válassza ki **tovább: Hálózatkezelés** teljes.
 
-1. **Hálózat**: Konfigurálja a következő hálózati beállításokat, amelyek alapértelmezett értékkel rendelkeznek:
+1. **Hálózatkezelés**: Konfigurálja az alábbi hálózati beállításokat:
     
     - **HTTP-alkalmazásútválasztás** – Válassza az **Igen** lehetőséget egy integrált bejövőforgalom-vezérlő konfigurálásához automatikus nyilvános DNS-név-létrehozással. A Http-útválasztással kapcsolatban [az AKS HTTP-útválasztásával és a DNS-sel][http-routing] kapcsolatos szakasz szolgál további információkkal.
     - **Hálózati konfiguráció** – Válassza a [kubenet][kubenet] Kubernetes beépülő modult alkalmazó **alapszintű** hálózati konfigurációt az [Azure CNI][azure-cni] használatára épülő fejlett hálózati konfiguráció helyett. A hálózati beállításokkal kapcsolatos további információért lásd az [AKS hálózati áttekintésével][aks-network] foglalkozó témakört.
     
-    Ha kész, válassza a **Következő: monitorozás** elemet.
+    Válassza ki **tovább: Figyelés** teljes.
 
 1. AKS-fürt telepítésekor az Azure Monitor for Containers beállítható úgy, hogy monitorozza az AKS-fürt és a fürtön futó podok állapotát. A tároló állapotának monitorozásával kapcsolatos további információ [az Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben érhető el.
 
@@ -88,7 +88,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be.
+A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota "Kész".
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION

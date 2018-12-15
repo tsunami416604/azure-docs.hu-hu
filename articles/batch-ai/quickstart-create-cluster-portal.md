@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 8b9daa0fbbf84e0f602498a0847c9e120f709b17
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057741"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408935"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Rövid útmutató: Fürt létrehozása Batch AI betanítási feladatokhoz az Azure Portal használatával
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy fürtöt, a Batch AI betanítási feladatokat az Azure portal használatával
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy mesterségesintelligencia- és gépi tanulási modellek betanítására használható Batch AI-fürtöt az Azure Portallal. A Batch AI egy felügyelt szolgáltatás az adatelemzők és MI-kutatók számára, amely lehetővé teszi, hogy nagy számban tanítsanak be mesterségesintelligencia- és gépi tanulási modelleket Azure-beli virtuális gépek fürtjein.
 
@@ -91,7 +94,7 @@ Az alábbi lépésekkel egy egyetlen GPU-csomóponttal rendelkező fürtöt hozh
    |**Virtuális gép mérete**     |Standard NC6|
    |**Csomópontok célszáma**     |1|
 
-3. Adjon meg egy **Rendszergazdai felhasználónevet**, és másolja át a nyilvános SSH-kulcsfájl tartalmát az **SSH-kulcs** mezőbe. Az oldal többi értékénél fogadja el az alapértelmezett beállításokat, és válassza a **Következő: Csomópont beállítása** lehetőséget.
+3. Adjon meg egy **Rendszergazdai felhasználónevet**, és másolja át a nyilvános SSH-kulcsfájl tartalmát az **SSH-kulcs** mezőbe. Fogadja el a fennmaradó értékek ezen a lapon alapértelmezett értéket, és válassza ki **tovább: Csomópont beállítása**.
 
    ![A fürt alapvető adatainak megadása](./media/quickstart-create-cluster-portal/create-cluster.png)
 

@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5c12a84610d09b7557f0beb177273deba4468cc0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014820"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438548"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Filmajánlók létrehozása (PowerShell) HDInsight a Hadoop-keretrendszerrel Apache Mahout használatával
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>Filmajánlók Apache Mahout az Apache hadooppal a HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ Ismerje meg, hogyan használható a [Apache Mahout](http://mahout.apache.org) g�
 
 * Egy Linux-alapú HDInsight-fürt. Az egyik létrehozásával kapcsolatos információkért lásd: [HDInsight Linux-alapú Hadoop használatának első lépései][getstarted].
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Javaslatok létrehozása az Azure PowerShell-lel
 
-> [!WARNING]
+> [!WARNING]  
 > A feladat ebben a szakaszban az Azure PowerShell használatával működik. A mahouttal megadott osztályok többsége jelenleg nem működik az Azure PowerShell-lel. Nem fog tudni az Azure PowerShell-lel osztályok listáját lásd: a [hibaelhárítás](#troubleshooting) szakaszban.
 >
-> Egy példa, SSH használatával csatlakozhat a HDInsight és a futtatási Mahout példák közvetlenül a fürtön: [Filmajánlók létrehozása a Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Egy példa, SSH használatával csatlakozhat a HDInsight és a futtatási Mahout példák közvetlenül a fürtön: [Filmajánlók Apache Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 A Mahout által biztosított függvények egyikét egy ajánlattételi modul beépítését. Ez a motor az formátumban adatokat fogad `userID`, `itemId`, és `prefValue` (a felhasználók szabályozó az elem). Mahout hasonló-cikk beállítások, amely használható ajánlásokat rendelkező felhasználók meghatározására használja az adatok.
 
 Az alábbi példában egy egyszerűsített segédlet a javaslat folyamat működésének:
 
-* **Közös előfordulás**: János Alice és az összes tetszett Bob *Star Wars*, *vissza is a Empire*, és *visszaküldése az ereje*. Mahout határozza meg, hogy felhasználók, akik ezek filmek közül bármelyik is, mint például a másik kettőt.
+* **közös előfordulás**: János Alice és az összes tetszett Bob *Star Wars*, *vissza is a Empire*, és *visszaküldése az ereje*. Mahout határozza meg, hogy felhasználók, akik ezek filmek közül bármelyik is, mint például a másik kettőt.
 
-* **Közös előfordulás**: Bálint és Alice is tetszett *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*. Mahout határozza meg, hogy az előző három filmek is kedvelő felhasználók például ezek filmek.
+* **közös előfordulás**: Bob és Alice is tetszett *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*. Mahout határozza meg, hogy az előző három filmek is kedvelő felhasználók például ezek filmek.
 
-* **Hasonlósági javaslat**: mivel János tetszett az első három filmek, Mahout megvizsgálja filmek, hogy mások hasonló beállítások tetszett, de János rendelkezik nem figyelt (tetszett vagy magas). Ebben az esetben a Mahout javasolja *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*.
+* **Hasonlósági javaslat**: János az első három filmek tetszett, mert Mahout megvizsgálja filmek, hogy mások hasonló beállítások tetszett, de János rendelkezik nem figyelt (tetszett/névleges). Ebben az esetben a Mahout javasolja *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*.
 
 ### <a name="understanding-the-data"></a>Az adatok megismerése
 
@@ -66,12 +66,12 @@ A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, 
 
 A következő Windows PowerShell-parancsfájl használatával, amely a Mahout ajánlásokat készítő motor használja a film adatait az feladat futtatása:
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a fájl információkat kér, amellyel csatlakozhat a HDInsight-fürt és a feladatok futtatásához. A feladatok elvégzéséhez, töltse le a kimenet.txt több percig is eltarthat.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Feladatok létrehozása a mahout ne távolítsa el a feladat feldolgozása során létrehozott ideiglenes adatok. A `--tempDir` paraméter van megadva a példa feladat elkülöníteni az ideiglenes fájlok egy adott könyvtárba.
 
 A Mahout feladat nem áll vissza a kimeneti STDOUT. Ehelyett azt tárolja, mint a megadott kimeneti könyvtár **. rész – az r-00000**. A szkript letölti a fájlt **kimenet.txt** munkaállomáson az aktuális könyvtárban található.
@@ -202,14 +202,14 @@ A következő osztályokat használó feladatok létrehozása a mahout különb�
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH-val Mahout feladatok futtatásához egy példa: [Filmajánlók létrehozása a Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
+Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH-val Mahout feladatok futtatásához egy példa: [Filmajánlók Apache Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy, hogyan használható a Mahout hogyan, Fedezze fel az adatok használata a HDInsight egyéb módjait:
+Most, hogy, hogyan használható az Apache Mahout hogyan, Fedezze fel az adatok használata a HDInsight egyéb módjait:
 
-* [Hive a HDInsight](hadoop/hdinsight-use-hive.md)
-* [A HDInsight Pig](hadoop/hdinsight-use-pig.md)
+* [Az Apache Hive a HDInsight](hadoop/hdinsight-use-hive.md)
+* [A HDInsight Apache Pig](hadoop/hdinsight-use-pig.md)
 * [A MapReduce és a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html

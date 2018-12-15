@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fcc0badc17675c1c8923c744afd3fa46e98fef32
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d3b2edefd602a90ff28b8e0645d3c48932ba44dd
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954705"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410312"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
 
@@ -36,7 +36,7 @@ Többféleképpen is, hogy az alkalmazás integrálása az Azure ad-ben. Sok vag
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Az Azure AD arra, hogy jelentkezzen be az alkalmazás támogatja
 **Fennakadások nélkül használható bejelentkezési csökkentheti, és csökkentheti a támogatási költségeket.** Az Azure AD használatával jelentkezzen be az alkalmazást, a felhasználóknak nem kell egy további nevét és jelszavát, ne felejtse el. A fejlesztők akkor tárolja és védi egy rövidebb jelszót. Elfelejtett jelszó-visszaállítási kezelésére nem rendelkezik, előfordulhat, hogy egy önálló jelentős megtakarítást. Az Azure AD bejelentkezési néhány, a világ legnépszerűbb felhőalapú alkalmazások, beleértve az Office 365 és a Microsoft Azure működteti. Több százmilliós felhasználói a szervezetek több millió felhasználóját, valószínűleg a felhasználó már bejelentkezett az Azure ad-hez. Tudjon meg többet [támogatása az Azure AD-bejelentkezés](authentication-scenarios.md).
 
-**Egyszerűsítése érdekében jelentkezzen be az alkalmazás.**  Jelentkezzen be az alkalmazás, során az Azure AD küldhet felhasználókkal kapcsolatos alapvető információk, hogy előre töltse ki a regisztrációs űrlapot, vagy teljesen ki azt. Felhasználók az alkalmazás használatával az Azure AD-fiókja egy hasonló a közösségimédia- és mobilalkalmazások található ismerős jóváhagyási felületen keresztül regisztrálhat. Bármely felhasználó is regisztráljon, és jelentkezzen be egy alkalmazás, amely integrálva van az Azure AD informatikai bevonása nélkül. Tudjon meg többet [regisztrál az alkalmazás Azure AD-fiók bejelentkezési](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+**Egyszerűsítése érdekében jelentkezzen be az alkalmazás.**  Jelentkezzen be az alkalmazás, során az Azure AD küldhet felhasználókkal kapcsolatos alapvető információk, hogy előre töltse ki a regisztrációs űrlapot, vagy teljesen ki azt. Felhasználók az alkalmazás használatával az Azure AD-fiókja egy hasonló a közösségimédia- és mobilalkalmazások található ismerős jóváhagyási felületen keresztül regisztrálhat. Bármely felhasználó is regisztráljon, és jelentkezzen be egy alkalmazás, amely integrálva van az Azure AD informatikai bevonása nélkül. Tudjon meg többet [regisztrál az alkalmazás Azure AD-fiók bejelentkezési](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Keresse meg a felhasználók számára, kezelheti a Felhasználókiépítés és az alkalmazásokhoz való hozzáférés szabályozása
 **Tallózás a címtárban lévő felhasználók számára.**  Segítség a felhasználóknak a keresése, és keresse meg a szervezet más tagjai, amikor mások meghívása a Graph API használatával, vagy hozzáférést helyett írja be az e-mail-címek. Felhasználók böngészhetnek ismerős cím könyv stílus felületen, beleértve a szervezeti hierarchia részleteinek megtekintése. Tudjon meg többet a [Graph API](active-directory-graph-api.md).

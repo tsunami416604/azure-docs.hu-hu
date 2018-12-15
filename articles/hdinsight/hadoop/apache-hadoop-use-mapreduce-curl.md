@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75f615f63b0741899995c2728f93231d8e46734a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016180"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406793"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
-Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache hadoop MapReduce-feladatok futtatásához. A curl használatával mutatja be, hogyan használhatja a HDInsight MapReduce-feladatok futtatása a nyers HTTP-kérések használatával szolgál.
+Megtudhatja, hogyan használható az Apache Hive-WebHCat REST API egy HDInsight-fürtön az Apache hadoop MapReduce-feladatok futtatásához. A curl használatával mutatja be, hogyan használhatja a HDInsight MapReduce-feladatok futtatása a nyers HTTP-kérések használatával szolgál.
 
-> [!NOTE]
-> Ha már ismeri a Linux-alapú Hadoop-kiszolgálókat használ, de még nem ismeri a HDInsight, tekintse meg a [amit tudni akart a Linux-based Hadoop on HDInsight](../hdinsight-hadoop-linux-information.md) dokumentumot.
+> [!NOTE]  
+> Ha már ismeri a Linux-alapú Hadoop-kiszolgálókat használ, de még nem ismeri a HDInsight, tekintse meg a [mit kell tudni a HDInsight Linux-alapú Apache Hadoop](../hdinsight-hadoop-linux-information.md) dokumentumot.
 
 
 ## <a id="prereq"></a>Előfeltételek
@@ -31,7 +31,7 @@ Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache had
 
 ## <a id="curl"></a>A MapReduce-feladat futtatása
 
-> [!NOTE]
+> [!NOTE]  
 > Használatakor a Curl vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight-fürt rendszergazdai felhasználónév és jelszó megadásával. A fürt nevét az URI-t, a kérések a kiszolgálóhoz küldéséhez használt részeként kell használnia.
 >
 > A REST API használatával védett [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication). Kérések mindig készítsen, győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló a HTTPS-en keresztül.
@@ -75,8 +75,8 @@ Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache had
 
     Ezen parancs paraméterei a következők:
 
-   * **-u**: azt jelzi, hogy a felhasználónév és a kérés hitelesítésére használt jelszó
-   * **-G**: azt jelzi, hogy ez a művelet egy GET kéréssel
+   * **-u**: Azt jelzi, hogy a felhasználónév és a kérés hitelesítésére használt jelszó
+   * **-G**: Azt jelzi, hogy ez a művelet egy GET kéréssel
 
    Az URI-t, az elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, összes kérelem esetében azonos.
 
@@ -107,10 +107,10 @@ Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache had
     Az URI-t (vagy a mapreduce/jar) végén közli, hogy a kérelem első eleme egy MapReduce-feladatot egy jar-fájlt egy osztály WebHCat. Ezen parancs paraméterei a következők:
 
    * **-d**: `-G` nem használják, ezért a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
-    * **User.name**: a parancsot futtató felhasználó
-    * **JAR**: a jar-fájlt, amely tartalmazza a kívánt osztály helyét futott
-    * **osztály**: a MapReduce logikát tartalmazó osztály
-    * **arg**: az átadott argumentum is, a MapReduce-feladatot. Ebben az esetben, a bemeneti szövegfájl és a használt a kimeneti könyvtár
+    * **User.name**: A parancsot futtató felhasználó
+    * **JAR**: A jar-fájlt, amely tartalmazza a futtatni kívánt osztály helye
+    * **osztály**: A MapReduce logikát tartalmazó osztály
+    * **arg**: Az átadott argumentum is, a MapReduce-feladatot. Ebben az esetben, a bemeneti szövegfájl és a használt a kimeneti könyvtár
 
    Ezzel a paranccsal ellenőrizheti az állapotot, a feladat használható Feladatazonosítót kell visszaadnia:
 
@@ -136,7 +136,7 @@ Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache had
 
     Ha a feladat befejeződött, a visszaküldött állapot `SUCCEEDED`.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ezt a kérelmet a Curl egy JSON-dokumentumok, a feladattal kapcsolatos információkat ad vissza. Csak az állapot értékét a vizualizációhoz Jq szolgál.
 
 6. Ha a feladat állapota megváltozott, hogy `SUCCEEDED`, a feladat eredményeinek kérheti le az Azure Blob storage-ból. A `statusdir` lekérdezése átadott paraméter tartalmazza a kimeneti fájl helye. Ebben a példában a hely a `/example/curl`. Ez a cím tárolja a fürt alapértelmezett tárolója, a feladat kimenetei `/example/curl`.
@@ -147,11 +147,11 @@ A listában, és ezeket a fájlokat le használatával a [Azure CLI-vel](https:/
 
 HDInsight MapReduce-feladatok általános tájékoztatást:
 
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
 A REST-felület, amely használatban van ebben a cikkben kapcsolatos további információkért lásd: a [WebHCat referencia](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

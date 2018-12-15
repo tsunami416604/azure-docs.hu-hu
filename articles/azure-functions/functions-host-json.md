@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635169"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413268"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
@@ -96,7 +96,23 @@ Ez a cikk a következő szakaszok azt ismertetik, hogy minden felső szintű tul
 
 Ez a beállítás nem gyermeke [naplózás](#logging).
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+Szabályozza a [mintavételezés funkció az Application Insights](./functions-monitoring.md#configure-sampling).
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|isEnabled|true|Engedélyezi vagy letiltja a mintavétel.| 
+|maxTelemetryItemsPerSecond|5|A küszöbértéket, mely mintavételi kezdődik.| 
 
 ## <a name="cosmosdb"></a>cosmos DB
 
@@ -185,7 +201,28 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
 |LogLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|konzol|n/a| A [konzol](#console) naplózási beállításokat. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
+
+## <a name="console"></a>konzol
+
+Ez a beállítás nem gyermeke [naplózás](#logging). Azt szabályozza, hogy a konzolon, ha nem a hibakeresési mód naplózása.
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|isEnabled|false|Engedélyezi vagy letiltja a konzol naplózását.| 
 
 ## <a name="queues"></a>üzenetsorok
 

@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 34d084bc4115d0abf8f57c576c16330611f3a21b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185715"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409870"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -35,7 +35,6 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 > Azt javasoljuk, hogy használata az Azure Machine Learning Compute új munkaterület létrehozása. Nincs távoli előfordulhat, hogy a felhasználók próbál létrehozni egy meglévő munkaterületet az Azure Machine Learning COMPUTE számítási hiba láthatják. A munkaterületen található meglévő számítási továbbra is változatlanul működik.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Az Azure Machine Learning SDK for Python v1.0.2
-
 + **Használhatatlanná tévő változásai**
   + Ettől a kiadástól kezdve megszüntetjük a virtuális gép létrehozása az Azure Machine Learning támogatása. Továbbra is csatolhat a virtuális gép meglévő felhő vagy egy távoli helyszíni kiszolgáló. 
   + Emellett megszüntetjük BatchAI, mindegyike támogatnia kell az Azure Machine Learning Compute révén most támogatása.
@@ -56,7 +55,6 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.2
-
 + **Használhatatlanná tévő változásai** 
   * `SummaryFunction.N` új nevet kapott `SummaryFunction.Count`.
   
@@ -66,6 +64,9 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
   * Amikor Spark használ Kryo szerializálási to_spark_dataframe() már nem összeomlik.
   * Értékek száma vizsgáló most már 1000-nél több egyedi értékeket jeleníti meg
   * Véletlenszerű Split már nem sikertelen lesz, ha az eredeti adatfolyam nem rendelkezik egy nevet  
+
++ **További információ**
+  * [Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Docs és jegyzetfüzetek
 + Gépi Tanulási folyamatok

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eb7d5dc2d38d814625e904d1270446f5f1671624
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321101"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410069"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
 
@@ -74,7 +74,7 @@ A következők szerint válasszon:
 
 - **Az összes felhőalapú alkalmazások** alapkonfiguráció-szabályzatokhoz, a teljes szervezetre érvényesek. Használja ezt a lehetőséget a házirendekben, amelyek a többtényezős hitelesítés megkövetelése bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás esetében. Alkalmazott házirend **az összes felhőalapú alkalmazások** hozzáférés vonatkozik az összes webhelyek és szolgáltatások. Ez a beállítás nem jelenik meg a felhőalkalmazások korlátozódik a **alkalmazások kiválasztása** listája. 
 
-- Az egyes felhőalapú alkalmazások a cél a házirend által meghatározott szolgáltatások. Ha például szükség lehet a felhasználókat, hogy egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams. 
+- **Válassza ki a szolgáltatásnyújtási** célként megadott konkrét szolgáltatások a szabályzat által. Ha például szükség lehet a felhasználókat, hogy egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams. 
 
 Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is. 
 
@@ -137,16 +137,16 @@ További információkért lásd: [a helyfeltétel Mi az Azure Active Directory 
 
 Alapértelmezés szerint a feltételes hozzáférési szabályzat vonatkozik a következő alkalmazásokat:
 
-- [Böngészőben megjelenő alkalmazásokba](technical-reference.md#supported-browsers) -böngésző alkalmazások közé tartoznak a webhelyeken a SAML, WS-Federation, vagy az OpenID Connect webes egyszeri bejelentkezés protokollok. Ez bármely webhelyre vagy webalkalmazásra szolgáltatás, amely regisztrálva van az OAuth bizalmas ügyfélként is vonatkozik. Ha például az Office 365 SharePoint-webhely. 
+- **[Böngészőben megjelenő alkalmazásokba](technical-reference.md#supported-browsers)**  -böngésző alkalmazások közé tartoznak a webhelyeken a SAML, WS-Federation, vagy az OpenID Connect webes egyszeri bejelentkezés protokollok. Ez bármely webhelyre vagy webalkalmazásra szolgáltatás, amely regisztrálva van az OAuth bizalmas ügyfélként is vonatkozik. Ha például az Office 365 SharePoint-webhely. 
 
-- [Mobil- és asztali alkalmazások modern hitelesítést használó](technical-reference.md#supported-mobile-applications-and-desktop-clients) – az alkalmazások tartalmazzák az Office asztali alkalmazásokban, és a telefonos alkalmazások. 
+- **[Mobil- és asztali alkalmazások modern hitelesítést használó](technical-reference.md#supported-mobile-applications-and-desktop-clients)**  – az alkalmazások tartalmazzák az Office asztali alkalmazásokban, és a telefonos alkalmazások. 
 
 
 Ezenkívül célként a szabályzat adott ügyfélalkalmazásokra nem modern hitelesítést használó, például:
 
-- A Microsoft Exchange ActiveSync protokollt használó ügyfélalkalmazások. Ha a szabályzat akkor tiltja az Exchange ActiveSync segítségével, az érintett felhasználók beolvasása egyetlen karanténüzenetet információkat, miért van letiltva. Ha szükséges, akkor az e-mailben regisztrálták az eszközüket az Intune-nal útmutatást tartalmaz.
+- **[Exchange ActiveSync-ügyfelek](conditions.md#exchange-activesync-clients)**  – Ha a szabályzat akkor tiltja az Exchange ActiveSync segítségével, az érintett felhasználók beolvasása egyetlen karanténüzenetet információkat, miért van letiltva. Ha szükséges, akkor az e-mailben regisztrálták az eszközüket az Intune-nal útmutatást tartalmaz.
 
-- Más ügyfelek számára. Az alkalmazások tartalmazzák a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó ügyfelek számára. További információkért lásd: [modern hitelesítés működéséről, az Office 2013 és az Office 2016 ügyfélalkalmazások](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
+- **[Más ügyfelek](block-legacy-authentication.md)**  – az alkalmazások tartalmazzák a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó ügyfelek számára. További információkért lásd: [modern hitelesítés működéséről, az Office 2013 és az Office 2016 ügyfélalkalmazások](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
 ![Ügyfélalkalmazások](./media/conditions/41.png)
 
@@ -154,7 +154,7 @@ Ez a feltétel gyakori alkalmazási helyzetei azok szabályzatok a következő k
 
 - **[Egy felügyelt eszköz megkövetelése](require-managed-devices.md)**  adatletöltéshez eszköz mobil- és asztali alkalmazások esetében. Egy időben bármilyen eszközről böngészőalapú hozzáférés engedélyezése. Ebben a forgatókönyvben megakadályozza, hogy a dokumentum mentése folyamatban van, és szinkronizálja egy nem felügyelt eszközhöz. Ezzel a módszerrel csökkentheti annak valószínűsége az adatvesztést, ha az eszköz elveszett vagy ellopták.
 
-- **[Egy felügyelt eszköz megkövetelése](require-managed-devices.md)**  alkalmazások az ActiveSync használatával az Exchange Online-hoz.
+- **[Egy felügyelt eszköz megkövetelése](require-managed-devices.md)**  alkalmazásokhoz, az ActiveSync használatával az Exchange Online-hoz.
 
 - **[Az örökölt hitelesítés letiltása](block-legacy-authentication.md)**  az Azure AD (más ügyfelek)
 

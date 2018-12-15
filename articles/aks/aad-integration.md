@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979250"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437606"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -149,7 +149,7 @@ Először a [az aks get-credentials] [ az-aks-get-credentials] parancsot a `--ad
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Ezután használja a következő jegyzékfájl egy ClusterRoleBinding egy olyan Azure AD-fiók létrehozásához. Frissítse a felhasználónevet egy, az Azure AD-bérlőből. Ebben a példában a teljes körű hozzáférést biztosít a fürt összes névtér:
+Ezután használja a következő jegyzékfájl egy ClusterRoleBinding egy olyan Azure AD-fiók létrehozásához. Ebben a példában a teljes körű hozzáférést biztosít a fürt összes névtér. Hozzon létre például egy fájl *rbac-aad-user.yaml*, és illessze be az alábbiakat. Frissítse a felhasználónevet egy, az Azure AD-bérlőből:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -166,7 +166,13 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Egy szerepkör kötést is létrehozhatók az Azure AD-csoport összes tagja számára. A csoportobjektum azonosítója, használja az Azure AD-csoportok vannak megadva, az alábbi példában látható módon:
+A kötés használatával alkalmazza az [a kubectl a alkalmazni] [ kubectl-apply] parancsot az alábbi példában látható módon:
+
+```console
+kubectl apply -f rbac-aad-user.yaml
+```
+
+Egy szerepkör kötést is létrehozhatók az Azure AD-csoport összes tagja számára. A csoportobjektum azonosítója, használja az Azure AD-csoportok vannak megadva, az alábbi példában látható módon. Hozzon létre például egy fájl *rbac-aad-group.yaml*, és illessze be az alábbiakat. Frissítse a csoportobjektum azonosítója egy, az Azure AD-bérlőből:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -181,6 +187,12 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
+```
+
+A kötés használatával alkalmazza az [a kubectl a alkalmazni] [ kubectl-apply] parancsot az alábbi példában látható módon:
+
+```console
+kubectl apply -f rbac-aad-group.yaml
 ```
 
 Az RBAC a Kubernetes-fürt biztonságossá tétele a további információkért lásd: [RBAC-hitelesítés használatával][rbac-authorization].
@@ -221,6 +233,7 @@ További információ az RBAC a Kubernetes-fürtök védelme a [RBAC-hitelesít�
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [rbac-authorization]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

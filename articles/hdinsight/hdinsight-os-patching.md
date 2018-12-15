@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059147"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434045"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
-Felügyelt Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt szoftvert futtató virtuális gépek javítása. 2016. augusztus 1-től módosítottuk a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió). Az új házirend az a célja, hogy jelentősen csökkentheti a javítás miatt újraindítások száma. Javítás virtuális gépeken (VM) az új házirend továbbra Linux-fürtökön minden hétfőn vagy csütörtök 12 AM UTC lépcsőzetes módon díjtól bármely adott fürtben található csomópontok között. Azonban bármely adott virtuális gép csak újraindítás legfeljebb 30 naponta miatt a vendég operációs rendszer javításait. Emellett az újonnan létrehozott fürt első újraindítás nem történik meg hamarabb fürt létrehozás dátumától számítva 30 napnál. Javítások től lép érvénybe, ha a virtuális gépek indulnak újra.
+Felügyelt Apache Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt szoftvert futtató virtuális gépek javítása. 2016. augusztus 1-től módosítottuk a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió). Az új házirend az a célja, hogy jelentősen csökkentheti a javítás miatt újraindítások száma. Javítás virtuális gépeken (VM) az új házirend továbbra Linux-fürtökön minden hétfőn vagy csütörtök 12 AM UTC lépcsőzetes módon díjtól bármely adott fürtben található csomópontok között. Azonban bármely adott virtuális gép csak újraindítás legfeljebb 30 naponta miatt a vendég operációs rendszer javításait. Emellett az újonnan létrehozott fürt első újraindítás nem történik meg hamarabb fürt létrehozás dátumától számítva 30 napnál. Javítások től lép érvénybe, ha a virtuális gépek indulnak újra.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Az operációs rendszer javítási ütemezése a Linux-alapú HDInsight-fürtök konfigurálása
 Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 2016. augusztus 1. új Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió) újraindulásakor az alábbi ütemezés:
@@ -31,7 +31,7 @@ A jelen cikkben ismertetett szkriptműveletek használatával, módosíthatja az
 2. Set gyakorisága (napokban újraindításnál) újraindul
 3. Ha újraindítás történik a hét napját beállítása
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a parancsprogram-művelet csak a 2016. augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel működik. Javítások től lép érvénybe, csak akkor, ha a virtuális gépek indulnak újra. 
 >
 
@@ -43,7 +43,7 @@ Ha ez a szkript használatához a következő információkat:
 2. A alkalmazni a parancsfájl fürtcsomópont-típusokat: átjárócsomópontjával, workernode, zookeeper. Ez a szkript a fürt minden csomópont típusokat kell alkalmazni. Ez a csomópont típusa nem alkalmazható, ha a virtuális gépek adott csomóponttípus továbbra korábbi javítási ütemezésének használja.
 
 
-3.  Paraméter: Ez a szkript numerikus három paramétert fogad el:
+3.  A paraméter: Ez a szkript numerikus három paramétert fogad el:
 
     | Paraméter | Meghatározás |
     | --- | --- |
@@ -52,10 +52,8 @@ Ha ez a szkript használatához a következő információkat:
     | Hét napja |1 és 7 (a szélsőértékek megengedettek). Az 1 érték azt jelzi, az újraindítás megtörténik, hétfőn, és 7 azt jelzi, hogy egy Sunday.For paraméterek használatával a példában 1 60 2 eredmények automatikus újraindul 60 naponta (legfeljebb) keddjén. |
     | Adatmegőrzés |Egy meglévő fürthöz szkriptműveletet alkalmazásakor, megőrzött meg lehet jelölni a parancsfájl. A megőrzött szkriptek akkor lépnek fel, amikor új workernodes hozzáadódnak a fürtnek a méretezési műveletek. |
 
-> [!NOTE]
-> Ez a szkript, egy meglévő fürthöz alkalmazásakor megőrzött kell megjelölni. Ellenkező esetben a méretezési műveletek során létrehozott minden új csomópontok fogja használni az alapértelmezett javítási ütemezése.
-Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatikusan.
->
+> [!NOTE]  
+> Ez a szkript, egy meglévő fürthöz alkalmazásakor megőrzött kell megjelölni. Ellenkező esetben a méretezési műveletek során létrehozott minden új csomópontok fogja használni az alapértelmezett javítási ütemezése.  Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatikusan.
 
 ## <a name="next-steps"></a>További lépések
 

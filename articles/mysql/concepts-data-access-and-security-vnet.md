@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054920"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437979"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for MySQL-hez
 
@@ -31,13 +31,13 @@ Hozzon létre egy virtuális hálózati szabályt, hogy először lennie kell eg
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
-**Virtuális hálózat:** rendelkezhet az Azure-előfizetéséhez társított virtuális hálózatok.
+**Virtuális hálózat:** Az Azure-előfizetéséhez társított virtuális hálózatok is rendelkezhet.
 
-**Alhálózat:** tartalmaznak **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
+**Alhálózat:** Egy virtuális hálózatot tartalmaz **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
 
 **Virtuális hálózati szolgáltatásvégpont:** A [virtuális hálózati szolgáltatásvégpont] [ vm-virtual-network-service-endpoints-overview-649d] egy alhálózat, amelynek a következők: egy vagy több hivatalos Azure-szolgáltatás nevét. Ebben a cikkben azt érdeklő nevét **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve. Ez a szolgáltatás címke az Azure Database for MySQL és a PostgreSQL-szolgáltatások is vonatkozik. Fontos, hogy alkalmazása esetén vegye figyelembe a **Microsoft.Sql** szolgáltatáscímke a virtuális hálózati szolgáltatásvégpont konfigurálja szolgáltatási végpont forgalmat az összes Azure SQL Database, Azure Database for MySQL-hez és, Azure Database for PostgreSQL-kiszolgálók az alhálózat. 
 
-**Virtuális hálózati szabályt:** az Azure Database for MySQL-kiszolgáló egy virtuális hálózati szabályt egy alhálózatot, amely szerepel a hozzáférés-vezérlési lista (ACL), az Azure Database for MySQL-kiszolgálóhoz. Kell lennie a hozzáférés-Vezérlési az Azure Database for MySQL-kiszolgáló, az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
+**Virtuális hálózati szabályt:** Az Azure Database for MySQL-kiszolgáló egy virtuális hálózati szabályt egy alhálózatot, amely szerepel a hozzáférés-vezérlési lista (ACL), az Azure Database for MySQL-kiszolgálóhoz. Kell lennie a hozzáférés-Vezérlési az Azure Database for MySQL-kiszolgáló, az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
 
 Egy virtuális hálózati szabályt arra utasítja az Azure Database for MySQL-kiszolgálót az alhálózaton található minden egyes csomópontjáról kommunikáció fogadására.
 
@@ -91,8 +91,8 @@ Minden egyes virtuális hálózati szabályt alkalmazza, a teljes Azure Database
 
 Nincs a felügyeleti virtuális hálózati Szolgáltatásvégpontok, a biztonsági szerepkörök elkülönítése. A művelet szükség az egyes a következő szerepkörök:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végponthoz.
-- **Adatbázis-rendszergazda:** &nbsp; a hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az Azure Database for MySQL-kiszolgáló frissítése.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végponthoz.
+- **Adatbázis-rendszergazda:** &nbsp; A hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az Azure Database for MySQL-kiszolgáló frissítése.
 
 *Az RBAC alternatív:*
 
@@ -115,7 +115,7 @@ Az Azure Database for MySQL a virtuális hálózati szabályok funkció a követ
 
 - A virtuális hálózati szabályok alkalmazása csak az Azure Resource Managerbeli virtuális hálózat; és ne [klasszikus üzemi modellben] [ arm-deployment-model-568f] hálózatok.
 
-- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure Database for MySQL-hez készült a **Microsoft.Sql** szolgáltatáscímke is lehetővé teszi az összes Azure-adatbázis-szolgáltatás végpontjainak: Azure Database for MySQL, Azure Database for PostgreSQL, Az Azure SQL Database és az Azure SQL Data warehouse-bA.
+- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure Database for MySQL-hez készült a **Microsoft.Sql** szolgáltatáscímke is lehetővé teszi az összes Azure-adatbázis-szolgáltatás végpontjainak: Azure Database for MySQL, Azure Database for PostgreSQL, az Azure SQL Database és az Azure SQL Data warehouse-bA.
 
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
@@ -144,7 +144,7 @@ Virtuális hálózati szabályainak létrehozásával a cikkekben talál:
 - [Hozzon létre és kezelhető az Azure Database for MySQL VNet-szabályok az Azure portal használatával](howto-manage-vnet-using-portal.md)
 - [Hozzon létre és kezelhető az Azure Database for MySQL VNet-szabályok az Azure CLI használatával](howto-manage-vnet-using-cli.md)
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

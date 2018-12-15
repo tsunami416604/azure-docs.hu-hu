@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057111"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407745"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>A Batch AI-erőforrások áttekintése
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Amikor először indítja el a Batch AI szolgáltatással, érdemes tudni, hogy a rendelkezésre álló Batch AI-erőforrások. Az egyéb Azure-szolgáltatásokkal, egy vagy több Azure-beli létrehozásakor a Batch AI-erőforrások *erőforráscsoportok*. Hozzon létre legalább egy Batch AI *munkaterületek* egy erőforráscsoportban. Az egyes munkaterületeken vegyesen tartalmazza a Batch AI *fürtök*, *fájlkiszolgálók*, és *kísérletek*. Egy Batch AI kísérletet magában foglalja egy csoportja *feladatok*.
 
@@ -50,7 +53,7 @@ Kísérlet egy csoportja, a kapcsolódó feladatok, amelyek lekérdezéséhez, �
 
 ## <a name="job"></a>Feladat
 
-Egy feladat egy adott feladat vagy parancsfájlt, amely kell végrehajtani, például a deep learning-modell betanításához. Minden egyes feladat egy adott parancsfájl a munkaterület egy fürtön hajt végre. (A parancsfájl lehet tárolni egy Batch AI-fájlkiszolgáló vagy más tárolási megoldás.) Minden egyes Batch AI-feladat társítva keretrendszer típussal rendelkező: TensorFlow, Horovod, CNTK, Caffe, Caffe2, pyTorch, Chainer, egyéni MPI vagy egyéni. Minden keretrendszer a Batch AI szolgáltatás állítja be a szükséges infrastruktúrát, és kezeli a feladat csak feldolgozza. Minden egyes kísérlet hasonló, néhány változtatást, hogy a különböző paraméterek szereplőkkel több feladat is rendelkezhet.
+Egy feladat egy adott feladat vagy parancsfájlt, amely kell végrehajtani, például a deep learning-modell betanításához. Minden egyes feladat egy adott parancsfájl a munkaterület egy fürtön hajt végre. (A parancsfájl lehet tárolni egy Batch AI-fájlkiszolgáló vagy más tárolási megoldás.) Minden egyes Batch AI-feladat társítva keretrendszer típussal rendelkező: Tensorflow-hoz, Horovod, CNTK, Caffe, Caffe2, pyTorch, Chainer, egyéni MPI vagy egyéni. Minden keretrendszer a Batch AI szolgáltatás állítja be a szükséges infrastruktúrát, és kezeli a feladat csak feldolgozza. Minden egyes kísérlet hasonló, néhány változtatást, hogy a különböző paraméterek szereplőkkel több feladat is rendelkezhet.
 
 ## <a name="next-steps"></a>További lépések
 

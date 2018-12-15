@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0860982da6a06a3529539768179f9bc28a0695a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a9e91a2c11dbef3b3d9b887bfd6bb4b3372f3523
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272983"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408612"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -91,6 +91,8 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 - A részletes oktatóanyag [Train és a egy kép besorolási modell az Azure Machine Learning üzembe helyezése](tutorial-train-models-with-aml.md).
 
 - [Automatikus létrehozása az Azure Machine Learning és a egy modell autotune](tutorial-auto-train-models.md).
+
+- Használja a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) az adatok előkészítéséhez.
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.
 

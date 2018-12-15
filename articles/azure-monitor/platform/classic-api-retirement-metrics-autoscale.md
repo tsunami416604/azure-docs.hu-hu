@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.openlocfilehash: 1ea8fddf2b4e75abba38f011a271aada848a8cb5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192192"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433090"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Az Azure Monitor használatból való kivonást egyaránt klasszikus üzemi modell API-k a metrikák és az automatikus méretezés
 
@@ -24,7 +24,7 @@ Ugyanazokat a műveleteket támogatják keresztül egy csoportot az Azure Resour
 
 Ha az automatikus skálázás az Azure Portalon keresztül kezeli a [új Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShell, a parancssori felület vagy a Resource Manager-sablonok, semmilyen műveletet nem szükséges.  
 
-Ha használ-e fel az Azure Portalon vagy a különböző metrikák [partner-szolgáltatások figyelésének](../../monitoring-and-diagnostics/monitoring-partners.md), semmilyen műveletet nem szükséges. A Microsoft monitoring migrálása az új API-k a partnerek dolgoznak.
+Ha használ-e fel az Azure Portalon vagy a különböző metrikák [partner-szolgáltatások figyelésének](../../azure-monitor/platform/partners.md), semmilyen műveletet nem szükséges. A Microsoft monitoring migrálása az új API-k a partnerek dolgoznak.
 
 ## <a name="who-is-affected"></a>Akik érintett
 

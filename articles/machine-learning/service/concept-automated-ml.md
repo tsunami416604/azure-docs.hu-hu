@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270926"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436959"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -53,7 +53,14 @@ A naplózott futtatási információk, amely tartalmazza a futtatás során gyű
 
 ## <a name="model-explainability"></a>Modell explainability
 
-Az automatikus machine learning egy közös adatelemekkel tekintse meg a teljes körű folyamatot, hogy nem tud. Az Azure Machine Learning lehetővé teszi a modellek átlátható képet adnak a háttér-futó növelése kapcsolatos részletes információk megtekintése. Megjelenítheti fontosság. a szolgáltatás általános. a modell finomhangolása, rangsorolás az eredményeket a szolgáltatások által befolyásolt a modell a legtöbb. Ezenkívül osztályozási problémák láthatja az osztály funkció fontosság és ennek a területnek.
+Az automatikus machine learning egy közös adatelemekkel tekintse meg a teljes körű folyamatot, hogy nem tud. Az Azure Machine Learning lehetővé teszi a modellek átlátható képet adnak a háttér-futó növelése kapcsolatos részletes információk megtekintése. Egyes modellek, például lineáris regresszió, viszonylag egyértelmű, ezért könnyen érthető lehet minősülnek. Azonban, hogy a további funkciók hozzáadása, és használja a bonyolultabb gépi tanulási modelleket, nehezebb azok ismertetése beolvasása. Két fontos szempontot jegyében a machine Learning szolgáltatásban:
+
+1. Ismertségét, a gépi tanulási folyamat és az összes lépést vesz részt, beleértve az adatok előfeldolgozása/featurization, és a hiperparaméter értékeket.
+1. Tudnivalók a bemeneti változók (más néven "szolgáltatások") és a modell kimeneti közötti kapcsolat.  A magnitude és az ütközésnek az előre jelzett érték az egyes szolgáltatások ismerete segít jobb megismerésében és a modell ismertetik. Ez az úgynevezett funkció fontosságát.
+
+Engedélyezheti a globális szolgáltatás fontosság post igény szerinti képzés a folyamat a kiválasztott, vagy automatikus ML képzési részét képező összes folyamatok esetében engedélyezi azt.  Ez az előzetes verziójú funkció, és továbbra is be jobb megértése a Machine Learning-modellek részletesebb információkat biztosít.  
+
+Kövesse ezt [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) modell találja az Azure Machine Learning kísérletezhet.
 
 ## <a name="next-steps"></a>További lépések
 

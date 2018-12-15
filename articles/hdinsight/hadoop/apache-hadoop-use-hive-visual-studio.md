@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2b059c9a8808db3b2426db0d997df15196be604d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ae2b06f266ef19d9558511284ba94c77cdca1955
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012079"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409683"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>A Data Lake tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása
 
@@ -24,7 +24,7 @@ ms.locfileid: "53012079"
 
 * Egy Azure HDInsight (a HDInsight Apache Hadoop) fürtön
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio (a következő verziók egyike):
@@ -37,7 +37,7 @@ ms.locfileid: "53012079"
 
 * HDInsight tools for Visual Studio vagy az Azure Data Lake tools for Visual Studio. Lásd: [Visual Studio Hadoop tools for HDInsight használatának első lépései](apache-hadoop-visual-studio-tools-get-started.md) információ telepítésével és konfigurálásával az eszközöket.
 
-## <a id="run"></a> A Visual Studio használatával Hive-lekérdezések futtatása
+## <a id="run"></a> A Visual Studio használatával, az Apache Hive-lekérdezések futtatása
 
 1. Nyissa meg **Visual Studio** válassza **új** > **projekt** > **az Azure Data Lake**  >   **HIVE-** > **Hive alkalmazás**. Adja meg a projekt nevét.
 
@@ -54,18 +54,18 @@ ms.locfileid: "53012079"
 
     Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * `DROP TABLE`: Ha a tábla létezik, a jelen nyilatkozatban törli őket.
+   * `DROP TABLE`: Ha a tábla létezik, ez az utasítás törli őket.
 
-   * `CREATE EXTERNAL TABLE`: Egy új táblát hoz létre "külső" struktúrában. Külső táblák csak Hive (az adatok az eredeti helyen van balra) a tábladefiníció tárolja.
+   * `CREATE EXTERNAL TABLE`: A Hive egy új "külső" táblát hoz létre. Külső táblák csak Hive (az adatok az eredeti helyen van balra) a tábladefiníció tárolja.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Ha például egy MapReduce-feladatot vagy Azure-szolgáltatás.
      >
      > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
 
    * `ROW FORMAT`: Arra utasítja a Hive, az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
 
-   * `STORED AS TEXTFILE LOCATION`: Arra utasítja a Hive, hogy az adatok a példaadatokat/könyvtárban tárolja, és szövegként tárolt.
+   * `STORED AS TEXTFILE LOCATION`: Hive arról tájékoztatja, hogy az adatokat a példaadatokat/könyvtárban tárolja, és szövegként tárolt.
 
    * `SELECT`: Válassza ki az összes sor számát ahol oszlop `t4` értéket tartalmazza `[ERROR]`. A jelen nyilatkozat egy értékét adja vissza `3` mert három sort, amely tartalmazza ezt az értéket.
 
@@ -93,12 +93,12 @@ ms.locfileid: "53012079"
 
     Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * `CREATE TABLE IF NOT EXISTS`: Egy táblát hoz létre, ha ezt még nem létezik. Mivel a `EXTERNAL` kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. A belső táblázatok Hive adattárházban tárolódnak, és Hive kezeli.
+   * `CREATE TABLE IF NOT EXISTS`: Egy táblát hoz létre, ha azt nem létezik. Mivel a `EXTERNAL` kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. A belső táblázatok Hive adattárházban tárolódnak, és Hive kezeli.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Ellentétben `EXTERNAL` táblákat, egy belső tábla elvetését is törli az alapul szolgáló adatokat.
 
-   * `STORED AS ORC`: A adatokat tároló optimalizált sor Oszlopalapú (ORC formátumban). ORC Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+   * `STORED AS ORC`: Tárolja az adatokat optimalizált sor Oszlopalapú (ORC formátumban). ORC Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
 
    * `INSERT OVERWRITE ... SELECT`: A sorok kiválasztása a `log4jLogs` tartalmazó tábla `[ERROR]`, majd beszúrja az adatokat a `errorLogs` tábla.
 
@@ -112,13 +112,13 @@ Amint láthatja, a HDInsight tools for Visual Studio a HDInsight Hive-lekérdez�
 
 Általános információk a HDInsight Hive-ról:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
 Kapcsolatos további részletekért a HDInsight tools for Visual Studio:
 

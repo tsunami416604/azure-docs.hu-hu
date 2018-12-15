@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013754"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436857"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce programok fejlesztése a HDInsight Apache hadoop
 
@@ -285,8 +285,8 @@ Ez a parancs másolja a fájlokat a helyi rendszerről a fő csomópontot. Tová
 
 Ebben a dokumentumban megtanulhatta, hogyan hozhat létre egy Java MapReduce-feladatot. Dolgozunk a HDInsight egyéb módjaira vonatkozóan az alábbi dokumentumokban talál.
 
-* [A Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
+* [Az Apache Hive használata a HDInsight](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hdinsight-use-mapreduce.md)
 
 További információ: a [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).

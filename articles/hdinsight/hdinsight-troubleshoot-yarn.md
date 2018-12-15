@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 34db8900d285baa7e9c4f97874023bbb52d5e864
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087898"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408830"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>YARN hibaelhárítása az Azure HDInsight használatával
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Hadoop YARN hibaelhárítása
 
 A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache Hadoop YARN hasznos adatot használatakor.
 
@@ -59,7 +59,7 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-- [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+- [Az Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan tölthetek le YARN-naplókat fürtből?
@@ -131,7 +131,7 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
 
 ### <a name="additional-reading-2"></a>További olvasnivaló
 
-- [Csatlakozás a HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Az Apache Hadoop YARN fogalmakat és alkalmazások](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 

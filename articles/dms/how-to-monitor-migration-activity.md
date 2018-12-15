@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 1725be4209bfc9335654c574098c43102eca5a2d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/14/2018
+ms.openlocfilehash: a315e8b42ab8e0df659a3388a50fedf5dd3a54d2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961178"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413064"
 ---
 # <a name="monitor-migration-activity"></a>Áttelepítési tevékenység figyelése
 Ebből a cikkből elsajátíthatja egy adatbázisszintű és a egy tábla szintjén egyaránt áttelepítés előrehaladásának figyeléséhez.
@@ -136,7 +136,7 @@ A következő táblázat ismerteti a táblázat szintű áttelepítési folyamat
 | **Update** | CDC-frissítések a alkalmazni a cél sorok száma.      |
 | **Törlés**      | CDC száma a alkalmazni a cél sorok törlése. |
 | **Alkalmazva összesen**      | CDC összesen frissíti, a beszúrások, és a alkalmazni a cél sorok törlése. |
-| **Adathibák** | Az adatok hibák száma ebben a táblában történt. Néhány példa a hibák *511: %d Ez meghaladja a megengedett maximális sorméretet % d, 8114 méretű sor nem hozható létre: Hiba történt a(z) %ls adattípus %ls.*  Ügyfél kérdezze le a hiba részleteinek megtekintéséhez az Azure cél attms_apply_exceptions táblából.    |
+| **Adathibák** | Az adatok hibák száma ebben a táblában történt. Néhány példa a hibák *511: Ez pedig nagyobb, mint a megengedett maximális sorméretet % d, 8114 %d méretű sor nem hozható létre: Hiba adattípus átalakítása a(z) %ls % ls.*  Ügyfél kérdezze le a hiba részleteinek megtekintéséhez az Azure cél dms_apply_exceptions táblából.    |
 
 > [!NOTE]
 > CDC-értékek az Insert, Update és Delete és a teljes alkalmazott lecsökkenhet adatbázis átállás vagy áttelepítés újraindul.

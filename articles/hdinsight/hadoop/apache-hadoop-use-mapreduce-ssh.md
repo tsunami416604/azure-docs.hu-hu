@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632526"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438569"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Az ssh-val a HDInsight az Apache Hadoop MapReduce használata
 
@@ -63,7 +63,7 @@ Az SSH és a HDInsight további információkért lásd: [az SSH használata a H
     Ez a parancs elindítja a `wordcount` osztály, amely tartalmazza a `hadoop-mapreduce-examples.jar` fájlt. Használja a `/example/data/gutenberg/davinci.txt` kimenetként, és a dokumentum tárolt `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > A MapReduce-feladatot, és a példaadatokat kapcsolatos további információkért lásd: [MapReduce használata a Hadooppal a HDInsight](hdinsight-use-mapreduce.md).
+    > A MapReduce-feladatot, és a példaadatokat kapcsolatos további információkért lásd: [a HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md).
 
 2. A feladat részletei bocsát ki, feldolgozza, és azt hasonló információt ad vissza a következő szöveget a feladat befejezése után:
 
@@ -80,7 +80,7 @@ Az SSH és a HDInsight további információkért lásd: [az SSH használata a H
 
     Ez a parancs két fájlt megjelenítéséhez `_SUCCESS` és `part-r-00000`. A `part-r-00000` fájl tartalmazza a feladat kimenetét.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Bizonyos MapReduce-feladatok az eredmények lehet, hogy elosztja a több **. rész – az r-###** fájlokat. Ha igen, használja a ### utótagot a fájlok sorrendjét.
 
 4. A kimenet megtekintéséhez használja a következő parancsot:
@@ -111,5 +111,5 @@ HDInsight MapReduce-feladatok általános tájékoztatást:
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)

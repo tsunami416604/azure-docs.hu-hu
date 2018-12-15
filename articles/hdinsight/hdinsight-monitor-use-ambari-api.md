@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ae9b374e97c0f4be32d6c6a7d47fd803a1a0e5
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011521"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436330"
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>A HDInsight-beli Hadoop-fürtök figyelése az Ambari API használatával
-Útmutató a HDInsight-fürtök figyelése az Ambari API-k használatával.
+# <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Az Apache Ambari API-val a HDInsight Apache Hadoop-fürtök monitorozása
+Útmutató a HDInsight-fürtök figyelése Apache Ambari API-k használatával.
 
-> [!NOTE]
-> Ebben a cikkben található információk az elsősorban a Windows-alapú HDInsight-fürtök az Ambari REST API egyik csak olvasható verzióját. A Linux-alapú fürtök esetén lásd: [kezelése Hadoop-fürtök az Ambari](hdinsight-hadoop-manage-ambari.md).
+> [!NOTE]  
+> Ebben a cikkben található információk az elsősorban a Windows-alapú HDInsight-fürtök az Ambari REST API egyik csak olvasható verzióját. A Linux-alapú fürtök esetén lásd: [kezelése Apache Hadoop-fürtök az Ambari az Apache](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
@@ -36,7 +36,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Munkaállomás Azure PowerShell-lel**.
 * (Nem kötelező) [cURL][curl]. A telepítéshez lásd: [cURL-kiadásainak listáját és a letöltéseket][curl-download].
   
-  > [!NOTE]
+  > [!NOTE]  
   > Ha használja a cURL-parancsot a Windows, egyszeres idézőjelek lehetőség az értékek helyett használja idézőjelek közé.
   > 
   > 
@@ -120,7 +120,7 @@ A kimenet a következő:
 Az Ambari végpont használatakor "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}", a *gazdaszámítógép_neve* mező a gazdagép neve helyett a csomópont teljesen minősített tartománynevét (FQDN) adja vissza. A 10/8/2014 kiadás előtt ebben a példában adja vissza egyszerűen "**headnode0**". A 10/8/2014 kiadása után az FQDN első "**headnode0. { ClusterDNS} .azurehdinsight .net**", az előző példában látható módon. Ez a változás megkönnyítése érdekében a forgatókönyvek, ahol több fürttípusok (például HBase és Hadoop) is telepíthető egy virtuális hálózat (VNET) szükséges. Ez történik, például HBase a háttér-platformként a Hadoop használatakor.
 
 ## <a name="ambari-monitoring-apis"></a>Az Ambari API-k figyelése
-Az alábbi táblázat a leggyakoribb Ambari API-hívások figyelése néhányat. Az API-val kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference].
+Az alábbi táblázat a leggyakoribb Ambari API-hívások figyelése néhányat. Az API-val kapcsolatos további információkért lásd: [Apache Ambari API-referencia][ambari-api-reference].
 
 | A figyelő API-hívás | URI | Leírás |
 | --- | --- | --- |
@@ -138,7 +138,7 @@ Az alábbi táblázat a leggyakoribb Ambari API-hívások figyelése néhányat.
 | Konfigurációs adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Config típusok: hely, a hdfs-hely, a mapred-hely, a hive-hely |
 
 ## <a name="next-steps"></a>További lépések
-Most már megtanulhatta, hogyan használhatja az Ambari API-hívások figyelése. További tudnivalókért lásd:
+Most már megtanulhatta, hogyan használható a figyelési Apache Ambari API-hívások. További tudnivalókért lásd:
 
 * [Az Azure portal használatával HDInsight-fürtök kezelése][hdinsight-admin-portal]
 * [Azure PowerShell használatával HDInsight-fürtök kezelése][hdinsight-admin-powershell]

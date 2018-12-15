@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bf1fa41abe1c1f9b0d07ee7d77fe1c819e88ddc1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f9bafec093a3ad6e26eb12cfdb321945353b4d08
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017620"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434137"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a szerepel a HDInsight MapReduce-példák
 
@@ -25,43 +25,43 @@ Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy HDInsight-fürt**: lásd: [Hadoop első lépései a HDInsight Linux rendszeren a Hive használatával](apache-hadoop-linux-tutorial-get-started.md)
+* **Egy HDInsight-fürt**: Lásd: [Apache Hive a HDInsight Linux rendszeren az Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md)
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* **Egy SSH-ügyfél**: további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Egy SSH-ügyfél**: További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>A MapReduce-példák
 
 **Hely**: A mintákat, a HDInsight-fürtön található `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
-**Tartalom**: az archívumban található a következő minták:
+**Tartalom**: A következő minták archívum tartalmazza:
 
-* `aggregatewordcount`: Egy összesítés mapreduce-programot, amely a szavakat a bemeneti fájlok száma alapján.
-* `aggregatewordhist`: Egy összesítés alapján kiszámítja a szavakat a bemeneti fájlokat hisztogramja mapreduce-programot.
-* `bbp`: Egy mapreduce-programot, Bailey-Borwein-Plouffe használó számítási pi számjegyeket.
+* `aggregatewordcount`: Összesítés mapreduce-programot, amely a szavakat a bemeneti fájlok száma alapján.
+* `aggregatewordhist`: Összesítés alapján kiszámítja a szavakat a bemeneti fájlokat hisztogramja mapreduce-programot.
+* `bbp`: Mapreduce-programot, Bailey-Borwein-Plouffe használó számítási pi számjegyeket.
 * `dbcount`: Egy példa a feladat, amely egy adatbázis tárolt oldalmegtekintés naplók száma.
-* `distbbp`: Egy mapreduce-programot, a Pi pontos bits számítási BBP-típusú képletet használó.
-* `grep`: Egy mapreduce-programot, amely a bemeneti adatok reguláris kifejezést az egyezések száma.
-* `join`: Egy feladatot, amely végrehajtja a csatlakozzon rendezve, melyek egyaránt adatkészletek.
-* `multifilewc`: Egy feladatot, amely több fájlokból szavakat számolja.
-* `pentomino`: Egy mapreduce csempe szóló program pentomino problémák megoldást találhat.
-* `pi`: Egy mapreduce-programot, amely megbecsüli Pi használatával kvázi Monte Carlo metódust.
-* `randomtextwriter`: Egy mapreduce-programot, amely 10 GB-nyi véletlenszerű értéket képviselő szöveges adatok csomópontonként ír.
-* `randomwriter`: Egy mapreduce-programot, amely 10 GB-nyi véletlenszerű adat csomópontonként ír.
+* `distbbp`: A Pi pontos bits számítási BBP-típusú képletet használó mapreduce-programot.
+* `grep`: A mapreduce-programot, amely a bemeneti adatok reguláris kifejezést az egyezések száma.
+* `join`: Egy feladat, amely végrehajtja a csatlakozzon rendezve, melyek egyaránt adatkészletek.
+* `multifilewc`: Ez a feladat megszámolja a szavak több fájlokból.
+* `pentomino`: A mapreduce csempe szóló program pentomino problémák megoldást találhat.
+* `pi`: A mapreduce-programot, amely megbecsüli Pi használatával kvázi Monte Carlo metódust.
+* `randomtextwriter`: A mapreduce-programot, amely 10 GB-nyi véletlenszerű értéket képviselő szöveges adatok csomópontonként ír.
+* `randomwriter`: A mapreduce-programot, amely 10 GB-nyi véletlenszerű adat csomópontonként ír.
 * `secondarysort`: Példa egy másodlagos rendezés meghatározása csökkentse fázisa.
-* `sort`: Egy mapreduce-programot, amely az adatokat a véletlenszerű író által írt.
+* `sort`: A mapreduce-programot, amely az adatokat a véletlenszerű író által írt.
 * `sudoku`: Egy sudoku solver.
-* `teragen`: A terasort az adatok létrehozására.
-* `terasort`: A terasort futtassa.
+* `teragen`: Hozhat létre a terasort az adatokat.
+* `terasort`: Futtassa a terasort.
 * `teravalidate`: Terasort eredményeinek ellenőrzése.
-* `wordcount`: Egy mapreduce-programot, amely a bemeneti fájlok szavakat számolja.
-* `wordmean`: Egy mapreduce-programot, amely megszámolja a szavak a bemeneti fájlok átlagos hossza.
-* `wordmedian`: Egy mapreduce-programot, amely megszámolja a szavak a bemeneti fájlok közepes hossza.
-* `wordstandarddeviation`: Egy mapreduce-programot, amely a szavakat a bemeneti fájlok hossza szórását száma.
+* `wordcount`: A mapreduce-programot, amely a bemeneti fájlok szavakat számolja.
+* `wordmean`: A mapreduce-programot, amely megszámolja a szavak a bemeneti fájlok átlagos hossza.
+* `wordmedian`: A mapreduce-programot, amely megszámolja a szavak a bemeneti fájlok közepes hossza.
+* `wordstandarddeviation`: A mapreduce-programot, amely a szavakat a bemeneti fájlok hossza szórását száma.
 
-**Forráskód**: ezek a minták forráskódja szerepel-e, a HDInsight-fürt `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**Forráskód**: Ezek a minták forráskódja szerepel-e, a HDInsight-fürt `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 ## <a name="run-the-wordcount-example"></a>A wordcount-példa futtatása
 
@@ -95,7 +95,7 @@ Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce 
 
     Ez a feladat olvasása az bemenetének `/example/data/gutenberg/davinci.txt`. Ebben a példában a rendszer tárolt kimeneti `/example/data/davinciwordcount`. A fürt nem a helyi fájlrendszer alapértelmezett tároló mindkét útvonal található.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A wordcount-mintaszószámlálás súgójában feljegyzett több bemeneti fájllal is megadhatja. Ha például `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` davinci.txt és ulysses.txt szavakat számolja.
 
 5. Miután a feladat befejeződik, használja a következő parancsot a kimenet megtekintéséhez:
@@ -171,13 +171,13 @@ Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtath
 
 Ebben a példában három különböző MapReduce-programok:
 
-* **TeraGen**: egy MapReduce-programot, amely létrehozza az adatok rendezéséhez sorok
+* **TeraGen**: A MapReduce-programot, amely létrehozza az adatok rendezéséhez sorok
 
 * **TeraSort**: MapReduce-minták a bemeneti adatokat és segítségével rendezze az adatokat egy teljes rendelés
 
     TeraSort standard MapReduce rendezni, kivéve az egyéni partitioner. A partitioner mintavételezés N-1 kulcsok, amelyek meghatározzák az egyes csökkentse a tartományok rendezett listáját használja. Ebben az esetben, minden kulcs ilyen mintavételezik a [i-1] < kulcs = < [i] minta érkeznek i csökkentése érdekében. Ez partitioner garantálja, hogy a kimeneteket, csökkentse az i az összes, kevesebb, mint a kimenetét csökkentése i + 1.
 
-* **TeraValidate**: egy MapReduce-programot, amely ellenőrzi, hogy a kimenet globálisan rendezett
+* **TeraValidate**: A MapReduce-programot, amely ellenőrzi, hogy a kimenet globálisan rendezett
 
     A kimeneti könyvtárat hoz létre egy térkép fájlonként, és minden egyes térkép biztosítja, hogy minden egyes kulcs kisebb vagy egyenlő, mint az előzőre. A térkép függvény hoz létre az első és utolsó kulcsok minden egyes fájl rögzíti. A kevesebb funkciót biztosítja, hogy az első kulcsot fájl i nagyobb, mint az utolsó fájl i-1 kulcsa. Problémák az csökkentse fázis kimenetként a kulcsok, amelyek nincsenek megfelelő sorrendben jelenti.
 
@@ -209,9 +209,9 @@ Használja a következő lépések végrehajtásával hozhat létre adatokat, re
 
 Az ebben a cikkben megismerkedett a Linux-alapú HDInsight-fürtökkel a minta futtatásához. A Pig, Hive és a MapReduce használata a HDInsight kapcsolatos oktatóanyagok és az alábbi témakörökben található:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md

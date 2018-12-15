@@ -5,30 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685803"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435276"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
-Intelligens zárolás felhőbeli intelligens technológiák használatával kártékony elemek számára kitalálni a felhasználók jelszavát, vagy találgatásos módszerekkel úgy szerezheti be a kívánt zárolására. Adott intelligencia is ismeri fel érvényes felhasználóktól érkező bejelentkezési és működnek, mint a megjelennek a támadók, és az ismeretlen forrásokból való kezelése. Intelligens zárolás bejelentkezzenek a támadók, miközben a felhasználók továbbra is a fiókjaikat eléréséhez, és produktív látni.
+Intelligens zárolás segíti a kártékony elemek számára kitalálni a felhasználók jelszavát, vagy találgatásos módszerekkel úgy szerezheti be a kívánt zárolásának. Ez ismeri fel érvényes felhasználók származó bejelentkezéseket, és eltérően megjelennek a támadók, és az ismeretlen forrásokból való kezelése. Intelligens zárolás bejelentkezzenek a támadók, miközben a felhasználók továbbra is a fiókjaikat eléréséhez, és produktív látni.
 
 Alapértelmezés szerint az intelligens zárolási zárolja a fiókot a bejelentkezési kísérletek 10 sikertelen bejelentkezési kísérletek után egy percig. A fiók zárolása minden ezt követő sikertelen bejelentkezési kísérlet az első és az ezt követő kísérletek hosszabb egy perc múlva ismét.
 
-* Intelligens zárolás nyomon követi az utolsó három rossz jelszavak kivonatait a fiókzárolási számláló reincrementing elkerülése érdekében. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása.
-   * Ez a funkció nem áll rendelkezésre az ügyfelek az átmenő hitelesítés engedélyezve van.
+Intelligens zárolás nyomon követi az utolsó három rossz jelszavak kivonatait a fiókzárolási számláló reincrementing elkerülése érdekében. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása.
+
+ > [!NOTE]
+ > Nyomon követéséhez kivonat nem áll rendelkezésre az ügyfelek az átmenő hitelesítés engedélyezett, mint a hitelesítés történik, a felhőben nem helyszíni.
 
 Intelligens zárolás mindig be van kapcsolva az Azure AD összes élvező ezeket az alapértelmezett beállításokat, amelyek a megfelelő biztonsági és a használhatóságot vegyesen kínálnak. Testre szabhatja az intelligens zárolás beállításokat a szervezet specifikus értékeket a felhasználók Azure AD alapszintű vagy magasabb szintű licenccel kell rendelkeznie.
 
-Intelligens zárolás használata nem garantálja, hogy a valódi felhasználók rendszer soha nem zárolható lesz. Intelligens zárolás zárolja egy felhasználói fiókot, ha nem az eredeti felhasználó zárolhat legkedvezőbb megpróbáljuk. A zárolási szolgáltatás megkísérli győződjön meg arról, hogy kártékony elemek nem fér hozzá egy valódi felhasználók fiókot.  
+Intelligens zárolás használata nem garantálja, hogy a valódi felhasználók rendszer soha nem zárolható lesz. Intelligens zárolás zárolja egy felhasználói fiókot, ha nem az eredeti felhasználó zárolhat legkedvezőbb megpróbáljuk. A zárolási szolgáltatás megkísérli győződjön meg arról, hogy kártékony elemek nem fér hozzá egy valódi felhasználói fiókot.  
 
 * Mindegyik Azure Active Directory adatközpont nyomon követi a zárolási egymástól függetlenül. A felhasználó (threshold_limit * datacenter_count) kísérletek száma, ha a felhasználó eléri minden adatközpontban.
 * Intelligens zárolás ismerős hely vs ismeretlen helyről kiderítsék és az eredeti felhasználó megkülönböztetéséhez használja. Ismeretlen és a jól ismert is külön Fiókzárolási számláló.

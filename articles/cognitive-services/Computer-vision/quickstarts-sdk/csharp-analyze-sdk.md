@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Kép elemzése – SDK, C# – Computer Vision'
+title: 'Gyors útmutató: Kép – SDK-t és elemzése C# – Computer Vision'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853931"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413319"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rövid útmutató: Kép elemzése a Computer Vision SDK és a C# használatával
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: A számítógép Látástechnológiai SDK-val kép elemzése ésC#
 
 Ebben a rövid útmutatóban egy helyi és egy távoli képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision Windows-ügyfélkódtárával.
 
@@ -162,7 +162,7 @@ namespace ImageAnalyze
 
 A sikeres válasz a legrelevánsabb feliratot jeleníti meg az egyes képekhez.
 
-Nyers JSON-kimenetet tartalmazó példáért lásd a [Helyi kép elemzése C# használatával](../QuickStarts/CSharp-analyze.md#examine-the-response) című rövid útmutatót.
+Lásd: [API rövid útmutatók: Elemezheti a helyi rendszerképet a C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) példa nyers JSON-kimenetét.
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

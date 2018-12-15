@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: f17d2d1cf25f533fb37d44da2890b6ad8741be82
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326203"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437724"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Gyakori metrikák az Azure Monitor automatikus méretezés
 Az Azure Monitor automatikus méretezés lehetővé teszi futó példányok számának méretezése felfelé és lefelé, telemetriai adatok (metrikák) alapján. Ez a dokumentum ismerteti a gyakori metrikák, amelyeket érdemes használni. Az Azure Portalon válassza ki a metrika az erőforrás méretezése által. Méretezhető, hogy egy másik erőforrás közül azonban bármilyen mérőszám is választhat.
@@ -34,8 +34,8 @@ Ha mindkét előző esetben igaz, majd tekintse át [Windows rendszerű virtuál
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikák
 A következő állomásszintű metrikákat projektsablon által kibocsátott alapértelmezett Azure VM-et és a VMSS a Windows- és Linux-példányok. Ezek a metrikák az Azure virtuális gép leírják, de az Azure virtuális gép gazdagépről, nem pedig a Vendég virtuális Gépen telepített ügynökön keresztül gyűjtött. Ezek a metrikák az automatikus skálázási szabályok használhatja.
 
-- [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikák](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
-- [Gazdagép metrikáinak Resource Manager-alapú Windows és Linux rendszerű Virtuálisgép-méretezési csoportok](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
+- [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikák](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Gazdagép metrikáinak Resource Manager-alapú Windows és Linux rendszerű Virtuálisgép-méretezési csoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Resource Manager-alapú Windows virtuális gépek vendég operációs rendszer metrikák
 Az Azure-beli virtuális gép létrehozásakor a diagnosztika engedélyezve van, a diagnosztikai bővítmény használatával. A diagnosztikai bővítmény belül a virtuális gép átveszi a metrikákat egy készletét bocsát ki. Ez azt jelenti, hogy az automatikus méretezés mérőszámok, amelyek nem kerülnek naplózásra alapértelmezés szerint minden is.

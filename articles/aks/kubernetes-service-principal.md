@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578349"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435395"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -113,6 +113,10 @@ Szükség lehet egy másik erőforráscsoportban található meglévő lemez er�
   - *Microsoft.Compute/disks/read*
   - *Microsoft.Compute/disks/write*
 - Vagy, rendelje hozzá a [Tárfiók-közreműködő] [ rbac-storage-contributor] arra az erőforráscsoportra beépített szerepkör
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Ha a Virtual Kubelet használatával integrálása az AKS és Azure Container Instances (ACI) futtatta az erőforráscsoportban, az AKS-fürtöt külön, rendelkeznie kell a az AKS szolgáltatás egyszerű *közreműködői* az ACI erőforrás engedélyeinek a csoport.
 
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 

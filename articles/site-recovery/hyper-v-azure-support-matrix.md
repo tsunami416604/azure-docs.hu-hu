@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 52657ae18b6fd06408887df82bd822eb2ff8fffe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8c8ba338a7059d6d11f43bda6348aa6e645ab98c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964356"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410159"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -33,8 +33,8 @@ A Hyper-V Virtual Machine Manager nélkül | Vészhelyreállítás az Azure-bA v
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-A Hyper-V (fut a Virtual Machine Manager nélkül) | A Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | A Hyper-V helyet a Site Recoveryben konfigurálásakor a Windows Server 2016 és 2012 R2 rendszert futtató gazdagépeken keverése nem támogatott.<br/><br/> A virtuális gépek Windows Server 2016 rendszerű gazdagépen található egy másik helyre történő helyreállítás nem támogatott.
-A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2016-Virtual Machine Manager 2012 R2-ben | Virtual Machine Manager használata esetén a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/> A Virtual Machine Manager cloud, amely a Windows Server 2016 és 2012 R2 rendszert futtató Hyper-V-gazdagépek eredményét jelenleg nem támogatott.<br/><br/> Egy meglévő Virtual Machine Manager 2012 R2 Server 2016-ra való frissítés tartalmazó környezetek nem támogatottak.
+A Hyper-V (fut a Virtual Machine Manager nélkül) | A Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | A virtuális gépek Windows Server 2016 rendszerű gazdagépen található egy másik helyre történő helyreállítás nem támogatott.<br/><br/> Ha már konfigurálta a Windows Server 2012 R2 és / vagy SCVMM 2012 R2-ben az Azure Site Recovery és az operációs rendszer verziófrissítéséhez terv kövesse az útmutatást [dokumentáció.](upgrade-2012R2-to-2016.md) 
+A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2016-Virtual Machine Manager 2012 R2-ben | Virtual Machine Manager használata esetén a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>A replikált virtuális gépek
@@ -59,16 +59,16 @@ Lemez hozzáadása a replikált Hyper-V virtuális Gépen | Nem támogatott. Til
 
 **Összetevő** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
-Gazdagép-hálózat: NIC-összevonás | Igen | Igen
-Gazdagép hálózati: VLAN | Igen | Igen
-Gazdagép hálózati: IPv4 | Igen | Igen
-Gazdagép hálózati: IPv6 | Nem | Nem
-Vendég Virtuálisgép-hálózat: NIC-összevonás | Nem | Nem
-Vendég virtuális gép hálózati: IPv4 | Igen | Igen
-Vendég virtuális gép hálózati: IPv6 | Nem | Igen
-Vendég virtuális gép hálózati: statikus IP-cím (Windows) | Igen | Igen
-Vendég virtuális gép hálózati: statikus IP-cím (Linux) | Nem | Nem
-Vendég virtuális gép hálózati: több hálózati Adapterrel | Igen | Igen
+Gazdagép-hálózat: A hálózati adapterek összevonása | Igen | Igen
+Gazdagép-hálózat: Virtuális helyi hálózat | Igen | Igen
+Gazdagép-hálózat: IPv4 | Igen | Igen
+Gazdagép-hálózat: IPv6 | Nem | Nem
+Vendég Virtuálisgép-hálózat: A hálózati adapterek összevonása | Nem | Nem
+Vendég Virtuálisgép-hálózat: IPv4 | Igen | Igen
+Vendég Virtuálisgép-hálózat: IPv6 | Nem | Igen
+Vendég Virtuálisgép-hálózat: Statikus IP-cím (Windows) | Igen | Igen
+Vendég Virtuálisgép-hálózat: Statikus IP-cím (Linux) | Nem | Nem
+Vendég Virtuálisgép-hálózat: Multi-NIC | Igen | Igen
 
 
 
@@ -111,8 +111,8 @@ NFS | NA | NA
 SMB 3.0 | Nem | Nem
 RDM | NA | NA
 Lemez > 1 TB-ot | Igen, legfeljebb 4095 GB-ig | Igen, legfeljebb 4095 GB-ig
-Lemez: 4 KB-os logikai és fizikai szektort. | Nem támogatott: 1/2. generációs gyűjtések általános | Nem támogatott: 1/2. generációs gyűjtések általános
-Lemez: 4K logikai és 512 bájtnál nagyobb fizikai szektormérettel | Igen |  Igen
+Lemez: 4 KB-os logikai és fizikai szektort. | Nem támogatott: Velikost haldy 1/2. generációs gyűjtések | Nem támogatott: Velikost haldy 1/2. generációs gyűjtések
+Lemez: 4 KB-os logikai és fizikai 512 bájtos szektort | Igen |  Igen
 Logikaikötet-kezelő (LVM). LVM csak az adatlemezek használata támogatott. Az Azure az egyetlen operációsrendszer-lemez biztosít. | Igen | Igen
 A csíkozott lemez-kötettel > 1 TB-ot | Igen | Igen
 A tárolóhelyek | Igen | Igen
@@ -181,7 +181,7 @@ Ahhoz, hogy a központi telepítés beállításai Ez a cikk a kompatibilis, ell
 
 **Name (Név)** | **Leírás** | **Részletek**
 --- | --- | --- | --- | ---
-Az Azure Site Recovery provider | Koordinálja a helyszíni kiszolgálók és Azure közötti kommunikáció <br/><br/> A Hyper-V Virtual Machine Manager: a Virtual Machine Manager-kiszolgálókra telepített<br/><br/> A Hyper-V Virtual Machine Manager nélkül: telepítve a Hyper-V-gazdagépek| Legújabb verzió: 5.1.2700.1 (az Azure Portalról érhető el)<br/><br/> [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Az Azure Site Recovery provider | Koordinálja a helyszíni kiszolgálók és Azure közötti kommunikáció <br/><br/> A Hyper-V Virtual Machine Manager: A Virtual Machine Manager-kiszolgálókra telepített<br/><br/> A Hyper-V Virtual Machine Manager nélkül: A Hyper-V-gazdagépek telepítése| Legújabb verziója: 5.1.2700.1 (az Azure Portalról érhető el)<br/><br/> [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 A Microsoft Azure Recovery Services-ügynök | Koordinálja a replikációt a Hyper-V virtuális gépek és az Azure között<br/><br/> Telepítve van a helyszíni Hyper-V kiszolgálók (a vagy Virtual Machine Manager nélkül) | A portálon elérhető legújabb ügynök
 
 

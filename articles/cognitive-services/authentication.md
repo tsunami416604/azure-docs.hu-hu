@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 8adff94a4cb536c3d8dbf7382b8acb69184030b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325846"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435769"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
 
@@ -23,6 +23,10 @@ Az Azure Cognitive Service minden kérelemhez tartalmaznia kell egy hitelesíté
 * [Hitelesítés – olyan egyetlen szolgáltatást előfizetési kulccsal](#authenticate-with-a-single-service-subscription-key)
 * [Egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez](#authenticate-with-a-multi-service-subscription-key)
 * [A jogkivonat-hitelesítés](#authenticate-with-an-authentication-token)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt a kérést, kell az Azure-fiók és a egy Azure Cognitive Services-előfizetést. Ha már rendelkezik fiókkal, lépjen tovább, és ugorjon a következő szakaszra. Ha nincs fiókja, van egy útmutatót ahhoz, hogy percek alatt beállítható: [Az Azure Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md).
 
 ## <a name="authentication-headers"></a>Hitelesítési fejléc
 

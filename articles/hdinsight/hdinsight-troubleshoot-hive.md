@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600023"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407020"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Az Azure HDInsight Hive hibaelhárítása
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Az Apache Hive-hibaelhárítás az Azure HDInsight segítségével
 
 További tudnivalók feltett legnépszerűbb kérdésekre és azok megoldásait, az Apache Ambari az Apache Hive hasznos adatot használatakor.
 
@@ -104,7 +104,7 @@ A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési 
 - [Hive-konfiguráció tulajdonságai](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hogyan elemezheti a Tez DAG-adatokat egy fürt kritikus fontosságú elérési úton?
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hogyan hajtsa végre a fürt kritikus utat Apache Tez DAG-adatok elemzésére?
 
 
 ### <a name="resolution-steps"></a>A megoldás lépései
@@ -126,17 +126,17 @@ A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési 
   Meg kell adnia egy példa program első argumentumaként.
 
   A program érvényes nevek a következők:
-    - **ContainerReuseAnalyzer**: tároló újbóli részleteket egy DAG nyomtatása
-    - **CriticalPath**: keresse meg a kritikus fontosságú elérési útját egy DAG
-    - **LocalityAnalyzer**: egy DAG helye részleteket nyomtatása
-    - **ShuffleTimeAnalyzer**: egy DAG shuffle idő részleteiről elemzése
-    - **SkewAnalyzer**: egy DAG torzulása részleteiről elemzése
-    - **SlowNodeAnalyzer**: nyomtatása egy DAG a csomópont részletei
-    - **SlowTaskIdentifier**: egy DAG a nyomtatási lassú feladat részletei
-    - **SlowestVertexAnalyzer**: nyomtatása egy DAG a leglassabb csúcspont részletei
-    - **SpillAnalyzer**: nyomtatás túlfolyó részleteket egy DAG
-    - **TaskConcurrencyAnalyzer**: egy DAG egyidejűségi részlete nyomtatása
-    - **VertexLevelCriticalPathAnalyzer**: a kritikus útvonalat csúcspont szintjén található egy DAG
+    - **ContainerReuseAnalyzer**: Nyomtassa ki a tároló ismételt részleteket egy DAG
+    - **CriticalPath**: Keresse meg a kritikus fontosságú elérési útját egy DAG
+    - **LocalityAnalyzer**: A DAG nyomtatási helye részletei
+    - **ShuffleTimeAnalyzer**: A DAG a shuffle idő részleteinek elemzése
+    - **SkewAnalyzer**: A DAG a torzulása részleteinek elemzése
+    - **SlowNodeAnalyzer**: A DAG nyomtatási csomópont részletei
+    - **SlowTaskIdentifier**: Nyomtassa ki a DAG lassú feladat részletei
+    - **SlowestVertexAnalyzer**: A DAG nyomtatási leglassabb csúcspont részletei
+    - **SpillAnalyzer**: A DAG nyomtatási túlfolyó részletei
+    - **TaskConcurrencyAnalyzer**: A feladat egyidejűségi részletes adatait egy DAG nyomtatása
+    - **VertexLevelCriticalPathAnalyzer**: A kritikus útvonalat csúcspont szintjén található egy DAG
 
 
 ### <a name="additional-reading"></a>További olvasnivaló

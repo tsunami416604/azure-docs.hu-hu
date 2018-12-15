@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016172"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408323"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Az Azure HDInsight külső metaadat-tárolók használata
 
-A Hive-metaadattár a HDInsight Hadoop-architektúra alapvető része. A metaadattár a központi séma tárház, amely más big data-hozzáférés eszközök, például a Spark, interaktív lekérdezések (LLAP), Presto vagy Pig által használható. HDInsight Hive-metaadattár használja az Azure SQL Database.
+Az Apache Hive-metaadattár a HDInsight az Apache Hadoop-architektúra alapvető része. A metaadattár a központi séma tárház, amely más big data-hozzáférés eszközök, például az Apache Spark, interaktív lekérdezések (LLAP), Presto vagy Apache Pig által használható. HDInsight Hive-metaadattár használja az Azure SQL Database.
 
 ![HDInsight Hive-metaadatok Store architektúra](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -72,12 +72,12 @@ Az alábbiakban néhány általános HDInsight Hive metaadattár ajánlott eljá
 - Létrehozásakor egy új, magasabb szintű verzióját az Azure HDInsight egy meglévő egyéni metaadattár adatbázison, a rendszer a séma frissítése a metaadattár, amely nem vonható vissza anélkül, hogy az adatbázis biztonsági másolatból történő visszaállítását.
 - Ha megoszt egy metaadattár több fürt között, győződjön meg arról az összes fürt ugyanazt a HDInsight-verziót. Különböző Hive-verziók különböző metaadattár adatbázissémák használja. Például egy metaadattár nem oszthat meg Hive 1.2 és a Hive 2.1-es verziójú fürtök között. 
 
-## <a name="oozie-metastore"></a>Oozie-Metaadattár
+##  <a name="apache-oozie-metastore"></a>Az Apache Oozie-Metaadattár
 
 Az Apache Oozie egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli.  Az Oozie támogatja a Hadoop-feladatok Apache MapReduce, a Pig, Hive és mások.  Az Oozie-metaadattár és befejezett munkafolyamatok adatainak tárolására használja. Az Oozie használata a teljesítmény növelése érdekében használhatja az Azure SQL Database, egy egyéni metaadattár. A metaadattár a fürt törlése után is megadhatja az Oozie feladat adatokhoz való hozzáférést.
 
-Az Azure SQL Database-Oozie-metaadattár létrehozásával kapcsolatos útmutatóért lásd: [Oozie használata a munkafolyamatokhoz](hdinsight-use-oozie-linux-mac.md).
+Az Azure SQL Database-Oozie-metaadattár létrehozásával kapcsolatos útmutatóért lásd: [Apache Oozie használata a munkafolyamatokhoz](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása](./hdinsight-hadoop-provision-linux-clusters.md)

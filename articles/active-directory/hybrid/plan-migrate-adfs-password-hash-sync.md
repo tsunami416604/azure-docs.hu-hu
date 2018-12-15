@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 687ff4a7411113721b16636e1d11b30573e41642
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346427"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410261"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>A Jelszókivonat-szinkronizálás az Azure ad összevonási áttelepítésére
 A következő dokumentum útmutatást nyújt a Jelszókivonat-szinkronizálás az AD FS áthelyezését.
@@ -29,7 +29,7 @@ A következő dokumentum útmutatást nyújt a Jelszókivonat-szinkronizálás a
 A következő előfeltételek szükségesek a migráláshoz.
 ### <a name="update-azure-ad-connect"></a>Frissítés Azure AD Connect
 
-Rendelkeznie kell legalább sikeres végrehajtásához az átmenő hitelesítés áttelepítési lépéseit [az Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594.) 1.1.819.0. Ez a verzió bejelentkezési átalakítás történik, és csökkenti a felhőalapú hitelesítés potenciálisan óra és perc összevonási áttelepíthetők teljes időtartama érintő jelentős változásokat tartalmaz.
+Rendelkeznie kell legalább sikeres végrehajtásához az átmenő hitelesítés áttelepítési lépéseit [az Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Ez a verzió bejelentkezési átalakítás történik, és csökkenti a felhőalapú hitelesítés potenciálisan óra és perc összevonási áttelepíthetők teljes időtartama érintő jelentős változásokat tartalmaz.
 
 > [!IMPORTANT]
 > Elavult dokumentáció, eszközök és blogok azt jelzi, hogy felhasználók átalakítását lépésre szükség amikor az összevont tartományok átalakítása felügyelt. Vegye figyelembe, hogy konvertálása a felhasználók már nem szükséges, és a Microsoft dolgozik dokumentáció és eszközök ennek megfelelően frissíti.
@@ -82,7 +82,7 @@ A felhasználói bejelentkezés szakaszban ellenőrizze, hogy engedélyezve van-
    
    3. A megoldás áttekintése képernyőn jegyezze fel a jelszó-szinkronizálás állapotát.</br> 
 
-   A Jelszókivonat-szinkronizálás jelenleg le van tiltva van beállítva, ha szüksége lesz az engedélyezéshez Ez az Útmutató lépéseit kövesse. Ha a Jelszókivonat-szinkronizálás jelenleg engedélyezve van beállítva, nyugodtan kihagyhatja a szakasz [1. lépés – a Jelszókivonat-szinkronizálás engedélyezése](#_Step_1_–) ebben az útmutatóban.
+   A Jelszókivonat-szinkronizálás jelenleg le van tiltva van beállítva, ha szüksége lesz az engedélyezéshez Ez az Útmutató lépéseit kövesse. Ha a Jelszókivonat-szinkronizálás jelenleg engedélyezve van beállítva, nyugodtan kihagyhatja a szakasz [1. lépés – a Jelszókivonat-szinkronizálás engedélyezése](#step-1--enable-password-hash-synchronization) ebben az útmutatóban.
    4. A megoldás áttekintése képernyőn görgessen lefelé az Active Directory összevonási szolgáltatások (AD FS).</br>
  
    Ha látja, hogy az AD FS konfigurációs van ebben a szakaszban, majd biztonságosan feltételezheti eredetileg konfigurálták az AD FS az Azure AD Connect használatával, és ezért a felügyeltről átalakítása összevont felügyelt is driven keresztül az Azure AD Connect "módosítása felhasználói bejelentkezés -a "beállítást, a folyamat részleteit a szakasz a **egy - kapcsoló. lehetőség a Jelszókivonat-szinkronizálás az Azure AD Connect használatával a összevonási**.
@@ -132,10 +132,9 @@ Mielőtt konvertálja az összevont felügyelt, akkor tekintse meg szorosan hogy
 | Ha| majd |
 |-|-|
 | Ezeket az alkalmazásokat az AD FS megőrzése kívánja.| Az AD FS és az Azure AD fog használni, és a végfelhasználói élmény ezért figyelembe kell vennie. Felhasználók előfordulhat, hogy kétszer bizonyos esetekben, miután az Azure AD-(fog ered egyszeri Bejelentkezéssel és újabb verziók esetében más alkalmazásokhoz, az Office 365-höz hasonló) hitelesítenie kell és újra bármely alkalmazásokhoz, mint egy függőentitás-megbízhatóságot az AD FS továbbra is kötve. |
-| Az AD FS a nagymértékben testre szabott és tartománybeli adott testreszabási beállításokat a onload.js fájlban, amely nem duplikálható az Azure AD-ben 
-(például módosította a bejelentkezési élmény, hogy a felhasználók csak írja be a SamAccountName formátum helyett egy egyszerű felhasználónevének, vagy rendelkezik egy márkaüzenettel ellátott erősen a bejelentkezési felület)| Győződjön meg arról, hogy a jelenlegi testreszabási követelmények érheti el az Azure AD a folytatás előtt kell. Tekintse meg az AD FS márkajelzési és az AD FS testreszabás szakaszok további információt és útmutatást.|
+| Az AD FS a nagymértékben testre szabott és tartománybeli nem duplikálható az Azure AD-ben onload.js fájlban meghatározott testreszabási beállítások (például módosította a bejelentkezési élmény úgy, hogy a felhasználók csak adja meg a SamAccountName formátum a felhasználóneve adatkötetekkel egy egyszerű felhasználónevet, vagy rendelkezik egy márkaüzenettel ellátott erősen a bejelentkezési felület)| Győződjön meg arról, hogy a jelenlegi testreszabási követelmények érheti el az Azure AD a folytatás előtt kell. Tekintse meg az AD FS márkajelzési és az AD FS testreszabás szakaszok további információt és útmutatást.|
 | Az örökölt hitelesítési ügyfeleket az AD FS-n keresztül blokkolja.| Érdemes lecserélni az örökölt hitelesítési ügyfelek jelenleg megtalálható az AD FS kombinációjával blokkolása vezérlők [feltételes hozzáférés-vezérlés az örökölt hitelesítés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és [Online Exchange ügyfélelérési Szabályok](http://aka.ms/EXOCAR).|
-| A felhasználók hitelesítéséhez az AD FS többtényezős hitelesítés végrehajtásához egy a helyszíni MFA-kiszolgálói megoldás elleni van szüksége.| Nem kell az MFA-hitelesítést keresztül a helyszíni MFA-megoldást behelyezése a hitelesítési folyamat a felügyelt tartományhoz tartozó azonban használhatja az Azure MFA szolgáltatás érdekében a későbbiekben egyszer a tartomány lesz konvertálva. Ha a felhasználók nem használja az Azure MFA még ma, majd ez magában foglalja egy egyszeri végfelhasználói regisztrációs lépést, amely kell előkészítése, illetve kommunikálhatnak a végfelhasználók számára. |
+| A felhasználók hitelesítéséhez az AD FS többtényezős hitelesítés végrehajtásához egy a helyszíni MFA-kiszolgálói megoldás elleni van szüksége.| Nem kell az MFA-hitelesítést keresztül a helyszíni MFA-megoldást behelyezése a hitelesítési folyamat a felügyelt tartományhoz tartozó azonban használhatja az Azure MFA szolgáltatás érdekében a későbbiekben egyszer a tartomány lesz konvertálva. Ha a felhasználók nem használja az Azure MFA még ma, majd ez magában foglalja egy egyszeri végfelhasználói regisztrációs lépést, amely kell előkészítése, illetve kommunikálhatnak a végfelhasználók számára.|
 | Használhatja (engedélyezési szabályok) hozzáférés-vezérlési szabályzatokkal még ma az AD FS Office 365-höz való hozzáférés szabályozásához.| Fontolja meg, és cserélje le ezeket az Azure ad-ben egyenértékű [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és [Exchange Online ügyfél-hozzáférési szabályok](http://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Közös AD FS testreszabás szempontjai
@@ -298,7 +297,7 @@ Ezt a módszert használja, ha az AD FS eredetileg konfigurálták az Azure AD C
    7. Nyissa meg az Azure AD portálra, válassza ki az Azure Active Directoryban, és válassza az Azure AD Connect.
    8. Győződjön meg arról, hogy összevonási közben zökkenőmentes egyszeri bejelentkezés le van tiltva, és a jelszó-szinkronizálás engedélyezve van.  
   ![37 kép](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)</br>
-   9. Lépjen a [tesztelési és a következő lépések](#_Next_Steps_and).
+   9. Lépjen a [tesztelési és a következő lépések](#testing-and-next-steps).
    
    > [!IMPORTANT]
    > Hagyja ki a szakasz a beállítás B - Váltás a összevonási a Jelszókivonat-szinkronizálás az Azure AD Connect és a PowerShell használatával, az adott szakaszban ismertetett lépések nem vonatkoznak.  
@@ -351,11 +350,14 @@ Az átalakítás az Azure AD PowerShell modul használatával történik.
 
    1. Nyissa meg a Powershellt, a bejelentkezés az Azure AD globális rendszergazdai fiók használatával.  
    2. Konvertálja az első tartományt, futtassa a következő parancsot:  
+   
    ``` PowerShell
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domainname>
    ```
+   
    3. Nyissa meg az Azure AD portálra, válassza ki az Azure Active Directoryban, és válassza az Azure AD Connect.
    4. Győződjön meg arról, hogy a tartomány lett konvertálva felügyelt a következő parancs futtatásával:
+   
    ``` PowerShell
    Get-MsolDomain -DomainName <domainname>
    ```
@@ -391,14 +393,14 @@ Ezután a felhasználó fog első irányítja át, és sikeresen bejelentkezett 
 > [!NOTE]
 > Zökkenőmentes egyszeri bejelentkezést az Office 365-szolgáltatásokhoz (például myapps.microsoft.com/contoso.com) tartományemlékeztető támogató működik. Az Office 365 portálon (portal.office.com) jelenleg nem támogatja a tartományemlékeztető, és ezért valószínű, hogy a felhasználóknak kell-e egyszerű típusra. Után egy egyszerű felhasználónév megadott, zökkenőmentes egyszeri bejelentkezést az lekérni a Kerberos-jegy, a felhasználó nevében, és jelentkezzen őket a jelszó beírása nélkül. 
 
-> [!NOTE]
+> [!TIP]
 > Érdemes megfontolni a [a hibrid Azure AD Join a Windows 10-es](https://docs.microsoft.com/azure/active-directory/device-management-introduction) továbbfejlesztett egyszeri bejelentkezési élményt biztosít.
 
 ### <a name="removal-of-the-relying-party-trust"></a>A függő entitás megbízhatóságához eltávolítása
 
 Miután ellenőrizte, hogy minden felhasználó és az ügyfelek vannak a sikeres hitelesítés az Azure AD-n keresztül, azt is figyelembe kell venni az Office 365, a függő entitás megbízhatóságának eltávolítása biztonságos.
 
-Ha az AD FS (más függő entitás Megbízhatóságai vannak konfigurálva), más célra nem használja, már biztonságosan ADFS most leszerelése.
+Ha az AD FS (más függő entitás Megbízhatóságai vannak konfigurálva), más célra nem használja, már biztonságosan leszerelése mostantól az AD FS.
 
 ### <a name="rollback"></a>Visszaállítás
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413995"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408374"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible használatával üzembe helyezheti alkalmazásait az Azure-ban. Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe Java-alkalmazást egy Azure-beli virtuálisgép-méretezési csoportban (VMSS).  
@@ -35,7 +35,7 @@ Ez a szakasz bemutatja, hogyan használhatja az Ansible-t Azure-beli virtuálisg
 
 Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven: 
 
-  ```yaml
+  ```yml
   - name: Get facts for all Public IPs within a resource groups
     azure_rm_publicipaddress_facts:
       resource_group: "{{ resource_group }}"
@@ -63,7 +63,7 @@ Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven:
 
 Ebben a szakaszban a git segítségével fogja klónozni a Java-mintaprojektet a GitHubról és létrehozni a projektet. Mentse a következő forgatókönyvet `app.yml` néven:
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
@@ -87,7 +87,7 @@ Futtassa az Ansible-mintaforgatókönyvet az alábbi paranccsal:
 
 Az ansible-playbook parancs a következőhöz hasonló kimenetet jelenít meg, ahol látható, hogy létrejött a GitHub-ról klónozott mintaalkalmazás:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -110,7 +110,7 @@ Az Ansible-forgatókönyvben szereplő alábbi szakasz telepíti a (JRE) Java-fu
 
 (Módosítsa az `admin_password` értékét a saját jelszavára.)
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -167,7 +167,7 @@ Futtassa a forgatókönyvet az alábbi paranccsal:
 
 Az ansible-playbook parancs kimenete azt jelzi, hogy a Java-mintaalkalmazás a virtuálisgép-méretezési csoport gazdagépcsoportján lett telepítve:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -208,4 +208,4 @@ Gratulálunk! Az alkalmazás mostantól fut az Azure-ban. Lépjen a virtuálisg�
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Ansible-mintaforgatókönyv VMSS-hez](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Az Ansible használatával virtuálisgép-méretezési csoport automatikus méretezése](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 707a23cbd04db9a0420c7776a24eb568a3483b0b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385856"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434461"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Az Azure DNS-mérőszámok és riasztások
 Az Azure DNS DNS-tartományok egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a névfeloldás. Ez a cikk azt ismerteti, metrikákkal és riasztásokkal az Azure DNS szolgáltatás.
@@ -32,7 +32,7 @@ Az Azure DNS mérőszámait, és lehetővé teszi adott monitorozhatja azokat a 
 -   RecordSetCount
 -   RecordSetCapacityUtilization
 
-Emellett megtekintheti a [metrikák definíciójának](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkdnszones) az Azure Monitor dokumentációja oldalon.
+Emellett megtekintheti a [metrikák definíciójának](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) az Azure Monitor dokumentációja oldalon.
 >[!NOTE]
 > Jelenleg ezek a metrikák érhetők csak az Azure DNS Szolgáltatásban üzemeltetett nyilvános DNS-zónák. Ha rendelkezik saját zónák az Azure DNS Szolgáltatásban üzemeltetett, ezek a metrikák nem adatot szolgáltatja majd azokat a zónákat. Emellett a metrikák és a riasztási funkció csak az Azure-beli nyilvános felhőben támogatott. Szuverén felhők támogatása egy későbbi időpontban követi. 
 

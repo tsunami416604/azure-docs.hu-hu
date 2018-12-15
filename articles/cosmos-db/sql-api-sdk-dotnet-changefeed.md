@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 1544d60d94a73326d2cd0430de8a1f61aaefe373
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343972"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407864"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -45,7 +45,6 @@ ms.locfileid: "53343972"
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Támogatás hozzáadva a felosztása a gyűjtemények, amelyek használják a megosztott adatbázis átviteli sebesség kezelésére.
   * Ebben a kiadásban elhárítottunk felosztása a gyűjtemények megosztott adatbázist átviteli sebesség, amikor eredmény ossza fel újra elosztására a csak egy gyermek partíciókulcs-tartományok létrehozni, ahelyett, hogy két partíció használata során esetlegesen jelentkező probléma. Ha ez történik, Változáscsatorna feldolgozói előfordulhat, hogy elakadnak a régi partíciókulcs-tartományok esetében a címbérlet törlésekor, és nem hozza létre az új bérleteket. Ebben a kiadásban a problémát megoldottuk.
-  * Kompatibilitástörő változás kisebb: hozzáadott új módszer IChangeFeedDocumentClient.ReadOffersFeedAsync, amellyel e colleciton dedikált adatkapacitás van hozzárendelve, vagy átviteli sebesség osztanak meg más az adatbázisban lévő gyűjtemények ellenőrzése. Biztosító IChangeFeedDocumentClient egyéni megvalósítását speciális forgatókönyv, és figyelésére használható összes híváshoz a Változáscsatorna feldolgozói a figyelt, és a gyűjtemények bérletbe. Ezzel IChangeFeedDocumentClient végrehajtása az új metódusának használatával lehet módosítani.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Hozzáadott új tulajdonság ChangeFeedProcessorOptions.StartContinuation kiindulási módosítása támogatásához a folytatási kérés hírcsatorna. Ez csak akkor használja, ha a bérletek gyűjteményének üres, vagy a címbérlet nincs beállítva continuationtoken argumentumot használja. A bérletek a bérletek gyűjteményének, amelyek rendelkeznek a continuationtoken argumentumot használja, állítsa be használja a continuationtoken argumentumot használja, és ChangeFeedProcessorOptions.StartContinuation a rendszer figyelmen kívül hagyja.
@@ -159,6 +158,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.5](#2.2.5) |2018. december 13. |--- |
+| [2.2.4](#2.2.4) |2018. november 29. |--- |
+| [2.2.3](#2.2.3) |2018. november 19. |--- |
+| [2.2.2](#2.2.2) |2018. október 31-ig. |--- |
 | [2.2.1](#2.2.1) |2018. október 24. |--- |
 | [1.3.3](#1.3.3) |08 2018. május |--- |
 | [1.3.2](#1.3.2) |2018. április 18. |--- |

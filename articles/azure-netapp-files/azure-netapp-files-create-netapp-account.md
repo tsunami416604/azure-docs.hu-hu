@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ad8cc550ce69e4dc4c19a569718fa873a65b3620
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010344"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413183"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Szerepelnie kell a Microsoft.NetApp Azure erőforrás-szolgáltató engedélyezési listáján, és konfigurálnia kellett az Azure NetApp Files szolgáltatás használatát.  
+Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes verziójú funkció használatával van regisztrálva.
 
-[Az Azure NetApp Files nyilvános előzetes verziójának regisztrációs oldala](https://aka.ms/nfspublicpreview). 
+[Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)
 
 ## <a name="steps"></a>Lépések 
 
-1. Keresse meg az előzetes verziójú Azure Portal URL-címét az előzetes verzió meghívójában, és jelentkezzen be a portálra. 
+1. Keresse meg az Azure előzetes portál URL-CÍMÉT az előzetes meghívást, és jelentkezzen be a portálra. 
 2.  Az Azure NetApp Files panelt a következő módszerek egyikével érheti el:  
   * Keressen rá az **Azure NetApp Files** kifejezésre az Azure Portal keresőmezőjében.  
   * Kattintson a navigációs menü **Minden szolgáltatás** elemére, majd szűrjön az Azure NetApp Files kifejezésre.  
@@ -60,6 +60,5 @@ Szerepelnie kell a Microsoft.NetApp Azure erőforrás-szolgáltató engedélyez�
 
 ## <a name="next-steps"></a>További lépések  
 
-1. [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
-2. [Kötet létrehozása Azure NetApp Files-hoz](azure-netapp-files-create-volumes.md)
-3. [Exportálási szabályzat konfigurálása kötethez (opcionális)](azure-netapp-files-configure-export-policy.md)
+[Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
+

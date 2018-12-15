@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 61294d8b6b84b03b1e0c8d79b4d2855452c7f0e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9af8ce84805e48dd3c91dd7fb4fcf0b136fbfc60
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057115"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410091"
 ---
 # <a name="work-with-batch-ai-clusters"></a>Batch AI-fürtök használata 
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez a cikk ismerteti az Azure Batch AI-fürtök használatának módját. Ez bemutatja a fürtöket, -konfigurációkat, lehetséges, és a példákat. A legtöbb a példákat, ebben a cikkben egy fürt létrehozása és kezelése az Azure CLI használatával. Azonban más eszközöket, mint például az Azure portal és az Azure Batch AI SDK-k használatával működik a fürtökkel.
 
@@ -152,7 +155,7 @@ A kimenet az alábbihoz hasonló lesz.
 }
 ```
 
-### <a name="list-cluster-nodes"></a>Fürtcsomópontok listája
+### <a name="list-cluster-nodes"></a>Fürtcsomópontok listázása
 
 Ha kell csatlakoznia, a fürtcsomópontokon, a következő parancsot a csomópontok és a kapcsolati adatok listáját kérdezi le.  
 

@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 31eec9e146c64e2310ab27414952593140f11cb2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8c4f14849c39414217837a3c86fb6e067cd87c90
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277298"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434341"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for MariaDB
 
@@ -33,13 +33,13 @@ Hozzon létre egy virtuális hálózati szabályt, hogy először lennie kell eg
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
-**Virtuális hálózat:** rendelkezhet az Azure-előfizetéséhez társított virtuális hálózatok.
+**Virtuális hálózat:** Az Azure-előfizetéséhez társított virtuális hálózatok is rendelkezhet.
 
-**Alhálózat:** tartalmaznak **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
+**Alhálózat:** Egy virtuális hálózatot tartalmaz **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
 
 **Virtuális hálózati szolgáltatásvégpont:** A [virtuális hálózati szolgáltatásvégpont] [ vm-virtual-network-service-endpoints-overview-649d] egy alhálózat, amelynek a következők: egy vagy több hivatalos Azure-szolgáltatás nevét. Ebben a cikkben azt érdeklő nevét **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve. Ez a szolgáltatás címke az Azure Database for MariaDB, a MySQL és a PostgreSQL szolgáltatás is vonatkozik. Fontos, hogy alkalmazása esetén vegye figyelembe a **Microsoft.Sql** szolgáltatáscímke a virtuális hálózati szolgáltatásvégpont konfigurálja végpont forgalmának minden Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL és Azure -Adatbázis PostgreSQL-kiszolgálók az alhálózaton.
 
-**Virtuális hálózati szabályt:** az Azure Database for MariaDB-kiszolgáló egy virtuális hálózati szabályt, amely szerepel a hozzáférés-vezérlési lista (ACL) az alhálózat, az Azure Database for MariaDB-kiszolgáló. A hozzáférés-Vezérlési az Azure Database for MariaDB-kiszolgálón lennie, az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
+**Virtuális hálózati szabályt:** Az Azure Database for MariaDB-kiszolgáló egy virtuális hálózati szabályt, amely szerepel a hozzáférés-vezérlési lista (ACL) az alhálózat nem az Azure Database for MariaDB-kiszolgáló. A hozzáférés-Vezérlési az Azure Database for MariaDB-kiszolgálón lennie, az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
 
 Egy virtuális hálózati szabályt arra utasítja az Azure Database for MariaDB-kiszolgáló, az alhálózaton található minden egyes csomópontjáról-kommunikáció fogadására.
 
@@ -93,8 +93,8 @@ Minden egyes virtuális hálózati szabályt alkalmazza, a teljes Azure Database
 
 Nincs a felügyeleti virtuális hálózati Szolgáltatásvégpontok, a biztonsági szerepkörök elkülönítése. A művelet szükség az egyes a következő szerepkörök:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végponthoz.
-- **Adatbázis-rendszergazda:** &nbsp; a hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az Azure Database for MariaDB-kiszolgáló frissítése.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végponthoz.
+- **Adatbázis-rendszergazda:** &nbsp; A hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az Azure Database for MariaDB-kiszolgáló frissítése.
 
 *Az RBAC alternatív:*
 
@@ -117,7 +117,7 @@ Az Azure Database for MariaDB a virtuális hálózati szabályok funkció a köv
 
 - A virtuális hálózati szabályok alkalmazása csak az Azure Resource Managerbeli virtuális hálózat; és ne [klasszikus üzemi modellben] [ resource-manager-deployment-model-568f] hálózatok.
 
-- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure Database for MariaDB használatával a **Microsoft.Sql** szolgáltatáscímke is lehetővé teszi az összes Azure-adatbázis-szolgáltatás végpontjainak: MariaDB-hez készült Azure Database, Azure Database for MySQL, Azure Database for PostgreSQL, az Azure SQL Database és az Azure SQL Data warehouse-bA.
+- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure Database for MariaDB használatával a **Microsoft.Sql** szolgáltatáscímke is lehetővé teszi az összes Azure-adatbázis-szolgáltatás végpontjainak: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, az Azure SQL Database és az Azure SQL Data warehouse-bA.
 
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
@@ -149,7 +149,7 @@ Virtuális hálózati szabályainak létrehozásával a cikkekben talál:
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)
 -->
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

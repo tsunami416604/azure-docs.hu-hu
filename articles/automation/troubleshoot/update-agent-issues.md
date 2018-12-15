@@ -4,25 +4,25 @@ description: Ismerje meg, az Update Management ügynökkel kapcsolatos problém�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 68bac54de4f6a9f16f54032b10031bcf7222c676
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969311"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434766"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
-Miért nem jelenik meg az Azure-beli gép számos oka lehet egy **készen** állapotát az Azure az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Update Management hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
+Előfordulhat, hogy a gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Azure-beli gépek hibaelhárító futtatása az Azure Portalon és a nem Azure-gépek a [offline forgatókönyv](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
-Az Azure Portalon a **hibaelhárítása Windows Update Agent** lap megjeleníti az ügynökkel kapcsolatos problémák. Az oldalon van ez a cikk segítséget nyújtanak kapcsolatos hibák elhárítása mutató hivatkozást. Ugrás a **hibaelhárítása Windows Update Agent** lapon válassza ki a **hibaelhárítása** hivatkozásra a **frissítési ügynök készültsége** oszlop.
+Azure-beli gépek, kattintson a **hibaelhárítás** hivatkozásra a **frissítési ügynök készültsége** oszlopa a portál elindítja a **hibaelhárítása Windows Update Agent** lap. Nem Azure-gépek a hivatkozás teszi elérhetővé, az ebben a cikkben. Tekintse meg a [offline utasításokat](#troubleshoot-offline) egy nem Azure-beli gép hibaelhárítása.
 
 ![Felügyeleti virtuális gépek listájának frissítése](../media/update-agent-issues/vm-list.png)
 

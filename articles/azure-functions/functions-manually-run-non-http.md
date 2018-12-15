@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: eba0901561b7c1455b7b06849e1773629d9d357f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388023"
+ms.locfileid: "53406930"
 ---
-# <a name="manually-run-a-non-http-triggered-function"></a>Egy nem HTTP által aktivált függvény manuális futtatása
+# <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
 Ez a cikk bemutatja, hogyan futtathatja manuálisan egy nem HTTP által aktivált függvény speciálisan formázott HTTP-kérelem használatával.
 
@@ -43,6 +43,9 @@ Keresse meg a függvényt az Azure Portalon, majd kattintson a **kezelés** , é
 ![Másolja a főkulcs függvény felügyeleti képernyőről](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
 Miután átmásolta a fő kulcsot, kattintson a függvény nevét, térjen vissza a kód ablak. Ezután kattintson a **naplók** fülre. Látni fogja a függvény ide kerül, ha manuálisan futtatja a függvény a Postman üzeneteit.
+
+> [!CAUTION]  
+> Az emelt szintű engedélyekkel a főkulcs által nyújtott a függvényalkalmazásban, mert nem kell ezt a kulcsot megoszthatja harmadik felek vagy osztja el az alkalmazások.
 
 ## <a name="call-the-function"></a>A függvény meghívása
 

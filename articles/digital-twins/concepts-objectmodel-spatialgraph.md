@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636883"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436925"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digitális Twins objektum modellek és térbeli intelligencia graph ismertetése
 
@@ -48,11 +48,11 @@ Az objektumok egyéb kategóriák a következők:
 - **Szerepkörök** engedélyek hozzárendelve a felhasználók és eszközök a térbeli grafikon, például eljáráscsoport `Space Administrator`, `User Administrator`, és `Device Administrator`.
 - **Szerepkör-hozzárendelések** vannak a szerepkör és a térbeli Graph objektum közötti társítást. Ha például egy felhasználó vagy szolgáltatásnév adható adható meg a térbeli Graph kezelésére jogosult.
 - **Biztonsági kulcs tárolók** adja meg a biztonsági kulcsok, hogy az eszköz digitális Twins biztonságosan kommunikáljon egy adott összekötőtér objektuma alapján a hierarchiában lévő összes eszközre.
-- **Felhasználó által definiált függvények** (UDF-EK) lehetővé teszi a személyre szabható érzékelő telemetria-feldolgozási a térbeli diagramon belül. Ha például egy UDF is: 
-    - Érzékelő állította be. 
-    - Hajtsa végre az egyéni logikát érzékelőinek adatai alapján, és a kimenetét állítsa egy szóközt. 
-    - Metaadatok csatolása egy szóközt. 
-    - Értesítések küldése az előre meghatározott feltételek teljesülése esetén. Jelenleg a JavaScript UDF-EK írhatók.
+- **Felhasználó által definiált függvények** (UDF-EK) lehetővé teszi a személyre szabható érzékelő telemetria-feldolgozási a térbeli diagramon belül. Ha például egy UDF is:
+  - Érzékelő állította be.
+  - Hajtsa végre az egyéni logikát érzékelőinek adatai alapján, és a kimenetét állítsa egy szóközt.
+  - Metaadatok csatolása egy szóközt.
+  - Értesítések küldése az előre meghatározott feltételek teljesülése esetén. Jelenleg a JavaScript UDF-EK írhatók.
 - **Matchers** objektumok, amelyek meghatározzák, hogy mely felhasználói függvények végrehajtása egy adott telemetriai üzenetet a rendszer.
 - **Végpontok** a helyek, ahol telemetriai üzeneteket és a digitális Twins események átirányíthatók, például `Event Hub`, `Service Bus`, és `Event Grid`.
 
@@ -103,9 +103,9 @@ Minden API-hívás használatával hitelesíteni kell [OAuth](https://docs.micro
 
 ## <a name="next-steps"></a>További lépések
 
-* Eszköz csatlakoztatása, és hogyan telemetriai üzeneteket küldhet az digitális Twins kapcsolatos további információkért olvassa el a [Azure digitális Twins eszköz kapcsolat- és telemetriabevitelt](concepts-device-ingress.md).
+- Eszköz csatlakoztatása, és hogyan telemetriai üzeneteket küldhet az digitális Twins kapcsolatos további információkért olvassa el a [Azure digitális Twins eszköz kapcsolat- és telemetriabevitelt](concepts-device-ingress.md).
 
-* Felügyeleti API-korlátozásokkal és szabályozások kapcsolatos további információkért olvassa el a [Azure digitális Twins API kezelése és korlátozásai](concepts-service-limits.md).
+- Felügyeleti API-korlátozásokkal és szabályozások kapcsolatos további információkért olvassa el a [Azure digitális Twins API kezelése és korlátozásai](concepts-service-limits.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

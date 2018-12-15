@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: a4a94ac4deee90bf0aea5fafbddff0105680cb4b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013151"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433865"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Egyéni MapReduce programok futtatása
 
@@ -74,8 +74,8 @@ A leggyakoribb MapReduce-programok Java nyelven íródtak, és zkompilováno do 
 
 ## <a name="next-steps"></a>További lépések
 
-* [C# használata MapReduce a hadoop együttes használata a HDInsight streaming](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Java MapReduce programok fejlesztése hadoop on HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Használat C# streamelési HDInsight az Apache hadoop MapReduce-](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Java MapReduce programok fejlesztése a HDInsight Apache hadoop](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 * [Python-streamelés HDInsight MapReduce-programok fejlesztése](apache-hadoop-streaming-python.md)
-* [Eclipse-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Használható Python felhasználói függvények (UDF) a Hive és a Piggel a HDInsight](python-udf-hdinsight.md)
+* [Eclipse-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig](python-udf-hdinsight.md)

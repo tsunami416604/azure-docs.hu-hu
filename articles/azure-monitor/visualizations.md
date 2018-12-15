@@ -1,6 +1,6 @@
 ---
 title: Az Azure Monitor vizualizációja |} A Microsoft Docs
-description: A metrikák tároló és a Log Analytics származó adatok többek között az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza.
+description: A választható módszerek jelenítheti meg a metrika, és az Azure monitorban tárolt adatok összegzését tartalmazza.
 author: bwren
 manager: carmonm
 editor: ''
@@ -10,17 +10,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/15/2018
+ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: a2fd26d110e7bf1ce7ac365b83659e5d33a037df
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383544"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435446"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
-Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 
+Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
 
 Vizualizációk, például diagramokat és ábrákat segíthet a problémák részletezés és a minták azonosítása monitorozási adatok elemzése. Attól függően, a használt eszköz Vizualizációk megoszthatók más felhasználókkal belüli és kívüli a szervezet is előfordulhat.
 
@@ -30,7 +30,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 ![Irányítópult](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Előnyök
-- Szoros integráció az Azure-bA. Vizualizációkat több Azure oldalra, beleértve a metrikák explorer, a Log Analytics és az Application Insights kitűzhetők az irányítópultokra.
+- Szoros integráció az Azure-bA. Vizualizációkat több Azure oldalt, például metrikák analytics, a log analytics és az Application Insights kitűzhetők az irányítópultokra.
 - Metrikák és naplók is támogatja.
 - Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../azure-monitor/platform/metrics-charts.md), [Log Analytics-lekérdezések](../azure-monitor/log-query/log-query-overview.md), és [térképek](../application-insights/app-insights-app-map.md) és [rendelkezésre állási]()az Application Insightsban.
 - Saját vagy megosztott irányítópultok beállítása. Az Azure-ral integrálva [szerepköralapú hitelesítést (RBAC)](../role-based-access-control/overview.md).
@@ -41,23 +41,23 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ### <a name="limitations"></a>Korlátozások
-- Korlátozott szabályozhatja a Log Analytics megjelenítési módokat adattáblák nem támogatott. További adatsorok vannak összegyűjtve legfeljebb 10 az adatsorozatok száma egy _más_ gyűjtőbe.
-- A Log Analytics-diagramok egyéni paraméterek nélkül támogatja.
-- Log Analytics-diagramok korlátozva, az elmúlt 30 napban.
-- Log Analytics diagramok csak megosztott irányítópultokat rögzíthet.
+- Korlátozott szabályozhatja a napló megjelenítési módokat adattáblák nem támogatott. További adatsorok vannak összegyűjtve legfeljebb 10 az adatsorozatok száma egy _más_ gyűjtőbe.
+- Nincsenek egyéni paraméterek támogatása logaritmikus diagramon.
+- Elmúlt 30 napban logaritmikus diagramon korlátozódnak.
+- Logaritmikus diagramon csak megosztott irányítópultokat rögzíthet.
 - Nem interaktív irányítópult adatokkal.
 - Korlátozott környezetfüggő részletezése.
 
 ## <a name="azure-monitor-views"></a>Az Azure Monitor-nézetek
-[Az Azure monitorban nézetek](../azure-monitor/platform/view-designer.md) hozhat létre egyéni vizualizációkat az Log Analytics szolgáltatásban tárolt naplóadatokért. Által használt [figyelési megoldások](../azure-monitor/insights/solutions.md) a gyűjtött adatok.
+[Az Azure monitorban nézetek](../log-analytics/log-analytics-view-designer.md) hozhat létre egyéni vizualizációkat a naplózási adatokat. Által használt [figyelési megoldások](insights/solutions.md) a gyűjtött adatok.
 
 ![Nézet](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Előnyök
-- Sokoldalú megjelenítési lehetőségek a Log Analytics-adatok.
+- Sokoldalú megjelenítési naplóadatok.
 - Exportálása és importálása a át más erőforráscsoportok és előfizetések nézeteket.
 - Integrálja a Log Analytics felügyeleti modell munkaterületek és figyelési megoldásokkal.
-- [Szűrők](../azure-monitor/platform/view-designer-filters.md) egyéni paraméterek.
+- [Szűrők](platform/view-designer-filters.md) egyéni paraméterek.
 - Interaktív, támogatja a többszintű részletezés-a (nézet, amely egy másik nézetre működéseinek)
 
 ### <a name="limitations"></a>Korlátozások
@@ -65,7 +65,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Személyes nézet sem. A munkaterület-hozzáféréssel rendelkező minden felhasználó számára elérhető.
 - Nincs automatikus frissítését.
 - Az elrendezési beállítások korlátozott.
-- Log Analytics-munkaterületek és Application Insights-alkalmazások lekérdezése nem támogatott.
+- Több munkaterületet, vagy az Application Insights-alkalmazások lekérdezése nem támogatott.
 - Válasz mérete 110 másodperc 8MB, a lekérdezés végrehajtási ideje a lekérdezések korlátozott.
 
 
@@ -89,7 +89,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ## <a name="power-bi"></a>Power BI
-[Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos üzleti-központú irányítópultokat és jelentéseket, valamint hosszú távú KPI-trendek elemzése jelentések létrehozásához. Is [importálja a Log Analytics-lekérdezés eredményeit](../azure-monitor/platform/powerbi.md) így kihasználhatja annak szolgáltatásait, például a különböző forrásokból származó adatok összevonása és a webes és mobil eszközök jelentések megosztása a Power BI-adatkészletbe.
+[Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos üzleti-központú irányítópultokat és jelentéseket, valamint hosszú távú KPI-trendek elemzése jelentések létrehozásához. Is [importálja a lekérdezés eredményeit, egy napló](../log-analytics/log-analytics-powerbi.md) így kihasználhatja annak szolgáltatásait, például a különböző forrásokból származó adatok összevonása és a webes és mobil eszközök jelentések megosztása a Power BI-adatkészletbe.
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -109,7 +109,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) nyílt platformon, amely az operatív irányítópultokat excels van. Ez különösen hasznos észlelése és elkülönítése és működési események sorolása. Hozzáadhat [Grafana az Azure Monitor adatforrás-beépülő modul](../monitoring-and-diagnostics/monitor-send-to-grafana.md) az Azure-előfizetéshez, hogy az Azure-metrikagyűjtéshez adatok megjelenítése.
+[Grafana](https://grafana.com/) nyílt platformon, amely az operatív irányítópultokat excels van. Ez különösen hasznos észlelése és elkülönítése és működési események sorolása. Hozzáadhat [Grafana az Azure Monitor adatforrás-beépülő modul](../azure-monitor/platform/grafana-plugin.md) az Azure-előfizetéshez, hogy az Azure-metrikagyűjtéshez adatok megjelenítése.
 
 ![Grafana](media/visualizations/grafana.png)
 
@@ -126,7 +126,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ## <a name="build-your-own-custom-application"></a>A saját egyéni application készítése
-Bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek és alkalmazások készítése és használata saját API-n keresztül férhet hozzá az Azure-metrikák és a Log Analytics adataihoz.
+Napló adatai és az Azure monitorban metrikaadatok hozzáférhet bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek és alkalmazások készítése és használata saját API-n keresztül.
 
 ### <a name="advantages"></a>Előnyök
 - Felhasználói felület, képi megjelenítés, interaktív és funkciók teljes körű rugalmasság.
@@ -137,9 +137,10 @@ Bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek 
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ a [Azure Monitor által gyűjtött adatok](../azure-monitor/platform/data-collection.md).
+- További információ a [Azure Monitor által gyűjtött adatok](platform/data-collection.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
-- Ismerje meg [nézetek az Azure Monitor](../azure-monitor/platform/view-designer.md).
+- Ismerje meg [nézetek az Azure Monitor](platform/view-designer.md).
 - Ismerje meg [az Application Insights-munkafüzetek](../application-insights/app-insights-usage-workbooks.md).
 - Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../azure-monitor/platform/powerbi.md).
-- További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../monitoring-and-diagnostics/monitor-send-to-grafana.md).
+- További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../azure-monitor/platform/grafana-plugin.md).
+

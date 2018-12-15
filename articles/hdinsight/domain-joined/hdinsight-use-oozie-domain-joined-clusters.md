@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165146"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436279"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Futtathat Apache Oozie a HDInsight Hadoop-fürtöket a vállalati biztonsági csomaggal
 
@@ -30,8 +30,8 @@ Az Oozie használatával a rendszer, például Java programok vagy héjparancsf�
 
 - Az Azure HDInsight Hadoop-fürtön vállalati biztonsági csomag (ESP). Lásd: [konfigurálása HDInsight-fürtök ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
-    > [!NOTE]
-    > Az Oozie használata az ESP fürtökön részletes utasításokért lásd: [Linux-alapú Azure HDInsight a Hadoop az Oozie használata a munkafolyamatok](../hdinsight-use-oozie-linux-mac.md).
+    > [!NOTE]  
+    > Az Oozie használata az ESP fürtökön részletes utasításokért lásd: [Linux-alapú Azure HDInsight az Apache Oozie használata a munkafolyamatok](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="connect-to-an-esp-cluster"></a>ESP-fürthöz kapcsolódás
 
@@ -52,7 +52,7 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     Válasz állapotkódot **200 OK** sikeres regisztrációját jelzi. Ha egy jogosulatlan érkezik válasz, mint a 401-es, ellenőrizze a felhasználónevet és jelszót.
 
 ## <a name="define-the-workflow"></a>Határozhat meg munkafolyamatot
-Munkafolyamat-definíciókhoz az Oozie Hadoop folyamat adatdefiníciós nyelv (hPDL) nyelven íródtak. hPDL folyamat XML-definíció nyelven. A következő lépésekkel határozhat meg munkafolyamatot:
+Az Oozie munkafolyamat-definíciókhoz az Apache Hadoop folyamat adatdefiníciós nyelv (hPDL) nyelven íródtak. hPDL folyamat XML-definíció nyelven. A következő lépésekkel határozhat meg munkafolyamatot:
 
 1.  Állítsa be a munkaterület egy tartományi felhasználó:
  ```bash
@@ -243,7 +243,7 @@ Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-para
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  Mentse a fájlt, a Hadoop elosztott fájlrendszer (HDFS):
+3.  Mentse a fájlt az Apache Hadoop elosztott fájlrendszer (HDFS):
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
@@ -271,11 +271,11 @@ Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-para
 
 ESP fürtök Oozie-feladatok elküldése olyan, mint az ESP fürtök Oozie-feladatok elküldése.
 
-További információkért lásd: [megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Hadoop-keretrendszerrel használható Oozie](../hdinsight-use-oozie-linux-mac.md).
+További információkért lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight az Apache Hadoop-](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Az Oozie-feladat küldése eredményei
+Az Oozie-feladatok futnak, a felhasználó számára. Ezért az Apache Hadoop YARN és az Apache Ranger audit naplók megjelenítése a megszemélyesített felhasználóként futtatott feladatok. A parancssori felület kimeneti Oozie-feladat a következő kódhoz hasonlóan néz ki:
 
-Az Oozie-feladatok futnak, a felhasználó számára. Ezért az Apache YARN és az Apache Ranger audit naplók megjelenítése a megszemélyesített felhasználóként futtatott feladatok. A parancssori felület kimeneti Oozie-feladat a következő kódhoz hasonlóan néz ki:
 
 
 ```bash
@@ -315,7 +315,7 @@ A Ranger Hive server 2 műveletek vizsgálati naplók megjelenítése a felhaszn
 
 Oozie önmagában, amely segítségével megakadályozhatja a felhasználók leállítása vagy törlése a többi felhasználó feladatok felhasználói engedélyezési konfigurációval rendelkezik. Ez a konfiguráció engedélyezéséhez állítsa be a `oozie.service.AuthorizationService.security.enabled` való `true`. 
 
-További információkért lásd: [Oozie-telepítés és konfigurálás](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
+További információkért lásd: [Apache Oozie-telepítés és konfigurálás](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 
 Az összetevők, például a Hive server 1, ahol a Ranger beépülő modul nem érhető el vagy nem támogatott csak a HDFS coarse-grained engedélyezési lehetőség. Minden részletre kiterjedő engedélyezési csak a Ranger modulok keresztül érhető el.
 
@@ -328,6 +328,6 @@ Az Oozie webes felület lehetővé teszi a webes az Oozie-feladat állapotát a 
 2. Kövesse a [Oozie webes felhasználói felületen](../hdinsight-use-oozie-linux-mac.md) az élcsomóponthoz SSH-Alagútkezelés engedélyezéséhez és a webes felhasználói felületen eléréséhez.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Oozie használata a Hadooppal megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
-* [Időalapú Oozie-koordinátor használata](../hdinsight-use-oozie-coordinator-time.md).
-* [Csatlakozhat a HDInsight (Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Az Apache Hadoop Apache Oozie használatával határozza meg, és a munkafolyamat futtatása a Linux-alapú Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+* [Időalapú Apache Oozie-koordinátor használata](../hdinsight-use-oozie-coordinator-time.md).
+* [Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

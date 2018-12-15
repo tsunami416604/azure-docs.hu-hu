@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ea99c045d5f1bfaacaefab04322b2d4f1123c84
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d7b05757f031227ed1d5c3870a426567a1a31e6d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183506"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435650"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan tarthatja a költségeket, a Log Analytics által az adatok megőrzési időszak beállítása.  További kapcsolódó információt a következő cikkekben talál.
 > - [Adathasználat elemzése a Log Analytics](manage-cost-storage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
-> - [Használat és becsült költségek figyelése](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
+> - [Használat és becsült költségek figyelése](../../azure-monitor/platform/usage-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
 
 A log Analytics méretezési és támogatási gyűjtése, az indexelés és a vállalati adatok naponta bármilyen forrásból származó nagy mennyiségű tárolására tervezték vagy üzembe helyezve az Azure-ban.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni a nem a Log Analytics-munkaterület költségét csak alapján összegyűjtött adatok mennyisége is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott források által létrehozott adatokat tárolni.  
 

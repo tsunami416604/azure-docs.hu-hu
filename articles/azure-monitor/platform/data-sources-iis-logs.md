@@ -1,6 +1,6 @@
 ---
-title: Az IIS-naplók az Azure Log Analyticsben |} A Microsoft Docs
-description: Az Internet Information Services (IIS) naplófájlok a Log Analytics által gyűjtött felhasználói tevékenység tárolja.  Ez a cikk bemutatja, hogyan konfigurálhatja az IIS-naplók gyűjtésének és hozhatnak létre a Log Analytics-munkaterületen a rekordok részleteit.
+title: Az Azure monitorban naplózza az IIS |} A Microsoft Docs
+description: Az Internet Information Services (IIS) felhasználói tevékenység az Azure Monitor gyűjtött naplófájlokat tárolja.  Ez a cikk ismerteti az IIS-naplók gyűjtésének és hozhatnak létre az Azure monitorban a rekordok részleteit.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,31 +11,30 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 42509f98126ebb489fe17c58e6d58b37d7451cf0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: cd28eef249ae6b07b9e3f74b80c32a4b53370215
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189081"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436739"
 ---
-# <a name="iis-logs-in-log-analytics"></a>A Log Analytics naplózza az IIS
-Az Internet Information Services (IIS) naplófájlok a Log Analytics által gyűjtött felhasználói tevékenység tárolja.  
+# <a name="collect-iis-logs-in-azure-monitor"></a>Az Azure monitorban gyűjtése IIS-naplók
+Az Internet Information Services (IIS) felhasználói tevékenység tárolja az Azure Monitor által összegyűjtött és tárolt és naplófájlok [adatok](data-collection.md).
 
 ![IIS-naplók](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>Naplózza az IIS konfigurálása
-Log Analytics bejegyzéseket gyűjt, meg kell, az IIS által létrehozott naplófájlok [konfigurálni az IIS naplózásának](https://technet.microsoft.com/library/hh831775.aspx).
+Az Azure Monitor bejegyzések gyűjti össze a naplófájlokat, az IIS által létrehozott, ezért meg kell [konfigurálni az IIS naplózásának](https://technet.microsoft.com/library/hh831775.aspx).
 
-Csak a log Analytics támogatja a tárolt W3C formátumú IIS-naplófájlok, és nem támogatja az egyéni mezők és az IIS naplózás speciális.  
-A log Analytics nem gyűjt naplók NCSA vagy az IIS natív formátumban.
+Az Azure Monitor csak tárolt W3C formátumú IIS-naplófájlok támogatja, és nem támogatja az egyéni mezők és az IIS naplózás speciális. NCSA vagy az IIS natív formátumú naplókat nem gyűjt.
 
-IIS-naplók konfigurálása a Log Analytics az [adatok Log Analytics-beállítások menüben](agent-data-sources.md#configuring-data-sources).  Nincs semmilyen beállítást nem szükséges kiválasztásával **gyűjtése W3C formátumú IIS-naplófájljai**.
+Az Azure monitorban az IIS-naplók konfigurálása a [speciális beállítások menü](agent-data-sources.md#configuring-data-sources).  Nincs semmilyen beállítást nem szükséges kiválasztásával **gyűjtése W3C formátumú IIS-naplófájljai**.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A log Analytics minden ügynök jön létre minden alkalommal, amikor a napló be van zárva, és a egy új IIS-naplóbejegyzések gyűjti össze. Ez a gyakoriság vezérli a **fájl váltása naplóütemezés** beállítása az IIS-webhely, amely alapértelmezés szerint naponta egyszer van. Például, ha a beállítások **óránkénti**, akkor a Log Analytics gyűjti a napló óránként.  Ha a beállítás értéke **napi**, akkor a Log Analytics gyűjti a napló 24 óránként.
+Az Azure Monitor gyűjti az IIS-naplóbejegyzések minden ügynök minden alkalommal, amikor a napló be van zárva, és a egy új jön létre. Ez a gyakoriság vezérli a **fájl váltása naplóütemezés** beállítása az IIS-webhely, amely alapértelmezés szerint naponta egyszer van. Például, ha a beállítások **óránkénti**, majd az Azure Monitor összegyűjti a napló óránként.  Ha a beállítás értéke **napi**, majd az Azure Monitor összegyűjti a napló 24 óránként.
 
 
 ## <a name="iis-log-record-properties"></a>Az IIS-napló rekord tulajdonságai
@@ -65,7 +64,7 @@ Az IIS-naplóbejegyzések rendelkezik olyan típusú **W3CIISLog** , és a tulaj
 | TimeGenerated |Dátum és idő, a bejegyzés a naplózott. |
 | timeTaken |Eltelt idő (MS) a kérelem feldolgozását. |
 
-## <a name="log-searches-with-iis-logs"></a>Naplókeresések az IIS-naplókkal
+## <a name="log-queries-with-iis-logs"></a>IIS-naplók log lekérdezéseket.
 Az alábbi táblázat az IIS-naplóbejegyzések lekérő lekérdezések log különböző példákat.
 
 | Lekérdezés | Leírás |
@@ -77,6 +76,5 @@ Az alábbi táblázat az IIS-naplóbejegyzések lekérő lekérdezések log kül
 | W3CIISLog &#124; összegzése számítógép szerint sum(csBytes) &#124; 500 000 összeget igénybe |Egyes IIS-számítógépek által fogadott összes bájt. |
 
 ## <a name="next-steps"></a>További lépések
-* Konfigurálja a gyűjtendő más Log Analytics [adatforrások](agent-data-sources.md) elemzés céljából.
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
-* Riasztások konfigurálása a Log Analytics segítségével proaktívan kaphat értesítést az IIS-naplókban található fontos feltételekről.
+* Egyéb gyűjtésére az Azure Monitor konfigurálása [adatforrások](agent-data-sources.md) elemzés céljából.
+* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

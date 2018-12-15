@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615603"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408000"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Batch AI-feladat bemenete és kimenete az Azure Storage Store
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Ez az útmutató az Azure Storage használata a bemeneti és kimeneti fájlok tárolásához, a feladat futtatásakor. Az Azure Storage a Batch AI által támogatott számos tárolási lehetőségek egyike. A Batch AI integrálható az Azure Storage csatlakoztatja az Azure-Felhőtároló rendszerek választásával egy Batch AI feladat vagy a fürt fájlrendszer, a felhőben tárolt fájlok is zökkenőmentes hozzáférést. 
 

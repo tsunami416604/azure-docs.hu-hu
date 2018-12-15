@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090268"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409541"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -26,10 +26,10 @@ A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázi
 
 | **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
-|Az Azure Cosmos-adatbázis | Adatbázis | Kulcstér | Adatbázis | NA | NA |
+|Az Azure Cosmos-adatbázis | Adatbázis | Kulcstér | Adatbázis | Adatbázis | NA |
 
 > [!NOTE]
-> A Gremlin- és Table API-k-fiókok esetében az első ábra vagy egy alapértelmezett adatbázis tábla létrehozásakor automatikusan létrejön az Azure Cosmos-fiókon belül.
+> A Table API-fiókok esetében az első tábla létrehozásakor egy alapértelmezett adatbázis automatikusan jön létre az Azure Cosmos-fiókon belül.
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>Egy Azure Cosmos database műveletek
 
@@ -49,9 +49,9 @@ Egy Azure Cosmos-tárolóhoz méretezhetőséget biztosít a kiosztott átviteli
 
 Egy Azure Cosmos-tároló létrehozásakor átviteli konfigurálja a következő módok egyikében:
 
-* **Dedikált kiosztott átviteli sebesség** mód: egy tároló kiosztott átviteli sebesség kizárólag a hozzá tartozó fenntartott és a szavatolják. További tudnivalókért lásd: [hogyan helyezhet üzembe egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
+* **Dedikált kiosztott átviteli sebesség** mód: Egy tároló kiosztott átviteli sebesség kizárólag a hozzá tartozó fenntartott és a szavatolják. További tudnivalókért lásd: [hogyan helyezhet üzembe egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
 
-* **Megosztott kiosztott átviteli sebesség** mód: ezek a tárolók a kiosztott átviteli sebesség megosztása más tárolók ugyanabban az adatbázisban (kivéve azokat, amelyek dedikált kiosztott átviteli sebesség a konfigurált tárolók). Más szóval a kiosztott átviteli sebesség az adatbázison a "megosztott" tárolók megosztják egymással. További tudnivalókért lásd: [kiosztott átviteli sebesség konfigurálása az Azure Cosmos database](how-to-provision-database-throughput.md).
+* **Megosztott kiosztott átviteli sebesség** mód: Ezek a tárolók a kiosztott átviteli sebesség megosztása más tárolók ugyanabban az adatbázisban (kivéve azokat, amelyek dedikált kiosztott átviteli sebesség a konfigurált tárolók). Más szóval a kiosztott átviteli sebesség az adatbázison a "megosztott" tárolók megosztják egymással. További tudnivalókért lásd: [kiosztott átviteli sebesség konfigurálása az Azure Cosmos database](how-to-provision-database-throughput.md).
 
 Az Azure Cosmos-tárolókat rugalmasan méretezhető, hogy hoz létre a tárolót vagy a "megosztás" vagy "dedikált" kiosztott átviteli mód.
 
@@ -69,7 +69,7 @@ Az Azure Cosmos-tárolókat a következő kifejezetten az API-specifikus entitá
 
 | **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
-|Az Azure Cosmos-tároló | Tároló | Tábla | Gyűjtemény | Graph | Tábla |
+|Az Azure Cosmos-tároló | Gyűjtemény | Tábla | Gyűjtemény | Graph | Tábla |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Egy Azure Cosmos-tároló tulajdonságai
 
@@ -105,7 +105,7 @@ Az API-t a választás, attól függően egy Azure Cosmos-elemet vagy egy dokume
 
 | **Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
-|Az Azure Cosmos-elem | Elem | Sor | Dokumentum | Csomópont- vagy Peremtábla | Elem |
+|Az Azure Cosmos-elem | Dokumentum | Sor | Dokumentum | Csomópont- vagy Peremtábla | Elem |
 
 ### <a name="properties-of-an-item"></a>Egy elem tulajdonságai
 

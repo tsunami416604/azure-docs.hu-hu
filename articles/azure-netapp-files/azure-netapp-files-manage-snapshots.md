@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 48cb88b9815ba723d93c18caf63f33b50eea850c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009195"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412936"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure Files-NetApp használatával
 Az Azure Files-NetApp használatával hozzon létre egy igény szerinti pillanatképet egy kötet vagy egy pillanatképet egy új kötetre visszaállítása.
@@ -42,30 +42,34 @@ Visszaállíthatja a pillanatkép jelenleg csak az új kötetet.
     ![Új kötetre pillanatkép visszaállítása](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. Az új ablakában adja meg az új kötet adatait:  
-    * **név**   
-        Adja meg a kötet, amelyeknek a neve.  
+    * **Név**   
+        Adja meg a létrehozni kívánt kötet nevét.  
         
-        A név egy erőforráscsoporton belül egyedinek kell lennie. Legalább 3 karakter hosszúságúnak kell lennie.  Ez lehet bármely alfanumerikus karaktereket használjon.
+        A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Bármilyen alfanumerikus karakter használható.
 
     * **Fájl elérési útja**     
-        Adja meg a fájl elérési útját az exportálási útvonal, az új kötet létrehozásához használt. Az exportálási útvonal segítségével csatlakoztatása és elérni a kötetet.   
+        Adja meg az új kötet exportálási útvonalának létrehozásához használni kívánt fájlelérési utat. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.   
         
-        A csatlakoztatási célt az a végpont NFS szolgáltatás IP-cím. Automatikusan hozza létre.   
+        A csatlakoztatási cél az NFS-szolgáltatás IP-címének végpontja. Ennek létrehozása automatikusan történik.   
         
-        A fájl elérési útja neve betűket, számokat és kötőjeleket tartalmazhat ("-") csak. 16 – 40 karakter hosszúságúnak kell lennie. 
+        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet. 
 
     * **Kvóta**  
-        Adja meg a kötet számára lefoglalt logikaitár.  
+        Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
 
-        A **rendelkezésre álló kvótát** mező a nem használt terület mennyiségét mutatja a választott kapacitás a készlet, amelyet használhat fel az új kötet létrehozása. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.
+        A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.
 
     *   **Virtuális hálózat**  
-        Adja meg az Azure virtuális hálózat (Vnet), amely alapján szeretne elérni a kötetet. 
-        
-        A megadott virtuális hálózathoz rendelkeznie kell konfigurált Azure NetApp fájlok. Az Azure Files-NetApp szolgáltatás csak a kötet megegyező helyen lévő virtuális hálózaton elérhetők.  
+        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
+        A megadott virtuális hálózathoz rendelkeznie kell egy alhálózatot az Azure Files-NetApp delegált. Az Azure Files-NetApp szolgáltatás csak az azonos virtuális hálózaton vagy a virtuális hálózaton lévő virtuális hálózatok közötti társviszony-létesítésen keresztül a kötet és ugyanabban a régióban is elérhető. A kötet a helyszíni hálózatból Express Route használatával is elérheti. 
 
-    ![Új kötetre visszaállítása](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-    
+    * **Alhálózat**  
+        Adja meg az alhálózatot, amelyet a kötet használni kívánt.  
+        Az alhálózatot, adja meg az Azure NetApp Files szolgáltatásba kell delegálható. Létrehozhat egy új alhálózatot kiválasztásával **új létrehozása** alhálózat mező alatti.  
+<!--
+    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
+-->
+
 5. Kattintson az **OK** gombra.   
     Az új kötetet, amelyhez a pillanatkép visszaállítása a kötetek panel jelenik meg.
 

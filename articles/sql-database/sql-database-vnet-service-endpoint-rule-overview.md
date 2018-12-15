@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure SQL Database |} A Microsoft Docs
+title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure SQL Database és az SQL Data Warehouse |} A Microsoft Docs
 description: Egy alhálózat jelölhetnek egy virtuális hálózati szolgáltatásvégpontot. Ezután a végpontot, az ACL-t az Azure SQL Database virtuális hálózati szabály. SQL-adatbázist, majd az összes virtuális gép és az alhálózat más csomópontok érkező kommunikációt fogad.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/13/2018
+ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958388"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438591"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata Azure SQL Database és SQL Data warehouse-bA
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
-*A virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza-e az Azure [SQL Database](sql-database-technical-overview.md) vagy [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kiszolgáló elfogadja az érkező kommunikációt virtuális hálózatok adott alhálózatain. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure SQL Database.
+*A virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza-e az Azure [SQL Database](sql-database-technical-overview.md) vagy [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kiszolgáló elfogadja az érkező kommunikációt virtuális hálózatok adott alhálózatain. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure SQL Database és az SQL Data Warehouse.
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
@@ -36,13 +36,13 @@ Ha csak hozzon létre egy virtuális hálózati szabályt, áttérhet a lépése
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
-**Virtuális hálózat:** rendelkezhet az Azure-előfizetéséhez társított virtuális hálózatok.
+**Virtuális hálózat:** Az Azure-előfizetéséhez társított virtuális hálózatok is rendelkezhet.
 
-**Alhálózat:** tartalmaznak **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
+**Alhálózat:** Egy virtuális hálózatot tartalmaz **alhálózatok**. Minden olyan Azure virtuális gépeken (VM), amely rendelkezik hozzárendelt alhálózatok. Egy alhálózaton több virtuális gép vagy más számítási csomópontokon is tartalmazhat. A számítási csomópontot, amely a virtuális hálózatán kívüli nem a virtuális hálózat eléréséhez, ha nem konfigurál, hogy engedélyezze a hozzáférést a biztonsági.
 
 **Virtuális hálózati szolgáltatásvégpont:** A [virtuális hálózati szolgáltatásvégpont] [ vm-virtual-network-service-endpoints-overview-649d] egy alhálózat, amelynek a következők: egy vagy több hivatalos Azure-szolgáltatás nevét. Ebben a cikkben azt érdeklő nevét **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve.
 
-**Virtuális hálózati szabályt:** az SQL Database-kiszolgáló egy virtuális hálózati szabályt egy alhálózatot, amely szerepel az SQL Database-kiszolgálóhoz, hozzáférés-vezérlési lista (ACL). Az SQL Database hozzáférés-vezérlési is az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
+**Virtuális hálózati szabályt:** Az SQL Database-kiszolgáló egy virtuális hálózati szabályt egy alhálózatot, amely szerepel az SQL Database-kiszolgálóhoz, hozzáférés-vezérlési lista (ACL). Az SQL Database hozzáférés-vezérlési is az alhálózat tartalmaznia kell a **Microsoft.Sql** írja be a nevet.
 
 Egy virtuális hálózati szabályt arról tájékoztatja, hogy az SQL Database-kiszolgálóhoz, az alhálózaton található minden egyes csomópontjáról-kommunikáció fogadására.
 
@@ -92,8 +92,8 @@ A teljes Azure SQL Database-kiszolgáló nem csak egy adott adatbázist a kiszol
 
 Nincs a felügyeleti virtuális hálózati Szolgáltatásvégpontok, a biztonsági szerepkörök elkülönítése. A művelet szükség az egyes a következő szerepkörök:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végponthoz.
-- **Adatbázis-rendszergazda:** &nbsp; frissíteni a hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az SQL Database-kiszolgálóhoz.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végponthoz.
+- **Adatbázis-rendszergazda:** &nbsp; A hozzáférés-vezérlési lista (ACL) a megadott alhálózat hozzáadása az SQL Database-kiszolgáló frissítése.
 
 *Az RBAC alternatív:*
 
@@ -129,7 +129,7 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció a következő 
 
 A Szolgáltatásvégpontok Azure SQL Database használatakor, tekintse át az alábbiakat:
 
-- **Az Azure SQL Database nyilvános IP-címek kimenő kötelező**: Azure SQL Database IP-címek való csatlakozást engedélyezhetik a hálózati biztonsági csoportok (NSG) kell megnyitni. Ezt megteheti az NSG-t is [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) az Azure SQL Database.
+- **Az Azure SQL Database nyilvános IP-címek kimenő kötelező**: Hálózati biztonsági csoportok (NSG) kell megnyitnia az Azure SQL Database IP-címek engedélyezi a csatlakozást. Ezt megteheti az NSG-t is [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) az Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -243,19 +243,19 @@ Kapcsolódási hiba 40914 vonatkozik *virtuális hálózati szabályok*, a tűzf
 
 ### <a name="error-40914"></a>40914 hiba
 
-*Szöveges üzenet:* nem nyitható meg a kiszolgáló "*[kiszolgálónév]*" a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
+*Üzenet szövege:* Nem nyitható meg a kiszolgáló "*[kiszolgálónév]*" a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 
-*Hiba leírása:* egy alhálózatot, amelyen a virtuális hálózat kiszolgálói végpontot az ügyfél van. Azonban az Azure SQL Database-kiszolgáló nem virtuális hálózati szabályt, amely az alhálózat nem biztosít jogot az SQL-adatbázissal való kommunikációhoz.
+*Hiba leírása:* Az ügyfél, amely rendelkezik a virtuális hálózat kiszolgálóvégpontok alhálózat szerepel. Azonban az Azure SQL Database-kiszolgáló nem virtuális hálózati szabályt, amely az alhálózat nem biztosít jogot az SQL-adatbázissal való kommunikációhoz.
 
-*Hiba feloldása:* a tűzfal panel az Azure Portal, a virtuális hálózati szabályok vezérlőelem használata [hozzáadása egy virtuális hálózati szabályt](#anchor-how-to-by-using-firewall-portal-59j) az alhálózat.
+*Hiba történt. megoldás:* A tűzfal panelen az Azure Portal használata a virtuális hálózati szabályok vezérlőelem [hozzáadása egy virtuális hálózati szabályt](#anchor-how-to-by-using-firewall-portal-59j) az alhálózat.
 
 ### <a name="error-40615"></a>40615 hiba
 
-*Szöveges üzenet:* nem nyitható meg a kiszolgáló "{0}" a bejelentkezés által kért. Ügyfél IP-címmel rendelkező{1}"nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
+*Üzenet szövege:* Nem nyitható meg a kiszolgáló "{0}" a bejelentkezés által kért. Ügyfél IP-címmel rendelkező{1}"nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 
-*Hiba leírása:* az ügyfél IP-címek, amelyek nem jogosult az Azure SQL Database-kiszolgálóhoz való csatlakozáshoz csatlakozni próbál. A kiszolgáló tűzfalának nincs IP-cím szabály, amely lehetővé teszi, hogy egy ügyfél való kommunikációhoz megadott IP-címről az SQL Database rendelkezik.
+*Hiba leírása:* Az ügyfél IP-címek, amelyek nem jogosult az Azure SQL Database-kiszolgálóhoz való csatlakozáshoz csatlakozni próbál. A kiszolgáló tűzfalának nincs IP-cím szabály, amely lehetővé teszi, hogy egy ügyfél való kommunikációhoz megadott IP-címről az SQL Database rendelkezik.
 
-*Hiba feloldása:* adja meg az ügyfél IP-címét egy IP-szabály. Ezt úgy teheti meg a tűzfal panel az Azure Portalon.
+*Hiba történt. megoldás:* Adja meg az ügyfél IP-címét egy IP-szabályt. Ezt úgy teheti meg a tűzfal panel az Azure Portalon.
 
 Több SQL Database-hibaüzenetek listáját dokumentált [Itt][sql-database-develop-error-messages-419g].
 
@@ -278,7 +278,7 @@ Egy PowerShell-parancsfájlt is létrehozhat a virtuális hálózati szabályok.
 
 Belsőleg az SQL virtuális hálózatok közötti műveleteket a PowerShell-parancsmagok hívja a REST API-k. Közvetlenül a REST API-k segítségével meghívhatja.
 
-- [A virtuális hálózati szabályok: műveletek][rest-api-virtual-network-rules-operations-862r]
+- [A virtuális hálózati szabályok: Műveletek][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -320,10 +320,10 @@ Már rendelkeznie kell egy, az adott virtuális hálózati szolgáltatásvégpon
 
 > [!NOTE]
 > A következő állapotok vagy állapotok a alkalmazni a szabályokat:
-> - **Kész:** jelöli, hogy kezdeményezte a művelet sikeresen befejeződött.
-> - **Nem sikerült:** jelöli, hogy kezdeményezte a művelet sikertelen volt.
-> - **Törölve:** kizárólag a törlési művelet vonatkozik, és jelzi, hogy a szabály törölve lett, és már nem érvényes.
-> - **InProgress:** jelzi, hogy a művelet folyamatban van. A régi szabály érvényes, amíg a művelet ebben az állapotban van.
+> - **Készen áll:** Azt jelzi, hogy sikeres volt-e, hogy kezdeményezte a műveletet.
+> - **Nem sikerült:** Azt jelzi, hogy a művelet által kezdeményezett, nem sikerült.
+> - **Törölve:** Csak a törlési művelet vonatkozik, és jelzi, hogy a szabály törölve lett, és már nem érvényes.
+> - **InProgress:** Azt jelzi, hogy a művelet folyamatban van. A régi szabály érvényes, amíg a művelet ebben az állapotban van.
 
 <a name="anchor-how-to-links-60h" />
 
@@ -347,7 +347,7 @@ A virtuális hálózati szabály funkció az Azure SQL Database vált elérhető
 
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
@@ -369,7 +369,7 @@ A virtuális hálózati szabály funkció az Azure SQL Database vált elérhető
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
-<!-- Link references, to text, Outside this Github repo (HTTP). -->
+<!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 

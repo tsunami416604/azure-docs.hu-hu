@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: d86600dd000d3e9c71a38b632aa75e82239401dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104579"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435548"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix a HDInsightban
 
-[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő masszív párhuzamos alapuló relációs Adatbázisréteg [HBase](hbase/apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket HBase-en. A Phoenix felhasználók létrehozása, törlés, egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter JDBC-illesztőprogramok alatt használja. Phoenix használ lefordítani a lekérdezést, a MapReduce használata helyett natív noSQL-összeállítás engedélyezése HBase felett közel valós idejű alkalmazások létrehozását. A Phoenix hozzáadja a coprocessors támogatásához az ügyfél által megadott kódot futtató kiszolgáló, a címtér a védelmicsoport-készletek az adatok a kód végrehajtása. Ez a megközelítés minimálisra csökkenti az adatátviteli ügyfél/kiszolgáló.
+[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő masszív párhuzamos alapuló relációs Adatbázisréteg [Apache HBase](hbase/apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket HBase-en. A Phoenix felhasználók létrehozása, törlés, egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter JDBC-illesztőprogramok alatt használja. Phoenix használ lefordítani a lekérdezést, a MapReduce használata helyett natív noSQL-összeállítás engedélyezése HBase felett közel valós idejű alkalmazások létrehozását. A Phoenix hozzáadja a coprocessors támogatásához az ügyfél által megadott kódot futtató kiszolgáló, a címtér a védelmicsoport-készletek az adatok a kód végrehajtása. Ez a megközelítés minimálisra csökkenti az adatátviteli ügyfél/kiszolgáló.
 
-Az Apache Phoenix megnyílik a big data-lekérdezések nem-fejlesztőknek, akik egy SQL-szerű szintaxist használhat programozási helyett. A Phoenix optimalizálhatja a hbase-hez, ellentétben más eszközök például [Hive](hadoop/hdinsight-use-hive.md) és a Spark SQL. A fejlesztők számára a legfontosabb előny rendkívül nagy teljesítményű lekérdezéseket, hiszen lényegesen kevesebb kódot ír.
+Az Apache Phoenix megnyílik a big data-lekérdezések nem-fejlesztőknek, akik egy SQL-szerű szintaxist használhat programozási helyett. A Phoenix optimalizálhatja a hbase-hez, ellentétben más eszközök például [Hive](hadoop/hdinsight-use-hive.md) és az Apache Spark SQL. A fejlesztők számára a legfontosabb előny rendkívül nagy teljesítményű lekérdezéseket, hiszen lényegesen kevesebb kódot ír.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 SQL-lekérdezés elküldésekor a Phoenix lefordítja a lekérdezést a HBase natív hívások, és a vizsgálat (vagy tervezett) optimalizálás párhuzamosan futtatja. Absztrakciós réteg szabadít fel a fejlesztő MapReduce-feladatok írjanak hangsúlyozza inkább az üzleti logikát és a munkafolyamat az alkalmazás körül Phoenix a big Data típusú adatok tárolására.
@@ -122,7 +122,7 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>Engedélyezze és az Ambari Phoenix hangolása
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Engedélyezze, és az Ambari az Apache Phoenix hangolása
 
 HDInsight HBase-fürt tartalmazza a [Ambari felhasználói felületén](hdinsight-hadoop-manage-ambari.md) konfigurációs módosítások.
 

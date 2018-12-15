@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: bb23dd98768c4aaa343082bbc2caae43071a5e1f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4bf99fb103850582ded56604d3f65ecd030cb167
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385669"
+ms.locfileid: "53410036"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
@@ -41,5 +41,5 @@ ms.locfileid: "53385669"
 |[Elkülönítés az Azure nyilvános felhő](azure-isolation.md)|Ismerteti, hogy az Azure miként nyújt elkülönítési kártékony és a nem rosszindulatú felhasználókkal szemben. Útmutatóként szolgálnak felhőbeli megoldások tervezése azzal különböző elkülönítési lehetőségek a tervezők munkáját. Elsődleges fókusz az ügyfelek által használt biztonsági vezérlőket, és nem próbál meg címet SLA-k, díjszabási modelleket és DevOps-eljárásokkal kapcsolatos szempontok.|
 |[Az Azure megfelelőségi áttekintése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|A cikk ismerteti az Azure megfelelőségi ajánlatainak, beleértve a hivatalos minősítései, tanúsítványok, ellenőrzés, engedélyek és független, külső naplózási cégek, valamint szerződéses módosítások által előállított értékelések a letölthető tanulmány önértékelésekben, és a Microsoft által gyártott felhasználói útmutatót. <br/> Minden ajánlat állapotok leírását, mely Azure-ügyfelek által használt szolgáltatások terjed ki az értékelést, és a felhasználók a saját megfelelőségi kötelezettségeket letölthető forrásokra mutató hivatkozásokat biztosít.|
 |[Biztonságkezelés az Azure-ban](azure-security-management.md)|A távoli hozzáférés az Azure-erőforrások problémákat tárgyalja. A felhőalapú a növekvő igények szerint távelérési felügyeleti és jellegét, ezért biztonsági létfontosságú. Általános biztonsági irányelveket, ügyfél-konfiguráció, ajánlott eljárások és működési alapelvek és eljárásokat ismerteti. |
-|[Az Azure Active Directory biztonsági szempontok](https://aka.ms/aaddatawhitepaper) | A letölthető dokumentum ismerteti az Azure Active Directory és azok egymáshoz való interakció más összetevői. Ismerteti, hogyan a különböző összetevők védelmére, biztonságos, titkosítása vagy ujjlenyomat-átvitt adatok (például az interneten) keresztül, és hogyan védett inaktív. Ismerteti az Azure AD különböző adatközpontban és a helyszíni címtárak, valamint a flow való interakció, és az Azure AD-ből. Végül az operatív eljárások felügyeletére és védelmére, a szolgáltatás az Azure AD-mérnöki csapata által használt ismerteti.|
+|[Az Azure AD-adatok és biztonság](https://aka.ms/aaddatawhitepaper) | A letölthető dokumentum ismerteti az Azure Active Directory és azok egymáshoz való interakció más összetevői. Ismerteti, hogyan a különböző összetevők védelmére, biztonságos, titkosítása vagy ujjlenyomat-átvitt adatok (például az interneten) keresztül, és hogyan védett inaktív. Ismerteti az Azure AD különböző adatközpontban és a helyszíni címtárak, valamint a flow való interakció, és az Azure AD-ből. Végül az operatív eljárások felügyeletére és védelmére, a szolgáltatás az Azure AD-mérnöki csapata által használt ismerteti.|
 

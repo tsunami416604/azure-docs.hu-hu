@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997877"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410465"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Egy Azure-ban üzemeltetett API exportálása a PowerApps és Microsoft Flow
 
@@ -146,7 +146,7 @@ A PowerApps és a Microsoft Flow támogatja az Identitásszolgáltatók, amelyek
 ``` 
 Exportálás során, amelyek lehetővé teszik a felhasználók hitelesítése a PowerApps és a Microsoft Flow konfigurációs értékeket ad meg.
 
-Ez a szakasz ismerteti a támogatott hitelesítési típusok **Express** mód: API key, az Azure Active Directory és általános OAuth 2.0. A PowerApps és a Microsoft Flow is támogatja az egyszerű hitelesítés és az OAuth 2.0 adott szolgáltatásokhoz, például Dropbox, a Facebook és a Salesforce-ban.
+Ez a szakasz ismerteti a támogatott hitelesítési típusok **Express** mód: API-kulcsot, az Azure Active Directory és általános OAuth 2.0. A PowerApps és a Microsoft Flow is támogatja az egyszerű hitelesítés és az OAuth 2.0 adott szolgáltatásokhoz, például Dropbox, a Facebook és a Salesforce-ban.
 
 ### <a name="api-key"></a>API-kulcs
 API-kulcs használata esetén a kapcsolat létrehozásához, adja meg a kulcsot a rendszer kéri a a felhasználók az összekötő. Megadhatja az API-kulcsnév, amelyekkel megismerheti, hogy mely kulcs van szükség. A korábbi példában nevet használjuk `API Key (contact meganb@contoso.com)` , személyek, hogy hol az API-kulcs adatainak lekérése. Az Azure Functions szolgáltatáshoz, a kulcs a általában egyik gazdagép kulcsot, benne a függvényalkalmazás belül számos funkciót.
@@ -154,7 +154,7 @@ API-kulcs használata esetén a kapcsolat létrehozásához, adja meg a kulcsot 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure AD-vel, amikor szüksége van-e két Azure AD alkalmazást az alkalmazásregisztrációk: az API-hoz egyet, és az egyéni összekötőt:
 
-- Az API regisztrációs konfigurálásához használja a [App Service hitelesítés/engedélyezés](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md) funkció.
+- Az API regisztrációs konfigurálásához használja a [App Service hitelesítés/engedélyezés](../app-service/configure-authentication-provider-aad.md) funkció.
 
 - Regisztráció az összekötő konfigurálásához kövesse [hozzáadása az Azure AD-alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). A regisztráció hozzáférést az API-t és a egy válasz URL-címe van delegált `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 

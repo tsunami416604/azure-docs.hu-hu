@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239423"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437095"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automatizálási runbookok Windows PowerShell-munkafolyamat alapfogalmak tanulási
 
@@ -193,10 +193,10 @@ Workflow Copy-Files
 }
 ```
 
-Használhatja a **ForEach-Parallel** szerkezet használatával egyidejűleg egy gyűjtemény minden elemére feldolgozhat parancsokat. A gyűjtemény elemeinek feldolgozása párhuzamosan, míg a parancsfájlblokkban lévő parancsok egymás után futnak. Ez az alább látható a következő szintaxist használ. Ebben az esetben Activity1 elindítja a gyűjtemény összes eleme egy időben. Minden egyes elem esetében a runbook az Activity2 Activity1 befejeződése után elindul. Az Activity3 indítja el, csak azután az Activity1 és az Activity2 is befejeződött az összes elemet.
+Használhatja a **ForEach-Parallel** szerkezet használatával egyidejűleg egy gyűjtemény minden elemére feldolgozhat parancsokat. A gyűjtemény elemeinek feldolgozása párhuzamosan, míg a parancsfájlblokkban lévő parancsok egymás után futnak. Ez az alább látható a következő szintaxist használ. Ebben az esetben Activity1 elindítja a gyűjtemény összes eleme egy időben. Minden egyes elem esetében a runbook az Activity2 Activity1 befejeződése után elindul. Az Activity3 indítja el, csak azután az Activity1 és az Activity2 is befejeződött az összes elemet. Használjuk a `ThrottleLimit` korlátozza a párhuzamosságot a paramétert. Túl magas a `ThrottleLimit` problémákat okozhat. Az ideális értékét a `ThrottleLimit` paraméter a környezetben számos tényezőtől függ. Próbálja ki az alacsony érték kezdő kell, és próbálja meg növekvő értékei eltérőek, amíg meg nem találja, amely együttműködik a konkrét körülmény a.
 
 ```powershell
-ForEach -Parallel ($<item> in $<collection>)
+ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 {
     <Activity1>
     <Activity2>
@@ -211,7 +211,7 @@ Workflow Copy-Files
 {
     $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-    ForEach -Parallel ($File in $Files)
+    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
     {
         Copy-Item -Path $File -Destination \\NetworkPath
         Write-Output "$File copied."
@@ -258,7 +258,7 @@ Workflow Copy-Files
 }
 ```
 
-Mivel a felhasználónév hitelesítő adatok nem rögzíti meghívása után a [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) tevékenység vagy az utolsó ellenőrzőpont után be kell állítani, null, és majd az eszköz áruházból után újra lekérheti azokat a hitelesítő adatok  **Munkafolyamat-felfüggesztési** vagy ellenőrzőpont nevezzük.  Ellenkező esetben a következő hibaüzenet jelenhet: *a munkafolyamat-feladatot nem lehet folytatni, vagy mert adatmegőrzés adatok nem teljesen mentve, vagy nem mentett adatok megőrzése sérült. A munkafolyamat újra kell indítani.*
+Mivel a felhasználónév hitelesítő adatok nem rögzíti meghívása után a [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) tevékenység vagy az utolsó ellenőrzőpont után be kell állítani, null, és majd az eszköz áruházból után újra lekérheti azokat a hitelesítő adatok  **Munkafolyamat-felfüggesztési** vagy ellenőrzőpont nevezzük.  Ellenkező esetben a következő hibaüzenet jelenhet meg: *A munkafolyamat-feladatot nem lehet folytatni, vagy mert adatmegőrzés adatok nem teljesen mentve, vagy nem mentett adatok megőrzése sérült. A munkafolyamat újra kell indítani.*
 
 A következő ugyanazt a kódot ennek kezelése a PowerShell-munkafolyamati runbookok mutatja be.
 

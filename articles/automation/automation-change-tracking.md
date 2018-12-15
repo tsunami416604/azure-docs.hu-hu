@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167001"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408918"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -63,7 +63,7 @@ Ez lehetővé teszi, hogy a megoldás az automation-fiók. A megoldás engedély
 
 ## <a name="configuring-change-tracking-and-inventory"></a>A Change Tracking és Inventory konfigurálása
 
-Megtudhatja, hogyan számítógépek felvétele a megoldást, keresse fel: [bevezetési automatizálási megoldásokkal](automation-onboard-solutions-from-automation-account.md). A Change Tracking and Inventory megoldással egy gép bevezetése után konfigurálhat az elemek nyomon követése. Ha engedélyezi az új fájlok vagy beállításkulcs nyomon követésére, a Change Tracking and Inventory engedélyezve van.
+Megtudhatja, hogyan számítógépek felvétele a megoldást, keresse fel: [Előkészítés Automation-megoldások](automation-onboard-solutions-from-automation-account.md). A Change Tracking and Inventory megoldással egy gép bevezetése után konfigurálhat az elemek nyomon követése. Ha engedélyezi az új fájlok vagy beállításkulcs nyomon követésére, a Change Tracking and Inventory engedélyezve van.
 
 A Windows és Linux rendszereken egyaránt fájlokban változásainak követése, MD5-kivonatát a fájlok használhatók. Következő kivonatok szolgálnak majd észleli, ha a legutóbbi leltározás óta a változás nem lett végrehajtva.
 
@@ -85,7 +85,7 @@ A következő lépések segítségével nyomon követésének konfigurálása Li
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Hagyja figyelmen kívül** – mellőzi a szimbolikus hivatkozásokat, és nem tartalmazza a hivatkozott fájlokat/címtárakat.<br>**Hajtsa végre a** – követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat.<br>**Kezelése** – követi a szimbolikus hivatkozásokat, és lehetővé teszi, hogy a visszaadott tartalom módosítása.     |
-|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **hamis**.|
 
 > [!NOTE]
 > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
@@ -105,7 +105,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”       |
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
-|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+|Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **hamis**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Helyettesítő karakteres, rekurzió és környezeti beállítások
 
@@ -135,7 +135,7 @@ A következő lépések segítségével Windows-számítógépeket a beállítá
 |Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
-|Windows-beállításkulcs   | A fájl elérési útja. Például: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
+|Windows-beállításkulcs   | A fájl elérési útja. Példa: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -167,10 +167,21 @@ Az alábbi táblázat a módosítások típusú adatok gyűjtési gyakoriságát
 | Windows beállításjegyzék | 50 perc |
 | Windows-fájl | 30 perc |
 | Linux-fájl | 15 perc |
-| Windows-szolgáltatások | akár 30 percig 10 másodperc</br> Alapértelmezés: 30 perc |
+| Windows-szolgáltatások | akár 30 percig 10 másodperc</br> Alapértelmezett: 30 perc |
 | Linux-démonok | 5 perc |
 | Windows szoftverek | 30 perc |
 | Linux-szoftver | 5 perc |
+
+Az alábbi táblázat bemutatja a gépek nyomon követett elemek vonatkozó korlátok a Change Tracking megoldásba.
+
+| **Erőforrás** | **Korlát**| **Megjegyzések** |
+|---|---|---|
+|Fájl|500||
+|Beállításjegyzék|250||
+|Windows szoftverek|250|Nem tartalmaz szoftverfrissítéseket|
+|Linux-csomagok|1250||
+|Szolgáltatások|250||
+|Démon|250||
 
 ### <a name="windows-service-tracking"></a>Windows-szolgáltatás nyomon követése
 
@@ -259,7 +270,7 @@ Az alábbi táblázatban kapcsolatos naplókeresési mintákat a megoldás álta
 |Lekérdezés  |Leírás  |
 |---------|---------|
 |ConfigurationData<br>&#124;ahol ConfigDataType == "WindowsServices" és a SvcStartupType == "Auto"<br>&#124;ahol SvcState == "Leállított"<br>&#124;Összegzés arg_max(TimeGenerated, *) SoftwareName, számítógép szerint         | Megjeleníti a legutóbbi Hardverleltár-rekordok automatikus értékre van beállítva, de lett jelentve le Windows-szolgáltatásokhoz<br>A program csak a legújabb bejegyzést, hogy szoftvernév és számítógép      |
-|Konfigurációváltozás<br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;a TimeGenerated desc ORDER|A módosítási rekordok eltávolított szoftverek megjelenítése|
+|ConfigurationChange<br>&#124;ahol ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;a TimeGenerated desc ORDER|A módosítási rekordok eltávolított szoftverek megjelenítése|
 
 ## <a name="next-steps"></a>További lépések
 

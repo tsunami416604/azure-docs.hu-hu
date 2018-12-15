@@ -9,36 +9,36 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 637ce81f2e2ef4c7271e26bd4e9dfe36da524e27
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5bf69a2ac6a70410339a5696da53169ca87170f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012742"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407218"
 ---
-# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Hive-lekérdezések futtatásához az Apache hadooppal a HDInsight REST használatával
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatásához az Apache hadooppal a HDInsight REST használatával
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ismerje meg, a WebHCat REST API használatával az Apache Hadoop Hive-lekérdezések futtatásához az Azure HDInsight-fürtön.
+Ismerje meg, hogyan használhatja a WebHCat REST API Apache Hive-lekérdezések futtatásához az Apache Hadoop Azure HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Linux-alapú Hadooppal a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * REST-ügyféllel. Ez a dokumentum a Windows Powershellt használja, és [Curl](https://curl.haxx.se/) példákat.
 
-    > [!NOTE]
-    > Az Azure PowerShell használata a HDInsight Hive-val dedikált parancsokat tartalmaz. További információkért lásd: a [Hive használata az Azure PowerShell-lel](apache-hadoop-use-hive-powershell.md) dokumentumot.
+    > [!NOTE]  
+    > Az Azure PowerShell használata a HDInsight Hive-val dedikált parancsokat tartalmaz. További információkért lásd: a [az Apache Hive használata az Azure PowerShell-lel](apache-hadoop-use-hive-powershell.md) dokumentumot.
 
 Ez a dokumentum is használja a Windows PowerShell és [Jq](https://stedolan.github.io/jq/) JSON-adatokat ad vissza, a REST-kérelmeket feldolgozni.
 
 ## <a id="curl"></a>Hive-lekérdezés futtatása
 
-> [!NOTE]
+> [!NOTE]  
 > Használatakor a cURL vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája a felhasználónév és jelszó megadásával.
 >
 > A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló érdekében mindig kérést HTTP Secure (HTTPS) használatával.
@@ -135,7 +135,7 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](https://stedolan.git
    * `DROP TABLE` – Ha a tábla már létezik, akkor az törlődik.
    * `CREATE EXTERNAL TABLE` – Egy új táblát hoz létre "külső" struktúrában. Külső táblák csak a tábla definíciójának Hive tárolja. Az adatok az eredeti helyén marad.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat vagy egy másik MapReduce művelet.
      >
      > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
@@ -144,7 +144,7 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](https://stedolan.git
    * `STORED AS TEXTFILE LOCATION` – Az adatok tárolására (a példaadatokat/directory), és hogy szövegként lesz tárolva.
    * `SELECT` -Az összes sor számát kiválasztja ahol oszlop **t4** értéket tartalmazza **[hiba]**. A jelen nyilatkozat egy értékét adja vissza **3** annyi három sort, amely tartalmazza ezt az értéket.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Figyelje meg, hogy a tárolóhelyek között HiveQL utasítások helyébe a `+` . amikor a curl használatával használt karakter. Határolójeles értékek, amelyek tartalmaznak egy szóközt, például az elválasztó nincs helyébe `+`.
 
       Ez a parancs visszaadja a Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
@@ -177,16 +177,16 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](https://stedolan.git
 
 Általános információk a HDInsight Hive:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
 Információk az egyéb módon használhatja a Hadoop on HDInsight:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
 Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a következő dokumentumokat:
 
-* [A Linux-alapú HDInsight az Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
+* [A Linux-alapú HDInsight az Apache Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
 
 Ebben a dokumentumban használt REST API további információkért lásd: a [WebHCat referencia](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentumot.
 

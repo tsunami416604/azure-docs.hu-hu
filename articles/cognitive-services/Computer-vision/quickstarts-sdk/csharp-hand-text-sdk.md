@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Szöveg kinyerése - SDK, C# - Computer Vision'
+title: 'Gyors útmutató: Szöveg – SDK-t és kinyerése C# – Computer Vision'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fog kinyerni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852486"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413217"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rövid útmutató: Szöveg kinyerése a Computer Vision SDK és a C# használatával
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: A számítógép Látástechnológiai SDK-val szöveg kinyerése ésC#
 
 Ebben a rövid útmutatóban kézzel írt vagy nyomtatott szöveget fog kinyerni egy képből a Computer Vision Windows-ügyfélkódtárával.
 
@@ -188,7 +188,7 @@ namespace ExtractText
 
 A sikeres válasz a képek felismert szövegsorait jeleníti meg.
 
-A nyers JSON-kimenetre itt láthat egy példát: [Rövid útmutató: Kézzel írt szöveg kinyerése – REST, C#](../QuickStarts/CSharp-hand-text.md#examine-the-response).
+Lásd: [a rövid útmutató: Bontsa ki a kézzel írt szöveg - REST, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) példa nyers JSON-kimenetét.
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

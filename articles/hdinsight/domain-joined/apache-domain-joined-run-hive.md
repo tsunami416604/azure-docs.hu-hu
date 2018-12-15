@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632815"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435515"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Az Apache Hive-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
 Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
@@ -28,10 +28,9 @@ Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a c
 
 1. Egy böngészőből csatlakozzon a Ranger felügyeleti felhasználói felületéhez. Az URL-cím: https://&lt;ClusterName>.azurehdinsight.net/Ranger/.
 
-   > [!NOTE]
-   > A Ranger más hitelesítő adatokat használ, mint a Hadoop-fürt. Hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat, új InPrivate-böngészőablak használatával csatlakozzon a Ranger felügyeleti felhasználói felületéhez.
-   >
-   >
+   > [!NOTE]  
+   > Ranger más hitelesítő adatokat, mint az Apache Hadoop-fürtöt használ. Hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat, új InPrivate-böngészőablak használatával csatlakozzon a Ranger felügyeleti felhasználói felületéhez.
+
 2. Jelentkezzen be a fürt rendszergazdai tartományi felhasználónevével és jelszavával:
 
     ![HDInsight ESP Ranger kezdőlapja](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
@@ -59,7 +58,7 @@ Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzo
 
      ![HDInsight ESP Ranger Hive-házirendjének konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
-     > [!NOTE]
+     > [!NOTE]  
      > Ha egy tartományi felhasználó nem töltődik be a Felhasználó kiválasztása részben, várjon néhány másodpercig, amíg a Ranger szinkronizálódik az AAD-val.
      >
      >
@@ -134,6 +133,6 @@ A második (read-hivesampletable-devicemake) házirend tesztelése, az előző s
 * A vállalati biztonsági csomaggal egy HDInsight-fürt konfigurálásához lásd: [konfigurálása HDInsight-fürtök ESP](apache-domain-joined-configure.md).
 * ESP HDInsight fürtök kezeléséhhez lásd: [kezelése a HDInsight-fürtök ESP](apache-domain-joined-manage.md).
 * Az SSH használata a HDInsight-fürtök ESP Hive-lekérdezések futtatásához, tekintse meg a [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-* A Hive JDBC segítségével történő Hive-csatlakoztatáshoz olvassa el a [Csatlakozás a Hive-hoz az Azure HDInsight rendszerben a Hive JDBC-illesztőprogrammal](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) című részt
-* Ha az Excelt a Hive ODBC segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Microsoft Hive ODBC-meghajtó segítségével](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) című részt
-* Ha az Excelt a Power Query segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Power Query segítségével](../hadoop/apache-hadoop-connect-excel-power-query.md) című részt
+* Csatlakozás Hive használata a Hive JDBC, lásd: [csatlakozás az Apache Hive, az Azure HDInsight, a Hive JDBC-illesztővel](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)
+* Kapcsolódás az Excel és a Hadoop Hive ODBC segítségével, tekintse meg a [Excel csatlakoztatása a Apache Hadoop, a Microsoft Hive ODBC-meghajtó](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
+* Az Excel Power Query segítségével kapcsolódik, lásd: [Excel csatlakoztatása a Power Query használatával az Apache Hadoop](../hadoop/apache-hadoop-connect-excel-power-query.md)

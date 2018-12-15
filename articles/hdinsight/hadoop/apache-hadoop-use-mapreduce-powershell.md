@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634141"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436262"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight PowerShell használatával
 
@@ -26,7 +26,7 @@ Ez a dokumentum azt szemlélteti, egy MapReduce-feladatot futtatni a Hadoop HDIn
 
 * **Egy Azure HDInsight (Hadoop on HDInsight)-fürt**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Munkaállomás Azure PowerShell-lel**.
@@ -37,15 +37,15 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyek engedélyezik a HDInsight
 
 A következő parancsmagok használhatók MapReduce-feladatok egy távoli HDInsight-fürtön való futtatáskor.
 
-* **Connect-AzureRmAccount**: az Azure PowerShell végzi a hitelesítést az Azure-előfizetéshez.
+* **Connect-AzureRmAccount**: Azure PowerShell-lel hitelesíti az Azure-előfizetéshez.
 
-* **Új AzureRmHDInsightMapReduceJobDefinition**: létrehoz egy új *feladat definíciójának* MapReduce megadott információk segítségével.
+* **Új AzureRmHDInsightMapReduceJobDefinition**: Létrehoz egy új *feladat definíciójának* MapReduce megadott információk segítségével.
 
-* **Start-AzureRmHDInsightJob**: a feladat definíciója HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* **Start-AzureRmHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
 
-* **Wait-AzureRmHDInsightJob**: a feladat objektumot használ a feladat állapotának ellenőrzéséhez. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
+* **Wait-AzureRmHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
 
-* **Get-AzureRmHDInsightJobOutput**: a feladat kimenetének beolvasása.
+* **Get-AzureRmHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
 
 A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat futtathat feladatokat a HDInsight-fürtben.
 
@@ -73,7 +73,7 @@ A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat f
 
     Ez a kimenet azt jelzi, hogy a feladat sikeresen befejeződött-e.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha a **ExitCode** egy érték nem 0, lásd: [hibaelhárítás](#troubleshooting).
 
     Ebben a példában is tárolja a letöltött fájlokat, és egy **kimenet.txt** fájl a könyvtárban, amely futtatja a szkriptet.
@@ -82,7 +82,7 @@ A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat f
 
 A szavak és a feladat által előállított counts megtekintéséhez nyissa meg a **kimenet.txt** fájlt egy szövegszerkesztőben.
 
-> [!NOTE]
+> [!NOTE]  
 > A kimeneti fájlokat egy MapReduce-feladatot, nem módosíthatók. Ezért ha újra futtatja ezt a mintát, módosítani szeretné a kimeneti fájl nevét.
 
 ## <a id="troubleshooting"></a>Hibaelhárítás
@@ -113,5 +113,5 @@ HDInsight MapReduce-feladatok általános tájékoztatást:
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)

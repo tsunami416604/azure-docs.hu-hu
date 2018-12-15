@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632222"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435055"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig-parancsot (SSH) rendelkező Linux-alapú fürt Apache Pig-feladatok futtatása
 
@@ -22,7 +22,7 @@ ms.locfileid: "51632222"
 
 Ismerje meg, hogyan interaktív módon futtathat Apache Pig-feladatok az SSH-kapcsolatot a HDInsight-fürt. A Pig Latin programozási nyelv lehetővé teszi átalakítások használhatók, amelyek érvényesek a bemeneti adatokat és létrehozza a kívánt kimeneti ismertetik.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések a Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="ssh"></a>Kapcsolódás az ssh-val
@@ -35,7 +35,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="pig"></a>A Pig-parancs használata
+## <a id="pig"></a>Az Apache Pig paranccsal
 
 1. Ha csatlakoztatva van, indítsa el a Pig parancssori felület (CLI) használatával a következő parancsot:
 
@@ -74,7 +74,7 @@ További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-lin
     | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Létrehoz egy csoportot, amely tartalmazza az egyes egyedi naplózási adatok szintű hatékonyságot, és hány alkalommal történik. Az adatkészlet tárolt be `FREQUENCIES`. |
     | `RESULT = order FREQUENCIES by COUNT desc;` | A naplózási szintek orders (csökkenő) száma szerint, és tárolja `RESULT`. |
 
-    > [!TIP]
+    > [!TIP]  
     > Használat `DUMP` az átalakítás minden lépése után az eredmény megtekintéséhez.
 
 5. Az eredményeket az átalakítás használatával is mentheti a `STORE` utasítást. Ha például a következő utasítás menti a `RESULT` , a `/example/data/pigout` a a fürt alapértelmezett tárolója könyvtárába:
@@ -83,7 +83,7 @@ További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-lin
     STORE RESULT into '/example/data/pigout';
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Az adatok fájlban található a megadott könyvtárban tárolt `part-nnnnn`. Ha a könyvtár már létezik, hibaüzenetet kap.
 
 6. A kilépéshez a grunt használatával adja meg a következő utasítást:
@@ -136,9 +136,9 @@ A Pig-parancs segítségével is futtathat a Pig Latin a fájlban található.
 
 A HDInsight Pig általános információkért lásd a következő dokumentumban:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
 További információ az egyéb módon történő használata a HDInsight Hadoop a következő dokumentumokban talál:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)

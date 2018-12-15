@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 292247ae2881bd60616728ad857fab58c8ed7fd5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309543"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435429"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -53,7 +53,11 @@ Az oktatóanyag feltételezi, hogy Ön járatos az alábbi témakörökben:
 -  [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
   
 
-A cikkben ismertetett forgatókönyv konfiguráláshoz telepíteni kell az [Azure AD Connect legfrissebb](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0-s vagy újabb) verzióját. 
+Ez a cikk a forgatókönyv konfigurálásához lesz szüksége:
+
+- A helyszíni Active Directory (AD) egy séma szintű 85 vagy újabb verzió. További információkért lásd: [frissítése az Active Directory-séma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema).
+
+- A [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 vagy újabb) kell telepíteni. 
 
 Ellenőrizze, hogy az Azure AD Connect szinkronizálta-e a számítógép-objektumokat az Azure AD-hez hibrid módon csatlakoztatni kívánt eszközök közül. Ha a számítógép-objektumok bizonyos szervezeti egységekhez (OU) tartoznak, akkor az OU-k szinkronizálását is konfigurálni kell az Azure AD Connectben.
 

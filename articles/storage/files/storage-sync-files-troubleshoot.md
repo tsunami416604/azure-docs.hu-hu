@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 6ee16a0483b13471f12654f82ef6972b41ace634
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316939"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409462"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -468,20 +468,17 @@ Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minde
 | **Hibakarakterlánc** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba általában akkor fordul elő, mert helytelen a kiszolgáló ideje vagy a hitelesítéshez használt tanúsítvány lejárt. Ha a kiszolgáló ideje helyes, hajtsa végre az alábbi lépések végrehajtásával törli a lejárt tanúsítvány (Ha lejárt) és a kiszolgáló regisztrációs állapotának alaphelyzetbe állítása:
+Ez a hiba általában akkor fordul elő, mert helytelen a kiszolgáló ideje vagy a hitelesítéshez használt tanúsítvány lejárt. Ha a kiszolgáló ideje helyes, hajtsa végre az alábbi lépések végrehajtásával újítsa meg a lejárt tanúsítvány:
 
 1. A Tanúsítványok MMC beépülő modul megnyitásához, válassza ki a számítógép fiókját, és keresse meg \Personal\Certificates tanúsítványok (helyi számítógép).
-2. Az ügyfél-hitelesítési tanúsítvány törlése, ha a lejárt, és zárja be a tanúsítványok beépülő MMC-modulban.
-3. Nyissa meg a Regedit, és a beállításjegyzék ServerSetting kulcs törlése: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. Az Azure Portalon keresse meg a Storage Sync Service regisztrált kiszolgálók szakaszát. Kattintson a jobb gombbal a lejárt tanúsítvánnyal rendelkező kiszolgálónak, és kattintson a "Unregister Server."
-5. A következő PowerShell-parancsok futtatása a kiszolgálón:
+2. Ellenőrizze, hogy ha az ügyfél-hitelesítési tanúsítvány lejárt. Ha a tanúsítvány lejárt, zárja be a tanúsítványok beépülő MMC-modulban és proceeed útmutató fennmaradó lépéseivel. 
+3. Ellenőrizze az Azure File Sync ügynök verziója 4.0.1.0 vagy újabb verziója szükséges.
+4. A következő PowerShell-parancsok futtatása a kiszolgálón:
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. Regisztrálja újra a kiszolgálót (az alapértelmezett hely a C:\Program Files\Azure\StorageSyncAgent) ServerRegistration.exe futtatásával.
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**A szabad lemezterület a köteten, ahol a kiszolgálói végpont megtalálható értéke alacsony.**  
 | | |

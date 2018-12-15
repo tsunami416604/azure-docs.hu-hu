@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634022"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410346"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Python-streamelés HDInsight MapReduce-programok fejlesztése
 
@@ -47,8 +47,8 @@ A következő folyamatábra szemlélteti azt szemlélteti, mi történik a leké
 
 Hadoop lehetővé teszi, hogy adjon meg egy fájlt, amely tartalmazza a térképen, és csökkentse a feladat által használt logikát. A térkép a konkrét követelmények, és csökkentse a logikai vannak:
 
-* **A bemeneti**: A térképen, és csökkentse összetevők bemeneti adatokat STDIN kell olvasni.
-* **Kimeneti**: A térképen, és csökkentse összetevők kimeneti adatokat kell írni az STDOUT.
+* **Bemeneti**: A térképen, és csökkentse összetevők bemeneti adatokat STDIN kell olvasni.
+* **Kimeneti**: A térképen, és csökkentse összetevők kimeneti adatokat STDOUT kell írni.
 * **Adatformátum**: A felhasznált és előállított adatok egy kulcs/érték pár, tabulátor karakterrel elválasztva kell lennie.
 
 Python használatával könnyen képes kezelni ezeket a követelményeket a `sys` STDIN és használatával olvasni modul `print` STDOUT nyomtatni. A többi feladat egyszerűen formázza az adatokat a lap (`\t`) karaktert a kulcs-érték között.
@@ -144,7 +144,7 @@ A következő PowerShell-parancsfájl használatával töltse fel a fájlokat, a
 
     Ez a parancs másolja a fájlokat a helyi rendszerről a fő csomópontot.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha az SSH-fiókhoz jelszót használt, a rendszer kéri a jelszót. Ha SSH-kulcsot használt, előfordulhat, hogy akkor alkalmazza a `-i` paraméter és a titkos kulcs elérési útját. Például: `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Csatlakozzon a fürthöz SSH használatával:
@@ -170,17 +170,17 @@ A következő PowerShell-parancsfájl használatával töltse fel a fájlokat, a
 
     Ez a parancs a következő részekből áll:
 
-   * **hadoop-streaming.jar**: streamelési MapReduce műveletek végrehajtásakor használt. A külső MapReduce-kódot, adja meg a Hadoop, felületeihez.
+   * **hadoop-streaming.jar**: Streamelési MapReduce műveletek végrehajtásakor használni. A külső MapReduce-kódot, adja meg a Hadoop, felületeihez.
 
-   * **-fájlok**: a megadott fájlokat ad hozzá a MapReduce-feladatot.
+   * **-fájlok**: A MapReduce-feladatot ad hozzá a megadott fájlokat.
 
-   * **-leképező**: arra utasítja a Hadoop leképezőjét használandó fájlt.
+   * **-leképező**: Arra utasítja a Hadoop leképezőjét használandó fájlt.
 
-   * **-Nyomáscsökkentő**: arra utasítja a Hadoop a nyomáscsökkentő használandó fájlt.
+   * **-Nyomáscsökkentő**: Arra utasítja a Hadoop a nyomáscsökkentő használandó fájlt.
 
-   * **– a bemeneti**: A bemeneti fájl, amely azt kell számolni a szavak.
+   * **– a bemeneti**: A bemeneti fájl, amely a szavakat azt kell száma.
 
-   * **-kimenet**: A írt a kimeneti könyvtárat.
+   * **-kimenet**: A kimenet írt könyvtár.
 
     A MapReduce-feladatot működik, mivel a folyamat százalékként jelenik meg.
 
@@ -199,6 +199,6 @@ A következő PowerShell-parancsfájl használatával töltse fel a fájlokat, a
 
 Most, hogy, hogyan MapRedcue folyamatos átviteli feladatok használata a HDInsight, egyéb módon az Azure HDInsight használata az alábbi hivatkozások segítségével.
 
-* [A Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
+* [Az Apache Hive használata a HDInsight](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
 * [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3da427974c4a270a7a743bb81d2376cf61b77390
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335061"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436908"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon
 
@@ -37,6 +37,9 @@ B2B-együttműködés felhasználók hozzáadása a címtárhoz, kövesse az al�
 
    ![Látható, ahol új vendégfelhasználó a felhasználói felületen](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
+   > [!NOTE]
+   > A **új vendégfelhasználó** beállítás akkor is elérhető a **szervezeti kapcsolatok** lapot. A **Azure Active Directory**alatt **kezelés**válassza **szervezeti kapcsolatok**.
+
 5. A **Felhasználónév** alatt adja meg a külső felhasználó e-mail-címét. Ha szeretné, üdvözlő üzenetet is megadhat. Példa:
 
    ![Látható, ahol új vendégfelhasználó a felhasználói felületen](./media/add-users-administrator/InviteGuest.png) 
@@ -59,7 +62,7 @@ Ha a B2B-együttműködés felhasználók manuális hozzáadása egy csoporthoz,
 3. A **kezelés**válassza **csoportok**.
 4. Válasszon ki egy csoportot (vagy kattintson a **új csoport** hozzon létre egy újat). Érdemes felvenni a csoport leírását, hogy a csoport tartalmazza-e a B2B vendégfelhasználókat.
 5. Válassza ki **tagok**. 
-6. Tegye a következők egyikét:
+6. Tegye a következők valamelyikét:
    - Ha a Vendég felhasználó már létezik a címtárban, keresse meg a B2B-felhasználó. Válassza ki a felhasználót, és kattintson a **kiválasztása** a felhasználó hozzáadása a csoporthoz.
    - Ha a vendégfelhasználó még nem létezik a címtárban, felkínáljuk számukra az a csoport e-mail-címükkel írja be a keresőmezőbe, írja be egy személyes üzenetet, majd kattintson **kiválasztása**. A meghívó automatikusan kerül ki a meghívott felhasználó.
      
@@ -81,7 +84,7 @@ B2B együttműködési felhasználókat ad hozzá egy alkalmazást az Azure AD-r
 
 6. Válassza ki **felhasználó hozzáadása**.
 7. A **hozzárendelés hozzáadása**válassza **felhasználók és csoportok**.
-8. Tegye a következők egyikét:
+8. Tegye a következők valamelyikét:
    - Ha a Vendég felhasználó már létezik a címtárban, keresse meg a B2B-felhasználó. Válassza ki a felhasználót, kattintson a **kiválasztása**, és kattintson a **hozzárendelése** a felhasználó hozzáadása az alkalmazáshoz.
    - Ha a vendégfelhasználó még nem létezik a címtárban található **tag kiválasztása vagy egy külső felhasználó meghívása**, írja be a felhasználó e-mail címét. Az üzenet mezőbe írja be egy személyes üzenetet. Az üzenet mező alatt kattintson **meghívása**.
            

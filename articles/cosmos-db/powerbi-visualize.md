@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 5f75ada1d37f6bd5cb2d870dd5169de7a4844eb3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fa4e6aa1274609ebf990a02d41f63541668d3b37
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869048"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438710"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 
@@ -34,7 +34,19 @@ Power BI-oktatóanyagban szereplő utasítások követése, előtt, hogy a köve
 
 * Töltse le a [mexikói mintaadatok](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) a Githubról.
 
-* [Hozzon létre egy Azure Cosmos DB-adatbázisfiók](https://azure.microsoft.com/documentation/articles/create-account/) és használatával a Mexikói adatok importálása a [Azure Cosmos DB adatáttelepítési eszköz](import-data.md).
+* [Hozzon létre egy Azure Cosmos DB-adatbázisfiók](https://azure.microsoft.com/documentation/articles/create-account/) és használatával a Mexikói adatok importálása a [Azure Cosmos DB adatáttelepítési eszköz](import-data.md). Amikor adatokat importál, fontolja meg a forrás és a célhoz az adatáttelepítés eszközzel a következő beállításokat:
+
+   * **Forrás paraméterek** 
+
+       * **Importálása:** JSON-fájl
+
+   * **Cél paraméterek** 
+
+      * **Kapcsolati karakterlánc:** `AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
+
+      * **Partíciókulcs:**  /ország 
+
+      * **Gyűjtemény átviteli sebesség:** 1000 
 
 A jelentéseket a powerbi.com webhelyen megosztásához egy fiókkal kell rendelkeznie a powerbi.com webhelyen.  A Power BI és a Power BI Pro kapcsolatos további információkért lásd: [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d64aa8b50cdde23d1bb8980510cfac202204f9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 11c68b61802f6c7b3755da71c176ea777f171e4c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262454"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409836"
 ---
 # <a name="query-containers-in-azure-cosmos-db"></a>Tárolók lekérdezése az Azure Cosmos DB-ben
 
@@ -20,7 +20,7 @@ Ez a cikk ismerteti, hogyan kérdezhet le egy (gyűjtemény, gráf vagy tábláz
 
 ## <a name="in-partition-query"></a>Partíción belüli lekérdezés
 
-A tárolók adatainak lekérdezésekor a Cosmos DB automatikusan átirányítja a lekérdezést a szűrőben meghatározott partíciókulcs-értékeknek megfelelő partíciókhoz (ha vannak ilyenek). Ezt a lekérdezést például az „XMS-0001” partíciókulcsot tartalmazó partícióhoz irányítja.
+Tárolók, adatokat kérdezhet le, ha a lekérdezés a partíció megadott szűrőjének, amikor az Azure Cosmos DB automatikusan átirányítja a lekérdezést a szűrőben meghatározott partíciós kulcsérték-értékeknek megfelelő partíciókhoz. A következő lekérdezés például az "XMS-0001" partíciókulcs-értékkel tartozó összes dokumentumot tartalmazó DeviceId partíció lesz irányítva.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -58,9 +58,9 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- A **MaxDegreeOfParallelism**: beállítja a tároló partícióihoz egyszerre létrehozott hálózati kapcsolatok maximális számát. Ha ennek a tulajdonságnak az értéke -1, a párhuzamosság szintjét az SDK felügyeli. Ha a MaxDegreeOfParallelism érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a tároló partícióihoz.
+- **Maxanalyticsunits**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ennek a tulajdonságnak az értéke -1, a párhuzamosság szintjét az SDK felügyeli. Ha a MaxDegreeOfParallelism érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a tároló partícióihoz.
 
-- **MaxBufferedItemCount**: kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha kihagyja ezt a beállítást, vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
+- **MaxBufferedItemCount**: Ügyletek ügyféloldali memóriahasználat és a késés lekérdezése. Ha kihagyja ezt a beállítást, vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
 
 Ha a gyűjtemény állapota azonos, a párhuzamos lekérdezés ugyanazon sorrendben adja vissza az értékeket, mint egy soros lekérdezés esetén. A rendezési operátorokat (ORDER BY és/vagy TOP) is tartalmazó, több partícióra kiterjedő lekérdezések végrehajtásakor az Azure Cosmos DB SDK párhuzamosan hajtja végre a lekérdezéseket a partíciókon, majd egyesíti a részlegesen tárolt eredményeket az ügyféloldalon, ezáltal globálisan rendezett eredményeket ad vissza.
 

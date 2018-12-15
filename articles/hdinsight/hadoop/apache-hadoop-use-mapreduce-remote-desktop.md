@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634481"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435786"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>A távoli asztalon keresztül a HDInsight az Apache Hadoop MapReduce használata
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 Ebből a cikkből megismerheti, hogyan és a egy Apache Hadoop HDInsight-fürtön a távoli asztal használatával csatlakozhat, és a Hadoop-paranccsal futtassa a MapReduce-feladatok lesz.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A távoli asztal csak akkor használható a Windows-alapú HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > A HDInsight 3.4 vagy újabb, lásd: [MapReduce használata az ssh-val](apache-hadoop-use-mapreduce-ssh.md) információ a HDInsight-fürthöz csatlakozik, és a MapReduce-feladatok futtatása.
@@ -40,7 +40,7 @@ Amikor az asztalon, a HDInsight-fürthöz csatlakozik, használja az alábbi lé
 
 1. A HDInsight asztaláról indítsa el a **Hadoop parancssor**. Ekkor megnyílik egy új parancssort a **c:\apps\dist\hadoop-&lt;verziószám >** könyvtár.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A verziószám módosítja a Hadoop frissítésekor. A **HADOOP_HOME** környezeti változó segítségével keresse meg az elérési utat. Ha például `cd %HADOOP_HOME%` a Hadoop-címtárban, könyvtárak, tudni, hogy a verziószám nem változik.
    >
    >
@@ -94,5 +94,5 @@ HDInsight MapReduce-feladatok általános tájékoztatást:
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8111d80d0888455fbdf3ccf37e723fe348a62bee
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236721"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435004"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
 Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
@@ -66,7 +66,10 @@ Igen. Amikor állapotú-e egy feladat megszakítható **létrehozása** vagy **s
 A befejezett feladatok állapotát megtekintheti a 90 napig. Befejezett feladatok 90 nap után törlődnek.
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Ha el szeretne importálni vagy exportálni a több mint 10 meghajtók, mit kell tennem?
-Egy importálási vagy exportálási feladatot egyetlen feladatban csak 10 meghajtók hivatkozhat. Több mint 10 meghajtók szállításra, több feladatot kell létrehoznia. Ugyanazon feladathoz hozzárendelt meghajtók együtt kell Önnek egy csomagban található. További információkért és útmutatóért adatkapacitás több lemezre kiterjedő Amikor importálja a feladatok, forduljon a Microsoft bulkimport@microsoft.com.                                                              
+Egy importálási vagy exportálási feladatot egyetlen feladatban csak 10 meghajtók hivatkozhat. Több mint 10 meghajtók szállításra, több feladatot kell létrehoznia. Ugyanazon feladathoz hozzárendelt meghajtók együtt kell Önnek egy csomagban található. További információkért és útmutatóért adatkapacitás több lemezre kiterjedő Amikor importálja a feladatok, forduljon a Microsoft bulkimport@microsoft.com. 
+
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>A feltöltött blobon "Bérlet lejárt" állapotát jeleníti meg. Mit tegyek?
+A "Bérlet lejárt" mező figyelmen kívül hagyhatja. Importálási/exportálási veszi bérleti a blob győződjön meg arról, hogy más folyamat nem frissíthető a blob egyidejűleg történő feltöltés közben. Bérlet lejárt azt jelenti, hogy importálási/exportálási már nem tölti fel rá, és a blob használható. 
 
 ## <a name="shipping-disks"></a>A szállítási címhez tartozó lemezek
 

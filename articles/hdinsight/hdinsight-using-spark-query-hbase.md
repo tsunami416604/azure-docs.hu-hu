@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277900"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408864"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>A Spark használata HBase-adatok írására és olvasására
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
-Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi és helyez) vagy egy SQL-szintaxis használatával Phoenix lekérdezése követi. Az Apache is biztosít a Spark HBase összekötőt, ami egy kényelmes és nagy teljesítményű alternatív HBase által tárolt adatok lekérdezéséhez és módosításához.
+Az Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi és helyez) vagy egy SQL-szintaxis használatával az Apache Phoenix lekérdezése követi. Az Apache is biztosít az Apache Spark HBase-összekötőt, ami egy kényelmes és nagy teljesítményű alternatív HBase által tárolt adatok lekérdezéséhez és módosításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,9 +38,9 @@ A Spark-fürt lekérdezni a HDInsight-fürt engedélyezése magas szintű folyam
 5. Adjon meg egy katalógus, amely leképezi a sémát, Spark, HBase.
 6. A HBase-adatok az RDD vagy DataFrame API-k használatával kommunikálhat.
 
-## <a name="prepare-sample-data-in-hbase"></a>A HBase mintaadatok létrehozása
+## <a name="prepare-sample-data-in-apache-hbase"></a>Adatmintavétel az Apache HBase előkészítése
 
-Ebben a lépésben létrehozásához és a egy egyszerű, amely ezután lekérdezheti a Spark használata HBase tábla feltöltéséhez.
+Ebben a lépésben létrehozásához, és az Apache HBase, amely ezután lekérdezheti a Spark használatával egy egyszerű táblázat feltöltéséhez.
 
 1. Csatlakozzon az SSH-val HBase-fürt főcsomópontjához. További információkért lásd: [HDInsight SSH használatával csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
 2. A HBase rendszerhéj futtassa:
@@ -132,7 +132,7 @@ Ebben a lépésben létrehozásához és a egy egyszerű, amely ezután lekérde
 
 ## <a name="define-a-catalog-and-query"></a>Katalógus- és a lekérdezés definiálása
 
-Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a sémát, Spark, HBase. 
+Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a séma az Apache HBase, Apache Spark rendszerből. 
 
 1. A Spark nyílt rendszerhéjban futtassa a következő `import` utasításokat:
 
@@ -244,4 +244,4 @@ Ebben a lépésben megadhat egy katalógus objektum, amely leképezi a sémát, 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Spark-HBase-összekötő](https://github.com/hortonworks-spark/shc)
+* [Az Apache Spark, HBase-összekötő](https://github.com/hortonworks-spark/shc)

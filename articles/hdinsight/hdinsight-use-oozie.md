@@ -10,17 +10,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f585a9d89418f15d9e5c08ae36b70791eca54219
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bbe61477a9841173fb47267b53da1b5cf75d9924
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017150"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410295"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Oozie használata a Hadooppal megadásához és a HDInsight a munkafolyamat futtatása
+# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a HDInsight Apache Oozie használata
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Ismerje meg, hogyan lehet Apache Oozie segítségével a munkafolyamatokat és a munkafolyamat futtatása a HDInsight. Az Oozie-koordinátor kapcsolatos további információkért lásd: [időalapú Hadoop Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]. Azure Data Factory kapcsolatban lásd: [Hive és a Data Factory és a Pig használata a][azure-data-factory-pig-hive].
+Ismerje meg, hogyan lehet Apache Oozie segítségével a munkafolyamatokat és a munkafolyamat futtatása a HDInsight. Az Oozie-koordinátor kapcsolatos további információkért lásd: [időalapú Apache Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]. Azure Data Factory kapcsolatban lásd: [Apache Pig használata és az Apache Hive, a Data Factory][azure-data-factory-pig-hive].
 
 Az Apache Oozie egy munkafolyamat/koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatok Apache MapReduce, Apache Pig, Apache Hive- és Apache sqoop használatával. Is használható a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag utasításait követve meg, hogy a munkafolyamat két művele
 
 ![A munkafolyamat diagramja][img-workflow-diagram]
 
-1. Egy Hive-művelet megszámlálni az egyes log-szintű írja be a log4j file egy HiveQL-parancsfájlt futtatja. Minden egyes log4j fájl, amely megjeleníti a típusát és súlyosságát, például [NAPLÓZÁSI szint] mező tartalmazó mezők üzletági áll:
+1. Egy Hive-művelet megszámlálni az egyes log-szintű írjon be egy Apache Log4j file egy HiveQL-parancsfájlt futtatja. Minden egyes log4j fájl, amely megjeleníti a típusát és súlyosságát, például [NAPLÓZÁSI szint] mező tartalmazó mezők üzletági áll:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -44,11 +44,11 @@ Ez az oktatóanyag utasításait követve meg, hogy a munkafolyamat két művele
         [TRACE] 816
         [WARN]  4
    
-    További információ a Hive-ról: [A Hive használata a HDInsightban][hdinsight-use-hive].
-2. A Sqoop művelet exportálja a HiveQL kimenet egy Azure SQL database egyik táblájába. Sqoop használatával kapcsolatos további információkért lásd: [Hadoop Sqoop használata a HDInsight-][hdinsight-use-sqoop].
+    Hive-ról további információkért lásd: [Apache Hive használata a HDInsight][hdinsight-use-hive].
+2. A Sqoop művelet exportálja a HiveQL kimenet egy Azure SQL database egyik táblájába. Sqoop használatával kapcsolatos további információkért lásd: [használata Apache sqoop használatával HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
-> Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított Hadoop-fürtverziók újdonságai?] [hdinsight-versions].
+> [!NOTE]  
+> Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított az Apache Hadoop-fürtverziók újdonságai?] [hdinsight-versions].
 > 
 > 
 
@@ -613,16 +613,16 @@ Itt látható egy minta PowerShell-parancsfájlt, amelyet használhat:
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
+Ebben az oktatóanyagban megtudhatta, hogyan lehet Apache Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
 
-* [Időalapú Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]
-* [Hadoop első lépései a HDInsight Hive-val elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
+* [Időalapú Apache Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]
+* [Az Apache Hadoop-használatának Apache Hive a HDInsight elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
 * [Az Azure Blob storage használata a HDInsight][hdinsight-storage]
 * [Felügyelheti a HDInsight PowerShell használatával][hdinsight-admin-powershell]
-* [A HDInsight Hadoop-feladatok adatok feltöltése][hdinsight-upload-data]
-* [A Sqoop használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-sqoop]
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-hive]
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-pig]
+* [A HDInsight Apache Hadoop-feladatok adatok feltöltése][hdinsight-upload-data]
+* [A HDInsight az Apache Hadoop Apache Sqoop használata][hdinsight-use-sqoop]
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-hive]
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563

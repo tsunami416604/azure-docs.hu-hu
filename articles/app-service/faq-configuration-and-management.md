@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 2c468ec8bfa9217cb8d045bf0129da28e46d8229
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388969"
+ms.locfileid: "53408884"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -280,11 +280,11 @@ Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resour
 ## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Hogyan hitelesítési és engedélyezési működik az App Service szolgáltatásban?
 
 Hitelesítés és engedélyezés az App Service részletes dokumentációjáért lásd: azonosítsa a szolgáltató bejelentkezések különböző docs:
-* [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Google](app-service-mobile-how-to-configure-google-authentication.md)
-* [Microsoft-fiók](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Azure Active Directory](configure-authentication-provider-aad.md)
+* [Facebook](configure-authentication-provider-facebook.md)
+* [Google](configure-authentication-provider-google.md)
+* [Microsoft-fiók](configure-authentication-provider-microsoft.md)
+* [Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományban, a saját Azure-alapú webes alkalmazás egyéni tartomány?
 

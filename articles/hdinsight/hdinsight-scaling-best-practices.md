@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948127"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407881"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
 HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelheti vagy csökkentheti a feldolgozó csomópontok a fürtben. Ez lehetővé teszi, hogy a fürt óra múlva, vagy a hétvégeken, csökkenthető és felfüggeszthető kibontásához során üzleti megnövekedett igényeket kell kielégíteni.
 
-Például ha van néhány kötegelt feldolgozás naponta egyszer vagy egy hónapban egyszer történik, a HDInsight-fürt is vertikálisan fel néhány percet, hogy az ütemezett esemény előtt, a memória és CPU-számítási teljesítményt. Skálázás a PowerShell-parancsmaggal automatizálható [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Később Miután befejeződött a feldolgozás, és a használati újra leáll, vertikális kevesebb munkavégző csomópontot a HDInsight-fürt.
+Például ha van néhány kötegelt feldolgozás naponta egyszer vagy egy hónapban egyszer történik, a HDInsight-fürt is vertikálisan fel néhány percet, hogy az ütemezett esemény előtt, a memória és CPU-számítási teljesítményt. Skálázás a PowerShell-parancsmaggal automatizálható [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Később Miután befejeződött a feldolgozás, és a használati újra leáll, vertikális kevesebb munkavégző csomópontot a HDInsight-fürt.
 
 * A fürt méretezése [PowerShell](hdinsight-administer-use-powershell.md):
 
@@ -77,7 +77,7 @@ Példa:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>Az újraegyensúlyozás HBase-fürt
+## <a name="rebalancing-an-apache-hbase-cluster"></a>Az Apache HBase-fürt újraegyensúlyozása
 
 Régiókiszolgálók automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése után néhány percen belül. Manuálisan elosztása régióbeli kiszolgálók, használja az alábbi lépéseket:
 
@@ -99,11 +99,11 @@ Ahogy korábban említettük, a folyamatban lévő vagy futó feladatok egy vert
 
 ![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-Ha a fürt egy feldolgozó csomópont, a minimális le az előző képen látható módon csökkenti méretét, HDFS előfordulhat, hogy letöltés állapottal csökkentett módban, ha a munkavégző csomópontok javítása miatt, vagy közvetlenül a skálázási művelet után indulnak újra.
+Ha a fürt egy feldolgozó csomópont, a minimális le az előző képen látható módon csökkenti méretét, az Apache HDFS előfordulhat, hogy letöltés állapottal csökkentett módban, ha a munkavégző csomópontok javítása miatt, vagy közvetlenül a skálázási művelet után indulnak újra.
 
 Az elsődleges ennek oka az, hogy a Hive néhány használja `scratchdir` fájlokat, és alapértelmezés szerint három replika készül, mindegyik blokk vár, de csak egy replika lehetséges, ha a minimális egy munkavégző csomópont vertikális leskálázás. Ennek következtében a lévő fájlokat a `scratchdir` válnak *under-replikált*. Emiatt a HDFS csökkentett módban marad, a szolgáltatások a skálázási művelet utáni újraindításakor.
 
-Ha egy vertikális leskálázási kísérlet történik, HDInsight az Ambari felügyeleti felületek, először leszerelni a extra nemkívánatos feldolgozó csomópontokat, amely a HDFS-blokkok replikálja más online feldolgozó csomópontokat, utána pedig biztonságosan a fürt megbízhatóak. HDFS csökkentett módban hiányzóra változik a karbantartási időszak alatt, és állapotba kerülnek, a méretezés befejezése után. Ezen a ponton, hogy HDFS csökkentett módban letöltés állapottal.
+Ha egy vertikális leskálázási kísérlet történik, HDInsight az Apache Ambari felügyeleti felületek, először leszerelni a extra nemkívánatos feldolgozó csomópontokat, amely a HDFS-blokkok replikálja más online feldolgozó csomópontokat, utána pedig biztonságosan a fürt megbízhatóak. HDFS csökkentett módban hiányzóra változik a karbantartási időszak alatt, és állapotba kerülnek, a méretezés befejezése után. Ezen a ponton, hogy HDFS csökkentett módban letöltés állapottal.
 
 HDFS van konfigurálva egy `dfs.replication` beállítása a 3-ból. Így az ideiglenes fájlok azokat az adatblokkokat under-replikált, amikor legalább három feldolgozó csomópont online, mert nincsenek elérhető minden blokk nem várt három másolata.
 
@@ -117,13 +117,13 @@ A csökkentett mód elhagyása, után manuálisan eltávolíthatja az ideiglenes
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>Példahibák, amikor a csökkentett mód be van kapcsolva
 
-* H070 nem Hive-munkamenetet. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre**  /tmp/hive/hive / 819c215c - 6d 87-4311 – 97c 8-4f0b9d2adcf0. **Csomópont neve csökkentett módban van**. A jelzett blokkokat 75 kell elérni a küszöbérték teljes blokkok 87 0.9900 további 12 blokkokat. A 10 élő adatcsomópontok száma elérte a minimális száma 0. A csökkentett mód ki lesz kapcsolva automatikusan után a rendszer elérte a küszöbértékeket.
+* H070 nem Hive-munkamenetet. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Könyvtár nem hozható létre** /tmp/hive/hive/819c215c-6d 87-4311 – 97 c 8-4f0b9d2adcf0. **Csomópont neve csökkentett módban van**. A jelzett blokkokat 75 kell elérni a küszöbérték teljes blokkok 87 0.9900 további 12 blokkokat. A 10 élő adatcsomópontok száma elérte a minimális száma 0. A csökkentett mód ki lesz kapcsolva automatikusan után a rendszer elérte a küszöbértékeket.
 
-* Adatbázisok H100 beküldése sikertelen utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: [hn0-clustername.servername hn0-clustername.servername.internal.cloudapp.net:10001 csatlakozni . Internal.cloudapp.NET/1.1.1.1] nem sikerült: **kapcsolat elutasítva**
+* Adatbázisok H100 beküldése sikertelen utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Csatlakozás hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. nem sikerült Internal.cloudapp.NET/1.1.1.1]: **Kapcsolat elutasítva**
 
-* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net-re: 10001: org.apache.thrift.transport.TTransportException: nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: **kapcsolat elutasítva**
+* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net-re: 10001: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: **Kapcsolat elutasítva**
 
-* A Hive-naplókban található: [fő] WARN: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – indítása a hiveserver2-n keresztül kísérlet 21., a hiba újra fog próbálkozni 60 másodperc java.lang.RuntimeException: engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csomópont neve csökkentett módban van**.
+* A Hive naplókból: [Main] WARN: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – indítása a hiveserver2-n keresztül kísérlet 21., a hiba újra fog próbálkozni 60 másodperc java.lang.RuntimeException: Engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csomópont neve csökkentett módban van**.
     A jelzett blokkokat 0 van szüksége további 9 blokkok elérni a teljes blokkok 9 0.9900 küszöbértéket.
     A 10 élő adatcsomópontok száma elérte a minimális száma 0. **A csökkentett mód ki lesz kapcsolva automatikusan után a rendszer elérte a küszöbértékek**.
     at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
@@ -151,7 +151,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 
 ![Biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
-> [!NOTE]
+> [!NOTE]  
 > A `-D` kapcsoló szükség, mert a rendszer az alapértelmezett fájlrendszert a HDInsight az Azure Storage vagy az Azure Data Lake Store. `-D` Itt adhatja meg, hogy a parancsok végrehajtása a helyi HDFS-fájlrendszer ellen.
 
 Ezután tekintheti meg egy jelentést, amely a HDFS-állapot részleteit jeleníti meg:
@@ -251,7 +251,7 @@ Távolítsa el az ideiglenes fájlok, amely eltávolítja a blokk replikációs 
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a parancs tönkretehetik a Hive, ha egyes feladatok továbbra is futnak.
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>Csökkentett üzemmódban miatt under-replikált blokkok első elakadt a HDInsight megakadályozása
@@ -327,4 +327,4 @@ Az utolsó lehetőség a HDFS megadja a csökkentett mód a ritka esetben kapcso
 
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)
 * [Fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)

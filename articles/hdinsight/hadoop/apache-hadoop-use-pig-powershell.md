@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 1e9f6778f12f4f6260bfc20c3a78f7929f13405b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 84780d7c432e818153f964522063f29d8540e0ec
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634532"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434307"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>A HDInsight Apache Pig-feladatok futtatása az Azure PowerShell használatával
 
@@ -22,29 +22,29 @@ ms.locfileid: "51634532"
 
 Ez a dokumentum az Azure PowerShell használata egy HDInsight-fürtön az Apache Hadoop Apache Pig-feladatok elküldése példát tartalmaz. A Pig lehetővé teszi a modellek adatátalakításokat írni MapReduce-feladatok (a Pig latin betűs) nyelv használatával helyett leképezése, és csökkentheti a funkciók.
 
-> [!NOTE]
-> Ez a dokumentum nem biztosít a Pig Latin utasításokkal a példákban használt mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [a Pig használata a hadooppal a HDInsight](hdinsight-use-pig.md).
+> [!NOTE]  
+> Ez a dokumentum nem biztosít a Pig Latin utasításokkal a példákban használt mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Előfeltételek
 
 * **Egy Azure HDInsight-fürt**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Munkaállomás Azure PowerShell-lel**.
 
-## <a id="powershell"></a>A Pig-feladat futtatása
+## <a id="powershell"></a>Az Apache Pig-feladat futtatása
 
 Az Azure PowerShell biztosít *parancsmagok* , amelyek engedélyezik a HDInsight Pig-feladatok távoli futtatását. Belsőleg, használja a PowerShell a REST-hívások [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) a HDInsight-fürtön futó.
 
 A következő parancsmagok használhatók, amikor Pig-feladatokat futtat egy távoli HDInsight-fürtön:
 
-* **Connect-AzureRmAccount**: hitelesíti az Azure PowerShell az Azure-előfizetéshez.
-* **Új AzureRmHDInsightPigJobDefinition**: létrehoz egy *feladat definíciójának* -a megadott Pig Latin utasításokkal.
-* **Start-AzureRmHDInsightJob**: a feladat definíciója HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
-* **Wait-AzureRmHDInsightJob**: a feladat objektumot használ a feladat állapotának ellenőrzéséhez. Arra vár, amíg a feladat befejeződött, vagy a rendszer túllépte a várakozási idő.
-* **Get-AzureRmHDInsightJobOutput**: a feladat kimenetének beolvasása.
+* **Connect-AzureRmAccount**: Az Azure-előfizetéshez az Azure PowerShell hitelesíti.
+* **Új AzureRmHDInsightPigJobDefinition**: Létrehoz egy *feladat definíciójának* -a megadott Pig Latin utasításokkal.
+* **Start-AzureRmHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* **Wait-AzureRmHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződött, vagy a rendszer túllépte a várakozási idő.
+* **Get-AzureRmHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
 
 A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat használja a HDInsight-fürtön futó feladatok futtatásához.
 
@@ -90,9 +90,9 @@ Látható, az Azure PowerShell Pig-feladatok futtatásához egy HDInsight-fürt�
 ## <a id="nextsteps"></a>Következő lépések
 A HDInsight Pig általános tájékoztatást:
 
-* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
 Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)

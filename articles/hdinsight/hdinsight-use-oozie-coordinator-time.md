@@ -10,21 +10,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 154003f1addea9753234dbe2392ce932177d2d3a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 422ae24357290a782b05ab7e5580c09e8472ddf8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012062"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408663"
 ---
-# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Oozie-koordinátor használata a HDInsight Hadoop-keretrendszerrel definiálja munkafolyamatait, és a feladatok koordinálása
-Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [az Oozie használata a HDInsight] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Hive és a Data Factory és a Pig használata a](../data-factory/transform-data.md).
+# <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Apache Oozie-koordinátor használata a HDInsight Apache hadoop-keretrendszer határozza meg a munkafolyamatok, és a feladatok koordinálása
+Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [Apache Oozie használata a HDInsight-] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Apache Pig használata és az Apache Hive, a Data Factory](../data-factory/transform-data.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a cikk egy Windows-alapú HDInsight-fürt szükséges. Az Oozie, beleértve az időalapú feladatok egy Linux-alapú fürt használatával kapcsolatos információkat lásd: [használja az Oozie és munkafolyamat futtatása a Linux-alapú HDInsight Hadoop-keretrendszerrel](hdinsight-use-oozie-linux-mac.md)
 
 ## <a name="what-is-oozie"></a>Mi az Oozie
-Az Apache Oozie egy munkafolyamat/koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatok Apache MapReduce, Apache Pig, Apache Hive- és Apache sqoop használatával. Is használható a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
+Az Apache Oozie egy munkafolyamat/koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és az Apache Hadoop MapReduce, Apache Pig, Apache Hive- és Apache sqoop használatával támogatja a Hadoop-feladatokat. Is használható a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
 Az alábbi képen látható a munkafolyamat fogja végrehajtani:
 
@@ -32,7 +32,7 @@ Az alábbi képen látható a munkafolyamat fogja végrehajtani:
 
 A munkafolyamat két műveletet tartalmaz:
 
-1. Egy Hive-művelet megszámlálni az egyes log-szintű típus egy log4j naplófájlban a HiveQL-parancsfájlt futtatja. A mezők típusát és súlyosságát, például megjelenítése [NAPLÓZÁSI szint] mező tartalmazó sor log4j naplófájlok áll:
+1. Egy Hive-művelet fut. a HiveQL-parancsfájlt megszámlálni az egyes log-szintű írjon be egy Apache log4j naplófájlok. A mezők típusát és súlyosságát, például megjelenítése [NAPLÓZÁSI szint] mező tartalmazó sor log4j naplófájlok áll:
 
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -48,10 +48,10 @@ A munkafolyamat két műveletet tartalmaz:
         [TRACE] 816
         [WARN]  4
 
-    További információ a Hive-ról: [A Hive használata a HDInsightban][hdinsight-use-hive].
-2. A Sqoop művelet exportálja a HiveQL művelet kimenete egy Azure SQL database egyik táblájába. Sqoop használatával kapcsolatos további információkért lásd: [Sqoop használata a HDInsight-][hdinsight-use-sqoop].
+    Hive-ról további információkért lásd: [Apache Hive használata a HDInsight][hdinsight-use-hive].
+2. A Sqoop művelet exportálja a HiveQL művelet kimenete egy Azure SQL database egyik táblájába. Sqoop használatával kapcsolatos további információkért lásd: [használata Apache sqoop használatával HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
+> [!NOTE]  
 > Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított fürtverziók újdonságai?] [hdinsight-versions].
 >
 >
@@ -61,7 +61,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Munkaállomás Azure PowerShell-lel**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnik. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > Kérjük, kövesse az alábbi cikkben leírt lépéseket az Azure PowerShell legújabb verziójának telepítéséhez: [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell letöltése és konfigurálása). Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
@@ -87,10 +87,10 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     <tr><td>SQL-adatbázis neve</td><td>$sqlDatabaseName</td><td></td><td>Az Azure SQL database, amelyhez a sqoop használatával exportálja az adatokat. </td></tr>
     </table>
 
-  > [!NOTE]
+  > [!NOTE]   
   > Alapértelmezés szerint az Azure SQL database az Azure-szolgáltatások, például az Azure HDInsight engedélyezi a csatlakozást. Ha a tűzfal beállítás nincs engedélyezve, engedélyeznie kell azt az Azure Portalról. Egy SQL-adatbázis létrehozása, és a tűzfal-szabályok konfigurálásával kapcsolatos útmutatást lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-get-started].
 
-> [!NOTE]
+> [!NOTE]  
 > Kitöltés a táblázatok értékeit. Az oktatóanyag a hasznos lesz.
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie-munkafolyamatokkal, és a kapcsolódó HiveQL-parancsfájlt megadása
@@ -103,8 +103,8 @@ A Hive-művelet a munkafolyamat meghívja a HiveQL-parancsfájlt. A parancsfájl
 3. **A log4j naplófájlok helyét**. A mezőhatároló van ",". Az alapértelmezett sor határoló "\n". Külső Hive-tábla elkerülése érdekében az adatfájl távolít el az eredeti helyről, abban az esetben, ha szeretné futtatni az Oozie-munkafolyamatokkal többször szolgál.
 4. **A FELÜLÍRÁSA INSERT utasítás** számát a log4j Hive-táblába, és minden napló-szintű típusok menti a kimenetet egy Azure Blob tárolási helyére.
 
-> [!NOTE]
-> Nincs olyan ismert Hive útvonallal kapcsolatos probléma. Az Oozie-feladatok elküldésekor futtatni fogja ezt a problémát. A TechNet Wikin található a következő útmutatót: a probléma kijavítása: [HDInsight Hive-hiba: nem lehet átnevezni][technetwiki-hive-error].
+> [!NOTE]  
+> Nincs olyan ismert Hive útvonallal kapcsolatos probléma. Az Oozie-feladatok elküldésekor futtatni fogja ezt a problémát. Az utasításokat a probléma kijavítása a TechNet Wikin található: [HDInsight Hive-hiba: Nem lehet átnevezni][technetwiki-hive-error].
 
 **A HiveQL-parancsfájlt, a munkafolyamat által meghívandó meghatározása**
 
@@ -262,7 +262,7 @@ A szintaxis a következő:
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [!NOTE]
+> [!NOTE]  
 > Csak a *wasb: / /* szintaxis a HDInsight fürt 3.0-s verzió támogatott. A korábbi *asv: / /* szintaxis HDInsight 2.1-es és 1.6 fürtök támogatott, de nem támogatott a HDInsight 3.0 fürtök.
 >
 > A wasb: / / a virtuális elérési utat. További információ: [az Azure Blob storage a HDInsight][hdinsight-storage].
@@ -287,7 +287,7 @@ Néhány dolgot végre kell tudni a Hive-belső és külső táblák:
 * A CREATE EXTERNAL TABLE parancs nem helyezi át a fájlt.
 * A CREATE EXTERNAL TABLE parancs a mappában, a hely záradékban megadott almappákban nem teszi lehetővé. Ez az az oka, hogy miért az oktatóanyag a sample.log fájlt másolatot készít.
 
-További információkért lásd: [HDInsight: Hive belső és külső táblák bevezető][cindygross-hive-tables].
+További információkért lásd: [HDInsight: Az Apache Hive belső és külső táblák bevezető][cindygross-hive-tables].
 
 **Az oktatóanyag előkészítéséhez**
 
@@ -300,7 +300,7 @@ További információkért lásd: [HDInsight: Hive belső és külső táblák b
 
     Az Azure-fiók hitelesítő adatainak megadását kéri. Ez az előfizetés-kapcsolat hozzáadása módszer túllépi az időkorlátot, és 12 óra elteltével kell újra futtassa a parancsmagot.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ha több Azure-előfizetéssel rendelkezik, és az alapértelmezett előfizetést nem szeretné használni, azt a <strong>Select-AzureSubscription</strong> parancsmagot, hogy válasszon ki egy előfizetést.
 
 3. Másolja a parancsfájl panelen a következő szkriptet, és állítsa az első hat változókat:
@@ -536,7 +536,7 @@ Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladato
     "@
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Az adatfájlban munkafolyamat küldésének képest jelentős különbség a változó **oozie.coord.application.path**. Amikor egy munkafolyamat-feladat elküldéséhez használhatja **oozie.wf.application.path** helyette.
 
 4. A szkript a következő hozzáfűzése. Ez a rész az Oozie webes szolgáltatás állapotát ellenőrzi:
@@ -578,7 +578,7 @@ Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladato
     }
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Egy munkafolyamat-feladat elküldésekor egy másik webszolgáltatás hívása indítsa el a feladatot, a feladat létrehozása után el kell végeznie. Ebben az esetben a koordinátor feladat elindul időpontig. A feladat automatikusan elindul.
 
 6. A szkript a következő hozzáfűzése. Ez a rész ellenőrzi az Oozie-feladat állapota:
@@ -713,9 +713,9 @@ Ebben az oktatóanyagban megtudhatta, hogyan adhat meg, az Oozie-munkafolyamatok
 * [Az Azure Blob storage használata a HDInsight][hdinsight-storage]
 * [HDInsight felügyelete az Azure PowerShell használatával][hdinsight-admin-powershell]
 * [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
-* [A Sqoop használata a HDInsightban][hdinsight-use-sqoop]
-* [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [A Pig használata a HDInsightban][hdinsight-use-pig]
+* [A HDInsight Apache Sqoop használata][hdinsight-use-sqoop]
+* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
+* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-java-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563

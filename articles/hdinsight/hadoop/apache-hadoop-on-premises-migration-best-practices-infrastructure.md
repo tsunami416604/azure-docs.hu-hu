@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6a1641a76d43cdbac6253e00ea35f70325870853
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6b0b047e74496fb9e58df05dc6118c5f376cb99d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993383"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437520"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
@@ -39,7 +39,7 @@ Lásd: [csomópont konfigurációs és virtuális gépek méretei fürtök alap�
 
 Minden HDInsight-verzió felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP), és a egy Hadoop-ökoszisztéma összetevők készlete áll. Lásd: [HDInsight Component-Versioning](../hdinsight-component-versioning.md) az összes HDInsight-összetevők és azok aktuális verziók.
 
-Az Ambari felhasználói felületén vagy az Ambari REST API-t használhatja a Hadoop-összetevők és a HDInsight-verziók ellenőrzéséhez.
+Az Apache Ambari felhasználói felületén vagy az Ambari REST API-t használhatja a Hadoop-összetevők és a HDInsight-verziók ellenőrzéséhez.
 
 Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökben, de nem a HDInsight-fürtök részét is hozzáadhatók, az élcsomóponton, vagy virtuális gépen az ugyanabban a virtuális hálózatban, mint a HDInsight-fürtöt. Egy külső Hadoop-alkalmazásokat, amelyek nem érhető el az Azure HDInsight rendszeren is telepíthető, az "Alkalmazások" lehetőséggel a HDInsight-fürt. Egyéni Hadoop-alkalmazások HDInsight-fürtön "szkriptműveletek" használatával telepíthető. Az alábbi táblázat néhány gyakori alkalmazások és a HDInsight-integrálási lehetőségek:
 
@@ -64,7 +64,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
-|Tableau|IaaS 
+|A tableau|IaaS 
 |Vízvonallal|HDInsight élcsomóponthoz
 |StreamSets|HDInsight Edge 
 |Palantir|IaaS 
@@ -90,7 +90,7 @@ HDInsight biztosítja a következő összetevők telepíthetők a HDInsight-für
 - Hive-kódtárak előzetes betöltése
 - Mono telepítése vagy frissítése
 
-> [!Note]
+> [!Note]  
 > HDInsight biztosít az egyéni hadoop-összetevők és a Parancsfájlműveletek segítségével telepített összetevőket közvetlen támogatást.
 
 A szkriptműveletek HDInsight alkalmazásként is az Azure piactéren tehetők közzé.
@@ -140,7 +140,9 @@ További információkért tekintse meg a cikket [Bootstrap használatával test
 
 Élcsomópontok hozhatók létre és törlése az Azure Portalon keresztül, és során is használható vagy után a fürt létrehozása. Az élcsomópont létrehozása után az élcsomóponthoz SSH használatával csatlakozhat, és futtassa az ügyfél eszközök eléréséhez a HDInsight Hadoop-fürtöt. Az élcsomópont ssh végpont van `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
+
 További információkért tekintse meg a cikket [üres élcsomópontok használata a HDInsight Apache Hadoop-fürtök](../hdinsight-apps-use-edge-node.md).
+
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Fürtök felfelé és lefelé méretezési funkciójával
 
@@ -188,7 +190,7 @@ Azure Virtual Network használata a HDInsight lehetővé teszi, hogy a következ
 
 HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban. HDInsight ad hozzá egy meglévő virtuális hálózatot, ha a meglévő hálózati biztonsági csoportok és a felhasználó által megadott útvonalak frissítenie kell, hogy a korlátlan hozzáférés [több IP-címek](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) az Azure-adatközpontban. Győződjön meg arról, hogy nem blokkolja a forgalmat is, a [portok](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) HDInsight szolgáltatásokat használják.
 
-> [!Note]
+> [!Note]  
 > HDInsight jelenleg nem támogatja a kényszerített bújtatás. Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. Kényszerített bújtatás egyik alhálózatában HDInsight telepítése előtt távolítsa el, vagy hozzon létre egy új alhálózatot a HDInsight. HDInsight még nem támogatja a kimenő hálózati kapcsolat korlátozása.
 
 További információkért tekintse át a következő cikkeket:

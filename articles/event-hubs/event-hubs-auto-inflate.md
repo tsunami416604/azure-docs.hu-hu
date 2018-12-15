@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cf0c7a5339d2880bbed01fc95b54038d15f1c2ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083534"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408161"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform. Mint ilyen az Event Hubs használatának gyakran nő, miután a szolgáltatás használatát. Az ilyen használatához szükséges, növelje az előre meghatározott [átviteli egységek](event-hubs-features.md#throughput-units) az Event Hubs méretezhető, és a nagyobb átviteli sebességre kezelésére. A **automatikus feltöltésről** az Event hubs szolgáltatás automatikusan felskálázással növelje átviteli egységek számát, a használattal kapcsolatos igények alapján. Átviteli egységek növelése megakadályozza, hogy a szabályozási forgatókönyvek, ahol:
@@ -47,15 +47,25 @@ Engedélyezheti vagy letilthatja az automatikus feltöltési az Event Hubs-névt
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>Automatikus feltöltés engedélyezése a portálon keresztül
 
-Event Hubs-névtér létrehozásakor engedélyezheti az automatikus feltöltési funkció:
+
+#### <a name="enable-at-the-time-of-creation"></a>A létrehozás időpontjában engedélyezése 
+Engedélyezheti az automatikus feltöltési funkció **Event Hubs-névtér létrehozásakor**:
  
 ![Automatikus feltöltés az idő eseményközpont létrehozása:](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Ez a beállítás engedélyezve van, a kis kezdje az átviteli egységek és a méret a használat növelése igényei szerint. A felső határ az infláció nem azonnal befolyásolja díjszabás, az óránként felhasznált átviteli egységek számától függ.
 
-Az automatikus feltöltési használatával is engedélyezheti a **méretezési** lehetőséget a beállítások panel a portálon:
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Automatikus feltöltés engedélyezése egy meglévő eseményközpont
+Engedélyezze az automatikus feltöltési funkció is, és módosítja annak beállításait az alábbi utasítások segítségével: 
  
-![Automatikus feltöltés a méretezési csoport lehetőséggel](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+1. Az a **Event Hubs-Namespace** lapon jelölje be **letiltott** alatt **átviteli egységek automatikus feltöltésről**.  
+
+    ![Válassza ki az átviteli egységek az Event Hubs-névtér oldalon](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. Az a **méretezési beállítások** lapra, jelölje be a jelölőnégyzetet a **engedélyezése** (ha az automatikus skálázási funkció nincs engedélyezve).
+
+    ![Válassza ki a engedélyezése](./media/event-hubs-auto-inflate/scale-settings.png)
+3. Adja meg a **maximális** átviteli egységek vagy a görgetősávok használata értéket a száma. 
+4. (nem kötelező) Frissítés a **minimális** Ez az oldal tetején lévő átviteli egységek száma. 
 
 
 > [!NOTE]

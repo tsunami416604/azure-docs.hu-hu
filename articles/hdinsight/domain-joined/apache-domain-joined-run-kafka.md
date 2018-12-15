@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633048"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438608"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse el átírni a `<ClusterName>` elemet a Kafka-fürtje nevére.
 
-    > [!NOTE] 
+    > [!NOTE]  
     > A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
 
 2. Jelentkezzen be az Azure Active Directory (AD) rendszergazdai hitelesítő adataival. Az Azure AD rendszergazdai hitelesítő adatok nem azonosak a HDInsight-fürt hitelesítő adataival vagy a Linux rendszerű HDInsight-csomópont SSH hitelesítő adataival.
@@ -74,7 +74,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
 
 4. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
@@ -113,17 +113,17 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. A Kafka közvetítő gazdagépeinek és a Zookeeper-gazdagépek beolvasását az alábbi parancsokkal végezheti el. Ha a rendszer kéri, adja meg a fürt rendszergazdai fiókjának jelszavát.
+3. A következő parancsokat használja, a Kafka-közvetítő gazdagépek és az Apache Zookeeper-gazdagépeket. Ha a rendszer kéri, adja meg a fürt rendszergazdai fiókjának jelszavát.
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd ezeket [a beállítási utasításokat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) **a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
+1. Kövesse a lépéseket 2. és 3 alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
 
 1. Futtassa az alábbi parancsot:
 
@@ -132,7 +132,7 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Csak a Kafka szolgáltatás folyamattulajdonosa, például a root írhat a `/config/topics` Zookeeper znode-csomópontokra. A Ranger-házirendeket nem kényszeríti ki a rendszer, ha egy nem kiemelt jogosultságú felhasználó hoz létre egy üzenettémakört. Ennek oka az, hogy a `kafka-topics.sh` szkript közvetlenül a Zookeeperrel kommunikál a témakör létrehozásához. A rendszer bejegyzéseket ad hozzá a Zookeeper-csomópontokhoz, amit a közvetítő oldalon a figyelők monitoroznak, és ennek megfelelően hoznak létre témaköröket. A hitelesítés nem végezhető el a Ranger beépülő modulon keresztül, a fenti parancs pedig a `sudo` használatával, a Kafka-közvetítőn keresztül lesz végrehajtva.
 
 
@@ -210,5 +210,5 @@ A konfigurált Ranger-házirendek szerint a **sales_user** felhasználó létreh
 
 ## <a name="next-steps"></a>További lépések
 
-* [Saját kulcs használata a Kafkában](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [Bevezetés a Hadoop-biztonság használatába az Enterprise Security Package esetében](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [Az Apache Kafka a saját kulcs használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

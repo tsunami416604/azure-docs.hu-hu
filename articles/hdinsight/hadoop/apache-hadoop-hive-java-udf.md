@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012487"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435072"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
@@ -213,7 +213,7 @@ Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF
     ```
 
     > [!NOTE]
-    > Ez a példa feltételezi, hogy a fürt alapértelmezett tárolója az Azure Storage. Ha a fürt a Data Lake Store; ezek helyett használja, módosítsa a `wasb:///` értéket a következőre `adl:///`.
+    > Ez a példa feltételezi, hogy a fürt alapértelmezett tárolója az Azure Storage. Ha a fürt a Data Lake Storage; ezek helyett használja, módosítsa a `wasb:///` értéket a következőre `adl:///`.
 
 3. Az UDF segítségével kisbetűs karakterláncokat tábla lekért értékek.
 
@@ -240,6 +240,6 @@ Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF
 
 ## <a name="next-steps"></a>További lépések
 
-A Hive használata egyéb módjai, lásd: [Hive használata a HDInsight](hdinsight-use-hive.md).
+A Hive használata egyéb módjai, lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
 
-Hive User-Defined funkciók további információkért lásd: [Hive-operátorok és a felhasználó által megadott függvények](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) szakaszt a Hive wiki az Apache.org webhelyen.
+Hive User-Defined funkciók további információkért lásd: [Apache Hive-operátorok és a felhasználó által megadott függvények](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) szakaszt a Hive wiki az Apache.org webhelyen.
