@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 12/14/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240092"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444179"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.
@@ -102,3 +102,6 @@ Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Működik az egyéni IPsec/IKE-házirend az ExpressRoute-kapcsolatokkal?
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
+
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs információk az IPsec esetében?
+Lásd: [konfigurálása az IPsec/IKE-szabályzat S2S- és VNet – VNet kapcsolatokhoz](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

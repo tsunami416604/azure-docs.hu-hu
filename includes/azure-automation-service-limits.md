@@ -5,16 +5,18 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3ae2289112948dea7d2649c4fad6b1cafb3804b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285729"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444168"
 ---
+#### <a name="process-automation"></a>Folyamatautomatizálás
+
 | Erőforrás | Felső korlát |Megjegyzések|
 | --- | --- |---|
 | Így el lehet egy Automation-fiók (nem ütemezett feladatok) 30 másodpercenként új feladatok maximális száma |100 |Ezt a korlátot, nyomja le, amikor létrehoz egy feladatot a későbbi kérelmeket sikertelen. Az ügyfél hibaüzenetet kap.|
@@ -33,5 +35,19 @@ ms.locfileid: "51285729"
 | Maximális Runbook-paraméterek   | 50|JSON vagy XML-karakterlánc át a paramétert, és elemezni kell azt a runbookot, ha eléri a 50 paraméter korlát|
 | Maximális száma a webhook hasznos adatainak mérete |  512 kb|
 | Feladat adatainak megőrzött napok maximális száma|30 nap|
+| PowerShell-munkafolyamat maximális állapot mérete |5 MB| PowerShell-munkafolyamati runbookok vonatkozik, ha ellenőrzőpont-munkafolyamat.|
 
 **<sup>1</sup>**  egy tesztkörnyezet több feladat által használt megosztott környezetben, a feladatokat az ugyanazon a védőfal által az erőforrás-korlátozások, a védőfal vannak kötve.
+
+#### <a name="change-tracking-and-inventory"></a>Change Tracking és Inventory
+
+Az alábbi táblázat bemutatja a gépek nyomon követett elemek vonatkozó korlátok a Change Tracking megoldásba.
+
+| **Erőforrás** | **Korlát**| **Megjegyzések** |
+|---|---|---|
+|Fájl|500||
+|Beállításjegyzék|250||
+|Windows szoftverek|250|Nem tartalmaz szoftverfrissítéseket|
+|Linux-csomagok|1250||
+|Szolgáltatások|250||
+|Démon|250||

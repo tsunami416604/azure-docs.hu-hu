@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5acdd54bcf7e253bc21dc3f99207fc1b2bd1ff59
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 6f0d51ad26dcea3f96a249165a324b5e0796ee03
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30326493"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444159"
 ---
 Ha létrehoz egy távoli asztali kapcsolatot a virtuális géppel, csatlakozhat egy virtuális hálózaton üzembe helyezett virtuális géphez. A legjobb mód arra, hogy először ellenőrizze, hogy tud-e csatlakozni a virtuális géphez, ha egy magánhálózati IP-címet használ a számítógép neve helyett. Ily módon azt teszteli, hogy tud-e csatlakozni, nem azt, hogy a névfeloldás megfelelően van-e konfigurálva.
 
 1. Keresse meg a magánhálózati IP-címet. A virtuális gépek magánhálózati IP-címét többféle módon keresheti meg. Az alábbiakban az Azure Portalra és a PowerShellre vonatkozó lépéseket mutatjuk be.
 
-  - Azure Portal – Keresse meg a virtuális gépet az Azure Portalon. Tekintse meg a virtuális gép tulajdonságait. A magánhálózati IP-cím a listában szerepel.
+   - Azure Portal – Keresse meg a virtuális gépet az Azure Portalon. Tekintse meg a virtuális gép tulajdonságait. A magánhálózati IP-cím a listában szerepel.
 
-  - PowerShell – A példa segítségével tekintse meg a virtuális gépek listáját és magánhálózati IP-címeket az erőforráscsoportokból. Ezt a példát nem kell használat előtt módosítania.
+   - PowerShell – A példa segítségével tekintse meg a virtuális gépek listáját és magánhálózati IP-címeket az erőforráscsoportokból. Ezt a példát nem kell használat előtt módosítania.
 
-    ```azurepowershell-interactive
-    $VMs = Get-AzureRmVM
-    $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
+     ```azurepowershell-interactive
+     $VMs = Get-AzureRmVM
+     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
 
-    foreach($Nic in $Nics)
-    {
+     foreach($Nic in $Nics)
+     {
       $VM = $VMs | Where-Object -Property Id -eq $Nic.VirtualMachine.Id
       $Prv = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAddress
       $Alloc = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAllocationMethod
       Write-Output "$($VM.Name): $Prv,$Alloc"
-    }
-    ```
+     }
+     ```
 
 2. Győződjön meg arról, hogy VPN-kapcsolattal csatlakozik a virtuális hálózathoz.
 3. A **távoli asztali kapcsolat** megnyitásához írja be a tálca keresőmezőjébe az „RDP” vagy a „Távoli asztali kapcsolat” kifejezést, majd válassza a Távoli asztali kapcsolat lehetőséget. A távoli asztali kapcsolatot megnyithatja a PowerShell „mstsc” parancsával is. 
