@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: b42529df406febc617c778d18d5b420f9c38c59a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975890"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434664"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
-Az Azure Functions két különböző módban fut: Használatalapú és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.
+Az Azure Functions két különböző módban fut: Használatalapú csomag és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.
 
 > [!NOTE]  
 > [Linux rendszerű futtató](functions-create-first-azure-function-azure-cli-linux.md) jelenleg csak az App Service-csomag érhető el.
@@ -68,7 +68,7 @@ Fontolja meg az App Service-csomag, a következő esetekben:
 
 Virtuális gép költséggel jár a végrehajtások száma, végrehajtási időt, és a használt memória leválasztja. Ennek eredményeképpen nem kell fizetnie több, mint a Virtuálisgép-példány lefoglalandó költsége. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-Az App Service-csomag manuálisan horizontális felskálázása további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
+Az App Service-csomag manuálisan horizontális felskálázása további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
 
 JavaScript-függvények az App Service-csomag futtatásakor, kevesebb vcpu-k rendelkező csomagot érdemes választania. További információkért lásd: a [válassza ki az App Service-csomagok egymagos](functions-reference-node.md#considerations-for-javascript-functions).  
 

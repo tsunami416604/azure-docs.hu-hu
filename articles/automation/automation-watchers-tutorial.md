@@ -90,7 +90,7 @@ A figyelőfeladat két részt tartalmaz. A megfigyelő és a műveletet. A figye
 1. Adja meg a következő értékeket a Paraméterek:
 
    ***EVENTDATA** – hagyja üresen. Adatok a megfigyelő runbook átadva a.  
-   ***Futtatási beállítások** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
+   ***Futtatási beállítások** ** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
 
 1. Kattintson a **OK**, majd válassza ki a figyelő lapra való visszatéréshez.
 1. Kattintson a **OK** a figyelőfeladat létrehozása.

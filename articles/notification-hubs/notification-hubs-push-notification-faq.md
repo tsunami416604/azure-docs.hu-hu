@@ -15,14 +15,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 140994de4b1be61f16593e450d156b81727a9f52
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251022"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437843"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification hubs használatával: gyakori kérdések
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 ## <a name="general"></a>Általános kérdések
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Mi az a Notification Hubs erőforrás szerkezete?
 
@@ -35,12 +35,12 @@ A legfrissebb díjszabási részletek találhatók a [Notification Hubs díjszab
 
 * **Ingyenes**: Ez a szint leküldési képességek mélyebben jó kiindulási pont. Nem ajánlott éles alkalmazások számára. 500 eszközt kap, és nem szolgáltatás szolgáltatásiszint-szerződés (SLA) garantált minden névtér / hó, leküldi 1 millió.
 * **Alapszintű**: Ez a szint (vagy a Standard szintű) kisebb az éles alkalmazások számára ajánlott. 200 000 eszköz kap, és 10 millió leküldést minden névtér kiindulópontként havonta. Kvóta növekedési lehetőségek tartoznak.
-* **Standard szintű**: ezen a szinten ajánlott közepes, nagy méretű éles alkalmazások. 10 millió eszközöket kap, és 10 millió leküldést minden névtér kiindulópontként havonta. Kvóta növelése beállítások és teljes funkcionalitású telemetriai funkciók is.
+* **Standard szintű**: Ez a szint Közepes nagy méretű éles alkalmazások ajánlott. 10 millió eszközöket kap, és 10 millió leküldést minden névtér kiindulópontként havonta. Kvóta növelése beállítások és teljes funkcionalitású telemetriai funkciók is.
 
 A standard szint funkciói:
 * **Sokoldalú telemetria**: Notification Hubs üzenetszintű telemetriai adatokhoz használatával bármely leküldéses kérelmek és a Platform Notification System-visszajelzések követése a hibakereséshez.
-* **Több-bérlős módhoz**: használhatja a Platform Notification System-hitelesítő adatok a névtér szinten. Ez a beállítás lehetővé teszi a bérlők könnyen oszthatók ugyanazon névterében.
-* **Ütemezett leküldés**: értesítések küldésének bármikor ütemezheti.
+* **Több-bérlős módhoz**: Platform Notification System-hitelesítő adatokkal a névtér szinten működik. Ez a beállítás lehetővé teszi a bérlők könnyen oszthatók ugyanazon névterében.
+* **Ütemezett leküldés**: Értesítések küldésének bármikor ütemezheti.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Mi az a Notification Hubs SLA-t?
 Az alapszintű és standard szintű Notification Hubs vagyis a megfelelően konfigurált alkalmazások leküldéses értesítéseket küldeni, vagy legalább 99,9 %-ában regisztrációs műveletek végrehajtása. További információ az SLA-t, lépjen a [Notification Hubs SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) lapot.
@@ -52,11 +52,11 @@ Az alapszintű és standard szintű Notification Hubs vagyis a megfelelően konf
 Sok ügyfél a Notification Hubs használatával. Néhány fontosabb meglévőket itt találhatók:
 
 * Szocsi 2014: Több száz érdeklődési körök, 3 + millió eszköz és 150 + millió értesítések elküldése két héten belül. [Esettanulmány: Szocsi]
-* A Skanska: [esettanulmány: Skanska]
-* Seattle Összidők: [esettanulmány: Seattle alkalommal]
-* Mural.LY: [esettanulmány: Mural.ly]
-* 7Digital: [esettanulmány: 7Digital]
-* Bing-alkalmazások: Az eszközök tízmillió értesítésküldést 3 millió naponta.
+* A Skanska: [Esettanulmány: Skanska]
+* Seattle időpontok: [Esettanulmány: Seattle alkalommal]
+* Mural.LY: [Esettanulmány: Mural.LY]
+* 7Digital: [Esettanulmány: 7Digital]
+* A Bing-alkalmazásokat: Több tíz, több millió eszköz naponta 3 millió értesítések küldése.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan frissítse vagy Visszaléptetés a központ vagy a névtér másik tarifacsomagra?
 Nyissa meg a  **[Azure Portal]** > **Notification Hubs-névterek** vagy **Notification Hubs**. Válassza ki az erőforrást szeretné frissíteni, és váltson **Tarifacsomag**. Vegye figyelembe az alábbi követelményeknek:
@@ -202,7 +202,7 @@ Is biztosítunk a funkció a telemetriai adatok programozott módon (a Standard 
 [Esettanulmány: Szocsi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Esettanulmány: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [Esettanulmány: Seattle alkalommal]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Esettanulmány: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
+[Esettanulmány: Mural.LY]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Esettanulmány: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [A Notification Hubs – REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [A Notification Hubs bevezetés kapcsolatos oktatóanyagok]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
@@ -213,7 +213,7 @@ Is biztosítunk a funkció a telemetriai adatok programozott módon (a Standard 
 [Notification Hubs biztonsági modell]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Notification Hubs leküldéses biztonságos oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [A Notification Hubs hibáinak elhárítása]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Notification Hubs-metrikák]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs-metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Notification Hubs metrikák minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Regisztrációk Exportálás/importálás]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

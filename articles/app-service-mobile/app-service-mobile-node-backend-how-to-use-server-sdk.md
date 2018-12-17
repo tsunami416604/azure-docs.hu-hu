@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963998"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409258"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-Egyes paraméterek egyike a szabványos REST-alapú HTTP-parancsokat: GET, közzététele, javítása vagy törlése. A metódus egy olyan szabvány [ExpressJS közbenső szoftver] -függvény, amely a szükséges kimenetet küld.
+Egyes paramétereket az alábbiak egyike a szabványos REST-alapú HTTP-parancsokat: ELSŐ, közzététel, javítása vagy törlése. A metódus egy olyan szabvány [ExpressJS közbenső szoftver] -függvény, amely a szükséges kimenetet küld.
 
 ### <a name="howto-customapi-auth"></a>Hitelesítés megkövetelése a hozzáféréshez egy egyéni API-hoz
 
@@ -918,13 +918,13 @@ Az App Service Editor table műveletek is szerkesztheti. Ha bejelöli **könnyen
 
 A következő parancsokat egy táblát a parancssáv érhetők el:
 
-* **Engedélyek módosítása**: az olvasási engedélyekkel, beszúrása, frissítése és törlési műveletek a táblán.
+* **Engedélyek módosítása**: Az olvasási engedélyekkel, beszúrása, frissítése és törlési műveletek a táblán.
  Is, hogy engedélyezze a névtelen hozzáférést, a hitelesítést igényel, vagy a művelet való hozzáférés teljes letiltásához.
-* **Parancsfájl szerkesztése**: a tábla a parancsfájl az App Service Editor megnyitásakor.
-* **Séma kezelése**: Adjon hozzá vagy oszlopok törlése, vagy módosítani a tábla indexe.
-* **Tábla tartalmának törlése**: meglévő tábla csonkolása törlésével az összes adatsor, de a séma változatlanul.
-* **Sorok törlése**: az adatok az egyes sorok törlése.
-* **Folyamatos átviteli naplók megtekintése**: a webhely a streamelési naplózási szolgáltatás kapcsolódni.
+* **Parancsfájl szerkesztése**: A parancsfájl a táblához tartozó App Service Editor van nyitva.
+* **Séma kezelése**: Adja hozzá az oszlopok törlése, vagy módosítani a tábla indexe.
+* **Tábla tartalmának törlése**: Meglévő tábla csonkolása törlésével az összes adatsor, de a séma változatlanul.
+* **Sorok törlése**: Az adatok az egyes sorok törlése.
+* **Folyamatos átviteli naplók megtekintése**: Csatlakozzon a streamelési naplózási szolgáltatás webhelye számára.
 
 ### <a name="work-easy-apis"></a>Egyszerű API-k használata az Azure Portalon
 
@@ -963,11 +963,11 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [Xamarin.Forms-ügyfél a rövid útmutató]: app-service-mobile-xamarin-forms-get-started.md
 [Windows Store-ügyfél a rövid útmutató]: app-service-mobile-windows-store-dotnet-get-started.md
 [offline adatszinkronizálást]: app-service-mobile-offline-data-sync.md
-[Az Azure Active Directory-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[A Microsoft-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
+[Az Azure Active Directory-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-aad.md
+[Facebook-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-facebook.md
+[Google-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-google.md
+[A Microsoft-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-microsoft.md
+[Twitter-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-twitter.md
 [Az Azure App Service üzembe helyezési útmutató]: ../app-service/app-service-deploy-local-git.md
 [Az Azure App Service figyelése]: ../app-service/web-sites-monitor.md
 [Az Azure App Service-diagnosztikai naplózás engedélyezése]: ../app-service/web-sites-enable-diagnostic-log.md

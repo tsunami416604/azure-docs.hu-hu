@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: 8b5b96f7a67dfbb33f470825b8ba4cabd3469dfc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 160078787d28f43ef800d25c8b50fb316b38944f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385193"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436177"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -26,22 +26,24 @@ Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítmén
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>Áttekintés
-Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikák és naplók, amely az adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [adatforrásokat, telemetriai adatok gyűjtése a különböző erőforrások figyelt](../azure-monitor/platform/data-sources.md) , és töltse fel a [adattárak](../azure-monitor/platform/data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
+Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikák és naplók, amely az adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [adatforrásokat, telemetriai adatok gyűjtése a különböző erőforrások figyelt](platform/data-sources.md) , és töltse fel a [adattárak](platform/data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
 
 
 ![Az Azure Monitor áttekintése](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>Figyelési adatplatform
-Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](../azure-monitor/platform/data-collection.md). [Metrikák](../azure-monitor/platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](../azure-monitor/platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
+Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](platform/data-collection.md). [Metrikák](platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
 Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrika explorer](../azure-monitor/platform/metrics-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
 
 ![Mérőszámok](media/overview/metrics.png)
 
-A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../azure-monitor/log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../azure-monitor/platform/alerts-overview.md).
+<<<<<<< Fő naplóadatokat az Azure Monitor által gyűjtött elemezhetők a [lekérdezések](log-query/log-query-overview.md) , amely gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelhet használatával [log analytics](../log-analytics/log-analytics-log-search-portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [riasztás szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+=== Naplóadatokat az Azure Monitor által gyűjtött tárolja a Log Analytics, amely tartalmaz egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../azure-monitor/log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../azure-monitor/platform/alerts-overview.md).
+>>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
 
-A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](../azure-monitor/log-query/get-started-queries.md) elérhető.  Azon felhasználók számára, akik már ismerik az [SQL](../azure-monitor/log-query/sql-cheatsheet.md) és [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
+Az Azure Monitor-verzióját használja, a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) , amely ideális választás a egyszerű napló kérdezi le, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](log-query/get-started-queries.md).  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
 ![Logs](media/overview/logs.png)
 
@@ -56,7 +58,7 @@ Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalm
 
 Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
 
-Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és [hozzáadása egy ügynök](../azure-monitor/platform/agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](../azure-monitor/platform/agent-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
+Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és [hozzáadása egy ügynök](platform/agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](platform/agent-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
 
 [Adja hozzá az alkalmazáshoz egy kialakítási csomagot](../application-insights/app-insights-azure-web-apps.md), amely lehetővé teszi az Application Insights részletes információkat az alkalmazásról, beleértve a lapmegtekintések, alkalmazásokra irányuló kérések és kivételek gyűjtésére. Továbbá ellenőrizze az alkalmazás rendelkezésre állásának konfigurálásával egy [rendelkezésre állási teszt](../application-insights/app-insights-monitor-web-app-availability.md) érkező felhasználói forgalom szimulálásához.
 
@@ -66,15 +68,15 @@ Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használat
 
 
 ## <a name="insights"></a>Insights
-Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](../azure-monitor/insights/solutions.md) és a szolgáltatások, például a [Application Insights](../application-insights/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
+Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](insights/solutions.md) és a szolgáltatások, például a [Application Insights](../application-insights/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
 
 ### <a name="application-insights"></a>Application Insights
-[Az Application Insights](../application-insights/app-insights-overview.md) figyeli a rendelkezésre állási, teljesítmény és a webalkalmazások használatának a felhőben vagy a helyszínen tárolva van-e. A hatékony elemzési platform, a Log Analytics nyújt betekintést az alkalmazás-műveletek és hibák diagnosztizálása egy felhasználó jelenti azokat várakozás nélkül a modul. Application Insights kapcsolódási pontok számos különböző fejlesztői eszközöket tartalmaz, és integrálja a Visual Studiót, DevOps-folyamataiba támogatásához.
+[Az Application Insights](../application-insights/app-insights-overview.md) figyeli a rendelkezésre állási, teljesítmény és a webalkalmazások használatának a felhőben vagy a helyszínen tárolva van-e. A hatékony elemzési platform az Azure monitorban nyújt betekintést az alkalmazás-műveletek és hibák diagnosztizálása egy felhasználó jelenti azokat várakozás nélkül a modul. Application Insights kapcsolódási pontok számos különböző fejlesztői eszközöket tartalmaz, és integrálja a Visual Studiót, DevOps-folyamataiba támogatásához.
 
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
-Az Azure Monitor for containers szolgáltatásban üzembe helyezett Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt tárolókhoz kapcsolódó számítási feladatok teljesítményének figyelésére tervezett funkciója. Biztosít gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók automatikusan egy tárolóalapú a Linuxhoz készült Log Analytics-ügynök verziója az Ön számára gyűjtött és tárolja a Log Analyticsben.
+Az Azure Monitor for containers szolgáltatásban üzembe helyezett Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt tárolókhoz kapcsolódó számítási feladatok teljesítményének figyelésére tervezett funkciója. Biztosít gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók is összegyűjti az Ön számára keresztül egy tárolóalapú a Linuxhoz készült Log Analytics-ügynök verzióját.
 
 ![Tároló állapota](media/overview/container-insights.png)
 
@@ -85,7 +87,7 @@ Az Azure Monitor VM insights az Azure-beli virtuális gépek (VM) ipari méretek
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Monitorozási megoldások
-[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../azure-monitor/log-query/log-query-overview.md) elemzéshez és [nézetek](../azure-monitor/platform/view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
+[Figyelési megoldások](insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Ezek tartalmazzák az alkalmazás vagy szolgáltatás, a figyelési adatok gyűjtésére szolgáló logikai [lekérdezések](log-query/log-query-overview.md) elemezheti az adatokat, és [nézetek](../log-analytics/log-analytics-view-designer.md) képi. Figyelési megoldások [a Microsoft](insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
 
 ![Monitorozási megoldások](media/overview/solutions-overview.png)
 
@@ -109,17 +111,17 @@ Az automatikus méretezés lehetővé teszi a megfelelő mennyiségű erőforrá
 [Vizualizációk](visualizations.md) például diagramok és táblázatok összefoglalójához monitorozási adatok, és a különböző célközönségek bemutató hatékony eszközöket. Az Azure Monitor monitorozási adatok megjelenítéséhez a saját szolgáltatással rendelkezik, és más Azure-szolgáltatások különböző célközönségek közzéteszi használja.
 
 ### <a name="dashboards"></a>Irányítópultok
-[Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md) egyetlen ablaktábla be lehetővé teszik különböző típusú adatokkal, metrikák és a naplók, beleértve a [az Azure portal](https://portal.azure.com). Szükség esetén az irányítópultot megoszthatja más Azure-felhasználók. Az Azure Monitor eleme mellett minden lekérdezés vagy a metrikák diagram kimenete egy Azure-irányítópultra is hozzáadhatók. Létrehozhat például, hogy egy irányítópultot, amely egyesíti a csempék, amelyek a Log Analytics egy grafikont a metrikák, tevékenységeket tartalmazó naplók tábla, az Application Insightsból használati diagramot és a lekérdezés kimenetének megjelenítése.
+[Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md) egyetlen ablaktábla be lehetővé teszik különböző típusú adatokkal, metrikák és a naplók, beleértve a [az Azure portal](https://portal.azure.com). Szükség esetén az irányítópultot megoszthatja más Azure-felhasználók. Az Azure Monitor eleme mellett minden lekérdezés vagy a metrikák diagram kimenete egy Azure-irányítópultra is hozzáadhatók. Létrehozhat például, hogy egy irányítópultot, amely egyesíti a csempék, amelyek metrikái, tevékenységeket tartalmazó naplók tábla, az Application Insightsból használati diagramot és a napló-lekérdezés kimenete grafikon megjelenítése.
 
 ![Irányítópult](media/overview/dashboard.png)
 
 ### <a name="views"></a>Nézetek
-[Az Azure monitorban nézetek](../azure-monitor/platform/view-designer.md) vizuálisan jelenítik meg a naplóadatok a Log Analyticsben.  Mindegyik nézetről tartalmaz egy adott csempe, amely működéseinek Vizualizációk kombinációját le például sáv- és vonaldiagramokat kritikus fontosságú adatok mellett diagramok.  Figyelési megoldások tartalmaznak nézeteket, amelyek egy adott alkalmazáshoz tartozó adatokat, és az adatok bármely Log Analytics naplóbeli keresés a saját nézeteket is létrehozhat. Az Azure monitorban más elemek, például nézetek Azure-irányítópultok lehet hozzáadni.
+[Nézetek](../log-analytics/log-analytics-view-designer.md) vizuálisan jelenítik meg az Azure monitorban naplóadatokat.  Mindegyik nézetről tartalmaz egy adott csempe, amely működéseinek Vizualizációk kombinációját le például sáv- és vonaldiagramokat kritikus fontosságú adatok mellett diagramok.  Figyelési megoldások tartalmaznak nézeteket, amelyek egy adott alkalmazáshoz tartozó adatokat, és minden napló lekérdezésből származó adatok saját nézeteket is létrehozhat. Az Azure monitorban más elemek, például nézetek Azure-irányítópultok lehet hozzáadni.
 
-![Log Analytics-nézet](media/overview/view.png)
+![Nézet](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power bi-ban](https://powerbi.microsoft.com) egy üzleti elemzési szolgáltatás, amely lehetővé teszi az adatforrások különböző interaktív vizualizációkat és a egy hatékony azt jelenti, hogy az adatok elérhetővé tétele mások belül, és a szervezeten kívül van. Beállíthatja, hogy a Power BI [automatikus importálása az Azure Monitor naplóadatok](../azure-monitor/platform/powerbi.md) ezeket a további vizualizációkat előnyeinek kihasználása érdekében.
+[Power bi-ban](https://powerbi.microsoft.com) egy üzleti elemzési szolgáltatás, amely lehetővé teszi az adatforrások különböző interaktív vizualizációkat és a egy hatékony azt jelenti, hogy az adatok elérhetővé tétele mások belül, és a szervezeten kívül van. Beállíthatja, hogy a Power BI [automatikus importálása az Azure Monitor naplóadatok](../log-analytics/log-analytics-powerbi.md) ezeket a további vizualizációkat előnyeinek kihasználása érdekében.
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -144,6 +146,6 @@ Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monito
 ## <a name="next-steps"></a>További lépések
 További információk:
 
-* [Metrikák és naplók](../azure-monitor/platform/data-collection.md) az Azure Monitor által összegyűjtött adatokat.
-* [Adatforrások](../azure-monitor/platform/data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
-* [Log Analytics](../azure-monitor/log-query/log-query-overview.md) összegyűjtött adatok elemzéséhez.
+* [Metrikák és naplók](platform/data-collection.md) az Azure Monitor által összegyűjtött adatokat.
+* [Adatforrások](platform/data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
+* [Lekérdezések naplózását](log-query/log-query-overview.md) összegyűjtött adatok elemzéséhez.

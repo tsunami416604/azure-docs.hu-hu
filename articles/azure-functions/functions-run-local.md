@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2264e6ff686519f7ef0d436d67f3055a48a7421b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997085"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409445"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -303,12 +303,12 @@ A `host` parancs csak szükséges verzió 1.x.
 | **`--cors`** | CORS-források, szóközök nélküli szövegláncként vesszővel tagolt listája. |
 | **`--debug`** | Elindul az a gazdagép, a hibakeresési port meg, hogy lehet kapcsolódni a **func.exe** feldolgozása a [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) vagy [Visual Studio 2017](functions-dotnet-class-library.md). Érvényes értékek a következők `VSCode` és `VS`.  |
 | **`--language-worker`** | A nyelvi feldolgozó konfigurálása argumentumokat. Verzió csak 2.x. |
-| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: Launch.json vagy 5858 egy értéket. Verzió csak 1.x. |
+| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: A launch.json vagy 5858 érték. Verzió csak 1.x. |
 | **`--password`** | A jelszó vagy egy fájlt, amely a jelszót a .pfx fájl tartalmazza. Csak a felhasznált `--cert`. Verzió csak 2.x. |
 | **`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | Mielőtt kilépne a folyamat szüneteltetéséhez további adatokat. Csak akkor, ha a Core Tools elindítása egy integrált fejlesztési környezetből (IDE) használja.|
 | **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
-| **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett érték: 20 másodperc.|
+| **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
 
 Esetében a C# hordozhatóosztálytár-projektjének (.csproj), meg kell adni a `--build` létrehozni a szalagtár .dll fájl.
@@ -444,7 +444,7 @@ A következő projekt közzététele a beállítások csak verziójában támoga
 | **`--publish-settings-only -o`** |  Csak a közzétételi beállítások, és hagyja ki a tartalmat. Az alapértelmezett érték kérése. |
 |**`--list-ignored-files`** | Közzététele a .funcignore fájl alapuló során figyelmen kívül hagyott fájlok listáját jeleníti meg. |
 | **`--list-included-files`** | Azon fájlok listáját, amely közzétett, a .funcignore fájl alapján jeleníti meg. |
-| **`--zip`** | Tegye közzé a Run-From-Zip-csomagot. Az alkalmazásnak, hogy rendelkezik definiált AzureWebJobsStorage beállítást igényel. |
+| **`--nozip`** | Alapértelmezés szerint bekapcsolja `Run-From-Zip` mód kikapcsolása. |
 | **`--build-native-deps`** | Alkalmazások átugrása .wheels mappa python közzétételekor fog működni. |
 | **`--additional-packages`** | Natív függőségek készítése során a telepítendő csomagok listáját. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos esetekben előre közzétételi ellenőrzési figyelmen kívül. |

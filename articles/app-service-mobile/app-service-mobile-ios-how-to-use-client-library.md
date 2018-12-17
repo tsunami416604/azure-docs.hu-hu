@@ -13,12 +13,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8eef75a6e1f4f05aa6d7ce8f9e6fdda52162d0bc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b284b599c569fe1c492b28d09fbc62a9130e939e
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960719"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409309"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Hogyan lehet Azure Mobile Apps-Klienskódtárának használata iOS-re
 
@@ -28,7 +28,7 @@ Ez az útmutató bemutatja, hogy a legújabb használatával általános forgat�
 
 ## <a name="reference-documentation"></a>Segédanyagok
 
-Itt található a az IOS-es ügyfél-SDK dokumentációja: [Azure Mobile Apps IOS-es ügyfél-hivatkozása][2].
+A hivatkozás dokumentációja az IOS-es ügyfél SDK is található itt: [Az Azure Mobile Apps IOS-es ügyfél-hivatkozása][2].
 
 ## <a name="supported-platforms"></a>A támogatott platformok
 
@@ -41,7 +41,7 @@ Ez az SDK így nem alkalmas Watch-típusú vagy hasonló módon korlátozott esz
 
 Ez az útmutató feltételezi, hogy létrehozott egy táblát a háttérrendszernek. Ez az útmutató feltételezi, hogy a tábla ezek az oktatóanyagok a táblákként ugyanazzal a sémával rendelkezik. Ez az útmutató feltételezi, hogy a kódban hivatkozik `MicrosoftAzureMobile.framework` és importálása `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
 
-## <a name="create-client"></a>How to: ügyfél létrehozása
+## <a name="create-client"></a>kézikönyv: Ügyfél létrehozása
 
 Az Azure Mobile Apps háttéralkalmazásból a projekt eléréséhez hozzon létre egy `MSClient`. Cserélje le `AppUrl` az alkalmazás URL-címmel. Előfordulhat, hogy hagyja `gatewayURLString` és `applicationKey` üres. Ha beállít egy átjárót a hitelesítéshez, feltöltéséhez `gatewayURLString` az átjáró URL-címmel.
 
@@ -57,7 +57,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Útmutató: táblahivatkozás létrehozása
+## <a name="table-reference"></a>kézikönyv: Tábla hivatkozás létrehozása
 
 Az adatok elérése vagy frissítése érdekében hozzon létre a háttértáblára mutató hivatkozást. A `TodoItem` helyére írja be a tábla nevét.
 
@@ -73,7 +73,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Útmutató: adatok lekérdezése
+## <a name="querying"></a>kézikönyv: Adatok lekérdezése
 
 Egy adatbázis-lekérdezés létrehozása, lekérdezése a `MSTable` objektum. Az alábbi lekérdezés lekéri a elemeinek az `TodoItem` és naplózza az egyes elemek a szöveget.
 
@@ -105,7 +105,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>How to: szűrő adatokat adott vissza.
+## <a name="filtering"></a>kézikönyv: Szűrő adatokat adott vissza.
 
 Szűrheti az eredményeket, számos elérhető lehetőség van.
 
@@ -145,7 +145,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>How to: MSQuery használata
+## <a name="query-object"></a>kézikönyv: MSQuery használata
 
 Hajtsa végre az összetett lekérdezések (beleértve a rendezést és lapozást), hozzon létre egy `MSQuery` objektumot, vagy közvetlenül egy predikátum használatával:
 
@@ -174,7 +174,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 Hajtsa végre egy `MSQuery` meghívásával lekérdezés `readWithCompletion` az objektumon.
 
-## <a name="sorting"></a>How to: MSQuery az adatok rendezése
+## <a name="sorting"></a>kézikönyv: MSQuery az adatok rendezése
 
 Eredmények rendezéséhez lássunk erre egy példát. Mező 'text' növekvő, azután a "teljes" csökkenő sorrendben rendezni, meghívása `MSQuery` lépések szerint:
 
@@ -210,7 +210,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>How to: korlátozhatja a mezőket, és bontsa ki a lekérdezési karakterlánc paraméterei a MSQuery
+## <a name="selecting"></a><a name="parameters"></a>kézikönyv: Korlátozhatja a mezőket, és bontsa ki a lekérdezési karakterlánc paraméterei a MSQuery
 
 A lekérdezés által visszaadott mezők számának korlátozásához adja meg a mezők nevei a **selectFields** tulajdonság. Ebben a példában csak a szöveg és a befejezett mezőket ad vissza:
 
@@ -243,7 +243,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>How to: oldalméret beállítása
+## <a name="paging"></a>kézikönyv: Oldalméret beállítása
 
 Az Azure Mobile Apps az oldal méretét szabályozza, amely vannak a háttérrendszer táblákból egyszerre beolvasott rekordok száma. Hívás `pull` adatokat szeretne majd batch-adatokat, ezt oldal mérete alapján, addig, amíg hiba nem a lekérés további rekordok.
 
@@ -255,7 +255,7 @@ Ez a beállítás csak az ügyféloldalon az oldal méretét szabályozza. Ha az
 
 Ez a beállítás akkor is a *szám* az adatfelderítési rekordok, nem a *bájtméretnek párosnak*.
 
-Ha növeli az ügyfél oldal méretét, az oldal méretét a kiszolgálón is növelni kell. Lásd: ["How to: Táblaméret lapozási"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) ennek lépéseit.
+Ha növeli az ügyfél oldal méretét, az oldal méretét a kiszolgálón is növelni kell. Lásd: ["How to: A tábla lapozófájl méretének módosítása"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) ennek lépéseit.
 
 **Objective-C**:
 
@@ -280,7 +280,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Útmutató: adatok beszúrása
+## <a name="inserting"></a>kézikönyv: Adatok beszúrása
 
 Hozzon létre egy új tábla sor beszúrásához a `NSDictionary` és meghívása `table insert`. Ha [a dinamikus sémák] van engedélyezve, az Azure App Service-mobilháttérmodul automatikusan előállítja az új oszlopok alapján a `NSDictionary`.
 
@@ -314,7 +314,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Útmutató: adatok módosítása
+## <a name="modifying"></a>kézikönyv: Adatok módosítása
 
 Meglévő sor frissítése, módosítása egy elemet, és a hívás `update`:
 
@@ -375,7 +375,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 Legalább a `id` attribútumot kell beállítani, amikor frissítések.
 
-## <a name="deleting"></a>Útmutató: adatok törlése
+## <a name="deleting"></a>kézikönyv: Adatok törlése
 
 Egy elem törléséhez hívja `delete` a cikket:
 
@@ -431,7 +431,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 Legalább a `id` attribútumot kell beállítani, amikor az így törli.
 
-## <a name="customapi"></a>Útmutató: egyéni API hívása
+## <a name="customapi"></a>kézikönyv: Egyéni API hívása
 
 Egyéni API-val tehetők közzé olyan háttérrendszer-funkciót. Nem kell olyan művelet leképezése. Nem csak, így az jobban szabályozhatja az üzenetkezelési, is olvasási/készletet a fejlécek, és módosítsa a válasz törzse formátuma. További információt az egyéni API-k létrehozása a háttérkiszolgálón, [egyéni API-k](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
@@ -472,7 +472,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Hogyan: regisztráció leküldéses sablonok platformfüggetlen értesítések küldése
+## <a name="templates"></a>kézikönyv: Regisztráció leküldéses sablonok platformfüggetlen értesítések küldése
 
 Sablonok regisztrálásához adja át a sablonok a **client.push registerDeviceToken** metódus az az ügyfélalkalmazás.
 
@@ -512,7 +512,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Az összes címke a program eltávolítja a biztonság a kérelemből.  Címkék hozzáadása telepítések vagy sablonok telepítések belül, lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a][4].  A regisztrált sablonok használatával értesítéseket küldhet együttműködve [Notification Hubs API-k][3].
 
-## <a name="errors"></a>How to: hibáinak kezelése
+## <a name="errors"></a>kézikönyv: Hibáinak kezelése
 
 Amikor egy Azure App Service-mobilháttérmodul hívja, a befejezési blokk tartalmaz egy `NSError` paraméter. Ha hiba történik, a paraméter nem üres. A kódban ellenőrizze ezt a paramétert és kezelni a hibát, ha szükséges, ahogyan az az előző kódrészleteket is.
 
@@ -544,7 +544,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Hogyan: felhasználók hitelesítése az Active Directory Authentication Library az
+## <a name="adal"></a>kézikönyv: Felhasználók hitelesítése az Active Directory Authentication Library az
 
 Az Active Directory Authentication Library (ADAL) segítségével bejelentkezhetnek a felhasználók az alkalmazásokba az Azure Active Directoryval. Ügyfél folyamat hitelesítést egy identitásszolgáltató SDK használatával használata helyett a `loginWithProvider:completion:` metódust.  Client flow hitelesítést biztosít egy több natív UX működésével, és lehetővé teszi, hogy további testreszabási.
 
@@ -631,7 +631,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Hogyan: hitelesítheti a felhasználókat a Facebook SDK iOS rendszerhez
+## <a name="facebook-sdk"></a>kézikönyv: Az iOS-hez készült Facebook-SDK-val a felhasználók hitelesítése
 
 A Facebook SDK IOS rendszerhez készült segítségével bejelentkezhetnek a felhasználók Facebook használatával, az alkalmazásba.  Az ügyfél-hitelesítési folyamat a következő használata helyett a `loginWithProvider:completion:` metódust.  Az ügyfél-hitelesítési folyamat több natív UX betekintést nyújt, és lehetővé teszi, hogy további testreszabási.
 
@@ -710,11 +710,11 @@ A Facebook SDK IOS rendszerhez készült segítségével bejelentkezhetnek a fel
     }
     ```
 
-## <a name="twitter-fabric"></a>Hogyan: hitelesítheti a felhasználókat a Twitter-Fabric iOS-hez
+## <a name="twitter-fabric"></a>kézikönyv: IOS-hez a Twitter-Fabric felhasználók hitelesítése
 
 IOS-es Fabric segítségével bejelentkezhetnek a felhasználók az alkalmazásba Twitter. Client Flow hitelesítésre használata helyett a `loginWithProvider:completion:` módját, hogy több natív UX betekintést nyújt, és lehetővé teszi, hogy további testreszabási.
 
-1. A mobile Apps-háttéralkalmazást, a Twitter-bejelentkezés konfigurálása a következő a [Twitter-bejelentkezés konfigurálása App Service-ben](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) oktatóanyag.
+1. A mobile Apps-háttéralkalmazást, a Twitter-bejelentkezés konfigurálása a következő a [Twitter-bejelentkezés konfigurálása App Service-ben](../app-service/configure-authentication-provider-twitter.md) oktatóanyag.
 2. A következő Fabric hozzáadása a projekthez a [IOS – első lépések a háló] dokumentáció és TwitterKit beállítása.
 
    > [!NOTE]
@@ -792,11 +792,11 @@ IOS-es Fabric segítségével bejelentkezhetnek a felhasználók az alkalmazásb
     }
     ```
 
-## <a name="google-sdk"></a>Útmutató: a Google bejelentkezési SDK iOS-hez a felhasználók hitelesítése
+## <a name="google-sdk"></a>kézikönyv: A Google bejelentkezési SDK iOS-hez a felhasználók hitelesítése
 
 A Google bejelentkezési SDK IOS rendszerhez készült segítségével bejelentkezhetnek a felhasználók az alkalmazásba a Google-fiók használatával.  Google megtudhat az OAuth-biztonsági házirendek módosításai.  A házirend-módosítások a jövőben a Google SDK használatára lesz szükség.
 
-1. A mobil-háttéralkalmazás számára a Google-bejelentkezés konfigurálása a következő a [Google-bejelentkezés konfigurálása App Service-ben](../app-service/app-service-mobile-how-to-configure-google-authentication.md) oktatóanyag.
+1. A mobil-háttéralkalmazás számára a Google-bejelentkezés konfigurálása a következő a [Google-bejelentkezés konfigurálása App Service-ben](../app-service/configure-authentication-provider-google.md) oktatóanyag.
 2. Telepítse a Google SDK iOS rendszerhez az alábbi a [Google jelentkezzen be az iOS - integrálásának megkezdéséhez](https://developers.google.com/identity/sign-in/ios/start-integrating) dokumentációját. A "Hitelesítés a egy háttérkiszolgáló" szakaszt kihagyhatja.
 3. Adja hozzá a következő a delegált `signIn:didSignInForUser:withError:` módszert használ nyelvének megfelelően.
 
@@ -920,7 +920,7 @@ A Google bejelentkezési SDK IOS rendszerhez készült segítségével bejelentk
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
-[7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[7]: ../app-service/configure-authentication-provider-aad.md
 [8]:../active-directory/develop/quickstart-v1-ios.md
-[9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started
