@@ -239,11 +239,11 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Megjelenítendő név** – **(üres is lehet)** a hiba részletes megjelenített neve
 
-    -   Példa * – **alkalmazásproxy-beállítások**
+    -   Példa *– **alkalmazásproxy-beállítások**
 
 -   **Állapot** – az értesítésre adott állapota
 
-    -   Példa * – **nem sikerült**
+    -   Példa *– **nem sikerült**
 
 -   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
