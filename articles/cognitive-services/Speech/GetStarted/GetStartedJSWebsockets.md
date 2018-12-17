@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 79f2aa9c3e73037aa25848b7d11c34a73bf35f64
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f212e2555b6097912628791635a539bc488d4979
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342398"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413166"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>A Speech Recognition API a JavaScript használatának első lépései
 
@@ -34,10 +34,10 @@ A beszédfelismerő API a Cognitive Services részét képezi. Ingyenes próba-e
 
 ## <a name="get-started"></a>Bevezetés
 
-Ebben a szakaszban a Microsoft végigvezeti egy minta HTML-oldalt betöltéséhez szükséges lépéseket. A mintában található a [github-adattár](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Is **nyissa meg a minta közvetlenül** a tárházból, vagy **nyissa meg a mintát a helyi másolat** a tárház. 
+Ebben a szakaszban a Microsoft végigvezeti egy minta HTML-oldalt betöltéséhez szükséges lépéseket. A mintában található a [GitHub-adattár](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Is **nyissa meg a minta közvetlenül** a tárházból, vagy **nyissa meg a mintát a helyi másolat** a tárház.
 
 > [!NOTE]
-> Egyes böngészők blokkolják a nem biztonságos eredet mikrofon-hozzáférés. Ezért javasoljuk a minta futtatásához / "alkalmazását" az összes támogatott böngésző működéséhez https. 
+> Egyes böngészők blokkolják a nem biztonságos eredet mikrofon-hozzáférés. Ezért javasoljuk a minta futtatásához / "alkalmazását" az összes támogatott böngésző működéséhez https.
 
 ### <a name="open-the-sample-directly"></a>Nyissa meg közvetlenül a minta
 
