@@ -83,21 +83,6 @@
 ### [Virtuálisgép-ajánlat közzététele](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 ### [Létező ajánlat frissítése](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-<!-- Following legacy VM section was replaced.  -->
-<!-- 
-## Virtual machines
-### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
--->
-<!-- new section for Azure apps -->
-
 ## [Azure-alkalmazásajánlat](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 ### [Előfeltételek](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
 ### [Azure-alkalmazásajánlat létrehozása](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
@@ -201,7 +186,16 @@
 ### [BPM és módszertanok](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Súgó wiki](./cloud-partner-portal-orig/help-wiki.md)
 
-## [Tanácsadói szolgáltatások](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+<!--
+## [Consulting services](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+-->
+## [Tanácsadói szolgáltatások](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
+### [Előfeltételek](./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md)
+### [Tanácsadási szolgáltatásajánlat létrehozása](./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md)
+#### [Ajánlatbeállítási lap](./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md)
+#### [Áruház részletei lap](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
+### [Tanácsadási szolgáltatásajánlat közzététele](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
+
 ## [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ## [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
