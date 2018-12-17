@@ -1,5 +1,5 @@
 ---
-title: Belső terheléselosztó létrehozása és használata Azure App Service Environmenttel
+title: Belső terheléselosztó létrehozása az App Service-környezet – Azure
 description: Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról.
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: e86367d5df8294a7e0f798e47bf87ff3fb8ccf72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967572"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344278"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -58,17 +58,17 @@ Az ILB ASE létrehozása:
 
 1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **webes** > **App Service Environment-környezet**.
 
-1. Válassza ki előfizetését.
+2. Válassza ki előfizetését.
 
-1. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
+3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-1. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
+4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
-1. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
+5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
 
-1. Válassza ki **virtuális hálózat/hely** > **virtuális hálózati konfiguráció**. A **VIP típust** állítsa **Belsőre**.
+6. Válassza ki **virtuális hálózat/hely** > **virtuális hálózati konfiguráció**. A **VIP típust** állítsa **Belsőre**.
 
-1. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
+7. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
 
     * net   
 
@@ -133,8 +133,8 @@ Az ASE létrehozását követően a tartomány az Ön által megadott tartomány
 
 Az ILB ASE környezetnek szüksége van egy érvényes SSL-tanúsítványra. Használjon belső tanúsítványszolgáltatót, vásároljon tanúsítványt külső kiállítótól vagy használjon önaláírt tanúsítványt. Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
-* **Tulajdonos**: Ezt az attribútumot állítsa *.az-ön-gyökértartománya értékre.
-* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell a **.az-ön-gyökértartománya* és a **.scm.az-ön-gyökértartománya* neveket. Az SCM/Kudu helyhez társított alkalmazások SSL-kapcsolatai egy *az-ön-alkalmazásának-neve.scm.az-ön-gyökértartománya* formátumú címet használnak.
+* **Tulajdonos**: Ezt az attribútumot állítsa *.az-gyökér-Ön-gyökértartománya.
+* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-Ön-gyökértartománya* és **.az-gyökér-domain-Itt*. Az SCM/Kudu helyhez társított alkalmazások SSL-kapcsolatai egy *az-ön-alkalmazásának-neve.scm.az-ön-gyökértartománya* formátumú címet használnak.
 
 Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. A .pfx fájlnak tartalmaznia kell az összes köztes és főtanúsítványt. Jelszóval gondoskodjon a védelméről.
 
