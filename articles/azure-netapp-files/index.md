@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/23/2018
 ms.author: b-juche
-ms.openlocfilehash: 6869d60bfadbeb3f3ed9c7b67d3560e49c73e65b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 23ec6d3a91dea91fba8565280bcce4e9385f49ae
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010242"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413241"
 ---
 # <a name="azure-netapp-files-documentation"></a>Az Azure NetApp Files dokumentációja
 
 Ez az oktatóanyag bemutatja, hogyan használja az Azure NetApp Files szolgáltatást NetApp-fiókok, kapacitáskészletek és kötetek létrehozására és kezelésére, exportálási szabályzat konfigurálására, kötet virtuális géphez való csatlakoztatására és pillanatképek kezelésére.
 
 > [!IMPORTANT] 
-> Az ezen dokumentációban bemutatott feladatokat csak akkor tudja elvégezni, ha részt vesz a nyilvános előzetes verzió használati programjában, és engedélye van a Microsoft.NetApp Azure erőforrás-szolgáltatóhoz való hozzáférésre. A nyilvános előzetes verzió programjához való csatlakozással kapcsolatos részletekért lásd az [Azure NetApp Files nyilvános előzetes verzió regisztrációs lapját](https://aka.ms/nfspublicpreview). 
+> Az ezen dokumentációban bemutatott feladatokat csak akkor tudja elvégezni, ha részt vesz a nyilvános előzetes verzió használati programjában, és engedélye van a Microsoft.NetApp Azure erőforrás-szolgáltatóhoz való hozzáférésre. Ha csatlakozni szeretne a nyilvános előzetes verzió programjához, lásd az [Azure NetApp Filesra történő regisztrációval](azure-netapp-files-register.md) foglalkozó témakört. 
 
 <ul class="panelContent cardsFTitle">
     <li>

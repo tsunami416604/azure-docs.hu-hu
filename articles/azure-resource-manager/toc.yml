@@ -44,6 +44,19 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: Alapelvek
   items:
+  - name: Sablonszerkezet
+    href: resource-group-authoring-templates.md
+    items:
+    - name: Paraméterek
+      href: resource-manager-templates-parameters.md
+    - name: Változók
+      href: resource-manager-templates-variables.md
+    - name: Functions
+      href: resource-group-authoring-templates.md#functions
+    - name: További források
+      href: resource-manager-templates-resources.md
+    - name: Kimenetek
+      href: resource-manager-templates-outputs.md
   - name: Erőforrás-szolgáltatók és típusaik
     href: resource-manager-supported-services.md
   - name: Felügyeleti csoportok
@@ -65,65 +78,50 @@ items:
   items:
   - name: Sablonok létrehozása
     items:
-    - name: Sablon szakaszai
-      href: resource-group-authoring-templates.md
-      items:
-      - name: Paraméterek
-        href: resource-manager-templates-parameters.md
-      - name: Változók
-        href: resource-manager-templates-variables.md
-      - name: Functions
-        href: resource-group-authoring-templates.md#functions
-      - name: További források
-        href: resource-manager-templates-resources.md
-      - name: Kimenetek
-        href: resource-manager-templates-outputs.md
-    - name: Kapcsolt és beágyazott sablonok
-      href: resource-group-linked-templates.md
-    - name: Erőforrás-függőségek
+    - name: Erőforráscsoportok és erőforrások létrehozása az előfizetésben
+      href: deploy-to-subscription.md
+    - name: Erőforrás-függőségek meghatározása
       href: resource-group-define-dependencies.md
+    - name: Sablonok modularizálása
+      href: resource-group-linked-templates.md
+    - name: Titkos kulcsok kezelése
+      href: resource-manager-keyvault-parameter.md
     - name: Több példány létrehozása
       href: resource-group-create-multiple.md
-    - name: Erőforráscsoport létrehozása sablonban
-      href: create-resource-group-in-template.md
-    - name: Erőforrások létrehozása az előfizetésben
-      href: deploy-to-subscription.md
-    - name: Erőforrás frissítése
+    - name: Sablonbővítmények használata
+      href: resource-manager-use-extensions.md
+    - name: Erőforrások frissítése
       href: /azure/architecture/building-blocks/extending-templates/update-resource
-  - name: Üzembe helyezés
+  - name: Sablonok üzembe helyezése
     items:
-    - name: Azure PowerShell
-      items:
-      - name: Sablon üzembe helyezése
-        href: resource-group-template-deploy.md
-      - name: Sablon üzembe helyezése SAS-token használatával
-        href: resource-manager-powershell-sas-token.md
-      - name: Sablon exportálása és újbóli üzembe helyezése
-        href: resource-manager-export-template-powershell.md
-    - name: Azure CLI
-      items:
-      - name: Sablon üzembe helyezése
-        href: resource-group-template-deploy-cli.md
-      - name: Sablon üzembe helyezése SAS-token használatával
-        href: resource-manager-cli-sas-token.md
-      - name: Sablon exportálása és újbóli üzembe helyezése
-        href: resource-manager-export-template-cli.md
-    - name: Azure Portal
-      items:
-      - name: Erőforrások üzembe helyezése
-        href: resource-group-template-deploy-portal.md
-      - name: Sablon exportálása
-        href: resource-manager-export-template.md
-    - name: REST API
+    - name: Üzembe helyezés a portálon
+      href: resource-group-template-deploy-portal.md
+    - name: Üzembe helyezés az Azure CLI-vel
+      href: resource-group-template-deploy-cli.md
+    - name: Üzembe helyezés az Azure PowerShell-lel
+      href: resource-group-template-deploy.md
+    - name: Üzembe helyezés a REST API-val
       href: resource-group-template-deploy-rest.md
-    - name: Több erőforráscsoport vagy előfizetés
+    - name: Sablonok exportálása
+      items:
+      - name: A portállal
+        href: resource-manager-export-template.md
+      - name: Az Azure CLI-vel
+        href: resource-manager-export-template-cli.md
+      - name: Az Azure PowerShell-lel
+        href: resource-manager-export-template-powershell.md
+    - name: Sablonok védelme SAS-jogkivonattal
+      items:
+      - name: Az Azure parancssori felület használata
+        href: resource-manager-cli-sas-token.md
+      - name: A PowerShell használata
+        href: resource-manager-powershell-sas-token.md
+    - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
       href: resource-manager-cross-resource-group-deployment.md
     - name: Folyamatos integráció az Azure DevOps Services szolgáltatással
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-    - name: Biztonságos értékek továbbítása üzembe helyezés során
-      href: resource-manager-keyvault-parameter.md
-  - name: Kezelés
+  - name: Sablonok kezelése
     items:
     - name: Azure PowerShell
       href: powershell-azure-resource-manager.md
@@ -146,13 +144,13 @@ items:
       href: resource-manager-api-authentication.md
     - name: Erőforrások zárolása
       href: resource-group-lock-resources.md
-  - name: Naplózás
+  - name: Üzembe helyezések naplózása
     items:
     - name: Tevékenységnaplók megtekintése
       href: resource-group-audit.md
     - name: Üzembehelyezési műveletek megtekintése
       href: resource-manager-deployment-operations.md
-  - name: Hibaelhárítás
+  - name: Üzemelő példányok hibaelhárítása
     items:
     - name: Üzembehelyezési hibák elhárítása
       href: resource-manager-common-deployment-errors.md
@@ -237,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47af6826974759a1b0dfea7949429c5acaca004d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252337"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436789"

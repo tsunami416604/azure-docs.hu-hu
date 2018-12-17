@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455742"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406743"
 documentType: LandingData
 title: Azure HDInsight – dokumentáció
 metadata:
@@ -70,12 +70,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: 'Hadoop: <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL-műveletek végrehajtása</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Igény szerinti fürtök létrehozása</a>'
-    - html: 'Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Interaktív lekérdezések futtatása</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Adatok vizualizációja</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Machine Learning</a>'
-    - html: 'Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturált streamelés a Kafkával</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Használat a HDInsight-alapú Stormmal</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">A Kafka Producer és Consumer API-k használata</a>'
-    - html: 'HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">HBase-fürtök létrehozása virtuális hálózaton</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Az Apache Phoenix használata</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Csatlakozás a Sparkhoz</a>'
+    - html: 'Apache Hadoop: <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL-műveletek végrehajtása</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Igény szerinti fürtök létrehozása</a>'
+    - html: 'Apache Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Interaktív lekérdezések futtatása</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Adatok vizualizációja</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Machine Learning</a>'
+    - html: 'Apache Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturált streamelés a Kafkával</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Használat a HDInsight-alapú Stormmal</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">A Kafka Producer és Consumer API-k használata</a>'
+    - html: 'Apache HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">HBase-fürtök létrehozása virtuális hálózaton</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Az Apache Phoenix használata</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Csatlakozás a Sparkhoz</a>'
     - html: 'Interaktív lekérdezés: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Kapcsolódás Power BI-jal közvetlen lekérdezés használatával</a>'
-    - html: 'Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Storm-topológia létrehozása Java-környezetben</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Storm-topológiák üzembe helyezése HDInsighton</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Írás Stormból Data Lake Store-ba</a>'
+    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Storm-topológia létrehozása Java-környezetben</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Storm-topológiák üzembe helyezése HDInsighton</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Írás Stormból Data Lake Store-ba</a>'
     - html: 'ML-szolgáltatások: <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Az R Tools for Visual Studio használata</a>'
 - title: Referencia
   items:
