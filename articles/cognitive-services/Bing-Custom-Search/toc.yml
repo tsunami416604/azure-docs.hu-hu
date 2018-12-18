@@ -3,26 +3,30 @@ items:
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a Bing Custom Search?
+  - name: Mi az a Bing Custom Search API?
     href: overview.md
   expanded: true
-- name: REST API – rövid útmutatók
+- name: Gyors útmutatók
   items:
-  - name: Első példány létrehozása
+  - name: Egyéni keresési példány létrehozása
     href: quick-start.md
-  - name: C#
-    href: call-endpoint-csharp.md
-  - name: Java
-    href: call-endpoint-java.md
-  - name: Node.js
-    href: call-endpoint-nodejs.md
-  - name: Python
-    href: call-endpoint-python.md
+  - name: Keresési eredmények lekérése a példányból
+    items:
+    - name: REST API
+      items:
+      - name: A C# használata
+        href: call-endpoint-csharp.md
+      - name: A Java használata
+        href: call-endpoint-java.md
+      - name: A Node.js használata
+        href: call-endpoint-nodejs.md
+      - name: A Python használata
+        href: call-endpoint-python.md
+    - name: SDK
+      items:
+      - name: A C# használata
+        href: sdk-csharp-quick-start.md
   expanded: true
-- name: SDK – rövid útmutatók
-  items:
-  - name: C# SDK – rövid útmutatók
-    href: sdk-csharp-quick-start.md
 - name: Oktatóanyagok
   items:
   - name: Custom Search-webhely létrehozása
@@ -35,21 +39,21 @@ items:
   items:
   - name: Egyéni keresési élmény konfigurálása
     href: define-your-custom-view.md
-  - name: Egyéni keresés meghívása
+  - name: Egyéni keresési élmény meghívása
     href: search-your-custom-view.md
-  - name: Üzemeltetett felhasználói felületi élmény konfigurálása
+  - name: Üzemeltetett felhasználói felület konfigurálása és integrálása
     href: hosted-ui.md
-  - name: Egyéni keresés megosztása
+  - name: Egyéni keresési példány megosztása
     href: share-your-custom-search.md
-  - name: Képek lekérése a példányból
+  - name: Képek lekérése a keresési példányból
     href: get-images-from-instance.md
-  - name: Videók lekérése a példányból
+  - name: Videók lekérése a keresési példányból
     href: get-videos-from-instance.md
   - name: Egyéni automatikus kiegészítési élmény konfigurálása
     href: define-custom-suggestions.md
   - name: Találatok kiemelésének kezelése
     href: hit-highlighting.md
-  - name: Webhelyek lapozása
+  - name: Lapozás a webhelyek között
     href: page-webpages.md
 - name: Referencia
   items:
@@ -85,9 +89,9 @@ items:
     href: endpoint-custom.md
   - name: Nyelvi és régiós támogatás
     href: language-support.md
-ms.openlocfilehash: 62392b7ff226072108c61f10b3f0519677aaba6b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 81d0d94efc519fa241ab36979506b2baddf50d91
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431992"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555865"

@@ -19,6 +19,7 @@
 ## [A PowerShell használata SQL Server migrálásához az Azure SQL DB-be](howto-sql-server-to-azure-sql-powershell.md)
 ## [A PowerShell használata SQL Server migrálásához az Azure SQL DB MI-be](howto-sql-server-to-azure-sql-mi-powershell.md)
 ## [A migrálási tevékenységek monitorozása](how-to-monitor-migration-activity.md)
+## [SSIS-csomagok migrálása az Azure-ba](how-to-migrate-ssis-packages.md)
 
 # További források
 ## [Adatbázis migrációs forgatókönyvének állapota](resource-scenario-status.md)
