@@ -215,7 +215,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Az Azure globális szolgáltatások * | 12076:5050 |
 | Egyéb Office 365-szolgáltatások | 12076:5100 |
 
-***Az Azure globális szolgáltatások részét képező Azure DevOps**
+***Az Azure globális szolgáltatások részét képező Azure DevOps**\**
 
 
 > [!NOTE]

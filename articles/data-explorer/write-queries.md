@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>csatlakozás
 
-[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): az új tábla kialakításához egyező értékek, az egyes táblákból a megadott oszlopoknak alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
+[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): az új tábla kialakításához egyező értékek, az egyes táblákból a megadott oszlopoknak alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
 
 Az alábbi példa két tábla belső illesztést csatlakozik.
 
