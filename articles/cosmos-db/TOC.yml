@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: A megfelelő konzisztenciaszint kiválasztása
       href: consistency-levels-choosing.md
-    - name: Konzisztenciaszintek és Azure Cosmos DB API-k
+    - name: Konzisztenciaszintek és Cosmos DB API-k
       href: consistency-levels-across-apis.md
     - name: Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között
       href: consistency-levels-tradeoffs.md
@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: Tranzakciók és optimista párhuzamosság
       href: database-transactions-optimistic-concurrency.md
+  - name: Kiszolgálóoldali programozás
+    items:
+    - name: Tárolt eljárások, triggerek és felhasználói függvények
+      href: stored-procedures-triggers-udfs.md
+    - name: JavaScript lekérdezési API
+      href: javascript-query-api.md
   - name: Az Azure Cosmos DB költségeinek optimalizálása
     items:
     - name: Díjszabási modell
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: Hozzáférés virtuális hálózatokról
       href: vnet-service-endpoint.md
-    - name: Key Vault-támogatás
-      href: access-secrets-from-keyvault.md
   - name: Alkalmasság vállalati használatra
     items:
     - name: Online biztonsági mentés és helyreállítás
@@ -250,8 +254,14 @@ items:
       items:
       - name: Lekérdezési teljesítmény hangolása
         href: sql-api-query-metrics.md
-      - name: Tárolt eljárások, eseményindítók és felhasználói függvények
-        href: programming.md
+      - name: Kiszolgálóoldali programozás
+        items:
+        - name: Tárolt eljárások, triggerek és felhasználói függvények írása
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API-val
+          href: how-to-write-javascript-query-api.md
+        - name: Tárolt eljárások, triggerek és felhasználói függvények használata
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Adattípusok
         items:
         - name: DateTime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: 4. rész – Fiók létrehozása
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: 5. rész – Csatlakozás az Azure Cosmos DB-hez
+          - name: 5. rész – Csatlakozás Cosmos DB-hez
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: 6. rész – CRUD-műveletek végrehajtása
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Védelem a Key Vaulttal
+      href: access-secrets-from-keyvault.md
   - name: Alkalmasság vállalati használatra
     items:
     - name: Adatok visszaállítása biztonsági mentésből
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: Költséghatékony írások és olvasások
       href: key-value-store-cost.md
-  - name: Azure Cosmos DB-adatok vizualizációja
+  - name: Cosmos DB-adatok vizualizációja
     items:
     - name: A Power BI használata
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384666"
+ms.locfileid: "53410108"

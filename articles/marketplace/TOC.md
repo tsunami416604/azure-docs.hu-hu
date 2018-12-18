@@ -91,7 +91,7 @@
 #### [Tesztverzió lap](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [Marketplace lap](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [Támogatási lap](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Technikai eszközök létrehozása](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [Azure-alkalmazásajánlat közzététele](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [Létező ajánlat frissítése](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
