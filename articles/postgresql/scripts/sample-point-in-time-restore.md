@@ -1,22 +1,19 @@
 ---
 title: Azure CLI-szkript – Azure Database for PostgreSQL-kiszolgáló visszaállítása
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet visszaállítani egy Azure Database for PostgreSQL-kiszolgálót és a hozzá tartozó adatbázisokat egy korábbi időpontban fennálló állapotra.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: c5280265fd985b77d07351ba1817652f9c059328
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 721e385d7c8e6b401ce1fe6d3518006f3a96e4fe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581459"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541098"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló visszaállítása az Azure CLI használatával
 Ez az Azure CLI-példaszkript visszaállít egy Azure Database for PostgreSQL-kiszolgálót egy korábbi időpontra.
@@ -44,6 +41,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
-- További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
+- További szkripteket: [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](../sample-scripts-azure-cli.md)
 - [Egy Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása az Azure Portal használatával](../howto-restore-server-portal.md)

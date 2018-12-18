@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 22a022b12e931fd4edf139038eb7506e69422f8e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c22b5f0c1a445f30a99b7aba4afffaf077818335
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253575"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543546"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
@@ -136,7 +136,7 @@ Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
 - Egy alkalmazás létrehozása a megadott néven.
 
-- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
+- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 

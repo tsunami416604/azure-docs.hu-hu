@@ -9,12 +9,12 @@ ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 76bc59b41bf35f6427b1dcb273f3f50c5e70b748
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f69babb4520b4829a8cf59e2dac7763471a2db65
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344057"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557095"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Fejlesztése és üzembe helyezése a Node.js IoT Edge-modul a szimulált eszköz
 
@@ -36,6 +36,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 Egy Azure IoT Edge-eszköz:
 
 * Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve.
+* IoT Edge a Windows rendszert használ, ha az IoT Edge 1.0.5 verziója nem támogatja a Node.js modulok. További információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Egy adott verzió telepítésének lépéseiért lásd: [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).
 
 Felhőerőforrások:
 

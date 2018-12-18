@@ -79,11 +79,11 @@
 #### [ASE létrehozása sablon használatával](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Üzembe helyezés
-### [Felhőalapú szinkronizálás üzembe helyezése](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Folyamatos üzembe helyezés](../app-service/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Felhőalapú szinkronizálás üzembe helyezése](../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Folyamatos üzembe helyezés](../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Átmeneti környezetek](../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Git helyi üzemelő példánya](../app-service/app-service-deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Az Azure Resource Manager üzembe helyezése](../app-service/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Git helyi üzemelő példánya](../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Az Azure Resource Manager üzembe helyezése](../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Méretezés
 ### [Alkalmazás vertikális felskálázás](../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)

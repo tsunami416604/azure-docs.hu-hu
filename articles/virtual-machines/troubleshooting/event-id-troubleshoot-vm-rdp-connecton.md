@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Napló neve:** rendszer <br />
 **Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:** 1058 <br />
 **Feladat kategóriája:** None <br />
 **Szint:** hiba <br />
 **Kulcsszavak:** klasszikus <br />
 **Felhasználó:** N/A <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** a távoli asztali munkamenet kiszolgáló nem tudta cserélje le az önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használt tanúsítvány lejárt. A megfelelő állapotkód volt, a hozzáférés megtagadva.
 
 **Napló neve:** rendszer <br />
 **Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:** 1058 <br />
 **Feladat kategóriája:** None <br />
 **Szint:** hiba <br />
 **Kulcsszavak:** klasszikus <br />
 **Felhasználó:** N/A <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** hozzon létre egy új önaláírt tanúsítvány használható SSL-kapcsolatok a távoli asztali munkamenet gazdagép kiszolgálóhitelesítés távoli asztali munkamenetgazda kiszolgálónak nem sikerült, a megfelelő állapotkód volt az objektum már létezik.
 
 **Napló neve:** rendszer <br />
 **Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:** 1057 <br />
 **Feladat kategóriája:** None <br />
 **Szint:** hiba <br />
 **Kulcsszavak:** klasszikus <br />
 **Felhasználó:** N/A <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** a távoli asztali munkamenet kiszolgáló nem tudta hozzon létre egy új önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használandó tanúsítványt. Az ide tartozó állapotkód kulcskészletet nem létezik.
 
 Ellenőrizheti az SCHANNEL-események hiba 36872-es és 36870-es a következő parancsok futtatásával:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Szint:** hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználó:** rendszer <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** végzetes hiba történt az SSL kiszolgálói hitelesítő adatok titkos kulcsának elérésekor. A titkosító modul által visszaadott hibakód: 0x8009030d.  <br />
 Belső hiba állapota 10001.
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Szint:** hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználó:** rendszer <br />
-**Számítógép:***számítógép* <br />
+**Számítógép:** *számítógép* <br />
 **Leírás:** végzetes hiba történt egy TLS kiszolgálói hitelesítő adatok létrehozása során. Belső hiba állapota 10013.
  
 ### <a name="cause"></a>Ok
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Napló neve:** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Forrás:** Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:** 2056 <br />
 **Feladat kategóriája:** (109) <br />
 **Szint:** hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználó:** hálózati szolgáltatás <br />
-**Számítógép:***számítógép teljes tartományneve* <br />
+**Számítógép:** *számítógép teljes tartományneve* <br />
 **Leírás:** Event ID 2056 forrásból Microsoft-Windows-TerminalServices-SessionBroker leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen. <br />
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez. <br />
 Az esemény lett a következő információkat: <br />
@@ -264,13 +264,13 @@ Nem sikerült bejelentkezni az adatbázisba.
 
 **Napló neve:** Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Forrás:** Microsoft-Windows-TerminalServices-SessionBroker-ügyfél <br />
-**Dátum:***idő* <br />
+**Dátum:** *idő* <br />
 **Eseményazonosító:** 1296 <br />
 **Feladat kategóriája:** (104) <br />
 **Szint:** hiba <br />
 **Kulcsszavak:**       <br />
 **Felhasználó:** hálózati szolgáltatás <br />
-**Számítógép:***számítógép teljes tartományneve* <br />
+**Számítógép:** *számítógép teljes tartományneve* <br />
 **Leírás:** Event ID 1296 forrásból Microsoft-Windows-TerminalServices-SessionBroker-ügyfél leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen.
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez.
 Az esemény lett a következő információkat:  <br />

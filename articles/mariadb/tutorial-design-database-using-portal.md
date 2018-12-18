@@ -1,22 +1,20 @@
 ---
-title: 'Oktatóanyag: Azure Database for MariaDB-adatbázis tervezése az Azure Portalon'
+title: 'Oktatóanyag: Azure Database for MariaDB tervezése az az Azure portal használatával'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető egy Azure Database for MariaDB-kiszolgáló és -adatbázis az Azure Portalon.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 20714bed5c36cd93d11cb4ade6640798775f5055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 23af00b8a8e061056e9b7ad8ea2c999414783ad6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322056"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538106"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MariaDB-adatbázis tervezése az Azure Portalon
+# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Egy Azure Database for MariaDB-adatbázis tervezése az Azure portal használatával
 
 Az Azure Database for MariaDB egy felügyelt szolgáltatás, amellyel a magas rendelkezésre állású MySQL-adatbázisokat futtathatja, kezelheti és skálázhatja a felhőben. Az Azure Portalon könnyedén kezelheti a kiszolgálót és tervezheti meg az adatbázist.
 
@@ -56,7 +54,7 @@ Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőfor
     Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot.
     Forrás kiválasztása | **Üres** | Válassza az **Üres** lehetőséget egy új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MariaDB-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a **Biztonsági mentés** lehetőséget).
     Kiszolgáló-rendszergazdai bejelentkezés | **myadmin** | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-    Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűs betűket, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, és így tovább).
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *a legújabb verzió*| A legújabb verzió (ha nincsenek olyan egyedi igényei, amelyek miatt egy másikat kell kiválasztania).
@@ -171,10 +169,10 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    
    ![Visszaállítás űrlap](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Visszaállítási pont**: A jelzett időkereten belül válasszon ki egy időpontot, amelyre vissza kívánja állítani az adatbázist. Ne felejtse el UTC időre átalakítani a helyi időzóna szerinti időt.
-   - **Visszaállítás új kiszolgálóra**: Adja meg egy új kiszolgáló nevét, amelyre vissza szeretné állítani az adatbázist.
-   - **Hely**: A régió megegyezik a forráskiszolgálóéval, és nem módosítható.
-   - **Tarifacsomag**: A tarifacsomag megegyezik a forráskiszolgálóéval, és nem módosítható.
+   - **Visszaállítási pont**: Válasszon ki egy pontot szeretné visszaállítani, a felsorolt időkereten időben. Ne felejtse el UTC időre átalakítani a helyi időzóna szerinti időt.
+   - **Visszaállítás új kiszolgálóra**: Adjon meg egy új kiszolgálónevet való visszaállításához.
+   - **Hely**: A régió, ugyanaz, mint a forráskiszolgálón, és nem módosítható.
+   - **A tarifacsomag**: A tarifacsomag megegyezik a forráskiszolgálóéval, és nem módosítható.
    
 3. Az **OK** gomb kiválasztásával [állítsa vissza a kiszolgálót egy időpontra](./howto-restore-server-portal.md), amely megelőzi a tábla törlését. A kiszolgáló visszaállítása egy olyan új másolatot hoz létre a kiszolgálóról, amely a megadott időpontban aktuális állapotát tükrözi. 
 

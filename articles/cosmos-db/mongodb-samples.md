@@ -1,5 +1,5 @@
 ---
-title: Egy Azure Cosmos DB-alkalmazás létrehozása a MongoDB API-k használatával
+title: Azure Cosmos DB API MongoDB használatával hozhat létre egy Node.js-alkalmazás
 description: Oktatóanyag, amelynek során egy online adatbázist hoz létre a MongoDB-hez készült Azure Cosmos DB API-k használatával.
 keywords: mongodb példák
 services: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: e24c64f0042d65cc499e02dff7b53f3ca812f356
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 994371f716a2171622c6c534329764bcf7ac585c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864077"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534764"
 ---
-# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Azure Cosmos DB: API készítése a MongoDB-hez a Node.js használatával
+# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Hozhat létre Azure Cosmos DB: API-t a Node.js használatával a MongoDB-alkalmazások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -26,11 +26,11 @@ ms.locfileid: "52864077"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-Ez a példa azt mutatja be, hogyan készíthető Azure Cosmos DB: API MongoDB konzolalkalmazáshoz a Node.js használatával.
+Ez a példa bemutatja, hogyan hozhat létre egy Azure Cosmos DB: A Node.js használatával Konzolalkalmazás MongoDB API-t.
 
 A példa használatához a következőket kell tennie:
 
-* MongoDB-hez készült Azure Cosmos DB API-fiók [létrehozása](create-mongodb-dotnet.md#create-account).
+* [Hozzon létre](create-mongodb-dotnet.md#create-account) egy Azure Cosmos DB használatával: API a MongoDB-fiókhoz.
 * A MongoDB [kapcsolati karakterlánc](connect-mongodb-account.md) információk beszerzése.
 
 ## <a name="create-the-app"></a>Az alkalmazás létrehozása
@@ -117,7 +117,7 @@ A példa használatához a következőket kell tennie:
     });
     ```
     
-    **Más lehetőség**: A **MongoDB Node.js 2.2 illesztőprogram** használata esetén cserélje ki a következő kódrészletet:
+    **Nem kötelező**: Ha használja a **MongoDB Node.js 2.2-es illesztőprogram**, cserélje le a következő kódrészletet:
 
     Eredeti:
 
@@ -159,7 +159,7 @@ A példa használatához a következőket kell tennie:
     > [!IMPORTANT]
     > A **MongoDB Node.js 3.0 illesztőprogram** megköveteli a Cosmos DB-jelszóban lévő speciális karakterek kódolását. Az „=” karakter %3D formában kódolandó.
     >
-    > Példa: A *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* jelszó kódolva *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D* lesz
+    > Példa: A jelszó *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv ==* kódolja a *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv 3D % 3D*
     >
     > A **MongoDB Node.js 2.2 illesztőprogram** nem követeli meg a Cosmos DB-jelszóban lévő speciális karakterek kódolását.
     >
@@ -172,4 +172,4 @@ A példa használatához a következőket kell tennie:
 3. Nyissa meg kedvenc terminálját, futtassa az **npm install mongodb --save** parancsot, majd futtassa alkalmazását a **node app.js** paranccsal.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a [MongoChef használatát](mongodb-mongochef.md) a MongoDB-hez készült Azure Cosmos DB API-fiókkal.
+* Ismerje meg, hogyan [MongoChef használata](mongodb-mongochef.md) az Azure Cosmos DB-vel: API a MongoDB-fiókhoz.

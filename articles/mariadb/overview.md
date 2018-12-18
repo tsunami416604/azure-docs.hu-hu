@@ -3,18 +3,16 @@ title: Az Azure Database for MariaDB relációsadatbázis-szolgáltatás átteki
 description: Az Azure Database for MariaDB relációsadatbázis-szolgáltatás áttekintése.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 12/03/2018
-ms.openlocfilehash: b1e458339c2befdb51439cd23ef5f22ba4379c78
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 507425a6cffc6f3b49e117ebf5a604bf0d252164
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850261"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542016"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Mi az Azure Database for MariaDB?
 
@@ -43,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
 
-Az Azure Database for MariaDB szolgáltatás számos különböző szolgáltatásszinttel rendelkezik: alapszintű, általános célú és memóriahasználatra optimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőségnek köszönhetően az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor valóban szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
+Az Azure Database for MariaDB szolgáltatás számos különböző szolgáltatásszinttel rendelkezik: Alapszintű, általános célú és memóriahasználatra optimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőségnek köszönhetően az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor valóban szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 

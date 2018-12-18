@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1443508985c7c7fef313a7eea3f622e7759a71ef
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251861"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540096"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Gyors útmutató: Valós idejű üzenetek szórási konzol alkalmazásból
 
@@ -129,13 +129,13 @@ Az egyes verziókhoz elérhető API-k listáját az alábbi lista tartalmazza.
 
 API | `1.0-preview` | `1.0`
 --- | --- | ---
-[Szétküldés mindenkinek](#broadcast) | :heavy_check_mark: | :heavy_check_mark:
-[Szétküldés egy csoportnak](#broadcast-group) | :heavy_check_mark: | :heavy_check_mark:
-Szétküldés néhány csoportnak | :heavy_check_mark: (Elavult) | `N / A`
-[Küldés adott felhasználóknak](#send-user) | :heavy_check_mark: | :heavy_check_mark:
-Küldés néhány felhasználónak | :heavy_check_mark: (Elavult) | `N / A`
-[Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | :heavy_check_mark:
-[Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | :heavy_check_mark:
+[Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
+[Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
+Szétküldés néhány csoportnak | **&#x2713;**(Elavult) | `N / A`
+[Küldés adott felhasználóknak](#send-user) | **&#x2713;** | **&#x2713;**
+Küldés néhány felhasználónak | **&#x2713;**(Elavult) | `N / A`
+[Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | **&#x2713;**
+[Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Szétküldés mindenkinek

@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch PowerShell használatának első lépései | Microsoft Docs
+title: PowerShell – Azure Batch használatának első lépései |} A Microsoft Docs
 description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható Azure PowerShell-parancsmagok használatába.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 10/05/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d05cb2fbee1f171daa3b73caab57a0b6acebfad
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: bd8e5425a09f0faeaa573cec58def88f352b9a1d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116108"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548068"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -50,13 +50,13 @@ Ez a cikk az Azure Batch modul 4.1.5-ös verziójának parancsmagjain alapul. Aj
 
 ### <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
-A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Például:
+A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
 
 ```PowerShell
 New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
-Ezután hozzon létre egy Batch-fiókot az erőforráscsoportban, adjon meg egy fióknevet az <*account_name*> helyőrző helyett, és adja meg az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Például:
+Ezután hozzon létre egy Batch-fiókot az erőforráscsoportban, adjon meg egy fióknevet az <*account_name*> helyőrző helyett, és adja meg az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Példa:
 
 ```PowerShell
 New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -92,7 +92,7 @@ New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Batch-fiók törlése
 
-A **Remove-AzureRmBatchAccount** törli a Batch-fiókot. Például:
+A **Remove-AzureRmBatchAccount** törli a Batch-fiókot. Példa:
 
 ```PowerShell
 Remove-AzureRmBatchAccount -AccountName <account_name>
@@ -177,7 +177,7 @@ Az **ID** paraméter csak a teljes azonosítót használó kereséseket támogat
 
 ### <a name="use-the-maxcount-parameter"></a>A MaxCount paraméter használata
 
-Alapértelmezés szerint mindegyik parancsmag maximum 1000 objektumot ad vissza. Ha eléri ezt a korlátot, pontosítsa a szűrőt, hogy kevesebb objektumot adjon vissza, vagy explicit módon állítson be maximális értéket a **MaxCount** paraméterrel. Például:
+Alapértelmezés szerint mindegyik parancsmag maximum 1000 objektumot ad vissza. Ha eléri ezt a korlátot, pontosítsa a szűrőt, hogy kevesebb objektumot adjon vissza, vagy explicit módon állítson be maximális értéket a **MaxCount** paraméterrel. Példa:
 
 ```PowerShell
 Get-AzureBatchTask -MaxCount 2500 -BatchContext $context

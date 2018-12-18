@@ -1,24 +1,21 @@
 ---
 title: Gyors útmutató – Azure Database for PostgreSQL létrehozása az Azure CLI használatával
 description: Rövid útmutató az Azure-adatbázis PostgreSQL-kiszolgálóhoz az Azure CLI (parancssori felület) használatával történő létrehozásához és kezeléséhez.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: fa7fca18d52d4853bd31f0bddc3a3cd6ec930664
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: ddecd640c8b005588e8aa552957ee455cad7ad74
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961019"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547066"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Gyors útmutató: Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz az Azure CLI használatával
 A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure-adatbázist PostgreSQL-kiszolgálóhoz az Azure CLI használatával az [Azure-erőforráscsoportban](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -55,13 +52,13 @@ név | mydemoserver | Válasszon egy egyedi nevet, amely azonosítja a PostgreSQ
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
 sku-name | GP_Gen4_2 | A termékváltozat neve. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. Az sku-name paraméterről az alábbi táblázatban talál további információt.
 backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. A tartomány 7–35. 
-geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
+geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, letiltva.
 location | westus | A kiszolgáló Azure-helye.
-ssl-enforcement | Engedélyezve | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
+ssl-enforcement | Engedélyezve | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, letiltva.
 storage-size | 51 200 | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes storage-size paraméter legkisebb értéke 5120 MB, és 1024 MB-os egységekben növekszik. A tárterület korlátairól a [tarifacsomagokról szóló](./concepts-pricing-tiers.md) dokumentumban találhat további információkat. 
 version | 9.6 | A PostgreSQL főverziója.
 admin-user | myadmin | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
+admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűk, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
 
 
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:

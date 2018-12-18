@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a Java használatával
 description: Az alábbi gyors útmutatóban egy olyan Java-kódminta található, amely a MySQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: 4532b920fe1d4b20eb34f09fac4cb3b30ad36e6a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: e660daa0a0676f7f4267be7e6852568d80791774
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985392"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539109"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Java használatával
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a Java használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás és a [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) JDBC-illesztő használatával csatlakozni egy Azure Database for MySQL-adatbázishoz. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
 
 A [MySQL Connector példáit tartalmazó oldalon](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) számos további példát és mintakódot talál.

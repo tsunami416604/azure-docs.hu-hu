@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fb412e32eee8cbc38f90e4325ab31a9926060beb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091160"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537681"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -24,7 +24,7 @@ Melyik API-t szeretné használni az Azure Cosmos DB-vel?
 
 * **[SQL API](documentdb-introduction.md)** – Az adatáttelepítési eszközben elérhető bármelyik forráslehetőséggel importálhat adatokat.
 * **[Table API](table-introduction.md)** – Az adatok importálásához használhatja az adatáttelepítési eszközt vagy az AzCopy segédprogramot. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
-* **[MongoDB API-val](mongodb-introduction.md)**  – az adatok áttelepítési eszköz jelenleg nem támogatja az Azure Cosmos DB MongoDB API a forrásként és célként. Ha MongoDB API-gyűjteményekbe vagy azokból máshova szeretne adatokat áttelepíteni az Azure Cosmos DB-ben, ehhez utasításokat az [Azure Cosmos DB: Adatok áttelepítése a MongoDB API-val](mongodb-migrate.md) című cikkben találhat. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
+* **[Az Azure Cosmos DB MongoDB API-](mongodb-introduction.md)**  – az adatok áttelepítési eszköz jelenleg nem támogatja az Azure Cosmos DB API a mongodb-hez forrásként és célként. Ha azt szeretné, vagy ki a gyűjtemények az Azure Cosmos DB az adatok áttelepítéséhez, [adatok áttelepítése az Azure Cosmos DB API a mongodb-hez készült](mongodb-migrate.md) útmutatást. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
 * **[Gremlin API](graph-introduction.md)**  – az adatok áttelepítési eszköze nem egy támogatott importálási eszköz a Gremlin API-fiókok jelenleg.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
@@ -40,9 +40,9 @@ Ez a cikk utasításait követve előtt győződjön meg arról, hogy, tegye a k
 
 * **Telepítés** [Microsoft .NET-keretrendszer 4.51](https://www.microsoft.com/download/developer-tools.aspx) vagy újabb verziója.
 
-* **Az átviteli sebesség növelése:** Az adatok migrálásának időtartama az egyes gyűjteményekhez vagy egy gyűjteménykészlethez beállított átviteli sebességtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az Azure Portalon növelve kapcsolatos további információkért lásd: [teljesítményszintek](performance-levels.md) és [tarifacsomagok](https://azure.microsoft.com/pricing/details/cosmos-db/) Azure Cosmos DB-ben.
+* **Átviteli sebesség növelése:** Az adatok migrálása idejére beállítása egy egyéni gyűjtemény átviteli mennyisége vagy egy gyűjtemény függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az Azure Portalon növelve kapcsolatos további információkért lásd: [teljesítményszintek](performance-levels.md) és [tarifacsomagok](https://azure.microsoft.com/pricing/details/cosmos-db/) Azure Cosmos DB-ben.
 
-* **Azure Cosmos DB-erőforrások létrehozása:** Az adatok migrálásának indítása előtt hozza előre létre az összes gyűjteményt az Azure Portalról. Át az Azure Cosmos DB-fiókot, amelynek adatbázis-szintű átviteli sebessége, adjon meg egy partíciókulcsot, az Azure Cosmos DB-gyűjtemények létrehozásakor.
+* **Azure Cosmos DB-erőforrások létrehozása:** Adatok áttelepítése előtt előre létrehozni az Azure Portalról a gyűjtemények. Át az Azure Cosmos DB-fiókot, amelynek adatbázis-szintű átviteli sebessége, adjon meg egy partíciókulcsot, az Azure Cosmos DB-gyűjtemények létrehozásakor.
 
 ## <a id="Overviewl"></a>Áttekintés
 
@@ -63,8 +63,8 @@ Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.
 
 Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip). Ezután futtathatja az alábbiak egyikét:
 
-* **Dtui.exe**: Az eszköz grafikus felhasználói felületet használó verziója.
-* **Dtui.exe**: Az eszköz grafikus parancssori verziója.
+* **Dtui.exe**: Az eszköz grafikus felület verziója
+* **DT.exe**: Az eszköz parancssori verziója
 
 ## <a name="select-data-source"></a>Adatforrás kiválasztása
 
@@ -174,7 +174,7 @@ Mely az alábbi (részleges) eredményt adja vissza:
 
 Megfigyelheti az Address.AddressType és az Address.Location.StateProvinceName áljelet. A „.” beágyazási elválasztó megadása miatt az importáló eszköz létrehozza az Address és az Address.Location aldokumentumot az importálás során. Ez például az alábbi Azure Cosmos DB-beli végleges dokumentumot eredményezheti:
 
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+*{"id": "956", "Name": "Kifinomultabb Sales, Service", "cím": {"AddressType": "Főiroda", "AddressLine1": "#500 – 75 O'Connor Street", "Hely": {"City": "Ottawai", "StateProvinceName": "Ontario"}, "PostalCode": "K4B 1S2", "CountryRegionName": "Kanada"}}*
 
 Néhány parancssori példa SQL Server-adatbázisból való importáláshoz:
 
@@ -198,7 +198,7 @@ Az SQL forráshoz hasonlóan itt is használhatja a beágyazási elválasztó tu
 
 Megfigyelheti a DomainInfo.Domain_Name és a RedirectInfo.Redirecting áljelet. A „.” beágyazási elválasztó megadása miatt az importáló eszköz létrehozza a DomainInfo és a RedirectInfo aldokumentumot az importálás során. Ez például az alábbi Azure Cosmos DB-beli végleges dokumentumot eredményezheti:
 
-*{"DomainInfo": {"Tartománynév": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Szövetségi ügynökség": "felügyeleti konferencia az Amerikai Egyesült államokbeli", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Tartomány_neve": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV"}, "Szövetségi közigazgatási szerv": "Az Amerikai Egyesült Államok közigazgatási konferencia", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Az importálási eszköz próbál kikövetkeztetni informace o typu jegyzett értékek CSV-fájlok (határolójeles értékek mindig számít karakterláncok).  A típusokat a következő sorrendben azonosítja: szám, datetime, boolean.  
 
@@ -302,10 +302,10 @@ Egyetlen Azure Cosmos DB-gyűjtemény importálásához írja be annak a gyűjte
 
 Az Azure Cosmos DB importálási forráshoz a következő speciális beállításokat adhatja meg:
 
-1. Include Internal Fields (Belső mezők belefoglalása): Meghatározza, hogy az exportálás tartalmazza-e az Azure Cosmos DB dokumentumrendszerének tulajdonságait (például _rid, _ts).
-2. Number of Retries on Failure (Újrapróbálkozások számára sikertelenség esetén): Meghatározza, hogy az eszköz hány alkalommal kísérelje meg ismét az Azure Cosmos DB-hez való csatlakozást átmeneti hiba fellépése esetén (például ha megszakad a hálózati kapcsolat).
-3. Retry Interval (Újrapróbálkozások időköze): Meghatározza, hogy az eszköz mennyi ideig várjon, mielőtt ismét megkísérli az Azure Cosmos DB-hez való kapcsolódást átmeneti hiba fellépése esetén (például ha megszakad a hálózati kapcsolat).
-4. Connection Mode (Kapcsolatmód): Meghatározza az Azure Cosmos DB-hez használandó kapcsolatmódot. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
+1. Belső mezők a következők: Megadja, hogy az tartalmazza az Azure Cosmos DB dokumentum rendszer tulajdonságokat az Exportálás (például _rid, _ts).
+2. Hiba esetén az újrapróbálkozások száma: Meghatározza a kapcsolat (például a hálózati kapcsolat megszakadása) átmeneti hibák esetén az Azure Cosmos DB-újrapróbálkozások számát.
+3. Újrapróbálkozási időköz: Itt adható meg mennyi ideig várakozás után újra próbálkozik a kapcsolatot az Azure Cosmos DB (például a hálózati kapcsolat megszakadása). az átmeneti meghibásodások esetén.
+4. Kapcsolat módja: Adja meg a csatlakozási mód használata az Azure Cosmos DB használatával. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
 
 ![Képernyőkép az Azure Cosmos DB forrás speciális beállításairól](./media/import-data/documentdbsourceoptions.png)
 
@@ -389,19 +389,19 @@ Emellett dátum típusú értékek importálásakor (például SQL Serverből va
 
  ![Képernyőkép az Azure Cosmos DB importálási dátum- és időbeállításáról](./media/import-data/datetimeoptions.png)
 
-* String (Sztring): Megőrzés sztringértékként
-* Epoch (Alapidőszak): Megőrzés Epoch típusú számértékként
-* Both (Mindkettő): Megőrzés mind sztringként, mind pedig Epoch típusú számértékként. Ez a beállítás létrehoz egy aldokumentumot, például: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Karakterlánc: Egy karakterláncértéket, megőrzése
+* Alapidőpont: Egy érték szám alapidőpont szerint megőrzése
+* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Alapidőpont": 1382390245}
 
 Az Azure Cosmos DB tömeges importálási eszköze a következő speciális beállításokat támogatja:
 
-1. Batch Size (Kötegméret): Az alapértelmezett kötegméret 50.  Nagyméretű dokumentumok importálásakor célszerű csökkenteni a kötegméretet, kisméretű dokumentumok importálásakor pedig növelni a kötegméretet.
-2. Max Script Size (bytes) (Maximális szkriptfájlméret (bájt)): Az alapértelmezett maximális szkriptfájlméret 512 KB.
-3. Tiltsa le a azonosító létrehozása automatikus: Ha importálni minden dokumentumnak azonosító mezőjéhez, majd ezzel a beállítással növelheti a teljesítményt. Hiányzik egy egyedi azonosító mező dokumentumok nem importálja.
-4. Frissítés meglévő dokumentumok: Az eszköz alapértelmezett értéke nem azonosító ütközik a meglévő dokumentumok cserélje. Ez a beállítás lehetővé teszi a felülírják a meglévő dokumentumok-azonosítók egyeztetésével. Ez a funkció a meglévő dokumentumokat frissítő ütemezett adatáttelepítésekhez hasznos.
-5. A sikertelen próbálkozások száma: meghatározza, milyen gyakran szeretné újra létrehozni a kapcsolatot az Azure Cosmos DB átmeneti meghibásodások (például a hálózati kapcsolat megszakadása).
-6. Retry Interval (Újrapróbálkozások időköze): Meghatározza, hogy az eszköz mennyi ideig várjon, mielőtt ismét megkísérli az Azure Cosmos DB-hez való kapcsolódást átmeneti hiba fellépése esetén (például ha megszakad a hálózati kapcsolat).
-7. Connection Mode (Kapcsolatmód): Meghatározza az Azure Cosmos DB-hez használandó kapcsolatmódot. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
+1. Köteg mérete: Az eszköz alapértelmezett értéke a Köteg mérete 50.  Nagyméretű dokumentumok importálásakor célszerű csökkenteni a kötegméretet, kisméretű dokumentumok importálásakor pedig növelni a kötegméretet.
+2. Maximális parancsfájl mérete (bájt): Az eszköz alapértelmezett értéke egy parancsfájl maximális mérete 512 KB-os.
+3. Tiltsa le az automatikus azonosító létrehozása: Ha minden dokumentumnak importálni azonosító mezőjéhez, majd ezzel a beállítással növelheti a teljesítményt. Hiányzik egy egyedi azonosító mező dokumentumok nem importálja.
+4. Frissítse a meglévő dokumentumok: Az eszköz alapértelmezett értéke nem azonosító ütközik a meglévő dokumentumok cserélje. Ez a beállítás lehetővé teszi a felülírják a meglévő dokumentumok-azonosítók egyeztetésével. Ez a funkció a meglévő dokumentumokat frissítő ütemezett adatáttelepítésekhez hasznos.
+5. Hiba esetén az újrapróbálkozások száma: Itt adhatja meg, milyen gyakran szeretné újra létrehozni a kapcsolatot az Azure Cosmos DB átmeneti meghibásodások (például a hálózati kapcsolat megszakadása).
+6. Újrapróbálkozási időköz: Itt adható meg mennyi ideig várakozás után újra próbálkozik a kapcsolatot az Azure Cosmos DB (például a hálózati kapcsolat megszakadása). az átmeneti meghibásodások esetén.
+7. Kapcsolat módja: Adja meg a csatlakozási mód használata az Azure Cosmos DB használatával. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
 
 ![Képernyőkép az Azure Cosmos DB speciális tömeges importálási beállításairól](./media/import-data/docdbbulkoptions.png)
 
@@ -444,18 +444,18 @@ Elérhető néhány speciális beállítás is importáláskor. Dátum típusú 
 
  ![Képernyőkép az Azure Cosmos DB importálási dátum- és időbeállításáról](./media/import-data/datetimeoptions.png)
 
-* String (Sztring): Megőrzés sztringértékként
-* Epoch (Alapidőszak): Megőrzés Epoch típusú számértékként
-* Both (Mindkettő): Megőrzés mind sztringként, mind pedig Epoch típusú számértékként. Ez a beállítás létrehoz egy aldokumentumot, például: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Karakterlánc: Egy karakterláncértéket, megőrzése
+* Alapidőpont: Egy érték szám alapidőpont szerint megőrzése
+* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Alapidőpont": 1382390245}
 
 Az Azure Cosmos DB szekvenciális rekordimportáló eszköze a következő speciális beállításokat támogatja:
 
-1. Number of Parallel Requests (Párhuzamos kérelmek száma): A párhuzamos kérelmek alapértelmezett száma kettő. Kisméretű dokumentumok importálásakor célszerű növelni a párhuzamos kérelmek számát. Ha azonban túl nagy értéket ad meg, akkor a rendszer korlátozhatja az importálás sebességét.
-2. Tiltsa le a azonosító létrehozása automatikus: Ha importálni minden dokumentumnak azonosító mezőjéhez, majd ezzel a beállítással növelheti a teljesítményt. Hiányzik egy egyedi azonosító mező dokumentumok nem importálja.
-3. Frissítés meglévő dokumentumok: Az eszköz alapértelmezett értéke nem azonosító ütközik a meglévő dokumentumok cserélje. Ez a beállítás lehetővé teszi a felülírják a meglévő dokumentumok-azonosítók egyeztetésével. Ez a funkció a meglévő dokumentumokat frissítő ütemezett adatáttelepítésekhez hasznos.
-4. A sikertelen próbálkozások száma: meghatározza, milyen gyakran szeretné újra létrehozni a kapcsolatot az Azure Cosmos DB átmeneti meghibásodások (például a hálózati kapcsolat megszakadása).
-5. Újrapróbálkozási időköz: Megadja, hogy mennyi ideig várjon közötti újrapróbálkozás átmeneti meghibásodások (például a hálózati kapcsolat megszakadása) az Azure Cosmos DB a kapcsolatot.
-6. Connection Mode (Kapcsolatmód): Meghatározza az Azure Cosmos DB-hez használandó kapcsolatmódot. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
+1. Párhuzamos kérelmek száma: Az eszköz alapértelmezett értéke két párhuzamos kérelmek. Kisméretű dokumentumok importálásakor célszerű növelni a párhuzamos kérelmek számát. Ha azonban túl nagy értéket ad meg, akkor a rendszer korlátozhatja az importálás sebességét.
+2. Tiltsa le az automatikus azonosító létrehozása: Ha minden dokumentumnak importálni azonosító mezőjéhez, majd ezzel a beállítással növelheti a teljesítményt. Hiányzik egy egyedi azonosító mező dokumentumok nem importálja.
+3. Frissítse a meglévő dokumentumok: Az eszköz alapértelmezett értéke nem azonosító ütközik a meglévő dokumentumok cserélje. Ez a beállítás lehetővé teszi a felülírják a meglévő dokumentumok-azonosítók egyeztetésével. Ez a funkció a meglévő dokumentumokat frissítő ütemezett adatáttelepítésekhez hasznos.
+4. Hiba esetén az újrapróbálkozások száma: Itt adhatja meg, milyen gyakran szeretné újra létrehozni a kapcsolatot az Azure Cosmos DB átmeneti meghibásodások (például a hálózati kapcsolat megszakadása).
+5. Újrapróbálkozási időköz: Újrapróbálkozás átmeneti meghibásodások (például a hálózati kapcsolat megszakadása) az Azure Cosmos DB a kapcsolat között megadja a mennyi ideig.
+6. Kapcsolat módja: Adja meg a csatlakozási mód használata az Azure Cosmos DB használatával. Az elérhető lehetőségek: DirectTcp (Közvetlen TCP), DirectHttps (Közvetlen HTTPS) és Gateway (Átjáró). A közvetlen kapcsolatmódok gyorsabbak, míg az átjárómód könnyebben használható tűzfalon keresztül, mivel csak a 443-as portot használja.
 
 ![Képernyőkép az Azure Cosmos DB speciális szekvenciálisrekord-importálási beállításairól](./media/import-data/documentdbsequentialoptions.png)
 

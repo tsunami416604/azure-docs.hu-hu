@@ -1,5 +1,6 @@
 ---
-title: Hasonlítsa össze a machine learning a Microsoft termék-beállítások
+title: Hasonlítsa össze a machine learning termék beállításai
+titleSuffix: Microsoft
 description: Összehasonlíthat a Microsoft kínálatában található számos különféle terméket, hogy megalkothassa, üzembe helyezhesse és kezelhesse a gépi tanuláson alapuló modelljeit. Eldöntheti, mely terméket válassza ki a saját megoldásához.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274119"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557886"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Mik azok a machine learning-termékek, a Microsoft?
 
@@ -37,7 +38,7 @@ A Microsoft számos különféle terméket kínál, amelyekkel megalkothatja, ü
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning szolgáltatás
 
-[Az Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md) egy teljes körűen felügyelt felhőszolgáltatás, használt betanításához, üzembe helyezése és kezelése a gépi Tanulási modelleket ipari méretekben. Teljes körűen támogatja a nyílt forráskódú technológiákat, így több tízezer nyílt forráskódú Python-csomaggal, többek között TensorFlow-val, PyTorch-csal és scikit-learnnel is használható. Gazdag eszközök is elérhetők, például [Azure notebookok](https://notebooks.azure.com/), [Jupyter notebookok](http://jupyter.org), vagy a [a Visual Studio Code az Azure Machine Learning](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) bővítmény megkönnyíti a felfedezése és alakíthat át adatokat, és ezután betanítása és modellek üzembe helyezése. Az Azure Machine Learning szolgáltatás funkcióival a modellek generálása és finomhangolása könnyedén, hatékonyan és pontosan automatizálható.
+[Az Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md) egy teljes körűen felügyelt felhőszolgáltatás, használt betanításához, üzembe helyezése és kezelése a gépi Tanulási modelleket ipari méretekben. Teljes körűen támogatja a nyílt forráskódú technológiákat, így több tízezer nyílt forráskódú Python-csomaggal, többek között TensorFlow-val, PyTorch-csal és scikit-learnnel is használható. Gazdag eszközök is elérhetők, például [Azure notebookok](https://notebooks.azure.com/), [Jupyter notebookok](http://jupyter.org), vagy a [a Visual Studio Code az Azure Machine Learning](https://aka.ms/vscodetoolsforai) bővítmény megkönnyíti a felfedezése és alakíthat át adatokat, és ezután betanítása és modellek üzembe helyezése. Az Azure Machine Learning szolgáltatás funkcióival a modellek generálása és finomhangolása könnyedén, hatékonyan és pontosan automatizálható.
 
 Az Azure Machine Learning szolgáltatással a Python és a CLI használatával taníthat be, helyezhet üzembe és kezelhet gépi tanuláson alapuló modelleket ipari méretekben.
 

@@ -89,7 +89,7 @@ HTTP-metódus
 
 *Kérés URL-címe*
 
-**https://login.microsoftonline.com/*{Bérlőazonosító}*  /oauth2/jogkivonat**
+**https://login.microsoftonline.com/*{Bérlőazonosító}*/oauth2/jogkivonat**
 
 *URI-paraméter*
 
@@ -225,7 +225,7 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -290,7 +290,7 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 **JAVÍTÁS**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -356,7 +356,7 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -407,7 +407,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -477,7 +477,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|

@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Az Azure Time Series Insights Explorer | Microsoft Docs
+title: 'Gyors útmutató: Az Azure Time Series Insights explorer |} A Microsoft Docs'
 description: Ez a rövid útmutató ismerteti az Azure Time Series Insights Explorer webböngészőben való használatának első lépéseit, hogy nagy mennyiségű IoT-adatot tudjon megjeleníteni. A legfontosabb jellemzőkkel a bemutató környezetben ismerkedhet meg.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 11/15/2017
-ms.openlocfilehash: 6b2a21cf50c03c8e44794540074dabf90049bc7c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 32ed0ec178f7a0064fae88357011197e71604885
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275516"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555540"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insightsszal
 Ez a rövid útmutató egy ingyenes bemutató környezetben ismerteti az Azure Time Series Insights Explorer használatának első lépéseit. Megtudhatja, hogyan jeleníthet meg nagy mennyiségű IoT-adatot a webböngészőjében, és megismerkedhet a Time Series Insights Explorer főbb jellemzőivel. 

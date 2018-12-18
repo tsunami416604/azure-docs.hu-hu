@@ -1,9 +1,9 @@
 ---
-title: Az Azure Batch áttekintése fejlesztők számára | Microsoft Docs
+title: Fejlesztők számára – Azure Batch áttekintése |} A Microsoft Docs
 description: Megismerheti a Batch szolgáltatás funkcióit és API-jait a fejlesztés szempontjából.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 08/22/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 3043764ed89f2e53ddc3fd3f009a8bee586031e9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735579"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540374"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -314,8 +314,8 @@ A rendszer minden más feladat előtt indítja el a feladatkezelői tevékenysé
 ### <a name="job-preparation-and-release-tasks"></a>Feladat-előkészítési és -kiadási tevékenységek
 A Batch a feladatok előtt elvégzendő beállításokhoz feladat-előkészítési tevékenységeket biztosít. A feladatkiadási tevékenységek ezzel szemben a feladat elvégzése utáni karbantartási vagy takarítási műveletekhez használhatók.
 
-* **Feladat-előkészítési tevékenység**: a feladat-előkészítési tevékenységek a tevékenységek futtatására ütemezett összes számítási csomóponton, minden más tevékenység végrehajtása előtt lefutnak. A feladat-előkészítési tevékenység használható például az összes tevékenységre jellemző, de a feladat esetében egyedi adatok másolására.
-* **Feladatkiadási tevékenység**: amikor egy feladat befejeződött, a feladatkiadási tevékenység a készlet minden csomópontján lefut, amely legalább egy tevékenységet elvégzett. A feladatkiadási tevékenységgel törölheti a feladat-előkészítési tevékenység által másolt adatokat, vagy például tömörítheti, majd feltöltheti a diagnosztikai naplóadatokat.
+* **Feladat-előkészítési tevékenység**: Feladat-előkészítési tevékenységet, amely bármely más tevékenység végrehajtása előtt a tevékenységek futtatására ütemezett összes számítási csomóponton fut. A feladat-előkészítési tevékenység használható például az összes tevékenységre jellemző, de a feladat esetében egyedi adatok másolására.
+* **A feladatkiadási**: Ha egy feladat befejeződött, a feladatkiadási tevékenység, amely legalább egy tevékenységet a készletben lévő minden egyes csomóponton fut. A feladatkiadási tevékenységgel törölheti a feladat-előkészítési tevékenység által másolt adatokat, vagy például tömörítheti, majd feltöltheti a diagnosztikai naplóadatokat.
 
 Mind a feladat-előkészítési, mind a feladatkiadási tevékenységeknél megadhat egy parancssort, amelyet futtatni szeretne a tevékenység meghívásakor. Ezek segítségével számos különböző funkciót érhet el, például fájlokat tölthet le, emelt jogosultsági szintű futtatást végezhet, egyéni környezeti változókat adhat meg, illetve beállíthatja a maximális végrehajtási időt, az újrapróbálások számát, illetve a fájlmegőrzési időt.
 
@@ -355,13 +355,13 @@ A gyökérkönyvtár a következő könyvtárstruktúrát tartalmazza:
 
 ![Számítási csomópont könyvtárstruktúrája][1]
 
-* **shared**: ez a könyvtár olvasási/írási hozzáférést nyújt a csomóponton futó *összes* tevékenység számára. Ebben a könyvtárban a csomóponton futó összes tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_SHARED_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
-* **startup**: az indítási tevékenység ezt a könyvtárat használja munkakönyvtárként. Az indítási tevékenység által a csomópontra letöltött összes fájlt ez a könyvtár tárolja. Ebben a könyvtárban az indítási tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_STARTUP_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
-* **Tasks**: létrejön egy könyvtár a csomóponton futó minden egyes feladathoz. Ez a könyvtár a `AZ_BATCH_TASK_DIR` környezeti változóra való hivatkozással érhető el.
+* **megosztott**: Ez a könyvtár olvasási/írási hozzáférést nyújt *összes* feladatokat, amelyek egy csomóponton futnak. Ebben a könyvtárban a csomóponton futó összes tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_SHARED_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
+* **indítási**: Ebben a könyvtárban az indítási tevékenység használja munkakönyvtárként. Az indítási tevékenység által a csomópontra letöltött összes fájlt ez a könyvtár tárolja. Ebben a könyvtárban az indítási tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni. A tevékenységek az `AZ_BATCH_NODE_STARTUP_DIR` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
+* **Feladatok**: Létrejön egy könyvtár a csomóponton futó minden egyes feladathoz. Ez a könyvtár a `AZ_BATCH_TASK_DIR` környezeti változóra való hivatkozással érhető el.
 
     A Batch szolgáltatás minden tevékenységkönyvtárban létrehoz egy munkakönyvtárat (`wd`), amelynek egyedi elérési útját a(z) `AZ_BATCH_TASK_WORKING_DIR` környezeti változó határozza meg. Ez a könyvtár olvasási/írási hozzáférést nyújt a tevékenységhez. A tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni ebben a könyvtárban. A rendszer a tevékenységhez beállított *RetentionTime* korlátozás értékének megfelelően őrzi meg a könyvtárat.
 
-    `stdout.txt` és `stderr.txt`: a rendszer ezeket a fájlokat írja a tevékenységmappába a tevékenység futtatásakor.
+    `stdout.txt` és `stderr.txt`: Ezek a fájlok írt tevékenység a feladat végrehajtása közben.
 
 > [!IMPORTANT]
 > Amikor eltávolít egy csomópontot a készletből, a csomóponton tárolt *összes* fájlt is eltávolítja.
@@ -508,7 +508,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 * Töltse le és telepítse a [Batch Explorer][batch_labs] alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A Batch Explorer alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, valamint a felmerülő hibáikat is elháríthatja. 
-* Tekintse meg a közösségi forrásanyagokat, például a [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch) oldalt, a [Batch-közösség adattárát](https://github.com/Azure/Batch) és az [Azure Batch fórumot][batch_forum] az MSDN-en. 
+* Tekintse meg a közösségi forrásanyagokat, például a [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch) oldalt, a [Batch-közösség adattárát](https://github.com/Azure/Batch) és az [Azure Batch fórumot][batch_forum] az MSDN-en. 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

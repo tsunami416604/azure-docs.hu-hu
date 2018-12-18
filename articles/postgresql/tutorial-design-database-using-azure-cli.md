@@ -1,24 +1,21 @@
 ---
-title: 'Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure CLI használatával'
+title: 'Oktatóanyag: Azure Database for postgresql-hez az Azure CLI használatával tervezése'
 description: Ez az oktatóanyag azt mutatja be, hogyan hozhatja létre, konfigurálhatja és kérdezheti le az első Azure Database for PostgreSQL-kiszolgálót az Azure CLI-vel.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 03c9d647c98122b63b81baa453e0cccdf951901a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982341"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547320"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure CLI használatával 
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure CLI használatával tervezése 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
@@ -195,9 +192,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 Az `az postgres server restore` parancshoz a következő paraméterekre van szükség:
-| Beállítás | Ajánlott érték | Leírás  |
+| Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
 | név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
@@ -218,4 +215,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Az
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Ha azt is meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure Portallal, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL megtervezése az Azure Portallal](tutorial-design-database-using-azure-portal.md)
+Ezután megtudhatja, hogyan végezhet el hasonló feladatokat, tekintse át az ebben az oktatóanyagban az Azure portal használatával: [Az első Azure Database for postgresql-hez az Azure portal használatával tervezése](tutorial-design-database-using-azure-portal.md)

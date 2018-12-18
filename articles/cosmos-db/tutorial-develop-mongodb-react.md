@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 54a58ed9a3adf405f1384a2d0a31c569707acfc9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867035"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542985"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
 
-Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazás a Node és az Express használatával gondoskodik a kiszolgálóról, az Azure Cosmos DB-hez a [MongoDB API](mongodb-introduction.md) használatával csatlakozik, majd a React-előtérrendszerhez csatlakoztatja az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan végezhető el az Azure Cosmos DB méretezése néhány kattintással az Azure Portalon, és hogyan helyezhető üzembe az alkalmazás az interneten, hogy mindenki kedvére követhesse kedvenc fő képeit. 
+Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazásnak a kiszolgálóhoz használt csomópont és az Express, az Azure Cosmos DB-hez csatlakozik a [Azure Cosmos DB API-fiók MongoDB-hez](mongodb-introduction.md), majd a React-előtérrendszerhez csatlakozik az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan végezhető el az Azure Cosmos DB méretezése néhány kattintással az Azure Portalon, és hogyan helyezhető üzembe az alkalmazás az interneten, hogy mindenki kedvére követhesse kedvenc fő képeit. 
 
 Az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja a MongoDB ügyfélkapcsolatait, így az Azure Cosmos DB-t a MongoDB helyett használhatja, de ugyanazt a kódot kell használnia, mint a MongoDB-alkalmazások esetében. Így további előnyöket, például egyszerű felhőalapú üzembe helyezést, méretezést és szupergyors olvasási és írási képességet biztosíthat alkalmazásának.  
 

@@ -1,20 +1,21 @@
 ---
-title: Azure Digital Twins-környezet eseményeinek elemzése | Microsoft Docs
+title: 'Oktatóanyag: Azure Digital Twins-környezet eseményeinek elemzése | Microsoft Docs'
 description: Ismerje meg, hogyan megjelenítését és elemzését az Azure digitális Twins szóközt, az Azure Time Series Insights, az események ebben az oktatóanyagban szereplő lépések segítségével.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: b7c44184d0a0d8d5a8f1fbd80b053230f2c1ae84
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f233efc93fa07cc7fc7c904336f01348f4da3f82
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582020"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554520"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Megjelenítése és elemzése az Azure digitális Twins tárolóhelyek események a Time Series Insights használatával
+# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Megjelenítését és elemzését az Azure digitális Twins tárolóhelyek események a Time Series Insights használatával
 
 Miután az Azure digitális Twins-példány üzembe helyezése, a tárolóhelyek üzembe helyezése, és figyelheti az egyes esetekben egy egyéni függvény végrehajtása, az események és a tárolóhelyek a trendek és rendellenességek kereséséhez származó adatokat jelenítheti meg. 
 

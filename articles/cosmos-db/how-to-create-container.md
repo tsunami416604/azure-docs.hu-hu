@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5558409c3a3b0aef3757ebb73b2046a7018e4150
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c1f78421fd431ca6a1aeab9f6147a3cca936cf9b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088187"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539755"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Tároló létrehozása az Azure Cosmos DB-ben
 
@@ -20,7 +20,7 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 
 ## <a name="create-a-container-using-azure-portal"></a>Tároló létrehozása az Azure Portal használatával
 
-### <a id="portal-sql"></a>SQL (Core) API
+### <a id="portal-sql"></a>Az Azure Cosmos DB API-t, SQL (mag)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 
 ![Az SQL API létrehoz egy gyűjteményt](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>MongoDB API
+### <a id="portal-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -51,9 +51,9 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
    * Adjon meg egy átviteli sebességet, például 1000 kérelemegységet.
    * Kattintson az **OK** gombra.
 
-![A MongoDB API létrehoz egy gyűjteményt](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Az Azure Cosmos DB API a MongoDB-gyűjteményt hoz létre.](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Cassandra API
+### <a id="portal-cassandra"></a>Az Azure Cosmos DB API-hoz a Cassandra
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -72,7 +72,7 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 > [!NOTE]
 > A Cassandra API esetében a rendszer az elsődleges kulcsot használja partíciókulcsként.
 
-### <a id="portal-gremlin"></a>Gremlin API
+### <a id="portal-gremlin"></a>A Gremlin az Azure Cosmos DB API-hoz
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -89,7 +89,7 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 
 ![A Gremlin API létrehoz egy gyűjteményt](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
-### <a id="portal-table"></a>Table API
+### <a id="portal-table"></a>Az Azure Cosmos DB API táblához
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -109,7 +109,7 @@ Ebben a cikkben a tárolók (gyűjtemény, táblázat, gráf) létrehozásának 
 
 ## <a name="create-a-container-using-azure-cli"></a>Tároló létrehozása az Azure CLI használatával
 
-### <a id="cli-sql"></a>SQL (Core) API
+### <a id="cli-sql"></a>Az Azure Cosmos DB API-t, SQL (mag)
 
 ```azurecli-interactive
 # Create a container with a partition key and provision 1000 RU/s throughput.
@@ -123,7 +123,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-mongodb"></a>MongoDB API
+### <a id="cli-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
 
 ```azurecli-interactive
 # Create a collection with a shard key and provision 1000 RU/s throughput.
@@ -136,7 +136,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-cassandra"></a>Cassandra API
+### <a id="cli-cassandra"></a>Az Azure Cosmos DB API-hoz a Cassandra
 
 ```azurecli-interactive
 # Create a table with a partition/primary key and provision 1000 RU/s throughput.
@@ -149,7 +149,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-gremlin"></a>Gremlin API
+### <a id="cli-gremlin"></a>A Gremlin az Azure Cosmos DB API-hoz
 
 ```azurecli-interactive
 # Create a graph with a partition key and provision 1000 RU/s throughput.
@@ -162,7 +162,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-table"></a>Table API
+### <a id="cli-table"></a>Az Azure Cosmos DB API táblához
 
 ```azurecli-interactive
 # Create a table with 1000 RU/s
@@ -177,7 +177,7 @@ az cosmosdb collection create \
 
 ## <a name="create-a-container-using-net-sdk"></a>Tároló létrehozása .NET SDK használatával
 
-### <a id="dotnet-sql-graph"></a>SQL API és Gremlin API
+### <a id="dotnet-sql-graph"></a>Az SQL és Gremlin az Azure Cosmos DB API-hoz
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -191,7 +191,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>MongoDB API
+### <a id="dotnet-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -201,7 +201,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 > [!Note]
 > A MongoDB-ben nem létezik a kérelemegységek fogalma. Egy átviteli sebességgel rendelkező új gyűjtemény létrehozásához használja az Azure Portalt vagy az SQL API-t az előző példáknak megfelelően.
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a id="dotnet-cassandra"></a>Az Azure Cosmos DB API-hoz a Cassandra
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.

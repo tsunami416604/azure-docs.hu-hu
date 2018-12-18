@@ -1,22 +1,19 @@
 ---
 title: Azure CLI-szkript – Azure Database for PostgreSQL létrehozása
 description: Azure CLI-példaszkript – Létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 4d14ca7ee70dc7d24f0fa95a2139d88231d36a7d
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e31a51fe8004c92b629e93333348192668922792
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580559"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536032"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
 Ez a CLI-példaszkript létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen futott, a PostgreSQL-kiszolgáló elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről.
@@ -44,5 +41,5 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
-- További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációja](/cli/azure)
+- További szkripteket: [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](../sample-scripts-azure-cli.md)

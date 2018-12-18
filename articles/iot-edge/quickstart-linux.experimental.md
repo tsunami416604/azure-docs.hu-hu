@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1bc7425d1979b2e1a35884c0800117455aebe9b6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc9ad544bb974dded098a27855ff5f6b9885d879
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338057"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556577"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Gyors útmutató: Az első IoT Edge-modul x64 Linux rendszerű eszközre telepítéséhez
 
@@ -69,7 +69,7 @@ IoT Edge-eszköz:
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure CLI használatával.
+Először a rövid útmutató egy IoT hub létrehozása az Azure CLI használatával.
 
 ![Diagram – a felhőben az IoT hub létrehozása](./media/quickstart-linux/create-iot-hub.png)
 
@@ -106,7 +106,9 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Másolja és mentse a kapcsolati sztringet. Erre az értékre a következő szakaszban, az IoT Edge-futtatókörnyezet konfigurálásához lesz szükség. 
+3. Másolja a kapcsolati karakterláncot a JSON-kimenetet, és mentse. Erre az értékre a következő szakaszban, az IoT Edge-futtatókörnyezet konfigurálásához lesz szükség.
+
+   ![Kapcsolati karakterlánc lekérése a CLI-kimenetből](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="connect-the-iot-edge-device-to-iot-hub"></a>Az IoT Edge-eszköz csatlakoztatása az IoT hubhoz
 

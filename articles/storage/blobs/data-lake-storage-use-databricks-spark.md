@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával | Microsoft Docs
-description: Ismerje meg, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön 2. generációs Azure Data Lake Storage-tárfiókban tárolt adatokhoz való hozzáféréshez.
+title: 'Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával | Microsoft Docs'
+description: Ez az oktatóanyag bemutatja, hogyan futtathat Spark lekérdezéseket egy Azure Databricks-fürtön az Azure Data Lake Storage Gen2 tárfiókban lévő adatok eléréséhez.
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975675"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548986"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2 előzetes verzió az adatok elérhetők az Azure Databricks Spark használatával
 
-Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön, ha adatokat szeretne lekérni egy olyan Azure Storage-fiókból, amelyen engedélyezve van az Azure Data Lake Storage Gen2 előzetes verziója.
+Az oktatóanyag bemutatja, hogyan csatlakozhat egy Azure storage-fiókot, amely rendelkezik az Azure Data Lake Storage Gen2-ban tárolt adatok az Azure Databricks-fürt (előzetes verzió) engedélyezve van. Ez a kapcsolat lehetővé teszi a natív lekérdezések és futtathatók elemzések a fürtről, az adatok.
+
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Databricks-fürt létrehozása
 > * Strukturálatlan adatok betöltése egy tárfiókba
 > * Elemzés futtatása a blobtárolóban található adatokon
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan használhatja fel és kérdezheti le légitársaságok repülőjárat-adatait, amelyeket az [Egyesült Államok Közlekedési Minisztériuma](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time) tett közzé. Töltsön le legalább két évnyi repülési adatot (az összes mezőt kiválasztva), és mentse az eredményt számítógépére. Jegyezze fel a fájl nevét és elérési útját, mert szüksége lesz erre az információra egy későbbi lépésben.
+Ez az oktatóanyag bemutatja, hogyan használhatja fel és kérdezheti le légitársaságok repülőjárat-adatait, amelyeket az [Egyesült Államok Közlekedési Minisztériuma](https://transtats.bts.gov/DL_SelectFields.asp) tett közzé. 
 
-> [!NOTE]
-> Kattintson a **Prezipped file** (Előre tömörített fájl) jelölőnégyzetre az összes adatmező kiválasztásához. A letöltés mérete több gigabájtnyi, de ez az adatmennyiség szükséges az elemzéshez.
+1. Válassza ki a **Prezipped fájl** jelölőnégyzet bejelölésével kijelölheti az összes adatmezőket.
+2. Válassza ki **letöltése** és mentheti az eredményeket a gépre.
+3. Jegyezze fel a fájl neve és elérési útját a letöltés; Ez egy későbbi lépésben információra van szüksége.
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Elemzési képességekkel rendelkező Azure Storage-fiók létrehozása
+Ez az oktatóanyag egy elemzési lehetőségeket a tárfiókra van szükség. Javasoljuk, hogy végrehajtása az [rövid](data-lake-storage-quickstart-create-account.md) annak érdekében, hogy hozzon létre egyet a tárgyban. Miután létrehozta, azt, keresse meg a storage-fiók konfigurációs beállítások lekéréséhez.
 
-Elsőként hozzon létre egy [elemzési képességekkel rendelkező új tárfiókot](data-lake-storage-quickstart-create-account.md), és adjon neki egy egyedi nevet. Ezután lépjen a tárfiókra a konfigurációs beállítások lekéréséhez.
-
-1. A **Beállítások** oldalon kattintson a **Hozzáférési kulcsok** gombra.
-2. Kattintson a **Másolás** gombra a **key1** elem mellett a kulcs értékének másolásához.
+1. A **beállítások**válassza **hozzáférési kulcsok**.
+2. Válassza ki a **másolási** megjelenítő gombra **key1** másolása a kulcs értékét.
 
 A fióknév és a kulcs egyaránt szükséges az oktatóanyag későbbi lépéseihez. Nyisson meg egy szövegszerkesztőt, és jegyezze fel a fióknevet és a kulcsot a későbbi felhasználáshoz.
 
 ## <a name="create-a-databricks-cluster"></a>Databricks-fürt létrehozása
 
-A következő lépésben egy [Databricks-fürtöt](https://docs.azuredatabricks.net/) kell létrehozni adat-munkaterület létrehozásához.
+A következő lépés, hogy hozzon létre egy Databricks-fürt adatok munkaterület létrehozásához.
 
-1. Hozzon létre egy [Databricks-szolgáltatást](https://ms.portal.azure.com/#create/Microsoft.Databricks), és nevezze el a következőképp: **myFlightDataService** (győződjön meg arról, hogy bejelölte a *Rögzítés az irányítópulton* jelölőnégyzetet a szolgáltatás létrehozásakor).
-2. A munkaterület új böngészőablakban történő megnyitásához kattintson a **Munkaterület indítása** elemre.
-3. A bal oldali navigációs sávban kattintson a **Fürtök** elemre.
-4. Kattintson a **Fürt létrehozása** parancsra.
-5. Írjon be egy **myFlightDataCluster** értéket a *Fürt neve* mezőbe.
-6. A *Feldolgozó típusa* mezőben válassza a következőt: **Standard_D8s_v3**.
-7. Állítsa a **Min. feldolgozók** értéket *4*-re.
-8. Kattintson a **Fürt létrehozása** parancsra az oldal tetején (ez a folyamat akár 5 percig is eltarthat).
-9. Amikor a folyamat befejeződött, válassza az **Azure Databricks** lehetőséget a navigációs sáv bal felső részén.
-10. A lap alsó felén található **Új** területen válassza a **Notebook** lehetőséget.
-11. Írjon be egy szabadon választott nevet a **Név** mezőbe, majd válassza ki a **Python** nyelvet.
-12. Az összes többi mező maradhat az alapértelmezett értéken.
-13. Kattintson a **Létrehozás** gombra.
-14. Illessze be az alábbi kódot a **Cmd 1** cella. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a minta zárójelben:
+1. Az a [az Azure portal](https://portal.azure.com)válassza **erőforrás létrehozása**.
+2. Adja meg **Azure Databricks** a keresőmezőbe.
+3. Válassza ki **létrehozás** az Azure Databricks panelen.
+4. Nevezze el a Databricks szolgáltatást **myFlightDataService** (ügyeljen arra, hogy ellenőrizze, hogy a *rögzítés az irányítópulton* jelölőnégyzetet, hogy a szolgáltatás létrehozása).
+5. Válassza ki **munkaterület indítása** , nyissa meg a munkaterületet egy új böngészőablakban.
+6. Válassza ki **fürtök** a bal oldali navigációs sávon.
+7. Válassza ki **-fürt létrehozása**.
+8. Írjon be egy **myFlightDataCluster** értéket a **Fürt neve** mezőbe.
+9. A **Feldolgozó típusa** mezőben válassza a következőt: **Standard_D8s_v3**.
+10. Állítsa a **Min. feldolgozók** értéket **4**-re.
+11. Válassza ki **-fürt létrehozása** az oldal tetején. (Ez a folyamat eltarthat akár 5 percet.)
+12. A folyamat befejezése után válassza **Azure Databricks** a bal felső részén a navigációs sávon.
+13. A lap alsó felén található **Új** területen válassza a **Notebook** lehetőséget.
+14. Adjon meg egy nevet a választott a **neve** mezőt, és válassza **Python** nyelve.
+15. Az összes többi mező maradhat az alapértelmezett értéken.
+16. Kattintson a **Létrehozás** gombra.
+17. Illessze be az alábbi kódot a **Cmd 1** cella. Cserélje le a helyőrzőket a saját értékeire a minta zárójelben:
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ A következő lépésben egy [Databricks-fürtöt](https://docs.azuredatabricks.
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.
+18. A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.
 
 ## <a name="ingest-data"></a>Adatok betöltése
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 
-A következő lépés az adatok másolása a *.csv* fájlból az Azure-beli tárolóba az AzCopy segítségével. Nyissa meg a parancsablakot, és írja be a következő parancsokat. Győződjön meg arról, hogy a `<DOWNLOAD_FILE_PATH>` és `<ACCOUNT_KEY>` helyőrzőket lecserélte az előző lépésben feljegyzett megfelelő értékekre.
+A következő lépés az adatok másolása a *.csv* fájlból az Azure-beli tárolóba az AzCopy segítségével. Nyissa meg a parancsablakot, és írja be a következő parancsokat. Győződjön meg arról, hogy cserélje le a helyőrzőket `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>`, és `<ACCOUNT_KEY>` , félretett az előző lépésben a megfelelő értékekkel.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -90,12 +96,12 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 
 Nyissa meg újra a Databrickst a böngészőben, majd hajtsa végre a következő lépéseket:
 
-1. Válassza az **Azure Databricks** lehetőséget a navigációs sáv bal felső részén.
+1. Válassza ki **Azure Databricks** a bal felső részén a navigációs sávon.
 2. A lap alsó felén található **Új** területen válassza a **Notebook** lehetőséget.
 3. A **Név** mezőbe írja a következőt: **CSV2Parquet**.
 4. Az összes többi mező maradhat az alapértelmezett értéken.
 5. Kattintson a **Létrehozás** gombra.
-6. Másolja az alábbi kódot a **Cmd 1** cellába (ez a kód automatikusan el lesz mentve a szerkesztőben).
+6. Illessze be az alábbi kódot a **Cmd 1** cella. (Ez a kód automatikus – menti a szerkesztőben.)
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ Nyissa meg újra a Databrickst a böngészőben, majd hajtsa végre a következ�
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>Adatok felfedezése a Hadoop elosztott fájlrendszer használatával
+## <a name="explore-data"></a>Adatok megismerése
 
-Lépjen vissza a Databricks-munkaterületre, és kattintson a bal oldali navigációs sávban lévő **Legutóbbiak** ikonra.
+Térjen vissza a Databricks-munkaterülethez, és válassza ki a **legutóbbi** ikonra a bal oldali navigációs sávon.
 
-1. Kattintson a **Flight Data Analytics** (Repülőjárat-adatok elemzése) jegyzetfüzetre.
+1. Válassza ki a **Flight Data Analytics** notebookot.
 2. Új cella létrehozásához nyomja le a **CTRL + ALT + N** billentyűkombinációt.
 
 Írja be a következő kódblokkok mindegyikét a **Cmd 1** területre, majd nyomja le a **Cmd + ENTER** billentyűkombinációt a Python-szkript futtatásához.
@@ -137,7 +143,7 @@ Ezekkel a kódmintákkal megismerte a HDFS hierarchikus jellegét a Data Lake St
 
 Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdezését. Írja be a következő kódblokkok mindegyikét a **Cmd 1** területre, majd nyomja le a **Cmd + ENTER** billentyűkombinációt a Python-szkript futtatásához.
 
-### <a name="simple-queries"></a>Egyszerű lekérdezések
+### <a name="run-simple-queries"></a>Egyszerű lekérdezések futtatása
 
 Az adatforrások adathalmazainak létrehozásához futtassa a következő szkriptet:
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>Összetett lekérdezések
+
+### <a name="run-complex-queries"></a>Összetett lekérdezések futtatása
 
 Az alábbi összetettebb lekérdezések futtatásához minden szegmenst futtasson külön a Notebookban, és vizsgálja meg az eredményeket.
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Amikor szükség van rájuk már nem, törölje az erőforráscsoportot és az összes kapcsolódó erőforrás. Ehhez válassza ki a storage-fiókhoz tartozó erőforráscsoportot, és válassza ki **törlése**.
+
 ## <a name="next-steps"></a>További lépések
 
-* [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)
+[!div class="nextstepaction"] 
+> [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

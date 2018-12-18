@@ -1,5 +1,5 @@
 ---
-title: 'Regressziós modell oktatóanyag: Automatikusan modelleket taníthat be'
+title: 'Regressziós modell oktatóanyag: Automatizált gépi tanulás'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre egy gépi Tanulási modellt az automatizált machine learning használata.  Az Azure Machine Learning képes automatikusan elvégezni az adatokat feldolgozását, valamint az algoritmusok és hiperparaméterek kiválasztását. A kész modell ezután az Azure Machine Learning szolgáltatással lesz üzembe helyezve.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6bbc2d44ab128aec032ead29bf247cd834f932b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 65b634d66da935b5276cb4c6bdca5742cb0a1c1f
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315203"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555217"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 

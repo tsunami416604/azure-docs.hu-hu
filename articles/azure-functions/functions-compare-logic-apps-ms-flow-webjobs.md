@@ -1,6 +1,6 @@
 ---
 title: A Flow, a Logic Apps, a Functions és a WebJobs összehasonlítása – Azure
-description: 'Megtudhatja, miben különböznek a Microsoft integrációs feladatokhoz optimalizált felhőszolgáltatásai: a Flow, a Logic Apps, a Functions és a WebJobs.'
+description: 'A Microsoft cloud services integrációs feladatokhoz optimalizált összehasonlítása:  Flow, Logic Apps, Functions és webjobs-feladatok.'
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 69026520a03a940f5f5ddc4586663d8047b39e04
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634931"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547660"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>A Flow, a Logic Apps, a Functions és a WebJobs összehasonlítása
 
@@ -47,7 +47,7 @@ Az alábbi táblázat segítségével eldöntheti, hogy a Flow vagy a Logic Apps
 | Tervezőeszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | Alkalmazások életciklus-felügyelete |Tervezés és tesztelés nem éles környezetekben, majd ezek elkészültével előléptetés éles környezetbe. |DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség az [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) eszközzel |
 | Rendszergazdai feladatok |A Flow-környezetek és az adatveszteség-megelőzési szabályzatok kezelése, licencek nyomon követése [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |Erőforráscsoportok kezelése, kapcsolatok, hozzáférés-kezelés és naplózás [https://portal.azure.com](https://portal.azure.com) |
-| Biztonság |Az Office 365 biztonsági és megfelelőségi auditnaplói, adatveszteség-megelőzési szabályzatok, érzékeny adatok [titkosítása inaktív állapotban](https://wikipedia.org/wiki/Data_at_rest#Encryption) stb. |Az Azure által garantált biztonság: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Biztonsági Központ](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/), stb. |
+| Biztonság |Az Office 365 biztonsági és megfelelőségi auditnaplói, adatveszteség-megelőzési szabályzatok, érzékeny adatok [titkosítása inaktív állapotban](https://wikipedia.org/wiki/Data_at_rest#Encryption) stb. |Azure által garantált biztonság: [Az Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [a Security Center](https://azure.microsoft.com/services/security-center/), [auditnaplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/), stb. |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
 
@@ -70,7 +70,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 
 ## <a name="compare-functions-and-webjobs"></a>A Functions és a WebJobs összehasonlítása
 
-Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-val is olyan integrációs szolgáltatás, ahol a *kód* a kiindulási pont, és mindkettőt fejlesztők részére tervezték. Mindkettő az [Azure App Service](../app-service/app-service-web-overview.md) szolgáltatásra épül, és támogatják többek között a következő funkciókat: [verziókövetés integrálása](../app-service/app-service-continuous-deployment.md), [hitelesítés](../app-service/app-service-authentication-overview.md) és [Application Insights-integrációs monitorozás](functions-monitoring.md).
+Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-val is olyan integrációs szolgáltatás, ahol a *kód* a kiindulási pont, és mindkettőt fejlesztők részére tervezték. Mindkettő az [Azure App Service](../app-service/app-service-web-overview.md) szolgáltatásra épül, és támogatják többek között a következő funkciókat: [verziókövetés integrálása](../app-service/deploy-continuous-deployment.md), [hitelesítés](../app-service/app-service-authentication-overview.md) és [Application Insights-integrációs monitorozás](functions-monitoring.md).
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs és WebJobs SDK
 

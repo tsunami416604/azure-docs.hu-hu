@@ -1,7 +1,7 @@
 ---
-title: 'Első lépések: Végpont hívása Node.js használatával – Bing Custom Search'
+title: 'Gyors útmutató: Call a Node.js használatával a Bing Custom Search-végponthoz |} A Microsoft Docs'
 titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egyéni keresési példányokról a Bing Custom Search-végpont Node.js-sel való meghívásával.
+description: Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér a Bing Custom Search példány Node.js használatával
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,77 +10,71 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3af35a9aea9115971d1fbd251da3fbaddb011c5f
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310252"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555795"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>Első lépések: Bing Custom Search-végpont hívása (Node.js)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Gyors útmutató: Call a Node.js használatával a Bing Custom Search-végpont
 
-Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egyéni keresési példányokról a Bing Custom Search-végpont Node.js-sel való meghívásával. 
+Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér a Bing Custom Search-példányt. Bár ez az alkalmazás JavaScript nyelven van megírva, a Bing Custom Search API olyan kompatibilis szinte bármelyik programozási nyelvével webes RESTful szolgáltatás. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
+- Bing Custom Search-példány. Lásd: [a rövid útmutató: Az első Bing Custom Search-példány létrehozása](quick-start.md) további információt.
 
-- Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példánya létrehozása](quick-start.md).
-- Telepített [Node.js](https://www.nodejs.org/).
-- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+- [Node.js](https://www.nodejs.org/)
 
-## <a name="run-the-code"></a>A kód futtatása
+- A [kérelem JavaScript kódtár](https://github.com/request/request)
 
-A példa futtatásához kövesse az alábbi lépéseket:
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-1. Hozzon létre egy mappát a kód számára.  
-  
-2. Egy parancssorban vagy terminálablakban lépjen a létrehozott mappába.  
-  
-3. Telepítse a következő **request** csomópontmodult:
-    <pre>
-    npm install request
-    </pre>  
-    
-4. A létrehozott mappában hozzon létre egy BingCustomSearch.js nevű fájlt, és másolja az alábbi kódot a fájlba. A **YOUR-SUBSCRIPTION-KEY** (előfizetői azonosító) és a **YOUR-CUSTOM-CONFIG-ID** (konfigurációs azonosító) helyére írja be saját adatait.  
-  
-    ``` javascript
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
+
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és adja hozzá a `require()` a kérelmek Library utasítás. Hozzon létre változókat az előfizetési kulcs, egyéni konfiguráció azonosítója és a egy keresési kifejezést. 
+
+    ```javascript
     var request = require("request");
     
     var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
     var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
     var searchTerm = 'microsoft';
-    
-    var options = {
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>Küldeni és fogadni egy keresési kérelmet 
+
+1. Hozzon létre egy változót a a kérelemben küldött adatok tárolására. Hozza létre a kérelem URL-CÍMÉT a keresett kifejezés hozzáfűzésével a `q=` lekérdezési paraméter, és a keresési példány egyéni konfiguráció azonosítója a `customconfig=`. a paraméterek a egy `&` karakter. 
+
+    ```javascript
+    var info = {
         url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
-          'q=' + searchTerm + 
-          '&customconfig=' + customConfigId,
+            'q=' + searchTerm + "&" +
+            'customconfig=' + customConfigId,
         headers: {
             'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    
-    request(options, function(error, response, body){
-        var searchResponse = JSON.parse(body);
-        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
-            var webPage = searchResponse.webPages.value[i];
-            console.log('name: ' + webPage.name);
-            console.log('url: ' + webPage.url);
-            console.log('displayUrl: ' + webPage.displayUrl);
-            console.log('snippet: ' + webPage.snippet);
-            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
-            console.log();
-        }
-    })
-    ```  
-  
-6. Futtassa a kódot az alábbi paranccsal:  
-  
-    ```    
-    node BingCustomSearch.js
-    ``` 
+    ```
+
+1. A kérelem JavaScript-kódtár használatával egy keresési kérelmet küld a Bing Custom Search-példányt, és nyomtassa ki az eredményeket, beleértve a neve, URL-cím és a dátum a weblap lett utoljára bejárt információt.
+
+    ```javascript
+    request(info, function(error, response, body){
+            var searchResponse = JSON.parse(body);
+            for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+                var webPage = searchResponse.webPages.value[i];
+                console.log('name: ' + webPage.name);
+                console.log('url: ' + webPage.url);
+                console.log('displayUrl: ' + webPage.displayUrl);
+                console.log('snippet: ' + webPage.snippet);
+                console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+                console.log();
+            }
+    ```
 
 ## <a name="next-steps"></a>További lépések
-- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
-- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
-- [Weboldalak lapozása](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [Egyéni keresés webes alkalmazás készítése](./tutorials/custom-search-web-page.md)

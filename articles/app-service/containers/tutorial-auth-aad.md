@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 7359374e520469e13d98b88b46ddf467d64d3ba7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409404"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545688"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
 
@@ -129,7 +129,7 @@ git commit -m "add CORS to back end"
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
-A helyi terminálablakban futtassa a következő Git-parancsokat a háttérrendszeri alkalmazás telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-back-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett. Amikor a Git hitelesítőadat-kezelője kéri a hitelesítő adatokat, ügyeljen arra, hogy a [telepítési hitelesítő adatait](../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) adja meg, ne pedig azokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
+A helyi terminálablakban futtassa a következő Git-parancsokat a háttérrendszeri alkalmazás telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-back-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett. Amikor a Git hitelesítőadat-kezelője kéri a hitelesítő adatokat, ügyeljen arra, hogy a [telepítési hitelesítő adatait](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) adja meg, ne pedig azokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>

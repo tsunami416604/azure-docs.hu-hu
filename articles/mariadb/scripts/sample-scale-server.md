@@ -1,21 +1,19 @@
 ---
 title: Azure CLI-példaszkript – méretezési csoport egy Azure Database for MariaDB-kiszolgáló
 description: A CLI-példaszkript méretezi az Azure Database for MariaDB-kiszolgálót méretez más teljesítményszintre a mérőszámok lekérdezése után.
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
-ms.openlocfilehash: e5f6364992987e5aeb6cb1ccd2055823efae607e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ef01c38dddee0a74477ef331f935bda2787866df
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585323"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546369"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Monitorozása és méretezése egy Azure Database for MariaDB-kiszolgálóhoz Azure CLI használatával
 A CLI-példaszkript egyetlen Azure Database for MariaDB-kiszolgálót méretez más teljesítményszintre a mérőszámok lekérdezése után méretezhető.
@@ -42,6 +40,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
 - További szkripteket: [Azure CLI-minták az Azure Database for MariaDB](../sample-scripts-azure-cli.md)
 - Méretezéssel kapcsolatos további információkért lásd: [díjcsomagokat.] (.. /Concepts-pricing-tiers.md.

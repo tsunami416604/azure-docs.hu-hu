@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a C# használatával
 description: Ez a rövid útmutató egy C# (.NET) mintakódot biztosít, amellyel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: MySQL
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: c92d28bd7515372c17af34d90a4ac73317a13630
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: e0536440ea38f127a34639ffb40e5015154ec550
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265020"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547456"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a .Net C# használatával
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL-hez: A .NET használata (C#) való csatlakozás és adatok lekérdezése
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet C#-alkalmazás használatával csatlakozni az Azure Database for MySQL-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy a C# használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -43,7 +40,7 @@ dotnet add package MySqlConnector
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.

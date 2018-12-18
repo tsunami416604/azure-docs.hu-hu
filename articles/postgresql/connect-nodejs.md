@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for PostgreSQL-hez a Node.js segítségével
 description: Ebben a rövid útmutatóban biztosítjuk a PostgreSQL-hez készült Azure Database-ről csatlakozásra és adatlekérdezésre használható Node.js-kódmintát.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: ddccefd4d39de49809e5648454c8d9f50b34a7c5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
+ms.openlocfilehash: 4c7f2f71ff302cbaa0aab66f97b93cb1c5b9e5e4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691943"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541115"
 ---
-# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Node.js használatával
+# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a Node.js használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for PostgreSQL-hez egy [Node.js](https://nodejs.org/)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -45,7 +42,7 @@ npm list
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.

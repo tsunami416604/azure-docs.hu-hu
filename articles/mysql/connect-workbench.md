@@ -1,23 +1,20 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a MySQL Workbench segítségével
 description: Ez a rövid útmutató bemutatja, hogy a MySQL Workbench használatával hogyan csatlakozhat az Azure Database for MySQL szolgáltatáshoz, és hogyan kérdezhet le adatokat.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: seanli1988
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: def984a6a31cdfe9b9dfbba93ccfb5016b5e315d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: f93c581b916a7f9c4f454833cb37f603cc177856
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265175"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540469"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet a MySQL Workbench alkalmazás használatával csatlakozni egy Azure Database for MySQL kiszolgálóhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,7 +28,7 @@ Töltse le és telepítse a MySQL Workbench alkalmazást a számítógépére [a
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 

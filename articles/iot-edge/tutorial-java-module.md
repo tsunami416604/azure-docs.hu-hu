@@ -9,12 +9,12 @@ ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 53be0f36e79d5691d8531c46bf7f554c53f641ee
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f099d280615607382bd424063d39bb26cdeea793
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342833"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557859"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: A Java IoT Edge-modul fejlesztése és üzembe helyezése a szimulált eszköz
 
@@ -36,8 +36,8 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 Egy Azure IoT Edge-eszköz:
 
-* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [linuxos](quickstart-linux.md) rövid útmutató lépéseit követve.
-* Az IoT Edge-hez elérhető Java-modulok nem támogatják a Windows-eszközöket.
+* IoT Edge-eszköz a rövid útmutató lépéseit követve állíthatja [Linux](quickstart-linux.md) vagy [Windows](quickstart.md).
+* Az IoT Edge a Windows-eszközökön 1.0.5 verziója nem támogatja a Java-modulok. További információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Egy adott verzió telepítésének lépéseiért lásd: [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).
 
 Felhőerőforrások:
 
@@ -70,7 +70,7 @@ Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépése
    | ----- | ----- |
    | Beállításjegyzék neve | Egyedi nevet adjon meg. |
    | Előfizetés | A legördülő listából válasszon egy előfizetést. |
-   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
+   | Erőforráscsoport | Egyszerűbb felügyeletre használja ugyanazt az erőforráscsoportot az összes teszt erőforrást, amely során az IoT Edge útmutatóink és oktatóanyagaink segítségével hoz létre. Például: **IoTEdgeResources**. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
    | SKU | Válassza az **Alapszintű** lehetőséget. | 
@@ -82,7 +82,7 @@ Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépése
 7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. A tároló-beállításjegyzékbe való hozzáférés biztosításához az oktatóanyag későbbi részében használja ezeket az értékeket. 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
-A következő lépések egy Azure IoT Edge Maven-sabloncsomagon és Azure IoT Java eszközoldali SDK-n alapuló IoT Edge-modulprojektet hoznak létre a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
+A következő lépésekkel hozzon létre egy IoT Edge-modul projekt, amely azon alapul, az Azure IoT Edge-maven sabloncsomag és az Azure IoT-Java eszközoldali SDK. A projekt a Visual Studio Code és az Azure IoT Edge bővítmény használatával hoz létre.
 
 ### <a name="create-a-new-solution"></a>Új megoldás létrehozása
 
@@ -103,7 +103,7 @@ Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
  
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-java-module/repository.png)
    
-Ha most először hoz létre Java-modult, a Maven-csomagok letöltése eltarthat pár percig. Ekkor a VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. A **modules** mappa a modul Java-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt. 
+Ha most először hoz létre Java-modult, a Maven-csomagok letöltése eltarthat pár percig. Ekkor a VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. A **modulok** mappa tartalmazza a modul a Java-kódot, valamint a modul egy tárolórendszerképbe, a Docker-fájlok. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt. 
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja. 
 
@@ -136,7 +136,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.TwinPropertyCallBack;
     ```
 
-5. Vegye fel a következő definíciót az **App** osztályba. Ez a változó azt az értéket állítja be, amelyet a mért hőmérsékletnek túl kell lépnie ahhoz, hogy a rendszer elküldje az adatokat az IoT Hubnak. 
+5. Vegye fel a következő definíciót az **App** osztályba. Ez a változó hőmérséklet küszöbértéket állít be. A mért gép hőmérséklet nem jelentik az IoT Hub csak akkor veszíti keresztül ezt az értéket. 
 
     ```java
     private static final String TEMP_THRESHOLD = "TemperatureThreshold";
@@ -175,7 +175,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
         }
     ```
 
-8. Adja hozzá az alábbi két statikus belső osztályt az **App** osztályhoz. Ezek az osztályok a kívánt tulajdonságok frissítéseit fogadják a modul ikerdokumentumától, és ennek megfelelően frissítik a **tempThreshold** változót. Minden modul rendelkezik saját ikerdokumentummal, amelyekkel közvetlenül a felhőből konfigurálhatja a modulban futó kódot.
+8. Adja hozzá az alábbi két statikus belső osztályt az **App** osztályhoz. Ezeket az osztályokat tempThreshold változó frissíteni, amikor az ikermodul kívánt tulajdonságmódosítás. Minden modul rendelkezik saját ikerdokumentummal, amelyekkel közvetlenül a felhőből konfigurálhatja a modulban futó kódot.
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -240,9 +240,9 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
-Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a **JavaModule** modulhoz az olyan üzenetek kiszűrésére, ahol a jelentett géphőmérséklet az elfogadható határérték alatt van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba. 
+Az előző szakaszban létrehozott egy IoT Edge-megoldás, és hozzáadja a kódot a **JavaModule** üzenetek kiszűréséhez, ahol az a gép jelentett hőmérséklet fogadható alatt van. Most állítsa össze a megoldást, mint egy tárolórendszerképet, és küldheti el azt a tárolóregisztrációs adatbázis. 
 
-1. A Visual Studio Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe. Ezután küldje le a modul rendszerképét az Azure Container Registry-adatbázisba.
+1. Jelentkezzen be a következő parancs beírásával a terminál a Visual Studio Code. Ezután küldje le a modul rendszerképét az Azure Container Registry-adatbázisba.
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -281,7 +281,7 @@ Miután alkalmazta az üzembehelyezési jegyzéket az IoT Edge-eszközén, az es
 
 Az IoT Edge-eszköz állapotát a Visual Studio Code Explorer **Azure IoT Hub-eszközök** szakaszában tekintheti meg. Bontsa ki az eszköz részleteit, és megjelenik a telepített és a futó modulok listája. 
 
-Magán az IoT Edge-eszközön az üzembehelyezési modulok állapotának megtekintéséhez használja az `iotedge list` parancsot. Négy modult kell látnia: a két IoT Edge-futtatókörnyezeti modult, a tempSensort és az ebben az oktatóanyagban létrehozott egyéni modult. Az összes modul elindítása eltarthat néhány percig, ezért ha nem látja mindet azonnal, futtassa újra a parancsot. 
+Az IoT Edge-eszközön láthatja a telepítési modulok állapotát a parancs segítségével `iotedge list`. Négy modult kell látnia: a két IoT Edge-futtatókörnyezeti modult, a tempSensort és az ebben az oktatóanyagban létrehozott egyéni modult. Az összes modul elindítása eltarthat néhány percig, ezért ha nem látja mindet azonnal, futtassa újra a parancsot. 
 
 Az egyes modulok által létrehozott üzenetek megtekintéséhez használja az `iotedge logs <module name>` parancsot. 
 

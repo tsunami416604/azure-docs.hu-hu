@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-szkript – létrehozása egy Azure Cosmos DB MongoDB API-fiók
-description: Azure PowerShell-példaszkript – Azure Cosmos DB MongoDB API-fiók létrehozása
+title: Az Azure PowerShell-szkript – létrehozása egy Azure Cosmos DB API-fiók MongoDB-hez
+description: Azure PowerShell-Példaszkript – Azure Cosmos DB API-fiók létrehozása a mongodb-hez
 services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/29/2018
-ms.openlocfilehash: 1df8749f0032f60bc3d18f6d8352712e74c53fd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 006aff3c9dd45d3a8a932eb6761c393ab5bcd1d7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963896"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544801"
 ---
-# <a name="azure-cosmos-db-create-a-mongodb-api-account-using-powershell"></a>Azure Cosmos DB: MongoDB API-fiók létrehozása a PowerShell használatával
+# <a name="create-a-azure-cosmos-db-api-account-for-mongodb-using-powershell"></a>Egy Azure Cosmos DB API-fiók létrehozása PowerShell használatával a MongoDB-hez
 
-Ez a PowerShell-példaszkript egy Azure Cosmos DB MongoDB API-fiókot hoz létre. 
+A PowerShell-példaszkript létrehoz egy Azure Cosmos DB API-fiókot a mongodb-hez. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

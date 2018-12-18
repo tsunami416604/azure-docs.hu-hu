@@ -1,20 +1,21 @@
 ---
-title: Tér monitorozása az Azure Digital Twins használatával | Microsoft Docs
+title: 'Oktatóanyag: Tér monitorozása az Azure Digital Twins használatával | Microsoft Docs'
 description: Ismerje meg, hogyan lehet a térbeli erőforrások kiépítése és megfigyelik a munkát az Azure digitális Twins ebben az oktatóanyagban szereplő lépések segítségével.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584196"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556101"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Oktatóanyag: Az épület kiépítése és a működés monitorozása az Azure Digital Twins használatával
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Oktatóanyag: Üzembe helyezheti a létrehozása és használata az Azure digitális Twins feltételek figyelése
 
 Ez az oktatóanyag bemutatja, hogyan monitorozhatja a terek kívánt hőmérsékletét és komfortszintjét az Azure Digital Twins használatával. Miután [konfigurálja a minta létrehozása](tutorial-facilities-setup.md), üzembe helyezése a az épület, és felhasználói függvények futhatnak az érzékelőktől kapott adatok ebben az oktatóanyagban szereplő lépések segítségével.
 
@@ -203,9 +204,9 @@ Ebben a szakaszban nevű projekt használatával *eszközkapcsolattal* a mintáb
 
 1. Nyissa meg a **appSettings.json** fájlt a szerkesztőben, majd szerkessze a következő értékeket:
 
-   a. **DeviceConnectionString**: Rendelje hozzá a `ConnectionString` értékét az előző szakasz kimeneti ablakából. Másolja ezt a karakterláncot teljesen, idézőjelek, így a szimulátor megfelelően csatlakozhatnak az IoT hubbal.
+   a. **DeviceConnectionString**: Az értéket `ConnectionString` a kimeneti ablakban az előző szakaszban. Másolja ezt a karakterláncot teljesen, idézőjelek, így a szimulátor megfelelően csatlakozhatnak az IoT hubbal.
 
-   b. **HardwareId** belül a **érzékelők** tömb: események az érzékelők kiépítése az Azure digitális Twins-példányhoz van szimuláló, mert a Hardverazonosítót és az érzékelők, a fájl nevét meg kell egyeznie a `sensors` provisionSample.yaml fájl csomópont.
+   b. **HardwareId** belül a **érzékelők** tömb: Események az érzékelők kiépítése az Azure digitális Twins-példányhoz van szimuláló, mert a Hardverazonosítót és az érzékelők, a fájl nevét meg kell egyeznie a `sensors` provisionSample.yaml fájl csomópont.
 
       Adjon hozzá egy új bejegyzést a hőmérséklet-érzékelő. A **érzékelők** csomópont az appSettings.JSON fájl a következőhöz hasonlóan kell kinéznie:
 
@@ -264,7 +265,7 @@ Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállít
 Most, hogy a tárolóhelyek kiépítése, és létrehozott egy egyéni értesítések aktiválásához keretrendszert, nyissa meg az alábbi oktatóanyagok egyikét:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Értesítések fogadása az Azure Digital Twins-terektől a Logic Apps használatával](tutorial-facilities-events.md)
+> [Oktatóanyag: Értesítések fogadása a Logic Apps használata az Azure digitális Twins tárolóhelyek](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Digital Twins-terek eseményeinek vizualizációja és elemzése a Time Series Insights használatával](tutorial-facilities-analyze.md)
+> [Oktatóanyag: Segítségével vizualizálhatja és elemezheti a Time Series Insights használatával az Azure digitális Twins tárolóhelyek eseményei](tutorial-facilities-analyze.md)

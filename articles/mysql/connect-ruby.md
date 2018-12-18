@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a Ruby használatával
 description: Ez a rövid útmutató számos Ruby-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: cfaf6cc5b93ee80017a8fe5634c7afa7b9ce0ccf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 2a5b05985494602e73fa949033958f4a974602b0
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986798"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542543"
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Ruby használatával
+# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a Ruby használatával
 Ez a rövid útmutató ismerteti, hogyan használható egy [Ruby](https://www.ruby-lang.org)-alkalmazás és a [mysql2](https://rubygems.org/gems/mysql2) gem a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Ruby használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

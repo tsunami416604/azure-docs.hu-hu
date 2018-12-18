@@ -1,46 +1,55 @@
 ---
-title: 'Első lépések: az első Bing Custom Search-példány létrehozása'
+title: 'Gyors útmutató: Első Bing Custom Search-példány létrehozása |} A Microsoft Docs'
 titlesuffix: Azure Cognitive Services
-description: A Bing Custom Search használatához hozzon létre egy Custom Search-példányt, amelyben meghatározza a nézetet vagy a web egy részletét. A példány minden rangsorolási módosítást tartalmaz, valamint a beállításokat, amelyek meghatározzák azokat a nyilvános tartományokat, aloldalakat és weboldalakat, amelyeken a Binggel keresni kíván.
+description: Ez a cikk segítségével hozzon létre egy egyéni Bing-példányt, amely képes keresési tartomány és a weblapok, Ön által meghatározott.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2017
-ms.author: v-brapel
-ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ba1444b3115ffd2c73e1773aa926d11fed81f830
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816238"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556118"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Rövid útmutató: az első Bing Custom Search-példány létrehozása
-A Bing Custom Search használatához hozzon létre egy Custom Search-példányt, amelyben meghatározza a nézetet vagy a web egy részletét. A példány minden rangsorolási módosítást tartalmaz, valamint a beállításokat, amelyek meghatározzák azokat a nyilvános webhelyeket, aloldalakat és weboldalakat, amelyeken a Binggel keresni kíván. A példány létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai). 
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Gyors útmutató: Az első Bing Custom Search-példány létrehozása
+
+A Bing Custom Search használatához hozzon létre egy Custom Search-példányt, amelyben meghatározza a nézetet vagy a web egy részletét. Ez a példány tartalmazza a nyilvános tartományok, webhelyek és, amelyek szeretne keresni, érdemes lehet ennek a területnek előtesztelést együtt. 
+
+A példány létrehozásához használja a [Bing Custom Search portál](https://customsearch.ai). 
+
+![A Bing Custom Search portál képe](media/blockedCustomSrch.png)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 
 Bing Custom Search-példány létrehozása:
 
-1.  Szerezzen be egy kulcsot a Custom Search API-hoz. Lásd: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-2.  Kattintson a **Bejelentkezés** gombra, és egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. 
-    - Ha nincs MSA-fiókja, kattintson a **Microsoft-fiók létrehozása** elemre. A portál engedélyeket kér, hogy hozzáférhessen az adataihoz. Kattintson a **Yes** (Igen) gombra.
-    - Fogadja el a Cognitive Services feltételeit. Jelölje be az **Elfogadom** jelölőnégyzetet, majd kattintson az **Elfogadás** elemre.  
-3.  Miután bejelentkezett, kattintson a **New Instance** (Új példány) elemre, és adjon nevet a példánynak. Használjon jelentéssel bíró nevet, amely leírja a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja. 
-4.  Az **Active** (Aktív) lap **Search Experience** (Keresési felület) területén adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
-5.  Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. Ha nincsenek eredmények, adjon meg egy új webhelyet. A Bing csak olyan nyilvános webhelyekhez jelenít meg eredményeket, amelyeket indexelt.
-6.  Kattintson a **Publish** (Közzététel) elemre a konfigurációs módosítások éles környezetben történő közzétételéhez. Ha a rendszer kéri, kattintson a **Publish** (Közzététel) elemre a megerősítéshez.
-7.  Kattintson a **Production** (Termelés)  > **Endpoints** (Végpontok) elemre, és másolja ki a **Custom Configuration ID** (Egyéni konfigurációazonosító értékét). Erre az azonosítóra szüksége lesz a Custom Search API hívásához.
+1. Kattintson a **Ismerkedés** a a [Bing Custom Search portál](https://customsearch.ai) weblapon, és jelentkezzen be Microsoft-fiókjával.
+
+2. Kattintson a **új példányt**, és adjon meg egy leíró nevet. Bármikor módosíthatja a példány nevét.
+ 
+3. Az **Active** (Aktív) lap **Search Experience** (Keresési felület) területén adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét. 
+
+    > [!NOTE]
+    > Bing Custom Search-példányok csak tartományok és a nyilvános és a Bing által indexelt weblapjait eredményeket ad vissza.
+
+4. A jobb oldalon, a Bing Custom Search portál használatával adjon meg egy lekérdezést, és vizsgálja meg a keresési eredményeket a keresési példány által visszaadott. Ha nem jár eredménnyel, adjon egy másik URL-címet.  
+
+5. Kattintson a **közzététel** a módosítások közzététele az éles környezetbe, és frissítse a példány végpontok.
+
+6.  Kattintson a a **éles** alatt fülre **végpontok**, másolatot a **egyéni konfigurációs azonosító**. Ezt az Azonosítót az egyéni keresési API hívása úgy, hogy van szüksége a `customconfig=` lekérdezési paraméter az Ön hívásait.
+
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi használati útmutatók szerint használhatja tovább a frissen létrehozott Custom Search-példányt:
-
-- [Egyéni keresési felület konfigurálása](./define-your-custom-view.md)
-- [Egyéni keresés meghívása](./search-your-custom-view.md)
-- [Egyéni keresés megosztása](./share-your-custom-search.md)
-- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
-- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
-- [Weboldalak lapozása](./page-webpages.md)
+> [!div class="nextstepaction"]
+> [Gyors útmutató: A Bing Custom Search-végpont meghívása](./call-endpoint-csharp.md)

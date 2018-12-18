@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 192736e014e54f77fb55d659a9849ecdc93ff2ed
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408853"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547786"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű Azure App Service-ben
 
@@ -105,7 +105,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
-A _helyi terminálablakba_ visszalépve futtassa a következő Git-parancsokat a háttéralkalmazás telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-back-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett. Amikor a Git hitelesítőadat-kezelője kéri a hitelesítő adatokat, ügyeljen arra, hogy a [telepítési hitelesítő adatait](app-service-deployment-credentials.md) adja meg, ne pedig azokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
+A _helyi terminálablakba_ visszalépve futtassa a következő Git-parancsokat a háttéralkalmazás telepítéséhez. Cserélje le a _&lt;deploymentLocalGitUrl-of-back-end-app>_ részt a távoli Git-elem URL-címére, amelyet az [Azure-erőforrások létrehozása](#create-azure-resources) lépés során mentett. Amikor a Git hitelesítőadat-kezelője kéri a hitelesítő adatokat, ügyeljen arra, hogy a [telepítési hitelesítő adatait](deploy-configure-credentials.md) adja meg, ne pedig azokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>

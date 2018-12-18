@@ -1,22 +1,19 @@
 ---
-title: 'Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása – Azure CLI'
+title: 'Gyors útmutató: Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz - Azure CLI-vel'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure-adatbázist MySQL-kiszolgálóhoz az Azure CLI használatával az Azure-erőforráscsoportban.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e6a22d450aa9b51aa16ebf5e712d65e924b7869
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 4c425e4da99774be5da8c060a8243bc34ec08f5a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958389"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547792"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával
 Ez a rövid útmutató bemutatja, hogyan hozhat létre öt perc alatt egy Azure-adatbázist MySQL-kiszolgálóhoz az Azure CLI használatával az Azure-erőforráscsoportban. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
@@ -50,13 +47,13 @@ név | mydemoserver | Válasszon egy egyedi nevet, amely azonosítja a MySQL-kis
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
 sku-name | GP_Gen4_2 | A termékváltozat neve. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. Az sku-name paraméterről az alábbi táblázatban talál további információt.
 backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. A tartomány 7–35. 
-geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
+geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, letiltva.
 location | westus | A kiszolgáló Azure-helye.
-ssl-enforcement | Engedélyezve | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
+ssl-enforcement | Engedélyezve | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, letiltva.
 storage-size | 51 200 | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes storage-size paraméter legkisebb értéke 5120 MB, és 1024 MB-os egységekben növekszik. A tárterület korlátairól a [tarifacsomagokról szóló](./concepts-pricing-tiers.md) dokumentumban találhat további információkat. 
 version | 5.7 | A MySQL legújabb főverziója.
 admin-user | myadmin | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
+admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűk, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
 
 
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:

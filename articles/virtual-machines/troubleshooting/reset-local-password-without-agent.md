@@ -133,7 +133,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
      ![Lemez másolása URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Virtuális gép létrehozása a forrás virtuális gép operációsrendszer-lemez alapján:
    
-   * Használata [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) virtuális gép létrehozása speciális virtuális merevlemezből. Kattintson a `Deploy to Azure` gombra kattintva nyissa meg az Azure Portalon a sablonalapú adatokkal feltöltve az Ön számára.
+   Használata [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) virtuális gép létrehozása speciális virtuális merevlemezből. Kattintson a `Deploy to Azure` gombra kattintva nyissa meg az Azure Portalon a sablonalapú adatokkal feltöltve az Ön számára.
    * Ha meg szeretné őrizni a korábbi beállításokat a virtuális gép, jelölje be *szerkesztési sablon* biztosít a meglévő virtuális hálózat, alhálózat, hálózati adapter vagy nyilvános IP-cím.
    * Az a `OSDISKVHDURI` paraméter beviteli mező, illessze be az előző lépésben beszerzése a forrás virtuális merevlemez URI azonosítója:
      

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB: .NET-tel és a MongoDB API webes alkalmazás készítése'
-description: Egy .NET-es kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele
+title: Az Azure Cosmos DB API-webalkalmazás létrehozása a mongodb-hez .NET SDK-t és az Azure portal használatával
+description: Használatával csatlakoznak és kérnek az Azure Cosmos DB API a mongodb-hez a .NET-kódmintát mutat be.
 services: cosmos-db
 author: slyons
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sclyon
-ms.openlocfilehash: 170f3132084da07ccf98a0dfed651bbfd7220615
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7800a9d4e4a5ad5d24415ec8c4c0ce70d7ab2a70
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081030"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537256"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API Webalkalmazás létrehozása .NET-tel és az Azure Portallal
+# <a name="build-a-web-app-with-azure-cosmos-db-api-for-mongodb-using-net-sdk-and-the-azure-portal"></a>Az Azure Cosmos DB API-webalkalmazás létrehozása a mongodb-hez .NET SDK-t és az Azure portal használatával
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53081030"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portallal Azure Cosmos DB [MongoDB API](mongodb-introduction.md)-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután létrehozhatja és üzembe helyezheti a [MongoDB .NET driver-re](https://docs.mongodb.com/ecosystem/drivers/csharp/) épülő feladatlista webalkalmazást.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB API-fiók mongodb-hez, a dokumentum-adatbázis és a egy gyűjteményt, az Azure portal használatával. Ezután létrehozhatja és üzembe helyezheti a [MongoDB .NET driver-re](https://docs.mongodb.com/ecosystem/drivers/csharp/) épülő feladatlista webalkalmazást.
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>A mintaalkalmazás futtatásának előfeltételei
 
@@ -49,7 +49,7 @@ A cikkben leírt minta kompatibilis a MongoDB.Driver 2.6.1-es verziójával.
 
 ## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
-Először töltse le a MongoDB API-mintaalkalmazást a GitHubról. Ez egy feladatlistát implementál a MongoDB dokumentumtároló modelljével.
+Először töltse le a mintaalkalmazást a Githubról. Ez egy feladatlistát implementál a MongoDB dokumentumtároló modelljével.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -169,5 +169,5 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával webalkalmazást futtatni. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [Adatok importálása az Azure Cosmos DB-be a MongoDB API-hoz](mongodb-migrate.md)
+> [Adatok importálása az Azure Cosmos DB API a mongodb-hez](mongodb-migrate.md)
 

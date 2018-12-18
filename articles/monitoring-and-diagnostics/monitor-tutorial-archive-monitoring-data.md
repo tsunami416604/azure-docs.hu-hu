@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: 512f9346654c68e568f5ba60b9491df8dffe1ad2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5723193c0c8232f660a28d53f219a61fdf9e832b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434603"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547303"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -46,7 +46,7 @@ Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat 
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Előfizetési naplók átirányítása a tárfiókba
 
-Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](monitoring-overview-activity-logs.md) az Azure előfizetés-szintű eseményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
+Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](../azure-monitor/platform/activity-logs-overview.md) az Azure előfizetés-szintű eseményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
 
 1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Tevékenységnapló** gombra.
 

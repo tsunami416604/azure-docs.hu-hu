@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for PostgreSQL-hez a Rubyval
 description: Az alábbi gyors útmutatóban egy olyan Ruby-kódminta található, amely a PostgreSQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 2d132ba1b901c45df79507a974ee8d4786c6311d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 6748f168624a20e17491a2f84b63b966ce5ad4c6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985029"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539292"
 ---
-# <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Ruby használatával
+# <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a Ruby használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet egy [Ruby](https://www.ruby-lang.org)-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Ruby használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

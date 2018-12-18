@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ec6fc4237fd2be11d1e937ec6aed12898689e73f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 78880385dcdc7c2422cf1bcd6d270ac39f481329
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139979"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542713"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 6. rész: CRUD-funkciók hozzáadása az alkalmazáshoz
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-ben írt új [MongoDB API](mongodb-introduction.md)-alkalmazást az Express és az Angular használatával, és hogyan csatlakoztathatja az Azure Cosmos DB-adatbázisához.
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre új [Azure Cosmos DB API-fiók mongodb-hez készült](mongodb-introduction.md) alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az Azure Cosmos DB-adatbázist.
 
 Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
 

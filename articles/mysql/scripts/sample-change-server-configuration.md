@@ -1,22 +1,19 @@
 ---
 title: Azure CLI-szkript – Kiszolgálókonfigurációk módosítása
 description: Ez a CLI-példaszkript felsorolja az összes elérhető kiszolgálókonfigurációt, és frissíti az innodb_lock_wait_timeout értékét.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 59d72f36146e691412398220fc9ba51910e65e0b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: cda5f3b9d2918a70e1572e331e0f11845187891a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582071"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538565"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló konfigurációinak felsorolása és frissítése az Azure CLI-vel
 Ez a CLI-példaszkript felsorolja egy Azure Database for MySQL-kiszolgáló összes elérhető konfigurációs paraméterét és azok engedélyezett értékeit, és beállítja az *innodb_lock_wait_timeout* paramétert egy, az alapértelmezett értéktől eltérő értékre.
@@ -46,6 +43,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
-- További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
+- További szkripteket: [Az Azure CLI-minták az Azure Database for MySQL-hez](../sample-scripts-azure-cli.md)
 - A kiszolgálóparaméterekkel kapcsolatos további információért lásd [a kiszolgálóparaméterek Azure Database for MySQL-ben történő konfigurálását](../howto-server-parameters.md) ismertető szakaszt.

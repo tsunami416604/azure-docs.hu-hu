@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a Node.js használatával
 description: Ez a rövid útmutató számos Node.js-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: f0e76dff32038ba53dbdf7f869f5a04e75316e12
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f5738c3eba3461c6f75884033eb60c54faec8473
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290705"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535492"
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Node.js használatával
+# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a Node.js használatával
 Ez a rövid útmutató ismerteti, hogyan használható a [Node.js](https://nodejs.org/) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy a Node.js használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

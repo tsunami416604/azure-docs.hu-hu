@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for PostgreSQL-hez a C# segítségével
 description: Ez a rövid útmutató egy C# (.NET) mintakódot biztosít, amelyekkel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 34c9825347ffe9246f6d5d0b500e8b592b8421ee
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: d30963d5430db9ce5f734981c6a9c74276a15299
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987698"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537409"
 ---
-# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés .NET (C#) használatával
+# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for postgresql-hez: A .NET használata (C#) való csatlakozás és adatok lekérdezése
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet C# nyelven írt alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a C# használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

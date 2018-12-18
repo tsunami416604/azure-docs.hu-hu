@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for PostgreSQL-hez a PHP használatával
 description: Ez a rövid útmutató olyan PHP-mintakódot biztosít, amellyel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 8f45191d7844700906aac0a206aaaf8dc8cf6202
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: f44e38cc68f23f77381deaaf2ca920bab820e196
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985556"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540340"
 ---
-# <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a PHP-vel
+# <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a PHP használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz egy [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a PHP használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

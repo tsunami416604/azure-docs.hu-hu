@@ -1,23 +1,20 @@
 ---
-title: 'Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure Portallal'
+title: 'Oktatóanyag: Azure Database for postgresql-hez az Azure portal használatával tervezése'
 description: Ez az oktatóanyag bemutatja, hogyan tervezheti meg az első Azure Database for PostgreSQL szolgáltatását az Azure Portal használatával.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406382"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536525"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure Portallal
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure portal használatával tervezése
 
 A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure Portallal könnyedén kezelheti a kiszolgálót és tervezhet adatbázist.
 
@@ -51,7 +48,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
     ![A kiszolgáló létrehozása](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
     - A kiszolgáló neve: **mydemoserver** (a kiszolgáló neve DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie) 
-    - Feliratkozás: Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van.
+    - Előfizetés: Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van.
     - Erőforráscsoport: **myresourcegroup**
     - Az Ön által választott kiszolgálói rendszergazdai bejelentkezési név és jelszó
     - Hely
@@ -195,10 +192,10 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ebbő
 
    ![Azure Portal – A Visszaállítás űrlap beállításai](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
-   - **Visszaállítási pont**: Válasszon ki egy, a kiszolgáló módosítása előtti időpontot
-   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani
-   - **Hely**: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé
-   - **Tarifacsomag**: A kiszolgáló visszaállításakor nem módosíthatja ezt az értéket. Ugyanaz, mint a forráskiszolgálóé. 
+   - **Visszaállítási pont**: Válasszon egy pont kötött, amely a kiszolgáló módosítása előtti
+   - **Célkiszolgáló**: Adja meg a visszaállítani kívánt új kiszolgáló nevét
+   - **Hely**: Nem választhat ki a régiót, alapértelmezés szerint ugyanaz, mint a forráskiszolgálón
+   - **A tarifacsomag**: Ez az érték nem módosítható, ha a kiszolgáló visszaállítása. Ugyanaz, mint a forráskiszolgálóé. 
 3.  Az **OK** gombra kattintva [visszaállíthatja a kiszolgálót a tábla törlése előtti időpontra](./howto-restore-server-portal.md). A kiszolgáló egy másik időpontra való visszaállítása létrehozza a kiszolgáló megadott időpontra vonatkozó duplikált új másolatát, amennyiben az adott pont a [tarifacsomag](./concepts-pricing-tiers.md) adatmegőrzési időszakán belül esik.
 
 ## <a name="next-steps"></a>További lépések
@@ -212,4 +209,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Az
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Ezután, ha meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure CLI-vel, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL szolgáltatás megtervezése az Azure CLI használatával](tutorial-design-database-using-azure-cli.md)
+Ezután megtudhatja, hogyan végezhet el hasonló feladatokat az Azure CLI használatával, tekintse át az oktatóanyag: [Az első Azure Database for postgresql-hez az Azure CLI használatával tervezése](tutorial-design-database-using-azure-cli.md)

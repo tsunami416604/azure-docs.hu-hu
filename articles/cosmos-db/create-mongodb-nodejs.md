@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9754cf66b05059c986c7ffbff94290e207f706a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60f16405f76654ce2646ec651a47396d79268cc2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141380"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537120"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Az Azure Cosmos DB: Egy meglévő Node.js MongoDB-webalkalmazás migrálása 
 
@@ -29,7 +29,7 @@ ms.locfileid: "53141380"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató ismerteti a Node.js-ben írt, meglévő MongoDB-alkalmazások [MongoDB API-val](mongodb-introduction.md) való használatát, valamint azok összekapcsolásának menetét a MongoDB-ügyfélkapcsolatokat támogató Azure Cosmos DB-adatbázissal. Más szóval a Node.js-alkalmazás csak azt tudja, hogy a MongoDB API-k használatával csatlakozott egy adatbázishoz. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
+Ez a rövid útmutató azt ismerteti, hogyan használhatja a Node.js-ben írt, meglévő MongoDB-alkalmazások, és csatlakoztassa az Azure Cosmos DB-adatbázis, a MongoDB-ügyfélkapcsolatokat támogató a [Azure Cosmos DB MongoDB API-](mongodb-introduction.md). Más szóval a Node.js-alkalmazás csak tudja, hogy az Azure Cosmos DB API-k használatával a MongoDB-adatbázishoz csatlakozik. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
 
 Az útmutató végére a MEAN-alkalmazás (MongoDB, Express, Angular és Node.js) az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) rendszert használva fog futni. 
 

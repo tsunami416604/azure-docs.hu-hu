@@ -1,22 +1,19 @@
 ---
 title: Azure CLI-szkript – Azure Database for PostgreSQL méretezése
 description: Azure CLI-szkriptminta – Azure Database for PostgreSQL-kiszolgáló méretezése más teljesítményszintre a mérőszámok lekérdezése után.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 2602165a6fb5aea85383d4e435479f0bf0f7e48c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 37b7364d48508ad557e6118487c0cb88f9df8e4f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582111"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548755"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Egyetlen PostgreSQL-kiszolgáló monitorozása és méretezése az Azure CLI-vel
 Ez a CLI-mintaszkript egyetlen Azure Database for PostgreSQL-kiszolgálót méretez más teljesítményszintre a mérőszámok lekérdezése után. 
@@ -44,6 +41,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
-- További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
-- További információkat a méretezésről a [szolgáltatásszintekkel](../concepts-service-tiers.md) és a [számítási és tárolási egységekkel](../concepts-compute-unit-and-storage.md) foglalkozó témakörben talál.
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációja](/cli/azure)
+- További szkripteket: [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](../sample-scripts-azure-cli.md)
+- Olvassa el a méretezéssel kapcsolatos további információk: [Szolgáltatásszintek](../concepts-service-tiers.md) és [számítási és tárolási egységekkel](../concepts-compute-unit-and-storage.md)

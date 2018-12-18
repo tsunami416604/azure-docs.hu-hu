@@ -1,23 +1,20 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a PHP-vel
 description: Ebben a gyors útmutatóban számos PHP-kódmintát biztosítunk a MySQL-hez készült Azure Database-ről való csatlakozáshoz és adatlekérdezéshez.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 7fa9272a8609d933a3f12abb0f33e78c4bdc1b12
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 13a8846e169dacaa1fa36526bea2bb8a4d09dd9a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984808"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546352"
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a PHP használatával
+# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a PHP használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a PHP használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

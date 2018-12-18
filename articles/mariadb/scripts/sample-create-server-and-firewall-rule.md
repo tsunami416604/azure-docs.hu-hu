@@ -1,21 +1,19 @@
 ---
 title: Az Azure CLI szkript – Azure Database for MariaDB létrehozása
 description: A CLI-példaszkript létrehoz egy Azure Database for MariaDB-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt.
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
-ms.openlocfilehash: 80609035933e45ea9b7cc911a908f6ed24b9f6a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a7e8a4c8f8572cfdd236b1752e89b3a1b4e7b758
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585334"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546810"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Hozzon létre egy MariaDB-kiszolgálót, és konfiguráljon egy tűzfalszabályt az Azure CLI használatával
 A CLI-példaszkript létrehoz egy Azure Database for MariaDB-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen lefutott, az összes Azure-szolgáltatások és a konfigurált IP-címet a MariaDB-kiszolgáló érhető el.
@@ -43,5 +41,5 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
 - További szkripteket: [Azure CLI-minták az Azure Database for MariaDB](../sample-scripts-azure-cli.md)

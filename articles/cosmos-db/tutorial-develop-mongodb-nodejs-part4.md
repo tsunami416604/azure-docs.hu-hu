@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: d6119186bd8ffbda4fa3bb2c432dd58d851992ea
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 507fdd8566aca94ac4f027b938e833704c6e3e7d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136222"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548782"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 4. rész: Azure Cosmos DB-fiók létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-ben írt új [MongoDB API](mongodb-introduction.md)-alkalmazást az Express, az Angular és az Azure Cosmos DB-adatbázis használatával.
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre új [Azure Cosmos DB API-fiók mongodb-hez készült](mongodb-introduction.md) Express, Angular és az Azure Cosmos DB-adatbázishoz a Node.js-ben írt alkalmazások.
 
 Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.md) épül, és az alábbi feladatokat ismerteti:
 

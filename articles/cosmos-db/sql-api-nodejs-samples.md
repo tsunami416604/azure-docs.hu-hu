@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/24/2018
 ms.author: deborahc
-ms.openlocfilehash: 21ef8c5464f15c5eca939b103ac67f0f3984d8ea
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 491e31fecedf52be0ecf2aee470fab4ce168c866
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878612"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538446"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js-példák
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Az [azure-cosmos-js](https://github.com/Azure/azure-cosmos-js/tree/master/sample
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Aktiválhatja Visual Studio-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetés minden hónapban biztosít Önnek jóváírást, amelyekkel fizetős Azure-szolgáltatásokat használhat.
+- Is [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetésében kreditek minden hónapban biztosít Önnek, hogy a fizetős Azure-szolgáltatásokat is használhat.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -104,5 +104,5 @@ A [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/sampl
 | [Tárolt eljárás létrehozása](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ServerSideScripts/JS/upsert.js#L12-L72) |[StoredProcedures.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedures?view=azure-node-latest) |
 | [Tárolt eljárás végrehajtása](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ServerSideScripts/app.js#L44) |[StoredProcedure.execute](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedure?view=azure-node-latest#execute) |
 
-A kiszolgálóoldali programozásról további információt az [Azure Cosmos DB kiszolgálóoldali programozás ismertetőjének tárolt eljárásokat, adatbázis-triggereket és UDF-eket leíró részében talál](programming.md).
+Kiszolgálóoldali programozása kapcsolatos további információkért lásd: [Azure Cosmos DB kiszolgálóoldali programozása: Tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények](stored-procedures-triggers-udfs.md).
 

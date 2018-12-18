@@ -1,6 +1,6 @@
 ---
 title: Az Azure Cosmos DB-funkciók támogatása a mongodb-hez
-description: Ismerje meg az Azure Cosmos DB MongoDB API a MongoDB 3.4 számára biztosított szolgáltatástámogatását.
+description: Ismerje meg a funkciók támogatása a MongoDB 3.4 biztosít az Azure Cosmos DB API a mongodb-hez.
 services: cosmos-db
 author: alekseys
 ms.service: cosmos-db
@@ -8,32 +8,32 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 01e8af08ff5059867cc49cb9d55ae92f2ae21cdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3a62df3cca50a3d9d95ffbcfaa661bbeb0982c16
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879672"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544600"
 ---
-# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>A MongoDB API támogatása a MongoDB funkcióihoz és szintaxisához
+# <a name="azure-cosmos-db-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Az Azure Cosmos DB MongoDB API-támogatása a MongoDB funkcióihoz és szintaxisához
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az adatbázis MongoDB API-jával bármely nyílt forráskódú MongoDB-[ügyfélillesztőn](https://docs.mongodb.org/ecosystem/drivers) keresztül kommunikálhat. A MongoDB API a MongoDB [átviteli protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) betartásával lehetővé teszi a meglévő ügyfélillesztők használatát.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB API a mongodb-hez, a nyílt forráskódú MongoDB-ügyfelet bármelyikét keresztül kommunikálhat [illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers). Az Azure Cosmos DB API a mongodb-hez lehetővé teszi a meglévő ügyfélillesztők használatát, a MongoDB ügyfélillesztők [protokoll fűznie](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Az Azure Cosmos DB MongoDB API használatával a MongoDB API-k megszokott előnyei mellett az Azure Cosmos DB által biztosított összes vállalati képességet is élvezheti: [globális terjesztés](distribute-data-globally.md), [automatikus horizontális skálázás](partition-data.md), rendelkezésre állási és a késleltetési garanciák, minden mező automatikus indexelése, az inaktív adatok titkosítása, biztonsági mentések és még sok más.
+Az Azure Cosmos DB API használatával a mongodb-hez, a MongoDB jártas, az összes, a nagyvállalati funkciókat biztosít az Azure Cosmos DB előnyeit élvezheti: [globális terjesztés](distribute-data-globally.md), [automatikus árnyalását](partition-data.md), rendelkezésre állás és a késés garanciákat, automatikus indexelése minden mező, a titkosítás a rest, a biztonsági mentések és még sok más.
 
 ## <a name="mongodb-protocol-support"></a>A MongoDB protokoll támogatása
 
-Az Azure Cosmos DB MongoDB API alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.2**-es verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódni a Cosmos DB-hez a MongoDB API használatával.
+Az Azure Cosmos DB API a MongoDB i. a MongoDB-kiszolgáló verziójával kompatibilis **3.2-es** alapértelmezés szerint. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Lehet, hogy minden ügyfél-illesztőprogram, amely együttműködik a ezeket a protokollokat tud csatlakozni az Azure Cosmos DB API a mongodb-hez.
 
 A [MongoDB összesítési folyamata](#aggregation-pipeline) jelenleg szintén elérhető egy különálló előzetes verzióban.
 
 ## <a name="mongodb-query-language-support"></a>A MongoDB lekérdezési nyelv támogatása
 
-Az Azure Cosmos DB MongoDB API átfogó támogatást biztosít a MongoDB lekérdezési nyelv szerkezeteihez. Alább egy részletes listát találhat a jelenleg támogatott műveletekről, operátorokról, fázisokról, parancsokról és beállításokról.
+Az Azure Cosmos DB MongoDB API-teljes körű támogatást nyújt a MongoDB lekérdezési nyelvi szerkezeteket. Alább egy részletes listát találhat a jelenleg támogatott műveletekről, operátorokról, fázisokról, parancsokról és beállításokról.
 
 ## <a name="database-commands"></a>Adatbázisparancsok
 
-Az Azure Cosmos DB minden MongoDB API-fiók esetében támogatja az alábbi adatbázisparancsokat.
+Az Azure Cosmos DB támogatja a következő adatbázis-parancsok az összes Azure Cosmos DB API a mongodb-hez.
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezési és írási műveletek parancsai
 - delete
@@ -310,11 +310,11 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | A rendszer nem adja vis
 
 Az Azure Cosmos DB a dokumentumok minden olyan mezőjét indexeli, amelyet a rendszer alapértelmezés szerint az adatbázisba ír. Az egyedi indexek biztosítják, hogy egy adott mező ne rendelkezzen duplikált értékekkel a gyűjtemény minden dokumentumában, hasonlóképpen ahhoz, ahogy az alapértelmezett „_id” kulcs is megőrzi az egyediséget. Mostantól létrehozhat egyéni indexeket az Azure Cosmos DB-ben a „unique” megkötést tartalmazó createIndex paranccsal.
 
-Az egyedi indexek minden MongoDB API-fiók számára elérhetők.
+Egyedi indexek összes az Azure Cosmos DB API a MongoDB-fiókok érhetők el.
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 
-Az Azure Cosmos DB támogatja a dokumentum időbélyegzőjén alapuló relatív élettartamot (TTL). Az élettartamot az [Azure Portalon](https://portal.azure.com) lehet engedélyezni a MongoDB API-gyűjtemények számára.
+Az Azure Cosmos DB támogatja a dokumentum időbélyegzőjén alapuló relatív élettartamot (TTL). Élettartam MongoDB-gyűjtemény keresztül engedélyezhető az Azure Cosmos DB API a [az Azure portal](https://portal.azure.com).
 
 ## <a name="user-and-role-management"></a>Felhasználó- és szerepkörkezelés
 
@@ -326,7 +326,7 @@ Az Azure Cosmos DB támogatja az automatikus natív replikációt a legalsó ré
 
 ## <a name="write-concern"></a>Írási szempont
 
-Bizonyos MongoDB API-k támogatják egy [írási szempont](https://docs.mongodb.com/manual/reference/write-concern/) meghatározását, amely megadja az írási műveletek során szükséges válaszok számát. Mivel a Cosmos DB a replikációt a háttérben kezeli, alapértelmezés szerint minden írás automatikusan kvórum. A rendszer az ügyfélkódok által megadott írási szempontokat figyelmen kívül hagyja. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
+Egyes Azure Cosmos DB API a MongoDB támogatása megadása egy [írási aggodalomra](https://docs.mongodb.com/manual/reference/write-concern/) amely megadja, hogy az írási művelet során szükséges válaszok száma. Mivel a Cosmos DB a replikációt a háttérben kezeli, alapértelmezés szerint minden írás automatikusan kvórum. A rendszer az ügyfélkódok által megadott írási szempontokat figyelmen kívül hagyja. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding
 

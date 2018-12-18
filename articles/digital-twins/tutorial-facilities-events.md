@@ -1,20 +1,21 @@
 ---
-title: Az Azure digitális Twins területről események rögzítése |} A Microsoft Docs
+title: 'Oktatóanyag: Az Azure digitális Twins területről események rögzítése |} A Microsoft Docs'
 description: Megtudhatja, hogy a jelen oktatóanyagban lévő lépésekkel hogyan kaphat értesítéseket a tereitől az Azure Digital Twins a Logic Appsszel való integrálása révén.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583261"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556016"
 ---
-# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása az Azure digitális Twins tárolóhelyek Logic Apps használatával
+# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Az Azure digitális Twins tárolóhelyek értesítéseket fogadjon a Logic Apps használatával
 
 Miután az Azure digitális Twins-példány üzembe helyezése, a tárolóhelyek üzembe helyezése, és adott feltételek figyelése egyéni funkciók megvalósításához, értesítheti az e-mailen keresztül office felügyeleti, ha a figyelt események történnek. 
 
@@ -174,7 +175,7 @@ Használhatja a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgá
 
    c. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **tulajdonos**, írja be a szöveget **digitális Twins értesítési területen a gyenge légi minőségi**. Válassza ki **TopologyObjectId** származó a **dinamikus tartalom** listázása **JSON elemzése**.
 
-   d. A **törzs** ugyanabban az ablakban írja be a szöveget ehhez hasonló: **gyenge légi minőségi szoba észlelt, és hőmérséklet kell módosítani**. Nyugodtan dolgoznak ki az elemet a **dinamikus tartalom** listája.
+   d. A **törzs** ugyanabban az ablakban írja be a szöveget ehhez hasonló: **Gyenge légi minőségi szoba észlelt, és hőmérséklet kell módosítani**. Nyugodtan dolgoznak ki az elemet a **dinamikus tartalom** listája.
 
    ![Logic Apps "E-mail küldése" beállításokat](./media/tutorial-facilities-events/logic-app-send-email.png)
 
@@ -205,7 +206,7 @@ Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállít
 
 Ismerje meg, hogyan jelenítheti meg az érzékelő adatokat, trendeket és azonosíthatja a rendellenességeket elemzése, lépjen a következő oktatóanyaggal: 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Digital Twins-terek eseményeinek vizualizációja és elemzése a Time Series Insights használatával](tutorial-facilities-analyze.md)
+> [Oktatóanyag: Segítségével vizualizálhatja és elemezheti a Time Series Insights használatával az Azure digitális Twins tárolóhelyek eseményei](tutorial-facilities-analyze.md)
 
 Emellett többet is megtudhat a térbeli intelligencia gráfok és az Azure digitális Twins objektummodellt: 
 > [!div class="nextstepaction"]

@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d719dcaaaa746f710a9b06c40a399fc300a41e44
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515403"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543716"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása  
 Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. A függvények használatával még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, az F#, a Node.js, a Java vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra. Az Azure Functions segítségével [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások fejleszthetők a Microsoft Azure-on.
@@ -33,7 +33,7 @@ A Functions néhány főbb jellemzője:
 * **Saját függőségek használata** – A Functions a NuGetet és az NPM-et is támogatja, így Ön a kedvenc könyvtárait használhatja.  
 * **Beépített biztonság** – a HTTP-eseményindítókkal aktivált függvényeket olyan OAuth-szolgáltatókkal védheti, mint az Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókok.  
 * **Egyszerűsített integráció** – Könnyedén kihasználhatja az Azure-szolgáltatások és szolgáltatásként nyújtott szoftverek (SaaS) lehetőségeit. Erre vonatkozó példákat az [integrációs szakaszban](#integrations) talál.  
-* **Rugalmas fejlesztés** – A függvényeket közvetlenül a portálon írhatja meg, vagy beállíthat folyamatos integrációt, és a kódját a [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), az [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) vagy egyéb [támogatott fejlesztőeszközök](../app-service/app-service-deploy-local-git.md) segítségével helyezheti üzembe.  
+* **Rugalmas fejlesztés** – A függvényeket közvetlenül a portálon írhatja meg, vagy beállíthat folyamatos integrációt, és a kódját a [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), az [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) vagy egyéb [támogatott fejlesztőeszközök](../app-service/deploy-local-git.md) segítségével helyezheti üzembe.  
 * **Nyílt forráskód** – A Functions futtatókörnyezete nyílt forráskódú, és [elérhető a GitHubon](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Mire használhatom a Functions szolgáltatást?

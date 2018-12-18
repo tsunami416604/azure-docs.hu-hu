@@ -1,20 +1,18 @@
 ---
-title: 'Rövid útmutató: Azure Database for MariaDB-kiszolgáló létrehozása az Azure Portalon'
+title: 'Gyors útmutató: Hozzon létre egy Azure Database for MariaDB-kiszolgálóhoz - Azure portal'
 description: Ez a cikk azt mutatja be, hogyan hozhat létre egy mintául szolgáló Azure Database for MariaDB-kiszolgálót az Azure Portalon, nagyjából öt perc leforgása alatt.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 721cd87dcf58a2b5a7a8fd32fdfa8b2d65453b24
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: fb02cfd2419d1c98a92d1eae8b59256499d017a8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321937"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541387"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MariaDB-kiszolgálóhoz az Azure Portal használatával
 
@@ -49,7 +47,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
     Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot. 
     Forrás kiválasztása | **Üres** | Válassza az **Üres** lehetőséget egy teljesen új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MariaDB-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a **Biztonsági mentés** lehetőséget).
     Kiszolgáló-rendszergazdai bejelentkezés | **myadmin** | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-    Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűs betűket, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, és így tovább).
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *a legújabb verzió*| A legújabb verzió (ha nincsenek olyan egyedi igényei, amelyek miatt egy másikat kell kiválasztania).
@@ -70,7 +68,7 @@ Alapértelmezés szerint a következő adatbázisok jönnek létre a kiszolgál�
 
 ## <a name="configure-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
-Az Azure Database for MariaDB szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. Ez a tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan tűzfalszabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. 
+Azure Database for MariaDB szolgáltatáshoz készült Azure-adatbázis a kiszolgáló szintjén hoz létre tűzfalat. Ez a tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan tűzfalszabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. 
 
 Kiszolgálószintű tűzfalszabály létrehozása:
 
@@ -154,7 +152,7 @@ Először a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancss
     > [!TIP]
     > Ha a tűzfal nincs konfigurálva az Azure Cloud Shell IP-címének engedélyezésére, a következő hiba jelenik meg:
     >
-    >   HIBA 2003 (28000): A következő IP-címmel rendelkező ügyfél nem rendelkezik hozzáféréssel a kiszolgálóhoz: 123.456.789.0
+    >   HIBA 2003 (28000): 123.456.789.0 IP-címmel rendelkező ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
     >
     > A hiba elhárításához győződjön meg arról, hogy a kiszolgáló konfigurációja megegyezik a cikk [kiszolgálószintű tűzfalszabály konfigurálásával](#configure-firewall-rule) foglalkozó részében található lépésekkel.
 

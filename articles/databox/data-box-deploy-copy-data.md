@@ -1,21 +1,21 @@
 ---
-title: Adatok másolása Microsoft Azure Data Boxra | Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat az Azure Data Boxra
+title: Adatok másolása az SMB-n keresztül a Microsoft Azure Data Box |} A Microsoft Docs
+description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box SMB-n keresztül
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: e5219a0ade610a41d316970aecda06d4020b37f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093459"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546181"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box"></a>Oktatóanyag: Adatok másolása az Azure Data Boxra 
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a Data Boxhoz, hogyan másolhat ki adatokat a gazdagépről a helyi webes felület használatával, és hogyan készítheti elő a Data Box elküldését.
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Befejezte [az Azure Data Box beállítását ismertető oktatóanyagot](data-box-deploy-set-up.md).
+1. Befejeződött a [oktatóanyag: Állítsa be az Azure Data Box](data-box-deploy-set-up.md).
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
@@ -47,13 +47,9 @@ A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, 
 Lásd az alábbi példát. 
 
 - Tárfiók: *Mystoracct*
-- Megosztás a blokkblob számára: *Mystoracct_BlockBlob/my-container/blob*
-- Megosztás a lapblob számára: *Mystoracct_PageBlob/my-container/blob*
-- Megosztás fájl számára: *Mystoracct_AzFile/my-share*
-
-Attól függően, hogy a Data Box egy Windows Server vagy egy Linux rendszerű gazdagéphez csatlakozik, a kapcsolódás és a másolás folyamata eltérő lehet.
-
-### <a name="connect-via-smb"></a>Kapcsolódás SMB-n keresztül 
+- Megoszthatja a blokkblobok: *Mystoracct_BlockBlob/my-tároló/blob*
+- Megoszthatja a lapblob: *Mystoracct_PageBlob/my-tároló/blob*
+- Megoszthatja a fájlt: *Mystoracct_AzFile/my-megosztás*
 
 Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon csatlakozhat a Data Boxhoz.
 
@@ -90,29 +86,6 @@ Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon 
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
-### <a name="connect-via-nfs"></a>Kapcsolódás NFS-en keresztül 
-
-Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára.
-
-1. Adja meg azon ügyfelek IP-címeit, akik hozzáférhetnek a megosztáshoz. A helyi webes felületen lépjen a **Connect and copy** (Kapcsolódás és másolás) lapra. Az **NFS settings** (NFS-beállítások) pontban kattintson az **NFS client access** (NFS-ügyfélhozzáférés) lehetőségre. 
-
-    ![NFS-ügyfélhozzáférés konfigurálása 1](media/data-box-deploy-copy-data/nfs-client-access.png)
-
-2. Adja meg az NFS-ügynök IP-címét, és kattintson az **Add** (Hozzáadás) gombra. Ezt a lépést megismételve további NFS-ügyfeleket is konfigurálhat. Kattintson az **OK** gombra.
-
-    ![NFS-ügyfélhozzáférés konfigurálása 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
-
-2. Győződjön meg arról, hogy a Linux gazdagépen az NFS-ügyfél [támogatott verziója](data-box-system-requirements.md) van telepítve. Használja a Linux-disztribúciónak megfelelő verziót. 
-
-3. Az NFS-ügyfél telepítését követően az alábbi paranccsal csatlakoztathatja a Data Box-eszközön található NFS-megosztást:
-
-    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
-
-    Az alábbi példa bemutatja, hogyan kell NFS-en keresztüli kapcsolódni egy Data Box-megosztáshoz. A Data Box-eszköz IP-címe `10.161.23.130`, a megosztás (`Mystoracct_Blob`) az ubuntuVM virtuális géphez csatlakozik, a csatlakozási pont pedig a következő: `/home/databoxubuntuhost/databox`.
-
-    `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
-
-
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
 A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adatok másolása. Ennek megkezdése előtt tekintse át az alábbi szempontokat:
@@ -122,13 +95,11 @@ A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adat
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 - Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
 
-### <a name="copy-data-via-smb"></a>Adatok másolása SMB-n keresztül
-
 Az SMB-megosztáshoz való kapcsolódás után indítsa el az adatok másolását. 
 
 Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
     
-    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
+    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
  Az attribútumok leírását az alábbi táblázatban találja meg.
     
@@ -223,80 +194,11 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
     
    ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-### <a name="copy-data-via-nfs"></a>Adatok másolása NFS-en keresztül
-
-Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
-
-A `cp` parancs az egyik legjobb választás a könyvtárak másolására. A parancs használatáról [a cp tájékoztató oldalain](http://man7.org/linux/man-pages/man1/cp.1.html) talál további információt.
-
-Amennyiben az rsyncet használja többszálas másoláshoz, a következő irányelveket kell betartania:
-
- - Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
-
-    `sudo apt-get install cifs-utils`
-
-    `sudo apt-get install nfs-utils`
-
- -  Telepítse az **Rsyncet** és a **Parallelt** (a Linux elosztott verziójától függően).
-
-    `sudo apt-get install rsync`
-   
-    `sudo apt-get install parallel` 
-
- - Hozzon létre egy csatlakozási pontot.
-
-    `sudo mkdir /mnt/databox`
-
- - Csatlakoztassa a kötetet.
-
-    `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
-
- - Tükrözze a mappa könyvtárstruktúráját.  
-
-    `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
-
- - Másolja át a fájlokat. 
-
-    `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
-
-     A j a párhuzamos folyamatok számát jelöli, X = párhuzamos példányok száma
-
-     Azt javasoljuk, hogy kezdetben 16 párhuzamos példánnyal dolgozzon, és az elérhető erőforrásoknak megfelelően növelje a szálak számát.
 
 ## <a name="prepare-to-ship"></a>A szállítás előkészítése
 
-Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépésben az összes eszközmegosztást offline állapotba helyezi. A megosztásokhoz azt követően nem lehet hozzáférni, hogy elkezdődött az eszköz szállításának előkészítése.
-1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. 
-   
-    ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
-2. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására beágyazva, a szállítás előkészítése során kerül sor. Az ellenőrzőösszeg kiszámítása az adatok mennyiségétől függően eltarthat egy ideig. Kattintson a **Start preparation** (Előkészítés indítása) elemre.
-    1. Az eszközmegosztások offline állapotba kerülnek, és az eszköz zárolva lesz, amíg a rendszer előkészíti a szállítást.
-        
-        ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 
-   
-    2. Az előkészítés befejezésekor az eszköz állapota *Szállításra készre* vált. 
-        
-        ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship3.png)
-
-    3. Töltse le a folyamat során átmásolt fájlok listáját (a jegyzéket). Később ezen lista alapján ellenőrizheti az Azure-ba feltöltött fájlokat.
-        
-        ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship4.png)
-
-3. Állítsa le az eszközt. A **Shut down or restart** (Leállítás vagy újraindítás) lapon kattintson a **Shut down** (Leállítás) elemre. Ha a rendszer megerősítést kér, kattintson az **OK** gombra a folytatáshoz.
-4. Távolítsa el a kábeleket. A következő lépés az eszköz elküldése a Microsoftnak.
-
- 
-<!--## Appendix - robocopy parameters
-
-This section describes the robocopy parameters used when copying the data to optimize the performance.
-
-|    Platform    |    Mostly small files < 512 KB                           |    Mostly medium  files 512 KB-1 MB                      |    Mostly large files > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 Robocopy sessions <br> 16 threads per sessions    |    3 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 24 threads per sessions    |  |
-|    Data Box Heavy     |    6 Robocopy sessions <br> 24 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |   
-|    Data Box Disk         |    4 Robocopy sessions <br> 16 threads per sessions             |    2 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 16 threads per sessions    |   
--->
 
 ## <a name="next-steps"></a>További lépések
 
@@ -307,7 +209,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 > * Adatok másolása a Data Boxra
 > * Data Box szállításának előkészítése
 
-A következő oktatóanyag azt mutatja be, hogyan állíthat be egy Data Boxot, és hogyan másolhat rá adatokat.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)

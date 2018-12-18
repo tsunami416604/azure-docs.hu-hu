@@ -55,7 +55,7 @@
 ### [Kiszolgáló nélküli alkalmazások](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [Mikroszolgáltatások fürtje](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## Üzembe helyezés
-### [Webes és mobilalkalmazások a forráskezelőből](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [Webes és mobilalkalmazások a forráskezelőből](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [Helyi mikroszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -75,7 +75,7 @@
 ## Biztonságos
 ### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-## Biztonsági mentés
+## Backup
 ### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-backup)
 ### [Virtuális gépek](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
@@ -109,5 +109,5 @@
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Minták](https://azure.microsoft.com/resources/samples/)
+## [Példák](https://azure.microsoft.com/resources/samples/)
 ## [Videók](https://azure.microsoft.com/resources/videos/home/)

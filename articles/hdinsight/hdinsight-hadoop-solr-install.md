@@ -156,7 +156,7 @@ A Solr indexelő bizonyos adatok fájlokkal kell elindítani. Ezután használha
           </response>
       ```
       
-   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, ez legyen `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. Ezen a helyen kell megjelennie egy hasonló nevű létrehozott pillanatképmappa **pillanatkép.* időbélyeg x.
+   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, ez legyen `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. Ezen a helyen kell megjelennie egy hasonló nevű létrehozott pillanatképmappa **pillanatkép.\*időbélyeg**\*.
    
    3. Zip-mappába, és töltse fel az Azure Blob storage. A Hadoop parancssori paranccsal futtathatja keresse meg a pillanatkép-mappa helye a következő paranccsal:
 

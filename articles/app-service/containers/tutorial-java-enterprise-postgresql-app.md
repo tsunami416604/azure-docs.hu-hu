@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344227"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539722"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
@@ -170,7 +170,7 @@ Erősen javasoljuk, hogy a fájlok tartalmának olvasása különösen _jboss_cl
 
 ### <a name="ftp-the-configuration-files"></a>FTP-konfigurációs fájl
 
-FTP-tartalmát kell `wildfly_config/` az App Service-példányhoz. Az FTP-hitelesítő adatok lekéréséhez kattintson a **közzétételi profil lekérése** gomb az App Service panel az Azure Portalon. Az FTP-felhasználónév és jelszó lesz a letöltött XML-dokumentumban. A közzétételi profil további információkért lásd: [ebben a dokumentumban](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+FTP-tartalmát kell `wildfly_config/` az App Service-példányhoz. Az FTP-hitelesítő adatok lekéréséhez kattintson a **közzétételi profil lekérése** gomb az App Service panel az Azure Portalon. Az FTP-felhasználónév és jelszó lesz a letöltött XML-dokumentumban. A közzétételi profil további információkért lásd: [ebben a dokumentumban](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 A négy fájlokat átvinni egy FTP-eszközzel a választott `wildfly_config/` való `/home/site/deployments/tools/`. (Vegye figyelembe, hogy nem kell átvinni a címtárban, csak maguknak a fájlokat.)
 

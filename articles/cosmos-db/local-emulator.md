@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 2979cdd0184e287ba83ae8a254722b64decce83d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 334396b99609ea52085e36ee2740583e0957c3a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413693"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549571"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -125,7 +125,7 @@ Egy helyi hálózaton futtathatja az emulátort. A hálózati hozzáférés enge
 A hálózati hozzáférés első engedélyezéséhez a felhasználónak le kell állítania az emulátort, és törölnie kell az emulátor adatkönyvtárát (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Fejlesztés az emulátorral
-Amikor az Azure Cosmos DB Emulator fut az asztalon, bármelyik támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulator beépített Adatkezelőt is tartalmaz, amellyel gyűjteményeket hozhat létre az SQL és a MongoDB API-khoz, és kód írása nélkül tekintheti meg és szerkesztheti a dokumentumokat.
+Amikor az Azure Cosmos DB Emulator fut az asztalon, bármelyik támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulatort is tartalmaz egy beépített adatkezelő, amely lehetővé teszi az SQL- és mongodb-hez, és tekintse meg az Azure Cosmos DB API gyűjtemények létrehozása, és szerkeszthetik a dokumentumokat a kód írása nélkül.
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(

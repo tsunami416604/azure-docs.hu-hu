@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Custom Search-weboldal létrehozása – Bing Custom Search'
+title: 'Oktatóanyag: Egy weblap egyéni keresés – Bing egyéni keresés'
 titlesuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti, hogyan konfigurálható és integrálható egy weboldalba egy Custom Search-példány.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: aahi
-ms.openlocfilehash: d39ec856d628a8a607c6a8ea214f5dd9fbd63a9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427351"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558022"
 ---
-# <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
+# <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
 
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy keresési funkciót is biztosító, küzdősportokról szóló webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-to-top) foglalkozó témakört.
+Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   
@@ -127,10 +127,10 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
 
 Az üzemeltetett felhasználói felület kétféleképpen használható fel.  
 
-- 1. lehetőség: A megadott JavaScript-kódrészlet integrálása az alkalmazásba.
-- 2. lehetőség: A megadott HTML-végpont használata.
+- 1. lehetőség: A megadott JavaScript-kódrészletet beágyazása az alkalmazásba.
+- 2. lehetőség: A megadott, használja a HTML-végpontot.
 
-Az oktatóanyag fennmaradó része az **1. lehetőséget, vagyis a Javascript-kódrészletet** mutatja be.  
+Ez az oktatóanyag további részében látható **1. lehetőség: JavaScript-kódrészletet**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 

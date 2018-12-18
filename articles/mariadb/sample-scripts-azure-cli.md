@@ -1,21 +1,19 @@
 ---
 title: Azure CLI-minták az Azure Database for MariaDB
 description: Ez a cikk az Azure Database for MariaDB folytatott kommunikációhoz elérhető Azure CLI-példakódot sorolja fel.
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/27/2018
-ms.openlocfilehash: adf9e0ff6e84b90e7e9c25af3308b7fe383eb278
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8b38c5b94a3019b0c4ccaaa5c0cb86f74380469e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585326"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545056"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure CLI-minták az Azure Database for MariaDB 
 A következő táblázat Azure CLI-példaszkriptekre mutató hivatkozásokat tartalmaz az Azure Database for MariaDB.

@@ -1,24 +1,21 @@
 ---
 title: Csatlakozás az Azure Database for MySQL-hez a Go használatával
 description: Ez a rövid útmutató több Go-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 8f11453cd7ccdd878e20d80469f12263e72166b7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: b61aefcee36584b6ecfd1d701cb548c06f731d05
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264857"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536644"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go használatával
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL-hez: Csatlakozás és adatok lekérdezése a Go nyelv használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -81,7 +78,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.

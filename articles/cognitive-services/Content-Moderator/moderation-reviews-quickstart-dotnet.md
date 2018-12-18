@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Felülvizsgálatok létrehozása a .NET-es Content Moderatorral'
+title: 'Gyors útmutató: .NET - Content Moderator használatával felülvizsgálatok létrehozása'
 titlesuffix: Azure Cognitive Services
 description: Felülvizsgálatok létrehozása a .NET-hez készült Azure Content Moderator SDK-val.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226585"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538871"
 ---
-# <a name="quickstart-create-reviews-using-net"></a>Rövid útmutató: Felülvizsgálatok létrehozása a .NET használatával
+# <a name="quickstart-create-reviews-using-net"></a>Gyors útmutató: Hozzon létre értékelések .NET használatával
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével:
  
 - Felülvizsgálati készlet létrehozása emberi moderátorok számára
 - Meglévő felülvizsgálatok állapotának lekérése emberi moderátorok számára
 
-A tartalmak általában némi automatizált moderáláson mennek keresztül, mielőtt be lennének ütemezve az ember általi felülvizsgálatra. Ez a cikk csak azt tárgyalja, hogyan hozhat létre felülvizsgálatot ember által végzett moderáláshoz. A [Facebook-tartalmak moderálásával](facebook-post-moderation.md) és az [elektronikus kereskedelmi katalógusok moderálásával](ecommerce-retail-catalog-moderation.md) foglalkozó oktatóanyagokban teljesebb forgatókönyveket talál.
+A tartalmak általában némi automatizált moderáláson mennek keresztül, mielőtt be lennének ütemezve az ember általi felülvizsgálatra. Ez a cikk csak azt tárgyalja, hogyan hozhat létre felülvizsgálatot ember által végzett moderáláshoz. Egy teljes, olvassa az [Facebook tartalom-jóváhagyás](facebook-post-moderation.md) és [e-kereskedelmi Termékképek mérsékelt](ecommerce-retail-catalog-moderation.md) oktatóanyagok.
 
 Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 

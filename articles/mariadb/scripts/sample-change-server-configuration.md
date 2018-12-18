@@ -1,21 +1,19 @@
 ---
 title: Azure CLI-szkript – Kiszolgálókonfigurációk módosítása
 description: Ez a CLI-példaszkript felsorolja az összes elérhető kiszolgálókonfigurációt, és frissíti az innodb_lock_wait_timeout értékét.
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
-ms.openlocfilehash: a2104b4a2a80dc7ca3f76edb6757a59fcc6c7a4f
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 514f2fe7e8c2b94e175bc6f6fb0cec8ea3d0c9c6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585325"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547422"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Az Azure Database for MariaDB-kiszolgálót az Azure CLI-konfigurációinak felsorolása és frissítése
 A CLI-példaszkript felsorolja az összes elérhető konfigurációs paraméterét, valamint azok engedélyezett értékeit Azure Database for MariaDB-kiszolgáló, és beállítja a *innodb_lock_wait_timeout* , az alapértelmezett értéktől eltérő értékre.
@@ -45,6 +43,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
+- Az Azure CLI-vel kapcsolatos további információkért tekintse meg: [Az Azure CLI dokumentációját](/cli/azure).
 - További szkripteket: [Azure CLI-minták az Azure Database for MariaDB](../sample-scripts-azure-cli.md)
 - A kiszolgáló paramétereinek további információkért lásd: [hogyan való konfigurálása kiszolgálóparaméterek az Azure Database for MariaDB](../howto-server-parameters.md).

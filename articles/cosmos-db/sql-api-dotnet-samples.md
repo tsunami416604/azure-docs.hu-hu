@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d8aff2048d80b2c1542241c8370a9eb2b79366ac
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166625"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541897"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -161,7 +161,7 @@ A kiszolgálóoldali programozási fájl ([azure-documentdb-dotnet/samples/code-
 | [Trigger utáni elem létrehozása](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [Felhasználói függvény (UDF) létrehozása](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-Kiszolgálóoldali programozása kapcsolatos további információkért lásd: [Azure Cosmos DB kiszolgálóoldali programozása: Tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények](programming.md).
+Kiszolgálóoldali programozása kapcsolatos további információkért lásd: [Azure Cosmos DB kiszolgálóoldali programozása: Tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények](stored-procedures-triggers-udfs.md).
 
 ## <a name="user-management-examples"></a>Felhasználókezelés példái
 A felhasználókezelési fájl ([azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.

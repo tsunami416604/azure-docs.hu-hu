@@ -1,21 +1,18 @@
 ---
-title: 'Első lépések: Azure Database for MySQL-kiszolgáló létrehozása – Azure Portal'
+title: 'Gyors útmutató: Az Azure-adatbázis létrehozása MySQL-kiszolgálóhoz - Azure-portálon'
 description: Ez a cikk lépésről lépésre bemutatja, hogyan hozhat létre egy minta Azure-adatbázist MySQL-kiszolgálóhoz az Azure Portal használatával öt perc alatt.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/01/2018
-ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: aede3f432614023739d6967c6e76ff3aaf892cca
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959222"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537800"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
 
@@ -48,7 +45,7 @@ Kövesse az alábbi lépéseket egy, a MySQL-kiszolgálóhoz készült Azure-ada
     Erőforráscsoport | *myresourcegroup* | Adjon meg egy új vagy egy létező erőforráscsoportnevet.    Erőforráscsoport|*myresourcegroup*| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.
     Forrás kiválasztása | *Üres* | Válassza az *Üres* lehetőséget egy teljesen új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MySQL-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a *Biztonsági mentés* lehetőséget).
     Kiszolgáló-rendszergazdai bejelentkezés | myadmin | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-    Jelszó | *A választása szerint* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Jelszó | *A választása szerint* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűs betűket, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, és így tovább).
     Jelszó megerősítése | *A választása szerint*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *A legújabb főverzió*| A legújabb főverzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
@@ -114,7 +111,7 @@ Csatlakozzon kiszolgálójához a **mysql.exe** parancssori eszközzel. A MySQL-
 
     mysql-paraméter |Ajánlott érték|Leírás
     ---|---|---
-    --host | *Kiszolgálónév* | Az a kiszolgálónév, amelyet korábban a MySQL-hez készült Azure-adatbázis létrehozásakor használt. A példakiszolgáló a **mydemoserver.mysql.database.azure.com**. Használja a teljes tartománynevet (**\*.mysql.database.azure.com**), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
+    --host | *Kiszolgálónév* | Az a kiszolgálónév, amelyet korábban a MySQL-hez készült Azure-adatbázis létrehozásakor használt. A példakiszolgáló a **mydemoserver.mysql.database.azure.com**. Használja a teljes tartománynevet (**\*.mysql.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
     --user | *Kiszolgáló-rendszergazdai bejelentkezési név* |A kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban a MySQL-kiszolgálóhoz készült Azure-adatbázis létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
     -p | *Várjon a hitelesítőadat-kérésig* |Amikor a rendszer kéri, írja be a kiszolgáló létrehozásakor megadott jelszót. Vegye figyelembe, hogy a beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó beírása után nyomja le az **Enter** billentyűt.
 
@@ -140,7 +137,7 @@ Csatlakozzon kiszolgálójához a **mysql.exe** parancssori eszközzel. A MySQL-
     > [!TIP]
     > Ha a tűzfal nincs konfigurálva az ügyfél IP-címének engedélyezésére, a következő hiba jelenik meg:
     >
-    > HIBA 2003 (28000): A következő IP-címmel rendelkező ügyfél nem rendelkezik hozzáféréssel a kiszolgálóhoz: 123.456.789.0
+    > HIBA 2003 (28000): 123.456.789.0 IP-címmel rendelkező ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
     >
     > A hiba elhárításához győződjön meg róla, hogy a kiszolgáló konfigurációja megegyezik a cikk „Kiszolgálószintű tűzfalszabály konfigurálása” részében található lépésekkel.
 
@@ -186,7 +183,7 @@ Ha a MySQL Workbench GUI eszközzel szeretne csatlakozni a kiszolgálóhoz, vég
     |---|---|---|
      Kapcsolat neve | Bemutató kapcsolat | A kapcsolat címkéje. |
     Kapcsolati módszer | Standard (TCP/IP) | A Standard (TCP/IP) elégséges. |
-    Gazdanév | *Kiszolgálónév* | Az a kiszolgálónév, amelyet korábban a MySQL-hez készült Azure-adatbázis létrehozásakor használt. A példakiszolgáló a **mydemoserver.mysql.database.azure.com**. Használja a teljes tartománynevet (**\*.mysql.database.azure.com**), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit.|
+    Gazdanév | *Kiszolgálónév* | Az a kiszolgálónév, amelyet korábban a MySQL-hez készült Azure-adatbázis létrehozásakor használt. A példakiszolgáló a **mydemoserver.mysql.database.azure.com**. Használja a teljes tartománynevet (**\*.mysql.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit.|
      Port | 3306 | A MySQL-kiszolgálóhoz készült Azure-adatbázishoz való csatlakozáskor használandó port. |
     Felhasználónév |  *Kiszolgáló-rendszergazdai bejelentkezési név* | A kiszolgáló-rendszergazdai bejelentkezési információk, amelyeket korábban a MySQL-kiszolgálóhoz készült Azure-adatbázis létrehozásakor adott meg. A példában szereplő felhasználónév a következő: **myadmin@mydemoserver**. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
     Jelszó | *Az Ön jelszava* | A jelszó mentéséhez kattintson a **Store in Vault...** (Tárolás a tárolóban) gombra. |

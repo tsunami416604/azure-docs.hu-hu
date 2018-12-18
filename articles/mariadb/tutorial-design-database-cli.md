@@ -1,24 +1,21 @@
 ---
-title: 'Oktatóanyag: Azure CLI-vel MariaDB-hez készült Azure Database tervezése'
+title: 'Oktatóanyag: Azure Database for MariaDB Azure CLI-vel tervezése'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre és kezelhető az Azure Database for MariaDB-kiszolgáló és az adatbázis az Azure parancssori felület használatával a parancssorból.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2d715f89b56af822c2c1174cca0f2a9c1b847fc0
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: fa056dad052914e771251585cb426c70591aa235
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516337"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541191"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Oktatóanyag: Azure CLI-vel MariaDB-hez készült Azure Database tervezése
+# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Oktatóanyag: Azure Database for MariaDB Azure CLI-vel tervezése
 
 MariaDB-hez készült Azure Database egy MariaDB Community Edition adatbázismotorján alapul a Microsoft felhőalapú relációs adatbázis-szolgáltatás. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 
@@ -175,10 +172,10 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ez ne
 
 A visszaállításhoz a rendszer a következő információk megadását kéri:
 
-- Visszaállítási pont: Válasszon ki egy, a kiszolgáló módosítása előtti időpontot. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
-- Célkiszolgáló: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani.
-- Forráskiszolgáló: Adja meg a kiszolgáló nevét, amelyről a biztonsági másolatot vissza kívánja állítani.
-- Hely: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé.
+- Visszaállítási pont: Válasszon egy pont kötött, amely a kiszolgáló módosítása előtti. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
+- Célkiszolgáló: Adja meg a visszaállítani kívánt új kiszolgáló nevét
+- Forráskiszolgáló: Adja meg a visszaállítani kívánt kiszolgáló nevét
+- Hely: Nem választhat ki a régiót, alapértelmezés szerint ugyanaz, mint a forráskiszolgálón
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver

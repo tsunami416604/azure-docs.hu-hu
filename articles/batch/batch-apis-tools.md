@@ -1,19 +1,20 @@
 ---
-title: Azure Batch API-k és eszközök fejlesztők számára | Microsoft Docs
+title: API-k és eszközök fejlesztők számára – Azure Batch |} A Microsoft Docs
 description: Megismerheti az Azure Batch szolgáltatással történő megoldásfejlesztéshez elérhető API-kat és eszközöket.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 06/18/2018
-ms.author: danlep
-ms.openlocfilehash: c6715242ab1a2fd60f876ee97558715ed54c5e18
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 7335a5c61b46fab2da4054fdc0b8c9bbe05a148a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239610"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537477"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>A Batch API-k és eszközök áttekintése
 
@@ -38,7 +39,7 @@ Az alkalmazások és szolgáltatások közvetlen REST API-hívásokat hajthatnak
 
 | API | API-referencia | Letöltés | Oktatóanyag | Kódminták | További információ |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |N/A |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |– |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[Oktatóanyag](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Kibocsátási megjegyzések](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Oktatóanyag](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Olvass el](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Oktatóanyag](batch-nodejs-get-started.md) |- | [Olvass el](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
@@ -50,7 +51,7 @@ A Batch Azure Resource Manager API-jai programozott hozzáférést biztosítanak
 
 | API | API-referencia | Letöltés | Oktatóanyag | Kódminták |
 | --- | --- | --- | --- | --- |
-| **Batch Management REST** |[docs.microsoft.com][api_rest_mgmt] |N/A |- |[GitHubon](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Batch Management REST** |[docs.microsoft.com][api_rest_mgmt] |– |- |[GitHubon](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet ][api_net_mgmt_nuget] | [Oktatóanyag](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Batch Management Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
 | **Batch Management Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
@@ -59,16 +60,16 @@ A Batch Azure Resource Manager API-jai programozott hozzáférést biztosítanak
 
 Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a Batch szolgáltatás API-jai és a Batch Management API-k: 
 
-* [Batch PowerShell-parancsmagok][batch_ps]: Az [Azure PowerShell](/powershell/azure/overview) modulban található Azure Batch-parancsmagokkal felügyelheti a Batch-erőforrásokat a PowerShell használatával.
-* [Azure CLI](/cli/azure): Az Azure parancssori felület (Azure CLI) egy többplatformos eszközkészlet, amely rendszerhéjparancsokat biztosít sok Azure-szolgáltatásokkal, például a Batch szolgáltatással és a Batch Management szolgáltatással való interakcióhoz. Az Azure CLI a Batch szolgáltatással való használatával kapcsolatos további információkért lásd: [Batch-erőforrások kezelése az Azure CLI-vel](batch-cli-get-started.md).
+* [Batch PowerShell-parancsmagok][batch_ps]: Az Azure Batch-parancsmagokkal a [Azure PowerShell-lel](/powershell/azure/overview) modul lehetővé teszi a Batch-erőforrások kezelése a PowerShell.
+* [Az Azure CLI](/cli/azure): Az Azure CLI-vel egy többplatformos eszközkészlet, amely rendszerhéjparancsokat biztosít sok Azure-szolgáltatások, például a Batch szolgáltatás és a Batch Management szolgáltatással való interakcióhoz. Az Azure CLI a Batch szolgáltatással való használatával kapcsolatos további információkért lásd: [Batch-erőforrások kezelése az Azure CLI-vel](batch-cli-get-started.md).
 
 ## <a name="other-tools-for-application-development"></a>Egyéb alkalmazásfejlesztési eszközök
 
 Íme néhány további eszköz, amelyek hasznosak lehetnek a Batch-alkalmazások és -szolgáltatások létrehozása és hibakeresése során.
 
-* [Azure Portal][portal]: Batch-készleteket, -feladatokat és -tevékenységeket hozhat létre, figyelhet meg és törölhet az Azure Portalon. Megtekintheti ezen és más erőforrások állapotinformációit a feladatok futtatásakor, és fájlokat is letölthet a készletekben található számítási csomópontokról. Letöltheti például egy sikertelen feladat `stderr.txt` fájlját a hibaelhárítás során. Távoli asztali (RDP-) fájlokat is letölthet, amelyekkel bejelentkezhet a számítási csomópontokba.
-* [Azure Batch Explorer][batch_labs]: A Batch Explorer (korábbi nevén BatchLabs) egy ingyenes, számos funkcióval ellátott, önálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre.
-* [Microsoft Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz, a Storage Explorer egy másik értékes eszköz a Batch-megoldások fejlesztésekor és hibakeresésekor.
+* [Az Azure portal][portal]: Létrehozása, figyelése, és törölje a Batch készletek, feladatok és tevékenységek az Azure Portalon. Megtekintheti ezen és más erőforrások állapotinformációit a feladatok futtatásakor, és fájlokat is letölthet a készletekben található számítási csomópontokról. Letöltheti például egy sikertelen feladat `stderr.txt` fájlját a hibaelhárítás során. Távoli asztali (RDP-) fájlokat is letölthet, amelyekkel bejelentkezhet a számítási csomópontokba.
+* [Az Azure Batch Explorer][batch_labs]: A Batch Explorer (korábbi nevén BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz létrehozásához, hibakereséséhez és monitorozásához az Azure Batch-alkalmazások. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre.
+* [A Microsoft Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz a Storage Explorer egy másik értékes eszköz kell számolnia, amíg a fejlesztés és hibakeresés a Batch-megoldások.
 
 ## <a name="additional-resources"></a>További források
 
@@ -85,8 +86,8 @@ Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch
 [api_java_mgmt]: /java/api/overview/azure/batch/managementapi
-[api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
-[api_java_mgmt_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-mgmt-batch%22
+[api_java_jar]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
+[api_java_mgmt_jar]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_net]: /dotnet/api/overview/azure/batch/
 [api_net_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [api_rest_mgmt]: /rest/api/batchmanagement/
@@ -109,5 +110,5 @@ Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a 
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [msdn_benefits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [batch_labs]: https://azure.github.io/BatchExplorer/
-[storage_explorer]: http://storageexplorer.com/
+[storage_explorer]: https://storageexplorer.com/
 [portal]: https://portal.azure.com

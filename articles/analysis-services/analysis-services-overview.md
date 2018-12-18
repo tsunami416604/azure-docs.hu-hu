@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15dbdc0bb2a3b7ee5af544adb2672a97f839f694
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2dd209025db762f659510898e23cb371a31291b9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970195"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544685"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -23,13 +23,13 @@ Az Azure Analysis Services egy teljes körűen felügyelt platformszolgáltatás
 
 ![Adatforrások](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Videó:** Tekintse meg az [Azure Analysis Services – áttekintés](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) videót arról, hogyan illik az Azure Analysis Services a Microsoft általános BI-képességei közé.
+**Videó:** Tekintse meg [Azure Analysis Services áttekintése](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) ismerje meg, hogy az Azure Analysis Services hogyan illeszkedik a Microsoft által az általános BI-képességei.
 
 ## <a name="get-up-and-running-quickly"></a>Gyors beállítás és használat
 
 Percek alatt [létrehozhat egy kiszolgálót](analysis-services-create-server.md) az Azure Portalon. Az Azure Resource Manager-[sablonok](../azure-resource-manager/resource-manager-create-first-template.md) és a PowerShell használatával pedig deklaratív sablonokkal hozhat létre kiszolgálókat. Egyetlen sablonnal kiszolgálói erőforrásokat is üzembe helyezhet, egyéb Azure-összetevőkkel (például tárfiókokkal és az Azure Functions szolgáltatással) együtt. 
 
-**Videó:** Tekintse meg [az üzembe helyezés automatizálásával](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) foglalkozó videót arról, hogyan használhatja az Azure Automationt a kiszolgálók létrehozásának felgyorsítására.
+**Videó:** Tekintse meg [üzembe helyezésének automatizálása a](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) tudhat meg többet hogyan használhatja az Azure Automation sebesség kiszolgáló létrehozása.
 
 Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így kifinomult elemzési megoldásokat hozhat létre. Az [Azure Active Directoryval](../active-directory/fundamentals/active-directory-whatis.md) való integráció biztonságos, szerepköralapú hozzáférést biztosít a kritikus fontosságú adatokhoz. [Azure Data Factory-folyamatokba](../data-factory/introduction.md) integrálható egy olyan tevékenység bevonásával, amely adatokat tölt be a modellbe. Az [Azure Automation](../automation/automation-intro.md) és az [Azure Functions](../azure-functions/functions-overview.md) egyéni kódot használó modellek egyszerűbb vezénylésére használható. 
 
@@ -146,7 +146,7 @@ Az Azure Analysis Services táblázatos modelljei számos különféle adatforr�
 
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
 
-Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. A kiszolgáló szintjén: tűzfal, Azure-hitelesítés, kiszolgálói rendszergazdai szerepkörök és kiszolgálóoldali titkosítás. Az adatmodell szintjén felhasználói szerepkörök, valamint a sor- és objektumszintű biztonság garantálja az adatok védelmét, továbbá biztosítja, hogy azokhoz csak a jogosult felhasználók férhessenek hozzá.
+Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. A kiszolgáló szintjén: Tűzfal, az Azure hitelesítési, a kiszolgáló-rendszergazdai szerepkörök és a kiszolgálóoldali titkosítás. Az adatmodell szintjén felhasználói szerepkörök, valamint a sor- és objektumszintű biztonság garantálja az adatok védelmét, továbbá biztosítja, hogy azokhoz csak a jogosult felhasználók férhessenek hozzá.
 
 ### <a name="firewall"></a>Tűzfal
 
@@ -215,7 +215,7 @@ Az olyan modern adatáttekintési és vizualizációs eszközök, mint például
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-Az Azure Analysis Services integrálva van az Azure-metrikákkal, így számos erőforrás-specifikus metrikát biztosít a kiszolgálók teljesítményének és állapotának monitorozásához. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Végezze el a metrikák rögzítését az [Azure erőforrás-diagnosztikai naplóinak](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) használatával. Monitorozhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-be, streamelheti őket az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/), valamint exportálhatja őket a [Log Analytics](https://azure.microsoft.com/services/log-analytics/) nevű [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba. További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
+Az Azure Analysis Services integrálva van az Azure-metrikákkal, így számos erőforrás-specifikus metrikát biztosít a kiszolgálók teljesítményének és állapotának monitorozásához. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Végezze el a metrikák rögzítését az [Azure erőforrás-diagnosztikai naplóinak](../azure-monitor/platform/diagnostic-logs-overview.md) használatával. Monitorozhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-be, streamelheti őket az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/), valamint exportálhatja őket a [Log Analytics](https://azure.microsoft.com/services/log-analytics/) nevű [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba. További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
 
 Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)](https://docs.microsoft.com/sql/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) használatát is. A DMV-k az SQL-szintaxis alapján kapcsolódnak azokhoz a sémasorkészletekhez, amelyek a kiszolgálópéldány metaadatait és monitorozási információit adják vissza.
 
@@ -251,7 +251,7 @@ Az Analysis Services felhasználói pezsgő közösséget alkotnak. Csatlakozzon
 > [Az Azure ingyenes próbaverziójának kipróbálása](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)   
+> [Gyors útmutató: Kiszolgáló létrehozása – portál](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)  

@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 3493b94e93a03faaf60aaa64bf8b80cefb754657
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a2c00d5373bd4e19a6e6057c6eddc758857860da
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309059"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556764"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
 
@@ -86,7 +86,7 @@ Telepítse a Service Fabric Mesh-futtatókörnyezetet, az SDK-t és az eszközö
 > A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
 
 > [!Note]
-> Ha esetében a Windows Fall Creators update (1709-es verzió) gép, csak használhat Windows 1709-es docker a docker-rendszerképek.
+> Ha esetében a Windows Fall Creators update (1709-es verzió) gép, csak használhatja a docker-rendszerképeket Windows 1709-es.
 > Ha a Windows rendszeren fejleszt 2018 április 10. (verzió 1803) gép, vagy Windows 1709-es vagy 1803 verziójú docker-rendszerképeket is használhatja.
 
 Ha a Visual Studiót használja, kihagyhatja ezt a szakaszt. Ha még nem rendelkezik helyi fürttel, a Visual Studio létre fog hozni egyet.

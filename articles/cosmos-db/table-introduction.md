@@ -1,6 +1,6 @@
 ---
 title: Az Azure Cosmos DB Table API bemutatása
-description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy mennyiségű kulcs-érték típusú adatok tárolására és lekérdezésére a népszerű OSS MongoDB API-k használatával.
+description: Ismerje meg, hogyan használhatja az Azure Cosmos DB tárolja, és a lekérdezés nagy mennyiségű kulcs-érték típusú adatok közel valós idejű adateléréssel használja a népszerű nyílt Forráskódú Azure Cosmos DB API-k fiókját a mongodb-hez.
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.component: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 2647065d251caea571e2bfcd5703bbb3bec08345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8e386d5d56654610f92ac07648ccc271fd3e9467
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074305"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535046"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Az Azure Cosmos DB bemutatása: Tábla API
 
 Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Table Storage-hoz írt alkalmazások számára, amelyekhez a következő prémium képességek szükségesek:
 

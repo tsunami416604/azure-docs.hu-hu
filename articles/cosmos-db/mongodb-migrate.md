@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 50bb34d86780dec003c63b5ff0a3884049dd47c1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a17b2121feb5656df4298bddc2b1e90bb9ac6457
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871007"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545614"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Oktatóanyag: Adatok migrálása az Azure Cosmos DB MongoDB API-fiókba
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-api-account-for-mongodb"></a>Oktatóanyag: Migrálja adatait az Azure Cosmos DB API-fiók MongoDB-hez
 
-Ez az oktatóanyag bemutatja, hogyan migrálhatja a MongoDB-ben tárolt adatokat az Azure Cosmos DB MongoDB API-fiókba. Ha a MongoDB-ből importál adatokat, és az Azure Cosmos DB SQL API-val tervezi azokat használni, az adatok importálásához használja az [adatmigrálási eszközt](import-data.md).
+Ez az oktatóanyag útmutatást a mongodb-hez készült Azure Cosmos DB API a MongoDB-ben tárolt adatok migrálása. Ha a MongoDB-ből importál adatokat, és az Azure Cosmos DB SQL API-val tervezi azokat használni, az adatok importálásához használja az [adatmigrálási eszközt](import-data.md).
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Adatok migrálása a mongoimport használatával
 > * Adatok migrálása a mongorestore használatával
 
-Mielőtt az adatokat a MongoDB API-fiókba migrálná, győződjön meg arról, hogy rendelkezik MongoDB-mintaadatokkal. Ha nem rendelkezik MongoDB-adatbázissal, letöltheti és telepítheti a [MongoDB közösségi kiszolgálót](https://www.mongodb.com/download-center), létrehozhat egy mintaadatbázist, és a mongoimport.exe vagy a mongorestore.exe használatával feltölthet mintaadatokat. 
+Adatok áthelyezése az Azure Cosmos DB API a mongodb-hez, győződjön meg arról, hogy mielőtt van néhány minta, MongoDB-adatok. Ha nem rendelkezik MongoDB-adatbázissal, letöltheti és telepítheti a [MongoDB közösségi kiszolgálót](https://www.mongodb.com/download-center), létrehozhat egy mintaadatbázist, és a mongoimport.exe vagy a mongorestore.exe használatával feltölthet mintaadatokat. 
 
 ## <a name="plan-for-migration"></a>Az áttelepítés megtervezése
 
@@ -59,7 +59,7 @@ Mielőtt az adatokat a MongoDB API-fiókba migrálná, győződjön meg arról, 
 
 1. Számítsa ki az egyetlen dokumentum írására vonatkozó, közelítő kérelemegységenkénti díjat:
 
-   a. Csatlakozzon az Azure-Cosmos DB MongoDB API-fiókba a MongoDB-felületről. Ezzel kapcsolatos további útmutatást a [MongoDB-alkalmazások az Azure Cosmos DB-hez való csatlakoztatását ismertető](connect-mongodb-account.md) cikkben találhat.
+   a. Csatlakozhat az Azure Cosmos DB API a mongodb-hez a MongoDB Shell. Ezzel kapcsolatos további útmutatást a [MongoDB-alkalmazások az Azure Cosmos DB-hez való csatlakoztatását ismertető](connect-mongodb-account.md) cikkben találhat.
     
    b. Futtasson egy minta beszúrási parancsot a MongoDB-felület egyik mintadokumentuma használatával:
    
@@ -127,11 +127,11 @@ Mielőtt az adatokat a MongoDB API-fiókba migrálná, győződjön meg arról, 
 
 ## <a name="prerequisites-for-migration"></a>A migrálás előfeltételei
 
-* **Az átviteli sebesség növelése:** Az adatok migrálásának időtartama az egyes gyűjteményekhez vagy egy gyűjteménykészlethez beállított átviteli sebességtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az [Azure Portalon](https://portal.azure.com): [Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben](performance-levels.md).
+* **Átviteli sebesség növelése:** Az adatok migrálása idejére beállítása egy egyéni gyűjtemény átviteli mennyisége vagy egy gyűjtemény függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az [Azure Portalon](https://portal.azure.com): [Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben](performance-levels.md).
 
-* **Az SSL engedélyezése:** Az Azure Cosmos DB szigorú biztonsági feltételekkel és szabványokkal rendelkezik. A fiókja használatakor mindig engedélyezze az SSL-t. A cikk további részében ismertetett eljárások azt mutatják be, hogyan engedélyezheti az SSL-t a mongoimport és a mongorestore eszköz számára.
+* **SSL engedélyezése:** Az Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. A fiókja használatakor mindig engedélyezze az SSL-t. A cikk további részében ismertetett eljárások azt mutatják be, hogyan engedélyezheti az SSL-t a mongoimport és a mongorestore eszköz számára.
 
-* **Azure Cosmos DB-erőforrások létrehozása:** Az adatok migrálásának indítása előtt hozza előre létre az összes gyűjteményt az Azure Portalról. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-gyűjtemények létrehozásakor mindenképpen adjon meg egy partíciókulcsot.
+* **Azure Cosmos DB-erőforrások létrehozása:** Adatok áttelepítése előtt előre létrehozni az Azure Portalról a gyűjtemények. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-gyűjtemények létrehozásakor mindenképpen adjon meg egy partíciókulcsot.
 
 ## <a name="get-your-connection-string"></a>A kapcsolati sztring beszerzése 
 

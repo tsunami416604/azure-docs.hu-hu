@@ -1,21 +1,19 @@
 ---
-title: 'Rövid útmutató: Azure Database for MariaDB-kiszolgáló létrehozása – Azure CLI'
+title: 'Gyors útmutató: Hozzon létre egy Azure Database for MariaDB-kiszolgáló – Azure CLI-vel'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Database MariaDB-kiszolgálót az Azure CLI használatával egy Azure-erőforráscsoportban.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566448"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538744"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -52,14 +50,14 @@ Beállítás | Mintaérték | Leírás
 név | **mydemoserver** | Adjon meg egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
 resource-group | **myresourcegroup** | Adja meg az Azure-erőforráscsoport nevét.
 sku-name | **GP_Gen5_2** | A termékváltozat neve. A *tarifacsomag*\_*számítási generáció*\_*virtuális magok* mintát követi rövidített módon. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
-backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Tartomány: 7–35. 
-geo-redundant-backup | **Letiltva** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezve**, **Letiltva**.
+backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Értékek: 7 – 35. 
+geo-redundant-backup | **Letiltva** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezett**, **letiltott**.
 location | **westus** | A kiszolgáló Azure-helye.
-ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezve**, **Letiltva**.
+ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Megengedett értékek: **Engedélyezett**, **letiltott**.
 storage-size | **51200** | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes tárolóméretek: 5120 Mb (legalább), 1024 MB-os egységekben történő növekedéssel. További információ a tárolóméret korlátairól: [Tarifacsomagok](./concepts-pricing-tiers.md). 
 version | **10.2** | A MariaDB fő motorjának verziója.
 admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-admin-password | *az Ön jelszava* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
+admin-password | *az Ön jelszava* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűk, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
 
 Az **sku-name** paraméter értéke a *tarifacsomag*\_*számítási generáció*\_*virtuális magok* mintát követi, a következő példákban látható módon:
 + Az `--sku-name B_Gen5_4` jelentése: Alapszintű tarifacsomag, 5. számítási generáció és 4 virtuális mag.

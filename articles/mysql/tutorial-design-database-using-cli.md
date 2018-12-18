@@ -1,24 +1,21 @@
 ---
-title: 'Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával'
+title: 'Oktatóanyag: Azure Database for MySQL-hez az Azure CLI használatával tervezése'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI parancssorból történő használatával.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 60cfb5e1c5fa44952ca6a5e6fc411f4a6ab0e8be
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966979"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545790"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL-hez az Azure CLI használatával tervezése
 
 Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft Cloudban, amely a MySQL Community Edition adatbázismotoron alapul. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 
@@ -175,19 +172,19 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ez ne
 
 A visszaállításhoz a rendszer a következő információk megadását kéri:
 
-- Visszaállítási pont: Válasszon ki egy, a kiszolgáló módosítása előtti időpontot. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
-- Célkiszolgáló: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani.
-- Forráskiszolgáló: Adja meg a kiszolgáló nevét, amelyről a biztonsági másolatot vissza kívánja állítani.
-- Hely: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé.
+- Visszaállítási pont: Válasszon egy pont kötött, amely a kiszolgáló módosítása előtti. Ez a pont nem lehet korábbi, mint az adatbázis legrégebbi biztonsági másolata.
+- Célkiszolgáló: Adja meg a visszaállítani kívánt új kiszolgáló nevét
+- Forráskiszolgáló: Adja meg a visszaállítani kívánt kiszolgáló nevét
+- Hely: Nem választhat ki a régiót, alapértelmezés szerint ugyanaz, mint a forráskiszolgálón
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 
 Az `az mysql server restore` parancshoz a következő paraméterekre van szükség:
-| Beállítás | Ajánlott érték | Leírás  |
+| Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
 | név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |

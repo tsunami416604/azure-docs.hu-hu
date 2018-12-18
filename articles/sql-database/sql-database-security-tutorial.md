@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409768"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558634"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Oktatóanyag: Egy Azure SQL Database-adatbázis védelme
 
@@ -136,6 +136,9 @@ A kapcsolat így a Transport Layer Security (TLS) protokoll használatával jön
     ![Válasszon ad](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. A **SQL Server** lapon jelölje be **Active Directory-rendszergazda**, és az a **Active Directory-rendszergazda** lapon jelölje be **rendszergazda beállítása**.  ![az active directory kiválasztása](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > Meg kell lennie a "Vállalati rendszergazda" vagy "Globális rendszergazda" Ez a feladat végrehajtásához.
 
 3. Az a **rendszergazda hozzáadása** lapon, keresse meg a felhasználó, válassza ki a felhasználó vagy csoport rendszergazdája lesz, és válassza **kiválasztása**. (Az Active Directory-rendszergazda lap megjeleníti az összes tag és Active Directory-csoportokat. Felhasználók vagy csoportok szürkén jelennek meg, nem választható, mert ez nem támogatott az Azure AD-rendszergazdaként. (A támogatott rendszergazdák listájának megtekintéséhez a **az Azure AD-funkciók és korlátozások** szakaszában [használata az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse-hitelesítéshez](sql-database-aad-authentication.md).) Szerepköralapú hozzáférés-vezérlés (RBAC) csak azokra a portálon, és az SQL Server nem propagálja.
     ![Válassza ki a rendszergazda](./media/sql-database-aad-authentication/select-admin.png)  

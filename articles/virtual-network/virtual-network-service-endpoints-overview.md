@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 8150774a630e6888dcd3bb5a4d219cfbf2c2c477
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: acb5897825a2a7762869d3ad961dfcdcb87071b4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310164"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540554"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -42,7 +42,6 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 
 **Előzetes verzió**
 
-- **[Az Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban az előzetes verzióban érhető el.
 - **[Az Azure Data Lake Store 1. generációs gyűjtések](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Előzetes verzióban érhető el.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.

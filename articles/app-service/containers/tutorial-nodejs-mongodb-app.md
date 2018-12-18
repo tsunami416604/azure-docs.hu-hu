@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 59173550c0cdff44931e0b686308b39e985dddcf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 23a737c97cad0ce8c525d52db97bfb32ef4eb300
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254955"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537188"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -28,14 +28,14 @@ ms.locfileid: "53254955"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js- és MongoDB-webalkalmazás létrehozása az Azure-ban](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást, hogyan csatlakoztathatja egy helyi MongoDB-adatbázishoz, majd hogyan helyezheti üzembe az Azure-ban, egy CosmosDB-adatbázishoz csatlakoztatva a MongoDB API segítségével. Az oktatóanyag eredménye egy, a Linux App Service-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS, and Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozzon létre egy Node.js-webalkalmazás, egy MongoDB-adatbázishoz való helyi csatlakozáshoz, majd üzembe helyezése az Azure Cosmos DB API a mongodb-hez. Az oktatóanyag eredménye egy, a Linux App Service-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS, and Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * CosmosDB-adatbázis létrehozása a MongoDB API segítségével az Azure-ban
+> * Adatbázis létrehozása az Azure Cosmos DB API a mongodb-hez
 > * Node.js-alkalmazás csatlakoztatása a MongoDB-hez
 > * Az alkalmazás üzembe helyezése az Azure-ban
 > * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
@@ -319,7 +319,7 @@ http://<app_name>.azurewebsites.net
 
 A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót.
 
-Ha sikerrel jár, és az alkalmazás automatikusan bejelentkezik a létrehozott felhasználói fiókba, akkor a MEAN.js-alkalmazás az Azure-ban kapcsolódik a Cosmos DB-adatbázis MongoDB API felületéhez.
+Ha sikerrel jár, és az alkalmazás automatikusan bejelentkezik a létrehozott felhasználói, akkor a MEAN.js-alkalmazás az Azure-ban kapcsolódik az Azure Cosmos DB API a mongodb-hez.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -474,7 +474,7 @@ Alapértelmezés szerint a portálon a webalkalmazás **Áttekintés** oldala je
 Az alábbiak elvégzését ismerte meg:
 
 > [!div class="checklist"]
-> * CosmosDB-adatbázis létrehozása a MongoDB API segítségével az Azure-ban
+> * Adatbázis létrehozása az Azure Cosmos DB API a mongodb-hez
 > * Node.js-alkalmazás csatlakoztatása a MongoDB-hez
 > * Az alkalmazás üzembe helyezése az Azure-ban
 > * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése

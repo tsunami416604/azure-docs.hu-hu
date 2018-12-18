@@ -1,20 +1,21 @@
 ---
-title: Az Azure Digital Twins üzembe helyezése | Microsoft Docs
+title: 'Oktatóanyag: Az Azure Digital Twins üzembe helyezése | Microsoft Docs'
 description: Ismerje meg, hogyan helyezheti üzembe az Azure digitális Twins-példány, és a térbeli erőforrások konfigurálása az ebben az oktatóanyagban szereplő lépések segítségével.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b21e5a87561757e2991a7b9addce0d1f3383204f
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080589"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557716"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása
+# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure digitális Twins telepítheti és konfigurálhatja a térbeli grafikon
 
 Az Azure digitális Twins szolgáltatás használatával egyesítheti személyek, helyek és eszközök egy összefüggő információszállá térbeli rendszerben. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
 
@@ -101,9 +102,9 @@ A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\d
     ```
 
 1. A Visual Studio Code-ban nyissa meg a **appSettings.json** fájlt a **foglaltsága-quickstart** projekt. Frissítse a következő értékeket:
-   * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás Azonosítóját. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#permissions).
+   * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás azonosítója. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#permissions).
    * **Bérlő**: Adja meg a címtár-azonosító, a [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ezt az Azonosítót az szakaszban is feljegyzett ahol, [Alkalmazásengedélyek beállítása](#permissions).
-   * **BaseUrl**: Adja meg a Digital Twins-példány URL-címét. Az URL-cím lekéréséhez cserélje le az URL-ben lévő helyőrzőket a példány értékeire: _https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy). Cserélje le **swagger /** a **api/v1.0/**.
+   * **BaseUrl**: Adja meg a digitális Twins-példány URL-CÍMÉT. Az URL-cím lekéréséhez cserélje le az URL-ben lévő helyőrzőket a példány értékeire: _https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy). Cserélje le **swagger /** a **api/v1.0/**.
 
 1. Minta használatával megvizsgálhatja digitális Twins szolgáltatások listájának megtekintéséhez. Futtassa az alábbi parancsot:
 
@@ -136,7 +137,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Ez a funkció **provisionSample.yaml** ugyanabban a mappában. Nyissa meg a fájlt, és jegyezze fel a hierarchia irodaépület: *helyszín*, *emelet*, *terület*, és *termek*. A fizikai területek bármelyike tartalmazhat *eszközöket* és *érzékelőket*. Mindegyik bejegyzés rendelkezik egy előre meghatározott `type` &mdash;például emelet, szobában. 
+Ez a funkció **provisionSample.yaml** ugyanabban a mappában. Nyissa meg a fájlt, és jegyezze fel a hierarchia irodaépület: *Helyszín*, *emelet*, *terület*, és *termek*. A fizikai területek bármelyike tartalmazhat *eszközöket* és *érzékelőket*. Mindegyik bejegyzés rendelkezik egy előre meghatározott `type` &mdash;például emelet, szobában. 
 
 A minta **yaml** fájl használó térbeli grafikonon jeleníti meg a `Default` digitális Twins hálózatiobjektum-modellt. Ez a modell biztosítja a legtöbb általános névvel. Általános névvel épület elegendőek. Példák a SensorDataType hőmérséklet, és a SpaceBlobType leképezése. Egy példa terület típus altípus FocusRoom, ahol ConferenceRoom és így tovább. 
 
@@ -149,11 +150,11 @@ A **provisionSample.yaml** fájl a következő csomópontokat tartalmazza:
 
 - **erőforrások**: A `resources` csomópont létrehoz egy Azure IoT Hub-erőforrást, és a telepítő az eszközök közötti kommunikációt. Az IoT hub, a csomópont a gráfhoz, az összes eszközök és érzékelők a gráfban található kommunikálhat.  
 
-- **spaces**: A Digital Twins-objektummodellben a `spaces` jelöli a fizikai helyeket. Minden egyes címtérhez tartozik egy `Type` &mdash;például a régió, a helyszín vagy az ügyfél&mdash;és a egy rövid `Name`. Tárolóhelyek más tárolóhelyek létrehozása a hierarchikus is tartozhat. A provisionSample.yaml fájl rendelkezik egy képzeletbeli épület térbeli grafikon. Vegye figyelembe a logikai típusú tárolóhelyek beágyazását `Floor` belül `Venue`, `Area` a egy emelet és `Room` csomópontok területen. 
+- **tárolóhelyek**: A digitális Twins hálózatiobjektum-modellt a `spaces` a fizikai helyek jelölik. Minden egyes címtérhez tartozik egy `Type` &mdash;például a régió, a helyszín vagy az ügyfél&mdash;és a egy rövid `Name`. Tárolóhelyek más tárolóhelyek létrehozása a hierarchikus is tartozhat. A provisionSample.yaml fájl rendelkezik egy képzeletbeli épület térbeli grafikon. Vegye figyelembe a logikai típusú tárolóhelyek beágyazását `Floor` belül `Venue`, `Area` a egy emelet és `Room` csomópontok területen. 
 
-- **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. Egy eszköz lehet például a felhasználó telefonja, érzékelő podot Raspberry Pi vagy egy átjárót. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
+- **eszközök**: Szóközöket tartalmazhat `devices`, melyek kezelheti az érzékelők több fizikai vagy virtuális entitásokon. Egy eszköz lehet például a felhasználó telefonja, érzékelő podot Raspberry Pi vagy egy átjárót. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
 
-- **érzékelő**: egy eszköz több tartalmazhat `sensors`. Azt is észleli, és rekord fizikai módosítása, például hőmérséklet mozgásban lévő adatoknak egyaránt és töltöttségi szint. Minden érzékelő-csomópontot egyedien azonosít egy `hardwareId`, amely itt szoftveresen kötött. Tényleges alkalmazás esetén cserélje le ezeket a telepítő az érzékelők egyedi azonosítói használatával. A provisionSample.yaml fájl rendelkezik két érzékelők rögzítése *mozgásban lévő adatoknak egyaránt* és *CarbonDioxide*. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Vegye figyelembe, hogy ezek szerepelnek provisionSample.yaml ellátva kibővített sorok formájában. Akkor is távolítsa el őket eltávolításával a `#` minden egyes sorban található karaktert. 
+- **érzékelő**: Egy eszköz több tartalmazhat `sensors`. Azt is észleli, és rekord fizikai módosítása, például hőmérséklet mozgásban lévő adatoknak egyaránt és töltöttségi szint. Minden érzékelő-csomópontot egyedien azonosít egy `hardwareId`, amely itt szoftveresen kötött. Tényleges alkalmazás esetén cserélje le ezeket a telepítő az érzékelők egyedi azonosítói használatával. A provisionSample.yaml fájl rendelkezik két érzékelők rögzítése *mozgásban lévő adatoknak egyaránt* és *CarbonDioxide*. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Vegye figyelembe, hogy ezek szerepelnek provisionSample.yaml ellátva kibővített sorok formájában. Akkor is távolítsa el őket eltávolításával a `#` minden egyes sorban található karaktert. 
 
     ```yaml
             - dataType: Temperature
@@ -184,5 +185,5 @@ Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállít
 
 Megtudhatja, hogyan valósíthat meg egy egyéni logikát megfigyelik a az épület minta, nyissa meg a következő oktatóanyag a sorozat: 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az épület kiépítése és a munkakörülmények monitorozása](tutorial-facilities-udf.md)
+> [Oktatóanyag: Üzembe helyezheti az épület és figyelő feltételek használata](tutorial-facilities-udf.md)
 

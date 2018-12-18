@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 50abe2b067770976f19ae9b70c97c2df8354640f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 50e2e36058e025e87302352eaa492f5cf78eb31b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091578"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536423"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -35,11 +35,11 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
 * **Több adatmodell és népszerű API az adatok eléréséhez és lekérdezéséhez**
     * Az atom-rekord-szekvencián (ARS) alapuló adatmodell, amelyre az Azure Cosmos DB épült, natív módon támogat többféle adatmodellt, többek között a dokumentumokat, a diagramokat, a kulcs-értékeket, a táblákat és az oszlopcsalád-adatmodelleket.
     * Az alábbi adatmodellekhez készült API-kat több nyelven elérhető SDK-k támogatják:
-        * [SQL API](sql-api-introduction.md): Egy séma nélküli JSON-adatbázismotor részletes SQL-lekérdezési képességekkel.
-        * [MongoDB API](mongodb-introduction.md): Nagymértékben méretezhető, *szolgáltatásként elérhető MongoDB*, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
-        * [Cassandra API](cassandra-introduction.md): Globálisan elosztott, szolgáltatásként elérhető Cassandra, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő [Apache Cassandra](https://cassandra.apache.org/)-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
-        * [Gremlin API](graph-introduction.md): Teljes mértékben felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat olyan alkalmazásokat, amelyek az Open Gremlin API-kat támogató (az Apache Gremlin [Apache TinkerPop-specifikáció](https://tinkerpop.apache.org/) alapján), magas szinten csatlakoztatott adatkészletekkel működnek együtt.
-        * [Table API](table-introduction.md): Egy kulcs/érték adatbázis-szolgáltatás, amely prémium szintű képességeket (például automatikus indexelést, garantáltan alacsony késést és globális terjesztést) biztosít a meglévő Azure Table Storage-alkalmazások számára anélkül, hogy az alkalmazásokat módosítani kellene.
+        * [Az Azure Cosmos DB API-hoz SQL](sql-api-introduction.md): Egy séma nélküli JSON-adatbázismotor részletes SQL-lekérdezési képességekkel.
+        * [Az Azure Cosmos DB API a mongodb-hez](mongodb-introduction.md): Egy nagy mértékben skálázható *MongoDB--szolgáltatásként* működteti az Azure Cosmos DB platformra. Kompatibilis a meglévő MongoDB-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
+        * [Az Azure Cosmos DB API-hoz a Cassandra](cassandra-introduction.md): Egy globálisan elosztott Cassandra--szolgáltatásként az Azure Cosmos DB platformra működteti. Kompatibilis a meglévő [Apache Cassandra](https://cassandra.apache.org/)-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
+        * [A Gremlin az Azure Cosmos DB API](graph-introduction.md): A teljes körűen felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat alkalmazásokat, amelyek együttműködnek magas csatlakoztatott adatkészletek nyílt Gremlin API-kat támogató (alapján a [Apache TinkerPop-specifikáció](https://tinkerpop.apache.org/), Az Apache Gremlin).
+        * [Az Azure Cosmos DB API tábla](table-introduction.md): Egy kulcs-érték adatbázis szolgáltatás, amely prémium szintű képességeket (például automatikus indexelést, garantáltan alacsony késést és globális terjesztést) biztosít a meglévő Azure Table storage-alkalmazások alkalmazás módosítása nélkül.
         * Hamarosan további adatmodellek és API-k is elérhetővé válnak!
 
 * **Az átviteli sebesség és a tárterület rugalmas és független méretezése igény szerint, világszerte**
@@ -90,7 +90,7 @@ Bármely olyan [webes, mobil-, játék és IoT-alkalmazás](use-cases.md) eseté
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 
 * [Bevezetés az Azure Cosmos DB SQL API használatába](create-sql-api-dotnet.md)
-* [Bevezetés az Azure Cosmos DB MongoDB API használatába](create-mongodb-nodejs.md)
+* [Ismerkedés az Azure Cosmos DB API a mongodb-hez](create-mongodb-nodejs.md)
 * [Bevezetés az Azure Cosmos DB Cassandra API használatába](create-cassandra-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Gremlin API használatába](create-graph-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Table API használatába](create-table-dotnet.md)

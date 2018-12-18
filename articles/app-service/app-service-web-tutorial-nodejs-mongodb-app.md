@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 41b73e662316a6f61ec4145c06fb5e9c06e83f06
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251504"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537859"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Oktatóanyag: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban
 
@@ -119,7 +119,7 @@ Válassza az **Admin > Manage Articles** (Felügyelet > Cikkek kezelése) elemet
 A Node.js leállításához nyomja le a `Ctrl+C` billentyűkombinációt a terminálon. 
 
 > [!NOTE]
-> A [Node.js rövid útmutató](app-service-web-get-started-nodejs.md) említi, hogy a gyökéralkalmazás-könyvtárban szükség van egy web.config fájlra. Ebben az oktatóanyagban azonban ezt a web.config fájlt automatikusan létrehozza az App Service, ha a ZIP fájl üzembe helyezése helyett a [helyi Git üzembe helyezést](app-service-deploy-local-git.md) használja. 
+> A [Node.js rövid útmutató](app-service-web-get-started-nodejs.md) említi, hogy a gyökéralkalmazás-könyvtárban szükség van egy web.config fájlra. Ebben az oktatóanyagban azonban ezt a web.config fájlt automatikusan létrehozza az App Service, ha a ZIP fájl üzembe helyezése helyett a [helyi Git üzembe helyezést](deploy-local-git.md) használja. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
