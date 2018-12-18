@@ -60,7 +60,7 @@ Titkosítás során az ügyféloldali kódtár hozzon létre egy "véletlenszer�
 > 
 > 
 
-Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo x /** BlobReadStream ** egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
+Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo**\* /** BlobReadStream** egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
 
 Egy tetszőleges címtartományt letöltése (**DownloadRange*** módszerek) a titkosított BLOB magában foglalja a kisebb mennyiségű használható sikerült visszafejteni a kért további adatok lekérése érdekében a felhasználók által biztosított tartomány beállítása tartomány.
 

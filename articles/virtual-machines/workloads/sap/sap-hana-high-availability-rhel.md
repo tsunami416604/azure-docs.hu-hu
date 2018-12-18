@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167409"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338522"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
 
@@ -104,11 +104,11 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Nyissa meg a [adatbázis sablon] [ template-multisid-db] az Azure Portalon.
 1. Adja meg a következő paraméterekkel:
     * **Rendszer-azonosító SAP**: Adja meg az SAP az SAP-rendszer telepíteni kívánt rendszer-azonosító. Az azonosító az üzembe helyezett erőforrások előtagjaként is szolgál.
-    * **Operációs rendszer típusa**: Válasszon egyet a Linux-disztribúció. Ebben a példában válassza **RHEL 7**.
-    * **Adatbázistípus**: válasszon **HANA**.
+    * **Operációs rendszer típusa**: Válasszon ki egy Linux-disztribúció. Ebben a példában válassza **RHEL 7**.
+    * **Adatbázistípus**: Válassza ki **HANA**.
     * **SAP-rendszer mérete**: Adja meg az SAP, amelyet az új rendszerre, adja meg. Ha nem biztos a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
-    * **Rendszer rendelkezésre állását**: válasszon **magas rendelkezésre ÁLLÁSÚ**.
-    * **Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs**: egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
+    * **Rendszer rendelkezésre állását**: Válassza ki **magas rendelkezésre ÁLLÁSÚ**.
+    * **Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs**: Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
     * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**. Hagyja üresen, ha szeretne egy új virtuális hálózat létrehozása
 
 ### <a name="manual-deployment"></a>Manuális telepítés
@@ -120,9 +120,9 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Load balancer létrehozása (belső).
    * Válassza ki a 2. lépésben létrehozott virtuális hálózatot.
 1. 1 virtuális gép létrehozása.  
-   Legalább Red Hat Enterprise Linux 7.4 használja az SAP Hana-hoz. Ebben a példában a Red Hat Enterprise Linux 7.4 SAP HANA-lemezképhez <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> válassza ki a rendelkezésre állási csoportot a 3. lépésben létrehozott.
+   Legalább Red Hat Enterprise Linux 7.4 használja az SAP Hana-hoz. Ebben a példában a Red Hat Enterprise Linux 7.4 SAP HANA-lemezképhez <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> válassza ki a rendelkezésre állási csoportot a 3. lépésben létrehozott.
 1. 2 virtuális gép létrehozása.  
-   Legalább Red Hat Enterprise Linux 7.4 használja az SAP Hana-hoz. Ebben a példában a Red Hat Enterprise Linux 7.4 SAP HANA-lemezképhez <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> válassza ki a rendelkezésre állási csoportot a 3. lépésben létrehozott.
+   Legalább Red Hat Enterprise Linux 7.4 használja az SAP Hana-hoz. Ebben a példában a Red Hat Enterprise Linux 7.4 SAP HANA-lemezképhez <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> válassza ki a rendelkezésre állási csoportot a 3. lépésben létrehozott.
 1. Adatlemezek hozzáadása.
 1. A load balancer konfigurálása. Először hozzon létre egy előtérbeli IP-címkészlet:
 
@@ -188,10 +188,10 @@ Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olva
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 * **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : 1. csomópont csak a lépés vonatkozik.
-* **a(z) [2]** : Fürtcsomópont 2 támasztja csak a lépés vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
-1. **[A]**  Állítsa be a lemez elrendezése: **logikai kötet-kezelő (LVM)**.
+1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)**.
 
    Azt javasoljuk, hogy a köteteket, amelyek adatokat tárolhatnak, és a naplófájlok LVM használja. Az alábbi példa azt feltételezi, hogy a virtuális gépek négy adatok csatlakoztatott lemezekkel rendelkezik, amely segítségével hozzon létre két kötetet.
 
@@ -257,7 +257,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]**  Állítsa be a lemez elrendezése: **egyszerű lemezek**.
+1. **[A]**  a lemez elrendezése beállítása: **Egyszerű lemez**.
 
    Bemutató rendszerekhez helyezze el a HANA adathoz és naplófájlhoz egy lemezen. Hozzon létre egy partíciót a /dev/disk/azure/scsi1/lun0, és formázza xfs:
 
@@ -303,30 +303,30 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    Az SAP HANA-Rendszerreplikálást telepítéséhez kövesse az <https://access.redhat.com/articles/3004101>.
 
    * Futtassa a **hdblcm** program HANA DVD-ről. Írja be a parancssorba a következő értékeket:
-   * Válassza ki a telepítési: Adja meg **1**.
-   * Válassza ki a további összetevők telepítésének: Adja meg **1**.
-   * Adja meg a telepítési útvonal [/ hana/megosztott]: válassza ki a adja meg.
-   * Adja meg a helyi gazdagép neve [.]: Select adja meg.
-   * Biztosan további állomásokat adhat hozzá a rendszer? (i/n) [n]: válassza ki, adja meg.
-   * Adja meg az SAP HANA rendszer-azonosító: Adja meg a HANA SID, például: **HN1**.
-   * Adja meg a példányok száma [00]: Adja meg a HANA-példányok számát. Adja meg **03** Ha használja az Azure-sablon vagy követni a manuális központi telepítése című szakaszát.
-   * Válassza ki az adatbázis mód / adja meg az [1]. Index: Válassza ki adja meg.
-   * Válassza ki a rendszer terhelése / Index megadása [4]: válassza ki a rendszer használati értéket.
-   * Adja meg a helyet, az adatkötetek [/ hana/data/HN1]: válassza ki a adja meg.
-   * Adja meg a helyet, Log kötetek [/ hana/log/HN1]: válassza ki a adja meg.
-   * Maximális memória mennyiségét korlátozza? [n]: válassza ki, adja meg.
-   * Adja meg a tanúsítvány állomásneve gazdagép "..." []: Válassza ki, adja meg.
-   * Adja meg az SAP gazdagép ügynök felhasználói (sapadm) jelszó: Adja meg a gazdagép-ügynök felhasználói jelszót.
+   * Válassza ki a telepítés: Adja meg **1**.
+   * Válassza ki a további összetevők telepítéséhez: Adja meg **1**.
+   * Adja meg a telepítési útvonal [/ hana/megosztott]: Válassza ki a adja meg.
+   * Adja meg a helyi gazdagép neve [.]: Válassza ki a adja meg.
+   * Biztosan további állomásokat adhat hozzá a rendszer? (i/n) [n]: Válassza ki a adja meg.
+   * Adja meg az SAP HANA rendszer-azonosító: Adja meg például a HANA biztonsági azonosító: **HN1**.
+   * Adja meg a [00] száma: Adja meg a HANA-példányok számát. Adja meg **03** Ha használja az Azure-sablon vagy követni a manuális központi telepítése című szakaszát.
+   * Válassza ki az adatbázis mód / adja meg az Index [1]: Válassza ki a adja meg.
+   * Válassza ki a rendszer terhelése / adja meg az Index [4]: Válassza ki a rendszer használati értéket.
+   * Adja meg a helyet, az adatkötetek [/ hana/data/HN1]: Válassza ki a adja meg.
+   * Adja meg a helyet, Log kötetek [/ hana/log/HN1]: Válassza ki a adja meg.
+   * Maximális memória mennyiségét korlátozza? [n]: Válassza ki a adja meg.
+   * Adja meg a tanúsítvány állomásneve gazdagép "..." [...]: Válassza ki a adja meg.
+   * Adja meg az SAP gazdagép ügynök felhasználói (sapadm) jelszavát: Adja meg a gazdagép-ügynök felhasználói jelszót.
    * SAP-gazdagép ügynök felhasználó (sapadm) jelszó megerősítése: Adja meg a gazdagép ügynök felhasználói jelszót kétszer.
-   * Adja meg a rendszergazdát (hdbadm) jelszó: Adja meg a rendszergazda jelszavát.
-   * Erősítse meg a rendszergazdát (hdbadm) jelszó: Adja meg a rendszer rendszergazdai jelszót kétszer.
-   * Adjon meg rendszergazda otthoni könyvtárat [/ usr/sap/HN1/home]: válassza ki a adja meg.
-   * Adja meg a rendszer rendszergazdai bejelentkezési rendszerhéj [/ bin/sh]: válassza ki a adja meg.
-   * Adja meg a rendszergazda felhasználó azonosítója [1001]: Select adja meg.
-   * Adja meg a felhasználói csoportra (sapsys) [79]: válassza ki a adja meg.
-   * Adja meg az adatbázis-felhasználó (rendszer) jelszó: Adja meg az adatbázis-felhasználó jelszava.
-   * Adatbázis-felhasználó (rendszer) jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
-   * Számítógép újraindítása után indítsa újra a rendszert? [n]: válassza ki, adja meg.
+   * Adja meg a rendszergazdát (hdbadm) jelszavát: Adja meg a rendszergazda jelszavát.
+   * A rendszergazda (hdbadm) jelszó megerősítése: Adja meg a rendszer rendszergazdai jelszót kétszer.
+   * Adja meg a rendszer rendszergazdai kezdőkönyvtár [/ usr/sap/HN1/home]: Válassza ki a adja meg.
+   * Adja meg a rendszer rendszergazdai bejelentkezési rendszerhéj [/ bin/sh]: Válassza ki a adja meg.
+   * Adja meg a rendszergazda felhasználó azonosítója [1001]: Válassza ki a adja meg.
+   * Adjon meg azonosító a felhasználói csoportot (sapsys) [79]: Válassza ki a adja meg.
+   * Adatbázis (rendszer) felhasználói jelszó: Adja meg az adatbázis felhasználói jelszót.
+   * Adatbázis (rendszer) felhasználói jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
+   * Számítógép újraindítása után indítsa újra a rendszert? [n]: Válassza ki a adja meg.
    * Folytatja? (i/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
@@ -349,8 +349,8 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 * **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : 1. csomópont csak a lépés vonatkozik.
-* **a(z) [2]** : Fürtcsomópont 2 támasztja csak a lépés vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 
@@ -440,8 +440,8 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 * **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : 1. csomópont csak a lépés vonatkozik.
-* **a(z) [2]** : Fürtcsomópont 2 támasztja csak a lépés vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 

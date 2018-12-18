@@ -51,8 +51,8 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 ### <a name="application-2"></a>#2. alkalmazás: 
 Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel: 
 
-**5. #**: A belső URL-címet kell azt a hitelesítési portot, amelyet az alkalmazás az QlikSense URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
- **#10. lépés:** ne be egyszeri Bejelentkezést, és hagyja a **egyszeri bejelentkezés le van tiltva**
+**5. #**: A belső URL-címet kell azt a hitelesítési portot, amelyet az alkalmazás az QlikSense URL-CÍMÉT. Az alapértelmezett érték **4244** 4248 HTTP és HTTPS. Például: **https&#58;//demo.qlik.com:4244**</br></br>**#10. lépés:** ne be egyszeri Bejelentkezést, és hagyja a **egyszeri bejelentkezés le van tiltva** 
+
  
  
 ## <a name="testing"></a>Tesztelés 

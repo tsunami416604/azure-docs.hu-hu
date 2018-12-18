@@ -51,7 +51,7 @@ Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beál
 
 Ez a közzétevő-profilon belül az ajánlat egyedi azonosítója. Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
 
-például ha egy kiadó contoso-közzétevő létrehoz egy ajánlatot az ajánlat azonosítója *minta-dynamics365 műveletek*, ez fog megjelenni az appsource-ban, \"https://appsource.microsoft.com/marketplace/apps/\**contoso\**.\*minta – dynamics 365 for operations\*? lapon = áttekintése\"
+például ha egy kiadó contoso-közzétevő létrehoz egy ajánlatot az ajánlat azonosítója *minta-dynamics365 műveletek*, ez fog megjelenni az appsource-ban, \"https://appsource.microsoft.com/marketplace/apps/**contoso**.\*minta – dynamics 365 for operations\*? lapon = áttekintése\"
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 

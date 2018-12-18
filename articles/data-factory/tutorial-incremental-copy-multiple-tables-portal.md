@@ -370,7 +370,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 1. Váltson a **Parameters** (Paraméterek) lapra a tulajdonságok ablakában, és hajtsa végre a következő lépéseket: 
 
     1. Kattintson a **New** (Új) elemre a **Create/update parameters** (Paraméterek létrehozása/frissítése) szakaszban. 
-    1. Adja meg a **SinkTableName****nevet** és a **String** (Sztring) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
+    1. Adja meg a **SinkTableName** **nevet** és a **String** (Sztring) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
    
        ![Fogadó adatkészlet – tulajdonságok](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. Váltson a **Connection** (Kapcsolat) lapra a Tulajdonságok ablakban, majd a **Linked service** (Társított szolgáltatás) mezőben válassza az **AzureSqlLinkedService** elemet. A **Table** (Tábla) tulajdonsághoz kattintson az **Add dynamic content** (Dinamikus tartalom hozzáadása) lehetőségre. 
