@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 23b1ec176572b3a7e6deb0cba60ac7a1e73eeffb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257879"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605517"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
-A [Web App](../app-service-web-overview.md) egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon. Az alábbi részek sorolják fel a jelenleg támogatott alkalmazáscsoportokat.
+A [Web App](../overview.md) egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. A Linuxon futó App Service használatával az ügyfelek natív módon üzemeltethetnek webalkalmazásokat a támogatott alkalmazáscsoportok számára a Linuxon. Az alábbi részek sorolják fel a jelenleg támogatott alkalmazáscsoportokat.
 
 ## <a name="languages"></a>Nyelvek
 

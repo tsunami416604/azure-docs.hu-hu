@@ -1,7 +1,7 @@
 ---
 title: Tekintse át a végpont kimondott szöveg
 titleSuffix: Azure Cognitive Services
-description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie.
+description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: bc641732d74dac4f566420ada6338362932df4d7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7084766273ec392856d829f245d3588ce57c8dae
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080452"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605772"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>1. oktatóanyag: Bizonytalan előrejelzések javítása
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 

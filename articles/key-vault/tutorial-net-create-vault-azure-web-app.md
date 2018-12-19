@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c2e278b606ebfb445fc76294b2fac78d729aa970
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322141"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606163"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Oktatóanyag: Az Azure Key Vault használata a .NET-keretrendszerben Azure web app használatával
 
 Az Azure Key Vault segítségével API-kulcsok például titkainak védelmére és adatbázis-kapcsolati karakterláncok. Ez hozzáférést biztosít az alkalmazások, szolgáltatások és informatikai erőforrásra lenne szükség.
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan tudja olvasni azok adatait egy Azure key vault az Azure-webalkalmazások létrehozása. A folyamat felügyelt identitásokat használ az Azure-erőforrásokhoz. Azure-alapú webes alkalmazások kapcsolatos további információkért lásd: [Azure Web Apps](../app-service/app-service-web-overview.md).
+Ebben az oktatóanyagban elsajátíthatja, hogyan tudja olvasni azok adatait egy Azure key vault az Azure-webalkalmazások létrehozása. A folyamat felügyelt identitásokat használ az Azure-erőforrásokhoz. Azure-alapú webes alkalmazások kapcsolatos további információkért lásd: [Azure App Service](../app-service/overview.md).
 
 A cikk bemutatja, hogyan való:
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT-megoldásgyorsítók bemutatása | Microsoft Docs
+title: Bevezetés az IoT-megoldásgyorsítók – Azure |} A Microsoft Docs
 description: Megismerheti az Azure IoT-megoldásgyorsítókat. Az IoT-megoldásgyorsítók teljes körű, átfogó, üzembe helyezésre kész IoT-megoldások.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824540"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607202"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
@@ -34,7 +34,7 @@ Jelenleg négy megoldásgyorsítót helyezhet üzembe:
 
 ### <a name="remote-monitoring"></a>Távoli monitorozás
 
-Ez a megoldásgyorsító használja a távoli eszközök telemetriai adatok összegyűjtése, és vezérelheti őket. A példaeszközök közé tartoznak az ügyfelei telephelyein felszerelt hűtőrendszerek vagy a távoli szivattyútelepeken üzembe helyezett szelepek.
+Használja a [távoli figyelési megoldásgyorsító](iot-accelerators-remote-monitoring-sample-walkthrough.md) távoli eszközök telemetriai adatok összegyűjtése, és vezérelheti őket. A példaeszközök közé tartoznak az ügyfelei telephelyein felszerelt hűtőrendszerek vagy a távoli szivattyútelepeken üzembe helyezett szelepek.
 
 A távoli monitorozási irányítópultot használhatja a csatlakoztatott eszközök telemetriájának megtekintéséhez, új eszközök létrehozásához vagy a csatlakoztatott eszközök belső vezérlőprogramjának frissítéséhez is:
 
@@ -42,7 +42,7 @@ A távoli monitorozási irányítópultot használhatja a csatlakoztatott eszkö
 
 ### <a name="connected-factory"></a>Csatlakoztatott gyár
 
-Ezt a megoldásgyorsítót az [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) felülettel rendelkező ipari objektumok telemetriai adatainak gyűjtéséhez és az objektumok irányításához használhatja. Az ipari objektumok lehetnek például a gyártósoron található összeszerelő- és tesztelőállomások.
+Használja a [Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-sample-walkthrough.md) a telemetriai adatok gyűjtése az ipari eszközök egy [OPC egyesített architektúra](https://opcfoundation.org/about/opc-technologies/opc-ua/) felületet, és megadhatja őket. Az ipari objektumok lehetnek például a gyártósoron található összeszerelő- és tesztelőállomások.
 
 A csatlakoztatott gyár irányítópultjának használatával a következő ipari eszközöket monitorozhatja és kezelheti:
 
@@ -50,7 +50,7 @@ A csatlakoztatott gyár irányítópultjának használatával a következő ipar
 
 ### <a name="predictive-maintenance"></a>Prediktív karbantartás
 
-Ez a megoldásgyorsító használatával előre jelezni, amikor egy távoli eszközön várható sikertelen lesz, így is végrehajthasson karbantartás előtt az eszközt nem sikerül. Ez a megoldásgyorsító gépi tanulási algoritmusokkal vizsgálja az eszköz telemetriai adatait, és előrejelzi a meghibásodást. A példaeszközök lehetnek például repülőgép-hajtóművek vagy liftek.
+Használja a [prediktív karbantartási megoldásgyorsító](iot-accelerators-predictive-walkthrough.md) előre, amikor egy távoli eszközön várható sikertelen lesz, így is végrehajthasson karbantartás előtt az eszközt nem sikerül. Ez a megoldásgyorsító gépi tanulási algoritmusokkal vizsgálja az eszköz telemetriai adatait, és előrejelzi a meghibásodást. A példaeszközök lehetnek például repülőgép-hajtóművek vagy liftek.
 
 A prediktív karbantartási irányítópult a következő prediktív karbantartási elemzések megtekintésére használható:
 
@@ -58,7 +58,7 @@ A prediktív karbantartási irányítópult a következő prediktív karbantart�
 
 ### <a name="device-simulation"></a>Eszközszimuláció
 
-Ez a megoldásgyorsító használatával futtassa a szimulált eszközök hoznak létre valószerű telemetriai adatokat. Ez a megoldásgyorsító más megoldásgyorsítók viselkedésének vagy saját IoT-megoldásainak tesztelésére is használható.
+Használja a [Eszközszimuláció megoldásgyorsító](iot-accelerators-device-simulation-overview.md) futtatni szimulált eszközök hoznak létre valószerű telemetriai adatokat. Ez a megoldásgyorsító más megoldásgyorsítók viselkedésének vagy saját IoT-megoldásainak tesztelésére is használható.
 
 Az eszközszimulációs webalkalmazás a következő szimulációk konfigurálására és futtatására használható:
 
@@ -85,7 +85,7 @@ Az eredeti megoldásgyorsítók a .NET és model-view-controller (MVC) architekt
 | Csatlakoztatott gyár      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Eszközszimuláció      | Mikroszolgáltatások | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-További információk a mikroszolgáltatás-architektúrákról: [.NET-alkalmazás architektúrája](https://www.microsoft.com/net/learn/architecture) és [Mikroszolgáltatások: egy felhőben zajló alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+A mikroszolgáltatási architektúra kapcsolatos további információkért lásd: [bemutatása az Azure IoT-referenciaarchitektúra](iot-accelerators-architecture-overview.md).
 
 ## <a name="deployment-options"></a>Üzembe helyezési beállítások
 
@@ -94,8 +94,8 @@ A megoldásgyorsítókat a [Microsoft Azure IoT-megoldásgyorsítók](https://ww
 A távoli monitorozási megoldásgyorsítót a következő konfigurációkban helyezheti üzembe:
 
 * **Standard:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. Az Azure Container Service üzembe helyezi a mikroszolgáltatásokat több Azure-beli virtuális gépek. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
-* **Alapszintű**: Csökkentett költségű verzió bemutató célokra vagy az üzembe helyezés teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
-* **Helyi:** Helyi gépen történő üzembe helyezés tesztelés és fejlesztés céljából. Ez a módszer egy helyi Docker-tárolóban helyezi üzembe a mikroszolgáltatásokat, és csatlakozik az IoT Hub, Azure Cosmos DB és Azure Storage szolgáltatásokhoz a felhőben.
+* **Alapszintű:** Csökkentett költségű verzió bemutató célokra vagy a telepítés tesztelésére. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
+* **Helyi:** Teszteléshez és fejlesztéshez telepítése helyi számítógépre. Ez a módszer egy helyi Docker-tárolóban helyezi üzembe a mikroszolgáltatásokat, és csatlakozik az IoT Hub, Azure Cosmos DB és Azure Storage szolgáltatásokhoz a felhőben.
 
 Megoldásgyorsítók költségének a kombinált [költsége a mögöttes Azure-szolgáltatásokat futtató](https://azure.microsoft.com/pricing). Az igénybe vett Azure-szolgáltatások részleteit az üzembehelyezési beállítások kiválasztásakor tekintheti meg.
 

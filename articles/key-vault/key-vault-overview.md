@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: aae7836448ff27b4c80d7bb53e108034ee52db1c
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
-ms.translationtype: HT
+ms.openlocfilehash: 7945ff5d67f8229802666ac4a12209c2d26607f7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586291"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608409"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -73,9 +73,9 @@ Továbbá az Azure Key Vault-kulcstartók lehetővé teszik a titkos alkalmazás
 
 ### <a name="integrate-with-other-azure-services"></a>Integráció más Azure-szolgáltatásokkal
 
-Az Azure-ban található biztonságos tárolóként a Key Vaultot a forgatókönyvek, például az [Azure Disk Encryption](../security/azure-security-disk-encryption.md), illetve az SQL Server, az Azure SQL Database és az [Azure-webalkalmazások]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site) [mindig titkosított]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkcióinak egyszerűsítésére használják. A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a Log Analytics-szel.
+Az Azure-ban biztonságos tárolóként a Key Vault rendelkezik egyszerűsítésére használják helyzetek, például [az Azure Disk Encryption](../security/azure-security-disk-encryption.md), a [mindig titkosított]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkció az SQL server és az Azure SQL Database [Azure App Szolgáltatás]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a Log Analytics-szel.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](quick-create-cli.md)
+- [Gyors útmutató: Hozzon létre egy Azure Key Vault, a parancssori felületről](quick-create-cli.md)
 - [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md)

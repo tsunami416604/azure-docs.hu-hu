@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egy Spark Machine Learning-alkalmazás létrehozása az Azure HDInsightban'
+title: 'Oktatóanyag: A Spark machine learning az Azure HDInsight application készítése'
 description: Részletes útmutató Apache Spark Machine Learning-alkalmazások HDInsight Spark-fürtökön a Jupyter notebook használatával történő létrehozásához.
 services: hdinsight
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0a0712e4985414263d1e90299d78d5e30fe78a3e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580570"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608511"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Oktatóanyag: Az Apache Spark machine learning-alkalmazás a HDInsight létrehozása 
 
@@ -97,7 +97,7 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    További információk a folyamatról és annak működéséről: <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark Machine Learning-folyamat</a>.
+    További információ a folyamat és annak működéséről: <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Apache Spark machine learning-folyamat</a>.
 
 5. Igazítsa a folyamatot a betanítási dokumentumhoz.
    
@@ -184,7 +184,7 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
 10. Állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Anaconda scikit-learn kódtár használata a Spark Machine Learninghez
-A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A kódtár különböző adathalmazokat tartalmaz, amelyek használatával példaalkalmazások hozhatók létre közvetlenül egy Jupyter notebookból. Példák a scikit-learn kódtár használatára: [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A kódtár különböző adathalmazokat tartalmaz, amelyek használatával példaalkalmazások hozhatók létre közvetlenül egy Jupyter notebookból. Példák a scikit-learn kódtár használatára: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="next-steps"></a>További lépések
 

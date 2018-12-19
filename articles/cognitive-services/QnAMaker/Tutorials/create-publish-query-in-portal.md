@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164432"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608647"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Oktatóanyag: Hozzon létre egy Tudásbázis, majd a QnA Maker portálján kérdés megválaszolása
 
@@ -83,9 +83,9 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
 
 1. A táblázat alján válassza ki a kérdések és válaszok utolsó oldalát. Az oldalon a Chit-chat personality (Csevegő személyisége) kérdései és válaszai szerepelnek. 
 
-1. A kérdések és válaszok fölött található eszköztáron kattintson a fogaskerék ikonra. Ekkor megjelennek az egyes kérdésekhez és válaszokhoz tartozó szűrők. A Chit-chat questions (Csevegési kérdésekhez) már be van állítva az **editorial: chit-chat** (szerkesztői: csevegő) szűrő. A rendszer a kiválasztott válasszal együtt adja vissza a szűrőt az ügyfélalkalmazásban. Az ügyfélalkalmazás, például egy csevegőrobot ennek a szűrőnek a használatával további feldolgozási műveleteket vagy interakciókat határoz meg a felhasználóhoz.
+1. Kérdések és válaszok listáját fölötti eszköztárból a metaadatok ikonnal. A metaadat-címkéket az egyes kérdés és válasz tartalmazza. A csevegési Chit kérdése van a **Szerkesztői: chit csevegési** metaadatok már be van állítva. Ezeket a metaadatokat az ügyfélalkalmazás és a kiválasztott választ küld vissza. Az ügyfélalkalmazás egy csevegőrobot, például a szűrt metaadat segítségével határozza meg, további feldolgozási vagy a felhasználói interakció.
 
-    ![Szűrők megtekintése](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![Metaadat-címkéket megtekintése](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. A felső menüsávon válassza a **Save and train** (Mentés és betanítás) elemet.
 
@@ -171,7 +171,7 @@ A tudásbázis közzététele után megjelenik a végpont
    
     ```
 
-    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. A QnA Maker ezen kívül az összes kapcsolódó kérdést, valamint a csevegési szűrő információit tartalmazó metaadat-tulajdonságot is visszaadta.  
+    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. A QnA Maker is a kapcsolódó kérdések, valamint a csevegési Chit metaadatok címke adatokat tartalmazó metaadat-tulajdonságot adott vissza.  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>A CURL használata az alapértelmezett válasz lekérdezéséhez
 

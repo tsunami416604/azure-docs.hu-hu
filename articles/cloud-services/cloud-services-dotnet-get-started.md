@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d4ee723b8b8303f2eaf9bea4db8dfc1aaa1c4931
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242126"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608817"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -35,8 +35,8 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 
 Az alkalmazás [üzenetsor-központú munkasémát](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
-## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternatív architektúra: Web Apps és WebJobs
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként az előtér-alkalmazást futtathatja egy [Azure Web Apps](/azure/app-service/)-webalkalmazásban, a háttéralkalmazás esetében pedig használhatja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) szolgáltatást. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvéhez leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatív architektúra: App Service-ben és a webjobs-feladatok
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. A másik lehetőség az előtér-alkalmazást futtathatja [Azure App Service](/azure/app-service/) , és használja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkció a háttéralkalmazás esetében. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvhöz leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Azure App Service, a Cloud Services és virtual machines összehasonlítása](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.
@@ -391,8 +391,8 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 8. A **ContosoAdsWorker [Szerepkör]** tulajdonságai ablakban maradva adjon hozzá egy másik kapcsolati sztringet:
 
    * Név: ContosoAdsDbConnectionString
-   * Típus: Sztring
-   * Érték: Illessze be ugyanazt a kapcsolati sztringet, amelyet a webes szerepkör projekt esetében használt. (Az alábbi példa a Visual Studio 2013 kiadásra vonatkozik. (Ne feledje módosítani az Adatforrást, ha ezt a példát a Visual Studio 2015 vagy újabb kiadás használata mellett követi.)
+   * Típus: Karakterlánc
+   * Érték: Illessze be az ugyanabban a kapcsolati karakterláncban a webes szerepkör projekt esetében használt. (Az alábbi példa a Visual Studio 2013 kiadásra vonatkozik. (Ne feledje módosítani az Adatforrást, ha ezt a példát a Visual Studio 2015 vagy újabb kiadás használata mellett követi.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -407,9 +407,9 @@ Fájlok hozzáadásához egy projekthez vagy mappához kattintson a jobb gombbal
 2. A ContosoAdsWeb projektben adja hozzá az alábbi fájlokat a letöltött projektből.
 
    * *Global.asax.cs*.  
-   * A *Views\Shared* mappában: *\_Layout.cshtml*.
-   * A *Views\Home* mappában: *Layout.cshtml*.
-   * A *Controllers* mappában: *AdController.cs*.
+   * Az a *Views\Shared* mappa: *\_Layout.cshtml*.
+   * Az a *Views\Home* mappa: *Index.cshtml*.
+   * Az a *tartományvezérlők* mappa: *AdController.cs*.
    * A*Views\Ad* mappában (először hozza létre a mappát): öt *.cshtml* fájl.
 3. A ContosoAdsWorker projektben adja hozzá a *WorkerRole.cs* fájlt a letöltött projektből.
 
@@ -775,7 +775,7 @@ Bemutató videó az Azure Storage ajánlott eljárásairól és mintáiról: [Mi
 
 További információkért lásd a következőket:
 
-* [Azure Cloud Services – 1. rész: Bevezetés](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Az Azure Cloud Services 1. rész: Bevezetés](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [A Cloud Services kezelése](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

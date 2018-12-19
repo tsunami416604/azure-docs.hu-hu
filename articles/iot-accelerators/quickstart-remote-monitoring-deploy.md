@@ -1,5 +1,5 @@
 ---
-title: Távoli felhőalapú IoT-monitorozási megoldás kipróbálása az Azure-ban | Microsoft Docs
+title: Próbálja ki a felhőalapú IoT távoli figyelési megoldás – Azure |} A Microsoft Docs
 description: Ezzel a rövid útmutatóval üzembe helyezheti a távoli monitorozási Azure IoT megoldásgyorsítót, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824778"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608357"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Gyors útmutató: Próbálja ki a felhő alapú távoli figyelési megoldáshoz
 
 Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését. Ebben a felhőalapú megoldásban a **Dashboard** (Irányítópult) lap segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
@@ -142,4 +142,4 @@ Ebben a rövid útmutatóban üzembe helyezte a távoli monitorozási megoldásg
 Ha többet szeretne megtudni a szimulált eszközöket használó megoldásgyorsítóról, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: IoT-eszközök monitorozása](iot-accelerators-remote-monitoring-monitor.md)
+> [Oktatóanyag: Az IoT-eszközök figyelése](iot-accelerators-remote-monitoring-monitor.md)

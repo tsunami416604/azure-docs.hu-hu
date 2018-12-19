@@ -9,24 +9,24 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 52036dd0bdcdbc9d4ae71f388a7bb750fd781a5f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c4c33094f070e603057042eaea8187e29270fb77
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547983"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606843"
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Bevezetés az Azure Cosmos DB API a mongodb-hez
 
 Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcs-értékeket, a diagramokat és az oszlopos adatmodelleket. 
 
-![Az Azure Cosmos DB API a mongodb-hez](./media/mongodb-introduction/cosmosdb-mongodb.png) 
+![MongoDB-hez készült Azure Cosmos DB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
 Az Azure Cosmos DB-adatbázisok használhatók a [MongoDB](https://docs.mongodb.com/manual/introduction/)-hez írt alkalmazások adattáraként. Ez a funkció azt jelenti, hogy a meglévő [illesztők](https://docs.mongodb.org/ecosystem/drivers/) segítségével a MongoDB-hez írt alkalmazása mostantól képes kommunikálni az Azure Cosmos DB-vel, és használhat Azure Cosmos DB-adatbázisokat a MongoDB-adatbázisok helyett. Sok esetben egy kapcsolati sztring egyszerű módosításával válthat a MongoDB használatáról az Azure Cosmos DB-re. A funkció használatával könnyedén létrehozhat és futtathat globálisan elosztott MongoDB adatbázis-alkalmazásokat az Azure felhőben az Azure Cosmos DB-vel és az [átfogó, iparágvezető szolgáltatói szerződéseivel](https://azure.microsoft.com/support/legal/sla/cosmos-db), miközben továbbra is alkalmazhatja a MongoDB használata során megszerzett ismereteit és megszokott eszközeit.
 
 **Kompatibilitás MongoDB**: Használhatja a meglévő MongoDB szakértelemmel, alkalmazáskód, és azokat az eszközöket, az Azure Cosmos DB megvalósítja a MongoDB átviteli protokoll. A MongoDB-vel alkalmazásokat fejleszthet, valamint üzembe helyezheti azokat az éles környezetben a teljesen felügyelt és globálisan elosztott Azure Cosmos DB szolgáltatással. További információ a támogatott verziókkal kapcsolatban: [A MongoDB protokoll támogatása](mongodb-feature-support.md#mongodb-protocol-support).
 
-Az Azure Cosmos DB API a mongodb-hez nem használható közvetlen-végpontként szolgáltatásokhoz, például az Azure Stream Analytics, mert az informatikai ugyanazokkal a [ügyfélillesztők](https://docs.mongodb.org/ecosystem/drivers/) , a natív mongodb-hez. Integrálható az Azure Stream Analytics, érdemes lehet [Azure App Service](../app-service/app-service-web-overview.md) vagy [Azure Functions szolgáltatást](../azure-functions/functions-overview.md) közbenső szolgáltatás, amely tudjon adatokat írni az Azure Cosmos DB API a mongodb-hez.
+Az Azure Cosmos DB API a mongodb-hez nem használható közvetlen-végpontként szolgáltatásokhoz, például az Azure Stream Analytics, mert az informatikai ugyanazokkal a [ügyfélillesztők](https://docs.mongodb.org/ecosystem/drivers/) , a natív mongodb-hez. Integrálható az Azure Stream Analytics, érdemes lehet [Azure App Service](../app-service/overview.md) vagy [Azure Functions szolgáltatást](../azure-functions/functions-overview.md) közbenső szolgáltatás, amely tudjon adatokat írni az Azure Cosmos DB API a mongodb-hez.
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>Milyen előnyökkel jár az Azure Cosmos DB MongoDB-alkalmazásokkal való használata?
 

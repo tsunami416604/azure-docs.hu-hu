@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, C++ (Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a C++ (Windows) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát asztali Windows rendszeren, C++ nyelven a Speech Service SDK segítségével.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1a26cbea3aaca700f5e501d3b6be0f7d1c942f36
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075187"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607540"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C++ nyelven a Speech SDK segítségével
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val a Windows a C++ beszédfelismerést
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -37,7 +37,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
     Ha még nincs, jelölje be az **Asztali fejlesztés a C++ segítségével** lehetőség mellett található jelölőnégyzetet.
 
-1. Ellenőrizze, hogy a **NuGet-csomagkezelő** összetevő elérhető-e. Váltson a Visual Studio telepítési párbeszédpaneljének **Egyéni összetevők** lapjára, és válassza ki a **NuGet-csomagkezelő** lehetőséget, ha még nincs engedélyezve.
+1. Ellenőrizze, hogy a **NuGet-csomagkezelő** összetevő elérhető-e. Váltson a **az egyes összetevők** a Visual Studio telepítőjének párbeszédpanel lapján. Válassza ki **NuGet-Csomagkezelő** Ha ez nem engedélyezett.
 
       ![A Visual Studio Egyéni összetevők lapjának képernyőképe](media/sdk/vs-enable-nuget-package-manager.png)
 
@@ -47,7 +47,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
     ![Képernyőkép az Új projekt párbeszédpanelről](media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. Ha 64 bites Windowst használ, a Visual Studio eszköztárában található legördülő menüt használva átválthatja a build platformját `x64` értékre. (A 64 bites Windows rendszer 32 bites alkalmazásokat is képes futtatni, ezért ez nem tartozik az előfeltételek közé.)
+1. Ha 64 bites Windowst használ, a Visual Studio eszköztárában található legördülő menüt használva átválthatja a build platformját `x64` értékre. (64 bites Windows 32 bites alkalmazásokat futtathatnak közvetlenül.)
 
     ![A Visual Studio eszköztárának képernyőképe, amelyen kiemelve szerepel az x64-es beállítás](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
 
@@ -60,7 +60,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
     ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
     > [!NOTE]
-    > A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
+    > A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
 
 1. A NuGet-csomag telepítésének indításához fogadja el a képernyőn megjelenő licencet.
 

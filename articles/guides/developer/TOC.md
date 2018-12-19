@@ -26,18 +26,18 @@
 
 # Példák
 ## Azure CLI
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-cli)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## Azure PowerShell
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-powershell)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # Alapelvek
 ## [Számlázás és előfizetés](https://docs.microsoft.com/azure/billing/billing-getting-started)
 ## [Üzemeltetési lehetőségek összehasonlítása](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
-## [Mi az App Service?](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+## [Mi az App Service?](https://docs.microsoft.com/azure/app-service/overview)
 ## Virtual machines (Virtuális gépek)
 ### [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/overview)

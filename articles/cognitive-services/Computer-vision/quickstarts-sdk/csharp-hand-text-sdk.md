@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Szöveg – SDK-t és kinyerése C# – Computer Vision'
+title: 'Gyors útmutató: Kézzel írt szöveg - SDK-t, kinyeréseC#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fog kinyerni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: 7ed33290a9c5cede6fd80058d8557eae65c11b28
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413217"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578597"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: A számítógép Látástechnológiai SDK-val szöveg kinyerése ésC#
 

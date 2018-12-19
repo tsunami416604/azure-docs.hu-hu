@@ -233,7 +233,7 @@ A VPN-kapcsolat ellenőrzéséhez hozzon létre két virtuális gépet: az Azure
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
 7. Az a **mérete** szakaszban, ehhez a példányhoz válassza ki a virtuális gép méretét, és válassza ki **kiválasztása**.
 8. Az a **beállítások** területen fogadja el az alapértelmezett értéket. Győződjön meg arról, hogy a **Azs-VNet** virtuális hálózat van kiválasztva. Győződjön meg arról, hogy az alhálózat beállítása pedig **10.1.0.0/24**. Ezután kattintson az **OK** gombra.
-9. Az a **összefoglalás** szakaszt, tekintse át a beállításokat, és válassza ki * OK ** gombra.
+9. Az a **összefoglalás** szakaszt, tekintse át a beállításokat, és válassza ki *OK*\* gombra.
 
 ## <a name="test-the-connection"></a>A kapcsolat tesztelése
 

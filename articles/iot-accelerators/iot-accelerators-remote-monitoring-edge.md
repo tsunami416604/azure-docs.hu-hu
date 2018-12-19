@@ -1,5 +1,5 @@
 ---
-title: Észlelje a rendellenességeket a peremhálózaton egy Azure-megoldás – oktatóanyag |} A Microsoft Docs
+title: Észlelheti a rendellenességeket a peremhálózaton egy megoldás-oktatóanyag – Azure |} A Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan figyelheti az IoT Edge-eszközök használata a távoli figyelési megoldásgyorsító.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843308"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606248"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: A távoli figyelési megoldásgyorsító észlelje a rendellenességeket a peremhálózaton
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: A távoli figyelési megoldásgyorsító anomáliadetektálásra a peremhálózaton
 
 Ebben az oktatóanyagban a távoli figyelési megoldás IoT Edge-eszköz által észlelt rendellenességek válaszolni fog konfigurálni. IoT Edge-eszközök segítségével dolgozza fel a telemetriát a peremhálózaton, a megoldás küldött telemetriai adatok mennyiségének csökkentése és a gyorsabb válaszokat események eszközök engedélyezése. Edge feldolgozás előnyeivel kapcsolatos további tudnivalókért lásd: [Mi az Azure IoT Edge](../iot-edge/about-iot-edge.md).
 

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: f44e38cc68f23f77381deaaf2ca920bab820e196
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f07dfabf854cf56e1c3cae87bbd0736839be8039
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540340"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608732"
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a PHP használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz egy [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a PHP használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
@@ -24,7 +24,7 @@ A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforr
 - [DB létrehozása – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-php"></a>A PHP telepítése
-Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó Azure-[webalkalmazást](../app-service/app-service-web-overview.md).
+Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó Azure-[webalkalmazást](../app-service/overview.md).
 
 ### <a name="windows"></a>Windows
 - Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](https://windows.php.net/download#php-7.1)

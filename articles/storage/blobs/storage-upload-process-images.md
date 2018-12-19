@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2692d174a0f959384a9dd3d587107e5f726e28cb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097947"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606112"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: A felhőben az Azure Storage képadatok feltöltése
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
 Ez az oktatóanyag egy sorozat első része. Ebben az oktatóanyagban megtudhatja, hogyan helyezhet üzembe egy webalkalmazást, amely az Azure Storage ügyféloldali kódtárat használja tölthet fel képeket a storage-fiók. Ha elkészült, rendelkezni fog a egy webalkalmazást, amely tárolja, és megjeleníti a rendszerképeket az Azure storage-ból.
 
@@ -111,9 +111,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A webalkalmazás üzemeltetési tárterületet biztosít a GitHub-mintaadattárból az üzembe helyezett app mintakódot. Az [ az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../../app-service/app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban.  
+A webalkalmazás üzemeltetési tárterületet biztosít a GitHub-mintaadattárból az üzembe helyezett app mintakódot. Az [ az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../../app-service/overview.md) a `myAppServicePlan` App Service-csomagban.  
 
-A következő parancsban cserélje le a `<web_app>` , egyedi névvel. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: _A megadott `<web_app>` névvel már létezik webhely._ A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
+A következő parancsban cserélje le a `<web_app>` , egyedi névvel. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha `<web_app>` van a hibaüzenet kap nem egyedi: _Ezzel a névvel webhely `<web_app>` már létezik._ A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan

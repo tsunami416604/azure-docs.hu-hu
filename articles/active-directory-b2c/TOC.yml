@@ -87,10 +87,22 @@ items:
     href: active-directory-b2c-reference-mfa.md
   - name: Identity Experience Framework
     items:
-    - name: Egyéni szabályzat létrehozása
-      href: active-directory-b2c-get-started-custom.md
     - name: Naplók gyűjtése az Application Insights használatával
       href: active-directory-b2c-troubleshoot-custom.md
+    - name: Felhasználó által megadott adatok konfigurálása
+      href: active-directory-b2c-configure-signup-self-asserted-custom.md
+    - name: Egyéni szabályzat létrehozása
+      href: active-directory-b2c-get-started-custom.md
+    - name: A felhasználói felület testreszabása
+      href: active-directory-b2c-ui-customization-custom.md
+    - name: A felhasználói felület dinamikus testreszabása
+      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: Jogkivonatok testreszabása
+      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: Egyéni attribútumok meghatározása
+      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+    - name: A bejelentkezve maradás engedélyezése
+      href: active-directory-b2c-reference-kmsi-custom.md
     - name: RESTful API-k integrálása
       items:
       - name: Felhasználó által megadott adatok érvényesítése
@@ -123,6 +135,10 @@ items:
       href: page-contract.md
     - name: Hozzáférési jogkivonat átadása
       href: idp-pass-through-custom.md
+    - name: Jelszó bonyolultsága
+      href: active-directory-b2c-reference-password-complexity-custom.md
+    - name: Jelszó módosítása
+      href: active-directory-b2c-reference-password-change-custom.md
     - name: SAML-szolgáltatók
       items:
       - name: ADFS
@@ -131,24 +147,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: A felhasználók viselkedésének nyomon követése
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: Felhasználói folyamatok
-      items:
-      - name: Felhasználó által megadott adatok konfigurálása
-        href: active-directory-b2c-configure-signup-self-asserted-custom.md
-      - name: Egyéni attribútumok
-        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-      - name: A felhasználói felület testreszabása
-        href: active-directory-b2c-ui-customization-custom.md
-      - name: A felhasználói felület dinamikus testreszabása
-        href: active-directory-b2c-ui-customization-custom-dynamic.md
-      - name: Jogkivonatok testreszabása
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: Jelszó bonyolultsága
-        href: active-directory-b2c-reference-password-complexity-custom.md
-      - name: Jelszó módosítása
-        href: active-directory-b2c-reference-password-change-custom.md
-      - name: A bejelentkezve maradás engedélyezése
-        href: active-directory-b2c-reference-kmsi-custom.md
     - name: Referencia
       items:
       - name: Igénylésfeloldók
@@ -326,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 80e90efcc500f04e3ec1f3e10c157c9b415f0eda
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d61d6726d388fd7bf18f1bcbc168078afadd1a71
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079075"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579804"

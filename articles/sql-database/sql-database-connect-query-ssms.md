@@ -1,10 +1,10 @@
 ---
-title: 'SSMS: Csatlakozás és adatok lekérdezése Azure SQL Database adatbázisokból | Microsoft Docs'
+title: 'SSMS: Csatlakozás és adatlekérdezés az Azure SQL Database |} A Microsoft Docs'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás sql database-hez,sql server management studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,14 +13,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7049691e6635940e70795f0b5b4cc4c94cfd3631
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098949"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607319"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: Használata SQL Server Management Studio és az Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
 Használhat [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) bármely SQL-infrastruktúra kezelésére az SQL Servertől az SQL Database a Microsoft Windows. Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure SQL database, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat az SSMS használatával. 
 

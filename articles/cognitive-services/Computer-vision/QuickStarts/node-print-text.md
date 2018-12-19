@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, Node.js – Computer Vision'
+title: 'Gyors útmutató: Kinyerési nyomtatott szöveg-REST, a Node.js'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a Node.js használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 02ff205f2408fed19d7831e7a1344eac2bc6f261
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: b75e5863d461eaca50470b6d042bbb86fd95c792
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344268"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579056"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) a REST API és a Node.js használatával a Computer Vision szolgáltatásban
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Node.js használatával a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
 Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 
@@ -49,7 +50,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik olyan kép URL-címére, amelyből nyomtatott szöveget szeretne kinyerni.
 1. Mentse a kódot fájlként `.js` kiterjesztéssel. Például: `get-printed-text.js`.
-1. Nyisson meg egy parancssort.
+1. Nyisson meg egy parancsablakot.
 1. Amikor a rendszer kéri, a `node` paranccsal futtassa a fájlt. Például: `node get-printed-text.js`.
 
 ```nodejs

@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 237b0e104ca6e9ecd0b807dc61ec848ab436ce7f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99afa5a1167d5f1a06504aacdca215564a672833
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543206"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608596"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató egy alapszintű HTML+CSS hely Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) használatával.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. A rövid útmutató bemutatja, hogyan helyezhet üzembe egy egyszerű HTML + CSS webhelyet az Azure App Service-ben. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) használatával.
 
 ![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 

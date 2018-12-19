@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, C++ (Linux) – beszédszolgáltatások'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a C++ (Linux) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát Linuxon, C++ nyelven a Speech Service SDK segítségével.
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff192377b94a9b3af65089f51e4fdef39bbb889d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094032"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605738"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Linuxon, C++ nyelven a Speech SDK segítségével
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést c++ Linux rendszeren a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni az Ubuntu Linux 16.04-es verziójához. A Cognitive Services [Speech SDK](speech-sdk.md) használatával a számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Linuxhoz készült Speech SDK-val](https://aka.ms/csspeech/linuxbinary) és a Linux-disztribúció C++ fordítóprogramjával lehet összeállítani (ilyen például a `g++`).
+Ez a cikk az Ubuntu Linux 16.04 vagy 18.04 hoz létre egy C++ Konzolalkalmazás. A Cognitive Services [Speech SDK](speech-sdk.md) használatával a számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Linuxhoz készült Speech SDK-val](https://aka.ms/csspeech/linuxbinary) és a Linux-disztribúció C++ fordítóprogramjával lehet összeállítani (ilyen például a `g++`).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +31,9 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
 
-A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécfájlok tar-fájlként tölthetők le a https://aka.ms/csspeech/linuxbinary webhelyről.
+A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárai és fejlécfájljai a tar-fájlként letölthető https://aka.ms/csspeech/linuxbinary.
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
