@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, a Java (Android) – beszédszolgáltatások'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a Java (Android) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát Androidon, Java nyelven a Speech Service SDK segítségével
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d245b457eca78dc029bde923616b4d84e04b997
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090108"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599015"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Androidon, Java nyelven a Speech SDK segítségével
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést a Java Android rendszeren a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ez a cikk azt mutatja be, hogyan hozhat létre egy Java-alkalmazást Android rendszerre, amelyben a Cognitive Services Speech SDK-val írja át a beszédet szöveggé.
-Az alkalmazás a Microsoft Cognitive Services Speech SDK Maven-csomagjának 1.1.0-s verzióján és az Android Studio 3.1-es verzióján alapul.
+Ebből a cikkből elsajátíthatja fogja, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze.
+Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, az 1.2.0-s vagy annál újabb verzió és az Android Studio 3.1 alapul.
 A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]
@@ -42,7 +42,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
    ![A Create New Project (Új projekt létrehozása) varázsló képernyőképe](media/sdk/qs-java-android-02-create-android-project.png)
 
-1. A **Target Android Devices** (Android-céleszközök) képernyőn csak a **Phone and Tablet** (Telefon és táblagép) lehetőséget jelölje be. Az alatta látható legördülő listában válassza az **API 23: Android 6.0 (Marshmallow)** lehetőséget, majd kattintson a **Next** (Tovább) gombra.
+1. A **Target Android Devices** (Android-céleszközök) képernyőn csak a **Phone and Tablet** (Telefon és táblagép) lehetőséget jelölje be. Alatta a legördülő listában válassza ki a **API 23: Android 6.0 (marshmallow rendszert)**, és válassza ki **tovább**.
 
    ![A Create New Project (Új projekt létrehozása) varázsló képernyőképe](media/sdk/qs-java-android-03-target-android-devices.png)
 
@@ -58,9 +58,9 @@ Az Android Studio előkészíti az új Android-projektet. Ezután úgy kell konf
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
 
-A Speech SDK androidos változata [AAR-ként (Android-kódtárként)](https://developer.android.com/studio/projects/android-library) van csomagolva, amely tartalmazza a szükséges kódtárakat és a használathoz szükséges Android-engedélyeket.
+A beszédfelismerés SDK for Android van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező.
 Egy Maven-adattárban üzemel, a következő helyen: https://csspeechstorage.blob.core.windows.net/maven/.
 
 Készítse elő a projektet a Speech SDK használatára. A Project Structure (Projektstruktúra) ablak megnyitásához az Android Studio menüsávján válassza a **File (Fájl)** > **Project Structure (Projektstruktúra)** elemet. A Project Structure (Projektstruktúra) ablakban hajtsa végre a következő módosításokat:
@@ -73,7 +73,7 @@ Készítse elő a projektet a Speech SDK használatára. A Project Structure (Pr
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0`. Ezután kattintson az **OK** gombra.
+1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`. Ezután kattintson az **OK** gombra.
    A Speech SDK-nak ezek után meg kell jelennie a függőségek listáján, a következő módon:
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -86,7 +86,7 @@ Készítse elő a projektet a Speech SDK használatára. A Project Structure (Pr
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Az elrendezés címsora kezdetben az alkalmazás nevét és a „Hello World!” szöveget tartalmazó TextView nézetet tartalmazza.
+Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Kezdetben az elrendezés az alkalmazás nevével és a egy "Hello World!" szöveget tartalmazza TextView címsor magában foglalja.
 
 * Kattintson a TextView elemre. Módosítsa a jobb felső sarokban található ID (azonosító) attribútumot a következőre: `hello`.
 
@@ -98,7 +98,7 @@ Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje e
 
   ![A varázspálca ikon képernyőképe](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-A felhasználói felület szöveges és grafikus megjelenése ezen a ponton elvileg így fest.
+A szöveg és a felhasználói felületének grafikus ábrázolása kell kinéznie:
 
 <table>
 <tr>
