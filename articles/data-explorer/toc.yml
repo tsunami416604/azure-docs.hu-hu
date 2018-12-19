@@ -49,22 +49,29 @@ items:
   expanded: true
 - name: Útmutatók
   items:
-  - name: Csatlakozás Databricksből Python használatával
-    href: connect-from-databricks.md
-  - name: Lekérdezések írása
-    href: write-queries.md
-  - name: Mintaadatok betöltése
-    href: ingest-sample-data.md
-  - name: Adatok vizualizációja a Grafanában
-    href: grafana.md
-  - name: Adat törlése
-    href: delete-data.md
-  - name: Adatbázis-engedélyek kezelése
-    href: manage-database-permissions.md
-  - name: Fürt állapotának ellenőrzése
-    href: check-cluster-health.md
-  - name: Fürtök skálázásának kezelése
-    href: manage-cluster-scaling.md
+  - name: Első lépések
+    items:
+    - name: Lekérdezések írása
+      href: write-queries.md
+    - name: Mintaadatok betöltése
+      href: ingest-sample-data.md
+    expanded: true
+  - name: Kezelés
+    items:
+    - name: Adatbázis-engedélyek kezelése
+      href: manage-database-permissions.md
+    - name: Fürt állapotának ellenőrzése
+      href: check-cluster-health.md
+    - name: Fürtök skálázásának kezelése
+      href: manage-cluster-scaling.md
+    - name: Adat törlése
+      href: delete-data.md
+  - name: Más eszközök használata
+    items:
+    - name: Csatlakozás Databricksből Python használatával
+      href: connect-from-databricks.md
+    - name: Adatok vizualizációja a Grafanában
+      href: grafana.md
   - name: Hibaelhárítás
     items:
     - name: Fürt létrehozása
@@ -105,9 +112,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 31b588167d4a136f54df248225fd718128a7421c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5773939edb8bb846325e5709cc46273b9669117b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958218"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606826"

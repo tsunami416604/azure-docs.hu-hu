@@ -275,6 +275,7 @@
 ##### [Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [A felhasználók átadása nem történik meg – katalógusbeli alkalmazás](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
 ##### [Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [SCIM-kompatibilitási problémák – nem katalógusbeli alkalmazás](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### Egyszeri bejelentkezés
 ##### [Válasszon módszert](manage-apps/single-sign-on-modes.md)
@@ -321,10 +322,10 @@
 ## [Hibaelhárítás](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
-### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)
-### [PoC-útmutató: Kellékek](active-directory-playbook-ingredients.md)
-### [PoC-útmutató: Megvalósítás](active-directory-playbook-implementation.md)
-### [PoC-útmutató: Építőelemek](active-directory-playbook-building-blocks.md)
+### [PoC-forgatókönyv: Bevezetés](active-directory-playbook-intro.md)
+### [PoC-forgatókönyv: Kellékek](active-directory-playbook-ingredients.md)
+### [PoC-forgatókönyv: Implementálás](active-directory-playbook-implementation.md)
+### [PoC-forgatókönyv: Építőelemek](active-directory-playbook-building-blocks.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)

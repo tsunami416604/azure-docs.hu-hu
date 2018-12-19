@@ -94,7 +94,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: Sablonok üzembe helyezése
     items:
-    - name: Üzembe helyezés a portálon
+    - name: Üzembe helyezés az Azure Portalon
       href: resource-group-template-deploy-portal.md
     - name: Üzembe helyezés az Azure CLI-vel
       href: resource-group-template-deploy-cli.md
@@ -106,9 +106,9 @@ items:
       items:
       - name: A portállal
         href: resource-manager-export-template.md
-      - name: Az Azure CLI-vel
+      - name: Az Azure parancssori felület használata
         href: resource-manager-export-template-cli.md
-      - name: Az Azure PowerShell-lel
+      - name: Az Azure PowerShell használata
         href: resource-manager-export-template-powershell.md
     - name: Sablonok védelme SAS-jogkivonattal
       items:
@@ -123,27 +123,27 @@ items:
       maintainContext: true
   - name: Sablonok kezelése
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI
-      href: cli-azure-resource-manager.md
-    - name: Azure Portal
+    - name: Kezelés az Azure Portalon
       href: resource-group-portal.md
-    - name: Címkék használata az erőforrások rendszerezéséhez
-      href: resource-group-using-tags.md
-    - name: Erőforrások áthelyezése új csoportba vagy előfizetésbe
+    - name: Kezelés az Azure PowerShell-lel
+      href: powershell-azure-resource-manager.md
+    - name: Kezelés az Azure CLI-vel
+      href: cli-azure-resource-manager.md
+    - name: Erőforrások áthelyezése
       href: resource-group-move-resources.md
       items:
       - name: Támogatás áthelyezése erőforrástípus alapján
         href: move-support-resources.md
+    - name: Erőforrások rendszerezése címkékkel
+      href: resource-group-using-tags.md
+    - name: Erőforrások zárolása
+      href: resource-group-lock-resources.md
+    - name: Hitelesítési API az előfizetések hozzáféréséhez
+      href: resource-manager-api-authentication.md
     - name: EA-előfizetések létrehozása
       href: programmatically-create-subscription.md
     - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
       href: grant-access-to-create-subscription.md
-    - name: Hitelesítési API az előfizetések hozzáféréséhez
-      href: resource-manager-api-authentication.md
-    - name: Erőforrások zárolása
-      href: resource-group-lock-resources.md
   - name: Üzembe helyezések naplózása
     items:
     - name: Tevékenységnaplók megtekintése
@@ -211,7 +211,7 @@ items:
     href: /rest/api/resources/
   - name: REST – Deployment Manager
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
     href: /cli/azure/resource
@@ -235,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436789"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600961"

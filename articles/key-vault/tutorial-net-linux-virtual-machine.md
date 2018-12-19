@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 28c695462f6989efd2e69ab6b0e23df38a8205ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712330"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600539"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Oktatóanyag: Hogyan használhatja az Azure Key Vault az Azure Linux virtuális gép a .NET-ben
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Oktatóanyag: Az Azure Key Vault használata az Azure Linux virtuális gép a .NET-ben
 
 Az Azure Key Vault segít megvédeni a titkos kulcsokat, például az API-kulcsokat, valamint az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges adatbázis-kapcsolati sztringeket.
 
-Ebben az oktatóanyagban egy konzolalkalmazást adatokat olvasni az Azure Key Vault által felügyelt identitások használatával az Azure-erőforrások lekérdezése a szükséges lépéseket követve. Ez az oktatóanyag az [Azure Web Apps](../app-service/app-service-web-overview.md) szolgáltatáson alapul. A továbbiakban az alábbiakat ismerheti meg:
+Ebben az oktatóanyagban egy konzolalkalmazást adatokat olvasni az Azure Key Vault által felügyelt identitások használatával az Azure-erőforrások lekérdezése a szükséges lépéseket követve. A továbbiakban az alábbiakat ismerheti meg:
 
 > [!div class="checklist"]
 > * Kulcstartó létrehozása.
@@ -80,9 +80,9 @@ A cikkben végig az imént létrehozott erőforráscsoportot használjuk majd.
 
 A következő lépésben létre fogunk hozni egy kulcstartót az előző lépésben létrehozott erőforráscsoportban. Adja meg az alábbi információkat:
 
-* A kulcstartó neve: A név 3–24 karakter hosszúságú sztring lehet, és csak a következőket tartalmazhatja: 0–9, a–z, A–Z, és -.
+* A Key vault neve: A név 3 – 24 karakter karakterláncnak kell lennie, és csak tartalmaznia kell (0-9, a – z, A-Z, - és).
 * Az erőforráscsoport neve.
-* Hely: **West US**.
+* Hely: **USA nyugati RÉGIÓJA**.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
