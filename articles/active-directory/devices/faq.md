@@ -24,7 +24,7 @@ ms.locfileid: "53309178"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
-**KÉRDÉS: Az eszköz nemrég e regisztrálva. Miért nem látom az eszközt a saját felhasználói adatokat az Azure Portalon? Miért kijelölt vagy egy eszköz tulajdonosa n/a hibrid Azure AD-hez csatlakoztatott eszközök esetében? ** 
+**KÉRDÉS: Az eszköz nemrég e regisztrálva. Miért nem látom az eszközt a saját felhasználói adatokat az Azure Portalon? Miért kijelölt vagy egy eszköz tulajdonosa n/a hibrid Azure AD-hez csatlakoztatott eszközök esetében?**
  **V:** Hibrid Azure AD-hez Windows 10 rendszerű eszközök nem jelennek meg a felhasználói eszközök alapján.
 Szeretné használni az összes eszköz megtekintése az Azure Portalon. Emellett használhatja a Powershellt [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot.
 
@@ -107,14 +107,14 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 
 ---
 
-**KÉRDÉS: A felhasználók jelentkezhetnek be, hogy törölték, vagy le van tiltva, az Azure ad-ben az Azure AD-hez csatlakoztatott eszközök? ** 
+**KÉRDÉS: A felhasználók jelentkezhetnek be, hogy törölték, vagy le van tiltva, az Azure ad-ben az Azure AD-hez csatlakoztatott eszközök?**
  **V:** Igen. Windows gyorsítótárazta korábban bejelentkezett felhasználók asztali gyorsan hozzáférhessenek a hálózati kapcsolat nélkül is, hogy be tudjon jelentkezni. Egy eszköz törlésekor vagy le van tiltva, az Azure ad-ben, nem ismert, a Windows-eszköz. Így korábban bejelentkezett felhasználók továbbra is elérhető az asztalon, a gyorsítótárazott bejelentkezés. Azonban amíg az eszköz törli vagy le van tiltva, felhasználók nem férhetnek hozzá olyan eszközalapú feltételes hozzáférés által védett erőforrások. 
 
 Felhasználók, akik még nem már bejelentkezett a nem az eszköz elérésére, mivel nem lett a gyorsítótárazott bejelentkezés nem engedélyezett a számukra. 
 
 ---
 
-**KÉRDÉS: Letiltott vagy törölt felhasználók jelentkezhetnek be az Azure AD-csatlakoztatott eszközök? ** 
+**KÉRDÉS: Letiltott vagy törölt felhasználók jelentkezhetnek be az Azure AD-csatlakoztatott eszközök?**
  **V:** Igen, de csak korlátozott ideig. A felhasználó törlésekor vagy le van tiltva, az Azure ad-ben, nem azonnal ismert a Windows-eszközön. Így korábban bejelentkezett felhasználók férhetnek hozzá a gyorsítótárazott bejelentkezés az asztalon. Amint az eszköz tisztában a felhasználói állapot (általában kevesebb mint 4 óra), Windows letiltja a felhasználók hozzáférését az asztalon. Amíg a felhasználó törli vagy le van tiltva, az Azure ad-ben, az összes tokenjeiket visszavonja, így nem tudják elérni erőforrásokat. 
 
 Törölték, vagy letiltott felhasználók, akik korábban még nem bejelentkezett nem eszköz eléréséhez, mivel nem lett a gyorsítótárazott bejelentkezés nem engedélyezett a számukra. 
@@ -127,7 +127,7 @@ Törölték, vagy letiltott felhasználók, akik korábban még nem bejelentkeze
 
 ---
 
-**KÉRDÉS: Hogyan létesíthetek kapcsolatot egy távoli Azure ad-hez csatlakoztatott eszközök? ** 
+**KÉRDÉS: Hogyan létesíthetek kapcsolatot egy távoli Azure ad-hez csatlakoztatott eszközök?**
  **V:** A cikkben https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc részleteiről.
 
 ---

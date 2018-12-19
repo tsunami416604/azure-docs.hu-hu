@@ -14,7 +14,7 @@ ms.date: 08/10/2018
 ms.author: mbullwin
 ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
 ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
 ms.locfileid: "52993361"
@@ -105,8 +105,8 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
 
 1. Hozzon létre egy [API-kulcs](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Frissítse a Power BI M szkriptet, és cserélje le az Azure Resource Manager URL-címet az Application Insights API által exportált Analytics.
-   * Cserélje le  **https://management.azure.com/subscriptions/...**
-   *  **https://api.applicationinsights.io/beta/apps/...**
+   * Cserélje le **https://management.azure.com/subscriptions/...**
+   * **https://api.applicationinsights.io/beta/apps/...**
 3. Végül frissítse a hitelesítő adatok alapszintű, és az API-kulcsot használja.
 
 **Meglévő parancsfájl**

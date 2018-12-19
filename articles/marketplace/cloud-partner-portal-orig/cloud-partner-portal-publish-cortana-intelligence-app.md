@@ -59,7 +59,7 @@ Ez az azonosító akkor látható, a termék URL-címeket. Csak kisbetűs alfanu
 
 **Példa**
 
-Ha a kiadó **contoso** hoz létre egy ajánlatot az Ajánlatazonosító *minta-Cortana Intelligence*, ez fog megjelenni az appsource-ban, mint "https://appsource.microsoft.com/marketplace/apps/**contoso**.\*minta-Cortana Intelligence\*? lapon = Overview ".
+Ha a kiadó **contoso** hoz létre egy ajánlatot az Ajánlatazonosító *minta-Cortana Intelligence*, ez fog megjelenni az appsource-ban, mint "https://appsource.microsoft.com/marketplace/apps/**contoso**.*minta-Cortana Intelligence* ? lapon = Overview ".
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 
