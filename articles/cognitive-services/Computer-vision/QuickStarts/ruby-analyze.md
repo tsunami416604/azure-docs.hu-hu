@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Távoli kép elemzése – REST, Ruby – Computer Vision'
+title: 'Gyors útmutató: Egy távoli kép – REST, a Ruby elemzése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a Ruby segítségével.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: a00b7d8fd56c28edd220d90f85df76892a54db6a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: c40f611ad1789a1de6413a02d662d975113354a4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341571"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582847"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a Ruby használatával a Computer Visionben
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Ruby használatával a Computer Vision egy távoli kép elemzése
 
-Ebben a rövid útmutatóban egy távol tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -33,14 +34,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
     1. A `<Subscription Key>` helyére írja be az előfizetési kulcsot.
     1. Ha szükséges, cserélje le a `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze` elemet azon Azure-régió [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Igény szerint cserélje le a `language` kérésparaméter értékét egy másik nyelvre. 
     1. Ha szeretné, cserélje le a `http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\` elemet egy másik elemzendő kép URL-címére.
-1. Mentse a kódot fájlként `.rb` kiterjesztéssel. Például: `analyze-image.rb`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `ruby` paranccsal futtassa a mintát. Például: `ruby analyze-image.rb`.
+1. Mentse a kódot egy `.rb` kiterjesztésű fájlként. Például: `analyze-image.rb`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `ruby` parancsot a minta futtatására. Például: `ruby analyze-image.rb`.
 
 ```ruby
 require 'net/http'

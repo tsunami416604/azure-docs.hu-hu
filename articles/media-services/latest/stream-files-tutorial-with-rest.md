@@ -1,6 +1,6 @@
 ---
-title: Feltöltése, kódolása és streamelése az Azure Media Services – REST |} A Microsoft Docs
-description: Az oktatóanyag lépéseit követve megtudhatja, hogyan tölthet fel egy fájlt, végezheti el egy videó kódolását, és streamelheti tartalmait az Azure Media Serviceszel REST használatával.
+title: URL-címet és a stream az Azure Media Services – REST-alapú távoli fájl kódolása |} A Microsoft Docs
+description: Ez az oktatóanyag egy URL-cím alapján egy fájl kódolása lépéseit, és az Azure Media Serviceshez REST segítségével a tartalmak streamelésére.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: a26d3c8d6582c07c9724c2872d035e0d4fc01f5e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615772"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581352"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése REST használatával
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST
 
 Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
 
-Ez az oktatóanyag bemutatja, hogyan feltöltése, kódolása és videofájlok streamelése az Azure Media Services REST használatával. 
+Ez az oktatóanyag bemutatja, hogyan egy URL-cím alapján egy fájl kódolása és streamelése a videó az Azure Media Services REST használatával. 
 
 ![Videó lejátszása](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -52,7 +52,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák is: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-fájlok letöltése
 
@@ -111,7 +111,7 @@ Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-e
 
 ### <a name="get-azure-ad-token"></a>Azure AD-jogkivonat lekérése 
 
-1. A Postman bal ablakában válassza a „Step 1: Get AAD Auth token” (1. lépés: AAD-hitelesítési jogkivonat lekérése) lehetőséget.
+1. A Postman a bal oldali ablakban válassza ki az "1. lépés: AAD-hitelesítési token beszerzése".
 2. Ezután válassza az „Get Azure AD Token for Service Principal Authentication” (Azure AD-jogkivonat lekérése egyszerű szolgáltatásnév hitelesítéséhez) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -228,7 +228,7 @@ Ebben a példában a feladat bemenete egy HTTPS URL-címen („https://nimbuscdn
 
 A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
-A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
+A **feladat** általában halad végig a következő állapotok: **Ütemezett**, **várólistán**, **feldolgozása**, **befejezett** (a végleges állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
 ### <a name="create-a-streaming-locator"></a>Streamelési lokátor létrehozása
 

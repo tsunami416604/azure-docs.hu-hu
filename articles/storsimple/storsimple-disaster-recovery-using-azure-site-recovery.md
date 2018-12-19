@@ -168,16 +168,16 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
 1. Az automation-fiókban kattintson **változók** &gt; **változó hozzáadása** , és adja hozzá a következő változókat. Kiválaszthatja, hogy ezek az eszközök titkosításához. Ezeket a változókat a helyreállítási terv megadott. Ha a helyreállítási terv, amely a következő lépésben létrehozza név TestPlan, majd a változók kell TestPlan StorSimRegKey, TestPlan-AzureSubscriptionName, és így tovább.
 
    - **BaseUrl**: Resource Manager URL-címét az Azure-felhőben. Első használatával **Get-AzureRmEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
-   - * RecoveryPlanName ***- ResourceGroupName**: Resource Manager-csoport, amely a StorSimple-erőforrás.
-   - * RecoveryPlanName ***- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
-   - * RecoveryPlanName ***- eszköznév**: A StorSimple-eszköz feladatátvételt kell végrehajtani.
-   - * RecoveryPlanName ***- DeviceIpAddress**: az eszköz IP-cím (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállításai** &gt; **Hálózati** &gt; **DNS-beállítások** csoport).
-   - * RecoveryPlanName ***- VolumeContainers**: egy vesszővel tagolt karakterláncot kíván végrehajtani, több mint; például az eszköz kötettárolóinak: volcon1, volcon2, volcon3.
-   - * RecoveryPlanName ***- TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
-   - * RecoveryPlanName ***- TargetDeviceIpAddress**: az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
-   - * RecoveryPlanName ***- StorageAccountName**: A tárfiók nevét, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
-   - * RecoveryPlanName ***- StorageAccountKey**: a fenti tárfiók hozzáférési kulcsára.
-   - * RecoveryPlanName ***- VMGUIDS**: esetén a virtuális gép védelmét, az Azure Site Recovery rendel minden virtuális gép egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
+   - *RecoveryPlanName* **- ResourceGroupName**: Resource Manager-csoport, amely a StorSimple-erőforrás.
+   - *RecoveryPlanName* **- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
+   - *RecoveryPlanName* **- eszköznév**: A StorSimple-eszköz feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName* **- DeviceIpAddress**: az eszköz IP-cím (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállításai** &gt; **Hálózati** &gt; **DNS-beállítások** csoport).
+   - *RecoveryPlanName* **- VolumeContainers**: egy vesszővel tagolt karakterláncot kíván végrehajtani, több mint; például az eszköz kötettárolóinak: volcon1, volcon2, volcon3.
+   - *RecoveryPlanName* **- TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName* **- TargetDeviceIpAddress**: az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
+   - *RecoveryPlanName* **- StorageAccountName**: A tárfiók nevét, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
+   - *RecoveryPlanName* **- StorageAccountKey**: a fenti tárfiók hozzáférési kulcsára.
+   - *RecoveryPlanName* **- VMGUIDS**: esetén a virtuális gép védelmét, az Azure Site Recovery rendel minden virtuális gép egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
 
     Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
 

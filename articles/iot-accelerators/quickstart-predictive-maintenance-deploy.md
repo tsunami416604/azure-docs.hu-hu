@@ -1,5 +1,5 @@
 ---
-title: Felhőalapú IoT prediktív karbantartási megoldás kipróbálása az Azure-ban | Microsoft Docs
+title: Próbálja ki a felhőalapú IoT a prediktív karbantartási megoldás – Azure |} A Microsoft Docs
 description: Ezzel a rövid útmutatóval üzembe helyezheti a prediktív karbantartási Azure IoT-megoldásgyorsítót, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139839"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604337"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás kipróbálása prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Gyors útmutató: Próbálja ki egy felhőalapú megoldás a csatlakoztatott eszközök a prediktív karbantartási elemzés futtatása
 
 Ez a rövid útmutató bemutatja az Azure IoT-prediktív karbantartási megoldásgyorsító üzembe helyezését egy felhőalapú prediktív karbantartási szimuláció futtatásához. A megoldásgyorsító telepítése után a megoldás **Dashboard** (Irányítópult) lapján futtathat egy prediktív karbantartási elemzést egy szimulált repülőgépmotor adatai alapján. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 

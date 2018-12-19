@@ -1,10 +1,10 @@
 ---
-title: 'VS Code: Csatlakozás és adatok lekérdezése Azure SQL Database-adatbázisokból | Microsoft Docs'
+title: 'A VS Code: Csatlakozás és adatlekérdezés az Azure SQL Database |} A Microsoft Docs'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban a Visual Studio Code segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,14 +13,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5e0b2fff7ca5bc7f5856a6de05e18b99bbf8b938
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098984"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600828"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code csatlakoztatása és az Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code használatával csatlakozhat, és Azure SQL Database-adatbázis lekérdezéséhez
 
 [A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ez a rövid útmutató bemutatja a Visual Studio Code egy Azure SQL Database-adatbázishoz csatlakozhat, és futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissítése és adatok törlése.
 
@@ -174,6 +174,6 @@ Használja a következő [törlése](https://docs.microsoft.com/sql/t-sql/statem
 
 ## <a name="next-steps"></a>További lépések
 
-- Csatlakozás és lekérdezés az SQL Server Management Studio használatával: [a rövid útmutató: az SQL Server Management Studio csatlakozni egy Azure SQL Database és adatok lekérdezése](sql-database-connect-query-ssms.md).
-- Csatlakozás és lekérdezés az Azure portal használatával: [a rövid útmutató: az Azure Portalon az SQL-Lekérdezésszerkesztő használatával csatlakozhat és kérdezhet le adatokat](sql-database-connect-query-portal.md).
+- Csatlakozás és lekérdezés az SQL Server Management Studio használatával: [a rövid útmutató: SQL Server Management Studio használatával csatlakozhat egy Azure SQL Database és a lekérdezés adatokhoz](sql-database-connect-query-ssms.md).
+- Csatlakozás és lekérdezés az Azure portal használatával: [a rövid útmutató: Az Azure Portalon az SQL-Lekérdezésszerkesztő használatával csatlakozhat és kérdezhet le adatokat](sql-database-connect-query-portal.md).
 - Az MSDN magazin Visual Studio Code használatáról szóló cikkéhez lásd az [Adatbázis IDE létrehozása az MSSQL bővítménnyel blogbejegyzést](https://msdn.microsoft.com/magazine/mt809115).

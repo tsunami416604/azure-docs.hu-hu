@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254122"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599859"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Az Azure SignalR Service-hitelesítés
 
@@ -378,7 +378,7 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
 
 ## <a name="deploy-the-app-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a fejezetben az Azure parancssori felületet (CLI) fogja használni az Azure Cloud Shellből, hogy létrehozzon egy új [Azure-webalkalmazást](https://docs.microsoft.com/azure/app-service/) az ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
+Ebben a szakaszban használandó az Azure parancssori felület (CLI), az Azure Cloud Shellben hozzon létre egy új wev alkalmazást a [Azure App Service](https://docs.microsoft.com/azure/app-service/) az Azure-ban az ASP.NET-alkalmazások üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
 
 A jelen szakaszban ismertetett lépések az Azure CLI *signalr* bővítményét használják. Hajtsa végre az alábbi parancsot a *signalr* bővítmény az Azure CLI-hez való telepítéséhez:
 

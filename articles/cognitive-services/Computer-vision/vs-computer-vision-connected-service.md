@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Computer Vision C#'
+title: Visual Studio csatlakoztatott szolgáltatása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Csatlakozzon a Computer Vision API-hoz egy ASP.NET Core-webalkalmazásból.
+description: Csatlakozhat a Computer Vision API egy ASP.NET Core-webalkalmazás a Visual Studio csatlakoztatott szolgáltatása funkció használatát.
 services: cognitive-services
 author: ghogen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e9207fe19272dac23db165e160ce9f7a7e802c14
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077950"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579736"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Connected Services használata a Visual Studióban a Computer Vision API-hoz való csatlakozáshoz
 
@@ -37,15 +38,15 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 
-   ![A Connected Service menüelem hozzáadása](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Képernyőfelvétel a Visual Studio-projektet a helyi menüben: Adjon hozzá > csatlakoztatott szolgáltatás](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Az elérhető szolgáltatások menüjében válassza a **Cognitive Services Computer Vision API** lehetőséget.
 
-   ![A szolgáltatás kiválasztása, amelyhez csatlakozni szeretne](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![a csatlakoztatott szolgáltatás menü lemezképek elemezheti a Computer Vision kiemelése](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában.
 
-   ![Válassza ki előfizetését.](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Egy "A Computer Vision API" a Visual Studio-ablakot a legördülő listában vannak kiemelve](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Válassza ki a használni kívánt előfizetést, majd válasszon nevet a Computer Vision API számára, vagy a szerkesztési hivatkozást választva módosítsa az automatikusan létrehozott nevet, és válassza ki az erőforráscsoportot és a tarifacsomagot.
 
@@ -93,11 +94,11 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
 
 1. A projekt wwwroot mappájában hozzon létre egy képek mappát, és adjon egy képfájlt a wwwroot mappához. Példaként használhat egy képet erről a [Computer Vision API-oldalról](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kattintson a jobb gombbal az egyik képre, mentse a helyi merevlemezre, majd a Megoldáskezelőben kattintson a jobb gombbal a képek mappára, és válassza az **Add** > **Existing Item** (Hozzáadás, Meglévő elem) lehetőséget, hogy hozzáadja a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben: 
   
-   ![Képek mappa a képfájllal](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![A kiválasztott képfájllal megoldáskezelő-nézet képernyőképe](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. Kattintson jobb gombbal a képfájlra, válassza a Properties (Tulajdonságok) elemet, majd a **Copy if newer** (Másolás, ha újabb) lehetőséget. 
 
-   ![Másolás, ha újabb](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Egy lemezkép tulajdonságai ablakban; Másolás a kimeneti könyvtár másolási értékre van állítva, ha újabb](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. A Configure metódust cserélje a következő kódra a Computer Vision API eléréséhez és a kép teszteléséhez.
 

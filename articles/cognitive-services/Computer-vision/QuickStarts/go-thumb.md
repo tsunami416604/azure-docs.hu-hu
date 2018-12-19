@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Miniatűr létrehozása – REST, Go – Computer Vision'
+title: 'Gyors útmutató: Miniatűrkép - REST, Go generálása'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és Go használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: a1a1daebaba7b5592a94bc90811a9ac272ec7971
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9abd34266c5ee109d836484a9e7eb9d95c082296
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969549"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580909"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>Rövid útmutató: Miniatűr létrehozása a REST API és Go használatával a Computer Visionben
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>Gyors útmutató: A REST API-val miniatűrkép generálása, és lépjen a Computer Vision
 
 Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision REST API-jának segítségével. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. Computer Vision segítségével intelligens vágása nyelvelemző, mind a terület hasznos helyek azonosításához, és hozzon létre körbevágási koordinátái alapján az adott régióban.
 

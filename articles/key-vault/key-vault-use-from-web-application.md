@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.openlocfilehash: 272238e41327e09af8e4d3967868c21c37683236
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079463"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602050"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Oktatóanyag: Az Azure Key Vault használata egy webalkalmazásból
 
@@ -40,7 +40,7 @@ Az oktatóanyag teljesítéséhez a következő elemekre lesz szüksége:
 * Az Azure Active Directoryban regisztrált és a Key Vaulthoz hozzáférő webalkalmazás ügyfél-azonosítója és titkos ügyfélkulcsa
 * Egy webalkalmazás. Ez az oktatóanyag az Azure-ban webalkalmazásként üzembe helyezett ASP.NET MVC alkalmazás lépéseit mutatja be.
 
-Végezze el a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című szakaszt egy titkos kód URI-jének, egy ügyfél-azonosítónak és egy titkos ügyfélkulcsnak a lekéréséhez, és regisztrálja az alkalmazást. A webalkalmazás hozzá fog férni a tárolóhoz, és regisztrálva kell lennie az Azure Active Directoryban. Hozzáférési jogosultságokkal is rendelkeznie kell a Key Vaulthoz. Ha nem így van, térjen vissza az első lépéseket ismertető oktatóanyag Alkalmazás regisztrálása című szakaszára, és ismételje meg az ott leírt lépéseket. További információ az Azure Web Apps létrehozásáról: [A Web Apps áttekintése](../app-service/app-service-web-overview.md).
+Végezze el a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című szakaszt egy titkos kód URI-jének, egy ügyfél-azonosítónak és egy titkos ügyfélkulcsnak a lekéréséhez, és regisztrálja az alkalmazást. A webalkalmazás hozzá fog férni a tárolóhoz, és regisztrálva kell lennie az Azure Active Directoryban. Hozzáférési jogosultságokkal is rendelkeznie kell a Key Vaulthoz. Ha nem így van, térjen vissza az első lépéseket ismertető oktatóanyag Alkalmazás regisztrálása című szakaszára, és ismételje meg az ott leírt lépéseket. További információ az Azure Web Apps létrehozásáról: [A Web Apps áttekintése](../app-service/overview.md).
 
 Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Érdemes inkább az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) lehetőséget választani, amely automatikusan létrehozza az Azure AD-identitásokat. További információt [a GitHubon lévő mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/), valamint a kapcsolódó, [az App Service és a Functions használatát ismertető oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. Az [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md) című oktatóanyag kifejezetten a Key Vaulttal foglalkozik.
 
@@ -159,7 +159,7 @@ Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw
 Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
-Jegyezze fel a .pfx fájl záró dátumát és jelszavát (ebben a példában 2019. május 15. és MyPassword). Ezekre az alábbi szkripthez lesz szükség. 
+Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 2019. május 15. és SajátJelszó). Ezekre az alábbi szkripthez lesz szükség. 
 ### <a name="associate-the-certificate-with-an-azure-ad-application"></a>Tanúsítvány társítása egy Azure AD-alkalmazáshoz
 
 Most, hogy van egy tanúsítványa, társítsa egy Azure AD-alkalmazással. A társítás a PowerShellen keresztül végezhető el. Az alábbi parancsokkal társíthatja a tanúsítványt az Azure AD-alkalmazással:
@@ -192,7 +192,7 @@ Először van egy kód a tanúsítvány eléréséhez. Figyelje meg, hogy a Stor
 
 ```cs
 //Add this using statement
-using System.Security.Cryptography.X509Certificates;  
+using System.Security.Cryptography.X509Certificates;  
 
 public static class CertificateHelper
 {

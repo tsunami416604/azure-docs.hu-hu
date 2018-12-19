@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 76ed904a90b84e7b0bac86b2ed5380289d7802c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388051"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582677"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása
 
@@ -98,4 +98,4 @@ Ha már nincs rájuk szükség, törölje az erőforráscsoportot és a hálóza
 Ebben a rövid útmutatóban egy művelet végrehajtásával létrehozott egy tevékenységnapló-eseményt, majd létrehozott egy tevékenységnapló-riasztást, hogy értesüljön róla, ha a művelet a jövőben megismétlődik. Ezután tesztelte a riasztást a művelet ismételt elvégzésével. Az Azure 90 napra visszamenőleg teszi elérhetővé a Tevékenységnapló eseményeit. Ha 90 napnál hosszabb ideig kell megőriznie az eseményeket, próbálja meg archiválni a Tevékenységnapló adatait a többi monitorozási adattal együtt.
 
 > [!div class="nextstepaction"]
-> [Megfigyelési adatok archiválása](./../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)
+> [Megfigyelési adatok archiválása](./../../azure-monitor/learn/tutorial-archive-data.md)

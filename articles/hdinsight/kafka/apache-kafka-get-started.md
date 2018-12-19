@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 5b1768978425d3153f775e20a1a4c44a39794779
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 02461f5002c048fcabcde21cd2e9881b94dd3be3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315954"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602834"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Apache Kafka on HDInsight-fürt létrehozása
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
 Az Apache Kafka egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az Apache Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni az Apache Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat.
 >
 > További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
     * [A Linux Windows alrendszerének telepítése](https://docs.microsoft.com/windows/wsl/install-win10). A Microsoft Store-ban elérhető Linux-disztribúciók tartalmazzák az `ssh` parancsot.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A dokumentum lépései azt feltételezik, hogy a fent említett egyik SSH-ügyfelet használja. Ha más SSH-ügyfelet használ, és problémákba ütközik, tekintse át az SSH-ügyfél dokumentációját.
     >
     > További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -85,7 +85,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     | Erőforráscsoport | Az erőforráscsoport, amelyben a fürt létre lesz hozva. |
     | Hely | Az Azure-régió, amelyben a fürt létre lesz hozva. |
 
-    > [!TIP]
+    > [!TIP]  
     > Minden egyes Azure-régió (hely) _tartalék tartományokat_ biztosít. A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
     >
     > Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
@@ -100,7 +100,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
    ![Fürt hozzáadása egy virtuális hálózathoz](./media/apache-kafka-get-started/kafka-security-config.png)
 
-6. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. A 2. generációs Data Lake Storage használatáról [a fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt.
+6. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
    ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-kafka-get-started/storage-configuration.png)
 
@@ -108,10 +108,10 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 8. A __Fürtméret__ lapon kattintson a __Tovább__ gombra az alapértelmezett beállítások használatával való folytatáshoz.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Az Apache Kafka on HDInsight platform rendelkezésre állásának biztosításához a __feldolgozó csomópontok száma__ bejegyzés értékének legalább 3-nak kell lennie. Az alapértelmezett érték a 4.
     
-    > [!TIP]
+    > [!TIP]  
     > A **lemezek száma feldolgozó csomópontonként** bejegyzés az Apache Kafka on HDInsight skálázhatóságát konfigurálja. Az Apache Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel az Apache Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Apache Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
    ![Az Apache Kafka-fürt méretének beállítása](./media/apache-kafka-get-started/kafka-cluster-size.png)
@@ -127,7 +127,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-1. Az Apache Kafka-fürt az elsődleges átjárócsomóponthoz csatlakozik, használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje le `mykafka` az Apache Kafkacluster nevét
+1. Az Apache Kafka-fürt az elsődleges átjárócsomóponthoz csatlakozik, használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje le `mykafka` az Apache Kafkacluster nevére.
 
     ```bash
     ssh sshuser@mykafka-ssh.azurehdinsight.net
@@ -148,7 +148,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.

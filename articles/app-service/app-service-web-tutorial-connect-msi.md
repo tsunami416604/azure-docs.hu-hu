@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 282942d82a688b4fc47b8473b0f8708ba23b5674
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259069"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602477"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az App Service-ben egy felügyelt identitás használata Azure SQL Database-kapcsolat biztonságossá tétele érdekében
 
-Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyelt identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyelt identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekben lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban felügyelt identitás fog hozzáadni a mintául szolgáló ASP.NET webalkalmazást, a beépített [oktatóanyag: Az Azure SQL Database és az ASP.NET-alkalmazás létrehozása](app-service-web-tutorial-dotnet-sqldatabase.md). Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
+Az [App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyelt identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyelt identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekben lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban felügyelt identitás fog hozzáadni a mintául szolgáló ASP.NET webalkalmazást, a beépített [oktatóanyag: Az Azure SQL Database és az ASP.NET-alkalmazás létrehozása](app-service-web-tutorial-dotnet-sqldatabase.md). Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
 
 > [!NOTE]
 > Ezt a forgatókönyvet jelenleg csak a .NET-keretrendszer 4.6-os vagy újabb verziója támogatja, a [.NET Core 2.1-es verziója](https://www.microsoft.com/net/learn/get-started/windows) azonban nem. A [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) nem támogatja ezt a forgatókönyvet, de ez még nem szerepel az App Service alapértelmezett rendszerképeiben. 
@@ -211,4 +211,4 @@ Az alábbiak elvégzését ismerte meg:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](app-service-web-tutorial-custom-domain.md)

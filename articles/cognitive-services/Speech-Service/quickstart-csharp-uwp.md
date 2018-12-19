@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, C# (UWP) – beszédszolgáltatások'
+title: 'Gyors útmutató: A beszédfelismerést, C# (UWP) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. Az eszköz mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 55988ef65e223c76a485c3cbec13626abf68d3b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 036c5230104e9915f9bcbaa5dd535a359fecf55a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104629"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599450"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése egy UWP-alkalmazásban a Speech SDK segítségével
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val beszédfelismerést egy UWP-alkalmazásban
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy C# Universal Windows Platform- (UWP-) alkalmazást a Cognitive Services [Speech SDK](speech-sdk.md) használatával. Az eszköz mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben fejleszt egy C# univerzális Windows Platform (UWP; 1709-es Windows később) alkalmazást a Cognitive Services használatával [beszéd SDK](speech-sdk.md). A program fog alapuló átírás beszéd szöveggé valós idejű, az eszköz mikrofonját. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -45,7 +45,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
     ![Képernyőkép az Új projekt párbeszédpanelről](media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. A Speech SDK használata érdekében az alkalmazást a Windows 10 Fall Creators Update vagy újabb verziójához kell összeállítani. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. A **Célverzió** mezőben válassza ki ezt vagy egy későbbi verziót, és kattintson az **OK** gombra.
+1. A beszédfelismerés SDK szükséges létrehozása az alkalmazás a Windows 10 Fall Creators Update vagy újabb. A felugró **Új Universal Windows Platform-projekt** ablak **Minimális verzió** beállításánál válassza a **Windows 10 Fall Creators Update (10.0; Build 16299)** értéket. A **Célverzió** mezőben válassza ki ezt vagy egy későbbi verziót, és kattintson az **OK** gombra.
 
     ![Az Új Universal Windows Platform-projekt ablak képernyőképe](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
@@ -71,7 +71,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 1. A következő kimeneti sor a Csomagkezelő konzolban jelenik meg.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.1.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.2.0' to helloworld
    ```
 
 1. Mivel az alkalmazás mikrofont használ a beszédbevitelhez, hozzá kell adnia a **Mikrofon** képességet a projekthez. A Megoldáskezelőben kattintson duplán a **Package.appxmanifest** elemre az alkalmazásjegyzék szerkesztéséhez. Ezután váltson a **Képességek** lapra, jelölje be a **Mikrofon** képesség jelölőnégyzetét, és mentse a módosításokat.

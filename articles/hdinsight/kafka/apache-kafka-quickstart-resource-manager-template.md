@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 03d7c63d09ddaf64a552a4534612f0f7e9fd249b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2c9d31fc11ae014a40de3224f4a294968aa0be53
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312367"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584411"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Apache Kafka on HDInsight-fürt létrehozása
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
 [Az Apache Kafka](https://kafka.apache.org/) egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni a Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat.
 >
 > További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
     * [A Linux Windows alrendszerének telepítése](https://docs.microsoft.com/windows/wsl/install-win10). A Microsoft Store-ban elérhető Linux-disztribúciók tartalmazzák az `ssh` parancsot.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A dokumentum lépései azt feltételezik, hogy a fent említett egyik SSH-ügyfelet használja. Ha más SSH-ügyfelet használ, és problémákba ütközik, tekintse át az SSH-ügyfél dokumentációját.
     >
     > További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -68,7 +68,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
 3. Jelölje be az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre.
 
-> [!NOTE]
+> [!NOTE]  
 > A fürt létrehozása 20 percig is eltarthat.
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
@@ -94,7 +94,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.
@@ -135,7 +135,7 @@ Ebben a szakaszban a fürtön lévő Ambari REST API-ból szerzi be a gazdagép 
 
     Ha a rendszer kéri, adja meg a fürt bejelentkezési fiókjának a jelszavát (nem az SSH-fiókét).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ez a parancs lekéri az összes Zookeeper-gazdagépet, majd csak az első két bejegyzést adja vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
 
 4. A környezeti változók helyes beállításának ellenőrzését az alábbi paranccsal végezheti el:
@@ -182,14 +182,14 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
 
     * Mindegyik partíció három feldolgozó csomópontra van replikálva a fürtben.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Ha olyan Azure-régióban hozta létre a fürtöt, amely három tartalék tartományt biztosít, használjon 3-as replikációs tényezőt. Ellenkező esetben használjon 4-es replikációs tényezőt.
         
         A három tartalék tartományt tartalmazó régiókban a 3-as replikációs tényező lehetővé teszi, hogy a replikákat el lehessen osztani a tartalék tartományok között. A két tartalék tartományt tartalmazó régiókban a négyes replikációs tényező egyenlően osztja el a replikákat a tartományok között.
         
         Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
 
-        > [!IMPORTANT] 
+        > [!IMPORTANT]   
         > A Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
         Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
@@ -216,7 +216,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
 
     Ez a parancs törli a `topicname` nevű témakört.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Ha törli a korábban létrehozott `test` témakört, akkor újra létre kell hoznia. A dokumentum későbbi lépései használni fogják.
 
 A `kafka-topics.sh` segédprogrammal elérhető parancsokkal kapcsolatos további információért használja a következő parancsot:
@@ -249,7 +249,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
    
     A parancs lekéri a rekordokat a témakörből, majd megjeleníti őket. A `--from-beginning` használata arra utasítja a fogyasztót, hogy a stream elejétől kezdje a műveletet, így az összes rekord lekérése megtörténik.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha a Kafka régebbi verzióját használja, cserélje le a `--bootstrap-server $KAFKABROKERS` előtagot a következőre: `--zookeeper $KAFKAZKHOSTS`.
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
@@ -270,7 +270,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
 > 
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.

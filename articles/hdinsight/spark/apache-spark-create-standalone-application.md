@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Scala Maven-alkalmazás létrehozása a Spark in Azure HDInsight számára, az IntelliJ használatával'
+title: 'Oktatóanyag: Az IntelliJ-vel az Azure HDInsight Spark a Scala Maven-alkalmazás létrehozása'
 description: Hozzon létre egy Scalában írt Spark-alkalmazást az Apache Maven buildelési rendszer használatával, valamint egy meglévő Maven archetype-ot a Scala számára az IntelliJ IDEA használatával.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499309"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604065"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: A Scala Maven-alkalmazást létrehozni az Apache Spark on HDInsight az IntelliJ-vel
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy [Apache Spar
 * Hozzon létre egy olyan JAR-fájlt, amit el lehet küldeni a HDInsight Spark-fürtöknek.
 * Futtassa az alkalmazást a Sparkon a Livy használatával.
 
-> [!NOTE]
+> [!NOTE]  
 > Az alkalmazások létrehozásának és azok Linux rendszerű HDInsight Spark-fürtöknek való elküldésének megkönnyítésére a HDInsight egy IntelliJ IDEA beépülőmodul-eszközt is biztosít. További információkért lásd: [használata HDInsight-eszközei beépülő moduljának létrehozása és elküldése az Apache Spark-alkalmazások az IntelliJ IDEA](apache-spark-intellij-tool-plugin.md).
 > 
 
@@ -106,7 +106,7 @@ A Scala beépülő modul telepítésének lépesei:
 1. Adja meg a **GroupId** (Csoportazonosító), az **ArtifactId** (Összetevő-azonosító) és a **Version** (Verzió) mezők értékeit. Ebben az oktatóanyagban a következő értékeket használjuk:
 
     - Csoportazonosító: com.microsoft.spark.example
-    - Összetevő-azonosító: SparkSimpleApp
+    - ArtifactId: SparkSimpleApp
 1. Kattintson a **Tovább** gombra.
 1. Ellenőrizze a beállításokat, majd válassza a **Next** (Tovább) lehetőséget.
 1. Ellenőrizze a projekt nevét és helyét, majd válassza a **Finish** (Befejezés) lehetőséget.

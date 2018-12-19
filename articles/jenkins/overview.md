@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 93185483a2c5a1ddb308cc2fc9fd918c539b5e3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105529"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602329"
 ---
 # <a name="azure-and-jenkins"></a>Az Azure és a Jenkins
 
@@ -46,5 +46,5 @@ A Jenkins beépülő moduljai használatával a Jenkins CI-/CD-folyamatok része
 
  A beépülő modulokkal a következő szolgáltatások és környezetek helyezhetők üzembe:
 
-- [Azure Web App on Linux](/azure/app-service/containers/app-service-linux-intro). Az első lépésekhez kapcsolódó információkat az [oktatóanyag](java-deploy-webapp-tutorial.md) tartalmazza.
-- [Azure-webalkalmazás](/azure/app-service/app-service-web-overview). Az első lépésekhez kapcsolódó információkat a [használati útmutató](deploy-Jenkins-app-service-plugin.md) tartalmazza.
+- [Linuxon futó Azure App Service](/azure/app-service/containers/app-service-linux-intro). Az első lépésekhez kapcsolódó információkat az [oktatóanyag](java-deploy-webapp-tutorial.md) tartalmazza.
+- [Az Azure App Service](/azure/app-service/overview). Az első lépésekhez kapcsolódó információkat a [használati útmutató](deploy-Jenkins-app-service-plugin.md) tartalmazza.

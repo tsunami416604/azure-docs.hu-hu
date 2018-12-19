@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 775d7595e80c02bcfbc1c3d6abc687d5e335d7da
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ebbb12ff5f4e824b9ae27a75dfa3ccdd9b399b12
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261007"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604888"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Oktatóanyag: .NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben
 
@@ -27,7 +27,7 @@ ms.locfileid: "53261007"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [.NET Core- és SQL Database-webalkalmazás összeállítása a Linuxon futó Azure App Service-ben](./containers/tutorial-dotnetcore-sqldb-app.md).
 >
 
-Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre .NET Core-webalkalmazást, és hogyan csatlakoztathatja azt egy SQL Database-adatbázishoz. Az oktatóanyag eredménye egy, az App Service-ben futó .NET Core MVC-alkalmazás lesz.
+Az [App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre .NET Core-webalkalmazást, és hogyan csatlakoztathatja azt egy SQL Database-adatbázishoz. Az oktatóanyag eredménye egy, az App Service-ben futó .NET Core MVC-alkalmazás lesz.
 
 ![App Service-ben futó alkalmazás](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
@@ -397,4 +397,4 @@ Az alábbiak elvégzését ismerte meg:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](app-service-web-tutorial-custom-domain.md)

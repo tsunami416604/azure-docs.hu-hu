@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/24/2018
 ms.author: barbkess
-ms.openlocfilehash: 9cb3cb16e0eba30f98767efd0d1c0d9123304c27
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 5cdadd93273b6010200b7211b75ca86dfa126b9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394994"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604821"
 ---
-# <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rövid útmutató: Alkalmazás hozzáadása az Azure Active Directory-bérlőhöz
+# <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Gyors útmutató: Az Azure Active Directory-bérlőhöz alkalmazás hozzáadása
 
-Az Azure Active Directory (Azure AD) rendelkezik egy katalógussal, amely több ezer előre integrált alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. Ebben a rövid útmutatóban egy katalógusbeli alkalmazást adhat hozzá az Azure Portalon az Azure Active Directory- (Azure AD-) bérlőhöz. 
- 
+Az Azure Active Directory (Azure AD) rendelkezik egy katalógussal, amely több ezer előre integrált alkalmazást tartalmaz. A vállalat által használt alkalmazások egy része valószínűleg megtalálható a katalógusban. Ebben a rövid útmutatóban egy katalógusbeli alkalmazást adhat hozzá az Azure Portalon az Azure Active Directory- (Azure AD-) bérlőhöz.
+
 Miután hozzáadta az alkalmazást az Azure AD-bérlőhöz, a következőket teheti:
 
 - Az alkalmazáshoz való felhasználói hozzáférés kezelése feltételes hozzáférési szabályzattal.
@@ -41,13 +41,13 @@ Javasoljuk, hogy az oktatóanyag lépéseinek teszteléséhez ne éles környeze
 
 Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
-1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre. 
+1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
 
-2. Az **Azure Active Directory** panelen kattintson a **Vállalati alkalmazások** elemre. 
+2. Az **Azure Active Directory** panelen kattintson a **Vállalati alkalmazások** elemre.
 
     ![Vállalati alkalmazások megnyitása](media/add-application-portal/open-enterprise-apps.png)
 
-3. Megnyílik a **Minden alkalmazás** panel, amely az Azure AD-bérlőn található alkalmazások véletlenszerű mintáját mutatja. 
+3. Megnyílik a **Minden alkalmazás** panel, amely az Azure AD-bérlőn található alkalmazások véletlenszerű mintáját mutatja.
 
     ![Minden alkalmazás panel](media/add-application-portal/applications-blade.png)
 
@@ -56,13 +56,13 @@ Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
     ![Új alkalmazás](media/add-application-portal/new-application.png)
 
-5. A katalógusbeli alkalmazások listájának megtekintésének legegyszerűbb módja, ha a **Kategóriák** elemet használja, mivel a **Kiemelt alkalmazások** alatti ikonok véletlenszerű katalógusbeli alkalmazásokhoz tartoznak. 
+5. A katalógusbeli alkalmazások listájának megtekintésének legegyszerűbb módja, ha a **Kategóriák** elemet használja, mivel a **Kiemelt alkalmazások** alatti ikonok véletlenszerű katalógusbeli alkalmazásokhoz tartoznak.
 
     ![Keresés név vagy kategória alapján](media/add-application-portal/categories.png)
 
     További alkalmazások megjelenítéséhez kattintson a **Továbbiak betöltése** elemre. Nem javasoljuk, hogy ezzel a módszerrel keressen, mivel több ezer alkalmazás található a katalógusban.
 
-6. Egy adott alkalmazás kereséséhez a **Hozzáadás a katalógusból** elemnél adja meg a hozzáadni kívánt alkalmazás nevét. Válassza ki az alkalmazást a találatok közül, és kattintson a **Hozzáadás** gombra. Az alábbi példában az az **alkalmazás-hozzáadási** űrlap látható, amely a GitHub.com keresése után jelenik meg.
+6. Egy adott alkalmazás kereséséhez a **Hozzáadás a katalógusból** elemnél adja meg a hozzáadni kívánt alkalmazás nevét. Válassza ki az alkalmazást a találatok közül, és kattintson a **Hozzáadás** gombra. A következő példa bemutatja a **alkalmazás hozzáadása** keresése a github.com után megjelenő képernyőn.
 
     ![Alkalmazás hozzáadása](media/add-application-portal/add-an-application.png)
 
@@ -70,23 +70,23 @@ Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
 8. Ha befejezte a tulajdonságok módosítását, kattintson a **Hozzáadás** gombra.
 
-9. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára. 
+9. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára.
 
     ![Első lépések menü](media/add-application-portal/get-started.png)
 
-Befejezte az alkalmazás hozzáadását. Nyugodtan tartson szünetet.  A következő szakaszokban megtudhatja, hogyan módosíthatja az alkalmazás emblémáját és szerkesztheti az alkalmazás egyéb tulajdonságait.
+Befejezte az alkalmazás hozzáadását. Nyugodtan tartson szünetet. A következő szakaszokban megtudhatja, hogyan módosíthatja az alkalmazás emblémáját és szerkesztheti az alkalmazás egyéb tulajdonságait.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Azure AD-bérlői alkalmazás megkeresése
 
 Tegyük fel, hogy időközben valamiért el kellett mennie, és most folytatja az alkalmazás konfigurálását. Először is keresse meg az alkalmazást.
 
-1. Az **[Azure Portal](https://portal.azure.com)** bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre. 
+1. Az **[Azure Portal](https://portal.azure.com)** bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
 
-2. Az Azure Active Directory panelen kattintson a **Vállalati alkalmazások** elemre. 
+2. Az Azure Active Directory panelen kattintson a **Vállalati alkalmazások** elemre.
 
 3. Az **Alkalmazás típusa** legördülő listából válassza a **Minden alkalmazás** lehetőséget, majd kattintson az **Alkalmaz** gombra. A megtekintési lehetőségekről további információkat a [bérlői alkalmazások megtekintését](view-applications-portal.md) ismertető cikkben olvashat.
 
-4. Most az Azure AD-bérlőn található összes alkalmazás listáját látja.  A lista egy véletlenszerű minta. További alkalmazások megjelenítéséhez kattintson a **Továbbiak betöltése** elemre akár többször is. 
+4. Most az Azure AD-bérlőn található összes alkalmazás listáját látja. A lista egy véletlenszerű minta. További alkalmazások megjelenítéséhez kattintson a **Továbbiak betöltése** elemre akár többször is.
 
 5. Egy adott alkalmazás gyors megkereséséhez a bérlőn írja be az alkalmazás nevét a keresőmezőbe, és kattintson az **Alkalmaz** gombra. Ebben a példában a korábban hozzáadott GitHub-test alkalmazást keressük meg.
 
@@ -104,41 +104,41 @@ Az alkalmazás tulajdonságainak szerkesztése
 
     ![Tulajdonságok szerkesztése panel](media/add-application-portal/edit-properties.png)
 
-3. Szánjon egy kis időt a bejelentkezési beállítások megismerésére. Az **Engedélyezett a felhasználók számára a bejelentkezés**, a **Felhasználó-hozzárendelés szükséges** és a **Felhasználók számára látható** beállítás határozza meg, hogy az alkalmazáshoz hozzárendelt vagy nem hozzárendelt felhasználók bejelentkezhetnek-e.  Emellett ezek azt is meghatározzák, hogy a felhasználó láthatja-e az alkalmazást a hozzáférési panelen. 
+3. Szánjon egy kis időt a bejelentkezési beállítások megismerésére. Az **Engedélyezett a felhasználók számára a bejelentkezés**, a **Felhasználó-hozzárendelés szükséges** és a **Felhasználók számára látható** beállítás határozza meg, hogy az alkalmazáshoz hozzárendelt vagy nem hozzárendelt felhasználók bejelentkezhetnek-e. Emellett ezek azt is meghatározzák, hogy a felhasználó láthatja-e az alkalmazást a hozzáférési panelen.
 
     - Az **Engedélyezett a felhasználók számára a bejelentkezés** meghatározza, hogy az alkalmazáshoz hozzárendelt felhasználók bejelentkezhetnek-e.
     - A **Felhasználó-hozzárendelés szükséges** meghatározza, hogy az alkalmazáshoz nem hozzárendelt felhasználók bejelentkezhetnek-e.
-    - A **Felhasználók számára látható** meghatározza, hogy az alkalmazáshoz hozzárendelt felhasználók láthatják-e az alkalmazást a hozzáférési panelen és az O365 indítójában. 
+    - A **Felhasználók számára látható** meghatározza, hogy az alkalmazáshoz hozzárendelt felhasználók láthatják-e az alkalmazást a hozzáférési panelen és az O365 indítójában.
 
-4. A következő táblázatok segítségével kiválaszthatja az igényeinek legjobban megfelelő beállításokat. 
+4. A következő táblázatok segítségével kiválaszthatja az igényeinek legjobban megfelelő beállításokat.
 
-     - Működés **hozzárendelt** felhasználók esetében:
+    - Működés **hozzárendelt** felhasználók esetében:
 
-       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – hozzárendelt felhasználók | |
-       |---|---|---|---|---|
-       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
-       | igen | igen | igen | igen | igen  |
-       | igen | igen | nem  | igen | nem   |
-       | igen | nem  | igen | igen | igen  |
-       | igen | nem  | nem  | igen | nem   |
-       | nem  | igen | igen | nem  | nem   |
-       | nem  | igen | nem  | nem  | nem   |
-       | nem  | nem  | igen | nem  | nem   |
-       | nem  | nem  | nem  | nem  | nem   |
+        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – hozzárendelt felhasználók | |
+        |---|---|---|---|---|
+        | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
+        | igen | igen | igen | igen | igen  |
+        | igen | igen | nem  | igen | nem   |
+        | igen | nem  | igen | igen | igen  |
+        | igen | nem  | nem  | igen | nem   |
+        | nem  | igen | igen | nem  | nem   |
+        | nem  | igen | nem  | nem  | nem   |
+        | nem  | nem  | igen | nem  | nem   |
+        | nem  | nem  | nem  | nem  | nem   |
 
-     - Működés **nem hozzárendelt** felhasználók esetében:
-  
-       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
-       |---|---|---|---|---|
-       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
-       | igen | igen | igen | nem  | nem   |
-       | igen | igen | nem  | nem  | nem   |
-       | igen | nem  | igen | igen | nem   |
-       | igen | nem  | nem  | igen | nem   |
-       | nem  | igen | igen | nem  | nem   |
-       | nem  | igen | nem  | nem  | nem   |
-       | nem  | nem  | igen | nem  | nem   |
-       | nem  | nem  | nem  | nem  | nem   |
+    - Működés **nem hozzárendelt** felhasználók esetében:
+
+        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
+        |---|---|---|---|---|
+        | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+        | igen | igen | igen | nem  | nem   |
+        | igen | igen | nem  | nem  | nem   |
+        | igen | nem  | igen | igen | nem   |
+        | igen | nem  | nem  | igen | nem   |
+        | nem  | igen | igen | nem  | nem   |
+        | nem  | igen | nem  | nem  | nem   |
+        | nem  | nem  | igen | nem  | nem   |
+        | nem  | nem  | nem  | nem  | nem   |
 
     *Látható az alkalmazás a felhasználó számára a hozzáférési panelen és az Office 365 alkalmazás indítójában?
 
@@ -157,9 +157,9 @@ Egyéni embléma használata:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megismerhette, hogyan adhat hozzá katalógusbeli alkalmazást az Azure AD-bérlőhöz. Megtanulta, hogyan szerkesztheti egy alkalmazás tulajdonságait. 
+Ebben a rövid útmutatóban megismerhette, hogyan adhat hozzá katalógusbeli alkalmazást az Azure AD-bérlőhöz. Megtanulta, hogyan szerkesztheti egy alkalmazás tulajdonságait.
 
-Most már készen áll arra, hogy konfigurálja az alkalmazást egyszeri bejelentkezésre. 
+Most már készen áll arra, hogy konfigurálja az alkalmazást egyszeri bejelentkezésre.
 
 > [!div class="nextstepaction"]
 > [Egyszeri bejelentkezés konfigurálása](configure-single-sign-on-portal.md)

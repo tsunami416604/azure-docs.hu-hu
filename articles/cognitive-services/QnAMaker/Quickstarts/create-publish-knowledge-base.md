@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644785"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598310"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
 
@@ -57,9 +57,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 11. Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás) elemre, amely menti a módosításokat és betanítja a QnA Maker-modellt. A rendszer a módosításokat csak akkor őrzi meg, ha menti őket.
 
-   ![Mentés és betanítás](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. Kattintson a jobb felső sarokban a **Test** (Tesztelés) elemre, amely teszteli, hogy az elvégzett módosítások életbe léptek-e. A mezőbe írja be az **Üdvözlet** szöveget, majd válassza a bevitel lehetőséget. Meg kell jelennie a létrehozott válasznak.
+12. Kattintson a jobb felső sarokban a **Test** (Tesztelés) elemre, amely teszteli, hogy az elvégzett módosítások életbe léptek-e. Adjon meg `hi there` a box és a select adjon meg. Meg kell jelennie a létrehozott válasznak.
 
 13. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A tesztablakban tesztelheti a tudásbázis módosításait, mielőtt közzétenné azokat.
 

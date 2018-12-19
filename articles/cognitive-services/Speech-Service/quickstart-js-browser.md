@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, Javascript (böngésző) – beszédszolgáltatások'
+title: 'Gyors útmutató: Beszédfelismerést, JavaScript (böngésző) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan végezhet beszédfelismerést a JavaScripttel böngészőben a Speech Service SDK használatával
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 01e66e1e592d98433a015dfb294a6182438be238
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087915"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601882"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rövid útmutató: Beszédfelismerés a JavaScripttel böngészőben a Speech Service SDK használatával
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést a Speech Service SDK használatával
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás a Microsoft Cognitive Services Speech SDK-n alapul ([Az 1.1.0-s verzió letöltése](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([letöltési 1.2.0-s vagy annál újabb verziójú](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,8 +40,8 @@ Hozzon létre egy új, üres mappát. Abban az esetben, ha a mintát egy webkisz
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ekkor a rendszernek elvileg két fájlt kell kicsomagolnia, a `microsoft.cognitiveservices.speech.sdk.bundle.js` és a `microsoft.cognitiveservices.speech.sdk.bundle.js.map` fájlt.
-Az utóbbi fájl használata nem kötelező; az SDK kódjában való hibakeresés segítésére szolgál szükség esetén.
+Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek hatására a mappastruktúrájának kicsomagolása zajlik, két fájlokat `microsoft.cognitiveservices.speech.sdk.bundle.js` és `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Az utóbbi fájl nem kötelező, és akkor hasznos, ha az SDK-kódjába hibakeresés.
 
 ## <a name="create-an-indexhtml-page"></a>Az index.html lap létrehozása
 
@@ -74,7 +74,7 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
-1. Kösse be a felismerési gomb, a felismerési eredmény és az előfizetéshez kapcsolódó mezők a felhasználói felületi kódban definiált kezelőit:
+1. A felismerés gomb, felismerés eredményét és előfizetéshez kapcsolódó mezőket a felhasználói felület kód által meghatározott kezelőkkel beállítani:
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 

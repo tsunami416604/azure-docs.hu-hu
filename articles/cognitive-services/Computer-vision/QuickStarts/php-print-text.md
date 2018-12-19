@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, PHP – Computer Vision'
+title: 'Gyors útmutató: A nyomtatott szöveg - REST, PHP kinyerése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API PHP-vel való használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2707134c3fb451f4386748f691086eeb617d3ebe
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340239"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581385"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) a REST API és a PHP használatával a Computer Vision szolgáltatásban
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Gyors útmutató: A REST API-t és a PHP használ a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
 Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 
@@ -33,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Telepítse a PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) csomagot.
+1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
    1. Futtassa az alábbi parancsot:
 

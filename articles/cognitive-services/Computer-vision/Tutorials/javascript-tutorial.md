@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Computer Vision API JavaScript'
+title: 'Oktatóanyag: Hajtsa végre a lemezkép műveletek – JavaScript'
 titlesuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű JavaScript-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 46d992fc44a0c3b2d355861d5753aa6f8c22215e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341310"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581375"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>Oktatóanyag: Computer Vision API JavaScript
+# <a name="tutorial-computer-vision-api-javascript"></a>Oktatóanyag: Számítógép Vision API a JavaScript
 
 Ez az oktatóanyag az Azure Cognitive Services Computer Vision REST API funkcióit mutatja be.
 
@@ -47,7 +48,7 @@ Ha inkább a befejezett oktatóanyaggal szeretne dolgozni, amely minden kódot t
 
 A JavaScript-alkalmazás hat .html-fájlt tartalmaz, függvényenként egyet. Mindegyik fájl egy Computer Vision-függvényt ismertet (elemzés, OCR és hasonlók). A hat oktatószakasz nem függ egymástól, így hozzáadhat oktatókódot csak egyhez egyet, többhöz, vagy akár mind a hathoz is. Ezt bármilyen sorrendben megteheti.
 
-Lássunk hozzá.
+Lássunk neki!
 
 ### <a name="analyze-an-image"></a>Rendszerkép elemzése
 
@@ -494,7 +495,7 @@ A Computer Vision optikai karakterfelismerés (OCR) funkciója nyomtatott szöve
 
 Az oktatóalkalmazás OCR funkciójának végrehajtásához tegye a következőket:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR – 1. lépés: Adja hozzá az eseménykezelő kódot az űrlap gombjához
+### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>Optikai Karakterfelismerés 1. lépés: Az eseménykezelő kód hozzáadása az űrlap gombjához
 
 Nyissa meg az **ocr.html** fájlt egy szövegszerkesztőben, és keresse meg az **ocrButtonClick** függvényt a fájl alján.
 

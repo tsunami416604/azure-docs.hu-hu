@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: 3d50e51a0d4ccbbd9b21cda87dc457ea1cbe02fd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e0a22256637792f5b84a346c54a79ee314f92e8e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879196"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601797"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Azure Cosmos DB lekérdezése a Table API-val
 
 Az Azure Cosmos DB [Tábla API](table-introduction.md) támogatja a kulcs/érték (tábla) adatok OData- és [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-lekérdezéseit.  
 
@@ -86,7 +86,7 @@ A LINQ használatával is végezhet lekérdezést, amelyet a rendszer a megfelel
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("people");
+CloudTable table = tableClient.GetTableReference("People");
 
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(

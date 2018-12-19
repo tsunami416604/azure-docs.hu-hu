@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: d0b6fc1ebd08b29b9acc28cfb0107b815c7d7bad
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
-ms.translationtype: HT
+ms.openlocfilehash: 74240298b0c8bec46ab2beab6fcdfbb59fd7b12a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068241"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579974"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 
@@ -77,7 +77,7 @@ v1beta1.storage.k8s.io               10
 
 A következő lépés az [Open Service Broker for Azure][open-service-broker-azure] telepítése, amely tartalmazza az Azure által kezelt szolgáltatások katalógusát. Az elérhető Azure-szolgáltatások között megtalálható például az Azure Database for PostgreSQL, az Azure Database for MySQL és az Azure SQL Database.
 
-Kezdésnek adja hozzá az Open Service Broker for Azure Helm-adattárát:
+Először adja hozzá az Open Service Broker for Azure Helm-adattárát:
 
 ```azurecli-interactive
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
@@ -171,7 +171,7 @@ Végül listázza ki az elérhető szolgáltatáscsomagokat. A szolgáltatáscso
 Ebben a lépésben a Helm használatával telepítünk egy frissített Helm-diagramot a WordPress számára. A diagram egy külső Azure Database for MySQL-példányt helyez üzembe, amelyet a WordPress használhat. Ez eltarthat pár percig.
 
 ```azurecli-interactive
-helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0
+helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 Ha meg szeretne győződni arról, hogy a telepítés a megfelelő erőforrásokat osztotta ki, listázza ki a telepített szolgáltatáspéldányokat és kötéseket:

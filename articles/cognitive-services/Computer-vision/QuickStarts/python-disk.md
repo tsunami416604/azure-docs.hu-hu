@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Helyi kép elemzése – REST, Python – Computer Vision'
+title: 'Gyors útmutató: A helyi rendszerképet – REST, Python elemzése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy helyi képet fog elemezni a Computer Vision API és a Python használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: ef95d68f37de7637abd546a1a7fdffff547bda6b
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 3e62e5af00e69cea4656c38d9cde57fae11b67fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854135"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582694"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Helyi kép elemzése a REST API és a Python használatával a Computer Visionben
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: Elemezheti a helyi rendszerképet a Computer Vision a REST API-t és a Python használatával
 
 Ebben a rövid útmutatóban egy helyileg tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 

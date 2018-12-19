@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 41b73e662316a6f61ec4145c06fb5e9c06e83f06
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 91396828df4aec560bcc84d9f0d44900850ab706
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537859"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603878"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Oktatóanyag: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban
 
@@ -28,7 +28,7 @@ ms.locfileid: "53537859"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js- és MongoDB-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
-Az Azure Web Apps egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja egy MongoDB-adatbázishoz. Az oktatóanyag eredménye egy, az [Azure App Service](app-service-web-overview.md)-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS és Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
+Az Azure Web Apps egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja egy MongoDB-adatbázishoz. Az oktatóanyag eredménye egy, az [Azure App Service](overview.md)-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS és Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 

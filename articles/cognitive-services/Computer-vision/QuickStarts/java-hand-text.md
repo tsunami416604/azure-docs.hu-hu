@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Kézzel írt szöveg kinyerése – REST, Java – Computer Vision'
+title: 'Gyors útmutató: Kézzel írt szöveg - REST, Java kinyerése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision Javával történő használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 271a37ffc4ae60bf7bfc1605c36b6b29d358118a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 1eb74c7901318e7568ffcd96ea96ba5709744e61
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852265"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583245"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Rövid útmutató: Kézzel írt szöveg kinyerése a REST API és a JAVA használatával a Computer Vision szolgáltatásban
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Java használatával a Computer Vision kézzel írt szöveg kinyerése
 
 Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 

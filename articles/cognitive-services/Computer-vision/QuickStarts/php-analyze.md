@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Távoli kép elemzése – REST, PHP – Computer Vision'
+title: 'Gyors útmutató: Egy távoli kép – REST, a PHP elemzése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a PHP segítségével.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: d9e65b5fa42cc9026f8b1e3f18901f988c38cc46
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 8af75c05d3c30fd8a3f2808cf81de840b7df2d6c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341004"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584295"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a PHP használatával a Computer Visionben
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>Gyors útmutató: A REST API-t és a PHP használ a Computer Vision egy távoli kép elemzése
 
-Ebben a rövid útmutatóban egy távol tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -33,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Telepítse a PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) csomagot.
+1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
    1. Futtassa az alábbi parancsot:
 

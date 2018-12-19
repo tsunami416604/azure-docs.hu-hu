@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
-ms.reviwer: ''
+ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9b38e1b6ba55fab46965fdc7a73ab608e1e6b754
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 13054ed0da2ad3fc38bdd4a39d9092dc72e39de9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877802"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601661"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
@@ -209,7 +209,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 A [célcsoport](elastic-jobs-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva. 
 
-Az alábbi kódrészlet két célcsoportot (*ServerGroup* és *ServerGroupExcludingDb2*) hoz létre. A *ServerGroup* csoport céladatbázisa a kiszolgálón a végrehajtás időpontjában megtalálható összes adatbázis, a *ServerGroupExcludingDb2* csoporté pedig a kiszolgálón megtalálható összes adatbázis, a *TargetDb2* kivételével:
+A következő kódrészlet létrehozza a két célcsoportok: *ServerGroup*, és *ServerGroupExcludingDb2*. A *ServerGroup* csoport céladatbázisa a kiszolgálón a végrehajtás időpontjában megtalálható összes adatbázis, a *ServerGroupExcludingDb2* csoporté pedig a kiszolgálón megtalálható összes adatbázis, a *TargetDb2* kivételével:
 
 ```powershell
 Write-Output "Creating test target groups..."

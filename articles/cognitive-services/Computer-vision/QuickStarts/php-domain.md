@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Tartománymodell használata – REST, PHP – Computer Vision'
+title: 'Gyors útmutató: Tartomány-specifikus kép tartalmához – REST, a PHP'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket azonosítani egy képen a Computer Vision API és a PHP segítségével.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 176e11615fe2f2c1b58b7608dfd5cbd349f9e547
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 19aa1874a93c4a52f6fc5ff75848c1ca6815db1e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340086"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581341"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a PHP használatával a Computer Visionben
+# <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Gyors útmutató: Ismeri fel a tartomány-specifikus tartalmait, a REST API-t és PHP használata a Computer Vision
 
 Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és igény szerint hírességeket azonosítani egy távoli képen a Computer Vision REST API-jának segítségével. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
 
@@ -33,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Telepítse a PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) csomagot.
+1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
    1. Futtassa az alábbi parancsot:
 

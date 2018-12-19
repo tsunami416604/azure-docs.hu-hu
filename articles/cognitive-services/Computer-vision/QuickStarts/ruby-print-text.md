@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, Ruby – Computer Vision'
+title: 'Gyors útmutató: A nyomtatott szöveg - REST, Ruby kinyerése'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a Ruby használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 0fdeee5964c2fe7eccafe61f8d2d17548d4492f2
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 32855d9c5b39d99034fee3b923ba7b28a472d346
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339831"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582116"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) a REST API és a Ruby használatával a Computer Vision szolgáltatásban
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Ruby használatával a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
 Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 
@@ -33,13 +34,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
     1. A `<Subscription Key>` helyére írja be az előfizetési kulcsot.
     1. Ha szükséges, cserélje le a `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` elemet azon Azure-régió [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` elemet egy másik olyan kép URL-címére, amelyből nyomtatott szöveget szeretne kinyerni.
-1. Mentse a kódot fájlként `.rb` kiterjesztéssel. Például: `get-printed-text.rb`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `ruby` paranccsal futtassa a mintát. Például: `ruby get-printed-text.rb`.
+1. Mentse a kódot egy `.rb` kiterjesztésű fájlként. Például: `get-printed-text.rb`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `ruby` parancsot a minta futtatására. Például: `ruby get-printed-text.rb`.
 
 ```ruby
 require 'net/http'

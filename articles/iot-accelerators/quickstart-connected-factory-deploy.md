@@ -1,5 +1,5 @@
 ---
-title: Ipari IoT-eszközök felügyeletére szolgáló megoldás kipróbálása az Azure-ban | Microsoft Docs
+title: Próbálja ki egy megoldást, kezelheti az ipari IoT-eszközökre – Azure |} A Microsoft Docs
 description: Ezzel a rövid útmutatóval üzembe helyezheti a csatlakoztatott gyár Azure IoT megoldásgyorsítóját, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139012"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602647"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rövid útmutató: Az ipari IoT-eszközök felügyeletére szolgáló felhőalapú megoldás kipróbálása
+# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Gyors útmutató: Próbálja ki a felhőalapú megoldást ipari IoT-eszközök kezelése
 
 Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az Azure IoT megoldásgyorsítóját a csatlakoztatott gyárhoz, és futtathatja egy ipari IoT-eszközök számára készült, felhőalapú monitorozási és felügyeleti szimulációban. Amikor üzembe helyezi a csatlakoztatott gyár megoldásgyorsítóját, az előre fel lesz töltve olyan szimulált erőforrásokkal, amelyekkel végighaladhat egy általános ipari IoT-forgatókönyvön. A megoldáshoz több szimulált gyár csatlakozik, amelyek jelentést készítenek a teljes eszközhatékonyság (overall equipment efficiency, OEE) és a fő teljesítménymutatók (KPI) kiszámításához szükséges adatértékekről. Ez a rövid útmutató bemutatja, hogyan használhatja a megoldás irányítópultját a következőkre:
 
@@ -76,7 +76,7 @@ A **Teljes eszközhatékonyság** panel a teljes vállalat vagy a megtekintett g
 
 [![A teljes eszközhatékonyság](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
-Az OEE a gyártási folyamat hatékonyságát osztályozza a gyártáshoz kapcsolódó működési paraméterek alapján. Az OEE egy iparági szabvány mérőszám, amely a rendelkezésre állás, a teljesítmény és a minőség besorolásainak szorzata: OEE = rendelkezésre állás x teljesítmény x minőség.
+Az OEE a gyártási folyamat hatékonyságát osztályozza a gyártáshoz kapcsolódó működési paraméterek alapján. OEE egy iparági szabvány mérőszám szorzata a rendelkezésre állás, teljesítmény és minőség besorolásainak: OEE = rendelkezésre állás x teljesítmény x minőség.
 
 A hierarchiaadatok bármely szintjén részletesebben elemezheti az OEE-t. Kattintson az OEE, a rendelkezésre állás, a teljesítmény vagy a minőség százalékos értékének tárcsájára. Megjelenik egy helyi panel, amely vizualizációkat jelenít meg az adatokról különböző időskálákon:
 

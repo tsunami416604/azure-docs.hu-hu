@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: kyliel
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4ec5a0691ce73a2ffebe07b316ce5b1dde8c2b49
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 740ff6d6a636377f9d58a5231692c87f935ae6d2
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249379"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601865"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások méretezése Ansible-lel
-[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobil háttérrendszer. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
+[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobil háttérrendszer. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
 
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ez a cikk bemutatja, hogyan skálázhatja őket az Azure App Service-ben az Ansible használatával.
 

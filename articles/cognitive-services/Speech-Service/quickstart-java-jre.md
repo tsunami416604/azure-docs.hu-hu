@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, a Java - beszédszolgáltatások'
+title: 'Gyors útmutató: Beszéd, a Java - beszédszolgáltatások felismerésére'
 titleSuffix: Azure Cognitive Services
 description: Arra vonatkozó információk, hogyan ismerhet fel beszédet a Javán (Windows vagy Linux rendszeren)
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 7d1f26a43866025c3b542fc10a3f316ad0d1dc37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9b8327a529baf230bc64dd9abcc808924b31293b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103117"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603440"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Rövid útmutató: Beszéd felismerése Java nyelven Windows vagy Linux rendszeren a Speech Service SDK használatával
+# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Gyors útmutató: A beszédfelismerési szolgáltatás SDK-val beszédfelismerést Windows vagy Linux rendszeren Java nyelven
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech Service SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazás a Speech SDK Maven-csomaggal, valamint az Eclipse Java IDE (v4.8) 64 bites Windows- vagy Ubuntu Linux 16.04-es verziójával lett létrehozva, és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech Service SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) 64 bites Windows-vagy Ubuntu Linux 16.04 létrehozása / 18.04. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
@@ -33,7 +33,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
-Ha az Ubuntu 16.04-es verzióját használja, az Eclipse indítása előtt futtassa az alábbi parancsokat, amelyekkel gondoskodhat a megfelelő csomagok telepítéséről.
+Használatakor Ubuntu 16.04 vagy 18.04, az Eclipse indítása előtt, futtassa a következő parancsok futtatásával győződjön meg arról, hogy a szükséges csomagok telepítve vannak-e.
 
   ```sh
   sudo apt-get update
@@ -74,7 +74,7 @@ Ha az Ubuntu 16.04-es verzióját használja, az Eclipse indítása előtt futta
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * Adjon hozzá egy `dependencies` elemet is, amelynek függősége a Speech SDK 1.1.0-s verziója lesz:
+  * Is hozzáadhat egy `dependencies` elem, a beszéd SDK függőségként a 1.2.0-s vagy annál újabb verzió:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

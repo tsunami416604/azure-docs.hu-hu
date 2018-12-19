@@ -1,5 +1,5 @@
 ---
-title: Mi az a Computer Vision API?
+title: Mi az a Computer Vision API? – A computer Vision
 titlesuffix: Azure Cognitive Services
 description: A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: c5340599bc4ed400ce11ea8ba997d03c4df7cc05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963215"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584020"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 

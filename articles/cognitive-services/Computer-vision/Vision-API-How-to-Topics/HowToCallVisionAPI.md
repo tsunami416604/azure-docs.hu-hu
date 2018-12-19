@@ -1,5 +1,5 @@
 ---
-title: 'Példa: A Computer Vision API meghívása'
+title: 'Példa: Az elemzés image API - hívás a Computer Vision'
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hívhatja meg a Computer Vision API-t a REST használatával az Azure Cognitive Servicesben.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981745"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581708"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívásának módja
+# <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívása
 
 Ez az útmutató ismerteti, hogyan hívhatja meg a Computer Vision API-t a REST használatával. A mintákat megadjuk C#-ben a Computer Vision API ügyfélkódtár használatával és HTTP POST/GET hívásokkal is. Amire figyelni fogunk:
 
@@ -26,10 +27,10 @@ Ez az útmutató ismerteti, hogyan hívhatja meg a Computer Vision API-t a REST 
 
 ### <a name="Prerequisites">Előfeltételek</a> 
 A kép URL-címe vagy a helyileg tárolt kép elérési útja.
-  * Támogatott beviteli módszerek: Nyers bináris képadatok alkalmazás/oktett-stream vagy a képre mutató URL-cím formájában
-  * Támogatott képformátumok: JPEG, PNG, GIF, BMP
-  * Képfájl mérete: Kevesebb, mint 4 MB
-  * Képméret: Nagyobb, mint 50 × 50 képpont
+  * Támogatott bemeneti módszerek: Egy application/octet-stream vagy URL-formájában bináris nyers kép
+  * Képformátum támogatja: JPEG, PNG, GIF, BMP
+  * Kép mérete: 4MB-nál kevesebb
+  * Lemezkép-dimenzió: Nagyobb, mint 50 x 50 képpont
   
 Az alábbi példákban a következő funkciókat mutatjuk be:
 
@@ -38,10 +39,10 @@ Az alábbi példákban a következő funkciókat mutatjuk be:
 
 A funkciók lebontása:
 
-  * **Első lehetőség:** Hatókörre korlátozott elemzés – csak egy adott modell elemzése
-  * **Második lehetőség:** Bővített elemzés – további információkhoz [86-kategóriás osztályozás](../Category-Taxonomy.md) szerinti elemzés
+  * **1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
+  * **2. lehetőség:** Továbbfejlesztett elemzése – további információkat a elemzése [86-kategóriák besorolás](../Category-Taxonomy.md)
   
-### <a name="Step1">1. lépés: API-hívás engedélyezése</a> 
+### <a name="Step1">1. lépés: Engedélyezze az API-hívás</a> 
 A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot vagy egy lekérdezési karakterlánc paramétereként kell átadni vagy a kérelem fejlécében lehet megadni. 
 
 Előfizetői kulcs beszerzéséhez, lásd [Előfizetői kulcsok beszerzésének módja](../Vision-API-How-to-Topics/HowToSubscribe.md
@@ -59,12 +60,12 @@ Előfizetői kulcs beszerzéséhez, lásd [Előfizetői kulcsok beszerzésének 
 
 ```var visionClient = new VisionServiceClient(“Your subscriptionKey”);```
 
-### <a name="Step2">2. lépés: Töltsön fel egy képet a Computer Vision API-szolgáltatásra és visszakapja a címkéket, leírásokat és hírességeket</a>
+### <a name="Step2">2. lépés: A Computer Vision API szolgáltatásba töltsön fel egy képet, majd az címkéket, leírásokat és hírességek</a>
 A Computer Vision API-hívás elvégzésének alapvető módja a kép közvetlen feltöltése. Ez „POST” kérés küldését jelenti application/octet-stream tartalomtípussal, a képből kiolvasott adatokkal együtt. A „Címkék” és „Leírás” esetében ez a feltöltési mód minden Computer Vision API-hívásra azonos lesz. Az egyetlen különbség a felhasználó által megadott lekérdezési paraméterben lesz. 
 
 Íme a „Címkék” és „Leírás” lekérése egy adott képre:
 
-**Első lehetőség:** A „Címkék” listája és egy „Leírás” lekérése
+**1. lehetőség:** "Címkék" listája és a egy "Description"
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
@@ -99,7 +100,7 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 ```
 ### <a name="here-is-how-to-get-domain-specific-analysis-in-our-case-for-celebrities"></a>Íme a fogalomkör-specifikus elemzés (esetünkben a hírességek) lekérése.
 
-**Első lehetőség:** Hatókörre korlátozott elemzés – csak egy adott modell elemzése
+**1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -109,7 +110,7 @@ E beállítás használata esetén semmi más lekérdezési paraméter {visualFe
 GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
 var models = await visionClient.ListModelsAsync();
 ```
-**Második lehetőség:** Bővített elemzés – további információkhoz [86-kategóriás osztályozás](../Category-Taxonomy.md) szerinti elemzés
+**2. lehetőség:** Továbbfejlesztett elemzése – további információkat a elemzése [86-kategóriák besorolás](../Category-Taxonomy.md)
 
 Olyan alkalmazásokban, ahol a felhasználó az egy vagy több fogalomkör-specifikus modellből származó részleteken kívül általános képelemzést is szeretne, kibővítjük a v1 API-t a modell lekérdező paraméterrel.
 ```
@@ -119,7 +120,7 @@ A metódus hívásakor először meghívjuk a 86-kategóriás osztályozót. Ha 
 
 Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik.  Ha a visualFeatures=categories megadása elmaradt, implicit módon engedélyezésre kerül.
 
-### <a name="Step3">3. lépés: Az analyze&visualFeatures=Címkék, Leírás eredményeként kapott JSON-kimenet lekérése és értelmezése</a>
+### <a name="Step3">3. lépés: A JSON-kimenetet elemzése és visualFeatures ismertetése és beolvashatók a címkék, leírás =</a>
 
 Például:
 ```
@@ -159,9 +160,9 @@ description.tags[] |    sztring  | Címkék listája.  Ha a felirat létrehozás
 description.captions[].text | sztring    | A képet leíró kifejezés.
 description.captions[].confidence   | szám    | A kifejezéshez tartozó megbízhatóság.
 
-### <a name="Step4">4. lépés: A fogalomkör-specifikus modellek által eredményezett JSON-kimenet lekérése és értelmezése</a>
+### <a name="Step4">4. lépés: Beolvasása és a tartomány-specifikus modelleket JSON-kimenetét ismertetése</a>
 
-**Első lehetőség:** Hatókörre korlátozott elemzés – csak egy adott modell elemzése
+**1. lehetőség:** Hatókörön belüli elemzés – csak egy adott modell elemzése
 
 A kimenet címkék tömbje lesz, például az alábbi példához hasonló lesz:
 ```
@@ -179,7 +180,7 @@ A kimenet címkék tömbje lesz, például az alábbi példához hasonló lesz:
   }
 ```
 
-**Második lehetőség:** Bővített elemzés – további információkhoz 86-kategóriás osztályozás szerinti elemzés
+**2. lehetőség:** Továbbfejlesztett elemzése – további részleteket biztosít 86-kategóriák besorolás elemzése
 
 A második lehetőséget használó fogalomkör-specifikus modellekre (bővített elemzés) a kategória visszatérési típusa kibővül. Például a következőképpen:
 ```
@@ -221,7 +222,7 @@ Vegye figyelembe, hogy ha több kategória is megfelel (például a 86-kategóri
 ### <a name="Errors">Hiba válaszok</a>
 Ezek ugyanazok, mint a vision.analyze esetén, de van egy plusz hiba, a NotSupportedModel (HTTP 400), amely az első és második lehetőségnél is előfordulhat. A második lehetőségnél (bővített elemzés), ha a részletesen megadott modellek bármelyikét nem sikerül felismerni, az API a NotSupportedModel-lel fog visszaténi, akkor is ha van köztük érvényes.  A felhasználók a listModels hívásával deríthetik ki, hogy mely modellek támogatottak.
 
-### <a name="Summary">Összefoglalás</a>
+### <a name="Summary">összegzés</a>
 
 A Computer Vision API alapfunkciói a következők: hogyan tölthet fel képeket és kaphat cserébe értékes metaadatokat.
 

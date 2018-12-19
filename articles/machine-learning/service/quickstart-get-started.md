@@ -11,23 +11,23 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 96c4597c1031257eca329d0247c36f5d60456fe9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273561"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582643"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával
 
-Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet fog létrehozni az Azure Portalon. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ez a rövid útmutató felhőerőforrásokat használ, és nem igényel telepítést. Ehelyett saját Jupyter notebook server konfigurálásához lásd: [a rövid útmutató: Az Azure Machine Learning használatának első lépései a Python használatával](quickstart-create-workspace-with-python.md).
-
+Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet fog létrehozni az Azure Portalon. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ez a rövid útmutató felhőerőforrásokat használ, és nem igényel telepítést. Ehelyett saját Jupyter notebookok kiszolgáló beállítása: [a rövid útmutató: Az Azure Machine Learning használatának első lépései a Python használatával](quickstart-create-workspace-with-python.md).  
+ 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
-Ebben a rövid útmutatóban a következőket hajtja végre:
+Ebben a rövid útmutatóban tegye a következőket:
 
 * Munkaterület létrehozása az Azure-előfizetésben.
-* A munkaterület kipróbálása a Pythonnal egy Azure-notebookban és az értékek naplózása több iterációban.
+* Próbálja ki a Python egy Azure jegyzetfüzet és a naplófájlok értékeket több ismétléseinek között.
 * A naplózott értékek megtekintése a munkaterületen.
 
 A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkaterületéhez, ha az Ön régiójában rendelkezésre állnak:
@@ -37,7 +37,7 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-Az Ön által létrehozott erőforrások előfeltételként is használhatók a Machine Learning más szolgáltatási oktatóanyagaiban vagy útmutatóiban. Mivel Azure-szolgáltatásokat, nincs korlátok bizonyos erőforrások, például a Machine Learning, társított számítási fürt mérete. Tudjon meg többet [az alapértelmezett korlátok és a kvóta növelése](how-to-manage-quotas.md).
+Az Ön által létrehozott erőforrások előfeltételként is használhatók a Machine Learning más szolgáltatási oktatóanyagaiban vagy útmutatóiban. A többi Azure-szolgáltatáshoz hasonlóan a Machine Learninghez társított egyes erőforrások korlátozva vannak. Ilyen például, a számítási fürt méretét. Tudjon meg többet a [alapértelmezett korlátok és a kvóta növelése](how-to-manage-quotas.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
 
@@ -46,14 +46,14 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-A munkaterületen válassza az `Explore your Azure Machine Learning service workspace` lehetőséget.
+A munkaterületen válassza az `Explore your Azure Machine Learning service Workspace` lehetőséget.
 
- ![Ismerkedés a munkaterülettel](./media/quickstart-get-started/explore_aml.png)
+ ![Ismerje meg a munkaterület](./media/quickstart-get-started/explore_aml.png)
 
 
 ## <a name="use-the-workspace"></a>A munkaterület használata
 
-Most tekintse meg, hogyan segít a munkaterület a gépi tanulási szkriptek felügyeletében. Ebben a szakaszban:
+Most tekintse meg, hogyan segít a munkaterület a gépi tanulási szkriptek felügyeletében. Ebben a szakaszban hajtsa végre a következő lépéseket:
 
 * Megnyit egy notebookot az Azure Notebooksban.
 * Naplózott értékeket létrehozó kódot futtat.
@@ -63,7 +63,7 @@ Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozot
 
 ### <a name="open-a-notebook"></a>Notebook megnyitása 
 
-Az Azure Notebooks ingyenes felhőalapú platformot nyújt olyan Jupyter-notebookokhoz, amelyek előre konfigurálva vannak a Machine Learning futtatásához szükséges összes beállítással.  
+Az Azure-jegyzetfüzetek futtatásához a Machine Learning, amit az előre konfigurált Jupyter notebookokhoz ingyenes felhőalapú platformot biztosít.  
 
 Kattintson az `Open Azure Notebooks` gombra az első kísérlet kipróbálásához.
 
@@ -80,9 +80,9 @@ Két notebook mellett egy `config.json` fájlt is látni fog. Ez a konfiguráci�
 
 Egy notebook megnyitásához válassza a `01.run-experiment.ipynb` elemet.
 
-A cellákat egyenként is futtathatja a `Shift`+`Enter` billentyűkombinációval. A teljes notebook futtatásához válassza a `Cells` > `Run All` menüpontot. A cellák mellett megjelenő csillag [*] azt jelzi, hogy a cella fut. A cella kódjának lezárulása után megjelenik egy szám. 
+A cellák egy (Shift + Enter) egyszerre futni. A teljes notebook futtatásához válassza a `Cells` > `Run All` menüpontot. Amikor megjelenik egy csillag __*__, mellett egy cellába, fut-e. A cella kódjának lezárulása után megjelenik egy szám. 
 
-A notebookban lévő összes cella futtatásának befejezése után megtekintheti a naplózott értékeket a munkaterületen.
+Ha végzett a jegyzetfüzet-ban futó összes cellát, megtekintheti a bejelentkezett értékek a munkaterületén.
 
 ## <a name="view-logged-values"></a>Naplózott értékek megtekintése
 
@@ -96,7 +96,7 @@ Zárja be a `Reports` előugró ablakot.
 
 Válassza a(z) `my-first-experiment` lehetőséget.
 
-Tekintse meg az imént elvégzett futtatás információit. Görgessen le az oldalon a futtatások táblájának megkereséséhez. Kattintson a futtatás számának hivatkozására.
+Információk a Futtatás csupán azt tette. Görgessen le az oldalon a futtatások táblájának megkereséséhez. Kattintson a futtatás számának hivatkozására.
 
  ![Futtatási előzmények hivatkozása](./media/quickstart-get-started/report.png)
 
@@ -104,19 +104,19 @@ Láthatja a naplózott értékekhez automatikusan létrehozott grafikonokat. Min
 
    ![Előzmények megtekintése](./media/quickstart-get-started/plots.png)
 
-Mivel a pí hozzávetőleges értékének meghatározására szolgáló kód véletlenszerű értékeket használ, a grafikonokon eltérő értékek jelennek meg.  
+Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafikon különböző értékek jelennek meg.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-Azt is teheti, hogy megtartja az erőforráscsoportot, és csak egyetlen munkaterületet töröl. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
+Tartsa meg az erőforráscsoportot is, de egyetlen munkaterület törlése. A munkaterület tulajdonságainak megjelenítéséhez, és válassza ki **törlése**.
 
 ## <a name="next-steps"></a>További lépések
 
 Létrehozta a modellekkel való kísérletezéshez és azok üzembe helyezéséhez szükséges erőforrásokat. Kódot is futtatott egy notebookban, és áttekintette a kód futtatási előzményeit a felhőben lévő munkaterületen.
 
-A munkafolyamattal kapcsolatos mélyebb betekintés érdekében kövesse a Machine Learning-modellek betanításával és üzembe helyezésével kapcsolatos oktatóanyagokat.  
+Részletes munkafolyamat élményt biztosít betanítása és a modell üzembe helyezése a Machine Learning-oktatóanyagokat követve:  
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Egy rendszerkép osztályozási modell betanítása](tutorial-train-models-with-aml.md)

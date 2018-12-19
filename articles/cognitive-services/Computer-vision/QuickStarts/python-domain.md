@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Tartománymodell használata – REST, Python – Computer Vision'
+title: 'Gyors útmutató: Tartomány-specifikus kép tartalmához – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban tartománymodellekkel fog hírességeket és nevezetességeket azonosítani egy képen a Computer Vision API a Pythonnal való használatával.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 4594d84c411994b4157b2fa51ed5d6d24088380d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 9a511cb26f5bc4ba44e4d999cb7b3c3ba98bca4c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852333"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582235"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a Python használatával a Computer Visionben
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: A tartományi modell, a REST API-t és a Python használatával a Computer Vision
 
 Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és igény szerint hírességeket azonosítani egy távoli képen a Computer Vision REST API-jának segítségével. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
 

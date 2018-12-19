@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Computer Vision API Java'
+title: 'Oktatóanyag: Hajtsa végre a lemezkép műveletek – Java'
 titlesuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű Java Swing-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: f039e85ab3fccfc36b704f06d9fcfa3b4cfed758
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340256"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584547"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>Oktatóanyag: Computer Vision API Java
+# <a name="tutorial-computer-vision-api-java"></a>Oktatóanyag: Számítógép Vision API-Java
 
 Ez az oktatóanyag az Azure Cognitive Services Computer Vision REST API funkcióit mutatja be.
 

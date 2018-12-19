@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 192736e014e54f77fb55d659a9849ecdc93ff2ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2d247a3135888fc00efd837b706e0a4f0ecc5c47
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547786"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601440"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Hitelesítése és engedélyezése a felhasználók teljes körű Azure App Service-ben
 
-Az [Azure App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](app-service-authentication-overview.md). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Az oktatóanyag ASP.NET Core-alkalmazást használ Angular.js előtérrendszerrel, de ez csak példaként szolgál. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](app-service-authentication-overview.md). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Az oktatóanyag ASP.NET Core-alkalmazást használ Angular.js előtérrendszerrel, de ez csak példaként szolgál. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
 
 Az oktatóanyag a mintaalkalmazás segítségével ismerteti, hogyan tehet biztonságossá egy önálló alkalmazást (a [Hitelesítés és engedélyezés háttéralkalmazáshoz történő engedélyezéséről](#enable-authentication-and-authorization-for-back-end-app) szóló szakaszban).
 
@@ -446,4 +446,4 @@ Az alábbiak elvégzését ismerte meg:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](app-service-web-tutorial-custom-domain.md)

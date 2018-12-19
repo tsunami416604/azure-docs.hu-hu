@@ -1,5 +1,5 @@
 ---
-title: Eszközökkel kapcsolatos problémák észlelése egy Azure-alapú távoli monitorozási megoldásban – oktatóanyag | Microsoft Docs
+title: Eszköz észlelésére a távoli figyelési megoldás-oktatóanyag – Azure |} A Microsoft Docs
 description: Ez az oktatóprogram bemutatja, hogyan használja a szabályokat és műveleteket a küszöbérték-alapú eszközhibák azonosítására a távoli monitorozási megoldásban.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7ebe81565bc6bd28747f3a251b39a3c010493307
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819100"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598678"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A figyelési megoldáshoz csatlakoztatott eszközökre és a hibák észlelése
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsító konfigurálásával fogja észlelni a csatlakoztatott IoT-eszközökkel kapcsolatos problémákat. Az eszközhibák észleléséhez adjon hozzá olyan szabályokat, amelyek riasztásokat jelenítenek meg a megoldás irányítópultján.
 

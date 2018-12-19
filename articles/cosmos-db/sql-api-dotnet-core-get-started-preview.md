@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 84dead2b3e7d16360264f467c6b7ab1fb358a496
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f96082aaa174886c085ba67ee0f3e870e53136e1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557281"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600760"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Konzolalkalmazás létrehozása .NET Core (a SDK verziója 3 előzetes verzió) az Azure Cosmos DB SQL API-fiókban lévő adatok kezelése
 
@@ -765,6 +765,6 @@ Az SQL API mutató hivatkozásokat visszaállítása az Azure Cosmos DB .NET Cor
 Ebben az oktatóanyagban bemutattuk, hogyan hozhat létre egy .NET Core-alkalmazást az Azure Cosmos DB SQL API-adatok kezeléséhez. Így már további adatokat importálhat a Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
-> [adatok importálása az azure cosmos db-be](import-data.md)
+> [Adatok importálása az Azure Cosmos DB-be](import-data.md)
 
 [cosmos-db-create-account]: create-sql-api-dotnet-preview.md#create-account

@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a594d6704b9fa76c212719f0ac423942e9f57d7a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261755"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604031"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások létrehozása az Ansible segítségével
-[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobilalkalmazások háttérkomponensei. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
+[Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobilalkalmazások háttérkomponensei. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
 
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogyan hozhat létre az Ansible segítségével webalkalmazásokat Java futtatókörnyezet használatával. 
 

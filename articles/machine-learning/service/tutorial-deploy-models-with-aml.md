@@ -11,27 +11,27 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312170"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579651"
 ---
-# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Oktatóanyag:  Egy rendszerkép besorolási modell az Azure-Tárolópéldányon üzembe helyezése
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Egy rendszerkép besorolási modell az Azure Container Instances szolgáltatásban üzembe helyezése
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az [előző oktatóanyagban](tutorial-train-models-with-aml.md) gépi tanulási modelleket tanított be, majd regisztrált egy modellt a felhőbeli munkaterületen.  
 
-Most már készen áll a modellt üzembe helyezzük webszolgáltatásként, amely a [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). A webszolgáltatás egy rendszerkép, ebben az esetben egy Docker-rendszerkép, amely magában foglalja a pontozási logikát, illetve magát a modellt is. 
+Most már készen áll a modellt üzembe helyezzük webszolgáltatásként, amely a [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Webszolgáltatás egy kép, ebben az esetben egy Docker-rendszerképet. Magába foglalja a pontozási logika és modellelemek a modellben. 
 
-Az oktatóanyag ezen részében használja az Azure Machine Learning szolgáltatásban:
+Az oktatóanyag ezen részében használja az Azure Machine Learning szolgáltatás a következő feladatokhoz:
 
 > [!div class="checklist"]
-> * A tesztkörnyezet beállítása
-> * A modell lekérése a munkaterületről
-> * A modell helyi tesztelése
-> * A modell üzembe helyezése a Container Instances szolgáltatásban
-> * Az üzembe helyezett modell tesztelése
+> * A tesztelési környezet kialakítása.
+> * A modell lekérdezni a munkaterülethez.
+> * A modell helyileg történő teszteléséhez.
+> * A modell üzembe helyezése a Container Instances szolgáltatásban.
+> * Az üzembe helyezett modell teszteléséhez.
 
 Container Instances szolgáltatásban nem éles környezetekben üzemelő példányok ideális, de ez ideális megoldás a teszteléshez és a munkafolyamat ismertetése. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információkért lásd: [üzembe helyezése és hol](how-to-deploy-and-where.md).
 
@@ -46,7 +46,7 @@ Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a következő jegyzetfüzet a modell betanítása: [#1. oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).  
+Hajtsa végre a következő jegyzetfüzet a modell betanítása: [Oktatóanyag: (1. rész): Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
@@ -55,7 +55,7 @@ Első lépésként állítsa be a tesztelési környezetet.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
-Importálja az oktatóanyaghoz szükséges Python-csomagokat.
+Importálja az ehhez az oktatóanyaghoz szükséges Python-csomagokat:
 
 ```python
 %matplotlib inline
@@ -72,7 +72,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="retrieve-the-model"></a>A modell beolvasása
 
-Az előző oktatóanyagban regisztrált egy modellt a munkaterületen. Most töltse be a munkaterületet, és töltse le a modellt a helyi könyvtárba.
+Az előző oktatóanyagban regisztrált egy modellt a munkaterületen. Most már betölteni a munkaterületet, és a modell letöltése a helyi könyvtárba:
 
 
 ```python
@@ -87,16 +87,16 @@ import os
 os.stat('./sklearn_mnist_model.pkl')
 ```
 
-## <a name="test-model-locally"></a>A modell helyi tesztelése
+## <a name="test-the-model-locally"></a>A modell helyi tesztelése
 
-Telepítés megkezdése előtt a következők elvégzésével győződjön meg arról, hogy a modell helyileg fut:
-* Tesztadatok betöltése
-* A tesztadatok előrejelzése
-* A keveredési mátrix vizsgálata
+Mielőtt telepítene, győződjön meg arról, a modell helyileg működik:
+* Terhelési teszt adatai.
+* Teszt adatai előre jelezni.
+* Vizsgálja meg a keveredési mátrix.
 
 ### <a name="load-test-data"></a>Tesztadatok betöltése
 
-A tesztadatokat az oktatóanyag követése során létrehozott **./data/** mappából töltheti be.
+A teszt adatokat letölteni a **. /data/** az oktatóprogram során létrehozott könyvtár:
 
 ```python
 from utils import load_data
@@ -110,7 +110,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 
 ### <a name="predict-test-data"></a>A tesztadatok előrejelzése
 
-Az előrejelzés elkészítéséhez töltse be a tesztadatkészletet a modellbe.
+Előrejelzés lekéréséhez-hírcsatorna a tesztelési adatkészletnél a modell:
 
 ```python
 import pickle
@@ -122,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>A keveredési mátrix vizsgálata
 
-Hozzon létre egy keveredési mátrixot, és ellenőrizze, hogy a tesztkészletből hány minta kapott helyes besorolást. Figyelje meg, hogy a megfelelő előrejelzéseket misclassified értékét. 
+Hozzon létre egy keveredési mátrixot, és ellenőrizze, hogy a tesztkészletből hány minta kapott helyes besorolást. Figyelje meg, hogy a megfelelő előrejelzéseket misclassified értékét: 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -147,7 +147,7 @@ A kimenet a keveredési mátrixot jeleníti meg:
     Overall accuracy: 0.9204
    
 
-Használja a `matplotlib` kódtárat a keveredési mátrix grafikonként való megjelenítéséhez. Ezen a grafikonon az X tengely képviseli a tényleges értékeket, az Y tengely pedig az előre jelzett értékeket. Az egyes rácsok színe a hibaarányt jelöli. Minél világosabb a szín, annál magasabb a hibaarány. Például sok 5 misclassified vannak, a 3. Ezért egy Világos rács (5,3), láthatja.
+Használja a `matplotlib` kódtárat a keveredési mátrix grafikonként való megjelenítéséhez. Ezen a gráfon az x tengelyt megjeleníti a tényleges értékek, és az y tengelyen jeleníti meg az előre jelzett értékek. Minden egyes rács színe a hibák aránya jeleníti meg. Minél világosabb a szín, annál magasabb a hibaarány. Például sok 5 misclassified vannak, a 3. Ezért egy Világos rács címen (5,3):
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -172,23 +172,23 @@ plt.show()
 
 ![Diagram megjelenítése keveredési mátrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-web-service"></a>Üzembe helyezés webszolgáltatásként
+## <a name="deploy-as-a-web-service"></a>Webszolgáltatásként üzembe helyezése
 
-Miután tesztelte a modell, és elégedett az eredményeket, a modellt üzembe helyezzük webszolgáltatásként, amely a Container Instances szolgáltatásban üzemeltetett. 
+Miután, tesztelni a modellt, és elégedett az eredménnyel, a modellt üzembe helyezzük webszolgáltatásként, amely a Container Instances szolgáltatásban üzemeltetett. 
 
-Container Instances szolgáltatásban hozhat létre a megfelelő környezettel, a következőket biztosítják:
-* Pontozószkript a modell használatának bemutatásához
-* A telepítendő csomagokat bemutató környezeti fájl
-* Egy konfigurációs fájlt a tárolópéldány létrehozása
-* Az imént betanított modell
+Container Instances a megfelelő környezetet hozhat létre, adja meg az alábbi összetevőket:
+* Pontozó szkript bemutatja a modellt használja.
+* Egy környezet fájljához csomagokat kell telepíteni.
+* Egy konfigurációs fájl a tárolópéldányt hozhat létre.
+* A korábban, a betanított modell.
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Pontozószkript létrehozása
 
-Hozzon létre a pontozó szkript, score.py nevezik. A webszolgáltatás-hívások használ, ez a modell használatának megjelenítéséhez.
+Hozzon létre a pontozó szkript, nevű **score.py**. A webszolgáltatás-hívások ezt a parancsfájlt használja a modell használatának megjelenítése.
 
-A pontozószkriptnek két függvényt kell tartalmaznia:
+A pontozó szkript ezen két szükséges funkciókat tartalmazza:
 * Az `init()` függvényt, amely általában a modellt tölti be a globális objektumba. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
 
 * A `run(input_data)` függvény a modell segítségével értékeket jelez elő a bemeneti adatok alapján. A futtatás bemenetei és kimenetei általában JSON-fájlokat használnak a szerializáláshoz vagy a deszerializáláshoz, de más formátumokat is támogatnak.
@@ -206,7 +206,7 @@ from azureml.core.model import Model
 
 def init():
     global model
-    # retreive the path to the model file using the model name
+    # retrieve the path to the model file using the model name
     model_path = Model.get_model_path('sklearn_mnist')
     model = joblib.load(model_path)
 
@@ -221,7 +221,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Környezeti fájl létrehozása
 
-A következő lépésben hozzon létre egy myenv.yml nevű környezeti fájlt a szkript csomagfüggőségeinek meghatározásához. Ezzel a fájllal biztosítható, hogy az összes szükséges függőség telepítve legyen a Docker-rendszerképben. A jelen modell esetében ez a `scikit-learn` és az `azureml-sdk`.
+Ezután hozzon létre egy környezetben nevű fájlt **myenv.yml**, amely meghatározza, hogy az összes a parancsfájl csomagfüggőségek. Ez a fájl segítségével győződjön meg arról, hogy minden ezeket a függőségeket a Docker-rendszerkép telepítve. Ez a modell kell `scikit-learn` és `azureml-sdk`:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -232,16 +232,16 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml","w") as f:
     f.write(myenv.serialize_to_string())
 ```
-Tekintse át a `myenv.yml` fájl tartalmát.
+Tekintse át a tartalmát a `myenv.yml` fájlt:
 
 ```python
 with open("myenv.yml","r") as f:
     print(f.read())
 ```
 
-### <a name="create-configuration-file"></a>Konfigurációs fájl létrehozása
+### <a name="create-a-configuration-file"></a>Egy konfigurációs fájl létrehozása
 
-Hozzon létre egy központi telepítési konfigurációs fájlt, és adja meg a processzorok számának és GB RAM szükséges a Container Instances-tároló. Bár ez a modelltől is függ, az alapértelmezettként megadott 1 mag és 1 gigabyte RAM számos modell használatához elegendő. Ha később többre lenne szüksége, akkor újra létre kell hoznia a rendszerképet, és újra üzembe kell helyeznie a szolgáltatást.
+Hozzon létre egy központi telepítési konfigurációs fájlt. Adja meg a processzorok számának és GB RAM szükséges a Container Instances-tároló. Bár ez függ a modellt, a rendszer az alapértelmezett egymagos és 1 GB memória elegendő számos modellt. Ha később több, akkor hozza létre újból a lemezképet, és telepítse újra a szolgáltatást.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -253,15 +253,15 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-container-instances"></a>A Container Instances üzembe helyezése
-A feladat elvégzéséhez szükséges várható időtartam **7-8 perc**.
+Fejezze be az üzembe helyezés becsült ideje van **körülbelül hét-nyolc percet**.
 
 Konfigurálja, majd helyezze üzembe a rendszerképet. Az alábbi kód a következő lépéseket hajtja végre:
 
-1. Állítson össze egy rendszerképet használatával:
-   * A pontozófájl (`score.py`).
-   * A környezet fájlt (`myenv.yml`).
+1. Állítson össze egy rendszerképet a fájlok használatával:
+   * A pontozófájl `score.py`.
+   * A környezet fájl `myenv.yml`.
    * A modellfájl.
-1. A rendszerkép regisztrálása a munkaterületen. 
+1. Regisztrálja a képen a munkaterületen. 
 1. A kép küldése a Container Instances-tároló.
 1. A Container Instances-tároló indítása a lemezkép használatával.
 1. A webszolgáltatás HTTP-végpontjának lekérése.
@@ -286,25 +286,25 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Kérje le a pontozási webszolgáltatás REST-ügyfélhívásokat fogadó HTTP-végpontját. Ez a végpont megoszthatja bárki tesztelheti a webszolgáltatás vagy integrálnia kell az alkalmazás által. 
+Kérje le a pontozási webszolgáltatás REST-ügyfélhívásokat fogadó HTTP-végpontját. Ez a végpont megoszthatja bárki tesztelheti a webszolgáltatás vagy integrálnia kell az alkalmazás által: 
 
 ```python
 print(service.scoring_uri)
 ```
 
 
-## <a name="test-deployed-service"></a>Üzembe helyezett szolgáltatás tesztelése
+## <a name="test-the-deployed-service"></a>Az üzemelő szolgáltatás tesztelése
 
-Korábban, a modell helyi verzióját az összes teszt adatai pontozunk. Most egy, a tesztadatok közül 30 véletlenszerű rendszerképet tartalmazó mintával tesztelheti az üzembe helyezett modellt.  
+Korábban, a modell helyi verzióját az összes teszt adatai pontozunk. Most tesztelheti az üzembe helyezett modell egy véletlenszerűen vett minta, a Tesztadatok 30 képeit.  
 
 Az alábbi kód a következő lépéseket hajtja végre:
 1. Az adatok egy JSON-fájlként a web Service, Container Instances szolgáltatásban lévő üzemeltetett tömböt küld. 
 
-1. A szolgáltatás meghívása az SDK `run` API-jának használatával. Nyers hívás végezhet egy HTTP-eszközt, például a curl használatával is.
+1. A szolgáltatás meghívása az SDK `run` API-jának használatával. Bármilyen HTTP-eszköz használatával is meghatározhat nyers hívás **curl**.
 
-1. A visszaadott előrejelzéseket nyomtatása, és a bemeneti képekhez együtt jeleníti meg őket. A piros betűk és az inverz (fekete alapon fehér) képek kiemelik a tévesen besorolt mintákat. 
+1. A kapott előrejelzések kinyomtatása és a bemeneti képekkel való ábrázolása. Jelölje ki a misclassified minták piros színnel és más néven inverz kép, fekete, a fehér szolgál. 
 
- Mivel a modell pontossága magas, előfordulhat, hogy a tévesen besorolt minta megtekintése előtt néhány alkalommal futtatnia kell a következő kódot.
+Mivel a modell pontosságát magas, előfordulhat, hogy kell futtatnia a következő kódot néhány alkalommal ahhoz, hogy megjelenjenek a misclassified minta:
 
 ```python
 import json
@@ -339,9 +339,13 @@ for s in sample_indices:
 plt.show()
 ```
 
-Íme egy véletlenszerűen vett minta teszt lemezképek eredménye: ![Eredmények ábrája](./media/tutorial-deploy-models-with-aml/results.png)
+Ez az eredmény egy véletlenszerűen vett minta teszt lemezképek származik:
 
-A webszolgáltatás teszteléséhez nyers HTTP-kérést is küldhet.
+![Eredmények ábrája](./media/tutorial-deploy-models-with-aml/results.png)
+
+![Results (Eredmények)](./media/tutorial-deploy-models-with-aml/results.png)
+
+Ezenkívül elküldheti a nyers HTTP-kérést a webszolgáltatás teszteléséhez:
 
 ```python
 import requests
@@ -378,6 +382,6 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-+ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md), többek között az ACI, Azure Kubernetes Service-ben, FPGA-kban vagy az IoT Edge.
++ További információ az összes, a [központi telepítési beállítások az Azure Machine Learning szolgáltatás](how-to-deploy-and-where.md). Azure Container Instances, Azure Kubernetes Service-ben, FPGA-kban vagy az Azure IoT Edge a lehetőségek között.
 
-+ Bemutatjuk, hogyan Azure Machine Learning szolgáltatás is automatikus kiválasztás és a legjobb algoritmus a modell finomhangolása, és az Ön számára, hogy a modell létrehozása. Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 
++ Tekintse meg, hogyan lehet az Azure Machine Learning szolgáltatás a automatikus kiválasztás és a legjobb algoritmus a modell finomhangolása. Emellett a hoz létre ehhez a modellhez. Próbálja ki a [automatikus algoritmus kiválasztása](tutorial-auto-train-models.md) oktatóanyag. 

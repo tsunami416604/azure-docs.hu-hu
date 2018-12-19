@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093323"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602817"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Az Azure CDN hozzáadása az Azure App Service webalkalmazás
 
-Ez az oktatóanyag bemutatja, hogyan adható hozzá az [Azure Content Delivery Network (CDN)](cdn-overview.md) [a webappokhoz az Azure App Service szolgáltatásban](../app-service/app-service-web-overview.md). A Web Apps webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. 
+Ez az oktatóanyag bemutatja, hogyan adható hozzá az [Azure Content Delivery Network (CDN)](cdn-overview.md) [a webappokhoz az Azure App Service szolgáltatásban](../app-service/overview.md). A Web Apps webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. 
 
 Íme a mintaként szolgáló statikus HTML-webhely kezdőlapja, amelyet használni fog:
 

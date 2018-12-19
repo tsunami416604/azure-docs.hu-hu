@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 781c560429a01397fe36204360e896233bdd23f5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257777"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600369"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy adatvezérelt ASP.NET-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja az [Azure SQL Database-adatbázishoz](../sql-database/sql-database-technical-overview.md). Az oktatóanyag eredménye egy, az Azure-ban futó és az SQL Database-adatbázishoz csatlakozó ASP.NET-alkalmazás lesz.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy adatvezérelt ASP.NET-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja az [Azure SQL Database-adatbázishoz](../sql-database/sql-database-technical-overview.md). Az oktatóanyag eredménye egy, az Azure-ban futó és az SQL Database-adatbázishoz csatlakozó ASP.NET-alkalmazás lesz.
 
 ![Közzétett ASP.NET-alkalmazás az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 

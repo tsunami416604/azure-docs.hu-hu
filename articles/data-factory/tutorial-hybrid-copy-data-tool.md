@@ -165,7 +165,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    ![Az SQL Server kiválasztása](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-1. Az Új társított szolgáltatás (SQL Server) **Név**** résznél adja meg a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
+1. Az Új társított szolgáltatás (SQL Server) **Név**\*\* résznél adja meg a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
 
    ![Saját üzemeltetésű integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
@@ -223,7 +223,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Az **Új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen végezze el az alábbi lépéseket: 
 
-     a. A **Név**** résznél adja meg az **AzureStorageLinkedService** értéket.
+     a. A **Név**\*\* résznél adja meg az **AzureStorageLinkedService** értéket.
 
      b. A **Csatlakozás integrációs modulon keresztül** területen válassza ki a **TutorialIntegrationRuntime** értéket
 

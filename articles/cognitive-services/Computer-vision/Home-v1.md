@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957027"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582354"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
@@ -38,10 +39,10 @@ A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztos
 * [Képek körülvágása miniatűrként való felhasználáshoz.](#Thumbnails)
 
 ## <a name="requirements"></a>Követelmények
-* Támogatott beviteli módszerek: Nyers bináris képadatok alkalmazás/oktett-stream vagy a képre mutató URL-cím formájában.
-* Támogatott képformátumok: JPEG, PNG, GIF, BMP.
-* Képfájl mérete: Kevesebb, mint 4 MB.
-* Képméret: Nagyobb, mint 50 × 50 képpont.
+* Támogatott bemeneti módszerek: Egy application/octet-stream vagy URL-formájában bináris nyers kép.
+* Képformátum támogatja: JPEG, PNG, GIF, BMP.
+* Kép mérete: 4 MB-nál kevesebb.
+* Lemezkép-dimenzió: Nagyobb, mint 50 x 50 képpont.
 
 ## <a name="tagging-images"></a>Képek címkézése
 Computer Vision API alapján ad vissza címkéket ezer felismerhető objektumok, tárgy, táj és műveleteket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
@@ -137,9 +138,9 @@ Kép|Válasz
 
 Kép|Válasz
 ----|----
-![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
-![Anyát és lányát ábrázoló kép vizuális elemzése](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
-![Családi fotó vizuális elemzése](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Male", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Male", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
+![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png) | [{"age": 23., "gender": "Női", "faceRectangle": {"left": "felső" 1379: 320, "width": 310, "magasság": 310}}]
+![Anyát és lányát ábrázoló kép vizuális elemzése](./Images/mom_daughter_face.png) | [{"age": 28., "gender": "Női", "faceRectangle": {"left": "felső" 447: 195, "width": 162-es, "magasság": 162-es}}, {"age": 10., "gender": "Férfi", "faceRectangle": {"left": "felső" 355: 87, "width": 143, "magasság": 143}}]
+![Családi fotó vizuális elemzése](./Images/family_photo_face.png) | [{"age": 11., "gender": "Férfi", "faceRectangle": {"left": "felső" 113: 314, "width": 222, "magasság": 222}}, {"age": 11., "gender": "Női", "faceRectangle": {"left": 1200-as, "felső": 632, "width": 215, "magasság": 215}}, {"age": 41-es, "gender": "Férfi", "faceRectangle": {"left": 514-es, "felső": 223, "width": 205, "magasság": 205}}, {"age": 37, a "gender": "Női", "faceRectangle": {"left": 1008: "felső": 277, "width": 201-es, "magasság": 201-es}}]
 
 
 ## <a name="domain-specific-content"></a>Fogalomkör-specifikus tartalom
@@ -231,7 +232,7 @@ A kategóriák között a felnőtt és kényes tartalom is szerepel, ezáltal é
 ## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 Az ORC-technológia észleli a képek szöveges tartalmát, és számítógép által olvasható karaktersorozattá alakítja az észlelt szöveget. Az eredmény kereséshez és sok más célra, például egészségügyi, biztonsági vagy banki adatként hasznosítható. A szöveg nyelvét automatikusan felismeri. Az optikai karakterfelismeréssel időt takaríthat meg, és használata kényelmes: a szövegek átírása helyett lefényképezheti azt.
 
-Az optikai karakterfelismerés 25 nyelvet támogat. Ezek a nyelvek a következők: arab, egyszerűsített kínai, hagyományos kínai, cseh, dán, holland, angol, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, orosz, szerb (cirill és latin betűs), szlovák, spanyol, svéd és török.
+Az optikai karakterfelismerés 25 nyelvet támogat. Ezeken a nyelveken a következők: Arab, kínai (egyszerűsített), kínai (hagyományos), Cseh, dán, holland, angol nyelven, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, spanyol, szerb (cirill betűs és Latin), szlovák, spanyol, Svéd és török.
 
 Szükség esetén az OCR a felismert szöveg dőlésszögét a kép vízszintes tengelyéhez igazítja. Az OCR az alábbi ábrán látható módon adja meg az egyes szavak koordinátáit.
 
@@ -250,7 +251,7 @@ A szövegfelismerés pontossága függ a kép minőségétől. Felismerési hib�
 - Túl nagy méretű vagy hiányzó nagybetűk a szavak elején.
 - Felső vagy alsó indexben lévő, vagy áthúzott szöveg.
 
-Korlátozások: olyan fényképeken, ahol a szöveg van túlsúlyban, téves eredmények származhatnak a szavak részleges felismeréséből. Bizonyos képeken, elsősorban szöveg nélküli fényképeken a pontosság jelentősen változhat a kép típusától függően.
+Korlátozások: A fényképekhez, ahol szövege a következő meghatározó téves részlegesen felismert származhatnak. Bizonyos képeken, elsősorban szöveg nélküli fényképeken a pontosság jelentősen változhat a kép típusától függően.
 
 ## <a name="recognize-handwritten-text"></a>Kézzel írt szöveg felismerése
 Ez a technológia lehetővé teszi kézzel írt jegyzetek, levelek, esszék, táblaképek, űrlapok vagy más elemek szövegének felismerését és kinyerését. Különféle felületekkel és hátterekkel használható, például fehér papír, sárga jegyzetlapok vagy fehér tábla.
@@ -258,7 +259,7 @@ Ez a technológia lehetővé teszi kézzel írt jegyzetek, levelek, esszék, tá
 A kézírásos szövegek felismerése időt és energiát takarít meg, és növeli a hatékonyságot, hiszen lehetővé teszi, hogy szövegek átírása helyett egyszerűen lefényképezze az adott szöveget. Lehetővé teszi jegyzetek digitalizálását. A digitalizálás által gyors és egyszerű keresések végezhetők. Ezen kívül a papírfelhasználást is csökkenti.
 
 A bemenetre vonatkozó követelmények:
-- Támogatott képformátumok: JPEG, PNG, és BMP.
+- Képformátum támogatja: JPEG, PNG és BMP.
 - A képfájl méretének 4 MB-nál kisebbnek kell lennie.
 - A képméret legalább 40 × 40, legfeljebb 3200 × 3200 lehet.
 

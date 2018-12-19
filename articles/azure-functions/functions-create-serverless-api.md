@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 63e35a32cb4a031ea9848486c4ecda7058707914
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989906"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599893"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Kiszolgáló nélküli API létrehozása az Azure Functions használatával
 
@@ -39,14 +39,14 @@ Alapértelmezés szerint a HTTP-eseményindító által aktivált függvény min
 
     ![HTTP-függvény testreszabása](./media/functions-create-serverless-api/customizing-http.png)
 
-1. Használja a táblázatban megadott, a HTTP-eseményindítóra vonatkozó beállításokat.
+1. A HTTP-eseményindító beállításait használja a táblázatban megadott.
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
     | Engedélyezett HTTP-metódusok | Kiválasztott metódusok | Meghatározza, hogy mely HTTP-metódusokkal hívható meg a függvény |
     | Kiválasztott HTTP-metódusok | GET | Csak bizonyos HTTP-metódusoknak engedélyezi a függvény meghívását |
     | Útvonalsablon | /hello | Meghatározza, hogy melyik útvonalat használja a függvény meghívására |
-    | Engedélyszint | Névtelen | Opcionális: A függvényt API-kulcs nélkül is elérhetővé teszi |
+    | Engedélyszint | Névtelen | Nem kötelező: Lehetővé teszi a funkció elérhető API-kulcs nélkül |
 
     > [!NOTE] 
     > Figyelje meg, hogy az `/api` nem szerepel az útvonalsablon alapútvonal-előtagjában, mivel ezt egy globális beállítás kezeli.
@@ -71,7 +71,7 @@ A következő szakaszban az API felületének létrehozását egy proxyn kereszt
 
 A proxyk bármilyen HTTP-erőforrásra mutathatnak, például:
 - Azure Functions 
-- API Apps alkalmazások az [Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- API Apps alkalmazások az [Azure App Service-ben](https://docs.microsoft.com/azure/app-service/overview)
 - Docker-tárolók a [Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Bármely más üzemeltetett API
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 444fb5576ed6886e5919202cf7f22ef14e1255b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 91e28ed1f498ce717b72bb592adff324a84f2e09
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321409"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601542"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -119,7 +119,7 @@ Ha a szervezete proxykiszolgálóval csatlakozik az internethez, kell őket az A
 
 Összekötők, a kapacitástervezés és hogyan naprakész információk kapcsolatos információkért lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](application-proxy-connectors.md). 
 
-Ha az alkalmazás való csatlakozáshoz használja a websockets protokoll, győződjön meg arról, hogy telepítette-e a legújabb-összekötőt.  A websockets protokoll a 1.5.612.0 összekötő verzió vagy újabb rendszer.
+Ha a Qlik Sense alkalmazás használja, telepítheti a legújabb-összekötőt. Qlik Sense használja a websockets protokoll, amely csak a 1.5.612.0 összekötő verzió vagy újabb.
 
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>Ellenőrizze az összekötő telepítve van és megfelelően regisztrálva

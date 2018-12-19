@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3eff646a1b3681c58c820695d296d5e09297e03b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270263"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600203"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure Web Appsra
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan képezhet le meglévő egyéni DNS-nevet az Azure Web Appsra.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan meglévő egyéni DNS-név leképezése az Azure App Service-ben.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -156,7 +156,7 @@ Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+> Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -231,7 +231,7 @@ Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni 
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+> Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -286,7 +286,7 @@ Válassza ismét a **+** ikont, ha a helyettesítő karaktert tartalmazó tartom
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> SSL-tanúsítvány hozzáadásához olvassa el a [meglévő egyéni SSL-tanúsítvány az Azure Web Appshez történő kötését](app-service-web-tutorial-custom-ssl.md) ismertető cikket.
+> Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Tesztelés a böngészőben
 
@@ -334,7 +334,7 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-További információ: [Egyéni tartomány leképezése egy webalkalmazásra](scripts/app-service-cli-configure-custom-domain.md). 
+További információ: [Egyéni tartomány leképezése egy webalkalmazásra](scripts/cli-configure-custom-domain.md). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +347,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-További információ: [Egyéni tartomány hozzárendelése egy webalkalmazáshoz](scripts/app-service-powershell-configure-custom-domain.md).
+További információ: [Egyéni tartomány hozzárendelése egy webalkalmazáshoz](scripts/powershell-configure-custom-domain.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -363,4 +363,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan köthet egyéni SSL-tanúsítványt webalkalmazásokhoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez](app-service-web-tutorial-custom-ssl.md)
+> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben](app-service-web-tutorial-custom-ssl.md)

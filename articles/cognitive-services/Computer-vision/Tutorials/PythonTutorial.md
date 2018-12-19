@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Computer Vision API Python'
+title: 'Oktatóanyag: Hajtsa végre a lemezkép műveletek – Python'
 titlesuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja a Computer Vision API-t és a Pythont Jupyter-notebookokkal. Az eredményeket népszerű címtárakkal jelenítheti meg.
 services: cognitive-services
@@ -8,24 +8,25 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: kefre
-ms.openlocfilehash: 16054d19c1ce6f211ebd3e2f0bbc4d152a255dda
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 55e5168c36eb16944142c2deaae9bc94d60d2fe4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276967"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582014"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Oktatóanyag: Computer Vision API Python
+# <a name="tutorial-computer-vision-api-python"></a>Oktatóanyag: Számítógép Vision API Python
 
-Ebben az oktatóanyagban megtudhatja, hogyan használható a Computer Vision API a Pythonban, és hogyan vizualizálhatók az eredmények népszerű kódtárak használatával. Az oktatóanyag futtatásához a Jupytert fogja használni. Ha többet szeretne megtudni az interaktív Jupyter-notebookok használatáról, tekintse meg a [Jupyter dokumentációját](http://jupyter.readthedocs.io/en/latest/index.html).
+Ebben az oktatóanyagban megtudhatja, hogyan használható a Computer Vision API a Pythonban, és hogyan vizualizálhatók az eredmények népszerű kódtárak használatával. Az oktatóanyag futtatásához a Jupytert fogja használni. Ha többet szeretne megtudni az interaktív Jupyter-notebookok használatáról, tekintse meg a [Jupyter dokumentációját](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A Python 2.7-es vagy újabb, illetve 3.5-ös vagy újabb verziója](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) eszköz
-- [Jupyter Notebook](http://jupyter.org/install) telepítve
+- [Jupyter Notebook](https://jupyter.org/install) telepítve
 
 ## <a name="open-the-tutorial-notebook-in-jupyter"></a>Az oktatóanyag notebookjának megnyitása a Jupyterben 
 
