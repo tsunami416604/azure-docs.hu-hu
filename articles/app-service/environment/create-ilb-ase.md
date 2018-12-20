@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 285bd8ec7ac5c4f0b39a32408c039c9616dc7a07
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604616"
+ms.locfileid: "53629883"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -78,7 +78,7 @@ Az ILB ASE létrehozása:
 
     * &lt;ase neve&gt;.p.azurewebsites.net
 
-   Az egyéni tartománynevek szolgáltatás lehetővé teszi, hogy leképezzen egy meglévő DNS-nevet a webalkalmazásra. Erről a szolgáltatásról a [meglévő DNS-név webalkalmazásra történő leképezését ismertető][customdomain] dokumentumban olvashat. Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
+   Is [meglévő DNS-név leképezése az alkalmazás][customdomain]. Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
 
     * www.contoso.com
 
@@ -88,7 +88,7 @@ Az ILB ASE létrehozása:
 
    Ha ismeri alkalmazásai egyéni tartományneveit, válasszon olyan tartományt az ILB ASE környezetnek, amely nem ütközik az egyéni tartománynevekkel. Ebben a példában használhatja a *contoso-internal.com* nevet az ASE tartományaként, mert az nem ütközik *.contoso.com* végződésű tartománynevekkel.
 
-1. Kattintson az **OK**, majd a **Létrehozás** gombra.
+8. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
     ! [ASE létrehozása] [1]
 
@@ -160,23 +160,23 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
 1. Szerezze be az ASE ILB-címét. Válassza ki az **ASE** > **Tulajdonságok** > **Virtuális IP-cím** elemet.
 
-1. Az ASE létrehozását követően hozzon létre egy webalkalmazást az ASE környezetben.
+2. Hozzon létre egy alkalmazást az ASE-t, az ASE létrehozását követően.
 
-1. Amennyiben nincs virtuális gépe abban a virtuális hálózatban, hozzon létre egyet.
+3. Amennyiben nincs virtuális gépe abban a virtuális hálózatban, hozzon létre egyet.
 
     > [!NOTE] 
     > Ne próbálja az ASE környezettel azonos alhálózatban létrehozni a virtuális gépet, mert az sikertelen lehet vagy problémákat okozhat.
     >
 
-1. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa a webalkalmazás nevét a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
+4. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa be az alkalmazás nevét, a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
 
-    a. Ha az ASE tartományneve _.ilbase.com_ és egy _mytestapp_ nevű webalkalmazást hoz létre, akkor annak címe _mytestapp.ilbase.com_ lesz. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (Windows rendszeren a hosts fájl a _C:\Windows\System32\drivers\etc\_ elérési úton található.)
+    a. Ha az ASE tartománynév _. ilbase.com_ hoz létre az alkalmazás neve és _mytestapp_, akkor _mytestapp.ilbase.com_. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (Windows rendszeren a hosts fájl a _C:\Windows\System32\drivers\etc\_ elérési úton található.)
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-1. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
+5. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. (Vagy bármilyen az alkalmazás nevére, a saját tartománnyal.)
 
-1. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
+6. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 
