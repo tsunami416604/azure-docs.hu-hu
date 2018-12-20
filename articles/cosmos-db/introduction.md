@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 0d4ae2ce567da0df9a15f229d3fc12e06c4993af
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 133f8e82d7a46bae11eb049b2d1c9393990c9042
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608375"
+ms.locfileid: "53634575"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
 A napjaink alkalmazásai válaszidejű, és mindig online szükségesek. Alacsony késéssel és magas rendelkezésre állás elérése érdekében ezeket az alkalmazásokat példányát kell üzembe helyezni a felhasználók közelében lévő adatközpontokban. Alkalmazások kell válaszolni a valós idejű használati nagy változások csúcsidőszakban, egyre növekvő mennyiségű adat tárolására, és az adatok elérhetővé tétele a felhasználók számára (MS).
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével egyetlen gombnyomással rugalmasan és függetlenül méretezhető az átviteli sebesség és a tárterület, akár több földrajzi Azure-régióra kiterjedően is. Rugalmasan méretezhető teljesítményt és tárolókapacitást, és gyors, számjegy-ezredmásodperces adatelérési kedvenc többek között az SQL, MongoDB, Apache Cassandra, táblák vagy Gremlin API használata előnyeinek kihasználása. A cosmos DB kínál átfogó [szolgáltatói szerződések](https://aka.ms/acdbsla) (SLA) átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia megvalósulásának, valamit egyéb adatbázis-szolgáltatás biztosítani képes.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB segítségével egyetlen gombnyomással rugalmasan és függetlenül méretezhető az átviteli sebesség és a tárterület, akár több földrajzi Azure-régióra kiterjedően is. Rugalmasan méretezhető teljesítményt és tárolókapacitást, és gyors, számjegy-ezredmásodperces adatelérési kedvenc többek között az SQL, a MongoDB, a Cassandra, a táblák vagy a Gremlin API használata előnyeinek kihasználása. A cosmos DB kínál átfogó [szolgáltatói szerződések](https://aka.ms/acdbsla) (SLA) átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia megvalósulásának, valamit egyéb adatbázis-szolgáltatás biztosítani képes.
 
 Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
@@ -82,17 +82,16 @@ A cosmos DB, az első és az csak szolgáltatást kínáló [iparágvezető átf
 
 Futtathat [Spark](spark-connector.md) Cosmos DB-ben tárolt adatokon. Ez a funkció lehetővé teszi a kis késésű, a üzemeltetési analytics globális méretekben tranzakciós munkaterhelések kezelésére közvetlenül a Cosmos DB szemben működő befolyásolása nélkül.
 
-### <a name="native-wire-compatible-mongodb-cassandra-gremlin-and-azure-table-storage-apis"></a>Natív átviteli-kompatibilis MongoDB, a Cassandra, a Gremlin és az Azure Table Storage API-k
+### <a name="develop-applications-for-cosmos-db-using-popular-nosql-apis"></a>A Cosmos DB, népszerű nosql-alapú API-k használata alkalmazások fejlesztéséhez
 
 A cosmos DB kínál frissítése, és lekérdezheti az adatokat a Cosmos-adatbázisban tárolt API-k közül választhat. Alapértelmezés szerint [használhatja az SQL](how-to-sql-query.md) frissítése és az adatok lekérdezése a Cosmos database.
 
-A cosmos DB is megvalósul [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), és [Gremlin](graph-introduction.md) vezeték-protokollok közvetlenül a szolgáltatásban. Ez lehetővé teszi, hogy pont Cassandra, MongoDB, a, vagy Gremlin-ügyfélillesztők (és -eszközök) közvetlenül az a Cosmos-adatbázis, és Cosmos dB-ben, egy teljes körűen felügyelt, globálisan elosztott, Cassandra vagy mongodb-hez/Gremlin--szolgáltatásként licencet, támogatás, anélkül, vagy az adatbázis szállítói költség műveletek. A Cassandra és mongodb-hez/Gremlin/Table storage API-k natív támogatását számos előnyt kínál. A következőket teheti:
+A cosmos DB is megvalósul [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) és [Azure Table Storage](table-introduction.md) vezeték-protokollok közvetlenül a szolgáltatásban. Ez lehetővé teszi, hogy az ügyfél-illesztőprogramok (és eszközök) pont a gyakran használt nosql-alapú API-t közvetlenül, a Cosmos-adatbázis. Átviteli protokoll a gyakran használt nosql-alapú API-támogatásával, Cosmos DB teszi lehetővé:
 
-* A Cassandra, MongoDB, Gremlin és Table Storage adatbázisokat egyszerűen migrálhatja a Cosmos DB-hez. 
-* Megőrzi az alkalmazáslogika változatlan marad, a Cosmos DB Cassandra, MongoDB, Gremlin és Table storage-adapterrel rendelkező adapter nagy részét.
+* Könnyen migrálhatja az alkalmazás a Cosmos DB-hez az alkalmazáslogika jelentős részeinek megőrzése mellett.
 * Hordozható tartani az alkalmazást, és továbbra is a felhőben gyártófüggetlen.
-* Iparági vezető, pénzügyi felelősséggel vállalt szolgáltatói szerződésekkel beolvasása a Cassandra és mongodb-hez/Gremlin adatbázis Cosmos DB segítségével. 
-* A Cassandra a rugalmasan skálázhatja a kiosztott átviteli sebesség és a storage és MongoDB adatbázisok igény szerint, és csak azért fizet az átviteli sebesség és a storage van szüksége. Ez jelentős költségmegtakarítást vezet.
+* Iparági vezető, pénzügyi felelősséggel vállalt szolgáltatói szerződésekkel kaphat a gyakori nosql-alapú API-k. 
+* Rugalmasan skálázhatja a kiosztott átviteli sebesség és a tárolás igény szerint az adatbázisok, és csak azért fizet az átviteli sebesség és a storage van szüksége. Ez jelentős költségmegtakarítást vezet.
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Az Azure Cosmos DB előnyeit kihasználó megoldások
 

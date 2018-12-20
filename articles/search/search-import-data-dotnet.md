@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
 ms.custom: seodec2018
-ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313292"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634898"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Adatfeltöltés az Azure Search szolgáltatásba, a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -208,11 +208,11 @@ public partial class Hotel
 Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `Hotel` felel meg az index definícióját, de egy lényeges különbséggel mező: Az egyes mezők neve során minden egyes nyilvános tulajdonsága neve kezdődik ("nagybetűs"), kisbetűvel `Hotel` egy nagybetűt ("Pascal eset") kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
-> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információk: [Egyéni szerializálás a JSON.NET használatával](search-howto-dotnet-sdk.md#JsonDotNet). Erre mutat példát a fenti mintakódban a `[JsonProperty]` attribútum használata a `DescriptionFr` tulajdonság esetében.
+> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információk: [Egyéni szerializálás a JSON.NET használatával](search-howto-dotnet-sdk.md#JsonDotNet). Erre mutat példát a fenti mintakódban a `[JsonProperty]` attribútum használata a `DescriptionFr` tulajdonság esetében.
 > 
 > 
 
-A `Hotel` osztállyal kapcsolatos másik fontos tényező a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `DataType.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `DataType.Boolean`, illetve a `DateTimeOffset?` és `DataType.DateTimeOffset` stb. között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_), a `Documents.Get` metódusnál található.
+A `Hotel` osztállyal kapcsolatos másik fontos tényező a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `DataType.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `DataType.Boolean`, illetve a `DateTimeOffset?` és `DataType.DateTimeOffset` stb. között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get), a `Documents.Get` metódusnál található.
 
 A saját osztályok dokumentumokként történő használatának képessége mindkét irányban működik; lekérdezheti a keresési eredményeket is, majd az SDK-val automatikusan deszerializáltathatja azokat a választott típusra, ahogy az a [következő cikkben](search-query-dotnet.md) látható.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 6bc354ef3451862e3567adbe5ff8ee6da0eacaf6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314873"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631498"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -74,12 +74,12 @@ Ha bejelentkezett, az alábbi képen láthatóhoz hasonló irányítópultot fog
 
 ![Felügyeleti irányítópult][ManagementDashboard]
 
-A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). Az alábbi példában egy HTTP-n és HTTPS-en forgalmat bonyolító Azure-webalkalmazás lett konfigurálva.
+A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). A következő példa egy App Service-alkalmazás a HTTP és HTTPS-en forgalmat bonyolító lett konfigurálva.
 
 ![Felügyelet – Szolgáltatások hozzáadása][ManagementAddServices]
 
 > [!NOTE]
-> Attól függően, hogyan konfigurálta alkalmazásait, és milyen szolgáltatásokat használ App Service Environment környezetében, a 80-as és a 443-as portoktól eltérő TCP-portra kell továbbítani a forgalmat, például ha egy webalkalmazás esetén IP SSL-beállítással rendelkezik. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
+> Attól függően, hogyan konfigurálta alkalmazásait, és milyen szolgáltatásokat használ az App Service-környezetben meg kell továbbítani a forgalmat a TCP 80-as és 443-as, például-astól különböző portok Ha App Service-alkalmazások az IP SSL-beállítással rendelkezik. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
 > 
 > 
 

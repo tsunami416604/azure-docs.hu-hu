@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-szkript mintát - alkalmazás létrehozása és folyamatos üzembe helyezés az Azure-Adattárakkal |} A Microsoft Docs
-description: Azure CLI-Példaszkript – webalkalmazás létrehozása az Azure-Adattárakkal történő folyamatos üzembe helyezéssel
+description: Azure CLI-Példaszkript – alkalmazás létrehozása az Azure-Adattárakkal történő folyamatos üzembe helyezéssel
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: jeconnoc
 ms.custom: seodec18
-ms.openlocfilehash: 98c3934bd969da77d9dcbef057e29d3db80bad03
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 90eaf7f57f524cb6e47d9d0f4e160855acd6daf5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585031"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633657"
 ---
-# <a name="create-a-web-app-with-continuous-deployment-using-azure-cli"></a>Hozzon létre egy webalkalmazást a folyamatos üzembe helyezés az Azure CLI használatával
+# <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Hozzon létre egy App Service-alkalmazás folyamatos üzembe helyezés az Azure CLI használatával
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezést egy Azure DevOps-adattárból. A példához a következők szükségesek:
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezés az Azure DevOps-adattárból. A példához a következők szükségesek:
 
 * Egy Azure DevOps-adattár az alkalmazáskóddal, amelyhez rendszergazdai jogosultság szükséges.
 * Egy [személyes hozzáférési jogkivonat (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) az Azure DevOps-szervezethez.
@@ -39,7 +39,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Create a web app with continuous deployment from Azure DevOps")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Create an app with continuous deployment from Azure DevOps")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -51,8 +51,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Társít egy Azure-webalkalmazást egy Git- vagy Mercurial-adattárhoz. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Egy App Service-alkalmazást a Git vagy Mercurial-adattárhoz társít. |
 
 ## <a name="next-steps"></a>További lépések
 

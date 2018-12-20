@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: aea6b9628ffff4ba5075338c48340b88c95b6174
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: 3f0d854c82934d0cb38139c4d198862fbbc85a18
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956857"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631379"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server online migrálása az Azure SQL Database-be a DMS használatával
 Az Azure Database Migration Service segítségével minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Migrálási jelentés letöltése.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
+> Az Azure Database Migration Service online áttelepítése használatához hozzon létre egy példányt prémium tarifacsomagban alapján.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
@@ -59,7 +59,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Gondoskodjon róla, hogy a forrásként szolgáló Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek CONTROL DATABASE engedéllyel a célként szolgáló Azure SQL adatbázisokban.
 - A forrás SQL Servernek 2005-ös vagy újabb verziójúnak kell lennie. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
 - Az adatbázis(ok)nak tömeges naplózási vagy teljes helyreállítási módban kell lenniük. Az SQL Server-példány helyreállítási modelljének megállapításához lásd az [adatbázis (SQL Server) helyreállítási modelljének megtekintésével vagy módosításával](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) foglalkozó cikket.
-- Mindenképpen készítsen teljes biztonsági mentést az adatbázisokról. Az adatbázisok teljes biztonsági mentésével kapcsolatban lásd az [adatbázis teljes biztonsági mentésének létrehozását (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)) ismertető cikket.
+- Mindenképpen készítsen teljes biztonsági mentést az adatbázisokról. Teljes biztonsági mentés létrehozásához lásd: a cikk [hogyan: Hozzon létre egy teljes biztonsági mentés (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)).
 - Ha valamelyik táblának nincs elsődleges kulcsa, engedélyezze az adatváltozások rögzítését (Change Data Capture, CDC) az adatbázisban és az adott táblán.
     > [!NOTE]
     > Az elsődleges kulccsal nem rendelkező táblákat az alábbi szkripttel keresheti meg.

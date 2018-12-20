@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 4375da496843242320000cc743da1d42beaac5c6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 48df416002a2c89e0172e82278f6154c6a6da836
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604956"
+ms.locfileid: "53630019"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -181,13 +181,13 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
 Megjelenik a webalkalmazás Áttekintés oldala. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 

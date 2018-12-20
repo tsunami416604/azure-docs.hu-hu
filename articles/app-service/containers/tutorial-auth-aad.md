@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 77dd9424f20017b009b3de2cd8f7f78314feb316
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d04fa3f01c468b71f0150812e543043c193c848f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600250"
+ms.locfileid: "53634694"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
 
@@ -86,7 +86,7 @@ Ebben a lépésben üzembe helyezi a projektet két App Service-alkalmazásban. 
 
 ### <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-A Cloud Shellben futtassa a következő parancsokat két webalkalmazás létrehozásához. Cserélje le az _&lt;előtér\_rendszeri\_alkalmazás\_neve>_ és a _&lt;háttér\_rendszeri\_alkalmazás\_neve>_ helyőrzőt két globális szinten egyedi alkalmazásnévre (érvényes karakterek: `a-z`, `0-9` és `-`). További információkat az egyes parancsokkal kapcsolatban a [.NET Core-webalkalmazás Linuxon futó App Service-ben való létrehozását](quickstart-dotnetcore.md) ismertető cikkben olvashat.
+A Cloud Shellben futtassa a következő parancsokat két App Service-alkalmazások létrehozásához. Cserélje le az _&lt;előtér\_rendszeri\_alkalmazás\_neve>_ és a _&lt;háttér\_rendszeri\_alkalmazás\_neve>_ helyőrzőt két globális szinten egyedi alkalmazásnévre (érvényes karakterek: `a-z`, `0-9` és `-`). Az egyes parancsok további információkért lásd: [egy .NET Core-alkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Az Azure-webalkalmazások megkeresése
+### <a name="browse-to-the-azure-apps"></a>Tallózással keresse meg az Azure-alkalmazások
 
 Nyissa meg a következő URL-címeket egy böngészőben, és ellenőrizze a két alkalmazás működését.
 
@@ -453,7 +453,7 @@ Az alábbiak elvégzését ismerte meg:
 > * Hozzáférési kódok használata kiszolgálói kódból
 > * Hozzáférési kódok használata az ügyfél (böngésző) kódjából
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 12e6b3a3fe790183a35c71fbb87243890ad22236
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
-ms.translationtype: HT
+ms.openlocfilehash: f295245cc14000e48cb3db55dc291edf02bb660e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944838"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634388"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure Portallal 
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások az Azure portal használatával 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások [Azure Portallal](https://portal.azure.com/) való használatának alapvető lépéseit mutatja be.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -45,7 +45,7 @@ A fájlmegosztás SMB-vel való csatlakoztatásához tekintse meg a használt op
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Azure-fájlmegosztás használata az Azure Portalról
-Az Azure Portalon keresztül intézett összes kérelem a fájl REST API-jával történik, amely lehetővé teszi a fájlok és könyvtárak létrehozását, módosítását és törlését SMB-hozzáférés nélküli ügyfeleken. A Fájl REST protokollal közvetlenül is dolgozhat (vagyis saját maga készítheti el a REST HTTP-hívásokat), de a Fájl REST protokoll használatának legáltalánosabb módja (az Azure Portal használatán túl) az [AzureRM PowerShell-modul](storage-how-to-use-files-powershell.md), az [Azure CLI](storage-how-to-use-files-cli.md) vagy egy Azure Storage SDK használata, amelyek megfelelő burkolóval látják el a Fájl REST protokollt a választott parancs-/programozási nyelven. 
+Az Azure Portalon keresztül intézett összes kérelem a fájl REST API-jával történik, amely lehetővé teszi a fájlok és könyvtárak létrehozását, módosítását és törlését SMB-hozzáférés nélküli ügyfeleken. Lehetséges dolgozhat közvetlenül a fájl REST protokoll közvetlenül (azaz handcrafting REST HTTP hív meg saját maga), de a leggyakoribb módja (kívül az Azure portal használatával) használatához a fájl REST protokoll használatára a [Azure PowerShell-modul](storage-how-to-use-files-powershell.md), a [Azure CLI-vel](storage-how-to-use-files-cli.md), vagy egy Azure Storage SDK, amelyek mindegyike adja meg a fájl REST-protokollon, a kiválasztott parancsfájlok és programozás nyelven nice burkolója. 
 
 Arra számítunk, hogy a legtöbb Azure Files-felhasználó az SMB protokollon keresztül kíván majd dolgozni az Azure-fájlmegosztásával, mivel ez lehetővé teszi számukra a mások által is vélhetően használt meglévő alkalmazások és eszközök használatát. A Fájl REST API használata azonban számos előnnyel jár az SMB-vel szemben, például a következő esetekben:
 

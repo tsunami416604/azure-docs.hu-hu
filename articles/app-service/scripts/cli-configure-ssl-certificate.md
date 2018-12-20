@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz | Microsoft Docs
-description: Azure CLI-példaszkript – Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz
+title: Az Azure CLI-Példaszkript – alkalmazás egyéni SSL-tanúsítvány kötése |} A Microsoft Docs
+description: Az Azure CLI-Példaszkript – alkalmazás egyéni SSL-tanúsítvány kötése
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 383bd26d1ec18621890337f0a89f72e0eff71abf
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 89483c6396ea344a035ec22bf79e2f90dada4c96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585028"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634643"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-cli"></a>Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz parancssori felület használatával
+# <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>Egyéni SSL-tanúsítvány kötése az App Service-alkalmazások parancssori felületről
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd hozzáköti egy egyéni tartománynév SSL-tanúsítványát. A példához a következők szükségesek:
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, majd egy egyéni tartománynév SSL-tanúsítványt összekapcsolja. A példához a következők szükségesek:
 
 * Hozzáférés a tartományregisztrálója DNS-konfigurációs oldalához.
 * Egy érvényes .PFX-fájl, valamint a kapcsolódó jelszó a feltölteni és hozzákötni kívánt SSL-tanúsítványhoz.
@@ -38,7 +38,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -50,10 +50,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Leképez egy egyéni tartományt egy webalkalmazásra. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Feltölt egy SSL-tanúsítványt egy webalkalmazáshoz. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Hozzáköt egy feltöltött SSL-tanúsítványt egy webalkalmazáshoz. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Leképez egy egyéni tartományt egy App Service-alkalmazást. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Feltölt egy SSL-tanúsítványt egy App Service-alkalmazást. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Hozzáköt egy feltöltött SSL-tanúsítványt egy App Service-alkalmazáshoz. |
 
 ## <a name="next-steps"></a>További lépések
 

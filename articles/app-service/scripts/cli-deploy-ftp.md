@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával
+title: Azure CLI-Példaszkript – alkalmazás létrehozása és üzembe helyezése FTP-fájlok |} A Microsoft Docs
+description: Azure CLI-Példaszkript – egy App Service-alkalmazás létrehozása és üzembe helyezése FTP-fájlok
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,16 +15,16 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 416b6573a7cec85442ca725583f8c53fa5a6c697
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 7bca306911dc72a2f8ec31d2ac80f99b4925c9fd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585029"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634286"
 ---
-# <a name="create-a-web-app-and-deploy-files-with-ftp-using-azure-cli"></a>Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával az Azure CLI használatával
+# <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>App Service-alkalmazások létrehozása és fájlok üzembe helyezése FTP használatával az Azure CLI használatával
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyez egy statikus HTML-oldalt FTP használatával. Az FTP-feltöltéshez a szkript a [cURL](https://en.wikipedia.org/wiki/CURL) segédprogramot használja példaként. A fájlok feltöltéséhez bármilyen FTP-eszközt használhat.
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, és ezután üzembe helyez egy statikus HTML-oldalt FTP használatával. Az FTP-feltöltéshez a szkript a [cURL](https://en.wikipedia.org/wiki/CURL) segédprogramot használja példaként. A fájlok feltöltéséhez bármilyen FTP-eszközt használhat.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +34,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create a web app and deploy files with FTP")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create an app and deploy files with FTP")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -46,8 +46,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Lekéri az elérhető webalkalmazás-telepítési profilok részleteit. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Részletes információkkal szolgál az elérhető telepítési profilok. |
 
 ## <a name="next-steps"></a>További lépések
 

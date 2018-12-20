@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256077"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632976"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
-Az Azure Web Apps használatával natív Linux-alkalmazásokat tehet elérhetővé a felhőben. A Web App for Containers szolgáltatás létrehozásához Azure CLI-parancsokat kell futtatnia, amelyek létrehoznak csoportot, majd egy szolgáltatáscsomagot, végül pedig magát a webalkalmazást. 
+Hozhat létre egy az imént leküldött rendszerkép használó alkalmazás, hozzon létre egy csoportot, majd egy szolgáltatáscsomagot, és végül magát a webalkalmazást az Azure CLI-parancsok futtatásához. 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

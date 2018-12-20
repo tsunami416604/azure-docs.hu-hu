@@ -1,5 +1,5 @@
 ---
-title: Python-webalkalmazás és PostgreSQL létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
+title: A PostgreSQL Python-alkalmazás létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
 description: Ismerje meg, hogyan futtathat egy PostgreSQL-adatbáziskapcsolattal rendelkező, adatvezérelt Python-alkalmazást az Azure-ban.
 services: app-service\web
 documentationcenter: python
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 86b80e8d2e4dbec96807edaba2dff813d0eda029
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 69e1bc5e537ed251801816f48d55cd50b54884c4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607421"
+ms.locfileid: "53635374"
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>A Python és PostgreSQL-webalkalmazás létrehozása az Azure App Service-ben
+# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Az Azure App Service a Python és PostgreSQL alkalmazás készítése
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy adatvezérelt Python-webalkalmazást PostgreSQL-háttéradatbázis segítségével. Ha elkészült, rendelkezni fog olyan Django-alkalmazást a linuxon futó App Service-ben.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre adatvezérelt Python-alkalmazás, adatbázis háttérrendszerként PostgreSQL használatával. Ha elkészült, rendelkezni fog olyan Django-alkalmazást a linuxon futó App Service-ben.
 
 ![Python Django-alkalmazást a linuxon futó App Service-ben](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -371,9 +371,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 Az App Service-ben rendszerbe állítási kiszolgáló látja _requirements.txt_ az adattár gyökérkönyvtárában és után automatikusan futtatja a Python-csomagkezelés `git push`.
 
-### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
+### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
 
-Keresse meg az üzembe helyezett webalkalmazást. Az elindítása hosszabb időt vesz igénybe, mivel a tárolót le kell tölteni és el kell indítani az alkalmazás első igénylésekor. Ha a lapon túllépi az időkorlátot vagy egy hibaüzenet jelenik meg, várjon néhány percet, és frissítse az oldalt.
+Az üzembe helyezett alkalmazás megkeresése tallózással. Az elindítása hosszabb időt vesz igénybe, mivel a tárolót le kell tölteni és el kell indítani az alkalmazás első igénylésekor. Ha a lapon túllépi az időkorlátot vagy egy hibaüzenet jelenik meg, várjon néhány percet, és frissítse az oldalt.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -403,15 +403,15 @@ Miután a tároló naplózása be van kapcsolva, a következő parancsot a napl�
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-## <a name="manage-your-web-app-in-the-azure-portal"></a>A webalkalmazás kezelése az Azure Portalon
+## <a name="manage-your-app-in-the-azure-portal"></a>Az Azure Portalon az alkalmazás kezelése
 
-Lépjen az [Azure Portalra](https://portal.azure.com), és tekintse meg a létrehozott webalkalmazást.
+Nyissa meg a [az Azure portal](https://portal.azure.com) szeretné megtekinteni a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás nevére.
 
-![Navigálás a portálon az Azure-webapphoz](./media/tutorial-python-postgresql-app/app-resource.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-python-postgresql-app/app-resource.png)
 
-Alapértelmezés szerint a portálon a webalkalmazás **Áttekintés** oldala jelenik meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
+Alapértelmezés szerint a portál megjeleníti az alkalmazás **áttekintése** lapot. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
 ![Az App Service lap az Azure Portalon](./media/tutorial-python-postgresql-app/app-mgmt.png)
 
@@ -428,7 +428,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók megtekintése
 > * Az alkalmazás kezelése az Azure Portalon
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)

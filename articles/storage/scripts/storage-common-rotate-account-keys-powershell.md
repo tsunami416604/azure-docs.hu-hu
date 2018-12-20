@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - Elforgatás tárfiók_elérési_kulcsa |} Microsoft Docs
-description: Hozzon létre egy Azure Storage-fiókot, majd kérje le, majd forgassa el a tárelérési kulcsok egyikét.
+title: Az Azure PowerShell-Példaszkript – rotálása tárfiók hozzáférési kulcsát |} A Microsoft Docs
+description: Hozzon létre egy Azure Storage-fiókot, majd lekérdezni, és egy hozzáférési kulcsainak rotálása.
 services: storage
 documentationcenter: na
 author: tamram
@@ -15,47 +15,47 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: a7aaacf316799540a6a72b699ba8ea8bb389c8a8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: 026c399af70a0c97446fba28b5dd7ca1ed82b89c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25984162"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635493"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Hozzon létre egy tárfiókot, és a fiók hozzáférési kulcsait elforgatása
+# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tárfiók létrehozása és a hozzáférési kulcsainak rotálása
 
-Ez a parancsfájl létrehoz egy Azure Storage-fiókot, jeleníti meg az új tárfiók elsődleges elérési kulcsát, majd megújítja (forog) a kulcsot.
+Ez a szkript létrehoz egy Azure Storage-fiókot, megjeleníti az új tárfiók elsődleges hívóbetűjét, majd megújítja (rotálja) a kulcsot.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő paranccsal távolítsa el az erőforráscsoportot, storage-fiók és minden kapcsolódó erőforrás.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a tárfiók és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name rotatekeystestrg
+Remove-AzResourceGroup -Name rotatekeystestrg
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a storage-fiók létrehozása és beolvasása és elforgatása a tárelérési kulcsok egyikét. A tábla hivatkozások parancs vonatkozó dokumentációt összes elemére.
+Ez a szkript a következő parancsokat használja, a storage-fiók létrehozása, lekéréséhez és rotálásához a hozzáférési kulcsok egyikét. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) | Minden hely és a támogatott szolgáltatók beolvasása mindegyik helyen. |
-| [Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Egy Azure-erőforráscsoportot hoz létre. |
-| [Új-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Létrehoz egy tárfiókot. |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Lekérdezi az Azure-tárfiók hozzáférési kulcsainak listázása. |
-| [Új AzureRmStorageAccountKey](/powershell/module/azurerm.storage/new-azurermstorageaccountkey) | Egy egy Azure Storage-fiók elérési kulcsának újragenerálása. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Minden hely és a támogatott erőforrás-szolgáltatók beolvasása minden helyen. |
+| [Új AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot. |
+| [Új AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
+| [Új AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Az Azure Storage-fiókhoz tartozó hozzáférési kulcs újragenerálása. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További tárhely PowerShell parancsfájl minták található [Azure Blob storage PowerShell-példák](../blobs/storage-samples-blobs-powershell.md).
+További PowerShell-példaszkripteket az [Azure Blob Storage Azure PowerShell-példái](../blobs/storage-samples-blobs-powershell.md) között találhat.

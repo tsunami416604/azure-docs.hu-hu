@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 11/28/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c920782810cc8b7b302799a5bab53a737b11c0a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 787a817b32838d11cb8974737037543f73285b0d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853059"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653425"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rövid útmutató: Egy token beszerzéséhez, és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -37,22 +37,19 @@ Ez a rövid útmutatóhoz [.NET Core 2.1](https://www.microsoft.com/net/download
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
-
-> [!div renderon="portal" class="sxs-lookup"]
+>
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Kézi] [2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Express] [1. lehetőség: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Manuális] [2. lehetőség: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta
 >
-> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) szakaszt.
+> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) szakaszt.
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta
 >
-
-> [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
@@ -67,6 +64,8 @@ Ez a rövid útmutatóhoz [.NET Core 2.1](https://www.microsoft.com/net/download
 > 1. A **felhasználói** csomópontban jelölje ki **User.Read.All**, majd **engedélyek hozzáadása**
 
 > [!div class="sxs-lookup" renderon="portal"]
+> ### <a name="download-and-configure-your-quickstart-app"></a>Töltse le és állítsa be a rövid útmutató alkalmazását
+> 
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > A kódminta működjön ez a rövid útmutató, hozzon létre egy ügyfélkulcsot, és adja hozzá a Graph API-k szüksége **User.Read.All** alkalmazásnak.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -75,7 +74,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.1](https://www.microsoft.com/net/download
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
+#### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
 [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
@@ -99,6 +98,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.1](https://www.microsoft.com/net/download
     >> * `Enter_the_Tenant_Id_Here` – Ezt az értéket cserélje le a **Bérlőazonosító** vagy **bérlő neve** (például contoso.microsoft.com)
     >> * `Enter_the_Client_Secret_Here` – Ezt az értéket cserélje le az 1. lépésben létrehozott, az ügyfél titkos kulcsát.
 
+    > [!div renderon="docs"]
     > > [!TIP]
     > > Az értékek azonosításához **Alkalmazásazonosítót (ügyfél)**, **(bérlő) címtár-azonosító**, lépjen az alkalmazás a **áttekintése** oldal az Azure Portalon. Hozzon létre egy új kulcsot, lépjen a **tanúsítványok és titkos kulcsok** lapot.
     
@@ -130,9 +130,9 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 
 > [!NOTE]
-> A hiba jelenhet *"AADSTS50011: nincs Válaszcím regisztrálva van az alkalmazás"* után hozzájárulás az alkalmazáshoz, a fenti URL-cím használatával. Ez történik, mert ez az alkalmazás és az URL-cím nem kell átirányítási URI - hagyja figyelmen kívül a hibát.
+> A hiba jelenhet *"AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van a(z)* után hozzájárulás az alkalmazáshoz, a fenti URL-cím használatával. Ez történik, mert ez az alkalmazás és az URL-cím nem kell átirányítási URI - hagyja figyelmen kívül a hibát.
 
-#### <a name="step-5-run-the-application"></a>5. lépés: Az alkalmazás futtatásához.
+#### <a name="step-5-run-the-application"></a>5. lépés: Az alkalmazás futtatása
 
 A Visual Studio használatakor nyomja le az ENTER **F5** az alkalmazás futtatásához, ellenkező esetben az alkalmazás futtatásához parancssort vagy a konzolon keresztül:
 

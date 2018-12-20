@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 8/2/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f07bcf3cb1b489ad7ec06dff1437e49d83748998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878303"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631160"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -78,17 +78,17 @@ A következő táblázat az Azure Backup használatával védhető adatokat és 
 | Azure IaaS virtuális gépek (Linux) |Azure-ban futó |[Azure Backup (virtuálisgép-bővítmény)](backup-azure-vms-introduction.md) |
 
 ## <a name="linux-support"></a>Linux-támogatás
-Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevőket.  
+Az alábbi táblázat a Linux támogatott az Azure Backup-összetevőket.  
 
-| Összetevő | Linux (Azure által támogatott) támogatása |
-| --- | --- |
-| Azure Backup (MARS) ügynöke |Nem (csak Windows-alapú ügynök) |
-| System Center DPM |<li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> <li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása </br> </br>  *Azure-beli virtuális gépekhez nem érhető el fájlkonzisztens biztonsági mentés* <br/> |
-| Azure Backup Server |<li>Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> <li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása </br></br> *Azure-beli virtuális gépekhez nem érhető el fájlkonzisztens biztonsági mentés*  |
-| Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
+**Összetevő** | **Linux (Azure által támogatott)**
+--- | --- 
+Azure Backup (MARS) ügynöke | Nincs (Windows-alapú ügynök csak) 
+System Center DPM | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
+Azure Backup Server | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés 
+Azure IaaS virtuális gép biztonsági mentése | Alkalmazáskonzisztens biztonsági mentés használatával a [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/><br/> [A fájlszintű helyreállítási](backup-azure-restore-files-from-vm.md)<br/><br/> [Virtuális gép létrehozása a visszaállított lemezről](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Virtuális gép létrehozása egy helyreállítási pontból](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
-Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../virtual-machines/windows/premium-storage.md) ismertető cikkben.
+Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Prémium szintű Storage szolgáltatással kapcsolatos további információkért tekintse meg a cikket, [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../virtual-machines/windows/premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>A Premium Storage virtuális gépek biztonsági mentése
 Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy megfelelő mennyiségű szabad hely áll rendelkezésre a Prémium szintű Storage-fiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
@@ -209,7 +209,7 @@ A védett példány egy általános elnevezés az olyan Windows-számítógépek
 Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Példa:
 
 * Egy Hyper-V vagy Azure IaaS hipervizorhálót futtató virtuális gép. A virtuális gép vendég operációs rendszerei lehetnek Windows Server vagy Linux rendszerek.
-* Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy virtuális gép, amely a Windows Servert futtatja, valamint olyan számítási feladatokat, amelyekről biztonsági másolatot kell készíteni. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange Server, a Microsoft SharePoint Server, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.
+* Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy biztonsági mentése szükséges adatokat a számítási feladatok és a Windows Server rendszerű virtuális gépet. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange Server, a Microsoft SharePoint Server, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.
 * Egy személyi számítógép, munkaállomás vagy laptop, amelyen a Windows operációs rendszer fut.
 
 

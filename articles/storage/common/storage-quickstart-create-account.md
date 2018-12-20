@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Tárfiók létrehozása – Azure Storage'
+title: 'Gyors útmutató: Hozzon létre egy storage-fiók – Azure Storage'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre tárfiókokat az Azure Portal, az Azure PowerShell vagy az Azure CLI használatával. Az Azure Storage-fiók egyedi névteret biztosít a Microsoft Azure-ban a létrehozott Azure Storage-adatobjektumok tárolásához és eléréséhez.
 services: storage
 author: tamram
@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: d34be70e3283869a28f036f0016a0d3f8f241a8a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990127"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634847"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre tárfiókokat az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +32,7 @@ Nincs.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz az Azure PowerShell-modul Az 0,7 vagy újabb verziója. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -63,10 +65,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -95,26 +97,26 @@ Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatás
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Először is hozzon létre egy új erőforráscsoportot a PowerShell használatával, a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal: 
+Először hozzon létre egy új erőforráscsoportot a PowerShell a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-Ha nem biztos abban, hogy melyik régiót kell megadnia a `-Location` paraméterhez, az előfizetéséhez tartozó támogatott régiók listáját a [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) paranccsal kérheti le:
+Ha nem biztos abban, hogy melyik régiót kell megadnia a `-Location` paramétert, kérheti a támogatott régiók listáját az előfizetéséhez tartozó a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot:
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "westus"
 ```
 
-Ezután hozza létre az általános célú v2-tárfiókot helyileg redundáns tárolással (LRS). Használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsot: 
+Ezután hozza létre az általános célú v2-tárfiókot helyileg redundáns tárolással (LRS). Használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot: 
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -186,10 +188,10 @@ Erőforráscsoport eltávolítása az Azure Portallal:
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-A [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is: 
+Eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)

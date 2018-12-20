@@ -1,5 +1,5 @@
 ---
-title: PHP-MySQL-webalkalmazás összeállítása linuxon – az Azure App Service |} A Microsoft Docs
+title: PHP-alkalmazás és MySQL létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
 description: Ismerje meg, hogyan tehet szert az Azure App Service Linux rendszeren dolgozik az Azure-ban MySQL-hez a PHP-alkalmazás.
 services: app-service\web
 author: cephalin
@@ -11,20 +11,20 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3944b9356fd61d87df10879a2f4eb9a0d5df4f61
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 48f2a6cfe365a113d6538faa77061ec6d585a0bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607370"
+ms.locfileid: "53628221"
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>PHP- és MySQL-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
+# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>A php-t és az Azure App Service MySQL-alkalmazás létrehozása linuxon
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [PHP- és MySQL-webalkalmazás létrehozása az Azure-ban](../app-service-web-tutorial-php-mysql.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. Az App Service-ben üzembe _Windows_, lásd: [hozhat létre egy PHP- és MySQL-alkalmazást az Azure-ban](../app-service-web-tutorial-php-mysql.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre PHP-webalkalmazást, és hogyan csatlakoztathatja azt egy MySQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Laravel](https://laravel.com/)-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazás, és azt egy MySQL-adatbázishoz csatlakozhat. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Laravel](https://laravel.com/)-alkalmazás lesz.
 
 ![Az Azure App Service-ben futó PHP-alkalmazás](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -373,13 +373,13 @@ A `php artisan` használatával hozhat létre új alkalmazáskulcsot anélkül, 
 php artisan key:generate --show
 ```
 
-Állítsa be az alkalmazáskulcsot az App Service-webalkalmazásban az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) paranccsal. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
+Állítsa be az alkalmazáskulcsot az App Service-alkalmazás használatával az [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot. Cserélje le az _&lt;appname>_ és az _&lt;outputofphpartisankey:generate>_ helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-Az `APP_DEBUG="true"` arra utasítja a Laravelt, hogy küldje el a hibakeresési információkat, amikor az üzembe helyezett webalkalmazás hibába ütközik. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
+`APP_DEBUG="true"` arra utasítja a Laravel, hibakeresési információkat ad vissza, ha az üzembe helyezett alkalmazás hibába ütközik. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
@@ -422,7 +422,7 @@ remote: Running deployment command...
 > Ezzel a módszerrel bármilyen lépést hozzáadhat a Git-alapú üzembe helyezéshez az App Service-ben. További információkért lásd: [Egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
+### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
 
 Egy böngészőben keresse fel az `http://<app_name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
@@ -566,21 +566,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, lépjen az Azure-webalkalmazáshoz, és tesztelje az új funkciót.
+Miután a `git push` befejeződött, nyissa meg az Azure-alkalmazást, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
 Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissítései érintetlenül hagyják a meglévő adatokat.
 
-## <a name="manage-the-azure-web-app"></a>Az Azure webalkalmazás felügyelete
+## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az [Azure Portalra](https://portal.azure.com).
+Nyissa meg a [az Azure portal](https://portal.azure.com) kezelheti a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/tutorial-php-mysql-app/access-portal.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -602,7 +602,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazásokhoz.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)

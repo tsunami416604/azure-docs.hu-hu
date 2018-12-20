@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986117"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630699"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
 Ebben az oktatóanyagban bemutatjuk a Windows Server tárterület kapacitásának megnöveléséhez szükséges alapvető lépéseket az Azure File Sync használatával. Bár ebben az oktatóanyagban egy Windows Server Azure VM gépet használunk, a folyamatot általában helyszíni kiszolgálókra végzik el. Ha már készen áll a saját környezetében az Azure File Sync üzembe helyezésére, akkor használja az [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md) cikket.
@@ -163,14 +163,14 @@ A **Windows Server 2016 Datacenter** virtuális gépben a **Kiszolgálókezelő*
 
 1. Zárja be az **Explorert** és a **Kiszolgálókezelőt**.
 
-### <a name="download-the-azurerm-powershell-module"></a>Az AzureRM PowerShell-modul letöltése
-Ezután a **Windows Server 2016 Datacenter** virtuális gépen telepítse az **AzureRM PowerShell-modult** a kiszolgálóra.
+### <a name="download-the-azure-powershell-module"></a>Az Azure PowerShell-modul letöltése
+Ezután a **Windows Server 2016 Datacenter** virtuális Gépet, telepítse a **Azure PowerShell-modul** a kiszolgálón.
 
 1. A virtuális gépen nyisson meg egy rendszergazda jogú PowerShell-ablakot
 1. Futtassa az alábbi parancsot:
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ Ezután a **Windows Server 2016 Datacenter** virtuális gépen telepítse az **A
 
 1. A telepítés folytatásához válassza a `Yes` vagy a `Yes to All` lehetőséget.
 
-Az `AzureRM` modul az Azure PowerShell-parancsmagok összesített modulja. A modul telepítésével letölti az összes elérhető Azure Resource Manager-modult, és használatra elérhetővé teszi a parancsmagjaikat.
+Az `Az` modul az Azure PowerShell-parancsmagok összesített modulja. A modul telepítésével letölti az összes elérhető Azure Resource Manager-modult, és használatra elérhetővé teszi a parancsmagjaikat.
 
 Ezen a ponton elkészült az oktatóanyaghoz szükséges környezeti beállításokkal és készen áll a **Társzinkronizálási szolgáltatás** üzembe helyezésére.
 
@@ -237,7 +237,7 @@ Sikeresen üzembe helyezte az Azure Sync szolgáltatást és telepítette az üg
 ## <a name="register-windows-server"></a>A Windows Server regisztrálása
 A Windows Server regisztrálásával a Társzinkronizálási szolgáltatásra megbízhatósági kapcsolatot hoz létre a kiszolgáló (vagy fürt) és a Társzinkronizálási szolgáltatás között. A kiszolgáló csak egy Társzinkronizálási szolgáltatásra regisztrálható és az ugyanahhoz a Társzinkronizálási szolgáltatáshoz társított kiszolgálókkal és Azure-fájlmegosztásokkal képes szinkronizálni.
 
-Az **Azure File Sync ügynök** telepítése után automatikusan megnyílik a kiszolgáló regisztrációs felhasználói felület. Ha nem, akkor manuálisan is megnyithatja, a fájl helye: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+Az **Azure File Sync ügynök** telepítése után automatikusan megnyílik a kiszolgáló regisztrációs felhasználói felület. Ha nem, manuálisan is megnyithatja, a fájlok helyéről: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
 
 1. Amikor a kiszolgáló regisztrációs felhasználói felülete megnyílik a virtuális gépen, kattintson az **OK** gombra.
 1. Kattintson a **Bejelentkezésre** a kezdéshez.

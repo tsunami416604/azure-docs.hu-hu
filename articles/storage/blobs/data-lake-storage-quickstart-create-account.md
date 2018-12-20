@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 914dcf6d19ca0791c5914e7d605e48f15a610d62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d093dbe50cb76faedc463603edc459b22dda4fba
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099511"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628238"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Azure Data Lake Storage Gen2-storage-fiók létrehozása
+# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása
 
 Az Azure Data Lake Storage Gen2 [támogatja a hierarchikus Namespace szolgáltatás](data-lake-storage-introduction.md) directory-alapú natív biztosító fájlrendszer működik együtt a Hadoop elosztott fájlrendszer (HDFS) felhasználva. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](data-lake-storage-abfs-driver.md) keresztül érhetők el.
 
@@ -89,7 +89,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 2. Válassza ki a **előfizetés** és a **erőforráscsoport** korábban létrehozott.
 3. Adja meg a tárfiók nevét.
 4. A **Hely** mezőben adja meg az **USA 2. nyugati régiója** értéket.
-5. Hagyja meg a következő mezők alapértelmezett értékeit: **teljesítmény**, **fióktípus**, **replikációs**, **hozzáférési szint**.
+5. Hagyja meg a következő mezők alapértelmezett értékeit: **Teljesítmény**, **fióktípus**, **replikációs**, **hozzáférési szint**.
 6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
 7. Válassza ki **tovább: Speciális >**
 8. Az értékek területen hagyja **biztonsági** és **virtuális hálózatok** mezők megmaradnak az alapértelmezett értéke.
@@ -116,21 +116,11 @@ Ezután a powershell-modul frissítése, jelentkezzen be az Azure-előfizetése,
 
 ### <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Modul Az.Storage verziót telepíteni kell a PowerShell használatával kommunikálhat a Data Lake Storage Gen2, **0,7** vagy újabb.
 
 Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
-
-Ezután határozza meg, ha rendelkezik a telepített AzureRM.Storage modulban.
-
-```powershell
-Get-Module -ListAvailable AzureRM.Storage
-```
-
-Ha egy modul jelenik meg, majd távolítsa el azt.
-
-```powershell
-Uninstall-Module AzureRM.Storage -Force
-```
 
 A Az.Storage modul telepítése
 
@@ -138,28 +128,20 @@ A Az.Storage modul telepítése
 Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
 ```
 
-Az AzureRM kompatibilitási mód engedélyezéséhez.
-
-```powershell
-Enable-AzureRMAlias
-```
-
-Kompatibilitási üzemmódját, az azt jelenti, hogy minden olyan parancsfájlok, amelyek használják az AzureRM.Storage modulban továbbra is működhetnek annak ellenére már eltávolította a AzureRM.Storage modulban.
-
 > [!NOTE]
-> Powershell Az Azure-modulok olyan az előnyben részesített modulok az Azure-szolgáltatásokat a Powershell használatához. További tudnivalókért lásd: [az Azure PowerShell-lel Az új modul bevezetése](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0).
+> Powershell Az Azure-modulok olyan az előnyben részesített modulok az Azure-szolgáltatásokat a Powershell használatához. További tudnivalókért lásd: [az Azure PowerShell-lel Az új modul bevezetése](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 ### <a name="log-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetéshez
 
-Használja a `Login-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
+Használja a `Login-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
 
 ```powershell
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az új erőforráscsoport PowerShell használatával történő létrehozása a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal történik: 
+A PowerShell használatával egy új erőforráscsoport létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
 > [!NOTE]
 > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető. Szuverén felhőkben jelenleg nem érhető el.
@@ -169,17 +151,17 @@ Az új erőforráscsoport PowerShell használatával történő létrehozása a 
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
 $location = "westus2"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 
-Egy helyileg redundáns tárolást (LRS) használó általános célú v2-tárfiók létrehozásához a PowerShellben használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsot:
+Egy általános célú v2-tárfiók létrehozásához a PowerShellben a helyileg redundáns tárolás (LRS) használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
 
 ```powershell
 $location = "westus2"
 
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -189,10 +171,10 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is: 
+Eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="create-an-account-using-azure-cli"></a>Fiók létrehozása az Azure CLI használatával

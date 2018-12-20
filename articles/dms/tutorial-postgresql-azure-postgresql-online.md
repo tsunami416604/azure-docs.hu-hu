@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/19/2018
+ms.openlocfilehash: 7eb5fd5d53499180b85fe268ef95d787e6e5b0cf
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000908"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629713"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni PostgreSQL-példány adatbázisait az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban a **DVD Rental** mintaadatbázist fogja migrálni a PostgreSQL 9.6 egy helyszíni példányáról az Azure Database for PostgreSQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A migrálás monitorozása.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
+> Az Azure Database Migration Service online áttelepítése használatához hozzon létre egy példányt prémium tarifacsomagban alapján.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
@@ -188,10 +188,10 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     ```
 
     Például a következő parancs szolgáltatást hoz létre az alábbi helyen:
-    - Hely: az USA 2. keleti régiója
+    - Hely: USA 2. keleti régiója
     - Előfizetés: 97181df2-909d-420b-ab93-1bff15acb6b7
     - Erőforráscsoport neve: PostgresDemo
-    - DMS-szolgáltatás neve: PostgresCLI
+    - A DMS-szolgáltatás neve: PostgresCLI
 
     ```
     az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
@@ -233,7 +233,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     ```
     Például a következő parancs létrehoz egy projektet az alábbi paraméterek használatával:
 
-      - Hely: az USA nyugati középső régiója
+      - Hely: USA nyugati középső régiója
       - Erőforráscsoport neve: PostgresDemo
       - Szolgáltatás neve: PostgresCLI
       - Projekt neve: PGMigration

@@ -9,210 +9,239 @@ ms.topic: tutorial
 ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 77a2b8d2b5d3ac42dcbbe2db2b05d38657290073
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c0901f22e4941fdfaa21138153a06e97c2d6095f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443782"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630376"
 ---
-# <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatok átalakítása az Azure Data Box Edge segítségével (előzetes verzió)
+# <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatátalakítás az Azure Data Box Edge (előzetes verzió)
 
-Az oktatóanyag ismerteti, hogyan konfigurálhat számítási szerepköröket a Data Box Edge-ben. Miután konfigurált egy számítási szerepkört, a Data Box Edge képessé válik az adatok átalakítására, mielőtt beküldené őket az Azure-nak.
+Ez az oktatóanyag leírja a számítási szerepkör konfigurálása az Azure Data Box Edge-eszközön. Miután konfigurálta a számítási szerepkör, a Data Box Edge is mielőtt elküldené az Azure-bA adatok átalakítása.
 
-A folyamat elvégzése körülbelül 30-45 percet vesz igénybe.
+Ez az eljárás befejezéséhez körülbelül 30-45 percig is eltarthat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * IoT Hub-erőforrás létrehozása
+> * Az Azure IoT Hub-erőforrás létrehozásához
 > * Számítási szerepkör beállítása
 > * Számítási modul hozzáadása
 > * Adatok átalakításának ellenőrzése és adatok átvitele
 
 > [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Data Box Edge előzetes verzióban érhető el. Order, és a megoldás üzembe helyezése előtt tekintse át a [Azure villámnézethez szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt beállítaná a számítást a Data Box Edge-ben, ellenőrizze az alábbiakat:
+A Data Box Edge-eszközön beállítása egy számítási szerepkört, előtt ellenőrizze, hogy:
 
-* A Data Box Edge-eszköz aktiválva van az [Azure Data Box Edge csatlakoztatását és aktiválását](data-box-edge-deploy-connect-setup-activate.md) ismertető cikkben leírt módon.
+* Miután aktiválta a Data Box peremhálózati eszköz, leírtak szerint [kapcsolódás beállítása, és aktiválja az Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="create-an-iot-hub-resource"></a>IoT Hub-erőforrás létrehozása
 
-Mielőtt beállítaná a számítási szerepkört a Data Box Edge-ben, létre kell hoznia egy IoT Hub-erőforrást.
+A számítási szerepkör Data Box Edge beállítása előtt létre kell hoznia egy IoT Hub-erőforrást.
 
-Részletes útmutatásért lásd az [új IoT Hub létrehozását](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#create-an-iot-hub) ismertető témakört. Használja ugyanazt az előfizetést és erőforráscsoportot, amelyet a Data Box Edge-erőforráshoz is használt.
+Részletes útmutatásért lásd az [új IoT Hub létrehozását](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#create-an-iot-hub) ismertető témakört. A Data Box Edge erőforrás használt azonos előfizetésben és erőforráscsoportban csoportot használja.
 
 ![IoT Hub-erőforrás létrehozása](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Ha az Edge számítási szerepkör még nincs beállítva, vegye figyelembe az alábbiakat:
+Ha egy Edge számítási szerepkör még nincs beállítva, az alábbi korlátozásokkal érvényesek:
 
-- Az IoT Hub-erőforrás nem rendelkezik IoT-eszközökkel vagy IoT Edge-eszközökkel.
+- Az IoT Hub-erőforrás nincs bármely Azure-IoT-eszközök vagy az Azure IoT Edge-eszközökön.
 - Nem hozhat létre helyi Edge-megosztásokat. Amikor megosztást ad hozzá, nincs engedélyezve az a lehetőség, amely engedélyezné a helyi megosztások létrehozását az Edge-számításokhoz.
 
 
 ## <a name="set-up-compute-role"></a>Számítási szerepkör beállítása
 
-Amikor az Edge számítási szerepkört beállítja az Edge-eszközön, két eszköz jön létre - az egyik egy IoT-, a másik egy IoT Edge-eszköz. Mindkét eszköz megtekinthető az IoT Hub-erőforrásban.
+Az Edge-eszközön a peremhálózati számítási szerepkör be van állítva, ha két eszközt hoz létre: egy IoT-eszköz és az IoT Edge-eszköz. Mindkét eszköz az IoT Hub erőforrás lehet megtekinteni.
 
-Az alábbi lépésekkel állíthat be számítási szerepkört az eszközön.
+Az eszközön a számítási szerepkör beállításához, tegye a következőket:
 
-1. Nyissa meg a Data Box Edge-erőforrást, nyissa meg az **áttekintési** oldalt, majd kattintson a **Számítási szerepkör beállítása** elemre. 
+1. Lépjen a Data Box Edge erőforrás, válassza ki a **áttekintése**, majd válassza ki **állítsa be a számítási szerepkör**. 
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-1.png)
+    ![A bal oldali ablaktáblán a áttekintése hivatkozás](./media/data-box-edge-deploy-configure-compute/setup-compute-1.png)
    
-    Azt is megteheti, hogy a **Modulok** oldalra lép, és rákattint a **Számítás konfigurálása** gombra.
+    Másik lehetőségként megnyithatja **modulok** válassza **számítás konfigurálása**.
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-2.png)
+    ![A "Moduloknak" és a "Számítás konfigurálása" hivatkozások](./media/data-box-edge-deploy-configure-compute/setup-compute-2.png)
  
-2. A legördülő menüből válassza ki az előző lépésben létrehozott **IoT Hub-erőforrást**. Az IoT Edge-eszközön ezen a ponton csak a Linux platform érhető el. Kattintson a **Create** (Létrehozás) gombra.
+1. A legördülő listában válassza ki a **az IoT Hub erőforrás** az előző lépésben létrehozott.  
+    Ezen a ponton csak a Linux rendszeren érhető el az IoT Edge-eszköz. 
+    
+1. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-3.png)
+    ![A Létrehozás gombra](./media/data-box-edge-deploy-configure-compute/setup-compute-3.png)
  
-3. A számítási szerepkör létrehozása néhány percet vesz igénybe. A jelenlegi kiadás hibája miatt a képernyő akkor sem frissül, ha a számítási szerepkör már létrejött. Lépjen a **Modulok** oldalra, ahol ellenőrizheti, hogy az Edge-számítás konfigurálva van-e.  
+    A számítási szerepkör létrehozása néhány percet vesz igénybe. A jelenlegi kiadás hibája miatt a képernyő akkor sem frissül, ha a számítási szerepkör már létrejött. Győződjön meg arról, hogy az Edge számítási szerepkör konfigurálva van-e, lépjen a **modulok**.  
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-4.png)
+    ![A "Konfigurálás Edge számítási" eszközök listája](./media/data-box-edge-deploy-configure-compute/setup-compute-4.png)
 
-4. Lépjen újra az **Áttekintés** oldalra. A képernyő most már frissül, és jelzi, hogy a számítási szerepkör konfigurálva van.
+1. Lépjen a **áttekintése** újra.  
+    A képernyő frissül, annak jelzésére, hogy a számítási szerepkör van-e konfigurálva.
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-5.png)
+    ![A számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-5.png)
  
-5. Lépjen az Edge számítási szerepkör létrehozásakor használt IoT Hubhoz. Lépjen az **IoT-eszközökre**. Láthatja, hogy egy IoT-eszköz már engedélyezve van. 
+1. Az IoT Hub, az Edge számítási szerepkör létrehozásakor használt, lépjen a **IoT-eszközök**.  
+    Egy IoT-eszköz most már engedélyezve van. 
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
+    ![Az "IoT-eszközök" oldal](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
 
-6. Lépjen az **IoT Edge** részhez, ahol láthatja, hogy egy IoT Edge-eszköz is engedélyezve van.
+1. A bal oldali panelen válassza ki a **IoT Edge**.  
+    IoT Edge-eszköz is engedélyezve van.
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-7.png)
+    ![A számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-7.png)
  
-7. Válassza ki az IoT Edge-eszközt, és kattintson rá. Ezen az IoT Edge-eszközön egy Edge-ügynök fut. 
+1. Válassza ki az IoT Edge-eszközt, és kattintson rá.  
+    Ezen az IoT Edge-eszközön egy Edge-ügynök fut. 
 
-    ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
+    ![Az eszköz részleteit megjelenítő oldalon](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Az Edge-eszköz egyelőre nem tartalmaz egyéni modulokat, azokat most tudja hozzáadni. Az egyéni modulok létrehozásának megismeréséért lépjen [a C#-modulok a Data Box Edge-hez való fejlesztését ismertető szakaszra](data-box-edge-create-iot-edge-module.md).
+    Nincsenek nem egyéni modulok az Edge-eszközön, de most már hozzáadhat egy egyéni modult. Ismerje meg, hogyan hozhat létre egy egyéni modult, lépjen a [Develop egy C# modul a Data Box Edge-eszköz](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Egyéni modul hozzáadása
 
-Ebben a szakaszban egy egyéni modult fog hozzáadni [a C#-modulok a Data Box Edge-hez való fejlesztését ismertető szakaszban](data-box-edge-create-iot-edge-module.md) létrehozott IoT Edge-eszközhöz. 
+Ebben a szakaszban ad hozzá egy egyéni modult, amelyet az IoT Edge-eszköz [Develop egy C# készült a Data Box Edge-modul](data-box-edge-create-iot-edge-module.md). 
 
-Az eljárás egy olyan példát használ, amelyben az egyéni modul az Edge-eszköz helyi megosztásából fájlokat helyez át az eszköz felhőalapú megosztásába. A felhőalapú megosztás ezután a vele társított Azure-tárfiókba küldi tovább a fájlokat. 
+Az alábbi eljárás egy példa, ahol a egyéni modul szükséges fájlok egy helyi meghajtóról az Edge-eszközön, és az eszközön helyezi őket egy felhőbeli fájlmegosztás használja. A felhőbeli fájlmegosztás majd leküldi a fájlokat a felhőbeli fájlmegosztás társított Azure storage-fiókban. 
 
-1. Az első lépés a helyi megosztás hozzáadása az Edge-eszközhöz. A Data Box Edge-erőforrásban menjen a **Megosztások** oldalra. Kattintson a **+ Megosztás hozzáadása** gombra. Adja meg a megosztás nevét, és válassza ki a megosztás típusát. Helyi megosztás létrehozásához jelölje ki a **helyi Edge-megosztásként történő konfigurálás** jelölőnégyzetét. Válasszon ki egy **meglévő felhasználót**, vagy **hozzon létre egy újat**. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Edge-eszközön a helyi megosztás hozzáadása az alábbiak szerint:
+
+    a. A Data Box Edge-erőforrásban menjen a **Megosztások** oldalra. 
+    
+    b. Válassza ki **Hozzáadás megosztás**, majd adja meg a megosztás nevét, és válassza ki a megosztást. 
+    
+    c. Egy helyi megosztás létrehozásához válassza a **Edge helyi megosztásnak konfigurálása** jelölőnégyzetet. 
+    
+    d. Válassza ki **új létrehozása** vagy **meglévő**, majd válassza ki **létrehozás**.
 
     ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-1.png) 
 
-    Ha egy helyi NFS-megosztást hozott létre, használja a következő rsync parancslehetőséget, hogy a fájlokat a megosztásra másolja:
+    Ha létrehozott egy helyi NFS-megosztások, a következő távoli szinkronizálási (rsync) a kapcsoló használatával másolja a fájlokat a megosztás:
 
     `rsync --inplace <source file path> < destination file path>`
 
-     További információt az rsync parancsról az [Rsync dokumentációjában](https://www.computerhope.com/unix/rsync.htm) talál. 
+    A rsync paranccsal kapcsolatos további információkért lépjen [Rsync dokumentáció](https://www.computerhope.com/unix/rsync.htm). 
 
- 
-2. Amint létrehozta a helyi megosztást, és értesítést kapott a sikeres létrehozásról (előfordulhat, hogy a megosztási lista azelőtt is frissíthető, de meg kell várni, amíg befejeződik a megosztás létrehozása), nyissa meg a megosztások listáját. 
+    A helyi megosztás létrehozása, és a egy sikeres létrehozás értesítést kap. A megosztási listán frissülhet, de meg kell várnia a fájlmegosztás létrehozásának hajtható végre.
+    
+1. Nyissa meg a megosztások. 
 
     ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-2.png) 
  
-3. Válassza ki az újonnan létrehozott helyi megosztást, kattintson rá, és tekintse át a megosztás tulajdonságait. Másolja ki és mentse el a megosztáshoz tartozó **Edge-modulok helyi csatlakozási pontját**.
+1. Az újonnan létrehozott helyi megosztás tulajdonságainak megtekintéséhez kattintson rá. 
 
-    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-3.png) 
+1. Az a **helyi csatlakoztatási pont az Edge-hez számítási modulok** mezőbe másolja az ehhez a megosztáshoz tartozó értéket.  
+    A helyi csatlakoztatási pontot fogja használni, a modul telepítésekor.
+
+    ![A "helyi csatlakoztatási pont az Edge-hez számítási modulok" mezőbe](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-3.png) 
  
-    Lépjen egy meglévő felhőalapú megosztáshoz a Data Box Edge-eszközén. Itt is másolja ki és mentse el a felhőalapú megosztáshoz tartozó számítási Edge-modulok helyi csatlakozási pontját. A rendszer ezeket a helyi csatlakozási pontokat alkalmazza a modul üzembe helyezésekor.
+1. A Data Box Edge-eszközön, a létrehozott meglévő felhő-megosztáson a **helyi csatlakoztatási pont az Edge-hez számítási modulok** mezőbe másolja a helyi csatlakoztatási pont az Edge compute-modulok a felhő-megosztás.  
+    A helyi csatlakoztatási pontot fogja használni, a modul telepítésekor.
 
     ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-4.png)  
 
-4. Ha egyéni modult akar hozzáadni IoT Edge-eszközéhez, lépjen az IoT Hub-erőforráshoz, majd az **IoT Edge-eszközhöz**. Válassza ki az eszközt, és kattintson rá. Az **eszközadatoknál** kattintson a **Modulok beállítása** gombra a felső parancssorban. 
+1. Az IoT Edge-eszközt ad hozzá egy egyéni modult, nyissa meg az IoT Hub-erőforrásra, és folytassa a **IoT Edge-eszköz**. 
 
-    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-5.png) 
+1. Válassza ki az eszközt, majd a **eszközadatok**válassza **modulok beállítása**. 
 
-5. A **Modulok hozzáadása** területen tegye az alábbiakat:
+    ![A modulok beállítása hivatkozásra](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-5.png) 
 
-    1. Adja meg a **nevet**, **címet**, **felhasználónevet** és **jelszót** az egyéni modul **Container Registry beállításaihoz**. A nevet, a címet és a hitelesítő adatokat a rendszer az egyező URL-címmel rendelkező modulok lekéréséhez használja. A modul üzembe helyezéséhez az **Üzemelő példány moduljai** területen válassza ki az **IoT Edge-modult**. Ez az IoT Edge-modul egy Docker-tároló, amit üzembe helyezhet a Data Box Edge-eszközhöz társított IoT Edge-eszközön.
+1. A **modulok hozzáadása**, tegye a következőket:
 
-        ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
+    a. A neve, címe, felhasználónév és jelszó megadása a tároló-beállításjegyzékek beállításai az egyéni modulhoz.  
+    A név, cím és a listán szereplő hitelesítő adatok használhatók megfelelő URL-modulok beolvasása. A modul üzembe helyezéséhez az **Üzemelő példány moduljai** területen válassza ki az **IoT Edge-modult**. Az IoT Edge-modul docker-tároló, amely központilag telepíthető a Data Box Edge-eszköz társított IoT Edge-eszköz.
+
+    ![A modulok beállítása lap](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Adja meg az egyéni IoT Edge-modul beállításait. Adja meg a modul **nevét** és a hozzá tartozó tárolórendszerkép **képi URI-ját**. 
+    b. A név, a modul és a megfelelő tároló rendszerképéhez tartozó kép URI-t adja meg az egyéni IoT Edge-modul beállításait. 
     
-        ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
+    ![Az IoT Edge-egyéni modulok oldal](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. A **Tároló-létrehozási beállításoknál** adja meg az Edge-modulok korábbi lépésekben kimásolt, felhőalapú és helyi megosztásokhoz tartozó helyi csatlakozási pontjait (fontos, hogy ezeket az elérési utakat használja újak létrehozása helyett). A helyi csatlakozási pontok a megfelelő **InputFolderPath** és **OutputFolderPath** útvonalakra vannak leképezve, amelyeket [a modul egyéni kóddal való frissítésekor](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code) határozott meg a modulban. 
+    c. Az a **tároló létrehozása beállítások** mezőbe írja be a helyi csatlakoztatási pontokat az Edge-modulok, a felhő és helyi megosztás az előző lépésben kimásolt.
+    > [!IMPORTANT]
+    > A másolt elérési utakat; Ne hozzon létre új elérési utakat. A helyi csatlakoztatási pontok vannak leképezve a megfelelő **InputFolderPath** és a **OutputFolderPath** a modulban megadott amikor Ön [frissíteni a modul egyéni kóddal](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code). 
     
-        Az alább látható mintát bemásolhatja a **Tároló-létrehozási beállításokhoz**: 
-        
-        ```
-        {
-         "HostConfig": {
-          "Binds": [
-           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
-           "/home/hcsshares/mysmbshare1:/home/CloudShare"
-           ]
-         }
+    Az a **tároló létrehozása beállítások** mezőbe, beillesztheti a következő mintát: 
+    
+    ```
+    {
+        "HostConfig": {
+        "Binds": [
+        "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+        "/home/hcsshares/mysmbshare1:/home/CloudShare"
+        ]
         }
-        ```
+    }
+    ```
 
-        A modul minden környezeti változóját is meg kell adni.
+    Minden környezeti változó is adja meg a modulban.
 
-        ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
+    ![A tároló létrehozása beállítások használata](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
-    4. Ha szükséges, **adja meg az Edge-futtatókörnyezet speciális beállításait**, majd kattintson a **Tovább** gombra.
+    d. Ha szükséges, a speciális Edge-futtatókörnyezet beállítások konfigurálása, és kattintson **tovább**.
 
-        ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
+    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
-6.  Az **Útvonalak megadása** területen állítsa be a modulok közötti útvonalakat. Jelen példában adja meg annak a helyi megosztásnak a nevét, ami a felhőalapú megosztásba küldi majd le az adatokat. Kattintson a **Tovább** gombra.
+1.  A **útvonalak megadása**, állítsa be a modulok közötti útvonalak.  
+    Ebben a példában adja meg a helyi megosztás, amely adatokat küld le a felhőbeli fájlmegosztás neve.
 
-    Útvonal lecserélheti a következő útvonal-karakterlánc:       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
+    Lecserélheti *útvonal* az az alábbi útvonal-karakterlánc:       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
 
-    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
+    ![Az útvonalak megadása szakasz](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
+
+1. Kattintson a **Tovább** gombra. 
+
+1.  A **tekintse át a központi telepítési**, tekintse át a a beállításokat, és válassza **küldés** elküldeni a modul a központi telepítés.
+
+    ![A modulok beállítása lap](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-11.png) 
  
-7.  Az **Üzembe helyezés áttekintése** területen tekintse át a beállításokat, és ha elégedett, **küldje el** a modult üzembe helyezésre.
+    Ez a művelet elindítja az adatraktármodul központi telepítése, az alábbi képen látható módon:
 
-    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-11.png) 
- 
-Ez elindítja a modul üzembe helyezésének folyamatát, ahogy azt az **egyéni IoT Edge-modul** is jelzi a **Modulok** területen.
-
-![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-12.png) 
+    ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-12.png) 
 
 ### <a name="verify-data-transform-and-transfer"></a>Adatok átalakításának ellenőrzése és adatok átvitele
 
-Utolsó lépésként győződjön meg arról, hogy a modul csatlakoztatva van, és a várakozásoknak megfelelően fut. Az alábbi lépésekkel ellenőrizheti, hogy a modul fut-e.
+Az utolsó lépés, hogy győződjön meg arról, hogy a modul csatlakoztatva és fut a várt módon. A modul futtatási állapotát az IoT Edge-eszköz az IoT Hub erőforrás kell futnia.
 
-1. A modul futtatókörnyezetbeli állapota „running” (futó) kell, hogy legyen az IoT Hub-erőforrásban lévő IoT Edge-eszközén.
-
-    ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-1.png) 
+![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-1.png) 
  
-2. Válassza ki a modult, kattintson rá, és nézze meg a **Modul ikeridentitását**. Az Edge-eszköz és a modul ügyfélállapotának **Connected** (csatlakoztatott) értékűnek kell lennie.
+Győződjön meg arról, hogy a modul fut, tegye a következőket:
+
+1. Válassza ki a modult, és nézze meg, hogy az identitás Ikermodulja.  
+    Az ügyfél állapota az Edge-eszköz és a modul jelenjenek meg *csatlakoztatva*.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-2.png) 
  
-3.  Ha a modul már fut, a Data Box Edge-erőforrásban található Edge-modulok listáján is megjelenik. A hozzáadott modul **futtatókörnyezeti állapota** **futó**.
+    A modul fut, miután is megjelenik a Data Box Edge erőforrás az Edge-modulok listáját. A rendszer hozzáadta modul futási állapotát *futó*.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-3.png) 
  
-4.  A Fájlkezelőben csatlakozzon a létrehozott helyi és felhőalapú megosztáshoz.
+1.  A Fájlkezelőben, csatlakozzon a mind a helyi és felhőbeli fájlmegosztások, korábban létrehozott.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-4.png) 
  
-5.  Adja hozzá az adatokat a helyi megosztáshoz.
+1.  Adja hozzá az adatokat a helyi megosztáshoz.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-5.png) 
  
-6.  Az adatok áthelyeződnek a felhőalapú megosztásba.
+    Az adatok áthelyeződnek a felhőalapú megosztásba.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-6.png)  
 
-7.  Az adatok ezután a felhőalapú megosztásból továbbítódnak a tárfiókba. Az adatok megtekintéséhez lépjen a Storage Explorerbe.
+    Az adatok a felhő megosztásból majd leküldve a storage-fiókhoz. Az adatok megtekintéséhez nyissa meg a Storage Explorer, az adatok megtekintéséhez.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-7.png) 
  
-Ezzel az érvényesítés végére ért.
+Az ellenőrzési folyamat befejezte.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a Data Box Edge-hez kötődő alábbi témakörökkel ismerkedett meg:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * IoT Hub-erőforrás létrehozása
@@ -220,7 +249,7 @@ Ebben az oktatóanyagban a Data Box Edge-hez kötődő alábbi témakörökkel i
 > * Számítási modul hozzáadása
 > * Adatok átalakításának ellenőrzése és adatok átvitele
 
-A következő oktatóanyag azt mutatja be, hogyan felügyelhető a Data Box Edge.
+Ismerje meg, hogyan felügyelheti a Data Box peremhálózati eszköz, tekintse meg:
 
 > [!div class="nextstepaction"]
 > [A Data Box Edge felügyelete a helyi webes felhasználói felületen](https://aka.ms/dbg-docs)

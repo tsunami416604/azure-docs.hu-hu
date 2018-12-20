@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: df87983e6a56ac4e37c65f66e3408cb3296f24d8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8dc062a1c9490a03aa5369dc103db750d7531140
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597528"
+ms.locfileid: "53635272"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  A rövid útmutató bemutatja, hogyan helyezhet üzembe az első ASP.NET-webalkalmazását az Azure App Service-ben. Az oktatóanyag végére egy olyan erőforráscsoport lesz elérhető, amely egy App Service-csomagból és egy üzembe helyezett webalkalmazással rendelkező Azure webalkalmazásból áll.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  A rövid útmutató bemutatja, hogyan helyezhet üzembe az első ASP.NET-webalkalmazását az Azure App Service-ben. Ha elkészült, egy erőforráscsoportot, App Service-csomag és a egy üzembe helyezett webalkalmazással rendelkező App Service-alkalmazás lesz.
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -144,13 +144,13 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
 ![Frissített ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
-## <a name="manage-the-azure-web-app"></a>Az Azure webalkalmazás felügyelete
+## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
 Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és felügyelje a létrehozott webalkalmazást.
 
-A baloldali menüben válassza az **App Services** lehetőséget, majd az Azure-webalkalmazás nevét.
+A bal oldali menüben válassza ki a **App Services**, majd válassza ki az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
 Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002208"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53615195"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(ELAVULT) Container Service – gyakori kérdések
 
@@ -32,7 +32,7 @@ Jelenleg a Linux-tárolók az összes vezénylővel támogatást élveznek. A Wi
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Ajánlanak egy adott vezénylőt az Azure Container Service-ben? 
 Nem ajánlunk általánosan egy adott vezénylőt. Ha már rendelkezik tapasztalattal a támogatott vezénylők egyikéhez kapcsolódóan, tapasztalataira építhet az Azure Container Service-ben is. Az adattrendek azonban azt jelzik, hogy a DC/OS kiválóan használható éles környezetben a Big Data és IoT számítási feladatokhoz, a Kubernetes a felhők natív számítási feladataihoz megfelelő, a Docker Swarm pedig közismerten integrálható Docker-eszközökkel, illetve egyszerűen elsajátítható a használata.
 
-A forgatókönyvtől függően más Azure-szolgáltatásokkal is létrehozhat és kezelhet egyéni tárolómegoldásokat. Ilyen szolgáltatás például a [Virtual Machines](../articles/virtual-machines/linux/overview.md), a [Service Fabric](../articles/service-fabric/service-fabric-overview.md), a [Web Apps](../articles/app-service/app-service-web-overview.md) és a [Batch](../articles/batch/batch-technical-overview.md).  
+A forgatókönyvtől függően más Azure-szolgáltatásokkal is létrehozhat és kezelhet egyéni tárolómegoldásokat. Ilyen szolgáltatás például a [Virtual Machines](../articles/virtual-machines/linux/overview.md), a [Service Fabric](../articles/service-fabric/service-fabric-overview.md), a [Web Apps](../articles/app-service/overview.md) és a [Batch](../articles/batch/batch-technical-overview.md).  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Mi a különbség az Azure Container Service és ASC Engine között? 
 Az Azure Container Service egy SLA-alapú Azure-szolgáltatás, amely az Azure Portalon elérhető funkciókkal, Azure parancssori eszközökkel és Azure API-kkal rendelkezik. A szolgáltatás lehetővé teszi, hogy viszonylag kevés konfigurációs beállítás megadásával, gyorsan valósíthasson meg és kezelhessen általános, tárolóvezénylési eszközöket futtató fürtöket. 
@@ -79,9 +79,9 @@ Kereshet gyakran használt URL-címeket a fürt számára az Azure Portalon, az 
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Hogyan állapíthatom meg, hogy melyik vezénylőverzió fut a fürtben?
 
-* DC/OS: Lásd a [Mesosphere dokumentációját](https://docs.mesosphere.com/1.7/usage/cli/command-reference/).
-* Docker Swarm: Futtassa a `docker version` parancsot
-* Kubernetes: Futtassa a `kubectl version` parancsot
+* DC/OS: Tekintse meg a [Mesosphere dokumentációját](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
+* A docker Swarm: Futtassa a `docker version` parancsot.
+* Kubernetes: Futtassa a `kubectl version` parancsot.
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Hogyan frissíthetem a vezénylőt az üzembe helyezést követően?
 

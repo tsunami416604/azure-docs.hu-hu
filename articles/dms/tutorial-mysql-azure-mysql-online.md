@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be az Azure Database Migration Service használatával | Microsoft Docs'
+title: 'Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be, az Azure Database Migration Service használatával | Microsoft Docs'
 description: Megtudhatja, hogyan végezhet online migrálást a helyszíni MySQL-ből az Azure Database for MySQL-be, az Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: a820287c79dcd8d904c9029de3f58d930118e840
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: 1bd226e1475e8d73c7768ccfe91594e19220ac43
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959512"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635221"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A migrálás monitorozása.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
+> Az Azure Database Migration Service online áttelepítése használatához hozzon létre egy példányt prémium tarifacsomagban alapján.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása |} A Microsoft Docs
-description: Az Azure CLI-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása
+title: Az Azure CLI-Példaszkript – a figyelő egy alkalmazást a webkiszolgáló-naplókkal |} A Microsoft Docs
+description: Az Azure CLI-Példaszkript – egy webkiszolgáló-naplókkal az App Service-alkalmazás figyelése
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 364843708bea2b10770abad9c3e91006193c6aa0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c0bdf64e7fd9bf7de3ea46f6c08741b61ef0013f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584987"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53649672"
 ---
-# <a name="monitor-a-web-appwith-web-server-logs-using-azure-cli"></a>Webalkalmazás monitorozása webkiszolgáló-naplókkal Azure CLI használatával
+# <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>App Service-alkalmazások monitorozása az Azure CLI-vel webkiszolgáló-naplókkal
 
-Ez a példaszkript egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást hoz létre, és konfigurálja a webalkalmazást a webkiszolgáló-naplók engedélyezésére. Ezután letölti a naplófájlokat áttekintésre.
+Ez a példaszkript létrehoz egy erőforráscsoportot, App Service-csomagot és alkalmazást, és az alkalmazásnak, hogy a webkiszolgáló-naplók engedélyezésére konfigurálja. Ezután letölti a naplófájlokat áttekintésre.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,15 +41,15 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service-alkalmazás és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Konfigurálja, hogy milyen naplókat őriz meg az Azure-webalkalmazás. |
-| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Letölti az Azure-webalkalmazás naplóit a helyi gépre. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Úgy konfigurálja, amely naplózza az App Service alkalmazást továbbra is fennáll. |
+| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Letölti az App Service-alkalmazások naplóit a helyi gépen. |
 
 ## <a name="next-steps"></a>További lépések
 

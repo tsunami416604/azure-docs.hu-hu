@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Kinyerési, átalakítási és betöltési (ETL-) feladatok végrehajtása az Azure HDInsight-alapú Hive használatával '
+title: 'Oktatóanyag: Hajtsa végre a kinyerési, átalakítási, betöltési (ETL) operations Hive használata a HDInsight – Azure '
 description: Megtudhatja, hogyan nyerhet ki adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át az adatokat a Hive on HDInsight használatával, és hogyan töltheti be őket az Azure SQL Database-be az Apache Sqoop segítségével.
 services: hdinsight
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015049"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634354"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
 
-Ebben az oktatóanyagban egy nyers CSV adatfájl igénybe vehet, importálás egy HDInsight-fürt storage-ba, és akkor átalakítja az adatokat az [Apache Hive](https://hive.apache.org/) az Azure HDInsight. Az adatok átalakítására kerül, ha az adatokat betöltheti egy Azure SQL database-adatbázishoz [Apache Sqoop](http://sqoop.apache.org/). A cikkben nyilvánosan elérhető repülőjárat-adatokat fog használni.
+Ebben az oktatóanyagban egy nyers CSV adatfájl igénybe vehet, importálás egy HDInsight-fürt storage-ba, és akkor átalakítja az adatokat az [Apache Hive](https://hive.apache.org/) az Azure HDInsight. Az adatok átalakítására kerül, ha az adatokat betöltheti egy Azure SQL database-adatbázishoz [Apache Sqoop](https://sqoop.apache.org/). A cikkben nyilvánosan elérhető repülőjárat-adatokat fog használni.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely az Azure HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Ez az oktatóanyag a következő feladatokat mutatja be: 
@@ -76,7 +76,7 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
 
     Cserélje le a *FILENAME* kifejezést a .zip fájl nevére. Cserélje le a *USERNAME* kifejezést a HDInsight-fürthöz tartozó SSH-s bejelentkezési névre. Cserélje le a *CLUSTERNAME* kifejezést a HDInsight-fürt nevére.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paramétert kell használnia, és meg kell adnia a megfelelő titkos kulcs elérési útját. Például: `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
 
 2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. A parancssorban adja meg a következő parancsot:
@@ -212,7 +212,7 @@ Ha már van egy SQL-adatbázisa, le kell kérnie a kiszolgáló nevét. A kiszol
 
 ![Az Azure SQL-kiszolgáló részleteinek lekérése](./media/hdinsight-analyze-flight-delay-data-linux/get-azure-sql-server-details.png "Az Azure SQL-kiszolgáló részleteinek lekérése")
 
-> [!NOTE]
+> [!NOTE]  
 > Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát. A következő lépések során a [FreeTDS](http://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
 
@@ -315,7 +315,7 @@ Ez az oktatóanyag azt mutatta be, hogyan végezheti el az adatok kinyerési, á
 
 A HDInsight használatának további módjaival kapcsolatban lásd a következő cikkeket:
 
-* [Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
+* [Oktatóanyag: A kinyerési, átalakítási és adatok betöltése az Azure HDInsight az Apache Hive használata](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
 * [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight Apache hadoop][hdinsight-develop-mapreduce]
@@ -330,7 +330,7 @@ A HDInsight használatának további módjaival kapcsolatban lásd a következő
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
@@ -346,4 +346,4 @@ A HDInsight használatának további módjaival kapcsolatban lásd a következő
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

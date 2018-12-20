@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162433"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652864"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált Stream használata a Apache Kafka on HDInsight használata
 
 Ez az oktatóanyag bemutatja, hogyan használható [Apache Spark strukturált Stream](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) olvasása és írása az adatok [Apache Kafka](https://kafka.apache.org/) az Azure HDInsight.
 
-A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. 
+A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -41,7 +41,7 @@ Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket
 
 * A Kafka-témakörök létrehozásának ismerete. További információkért lásd: a [Apache Kafka on HDInsight rövid](kafka/apache-kafka-get-started.md) dokumentumot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
 > 
 > A kényelmes használat érdekében ez a dokumentum tartalmaz egy hivatkozást egy olyan sablonra, amellyel az összes szükséges Azure-erőforrás létrehozható. 
@@ -118,7 +118,7 @@ Az alábbi ábra a Spark és a Kafka közötti kommunikáció áramlását mutat
 
 ![Azure virtuális hálózatban lévő Spark- és Kafka-fürtök ábrája](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > A Kafka szolgáltatás a virtuális hálózaton belüli kommunikációra van korlátozva. A fürtön lévő többi szolgáltatás, például az SSH és az Ambari az interneten keresztül is elérhető. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
 Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök létrehozásához hajtsa végre a következő lépéseket:
@@ -135,7 +135,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
     * Egy Spark 2.2.0 on HDInsight 3.6-fürt.
     * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Az oktatóanyagban alkalmazott strukturált stream használatához a Spark 2.2.0 on HDInsight 3.6 szükséges. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
@@ -158,7 +158,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
 4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. 
 
-> [!NOTE]
+> [!NOTE]  
 > A fürtök létrehozása 20 percig is eltarthat.
 
 ## <a name="upload-the-notebook"></a>A notebook feltöltése
@@ -198,7 +198,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
 > 
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.

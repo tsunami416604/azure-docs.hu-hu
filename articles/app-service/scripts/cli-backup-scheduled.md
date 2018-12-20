@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Ütemezett biztonsági másolat létrehozása egy webalkalmazásról | Microsoft Docs
-description: Azure CLI-példaszkript – Ütemezett biztonsági másolat létrehozása egy webalkalmazásról
+title: Azure CLI-Példaszkript – ütemezett biztonsági másolat egy alkalmazás létrehozása |} A Microsoft Docs
+description: Azure CLI-Példaszkript – ütemezett biztonsági másolat egy alkalmazás létrehozása
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8bfe6030d5573c35f00043fedc1db54f15b34475
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b5f75ded0b51b78d56354bf97b5ebb0488022509
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585074"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635746"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-cli"></a>A CLI-vel webalkalmazás ütemezett biztonsági másolat létrehozása
+# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Ütemezett biztonsági másolat létrehozása egy App Service-alkalmazások parancssori felületről
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd ütemezett biztonsági másolatot készít róla. 
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, és a egy ütemezett biztonsági mentést hoz. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,7 +33,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-scheduled/backup-scheduled.sh?highlight=3-7 "Create a scheduled backup for a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-scheduled/backup-scheduled.sh?highlight=3-7 "Create a scheduled backup for an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -48,10 +48,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | Létrehoz egy Azure Storage-tárolót. |
 | [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | Konfigurál egy új biztonsági mentési ütemezést egy webalkalmazáshoz. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Megjeleníti egy webalkalmazás biztonsági mentési ütemezését. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | Konfigurálja az App Service-alkalmazások egy új biztonsági mentési ütemezést. |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | A biztonsági mentési ütemezés egy App Service-alkalmazás látható. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Az App Service-alkalmazások biztonsági másolatok listáját kéri le. |
 
 ## <a name="next-steps"></a>További lépések
 

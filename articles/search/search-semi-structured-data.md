@@ -1,5 +1,5 @@
 ---
-title: Az oktatóanyag az Azure felhőalapú tárolóban – Azure Search szolgáltatásban tárolt részben strukturált adatok keresése
+title: Az oktatóanyag az Azure Blob storage – Azure Search JSON keresése
 description: Ebben az oktatóanyagban megtanulhatja, hogyan kereshet részben strukturált Azure-beli blobadatokat az Azure Search használatával.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313822"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632942"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Oktatóanyag: Részben strukturált adatok keresése az Azure felhőalapú tárolóban
 
@@ -60,7 +60,7 @@ A mintában példa JSON-fájlok találhatók, amelyek eredetileg a [clinicaltria
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>A mintaadatok feltöltése
 

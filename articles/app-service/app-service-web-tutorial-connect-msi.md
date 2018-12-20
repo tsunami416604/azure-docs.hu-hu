@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 282942d82a688b4fc47b8473b0f8708ba23b5674
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 49f98958c540faa06aa15fbfc429f87f92463c3e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602477"
+ms.locfileid: "53635442"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az App Service-ben egy felügyelt identitás használata Azure SQL Database-kapcsolat biztonságossá tétele érdekében
 
@@ -147,7 +147,7 @@ A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **D
 
 A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. Amikor az új weblapon megjelenik a feladatlista, az alkalmazása kapcsolódik az adatbázishoz a felügyelt identitás segítségével.
 
-![Az Azure webalkalmazás a Code First migrálás után](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+![Az Azure app Code First Migrálás után](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 

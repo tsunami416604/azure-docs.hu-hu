@@ -13,20 +13,20 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253261"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635425"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 
 Ez a példaszkript minden blobobjektumot átmásol a felhasználó által megadott forrástárfiókból a felhasználó által megadott céltárfiókba. 
 
-Ehhez a `Get-AzureStorageContainer` parancsot használja, amely felsorolja egy adott tárfiók összes tárolóját. A példa ezután AzCopy-parancsokat ad ki, amelyek minden tárolót átmásolnak a forrástárfiókból a céltárfiókba. Bármilyen hiba esetén a példa újrapróbálkozik $retryTimes alkalommal (az alapértelmezett érték 3, ami a `-RetryTimes` paraméterrel módosítható). Ha minden újrapróbálkozáskor hiba történik, a felhasználó újrafuttathatja a szkriptet úgy, hogy a `-LastSuccessContainerName` paraméterrel megadja a példa számára az utolsó sikeresen átmásolt tárolót. A példa ekkor ettől a ponttól folytatja a tárolók másolását.
+Ehhez a `Get-AzStorageContainer` parancsot használja, amely felsorolja egy adott tárfiók összes tárolóját. A példa ezután AzCopy-parancsokat ad ki, amelyek minden tárolót átmásolnak a forrástárfiókból a céltárfiókba. Bármilyen hiba esetén a példa újrapróbálkozik $retryTimes alkalommal (az alapértelmezett érték 3, ami a `-RetryTimes` paraméterrel módosítható). Ha minden újrapróbálkozáskor hiba történik, a felhasználó újrafuttathatja a szkriptet úgy, hogy a `-LastSuccessContainerName` paraméterrel megadja a példa számára az utolsó sikeresen átmásolt tárolót. A példa ekkor ettől a ponttól folytatja a tárolók másolását.
 
-Ehhez a példához az Azure PowerShell Storage moduljának **4.0.2**-es vagy újabb verziója szükséges. A saját telepített verzióját a `Get-Module -ListAvailable Azure.storage` paranccsal ellenőrizheti. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
+Ez a minta Azure PowerShell Storage moduljának verzióját igényli **0,7** vagy újabb. A saját telepített verzióját a `Get-Module -ListAvailable Az.storage` paranccsal ellenőrizheti. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,8 +68,8 @@ Ez a szkript a következő parancsokat használja az adatok egyik tárfiókból 
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureStorageContainer](/powershell/module/azure.storage/Get-AzureStorageContainer) | Visszaadja az adott Storage-fiókhoz társított tárolókat. |
-| [New-AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Létrehoz egy Azure Storage-környezetet. |
+| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | Visszaadja az adott Storage-fiókhoz társított tárolókat. |
+| [Új AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | Létrehoz egy Azure Storage-környezetet. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 11/01/2018
-ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 0608bd9c923ed9ba04f257d87faad48765d3201a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912339"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650291"
 ---
-# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Oktatóanyag: Azure SQL Database-adatbázis tervezése és csatlakozás az adatbázishoz a C# és az ADO.NET használatával
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Oktatóanyag: Azure SQL Database-adatbázis tervezése és csatlakozás az adatbázishoz C# és ADO.NET használatával
 
 Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként nyújtott relációs adatbázis (DBaaS). Ez az oktatóanyag bemutatja, hogyan végezheti el a következőket az Azure Portal, valamint az ADO.NET és a Visual Studio használatával:
 
@@ -63,4 +63,4 @@ Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatokat, mint p�
 Folytassa a következő oktatóanyaggal, amely az adatok migrálását ismerteti.
 
 > [!div class="nextstepaction"]
-> [SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba](sql-database-migrate-your-sql-server-database.md)
+> [SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md)

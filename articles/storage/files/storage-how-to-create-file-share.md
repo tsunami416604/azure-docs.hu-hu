@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 83829264f16fb295a1f5fa4f2efc74d8b35ec6eb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 318ecf03853e151040622ef0863f4c6986a96bd2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309191"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628510"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Fájlmegosztás létrehozása az Azure Filesban
 Azure-fájlmegosztások használatával hozhat létre a [az Azure portal](https://portal.azure.com/), az Azure Storage PowerShell parancsmagjainak, az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -34,14 +34,17 @@ Azure-fájlmegosztás létrehozásához használhat meglévő tárfiókot, vagy 
 3. **Adja meg a nevet és a kvótát. A kvóta jelenlegi maximális érték pedig 5 TiB**:    
     ![Adjon meg egy nevet és egy kívánt kvótát az új fájlmegosztás számára](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. **Tekintse meg az új fájlmegosztást**: ![Az új fájlmegosztás megtekintése](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. **Az Új fájlmegosztás megtekintése**:  ![Az Új fájlmegosztás megtekintése](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. **Töltsön fel egy fájlt**: ![Fájl feltöltése](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. **Fájl feltöltése**:  ![Fájl feltöltése](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. **Tallózzon az új fájlmegosztásban, és kezelje könyvtárait és fájljait**: ![Fájlmegosztás tallózása](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. **Keresse meg az új fájlmegosztásban, és kezelje könyvtárait és fájljait**:  ![Keresse meg a fájlmegosztás](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>Fájlmegosztás létrehozása PowerShell-lel
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) a telepítési pont és a telepítési útmutatást.
 
 > [!Note]  
@@ -50,13 +53,13 @@ A PowerShell használatának előkészítéseként töltse le és telepítse az 
 1. **Hozzon létre egy környezetet a tárfiókhoz és a fiókkulcshoz** A környezet magában foglalja a tárfiók nevét és a fiókkulcsot. Útmutatás a fiókkulcs átmásolásához az [az Azure portal](https://portal.azure.com/), lásd: [Tárfiók hozzáférési kulcsainak](../common/storage-account-manage.md#access-keys).
 
     ```powershell
-    $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
+    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
     ```
     
 2. **Hozzon létre egy új fájlmegosztást**:    
     
     ```powershell
-    $share = New-AzureStorageShare logs -Context $storageContext
+    $share = New-AzStorageShare logs -Context $storageContext
     ```
 
 > [!Note]  

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban '
+title: 'Oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt '
 description: Megtudhatja, hogyan tölthet be adatokat és futtathat interaktív lekérdezéseket Spark-fürtökön az Azure HDInsightban.
 services: azure-hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 11/06/2018
-ms.openlocfilehash: f279d7ca40eac1764ec5549aecec36b0f62034e8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4dd9634d5d5e6ce749a4ee563903b07e22bc45ee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495780"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652332"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozzon létre dataframe-csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket az egy [Apache Spark](https://spark.apache.org/) Azure HDInsight-fürt. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
  
@@ -58,7 +58,7 @@ Az alkalmazások közvetlenül hozhatnak létre adathalmazokat a távoli tárhel
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
 
 
@@ -87,7 +87,7 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A HDInsight az Azure Storage vagy az Azure Data Lake Store tárhelyein tárolja az adatokat és a Jupyter-notebookokat, így a nem használt fürtök biztonságosan törölhetők. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. Ha azt tervezi, hogy rögtön elvégzi a következő oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
+A HDInsight az adatok és a Jupyter notebookok tárolódnak az Azure Storage vagy az Azure Data Lake Storage, így nyugodtan törölheti a fürt Ha nem használja. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. Ha azt tervezi, hogy rögtön elvégzi a következő oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 

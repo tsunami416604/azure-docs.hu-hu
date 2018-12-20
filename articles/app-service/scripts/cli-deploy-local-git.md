@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-szkript mintát - alkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárat a |} A Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból
+description: Azure CLI-Példaszkript – egy App Service-alkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: afb9f12d70b1fd96db7423533ec56c8d2325c70c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 63efd3ebcb49ebd48e5af6f39bf20206375130d2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585019"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634048"
 ---
-# <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Webalkalmazás létrehozása és kód üzembe helyezése a helyi Git-tárház Azure CLI használatával
+# <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>App Service-alkalmazások létrehozása és kód üzembe helyezése a helyi Git-tárház Azure CLI használatával
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyezi a webalkalmazás kódját egy helyi Git-adattárban.
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, és ezután telepíti a kódját egy helyi Git-adattárban.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -36,7 +36,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-local-git/deploy-local-git.sh?highlight=3-5 "Create a web app and deploy code from a local Git repository")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-local-git/deploy-local-git.sh?highlight=3-5 "Create an app and deploy code from a local Git repository")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -48,7 +48,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) | Beállítja az App Service fiókszintű üzembehelyezési hitelesítő adatait. |
 | [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) | Létrehozza egy helyi Git-adattár forrásvezérlési konfigurációját. |
 

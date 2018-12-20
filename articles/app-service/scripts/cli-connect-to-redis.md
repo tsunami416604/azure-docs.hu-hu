@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Példaszkript – webalkalmazás csatlakoztatása az Azure Cache redis |} A Microsoft Docs
-description: Azure CLI-Példaszkript – webalkalmazás csatlakoztatása az Azure Cache redis
+title: Az Azure CLI Példaszkript – alkalmazás csatlakoztatása az Azure Cache redis |} A Microsoft Docs
+description: Az Azure CLI Példaszkript – alkalmazás csatlakoztatása az Azure Cache redis
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a9ba4c60fd15f9a92f86d74d5ef40296781fb7c0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 87e4e56e429039d943d85fe74003edb8cb148cac
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585049"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631108"
 ---
-# <a name="connect-a-web-app-to-an-azure-cache-for-redis-using-cli"></a>Webes alkalmazás csatlakoztatása az Azure Cache a redis CLI-vel
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Az App Service alkalmazás csatlakoztatása az Azure Cache a redis CLI-vel
 
-Ez a példaszkript egy Azure Cache a Redis és a egy Azure-webalkalmazást hoz létre. Ezután Alkalmazásbeállítások használatával a webalkalmazás az Azure Cache redis hivatkozásokat.
+Ez a példaszkript egy Azure Cache a Redis és a egy App Service-alkalmazást hoz létre. Ezután Alkalmazásbeállítások használatával az alkalmazás az Azure Cache redis hivatkozásokat.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -41,16 +41,16 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, Redis, az Azure Cache létrehozása és az összes kapcsolódó erőforrás. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás, a Redis Azure Cache létrehozása és az összes kapcsolódó erőforrás. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Hozzon létre új Azure Cache a Redis-példányt. |
 | [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | A Redis-példányt az Azure Cache elérési kulcsainak listázása. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehoz vagy frissít egy Azure-webalkalmazáshoz tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehozza vagy frissíti az App Service-alkalmazások tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>További lépések
 

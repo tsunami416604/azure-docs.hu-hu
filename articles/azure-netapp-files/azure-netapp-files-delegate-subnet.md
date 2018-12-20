@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: fc8ec5c3bbe0157f5737e2eb757478357aa6e867
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 8ec41c6db8c8e5c62d15dc0638762f2649c637b8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414060"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631651"
 ---
-# <a name="delegate-a-subnet-to-azure-netapp-files"></a>Az Azure Files-NetApp alhálózat delegálása 
+# <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
 Az Azure Files-NetApp egy alhálózatot kell delegálni.   Kötet létrehozásakor kell a delegált alhálózatot adjon meg.
 
 ## <a name="about-this-task"></a>Ez a feladat kapcsolatban
 * Új alhálózat egy/24, az alapértelmezett érték létrehozására szolgáló varázsló hálózati maszk, amely 251 elérhető IP-címek biztosít. Egy/28-as használatával hálózati maszk, amely a 16 használható IP-címet biztosít, a szolgáltatás elegendő.
 * Nem egy hálózati biztonsági csoportot kijelölje vagy szolgáltatási végpont delegált alhálózaton. Ekkor a alhálózati delegálás sikertelen lesz.
-* Az egyes Azure virtuális hálózatok (VNet) csak egy alhálózatot az Azure Files-NetApp delegálható.
+* Az egyes Azure virtuális hálózatok (Vnet) csak egy alhálózatot az Azure Files-NetApp delegálható.
 * Egy kötet a virtuális társhálózatra való hozzáférés jelenleg nem támogatott.
 
 ## <a name="steps"></a>Lépések 

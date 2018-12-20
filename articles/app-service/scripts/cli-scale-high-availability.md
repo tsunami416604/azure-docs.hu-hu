@@ -1,6 +1,6 @@
 ---
 title: Az Azure CLI-Példaszkript – az alkalmazás méretezése világszerte a Traffic Managerrel |} A Microsoft Docs
-description: Az Azure CLI-Példaszkript – webalkalmazások globális egy magas rendelkezésre állású architektúrával rendelkező méretezési csoport
+description: Az Azure CLI-Példaszkript – méretezés App Service-alkalmazások világszerte, magas rendelkezésre állású architektúrával
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3c2aa753c5521ca5bc57da2c833187f16e4146a4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3165904eb7757b43d35a4fa3051d29d10bce70a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585044"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632908"
 ---
-# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Webalkalmazások globális skálázása az Azure CLI használatával magas rendelkezésre állású architektúrával
+# <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>App Service-alkalmazások globális skálázása az Azure CLI használatával magas rendelkezésre állású architektúrával
 
-Ez a példaszkript egy erőforráscsoportot, két App Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot hoz létre. A gyakorlat végrehajtása után egy magas rendelkezésre állású architektúrával rendelkezik majd, amely a legkisebb hálózati késéssel biztosítja a webalkalmazás globális rendelkezésre állását.
+Ez a példaszkript egy erőforráscsoportot, két App Service-csomagot, két alkalmazás, egy traffic manager-profilt és két traffic manager-végpontot hoz létre. A gyakorlat végrehajtása után, hogy egy magas rendelkezésre állású architektúrával, amelyek globális rendelkezésre állása az alkalmazás a legalacsonyabb hálózati késéssel biztosítja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,13 +41,13 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, egy Traffic Manager-profil és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App Service alkalmazást, traffic manager-profil és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) | Létrehoz egy Azure Traffic Manager-profilt. |
 | [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 

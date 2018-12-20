@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 99afa5a1167d5f1a06504aacdca215564a672833
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608596"
+ms.locfileid: "53634235"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
@@ -106,7 +106,7 @@ Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-Nyissa meg böngészőben az Azure webalkalmazás URL-címét: `http://<app_name>.azurewebsites.net`.
+Egy böngészőben nyissa meg az alkalmazás URL-címe: `http://<app_name>.azurewebsites.net`.
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -132,13 +132,13 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Frissített mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-html/portal1.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-html/portal1.png)
 
 Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 

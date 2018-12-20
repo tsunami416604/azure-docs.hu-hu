@@ -1,5 +1,5 @@
 ---
-title: Postgres Ruby webalkalmazás összeállítása linuxon – az Azure App Service |} A Microsoft Docs
+title: A Postgres Ruby-alkalmazás létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
 description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Ruby-alkalmazásra, amely egy Azure-beli PostgreSQL-adatbázishoz csatlakozik.
 services: app-service\web
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 93cdf83797cde40d75d6f6d6220cf4e02cb56cef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 67dfc99490787eef9164759d34ef9f5ee542b76a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604219"
+ms.locfileid: "53635340"
 ---
-# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Ruby- és Postgres-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>A Ruby és Postgres alkalmazás az Azure App Service létrehozása a linuxon
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-webalkalmazást, és hogyan csatlakoztathatja azt egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre Ruby-alkalmazás, és csatlakoztassa egy PostgreSQL-adatbázis. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
 
 ![Az Azure App Service-ben futó Ruby on Rails-alkalmazás](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -357,7 +357,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
+### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
 
 Egy böngészőben keresse fel az `http://<app_name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
@@ -470,21 +470,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, lépjen az Azure-webalkalmazáshoz, és tesztelje az új funkciót.
+Miután a `git push` befejeződött, nyissa meg az Azure-alkalmazást, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissítései érintetlenül hagyják a meglévő adatokat.
 
-## <a name="manage-the-azure-web-app"></a>Az Azure webalkalmazás felügyelete
+## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az [Azure Portalra](https://portal.azure.com).
+Nyissa meg a [az Azure portal](https://portal.azure.com) kezelheti a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/tutorial-php-mysql-app/access-portal.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -506,7 +506,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazásokhoz.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)

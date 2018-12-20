@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása tárfiókhoz | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása tárfiókhoz
+title: Azure CLI-Példaszkript – alkalmazás csatlakoztatása tárfiókhoz |} A Microsoft Docs
+description: Azure CLI-Példaszkript – alkalmazás csatlakoztatása tárfiókhoz
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3e32f6d27172d801ed18ae2e37e58457842bc320
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 57a1e9ad6bf377fa5148a4d5c716be00db786c84
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585000"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632280"
 ---
-# <a name="connect-a-web-app-to-a-storage-account-using-cli"></a>Webalkalmazás csatlakoztatása tárfiókhoz parancssori felület használatával
+# <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>App Service-alkalmazások csatlakozás egy tárfiókhoz, CLI-vel
 
-Ez a példaszkript egy Azure Storage-fiókot és egy Azure-webalkalmazást hoz létre. Ezután alkalmazásbeállítások használatával hozzákapcsolja a tárfiókot a webalkalmazáshoz.
+Ez a példaszkript egy Azure storage-fiókot és a egy App Service-alkalmazást hoz létre. A tárfiók ezután az alkalmazás Alkalmazásbeállítások használatával hozzákapcsolja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -42,16 +42,16 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, egy tárfiók és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App Service alkalmazást, storage-fiók és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | Létrehoz egy tárfiókot. |
 | [`az storage account show-connection-string`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | Lekéri egy tárfiók kapcsolati sztringjét. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehoz vagy frissít egy Azure-webalkalmazáshoz tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehozza vagy frissíti az App Service-alkalmazások tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>További lépések
 

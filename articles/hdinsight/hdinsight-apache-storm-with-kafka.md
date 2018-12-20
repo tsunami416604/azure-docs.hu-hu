@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166574"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652371"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -37,9 +37,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * A Kafka-témakörök létrehozásának ismerete. További információkért lásd [a Kafka on HDInsight használatába bevezető](./kafka/apache-kafka-get-started.md) dokumentumot.
 
-* A Storm-megoldások (topológiák) létrehozásának és üzembe helyezésének ismerete. Pontosabban a használó topológiák a [fluxus](https://storm.apache.org/releases/current/flux.html) keretrendszer. További információkért tekintse meg [a Storm-topológiák Java-alapú létrehozását](./storm/apache-storm-develop-java-topology.md) ismertető dokumentumot.
+* A Storm-megoldások (topológiák) létrehozásának és üzembe helyezésének ismerete. Pontosabban a használó topológiák [Apache Storm fluxus](https://storm.apache.org/releases/current/flux.html) keretrendszer. További információkért lásd: a [egy Apache Storm-topológia létrehozása Java nyelven](./storm/apache-storm-develop-java-topology.md) dokumentumot.
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
+* [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -54,7 +54,7 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
     * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési út).
     * A Maven telepítési könyvtára.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Storm on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Storm-fürt közvetlenül kommunikálhat a Kafka-fürttel.
 > 
 > A kényelmes használat érdekében ez a dokumentum tartalmaz egy hivatkozást egy olyan sablonra, amellyel az összes szükséges Azure-erőforrás létrehozható. 
@@ -124,7 +124,7 @@ Az oktatóanyagban két topológia szerepel:
 
 * A Kafka-olvasó: Adatokat olvas be a Kafka, és tárolják a Storm-fürt HDFS-kompatibilis fájl áruházzal.
 
-    > [!WARNING] 
+    > [!WARNING]  
     > Ahhoz, hogy a Storm működjön a HDInsight által használt HDFS-kompatibilis tárolóval, egy szkriptműveletre van szükség. A szkript több JAR-fájlt tölt fel a Storm `extlib` útvonalára. Az oktatóanyagban lévő sablon automatikusan használja a szkriptet a fürtök létrehozása során.
     >
     > Ha a Storm-fürt létrehozásához nem használja a dokumentumban lévő sablont, manuálisan kell alkalmaznia a szkriptműveletet a fürtre.
@@ -141,7 +141,7 @@ A topológiákhoz az alábbi paramétereket vannak megadva futásidőben:
 
 * `${kafka.zookeeper.hosts}`: A gazdagépek, a Kafka-fürt futtató Zookeeper.
 
-* `${hdfs.url}`: A fájl rendszer URL-címe a HDFSBolt összetevő. Azt jelzi, hogy az adatok egy Azure Storage-fiókba vagy az Azure Data Lake Store-ba lesznek-e írva.
+* `${hdfs.url}`: A fájl rendszer URL-címe a HDFSBolt összetevő. Azt jelzi, hogy az adatok egy Azure Storage-fiók vagy az Azure Data Lake Storage írása.
 
 * `${hdfs.write.dir}`: A könyvtár írt adatok.
 
@@ -373,7 +373,7 @@ A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák ált
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
 | `kafka.topic` | A topológiák által használt Kafka-témakör. |
 | `hdfs.write.dir` | A könyvtár, amelybe a Kafka-olvasó topológia ír. |
-| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Store esetében használja az `adl:///` értéket. |
+| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Storage, az érték `adl:///`. |
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
@@ -383,7 +383,7 @@ Az alábbi ábra a Storm és a Kafka közötti kommunikáció áramlását mutat
 
 ![Azure virtuális hálózatban lévő Storm- és Kafka-fürtök ábrája](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > A fürt SSH például más szolgáltatások és [Apache Ambari](https://ambari.apache.org/) az interneten keresztül érhető el. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
 Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök létrehozásához hajtsa végre a következő lépéseket:
@@ -400,7 +400,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
     * Kafka on HDInsight 3.6-os verzió (három feldolgozó csomópont)
     * Storm on HDInsight 3.6-os verzió (három feldolgozó csomópont)
 
-  > [!WARNING]
+  > [!WARNING]  
   > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
 
 2. A következő útmutatások mentén töltheti ki az **Egyéni üzembe helyezés** szakasz bejegyzéseit:
@@ -425,7 +425,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
 4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget.
 
-> [!NOTE]
+> [!NOTE]  
 > A fürtök létrehozása 20 percig is eltarthat.
 
 ## <a name="build-the-topology"></a>A topológia létrehozása
@@ -463,7 +463,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A következő Bash-beli példa feltételezi, hogy a `$CLUSTERNAME` tartalmazza a __Kafka__-fürt nevét. Azt is feltételezi, hogy a [jq](https://stedolan.github.io/jq/) 1.5-ös vagy újabb verziója telepítve van. Ha a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
 
     ```bash
@@ -474,7 +474,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Bár kettőnél több közvetítő gazdagép is létezhet a fürtön, nem kell megadnia a gazdagépek teljes listáját az ügyfeleknek. Egy vagy kettő is elég.
 
 2. Kövesse az alábbi módszerek egyikét a __Kafka__ on HDInsight-fürt Zookeeper-gazdagépeinek felderítésére:
@@ -490,7 +490,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A következő Bash-beli példa feltételezi, hogy a `$CLUSTERNAME` tartalmazza a __Kafka__-fürt nevét. Azt is feltételezi, hogy a [jq](https://stedolan.github.io/jq/) telepítve van. Ha a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
 
     ```bash
@@ -501,7 +501,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Bár kettőnél több Zookeeper-csomópont is létezhet, nem kell megadnia a gazdagépek teljes listáját az ügyfeleknek. Egy vagy kettő is elég.
 
     Mentse ezt az értéket, mivel később még használni fogjuk.
@@ -512,8 +512,8 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-    > [!IMPORTANT]
-    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ha ezt a topológiát egy Data Lake Store-t használó Storm-fürttel szeretné használni, módosítsa ezt a `wasb` értékről az `adl` értékre.
+    > [!IMPORTANT]  
+    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ez a topológia a Storm-fürt által használt Data Lake Storage használni, módosítsa ezt az értéket `wasb` való `adl`.
 
 4. Mentse a `dev.properties` fájlt, majd a következő parancs használatával töltse fel a **Storm**-fürtbe:
 
@@ -630,7 +630,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
 > 
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.

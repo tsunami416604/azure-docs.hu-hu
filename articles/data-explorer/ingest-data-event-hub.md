@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe'
+title: 'Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet be adatokat az Azure Data Explorerbe az Event Hubsból.
 services: data-explorer
 author: orspod
@@ -8,22 +8,20 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210448"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654104"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe
+# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. Az Event Hubs másodpercenként több millió esemény feldolgozására képes, valós időben. Ebben a rövid útmutatóban létrehozunk egy eseményközpontot, csatlakozunk hozzá az Azure Data Explorerből, és megfigyeljük az adatok a rendszeren keresztüli áramlását.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége lesz a következőkre is:
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 * [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
@@ -61,7 +59,7 @@ A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy
     |---|---|---|
     | Előfizetés | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
-    | Hely | *USA nyugati régiója* | Ebben a rövid útmutatóban válassza az *USA nyugati régióját*. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
+    | Hely | *USA nyugati régiója* | Ebben a rövid útmutatóban válassza az *USA nyugati régióját*. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Az eseményközpont-névtér létrehozása a legjobb teljesítmény érdekében a Kusto-fürt ugyanazon a helyen (leginkább fontos a nagy átviteli sebességgel eseményközpont-névtér).
     | Névtér neve | A névtér egyedi neve | Válasszon egy egyedi nevet a névtér azonosításához. Például: *mytestnamespace*. A rendszer hozzáfűzi a *servicebus.windows.net* tartománynevet a megadott névhez. A név csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. Az érték 6 és 50 karakter közötti hosszúságú lehet.
     | Event Hubs neve | *test-hub* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. Az eseményközpont nevének egyedinek kell lennie a névtéren belül. |
     | Fogyasztói csoport neve | *test-group* | A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
@@ -200,4 +198,4 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Adatok lekérdezése az Azure Data Explorerben](web-query-data.md)
+> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

@@ -1,6 +1,6 @@
 ---
 title: Az Azure CLI Példaszkript – ASP.NET Core-alkalmazás létrehozása az Azure Container Registryben |} A Microsoft Docs
-description: Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása Azure Container Registryben található Docker-tárolóban
+description: Azure CLI-Példaszkript – ASP.NET Core-alkalmazás létrehozása a Docker-tárolóban az Azure Container Registryből App Service-ben
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/13/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 710b4fbe1c89dcb886af0fa26042505b43637371
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c05572d4962eca042a807be3eec94462d0830e1b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585016"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653373"
 ---
-# <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>Azure CLI-példaszkript – ASP.NET Core-webalkalmazás létrehozása az Azure Container Registryben található Docker-tárolóban
+# <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>ASP.NET Core-alkalmazás létrehozása a Docker-tárolóban az Azure Container Registryből App Service-ben
 
-Ez a példaszkript egy erőforráscsoportot, egy linuxos App Service-csomagot és egy webalkalmazást hoz létre. Ezután üzembe helyez ASP.NET Core-alkalmazást az Azure Container Registryben található Docker-tárolóval.
+Ez a példaszkript létrehoz egy erőforráscsoportot, a Linux App Service-csomag és a egy alkalmazást. Ezután üzembe helyez ASP.NET Core-alkalmazást az Azure Container Registryben található Docker-tárolóval.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -40,14 +40,14 @@ Azure CLI 2.0.52 verziójára van szüksége, vagy később. A verzió megkeres�
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service-alkalmazás és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Beállítja az Azure-webalkalmazás Docker-tárolóját. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | A Docker-tároló az App Service-alkalmazás beállítása. |
 
 ## <a name="next-steps"></a>További lépések
 

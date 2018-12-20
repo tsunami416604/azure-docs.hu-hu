@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Az Azure SQL Database lekérdezése a Lekérdezésszerkesztő használatával | Microsoft Docs'
+title: 'Az Azure Portalon: Azure SQL Database Query-szerkesztő használatával lekérdezheti |} A Microsoft Docs'
 description: Megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure Portalon az SQL-lekérdezésszerkesztő segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz, Azure Portal, portál, lekérdezésszerkesztő
 services: sql-database
@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091390"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651947"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Az Azure portal SQL-Lekérdezésszerkesztő való csatlakozás és adatlekérdezés használja.
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával
 
-Az SQL-Lekérdezésszerkesztő egy SQL-lekérdezések végrehajtása az Azure SQL Database vagy Azure SQL Data Warehouse egyszerű módot biztosít az Azure portal böngésző eszköz. Ez a rövid útmutató azt ismerteti, SQL-adatbázishoz csatlakozni, futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat a Lekérdezésszerkesztő segítségével.
+Az SQL-Lekérdezésszerkesztő egy SQL-lekérdezések végrehajtása az Azure SQL Database vagy Azure SQL Data Warehouse egyszerű módot biztosít az Azure portal böngésző eszköz. Ez a rövid útmutatóban való csatlakoztatása SQL-adatbázishoz, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat a Lekérdezésszerkesztő használni kívánt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -92,7 +92,7 @@ Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy eg
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozzáadása egy új terméket a Transact-SQL utasítást a `SalesLT.Product` tábla.
+Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozzáadása egy új terméket a Transact-SQL utasítást a `SalesLT.Product` tábla.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -117,12 +117,12 @@ Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms1743
    ```
 
 
-2. Válassza ki **futtatása** , a Product tábla egy új sor beszúrásához. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: az érintett sorok: 1**.
+2. Válassza ki **futtatása** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
 
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Használja a következő [frissítés](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítás használatával módosíthat az új termék.
+Futtassa a következő [frissítés](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítás használatával módosíthat az új termék.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -132,11 +132,11 @@ Használja a következő [frissítés](https://msdn.microsoft.com/library/ms1775
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **futtatása** a Product tábla egy megadott sorának frissítéséhez. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: az érintett sorok: 1**.
+2. Válassza ki **futtatása** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
 
 ## <a name="delete-data"></a>Adat törlése
 
-Használja a következő [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az új termék eltávolítása.
+Futtassa a következő [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az új termék eltávolítása.
 
 1. Cserélje le az előző lekérdezés erre:
 
@@ -145,7 +145,7 @@ Használja a következő [törlése](https://msdn.microsoft.com/library/ms189835
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **futtatása** a Product tábla egy megadott sorának törléséhez. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: az érintett sorok: 1**.
+2. Válassza ki **futtatása** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **sikeres lekérdezés: Érintett sorok: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Lekérdezés-szerkesztő szempontok
@@ -156,7 +156,7 @@ Ha a Lekérdezésszerkesztő néhány dolgot lehet.
 
 * F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapja, és bármilyen szerkesztett lekérdezést elvész.
 
-* A Lekérdezésszerkesztő nem támogatja a master adatbázishoz való kapcsolódáskor.
+* A Lekérdezésszerkesztő nem támogatja a Kapcsolódás a `master` adatbázis.
 
 * A lekérdezés végrehajtása 5 perces időtúllépés van.
 

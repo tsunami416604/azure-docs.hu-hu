@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása SQL-adatbázishoz | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása SQL-adatbázishoz
+title: Azure CLI-Példaszkript – alkalmazás csatlakoztatása SQL-adatbázishoz |} A Microsoft Docs
+description: Azure CLI-Példaszkript – alkalmazás csatlakoztatása SQL-adatbázis
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 33f1086010d15d8a045e924a619d6acc77a01413
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e23ef4a12182aaeb6db84615106ed4e8919938bf
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585012"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634252"
 ---
-# <a name="connect-a-web-app-to-a-sql-database-using-cli"></a>Webalkalmazás csatlakoztatása SQL Database CLI-vel
+# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Az App Service-alkalmazás csatlakozik egy SQL database CLI-vel
 
-Ez a példaszkript egy Azure SQL-adatbázist és egy Azure-webalkalmazást hoz létre. Ezután alkalmazásbeállítások használatával hozzákapcsolja az SQL-adatbázist a webalkalmazáshoz.
+Ez a példaszkript egy Azure SQL database és a egy App Service-alkalmazást hoz létre. Az SQL database ezután az alkalmazás Alkalmazásbeállítások használatával hozzákapcsolja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,17 +41,17 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, egy SQL Database-adatbázis és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App Service app, SQL-adatbázis és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót.  |
 | [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Létrehoz egy új adatbázist az SQL Database-kiszolgálóval. |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | Létrehozza egy adatbázis kapcsolati sztringjét. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehoz vagy frissít egy Azure-webalkalmazáshoz tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehozza vagy frissíti az App Service-alkalmazások tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>További lépések
 

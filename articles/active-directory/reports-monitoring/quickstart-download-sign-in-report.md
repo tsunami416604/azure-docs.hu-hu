@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3e20af1c90f0e8a7a582d2d01dc4218a14496c40
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621428"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653288"
 ---
-# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rövid útmutató: Bejelentkezési jelentés letöltése az Azure portál használatával
+# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával jelentkezzen be jelentés letöltése
 
 Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vonatkozóan a bérlő bejelentkezési adatait letölteni.
 
@@ -31,10 +31,10 @@ Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vo
 
 A következők szükségesek:
 
-* Azure Active Directory-bérlő prémium licenccel a bejelentkezési tevékenységek jelentésének megtekintéséhez. 
+* Azure Active Directory-bérlő prémium licenccel a bejelentkezési tevékenységek jelentésének megtekintéséhez. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
 * A felhasználó, aki az a **biztonsági rendszergazda**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkör a bérlő számára. Ezen felül a bérlő minden felhasználója elérheti a magára vonatkozó bejelentkezéseket.
 
-## <a name="quickstart-download-a-sign-in-report"></a>Első lépések: Bejelentkezési jelentés letöltése
+## <a name="quickstart-download-a-sign-in-report"></a>Gyors útmutató: Bejelentkezési jelentés letöltése
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **Azure Active Directoryt** a bal oldali navigációs ablaktáblában, és a **címtár váltása** gombra kattintva válassza ki az aktív címtárat.

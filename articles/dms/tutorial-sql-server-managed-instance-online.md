@@ -10,19 +10,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: 3f52dde1e091ee089b83fe8f7f2d860941c11318
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956703"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631444"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával
 Az Azure Database Migration Service használatával minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait egy [felügyelt Azure SQL Database-példányra](../sql-database/sql-database-managed-instance.md). Ha olyan módszerek is érdeklik, amelyek esetenként manuális beavatkozást is igényelhetnek, tekintse át az [SQL Server-példány felügyelt Azure SQL Database-példányra történő migrálásával](../sql-database/sql-database-managed-instance-migrate.md) foglalkozó témakört.
-
->[!IMPORTANT]
->Az SQL Serverről felügyelt Azure SQL Database-példányra végzett online migrálási projektekre érvényesek a [Microsoft Azure előzetes verziójú termékeire vonatkozó kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebben az oktatóanyagban az **Adventureworks2012** adatbázist fogja migrálni minimális állásidővel az SQL Server egy helyszíni példányáról egy felügyelt Azure SQL Database-példányra az Azure Database Migration Service használatával.
 
@@ -34,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Átállás a migrálás elkészültekor.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
+> Az Azure Database Migration Service online áttelepítése használatához hozzon létre egy példányt prémium tarifacsomagban alapján.
 
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a migrálási folyamat optimalizálása érdekében ugyanabban az Azure-régióban hozza létre az Azure Database Migration Service-példányt, mint amelyikben a céladatbázis is található. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
@@ -95,10 +92,10 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     További részletekért lásd [a felügyelt Azure SQL DB-példányok Azure Database Migration Service-szel végzett migrálásához kapcsolódó hálózati topológiákkal](https://aka.ms/dmsnetworkformi) foglalkozó témakört.
 
-6. Válasszon egy termékváltozatot az „Üzleti szempontból kritikus (Előzetes verzió)” tarifacsomagból.
+6. Válassza ki a Termékváltozat a prémium tarifacsomag.
 
     > [!NOTE]
-    > Az online migrálások végrehajtása csak az „Üzleti szempontból kritikus (Előzetes verzió)” szint használata esetén támogatott. 
+    > Csak a prémium szint használatakor online áttelepítéseket támogatja. 
    
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
    
@@ -118,7 +115,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
  
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 
-4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki az **SQL Servert**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig a **felügyelt Azure SQL Database-példányt**. A **Válassza ki a tevékenység típusát** szövegbeviteli mezőben válassza az **Online adatok migrálása (Előzetes verzió)** lehetőséget.
+4. Az a **új migrálási projekt** lapon adjon meg egy nevet a projektnek a **forráskiszolgáló típusa** szövegbeviteli mezőben válasszon ki **SQL Server**, a a **célkiszolgáló típus** szövegbeviteli mezőben válasszon ki **Azure SQL Database felügyelt példányába**, majd **válassza ki a tevékenység típusát**, jelölje be **Online adatáttelepítés** .
 
    ![DMS-projekt létrehozása](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 

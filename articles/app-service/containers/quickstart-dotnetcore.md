@@ -1,5 +1,5 @@
 ---
-title: .NET Core-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
+title: Hozzon létre .NET Core-alkalmazás linuxon – az Azure App Service |} A Microsoft Docs
 description: Percek alatt üzembe helyezheti az első .NET Core Hello World alkalmazását a Linuxon futó App Service-ben.
 keywords: azure app service, webalkalmazás, dotnet, core, linux, oss
 services: app-service
@@ -16,20 +16,20 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: f074c6184652ced133a7253bee3cc7a8a556c574
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251793"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633930"
 ---
-# <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben
+# <a name="create-a-net-core-app-in-app-service-on-linux"></a>Hozzon létre egy .NET Core-alkalmazást a linuxon futó App Service-ben
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [ASP.NET Core-webalkalmazás létrehozása az Azure-ban](../app-service-web-get-started-dotnet.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. Az App Service-ben üzembe _Windows_, lásd: [ASP.NET Core-alkalmazás létrehozása az Azure-ban](../app-service-web-get-started-dotnet.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.NET Core](https://docs.microsoft.com/aspnet/core/)-alkalmazást Linuxon futó App Service-ben. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a .NET Core-kódot a webalkalmazásban.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.NET Core](https://docs.microsoft.com/aspnet/core/)-alkalmazást Linuxon futó App Service-ben. Létrehozhatja a a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), és a Git segítségével üzembe helyezheti a .NET Core-kódot az alkalmazást.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -53,7 +53,7 @@ md hellodotnetcore
 cd hellodotnetcore
 ```
 
-Hozzon létre egy új .NET Core-webalkalmazást.
+Hozzon létre egy új .NET Core-alkalmazást.
 
 ```bash
 dotnet new web
@@ -95,15 +95,15 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
+Keresse meg az újonnan létrehozott alkalmazást. Cserélje le  _&lt;alkalmazásnév >_ az alkalmazás nevére.
 
 ```bash
 http://<app name>.azurewebsites.net
 ```
 
-Az új webalkalmazásnak így kell kinéznie:
+Íme, mi az új alkalmazás hasonlóan kell kinéznie:
 
-![Üres webalkalmazás oldal](media/quickstart-dotnetcore/dotnet-browse-created.png)
+![Üres alkalmazás lap](media/quickstart-dotnetcore/dotnet-browse-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -144,7 +144,7 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A .NET Core-mintakód egy beépített rendszerképpel rendelkező webalkalmazásban fut.
+A .NET Core-mintakód fut az App Service Linux rendszeren egy beépített rendszerképpel rendelkező.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -169,15 +169,15 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
+Nyissa meg a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> kezelheti a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/quickstart-dotnetcore/portal-app-service-list.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
+Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
 ![Az App Service lap az Azure Portalon](media/quickstart-dotnetcore/portal-app-overview.png)
 
@@ -188,4 +188,4 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [.NET Core- és SQL Database-webalkalmazás összeállítása Linuxon futó Azure App Service-ben](tutorial-dotnetcore-sqldb-app.md)
+> [A linuxon futó Azure App Service-ben a .NET Core és SQL Database alkalmazás készítése](tutorial-dotnetcore-sqldb-app.md)

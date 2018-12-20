@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/30/2018
 ms.author: cephalin;msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 33778661d9d46a605543fecee79796835c250479
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5223a60663e05747b58aa04e7a102f1d350badd4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608306"
+ms.locfileid: "53632297"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -169,13 +169,13 @@ Váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyit
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
 Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
