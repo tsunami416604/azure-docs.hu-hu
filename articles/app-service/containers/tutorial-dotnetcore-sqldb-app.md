@@ -15,20 +15,20 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5bfef1662ea23f3dfa1e01c91912f11e674e1e06
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fe6a1db295bc8fb1ab8e6c9d2d149be62871e733
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600178"
+ms.locfileid: "53629815"
 ---
-# <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>.NET Core- és SQL Database-webalkalmazás összeállítása Linuxon futó Azure App Service-ben
+# <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>A linuxon futó Azure App Service-ben a .NET Core és SQL Database alkalmazás készítése
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [.NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben](../app-service-web-tutorial-dotnetcore-sqldb.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. Az App Service-ben üzembe _Windows_, lásd: [hozhat létre egy .NET Core és SQL Database az Azure App Service-alkalmazást](../app-service-web-tutorial-dotnetcore-sqldb.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre .NET Core-webalkalmazást, és hogyan csatlakoztathatja azt egy SQL Database-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó .NET Core MVC-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy .NET Core-alkalmazást, és csatlakoztassa egy SQL-adatbázis. Az oktatóanyag eredménye egy, a Linux App Service-ben futó .NET Core MVC-alkalmazás lesz.
 
 ![Linux App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -179,7 +179,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 Következő lépésként állítsa az `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást _Éles_ értékre. Ez a beállítás jelzi, hogy a szolgáltatás az Azure-ban fut-e, mert az SQLite-ot használja a helyi fejlesztési környezethez és az SQL Database-t az Azure-környezethez.
 
-A következő példa egy `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást konfigurál az Azure-webalkalmazásban. Cserélje le az *\<app_name>* helyőrzőt.
+Ez a példa konfigurálja egy `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le az *\<app_name>* helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -250,9 +250,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
+### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
 
-Keresse meg az üzembe helyezett webalkalmazást a webböngésző használatával.
+Keresse meg a telepített alkalmazást, a webböngésző használatával.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -354,21 +354,21 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Miután a `git push` befejeződött, lépjen az Azure webalkalmazáshoz, és próbálja ki az új funkciót.
+Miután a `git push` befejeződött, lépjen az Azure alkalmazásba, és próbálja ki az új funkciókat.
 
-![Az Azure webalkalmazás a Code First migrálás után](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
+![Az Azure app Code First Migrálás után](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
 A meglévő teendők továbbra is megjelennek. Ha ismét közzéteszi a .NET Core-alkalmazást, az SQL Database-ben meglévő adatok nem vesznek el. Emellett az Entity Framework Core Migrations csak az adatsémát módosítja, a meglévő adatokat érintetlenül hagyja.
 
-## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazás kezelése
+## <a name="manage-your-azure-app"></a>Az Azure-alkalmazás kezelése
 
-Lépjen az [Azure Portalra](https://portal.azure.com), és tekintse meg a létrehozott webalkalmazást.
+Nyissa meg a [az Azure portal](https://portal.azure.com) szeretné megtekinteni a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás nevére.
 
-![Navigálás a portálon az Azure-webapphoz](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-Alapértelmezés szerint a portálon a webalkalmazás **Áttekintés** oldala jelenik meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
+Alapértelmezés szerint a portál megjeleníti az alkalmazás **áttekintése** lapot. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
 ![Az App Service lap az Azure Portalon](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
@@ -387,7 +387,7 @@ Az alábbiak elvégzését ismerte meg:
 > * Naplók streamelése az Azure-ból a saját terminálba
 > * Az alkalmazás kezelése az Azure Portalon
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)

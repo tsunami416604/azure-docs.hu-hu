@@ -1,5 +1,5 @@
 ---
-title: Python-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
+title: Python-alkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
 description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3af8f57cab6e420a7c7515bdf32b7ef382441cf9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261850"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633147"
 ---
-# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Python-webalkalmazások létrehozása a Linuxon futó Azure App Service-ben (előzetes verzió)
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. A jelen rövid útmutató bemutatja az App Service-ben a beépített Python-rendszerképre (előzetes verzió) épülő Python-alkalmazás üzembe helyezését Linux rendszerben az [Azure CLI](/cli/azure/install-azure-cli) használatával.
 
@@ -85,17 +85,17 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-Az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazás megtekintéséhez tallózással keresse meg a helyet. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
+Keresse meg a helyen szeretné megtekinteni a beépített rendszerképpel rendelkező újonnan létrehozott alkalmazást. Cserélje le  _&lt;alkalmazásnév >_ az alkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Az új webalkalmazásnak így kell kinéznie:
+Íme, mi az új alkalmazás hasonlóan kell kinéznie:
 
-![Üres webalkalmazás oldal](media/quickstart-php/app-service-web-service-created.png)
+![Üres alkalmazás lap](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -129,7 +129,7 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A Python-mintakód beépített rendszerképpel rendelkező webalkalmazásban fut.
+A Python-mintakód fut az App Service Linux rendszeren egy beépített rendszerképpel rendelkező.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
@@ -154,15 +154,15 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
+Nyissa meg a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> kezelheti a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/quickstart-python/app-service-list.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-python/app-service-list.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
+Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service lap az Azure Portalon](media/quickstart-python/app-service-detail.png)
 

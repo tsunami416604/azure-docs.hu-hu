@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252609"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653900"
 ---
-# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Gyors útmutató: Java-webalkalmazás létrehozása Linuxon futó App Service-ben
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használható az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) és az [Azure Web Apps előzetes verziójához készült Maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java-webalkalmazás webarchívumfájljának üzembe helyezéséhez.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) együtt a [készült Azure Web Apps (előzetes verzió)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) üzembe Java web archive-(WAR-) fájlt.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-Hajtsa végre a következő Maven-parancsot a Cloud Shellben egy új, `helloworld` nevű webalkalmazás létrehozásához:
+Hajtsa végre a következő Maven-parancsot a Cloud Shell használatával hozzon létre egy új alkalmazást nevű `helloworld`:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -62,12 +62,12 @@ Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<b
         <version>1.4.0</version>
         <configuration>
    
-            <!-- Web App information -->
+            <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
-            <!-- Java Runtime Stack for Web App on Linux-->
+            <!-- Java Runtime Stack for App on Linux-->
             <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
    
         </configuration>
@@ -84,9 +84,9 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 
 | Helyőrző | Leírás |
 | ----------- | ----------- |
-| `RESOURCEGROUP_NAME` | Az új erőforráscsoport neve, amelyben létrehozza a webalkalmazást. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névre, például *TestResources*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
-| `WEBAPP_NAME` | Az alkalmazásnév az alkalmazás gazdagépnevének része lesz az Azure-beli üzembe helyezést követően (WEBAPP_NAME.azurewebsites.net). Frissítse ezt az értéket egy egyedi névre, amelyet a Java-alkalmazást futtató új Azure-webalkalmazás kap, például: *contoso*. |
-| `REGION` | Az Azure-régió, ahol a webalkalmazást üzemeltetik, például `westus2`. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
+| `RESOURCEGROUP_NAME` | Az új erőforráscsoport, amelyben létrehozza az alkalmazás neve. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névre, például *TestResources*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
+| `WEBAPP_NAME` | Az alkalmazás neve lesz az állomásnév az alkalmazás telepítésekor az Azure-ba (WEBAPP_NAME.azurewebsites.net) rész. Frissítse ezt az értéket fogja futtatni a Java-alkalmazás, például új App Service-alkalmazás egyedi nevet *contoso*. |
+| `REGION` | Ha az alkalmazás üzemel, például egy Azure-régió `westus2`. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
@@ -108,7 +108,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban egy Java-webalkalmazást hozott létre a Mavennel, konfigurálta az [Azure Web Apps Maven bővítményét](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezett egy webarchívumba csomagolt Java-alkalmazást a Linuxon futó App Service-ben. Tekintse meg az alábbi oktatóanyagok és útmutatók további információ a Linuxon futó App Serivce Java-alkalmazások futtatására.
+Ez a rövid útmutatóban használt Maven konfigurált Java-alkalmazás létrehozása a [Azure Web Appshez készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezi a linuxon futó App Service web archive csomagolt Java-alkalmazás. Tekintse meg az alábbi oktatóanyagok és útmutatók további információ a Linuxon futó App Serivce Java-alkalmazások futtatására.
 
 - [Oktatóanyag: Üzembe helyezése egy Java vállalati alkalmazás-és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 - [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#connecting-to-data-sources)

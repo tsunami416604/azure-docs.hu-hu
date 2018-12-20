@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: chlandsi
-ms.openlocfilehash: bfa781dc76d54ad016fd72f8b28330632bbce624
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46f19876215c4c1ffac7d99e377381451a0ea7df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609412"
+ms.locfileid: "53629288"
 ---
 # <a name="quickstart-using-the-speech-service-from-python"></a>Gyors útmutató: A Speech Service a Python használatával
 
@@ -63,13 +63,20 @@ Ha probléma van, vagy hiányzik egy szolgáltatást, rendelkezik egy pillantás
 
 ### <a name="running-the-sample-in-a-terminal"></a>A terminálon a minta futtatása
 
-Vagy másolhatja a kódot a rövid útmutató egy forrásfájl `quickstart.py` , és futtassa azt az IDE-ben vagy a konzolon
+Másolja át is a [kód](#quickstart-code) a rövid útmutató egy forrásfájl `quickstart.py` , és futtassa azt az IDE-ben vagy a konzolon
 
 ```sh
 python quickstart.py
 ```
 
 vagy letöltheti, ez a rövid útmutató egy [Jupyter](https://jupyter.org) Notebookban, a [Cognitive Services beszéd mintaadattárban](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) , egy jegyzetfüzetet, majd futtassa.
+
+### <a name="quickstart-code"></a>Rövid útmutató kódja
+
+[!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
+
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+A jelen útmutatóban használt mintát a `quickstart/python` mappában találja.
 
 ### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>A beszédfelismerés SDK Python-csomag telepítése, és a minta futtatása a Visual Studio Code-ban
 
@@ -82,7 +89,7 @@ vagy letöltheti, ez a rövid útmutató egy [Jupyter](https://jupyter.org) Note
    ![Mappa megnyitása](media/sdk/qs-python-vscode-python-open-folder.png)
 1. Hozzon létre egy új Python-forrásfájl `speechsdk.py`, az új fájl ikonra kattintva.
    ![Fájl létrehozása](media/sdk/qs-python-vscode-python-newfile.png)
-1. Másolja, és illessze be a Python-kód alábbi mentse az újonnan létrehozott.
+1. Másolása, beillesztése és mentése a [Python-kód](#quickstart-code) az újonnan létrehozott fájlt.
 1. Helyezze be a Speech Service előfizetési adatok.
 1. Ha egy Python-fordítóra már használatban van, akkor az ablak alján az állapotsor bal oldalán fog megjelenni.
    Ellenkező esetben szakaszhoz elérhető Python interprety listáját nyissa meg a **Parancskatalógus** (`Ctrl+Shift+P`), és írja be **Python: Válassza ki a Interpret**, és válasszon egy megfelelő.
@@ -94,13 +101,6 @@ vagy letöltheti, ez a rövid útmutató egy [Jupyter](https://jupyter.org) Note
    ![Minta futtatása](media/sdk/qs-python-vscode-python-run.png)
 
 Ha ezek az utasítások a következő problémák vannak, tekintse meg a szélesebb körű [Visual Studio Code Python-oktatóprogram](https://code.visualstudio.com/docs/python/python-tutorial).
-
-### <a name="quickstart-code"></a>Rövid útmutató kódja
-
-[!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
-
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/python` mappában találja.
 
 ## <a name="next-steps"></a>További lépések
 

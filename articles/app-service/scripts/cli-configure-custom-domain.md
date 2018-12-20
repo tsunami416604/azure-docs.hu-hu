@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Egyéni tartomány leképezése egy webalkalmazásra | Microsoft Docs
-description: Azure CLI-példaszkript – Egyéni tartomány leképezése egy webalkalmazásra
+title: Az Azure CLI-Példaszkript – alkalmazás egyéni tartomány leképezése |} A Microsoft Docs
+description: Az Azure CLI-Példaszkript – alkalmazás egyéni tartomány leképezése
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d4bc6cd0a9b0740302d3ac2fc4661e11bd754d6d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 58d13498e1b86421ae04f5a3aa60cf0c44242a39
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584901"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629135"
 ---
-# <a name="map-a-custom-domain-to-a-web-app-using-cli"></a>Egyéni tartomány leképezése egy webalkalmazásra parancssori felület használatával
+# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Egyéni tartomány leképezése az App Service-alkalmazások parancssori felületről
 
-Ez a példaszkript egy webalkalmazást hoz létre az App Service szolgáltatásban a kapcsolódó erőforrásokkal együtt, majd leképezi rá a `www.<yourdomain>` tartományt.
+Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, és majd leképezi `www.<yourdomain>` rá.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +35,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-custom-domain/configure-custom-domain.sh?highlight=3 "Map a custom domain to a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-custom-domain/configure-custom-domain.sh?highlight=3 "Map a custom domain to an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -47,8 +47,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Leképez egy egyéni tartományt egy webalkalmazásra. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Leképez egy egyéni tartományt egy App Service-alkalmazást. |
 
 ## <a name="next-steps"></a>További lépések
 

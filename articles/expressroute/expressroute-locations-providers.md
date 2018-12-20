@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2018
+ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: 66fdf1a4e683d87bc6c6c0376fda9a36c939b354
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 27584e7c7d7588fcf463a96c97c118a5e76e5ac0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410227"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653934"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -171,11 +171,13 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 ## <a name="c1partners"></a>Kapcsolódás további szolgáltatókon keresztül
 | **Hely** | **Exchange** | **Kapcsolatszolgáltatók** |
 | --- | --- | --- |
-| **Amszterdam** | Equinix, Telecity | BICS, Eurofiber, Fastweb S.p.A, MainOne, Nianet, Post, Proximus, Telecom Italia Sparkle, Telia |
+| **Amszterdam** | Equinix, Telecity | BICS, Eurofiber, Fastweb S.p.A, öböl híd nemzetközi, MainOne, Nianet, Post, Proximus, a távközlési Italia csillogás, Telia |
+| **Fokváros** | Teraco | MTN |
 | **Chicago** | Equinix | Lightower, Windstream |
 | **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, Data Foundry, Transtelco |
 | **Frankfurt** | Telecity | BICS, Nianet, QSC AG |
 | **Hongkong** | Equinix | Macroview Telecom |
+| **Johannesburg** | Teraco | MTN |
 | **London** | Equinix, euNetworks, Telecity | Bezeq International Ltd., Epsilon, Exponential E, HSO, NexGen Networks, Tamares Telecom, Zain |
 | **Los Angeles** | Equinix |Transtelco |
 | **Madrid** | Level3 | Zertia |
