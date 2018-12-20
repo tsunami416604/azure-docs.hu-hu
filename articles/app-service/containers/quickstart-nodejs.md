@@ -1,5 +1,5 @@
 ---
-title: Node.js-webalkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
+title: Node.js-alkalmazás létrehozása linuxon – az Azure App Service |} A Microsoft Docs
 description: Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c22b5f0c1a445f30a99b7aba4afffaf077818335
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c739aa4fb510bd5ebe9e3ffff67f93a2dd49cf0c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543546"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631532"
 ---
-# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
+# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Node.js-alkalmazás létrehozása Linuxon futó Azure App Service-ben
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service-web-get-started-nodejs.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. Az App Service-ben üzembe _Windows_, lásd: [Node.js-alkalmazás létrehozása az Azure-ban](../app-service-web-get-started-nodejs.md).
 >
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató a Node.js-alkalmazások Linuxon futó App Service-be történő üzembe helyezésén vezeti végig a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) használatával.
@@ -136,17 +136,17 @@ Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
 - Egy alkalmazás létrehozása a megadott néven.
 
-- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
+- [Zip üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) fájlok az alkalmazás az aktuális munkakönyvtár.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával. Az <app_name> helyett adja meg a webalkalmazás nevét.
+Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával. Cserélje le az < app_name > az alkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-A Node.js mintakód beépített rendszerképpel rendelkező webalkalmazásban fut.
+A Node.js mintakód fut az App Service Linux rendszeren egy beépített rendszerképpel rendelkező.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -166,7 +166,7 @@ response.end("Hello Azure!");
 
 Mentse a módosításokat, és lépjen ki a nanóból. A mentéshez a `^O`, a kilépéshez a `^X` parancsot használja.
 
-Most újra üzembe helyezzük az alkalmazást. Az `<app_name>` helyére írja a webalkalmazás nevét.
+Most újra üzembe helyezzük az alkalmazást. A helyettesítő `<app_name>` az alkalmazással.
 
 ```bash
 az webapp up -n <app_name>
@@ -176,15 +176,15 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-nodejs/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
+Nyissa meg a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> kezelheti a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
+A bal oldali menüben kattintson a **App Services**, majd kattintson az Azure-alkalmazás neve.
 
-![Navigálás a portálon az Azure-webapphoz](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezheti az olyan alapszintű felügyeleti feladatokat, mint a böngészés, leállítás, elindítás, újraindítás és törlés.
+Az alkalmazás áttekintése oldal jelenik meg. Itt elvégezheti az olyan alapszintű felügyeleti feladatokat, mint a böngészés, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service lap az Azure Portalon](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
 

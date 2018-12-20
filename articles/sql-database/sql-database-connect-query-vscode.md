@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 5e0b2fff7ca5bc7f5856a6de05e18b99bbf8b938
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600828"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652115"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code használatával csatlakozhat, és Azure SQL Database-adatbázis lekérdezéséhez
 
-[A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ez a rövid útmutató bemutatja a Visual Studio Code egy Azure SQL Database-adatbázishoz csatlakozhat, és futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissítése és adatok törlése.
+[A Visual Studio Code](https://code.visualstudio.com/docs) van egy grafikus Kódszerkesztő Linux, macOS és Windows. Támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ebben a rövid útmutatóban fogja használni a Visual Studio Code egy Azure SQL Database-adatbázishoz csatlakozni, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a
 
 1. Nyisson meg egy új Visual Studio Code-ablakot. 
 
-2. Nyomja meg **CTRL**+**N**. Megnyílik egy új egyszerű szöveges fájlt. 
+2. Nyomja meg **Ctrl**+**N**. Megnyílik egy új egyszerű szöveges fájlt. 
 
 3. Válassza ki **egyszerű szöveges** az állapotsor jobb alsó sarkában található.
 
@@ -77,16 +77,16 @@ A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a
 A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
 
 > [!IMPORTANT]
-> A folytatás előtt győződjön meg arról, hogy rendelkezik-e a kiszolgáló és a bejelentkezési adatait, készen áll-e. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.
+> A folytatás előtt győződjön meg arról, hogy a kiszolgáló, és jelentkezzen be az információkat, készen áll. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.
 >
 
 1. A Visual Studio Code-ban nyomja le a **Ctrl + Shift + P** (vagy **F1**) a Parancskatalógus megnyitásához.
 
-2. Válassza ki **MS SQL: Csatlakozás** nyomja le az ENTER **Enter**.
+2. Válassza ki **MS SQL: Csatlakozás** válassza **Enter**.
 
 3. Válassza ki **kapcsolati profil létrehozása**.
 
-4. Kövesse az utasításokat követve adja meg az új profil kapcsolati tulajdonságait. Egyes értékek kiválasztása után nyomja le az ENTER **Enter** folytatásához. 
+4. Kövesse az utasításokat követve adja meg az új profil kapcsolati tulajdonságait. Egyes értékek kiválasztása után válassza ki a **Enter** folytatásához. 
 
    | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- | 
@@ -102,7 +102,7 @@ A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Data
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Használja a következő [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) kategóriánként az első 20 terméket a lekérdezést Transact-SQL utasítást.
+Futtassa a következő [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) kategóriánként az első 20 terméket a lekérdezést Transact-SQL utasítást.
 
 1. A szerkesztő ablakban illessze be a következő SQL-lekérdezést.
 
@@ -113,13 +113,13 @@ Használja a következő [kiválasztása](https://msdn.microsoft.com/library/ms1
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Nyomja meg **Ctrl**+**Shift**+**E** hajtsa végre a lekérdezést, és az eredményeket megjeleníteni a `Product` és `ProductCategory` táblákat.
+2. Nyomja meg **Ctrl**+**Shift**+**E** futtatni a lekérdezést, és az eredményeket megjeleníteni a `Product` és `ProductCategory` táblákat.
 
     ![2 táblákból származó adatok beolvasására irányuló lekérdezés](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az új termék hozzáadása a `SalesLT.Product` tábla.
+Futtassa a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az új termék hozzáadása a `SalesLT.Product` tábla.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -147,7 +147,7 @@ Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms1743
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Használja a következő [frissítése](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást a hozzáadott termék frissítése.
+Futtassa a következő [frissítése](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást a hozzáadott termék frissítése.
 
 1. Cserélje le az előző lekérdezés erre:
 
@@ -161,7 +161,7 @@ Használja a következő [frissítése](https://msdn.microsoft.com/library/ms177
 
 ## <a name="delete-data"></a>Adat törlése
 
-Használja a következő [törlése](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL utasítást az új termék eltávolítása.
+Futtassa a következő [törlése](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL utasítást az új termék eltávolítása.
 
 1. Cserélje le az előző lekérdezés erre:
 
