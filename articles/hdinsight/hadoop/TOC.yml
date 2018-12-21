@@ -48,7 +48,7 @@ items:
     - name: Az Azure Storage használata
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Az Azure Data Lake Store használata
+    - name: Az Azure Data Lake Storage használata
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: Kötegelt lekérdezések az Apache Hadoop használatával
@@ -63,7 +63,7 @@ items:
         href: apache-hadoop-use-hive-visual-studio.md
       - name: Az Apache Hive-nézet használata
         href: apache-hadoop-use-hive-ambari-view.md
-      - name: A Beeline használata
+      - name: Az Apache Hive Beeline használata
         href: apache-hadoop-use-hive-beeline.md
       - name: A REST API használata
         href: apache-hadoop-use-hive-curl.md
@@ -105,7 +105,7 @@ items:
         href: apache-hadoop-use-pig-curl.md
       - name: A Távoli asztal használata
         href: apache-hadoop-use-pig-remote-desktop.md
-    - name: A DataFu használata az Apache Piggel
+    - name: Az Apache DataFu használata az Apache Piggel
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: Apache Hadoop-feladatok elküldése
       href: submit-apache-hadoop-jobs-programmatically.md
@@ -201,7 +201,7 @@ items:
     - name: Mono telepítése vagy frissítése
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Hive-kódtárak hozzáadása
+    - name: Apache Hive-kódtárak hozzáadása
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
     - name: Az Apache Giraph használata
@@ -337,7 +337,7 @@ items:
     - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: Több HDInsight-fürt a Data Lake Store-ral
+    - name: Több HDInsight-fürt a Data Lake Storage-dzsel
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: Adatok importálása és exportálása az Apache Sqoop használatával
@@ -559,9 +559,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 43ebb63bdda8c484ce1c2d2828293032ea90013c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f1d3fbab35ddedf3a1dc9360ecc4dbe38591e58c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321152"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653696"
