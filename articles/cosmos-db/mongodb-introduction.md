@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az Azure Cosmos DB API a mongodb-hez
+title: Az Azure Cosmos DB MongoDB API-jának bemutatása
 description: Ismerje meg, hogyan használhatja az Azure Cosmos DB tárolja, és a lekérdezés nagy mennyiségű JSON-dokumentumok és kis késésű, a népszerű OSS MongoDB API használatával.
 keywords: MongoDB-hez készült Azure Cosmos DB API
 services: cosmos-db
@@ -9,12 +9,12 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/19/2018
 ms.author: sclyon
-ms.openlocfilehash: d8b423bcbfc8f999ce04c7713a57cfa096fa2c55
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fc6c9567073bbdfa77d753b9b274f7ed5e901405
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654036"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720570"
 ---
 # <a name="azure-cosmos-db-for-mongodb-api-clients"></a>Az Azure Cosmos DB MongoDB API-ügyfelek
 
@@ -55,3 +55,5 @@ Kövesse a MongoDB rövid útmutatóinak lépéseit egy Azure Cosmos DB-fiók l�
 * Kövesse a [adatok áttelepítése az Azure Cosmos DB-protokoll támogatja a MongoDB API-hoz](mongodb-migrate.md) oktatóanyag az adatok importálása egy Cosmos-adatbázis.
 * Csatlakozhat egy Cosmos fiók használatával [Robomongo](mongodb-robomongo.md).
 * Ismerje meg, hogyan [konfigurálhat olvasási beállításokat a globálisan elosztott alkalmazásokhoz](../cosmos-db/tutorial-global-distribution-mongodb.md).
+
+<sup>Megjegyzés: Ez a cikk ismerteti az Azure Cosmos DB által biztosított átviteli protokoll kompatibilitás MongoDB adatbázisok funkciója. A Microsoft nem fut a szolgáltatás a MongoDB-adatbázisokat. Az Azure Cosmos DB sincs társítva a MongoDB, Inc.</sup>

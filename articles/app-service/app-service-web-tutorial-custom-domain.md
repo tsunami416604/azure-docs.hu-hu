@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3eff646a1b3681c58c820695d296d5e09297e03b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600203"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714338"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -48,7 +48,7 @@ Az oktatóanyag elvégzéséhez:
   Például a `contoso.com` és a `www.contoso.com` DNS-bejegyzéseinek hozzáadásához képesnek kell lennie a `contoso.com` gyökértartomány DNS-beállításainak konfigurálására.
 
   > [!NOTE]
-  > Ha nem rendelkezik meglévő tartománynévvel, az [Azure Portallal vásárolhat egy tartományt](custom-dns-web-site-buydomains-web-app.md). 
+  > Ha nem rendelkezik meglévő tartománynévvel, az [Azure Portallal vásárolhat egy tartományt](manage-custom-dns-buy-domain.md). 
 
 ## <a name="prepare-the-app"></a>Az alkalmazás előkészítése
 
@@ -305,7 +305,7 @@ Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-cím�
 
 ## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
 
-Élő webhely és hozzá tartozó DNS-tartománynév migrálása leállás nélkül az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](app-service-custom-domain-name-migrate.md).
+Élő webhely és hozzá tartozó DNS-tartománynév migrálása leállás nélkül az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](manage-custom-dns-migrate-domain.md).
 
 ## <a name="redirect-to-a-custom-directory"></a>Átirányítás egyéni könyvtárra
 

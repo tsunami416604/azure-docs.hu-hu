@@ -1,6 +1,6 @@
 ---
 title: A MongoDB dokumentumra vonatkozó TTL-funkciók az Azure Cosmos DB-ben
-description: Ismerje meg, az Azure Cosmos DB API-fiókok a mongodb-hez automatikusan kiürítése őket a rendszer bizonyos idő után az élettartam értékének idő beállítása.
+description: Ismerje meg az Azure Cosmos DB MongoDB API-fiókok automatikus kiürítése őket a rendszer bizonyos idő után dokumentumok élettartam idő beállítása.
 services: cosmos-db
 author: orestis-ms
 ms.author: orkostak
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.openlocfilehash: e82a6b055df87ea01025d01e32f31b0e962cf307
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 891fa2a54be3a74d2a0cc3b9e266a1978ecf6ce3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543665"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724980"
 ---
-# <a name="expire-data-in-azure-cosmos-db-api-for-mongodb"></a>Hamarosan lejár az adatokat az Azure Cosmos DB API a mongodb-hez
+# <a name="expire-data-in-azure-cosmos-db-for-mongodb-api"></a>Hamarosan lejár az adatokat az Azure Cosmos DB MongoDB API-hoz
 
-Az élettartam- (TTL-) funkció lehetővé teszi, hogy az adatbázis adatai automatikusan elévüljenek. Az Azure Cosmos DB API a mongodb-hez az Azure Cosmos DB-élettartam képességek használja. Két mód támogatott: alapértelmezett TTL-érték beállítása az egész gyűjteményhez és egyedi TTL-érték megadása az egyes dokumentumokhoz. A TTL-indexeket és a dokumentumonkénti TTL-értékeket szabályozó logika a MongoDB API-ban megegyezik az [Azure Cosmos DB-ben találhatóval](../cosmos-db/mongodb-indexing.md).
+Az élettartam- (TTL-) funkció lehetővé teszi, hogy az adatbázis adatai automatikusan elévüljenek. Az Azure Cosmos DB MongoDB API-hoz az Azure Cosmos DB-élettartam képességek használja. Két mód támogatott: alapértelmezett TTL-érték beállítása az egész gyűjteményhez és egyedi TTL-érték megadása az egyes dokumentumokhoz. A TTL-indexeket és a dokumentumonkénti TTL-értékeket szabályozó logika a MongoDB API-ban megegyezik az [Azure Cosmos DB-ben találhatóval](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>TTL-indexek
 A TTL gyűjteményben történő univerzális engedélyezéséhez [TTL-index (élettartamindex)](../cosmos-db/mongodb-indexing.md) létrehozása szükséges. A TTL-index a _ts mező indexe expireAfterSeconds értékkel.
@@ -72,10 +72,11 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 ``` 
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>A dokumentumonkénti TTL-funkció aktiválása
-A dokumentumra vonatkozó TTL szolgáltatás a mongodb-hez az Azure Cosmos DB API-fiók használatával aktiválhatja. 
+
+A MongoDB API-hoz konfigurált Cosmos-fiókot a dokumentumra vonatkozó TTL szolgáltatás aktiválható.
 
 ![Képernyőfelvétel a dokumentumonkénti TTL-funkció aktiválásáról a portálon](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>További lépések
 * [Adatok automatikus elévülése az Azure Cosmos DB-gyűjteményekben az élettartam használatával](../cosmos-db/time-to-live.md)
-* [Indexelés az Azure Cosmos DB API a mongodb-hez](../cosmos-db/mongodb-indexing.md)
+* [A MongoDB API-val konfigurált Cosmos database indexelése](../cosmos-db/mongodb-indexing.md)

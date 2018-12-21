@@ -1,5 +1,5 @@
 ---
-title: A mongodb-hez az Azure Cosmos DB API mongoimport, mongorestore és és használata
+title: Mongoimport, mongorestore és és használata az Azure Cosmos DB MongoDB API-hoz
 description: Útmutató adatok importálásához egy MongoDB-fiók API-jába a mongoimport és a mongorestore eszközök segítségével
 keywords: mongoimport, mongorestore
 services: cosmos-db
@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: a17b2121feb5656df4298bddc2b1e90bb9ac6457
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c0fed311a43677465559ca9ea86b384a39b9fbfd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545614"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723416"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-api-account-for-mongodb"></a>Oktatóanyag: Migrálja adatait az Azure Cosmos DB API-fiók MongoDB-hez
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-configured-for-mongodb-api"></a>Oktatóanyag: Migrálja adatait az Azure Cosmos DB MongoDB API-hoz konfigurált
 
-Ez az oktatóanyag útmutatást a mongodb-hez készült Azure Cosmos DB API a MongoDB-ben tárolt adatok migrálása. Ha a MongoDB-ből importál adatokat, és az Azure Cosmos DB SQL API-val tervezi azokat használni, az adatok importálásához használja az [adatmigrálási eszközt](import-data.md).
+Ez az oktatóanyag az Azure Cosmos DB MongoDB API-hoz konfigurált MongoDB-ben tárolt adatok migrálása útmutatás. Ha használni szeretné a és adatokat importál a MongoDB-ből az Azure Cosmos DB SQL API-hoz konfigurált, használjon a [adatáttelepítési eszközét](import-data.md) adatok importálásához.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Adatok migrálása a mongoimport használatával
 > * Adatok migrálása a mongorestore használatával
 
-Adatok áthelyezése az Azure Cosmos DB API a mongodb-hez, győződjön meg arról, hogy mielőtt van néhány minta, MongoDB-adatok. Ha nem rendelkezik MongoDB-adatbázissal, letöltheti és telepítheti a [MongoDB közösségi kiszolgálót](https://www.mongodb.com/download-center), létrehozhat egy mintaadatbázist, és a mongoimport.exe vagy a mongorestore.exe használatával feltölthet mintaadatokat. 
+Mielőtt adatokat telepít át az Azure Cosmos DB MongoDB API-hoz, akkor ügyeljen arra, hogy rendelkezik mintául szolgáló MongoDB-adatait. Ha nem rendelkezik MongoDB-adatbázissal, letöltheti és telepítheti a [MongoDB közösségi kiszolgálót](https://www.mongodb.com/download-center), létrehozhat egy mintaadatbázist, és a mongoimport.exe vagy a mongorestore.exe használatával feltölthet mintaadatokat. 
 
 ## <a name="plan-for-migration"></a>Az áttelepítés megtervezése
 
@@ -59,7 +59,7 @@ Adatok áthelyezése az Azure Cosmos DB API a mongodb-hez, győződjön meg arr�
 
 1. Számítsa ki az egyetlen dokumentum írására vonatkozó, közelítő kérelemegységenkénti díjat:
 
-   a. Csatlakozhat az Azure Cosmos DB API a mongodb-hez a MongoDB Shell. Ezzel kapcsolatos további útmutatást a [MongoDB-alkalmazások az Azure Cosmos DB-hez való csatlakoztatását ismertető](connect-mongodb-account.md) cikkben találhat.
+   a. Csatlakozás a MongoDB API a MongoDB rendszerhéj konfigurált Cosmos fiókhoz. Ezzel kapcsolatos további útmutatást a [MongoDB-alkalmazások az Azure Cosmos DB-hez való csatlakoztatását ismertető](connect-mongodb-account.md) cikkben találhat.
     
    b. Futtasson egy minta beszúrási parancsot a MongoDB-felület egyik mintadokumentuma használatával:
    
@@ -161,7 +161,7 @@ mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cos
 
 ## <a name="migrate-data-by-using-mongorestore"></a>Adatok migrálása a mongorestore használatával
 
-Az alábbi sablon használatával importálhat adatokat a MongoDB-fiók API-ja adatainak visszaállításához. Töltse ki a fiókjához tartozó értékekkel a *gazdagép*, *felhasználónév* és *jelszó* mezőket.
+A MongoDB API-hoz konfigurált Cosmos-fiókjába az adatok visszaállításához hajtsa végre az importálás a következő sablon használatával. Töltse ki a fiókjához tartozó értékekkel a *gazdagép*, *felhasználónév* és *jelszó* mezőket.
 
 Sablon:
 
@@ -177,7 +177,7 @@ mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u co
 
 ## <a name="next-steps"></a>További lépések
 
-Továbbléphet a következő oktatóanyagra, amelyben megismerheti a MongoDB-adatok az Azure Cosmos DB-vel való lekérdezésének módját. 
+Folytassa a következő oktatóanyaggal, és megtudhatja, hogyan kérdezhet le adatokat az ügyfelek és eszközök használatával a mongodb-hez Cosmos database. 
 
 > [!div class="nextstepaction"]
 >[MongoDB-adatok lekérdezése](../cosmos-db/tutorial-query-mongodb.md)

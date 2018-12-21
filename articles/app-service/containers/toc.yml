@@ -8,7 +8,7 @@ items:
   - name: Tudnivalók a Linux rendszeren futó App Service-ről
     href: app-service-linux-intro.md
   - name: Az üzemeltetési lehetőségek összehasonlítása
-    href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Gyors útmutatók
   items:
   - name: .NET Core-alkalmazás létrehozása
@@ -69,7 +69,7 @@ items:
   - name: Az App Service működése
     href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service-csomagok
-    href: ../azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service-környezet
     href: ../environment/intro.md
   - name: Java-fejlesztői útmutató
@@ -77,13 +77,13 @@ items:
   - name: Java Enterprise-útmutató
     href: app-service-java-enterprise.md
   - name: Bemeneti és kimeneti IP-címek
-    href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Hitelesítés és engedélyezés
-    href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Üzembe helyezés típusának kiválasztása
     href: choose-deployment-type.md
   - name: Diagnosztika
-    href: ../app-service-diagnostics.md
+    href: ../overview-diagnostics.md
 - name: Útmutatók
   items:
   - name: Alkalmazás konfigurálása
@@ -113,15 +113,15 @@ items:
     - name: Telepítési hitelesítő adatok beállítása
       href: ../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Átmeneti környezetek létrehozása
-      href: ../web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Egyéni tartomány leképezése
     items:
     - name: Tartomány vásárlása
-      href: ../custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Tartományok leképezése a Traffic Managerrel
       href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Aktív tartomány migrálása
-      href: ../app-service-custom-domain-name-migrate.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Az alkalmazás védelme
     items:
     - name: SSL-tanúsítvány vásárlása
@@ -149,7 +149,7 @@ items:
     - name: Horizontális felskálázás több példányra
       href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Nagy sűrűségű üzemeltetés
-      href: ../app-service-high-density-hosting.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-scale-per-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Alkalmazás monitorozása
     items:
     - name: Csatlakozás az alkalmazáshoz SSH-n keresztül
@@ -157,13 +157,13 @@ items:
     - name: Kvóták és riasztások
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Naplók engedélyezése
-      href: ../web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Java APM-integrációk
       href: how-to-java-apm-monitoring.md
   - name: Alkalmazás kezelése
     items:
     - name: Alkalmazás biztonsági mentése
-      href: ../web-sites-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Visszaállítás biztonsági másolatból
       href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Alkalmazás klónozása
@@ -205,7 +205,7 @@ items:
   - name: Hibaelhárítás
     items:
     - name: Hibaelhárítás a Visual Studióval
-      href: ../web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Node.js-alapú alkalmazások hibaelhárítása
       href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: HTTP 502-es és 503-as hibák elhárítása
@@ -222,9 +222,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 3e0ce6b9c8f3fa3aaf88ba8994bf7eb58911da85
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604497"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719523"

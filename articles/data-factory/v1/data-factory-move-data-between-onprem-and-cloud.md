@@ -304,7 +304,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben hozzon létre egy **folyamat** egy **másolási tevékenység** használó **EmpOnPremSQLTable** bemenetként, és **OutputBlobTable** , kimenet.
 
-1. A Data Factory Editorban kattintson **... Továbbiak**, majd az **Új adatcsatorna elemre.
+1. A Data Factory Editorban kattintson **... Továbbiak**, majd az **Új adatcsatorna** elemre.
 2. Cserélje le a JSON a jobb oldali panelen a következő szöveget:    
 
     ```JSON   

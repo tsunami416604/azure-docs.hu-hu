@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 334396b99609ea52085e36ee2740583e0957c3a4
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 12f08ad67025a3a791c021005fc82c8743b37c9d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600029"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720379"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -34,7 +34,7 @@ ms.locfileid: "53600029"
 
 Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos DB Emulator használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben.
 
-Jelenleg az emulátor adatkezelője teljes mértékben támogatja az SQL API-gyűjteményeket és a MongoDB-gyűjteményeket. A táblázat-, gráf- és Cassandra-tárolók jelenleg nem teljes mértékben támogatottak.
+Jelenleg az Adatkezelőben az emulátorban csak teljes körűen támogatja az ügyfelek az SQL API és a MongoDB API-hoz. Tábla, a Graph és a Cassandra-ügyfelek teljes körűen nem támogatottak.
 
 Ez a cikk a következő feladatokat mutatja be:
 
@@ -57,7 +57,7 @@ Bár az Azure Cosmos DB emulációja valósághű, az emulátor implementálása
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek
 Mivel az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson futó emulált környezetet nyújt, különbségek vannak az emulátor és a felhőben lévő Azure Cosmos DB-fiókok funkciói között:
 
-* Jelenleg az emulátor adatkezelője csak az SQL API-gyűjteményeket és a MongoDB-gyűjteményeket támogatja teljes mértékben. A táblázat-, gráf- és Cassandra-API-k még nem teljes mértékben támogatottak.
+* Jelenleg az adatkezelőt az emulátorban ügyfelek SQL API és a MongoDB API-t támogatja. A tábla, a Graph és a Cassandra API-k ügyfelek még nem támogatott.
 * Az Azure Cosmos DB Emulator csak egyetlen rögzített fiókot és jól ismert főkulcsot támogat. Az Azure Cosmos DB Emulatorban nincs lehetőség a kulcs újbóli létrehozására.
 * Az Azure Cosmos DB Emulator egy nem skálázható szolgáltatás, és nem támogatja a gyűjtemények nagy számát.
 * Az Azure Cosmos DB Emulator nem szimulál különböző [Azure Cosmos DB konzisztenciaszinteket](consistency-levels.md).
@@ -125,14 +125,14 @@ Egy helyi hálózaton futtathatja az emulátort. A hálózati hozzáférés enge
 A hálózati hozzáférés első engedélyezéséhez a felhasználónak le kell állítania az emulátort, és törölnie kell az emulátor adatkönyvtárát (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Fejlesztés az emulátorral
-Amikor az Azure Cosmos DB Emulator fut az asztalon, bármelyik támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulatort is tartalmaz egy beépített adatkezelő, amely lehetővé teszi az SQL- és mongodb-hez, és tekintse meg az Azure Cosmos DB API gyűjtemények létrehozása, és szerkeszthetik a dokumentumokat a kód írása nélkül.
+Amikor az Azure Cosmos DB Emulator fut az asztalon, bármelyik támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulatort is tartalmaz egy beépített adatkezelő, amely lehetővé teszi a Mongo DB API-hoz, és tekintse meg az SQL API-t vagy Cosmos DB gyűjtemények létrehozása, és szerkeszthetik a dokumentumokat a kód írása nélkül.
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
         new Uri("https://localhost:8081"),
         "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
-Ha [Azure Cosmos DB protokolltámogatást használ a MongoDB-hez](mongodb-introduction.md), használja a következő kapcsolati sztringet:
+Ha használ [átviteli protokolltámogatás Azure Cosmos DB MongoDB API-hoz](mongodb-introduction.md), használja a következő kapcsolati karakterláncot:
 
     mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
@@ -151,7 +151,7 @@ A Windows tanúsítványtárolóval nem integrálható nyelvekkel és futtatók�
 
 ![Azure Cosmos DB helyi emulátor SSL-tanúsítványa](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
-Az X.509 tanúsítvány a Java tanúsítványtárolóba importálható a [Tanúsítvány hozzáadása a Java hitelesítésszolgáltató tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikkben lévő utasításokkal. Miután a tanúsítványt a tanúsítványtárolóba importálta, a Java és a MongoDB alkalmazások az Azure Cosmos DB Emulatorhoz csatlakozhatnak.
+Az X.509 tanúsítvány a Java tanúsítványtárolóba importálható a [Tanúsítvány hozzáadása a Java hitelesítésszolgáltató tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikkben lévő utasításokkal. A tanúsítványt a tanúsítványtárolóba importálása után az SQL és a MongoDB API-hoz készült ügyfelek tud csatlakozni az Azure Cosmos DB Emulatort lesz.
 
 Amikor Python és Node.js SDK-kból csatlakozik az emulátorhoz, az SSL-ellenőrzés le van tiltva.
 

@@ -9,24 +9,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: a85e7c46aa41309bc031f59ed841dc8149d878b3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667236"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723960"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>A Terraform használata infrastruktúra kiépítésére az Azure üzembehelyezési pontjaival
 
-Az [Azure üzembehelyezési pontjainak](/azure/app-service/web-sites-staged-publishing) használatával válthat az alkalmazások különböző verziói között. Ennek köszönhetően minimalizálhatja a nem működő üzemelő példányok okozta hatásokat. 
+Az [Azure üzembehelyezési pontjainak](/azure/app-service/deploy-staging-slots) használatával válthat az alkalmazások különböző verziói között. Ennek köszönhetően minimalizálhatja a nem működő üzemelő példányok okozta hatásokat. 
 
 Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (Az „éles üzemi” és az „előkészítési” elnevezések használata tetszőleges, és az adott forgatókönyvnek megfelelően bármilyen elnevezés használható.) Az üzembehelyezési pontok konfigurálását követően a Terraform használatával igény szerint válthat a két pont között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 
-- **GitHub-fiók**: A tesztelési GitHub-adattár leágaztatásához és használatához szüksége lesz egy [GitHub](http://www.github.com)-fiókra.
+- **GitHub-fiók**: Kell egy [GitHub](http://www.github.com) fiók elágaztatását, és a teszt GitHub-adattárban.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>A Terraform-terv létrehozása és alkalmazása
 

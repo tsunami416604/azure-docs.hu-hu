@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: e48231e154c04e75ab27f2a92783486b83d00d3b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166268"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719506"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>7. oktatóanyag: Bontsa ki az egyszerű entitás- és kifejezés lista neve
 
@@ -51,7 +51,7 @@ Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű 
 
 Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json).
 
 2. Importálja a JSON-t egy új alkalmazásba.
 
@@ -284,7 +284,7 @@ Mivel a név bármi lehet, a LUIS pontosabban jósolja meg az entitásokat, ha r
 
 ## <a name="to-boost-signal-add-phrase-list"></a>A jel erősítéséhez vegyen fel egy kifejezéslistát.
 
-Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) a LUIS-minták GitHub-adattárból. A lista több mint ezer, állásokkal kapcsolatos szót és kifejezést tartalmaz. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
+Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) az Azure-minták GitHub-adattárból. A lista több mint ezer, állásokkal kapcsolatos szót és kifejezést tartalmaz. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
 
 1. A LUIS-alkalmazás **Build** (Létrehozás) szakaszában válassza a **Phrase lists** (Kifejezéslisták) lehetőséget az **Improve app performance** (Az alkalmazás teljesítményének növelése) menüben.
 

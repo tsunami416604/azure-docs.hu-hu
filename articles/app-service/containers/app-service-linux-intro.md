@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: 23b1ec176572b3a7e6deb0cba60ac7a1e73eeffb
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ea63049e7d3315ff3166ea5414d96b071675046c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605517"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725541"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -63,7 +63,7 @@ További információt a [Java-webalkalmazás létrehozása a Linuxon futó App 
 
 ## <a name="scaling"></a>Méretezés
 
-* Az [App Service-csomag](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json) szintjének megváltoztatásával az ügyfelek le- és felskálázhatják webalkalmazásaikat
+* Az [App Service-csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json) szintjének megváltoztatásával az ügyfelek le- és felskálázhatják webalkalmazásaikat
 
 ## <a name="locations"></a>Helyek
 
@@ -105,7 +105,7 @@ A Linuxon futó App Service további részleteihez lásd a következő cikkeket 
 
 * [App Service Linuxhoz, GYIK](app-service-linux-faq.md)
 * [SSH-támogatás a Linuxon futó App Service számára](app-service-linux-ssh-support.md)
-* [Átmeneti környezetek beállítása az App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Átmeneti környezetek beállítása az App Service-ben](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker Hub – folyamatos üzembe helyezés](app-service-linux-ci-cd.md)
 
 Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).

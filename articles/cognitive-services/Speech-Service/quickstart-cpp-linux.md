@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: ff192377b94a9b3af65089f51e4fdef39bbb889d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605738"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723645"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést c++ Linux rendszeren a Speech SDK-val
 
@@ -129,16 +129,12 @@ Az SDK letöltése és telepítése a következőképpen történik:
    We recognized: What's the weather like?
    ```
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/cpp-linux` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szándék felismerése beszédből a C++-hoz készült Speech SDK használatával](how-to-recognize-intents-from-speech-cpp.md)
+> [Ismerkedés a C++-mintákat a Githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Beszéd fordítása](how-to-translate-speech-csharp.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

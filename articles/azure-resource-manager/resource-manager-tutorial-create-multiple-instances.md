@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3ac7517327e1447fbcd20cf3ffb506b7207a78b3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616147"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717569"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozása Resource Manager-sablonokkal
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozásával létrehozása a Resource Manager-sablonokkal
 
 Ismerje meg, hogyan hozhat létre több Azure-erőforráspéldányt az Azure Resource Manager-sablonban való iterálással. Ebben az oktatóanyagban egy sablon módosításával három tárfiókpéldányt hoz létre.
+
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Gyorsindítási sablon megnyitása
@@ -149,7 +151,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre több tárfiókpéldány. Eddig egy tárfiókot vagy több tárfiókpéldányt hozott létre. A következő oktatóanyagban egy több erőforrást és több erőforrástípust tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
+Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre több tárfiókpéldány. A következő oktatóanyagban elsajátíthatja, hogyan erőforrás erőforráscsoportok közötti áthelyezése másik erőforráscsoportba.
 
 > [!div class="nextstepaction"]
-> [Függő erőforrások létrehozása](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Erőforrások áthelyezése](./resource-manager-tutorial-move-resources.md)

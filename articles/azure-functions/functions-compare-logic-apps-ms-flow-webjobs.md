@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4b76e18315dcf4768f2dfc9c668b0222e2adf4f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ec2c7a25c5108ee3c6f861defd8403ff40113075
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600573"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722217"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>A Flow, a Logic Apps, a Functions és a WebJobs összehasonlítása
 
@@ -26,7 +26,7 @@ Ez a cikk összehasonlítja az alábbi Microsoft-felhőszolgáltatásokat:
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure App Service WebJobs](../app-service/web-sites-create-web-jobs.md)
+* [Azure App Service WebJobs](../app-service/webjobs-create.md)
 
 Mindegyik szolgáltatás megoldhatja az integrációs problémákat és automatizálhatja az üzleti folyamatokat. Mindegyik képes bemenet, műveletek, feltételek és kimenet meghatározására. Futtathatók ütemezve vagy eseményindítóval is. De mindegyikük rendelkezik egyedi előnyökkel, és ez a cikk ismerteti a különbségeket.
 
@@ -70,7 +70,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 
 ## <a name="compare-functions-and-webjobs"></a>A Functions és a WebJobs összehasonlítása
 
-Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-val is olyan integrációs szolgáltatás, ahol a *kód* a kiindulási pont, és mindkettőt fejlesztők részére tervezték. Mindkettő az [Azure App Service](../app-service/overview.md) szolgáltatásra épül, és támogatják többek között a következő funkciókat: [verziókövetés integrálása](../app-service/deploy-continuous-deployment.md), [hitelesítés](../app-service/app-service-authentication-overview.md) és [Application Insights-integrációs monitorozás](functions-monitoring.md).
+Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-val is olyan integrációs szolgáltatás, ahol a *kód* a kiindulási pont, és mindkettőt fejlesztők részére tervezték. Mindkettő az [Azure App Service](../app-service/overview.md) szolgáltatásra épül, és támogatják többek között a következő funkciókat: [verziókövetés integrálása](../app-service/deploy-continuous-deployment.md), [hitelesítés](../app-service/overview-authentication-authorization.md) és [Application Insights-integrációs monitorozás](functions-monitoring.md).
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs és WebJobs SDK
 

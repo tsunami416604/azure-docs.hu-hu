@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: hero-article
 ms.date: 09/17/2018
-ms.openlocfilehash: 4d4f7bf9c77dad21f9e66ab0fa023a4898163f1f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: fb3fba7fa86027d753be21e028109a5d7ef03efb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989179"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722481"
 ---
 # <a name="what-is-azure-scheduler"></a>Mi az Azure Scheduler?
 
@@ -26,13 +26,13 @@ Az [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) segítség
 
 Bár a Schedulerrel létrehozhat, kezelhet, karban tarthat, ütemezhet és futtathat számítási feladatokat, a Scheduler nem üzemelteti a számítási feladatokat, és nem futtatja a kódot. A szolgáltatás csupán a máshol, például az Azure-ban, helyileg vagy egy másik szolgáltatónál üzemeltetett szolgáltatást vagy kódot *hívja meg*. A Scheduler meghívható a következőkön keresztül: HTTP, HTTPS, Storage-üzenetsor, Service Bus-üzenetsor vagy Service Bus-témakör. Feladatok létrehozására, kezelésére és ütemezésére használható az [Azure Portal](../scheduler/scheduler-get-started-portal.md), kód, a [Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) vagy [Azure Scheduler PowerShell-parancsmaghivatkozás](scheduler-powershell-reference.md). Programozott módon létrehozhat, megtekinthet, frissíthet, kezelhet vagy törölhet például feladatokat és [feladatgyűjteményeket](../scheduler/scheduler-concepts-terms.md) parancsfájlok használatával és az Azure Portalon.
 
-Más Azure-ütemezési szolgáltatások, például az [Azure WebJobs](../app-service/web-sites-create-web-jobs.md), amely az Azure App Service [Web Apps](https://azure.microsoft.com/services/app-service/web/) szolgáltatása, szintén használják a Schedulert a háttérben. Az ezekkel a műveletekkel való kommunikációt a [Scheduler REST API-val](https://docs.microsoft.com/rest/api/scheduler/) kezelheti. megkönnyíti a műveletekkel való kommunikációt.
+Más Azure-ütemezési szolgáltatások, például az [Azure WebJobs](../app-service/webjobs-create.md), amely az Azure App Service [Web Apps](https://azure.microsoft.com/services/app-service/web/) szolgáltatása, szintén használják a Schedulert a háttérben. Az ezekkel a műveletekkel való kommunikációt a [Scheduler REST API-val](https://docs.microsoft.com/rest/api/scheduler/) kezelheti. megkönnyíti a műveletekkel való kommunikációt.
 
 Az alábbiakban néhány forgatókönyv következik, ahol a Scheduler a segítségére lehet:
 
-* **Ismétlődő alkalmazásműveletek futtatása**: például rendszeres időközönként adatok gyűjtése a Twitterből egy hírcsatornába.
+* **Ismétlődő app-műveletek futtatása**: Ha például rendszeres időközönként adatokat gyűjteni Twitter hírcsatorna.
 
-* **Napi karbantartás végrehajtása**: például a naplók törlése naponta, biztonsági másolatok készítése és egyéb karbantartási feladatok. 
+* **Napi karbantartás**: Például a naplók naponta csatlakozási, biztonsági másolatok és egyéb karbantartási feladatok végrehajtása. 
 
   Rendszergazdaként például érdemes lehet biztonsági másolatot készíteni az adatbázisról minden nap 1:00 órakor a következő kilenc hónapban.
 

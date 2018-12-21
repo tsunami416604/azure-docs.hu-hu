@@ -1,6 +1,6 @@
 ---
-title: Konzolalkalmazás létrehozása Javával és az Azure Cosmos DB API a mongodb-hez
-description: Használatával csatlakoznak és kérnek az Azure Cosmos DB API a mongodb-hez a Java-kódmintát mutat be
+title: Konzolalkalmazás létrehozása Javával és az Azure Cosmos DB MongoDB API-hoz
+description: Egy kódmintát a Java használatával csatlakoznak és kérnek az Azure Cosmos DB MongoDB API-hoz
 services: cosmos-db
 author: slyons
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: sclyon
-ms.openlocfilehash: ddecb179b2ea0001ec358ad17ec76754054b0309
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 106db77dbd884ea15e12ccfc49a8de7e6c3c1924
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535554"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717670"
 ---
-# <a name="build-a-console-app-with-java-and-the-azure-cosmos-db-api-for-mongodb"></a>Konzolalkalmazás létrehozása Javával és az Azure Cosmos DB API a mongodb-hez
+# <a name="build-a-console-app-with-java-and-the-azure-cosmos-db-for-mongodb-api"></a>Konzolalkalmazás létrehozása Javával és az Azure Cosmos DB MongoDB API-hoz
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53535554"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy [Azure Cosmos DB MongoDB API-](mongodb-introduction.md) fiókot, dokumentum-adatbázist és gyűjteményt az Azure portal használatával. Ezután létrehozhatja és üzembe helyezheti a [MongoDB Java driver-re](https://docs.mongodb.com/ecosystem/drivers/java/) épülő konzolalkalmazást. 
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy [Azure Cosmos DB MongoDB API-hoz](mongodb-introduction.md) fiókot, dokumentum-adatbázist és gyűjteményt az Azure portal használatával. Ezután létrehozhatja és üzembe helyezheti a [MongoDB Java driver-re](https://docs.mongodb.com/ecosystem/drivers/java/) épülő konzolalkalmazást. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ Az új adatbázis neve legyen **db**, az új gyűjteményé pedig **coll**.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most már klónozását egy Azure Cosmos DB API, a MongoDB-alkalmazást a Githubról, beállítjuk a kapcsolati karakterláncot, és futtassa azt. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most tekintsük klónozza az alkalmazást a Githubról, beállítjuk a kapcsolati karakterláncot, és futtassa azt. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7de18cc0ed2e8284e020a1ae6fb9c876ed3d2197
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096927"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718392"
 ---
-# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>8. oktatóanyag: Kimondott szövegek kulcsszavainak kinyerése
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>8. oktatóanyag: Kulcsszavak keresése az utterance (kifejezés)
 Ebben az oktatóanyagban az előre összeállított keyPhrase entitást használhatja kulcstémák a kimondott szövegekből történő kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 
 Az alábbi kimondott szövegek például szolgáló kulcskifejezései:
@@ -47,7 +47,7 @@ Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű 
 
 Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json).
 
 2. Importálja a JSON-t egy új alkalmazásba.
 

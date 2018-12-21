@@ -102,11 +102,11 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
  
    Igen. Minden ügyfél tudnak az új SQL virtuális gép erőforrás-szolgáltató regisztrálásához. Azonban csak a frissítési garancia-juttatás rendelkező ügyfelek is aktiválhatja a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (vagy BYOL) SQL Server virtuális gépen. 
 
-1. **Mi történik az _* Microsoft.SqlVirtualMachine_* erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
+1. **Mi történik az _\*Microsoft.SqlVirtualMachine_\* erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
 
    Ha a Microsoft.Compute/VirtualMachine erőforrás eldobott vagy áthelyezték, akkor a társított Microsoft.SqlVirtualMachine erőforrás a művelet aszinkron módon replikálja értesítést kap.
 
-1. **Mi történik a virtuális géphez, ha az _* Microsoft.SqlVirtualMachine_* erőforrás már nincs használatban?**
+1. **Mi történik a virtuális géphez, ha az _\*Microsoft.SqlVirtualMachine_\* erőforrás már nincs használatban?**
 
    Amikor a rendszer eldobja a Microsoft.SqlVirtualMachine erőforrás Microsoft.Compute/VirtualMachine erőforrás nem változik. Azonban a licencelési módosítások alapértelmezés szerint a kép eredeti forrást. 
 

@@ -5,18 +5,18 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: 521c083f498c21dae38183ea9ee90af5dd395b30
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538548"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713097"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>Oktatóanyag: MongoDB migrálása az Azure Cosmos DB Mongo API offline a DMS használatával
 Az Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy a felhő példányát az Azure Cosmos DB Mongo API a mongodb-hez.
@@ -28,11 +28,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
 
-Ebben az oktatóanyagban áttelepítése a **wingtips** adatkészletet a mongodb-hez az Azure virtuális gépként az Azure Cosmos DB API üzemeltetett mongodb-hez készült Azure Database Migration Service használatával. Ha egy MongoDB-forráshoz, állítsa be a már nem rendelkezik, tekintse meg a cikket [telepítése és konfigurálása a mongodb-hez az Azure-beli Windows virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
+Ebben az oktatóanyagban áttelepítése a **wingtips** adatkészletet a MongoDB üzemelteti az Azure virtuális gépként az Azure Cosmos DB MongoDB API-hoz az Azure Database Migration Service segítségével. Ha egy MongoDB-forráshoz, állítsa be a már nem rendelkezik, tekintse meg a cikket [telepítése és konfigurálása a mongodb-hez az Azure-beli Windows virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
-- [Azure Cosmos DB API-fiók létrehozása a mongodb-hez](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
+- [Hozzon létre egy Azure Cosmos DB MongoDB API-fiók](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
 - Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
 - Győződjön meg arról, hogy az Azure virtuális hálózat (VNET) hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat: 443-as, 53-as és 9354-es, 445-ös, valamint a 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Nyissa meg a Windows tűzfalat az Azure Database Migration Service a forrás MongoDB-kiszolgáló, amely alapértelmezés szerint a TCP-port 27017 eléréséhez.
@@ -163,7 +163,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="verify-data-in-cosmos-db"></a>Ellenőrizze az adatokat a Cosmos DB-ben
 
-- Az áttelepítés befejezése után ellenőrizheti a mongodb-hez, ellenőrizze, hogy a gyűjteményeknek sikeresen lett migrálva az Azure Cosmos DB API fiókja.
+- Az áttelepítés befejezése után ellenőrizheti az Azure Cosmos DB, MongoDB API-fiók, győződjön meg arról, hogy a gyűjteményeknek sikeresen lett migrálva.
 
     ![Befejeződött a tevékenység állapota](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

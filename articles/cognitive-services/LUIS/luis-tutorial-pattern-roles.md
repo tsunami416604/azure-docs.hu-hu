@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d789954c0ebc71f88fb434430de5b5076ca6c246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094406"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713719"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Szövegkörnyezet szerint kapcsolódó minták kinyerése
 
@@ -29,7 +29,7 @@ Az új alkalmazott, Billy Patterson neve egyelőre nem része az **Alkalmazott**
 
 Az új alkalmazottat át kell költöztetni a jelenlegi városból abba a városba, ahol a kitalált vállalat található. Mivel az új alkalmazottak bármely városból származhatnak, a helyeket fel kell deríteni. Egy készletlista, például egy listaentitás azért nem működne, mert ekkor csak a listában szereplő városokat lehetne kinyerni.
 
-A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás egy egyszerű entitás, amely két szerepkört tartalmaz, ezek a **NewEmployeeReloOrigin** és a **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
+A kiindulási és célvárosokhoz tartozó szerepkörneveknek egyedinek kell lenniük az összes entitás körében. A szerepkörök egyedisége könnyedén biztosítható, ha a tartalmazó entitáshoz kötjük őket egy elnevezési stratégia alkalmazásával. A **NewEmployeeRelocation** entitás, egy egyszerű entitás kétféle szerepkörben működnek: **NewEmployeeReloOrigin** és **NewEmployeeReloDestination**. A „Relo” a relocation (áthelyezés) szó rövidítése.
 
 Mivel a `Move new employee Robert Williams from Sacramento and San Francisco` példa kimondott szöveg csak gép által tanult entitásokkal rendelkezik, fontos, hogy elegendő példaszöveget adjunk meg az adott szándékhoz, hogy a rendszer észlelje az entitásokat.  
 
@@ -57,7 +57,7 @@ Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű 
 
 Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
 
 2. Importálja a JSON-t egy új alkalmazásba.
 

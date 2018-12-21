@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 88e26e6f69fa5d283695fc4c3b1d2fda9d6b7fad
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 585202203e0828848ea51cc5d0d548c6f1ac6cba
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545977"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724331"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával 
+# <a name="create-an-azure-cosmos-db-for-mongodb-api-app-with-angular-and-cosmos-db"></a>Hozzon létre egy Azure Cosmos DB MongoDB API-alkalmazás az angular használatával és a Cosmos DB használatával
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre új [Azure Cosmos DB API-fiók mongodb-hez készült](mongodb-introduction.md) alkalmazást az Express, Angular és Node.js (a MEAN-verem), és csatlakoztassa az Azure Cosmos DB-adatbázist. Az Azure Cosmos DB támogatja a MongoDB ügyfélkapcsolatokat, így az Azure Cosmos DB-t a MongoDB helyett használhatja, de ugyanazt a kódot használhatja, mint a MongoDB-alkalmazásokhoz, csak további előnyökkel. Az Azure Cosmos DB ezen előnyei az egyszerű felhőalapú üzembe helyezés, a skálázás, a biztonság, a globális replikált adatok, a több modell támogatása és a rendkívül gyors olvasások és írások. 
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Lehetővé teszi, hogy gyorsan hozzon létre és kérdezzen le dokumentum-, kulcs/érték és gráf típusú adatbázisokat, amelyek felhasználják az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 

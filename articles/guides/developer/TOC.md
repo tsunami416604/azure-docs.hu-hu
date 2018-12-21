@@ -36,7 +36,7 @@
 
 # Alapelvek
 ## [Számlázás és előfizetés](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [Üzemeltetési lehetőségek összehasonlítása](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [Üzemeltetési lehetőségek összehasonlítása](https://docs.microsoft.com/azure/app-service/overview-compare)
 ## [Mi az App Service?](https://docs.microsoft.com/azure/app-service/overview)
 ## Virtual machines (Virtuális gépek)
 ### [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
@@ -76,11 +76,11 @@
 ### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## Backup
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [Virtuális gépek](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## Figyelés
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [Mikroszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)

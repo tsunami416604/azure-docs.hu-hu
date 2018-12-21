@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Beszéd, a Java - beszédszolgáltatások felismerésére'
+title: 'Gyors útmutató: Ismeri fel a beszéd, a Java (Windows, Linux) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Arra vonatkozó információk, hogyan ismerhet fel beszédet a Javán (Windows vagy Linux rendszeren)
+description: Ez a rövid útmutató bemutatja egy egyszerű Java-alkalmazás, amely rögzíti, és felhasználói beszéd, a számítógép mikrofon transcribes létrehozása.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
@@ -10,75 +10,41 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 9b8327a529baf230bc64dd9abcc808924b31293b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0591ca0275c039ddb5828cb48bda2b0b305d7003
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603440"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721386"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Gyors útmutató: A beszédfelismerési szolgáltatás SDK-val beszédfelismerést Windows vagy Linux rendszeren Java nyelven
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech Service SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) 64 bites Windows-vagy Ubuntu Linux 16.04 létrehozása / 18.04. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech Service SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites vagy 64 bites Ubuntu Linux 16.04 létrehozása / 18.04. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői azonosítójára, amelyet ingyenesen is beszerezhet. További részletekért tekintse át a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
+* Operációs rendszer: Windows (64 bites) vagy Ubuntu Linux 16.04/18.04 (64 bites)
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+
+Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
+
+```console
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+```
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
-Használatakor Ubuntu 16.04 vagy 18.04, az Eclipse indítása előtt, futtassa a következő parancsok futtatásával győződjön meg arról, hogy a szükséges csomagok telepítve vannak-e.
-
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
-  ```
-
-1. Indítsa el az Eclipse-et.
-
-1. Az Eclipse Launcher **Workspace** (Munkaterület) mezőjébe írja be az új munkaterület-könyvtár nevét. Ezután válassza a **Launch** (Indítás) lehetőséget.
-
-   ![Az Eclipse Launcher képernyőképe](media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
-
-1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha megnyílt, zárja be az üdvözlőképernyőt.
-
-1. Az Eclipse menüsávján kattintson a **File** > **New** > **Project** (Fájl, Új, Projekt) elemre egy új projekt létrehozásához.
-
-1. Megjelenik a **New project** (Új projekt) párbeszédpanel. Válassza a **Java Project** (Java-projekt) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
-
-   ![A New project párbeszédpanel képernyőképe a kiemelt Java Project lehetőséggel](media/sdk/qs-java-jre-02-select-wizard.png)
-
-1. Elindul a New Java Project (Új Java-projekt) varázsló. A **Project name** (Projekt neve) mezőbe írja be a **quickstart** (rövid útmutató) kifejezést, és válassza ki a **JavaSE-1.8** futtatókörnyezetet. Válassza a **Finish** (Befejezés) elemet.
-
-   ![A New Java Project varázsló képernyőképe](media/sdk/qs-java-jre-03-create-java-project.png)
-
-1. Ha az **Open Associated Perspective?** (Megnyitja a társított perspektívát?) ablak megjelenik, válassza az **Open Perspective** (Perspektíva megnyitása) lehetőséget.
-
-1. A **Package Explorerben** kattintson a jobb gombbal a **v** nevű projektre. A helyi menüben kattintson a **Configure** > **Convert to Maven Project** (Konfigurálás, Konvertálás Maven-projektté) parancsra.
-
-   ![A Package Explorer képernyőképe](media/sdk/qs-java-jre-04-convert-to-maven-project.png)
-
-1. Megjelenik a **Create new POM** (Új POM létrehozása) ablak. A **Group Id** (Csoportazonosító) mezőbe írja be a **com.microsoft.cognitiveservices.speech.samples** azonosítót, az **Artifact Id** (Összetevő-azonosító) mezőbe pedig a **quickstart** kifejezést. Ezután kattintson a **Befejezés** gombra.
-
-   ![A Create new POM ablak képernyőképe](media/sdk/qs-java-jre-05-configure-maven-pom.png)
-
-1. Nyissa meg és szerkessze a **pom.xml** fájlt.
-
-   * A fájl végén, a `</project>` záró címke előtt hozzon létre egy `repositories` elemet, amely a Speech SDK Maven-adattárára hivatkozik, az itt bemutatott módon:
-
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
-
-  * Is hozzáadhat egy `dependencies` elem, a beszéd SDK függőségként a 1.2.0-s vagy annál újabb verzió:
-
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
-
-   * Mentse a módosításokat.
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -105,16 +71,15 @@ A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felism
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-java-jre-07-console-output.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/java-jre` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
+További példákat, például a beszéd beolvasása egy hangfájlt a Githubon érhetők el.
+
 > [!div class="nextstepaction"]
-> [Szándék felismerése beszédből a Javához készült Speech SDK-val](how-to-recognize-intents-from-speech-java.md)
+> [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Beszéd fordítása](how-to-translate-speech-csharp.md)
+- [Gyors útmutató: Lefordítja a beszéd, a Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

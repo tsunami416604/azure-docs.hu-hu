@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 505f1dac3f9b63b516f0b9e352f363e287e2f604
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 12f7a4cb5db084d6e2c179bf8acd641c814dcbd0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629543"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719795"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Egy App Service-alkalmazás csatlakoztatása a Cosmos DB CLI-vel
 
-Ez a példaszkript egy Azure Cosmos DB API-fiókot hoz létre mongodb-hez és a egy App Service-alkalmazást. A MongoDB kapcsolati sztring ezután az alkalmazás Alkalmazásbeállítások használatával hozzákapcsolja.
+Ez a példaszkript egy Azure Cosmos DB-fiók használata a Cosmos DB MongoDB API-t és a egy App Service-alkalmazást hoz létre. MongoDB-kapcsolati karakterlánc ezután a web app Alkalmazásbeállítások használatával hozzákapcsolja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

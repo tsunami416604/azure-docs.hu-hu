@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: d4ee723b8b8303f2eaf9bea4db8dfc1aaa1c4931
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608817"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716106"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -36,7 +36,7 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 Az alkalmazás [üzenetsor-központú munkasémát](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatív architektúra: App Service-ben és a webjobs-feladatok
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. A másik lehetőség az előtér-alkalmazást futtathatja [Azure App Service](/azure/app-service/) , és használja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkció a háttéralkalmazás esetében. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvhöz leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Azure App Service, a Cloud Services és virtual machines összehasonlítása](../app-service/choose-web-site-cloud-service-vm.md).
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. A másik lehetőség az előtér-alkalmazást futtathatja [Azure App Service](/azure/app-service/) , és használja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkció a háttéralkalmazás esetében. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvhöz leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Azure App Service, a Cloud Services és virtual machines összehasonlítása](../app-service/overview-compare.md).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.

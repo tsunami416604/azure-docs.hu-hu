@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 133f8e82d7a46bae11eb049b2d1c9393990c9042
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 0fe01f6654be715c83cc119e1b7940d78e385e97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634575"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728278"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -104,7 +104,7 @@ További információ a Cosmos DB [globális terjesztés](distribute-data-global
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 
 * [Bevezetés az Azure Cosmos DB SQL API használatába](create-sql-api-dotnet.md)
-* [Ismerkedés az Azure Cosmos DB API a mongodb-hez](create-mongodb-nodejs.md)
+* [Ismerkedés az Azure Cosmos DB MongoDB API-hoz](create-mongodb-nodejs.md)
 * [Bevezetés az Azure Cosmos DB Cassandra API használatába](create-cassandra-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Gremlin API használatába](create-graph-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Table API használatába](create-table-dotnet.md)
