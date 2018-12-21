@@ -3,22 +3,21 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Fürtök frissítése
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan frissítheti a meglévő AKS-fürtöket a legújabb elérhető Kubernetes-verzióra.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c0710be11b95b66d16661b5aff9cbf739ccda92
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: f64ff611516b972d9440e212309ee22e1a12a928
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901937"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719438"
 ---
-# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
+# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS)
 
-Az alkalmazás és a fürt életciklusának részeként frissíthet a Kubernetes legújabb elérhető verziójára, és használhatja az új szolgáltatásokat. Az Azure Kubernetes Service- (AKS-) fürt frissíthető az Azure CLI segítségével. A frissítési folyamat során a Kubernetes-csomópontok megfelelően [el vannak szigetelve és ki vannak ürítve][kubernetes-drain], hogy minimális hatással legyenek a futó alkalmazásokra.
+Az alkalmazás és a fürt életciklusának részeként frissíthet a Kubernetes legújabb elérhető verziójára, és használhatja az új szolgáltatásokat. Az Azure Kubernetes Service- (AKS-) fürt frissíthető az Azure CLI segítségével.
 
 Ebben az oktatóanyagban, amely egy hétrészes sorozat hetedik része, egy Kubernetes-fürtöt frissítünk. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -29,9 +28,9 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat hetedik része, egy Kube
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk. Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe. A rendszerképet feltöltöttük az Azure Container Registrybe, és létrehozott egy AKS-fürtöt. Az AKS-fürtöt, majd helyeztünk üzembe az alkalmazást. Ha még nem meg ezeket a lépéseket, és szeretné követni, kezdje [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
 
-Az oktatóanyag elvégzéséhez az Azure CLI 2.0.44-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="get-available-cluster-versions"></a>Az elérhető fürtverziók lekérése
 
@@ -41,26 +40,34 @@ A fürtök frissítése előtt az [az aks get-upgrades][] paranccsal ellenőrizz
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-A következő példában az aktuális verzió a következő: *1.9.6*. Az elérhető verziók az *Upgrades* (Frissítések) oszlopban láthatók.
+A következő példában a jelenlegi verzió: *1.9.11*, és az elérhető verziók alatt látható a *verziófrissítések* oszlop.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------------------
-default  myResourceGroup  1.9.9            1.9.9              1.10.3, 1.10.5, 1.10.6
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 ```
 
 ## <a name="upgrade-a-cluster"></a>Fürt frissítése
 
-Az AKS-fürtök az [az aks upgrade][] paranccsal frissíthetők. Az alábbi példa a Kubernetes *1.10.6*-as verziójára frissíti a fürtöt.
+AKS-csomópontok futó alkalmazásokra minimalizálása érdekében gondosan szigetelve és ürítve. Ennek a folyamatnak az alábbi lépéseket kell végrehajtani:
+
+1. A Kubernetes-ütemező megakadályozza, hogy újabb podok a csomóponton, hogy frissítve lett ütemezve.
+1. A csomóponton futó podok ütemezése a fürt többi csomópontjára.
+1. Egy csomópont jön létre, amely a legújabb Kubernetes-összetevőket.
+1. Ha az új csomópont készen áll, és a fürthöz csatlakozó, a Kubernetes-ütemező podok futtathatók kezdődik.
+1. A rendszer törli a régi csomópontot, és a fürt következő csomópontjára kezdődik a fekvő terület és a kiürítési folyamat.
+
+Az AKS-fürtök az [az aks upgrade][] paranccsal frissíthetők. Az alábbi példában a fürt frissíti a Kubernetes-verzió *1.10.9*.
 
 > [!NOTE]
-> Egyszerre csak egy alverzió frissíthető. Frissíthet például az *1.9.6*-osról az *1.10.3*-as verzióra, az *1.9.6*-ról azonban nem frissíthet közvetlenül az *1.11.x* verzióra. Ha az *1.9.6*-os verzióról az *1.11.x*-re szeretne frissíteni, először frissítse az *1.9.6*-os verziót az *1.10.3*-as verzióra, majd frissítse az *1.10.3*-at az *1.11.x*-es verzióra.
+> Egyszerre csak egy alverzió frissíthető. Például a frissíthető *1.9.11* való *1.10.9*, azonban nem tudja frissíteni a *1.9.6* való *1.11.x* közvetlenül. Frissítése *1.9.11* való *1.11.x*, először frissítés a *1.9.11* való *1.10.x*, végezze el az egymásikfrissítést*1.10.x* való *1.11.x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
 ```
 
-Az alábbi sűrített példa eredménye azt mutatja, hogy a *kubernetesVersion* az *1.10.6*-as verziót jelenti:
+A következő sűrített példához kimenetet mutat be a *kubernetesVersion* most jelentések *1.10.9*:
 
 ```json
 {
@@ -78,7 +85,7 @@ Az alábbi sűrített példa eredménye azt mutatja, hogy a *kubernetesVersion* 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.6",
+  "kubernetesVersion": "1.10.9",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -93,17 +100,17 @@ Az alábbiak szerint ellenőrizze az [az aks show][] paranccsal, hogy sikerült-
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Az alábbi példa kimenetében látható, hogy az AKS-fürt a *KubernetesVersion 1.10.6*-ot futtatja:
+Az alábbi példa kimenetében látható, az AKS-fürtöt futtat *KubernetesVersion 1.10.9*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Mivel ez az oktatóanyag-sorozat utolsó része, érdemes törölni az AKS-fürtöt. Mivel a Kubernetes-csomópontok Azure-beli virtuális gépeken (VM) futnak, a csomópontok futtatása akkor is költségekkel jár, ha nem használja a fürtöt. Az [az group delete][az-group-delete] paranccsal eltávolíthatja az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Mivel ez az oktatóanyag-sorozat utolsó része, előfordulhat, hogy törölni kívánja az AKS-fürtöt. Mivel a Kubernetes-csomópontok Azure-beli virtuális gépeken (VM) futnak, a csomópontok futtatása akkor is költségekkel jár, ha nem használja a fürtöt. Az [az group delete][az-group-delete] paranccsal eltávolíthatja az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

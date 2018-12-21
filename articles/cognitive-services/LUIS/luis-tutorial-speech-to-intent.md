@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: efbe24500dd83ddd84c070ea36c423c742c26d4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607404"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714580"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Beszédszolgáltatás integráció a Language Understanding alkalmazással
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -27,7 +27,7 @@ Szüksége lesz egy ingyenes [LUIS][LUIS]-webhelyfiókra az alkalmazás importá
 Az Azure Portalon [hozzon létre](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding-** (LUIS-) kulcsot. 
 
 ## <a name="import-human-resources-luis-app"></a>A Human Resources LUIS-alkalmazás importálása
-A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) GitHub-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 
+A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [Azure-minták](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub-adattárban. Töltse le a [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 
 
 Ez az alkalmazás az emberi erőforrások (Human Resources, HR) tárgykörébe tartozó szándékokat, entitásokat és kimondott szövegeket tartalmaz. Példák kimondott szövegekre:
 
@@ -62,7 +62,7 @@ Az alkalmazás importálását követően válassza az **Entities** (Entitások)
 Ebben a cikkben a számítógép audioeszközét használjuk. Ez lehet egy mikrofonos fejhallgató vagy egy beépített hangeszköz. Ellenőrizze a bemeneti hangszinteket. Előfordulhat, hogy a szokottnál hangosabban kell majd beszélnie, hogy a hangeszköz észlelje a hangját. 
 
 ## <a name="download-the-luis-sample-project"></a>LUIS-mintaprojekt letöltése
- Klónozza vagy töltse le a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) adattárat. Nyissa meg a [Speech to intent (Beszédből szándék) projektet](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) a Visual Studióban, és állítsa vissza a NuGet-csomagokat. A VS-megoldásfájl a következő: .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
+ Klónozás vagy letöltés a [Azure-minták](https://github.com/Azure-Samples/cognitive-services-language-understanding) tárház. Nyissa meg a [Speech to intent (Beszédből szándék) projektet](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-speech-intent-recognition) a Visual Studióban, és állítsa vissza a NuGet-csomagokat. A VS-megoldásfájlt documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
 
 A projekt már tartalmazza referenciaként a Speech SDK-t. 
 
@@ -93,7 +93,7 @@ A Speech SDK visszaadja a teljes LUIS-választ.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, törölje a HumanResources LUIS-alkalmazást. Ehhez jelölje ki az alkalmazást, majd a lista felett megjelenő helyi eszköztárban válassza a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
-Amikor végzett a mintakód használatával, ne felejtse el törölni a LUIS-Samples könyvtárat is.
+Ne felejtse el, törölje a könyvtárat, ha elkészült, azzal a mintakóddal.
 
 ## <a name="next-steps"></a>További lépések
 

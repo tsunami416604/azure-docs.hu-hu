@@ -1,6 +1,6 @@
 ---
-title: Hogyan kérdezhet le adatokat az Azure Cosmos DB API a mongodb-hez
-description: Ismerje meg lehet lekérdezést végezni az Azure Cosmos DB API a mongodb-hez.
+title: Hogyan kérdezhet le adatokat az Azure Cosmos DB MongoDB API-hoz
+description: Ismerje meg lehet lekérdezést végezni az Azure Cosmos DB MongoDB API-hoz.
 services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
@@ -9,21 +9,21 @@ ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/29/2018
-ms.openlocfilehash: 36fdb2727d31ab640cb6116ecf5eae9ed06c07d2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bcfbb0115274c8b0d330426a454530dcd7c170ab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536933"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724657"
 ---
-# <a name="tutorial-query-data-from-azure-cosmos-db-api-for-mongodb"></a>Oktatóanyag: Az Azure Cosmos DB MongoDB API-adatait
+# <a name="tutorial-query-data-using-azure-cosmos-db-for-mongodb-api"></a>Oktatóanyag: Kérdezhet le adatokat az Azure Cosmos DB MongoDB API-hoz
 
 Az Azure Cosmos DB-hez készült [MongoDB API](mongodb-introduction.md) támogatja a [MongoDB-héjlekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * Adatok lekérdezése a MongoDB használatával
+> * QQuerying, a MongoDB shell használatával Cosmos-adatbázisban tárolt adatok
 
 Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
@@ -303,7 +303,7 @@ Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gy
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megismerte, hogyan végezhet lekérdezéseket a MongoDB használatával 
+> * Megtudhatta, hogyan lehet lekérdezni a Cosmos DB natív támogatást használatával a MongoDB API-hoz
 
 Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 

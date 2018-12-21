@@ -1,5 +1,5 @@
 ---
-title: Konzolalkalmazás létrehozása a Golang és az Azure portal segítségével Azure Cosmos DB API a mongodb-hez
+title: Konzolalkalmazás létrehozása a Golang és az Azure portal segítségével Azure Cosmos DB MongoDB API-hoz
 description: Egy Golang-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre
 services: cosmos-db
 author: slyons
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 7b1674c151919f763ab13d01c65952495e411e5c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1378d63dad80d8bc086a518650010fceaf4e85fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539772"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728091"
 ---
-# <a name="build-a-console-app-with-golang-and-the-azure-portal-using-azure-cosmos-db-api-for-mongodb"></a>Konzolalkalmazás létrehozása a Golang és az Azure portal segítségével Azure Cosmos DB API a mongodb-hez
+# <a name="build-a-console-app-with-golang-and-the-azure-portal-using-azure-cosmos-db-for-mongodb-api"></a>Konzolalkalmazás létrehozása a Golang és az Azure portal segítségével Azure Cosmos DB MongoDB API-hoz
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -29,9 +29,9 @@ ms.locfileid: "53539772"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-A gyors üzembe helyezési bemutatja, hogyan használja a meglévő MongoDB-alkalmazások nyelven írt [Golang](https://golang.org/) , és csatlakoztassa az Azure Cosmos DB-adatbázis, amely támogatja a MongoDB-ügyfélkapcsolatokat a mongodb-hez az Azure Cosmos DB API használatával.
+A gyors üzembe helyezési bemutatja, hogyan használja a meglévő MongoDB-alkalmazások nyelven írt [Golang](https://golang.org/) , és csatlakoztassa az Azure Cosmos DB-adatbázis, amely támogatja a MongoDB-ügyfélkapcsolatokat az Azure Cosmos DB MongoDB API használatával.
 
-Más szóval a Golang-alkalmazás csak tudja, hogy egy adatbázist az Azure Cosmos DB API a mongodb-hez csatlakozott. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
+Más szóval a Golang-alkalmazás csak tudja, hogy azt csatlakozik egy adatbázishoz az Azure Cosmos DB MongoDB API-hoz. Az alkalmazás nem látja, hogy az adatokat az Azure Cosmos DB tárolja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -97,7 +97,7 @@ Az alábbi kódrészletek mind a main.go fájlból származnak.
 
 Az Azure Cosmos DB támogatja az SSL-kompatibilis MongoDB-t. Egy SSL-kompatibilis MongoDB-hez való csatlakozáshoz definiálja a **DialServer** függvényt az [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) fájlban, és használja a [tls.*Dial* ](https://golang.org/pkg/crypto/tls#Dial) függvényt a csatlakozás végrehajtására.
 
-A következő Golang kódrészlet csatlakoztatja a Go-alkalmazást az Azure Cosmos DB API-a mongodb-hez. A *DialInfo* osztály egy MongoDB-fürttel munkamenetet létrehozó beállításokat tartalmaz.
+A következő Golang kódrészlet csatlakoztatja a Go-alkalmazást az Azure Cosmos DB MongoDB API-hoz. A *DialInfo* osztály egy MongoDB-fürttel munkamenetet létrehozó beállításokat tartalmaz.
 
 ```go
 // DialInfo holds options for establishing a session with a MongoDB cluster.
@@ -250,7 +250,7 @@ Lépjen vissza az Azure portálon, ha az Adatkezelőben szeretné megjeleníteni
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és a MongoDB-hez tartozó API használatával Golang-alkalmazást futtatni. Így már további adatokat importálhat a Cosmos DB-fiókba. 
+Az ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, és az ügyfél a MongoDB API használatával Golang-alkalmazást futtatni. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [Adatok importálása az Azure Cosmos DB API a mongodb-hez](mongodb-migrate.md)
+> [Adatok importálása az Azure Cosmos DB MongoDB API-adatbázis](mongodb-migrate.md)

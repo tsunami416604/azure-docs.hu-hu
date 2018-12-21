@@ -3,20 +3,19 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Alkalmazás előkészíté
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan készíthet elő és hozhat létre többtárolós alkalmazást a Docker Compose használatával, amelyet aztán üzembe helyezhet az AKS-ben.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297060"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724164"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes Service (AKS) szolgáltatáshoz
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Az alkalmazás előkészítése az Azure Kubernetes Service (AKS)
 
 Ebben az oktatóanyagban, amely egy hétrészes sorozat első része, egy többtárolós alkalmazást fog előkészíteni a Kubernetesben való használathoz. Meglévő fejlesztői eszközök, például a Docker Compose segítségével helyileg hozhat létre és tesztelhet egy alkalmazást. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -29,7 +28,7 @@ Miután végzett ezzel, az alábbi alkalmazás a helyi fejlesztői környezetben
 
 ![Egy Azure-beli Kubernetes-fürt képe](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-Az ezt követő oktatóanyagokban a tárolórendszerképet feltölti egy Azure Container Registrybe, majd üzembe helyezi egy AKS-fürtön.
+A további oktatóanyagokban a tárolórendszerképet feltöltött egy Azure Container registrybe, és majd egy AKS-fürtöt helyezi üzembe.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -49,7 +48,7 @@ A [git][] használatával klónozza a mintaalkalmazást a fejlesztési környeze
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Módosítsa a könyvtárakat, hogy a klónozott könyvtárból dolgozzon.
+Módosítsa a klónozott könyvtárra.
 
 ```console
 cd azure-voting-app-redis

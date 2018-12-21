@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 2692d174a0f959384a9dd3d587107e5f726e28cb
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: accefc89d7fe252c9e86de7977a2ce36f5c3e3aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606112"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725167"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
@@ -99,7 +99,7 @@ Jegyezze fel a Blob storage-fiók neve és kulcsa. A mintaalkalmazás csatlakozh
 
 ## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) határozza meg.
+Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../../app-service/overview-hosting-plans.md) határozza meg.
 
 Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
 

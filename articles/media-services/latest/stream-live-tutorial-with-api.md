@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 266227b87381fde74efd0fa05c6ea10a0eace985
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613392"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724963"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Oktatóanyag: A Media Services v3 élő Stream API-k használatával
 
@@ -89,7 +89,7 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ez a szakasz azt mutatja be, hogyan lehet **átmenő** típusú LiveEvent eseményt létrehozni (ahol a LiveEventEncodingType értéke Nincs). Ha olyan LiveEvent eseményt szeretne létrehozni, amely használható élő kódolásra, állítsa a LiveEventEncodingType paramétert Alapszintű értékre. 
+Ez a szakasz azt mutatja be, hogyan lehet **átmenő** típusú LiveEvent eseményt létrehozni (ahol a LiveEventEncodingType értéke Nincs). Ha szeretne létrehozni, amely valós idejű kódolás LiveEventEncodingType Standard beállítása engedélyezve van a videókhoz. 
 
 Néhány egyéb beállítás, amelyet érdemes lehet megadnia az élő események létrehozásakor:
 

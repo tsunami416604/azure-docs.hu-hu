@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: chlandsi
-ms.openlocfilehash: 824fa5ceb5828394fedfe7af8bf48af2980160d9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606316"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718112"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Gyors útmutató: Beszédfelismerést Objective-C nyelven a Speech Service SDK használatával iOS rendszeren
 
@@ -99,10 +99,7 @@ A Speech SDK jelenleg csak a 64 bites iOS-platformokat támogatja.
 
 1. Miután a "Recognize (Microphone)" gombra kattint az alkalmazásban, és mond néhány szót, a képernyő alsó részén meg kell jelenniük a mondottaknak.
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/objectivec-ios` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Minták letöltése](speech-sdk.md#get-the-samples)
+> [Objective-C-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)

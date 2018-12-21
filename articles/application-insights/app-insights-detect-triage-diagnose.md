@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: cb106abaff2446fdbc2d025ae96c95745bc53150
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ab3d4d2df8f12c28fa6dbdbdd7d6913d53f12884
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728055"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715069"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -108,7 +108,7 @@ Marcela az e-mail alapján értesíti az adatbáziscsapat vezetőjét. Megtudja,
 ![sikertelen kérés](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detect-exceptions"></a>Kivételek észlelése
-Némi beállítással a rendszer automatikusan jelenti a [kivételeket](app-insights-asp-net-exceptions.md) az Application Insightsnak. Részletesen rögzíthetők is, ha a [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) hívásait beilleszti a kódba:  
+Némi beállítással a rendszer automatikusan jelenti a [kivételeket](app-insights-asp-net-exceptions.md) az Application Insightsnak. Részletesen rögzíthetők is, ha a [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) hívásait beilleszti a kódba:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -131,7 +131,7 @@ Némi beállítással a rendszer automatikusan jelenti a [kivételeket](app-insi
 
 A Fabrikam Bank csapata mindig küld telemetriát a kivételekről, hacsak nem nyilvánvaló helyreállításról van szó.  
 
-Sőt a stratégiájuk még ennél is szélesebb körű: minden esetben küldenek telemetriát, ha az ügyfél nem tudja elvégezni a kívánt műveletet, akár van kivételkód, akár nincs. Ha például a külső bankközi átutalási rendszer „ez a tranzakció nem teljesíthető” üzenetet küld vissza valamilyen működési ok (tehát nem az ügyfél hibája) miatt, nyomon követik ezt az eseményt.
+Valójában a stratégiájuk még szélesebb körű, mint a következő: Küldenek telemetriát, minden esetben, ha az ügyfél hiúsuljon meg a kívánt szeretné elvégezni, akár a kódban kivétel vagy sem. Ha például a külső bankközi átutalási rendszer „ez a tranzakció nem teljesíthető” üzenetet küld vissza valamilyen működési ok (tehát nem az ügyfél hibája) miatt, nyomon követik ezt az eseményt.
 
     var successCode = AttemptTransfer(transferAmount, ...);
     if (successCode < 0)

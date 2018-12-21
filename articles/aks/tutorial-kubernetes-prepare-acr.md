@@ -3,22 +3,21 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Tárolóregisztrációs ad
 description: Az Azure Kubernetes Service (AKS) jelen oktatóanyagában egy Azure Container Registry-példányt hozhat létre, és feltöltheti egy mintaalkalmazás tárolórendszerképét.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4f240d346457717c66a6ed189cfd8610c7a764da
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: 51cfc62adaf9d9c780888477aa6eab2a812fe98c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919140"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718033"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
-Az Azure Container Registry (ACR) egy Azure-alapú privát regisztrációs adatbázis Docker-tárolórendszerképekhez. A privát tárolóregisztrációs adatbázisok segítségével biztonságosan állíthatja össze és helyezheti üzembe alkalmazásait és egyéni kódját. Ez az oktatóanyag egy hétrészes sorozat második része, és azt ismerteti, hogyan lehet üzembe helyezni egy ACR-példányt, és hogyan lehet továbbítani rá egy tárolórendszerképet. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Container Registry (ACR) egy privát beállításjegyzék a rendszerképek. A privát tárolóregisztrációs adatbázisok segítségével biztonságosan állíthatja össze és helyezheti üzembe alkalmazásait és egyéni kódját. Ez az oktatóanyag egy hétrészes sorozat második része, és azt ismerteti, hogyan lehet üzembe helyezni egy ACR-példányt, és hogyan lehet továbbítani rá egy tárolórendszerképet. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Azure Container Registry (ACR)-példány létrehozása
@@ -26,13 +25,13 @@ Az Azure Container Registry (ACR) egy Azure-alapú privát regisztrációs adatb
 > * A rendszerkép feltöltése az ACR-be
 > * A regisztrációs adatbázisban lévő rendszerképek megtekintése
 
-Az ezt követő oktatóanyagokban ezt az ACR-példányt integráljuk egy Kubernetes-fürttel az AKS-ben, és üzembe helyezünk egy alkalmazást a rendszerképről.
+A további oktatóanyagokban az ACR-példányba integrálva van az aks-ben a Kubernetes-fürt, és a egy alkalmazás központi telepítése a lemezképből.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az [előző lépésben][aks-tutorial-prepare-app] létrehoztunk egy tárolórendszerképet egy egyszerű Azure-szavazóalkalmazáshoz. Ha még nem hozta létre az Azure-szavazóalkalmazás rendszerképét, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
-Az oktatóanyag elvégzéséhez az Azure CLI 2.0.44-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez az oktatóanyaghoz, hogy futtat-e az Azure CLI 2.0.53 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 
@@ -44,7 +43,7 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy Azure Container Registry-példányt az [az acr create][az-acr-create] paranccsal, és nevezze el a saját regisztrációs adatbázisát. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+Hozzon létre egy Azure Container Registry-példányt az [az acr create][az-acr-create] paranccsal, és nevezze el a saját regisztrációs adatbázisát. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét. Adja meg a saját egyedi nevét. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -101,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>Rendszerképek leküldése a regisztrációs adatbázisba
 
-Az *azure-vote-front* rendszerképet ekkor leküldheti az ACR-példányra. Használja a [docker push][docker-push] parancsot, és adja meg a saját *acrLoginServer* címet a rendszerkép neveként az alábbiak szerint:
+A rendszerkép összeállítása és címkézése és leküldése a *azure-vote-front* rendszerképet az ACR-példányba. Használja a [docker push][docker-push] parancsot, és adja meg a saját *acrLoginServer* címet a rendszerkép neveként az alábbiak szerint:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1

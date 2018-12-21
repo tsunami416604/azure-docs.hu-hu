@@ -1,6 +1,6 @@
 ---
-title: .NET-tel és az Azure Cosmos DB API-hoz a Xamarin.Forms-alkalmazás létrehozása a mongodb-hez
-description: Egy kódmintát Xamarin használatával csatlakoznak és kérnek az Azure Cosmos DB API a mongodb-hez
+title: Xamarin.Forms alkalmazás felépítése a .NET-keretrendszer és az Azure Cosmos DB MongoDB API-hez
+description: Egy kódmintát Xamarin használatával csatlakoznak és kérnek az Azure Cosmos DB MongoDB API-hoz
 services: cosmos-db
 author: codemillmatt
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 553390a65436c25fb4ae94159cbaf2a39f1412ea
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e63b731913e974254061ab7925b543201d6b81b1
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546334"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717183"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-and-the-azure-cosmos-db-api-for-mongodb"></a>Gyors útmutató: .NET-tel és az Azure Cosmos DB API-hoz a Xamarin.Forms-alkalmazás létrehozása a mongodb-hez
+# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-using-clients-for-mongodb-api"></a>Gyors útmutató: Gyors útmutató: A .NET-ügyfél használatával a MongoDB API-hoz Xamarin.Forms-alkalmazás létrehozása
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53546334"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy [Azure Cosmos DB MongoDB API-](mongodb-introduction.md) fiókot, dokumentum-adatbázist és gyűjteményt az Azure portal használatával. Az ismeretek birtokában létre fog hozni egy teendőkezelő Xamarin.Forms-alkalmazást a [MongoDB .NET-illesztővel](https://docs.mongodb.com/ecosystem/drivers/csharp/).
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md), dokumentum-adatbázist és gyűjteményt az Azure portal használatával. Fog majd létrehozni egy teendőkezelő alkalmazás Xamarin.Forms-alkalmazás használatával az [MongoDB .NET Driver-re](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>A mintaalkalmazás futtatásának előfeltételei
 
@@ -126,7 +126,7 @@ Az alábbi kódrészletek a rendszer az összes átveszi a `MongoService` osztá
     }
     ```
 
-* Hozzon létre egy feladatot, és szúrja be a MongoDB-gyűjteménybe.
+* Hozzon létre egy feladatot, és szúrja be a gyűjteménybe.
     ```cs
     public async Task CreateTask(MyTask task)
     {
@@ -134,7 +134,7 @@ Az alábbi kódrészletek a rendszer az összes átveszi a `MongoService` osztá
     }
     ```
 
-* Frissítsen egy feladatot egy MongoDB-gyűjteményben.
+* Egy tevékenység egy gyűjtemény frissítéséhez.
     ```cs
     public async Task UpdateTask(MyTask task)
     {
@@ -142,7 +142,7 @@ Az alábbi kódrészletek a rendszer az összes átveszi a `MongoService` osztá
     }
     ```
 
-* Töröljön egy feladatot egy MongoDB-gyűjteményből.
+* Feladat törlése a gyűjteményből.
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -194,4 +194,4 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és Xamarin.Forms-alkalmazást futtatni a MongoDB API-jával. Így már további adatokat importálhat a Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
-> [Adatok importálása az Azure Cosmos DB API a mongodb-hez](mongodb-migrate.md)
+> [Adatok importálása az Azure Cosmos DB MongoDB API-hoz konfigurált](mongodb-migrate.md)

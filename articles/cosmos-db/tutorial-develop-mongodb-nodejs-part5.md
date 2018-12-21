@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: cc781aeb9bb5cd38571bcc21391ca71fbcda419f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0b0ebbbf4f511d033f0724b9b97a32f408cb5c74
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536474"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726184"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-connect-to-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 5. rész: Csatlakozás az Azure Cosmos DB-hez 
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-alkalmazást az Express, Angular, és kösse össze [Azure Cosmos DB MongoDB API-](mongodb-introduction.md) fiókot.
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
 
 Az oktatóanyag 5. része a [4. részre](tutorial-develop-mongodb-nodejs-part4.md) épül, és az alábbi feladatokat ismerteti:
 

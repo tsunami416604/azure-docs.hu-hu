@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Recognize speech, .NET Core (Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: A beszédfelismerést, C# (.NET Core Windows) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti a beszédfelismerés használatát a .NET Core-ban Windowson, C# nyelven a Speech Service SDK segítségével.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: e82e39eb3fc6c7ebaf4798ad10038bfd2fa9a41b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a5a04fdede498d404a00d666e4042337b4dc675b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085484"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727836"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C# nyelven, a .NET Core-ban a Speech SDK segítségével
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core beszédfelismerést a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -28,35 +28,17 @@ Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET Co
 
 A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői azonosítójára, amelyet ingyenesen is beszerezhet. További részletekért tekintse át a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
+
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Indítsa el a Visual Studio 2017-et.
-
-1. Győződjön róla meg, hogy elérhető a **Platformfüggetlen .NET-fejlesztés** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
-
-    ![A Visual Studio telepítőjének képernyőképe, amelyen ki van emelve a Számítási feladatok lap](media/sdk/vs-enable-net-core-workload.png)
-
-    Ha nincs engedélyezve, jelölje ki a **Platformfüggetlen .NET Core-fejlesztés** lehetőség jelölőnégyzetét, majd válassza a **Módosítás** elemet a párbeszédpanel jobb alsó sarkában. Az új funkció telepítése hosszabb ideig tart.
-
-1. Hozzon létre egy új Visual C# .NET Core-konzolalkalmazást. Az **Új projekt** párbeszédpanel bal oldali ablaktáblájában bontsa ki a **Telepítve** > **Visual C#** > **.Net Core** elemet. Válassza a **Console App (.NET Core)** (Konzolalkalmazás (.NET Core)) lehetőséget. A projekt neve legyen *helloworld*.
-
-    ![Képernyőkép az Új projekt párbeszédpanelről](media/sdk/qs-csharp-dotnetcore-windows-01-new-console-app.png "Visual C# konzolalkalmazás (.NET Core) létrehozása")
-
-1. Telepítse a [Speech SDK NuGet-csomagot](https://aka.ms/csspeech/nuget), és hivatkozzon rá. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd válassza a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) lehetőséget.
-
-    ![A Megoldáskezelő képernyőképe, melyen kiemelve szerepel a Manage NuGet Packages for Solution lehetőség](media/sdk/qs-csharp-dotnetcore-windows-02-manage-nuget-packages.png "NuGet-csomagok kezelése a megoldáshoz")
-
-1. A jobb felső sarokban lévő **Package Source** (Csomag forrása) mezőben jelölje ki a **nuget.org** fájlt. Keressen rá a `Microsoft.CognitiveServices.Speech` csomagra, és telepítse a **helloworld** nevű projektbe.
-
-    ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "NuGet-csomag telepítése")
-
-1. A NuGet-csomag telepítésének indításához fogadja el a képernyőn megjelenő licencet.
-
-    ![A licencelfogadási párbeszédpanel képernyőképe](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "A licenc elfogadása")
-
-A csomag telepítése után a Package Manager konzolban egy megerősítési üzenet jelenik meg.
-
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -84,16 +66,14 @@ A csomag telepítése után a Package Manager konzolban egy megerősítési üze
 
     ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "A konzol a sikeres felismerést követően")
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/csharp-dotnetcore-windows` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
+További példákat, például a beszéd beolvasása egy hangfájlt a Githubon érhetők el.
+
 > [!div class="nextstepaction"]
-> [Szándék felismerése beszédből a C#-hez készült Speech SDK használatával](how-to-recognize-intents-from-speech-csharp.md)
+> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Beszéd fordítása](how-to-translate-speech-csharp.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

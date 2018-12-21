@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 54a58ed9a3adf405f1384a2d0a31c569707acfc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f7f247da93290aafaec62fe68158a036bc6cb887
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542985"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723339"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
 
-Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazásnak a kiszolgálóhoz használt csomópont és az Express, az Azure Cosmos DB-hez csatlakozik a [Azure Cosmos DB API-fiók MongoDB-hez](mongodb-introduction.md), majd a React-előtérrendszerhez csatlakozik az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan végezhető el az Azure Cosmos DB méretezése néhány kattintással az Azure Portalon, és hogyan helyezhető üzembe az alkalmazás az interneten, hogy mindenki kedvére követhesse kedvenc fő képeit. 
+Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazásnak a kiszolgálóhoz használt csomópont és az Express, az Azure Cosmos DB-hez csatlakozik a [Azure Cosmos DB MongoDB API-hoz](mongodb-introduction.md), majd a React-előtérrendszerhez csatlakozik az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan végezhető el az Azure Cosmos DB méretezése néhány kattintással az Azure Portalon, és hogyan helyezhető üzembe az alkalmazás az interneten, hogy mindenki kedvére követhesse kedvenc fő képeit. 
 
-Az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja a MongoDB ügyfélkapcsolatait, így az Azure Cosmos DB-t a MongoDB helyett használhatja, de ugyanazt a kódot kell használnia, mint a MongoDB-alkalmazások esetében. Így további előnyöket, például egyszerű felhőalapú üzembe helyezést, méretezést és szupergyors olvasási és írási képességet biztosíthat alkalmazásának.  
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja a MongoDB-ügyfélkapcsolatokat, így az Azure Cosmos DB MongoDB helyett használhatja.  
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 

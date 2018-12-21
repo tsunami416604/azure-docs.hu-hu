@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20f5fb918c836bda9bee19feec3259cfd4858875
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074073"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722414"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>2. oktatóanyag: Gyakori szándékok és entitások azonosítása
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>2. oktatóanyag: Közös szándékok és entitások azonosítása
 Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást. Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal, mert az entitást a rendszer automatikusan észleli.
 
 A gyakori témák és adattípusok előre összeállított modelljei lehetővé teszik saját modellje gyors létrehozását, és jó példák arra, hogyan épül fel egy modell. 
@@ -40,7 +40,7 @@ Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű 
 
 Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json).
 
 2. Importálja a JSON-t egy új alkalmazásba.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085399"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713607"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
@@ -66,12 +66,12 @@ Minden egyes notebook válassza ki a kernel (azaz a futtatókörnyezet) bármily
 - Python 2.7 + Anaconda2-5.3.0
 - A Python 3.6-os + Anaconda3-5.3.0
 - Python 3.5-ös + Anaconda3 4.2.0 (elavulttá válik)
-- R 3.3-as és a Microsoft R 3.3.0 megnyitása
+- R 3.4.1 + Microsoft R 3.4.1 megnyitása
 - F#4.1.9
 
 Az Azure notebookok további csomagokat az alap disztribúciók túl is tartalmaz. A Python kernelekkel, például a numpy, a pandas, a scikit-ismerje meg, matplotlib és bokeh kódtárakat.
 
-A környezet összes jegyzetfüzet létrehozása a projektben egy projektet is testreszabhatja. További információkért lásd: [a rövid útmutató: hozzon létre egy projektet egy egyéni környezettel rendelkező](quickstart-create-jupyter-notebook-project-environment.md).
+A környezet összes jegyzetfüzet létrehozása a projektben egy projektet is testreszabhatja. További információkért lásd: [a rövid útmutató: Hozzon létre egy projektet egy egyéni környezettel rendelkező](quickstart-create-jupyter-notebook-project-environment.md).
 
 Az alap disztribúciók mellett Azure notebookok további csomagok száma, amelyek hasznosak a adatszakértők számára előre telepítve áll rendelkezésre. A saját csomagokat a tipikus folyamat segítségével az egyes nyelvekhez is telepítheti.
 
@@ -80,10 +80,10 @@ Az alap disztribúciók mellett Azure notebookok további csomagok száma, amely
 Az Azure notebookok előre konfigurálva, a következő Jupyter kiterjesztésű:
 
 - [EZÉRT](https://github.com/damianavila/RISE): A Jupyter diavetítés bővítmény (más néven live_reveal). További információkért lásd: [futtatása egy jegyzetfüzetet Diavetítés](present-jupyter-notebooks-slideshow.md).
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): egy teljes számítási környezetben, a Jupyter notebookok használata.
-- [Altair](https://github.com/ellisonbg/altair): A deklaratív statisztikai Vizualizáció kódtára a Pythonhoz.
-- [BQPlot](https://github.com/bloomberg/bqplot): egy interaktív ábrázolási keretrendszer Jupyter notebookokhoz.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interaktív HTML-widgetek Jupyter notebookokhoz.
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): A Jupyter notebookok használata teljes számítási környezetet.
+- [Altair](https://github.com/ellisonbg/altair): Deklaratív statisztikai Vizualizáció kódtára a Pythonhoz.
+- [BQPlot](https://github.com/bloomberg/bqplot): Egy interaktív ábrázolási keretrendszer Jupyter notebookokhoz.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktív HTML widgetek Jupyter notebookokhoz.
 
 ## <a name="issues-and-getting-help"></a>Problémák és segítség kérése
 

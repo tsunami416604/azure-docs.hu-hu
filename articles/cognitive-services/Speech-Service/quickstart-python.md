@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: chlandsi
-ms.openlocfilehash: 46f19876215c4c1ffac7d99e377381451a0ea7df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629288"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723909"
 ---
 # <a name="quickstart-using-the-speech-service-from-python"></a>Gyors útmutató: A Speech Service a Python használatával
 
@@ -27,8 +27,8 @@ Ez a cikk bemutatja, hogyan használható a beszédfelismerési szolgáltatás r
 
 Mielőtt elkezdené, a következő előfeltételek listáját:
 
-* A [előfizetési kulcs](get-started.md) a beszédfelismerési szolgáltatás.
-* Python 3.5-ös (64 bites) vagy újabb verzió szükséges. Letöltések érhetők el [Itt](https://www.python.org/downloads/).
+* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* [Python 3.5-ös (64 bites)](https://www.python.org/downloads/) vagy újabb.
 * A Python beszéd SDK-csomag Windows (x64), (macOS X 10.12 vagy újabb verziójára) Mac és Linux (Ubuntu 16.04 vagy 18.04 a x64) érhető el.
 * Ubuntu rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
@@ -75,9 +75,6 @@ vagy letöltheti, ez a rövid útmutató egy [Jupyter](https://jupyter.org) Note
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/python` mappában találja.
-
 ### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>A beszédfelismerés SDK Python-csomag telepítése, és a minta futtatása a Visual Studio Code-ban
 
 1. [Töltse le](https://www.python.org/downloads/) és a egy 64 bites verzióját (3.5-ös vagy újabb) a Python telepítése a számítógépre.
@@ -105,5 +102,4 @@ Ha ezek az utasítások a következő problémák vannak, tekintse meg a széles
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Minták letöltése](speech-sdk.md#get-the-samples)
-
+> [Python-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)

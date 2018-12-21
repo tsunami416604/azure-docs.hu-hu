@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 92e10b1f4ec8be1dc67ff449df32ef76e365b5f2
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3a16c87e96a94fcf95694d3cbfd6f8f07adedb74
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162664"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717075"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Gyors útmutató: Get-leképezés Node.js használatával
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 
 
 > [!NOTE] 
-> A teljes Node.js-megoldás érhető el a [ **LUIS-Samples** GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node).
+> A teljes Node.js-megoldás érhető el a [ **Azure-minták** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 

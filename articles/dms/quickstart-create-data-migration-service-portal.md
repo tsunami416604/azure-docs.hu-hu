@@ -1,24 +1,24 @@
 ---
-title: 'Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon | Microsoft Docs'
+title: 'Gyors útmutató: Azure Database Migration Service-példány létrehozása az Azure Portallal | Microsoft Docs'
 description: Az Azure Portallal létrehozhat egy Azure Database Migration Service-példányt.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
-ms.service: database-migration
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/09/2018
-ms.openlocfilehash: 7df19efc52f0771a10535c10625dd959a6edc90a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 2b3ec4a09fb2baee7d532f348fc18cb3d428d092
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958015"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53711822"
 ---
-# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
+# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Gyors útmutató: Az Azure Portallal létrehozhat egy Azure Database Migration Service-példányt.
 Ebben a rövid útmutatóban az Azure Portal használatával létrehozhat egy Azure Database Migration Service-példányt.  A szolgáltatás létrehozása után a használatával a helyi SQL Serverből migrálhat adatokat egy Azure SQL-adatbázisba.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -56,7 +56,7 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
         További információt a virtuális hálózatok az Azure Portallal történő létrehozásáról a [virtuális hálózatok Azure Portallal történő létrehozását](https://aka.ms/vnet) ismertető cikkben talál.
 
-    - A **Tarifacsomag** esetén válassza ki az Alapszintű: 1 virtuális mag lehetőséget.
+    - Válassza az alapszintű: az 1 virtuális mag a **tarifacsomag**.
 
         ![A migrálási szolgáltatás létrehozása](media/quickstart-create-data-migration-service-portal/dms-create-service1.png)
 

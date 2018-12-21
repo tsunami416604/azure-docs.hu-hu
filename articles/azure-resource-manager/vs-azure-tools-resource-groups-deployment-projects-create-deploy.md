@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c5f1c5add069be99f7a6f467f6e3e2bd9c2b3535
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: HT
+ms.openlocfilehash: 082170d6f8bfb687195de87cde4247697571b0d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543088"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715919"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
@@ -132,7 +132,7 @@ Készen áll a projekt üzembe helyezésére. Az Azure Erőforráscsoport-projek
     ![Paraméterek szerkesztése gomb](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/edit-parameters.png)
 4. Adja meg az üres paraméterek értékeit, majd kattintson a **Mentés** gombra. Az üres paraméterek a következők: **hostingPlanName**, **administratorLogin**, **administratorLoginPassword** és **databaseName**.
    
-    A **hostingPlanName** a létrehozandó új [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) nevét adja meg. 
+    A **hostingPlanName** a létrehozandó új [App Service-csomag](../app-service/overview-hosting-plans.md) nevét adja meg. 
    
     Az **administratorLogin** az SQL Server rendszergazdájának felhasználónevét adja meg. Ne használjon olyan gyakori rendszergazdai neveket, mint az **sa** vagy az **admin**. 
    

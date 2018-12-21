@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 6dc482f8629bf8ca75af5f1643999ae896fa2435
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609414"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724433"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>Gyors útmutató: A beszédfelismerést a JavaScript a Speech Service SDK-t használó Node.js-ben
 
@@ -26,7 +26,7 @@ Az alkalmazás a Microsoft alapján [Cognitive Services beszédfelismerő SDK](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Előfizetői azonosító a Speech Service-hez. Lásd [A Speech Service ingyenes kipróbálása](get-started.md) című cikket.
+* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
 * Aktuális verziója [Node.js](https://nodejs.org).
 
 ## <a name="create-a-new-project-folder"></a>Hozzon létre egy új projekt mappát
@@ -120,10 +120,7 @@ Futtathatja a mintát a Visual Studio Code-ból is. Kövesse az alábbi lépése
 
    ![Képernyőkép a hibakeresési konzolt](media/sdk/qs-js-node-07-debug_output.png)
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/js-node` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Minták letöltése](speech-sdk.md#get-the-samples)
+> [Ismerkedés a Node.js-minták a Githubon](https://aka.ms/csspeech/samples)
