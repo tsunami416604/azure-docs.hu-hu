@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 6d245b457eca78dc029bde923616b4d84e04b997
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e77ee61e3d318b355b978ce21031f3f55a26feca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599015"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724623"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést a Java Android rendszeren a Speech SDK-val
 
@@ -141,16 +141,12 @@ Nyomja meg az alkalmazásban található gombot a szövegfelismerés aktiválás
 
 ![Az Android-alkalmazás képernyőképe](media/sdk/qs-java-android-13-gui-on-device.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-A jelen útmutatóban használt mintát a `quickstart/java-android` mappában találja.
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szándék felismerése beszédből a Javához készült Speech SDK-val](how-to-recognize-intents-from-speech-java.md)
+> [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Beszéd fordítása](how-to-translate-speech-csharp.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
