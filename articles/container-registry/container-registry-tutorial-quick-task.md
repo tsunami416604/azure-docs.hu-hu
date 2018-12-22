@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: eafd6a75b4297056bcf4c5415f77179cefde6541
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256689"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754373"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Hozhat létre és helyezhet üzembe rendszerképeket az Azure Container Registry feladatokat a felhőben
 
@@ -201,12 +201,12 @@ az keyvault secret set \
   --value $(az ad sp create-for-rbac \
                 --name $ACR_NAME-pull \
                 --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
-                --role reader \
+                --role acrpull \
                 --query password \
                 --output tsv)
 ```
 
-Az előző parancs `--role` argumentuma a *reader* (olvasó) szerepkörrel konfigurálja a szolgáltatásnevet, amely csak lekérési jogosultságot biztosít a regisztrációs adatbázishoz. Ha lekérési és leküldési jogosultságot egyaránt biztosítani kíván, módosítsa a `--role` argumentum értékét a *contributor* (közreműködő) értékre.
+A `--role` argumentum az előző parancsban szereplő konfigurálja az egyszerű szolgáltatások a *acrpull* szerepkört, amely hozzáférést biztosít, lekéréses a beállításjegyzékben. Leküldéses és lekéréses hozzáférést biztosítson, módosítsa a `--role` argumentumának *acrpush*.
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 622aa49a8dffa933499c243bd723ce2d67a4c251
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6cbeb44e5dfca84bc85a6be4c4b44cb59bad783a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714900"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755121"
 ---
-# <a name="tutorial-1-fix-unsure-predictions"></a>1. oktatóanyag: Bizonytalan előrejelzések javítása
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a nem tudja, hogy előrejelzéseket végpont utterances áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
 
 Az áttekintési folyamat egy másik módja annak, hogy a LUIS megismerje az alkalmazás tartományát. A LUIS kiválasztotta az áttekintési listában megjelenő kimondott szövegeket. Ez a lista a következő tulajdonságokkal rendelkezik:
@@ -33,7 +33,7 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
+> * Példa-alkalmazás importálása
 > * A végpont beszédmódjainak áttekintése
 > * Kifejezéslista frissítése
 > * Alkalmazás betanítása
@@ -42,11 +42,11 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="import-example-app"></a>Példa-alkalmazás importálása
 
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ehhez a következő lépések szükségesek:
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json).
 

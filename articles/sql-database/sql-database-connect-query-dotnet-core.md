@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 471d2b0b8d98651d4b9ef4e88df0e863715b0c88
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f2c8c2a9a2b21a15aa997ff0cc98860ceec76cc
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341779"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744836"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
-Ez a rövid útmutató azt ismerteti, hogyan használhatja [.NET Core](https://www.microsoft.com/net/) és C# code egy Azure SQL Database-adatbázishoz csatlakozhat, és a egy Transact-SQL-utasítás futtatására használatával adatokat lekérdezni.
+Ez a rövid útmutatóban használni kívánt [.NET Core](https://www.microsoft.com/net/) és C# code egy Azure SQL Database-adatbázishoz csatlakozhat. Majd futtassa a Transact-SQL-utasítás használatával adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,14 +53,14 @@ Ebben az oktatóanyagban szüksége lesz:
   
 ## <a name="create-a-new-net-core-project"></a>Hozzon létre egy új .NET Core-projektet
 
-1. Nyisson meg egy parancssort, és hozzon létre egy **sqltest** nevű mappát. Keresse meg azt a mappát, és futtassa a következő parancsot.
+1. Nyisson meg egy parancssort, és hozzon létre egy **sqltest** nevű mappát. Keresse meg azt a mappát, majd futtassa a parancsot.
 
     ```cmd
     dotnet new console
     ```
-    Ez hoz létre új alkalmazás soubory projektu, beleértve egy kezdeti C# kódfájl (**Program.cs**), egy konfigurációs XML-fájl (**sqltest.csproj**), és a szükséges bináris fájlokat.
+    Ezzel a paranccsal hoz létre új alkalmazás soubory projektu, beleértve egy kezdeti C# kódfájl (**Program.cs**), egy konfigurációs XML-fájl (**sqltest.csproj**), és a szükséges bináris fájlokat.
 
-2. Egy szövegszerkesztőben nyissa meg a **sqltest.csproj** , és illessze be a következő XML formátumú között a `<Project>` címkék. Ezzel hozzáad `System.Data.SqlClient` függőségként.
+2. Egy szövegszerkesztőben nyissa meg a **sqltest.csproj** , és illessze be a következő XML formátumú között a `<Project>` címkék. Az XML-kód hozzáadja `System.Data.SqlClient` függőségként.
 
     ```xml
     <ItemGroup>
@@ -173,7 +173,7 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. Nyomja meg **Enter** gombra kattintva zárja be az alkalmazásablakot.
+3. Válasszon **Enter** gombra kattintva zárja be az alkalmazásablakot.
 
 ## <a name="next-steps"></a>További lépések
 

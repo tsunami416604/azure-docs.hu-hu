@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7b8cf102160a281b47419680a209c58a7ae60c9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 614c4b9f8cb6b748385d86d20cbec15928642d30
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582837"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753302"
 ---
 # <a name="whats-happening-to-machine-learning-workbench-in-azure-machine-learning-service"></a>Mi történik a Machine Learning Workbench az Azure Machine Learning szolgáltatás?
 
@@ -68,9 +68,9 @@ A portál munkaterület irányítópult csak a Microsoft Edge, Chrome és a Fire
 
 A már meglévő adatfájlok előkészítése nem a legújabb verziót a hordozható, mert a Machine Learning Workbench már nincs. Azonban továbbra is előkészítheti az adatokat modellezésre.  
 
-A kisebb adatkészletek esetében használhatja a <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning adat-előkészítési SDK</a> gyorsan előkészítheti a modellezési előtt az adatokat. 
+A méretüktől adatkészletekhez a segítségével a [az Azure Machine Learning Data Prep SDK](http://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
 
-Használhatja a azonos <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> nagyobb adatkészletek esetében. Vagy nagy méretű adatkészletek előkészítése az Azure Databricks használatával. 
+Követheti [ebben az oktatóanyagban](tutorial-data-prep.md) tudhat meg többet az Azure Machine Learning Data Prep SDK használatával.
 
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 

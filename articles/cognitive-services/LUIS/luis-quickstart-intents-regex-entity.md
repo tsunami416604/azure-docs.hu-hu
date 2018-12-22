@@ -9,19 +9,34 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 654d3c4e7dd7ec8916b785f52a78388ec04b3cc9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ebd1d9380747a85b7134fa7f6b232bcee8d29f05
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712780"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752826"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>3. oktatóanyag: Helyesen formázott adatok kinyerése
-Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást, hogy konzisztensen formázott adatokat nyerjen ki egy kimondott szövegből a **Reguláris kifejezés** entitás használatával.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Helyes formátumú adatokat kérhet le az utterance (kifejezés)
+Ebben az oktatóanyagban az utterance (kifejezés) használatával konzisztens módon formázott adatok kinyerését alkalmazás létrehozása a **reguláris kifejezés** entitás.
 
-Az entitások célja a kimondott szövegekben található fontos adatok kinyerése. Az alkalmazás arra használja a reguláriskifejezés-entitást, hogy formázott Emberierőforrások- (HR-) űrlapszámokat nyerjen ki egy kimondott szövegből. Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. 
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Új alkalmazás létrehozása 
+> * Szándék hozzáadása
+> * Reguláriskifejezés-entitás hozzáadása 
+> * Betanítás
+> * Közzététel
+> * Szándék és entitások lekérése a végpontról
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="regular-expression-entities"></a>Reguláris kifejezés entitások
+
+Ez az alkalmazás a reguláris kifejezésnek entitás használata is, emberi erőforrások (HR) az utterance (kifejezés) a helyes formátumú űrlap számokat. Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. 
 
 **Példák kimondott szövegekre:**
 
@@ -37,41 +52,22 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
 
 * az adatok helyesen formázottak.
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
-> * FindForm szándék hozzáadása
-> * Reguláriskifejezés-entitás hozzáadása 
-> * Betanítás
-> * Közzététel
-> * Szándék és entitások lekérése a végpontról
+## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
-
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
-
-1. Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-prebuilts-HumanResources.json).
-
-2. Importálja a JSON-t egy új alkalmazásba.
-
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `regex` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
-
-## <a name="findform-intent"></a>FindForm szándék
+## <a name="create-intent-for-finding-form"></a>Űrlap kereséséhez leképezésének létrehozása
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
-3. Az előugró párbeszédpanelen írja be a `FindForm` karakterláncot, majd válassza a **Kész** elemet. 
+1. Az előugró párbeszédpanelen írja be a `FindForm` karakterláncot, majd válassza a **Kész** elemet. 
 
     ![Képernyőkép a Create new intent (Új szándék létrehozása) párbeszédpanelről, a keresőmezőben a Utilities (Segédprogramok) karaktersorral](./media/luis-quickstart-intents-regex-entity/create-new-intent-ddl.png)
 
-4. Adjon hozzá kimondott példaszövegeket a szándékhoz.
+1. Adjon hozzá kimondott példaszövegeket a szándékhoz.
 
     |Példák kimondott szövegekre|
     |--|
@@ -79,7 +75,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
     |Hol van a hrf-345678?|
     |Mikor frissült a hrf-456098?|
     |Frissítette Kovács János múlt héten a hrf-234639 űrlapot?|
-    |Hány verziója van a hrf-345123 űrlapnak?|
+    |Hány verziói hrf-345123 vannak-e?|
     |Kinek kell jóváhagynia a hrf-123456 űrlapot?|
     |Hány személynek kell jóváhagynia a hrf-345678 űrlapot?|
     |A hrf-234123 dátuma?|
@@ -88,11 +84,9 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
     [ ![Képernyőkép a Szándék lapról, az új kimondott szövegek kiemelésével](./media/luis-quickstart-intents-regex-entity/findform-intent.png) ](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
-    Az alkalmazásban fel lettek véve előre összeállított számentitások az előző oktatóanyagban, ezért minden űrlapszám meg van címkézve. Ez elég lehet az ügyfélalkalmazásához, de a szám nem lesz megcímkézve a szám típusával. Egy új entitás létrehozása a megfelelő névvel lehetővé teszi, hogy az ügyfélalkalmazás megfelelően dolgozza fel az entitást, amikor visszakapja a LUIS-ból.
-
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>A reguláris kifejezésnek entitás használja a megfelelően formázott adatok
 A reguláriskifejezés-entitás, amelyet meg kell feleltetni az űrlapszámnak: `hrf-[0-9]{6}`. Ez a reguláriskifejezés-entitás megfelelteti egymásnak a `hrf-` karaktereket, de figyelmen kívül hagyja, hogy kis- vagy nagybetűvel szerepelnek-e, illetve a kulturális változatokat. Megfelelteti egymásnak a számjegyeket 0-tól 9-ig, pontosan 6 számjegyet.
 
 A HRF a következőt jelöli: `human resources form`.
@@ -103,27 +97,31 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
-2. Az Entities (Entitások) lapon válassza a **Create new entity** (Új entitás létrehozása) gombot. 
+1. Az Entities (Entitások) lapon válassza a **Create new entity** (Új entitás létrehozása) gombot. 
 
-3. A felugró párbeszédpanelen az új entitásnak adja a `HRF-number` nevet, válassza a **RegEx** entitástípust, a **Regex** értéke legyen `hrf-[0-9]{6}`, majd válassza a **Done** (Kész) lehetőséget.
+1. A felugró párbeszédpanelen az új entitásnak adja a `HRF-number` nevet, válassza a **RegEx** entitástípust, a **Regex** értéke legyen `hrf-[0-9]{6}`, majd válassza a **Done** (Kész) lehetőséget.
 
     ![Képernyőkép az új entitás tulajdonságainak beállításakor felugró párbeszédpanelről](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
-4. A bal oldali menüben válassza az **Intents** (Szándékok) elemet, majd a **FindForm** szándékot kiválasztva megtekintheti a kimondott szövegekben a megcímkézett reguláris kifejezést. 
+1. A bal oldali menüben válassza az **Intents** (Szándékok) elemet, majd a **FindForm** szándékot kiválasztva megtekintheti a kimondott szövegekben a megcímkézett reguláris kifejezést. 
 
     [![Képernyőkép a Label (Címke) kimondott szövegről létező entitás és regex mintával](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
-    Mivel az entitás nem gépi tanulással létrejött entitás, a címkét a rendszer a létrehozása után azonnal alkalmazza a kimondott szövegre és megjeleníti a LUIS webhelyén.
+    Mivel az entitás nem egy gép megtanult entitást, az entitás alkalmazza a kimondott szöveg és a LUIS-webhely megjelenik, amint létrejön.
 
-## <a name="train"></a>Betanítás
+## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanításához tesztelési vagy közzététele előtt
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Közzététel
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról lekérdezés
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -134,63 +132,19 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {
         "intent": "FindForm",
-        "score": 0.9993477
+        "score": 0.9988884
       },
       "intents": [
         {
           "intent": "FindForm",
-          "score": 0.9993477
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0206110049
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.00533067342
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.004215215
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00209096959
+          "score": 0.9988884
         },
         {
           "intent": "None",
-          "score": 0.0017655947
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00109490135
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.0005704638
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.000525338168
+          "score": 0.00204812363
         }
       ],
       "entities": [
-        {
-          "entity": "last year",
-          "type": "builtin.datetimeV2.daterange",
-          "startIndex": 53,
-          "endIndex": 61,
-          "resolution": {
-            "values": [
-              {
-                "timex": "2017",
-                "type": "daterange",
-                "start": "2017-01-01",
-                "end": "2018-01-01"
-              }
-            ]
-          }
-        },
         {
           "entity": "hrf-123456",
           "type": "HRF-number",
@@ -202,35 +156,24 @@ A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, ame
           "type": "HRF-number",
           "startIndex": 25,
           "endIndex": 34
-        },
-        {
-          "entity": "-123456",
-          "type": "builtin.number",
-          "startIndex": 13,
-          "endIndex": 19,
-          "resolution": {
-            "value": "-123456"
-          }
-        },
-        {
-          "entity": "-234567",
-          "type": "builtin.number",
-          "startIndex": 28,
-          "endIndex": 34,
-          "resolution": {
-            "value": "-234567"
-          }
         }
       ]
     }
     ```
 
-    A kimondott szövegben szereplő számokat a rendszer kétszer adja vissza, egyszer az új `hrf-number` entitásként, egyszer pedig az előre létrehozott `number` entitásként. Egy kimondott szöveghez tartozhat több entitás, és több azonos típusú entitás is, ahogy az ebből a példából is látszik. Ha reguláriskifejezés-entitást használ, a LUIS kinyeri a megnevezett adatokat, ami programozás szempontjából nagyobb segítséget nyújt a JSON-választ fogadó ügyfélalkalmazásnak.
+    Ha reguláriskifejezés-entitást használ, a LUIS kinyeri a megnevezett adatokat, ami programozás szempontjából nagyobb segítséget nyújt a JSON-választ fogadó ügyfélalkalmazásnak.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Kapcsolódó információk
+
+* [Reguláris kifejezés](luis-concept-entity-types.md#regex) entitás fogalmak
+* [Hogyan betanítása](luis-how-to-train.md)
+* [Közzétételi útmutató](luis-how-to-publish-app.md)
+* [A LUIS-portál tesztelése](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, példaszándékokat adott hozzá, majd létrehozott egy reguláriskifejezés-entitást a helyesen formázott adatok kimondott szövegből történő kinyerésének céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.

@@ -10,227 +10,92 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: ba76e1da73cac1b4f7df79a4c7e903a85ae58931
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 91fddb6da12817428fef009e8720a37534a64f24
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599654"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743612"
 ---
-# <a name="quickstart-bing-visual-search-sdk-python"></a>Gyors útmutató: A Bing Visual Search SDK Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Gyors útmutató: A Bing Visual Search SDK a Pythonhoz készült használatával kép elemzések lekérése
 
-A Bing Visual Search SDK a REST API funkcióit használja a webes kérelmekhez és az eredmények elemzéséhez.
-[A Python Bing Visual Search SDK minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) elérhető a GitHubon.
+Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visual Search service, a Python SDK-val kezdeni. Míg a Bing Visual Search REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
-A kódforgatókönyvek dokumentációja az alábbi címsorok alatt található:
-* [Visual Search-ügyfél](#client)
-* [Teljes konzolalkalmazás](#complete-console)
-* [Bináris kép közzététele a cropArea használatával](#binary-crop)
-* [KnowledgeRequest paraméter](#knowledge-req)
-* [Címkék, műveletek és actionType](#tags-actions)
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-* Ebben a rövid, szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
-
-Előfizetés indítása az Azure Portalon:
-1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
-2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
-3. Adja meg `Name` az új erőforrás.
-4. Válassza ki `Pay-As-You-Go` előfizetés.
-5. Válassza ki `S9` tarifacsomag.
-6. Kattintson a `Enable` az előfizetés indításához.
- 
-* Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
-* A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
-```
-python -m venv mytestenv
-```
-Telepítse a Bing Visual Search SDK függőségeit:
-```
-cd mytestenv
-python -m pip install azure-cognitiveservices-search-visualsearch
-```
-
-<a name="client"></a> 
-## <a name="visual-search-client"></a>Visual Search-ügyfél
-A `VisualSearchAPI` ügyfél egy példányának létrehozásához importálja a következő kódtárakat:
-```
-import http.client, urllib.parse
-import json
-import os.path
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
-from azure.cognitiveservices.search.visualsearch.models import (
-    VisualSearchRequest,
-    CropArea,
-    ImageInfo,
-    Filters,
-    KnowledgeRequest,
-)
-```
-Cserélje le a subscriptionKey sztring értékét a saját érvényes előfizetői kulcsára.
-```
-subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
-```
-Ezután példányosítsa az ügyfelet:
-```
-var client = WebSearchAPI(ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-```
-Az ügyfél használatával keressen képeket, és elemezze az eredményeket:
-```
-PATH = 'C:\\Users\\USER\\azure-cognitive-samples\\mytestenv\\TestImages\\'
-image_path = os.path.join(PATH, "image.jpg")
-
-with open(image_path, "rb") as image_fd:
-
-    # You need to pass the serialized form of the model
-    knowledge_request = json.dumps(VisualSearchRequest().serialize())
-
-    print("\r\nSearch visual search request with binary of dog image")
-    result = client.images.visual_search(image=image_fd, knowledge_request=knowledge_request)
-        
-    if not result:
-        print("No visual search result data.")
-
-        # Visual Search results
-    if result.image.image_insights_token:
-        print("Uploaded image insights token: {}".format(result.image.image_insights_token))
-    else:
-        print("Couldn't find image insights token!")
-
-    # List of tags
-    if result.tags:
-        first_tag = result.tags[0]
-        print("Visual search tag count: {}".format(len(result.tags)))
-
-        # List of actions in first tag
-        if first_tag.actions:
-            first_tag_action = first_tag.actions[0]
-            print("First tag action count: {}".format(len(first_tag.actions)))
-            print("First tag action type: {}".format(first_tag_action.action_type))
-        else:
-            print("Couldn't find tag actions!")
-    else:
-        print("Couldn't find image tags!")
-
-```
-
-<a name="complete-console"></a> 
-## <a name="complete-console-application"></a>A teljes konzolalkalmazás
-
-A következő konzolalkalmazás végrehajtja az előzőleg meghatározott lekérdezést, és elemzi az eredményeket:
-```
-import http.client, urllib.parse
-import json
-import os.path
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
-from azure.cognitiveservices.search.visualsearch.models import (
-    VisualSearchRequest,
-    CropArea,
-    ImageInfo,
-    Filters,
-    KnowledgeRequest,
-)
-
-# Replace the subscriptionKey string value with your valid subscription key.
-subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
-
-PATH = 'C:\\Users\\v-gedod\\azure-cognitive-samples\\mytestenv\\TestImages\\'
-
-from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
-from azure.cognitiveservices.search.visualsearch.models import (
-    VisualSearchRequest,
-    CropArea,
-    ImageInfo,
-    Filters,
-    KnowledgeRequest,)
-
-from msrest.authentication import CognitiveServicesCredentials
-
-client = VisualSearchAPI(CognitiveServicesCredentials(subscription_key))
-
-image_path = os.path.join(PATH, "image.jpg")
-
-with open(image_path, "rb") as image_fd:
-
-    # You need to pass the serialized form of the model
-    knowledge_request = json.dumps(VisualSearchRequest().serialize())
-
-    print("\r\nSearch visual search request with binary of dog image")
-    result = client.images.visual_search(image=image_fd, knowledge_request=knowledge_request)
-        
-    if not result:
-        print("No visual search result data.")
-
-        # Visual Search results
-    if result.image.image_insights_token:
-        print("Uploaded image insights token: {}".format(result.image.image_insights_token))
-    else:
-        print("Couldn't find image insights token!")
-
-    # List of tags
-    if result.tags:
-        first_tag = result.tags[0]
-        print("Visual search tag count: {}".format(len(result.tags)))
-
-        # List of actions in first tag
-        if first_tag.actions:
-            first_tag_action = first_tag.actions[0]
-            print("First tag action count: {}".format(len(first_tag.actions)))
-            print("First tag action type: {}".format(first_tag_action.action_type))
-        else:
-            print("Couldn't find tag actions!")
-    else:
-        print("Couldn't find image tags!")
+* [Python](https://www.python.org/) 2.x vagy 3.x
+* Javasoljuk, hogy használjon egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
+* A Bing Visual Search SDK Pythonhoz készült. A következő parancsokkal telepítheti:
+    1. `cd mytestenv`
+    2. `python -m pip install azure-cognitiveservices-search-visualsearch`
 
 
-# Uncomment these methods to include code under the following headings of this documentation.
-#search_image_binary_with_crop_area(client, subscription_key, PATH)
-#search_url_with_filters(client, subscription_key)
-#search_insights_token_with_crop_area(client, subscription_key)
 
-```
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-A Bing keresési minták az SDK különböző funkcióit mutatják be.  Adja hozzá az alábbi függvényeket a korábban meghatározott `VisualSrchSDK` osztályhoz.
 
-<a name="binary-crop"></a>
-## <a name="image-binary-post-with-croparea"></a>Bináris kép közzététele a cropArea használatával
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-Az alábbi kód elküld egy képbinárist a POST kérelem törzsében egy cropArea objektummal együtt.  Ezután kinyomtatja az imageInsightsToken jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
+1. Hozzon létre egy új Python-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és adja hozzá a következő importálási utasításokat. 
 
-```
-def search_image_binary_with_crop_area(client, sub_key, file_path):
+    ```python
+    import http.client, urllib.parse
+    import json
+    import os.path
+    from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
+    from azure.cognitiveservices.search.visualsearch.models import (
+        VisualSearchRequest,
+        CropArea,
+        ImageInfo,
+        Filters,
+        KnowledgeRequest,
+    )
+    ```
+2. Változók létrehozása az előfizetési kulcs, egyéni konfigurációs Azonosítót, és a feltölteni kívánt kép. 
+    
+    ```python
+    subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
+    PATH = 'C:\\Users\\USER\\azure-cognitive-samples\\mytestenv\\TestImages\\'
+    image_path = os.path.join(PATH, "image.jpg")
+    
+    ```
 
-    #client = VisualSearchAPI(CognitiveServicesCredentials(sub_key))
+3. Az ügyfél példányosítása
 
-    image_path = os.path.join(file_path, "image.jpg")
+    ```python
+    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    ```
+
+## <a name="send-the-search-request"></a>A keresési kérelem küldése
+
+1. Fájl megnyitása a lemezképpel, szerializálható `VisualSearchRequest()`, és adja át azt, mint a `knowledge_request` paramétere a `visual_search()`.
+
+    ```python
     with open(image_path, "rb") as image_fd:
-
-        crop_area = CropArea(top=0.1,bottom=0.5,left=0.1,right=0.9)
-        knowledge_request = VisualSearchRequest(image_info=ImageInfo(crop_area=crop_area))
-
         # You need to pass the serialized form of the model
-        knowledge_request = json.dumps(knowledge_request.serialize())
-
+        knowledge_request = json.dumps(VisualSearchRequest().serialize())
+    
         print("\r\nSearch visual search request with binary of dog image")
         result = client.images.visual_search(image=image_fd, knowledge_request=knowledge_request)
+    ```
 
-        if not result:
+2. Eredményt adott vissza, ha nyomtassa ki őket, a címkék és a műveletek az első címke.
+
+    ```python
+    if not result:
             print("No visual search result data.")
-            return
-
-        # Visual Search results
+    
+            # Visual Search results
         if result.image.image_insights_token:
             print("Uploaded image insights token: {}".format(result.image.image_insights_token))
         else:
             print("Couldn't find image insights token!")
-
+    
         # List of tags
         if result.tags:
             first_tag = result.tags[0]
             print("Visual search tag count: {}".format(len(result.tags)))
-
+    
             # List of actions in first tag
             if first_tag.actions:
                 first_tag_action = first_tag.actions[0]
@@ -240,108 +105,9 @@ def search_image_binary_with_crop_area(client, sub_key, file_path):
                 print("Couldn't find tag actions!")
         else:
             print("Couldn't find image tags!")
-
-
-```
-<a name="knowledge-req"></a>
-## <a name="knowledgerequest-parameter"></a>KnowledgeRequest paraméter
-
-Az alábbi kód elküldi egy kép URL-címét a `knowledgeRequest` paraméterben, valamint egy \"site:pinterest.com\" szűrőt. Ezután kinyomtatja az `imageInsightsToken` jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
-```
-def search_url_with_filters(client_in, sub_key):
-
-    client = client_in
-
-    image_url = "https://images.unsplash.com/photo-1512546148165-e50d714a565a?w=600&q=80"
-    filters = Filters(site="pinterest.com")
-
-    knowledge_request = VisualSearchRequest(
-        image_info=ImageInfo(url=image_url),
-        knowledge_request=KnowledgeRequest(filters=filters)
-    )
-
-    # You need to pass the serialized form of the model
-    knowledge_request = json.dumps(knowledge_request.serialize())
-
-    print("\r\nSearch visual search request with url of dog image")
-    result = client.images.visual_search(knowledge_request=knowledge_request)
-
-    if not result:
-        print("No visual search result data.")
-        return
-
-    # Visual Search results
-    if result.image.image_insights_token:
-        print("Uploaded image insights token: {}".format(result.image.image_insights_token))
-    else:
-        print("Couldn't find image insights token!")
-
-    # List of tags
-    if result.tags:
-        first_tag = result.tags[0]
-        print("Visual search tag count: {}".format(len(result.tags)))
-
-        # List of actions in first tag
-        if first_tag.actions:
-            first_tag_action = first_tag.actions[0]
-            print("First tag action count: {}".format(len(first_tag.actions)))
-            print("First tag action type: {}".format(first_tag_action.action_type))
-        else:
-            print("Couldn't find tag actions!")
-    else:
-        print("Couldn't find image tags!")
-
-```
-<a name="tags-actions"></a>
-## <a name="tags-actions-and-actiontype"></a>Címkék, műveletek és actionType
-
-Az alábbi kód elküld egy megállapítási jogkivonatot a knowledgeRequest paraméterben, valamint egy cropArea objektumot. Ezután kinyomtatja az imageInsightsToken jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
-
-```
-    client = client_in
-
-    image_insights_token = "bcid_CA6BDBEA28D57D52E0B9D4B254F1DF0D*ccid_6J+8V1zi*thid_R.CA6BDBEA28D57D52E0B9D4B254F1DF0D"
-    crop_area = CropArea(top=0.1,bottom=0.5,left=0.1,right=0.9)
-
-    knowledge_request = VisualSearchRequest(
-        image_info=ImageInfo(
-            image_insights_token=image_insights_token,
-            crop_area=crop_area
-        ),
-    )
-
-    # You need to pass the serialized form of the model
-    knowledge_request = json.dumps(knowledge_request.serialize())
-
-    print("\r\nSearch visual search request with URL of dog image")
-    result = client.images.visual_search(knowledge_request=knowledge_request)
-
-    if not result:
-        print("No visual search result data.")
-        return
-
-    # Visual Search results
-    if result.image.image_insights_token:
-        print("Uploaded image insights token: {}".format(result.image.image_insights_token))
-    else:
-        print("Couldn't find image insights token!")
-
-    # List of tags
-    if result.tags:
-        first_tag = result.tags[0]
-        print("Visual search tag count: {}".format(len(result.tags)))
-
-        # List of actions in first tag
-        if first_tag.actions:
-            first_tag_action = first_tag.actions[0]
-            print("First tag action count: {}".format(len(first_tag.actions)))
-            print("First tag action type: {}".format(first_tag_action.action_type))
-        else:
-            print("Couldn't find tag actions!")
-    else:
-        print("Couldn't find image tags!")
-```
+    ```
 
 ## <a name="next-steps"></a>További lépések
 
-[Cognitive Services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+> [!div class="nextstepaction"]
+> [Egyoldalas webes alkalmazás készítése](tutorial-bing-visual-search-single-page-app.md)

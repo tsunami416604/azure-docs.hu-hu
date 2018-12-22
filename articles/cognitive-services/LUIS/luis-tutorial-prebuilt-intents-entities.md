@@ -1,7 +1,7 @@
 ---
 title: Előre összeállított szándékok és entitások felismerésére
 titleSuffix: Azure Cognitive Services
-description: Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
+description: Ebben az oktatóanyagban egy alkalmazást, amellyel gyorsan nyerhetnek szándék előrejelzési és adatok kivonása előre összeállított szándékok és entitások hozzá. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,24 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 20f5fb918c836bda9bee19feec3259cfd4858875
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 804224898f90aa9af587d6d5b4b80c6afcfa586d
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722414"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754985"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>2. oktatóanyag: Közös szándékok és entitások azonosítása
-Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást. Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal, mert az entitást a rendszer automatikusan észleli.
+# <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 
-A gyakori témák és adattípusok előre összeállított modelljei lehetővé teszik saját modellje gyors létrehozását, és jó példák arra, hogyan épül fel egy modell. 
+Ebben az oktatóanyagban adhat gyorsan nyerhetnek szándék előrejelzési és adatok kivonása az emberi erőforrások oktatóanyag a előre összeállított szándékokat és entitásokat. Nem kell megjelölni az előre összeállított entitások megszólalásokat, mert az entitás automatikusan észlelt.
+
+Előre összeállított modellek (tartományokban, szándékok és entitások) segítségével gyorsan hozhat létre a modellben.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
+> * Új alkalmazás létrehozása
 > * Előre összeállított szándékok hozzáadása 
 > * Előre összeállított entitások hozzáadása 
 > * Betanítás 
@@ -35,29 +36,24 @@ A gyakori témák és adattípusok előre összeállított modelljei lehetővé 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
+## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json).
 
-2. Importálja a JSON-t egy új alkalmazásba.
+## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>A gyakori felhasználói céljaira segítségével előre összeállított leképezések hozzáadása
 
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `prebuilts` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
-
-## <a name="add-prebuilt-intents"></a>Előre összeállított szándékok hozzáadása
 A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek a gyakori felhasználói szándékokban.  
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Válassza az **Add prebuilt intent** (Előre összeállított szándék hozzáadása) lehetőséget. 
+1. Válassza az **Add prebuilt domain intent** (Előre összeállított tartományi szándék hozzáadása) lehetőséget. 
 
-3. Keressen a `Utilities` kifejezésre. 
+1. Keressen a `Utilities` kifejezésre. 
 
     [ ![Képernyőkép az előre összeállított szándékok párbeszédpanelről a keresőmezőben a Utilities kifejezéssel](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
-4. Válassza ki a következő szándékokat, majd a **Done** (Kész) lehetőséget: 
+1. Válassza ki a következő szándékokat, majd a **Done** (Kész) lehetőséget: 
 
     * Utilities.Cancel
     * Utilities.Confirm
@@ -65,118 +61,118 @@ A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek
     * Utilities.StartOver
     * Utilities.Stop
 
+    Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. 
 
-## <a name="add-prebuilt-entities"></a>Előre összeállított entitások hozzáadása
+
+## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Gyakori típus adatkinyerés kiküszöbölni előre összeállított entitások hozzáadása
+
 A LUIS számos előre összeállított entitást biztosít a gyakori adatok kinyeréséhez. 
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
 
-2. Válassza a **Manage prebuilt entity** (Előre összeállított entitás kezelése) gombot.
+1. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) gombot.
 
-3. Az előre összeállított entitások listájából válassza a **number** (szám) és a **datetimeV2** (dátum és idő) entitást, majd kattintson a **Done** (Kész) gombra.
+1. Válassza ki a következő entitásokat előre összeállított entitások listájából, majd válassza ki **kész**:
+
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
+    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-## <a name="train"></a>Betanítás
+    Ezek az entitások neve és helye felismerés ad hozzá az ügyfélalkalmazás nyújt segítséget.
+
+## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Közzététel
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Lépjen az URL-cím végéhez a böngésző címsorában, és írja be a következőt: `I want to cancel on March 3`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. 
+1. Lépjen az URL-cím végéhez a böngésző címsorában, és írja be a következőt: `I want to cancel my trip to Seattle to see Bob Smith`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. 
 
     ```json
     {
-      "query": "I want to cancel on March 3",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith",
       "topScoringIntent": {
         "intent": "Utilities.Cancel",
-        "score": 0.7818295
+        "score": 0.807676256
       },
       "intents": [
         {
           "intent": "Utilities.Cancel",
-          "score": 0.7818295
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0237864349
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.017576348
+          "score": 0.807676256
         },
         {
           "intent": "Utilities.StartOver",
-          "score": 0.0130122062
+          "score": 0.0487322025
         },
         {
           "intent": "Utilities.Help",
-          "score": 0.006731322
+          "score": 0.0208660364
         },
         {
           "intent": "None",
-          "score": 0.00524190161
+          "score": 0.008789532
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.004912514
+          "score": 0.006929268
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00092950504
+          "score": 0.00136293867
         }
       ],
       "entities": [
         {
-          "entity": "march 3",
-          "type": "builtin.datetimeV2.date",
-          "startIndex": 20,
-          "endIndex": 26,
-          "resolution": {
-            "values": [
-              {
-                "timex": "XXXX-03-03",
-                "type": "date",
-                "value": "2018-03-03"
-              },
-              {
-                "timex": "XXXX-03-03",
-                "type": "date",
-                "value": "2019-03-03"
-              }
-            ]
-          }
+          "entity": "seattle",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 28,
+          "endIndex": 34
         },
         {
-          "entity": "3",
-          "type": "builtin.number",
-          "startIndex": 26,
-          "endIndex": 26,
-          "resolution": {
-            "value": "3"
-          }
+          "entity": "bob smith",
+          "type": "builtin.personName",
+          "startIndex": 43,
+          "endIndex": 51
         }
       ]
     }
     ```
 
-    Az eredmény előrejelezte a Utilities.Cancel szándékot, és kinyerte a március 3. dátumot és a 3-as számot. 
+    Az eredmény a Utilities.Cancel célt előrejelzett 80 %-os, és ki kell olvasni a város és személy neve adatokat. 
 
-    Két érték is tartozik a március 3-hoz, mert a kimondott szöveg nem határozta meg, hogy március 3. a múltra vagy a jövőre vonatkozik-e. Az ügyfélalkalmazástól függ, hogy feltételezi a helyes megoldást vagy tisztázást kér, ha szükséges. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Kapcsolódó információk
+
+További információ az előre összeállított modellek:
+
+* [Előre összeállított tartományok](luis-reference-prebuilt-domains.md): ezek a gyakori tartományok, amelyek csökkentik a teljes LUIS alkalmazás készítése
+* Előre összeállított leképezések: ezek a gyakori tartományainak az egyes leképezések. Külön-külön helyett a teljes tartományban szándékok adhat hozzá.
+* [Előre összeállított entitások](luis-prebuilt-entities.md): javasoljuk, hogy a legtöbb LUIS alkalmazás általános adatait adattípusok.
+
+További információ a LUIS-alkalmazás használata:
+
+* [Hogyan betanítása](luis-how-to-train.md)
+* [Közzétételi útmutató](luis-how-to-publish-app.md)
+* [A LUIS-portál tesztelése](luis-interactive-test.md)
+
 ## <a name="next-steps"></a>További lépések
 
-Az előre összeállított szándékok és entitások hozzáadásával az ügyfélalkalmazás képes észlelni a gyakori felhasználói szándékokat és kinyerni a gyakori adattípusokat. 
+Az előre összeállított szándékok és entitások hozzáadásával az ügyfélalkalmazás képes észlelni a gyakori felhasználói szándékokat és kinyerni a gyakori adattípusokat.  
 
 > [!div class="nextstepaction"]
 > [Reguláriskifejezés-entitás hozzáadása az alkalmazáshoz](luis-quickstart-intents-regex-entity.md)

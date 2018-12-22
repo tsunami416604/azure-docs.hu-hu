@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával | Microsoft Docs'
+title: 'Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával |} A Microsoft Docs'
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Databricks-munkaterület és egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
 services: storage
 author: jamesbak
@@ -8,14 +8,14 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.openlocfilehash: 14ea060ca29d181023086ad241db59d275d2c581
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975880"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743374"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával
 
 Ez a rövid útmutató bemutatja, hogyan futtathat az Azure Databricks használatával Apache Spark-feladatokat elemzések végrehajtásához az előzetes verziójú Azure Data Lake Storage Gen2-kompatibilis tárfiókban tárolt adatokon.
 
@@ -137,7 +137,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
     ```scala    
     spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
 
-    dbutils.fs.ls("abfs://<file-system-name>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
     ```
 
 5. Írja be a kódot a első cellába, majd nyomja le az **SHIFT + ENTER** a futtatáshoz.

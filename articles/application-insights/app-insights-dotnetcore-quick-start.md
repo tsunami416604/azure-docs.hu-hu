@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991625"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744532"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -33,7 +33,7 @@ A gyorsútmutató elvégzéséhez:
 - [A .NET Core 2.0 SDK telepítése](https://www.microsoft.com/net/core)
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő .NET Core-webalkalmazásra.
 
-Ha nem rendelkezik ASP.NET Core-webalkalmazással, kövesse az [ASP.NET Core-alkalmazás létrehozását és Application Insights hozzáadását](app-insights-asp-net-core.md) bemutató részletes útmutatót.
+Ha nem rendelkezik ASP.NET Core-webalkalmazással, kövesse az [ASP.NET Core-alkalmazás létrehozását és Application Insights hozzáadását](../azure-monitor/app/asp-net-core.md) bemutató részletes útmutatót.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 

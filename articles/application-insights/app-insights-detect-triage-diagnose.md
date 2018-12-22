@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: ab3d4d2df8f12c28fa6dbdbdd7d6913d53f12884
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eea1ca2d1a4c9f062f374f4fcaddcc7206aee65d
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715069"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753710"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -108,7 +108,7 @@ Marcela az e-mail alapján értesíti az adatbáziscsapat vezetőjét. Megtudja,
 ![sikertelen kérés](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detect-exceptions"></a>Kivételek észlelése
-Némi beállítással a rendszer automatikusan jelenti a [kivételeket](app-insights-asp-net-exceptions.md) az Application Insightsnak. Részletesen rögzíthetők is, ha a [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) hívásait beilleszti a kódba:  
+Némi beállítással a rendszer automatikusan jelenti a [kivételeket](../azure-monitor/app/asp-net-exceptions.md) az Application Insightsnak. Részletesen rögzíthetők is, ha a [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) hívásait beilleszti a kódba:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -227,7 +227,7 @@ Ez csapat tehát így használja az Application Insightsot az egyes hibák elhá
 ## <a name="next-steps"></a>További lépések
 Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Válassza ki a legmegfelelőbbet:
 
-* [ASP.NET-es webalkalmazás](app-insights-asp-net.md)
+* [ASP.NET-es webalkalmazás](../azure-monitor/app/asp-net.md)
 * [Java-webalkalmazás](app-insights-java-get-started.md)
 * [Node.js-webalkalmazás](app-insights-nodejs.md)
 * Már üzembe helyezett, az [IIS](app-insights-monitor-web-app-availability.md)-ben, [J2EE](app-insights-java-live.md)-ben vagy [Azure](app-insights-overview.md)-ban működő alkalmazások.

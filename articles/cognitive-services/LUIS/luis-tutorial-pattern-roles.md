@@ -9,18 +9,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d789954c0ebc71f88fb434430de5b5076ca6c246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713719"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753115"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Szövegkörnyezet szerint kapcsolódó minták kinyerése
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: Bontsa ki a szerepkörök használatával kontextusban kapcsolódó minták
 
 Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
+
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+
+> [!div class="checklist"]
+> * Példa-alkalmazás importálása
+> * Új entitások létrehozása
+> * Új szándék létrehozása
+> * Betanítás
+> * Közzététel
+> * Szándék és entitások lekérése a végpontról
+> * Szerepköröket tartalmazó minták létrehozása
+> * Városneveket tartalmazó kifejezéslista létrehozása
+> * Szándék és entitások lekérése a végpontról
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>A minták szerepkörök használata
 
 A szerepkörök célja az, hogy szövegkörnyezethez kapcsolódó entitásokat nyerjenek ki a kimondott szövegből. A `Move new employee Robert Williams from Sacramento and San Francisco` kimondott szövegben a kiindulási város és a célváros értékek kapcsolódnak egymáshoz, és köznyelven jelölik az egyes helyeket. 
 
@@ -37,25 +55,10 @@ Mivel a `Move new employee Robert Williams from Sacramento and San Francisco` p�
 
 Ha problémája van egy egyszerű entitás észlelésével, mert az egy név (például egy városé), érdemes megadni egy hasonló értékeket tartalmazó kifejezéslistát. Ez segíti a város nevének észlelését, mivel egy újabb jelet ad a LUIS számára az adott típusú szóra vagy kifejezésre vonatkozóan. A kifejezéslisták a mintának csak az entitások észlelésében segítenek, ami azonban szükséges ahhoz, hogy a minta megfeleltethető legyen. 
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
-
-> [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
-> * Új entitások létrehozása
-> * Új szándék létrehozása
-> * Betanítás
-> * Közzététel
-> * Szándék és entitások lekérése a végpontról
-> * Szerepköröket tartalmazó minták létrehozása
-> * Városneveket tartalmazó kifejezéslista létrehozása
-> * Szándék és entitások lekérése a végpontról
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="import-example-app"></a>Példa-alkalmazás importálása
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ehhez a következő lépések szükségesek:
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
 

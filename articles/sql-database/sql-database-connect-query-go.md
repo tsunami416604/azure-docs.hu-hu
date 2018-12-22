@@ -12,16 +12,16 @@ ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 12/07/2018
-ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f86312ee1d11e5ac4c7626f5fd4c8223dac8b52
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092366"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744700"
 ---
-# <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>Rövid útmutató: Go használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Gyors útmutató: Golang használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató használatát mutatja be a [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelv, az Azure SQL Database-adatbázishoz csatlakozhat, és futtasson Transact-SQL-utasításokat az adatok lekérdezéséhez és módosításához. [Nyissa meg](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti az egyszerű, megbízható és hatékony építhet ki.  
+Ez a rövid útmutatóban használni kívánt a [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelv, az Azure SQL Database-adatbázishoz csatlakozhat. Ezután futtassa a Transact-SQL-utasítások használatával adatok lekérdezéséhez és módosításához. [Golang](https://golang.org/) van egy nyílt forráskódú programozási nyelv, amely megkönnyíti az egyszerű, megbízható és hatékony építhet ki.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,17 +31,17 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) a számítógép nyilvános IP-cím beállítva.
 
-- A go és a telepített operációs rendszerhez kapcsolódó szoftvereket:
+- Golang és az operációs rendszer telepítve van a kapcsolódó szoftvereket:
 
-    - **MacOS**: Telepítse a Homebrew-t és a GoLangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-    - **Ubuntu**: Telepítse a GoLangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-    - **Windows**: Telepítse a GoLangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).    
+    - **macOS**: Telepítse a homebrew-val és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+    - **Ubuntu**:  Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+    - **Windows**: Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-## <a name="create-go-project-and-dependencies"></a>Go-projekt és függőségek létrehozása
+## <a name="create-golang-project-and-dependencies"></a>Golang-projekt és függőségek létrehozása
 
 1. A terminálból hozza létre az **SqlServerSample** nevű új projektmappát. 
 
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
    mkdir SqlServerSample
    ```
 
-2. Módosítsa a könyvtárat a **SqlServerSample** , és telepítse az SQL Server illesztőprogramját a Góhoz készült.
+2. Navigáljon a **SqlServerSample** , és telepítse az SQL Server illesztőprogramját a Góhoz készült.
 
    ```bash
    cd SqlServerSample
@@ -59,7 +59,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="create-sample-data"></a>Mintaadatok létrehozása
 
-1. Tetszőleges szövegszerkesztőben hozzon létre egy nevű fájlt **CreateTestData.sql** a a **SqlServerSample** mappát. A fájlban másolás és beillesztés, az alábbi T-SQL kód, amely létrehoz egy sémát, tábla, és beszúr néhány sort.
+1. Egy szövegszerkesztőben hozzon létre egy fájlt, nevű **CreateTestData.sql** a a **SqlServerSample** mappát. A fájlban illessze be a T-SQL kód létrehoz egy sémát, táblát, és beszúr néhány sort.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -85,14 +85,14 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 2. Használat `sqlcmd` kapcsolódni az adatbázishoz, és az újonnan létrehozott SQL-szkript futtatásához. Helyettesítse be a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót.
 
    ```bash
-   sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
+   sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
    ```
 
 ## <a name="insert-code-to-query-sql-database"></a>Kód beszúrása SQL-adatbázis lekérdezéséhez
 
 1. Hozzon létre egy **sample.go** nevű fájlt az **SqlServerSample** mappában.
 
-2. Nyissa meg a fájlt, és illessze be az alábbi kódot. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót. Ez a példa a GoLang Context metódusainak használatával győződjön meg arról, hogy az adatbázis-kiszolgáló aktív kapcsolat van.
+2. A fájlban illessze be ezt a kódot. Adja meg a kiszolgáló, adatbázis, felhasználónév és jelszó adatait. Ez a példa a Golang [context metódusainak](https://golang.org/pkg/context/) , győződjön meg arról, hogy van egy aktív adatbázis-kiszolgáló kapcsolatot.
 
    ```go
    package main
@@ -108,11 +108,11 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
    var db *sql.DB
 
-   var server = "your_server.database.windows.net"
+   var server = "<your_server.database.windows.net>"
    var port = 1433
-   var user = "your_username"
-   var password = "your_password"
-   var database = "your_database"
+   var user = "<your_username>"
+   var password = "<your_password>"
+   var database = "<your_database>"
 
    func main() {
        // Build connection string
@@ -311,6 +311,6 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 ## <a name="next-steps"></a>További lépések
 
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
-- [Go illesztő a Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
+- [A Microsoft SQL Server Golang-illesztőprogram](https://github.com/denisenkom/go-mssqldb)
 - [Problémák jelentése és kérdezés](https://github.com/denisenkom/go-mssqldb/issues)
 

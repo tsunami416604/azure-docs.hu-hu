@@ -9,12 +9,12 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/19/2018
 ms.author: sclyon
-ms.openlocfilehash: fc6c9567073bbdfa77d753b9b274f7ed5e901405
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c2e009b81fa072fef5249f5dc697fcad547adb3e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720570"
+ms.locfileid: "53744173"
 ---
 # <a name="azure-cosmos-db-for-mongodb-api-clients"></a>Az Azure Cosmos DB MongoDB API-ügyfelek
 
@@ -24,7 +24,7 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmo
 
 A cosmos DB közös NoSQL-adatbázisok, például Cassandra, MongoDB, Gremlin és Azure Storage-táblák átviteli protokollt valósítja meg. Azáltal, hogy a natív megvalósításhoz, az átviteli protokollokat közvetlenül és hatékonyan Cosmos dB-ben, lehetővé teszi meglévő ügyfél SDK-k, illesztőprogramok és eszközök a NoSQL-adatbázisok a Cosmos DB transzparens módon kezelheti. A cosmos DB nem használja az adatbázisok forrás kód bármely, a NoSQL-adatbázisok, amelyek biztosítják az átviteli-kompatibilis API-k.
 
-Alapértelmezés szerint az Azure Cosmos DB MongoDB API-hoz a protokoll 3.2-es verziójával kompatibilis. A protokoll 3.4-es verziójában hozzáadva lekérdezési operátorokkal vagy szolgáltatások jelenleg előzetes verzióként érhető el. Minden olyan ügyfél-illesztőprogram, amely együttműködik a protokollverziók a MongoDB API-hoz való csatlakozáshoz az Azure Cosmos DB natív módon képesnek kell lennie.
+Alapértelmezés szerint az Azure Cosmos DB MongoDB API-hoz a protokoll 3.2-es verziójával kompatibilis. A protokoll 3.4-es verziójában hozzáadva lekérdezési operátorokkal vagy szolgáltatások jelenleg előzetes verzióként érhető el. Bármely MongoDB ügyfélen lévő meghajtó, amely együttműködik a protokollverziók kell lennie az Azure Cosmos DB natív módon kapcsolódni tud.
 
 ![MongoDB-hez készült Azure Cosmos DB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -50,10 +50,10 @@ Kövesse a MongoDB rövid útmutatóinak lépéseit egy Azure Cosmos DB-fiók l�
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 
-* Kövesse a [Csatlakozás egy MongoDB-fiókhoz](connect-mongodb-account.md) című oktatóanyag lépéseit, amelyből megtudhatja, hogyan kérheti le a fiókja kapcsolati sztringjének adatait.
-* Kövesse [A Studio 3T (MongoChef) használata Azure Cosmos DB-vel](mongodb-mongochef.md) című oktatóanyag lépéseit, amelyből megtudhatja, hogyan hozhat létre kapcsolatot az Azure Cosmos DB-adatbázis és a MongoDB-alkalmazás között a Studio 3T-ben.
+* Kövesse a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) oktatóanyagból megtudhatja, hogyan tehet szert a fiók kapcsolati karakterlánc adatait.
+* Kövesse a [az Azure Cosmos DB használatát a Studio 3T](mongodb-mongochef.md) oktatóanyagból megtudhatja, hogyan hozhat létre egy kapcsolatot az Azure Cosmos DB-adatbázis és a MongoDB-alkalmazások között a Studióban 3 T.
 * Kövesse a [adatok áttelepítése az Azure Cosmos DB-protokoll támogatja a MongoDB API-hoz](mongodb-migrate.md) oktatóanyag az adatok importálása egy Cosmos-adatbázis.
-* Csatlakozhat egy Cosmos fiók használatával [Robomongo](mongodb-robomongo.md).
+* Csatlakozhat egy Cosmos fiók használatával [Robo 3T](mongodb-robomongo.md).
 * Ismerje meg, hogyan [konfigurálhat olvasási beállításokat a globálisan elosztott alkalmazásokhoz](../cosmos-db/tutorial-global-distribution-mongodb.md).
 
 <sup>Megjegyzés: Ez a cikk ismerteti az Azure Cosmos DB által biztosított átviteli protokoll kompatibilitás MongoDB adatbázisok funkciója. A Microsoft nem fut a szolgáltatás a MongoDB-adatbázisokat. Az Azure Cosmos DB sincs társítva a MongoDB, Inc.</sup>

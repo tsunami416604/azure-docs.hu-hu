@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: db0b0472fe4878bc7b6bc6cb0a65fbcdbd232301
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720748"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752605"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>5. oktatóanyag: Szabad formátumú adatok kinyerése
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Az entitás Pattern.any szabad formátumú adatokat nyerhet ki
 
 Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival. 
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+
+> [!div class="checklist"]
+> * Példa-alkalmazás importálása
+> * Példa kimondott szöveg hozzáadása meglévő entitáshoz
+> * Pattern.any entitás létrehozása
+> * Minta létrehozása
+> * Betanítás
+> * Új minta tesztelése
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>Pattern.any entitást használó
 
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését. 
 
@@ -50,22 +64,10 @@ A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezíti
 |Ki a szerzője ennek: {FormName}[?]|
 |A {FormName} űrlap francia nyelven lett közzétéve[?]|
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
-
-> [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
-> * Példa kimondott szöveg hozzáadása meglévő entitáshoz
-> * Pattern.any entitás létrehozása
-> * Minta létrehozása
-> * Betanítás
-> * Új minta tesztelése
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="import-example-app"></a>Példa-alkalmazás importálása
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ehhez a következő lépések szükségesek:
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
