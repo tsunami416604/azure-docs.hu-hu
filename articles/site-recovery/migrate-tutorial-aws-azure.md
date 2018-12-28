@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd3229773b19b9f6c4d9ff76402f1841a4810bc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851128"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793070"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -101,7 +101,7 @@ Amikor a migrálás (feladatátvétel) után Azure-beli virtuális gépek jönne
 
 Az Azure Portalon lévő tárolóoldal **Bevezetés** szakaszában válassza a **Site Recovery**, majd az **Infrastruktúra előkészítése** lehetőséget. Hajtsa végre a következő lépéseket.
 
-### <a name="1-protection-goal"></a>1. Védelmi cél
+### <a name="1-protection-goal"></a>1: Védelmi cél
 
 A **Védelmi cél** oldalon válassza a következő értékeket:
 
@@ -113,7 +113,7 @@ A **Védelmi cél** oldalon válassza a következő értékeket:
 
 Ha végzett, válassza az **OK** gombot a következő szakaszra való továbblépéshez.
 
-### <a name="2-prepare-source"></a>2. Forrás előkészítése
+### <a name="2-prepare-source"></a>2: Forrás előkészítése
 
 A **Forrás előkészítése** lapon válassza a **+ Konfigurációs kiszolgáló** gombra.
 
@@ -136,9 +136,9 @@ A **Forrás előkészítése** lapon válassza a **+ Konfigurációs kiszolgál�
     11. A **Telepítési folyamat** a telepítési folyamattal kapcsolatos információkat jelenít meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra. Ezután egy ablakban megjelenik egy üzenet a konfigurációs kiszolgáló kapcsolati jelszavával. Másolja a jelszót a vágólapra, majd mentse egy biztonságos helyre.
 6. A virtuális gépen a cspsconfigtool.exe programot futtatva hozzon létre egy vagy több felügyeleti fiókot a konfigurációs kiszolgálón. Gondoskodjon arról, hogy a felügyeleti fiókok rendelkezzenek rendszergazdai jogosultságokkal a migrálni kívánt EC2-példányokon.
 
-Ha végzett a konfigurációs kiszolgáló beállításával, lépjen vissza a portálra, és válassza ki az imént létrehozott kiszolgálót a **Konfigurációs kiszolgáló** területen. Az **OK** lehetőséget választva lépjen a 3. A cél előkészítése szakaszhoz.
+Ha végzett a konfigurációs kiszolgáló beállításával, lépjen vissza a portálra, és válassza ki az imént létrehozott kiszolgálót a **Konfigurációs kiszolgáló** területen. Válassza ki **OK** 3 ugorhat: Cél előkészítése.
 
-### <a name="3-prepare-target"></a>3. A cél előkészítése
+### <a name="3-prepare-target"></a>3: Cél előkészítése
 
 Ebben a szakaszban adhatja meg a korábban, az oktatóanyag [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszában létrehozott erőforrások adatait.
 
@@ -148,7 +148,7 @@ Ebben a szakaszban adhatja meg a korábban, az oktatóanyag [Azure-erőforrások
 4. Amikor elkészült, válassza az **OK** lehetőséget.
 
 
-### <a name="4-prepare-replication-settings"></a>4. Replikációs beállítások előkészítése
+### <a name="4-prepare-replication-settings"></a>4: Készítse elő a replikációs beállítások
 
 A replikáció engedélyezése előtt létre kell hoznia egy replikációs szabályzatot.
 
@@ -156,7 +156,7 @@ A replikáció engedélyezése előtt létre kell hoznia egy replikációs szab�
 2. A **Név** mezőben adja meg a **myReplicationPolicy** nevet.
 3. Hagyja meg a többi alapértelmezett beállítást, és válassza az **OK** gombot a szabályzat létrehozásához. Az új szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 
-### <a name="5-select-deployment-planning"></a>5. Az üzembe helyezés tervezésének kiválasztása
+### <a name="5-select-deployment-planning"></a>5: Válassza ki az üzembe helyezés megtervezése
 
 A **Végzett az üzembe helyezés tervezésével?** területen válassza a **Később végzem el** lehetőséget, majd válassza az **OK** lehetőséget.
 
@@ -169,8 +169,8 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
 
 1. Nyissa meg az [Azure Portal](htts://portal.azure.com).
 1. A tároló oldalán, a **Bevezetés** szakaszban válassza a **Site Recovery** lehetőséget.
-2. A **Helyszíni gépek és Azure-beli virtuális gépek esetében** területen válassza az **1. lépés: Az alkalmazás replikálása** elemet. Töltse ki a varázsló lapjait az alábbi adatokkal. Minden oldalon válassza az **OK** lehetőséget, ha elkészült:
-    - 1. A forrás konfigurálása
+2. A **a helyszíni gépek és Azure virtuális gépek**válassza **1. lépés: Alkalmazás replikálása**. Töltse ki a varázsló lapjait az alábbi adatokkal. Minden oldalon válassza az **OK** lehetőséget, ha elkészült:
+    - 1: Forrás konfigurálása
 
     |  |  |
     |-----|-----|
@@ -179,7 +179,7 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
     |Gép típusa: | Válassza a **Fizikai gépek** lehetőséget.|
     | Folyamatkiszolgáló: | Válassza ki a konfigurációs kiszolgálót a legördülő listában.|
 
-    - 2. A cél konfigurálása
+    - 2: Cél konfigurálása
 
     |  |  |
     |-----|-----|
@@ -192,15 +192,15 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
     | Feladatátvétel utáni Azure-hálózat: | Válassza az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott hálózatot.|
     | Alhálózat: | Válassza az **alapértelmezett** lehetőséget a legördülő listában.|
 
-    - 3. A fizikai gépek kiválasztása
+    - 3: Fizikai gépek kiválasztása
 
       Válassza a **Fizikai gép** lehetőséget, és adja meg a migrálni kívánt EC2-példány **Nevét**, **IP-címét** és **Operációsrendszer-típusát**. Kattintson az **OK** gombra.
 
-    - 4. A tulajdonságok konfigurálása
+    - 4: Tulajdonságok konfigurálása
 
       Válassza ki a konfigurációs kiszolgálón létrehozott fiókot, és válassza az **OK** lehetőséget.
 
-    - 5. A replikációs beállítások konfigurálása
+    - 5: Replikációs beállítások konfigurálása
 
       Győződjön meg arról, hogy a legördülő listában kiválasztott replikációs szabályzat a **myReplicationPolicy**, majd válassza az **OK** lehetőséget.
 
@@ -222,9 +222,9 @@ A portálon futtassa a feladatátvételi tesztet:
 
 1. A tároló oldalán lépjen a **Védett elemek** > **Replikált elemek** pontra. Válassza ki a virtuális gépet, majd válassza a **Feladatátvételi teszt** lehetőséget.
 2. Válasszon ki egy helyreállítási pontot a feladatátvétel végrehajtásához:
-    - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
-    - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
-    - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
+    - **Legutóbb feldolgozott**: Sikertelen a virtuális Gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
+    - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás minden virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pontnak feladatait. Megjelenik az időbélyeg.
+    - **Egyéni**: Válassza ki bármelyik helyreállítási pontot.
 
 3. A **Feladatátvételi teszt** területen válassza ki, hogy az Azure virtuális gépek mely cél Azure-hálózathoz csatlakozzanak majd a feladatátvételt követően. Ennek az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott hálózatnak kell lennie.
 4. A feladatátvételi művelet elindításához válassza az **OK** lehetőséget. Az állapot nyomon követéséhez a virtuális gépet kiválasztva jelenítse meg a tulajdonságait. Vagy kiválaszthatja a tár oldalán lévő **Feladatátvételi teszt** feladatot. Ehhez válassza a **Figyelés és jelentéskészítés** > **Feladatok** >  **Site Recovery-feladatok** lehetőséget.

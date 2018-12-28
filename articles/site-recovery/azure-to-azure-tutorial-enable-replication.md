@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0aa7b7f3558bab7f3553527e03c44d71dd5a87ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833142"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794430"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -138,24 +138,24 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 3. Testre szabhatja a célként megadott beállításokat az alábbiak szerint:
 
-    - **Célelőfizetés**: A vészhelyreállításhoz használt célelőfizetés. Alapértelmezés szerint a célelőfizetés megegyezik a forrás-előfizetéssel. Ha egy másik előfizetést szeretne választani ugyanazon az Azure Active Directory-bérlőn belül, kattintson a „Testreszabásra” lehetőségre.
+    - **Érintett előfizetés**: A használt vész-helyreállítási célként megadott előfizetés. Alapértelmezés szerint a célelőfizetés megegyezik a forrás-előfizetéssel. Ha egy másik előfizetést szeretne választani ugyanazon az Azure Active Directory-bérlőn belül, kattintson a „Testreszabásra” lehetőségre.
     - **Célhely**: A vészhelyreállításhoz használt célrégió. Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen.
-    - **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármelyik régió lehet, kivéve azt a régiót, amelyben a forrás virtuális gépeket üzemeltetik.
-    - **Cél virtuális hálózat**: Az a hálózat a célrégióban, ahol a virtuális gépek találhatók a feladatátvétel után.
+    - **Céloldali erőforráscsoport**: Az erőforráscsoportot a célrégióban, amely tartalmazza az Azure virtuális gépek a feladatátvételt követően. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármelyik régió lehet, kivéve azt a régiót, amelyben a forrás virtuális gépeket üzemeltetik.
+    - **Cél virtuális hálózattal**: A hálózat a célrégióban, hogy virtuális gépek találhatók a feladatátvételt követően.
       Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.
     - **Gyorsítótár tárfiókjai**: A Site Recovery tárfiókot használ a forrásrégióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.
       >[!NOTE]
       >Ha engedélyezve van a tűzfal tárfiókot használ, ügyeljen arra, hogy "A megbízható Microsoft-szolgáltatások engedélyezése". [Részletek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
       >
 
-    - **Cél tárfiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery új tárfiókot hoz létre a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
+    - **Cél tárfiókok (Ha a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery létrehoz egy új tárfiókot a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
       >[!NOTE]
       >Ha engedélyezve van a tűzfal-forrás vagy cél tárfiókot használ, ügyeljen arra, hogy "A megbízható Microsoft-szolgáltatások engedélyezése". [Részletek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
       >
 
-    - **Replika felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal azonos tártípusban (standard vagy prémium) való tükrözéséhez.
-    - **Cél rendelkezésre állási csoportok**: alapértelmezés szerint az Azure Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban a virtuális gépek része egy rendelkezésre állási csoportot a forrásrégióban az "asr" utótaggal rendelkező nevű. Rendelkezésre állási csoport létrehozása az Azure Site Recovery már létezik, a rendszer újra.
-    - **Cél rendelkezésre állási zónák**: alapértelmezés szerint a Site Recovery zóna száma azonos a célrégióban a forrás régiójára rendeli, ha a célrégióban támogatja a rendelkezésre állási zónák. 
+    - **Replikált felügyelt lemezek (Ha a forrásoldali virtuális gép felügyelt lemezeket használ)**: Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal az azonos tártípusban (Standard vagy prémium) tükrözéséhez, mivel a forrásoldali virtuális gép felügyelt lemez hoz létre.
+    - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint az Azure Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban a virtuális gépek része egy rendelkezésre állási csoportot a forrásrégióban az "asr" utótaggal rendelkező nevű. Rendelkezésre állási csoport létrehozása az Azure Site Recovery már létezik, a rendszer újra.
+    - **Cél rendelkezésre állási zónák**: Alapértelmezés szerint a Site Recovery zóna száma azonos a célrégióban a forrás régiójára rendeli, ha a célrégióban támogatja a rendelkezésre állási zónák. 
 
     A célrégió nem támogatja a rendelkezésre állási zónák használatát, ha a cél virtuális gépek alapértelmezés szerint egyetlen példány van konfigurálva. Ha szükséges, az ilyen virtuális gépek rendelkezésre állási csoportot a célrégióban kell "Testreszabás" gombra kattintva konfigurálhatja.
 
@@ -165,10 +165,10 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 4. Replikációs házirend beállításainak testre szabhatja, kattintson a **Testreszabás** melletti **replikációs házirend**, és szükség szerint a következő beállításokat módosíthatja:
 
-    - **Replikációs szabályzat neve**: A szabályzat neve.
-    - **Helyreállítási pont megőrzése**: Alapértelmezés szerint a Site Recovery 24 óráig őrzi meg a helyreállítási pontokat. 1 és 72 óra közötti értéket konfigurálhat.
-    - **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezés szerint a Site Recovery 4 óránként készít egy alkalmazáskonzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat. Az alkalmazáskonzisztens pillanatkép a virtuális gépen található alkalmazásadatok időponthoz kötött pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor.
-    - **Replikációs csoport**: Ha az alkalmazásnak több virtuális gépre kiterjedően konzisztensnek kell lennie, létrehozhat egy replikációs csoport az érintett virtuális gépek számára. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem.
+    - **Replikációs szabályzat neve**: A házirend nevét.
+    - **Helyreállítási pont megőrzése**: Alapértelmezés szerint a Site Recovery 24 óráig tartja a helyreállítási pontok. 1 és 72 óra közötti értéket konfigurálhat.
+    - **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezés szerint a Site Recovery 4 óránként vesz igénybe egy alkalmazáskonzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat. Az alkalmazáskonzisztens pillanatkép a virtuális gépen található alkalmazásadatok időponthoz kötött pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor.
+    - **Replikációs csoport**: Ha az alkalmazásnak több virtuális gépre kiterjedő konzisztencia virtuális gépen, létrehozhat egy replikációs csoportot a virtuális gépeken. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem.
 
 5. A **Testreszabás**válassza **Igen** a virtuális gépre kiterjedő konzisztencia, ha azt szeretné, hogy virtuális gépeket ad hozzá egy új vagy meglévő replikációs csoporthoz. hogy a virtuális gépek egy replikációs csoport része. Ezután kattintson az **OK** gombra.
 
@@ -180,8 +180,8 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 Ha a forrás virtuális gép az Azure disk encryption (ADE) engedélyezve van, a titkosítási beállítások láthatók:
 
 1. Tekintse át a titkosítási beállításokat.
-    - **Lemeztitkosítási kulcstárolók**: Alapértelmezés szerint az Azure Site Recovery a forrás VM lemeztitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
-    - **Kulcstitkosítási kulcstároló**: Alapértelmezés szerint az Azure Site Recovery a forrás VM kulcstitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
+    - **Lemez titkosítása kulcstartók**: Alapértelmezés szerint az Azure Site Recovery hoz létre egy új kulcstartót a célrégióban a forrás virtuális gépek lemeztitkosítási kulcsok alapján "asr" utótaggal rendelkező neve. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
+    - **A kulcstartók titkosító kulcs**: Alapértelmezés szerint az Azure Site Recovery hoz létre egy új kulcstartót a célrégióban a forrás virtuális gépek kulcstitkosítási kulcsokon alapuló "asr" utótaggal rendelkező neve. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
 
 2. Kattintson a **Testreszabás** egyéni kulcstartók kiválasztásához.
 

@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: f7f247da93290aafaec62fe68158a036bc6cb887
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723339"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788123"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
 
-Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazásnak a kiszolgálóhoz használt csomópont és az Express, az Azure Cosmos DB-hez csatlakozik a [Azure Cosmos DB MongoDB API-hoz](mongodb-introduction.md), majd a React-előtérrendszerhez csatlakozik az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan végezhető el az Azure Cosmos DB méretezése néhány kattintással az Azure Portalon, és hogyan helyezhető üzembe az alkalmazás az interneten, hogy mindenki kedvére követhesse kedvenc fő képeit. 
+Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazásnak a kiszolgálóhoz használt csomópont és az Express, Cosmos-adatbázis konfigurált csatlakozik a [Azure Cosmos DB MongoDB API-](mongodb-introduction.md), majd a React-előtérrendszerhez csatlakozik az alkalmazás kiszolgálói részét. Az oktatóanyag azt is bemutatja, hogyan teheti a Cosmos DB pont kattintással méretezése az Azure Portalon, és hogyan kell telepíteni az alkalmazást az interneten, így mindenki követheti nyomon követhesse kedvenc fő képeit. 
 
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja a MongoDB-ügyfélkapcsolatokat, így az Azure Cosmos DB MongoDB helyett használhatja.  
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja fűznie protokoll kompatibilitás és a MongoDB, az ügyfeleket az Azure Cosmos DB MongoDB helyett engedélyezése.  
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 

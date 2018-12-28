@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: e5219a0ade610a41d316970aecda06d4020b37f2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546181"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790300"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -30,28 +30,29 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Befejeződött a [oktatóanyag: Állítsa be az Azure Data Box](data-box-deploy-set-up.md).
-2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
+1. Ön teljesítette a [oktatóanyag: Állítsa be az Azure Data Box](data-box-deploy-set-up.md).
+2. A Data Box kapott, és a rendelés állapota a portálon **kézbesítések**.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
-    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, 1 GbE sebességű adatkapcsolat is használható, azonban ez rontja a másolási sebességet. 
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha 1-GbE adatok hivatkozás használata, de a másolási sebességek érinti. 
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
 A kiválasztott tárfióktól függően a Data Box a következőket hozhatja létre:
 - Három megosztás minden társított tárfiókhoz, GPv1-hez és GPv2-höz.
-- Egy megosztás a prémium vagy Blob Storage-fiók számára. 
+- Egy megosztás a prémium vagy Blob Storage-fiók számára.
 
 A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, a második szintű entitások pedig blobok. Az Azure Files-megosztások alatti első szintű entitások megosztások, a második szintű entitások pedig fájlok.
 
-Lásd az alábbi példát. 
+Az alábbi táblázat az UNC elérési utat a megosztásokat, ahol az adatok feltöltése a Data Box és az Azure Storage elérési út URL. Az Azure Storage elérési út utolsó URL-cím származtatható megosztás UNC elérési útját.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Az Azure Block blobs | <li>Megosztás UNC elérési útja: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Azure-lapblobok  | <li>Megosztás UNC elérési útja: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure Files       |<li>Megosztás UNC elérési útja: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-- Tárfiók: *Mystoracct*
-- Megoszthatja a blokkblobok: *Mystoracct_BlockBlob/my-tároló/blob*
-- Megoszthatja a lapblob: *Mystoracct_PageBlob/my-tároló/blob*
-- Megoszthatja a fájlt: *Mystoracct_AzFile/my-megosztás*
-
-Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon csatlakozhat a Data Boxhoz.
+Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lépéseket a Data Box csatlakozni.
 
 1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **Get credentials** (Hitelesítő adatok beszerzése) lehetőségre a tárfiókhoz társított megosztások hitelesítő adataihoz való hozzáféréshez. 
 
@@ -61,16 +62,16 @@ Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon 
     
     ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Férjen hozzá a tárfiókjához társított megosztásokhoz (a következő példában: Mystoracct). A megosztások elérési útja: `\\<IP of the device>\ShareName`. Az adatok formátumától függően (a megosztás nevét használva) az alábbi címeken kapcsolódhat a megosztásokhoz: 
-    - *\\<IP address of the device>\Mystoracct_Blob*
-    - *\\<IP address of the device>\Mystoracct_Page*
-    - *\\<IP address of the device>\Mystoracct_AzFile*
-    
-    Ha a gazdagépről szeretne kapcsolódni a megosztásokhoz, nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiók társított megosztás eléréséhez (*devicemanagertest1* az alábbi példában) a gazdagép számítógépről, nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Ha a rendszer kéri, adja meg a megosztás jelszavát. A következő példa bemutatja, hogyan kell csatlakozni egy megosztáshoz a fenti parancs használatával.
+    Az adatok formátuma függően, a megosztás elérési utak a következők:
+    - Az Azure blokkblob- `\\10.126.76.172\devicemanagertest1_BlockBlob`
+    - Az Azure lapblob- `\\10.126.76.172\devicemanagertest1_PageBlob`
+    - Az Azure Files- `\\10.126.76.172\devicemanagertest1_AzFile`
+    
+4. Ha a rendszer kéri, adja meg a megosztás jelszavát. A következő példa bemutatja, hogyan kell csatlakozni egy megosztáshoz a fenti parancs használatával.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
@@ -78,26 +79,27 @@ Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon 
     The command completed successfully.
     ```
 
-4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra. Ekkor megnyílik a Fájlkezelő. A megosztásoknak ezután mappaként kell megjelenniük.
+4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson a **OK** , nyissa meg a Fájlkezelőt.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5.  **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Néha egy szürke kereszt jelenik meg a mappákon. Ez a kereszt nem hibaállapotot jelez. A mappákat az alkalmazás jelölte meg, hogy nyomon követhesse az állapotukat.
+    Meg kell jelennie a megosztások, mappák.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
+    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
+    
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
-A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adatok másolása. Ennek megkezdése előtt tekintse át az alábbi szempontokat:
+Miután csatlakozott a Data Box-megosztáshoz, a következő lépés az adatok másolása. Mielőtt elkezdené az adatok másolását, tekintse át az alábbiakat:
 
-- Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
--  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
+- Győződjön meg arról, hogy az adatok másolása megosztások, amelyek megfelelnek a megfelelő adatok formátuma. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Ha az adatok formátuma nem felel meg a megfelelő megosztási típusát, majd egy későbbi lépésben, az adatok feltöltése az Azure-bA sikertelen lesz.
+-  Adatok másolása során győződjön meg arról, hogy megfelel-e az adatok mérete a méretbeli korlátokat ismertetett a [az Azure storage és a Data Box-korlátok](data-box-limits.md).
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
-- Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
+- Azt javasoljuk, hogy nem használja az SMB és NFS is egyszerre vagy másolni ugyanazon adatok azonos teljes célra az Azure-ban. Ezekben az esetekben nem lehet megállapítani a végső eredményt.
+- Mindig hozzon létre egy mappát a fájlok másolása a megosztás alatt, és ezután másolja a fájlokat a mappában, melyet. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez az adatfeltöltés blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
 
-Az SMB-megosztáshoz való kapcsolódás után indítsa el az adatok másolását. 
-
-Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
+Miután csatlakozott az SMB-megosztás, megkezdheti az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
     
     robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
@@ -109,8 +111,8 @@ Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt hasz
 |/r:     |A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg.         |
 |/w:     |Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben.         |
 |/is     |A fájlok nevét tartalmazza.         |
-|/nfl     |Azt adja meg, hogy a fájlnevek ne legyenek naplózva.         |
-|/ndl    |Azt adja meg, hogy a könyvtárnevek ne legyenek naplózva.        |
+|/nfl     |Itt adhatja meg, hogy a fájlnevek nem naplózza.         |
+|/ndl    |Meghatározza, hogy könyvtárának nevében nem.        |
 |/np     |Azt határozza meg, hogy ne jelenjen meg a másolási művelet állapota (az addig átmásolt fájlok vagy könyvtárak száma). Az állapot megjelenítése jelentősen csökkenti a teljesítményt.         |
 |/MT     | Több szál használata. 32 vagy 64 szál használata ajánlott. Titkosított fájlokhoz ez a beállítás nem használható. Előfordulhat, hogy szét kell választania a titkosított és a nem titkosított fájlokat. Vegye figyelembe, hogy az egyszálas másolás jelentősen csökkenti a teljesítményt.           |
 |/fft     | Ennek használatával bármilyen fájlrendszerben csökkentheti a timestamp részletességét.        |

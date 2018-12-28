@@ -5,17 +5,17 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 656f58bb9864757635ab5752da6bf31320504415
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dc27e49cc67a902bb45b1d889bb61b1f4b3aab83
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843257"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788769"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure virtuális gépek áthelyezése egy másik régióba
+# <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
 Használata mellett a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás való kezelésére és vezénylésére vészhelyreállítása az Azure-beli és helyszíni gépek üzletmenet-folytonossági és vészhelyreállítási (BCDR) céljából is használhatja a hely Helyreállítási kezelése Azure virtuális gépek áthelyezése egy másodlagos régióba. Azure virtuális gépek áthelyezéséhez engedélyezi azok replikációját, és átirányíthatja azokat az elsődleges régióból tetszőleges másodlagos régióba.
 

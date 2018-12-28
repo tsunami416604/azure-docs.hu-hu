@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582428"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792526"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure Internet of Things (IoT)?
 
@@ -26,7 +26,7 @@ Az IoT-megoldások fő részei a következők: eszközök, háttér-szolgáltat�
 
 ### <a name="iot-devices"></a>IoT-eszközök
 
-Eszközök általában épülnek fel, csatolt censors egy áramköri lap, amely csatlakozik az internethez. Sok eszköz lapka Wi-Fi-n keresztül kommunikálnak. Íme néhány példa az IoT-eszközök:
+Eszközök általában épülnek fel a kapcsolatcsoport üzenőfal a csatlakoztatott érzékelőkről, amely csatlakozik az internethez. Sok eszköz lapka Wi-Fi-n keresztül kommunikálnak. Íme néhány példa az IoT-eszközök:
 
 * egy távoli olaj szivattyú pressure érzékelő
 * egy légkondicionáló egység hőmérséklettel és páratartalommal kapcsolatos érzékelők
@@ -103,15 +103,15 @@ Az IoT-megoldás megvalósítása tette lehetővé a cég számára, ellenőrizz
 
 Nincsenek több IoT-hez kapcsolódó szolgáltatások az Azure-ban, és lehet kikapcsolnia döntse el, melyiket szeretné használni. Bizonyos, például az IoT-központ és az IoT-megoldásgyorsítók, adja meg a sablonok segítségével létrehozhat saját megoldást, és gyorsan használatba vehető. Elérhető más szolgáltatásokhoz a saját megoldások fejlesztését is teljes mértékben meg is – az összes, amelytől a mennyi súgó szeretne, és mekkora vezérlő. Itt érhető el a szolgáltatások listáját, valamint a mi használhatja azokat a.
 
-1. [**IoT-központ**](../iot-central/overview-iot-central.md): Ez az a Szolgáltatottszoftver-megoldás, amely segítséget nyújt csatlakoztatása, monitorozása és az ioT-eszközök felügyeletére. Először válasszon ki egy sablont az eszköz típusának megfelelő és mentésekkel és ezek tesztelésével egy alapszintű IoT Central alkalmazáshoz, amelyet az eszköz az operátorok fog használni. Az IoT Central-alkalmazást is lehetővé teszi az eszközök figyelésére, és új eszközök kiépítése. Ez a szolgáltatás részletes szolgáltatás-testreszabást nem igénylő egyszerű megoldások van. 
+1. [**IoT-központ**](../iot-central/overview-iot-central.md): Ez az a Szolgáltatottszoftver-megoldás, amely segítséget nyújt csatlakoztatása, monitorozása és az IoT-eszközök felügyeletére. Először válasszon ki egy sablont az eszköz típusának megfelelő és mentésekkel és ezek tesztelésével egy alapszintű IoT Central alkalmazáshoz, amelyet az eszköz az operátorok fog használni. Az IoT Central-alkalmazást is lehetővé teszi az eszközök figyelésére, és új eszközök kiépítése. Ez a szolgáltatás részletes szolgáltatás-testreszabást nem igénylő egyszerű megoldások van. 
 
 2. [**IoT-megoldásgyorsítók**](/azure/iot-suite): Ez a PaaS-megoldások segítségével felgyorsíthatja az IoT-megoldások fejlesztését gyűjteménye. Kezdje egy megadott IoT-megoldás, és ezután teljes mértékben testre szabhatja, hogy a megoldás az igényeinek megfelelően. Szüksége van a háttér-testreszabásához Java vagy .NET képességek és a megjelenítés testreszabásához JavaScript-ismeretek. 
 
-3. [**Az IoT Hub**](/azure/iot-hub/): Ez a szolgáltatás lehetővé teszi az eszközök csatlakozni az IoT hub és monitorozását és ellenőrzését is több milliárd IoT-eszközök. Ez különösen hasznos, ha az IoT-eszközök és a háttérrendszer közötti kétirányú kommunikáció van szüksége. Ez az IoT-központ és az IoT-megoldásgyorsítók a mögöttes szolgáltatás. 
+3. [**Az IoT Hub**](/azure/iot-hub/): Ez a szolgáltatás lehetővé teszi az eszközökről egy IoT hubot, és a figyelés és ellenőrzés több milliárd IoT-eszközök csatlakoztatása. Ez különösen hasznos, ha az IoT-eszközök és a háttérrendszer közötti kétirányú kommunikáció van szüksége. Ez az IoT-központ és az IoT-megoldásgyorsítók a mögöttes szolgáltatás. 
 
-4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): Ez az, hogy biztonságosan kiépítése az IoT hub-eszközök használatával IoT hub segítő szolgáltatása. Ezzel a szolgáltatással egyszerűen létrehozhat több millió eszköz rövid idő alatt, ahelyett, hogy egyesével kiépítése. 
+4. [**Az IoT Hub Device Provisioning Service**](/azure/iot-dps/): Ez az, hogy biztonságosan kiépítése az IoT hub-eszközök használatával IoT hub segítő szolgáltatása. Ezzel a szolgáltatással egyszerűen létrehozhat több millió eszköz rövid idő alatt, ahelyett, hogy egyesével kiépítése. 
 
-5. [**IoT Edge**](/azure/iot-edge/): Ez a szolgáltatás az IoT hubra épül. Az IoT-eszközökön, nem pedig a felhőben lévő adatok elemzéséhez használható. A számítási feladat része az Edge-ben való váltással kevesebb üzenet kell kell küldeni a felhőben. 
+5. [**Az IoT Edge**](/azure/iot-edge/): Ez a szolgáltatás az IoT hubra épül. Az IoT-eszközökön, nem pedig a felhőben lévő adatok elemzéséhez használható. A számítási feladat része az Edge-ben való váltással kevesebb üzenet kell kell küldeni a felhőben. 
 
 6. [**Az Azure digitális Twins**](../digital-twins/index.yml): Ez a szolgáltatás lehetővé teszi a fizikai környezet átfogó modelleket hozhat létre. A kapcsolatok és a személyek, szóközöket és eszközök közötti interakciókat modellezheti. Ha például tudja jelezni karbantartási Factory, egy elektromos rács követelményei valós idejű energia elemzéséhez, vagy optimalizálja az Office használatát, a rendelkezésre álló területet.
 

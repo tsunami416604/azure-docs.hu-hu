@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fe5c44e834826f9dc62acd30e853c3736b432ee
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 951b47c7193b2b405def9831e94c5e29faff3119
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412435"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791116"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Több Azure AD-példány összevonása egyetlen AD FS-példánnyal
 
@@ -43,15 +43,15 @@ Vegye figyelembe, hogy a contoso.com tartomány a contoso.onmicrosoft.com Azure 
  
 Ahhoz, hogy a contoso.com-beli AD FS hitelesíthesse a fabrikam.com-beli felhasználókat, kétirányú megbízhatósági kapcsolatra van szükség a contoso.com és fabrikam.com között. A k kétirányú megbízhatósági kapcsolat létrehozásához kövesse a [cikk](https://technet.microsoft.com/library/cc816590.aspx) iránymutatását.
  
-## <a name="step-2-modify-contosocom-federation-settings"></a>2. lépés: A contoso.com összevonási beállításainak módosítása 
+## <a name="step-2-modify-contosocom-federation-settings"></a>2. lépés: A contoso.com összevonási beállításainak módosítása 
  
-Alapértelmezett kiállító állítsa be az AD FS összevont egyetlen tartományhoz tartozó "http://ADFSServiceFQDN/adfs/services/trust", például `http://fs.contoso.com/adfs/services/trust`. Az Azure Active Directory összevont tartományonként egyedi kiállítót igényel. Mivel ugyanaz az AD FS fog két tartományt összevonni, a kiállító értékét módosítani kell, hogy minden egyes tartományhoz egyedi legyen, amelyet az AD FS az Azure Active Directoryval összevon. 
+Alapértelmezett kiállító állítsa be az AD FS összevont egyetlen tartományhoz tartozó "http\://ADFSServiceFQDN/adfs/services/trust", például `http://fs.contoso.com/adfs/services/trust`. Az Azure Active Directory összevont tartományonként egyedi kiállítót igényel. Mivel ugyanaz az AD FS fog két tartományt összevonni, a kiállító értékét módosítani kell, hogy minden egyes tartományhoz egyedi legyen, amelyet az AD FS az Azure Active Directoryval összevon. 
  
 Az AD FS-kiszolgálón nyissa meg az Azure AD PowerShell-lel (Győződjön meg arról, hogy telepítve van-e az MSOnline modul), és hajtsa végre az alábbi lépéseket:
  
 Csatlakozzon a contoso.com tartományt tartalmazó Azure Active Directory-címtárhoz Connect-MsolService frissítse a contoso.com összevonási beállításait Update-MsolFederatedDomain -tartománynév.contoso.com –SupportMultipleDomain
  
-A tartomány-összevonás beállításában lévő kiállító a „http://contoso.com/adfs/services/trust” értékre változik, és a rendszer hozzáad egy kiállítási jogcímszabályt az Azure AD függő entitás megbízhatóságához az UPN-utótagon alapuló, megfelelő issuerId érték kibocsátásához.
+A tartomány-összevonás beállításában lévő kiállító módosul: "http\:/ / contoso.com/adfs/services/trust" és a egy kiállítási jogcímszabályt az Azure AD függő entitás megbízhatóságához adja ki a megfelelő issuerId érték utótagja alapján a rendszer hozzáad.
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>3. lépés: A fabrikam.com összevonása az AD FS
  

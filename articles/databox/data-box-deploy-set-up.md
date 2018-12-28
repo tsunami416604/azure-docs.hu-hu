@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427522"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791319"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Az Azure Data Box bekábelezése és csatlakoztatása
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Kábelek, és csatlakozzon az Azure Data Box
 
 Az oktatóanyag az Azure Data Box bekábelezését, csatlakoztatását és bekapcsolását mutatja be.
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Befejezte [az Azure Data Box rendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
+1. Befejeződött a [oktatóanyag: Az Azure Data Box ORDER](data-box-deploy-ordered.md).
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
     - Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
     - Az eszköz egy csomagolt egyes európai régiókban jelenhet meg. Győződjön meg arról, hogy az eszköz kicsomagolása, és mentse a mezőbe a visszaszállításhoz.
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket az eszköz bekábelezéséhez.
 Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felhasználói felületen és a portál felhasználói felületén.
 
 1. Azon a laptopon, amellyel az eszközhöz csatlakozik, állítsa be az Ethernet-adaptert a 192.168.100.5 statikus IP-cím és a 255.255.255.0 alhálózat használatára. 
-2. Csatlakozzon az eszköz felügyeleti portjához (MGMT), hogy hozzáférjen a helyi webes felhasználói felülethez a következő címen: https://192.168.100.10. Ez az eszköz bekapcsolását követően 5 percet is igénybe vehet.
+2. MGMT port az eszköz csatlakozik, és a helyi webes felületén, https eléréséhez\:/ / 192.168.100.10. Ez az eszköz bekapcsolását követően 5 percet is igénybe vehet.
 3. Kattintson a **Részletek**, majd a **Továbblépés a weblapra** elemre.
 
    ![Csatlakozás a helyi webes felhasználói felülethez](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

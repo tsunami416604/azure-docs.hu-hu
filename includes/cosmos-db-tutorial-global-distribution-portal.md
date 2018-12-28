@@ -2,27 +2,21 @@
 title: Az Azure Cosmos DB globális terjesztése
 description: Megtudhatja, hogyan replikálhat adatokat globálisan az Azure Cosmos DB használatával az Azure Portalon
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747555"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796113"
 ---
-Az Azure Cosmos DB globális terjesztését az alábbi videóból ismerheti meg, amelyben Andrew Liu, az Azure Cosmos DB programigazgatója mutatja be a globális terjesztés funkciót.
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés a Cosmos DB-vel](../articles/cosmos-db/distribute-data-globally.md).
-
 ## <a id="addregion"></a>Globális adatbázis-régiók hozzáadása az Azure Portal használatával
-Az Azure Cosmos DB világszerte minden [Azure-régióban][azureregions] elérhető. Miután kiválasztotta az adatbázisfiók alapértelmezett konzisztenciaszintjét, egy vagy több régiót társíthat hozzá (a választott alapértelmezett konzisztenciaszinttől és a globális terjesztés szükségleteitől függően).
+Az Azure Cosmos DB érhető el az összes [Azure-régiók] [ azureregions] világszerte. Miután kiválasztotta az adatbázisfiók alapértelmezett konzisztenciaszintjét, egy vagy több régiót társíthat hozzá (a választott alapértelmezett konzisztenciaszinttől és a globális terjesztés szükségleteitől függően).
 
 1. Az [Azure Portalon](https://portal.azure.com/) a bal oldali sávon kattintson az **Azure Cosmos DB** lehetőségre.
 2. Az **Azure Cosmos DB** oldalon válassza ki a módosítandó adatbázis-fiókot.
@@ -41,7 +35,7 @@ Két vagy több régió konfigurálására két gyakori forgatókönyv áll rend
 
 Ha kis késleltetést szeretne biztosítani a végfelhasználók számára, javasolt, hogy az alkalmazást és az Azure Cosmos DB-t is abban a régióban való helyezze üzembe, amelyben az alkalmazások felhasználói találhatók.
 
-A BCDR esetén javasolt az [Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói][bcdr] című cikkben leírt régiópárok alapján hozzáadni a régiókat.
+A BCDR, ajánlott a régiópárok leírtak alapján régiók felvételére a [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Az Azure párosított régiói] [ bcdr] cikk.
 
 <!--
 

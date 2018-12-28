@@ -1,5 +1,5 @@
 ---
-title: Nodejs-hez (Part3) MongoB API-val Angular-alkalmazás
+title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – a felhasználói felület létrehozása az Angular
 titleSuffix: Azure Cosmos DB
 description: A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része.
 author: johnpapa
@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 73710b812a78af9728873a8cb9e0586091f48f66
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 462d0ea036ee50a3eea6812d87772bba9559125c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717908"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788582"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 3. rész: A felhasználói felület létrehozása az Angular
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – a felhasználói felület létrehozása az Angular
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
 
 Az oktatóanyag 3. része a [2. részre](tutorial-develop-mongodb-nodejs-part2.md) épül, és az alábbi feladatokat ismerteti:
 

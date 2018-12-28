@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 26d25ec44ca19e1b3c0f7a0905c1a37a9fa57026
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653557"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791914"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Gyors útmutató: Hozzon létre egy Apache Spark-fürt a HDInsight-sablon használatával
 
@@ -50,7 +50,7 @@ Hozzon létre egy HDInsight Spark-fürtöt az Azure Resource Manager-sablon hasz
 
 3. Jelölje be az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd válassza a **Vásárlás** lehetőséget. Egy új csempe jelenik meg **Deploying Template deployment** (Üzembe helyezés – Sablon telepítése) címmel. A fürt létrehozása nagyjából 20 percet vesz igénybe. A következő munkamenetre csak a fürt létrehozását követően lehet továbblépni.
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, előfordulhat, hogy nem rendelkezik a szükséges engedélyekkel. További információért tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, előfordulhat, hogy nem rendelkezik a szükséges engedélyekkel. További információért tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="install-intellijeclipse-for-spark-application"></a>Az IntelliJ/Eclipse for Spark alkalmazás telepítése
 Az IntelliJ vagy Eclipse beépülő modul az Azure-eszközkészlet használata nyelven írt Spark-alkalmazások fejlesztéséhez [Scala](https://www.scala-lang.org/), majd küldheti el ezeket az Azure HDInsight Spark-fürt közvetlenül az IntelliJ vagy Eclipse integrált fejlesztői környezet (a IDE-VEL). További információ: [IntelliJ használata Spark-alkalmazások létrehozásához/leadásához](./apache-spark-intellij-tool-plugin.md) és [Eclipse használata Spark-alkalmazások létrehozásához/leadásához](./apache-spark-eclipse-tool-plugin.md).

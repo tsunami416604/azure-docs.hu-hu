@@ -1,12 +1,12 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció, a Box |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Box között.
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AuditBoard |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és AuditBoard között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
+ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 0dd91fb26777815844bdff5aba033a4bbeac4496
+ms.openlocfilehash: cb8eb2b13f82deb5f0146d413a917362301fc8a1
 ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794396"
+ms.locfileid: "53797222"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>Oktatóanyag: A mezőbe az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AuditBoard
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Box integrálása az Azure Active Directory (Azure AD).
-Box integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan AuditBoard integrálása az Azure Active Directory (Azure AD).
+AuditBoard integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, aki hozzáféréssel rendelkezik a Boxba Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Boxba (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá AuditBoard Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve AuditBoard (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,24 +35,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Box, a következőkre van szükség:
+AuditBoard az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Box egyszeri bejelentkezés engedélyezve van az előfizetés
+* AuditBoard egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* A mező támogatja **SP** által kezdeményezett egyszeri bejelentkezés
-* A mező támogatja **igény szerinti** felhasználók átadása
-* A mező támogatja [automatizált felhasználókiépítése](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) 
+* Támogatja a AuditBoard **SP és IDP** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-box-from-the-gallery"></a>Mező hozzáadása a katalógusból
+## <a name="adding-auditboard-from-the-gallery"></a>AuditBoard hozzáadása a katalógusból
 
-Konfigurálása az Azure AD integrálása a Box, hozzá kell mezőbe a galériából a felügyelt SaaS-alkalmazások listájára.
+Az Azure AD integrálása a AuditBoard konfigurálásához hozzá kell AuditBoard a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Mező hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**AuditBoard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -66,21 +64,21 @@ Konfigurálása az Azure AD integrálása a Box, hozzá kell mezőbe a galériá
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Box**, jelölje be **Box** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **AuditBoard**válassza **AuditBoard** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában mezőbe](common/search-new-app.png)
+     ![Az eredmények listájában AuditBoard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Box egy teszt nevű felhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó a boxban hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az AuditBoard nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó AuditBoard hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés a Box tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az AuditBoard tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Box egyszeri bejelentkezés konfigurálása](#configure-box-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[AuditBoard egyszeri bejelentkezés konfigurálása](#configure-auditboard-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Box tesztfelhasználót](#create-box-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása a boxban.
+4. **[Hozzon létre AuditBoard tesztfelhasználót](#create-auditboard-test-user)**  – egy megfelelője a Britta Simon AuditBoard, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
@@ -88,9 +86,9 @@ Az Azure AD egyszeri bejelentkezés a Box tesztelése és konfigurálása, hogy 
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés a Box, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés AuditBoard, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Box** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **AuditBoard** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -102,27 +100,30 @@ Konfigurálja az Azure AD egyszeri bejelentkezés a Box, hajtsa végre az alább
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett** módban hajtsa végre a következő lépéseket:
 
-    ![Box-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
+    ![AuditBoard tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.account.box.com`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe: `box.net`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+
+    c. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett** mód:
+
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.auditboardapp.com/`
+
+    ![AuditBoard tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Box ügyfél-támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [AuditBoard ügyfél-támogatási csapatának](mailto:support@auditboard.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
-### <a name="configure-box-single-sign-on"></a>Box egyszeri bejelentkezés konfigurálása
+### <a name="configure-auditboard-single-sign-on"></a>AuditBoard egyszeri bejelentkezés konfigurálása
 
-Az alkalmazás egyszeri bejelentkezés konfigurálásához hajtsa végre az eljárást a [az egyszeri bejelentkezés beállítása a saját](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
-
-> [!NOTE]
-> Ha nem sikerül, a Box-fiók számára az egyszeri bejelentkezési beállításainak konfigurálására, szeretné-e küldeni a letöltött **összevonási metaadatainak XML** való [be támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **AuditBoard** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [AuditBoard támogatási csapatának](mailto:support@auditboard.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -151,15 +152,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a Boxba Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés AuditBoard Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **mezőbe**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **AuditBoard**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **Box**.
+2. Az alkalmazások listájában jelölje ki a **AuditBoard**.
 
-    ![A csatolás alkalmazásainak listájában](common/all-applications.png)
+    ![Az alkalmazások listáját a AuditBoard hivatkozásra](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -175,18 +176,15 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-box-test-user"></a>Box tesztfelhasználó létrehozása
+### <a name="create-auditboard-test-user"></a>AuditBoard tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó hoznak létre a boxban. Box támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a boxban, egy új jön létre a hitelesítés után.
-
-> [!NOTE]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [be támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire).
+Ebben a szakaszban egy felhasználói Britta Simon nevű AuditBoard hoz létre. Együttműködve [AuditBoard támogatási csapatának](mailto:support@auditboard.com) a felhasználók hozzáadása az AuditBoard platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Box csempére kattint, akkor kell automatikusan megtörténik a, amelynek beállítása egyszeri bejelentkezés mezőben. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a AuditBoard csempére kattint, meg kell lehet automatikusan bejelentkezett a AuditBoard, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

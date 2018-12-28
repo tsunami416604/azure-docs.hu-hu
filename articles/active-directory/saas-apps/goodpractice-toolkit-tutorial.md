@@ -1,33 +1,33 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció, a Box |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Box között.
+title: 'Oktatóanyag: GoodPractice eszközkészlet az Azure Active Directory-integráció |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és GoodPractice eszközkészlet között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
+ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 0dd91fb26777815844bdff5aba033a4bbeac4496
+ms.openlocfilehash: 699a46dbb404e39c1f2005140b88a773832eb50c
 ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794396"
+ms.locfileid: "53797225"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>Oktatóanyag: A mezőbe az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Oktatóanyag: GoodPractice eszközkészlet az Azure Active Directory-integráció
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Box integrálása az Azure Active Directory (Azure AD).
-Box integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan GoodPractice eszközkészlet integrálása az Azure Active Directory (Azure AD).
+GoodPractice eszközkészlet integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, aki hozzáféréssel rendelkezik a Boxba Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Boxba (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá GoodPractice eszközkészlet az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve GoodPractice Toolkit (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,24 +35,23 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Box, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a GoodPractice Toolkittel, a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Box egyszeri bejelentkezés engedélyezve van az előfizetés
+* GoodPractice eszközkészlet egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* A mező támogatja **SP** által kezdeményezett egyszeri bejelentkezés
-* A mező támogatja **igény szerinti** felhasználók átadása
-* A mező támogatja [automatizált felhasználókiépítése](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) 
+* Támogatja a GoodPractice eszközkészlet **SP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a GoodPractice eszközkészlet **igény szerinti** felhasználók átadása
 
-## <a name="adding-box-from-the-gallery"></a>Mező hozzáadása a katalógusból
+## <a name="adding-goodpractice-toolkit-from-the-gallery"></a>GoodPractice eszközkészlet hozzáadása a katalógusból
 
-Konfigurálása az Azure AD integrálása a Box, hozzá kell mezőbe a galériából a felügyelt SaaS-alkalmazások listájára.
+Az Azure AD integrálása a GoodPractice eszközkészlet konfigurálásához hozzá kell GoodPractice eszközkészlet a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Mező hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**GoodPractice eszközkészlet hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -66,21 +65,20 @@ Konfigurálása az Azure AD integrálása a Box, hozzá kell mezőbe a galériá
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Box**, jelölje be **Box** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **GoodPractice eszközkészlet**, jelölje be **GoodPractice eszközkészlet** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában mezőbe](common/search-new-app.png)
-
+     ![Az eredmények listájában GoodPractice eszközkészlet](common/search-new-app.png)
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Box egy teszt nevű felhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó a boxban hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálhatja, és egy tesztelési nevű felhasználó alapján GoodPractice eszközkészlet az Azure AD egyszeri bejelentkezés tesztelése **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó GoodPractice eszközkészlet a hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés a Box tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés a GoodPractice Toolkittel tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Box egyszeri bejelentkezés konfigurálása](#configure-box-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[Eszközkészlet GoodPractice egyszeri bejelentkezés konfigurálása](#configure-goodpractice-toolkit-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Box tesztfelhasználót](#create-box-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása a boxban.
+4. **[Hozzon létre GoodPractice eszközkészlet tesztfelhasználót](#create-goodpractice-toolkit-test-user)**  – egy megfelelője a Britta Simon GoodPractice eszközkészlet, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
@@ -88,9 +86,9 @@ Az Azure AD egyszeri bejelentkezés a Box tesztelése és konfigurálása, hogy 
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés a Box, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GoodPractice eszközkészlet, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Box** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **GoodPractice eszközkészlet** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -104,25 +102,30 @@ Konfigurálja az Azure AD egyszeri bejelentkezés a Box, hajtsa végre az alább
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Box-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
+    ![GoodPractice eszközkészlet tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-intiated.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.account.box.com`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> `.
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe: `box.net`
+    > [!Note]
+    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [GoodPractice eszközkészlet ügyfél-támogatási csapatának](mailto:support@goodpractice.com) a gépkulcsengedélyek értékének.
 
-    > [!NOTE]
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Box ügyfél-támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
-
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="configure-box-single-sign-on"></a>Box egyszeri bejelentkezés konfigurálása
+6. Az a **GoodPractice eszközkészlet beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-Az alkalmazás egyszeri bejelentkezés konfigurálásához hajtsa végre az eljárást a [az egyszeri bejelentkezés beállítása a saját](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-> [!NOTE]
-> Ha nem sikerül, a Box-fiók számára az egyszeri bejelentkezési beállításainak konfigurálására, szeretné-e küldeni a letöltött **összevonási metaadatainak XML** való [be támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+    a. Bejelentkezési URL
+
+    b. Az Azure Ad-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-goodpractice-toolkit-single-sign-on"></a>GoodPractice eszközkészlet egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **GoodPractice eszközkészlet** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [GoodPractice Eszközkészlet-ügyfélszolgálathoz](mailto:support@goodpractice.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -151,15 +154,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a Boxba Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés GoodPractice eszközkészlet Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **mezőbe**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **GoodPractice eszközkészlet**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **Box**.
+2. Az alkalmazások listájában jelölje ki a **GoodPractice eszközkészlet**.
 
-    ![A csatolás alkalmazásainak listájában](common/all-applications.png)
+    ![Az alkalmazások listáját a GoodPractice eszközkészlet hivatkozás](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -175,18 +178,15 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-box-test-user"></a>Box tesztfelhasználó létrehozása
+### <a name="create-goodpractice-toolkit-test-user"></a>GoodPractice eszközkészlet tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó hoznak létre a boxban. Box támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a boxban, egy új jön létre a hitelesítés után.
-
-> [!NOTE]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [be támogatási csapatának](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire).
+Ebben a szakaszban egy Britta Simon nevű felhasználó GoodPractice eszközkészlet jön létre. Támogatja a GoodPractice eszközkészlet **just-in-time-kiépítés**, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az GoodPractice eszközkészlet, amikor megpróbálja elérni GoodPractice eszközkészlet egy új jön létre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Box csempére kattint, akkor kell automatikusan megtörténik a, amelynek beállítása egyszeri bejelentkezés mezőben. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a GoodPractice eszközkészlet csempére kattint, meg kell kell automatikusan bejelentkezett a GoodPractice eszközkészlet, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

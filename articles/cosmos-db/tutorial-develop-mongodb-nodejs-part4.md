@@ -1,5 +1,5 @@
 ---
-title: Nodejs-hez (Part4) MongoB API-val Angular-alkalmazás
+title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – egy Cosmos-fiók létrehozása
 titleSuffix: Azure Cosmos DB
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 4. része
 author: johnpapa
@@ -10,22 +10,22 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 9cbf163b7d5a68540308bff49f036493b1f04a8d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d85183f0104d9066f93adc73c09c76406128700d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727054"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787800"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 4. rész: Azure Cosmos DB-fiók létrehozása
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – egy Cosmos-fiók létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
 
 Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * Azure-erőforráscsoport létrehozása az Azure CLI használatával
-> * Azure Cosmos DB-fiók létrehozása az Azure CLI használatával
+> * Hozzon létre egy Cosmos-fiókot az Azure CLI használatával
 
 ## <a name="video-walkthrough"></a>Bemutató videó
 
