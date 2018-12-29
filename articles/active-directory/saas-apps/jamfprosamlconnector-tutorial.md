@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: c11afc6381db8d3eecf46c74a9e2bf41e10136e5
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788315"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Oktatóanyag: A Jamf Pro az Azure Active Directory-integráció
 
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés vizsgálata a Jamf Pro konfigurálni, kell h
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[A Jamf Pro egyszeri bejelentkezés konfigurálása](#configure-jamf-pro-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[A Jamf Pro tesztfelhasználó létrehozása](#create-jamf-pro-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Jamf Pro szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[A Jamf Pro tesztfelhasználó létrehozása](#create-jamf-pro-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Jamf Pro szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Jamf Pro, hajtsa végre az
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A tényleges azonosító értéket kap **egyszeri bejelentkezés** a Jamf Pro portál, az oktatóanyag későbbi részében ismertetett szakaszban. A tényleges kibonthatja **altartomány** értéket az azonosító értékét, és azt használja **altartomány** adatokat bejelentkezési URL- és a válasz URL-cím. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
     ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 

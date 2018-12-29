@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: d9165004a4828ab84cd6f86e4d818883112cf7ef
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e8d829c4990aa798ce77ecc9caae51ace4c53023
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790554"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: A LinkedIn Learning az Azure Active Directory-integráció
 
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés a LinkedIn Learning tesztelése és konfigur
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[LinkedIn Learning egyszeri bejelentkezés konfigurálása](#configure-linkedin-learning-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre LinkedIn Learning tesztfelhasználót](#create-linkedin-learning-test-user)**  – egy megfelelője a Britta Simon LinkedIn Learning, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre LinkedIn Learning tesztfelhasználót](#create-linkedin-learning-test-user)**  – egy megfelelője a Britta Simon LinkedIn Learning, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -126,17 +126,16 @@ A LinkedIn Learning konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa 
     
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
-    | e-mail  | user.mail  | – |
+    | e-mail  | user.mail  |
     | Szervezeti egység  | User.Department  |
     | Keresztnév  | User.givenName  |
     | Vezetéknév  | User.surname  |
-    | Egyedi felhasználói azonosító | User.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/linkedinlearning-tutorial/tutorial_usermail.png)
 
-    ![image](common/new-attribute-details.png)
+    ![image](./media/linkedinlearning-tutorial/tutorial_usermailedit.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 

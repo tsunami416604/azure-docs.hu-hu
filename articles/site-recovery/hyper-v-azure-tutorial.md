@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 12/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 80cc1d06285ff35b8b334630cd8ec129799d6b10
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6e0cff6725db52601b4639ad638216370dd3cfda
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788157"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810695"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -81,8 +81,24 @@ Futtassa a szolgáltató telepítőfájlját (AzureSiteRecoveryProvider.exe) min
 5. A **Proxybeállítások** területen válassza a **Közvetlen csatlakozás az Azure Site Recoveryhez proxykiszolgáló nélkül** lehetőséget.
 6. A **Regisztráció** területen, miután regisztrálta a kiszolgálót a tárolóban, kattintson a **Befejezés** lehetőségre.
 
-Az Azure Site Recovery lekéri a metaadatokat a Hyper-V kiszolgálóról, és a kiszolgáló megjelenik a **Site Recovery-infrastruktúra** > **Hyper-V gazdagépek** listában. Ez a folyamat akár 30 percet is igénybe vehet.
+Az Azure Site Recovery lekéri a metaadatokat a Hyper-V kiszolgálóról, és a kiszolgáló megjelenik a **Site Recovery-infrastruktúra** > **Hyper-V gazdagépek** listában. Ez a folyamat akár 30 percet is igénybe vehet.        
 
+Abban az esetben, ha egy Hyper-V core-kiszolgáló használ, kövesse az alábbi lépéseket, miután említettek szerint töltse le a szolgáltató és a tároló hitelesítő adatok [Itt](#set-up-the-source-environment)
+
+1. Csomagolja ki a fájlokat AzureSiteRecoveryProvider.exe futtatásával
+
+    ``AzureSiteRecoveryProvider.exe /x:. /q``
+ 
+    Ez lesz bontsa ki a fájlokat a helyi könyvtárban.
+ 
+2.  Futtassa a ``.\setupdr.exe /i `` parancsot.
+
+    Eredmények lesz naplózva, %Programdata%\ASRLogs\DRASetupWizard.log
+
+3.  Regisztrálja a kiszolgálót, a parancs segítségével:
+
+``cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved" ``
+ 
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 

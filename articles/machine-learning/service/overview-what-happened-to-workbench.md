@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 614c4b9f8cb6b748385d86d20cbec15928642d30
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: ff6b61874363bbc869bd509174e58640a2487f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753302"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811307"
 ---
 # <a name="whats-happening-to-machine-learning-workbench-in-azure-machine-learning-service"></a>Mi történik a Machine Learning Workbench az Azure Machine Learning szolgáltatás?
 
@@ -78,7 +78,7 @@ Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi k
 
 A projekt tartalmának nagy részét már a helyi gépen. Így egyszerűen hozzon létre egy konfigurációs fájl ebben a könyvtárban, és hivatkozzon arra a kód a munkaterülethez való kapcsolódáshoz. Ismerje meg, hogyan [migrálni a meglévő projekteket](how-to-migrate.md#projects).
 
-Ismerje meg, hogyan [első lépései a Python és a fő SDK](quickstart-get-started.md).
+Ismerje meg, hogyan kezdheti el [Python és a fő SDK](quickstart-create-workspace-with-python.md) vagy [az Azure portal](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellek és lemezképek?
  

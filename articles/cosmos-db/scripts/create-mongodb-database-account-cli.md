@@ -1,22 +1,22 @@
 ---
-title: Az Azure CLI-szkript – létrehozása Azure Cosmos DB MongoDB API-fiók, adatbázis és gyűjtemény
-description: Azure CLI-Példaszkript – Azure Cosmos DB MongoDB API-val fiókkal, adatbázis és gyűjtemény létrehozása
+title: Az Azure CLI-szkript – létrehozása egy Cosmos-fiók az Azure Cosmos DB API a mongodb-hez
+description: Azure CLI-Példaszkript – egy Cosmos-fiók létrehozása az Azure Cosmos DB API a mongodb-hez
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: ff211658b88d8df9120e881f13d83584123f1b74
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f37c47470553110c9003d54a1783d7db0dc94e6a
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714066"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808757"
 ---
-# <a name="create-an-azure-cosmos-db-account-for-mongodb-api-using-azure-cli"></a>Az Azure Cosmos DB-fiók létrehozása a MongoDB API-hoz az Azure CLI használatával
+# <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Az Azure Cosmos DB-fiók létrehozása az Azure Cosmos DB API a mongodb-hez az Azure CLI használatával
 
-A CLI-példaszkript létrehoz egy Azure Cosmos DB MongoDB API-val fiókkal, adatbázis és gyűjtemény.
+A CLI-példaszkript létrehoz egy Cosmos-fiókot az Azure Cosmos DB API a mongodb-hez.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -24,7 +24,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-mongodb-account/create-cosmosdb-mongodb-account.sh "Create an Azure Cosmos DB for MongoDB API account, database, and collection.")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-mongodb-account/create-cosmosdb-mongodb-account.sh "Create a Cosmos account with Azure Cosmos DB's API for MongoDB - account, database, and collection.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d56a9c5bee007568fc893a020edf487403c9fde
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4c17c972a39cd336ab33f6be8bd3db5b8f0f2c92
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720288"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808417"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Azure Cosmos DB-tároló átviteli sebességének kiosztása
 
@@ -47,7 +47,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-Átviteli sebességet egy Cosmos-fiók MongoDB API-hoz konfigurált szeretne kiépíteni, ha használja a "/ myShardKey" a partíciós kulcs elérési útja és átviteli sebességet egy Cosmos-fiókot, Cassandra API-hoz konfigurált üzembe helyezésekor, "/ myPrimaryKey" a partíciós kulcs elérési útja.
+Átviteli sebességet egy Cosmos-fiókot konfigurálni az Azure Cosmos DB API a mongodb-hez szeretne kiépíteni, ha használja a "/ myShardKey" a partíciós kulcs elérési útja és átviteli sebességet egy Cosmos-fiókot, Cassandra API-hoz konfigurált üzembe helyezésekor, használja a(z) / myPrimaryKey "az a partíciós kulcs elérési útja.
 
 ## <a name="provision-throughput-using-net-sdk"></a>Átviteli sebesség kiosztása a .NET SDK használatával
 

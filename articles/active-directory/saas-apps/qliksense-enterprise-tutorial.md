@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: eb414a84a56d60135873b7a81a26d4d8e00f4ac0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5ecb26a7ca0f164c2ba8d9a9de26bf19777653a0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794447"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Qlik Sense Enterprise-zal
 
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés a Qlik Sense vállalati tesztelése és konf
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Qlik Sense vállalati egyszeri bejelentkezés konfigurálása](#configure-qlik-sense-enterprise-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Qlik Sense vállalati tesztfelhasználót](#create-qlik-sense-enterprise-test-user)**  – szeretné, hogy egy Britta Simon megfelelője a Qlik Sense vállalat, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Qlik Sense vállalati tesztfelhasználót](#create-qlik-sense-enterprise-test-user)**  – szeretné, hogy egy Britta Simon megfelelője a Qlik Sense vállalat, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -107,7 +107,6 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Qlik Sense vállalati, hajt
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
-    
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
