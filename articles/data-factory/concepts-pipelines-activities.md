@@ -21,7 +21,7 @@ ms.lasthandoff: 08/27/2018
 ms.locfileid: "43109439"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-create-pipelines.md)
 > * [Aktuális verzió](concepts-pipelines-activities.md)
 
