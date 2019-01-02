@@ -19,7 +19,7 @@ ms.locfileid: "50252165"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>az Azure Functions – Host.JSON referencia 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futásidejének verzióját: "]
 > * [1-es verzió](functions-host-json-v1.md)
 > * [2. verzió](functions-host-json.md)
 
