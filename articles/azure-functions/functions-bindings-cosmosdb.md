@@ -19,7 +19,7 @@ ms.locfileid: "53136205"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futásidejének verzióját: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
