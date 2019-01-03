@@ -8,18 +8,18 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432223"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606469"
 ---
 # <a name="app-service-documentation"></a>App Service – dokumentáció
 Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps Services vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
 
 ## <a name="windows-linux-and-docker"></a>Windows, Linux és Docker
-A [Web Apps](/app-service/app-service-web-overview) az App Service fő ajánlata webalkalmazások Windows-környezetek segítségével történő összeállításához és üzemeltetéséhez. A Linux-környezeteket előnyben részesítő fejlesztőknek az [App Service for Linuxot](/app-service/containers/app-service-linux-intro) érdemes választaniuk. A fejlesztők közvetlenül az App Service for Linuxban is üzembe helyezhetik a rendszerképeket az egyéni futtatókörnyezetek/keretrendszerek beüzemeléséhez.
+A [Web Apps](/app-service/overview) az App Service fő ajánlata webalkalmazások Windows-környezetek segítségével történő összeállításához és üzemeltetéséhez. A Linux-környezeteket előnyben részesítő fejlesztőknek az [App Service for Linuxot](/app-service/containers/app-service-linux-intro) érdemes választaniuk. A fejlesztők közvetlenül az App Service for Linuxban is üzembe helyezhetik a rendszerképeket az egyéni futtatókörnyezetek/keretrendszerek beüzemeléséhez.
 
 ## <a name="5-minute-quickstarts"></a>5 perces gyors útmutatók
 
@@ -54,7 +54,7 @@ Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkal
 Szkriptek keresése a gyakori feladatok kezeléséhez.
 
 - [Azure CLI](/azure/app-service/app-service-cli-sample)
-- [Azure PowerShell](/azure/app-service/app-service-powershell-samples)
+- [Azure PowerShell](/azure/app-service/samples-powershell)
 
 ## <a name="more"></a>Továbbiak
 
