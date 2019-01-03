@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5d635ce63170cf9ec93f3996d608cfd5836de3b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956949"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726323"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
@@ -37,7 +37,7 @@ Időtartomány kijelölésének egyszerűsített, egy egyszerű, egykattintásos
 
 Általános teljesítménye jelentősen nőtt. Népszerű szolgáltatások, mint az egykattintásos hozzáférést rendelkezik **keresési** és **Analytics**. Egyes alapértelmezett dinamikus frissítése a KPI-csempe megfelelő Application Insights-funkciók betekintést nyújt. Tudjon meg többet sikertelen kérelmek válassza **hibák** alatt a **vizsgálat** fejléc:
 
-![Meghibásodások](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
+![Hibák](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
@@ -65,4 +65,4 @@ Nyissa meg újra az áttekintő tapasztalatok csak adja meg:
 - [Tölcsérek](usage-funnels.md)
 - [Megőrzés](app-insights-usage-retention.md)
 - [Felhasználói folyamatok](app-insights-usage-flows.md)
-- [Irányítópultok](app-insights-dashboards.md)
+- [Irányítópultok](../azure-monitor/app/app-insights-dashboards.md)

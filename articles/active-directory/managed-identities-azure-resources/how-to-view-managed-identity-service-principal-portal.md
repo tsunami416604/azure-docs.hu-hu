@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: daveba
-ms.openlocfilehash: 123cd1c808ad833d9b10148e4cb292b335075a8d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c61220242a5a2ff84204c84b11aa132d00279e49
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882576"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726595"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>A szolgáltatásnév, egy felügyelt identitás megtekintése az Azure Portalon
 
@@ -31,7 +31,7 @@ Ebből a cikkből megismerheti, hogyan megtekintéséhez az egyszerű szolgálta
 
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md).
 - Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
-- Engedélyezése [virtuális gépen a rendszer által hozzárendelt identitással](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazás](/azure/app-service/app-service-managed-service-identity#adding-a-system-assigned-identity).
+- Engedélyezése [virtuális gépen a rendszer által hozzárendelt identitással](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazás](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
 
 ## <a name="view-the-service-principal"></a>Az egyszerű szolgáltatás megtekintése
 

@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077120"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718724"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -85,9 +85,9 @@ A munkaterület áttelepítéséhez:
 
 4.  A következő oldalon válassza ki a két lehetőség közül választhat:
 
-    a.  Üzembe helyezett csak Betanítások: Ez a beállítás csak a telepített rendszerek és a kapcsolódó dokumentumok áttelepíti.
+    a.  Csak telepített Betanítások: Ez a beállítás csak a telepített rendszerek és a kapcsolódó dokumentumok telepítse át.
 
-    b.  Az összes sikeres Betanítások: Ezzel a beállítással áttelepíti, a sikeres betanítások és a kapcsolódó dokumentumokat.
+    b.  Az összes sikeres Betanítások: Ez a beállítás a sikeres betanítások és a kapcsolódó dokumentumok telepítse át.
 
     c.  Adjon meg egyéni a fordítót a cél a munkaterület-azonosító.
 
@@ -111,9 +111,9 @@ Munkaterület kért / hubról migrálási projekt, ha az áttelepítési előzm�
 
 Áttelepítési Előzmények lapon megjeleníti a következő minden kért áttelepítés összegző információkat.
 
-1.  Áttelepített által: És az e-mail a felhasználó a migrálás kérelem elküldése
+1.  Áttelepített: Név és e-mail a felhasználó a migrálás kérelem elküldése
 
-2.  Az áttelepített: Dátum és idő bélyeg az áttelepítés
+2.  Az áttelepített: Az áttelepítés dátum és idő bélyeg
 
 3.  Projektek: A kért migrálási projektek számaként v/s sikeresen projektek száma át.
 
@@ -130,7 +130,7 @@ Ha azt szeretné, hogy a projektek, betanítások és dokumentumok. áttelepít�
 * Csak egyszer áttelepítése projektenként engedélyezettek.  Ha ismételje meg a projekt áttelepítés van szüksége, lépjen kapcsolatba velünk a következő címen.
 * Jelenleg az egyéni a fordítót a kezdő és a angol fordítása 36 nyelveket támogatja, és folyamatosan dolgozunk további nyelvek hozzáadása.  Hub nem igényel kiindulási modelleket, és ezért a több ezer nyelveket támogatja.  Nem támogatott nyelvet párjának, azonban a rendszer csak a dokumentumok az áttelepítéshez és a projekt definíciók áttelepítheti.  A Microsoft nem fogja tudni az új modell betanításához.  Továbbá ezeket a dokumentumokat és projektek jelenik meg inaktívként annak a megállapítására, hogy nem tudja használni őket most. Támogatás bevezetése esetén ezek projektek és/vagy a dokumentumok, aktív és trainable válnak.
 * Egyéni a fordítót jelenleg nem támogatja a monolingual betanítási adatok.  Nem támogatott nyelvet párok, például áttelepítheti monolingual dokumentumok, de azok megjelenítése inaktívként, amíg nem támogatott monolingual adatok.  
-* Egyéni a fordítót 10 k párhuzamos mondatokat igényel a betanításához.  A Microsoft Hub egy kisebb adatkészletet a sikerült betanításához.  Képzési telepít át, amely nem felel meg ennek a követelménynek, ha a fogja képezni.
+* Egyéni a fordítót 10 k párhuzamos mondatokat igényel a betanításához.  A Microsoft Hub egy kisebb adatkészletet a sikerült betanításához. Képzési telepít át, amely nem felel meg ennek a követelménynek, ha azt nem kell betanítani.
 
 
 ## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító

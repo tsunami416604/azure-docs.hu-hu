@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 115a78993929b900b835450ea52d590e00ff7461
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887212"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604973"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
 
@@ -92,5 +92,5 @@ Most, hogy a Függvényalkalmazás vissza és működési tekintse meg a gyors �
   Különböző függvénytesztelési eszközöket és technikákat ír le.
 * [Az Azure Functions méretezése](functions-scale.md)  
   Az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomagokat ismerteti, köztük a Használatalapú futtatási csomagot, és segít a megfelelő csomag kiválasztásában. 
-* [További információ az Azure App Service szolgáltatásról](../app-service/app-service-web-overview.md)  
+* [További információ az Azure App Service szolgáltatásról](../app-service/overview.md)  
   Az Azure Functions az Azure App Service használatával biztosítja az olyan alapvető funkciókat, mint az üzembe helyezések, a környezeti változók és a diagnosztika. 

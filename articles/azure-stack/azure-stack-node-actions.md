@@ -1,6 +1,6 @@
 ---
 title: Csomópont kapcsolatos műveletek méretezése az Azure Stackben |} A Microsoft Docs
-description: Útmutató megtekintése a csomópont állapota, és használja a kiürítési leállítása a, és ha megszakad a csomópont műveleteket az Azure Stackkel integrált rendszereknél.
+description: Ismerje meg, megtekintheti a csomópont aktuális állapotát, és használja a a power kikapcsolása, letiltása és csomópont műveleteket az Azure Stackkel integrált rendszerek folytatása.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -9,143 +9,144 @@ editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a792bc083c3a2c78b24d5895c34420b86b0863bb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959767"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725252"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
-Ez a cikk ismerteti a méretezési egység és a kapcsolódó csomópontokat állapotának megtekintése és használata a rendelkezésre álló csomópont műveleteket. Csomópont műveletek: a kapacitást power kikapcsolva, kiürítési, folytatásához és javítása. A csomópont műveletek általában a mező helyettesítő részből áll, vagy a csomópont-helyreállítási helyzetekben során használ.
+Ez a cikk ismerteti a skálázási egység állapotának megtekintése. Az egység csomópontok tekintheti meg. Is futtatásakor csomópont műveleteket, például power a kapacitást, állítsa le, kiürítési, folytatása, és javítása. A csomópont műveletek általában részből áll, vagy egy csomópont helyreállítását segíti a mező helyettesítő során használ.
 
 > [!Important]  
-> Az összes csomópont műveletek ebben a cikkben leírt egyszerre csak egy célcsomóponttal kell.
-
+> Ebben a cikkben ismertetett összes csomópont művelet egy csomópont kell célozhat meg egyszerre.
 
 ## <a name="view-the-node-status"></a>A csomópont állapotának megtekintése
 
-A felügyeleti portálon egyszerűen megtekintheti a skálázási egység és a kapcsolódó csomópontjainak állapotát.
+A felügyeleti portálon megtekintheti a méretezési egység és a kapcsolódó csomópontjainak állapotát.
 
-A skálázási egység állapotának megtekintése:
+Egy adott skálázási egység állapotának megtekintéséhez:
 
 1. Az a **régiók kezelése** csempére, válassza ki a régiót.
 2. A bal oldali alatt **infrastruktúra-erőforrások**válassza **egységig**.
 3. Az eredmények közül válassza ki a skálázási egység.
- 
-Itt tekintheti meg a következő információkat:
+4. A bal oldali alatt **általános**válassza **csomópontok**.
 
-- régió neve. A régió neve útvonalában **-hely** a PowerShell-modul.
-- rendszer típusa
-- logikai magok száma összesen
-- memória összesen
-- Az egyes csomópontok és azok állapotát; listája mindkét **futó** vagy **leállt**
+  A következő információk megtekintése:
 
-![Az egyes csomópontokon futó állapotát megjelenítő skálázási egység csempe](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
+  - Az egyes csomópontok listája
+  - Működési állapot (lásd alább)
+  - Kiemelt állapotát (fut vagy Leállítva)
+  - kiszolgáló-modell
+  - Az alaplapi felügyeleti vezérlőnek (BMC) IP-címe
+  - Magok teljes száma
+  - teljes memóriamennyiség
 
-## <a name="view-node-information"></a>Csomópont-információk megtekintése
+![a skálázási egység állapota](media/azure-stack-node-actions/multinodeactions.png)
 
-Ha az egyes csomópontok, a következő információkat tekintheti meg:
+### <a name="node-operational-states"></a>Csomópont működési állapotok
 
-- Régió neve
-- kiszolgáló-modell
-- Az alaplapi felügyeleti vezérlőnek (BMC) IP-címe
-- működési állapot
-- Magok teljes száma
-- teljes memóriamennyiség
- 
-![Az egyes csomópontokon futó állapotát megjelenítő skálázási egység csempe](media/azure-stack-node-actions/NodeActions.PNG)
-
-Skálázási egység csomópont műveletek itt is elvégezheti.
+| status | Leírás |
+|----------------------|-------------------------------------------------------------------|
+| Fut | A csomópont tevékenyen részt vesz a skálázási egység. |
+| Leállítva | A csomópont nem érhető el. |
+| Hozzáadás | A csomópont aktívan ad hozzá a skálázási egység. |
+| Javítás | A csomópont aktívan javítása folyamatban van. |
+| Karbantartás | A csomópont fel van függesztve, és nincsenek aktív felhasználói munkaterhelés fut-e. |
+| Szervizelés szükséges | Hibát észlelt, amely megköveteli, hogy a csomópont nem működik helyesen. |
 
 ## <a name="scale-unit-node-actions"></a>Skálázási egység csomópont műveletek
 
 Megtekintheti a skálázási egység csomópont kapcsolatos információkat, például is elvégezheti csomópont műveletek:
-
-- Kiürítési és folytatás
-- Javítás
+ - Indítás és leállítás (függően a jelenlegi power állapot)
+ - Tiltsa le, és folytatni (függően műveletek állapota)
+ - Javítás
+ - Leállítás
 
 A csomópont a működési állapota határozza meg, milyen beállítások érhetők el.
 
-### <a name="power-off"></a>Kikapcsolás
+Szüksége lesz az Azure Stack PowerShell-modulok telepítéséhez. A rendszer ezeket a parancsmagokat a **Azs.Fabric.Admin** modul. Telepítse, vagy az Azure Stack PowerShell telepítésének ellenőrzésének, lásd: [Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 
-A **kikapcsolásához** művelet kikapcsolja a csomópontot. Legyen ugyanaz, mintha a főkapcsoló. Ugyanúgy **nem** rendszerleállítási jelzés küldeni az operációs rendszer. Műveletek tervezett kikapcsolás győződjön meg arról, ürítheti skálázási egység először.
+## <a name="stop"></a>Leállítás
+
+A **leállítása** művelet kikapcsolja a csomópontot. Legyen ugyanaz, mintha a főkapcsoló. Az operációs rendszer rendszerleállítási jelzés nem küldi. A tervezett stop műveletek mindig előbb a a leállítási művelet. 
 
 Ez a művelet általában akkor használatos, amikor egy csomópont lefagyott állapotban van, és már nem válaszol a kérelmekre.
 
-> [!Important] 
-> Ez a funkció csak Powershellen keresztül érhető el. Lesz elérhető az Azure Stack rendszergazdai portálon újra egy későbbi időpontban.
+A leállítási művelet futtatásához nyisson meg egy rendszergazda jogú PowerShell-parancssort, és futtassa a következő parancsmagot:
 
-
-A PowerShell-lel művelet kikapcsolás futtatása:
-
-````PowerShell
+```PowerShell  
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
-```` 
+```
 
-A valószínűtlen eset, hogy a művelet kikapcsolás nem működik használja helyette a BMC webes felületén.
+A valószínűtlen eset, hogy a leállítási művelet nem működik, majd próbálja megismételni a műveletet, és ha a második alkalommal sikertelen lesz inkább a BMC webes felületén.
 
-### <a name="power-on"></a>Bekapcsolás
+További információkért lásd: [Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode).
 
-A **bekapcsolási** művelet bekapcsolja a csomóponton. Legyen ugyanaz, mintha a főkapcsoló. 
+## <a name="start"></a>Indítás
 
-> [!Important] 
-> Ez a funkció csak Powershellen keresztül érhető el. Lesz elérhető az Azure Stack rendszergazdai portálon újra egy későbbi időpontban.
+A **start** művelet bekapcsolja a csomóponton. Legyen ugyanaz, mintha a főkapcsoló. 
+ 
+A kezdő művelet futtatásához nyisson meg egy rendszergazda jogú PowerShell-parancssort, és futtassa a következő parancsmagot:
 
-A power futtatása a Powershellen keresztül művelet:
-
-````PowerShell
+```PowerShell  
   Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
-````
+```
 
-A valószínűtlen eset, hogy a teljesítmény, a művelet nem működik használja helyette a BMC webes felületén.
+A valószínűtlen eset, hogy a kezdő művelet nem működik, majd próbálja megismételni a műveletet, és ha a második alkalommal sikertelen lesz inkább a BMC webes felületén.
 
-### <a name="drain"></a>Kiürítési
+További információkért lásd: [Start-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/start-azsscaleunitnode).
 
-A **kiürítési** művelet az összes aktív munkafeladatokat evacuates osztja meg őket, hogy adott skálázási egységben a többi csomópont között.
+## <a name="drain"></a>Kiürítési
+
+A **kiürítési** művelet áthelyezi az összes aktív munkafeladatokat a többi csomópontot, hogy adott skálázási egységben.
 
 Ez a művelet általában a mező helyettesítő részből áll, például egy egész csomóponttal cseréjén során használatos.
 
-> [!IMPORTANT]  
-> Győződjön meg arról, hogy Ön ürítheti csak tervezett karbantartási időszakban, ahol felhasználói értesítést kapott. Bizonyos körülmények között az aktív munkafeladatokat tapasztalhatnak megszakítások.
+> [!Important]
+> Győződjön meg arról, hogy használja-e egy csomópont kiürítési művelet tervezett karbantartási időszakban, ahol a felhasználók értesítette. Bizonyos körülmények között az aktív munkafeladatokat tapasztalhatnak megszakítások.
 
-A PowerShell-lel kiürítési művelet futtatása:
+A kiürítési művelet futtatásához nyisson meg egy rendszergazda jogú PowerShell-parancssort, és futtassa a következő parancsmagot:
 
-  ````PowerShell
+```PowerShell  
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
-  ````
+```
 
-### <a name="resume"></a>Folytatás
+További információkért lásd: [Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode).
 
-A **folytatása** művelet folytatja lecsepegtetett csomópontot, és munkaterhelés-elhelyezés aktív jelöli meg. A csomóponton futó korábbi számítási feladatok nem feladat-visszavételt. (Ön kiürítési csomópontot, majd kapcsolja ki, amikor a csomópont power lépjen vissza, ha nincs ellátva munkaterhelés-elhelyezés aktívként. Ha elkészült, kell használnia a művelet folytatása jelölje meg aktívként a csomópontra.)
+## <a name="resume"></a>Folytatás
 
-A PowerShell-lel folytatása művelet futtatása:
+A **folytatása** művelet folytatja a letiltott csomópontot, és munkaterhelés-elhelyezés aktív jelöli meg. A csomóponton futó korábbi számítási feladatok nem feladat-visszavételt. (Ha használja a kiürítési művelet egy csomóponton mindenképpen általi kikapcsolását. Ha a csomópont újra, nincs ellátva munkaterhelés-elhelyezés aktívként. Ha elkészült, kell használnia a művelet folytatása jelölje meg aktívként a csomópontra.)
 
-  ````PowerShell
+A művelet folytatása futtatásához nyisson meg egy rendszergazda jogú PowerShell-parancssorba, és futtassa a következő parancsmagot:
+
+```PowerShell  
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
-  ````
+```
 
-### <a name="repair"></a>Javítás
+További információkért lásd: [engedélyezése – AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
 
-A **javítási** művelet helyreállít egy csomópontot. Használja azt csak az alábbi esetek valamelyike:
+## <a name="repair"></a>Javítás
 
-- Teljes csomópont helyettesítő (vagy anélkül új adatlemezek)
-- Miután összetevő hardverhiba, valamint helyettesítő (Ha a mező helyettesítő egységet (FRU) dokumentációjában javasolt).
+A **javítása** művelet helyreállít egy csomópontot. Használja azt csak az alábbi esetek valamelyike:
+ - Teljes csomópont helyettesítő (vagy anélkül új adatlemezek)
+ - Miután összetevő hardverhiba, valamint helyettesítő (Ha a mező helyettesítő egységet (FRU) dokumentációjában javasolt).
 
-> [!IMPORTANT]  
-> Pontos lépéseit a OEM hardver szállítójával FRU dokumentációjában talál, amikor szüksége van egy csomópontot vagy egyes hardverösszetevők. A FRU dokumentáció fogja megadni, hogy kell-e a javítási műveletet, hardverkomponensek cseréje után futtassa.  
+> [!Important]  
+> Pontos lépéseit a OEM hardver szállítójával FRU dokumentációjában talál, amikor szüksége van egy csomópontot vagy egyes hardverösszetevők. A FRU dokumentáció fogja megadni, hogy kell-e a javítási műveletet, hardverkomponensek cseréje után futtassa. 
 
 A javítási művelet futtatásakor adja meg a BMC IP-címet kell. 
 
-PowerShell-lel a javítási művelet futtatása:
+Futtasson javítási műveletet, és nyisson meg egy rendszergazda jogú PowerShell-parancssorban futtassa a következő parancsmagot:
 
   ````PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
