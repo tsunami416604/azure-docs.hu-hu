@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406743"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975799"
 documentType: LandingData
 title: Azure HDInsight – dokumentáció
 metadata:
@@ -75,7 +75,7 @@ sections:
     - html: 'Apache Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturált streamelés a Kafkával</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Használat a HDInsight-alapú Stormmal</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">A Kafka Producer és Consumer API-k használata</a>'
     - html: 'Apache HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">HBase-fürtök létrehozása virtuális hálózaton</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Az Apache Phoenix használata</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Csatlakozás a Sparkhoz</a>'
     - html: 'Interaktív lekérdezés: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Kapcsolódás Power BI-jal közvetlen lekérdezés használatával</a>'
-    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Storm-topológia létrehozása Java-környezetben</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Storm-topológiák üzembe helyezése HDInsighton</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Írás Stormból Data Lake Store-ba</a>'
+    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Storm-topológia létrehozása Java-környezetben</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Storm-topológiák üzembe helyezése HDInsighton</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Írás Stormból Data Lake Storage-ba</a>'
     - html: 'ML-szolgáltatások: <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Az R Tools for Visual Studio használata</a>'
 - title: Referencia
   items:

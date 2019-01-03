@@ -4,18 +4,17 @@ description: Megtudhatja, hogyan hozhat létre, és törli az üzenetsorok, az A
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 827d3ceac267c78be9740adba6c890460ca3f2e9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0edb90ca7324d47beaa5133d423928e615ff33a9
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162987"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742813"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>How to use Queue storage from Python (A Queue Storage használata Pythonnal)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -31,7 +30,7 @@ Ez az útmutató bemutatja, hogyan hajthat végre az Azure Queue storage szolgá
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Töltse le és telepítse az Azure Storage SDK a Pythonhoz
 
-Az Azure Storage SDK Pythonhoz készült Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os igényel, és 4 különböző csomagokban érhető el: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` és `azure-storage-queue`. Ebben az oktatóanyagban fogjuk használni `azure-storage-queue` csomagot.
+A [Pythonhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-python) van szükség a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os.
  
 ### <a name="install-via-pypi"></a>Keresztül PyPi telepítése
 
@@ -41,15 +40,19 @@ Telepítse a Python-Csomagindexet (PyPI) keresztül, írja be:
 pip install azure-storage-queue
 ```
 
-
 > [!NOTE]
-> Ha Python 0.36 vagy korábbi verzióját frissíti az Azure Storage SDK-ból, akkor először használatával `pip uninstall azure-storage` , már megjelent a Storage SDK Pythonhoz készült egyetlen csomagban.
-> 
-> 
+> Ha 0.36 vagy korábbi verzióját a Pythonhoz készült Azure Storage SDK frissíti, távolítsa el a régebbi SDK használatával `pip uninstall azure-storage` a legújabb csomag telepítése előtt.
 
-Alternatív telepítési módszert, látogasson el a [a Githubon Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/).
+Alternatív telepítési módjaival kapcsolatban lásd: [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/).
+
+## <a name="view-the-sample-application"></a>A mintaalkalmazás megtekintése
+
+Megtekintheti és futtathat egy mintaalkalmazást, amely bemutatja, hogyan használhatja a Pythont az Azure-üzenetsorok: [Azure Storage: Ismerkedés az Azure-üzenetsorok a Pythonban](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
+
+Futtassa a mintaalkalmazást, győződjön meg arról, hogy mindkettő telepítése a `azure-storage-queue` és `azure-storage-common` csomagokat.
 
 ## <a name="how-to-create-a-queue"></a>kézikönyv: Várólista létrehozása
+
 A **QueueService** objektum lehetővé teszi a várólisták használata. Az alábbi kód létrehoz egy **QueueService** objektum. Adja hozzá a következő, bármely Python-fájlt, amelyben a programozott módon érheti el az Azure Storage kívánt tetején:
 
 ```python
@@ -129,8 +132,6 @@ Most, hogy megismerte a Queue storage alapjait, kövesse az alábbi hivatkozáso
 
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355)
-* [Az Azure Storage csapat blogja]
-* [A Microsoft Azure Storage-hoz készült Python SDK]
 
-[Az Azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [A Microsoft Azure Storage-hoz készült Python SDK]: https://github.com/Azure/azure-storage-python

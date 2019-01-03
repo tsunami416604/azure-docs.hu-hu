@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 09f4637c24b146394dc0299e60e729c07420150a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833312"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974373"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -20,6 +20,7 @@ Ha a védett virtuális gépet egy Windows virtuális gépet, majd meg kell egy 
 
 > [!IMPORTANT]
 > A 9.10.0 kiadásával kezdődően fő célkiszolgálót a legújabb fő célkiszolgáló csak telepíthető egy Ubuntu 16.04-kiszolgálón. Új telepítések CentOS6.6 kiszolgálókon nem engedélyezett. Azonban továbbra is a régi fő célkiszolgálók frissítése a 9.10.0 használatával verzió.
+> Az LVM fő célkiszolgáló nem támogatott.
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk ismerteti a Linuxos fő célkiszolgáló telepítése.
@@ -40,7 +41,7 @@ Megjegyzéseit vagy kérdéseit közzététele Ez a cikk vagy a végén a [Azure
 Hozza létre a fő célkiszolgáló megfelelően a méretezése a következőkre:
 - **RAM**: 6 GB vagy több
 - **Operációsrendszer-lemez mérete**: 100 GB vagy több (az operációs rendszer telepítése)
-- **Adatmegőrzési meghajtó méretét további**: 1 TB-ot
+- **Adatmegőrzési meghajtó méretét további**: 1 TB
 - **CPU-magok**: 4 mag, vagy több
 
 A következő támogatott Ubuntu kernelekkel támogatottak.
@@ -59,7 +60,7 @@ A következő támogatott Ubuntu kernelekkel támogatottak.
 
 Vegye figyelembe a következőket az Ubuntu 16.04.2 64 bites operációs rendszer telepítésének lépéseit.
 
-1.   Nyissa meg a [letöltési hivatkozás](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64), válassza a legközelebbi tükrözött anddownload egy Ubuntu 16.04.2 minimális 64-bit ISO.
+1.   Nyissa meg a [letöltési hivatkozás](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza a legközelebbi tükrözött anddownload egy Ubuntu 16.04.2 minimális 64-bit ISO.
 Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa el a rendszer.
 
 1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
@@ -259,7 +260,7 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
     
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveget. Szerkessze a többutas Lemezazonosítót az előző parancs által kiemelt többutas azonosítója alapján.
 
-    **/dev/eseményleképező/<Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
+     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
 
     Válassza ki **Esc**, majd írja be **: wq** (írás és kilépés) gombra kattintva zárja be a szerkesztő ablakot.
 

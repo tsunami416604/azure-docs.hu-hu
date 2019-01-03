@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3239cbc957d2a79c7a5411604759f86f0268bd70
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409445"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976307"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -68,7 +68,7 @@ Az alábbi lépéseket a Homebrew használatával a Core Tools telepítése macO
 
     ```bash
     brew tap azure/functions
-    brew install azure-functions-core-tools 
+    brew install azure-functions-core-tools
     ```
 
 #### <a name="linux"></a> Linux (Ubuntu/Debian) az APT
@@ -195,12 +195,12 @@ A függvény alkalmazás beállítások értékeit is elolvashatja a kódban kö
 + [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
 + [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 + [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables) 
++ [Java](functions-reference-java.md#environment-variables)
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a **AzureWebJobsStorage** és az emulatort használja, a következő hibaüzenet jelenik meg:  
+Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a **AzureWebJobsStorage** és az emulatort használja, a következő hibaüzenet jelenik meg:
 
-> Hiányzó értéke AzureWebJobsStorage a local.settings.json. Ez azért szükséges, az összes eseményindítók nem HTTP. Futtathatja a "func azure functionapp fetch-alkalmazás-beállítások <functionAppName>", vagy adjon meg egy kapcsolati karakterláncot local.settings.json.
+> Hiányzó értéke AzureWebJobsStorage a local.settings.json. Ez azért szükséges, az összes eseményindítók nem HTTP. Futtathatja a "func azure functionapp fetch-alkalmazás-beállítások \<functionAppName\>", vagy adjon meg egy kapcsolati karakterláncot local.settings.json.
 
 ### <a name="get-your-storage-connection-strings"></a>A storage kapcsolati karakterláncok beolvasása
 
@@ -210,7 +210,7 @@ Akkor is, ha a fejlesztés a storage emulatort használja, érdemes teszt egy t�
 
   ![Kapcsolati karakterlánc másolása az Azure Portalról](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Használat [Azure Storage Explorer](https://storageexplorer.com/) csatlakozni az Azure-fiókjával. Az a **Explorer**, bontsa ki az előfizetést, válassza ki a tárfiókját, és másolja az elsődleges vagy másodlagos kapcsolati karakterláncot. 
++ Használat [Azure Storage Explorer](https://storageexplorer.com/) csatlakozni az Azure-fiókjával. Az a **Explorer**, bontsa ki az előfizetést, válassza ki a tárfiókját, és másolja az elsődleges vagy másodlagos kapcsolati karakterláncot.
 
   ![Másolja a kapcsolati karakterláncot a Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -298,16 +298,15 @@ A `host` parancs csak szükséges verzió 1.x.
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--build`** | Aktuální projekt futtatása előtt hozhat létre. Verzió 2.x-es és a C# projekty csak. |
+| **`--no-build`** | Ne nincs build aktuální projekt futtatása előtt. Csak dotnet-projektekhez. Alapértelmezett értéke false. Verzió csak 2.x. |
 | **`--cert`** | Egy titkos kulcsot tartalmazó .pfx-fájl elérési útja. Csak a felhasznált `--useHttps`. Verzió csak 2.x. |
+| **`--cors-credentials`** | Lehetővé teszi a hitelesített kérelmek eltérő eredetű (pl. cookie-k és a hitelesítési fejlécet) verziója csak a 2.x. |
 | **`--cors`** | CORS-források, szóközök nélküli szövegláncként vesszővel tagolt listája. |
-| **`--debug`** | Elindul az a gazdagép, a hibakeresési port meg, hogy lehet kapcsolódni a **func.exe** feldolgozása a [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) vagy [Visual Studio 2017](functions-dotnet-class-library.md). Érvényes értékek a következők `VSCode` és `VS`.  |
 | **`--language-worker`** | A nyelvi feldolgozó konfigurálása argumentumokat. Verzió csak 2.x. |
 | **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: A launch.json vagy 5858 érték. Verzió csak 1.x. |
 | **`--password`** | A jelszó vagy egy fájlt, amely a jelszót a .pfx fájl tartalmazza. Csak a felhasznált `--cert`. Verzió csak 2.x. |
 | **`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | Mielőtt kilépne a folyamat szüneteltetéséhez további adatokat. Csak akkor, ha a Core Tools elindítása egy integrált fejlesztési környezetből (IDE) használja.|
-| **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
 | **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
 
@@ -324,13 +323,13 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Ha helyileg futtatja, a hitelesítés HTTP-végpontok esetén nincs kényszerítve. Ez azt jelenti, hogy az összes HTTP-kéréseket kezeli `authLevel = "anonymous"`. További információkért lásd: a [HTTP-kötést cikk](functions-bindings-http-webhook.md#authorization-keys). 
+>Ha helyileg futtatja, a hitelesítés HTTP-végpontok esetén nincs kényszerítve. Ez azt jelenti, hogy az összes HTTP-kéréseket kezeli `authLevel = "anonymous"`. További információkért lásd: a [HTTP-kötést cikk](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>A függvénynek megadásának teszt adatai
 
 A függvények helyi tesztelése, [indítsa el a függvények gazdagép](#start) és végpontok meghívása HTTP-kérelmek használatával a helyi kiszolgálón. A végpont hívja függvény típusától függ.
 
->[!NOTE]  
+>[!NOTE]
 > Ebben a témakörben szereplő példák a terminált vagy parancssort a HTTP-kéréseket küldhet a cURL eszköz használható. A választott eszköz használatával HTTP-kérelmeket küldjön a helyi kiszolgálón. A cURL eszköz alapértelmezés szerint a Linux-alapú rendszerekhez érhető el. A Windows, akkor először le kell töltenie, és telepítse a [cURL eszköz](https://curl.haxx.se/).
 
 A tesztelési funkciók további általános információkért lásd: [stratégiát a kódot tesztelés az Azure Functions](functions-test-a-function.md).
@@ -341,9 +340,9 @@ A következő meghívása HTTP- és helyi futtatásához végpont által aktivá
 
     http://localhost:{port}/api/{function_name}
 
-Ellenőrizze, hogy a ugyanazt a kiszolgálónevet és a portot, amelyet a Functions gazdagép figyel a következőn:. Jelenik meg ez a kimenet jön létre, ha a függvény gazdagép indítása. Az URL-cím használatával az eseményindító által támogatott bármely HTTP-metódus hívása. 
+Ellenőrizze, hogy a ugyanazt a kiszolgálónevet és a portot, amelyet a Functions gazdagép figyel a következőn:. Jelenik meg ez a kimenet jön létre, ha a függvény gazdagép indítása. Az URL-cím használatával az eseményindító által támogatott bármely HTTP-metódus hívása.
 
-A következő cURL-parancs eseményindítók a `MyHttpTrigger` egy GET kérelmet a rövid útmutató a függvénynek a _neve_ paramétert a lekérdezési karakterláncban. 
+A következő cURL-parancs eseményindítók a `MyHttpTrigger` egy GET kérelmet a rövid útmutató a függvénynek a _neve_ paramétert a lekérdezési karakterláncban.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -355,11 +354,11 @@ Az alábbi példában ugyanannak a függvénynek egy POST-kérés átadja a nev�
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Kérelmek beolvasása egy böngészőből, a lekérdezési karakterláncban adatok átadására is felvehető. Minden más HTTP-metódusok a cURL, Fiddler, Postman vagy egy hasonló HTTP tesztelési eszközt kell használnia.  
+Kérelmek beolvasása egy böngészőből, a lekérdezési karakterláncban adatok átadására is felvehető. Minden más HTTP-metódusok a cURL, Fiddler, Postman vagy egy hasonló HTTP tesztelési eszközt kell használnia.
 
 #### <a name="non-http-triggered-functions"></a>Nem HTTP által aktivált függvények
 
-HTTP-triggerek és webhookok eltérő funkciók mindenfajta tesztelheti a függvények helyi felügyeleti végpont meghívásával. A HTTP POST-kérelmet a végpontot hív-e a helyi kiszolgálón aktiválja a függvényt. Tesztadatok a POST-kérés törzse végrehajtásával lehetősége van átadni. Ez a funkció hasonlít a **teszt** lap az Azure Portalon.  
+HTTP-triggerek és webhookok eltérő funkciók mindenfajta tesztelheti a függvények helyi felügyeleti végpont meghívásával. A HTTP POST-kérelmet a végpontot hív-e a helyi kiszolgálón aktiválja a függvényt. Tesztadatok a POST-kérés törzse végrehajtásával lehetősége van átadni. Ez a funkció hasonlít a **teszt** lap az Azure Portalon.
 
 -HTTP funkciók elindítani a következő rendszergazda végpont hívja meg:
 
@@ -381,10 +380,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 #### <a name="using-the-func-run-command-in-version-1x"></a>Használatával a `func run` parancsot a verzió 1.x
 
->[!IMPORTANT]  
+>[!IMPORTANT]
 > A `func run` parancs nem támogatott verzió a 2.x-es eszközök. További információkért lásd a témakör [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
 
-Egy függvény segítségével közvetlenül is hívhat `func run <FunctionName>` , és adja meg a bemeneti adatokat a függvény. Ez a parancs hasonlít egy függvény használatával fut a **teszt** lap az Azure Portalon. 
+Egy függvény segítségével közvetlenül is hívhat `func run <FunctionName>` , és adja meg a bemeneti adatokat a függvény. Ez a parancs hasonlít egy függvény használatával fut a **teszt** lap az Azure Portalon.
 
 `func run` a következő beállításokat támogatja:
 
@@ -410,9 +409,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Core Tools két típusú központi, támogatja a függvény soubory projektu közvetlenül a függvényalkalmazás üzembe helyezése és üzembe helyezése egy egyéni Linux-tárolót, amely csak a verzió támogatott 2.x. Már rendelkeznie kell [egy függvényalkalmazás létrehozása az Azure-előfizetésében](functions-cli-samples.md#create).
 
-Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők. 
+Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők.
 
-### <a name="project-file-deployment"></a>Projekt fájl telepítése  
+### <a name="project-file-deployment"></a>Projekt fájl telepítése
 
 A leggyakoribb üzembe helyezési módszer magában foglalja a függvényalkalmazás projektjét, a bináris fájlok és a függőségek csomagolása és üzembe helyezni a csomagot a függvényalkalmazás Core Tools használatával. Igény szerint is [a függvényeket közvetlenül a központi telepítési csomag futtathatja](run-functions-from-deployment-package.md).
 
@@ -424,10 +423,10 @@ func azure functionapp publish <FunctionAppName>
 
 Ez a parancs az Azure-ban meglévő függvényalkalmazással tesz közzé. Hiba akkor fordul elő, amikor a `<FunctionAppName>` az előfizetés nem létezik. Megtudhatja, hogyan hozhat létre egy függvényalkalmazást a parancssort vagy terminálablakot az Azure CLI-vel, tekintse meg a [hozzon létre egy Függvényalkalmazást, kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md).
 
-A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].  
+A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].
 
->[!IMPORTANT]  
-> Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).  
+>[!IMPORTANT]
+> Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).
 > A futtatókörnyezet verziója, amely rendelkezik a meglévő funkciók függvényalkalmazás nem módosítható.
 
 A következő projekt közzététele beállítások verziója, a 1.x és 2.x a alkalmazni:
@@ -460,7 +459,7 @@ Funkciók lehetővé teszi egyéni Linux-tárolóban a Functions-projekt telepí
 func deploy
 ```
 
-A következő egyéni tároló üzembe helyezési lehetőségek állnak rendelkezésre: 
+A következő egyéni tároló üzembe helyezési lehetőségek állnak rendelkezésre:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |

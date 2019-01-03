@@ -9,18 +9,40 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d5dd2e2943d78291fc9c4903c15fb4d3767edbea
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442012"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744428"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
-Ez a cikk a Linux-ügyfelek csatlakozáskor a Microsoft Azure Files kapcsolatos gyakori problémák sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. 
+Ez a cikk a Linux-ügyfelek csatlakozáskor az Azure Files kapcsolatos gyakori problémák sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. 
 
 A hibaelhárítási lépéseket ebben a cikkben mellett használhatja [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) , győződjön meg arról, hogy a Linux-ügyfél rendelkezik-e a megfelelő előfeltételek. AzFileDiagnostics automatizálja az ebben a cikkben említett jelenségeket a legtöbb észlelését. Az optimális teljesítmény eléréséhez állítsa be a környezetet nyújt segítséget. Ezt az információt is megtalálhatja a [Azure-fájlmegosztási hibaelhárító](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). A hibaelhárító segíti a kapcsolódással, hozzárendelése és az Azure-fájlmegosztások csatlakoztatására problémákat ismerteti.
+
+<a id="mounterror13"></a>
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Error(13) csatlakoztatása: A hozzáférés megtagadva"Amikor egy Azure-fájlmegosztás csatlakoztatása
+
+### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: Nem titkosított kommunikációs csatornát
+
+Biztonsági okokból az Azure-fájlmegosztások kapcsolatok le lesznek tiltva, ha a kommunikációs csatornát nincs titkosítva, és ha a csatlakozási kísérlet nem ugyanabban az adatközpontban az Azure-fájlmegosztások-ket. Titkosítatlan kapcsolat az adatközpontokon belül is blokkolhatók, ha a [biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon. Egy titkosított kommunikációs csatornát csak akkor, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosításra van megadva.
+
+További tudnivalókért lásd: [egy az Azure file történő csatlakoztatásának előfeltételei Linux és a cifs-utils csomag megoszthatja](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+
+### <a name="solution-for-cause-1"></a>1 OK megoldás
+
+1. Csatlakozás ügyfélről, amely támogatja az SMB-titkosítás vagy csatlakozás a virtuális gép ugyanabban az adatközpontban, az Azure storage-fiókot, amely az Azure-fájlmegosztás szolgál.
+2. Ellenőrizze a [biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a tárfiókban, ha az ügyfél nem támogatja az SMB-titkosítás.
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók 
+
+Ha a virtuális hálózat (VNET) és -tűzfalszabályok konfigurálása a storage-fiók, hálózati forgalom megtagadja a hozzáférést, kivéve, ha az ügyfél IP-cím vagy a virtuális hálózati hozzáférés engedélyezett.
+
+### <a name="solution-for-cause-2"></a>Megoldás ok 2
+
+Ellenőrizze a virtuális hálózat és tűzfal-szabályok megfelelően van-e beállítva a tárfiókban. Tesztelése Amennyiben virtuális hálózat vagy a tűzfal-szabályok okozza a problémát, ideiglenesen módosíthatja a beállítás a tárfiók **engedélyezze a hozzáférést minden hálózatból elérhető**. További tudnivalókért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[engedély megtagadva] meghaladta lemezkvótát" amikor próbálja megnyitni a fájlt
@@ -47,7 +69,7 @@ Egyidejű megnyitott leírók számának csökkentése zárja be az egyes kezeli
     - Használat [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) egy helyszíni számítógépen található fájlmegosztások között.
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Error(112) csatlakoztatási: állomás leállt" újrakapcsolódási időtúllépés miatt
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Error(112) csatlakoztatása: Gazdagép miatt nem működik "újrakapcsolódási időtúllépés
 
 Ha az ügyfél hosszú ideig inaktív volt a Linux-ügyfél egy "112" csatlakoztatási hiba lép fel. Egy kiterjesztett üresjárati idő után az ügyfél kapcsolata megszakad, és a kapcsolat időtúllépés miatt.  
 
@@ -67,7 +89,7 @@ A Linux kernel újracsatlakozás a probléma már rögzített részeként a köv
 - [CIFS: Javítsa ki a lehetséges memóriasérülést reconnect során](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Javítsa ki a lehetséges dupla zárolását mutex során reconnect (kernel v4.9 és újabb)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Azonban ezeket a módosításokat előfordulhat, hogy nem lehet már még a Linux-disztribúció. Ez a javítás és a más újracsatlakozás javítja is a következő népszerű Linux-kernelek vannak: 4.4.40 4.8.16 és 4.9.1. Ez a javítás kérheti le az alábbi ajánlott kernel-verziók valamelyikét.
+Azonban ezeket a módosításokat előfordulhat, hogy nem lehet már még a Linux-disztribúció. Ez a javítás és a más újracsatlakozás javítja a következő népszerű Linux-kernelek vannak is: 4.4.40 4.8.16 és 4.9.1. Ez a javítás kérheti le az alábbi ajánlott kernel-verziók valamelyikét.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
@@ -76,7 +98,7 @@ A probléma megkerüléséhez kötött megadása. Kötött kényszeríti a ügyf
 Ha nem tudja frissíteni a legújabb kernel-verzióknál, használhatja a probléma megoldásához a fájl tartja, az Azure-fájlmegosztás vagy kevesebb mint 30 másodpercenként írt. Írási művelet, például a létrehozott vagy módosított dátum újraírását fájlon kell lennie. Ellenkező esetben a gyorsítótárazott eredményeket kaphat, és a művelet nem válthat ki az újracsatlakozás.
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Error(115) csatlakoztatási: a művelet folyamatban van" Amikor csatlakoztatja az Azure Files SMB 3.0-ás
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Error(115) csatlakoztatása: A művelet folyamatban van"Amikor csatlakoztatja az Azure Files SMB 3.0-ás
 
 ### <a name="cause"></a>Ok
 
@@ -87,6 +109,27 @@ Egyes Linux-disztribúciókon még nem támogatják a titkosítási szolgáltat�
 A titkosítási szolgáltatás az SMB 3.0-s Linux rendszeren a 4.11 kernel jelent meg. Ez a funkció lehetővé teszi, hogy az Azure-fájlmegosztások a helyszínen vagy más Azure-régióban csatlakoztatását. Ez a funkció a közzététel időpontjában backported Ubuntu 17.04 és Ubuntu 16.10 volt. 
 
 Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, csatlakoztatási Azure fájlok, az az Azure Linux VM, amely ugyanabban az adatközpontban, mivel a fájlmegosztás SMB 2.1 használatával. Ellenőrizze, hogy a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a tárfiókban. 
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Hozzáférés megtagadva" hiba történik az Azure-fájlmegosztások a portálon
+
+Ha a felhasználó Azure-fájlmegosztások a portálon, a következő hiba jelenhet meg:
+
+Hozzáférés megtagadva  
+Nincs hozzáférése  
+Úgy tűnik, nincs hozzáférése a tartalomhoz. Érhet el, forduljon a tulajdonosa.  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. ok: A felhasználói fiók nem rendelkezik a tárfiókhoz való hozzáférést
+
+### <a name="solution-for-cause-1"></a>1 OK megoldás
+
+Tallózással keresse meg a tárfiókot, ahol az Azure-fájlmegosztás, kattintson a **hozzáférés-vezérlés (IAM)** , és ellenőrizze a felhasználói fiók rendelkezik-e a tárfiókhoz való hozzáférést. További tudnivalókért lásd: [hogyan tegye biztonságossá tárfiókját, a szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók
+
+### <a name="solution-for-cause-2"></a>Megoldás ok 2
+
+Ellenőrizze a virtuális hálózat és tűzfal-szabályok megfelelően van-e beállítva a tárfiókban. Tesztelése Amennyiben virtuális hálózat vagy a tűzfal-szabályok okozza a problémát, ideiglenesen módosíthatja a beállítás a tárfiók **engedélyezze a hozzáférést minden hálózatból elérhető**. További tudnivalókért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Lassú teljesítmény az Azure-fájlmegosztás csatlakoztatása egy Linux rendszerű virtuális gépen
@@ -163,11 +206,11 @@ A probléma megoldásához használja a [eszköz hibaelhárítása az Azure File
 * Helyi rögzítés részletes útmutatást biztosít.
 * A diagnosztikai nyomkövetéseket gyűjt.
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési út&gt;": bemeneti/kimeneti hiba
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési út&gt;": Bemeneti/kimeneti hiba
 
 Fájlok listázása az Azure-fájlmegosztás meg az "ls" paranccsal, ha a parancs a fájlok listázása során lefagy. A következő hibaüzenet jelenik meg:
 
-**ls: nem érhető el "&lt;elérési út&gt;": bemeneti/kimeneti hiba**
+**ls: nem érhető el "&lt;elérési út&gt;": Bemeneti/kimeneti hiba**
 
 
 ### <a name="solution"></a>Megoldás
@@ -178,7 +221,7 @@ A Linux kernel váltson a következő verziók, amelyek a probléma megoldását
 - 4.12.11+
 - Összes verzió, amely nagyobb vagy egyenlő 4.13.
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nem hozható létre szimbolikus hivatkozások – ln: nem sikerült létrehozni a szimbolikus hivatkozást sikerült ": a művelet nem támogatott
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nem hozható létre szimbolikus hivatkozások – ln: nem sikerült létrehozni a szimbolikus hivatkozást sikerült ": A művelet nem támogatott
 
 ### <a name="cause"></a>Ok
 Alapértelmezés szerint Azure-fájlmegosztások csatlakoztatására linuxon CIFS használatával nem teszi lehetővé a szimbolikus hivatkozások (symlinks) támogatása. Ehhez hasonló hibaüzenet jelenik meg:
@@ -203,6 +246,6 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 Ezután symlinks hozhat létre a gyakran a [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

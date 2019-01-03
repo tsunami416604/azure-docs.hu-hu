@@ -3,15 +3,16 @@ title: Azure Site Recovery VMware virtuális gépek vészhelyreállítása az Az
 description: Ez a cikk áttekintést VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 22be5d7438fdb554d1550fd6675ee1884c638824
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0984f53c70baa50916e125d096a612ad8f061228
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851060"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972821"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Tudnivalók a VMware virtuális gépek vészhelyreállítása az Azure-bA
 
@@ -88,16 +89,16 @@ A helyszíni mit kell tennie:
 Miután az Azure-ban és a helyszíni infrastruktúra helyen, akkor vész-helyreállítási állíthatja.
 
 1. Az összetevőket kell telepíteni, tekintse át a [VMware-ből az Azure-architektúra](vmware-azure-architecture.md), és a [fizikai az Azure-architektúra](physical-azure-architecture.md). Nincsenek számos összetevőnek, ezért fontos megérteni, hogyan mindannyian működnek együtt.
-2. **Forráskörnyezet**: az első lépés a telepítés, állítsa be a replikációs forrás-környezetet. Mit szeretne replikálni, és ahol a replikálni kívánt kell megadni.
-3. **Konfigurációs kiszolgáló**: állítsa be a konfigurációs kiszolgáló az a helyszíni forráskörnyezetben kell:
+2. **Forráskörnyezet**: Az első lépés a telepítés, akkor a replikációs forráskörnyezet beállítása. Mit szeretne replikálni, és ahol a replikálni kívánt kell megadni.
+3. **Konfigurációs kiszolgáló**: Állítsa be a konfigurációs kiszolgáló az a helyszíni forráskörnyezetben kell:
     - A konfigurációs kiszolgálón egy egyetlen helyszíni gépre. VMware-vészhelyreállítás javasoljuk, hogy telepíteni a VMware virtuális gépként helyezhető egy letölthető OVF-sablon alapján.
     - A konfigurációs kiszolgáló koordinálja a helyszíni és Azure közötti kommunikációt
     - A konfigurációs kiszolgáló gépen futó egyéb összetevők néhány.
         - A folyamatkiszolgáló fogadja, optimalizálja, és elküldi a replikációs adatokat az Azure storage. Is kezeli a mobilitási szolgáltatás gépekre szeretne replikálni, az automatikus telepítés és a virtuális gépek automatikus felderítését végzi, VMware-kiszolgálók.
         - A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
     - Beállítása magában foglalja a konfigurációs kiszolgáló regisztrálása a tárolóban, a MySQL-kiszolgáló és a VMware powercli-t, letöltése és a fiókok megadása létrehozott automatikus felderítését és a mobilitási szolgáltatás telepítése.
-4. **Célkörnyezet**: beállítása a cél Azure-környezet az Azure-előfizetéssel, tárolási és hálózati beállításainak megadásával.
-5. **Replikációs házirend**: azt adja meg, hogyan történjen a replikáció. A beállítások tartalmazzák, milyen gyakran helyreállítási pontok létrehozása és tárolása, és hogy alkalmazáskonzisztens pillanatképek kell létrehozni.
+4. **Célkörnyezet**: Beállíthatja a cél Azure-környezet az Azure-előfizetéssel, tárolási és hálózati beállításainak megadásával.
+5. **Replikációs házirend**: Azt adja meg, hogyan történjen a replikáció. A beállítások tartalmazzák, milyen gyakran helyreállítási pontok létrehozása és tárolása, és hogy alkalmazáskonzisztens pillanatképek kell létrehozni.
 6. **Engedélyezze a replikációt**. Engedélyezheti a helyszíni gépek replikációját. Ha a mobilitási szolgáltatás telepítése egy fiókot, majd azt esetén telepítve lesz az adott gép replikálását engedélyezi. 
 
 *További segítségre van szüksége?*

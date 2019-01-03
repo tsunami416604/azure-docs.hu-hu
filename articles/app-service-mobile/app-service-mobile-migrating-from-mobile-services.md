@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961603"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714321"
 ---
 # <a name="article-top"></a>A meglévő Azure Mobile Service migrálása az Azure App Service
 Az a [az Azure App Service általános elérhetősége], az Azure Mobile Services-webhelyek könnyen migrálhatók helyi kihasználásához az Azure App Service összes funkcióját.  Ez a dokumentum leírja, mi történik, ha telepítheti át webhelyét az Azure Mobile Services az Azure App Service-ben.
@@ -310,7 +310,7 @@ Diagnosztikai naplózás általában le van tiltva, az Azure App Service-ben.  D
 2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
 4. Válassza ki **diagnosztikai naplók** a szolgáltatások menüpont alatt.
-5. Kattintson a **ON** esetében a következő naplók kapcsolódnak: **Application Logging (fájlrendszer)**, **részletes hibaüzenetek**, és **sikertelen kérelmek nyomkövetése**
+5. Kattintson a **ON** esetében a következő naplók kapcsolódnak: **Alkalmazásnaplózás (fájlrendszer)**, **részletes hibaüzenetek**, és **sikertelen kérelmek nyomkövetése**
 6. Kattintson a **fájlrendszer** a webkiszolgálói naplózás
 7. Kattintson a **Mentés** gombra.
 
@@ -327,7 +327,7 @@ Naplók az ablakban jelennek meg, akkor jönnek létre.  A naplók újabb elemz�
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Egy hely szolgáltatáskimaradás törlése a Mobile App áttelepített klón okoz
 Az Azure PowerShell-lel áttelepített mobilszolgáltatás klónozza, majd törli a klón, a DNS-bejegyzést a termelési service távolítja el.  A webhely már nem elérhető az internetről.  
 
-Megoldás: Ha a hely klónozza, tegye meg a portálon keresztül.
+Megoldás: Ha szeretné a hely klónozza, tegye meg a portálon keresztül.
 
 ### <a name="changing-webconfig-does-not-work"></a>Módosítja a Web.config nem működik
 Egy ASP.NET-hellyel rendelkezik, ha módosítja a `Web.config` fájl nincs alkalmazva.  Az Azure App Service összeállít egy megfelelő `Web.config` fájl támogatásához a mobilszolgáltatások modul indítása során.  XML-átalakítás fájl használatával bizonyos beállításokat (például egyéni fejlécek) felül lehet bírálni.  Hozzon létre egy fájlt a nevű `applicationHost.xdt` -Ez a fájl végződése a `D:\home\site` az Azure Service könyvtárába.  Töltse fel a `applicationHost.xdt` fájlt egy egyéni üzembehelyezési szkript keresztül, vagy közvetlenül a Kudu használatával.  Az alábbiakban látható egy példa a dokumentum:
@@ -376,25 +376,25 @@ Most, hogy az alkalmazás az App Service szolgáltatásba való áttelepítése,
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatikus vertikális felskálázás]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [Klasszikus Azure portál]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Az Azure Scheduler-csomagok]: ../scheduler/scheduler-plans-billing.md
-[folyamatos üzembe helyezését]: ../app-service/app-service-continuous-deployment.md
+[folyamatos üzembe helyezését]: ../app-service/deploy-continuous-deployment.md
 [A vegyes névtér konvertálása]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [Egyéni tartománynevek]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [az Azure App Service általános elérhetősége]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Logging]: ../app-service/web-sites-enable-diagnostic-log.md
+[Logging]: ../app-service/troubleshoot-diagnostic-logs.md
 [A Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [A Mobile Services kontra App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Értesítési központ]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Alkalmazásteljesítmény-figyelés]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[előkészítési ponton]: ../app-service/web-sites-staged-publishing.md
+[előkészítési ponton]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [Átalakítás XDT a minták]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Functions]: ../azure-functions/functions-overview.md

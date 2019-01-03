@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7c1d3adec6fd718df12abde1b56a89e662de284e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139520"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538990"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
@@ -81,16 +81,16 @@ Például, ha a proxy tartozik egy útvonal-sablont, például `/pets/{petId}`, 
 Az útvonal Sablonparaméterek mellett a következő értékeket is használható konfigurációs értékek:
 
 * **{request.method}** : A HTTP-metódus, amely az eredeti kérésére szolgál.
-* **{request.headers. \<HeaderName\>}**: egy fejlécet, amely az eredeti kérést is olvasható. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevét. Ha a kérelem nem tartalmazza a fejléc, az érték nem üres karakterlánc.
-* **{request.querystring. \<ParameterName\>}**: képes olvasni az eredeti kérést a lekérdezési sztring paramétereként. Cserélje le *\<ParameterName\>* az olvasni kívánt paraméter nevére. A kérelem nem tartalmazza a paramétert, ha az érték lesz az üres karakterlánc.
+* **{request.headers. \<HeaderName\>}**: A fejlécet, amely az eredeti kérést is olvasható. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevét. Ha a kérelem nem tartalmazza a fejléc, az érték nem üres karakterlánc.
+* **{request.querystring. \<ParameterName\>}**: Lekérdezési sztring paramétereként, amely az eredeti kérést is olvasható. Cserélje le *\<ParameterName\>* az olvasni kívánt paraméter nevére. A kérelem nem tartalmazza a paramétert, ha az érték lesz az üres karakterlánc.
 
 ### <a name="response-parameters"></a>Háttér-válasz paraméterek
 
 Válasz paraméterek módosítása a válasz az ügyfélhez részeként is használható. A következő értékeket a konfigurációs értékek használhatók:
 
-* **{backend.response.statusCode}** : A háttér-válasz visszaadott a HTTP-állapotkódot.
-* **{backend.response.statusReason}** : A HTTP-indoklás, akkor a háttérbeli választ adja vissza.
-* **{backend.response.headers. \<HeaderName\>}**: egy fejlécet, amely a háttér-válaszból olvasható. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevét. Ha a válasz nem tartalmazza a fejléc, az érték nem üres karakterlánc.
+* **{backend.response.statusCode}** : A háttér-válasz visszaadott HTTP-állapotkódot.
+* **{backend.response.statusReason}** : A háttér-válasz visszaadott HTTP indoklás.
+* **{backend.response.headers. \<HeaderName\>}**: A fejlécet, amely a háttér-válaszból olvasható. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevét. Ha a válasz nem tartalmazza a fejléc, az érték nem üres karakterlánc.
 
 ### <a name="use-appsettings"></a>Referencia-Alkalmazásbeállítások
 
@@ -139,12 +139,12 @@ Az Ön által konfigurált proxyk vannak tárolva egy *proxies.json* fájlt, ame
 
 Minden egyes proxy tartozik egy rövid nevet, például *proxy1* az előző példában. A megfelelő proxykiszolgáló-definíciós objektummal határozzák meg a következő tulajdonságokkal:
 
-* **matchCondition**: szükséges – az objektum meghatározása a kéréseket, amelyek a proxy végrehajtásának aktiválása. Megosztott két tulajdonságot tartalmaz [HTTP-eseményindítók]:
-    * _metódusok_:, amely a proxy válaszol a HTTP-metódusok tömbjét. Ha nincs megadva, a proxy válaszol az összes HTTP-metódusok a útvonalon.
-    * _útvonal_: szükséges – határozza meg az útvonalsablonhoz, szabályozásával, amely kérelem URL-címek a proxy válaszol. Ellentétben a HTTP-eseményindítók esetén nincs alapértelmezett érték.
-* **backendUri**: az URL-cím a háttér-erőforrás, amelyhez a kérés küldése a proxyn keresztül kell lennie. Ez az érték hivatkozhat alkalmazás beállítás- és az eredeti ügyfél kérelemből. Ha ez a tulajdonság nem található, az Azure Functions válaszol egy HTTP 200 OK.
-* **requestOverrides**: egy objektum, amely meghatározza az átalakítások a háttér-kérelemre. Lásd: [egy requestOverrides objektum meghatározása].
-* **responseOverrides**: egy objektum, amely meghatározza az átalakítások, az ügyfél válaszára. Lásd: [egy responseOverrides objektum meghatározása].
+* **matchCondition**: Kötelező – meghatározása a kéréseket, amelyek a proxy végrehajtásának aktiválása egy objektumot. Megosztott két tulajdonságot tartalmaz [HTTP-eseményindítók]:
+    * _metódusok_: A proxy válaszol a HTTP-metódusok tömbje. Ha nincs megadva, a proxy válaszol az összes HTTP-metódusok a útvonalon.
+    * _útvonal_: Kötelező – meghatározza az útvonalsablonhoz, szabályozásával, amely kérelem URL-címek a proxy válaszol. Ellentétben a HTTP-eseményindítók esetén nincs alapértelmezett érték.
+* **backendUri**: Az URL-címe a háttér-erőforrás, amelyhez a kérés küldése a proxyn keresztül kell lennie. Ez az érték hivatkozhat alkalmazás beállítás- és az eredeti ügyfél kérelemből. Ha ez a tulajdonság nem található, az Azure Functions válaszol egy HTTP 200 OK.
+* **requestOverrides**: Egy objektum, amely meghatározza az átalakítások a háttér-kérelemre. Lásd: [egy requestOverrides objektum meghatározása].
+* **responseOverrides**: Az átalakítások meghatározása az ügyfél válaszára való objektum. Lásd: [egy responseOverrides objektum meghatározása].
 
 > [!NOTE] 
 > A *útvonal* tulajdonság frissítése az Azure Functions-proxyk nem fogadja el a *routePrefix* a Függvényalkalmazás állomáskonfiguráció tulajdonságát. Ha például tartalmazzon egy előtagot `/api`, bele kell foglalni a *útvonal* tulajdonság.
@@ -161,7 +161,7 @@ Letilthatja egyes proxyk hozzáadásával `"disabled": true` , a proxy a `proxie
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
@@ -187,9 +187,9 @@ Olvassa el az összes karakterlánc értelmezése, kivéve a kapcsos zárójelek
 
 A requestOverrides objektuma határozza meg, amikor a háttér-erőforrás neve a kérés végzett módosítások. Az objektum az alábbi tulajdonságokat határozzák meg:
 
-* **backend.Request.Method**: A HTTP-metódus a háttéralkalmazás meghívásához használt.
-* **backend.Request.QueryString. \<ParameterName\>**: egy lekérdezési karakterlánc paramétereként, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<ParameterName\>* , amely beállítja a paraméter nevével. Ha az üres karakterlánc van megadva, a paraméter nem szerepel a háttér-kérés.
-* **backend.Request.Headers. \<HeaderName\>**: egy fejlécet, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<HeaderName\>* nevét a fejlécet, amely a következőt kívánja beállítani. Az üres karakterláncot adjon meg, ha a háttér-kérelem nem tartalmazza a fejlécet.
+* **backend.Request.Method**: A háttéralkalmazás meghívásához használt HTTP-metódus.
+* **backend.Request.QueryString. \<ParameterName\>**: Lekérdezési sztring paramétereként, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<ParameterName\>* , amely beállítja a paraméter nevével. Ha az üres karakterlánc van megadva, a paraméter nem szerepel a háttér-kérés.
+* **backend.Request.Headers. \<HeaderName\>**: A fejlécet, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<HeaderName\>* nevét a fejlécet, amely a következőt kívánja beállítani. Az üres karakterláncot adjon meg, ha a háttér-kérelem nem tartalmazza a fejlécet.
 
 Értékek hivatkozhatnak Alkalmazásbeállítások és a paraméterek az eredeti ügyfél kérelemből.
 
@@ -219,9 +219,9 @@ Konfiguráció például előfordulhat, hogy a következőhöz hasonló:
 A requestOverrides objektuma határozza meg, hogy a válasz az ügyfélhez átadott végrehajtott módosításokat. Az objektum az alábbi tulajdonságokat határozzák meg:
 
 * **response.statusCode**: A HTTP-állapotkódot kell visszaadni az ügyfélnek.
-* **response.statusReason**: A HTTP-indoklás, az ügyfél számára.
-* **Response.body**: az ügyfél számára, hogy a szervezet karakteres formáját.
-* **Response.Headers. \<HeaderName\>**: egy fejlécet, amely beállítható a válasz az ügyfélhez. Cserélje le *\<HeaderName\>* nevét a fejlécet, amely a következőt kívánja beállítani. Az üres karakterláncot adjon meg, ha a fejléc nem szerepel a válasz.
+* **response.statusReason**: A HTTP indoklás, az ügyfél számára.
+* **Response.body**: Az ügyfél számára, hogy a szervezet karakteres formáját.
+* **Response.Headers. \<HeaderName\>**: A fejlécet, amely beállítható a válasz az ügyfélhez. Cserélje le *\<HeaderName\>* nevét a fejlécet, amely a következőt kívánja beállítani. Az üres karakterláncot adjon meg, ha a fejléc nem szerepel a válasz.
 
 Értékek Alkalmazásbeállítások, az ügyfél eredeti kérés paraméterei és paramétereket is lehet hivatkozni a háttér-válaszból.
 

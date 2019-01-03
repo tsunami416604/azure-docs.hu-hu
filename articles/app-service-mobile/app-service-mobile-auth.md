@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: de501b79107aafa61c489db607c37d086a5f4ed4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408017"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715785"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés az Azure App Service-mobilalkalmazásokhoz
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan működik a hitelesítés és engedélyezés, hogy e
 
 Ez a cikk a mobilalkalmazás-fejlesztés összpontosít. Gyors használatbavétele az App Service-hitelesítés és engedélyezés az alkalmazásokba, tekintse meg a következő oktatóanyagokban [hitelesítés hozzáadása az iOS-alkalmazás] [ iOS] (vagy [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms], vagy [Cordova]). 
 
-Az App Service-ben hitelesítési és engedélyezési működéséről további információért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md).
+Az App Service-ben hitelesítési és engedélyezési működéséről további információért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/overview-authentication-authorization.md).
 
 ## <a name="authentication-with-provider-sdk"></a>Hitelesítés az SDK-t szolgáltató
 
@@ -44,7 +44,7 @@ SDK-szolgáltatót használ, amikor is bejelentkeznek egy szolgáltatás, amelyn
 
 Egy szolgáltató token beszerzését követően kell az App Service-ellenőrzés kell elküldeni. App Service-ben érvényesíti a jogkivonatot, miután az App Service-ben egy új App Service-jogkivonatot az ügyfélnek visszaadott hoz létre. A Mobile Apps ügyfél-SDK segédmetódusokat kezelését az exchange, és automatikusan csatolja a jogkivonat az alkalmazás háttérrendszere érkező összes kérés rendelkezik. A fejlesztők is, hogy a szolgáltató token hivatkozást.
 
-A hitelesítési folyamat további információkért lásd: [App Service-hitelesítési folyamat](../app-service/app-service-authentication-overview.md#authentication-flow). 
+A hitelesítési folyamat további információkért lásd: [App Service-hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
 
 ## <a name="authentication-without-provider-sdk"></a>Hitelesítési szolgáltató SDK nélkül
 
@@ -52,10 +52,10 @@ Ha nem szeretne egy SDK-szolgáltató beállítása, a Mobile Apps szolgáltatá
 
 Ez a folyamat elindításához a kód a hitelesítési oktatóanyagának az egyes platformokra vonatkozó tartalmazza. A folyamat végén az ügyfél-SDK tartalmaz egy App Service-tokent, és a jogkivonat automatikusan csatlakozik az alkalmazás háttérrendszerével minden kérelemhez.
 
-A hitelesítési folyamat további információkért lásd: [App Service-hitelesítési folyamat](../app-service/app-service-authentication-overview.md#authentication-flow). 
+A hitelesítési folyamat további információkért lásd: [App Service-hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
 ## <a name="more-resources"></a>További erőforrások
 
-Az alábbi oktatóanyagok bemutatják, hogyan hitelesítés hozzáadása a mobil ügyfélprogramok használatával a [kiszolgáló által vezérelt folyamat](../app-service/app-service-authentication-overview.md#authentication-flow):
+Az alábbi oktatóanyagok bemutatják, hogyan hitelesítés hozzáadása a mobil ügyfélprogramok használatával a [kiszolgáló által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow):
 
 * [Hitelesítés hozzáadása az iOS-alkalmazás][iOS]
 * [Hitelesítés hozzáadása az Android-alkalmazás][Android]
@@ -65,21 +65,21 @@ Az alábbi oktatóanyagok bemutatják, hogyan hitelesítés hozzáadása a mobil
 * [Hitelesítés hozzáadása a Xamarin.Forms-alkalmazás][Xamarin.Forms]
 * [Hitelesítés hozzáadása a Cordova-alkalmazás][Cordova]
 
-Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/app-service-authentication-overview.md#authentication-flow) az Azure Active Directory:
+Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow) az Azure Active Directory:
 
 * [Az Active Directory Authentication Library használata iOS-hez][ADAL-iOS]
 * [Használja az Active Directory Authentication Library for Android][ADAL-Android]
 * [Használja az Active Directory Authentication Library for Windows és a Xamarin][ADAL-dotnet]
 
-Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/app-service-authentication-overview.md#authentication-flow) a Facebookhoz:
+Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow) a Facebookhoz:
 
 * [A Facebook-SDK használata iOS-hez](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/app-service-authentication-overview.md#authentication-flow) a Twitter használatához:
+Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow) a Twitter használatához:
 
 * [Twitter-háló használata iOS-hez](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/app-service-authentication-overview.md#authentication-flow) for Google:
+Az alábbi forrásanyagokból Ha használni szeretné a [ügyfél által vezérelt folyamat](../app-service/overview-authentication-authorization.md#authentication-flow) for Google:
 
 * [A Google bejelentkezési SDK használata iOS-hez](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 

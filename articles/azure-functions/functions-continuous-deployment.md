@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301548"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548595"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és az Azure DevOps. Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
@@ -26,7 +26,7 @@ A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amel
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * Külső tárház (a Git vagy Mercurial)
-* [Helyi Git-tárház](../app-service/app-service-deploy-local-git.md)
+* [Helyi Git-tárház](../app-service/deploy-local-git.md)
 * [GitHubon](https://github.com)
 * [Onedrive vállalati verzió](https://onedrive.live.com/)
 * [Az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/)
@@ -52,7 +52,7 @@ Ezzel az eljárással meglévő függvényalkalmazással – folyamatos üzembe 
  
     ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. Az a **központi telepítés forrása** panelen kattintson a **forrás választása**, majd töltse ki a kiválasztott központi telepítés forrása az információkat, és kattintson a **OK**.
+3. Az a **központi telepítés forrása** panelen kattintson a **forrás választása**, majd töltse ki a kiválasztott központi telepítés forrása az információkat, és kattintson a **OK**.
    
     ![Válassza ki a központi telepítés forrása](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -93,12 +93,12 @@ Ha rendelkezik meglévő funkciók, amelyek a létrehozott és karbantartott a p
 > [!NOTE]
 > Miután beállította a folyamatos integráció, már nem szerkesztheti a forrásfájlokat, a Functions portálján.
 
-- [Hogyan: üzembe helyezési hitelesítő adatok konfigurálása](#credentials)
-- [Hogyan: Töltse le a fájlt FTP használatával](#downftp)
-- [Útmutató: a helyi Git-tárház használatával fájlok letöltése](#downgit)
+- [kézikönyv: Üzembe helyezési hitelesítő adatok konfigurálása](#credentials)
+- [kézikönyv: Töltse le a fájlt FTP használatával](#downftp)
+- [kézikönyv: Töltse le a fájlt a helyi Git-tárház használatával](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>Hogyan: üzembe helyezési hitelesítő adatok konfigurálása
+#### <a name="how-to-configure-deployment-credentials"></a>Útmutató: Üzembe helyezési hitelesítő adatok konfigurálása
 Fájlokat tölthet le a függvényalkalmazás az FTP- vagy a helyi Git-tárház, konfigurálnia kell a hitelesítő adatait, a webhely elérésére. Hitelesítő adatok beállítása függvény alkalmazási szinten. A következő lépések segítségével üzembe helyezési hitelesítő adatok beállítása az Azure Portalon:
 
 1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **üzembe helyezési hitelesítő adatok**.
@@ -108,7 +108,7 @@ Fájlokat tölthet le a függvényalkalmazás az FTP- vagy a helyi Git-tárház,
 2. Írja be a felhasználónevet és jelszót, majd kattintson a **mentése**. A függvényalkalmazás eléréséhez az FTP- vagy a beépített Git-tárház mostantól használhatja ezeket a hitelesítő adatokat.
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>Hogyan: Töltse le a fájlt FTP használatával
+#### <a name="how-to-download-files-using-ftp"></a>Útmutató: Töltse le a fájlt FTP használatával
 
 1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **tulajdonságok**, majd másolja a tartozó értékeket. **FTP vagy üzembe helyező felhasználó**, **FTP-állomásnév**, és **FTPS-állomásnév**.  
 
@@ -119,7 +119,7 @@ Fájlokat tölthet le a függvényalkalmazás az FTP- vagy a helyi Git-tárház,
 2. Az FTP-ügyféllel, használja a kapcsolati adatokat gyűjtött az alkalmazás és az a funkciók a forrásfájlok letöltéséhez.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Hogyan: Töltse le a fájlt egy helyi Git-tárház használatával
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>Útmutató: Töltse le a fájlt egy helyi Git-tárház használatával
 
 1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **központi telepítési beállítások**. 
    

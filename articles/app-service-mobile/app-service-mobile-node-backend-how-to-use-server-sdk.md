@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409258"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725031"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 
@@ -153,14 +153,14 @@ Ha egy Node.js Mobile Apps-háttéralkalmazás létrehozása a portál használa
 Az alábbi eljárás egy Git-tárház használatával töltse le a rövid útmutató projekt kódja:
 
 1. Ha ezt még nem tette meg, telepítse a Git. A Git telepítéséhez szükséges lépések eltérőek lehetnek, operációs rendszerek között. Operációsrendszer-specifikus disztribúciók és a telepítéssel kapcsolatos útmutató: [telepítése Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
-1. Lásd: [készítse elő a tárház](../app-service/app-service-deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
-1. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
-1. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
+2. Lásd: [készítse elő a tárház](../app-service/deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
+3. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
+4. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. Tallózással keresse meg a helyi könyvtárban (`/todolist` az előző példában), és figyelje meg, hogy project fájlok le vannak töltve. Keresse meg a todoitem.json fájlt a `/tables` könyvtár. Ez a fájl engedélyeit a tábla határozza meg. Ugyanabban a címtárban todoitem.js fájl is található. Azt határozza meg a CRUD-MŰVELETEKKEL művelet parancsfájlok a táblához.
-1. Soubory projektu: futtassa a következő parancsokat hozzáadása, módosítása után véglegesítés, és ezután töltse fel a módosítások a hely:
+5. Tallózással keresse meg a helyi könyvtárban (`/todolist` az előző példában), és figyelje meg, hogy project fájlok le vannak töltve. Keresse meg a todoitem.json fájlt a `/tables` könyvtár. Ez a fájl engedélyeit a tábla határozza meg. Ugyanabban a címtárban todoitem.js fájl is található. Azt határozza meg a CRUD-MŰVELETEKKEL művelet parancsfájlok a táblához.
+6. Soubory projektu: futtassa a következő parancsokat hozzáadása, módosítása után véglegesítés, és ezután töltse fel a módosítások a hely:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -968,10 +968,10 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [Google-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-google.md
 [A Microsoft-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-microsoft.md
 [Twitter-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-twitter.md
-[Az Azure App Service üzembe helyezési útmutató]: ../app-service/app-service-deploy-local-git.md
+[Az Azure App Service üzembe helyezési útmutató]: ../app-service/deploy-local-git.md
 [Az Azure App Service figyelése]: ../app-service/web-sites-monitor.md
-[Az Azure App Service-diagnosztikai naplózás engedélyezése]: ../app-service/web-sites-enable-diagnostic-log.md
-[Az Azure App Service a Visual Studio alkalmazásban hibaelhárításához]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Az Azure App Service-diagnosztikai naplózás engedélyezése]: ../app-service/troubleshoot-diagnostic-logs.md
+[Az Azure App Service a Visual Studio alkalmazásban hibaelhárításához]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Adja meg a csomópont verziója]: ../nodejs-specify-node-version-azure-apps.md
 [Node-modulok használata]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
