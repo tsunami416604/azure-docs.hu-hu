@@ -1,21 +1,18 @@
 ---
 title: Hozzon létre és kezelhető az Azure Database for MySQL-tűzfalszabályok Azure CLI használatával
 description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI parancssori.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ece07d2be605f51e08274649f3ea15e3bbba472
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e4aabaf2673f6211523653f9d0a0ecf1769f83a3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134896"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549003"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI-vel
 Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák számára, hogy hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályait](./concepts-firewall-rules.md)
@@ -28,11 +25,11 @@ Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák szám�
 A **az mysql server firewall-rule** parancs segítségével az Azure parancssori felületen létrehozása, törlése, listázása, megjelenítése és tűzfalszabályainak frissítése.
 
 Parancsok:
-- **Hozzon létre**: hozzon létre egy Azure-beli MySQL-kiszolgáló tűzfalszabályt.
-- **Törlés**: egy Azure-beli MySQL-kiszolgáló tűzfalszabály törlése.
-- **lista**: az Azure-beli MySQL-kiszolgáló tűzfalszabályainak listázása.
-- **Megjelenítés**: tűzfalszabály létrehozása az Azure-beli MySQL-kiszolgáló részleteinek megjelenítéséhez.
-- **frissítés**: egy Azure-beli MySQL-kiszolgáló tűzfalszabály módosítása.
+- **Hozzon létre**: Hozzon létre egy Azure-beli MySQL-kiszolgáló tűzfalszabályt.
+- **Törlés**: Egy Azure-beli MySQL-kiszolgáló tűzfalszabály törlése.
+- **Lista**: Az Azure-beli MySQL-kiszolgáló tűzfalszabályainak listája.
+- **Megjelenítés**: Tűzfalszabály létrehozása az Azure-beli MySQL-kiszolgáló részleteinek megjelenítéséhez.
+- **Frissítés**: Frissítse az Azure-beli MySQL-kiszolgálói tűzfalszabályt.
 
 ## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Jelentkezzen be az Azure-ba, és listázása az Azure Database for MySQL-kiszolgálók
 Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az bejelentkezési** parancsot.

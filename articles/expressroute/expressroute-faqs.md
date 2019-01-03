@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6de5fefa3d70c1daecf00909d3ce44d4a4d8561c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077749"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543563"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -27,7 +27,7 @@ Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. A szokván
 
 ### <a name="where-is-the-service-available"></a>Hol érhető el a szolgáltatást?
 
-Szolgáltatáskeresés és rendelkezésre állás érdekében ezt oldal jelenik meg: [ExpressRoute-partnerek és helyek](expressroute-locations.md).
+Szolgáltatáskeresés és rendelkezésre állás érdekében ezt oldal jelenik meg: [Az ExpressRoute-partnerek és helyek](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Hogyan használhatom az ExpressRoute csatlakozni a Microsoft, ha az ExpressRoute-szolgáltató partnereink egyikével partneri nem rendelkezem?
 
@@ -166,7 +166,7 @@ Igen. Legfeljebb 10 virtuális hálózati kapcsolatok standard ExpressRoute-kapc
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Több Azure-virtuális hálózatokat tartalmazó előfizetéssel rendelkezem. Egyetlen ExpressRoute-kapcsolatcsoporthoz különböző előfizetésben található virtuális hálózat kapcsolható össze?
 
-Igen. Legfeljebb 10 más Azure-előfizetések egy ExpressRoute-kapcsolatcsoport használatával engedélyezhető. Ez a korlátozás az ExpressRoute prémium funkció engedélyezésével növelhető.
+Igen. Legfeljebb 10 virtuális hálózatok ugyanahhoz az előfizetéshez, a kapcsolatcsoport vagy eltérő előfizetésekben használatával egy ExpressRoute-kapcsolatcsoport a kapcsolat. Ez a korlátozás az ExpressRoute prémium funkció engedélyezésével növelhető.
 
 További információkért lásd: [ExpressRoute-kapcsolatcsoport megosztása több előfizetés között](expressroute-howto-linkvnet-arm.md).
 

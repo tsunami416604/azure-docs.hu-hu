@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496922"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579957"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
 
@@ -22,13 +22,13 @@ Után végezze el az adatok modellezése a HDInsight fürt Machine Learning-szol
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
+* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: Útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
 
-* **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **A Secure Shell (SSH) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtasson parancsokat szolgál. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Egy beépített konfigurációban a Machine Learning-szolgáltatások-fürt üzembe helyezése
 
-> [!NOTE]
+> [!NOTE]  
 > Az alábbi lépéseket az R Server 9.0 és gépi Tanulási Server 9.1 vonatkoznak. ML Server 9.3, tekintse meg a [az eszköz használata kezelheti az operacionalizálás konfigurációja](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
@@ -159,7 +159,7 @@ Kövesse az alábbi lépéseket a feldolgozó csomópontok leszerelése:
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az átjárócsomópontokat.
 * Válassza ki **műveletek** > **kiválasztott gazdagépek** > "**gazdagépek** > **összes összetevő újraindítása**.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: Konfigurálja számítási csomópontok az összes leszerelt feldolgozó csomóponton
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: Számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomóponton
 
 1. Jelentkezzen be SSH-n keresztül minden egyes leszerelt feldolgozó csomópontba.
 
@@ -173,7 +173,7 @@ Kövesse az alábbi lépéseket a feldolgozó csomópontok leszerelése:
 
 1. Lépjen ki az admin segédprogramból.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3. lépés: Adja hozzá a számítási csomópontok részleteinek a web csomóponton
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3. lépés: A web csomóponton a számítási csomópontok részleteinek megadása
 
 Az összes leszerelt feldolgozó csomópontok futtatásához a számítási csomópont konfigurálása után térjen vissza az élcsomóponti operacionalizáláshoz, és adja hozzá a leszerelt feldolgozó csomópontok IP-címek az ML Server webcsomópontjának konfigurációjában:
 

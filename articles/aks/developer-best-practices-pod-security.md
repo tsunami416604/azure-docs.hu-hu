@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 8acd69480d6cd441c33ccc696794977bbfbfd975
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110050"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559076"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) pod biztonsági védelmének bevált gyakorlata
 
-Fejlesztés és alkalmazások futtatásához az Azure Kubernetes Service (AKS), a podok biztonságát kulcs veszi figyelembe. Az alkalmazásokat úgy kell megtervezni a rendszerbiztonsági tag a szükséges jogosultságok minimális számát. Felső részén szem előtt az ügyfeleknek titkos adatok biztonságos kezelése mellett. Nem szeretné, hogy hitelesítő adatokat, például adatbázis-kapcsolati karakterláncokat, kulcsok vagy titkos kulcsok és tanúsítványok a külvilág számára elérhetővé tett, ahol egy megtámadott sikerült kihasználhatja ezeket a titkos kódok és rosszindulatú célokra. Nem hozzáadhatja őket a kód, vagy a tárolólemezképek beágyazása őket. Ezt a módszert akkor hozzon létre egy kockázatát mérik a különböző és elforgatásának ezeket a hitelesítő adatokat, mint a tárolórendszerképeket építhető újra kell korlátozni.
+Fejlesztés és alkalmazások futtatásához az Azure Kubernetes Service (AKS), a podok biztonságát kulcs veszi figyelembe. Az alkalmazásokat úgy kell megtervezni a minimális száma, szükséges jogosultságok elvét. Felső részén szem előtt az ügyfeleknek titkos adatok biztonságos kezelése mellett. Nem kívánt hitelesítő adatokat, például adatbázis-kapcsolati karakterláncok, kulcsok vagy titkos kulcsok és tanúsítványok a külvilág, ahol a támadó sikerült kihasználhatja ezeket a titkos kódok és rosszindulatú célokra vannak kitéve. Nem hozzáadhatja őket a kód, vagy a tárolólemezképek beágyazása őket. Ezt a módszert akkor hozzon létre egy kockázatát mérik a különböző és elforgatásának ezeket a hitelesítő adatokat, mint a tárolórendszerképeket építhető újra kell korlátozni.
 
 Ajánlott eljárások a cikkben az aks-ben mennyire vannak biztonságban podok összpontosít. Az alábbiak végrehajtásának módját ismerheti meg:
 

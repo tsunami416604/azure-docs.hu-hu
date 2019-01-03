@@ -1,63 +1,60 @@
 ---
-title: Hozzon létre és tűzfalszabályok MySQL az Azure-adatbázisban kezelheti a MySQL
-description: Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályokat az Azure portál használatával
-services: mysql
+title: Létrehozása és kezelése a MySQL tűzfalszabályok az Azure Database for MySQL-hez
+description: Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: f7d2d97049d73387f44f55bbd2fb90a6174a9df2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265860"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543529"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis a MySQL tűzfalszabályok az Azure portál használatával
-Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák az Azure-adatbázisának eléréséhez MySQL-kiszolgáló a megadott IP-cím vagy egy adott IP-címeket. 
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával
+Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák eléréséhez egy Azure Database for MySQL-kiszolgáló megadott IP-cím vagy egy IP-címtartományt. 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 
-1. A MySQL-kiszolgáló a beállítások lapon elemcsoportban kattintson **kapcsolatbiztonsági** nyissa meg a kapcsolat biztonsági beállításait tartalmazó lapot a MySQL az Azure-adatbázis számára.
+1. A MySQL server beállítások lapon szakaszban kattintson **kapcsolatbiztonság** a kapcsolatbiztonság lap megnyitásához az Azure Database for MySQL-hez.
 
-   ![Azure portál – kattintson a kapcsolat biztonságát](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Kattintson a **hozzáadása a saját IP** az eszköztáron. Ez automatikusan létrehozza a tűzfalszabályok a számítógép a nyilvános IP-címmel, az Azure rendszer által érzékelt.
+2. Kattintson a **adjon hozzá saját IP-címet** az eszköztáron. Ez automatikusan hoz létre egy tűzfalszabályt a számítógép nyilvános IP-címét, az Azure rendszer által érzékelt.
 
-   ![Azure portál – kattintson a saját IP-cím hozzáadása](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   ![Az Azure portal – kattintson a Hozzáadás saját IP-cím](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. Az IP-cím ellenőrzése a konfiguráció mentéséhez. Bizonyos esetekben az IP-cím, az Azure portál által megfigyelt eltér az internetes és az Azure-kiszolgálók eléréséhez használt IP-címét. Emiatt előfordulhat, hogy módosítani szeretné a kezdő IP- és a záró IP-, a várt módon szabály függvény végrehajtásához.
+3. Az IP-cím ellenőrzése a konfiguráció mentése előtt. Bizonyos esetekben az Azure portal által megfigyelt IP-cím eltér az internetes és az Azure-kiszolgálókkal való elérésekor használt IP-cím. Emiatt előfordulhat, hogy módosítani szeretné a kezdő IP- és a záró IP-cím, hogy a szabály az elvárt módon működnek.
 
-   Egy keresőmotor vagy más online eszközt használja a saját IP-cím ellenőrzése. Keresse meg például, "Mi az az IP-cím". 
+   Egy keresőmotor vagy egyéb online eszközt használja a saját IP-cím ellenőrzése. Például keresés, "Mi az saját IP-cím". 
 
-   ![Mi az a saját IP Bing](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   ![Mi az a saját IP-cím a Bing](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Adjon hozzá további címtartományok. Az adatbázisra vonatkozó tűzfalszabályok az Azure a MySQL megadhatja a egyetlen IP-cím vagy címtartományokat. Ha szeretné korlátozni a szabály, amely egyetlen IP-címnek, írja be ugyanazt a címet a kezdő IP- és a záró IP-Címnél. A tűzfal megnyitása lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazás minden rendelkeznek érvényes hitelesítő adatokat a MySQL kiszolgálón-adatbázisának eléréséhez.
+4. További címtartomány hozzáadásához. A tűzfalszabályok az Azure Database for MySQL, az egyetlen IP-címet vagy címtartományt is megadhat. Ha szeretné korlátozni a szabályt, hogy egyetlen IP-címet, írja be ugyanazt a címet a kezdő IP- és a záró IP-cím mezőt. A tűzfal megnyitása után lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazás eléréséhez, amelyhez érvényes hitelesítő adatokkal rendelkeznek a MySQL-kiszolgáló bármely olyan adatbázisába.
 
-   ![Azure portál – tűzfalszabályok ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Az Azure portal - tűzfalszabályok ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. Kattintson a **mentése** az eszköztáron menteni a kiszolgálószintű tűzfalszabály. Várjon, amíg a megerősítést, hogy a frissítés, hogy a tűzfalszabályok sikeres.
+5. Kattintson a **mentése** gombra az eszköztárban, a kiszolgálószintű tűzfalszabály mentéséhez. Várjon, amíg a visszaigazolás, hogy létrejött-e a tűzfalszabályok a frissítést.
 
-   ![Azure portál – válassza a Mentés](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   ![Az Azure portal – kattintson a Mentés gombra](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
-Lehetővé teszik az alkalmazások az Azure-ból a MySQL-kiszolgáló Azure-adatbázishoz való kapcsolódáshoz, Azure-kapcsolatok engedélyezni kell. Például egy Azure Web Apps alkalmazást vagy olyan alkalmazás, amely egy Azure virtuális gép üzemeltetésére, vagy csatlakoztassa egy Azure Data Factory az adatkezelési átjáró. Az erőforrások nem kell ugyanazt a virtuális hálózatot (VNet) vagy a tűzfalszabály tartozó erőforráscsoport ahhoz, hogy ezeket a kapcsolatokat. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Többféle módszer ahhoz, hogy ilyen típusú kapcsolatokat. A 0.0.0.0 kezdő- és zárócímet tartalmazó tűzfalbeállítás jelzi, hogy ezek a kapcsolatok engedélyezettek. Beállíthatja azt is megteheti, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséggel **ON** a portálon a **kapcsolatbiztonsági** ablaktáblán, és nyomja le **mentése**. A kapcsolódási kísérlet nem engedélyezett, ha a kérelem nem éri el a MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
+Ahhoz, hogy az Azure-alkalmazások az Azure Database for MySQL-kiszolgálóhoz való kapcsolódáshoz, engedélyezni kell az Azure-kapcsolatokat. Ha például üzemeltetése az Azure Web Apps-alkalmazáshoz, vagy egy Azure-beli virtuális gépen futó alkalmazást, vagy egy Azure Data Factory az adatkezelési átjáró csatlakozni. Az erőforrások nem kell ugyanazon a virtuális hálózaton (VNet) vagy a tűzfalszabály erőforráscsoportjának ahhoz, hogy ezeket a kapcsolatokat lehet. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Van néhány módszerek ilyen típusú kapcsolatok engedélyezéséhez. A 0.0.0.0 kezdő- és zárócímet tartalmazó tűzfalbeállítás jelzi, hogy ezek a kapcsolatok engedélyezettek. Beállíthatja azt is megteheti, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást **ON** a portálon a **kapcsolatbiztonság** ablaktáblán, majd nyomja le **mentése**. A csatlakozási kísérlet nem engedélyezett, ha a kérés nem éri el az Azure Database for MySQL-kiszolgálóhoz.
 
 > [!IMPORTANT]
 > Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
 > 
 
-## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Meglévő kiszolgálószintű tűzfal-szabályok kezelése az Azure-portál használatával
-Ismételje meg a tűzfal-szabályok kezelése.
-* Az aktuális számítógép hozzáadásához kattintson **+ saját IP-cím hozzáadása**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* További IP-cím hozzáadásához írja be a **SZABÁLYNÉV**, **KEZDŐ IP-**, és **záró IP-Címnél**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* Meglévő szabály módosításához kattintson a szabály a mezőket, és módosítsa. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* Meglévő szabály törléséhez kattintson a három pont [...], majd **törlése**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Meglévő kiszolgálószintű tűzfalszabályok kezelése az Azure portal használatával
+Ismételje meg a tűzfalszabályok kezelésére.
+* Az aktuális számítógép hozzáadásához kattintson **+ Hozzáadás a saját IP-címet**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* További IP-címek hozzáadásához írja be a **SZABÁLYNÉV**, **KEZDŐ IP-**, és **záró IP-cím**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* Meglévő szabály módosításához kattintson a szabály a mezők, és módosítsa. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* Meglévő szabály törléséhez kattintson a három pont [...], és kattintson **törlése**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 
 ## <a name="next-steps"></a>További lépések
-- Ehhez hasonlóan is, a parancsfájl [hozzon létre és kezelheti az Azure-adatbázis Azure parancssori felület használatával MySQL tűzfalszabályok](howto-manage-firewall-using-cli.md).
-- A MySQL-kiszolgáló egy Azure-adatbázishoz szeretne csatlakozni, lásd: [adatkapcsolattárak MySQL az Azure-adatbázis](./concepts-connection-libraries.md)
+- Hasonló módon is, a parancsfájl [hozzon létre és kezelhető az Azure Database for MySQL-tűzfalszabályok Azure CLI-vel](howto-manage-firewall-using-cli.md).
+- Egy Azure Database for MySQL-kiszolgáló csatlakozik a kapcsolatos útmutatásért lásd: [adatkapcsolattárak az Azure Database for MySQL-hez](./concepts-connection-libraries.md)

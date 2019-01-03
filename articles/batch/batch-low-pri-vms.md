@@ -1,5 +1,5 @@
 ---
-title: Költséghatékony, kis prioritású virtuális gépek az Azure Batch számítási feladatok futtatása |} A Microsoft Docs
+title: A költséghatékony alacsony prioritású virtuális gépek – Azure Batch számítási feladatok futtatása |} A Microsoft Docs
 description: Megtudhatja, hogyan helyezhet üzembe az alacsony prioritású virtuális gépeket az Azure Batch számítási feladatait a költségek csökkentése érdekében.
 services: batch
 author: mscurrell
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec18
+ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093003"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546793"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>A Batch alacsony prioritású virtuális gépek használata
 
@@ -42,11 +43,11 @@ Figyelembe véve az alacsony prioritású virtuális gépeket, milyen számítá
 
 Néhány példa a kötegelt feldolgozási használati esetek jól, alacsony prioritású virtuális gépek használatára alkalmas a következők:
 
--   **Fejlesztési és tesztelési**: különösen, ha nagy méretű megoldásokat fejlesztenek, jelentős megtakarítást megvalósíthatók. Minden típusú tesztelés előnyeit, de nagy méretű terheléses tesztelés és regressziós tesztelési nagyszerű használja.
+-   **Fejlesztési és tesztelési**: Különösen ha nagy méretű megoldásokat fejlesztenek, jelentős megtakarítást megvalósíthatók. Minden típusú tesztelés előnyeit, de nagy méretű terheléses tesztelés és regressziós tesztelési nagyszerű használja.
 
--   **Igény szerinti kapacitás kiegészítése**: alacsony prioritású virtuális gépek segítségével kiegészítik regular dedikált virtuális gépek – Ha elérhető, a feladatok méretezhetők, és így gyorsabb befejezéséhez alacsonyabb költségek mellett; nem érhető el, ha az alapkonfiguráció dedikált virtuális gépek továbbra is elérhető marad .
+-   **Igény szerinti kapacitás kiegészítése**: Alacsony prioritású virtuális gépek segítségével kiegészítik regular dedikált virtuális gépek – Ha elérhető, a feladatok méretezhetők, és így gyorsabb befejezéséhez alacsonyabb költségek mellett; nem érhető el, ha az alapkonfiguráció dedikált virtuális gépek továbbra is elérhető marad.
 
--   **Rugalmas feladat-végrehajtási idő**: Ha nincs ideje feladatok rugalmasságot kell végrehajtania, majd a kapacitás lehetséges csepp tolerálható; azonban alacsony prioritású virtuális gépek igény szerinti hozzáadásával feladatok gyakran futtatása gyorsabban és alacsony költségek mellett.
+-   **Rugalmas feladat-végrehajtási idő**: Nincs a rugalmasságot az idő a feladatok elvégzése után, akkor a kapacitásban lehetséges csepp tolerálható; azonban az alacsony prioritású virtuális gépek igény szerinti hozzáadásával feladatok gyakran futnak gyorsabban és alacsony költségek mellett.
 
 Batch-készletek konfigurálhatók, alacsony prioritású virtuális gépek használata több módon is, attól függően, a rugalmasságot, a feladat-végrehajtási idő:
 

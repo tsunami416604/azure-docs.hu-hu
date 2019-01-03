@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163378"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598821"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 
@@ -22,9 +22,9 @@ Ebben a cikkben megismerheti, hogyan kell telepíteni a Jupyter notebookot, a (a
 
 Három kulcsfontosságú lépésnek vannak a számítógépen a Jupyter és a Spark Magic Quadrant megismeréséhez.
 
-* Telepítse a Jupyter notebook
-* A Spark és a PySpark kernelt telepítése a Spark Magic Quadrant-nal
-* A Spark Magic Quadrant elérésére, HDInsight Spark-fürt konfigurálása
+* Telepítse a Jupyter notebookot.
+* A Spark és a PySpark kernelt telepítse a Spark Magic Quadrant.
+* Állítsa be a Spark Magic Quadrant HDInsight alapú Spark-fürt eléréséhez.
 
 Az egyéni kernelekkel, és a Spark HDInsight-fürttel Jupyter notebookokhoz elérhető Magic Quadrant kapcsolatos további információkért lásd: [notebookokhoz elérhető kernelek Jupyter notebookokhoz az Apache Spark-alapú Linux-fürtök HDInsight az](apache-spark-jupyter-notebook-kernels.md).
 
@@ -43,7 +43,7 @@ A Jupyter notebooks telepítése előtt telepítenie kell az Python. Python és 
 
         conda install jupyter
 
-    Jupyter telepítésével kapcsolatos további információkért lásd: [telepítése Jupyter használatával Anaconda](http://jupyter.readthedocs.io/en/latest/install.html).
+    Jupyter telepítésével kapcsolatos további információkért lásd: [telepítése Jupyter használatával Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## <a name="install-the-kernels-and-spark-magic"></a>A kernelekkel, és a Spark Magic Quadrant telepítése
 
@@ -100,7 +100,7 @@ Ebben a szakaszban konfigurálhatja a Spark Magic Quadrant, amelyet korábban te
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >A szívverések küldése a győződjön meg arról, hogy ne szivárogjanak ki munkamenetek. A számítógép alvó állapotba, vagy le van állítva, a szívverés nem küldi el, eredményez a munkamenet éppen törlődik. A fürtök v3.4, ha szeretné tiltani ezt a viselkedést állíthatja be a Livy-konfigurációs `livy.server.interactive.heartbeat.timeout` való `0` az Ambari felhasználói felületen. A fürtök 3.5-ös verzió Ha nem állítja be a fenti, 3.5-ös configuration a munkamenet nem törlődik.
 
 1. Indítsa el a Jupyter. Használja a következő parancsot a parancssorból.
@@ -120,7 +120,7 @@ Ebben a szakaszban konfigurálhatja a Spark Magic Quadrant, amelyet korábban te
 
     Ha sikeresen kérheti le a kimenetet, a HDInsight-fürthöz a kapcsolat tesztelése.
 
-    >[!TIP]
+    >[!TIP]  
     >Ha szeretné frissíteni a jegyzetfüzet-konfigurációt egy másik fürthöz való csatlakozáshoz, frissítse a config.json értékek, az újonnan létrehozott, ahogyan a 3. lépés.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért érdemes a Jupyter telepítése a számítógépemen?
@@ -132,7 +132,7 @@ Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan cs
 * Együttműködve notebookok helyileg egy fürtöt is nélkül. Csak egy fürtöt, szemben a notebookok teszteléséhez manuálisan a saját jegyzetfüzetek vagy a fejlesztési környezet kezelése, nem kell.
 * Konfigurálhatja a saját helyi fejlesztői környezetében, konfigurálja a Jupyter telepítése a fürtön, mint egyszerűbb lehet.  Használja ki egy vagy több távoli fürtök konfigurálása nélkül helyileg telepített összes szoftver is igénybe vehet.
 
-> [!WARNING]
+> [!WARNING]  
 > A Jupyter telepítése a helyi számítógépen, a több felhasználó is a azonos jegyzetfüzet futtatása ugyanazon a Spark-fürtön egyszerre. Ilyen esetben több Livy-munkamenetek jönnek létre. Ha problémába, amelyen hibakeresést végez, amely egy összetett feladat, mely Livy munkamenet nyomon felhasználóhoz tartozik, mely lesz.
 >
 >

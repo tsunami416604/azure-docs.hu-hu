@@ -1,23 +1,22 @@
 ---
 title: Azure Database for MySQL áttelepítési partnerek |} A Microsoft Docs
 description: Listák külső áttelepítési partnerek olyan megoldásokkal, amely támogatja az Azure Database for MySQL-hez.
-services: mysql
 author: HJToland3
 ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: e50cd285d904830bd7332f39d51aaa149f38b82a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c081c6436939089565425a0f14bbf1856ca7ce8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057228"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536763"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL áttelepítési partnerek
 A széles körben támogatja az Azure Database MySQL-megoldás, iparágvezető partnerei és eszközök széles közül választhat. Ez a cikk a migrálási megoldásokkal, amelyek támogatják az Azure Database MySQL-hez készült Microsoft-partnerek emeli ki.
 
-## <a name="migration-partners"></a>Áttelepítési partnerek
+## <a name="migration-partners"></a>Partnerek a migráláshoz
 | Partner | Leírás | Hivatkozások | Videók |
 | --- | --- | --- | --- |
 | ![SNP technológiák][1] |**SNP technológiák**<br>SNP technológiák egy kizárólag felhőalapú szolgáltató, a jövőben a biztonságos és megbízható megoldások létrehozásához. A vállalat úgy véli létrehozni a valódi üzleti értékét. A gondolkodási végrehajtásával SNP technológiák közös egy általános célú ügyfelek számára, kapcsolja be a saját egy nagy előnnyel jár, befektetés.|[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Kapcsolattartó][snp_contact] | |

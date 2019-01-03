@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek
+ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 290414ca07014d5f3bfbe160b0f571397fb13948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467129"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601039"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
 
@@ -55,12 +55,12 @@ Vész-helyreállítási előfordulhat, hogy az SQL Database-kiszolgáló átvál
 
 Minden DNS-alias az SQL Database-kiszolgálóhoz a következő tulajdonságok vonatkoznak:
 
-- *Egyedi nevet:* egyes aliasnév hoz létre egyedi az összes Azure SQL Database-kiszolgálók között, ugyanúgy, mint a kiszolgáló nevében a rendszer.
+- *Egyedi neve:* Minden egyes alias hoz létre név egyedi az összes Azure SQL Database kiszolgálók között, ugyanúgy, mint a kiszolgáló neve.
 - *Kiszolgálóra szükség:* A DNS alias nem hozható létre, ha pontosan egy kiszolgáló hivatkozik, és a kiszolgáló már léteznie kell. Frissített alias mindig kell hivatkoznia pontosan egy meglévő kiszolgáló.
   - Amikor egy SQL Database-kiszolgálóhoz, az Azure rendszer is csökken, tekintse meg a kiszolgáló összes DNS-aliasokat.
 - *Bármelyik régióban nincs kötve:* DNS-aliasokat nem régióhoz kötött. Bármilyen DNS-aliasokat lehet frissíteni, tekintse meg az Azure SQL Database-kiszolgáló, amely minden olyan földrajzi régióban található.
   - Azonban amikor frissíti az alias egy másik kiszolgálóra utal, mindkét kiszolgáló léteznie kell az azonos Azure *előfizetés*.
-- *Engedélyek:* kezelheti DNS-aliast, a felhasználónak rendelkeznie kell *Server Közreműködője* engedélyeket, vagy újabb verziója. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../role-based-access-control/overview.md).
+- *Engedélyek:* Kezelheti a DNS-aliast, a felhasználónak rendelkeznie kell *Server Közreműködője* engedélyeket, vagy újabb verziója. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>A DNS-aliasainak kezelése
 
@@ -95,10 +95,10 @@ Kódrészlet például a DNS-aliasok kezeléséhez használt PowerShell-parancsm
 
 A példakódban alkalmazott parancsmagok a következők:
 
-- [Új-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): egy új DNS-alias létrehozása az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
-- [A GET-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): lekérés és listázás 1 SQL-adatbázis-kiszolgálóhoz rendelt összes DNS-aliasokat.
-- [A Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): módosítja a kiszolgáló nevét, amely az alias konfigurálva van kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
-- [A Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): a DNS-alias eltávolítása az SQL DB kiszolgáló 2, az alias nevét.
+- [Új-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
+- [A GET-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
+- [A Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
+- [A Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
 
 A fenti parancsmagok lettek hozzáadva a **azurerm.SQL-hez** modul 5.1.1-es modul verziótól kezdve.
 
@@ -106,9 +106,9 @@ A fenti parancsmagok lettek hozzáadva a **azurerm.SQL-hez** modul 5.1.1-es modu
 
 Jelenleg a DNS alias a következő korlátozások vonatkoznak:
 
-- *Legfeljebb 2 perces késleltetés:* frissíteni vagy eltávolítani egy DNS-alias akár 2 percig tart.
+- *Legfeljebb 2 perces késleltetés:* A DNS-alias, frissíteni vagy eltávolítani legfeljebb 2 percet vesz igénybe.
   - Minden olyan rövid késleltetés, függetlenül az alias azonnal leállítja az örökölt kiszolgálóra ügyfélkapcsolatok hivatkozó.
-- *A DNS-címkeresés:* most a csak mérvadó módja végrehajtásával ellenőrizze, milyen kiszolgálói aliast hivatkozik a megadott DNS- [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
+- *A DNS-címkeresés:* Most úgy a csak mérvadó végrehajtásával ellenőrizze, milyen kiszolgálói aliast hivatkozik a megadott DNS- [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
 - *[Nem támogatott a táblanaplózás](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* DNS-alias nem használható az Azure SQL Database-kiszolgáló, amely rendelkezik *táblanaplózás* egy adatbázison engedélyezve van.
   - A táblanaplózás elavult.
   - Azt javasoljuk, hogy áthelyezi [Blobnaplózás](sql-database-auditing.md).

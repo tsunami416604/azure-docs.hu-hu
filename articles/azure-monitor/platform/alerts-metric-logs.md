@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 76355723baa7727c0dda10ace449603d6ebefbe1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bfa5cc9a5c04d4c6a692d9a70844f2ec0c35e132
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435854"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579175"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók  
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Monitor támogatja [metric riasztástípus](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) előnyt amely felett az [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](../../azure-monitor/platform/metrics-supported.md). Ez a cikk azt ismerteti, alhálózatát (az) erőforrás - használat `Microsoft.OperationalInsights/workspaces`. 
+Az Azure Monitor támogatja [metric riasztástípus](../../azure-monitor/platform/alerts-metric-near-real-time.md) előnyt amely felett az [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](../../azure-monitor/platform/metrics-supported.md). Ez a cikk azt ismerteti, alhálózatát (az) erőforrás - használat `Microsoft.OperationalInsights/workspaces`. 
 
 Metrikákhoz kapcsolódó riasztások használhatja a népszerű Log Analytics-naplók, metrikák, naplók, beleértve az erőforrásokat az Azure-ban vagy a helyi mérőszámainak részeként ki kell olvasni. A támogatott Log Analytics-megoldások az alábbiak:
 - [Teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) Windows és Linux rendszerű gépek
@@ -51,7 +51,7 @@ A metrika a naplókhoz gyűjtött a Log Analytics data működéséről, mielőt
 4. **Log Analytics megoldások, amely naplókat küld**: Log Analytics megoldás rendelkeznie kell a szükséges naplók és adatok megfelelő [Log Analytics-munkaterületek a támogatott mérőszámok](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) engedélyezve van. Például *rendelkezésre álló memória %* kell konfigurálni, hogy a számláló [teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) megoldás első.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikariasztás naplók konfigurálása
- metrikákhoz kapcsolódó riasztások hozhatók létre és kezeli az Azure portal Resource Manager-sablonok, a REST API-t, a PowerShell és az Azure CLI használatával. Mivel a metrika riasztások a naplókhoz, valamely változatában metrikákhoz kapcsolódó riasztások – Miután végzett az előfeltételeket, metrikariasztás naplókhoz megadott Log Analytics-munkaterület is létrehozható. Az összes jellemzőit és funkciói [ metrikákhoz kapcsolódó riasztások](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) metrikákhoz kapcsolódó riasztások naplókat, valamint; például adattartalom-sémát, a vonatkozó kvótát és a számlázott díj érvényes lesz.
+ metrikákhoz kapcsolódó riasztások hozhatók létre és kezeli az Azure portal Resource Manager-sablonok, a REST API-t, a PowerShell és az Azure CLI használatával. Mivel a metrika riasztások a naplókhoz, valamely változatában metrikákhoz kapcsolódó riasztások – Miután végzett az előfeltételeket, metrikariasztás naplókhoz megadott Log Analytics-munkaterület is létrehozható. Az összes jellemzőit és funkciói [ metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) metrikákhoz kapcsolódó riasztások naplókat, valamint; például adattartalom-sémát, a vonatkozó kvótát és a számlázott díj érvényes lesz.
 
 Részletesen és -minták –: [létrehozásába és kezelésébe metrikákhoz kapcsolódó riasztások](https://aka.ms/createmetricalert). Pontosabban a naplók - metrika riasztások kövesse az utasításokat a metrikákhoz kapcsolódó riasztások kezelése és ellenőrizze, a következő:
 - Metrikariasztás van egy érvényes cél *Log Analytics-munkaterület*

@@ -1,20 +1,17 @@
 ---
 title: Hogyan sys_schema használata a teljesítmény finomhangolásához és adatbázis-karbantartás az Azure Database for MySQL-hez
 description: Ez a cikk ismerteti, hogyan keresse meg a teljesítménybeli problémák és a MySQL-hez készült Azure Database-adatbázis karbantartása sys_schema használatával.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446907"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542849"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema használata a teljesítmény hangolása és adatbázis-karbantartás az Azure Database for MySQL-hez
 
@@ -24,15 +21,15 @@ A MySQL performance_schema, az első elérhető MySQL 5.5-ös biztosít instrume
 
 Nincsenek a sys_schema 52 nézeteket, és mindegyik nézetről rendelkezik-e az alábbi előtagokat:
 
-- Host_summary vagy IO: i/o-kapcsolódó késéseket.
+- Host_summary vagy IO: I/o kapcsolódó késéseket.
 - InnoDB: InnoDB puffer állapota és a zárolás.
 - Memória: Memóriahasználat a gazdagépen és a felhasználók által.
-- Séma: Séma szolgáltatással kapcsolatos információkat, például automatikusan növekvő, indexek, stb.
-- Utasítás: SQL-utasítások; információkat a teljes tábla beolvasásával vagy hosszú lekérdezés idő eredményező utasítás lehet.
-- Felhasználó: Erőforrások felhasznált és felhasználók szerint csoportosított. Példák fájl i/o-, kapcsolatok és memória.
-- Várjon: Várjon, amíg események gazdagép vagy a felhasználó szerint csoportosítva.
+- Séma: Séma-kapcsolatos információkat, például automatikusan növekvő, indexek, stb.
+- Utasítás: Információk az SQL-utasítások; a teljes tábla beolvasásával vagy hosszú lekérdezés idő eredményező utasítás lehet.
+- Felhasználó: Felhasznált és felhasználók szerint csoportosított erőforrások. Példák fájl i/o-, kapcsolatok és memória.
+- várj: Várjon, amíg események gazdagép vagy a felhasználó szerint csoportosítva.
 
-Most nézzük meg, a sys_schema gyakori használati minták. Először azt kell csoportosítani a használati minták két kategóriába sorolhatók: **teljesítményhangolás** és **adatbázis-karbantartási**.
+Most nézzük meg, a sys_schema gyakori használati minták. Elsőként azt kell csoport a a használati minták két kategóriába sorolhatók: **Teljesítményhangolás** és **adatbázis-karbantartási**.
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
 
@@ -44,11 +41,11 @@ I/o az a leginkább drága művelet az adatbázisban. Azt is megtudhatja, az át
 
 Mivel, Azure Database for MySQL megállapodást tárolás, i/o növelje a felhasznált tárterület 1 TB-os skálázható, saját IO-késés csökkenti a 571 ms.
 
-![IO-késés: 1 TB-ot](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![IO-késés: 1 TB-OT](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-Annak ellenére, hogy gondos tervezést, több lekérdezés továbbra is teljes táblázatbeolvasás eredményezhet. Indexek és optimalizálja őket annak típusaival kapcsolatos további információkért tekintse meg a cikk: [lekérdezési teljesítmény hibaelhárítása](./howto-troubleshoot-query-performance.md). Szekvenciális rekordolvasással teljes erőforrás-igényes, és az adatbázis teljesítményét. Keresse meg a teljes tábla beolvasásával rendelkező táblák a leggyorsabb módja az, hogy lekérdezést a *sys.schema_tables_with_full_table_scans* megtekintése.
+Annak ellenére, hogy gondos tervezést, több lekérdezés továbbra is teljes táblázatbeolvasás eredményezhet. További információt a típusú indexeket, és hogyan optimalizálja őket ez a cikk hivatkozhatunk: [A lekérdezési teljesítmény hibaelhárítása](./howto-troubleshoot-query-performance.md). Szekvenciális rekordolvasással teljes erőforrás-igényes, és az adatbázis teljesítményét. Keresse meg a teljes tábla beolvasásával rendelkező táblák a leggyorsabb módja az, hogy lekérdezést a *sys.schema_tables_with_full_table_scans* megtekintése.
 
 ![teljes táblázatbeolvasás](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 

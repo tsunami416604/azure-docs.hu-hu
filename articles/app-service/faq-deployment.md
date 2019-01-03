@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388977"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549428"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
 
@@ -36,7 +36,7 @@ Ez a cikk gyakori kérdések (GYIK) választ rendelkezik kapcsolatban felmerül�
 *   Üzembe helyezése a Visual Studio használatával. Ha a Visual studióban, kattintson a jobb gombbal a webes projektre, és válassza **közzététel**.
 *   Az FTP-ügyfél központi telepítését. Az Azure Portalon a webalkalmazás üzembe helyezése a kódokat a kívánt a közzétételi profil letöltése. Ezt követően a fájlok feltöltése \site\wwwroot közzétételi profil FTP azonos hitelesítő adatok használatával.
 
-További információkért lásd: [telepítse az alkalmazást az App Service-ben](app-service-deploy-local-git.md).
+További információkért lásd: [telepítse az alkalmazást az App Service-ben](deploy-local-git.md).
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Egy hibaüzenet jelenik meg a Visual Studióból üzembe látható. Hogyan oldhatom fel ez?
 
@@ -51,7 +51,7 @@ Az oktatóanyag [hozzon létre az első ASP.NET-webalkalmazását öt perc alatt
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Mik azok az üzembe helyezési hitelesítő adatokat a különböző típusú?
 
-App Service-ben FTP/S telepítéséhez és a Git helyi üzemelő példányának kétféle típusú hitelesítő adatokat támogatja. Üzembe helyezési hitelesítő adatok konfigurálásával kapcsolatos további információkért lásd: [üzembe helyezési hitelesítő adatok konfigurálása az App Service](app-service-deployment-credentials.md).
+App Service-ben FTP/S telepítéséhez és a Git helyi üzemelő példányának kétféle típusú hitelesítő adatokat támogatja. Üzembe helyezési hitelesítő adatok konfigurálásával kapcsolatos további információkért lásd: [üzembe helyezési hitelesítő adatok konfigurálása az App Service](deploy-configure-credentials.md).
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Mi az App Service webalkalmazás fájl vagy könyvtár szerkezete?
 
@@ -63,7 +63,7 @@ Ha ezt az üzenetet látja, valószínű, hogy futtatja, lemezkvóta a service-c
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Hogyan állíthatok be a folyamatos üzembe helyezés az App Service webalkalmazás?
 
-Beállíthat folyamatos üzembe helyezést az több erőforrás, beleértve az Azure DevOps, onedrive vállalati verzió, GitHub, Bitbucket, Dropbox és más Git-tárházakat. Ezek a lehetőségek érhetők el a portálon. [Folyamatos üzembe helyezés az App Service-](app-service-continuous-deployment.md) hasznos oktatóanyag, amely azt ismerteti, hogyan állítható be a folyamatos üzembe helyezés van.
+Beállíthat folyamatos üzembe helyezést az több erőforrás, beleértve az Azure DevOps, onedrive vállalati verzió, GitHub, Bitbucket, Dropbox és más Git-tárházakat. Ezek a lehetőségek érhetők el a portálon. [Folyamatos üzembe helyezés az App Service-](deploy-continuous-deployment.md) hasznos oktatóanyag, amely azt ismerteti, hogyan állítható be a folyamatos üzembe helyezés van.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hogyan háríthatom el a problémákat a GitHub és Bitbucket folyamatos üzembe helyezéssel?
 
@@ -100,4 +100,4 @@ Folyamatos kód üzembe helyezése mindkét ezek a beállítások a meglévő fe
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Hogyan használhatom FTP- vagy FTPS az alkalmazás üzembe helyezése az App Service-ben?
 
-Az App Service-ben a webes alkalmazás üzembe helyezése FTP- vagy FTPS használatával kapcsolatos információkért lásd: [telepítse az alkalmazást az App Service-ben FTP/S használatával](app-service-deploy-ftp.md).
+Az App Service-ben a webes alkalmazás üzembe helyezése FTP- vagy FTPS használatával kapcsolatos információkért lásd: [telepítse az alkalmazást az App Service-ben FTP/S használatával](deploy-ftp.md).

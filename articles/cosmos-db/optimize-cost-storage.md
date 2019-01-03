@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 618be936ef0326a1b9f5db426d4c37bb2bd1c760
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263831"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535658"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben a tárolási költségek optimalizálása
 
@@ -27,7 +27,7 @@ Az Azure Cosmos DB vár az elem méretét 2 MB vagy annál kisebb, optimális te
 
 ## <a name="optimize-cost-with-indexing"></a>Az indexelő költségek optimalizálása
 
-Alapértelmezés szerint az adatok automatikus indexelését, ami növelheti a teljes felhasznált tárterület. A terhelés csökkentése érdekében egyéni index szabályzatokat is alkalmazhat. Körülbelül 10 – 20 %-a cikk automatikus indexelést, amely a szabályzat nem amennyiben. Eltávolításával vagy index házirendek testreszabása, hogy nem kell fizetnie extra írási műveletek költségét, és nem igényel további átviteli kapacitással. Lásd: [Cosmos DB-ben az indexelés](indexing-policies.md) egyéni indexelési szabályzat konfigurálása. Ha dolgozott már relációs adatbázisokat korábban, előfordulhat, hogy véleménye szerint "mindent indexelni" azt jelenti, hogy kétszeresére tárolási vagy magasabb szintű. Az Azure Cosmos DB, a közepes esetben célszerű azonban sokkal alacsonyabb. Az Azure Cosmos DB az index indextárolási terheléssel jár azért általában alacsony (10 – 20 %) még az automatikus indexelést, egy alacsony tárolási erőforrás-igényű számára tervezték. További részletes módon, mivel kezeli az indexelési házirendet, szabályozhatja a kompromisszummal jár, index üzembe helyezésének előkészítése és a lekérdezési teljesítmény.
+Alapértelmezés szerint az adatok automatikus indexelését, ami növelheti a teljes felhasznált tárterület. A terhelés csökkentése érdekében egyéni index szabályzatokat is alkalmazhat. Körülbelül 10 – 20 %-a cikk automatikus indexelést, amely a szabályzat nem amennyiben. Eltávolításával vagy index házirendek testreszabása, hogy nem kell fizetnie extra írási műveletek költségét, és nem igényel további átviteli kapacitással. Lásd: [indexelése az Azure Cosmos DB](indexing-policies.md) egyéni indexelési szabályzat konfigurálása. Ha dolgozott már relációs adatbázisokat korábban, előfordulhat, hogy véleménye szerint "mindent indexelni" azt jelenti, hogy kétszeresére tárolási vagy magasabb szintű. Az Azure Cosmos DB, a közepes esetben célszerű azonban sokkal alacsonyabb. Az Azure Cosmos DB az index indextárolási terheléssel jár azért általában alacsony (10 – 20 %) még az automatikus indexelést, egy alacsony tárolási erőforrás-igényű számára tervezték. További részletes módon, mivel kezeli az indexelési házirendet, szabályozhatja a kompromisszummal jár, index üzembe helyezésének előkészítése és a lekérdezési teljesítmény.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizálhatja költségeit a live és a módosítási hírcsatornáról ideje
 

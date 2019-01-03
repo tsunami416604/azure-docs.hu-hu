@@ -3,17 +3,15 @@ title: Adatok replikálása MariaDB-hez készült Azure Database-be.
 description: Ez a cikk ismerteti az adatok a replikáció Azure Database for MariaDB-hez.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a6bb6ae45c4240f21b1e0baf4956b053d4b98720
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948179"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547609"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikálják az adatokat MariaDB-hez készült Azure Database-be
 
@@ -22,8 +20,8 @@ Adatok a replikáció lehetővé teszi, hogy szinkronizálja az adatokat a helys
 ## <a name="when-to-use-data-in-replication"></a>Mikor érdemes használni az adatok a replikáció
 A fő forgatókönyvet kell figyelembe venni, a replikációs adatokat a rendszer:
 
-- **Hibrid adatok szinkronizálása:** adatok replikációs között a helyszíni kiszolgálók és az Azure Database for MariaDB szinkronizált adatok tárolhatja. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
-- **Több felhőalapú szinkronizálás:** összetett felhőalapú megoldások, a használati adatok a replikáció adatszinkronizálás az Azure Database for MariaDB és eltérő felhőszolgáltatókat, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatásokat.
+- **Hibrid adatok szinkronizálása:** Az adatok a replikáció beállíthatja, hogy a helyszíni kiszolgálók között az Azure Database for MariaDB szinkronizált adatok. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
+- **Több felhőalapú szinkronizálás:** Összetett felhőalapú megoldásokhoz adatok a replikáció használata, Azure Database for MariaDB és eltérő felhőszolgáltatókat, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások közötti adatszinkronizáláshoz.
 
 ## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
 

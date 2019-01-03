@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339593"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557291"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
@@ -26,14 +26,14 @@ Az az identitás-kezelőfelületi keretrendszer, amely alapjául szolgál az Azu
 ## <a name="introduction"></a>Bevezetés
 Saját RESTful szolgáltatás hívása az Azure AD B2C használatával saját üzleti logikája is hozzáadhat egy felhasználói interakciósorozat. Az identitás-kezelőfelületi keretrendszer a RESTful szolgáltatás adatokat küld egy *bemeneti jogcímek* gyűjtemény, valamint adatokat fogad visszaküldi a RESTful- *kimeneti jogcímek* gyűjtemény. RESTful szolgáltatás integrációnak köszönhetően a következőket teheti:
 
-* **Felhasználó által bevitt adatok érvényesítéséhez**: Ez a művelet megakadályozza, hogy a hibás formátumú adatok megőrzése az Azure AD-be. Ha az érték a felhasználó nem érvényes, a RESTful szolgáltatás, amely felszólítja a felhasználót egy bejegyzést adjon meg a hibaüzenetet adja vissza. Ellenőrizheti például, hogy az a felhasználó által megadott e-mail-cím szerepel-e a felhasználó-adatbázisa alapján.
-* **Írja felül a bemeneti jogcímek között**: például a felhasználó utónevét kisbetűkből vagy a nagybetűs betűkkel ad, ha a név a formázhatók csak az első betűje nagybetű.
-* **Felhasználói adatokat feldúsítani a vállalati – üzletági alkalmazások további integrálásával**: A RESTful szolgáltatás is kap a felhasználó e-mail címét, az ügyfél adatbázisához lekérdezése és az Azure AD B2C-vel a felhasználói hűség szám visszaadása. A visszaadandó jogcímek a felhasználó Azure AD-fiókot, a következő kiértékelése tárolhatja *Vezénylési lépésekből*, vagy a hozzáférési jogkivonatot tartalmazza.
-* **Egyéni üzleti logika futtatása**:, is leküldéses értesítések küldése, vállalati adatbázisok frissítése, felhasználó migrálási folyamat futtatása, kezelheti az engedélyeiket, adatbázis naplózási és egyéb műveleteket hajthat végre.
+* **Felhasználó által bevitt adatok érvényesítéséhez**: Ez a művelet megakadályozza, hogy nem megfelelően formázott megőrizhetők az Azure ad-ben. Ha az érték a felhasználó nem érvényes, a RESTful szolgáltatás, amely felszólítja a felhasználót egy bejegyzést adjon meg a hibaüzenetet adja vissza. Ellenőrizheti például, hogy az a felhasználó által megadott e-mail-cím szerepel-e a felhasználó-adatbázisa alapján.
+* **Írja felül a bemeneti jogcímek között**: Például ha egy felhasználó sikeresen megadja a csupa nagybetűvel vagy az utónevet csupa kisbetűket, a neve a formázhatók csak az első betűje nagybetű.
+* **Felhasználói adatokat feldúsítani a vállalati – üzletági alkalmazások további integrálásával**: A RESTful szolgáltatás kap a felhasználó e-mail címét, az ügyfél-adatbázis lekérdezése, és az Azure AD B2C-vel a felhasználói hűség szám visszaadása. A visszaadandó jogcímek a felhasználó Azure AD-fiókot, a következő kiértékelése tárolhatja *Vezénylési lépésekből*, vagy a hozzáférési jogkivonatot tartalmazza.
+* **Egyéni üzleti logika futtatása**: Is leküldéses értesítések küldése, vállalati adatbázisok frissítése, felhasználó migrálási folyamat futtatása, kezelheti az engedélyeiket, adatbázis naplózási és egyéb műveleteket hajthat végre.
 
 Megtervezheti a REST-alapú szolgáltatásokkal való integrációt, a következő módon:
 
-* **Ellenőrzési technikai profil**: a RESTful szolgáltatás hívása az érvényesítési technikai profilban megadott technikai profil belül történik. Az ellenőrzési technikai profil ellenőrzi a felhasználó által megadott felhasználói interakciósorozat előrelépés előtt. Az ellenőrzési technikai profil segítségével:
+* **Ellenőrzési technikai profil**: A RESTful szolgáltatás hívása akkor történik meg az érvényesítési technikai profilban megadott technikai profil belül. Az ellenőrzési technikai profil ellenőrzi a felhasználó által megadott felhasználói interakciósorozat előrelépés előtt. Az ellenőrzési technikai profil segítségével:
    * A bemeneti jogcímek küldése.
    * Ellenőrizze a bemeneti jogcímek között, és egyéni hibaüzenetek throw.
    * Vissza a kimeneti jogcímek küldése.
@@ -74,9 +74,9 @@ A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-dire
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Készítse elő a REST API-végpont
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Készítse elő a REST API-végpont
 
-### <a name="step-21-add-data-models"></a>2.1. lépés: Az adatmodellek hozzáadása
+### <a name="step-21-add-data-models"></a>2.1. lépés: Adatmodell hozzáadása
 A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében. 
 
 Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
@@ -133,7 +133,7 @@ Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
     }
     ```
 
-### <a name="step-22-add-a-controller"></a>2.2. lépés: A vezérlő hozzáadása
+### <a name="step-22-add-a-controller"></a>2.2. lépés: Vezérlő hozzáadása
 A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezérlő adja vissza a kimeneti jogcímek, vagy az első név nem érvényes, ha egy ütköző HTTP-hibaüzenetet jelez.
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
@@ -203,7 +203,7 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
     }
     ```
 
-## <a name="step-3-publish-the-project-to-azure"></a>3. lépés: A projekt közzététele az Azure-bA
+## <a name="step-3-publish-the-project-to-azure"></a>3. lépés: A projekt közzététele az Azure-ban
 1. A Megoldáskezelőben kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
 
     ![A Microsoft Azure App Service-ben való közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
@@ -226,7 +226,7 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
 
 6. Másolja a web app URL-címet.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4. lépés: Adja hozzá az új `loyaltyNumber` jogcímet a TrustFrameworkExtensions.xml fájl sémája
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4. lépés: Az új `loyaltyNumber` jogcímet a TrustFrameworkExtensions.xml fájl sémája
 A `loyaltyNumber` jogcím még nem határozott meg a sémában. Adja hozzá belül definícióját a `<BuildingBlocks>` elemet, amely elején annak a *TrustFrameworkExtensions.xml* fájlt.
 
 ```xml
@@ -248,52 +248,52 @@ Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző oko
 
 A következő XML-kódrészlet két technikai profil a jogcímeket szolgáltató csomópontot tartalmaz:
 
-* **TechnicalProfile Id = "REST-API-SignUp"**: határozza meg azt a REST-alapú szolgáltatást. 
+* **TechnicalProfile Id = "REST-API-SignUp"**: A RESTful szolgáltatás határozza meg. 
    * `Proprietary` ismertetjük a protokoll egy RESTful-alapú szolgáltató. 
    * `InputClaims` határozza meg a jogcímeket küld az Azure AD B2C-ből a REST-szolgáltatást. 
 
    Ebben a példában a tartalom a jogcím `givenName` küld a REST-szolgáltatás, mint `firstName`, a tartalom a jogcím `surname` küld a REST-szolgáltatás, mint `lastName`, és `email` , küld. A `OutputClaims` elem definiálja a jogcímek lekért RESTful szolgáltatás vissza az Azure AD B2C-t.
 
-* **TechnicalProfile Id = "LocalAccountSignUpWithLogonEmail"**: egy érvényesítési technikai profil ad hozzá egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára. 
+* **TechnicalProfile Id = "LocalAccountSignUpWithLogonEmail"**: Egy ellenőrzési technikai profil hozzáadása egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára. 
 
 Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő XML-részletet a `<ClaimsProviders>` csomópont:
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
     
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
-        <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
-        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-        <Metadata>
+      <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
         <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
-        </Metadata>
-        <InputClaims>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />
         <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
         <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-        </InputClaims>
-        <OutputClaims>
+      </InputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
 
-<!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
+    <!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-        <OutputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <ValidationTechnicalProfiles>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
         <ValidationTechnicalProfile ReferenceId="REST-API-SignUp" />
-        </ValidationTechnicalProfiles>
+      </ValidationTechnicalProfiles>
     </TechnicalProfile>
-
-    </TechnicalProfiles>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 

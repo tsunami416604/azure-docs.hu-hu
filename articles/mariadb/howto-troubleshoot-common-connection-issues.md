@@ -2,20 +2,17 @@
 title: MariaDB-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása |} A Microsoft Docs
 description: Ismerje meg, hogyan MariaDB-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása.
 keywords: mariadb-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
-services: mariadb
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 0100fa6d9691c864de9ac4aaea04b647e1705872
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c7e1ff10f9698bf57ce86a7e9686ef13e5248db7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565139"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545909"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>MariaDB-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
 
@@ -49,9 +46,9 @@ Csatlakozási problémák oka lehet a különböző dolgok, többek között:
 
 Ha az alkalmazás nem állandó csatlakozás az Azure Database for MariaDB, azt általában azt jelzi, hogy probléma az alábbi lehetőségek közül:
 
-* Tűzfal-konfiguráció: az Azure Database for MariaDB kiszolgálói és ügyféloldali tűzfal blokkolja a kapcsolatokat.
-* Az ügyféloldalon újrakonfigurálás hálózati: új IP-cím vagy a proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: például elírta kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó *@servername* utótagot a felhasználó nevében.
+* Tűzfal-konfiguráció: Az Azure Database for MariaDB kiszolgálói és ügyféloldali tűzfal nem blokkolja a kapcsolatokat.
+* Hálózati újrakonfigurálása az ügyféloldalon: Új IP-cím vagy a proxykiszolgáló hozzá lett adva.
+* Felhasználói hiba: Ha például elírta kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó *@servername* utótagot a felhasználó nevében.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
 

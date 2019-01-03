@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888511"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547549"
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack App Service támogatja az igény szerinti üzembe helyezést, több verziókövetési szolgáltatók az. Ez a funkció lehetővé teszi, hogy az alkalmazásfejlesztők forráskódtárházakból helyezheti üzembe közvetlenül a forrásból. Ha felhasználókat szeretne csatlakozni a tárházak az App Service konfigurálása, a felhő üzemeltetője először konfigurálnia kell az Azure Stack App Service-ben és a Forrásvezérlő-szolgáltatónál integrációjával.  
 
@@ -74,8 +74,8 @@ Ez a feladat végrehajtásához egy BitBucket-fiókkal kell rendelkeznie. Érdem
 5. Adja meg a **visszahívási URL-Címének**. Az alapértelmezett Azure Stack üzembe helyezés a visszahívási URL-cím neve a https://portal.local.azurestack.external/TokenAuthorize. Ha egy másik tartományba le, helyettesítse be a tartománynév azurestack.local. BitBucket-integráció sikeres az URL-cím az itt felsorolt nagybetűs kell követnie.
 6. Adja meg a **URL-cím**. Az URL-címet kell lennie az Azure Stack portálon URL-cím; Ha például https://portal.local.azurestack.external.
 7. Válassza ki a **engedélyek** szükséges:
-    - **Tárházak**: *olvasása*
-    - **Webhookok**: *olvasása és írása*
+    - **Tárházak**: *Olvasás*
+    - **Webhookok**: *Olvasás és írás*
 8. Kattintson a **Save** (Mentés) gombra. Az ekkor megjelenik az új alkalmazás a **kulcs** és **titkos**alatt **OAuth fogyasztók**.
     ![Bitbucket-alapú alkalmazás listázása][9]
 9.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure Stack felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
@@ -138,7 +138,7 @@ Egy Microsoft Account befejezheti a feladatot egy OneDrive-fiókjához társíto
 
 ## <a name="next-steps"></a>További lépések
 
-A felhasználók mostantól használhatják a központi telepítés forrásának többek között a [folyamatos üzembe helyezés](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment), [Git helyi üzemelő példányának](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git), és [mappa szinkronizálása a felhő](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync).
+A felhasználók mostantól használhatják a központi telepítés forrásának többek között a [folyamatos üzembe helyezés](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [Git helyi üzemelő példányának](https://docs.microsoft.com/azure/app-service/deploy-local-git), és [mappa szinkronizálása a felhő](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync).
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

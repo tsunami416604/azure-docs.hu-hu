@@ -4,17 +4,17 @@ description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c75f50e40f83a4dc6765ae422fbb2458f40d770
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6443260de0a8bd8531edb303fa581d281034fef3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100181"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555608"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
 
@@ -44,9 +44,11 @@ Az Azure IoT Edge, amelyek futtathatók tárolók; a legtöbb operációs rendsz
 Nyilvános előzetes verzió
 | Operációs rendszer | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core (2018 áprilisi frissítés) | Igen | Nem |
-| A Windows 10 IoT Enterprise (2018 áprilisi frissítés) | Igen | Nem |
-| A Windows 10-es kiszolgáló 1803-as verzióban | Igen | Nem |
+| Windows 10 IoT Core build 17763 | Igen | Nem |
+| Windows 10-es Windows-tárolókhoz 17763 összeállítása<br><br>A Windows 10-es build 14393 vagy újabb verzió Linux-tárolók esetén\* | Igen | Nem |
+| A Windows Server 2019 Windows-tárolókhoz<br><br>A Windows Server 2016-os vagy újabb, Linux-tárolók esetén\* | Igen | Nem |
+
+\* A Microsoft biztosít Linux-tárolók Windows eszközökön kizárólag fejlesztési és tesztelési telepítési csomagokat. Ez a beállítás nem támogatott éles környezetben való használatra. 
 
 ### <a name="tier-2"></a>2. szint
 2. rétegbeli rendszerek szerint kompatibilis az Azure IoT Edge segítségével olyan, és viszonylag könnyen használható. Ez azt jelenti, hogy:

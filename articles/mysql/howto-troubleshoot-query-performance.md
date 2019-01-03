@@ -1,23 +1,20 @@
 ---
-title: A MySQL az Azure-adatbázis a lekérdezési teljesítmény hibaelhárítása
-description: A cikk ismerteti a magyarázat használata, hogy a MySQL az Azure-adatbázisban a lekérdezések teljesítményét.
-services: mysql
+title: Hogyan háríthatók el a lekérdezési teljesítmény az Azure Database for MySQL-hez
+description: Ez a cikk ismerteti a magyarázat használata a lekérdezési teljesítmény az Azure Database for MySQL-hez.
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 72b047c37ac88e4b33c8723f8df14c6794e84399
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266176"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537664"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MAGYARÁZAT profil lekérdezési teljesítmény az Azure-adatbázisban a MySQL használata
-**MAGYARÁZÓ** hasznos eszköz optimalizálni a lekérdezéseket. MAGYARÁZÓ utasítás használható SQL-utasítások végrehajtásának módját kapcsolatos információkat. A következő kimeneti magyarázat utasítás a végrehajtás példáját mutatja be.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MAGYARÁZAT használatával profil lekérdezési teljesítmény az Azure Database for MySQL-hez
+**ISMERTETIK** egy hasznos eszköz optimalizálni a lekérdezéseket. ISMERTETIK utasítás használható SQL-utasítások végrehajtásának módját információt szeretne kapni. A következő kimenet magyarázat utasítás a végrehajtás egy példát mutat be.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -36,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Ebben a példában a értékének is látható módon *kulcs* null értékű. A kimeneti azt jelenti, hogy MySQL indexekkel optimalizálva a lekérdezés nem található, és egy tábla teljes vizsgálatot végez. Most optimalizálhatja a lekérdezés index hozzáadásával a **azonosító** oszlop.
+Ebben a példában értékét is látható módon *kulcs* má hodnotu NULL. Ez a kimenet azt jelenti, hogy a MySQL nem található a lekérdezés memóriaoptimalizált indexek és a teljes tábla beolvasásával hajtja végre. Nézzük optimalizálása a lekérdezés ad hozzá egy index a **azonosító** oszlop.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -56,11 +53,11 @@ possible_keys: id
         Extra: NULL
 ```
 
-Az új magyarázat jeleníti meg, hogy MySQL most indexszel 1, ami viszont jelentős mértékben csökkenteni a keresési időt sorok számának korlátozása.
- 
+Az új magyarázat bemutatja, hogy, hogy MySQL most már használja a index 1, ami jelentősen viszont lerövidítettük a keresési időt sorok számának korlátozására.
+ 
 ## <a name="covering-index"></a>Index kiterjedő
-Az index értékének lekérését adattáblák csökkentése érdekében a lekérdezés minden oszlop egy fedi le index áll. Ez az alábbi ábrát **GROUP BY** utasítást.
- 
+Egy fedi le index adattáblák értékének lekérését csökkentése érdekében az indexben a lekérdezés az összes oszlopból áll. Íme az alábbi illusztrációban **GROUP BY** utasítást.
+ 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -78,11 +75,11 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-A kimenetből látható, mert MySQL használ indexekkel, mert nincs megfelelő indexek állnak rendelkezésre. Azt is bemutatja, *használatával ideiglenes; Fájl rendezés használatával*, ami azt jelenti, MySQL ideiglenes táblát hoz létre kielégítéséhez a **GROUP BY** záradékban.
- 
-Egy index létrehozását oszlop **c2** nincs különbség, és a MySQL továbbra is létre kell hoznia egy ideiglenes tábla önmagában teszi:
+A kimenetből látható, MySQL, mert nincs megfelelő indexek állnak rendelkezésre nem használ indexekkel. Azt is bemutatja *ideiglenes; használatával Fájl rendezés használatával*, ami azt jelenti, a MySQL teljesítéséhez egy ideiglenes táblát hoz létre a **GROUP BY** záradékban.
+ 
+Egy index létrehozását az oszlopok **c2** nincs különbség, és a MySQL továbbra is létre kell hoznia egy ideiglenes táblát önálló teszi:
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -100,9 +97,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Ebben az esetben egy **kezelt index** mindkét **c1** és **c2** létrehozhatók, amelyek segítségével a értéke **c2**"közvetlenül a indexe További adatok keresési megszüntetéséhez.
+Ebben az esetben egy **kezelt index** mindkét **c1** és **c2** hozható létre, amellyel értékének hozzáadása **c2**"közvetlenül az indexe További adatok keresési kiküszöbölése.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -120,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Ahogy a fenti magyarázat látható, a MySQL most az érintett index, és ne hozzon létre egy ideiglenes tábla. 
+Azt mutatja, a fenti magyarázat, mint a MySQL most a kezelt index használja, és ne hozzon létre egy ideiglenes táblát. 
 
 ## <a name="combined-index"></a>Kombinált index
-A kombinált index több oszlop értékeit tartalmazza, és lehet tekinteni a sorokat rendezi a rendszer az indexelt oszlopok értékek összefűzésével tömbjét. Ez a módszer hasznos lehet egy **GROUP BY** utasítást.
+Egy kombinált index érték több oszlopból áll, és sorok rendezve az indexelt oszlopok értékek összefűzésével álló tömb lehet tekinteni. Ez a módszer hasznos lehet egy **GROUP BY** utasítást.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -142,9 +139,9 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MySQL hajt végre egy *fájl rendezési* művelet, amely viszonylag lassú, különösen ha rendelkezik sorok rendezéséhez. Ez a lekérdezés optimalizálása érdekében a kombinált index mindkét oszlopokon, hogy rendezve hozható létre.
+MySQL hajt végre egy *fájl rendezési* művelet, amely viszonylag lassú, különösen ha rendelkezik rendezheti a sorok számát. Ez a lekérdezés optimalizálása érdekében egy kombinált index hozható létre a mindkét oszlopot, amely rendezi a rendszer.
 
-```sql 
+```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -162,12 +159,12 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-A magyarázat most mutatja, hogy MySQL kombinált index használatával elkerülheti a további rendezés, mert az index szerint lett rendezve.
- 
+A magyarázat mostantól látható, hogy MySQL kombinált index használatával elkerülheti a további rendezési, mivel az index már van rendezve.
+ 
 ## <a name="conclusion"></a>Összegzés
- 
-MAGYARÁZAT és más típusú indexek használatával növelheti a teljesítményt jelentősen. Pusztán azért, mert az index a tábla nem feltétlenül jelenti azt MySQL lenne a lekérdezések használni tudja. Mindig a magyarázat használatával Előfeltételek ellenőrzése és a lekérdezések használatával indexek optimalizálása.
+ 
+MAGYARÁZAT és más típusú indexeket teljesítménye jelentősen megnőhet. Csak, mert rendelkezik egy indexet a tábla nem feltétlenül jelenti MySQL tudná, a lekérdezések használatával. Mindig magyarázat támaszthatja a, és optimalizálhatja a lekérdezések indexekkel.
 
 
 ## <a name="next-steps"></a>További lépések
-- A legtöbb érintett kérdésekre adott válaszok társ, vagy egy új kérdés-válasz utáni, látogasson el a [MSDN fórum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- A legtöbb érintett kérdésekre adott válaszok társ, vagy egy új kérdés-válasz küldése, látogasson el [MSDN-fórum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

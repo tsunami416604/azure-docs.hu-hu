@@ -1,24 +1,23 @@
 ---
-title: Azure Database for PostgreSQL áttelepítési partnerek |} A Microsoft Docs
+title: Azure Database for PostgreSQL áttelepítési partnerek
 description: Listák áttelepítési külső partnerek olyan megoldásokkal, amelyek támogatják az Azure Database for postgresql-hez.
-services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 11069e4e5ff9a6ad6b91fc554036955afa805443
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 63facf52531d1f58e4022085503da96a797f60df
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626454"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536236"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL áttelepítési partnerek
 Széles körben támogatásához az Azure Database for PostgreSQL-megoldás, iparágvezető partnerei és eszközök széles közül választhat. Ez a cikk a Microsoft-partnerek migrálási megoldásokkal, amelyek támogatják az Azure Database for postgresql-hez emeli ki.
 
-## <a name="migration-partners"></a>Áttelepítési partnerek
+## <a name="migration-partners"></a>Partnerek a migráláshoz
 | Partner | Leírás | Hivatkozások | Videók |
 | --- | --- | --- | --- |
 | ![SNP technológiák][1] |**SNP technológiák**<br>SNP technológiák egy kizárólag felhőalapú szolgáltató, a jövőben a biztonságos és megbízható megoldások létrehozásához. A vállalat úgy véli létrehozni a valódi üzleti értékét. A gondolkodási végrehajtásával SNP technológiák közös egy általános célú ügyfelek számára, kapcsolja be a saját egy nagy előnnyel jár, befektetés.|[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Kapcsolattartó][snp_contact] | |

@@ -1,20 +1,17 @@
 ---
 title: Metrikák riasztások konfigurálása az Azure Database for MySQL-hez az Azure Portalon
 description: Ez a cikk ismerteti konfigurálása és a hozzáférési metrikákhoz kapcsolódó riasztások az Azure Database for MySQL-hez az Azure Portalról.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6db451ab7de50039c38b59612dd2ab1c61c35e7b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 999b1d03ad8cb0b27de10ff6457c0e6cc9112ee7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271250"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548731"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Riasztásokat állíthat be mérőszámok az Azure Database for MySQL-hez az Azure portal használatával 
 

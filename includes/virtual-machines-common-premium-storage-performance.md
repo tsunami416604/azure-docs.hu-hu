@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678190"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553315"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure Premium Storage: Nagy teljesítményű rendszer tervezése
+# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure Premium Storage: Nagyteljesítményű rendszer tervezése
 
 Ez a cikk az Azure Premium Storage nagy teljesítményű alkalmazások létrehozásához nyújt útmutatást. Ez a dokumentum az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva szereplő utasítások is használhatja. Az irányelvek mutatja be, ebben a dokumentumban példaként a Premium Storage futó SQL Server rendelkezik használtuk.
 
@@ -35,7 +35,7 @@ Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a 
 > Egyes esetekben egy lemez teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
 > Ha a virtuális gép támogatja a gyorsított hálózatkezelés, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, engedélyezheti a már üzembe helyezett virtuális gépeken is [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md)cikkeket.
+Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md) cikkeket.
 
 ## <a name="application-performance-indicators"></a>Alkalmazás teljesítménymutatók
 
@@ -66,6 +66,14 @@ Ezért fontos meghatározni az optimális átviteli sebesség és az IOPS érté
 Késés egy alkalmazás egyetlen kérést kap, küldje el a storage-lemez és az ügyfélnek a válasz elküldéséhez szükséges idő. Ez a kritikus fontosságú méri, IOPS és átviteli sebesség mellett az alkalmazás teljesítményét. Egy prémium szintű tárolólemez késései ideig tart egy kérés adatainak lekérése és a kommunikációhoz, az alkalmazásnak. A Premium Storage egységesen rövid késleltetésével – biztosít. Ha engedélyezi a csak olvasható állomás-gyorsítótárazás a prémium szintű tárolólemezeket, sokkal kisebb olvasási késés beszerezheti. Ismertetjük a lemezek gyorsítótárazása későbbi szakaszban olvashat részletesebben az *alkalmazások teljesítményének optimalizálása*.
 
 Ha az alkalmazás magasabb IOPS és átviteli sebesség optimalizálása, negatív hatással lesz a késés, az alkalmazás. Miután az alkalmazás teljesítményének hangolása, mindig értékelje ki a késés nagy késésű váratlan viselkedés elkerülése érdekében az alkalmazás.
+
+A következő vezérlési síkjával végzett műveletek a Managed Disks is igénybe vehet a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttér másolása az adatok, amelyek befejezéséhez, általában 24 óránál a lemezeken lévő adatok mennyiségétől függően több órát is igénybe vehet. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.  
+
+1.  [Frissítés a tárolási típust](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [Válassza le és lemez csatolása egy virtuális gépről egy másikra](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [Felügyelt lemez létrehozása VHD-fájlból](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [Felügyelt lemez létrehozása pillanatképből](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [Nem felügyelt lemezek konvertálása a Managed Disks szolgáltatásba](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>Alkalmazás teljesítmény-követelmények összegyűjtése
 
@@ -296,7 +304,7 @@ Amikor egy nagy méretű virtuális gép csatlakoztatva van a több prémium szi
 
 A Windows használhatja a tárolóhelyek stripe lemezekre együtt. Konfigurálnia kell egy oszlopot az egyes lemezek a készletben. Ellenkező esetben csíkozott kötetek általános teljesítményét alacsonyabb, mint a lemezek adatforgalom eloszlása egyenletlen miatt a várt lehet.
 
-Fontos: A kiszolgáló-kezelő felhasználói felületén, legfeljebb 8 csíkozott kötetek az oszlopok száma állíthatók be. Több mint 8 lemez csatolásához a PowerShell használatával létrehozni a kötetet. PowerShell használatával beállíthatja az oszlopok száma egyenlő a lemezek számát. Például, ha nincsenek 16 lemez egyetlen stripe meg; Adja meg a 16 oszlopai a *NumberOfColumns* paraméterében a *New-VirtualDisk* PowerShell-parancsmagot.
+Fontos: A Kiszolgálókezelő felületén beállíthatja akár 8 csíkozott kötetek az oszlopok teljes száma. Több mint 8 lemez csatolásához a PowerShell használatával létrehozni a kötetet. PowerShell használatával beállíthatja az oszlopok száma egyenlő a lemezek számát. Például, ha nincsenek 16 lemez egyetlen stripe meg; Adja meg a 16 oszlopai a *NumberOfColumns* paraméterében a *New-VirtualDisk* PowerShell-parancsmagot.
 
 Linux rendszeren használja a stripe-lemezek MDADM segédprogrammal együtt. A részletes lépéseket csíkozást lemezeken Linux rendszeren való [szoftver RAID konfigurálása linuxon](../articles/virtual-machines/linux/configure-raid.md).
 
@@ -597,7 +605,7 @@ Beolvasni a maximális kombinált olvasási és írási teljesítményt, a nagyo
 
 További információ az Azure Premium Storage:
 
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  
+* [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  
 
 Az SQL Server-felhasználók számára olvassa el az SQL Server ajánlott eljárások teljesítményének javításához cikkeket:
 

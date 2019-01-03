@@ -1,20 +1,17 @@
 ---
 title: Az Azure Database for MySQL üzletmenet-folytonossági funkcióinak áttekintése
 description: Az Azure Database for MySQL üzletmenet-folytonossági funkcióinak áttekintése.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714344"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554537"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Az Azure Database for MySQL üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -49,7 +46,7 @@ Az egyik lehetőség, hogy Várjon, amíg a kiszolgáló ismét online állapot�
 A másik lehetőség, hogy az Azure Database for MySQL a geo-visszaállítás szolgáltatást, amely visszaállítja az a kiszolgáló georedundáns biztonsági másolatokból. Ezeket a biztonsági másolatokat elérhetők, még akkor is, ha a régió, a kiszolgáló üzemel, a kapcsolat nélküli üzemmódban. Ezek a biztonsági mentések visszaállítása bármelyik régióban, és a kiszolgáló ismét online állapotba.
 
 > [!IMPORTANT]
-> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Ha szeretné, váltson át egy meglévő kiszolgáló georedundáns biztonsági mentését, a helyileg redundáns, kell igénybe vehet egy memóriakép pg_dump a meglévő kiszolgáló használata és annak visszaállítására egy újonnan létrehozott kiszolgáló georedundáns biztonsági mentés konfigurálva.
+> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Váltás a helyileg redundáns a meglévő kiszolgáló georedundáns biztonsági mentését szeretné, ha kell venni egy, a meglévő kiszolgáló mysqldump használatával memóriakép és annak visszaállítására egy újonnan létrehozott kiszolgáló georedundáns biztonsági mentés konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
 

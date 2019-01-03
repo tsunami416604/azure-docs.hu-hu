@@ -3,24 +3,22 @@ title: Felhasználók létrehozása az Azure Database for MariaDB-kiszolgáló
 description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for MariaDB-kiszolgáló új felhasználói fiókokat hozhat létre.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50154a7fee63eb3ff9e08155123f9e5962bbfcf0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946116"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542127"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Felhasználók létrehozása az Azure Database for MariaDB 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for MariaDB.
 
 Első létrehozásakor az Azure Database for MariaDB, megadott egy kiszolgálói rendszergazda felhasználónevét és jelszavát. További információkért kövesse a [rövid](quickstart-create-mariadb-server-database-using-azure-portal.md). Megkeresheti a kiszolgáló rendszergazdai bejelentkezési felhasználónevet, az Azure Portalról.
 
-A kiszolgáló-rendszergazdai felhasználó néhány jogosultsággal, a kiszolgáló lekérdezi, lásd: válassza ki, BESZÚRÁSA, frissítése, törlése, hozzon létre és töltse be újra, folyamat, hivatkozások, INDEX, ALTER, ADATBÁZISOK megjelenítése, az ideiglenes táblák létrehozása, ZÁROLÁS táblák, hajtsa végre, replikációs alárendelt, replikációs dobja el ÜGYFÉL, NÉZET LÉTREHOZÁSA, MEGJELENÍTÉSE, LÉTREHOZÁSA RUTIN, RUTIN ALTER, FELHASZNÁLÓI, ESEMÉNY-ESEMÉNYINDÍTÓ LÉTREHOZÁSA
+A kiszolgáló-rendszergazdai felhasználó néhány jogosultsággal, a kiszolgáló felsorolt beolvasása: VÁLASSZA KI, BESZÚRÁSA, FRISSÍTÉSE, TÖRLÉSE, LÉTREHOZÁSA, DOBJA EL, TÖLTSE BE ÚJRA, FELDOLGOZNI, HIVATKOZÁSOK, INDEX, ALTER, ADATBÁZISOK, MEGJELENÍTÉSE LÉTREHOZÁSA IDEIGLENES TÁBLÁK, TÁBLÁZATOK, ZÁROLÁSA HAJTHATÓ VÉGRE, A REPLIKÁCIÓ ALÁRENDELT, REPLIKÁCIÓS ÜGYFÉL, HOZZON LÉTRE MEGTEKINTÉSE, NÉZET MEGJELENÍTÉSE, LÉTREHOZÁSA RUTIN, ALTER RUTIN, FELHASZNÁLÓ LÉTREHOZÁSA , EVENT, ESEMÉNYINDÍTÓ
 
 Az Azure Database for MariaDB-kiszolgáló létrehozása után további felhasználók létrehozása az első kiszolgálói rendszergazdai felhasználói fiók segítségével, rendszergazdai hozzáférést biztosít számukra. Emellett a kiszolgálói rendszergazdai fiókkal, amelyhez hozzáférése egyes adatbázissémák kevesebb jogosultsággal rendelkező felhasználók létrehozásához használható.
 
@@ -85,6 +83,6 @@ Az Azure Database for MariaDB-kiszolgáló létrehozása után további felhaszn
 Fiókkezeléssel kapcsolatos további információkért lásd: MariaDB dokumentációját [felhasználóifiók-kezelés](https://mariadb.com/kb/en/library/user-account-management/), [GRANT szintaxis](https://mariadb.com/kb/en/library/grant/), és [jogosultságokkal](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>További lépések
-Az új felhasználók gépek, hogy azok tudjanak csatlakozni az IP-címek számára megnyitja a tűzfalat: [hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával](howto-manage-firewall-portal.md)  
+Megnyitja a tűzfalat, hogy azok tudjanak csatlakozni az új felhasználók gépek IP-címek: [Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

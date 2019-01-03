@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a012798f71b0e3c14ab9982fd41bce6f0fa098e5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5aa52805afcd50ebf7a9ac0ddcae95f21dd329f1
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257607"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554758"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>A klasszikus Azure Machine Learning Studio webszolgáltatás újratanítása
-A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást. 
+A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Akkor be kell állítania egy tanítási kísérletet, és a egy prediktív kísérletet, ahogyan [Retrain Machine Learning-modellek](retrain-models-programmatically.md). 
+Akkor be kell állítania egy tanítási kísérletet, és a egy prediktív kísérletet, ahogyan [Retrain Machine Learning-modellek](retrain-models-programmatically.md).
 
 > [!IMPORTANT]
-> A prediktív kísérletté klasszikus machine learning-webszolgáltatás, telepíteni kell. 
-> 
-> 
+> A prediktív kísérletté klasszikus machine learning-webszolgáltatás, telepíteni kell.
+>
+>
 
 Webszolgáltatások üzembe helyezése a további információkért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Új végpont hozzáadása
-A prediktív webszolgáltatás üzembe helyezett tartalmaz egy alapértelmezett pontozási végpontjához, amely az eredeti képzési szinkronban maradjon, és kísérletek betanított modell pontozása. Frissítse a web service-t egy új betanított modell, létre kell hoznia egy új pontozási végpont. 
+A prediktív webszolgáltatás üzembe helyezett tartalmaz egy alapértelmezett pontozási végpontjához, amely az eredeti képzési szinkronban maradjon, és kísérletek betanított modell pontozása. Frissítse a web service-t egy új betanított modell, létre kell hoznia egy új pontozási végpont.
 
 Új pontozási végpont, az a prediktív webszolgáltatás, amely frissíthetők a betanított modell létrehozásához:
 
 > [!NOTE]
 > Győződjön meg arról, hogy a végpont a prediktív webszolgáltatás, nem a betanítási webszolgáltatás ad hozzá. Ha megfelelően telepítette, egy tanítási és a egy prediktív webszolgáltatás, megtekintheti az felsorolt két külön webszolgáltatást. A prediktív webszolgáltatás "[prediktív exp.]" kell végződnie.
-> 
-> 
+>
+>
 
 Két módja, amelyben hozzáadhat egy új végpontot egy webszolgáltatás:
 
@@ -51,7 +51,7 @@ Két módja, amelyben hozzáadhat egy új végpontot egy webszolgáltatás:
 2. A Microsoft Azure Web Services portál használata
 
 ### <a name="programmatically-add-an-endpoint"></a>Programozott módon a végpont hozzáadása
-Adhat hozzá azzal a mintakóddal ebben pontozási végpontok [github-adattár](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
+Adhat hozzá azzal a mintakóddal ebben pontozási végpontok [GitHub-adattár](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Végpont hozzáadása a Microsoft Azure Web Services portál használata
 1. Machine Learning Studio a bal oldali navigációs oszlopban kattintson a Web Services.

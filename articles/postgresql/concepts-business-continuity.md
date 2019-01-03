@@ -1,20 +1,17 @@
 ---
 title: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
 description: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: a0ff57037d6639f5778e27d6cf697b90038ab3b3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717063"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559042"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -49,7 +46,7 @@ Az egyik lehetőség, hogy Várjon, amíg a kiszolgáló ismét online állapot�
 A másik lehetőség, hogy az Azure Database for PostgreSQL a geo-visszaállítás szolgáltatás, amely visszaállítja az a kiszolgáló georedundáns biztonsági másolatokból. Ezeket a biztonsági másolatokat elérhetők, még akkor is, ha a régió, a kiszolgáló üzemel, a kapcsolat nélküli üzemmódban. Ezek a biztonsági mentések visszaállítása bármelyik régióban, és a kiszolgáló ismét online állapotba.
 
 > [!IMPORTANT]
-> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Váltás a helyileg redundáns a meglévő kiszolgáló georedundáns biztonsági mentését szeretné, ha kell venni egy, a meglévő kiszolgáló mysqldump használatával memóriakép és annak visszaállítására egy újonnan létrehozott georedundáns biztonsági mentés konfigurálva.
+> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése. Ha szeretné, váltson át egy meglévő kiszolgáló georedundáns biztonsági mentését, a helyileg redundáns, kell igénybe vehet egy memóriakép pg_dump a meglévő kiszolgáló használata és annak visszaállítására egy újonnan létrehozott georedundáns biztonsági mentés konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
 - Az automatikus biztonsági másolatok kapcsolatos további információkért lásd: [, Azure Database for PostgreSQL biztonsági másolatok](concepts-backup.md). 

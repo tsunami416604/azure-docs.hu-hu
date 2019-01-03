@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326549"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553300"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -189,7 +189,7 @@ Standard SSD-k nem, nem kell egypéldányos virtuális gép SLA-t. Prémium szin
 
 ## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
 
-** Nincs hatással a migrálás a Managed Disks teljesítményét?
+**A migrálás a Managed Disks teljesítményére hatással van?**
 
 Áttelepítésébe tartozik a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül adatokat, amelyek befejezéséhez, általában több óráig is tarthat kevesebb, mint 24 órában a lemezeken lévő adatok mennyiségétől függően háttérben futó példányát. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.  
 

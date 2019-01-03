@@ -1,20 +1,17 @@
 ---
 title: Replikálják az adatokat MySQL-hez készült Azure Database-be.
 description: Ez a cikk ismerteti az adatok a replikáció az Azure Database MySQL-hez.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666076"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544226"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikálják az adatokat MySQL-hez készült Azure Database-be
 
@@ -23,8 +20,8 @@ Adatok a replikáció lehetővé teszi egy MySQL-kiszolgálót a helyszínen fut
 ## <a name="when-to-use-data-in-replication"></a>Mikor érdemes használni az adatok a replikáció
 A fő forgatókönyvet kell figyelembe venni, a replikációs adatokat a rendszer:
 
-- **Hibrid adatok szinkronizálása:** adatok a replikáció, az adatok között a helyszíni kiszolgálók és az Azure Database for MySQL-hez szinkronizálva megtarthatja. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
-- **Több felhőalapú szinkronizálás:** összetett felhőalapú megoldások, a használati adatok a replikáció adatszinkronizálás az Azure Database for MySQL és a különböző felhőszolgáltatók, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások.
+- **Hibrid adatok szinkronizálása:** Az adatok a replikáció beállíthatja, hogy adatokat szinkronizálja között a helyszíni kiszolgálók és az Azure Database for MySQL-hez. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
+- **Több felhőalapú szinkronizálás:** Összetett felhőalapú megoldásokat, az adatok a replikáció használatával adatszinkronizálás, Azure Database for MySQL és a különböző felhőszolgáltatók, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások.
 
 ## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
 

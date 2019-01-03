@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499470"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584530"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
 
-> [!NOTE]
+> [!NOTE]  
 > 2017 szeptemberi, a Microsoft R Server jelent meg új neve alatt megjelenő **Microsoft Machine Learning-kiszolgáló** vagy a Machine Learning-kiszolgáló. Ennek következtében, a HDInsight R Server-fürt új neve **Machine Learning-szolgáltatások** vagy **ML szolgáltatásokkal** a HDInsight-fürt. Az R Server névváltozásai további információkért lásd: [Microsoft R Server már Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).
 
 Microsoft Machine Learning-kiszolgáló telepítési beállításként érhető el, az Azure HDInsight-fürtök létrehozásakor. A fürt típusát, amely ezt a lehetőséget biztosít nevezzük **ML szolgáltatásokkal**. Ez a képesség nyújt, az adatszakértők, statisztikusok és R-programozók skálázható, igény szerinti hozzáféréssel rendelkező elosztott elemzési a HDInsight módszereket.
@@ -29,7 +29,7 @@ Machine Learning szolgáltatások a HDInsight betölti az Azure Blob vagy a Data
 
 A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit ScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között ScaleR a Hadoop Mapreduce vagy az Apache Spark számítási környezetek használatával.
 
-A modellek vagy elemzési eredő előrejelzéseket letölthető a helyszíni használatra. Ezek is is kell üzembe helyezte azt máshol az Azure-ban, különös tekintettel keresztül [Azure Machine Learning Studio](http://studio.azureml.net) [webszolgáltatás](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+A modellek vagy elemzési eredő előrejelzéseket letölthető a helyszíni használatra. Ezek is is kell üzembe helyezte azt máshol az Azure-ban, különös tekintettel keresztül [Azure Machine Learning Studio](https://studio.azureml.net) [webszolgáltatás](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Machine Learning Services a HDInsight használatának első lépései
 
@@ -72,7 +72,7 @@ A Machine Learning szolgáltatások a HDInsight a következő szolgáltatásokat
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>A HDInsight Machine Learning-szolgáltatások adatok tárolási lehetőségek
 
-Alapértelmezett tároló a HDInsight-fürtök a HDFS-fájlrendszer vagy egy Azure Storage-fiókot, vagy egy Azure Data Lake Store társítható. Ez a társítás biztosítja, hogy feltöltött adatokat a fürthöz a tároló elemzése során állandó történik, és az adatok érhető el a fürt törlése után is. Az adatok átvitelét a beállítást választ ki, beleértve a portálalapú feltöltési funkció a storage-fiók kezeléséhez különféle eszközök és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
+Alapértelmezett tároló a HDInsight-fürtök a HDFS-fájlrendszer vagy egy Azure Storage-fiókot, vagy egy Azure Data Lake Storage társítható. Ez a társítás biztosítja, hogy feltöltött adatokat a fürthöz a tároló elemzése során állandó történik, és az adatok érhető el a fürt törlése után is. Az adatok átvitelét a beállítást választ ki, beleértve a portálalapú feltöltési funkció a storage-fiók kezeléséhez különféle eszközök és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
 
 Lehetősége van további Blob való hozzáférés engedélyezése, és a Data lake tárolja az folyamat függetlenül használja az elsődleges tárolási lehetőség fürtkiépítési során. Lásd: [Machine Learning Services a HDInsight használatának első lépései](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) való hozzáadásáról a hozzáférés további fiókokra. Lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) cikk további több tárfiók használatával kapcsolatban.
 

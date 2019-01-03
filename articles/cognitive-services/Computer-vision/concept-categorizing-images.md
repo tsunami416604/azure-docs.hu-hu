@@ -1,7 +1,7 @@
 ---
 title: Képek – Computer Vision kategorizálása
 titleSuffix: Azure Cognitive Services
-description: Képek a Computer Vision API használatával kategorizálásához kapcsolatos fogalmakat.
+description: Ismerje meg, hogy a lemezkép kategorizálási funkciója a Computer Vision API kapcsolatos fogalmakat.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333479"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579498"
 ---
-# <a name="categorizing-images"></a>Képek kategorizálása
+# <a name="image-categorization-with-computer-vision"></a>Kép kategorizálási a Computer Vision
 
 Címkézés és a leírások mellett a Computer Vision a korábbi verziókban meghatározott besorolás-alapú kategóriák adja vissza. Ezek a kategóriák öröklődő szülő/gyermek hierarchián alapuló elnevezésekkel vannak besorolva. Minden kategórianév angol nyelvű. Önállóan vagy az új modellek címkézést is használt.
 
@@ -31,7 +32,7 @@ Az alábbi ábrán látható 86 fogalmak listája alapján, kép kategorizálhat
 
 A következő JSON-választ mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha a alapuló a vizuális jellemzőket példaképen kategorizálásához.
 
-![Nő a tetőn](./Images/woman_roof.png)
+![Egy nő a tető egy apartman épület](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +55,10 @@ Az alábbi táblázatban egy jellemző kép beállítása és az egyes rendszerk
 
 | Kép | Kategória |
 |-------|----------|
-| ![Családi fénykép](./Images/family_photo.png) | people_group |
-| ![Aranyos kutya](./Images/cute_dog.png) | animal_dog |
-| ![Hegyvidéki tájkép](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Elemzési célra készült, kenyeret ábrázoló kép](./Images/bread.png) | food_bread |
+| ![Négy személyt együttesen, egy csomagcsalád feltételéről](./Images/family_photo.png) | people_group |
+| ![Egy grassy mező úgy ételadagot](./Images/cute_dog.png) | animal_dog |
+| ![Egy személy állandó az egy Hegyi rock napnyugta:](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Egy táblán kenyér szerepkörök tárházát](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>További lépések
 

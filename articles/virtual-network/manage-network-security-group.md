@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d6dfd88f9349312cc81d760a2c473f32ff932885
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227520"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543087"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
@@ -52,7 +52,7 @@ Hány hálózati biztonsági csoportokat is létrehozhat egy Azure-helyen és az
 **Parancsok**
 
 - Az Azure CLI: [az network nsg létrehozása](/cli/azure/network/nsg#az-network-nsg-create)
-- PowerShell: [új AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+- PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
 ### <a name="view-all-network-security-groups"></a>Az összes hálózati biztonsági csoportok megtekintése
 
@@ -68,7 +68,7 @@ Hány hálózati biztonsági csoportokat is létrehozhat egy Azure-helyen és az
 1. Írja be a keresőmezőbe, a portál tetején, *hálózati biztonsági csoportok*. Amikor **hálózati biztonsági csoportok** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a hálózati biztonsági csoportot a listában a részleteinek megtekintéséhez. A **beállítások** megtekintheti a **bejövő biztonsági szabályok** és **kimenő biztonsági szabályok**, a **hálózati adapterek** és  **Alhálózatok** a hálózati biztonsági csoport társítva. Emellett engedélyezheti vagy letilthatja **diagnosztikai naplók** és nézet **érvényben lévő biztonsági szabályokat**. További tudnivalókért lásd: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [érvényes biztonsági szabályok megtekintése](diagnose-network-traffic-filter-problem.md).
 3. A felsorolt gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-    *   [Tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -134,7 +134,7 @@ A hálózati biztonsági csoport hány szabályt hozhat létre egy Azure-helyen 
 **Parancsok**
 
 - Az Azure CLI: [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
-- PowerShell: [új AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+- PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
 
 ### <a name="view-all-security-rules"></a>Az összes biztonsági szabályok megtekintése
 
@@ -203,7 +203,7 @@ Egy alkalmazásbiztonsági csoportot nulla vagy több hálózati adaptereket tar
 **Parancsok**
 
 - Az Azure CLI: [az hálózati adaptertől létrehozása](/cli/azure/network/asg#az-network-asg-create)
-- PowerShell: [új-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+- PowerShell: [Új-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>Az összes alkalmazásbiztonsági csoportok megtekintése
 

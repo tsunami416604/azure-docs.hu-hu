@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184950"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540253"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
 ![Azure Tevékenységnaplók szimbólum](./media/collect-activity-logs/activity-log-analytics.png)
 
-Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Azure tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) az összes Azure-előfizetés. Az Azure-tevékenységnapló egy naplóban, amely az előfizetésekben erőforrásokon végrehajtott műveletekkel kapcsolatos információkat biztosít. A tevékenységnapló korábbi nevén *Auditnaplók* vagy *műveleti naplók* óta jelentést készít az előfizetés eseményeire.
+Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Azure tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md) az összes Azure-előfizetés. Az Azure-tevékenységnapló egy naplóban, amely az előfizetésekben erőforrásokon végrehajtott műveletekkel kapcsolatos információkat biztosít. A tevékenységnapló korábbi nevén *Auditnaplók* vagy *műveleti naplók* óta jelentést készít az előfizetés eseményeire.
 
 A tevékenységnapló használatával megadhatja, hogy a *mi*, *akik*, és *amikor* írási műveletek (PUT, POST, DELETE) arról, hogy az erőforrást az előfizetésében. A műveletek és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló nem tartalmaz olvasási (GET) műveleteket, illetve az erőforrások a klasszikus üzemi modellt használó műveleteket.
 

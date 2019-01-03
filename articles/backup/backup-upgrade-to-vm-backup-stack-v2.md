@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8882970471b554f6d05a9cf3028e7be572292ef6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 605ce97f786b6b674a4adf8d6b1ee50957ef25fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582700"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582745"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -147,3 +147,6 @@ Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt leme
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Standard SSD beszerzése felügyelt virtuális gépek számára?
 Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
+
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-snapshot-tier1"></a>Mi történik, ha kiválasztom a visszaállítási pont (2. szint) kisebb, mint a pillanatkép (1. szint) a megőrzési időszak?
+A virtuális gép biztonsági másolat verem v2 nem engedélyezi a törlése a visszaállítási pont (– 2. szint), kivéve, ha a rendszer törli a pillanatképét, (1. szint). Jelenleg 7 nap megőrzési ideje (1. szint) pillanatkép törlésre támogatjuk, így a visszaállítási pont (– 2. szint) megőrzési ideje rövidebb 7 napnál nem figyelembe véve. Ajánlott ütemezés visszaállítási pont (– 2. szint) megőrzési idő nagyobb, mint 7 nap.

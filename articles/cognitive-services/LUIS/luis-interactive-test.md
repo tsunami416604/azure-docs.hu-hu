@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141577"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601967"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 <a name="train-your-app"></a>
@@ -51,11 +51,11 @@ A teszteredmények részletek nézze meg a **vizsgálat** panel.
  
 1. Az a **teszt** dia kibővített panel meg van nyitva, válassza ki **vizsgálat** az utterance (kifejezés) kívánja. 
 
-    ![Vizsgálja meg a gomb](./media/luis-how-to-interactive-test/inspect.png)
+    ![Válassza ki a vizsgálat gombra kattintva további részleteket tudhat a vizsgálati eredmények](./media/luis-how-to-interactive-test/inspect.png)
 
 2. A **ellenőrzési** panel jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 
-    ![Vizsgálja meg a gomb](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>Leképezés pontozási megfelelő felső
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: d7e5553ec48cfda858f2a463a2df0cc60f0e5c65
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270399"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541616"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
 
@@ -51,11 +51,11 @@ A DTU- és a virtuálismag-alpú modell továbbra is egymás mellett lesz elérh
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Hogyan válasszak a DTU-alapú vásárlási modell vs között a Virtuálismag-alapú vásárlási modell
 
-A Database Transaction Unit (adatbázis-tranzakciós egység – DTU) a CPU- és memóriahasználaton, valamint az olvasási és írási műveletek számán alapuló vegyes mérték. A DTU-alapú számítási méretű előre konfigurált erőforráscsomagoknak felelnek az erőforrások teljesítményszintek különböző alkalmazásteljesítmény. Ügyfelek, akik nem kell foglalkoznia a mögöttes erőforrások, és míg rögzített havi fizetésével előre konfigurált csomaggal szeretne előfordulhat, hogy keresse meg a DTU-alapú modell jobban megfelel az igényeiknek. Ügyfelek esetében, akik jobban átlátni a mögöttes erőforrások, illetve kell méreteznie azokat egymástól függetlenül, hogy optimális teljesítményt, azonban a Virtuálismag-alapú modell lesz a legjobb választás.  Emellett, ha egy ügyfél az SQL Server egy aktív frissítési garanciával (SA) rendelkezik, kihasználhatja a meglévő befektetések és is akár 30 %-a Mentés [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Beszerzési modell belül lehetőségek előnyei a egy teljes körűen felügyelt szolgáltatás, például az automatikus biztonsági másolatokat, szoftverfrissítések és javításait.
+A Database Transaction Unit (adatbázis-tranzakciós egység – DTU) a CPU- és memóriahasználaton, valamint az olvasási és írási műveletek számán alapuló vegyes mérték. A DTU-alapú számítási méretű előre konfigurált erőforráscsomagoknak felelnek az erőforrások teljesítményszintek különböző alkalmazásteljesítmény. Ügyfelek, akik nem kell foglalkoznia a mögöttes erőforrások, és míg rögzített havi fizetésével előre konfigurált csomaggal szeretne előfordulhat, hogy keresse meg a DTU-alapú modell jobban megfelel az igényeiknek. Ügyfelek esetében, akik jobban átlátni a mögöttes erőforrások, illetve kell méreteznie azokat egymástól függetlenül, hogy optimális teljesítményt, azonban a Virtuálismag-alapú modell lesz a legjobb választás.  Emellett, ha egy ügyfél az SQL Server egy aktív frissítési garanciával (SA) rendelkezik, kihasználhatja a meglévő befektetések és is akár 30 %-a Mentés [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).  Beszerzési modell belül lehetőségek előnyei a egy teljes körűen felügyelt szolgáltatás, például az automatikus biztonsági másolatokat, szoftverfrissítések és javításait.
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Mi az SQL Serverhez készült Azure Hybrid Benefit
 
-A [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md) segítségével maximalizálhatja a licencelési beruházásai értékét, és felgyorsíthatja a migrálás a felhőbe. Az Azure Hybrid Benefit az SQL Server rendszer egy Azure-alapú kedvezmény, amely lehetővé teszi, hogy az SQL Server-licenceit frissítési garanciával rendelkező kell fizetnie ("alapdíjjal") kedvezményes díjra jogosít az SQL Database. Az Azure Hybrid Benefit SQL Serverhez a Virtuálismag-alapú vásárlási modell SQL Database önálló adatbázisok és rugalmas készletek a nyilvános előzetes verzióban érhető el. Előfordulhat, hogy ezzel az értékelemmel alkalmazza, akkor is, ha a Termékváltozat aktív, de vegye figyelembe az alapdíj mellett a alkalmazni, válassza ki azt az Azure Portalon. Visszamenőleges jóváírásra nincs mód.
+A [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) segítségével maximalizálhatja a licencelési beruházásai értékét, és felgyorsíthatja a migrálás a felhőbe. Az Azure Hybrid Benefit az SQL Server rendszer egy Azure-alapú kedvezmény, amely lehetővé teszi, hogy az SQL Server-licenceit frissítési garanciával rendelkező kell fizetnie ("alapdíjjal") kedvezményes díjra jogosít az SQL Database. Az Azure Hybrid Benefit SQL Serverhez a Virtuálismag-alapú vásárlási modell SQL Database önálló adatbázisok és rugalmas készletek a nyilvános előzetes verzióban érhető el. Előfordulhat, hogy ezzel az értékelemmel alkalmazza, akkor is, ha a Termékváltozat aktív, de vegye figyelembe az alapdíj mellett a alkalmazni, válassza ki azt az Azure Portalon. Visszamenőleges jóváírásra nincs mód.
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Vannak-e kettős-használati jogok az Azure Hybrid Benefittel az SQL Server
 
@@ -127,13 +127,13 @@ Az adatbázis Igen, minden támogatott teljesítmény célja az Azure portal, Po
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Frissítse és Visszaléptetés az általános célú és az üzletileg kritikus szolgáltatási csomagok között
 
-Igen, bizonyos korlátozásokkal. A cél Termékváltozat meg kell felelnie az adatbázis maximális vagy a rugalmas készlet mérete, a meglévő üzembe helyezési beállított. Ha használ [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md), üzletileg kritikus fontosságú Termékváltozatoknál csak Enterprise Edition-licencek rendelkező ügyfelek számára érhető el. Csak olyan ügyfelek, akik át a helyszínről az Azure Hybrid Benefit használatával az SQL Server Enterprise Edition-licencek az általános célú frissítheti üzletileg kritikus fontosságú. További részletekért lásd: [Mik az Azure Hybrid Benefit SQL Serverhez, a megfelelő jogosultságok](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
+Igen, bizonyos korlátozásokkal. A cél Termékváltozat meg kell felelnie az adatbázis maximális vagy a rugalmas készlet mérete, a meglévő üzembe helyezési beállított. Ha használ [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), üzletileg kritikus fontosságú Termékváltozatoknál csak Enterprise Edition-licencek rendelkező ügyfelek számára érhető el. Csak olyan ügyfelek, akik át a helyszínről az Azure Hybrid Benefit használatával az SQL Server Enterprise Edition-licencek az általános célú frissítheti üzletileg kritikus fontosságú. További részletekért lásd: [Mik az Azure Hybrid Benefit SQL Serverhez, a megfelelő jogosultságok](https://azure.microsoft.com/pricing/hybrid-benefit/)?
 
 Ez a konverzió nem okoz állásidőt, és az Azure portal, PowerShell, Azure CLI-vel, a T-SQL vagy a REST API használatával indítható el. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Használom, amely nem lesz általánosan elérhető a prémium RS adatbázis - helyezhetem frissít egy új csomag és egy hasonló ár-teljesítmény haszon elérése
 
-A Virtuálismag-modell lehetővé teszi, hogy a kiépített számításért és tárolásért mennyisége független felett, mert hatékonyabban kezelheti költségeit, így egy vonzó cél prémium RS adatbázisok számára. Emellett a [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md) egy jelentős kedvezményt nyújt a Virtuálismag-alapú modell használata.
+A Virtuálismag-modell lehetővé teszi, hogy a kiépített számításért és tárolásért mennyisége független felett, mert hatékonyabban kezelheti költségeit, így egy vonzó cél prémium RS adatbázisok számára. Emellett a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) egy jelentős kedvezményt nyújt a Virtuálismag-alapú modell használata.
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Milyen gyakran módosíthatja az erőforrások száma készletenként
 

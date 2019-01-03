@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308988"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555251"
 ---
 # <a name="view-service-fabric-health-reports"></a>A Service Fabric-állapotjelentések megtekintése
 Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) egészségügyi entitásokkal, mely rendszer összetevőit és watchdogs is jelentés helyi feltételek, amelyek figyelése. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) összesíti az összes egészségügyi adatokat annak meghatározására, hogy e entitások kifogástalan állapotú.
@@ -46,7 +46,7 @@ Ezek a lehetőségek bemutatása érdekében használjuk a helyi fürt öt csom�
 Service Fabric Explorert a fürtben visual nézetét jeleníti meg. Az alábbi képen láthatja, hogy:
 
 * Az alkalmazás **fabric: / WordCount** piros (a hiba), egy hibaesemény által jelzett, mert **MyWatchdog** tulajdonság **rendelkezésre állási**.
-* A szolgáltatások egyik **fabric: / WordCount/WordCountService** sárga (a figyelmeztetés). A szolgáltatás úgy van konfigurálva, a hét replikákat, és a fürt öt csomópontjának rendelkezik, ezért a két repicas nem helyezhető el. Bár ez nem látható itt, a szolgáltatás partíciója sárga miatt a rendszer jelentést `System.FM` arról, hogy `Partition is below target replica or instance count`. A sárga partíció a sárga szolgáltatás aktiválása.
+* A szolgáltatások egyik **fabric: / WordCount/WordCountService** sárga (a figyelmeztetés). A szolgáltatás úgy van konfigurálva, a hét replikákat, és a fürt öt csomópontjának rendelkezik, ezért a két replika nem helyezhető el. Bár ez nem látható itt, a szolgáltatás partíciója sárga miatt a rendszer jelentést `System.FM` arról, hogy `Partition is below target replica or instance count`. A sárga partíció a sárga szolgáltatás aktiválása.
 * A fürt piros a piros alkalmazás miatt.
 
 A kiértékelés a fürtjegyzék és alkalmazásjegyzék alapértelmezett házirendeket használ. Szigorú házirendek, és nem minden hiba működését.
@@ -464,7 +464,7 @@ Szolgáltatásállapot beolvasása az API-n keresztül, hozzon létre egy `Fabri
 
 Az alábbi példa lekéri a megadott szolgáltatásnév (URI) a szolgáltatás állapotát:
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1030,25 +1030,25 @@ Ha általános lekérdezések egy entitás egy ismeretlen állapot visszaállít
 
 A lekérdezéseket tartalmazó **HealthState** entitásokat a következők:
 
-* Csomópont-lista: a lista csomópontokat a fürtben (lapozható) adja vissza.
+* Csomópont listája: A lista csomópontok a fürtben (lapozható) adja vissza.
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode
-* Alkalmazások listája: a fürt (lapozható) alkalmazások listáját adja vissza.
+* Alkalmazások listája: A fürt (lapozható) alkalmazások listáját adja vissza.
   * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication
-* Lista: egy alkalmazás (lapozható) a szolgáltatások listáját adja vissza.
+* Lista: Egy alkalmazás (lapozható) a szolgáltatások listáját adja vissza.
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell: Get-ServiceFabricService
-* Partíciólista: (lapozható) szolgáltatás partícióinak listáját adja vissza.
+* Partíciólista: (Lapozható) szolgáltatás partícióinak listáját adja vissza.
   * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell: Get-ServiceFabricPartition
-* Replika listája: egy partíció (lapozható) replikák listáját adja vissza.
+* Replika listája: Egy partíció (lapozható) replikák listáját adja vissza.
   * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell: Get-ServiceFabricReplica
-* Telepített alkalmazások listája: a csomópont a telepített alkalmazások listáját adja vissza.
+* Telepített alkalmazások listája: A csomópont a telepített alkalmazások listáját adja vissza.
   * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
-* Üzembe helyezett szolgáltatás csomaglista: az üzembe helyezett alkalmazás service-csomagok listáját adja vissza.
+* Üzembe helyezett szolgáltatás csomag listája: A központilag telepített alkalmazás service-csomagok listáját adja vissza.
   * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
 

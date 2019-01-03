@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: a15a704cfba9260daac0cd5edfdf8b4566348628
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 419ad6681af39aee468a23319b773de23619984d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263964"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555455"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Az Azure Cosmos DB Ownership(TCO) teljes költsége
 
@@ -37,7 +37,7 @@ A kiszolgáló nélküli üzembe helyezési modell az Azure Cosmos DB nincs szü
 
 * **Optimalizálva a felhőben:** Az Azure Cosmos DB részletes több-bérlős és a teljesítmény elkülönítését az alapoktól tervezték. Ez lehetővé teszi az optimális elhelyezése, végrehajtását és a bérlők és a számítási feladatok több ezer terheléselosztási fürtök és adatközpontok között. Ezzel szemben a nyílt Forráskódú NoSQL-adatbázisok a jelenlegi generációja működnek a helyszíni a teljes virtuális gépet feltételezi, hogy egyetlen bérlő számítási feladatok futtatásához. Ezek az adatbázisok nem is célja egy felhőszolgáltató infrastruktúra hardver- és a teljes mértékben kihasználni. Például egy nyílt Forráskódú nosql-alapú adatbázis-kezelő nem Vs le a virtuális gép folyamatban közötti különbségek figyelembe rutin lemezkép frissítése, vagy azt a tényt, hogy prémium szintű lemez már háromutas replikálja. Ez nem kihasználhatja ezeket az előnyöket, és adja át az előnyök és megtakarítások az ügyfelek számára.
 
-* **Óránkénti fizet:** A nagyméretű számítási feladatokhoz, amelyek szeretné méretezni az bármelyik időpontban csak az óra alapján számítjuk fel. A számítási feladatok az alkalmazások általában több alkalommal az évre, és az adatok eltérőek lehetnek, hogy lekérik. Az Azure Cosmos DB skálázhatja felfelé vagy lefelé kell, és csak akkor kell fizetnie. Helyszíni vagy IaaS által üzemeltetett rendszerekkel ebben a modellben nem egyezik, mert nincs olyan módon, a hardver óránként leszerelése. Ezekben az esetekben is potenciálisan mentheti közötti 10-14-szerese az Azure Cosmos DB az átlagos.
+* **Óránkénti fizet:** Nagy méretű számítási feladatok esetén, hogy bármikor idő alatt szükség van, csak alapján számítjuk fel az órát. A számítási feladatok az alkalmazások általában az év, és a lekérdezett adatok között változhat. Az Azure Cosmos DB skálázhatja felfelé vagy lefelé kell, és csak akkor kell fizetnie. Helyszíni vagy IaaS által üzemeltetett rendszerekkel ebben a modellben nem egyezik, mert nincs olyan módon, a hardver óránként leszerelése. Ezekben az esetekben is potenciálisan mentheti közötti 10-14-szerese az Azure Cosmos DB az átlagos.
 
 * **Számos funkciója ingyenesen kap:** Az Azure Cosmos DB a számítási feladatok lényegében olcsóbb összehasonlítja másodlagos adatbázis-szolgáltatások írni. Emellett az Azure Cosmos DB szolgáltatást kínál például például [Automatikus indexelés](indexing-policies.md), [élettartamot (TTL)](time-to-live.md), [módosítási hírcsatorna](change-feed.md) és más egyéb költségek nélkül valami más adatbázis-szolgáltatások jellemzően díja szerint számítjuk fel.
 

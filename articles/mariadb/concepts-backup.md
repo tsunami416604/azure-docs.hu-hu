@@ -3,17 +3,15 @@ title: Biztonsági mentés és visszaállítás az Azure Database for MariaDB
 description: További tudnivalók az automatikus biztonsági mentés és az Azure Database for MariaDB-kiszolgáló visszaállítása.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c8e671071226b891668e0874d56e2d4685e1d64d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e36e718d35f652c139958388491642e98469ecaf
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958588"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548850"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás az Azure Database for MariaDB
 

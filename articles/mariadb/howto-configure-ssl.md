@@ -3,24 +3,22 @@ title: Biztonságosan csatlakozhat az Azure Database for MariaDB az SSL-kapcsola
 description: Megfelelő konfigurálása, Azure Database for MariaDB és a társított alkalmazások SSL-kapcsolatok megfelelően használatára vonatkozó utasításokat
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 00e8479eab927acccc8f797311a0a2d440bb96da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4bf18a44255903df09aae3382c0eb35a2a55eea5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961671"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541812"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-összekapcsolhatóság konfigurálása az alkalmazásban való kapcsolódás az Azure Database for MariaDB
 Azure Database for MariaDB támogatja a Secure Sockets Layer (SSL) használó ügyfélalkalmazások az Azure Database for MariaDB-kiszolgálóhoz csatlakozik. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 ## <a name="obtain-ssl-certificate"></a>SSL-tanúsítvány beszerzése
 Töltse le a tanúsítványt, az Azure Database for MariaDB kiszolgálót az SSL-en keresztüli kommunikációhoz szükséges [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a tanúsítványfájlt a helyi meghajtón (ebben az oktatóanyagban c:\ssl például).
-**A Microsoft Internet Explorer és Microsoft Edge:** a letöltés befejezése után nevezze át a tanúsítványt BaltimoreCyberTrustRoot.crt.pem.
+**A Microsoft Internet Explorer és Microsoft Edge-ben:** A letöltés befejeztével BaltimoreCyberTrustRoot.crt.pem nevezze át a tanúsítványt.
 
 ## <a name="bind-ssl"></a>Az SSL BIND
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL Workbench használatával SSL-en keresztül
@@ -49,7 +47,7 @@ Hajtsa végre a mysql **állapot** paranccsal ellenőrizheti, hogy csatlakozott 
 ```sql
 status
 ```
-Erősítse meg a kapcsolat van titkosítva, tekintse át a kimenetet, amely kell megjelennie: **SSL: titkosító használatban az AES256-SHA** 
+Győződjön meg arról, a kapcsolat van titkosítva, tekintse át a kimenetet, amely kell megjelennie:  **SSL: Titkosító használatban az AES256-SHA** 
 
 ## <a name="sample-code"></a>Mintakód
 Biztonságos kapcsolatot létesíteni az Azure Database for MariaDB SSL-en keresztül az alkalmazásból, tekintse meg a következő kód minták:

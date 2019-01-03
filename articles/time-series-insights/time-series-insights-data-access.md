@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights előzetes verziója biztonsági - Configure security eléréséhez és kezeléséhez az Azure Time Series Insights – előzetes |} A Microsoft Docs
+title: Konfigurálja a biztonsági eléréséhez és kezeléséhez az Azure Time Series Insights – előzetes |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan konfigurálhat egy felügyeleti hozzáférés és az engedélyek szabályzatok és az adat-hozzáférési szabályzatokkal is gondoskodhat az Azure Time Series Insights előzetes verziója.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f8eb66feecd58b766b3414b1bbc6bd4e27bf4f7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275465"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558522"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Adathozzáférés-környezetben
 

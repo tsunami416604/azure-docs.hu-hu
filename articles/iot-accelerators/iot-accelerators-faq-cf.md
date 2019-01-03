@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ef55f25657d1decb09e438d443e7c289823f7d9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353741"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605908"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések az Okosgyár-megoldásgyorsító
 
@@ -27,7 +27,7 @@ Az alábbi GitHub-adattárat a forráskód tárolja:
 
 ### <a name="what-is-opc-ua"></a>Mi az OPC UA?
 
-OPC egyesített architektúra (EE), 2008-ban, amely a standard szintű platformfüggetlen, szolgáltatásorientált együttműködési. Az OPC UA különféle ipari rendszerek és eszközök, például számítógépek iparági PLC és érzékelők használják. OPC UA egy bővíthető keretrendszer az a funkciók klasszikus OPC specifikációit integrálható a beépített biztonsági. Egy standard határozzák meg az OPC Foundation. A [OPC Foundation](http://opcfoundation.org/) egy nem nonprofit szervezet, több mint 440 tagjaival. A szervezet célja az, hogy használja az OPC-specifikációk keresztül több szállító, többplatformos, biztonságos és megbízható együttműködés megkönnyítése érdekében:
+OPC egyesített architektúra (EE), 2008-ban, amely a standard szintű platformfüggetlen, szolgáltatásorientált együttműködési. Az OPC UA különféle ipari rendszerek és eszközök, például számítógépek iparági PLC és érzékelők használják. OPC UA egy bővíthető keretrendszer az a funkciók klasszikus OPC specifikációit integrálható a beépített biztonsági. Egy standard határozzák meg az OPC Foundation. A [OPC Foundation](https://opcfoundation.org/) egy nem nonprofit szervezet, több mint 440 tagjaival. A szervezet célja az, hogy használja az OPC-specifikációk keresztül több szállító, többplatformos, biztonságos és megbízható együttműködés megkönnyítése érdekében:
 
 * Infrastruktúra
 * Specifikációk
@@ -78,7 +78,7 @@ Ha üzembe helyezte a megoldást www.azureiotsolutions.com, nem jelentkezhet be 
 1. Minden szimulációs tároló indítása:
     * Exportálja egy felületváltozóban nevű **IOTHUB_CONNECTIONSTRING**. Az értéket a **IotHubOwnerConnectionString** beállítását a `<name of your deployment>.config.user` fájlt. Példa:
 
-        ```
+        ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
@@ -142,7 +142,7 @@ Az IoT hubnak küldött adatok nem jelenik meg, majd van-e a szimuláció probl�
 
 Ahhoz, hogy a csatlakoztatott gyár megoldás egy olyan interaktív térkép, az Azure Maps-fiókkal kell rendelkeznie.
 
-Amikor üzembe helyezése a [www.azureiotsolutions.com](http://www.azureiotsolutions.com), az üzembe helyezési folyamat az erőforráscsoport, amely tartalmazza a megoldás gyorsító szolgáltatások ad hozzá az Azure Maps-fiók.
+Amikor üzembe helyezése a [www.azureiotsolutions.com](https://www.azureiotsolutions.com), az üzembe helyezési folyamat az erőforráscsoport, amely tartalmazza a megoldás gyorsító szolgáltatások ad hozzá az Azure Maps-fiók.
 
 Központi telepítése esetén használja a `build.ps1` szkriptet a csatlakoztatott gyár GitHub-tárház beállítása a környezeti változó `$env:MapApiQueryKey` a build-ablakban a [az Azure Maps-fiók kulcsok](../azure-maps/how-to-manage-account-keys.md). Az interaktív térkép ezután automatikusan engedélyezve lesz.
 
@@ -174,15 +174,15 @@ A telemetriai adatokat küldeni a nem az OPC UA eszközök Okosgyár:
 
     ```json
     [
-      {
-        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
-        "DisplayName": "<name_of_the_datapoint>",
-        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
-        "Value": {
-          "Value": <datapoint_value>,
-          "SourceTimestamp": "<timestamp>"
-        }
-      }
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
     ]
     ```
 
