@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945501"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630682"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
 
@@ -31,7 +31,7 @@ Jelen példa esetén a TLS1.2-t használó kérések a Pool1-ben lévő háttér
 Az alkalmazásátjáró csak ismert háttérpéldányokkal kommunikál, amelyek tanúsítványa az alkalmazásátjáró engedélyezési listájában szerepel. A tanúsítványok engedélyezéséhez fel kell tölteni a háttérkiszolgáló-tanúsítvány nyilvános kulcsát az alkalmazásátjáróra (főtanúsítványt nem). Ezután kizárólag az ismert és engedélyezett háttérkiszolgálókkal való kapcsolódás engedélyezett. A fennmaradó háttérkiszolgálók átjáróhibához vezetnek. Az önaláírt tanúsítványok csupán tesztelési célokat szolgálnak, és nem ajánlottak éles számítási feladatokra. Az ilyen tanúsítványokat engedélyeztetni kell az application gateway használhatók legyenek az előző lépésben ismertetett módon.
 
 > [!NOTE]
-> Hitelesítési tanúsítvány beállítása, nem szükséges, például az Azure Web Apps megbízható Azure-szolgáltatásokhoz.
+> Hitelesítési tanúsítvány beállítása, nem szükséges az Azure App Service-ben például a megbízható Azure-szolgáltatásokhoz.
 
 ## <a name="end-to-end-ssl-with-the-v2-sku"></a>Teljes körű SSL a v2 termékváltozatú
 
@@ -39,7 +39,7 @@ A hitelesítési tanúsítványokat elavult, és az Application Gateway v2 szint
 
 - Jól ismert, amelynek CN megfelel a HTTP-háttérbeállítások található gazdanevet hitelesítésszolgáltató hatóságok által aláírt tanúsítványokat nem igényel teljes körű SSL működéséhez minden további lépést. 
 
-   Például, ha a háttérrendszer tanúsítványokat a jól ismert hitelesítésszolgáltató által kiállított, és van egy contoso.com CN, és a háttérbeli http-beállítás a gazdagép mező értéke is a contoso.com, majd nincsenek további lépésekre szükség. A háttérbeli http protokoll beállítása HTTPS-re állíthatja, és az egészségügyi mintavétel és adatok elérési útvonalat SSL engedélyezve lenne. Ha háttérrendszerrel használ az Azure Web Apps vagy a többi Azure webes szolgáltatásaival, majd ezek implicit módon megbízható, valamint és nincs további lépések szükségesek, teljes körű SSL-hez.
+   Például, ha a háttérrendszer tanúsítványokat a jól ismert hitelesítésszolgáltató által kiállított, és van egy contoso.com CN, és a háttérbeli http-beállítás a gazdagép mező értéke is a contoso.com, majd nincsenek további lépésekre szükség. A háttérbeli http protokoll beállítása HTTPS-re állíthatja, és az egészségügyi mintavétel és adatok elérési útvonalat SSL engedélyezve lenne. Ha háttérrendszerrel használ az Azure App Service-ben vagy más Azure webes szolgáltatásaival, majd ezek implicit módon megbízható, valamint és nincs további lépések szükségesek, teljes körű SSL-hez.
 - Ha a tanúsítvány önaláírt, vagy ismeretlen közvetítők írja alá, majd a megbízható főtanúsítvány v2 szintű Termékváltozatot teljes körű SSL engedélyezése definiálni kell. Az Application Gateway csak háttérrendszerek, amelynek kiszolgálói tanúsítvány legfelső szintű tanúsítvány megfelel a háttérbeli http-beállítás a készlethez társított megbízható legfelső szintű tanúsítványok listáját egyikének kommunikál.
 - Mellett a legfelső szintű tanúsítvány egyezik az Application Gateway azt is ellenőrzi, ha a gazdagép-beállítást megadott a háttérbeli http-beállítás megegyezik a háttérkiszolgáló SSL-tanúsítvány által bemutatott köznapi név (CN). Próbálja a háttérrendszer SSL-kapcsolatot létesíteni, amikor az Application Gateway a kiszolgálónév jelzése (SNI) bővítmény a gazdagép, a háttérbeli http-beállításban megadott állítja be.
 - Ha **válasszon címet gazdanévre** helyett a gazdagép mezőt a háttérbeli http-beállítás van kiválasztva, majd az SNI-fejléc értéke mindig a háttérkészlethez teljes tartománynév és a CN a háttérkiszolgálón SSL tanúsítványt meg kell egyeznie a teljes Tartományneve. Háttérkészlet-tagokra az IP-címek nem támogatottak ebben a forgatókönyvben.

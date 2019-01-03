@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387097"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601559"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -32,7 +32,7 @@ Az Azure SQL Database, a rugalmas készletek, a felügyelt példány és az adat
 A különböző Azure-szolgáltatások által támogatott mérőszámokban és naplófájlokban kategóriák kapcsolatos további információkért lásd:
 
 * [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure-beli diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Ez a cikk nyújt útmutatást az adatbázisok, rugalmas készletek és a felügyelt példány diagnostics telemetriai adatainak engedélyezéséhez. Azt is segítségével megtudhatja, hogyan konfigurálhat egy Azure SQL Analytics egy figyelési eszköz adatbázis diagnostics telemetriai adatainak megtekintéséhez.
 
@@ -691,7 +691,7 @@ Tudjon meg többet a [Intelligent Insights naplóformátum](sql-database-intelli
 Megtudhatja, hogyan naplózás engedélyezése és a metrikák és naplózása támogatja a különböző Azure-szolgáltatások, kategóriák:
 
 * [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure-beli diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Az Event Hubs szolgáltatásról, olvassa el:
 

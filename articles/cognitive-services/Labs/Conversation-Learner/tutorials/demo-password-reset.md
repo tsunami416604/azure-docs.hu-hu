@@ -10,21 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240868"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792390"
 ---
-# <a name="demo-password-reset"></a>Bemutató: Jelszó-visszaállítás
-Ez a bemutató mutatja be egy egyszerű technikai támogatás robot, amelyek segíthetnek a jelszó-visszaállítási folyamatait. 
-
-Megmutatja, hogyan Beszélgetéstanuló tudhat meg nem triviális párbeszédpanel folyamatok, több kapcsolja sorozatok, beleértve egy out-a-domain-osztályt. Ez a bemutató nem használja a kódok vagy entitásokat.
+# <a name="demo-password-reset"></a>Bemutató: Új jelszó létrehozása
+Ez az oktatóanyag bemutatja egy egyszerű technikai támogatás robot, amelyek segíthetnek a jelszó-visszaállítási Beszélgetéstanuló működteti. A robot modell további folyamatok nem triviális párbeszédpanel, és több kapcsolja többek között az out-a-domain osztályok feladatütemezések. A feladat kód vagy entitások nélkül is elvégezhető.
 
 ## <a name="video"></a>Videó
 
-[![Bemutató jelszó előzetes verzió](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![Bemutató jelszó előzetes verzió](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Követelmények
 Ehhez az oktatóanyaghoz, hogy fut-e a jelszó alaphelyzetbe állítása robotot
@@ -37,41 +35,48 @@ A webes felhasználói felületen modell-lista kattintson a oktatóanyag bemutat
 
 ### <a name="actions"></a>Műveletek
 
-Ha a felhasználó keres súgó a jelszavát, beleértve a megoldások a műveletek hoztunk létre.
+A modell tartalmazza, amelyek segítségével a felhasználók közös jelszó kapcsolatos problémák megoldásához műveletek egy csoportját.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>Képzési párbeszédpanelek
 
-Számos képzési párbeszédpanelek. Még nincsenek technológiáink miként kívüli tartomány osztály – például a felhasználói kérések, tartományi; "útvonalak" esnek a robot adott tartomány kérések ki néhány példát, és képes válaszolni az "I nem tud segíteni az adott."
+A modell is tartalmaz a több Train párbeszédpanelek, köztük olyanokat, amelyek bemutatják, tartományi osztály képzési kívül. Például a felhasználók, akik kérhet például útvonalak. A minta robot tanított bemutatási célokra néhány, és egyszerűen reagál, megállapításával "nem segíteni az adott." A meglévő Train-párbeszédpanelekhez listája a bal oldali panelen található a "Train-párbeszédpanelekhez".
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Tegyük fel próbáljon meg egy tanítási munkamenet.
+1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
+2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", írja be az "i jelszó elvész."
+3. A "Score műveletek" gombra.
+4. Válassza ki a választ, az "Is, amely a helyi fiók vagy a Microsoft-fiókkal?"
+5. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", írja be a "helyi fiók."
+6. A "Score műveletek" gombra.
+7. Válassza ki a választ, a "Windows melyik verziója van?"
+8. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "a windows XP" típusa
+9. A "Score műveletek" gombra.
+10. Kattintson a "+ művelet" gombra.
+11. A "Bot a válaszban..." mezőbe írja be a "MEGOLDÁST: Útmutató a Windows XP-jelszó alaphelyzetbe állítása..."
+12. A "Létrehozás" gombra.
 
-1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
-1. Adja meg a "Megszakadt a jelszó".
-2. Kattintson a pontszám művelet.
-3. Jelölje be a "Is, amely a helyi fiók vagy a Microsoft-fiókkal?"
-4. Adja meg a "Helyi fiók".
-5. Kattintson a pontszám műveletek.
-3. Jelölje be a "Windows melyik verziója van?"
-4. Adja meg "a Windows 8'.
-5. Kattintson a pontszám műveletek.
-6. Válassza ki a(z) megoldás: a Windows 8-as jelszó alaphelyzetbe állítása. "
-4. Kattintson a tanítási kész gombra.
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Képzési párbeszédpanelek Out-a-Domain-forgatókönyvek
 
-Próbáljuk meg, hogyan a robot további egy out-a-domain-osztályt.
-
-1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
-1. Adja meg a "webes keresés".
-    - Ez a tartományon kívüli out osztály egy példát. 
-2. Kattintson a pontszám művelet.
-3. Jelölje be a "Sajnos tudok, amely nem segítség."
-    - Figyelje meg, hogy ez a beállítás a pontszám értéke jelenleg alacsony. De után egy kicsit több oktatás, a pontszám magasabb fog kapni.
-4. Kattintson a tanítási kész gombra.
-
-Most láthatta, hogyan hozhat létre egy alapvető technikai támogatás bemutatót, és hogyan tudhat megoldást nyújtanak, és a mintalekérdezések kívül is kezelésére.
+1. A bal oldali panelen, kattintson a "Train-párbeszédpanelekhez", majd a meglévő "kisfia stores" Train párbeszédpanel.
+2. A Csevegés panelen kattintson a "kisfia stores" utterance (kifejezés).
+3. "Hozzáadása alternatív beviteli...", "webes keresés" típust, majd nyomja le adja meg a mezőben.
+4. "Hozzáadása alternatív beviteli...", "repülési foglalási" típust, majd nyomja le adja meg a mezőben.
+5. A "Módosítások mentése" gombra.
+6. Kattintson a "Mentés szerkesztése" gombra.
+7. A bal oldali panelen kattintson a "Log-párbeszédpanelekhez", majd az "új Log" gomb.
+8. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", az "i a jelszó nem található" típusa
+9. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Microsoft-fiók" típusra
+10. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Köszönjük" típusra
+11. Kattintson a "Végzett tesztelése" gombra.
+12. Kattintson az "i a jelszó nem található" log párbeszédpanel a rácsnézet.
+13. A Csevegés panelen kattintson a helytelenül megjelenített "megoldást: Útmutató a Microsoft-fiókja jelszavát alaphelyzetbe állítása"választ.
+14. Kattintson a "+ művelet" gombra.
+15. A "Bot a válaszban..." mezőbe írja be a "Teljesítése esetén nyugodtan"
+16. A "Létrehozás" gombra.
+17. A "Mentés másként Train párbeszédpanel" gombra.
 
 ## <a name="next-steps"></a>További lépések
 

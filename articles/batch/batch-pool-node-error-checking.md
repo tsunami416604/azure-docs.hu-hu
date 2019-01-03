@@ -1,104 +1,105 @@
 ---
-title: Batch-készlet és a csomópont hibák keresése
-description: Hibák kereséséhez és elkerülésével készletek és a csomópontok létrehozásakor
+title: Ellenőrizze a készletet és a csomópont hibákat – Azure Batch
+description: Hibák kereséséhez és elkerülésével őket, készletek és a csomópontok létrehozásakor
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 9/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: bc09089fa9984e9042166938da19499afca21509
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 4e1e645c25d2f1e49e222e39ecd719a414e1404e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435216"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790469"
 ---
-# <a name="checking-for-pool-and-node-errors"></a>Készlet és a csomópont hibák keresése
+# <a name="check-for-pool-and-node-errors"></a>Ellenőrizze a készletet és a csomópont hibákat
 
-Amikor létrehozása és kezelése a Batch-készletek, műveletek, amelyek azonnal, és nincsenek az aszinkron műveletek, amelyek nem azonnali, fut a háttérben, és több percig is eltarthat.
+Ha Ön létrehozása és kezelése az Azure Batch-készletek, bizonyos műveleteket azonnal történik. Azonban néhány művelet aszinkron és futtatása a háttérben is. Ezek is igénybe vehet néhány percet.
 
-Végzett, azonnali műveleteihez hibák észlelése az egyszerű, mivel az esetleges hibák azonnal által visszaadott az API-t, a CLI vagy a felhasználói felület.
+Végzett, azonnali műveleteihez hibák észlelése rendkívül egyszerű, mert az esetleges hibák az API-t, a CLI vagy a felhasználói felület által azonnal visszaadott.
 
-Ez a cikk ismerteti a háttérbeli műveletek, amelyek elvégezhetők a készletek és a készlet csomópontjain, – azt adja meg, hogyan hibák észlelése, és hogyan el kell kerülni a hibákat.
+Ez a cikk ismerteti a háttérbeli műveletek, amely akkor fordulhat elő, készletek és a készlet csomópontjain. Azt adja meg, hogyan észlelheti és hibák elkerülése érdekében.
 
 ## <a name="pool-errors"></a>Készlet hibák
 
 ### <a name="resize-timeout-or-failure"></a>Átméretezés időtúllépése vagy a hiba
 
-Ha egy új készletet hoz létre, vagy egy meglévő készletbe, a csomópontok a célként megadott számok átméretezés van megadva.  A művelet azonnal befejeződik, de a tényleges elosztása az új csomópontok vagy a meglévő csomópontok eltávolításra kerül sor a háttérben keresztül lehet néhány percig.  Átméretezés időtúllépés van megadva a [létrehozása](https://docs.microsoft.com/rest/api/batchservice/pool/add) vagy [átméretezése](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API - csomópontok célszáma nem lehet megszerezni az átméretezési időtúllépés, ha majd a művelet leállítja a készlet egy stabil állapotot fog az és méretezési hibát kellene.
+Amikor egy új készletet hoz létre, vagy egy meglévő átméretezése tárolókészlet, adja meg a csomópontok célszámát.  A művelet azonnal befejeződik, de a tényleges elosztása az új csomópontok vagy a meglévő csomópontok eltávolításának több percig is eltarthat.  Az átméretezés időtúllépési a megadott a [létrehozása](https://docs.microsoft.com/rest/api/batchservice/pool/add) vagy [átméretezése](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API-t. Ha a Batch az átméretezés időtúllépési ideje alatt nem lehet megszerezni a csomópontok célszámát, leállítja a műveletet. A készlet egy stabil állapotba kerül, és jelentéseket méretezze át a hibákat.
 
-Átméretezés időtúllépés jelentette a [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) tulajdonsága az utolsó értékelés, amely felsorolja egy vagy több hiba történt.
+A [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) legutóbbi kiértékelésének tulajdonsága egy átméretezés időtúllépési jelentés, és bármely fellépő hibák listája.
 
 Átméretezés időtúllépések gyakori okai:
+
 - Átméretezés időtúllépési érték túl rövid
-  - Az alapértelmezett időtúllépési érték 15 perc, amely általában bőséges időt a készlet csomópontjain lefoglalt vagy eltávolítani.
-  - Amikor egy nagy számú csomópont (több mint 1000 csomópont egy Piactéri rendszerképből) vagy egy egyéni lemezképből több mint 300 csomópontok lefoglalása a készlet létrehozásakor vagy átméretezése során, egy 30 perces időkorlát ajánlott.
+  - A legtöbb esetben az alapértelmezett időtúllépési érték 15 perc lefoglalva vagy eltávolítani a készlet csomópontjain elég hosszú.
+  - Ha nagy számú csomópont van lefoglalása, ajánlott az átméretezés időtúllépési beállítást 30 perc. Például, ha meg van átméretezése több mint 1000 csomópontok az Azure Marketplace-rendszerképpel, vagy egy egyéni Virtuálisgép-rendszerképről több mint 300 csomópontok.
 - Nincs elegendő Processzormagok kvótája
-  - Batch-fiók lehet magok számának kvótával rendelkezik kiosztott összes készletek között.  A Batch nem lefoglalni a csomópontokat, a kvóta elérése után.  A Processzormagok kvótája [növelhető](https://docs.microsoft.com/azure/batch/batch-quota-limit) ahhoz, hogy további csomópontok lefoglalását.
+  - Batch-fiók korlátozza a magok száma, amelyek azt foglalhat le minden készletek között. Batch a csomópontok lefoglalása a kvóta elérése után leáll. Ön [növelheti](https://docs.microsoft.com/azure/batch/batch-quota-limit) a magkvóta úgy, hogy a Batch további csomópontok foglalhat le.
 - Megfelelő alhálózati IP-címek amikor egy [készlet használata a virtuális hálózaton](https://docs.microsoft.com/azure/batch/batch-virtual-network)
-  - Egy virtuális hálózat alhálózatához kell van-e elegendő hozzá nem rendelt IP-címek kiosztásához a kért készlet csomópontjain, ellenkező esetben a csomópontok nem hozható létre.
+  - Egy virtuális hálózat alhálózatához kell van-e elegendő hozzá nem rendelt IP-címek lefoglalása minden kért készlet csomópont számára. Ellenkező esetben a csomópontok nem hozható létre.
 - Nincs elegendő erőforrás amikor egy [készlet használata a virtuális hálózaton](https://docs.microsoft.com/azure/batch/batch-virtual-network)
-  - A Batch-fiók létrehozásához használt előfizetés-erőforrások, például a terheléselosztók, nyilvános IP-címek és NSG-k jönnek létre.  Ezekhez az erőforrásokhoz az előfizetési kvóták elegendőnek kell lennie.
-- Nagy készletek egyéni Virtuálisgép-rendszerkép használata
-  - Egyéni rendszerképekből nagy készleteket foglal le, majd méretezze át a időtúllépések hosszabb időt vesz igénybe is fordulhat elő.  Korlátozások és konfigurációs javaslatokat tartalmazza egy [vonatkozó cikket](https://docs.microsoft.com/azure/batch/batch-custom-images). 
+  - A Batch-fiókkal azonos előfizetésben található erőforrások, például a terheléselosztók nyilvános IP-címek és a hálózati biztonsági csoportok létrehozhat. Ellenőrizze, hogy megfelelőek-e az előfizetési kvóták ezekhez az erőforrásokhoz.
+- Nagy készletek egyéni Virtuálisgép-rendszerképek
+  - Nagy készletek egyéni Virtuálisgép-rendszerképek használó tovább tarthat a lefoglalni, és méretezze át a időtúllépések akkor fordulhat elő.  Lásd: [hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával](https://docs.microsoft.com/azure/batch/batch-custom-images) kapcsolatos korlátozások és konfigurációs javaslatokat.
 
-### <a name="auto-scale-failures"></a>Automatikus skálázás sikertelen
+### <a name="automatic-scaling-failures"></a>Az automatikus skálázási hibák
 
-Explicit módon beállítása a készlethez tartozó csomópontok célszámát a készlet létrehozásakor vagy átméretezése, helyett egy készletben lévő csomópontok automatikusan skálázhatók.  Egy [automatikus méretezési képlet is létrehozható egy készlet](https://docs.microsoft.com/azure/batch/batch-automatic-scaling), állítsa be a készlethez tartozó csomópontok célszáma, konfigurálható rendszeres időközönkénti kiértékelendő.  A következő típusú hibák akkor fordulhat elő, és észlelt:
+Beállíthatja az Azure Batch automatikusan skálázható az egy készletben lévő csomópontok száma is. A paraméterek meghatározása a [automatikus méretezési képlet készlet](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). A Batch szolgáltatás rendszeresen értékeli a készletben lévő csomópontok számát, és állítson be egy új cél-számot a képlet használatával. A következő típusú hibák akkor fordulhat elő:
 
-- Az automatikus skálázás kiértékelési sikertelen lehet.
-- Az eredményül kapott átméretezési művelet sikertelen lesz, és időkorlátja.
-- Előfordulhat, hogy az automatikus méretezési képlet, az átméretezés működik vagy túllépik az időkorlátot a helytelen csomópont célértékek, vezető problémájára.
+- Az automatikus skálázási kiértékelés sikertelen lesz.
+- Az eredményül kapott átméretezés végrehajtása meghiúsul, és túllépi az időkorlátot.
+- Az automatikus méretezési képlet probléma helytelen csomópont célértékek vezet. Az átméretezés működik, vagy túllépi az időkorlátot.
 
-Információ a legutóbbi automatikus skálázás használatával lekérte a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) tulajdonság, amely az idő kiértékelése, értékek és az értékelést, és az esetleges hibákat, hajt végre a kiértékelés eredménye kapcsolatos jelentések.
+Utolsó automatikus skálázási kiértékelésével kapcsolatos információkat szerezhet a használatával a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) tulajdonság. Ez a tulajdonság jelentések, a kiértékelés időpontja, az értékek és eredmény és a teljesítmény hibákat.
 
-Összes értékelés információ automatikusan rögzített egy [készlet átméretezése kész esemény](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event).
+A [készlet átméretezése kész esemény](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) összes értékelés vonatkozó adatokat rögzíti.
 
 ### <a name="delete"></a>Törlés
 
-Az erőforráskészlet-objektumot magát követi, feltéve, hogy nincsenek a készletben lévő csomópontok, majd a készlet törlése művelet eredményeinek a csomópontok először törlése folyamatban.  A készlet csomópontjain törölni néhány percet is igénybe vehet.
+Ha töröl egy konfigurációt használó csomópontokat tartalmazó készletet, az első Batch törli a csomópontok. Ezután a háttérfeladat törli magát az erőforráskészlet-objektumot. A készlet csomópontjain törölni néhány percet is igénybe vehet.
 
-A [állapot tárolókészlet](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) fog szerepelni a "Törlés" a törlése során.  A hívó alkalmazás képes észlelni, ha a készlet törlése a "state" és "stateTransitionTime" tulajdonság használatával túl sokáig tart.
+Batch-készletek a [állapot tárolókészlet](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) való **törlése** a törlése során. A hívó alkalmazás képes észlelni, ha a készlet törlése használatával túl sokáig tart az **állapot** és **stateTransitionTime** tulajdonságait.
 
 ## <a name="pool-compute-node-errors"></a>Készlet számítási csomópont hibák
 
-Csomópontok a készlet sikeresen kiosztható, de különböző problémákat okozhat a folyamatban van a nem megfelelő állapotú csomópontokat, és nem lesz használható.  Miután a csomópontok a készlet le van foglalva, azok költségekkel, és ezért fontos, hogy észlelje a problémákat, hogy ne kelljen fizetnie, amely nem használható csomópontok.
+Akkor is, ha a Batch sikeresen lefoglalja a készlet, különböző problémákat okozhat, néhány nem megfelelő állapotú, és nem használható kell csomópont. Ezek a csomópontok díjkötelesek. Fontos problémák észlelése, így nem kell fizetnie használhatatlan csomópontok.
 
 ### <a name="start-task-failure"></a>Indítási feladat hibája
 
-Egy nem kötelező [kezdő tevékenység](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) készlet adható meg.  Minden olyan feladat, mint a parancssorból és az erőforrások fájljainak letöltése a storage-ból adható meg.  Az indítási tevékenység a készlet van megadva, de mindegyik csomóponton futtatni – minden csomópont elindítása után az indítási tevékenység fut majd.  Egy további tulajdonságot, a [kezdő tevékenység](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask), "waitForSuccess", itt adhatja meg, hogy Batch várnia kell az indítási tevékenység sikeresen befejeződik, mielőtt csomóponthoz egyéb tevékenységeket ütemezne.
+Előfordulhat, hogy szeretne megadni egy nem kötelező [kezdő tevékenység](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) -készlet. A többi tevékenységnél, használhatja a parancssorból és az erőforrások fájljainak letöltése a storage-ból. Az indítási tevékenység fut az egyes csomópontok lett indítás után. A **waitForSuccess** tulajdonság határozza meg, hogy a Batch megvárja, amíg az indítási tevékenység sikeresen befejeződik, mielőtt azt ütemezi a feladatokat, hogy egy csomópont.
 
-Ha egy indítási tevékenység meghiúsul, és a kezdési feladat konfigurációja megadott Várjon, amíg a művelet sikeresen befejeződött, a csomópont használhatatlan lesz, és továbbra is díjat számolunk.
+Mi történik, ha konfigurálta a Várakozás tevékenység befejezése sikeres kezdő, de az indítási tevékenység sikertelen lesz a csomópont? Ebben az esetben a csomópont nem használható, de továbbra is tekintetében számítunk fel díjat.
 
-Kezdő tevékenység sikertelen használatával észlelhető a [eredmény](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) és [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) tulajdonságait a legfelső szintű [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) csomópont-tulajdonságok.
+Észlelheti a kezdő tevékenység sikertelen használatával a [eredmény](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) és [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) tulajdonságait a legfelső szintű [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) csomópont-tulajdonságok.
 
-Sikertelen az indítási tevékenység is vezet a csomópont [állapot](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) beállítása "starttaskfailed", de csak "waitForSuccess" be lett állítva. Ha "true".
+Nem sikerült az indítási tevékenység jelentkezésekor a Batch szolgáltatást, állítsa be a csomópont [állapot](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) való **starttaskfailed** állíthatja be, ha **waitForSuccess** való **igaz**.
 
-A többi tevékenységnél, ott számos oka lehet az a kezdő tevékenység sikertelen.  Hibaelhárítás, minden további tevékenység-specifikus naplófájl, az stdout és stderr ellenőrizni kell.
+A többi tevékenységnél, ott számos oka lehet az a kezdő tevékenység sikertelen.  A hiba elhárításához ellenőrizze minden további tevékenység-specifikus naplófájl, az stdout és stderr.
 
 ### <a name="application-package-download-failure"></a>Alkalmazás-csomag letöltési hiba
 
-Egy vagy több alkalmazáscsomagot igény szerint a megadott csomag fájljai, minden egyes csomópont alatt letöltve egy készlet megadott és a csomópont elindult, de feladatok ütemezése előtt tömörítetlen.  Az alkalmazáscsomagok együtt egy indítási feladat parancssor segítségével más helyre másolja a fájlokat, vagy futtassa a telepítőt, például szokás.
+Megadhat egy vagy több alkalmazáscsomagot az egy készletben. A Batch letölti a megadott csomag fájlokat minden egyes csomópontot, és kibontja a fájlokat, miután a csomópont elindult, de mielőtt feladatok ütemezése. Szokás a kezdő tevékenység parancssorának, az alkalmazáscsomagok együtt használja. Ha például fájlok másolása egy másik helyre, vagy futtassa a telepítőt.
 
-Töltse le, és a egy alkalmazáscsomagot kibontása sikertelen. a csomópont lesz jelentve [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság.  A csomópont állapota lesz beállítva "használhatatlan".
+A csomópont [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság letöltéséhez, és bontsa ki az alkalmazáscsomag hibát jelez. A Batch állítja a csomópont állapota **használhatatlan**.
 
 ### <a name="node-in-unusable-state"></a>Csomópont használhatatlan állapotban
 
-A [csomópont állapota](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) állíthat be, használhatatlan számos oka lehet.  "Használhatatlan" feladatot nem lehet ütemezni a csomópontra, de a csomópont továbbra is díjat számolunk.
+Az Azure Batch előfordulhat, hogy állítsa be a [csomópont állapota](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) való **használhatatlan** ennek számos oka lehet. A csomópont állapota értékre **használhatatlan**, a feladatok nem lehet ütemezni a csomópontra, de továbbra is tekintetében számítunk fel díjat.
 
-A Batch minden esetben megpróbálja helyreállítani használhatatlan csomópontok, de helyreállítási is, vagy nem lehetséges, okától függően.
+A Batch minden esetben megpróbálja helyreállítani a használhatatlan csomópontok, de helyreállítási is, vagy nem lehetséges okától függően.
 
-Az OK lehet meghatározni, ha azt a csomópont kerülnek [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság.
+Ha a Batch megadhatja, hogy az okot, a csomópont [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság jelzi azt.
 
-Néhány példa szemlélteti a "használhatatlan" csomópontok okok:
+Okairól további példái **használhatatlan** csomópontokat tartalmazza:
 
-- Érvénytelen egyéni rendszerkép; nem lett előkészítve megfelelően, például.
-- Infrastrukturális hiba vagy alacsony szintű frissítés és a mögöttes virtuális gép áthelyezését; A Batch a csomóponton állítja helyre.
+- Egyéni Virtuálisgép-rendszerkép nem érvényes. Ha például olyan lemezképet, amely nem megfelelően van-e előkészítve.
+- Virtuális gép átkerül az infrastruktúra meghibásodása vagy egy alacsony szintű frissítése miatt. A Batch a csomóponton állítja helyre.
 
 ### <a name="node-agent-log-files"></a>Csomópont-ügynök naplófájljainak
 
-Ha egy készlet problémája kapcsolatban az ügyfélszolgálattól, majd minden egyes készlethez csomóponton futó ügynök kötegfolyamat naplófájlokat lehet beszerezni.  A naplófájlokban található a csomópont csak akkor tölthetők fel az Azure Portalon, a Batch Explorer, vagy egy [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs).  Fel- és naplófájlok mentése rendkívül hasznosak, mint a csomópont vagy a futó csomópontok költsége a készlet lehet törölni.
+A Batch minden készlet csomóponton futó ügynök folyamat akkor lehet hasznos, ha egy készlet csomópont problémával kapcsolatban az ügyfélszolgálattól kell naplófájlokban biztosíthat. A csomópont csak akkor tölthetők fel az Azure Portalon, a Batch Explorer, a naplófájlok és a egy [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs). Ez hasznos feltöltésére, és mentse a rendszernapló fájljaiban. Ezt követően törölheti a csomópont- vagy a futó csomópontok költsége a készlet.
 
 ## <a name="next-steps"></a>További lépések
 
-Győződjön meg arról, az alkalmazás van megvalósítva, átfogó hibaellenőrzés, különösen az aszinkron műveletek, így a problémák gyorsan észlelt, és felderítette.
+Ellenőrizze, hogy beállította-e az alkalmazás átfogó hibaellenőrzés, különösen az aszinkron műveletek végrehajtásához. Lehet, kritikus fontosságú haladéktalan észlelheti és diagnosztizálhatja a problémákat.

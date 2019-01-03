@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409462"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794549"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -23,6 +23,8 @@ Ez a cikk célja, hibakeresésre és az Azure File Sync üzembe helyezéssel el�
 1. [Az Azure Storage-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. A Microsoft ügyfélszolgálata. Hozhat létre egy új támogatási kérelmet az Azure Portalon, az a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza ki **új támogatási kérelem**.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Problémát tapasztalok egy probléma az Azure File Sync (szinkronizálása, felhőalapú rétegezési, stb.) a kiszolgálón. E távolítsa el, majd hozza létre újra a kiszolgálói végpontot?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -130,11 +132,11 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 A probléma akkor fordulhat elő, ha a tárterület-figyelő szinkronizálási folyamat nem fut, vagy a kiszolgáló nem tud kommunikálni az Azure File Sync szolgáltatás egy proxy vagy tűzfal miatt.
 
-A probléma megoldásához hajtsa végre az alábbi lépéseket:
+A probléma megoldásához végezze el az alábbi lépéseket:
 
-1. A kiszolgálón nyissa meg a Feladatkezelőt, és ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat. A folyamat nem fut, ha először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, frissítsen a legújabb Azure File Sync [ügynökverzió](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
+1. Nyissa meg a Feladatkezelőt a kiszolgálón, és ellenőrizze, hogy fut-e a Storage Sync Monitor-folyamat (AzureStorageSyncMonitor.exe). Ha a folyamat nem fut, először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, frissítsen a legújabb Azure File Sync [ügynökverzió](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
 2. Ellenőrizze a tűzfalakról és Proxykról beállításai megfelelően vannak konfigurálva:
-    - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
+    - Ha a kiszolgáló tűzfal mögött van, ellenőrizze, hogy engedélyezve van-e a 443-as port kimenő forgalma. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
     - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 <a id="endpoint-noactivity-sync"></a>**Kiszolgálói végpont rendelkezik egy "Nincs tevékenység" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Online"**  
@@ -468,15 +470,23 @@ Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minde
 | **Hibakarakterlánc** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba általában akkor fordul elő, mert helytelen a kiszolgáló ideje vagy a hitelesítéshez használt tanúsítvány lejárt. Ha a kiszolgáló ideje helyes, hajtsa végre az alábbi lépések végrehajtásával újítsa meg a lejárt tanúsítvány:
+Ez a hiba oka lehet:
 
-1. A Tanúsítványok MMC beépülő modul megnyitásához, válassza ki a számítógép fiókját, és keresse meg \Personal\Certificates tanúsítványok (helyi számítógép).
-2. Ellenőrizze, hogy ha az ügyfél-hitelesítési tanúsítvány lejárt. Ha a tanúsítvány lejárt, zárja be a tanúsítványok beépülő MMC-modulban és proceeed útmutató fennmaradó lépéseivel. 
-3. Ellenőrizze az Azure File Sync ügynök verziója 4.0.1.0 vagy újabb verziója szükséges.
-4. A következő PowerShell-parancsok futtatása a kiszolgálón:
+- Helytelen a kiszolgáló ideje
+- A kiszolgálói végpont törlése sikertelen volt
+- Hitelesítéshez használt tanúsítvány lejárt. 
+    Ellenőrizze, hogy ha a tanúsítvány lejárt, hajtsa végre az alábbi lépéseket:  
+    1. A Tanúsítványok MMC beépülő modul megnyitásához, válassza ki a számítógép fiókját, és keresse meg \Personal\Certificates tanúsítványok (helyi számítógép).
+    2. Ellenőrizze, hogy ha az ügyfél-hitelesítési tanúsítvány lejárt.
+
+Ha a kiszolgáló ideje helyes, hajtsa végre az alábbi lépéseket a probléma megoldásához:
+
+1. Ellenőrizze az Azure File Sync ügynök verziója 4.0.1.0 vagy újabb verziója szükséges.
+2. A következő PowerShell-parancsok futtatása a kiszolgálón:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
@@ -562,14 +572,14 @@ Ez a hiba akkor fordul elő, a szinkronizálási adatbázishoz belső hiba miatt
 
 ### <a name="common-troubleshooting-steps"></a>Gyakori hibaelhárítási lépéseket
 <a id="troubleshoot-storage-account"></a>**Ellenőrizze, hogy a tárfiók létezik-e.**  
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 1. Keresse meg a Storage Sync Service a szinkronizálási csoportban.
 2. Válassza ki a felhőbeli végpont a szinkronizálási csoport belül.
 3. Megjegyzés: az Azure-beli megosztási név a megnyitott ablaktáblán.
 4. Válassza ki a csatolt tárfiókot. Ez a hivatkozás nem sikerül, ha a hivatkozott tárfiók el lett távolítva.
     ![Egy Képernyőkép a felhőbeli végpont részletek ablaktábláján egy hivatkozást a tárfiókra.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -583,20 +593,20 @@ Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 # Log into the Azure account and put the returned account information
 # in a reference variable.
-$acctInfo = Connect-AzureRmAccount
+$acctInfo = Connect-AzAccount
 
 # this variable stores your subscription ID 
 # get the subscription ID by logging onto the Azure portal
 $subID = $acctInfo.Context.Subscription.Id
 
 # this variable holds your Azure Active Directory tenant ID
-# use Login-AzureRMAccount to get the ID from that context
+# use Login-AzAccount to get the ID from that context
 $tenantID = $acctInfo.Context.Tenant.Id
 
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
 $regions = [System.String[]]@()
-Get-AzureRmLocation | ForEach-Object { 
+Get-AzLocation | ForEach-Object { 
     if ($_.Providers -contains "Microsoft.StorageSync") { 
         $regions += $_.Location 
     } 
@@ -609,7 +619,7 @@ if ($regions -notcontains $region) {
 
 # Check to ensure resource group exists and create it if doesn't
 $resourceGroups = [System.String[]]@()
-Get-AzureRmResourceGroup | ForEach-Object { 
+Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
 }
 
@@ -656,7 +666,7 @@ $cloudEndpoint = Get-AzureRmStorageSyncCloudEndpoint `
     -SyncGroupName $syncGroup
 
 # Get reference to storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
     $_.Id -eq $cloudEndpoint.StorageAccountResourceId
 }
 
@@ -667,12 +677,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Ellenőrizze, hogy a tárfiók nem tartalmaz hálózati szabályokat.**  
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 1. Egyszer a storage-fiókban lévő kiválasztása **tűzfalak és virtuális hálózatok** , a storage-fiókban a bal oldalon.
 2. A storage-fiókban található a **engedélyezze a hozzáférést minden hálózatból elérhető** választógomb van kiválasztva.
     ![Egy Képernyőkép a tárolási fiók tűzfal és a hálózati szabályok le van tiltva.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -683,12 +693,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Győződjön meg arról, az Azure-fájlmegosztás létezik.**  
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 1. Kattintson a **áttekintése** a fő tárfiók oldalának térjen vissza a bal oldali tartalomjegyzékben.
 2. Válassza ki **fájlok** fájlmegosztások listájának megtekintéséhez.
 3. Ellenőrizze, hogy a fájlmegosztás a felhőbeli végpont által hivatkozott (kell rendelkeznie feljegyzett a fenti 1. lépés) fájlmegosztások listájában megjelenik-e.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -702,7 +712,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Győződjön meg arról, az Azure File Sync hozzáfér a tárfiókhoz.**  
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 1. Kattintson a **hozzáférés-vezérlés (IAM)** a bal oldali tartalomjegyzékben.
 1. Kattintson a **szerepkör-hozzárendelések** lap listájához, a felhasználók és alkalmazások (*egyszerű szolgáltatások*), amely rendelkezik a tárfiókhoz való hozzáférést.
 1. Győződjön meg arról **hibrid File Sync szolgáltatásbeli** a listában megjelenik a **olvasó és adatelérés** szerepkör. 
@@ -715,10 +725,10 @@ if ($fileShare -eq $null) {
     - Az a **szerepkör** mezőben válassza **olvasó és adatelérés**.
     - Az a **kiválasztása** mezőbe írja be a **hibrid File Sync szolgáltatásbeli**, válassza ki a szerepkört, és kattintson a **mentése**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell    
 $foundSyncPrincipal = $false
-Get-AzureRmRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
+Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
         $foundSyncPrincipal = $true
         if ($_.RoleDefinitionName -ne "Reader and Data Access") {
@@ -829,11 +839,11 @@ Ha a fájlok nem hívhatók vissza:
 > Egy esemény azonosítója 9006 óránként egyszer a telemetriai adatok eseménynaplóban naplózza, ha egy fájl sikertelen visszaírásához (egy eseményt a rendszer naplózza hibakód). Az operatív és diagnosztikai eseménynaplók kell használható, ha további információra van szüksége a probléma diagnosztizálása érdekében.
 
 <a id="files-unexpectedly-recalled"></a>**A kiszolgáló váratlanul visszahívásra-fájlok hibaelhárítása**  
-A víruskereső, a backup és az egyéb alkalmazásokhoz, amelyek nagy mennyiségű fájlt olvasása miatt nem kívánt visszahívások, ha nem veszik figyelembe a skip offline attribútumot, és a mellőzik ezen fájlok tartalmának olvasását. A funkció lehetővé teszi, hogy támogatási termékek kapcsolat nélküli fájlok kihagyása műveletek, például víruskereső vizsgálatok és a biztonsági mentési feladatok során ne nem kívánt visszahívások.
+A víruskereső, a backup és az egyéb alkalmazásokhoz, amelyek nagy mennyiségű fájlt olvasása miatt nem kívánt visszahívások, ha nem veszik figyelembe a skip offline attribútumot, és a mellőzik ezen fájlok tartalmának olvasását. Az offline fájlok kihagyása a jelen beállítást támogató termékek esetében segíthet elkerülni a nem kívánt visszahívásokat az olyan műveletek során, mint a víruskeresések vagy a biztonsági mentési feladatok.
 
-Tekintse meg a szoftver gyártójával megtudhatja, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásakor kihagyandó megoldás.
+Érdeklődjön a szoftverszállítónál, hogy megtudja, hogyan konfigurálhatja a megoldást az offline fájlok olvasásának kihagyására.
 
-Nem kívánt visszahívások is fordulhat elő, az egyéb forgatókönyvek, például fájlokat a Fájlkezelőben böngészésekor. Nyissa meg a mappa, amely felhőalapú többrétegű fájlokat a Fájlkezelőben a kiszolgálón nem kívánt visszahívások eredményezhet. Ez általában akkor is, ha egy víruskereső megoldást engedélyezve van a kiszolgálón.
+Nem kívánt visszahívások is fordulhat elő, az egyéb forgatókönyvek, például fájlokat a Fájlkezelőben böngészésekor. Ha a kiszolgálón található Fájlkezelőben felhőalapú rétegzett fájlokat tartalmazó mappákat nyit meg, az nem kívánt visszahívásokat eredményezhet. Ez még gyakrabban előfordul, ha engedélyezve van egy víruskereső megoldás a kiszolgálón.
 
 ## <a name="general-troubleshooting"></a>Általános hibaelhárítási tippek
 Ha egy kiszolgálón az Azure File Sync problémák merülnek fel, indítsa el az alábbi lépések végrehajtásával:

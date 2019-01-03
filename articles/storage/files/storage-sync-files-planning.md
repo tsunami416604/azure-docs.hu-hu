@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335180"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630325"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
 Ez a cikk az Azure File Sync üzembe helyezésének fontos szempontokat ismerteti. Azt javasoljuk, hogy Ön is olvashatja [Azure Files üzembe helyezésének megtervezése](storage-files-planning.md). 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="azure-file-sync-terminology"></a>Azure File Sync-terminológia
 Első adatait, az Azure File Sync üzembe helyezésének megtervezése, mielőtt fontos terminológia ismertetése.
@@ -35,8 +37,8 @@ A regisztrált kiszolgáló objektum képviseli a kiszolgáló (vagy fürt) köz
 ### <a name="azure-file-sync-agent"></a>Az Azure File Sync ügynök
 Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Windows Server szinkronizálását Azure-fájlmegosztással. Az Azure File Sync ügynök három fő részből áll: 
 - **FileSyncSvc.exe**: A háttérben futó Windows-szolgáltatás, amely figyeli a változásokat a kiszolgálói végpontot, és az Azure-bA szinkronizálási munkamenetek kezdeményezése a felelős.
-- **StorageSync.sys**: az Azure File Sync fájlrendszerszűrő, amelynek feladata rétegezési fájlokat az Azure Files (ha felhőbeli rétegezés engedélyezve van).
-- **PowerShell-parancsmagok felügyeleti**: Microsoft.StorageSync Azure erőforrás-szolgáltatóval való kommunikációhoz használható PowerShell-parancsmagokkal. Ezek a következő helyeken (alapértelmezett) találhatja meg:
+- **StorageSync.sys**: Az Azure File Sync fájlrendszerszűrő, amelynek feladata rétegezési fájlokat az Azure Files (ha felhőbeli rétegezés engedélyezve van).
+- **PowerShell-parancsmagok felügyeleti**: PowerShell-parancsmagok, amelyekkel kezelheti a Microsoft.StorageSync Azure erőforrás-szolgáltatónál. Ezek a következő helyeken (alapértelmezett) találhatja meg:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
@@ -68,7 +70,7 @@ Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync,
 Ez a szakasz ismerteti az Azure File Sync ügynök Rendszerkövetelmények és a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival való együttműködés.
 
 ### <a name="evaluation-tool"></a>Kiértékelési eszközével
-Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ez az eszköz az AzureRM PowerShell-parancsmag, amely ellenőrzi, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió a potenciális problémákat. Vegye figyelembe, hogy ellenőrizze az legtöbb terjed ki, de nem az összes alábbi; szolgáltatás azt javasoljuk, hogy olvassa el ezt a szakaszt körültekintően ellenőrizze az üzemelő példány kerül zökkenőmentesen, a rest-en keresztül. 
+Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ezt az eszközt az Azure PowerShell-parancsmagot, amely ellenőrzi a potenciális problémákat, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió. Vegye figyelembe, hogy ellenőrizze az legtöbb terjed ki, de nem az összes alábbi; szolgáltatás azt javasoljuk, hogy olvassa el ezt a szakaszt körültekintően ellenőrizze az üzemelő példány kerül zökkenőmentesen, a rest-en keresztül. 
 
 #### <a name="download-instructions"></a>Útmutató letöltése
 1. Győződjön meg arról, hogy a PackageManagement legújabb verzióját, és a PowerShellGet telepítése (Ez lehetővé teszi, hogy az előzetes verziójú modulok telepítése)
@@ -82,29 +84,29 @@ Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az 
 3. A modulok telepítése
     
     ```PowerShell
-        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>Használat  
 A kiértékelési eszközével hívhat meg több különböző módon is: a rendszer ellenőrzi, az adatkészlet-ellenőrzéseket vagy mindkettő hajthat végre. A rendszer és az adatkészletet ellenőrzések elvégzéséhez: 
 
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 Csak az adatkészlet teszteléséhez:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 Csak a rendszerkövetelmények teszteléséhez:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+    Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 ```PowerShell
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
@@ -170,9 +172,9 @@ Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve 
 ### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
 Az Azure File Sync támogatja az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) kezdődő együttműködési [Azure File Sync ügynök 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
 
-**Az elosztott Fájlrendszerbeli névtereket (DFS-N)**: az Azure File Sync teljes mértékben támogatott a DFS-N-kiszolgálókon. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Az elosztott Fájlrendszerbeli névtereket (DFS-N)**: Az Azure File Sync teljes mértékben a DFS-N-kiszolgálókon támogatott. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)**: mivel DFS-R és az Azure File Sync, a legtöbb esetben a két replikációs megoldás, azt javasoljuk, hogy a DFS-R cserélje le az Azure File Sync. Van azonban számos forgatókönyv, ahol szeretne, használja a DFS-R és az Azure File Sync együtt:
+**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)**: Mivel a DFS-R és az Azure File Sync mindkét replikációs megoldások, a legtöbb esetben azt javasoljuk, és cserélje le a DFS-R az Azure File Sync használatával. Van azonban számos forgatókönyv, ahol szeretne, használja a DFS-R és az Azure File Sync együtt:
 
 - Az Azure File Sync üzembe helyezésének áttelepítése a DFS-R-telepítésből. További információkért lásd: [áttelepítheti egy elosztott fájlrendszer replikációs szolgáltatása (DFS-R) környezetet az Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nem minden helyszíni kiszolgáló, amelyekre szüksége van egy példányát az adatokat közvetlenül az internethez való csatlakoztathatók.

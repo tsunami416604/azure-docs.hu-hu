@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163769"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995048"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Ajánlott eljárások a költségszámítás és méretezési számítási feladatok migrálása az Azure-bA
 
@@ -117,7 +117,7 @@ Az Azure storage-fiókok és a teljesítményszintek különböző típusú bizt
 
 **Fiók típusa** | **Részletek** | **Használat**
 --- | --- | ---
-**Általános célú v2 Standard** | Támogatja a blobok (letiltása, lapon, Hozzáfűzés), fájlok, lemezek, üzenetsorokat és táblákat.<br/><br/> Gyors Elérésűre, ritka elérésű és az archív elérési szint támogatja. A ZRS használata támogatott. | A legtöbb forgatókönyvek és a legtöbb típusú adatokat használva. A standard szintű tárfiókok HHD vagy SSD-alapú lehet.
+**Általános célú v2 Standard** | Támogatja a blobok (letiltása, lapon, Hozzáfűzés), fájlok, lemezek, üzenetsorokat és táblákat.<br/><br/> Gyors Elérésűre, ritka elérésű és az archív elérési szint támogatja. A ZRS használata támogatott. | A legtöbb forgatókönyvek és a legtöbb típusú adatokat használva. A standard szintű tárfiókok HDD vagy SSD-alapú lehet.
 **Általános célú v2 prémium** | Támogatja a Blob storage-adatokból (lapblobok). Gyors Elérésűre, ritka elérésű és az archív elérési szint támogatja. A ZRS használata támogatott.<br/><br/> SSD tárolja. | A Microsoft javasolja, hogy az összes virtuális gép használatával.
 **Általános célú v1** | Hozzáférés rétegezést nem támogatott. A ZRS nem támogatja. | Ha a klasszikus Azure üzemi modellt kell használja.
 **Blob** | Strukturálatlan objektumok tárolására szolgáló specializált tárfiók. Biztosítja a blokkblobok és hozzáfűző blobok csak (nincs fájl, várólista, tábla vagy a lemez tárolási-szolgáltatások). Azonos tartósságot, rendelkezésre állását, méretezhetőségét és teljesítményét, általános célú v2 biztosít. | az ilyen fiókokban nem lehet lapblobokat tárolni, és ezért nem tárolhat VHD-fájlokat. A gyakori vagy ritka elérésű hozzáférési szint állíthatja be.
@@ -248,7 +248,7 @@ Az Azure-ban fizet, amit ténylegesen használ erőforrásokat vesznek igénybe,
 **tudj meg többet:**
 - Áttekintheti a [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) és [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview).
 - [Első](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations) Advisor ajánlásait költsége.
-- [Megtudhatja, hogyan [optimalizálhatja a költségeket a javaslatok](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), és [váratlan költségek elkerülése](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
+- [Megtudhatja, hogyan [optimalizálhatja a költségeket a javaslatok](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), és [váratlan költségek elkerülése](https://docs.microsoft.com/azure/billing/billing-getting-started).
 - [Ismerje meg](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) az Azure-erőforrás-optimalizálási (ARO) eszközkészlet
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>Ajánlott eljárás: Erőforrás-csoport költségvetése megvalósítása

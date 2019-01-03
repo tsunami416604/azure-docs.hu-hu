@@ -3,17 +3,15 @@ title: MariaDB-hez készült Azure Database-be replikálják az adatokat az adat
 description: Ez a cikk ismerteti, hogyan állítható be adatokat a replikáció az Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212760"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548901"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Azure Database MariaDB-adatok a replikáció konfigurálása
 
@@ -155,7 +153,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
    - master_password: a főkiszolgáló jelszavát
    - master_log_file: futását bináris naplófájl neve `show master status`
    - master_log_pos: futását bináris naplójának pozíciója `show master status`
-   - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezetben. Ha nem használ SSL, üres karakterláncot adja át.
+   - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezet. Ha nem használ SSL, üres karakterláncot adja át.
        - Javasoljuk, hogy ezt a paramétert a átadhatja egy változóként. Az alábbiakban talál további információt.
 
    **Példák**

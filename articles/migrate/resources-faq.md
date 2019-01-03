@@ -4,14 +4,14 @@ description: A címek az Azure Migrate kapcsolatos gyakori kérdések
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: snehaa
-ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257794"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975474"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -48,12 +48,13 @@ Az Azure Migrate egy migrálási eszközt, és az Azure Site Recovery Deployment
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Melyik Azure-régiócsoportok támogat az Azure Migrate?
 
-Az Azure Migrate Egyesült államokbeli és az Azure Government jelenleg a projekt földrajzi területeken támogatja. Annak ellenére, hogy ezek földrajzi területeken csak migration-projektek hozhat létre, továbbra is felmérheti a gépek [több célhelyek](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). A projekt földrajzi csak használatos felderített metaadatok tárolására.
+Az Azure Migrate Európa, Egyesült Államok és az Azure Government jelenleg a projekt földrajzi területeken támogatja. Annak ellenére, hogy ezek földrajzi területeken csak migration-projektek hozhat létre, továbbra is felmérheti a gépek [több célhelyek](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). A projekt földrajzi csak használatos felderített metaadatok tárolására.
 
 **Régiócsoport** | **Metaadatok tárolási helye**
 --- | ---
-Több egység állapotok | USA nyugati középső RÉGIÓJA és USA keleti RÉGIÓJA
 Azure Government | USA-beli államigazgatás – Virginia
+Európa | Észak-Európában és Nyugat-Európa
+Több egység állapotok | USA nyugati középső RÉGIÓJA, USA keleti RÉGIÓJA
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Hogyan nem a helyszíni hely csatlakozni az Azure Migrate?
 

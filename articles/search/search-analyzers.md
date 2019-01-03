@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310538"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631942"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -76,7 +76,7 @@ A keresés nem várt eredményeket adjon vissza, ha a legvalószínűbb token fe
 
 ### <a name="compare-english-analyzers"></a>Angol nyelvű elemzők összehasonlítása
 
-A [keresési Analyzer bemutató](http://alice.unearth.ai/) egy külső bemutató alkalmazás egy egymás mellett hasonlítja, a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor. Az index rögzített; egy népszerű történetet szöveget tartalmaz. Az egyes keresési feltétele alapján ad meg, az egyes analyzer eredmények jelennek meg a szomszédos csomópontoknak, így jobban, hogy minden egyes analyzer miként dolgozza fel ugyanazt a karakterláncot. 
+A [keresési Analyzer bemutató](https://alice.unearth.ai/) egy külső bemutató alkalmazás egy egymás mellett hasonlítja, a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor. Az index rögzített; egy népszerű történetet szöveget tartalmaz. Az egyes keresési feltétele alapján ad meg, az egyes analyzer eredmények jelennek meg a szomszédos csomópontoknak, így jobban, hogy minden egyes analyzer miként dolgozza fel ugyanazt a karakterláncot. 
 
 ## <a name="examples"></a>Példák
 
@@ -244,13 +244,13 @@ Különböző nyelveken karakterláncokat tartalmazó mezők használhatja egy n
 
 + Tekintse át az átfogó ismertetése [teljes szöveges keresés működése az Azure Search](search-lucene-query-architecture.md). Ebben a cikkben példák azt ismertetik, tűnhet, hogy a Surface counter-intuitive viselkedés tapasztalható.
 
-+ Próbálja ki a további lekérdezési szintaxis a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) példa szakaszban vagy [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablakban a portálon.
++ Próbálja ki a további lekérdezési szintaxis a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) példa szakaszban vagy [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablakban a portálon.
 
 + Ismerje meg, hogyan alkalmazhatja a [nyelvspecifikus lexikai elemzőket](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimális feldolgozás vagy specializált feldolgozási az egyes mezőket.
 
-+ [Hasonlítsa össze a standard és az angol nyelvű elemzők](http://alice.unearth.ai/) bemutató webhelyhez a szomszédos ablaktáblán. 
++ [Hasonlítsa össze a standard és az angol nyelvű elemzők](https://alice.unearth.ai/) bemutató webhelyhez a szomszédos ablaktáblán. 
 
 ## <a name="see-also"></a>Lásd még
 

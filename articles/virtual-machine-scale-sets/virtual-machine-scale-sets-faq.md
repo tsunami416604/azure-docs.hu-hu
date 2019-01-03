@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cd84704c7926bfa9ace0d801b2532d2c77296075
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139367"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810508"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -167,48 +167,16 @@ A kód támogatja a Windows és Linux rendszereken.
 További információkért lásd: [létrehozás vagy frissítés egy virtuálisgép-méretezési csoport beállítása](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
-### <a name="example-of-self-signed-certificate"></a>Önaláírt tanúsítvány – példa
+### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Példa az Azure Service Fabric-fürtök kiépítése önaláírt tanúsítványokat.
+A legújabb használja például a következő azure CLI utasítást az azure shell belül olvassa el a szolgáltatás hálók CLI modul példa dokumentációját, amely a stdout nyomtatja:
 
-1.  Hozzon létre egy önaláírt tanúsítványt a key vaultban.
+```bash
+az sf cluster create -h
+```
 
-    A következő PowerShell-parancsokat használja:
+Tekintse át a legújabb támogatott API-tanúsítvány-műveletek az Azure-ban keyvaults dokumentációját.
 
-    ```powershell
-    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-
-    Connect-AzureRmAccount
-
-    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-    ```
-
-    Ez a parancs a bemeneti megtalálható az Azure Resource Manager-sablon.
-
-    Egy példa bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt a key vaultban: [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
-
-2.  A Resource Manager-sablon módosítása
-
-    Ez a tulajdonság hozzáadása **virtualMachineProfile**, a virtuális gép részeként méretezési erőforrás:
-
-    ```json 
-    "osProfile": {
-        "computerNamePrefix": "[variables('namingInfix')]",
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "secrets": [
-            {
-                "sourceVault": {
-                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                    {
-                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                        "certificateStore": "My"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+Önaláírt tanúsítványokat egy hitelesítésszolgáltató által megadott elosztott megbízhatósági kapcsolatban nem használható, és nem használható a minden gazdagép vállalati éles megoldásokat; szánt Service Fabric-fürt Service Fabric biztonsága kapcsolatos további információkért tekintse át a [Azure Service Fabric bevált biztonsági gyakorlatok](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Meghatározható, hogy ssh-kulcs az SSH-hitelesítés használata a Resource Manager-sablon egy Linux virtuális gép méretezési?  
@@ -559,7 +527,7 @@ Igen. A hálózati biztonsági csoportok közvetlenül egy méretezési csoport 
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Hogyan hajthatok végre egy virtuális IP-címcsere a virtuális gép méretezési csoportokhoz az ugyanahhoz az előfizetéshez, és ugyanabban a régióban?
 
-Ha két virtuálisgép-méretezési csoportok az Azure Load Balancer az előtér-kiszolgálókon, és azok, azonos előfizetésben és régióban, sikerült szabadítsa fel az egyes nyilvános IP-címét, és hozzárendelheti a másik. Lásd: [virtuális IP-Címcsere: kék-zöld üzembe helyezés az Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) például. Ez hasonló a késést, ha az erőforrások vannak a hálózaton, felszabadítva vagy lefoglalt szintű. A gyorsabb megoldás, ha az Azure Application Gateway használatára két háttérkészletek, és a egy útválasztási szabályt. Azt is megteheti, hogy sikerült az alkalmazások üzemeltetéséhez [Azure App Service-ben](https://azure.microsoft.com/services/app-service/) amely támogatást biztosít a gyors váltás átmeneti és éles pontok között.
+Ha két virtuálisgép-méretezési csoportok az Azure Load Balancer az előtér-kiszolgálókon, és azok, azonos előfizetésben és régióban, sikerült szabadítsa fel az egyes nyilvános IP-címét, és hozzárendelheti a másik. Lásd: [virtuális IP-Címcsere: Kék-zöld üzembe helyezés az Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) például. Ez hasonló a késést, ha az erőforrások vannak a hálózaton, felszabadítva vagy lefoglalt szintű. A gyorsabb megoldás, ha az Azure Application Gateway használatára két háttérkészletek, és a egy útválasztási szabályt. Azt is megteheti, hogy sikerült az alkalmazások üzemeltetéséhez [Azure App Service-ben](https://azure.microsoft.com/services/app-service/) amely támogatást biztosít a gyors váltás átmeneti és éles pontok között.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Hogyan határozhatom meg magánhálózati IP-címek statikus magánhálózati IP-cím lefoglalását használandó számos?
 
@@ -573,7 +541,7 @@ Egy meglévő Azure virtuális hálózat beállítása egy virtuálisgép-méret
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Hogyan adhatok hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete?
 
-Adja hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete, lásd: [Azure Resource Manager: Get virtuálisgép-méretezési csoportok magánhálózati IP-címek](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Adja hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete, lásd: [Azure Resource Manager: Első virtuálisgép-méretezési csoportok magánhálózati IP-címek](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>A méretezési csoportok használata a gyorsított hálózatkezelés?
 
@@ -746,7 +714,7 @@ Az egyes virtuális Gépekhez a tulajdonság adatait anélkül, hogy több hív�
 
 Virtuálisgép-méretezési csoportban lévő különböző virtuális gépekhez nem, nem adhatók át másik kiterjesztést argumentumokat. Azonban bővítmények működhet-e az azokat futtató, például a számítógép neve a virtuális gép egyedi tulajdonságai alapján. Bővítmények is lekérdezheti példány-metaadat a http://169.254.169.254 a virtuális gép további információt szeretne kapni.
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Miért vannak-e hiányosságok a saját virtuális gép méretezési csoport virtuális gép neveinek és a virtuális gép azonosítók között? Például: 0, 1, 3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Miért vannak-e hiányosságok a saját virtuális gép méretezési csoport virtuális gép neveinek és a virtuális gép azonosítók között? Példa: 0, 1, 3...
 
 Nincsenek szünetek a virtuális gép méretezési csoport virtuális gép neveinek és a virtuális gép azonosítók között, mert a virtuálisgép-méretezési **overprovision** tulajdonság értéke az alapértelmezett érték **igaz**. Ha túlzott értéke **igaz**, a kért jönnek létre több virtuális gépet. A további virtuális Gépekért törlődnek. Ebben az esetben, így nagyobb üzembe helyezés megbízhatóságát, de rovására összefüggő elnevezése és összefüggő hálózati címfordítás (NAT) szabályok. 
 

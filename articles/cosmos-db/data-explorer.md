@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140760"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541574"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Az adatok kezelése az Azure Cosmos DB explorer használatával 
 
@@ -51,4 +51,4 @@ Jelenleg a **Megnyitás teljes képernyős** környezetet biztosít, amely lehet
 ## <a name="next-steps"></a>További lépések
 Most, hogy megtanulhatta, hogyan kezelheti az adatokat, akkor is tovább az Azure Cosmos DB explorer használatának első lépései:
 
-* Indítsa el a definiálása [lekérdezések](sql-api-query-reference.md) SQL-szintaxis használatával, és hajtsa végre [kiszolgáló kiszolgálóoldali programozása](programming.md) a tárolt eljárásokat, felhasználói függvények, eseményindítók. 
+* Indítsa el a definiálása [lekérdezések](sql-api-query-reference.md) SQL-szintaxis használatával, és hajtsa végre [kiszolgáló kiszolgálóoldali programozása](stored-procedures-triggers-udfs.md) a tárolt eljárásokat, felhasználói függvények, eseményindítók. 

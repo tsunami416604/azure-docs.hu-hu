@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f8fb036eaca35e41d89b0a9610ebcd68e65f40f9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632543"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630258"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Az Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként
 
-Általában kell tisztítása és átalakítása a bejövő adatok egy cél megfelelő az analytics-be való betöltés előtt. A kinyerési, átalakítási és Load (ETL) operations előkészíti az adatokat, és töltse be az adatok cél szolgálnak.  Az Apache Hive a HDInsight is olvassa el a teljes strukturálatlan adatmennyiséget tárolni, az adatok feldolgozására, igény szerint, és majd betöltheti az adatokat döntési támogatási rendszerek egy relációs data warehouse-bA. Ebben a megközelítésben adatok ki kell olvasni a forrás- és méretezhető tárhelyre, mint az Azure Storage blobból vagy az Azure Data Lake Store tárolja. Az adatok ezután alakította sorozata, a Hive-lekérdezések használatával, és végül előkészített Hive belül a célként megadott adattárba való betöltésének tömeges előkészítésekor.
+Általában kell tisztítása és átalakítása a bejövő adatok egy cél megfelelő az analytics-be való betöltés előtt. A kinyerési, átalakítási és Load (ETL) operations előkészíti az adatokat, és töltse be az adatok cél szolgálnak.  Az Apache Hive a HDInsight is olvassa el a teljes strukturálatlan adatmennyiséget tárolni, az adatok feldolgozására, igény szerint, és majd betöltheti az adatokat döntési támogatási rendszerek egy relációs data warehouse-bA. Ebben a megközelítésben az adatok ki kell olvasni a forrás- és méretezhető tárhelyre, mint az Azure Storage blobból vagy az Azure Data Lake Storage tárolja. Az adatok ezután alakította sorozata, a Hive-lekérdezések használatával, és végül előkészített Hive belül a célként megadott adattárba való betöltésének tömeges előkészítésekor.
 
 ## <a name="use-case-and-model-overview"></a>Használja a kis- és a model áttekintése
 
@@ -30,7 +30,7 @@ Hadoop ETL-folyamatok importálni vagy nagy mennyiségben szöveges fájlok (pé
 
 A jellemzően előforduló lépéseket a Hive használatával egy ETL végrehajtásához a következők:
 
-1. Adatok betöltése az Azure Data Lake Store vagy Azure Blob Storage-bA.
+1. Adatok betöltése az Azure Data Lake Storage vagy Azure Blob Storage.
 2. A sémák tárolása Hive általi használatra (Azure SQL Database használatával) metaadat-Store adatbázist létrehozni.
 3. Hozzon létre egy HDInsight-fürtöt, és csatlakozzon az adattárban.
 4. Adja meg a alkalmazni olvasási időpontjában az adattárban lévő adatok séma:
@@ -51,7 +51,7 @@ A jellemzően előforduló lépéseket a Hive használatával egy ETL végrehajt
 
 5. Az adatok átalakításához, és töltse be a célra.  Többféleképpen is használható a Hive átalakítása és betöltése során:
 
-    * Lekérdezés, és előkészíti az adatokat a Hive használatával, és az Azure Data Lake Store vagy Azure blob storage-bA egy CSV-fájlként mentheti.  Egy eszköz, például az SQL Server Integration Services (SSIS) segítségével beszerezni ezeket CSV-k, és az adatok betöltése az SQL Serverhez hasonló cél relációs adatbázis.
+    * Lekérdezés, és előkészíti az adatokat a Hive használatával, és az Azure Data Lake Storage vagy Azure blob storage-bA egy CSV-fájlként mentheti.  Egy eszköz, például az SQL Server Integration Services (SSIS) segítségével beszerezni ezeket CSV-k, és az adatok betöltése az SQL Serverhez hasonló cél relációs adatbázis.
     * A lekérdezést közvetlenül a Excel vagy C# a Hive ODBC illesztőprogram segítségével.
     * Használat [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) , olvassa el a előkészített egybesimított CSV-fájlokat, és betöltheti azokat a cél relációs adatbázis.
 

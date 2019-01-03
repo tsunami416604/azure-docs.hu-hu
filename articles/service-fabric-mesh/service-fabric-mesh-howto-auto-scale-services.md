@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/07/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 94b1b4cfbc5e7a96be389f315a1c58dc311c60a0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f34c27addb61ce3dc24406598663d6bfbddf448b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104938"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969437"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazások automatikus skálázási házirendek létrehozása
 Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik legfőbb előnye, hogy a szolgáltatásokat egyszerűen lehet horizontálisan le- és felskálázni. Ez akkor hasznos, ha változó mértékű terhelés éri a szolgáltatásokat, vagy ha javítani szeretne a rendelkezésre álláson. Méretezheti a szolgáltatásokat, vagy manuálisan, vagy az automatikus skálázás házirendeket állíthat be.
@@ -109,7 +109,9 @@ application:
             - name: AutoScaleWorkerRule
               trigger:
                 kind: AverageLoad
-                metricName: cpu
+                metric:
+                  kind: Resource
+                  name: cpu
                 lowerLoadThreshold: 0.2
                 upperLoadThreshold: 0.8
                 scaleIntervalInSeconds: 60

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384978"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742388"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -28,10 +28,10 @@ Ha a bővítmény engedélyezve van, az előfizetésben hoz létre egy DNS-zón�
 
 A bővítmény üzembe helyezi a két összetevőt: egy [Kubernetes Bejövőforgalom-vezérlőjéhez] [ ingress] és a egy [külső DNS-] [ external-dns] vezérlő.
 
-- **Bejövőforgalom-vezérlőjéhez**: A Bejövőforgalom-vezérlőjéhez típusú terheléselosztó Kubernetes szolgáltatás használatával közvetlenül csatlakozik az internethez. A Bejövőforgalom-vezérlőjéhez figyeli, és implementálja [Kubernetes bejövő erőforrások][ingress-resource], alkalmazás-végpontokra irányuló útvonalakat hoz létre, amely.
+- **Bejövőforgalom-vezérlőjéhez**: A Bejövőforgalom-vezérlőjéhez típusú terheléselosztó Kubernetes szolgáltatás használatával közvetlenül csatlakozik az interneten. A Bejövőforgalom-vezérlőjéhez figyeli, és implementálja [Kubernetes bejövő erőforrások][ingress-resource], alkalmazás-végpontokra irányuló útvonalakat hoz létre, amely.
 - **Külső DNS-vezérlő**: Kubernetes bejövő erőforrások figyeli, és létrehozza a DNS A rekordokat a fürtre jellemző DNS-zónában.
 
-## <a name="deploy-http-routing-cli"></a>Üzembe helyezése a HTTP-útválasztás: parancssori felület
+## <a name="deploy-http-routing-cli"></a>Helyezze üzembe a HTTP-útválasztás: parancssori felület
 
 A HTTP-kérelem útválasztási bővítmény engedélyezhető az Azure CLI-vel egy AKS-fürt üzembe helyezésekor. Ehhez használja a [az aks létrehozása] [ az-aks-create] parancsot a `--enable-addons` argumentum.
 
@@ -55,7 +55,7 @@ Result
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
-## <a name="deploy-http-routing-portal"></a>Üzembe helyezése a HTTP-útválasztás: Portal
+## <a name="deploy-http-routing-portal"></a>Helyezze üzembe a HTTP-útválasztás: Portál
 
 A HTTP-kérelem útválasztási bővítmény engedélyezhető az Azure Portalon keresztül, egy AKS-fürt üzembe helyezésekor.
 
@@ -174,6 +174,36 @@ A HTTP-útválasztási megoldás távolíthatja el az Azure CLI használatával.
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
+A HTTP-kérelem útválasztási bővítmény le van tiltva, egy Kubernetes-erőforrást a fürt maradhatnak. Ilyen erőforrások többek között *configMaps* és *titkok*, és hozza létre a rendszer a *kube rendszer* névtér. A tiszta fürt fenntartása, előfordulhat, hogy el kívánja távolítani ezeket az erőforrásokat.
+
+Keressen *bővítmény-http-kérelem-útválasztási* az alábbi erőforrások [kubectl get] [ kubectl-get] parancsokat:
+
+```console
+kubectl get deployments --namespace kube-system
+kubectl get services --namespace kube-system
+kubectl get configmaps --namespace kube-system
+kubectl get secrets --namespace kube-system
+```
+
+Az alábbi példa kimenetében látható, hogy a törölni kívánt configMaps:
+
+```
+$ kubectl get configmaps --namespace kube-system
+
+NAMESPACE     NAME                                                       DATA   AGE
+kube-system   addon-http-application-routing-nginx-configuration         0      9m7s
+kube-system   addon-http-application-routing-tcp-services                0      9m7s
+kube-system   addon-http-application-routing-udp-services                0      9m7s
+```
+
+Erőforrások törléséhez használja a [kubectl törlése] [ kubectl-delete] parancsot. Adja meg az erőforrás típusa, az erőforrás nevét és a névtér. A következő példa törli az előző configmaps egyikét:
+
+```console
+kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
+```
+
+Ismételje meg az előző `kubectl delete` lépést az összes *bővítmény-http-kérelem-útválasztási* maradt a fürtben lévő erőforrásokat.
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Használja a [kubectl naplók] [ kubectl-logs] paranccsal tekintheti meg az alkalmazásnaplókat a külső DNS-alkalmazáshoz. A naplók kell győződjön meg arról, hogy az A és a txt típusú DNS-rekord sikeresen létrejöttek-e.
@@ -256,6 +286,7 @@ Az aks-ben egy biztonságos HTTPS Bejövőforgalom-vezérlőjéhez telepítésé
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [ingress-resource]: https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource

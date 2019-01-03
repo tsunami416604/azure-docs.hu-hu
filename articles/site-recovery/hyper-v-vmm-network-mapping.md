@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 576194f0b85e95f07ab0370c4be7029d3b8aecb9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3ca3222f47b6a728905f895007269e3c22acd66d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833890"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789942"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
 
@@ -57,9 +57,9 @@ A hálózatleképezés a következőképpen történik:
 **Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Hozzárendelve**
 ---|---|---|---
 New York | A VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago leképezve
- |  | VMNetwork2-NewYork | Nincs hozzárendelve
+ |  | VMNetwork2-NewYork | Nincs leképezve
 Chicago | A VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork leképezve
- | | VMNetwork2-Chicago | Nincs hozzárendelve
+ | | VMNetwork2-Chicago | Nincs leképezve
 
 Ebben a példában:
 

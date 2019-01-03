@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 8ebc07f68e2d26126d0bd387f32204255404d6e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: eb27bed02b44cad791a0c1fa2c8e0ed0b54537cd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605313"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972549"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Oktatóanyag: Az Azure Key Vault használata az Azure Windows virtuális gép a .NET-ben
 
@@ -162,7 +162,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban. 
-1. Beolvassa a jogkivonatot a helyi MSI-végpontról a virtuális gép mely inturn lekéri egy tokent az Azure Active Directoryból
+1. Jogkivonatot beolvasni a helyi MSI-végpontot a virtuális gépen, amely ezután lekéri egy tokent az Azure Active Directoryból
 2. A jogkivonat átadni a Key Vault és a titkos kód beolvasása 
 
 ```
@@ -211,7 +211,7 @@ Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban.
 ```
 
 
-A fenti kód bemutatja, hogyan hajtsa végre a műveleteket az Azure Key Vault az Azure Linux rendszerű virtuális gépként. 
+A fenti kód bemutatja, hogyan hajtsa végre a műveleteket az Azure Key Vault az Azure Windows virtuális gépként. 
 
 
 

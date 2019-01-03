@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871428"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722357"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
 **Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.
 
 Ebben a cikkben található információk csak a Windows-alapú HDInsight-fürtök. A Linux-alapú fürtök esetén lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Más módon is, sokféle testre szabható HDInsight-fürtök további Azure Storage-fiókok, módosítás, ideértve például a [Apache Hadoop](https://hadoop.apache.org/) konfigurációs fájlok (core-site.xml, hive-site.xml stb.), vagy megosztott hozzáadása kódtárak (pl. [Apache Hive](https://hive.apache.org/), [Apache Oozie](https://oozie.apache.org/)) be a fürt általánosan használt helyet ismertet. Ezek a testreszabások végezhető el az Azure PowerShell, az Azure HDInsight .NET SDK vagy az Azure Portalon. További információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision-cluster].
@@ -35,7 +35,7 @@ Parancsfájlművelet csak akkor használható, amíg a fürt létrehozása folya
 
 A parancsprogram futtatásakor kerül, a fürt a **ClusterCustomization** szakaszban. Ezen a ponton a parancsfájl a rendszer rendszergazdai fiók a megadott csomópontok a fürtben, párhuzamos alatt fut, és teljes körű rendszergazdai jogosultságokat biztosít a csomópontokon.
 
-> [!NOTE]
+> [!NOTE]  
 > Mivel a rendszergazdai jogosultságokkal rendelkezik a fürtcsomópontokon során a **ClusterCustomization** fázis, a parancsfájl használatával hajtsa végre a műveletek, mint a szolgáltatások, beleértve a Hadoop-hez kapcsolódó szolgáltatások indítása és leállítása. Tehát, a parancsfájl bizonyosodjon meg, hogy az Ambari-szolgáltatások és egyéb Hadoop-hez kapcsolódó szolgáltatások és a parancsfájl futtatásának befejezése előtt. Ezek a szolgáltatások szükségesek sikeresen listájáért állapotát és a fürt állapotát, amíg létrehozása folyamatban van. Ha módosítja a fürtön, amely érinti ezeket a szolgáltatásokat semmilyen konfigurálást, a segédfüggvények biztosított kell használnia. Segédfüggvények kapcsolatos további információkért lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok][hdinsight-write-script].
 >
 >
@@ -288,10 +288,10 @@ A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket ké
 
 Beépített összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 >
 >
 

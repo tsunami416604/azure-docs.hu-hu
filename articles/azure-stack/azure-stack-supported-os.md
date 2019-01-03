@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405597"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810779"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 ## <a name="windows"></a>Windows
 
@@ -71,11 +71,11 @@ Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a sz
 | Ubuntu 16.04-LTS | 64 bites | Canonical | Igen |
 | Ubuntu 18.04-LTS | 64 bites | Canonical | Igen |
 
-Red Hat Enterprise Linux-támogatás információkért tekintse meg a [Red Hat és az Azure Stack: gyakran ismételt kérdések](https://access.redhat.com/articles/3413531).
+Red Hat Enterprise Linux-támogatás információkért lásd: [Red Hat és az Azure Stack: Gyakori kérdések](https://access.redhat.com/articles/3413531).
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Stack piactéren kapcsolatos további információkért lásd a következő cikkeket:
 
-[Piactéri termékek letöltése](azure-stack-download-azure-marketplace-item.md)  
-[Hozzon létre, és a Piactéri elem közzététele](azure-stack-create-and-publish-marketplace-item.md)
+- [Piactéri termékek letöltése](azure-stack-download-azure-marketplace-item.md)  
+- [Hozzon létre, és a Piactéri elem közzététele](azure-stack-create-and-publish-marketplace-item.md)

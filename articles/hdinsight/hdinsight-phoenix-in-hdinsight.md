@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435548"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744336"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix a HDInsightban
 
-[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő masszív párhuzamos alapuló relációs Adatbázisréteg [Apache HBase](hbase/apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket HBase-en. A Phoenix felhasználók létrehozása, törlés, egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter JDBC-illesztőprogramok alatt használja. Phoenix használ lefordítani a lekérdezést, a MapReduce használata helyett natív noSQL-összeállítás engedélyezése HBase felett közel valós idejű alkalmazások létrehozását. A Phoenix hozzáadja a coprocessors támogatásához az ügyfél által megadott kódot futtató kiszolgáló, a címtér a védelmicsoport-készletek az adatok a kód végrehajtása. Ez a megközelítés minimálisra csökkenti az adatátviteli ügyfél/kiszolgáló.
+[Az Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, épülő masszív párhuzamos alapuló relációs Adatbázisréteg [Apache HBase](hbase/apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket HBase-en. A Phoenix felhasználók létrehozása, törlés, egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter JDBC-illesztőprogramok alatt használja. Phoenix használ lefordítani a lekérdezést, a MapReduce használata helyett natív noSQL-összeállítás engedélyezése HBase felett közel valós idejű alkalmazások létrehozását. A Phoenix hozzáadja a coprocessors támogatásához az ügyfél által megadott kódot futtató kiszolgáló, a címtér a védelmicsoport-készletek az adatok a kód végrehajtása. Ez a megközelítés minimálisra csökkenti az adatátviteli ügyfél/kiszolgáló.
 
-Az Apache Phoenix megnyílik a big data-lekérdezések nem-fejlesztőknek, akik egy SQL-szerű szintaxist használhat programozási helyett. A Phoenix optimalizálhatja a hbase-hez, ellentétben más eszközök például [Hive](hadoop/hdinsight-use-hive.md) és az Apache Spark SQL. A fejlesztők számára a legfontosabb előny rendkívül nagy teljesítményű lekérdezéseket, hiszen lényegesen kevesebb kódot ír.
+Az Apache Phoenix megnyílik a big data-lekérdezések nem-fejlesztőknek, akik egy SQL-szerű szintaxist használhat programozási helyett. A Phoenix optimalizálhatja a hbase-hez, ellentétben más eszközök például [Apache Hive](hadoop/hdinsight-use-hive.md) és az Apache Spark SQL. A fejlesztők számára a legfontosabb előny rendkívül nagy teljesítményű lekérdezéseket, hiszen lényegesen kevesebb kódot ír.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 SQL-lekérdezés elküldésekor a Phoenix lefordítja a lekérdezést a HBase natív hívások, és a vizsgálat (vagy tervezett) optimalizálás párhuzamosan futtatja. Absztrakciós réteg szabadít fel a fejlesztő MapReduce-feladatok írjanak hangsúlyozza inkább az üzleti logikát és a munkafolyamat az alkalmazás körül Phoenix a big Data típusú adatok tárolására.
@@ -70,17 +70,17 @@ Később további oszlopok hozzáadásához használja a `ALTER VIEW` utasítás
 
 ### <a name="skip-scan"></a>Ellenőrzés kihagyása
 
-Kihagyás vizsgálat egy vagy több oszlop egy összetett index különböző értékeket használja. Ellentétben a tartomány ellenőrzését kihagyása vizsgálat valósít meg intra-sor vizsgálatát, az elsőbbséget adó [továbbfejlesztett teljesítmény](http://phoenix.apache.org/performance.html#Skip-Scan). Keresés, miközben az első megfeleltetett értéket a rendszer kihagyta együtt az index mindaddig, amíg a következő érték található.
+Kihagyás vizsgálat egy vagy több oszlop egy összetett index különböző értékeket használja. Ellentétben a tartomány ellenőrzését kihagyása vizsgálat valósít meg intra-sor vizsgálatát, az elsőbbséget adó [továbbfejlesztett teljesítmény](https://phoenix.apache.org/performance.html#Skip-Scan). Keresés, miközben az első megfeleltetett értéket a rendszer kihagyta együtt az index mindaddig, amíg a következő érték található.
 
 Használja a skip vizsgálat a `SEEK_NEXT_USING_HINT` enumerálás a HBase-szűrő. Használatával `SEEK_NEXT_USING_HINT`, a skip vizsgálat nyomon követi a kulcsok körét, vagy a kulcsok tartományokat, éppen keresi a rendszer az egyes oszlopokban. A skip vizsgálata, majd egy kulcsot, filter kiértékelés során átadott, és határozza meg, hogy egyik kombinációja vesz igénybe. Ha nem, a skip vizsgálat értékeli ki ugorhat a következő legmagasabb kulcsot.
 
 ### <a name="transactions"></a>Tranzakciók
 
-HBase sorszintű tranzakciók biztosít, míg a Phoenix integrálható [Tephra](http://tephra.io/) cross-sor- és Kereszttábla tranzakciók támogatása teljes hozzáadandó [ACID](https://en.wikipedia.org/wiki/ACID) szemantikáját.
+HBase sorszintű tranzakciók biztosít, míg a Phoenix integrálható [Tephra](https://tephra.io/) cross-sor- és Kereszttábla tranzakciók támogatása teljes hozzáadandó [ACID](https://en.wikipedia.org/wiki/ACID) szemantikáját.
 
 Az hagyományos SQL-tranzakció, tranzakciók keresztül a Phoenix-kezelő lehetővé teszik annak érdekében, hogy az adatok egy atomi egység sikeresen upserted, a tranzakció visszaállítása, ha az upsert művelet meghiúsul, bármely tranzakció-kompatibilis táblán.
 
-Engedélyezheti a Phoenix tranzakciók a [Apache Phoenix tranzakció dokumentáció](http://phoenix.apache.org/transactions.html).
+Engedélyezheti a Phoenix tranzakciók a [Apache Phoenix tranzakció dokumentáció](https://phoenix.apache.org/transactions.html).
 
 Hozzon létre egy új táblát engedélyezett tranzakciók, állítsa be a `TRANSACTIONAL` tulajdonságot `true` a egy `CREATE` utasítást:
 
@@ -94,7 +94,7 @@ Egy meglévő tábla kell tranzakciós módosítható, használja a tulajdonság
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Tranzakciós tábla nem válthat vissza a nem tranzakcióalapú folyamatban.
 
 ### <a name="salted-tables"></a>Sózott táblák

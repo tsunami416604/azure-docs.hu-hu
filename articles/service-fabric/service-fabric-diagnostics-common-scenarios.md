@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e91ca12c06a1582b9bb715031a9c379b1a47b04b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633095"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713459"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
-Ez a cikk azt mutatja be, monitorozása és diagnosztizálása a Service Fabric területén észlelt felhasználók gyakori forgatókönyveket. A bemutatott esetekben cover service fabric minden 3 réteg: alkalmazások, a fürt és az infrastruktúra. Egyes megoldások használja az Application Insights és a Log Analytics, az Azure figyelési eszközök, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások biztosít a felhasználóknak Bevezetés az Application Insights és a Log Analytics használata a Service Fabric kontextusában.
+Ez a cikk azt mutatja be, monitorozása és diagnosztizálása a Service Fabric területén észlelt felhasználók gyakori forgatókönyveket. A bemutatott esetekben a service fabric minden 3 réteg terjed ki: Alkalmazás, a fürt és az infrastruktúra. Egyes megoldások használja az Application Insights és a Log Analytics, az Azure figyelési eszközök, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások biztosít a felhasználóknak Bevezetés az Application Insights és a Log Analytics használata a Service Fabric kontextusában.
 
 ## <a name="prerequisites-and-recommendations"></a>Előfeltételek és javaslatok
 
@@ -56,7 +56,7 @@ Ebben a cikkben szereplő megoldások fogja használni a következő eszközök.
 
     ![AI Alkalmazástérkép panel](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI Alkalmazástérkép](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Az alkalmazástérkép további információért látogasson el a [Alkalmazástérkép dokumentációja](../application-insights/app-insights-app-map.md)
+    Az alkalmazástérkép további információért látogasson el a [Alkalmazástérkép dokumentációja](../azure-monitor/app/app-map.md)
 
 ## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Hogyan hozhatok létre riasztást, amikor egy csomópont leáll
 
@@ -139,7 +139,7 @@ Ellenőrizze a Reliable-teljesítményszámlálók teljes listáját az alábbi 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A mesterséges Intelligencia riasztásokat állíthat be](../application-insights/app-insights-alerts.md) szeretne értesítést kapni a teljesítmény vagy a használati változásai
+* [A mesterséges Intelligencia riasztásokat állíthat be](../azure-monitor/app/alerts.md) szeretne értesítést kapni a teljesítmény vagy a használati változásai
 * [Intelligens detektálás az Application Insights](../application-insights/app-insights-proactive-diagnostics.md) hajtja végre a proaktív elemzésre a telemetriát küld a mesterséges Intelligencia figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat
 * További információ a Log Analytics [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
 * A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../azure-monitor/platform/gateway.md)

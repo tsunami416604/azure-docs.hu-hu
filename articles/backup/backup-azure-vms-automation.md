@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877861"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743901"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Készítsen biztonsági másolatot, és virtuális gépek visszaállítása a PowerShell használatával
 
-Ez a cikk bemutatja, hogyan biztonsági mentése és helyreállítása Azure virtuális gépként (VM) egy Recovery Services-tárolót az Azure PowerShell-parancsmagok használatával. Recovery Services-tároló egy Azure Resource Manager-erőforrás használt adatokat és adategységeket az Azure Backup és az Azure Site Recovery szolgáltatást. 
+Ez a cikk bemutatja, hogyan biztonsági mentése és helyreállítása Azure virtuális gépként (VM) egy Recovery Services-tárolót az Azure PowerShell-parancsmagok használatával. Recovery Services-tároló egy Azure Resource Manager-erőforrás használt adatokat és adategységeket az Azure Backup és az Azure Site Recovery szolgáltatást.
 
 > [!NOTE]
-> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager modellel létrehozott virtuális gépek használatra szolgál.
+> Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager modellel létrehozott virtuális gépek használatra szolgál.
 >
 >
 
 Ez a cikk végigvezeti egy virtuális gép védelmét, és az adatok visszaállítása egy helyreállítási pontból a PowerShell segítségével.
 
 ## <a name="concepts"></a>Alapelvek
+
 Ha nem ismeri az Azure Backup szolgáltatás a szolgáltatás áttekintését ismertető cikkben [Mi az Azure Backup?](backup-introduction-to-azure-backup.md) Mielőtt elkezdené, győződjön meg arról, hogy vonatkozik-e a az Azure Backup és az aktuális virtuális gép biztonsági mentési megoldás vonatkozó korlátozások szükséges előfeltételeket.
 
 A PowerShell segítségével hatékonyan, fontos tudni, hogy a hierarchiában, és hol kell elkezdeni az objektumok.
@@ -40,10 +41,10 @@ Az AzureRm.RecoveryServices.Backup PowerShell-parancsmagok leírása, tekintse m
 
 A kezdéshez:
 
-1. [Töltse le a PowerShell legújabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (a szükséges minimális verzió: 1.4.0-s)
+1. [Töltse le a PowerShell legújabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (a szükséges minimális verziója: 1.4.0-s)
 
 2. Keresse meg a rendelkezésre álló Azure Backup PowerShell-parancsmagok a következő parancs beírásával:
-   
+
     ```powershell
     Get-Command *azurermrecoveryservices*
     ```    
@@ -54,7 +55,7 @@ A kezdéshez:
 3. Jelentkezzen be az Azure-fiók használatával **Connect-AzureRmAccount**. Ez a parancsmag kimenetei weblap kéri a hitelesítő adatait:
 
     * Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    * Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Például: **Connect-AzureRmAccount-bérlő "fabrikam.com"**
+    * Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Példa: **Connect-AzureRmAccount-bérlő "fabrikam.com"**
 
 4. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
 
@@ -311,7 +312,7 @@ $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "Az
 $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Válassza ki a helyreállítási pont létrehozása
+### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
 
 Használja a **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. Ezután válassza ki a helyreállítási pontot a visszaállításhoz. Ha biztos abban, hogy melyik helyreállítási pontot, tanácsos válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
@@ -326,7 +327,7 @@ $rp[0]
 
 A kimenet a következő példához hasonló:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -350,6 +351,7 @@ A lemezek és a konfigurációs adatok visszaállításához:
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
+
 #### <a name="restore-managed-disks"></a>Felügyelt lemezek visszaállítását
 
 > [!NOTE]
@@ -359,16 +361,15 @@ $restorejob
 
 Adjon meg egy további paraméter **TargetResourceGroupName** a felügyelt lemezek visszaállítja RG megadásához.
 
-
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
 ```
 
 A **VMConfig.JSON** storage-fiókhoz lesz visszaállítva, és a felügyelt lemezek cél RG lesz visszaállítva.
 
-
 A kimenet a következő példához hasonló:
-```
+
+```powershell
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -397,6 +398,27 @@ Miután visszaállította a lemezeket, a következő eljárással hozhat létre 
 > Titkosított virtuális gépek létrehozásához a helyreállított lemezek alapján, az Azure-szerepkörhöz a művelet végrehajtásához szükséges engedéllyel kell rendelkeznie **Microsoft.KeyVault/vaults/deploy/action**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni szerepkör ezt a műveletet. További információkért lásd: [egyéni szerepkörök az Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
+
+> [!NOTE]
+> A lemezek visszaállítását követően most már beszerezheti közvetlenül használatával hozzon létre egy új virtuális Gépet, amely a központi telepítési sablont. Nincs több különböző PS parancsmagok hozhat létre kombinace spravovaného a nespravovaného virtuális gépeket, amelyek titkosított/titkosítás nélkül.
+
+A létrejövő feladat részleteit a sablon URI, amely lekérdezhetők és üzembe helyezett biztosít.
+
+```powershell
+   $properties = $details.properties
+   $templateBlobURI = $properties["Template Blob Uri"]
+```
+
+Egyszerűen helyezze üzembe a sablont, egy új virtuális Gépet hoz létre, leírtak [Itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source).
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+```
+
+A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létrehozásához szükséges lépéseket.
+
+> [!NOTE]
+> Erősen ajánlott lásd fent egy virtuális Gépet hoz létre központi telepítési sablon használatához. Ebben a szakaszban (1 – 6. pontok) hamarosan elavulttá válik.
 
 1. A lekérdezés a visszaállított lemez tulajdonságait a feladat részleteit.
 
@@ -476,14 +498,14 @@ Miután visszaállította a lemezeket, a következő eljárással hozhat létre 
    * **Felügyelt és nem titkosított virtuális gépek** – felügyelt nem titkosított virtuális gépek esetén a visszaállított felügyelt lemezt. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
 
    * **Felügyelt és a titkosított virtuális gépek (csak a blokktitkosítási kulcsot)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL csak), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
-   
-      A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
+
+     A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és kek-KEL), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). 
+   * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és kek-KEL), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
 
       A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
 
@@ -516,11 +538,10 @@ A lemezek visszaállítását, valamint egy Azure virtuális gépek biztonsági 
 A fájl biztonsági másolatból történő visszaállítását egy Azure virtuális gép alapvető lépések a következők:
 
 * Válassza ki a virtuális Gépet
-* Válassza ki a helyreállítási pont létrehozása
+* Válasszon helyreállítási pontot
 * Helyreállítási pont található lemezeket
 * Másolja a szükséges fájlokat
 * A lemez leválasztása
-
 
 ### <a name="select-the-vm"></a>Válassza ki a virtuális Gépet
 
@@ -531,7 +552,7 @@ $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "Az
 $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Válassza ki a helyreállítási pont létrehozása
+### <a name="choose-a-recovery-point"></a>Válasszon helyreállítási pontot
 
 Használja a **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. Ezután válassza ki a helyreállítási pontot a visszaállításhoz. Ha biztos abban, hogy melyik helyreállítási pontot, tanácsos válassza ki a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
@@ -575,7 +596,7 @@ Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 A kimenet a következő példához hasonló:
 
-```
+```powershell
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

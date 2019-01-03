@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/19/2018
+ms.date: 12/28/2018
 ms.author: juliako
-ms.openlocfilehash: 266227b87381fde74efd0fa05c6ea10a0eace985
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724963"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969335"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Oktatóanyag: A Media Services v3 élő Stream API-k használatával
 
@@ -107,7 +107,7 @@ Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el.
 
 ### <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 
-A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket kell megadnia az élő kódolónak. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
+Ha a videókhoz létrejött, megjelenik a betöltési URL-címek, amelyek ezeket a élőadás-kódoló kell megadnia. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 
