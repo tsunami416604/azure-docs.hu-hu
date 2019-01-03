@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: b110a57526d6e23ba53afce0a91d735fad6d247c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215786"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604099"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások a Postman konfigurálása
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja **Postman** így is használható a
 - Szükséges információk [API-k elérése](access-api-cli-how-to.md)
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák is: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-fájlok letöltése
 
@@ -75,7 +75,7 @@ Ebben a szakaszban konfiguráljuk a Postmant.
 
 Mielőtt elkezdené az AMS v3 erőforrások kezelésére szolgáló, és állítsa be a tokent az Azure-AD a szolgáltatásnév hitelesítési szüksége.
 
-1. A Postman bal ablakában válassza a „Step 1: Get AAD Auth token” (1. lépés: AAD-hitelesítési jogkivonat lekérése) lehetőséget.
+1. A Postman a bal oldali ablakban válassza ki az "1. lépés: AAD-hitelesítési token beszerzése".
 2. Ezután válassza az „Get Azure AD Token for Service Principal Authentication” (Azure AD-jogkivonat lekérése egyszerű szolgáltatásnév hitelesítéséhez) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -85,7 +85,7 @@ Mielőtt elkezdené az AMS v3 erőforrások kezelésére szolgáló, és állít
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. A válasz a jogkivonattal együtt megérkezik, és beállítja az „AccessToken” környezeti változót a jogkivonat értékének. Az „AccessToken” értéket beállító kód megtekintéséhez kattintson a **Tests** (Tesztek) fülre. 
+4. A válasz a jogkivonattal együtt megérkezik, és beállítja az „AccessToken” környezeti változót a jogkivonat értékének.  
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 

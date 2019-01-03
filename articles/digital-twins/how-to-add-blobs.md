@@ -1,19 +1,20 @@
 ---
 title: Blobok hozzáadása az Azure digitális Twins objektumok |} A Microsoft Docs
-description: Blobok hozzáadása az Azure digitális Twins objektumok ismertetése
+description: 'Útmutató: blobok hozzáadása az Azure digitális Twins objektumokat.'
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725624"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974515"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -21,10 +22,7 @@ Blobok strukturálatlan ábrázolása a gyakori fájltípusokból, mint példáu
 
 Az Azure digitális Twins támogatja a blobok csatolása eszköz, a tárolóhelyek és a felhasználó számára. Blobok hozhat létre egy profilhoz tartozó fotó egy felhasználó, eszköz fényképet, egy videót, térképet vagy a napló számára.
 
-> [!NOTE]
-> Ez a cikk feltételezi, hogy:
-> * Hogy a példány megfelelően van konfigurálva a felügyeleti API-kérelmek fogadásához.
-> * Hogy Ön már megfelelően hitelesíteni a választott REST-ügyfél használatával.
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>Blobok feltöltése: áttekintés
 
@@ -93,9 +91,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Hodnota parametru | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | A többrészes tartalom határcsoport neve |
+| USER_DEFINED_BOUNDARY | A többrészes tartalom határcsoport neve |
 
 A következő kódot az ugyanazon blob feltöltése, a osztály használatával egy .NET megvalósítását [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
@@ -116,7 +114,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>API-végpontok
 
-Az alábbi szakaszok a core-végpontokon keresztül, és azok a funkciók mutatja be.
+A következő szakaszok ismertetik a core blobbal kapcsolatos API-végpontokat és azok a funkciók.
 
 ### <a name="devices"></a>Eszközök
 
@@ -144,7 +142,7 @@ Sikeres kérelem adja vissza egy **DeviceBlob** JSON-objektum a válaszban. **De
 > [!TIP]
 > Az előző táblázatban használatával kezelni kérelem sikeresen visszaadott adatokat.
 
-### <a name="spaces"></a>Tárolóhelyek
+### <a name="spaces"></a>Szóközök
 
 Blobok csatlakoztathat szóközöket is. Az alábbi képen végpontjai terület API blobok kezeléséért felelős. Ezekre a végpontokra átadandó elérési út paramétereit is felsorolja.
 
@@ -194,7 +192,7 @@ A visszaküldött JSON (**UserBlob** objektumok) megfelel-e a következő JSON-m
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-Gyakori hibaüzenet nem tartalmazza a megfelelő fejléc-információkat:
+Gyakori hiba, hogy a megfelelő fejléc-információkat tartalmazza:
 
 ```JSON
 {

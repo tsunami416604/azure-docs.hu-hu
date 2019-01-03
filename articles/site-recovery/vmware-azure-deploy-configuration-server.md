@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251028"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794354"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -97,7 +97,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
-1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a folyamatkiszolgáló által a virtuális gépekről érkező replikációs forgalom fogadására használt hálózati adaptert. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás konfigurálását követően nem módosítható.
+1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a folyamatkiszolgáló által a virtuális gépekről érkező replikációs forgalom fogadására használt hálózati adaptert. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás konfigurálását követően nem módosítható. Javasoljuk, hogy ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, a konfigurációs kiszolgálóhoz rendelt IP-cím statikus és nem a DHCP IP-Címek.
 2. A **helyreállítási tár kiválasztása**, jelentkezzen be a Microsoft Azure-ba, válassza ki az Azure-előfizetés és a megfelelő erőforráscsoportot és tárolót.
 
     > [!NOTE]
@@ -150,7 +150,11 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
     Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. Válassza ki a kiszolgálók **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
 8. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
 
-    **Nem**, klónozott konfigurációs kiszolgáló összetevő nem támogatott. 
+    **Nem**, klónozott konfigurációs kiszolgáló összetevő nem támogatott.
+
+9. Módosíthatom a konfigurációs kiszolgáló IP-cím?
+
+    **Nem**, erősen ajánlott ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg, hogy minden IP-címet, és a konfigurációs kiszolgáló hozzárendelt statikus IP-címek és a nem DHCP IP-címek.
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

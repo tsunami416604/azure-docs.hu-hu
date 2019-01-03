@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109795"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717211"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások Fürtbiztonság és frissítése az Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Részletesebb vezérléshez tároló műveleteket, használhatja a beépített L
 
 ### <a name="app-armor"></a>Alkalmazás-motor
 
-A tárolók által elvégezhető műveletek korlátozásához használja a [AppAmour] [ k8s-apparmor] Linux kernel biztonsági modult. AppArmor érhető el az alapul szolgáló operációs rendszer, az AKS csomópont részeként, és alapértelmezés szerint engedélyezve van. Létrehozhat AppArmor profilok, amelyek korlátozzák a műveletek például olvasási, írási, vagy hajtsa végre, vagy a rendszer funkciók, például fájlrendszerekre csatlakoztatására. Alapértelmezett AppArmor profilok különféle való hozzáférés korlátozása `/proc` és `/sys` helyeket, és adja meg az alapul szolgáló csomópontból tárolók logikailag el azt. AppArmor azzal a Linux rendszeren, nem csak a Kubernetes-podok futó alkalmazások esetében működik.
+A tárolók által elvégezhető műveletek korlátozásához használja a [AppArmor] [ k8s-apparmor] Linux kernel biztonsági modult. AppArmor érhető el az alapul szolgáló operációs rendszer, az AKS csomópont részeként, és alapértelmezés szerint engedélyezve van. Létrehozhat AppArmor profilok, amelyek korlátozzák a műveletek például olvasási, írási, vagy hajtsa végre, vagy a rendszer funkciók, például fájlrendszerekre csatlakoztatására. Alapértelmezett AppArmor profilok különféle való hozzáférés korlátozása `/proc` és `/sys` helyeket, és adja meg az alapul szolgáló csomópontból tárolók logikailag el azt. AppArmor azzal a Linux rendszeren, nem csak a Kubernetes-podok futó alkalmazások esetében működik.
 
 ![Az AKS-fürt tároló műveletek korlátozására használt AppArmor profilok](media/operator-best-practices-container-security/apparmor.png)
 

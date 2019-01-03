@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 35493d9a7f47bda3344dbc8b0ea415d4492c5741
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340053"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720460"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Manager használatával
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-Ez a cikk az egyéni tartománynév használatára vonatkozó általános útmutatást biztosít egy [App Service-ben](app-service-web-overview.md) alkalmazást, amely integrálva van a [Traffic Manager](../traffic-manager/traffic-manager-overview.md) terheléselosztásra.
+Ez a cikk az egyéni tartománynév használatára vonatkozó általános útmutatást biztosít egy [App Service-ben](overview.md) alkalmazást, amely integrálva van a [Traffic Manager](../traffic-manager/traffic-manager-overview.md) terheléselosztásra.
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -47,7 +47,7 @@ Ez a cikk az egyéni tartománynév használatára vonatkozó általános útmut
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>A DNS-rekordot az egyéni tartomány hozzáadása
 > [!NOTE]
-> Ha tartományhoz az Azure App Service Web Apps keresztül vásárolt, akkor ugorjon a következő lépéseket és az utolsó lépésében tekintse meg [tartomány vásárlása a Web Apps](custom-dns-web-site-buydomains-web-app.md) cikk.
+> Ha tartományhoz az Azure App Service Web Apps keresztül vásárolt, akkor ugorjon a következő lépéseket és az utolsó lépésében tekintse meg [tartomány vásárlása a Web Apps](manage-custom-dns-buy-domain.md) cikk.
 > 
 > 
 

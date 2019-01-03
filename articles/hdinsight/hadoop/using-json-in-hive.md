@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f50767ad4fc979962968c32bbe972e28d93cce88
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166404"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652695"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok elemzését az Azure HDInsight az Apache Hive használatával
 
@@ -57,9 +57,9 @@ Megtudhatja, hogyan dolgozza fel, és a JavaScript Object Notation (JSON) fájlo
 }
 ```
 
-A fájl található **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
+A fájl található **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Apache Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
 
-Ebben az oktatóanyagban a Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [Hive használata a Hadooppal a HDInsight a távoli asztal](apache-hadoop-use-hive-remote-desktop.md).
+Ebben az oktatóanyagban az Apache Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [Apache Hive használata a HDInsight a távoli asztalról az Apache Hadoop](apache-hadoop-use-hive-remote-desktop.md).
 
 ## <a name="flatten-json-documents"></a>JSON-dokumentumok egybesimítására
 A következő szakaszban felsorolt módszerek szükséges, hogy a JSON-dokumentum tevődik össze egyetlen sor. Tehát simítja egybe a JSON-dokumentum karakterlánccá. Ha a JSON-dokumentumok már lett simítva, ezt a lépést kihagyhatja, és egyenesen eljuthat a következő szakasz a JSON-adatok elemzése. A JSON-dokumentumok egybesimítására, futtassa a következő parancsfájlt:
@@ -101,7 +101,7 @@ Hive a JSON-dokumentumok lekérdezések futtatására használható három kül�
 * Használja a get_json_object felhasználói függvény (UDF).
 * Az UDF json_tuple használja.
 * Az egyéni szerializáló/deszerializáló (SerDe) használja.
-* Írhat saját UDF Python vagy más nyelv használatával. Saját Python-kód futtatása Hive-val kapcsolatos további információkért lásd: [Python felhasználói függvények az Apache Hive és Pig][hdinsight-python].
+* Írhat saját UDF Python vagy más nyelv használatával. Saját Python-kód futtatása Hive-val kapcsolatos további információkért lásd: [Python felhasználói függvények az Apache Hive- és Apache Pig][hdinsight-python].
 
 ### <a name="use-the-getjsonobject-udf"></a>Használja a get_json_object UDF-ben
 Hive biztosít egy beépített UDF nevű [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , amely JSON lekérdezése során futásidejű hajthat végre. Ez a módszer két argumentumot – a táblázat neve és a metódus nevét, amely rendelkezik a egybesimított JSON-dokumentum és a JSON-mezőt, amely elemezni kell. Nézzük meg, például hogy az UDF működését.
@@ -152,9 +152,9 @@ Végezetül JSON operátor az Ön által választott Hive típusa a forgatókön
 
 Kapcsolódó cikkek lásd:
 
-* [Apache log4j mintafájl elemzéséhez a HDInsight Hadoop Hive és a HiveQL használata](../hdinsight-use-hive.md)
-* [Repülőjáratok késési adatainak elemzése a Hive a HDInsight használatával](../hdinsight-analyze-flight-delay-data.md)
-* [Twitter-adatok elemzése a Hive a HDInsight használatával](../hdinsight-analyze-twitter-data.md)
+* [Az Apache Hive és a HiveQL használata a HDInsight az Apache Hadoop Apache log4j mintafájl elemzéséhez](../hdinsight-use-hive.md)
+* [Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-flight-delay-data.md)
+* [Twitter-adatok elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-twitter-data.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

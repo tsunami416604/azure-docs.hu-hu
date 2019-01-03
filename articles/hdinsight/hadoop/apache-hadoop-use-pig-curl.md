@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434015"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715426"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Az Apache Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
 
@@ -101,7 +101,7 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
 
 Ha a feladat állapota megváltozott, hogy **sikeres**, kérheti le a feladat eredményét. A `statusdir` lekérdezése átadott paraméter tartalmazza a helyet, a kimeneti fájl; ebben az esetben `/example/pigcurl`.
 
-HDInsight használhatja Azure Storage vagy az Azure Data Lake Storage alapértelmezett adattárként. Attól függően, melyiket használja az adatok lekérése különböző módja van. További információkért tekintse meg a tárterület szakaszában a [Linux-alapú HDInsight-információk](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentumot.
+HDInsight használhatja Azure Storage vagy az Azure Data Lake Storage alapértelmezett adattárként. Attól függően, melyiket használja az adatok lekérése különböző módja van. További információkért tekintse meg a tárterület szakaszában a [Linux-alapú HDInsight-információk](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage) dokumentumot.
 
 ## <a id="summary"></a>Summary (Összefoglalás)
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497274"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792781"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>A kiterjesztett Apache Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása az Apache Spark-alkalmazások
 
@@ -26,7 +26,7 @@ Az Apache Spark-Előzménykiszolgáló a webes felhasználói felület a befejez
 
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg a Apache Spark előzmények kiszolgáló webes felhasználói felület az Azure Portalról
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön. 
 
     ![Spark-Előzménykiszolgáló](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Előzménykiszolgáló")
@@ -106,11 +106,11 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 
 + Játssza le a feladat kattintva a **lejátszás** gombra, és a Leállítás gombra kattintva bármikor leállítása. A feladat megjelenítése a színt, különböző állapot megjelenítése során lejátszási:
 
-    + Zöld, a sikeres: A feladat sikeresen befejeződött.
-    + Narancssárga, a rendszer megpróbálja újból végrehajtani: nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányait. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
-    + Kék futtatásához: A feladat fut-e.
-    + Várakozás a fehér vagy a rendszer kihagyta: vár a feladat futtatásához, vagy a fázis rendelkezik kihagyása.
-    + Piros, sikertelen: A feladat sikertelen volt.
+    + Zöld, a sikeres volt: A feladat sikeresen befejeződött.
+    + Narancssárga, a rendszer megpróbálja újból végrehajtani: Nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányai. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
+    + Kék futtatásához: A feladat fut.
+    + Várakozás a fehér vagy a rendszer kihagyta: A feladat futtatásához vár, vagy a szakasz rendelkezik kihagyása.
+    + Nem sikerült a vörös színt: A feladat sikertelen volt.
 
     ![Graph színminta fut](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 
     ![sikertelen Graph színminta](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > Lejátszás feladatonként engedélyezett. A lejátszás hiányos feladat, nem támogatott.
 
 
@@ -132,8 +132,8 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
     ![Graph-elemleírás](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Feladat graph lap szakaszban fog rendelkezni, elemleírás és kis ikon jelenik meg, ha rendelkeznek feladatok felel meg az alábbi feltételek:
-    + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott > 10 MB méretre
-    + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc
+    + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott adatok mérete > 10 MB-ot.
+    + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc.
 
     ![diagram torzulása ikonnal](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -147,10 +147,10 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
     + Sorok száma: bemeneti rekord összege kimeneti bejegyzések, olvasási rekordok shuffle és shuffle írási rögzíti.
     + Folyamatban van.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Alapértelmezés szerint a feladat graph csomópont és az egyes szintek (kivéve a végrehajtási idő fázis) utolsó kísérlet adatait jeleníti meg, de a grafikon a lejátszás során csomópont információk jelennek meg minden egyes kísérlethez.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Az olvasási és írási 1 használjuk adatméret MB = 1000 KB = 1000 * 1000 bájt.
 
 + Küldjön visszajelzést problémákkal rendelkező kattintva **várjuk visszajelzéseit**.
@@ -168,7 +168,7 @@ Válassza ki a feladat azonosítója, majd kattintson a **diagnosztikai** az Esz
 ### <a name="data-skew"></a>Adateltérés
 Kattintson a **adatok tevékenységdiagramon** lapon, a megfelelő magokon feladatok jelennek meg a megadott paraméterek alapján. 
 
-+ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek a döntés adatok észlelésére használatosak. A beépített szabály: a feladat az olvasott érték nagyobb, mint 3 alkalommal az átlagos feladat beolvasott adatok, és beolvasott adatok feladat 10MB-nál több. Ha azt szeretné, a saját magokon feladatok szabály meghatározásához, a paraméterek, kiválaszthatja a **torzítja fázis**, és **tevékenységdiagramon Char** szakasz ennek megfelelően frissülnek.
++ **Adja meg a paramétereket** – az első szakaszban megjeleníti a paramétereket, amelyeknek a döntés adatok észlelésére használatosak. A beépített szabály van: Feladat az olvasott értéke nagyobb, mint 3 alkalommal az átlagos feladat adatok olvasása, és a olvassa el a feladat adatai több mint 10 MB-ot. Ha azt szeretné, a saját magokon feladatok szabály meghatározásához, a paraméterek, kiválaszthatja a **torzítja fázis**, és **tevékenységdiagramon Char** szakasz ennek megfelelően frissülnek.
 
 + **Fázis torzítja** – a második szakasz szakaszai, amelyek megfelelnek a feltételeknek, a fentiekben ismertetett feladatok rendelkezik torzítja jeleníti meg. Ha egynél több magokon feladat egy lépésben hajtaná, az egyenetlen szakasz tábla csak megjeleníti a legtöbb magokon feladat (például az adatok legnagyobb adatok tevékenységdiagramon).
 

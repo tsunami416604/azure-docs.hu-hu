@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 30bfaad8fcc1a837a37689280149a6dbe20b7c1d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634345"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628151"
 ---
 # <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Az Apache Hive használata a HDInsight Windows-alapú webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL használva webhelyek naplóinak elemzése. A webhelynapló elemzése használható hasonló tevékenységek alapján közönségét szegmentálhatja, kategorizálhatja a webhely látogatói demográfiai által, és tudja meg a tartalmat, megtekintése, a websites származnak, és így tovább.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések csak a Windows-alapú HDInsight-fürtökkel működik. HDInsight csak akkor használható a Windows-verziók alacsonyabb, mint a HDInsight 3.4-es. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Ebben a példában használhatja egy HDInsight-fürtöt a webhely a külső webhelyekről érkező napi látogatások gyakoriságának információkhoz juthat a webhely naplófájljainak elemzéséhez. Is létrehozhat a felhasználók által webhely-hibák összefoglalása. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -32,7 +32,7 @@ Ebben a példában használhatja egy HDInsight-fürtöt a webhely a külső webh
 ![HDI. Samples.Website.Log.Analysis](./media/apache-hive-analyze-website-log/hdinsight-weblogs-sample.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Azure HDInsight Hadoop-fürt van kiépítve. Útmutatásért lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
+* Az Azure HDInsight az Apache Hadoop-fürt van kiépítve. Útmutatásért lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
 * Rendelkeznie kell a Microsoft Excel 2013 vagy az Excel 2010 telepítve van.
 * Rendelkeznie kell [a Microsoft Hive ODBC-illesztő](https://www.microsoft.com/download/details.aspx?id=40886) , a Hive-adatok importálása Excel formátumba.
 

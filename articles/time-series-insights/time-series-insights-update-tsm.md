@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights - Time Series modellben |} A Microsoft Docs
+title: Az Azure Time Series Insightsban az Idősorozat-modell előzetes verzió |} A Microsoft Docs
 description: Ismertetése az Azure Time Series Insights Time Series modellben.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278185"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716582"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
@@ -136,7 +136,7 @@ Vegye figyelembe az alábbi példában, ahol a H1 hierarchia már *létrehozás�
  H1 = [“building”, “floor”, “room”]
 ```
 
-Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei jelennek meg az alábbi táblázatban látható módon: 
+Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei jelennek meg az alábbi táblázatban látható módon:
 
 | Idősorozat azonosítója | Szolgáltatáspéldány-mezők |
 | --- | --- |
@@ -144,9 +144,9 @@ Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei
 | ID2 | "elkészítése" = "1000", "hely" = "55." |
 | ID3 | "floor" = "10" |
 | MINT AZ ID4 ESETÉBEN | "elkészítése" = "1000", "emelet" = "10"  |
-| ID5 | |
+| ID5 | Nincs "elkészítése", "floor" vagy "hely" van beállítva |
 
-Az előző példában ID1 megjeleníti a hierarchiában H1 felhasználói felület és felhasználói részeként, és a többi szerint besorolt *fölérendelt objektum nélküli példányok* mivel azok nem megfelelnek a megadott hierarchiát.
+Az előző példában ID1 és ID4 jeleníti meg az Azure Time Series Insights Explorer H1 hierarchia részeként, és a többi szerint besorolt *fölérendelt objektum nélküli példányok* mivel azok nem megfelelnek a megadott hierarchiát.
 
 ## <a name="time-series-model-instances"></a>Time Series modell-példány
 

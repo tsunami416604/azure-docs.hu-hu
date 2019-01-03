@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: ef61ee9f15253c6a270cd4089625776a458df2ee
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 715e536d7356a4e37f512027a23236b1fd37cbac
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499324"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651299"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Közzétett alkalmazás – Cask Data Application Platform (CDAP) telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [CDAP](http://cask.co/products/cdap/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [CDAP](https://cask.co/products/cdap/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-cdap"></a>CDAP kapcsolatban
 
@@ -30,7 +30,7 @@ A Cask Data Application Platform (CDAP) az Big Data-integrációs platform. CDAP
 
 CDAP használ alapvető fogalmait és absztrakciók, amely a fejlesztők számára is felismerhetők. Ezek absztrakciók kiküszöböli a belső rendszerek elrejtéséhez, és ösztönözze az újrahasznosíthatóság megoldások.
 
-Egy CDAP bővítmény nevű [Cask Hydrator](http://cask.co/products/hydrator/) hozhat létre és kezelhet adatfolyamatokat állíthat össze egy felhasználói felületet biztosít. Egy adatfolyamat áll különböző * feladatokat elvégző beépülő modulok, például adatgyűjtés, átalakítási, elemzési és a Futtatás utáni műveletek.
+Egy CDAP bővítmény nevű [Cask Hydrator](https://cask.co/products/hydrator/) hozhat létre és kezelhet adatfolyamatokat állíthat össze egy felhasználói felületet biztosít. Egy adatfolyamat áll különböző * feladatokat elvégző beépülő modulok, például adatgyűjtés, átalakítási, elemzési és a Futtatás utáni műveletek.
 
 Minden egyes CDAP beépülő modul jól definiált felülettel rendelkezik, úgy, hogy különböző technológiák kiértékelése annyit egy beépülő modul cserélje le egy másikat, az alkalmazás többi touch nélkül.
 
@@ -42,7 +42,7 @@ Egy adatfolyamat a következő példa feltölti a valós idejű twitter-adatok, 
 
 A végpontok közötti folyamatok használatával lett összeállítva a **Cask Hydrator felhasználói felület**, a beépülő modul felület és fogd és vidd szolgáltatással űrlap kapcsolatok közötti minden egyes szakaszhoz. Azonosíthatók, és egymástól függetlenül minden beépülő modul működésének módosítását. CDAP használata esetén hasonló a folyamatok lehetnek beépített és (óra) ellenőrzi. A tipikus Hadoop világban hozhat létre, az ilyen megoldások is igénybe vehet néhány nap.
 
-CDAP is biztosít egy bővítmény nevű [Cask Tracker](http://cask.co/products/tracker/) vizuálisan nyomkövetési adatok, mert az alkalmazáson keresztül zajlik. Hozzáadja a cask Tracker *adatszabályozást* a rendszer, hogy az adategységek hivatalosan történik az alkalmazásban. Nyomon követheti az egyes adatpontok leszármaztatási, releváns metrikákat gyűjthet, és az adat-auditnapló a folyamat során.
+CDAP is biztosít egy bővítmény nevű [Cask Tracker](https://cask.co/products/tracker/) vizuálisan nyomkövetési adatok, mert az alkalmazáson keresztül zajlik. Hozzáadja a cask Tracker *adatszabályozást* a rendszer, hogy az adategységek hivatalosan történik az alkalmazásban. Nyomon követheti az egyes adatpontok leszármaztatási, releváns metrikákat gyűjthet, és az adat-auditnapló a folyamat során.
 
 Íme egy hogyan adat áramlik a fenti folyamat ábrája:
 
@@ -126,9 +126,9 @@ Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti út
 
 ## <a name="next-steps"></a>További lépések
 
-* [Cask dokumentáció](http://cask.co/resources/documentation/).
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
-* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.
+* [Cask dokumentáció](https://cask.co/resources/documentation/).
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): Ismerje meg, hogyan lehet HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
+* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Ismerje meg, hogyan teheti közzé egyéni HDInsight-alkalmazásait akár az Azure Marketplace-en.
+* [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx): Ismerje meg, hogyan adhat meg HDInsight-alkalmazások.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): Ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): Ismerje meg, hogy egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

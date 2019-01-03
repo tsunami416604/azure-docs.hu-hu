@@ -1,7 +1,7 @@
 ---
 title: Nyomon követheti a gépi Tanulási folyamatok létrehozása & futtatása
 titleSuffix: Azure Machine Learning service
-description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült.  A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak.
+description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült. A folyamatok létrehozásához és kezeléséhez a munkafolyamatok a varrva együtt machine learning (gépi tanulás) fázisok használhatja. Ezeket a fázisokat tartalmazza az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,23 +11,23 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269040"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754458"
 ---
-# <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Hozhat létre és futtathat egy machine learning folyamatot az Azure Machine Learning SDK
+# <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
 Ebből a cikkből megismerheti, hogyan hozzon létre, közzétételéhez, futtassa, és nyomon követheti a [machine learning-folyamat](concept-ml-pipelines.md) használatával a [Azure Machine Learning-SDK](https://aka.ms/aml-sdk).  Ezek a folyamatok létrehozásához és kezeléséhez a munkafolyamatok, amelyek összefűzheti a machine learning különböző fázisait segítségével. Minden egyes fázisában, például az adat-előkészítési és a modell betanítása és a egy folyamatot egy vagy több lépést is tartalmazhatnak.
 
 A folyamatok létrehozása az Azure Machine Learning szolgáltatás tagjai számára láthatók [munkaterület](how-to-manage-workspace.md). 
 
-A folyamatok távoli számítási célnak kiszámításához és a köztes és végső adatokat, hogy a folyamat társított tárolására használja.  A folyamatok olvasható és írható adat- és támogatott [az Azure storage](https://docs.microsoft.com/azure/storage/) helyeket.
+A folyamatok távoli számítási célnak kiszámításához és a köztes és végső adatokat, hogy a folyamat társított tárolására használja. A folyamatok olvasható és írható adat- és támogatott [Azure Storage](https://docs.microsoft.com/azure/storage/) helyeket.
 
 >[!Note]
->Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+>Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,14 +50,14 @@ A folyamat futtatásához szükséges erőforrások létrehozásához:
 
 * Állítsa be a folyamat lépések során szükség az adatok eléréséhez használt adattárolót.
 
-* Konfigurálja a `DataReference` objektum, amely formában, vagy olyan adattárolón elérhető adatok.
+* Konfigurálja a `DataReference` él, vagy elérhető adattárolót az adatok az objektum.
 
 * Állítsa be a [számítási céljainak](concept-azure-machine-learning-architecture.md#compute-target) az a folyamat lépései futtathatók.
 
 ### <a name="set-up-a-datastore"></a>Egy adattár beállítása
-Egy adattár tárolja az adatokat a folyamat eléréséhez.  Az egyes munkaterületeken tartozik egy alapértelmezett adattárhoz. További adattárainak regisztrálhat. 
+Egy adattár tárolja az adatokat a folyamat eléréséhez. Az egyes munkaterületeken tartozik egy alapértelmezett adattárhoz. További adattárainak regisztrálhat. 
 
-A munkaterület létrehozásakor egy [az Azure file storage](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és a egy [a blob storage-](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez csatlakozik.  Az Azure file storage munkaterület "alapértelmezett"-adattár, de is használhatja a blob storage-adattárhoz.  Tudjon meg többet [az Azure tárolási lehetőségeinek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
+A munkaterület létrehozásakor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez csatlakozik. Az Azure Files a munkaterülethez tartozó alapértelmezett datastore, de is használhatja a Blob storage-adattárhoz. További tudnivalókért lásd: [való használata az Azure Files, Azure-Blobok és Azure-lemezek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
 # Default datastore (Azure file storage)
@@ -70,7 +70,7 @@ def_data_store = Datastore(ws, "workspacefilestore")
 def_blob_store = Datastore(ws, "workspaceblobstore")
 ```
 
-Töltse fel az adatok fájlok vagy könyvtárak az adattárral, hogy a folyamatok a érhető el.  Ebben a példában az adattárhoz blob storage a verzióját használja:
+Töltse fel az adatok fájlok vagy könyvtárak az adattárral, hogy a folyamatok a érhető el. Ebben a példában az adattárhoz Blob storage a verzióját használja:
 
 ```python
 def_blob_store.upload_files(
@@ -79,7 +79,7 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-Egy folyamatot egy vagy több lépésből áll.  Egy lépésre egy egység egy számítási célnak futhatnak.  Előfordulhat, hogy lépéseket felhasználhat adatforrásokat, és a "köztes" adatok előállításához. Egy lépéssel létrehozhat például egy modellt, a modell és a függő fájlokat egy könyvtárat, és ideiglenes adatokat.  Ezek az adatok ezután a folyamat későbbi részében további lépések érhető el.
+Egy folyamatot egy vagy több lépésből áll. Egy lépésre egy egység egy számítási célnak futhatnak. Előfordulhat, hogy lépéseket felhasználhat adatforrásokat, és a "köztes" adatok előállításához. Egy lépéssel létrehozhat például egy modellt, a modell és a függő fájlokat egy könyvtárat, és ideiglenes adatokat. Ezek az adatok ezután a folyamat későbbi részében további lépések érhető el.
 
 ### <a name="configure-data-reference"></a>Konfigurálja a data-referencia
 
@@ -92,7 +92,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Köztes adatok (vagy egy lépés kimenetéből) képviseli egy [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektum. `output_data1` a lépések a kimeneteként előállított és a későbbi lépésekben egy vagy több bemeneti használja.  `PipelineData` lépések közötti függőségi adatokat, és a egy implicit végrehajtásának sorrendje a folyamat hoz létre.
+Köztes adatok (vagy egy lépés kimenetéből) képviseli egy [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektum. `output_data1` a lépések a kimeneteként előállított, és a későbbi lépésekben egy vagy több bemeneti szolgálnak. `PipelineData` lépések közötti függőségi adatokat, és a folyamat létrehoz egy implicit végrehajtásának sorrendje.
 
 ```python
 output_data1 = PipelineData(
@@ -103,7 +103,7 @@ output_data1 = PipelineData(
 
 ### <a name="set-up-compute"></a>Számítási beállítása
 
-Az Azure Machine Learning compute (vagy számítási célnak) hivatkozik a gépek vagy fürtök, amelyek végrehajtják a számítási lépéseit a machine learning folyamatban. Például létrehozhat egy Azure Machine Learning Compute futtatásához a lépéseket.
+Az Azure Machine Learning az előfizetési időszak *számítási* (vagy *számítási célt*) a gépek vagy fürtök, amelyek a machine learning folyamatban, a számítási lépésekkel vonatkozik. Létrehozhat például egy Azure Machine Learning compute futtatásához a lépéseket.
 
 ```python
 compute_name = "aml-compute"
@@ -129,7 +129,7 @@ else:
 
 ## <a name="construct-your-pipeline-steps"></a>Hozza létre a folyamat lépései
 
-Most már készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy `PythonScriptStep` egy Python-szkriptet, amely végrehajtja a megadott számítási célt.
+Most már készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy `PythonScriptStep`, amely egy Python-szkriptet futtat egy adott számítási célnak.
 
 ```python
 trainStep = PythonScriptStep(
@@ -142,10 +142,10 @@ trainStep = PythonScriptStep(
 )
 ```
 
-A lépéseket, meghatározása után a folyamat egyes lépéseit vagy egészét ezek használatával hozhat létre.
+A lépéseket, meghatározása után hozhat létre a folyamat használatával, vagy azok egy részét az ezeket a lépéseket.
 
 >[!NOTE]
->Nincsenek fájlok vagy az töltenek fel az Azure Machine Learning szolgáltatás határozza meg a lépéseket, vagy a folyamat létrehozását.
+>Egyetlen fájl vagy adatokat töltenek fel az Azure Machine Learning szolgáltatás határozza meg a lépéseket, vagy a folyamat létrehozását.
 
 ```python
 # list of steps to run
@@ -157,27 +157,27 @@ pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 
 ## <a name="submit-the-pipeline"></a>Küldje el a folyamat
 
-A folyamat elküldésekor a függőségek minden lépésről, illetve az Azure Machine Learning szolgáltatás a forráskönyvtár töltenek fel a megadott mappa pillanatkép ellenőrzi.  Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve.
+A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépések a függőségeket, és feltölti a megadott forráskönyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve.
 
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
 ```
 
-Ha először futtatja a folyamatot:
+Ha először futtatja a folyamatot, az Azure Machine Learning:
 
-* A projekt-pillanatkép letöltődik a számítási célnak a munkaterülethez társított blob storage-ból.
-* A docker-rendszerkép összeállításakor a folyamat minden lépése megfelelő.
-* Mindegyik lépéshez a docker-rendszerképet a tárolóregisztrációs adatbázisból letöltődik a számítási célnak.
-* Ha egy `DataReference` objektum szerepel az adattár csatlakoztatása után a rendszer egy lépésben. Csatlakoztatási nem támogatott, ha, helyette a számítási célnak az adatokat másolja.
-* A lépés a számítási célnak a lépés definíciójában megadott futtatható. 
-* Összetevőket, például naplók, az stdout és stderr, metrikák és a lépés által megadott jönnek létre. Ezek az összetevők ezután feltöltött, és a felhasználó alapértelmezett adattárban tárolni.
+* A projekt-pillanatkép letölti a számítási célnak a a munkaterülethez társított Blob storage-ból.
+* Összeállít egy Docker-rendszerképet, a folyamat minden lépése megfelelő.
+* Letölti a számítási célnak mindegyik lépéshez a docker-rendszerképet a tárolóregisztrációs adatbázisból.
+* Csatlakoztatja az adattárhoz, ha egy `DataReference` objektum van megadva egy lépésben. Csatlakoztatási nem támogatott, ha, helyette a számítási célnak az adatokat másolja.
+* A lépés fut a számítási célnak a lépés definíciójában megadott. 
+* Összetevők, például naplók, az stdout és stderr, metrikák és a lépés által megadott hoz létre. Ezek az összetevők ezután feltöltött, és a felhasználó alapértelmezett adattárolóban tárolni.
 
-![egy folyamat, kísérlet futtatása](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
+![Egy kísérlet futtató folyamat ábrája](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 ## <a name="publish-a-pipeline"></a>Folyamatok közzététele
 
-Egy folyamat később futtatni a különböző adatbevitelek teheti közzé. A REST-végpont egy már közzétett folyamat paraméterek elfogadásához a folyamat lehet paraméterezni, közzététel előtt. 
+Egy folyamat később futtatni a különböző adatbevitelek teheti közzé. A REST-végpont egy már közzétett folyamat paraméterek elfogadásához meg kell parametrizálja a folyamat a közzététel előtt. 
 
 1. Egy folyamat paramétere létrehozásához használja a [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) objektum alapértelmezett értékkel.
 
@@ -209,9 +209,9 @@ published_pipeline1 = pipeline1.publish(
 
 ## <a name="run-a-published-pipeline"></a>Egy közzétett folyamat futtatása
 
-Az összes közzétett folyamatok egy REST-végpont meghívása a futtatást a folyamat külső rendszerekből, például az ügyfelek nem Python rendelkezik. Ez a végpont lehetővé teszi a kötegelt pontozási és forgatókönyvek átképezési a "felügyelt ismételhetőség".
+Az összes közzétett folyamatok REST-végponton kell. A végpont hívja meg a futtatást a folyamat külső rendszerekből, például az ügyfelek nem Python. Ez a végpont lehetővé teszi a "felügyelt ismételhetőség" a kötegelt pontozási és forgatókönyvek átképezési.
 
-A fenti folyamat futtatásának elindításához, van szüksége egy Azure Active Directory hitelesítési fejléc tokent leírtak szerint [AzureCliAuthentication osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)
+A fenti folyamat futtatásának elindításához, van szüksége egy Azure Active Directory hitelesítési fejléc tokent leírtak szerint [AzureCliAuthentication osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
 
 ```python
 response = requests.post(published_pipeline1.endpoint, 

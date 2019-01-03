@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Alkalmazás – C# feldolgozása kép létrehozása'
+title: 'Oktatóanyag: Egy rendszerkép feldolgozási alkalmazás összeállítása –C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Egy egyszerű Windows-alkalmazást, amely a Computer Vision API a Microsoft Cognitive Services bemutatása. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342653"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584445"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Oktatóanyag: Egy képfeldolgozó C - alkalmazás létrehozása&#35;
+# <a name="tutorial-build-an-image-processing-app---c35"></a>Oktatóanyag: Állítson össze egy rendszerképet, alkalmazás - C feldolgozása&#35;
 
-Fedezze fel egy egyszerű Windows-alkalmazás, amely hajtsa végre az optikai karakterfelismerés (OCR), hozzon létre intelligens csonkolva miniatűröket készíthet, és észlelheti, kategorizálását, a címke használ a Computer Vision, és vizuális szolgáltatások, többek között az arcok, a kép ismertetik. Az alábbi példa lehetővé teszi, hogy egy kép URL-címe vagy egy helyileg tárolt fájlt elküldéséhez. A nyílt forráskódú példa sablonként használható a saját alkalmazást készít a Windows a Computer Vision API és a Windows megjelenítési Alaprendszeri (WPF), a .NET-keretrendszer részeként.
+Fedezze fel egy egyszerű Windows-alkalmazás, amely hajtsa végre az optikai karakterfelismerés (OCR), hozzon létre intelligens csonkolva miniatűröket készíthet, és észlelheti, kategorizálását, a címke használ a Computer Vision, és vizuális szolgáltatások, többek között az arcok, a kép ismertetik. Az alábbi példában elküldheti egy kép URL-címét vagy egy helyileg tárolt fájlt. A nyílt forráskódú példa sablonként használható a saját alkalmazást készít a Windows a Computer Vision API és a Windows megjelenítési Alaprendszeri (WPF), a .NET-keretrendszer részeként.
 
 > [!div class="checklist"]
 > * A mintaalkalmazás beszerzése a Githubról
@@ -31,7 +32,7 @@ Fedezze fel egy egyszerű Windows-alkalmazás, amely hajtsa végre az optikai ka
 
 A mintaalkalmazás haladóbb győződjön meg arról, hogy teljesítette az alábbi előfeltételek:
 
-* Rendelkeznie kell [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) vagy újabb.
+* A [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) vagy újabb verzióval kell rendelkeznie.
 * Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
 ## <a name="get-the-sample-app"></a>Mintaalkalmazás letöltése
@@ -98,10 +99,10 @@ Futtathatja a mintaalkalmazást, megtekintéséhez, hogy milyen hatással, és a
    |Miniatűr beolvasása | Használja a [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) művelet végrehajtásával létrehozott egy helyi vagy távoli kép miniatűrjét. |
 
    > [!IMPORTANT]
-   > A Microsoft a képek feltöltéséhez, és felhasználhatja őket az Computer Vision API-és kapcsolódó kap. Kép elküldésével, győződjön meg arról, hogy követte az [fejlesztői viselkedési](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
+   > A Microsoft a képek feltöltéséhez, és felhasználhatja őket az Computer Vision API-és kapcsolódó kap. Egy kép elküldésekor megerősíti, hogy betartotta a [Fejlesztői magatartási kódexet](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Az alábbi képernyőfelvételen látható az oldal, a kép elemzése a forgatókönyvben egy képet elemzése után megadott mutatja be.
-   ![Kép forgatókönyv lapon elemzése](../Images/Analyze_Image_Example.PNG)
+   ![Az elemzés kép oldalát bemutató képernyőkép](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>Ismerje meg a mintaalkalmazás
 

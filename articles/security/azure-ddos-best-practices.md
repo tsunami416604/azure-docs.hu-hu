@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231632"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720866"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Az Azure DDoS Protection: Ajánlott eljárások és referenciaarchitektúrákat
+# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Az Azure DDoS Protection: Ajánlott eljárások és referenciaarchitektúrák
 
 Ez a cikk olyan informatikai döntéshozókat, és a biztonsági csoporthoz. Azt várja, hogy ismeri, az Azure-hálózatot és a biztonságot.
 
@@ -81,7 +81,7 @@ Annak biztosítása, hogy egy alkalmazás elég rugalmas, maga az alkalmazás os
 
 Méretezhetőség azt arról, hogy a rendszer megnövekedett terhelés kezelésére. Kell megterveznie az alkalmazásokat, [horizontális skálázásra](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) az igény egy felerősített terhelés, kifejezetten a DDoS-támadások esetén. Ha az alkalmazás egy szolgáltatás egyetlen példánya függ, a meghibásodási pontot hoz létre. Rugalmasabb és skálázhatóbb üzembe helyezett példányban több lehetővé teszi a rendszer.
 
-A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , amelynek keretében több példányt. Az Azure Cloud Services, konfigurálja az összes, használja a szerepkörök [több példány](../cloud-services/cloud-services-choose-me.md). A [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), győződjön meg arról, hogy a virtuális gép (VM) architektúra tartalmaz-e egynél több virtuális gép és minden virtuális gép szerepel egy [rendelkezésre állási csoport](../virtual-machines/virtual-machines-windows-manage-availability.md). Azt javasoljuk, [a virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) az automatikus méretezési képességeivel.
+A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/overview-hosting-plans.md) , amelynek keretében több példányt. Az Azure Cloud Services, konfigurálja az összes, használja a szerepkörök [több példány](../cloud-services/cloud-services-choose-me.md). A [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), győződjön meg arról, hogy a virtuális gép (VM) architektúra tartalmaz-e egynél több virtuális gép és minden virtuális gép szerepel egy [rendelkezésre állási csoport](../virtual-machines/virtual-machines-windows-manage-availability.md). Azt javasoljuk, [a virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) az automatikus méretezési képességeivel.
 
 ### <a name="defense-in-depth"></a>Mélységi védelemmel is
 
@@ -96,7 +96,7 @@ Gyakran láthatjuk az ügyfelek a helyi és azok az Azure-erőforrások lekérde
 
 ## <a name="azure-offerings-for-ddos-protection"></a>A DDoS protection az Azure-ajánlatok
 
-Az Azure két DDoS szolgáltatásajánlatok, (3. és 4. réteg) hálózati támadások ellen védelmet biztosító rendelkezik: alapszintű DDoS-védelem és a DDoS Protection Standard. 
+Az Azure két DDoS szolgáltatásajánlatok, (3. és 4. réteg) hálózati támadások ellen védelmet biztosító rendelkezik: A DDoS Protection alapszintű és a DDoS Protection-szabvány. 
 
 ### <a name="ddos-protection-basic"></a>A DDoS Protection alapszintű
 

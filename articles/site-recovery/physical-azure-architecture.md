@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 3f31fa8d26b0fb5f247a0b4c8c65abd50c5bc1e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5602e68e546c59e3ee43442fdf0cdf33b9cf6a29
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865301"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975032"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgáló Azure vész-helyreállítási architektúra
 
@@ -63,15 +63,15 @@ Miután replikáció be van állítva, és futtatott egy vészhelyreállítási 
 - A kezdeti feladatátvitel után véglegesítheti a számítási feladatok elérése az Azure virtuális gép elindításához.
 - Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja a feladatokat.
 - Meg kell állítania egy feladat-visszavételi infrastruktúrát, beleértve:
-    - **Ideiglenes folyamatkiszolgáló az Azure-ban**: sikertelen lesz az Azure-ból, beállíthat egy Azure virtuális gép folyamat kiszolgálója, az Azure-ból replikáció kezelésére. Ez a virtuális gép a feladatok visszaadását követően törölhető.
-    - **VPN-kapcsolat**: feladat-visszavételt, kell egy VPN-kapcsolat (vagy Azure ExpressRoute), az Azure-hálózatot a helyszíni helyre.
-    - **Különálló fő célkiszolgálót**: alapértelmezés szerint a telepítése megtörtént, a konfigurációs kiszolgálón, a helyszíni VMware virtuális gépek, a fő célkiszolgáló kezeli a feladat-visszavétel. Azonban ha sikertelen biztonsági nagy mértékű forgalom van szüksége, érdemes beállította egy önálló helyszíni fő célkiszolgálót erre a célra.
-    - **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz feladat-visszavételi szabályzatra van szükség. Ez automatikusan hozott létre, a replikációs házirend létrehozva a helyszínről az Azure-bA.
-    - **VMware-infrastruktúra**: VMware-infrastruktúrára van szüksége a feladat-visszavételhez. Fizikai kiszolgáló nem használható a feladat-visszavételhez.
+    - **Ideiglenes folyamatkiszolgáló az Azure-ban**: Sikertelen az Azure-ból, beállította egy Azure virtuális gép folyamat kiszolgálója, az Azure-ból replikáció kezelésére. Ez a virtuális gép a feladatok visszaadását követően törölhető.
+    - **VPN-kapcsolat**: Feladat-visszavételt, kell egy VPN-kapcsolat (vagy Azure ExpressRoute), az Azure-hálózatot a helyszíni helyre.
+    - **Különálló fő célkiszolgálót**: Alapértelmezés szerint a telepítése megtörtént, a konfigurációs kiszolgálón, a helyszíni VMware virtuális gépek, a fő célkiszolgáló kezeli a feladat-visszavétel. Azonban ha sikertelen biztonsági nagy mértékű forgalom van szüksége, érdemes beállította egy önálló helyszíni fő célkiszolgálót erre a célra.
+    - **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz, egy feladat-visszavételi szabályzatra van szükség. Ez automatikusan hozott létre, a replikációs házirend létrehozva a helyszínről az Azure-bA.
+    - **VMware-infrastruktúra**: Feladat-visszavétel VMware-infrastruktúrára van szükség. Fizikai kiszolgáló nem használható a feladat-visszavételhez.
 - Miután az összetevő a következő helyen, feladat-visszavétel három lépésben történik:
     - 1. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
     - 2. fázis: Feladatátvétel futtatása a helyszíni helyre.
-    - 3. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi replikáció.
+    - 3. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a replikációt.
 
 **VMware-feladat-visszavétel az Azure-ból**
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386443"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743663"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Rendelkezésre állás és megbízhatóság, a HDInsight Apache Hadoop-fürtök
 
@@ -47,7 +47,7 @@ Nimbus-csomópontok az Apache Storm-fürtök érhetők el. A Nimbus-csomópontok
 
 ### <a name="apache-zookeeper-nodes"></a>Az Apache Zookeeper-csomópontok
 
-[ZooKeeper](http://zookeeper.apache.org/) csomópontok használt vezetőválasztási az átjárócsomópontokhoz fő szolgáltatások. Annak érdekében, hogy szolgáltatásokat, az adatcsomópontok (munkavégző) és átjárók tudja, melyik átjárócsomópont szolgáltatás főkulcsának aktív a azok is használhatók. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontok biztosít.
+[ZooKeeper](https://zookeeper.apache.org/) csomópontok használt vezetőválasztási az átjárócsomópontokhoz fő szolgáltatások. Annak érdekében, hogy szolgáltatásokat, az adatcsomópontok (munkavégző) és átjárók tudja, melyik átjárócsomópont szolgáltatás főkulcsának aktív a azok is használhatók. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontok biztosít.
 
 ### <a name="worker-nodes"></a>Munkavégző csomópontok
 
@@ -192,7 +192,7 @@ A csatlakozás után megnyílik egy `sftp>` parancssort. A parancssorból, köny
 Az elérhető parancsok listájának megtekintéséhez írja be a `help` , a `sftp>` parancssort.
 
 > [!NOTE]  
-> Is találhatók grafikus felületek, amelyek lehetővé teszik, hogy a fájlrendszer használatakor SFTP használatával jelenítheti meg. Ha például [MobaXTerm](http://mobaxterm.mobatek.net/) lehetővé teszi, hogy a fájlrendszer egy felületen hasonlít a Windows Intézőben keresse meg.
+> Is találhatók grafikus felületek, amelyek lehetővé teszik, hogy a fájlrendszer használatakor SFTP használatával jelenítheti meg. Ha például [MobaXTerm](https://mobaxterm.mobatek.net/) lehetővé teszi, hogy a fájlrendszer egy felületen hasonlít a Windows Intézőben keresse meg.
 
 ### <a name="ambari"></a>Ambari
 

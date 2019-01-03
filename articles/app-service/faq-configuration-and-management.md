@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408884"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971307"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -39,7 +39,7 @@ Egyéni tartománynév az Azure web app alkalmazásban való használatával kap
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Hogyan vásárolhatok új egyéni tartományt a webalkalmazás?
 
-Ismerje meg, hogyan vásárolhat és az App Service webalkalmazás egy egyéni tartomány beállítása, lásd: [vásárlása és a egy egyéni tartománynév konfigurálása az App Service](custom-dns-web-site-buydomains-web-app.md).
+Ismerje meg, hogyan vásárolhat és az App Service webalkalmazás egy egyéni tartomány beállítása, lásd: [vásárlása és a egy egyéni tartománynév konfigurálása az App Service](manage-custom-dns-buy-domain.md).
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan töltse fel és a webalkalmazás konfigurálása meglévő SSL-tanúsítvány?
@@ -72,9 +72,11 @@ A kiszolgáló időzónája a webalkalmazás beállítása:
     * Érték = *kívánt időzóna*
 3. Kattintson a **Mentés** gombra.
 
+Tekintse meg a **időzóna** oszlopa a [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) az elfogadott értékek a cikk.
+
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért hajtsa végre a folyamatos webjobs-feladatok néha nem?
 
-Alapértelmezés szerint a webalkalmazások távolítva a memóriából ha azok egy megadott ideig inaktív. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Az alapszintű és standard szintű csomagokban, bekapcsolhatja a **Always On** folyamatosan beállítása, hogy a webalkalmazás betöltése. A webalkalmazás folyamatos webjobs-feladatok fut, be kell kapcsolnia **Always On**, vagy a webjobs-feladatok nem lehet megbízhatóan fusson. További információkért lásd: [hozzon létre egy folyamatosan futó webjobs-feladat](web-sites-create-web-jobs.md#CreateContinuous).
+Alapértelmezés szerint a webalkalmazások távolítva a memóriából ha azok egy megadott ideig inaktív. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Az alapszintű és standard szintű csomagokban, bekapcsolhatja a **Always On** folyamatosan beállítása, hogy a webalkalmazás betöltése. A webalkalmazás folyamatos webjobs-feladatok fut, be kell kapcsolnia **Always On**, vagy a webjobs-feladatok nem lehet megbízhatóan fusson. További információkért lásd: [hozzon létre egy folyamatosan futó webjobs-feladat](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Hogyan szerezhetem be a kimenő IP-címet a webalkalmazás?
 
@@ -124,7 +126,7 @@ További információkért lásd: [Microsoft Azure App Service web app és való
 
 A Standard és prémium szintű App Service-csomagok a webalkalmazás az App Service-ben való telepítésekor, telepíthet egy külön üzembe helyezési pont helyett az alapértelmezett éles webalkalmazásra. Üzembe helyezési pontok, amelyek a saját állomásnevek élő webalkalmazások. Webes alkalmazás tartalmának és konfigurációs elemei felcserélhetők két üzembe helyezési tárhely, többek között az üzemelési között.
 
-Üzembe helyezési pontok használatával kapcsolatos további információkért lásd: [App Service-ben egy átmeneti környezet beállítása](web-sites-staged-publishing.md).
+Üzembe helyezési pontok használatával kapcsolatos további információkért lásd: [App Service-ben egy átmeneti környezet beállítása](deploy-staging-slots.md).
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>Hogyan lehet hozzáférni és tekintse át a WebJob-naplókat?
 
@@ -248,7 +250,7 @@ Az ütemezett webjobs-feladat Cron-kifejezések használatával hozhat létre:
     {month} {day of the week}" }
     ```
 
-Az ütemezett webjobs-feladatok kapcsolatos további információkért lásd: [ütemezett webjobs-feladat létrehozása egy Cron-kifejezés használatával](web-sites-create-web-jobs.md#CreateScheduledCRON).
+Az ütemezett webjobs-feladatok kapcsolatos további információkért lásd: [ütemezett webjobs-feladat létrehozása egy Cron-kifejezés használatával](webjobs-create.md#CreateScheduledCRON).
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Hogyan hajthatom végre behatolástesztelést végezhetnek az App Service-ben alkalmazásomhoz?
 

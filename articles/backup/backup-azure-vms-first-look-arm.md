@@ -1,24 +1,21 @@
 ---
-title: 'Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval'
-description: Megvédheti Azure virtuális gépeit egy Recovery Services-tárolóval. Adatai védelmére a Resource Manager-alapú és a klasszikus üzemi modellen alapuló virtuális gépek, a Premium Storage-alapú virtuális gépek, a titkosított virtuális gépek és a Managed Disksen található virtuális gépek biztonsági másolatait használhatja. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban.
+title: Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltatással
+description: 'Útmutató: Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltatással'
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.custom: H1Hack27Feb2017
-keywords: biztonsági másolatok virtuális gép biztonsági mentése
-ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869928"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631583"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Az Azure virtuális gépek biztonsági mentése Recovery Services-tárolóba
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltatással
 
 Ez a cikk bemutatja, hogyan lehet beállítani a védelmet a virtuális gép virtuális gépek műveletek menüből, vagy a Recovery Services-tároló. A Recovery Services-tárolók megvédik:
 
@@ -32,7 +29,7 @@ Ez a cikk bemutatja, hogyan lehet beállítani a védelmet a virtuális gép vir
 
 A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). A Linux rendszerű virtuális gépek biztonsági mentéseinek szkript előtti és utáni keretrendszerével kapcsolatos további információért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-További információk a Mit, és nem készíthető biztonsági másolat megkereséséhez lásd: [Azure virtuális gépek biztonsági mentése a környezet előkészítése](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+További információk a Mit, és nem készíthető biztonsági másolat megkereséséhez lásd: [Azure virtuális gépek biztonsági mentése a környezet előkészítése](backup-azure-arm-vms-prepare.md#before-you-start).
 
 > [!NOTE]
 > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével.
@@ -337,7 +334,9 @@ A Backup szolgáltatás akkor is telepíti a biztonsági mentési bővítményt,
 Ha problémákba ütközik a cikkben leírt feladatok elvégzésében, tekintse meg a [Hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 
 ## <a name="pricing"></a>Díjszabás
-Az Azure-beli virtuális gépek biztonsági mentésének költsége a védett példányok számától függ. A védett példányok definíciójáért lásd [a fogalmat ismertető szakaszt](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Ha szeretne egy példát látni a virtuális gépek biztonsági mentési költségeinek számítására, olvassa el [a védett példányok számítását](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances) ismertető cikket. [A Backup díjszabásával](https://azure.microsoft.com/pricing/details/backup/) kapcsolatban lásd az Azure Backup díjszabását ismertető oldalt.
+Az Azure-beli virtuális gépek biztonsági mentésének költsége a védett példányok számától függ. A védett példányok definíciójáért lásd [a fogalmat ismertető szakaszt](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). [A Backup díjszabásával](https://azure.microsoft.com/pricing/details/backup/) kapcsolatban lásd az Azure Backup díjszabását ismertető oldalt.
 
-## <a name="questions"></a>Kérdései vannak?
-Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://aka.ms/azurebackup_feedback).
+## <a name="next-steps"></a>További lépések
+
+[Kezelése](backup-azure-manage-vms.md) a biztonsági másolatokat.
+

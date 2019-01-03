@@ -10,45 +10,44 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 58472d535be41fdd3e1139756f867f683509d9a3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 77a1756aba0d8473051cdf335f33ed9ca5a8fb24
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161735"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558328"
 ---
-# <a name="call-your-custom-search"></a>Hívja meg az egyéni keresés
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
-Keresési eredmények eléréséhez a példány a Custom Search API az első hívás előtt kell a Cognitive Services előfizetési kulcs beszerzése. Egyéni keresési API-kulcs lekéréséhez lásd: [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+Miután konfigurálta az egyéni keresési funkciót, tesztelheti, a Bing Custom Search belül [portál](https://customsearch.ai). 
+
+![a bing egyéni keresés portál képernyőképe](media/portal-search-screen.png)
+## <a name="create-a-search-query"></a>Hozzon létre egy keresési lekérdezést 
+
+Miután bejelentkezett, a Bing Custom Search [portál](https://customsearch.ai), válassza ki a keresési példányát, és kattintson a **éles** lapon. A **végpontok**, válasszon ki egy API-végpontot (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg.
+
+Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a[Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. 
+
+Néhány fontos paraméter alatt van:
 
 
-## <a name="try-it-out"></a>Próbálja ki!
+|Paraméter  |Leírás  |
+|---------|---------|
+|Lekérdezés     | Keresse meg a keresett kifejezés. Webes, kép, videó és automatikus kiegészítési végpontokhoz csak érhető el. |
+|Egyéni konfiguráció azonosítója | A kiválasztott egyéni keresési példány konfiguráció azonosítója. Ez a mező csak olvasható. |
+|Piac     | A piacon, amely be fogja származik. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
+|Előfizetői azonosító | Az előfizetési kulcsot, a teszteléséhez. A legördülő listából válasszon ki egy kulcsot, vagy manuálisan adjon meg egy másikat.          |
 
-Miután konfigurálta az egyéni keresési funkciót, a konfigurációt, az egyéni keresési portálon belül tesztelheti. 
+Kattintson a **további paraméterek** tárja fel a következő paraméterekkel:  
 
-1. Jelentkezzen be a [egyéni keresési](https://customsearch.ai).
-2. Kattintson egy egyéni keresési példány példányok a listából.
-3. Kattintson a **éles** fülre. 
-4. Alatt a **végpontok** lapra, válassza ki a végpont (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg (lásd: [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) az előfizetési lehetőségek). 
-5. Adja meg a paraméterértékeket. 
-
-    Az alábbiakban a lehetséges paramétereket is megadhatja a (a tényleges lista függ a kijelölt végpont). További információ ezekről a paraméterekről: [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) hivatkozást.
-
-    - **Lekérdezés**: A keresési kifejezést. Csak a webes, kép, videó és automatikus kiegészítési végpontokhoz érhető el.
-    - **Egyéni konfiguráció azonosítója**: a kiválasztott egyéni keresési példány konfiguráció azonosítója. Ez a mező csak olvasható.
-    - **Piaci**: A piacon, honnan származnak az eredményeket. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.
-    - **Az előfizetői**: az előfizetési kulcsot, a teszteléséhez. Előfordulhat, hogy a legördülő listából válasszon ki egy kulcsot, vagy manuálisan adjon meg egy másikat.  
-      
-    Kattintson a **további paraméterek** tárja fel a következő paraméterekkel:  
-      
-    - **Biztonságos keresés**: használatával szűrhetők a felnőtt tartalom vonatkozó szűrő. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok esetén érhető el.
-    - **A felhasználói felület nyelvének**: A felhasználói felület karakterláncok használt nyelv. Például, ha engedélyezi a képek és videók tárolt felhasználói felületén a **kép** és **videó** lapokon megadott nyelv használata.
-    - **Száma**: a válaszban visszaadandó találatok száma. Csak a webes, kép- és végpontok esetén érhető el.
-    - **Eltolás**: előtt eredményt adnak vissza a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.
-
-6. Az összes szükséges beállítások megadása után kattintson a **hívás** a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. 
-
-Ha a felhasználói felület üzemeltetett végpontot, az alsó ablaktáblán tesztelheti a keresési funkciót.
+|Paraméter  |Leírás  |
+|---------|---------|
+|Biztonságos keresés     | Felnőtt tartalom vonatkozó szűrésére használt szűrő. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
+|A felhasználói felület nyelve    | A felhasználói felület karakterláncok használt nyelv. Például, ha engedélyezi a képek és videók tárolt felhasználói felületén a **kép** és **videó** lapokon megadott nyelv használata.        |
+|Darabszám     | A válaszban visszaadandó találatok száma. Csak a webes, kép- és végpontok esetén érhető el.         |
+|Eltolás    | A kihagyandó eredmények visszaküldése előtt a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.        |
+    
+Az összes szükséges beállítások megadása után kattintson a **hívás** a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha a felhasználói felület üzemeltetett végpontot, az alsó ablaktáblán tesztelheti a keresési funkciót.
 
 ## <a name="next-steps"></a>További lépések
 

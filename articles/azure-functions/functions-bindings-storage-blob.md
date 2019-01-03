@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: efccea36dd94120934b1a9729f583e0596316bc7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a222e66b896886d724572982626fd0bc2c277a8
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338566"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809964"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -446,7 +446,7 @@ A blob eseményindító az üzenetsor belsőleg, így az egyidejű függvény me
 
 [A használatalapú csomag](functions-scale.md#how-the-consumption-plan-works) korlátozza egy függvényalkalmazást egy virtuális gépen (VM) 1,5 GB memória. Memória és a Functions futtatókörnyezete maga minden párhuzamosan függvény példány által használt. Ha egy blob által aktivált függvény a teljes blob betölti a memóriába, csak a blobok a függvény által használt maximális memória: 24 * blob maximális mérete. Például egy függvényalkalmazást a három blob által aktivált függvények és az alapértelmezett beállításokat kellene 3 * 24 = 72 maximális VM-enkénti egyidejűségi függvény meghívásához.
 
-JavaScript-függvények a teljes blob betölti a memóriába, és C#-függvények végezze el, ha a kötött `string`, `Byte[]`, vagy POCO.
+JavaScript és Java-funkciók a teljes blob betölti a memóriába, és C# funkciók, amelyek teendő, ha kötött `string`, `Byte[]`, vagy POCO.
 
 ## <a name="trigger---polling"></a>Trigger - lekérdezés
 
@@ -462,7 +462,7 @@ Tekintse meg az adott nyelvű példa:
 
 * [C#](#input---c-example)
 * [C# script (.csx)](#input---c-script-example)
-* [Java](#input---java-example)
+* [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
 
@@ -630,22 +630,61 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-example"></a>Bemenet - Java-példában
+### <a name="input---java-examples"></a>Bemenet - Java-példák
 
-Az alábbi példában egy Java-függvény, amely egy üzenetsor eseményindító és a egy bemeneti blob kötés használja. Az üzenetsorban található üzenet a blob nevét tartalmazza, és a függvény naplózza a blob mérete.
+Ez a szakasz tartalmazza az alábbi példák:
+
+* [HTTP-eseményindító, keresse meg a lekérdezési karakterláncot a blob neve](#http-trigger-look-up-blob-name-from-query-string-java)
+* [Várólista-eseményindító, blobnév fogadjon üzenetsori üzenet](#queue-trigger-receive-blob-name-from-queue-message-java)
+
+#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP-eseményindító, keresse meg a blob nevét, a lekérdezési karakterlánc (Java)
+
+ Az alábbi példa bemutatja egy Java-függvény, amely használja a ```HttpTrigger``` jegyzet fogadásához egy fájlt a blob storage-tároló nevét tartalmazó paraméter. A ```BlobInput``` jegyzet majd beolvassa a fájlt, és adja át annak tartalmát a függvényt, egy ```byte[]```.
 
 ```java
-@FunctionName("getBlobSize")
-@StorageAccount("AzureWebJobsStorage")
-public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
-                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
-       final ExecutionContext context) {
+  @FunctionName("getBlobSizeHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage blobSize(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    final ExecutionContext context) {
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Várólista-eseményindító, blobnév fogadjon az üzenetsorban található üzenet (Java)
+
+ Az alábbi példa bemutatja egy Java-függvény, amely használja a ```QueueTrigger``` jegyzet egy fájlt a blob storage-tároló nevét tartalmazó üzenetet fogadni. A ```BlobInput``` jegyzet majd beolvassa a fájlt, és adja át annak tartalmát a függvényt, egy ```byte[]```.
+
+```java
+  @FunctionName("getBlobSize")
+  @StorageAccount("Storage_Account_Connection_String")
+  public void blobSize(
+    @QueueTrigger(
+      name = "filename", 
+      queueName = "myqueue-items-sample") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{queueTrigger}") 
+    byte[] content,
+    final ExecutionContext context) {
       context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
- }
- ```
+  }
+```
 
-  Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobInput` jegyzet paraméterekkel, amelynek az értéke egy blob kellene származnia.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használatával `Optional<T>`.
-
+Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobInput` jegyzet paraméterekkel, amelynek az értéke egy blob kellene származnia.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használatával `Optional<T>`.
 
 ## <a name="input---attributes"></a>Bemenet - attribútumok
 
@@ -728,7 +767,7 @@ Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
 * [C# script (.csx)](#output---c-script-example)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
@@ -915,23 +954,72 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-example"></a>Kimenet – Java-példában
+### <a name="output---java-examples"></a>Kimenet – Java-példák
 
-Az alábbi példában látható blob bemeneti és kimeneti kötés egy Java-függvény. A funkció lehetővé teszi a szöveges blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve {originalblobname} – másolat
+Ez a szakasz tartalmazza az alábbi példák:
+
+* [HTTP-eseményindító OutputBinding használatával](#http-trigger-using-outputbinding-java)
+* [Üzenetsor eseményindító függvény visszaadott értékének használata](#queue-trigger-using-function-return-value-java)
+
+#### <a name="http-trigger-using-outputbinding-java"></a>HTTP-eseményindító OutputBinding (Java) használatával
+
+ Az alábbi példa bemutatja egy Java-függvény, amely használja a ```HttpTrigger``` jegyzet fogadásához egy fájlt a blob storage-tároló nevét tartalmazó paraméter. A ```BlobInput``` jegyzet majd beolvassa a fájlt, és adja át annak tartalmát a függvényt, egy ```byte[]```. A ```BlobOutput``` jegyzet összekapcsolja ```OutputBinding outputItem```, majd amelyet a függvény a bemeneti blob tartalmának írása a konfigurált tárolóba.
 
 ```java
-@FunctionName("copyTextBlob")
-@StorageAccount("AzureWebJobsStorage")
-@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
-public String blobCopy(
-    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
-    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+  @FunctionName("copyBlobHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage copyBlobHttp(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    @BlobOutput(
+      name = "target", 
+      path = "myblob/{Query.file}-CopyViaHttp")
+    OutputBinding<String> outputItem,
+    final ExecutionContext context) {
+      // Save blob to outputItem
+      outputItem.setValue(new String(content, StandardCharsets.UTF_8));
+
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-using-function-return-value-java"></a>Üzenetsor eseményindító függvény visszaadott értékének (Java) használatával
+
+ Az alábbi példa bemutatja egy Java-függvény, amely használja a ```QueueTrigger``` jegyzet egy fájlt a blob storage-tároló nevét tartalmazó üzenetet fogadni. A ```BlobInput``` jegyzet majd beolvassa a fájlt, és adja át annak tartalmát a függvényt, egy ```byte[]```. A ```BlobOutput``` jegyzet a függvény visszaadott értékének, a modul által a bemeneti blob tartalmának írása a konfigurált tárolóba majd használt van kötve.
+
+```java
+  @FunctionName("copyBlobQueueTrigger")
+  @StorageAccount("Storage_Account_Connection_String")
+  @BlobOutput(
+    name = "target", 
+    path = "myblob/{queueTrigger}-Copy")
+  public String copyBlobQueue(
+    @QueueTrigger(
+      name = "filename", 
+      dataType = "string",
+      queueName = "myqueue-items") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      path = "samples-workitems/{queueTrigger}") 
+    String content,
+    final ExecutionContext context) {
+      context.getLogger().info("The content of \"" + filename + "\" is: " + content);
       return content;
- }
- ```
+  }
+```
 
- Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobOutput` függvény paraméterei, amelynek az értéke az a blob storage-objektum tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
-
+ Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobOutput` függvény paraméterei, amelynek az értéke az a blob storage-objektum tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java-típusra vagy egy pojo-vá.
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 

@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 79ac2ee327c53012097bf6130deba676edcf785a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b26605bd0b436d948fb1f62cbf32a17ea4f386d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642339"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602256"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Felhasználói folyamat segítségével egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 
 > [!NOTE]
 > Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
+
+> [!Important]
+> A nyilvános előzetes verziójú szolgáltatás átmenetileg nem érhető el.
 
 A [felhasználói folyamat](active-directory-b2c-reference-policies.md) az Azure Active Directory (Azure AD) B2C lehetőséget kínál a felhasználók az alkalmazás regisztráljon vagy jelentkezzen be egy identitásszolgáltatóval. Amikor elindul az utazás, az Azure AD B2C-t kap egy [hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md) az identitásszolgáltatótól. Az Azure AD B2C használja ezt a jogkivonatot a felhasználóval kapcsolatos információk lekéréséhez. A jogkivonat segítségével átadása az alkalmazásokat, amelyek az Azure AD B2C-ben regisztrálja a felhasználói folyamat engedélyezi egy jogcímet.
 

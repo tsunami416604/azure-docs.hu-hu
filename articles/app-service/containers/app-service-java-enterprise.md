@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338039"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548476"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
@@ -49,7 +49,7 @@ Ne használja az interaktív mód a parancssori felület Wildfly konfigurálás�
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-Töltse fel az indítási parancsfájl `/home/site/deployments/tools` App Service-példányában. Lásd: [ebben a dokumentumban](/azure/app-service/app-service-deployment-credentials#userscope) hitelesítő adatait az FTP beszerzésével kapcsolatban. 
+Töltse fel az indítási parancsfájl `/home/site/deployments/tools` App Service-példányában. Lásd: [ebben a dokumentumban](/azure/app-service/deploy-configure-credentials#userscope) hitelesítő adatait az FTP beszerzésével kapcsolatban. 
 
 Állítsa be a **indítási parancsfájl** mezőben az Azure Portalon, az indítási parancsfájl helyét például `/home/site/deployments/tools/your-startup-script.sh`.
 

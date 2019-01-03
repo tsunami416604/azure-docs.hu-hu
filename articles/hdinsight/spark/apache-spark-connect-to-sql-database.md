@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8e651f516254d408b15ab4aeae718861dfc2b3e6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499261"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608289"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark-fürt használatával olvasása és írása az adatok Azure SQL Database-adatbázishoz
 
@@ -26,9 +26,9 @@ ms.locfileid: "52499261"
 
 * **Az Azure SQL database**. Kövesse az utasításokat, [hozzon létre egy Azure SQL database](../../sql-database/sql-database-get-started-portal.md). Ellenőrizze, hogy egy adatbázist hoz létre a mintával **AdventureWorksLT** séma és adatok. Ügyeljen arra, hogy létrehozott egy kiszolgálószintű tűzfalszabályt, hogy az ügyfél IP-címet a kiszolgálón az SQL-adatbázis eléréséhez. Ugyanebben a cikkben található utasításokat a tűzfalszabály hozzáadása érhető el. Miután létrehozta az Azure SQL database, ellenőrizze, hogy praktikus tartsa a következő értékeket. Szükség van rájuk a Spark-fürt kapcsolódni az adatbázishoz.
 
-    * Az Azure SQL-adatbázist futtató kiszolgáló neve
-    * Az Azure SQL-adatbázis neve
-    * Az Azure SQL database rendszergazda felhasználónév / jelszó
+    * Az Azure SQL-adatbázist futtató kiszolgáló nevét.
+    * Az Azure SQL-adatbázis neve.
+    * Az Azure SQL database rendszergazda felhasználónév / jelszó.
 
 * **SQL Server Management Studio**. Kövesse az utasításokat, [csatlakozás és adatok lekérdezése az SSMS használatával](../../sql-database/sql-database-connect-query-ssms.md).
 
@@ -41,12 +41,10 @@ Először hozzon létre egy [Jupyter Notebook](https://jupyter.org/) a Spark-fü
 
     ![A Jupyter notebook Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark a Jupyter notebook")
    
-   > [!NOTE]
+   > [!NOTE]  
    > A Jupyter notebook Spark-fürtön nyissa meg a következő URL-címet a böngészőben is hozzáférhet. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
 
 1. Kattintson a jobb felső sarokban, a Jupyter notebook **új**, és kattintson a **Spark** Scala notebook létrehozásához. Jupyter notebookok a HDInsight Spark-fürt is biztosítanak a **PySpark** kernel Python2-alkalmazások, és a **PySpark3** kernel Python3-alkalmazásokhoz. Ebben a cikkben létrehozunk egy Scala-jegyzetfüzetek.
    
@@ -54,9 +52,8 @@ Először hozzon létre egy [Jupyter Notebook](https://jupyter.org/) a Spark-fü
 
     A kernelekkel kapcsolatos további információkért lásd: [Jupyter notebookkernelek használata Apache Spark-fürtökkel a HDInsightban](apache-spark-jupyter-notebook-kernels.md).
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ebben a cikkben használjuk egy Spark (Scala) kernel mert az SQL database-be a Spark streamelési adatok csak akkor támogatott a Scala és Java jelenleg. Annak ellenére, hogy olvasása és írása az SQL-be végezhető konzisztencia ebben a cikkben használja Python, Scala a használjuk mindhárom művelet.
-   >
 
 1. Ekkor megnyílik egy új jegyzetfüzetet, egy alapértelmezett névvel rendelkező **névtelen**. A notebook nevére kattint, és adjon meg egy tetszőleges nevet.
 
@@ -235,6 +232,6 @@ Ebben a szakaszban azt streamelése adattárházba a **hvactable** , hogy már l
 
 ## <a name="next-steps"></a>További lépések
 
-* [Data Lake Store az adatok elemzése a HDInsight Spark-fürt használatával](apache-spark-use-with-data-lake-store.md)
+* [HDInsight Spark-fürt használata a Data Lake Storage lévő adatok elemzéséhez](apache-spark-use-with-data-lake-store.md)
 * [Strukturált streamelési események feldolgozása az EventHub használatával](apache-spark-eventhub-structured-streaming.md)
 * [Az Apache Spark strukturált Stream használata a Apache Kafka on HDInsight használata](../hdinsight-apache-kafka-spark-structured-streaming.md)

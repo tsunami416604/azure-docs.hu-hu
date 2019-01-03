@@ -10,23 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e23ff60a0a2ea10ace09130ba115e72b4e1c9ad7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9b35c0fd412dd48137a3cb362f20fae067c80461
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249812"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792628"
 ---
 # <a name="demo-pizza-order"></a>Bemutató: Kétpizzás sorrend
-Ez a bemutató a robot rendezése kétpizzás mutatja be. Ezzel a funkcióval egy egyetlen kétpizzás rendezése támogatja:
+Ez a bemutató-robot esetén egyetlen kétpizzás által rendezése támogató rendezése kétpizzás mutatja be:
 
 - FELISMERVE kétpizzás toppings a felhasználó kimondott szöveg
-- ellenőrzi, hogy a készlet vagy készleten kívüli kétpizzás toppings vannak, és megfelelően válaszol
-- kétpizzás toppings egy korábbi utasítás a megjegyzését, és szeretné, hogy – egy új rendelést az azonos toppings ajánlat
+- toppings készlet kezelése és válaszadás megfelelően
+- előző rendelések megjegyzését, és lerövidíti az azonos kétpizzás rendelje újra
 
 ## <a name="video"></a>Videó
 
-[![Bemutató Kétpizzás előzetes verzió](https://aka.ms/cl-demo-pizza-preview)](https://aka.ms/blis-demo-pizza)
+[![Bemutató Kétpizzás előzetes verzió](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder)
 
 ## <a name="requirements"></a>Követelmények
 Ehhez az oktatóanyaghoz, hogy fut-e a kétpizzás rendelés robotot
@@ -39,72 +39,66 @@ A webes felhasználói felületen modell-lista kattintson a TutorialDemo Kétpiz
 
 ## <a name="entities"></a>Entitások
 
-Három entitások hozott létre.
+A modell három entitásokat tartalmaz:
 
-- Toppings: ehhez az entitáshoz felhalmozódnak a toppings kéri a felhasználót. Ez magában foglalja a készleten lévő érvényes toppings. Azt ellenőrzi, hogy ha egy transzformátorok, vagy ki a készlet.
-- OutofStock: ehhez az entitáshoz való kommunikációhoz a felhasználó számára, hogy a kiválasztott transzformátorok ne legyen készlet szolgál.
-- LastToppings: egy rendelés történik, ha az entitás segítségével elérhetővé teheti a felhasználó a toppings sorrendjét a listája.
+- "Toppings" összegzi az a felhasználó megadott toppings, ha elérhető.
+- "OutofStock" jelzi a felhasználó a kiválasztott transzformátorok kívül esik a készlet
+- "LastToppings" tartalmazza az előző sorrendjét a korábbi toppings
 
 ![](../media/tutorial_pizza_entities.PNG)
 
 ### <a name="actions"></a>Műveletek
 
-Létrehozott kérni a felhasználót, amit szeretnének a saját kétpizzás műveletek egy csoportját, létrehozóját arról, mit hozzáadott eddig, és így tovább.
+A modell tartalmazza azon műveletek csoportja, amely megkérdezi a felhasználót, transzformátorok kijelölés, halmozott toppings és más rendszerekhez.
 
-Két API-hívások is van:
+Két API-hívások is áll rendelkezésre:
 
-- FinalizeOrder: a sorrendjét a kétpizzás elhelyezése
-- UseLastToppings: a toppings át az előző sorrendje 
+- "FinalizeOrder" kezeli a megrendelések teljesítése
+- "UseLastToppings" dolgozza fel a korábbi toppings információk
 
 ![](../media/tutorial_pizza_actions.PNG)
 
 ### <a name="training-dialogs"></a>Képzési párbeszédpanelek
-Minősített képzési párbeszédpanelek van definiálva. 
+
+Számos képzési párbeszédpanelek a modellben található.
 
 ![](../media/tutorial_pizza_dialogs.PNG)
 
-Tegyük fel próbáljon meg egy tanítási munkamenet.
+Nézzük betanítja a modellt, hozzon létre egy másik betanításához párbeszédpanel kicsivel több.
 
-1. Kattintson a vonat párbeszédpanelek, majd az új Train párbeszédpanel.
-1. Adja meg az "order kétpizzás egy'.
-2. Kattintson a pontszám művelet.
-3. Válassza ki a kattintson a "mit szeretne a a kétpizzás?"
-4. Adja meg a "gomba és sajtok iránti szenvedélyének".
-    - Figyelje meg, a LUIS feliratú Toppings mindkettőt. Ha, amely nem volt megfelelő, akkor sikerült kattintással jelölje ki a, majd javítsa ki.
-    - A "+" jelre az entitás mellett, az azt jelenti, hogy azt ad hozzá a toppings készletét.
-5. Kattintson a pontszám műveletek.
-    - Figyelje meg `mushrooms` és `cheese` nem szerepelnek a for Toppings a memóriát.
-3. Jelölje be a "nincs $Toppings a kétpizzás"
-    - Figyelje meg, hogy ez a egy nem várakozási művelet, így a robot rákérdez a következő művelet.
-6. Válassza a "Szeretné bármi más?"
-7. Adja meg a "gomba eltávolítása és paprikát hozzáadása".
-    - Figyelje meg `mushroom` rendelkezik egy "-" bejelentkezési mellette, ahhoz, hogy el kell távolítani. És `peppers` rendelkezik egy "+" jelre mellett, adja hozzá a toppings.
-2. Kattintson a pontszám művelet.
-    - Figyelje meg `peppers` most már a félkövér, mert jelent meg. És `mushrooms` küszöbértéke túllépve.
-8. Jelölje be a "nincs $Toppings a kétpizzás"
-6. Válassza a "Szeretné bármi más?"
-7. Adja meg a "esetében hozzáadása".
-    - `Peas` látható egy példa egy transzformátorok, amely kívül esik a készlet. Ez továbbra is egy transzformátorok kerülhetnek.
-2. Kattintson a pontszám művelet.
-    - `Peas` mint OutOfStock megjelenik-e.
-    - Látható, hogy ez történt, nyissa meg a kódot `C:\<\installedpath>\src\demos\demoPizzaOrder.ts`. Tekintse meg a EntityDetectionCallback metódust. A metódus meghívása után minden transzformátorok megtekintéséhez, hogy a készleten. Ha nem, akkor azt törli a toppings készletéből, és hozzáadja a OutOfStock entitás. A inStock változó adott metódust, amely a készlet toppings listája szerepel felett van meghatározva.
-6. Válassza ki a "Nincs $OutOfStock".
-7. Válassza a "Szeretné bármi más?"
-8. "Nem" adja meg.
-9. Kattintson a pontszám művelet.
-10. Válassza ki a "FinalizeOrder" API-hívás. 
-    - Ez a kód meghatározott "FinalizeOrder" függvényt fogja hívni. Ez törli a toppings, és visszaadja a "a rendelés hamarosan megérkezik". 
-2. Adja meg az "egy másik order". Mi indítja egy új rendelést.
-9. Kattintson a pontszám művelet.
-    - "sajtok iránti szenvedélyének" és "paprikát", az utolsó rendelés toppings vannak a memóriában.
-1. Válassza ki a "Szeretné $LastToppings".
-2. Írja be az "Igen"
-3. Kattintson a pontszám művelet.
-    - A robot a UseLastToppings műveletet szeretne. Ez a két visszahívási módszer közül a második. Ez az utolsó rendelés toppings toppings másolja, és töröljük az utolsó toppings. Ez az utolsó rendelés megjegyzését, és ha a felhasználó szerint, egy másik kétpizzás szeretnének, így ezek közül toppings módja.
-2. Kattintással jelölje ki a "nincs $Toppings a kétpizzás".
-3. Válassza a "Szeretné bármi más?"
-8. "Nem" adja meg.
-4. Kattintson a tanítási kész gombra.
+1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
+2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Rendeljen egy kétpizzás sajtok iránti szenvedélyének az" írja be
+    - Az entitás információkinyerő által kinyert "sajtok iránti szenvedélyének" szót.
+3. A "Score műveletek" gombra.
+4. Válassza ki a választ, az "Vannak sajtok iránti szenvedélyének a kétpizzás."
+5. Válassza ki a válasz "Szeretné bármi más?"
+6. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "add gomba és paprikát" típusa
+7. A "Score műveletek" gombra.
+8. Válassza ki a választ, az "Vannak sajtok iránti szenvedélyének, gomba és paprikát a kétpizzás."
+9. Válassza ki a válasz "Szeretné bármi más?"
+10. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "paprikát távolítsa el, és adja hozzá a kolbászt" típusra
+11. A "Score műveletek" gombra.
+12. Válassza ki a választ, az "Vannak sajtok iránti szenvedélyének, gomba és kolbászt a kétpizzás."
+13. Válassza ki a válasz "Szeretné bármi más?"
+14. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "add yam" típusa
+15. A "Score műveletek" gombra.
+    - A "yam" érték lett felvéve "OutofStock" entitás észlelési visszahívási kóddal, a szöveg nem egyezik meg a bármely támogatott összetevők.
+16. Válassza ki a választ, a "OutOfStock"
+17. Válassza ki a válasz "Szeretné bármi más?"
+18. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "no" típusra
+    - A "nem" nem megjelölt szándék szerint bármilyen típusú. Ahelyett hogy lesz kell kiválasztja a megfelelő műveletet az aktuális környezet alapján.
+19. A "Score műveletek" gombra.
+20. Válassza ki a választ, a "FinalizeOrder"
+    - Az ügyfél aktuális toppings első mentve a "LastToppings" entitás, és a "Toppings" entitás törlése a FinalizeOrder visszahívási kóddal eredményezett kiválasztja ezt a műveletet.
+21. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "rendeljen egy másik" írja be
+22. A "Score műveletek" gombra.
+23. Válassza ki a válasz "Szeretné sajtok iránti szenvedélyének, gomba és kolbászt?"
+    - Ez a művelet érhető el mostantól a "LastToppings" entitás beállítása miatt.
+24. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", az "Igen" típusa
+25. A "Score műveletek" gombra.
+26. Válassza ki a választ, a "UseLastToppings"
+27. Válassza ki a választ, az "Vannak sajtok iránti szenvedélyének, gomba és kolbászt a kétpizzás."
+28. Válassza ki a válasz "Szeretné bármi más?"
 
 ![](../media/tutorial_pizza_callbackcode.PNG)
 
@@ -113,4 +107,4 @@ Tegyük fel próbáljon meg egy tanítási munkamenet.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató – VR appindítója](./demo-vr-app-launcher.md)
+> [Beszélgetéstanuló robotprogramok üzembe helyezése](../deploy-to-bf.md)

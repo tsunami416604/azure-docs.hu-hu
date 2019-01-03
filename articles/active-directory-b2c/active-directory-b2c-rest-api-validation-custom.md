@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 8af8e4b7844feb785600ef683891642ea89bccaf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542582"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556900"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,7 +30,7 @@ A IEF adatokat küld a jogcímeket, valamint adatokat fogad újra a jogcím. A k
 - Megtervezhetők úgy, egy REST API-val jogcímcsere, vagy egy érvényesítési profilt, amely egy vezénylési lépés belül történik.
 - Felhasználói adatbevitel általában érvényesíti. Az érték a felhasználó elutasítása esetén a felhasználó újra próbálkozhat, adjon meg egy érvényes értéket arra, hogy hibaüzenetet ad vissza.
 
-Egy vezénylési lépés a közötti is tervezhet. További információkért lásd: [forgatókönyv: integrálása a REST API-val cserék az Azure AD B2C felhasználói interakciósorozat egy vezénylési lépés, a jogcímek](active-directory-b2c-rest-api-step-custom.md).
+Egy vezénylési lépés a közötti is tervezhet. További információkért lásd: [forgatókönyv: Integráció az Azure AD B2C felhasználói interakciósorozat egy vezénylési lépés, a REST API jogcím cseréje](active-directory-b2c-rest-api-step-custom.md).
 
 Ha érvényesítési profil például az alapszintű csomag fájlban ProfileEdit.xml profil szerkesztése felhasználói interakciósorozat használjuk.
 
@@ -75,7 +75,7 @@ return request.CreateResponse(HttpStatusCode.OK);
 
 A IEF vár a `userMessage` jogcímet, amelyet az Azure-függvény adja vissza. Ez a jogcím megjelenik egy karakterláncként a felhasználónak, ha az érvényesítés sikertelen, például ha az előző példában 409 ütközés állapotot adott vissza.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2. lépés: Az RESTful API jogcímcsere konfigurálása TrustFrameworkExtensions.xml fájlban technikai profil
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2. lépés: A TrustFrameworkExtensions.xml fájlban technikai profil RESTful API jogcímcsere konfigurálása
 
 Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProviders>` elemet.
 
@@ -93,6 +93,7 @@ Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigur�
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
@@ -110,7 +111,7 @@ Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigur�
 
 A `InputClaims` elem definiálja a jogcímeket, amely a REST-szolgáltatás, a IEF kapnak. Ebben a példában a jogcím tartalmát `givenName` küld a REST szolgáltatás `playerTag`. Ebben a példában a IEF nem várt vissza jogcímeket. Ehelyett azt a válaszra vár a REST-szolgáltatás és a állapotkódok, amely alapján működik.
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3. lépés: Közé tartozik a RESTful szolgáltatás jogcímcsere önellenőrzött technikai profilban, ahol szeretné a felhasználói bevitel ellenőrzése
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3. lépés: Tartalmazza a RESTful szolgáltatás jogcímcsere önellenőrzött technikai profilban, ahol szeretné a felhasználói bevitel ellenőrzése
 
 Az ellenőrzési lépés leggyakoribb használatát egy felhasználói interakció szerepel. Összes műveletet, amikor a felhasználó várhatóan információk megadása a rendszer *önálló kiszolgáló által megerősített technikai profilok*. Ebben a példában hozzáadjuk az érvényesítés az önkiszolgáló Asserted ProfileUpdate műszaki profilba. Ez a műszaki profilja, amelyet a függő entitásonkénti (RP) házirendfájl `Profile Edit` használja.
 
@@ -130,4 +131,4 @@ Az önellenőrzött technikai profilban jogcímcsere hozzáadása:
 
 [Módosítsa a profil szerkesztése és a felhasználó regisztrációját, hogy további információkat gyűjtsön a felhasználók számára](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Forgatókönyv: Integrálása az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés](active-directory-b2c-rest-api-step-custom.md)
+[Forgatókönyv: Integrálhatja az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés](active-directory-b2c-rest-api-step-custom.md)

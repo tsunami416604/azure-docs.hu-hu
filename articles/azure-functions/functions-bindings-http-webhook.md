@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d2bd74609447463b7ff857aa1037eaf5b6e3abb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317440"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727003"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -491,7 +491,7 @@ Alapértelmezés szerint az összes funkció útvonal van fűzve előtagként *a
 
 ### <a name="working-with-client-identities"></a>Ügyfél-azonosító használata
 
-Ha a függvényalkalmazás által használt [App Service-hitelesítés / engedélyezés](../app-service/app-service-authentication-overview.md), információ a hitelesített ügyfelek tekintheti a kódból. Ez az információ érhető el, [a platform által beszúrt kérésfejlécek](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+Ha a függvényalkalmazás által használt [App Service-hitelesítés / engedélyezés](../app-service/overview-authentication-authorization.md), információ a hitelesített ügyfelek tekintheti a kódból. Ez az információ érhető el, [a platform által beszúrt kérésfejlécek](../app-service/app-service-authentication-how-to.md#access-user-claims). 
 
 Ezt az információt a kötelező adatokat is olvashatja. Ez a funkció csak az a funkciók 2.x verziójú futtatókörnyezet érhető el. Jelenleg is csak a .NET-es nyelveken érhető el.
 
@@ -577,7 +577,7 @@ Névtelen kérések, amelyek nem igénylik a kulcsok engedélyezheti. A főkulcs
 
 Teljes körűen biztonságossá tételéhez a függvény végpontok éles környezetben, érdemes megfontolni megvalósítását függvény alkalmazásszintű biztonság az alábbi lehetőségek közül:
 
-* Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md) és [ügyfél identitások használata](#working-with-client-identities).
+* Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/overview-authentication-authorization.md) és [ügyfél identitások használata](#working-with-client-identities).
 
 * Az Azure API Management (APIM) használatával-kérések hitelesítéséhez. APIM API biztonsági beállítások a bejövő kéréseket széles skáláját kínálja. További tudnivalókért lásd: [az API Management a hitelesítési házirendek](../api-management/api-management-authentication-policies.md). Az APIM-helyen konfigurálhatja a függvényalkalmazás csak az IP-címet az APIM-példány érkező kéréseket fogadják. További tudnivalókért lásd: [IP-címkorlátozások](ip-addresses.md#ip-address-restrictions).
 

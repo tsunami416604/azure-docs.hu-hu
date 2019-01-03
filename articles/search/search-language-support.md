@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 3f88965e0d48a9ed3e9a91b4df42a79b83d2a79b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313326"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631549"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Az Azure Search több nyelven elérhető dokumentumok indexének létrehozása
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Az Azure Search, amelyek lehetővé teszik a felhasználók számára az indexs�
 ![][2]
 *Válasszon ki egy minden mező esetében a támogatott elemzők*
 
-Alapértelmezés szerint az összes kereshető mezőt használja a [Standard Lucene-elemzőt](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) azaz nyelvtől. Támogatott elemzők teljes listájának megtekintéséhez: [nyelvi támogatás az Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Alapértelmezés szerint az összes kereshető mezőt használja a [Standard Lucene-elemzőt](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) azaz nyelvtől. Támogatott elemzők teljes listájának megtekintéséhez: [nyelvi támogatás az Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
 Miután a nyelvi elemző mező van kiválasztva, akkor együtt használható indexelés és keresés kéréseknek erre a mezőre. Egy lekérdezés segítségével különböző elemzők több mező alapján kiadásakor a lekérdezés által a megfelelő elemzők az egyes mezőkhöz tartozó egymástól függetlenül lesz feldolgozva.
 
@@ -81,7 +81,7 @@ Időnként az ügynök kiállító lekérdezés nyelve nem ismert, ebben az eset
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-Ha Ön a .NET-fejlesztők, vegye figyelembe, hogy a nyelvi elemzőkkel használatával konfigurálhatja a [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). A legújabb verziót, valamint a Microsoft nyelvi elemzők támogatását tartalmazza.
+Ha Ön a .NET-fejlesztők, vegye figyelembe, hogy a nyelvi elemzőkkel használatával konfigurálhatja a [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search). A legújabb verziót, valamint a Microsoft nyelvi elemzők támogatását tartalmazza.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

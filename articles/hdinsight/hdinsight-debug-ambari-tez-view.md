@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012351"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719693"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez
 
 A [Apache Ambari](https://ambari.apache.org/) webes felhasználói Felületet, a HDInsight tartalmaz egy [Apache TEZ](https://tez.apache.org/) megtekintése és használata a Tez-feladatok hibakereséséhez használható. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -90,9 +90,9 @@ A következő lépések használatával, amely Tez Hive-lekérdezések futtatás
 
 5. Ezen a lapon lévő lapok engedélyezése a következő információkat tekintheti meg:
 
-    * **Lekérdezési adatok**: a Hive-lekérdezés részleteit.
-    * **Idősor**: minden egyes fázisa feldolgozási mennyi ideig tartott információt.
-    * **Konfigurációk**: az ehhez a lekérdezéshez használt konfigurációt.
+    * **Lekérdezési adatok**: A Hive-lekérdezés részleteit.
+    * **Idősor**: Információ arról, hogy mennyi ideig tartott feldolgozási minden egyes fázisa.
+    * **Konfigurációk**: Ehhez a lekérdezéshez használt konfigurációja.
 
     A __lekérdezés részletei__ hivatkozások segítségével talál információkat a __alkalmazás__ vagy a __DAG__ ehhez a lekérdezéshez.
     

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959461"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722396"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
@@ -101,7 +101,7 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
 
 1. Válassza ki az előfizetést, az üzemeltető által létrehozott a Kubernetes-fürt használatával.
 
-1. Válassza ki **hozzáférés-vezérlés (IAM)** > Válasszon **+ Hozzáadás**.
+1. Válassza ki **hozzáférés-vezérlés (IAM)** > Válasszon **szerepkör-hozzárendelés hozzáadása**.
 
 1. Válassza ki a **közreműködői** szerepkör.
 

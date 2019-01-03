@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238726"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631345"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
 
@@ -88,7 +88,7 @@ Alapértelmezés szerint az Azure AD hozzáadja a felhasználó elvégezhesse a 
 
 Mellett az Azure AD join folyamat használja, manuálisan is szintre emelhet, az átlagos felhasználók egy adott eszköz helyi rendszergazdája lesz. Ez a lépés megköveteli, hogy a helyi Rendszergazdák csoport tagjának lennie. 
 
-Kezdve a **Windows 10 1709-es** kiadásban hajthat végre ezt a feladatot **beállítások -> fiókok -> más felhasználók** kiválasztásával **adja hozzá a munkahelyi vagy iskolai felhasználó**.
+Kezdve a **Windows 10 1709-es** kiadásban hajthat végre ezt a feladatot **beállítások -> fiókok -> más felhasználók**. Válassza ki **munkahelyi vagy iskolai felhasználó hozzáadása**, adja meg a felhasználó egyszerű Felhasználónevét a **felhasználói fiók** válassza *rendszergazda* alatt **fiók típusa**  
  
 Ezenkívül is hozzáadhat felhasználókat a parancssor használatával:
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/21/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310395"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716616"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -83,11 +83,11 @@ A v3 API rendelkezik a következő szolgáltatás garanciát a v2 API hiányoss�
     * Átfedések
     * Vágása
     * Miniatűr Sprites
-* LiveEvents való átkódolása jelenleg nem támogatják a lappal beszúrási közepes stream, egyéni előbeállításokat vagy API-híváson keresztül reklámjelölők beszúrása. 
+* LiveEvents való átkódolása jelenleg nem támogatja a lappal beszúrási közepes stream és az ad reklámjelölők beszúrása API-hívás használatával. 
 
 > [!NOTE]
 > Lássa el könyvjelzővel ezt a cikket, és tartsa a frissítések keresése.
-
+ 
 ## <a name="code-differences"></a>Kód különbségek
 
 Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
@@ -108,7 +108,7 @@ Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
     * Csatornákon és programokon a v2 létrehozott (amely leképezett LiveEvents és LiveOutputs v3) nem tudja folytatni a v3-as felügyelt. A javaslat, hogy váltson át a v3-as LiveEvents és LiveOutputs, egy kényelmes csatorna leállítás.<br/>Jelenleg nem tudja áttelepíteni, folyamatosan futó csatornák.  
 
 > [!NOTE]
-> Lássa el könyvjelzővel ezt a cikket, és tartsa a frissítések keresése.
+> Ezen a lapon, a Media Services-csapat folyamatos fejlesztéseket hajt végre a v3 API-k és a verziók között a hiányosságait kell fenntartani.
 
 ## <a name="next-steps"></a>További lépések
 

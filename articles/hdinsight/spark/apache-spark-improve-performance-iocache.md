@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 204a3230c782279b0cad4194e97aa4014c940635
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581935"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608494"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Teljesítménynövelés az Apache Spark-alapú számítási feladatokat az Azure HDInsight i/o-Cache (előzetes verzió)
 
@@ -20,7 +20,7 @@ I/o Cache egy gyorsítótárazási szolgáltatás az Azure HDInsight, amely növ
 
 A legtöbb SSD-k sávszélesség másodpercenként 1-nél több GByte adja meg. A sávszélesség, az operációs rendszer memórián belüli gyorsítótár, szoftverszolgáltatáson nyújt elegendő sávszélesség, a big data számítási feldolgozó motorokkal, például az Apache Spark betölteni. A működési memória maradt elérhető az Apache Spark az erősen memória-függő feladatok, például shuffles feldolgozásához. Kizárólagos használatára, a memória működési lehetővé, hogy az Apache Spark optimális erőforrás-használat elérése érdekében.  
 
->[!Note]
+>[!Note]  
 >I/o-gyorsítótár jelenleg használ RubiX gyorsítótárazási összetevőként, de ez megváltozhatnak a jövőben a szolgáltatás verzióit. Gyorsítótár i/o-adapterek használata, és a függőségek nem kell közvetlenül RubiX végrehajtásáról.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>I/o-gyorsítótár az Azure HDInsight előnyei
@@ -45,7 +45,7 @@ Az Azure HDInsight i/o-gyorsítótár az előzetes verzióban érhető el az ala
 
 1. Erősítse meg a fürt minden érintett szolgáltatást újra kell indítani.
 
->[!NOTE] 
+>[!NOTE]  
 > Annak ellenére, hogy a folyamatjelző mutatja aktivált, i/o-gyorsítótár valójában nincs engedélyezve az érintett szolgáltatások újraindításáig.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -78,4 +78,4 @@ Ha nem működik, i/o-gyorsítótár letiltása.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információt az i/o-gyorsítótár, többek között teljesítmény ebben a blogbejegyzésben találhat: [Apache Spark-feladatok szerezhet legfeljebb 9 x felgyorsítható a HDInsight i/o-gyorsítótár](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- További információ az i/o-gyorsítótár, többek között teljesítmény ebben a blogbejegyzésben találhat: [Az Apache Spark-feladatok szerezhet legfeljebb 9 x felgyorsítható a HDInsight i/o-gyorsítótár](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)

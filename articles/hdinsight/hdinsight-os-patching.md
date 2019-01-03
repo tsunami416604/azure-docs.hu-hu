@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434045"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741589"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
 Felügyelt Apache Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt szoftvert futtató virtuális gépek javítása. 2016. augusztus 1-től módosítottuk a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió). Az új házirend az a célja, hogy jelentősen csökkentheti a javítás miatt újraindítások száma. Javítás virtuális gépeken (VM) az új házirend továbbra Linux-fürtökön minden hétfőn vagy csütörtök 12 AM UTC lépcsőzetes módon díjtól bármely adott fürtben található csomópontok között. Azonban bármely adott virtuális gép csak újraindítás legfeljebb 30 naponta miatt a vendég operációs rendszer javításait. Emellett az újonnan létrehozott fürt első újraindítás nem történik meg hamarabb fürt létrehozás dátumától számítva 30 napnál. Javítások től lép érvénybe, ha a virtuális gépek indulnak újra.
@@ -33,7 +33,6 @@ A jelen cikkben ismertetett szkriptműveletek használatával, módosíthatja az
 
 > [!NOTE]  
 > Ez a parancsprogram-művelet csak a 2016. augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel működik. Javítások től lép érvénybe, csak akkor, ha a virtuális gépek indulnak újra. 
->
 
 ## <a name="how-to-use-the-script"></a>A parancsfájl használata 
 

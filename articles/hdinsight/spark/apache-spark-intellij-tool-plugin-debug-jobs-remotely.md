@@ -1,5 +1,5 @@
 ---
-title: 'IntelliJ-hez készült Azure-eszközkészlet: a HDInsight Spark-alkalmazások '
+title: 'Azure-eszközkészlet az IntelliJ-hez: A HDInsight Spark-alkalmazások '
 description: Ismerje meg, hogyan használja VPN-kapcsolaton keresztül HDInsight-fürtökön futó Spark-alkalmazások távoli hibakeresése az IntelliJ-hez HDInsight Tools.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: e973c1895a331969eea9997f7122268a9ff783bd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e57257c6965f0da8c2d6ce990d2425847b73884f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584740"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605790"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>A VPN-kapcsolaton keresztül a HDInsight az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata
 
@@ -34,8 +34,8 @@ Ebben a cikkben részletes útmutatást nyújt az IntelliJ-hez és a egy HDInsig
 * **Oracle Java development Kitet**. A telepítheti a [Oracle webhely](https://aka.ms/azure-jdks).
 * **Az IntelliJ IDEA**. Ez a cikk 2017.1 verzióját használja. A telepítheti a [eszközt webhely](https://www.jetbrains.com/idea/download/).
 * **HDInsight-eszközök az IntelliJ-hez készült Azure-eszközkészlet**. IntelliJ-hez készült HDInsight eszközök érhetők el az IntelliJ-hez készült Azure-eszközkészlet részeként. Azure-eszközkészlet telepítésével kapcsolatos útmutatásért lásd: [IntelliJ-hez készült Azure eszközkészlet telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
-* **Jelentkezzen be az Azure-előfizetéshez az IntelliJ IDEA**. Kövesse a [Spark-alkalmazások HDInsight-fürt létrehozása az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-plugin.md).
-* **Kivétel megoldás**. A Spark Scala-alkalmazás távoli hibakereséshez a Windows-számítógépen fut, miközben kaphat kivételt. Ez a kivétel ezen [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) és a egy hiányzó WinUtils.exe fájlt Windows miatt következik be. Ez a hiba elkerüléséhez kell [a végrehajtható fájl letöltése](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**. Adjon hozzá egy **HADOOP_HOME** környezeti változót, majd állítsa be a változó értékét **C\WinUtils**.
+* **Jelentkezzen be az Azure-előfizetéshez az IntelliJ IDEA**. Kövesse a [Apache Spark-alkalmazások egy HDInsight-fürt létrehozása az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-plugin.md).
+* **Kivétel megoldás**. A Spark Scala-alkalmazás távoli hibakereséshez a Windows-számítógépen fut, miközben kaphat kivételt. Ez a kivétel ezen [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) és a egy hiányzó WinUtils.exe fájlt Windows miatt következik be. Ez a hiba elkerüléséhez kell [a végrehajtható fájl letöltése](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**. Adjon hozzá egy **HADOOP_HOME** környezeti változót, majd állítsa be a változó értékét **C\WinUtils**.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>1. lépés: Egy Azure virtuális hálózat létrehozása
 Kövesse az utasításokat az alábbi hivatkozásokat követve hozhat létre Azure-beli virtuális hálózathoz, és ellenőrizze a kapcsolatot az asztali számítógép és a virtuális hálózat között:
@@ -44,10 +44,10 @@ Kövesse az utasításokat az alábbi hivatkozásokat követve hozhat létre Azu
 * [Virtuális hálózat létrehozása helyek közötti VPN-kapcsolat PowerShell-lel](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [PowerShell-lel virtuális hálózathoz pont – hely kapcsolat konfigurálása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-## <a name="step-2-create-an-hdinsight-spark-cluster"></a>2. lépés: A HDInsight Spark-fürt létrehozása
+## <a name="step-2-create-an-hdinsight-spark-cluster"></a>2. lépés: HDInsight Spark-fürt létrehozása
 Javasoljuk, hogy is hozzon létre egy Apache Spark-fürt az Azure HDInsight, amely az Ön által létrehozott Azure virtuális hálózat része. A rendelkezésre álló információk [a HDInsight-fürtök létrehozása Linux-alapú](../hdinsight-hadoop-provision-linux-clusters.md). Választható konfiguráció részeként válassza ki az előző lépésben létrehozott Azure virtuális hálózatok.
 
-## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>3. lépés: A fürt átjárócsomópontjával, és az asztal közötti kapcsolat ellenőrzése
+## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>3. lépés: Ellenőrizze a kapcsolatot a fürt átjárócsomópontjával, és az asztal között
 1. Az átjárócsomópont IP-címének lekéréséhez. Nyissa meg a fürt Ambari felhasználói felületén. Válassza ki a fürt paneljén **irányítópult**.
 
     ![Válassza ki az irányítópultot az Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-ambari-ui.png)
@@ -232,7 +232,7 @@ Javasoljuk, hogy is hozzon létre egy Apache Spark-fürt az Azure HDInsight, ame
 
     ![A távoli futtatási legördülő lista](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/config-run.png)
 
-## <a name="step-5-run-the-application-in-debug-mode"></a>5. lépés: Az alkalmazás hibakeresési módban futtatja.
+## <a name="step-5-run-the-application-in-debug-mode"></a>5. lépés: Futtassa az alkalmazást hibakeresési módban
 1. Az IntelliJ IDEA-projektben nyissa meg a `SparkSample.scala` , és hozzon létre egy töréspontot a `val rdd1`. Az a **létrehozása töréspontot** előugró menüből válassza **sort a függvény executeJob**.
 
     ![Töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-breakpoint.png)
@@ -259,21 +259,21 @@ Javasoljuk, hogy is hozzon létre egy Apache Spark-fürt az Azure HDInsight, ame
     ![Konzolkimenet](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete.png)
 
 ## <a name="seealso"></a>Következő lépések
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Bemutató
-* Létrehozás Scala project (videó): [létre Apache Spark Scala-alkalmazások](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Távoli hibakeresés (videó): [távolról egy HDInsight-fürtön az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* (Videó) Scala-projekt létrehozása: [Az Apache Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Távoli hibakeresés (videó): [Távolról egy HDInsight-fürtön az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight-hőmérséklet building HVAC-adatok elemzése](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](../hdinsight-apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása](apache-spark-intellij-tool-plugin.md)

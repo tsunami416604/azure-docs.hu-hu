@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eba66d4abf84603f1fdb5761d3ea1987983908de
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498175"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607030"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
 
 
 ## <a name="introduction"></a>Bevezetés
 
-Deep learning negatív hatással van, a szállítás fejlesszenek healthcare és egyebek. Vállalatok átállniuk, deep learning-megoldani a problémákat, például a [besorolási kép](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [beszédfelismerés](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), felismerés objektum és a gépi fordítás. 
+Deep learning negatív hatással van, a szállítás fejlesszenek healthcare és egyebek. Vállalatok átállniuk, deep learning-megoldani a problémákat, például a [besorolási kép](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [beszédfelismerés](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), felismerés objektum és a gépi fordítás. 
 
-Nincsenek [számos népszerű keretrendszereket](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), többek között [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, stb. [Caffe](http://caffe.berkeleyvision.org/) egyik a leghíresebb nem szimbolikus (imperatív) Neurális hálózat keretrendszereket, és számos készültséget többek között a számítógépes látástechnológiai széles körben használt. Ezenkívül [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) ötvözi az Apache Spark, ebben az esetben a mély tanulás a caffe használatával egyszerűen is használható egy már meglévő Hadoop-fürtön. Teljes körű megoldást learning mély tanulás a Spark ETL-adatcsatornák, és csökkenti rendszert, és a késleltetés együtt használható.
+Nincsenek [számos népszerű keretrendszereket](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), többek között [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, stb. [Caffe](https://caffe.berkeleyvision.org/) egyik a leghíresebb nem szimbolikus (imperatív) Neurális hálózat keretrendszereket, és számos készültséget többek között a számítógépes látástechnológiai széles körben használt. Ezenkívül [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) ötvözi az Apache Spark, ebben az esetben a mély tanulás a caffe használatával egyszerűen is használható egy már meglévő Hadoop-fürtön. Teljes körű megoldást learning mély tanulás a Spark ETL-adatcsatornák, és csökkenti rendszert, és a késleltetés együtt használható.
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) Apache Hadoop felhőalapú kínál, amely optimalizált, nyílt forráskódú analitikus fürtöket biztosít az Apache Spark, az Apache Hive, az Apache Hadoop, az Apache HBase, Apache Storm, Apache Kafka és Machine Learning-szolgáltatások. HDInsight 99,9 %-os szolgáltatói szerződés alapját. Ezen big data-technológiák és ISV-alkalmazások mindegyike könnyen üzembe helyezhető, a biztonsággal és figyeléssel kínál a nagyvállalatoknak felügyelt fürtként.
 
@@ -37,13 +37,13 @@ A feladatnak a négy lépésben történik:
 
 Mivel a HDInsight egy PaaS-megoldás, kínál nagyszerű platformot szolgáltatások – így egyszerűen az egyes feladatok elvégzéséhez. Ebben a blogbejegyzésben találhat használt funkcióinak egyike a nevezzük [Script Action](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel rendszerhéjparancsokat szabhatja testre a fürtcsomópontok (átjárócsomóponthoz, munkavégző csomópont vagy élcsomópont) hajthat végre.
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1. lépés: A szükséges függőségek telepítése az összes csomóponton
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1. lépés:  Az összes csomóponton a szükséges függőségek telepítése
 
 Első lépésként telepítse a függőségeket kell. A Caffe-hely és [CaffeOnSpark hely](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) kínál néhány hasznos wiki a függőségek telepítése a Spark a YARN módot. HDInsight Spark is használ a YARN módot. Azonban hozzá kell néhány további függőségek HDInsight platformon. Ehhez egy parancsfájlművelettel, és futtassa az átjárócsomópontokhoz és a feldolgozó csomópontokat. A parancsprogram-művelet körülbelül 20 percet vesz igénybe, ezeket a függőségeket is függenek más csomagokat. Az egy helyre, amely hozzáférhető annak a HDInsight-fürthöz, például egy GitHub-helyre vagy az alapértelmezett BLOB storage-fiók akkor kell helyezni.
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
-    #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
+    #installing all dependencies, including the ones mentioned in https://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
     #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
@@ -62,14 +62,14 @@ Első lépésként telepítse a függőségeket kell. A Caffe-hely és [CaffeOnS
 
 A szkriptműveletek két lépésből áll. Az első lépés, hogy a szükséges kódtárak telepítése. Ezek a könyvtárak tartalmazzák a szükséges kódtárak (például gflags, glog) Caffe fordítása és Caffe fut (például numpy). CPU-optimalizálás libatlas használ, de CaffeOnSpark wiki mindig követheti más optimalizálási könyvtárat, például MKL vagy CUDA (a GPU) telepítésével.
 
-A második lépés, hogy töltse le, fordítsa le és telepítheti a protopuf 2.5.0 Caffe a Futtatás ideje alatt. A Protopuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban ez a verzió nem érhető el a 16, az Ubuntu-csomagként így fordítsa le a forráskód szükséges. Vannak még néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+A második lépés, hogy töltse le, fordítsa le és telepítheti a protopuf 2.5.0 Caffe a Futtatás ideje alatt. A Protopuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban ez a verzió nem érhető el a 16, az Ubuntu-csomagként így fordítsa le a forráskód szükséges. Vannak még néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
 Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre küldött, a munkavégző csomópontok és a fő csomópontok (a HDInsight 3.5). A szkriptműveletek futtathat egy meglévő fürt, vagy parancsprogram-műveletek használata a fürt létrehozása során. A szkriptműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
 
 ![Szkriptműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
 
 A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordított tárak a feldolgozó csomópontokat, majd terjesztheti. Ebben a lépésben kell [ssh, az átjárócsomópont](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően kell követnie a [CaffeOnSpark összeállítása folyamatban](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább a parancsfájl segítségével CaffeOnSpark készíthet néhány további lépést van. 
 
@@ -124,7 +124,7 @@ Amikor először próbálja CaffeOnSpark összeállítása, néha ugyanakkor
 
 Tisztítsa meg a kódtárat a "tiszta ellenőrizze", majd az futtatási "márka build", a probléma megoldásához, mindaddig, amíg a megfelelő függőségekkel rendelkezik.
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>Hibaelhárítás: Maven tárház kapcsolat időkorlátja
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>Hibaelhárítás: Maven-tárház kapcsolat időkorlátja
 
 Egyes esetekben a maven biztosít a kapcsolat időtúllépési hiba, az alábbi kódrészlethez hasonló:
 
@@ -136,7 +136,7 @@ Egyes esetekben a maven biztosít a kapcsolat időtúllépési hiba, az alábbi 
 Kell néhány perc múlva próbálkozzon újra.
 
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>Hibaelhárítás: Tesztelje a hiba a caffe használatával
+### <a name="troubleshooting-test-failure-for-caffe"></a>Hibaelhárítás: Tesztelési hiba a caffe használatával
 
 Valószínűleg látni teszt hiba esetén a végső CaffeOnSpark ellenőrzését. Ez valószínűleg kapcsolódó UTF-8 kódolást, de nem érinti a Caffe használatát
 
@@ -159,7 +159,7 @@ Ellenőrizze, hogy kell a megfelelő helyre pont adott a fürthöz)
 
 A 2. lépésben, akkor helyezi azt a BLOB storage, amely elérhető az összes csomóponthoz, mivel ebben a lépésben, egyszerűen másolja a csomópontokon.
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4. lépés: A Caffe modell összeállítása, és futtassa azt egy elosztott módon
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4. lépés: Caffe modell összeállítása és elosztott módon futtathatja
 
 Caffe telepítve van az előző lépések futtatása után. A következő lépés az írási modell Caffe. 
 
@@ -169,7 +169,7 @@ A modell betanítását, MNIST képzéshez mintamodell. A kézírásos számjegy
 
 CaffeOnSpark bizonyos hálózati topológiák például MNIST képzést biztosít. A megosztással a hálózati architektúra (a hálózati topológia) és optimalizálás a már jól néz kis tervezési rendelkezik. Ebben az esetben van szükség két fájlt: 
 
-a "Solver" fájlt (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) paraméter frissítések egyik és környezet optimalizálása szolgál. Például azt határozza hogy CPU vagy GPU használatos, mi az a hír, az ismétlések számát a rendszer, stb. Azt is meghatározza melyik idegsejt hálózati topológia használjon a program (amely a második fájl szükséges). Solver kapcsolatos további információkért lásd: [Caffe dokumentáció](http://caffe.berkeleyvision.org/tutorial/solver.html).
+a "Solver" fájlt (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) paraméter frissítések egyik és környezet optimalizálása szolgál. Például azt határozza hogy CPU vagy GPU használatos, mi az a hír, az ismétlések számát a rendszer, stb. Azt is meghatározza melyik idegsejt hálózati topológia használjon a program (amely a második fájl szükséges). Solver kapcsolatos további információkért lásd: [Caffe dokumentáció](https://caffe.berkeleyvision.org/tutorial/solver.html).
 
 Ebben a példában óta használja GPU, hanem CPU módosítania kell az utolsó sora:
 
@@ -187,7 +187,7 @@ A második fájl ({CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt$) hatá
 
 ![Caffe-Config](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
-A hálózat definiálása további információkért ellenőrizze a [MNIST adatkészlet Caffe-dokumentáció](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
+A hálózat definiálása további információkért ellenőrizze a [MNIST adatkészlet Caffe-dokumentáció](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
 Ez a cikk céljából MNIST ebben a példában használja. Futtassa a következő parancsokat az átjárócsomóponthoz:
 
@@ -291,11 +291,11 @@ Ebben a dokumentációban próbált CaffeOnSpark telepítheti egy egyszerű pél
 
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)

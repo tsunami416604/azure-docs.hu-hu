@@ -1,7 +1,7 @@
 ---
 title: Képtípus – Computer Vision észlelése
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával képtípussal észlelése kapcsolatos fogalmakat.
+description: A kép típusú észlelési funkciója a Computer Vision API kapcsolatos fogalmakat.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 04062d5625126712c5f14c41d610d55caf4c28b5
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342005"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583102"
 ---
-# <a name="detecting-image-types"></a>Képek típusának észlelése
+# <a name="detecting-image-types-with-computer-vision"></a>A Computer Vision képtípussal észlelése
 
 Számítógépes Látástechnológia elemezheti kép tartalomtípusa jelzi, hogy-e a kép ClipArt, a méretezési csoport vagy vonalrajz valószínűsége minősítése.
 
@@ -27,7 +28,7 @@ Számítógépes Látástechnológia kép elemzi, és értékeli annak lehetős�
 
 | Érték | Jelentés |
 |-------|---------|
-| 0 | A nem ClipArt |
+| 0 | Nem ClipArt |
 | 1 | Nem egyértelmű |
 | 2 | Normál ClipArt |
 | 3 | Jó ClipArt |
@@ -36,7 +37,7 @@ Számítógépes Látástechnológia kép elemzi, és értékeli annak lehetős�
 
 A következő JSON-válaszok mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha a példában képek ClipArt folyamatban a valószínűsége minősítése.
 
-![Vizuális sajtok iránti Szenvedélyének ClipArt elemzése](./Images/cheese_clipart.png)
+![A szelet sajtok egy videoklip lejátszása art-kép](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -53,7 +54,7 @@ A következő JSON-válaszok mutatja be, milyen számítógépes Látástechnol�
 }
 ```
 
-![Vizuális ház Yard elemzése](./Images/house_yard.png)
+![Egy kék ház és az első yard](./Images/house_yard.png)
 
 ```json
 {
@@ -78,7 +79,7 @@ Számítógépes Látástechnológia kép elemzi, és jelzi, hogy-e a lemezkép 
 
 A következő JSON-válaszok mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha jelzi, hogy-e a példában képek sor rajzok.
 
-![Vizuális Lion rajz elemzése](./Images/lion_drawing.png)
+![Egy olyan lion Vonalrajz képe](./Images/lion_drawing.png)
 
 ```json
 {
@@ -95,7 +96,7 @@ A következő JSON-válaszok mutatja be, milyen számítógépes Látástechnol�
 }
 ```
 
-![Vizuális Flower elemzése](./Images/flower.png)
+![Egy zöld hátterű fehér flower](./Images/flower.png)
 
 ```json
 {

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679715"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713179"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -28,10 +28,10 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 > [!NOTE]
 > V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
 
-* Csak statisztikai: nincs Neurális rendszer nem érhető el ehhez a nyelvhez.
-* Neurális érhető el: egy Neurális rendszeren érhető el. Használja ezt a paramétert `category=generalnn` hozzáférhetnek a Neurális rendszerhez.
-* Neurális alapértelmezett: Neurális az alapértelmezett fordítási rendszerét. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
-* Csak Neurális: csak a Neurális fordítással érhető el.
+* Csak statisztikai: Nincs Neurális rendszer nem érhető el ehhez a nyelvhez.
+* Neurális érhető el: Egy Neurális rendszeren érhető el. Használja ezt a paramétert `category=generalnn` hozzáférhetnek a Neurális rendszerhez.
+* Neurális alapértelmezett: Neurális, az alapértelmezett fordítási rendszer. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
+* Neurális csak: Csak a Neurális fordítással érhető el.
 
 **Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek. 
 
@@ -39,9 +39,8 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |:-----|:-----:|:-----|:-----|
 |afrikaans| `af`    |Csak statisztikai|  Neurális|
 |arab|    `ar`    |Neurális érhető el|  Neurális|
-|Arab, Levantine| `apc`   |Neurális érhető el|  Neurális|
 |Bengáli|    `bn`    |Neurális érhető el|  Neurális|
-|bosnyák (latin betűs)|   `bs`    |Csak statisztikai|  Statisztikai|
+|bosnyák (latin betűs)|   `bs`    |Neurális érhető el|  Neurális|
 |bolgár| `bg`    |Neurális érhető el|  Neurális|
 |Kantoni (hagyományos)|   `yue`   |Csak statisztikai|  Statisztikai|
 |katalán|   `ca`    |Csak statisztikai|  Statisztikai|
@@ -109,26 +108,26 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 
 | Nyelv    | Nyelvkód | Szkript | És-tárolókról | Szkript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| arab | ar | arab | <--> | Latin |
-|Bengáli  | BN | bengáli | <--> | Latin |
-| kínai (egyszerűsített) | zh-Hans | kínai (egyszerűsített) | <--> | Latin |
-| kínai (egyszerűsített) | zh-Hans | kínai (egyszerűsített) | <--> | kínai (hagyományos) |
-| kínai (hagyományos) | zh-Hant | kínai (hagyományos) | <--> | Latin |
-| kínai (hagyományos) | zh-Hant | kínai (hagyományos) | <--> | kínai (egyszerűsített) |
-| gudzsaráti | Gu  | gudzsaráti | --> | Latin |
-| héber | Phil | héber | <--> | Latin |
-| hindi | szia | Devanagári | <--> | Latin |
-| japán | ja | japán | <--> | Latin |
-| kannada | KN | kannada | --> | Latin |
-| malajálam | ml | malajálam | --> | Latin |
-| maráthi | MR | Devanagári | --> | Latin |
-| orija | vagy | orija | <--> | Latin |
-| pandzsábi | Pa | Gurmukhi | <--> | Latin  |
-| szerb (cirill betűs) | az SR-Cyrl | Cyrilice  | --> | Latin |
-| szerb (latin betűs) | az SR-Latn | Latin | --> | Cyrilice |
-| tamil | TA | tamil | --> | Latin |
-| telugu | Te | telugu | --> | Latin |
-| thai | . | thai | <--> | Latin |
+| arab | `ar` | arab `Arab` | <--> | Latin `Latn` |
+|Bengáli  | `bn` | bengáli `Beng` | <--> | Latin `Latn` |
+| kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | Latin `Latn` |
+| kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | kínai (hagyományos) `Hant`|
+| kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | Latin `Latn` |
+| kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | kínai (egyszerűsített) `Hans` |
+| gudzsaráti | `gu`  | gudzsaráti `Gujr` | --> | Latin `Latn` |
+| héber | `he` | héber `Hebr` | <--> | Latin `Latn` |
+| hindi | `hi` | Devanagári `Deva` | <--> | Latin `Latn` |
+| japán | `ja` | japán `Jpan` | <--> | Latin `Latn` |
+| kannada | `kn` | kannada `Knda` | --> | Latin `Latn` |
+| malajálam | `ml` | malajálam `Mlym` | --> | Latin `Latn` |
+| maráthi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
+| orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
+| pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
+| szerb (cirill betűs) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latin `Latn` |
+| szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cyrilice `Cyrl`|
+| tamil | `ta` | tamil `Taml` | --> | Latin `Latn` |
+| telugu | `te` | telugu `Telu` | --> | Latin `Latn` |
+| thai | `th` | thai `Thai` | <--> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Szótár
 
@@ -187,9 +186,9 @@ A szótár, vagy a Keresés és a példák módszerekkel angol a következő nye
 | vietnami      | `vi`          |
 | walesi      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Az észlelési módszer által észlelt nyelvek
+## <a name="detect"></a>Észlelés
 
-Az alábbi nyelveken észlelik az észlelési módszer. Május észleli, hogy a Microsoft Translator nem fordítható le nyelvfelismerés.
+Az észlelési módszer a következő nyelveket támogatja. Észleli a május azonosítani azokat a nyelveket, amelyek a Microsoft Translator nem fordítható le.
 
 | Nyelv    |
 |:----------- |
@@ -256,16 +255,60 @@ Az alábbi nyelveken észlelik az észlelési módszer. Május észleli, hogy a 
 | ukrán |
 | urdu |
 | üzbég (cirill betűs) |
-| özbeg (latin betűs) |
+| üzbég (latin betűs) |
 | vietnami |
 | walesi |
 | Jiddis |
 
-## <a name="access-the-list-programmatically"></a>A lista programozott elérése
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>A Translator Text API nyelvek listája programozott elérése
 
-Programozott módon használja a 3.0-s verzió API nyelvek működésének támogatott nyelvek listáját is elérheti. A lista funkció, nyelvi kódját, valamint a nyelv neve szerint angolul vagy bármely más támogatott nyelv tekintheti meg. Ez a lista automatikusan frissül a Microsoft Translator szolgáltatás, amint elérhetővé válnak az új nyelvek.
+A Translator Text API 3.0 a nyelvek metódussal a támogatott nyelvek listáját kérheti le. A lista funkció, nyelvi kódját, valamint a nyelv neve szerint angolul vagy bármely más támogatott nyelv tekintheti meg. Ez a lista automatikusan frissül a Microsoft Translator szolgáltatás szerint az új nyelvek elérhetővé válnak.
 
 [Nyelvek művelet segédanyagok megtekintése](reference/v3-0-languages.md)
+
+## <a name="customization"></a>Testreszabás
+
+A következő nyelveket is rendelkezésre áll-e a testreszabási [egyéni a fordítót](http://aka.ms/CustomTranslator).
+
+| Nyelv    | Nyelvkód |
+|:----------- |:-------------:|
+| arab       | `ar`          |
+| Bengáli      | `bn`          |
+| bosnyák (latin betűs)      | `bs`          |
+| bolgár      | `bg`          |
+| kínai (egyszerűsített)      | `zh-Hans`          |
+| horvát      | `hr`          |
+| cseh      | `cs`          |
+| dán      | `da`          |
+| holland      | `nl`          |
+| Angol    | `en`     |
+| észt      | `et`          |
+| finn      | `fi`          |
+| francia      | `fr`          |
+| német      | `de`          |
+| görög      | `el`          |
+| héber      | `he`          |
+| hindi      | `hi`          |
+| magyar      | `hu`          |
+| olasz      | `it`          |
+| japán      | `ja`          |
+| koreai      | `ko`          |
+| lett      | `lv`          |
+| litván      | `lt`          |
+| norvég      | `nb`          |
+| lengyel      | `pl`          |
+| portugál      | `pt`          |
+| román      | `ro`          |
+| orosz      | `ru`          |
+| szerb (latin betűs)      | `sr-Latn`          |
+| szlovák     | `sk`          |
+| szlovén      | `sl`          |
+| spanyol      | `es`          |
+| svéd      | `sv`          |
+| thai      | `th`          |
+| török      | `tr`          |
+| ukrán      | `uk`          |
+| vietnami      | `vi`          |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a listában, a Microsoft Translator webhelyen
 

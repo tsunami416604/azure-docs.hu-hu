@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 588bd5b3edeadb841de54691cf30916dd18c0982
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6dd063f8d6520e3ee18dcb3899c1cca16d732707
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093001"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608715"
 ---
-# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso áttelepítési: egy Contoso Linux-szolgáltatás desk több régióban az Azure App Service-ben, a Traffic Manager és az Azure-beli MySQL alkalmazás újrabontása
+# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso áttelepítése: Egy Contoso Linux-szolgáltatás desk több régióban az Azure App Service-ben, a Traffic Manager és az Azure-beli MySQL alkalmazás újrabontása
 
 Ez a cikk bemutatja, hogyan Contoso refactors telepítse át a helyszíni kétrétegű Linux szolgáltatás desk alkalmazás (osTicket), a GitHub-integráció az Azure App Service és az Azure-beli MySQL.
 
@@ -22,20 +22,20 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-[1. cikk: áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
+[1. cikk: – Áttekintés](contoso-migration-overview.md) | A cikk sorozat, a Contoso-áttelepítési stratégia és az adatsorozathoz használt mintaalkalmazások áttekintése. | Elérhető
 [2. cikk: Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
 [3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md)  | Contoso fut, annak a helyszíni SmartHotel360 app VMware-en futó értékelését. Contoso értékeli az alkalmazás virtuális gépek az Azure Migrate szolgáltatás és a Data Migration Assistant szolgáltatást használó alkalmazás SQL Server-adatbázis használatával. | Elérhető
 [4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel360 alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése egy Azure SQL Database felügyelt példánya a a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető   
-[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso a SmartHotel360 alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépekhez. | Elérhető
-[Cikk 6: Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazások Újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel360 alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető 
-[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Elérhető
-[A cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
-[9. cikk: Újrabontás egy alkalmazást az Azure Web Apps és az Azure SQL database](contoso-migration-refactor-web-app-sql.md) | A Contoso a SmartHotel360 alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Elérhető
-10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Ez a cikk
-[11. cikk: Újrabontás a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel360 alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
-[Cikk 14: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
+[5. cikk: Az Azure virtuális gépein egy alkalmazás újratárolása](contoso-migration-rehost-vm.md) | Contoso a SmartHotel360 alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással az Azure virtuális gépekhez. | Elérhető
+[6. cikk: Egy Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazás újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel360 alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető 
+[7. cikk: Egy Azure-beli virtuális gépeken Linux alkalmazás újratárolása](contoso-migration-rehost-linux-vm.md) | Contoso az Azure virtuális gépek Azure Site Recovery használatával Linux osTicket alkalmazás lift-and-shift áttelepítés befejezése | Elérhető
+[8. cikk: Egy Azure virtuális gépek és az Azure MySQL Linux alkalmazás újratárolása](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Azure Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
+[9. cikk: Az Azure Web Apps és az Azure SQL database alkalmazás újrabontása](contoso-migration-refactor-web-app-sql.md) | A Contoso a SmartHotel360 alkalmazást áttelepíti az Azure Web Apps és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány, a Database Migration Assistant | Elérhető
+10. cikk: Az Azure Web Apps és az Azure MySQL egy Linux-alkalmazás újrabontása | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Ez a cikk
+[11. cikk: Refaktorovat a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
+[12. cikk: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
+[13. cikk: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel360 alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
+[14. cikk: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
 
 Ebben a cikkben a Contoso kétrétegű Linuxos Apache MySQL PHP (LAMP-) szolgáltatás desk alkalmazás (osTicket) áttelepíti az Azure-bA. Ha szeretné a nyílt forráskódú alkalmazás használja, letöltheti azt [GitHub](https://github.com/osTicket/osTicket).
 
@@ -45,10 +45,10 @@ Ebben a cikkben a Contoso kétrétegű Linuxos Apache MySQL PHP (LAMP-) szolgál
 Az informatikai vezetőségi szorosan együttműködik üzleti partnerek megértéséhez, amit szeretnének eléréséhez:
 
 - **Üzleti növekedés cím**: Contoso növekvő, és új piacokra áthelyezése. További vásárlói szolgáltatási ügynökök szükséges. 
-- **Méretezési csoport**: A megoldás kell kialakítani, hogy a Contoso adhat hozzá további felhasználói szolgáltatási ügynökök a üzleti skálázását követve rugalmasan méretezhető.
-- **Ellenálló-képesség növelésére**: a rendszer az elmúlt kérdéseket az érintett kizárólag belső használatra. Az új üzleti modell a külső felhasználók hatással lesz, és minden alkalommal Contoso kell az alkalmazást, majd futtassa.
+- **Méretezési csoport**: A megoldás, hogy a Contoso adhat hozzá további felhasználói szolgáltatási ügynökök a üzleti skálázását követve rugalmasan méretezhető kell építeni.
+- **Ellenálló-képesség növelésére**:  A rendszer az elmúlt kérdéseket az érintett kizárólag belső használatra. Az új üzleti modell a külső felhasználók hatással lesz, és minden alkalommal Contoso kell az alkalmazást, majd futtassa.
 
-## <a name="migration-goals"></a>Áttelepítési célok
+## <a name="migration-goals"></a>Migrálási célok
 
 A Contoso felhőalapú csapat rendelkezik rögzített az áttelepítés célok le annak érdekében, hogy a legmegfelelőbb migrálási módszer:
 
@@ -129,17 +129,17 @@ Contoso befejezi az áttelepítési folyamat a következő:
 Itt látható, hogyan Contoso az áttelepítés elvégzéséhez:
 
 > [!div class="checklist"]
-> * **1. lépés: Kiépítés az Azure App Services**: Contoso-rendszergazdák is üzembe helyezi a Web Apps, az elsődleges és másodlagos régióban.
-> * **2. lépés: Állítsa be a Traffic Managert**:, állítsa be a Traffic Manager elé a Web Apps, a forgalom-útválasztási és teherelosztási.
-> * **3. lépés: Kiépítése MySQL**: az Azure-ban, akkor az Azure MySQL-adatbázis egy példányának kiosztása.
-> * **4. lépés: Az adatbázis Migrálása**: nekik át az adatbázist a MySQL Workbench használatával. 
-> * **5. lépés: Állítsa be a Githubot**:, állítsa be az alkalmazás webhelyek/kódot egy helyi GitHub-adattárból.
-> * **6. lépés: A webes alkalmazások üzembe helyezése**: azok központi telepítése a web apps, a Githubról.
+> * **1. lépés: Az Azure App Services kiépítése**: Contoso-rendszergazdák is üzembe helyezi a Web Apps, az elsődleges és másodlagos régióban.
+> * **2. lépés: Állítsa be a Traffic Managert**: Állítsa be Traffic Managert elé a Web Apps, a forgalom-útválasztási és teherelosztási.
+> * **3. lépés: MySQL kiépítése**: Az Azure-ban akkor az Azure MySQL-adatbázis egy példányának kiosztása.
+> * **4. lépés: Az adatbázis migrálása**: Akkor telepítse át az adatbázist a MySQL Workbench használatával. 
+> * **5. lépés: Állítsa be a Githubot**: Azok az alkalmazás webhelyek/kódot egy helyi GitHub-adattár beállítása.
+> * **6. lépés: A webes alkalmazások üzembe helyezése**: A web apps, a Githubról azokat üzembe.
 
 
 
 
-## <a name="step-1-provision-azure-app-services"></a>1. lépés: Kiépítése az Azure App Servicesben
+## <a name="step-1-provision-azure-app-services"></a>1. lépés: Üzembe helyezése az Azure App Servicesben
 
 Contoso rendszergazdák két Web apps (egy, az egyes régiókban) üzembe helyezése az Azure App Services használatával.
 
@@ -163,11 +163,11 @@ Contoso rendszergazdák két Web apps (egy, az egyes régiókban) üzembe helyez
 
 **További segítségre van szüksége?**
 
-- Ismerje meg [az Azure App Service Web apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview).
+- Ismerje meg [az Azure App Service Web apps](https://docs.microsoft.com/azure/app-service/overview).
 - Ismerje meg [Linuxon futó Azure App Service](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro).
 
 
-## <a name="step-2-set-up-traffic-manager"></a>2. lépés: Állítsa be a Traffic Managert
+## <a name="step-2-set-up-traffic-manager"></a>2. lépés: Állítsa be a Traffic Managert
 
 Contoso rendszergazdák be Traffic Manager számára a bejövő webes kéréseket a Web Apps a osTicket webes réteg futó be.
 
@@ -188,7 +188,7 @@ Contoso rendszergazdák be Traffic Manager számára a bejövő webes kéréseke
 - Ismerje meg [a Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview).
 - Ismerje meg [irányítaná a forgalmat magas prioritású végpontra](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-priority-routing-method).
  
-## <a name="step-3-provision-azure-database-for-mysql"></a>3. lépés: Az Azure-adatbázis kiépítése a MySQL-hez
+## <a name="step-3-provision-azure-database-for-mysql"></a>3. lépés: MySQL-hez készült Azure-adatbázis kiépítése
 
 Contoso rendszergazdák egy MySQL-adatbázispéldányban az USA keleti RÉGIÓJA 2 elsődleges régióban üzembe helyezheti.
 
@@ -212,7 +212,7 @@ Contoso rendszergazdák egy MySQL-adatbázispéldányban az USA keleti RÉGIÓJA
 
 
 
-## <a name="step-4-migrate-the-database"></a>4. lépés: Az adatbázis Migrálása
+## <a name="step-4-migrate-the-database"></a>4. lépés: Az adatbázis migrálása
 
 Contoso rendszergazdák telepítse át az adatbázis biztonsági mentése és visszaállítása, MySQL eszközök használatával. Ezek a MySQL Workbench telepítése, az adatbázis biztonsági mentése a OSTICKETMYSQL és majd állítsa vissza az Azure Database for MySQL-kiszolgálót.
 
@@ -292,7 +292,7 @@ Contoso-rendszergazdák az Azure MySQL-ben hozzon létre egy új, privát GitHub
 
     ![GitHub](./media/contoso-migration-refactor-linux-app-service-mysql/github7.png)
 
-## <a name="step-6-configure-the-web-apps"></a>6. lépés: A webes alkalmazások konfigurálása
+## <a name="step-6-configure-the-web-apps"></a>6. lépés: A webalkalmazások konfigurálása
 
 Az áttelepítési folyamat utolsó lépéseként Contoso rendszergazdák a webalkalmazások konfigurálása a osTicket webhelyek szolgáltatással.
 

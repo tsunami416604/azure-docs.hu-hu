@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298530"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554588"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és az esemény tartományok használatával közzé az eseményeket
 
@@ -139,7 +139,7 @@ Az engedélyeket, amelyek be vannak állítva a témakör az Azure Active Direct
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Események közzétételét egy Event Grid-tartomány
 
-Események közzétételét egy tartomány pedig ugyanaz, mint [közzététele egy egyéni témakör](./post-to-custom-topic.md). Az egyetlen különbség, hogy meg kell adnia minden egyes esemény nyissa meg a kívánt témakör. Az alábbi tömböt események az esemény eredményezne `"id": "1111"` témakörbe `foo` esemény közben `"id": "2222"` küldi el a témakör `bar`:
+Események közzétételét egy tartomány pedig ugyanaz, mint [közzététele egy egyéni témakör](./post-to-custom-topic.md). A közzététel az egyéni témakörbe helyett az összes esemény közzététele a tartomány-végpontra. A JSON-esemény adatokat adja meg a témakör az eseményeket, nyissa meg a kívánt. Az alábbi tömböt események az esemény eredményezne `"id": "1111"` témakörbe `demotopic1` esemény közben `"id": "2222"` küldi el a témakör `demotopic2`:
 
 ```json
 [{
@@ -168,7 +168,15 @@ Események közzétételét egy tartomány pedig ugyanaz, mint [közzététele e
 }]
 ```
 
-Az Azure CLI-vel egy tartományhoz a kulcsok lekéréséhez használja:
+Az Azure CLI-vel a tartomány végpontot használja
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+A kulcsokat a tartomány lekérdezéséhez használja:
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-PowerShell esetén használja az alábbi parancsot:
+A PowerShell-lel a tartomány végpontot használja
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+A kulcsokat a tartomány lekérdezéséhez használja:
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

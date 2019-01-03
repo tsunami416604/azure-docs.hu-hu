@@ -1,5 +1,5 @@
 ---
-title: A csatlakoztatott gyár topológia konfigurálása |} A Microsoft Docs
+title: A csatlakoztatott gyár topológiát – Azure |} A Microsoft Docs
 description: Hogyan konfigurálható egy Okosgyár-megoldásgyorsító topológiája.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746979"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602273"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Az Okosgyár-megoldásgyorsító konfigurálása
 
@@ -85,7 +85,7 @@ Az alábbi kódrészlet vázlatát mutatja be a `ContosoTopologyDescription.json
 }
 ```
 
-Általános tulajdonságainak `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, és `<station_configuration>` vannak:
+Általános tulajdonságainak `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, és `<station_configuration>` vannak:
 
 * **Név** (írja be a karakterláncot.)
 
@@ -282,7 +282,7 @@ A csatlakoztatott gyár szimuláció OEE/KPI adatok paraméterezni vannak:
 * OPC UA csomópont értékek kiszámítása szerepelnek.
 * Hogyan ábra számított a telemetriai adatok értékek közül.
 
-Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a http://www.oeefoundation.org.
+Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a https://www.oeefoundation.org.
 
 Az állomás OPC UA objektumok engedélyezze a használat az OEE/KPI számítási címkézést. A **relevancia alapján végzett** a tulajdonság azt jelzi, hogy mely OEE/KPI. ábra az OPC UA-csomópont értéket kell használni. A **Feladatkategóriát** tulajdonság határozza meg, hogyan a számítás értékét tartalmazza.
 
@@ -309,7 +309,7 @@ Az egyes műveletek, például a Time Series Insight-lekérdezések létrehozás
 
 Ellenőrizze [ez](https://github.com/Azure/iot-edge-opc-publisher) további információ a telemetriai adatokat a csatlakoztatott gyár az OPC-közzétevő használatával betöltött hogyan GitHub-oldalon.
 
-## <a name="example-how-kpi1-is-calculated"></a>Példa: Hogyan KPI1 kiszámítása
+## <a name="example-how-kpi1-is-calculated"></a>Példa: Hogyan kerül kiszámításra KPI1
 
 A konfigurációt a `ContosoTopologyDescription.json` fájl szabályozza, hogy hogyan OEE/KPI-értékek kiszámítása. Az alábbi példa bemutatja, hogyan szabályozhatja az tulajdonságai ebben a fájlban a KPI1 elkészítése.
 

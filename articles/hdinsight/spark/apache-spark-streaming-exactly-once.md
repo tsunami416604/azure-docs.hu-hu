@@ -8,20 +8,20 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581000"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651775"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Az Apache Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása
 
 Stream-feldolgozó alkalmazások többféle hogyan azokat újra feldolgozási üzenetek kezeléséhez néhány hiba után a rendszer hajtsa végre:
 
-* Legalább egyszer: üzenetek garantáltan dolgozható fel, de azt lehet feldolgozni egynél többször.
+* Legalább egy alkalommal: Üzenetek garantáltan dolgozható fel, de azt lehet feldolgozni egynél többször.
 * Legfeljebb egyszer: Előfordulhat, hogy minden üzenetet, vagy nem dolgozható fel. Ha egy üzenet feldolgozása történik, azt csak egyszer dolgozza fel.
-* Pontosan egyszer: üzenetek garantáltan egyszer és csak egyszer lehet feldolgozni.
+* Pontosan egyszer: Mindegyik üzenet garantáltan egyszer és csak egyszer lehet feldolgozni.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a Spark Streaming pontosan eléréséhez-egyszeri feldolgozását.
 
@@ -29,11 +29,11 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a Spark Streaming pontosan elérés
 
 Először vegye figyelembe az összes, a rendszer pontokat újraindítása után probléma, és hogyan adatok elvesztését elkerülheti. A Spark Streaming alkalmazás rendelkezik:
 
-* Egy bemeneti forrás
-* Egy vagy több fogadó folyamatokat, amelyek a bemeneti forrásból származó adatok lekérése
-* Feladatokat, amelyek az adatok feldolgozása
-* Egy kimeneti fogadóba
-* Egy illesztőprogram-folyamat, amely kezeli a hosszan futó feladat
+* Egy bemeneti forrás.
+* Egy vagy több fogadó folyamat, amely a bemeneti forrásból származó adatok beolvasását.
+* A feladatok az adatokat.
+* Egy kimeneti fogadó.
+* Egy illesztőprogram-folyamat, amely kezeli a hosszan futó feladatot.
 
 Pontosan-szemantika megkövetelése, hogy bármikor adatvesztés, pedig a üzenetfeldolgozás újraindítható, függetlenül attól, ahol a hiba akkor fordul elő, ha.
 
@@ -41,7 +41,7 @@ Pontosan-szemantika megkövetelése, hogy bármikor adatvesztés, pedig a üzene
 
 A Spark Streaming alkalmazás éppen olvas az események forrása lehet *replayable*. Ez azt jelenti, hogy azokban az esetekben, ahol az üzenet megtörtént, de majd a rendszer nem sikerült, mielőtt az üzenet volt maradnak meg vagy feldolgozott, a forrás kell megadnia ugyanazt az üzenetet újra.
 
-Az Azure-ban, mind az Azure Event Hubs és a [Apache Kafka](https://kafka.apache.org/) HDInsight biztosítson replayable források. Replayable forrás egy másik példa egy olyan és hibatűrő fájlrendszer, például [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), az Azure Storage-blobokkal, vagy az Azure Data Lake Store, ahol örökre tárolt összes adatot, és bármikor újra olvassa el a teljes egészében az adatokat.
+Az Azure-ban, mind az Azure Event Hubs és a [Apache Kafka](https://kafka.apache.org/) HDInsight biztosítson replayable források. Replayable forrás egy másik példa egy olyan és hibatűrő fájlrendszer, például [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), az Azure Storage-blobokkal, vagy az Azure Data Lake Storage, amelyben örökre tárolt összes adatot, és bármikor újra olvashat ebben az esetben az adatok.
 
 ### <a name="reliable-receivers"></a>Megbízható fogadók
 
@@ -49,7 +49,7 @@ A Spark Streaming, adatforrások, az Event Hubs és a Kafka rendelkezik *megbíz
 
 ### <a name="use-the-write-ahead-log"></a>Az írási előre bejelentkezési
 
-Spark Streaming írási előre napló, ahol minden egyes fogadott események először írt ellenőrzőpont directory Spark-és hibatűrő tárolási és tárolja az egy rugalmas elosztott adatkészlet (RDD) használatát támogatja. Az Azure-ban a hibatűrő tárolási HDFS támogatásával az Azure Storage vagy az Azure Data Lake Store. Az a Spark Streaming-alkalmazás az írási előre napló engedélyezve van az összes fogadók beállításával a `spark.streaming.receiver.writeAheadLog.enable` a konfigurációs beállítás `true`. Az írási előre napló hibák az illesztőprogram és a végrehajtóval hibatűrést biztosít.
+Spark Streaming írási előre napló, ahol minden egyes fogadott események először írt ellenőrzőpont directory Spark-és hibatűrő tárolási és tárolja az egy rugalmas elosztott adatkészlet (RDD) használatát támogatja. Az Azure-ban a hibatűrő tárolási támogatásával az Azure Storage vagy az Azure Data Lake Storage HDFS. Az a Spark Streaming-alkalmazás az írási előre napló engedélyezve van az összes fogadók beállításával a `spark.streaming.receiver.writeAheadLog.enable` a konfigurációs beállítás `true`. Az írási előre napló hibák az illesztőprogram és a végrehajtóval hibatűrést biztosít.
 
 A munkavállalók feladatokat futtat az eseményadatokat minden RDD-definíció is replikálódnak, és a feldolgozó elosztva által van. Ha egy feladat sikertelen lesz, mivel a feldolgozó fut, lefagyott, a feladat egy másik feldolgozón, ahol az eseményadatok replikája újraindul, így az esemény, nem elveszett.
 
@@ -66,7 +66,7 @@ Az ellenőrzőpontok a Spark Streaming két lépésben engedélyezve vannak.
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    A HDInsight az alapértelmezett tároló csatlakozik a fürthöz, az Azure Storage vagy az Azure Data Lake Store ezeket az ellenőrzőpontokat kell menteni.
+    A HDInsight az alapértelmezett tároló csatlakozik a fürthöz, az Azure Storage vagy az Azure Data Lake Storage ezeket az ellenőrzőpontokat kell menteni.
 
 2. Ezután a DStream adjon meg egy ellenőrzőpont időköz (másodpercben). Időközönként a bemeneti eseményt származó állapotadatokat megőrzi a storage. Megőrzött állapot adatait csökkentheti a számítási van szükség, amikor az állapot, a forrás-eseményből származó újraépítése.
 
@@ -85,7 +85,7 @@ Logika, amely először ellenőrzi, hogy létezik-e az adattárhoz bejövő ered
 
 Például kreditért igénybe Azure SQL Database-események szúr be egy tábla egy tárolt eljárást. Az esemény kulcsmezők, és csak akkor, ha nem található egyező esemény a rekord a táblába beszúrt nem először megkeresi ezt a tárolt eljárást.
 
-Egy másik példa, particionált fájlrendszer, mint az Azure Storage-blobok, illetve az Azure Data Lake store használata. Ebben az esetben a fogadó logika nem kell ellenőriznie a fájl létezik-e. Ha a fájlt, amely az esemény létezik, egyszerűen felül az adatokról. Ellenkező esetben egy új fájl jön létre számított elérési úton.
+Egy másik példa, hogy egy particionált fájlrendszer, mint például az Azure Storage blobból vagy az Azure Data Lake Storage. Ebben az esetben a fogadó logika nem kell ellenőriznie a fájl létezik-e. Ha a fájlt, amely az esemény létezik, egyszerűen felül az adatokról. Ellenkező esetben egy új fájl jön létre számított elérési úton.
 
 ## <a name="next-steps"></a>További lépések
 

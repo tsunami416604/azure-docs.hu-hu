@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242585"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632874"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Médiafájlok feldolgozása az Azure Media hyperlapse használatával
+
+> [!NOTE]
+> Az előzetes verziójú funkció az Azure Media Services hamarosan megszűnik. 2018. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019. március 29., a kivont és már nem elérhető lesz.
+
 Az Azure Media Hyperlapse egy adathordozó processzor (pont), amely zökkenőmentes idő lejárt videók létrehozza az első, aki vagy művelet – kamera tartalmak.  A felhő alapú testvérének [a Microsoft Research asztali Hyperlapse Pro és a Hyperlapse Mobile phone-alapú](https://aka.ms/hyperlapse), a Microsoft Hyperlapse for Azure Media Services már használja az Azure Media Services Media feldolgozási hatalmas mennyiségű horizontális skálázása és párhuzamosíthatja platform tömeges feldolgozása hyperlapse használatával.
 
 > [!IMPORTANT]

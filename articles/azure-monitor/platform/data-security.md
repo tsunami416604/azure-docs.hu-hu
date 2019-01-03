@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: fa7d89d749d50d62ce54ea71d604831e8919b454
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189846"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652064"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/security-microsoft-trust-center.md).  
@@ -60,7 +60,7 @@ Miután az adatokat a Log Analytics szolgáltatás által betöltött, az adatok
 ## <a name="data-retention"></a>Adatmegőrzés
 Log search indexelt adatokat tárolja és őrzi meg a díjszabási tervnek megfelelően. További információkért lásd: [Log Analytics Díjszabásáról](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-Részeként a [előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/), Microsoft megőrzi az adatokat, a szerződés feltételeinek megfelelően.  Az adatok törlése után is töröljük az Azure Storage-fiókot, ahol az adatok találhatók.  Vásárlói adatokat a rendszer eltávolítja, ha nincsenek fizikai meghajtók megsemmisül.  
+Részeként a [előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/), Microsoft megőrzi az adatokat, a szerződés feltételeinek megfelelően.  Vásárlói adatokat a rendszer eltávolítja, ha nincsenek fizikai meghajtók megsemmisül.  
 
 Az alábbi táblázat soroljuk fel az elérhető megoldások, és példákat tartalmaz a gyűjtött adatok típusától.
 
@@ -150,7 +150,7 @@ A szervezet a Log Analytics szolgáltatásnak egy Azure-beli virtuális gépeken
 * [Szervezeti azonosító](../../active-directory/fundamentals/sign-up-organization.md)
 * [A Microsoft-fiók – az Outlook, Office Live, az MSN](https://account.microsoft.com/account)
 
-A Log Analytics-munkaterületen, az adatokat, gyűjtött, összesítése, elemzése, és jelenik meg. A munkaterület elsősorban egy azt jelenti, hogy az adatok particionálása, és az egyes munkaterületeken egyedi. Például érdemes az üzemi adatok egy munkaterülethez felügyelt és a egy másik munkaterülettel felügyelt adatok rendelkezik. Munkaterületek egy rendszergazda felhasználó elérés is segítenek az adatok. Az egyes munkaterületeken lehet több felhasználói fiók tartozik, és minden felhasználói fiók több Log Analytics-munkaterületek hozzáférhet. Munkaterületek adatközpont-régió alapján hoz létre. Más adatközpontokban a régióban, elsősorban a Log Analytics szolgáltatás rendelkezésre állása az egyes munkaterületeken replikálása.
+A Log Analytics-munkaterületen, az adatokat, gyűjtött, összesítése, elemzése, és jelenik meg. A munkaterület elsősorban egy azt jelenti, hogy az adatok particionálása, és az egyes munkaterületeken egyedi. Például érdemes az üzemi adatok egy munkaterülethez felügyelt és a egy másik munkaterülettel felügyelt adatok rendelkezik. Munkaterületek egy rendszergazda felhasználó elérés is segítenek az adatok. Az egyes munkaterületeken lehet több felhasználói fiók tartozik, és minden felhasználói fiók több Log Analytics-munkaterületek hozzáférhet. Munkaterületek adatközpont-régió alapján hoz létre.
 
 Az Operations Manager felügyeleti csoport Operations Manager, hozza létre a kapcsolatot a Log Analytics szolgáltatással. Ezután konfigurálnia melyik ügynök által felügyelt rendszerekhez a felügyeleti csoport és engedélyezett a gyűjthet adatokat küldeni a szolgáltatás. Engedélyezte a megoldástól függően vannak ezek a megoldások adatait vagy a Log Analytics szolgáltatással vagy az ügynök által felügyelt rendszer által gyűjtött adatok mennyisége miatt küldő közvetlenül egy Operations Manager felügyeleti kiszolgálóról közvetlenül a érkeznek a szolgáltatás az ügynök. Nem figyelt meg az Operations Manager rendszerhez csatlakozik biztonságosan a Log Analytics szolgáltatással közvetlenül.
 

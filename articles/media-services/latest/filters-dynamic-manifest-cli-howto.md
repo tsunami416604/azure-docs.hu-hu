@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5aa617edf13aee9c5899a59c46aeb729f202719f
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133859"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744207"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 
@@ -37,7 +37,7 @@ Ez a témakör bemutatja, hogyan beállít egy szűrőt az igény szerinti vide�
 
 ## <a name="define-a-filter"></a>Szűrő megadásához. 
 
-Az alábbi példa meghatározza a végső jegyzékfájl hozzáadott követése kiválasztási feltételek. Ez a szűrő tartalmazza, bármilyen, amelyek angol-EK-3 hangsáv és bármely videó nyomon követi a 0-1000000 sávszélességű rendelkező tartományt.
+Az alábbi példa meghatározza a végső jegyzékfájl hozzáadott követése kiválasztási feltételek. Ez a szűrő tartalmazza, bármilyen, amelyek EC-3 hangsáv és bármely videó nyomon követi a 0-1000000 sávszélességű rendelkező tartományt.
 
 REST, a megadott szűrők közé tartozik a "Tulajdonságok" burkolót JSON-objektum.  
 
@@ -48,11 +48,6 @@ REST, a megadott szűrők közé tartozik a "Tulajdonságok" burkolót JSON-obje
             {
                 "property": "Type",
                 "value": "Audio",
-                "operation": "Equal"
-            },
-            {
-                "property": "Language",
-                "value": "en",
                 "operation": "Equal"
             },
             {
@@ -83,8 +78,16 @@ REST, a megadott szűrők közé tartozik a "Tulajdonságok" burkolót JSON-obje
 
 A következő [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) parancs létrehoz egy szűrő szűrő nyomon követése beállításokat, amelyek korábban [korábban meghatározott](#define-a-filter). 
 
+A következő parancsot egy lehetőség lehetővé teszi, hogy `--tracks` , amely fogad egy fájlt. Ha az Azure CLI helyileg használ, adja meg a fájl teljes elérési útja:
+
 ```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @C:\tracks.json
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
+```
+
+Ha az Azure Cloud Shellt használja, töltse fel a fájlt a Cloud Shellben (Keresés a rendszerhéj-ablak tetején, a feltöltési/letöltési fájlok gombra). Ezután hivatkozhat a fájlt ehhez hasonló:
+
+```azurecli
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
 Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter).
@@ -93,8 +96,11 @@ Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/
 
 A következő [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy adategység-szűrő szűrő nyomon követése beállításokat, amelyek korábban [korábban meghatározott](#define-a-filter). 
 
+> [!TIP]
+> Információ megadása a fájl nevét, helyét az előző szakaszban.
+
 ```azurecli
-az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @C:\tracks.json
+az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
 Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).

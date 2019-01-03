@@ -3,17 +3,17 @@ title: Az Azure IoT Hub Device Provisioning Service automatikus kiépítés hasz
 description: Hogyan használható az Azure IoT Hub Device Provisioning Service automatikus kiépítés az MXChip IoT DevKit regisztrálása az IoT hubbal.
 author: liydu
 ms.author: liydu
-ms.date: 04/04/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: d8912a5da8c4df2069d8bc53454748b5fb3d5c39
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 45d3ee88706c1818cf519daad2bff1704b5d6120
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054926"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713590"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az MXChip IoT DevKit IoT Hub-regisztráció az Azure IoT Hub Device Provisioning Service automatikus kiépítés használatával
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioni
 * Egy adott eszköz regisztrálásához.
 * Győződjön meg arról, hogy az eszköz regisztrálva van-e.
 
-A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompatibilis tábla a gazdag perifériák és érzékelők van. Is fejleszthet, használja a [Arduino a Visual Studio Code-bővítmény](https://aka.ms/arduino). A fejlesztői készlet együttműködik a egyre növekvő [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) is, amelyek kihasználják az Azure-szolgáltatások prototípusként Internet of Things (IoT) megoldását.
+A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) vagy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítőcsomagjának Visual Studio Code-ban. A fejlesztői készlet együttműködik a egyre növekvő [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) is, amelyek kihasználják az Azure-szolgáltatások prototípusként Internet of Things (IoT) megoldását.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -34,120 +34,94 @@ Ez az oktatóanyag lépéseinek végrehajtásához először a következő felad
 * Frissítés a legújabb belső vezérlőprogramjának (1.3.0 vagy újabb) az a [frissítés DevKit belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) oktatóanyag.
 * Létrehozzák és összekapcsolják az IoT Hub Device Provisioning service-példánnyal a lépéseket követve [állítsa be az IoT Hub Device Provisioning Service az Azure Portallal](/azure/iot-dps/quick-setup-auto-provision).
 
-## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>Létrehozása és üzembe helyezése a regisztrációs szoftver automatikus kiépítés az eszközön
+## <a name="open-sample-project"></a>Nyissa meg a mintaprojektet
 
-A fejlesztői készlet csatlakozás az Eszközkiépítési szolgáltatás példányt Ön hozta létre:
+1. Győződjön meg arról, hogy az IoT DevKit **nincs csatlakoztatva** a számítógépre. Először indítsa el a VS Code, és a fejlesztői készlet csatlakoztatása a számítógéphez.
 
-1. Az Azure Portalon válassza ki a **áttekintése** ablaktábláján a Device Provisioning service és jegyezze fel a **globális eszköz végpontja** és **azonosító hatóköre** értékeket.
-  ![Device Provisioning szolgáltatás globális végpontja és azonosító hatóköre](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+1. Kattintson a `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: Példák megnyitása...** . Válassza ki **IoT DevKit** , tábla.
 
-2. Ellenőrizze, hogy `git` telepítve van a gépén, és hogy az hozzáadódik a parancsablakból elérhető környezeti változókhoz. Lásd: [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) szeretné, hogy a legfrissebb verzió van telepítve.
+1. Az IoT Workbench példák oldalán található **Eszközregisztráció DPS az** kattintson **nyílt minta**. Ezután kiválasztja a mintakód letöltése az alapértelmezett elérési utat.
+    ![Nyissa meg a minta](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
 
-3. Nyisson meg egy parancssort. Klónozza a GitHub-adattárat a a Device Provisioning service-mintakód:
-  ```bash
-  git clone https://github.com/DevKitExamples/DevKitDPS.git
-  ```
+## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Az eszköz biztonsági storage eszköz egyedi titkos kulcs mentése
 
-4. Nyissa meg a Visual Studio Code-ot, a DevKit csatlakoztatása a számítógéphez, és nyissa meg a klónozott kódot tartalmazó mappát.
+Automatikus kiépítés konfigurálható egy eszközön, az eszköz alapján [igazolási mechanizmus](concepts-security.md#attestation-mechanism). Az MXChip IoT DevKit használja a [eszközt identitás összeállítás motor](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) származó a [Trusted Computing Group](https://trustedcomputinggroup.org). A **egyedi eszköz titkos kulcs** (frissítési) menti egy STSAFE biztonsági lapkával ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) meg a fejlesztői készlet létrehozásához használja az eszköz egyedi a [X.509-tanúsítvány](concepts-security.md#x509-certificates). A tanúsítványt később a beléptetési folyamat a Device Provisioning service-ben, és a futásidőben a regisztráció során használatos.
 
-5. Nyissa meg **DevKitDPS.ino**. Keresés és csere `[Global Device Endpoint]` és `[ID Scope]` le feljegyzett értékekkel.
-  ![Eszköz Provisioning Service-végpont](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) hagyhatja a **registrationId** üres. Az alkalmazás létrehoz egyet a MAC-cím és a belső vezérlőprogram verziója alapján. Ha testre szeretné szabni a regisztrációs Azonosítót, csak alfanumerikus karakterek, kisbetűs használja, és az, amely legfeljebb 128 karakterből kombinációkkal kötőjelet tartalmazhat. További információkért lásd: [eszközök beléptetésének kezelése az Azure Portalon](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
-
-6. Gyors nyissa meg a VS Code használata (Windows: `Ctrl+P`, macOS: `Cmd+P`), és írja be *eszköz feltöltési feladat* hozhat létre és töltse fel a kódot a fejlesztői készlet.
-
-7. A kimeneti ablak mutatja, hogy a feladat sikeres volt-e.
-
-## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>Egy STSAFE biztonsági nehézségekbe ütközhet az eszköz egyedi titkos kulcs mentése
-
-Automatikus kiépítés konfigurálható egy eszközön, az eszköz alapján [igazolási mechanizmus](concepts-security.md#attestation-mechanism). Az MXChip IoT DevKit használja a [eszközt identitás összeállítás motor](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) származó a [Trusted Computing Group](https://trustedcomputinggroup.org). A *eszköz egyedi titkos kulcs* (frissítési) egy STSAFE biztonsági mentésre a DevKit lapka létrehozásához használja az eszköz a egyedi [X.509-tanúsítvány](concepts-security.md#x509-certificates). A tanúsítványt később a beléptetési folyamat a Device Provisioning service-ben, és a futásidőben a regisztráció során használatos.
-
-Egy tipikus eszköz egyedi titkos kulcsot a következő 64 karakterből álló karakterláncnak az alábbi mintában látható módon:
+Egy tipikus frissítési Tartománnyal 64 karakterből álló karakterláncnak, az alábbi mintában látható módon:
 
 ```
 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eae
 ```
 
-A karakterlánc karakterek párok biztonsági kiszámításakor használt van osztva. Frissítési Tartománnyal fel lett oldva az előző példa: `0x19`, `0xe2`, `0x5a`, `0x25`, `0x9d`, `0x0c`, `0x2b`, `0xe0`, `0x3a`, `0x02`, `0xd4`, `0x16` , `0xc0`, `0x5c`, `0x48`, `0xcc`, `0xd0`, `0xcc`, `0x7d`, `0x17`, `0x43`, `0x45`, `0x8a`, `0xae`, `0x1c`, `0xb4`, `0x88`, `0xb0`, `0x74`, `0x99`, `0x3e`, `0xae`.
+Egy frissítési Tartománnyal mentéséhez kattintson a fejlesztői készlet:
 
-A fejlesztői készlet eszköz egyedi titkos kulcs mentése:
+1. A VS Code-ban kattintson az állapotsor választhatja ki a fejlesztői készlet a COM-portot.
+  ![Válassza ki a COM-Port](media/how-to-connect-mxchip-iot-devkit/select-com.png)
 
-1. Nyissa meg a soros figyelő egy eszközt, például a Putty használatával. Lásd: [konfigurációs mód használata](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) részleteiről.
+1. A fejlesztői készlet, tartsa lenyomva a **gombra A**, push és kiadása a **alaphelyzetbe** gombra, majd engedje **gombra A**. A fejlesztői készlet konfigurációs módra vált.
 
-2. A fejlesztői készlet a számítógéphez csatlakozik, tartsa lenyomva a **A** gombra, és nyomja le az és kiadása a **alaphelyzetbe** gombra kattintva adja meg a konfigurációs mód. A képernyőn látható, a fejlesztői készlet azonosítója és a konfiguráció.
+1. Kattintson a `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: -Beállítások konfigurálása... > konfigurációs eszköz egyedi karakterlánc (frissítési)**.
+  ![Frissítési Tartománnyal konfigurálása](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
-3. A minta frissítési Tartománnyal karakterláncot, és módosítsa egy vagy több karakter közötti más értékeket is `0` és `f` a saját frissítési Tartománnyal.
+1. Jegyezze fel a létrehozott karakterlánc frissítési Tartománnyal. Szüksége lesz rá az X.509-tanúsítvány előállításához. Nyomja le az `Enter`.
+  ![Másolja ki a frissítési Tartománnyal](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
-4. A soros figyelő ablakban írja be a *set_dps_uds [your_own_uds_value]* , és nyomja le az Enter.
-  > [!NOTE]
-  > Például, ha a két utolsó karakterek módosításával állítsa be a saját frissítési Tartománnyal `f`, be kell írnia az ehhez hasonló parancsot: `set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff`.
+1. Ellenőrizze, hogy frissítési Tartománnyal sikeresen konfigurálva lett a STSAFE meg az értesítést a.
+  ![Frissítési Tartománnyal sikeres konfigurálása](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
 
-5. Anélkül, hogy a soros figyelő ablak bezárása, nyomja le az **alaphelyzetbe** a DevKit gombjára.
+> [!NOTE]
+> Másik lehetőségként konfigurálhatja frissítési Tartománnyal soros porton keresztül segédprogramokkal, például a putty-kapcsolaton keresztül. Hajtsa végre a [konfigurációs mód használata](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) ennek a végrehajtására.
 
-6. Jegyezze fel a **DevKit MAC-cím** és **DevKit belső vezérlőprogram verziója** értékeket.
-  ![Belső vezérlőprogram verziója](./media/how-to-connect-mxchip-iot-devkit/firmware-version.png)
+## <a name="update-the-global-device-endpoint-and-id-scope"></a>Frissítse a globális eszköz végpontja és az azonosító hatóköre
 
-## <a name="generate-an-x509-certificate"></a>Hozzon létre egy X.509-tanúsítvány
+Az eszköz kód, meg kell adnia a [Eszközregisztrációs végpont](/azure/iot-dps/concepts-service#device-provisioning-endpoint) és azonosító hatóköre annak biztosítása érdekében a bérlők elkülönítését.
 
-Most létre kell hoznia egy X.609 tanúsítványt. 
+1. Az Azure Portalon válassza ki a **áttekintése** ablaktábláján a Device Provisioning service és jegyezze fel a **globális eszköz végpontja** és **azonosító hatóköre** értékeket.
+  ![Device Provisioning szolgáltatás globális végpontja és azonosító hatóköre](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
-### <a name="windows"></a>Windows
+1. Nyissa meg **DeKitDPS.ino**. Keresés és csere `[Global Device Endpoint]` és `[ID Scope]` le feljegyzett értékekkel.
+  ![Eszköz kiépítési szolgáltatás végpontja](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
-1. Nyissa meg a Fájlkezelőt, és lépjen abba a mappába, amely a Device Provisioning Service-mintakód, amely korábban klónozta tartalmazza. Az a **.build** mappát, keresési és másolási **DPS.ino.bin** és **DPS.ino.map**.
-  ![A létrehozott fájlok](./media/how-to-connect-mxchip-iot-devkit/generated-files.png)
-  > [!NOTE]
-  > Ha módosította a `built.path` Arduino konfigurációja egy másik mappába, meg kell keresnie azokat a fájlokat a konfigurált mappában.
+1. Töltse ki a `registrationId` változó a kódban. Csak alfanumerikus karakterek, kisbetűs, és a kötőjel kombináció, amely legfeljebb 128 karakter megengedett. Az érték is lejegyzett.
+  ![Regisztrációs azonosító](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-2. Illessze be két fájlt a **eszközök** ugyanazon a szinten, a mappa a **.build** mappát.
+1. Kattintson a `F1`, írja be, és válassza ki **Azure IoT-eszköz Workbench: Töltse fel az eszköz kód**. Elindítja a kódja lefordításának és a kód feltöltése a fejlesztői készlet.
+  ![Eszköz feltöltése](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
-3. Futtatás **dps_cert_gen.exe**. Kövesse az utasításokat követve adja meg a **frissítési Tartománnyal**, a **MAC-cím** számára a fejlesztői készlet és a **belső vezérlőprogram verziója** X.509-tanúsítvány létrehozásához.
-  ![Run dps-cert-gen.exe](./media/how-to-connect-mxchip-iot-devkit/dps-cert-gen.png)
+## <a name="generate-x509-certificate"></a>X.509-tanúsítvány létrehozása
 
-4. X.509-tanúsítvány jön létre, miután egy **.pem** tanúsítvány ugyanabba a mappába menti.
+A [igazolási mechanizmus](/azure/iot-dps/concepts-device#attestation-mechanism) használják ezt a mintát az X.509-tanúsítvány. A segédprogram használata a létrehozáshoz szüksége.
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Eszközregisztrációs bejegyzés létrehozása a Device Provisioning service-ben
+> [!NOTE]
+> Az X.509-tanúsítványkészítőt csak támogatja a Windows most.
 
-1. Az Azure Portalon nyissa meg a Device Provisioning service-példányt. Válassza ki **beléptetések kezelése**, majd válassza ki a **egyéni regisztrációk** fülre. ![Egyéni regisztrációk](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. A VS Code-ban kattintson `F1`, írja be, és válassza ki **új terminál nyissa meg a** , nyissa meg a terminálablakot.
 
-2. Válassza a **Hozzáadás** lehetőséget.
+1. Futtatás `dps_cert_gen.exe` a `tool` mappát.
 
-3. A "Regisztráció hozzáadása" panelen:
+1. A lefordított bináris fájl helye legyen `..\.build\DevKitDPS`. Illessze be a **frissítési Tartománnyal** és **registrationId** csak lejegyzett. 
+  ![X.509 készítése](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
 
-   - Válassza ki **X.509** alatt **mechanizmus**.
-   - Válassza a "Fájl kijelölése" **elsődleges tanúsítvány .pem or .cer fájlja**.
-   - A fájl megnyitása párbeszédpanelen keresse meg és töltse fel a **.pem** imént létrehozott tanúsítvány.
-   - Az alapértelmezett a többit bízza, és kattintson a **mentése**.
+1. A `.pem` X.509-tanúsítványt hoz létre ugyanabban a mappában.
+  ![X.509-fájl](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
 
-   ![Tanúsítvány feltöltése](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
+## <a name="create-a-device-enrollment-entry"></a>Eszközregisztrációs bejegyzés létrehozása
 
-  > [!NOTE]
-  > Ha ez az üzenet hiba van:
-  >
-  > `{"message":"BadRequest:{\r\n \"errorCode\": 400004,\r\n \"trackingId\": \"1b82d826-ccb4-4e54-91d3-0b25daee8974\",\r\n \"message\": \"The certificate is not a valid base64 string value\",\r\n \"timestampUtc\": \"2018-05-09T13:52:42.7122256Z\"\r\n}"}`
-  >
-  > Nyissa meg a tanúsítványfájl **.pem** szövegként (Megnyitás a Jegyzettömbbe, vagy bármilyen szövegszerkesztővel), és törli a sorokat:
-  >
-  > `"-----BEGIN CERTIFICATE-----"` és `"-----END CERTIFICATE-----"`.
-  >
+1. Az Azure Portalon nyissa meg az eszköz kiépítése szolgáltatást, navigáljon a regisztrációk szakasz kezelése, és kattintson **egyéni regisztráció hozzáadása**.
+  ![Egyéni regisztráció hozzáadása](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
-## <a name="start-the-devkit"></a>Indítsa el a fejlesztői készlet
+1. Fájl ikon mellett kattintson **elsődleges tanúsítvány .pem or .cer fájlja** feltölteni a `.pem` fájl jön létre.
+  ![Töltse fel a .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
-1. Nyissa meg a VS Code és a soros figyelő.
+## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>Ellenőrizze, hogy a fejlesztői készlet regisztrálva van az Azure IoT Hub szolgáltatással
 
-2. Nyomja le az **alaphelyzetbe** a DevKit gombjára.
-
-A fejlesztői készlet kezdő a regisztráció a Device Provisioning service-láthatja.
-
-![A VS Code kimenet](./media/how-to-connect-mxchip-iot-devkit/vscode-output.png)
-
-## <a name="verify-that-the-devkit-is-registered-with-azure-iot-hub"></a>Győződjön meg arról, hogy a fejlesztői készlet regisztrálva van-e az Azure IoT Hub szolgáltatással
-
-Miután az eszköz elindul, a következő műveleteket hajtja végre:
+Nyomja le az **alaphelyzetbe** a DevKit gombjára. Megtekintheti az **DPS csatlakoztatott!** a fejlesztői készlet képernyőn. Miután az eszköz újraindul, a következő műveleteket hajtja végre:
 
 1. Az eszköz regisztrációs kérést küld a Device Provisioning Service-nek.
-2. A Device Provisioning service visszaküld egy regisztrációs kihívást, amelyre az eszköz válaszol.
-3. Sikeres regisztráció esetén a Device Provisioning service visszaküldi az IoT Hub URI-t, az Eszközazonosítót és a titkosított kulcs az eszközhöz.
-4. Az IoT Hub-ügyfélalkalmazás az eszköz csatlakozik a hubhoz.
-5. Sikeres csatlakozás a hubhoz tekintse meg az eszközt az IoT Hub Device Explorer jelennek meg.
+1. A Device Provisioning service visszaküld egy regisztrációs kihívást, amelyre az eszköz válaszol.
+1. Sikeres regisztráció esetén a Device Provisioning service visszaküldi az IoT Hub URI-t, az Eszközazonosítót és a titkosított kulcs az eszközhöz.
+1. Az IoT Hub-ügyfélalkalmazás az eszköz csatlakozik a hubhoz.
+1. Sikeres csatlakozás a hubhoz tekintse meg az eszközt az IoT Hub Device Explorer jelennek meg.
   ![Eszköz regisztrálása](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés

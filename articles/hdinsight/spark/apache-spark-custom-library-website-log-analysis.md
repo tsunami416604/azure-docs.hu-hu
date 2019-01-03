@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 26ee51da0065b15191c6a02bcd10597c1190dd0a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497298"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608800"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Egy egyéni Python-kódtár használata a HDInsight az Apache Spark-fürt webhelynaplók elemzése
 
 Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplófájlok adatait egy egyéni kódtár az Apache Spark on HDInsight használatával. Az egyéni tárát használja használjuk az nevű Python-kódtár **iislogparser.py**.
 
-> [!TIP]
+> [!TIP]  
 > Ebben az oktatóanyagban egyben egy Jupyter notebookot HDInsight szolgáltatásban létrehozott (Linux) Spark-fürtön elérhető. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Egy jegyzetfüzetet belül, az oktatóanyag elvégzéséhez hozzon létre egy Spark-fürtöt, indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), majd futtassa a notebook **-naplók elemzése a Spark használatával egyéni library.ipynb** alatt a **PySpark**  mappát.
 >
 >
@@ -176,7 +176,7 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   A `%%sql` Magic Quadrant követ `-o averagetime` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](http://pandas.pydata.org/) a megadott nevű adathalmaz **averagetime**.
+   A `%%sql` Magic Quadrant követ `-o averagetime` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](https://pandas.pydata.org/) a megadott nevű adathalmaz **averagetime**.
 
    A következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -199,16 +199,16 @@ Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog 
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő segítségével létrehozhat, és küldje el az Apache Spark Scala-alkalmazások](apache-spark-intellij-tool-plugin.md)

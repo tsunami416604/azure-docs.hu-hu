@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082237"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994130"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -25,9 +25,9 @@ Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Make
 
 |Source Type (Forrás típusa)|Tartalomtípus| Példák|
 |--|--|--|
-|URL-cím|(Egyszerű, szakaszok vagy a témakörök kezdőlapja) – gyakori kérdések|[Egyszerű – gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [– gyakori kérdések hivatkozásokkal](https://www.microsoft.com/software-download/faq), [– gyakori kérdések a témakörök kezdőlapja](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF / DOC|Gyakori kérdések, termék manuális, brosúrák, tanulmány, szórólap házirend és támogatási útmutató, strukturált QnA stb.|[Strukturált QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [minta termék Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [félig-structured.doc minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [fehér paper.pdf minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Strukturált QnA fájlt (beleértve a RTF, HTML támogatja)|[Minta QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|URL-cím|Gyakori kérdések<br> (Átalánydíjjal, szakaszok vagy témaköröket kezdőlapja)<br>Támogatási oldal <br> (Egyoldalas útmutatókat, hibaelhárítási cikkek stb.)|[Egyszerű – gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Hivatkozások – gyakori kérdések](https://www.microsoft.com/software-download/faq),<br> [A témakörök kezdőlap – gyakori kérdések](https://support.microsoft.com/products/windows?os=windows-10)<br>[Támogatási cikk](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF / DOC|Gyakori kérdések,<br> A termék kézi,<br> Brosúrák,<br> A papír<br> A házirend szórólap<br> Az útmutató támogatás,<br> A QnA strukturált,<br> Stb.|[Strukturált QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [A termék Manual.pdf minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Félig-structured.doc minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Példa a fehér paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturált QnA fájl<br> (beleértve a RTF, HTML támogatja)|[Minta QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Strukturált QnA fájl|[Minta chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Adatforrás helye
@@ -36,7 +36,7 @@ Csak nyilvános URL-címek érvényesek minden adatforráson. Ne küldjön el a 
 
 ## <a name="faq-urls"></a>Gyakori kérdések URL-címek
 
-A QnA Maker – gyakori kérdések weblapok támogathat 3 különböző képernyőkön: egyszerű gyakori kérdéseket tartalmazó oldalak, a gyakori kérdéseket tartalmazó oldalak mutató hivatkozásokat tartalmaz, a témakörök kezdőlapja a gyakori kérdéseket tartalmazó oldalak.
+A QnA Maker – gyakori kérdések weblapok támogathat 3 különböző képernyőkön: Egyszerű gyakori kérdéseket tartalmazó oldalak, a gyakori kérdéseket tartalmazó oldalak mutató hivatkozásokat tartalmaz, a témakörök kezdőlapja a gyakori kérdéseket tartalmazó oldalak.
 
 ### <a name="plain-faq-pages"></a>Egyszerű gyakori kérdéseket tartalmazó oldalak
 
@@ -65,6 +65,16 @@ Alább egyik példája egy gyakori kérdések lapra, ahol témakörök kezdőlap
  ![Tudásbázis lapon példa áruházra mutató mélyhivatkozás – gyakori kérdések](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
+### <a name="support-urls"></a>Támogatja az URL-címek
+
+A QnA Maker félig strukturált támogatási weblapok, például webes cikkeket, hogy egy adott feladat végrehajtása, diagnosztizálása és a egy adott probléma megoldásához és a egy adott folyamathoz ajánlott eljárások tud feldolgozni. Kibontási hierarchikus fejlécekkel egyértelmű struktúra, amelyik a legjobban használható.
+
+> [!NOTE]
+> A támogatással kapcsolatos cikkek kinyerési új szolgáltatása, és korai szakaszában van. Leginkább egyszerű weblapok esetében, amelyek jól strukturált, és nem tartalmaz összetett fejlécek és láblécek.
+
+![A QnA Maker támogatja a részben strukturált weblapok, ahol egy egyértelmű struktúra hierarchikus fejlécekkel egyike jelenik meg a kinyerés](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+
+
 ## <a name="pdf-doc-files"></a>PDF / DOC fájlok
 
 A QnA Maker egy PDF- vagy DOC fájlban félig strukturált tartalmakat dolgoznak, és átalakíthatja a QnA-tudásbázisok. Egy jó fájl, amely jól kiolvasható olyan tartalom ahol strukturált valamilyen vannak rendezve, és jól definiált szakaszokban jelölt. A szakaszok további a struktúrát, vagy altémakörei kell megszakadt. Kibontási optimális dokumentumok hierarchikus fejlécekkel egyértelmű struktúrával rendelkezik.
@@ -84,7 +94,7 @@ Alább egy példát egy index lapot, és a hierarchikus tartalom manuális van
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Brosúrák, irányelvek, tanulmányok és egyéb fájlokat
 
-Dokumentumok sok más típusú is lehet feldolgozni QA párok, létrehozásához megadott egy egyértelmű elrendezése és rendelkeznek. Ezek közé tartozik a: brosúrák, irányelvek, a jelentések fehér tanulmányok, tudományos dolgozatok, szabályzatok, könyveket, stb. Látható egy példa [Itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Dokumentumok sok más típusú is lehet feldolgozni QA párok, létrehozásához megadott egy egyértelmű elrendezése és rendelkeznek. Ezek a következők: Brosúrák, irányelvek, jelentések, tanulmányok, tudományos dolgozatok, szabályzatok, könyveket, stb. Látható egy példa [Itt](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Az alábbi, egy félig strukturált doc, anélkül, hogy az index egy példát:
 

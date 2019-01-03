@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 603a6bab75c4a5da4425bcc57d2cc5ccda728636
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274135"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721461"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
-Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/app-service-web-overview.md) , amely korábban már készített biztonsági másolatot (lásd: [biztonsági mentése az Azure-ban az alkalmazás](web-sites-backup.md)). Az alkalmazást és annak csatolt adatbázisait igény szerint visszaállíthatja egy korábbi állapotba, vagy az alkalmazás eredeti biztonsági másolatai alapján létrehozhat egy új alkalmazást. Az Azure App Service támogatja a következő adatbázisok biztonsági mentése és visszaállítása:
+Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/overview.md) , amely korábban már készített biztonsági másolatot (lásd: [biztonsági mentése az Azure-ban az alkalmazás](manage-backup.md)). Az alkalmazást és annak csatolt adatbázisait igény szerint visszaállíthatja egy korábbi állapotba, vagy az alkalmazás eredeti biztonsági másolatai alapján létrehozhat egy új alkalmazást. Az Azure App Service támogatja a következő adatbázisok biztonsági mentése és visszaállítása:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
@@ -91,8 +91,8 @@ Automatizálhat biztonsági másolatokat kezelő szkriptekkel, a a [Azure CLI-ve
 
 Minták lásd:
 
-- [Azure CLI-minták](app-service-cli-samples.md)
-- [Azure PowerShell-minták](app-service-powershell-samples.md)
+- [Azure CLI-minták](samples-cli.md)
+- [Azure PowerShell-minták](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

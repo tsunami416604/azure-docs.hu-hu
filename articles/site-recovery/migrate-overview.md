@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9a5c45b66e775ce83625e1f6d9507aaf456c7c7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9ec502f63df23bab311a45972e31e6df13fa9281
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843988"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792974"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
 
@@ -21,9 +21,9 @@ Ez a cikk röviden bemutatja a [Azure Site Recovery](site-recovery-overview.md) 
 
 Íme a következőket telepítheti át a Site Recovery használatával:
 
-- **Migrálása a helyszínről az Azure-bA**: a helyszíni Hyper-V virtuális gépek, VMware virtuális gépek és fizikai kiszolgálók áttelepítése az Azure-bA. Az áttelepítés után a helyszíni gépeken futó számítási feladatok az Azure-beli virtuális gépeken fognak futni. 
-- **Áttelepítés az Azure-on belül**: Azure-beli virtuális gépek áttelepítése Azure-régiók között. 
-- **AWS áttelepítése**: AWS Windows-példányok áttelepítése Azure IaaS virtuális gépekre. 
+- **Migrálása a helyszínről az Azure-bA**: A helyszíni Hyper-V virtuális gépek, VMware virtuális gépek és fizikai kiszolgálók áttelepítése az Azure-bA. Az áttelepítés után a helyszíni gépeken futó számítási feladatok az Azure-beli virtuális gépeken fognak futni. 
+- **Azure Migrate**: Azure virtuális gépek áttelepítése az Azure-régiók között. 
+- **AWS áttelepítése**: AWS Windows-példányok áttelepítése az Azure IaaS virtuális gépekre. 
 
 
 ## <a name="what-do-we-mean-by-migration"></a>Mit értünk áttelepítés alatt?

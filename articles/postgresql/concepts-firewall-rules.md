@@ -1,69 +1,66 @@
 ---
-title: Azure-adatbázis PostgreSQL-kiszolgáló tűzfalszabályainak
-description: Ez a cikk ismerteti a tűzfalszabályokat az Azure-adatbázis PostgreSQL-kiszolgáló számára.
-services: postgresql
+title: Azure Database for PostgreSQL-kiszolgáló tűzfalszabályait
+description: Ez a cikk ismerteti a tűzfalszabályok az Azure Database for PostgreSQL-kiszolgáló számára.
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8a3f5d9fa8f1c36d8468c38f7dda803d3ca1d832
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 793a68ee829d87a8433d5bdd77fe7b43e2f3af19
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29689887"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548837"
 ---
-# <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure-adatbázis PostgreSQL-kiszolgáló tűzfalszabályainak
-Azure-adatbázis PostgreSQL-kiszolgáló tűzfal megakadályozza a összes az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. A tűzfal engedélyezi a hozzáférést a kiszolgálóhoz, az egyes kérelmek az eredeti IP-címe alapján.
-A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. Tűzfal-szabályokat hozhat létre a kiszolgálói szinten.
+# <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure Database for PostgreSQL-kiszolgáló tűzfalszabályait
+Azure Database for PostgreSQL-kiszolgáló tűzfal megakadályozza, hogy minden hozzáférés, az adatbázis-kiszolgáló csak akkor adja meg, hogy mely számítógépek rendelkeznek ehhez engedéllyel. A tűzfal hozzáférést biztosít a kiszolgáló minden kérés eredeti IP-címe alapján.
+A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. A kiszolgálószintű tűzfalszabályok is létrehozhat.
 
-**Tűzfal-szabályok:** ezek a szabályok engedélyezi az ügyfelek számára a teljes Azure-adatbázis eléréséhez PostgreSQL-kiszolgáló esetén ez azt jelenti, hogy összes adatbázis belül az azonos logikai kiszolgáló. Kiszolgálószintű tűzfal-szabályokat konfigurálhatja az Azure-portál használatával vagy az Azure parancssori felület parancsait. Kiszolgálószintű tűzfal-szabályok létrehozása, az előfizetés tulajdonosa vagy egy előfizetés közreműködői kell lennie.
+**Tűzfal-szabályok:** Ezek a szabályok engedélyezése az ügyfelek számára eléréséhez a teljes Azure Database for PostgreSQL-kiszolgálóhoz, vagyis lévő összes adatbázis az egyazon logikai kiszolgálón. Kiszolgálószintű tűzfalszabályok az Azure portal használatával, vagy az Azure CLI-parancsok használatával konfigurálható. Kiszolgálószintű tűzfalszabályok létrehozásához, az előfizetés tulajdonosa vagy az előfizetés közreműködői kell lennie.
 
 ## <a name="firewall-overview"></a>Tűzfal áttekintése
-Az adatbázis elérésére az Azure-adatbázis PostgreSQL-kiszolgáló alapértelmezés szerint a tűzfal blokkolja. A kiszolgáló egy másik számítógépről használatának megkezdéséhez meg kell adnia egy vagy több kiszolgálószintű engedélyezésére szolgáló tűzfalszabályok a kiszolgáló elérését. Használja a tűzfalszabályok adja meg, melyik IP-címtartományok engedélyezi az internetről. A tűzfalszabályok nincs hatással a hozzáférést az Azure portál magát.
-Kapcsolódási kísérletek az internetről és az Azure először eltelik a tűzfalon keresztül is eléri a PostgreSQL-adatbázisban a következő ábrán látható módon:
+Minden adatbázis-hozzáférést az Azure Database for PostgreSQL-kiszolgáló blokkolja a tűzfal alapértelmezés szerint. A kiszolgáló egy másik számítógépről használatának megkezdéséhez szüksége adjon meg egy vagy több kiszolgálószintű tűzfalszabályokat a kiszolgáló elérésének engedélyezéséhez. Használja a tűzfal-szabályokat, adja meg, hogy mely IP-címtartományok, hogy az internetről. Az Azure portál maga a hozzáférést a tűzfalszabályok nem befolyásolják.
+Kapcsolódási kísérletek az internetről és az Azure először át kell jutniuk a tűzfalon, mielőtt elérnék a PostgreSQL-adatbázis, az alábbi ábrán látható módon:
 
-![A tűzfal működése áramló – példa](media/concepts-firewall-rules/1-firewall-concept.png)
+![A példában a folyamat a tűzfal működéséről](media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>Csatlakozás az internetről
-Kiszolgálószintű tűzfal-szabályokat alkalmazni az azonos Azure-adatbázishoz PostgreSQL-kiszolgálón lévő összes adatbázis. Ha a kérés IP-címe a kiszolgálószintű tűzfalszabályokban megadott tartományok egyikében található, a tűzfal engedélyezi a csatlakozást.
-Ha az IP-cím, a kérelem nem esik a kiszolgálószintű tűzfalszabály megadott tartományok, a kapcsolódási kérelem sikertelen lesz.
-Például ha az alkalmazás a PostgreSQL JDBC-illesztőt csatlakozik, felmerülhet a hiba történt a csatlakozás, ha a tűzfal blokkolja a kapcsolatot.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: végzetes: nincs pg\_hba.conf bejegyzés állomás "123.45.67.890", a felhasználó "adminuser", az adatbázis "postgresql", SSL
+Kiszolgálószintű tűzfalszabályok az azonos Azure Database for PostgreSQL-kiszolgáló összes adatbázisára vonatkoznak. Ha a kérés IP-címe a kiszolgálószintű tűzfalszabályokban megadott tartományok egyikében található, a tűzfal engedélyezi a csatlakozást.
+Ha a kérés IP-cím nem esik a kiszolgálószintű tűzfal szabály megadott tartományok, a csatlakozási kísérlet meghiúsul.
+Ha az alkalmazás JDBC-illesztőprogram a PostgreSQL-hez csatlakozik, például előfordulhat, hogy ez a próbál csatlakozni, ha a tűzfal blokkolja a kapcsolatot hiba jelentkezik.
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: VÉGZETES: nincs pg\_hba.conf gazdagép "123.45.67.890", felhasználó "adminuser", adatbázis "postgresql", az SSL-bejegyzést
 
 ## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
-Lehetővé teszik az alkalmazások az Azure-ból az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz, Azure-kapcsolatok engedélyezni kell. Például egy Azure Web Apps alkalmazást vagy olyan alkalmazás, amely egy Azure virtuális gép üzemeltetésére, vagy csatlakoztassa egy Azure Data Factory az adatkezelési átjáró. Az erőforrások nem kell ugyanazt a virtuális hálózatot (VNet) vagy a tűzfalszabály tartozó erőforráscsoport ahhoz, hogy ezeket a kapcsolatokat. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Többféle módszer ahhoz, hogy ilyen típusú kapcsolatokat. A 0.0.0.0 kezdő- és zárócímet tartalmazó tűzfalbeállítás jelzi, hogy ezek a kapcsolatok engedélyezettek. Beállíthatja azt is megteheti, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséggel **ON** a portálon a **kapcsolatbiztonsági** ablaktáblán, és nyomja le **mentése**. A kapcsolódási kísérlet nem engedélyezett, ha a kérelem nem érte el az Azure-adatbázishoz PostgreSQL-kiszolgáló.
+Ahhoz, hogy az Azure-alkalmazások az Azure Database for PostgreSQL-kiszolgálóhoz való kapcsolódáshoz, engedélyezni kell az Azure-kapcsolatokat. Ha például üzemeltetése az Azure Web Apps-alkalmazáshoz, vagy egy Azure-beli virtuális gépen futó alkalmazást, vagy egy Azure Data Factory az adatkezelési átjáró csatlakozni. Az erőforrások nem kell ugyanazon a virtuális hálózaton (VNet) vagy a tűzfalszabály erőforráscsoportjának ahhoz, hogy ezeket a kapcsolatokat lehet. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Van néhány módszerek ilyen típusú kapcsolatok engedélyezéséhez. A 0.0.0.0 kezdő- és zárócímet tartalmazó tűzfalbeállítás jelzi, hogy ezek a kapcsolatok engedélyezettek. Beállíthatja azt is megteheti, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást **ON** a portálon a **kapcsolatbiztonság** ablaktáblán, majd nyomja le **mentése**. A csatlakozási kísérlet nem engedélyezett, ha a kérés nem éri el az Azure Database for PostgreSQL-kiszolgálóhoz.
 
 > [!IMPORTANT]
 > Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
 > 
 
-![Azure-szolgáltatásokhoz való hozzáférés engedélyezése a portál konfigurálása](media/concepts-firewall-rules/allow-azure-services.png)
+![Konfigurálja az Azure-szolgáltatásokhoz való hozzáférés engedélyezése a portálon](media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>Tűzfalszabályok szoftveres kezelése
-Az Azure portálon kívül tűzfalszabályok programozott módon, Azure parancssori Felülettel kezelhetők.
-Lásd még: [hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával](howto-manage-firewall-using-cli.md)
+Az Azure Portalon kívül tűzfalszabályok programozott módon az Azure parancssori felülettel kezelhetők.
+Lásd még: [hozzon létre és kezelhető az Azure Database for PostgreSQL-tűzfalszabályok Azure CLI használatával](howto-manage-firewall-using-cli.md)
 
-## <a name="troubleshooting-the-database-server-firewall"></a>Az adatbázis-kiszolgáló tűzfal hibaelhárítása
-Amikor PostgreSQL-kiszolgáló szolgáltatás a Microsoft Azure adatbázishoz való hozzáférés nem a várt módon működnek várja, vegye figyelembe a következő szempontokat:
+## <a name="troubleshooting-the-database-server-firewall"></a>A kiszolgáló adatbázistűzfal hibaelhárítása
+Ha a hozzáférés a Microsoft Azure database for PostgreSQL-kiszolgáló szolgáltatás nem a várt módon működik a, vegye figyelembe a következőket:
 
-* **Az engedélyezési listán módosításai nem lépnek érvénybe még:** lehet, mint amennyit egy 5 perces késleltetést használ az vált, az Azure-adatbázishoz PostgreSQL-kiszolgáló tűzfal konfigurációjának érvénybe léptetéséhez.
+* **Az engedélyezési lista módosításai nem lépnek érvénybe még:** Előfordulhat, mint öt perces késleltetés módosításait az Azure Database for PostgreSQL-kiszolgáló tűzfal-konfiguráció érvénybe léptetéséhez.
 
-* **A bejelentkezés nem engedélyezett, vagy helytelen jelszót használt:** egy bejelentkezési nincs engedélye az PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis, vagy a használt jelszó nem megfelelő, ha a kapcsolat az Azure-adatbázishoz PostgreSQL-kiszolgáló megtagadva. Csak egy tűzfal-beállítás létrehozásához biztosít az ügyfelek; a kiszolgálóhoz való kapcsolódás sikertelen bejelentkezési kísérletet lehetőséget minden ügyfél továbbra is biztosítania kell a szükséges hitelesítő adatokat.
+* **A bejelentkezés nem engedélyezett, vagy helytelen jelszó lett megadva:** Ha egy bejelentkezés nem rendelkezik engedélyekkel az Azure Database for PostgreSQL-kiszolgálóhoz, vagy a jelszó helytelen, a rendszer megtagadja a kapcsolatot az Azure database for PostgreSQL-kiszolgáló. Egy tűzfalbeállítás létrehozása lehetővé teszi az ügyfelek való csatlakozás a kiszolgálóhoz; lehetőség minden egyes ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
-Például egy JDBC-ügyfélprogram segítségével a következő hiba jelenhetnek meg.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: végzetes: "felhasználónév" felhasználói jelszó hitelesítése sikertelen.
+Ha például JDBC ügyfelet használ, a következő hiba jelenhet meg.
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: VÉGZETES: felhasználó "felhasználónév" jelszó-hitelesítés sikertelen
 
-* **Dinamikus IP-cím**: Ha az internetkapcsolata dinamikus IP-címkezeléssel rendelkezik, és problémákat okoz a tűzfalon való átjutás, próbálja ki a következő megoldások valamelyikét:
+* **Dinamikus IP-cím:** Ha internetkapcsolat és a dinamikus IP-címkezelés és problémákat okoz a tűzfalon, próbálkozzon az alábbi megoldások valamelyikét:
 
-* Az internetszolgáltató (ISP) kérjen a PostgreSQL-kiszolgáló az Azure-adatbázishoz hozzáférő ügyfélszámítógépekhez rendelt IP-címtartományt, és adja hozzá az IP-címtartományt, egy tűzfalszabályt.
+* Az internetszolgáltató (ISP) kér az ügyfélszámítógépeken, amelyek eléréséhez az Azure Database for PostgreSQL-kiszolgálóhoz rendelt IP-címtartományt, és hozzáadhatja az IP-címtartományt egy tűzfalszabályként.
 
-* Beolvasása a statikus IP-címzés helyette az ügyfélszámítógépek számára, és adja hozzá a statikus IP-cím tűzfal szabály.
+* Első statikus IP-címkezelés helyette az ügyfélszámítógépek számára, és adja hozzá a statikus IP-cím egy tűzfalszabályként.
 
 ## <a name="next-steps"></a>További lépések
-A kiszolgáló- és adatbázis tűzfal-szabályok létrehozása a cikkekben talál:
+A kiszolgálószintű és adatbázisszintű tűzfalszabályok létrehozása a cikkekben talál:
 * [Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával](howto-manage-firewall-using-portal.md)
 * [Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával](howto-manage-firewall-using-cli.md)

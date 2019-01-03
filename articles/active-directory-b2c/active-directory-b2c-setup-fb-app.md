@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182110"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968984"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráljon, és jelentkezzen be a Facebook-fiókkal az Azure Active Directory B2C beállítása
 
@@ -38,11 +38,11 @@ Identitás-szolgáltatóként az Azure Active Directory (Azure AD) B2C egy Faceb
 13. Válassza ki **termékek**, majd válassza ki **beállítása** alatt **Facebook-bejelentkezés**.
 14. Válassza ki **beállítások** alatt **Facebook-bejelentkezés**.
 15. A **érvényes OAuth átirányítási URI-k**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Cserélje le `your-tenant-name` a bérlő nevével. Kattintson a **módosítások mentése** az oldal alján.
-16. A Facebook-alkalmazás Azure AD B2C-vel elérhetővé tenni, jelölje be **alkalmazás áttekintése**állítsa be **saját alkalmazás győződjön meg arról, nyilvános?** való **Igen**, és kattintson a **megerősítése** .
+16. Ahhoz, hogy a Facebook-alkalmazás elérhető az Azure AD B2C-vel, kattintson az állapot-választó tetején, az oldal jobb kapcsolja **a** legyen az alkalmazás nyilvános, és kattintson **megerősítése**.  Ezen a ponton kell módosítani az állapotát a **fejlesztési** való **élő**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiókok konfigurálása identitás-szolgáltatóként
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása. 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

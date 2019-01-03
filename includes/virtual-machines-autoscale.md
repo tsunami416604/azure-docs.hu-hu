@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399890"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594257"
 ---
 Könnyen [automatikus méretezése](../articles/azure-monitor/platform/autoscale-best-practices.md) a [virtuális gépeken (VM)](../articles/virtual-machines/windows/overview.md) használatakor [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) és a [az Azure automatikus skálázási funkcióval A figyelő](../articles/azure-monitor/platform/autoscale-overview.md). A virtuális gépek kell lennie egy méretezési csoport automatikus skálázását tagjai. Ez a cikk nyújt információt, amely lehetővé teszi, hogy jobban megértheti a virtuális gépek vertikális és horizontális skálázást végezhet módszerekkel automatikus és manuális méretezése.
 
@@ -29,7 +29,7 @@ A méretezési csoportok megkönnyítik az üzembe helyezés és kezelés az azo
 
 Automatikus skálázást nyújt a megfelelő számú virtuális gépek, az alkalmazás terhelés kezelésére. Lehetővé teszi, hogy a terhelés növekedését kezelni és pénzt takaríthat meg, amely ül, tétlen virtuális gépek eltávolítása, virtuális gépek hozzáadásához. Megadhatja a virtuális gépek, szabályai alapján futtathatók minimális és maximális száma. Egy minimális teszi meg arról, hogy az alkalmazás mindig fut még nincs terhelés alatt. A teljes lehetséges óránkénti költség-értékkel korlátozza.
 
-Engedélyezheti az automatikus skálázás segítségével a méretezési létrehozásakor [Azure PowerShell-lel](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Is engedélyezheti azt követően a méretezési csoportot hozott létre. Hozzon létre egy méretezési csoportot, a bővítmény telepítése és konfigurálása az automatikus méretezés használatával egy [Azure Resource Manager-sablon](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). Az Azure Portalon az Azure Monitor automatikus méretezés engedélyezése, vagy a méretezési csoport beállításai az automatikus skálázás engedélyezése.
+Engedélyezheti az automatikus skálázás segítségével a méretezési létrehozásakor [Azure PowerShell-lel](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Is engedélyezheti azt követően a méretezési csoportot hozott létre. Hozzon létre egy méretezési csoportot, a bővítmény telepítése és konfigurálása az automatikus méretezés használatával egy [Azure Resource Manager-sablon](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). Az Azure Portalon az Azure Monitor automatikus méretezés engedélyezése, vagy a méretezési csoport beállításai az automatikus skálázás engedélyezése.
 
 ![Automatikus skálázás engedélyezése](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

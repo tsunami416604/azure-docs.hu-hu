@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 4b5f884fe6e1f1fdc12d7993418f7a10614a4cbe
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 76a509c1cb9277ac72f99ec9ebfc239bfd71390c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602955"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969182"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Logikai alkalmazás importálása API-ként
 
@@ -33,8 +33,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy logikai alkalmazást. További információkért lásd [az első logikai alkalmazás létrehozását](../logic-apps/quickstart-create-first-logic-app-workflow.md) ismertető szakaszt.
+* Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+* Ellenőrizze, hogy van egy logikai alkalmazást az előfizetésében, amelyet egy HTTP-végpontot tesz közzé. További információ [HTTP-végpontokat munkafolyamatok aktiválásához](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -44,7 +44,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 2. Válasszon ki egy **logikai alkalmazást** az **Új API hozzáadása** listából.
 
     ![Logikai alkalmazás](./media/import-logic-app-as-api/logic-app-api.png)
-3. Kattintson a **Tallózás** gombra az előfizetésben foglalt logikai alkalmazások listájának megtekintéséhez.
+3. Nyomja meg **Tallózás** hívható a Logic Apps az előfizetésében listájának megtekintéséhez.
 4. Válassza ki az alkalmazást. Az APIM megkeresi a kiválasztott alkalmazáshoz társuló Swaggert, majd beszerzi és importálja azt. 
 5. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.
 6. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „*Unlimited*” terméket használjuk.  Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.

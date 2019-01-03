@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955626"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598890"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
 
-Statikus webhelyüzemeltetésre szakembereket szerveroldali kódot támaszkodó dinamikus webhelyek legjobb üzemeltetik [Azure Web Apps](/azure/app-service/app-service-web-overview).
+Statikus webhelyüzemeltetésre szakembereket szerveroldali kódot támaszkodó dinamikus webhelyek legjobb üzemeltetik [Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 Statikus webhely engedélyezésekor a tárfiókot, a üzemeltetési, válassza ki az alapértelmezett fájl nevét, és megadhat egy egyéni 404-es oldal elérési útját. A szolgáltatás engedélyezve van, mert egy tároló nevű *$web* jön létre, ha még nem létezik. 
@@ -109,7 +109,7 @@ Tartalom központi telepítése egy storage-tárolóba elérhető módszerek a k
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [A Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Az Azure-folyamatok](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
 - [A Visual Studio Code-bővítménnyel](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 Minden esetben ellenőrizze, hogy a fájlok másolása a *$web* tároló.
@@ -158,9 +158,9 @@ Igen, az új webes végpont obeys a virtuális hálózat és tűzfal szabályoka
 Igen, a webes végpont kis-és nagybetűket csakúgy, mint a blob végpontja. 
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md)
+* [Egyéni tartománnyal rendelkező blobok elérése az Azure CDN használatával HTTPS-kapcsolaton keresztül](storage-https-custom-domain-cdn.md)
 * [A blob vagy a webszolgáltatás-végpont egyéni tartománynév konfigurálása](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure Web Apps](/azure/app-service/app-service-web-overview)
+* [Azure App Service](/azure/app-service/overview)
 * [Az első kiszolgáló nélküli webalkalmazás létrehozása](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Oktatóanyag: Üzemeltessen saját tartományt az Azure DNS-ben](../../dns/dns-delegate-domain-azure-dns.md)

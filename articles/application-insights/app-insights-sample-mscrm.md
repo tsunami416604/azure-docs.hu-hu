@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f3746fc340b382c58f7a9501cb0828a6b6befe8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002140"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976035"
 ---
-# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Útmutatás: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
+# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
 Ez a cikk bemutatja, hogyan küldött telemetriai adatok lekérése [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat az Application insights eszközt ad hozzá az alkalmazás adatokat, és az adatvizualizációról rögzítése.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Az alkalmazás figyelése, az alkalmazás vegyen fel egy Application Insights SD
     ![Kattintson a +, fejlesztői szolgáltatások, Application Insights.](./media/app-insights-sample-mscrm/01.png)
 
     Az alkalmazás típusának válassza az ASP.NET lehetőséget.
-3. Kövesse az utasításokat [beolvasása a JavaScript SDK-t az alkalmazás](app-insights-javascript.md#set-up-application-insights-for-your-web-page), másolja a JavaScript-kódrészletet, és győződjön meg arról, hogy cserélje le a kialakítási kulcsot a megfelelő értéket, az Application Insights-erőforrás.
+3. Kövesse az utasításokat [beolvasása a JavaScript SDK-t az alkalmazás](../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page), másolja a JavaScript-kódrészletet, és győződjön meg arról, hogy cserélje le a kialakítási kulcsot a megfelelő értéket, az Application Insights-erőforrás.
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Hozzon létre egy Javascriptes webes erőforrásban a Microsoft Dynamics CRM-ben
 1. Nyissa meg a példány CRM Online-hoz és a bejelentkezési rendszergazdai jogosultságokkal.
@@ -134,5 +134,5 @@ Lehetőség van még mélyebb elemzésre, ha Ön [exportálja az adatokat a Micr
 
 ## <a name="learn-more"></a>Részletek
 * [Mi az Application Insights?](app-insights-overview.md)
-* [Application Insights weblapokhoz](app-insights-javascript.md)
+* [Application Insights weblapokhoz](../azure-monitor/app/javascript.md)
 * [További minták és útmutatók](app-insights-overview.md)

@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 295b7eeebf8d9815aef0b862ee2b3cccbee15ed6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569005"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546742"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
 A Google összevonási beállításával engedélyezheti a meghívott felhasználók jelentkezhetnek be a megosztott alkalmazások és erőforrások a saját Google-fiókok esetében a Microsoft Accounts (msa-k) vagy az Azure AD-fiókok létrehozása nélkül.  
 > [!NOTE]
-> A Google vendég felhasználók be kell jelentkeznie, egy hivatkozással, amely tartalmazza a bérlő összefüggésben, például a `https://myapps.microsoft.com/?tenantid=<tenant id>`. Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez.
+> A Google vendég felhasználók be kell jelentkeznie, egy hivatkozással, amely tartalmazza a bérlő összefüggésben, például a `https://myapps.microsoft.com/<tenant id>`. Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez.
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Mi az a Google felhasználói élményének?
 Egy Google Gmail felhasználói meghívót küld, ha a vendégfelhasználó hozzá kell férnie a megosztott vagy egy hivatkozással, amely tartalmazza a bérlő helyi erőforrásokhoz. Saját eltérőek lehetnek attól függően, hogy azok már bejelentkezett a Google-fiókba:
@@ -32,10 +32,10 @@ Ha a Vendég felhasználó egy "túl hosszú fejléc" hibát látja, próbálkoz
 
 ![Bejelentkezés Google-fiókkal](media/google-federation/google-sign-in.png)
 
-## <a name="step-1-configure-a-google-developer-project"></a>1. lépés: A Google developer-projekt konfigurálása
+## <a name="step-1-configure-a-google-developer-project"></a>1. lépés: Egy Google developer-projekt konfigurálása
 Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyfél azonosítója és a egy ügyfélkulcsot, amely a későbbiekben is hozzáadhat az Azure AD. 
 1. Nyissa meg a Google API-k, https://console.developers.google.com, és jelentkezzen be a Google-fiókját. Azt javasoljuk, hogy használja-e egy megosztott csapat Google-fiók.
-2. Hozzon létre egy új projektet: az az irányítópulton, válassza ki **projekt létrehozása**, majd válassza ki **létrehozás**. Az új projekt lapon adjon meg egy **projektnév**, majd válassza ki **létrehozása**.
+2. Új projekt létrehozása: Az irányítópulton, válassza ki a **projekt létrehozása**, majd válassza ki **létrehozás**. Az új projekt lapon adjon meg egy **projektnév**, majd válassza ki **létrehozása**.
    
    ![Új Google-projekt](media/google-federation/google-new-project.png)
 
@@ -70,7 +70,7 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
 
    ![OAuth-Azonosítót és titkos Ügyfélkód](media/google-federation/google-auth-client-id-secret.png)
 
-## <a name="step-2-configure-google-federation-in-azure-ad"></a>2. lépés: A Google-összevonás konfigurálása az Azure ad-ben 
+## <a name="step-2-configure-google-federation-in-azure-ad"></a>2. lépés: Google-összevonás konfigurálása az Azure ad-ben 
 Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, az Azure AD portálon megadásával vagy a PowerShell használatával. Győződjön meg arról, Gmail-címet használó és a kísérlet beváltani a meghívót a meghívott Google-fiókkal való meghívása saját maga által a Google-összevonási konfiguráció tesztelése. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>A Google-összevonás konfigurálása az Azure AD portálon 
@@ -90,7 +90,7 @@ Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, 
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Használja az ügyfél-azonosítót és az alkalmazásból a létrehozott titkos "1. lépés: a Google developer-projekt konfigurálásához." További információkért lásd: a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) cikk. 
+   > Használja az ügyfél-azonosítót és az alkalmazásból a létrehozott titkos "1. lépés: Egy Google developer-projekt konfigurálásához." További információkért lásd: a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) cikk. 
  
 ## <a name="how-do-i-remove-google-federation"></a>Hogyan távolíthatom el a Google összevonási?
 A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég felhasználók, akik már beváltott a meghívót nem lesz lehetősége bejelentkezni, de átadásával hozzáférés ismét az erőforrásokhoz való törlésével őket a könyvtárból, és újra meghívja őket. 

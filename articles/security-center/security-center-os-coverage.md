@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185579"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608834"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -30,7 +30,7 @@ Biztonsági állapot monitorozása és javaslatok érhetők el a virtuális gép
 >
 >
 
-## <a name="supported-platforms"></a>Támogatott platformok 
+## <a name="platforms-that-support-the-data-collection-agent"></a>Az adatgyűjtési ügynökét támogató platformok 
 
 Ez a szakasz felsorolja a platformokat, amelyeken az Azure Security Center-ügynök futtathatja, és, amelyről adatokat tudjon gyűjteni.
 
@@ -43,6 +43,10 @@ Az alábbi Windows operációs rendszerek támogatottak:
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> A Windows Defender ATP-integráció csak a Windows Server 2012 R2 és Windows Server 2016 támogatja.
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux rendszerű számítógépek és virtuális gépek által támogatott platformok
 A következő Linux operációs rendszerek támogatottak:
@@ -55,11 +59,6 @@ A következő Linux operációs rendszerek támogatottak:
 * Oracle Linux-verziók 5, 6 és 7.
 * Amazon Linux 2012.09 2017-ig.
 * OpenSSL 1.1.0-s csak támogatott platformokon x86_64, 64 bites.
-
-> [!NOTE]
-> Virtuális gép működés elemzése még nem érhetők el Linux operációs rendszerekhez.
->
->
 
 ## <a name="vms-and-cloud-services"></a>Virtuális gépek és Cloud Services
 A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak. Csak cloud services webes és feldolgozói szerepkörök üzemelési pont felcserélése futtató figyeli a program. A cloud services kapcsolatos további információkért lásd: [áttekintése az Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).

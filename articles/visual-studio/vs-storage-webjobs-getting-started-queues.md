@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 899792be583f3b2e2a16e42472fcdf87bf751893
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635492"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722906"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -182,7 +182,7 @@ public static void GracefulShutdownDemo(
 }
 ```
 
-**Megjegyzés:** az irányítópult nem megfelelően jelenik meg a állapota és kimenete függvények, amelyek le lett állítva.
+**Megjegyzés:** Az irányítópult nem megfelelően jelenik meg a állapota és kimenete függvények, amelyek le lett állítva.
 
 További információkért lásd: [WebJobs leállításának](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
@@ -477,7 +477,7 @@ static void Main(string[] args)
 }
 ```
 
-**Megjegyzés:** üzenetsor, tábla és a blob nevének elhárulnak minden alkalommal, amikor egy függvényt, de az alkalmazás indításakor csak blob-tároló nevének feloldása. Blobtároló neve nem módosítható, amíg a feladat fut-e.
+**Megjegyzés:** Üzenetsor, tábla és a blob nevének feloldása minden alkalommal, amikor egy függvény neve, de a blob-tároló nevének feloldása csak akkor, amikor az alkalmazás elindul. Blobtároló neve nem módosítható, amíg a feladat fut-e.
 
 ## <a name="how-to-trigger-a-function-manually"></a>Hogyan függvény manuális aktiválása
 Egy függvény manuális aktiválásához használhatja az **hívja** vagy **CallAsync** metódust a **JobHost** objektum és a **NoAutomaticTrigger** attribútum a függvény, az alábbi példában látható módon.
@@ -514,7 +514,7 @@ Konzol módszer, amely a függvény hívása, vagy a kimenete a **Main()** metó
 
 Konzolkimenet egy adott metódus meghívásának nem csatolható, mert a konzol egyszálas, miközben számos feladat funkciók esetleg fut egyszerre. Ezért az SDK-t biztosít a saját egyedi napló az író objektum minden egyes függvény meghívási.
 
-Írhat [alkalmazás nyomkövetési naplók](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), használja **Console.Out** (hoz létre a naplók adatai megjelölve) és **Console.Error** (a hiba megjelölve naplókat hoz létre). A másik lehetőség az használandó [nyomkövetési vagy TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), részletes, figyelmeztetés, és a kritikus adatok és a hiba mellett szintjeit. Alkalmazás nyomkövetési naplók jelennek meg a webes alkalmazások naplófájljainak, Azure-táblák, illetve attól függően, hogy hogyan konfigurálhat az Azure-webalkalmazás Azure-blobok. Az összes konzolkimenet igaz, a legutóbbi 100 alkalmazásnaplókat is megjelennek az irányítópult-oldalon a webjobs-feladat, nem egy függvény meghívási lapját.
+Írhat [alkalmazás nyomkövetési naplók](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview), használja **Console.Out** (hoz létre a naplók adatai megjelölve) és **Console.Error** (a hiba megjelölve naplókat hoz létre). A másik lehetőség az használandó [nyomkövetési vagy TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), részletes, figyelmeztetés, és a kritikus adatok és a hiba mellett szintjeit. Alkalmazás nyomkövetési naplók jelennek meg a webes alkalmazások naplófájljainak, Azure-táblák, illetve attól függően, hogy hogyan konfigurálhat az Azure-webalkalmazás Azure-blobok. Az összes konzolkimenet igaz, a legutóbbi 100 alkalmazásnaplókat is megjelennek az irányítópult-oldalon a webjobs-feladat, nem egy függvény meghívási lapját.
 
 Konzolkimenet jelenik meg, csak akkor, ha a program fut az Azure webjobs-feladat, nem, ha helyben fut a program az irányítópulton vagy más környezetben.
 
@@ -550,7 +550,7 @@ Egy folyamatos webjobs-feladatot, az alkalmazásnaplókat megjelenjen a/data/fel
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-Az Azure-ban az alkalmazás naplókban ez blob: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write – Hello world!, 2014-09-26T21:01:13, hiba, contosoadsnew, 491e54, 635473620738373502,0,17404,19,Console.Error – Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out – Hello world!,
+Az Azure-ban az alkalmazás naplókban ez blob: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write – Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error – Hello world!, 2014-09-26T21 : 01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out – Hello world!,
 
 És a egy Azure-táblában a **Console.Out** és **Console.Error** naplók néznek ki:
 

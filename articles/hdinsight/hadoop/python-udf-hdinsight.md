@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 92221e5aaebbaebb2af17ea211e38a3665a2b04f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632611"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652473"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig
 
@@ -26,7 +26,7 @@ A HDInsight 3.0-s és újabb verziók alapértelmezés szerint telepítve van a 
 
 HDInsight Jython, amely egy Python-implementációja Java nyelven írt is tartalmaz. Jython közvetlenül a Java virtuális gépen fut, és nem használja a streaming. Jython javasolt a Python-fordítóra akkor, ha a Python és a Pig együttes használatával.
 
-> [!WARNING]
+> [!WARNING]  
 > A jelen dokumentumban leírt lépések hajtsa végre a következő előfeltételek: 
 >
 > * A Python-szkriptek hoz létre a helyi fejlesztési környezetbe.
@@ -38,7 +38,7 @@ HDInsight Jython, amely egy Python-implementációja Java nyelven írt is tartal
 > * Használat `scp` HDInsight, a cloud shellben a fájlok feltöltéséről.
 > * Használat `ssh` a HDInsight csatlakozhat, és futtassa a példák a cloud shellben.
 
-## <a name="hivepython"></a>Hive-UDF-ben
+## <a name="hivepython"></a>Az Apache Hive UDF-ben
 
 Python is használható a Hive a HiveQL használatával egy UDF `TRANSFORM` utasítást. Ha például a következő HiveQL meghívja a `hiveudf.py` az a fürt alapértelmezett Azure Storage-fiókban tárolt fájlhoz.
 
@@ -66,7 +66,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Windows-alapú HDInsight-fürtökön a `USING` záradékának meg kell adnia python.exe teljes elérési útja.
 
 Itt látható az ebben a példában leírása:
@@ -111,7 +111,7 @@ A parancsfájl kimenete a bemeneti értékek összefűzésével `devicemake` és
 
 Lásd: [példák futó](#running) futtatására ebben a példában a HDInsight-fürtön.
 
-## <a name="pigpython"></a>A Pig UDF-ben
+## <a name="pigpython"></a>Az Apache Pig UDF-ben
 
 Egy Python-szkriptet egy UDF-ben, a Pig keresztül lehet használni a `GENERATE` utasítást. A parancsfájl Jython vagy C Python használatával futtathatja.
 
@@ -123,7 +123,7 @@ Adja meg a Python-fordítóra `register` amikor hivatkozik a Python-szkriptet. A
 * **Jython használandó**: `register '/path/to/pigudf.py' using jython as myfuncs;`
 * **Használható a C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Jython használatakor a pig_jython fájl elérési útja lehet-e, vagy helyi elérési utat, vagy a WASB: / / elérési útja. C Python használata esetén a csomópont, amely a Pig-feladat elküldéséhez használja a helyi fájlrendszerben egy fájlt kell hivatkoznia.
 
 Egyszer korábbi regisztráció, a Pig Latin ebben a példában megegyezik is:
@@ -182,7 +182,7 @@ Amikor az adatok visszakerülnek a Pig, a konzisztens sémák rendelkezik a `@ou
 
 ## <a name="running"></a>Töltse fel, és futtassa a példákat
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A **SSH** csak a lépések a Linux-alapú HDInsight-fürtökkel. A **PowerShell** lépések Linux vagy Windows-alapú HDInsight-fürttel működik, de egy Windows-ügyfél szükséges.
 
 ### <a name="ssh"></a>SSH
@@ -303,7 +303,7 @@ A fájlok feltöltése után a következő lépések segítségével a Hive és 
 
 A HDInsight-kiszolgáló a fájlok feltöltése a PowerShell használatával is. A Python-fájlok feltöltéséhez használja a következő szkriptet:
 
-> [!IMPORTANT] 
+> [!IMPORTANT]   
 > A jelen szakaszban ismertetett lépések az Azure PowerShell-lel. További információ az Azure PowerShell-lel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
@@ -313,14 +313,14 @@ A HDInsight-kiszolgáló a fájlok feltöltése a PowerShell használatával is.
 
 Ez a szkript lekéri a HDInsight-fürthöz, majd kinyeri a fiók és az alapértelmezett tárfiók kulcsa, és feltölti a fájlokat a tároló gyökérkönyvtárába.
 
-> [!NOTE]
-> Fájlok feltöltése a további információkért lásd: a [feltölteni az adatokat a HDInsight Hadoop-feladatokhoz](../hdinsight-upload-data.md) dokumentumot.
+> [!NOTE]  
+> Fájlok feltöltése a további információkért lásd: a [Upload data for HDInsight az Apache Hadoop-feladatok](../hdinsight-upload-data.md) dokumentumot.
 
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Az UDF Hive használata
+#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Az UDF-ben a Hive használata
 
 PowerShell is használható távolról a Hive-lekérdezések futtatásához. A következő PowerShell-parancsfájl használatával futtathat Hive-lekérdezéseket használó **hiveudf.py** parancsfájlt:
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Előtt fut, a parancsfájl kérni fogja, a HTTPs vagy rendszergazdai fiók adatainak a HDInsight-fürt számára.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
@@ -337,7 +337,7 @@ A kimenet a **Hive** feladat a következő példához hasonlóan kell megjelenni
 
 PowerShell is használható a Pig Latin-feladatok futtatásához. A Pig Latin használó feladatok futtatásához a **pigudf.py** parancsfájl, használja a következő PowerShell-parancsfájlt:
 
-> [!NOTE]
+> [!NOTE]  
 > Távolról küldjön el egy PowerShell-lel feladat, nincs lehetőség használható a C Python értelmezőként.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
@@ -383,6 +383,6 @@ Ha alapértelmezés szerint nem biztosított Python-modulok betöltése van szü
 
 Más használati módjai a Pig-alapú, Hive, és a MapReduce használatával kapcsolatos további információkért lásd az alábbi dokumentumokat:
 
-* [A Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
+* [Az Apache Hive használata a HDInsight](hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hdinsight-use-mapreduce.md)

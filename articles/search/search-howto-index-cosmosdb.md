@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311813"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724859"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Csatlakozás a Cosmos DB az Azure Search indexelők használatával
 
@@ -38,7 +38,7 @@ Az alábbi videó az Azure Cosmos DB Programigazgatója Andrew Liu Azure Search-
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Támogatott API-típusok
 
-Bár az Azure Cosmos DB támogatja a különböző adatmodellek és API-k, csak az SQL API Azure Search-indexelő terméktámogatást terjed ki. MongoDB API támogatása jelenleg nyilvános előzetes verzióban érhető el.  
+Bár az Azure Cosmos DB támogatja a különböző adatmodellek és API-k, csak az SQL API Azure Search-indexelő terméktámogatást terjed ki. Az Azure Cosmos DB MongoDB API támogatása jelenleg nyilvános előzetes verzióban érhető el.  
 
 További API-k támogatása az azonnali. Annak érdekében, fontossági sorrendjének megállapításában, melyiket támogatja az első, leadott a szavazatát, a felhasználói visszajelzési webhelyen:
 
@@ -146,7 +146,7 @@ Tömb összeolvasztási lekérdezés:
     SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 <a name="CreateIndex"></a>
-## <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+## <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
 A cél Azure Search-index létrehozása, ha még nincs ilyen. Egy index használatával is létrehozhat a [Azure portal felhasználói felületén](search-create-index-portal.md), a [Index REST API létrehozása](/rest/api/searchservice/create-index) vagy [osztály Index](/dotnet/api/microsoft.azure.search.models.index).
 
 Az alábbi példa egy azonosító és a Leírás mező indexet hoz létre:

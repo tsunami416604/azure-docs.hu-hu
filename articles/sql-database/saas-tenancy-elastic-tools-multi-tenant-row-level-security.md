@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242908"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601525"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások
 
@@ -41,7 +41,7 @@ A cél az, hogy a rugalmas adatbázis ügyfélkönyvtárának [Adatfüggő útv�
 
 - Használja a Visual Studio (2012 vagy újabb)
 - Három Azure SQL-adatbázisok létrehozása
-- Töltse le a mintaprojektet: [Elastic DB eszközök az Azure SQL - több-Bérlős szilánkok](https://go.microsoft.com/?linkid=9888163)
+- Töltse le a mintaprojektet: [Az Azure SQL - több-Bérlős szilánkok elastic DB eszközök](https://go.microsoft.com/?linkid=9888163)
   - Adja meg az adatokat az adatbázisok elején **Program.cs** 
 
 Ez a projekt kibővíti a leírt egy [Elastic DB eszközök az Azure SQL - Entity Framework-integráció](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) támogatásával a több-bérlős bontott adatbázissal. A projekt egy egyszerű, blogok és hozzászólások létrehozására szolgáló konzolalkalmazást épít fel. A projekt négy bérlővel, valamint két több-bérlős bontott adatbázisokat tartalmazza. Ez a konfiguráció a fenti ábrán látható. 
@@ -54,10 +54,10 @@ Hozhat létre, és futtassa az alkalmazást. Futtatni az elastic database-eszkö
 
 Figyelje meg, hogy rls-t még nem engedélyezett a szilánkleképezés-adatbázisokban lévő, mert ezek a tesztek mindegyike tárja fel a problémát: bérlők látni, amely nem tartozik hozzájuk blogok, és az alkalmazás nem akadályozza blog Beszúrás rossz bérlőhöz. Ez a cikk további része ismerteti, hogyan lehet az ilyen problémák megoldásához a bérlők elkülönítésére az RLS által. Két lépésből áll: 
 
-1. **Alkalmazásrétegek**: mindig az aktuális bérlő azonosítója a munkamenetben beállított, az alkalmazás kódjának módosítása\_helyi kapcsolat megnyitása után. A mintaprojekt már állítja be a bérlő azonosítója: Ezzel a módszerrel. 
-2. **Adatszint**: az RLS-biztonsági házirend létrehozása az egyes szegmensek adatbázisokban tárolt munkamenet TenantId alapján sorok szűrése\_környezetben. Szabályzat létrehozása a szilánkleképezés-adatbázisok mindegyike esetében, ellenkező esetben a több-bérlős szilánkok sorok nem vannak szűrve. 
+1. **Alkalmazásrétegek**: Mindig az aktuális bérlő azonosítója a munkamenetben beállított, az alkalmazás kódjának módosítása\_helyi kapcsolat megnyitása után. A mintaprojekt már állítja be a bérlő azonosítója: Ezzel a módszerrel. 
+2. **Adatszint**: Az RLS-biztonsági házirend létrehozása az egyes szegmensek adatbázisokban tárolt munkamenet TenantId alapján sorok szűrése\_környezetben. Szabályzat létrehozása a szilánkleképezés-adatbázisok mindegyike esetében, ellenkező esetben a több-bérlős szilánkok sorok nem vannak szűrve. 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Alkalmazásrétegek: a munkamenet Set TenantId\_környezet
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Alkalmazásrétegek: A munkamenetben beállított TenantId\_környezet
 
 Először csatlakozzon a szegmenstérkép-adatbázis a Adatfüggő útválasztás API-k használatával, az elastic database ügyfélkódtár. Az alkalmazás továbbra is kell tudniuk az adatbázis melyik TenantId a kapcsolatot használ. A TenantId arra utasítja az RLS-biztonsági házirendet melyik sort kell kiszűrte meghatározásoknak megfelelően a többi bérlőtől. Az aktuális TenantId Store a [munkamenet\_környezet](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) a kapcsolat.
 
@@ -213,7 +213,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2. Adatszint: sorszintű biztonsági házirend létrehozása
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. Adatszint: Sorszintű biztonság szabályzat létrehozása
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Hozzon létre egy biztonsági szabályzatot az egyes bérlők hozzáférhetnek sorok szűrése
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>Karbantartás
 
-- **Hozzáadás, új szegmensekre**: hajtsa végre a T-SQL parancsfájlt engedélyezése bármely új szegmensekre az rls-t, ellenkező esetben ezekben a szegmensekben lévő lekérdezések nem vannak szűrve.
-- **Új táblázatok hozzáadása**: ad hozzá egy SZŰRŐT, és letiltja a predikátum a biztonsági házirendet minden szegmensben, amikor létrejön egy új tábla. Ellenkező esetben az új tábla-lekérdezéseket is nem lesznek szűrve. A Hozzáadás automatizálható a DDL-triggerek használatával leírtak szerint [sorszintű biztonság alkalmazása automatikusan az újonnan létrehozott táblák (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Hozzáadás, új szegmensekre**: Hajtsa végre a T-SQL parancsfájlt engedélyezése bármely új szegmensekre az rls-t, ellenkező esetben ezekben a szegmensekben lévő lekérdezések nem vannak szűrve.
+- **Új táblázatok hozzáadása**: Adja hozzá egy SZŰRŐT, és letiltja a predikátum a biztonsági házirendet minden szegmensben, amikor létrejön egy új tábla. Ellenkező esetben az új tábla-lekérdezéseket is nem lesznek szűrve. A Hozzáadás automatizálható a DDL-triggerek használatával leírtak szerint [sorszintű biztonság alkalmazása automatikusan az újonnan létrehozott táblák (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Összegzés
 

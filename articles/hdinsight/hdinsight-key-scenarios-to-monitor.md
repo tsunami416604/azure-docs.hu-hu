@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383935"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742473"
 ---
 # <a name="monitor-cluster-performance"></a>Fürtteljesítmény monitorozása
 
@@ -77,11 +77,11 @@ Egy fürt teljesítménybeli szűk keresztmetszetet fordulhat elő, a tárolási
 
 Ha Azure Storage, a storage szolgáltatással kapcsolatos problémák figyelési információkat használ, beleértve a szabályozás, lásd [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Ha a fürt háttértárban Azure Data Lake Store (ADLS), a szabályozás oka valószínűleg sávszélesség korlátozásai miatt. Szabályozás ebben az esetben sikerült azonosítható a feladat naplókban szabályozási hibákat észlelt problémát. ADLS tekintse meg a sávszélesség-szabályozási szakaszban a megfelelő szolgáltatás a következő cikkeket:
+Ha a fürt háttértárban Azure Data Lake Storage (ADLS), a szabályozás oka valószínűleg sávszélesség korlátozásai miatt. Szabályozás ebben az esetben sikerült azonosítható a feladat naplókban szabályozási hibákat észlelt problémát. ADLS tekintse meg a sávszélesség-szabályozási szakaszban a megfelelő szolgáltatás a következő cikkeket:
 
-* [Teljesítmény-finomhangolási útmutató az Apache Hive a HDInsight és az Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsighthoz és az Azure Data Lake Store-hoz](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Teljesítmény-finomhangolási útmutató a HDInsight és az Azure Data Lake Store az Apache stormmal](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Teljesítmény-finomhangolási útmutató az Apache Hive a HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Teljesítmény-finomhangolási útmutató a Apache Storm on HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>További lépések
 

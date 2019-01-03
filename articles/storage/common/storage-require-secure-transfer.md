@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6f17cb4540feea6400c60c8032d071d6a922c871
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876502"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633061"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Az Azure Storage-ban biztonságos átvitel megkövetelése
 
@@ -50,7 +50,7 @@ A "biztonságos átvitelre van szükség" beállítás a tárfiók létrehozása
 Biztonságos átvitel megkövetelése programozott módon, használja a beállítást _supportsHttpsTrafficOnly_ a REST API, eszközök és kódtárak a tárfiók tulajdonságai:
 
 * [REST API-val](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (verzió: 2016-12-01)
-* [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (verzió: 4.1.0)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (verzió: 0,7)
 * [Parancssori felület](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (verzió: 2.0.11)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (verzió: 1.1.0-s)
 * [.NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (verzió: 6.3.0-s verzióra frissült)
@@ -59,14 +59,16 @@ Biztonságos átvitel megkövetelése programozott módon, használja a beállí
 
 ### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Engedélyezze a "Biztonságos átvitelre van szükség" beállítása a PowerShell-lel
 
-Ez a példa az Azure PowerShell modul 4.1-es vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Futtassa a `Connect-AzureRmAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
+Ez a példa az Azure PowerShell-modul Az 0,7 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+
+Futtassa a `Connect-AzAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
  Beállítás ellenőrzéséhez a következő parancsot használja:
 
 ```powershell
-> Get-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+> Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : False
@@ -77,7 +79,7 @@ EnableHttpsTrafficOnly : False
 A beállításnak az engedélyezéséhez a következő parancsot használja:
 
 ```powershell
-> Set-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+> Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : True

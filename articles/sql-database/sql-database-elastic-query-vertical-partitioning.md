@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 75c021f7b2c2584580f2d9dbf30cbcdf11d3fdc5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875365"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602460"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Lekérdezés több felhőalapú adatbázisban eltérő sémákkal (előzetes verzió)
 ![A különböző adatbázisok táblákat lefedő lekérdezés][1]
@@ -117,7 +117,7 @@ Az alábbi példa bemutatja, hogyan külső táblák listájának lekérése az 
 ### <a name="remarks"></a>Megjegyzések
 Rugalmas lekérdezés kibővíti a meglévő külső tábla szintaxist RDBMS típusú külső adatforrások használó külső táblák meghatározásához. A vertikális particionálás egy külső tábla definícióját mutatja be a következő szempontokat: 
 
-* **Séma**: A külső tábla DDL meghatározása egy sémát, amely a lekérdezések használhatnak. A külső tábla definíciójában megadott séma meg kell felelnie a távoli adatbázis, a tényleges adatok tárolására a táblák sémájával. 
+* **Séma**: A külső tábla DDL határozza meg, hogy egy sémát, amely a lekérdezések használhatnak. A külső tábla definíciójában megadott séma meg kell felelnie a távoli adatbázis, a tényleges adatok tárolására a táblák sémájával. 
 * **Távoli adatbázis referencia**: A külső tábla DDL-külső adatforrásra hivatkozik. A külső adatforrás adja meg a logikai kiszolgáló és adatbázis nevét a távoli adatbázis tényleges táblák adatainak tárolására. 
 
 Egy külső adatforrást használ, az előző szakaszban leírt módon, a külső táblák létrehozása szintaxisa a következő: 
@@ -130,7 +130,7 @@ A következő DDL-utasítást a helyi katalógus egy meglévő külső tábla de
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**KÜLSŐ tábla létrehozása/DROP engedélyeinek**: ALTER ANY EXTERNAL DATA SOURCE engedélyekre van szükség a külső tábla DDL, tekintse meg az alapul szolgáló adatforrás is szükség van.  
+**KÜLSŐ tábla létrehozása/DROP engedélyeinek**: Az ALTER ANY EXTERNAL DATA SOURCE engedélyekre van szükség, a külső tábla DDL, tekintse meg az alapul szolgáló adatforrás is szükség van.  
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 A külső tábla hozzáféréssel rendelkező felhasználók automatikusan hozzáférhetnek a külső adatforrás-definíciót a megadott hitelesítő adatok az alapul szolgáló távoli táblákba. Gondosan kezelje a külső tábla hozzáférést annak érdekében, hogy a hitelesítő adatokat a külső adatforrás keresztül nemkívánatos jogok kiterjesztése. Rendszeres SQL-engedélyek megadására vagy VISSZAVONHATJA a hozzáférést egy külső táblát, ugyanúgy, mintha egy normál táblákhoz használható.  
@@ -156,10 +156,10 @@ A következő lekérdezés az ügyfelek hajt végre a háromutas csatlakozzon a 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Tárolt eljárás távoli T-SQL-végrehajtásra: sp\_execute_remote
 Rugalmas lekérdezés is vezet be, egy tárolt eljárást, amely a távoli adatbázis közvetlen hozzáférést biztosít. A tárolt eljárás neve [sp\_végrehajtása \_távoli](https://msdn.microsoft.com/library/mt703714) és a távoli adatbázis távoli tárolt eljárások, vagy a T-SQL kód végrehajtásához használható. Ez a következő paramétereket fogadja: 
 
-* Adatforrás neve (nvarchar): az RDBMS típusú külső adatforrás neve. 
+* Adatforrás neve (nvarchar): RDBMS típusú külső adatforrás neve. 
 * Lekérdezés (nvarchar): A T-SQL lekérdezés hajtható végre a távoli adatbázishoz. 
-* Deklarace parametru (nvarchar) – nem kötelező: a lekérdezési paramétert (például sp_executesql) használt paraméterek az adatok típusdefiníciók karakterlánc. 
-* A paraméter értéke lista – nem kötelező: (például sp_executesql) paramétert értékek vesszővel elválasztott listája.
+* Deklarace parametru (nvarchar) – nem kötelező: A lekérdezési paramétert (például sp_executesql) használt paraméterek vonatkozó típusdefiníciókat adatokat tartalmazó karakterlánc. 
+* Érték paraméterlista – nem kötelező: Paraméter értékét (például sp_executesql) vesszővel tagolt listája.
 
 Az sp\_végrehajtása\_távoli a Meghívási paraméterek megadott külső adatforrás használja a megadott T-SQL-utasítás végrehajtása a távoli adatbázis. A távoli adatbázishoz való csatlakozáshoz külső adatforrás hitelesítő adatait használja.  
 

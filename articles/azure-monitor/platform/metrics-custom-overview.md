@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326194"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605585"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
 
@@ -25,7 +25,7 @@ Egyéni metrikák az Azure Monitor használatával több módszert is lehet kül
 - Az Azure Application Insights SDK használatával az alkalmazás tagolása és egyéni telemetriát küldjön az Azure Monitor. 
 - Telepítse a Windows Azure Diagnostics (WAD) bővítmény a [Azure virtuális gép](collect-custom-metrics-guestos-resource-manager-vm.md), [virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasszikus virtuális gép](collect-custom-metrics-guestos-vm-classic.md), vagy [klasszikus Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) és teljesítményszámlálók küldése az Azure monitornak. 
 - Telepítse a [InfluxData Telegraf ügynök](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gép és a küldési mérőszámok az Azure Monitor használatával kimeneti beépülő modult.
-- Egyéni mérőszámok küldése [közvetlenül az Azure Monitor REST API a](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Egyéni mérőszámok küldése [közvetlenül az Azure Monitor REST API a](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
 Ha egyéni mérőszámok küldése az Azure Monitor, minden egyes adatponthoz vagy jelentett értéket tartalmaznia kell a következő információkat.
 
@@ -193,6 +193,6 @@ Egyéni metrikák a különböző szolgáltatásokat használja:
  - [Virtuálisgép-méretezési csoportot](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure-beli virtuális gépek (klasszikus)](collect-custom-metrics-guestos-vm-classic.md)
  - [Linux rendszerű virtuális gép Telegraf ügynök használatával](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klasszikus Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

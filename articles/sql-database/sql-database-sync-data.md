@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101838"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721835"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
 Az SQL Data Sync egy szolgáltatás, amely az Azure SQL Database, amely lehetővé teszi az adatokat több SQL-adatbázisok és az SQL Server-példányok kiválasztása kétirányúan szinkronizálja.
+
+> [!IMPORTANT]
+> Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
 
 ## <a name="architecture-of-sql-data-sync"></a>Az SQL Data Sync architektúrája
 
@@ -51,11 +54,11 @@ Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
 Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Database-adatbázisok vagy SQL Server-adatbázisok között naprakészen kell tartani. Az alábbiakban a fő használati esetek Data Sync számára:
 
--   **Hibrid adatok szinkronizálása:** az adatszinkronizálás, megtarthatja a helyszíni adatbázisok és a hibrid alkalmazások az Azure SQL-adatbázisok között szinkronizált adatok. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
+-   **Hibrid adatok szinkronizálása:** Az adatszinkronizálás beállíthatja, hogy a helyszíni adatbázisok és a hibrid alkalmazások az Azure SQL-adatbázisok között szinkronizált adatok. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
 
--   **Az elosztott alkalmazások:** sok esetben előnyös, ha különböző számítási feladatok egymástól a különböző adatbázisok között. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
+-   **Az elosztott alkalmazások:** Sok esetben akkor előnyös, ha különböző számítási feladatok egymástól a különböző adatbázisok között. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
 
--   **Globálisan elosztott alkalmazások:** számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
+-   **Globálisan elosztott alkalmazások:** Számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
 
 Adatok szinkronizálása nem az előnyben részesített megoldás a következő forgatókönyvekhez:
 
@@ -69,11 +72,11 @@ Adatok szinkronizálása nem az előnyben részesített megoldás a következő 
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatok szinkronizálása? 
 
--   **Adatok változásainak követése:** Data Sync nyomon követi a módosításokat insert használatával, frissítése és törlése az eseményindítók. A módosítások a felhasználói adatbázisban egy oldali táblában vannak rögzítve. Vegye figyelembe, hogy a TÖMEGES Beszúrás nem triggereket alapértelmezés. Ha FIRE_TRIGGERS nincs megadva, nincs insert eseményindítók hajtható végre. Adja hozzá a FIRE_TRIGGERS lehetőség, hogy a Data Sync ezeket beillesztések nyomon követheti. 
+-   **Követési adatok:** Adatszinkronizálás insert, update és delete eseményindítók módosításokat követi nyomon. A módosítások a felhasználói adatbázisban egy oldali táblában vannak rögzítve. Vegye figyelembe, hogy a TÖMEGES Beszúrás nem triggereket alapértelmezés. Ha FIRE_TRIGGERS nincs megadva, nincs insert eseményindítók hajtható végre. Adja hozzá a FIRE_TRIGGERS lehetőség, hogy a Data Sync ezeket beillesztések nyomon követheti. 
 
--   **Adatok szinkronizálása:** Data Sync célja egy küllős modellben. A Hub külön-külön szinkronizál minden tagja. A központi menü módosításokat a rendszer letölti a tag, és majd a tag program feltölti a hubhoz.
+-   **Adatok szinkronizálása:** Adatszinkronizálás célja egy küllős modellben. A Hub külön-külön szinkronizál minden tagja. A központi menü módosításokat a rendszer letölti a tag, és majd a tag program feltölti a hubhoz.
 
--   **Ütközések feloldása:** Data Sync két lehetőséget biztosít az ütközések feloldása, *Hub wins* vagy *tag wins*.
+-   **Ütközések feloldása:** Adatszinkronizálás két lehetőséget biztosít az ütközések feloldása, *Hub wins* vagy *tag wins*.
     -   Ha *Hub wins*, a módosításokat az agyban mindig felülírja a tag változásait.
     -   Ha *tag wins*, a felülírás módosításához az agyban változásait. Ha egynél több tagja van, a végső értéke attól függ, melyik tag először szinkronizálja.
 

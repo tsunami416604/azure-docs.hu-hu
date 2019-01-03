@@ -9,33 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1601663266f59668918e6799b5c4a7ff606431c4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970679"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600012"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
 
-Ebből a cikkből elsajátíthatja, hogyan nyomon követése és hibakeresése [Apache Spark](https://spark.apache.org/) futó feladatok HDInsight-fürtök használatával a [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felület, a Spark felhasználói felület és a Spark-Előzménykiszolgáló. A Spark-fürt rendelkezésre álló Jegyzetfüzet használata Spark-feladat indítása **Machine learning: élelmiszervizsgálati egészségügyi adatok MLLib segítségével prediktív elemzési**. A következő lépések segítségével nyomon követheti az elküldött megközelítéssel bármilyen más, például egy alkalmazás **spark-submit szkripttel**.
+Ebből a cikkből elsajátíthatja, hogyan nyomon követése és hibakeresése [Apache Spark](https://spark.apache.org/) futó feladatok HDInsight-fürtök használatával a [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felület, a Spark felhasználói felület és a Spark-Előzménykiszolgáló. A Spark-fürt rendelkezésre álló Jegyzetfüzet használata Spark-feladat indítása **gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési**. A következő lépések segítségével nyomon követheti az elküldött megközelítéssel bármilyen más, például egy alkalmazás **spark-submit szkripttel**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Meg kell kezdeni a notebook futó  **[Machine learning: élelmiszervizsgálati egészségügyi adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)**. Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
+* Meg kell kezdeni a notebook futó  **[gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)**. Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nyomon követheti az alkalmazás a YARN felhasználói felületén
 1. Nyissa meg a YARN felhasználói felületén. Kattintson a **Yarn** alatt **fürt irányítópultjai**.
    
     ![Indítsa el a YARN felhasználói felületén](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
-   > [!TIP]
-   > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.    
-   > 
-   > 
+   > [!TIP]  
+   > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**. 
+
 2. A Jupyter notebookok használata Spark-feladat indítása, mert az alkalmazás rendelkezik ezzel a névvel **remotesparkmagics** (Ez a minden alkalmazás, amely a notebookok való indítása a nevét). Kattintson az Alkalmazásazonosítót, szemben az alkalmazás nevét a feladattal kapcsolatos további információért. Ezzel elindítja az alkalmazás megtekintése.
    
     ![Keresse meg a Spark-alkalmazás azonosítója](./media/apache-spark-job-debugging/find-application-id.png)
@@ -43,7 +42,7 @@ Az alábbiakkal kell rendelkeznie:
     Az ilyen alkalmazások, melyeket a Jupyter notebookokból származó, az állapot mindig van **FUTÓ** a notebook bezárásáig.
 3. Az alkalmazás a nézetben végezhet részletes elemzést tovább ismerje meg az alkalmazás és a naplók (stdout/stderr) társított tárolókat. A Spark felhasználói felületen indítsa el a hivatkozási megfelelő kattintva a **követési URL-cím**lent látható módon. 
    
-    ![Töltse le a tároló naplóit](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Tárolónaplók letöltése](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Nyomon követheti az alkalmazások a Spark felhasználói felület
 A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek a rendszer létrehozta az alkalmazás korábban megkezdése.
@@ -72,10 +71,9 @@ A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek
    
     Ez a Spark eseményeket egy idővonalon formájában jeleníti meg. Az Ütemterv nézetben érhető el három szinten, a feladatokon belül, és a egy szakaszon belül a feladatok között. A fenti képen az idősor nézetének adott szakaszában rögzíti.
    
-   > [!TIP]
+   > [!TIP]  
    > Ha a **nagyítás engedélyezése** jelölőnégyzet bejelölésével, görgethet bal és jobb idősor nézetének között.
-   > 
-   > 
+
 6. A Spark felhasználói felület többi lapján adja meg a Spark-példányt, valamint hasznos információkat.
    
    * Tároló lap – az alkalmazás létrehoz egy rdd-kként megkeresni tárolás fülön lévőket kapcsolatos információkat.
@@ -92,10 +90,9 @@ Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolg
    
     ![Indítsa el a Spark-Előzménykiszolgáló](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
-   > [!TIP]
+   > [!TIP]  
    > Másik lehetőségként a Spark előzmények kiszolgáló felhasználói felülete a az Ambari felhasználói felületén is megnyithatja. Indítsa el a Ambari felhasználói felületén, az Áttekintés panelen kattintson a **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **Spark**, kattintson a **Gyorshivatkozások**, és kattintson a **Spark előzmények kiszolgáló felhasználói felülete**.
-   > 
-   > 
+
 2. A befejezett alkalmazásokkal felsorolt láthatja. Kattintson egy Alkalmazásazonosítót az alkalmazás további információk feltárásához.
    
     ![Indítsa el a Spark-Előzménykiszolgáló](./media/apache-spark-job-debugging/view-completed-applications.png)
@@ -106,8 +103,8 @@ Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolg
 
 ### <a name="for-data-analysts"></a>Az adatelemzők számára
 
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
 * [Caffe elosztott deep learning az Azure HDInsight Spark használata](apache-spark-deep-learning-caffe.md)

@@ -1,87 +1,98 @@
 ---
-title: A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan használhatja a vészelérési fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy meglévő Azure Active Directory-környezeten belül.
+title: A vészelérési fiókok kezelése az Azure ad-ben |} A Microsoft Docs
+description: Ez a cikk ismerteti a vészelérési fiókok segítségével megakadályozhatja, hogy véletlenül zárolva kívül az Azure Active Directory (Azure AD) bérlő.
 services: active-directory
 author: markwahl-msft
 ms.author: billmath
-ms.date: 12/13/2017
+ms.date: 12/21/2018
 ms.topic: article-type-from-white-list
 ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 4f3772abc1cdbd3b35b8b1f16e7a47c0f1a17783
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ae23d7a3047a970c795c562b0b981c20068aeccb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595654"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974234"
 ---
-# <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben 
+# <a name="manage-emergency-access-accounts-in-azure-ad"></a>A vészelérési fiókok kezelése az Azure ad-ben
 
-A legtöbb napi tevékenységek *globális rendszergazdai* jogosultságok nem szükségesek a felhasználók által. Felhasználók nem végleges rendel hozzá a szerepkört, mert előfordulhat, hogy véletlenül általuk egy feladatot, amely kell rendelkezniük, mint a magasabb szintű engedélyekkel kell rendelkeznie. Amikor a felhasználóknak nincs szükségük van ahhoz globális rendszergazdaként, a szerepkör-hozzárendelés az Azure Active Directory (Azure AD) Privileged Identity Management (PIM), vagy a saját fiókjukat, vagy egy másik rendszergazdai fiók használatával kell aktiválnak.
+Fontos, mert nem jelentkezzen be vagy egy meglévő egyedi felhasználói fiók rendszergazdai aktiválása véletlenül kívül az Azure Active Directory (Azure AD) bérlő zárolva megakadályozza. Két vagy több létrehozásával csökkentheti a rendszergazdai hozzáférés véletlen hiánya hatását *vészelérési fiókok* a bérlőben.
 
-Felhasználók saját maguk tart a felügyeleti hozzáférési jogosultságokat, mellett kell akadályozni, hogy véletlenül zárolva felügyeletének részeként az Azure AD-bérlő kívül is, sem a bejelentkezés sem aktiválásához egy meglévő egyéni felhasználói fiókot, mert egy rendszergazda. Két vagy több tárolásával csökkentheti a rendszergazdai hozzáférés véletlen hiánya hatását *vészelérési fiókok* a bérlőben.
+A vészelérési fiókok vannak magas szintű jogosultságokkal rendelkeznek, és hogy nincsenek hozzárendelve a megadott személyeknek. A vészelérési fiókok korlátozva, válságkezelési vagy "vészhelyzeti" forgatókönyvek, ahol a szokásos rendszergazdai fiókok nem használható. Szervezetek kell tartania a cél a vészelérési fiókhoz használat korlátozása csak azokat az időpontokat, amikor nem feltétlenül szükséges.
 
-A vészelérési fiókok megkönnyíti a szervezetek számára korlátozni a rendszerjogosultságú hozzáférést egy meglévő Azure Active Directory-környezeten belül. Az ilyen fiókok vannak magas szintű jogosultságokkal rendelkeznek, és hogy nincsenek hozzárendelve a megadott személyeknek. A vészelérési fiókok korlátozva, válságkezelési vagy "vészhelyzeti" forgatókönyvek, ahol a szokásos rendszergazdai fiókok nem használható olyan helyzetekben. Szervezetek kell tartania a cél a vészelérési fiókhoz használat korlátozása csak az az időpont, amikor szükség.
+Ez a cikk útmutatást nyújt a a vészelérési fiókok kezelése az Azure ad-ben.
+
+## <a name="when-would-you-use-an-emergency-access-account"></a>Mikor használható vészhelyzeti hozzáférési fiókot?
 
 Egy szervezet vészelérési fiók használatára a következő esetekben lehet szükség:
 
- - A felhasználói fiókok összevont, és egy cella – hálózati break vagy identitásszolgáltató kimaradás miatt az összevonási jelenleg nem érhető el. Például ha az identitás szolgáltató állomás a környezetben a korábbihoz, felhasználók lehet nem tud bejelentkezni, ha az identitásszolgáltató az Azure AD átirányítja a felhasználót. 
- - A rendszergazdák regisztrálva vannak az Azure multi-factor Authentication segítségével, és az egyes eszközök nem érhetők el. Lehet, hogy a felhasználók nem lehet végrehajtani a multi-factor Authentication szolgáltatást a szerepkör aktiválásához. Például egy cella hálózatkimaradás miatt nem telefonhívásokat megválaszolását, vagy a szöveges üzenetek, csak két hitelesítési mechanizmusa, akkor a regisztrált eszköz őket. 
- - A legutóbbi globális rendszergazdai jogosultságokkal rendelkező személy elhagyta a vállalatot. Az Azure AD megakadályozza, hogy az utolsó *globális rendszergazdai* -fiók törlése folyamatban van, de nem akadályozza meg a fiók törlése folyamatban van vagy a letiltott helyi. Mindkét esetben előfordulhat, hogy ellenőrizze a szervezet nem lehet helyreállítani a fiókját.
+- A felhasználói fiókok összevont, és egy cella – hálózati break vagy identitásszolgáltató kimaradás miatt az összevonási jelenleg nem érhető el. Például ha az identitás szolgáltató állomás a környezetben a korábbihoz, felhasználók lehet nem tud bejelentkezni, ha az identitásszolgáltató az Azure AD átirányítja a felhasználót.
+- Azure multi-factor Authentication révén a rendszergazdák regisztrált és nem érhető el az egyes eszközöket, vagy a szolgáltatás nem érhető el. Lehet, hogy a felhasználók nem lehet végrehajtani a multi-factor Authentication szolgáltatást a szerepkör aktiválásához. Például egy cella hálózatkimaradás miatt nem telefonhívásokat megválaszolását, vagy a szöveges üzenetek, csak két hitelesítési mechanizmusa, akkor a regisztrált eszköz őket.
+- A legutóbbi globális rendszergazdai hozzáféréssel rendelkező személy elhagyta a vállalatot. Az Azure AD megakadályozza, hogy a legutolsó globális rendszergazdai fiók törlése folyamatban van, de nem akadályozza meg a fiók törlése folyamatban van vagy a letiltott helyi. Mindkét esetben előfordulhat, hogy ellenőrizze a szervezet nem lehet helyreállítani a fiókját.
+- Előre nem látható körülmények között például a sürgős, természeti katasztrófa során, ami a mobiltelefon vagy egyéb hálózatok előfordulhat, hogy nem érhető el. 
 
-## <a name="initial-configuration"></a>Kezdeti konfiguráció
+## <a name="create-two-cloud-based-emergency-access-accounts"></a>Két felhőalapú vészelérési fiókok létrehozása
 
-Hozzon létre két vagy több vészelérési fiókok. Ezek csak felhőalapú fiókok használó kell lennie a \*. onmicrosoft.com tartomány és, nem összevont vagy szinkronizálja a helyszíni környezetben. 
+Hozzon létre két vagy több vészelérési fiókok. Ezek a fiókok használata kizárólag felhőalapú fiókok kell lennie a \*. onmicrosoft.com tartomány és, nem összevont vagy szinkronizálja a helyszíni környezetben.
 
-A fiókok nem lehet a szervezet minden egyes felhasználóhoz társítva. Annak biztosítása érdekében, hogy ezek a fiókok hitelesítő adatait biztonságos és ismert használják őket, akik csak a vállalatnál szükség van. 
+Ezek a fiókok konfigurálásakor az alábbi követelményeknek kell teljesülniük:
 
-> [!NOTE]
-> Egy fiók jelszavát egy vészelérési fiókok általában két vagy három részre tagolt, különálló darabokra papír azon, és biztonságos, tűzbiztos széf, amely biztonságos, különböző helyeken vannak tárolva. 
->
-> Győződjön meg arról, hogy a vészelérési fiókok nem csatlakoznak az összes alkalmazott által megadott mobiltelefonok, hardver jogkivonatok egyes alkalmazottak, vagy más alkalmazott-specifikus hitelesítő adatokat, hogy utazás. Az eszközeikről magában foglalja a példányok, ahol egy alkalmazott nem érhető el, ha a hitelesítő adat van szükség. 
+- A vészelérési fiókok nem lehet a szervezet minden egyes felhasználóhoz társítva. Győződjön meg arról, hogy a fiókok nem csatlakoznak az összes alkalmazott által megadott mobiltelefonok, hardver jogkivonatok egyes alkalmazottak, vagy más alkalmazott-specifikus hitelesítő adatokat, hogy utazás. Az eszközeikről magában foglalja a példányok, ahol egy alkalmazott nem érhető el, ha a hitelesítő adat van szükség. Fontos annak biztosítása érdekében, hogy regisztrált eszköze, amely rendelkezik az Azure AD-vel való kommunikációhoz több azt jelenti, hogy ismert, biztonságos helyen.
+- A vészelérési fiókhoz használt hitelesítési mechanizmust kell lennie a többi rendszergazdai fiókok, beleértve a más vészelérési fiókok által használt különböző.  Például ha a szokásos rendszergazdai bejelentkezés a helyszíni MFA-n keresztül, majd az Azure MFA lenne egy másik mechanizmust.  Azonban ha az Azure MFA része az elsődleges hitelesítés a rendszergazdai fiókok, majd fontolja meg egy másik megközelítés ezeket, például a feltételes hozzáférés segítségével egy külső MFA-szolgáltató.
+- Az eszköz vagy a hitelesítő adat nem jár le és használja hiánya miatt az automatikus tisztítás hatókörében kell.  
+- Gondoskodnia kell, a globális rendszergazdai szerepkör-hozzárendelés állandó a vészelérési fiókok. 
 
-### <a name="initial-configuration-with-permanent-assignments"></a>Az állandó hozzárendelés kezdeti konfiguráció
 
-Az egyik lehetőség, hogy a felhasználók állandó tagjai a *globális rendszergazdai* szerepkör. Ez a beállítás akkor lehet megfelelő, szervezetek, amelyek nem rendelkeznek Azure AD Premium P2-előfizetéseket.
+### <a name="exclude-at-least-one-account-from-phone-based-multi-factor-authentication"></a>Zárja ki legalább egy fiókot a telefonon alapuló multi-factor Authentication használatát
 
-Biztonsági kockázatot jelentő jelszó adódó támadások kockázatának csökkentése érdekében, az Azure AD azt javasolja, hogy a multi-factor Authentication hitelesítést minden egyes felhasználó számára szükséges. Ez a csoport tartalmaznia kell a rendszergazdák és minden egyéb (például a pénzügyi igazgatók) feltört fiók jelentős hatással lenne. 
+Biztonsági kockázatot jelentő jelszó adódó támadások kockázatának csökkentése érdekében, az Azure AD azt javasolja, hogy a multi-factor Authentication hitelesítést minden egyes felhasználó számára szükséges. Ez a csoport tartalmazza a rendszergazdák és a többi (például a pénzügyi igazgatók) feltört fiók jelentős hatással lenne.
 
-Azonban ha a szervezet nem rendelkezik megosztott eszközök, a multi-factor Authentication szolgáltatás előfordulhat, hogy nem lehetséges a vészelérési fiókok. Ha konfigurál egy feltételes hozzáférési szabályzat megkövetelése [többtényezős hitelesítési regisztráció minden rendszergazda](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) Azure AD-hez és a kapcsolódó egyéb szoftver (SaaS) szolgáltatottszoftver-alkalmazásokat, szüksége lehet a házirend konfigurálása Ez a követelmény a vészelérési fiókok kizárását kizárások.
+A vészelérési fiókok legalább egyike, nem kell ugyanazt a multi-factor authentication szolgáltatás mechanizmust, az egyéb nem sürgős fiókok. Ez magában foglalja a harmadik felek többtényezős hitelesítési megoldásokat. Ha rendelkezik megkövetelő feltételes hozzáférési szabályzata [többtényezős hitelesítés minden rendszergazda](../authentication/howto-mfa-userstates.md) az Azure ad és más csatlakoztatott szoftverfrissítési-szoftverszolgáltatások (SaaS) alkalmazásokat kell kizárni a vészelérési fiókok Ez követelmény, és a egy másik mechanizmust állítani helyette. Ezenkívül győződjön meg arról, hogy a fiókok nem rendelkeznek a felhasználónkénti többtényezős hitelesítési házirend.
 
-### <a name="initial-configuration-with-approvals"></a>Jóváhagyások használata a kezdeti konfiguráció
+### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Legalább egy fiókot kizárása a feltételes hozzáférési szabályzatok
 
-Egy másik lehetőség az, hogy a felhasználók konfigurálása jogosult és aktiválása a jóváhagyók a *globális rendszergazdai* szerepkör. Ez a beállítás megköveteli a szervezet Azure AD Premium P2-előfizetéssel rendelkezik. Azt is megköveteli a multi-factor Authentication beállítás, amely lehetővé teszi több szolgáltatásra és a hálózati környezet között megosztott használatra való. Ezek a követelmények azért, mert az aktiválás a *globális rendszergazdai* a szerepkör megköveteli a felhasználók számára korábban végzett a multi-factor Authentication. További információkért lásd: [az Azure AD Privileged Identity Management többtényezős hitelesítés kötelezővé tétele](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-how-to-require-mfa).
+Vészhelyzetben nem szeretné, hogy olyan szabályzatot, amely potenciálisan a blokkolhatja megoldani a problémát. Legalább egy vészelérési fiókok minden feltételes hozzáférési szabályzatokat kell zárni. Ha engedélyezte a [alapvető házirendet](../conditional-access/baseline-protection.md), ki kell zárnia a vészelérési fiókok.
 
-A vészelérési fiókok személyes eszközök társított multi-factor Authentication használatát nem javasoljuk. Tényleges vészhelyzet esetén a személy, aki egy multi-factor Authentication regisztrált eszközt hozzá kell férnie a személyes eszközt rendelkező egy nem feltétlenül. 
+## <a name="additional-guidance-for-hybrid-customers"></a>További útmutató a hibrid ügyfelek
 
-Is figyelembe kell venni a fenyegetést. Például egy előre nem látható függött, például a sürgős természeti katasztrófa esetén előfordulhat, hogy merülnek fel, amely során a mobiltelefon vagy egyéb hálózatok előfordulhat, hogy nem érhető el. Fontos annak biztosítása érdekében, hogy regisztrált eszköze, amely rendelkezik az Azure AD-vel való kommunikációhoz több azt jelenti, hogy ismert, biztonságos helyen.
+Egy további lehetőséget AD tartományi szolgáltatások és az AD FS-t használó szervezetek vagy hasonló identitásszolgáltató összevonásához az Azure AD-ben, hogy egy vészelérési fiókok, amelynek MFA-jogcím sikerült szolgáltatja a identitásszolgáltató konfigurálása.  A vészelérési fiókok például, például egy intelligens kártyán tárolt tanúsítvány és kulcs két sikerült készíteni.  Ha az ad-hez, hogy a felhasználó hitelesítése AD FS megadhatja egy jogcímet, az Azure ad-ben, amely jelzi, hogy a felhasználó teljesítette az MFA-követelmények.  Akkor is ezt a módszert használja, a szervezetek továbbra is rendelkeznie kell felhőalapú vészelérési fiókok abban az esetben nem hozható létre összevonási. 
 
-## <a name="ongoing-monitoring"></a>Folyamatos figyelés
+## <a name="store-devices-and-credentials-in-a-safe-location"></a>Eszközök és a hitelesítő adatok Store egy biztonságos helyre
 
-A figyelő a [naplózza az Azure AD-be, és a naplózási](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) tartozó bármely bejelentkezések és naplózási tevékenységet a válságkezelési-hozzáférési fiókokat. Rendszerint ezeket a fiókokat nem kell jelentkezik be, és kell nem lehet változtatásokat, így használata, valószínű, hogy a rendellenes és biztonsági vizsgálat szükséges.
+Annak biztosítása érdekében, hogy a vészelérési fiókok hitelesítő adatait biztonságos és ismert használják őket, akik csak a vállalatnál szükség van. Egyes ügyfelek intelligens kártya és más jelszót használni. Egy a vészelérési fiókhoz tartozó jelszó általában két vagy három részre tagolt, különálló darabokra papír azon, és biztonságos, tűzbiztos széf, amely biztonságos, különböző helyeken vannak tárolva.
 
-## <a name="account-check-validation-must-occur-at-regular-intervals"></a>Fiók-ellenőrzési érvényesítési rendszeres időközönként kell észlelnie.
+Jelszavak használata esetén győződjön meg, hogy a fiókok, amelyek nem járnak le a jelszó erős jelszavakat. Ideális esetben a jelszavak hosszú és véletlenszerűen előállított legalább 16 karakter hosszúnak kell lennie.
 
-A fiók érvényesítéséhez, hajtsa végre, legalább a következő lépéseket:
-- 90 naponta.
-- Ha az informatikai részleg, például egy feladat módosítása, egy indító vagy egy új felvételi legutóbbi változás történt.
-- Ha a szervezet Azure AD-előfizetések is megváltoztak.
 
-A vészelérési fiókok használata a munkatársak betanítást, tegye a következőket:
+## <a name="monitor-sign-in-and-audit-logs"></a>Jelentkezzen be figyelése és naplók
 
-* Győződjön meg arról, hogy a személyzet biztonsági monitoringgal vegye figyelembe, hogy a fiók-ellenőrzési tevékenység folyamatban.
-* Ellenőrizze, hogy a felhőalapú felhasználói fiókok jelentkezzen be, és saját szerepkörök aktiválása és, hogy a folyamat során vészhelyzet esetén a következő lépésekkel esetleg kívánó felhasználók tanulnak.
-* Győződjön meg arról, hogy azok nem regisztrált multi-factor Authentication vagy az önkiszolgáló jelszó-visszaállítás (SSPR) minden egyes felhasználó eszközére vagy szermélyi adatok. 
-* Ha a fiókok a multi-factor Authentication regisztrált eszközre, szerepkör-aktiválás közben győződjön meg arról, hogy az eszköz érhető el minden olyan rendszergazdák, akik rendkívüli során használandó igényelhet. Emellett győződjön meg arról, hogy az eszköz regisztrálva van-e, hogy ne ossza meg egy közös hibaállapot legalább két mechanizmusokon keresztül. Például az eszköz képes kommunikálni az internethez a létesítmény vezeték nélküli hálózat és a egy cella szolgáltató hálózaton keresztül.
-* Frissítse a fiók hitelesítő adatait.
+A figyelő a [naplózza az Azure AD-be, és a naplózási](../reports-monitoring/concept-sign-ins.md) az minden olyan bejelentkezések és naplózási tevékenységet a vészelérési fiókok. Ezek a fiókok normális esetben nem kell jelentkezik be, és kell nem lehet változtatásokat, így használata, valószínű, hogy a rendellenes és biztonsági vizsgálat szükséges.
+
+## <a name="validate-accounts-at-regular-intervals"></a>Rendszeres időközönként fiókok ellenőrzése
+
+A vészelérési fiókok használhatja, és ellenőrizze a vészelérési fiókok stáblistája betanítást, hajtsa végre a következő minimális lépéseket rendszeres időközönként:
+
+- Győződjön meg arról, hogy a személyzet biztonsági monitoringgal vegye figyelembe, hogy a fiók-ellenőrzési tevékenység folyamatban.
+- Győződjön meg arról, hogy ezeket a fiókokat, a vészhelyzeti break üveg folyamat dokumentált és az aktuális.
+- Győződjön meg arról, hogy a rendszergazdák és a biztonsági tisztviselők, akik előfordulhat, hogy ezeket a lépéseket vészhelyzetben tanított-e a folyamat.
+- Frissítse a fiók hitelesítő adatait, különösen jelszavakat, a vészelérési fiókok, és majd ellenőrizze, hogy a vészelérési fiókok is be- és felügyeleti feladatokat hajthat végre.
+- Győződjön meg arról, hogy felhasználók nem regisztrált multi-factor Authentication vagy az önkiszolgáló jelszó-visszaállítás (SSPR) minden egyes felhasználó eszközére vagy szermélyi adatok. 
+- Ha a fiókok a multi-factor Authentication regisztrált eszközre, jelentkezzen be, vagy a szerepkör aktiválása során használatra győződjön meg arról, hogy az eszköz érhető el minden olyan rendszergazdák, akik rendkívüli során használandó igényelhet. Győződjön meg arról is, hogy az eszköz legalább két hálózati elérési úttal, hogy ne ossza meg egy közös hibaállapot keresztül kommunikálhassanak. Például az eszköz képes kommunikálni az internethez a létesítmény vezeték nélküli hálózat és a egy cella szolgáltató hálózaton keresztül.
+
+Ezeket a lépéseket kell elvégezni, rendszeres időközönként, és a legfontosabb változások:
+
+- Legalább 90 naponként
+- Ha az informatikai részleg, például egy feladat módosítása, egy indító vagy egy új felvételi legutóbbi változás történt
+- Ha a szervezet Azure AD-előfizetések változásai
 
 ## <a name="next-steps"></a>További lépések
-- [Adjon hozzá egy felhőalapú felhasználói](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó hozzárendelése a globális rendszergazdai szerepkör](../fundamentals/active-directory-users-assign-role-azure-portal.md).
-- [Regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), ha még nem regisztrált már.
-- [Az Azure többtényezős hitelesítés megkövetelése az egyes felhasználók rendszergazdák hozzárendelt](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states).
-- [A globális rendszergazdák erősebb védelmét konfigurálja az Office 365-ben](https://support.office.com/article/Protect-your-Office-365-global-administrator-accounts-6b4ded77-ac8d-42ed-8606-c014fd947560), ha Office 365-höz használ.
-- [A globális rendszergazdák hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-how-to-start-security-review.md) és [pontosabb rendszergazdai szerepkörök meglévő globális rendszergazda az átmenet](directory-assign-admin-roles.md).
 
-
+- [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](directory-admin-roles-secure.md)
+- [Adja hozzá a felhasználók Azure AD-vel](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó hozzárendelése a globális rendszergazdai szerepkör](../fundamentals/active-directory-users-assign-role-azure-portal.md)
+- [Regisztráljon az Azure AD Premium](../fundamentals/active-directory-get-started-premium.md), ha még nem regisztrált már
+- [Egy felhasználó kétlépéses ellenőrzést igénylése](../authentication/howto-mfa-userstates.md)
+- [A globális rendszergazdák erősebb védelmét konfigurálja az Office 365-ben](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), ha Office 365-höz használ.
+- [A globális rendszergazdák hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md) és [áttérés meglévő globális rendszergazdák pontosabb rendszergazdai szerepkörök](directory-assign-admin-roles.md)

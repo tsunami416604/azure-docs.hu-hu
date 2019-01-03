@@ -3,16 +3,15 @@ title: Lekérdezési idő az Azure Database for PostgreSQL-kiszolgáló használ
 description: Ez a cikk ismerteti, hogyan optimalizálható a lekérdezéskor bejelentési table storage stratégiát egy Azure database for PostgreSQL-kiszolgálóhoz.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: dee8aaaef4b1998a7234a88d07ad5efbc79d050b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629130"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542215"
 ---
 # <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>BEJELENTÉSI table storage stratégiát lekérdezési idő optimalizálásához 
 Ez a cikk ismerteti, hogyan optimalizálható a gyorsaság bejelentési table storage stratégiát.
@@ -32,4 +31,4 @@ Ha egy munkaterhelés-séma használatával széles táblák és a magas karakte
 ## <a name="next-steps"></a>További lépések
 Tekintse át a számítási feladatok esetében a fenti jellemzők. 
 
-Tekintse át a következő PostgreSQL-dokumentáció: [fejezet 68-as, fizikai adatbázistár](https://www.postgresql.org/docs/current/storage-toast.html) 
+Tekintse át a következő PostgreSQL dokumentációja ismerteti: [Fejezet 68-as, fizikai adatbázistár](https://www.postgresql.org/docs/current/storage-toast.html) 

@@ -6,15 +6,15 @@ author: wmgries
 ms.service: storage
 ms.devlang: python
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: 4082352c8c9814b8e6533d3f64b18450a6cf416d
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f1ebc059c66615ecf21054e85472b2a6d86dfce6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165572"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743187"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés az Azure Files Python használatával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +33,7 @@ Ez az oktatóanyag bemutatja annak alapjait, a Python használatával való alka
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Töltse le és telepítse az Azure Storage SDK a Pythonhoz
 
-Az Azure Storage SDK Pythonhoz készült Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os igényel, és 4 különböző csomagokban érhető el: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` és `azure-storage-queue`. Ebben az oktatóanyagban fogjuk használni `azure-storage-file` csomagot.
+A [Pythonhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-python) van szükség a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os.
  
 ## <a name="install-via-pypi"></a>Keresztül PyPi telepítése
 
@@ -43,13 +43,15 @@ Telepítse a Python-Csomagindexet (PyPI) keresztül, írja be:
 pip install azure-storage-file
 ```
 
-
 > [!NOTE]
-> Ha Python 0.36 vagy korábbi verzióját frissíti az Azure Storage SDK-ból, akkor először használatával `pip uninstall azure-storage` , már megjelent a Storage SDK Pythonhoz készült egyetlen csomagban.
-> 
-> 
+> Ha 0.36 vagy korábbi verzióját a Pythonhoz készült Azure Storage SDK frissíti, távolítsa el a régebbi SDK használatával `pip uninstall azure-storage` a legújabb csomag telepítése előtt.
 
 Alternatív telepítési módszert, látogasson el a [a Githubon Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/).
+
+## <a name="view-the-sample-application"></a>A mintaalkalmazás megtekintése
+f megtekintéséhez és futtathat egy mintaalkalmazást, amely bemutatja, hogyan használhatja a Pythont az Azure Files, lásd: [Azure Storage: Ismerkedés az Azure Files pythonban](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+
+Futtassa a mintaalkalmazást, győződjön meg arról, hogy mindkettő telepítése a `azure-storage-file` és `azure-storage-common` csomagokat.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Állítsa be alkalmazását az Azure Files használata
 Adja hozzá a következő, bármely Python-forrás, amelyben programozott módon érheti el az Azure Storage kívánt fájl elején.

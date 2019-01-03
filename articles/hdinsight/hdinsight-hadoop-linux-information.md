@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: abaf69136fbed577095b3efba2ec6d4383907255
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e78f456a7c69e308257b450a7572f6317dfa6eec
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385210"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715443"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
 Az Azure HDInsight-fürtök a jól ismert Linux-környezet, az Azure-felhőben futó adja meg az Apache Hadoop. A legtöbb dolgot, használható megegyeznek a más Hadoop-a-Linux-telepítés. Ez a dokumentum felhívja, akkor célszerű tisztában lennie a konkrét különbségeket.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -61,28 +61,28 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután 
 
     Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Néhány előkészíthetik elérhető az Ambari webes fér hozzá a csomópontok egy belső tartománynév használatával. Tartománynevek belső nem érhetők el nyilvánosan az interneten keresztül. "A kiszolgáló nem található" hiba jelenhet meg az interneten keresztül egyes szolgáltatások elérésére tett kísérlet során.
     >
     > Az Ambari webes felület összes funkciójának használatához egy SSH-alagutat a proxy webes forgalom, a fürt fő csomópontjának. Lásd: [használata SSH-bújtatással való eléréséről az Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb webes](hdinsight-linux-ambari-ssh-tunnel.md)
 
 * **Az Ambari (REST)** - https://&lt;clustername >.azurehdinsight.net/ambari
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
 * **WebHCat (templeton eszközön keresztül végzett)** - https://&lt;clustername >.azurehdinsight.net/templeton
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
 * **SSH** - &lt;clustername >-ssh.azurehdinsight.net port 22-es vagy 23. Csatlakozzon az elsődleges átjárócsomóponthoz, míg 23 szeretne csatlakozni a másodlagos 22-es port szolgál. Az átjárócsomópontokkal további információkért lásd: [rendelkezésre állás és megbízhatóság az Apache Hadoop-fürtök a HDInsight](hdinsight-high-availability-linux.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürt átjárócsomópontjaiból ssh-n keresztül egy ügyfél gépéről csak elérni. Miután csatlakozott, ezután hozzáférhetnek a feldolgozó csomópontok egy átjárócsomópontjával SSH használatával.
 
 További információkért lásd: a [HDInsight az Apache Hadoop-szolgáltatások által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
@@ -96,23 +96,23 @@ Hadoop-kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a 
 
 Hadoop elosztott fájlrendszer címen található példa adatok és a JAR-fájlok `/example` és `/HdiSamples`.
 
-## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, az Azure Storage és Data Lake Store
+## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, az Azure Storage és Data Lake Storage
 
 A legtöbb Hadoop-disztribúció az adatokat HDFS, a gépek a fürt helyi tároló biztonsági mentése tárolódik. Helyi tároló használata kell egy felhőalapú megoldás, óránként vagy percenként számítási erőforrások díjkötelesek.
 
-HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és Azure Data Lake Store igény szerint méretezhető és rugalmas úgy vannak tárolva. Ezek a szolgáltatások a következő előnyöket nyújtják:
+HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és Azure Data Lake Storage igény szerint méretezhető és rugalmas úgy vannak tárolva. Ezek a szolgáltatások a következő előnyöket nyújtják:
 
 * Költséghatékony hosszú távú tároláshoz.
 * Kisegítő lehetőségek a külső szolgáltatások, például a websites, a fájl feltöltése/letöltése segédprogramok, a különböző nyelvű SDK és a böngészők.
 * Nagyméretű fájlok kapacitást és nagy méretezhető tárhely.
 
-További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/).
 
-Azure Storage vagy a Data Lake Store használata esetén nem kell semmit speciális a HDInsight férhet hozzá az adatokhoz. Például a következő parancs felsorolja a fájlokat a `/example/data` függetlenül attól, hogy tárolása Azure Storage vagy a Data Lake Store mappa:
+Azure Storage vagy a Data Lake Storage használatakor nem kell semmit speciális a HDInsight férhet hozzá az adatokhoz. Ha például a következő parancs felsorolja a fájlok a `/example/data` függetlenül attól, hogy tárolása Azure Storage vagy a Data Lake Storage mappában:
 
     hdfs dfs -ls /example/data
 
-A HDInsight az adatok tárolási erőforrások (Azure Blob Storage és az Azure Data Lake Store) vannak választva a számítási erőforrásokat. Ezért hozhat létre HDInsight-fürtök számítási ehhez az szükséges, és később törli a fürtöt, a munka végeztével, eközben tartja az adatfájlokat biztonságosan a felhőbeli tárban őrzött mindaddig, amíg van szüksége.
+A HDInsight az adatok tárolási erőforrások (Azure Blob Storage és Azure Data Lake Storage) vannak választva a számítási erőforrásokat. Ezért hozhat létre HDInsight-fürtök számítási ehhez az szükséges, és később törli a fürtöt, a munka végeztével, eközben tartja az adatfájlokat biztonságosan a felhőbeli tárban őrzött mindaddig, amíg van szüksége.
 
 ### <a name="uri-and-scheme"></a>URI-t és a séma
 
@@ -126,14 +126,14 @@ Használata esetén __Azure Storage__, a következő URI sémák egyikével:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Egy nem alapértelmezett tárfiókhoz való kommunikáció során használt. Például ha rendelkezik egy tárfiókot, vagy ha nyilvánosan elérhető-e a storage-fiókban lévő adatok elérése tárolja.
 
-Használata esetén __Data Lake Store__, a következő URI sémák egyikével:
+Használata esetén __Data Lake Storage__, a következő URI sémák egyikével:
 
-* `adl:///`: Az alapértelmezett Data Lake Store a fürt eléréséhez.
+* `adl:///`: A fürt alapértelmezett Data Lake Storage eléréséhez.
 
-* `adl://<storage-name>.azuredatalakestore.net/`: Egy nem alapértelmezett Data Lake Store való kommunikáció során használt. A HDInsight-fürt gyökérkönyvtárában kívüli adatok eléréséhez is használt.
+* `adl://<storage-name>.azuredatalakestore.net/`: Egy nem alapértelmezett Data Lake Storage való kommunikáció során használt. A HDInsight-fürt gyökérkönyvtárában kívüli adatok eléréséhez is használt.
 
-> [!IMPORTANT]
-> Data Lake Store a HDInsight alapértelmezett tárolóként használatakor meg kell adnia egy elérési utat a tárolóban, a legfelső szintű HDInsight tároló használatára. Az alapértelmezett elérési út `/clusters/<cluster-name>/`.
+> [!IMPORTANT]  
+> Data Lake Storage a HDInsight alapértelmezett tárolóként használatakor meg kell adnia egy elérési utat a tárolóban, a legfelső szintű HDInsight tároló használatára. Az alapértelmezett elérési út `/clusters/<cluster-name>/`.
 >
 > Használata esetén `/` vagy `adl:///` adatok eléréséhez, csak az adatok eléréséhez a legfelső szintű tárolja (például `/clusters/<cluster-name>/`) a fürt. Hozzáférés az adatokhoz bárhol a tárolóban, használja a `adl://<storage-name>.azuredatalakestore.net/` formátumban.
 
@@ -152,7 +152,7 @@ Ez a parancs egy értéket ad vissza a következő URI-k hasonló:
 
     A fiók neve az Azure Storage-fiók neve. A tároló neve a blob-tároló, amely a fürttárolóhoz gyökere.
 
-* `adl://home` Ha az Azure Data Lake Store használatával. A Data Lake Store nevét, amelyet az alábbi REST-hívás:
+* `adl://home` Ha az Azure Data Lake Storage használatával. A Data Lake Storage nevének lekéréséhez használja az alábbi REST-hívás:
 
     ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
@@ -188,7 +188,7 @@ Ha használ __Azure Storage__, tekintse meg a következő hivatkozások módon, 
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Tárolási REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Ha használ __Azure Data Lake Store__, tekintse meg a következő hivatkozások módon, hogy érheti el az adatokat:
+Ha használ __Azure Data Lake Storage__, tekintse meg a következő hivatkozások módon, hogy érheti el az adatokat:
 
 * [Webböngésző](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -256,9 +256,9 @@ Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információ
 
 Néhány Hadoop-technológiák, amelyek tartalmazzák a használt részeként egy MapReduce-feladatot, vagy a funkció önálló jar-fájlok találhatók a Pig- vagy Hive belül. Azok gyakran nem szükséges minden olyan beállítás, és a létrehozása után a fürtbe feltöltött és közvetlenül használni. Ha azt szeretné, hogy az összetevő survives rendszerképének alaphelyzetbe állítása, a fürt, tárolható a jar-fájlt az alapértelmezett tároló (WASB vagy ADL) a fürt számára.
 
-Például, ha a legújabb verzióját használni kívánt [DataFu](http://datafu.incubator.apache.org/), egy a projektet tartalmazó jar letöltheti és töltse fel a HDInsight-fürthöz. Ezután kövesse a DataFu dokumentáció a Pig- vagy Hive használatával.
+Például, ha a legújabb verzióját használni kívánt [Apache DataFu](https://datafu.incubator.apache.org/), egy a projektet tartalmazó jar letöltheti és töltse fel a HDInsight-fürthöz. Ezután kövesse a DataFu dokumentáció a Pig- vagy Hive használatával.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Néhány összetevőt, különálló jar-fájlok a HDInsight által biztosított, de nem szerepelnek az elérési út. Egy adott összetevőre keres, ha a fürtön lévő keresése a következő használatával:
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
@@ -270,7 +270,7 @@ Szeretné egy összetevő egy másik verzióját használni, töltse fel a verzi
 > [!WARNING]
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>További lépések
 

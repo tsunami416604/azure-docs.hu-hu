@@ -7,46 +7,46 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: ae8634fbfdaa250cbabda6189c6c2eeef8e5e4f1
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 58124ab5938c7bee9f83a8c37ab5c5618b4b7d54
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292377"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789823"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
 Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy elemzéseket nyerjen ki a videóiból az alább ismertetett Video Indexer-modellekkel:
  
-- **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, orosz és portugál (brazíliai). Ha a nyelv nem ismerhető fel, a Video Indexer angol nyelvűként kezeli a videót.
-- **Hanganyag átirata**: Szöveggé alakítja a beszédet 10 nyelven, és engedélyezi a bővítményeket. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, arab, orosz és portugál (brazíliai).
-- **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
-- **Kétcsatornás feldolgozás**: Automatikusan észleli a külön átiratokat, és egyetlen idővonalba egyesíti őket.
-- **Zajcsökkentés**: Feljavítja a telefonos hangfájlokat és a zajos felvételeket (Skype-szűrők alapján).
-- **Átiratok testreszabása (CRIS)**: Kiterjesztett egyéni beszédfelismerési modellek betanításával és végrehajtásával iparág-specifikus átiratokat hoz létre.
-- **Beszélők számbavétele**: Felismeri és beazonosítja, hogy mely szavakat mely beszélő mondta, és mikor.
-- **Beszélőstatisztikák**: Statisztikai adatokat szolgáltat a beszélők beszédarányáról.
-- **Vizuális szövegfelismerés (OCR)**: Kinyeri a videóban vizuálisan megjelenő szövegeket.
-- **Kulcsképkockák kinyerése**: Felismeri a videók stabil kulcsképkockáit.
-- **Hangulatelemzés**: Azonosítja a pozitív, negatív vagy semleges érzelmeket a beszédben és a vizuális szövegekben.
-- **Vizuális tartalom moderálása**: Felismeri a felnőtt és/vagy kényes látványelemeket.
-- **Kulcsszavak kinyerése**: Kinyeri a kulcsszavakat a beszédből és a vizuális szövegből.
-- **Címkeazonosítás**: Azonosítja a megjelenített vizuális objektumokat és műveleteket.
-- **Márkakinyerés**: Kinyeri a márkákat a beszédből és a vizuális szövegből.
-- **Arcfelismerés**: Felismeri és csoportosítja a videóban megjelenő arcokat.
-- **Miniatűrkinyerés az arcokhoz („legjobb arc”)**: Automatikusan meghatározza a legjobb rögzített arcot minden arccsoportban (minőség, méret és frontális helyzet alapján), és kinyeri őket képobjektumként.
-- **Hírességek azonosítása**: A Video Indexer automatikusan azonosít több mint 1 millió hírességet – például vezető politikusokat, színészeket és színésznőket, sportolókat, kutatókat, üzleti és technológiai vezetőket az egész világról. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
-- **Fiókalapú arcfelismerés**: A Video Indexer betanít egy modellt a megadott fióknak. Ez aztán a kifejezetten az ebben a fiókban lévő videókhoz betanított modell alapján felismeri az arcokat a videókban.
-- **Szöveges tartalom moderálása**: Felismeri az explicit szövegeket a hanganyag alapján készült átiratban.
-- **Felvételészlelés**: Megállapítja, hogy mikor történik jelenetváltás a videóban.
-- **Fekete keret észlelése**: Azonosítja a videóban megjelenő fekete kereteket.
-- **Hangeffektusok**: Azonosítja a hangeffektusokat, például a tapsolást, a beszédet és a csendet.
-- **Témakör-következtetés**: Kikövetkezteti a fő témaköröket az átiratokból. Tartalmazza az 1. szintű [IPTC](https://iptc.org/standards/media-topics/) taxonómiát.
-- **Érzelemfelismerés**: Azonosítja az érzelmeket beszéd- és audiojelek alapján. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.
-- **Összetevők**: Rendkívül részletes összetevők széles választékát nyeri ki modellhez.
-- **Fordítás**: Fordítást készít a hanganyag alapján készült átiratról 54 különböző nyelven.
+- **Automatikus nyelvfelismerés**: Automatikusan meghatározza a domináns használja a beszélt nyelv. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, orosz és portugál (brazíliai). Ha a nyelv nem ismerhető fel, a Video Indexer angol nyelvűként kezeli a videót.
+- **Hanganyag átírása**: 12 nyelvet szöveggé alakít speech, és lehetővé teszi a bővítmények. Támogatott nyelvek angol, spanyol, francia, német, olasz, egyszerűsített kínai, japán, arab, orosz, portugál (brazíliai), Hindi és koreai.
+- **Kódolt feliratok**: Kódolt feliratok három formátumban hozza létre: VTT, TTML, SRT.
+- **Két feldolgozó channel**: Automatikusan észleli, külön, átirat és összevonása egyetlen idővonalán.
+- **A zaj csökkentésére**:  Törli a telefonos hang- vagy zajos felvételeket (a Skype-szűrők alapján).
+- **Átirat testreszabási (CRIS)**: Betanítja, és végrehajtja a kiterjesztett egyéni beszéd szöveges modellekhez hozhat létre az átiratok iparágra jellemző.
+- **Hangszóró enumerálás**:  Vannak leképezve, és tisztában van azzal, mely speaker küllő melyik szavak és mikor.
+- **Hangszóró statisztika**: Előadók speech arányok statisztika biztosít.
+- **Vizuális szövegek felismerése (OCR)**: Kiolvassa a videóban vizuálisan megjelenített szöveget.
+- **Kulcsképkockák**: Videó stabil kulcsképek észleli.
+- **Hangulatelemzés**: A beszéd- és vizuális szöveg pozitív, negatív és semleges hangulati azonosítja.
+- **Vizuális tartalom-jóváhagyás**: Észleli a felnőtt és/vagy pikáns vizualizációkat.
+- **Kulcsszavak kinyerése**: A kulcsszavak kigyűjti a beszéd- és vizuális szöveget.
+- **Szoftverazonosító címkék**: Azonosítja a vizuális objektumok és műveletek jelennek meg.
+- **Kibontási védjegyzéssel**: Kiolvassa a márka a beszéd- és vizuális szöveget.
+- **Arcfelismerés**: Észleli és csoportokat a videóban megjelenő arcokat.
+- **Arcok ("ajánlott face") a miniatűr kinyerési**: Automatikusan azonosítja az egyes csoportokban téglalapot (a minőségét, mérete és elülső pozíció alapján) legmegfelelőbb rögzített face, és csomagolja ki rendszerképet eszközként.
+- **Hírességek azonosító**: A video Indexer automatikusan meghatározza a több mint 1 millió hírességek – például a világ vezető, aktorok és színésznők, elnyert érmek számának trendjeit, kutatók, üzleti és a világ vezető technológiai szakértőnk. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
+- **Tárfiókalapú arcfelismerés**: A video Indexer betanítja olyan modell, egy meghatározott fiók. Ez aztán a kifejezetten az ebben a fiókban lévő videókhoz betanított modell alapján felismeri az arcokat a videókban.
+- **Szöveges tartalom-jóváhagyás**: A hang átiratok explicit szöveg észleli.
+- **Elejtett észlelési**: Azt határozza meg, ha egy helyszín módosításokat a videóban.
+- **Keret észlelési fekete**: A videóban megjelenő fekete keretek azonosítja.
+- **Hang hatások**: Például az aktuális vastaps, beszédfelismerési és csend hang hatások azonosítja.
+- **A témakör következtetésekhez**: Lehetővé teszi az átiratok legfontosabb témakörök következtetésekhez. Tartalmazza az 1. szintű [IPTC](https://iptc.org/standards/media-topics/) taxonómiát.
+- **Érzelemfelismerő**: Beszéd- és audio jelek alapján érzelmeket azonosít. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.
+- **Összetevők**: Kinyeri a "következő részletességi szint" széles skáláját minden, a modellek összetevőket.
+- **Fordítási**: A hang átiratok 54 más nyelvekre fordításának hoz létre.
 
 Ha a Video Indexer végzett a feldolgozással és az elemzéssel, utána áttekintheti, összeválogathatja, keresheti és közzéteheti a videós elemzéseket.
 

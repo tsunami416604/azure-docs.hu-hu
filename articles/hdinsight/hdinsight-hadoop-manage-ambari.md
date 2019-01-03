@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eee37f5a77331b78aa587ba2e3eb61132d7d6adc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385567"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722022"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával
 
@@ -26,7 +26,7 @@ Ebből a dokumentumból megismerheti, hogyan az Ambari webes felhasználói fel�
 
 ## <a id="whatis"></a>Mi az Apache Ambari?
 
-[Az Apache Ambari](http://ambari.apache.org) egyszerűbbé teszi a Hadoop-kezelés azáltal, hogy egy könnyen használható webes felhasználói felületen. Felügyelheti és figyelheti a Hadoop-fürtök az Ambari segítségével. A fejlesztők beépíthetik ezeket a képességeket alkalmazásaikban használatával a [az Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Az Apache Ambari](https://ambari.apache.org) egyszerűbbé teszi a Hadoop-kezelés azáltal, hogy egy könnyen használható webes felhasználói felületen. Felügyelheti és figyelheti a Hadoop-fürtök az Ambari segítségével. A fejlesztők beépíthetik ezeket a képességeket alkalmazásaikban használatával a [az Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Az Ambari webes felhasználói Felületet biztosít a Linux operációs rendszert használó HDInsight-fürtök az alapértelmezett.
 
@@ -181,12 +181,12 @@ A **gazdagépek** lap felsorolja a fürtben lévő minden gazdagép. Gazdagép k
 
    * **Leszerelése** -állomás eltávolítja a fürtből.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Ez a művelet ne használja a HDInsight-fürtökön.
 
    * **Recommission** -hozzáad egy korábban már leszerelt állomást a fürthöz.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Ez a művelet ne használja a HDInsight-fürtökön.
 
 ### <a id="service"></a>Services

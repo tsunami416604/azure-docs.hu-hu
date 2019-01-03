@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318693"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632635"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>PowerShell-lel történő biztonsági mentése és visszaállítása az Azure-fájlmegosztások
 
@@ -34,11 +34,11 @@ Az AzureRm.RecoveryServices.Backup PowerShell-parancsmagok leírása, tekintse m
 ## <a name="setup-and-registration"></a>Beállítása és regisztrálása
 
 > [!NOTE]
-> Feljegyzett [Itt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), az AzureRM modul véget ér 2018. november az új funkciókkal. Ezért adjuk támogatása az Azure-fájlmegosztások biztonsági mentése az új "Az' PS-modullal. Tervezzük az előkészíteni a GA kiadás Az modul is.
+> Feljegyzett [Itt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), az AzureRM modul véget ér 2018. november az új funkciókkal. Ezért adjuk támogatása az Azure-fájlmegosztások biztonsági mostantól általánosan elérhető az új "Az' PS-modullal
 
 A kezdéshez:
 
-1. ["Az" PowerShell legújabb verzióját töltse](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (a szükséges minimális verziója: 0.7.0)
+1. ["Az" PowerShell legújabb verzióját töltse](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (a szükséges minimális verziója: 1.0.0-s)
 
 2. Keresse meg a rendelkezésre álló Azure Backup PowerShell-parancsmagok a következő parancs beírásával:
 
@@ -158,6 +158,8 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
+
+A "NewAFSPolicy" vesz igénybe egy napi biztonsági mentést, és 30 napig őrzi meg.
 
 ### <a name="enable-protection"></a>Védelem engedélyezése
 

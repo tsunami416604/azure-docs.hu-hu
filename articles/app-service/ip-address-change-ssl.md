@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270790"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714219"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Egy SSL-IP-cím módosítása előkészítése
 
@@ -52,4 +52,4 @@ Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás SSL IP-címe m
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk részletesen egy IP-cím módosítása az Azure által kezdeményezett előkészítése. IP-címek az Azure App Service kapcsolatos további információkért lásd: [SSL és az SSL IP-címek az Azure App Service](app-service-ip-addresses.md).
+Ez a cikk részletesen egy IP-cím módosítása az Azure által kezdeményezett előkészítése. IP-címek az Azure App Service kapcsolatos további információkért lásd: [SSL és az SSL IP-címek az Azure App Service](overview-inbound-outbound-ips.md).

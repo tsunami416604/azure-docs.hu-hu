@@ -3,17 +3,15 @@ title: Az Azure Database for MariaDB kiszolgáló fogalmak
 description: Ez a témakör szempontokat és irányelveket tartalmaz az Azure Database for MariaDB-kiszolgálók használata.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4fd2f28f52c45a0ec3128302b02ad5ba498c982b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247771"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544566"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Az Azure Database for MariaDB kiszolgáló fogalmak
 Ez a cikk szempontokat és irányelveket tartalmaz az Azure Database for MariaDB-kiszolgálók használata.
@@ -33,7 +31,7 @@ Egy Azure Database for MariaDB-kiszolgáló:
 - A hatókört az adatbázisokra vonatkozó felügyeleti szabályzatokat biztosít: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfigurációk, stb.
 - MariaDB-motor verziója 10.2 érhető el. További információkért lásd: [támogatott, Azure Database for MariaDB adatbázis verziók](./concepts-supported-versions.md).
 
-Az Azure database for MariaDB-kiszolgáló egy vagy több adatbázist is létrehozhat. A naplózott összes erőforrását, vagy hozhat létre az erőforrások megosztását több adatbázis kiszolgálónként egy önálló adatbázis létrehozása. A díjszabás is a strukturált kiszolgálónkénti, árképzési szint, a virtuális magok és a tárterület (GB) konfigurációja alapján. További információkért lásd: [Tarifacsomagok](./concepts-pricing-tiers.md).
+Az Azure Database for MariaDB-kiszolgálón egy vagy több adatbázist is létrehozhat. A naplózott összes erőforrását, vagy hozhat létre az erőforrások megosztását több adatbázis kiszolgálónként egy önálló adatbázis létrehozása. A díjszabás is a strukturált kiszolgálónkénti, árképzési szint, a virtuális magok és a tárterület (GB) konfigurációja alapján. További információkért lásd: [Tarifacsomagok](./concepts-pricing-tiers.md).
 
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Hogyan tehető biztonságossá egy Azure Database for MariaDB-kiszolgáló?
 

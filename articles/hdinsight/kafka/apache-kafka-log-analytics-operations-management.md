@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317279"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608545"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight-beli Apache kafka-naplók elemzése
 
@@ -30,7 +30,7 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
 
 3. A Kafka-fürt használata a Log Analytics konfigurálása. További információkért lásd: a [Log Analytics használata a HDInsight figyelése](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentumot.
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürt használni a Log Analytics használatával is konfigurálhatja a `Enable-AzureRmHDInsightOperationsManagementSuite` parancsmagot. Ez a parancsmag megköveteli a következő információkat:
     >
     > * A HDInsight-fürt neve.
@@ -38,7 +38,7 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
     > * A Log Analytics-kapcsolat elsődleges kulcsának. Keresse meg az elsődleges kulcs, nyissa meg a munkaterület az Azure Portalon, válassza a __speciális beállítások__ a bal oldali menüből. Speciális beállításainak megadásához válassza __csatlakoztatott források__>__Linux-kiszolgálók__.
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mielőtt adatokat a Log Analytics körülbelül 20 percet igénybe vehet.
 
 ## <a name="query-logs"></a>Lekérdezések naplói
@@ -57,7 +57,7 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
 
     * Kimenő bájtok másodpercenként: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A lekérdezési értékeket cserélje le a fürtre jellemző információkat. Ha például `ClusterName_s` kell állítani a fürt nevére. `HostName_s` a fürt egyik munkavégző csomópontjához tartomány nevére kell állítani.
 
     Is megadhat `*` naplózott összes típusok keresése. Jelenleg a következő naplók kapcsolódnak érhetők el a lekérdezésekhez:

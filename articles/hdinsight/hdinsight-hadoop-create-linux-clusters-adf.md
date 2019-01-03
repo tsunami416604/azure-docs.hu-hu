@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Data Factory használatával az Azure HDInsight igény szerinti Apache Hadoop-fürtök létrehozása '
+title: 'Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása az Azure HDInsight a Data Factory segítségével '
 description: Ismerje meg, hogyan hozhat létre Apache Hadoop-fürtök igény szerinti HDInsight az Azure Data Factory használatával.
 services: hdinsight
 author: hrasheed-msft
@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: c7ec0b29e200710070cb1243ff8bfadd5e31e8eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879409"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975457"
 ---
-# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Ebből a cikkből megismerheti, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/) igény szerint, az Azure Data Factory használatával az Azure HDInsight a fürthöz. Ezt követően az adatfolyamatok az Azure Data Factory a Hive-feladatok futtatásához, majd törölheti a fürtöt. Ez az oktatóanyag végére elsajátíthatja, hogyan tesztelhetők a big Data típusú adatok feladatfuttatás ahol fürt létrehozását, a feladat futtatása és a fürt törlését végzett ütemezés szerint.
@@ -55,7 +55,7 @@ Ebben a szakaszban egy Azure PowerShell-szkript hozhat létre a tárfiókot, má
 
 
 **Hozzon létre egy tárfiókot, és másolja a fájlokat az Azure PowerShell használatával:**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Adja meg az Azure-erőforráscsoportot és a parancsfájl által létrehozott Azure storage-fiók nevét.
 > Írja le **erőforráscsoport-név**, **tárfióknevet**, és **tárfiókkulcs** a parancsfájl által használt kimeneti adattípus. Szükséges a következő szakaszban.
 
@@ -166,7 +166,11 @@ Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**.
+1. A bal oldali menüben válassza ki a **+ erőforrás létrehozása**.
+
+1. A **Azure Marketplace-en**válassza **Analytics**.
+
+1.  A **kiemelt**válassza **adat-előállító**.
 
     ![A portálon az Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
 
@@ -181,19 +185,18 @@ Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt
     |**Name (Név)** |  Adja meg az adat-előállító nevét. A névnek globálisan egyedinek kell lennie.|
     |**Előfizetés**     |  Válassza ki az Azure-előfizetését. |
     |**Erőforráscsoport**     | Válassza ki **meglévő** , és válassza ki az erőforráscsoportot, a PowerShell-szkripttel létrehozott. |
-    |**Verzió**     | Válassza ki **V2 (előzetes verzió)** |
-    |**Hely**     | A hely automatikusan értéke a korábban az erőforráscsoport létrehozásakor megadott helyre. A jelen oktatóanyag esetében a hely értéke **USA keleti RÉGIÓJA 2**. |
+    |**Verzió**     | Válassza ki **V2** |
+    |**Hely**     | A hely automatikusan értéke a korábban az erőforráscsoport létrehozásakor megadott helyre. A jelen oktatóanyag esetében a hely értéke **USA keleti Régiójában**. |
     
 
-1. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozás**. A portál irányítópultján egy új csempe jelenik meg **Üzembe helyezés beküldése** címmel. Adat-előállító létrehozása eltarthat bárhol 2 – 4 perc között.
+1. Kattintson a **Létrehozás** gombra. Adat-előállító létrehozása eltarthat bárhol 2 – 4 perc között.
 
-    ![Sablon üzembe helyezés folyamatban](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "sablon üzembe helyezés folyamatban") 
- 
-1. Az adat-előállító létrehozása után a portál megjeleníti az adat-előállító áttekintésével.
 
-    ![Az Azure Data Factory áttekintése](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – áttekintés")
+1. Az adat-előállító létrehozása után kapni fog egy **üzembe helyezés sikeres** értesítés egy **erőforrás megnyitása** gombra.  Válassza ki **erőforrás megnyitása** a Data Factory alapértelmezett nézet megnyitásához.
 
 1. Válassza ki **létrehozás és Monitorozás** az Azure Data Factory szerzői és figyelési portál elindításához.
+
+    ![Az Azure Data Factory áttekintése](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – áttekintés")
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 

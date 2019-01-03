@@ -1,5 +1,5 @@
 ---
-title: Módosítása és ismételt üzembe helyezése a mikroszolgáltatások |} A Microsoft Docs
+title: Módosítása és ismételt üzembe helyezése a mikroszolgáltatások – Azure |} A Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan módosíthatja, és telepítse újra a távoli figyelési mikroszolgáltatások
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315757"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631898"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
-Ez az oktatóanyag bemutatja, hogyan szerkesztheti az egyik a [mikroszolgáltatások](http://azure.com/microservices) a távoli figyelési megoldás létrehozása a mikroszolgáltatási képe, a rendszerkép üzembe helyezése a docker hub és indítására használhatja a távoli figyelési megoldás. Bevezetni a fogalom, az oktatóanyagban egy egyszerű forgatókönyvet, amelyen mikroszolgáltatások API hívása és módosíthatja az állapotüzenet tartalmazza a "Tartási és jól" "Új szerkeszti Made itt!"
+Ez az oktatóanyag bemutatja, hogyan szerkesztheti az egyik a [mikroszolgáltatások](https://azure.com/microservices) a távoli figyelési megoldás létrehozása a mikroszolgáltatási képe, a rendszerkép üzembe helyezése a docker hub és indítására használhatja a távoli figyelési megoldás. Bevezetni a fogalom, az oktatóanyagban egy egyszerű forgatókönyvet, amelyen mikroszolgáltatások API hívása és módosíthatja az állapotüzenet tartalmazza a "Tartási és jól" "Új szerkeszti Made itt!"
 
 Távoli megfigyelési megoldás használ, amelyek felhasználásával történik, amely a docker hub kikerülnek docker-rendszerképeket. 
 
@@ -77,7 +77,7 @@ Módosítsa az "Új módosításokat az itt végzett!" az Iot Hub-kezelőből mi
     
     vagy a Windows:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

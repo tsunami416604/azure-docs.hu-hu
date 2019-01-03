@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 568d63f984980e91b4dc059211dcf0eaceb73820
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d7be248e49baf4e7fd10d6b37df1473e92ccfce7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164228"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651724"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Állítsa be a biztonsági mentés és replikáció a Apache HBase és a HDInsight az Apache Phoenixhez
 
@@ -26,7 +26,7 @@ Az Apache HBase számos megközelítés az adatvesztéssel szembeni esetlegesen 
 * Pillanatképek
 * Replikáció
 
-> [!NOTE]
+> [!NOTE]  
 > Az Apache Phoenix, hogy a metaadatok biztonsági mentése biztonsági mentésekor a rendszer katalógus HBase táblákat tárolja a HBase-táblákat, a metaadatokat.
 
 A következő szakaszok ismertetik a használati forgatókönyvtől függ, ezek a módszerek mindegyike esetében.
@@ -35,7 +35,7 @@ A következő szakaszok ismertetik a használati forgatókönyvtől függ, ezek 
 
 Ezt a módszert használja a Másolás összes HBase, anélkül, hogy táblák vagy oszlopcsaláddal egy adott sorkészletét jelölik ki. Későbbi megközelítések nagyobb ellenőrzést biztosít.
 
-A HDInsight HBase a kiválasztott, amikor létrehozza a fürtöt, vagy az Azure Storage-blobokkal, vagy az Azure Data Lake Store alapértelmezett tárolót használja. Mindkét esetben a HBase az adatoknak és metaadatoknak fájlok a következő elérési úton tárolja:
+A HDInsight HBase használja az alapértelmezett tároló, a fürt, vagy az Azure Storage-blobokkal, vagy az Azure Data Lake Storage létrehozásakor kiválasztott. Mindkét esetben a HBase az adatoknak és metaadatoknak fájlok a következő elérési úton tárolja:
 
     /hbase
 
@@ -45,7 +45,7 @@ A HDInsight HBase a kiválasztott, amikor létrehozza a fürtöt, vagy az Azure 
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* Az Azure Data Lake Store a `hbase` mappát egy fürt üzembe helyezésekor megadott legfelső szintű útvonalon található. A gyökér elérési útja általában rendelkezik egy `clusters` mappát egy olyan almappát, a HDInsight-fürt elnevezett:
+* Az Azure Data Lake Storage a `hbase` mappát egy fürt üzembe helyezésekor megadott legfelső szintű útvonalon található. A gyökér elérési útja általában rendelkezik egy `clusters` mappát egy olyan almappát, a HDInsight-fürt elnevezett:
 
     ```
     /clusters/<clusterName>/hbase
@@ -57,7 +57,7 @@ Miután törli a fürtöt, hagyja meg az adatokat helyben, vagy is másolja az a
 
 * Hozzon létre egy új HDInsight-példányt, a jelenlegi tárolási helyre mutat. Az új példány létrehozása a meglévő adatokat.
 
-* Másolás a `hbase` mappára egy másik Azure Storage blob-tároló vagy a Data Lake Store-helyre, és indítsa el egy új fürtöt az adatokkal. Az Azure Storage esetében használjon [AzCopy](../../storage/common/storage-use-azcopy.md), és Data Lake Store használatának [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* Másolás a `hbase` mappára egy másik Azure Storage blob-tároló vagy a Data Lake Storage helyét, és indítsa el egy új fürtöt az adatokkal. Az Azure Storage esetében használjon [AzCopy](../../storage/common/storage-use-azcopy.md), és a Data Lake Storage használatra [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="export-then-import"></a>Exportálja majd importálja
 
@@ -75,7 +75,7 @@ Adja meg a teljes exportálási elérési út az alapértelmezett tárolóba vag
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Az Azure Data Lake Store szintaxisa:
+Az Azure Data Lake Storage szintaxisa:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
@@ -117,7 +117,7 @@ A CopyTable segédprogram paraméterek használatával adja meg az időtartomán
 
 CopyTable megvizsgálja a teljes tábla tartalmat, amely a céltábla át lesznek másolva. Ez csökkentheti a HBase-fürt teljesítmény, CopyTable végrehajtása közben.
 
-> [!NOTE]
+> [!NOTE]  
 > Automatizálhatja a táblák közötti másolását, tekintse meg a `hdi_copy_table.sh` szkriptet a [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) tárházban a Githubon.
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Az Apache ZooKeeper kvórum lista manuálisan gyűjtése

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311670"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602069"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Apache Kafka on HDInsight az Azure Kubernetes Service használata
 
@@ -22,7 +22,7 @@ Ismerje meg, hogyan használható az Azure Kubernetes Service (AKS)- [Apache Kaf
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Kubernetes Service felügyeli az üzemeltetett Kubernetes környezetet, és gyorsan és egyszerűen üzembe helyezhetők a tárolóalapú alkalmazásokat. Az Azure Virtual Network használatával, a két szolgáltatás is csatlakoztathatja.
 
-> [!NOTE]
+> [!NOTE]  
 > A jelen dokumentum célja az Azure Kubernetes Service kommunikálni a HDInsight alatt futó Kafka engedélyezéséhez szükséges lépéseket. Maga a példában csak alapszintű Kafka ügyfél bemutatásához, hogy működik-e a konfigurációs.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -49,7 +49,7 @@ A következő ábra szemlélteti a hálózati topológiát, ebben a dokumentumba
 
 ![Egy virtuális hálózatot, egy másik AKS és a hálózatok társviszony-létesítés használatával összekapcsolt HDInsight](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Névfeloldás a társviszonyban lévő hálózatok, így használt IP-címkezelés között nincs engedélyezve. Alapértelmezés szerint a HDInsight alatt futó Kafka vissza az állomásneveket IP-címek helyett, ha az ügyfelek csatlakoznak van konfigurálva. A jelen dokumentumban leírt lépések módosítása IP használata a Kafka hirdetési helyette.
 
 ## <a name="create-an-azure-kubernetes-service-aks"></a>Hozzon létre egy Azure Kubernetes Service (AKS)
@@ -59,7 +59,7 @@ Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok s
 * [Fürt üzembe helyezése az Azure Kubernetes Service (AKS) – portál](../../aks/kubernetes-walkthrough-portal.md)
 * [Fürt üzembe helyezése az Azure Kubernetes Service (AKS) – CLI](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]
+> [!NOTE]  
 > Az AKS a telepítés során létrehoz egy virtuális hálózatot. Ez a hálózat társviszonyban áll, a HDInsight a következő szakaszban létrehozott.
 
 ## <a name="configure-virtual-network-peering"></a>Konfigurálja a virtuális hálózatok közötti társviszony
@@ -72,7 +72,7 @@ Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok s
 
 4. A HDInsight virtuális hálózat létrehozásához válassza __+ erőforrás létrehozása__, __hálózatkezelés__, majd __virtuális hálózati__.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Az új virtuális hálózat az értékek megadásakor egy címtér, amely nincs átfedésben az AKS-fürt hálózati által használt kell használnia.
 
     Ugyanaz, mint __hely__ a virtuális hálózati az AKS-fürtöt használt.
@@ -95,9 +95,9 @@ Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok s
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Telepítse az Apache Kafka HDInsight
 
-A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott virtuális hálózathoz kell csatlakoztatni. Kafka-fürt létrehozásával kapcsolatos további információkért lásd: a [Kafka-fürt létrehozása](apache-kafka-get-started.md) dokumentumot.
+A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott virtuális hálózathoz kell csatlakoztatni. Kafka-fürt létrehozásával kapcsolatos további információkért lásd: a [hozzon létre egy Apache Kafka-fürt](apache-kafka-get-started.md) dokumentumot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózat, HDInsight létrehozott.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Az Apache Kafka IP hirdetés konfigurálása
@@ -158,8 +158,8 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
 
 3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 
-    * `var topic = 'mytopic'`: A csere `mytopic` a Kafka-témakörbe az alkalmazás által használt nevét.
-    * `var brokerHost = '176.16.0.13:9092`: A csere `176.16.0.13` a közvetítő gazdagépek, a fürt egyik belső IP-címét.
+    * `var topic = 'mytopic'`: Cserélje le `mytopic` a Kafka-témakörbe az alkalmazás által használt nevét.
+    * `var brokerHost = '176.16.0.13:9092`: Cserélje le `176.16.0.13` a közvetítő gazdagépek, a fürt egyik belső IP-címét.
 
         A belső IP-címének a közvetítő gazdagépek (workernodes) a fürtben, tekintse meg a [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válasszon ki egy bejegyzést a tartománynév kezdődik, az IP-cím `wn`.
 
@@ -169,7 +169,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
     docker build -t kafka-aks-test .
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ez az alkalmazás által igényelt csomagokat ellenőrzi a tárházba, így Önnek nem kell használni a `npm` segédprogram, hogy telepítse őket.
 
 5. Jelentkezzen be az Azure Container Registry (ACR), és keresse meg a kiszolgáló nevének lekéréséhez:
@@ -179,7 +179,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha nem ismeri az Azure Container Registry neve, vagy nem tudja dolgozni az Azure Kubernetes Service-ben az Azure CLI használatával tekintse meg a [AKS oktatóanyagait](../../aks/tutorial-kubernetes-prepare-app.md).
 
 6. A helyi címkézése `kafka-aks-test` rendszerképet, az ACR bejelentkezési kiszolgálójának nevével. Is hozzáadhat `:v1` jelzi a rendszerkép verziószámát vége:
@@ -217,7 +217,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
 
 12. Az mezőbe írja be a szöveget, majd a __küldése__ gombra. A Kafka küldi az adatokat. Az alkalmazás a Kafka-fogyasztók kiolvassa az üzenetet, és hozzáadja azt, majd a __Kafka üzeneteit__ szakaszban.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Több példány, egy üzenet jelenhet meg. Ez a probléma általában történik, ha a csatlakozás után, frissítse a böngészőt, vagy nyissa meg az alkalmazás több böngésző kapcsolatot.
 
 ## <a name="next-steps"></a>További lépések

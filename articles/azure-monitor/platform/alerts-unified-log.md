@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6a1b9c110c79e428ab0cc182d0da370e59bc4f30
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b3949fefac1cc230a98687b3b5ff9c7a01c6a0e9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386213"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789576"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
 
-Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
+Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
 > Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -38,7 +38,7 @@ Log search szabályok határozzák meg a következő adatokat:
 - **Gyakoriság**.  Itt adhatja meg, hogy milyen gyakran kell futtatni a lekérdezést. 5 perc és 24 óra között bármilyen érték lehet. Egyenlő vagy kisebb, mint az adott időszakban kell lennie.  Ha az értéke nagyobb, mint az adott időszakban, majd, kockázati éppen nem talált rekordokat.<br>*Vegyük példaként egy 30 perces időtartammal és 60 perces gyakoriságot is.  Ha a lekérdezés fut, 1:00-kor, 12:30 és 1:00 Órakor közötti rekordok adja vissza.  Amikor legközelebb szeretné futtatni a lekérdezést 2:00-t, ha ad vissza rekordok 1:30 és 2:00 között.  1:00 és 1:30 között létrehozott rekordokat szeretne soha nem értékelhető ki.*
 - **Küszöbérték**.  A Naplókeresés eredménye értékeli ki a meghatározásához, hogy egy riasztást kell létrehozni.  A küszöbérték nem azonos a különféle keresési naplóriasztási szabály.
 
-Log search szabályokat kell azt a [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events), kétféle típusú lehet. Ezek a típusok leírását a következő szakaszok részletesen ismertetjük.
+Log search szabályokat kell azt a [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events), kétféle típusú lehet. Ezek a típusok leírását a következő szakaszok részletesen ismertetjük.
 
 - **[Az eredmények száma](#number-of-results-alert-rules)**. Egyetlen riasztás jön létre, amikor a naplóbeli keresés által visszaadott rekordokat meghaladja a megadott szám.
 - **[Metrikus egység](#metric-measurement-alert-rules)**.  A megadott küszöbértéket meghaladó értékek naplóbeli keresés eredményei az egyes objektumok létrehozott riasztás.
@@ -121,5 +121,5 @@ Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monit
 * Ismerje meg [létrehozása a naplóriasztások az Azure-ban](../../azure-monitor/platform/alerts-log.md).
 * Megismerheti [naplóriasztások az Azure-ban a webhookok](alerts-log-webhook.md).
 * Ismerje meg [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md).
-* Tudjon meg többet [Application Insights](../../application-insights/app-insights-analytics.md).
+* Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md).
 * Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    

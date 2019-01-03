@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434766"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582558"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
 Előfordulhat, hogy a gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Azure-beli gépek hibaelhárító futtatása az Azure Portalon és a nem Azure-gépek a [offline forgatókönyv](#troubleshoot-offline).
+
+Az alábbi lista a gép is lehet három készenléti állapotok:
+
+* **Kész** – az update-ügynök van telepítve, és kevesebb mint 1 órája történt legutóbbi volt látható.
+* **Leválasztott** – az update-ügynök van telepítve, és több mint 1 órája történt legutóbbi volt látható.
+* **Nincs konfigurálva** – az update-ügynök nem található vagy nem fejeződött be az előkészítés.
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 

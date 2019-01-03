@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272235"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631125"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -388,7 +388,7 @@ A példa szemlélteti a következő néhány alapvető parancsot:
 
 + Az első sora határozza meg a bemeneti réteg (nevű `Data`). Ha a `auto` kulcsszó, a Neurális hálózat automatikusan tartalmazza az összes funkció oszlop a bemeneti példák. 
 + A második sor hoz létre a rejtett rétegben. A név `H` a rejtett rétegben, amelynek 200 csomópontok hozzá van rendelve. Ez a réteg a bemeneti réteg teljes csatlakozik.
-+ A harmadik sora határozza meg, a kimenete rétegen (nevű `O`), amely 10 kimeneti csomópont tartalmazza. A Neurális hálózat besorolást használják, van-e egy kimeneti csomópontonkénti osztály. A kulcsszó **sigmoid** azt jelzi, hogy a kimeneti függvény a kimenete rétegen van alkalmazva.
++ A harmadik sora határozza meg, a kimenete rétegen (nevű `Out`), amely 10 kimeneti csomópont tartalmazza. A Neurális hálózat besorolást használják, van-e egy kimeneti csomópontonkénti osztály. A kulcsszó **sigmoid** azt jelzi, hogy a kimeneti függvény a kimenete rétegen van alkalmazva.
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Több rejtett réteg meghatározása: számítógép vision példa
 

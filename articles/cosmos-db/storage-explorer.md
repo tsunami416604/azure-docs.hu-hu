@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jejiang
 ms.custom: seodec18
-ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: fb758c12d699bb80f81b65db99e1fec68c4efabf
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138126"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809760"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer használatával Azure Cosmos DB-erőforrások kezelése
 
-Az Azure Cosmos DB Azure Storage Explorerben történő használata lehetővé teszi a felhasználók számára az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és eseményindítók frissítését olyan Azure-entitások mellett, mint a tárolóblobok és üzenetsorok. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat. Az Azure Storage Explorer jelenleg SQL-, MongoDB-, Graph- és Table-fiókokat támogat.
+Az Azure Cosmos DB Azure Storage Explorerben történő használata lehetővé teszi a felhasználók számára az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és eseményindítók frissítését olyan Azure-entitások mellett, mint a tárolóblobok és üzenetsorok. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat. Azure Storage Explorer jelenleg támogatja az SQL, a MongoDB, a Graph és a Table API-k konfigurált Cosmos-fiókok.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure Cosmos DB-fiók az SQL API-hoz<!--or MongoDB API-->. Ha nem rendelkezik fiókkal, az Azure Portalon létrehozhat egyet az [Azure Cosmos DB: SQL API-webalkalmazás létrehozása .NET-tel és az Azure Portallal](create-sql-api-dotnet.md) című cikkben leírtaknak megfelelően.
+Cosmos-fiók MongoDB-hez az SQL API-t vagy az Azure Cosmos DB API-val. Ha nincs fiókja, létrehozhat egyet az Azure Portalon leírtak szerint [Azure Cosmos DB: Egy SQL API-webalkalmazás létrehozása .NET-tel és az Azure Portalon](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Telepítés
 
-Az Azure Storage Explorer legújabb elemei innen telepíthetők: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Már a Windows-, Linux- és MAC-alapú verzió is támogatott.
+Telepítse a legújabb Azure Storage Explorer elemei innen: [Az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)már a Windows, Linux és MAC alapú verzió is támogatott.
 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 
@@ -222,9 +222,9 @@ Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, o
 
 1. Telepítse az Open SSL-t.
      - [Windows:](https://slproweb.com/products/Win32OpenSSL.html) (bármelyik egyszerűsített verzió megfelel)
-     - Mac és Linux: elvileg eleve mellékelve van az operációs rendszerhez.
+     - Mac és Linux: Elvileg eleve mellékelve van az operációs rendszer
 2. Futtassa az Open SSL-t.
-    - Windows: lépjen a telepítési könyvtárba, azon belül a **/bin/** mappába, majd kattintson duplán az **openssl.exe** fájlra.
+    - Windows: Nyissa meg a telepítési könyvtárba, majd **/bin/**, majd kattintson duplán az **openssl.exe**.
     - Mac és Linux: futtassa az **openssl** parancsot egy terminálról.
 3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem tudja biztosan, melyik tanúsítvány önaláírt, akkor figyeljen arra, hogy melyiknél azonos a tárgy („s:”) és a kiállító („i:”).
@@ -241,7 +241,7 @@ Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett:
 - Ügyeljen arra, hogy a megfelelő környezettel jelentkezzen be ([Azure](https://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Germany](https://portal.microsoftazure.de/), [Azure US Government](https://portal.azure.us/) vagy Egyéni környezet/Azure Stack).
 - Ha proxyt használ, ügyeljen arra, hogy a Storage Explorer-proxy megfelelően legyen beállítva.
 - Próbálja meg eltávolítani és újra hozzáadni a fiókot.
-- Próbálja meg azt, hogy törli a következő fájlokat a kezdőkönyvtárból (például: C:\Users\ContosoUser), majd újra hozzáadja a fiókot:
+- Próbálja meg törölni a következő fájlokat a kezdőkönyvtárból (például: C:\Users\ContosoUser), majd újra hozzáadja a fiókot:
   - .adalcache
   - .devaccounts
   - .extaccounts
@@ -305,6 +305,6 @@ Ha a megoldások egyike sem működik, küldjön egy e-mailt az Azure Cosmos DB 
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a következő videót az Azure Cosmos DB Azure Storage Explorerben való használatáról: [Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Az Azure Cosmos DB használata Azure Storage Explorerben).
+* Az alábbi videóban megtudhatja hogyan használhatja az Azure Cosmos DB az Azure Storage Explorerben: [Használja az Azure Cosmos DB az Azure Storage Explorerben](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

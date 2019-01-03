@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277981"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601474"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -26,7 +26,7 @@ A hálózati házirend-kiszolgáló (NPS) kiterjesztése az Azure lehetővé tes
 Ebben a cikkben részletes útmutatást nyújt a hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure MFA számára a hálózati házirend-bővítmény használata az Azure-hoz. Ez lehetővé teszi a távoli asztali átjáró bejelentkezni próbáló felhasználók biztonságos ellenőrzése.
 
 > [!NOTE]
-> Ez a cikk nem használható az MFA-kiszolgáló központi csak az Azure MFA (felhőalapú).
+> Ez a cikk nem használható az MFA-kiszolgáló központi, és csak az Azure MFA (felhőalapú) központi használható.
 
 A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szervezetek a következőket teszi:
 
@@ -162,7 +162,7 @@ A szkript használatához adja meg a bővítmény az Azure AD rendszergazdai hit
 
 1. Nyisson meg egy rendszergazda Windows PowerShell-parancssorban.
 1. A PowerShell-parancssorba írja be a `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`, és nyomja le az **ENTER**.
-1. Típus `.\AzureMfsNpsExtnConfigSetup.ps1`, és nyomja le az **ENTER**. A parancsfájl ellenőrzi, hogy ha az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
+1. Típus `.\AzureMfaNpsExtnConfigSetup.ps1`, és nyomja le az **ENTER**. A parancsfájl ellenőrzi, hogy ha az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
   ![Az Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333581"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753132"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
@@ -53,17 +53,19 @@ A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváh
 
 **Tevékenységjelentések**    
 
-| Jelentés                 | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Címtárnaplózás        | 7 nap        | 30 nap             | 30 nap             |
-| Bejelentkezési tevékenységek       | –           | 30 nap             | 30 nap             |
-| Az Azure MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
+| Jelentés                 | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| Címtárnaplózás        | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
+| Bejelentkezési tevékenységek       | –           |  –           | 30 nap             | 30 nap             |
+| Az Azure MFA-használat        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
+
+A naplózási és a bejelentkezési tevékenységre vonatkozó adatok által átirányítására egy Azure storage-fiókot az Azure Monitor használatával a fent vázolt alapértelmezett megőrzési idejénél hosszabb őrizheti meg. További információkért lásd: [archiválása az Azure AD-naplók az Azure storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Biztonsági jelek**
 
-| Jelentés         | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
-| :--            | :--           | :--                 | :--                 |
-| Veszélyeztetett felhasználók  | 7 nap        | 30 nap             | 90 nap             |
-| Kockázatos bejelentkezések | 7 nap        | 30 nap             | 90 nap             |
+| Jelentés         | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| Veszélyeztetett felhasználók  | 7 nap        | 7 nap         | 30 nap             | 90 nap             |
+| Kockázatos bejelentkezések | 7 nap        | 7 nap         |  30 nap            | 90 nap             |
 
 ---

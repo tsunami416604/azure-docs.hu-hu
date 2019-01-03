@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438676"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544039"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikusan az diagnosztikai beállítások engedélyezése Resource Manager-sablonnal erőforrás létrehozásakor
 Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs archiválási őket a Storage-fiókban, vagy elküldheti a Log Analytics szolgáltatásba, amikor egy erőforrást hoznak létre streamelési.
@@ -25,7 +25,7 @@ Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sab
 
 A metódus a Resource Manager-sablonnal diagnosztikai naplóinak engedélyezéséről az erőforrás típusától függ.
 
-* **Nem – számítási** erőforrások (például a hálózati biztonsági csoportok, a Logic Apps, Automation) [ebben a cikkben leírt diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+* **Nem – számítási** erőforrások (például a hálózati biztonsági csoportok, a Logic Apps, Automation) [ebben a cikkben leírt diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
 * **COMPUTE** (WAD/LAD-alapú) erőforrások használják a [WAD/LAD konfigurációs fájl ebben a cikkben leírt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 Ebben a cikkben azt ismertetjük, hogyan a diagnosztika mindkét módszer használatával való konfigurálásához.
@@ -266,6 +266,6 @@ Ahhoz, hogy a diagnosztikát a számítási erőforrás, például egy virtuáli
 A teljes folyamatot, beleértve a mintákat, leírt [ebben a dokumentumban](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
-* [További információk az Azure Diagnostics-naplókról](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Stream és az Event Hubs az Azure diagnosztikai naplók](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [További információk az Azure Diagnostics-naplókról](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Stream és az Event Hubs az Azure diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 

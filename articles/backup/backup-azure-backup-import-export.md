@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955133"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974437"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható az offline biztonsági mentési adatok feltöltése az Azure-bA.
@@ -75,11 +75,11 @@ Ez a szakasz ismerteti az offline biztonsági mentési munkafolyamat, így az ad
 
   A leírás a bemeneti adatok a következőképpen történik:
 
-    * **Átmeneti hely**: az ideiglenes tárolási helyet, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
-    * **Resource Manager Azure Storage-fiókra**: bármely Azure-előfizetésben a Resource Manager típusú tárfiók nevére.
-    * **Az Azure Storage-tároló**: a cél storage-blobból az Azure Storage-fiók, amelybe importálják a biztonsági mentési adatok másolását a Recovery Services-tároló előtt a neve.
-    * **Az Azure előfizetés-azonosító**: az azonosító az Azure-előfizetés, az Azure Storage-fiók létrejön.
-    * **Az Azure importálási feladat nevének**: szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA egyedi nevét. 
+    * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
+    * **Az Azure Resource Manager-Tárfiókot**: A Resource Manager típusú bármely Azure-előfizetésében lévő tárfiók neve.
+    * **Az Azure Storage-tároló**: A cél storage-blobból az Azure Storage-fiók, amelybe importálják a biztonsági mentési adatok másolását a Recovery Services-tároló előtt a neve.
+    * **Azure-előfizetés azonosítója**: Ha az Azure Storage-fiók létrehozása az Azure-előfizetés azonosítója.
+    * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA. 
   
   Adja meg a bemeneti adatok a képernyőn, és kattintson a **tovább**. Mentse a megadott *átmeneti hely* és a *Azure importálási feladat nevének*, ahogy ezt az információt kötelező megadni a lemezek előkészítéséhez.
 

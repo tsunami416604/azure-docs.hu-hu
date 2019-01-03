@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d013f2cdd9f33f55d579638386355e5cbaccb7e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878304"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714950"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -29,7 +29,7 @@ Az Azure Cosmos DB és az Azure Functions lehetővé teszi az adatbázisok és a
 * Egy függvény kötést létrehozni egy Azure Cosmos DB tároló használatával egy **kimeneti kötésének**. Kimeneti kötések adatokat írni egy tárolót, egy függvény befejezéséről.
 
 > [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, bemeneti és kimeneti kötések támogatottak a csak az SQL API segítségével. Az összes többi Azure Cosmos DB API-k, kell az adatbázis eléréséhez fog a függvényéből az API-hoz, beleértve a MongoDB API-t, a Cassandra API-hoz, a Gremlin API és a Table API a statikus ügyfél használatával.
+> Jelenleg az Azure Cosmos DB eseményindító, bemeneti és kimeneti kötések támogatottak a csak az SQL API segítségével. Az összes többi Azure Cosmos DB API-k, kell az adatbázis eléréséhez fog a függvényéből az API-hoz a statikus ügyfél használatával.
 
 
 A következő ábra szemlélteti ezen három Integrációk: 
@@ -49,7 +49,7 @@ A következő használati esetek néhány módszerrel teheti a legtöbbet az Azu
 
 IoT-implementációkban egy függvényt, amikor a csatlakoztatott autók műszerfalához némileg jelenik meg a jelölőnégyzet motor világos hívhat meg.
 
-**Megvalósítás:** egy Azure Cosmos DB-eseményindítóval és a egy kimeneti kötés
+**Végrehajtás:** Egy Azure Cosmos DB-eseményindítóval és a egy kimeneti kötés
 
 1. Egy **Azure Cosmos DB-eseményindító** aktiválhat eseményeket, kapcsolódó autó-riasztásokat, például csatlakoztatott autók műszerfalához némileg hamarosan ellenőrzési motor fény szolgál.
 2. Ha a jelölőnégyzet motor világos, érzékelőadatokat zajlik az Azure Cosmos DB-hez.
@@ -67,7 +67,7 @@ Az alábbi képen az Azure Portalon, az eseményindító írt kóddal.
 
 Pénzügyi megvalósításokban egy függvényt, amikor egy adott időtartamot alá tartozik a bank fiókja egyenlege hívhat meg.
 
-**Megvalósítás:** egy időzítő indítófeltételt az Azure Cosmos DB bemeneti kötést
+**Végrehajtás:** Azure Cosmos DB bemeneti kötéssel időzítő eseményindító
 
 1. Használatával egy [időzítő eseményindító](../azure-functions/functions-bindings-timer.md), egy Azure Cosmos DB-tárolók használatával időközönként tárolt Bankszámla egyenleg információit kérheti egy **bemeneti kötést**.
 2. Ha megfelelő módon értesüljenek alacsony egyenlegéről a felhasználó által megadott küszöbérték alá, majd kövesse művelet, az Azure-függvény.
@@ -83,7 +83,7 @@ Az alábbi képeken az kód ebben a forgatókönyvben az Azure Portalon.
 
 A játék-, amikor létrejön egy új felhasználót is kereshet más, előfordulhat, hogy ismeri a felhasználók a [Azure Cosmos DB Gremlin API](graph-introduction.md). Az eredményeket egy [Azure Cosmos DB SQL Database-adatbázishoz] egyszerű lekérdezés majd írhat.
 
-**Megvalósítás:** egy Azure Cosmos DB-eseményindítóval és a egy kimeneti kötés
+**Végrehajtás:** Egy Azure Cosmos DB-eseményindítóval és a egy kimeneti kötés
 
 1. Egy Azure Cosmos DB használatával [gráfadatbázis](graph-introduction.md) szeretné tárolni a minden felhasználó, létrehozhat egy új függvényt egy Azure Cosmos DB-eseményindítóval. 
 2. Amikor a rendszer beszúr egy új felhasználót, a függvény meghívása, és ezután az eredmény tárolja használatával egy **kimeneti kötésének**.
@@ -94,7 +94,7 @@ A játék-, amikor létrejön egy új felhasználót is kereshet más, előfordu
 
 A kiskereskedelmi megvalósításokhoz amikor egy felhasználó felvesz egy elemet a kosárhoz most rugalmasan hozhat létre, és nem kötelező üzleti folyamat összetevők függvények meghívása.
 
-**Megvalósítás:** több Azure Cosmos DB-eseményindítókról figyeli egy tárolóba
+**Végrehajtás:** Több Azure Cosmos DB-eseményindító figyeli egy tárolóba
 
 1. Létrehozhat több Azure-funkciók hozzáadásával az Azure Cosmos DB-eseményindítók-mindegyike figyeli a következő azonos módosításcsatornáját a vásárlás bevásárlókocsi adatokat. Vegye figyelembe, hogy amikor több funkciók figyeli a következő azonos módosításcsatornáját, egy új a bérletek gyűjteményének szükség minden egyes függvény. Bérlet gyűjteményekkel kapcsolatos további információkért lásd: [ismertetése a Változáscsatorna feldolgozói kódtárával](change-feed-processor.md).
 2. Egy új elemet a bevásárlókocsihoz felhasználók hozzáadásakor, minden egyes függvény egymástól függetlenül hív a változáscsatorna a vásárlási a bevásárlókocsi-tárolóból.
@@ -122,7 +122,7 @@ Az Azure Functions lehetővé teszi a munkát, vagy tömör darab logika, amely 
 
 Azure Cosmos DB a kiszolgáló nélküli számítástechnikai architektúra ajánlott adatbázisát a következő okok miatt:
 
-* **Minden az adatok azonnali hozzáférést**: rendelkezik minden egyes értékhez, mert a részletes hozzáférés Azure Cosmos DB [automatikusan indexeli az](index-policy.md) alapértelmezés szerint minden adat, és azonnal elérhetővé ezeket az indexeket. Ez azt jelenti, folyamatosan lekérdezheti, módosíthatja, és új elemeket adhat hozzá az adatbázishoz és azonnal hozzáférhet az Azure Functions használatával.
+* **Minden az adatok azonnali hozzáférést**: Minden egyes értékhez, mert a részletes hozzáférés rendelkezik Azure Cosmos DB [automatikusan indexeli az](index-policy.md) alapértelmezés szerint minden adat, és ezeket az indexeket azonnal elérhetővé. Ez azt jelenti, folyamatosan lekérdezheti, módosíthatja, és új elemeket adhat hozzá az adatbázishoz és azonnal hozzáférhet az Azure Functions használatával.
 
 * **Séma nélküli**. Azure Cosmos DB a séma nélküli –, így képes kezelni bármilyen adatokat tartalmazó kimenetét az Azure-függvény. Ez a megközelítés "képesek kezelni" teszi magától értetődő, amely különféle funkciókat létrehozása az Azure Cosmos DB az összes kimeneti.
 

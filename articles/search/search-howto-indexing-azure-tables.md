@@ -1,6 +1,6 @@
 ---
 title: Tartalom indexelése az Azure Table storage, az Azure Search – a teljes szöveges keresés
-description: Útmutató az Azure Search szolgáltatással az Azure Table storage-ban tárolt adatok indexelésére.
+description: Ismerje meg az Azure Search indexelők az Azure Table storage-ban tárolt adatok indexelése.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 39455669dd739309ac0201de49b390c2390e0067
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317270"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632959"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
 Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.
@@ -76,7 +76,7 @@ További információ a megosztott tároló eléréséhez aláírásokat, lásd:
 > [!NOTE]
 > Ha a közös hozzáférésű jogosultságkód hitelesítő adatokat használja, szüksége lesz az adatforrás hitelesítő adatainak frissítése rendszeresen megújított jogosultságkódokkal lejárati idejük elkerülése érdekében. Ha a közös hozzáférésű jogosultságkód hitelesítő adatai lejárnak, az indexelő hibaüzenettel meghiúsul egy hasonló "A kapcsolati karakterláncban megadott hitelesítő adatok érvénytelenek, vagy lejárt."  
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
 Az index egy dokumentumot, az attribútumot, adja meg a mezőket, és egyéb szerkezetek, amelyek formázhatja a keresési élmény.
 
 Index létrehozása:

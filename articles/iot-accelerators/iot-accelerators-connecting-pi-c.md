@@ -8,18 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: c20b1d5f3a84e950e37a3236272256db620a5985
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 838a33fd390b28fec609c42487dca225ddc6eaa8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831100"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628204"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Raspberry Pi-eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan kell egy fizikai eszköz csatlakoztatása a távoli figyelési megoldásgyorsító. Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az ügyfélkód a Raspberry Pi eszköz alkalmazás betöltőprogramot c-hez Ebben az oktatóanyagban hozza létre a Raspbian operációs rendszert futtató az alkalmazást egy Raspberry Pi-on.
+Ez az oktatóanyag bemutatja, hogyan lehet csatlakozni a távoli figyelési megoldásgyorsító valós eszköz. Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az ügyfélkód a Raspberry Pi eszköz alkalmazás betöltőprogramot c-hez Ebben az oktatóanyagban hozza létre a Raspbian operációs rendszert futtató az alkalmazást egy Raspberry Pi-on.
+
+Ha egy eszköz szimulálása szeretne használni, tekintse meg [létrehozása és a egy új szimulált eszköz teszt](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
@@ -36,7 +38,7 @@ Asztali számítógép ahhoz, hogy távolról csatlakozhat a parancssorban a Ras
 
 SSH-ügyfelet kell ahhoz, hogy a parancssor a Raspberry Pi-on érheti el távolról asztali gépén.
 
-- Windows nem tartalmazza az SSH-ügyfelet. Azt javasoljuk, [PuTTY](http://www.putty.org/).
+- Windows nem tartalmazza az SSH-ügyfelet. Azt javasoljuk, [PuTTY](https://www.putty.org/).
 - A legtöbb Linux-disztribúciók és Mac OS tartalmazza az SSH parancssori segédprogramot. További információkért lásd: [SSH használatával Linux vagy Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
 ### <a name="required-raspberry-pi-software"></a>Raspberry Pi szükséges szoftverek

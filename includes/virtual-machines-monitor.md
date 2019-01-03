@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399885"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594305"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/application-insights/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -43,23 +43,23 @@ Létrehozhat [riasztások](../articles/azure-monitor/platform/alerts-overview.md
 
 ## <a name="logs"></a>Logs
 
-A [Azure-tevékenységnapló](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) van egy előfizetési napló, amely az Azure-ban bekövetkezett események előfizetés-szintű betekintést nyújt. A napló az adatok az Azure Resource Manager frissítéseket a Service Health-események operatív adatok foglal magában. Tevékenységnapló az Azure Portalon a virtuális gép a napló megtekintése gombra.
+A [Azure-tevékenységnapló](../articles/azure-monitor/platform/activity-logs-overview.md) van egy előfizetési napló, amely az Azure-ban bekövetkezett események előfizetés-szintű betekintést nyújt. A napló az adatok az Azure Resource Manager frissítéseket a Service Health-események operatív adatok foglal magában. Tevékenységnapló az Azure Portalon a virtuális gép a napló megtekintése gombra.
 
 Néhány, a tevékenységnapló is végezhet a következők:
 
-- Hozzon létre egy [riasztási egy tevékenységnapló eseményéhez](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
-- [Az Eseményközpontok felé, Stream](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
+- Hozzon létre egy [riasztási egy tevékenységnapló eseményéhez](../articles/azure-monitor/platform/activity-logs-overview.md).
+- [Az Eseményközpontok felé, Stream](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 - A Power bi használatával elemezhetők a [Power bi-tartalomcsomag](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Mentse a tárfiókhoz](../articles/azure-monitor/platform/archive-activity-log.md) archív vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) a napló-profillal.
 
 Emellett tevékenységnapló adatainak használatával [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.insights/), a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor), vagy [Monitor REST API-k](https://docs.microsoft.com/rest/api/monitor/).
 
-[Az Azure diagnosztikai naplók](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a virtuális gép által kibocsátott naplókat, a működésével kapcsolatos részletes, gyakori adatokkal szolgálnak. Diagnosztikai naplók különböznek a tevékenységnapló azáltal, hogy betekintést adnak a virtuális gépen végrehajtott műveletekbe.
+[Az Azure diagnosztikai naplók](../articles/azure-monitor/platform/diagnostic-logs-overview.md) a virtuális gép által kibocsátott naplókat, a működésével kapcsolatos részletes, gyakori adatokkal szolgálnak. Diagnosztikai naplók különböznek a tevékenységnapló azáltal, hogy betekintést adnak a virtuális gépen végrehajtott műveletekbe.
 
 A diagnosztikai naplók a lehetőségek a következők:
 
 - [Mentse azokat egy storage-fiók](../articles/azure-monitor/platform/archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) használata az erőforrás diagnosztikai beállításait.
-- [Az Event Hubs Stream őket](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
+- [Az Event Hubs Stream őket](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
 - Elemezheti a [OMS Naplóelemzés](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés

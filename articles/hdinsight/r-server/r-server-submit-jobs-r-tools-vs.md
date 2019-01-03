@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497123"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604531"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -35,7 +35,7 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 
 4. Telepítés [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a gépen. Machine Learning-kiszolgáló biztosítja az [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` funkciók.
 
-5. Telepítse [PuTTY](http://www.putty.org/) biztosít számítási környezetek használatával futtassa `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz.
+5. Telepítse [PuTTY](https://www.putty.org/) biztosít számítási környezetek használatával futtassa `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz.
 
 6. Lehetősége van az adatok adatelemzési beállítások alkalmazásához, amellyel az új elrendezéssel bővültek a munkaterület az R tools for Visual Studio környezetében.
     1. A jelenlegi Visual Studio-beállítások mentéséhez használja a **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kijelölt környezeti beállítások exportálása** , és adjon meg egy fájlnevet. Ezek a beállítások visszaállításához használja ugyanazt a parancsot, és válassza ki **importálás kiválasztott környezeti beállítások**.
@@ -44,7 +44,7 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 
         ![Data Science beállítások...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > A megközelítéssel az 1. lépésben, is mentheti, és állítsa vissza a személyre szabott adatokat adatszakértő elrendezés helyett a **Data Science beállítások** parancsot.
 
 ## <a name="execute-local-r-methods"></a>Hajtsa végre a helyi R-metódusok

@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfea3ec7380a36f937052a6a994504ca081f187
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2abf0afb3b6e1cd80168fa3f295297551b9bf7ce
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019766"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755155"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Hogyan: Block örökölt hitelesítés az Azure AD feltételes hozzáférés   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
 A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmazások, Azure Active Directory (Azure AD) széles hitelesítési protokollok, beleértve az örökölt hitelesítési támogatja. Azonban régebbi protokollokra nem támogatják a többtényezős hitelesítés (MFA). MFA sok környezetben a közös követelmény, hogy a cím adatokkal való visszaélés. 
 
@@ -60,7 +60,7 @@ Hogyan megakadályozhatja az elérését a bérlői erőforrásokhoz örökölt 
 
 Ez a szakasz ismerteti az örökölt hitelesítés letiltása feltételes hozzáférési szabályzat konfigurálása. 
 
-### <a name="block-legacy-authentication"></a>Az örökölt hitelesítés letiltása 
+### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása 
 
 A feltételes hozzáférési szabályzatot beállíthat egy feltételt, amely az ügyfélalkalmazásokat az erőforrások eléréséhez használt van kötve. Az ügyfél alkalmazások feltétel lehetővé teszi a kiválasztásával örökölt hitelesítést használó alkalmazások hatókörét leszűkítheti **más ügyfelek** a **mobilalkalmazások és asztali ügyfelek**.
 
@@ -91,7 +91,7 @@ Az Azure rendelkezik olyan biztonsági szolgáltatás, amely megakadályozza, ho
 ![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/04.png)
 
 
-Szükség a biztonsági funkció mert *letiltása minden felhasználó és az összes felhőalapú alkalmazások* magában hordozza a bejelentkezést a bérlő vállalata blokkolására. Ki kell zárnia a minimális ajánlott gyakorlat követelmény teljesítéséhez legalább egy felhasználót. Próbálja meg az alábbiakat 
+Szükség a biztonsági funkció mert *letiltása minden felhasználó és az összes felhőalapú alkalmazások* magában hordozza a bejelentkezést a bérlő vállalata blokkolására. Ki kell zárnia a minimális ajánlott gyakorlat követelmény teljesítéséhez legalább egy felhasználót. Sikerült zárnia olyan címtárbeli szerepkörrel.
 
 ![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/05.png)
 

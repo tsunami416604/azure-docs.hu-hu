@@ -7,18 +7,22 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/25/2018
 ms.author: juliako
-ms.openlocfilehash: a051f40cb5586cae58d8e4939f4fcee35438bf69
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292407"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791822"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
-Ez a cikk azt ismerteti, hogyan lehet beágyazni Video Indexer-vezérlőket az alkalmazásokba. A Video Indexer kétféle vezérlő beágyazását támogatja az alkalmazásba: a **kognitív elemzéseket** és a **lejátszót**. 
+Ez a cikk azt ismerteti, hogyan lehet beágyazni Video Indexer-vezérlőket az alkalmazásokba. Video Indexer az alkalmazásba való beágyazásával kétféle típusú widgetek támogatja: **A cognitive Insights** és **Player**. 
+
+> [!NOTE]
+> Az 1. verzióját 2018. február 1., kezdve a **Cognitive Insights** widget elavulttá válik. A beágyazási URL-cím verzió alapértelmezés szerint `version=2`.
+
 ## <a name="widget-types"></a>Vezérlőtípusok
 
 ### <a name="cognitive-insights-widget"></a>Kognitív elemzési vezérlő
@@ -27,8 +31,8 @@ A **Kognitív elemzési vezérlő** az összes vizuális elemzést tartalmazza, 
 
 |Name (Név)|Meghatározás|Leírás|
 |---|---|---|
-|widgets|Vesszővel elválasztott sztringek|Lehetővé teszi annak szabályozását, mely elemzéseket szeretné megjeleníteni. <br/>Példa: a `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` csak a személyekre és márkákra vonatkozó felhasználói felületi elemzéseket jeleníti meg.<br/>Elérhető lehetőségek: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Nem támogatott a version=2 paraméterű URL-címek esetében<br/><br/>**Megjegyzés:** A **widgets** URL-paraméter nem támogatott a **version=2** használata esetén. |
-|version|A **Kognitív elemzési** vezérlő verziói|Az elemzési vezérlő legújabb frissítéseinek beszerzéséhez adja hozzá a `?version=2` lekérdezési paramétert a beágyazási URL-címhez. Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> A régebbi verzió beszerzéséhez egyszerűen távolítsa el a `version=2` paramétert az URL-címből.
+|widgets|Vesszővel elválasztott sztringek|Lehetővé teszi annak szabályozását, mely elemzéseket szeretné megjeleníteni. <br/>Példa: a `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` csak a személyekre és márkákra vonatkozó felhasználói felületi elemzéseket jeleníti meg.<br/>Elérhető lehetőségek: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Nem támogatott a version=2 paraméterű URL-címek esetében<br/><br/>**Megjegyzés:** A **widgetek** param URL-cím nem támogatott, ha **verzió = 2** szolgál. |
+|version|A **Kognitív elemzési** vezérlő verziói|A legújabb elemzéseit widget frissítések lekéréséhez adja hozzá a `?version=2` param a beágyazási URL-cím lekérdezése. Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> A régebbi verzió beszerzéséhez egyszerűen távolítsa el a `version=2` paramétert az URL-címből.
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
@@ -39,7 +43,7 @@ A **Lejátszó** vezérlő lehetővé teszi a videó streamelését adaptív át
 |t|Kezdés utáni másodpercek|Beállítja, hogy a lejátszó az adott időponttól induljon el.<br/>Például: t=60|
 |captions|Nyelvkód|Lekéri a vezérlő betöltése közben a megadott nyelvű feliratot, amely elérhető lesz a feliratmenüben.<br/>Például: captions=en-US|
 |showCaptions|Logikai érték|Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/>Például: showCaptions=true|
-|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Például: type=audio|
+|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Például: type=audio|"
 |autoplay|Logikai érték|Jelzi, hogy a lejátszó a betöltést követően automatikusan lejátssza-e a videót (az alapértelmezett érték a true).<br/>Például: autoplay=false|
 |language|Nyelvkód|A lejátszó nyelvét szabályozza (az alapértelmezett érték: en-US)<br/>Például: language=de-DE|
 

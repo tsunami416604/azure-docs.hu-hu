@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6969744ff52e9aff9d486d2eab6fffc2c3ac8b74
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278134"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608000"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Mesterséges Intelligencia használatával monitorozásának és hibaelhárításának intelligens elemzési adatbázis-teljesítmény
 
@@ -57,7 +57,7 @@ Azonosítja a teljesítmény romlását rögzíti a diagnosztikai naplóban inte
 | Hatás érték | Metrika értékének mérni. |
 | Érintett lekérdezések és hibakódok | A lekérdezés kivonata vagy hibakód. Ezek a könnyen korrelációját, ha az érintett lekérdezések használhatók. Lekérdezés időtartamának növelése, várakozási idő, időkorlát számát, vagy hibakódok álló metrikákat. |
 | Észlelések | Az észlelési azonosítani az adatbázist egy eseményt az alatt. Nincsenek 15 észlelési mintákat. További információkért lásd: [adatbázis teljesítményproblémák megoldásában az Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Alapvető okok elemzése | Alapvető okok az emberek számára olvasható formátumban azonosított probléma. Elkészítette az elemzéseket a teljesítmény fokozása javaslat tartalmazhatja, ahol csak lehetséges. |
+| Kiváltó okok elemzése | Alapvető okok az emberek számára olvasható formátumban azonosított probléma. Elkészítette az elemzéseket a teljesítmény fokozása javaslat tartalmazhatja, ahol csak lehetséges. |
 |||
 
 A gyakorlati áttekintése az Azure SQL Analytics Intelligent Insights használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
@@ -97,7 +97,7 @@ Az alábbi példa bemutatja, hogy az Azure SQL Analytics az Intelligent Insights
 
 ### <a name="set-up-with-event-hubs"></a>Állítsa be az Event hubs szolgáltatással
 
-Az Event Hubs Intelligent Insights használatához konfigurálja az Intelligent Insights naplóadatok streamelés az Event hubs szolgáltatásban, lásd: [Stream Azure diagnostics logs szolgáltatásba és az Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+Az Event Hubs Intelligent Insights használatához konfigurálja az Intelligent Insights naplóadatok streamelés az Event hubs szolgáltatásban, lásd: [Stream Azure diagnostics logs szolgáltatásba és az Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
 
 Az Event Hubs segítségével egyéni monitorozási és riasztási beállítása, lásd: [mit kell tenni a metrikák és diagnosztikai naplók az Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -180,4 +180,4 @@ A figyelt kritikus kivételek adatbázisközi a abszolút küszöbértékeket a 
 - Ismerje meg, hogyan [intelligens elemzésekkel SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Használja a [Intelligent Insights az SQL Database teljesítményét diagnosztikai napló](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Ismerje meg, hogyan [figyeli az SQL Database használatával az SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md).

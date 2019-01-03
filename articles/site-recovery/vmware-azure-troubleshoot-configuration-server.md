@@ -5,33 +5,91 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 4faadc27648b0d944e61a4d390313a35b4ba8bfa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6c8f4fa1fdfdb18d57f001308a6b2105acf9a08d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837732"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788854"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
-Ez a cikk segít a problémák, amikor üzembe helyezése és kezelése a [Azure Site Recovery](site-recovery-overview.md) konfigurációs kiszolgáló. A konfigurációs kiszolgáló akkor használatos, ha a vészhelyreállítás beállítása helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-bA a Site Recovery használatával. 
-
-## <a name="installation-failures"></a>Telepítési hibák
-
-| **Hibaüzenet** | **Javasolt művelet** |
-|--------------------------|------------------------|
-|HIBA: a fiókok betöltése nem sikerült. Hiba: System.IO.IOException: A CS-kiszolgáló telepítésekor és regisztrálásakor nem sikerült beolvasni az átviteli kapcsolatból származó adatokat.| Ellenőrizze, hogy a TLS 1.0 engedélyezve van-e számítógépen. |
+Ez a cikk segít a problémák, amikor üzembe helyezése és kezelése a [Azure Site Recovery](site-recovery-overview.md) konfigurációs kiszolgáló. A konfigurációs kiszolgáló felügyeleti kiszolgálóként működik, és a vészhelyreállítás beállítása helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-bA a Site Recovery használatával szolgál. A leggyakoribb hibák látható új konfigurációs kiszolgálót és a konfigurációs kiszolgáló kezelése a következő szakaszok ismerteti.
 
 ## <a name="registration-failures"></a>Regisztrációs hibák
 
-Regisztrációs hibák a l is meg kell hibakeresése < br/ogs %ProgramData%\ASRLogs mappában.
+Forrásgép konfigurációs kiszolgálót regisztrálja a mobilitási ügynök telepítése közben. Ez a lépés során hibákat hibakeresése végezhető el az alábbi útmutatást követve:
 
-A regisztrációs hibákat a **%ProgramData%\ASRLogs** mappa naplóinak áttekintésével lehet kikeresni.
+1. Ugrás a C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log fájlt. ProgramData mappa rejtett is lehet. Ha nem tudják találni, próbálja meg fedje a mappát. A hibák több problémák is okozhatják.
+2. Keressen a "Nem érvényes IP-cím található" karakterláncot. Ha megtalálja,
+    - Ha a kért állomásazonosító ugyanaz, mint a forrásgép ellenőrzése.
+    - A forrásgép kell legalább egy IP-cím hozzárendelve a fizikai hálózati adapternek az ügynök regisztrálása a CS-sikeres.
+    - Futtassa a parancsot a forrásgépen `> ipconfig /all` (a Windows operációs rendszer) és `# ifconfig -a` (a Linux operációs rendszert futtató) a forrásgép összes IP-címek lekérése.
+    - Vegye figyelembe, hogy az ügynök regisztrálása igényel-e egy érvényes IP v4 cím hozzárendelve a fizikai hálózati adaptert.
+3. Ha a fenti karakterláncot nem található, a keresési karakterlánc "OK" = > "NULL". Ha talál,
+    - Ez a hiba akkor fordul elő, ha a forrásgép használ egy üres gazdagép Ha regisztrálni a konfigurációs kiszolgáló.
+    - A hibák megoldása után hajtsa végre a megadott irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) manuálisan újra a regisztrációt.
+4. Ha a fenti karakterláncot nem található, Ugrás a forrásgép és a naplóban C:\ProgramData\ASRSetupLogs\UploadedLogs\* ASRUnifiedAgentInstaller.log ProgramData mappa rejtett is lehet. Ha nem tudják találni, próbálja meg fedje a mappát. A hibák több problémák is okozhatják. Keresési karakterlánc "kérelem közzététele: (7) – nem sikerült csatlakozni a kiszolgálóhoz". Ha talál,
+    - A forrás gép és a konfigurációs kiszolgáló között a hálózati problémák megoldásához. Győződjön meg arról, hogy a konfigurációs kiszolgáló forrásgépről használata a hálózati eszközök, mint például a ping, a traceroute, a webböngésző stb., győződjön meg arról, hogy a forrásgép képes elérni a konfigurációs kiszolgáló 443-as porton keresztül.
+    - Annak ellenőrzése, hogy minden olyan tűzfalszabályokat forrásgépen forgalomszűrők blokkolják a forrása machine és a konfigurációs kiszolgáló közötti kapcsolat. Együttműködik a a hálózati rendszergazdák tiltásának feloldása a kapcsolódási problémák.
+    - Győződjön meg, hogy az említett mappák [Itt](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a víruskereső szoftver nem tartoznak.
+    - A hálózati hibák megoldása után próbálja megismételni a regisztrációt által megadott, a következő irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+5. Ha nem található, a karakterlánc azonos log keresés "kérelem: (60) – adott CA-tanúsítványok társ tanúsítvány nem hitelesíthető a. ". Ha talál, 
+    - Ez a hiba oka az lehet, a konfigurációs kiszolgáló tanúsítványa lejárt vagy a forrásgép nem támogatja a TLS 1.0-s és újabb SSL protokollok vagy, amelyek forrása machine és a konfigurációs kiszolgáló közötti SSL-kommunikáció nem blokkolja tűzfal.
+    - Konfigurációs kiszolgáló IP-cím URI https:// segítségével. a forrásgépen webböngészővel csatlakozzon háríthatja el<CSIPADDRESS>: 443 /. Győződjön meg arról, hogy a forrásgép képes elérni a konfigurációs kiszolgáló 443-as porton keresztül.
+    - Ellenőrizze, hogy vannak-e minden olyan tűzfalszabályokat kell a forrásgép felvegye a CS hozzáadja/törli a forrásgépen. Sok más tűzfal szoftver is okozhatja, mivel nincs lehetőség a szükséges konfigurációkat lejjebb listában, az ügyfél hálózati rendszergazdák együttműködve.
+    - Győződjön meg, hogy az említett mappák [Itt](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a víruskereső szoftver nem tartoznak.  
+    - A hibák megoldása után próbálja megismételni a regisztrációt által megadott, a következő irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+6. A Linux Ha < INSTALLATION_DIR > /etc/drscout.conf platformja értékét sérült, majd regisztráció sikertelen lesz. Azonosítsa, nyissa meg a napló /var/log/ua_install.log. Megtalálja a karakterláncot "Konfigurációs megszakítása VM_PLATFORM értéke null, vagy azt, nem VmWare/Azure-beli." A platform "VmWare" vagy "Azure" kell beállítani. Mivel a drscout.conf fájl sérült, javasoljuk, hogy [eltávolítása](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) a mobilitási ügynök, és telepítse újra. Ha kiszolgálón.%0 nem sikerül, kövesse az alábbi lépéseket:
+    - Nyissa meg a fájl Installation_Directory/uninstall.sh és tegye megjegyzésbe a függvény hívása *StopServices*
+    - Nyissa meg Installation_Directory/Vx/bin/uninstall fájlt, és tegye megjegyzésbe a függvény hívása `stop_services`
+    - Nyissa meg a Installation_Directory/Fx/uninstall fájlt, és tegye megjegyzésbe a teljes szakasz-e a Fx szolgáltatás leállítása.
+    - Most megpróbálja [eltávolítása](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) a mobilitási ügynök. A sikeres kiszolgálón.%0 után indítsa újra a rendszert, és próbálja meg ismét telepíteni az ügynököt.
 
-| **Hibaüzenet** | **Javasolt művelet** |
-|--------------------------|------------------------|
-|**09:20:06**:InnerException.Type: SrsRestApiClientLib.AcsException,InnerException.<br>Üzenet: ACS50008: Az SAML-jogkivonat érvénytelen.<br>Nyomkövetési azonosító: 1921ea5b-4723-4be7-8087-a75d3f9e1072<br>Korrelációs azonosító: 62fea7e6-2197-4be4-a2c0-71ceb7aa2d97><br>Időbélyegző: **2016-12-12 14:50:08Z<br>** | Győződjön meg arról, hogy a rendszeróra által mutatott idő legfeljebb 15 perccel tér el a helyi időtől. A regisztráció befejezéséhez futtassa ismét a telepítőt.|
-|**09:35:27** :DRRegistrationException kivétel történt a kiválasztott tanúsítvány vészhelyreállítási tárolóinak lekérése során: : Threw Exception.Type:Microsoft.DisasterRecovery.Registration.DRRegistrationException, Exception.Message: ACS50008: Az SAML-jogkivonat érvénytelen.<br>Nyomkövetési azonosító: e5ad1af1-2d39-4970-8eef-096e325c9950<br>Korrelációs azonosító: abe9deb8-3e64-464d-8375-36db9816427a<br>Időbélyegző: **2016-05-19 01:35:39Z**<br> | Győződjön meg arról, hogy a rendszeróra által mutatott idő legfeljebb 15 perccel tér el a helyi időtől. A regisztráció befejezéséhez futtassa ismét a telepítőt.|
-|06:28:45:Nem sikerült a tanúsítvány előállítása<br>06:28:45:A telepítést nem lehet folytatni. A Site Recovery hitelesítéséhez szükséges tanúsítvány nem hozható létre. Telepítés ismételt futtatása | A telepítés futtatásához helyi rendszergazdaként jelentkezzen be. |
+## <a name="installation-failure---failed-to-load-accounts"></a>Telepítési hiba - fiókok betöltése nem sikerült
+
+Ez a hiba akkor fordul elő, amikor a szolgáltatás nem tudott adatokat olvasni az átviteli kapcsolatból mobilitási ügynök telepítése és a konfigurációs kiszolgáló regisztrálása közben. Megoldásához, győződjön meg arról, a TLS 1.0 a beállítás engedélyezve a forrásgépen.
+
+## <a name="change-ip-address-of-configuration-server"></a>Konfigurációs kiszolgáló IP-címének módosítása
+
+Javasoljuk, hogy ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg, hogy minden IP-címet, és a konfigurációs kiszolgáló hozzárendelt statikus IP-címek és a nem DHCP IP-címek.
+
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML-jogkivonat érvénytelen
+
+Ez a hiba elkerülése érdekében győződjön meg arról, hogy a rendszeróra ideje nem több mint 15 perccel tér a helyi időt. A regisztráció befejezéséhez futtassa ismét a telepítőt.
+
+## <a name="failed-to-create-certificate"></a>Nem sikerült létrehozni a tanúsítványt
+
+A Site Recovery hitelesítéséhez szükséges tanúsítvány nem hozható létre. Miután meggyőződött arról, hogy futtatja a telepítőt helyi rendszergazdaként futtassa újra a telepítőt.
+
+## <a name="register-source-machine-with-configuration-server"></a>Forrásgép regisztrálni a konfigurációs kiszolgáló
+
+### <a name="if-source-machine-has-windows-os"></a>Ha Windows operációs rendszer forrásgépen
+
+Futtassa a következő parancsot a forrásgépen
+
+```
+  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+  ```
+**Beállítás** | **Részletek**
+--- | ---
+Használat | UnifiedAgentConfigurator.exe/csendpoint  <CSIP> /passphrasefilepath <PassphraseFilePath>
+Az ügynök konfigurációs naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+/CSEndPoint | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
+/PassphraseFilePath |  Kötelező. A hozzáférési kódot helye. Bármely érvényes UNC vagy helyi fájl elérési útját használja.
+
+### <a name="if-source-machine-has-linux-os"></a>Ha a forrásgépen. Linux operációs rendszer
+
+Futtassa a következő parancsot a forrásgépen
+
+```
+  /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+  ```
+**Beállítás** | **Részletek**
+--- | ---
+Használat | CD /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> - P <PassphraseFilePath>
+-i | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
+-P |  Kötelező. Teljes elérési útja, amelyben a jelszót a rendszer menti a fájlt. Bármely érvényes mappát használni

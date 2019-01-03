@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315723"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632687"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
-Ebből a cikkből megtudhatja, ajánlott eljárások és hibaelhárítási lépések [node-alkalmazások](app-service-web-get-started-nodejs.md) futtatása az Azure Web Apps (a [iisnode](https://github.com/azure/iisnode)).
+Ebből a cikkből megtudhatja, ajánlott eljárások és hibaelhárítási lépések [node-alkalmazások](app-service-web-get-started-nodejs.md) futó Azure App Service szolgáltatásban (az [iisnode](https://github.com/azure/iisnode)).
 
 > [!WARNING]
 > Körültekintően járjon el a webhelyet működtetheti élesben hibaelhárítási lépéseket használatakor. Javaslat, hogy például az előkészítési ponton az alkalmazás egy nem éles telepítés hibaelhárítása, és ha a probléma elhárítása a az üzemelési és előkészítési pont cseréje.
@@ -44,18 +44,18 @@ Ez a beállítás szabályozza a node.exe elérési útját. Beállíthatja, hog
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-Ez a beállítás szabályozza az egyes node.exe iisnode által küldött egyidejű kérelmek maximális számát. Az Azure Web Apps az alapértelmezett érték a végtelen. Nem található az Azure Web Apps, az alapértelmezett érték esetén 1024. Konfigurálhatja az értékét, hogy hány kér az alkalmazás fogad, és milyen gyors az alkalmazás minden kérést dolgoz fel.
+Ez a beállítás szabályozza az egyes node.exe iisnode által küldött egyidejű kérelmek maximális számát. Az Azure App Service az alapértelmezett érték a végtelen. Konfigurálhatja az értékét, hogy hány kér az alkalmazás fogad, és milyen gyors az alkalmazás minden kérést dolgoz fel.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-Ez a beállítás maximális száma határozza meg a nevesített cső a kérelmek küldéséhez node.exe a kapcsolat létrehozása az iisnode újrapróbálkozások. Ez a beállítás namedPipeConnectionRetryDelay együtt az iisnode belül minden egyes kérés időtúllépés teljes határozza meg. Az alapértelmezett értéke 200-as Azure Web Apps. Teljes időkorlátja másodpercben = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
+Ez a beállítás maximális száma határozza meg a nevesített cső a kérelmek küldéséhez node.exe a kapcsolat létrehozása az iisnode újrapróbálkozások. Ez a beállítás namedPipeConnectionRetryDelay együtt az iisnode belül minden egyes kérés időtúllépés teljes határozza meg. Az alapértelmezett értéke 200 Azure App Service szolgáltatásban. Teljes időkorlátja másodpercben = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
 Ez a beállítás szabályozza a kérelmet kell küldenie a node.exe a nevesített csövön keresztül az egyes újrapróbálkozások közötti idő (ms) iisnode vár. Az alapértelmezett érték: 250 ms.
 Teljes időkorlátja másodpercben = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
-Alapértelmezés szerint az összes időkorlátot az iisnode az Azure Web Apps a 200-as \* 250 ms = 50 másodperc.
+Alapértelmezés szerint az összes időkorlátot az az Azure App Service iisnode a 200-as \* 250 ms = 50 másodperc.
 
 ### <a name="logdirectory"></a>logDirectory
 
@@ -128,7 +128,7 @@ Olvasási [Debug a node.js-alkalmazások a Windows](https://tomasz.janczuk.org/2
 
 Számos alkalmazás szeretné a kimenő kapcsolatokat létesíthet a normál művelet részeként. Például amikor kérelem érkezik, a node-alkalmazás szeretné lépjen kapcsolatba a REST API-val máshol, és néhány adatra feldolgozni a kérelmet. Szeretne használni egy életben tartási ügynök http vagy https-hívást. Használhatja a agentkeepalive modul a életben tartási ügynökként, ezek kimenő hívása esetén.
 
-A agentkeepalive modul biztosítja, hogy sockets újra felhasználhatók az Azure webalkalmazás virtuális Gépet. Az alkalmazás egy új szoftvercsatorna létrehozását az egyes kimenő kérelmek hozzáadja többletterhelést okoz. Kimenő kérelmek sockets újra felhasználhatja az alkalmazás biztosítja, hogy az alkalmazás nem haladja meg a virtuális gépenkénti kiosztott maxsocket. Az Azure Web Apps a javaslat, hogy a agentKeepAlive maxsocket értékét állítsa összesen (4 példányait node.exe \* 40 maxsocket/példány) 160 sockets virtuális gépenként.
+A agentkeepalive modul biztosítja, hogy sockets újra felhasználhatók az Azure webalkalmazás virtuális Gépet. Az alkalmazás egy új szoftvercsatorna létrehozását az egyes kimenő kérelmek hozzáadja többletterhelést okoz. Kimenő kérelmek sockets újra felhasználhatja az alkalmazás biztosítja, hogy az alkalmazás nem haladja meg a virtuális gépenkénti kiosztott maxsocket. Az Azure App Service ajánlása, hogy a agentKeepAlive maxsocket értékét állítsa összesen (node.exe 4 példányait \* 40 maxsocket/példány) 160 sockets virtuális gépenként.
 
 Példa [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfiguráció:
 
@@ -147,10 +147,10 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>A node-alkalmazás túl sok CPU is használja.
 
-Az Azure Web Apps egy javaslatot a Portal tudnivalók a magas cpu-felhasználás jelenhet meg. Tekintse meg az egyes is állíthatja figyelők [metrikák](web-sites-monitor.md). A CPU-használat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ellenőrizze a maximális processzor maradjon le a maximális értékeket.
+Az Azure App Service ajánlása a Portal tudnivalók a magas cpu-felhasználás jelenhet meg. Tekintse meg az egyes is állíthatja figyelők [metrikák](web-sites-monitor.md). A CPU-használat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ellenőrizze a maximális processzor maradjon le a maximális értékeket.
 Ha úgy véli, hogy az alkalmazás túl sok CPU is használja, és miért nem magyarázni, ismerje meg, hogy a node-alkalmazás is készíthet profilt.
 
-#### <a name="profiling-your-node-application-on-azure-web-apps-with-v8-profiler"></a>A node-alkalmazás az Azure Web Apps V8-Profiler-profilkészítés
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A node-alkalmazás az Azure App Service-ben V8-Profiler profilkészítés
 
 Például tegyük fel, hogy a hello world alkalmazás, amelyet szeretne profil a következőképpen:
 
@@ -220,7 +220,7 @@ Láthatja, hogy a WriteConsoleLog függvény által felhasznált 95 %-ában. A k
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>A node-alkalmazás túl sok memóriát is használja.
 
-Az alkalmazás túl sok memóriát is használja, ha megjelenik egy értesítés az Azure Web Apps kapcsolatos magas memóriahasználat a portálon. Beállíthat figyelők tekintse meg az egyes [metrikák](web-sites-monitor.md). A memóriahasználat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ügyeljen arra, hogy ellenőrizze a maximális memóriát maradjon le a maximális értékeket.
+Ha az alkalmazás túl sok memóriát is használja, lásd: az értesítés az Azure App Service kapcsolatos magas memóriahasználat a portálon. Beállíthat figyelők tekintse meg az egyes [metrikák](web-sites-monitor.md). A memóriahasználat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ügyeljen arra, hogy ellenőrizze a maximális memóriát maradjon le a maximális értékeket.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Észlelését és a node.js-hez készült halommemória összehasonlítása
 
@@ -249,12 +249,12 @@ Az alkalmazás szűrész nem kezelt kivételek – jelölőnégyzet `d:\\home\\L
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>Saját node-alkalmazás indítása (hideg indítás) túl sok időt vesz igénybe.
 
-Mennyi ideig alkalmazás kezdési idejének gyakori oka a csomóponton lévő fájlok nagy számú\_modulok. Az alkalmazás megpróbálja betölteni ezeket a fájlokat a legtöbb indításakor. Alapértelmezés szerint az Azure Web Apps, a hálózati megosztáson tárolt fájlok óta számos fájlok betöltése időbe telhet.
+Mennyi ideig alkalmazás kezdési idejének gyakori oka a csomóponton lévő fájlok nagy számú\_modulok. Az alkalmazás megpróbálja betölteni ezeket a fájlokat a legtöbb indításakor. Alapértelmezés szerint az Azure App Service-ben a hálózati megosztáson tárolt fájlok óta számos fájlok betöltése időbe telhet.
 A gyorsabb, ez a folyamat egyes megoldások a következők:
 
 1. Győződjön meg arról, hogy rendelkezik egy egybesimított függőségi szerkezetének és ismétlődő függőségek npm3 használatával a modulok telepítéséhez.
 2. Megpróbálja Lusta betölteni a csomópont\_modulokat, és nem tölthető be összes alkalmazás indításakor. A Lusta terhelés modulokhoz require('module') hívása kell arról, amikor ténylegesen szüksége van a modul modul kód első végrehajtása előtt a függvényen belül.
-3. Az Azure Web Apps egy helyi gyorsítótár nevű funkciót kínál. Ez a funkció másolja át a tartalmat a hálózati megosztáshoz a helyi lemezre a virtuális gépen. Mivel a fájlok helyi, a betöltési időt csomópont\_modulok, sokkal gyorsabb.
+3. Az Azure App Service egy helyi gyorsítótár nevű funkciót kínál. Ez a funkció másolja át a tartalmat a hálózati megosztáshoz a helyi lemezre a virtuális gépen. Mivel a fájlok helyi, a betöltési időt csomópont\_modulok, sokkal gyorsabb.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Az IISNODE http-állapot és a részállapot
 
@@ -274,7 +274,7 @@ Sikertelen kérelmek Eseménytárolási win32 hibakód megtekintéséhez az alka
 | 503 |1002 |Ellenőrzés win32 hibakód tényleges ok miatt – a kérelem nem sikerült továbbítani a egy node.exe. |
 | 503 |1003 |Nevesített cső túl elfoglalt – győződjön meg arról, ha node.exe fogyassza túlzott CPU |
 
-NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES`. Alapértelmezés szerint a Ha nincs telepítve az Azure Web Apps szolgáltatásban, ez az érték a 4. Ami azt jelenti, hogy node.exe csak elfogadhat négy kérelmek egy időben a nevesített cső. Az Azure Web Apps szolgáltatásban Ez az érték 5000-es értéke. Ennek az értéknek kell lennie a legtöbb node-alkalmazások futtatása az Azure Web Apps esetén használatos. Ön nem szabadna megjelennie 503.1003 az Azure Web Apps nagy értéke miatt a `NODE_PENDING_PIPE_INSTANCES`
+NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES`. Az Azure App Service-ben ez az érték 5000-es értéke. Ami azt jelenti, hogy node.exe is 5000-es kérelmek fogadásához egy időben a nevesített cső. Ez az érték esetén a legtöbb csomópont-alkalmazásokhoz az Azure App Service-ben futó használatos kell lennie. Nem kell megjelennie 503.1003 az Azure App Service nagy értéke miatt a `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>További erőforrások
 

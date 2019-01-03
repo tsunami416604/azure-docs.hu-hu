@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 0cf5cac341cb36029c09ee2da5477323fac79cf5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311643"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631154"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.
 
 Szabály az Azure Search-csapat új verzió csak akkor szükséges, közzéteszi, mivel szükség lehet az egyes annak érdekében, hogy a kód egy új API-verzió használatához frissítse. Új verzió csak akkor, ha bizonyos elemeit az API megváltozott úgy, hogy megszakítja a visszamenőleges kompatibilitás érdekében van szükség. Az ilyen változások javításai, a meglévő funkciók miatt, vagy módosítsa a meglévő API-felület funkciói miatt fordulhat elő.
 
-Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi a [Szemantikus verziószámozást](http://semver.org/) szabályt, ami azt jelenti, hogy a verzió három részből áll: nagyobb, kisebb és buildszámát (például az 1.1.0-s). Egy új fő SDK verziója csak a módosításokat, amelyek törés az előző verziókkal való kompatibilitás. A nem törhető funkciófrissítések növeli az alverzió, és hibajavítások csak növeli a build-verziószáma.
+Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi a [Szemantikus verziószámozást](https://semver.org/) szabályt, ami azt jelenti, hogy a verzió három részből áll: nagyobb, kisebb és buildszámát (például az 1.1.0-s). Egy új fő SDK verziója csak a módosításokat, amelyek törés az előző verziókkal való kompatibilitás. A nem törhető funkciófrissítések növeli az alverzió, és hibajavítások csak növeli a build-verziószáma.
 
 > [!NOTE]
 > Az Azure Search-szolgáltatáspéldányhoz több REST API-verziók, többek között a legújabb buildszám támogatja. Továbbra is verzióját használja, amikor már nem a legújabb buildszám, de azt javasoljuk, hogy a legújabb verzió használatához kódok migrálása. A REST API használata esetén az api-version paraméter használatával minden kérésben meg kell adnia az API-verziót. A .NET SDK használatával, az SDK-t használ a verzióját határozza meg a megfelelő REST API-verzió. Ha egy régebbi SDK-t használja, továbbra is futtassa, hogy a kód módosítása nélkül, akkor is, ha a szolgáltatás frissítése egy újabb API-verzió támogatja.

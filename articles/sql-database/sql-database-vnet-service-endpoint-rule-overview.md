@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438591"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728125"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
 *A virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza-e az Azure [SQL Database](sql-database-technical-overview.md) vagy [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kiszolgáló elfogadja az érkező kommunikációt virtuális hálózatok adott alhálózatain. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure SQL Database és az SQL Data Warehouse.
 
-> [!NOTE]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> [!IMPORTANT]
+> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni **Azure SQL Database felügyelt példányába**.
 
 Hozzon létre egy virtuális hálózati szabályt, hogy először lennie kell egy [virtuális hálózati szolgáltatásvégpont] [ vm-virtual-network-service-endpoints-overview-649d] a szabályhoz való hivatkozáshoz.
 
@@ -64,9 +64,8 @@ Az IP-beállítás akkor is maradványérték megszerzésével a *statikus* IP-c
 
 Azonban a statikus IP-megközelítés válhat kezelése bonyolult, és költséges méretekben. A virtuális hálózati szabályok használata egyszerűbb, létrehozására és kezelésére.
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. Még nem rendelkezik SQL-adatbázis egy alhálózaton
-
-Ha az Azure SQL Database-kiszolgáló a virtuális hálózat egy alhálózat csomópont volt, a virtuális hálózaton lévő összes csomópont sikerült kommunikálni az SQL-adatbázis. Ebben az esetben a virtuális gépek képes kommunikálni az SQL Database virtuális hálózati szabályt vagy IP-szabályok nélkül.
+> [!NOTE]
+> Egy alhálózaton nem lehet még a SQL Database. Ha az Azure SQL Database-kiszolgáló a virtuális hálózat egy alhálózat csomópont volt, a virtuális hálózaton lévő összes csomópont sikerült kommunikálni az SQL-adatbázis. Ebben az esetben a virtuális gépek képes kommunikálni az SQL Database virtuális hálózati szabályt vagy IP-szabályok nélkül.
 
 Azonban 2017. szeptember, az Azure SQL Database szolgáltatás még nincs a szolgáltatások egy alhálózathoz rendelhető.
 

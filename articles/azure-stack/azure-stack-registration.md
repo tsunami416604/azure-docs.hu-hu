@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 12/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890551"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811018"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -300,15 +300,15 @@ A Get-tartalom parancsmag segítségével igény szerint, a regisztrációs jogk
 
 ## <a name="verify-azure-stack-registration"></a>Azure Stack-regisztráció ellenőrzése
 
-Használja ezeket a lépéseket, győződjön meg arról, hogy az Azure Stack sikeresen regisztrálva van az Azure-ral.
+Használhatja a **régiók kezelése** csempére kattintva ellenőrizze, hogy az Azure Stack-regisztráció sikeres volt-e. Ez a csempe nem érhető el az alapértelmezett irányítópult, a felügyeleti portálon. Az állapot regisztrálva, vagy nincs regisztrálva. Ha regisztrált, azt is bemutatja az Azure előfizetés-Azonosítót regisztrálni az Azure Stack neve mellett a regisztrációs erőforráscsoport használt.
 
-1. Jelentkezzen be az Azure Stack [felügyeleti portálján](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;régió >. &lt;teljesen minősített tartományneve >*.
-2. Válassza ki **minden szolgáltatás**, majd a a **felügyeleti** kategória, jelölje be **Marketplace felügyeleti** > **Azurehozzáadása**.
+1. Jelentkezzen be a [Azure Stack felügyeleti portálon](https://adminportal.local.azurestack.external).
 
-Ha látja az Azure (például WordPress) rendelkezésre álló elemek listáját, az aktiválás sikeres volt. Azonban a kapcsolat nélküli környezetben nem látják az Azure Stack piactéren Azure marketplace-elemek.
+2. Az irányítópulton, válassza ki a **régiók kezelése**.
 
-> [!Note]  
-> Regisztráció befejezése után az aktív figyelmeztetés nem regisztrálásához már nem jelenik meg.
+    [ ![Régió felügyeleti csempe](media/azure-stack-registration/admin1sm.png "régió felügyeleti csempe") ](media/azure-stack-registration/admin1.png#lightbox)
+
+3. Válassza ki **tulajdonságok**. Ezen a panelen látható, az állapot és a környezet sajátosságait. Az állapot lehet **regisztrált** vagy **nincs regisztrálva**. Ha regisztrált, azt is bemutatja az Azure-előfizetés azonosítója segítségével regisztrálja az Azure Stack, a regisztrációs erőforráscsoportot és a neve mellett.
 
 ## <a name="renew-or-change-registration"></a>Újítsa meg vagy módosítsa a regisztráció
 
@@ -434,9 +434,9 @@ A parancsmag futtatásához szüksége:
 | AzureContext | PSObject |  |
 | ResourceGroupName | Karakterlánc |  |
 | ResourceGroupLocation | Karakterlánc |  |
-| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
+| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled | Igaz/hamis | Meghatározza, hogy-e a Marketplace-en felügyeleti funkció érhető el a portálon. Állítsa az igaz értékre, ha az internetkapcsolattal rendelkező regisztrálása. "False" értékűre, ha regisztrálja az kapcsolat nélküli környezetekben is. Kapcsolat nélküli regisztrációkhoz a [offline szindikálási eszköz](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) letöltése a marketplace-elemek is használható. |
-| UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Engedélyezett, ez a paraméter értékei a következők: True, False. |
+| UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Ez a paraméter megengedett értékei a következők: IGAZ, hamis. |
 | AgreementNumber | Karakterlánc |  |
 | registrationName | Karakterlánc | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz. |
 
@@ -456,9 +456,9 @@ Get-AzsRegistrationToken létrehoz egy regisztrációs tokent a bemeneti paramé
 | AzureContext | PSObject |  |
 | ResourceGroupName | Karakterlánc |  |
 | ResourceGroupLocation | Karakterlánc |  |
-| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
+| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled | Igaz/hamis |  |
-| UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Engedélyezett, ez a paraméter értékei a következők: True, False. |
+| UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Ez a paraméter megengedett értékei a következők: IGAZ, hamis. |
 | AgreementNumber | Karakterlánc |  |
 
 

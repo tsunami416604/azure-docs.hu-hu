@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384197"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718928"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
@@ -134,7 +134,7 @@ Linux-alapú HDInsight-fürtök, adja meg, amelyek aktív-e a fürtön belül k�
 
 ### <a name="bPS6"></a>Az Azure Blob storage használata az egyéni összetevők konfigurálása
 
-A fürtön telepítendő összetevők lehet alapértelmezett konfigurációja a tárolót az Apache Hadoop elosztott fájlrendszer (HDFS) használja. HDInsight használja az Azure Storage vagy a Data Lake Store az alapértelmezett tárolóként. Mindkettő biztosít a HDFS-kompatibilis rendszerekben, amely az adatok továbbra is fennáll, akkor is, ha a fürt törlődik. Előfordulhat, hogy kell telepítenie a WASB vagy az ADL használja a HDFS helyett összetevők konfigurálása.
+A fürtön telepítendő összetevők lehet alapértelmezett konfigurációja a tárolót az Apache Hadoop elosztott fájlrendszer (HDFS) használja. HDInsight az alapértelmezett tárolóként használ az Azure Storage vagy a Data Lake Storage. Mindkettő biztosít a HDFS-kompatibilis rendszerekben, amely az adatok továbbra is fennáll, akkor is, ha a fürt törlődik. Előfordulhat, hogy kell telepítenie a WASB vagy az ADL használja a HDFS helyett összetevők konfigurálása.
 
 A legtöbb műveletet nem kell megadnia a fájlrendszerben. Ha például a következő másol a giraph-examples.jar fájl a helyi fájlrendszerben fürttároló:
 
@@ -142,7 +142,7 @@ A legtöbb műveletet nem kell megadnia a fájlrendszerben. Ha például a köve
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-Ebben a példában a `hdfs` parancs átlátható módon használja az alapértelmezett fürttárolóhoz. Egyes műveletek esetében szükség lehet az URI-t adja meg. Ha például `adl:///example/jars` a Data Lake Store vagy `wasb:///example/jars` Azure Storage-hoz.
+Ebben a példában a `hdfs` parancs átlátható módon használja az alapértelmezett fürttárolóhoz. Egyes műveletek esetében szükség lehet az URI-t adja meg. Ha például `adl:///example/jars` a Data Lake Storage vagy `wasb:///example/jars` Azure Storage-hoz.
 
 ### <a name="bPS7"></a>Az STDOUT és STDERR információ írása
 
@@ -163,7 +163,7 @@ Alapértelmezés szerint `echo` STDOUT küld a karakterláncot. Irányítani STD
 >&2 echo "An error occurred installing Foo"
 ```
 
-Ez átirányítja a STDERRBEN (2) STDOUT inkább írt adatok. I/o-átirányítás további információkért lásd: [ http://www.tldp.org/LDP/abs/html/io-redirection.html ](http://www.tldp.org/LDP/abs/html/io-redirection.html).
+Ez átirányítja a STDERRBEN (2) STDOUT inkább írt adatok. I/o-átirányítás további információkért lásd: [ https://www.tldp.org/LDP/abs/html/io-redirection.html ](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
 A szkriptműveletek által naplózott adatok megtekintésekor további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -278,17 +278,17 @@ Egy fürt testreszabására szolgáló parancsfájlok mappájába kell menteni a
 
 * A __nyilvánosan olvasható URI__. Például egy URL-címe a OneDrive, Dropbox vagy egyéb üzemeltetési szolgáltatás fájl tárolt adatokat.
 
-* Egy __Azure Data Lake Store-fiók__ társítva a HDInsight-fürt. Az Azure Data Lake Store használata a HDInsight további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Egy __Azure Data Lake-tárfiókra__ társítva a HDInsight-fürt. Az Azure Data Lake Storage használata a HDInsight további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > HDInsight Data Lake Store eléréséhez használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie.
+    > HDInsight Data Lake Storage elérésére használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie.
 
 A parancsfájlhoz használt erőforrásokhoz is nyilvánosan elérhető kell lennie.
 
-Egy Azure Storage-fiók vagy az Azure Data Lake Store-fájlok tárolására gyors hozzáférést, mint belül az Azure-hálózatot is biztosít.
+Fájlok tárolására az Azure Storage-fiók vagy az Azure Data Lake Storage gyors hozzáférést, mint belül az Azure-hálózatot is biztosít.
 
 > [!NOTE]  
-> A mutató hivatkozás a szkript URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított storage-fiókok esetében használjon `wasb://` vagy `wasbs://`. Nyilvánosan olvasható URI-k használata `http://` vagy `https://`. Használja a Data Lake Store, `adl://`.
+> A mutató hivatkozás a szkript URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított storage-fiókok esetében használjon `wasb://` vagy `wasbs://`. Nyilvánosan olvasható URI-k használata `http://` vagy `https://`. Használja a Data Lake Storage `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Az operációs rendszer verziójának ellenőrzése
 

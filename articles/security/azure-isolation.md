@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310997"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974709"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
 ##  <a name="introduction"></a>Bevezetés
@@ -121,7 +121,7 @@ Például az ISO/IEC 27001 rendszervizsgálati módban levő minősítések az �
 
 Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy a biztonsági másolatok. A releváns szolgáltatások esetében, amelyek törlése a megőrzési időszak vége után 90 napon belül történik. (A releváns szolgáltatások adatfeldolgozási feltételek szakaszában meghatározott a [Online szolgáltatások használati feltételeit](https://aka.ms/Online-Services-Terms).)
 
-Ha a meghajtó tárolására használt romlik egy hardverhiba, biztonságosan van-e [törölve lesz, vagy megsemmisül](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) Microsoft visszaadja a gyártó cseréje vagy javítása előtt. A meghajtón található adatokat a rendszer felülírja annak érdekében, hogy az adatok semmilyen módon nem lehet helyreállítani.
+Ha a meghajtó tárolására használt romlik egy hardverhiba, biztonságosan van-e [törölve lesz, vagy megsemmisül](https://microsoft.com/trustcenter/privacy/you-own-your-data) Microsoft visszaadja a gyártó cseréje vagy javítása előtt. A meghajtón található adatokat a rendszer felülírja annak érdekében, hogy az adatok semmilyen módon nem lehet helyreállítani.
 
 ## <a name="compute-isolation"></a>Elkülönítés COMPUTE
 Microsoft Azure lehetőséget kínál a különböző felhőalapú számítástechnikai szolgáltatások széles választékával számítási példányokat tartalmazó és a szolgáltatások, amelyek méretezhető felfelé és lefelé automatikusan az alkalmazás vagy a vállalat igényeinek. Ezek számítási példány és a szolgáltatás kínálnak az elkülönítési adatok védelmét a rugalmasságot, a konfiguráció feláldozása nélkül a felhasználók igény szerint több szinten.
@@ -238,7 +238,7 @@ Titkosítás az átvitel során egy mechanizmust, az adatok védelme, amikor azo
 -   [Ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), a storage-bA továbbított előtt titkosíthatja az adatokat, és az adatok visszafejtéséhez követően elfogyott a tárterület.
 
 #### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
-A legtöbb szervezet számára [adattitkosítás inaktív](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Nincsenek három Azure-funkciók adja meg az "Inaktív" adatok titkosítása:
+A legtöbb szervezet számára [adattitkosítás inaktív](https://docs.microsoft.com/azure/security/azure-isolation) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Nincsenek három Azure-funkciók adja meg az "Inaktív" adatok titkosítása:
 
 -   [A Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) lehetővé teszi, hogy a storage szolgáltatás automatikusan adatok titkosításához, az Azure Storage írásakor.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: b751fe4feab48e6ed706a2e28bba8406f4f4891c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185698"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634184"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -69,11 +69,11 @@ ms.locfileid: "53185698"
 | A visszaállítási művelethez megadott tárfiók típusa nem online: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott tárfiók online. |Ez a hiba akkor fordulhat elő, az Azure Storage-ban egy átmeneti hiba miatt, vagy leállás miatt. Válasszon ki egy másik tárfiókot. |
 | Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot az Azure Portalról, vagy lépjen kapcsolatba az Azure ügyfélszolgálatától a határértékek növelését. |None |
 | A kijelölt alhálózat nem létezik: <br>Válassza ki egy létező alhálózatot. |None |
-| A biztonsági mentési szolgáltatás nem rendelkezik hozzáférési erőforrást az előfizetésében. |Ez a hiba elhárításához a lépéseket követve először állítsa vissza a lemezeket [készül lemezek visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks). Ezt követően használja a PowerShell-ben lépéseket [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) teljes virtuális gép létrehozása a helyreállított lemezek alapján. |
+| A biztonsági mentési szolgáltatás nem rendelkezik hozzáférési erőforrást az előfizetésében. |Ez a hiba elhárításához a lépéseket követve először állítsa vissza a lemezeket [készül lemezek visszaállítása](backup-azure-arm-restore-vms.md#create-new-restore-disks). Ezt követően használja a PowerShell-ben lépéseket [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Biztonsági mentési vagy visszaállítási időt vesz igénybe
 Ha a biztonsági mentés több mint 12 óra alatt, vagy a visszaállítási több mint 6 óra alatt:
-* Megismerheti [biztonsági mentés időpontja hozzájáruló tényezők](backup-azure-vms-introduction.md#total-vm-backup-time) és [visszaállítás ideje hozzájáruló tényezők](backup-azure-vms-introduction.md#total-restore-time).
+* Megismerheti [biztonsági mentés időpontja hozzájáruló tényezők](backup-azure-vms-introduction.md#time-considerations) és [visszaállítás ideje hozzájáruló tényezők](backup-azure-vms-introduction.md#restore-considerations).
 * Győződjön meg arról, hogy kövesse [biztonsági mentés ajánlott eljárások](backup-azure-vms-introduction.md#best-practices).
 
 ## <a name="vm-agent"></a>A Virtuálisgép-ügynök

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274717"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630665"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -39,22 +39,22 @@ Az Azure App Service Environment-környezet üzembe helyezése az Azure App Serv
 
 Telepíthet egy ASE Környezethez (ASEv1 és ASEv2) és a egy külső vagy belső virtuális IP-CÍMEK az alkalmazás eléréséhez. A telepítéssel egy külső virtuális IP-cím a külső ASE környezetben gyakran nevezik. A belső verzió az ILB ASE nevezik, mert egy belső terheléselosztóval (ILB) használ. Az ILB ASE kapcsolatos további információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
 
-## <a name="create-a-web-app-in-an-ase"></a>Hozzon létre egy webalkalmazást az ASE környezetben ##
+## <a name="create-an-app-in-an-ase"></a>Hozzon létre egy alkalmazást az ASE környezetben ##
 
-Hozhat létre egy webalkalmazást az ASE környezetben, azt ugyanazzal az eljárással, általában létrehozása, de néhány kisebb eltéréssel. Amikor egy új App Service-csomagot hoz létre:
+Az ASE környezetben létrehoz egy alkalmazást, használhatja a folyamata megegyezik a normál esetben létrehozása, de néhány kisebb eltéréssel. Amikor egy új App Service-csomagot hoz létre:
 
 - Egy földrajzi helyet, ahol az alkalmazás telepítése helyett, az ASE egy helyet válasszon.
 - Minden App Service-csomagok egy ASE környezetben létrehozott egy elkülönített tarifacsomag kell lennie.
 
 Ha nem rendelkezik egy ASE Környezethez, létrehozhat egyet a következő témakör utasításait követve [hozzon létre egy App Service Environment-környezet][MakeExternalASE].
 
-Webalkalmazás létrehozása az ASE környezetben:
+Alkalmazás létrehozása az ASE környezetben:
 
 1. Válassza ki **erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
 
-2. Adja meg a webalkalmazás nevét. Ha az ASE App Service-csomag kijelölve, a tartomány nevét az alkalmazás az ASE tartomány nevét jeleníti meg.
+2. Adja meg az alkalmazás nevét. Ha az ASE App Service-csomag kijelölve, a tartomány nevét az alkalmazás az ASE tartomány nevét jeleníti meg.
 
-    ![Webes alkalmazás nevének kiválasztása][1]
+    ![Alkalmazás nevének kiválasztása][1]
 
 1. Válasszon egy előfizetést.
 
@@ -80,10 +80,10 @@ Webalkalmazás létrehozása az ASE környezetben:
     ![Izolált díjcsomagok][2]
 
     > [!NOTE]
-    > Linuxos web apps és a Windows web Apps alkalmazások azonos App Service-csomagot nem lehet, de az azonos App Service-környezet is lehet. 
+    > Linux és Windows-alkalmazások nem lehet azonos App Service-csomagot, de az azonos App Service-környezet is lehet. 
     >
 
-1. Kattintson a **Létrehozás** gombra.
+2. Kattintson a **Létrehozás** gombra.
 
 ## <a name="how-scale-works"></a>Hogyan skálázhatja működik ##
 
@@ -97,7 +97,7 @@ Az ASE környezetben méretezhető legfeljebb 100 példány. Ezekhez a példány
 
 ## <a name="ip-addresses"></a>IP-címek ##
 
-Az App Service képes egy alkalmazást egy dedikált IP-címet lefoglalni. Ez a képesség érhető el az IP-alapú SSL konfigurálása után leírtak szerint [meglévő egyéni SSL-tanúsítvány kötése az Azure web appshez][ConfigureSSL]. Az ASE környezetben, van azonban egy jelentős kivétel. Nem adhat hozzá további IP-címeket az IP-alapú SSL, az ILB ASE környezetben használható.
+Az App Service képes egy alkalmazást egy dedikált IP-címet lefoglalni. Ez a képesség érhető el az IP-alapú SSL konfigurálása után leírtak szerint [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-][ConfigureSSL]. Az ASE környezetben, van azonban egy jelentős kivétel. Nem adhat hozzá további IP-címeket az IP-alapú SSL, az ILB ASE környezetben használható.
 
 Az asev1-ben kell az IP-címek kiosztására erőforrásként, mielőtt használhatná őket. ASEv2 használhatja őket az alkalmazásból ugyanúgy, mint a több-bérlős App Service-ben. Az mindig van egy tartalék cím ASEv2 legfeljebb 30 IP-cím. Minden alkalommal, amikor valamelyik használja, egy másik egészül ki, hogy egy cím mindig könnyen elérhető. Egymás után gyorsan címek késleltetés szükség egy másik IP-címet, amely megakadályozza az IP-Címének hozzáadása lefoglalni időpontot.
 
@@ -187,6 +187,6 @@ Az ASE törlése:
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványokat az Azure Stackkel integrált rendszerek telepítésének előkészítése |} A Microsoft Docs
+title: Az Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványokat előkészítése az Azure Stackkel integrált rendszerek üzembe helyezési vagy titkos Elforgatás |} A Microsoft Docs
 description: Ismerteti, hogyan készíti elő az Azure Stack PKI-tanúsítványok az Azure Stack integrált rendszerek.
 services: azure-stack
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972028"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631481"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Az Azure Stack PKI-tanúsítványok telepítésének előkészítése
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Az Azure Stack PKI-tanúsítványok előkészítése az üzembe helyezési vagy elforgatás használható
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell exportálható és importálható az Azure Stack szemben támasztott követelményeknek megfelelő tulajdonságokkal.
 
 
 ## <a name="prepare-certificates-for-deployment"></a>Tanúsítványok telepítésének előkészítése
-Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok ellenőrzése: 
+Ezeket a lépéseket segítségével készítheti elő, és ellenőrizze az Azure Stack PKI-tanúsítványokat, amely egy új Azure Stack-környezet üzembe helyezéséhez, vagy a titkos kulcsokat egy meglévő Azure Stack-környezet a rotált használható: 
 
 ### <a name="import-the-certificate"></a>Importálja a tanúsítványt
 

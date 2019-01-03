@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864978"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726541"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Tervezési megfontolások az Azure Stack üzemelő példányához
 Az Azure Stack Development Kit (ASDK), üzembe helyezése előtt győződjön meg arról, a fejlesztői csomag fogadó számítógép megfelel-e az ebben a cikkben ismertetett követelményeknek.
@@ -29,17 +29,17 @@ Az Azure Stack Development Kit (ASDK), üzembe helyezése előtt győződjön me
 ## <a name="hardware"></a>Hardver
 | Összetevő | Minimális | Ajánlott |
 | --- | --- | --- |
-| Lemezmeghajtók: Operációs rendszer |1 rendszerlemez legalább 200 GB szabad tárhellyel a rendszerpartícióhoz (SSD vagy HDD) |1 rendszerlemez legalább 200 GB szabad tárhellyel a rendszerpartícióhoz (SSD vagy HDD) |
-| Lemezmeghajtók: általános development kit adatok<sup>*</sup>  |4 lemez. Mindegyik lemez legalább 140 GB tárhellyel (SSD vagy HDD). Az összes rendelkezésre álló lemezek használhatók. |4 lemez. Mindegyik lemez legalább 250 GB tárhellyel (SSD vagy HDD). Az összes rendelkezésre álló lemezek használhatók. |
-| Számítási igény: CPU |Kettős foglalat: 12 fizikai mag (összesen) |Kettős foglalat: 16 fizikai mag (összesen) |
-| Számítási igény: Memória |96 GB RAM |128 GB RAM (Ez a PaaS-erőforrás-szolgáltatók támogatásához legalább.)|
-| Számítási igény: BIOS |Hyper-V engedélyezve (SLAT-támogatással) |Hyper-V engedélyezve (SLAT-támogatással) |
-| Hálózat: NIC |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |
+| Lemezmeghajtók: Operációs rendszer |1 operációsrendszer-lemez, legalább 200 GB szabad rendszerpartíció (SSD vagy HDD) |1 rendszerlemez legalább 200 GB szabad tárhellyel a rendszerpartícióhoz (SSD vagy HDD) |
+| Lemezmeghajtók: Általános development kit adatok<sup>*</sup>  |4 lemez. Mindegyik lemez legalább 240 GB tárhellyel (SSD vagy HDD) biztosít. Az összes rendelkezésre álló lemezek használhatók. |4 lemez. Mindegyik lemez legalább 400 GB tárhellyel (SSD vagy HDD) biztosít. Az összes rendelkezésre álló lemezek használhatók. |
+| Számítási: CPU |Kettős foglalat: 16 fizikai mag (összesen) |Kettős foglalat: 20 fizikai mag (összesen) |
+| Számítási: Memory (Memória) |192 GB RAM |256 GB RAM |
+| Számítási: BIOS-BAN |Hyper-V engedélyezve (SLAT-támogatással) |Hyper-V engedélyezve (SLAT-támogatással) |
+| Hálózat: Hálózati adapter |A Windows Server 2012 R2 hitelesítésével. Speciális jellemzők nem szükségesek |A Windows Server 2012 R2 hitelesítésével. Speciális jellemzők nem szükségesek |
 | Hardveres tanúsítványembléma |[Certified for Windows Server 2012 R2 rendszerben](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2016-ban](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Kell több mint kapacitás ez javasolt, ha azt tervezi, hogy számos hozzáadása a [Piactéri elemek](asdk-marketplace-item.md) az Azure-ból.
 
-**Adatlemez-meghajtó konfigurációja:** minden adatmeghajtónak ugyanolyan típusú (csak SAS, minden SATA vagy minden NVMe) és kapacitást kell lennie. Ha SAS-lemezmeghajtókat használ, egyetlen elérési úttal kell őket összekapcsolnia (az MPIO nem engedélyezett, a többutas működés támogatása biztosított).
+**Adatlemez-meghajtó konfigurációja:** Minden adatmeghajtónak ugyanolyan típusú (csak SAS, minden SATA vagy minden NVMe) és kapacitást kell lennie. Ha SAS-lemezmeghajtókat használ, egyetlen elérési úttal kell őket összekapcsolnia (az MPIO nem engedélyezett, a többutas működés támogatása biztosított).
 
 **HBA-konfigurációs lehetőségek**
 
@@ -59,7 +59,7 @@ Az Azure Stack Development Kit (ASDK), üzembe helyezése előtt győződjön me
 
 <sup>*</sup> Az átmenő képesség nélküli RAID-vezérlők nem ismerik fel az adathordozó típusát. Az ilyen vezérlők a HDD és SSD nincs meghatározva megjelölni. Ebben az esetben az SSD állandó tárolóként gyorsítótáreszköz helyett szolgál. Ezért a csomagban található ezeken az SSD meghajtókon is telepítheti.
 
-**Példa HBA-kra:** LSI 9207-8i, LSI-9300-8i vagy LSI-9265-8i átmenő módban
+**Példa HBA**: LSI 9207-8i, LSI-9300-8i vagy LSI-9265-8i átmenő módban
 
 OEM mintakonfigurációk is elérhetők.
 

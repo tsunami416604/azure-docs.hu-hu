@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 54155346c7f417be8beb0ced8ef825ec22a08237
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721952"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971613"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>A felhasználói folyamatok az Application insights szolgáltatásban felhasználói navigációs mintáinak elemzése
 
@@ -34,7 +34,7 @@ A felhasználói folyamatok eszköz megjeleníti, hogy a felhasználók hogyan n
 A felhasználói folyamatok eszköz elindul egy kezdeti oldalmegtekintést, egyéni esemény vagy megadott kivétel. Adja meg a kezdeti esemény, előtt, és ezt követően a felhasználói munkamenet során történt eseményeket felhasználói folyamatok jeleníti meg. Hány alkalommal mindegyik elérési út lett követni a felhasználók különböző vastagságú vonalak megjelenítése Speciális **munkamenet kezdete** csomópontok megjelenítése, ahol a többi csomópont megkezdte a munkamenet. **Munkamenet állapotig** csomópontok megjelenítése, hogy hány felhasználó küldött nincs Lapmegtekintések vagy egyéni események után az előző csomópont kiemelése, ahol felhasználók valószínűleg left webhelyét.
 
 > [!NOTE]
-> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a felhasználói folyamatok eszköz használata. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](app-insights-javascript.md).
+> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a felhasználói folyamatok eszköz használata. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](../azure-monitor/app/javascript.md).
 >
 >
 
@@ -59,7 +59,7 @@ Ha a lapmegtekintések vagy egyéni események, amelyek esetében hiányzik a v�
 * Ellenőrizze a **kizárt események** című rész a **szerkesztése** menü.
 * Plusz gombok **mások** többek között a kevésbé gyakran használják események a Vizualizáció-csomópontokat.
 * Ha az oldal nézet vagy egyéni esemény várható ritkán küld a felhasználók, próbálkozzon az időtartomány, a Vizualizációk növelésével a **szerkesztése** menü.
-* Ellenőrizze, hogy a lap megtekintéséhez, egyéni eseményt vagy kivétel várt beállításáról gyűjti össze az Application Insights SDK a webhely a forráskódban. [További információ az egyéni események gyűjtése.](app-insights-api-custom-events-metrics.md)
+* Ellenőrizze, hogy a lap megtekintéséhez, egyéni eseményt vagy kivétel várt beállításáról gyűjti össze az Application Insights SDK a webhely a forráskódban. [További információ az egyéni események gyűjtése.](../azure-monitor/app/api-custom-events-metrics.md)
 
 Ha meg szeretné tekinteni a további lépéseket a vizualizációban, használja a **előző lépések** és **további lépések** legördülő menük, a Vizualizáció fölött.
 
@@ -99,4 +99,4 @@ Használja a **felosztás** lehetőségei a a **szerkesztése** menüben:
 * [Használat – áttekintés](app-insights-usage-overview.md)
 * [Felhasználók, munkamenetek és események](app-insights-usage-segmentation.md)
 * [Megőrzés](app-insights-usage-retention.md)
-* [Egyéni események hozzáadása az alkalmazáshoz](app-insights-api-custom-events-metrics.md)
+* [Egyéni események hozzáadása az alkalmazáshoz](../azure-monitor/app/api-custom-events-metrics.md)

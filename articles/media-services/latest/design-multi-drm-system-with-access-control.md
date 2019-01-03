@@ -4,22 +4,22 @@ description: További információ a licencelésről a Microsoft Smooth Streamin
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: femila
+manager: steveng
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136273"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753489"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
 
@@ -29,7 +29,7 @@ Tervezése és létrehozása a digitális jogkezelési (DRM) alrendszer egy over
 
 Ebben a dokumentumban a megcélzott olvasók mérnökeitől, akik a DRM-alrendszer OTT vagy online streamelés/grafikus; megoldások, illetve olvasók, akik DRM-alrendszer. Feltételezzük, hogy olvasók ismeri a DRM-technológiák a piacon, például a PlayReady, Widevine, FairPlay vagy az Adobe hozzáférés legalább egyike.
 
-A témakörben ismertetettek szempontjából a többplatformos DRM által tartalmazza az Azure Media Services által támogatott 3 DRMs: általános titkosítás (CENC) a PlayReady és Widevine FairPlay, valamint az AES-128 titkosítatlan kulcs titkosítás. Online streamelés és OTT iparág fő a tendencia, hogy natív DRMs ügyfél különböző platformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
+A témakörben ismertetettek szempontjából a többplatformos DRM által tartalmazza az Azure Media Services által támogatott 3 DRMs: Általános titkosítás (CENC) a PlayReady és Widevine FairPlay, valamint az AES-128 titkosítatlan kulcs titkosítás. Online streamelés és OTT iparág fő a tendencia, hogy natív DRMs ügyfél különböző platformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
 
 A következők, hogy a natív tartalomtovábbítás többplatformos DRM használatával a content protection előnyei:
 
@@ -119,11 +119,11 @@ Miért fontosak ezeket a szempontokat?
 
 Ha licencekkel történő kézbesítés használ a nyilvános felhő, állandó és nem állandó licencek közvetlen hatást license delivery költséget. A következő két különböző kialakítási esetben műveletek mutatja be:
 
-* Havi előfizetés: állandó licenc és 1-a-többhöz tartalom kulcs eszköz hozzárendelést. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
+* Havi előfizetés: Használjon egy állandó licenc és az 1-a-többhöz tartalom kulcs eszköz hozzárendelést. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = 1
 
-* Havi előfizetés: nonpersistent licenc és az 1-1 leképezés tartalomkulcs és eszköz közötti. Ebben az esetben:
+* Havi előfizetés: Használja a nonpersistent licenc és 1-1 leképezés tartalomkulcs és eszköz közötti. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = [nézte filmek száma] x [munkamenetek száma]
 
@@ -327,7 +327,7 @@ Regisztrálta és konfigurálta az egérmutatót alkalmazást az Azure ad-ben, a
 
 2. Adjon hozzá egy új kulcsot az erőforrás-alkalmazás számára.
 
-3. Az alkalmazás-jegyzékfájl frissítése, hogy groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
+3. Az alkalmazás-jegyzékfájl frissítése, így groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
 
 4. Az Azure AD-alkalmazás, amely a lejátszó web app, a szakaszban szereplő **egyéb alkalmazások engedélyei**, adja hozzá az erőforrás-alkalmazás, amely az 1. lépésben lett hozzáadva. A **delegált engedély**válassza **hozzáférés [resource_name]**. Ez a beállítás hozzáférést biztosít a webes alkalmazás létrehozásához szükséges engedéllyel hozzáférési jogkivonatok, amelyek az erőforrás-alkalmazás elérésére. Erre a webalkalmazás helyi és a telepített verziójához, ha a Visual Studio és az Azure-webalkalmazás fejlesztése.
 
@@ -360,13 +360,13 @@ Egy egyéni STS használata esetén két módosításokat kell végrehajtani:
 
 Biztonsági kulcsok két típusa van:
 
-* Szimmetrikus kulcs: ugyanazt a kulcsot létrehozni, és ellenőrizheti a jwt-t használja.
-* Aszimmetrikus kulcs: egy nyilvános-titkos kulcspárt egy X509 a tanúsítványt használja, a titkos kulcs titkosításához/készítése a jwt-t és ellenőrizni a jogkivonatot a nyilvános kulccsal.
+* Szimmetrikus kulcs: Ugyanazt a kulcsot létrehozni, és ellenőrizheti a jwt-t használja.
+* Az aszimmetrikus kulcs: Egy nyilvános-titkos kulcspárt egy X509 a tanúsítványt használja, a titkos kulcs titkosításához/készítése a jwt-t és ellenőrizni a jogkivonatot a nyilvános kulccsal.
 
 > [!NOTE]
 > Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt:
 
-> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" aláíráshoz nem lehet kisebb, mint "2048" bits.
+> IDX10630: Az aláíráshoz "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>A befejezett rendszer és a teszt
 Ez a szakasz végigvezeti a következő esetekben a befejezett rendszerben teljes körű, hogy viselkedésének általános képet előtt megjelenik egy bejelentkezési fiókot használhat:
@@ -400,7 +400,7 @@ Egy fiók létrehozásakor vagy hozzáadva, hogy a szerzők bármelyikét fordul
 
 Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ugyanaz a tartományi fiókok által használt megjelenítése:
 
-**Egyéni Azure AD-bérlő tartományi fiók**: A testreszabott bejelentkezési oldala, az egyéni Azure AD-bérlői tartomány.
+**Egyéni Azure AD-bérlő tartományi fiók**: A testre szabott bejelentkezési oldala, az egyéni Azure AD bérlői tartomány.
 
 ![Egyéni Azure AD bérlő tartományi fiók egyik](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
@@ -408,7 +408,7 @@ Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ug
 
 ![Egyéni Azure AD bérlő tartományi fiók két](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-fiók**: a fogyasztók számára a Microsoft-fiók bejelentkezési oldalán.
+**Microsoft-fiók**: A bejelentkezési oldal a Microsoft-fiók a fogyasztók számára.
 
 ![Egyéni Azure AD bérlő tartományi fiók három](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

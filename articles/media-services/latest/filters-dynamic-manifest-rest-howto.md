@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083411"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650841"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása a Media Services REST API-val
 
@@ -31,12 +31,13 @@ Ez a témakör bemutatja, hogyan videó igény szerint eszköz a kapcsolódó sz
 Az ebben a témakörben leírt lépések elvégzéséhez kell:
 
 - Felülvizsgálat [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
 - [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).
+
+    Kövesse a témakör az utolsó lépés [lekérése az Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="define-a-filter"></a>Szűrő megadásához.  
 
-Az alábbiakban a **kérelem törzse** példa, amely meghatározza a jegyzékfájl hozzáadott követése kiválasztási feltételek. Ez a szűrő tartalmazza, bármilyen, amelyek angol-EK-3 hangsáv és bármely videó nyomon követi a 0-1000000 sávszélességű rendelkező tartományt.
+Az alábbiakban a **kérelem törzse** példa, amely meghatározza a jegyzékfájl hozzáadott követése kiválasztási feltételek. Ez a szűrő tartalmazza, bármilyen, amelyek EC-3 hangsáv és bármely videó nyomon követi a 0-1000000 sávszélességű rendelkező tartományt.
 
 ```json
 {
@@ -50,14 +51,9 @@ Az alábbiakban a **kérelem törzse** példa, amely meghatározza a jegyzékfá
                         "operation": "Equal"
                     },
                     {
-                        "property": "Language",
-                        "value": "en",
-                        "operation": "Equal"
-                    },
-                    {
                         "property": "FourCC",
                         "value": "EC-3",
-                        "operation": "NotEqual"
+                        "operation": "Equal"
                     }
                 ]
             },
@@ -86,7 +82,9 @@ Válassza ki a letöltött a Postman-gyűjtemény, **Fiókszűrők**->**létreho
 
 A **PUT** HTTP-kérési metódust hasonlít:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+```
 
 Válassza ki a **törzs** lapra, és illessze be a json-kód, [korábban meghatározott](#define-a-filter).
 
@@ -98,11 +96,13 @@ További információkért lásd: [létrehozásának vagy frissítésének](http
 
 ## <a name="create-asset-filters"></a>Az eszközintelligencia-szűrők létrehozásához  
 
-Válassza a "Media Services v3" Postman-gyűjtemény letöltött, **eszközök**-> ** létrehozásának vagy frissítésének eszköz szűrőt.
+Válassza a "Media Services v3" Postman-gyűjtemény letöltött, **eszközök**->**létrehozásának vagy frissítésének eszköz szűrő**.
 
 A **PUT** HTTP-kérési metódust hasonlít:
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+```
 
 Válassza ki a **törzs** lapra, és illessze be a json-kód, [korábban meghatározott](#define-a-filter).
 

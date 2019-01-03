@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a152efb3979b4ffe3402ed668c0f683f5e9cc651
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 337d71c84ace7f44c2668cf2344d9083c4a85bee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337155"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651062"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Statikus IP-korlátozások az Azure App Service-ben #
 
 Az IP-korlátozások lehetővé teszik a rendezett lista engedélyezni vagy letiltani az IP-címek, amelyek jogosultak hozzáférni az alkalmazáshoz prioritást határozza meg. Az engedélyezési listán lehetnek IPv4 és IPv6 típusú címek. Ha egy vagy több bejegyzés, nincs, akkor egy implicit összes elutasítása, hogy a lista végén létezik. 
 
-Az IP-korlátozások funkció működik az összes App Service-ben üzemeltetett vállalatokra, többek között; webalkalmazások, api-alkalmazások, a linux-alkalmazások, linux-tárolóalkalmazásokról és funkciók. 
+Az IP-korlátozások funkció működik az összes App Service-ben üzemeltetett vállalatokra, többek között; webalkalmazások, API-alkalmazások, a Linux-alkalmazások, Linux-tárolóalkalmazásokról és funkciók. 
 
 Az alkalmazás egy kérelmet történik, amikor az az IP-címet az IP-korlátozások listája képest értékeli ki. Ha a cím nem engedélyezett a hozzáférés a listájának szabályai alapján, a szolgáltatás válaszol-e az egy [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) állapotkódot.
 

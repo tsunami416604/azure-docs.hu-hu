@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 33bd4e39018f9789464d213ccf7921993e2da142
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864717"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600683"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
 
@@ -530,8 +530,8 @@ További információ a fiókok és a tárolók az Azure Storage szolgáltatásb
 * [A Blob storage a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [A legfelső szintű tároló használata](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [1. lecke: Egy tárolt hozzáférési szabályzat és a egy közös hozzáférésű jogosultságkód létrehozása egy Azure container a](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [2. lecke: Az SQL Server hitelesítő adatok használatával egy közös hozzáférésű jogosultságkód létrehozása](https://msdn.microsoft.com/library/dn466435.aspx)
+* [1. lecke: Egy tárolt hozzáférési szabályzat és a egy közös hozzáférésű jogosultságkód létrehozása egy Azure container](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [2. lecke: Közös hozzáférésű jogosultságkódok használata az SQL Server hitelesítő adatok létrehozása](https://msdn.microsoft.com/library/dn466435.aspx)
 * [A Microsoft SQL Server bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

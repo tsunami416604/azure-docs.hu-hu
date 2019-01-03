@@ -1,7 +1,7 @@
 ---
-title: Mi az a beszélgetés tanuló? -Microsoft kognitív szolgáltatások |} Microsoft Docs
+title: Mi a Beszélgetéstanuló? – A Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg a beszélgetési tanuló és annak működéséről.
+description: További tudnivalók Beszélgetéstanuló és működését.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,38 +10,38 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9cbf0e60382ef17d68aab47cf5f24ea9b8434f13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348611"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790775"
 ---
-# <a name="what-is-conversation-learner"></a>Mi az a beszélgetés tanuló?
+# <a name="what-is-conversation-learner"></a>Mi a Beszélgetéstanuló?
 
-Beszélgetés tanuló felépítéséhez és mutatja meg, hogy megtudjuk példa kapcsolati conversational felületek teszi lehetővé. 
+Beszélgetéstanuló lehetővé teszi, hogy hozhat létre, és ismerje meg az a példában interakciók párbeszédfelületeket tanít. 
 
-Hagyományos megközelítés, eltérően beszélgetés tanuló úgy ítéli meg, a párbeszéd válaszok javításához, és nagyobb felhasználói élmény biztosításához a végpont keretében. Feladatközpontú széles körét átfedés használati esetekben, beszélgetés tanuló gép tanulási botok és intelligens kevésbé valószínű, hogy azoknak a felhasználóknak, további ügyfél-szolgáltatási költségei fel Önnek ügynökök a háttérben, és intuitívabb együttműködhet vonatkozik.
+Ellentétben a hagyományos megközelítés Beszélgetéstanuló figyelembe veszi a párbeszéd válaszokat és vonzóbb felhasználói élményeket nyújthat teljes körű keretében. Átfedés feladatközpontú a különböző használati esetek, Beszélgetéstanuló vonatkozik a machine learning a robotok és intelligens ügynököket kevésbé valószínű, hogy a felhasználók meghiúsítja, további ügyfél-szolgáltatási költségei teszik a háttérben, és további termékpiacokon több intuitív interakciók.
 
-A kezdéshez a fejlesztői szeretnék bátorítaná prototypical párbeszédpanelek kerül. További párbeszédpanelek van-e megadva, a modell folyamatosan frissül, és fejlesztői láthatja, milyen mértékben a modell normalizálása-e. Ha a modell jól működik, a botot is telepíthető a végfelhasználók számára. A fejlesztői is tekintsék meg őket, és beszélgetés tanuló beszélgetések naplózza a felhasználóival. Hibák vannak pedig a pöttyös, ha a fejlesztői tehet egy a helyszíni javítása, és a modell retrained és használható azonnal.
+A fejlesztők modellezheti szeretnének prototípusos párbeszédpanelek beírásával indítsa el. A modell további párbeszédpanelek megadott módon tanul. Miután a modell jól működik, a robot is üzembe helyezhetők a végfelhasználók számára. Beszélgetéstanuló beszélgetések naplózza a felhasználókkal, és a fejlesztői tekintheti át őket. Ha a rendszer pedig a hibák pöttyös, teheti, hogy a fejlesztő egy a helyszíni javítás, és a modell retrained és használható azonnal.
 
-Ez a megközelítés csökkenti a manuális kódolási párbeszéd vezérlő logikáját, és lehetővé teszi, hogy a vállalakozások tulajdonosai vagy a tartomány szakértők hozzájárul, hogy egy conversational felület nélkül előzetes gépi tanulási a Tudásbázis. Telepítve van egy botot, intelligens eszköz vagy egy intelligens ügynök részeként, hogy a beszélgetés tanuló gyorsan többször az új képességek, viselkedések vagy szakértelem, és gyorsan a minőségének javítása. 
+Ez a megközelítés csökkenti a párbeszéd ellenőrzési logika manuális kódolását, és lehetővé teszi az üzleti tulajdonosai vagy a tartomány szakértők való közreműködésre beszélgetések felület korábbi machine learning-ismeretek nélkül. A robot, az intelligens eszköz vagy intelligens ügynök részeként üzembe helyezett, hogy Beszélgetéstanuló gyors ismételt futtatásával új ismeretek, viselkedések vagy kompetenciák, és gyorsan javíthatja a minőségét. 
 
-Beszélgetés tanuló lehetővé teszi a fejlesztők sebességű piaci és a meghajtó sikeres párbeszéd növeléséhez több conversational csatornákon keresztül a Microsoft Botot keretrendszer, vagy a saját infrastruktúrája önálló között.
+Beszélgetéstanuló segítségével a fejlesztők számára, hogy növelje kerülési sebesség és a meghajtó sikeres lehetővé a Microsoft Bot Framework, vagy a saját infrastruktúrát használó önálló többféle természetes nyelvi csatornán keresztül.
 
 Összegzés és emeli ki:
 
-- Beszélgetés tanuló a feladatközpontú botok kialakításának AI-első módszerrel.
+- Beszélgetéstanuló a feladatközpontú robotok létrehozása az AI-és felhőközpontú módszerrel.
 
-- Ez egy végpontok közötti ismétlődő Neurális hálózat (LSTM) alapul, és megtanulja közvetlenül a beszélgetés példák többszörös kapcsolja. 
+- Egy teljes körű ütemezhetők Neurális hálózat (LSTM) támaszkodik, és megtanulja közvetlenül a beszélgetések példák többszörös kapcsolja. 
 
-- Lehetővé teszi a tervezők, fejlesztők, üzleti felhasználók, és hívás center munkavállalók felépítéséhez és botok karbantartása. 
+- Lehetővé teszi a tervezők, a fejlesztők, az üzleti felhasználók és hívás center feldolgozók tekintettel a robotokat. 
 
-- Üzleti szabályok és a józan kódot az express teszi lehetővé.
+- Lehetővé teszi az üzleti szabályok és a kódban józan express.
 
-- Során oktatási munkamenetek, a Neurális hálózat modellt használja a következő set várható műveleteket a téma pontozása céljából. A botot fejlesztői ezután válassza ki a megfelelő műveletet, és a hálózatra, hogy biztosítsák a megfelelő választ betanításához.
+- Során oktatási munkamenetek, a Neurális hálózat-modell segítségével a beszélgetésben. a várt műveletek következő készletét helyezett. A robot fejlesztő ezután válassza ki a megfelelő műveletet, és a hálózat, adja meg a megfelelő választ.
  
-- Képzési befejezése után a fejlesztői segítségével a felhasználói kapcsolatok napló párbeszédpaneleket botot válaszok a javításokat, és a modell működik. 
+- Képzési befejezése után a fejlesztői használhatja a napló párbeszédpanelek, a felhasználói tevékenységet a robot által küldött válaszokhoz korrekciók és a modell újratanítása. 
 
-- Meghívhatja tartományspecifikus és külső API-k feladatok elvégzéséhez.
+- Meghívhatja a tartomány-specifikus és külső API-k a feladatokat.
 

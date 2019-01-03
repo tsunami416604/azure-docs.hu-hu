@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c2cebe2225e475ccd40460e7b10a6ba3ed428d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724040"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630648"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services erőforrás- és objektum korlátozásai
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja az erőforrás és a modell korlátok objektumot.
 
 ### <a name="developer-tier"></a>Fejlesztői szint
 
-Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. Ehhez a szinthez nem tartozik SLA.
+Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. A kibővített lekérdezésreplika lekérdezés nem érhető el ezen a szinten. Ehhez a szinthez nem tartozik SLA.
 
 |Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
@@ -32,7 +32,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 ### <a name="basic-tier"></a>Alapszintű csomag
 
-Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
+Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika lekérdezése *nem érhető el* ezen a szinten. A réteg perspektívák, több partíciót és DirectQuery táblázatosmodell-funkciók nem támogatottak.  
 
 |Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
@@ -62,14 +62,14 @@ Ezek a korlátok elméleti. Teljesítmény fog csökkenteni kell a alacsonyabb s
 |------------|----------------------------|  
 |Adatbázis-példány|16,000|  
 |Táblák és oszlopok adatbázisban összesített száma|16,000|  
-|Egy tábla sorainak|Korlátlan<br /><br /> **Figyelmeztetés:** a korlátozás, hogy nincs egyetlen oszlop a tábla több mint 1,999,999,997 különböző értékekkel rendelkezhet.|  
+|Egy tábla sorainak|Korlátlan<br /><br /> **Figyelmeztetés:** A korlátozás, hogy nincs egyetlen oszlop a tábla több mint 1,999,999,997 különböző értékekkel rendelkezhet.|  
 |Egy tábla hierarchiák|15,999|  
 |A hierarchia szintek|15,999|  
 |Kapcsolatok|8,000|  
 |Az összes tábla oszlopainak kulcs|15,999|  
-|A táblákban mértékek|2 ^ 31 – 1 = 2 147 483 647|  
+|Mértékek a táblák|2 ^ 31 – 1 = 2 147 483 647|  
 |Egy lekérdezés által visszaadott cellák|2 ^ 31 – 1 = 2 147 483 647|  
-|Az adatforrás-lekérdezés rögzítése mérete|64K|  
+|Az adatforrás-lekérdezés rögzítése mérete|64 K|  
 |Objektum nevének hossza|512 karakter|  
 
 

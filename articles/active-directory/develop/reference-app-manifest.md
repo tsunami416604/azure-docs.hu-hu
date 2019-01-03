@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086777"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631188"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
@@ -40,7 +40,7 @@ Az alkalmazásjegyzék konfigurálása:
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com).
 1. Válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk** vagy **alkalmazásregisztrációk (előzetes verzió)**.
 1. Válassza ki a konfigurálni kívánt alkalmazást.
-1. Az alkalmazás **áttekintése** lapon válassza ki a **Manifest** szakaszban. Megnyílik egy webalapú alkalmazásjegyzék-szerkesztőben, lehetővé téve, hogy a portálon a jegyzékfájl szerkesztése. Igény szerint kiválaszthatja **letöltése** helyileg a jegyzékfájl szerkesztése, és ezután **feltöltése** szeretne újból alkalmazni, az alkalmazásnak.
+1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú alkalmazásjegyzék-szerkesztőben, lehetővé téve, hogy a portálon a jegyzékfájl szerkesztése. Igény szerint kiválaszthatja **letöltése** helyileg a jegyzékfájl szerkesztése, és ezután **feltöltése** szeretne újból alkalmazni, az alkalmazásnak.
 
 ## <a name="manifest-reference"></a>Jegyzékfájl referencia
 
@@ -56,11 +56,11 @@ Az alkalmazásjegyzék konfigurálása:
 | `allowPublicClient` | logikai | A tartalék alkalmazás típusát határozza meg. Az Azure AD alapértelmezés szerint az alkalmazás típusát, a replyUrlsWithType kikövetkezteti. Vannak bizonyos helyzetekben, ahol az Azure AD nem tudja megállapítani az ügyféloldali alkalmazás típusa (pl. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) HTTP-kérelem egy URL-átirányítás nélkül történik, ahol a folyamat). Ezekben az esetekben az Azure AD fog értelmezni az alkalmazás típusát, ez a tulajdonság értéke alapján. Ha ezt az értéket a tartalék alkalmazástípus igaz értékre van beállítva, például mobileszközön futó telepített alkalmazás nyilvános ügyfél van beállítva. Az alapértelmezett érték: false ami azt jelenti, hogy a tartalék alkalmazástípus bizalmas ügyfél, például webes alkalmazás. | `false` |
 | `appId` | Azonosító karakterlánc | Itt adhatja meg az alkalmazás-alkalmazásokba az Azure AD által hozzárendelt egyedi azonosítója. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | A tömb típusa | Itt adhatja meg, hogy egy alkalmazás deklarálhat szerepkörök gyűjteménye. Ezeket a szerepköröket rendelhet felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokat. További példákat és info [alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `groupMembershipClaims` | sztring | Bitmaszk, amely beállítja a `groups` egy felhasználó vagy az OAuth 2.0 hozzáférési jogkivonatban, amelyeket az alkalmazás vár a kiállított jogcímet. A bitmaszk értékei a következők:<br>0: nincs<br>1: biztonsági csoportok és az Azure AD-szerepkörök<br>2: fenntartva<br>4: fenntartva<br>A bitmaszk beállítása a 7 minden a biztonsági csoportok, terjesztési csoportok és az Azure AD-címtárbeli szerepkörök, amelyek a bejelentkezett felhasználó tagja kap. | `1` |
+| `groupMembershipClaims` | sztring | Konfigurálja a `groups` egy felhasználó vagy az OAuth 2.0 hozzáférési jogkivonatban, amelyeket az alkalmazás vár a kiállított jogcímet. Állítsa be ezt az attribútumot, használja a következő érvényes karakterlánc-értékek egyikét:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (a biztonsági csoportok és az Azure AD-szerepkörök)<br/>- `"All"` (ez fog kapni minden a biztonsági csoportok, terjesztési csoportok és az Azure AD-címtárbeli szerepkörök, amelyek a bejelentkezett felhasználó tagja. | `"SecurityGroup"` |
 | `optionalClaims` | sztring | A választható jogcímeket adja vissza a jogkivonat a biztonsági jogkivonat szolgáltatás az adott alkalmazás.<br>Jelenleg a személyes fiókok és az Azure ad-ben (az alkalmazás regisztrációs portálon keresztül regisztrált) támogató alkalmazások választható jogcímek nem használható. Azonban csak az Azure ad v2.0-végpont használatával regisztrált alkalmazás kérheti le a nem kötelező jogcímeket a kért a jegyzékfájlban. További információ: [választható jogcímek](active-directory-optional-claims.md). | `null` |
 | `id` | Azonosító karakterlánc | A címtárban lévő alkalmazás egyedi azonosítója. Ez az azonosító nem áll az alkalmazás bármely protokoll tranzakció azonosításához használt azonosító. A hivatkozik az objektumra a címtárlekérdezés használatos. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris` | Karakterlánc-tömbben | Felhasználó által definiált URI(s), amely egyedi azonosításához az Azure AD-bérlővel, vagy egyetlen ellenőrzött egyéni tartománynak egy webalkalmazás, ha az alkalmazás több-bérlős. | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
-| `informationalUrls` | sztring | Adja meg a hivatkozásokat az alkalmazás és az adatvédelmi nyilatkozat feltételeit. A felhasználók számára a felhasználói jóváhagyási felületen keresztül illesztett és az adatvédelmi nyilatkozat feltételeit. További információ: [hogyan: regisztrált Azure AD-alkalmazások és az adatvédelmi nyilatkozat feltételeit bővíteni](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
+| `identifierUris` | Karakterlánc-tömbben | Felhasználó által definiált URI(s), amely egyedi azonosításához az Azure AD-bérlővel, vagy egyetlen ellenőrzött egyéni tartománynak egy webalkalmazás, ha az alkalmazás több-bérlős. | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
+| `informationalUrls` | sztring | Adja meg a hivatkozásokat az alkalmazás és az adatvédelmi nyilatkozat feltételeit. A felhasználók számára a felhasználói jóváhagyási felületen keresztül illesztett és az adatvédelmi nyilatkozat feltételeit. További információ: [hogyan: Regisztrált Azure AD-alkalmazások és az adatvédelmi nyilatkozat feltételeit bővíteni](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
 | `keyCredentials` | A tömb típusa | Hitelesítő alkalmazás által hozzárendelt, a karakterlánc-alapú közös titkos kulcsot és az X.509-tanúsítványokat mutató hivatkozásokat tartalmazza. Ezeket a hitelesítő adatokat használt hozzáférési jogkivonatokat kérésekor (ha az alkalmazás egy ügyfél hálózataként erőforrásként ahelyett hogy). | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
 | `knownClientApplications` | A tömb típusa | Jóváhagyás kötegelése használatos, ha van olyan megoldás, amely tartalmazza a két részből áll: egy ügyfélalkalmazást és a egy egyéni webes API-alkalmazás. Ha ezt az értéket ad meg az ügyfél-alkalmazás alkalmazásazonosítója, a felhasználó csak kell hozzájárulás megadása után az ügyfélalkalmazás. Az Azure AD tudni fogja, hogy hozzájárul ahhoz, hogy az ügyfél azt jelenti, hogy az implicit módon beleegyezik abba, hogy a webes API-t és az ügyfél és a webes API-k egyszerű szolgáltatásokat automatikusan kiépül egy időben. Az ügyfél és a webes API-alkalmazás ugyanabban a bérlőben regisztrálni kell. | `[GUID]` |
 | `logoUrl` | sztring | Csak a CDN URL-címe a portálon feltöltött embléma mutató érték értelmezése. | `https://MyRegisteredAppLogo` |

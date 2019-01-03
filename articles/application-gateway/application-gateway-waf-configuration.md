@@ -7,19 +7,16 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036717"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752724"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és a kizárási listákat (nyilvános előzetes verzió)
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák
 
 Az Azure Application Gateway webalkalmazási tűzfala (WAF) védelmet kínál a webes alkalmazásokhoz. Ez a cikk ismerteti WAF kérelem méretbeli korlátokat, és kizárási konfigurációs sorolja fel.
-
-> [!IMPORTANT]
-> WAF kérelem méretbeli korlátokat és-kizárási listák jelenleg nyilvános előzetes verzióban érhető el. Ebben az előzetes verzióban egy szolgáltatásiszint-szerződés nélkül, és nem ajánlottak éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="waf-request-size-limits"></a>WAF kérelem blobméretének korlátjai
 
@@ -42,7 +39,7 @@ Kizárási listák is hozzáadhatók a következő attribútumokat:
 
 * Kérelem fejlécei
 * Kérelem cookie-k
-* Kérelem törzse
+* A kérelem törzse
 
    * Az űrlap többrészes adatait
    * XML
@@ -52,9 +49,9 @@ Akkor is, cookie-k vagy a lekérdezési karakterláncot attribútumot egyezik, a
 
 A támogatott egyezés feltételek operátorok a következők:
 
-- **Egyenlő**: Ez az operátor pontosan egyezik szolgál. Tegyük fel, nevű fejléc kiválasztására szolgáló **bearerToken**, az equals operátor használata állítja be a választó **bearerToken**.
+- **Egyenlő**:  Ez az operátor pontosan egyezik szolgál. Tegyük fel, nevű fejléc kiválasztására szolgáló **bearerToken**, az equals operátor használata állítja be a választó **bearerToken**.
 - **Kezdődik**: Ez az operátor megfelel a megadott választó érték kezdődő összes mezőt.
-- **Végződik**: Ez az operátor megfelel az összes kérelem mező, amely a megadott választó érték végén.
+- **Végződik**:  Ez az operátor megfelel az összes kérelem mező, amely a megadott választó érték végén.
 - **Tartalmaz**: Ez az operátor megfelel a megadott választó értéket tartalmazó összes kérelem mezők.
 
 Minden esetben egyeztetésekor a rendszer megkülönbözteti a kis-és nagybetű nincs megkülönböztetve, és a reguláris kifejezés nem engedélyezett, mert a választók.

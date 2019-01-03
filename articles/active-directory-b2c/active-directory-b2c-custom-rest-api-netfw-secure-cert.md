@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344965"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722566"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával
 
@@ -37,16 +37,16 @@ Ez a cikk ismerteti, hogyan:
 * A lépések elvégzéséhez a [integrálása a REST API-val jogcím cseréje](active-directory-b2c-custom-rest-api-netfw.md) cikk.
 * Szerezzen be egy érvényes tanúsítványt (egy titkos kulcsot .pfx kiterjesztésű fájl).
 
-## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>1. lépés: Az ügyféltanúsítvány-alapú hitelesítés a webalkalmazás konfigurálása
+## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>1. lépés: Ügyféltanúsítvány-alapú hitelesítés a webalkalmazás konfigurálása
 Beállításához **Azure App Service** ügyféltanúsítványok megköveteléséhez, állítsa be a webalkalmazás `clientCertEnabled` beállítással hely *igaz*. Ezt a módosítást, az Azure Portalon, a webalkalmazás lapjának megnyitásához. A bal oldali navigációs területen **beállítások** kiválasztása **SSL-beállítások**. Az a **ügyféltanúsítványok** területen kapcsolja be a **bejövő ügyféltanúsítvány** lehetőséget.
 
 >[!NOTE]
->Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service díjcsomagjainak részletes áttekintése](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+>Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service díjcsomagjainak részletes áttekintése](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
 
 >[!NOTE]
 >További információt a beállítás a **ügyféltanúsítvány engedélyezésével** tulajdonságot használja, lásd: [TLS konfigurálása kölcsönös hitelesítést webalkalmazásokhoz](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>2. lépés: A tanúsítvány feltöltése az Azure AD B2C-vel szabályzatbejegyzések
+## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>2. lépés: A tanúsítvány feltöltése az Azure AD B2C-vel szabályzatbejegyzések
 Miután beállította `clientCertEnabled` való *igaz*, ügyféltanúsítványt igényel a kommunikációt a RESTful API-val. Szerezze be, és töltse fel az ügyféltanúsítvány tárolása az Azure AD B2C-bérlő, tegye a következőket: 
 1. Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**.
 
@@ -152,7 +152,7 @@ Miután beállította `clientCertEnabled` való *igaz*, ügyféltanúsítványt 
    >Ha a hibaüzenet kap *a név nem érvényes, adjon meg egy érvényes nevet*, az azt jelenti, hogy az Azure AD B2C-vel sikeresen neve a RESTful szolgáltatás, bár ez jelenik meg az ügyféltanúsítványt. A következő lépés, hogy a tanúsítvány érvényesítéséhez.
 
 ## <a name="step-6-add-certificate-validation"></a>6. lépés: Adja hozzá a tanúsítványok ellenőrzését
-Az ügyféltanúsítvány, amely az Azure AD B2C-t küld a RESTful szolgáltatás nem lesznek az Azure Web Apps platformon, kivéve ellenőrizze, hogy létezik-e a tanúsítvány érvényesítése. A tanúsítvány érvényesítése feladata a webalkalmazás. 
+Az ügyféltanúsítvány, amely az Azure AD B2C-t küld a RESTful szolgáltatás nem lesznek az Azure App Service platformon kivételével, ellenőrizze, hogy létezik-e a tanúsítvány érvényesítése. A tanúsítvány érvényesítése feladata a webalkalmazás. 
 
 Ebben a szakaszban adjon hozzá mintául szolgáló ASP.NET-kód, amely ellenőrzi a hitelesítési tanúsítvány tulajdonságai.
 

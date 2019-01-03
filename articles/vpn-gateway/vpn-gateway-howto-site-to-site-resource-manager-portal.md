@@ -1,18 +1,18 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása egy Azure-beli virtuális hálózathoz: Helyek közötti VPN: Portal | Microsoft Docs'
+title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Helyek közötti VPN: Portál |} A Microsoft Docs'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a portál segítségével.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457119"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651639"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -35,26 +35,26 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
-* Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára. Ez az IP-cím nem lehet NAT mögötti.
+* Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván. 
 
 ### <a name="values"></a>Példaértékek
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](vpn-gateway-about-vpn-gateway-settings.md) cikkben találhat.
 
-* **Virtuális hálózat neve:** TestVNet1
+* **Virtuális hálózat neve:** A TestVNet1
 * **Címtér:** 10.1.0.0/16
 * **Előfizetés:** A használni kívánt előfizetés
 * **Erőforráscsoport:** TestRG1
-* **Hely:** az USA keleti régiója
-* **Alhálózat:** Előtér: 10.1.0.0/24, Háttér: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáróalhálózat neve:** GatewaySubnet (a portálon ez a rész automatikusan ki lesz töltve)
+* **Hely:** USA keleti régiója
+* **Alhálózat:** Előtérbeli: 10.1.0.0/24, háttér: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
+* **Átjáróalhálózat neve:** Átjáró-alhálózat (Ez lesz automatikusan ki a portál)
 * **Átjáróalhálózat címtartománya:** 10.1.255.0/27
-* **DNS-kiszolgáló:** 8.8.8.8 – Nem kötelező. A saját DNS-kiszolgálójának IP-címe.
+* **DNS-kiszolgáló:** 8.8.8.8 – nem kötelező. A saját DNS-kiszolgálójának IP-címe.
 * **Virtuális hálózati átjáró neve:** VNet1GW
-* **Nyilvános IP-cím:** VNet1GWIP
-* **VPN típusa:** útvonalalapú
-* **Kapcsolat típusa:** helyek közötti kapcsolat (IPsec)
+* **Nyilvános IP-címe:** VNet1GWIP
+* **VPN típusa:** Útvonalalapú
+* **Kapcsolat típusa:** Site-to-site (IPsec)
 * **Átjáró típusa:** VPN
 * **Helyi hálózati átjáró neve:** Site1
 * **Kapcsolat neve:** VNet1toSite1

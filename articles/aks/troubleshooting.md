@@ -7,81 +7,85 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384105"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654070"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
-Amikor hoz létre, vagy a kezelő az AKS-fürtök, előfordulhat, hogy időnként problémák merülnek fel. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
 
-### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>Általánosságban elmondható, hol található információ a Kubernetes hibáinak?
+Amikor hoz létre, vagy az Azure Kubernetes Service (AKS)-fürtök kezelése, előfordulhat, hogy időnként tapasztal. Ez a cikk részletesen néhány gyakori probléma és a hibaelhárítási lépéseket.
 
-[Itt](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) a kubernetes-fürtök hibaelhárítási hivatalos hivatkozás.
-[Itt](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md) egy hibaelhárítási útmutató egy körül hibaelhárítási podok, csomópontok, fürtök és egyéb Microsoft-mérnök által közzétett mutató hivatkozás.
+## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Általánosságban elmondható, hol található információ a Kubernetes hibakeresésével?
 
-### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>A kvótatúllépési hiba kapok létrehozása vagy frissítése során. Mit tegyek? 
+Próbálja ki a [hivatalos útmutató a Kubernetes-fürtök hibaelhárítási](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
+Emellett van egy [hibaelhárítási útmutató](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md), egy Microsoft-mérnök podok, csomópontok, fürtök és egyéb funkciókkal kapcsolatos hibaelhárításhoz tett közzé.
 
-Meg kell kérnie a magok [Itt](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Egy "kvóta túllépve" hiba kapok létrehozása vagy frissítése során. Mit tegyek? 
 
-### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>Mi az a maximális podok csomópontonkénti az aks-ben?
+Kell [magok kérelem](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-A csomópontonkénti maximális podok vannak állítva 30 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure Portalon.
-A csomópontonkénti maximális podok vannak állítva 110 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure CLI-ben. (Győződjön meg arról, az Azure CLI legújabb verziójának használ). Ez az alapértelmezett beállítás módosítható a – maximális-csomópontok-per-pod jelzőt a az aks create paranccsal.
+## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mi az a maximális podok száma csomópontonként beállítás az aks-ben?
 
-### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>"InsufficientSubnetSize" hiba kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
+A maximális podok száma csomópontonként értéke alapértelmezés szerint 30, ha telepít egy AKS-fürtöt az Azure Portalon.
+A maximális podok száma csomópontonként értéke 110 alapértelmezés szerint ha telepít egy AKS-fürtöt az Azure CLI-ben. (Ügyeljen rá, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás használatával módosítható a `–-max-pods` a jelzőt a `az aks create` parancsot.
 
-Az egyéni VNET lehetőséget választja, a hálózatkezelés során AKS hoz létre az Azure CNI IP-Címkezelő szolgál. AKS-fürt a csomópontok száma 1 és 100 közötti bárhol lehet. 2 alapján) felett az alhálózat mérete nagyobb, mint a csomópontok száma és a maximális pod / alhálózat csomópontméret szorzatát kell > száma a fürtben található csomópontok a * podok csomópontonkénti maximális száma.
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
 
-### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A pod elakadt "CrashLoopBackOff" módban. Mit tegyek?
+Az egyéni Azure Virtual Network beállítást hálózati AKS létrehozása során, az Azure Container hálózati adapter (CNI) IP-címkezelés (IPAM) használják. AKS-fürt a csomópontok száma 1 és 100 közötti bárhol lehet. Az előző szakaszban alapján, az alhálózat méretét nagyobbnak kell lennie a termék a csomópontok és a csomópontonkénti maximális podok számát. A kapcsolat ezzel a módszerrel lehet kifejezni: alhálózat méretét > a fürtben található csomópontok száma * csomópontonkénti maximális podok.
 
-Előfordulhat, hogy a pod folyamatban elakadt ebben a módban a különböző okok miatt. Érdemes megvizsgáljuk a 
-* A pod maga használatával `kubectl describe pod <pod-name>`
-* A naplók használatával  `kubectl log <pod-name>`
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A pod CrashLoopBackOff módban elakadt. Mit tegyek?
 
-### <a name="i-am-trying-to-enable-rbac-on-an-existing-cluster-can-you-tell-me-how-i-can-do-that"></a>A tapasztalataimat szeretném RBAC ahhoz, hogy egy meglévő fürt. Állapítható meg velem hogyan tennem?
+Előfordulhat, hogy a pod folyamatban elakadt ebben a módban a különböző okok miatt. Az nézhet ki:
 
-Sajnos engedélyezése az RBAC a meglévő fürtökön jelenleg nem támogatott. Szüksége lesz, explicit módon az új fürtök létrehozásához. Ha a parancssori Felületet használja, az RBAC alapértelmezés szerint engedélyezve van, mivel az AKS-portálon érhető el egy váltógomb az engedélyezéshez munkafolyamat létrehozásához.
+* Maga a pod használatával `kubectl describe pod <pod-name>`.
+* A naplók segítségével `kubectl log <pod-name>`.
 
-### <a name="i-created-a-cluster-using-the-azure-cli-with-defaults-or-the-azure-portal-with-rbac-enabled-and-numerous-warnings-in-the-kubernetes-dashboard-the-dashboard-used-to-work-before-without-any-warnings-what-should-i-do"></a>Létrehozott egy fürtöt az Azure CLI használatával az alapértelmezett értékeket, vagy az Azure Portalon az RBAC engedélyezve van, és számos figyelmeztetések a kubernetes irányítópultot. Az irányítópulton, mielőtt bármilyen figyelmeztetés nélkül együttműködni. Mit tegyek?
+A pod-problémák elhárításáról további információk: [-alkalmazások hibakeresését](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-Az irányítópult figyelmeztetés oka, hogy mostantól támogatják az RBAC'ed, és hozzáférést alapértelmezés szerint le van tiltva. Ez a megközelítés számít általában célszerű, mivel az alapértelmezett kitettség az irányítópult a fürt minden felhasználó számára a biztonsági fenyegetések vezethet. Ha továbbra is engedélyezni szeretné az irányítópulton, kövesse a [blog](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/) engedélyezze azt.
+## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A tapasztalataimat szeretném RBAC ahhoz, hogy egy meglévő fürt. Hogyan tehetem ezt?
 
-### <a name="i-cant-seem-to-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópult szerepkörömhöz. Mit tegyek?
+Sajnos engedélyezése szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön nem támogatott. Explicit módon létre kell hoznia az új fürtök. Ha a parancssori Felületet használja, az RBAC alapértelmezés szerint engedélyezve van. Az AKS portal használatakor egy váltógomb engedélyezése az RBAC a létrehozási munkafolyamat érhető el.
 
-A legegyszerűbben úgy, hogy hozzáférhessen a szolgáltatáshoz a fürtön kívül a kubectl-proxyval a Kubernetes API-kiszolgálóhoz a localhost port 8001 proxykiszolgáló kérelmeket fogja futtatni. Itt a apiserver is a szolgáltatás proxy: http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#! / csomópont? névtér = default
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Az RBAC engedélyezve van az alapértelmezett értékeket, vagy az Azure Portalon az Azure CLI használatával létrehozott egy fürtöt, és most már sok figyelmeztetések jelennek meg a Kubernetes-irányítópultot. Az Irányítópult segítségével megvalósítható, ha figyelmeztetéseket. Mit tegyek?
 
-Ha nem látja a kubernetes-irányítópultot, majd ellenőrizze a kube-proxy pod futásának a kube rendszer névtérben. Ha nem futó állapotban, törölje a pod, és újra fog.
+A figyelmeztetések az irányítópulton az oka, hogy a fürt engedélyezve van az RBAC, és hozzáférést alapértelmezés szerint le van tiltva. Ez a megközelítés általában célszerű, mert az alapértelmezett kitettség az irányítópult a fürt minden felhasználó számára a biztonsági fenyegetések vezethet. Ha továbbra is engedélyezni szeretné az irányítópulton, kövesse a [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-### <a name="i-could-not-get-logs-using-kubectl-logs-or-cannot-connect-to-the-api-server-getting-the-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Tudok nem kérhetők le a Kubectl-naplók használatával a naplókat, vagy nem tud kapcsolódni az API-t server első az "kiszolgálótól érkező hiba: hiba hangtárcsázás háttér: tárcsázza a tcp...". Mit tegyek?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópulton. Mit tegyek?
 
-Győződjön meg róla, hogy az alapértelmezett NSG-t nem áll módosítás és a 22-es port nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze, hogy a tunnelfront pod fut-e a kube rendszer névtérben. Nem érhető el, ha kényszerített törlése, és újra fog.
+A legegyszerűbben úgy, hogy hozzáférhessen a szolgáltatáshoz a fürtön kívül, hogy futtassa `kubectl proxy`, mely proxyk kéréseket küldeni a a localhost-8001 a Kubernetes API-kiszolgálóhoz. Itt az API-kiszolgáló is a szolgáltatás proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "message": "" ImageReference"tulajdonság módosítása nem engedélyezett." Hiba.  Hogyan lehet kijavítani a hibát a probléma?
+Ha nem látja a Kubernetes-irányítópult, ellenőrizze-e a `kube-proxy` pod fut a `kube-system` névtér. Ha nem futó állapotban, törölje a pod, és újra fog.
 
-Ez a hiba a bevezetés, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította lehetőség. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. A szolgáltatási szint Célkitűzésének az erőforrások mellett az MC_ * az AKS-fürtöt a módosítása működésképtelenné válik.
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Naplók nem jelenik meg a kubectl-naplók használatával, vagy nem tud kapcsolódni az API-kiszolgálóhoz. Érkeznek meg hozzám a "kiszolgálótól érkező hiba: hiba hangtárcsázás háttér: tárcsázza a tcp..." Mit tegyek?
 
-### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Hogyan újíthatom meg a szolgáltatás egyszerű titka a egy AKS-fürtben?
+Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport (NSG) nem módosul, és, hogy 22-es port meg nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze, hogy a `tunnelfront` futtatja a pod a `kube-system` névtér. Ha nem, a pod és kényszerített törlése újraindul.
 
-Alapértelmezés szerint az AKS-fürtök jönnek létre egy olyan egyszerű, amely rendelkezik egy egy évig lejárati ideje. Az Ön közelében egy éves lejárati dátumát alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat.
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "üzenet: Hiba a "ImageReference" tulajdonság módosítása nem engedélyezett".  Hogyan lehet kijavítani a hibát a probléma?
 
-Az alábbi példa a következő lépéseket hajtja végre:
+Előfordulhat, hogy lehet első ezt a hibát, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. Az AKS MC_ * tartozó az erőforrások módosítását a fürt a szolgáltatásiszint-célkitűzés (SLO) működésképtelenné válik.
 
-1. A szolgáltatásnév-Azonosítót, a fürt használatával lekérdezi a [az aks show](/cli/azure/aks#az-aks-show) parancsot.
-1. Megjeleníti a szolgáltatás egyszerű ügyfél titkos használata a [az ad sp hitelesítő adatok listája](/cli/azure/ad/sp/credential#az-ad-sp-credential-list)
-1. Az egyszerű szolgáltatás egy másik egyéves használatára vonatkozó kibővíti a [az ad sp reset hitelesítő adatok](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancsot. A szolgáltatás titkos ügyfélkódja megfelelő működéséhez az AKS-fürtöt a azonosnak kell maradnia.
+## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Hogyan újíthatom meg a szolgáltatás egyszerű titka a egy AKS-fürtben?
+
+Alapértelmezés szerint az AKS-fürtök jönnek létre, amely egy éves lejárati ideje szolgáltatásnévvel. Az Ön közelében a lejárati dátum alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat.
+
+Az alábbi példa végrehajtja ezeket a lépéseket:
+
+1. Lekérdezi a szolgáltatásnév-Azonosítót a fürt használatával a [az aks show](/cli/azure/aks#az-aks-show) parancsot.
+1. Megjeleníti a szolgáltatás titkos ügyfélkódja segítségével a [az ad sp hitelesítő adatok listája](/cli/azure/ad/sp/credential#az-ad-sp-credential-list).
+1. Az egyszerű szolgáltatás használatával egy másik egyéves terjeszti ki a [az ad sp hitelesítő adat-visszaállítás](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancsot. A szolgáltatás titkos ügyfélkódja megfelelő működéséhez az AKS-fürtöt a azonosnak kell maradnia.
 
 ```azurecli
-# Get the service principal ID of your AKS cluster
+# Get the service principal ID of your AKS cluster.
 sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 
-# Get the existing service principal client secret
+# Get the existing service principal client secret.
 key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
 
-# Reset the credentials for your AKS service principal and extend for 1 year
+# Reset the credentials for your AKS service principal and extend for one year.
 az ad sp credential reset \
     --name $sp_id \
     --password $key_secret \

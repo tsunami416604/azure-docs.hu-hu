@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313394"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633027"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
 
@@ -156,7 +156,7 @@ Az indexelő futtatása rendszeres ütemezés szerint is rendezheti. Ehhez adja 
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-A **időköz** paraméter megadása kötelező. Az intervallum hivatkozik a két egymást követő indexelő végrehajtásának kezdete közötti idő. A legkisebb megengedett intervallum értéke 5 perc; a leghosszabb érték egy nap. Egy XSD "nyelv szerinti dayTimeDuration" értékként kell formázni (korlátozott részhalmaza olyan [ISO 8601 időtartama](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték). A minta: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, a `PT2H` 2 óránként számára.
+A **időköz** paraméter megadása kötelező. Az intervallum hivatkozik a két egymást követő indexelő végrehajtásának kezdete közötti idő. A legkisebb megengedett intervallum értéke 5 perc; a leghosszabb érték egy nap. Egy XSD "nyelv szerinti dayTimeDuration" értékként kell formázni (korlátozott részhalmaza olyan [ISO 8601 időtartama](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték). A minta: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, a `PT2H` 2 óránként számára.
 
 A választható **startTime** azt jelzi, ha az ütemezett végrehajtásának kell megkezdődnie. Ha ezt kihagyja, az aktuális UTC időpontig szolgál. Ez az idő, amelyben az első végrehajtás eset van ütemezve, mintha az indexelő futása során folyamatosan óta a startTime múltbeli – is lehet.  
 

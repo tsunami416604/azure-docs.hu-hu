@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012589"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651827"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>A Microsoft Cognitive Toolkit deep learning-modell az Azure HDInsight Spark-fürt használata
 
@@ -39,15 +39,15 @@ Ebben a megoldásban ez a cikk és a egy Jupyter notebookot, ez az oktatóanyag 
 
 A Jupyter notebook ismerkedhet meg a következő hátralévő lépéseket.
 
-- Mintaképeket betöltése a Spark Resiliant elosztott adatkészlet vagy RDD
-   - Modulokat betölteni és készletek definiálása
-   - Töltse le az adatkészlet helyileg, a Spark-fürt
-   - Az adatkészlet átalakítása az RDD
-- A Cognitive Toolkit betanított modell használatával képek pontszám
-   - Töltse le a Cognitive Toolkit betanított modell a Spark-fürt
-   - Adja meg a feldolgozó csomópontok által használt funkciók
-   - A képek pontszám a munkavégző csomópontok
-   - Pontosság kiértékelése
+- Töltse be a Spark Resiliant elosztott adatkészlet vagy RDD mintát.
+   - Modulok betöltése, és adja meg a szolgáltatás.
+   - Töltse le az adatkészlet helyileg, a Spark-fürtön.
+   - Az adatkészlet átalakítása az RDD.
+- Pontszám a képek, a Cognitive Toolkit betanított modell használatával.
+   - Töltse le a Cognitive Toolkit betanított modell a Spark-fürtön.
+   - Adja meg a feldolgozó csomópontok által használt funkciók.
+   - A képek pontszám a feldolgozó csomópontokat.
+   - Értékelje ki a modell pontosságát.
 
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>Telepítse a Microsoft Cognitive Toolkittel
@@ -87,18 +87,18 @@ A Microsoft Cognitive Toolkit használata az Azure HDInsight Spark-fürt, be kel
 5. A notebook követően kattintson a notebook nevére, és kövesse az utasításokat, magát a jegyzetfüzet töltse be az adatokat, és hajtsa végre az oktatóanyag.
 
 ## <a name="see-also"></a>Lásd még
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)

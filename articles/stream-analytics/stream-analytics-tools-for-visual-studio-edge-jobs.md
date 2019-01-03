@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti, hogyan hozhat létre, hibakeresése és a Stre
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/13/2018
-ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 886cae572ee651efd217e9a87b935918eebe8b13
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696248"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558821"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan létrehozásához, hibakeresé
 
 Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek:
 
-* Telepítés [Visual Studio 2017](https://www.visualstudio.com/downloads/), [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/), vagy [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326). Az Enterprise (Ultimate/Premium), Professional és Community kiadások mind támogatottak. Az Express kiadás nem támogatott.  
+* Telepítés [Visual Studio 2017](https://www.visualstudio.com/downloads/), [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/), vagy [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326). Az Enterprise (Ultimate/Premium), Professional és Community kiadások mind támogatottak. Express kiadás nem támogatott.  
 
 * Kövesse a [telepítési utasításokat](stream-analytics-tools-for-visual-studio-edge-jobs.md) Stream Analytics tools for Visual Studio telepítése.
  
@@ -32,25 +32,25 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek:
 
 Válassza ki a Visual Studióban a **fájl** > **új** > **projekt**. Keresse meg a **sablonok** a bal oldali listában > bontsa ki a **Azure Stream Analytics** > **Stream Analytics peremhálózati**  >   **Az Azure Stream Analytics alkalmazás él**. Adja meg a projektet, majd válassza ki a nevét, helyét és megoldás nevét **OK**.
 
-![Új Edge-projekt](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-edge-project.png)
+![Új Edge-projektet a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 Lekérdezi a projekt létrehozása után lépjen a **Megoldáskezelőben** megtekintése a mappahierarchiában.
 
-![Megoldáskezelő-nézet](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![Stream Analytics Edge-feladatok megoldáskezelő-nézet](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>Válassza ki a megfelelő előfizetést
 
 1. A Visual studióból **nézet** menüjében válassza **Server Explorer**.  
 
-2. Kattintson a jobb gombbal **Azure** > Válasszon **kapcsolódás a Microsoft Azure-előfizetéshez** >, majd jelentkezzen be az Azure-fiókjával.
+2. Kattintson a jobb gombbal **Azure** > Válasszon **kapcsolódás a Microsoft Azure-előfizetéshez** > és az Azure-fiókjával jelentkezzen be.
 
 ## <a name="define-inputs"></a>Bemenetek megadása
 
 1. A a **Megoldáskezelőben**, bontsa ki a **bemenetek** csomópont megjelenik egy input nevű **EdgeInput.json**. Kattintson duplán a beállítások megtekintéséhez.  
 
-2. Győződjön meg arról, hogy forrástípus értéke **Data Stream** > forrás beállítása **Edge hubot** > Eseményszerializációs formátum beállítása **Json** > kódolás értékrevanállítva,és**UTF8**. Másik lehetőségként átnevezheti a **bemeneti Alias**, hagyja, mert ebben a példában. Abban az esetben, ha a bemeneti alias átnevezéséhez használja a lekérdezés meghatározásakor a megadott néven. A beállítások mentéséhez válassza a **Mentés** lehetőséget.  
-   ![A bemeneti konfiguráció](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
+2. Forrás típusa **Data Stream**. Majd beállíthatja a forrás **Edge hubot**, Eseményszerializációs formátum a **Json**, és a kódolási **UTF8**. Másik lehetőségként átnevezheti a **bemeneti Alias**, hagyja, mert ebben a példában. Abban az esetben, ha a bemeneti alias átnevezéséhez használja a lekérdezés meghatározásakor a megadott néven. A beállítások mentéséhez válassza a **Mentés** lehetőséget.  
+   ![Stream Analytics-feladat bemeneti konfigurálása](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
@@ -59,7 +59,7 @@ Lekérdezi a projekt létrehozása után lépjen a **Megoldáskezelőben** megte
 1. Az a **Megoldáskezelőben**, bontsa ki a **kimenetek** csomópont kimenetnek kell megjelennie egy nevű **EdgeOutput.json**. Kattintson duplán a beállítások megtekintéséhez.  
 
 2. Győződjön meg arról, hogy a fogadó kiválasztásához értéke **Edge hubot** > Eseményszerializációs formátum beállítása **Json** > kódolás értékre van állítva, és **UTF8** > és a formátuma  **Tömb**. Másik lehetőségként átnevezheti a **kimeneti Alias**, hagyja, mert ebben a példában. Abban az esetben, ha a kimeneti alias átnevezéséhez használja a lekérdezés meghatározásakor a megadott néven. A beállítások mentéséhez válassza a **Mentés** lehetőséget. 
-   ![Kimenet konfigurálása](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
+   ![Stream Analytics-feladat kimeneti konfigurálása](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
@@ -84,20 +84,20 @@ FROM EdgeInput
 
 A lekérdezés teszteléséhez helyileg, akkor érdemes a mintaadatok feltöltése. Töltse le a regisztrációs adatokat is kap a mintaadatokat a [GitHub-adattár](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) , és mentse a helyi számítógépen. 
 
-1. Töltse fel a mintaadatokat, a > kattintson a jobb gombbal **EdgeInput.json** fájl > Válasszon **helyi bemenet hozzáadása**  
+1. Mintaadatok feltöltése, kattintson a jobb gombbal **EdgeInput.json** fájlt, és válassza a **helyi bemenet hozzáadása**  
 
 2. A felugró ablakban > **Tallózás** a mintaadatokat is abból a helyi elérési út > válassza **mentése**.
-   ![Helyi bemeneti konfiguráció](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
+   ![A Visual Studio helyi bemeneti konfiguráció](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. Nevű fájl **local_EdgeInput.json** automatikusan hozzáadja a bemeneti mappában.  
 4. helyileg futtatja az alkalmazást, vagy küldje el az Azure-bA. A lekérdezés teszteléséhez > Válasszon **futtatása helyileg**.  
-   ![Futtatási beállítások](./media/stream-analytics-tools-for-visual-studio-edge-jobs/run-options.png)
+   ![Stream Analytics-feladat beállításai futtassa a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
 5. A parancssori ablakot a feladat állapotát jeleníti meg. Amikor a feladat sikeresen lefutott, az "A Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" projekt mappa elérési úthoz létrehoz egy mappát, amely a következőhöz hasonló "2018-02-23-11-31-42". Keresse meg a mappa elérési útja az eredmények megtekintése a helyi mappában:
 
    Jelentkezzen be az Azure Portalon is, és győződjön meg arról, hogy létrejött-e a feladatot. 
 
-   ![Eredmény mappa](./media/stream-analytics-tools-for-visual-studio-edge-jobs/result-folder.png)
+   ![Stream Analytics feladat eredménye mappa](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-job-result-folder.png)
 
 ## <a name="submit-the-job-to-azure"></a>Küldje el a feladatot az Azure-bA
 
@@ -107,22 +107,22 @@ A lekérdezés teszteléséhez helyileg, akkor érdemes a mintaadatok feltölté
 
 3. Megnyílik egy előugró ablak, ahol kiválaszthatja egy meglévő Edge-feladat frissítése, vagy hozzon létre egy újat. Amikor frissít egy meglévő feladat, azzal lecseréli az összes feladat konfigurációt, ebben a forgatókönyvben, egy új feladatot teszi közzé. Válassza ki **hozzon létre egy új Azure Stream Analytics-feladat** > adjon meg egy nevet az alábbihoz hasonló feladat **MyASAEdgeJob** > Válassza ki a szükséges **előfizetés**, **Erőforráscsoport**, és **hely** > válassza **elküldése**.
 
-   ![Küldje el az Azure-bA](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-to-azure.png)
+   ![Stream Analytics-feladat elküldése az Azure-bA a Visual Studióból](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
    Most a Stream Analytics Edge-feladat létrehozása után olvassa el a [feladatok futtatása az IoT Edge-oktatóanyag](stream-analytics-edge.md) megtudhatja, hogyan telepítheti az eszközökre. 
 
 ## <a name="manage-the-job"></a>A feladat kezeléséhez 
 
-Megtekintheti a feladat és a Server Explorerből feladatábrában állapotát. Az a **Server Explorer** > **Stream Analytics** > bontsa ki az előfizetést és az erőforráscsoportot, amelybe telepítette a peremhálózati feldolgozás > tekintheti meg a MyASAEdgejob állapotú **Létrehozott**. Bontsa ki a projekt csomópontra, és kattintson duplán az, hogy a feladat nézet megnyitása.
+Megtekintheti a feladat és a Server Explorerből feladatábrában állapotát. A **Stream Analytics** a **Server Explorer**, bontsa ki az előfizetést és az erőforráscsoportot, amelybe telepítette az Edge-feladat. Megtekintheti a MyASAEdgejob állapotú **létrehozva**. Bontsa ki a projekt csomópontra, és kattintson duplán az, hogy a feladat nézet megnyitása.
 
-![Server explorer beállítások](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
+![Server explorer feladat felügyeleti beállítások](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
-A feladatok megtekintése ablakot biztosít műveletek, például a frissítés, a feladat törli a feladatot, nyissa meg a feladat az Azure portal stb.
+A feladatok megtekintése ablakot biztosít műveleteket, mint a feladat frissítése, a feladat törlése, és nyissa meg a feladat az Azure Portalról.
 
-![Feladatábra és egyéb beállítások](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
+![Feladatábra és egyéb lehetőségek Visual studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ az Azure Iot Edge-ben](../iot-edge/about-iot-edge.md)
+* [További információ az Azure IoT Edge-ben](../iot-edge/about-iot-edge.md)
 * [Az IoT Edge-oktatóanyag ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Visszajelzés küldése a csapatnak, használja a felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

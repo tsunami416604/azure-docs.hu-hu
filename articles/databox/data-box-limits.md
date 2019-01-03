@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 12/20/2018
 ms.author: alkohli
-ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5849611ad346fc5ef1f0efd1e262d2ace8097520
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091929"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723452"
 ---
 # <a name="azure-data-box-limits"></a>Az Azure Data Box-korlátok
 
@@ -22,7 +22,6 @@ Vegye figyelembe ezeket a korlátokat, üzembe helyezése és a Microsoft Azure 
 
 ## <a name="data-box-service-limits"></a>A Data Box szolgáltatás korlátai
 
- - A Data Box szolgáltatás áll rendelkezésre, csak az Egyesült Államok belül minden a [Azure-régiók az Azure nyilvános felhő](https://azure.microsoft.com/regions/).
  - Ha több tárfiók használata a Data Box szolgáltatás, a storage-fiókok kell csak az azonos régióba tartozik.
  - Azt javasoljuk, hogy használja-e legfeljebb három tárfiókot tartalmaz. További tárfiókok használata potenciálisan ronthatja a teljesítményt.
 
@@ -78,6 +77,6 @@ Az alábbiakban az Azure objektumok lehet írni a méretét. Győződjön meg ar
 | Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A tároló nevének a blokkblobok és lapblobok | Egy érvényes DNS-nevet, amely 3 – 63 karakter hosszúságúnak kell lennie. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
-| Az Azure files szolgáltatáshoz a fájlmegosztások neve                  | Ugyanaz, mint a fenti                                                                                                                                                                                                                                                                                                             |
-| Az Azure files szolgáltatáshoz a fájl és könyvtár neve     |<li> Nagybetűket, a kis-és nagybetűket, és nem haladhatja meg a 255 karakter hosszú lehet. </li><li> Nem végződhet perjellel (/). </li><li>Ha meg van adva, akkor automatikusan törlődni fog. </li><li> Nem engedélyezettek a következő karakterek: ' "\ vagy: | < > *? "</li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> URL-cím elérési út érvénytelen karakterek nem engedélyezettek. A kódpontok \uE000 például amelyek nem érvényes Unicode-karaktereket. Bizonyos ASCII vagy Unicode-karaktereket, például a vezérlőkaraktereket (0x00 való 0x1F \u0081, stb.), emellett nem engedélyezett. Szabályok Unicode karakterláncok HTTP/1.1 lásd: RFC 2616, szakasz 2.2: alapszintű szabályok és RFC 3987. </li><li> Fájl a következő nevek nem engedélyezett: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, pont karakter (.), és két pont karakter (.).</li>|
+| Az Azure files szolgáltatáshoz a fájlmegosztások neve                  | Lásd fent                                                                                                                                                                                                                                                                                                             |
+| Az Azure files szolgáltatáshoz a fájl és könyvtár neve     |<li> Nagybetűket, a kis-és nagybetűket, és nem haladhatja meg a 255 karakter hosszú lehet. </li><li> Nem végződhet perjellel (/). </li><li>Ha meg van adva, akkor automatikusan törlődni fog. </li><li> Nem engedélyezettek a következő karakterek: ' "\ vagy: | < > *? "</li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> URL-cím elérési út érvénytelen karakterek nem engedélyezettek. A kódpontok \uE000 például amelyek nem érvényes Unicode-karaktereket. Bizonyos ASCII vagy Unicode-karaktereket, például a vezérlőkaraktereket (0x00 való 0x1F \u0081, stb.), emellett nem engedélyezett. Szabályok Unicode karakterláncok HTTP/1.1 RFC 2616, szakasz 2.2 lásd: Alapszintű szabályok és RFC 3987. </li><li> Következő fájlneveket nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, pont karakter (.), és két pont karakter (.).</li>|
 | Blobnevek blokkblob és lapblob esetén      | </li><li>A blobnevek megkülönböztetik a kis- és nagybetűket, illetve bármilyen karakterkombinációt tartalmazhatnak </li><li>A blob nevének 1–1024 karakter hosszúságúnak kell lennie. </li><li>A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li>A blob nevét alkotó részleges útvonalak száma legfeljebb 254 lehet. A részleges útvonalak két elválasztókarakter (pl. a perjel „/”) közötti karakterláncok, amelyek megegyeznek egy virtuális könyvtár nevével.</li> |

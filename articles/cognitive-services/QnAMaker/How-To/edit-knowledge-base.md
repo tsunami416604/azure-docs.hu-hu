@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086606"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603327"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
@@ -71,7 +71,7 @@ Alternatív kérdések hozzáadása egy meglévő QnA pár annak lehetőségét,
 ## <a name="add-metadata"></a>metaadatok hozzáadása
 
 
-A szűrő ikon kiválasztásával metaadatok pár hozzáadása
+A metaadat ikon kiválasztásával metaadatok pár hozzáadása
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ A szűrő ikon kiválasztásával metaadatok pár hozzáadása
 
 ## <a name="manage-large-knowledge-bases"></a>Nagy tudásbázisok kezelése
 
-1. A QnA-tudásbázisok vannak **csoportosítva** az adatforrás, amelyből könyvtárban találhatók. Bontsa ki, vagy az adatforrás összecsukása.
-2. Is **keresési** a Tudásbázis tábla tetején a szövegmezőbe írja be a Tudásbázis. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
-3. **Tördelés** lehetővé teszi, hogy nagy tudásbázisok kezelése
+* **Adatforrás-csoportok**: A QnA-tudásbázisok az adatforrás, amelyből könyvtárban találhatók szerint vannak csoportosítva. Bontsa ki, vagy az adatforrás összecsukása.
 
-    ![Keresés, oldalakra bontása csoport](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![A QnA Maker adatsáv forrás használatával összecsukása, és bontsa ki a data source kérdések és válaszok](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **Tudásbázisban**: A Tudásbázis tábla tetején a szövegmezőbe írja be a Tudásbázis kereshet. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
+
+    ![A QnA Maker keresőmezőbe írja felett a kérdések és válaszok használatával csökkentheti a szűrő egyező elemek csak a nézet](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **Tördelés**: Gyorsan mozoghat adatforrások nagy tudásbázisok kezelése
+
+    ![Váltás a lapok kérdések és válaszok a QnA Maker tördelés funkciókat a fenti kérdések és válaszok használata](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Tudásbázisok törlése
 

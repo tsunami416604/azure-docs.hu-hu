@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233514"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600717"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
 
@@ -25,11 +25,11 @@ Bár az Azure Logic Apps biztosít [100 + beépített összekötők](../connecto
 * Segíthet az ügyfeleknek használni a szolgáltatást, professional vagy személyes feladatait.
 * Bontsa ki az elérhetőséget, felfedezhetősége és a szolgáltatás használatát.
 
-Alapvetően az összekötők a webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](http://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. Mivel az összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az összekötők készítéséhez is használhatja. Az API-k a is üzemeltethető [Azure App Service](../app-service/app-service-web-overview.md), a platform--szolgáltatásként (PaaS) kínál, amely biztosítja a legjobb, legegyszerűbb és leggyakrabban méretezhető módon API üzemeltetéséhez. 
+Alapvetően az összekötők a webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](http://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. Mivel az összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az összekötők készítéséhez is használhatja. Az API-k a is üzemeltethető [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely biztosítja a legjobb, legegyszerűbb és leggyakrabban méretezhető módon API üzemeltetéséhez. 
 
 Az egyéni API-k a logic apps szolgáltatással működik, az API-t biztosíthat [ *műveletek* ](./logic-apps-overview.md#logic-app-concepts) , amely adott feladatokat a logic app-munkafolyamatokba. Az API-t is működhet, egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) , amely egy logikai alkalmazás munkafolyamatának elindul, amikor új adatokat és a egy esemény megfelel-e a megadott feltételnek. Ez a témakör ismerteti a gyakori minták, amelyekkel műveletek és eseményindítók az API-hoz, az API-t adja meg a kívánt viselkedés alapján.
 
-Az API-k is üzemeltethet [Azure App Service](../app-service/app-service-web-overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
+Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
 
 > [!TIP] 
 > Bár az API-k webes alkalmazásokat telepíteni, érdemes megfontolni az API-k, az API apps, amely megkönnyítheti a feladat készítése, üzemeltetése és felhasználása a felhőben és helyszíni API-k. Nem kell minden olyan kódot az API-k – csupán telepítse kódját egy API-alkalmazásba. Ha például megtudhatja, hogyan ezeken a nyelveken a létrehozott API-alkalmazásokat hozhat létre: 
@@ -134,9 +134,9 @@ A feladat végeztével az API URL-CÍMÉT a motor értesítést, és térjen vis
 
 Az ebben a mintában a vezérlő két végpontok beállítása: `subscribe` és `unsubscribe`
 
-*  `subscribe` végpont: Amikor végrehajtási eléri az API-művelet a munkafolyamatban, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ez a lépés a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja, és ezután Várjon, amíg a visszahívás az API-t a munka befejeztével okoz. Az API-t, majd visszahívja az URL-címre egy HTTP POST-, és átadja a visszaadott tartalom és a fejlécek a logikai alkalmazás bemeneteként.
+*  `subscribe` Végpont: Amikor végrehajtási eléri az API-művelet a munkafolyamatban, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ez a lépés a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja, és ezután Várjon, amíg a visszahívás az API-t a munka befejeztével okoz. Az API-t, majd visszahívja az URL-címre egy HTTP POST-, és átadja a visszaadott tartalom és a fejlécek a logikai alkalmazás bemeneteként.
 
-* `unsubscribe` végpont: Ha a logikai alkalmazás futtatásának meg lett szakítva, a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
+* `unsubscribe` Végpont: Ha a logikai alkalmazás futtatásának meg lett szakítva, a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
 
 ![Webhook művelet minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -196,9 +196,9 @@ Például a szolgáltatás új fájlok rendszeres időnként ellenőrzik, felép
 A webhook eseményindítóhoz van egy *leküldéses trigger* , amely megvárja, és figyeli az új adatokat és eseményeket a szolgáltatási végpont. Ha új adatokat és a egy esemény megfelel a megadott feltételnek, akkor a trigger akkor aktiválódik, majd létrehoz egy logikaialkalmazás-példányt, amely majd dolgozza fel a bemeneti adatok.
 Webhook eseményindítók lényegében ugyanúgy működik a [webhook-műveletek](#webhook-actions) korábban ebben a témakörben leírt, és a beállítása `subscribe` és `unsubscribe` végpontok. 
 
-* `subscribe` végpont: Ha ad hozzá, és mentse a logikai alkalmazás a webhook eseményindítóhoz, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ebben a lépésben hatására a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja. Ha új adatokat és a egy eseményt, amely megfelel a megadott feltételnek, az API-hívások vissza és a egy HTTP POST URL-címre. A tartalom hasznos és a fejléc adja át a logikai alkalmazás bemeneteként.
+* `subscribe` Végpont: Ha ad hozzá, és mentse a logikai alkalmazás a webhook eseményindítóhoz, a Logic Apps összetevő, amely meghívja a `subscribe` végpont. Ebben a lépésben hatására a logikai alkalmazás létrehozása egy visszahívási URL-címet, amely az API-t tárolja. Ha új adatokat és a egy eseményt, amely megfelel a megadott feltételnek, az API-hívások vissza és a egy HTTP POST URL-címre. A tartalom hasznos és a fejléc adja át a logikai alkalmazás bemeneteként.
 
-* `unsubscribe` végpont: Ha a webhook eseményindítóhoz vagy teljes logikai alkalmazás törlése a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
+* `unsubscribe` Végpont: Ha a webhook eseményindítóhoz vagy teljes logikai alkalmazás törlése a Logic Apps összetevő, amely meghívja a `unsubscribe` végpont. Ezután regisztrációjának törlése a visszahívási URL-Címének és a folyamatokat, szükség szerint állítsa le az API-t.
 
 ![Webhook-eseményindító minta](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

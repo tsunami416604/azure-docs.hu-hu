@@ -12,18 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277936"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632789"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
+
 Ez a cikk ismerteti a karbantartási szabályzat az Azure Stack integrált rendszerek, és hogy mit kell tennie, hogy a rendszer egy támogatott állapotban. 
+
+## <a name="download-update-packages-for-integrated-systems"></a>Töltse le a frissítési csomagokat integrált rendszerek
+
+A Microsoft közzéteszik egyaránt teljes havi csomagok, valamint a gyorsjavítás csomagok konkrét problémáinak megoldására. 
+
+Havi csomagok egy biztonságos Azure-végpont a üzemelnek. Letöltheti őket manuálisan a [Azure Stack frissítéseinek letöltési segédprogramja eszköz](http://aka.ms/azurestackupdatedownload). Ha a skálázási egység csatlakoztatva van, a frissítés automatikusan megjelenik a felügyeleti portálon, **frissítés érhető el**. Teljes havonta frissítési csomagokat is szerepelnek, az egyes kiadások. Minden kiadással kapcsolatos további információkért kattintson bármelyik-esről a [frissítési csomag kiadási ütem](#update-package-release-cadence) című szakaszát.
+
+A gyorsjavítás csomagok ugyanazt az Azure biztonságos végpontját üzemelnek. Letöltheti őket segítségével manuálisan a beágyazott hivatkozásokat az egyes a megfelelő gyorsjavítás; KB-cikkek Ha például [Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). A teljes, a havi csomagok hasonlóan az Azure Stack-operátorok is .xml, .bin és az .exe fájlok letöltésére és importálhatja őket a leírtak [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md). Csatlakoztatott skálázási egység az Azure Stack-operátoroknak jelenik meg a gyorsjavításokat, automatikusan megjelenik a rendszergazdai portálon üzenettel **frissítés érhető el**.
+
+Ha a skálázási egység nem kapcsolódik, és szeretne értesítést kapni az egyes gyorsjavítások kiadások, iratkozzon fel a [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) vagy [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) az egyes kiadások feljegyzett hírcsatorna.  
 
 ## <a name="update-package-types"></a>A csomagok frissítése
 
@@ -51,7 +62,7 @@ Gyorsjavítások letölthető és telepíthető csakúgy, mint a rendszeres telj
 
 
 ## <a name="keep-your-system-under-support"></a>A rendszer a támogatás
-A folytatáshoz szeretne támogatást kapni az Azure Stack üzemelő példányához kell tartania, aktuális. A frissítések késleltetésének házirend: támogatási megőrzési ideje az Azure Stack üzemelő frissítés nemrég kiadott verzióját futtató vagy a két előző frissítési verziók valamelyikével kell azt. Gyorsjavítások nem veszi figyelembe a nagyobb frissítési verziókat. Ha az Azure Stack-felhő mögött *több mint két frissítések*, azt a megfelelő számít, és frissítenie kell a legalább a minimális támogatott verziót szeretne támogatást kapni. 
+A folytatáshoz szeretne támogatást kapni az Azure Stack üzemelő példányához kell tartania, aktuális. A frissítések késleltetésének házirend van: Az Azure Stack üzembe helyezés támogatása megmarad, kell a legutóbb kiadott frissített verzió, vagy futtathatja az alábbiak közül a két előző frissítési verziók. Gyorsjavítások nem veszi figyelembe a nagyobb frissítési verziókat. Ha az Azure Stack-felhő mögött *több mint két frissítések*, azt a megfelelő számít, és frissítenie kell a legalább a minimális támogatott verziót szeretne támogatást kapni. 
 
 Például ha a rendelkezésre álló legfrissebb frissített verziót 1805, és az előző két frissítési csomagokat is 1804 és 1803 verziója, 1803 és 1804 is maradnak támogatása. Azonban az 1802, nem támogatott. A szabályzat igaznak, ha egy hónapban, vagy két nincs kiadási. Például a jelenlegi kiadásban 1805, és nincs 1804 kiadás volt, az előző két frissítési csomagokat 1803 és 1802 továbbra is támogatott.
 

@@ -10,21 +10,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f9ee5946d9748388cc1f606d89d4edeacb0b9c02
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498092"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653713"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Az Apache Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
 
 Ismerje meg, hogyan használható az Apache Spark [MLlib](https://spark.apache.org/mllib/) machine learning-alkalmazás egyszerű prediktív elemzéseket végezhet egy megnyitott adatkészlet létrehozásához. A Spark a beépített gépi tanulás kódtárakat, ez a példa *besorolási* logisztikai regressziós keresztül. 
 
-> [!TIP]
+> [!TIP]  
 > Ebben a példában is érhető el egy [Jupyter Notebook](https://jupyter.org/) ebben a HDInsight (Linux) Spark-fürtön. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Kövesse az oktatóanyag a jegyzetfüzet belül, hozzon létre egy Spark-fürtöt, majd indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Ezután futtassa a notebook **Spark Machine Learning - prediktív elemzés a MLlib.ipynb használata az élelmiszervizsgálati ellenőrző adatok** alatt a **Python** mappát.
->
->
 
 MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosít a machine learning feladatokat, beleértve a megfelelő segédprogramok:
 
@@ -178,7 +176,7 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    A `%%sql` Magic Quadrant követ `-o countResultsdf` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](http://pandas.pydata.org/) a megadott nevű adathalmaz **countResultsdf**. További információ a `%%sql` Magic Quadrant, és kernellel a PySpark kernellel elérhető egyéb funkciókkal [használt az Apache Spark HDInsight-fürtök Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    A `%%sql` Magic Quadrant követ `-o countResultsdf` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](https://pandas.pydata.org/) a megadott nevű adathalmaz **countResultsdf**. További információ a `%%sql` Magic Quadrant, és kernellel a PySpark kernellel elérhető egyéb funkciókkal [használt az Apache Spark HDInsight-fürtök Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     A kimenet a következő:
 
@@ -211,7 +209,7 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
     - Feltételek használatával adja át
     - Üzleti kívül
 
-    Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **sikertelen** és **átadni**:
+    Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **Sikertelen** és **átadni**:
 
     - Sikeres
         - Sikeres
@@ -382,11 +380,11 @@ Most már összeállíthatja a végleges Vizualizáció segítségével, az okb�
 Miután befejezte az alkalmazás fut, állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: ddee05fed3112edc6cf1e1261ea06bc2fe864ed3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583550"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652132"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookok a HDInsight az Apache Spark-fürtök
 > [!div class="op_single_selector"]
 > * [Használatával](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Szkriptműveletek használatával](apache-spark-python-package-installation.md)
->
->
 
 Ismerje meg, hogyan konfigurálhatja a [Jupyter Notebook](https://jupyter.org/) külső használatára a HDInsight az Apache Spark-fürt, a Közösség által biztosított Apache **maven** csomagokat, amelyek nem tartalmazza a fürt-a-beépített. 
 
-Kereshet a [Maven tárházból](http://search.maven.org/) a teljes listát az elérhető csomagokat. Elérhető csomagok listáját a más forrásokból is beszerezheti. Például Közösség által biztosított csomagok teljes listája megtalálható [Spark csomagok](http://spark-packages.org/).
+Kereshet a [Maven tárházból](https://search.maven.org/) a teljes listát az elérhető csomagokat. Elérhető csomagok listáját a más forrásokból is beszerezheti. Például Közösség által biztosított csomagok teljes listája megtalálható [Spark csomagok](https://spark-packages.org/).
 
-Ebben a cikkben, megtudhatja, hogyan használható a [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) a Jupyter notebookkal csomagot.
+Ebben a cikkben, megtudhatja, hogyan használható a [spark-fürt megosztott kötetei szolgáltatás](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) a Jupyter notebookkal csomagot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
@@ -39,11 +37,10 @@ Az alábbiakkal kell rendelkeznie:
 
 1. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürthöz tartozó Jupyter notebookot az alábbi URL-cím böngészőben történő megnyitásával is elérheti. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
     > 
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-    > 
 
 1. Hozzon létre új notebookot. Kattintson a **új**, és kattintson a **Spark**.
    
@@ -55,7 +52,7 @@ Az alábbiakkal kell rendelkeznie:
 
 1. Használhatja a `%%configure` Magic Quadrant, konfigurálja a notebookot úgy, hogy egy külső csomagot használja. Külső csomagok használó jegyzetfüzetekben, ellenőrizze, hogy hívja a `%%configure` magic a az első kódcella. Ez biztosítja, hogy a kernel a csomag használatára, a munkamenet kezdete előtt van konfigurálva.
 
-    >[!IMPORTANT] 
+    >[!IMPORTANT]  
     >Ha elfelejti a kernel konfigurálása az első olyan cellára, használhatja a `%%configure` együtt a `-f` paraméter, de, amely újraindítja a munkamenetet, és folyamatban lévő elvész.
 
     | HDInsight-verzió | Parancs |
@@ -65,7 +62,7 @@ Az alábbiakkal kell rendelkeznie:
 
 1. A fenti kódrészletben a maven-koordinátái a Maven központi tárházból külső csomag vár. Ebben a kódrészletben `com.databricks:spark-csv_2.10:1.4.0` van a maven-koordináta az **spark-fürt megosztott kötetei szolgáltatás** csomagot. Itt látható, hogyan hozhat létre egy csomag koordinátáit.
    
-    a. Keresse meg a csomagot a Maven tárházból. Ebben az oktatóanyagban használjuk [spark-fürt megosztott kötetei szolgáltatás](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Keresse meg a csomagot a Maven tárházból. Ebben az oktatóanyagban használjuk [spark-fürt megosztott kötetei szolgáltatás](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Gyűjtse össze a tárházban, a tartozó értékeket **GroupId**, **ArtifactId**, és **verzió**. Győződjön meg arról, hogy beszerezte az értékek egyeznek-e a fürt. Ebben az esetben egy Scala 2.10 és Spark 1.4.0-s csomagot használjuk, de előfordulhat, hogy ki kell választania a különböző verzióit a megfelelő Scala és Spark-verzió a fürtben. Talál a Scala-verziót a fürtön futtatásával `scala.util.Properties.versionString` a Spark Jupyter kernel, illetve Spark-submit. Keresheti meg, a Spark-verziót a fürtön futó `sc.version` Jupyter notebookokban.
    
@@ -96,12 +93,12 @@ Az alábbiakkal kell rendelkeznie:
         df.select("Time").count()
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

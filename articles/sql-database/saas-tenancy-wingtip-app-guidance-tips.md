@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054404"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606027"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>A Wingtip Tickets használatának általános útmutatást minta SaaS-alkalmazások
 
@@ -57,7 +57,7 @@ Az értékek beállításával itt egyszerűen révén nem, frissítse az össze
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Hajtsa végre a szkripteket az F5 billentyű lenyomásával
 
-Számos szkript használata *$PSScriptRoot* nyissa meg a mappákban és *$PSScriptRoot* csak akkor történik meg parancsfájlok lenyomásával végrehajtásakor **F5**.  Kiemelés, és a kijelöltek futtatása (**F8**) is hibákat eredményezhet, ezért nyomja le az **F5** amikor futtatja a parancsfájlokat.
+Számos szkript használata *$PSScriptRoot* nyissa meg a mappákban és *$PSScriptRoot* csak akkor történik meg parancsfájlok lenyomásával végrehajtásakor **F5**.  Kiemelés, és a kijelöltek futtatása (**F8**) is hibákat eredményezhet, ezért nyomja le az **F5** amikor futtatja a parancsfájlokat.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>A megvalósítás vizsgálatához lépjen végig a szkripteken
 
@@ -94,7 +94,7 @@ Ahhoz, hogy egy sikeres bemutató kapcsolat, minden kiszolgáló rendelkezik egy
 
    ![katalóguskiszolgáló elemre](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Bemutató hitelesítő adatai: bejelentkezés = *fejlesztő*, jelszó =*P@ssword1*
+3. Bemutató hitelesítő adatai a következők: Bejelentkezés = *fejlesztői*, jelszó = *P@ssword1*
 
     Az az alábbi képen láthatja a bejelentkezési adatait a következő a *bérlőnkénti adatbázis* mintát. 
     ![kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

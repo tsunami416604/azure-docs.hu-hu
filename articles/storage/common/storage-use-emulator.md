@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052543"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629628"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -88,21 +88,24 @@ Miután telepítette és a storage emulator elindult, tesztelheti a kódját azt
 További információ a kapcsolati karakterláncok: [konfigurálása az Azure Storage kapcsolati karakterláncok](../storage-configure-connection-string.md).
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Engedélyezze a közös hozzáférésű jogosultságkód
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Bizonyos Azure storage ügyfélkódtáraival, például a Xamarin-klienskódtár csak egy közös hozzáférésű jogosultságkód (SAS-) hitelesítést támogatják. A SAS-jogkivonat hasonló eszköz használatával hozhat létre a [Tártallózó](http://storageexplorer.com/) vagy egy másik alkalmazás, amely támogatja a megosztott kulcsos hitelesítés.
 
 Azure PowerShell használatával is létrehozhat egy SAS-jogkivonatot. Az alábbi példa létrehozza az SAS-jogkivonatát blob-tárolóba teljes körű engedélyekkel:
 
-1. Telepítse az Azure PowerShell, ha még nem tette (a legújabb verzióját használja az Azure PowerShell parancsmagok ajánlott). A telepítési utasításokért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/install-azurerm-ps).
+1. Telepítse az Azure PowerShell, ha még nem tette (a legújabb verzióját használja az Azure PowerShell parancsmagok ajánlott). A telepítési utasításokért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/install-Az-ps).
 2. Nyissa meg az Azure Powershellt, és futtassa a következő parancsokat, és cserélje le `CONTAINER_NAME` egy névvel, Ön:
 
 ```powershell
-$context = New-AzureStorageContext -Local
+$context = New-AzStorageContext -Local
 
-New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+New-AzStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
 $now = Get-Date
 
-New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
 Az eredményül kapott közös hozzáférésű jogosultságkód URI-t az új tárolóhoz hasonló lesz:
@@ -169,8 +172,8 @@ A beállítások listájának megtekintéséhez írja be a `/help` parancsot a p
 | **Kezdés** |A storage emulator indul. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Indítsa el az emulátort helyett egy új folyamat létrehozása a jelenlegi folyamatban. |
 | **állj** |A storage emulator leáll. |`AzureStorageEmulator.exe stop` | |
 | **Állapot** |A storage emulator állapotát megjeleníti. |`AzureStorageEmulator.exe status` | |
-| **Világos** |Törli a parancssorban megadott összes szolgáltatás adatait. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*BLOB*: Blobadatok törli. <br/>*várólista*: sorban lévő adatok törlése. <br/>*tábla*: törli a tábla adatait. <br/>*az összes*: az összes szolgáltatás az összes adat törlése. |
-| **Init** |Az emulátor beállításához, egyszeri inicializálási hajt végre. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-kiszolgáló Kiszolgálónév\példánynév*: Itt adhatja meg az SQL-példányt futtató kiszolgálót. <br/>*instanceName – sqlinstance*: az alapértelmezett kiszolgálópéldánynál használható SQL-példány nevét adja meg. <br/>*-forcecreate*: az SQL-adatbázis létrehozása kényszeríti, még akkor is, ha már létezik. <br/>*-skipcreate*: kihagyja az SQL-adatbázis létrehozása. Ez elsőbbséget élvez - forcecreate.<br/>*-reserveports*: a HTTP-portok megadott szolgáltatásokkal társított próbál.<br/>*-unreserveports*: távolítsa el a HTTP-port lefoglalását tett kísérletek társított szolgáltatásokat. Ez elsőbbséget élvez - reserveports.<br/>*-inprocess*: hajt végre az inicializálási helyett egy új folyamat terjesztése a jelenlegi folyamatban. Az aktuális folyamat emelt jogosultsági szintű indítható el, ha port foglalások módosítása. |
+| **Világos** |Törli a parancssorban megadott összes szolgáltatás adatait. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*BLOB*: Törli az adatokat a blob. <br/>*várólista*: Törli a sorban lévő adatok. <br/>*tábla*: Törli a tábla adatait. <br/>*Az összes*: Az összes szolgáltatás az összes adat törlése. |
+| **Init** |Az emulátor beállításához, egyszeri inicializálási hajt végre. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-kiszolgáló Kiszolgáló_neve\példány_neve*: Itt adhatja meg az SQL-példányt futtató kiszolgálót. <br/>*instanceName – sqlinstance*: Itt adhatja meg az alapértelmezett kiszolgálópéldánynál használható SQL-példány nevét. <br/>*-forcecreate*: Az SQL-adatbázis létrehozása kényszeríti, még akkor is, ha már létezik. <br/>*-skipcreate*: Kihagyja az SQL-adatbázis létrehozása. Ez elsőbbséget élvez - forcecreate.<br/>*-reserveports*: A HTTP-portok megadott szolgáltatásokkal társított kísérletek.<br/>*-unreserveports*: Megpróbálja eltávolítani a HTTP-port megadott szolgáltatásokkal társított lefoglalását. Ez elsőbbséget élvez - reserveports.<br/>*-inprocess*: Hajt végre az inicializálási helyett egy új folyamat terjesztése a jelenlegi folyamatban. Az aktuális folyamat emelt jogosultsági szintű indítható el, ha port foglalások módosítása. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>A storage emulator és az Azure Storage közötti különbségek
 Mivel a storage emulator egy helyi SQL-példányban fut egy emulált környezetet, között különbségek vannak a funkciók az emulátorban, és a egy Azure storage-fiókot a felhőben:

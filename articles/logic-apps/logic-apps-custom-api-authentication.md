@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087508"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719598"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-k biztonságos hívások
 
@@ -24,12 +24,12 @@ Az API-hívások biztonságossá tételéhez, állíthat be az Azure Active Dire
 
 A következő lehetőségeket biztosítva az egyéni API-hívások tehetők biztonságossá:
 
-* [Kódmódosítás nélkül](#no-code): az API védelme az [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) az Azure Portalon, így nem kell a kód frissítése és ismételt üzembe helyezése az API-t.
+* [Kódmódosítás nélkül](#no-code): Az API védelme az [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) az Azure Portalon, így nem kell a kód frissítése és ismételt üzembe helyezése az API-t.
 
   > [!NOTE]
   > Alapértelmezés szerint az Azure AD-hitelesítés, amely az Azure Portalon kapcsolja be a minden részletre kiterjedő engedélyezési nem biztosít. A hitelesítés például az API-t egy adott bérlővel, nem pedig egy adott felhasználó vagy alkalmazás zárolja magát. 
 
-* [Az API kódjának frissítése](#update-code): tartat be az API védelme [tanúsítványhitelesítés](#certificate), [alapszintű hitelesítés](#basic), vagy [Azure AD-hitelesítés](#azure-ad-code) keresztül kód.
+* [Az API kódjának frissítése](#update-code): Az API védelme kényszerítésével [Tanúsítványalapú hitelesítés](#certificate), [alapszintű hitelesítés](#basic), vagy [Azure AD-hitelesítés](#azure-ad-code) kódok segítségével.
 
 <a name="no-code"></a>
 
@@ -43,7 +43,7 @@ Ezzel a módszerrel az általános lépései a következők:
 
 3. Vegye fel az alkalmazásazonosítót a logikai alkalmazás definíciójának.
 
-#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1. lépés: Hozzon létre egy Azure AD alkalmazás-azonosítót a logikai alkalmazás
+#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a logikai alkalmazás
 
 A logikai alkalmazás hitelesítése az Azure ad-ben a az Azure AD alkalmazás-identitást használja. Csak akkor állítsa be ezt az identitást a címtár egy alkalommal. Például akkor lehet váltani, ugyanazzal az identitással használata a logic apps annak ellenére, hogy minden egyes logikai alkalmazás egyedi azonosítók is létrehozhat. Állítsa be ezeket az identitásokat az Azure Portalon, vagy használjon [PowerShell](#powershell).
 
@@ -106,7 +106,7 @@ Ez a feladat Azure Resource Managerben a PowerShell használatával is elvégezh
 
 További információ megtudhatja, hogyan [egyszerű szolgáltatás létrehozása erőforrások eléréséhez a PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2. lépés: Hozzon létre egy Azure AD alkalmazás-azonosítót a webalkalmazás vagy API-alkalmazás
+#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a webalkalmazás vagy API-alkalmazás
 
 Ha a webalkalmazás vagy API-alkalmazás már üzembe helyezte, kapcsolja be a hitelesítést, és az alkalmazásazonosító létrehozása az Azure Portalon. Egyéb esetben [kapcsolja be a hitelesítést, ha telepít egy Azure Resource Manager-sablonnal](#authen-deploy). 
 
@@ -178,7 +178,7 @@ Automatikus telepítése egy üres webalkalmazást és a egy logikai alkalmazás
 
 [![Üzembe helyezés az Azure-ban](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. rész: A engedélyezési szakaszában a logikai alkalmazás feltöltése
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. rész: A hitelesítési szakaszában a logikai alkalmazás feltöltése
 
 Az előző sablon már rendelkezik az engedélyezési szakaszban állítsa be, de ha közvetlenül a logikai alkalmazás szerzői műveletek, akkor tartalmaznia kell a teljes körű engedéllyel szakaszt.
 
@@ -266,7 +266,7 @@ API-hozzáférés korlátozása a logikai alkalmazás-kódon keresztül, bontsa 
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
-[authenticate with on-premises Active Directory in your Azure app](../app-service/app-service-authentication-overview.md).
+[authenticate with on-premises Active Directory in your Azure app](../app-service/overview-authentication-authorization.md).
 
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 99a4dd25539db754a893ddda7480c64e5a13a5bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353339"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631515"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>App Service Web Apps-alkalmazások konfigurálása az Application Gatewayjel
+# <a name="configure-app-service-with-application-gateway"></a>Az App Service az Application Gateway konfigurálása
 
-Az Application Gateway lehetővé teszi egy Azure-webalkalmazás vagy egyéb több-bérlős szolgáltatás használatát egy háttérkészlet tagjaként. Ebből a cikkből megismerheti az Azure-webalkalmazások az Application Gatewayjel való konfigurálásának módját. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
+Az Application gateway lehetővé teszi egy App Service-alkalmazást vagy egyéb több-bérlős szolgáltatás háttérkészlet-tagként. Ez a cikk bemutatja az App Service-alkalmazások konfigurálása az Application Gatewayen. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
 
 ## <a name="configure-a-web-app-behind-an-existing-application-gateway"></a>Webalkalmazás konfigurálása meglévő Application Gateway mögött
 
@@ -163,4 +163,4 @@ A web Apps korlátozhatja a hozzáférést egy módja [statikus IP-korlátozáso
 
 ## <a name="next-steps"></a>További lépések
 
-Információk az átirányítás konfigurálásáról: [Átirányítás konfigurálása az Application Gatewayen PowerShell-lel](redirect-overview.md).
+Átirányítás konfigurálásáról további információ: [Átirányítás konfigurálása az Application Gatewayen a PowerShell-lel](redirect-overview.md).

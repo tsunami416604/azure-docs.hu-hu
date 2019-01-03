@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082329"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971716"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
 
@@ -37,11 +37,11 @@ Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhá
 - [Érdekes notebookok galériája](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt a Githubon)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Az utasítás-fizika a [fizika részleg Londonban angolszász College](https://notebooks.azure.com/cvanbreu/libraries)
-- [Az Azure Machine Learning – első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
+- [Az Azure Machine Learning – első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: adatok fájlok használata](work-with-project-data-files.md)
-- [Útmutató: adat-erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
-- [Útmutató: az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)
+- [kézikönyv: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
+- [kézikönyv: Adatfájlok használata](work-with-project-data-files.md)
+- [kézikönyv: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [kézikönyv: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

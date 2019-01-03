@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409921"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743357"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférési aláírások használatával a HDInsight adatokhoz hozzáférésének korlátozása
 
@@ -183,7 +183,7 @@ Egy HDInsight-fürt által használt SAS létrehozása egy példát tartalmaz a 
    > * Legalább 10 karakter hosszúságúnak kell lennie.
    > * Legalább egy számjegyet kell tartalmaznia.
    > * Legalább egy nem alfanumerikus karaktert kell tartalmaznia.
-   > * Legalább egy nagy- vagy kisbetűt kell tartalmaznia
+   > * Legalább egy nagy- vagy kisbetűt tartalmaznia kell.
 
 Míg ez a szkript végrehajtásához, általában körülbelül 15 percet vesz igénybe. Miután a parancsfájl futása befejeződött, hibák nélkül, a fürt létrejött.
 
@@ -293,7 +293,7 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 * Legalább 10 karakter hosszúságúnak kell lennie.
 * Legalább egy számjegyet kell tartalmaznia.
 * Legalább egy nem alfanumerikus karaktert kell tartalmaznia.
-* Legalább egy nagy- vagy kisbetűt kell tartalmaznia
+* Legalább egy nagy- vagy kisbetűt tartalmaznia kell.
 
 ## <a name="next-steps"></a>További lépések
 

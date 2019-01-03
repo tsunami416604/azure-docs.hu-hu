@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965393"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714848"
 ---
-# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack földrajzilag elosztott alkalmazás megoldás létrehozása
+# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Útmutató a forgalmat a földrajzilag elosztott alkalmazások minta használatával különböző metrikák alapján meghatározott végpontokhoz. Egy Traffic Manager létrehozása a földrajzi alapú útválasztást és a végpont konfigurációs profil biztosítja, információk alapján a regionális követelmények, a vállalati és a nemzetközi szabályozás és az adattárolási igényeinek végpontok van irányítva.
 
@@ -61,13 +61,13 @@ Egy elosztott alkalmazás üzembe helyezésének előkészítése kialakításá
 
 -   **Az alkalmazás egyéni tartomány:** Mi az az egyéni tartománynév használó ügyfelek számára a hozzáférést az alkalmazáshoz? A mintaalkalmazás az egyéni tartománynév van *www.scalableasedemo.com.*
 
--   **Traffic Manager-tartományra:** egy tartománynevet kell választani, amikor létrehozza az [Azure Traffic Manager-profil](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Ezt a nevet a rendszer kombinálja a *trafficmanager.net* regisztrálni egy tartományban bejegyzést a Traffic Manager által felügyelt utótag. A mintaalkalmazás a név kiválasztott van *méretezhető ase bemutató*. Ennek eredményeképpen a teljes tartománynévnek a Traffic Manager által felügyelt rendszer *méretezhető ase demo.trafficmanager.net*.
+-   **Traffic Manager-tartományt:** Egy tartománynevet kell választani, amikor létrehozza az [Azure Traffic Manager-profil](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Ezt a nevet a rendszer kombinálja a *trafficmanager.net* regisztrálni egy tartományban bejegyzést a Traffic Manager által felügyelt utótag. A mintaalkalmazás a név kiválasztott van *méretezhető ase bemutató*. Ennek eredményeképpen a teljes tartománynévnek a Traffic Manager által felügyelt rendszer *méretezhető ase demo.trafficmanager.net*.
 
--   **Az alkalmazás üzembe helyezésének előkészítése méretezési stratégia:** az alkalmazás erőforrás-igényű között szétosztani több App Service-környezetek egy adott régióban? Több régióban? Mindkét módszerénél vegyesen? A döntést kell alapulnia elvárásainak, ahonnan az ügyfél forgalom lesz származnak, valamint arról, hogy a többi egy alkalmazást támogató háttér-infrastruktúra is méretezhető. Például egy 100 %-os állapot nélküli alkalmazással egy alkalmazást rugalmasan méretezhetők több App Service Environment-környezetek kombinációját használó Azure-régiónként, szorozva a több Azure-régióban üzembe helyezett App Service-környezetek. A 15 + globális Azure-régiókban érhető el, amelyek közül választhatnak, ügyfelei valóban hozhat létre egy világméretű kapacitású alkalmazás üzembe helyezésének előkészítése. Az ebben a cikkben használt mintaalkalmazás három App Service Environment-környezetek létrehozott egy Azure-régióban (USA déli középső Régiója).
+-   **Az alkalmazás üzembe helyezésének előkészítése méretezési stratégia:** Több App Service-környezetek egy régió között szétosztani a alkalmazás erőforrás-igényű? Több régióban? Mindkét módszerénél vegyesen? A döntést kell alapulnia elvárásainak, ahonnan az ügyfél forgalom lesz származnak, valamint arról, hogy a többi egy alkalmazást támogató háttér-infrastruktúra is méretezhető. Például egy 100 %-os állapot nélküli alkalmazással egy alkalmazást rugalmasan méretezhetők több App Service Environment-környezetek kombinációját használó Azure-régiónként, szorozva a több Azure-régióban üzembe helyezett App Service-környezetek. A 15 + globális Azure-régiókban érhető el, amelyek közül választhatnak, ügyfelei valóban hozhat létre egy világméretű kapacitású alkalmazás üzembe helyezésének előkészítése. Az ebben a cikkben használt mintaalkalmazás három App Service Environment-környezetek létrehozott egy Azure-régióban (USA déli középső Régiója).
 
--   **Az App Service Environment-környezetek elnevezési:** minden App Service Environment-környezet megköveteli egy egyedi nevet. Egy vagy két App Service Environment-környezetek, túl hasznos van egy elnevezési konvenciója segítségével azonosíthatja az egyes App Service Environment-környezet. A mintaalkalmazás egy egyszerű elnevezési konvenciót lett megadva. A neve, a három App Service Environment-környezetek *fe1ase*, *fe2ase*, és *fe3ase*.
+-   **Az App Service Environment-környezetek elnevezési:** Minden App Service Environment-környezet megköveteli egy egyedi nevet. Egy vagy két App Service Environment-környezetek, túl hasznos van egy elnevezési konvenciója segítségével azonosíthatja az egyes App Service Environment-környezet. A mintaalkalmazás egy egyszerű elnevezési konvenciót lett megadva. A neve, a három App Service Environment-környezetek *fe1ase*, *fe2ase*, és *fe3ase*.
 
--   **Az alkalmazások elnevezési:** az alkalmazás több példánya telepítve lesz, mivel egy nevet az üzembe helyezett alkalmazás minden példánya esetében van szükség. App Service Environment-környezetekkel az app-névvel több App Service Environment-környezetek között is használható. Mivel minden App Service Environment-környezet rendelkezik egy egyedi tartományutótagot, a fejlesztők választhat újra pontos ugyanazon alkalmazás minden környezetben. Egy fejlesztő például rendelkezhet elnevezése a következő alkalmazásokat: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*stb. Az alkalmazás ebben a forgatókönyvben minden példányt egyedi névvel rendelkezik. A használt alkalmazás-példány neve *webfrontend1*, *webfrontend2*, és *webfrontend3*.
+-   **Az alkalmazások elnevezési:** Mivel az alkalmazás több példányát telepíti, egy nevet az üzembe helyezett alkalmazás minden egyes példányánál van szükség. App Service Environment-környezetekkel az app-névvel több App Service Environment-környezetek között is használható. Mivel minden App Service Environment-környezet rendelkezik egy egyedi tartományutótagot, a fejlesztők választhat újra pontos ugyanazon alkalmazás minden környezetben. Egy fejlesztő például rendelkezhet elnevezése a következő alkalmazásokat: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*stb. Az alkalmazás ebben a forgatókönyvben minden példányt egyedi névvel rendelkezik. A használt alkalmazás-példány neve *webfrontend1*, *webfrontend2*, és *webfrontend3*.
 
 > [!Tip]  
 > ![hibrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -75,7 +75,7 @@ Egy elosztott alkalmazás üzembe helyezésének előkészítése kialakításá
 > 
 > A tanulmány [hibrid alkalmazások kapcsolatos kialakítási szempontok](https://aka.ms/hybrid-cloud-applications-pillars) szoftverminőség alappillérei (elhelyezését, a méretezhetőség, rugalmasság, kezelhetőségi és biztonsági) felülvizsgálatai kialakítása, üzembe helyezése és működtetése hibrid alkalmazások. A kialakítási szempontokat segítséget nyújt a hibrid alkalmazások kialakítását, minimálisra csökkentik az éles környezetben kihívások optimalizálása.
 
-## <a name="part-1-create-a-geo-distributed-app"></a>1. lépés: Egy földrajzilag elosztott alkalmazás létrehozása
+## <a name="part-1-create-a-geo-distributed-app"></a>1. rész: Földrajzilag elosztott alkalmazás létrehozása
 
 Ez a rész létrehozza a webalkalmazást.
 
@@ -122,7 +122,7 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Webes alkalmazás üzembe helyezése mindkét felhőben létrehozása
 
-1.  Szerkessze a **WebApplication.csproj** fájlt: válassza ki **Runtimeidentifier** , és adja hozzá **win10-x64**. (Lásd: [Self-contained telepítési](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációja.)
+1.  Szerkessze a **WebApplication.csproj** fájlt: Válassza ki **Runtimeidentifier** , és adja hozzá **win10-x64**. (Lásd: [Self-contained telepítési](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációja.)
 
     ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -240,9 +240,9 @@ Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurá
 > [!Note]  
 >  A feladatok egyes beállítások előfordulhat, hogy automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) létrehozásakor, a kiadási definíció a sablon alapján. Ezek a beállítások nem módosíthatók a tevékenység beállításait; inkább ki kell választania a szülő környezet típusú elem, ezek a beállítások szerkesztéséhez.
 
-## <a name="part-2-update-web-app-options"></a>2. lépés: Webes alkalmazás beállítások
+## <a name="part-2-update-web-app-options"></a>2. rész: Webes alkalmazás beállítások frissítése
 
-Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. 
+Az [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. 
 
 ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image27.png)
 
@@ -255,7 +255,7 @@ Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web
 > [!Note]  
 >  Minden egyéni DNS-neveit gyökértartomány kivételével (example,northwind.com) egy olyan CNAME REKORDOT használjon.
 
-Élő webhely és hozzá tartozó DNS-tartománynév migrálása az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](https://docs.microsoft.com/azure/app-service/app-service-custom-domain-name-migrate).
+Élő webhely és hozzá tartozó DNS-tartománynév migrálása az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain).
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -276,7 +276,7 @@ Frissítse a tartomány DNS-zónafájljában. Az Azure AD ellenőrzi, hogy az eg
 DNS-bejegyzések fornorthwindcloud.comand www.northwindcloud.com hozzáadásához például thenorthwindcloud.com gyökértartomány DNS-beállításainak konfigurálása.
 
 > [!Note]  
->  A tartománynév alapján vásárolhatók a [az Azure portal](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).  
+>  A tartománynév alapján vásárolhatók a [az Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
 > Egy egyéni DNS-név webalkalmazásra való leképezéséhez a webalkalmazás [App Service-csomagjának](https://azure.microsoft.com/pricing/details/app-service/) fizetős rétegben kell lennie (**megosztott**, **alapvető**, **szabványos** vagy **prémium szintű**).
 
 
@@ -359,7 +359,7 @@ Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példá
 
 Tallózással keresse meg a korábban konfigurált DNS-nevét (például `northwindcloud.com`, www.northwindcloud.com.
 
-## <a name="part-3-bind-a-custom-ssl-cert"></a>3. rész: Kötés egy egyéni SSL-tanúsítvány
+## <a name="part-3-bind-a-custom-ssl-cert"></a>3. rész: Egyéni SSL-tanúsítvány kötése
 
 Ez a rész: a
 

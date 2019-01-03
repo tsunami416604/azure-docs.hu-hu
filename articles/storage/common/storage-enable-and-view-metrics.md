@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531527"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632144"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Azure Storage mérőszámainak engedélyezése és a mérőszámadatok megtekintése
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -37,7 +37,10 @@ Kövesse az alábbi lépéseket, hogy engedélyezze a mérőszámok a a [az Azur
 A [az Azure portal](https://portal.azure.com) nem jelenleg engedélyezi a tárfiók; perc típusú metrikák beállításához engedélyeznie kell a PowerShell-lel perc típusú metrikák vagy programozott módon.
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>PowerShell-lel metrikák engedélyezése
-Ön PowerShell a helyi gépen való konfigurálásához használható Storage Metrics a tárfiókban található az Azure PowerShell-parancsmag Get-AzureStorageServiceMetricsProperty lekérni az aktuális beállítások és a parancsmag használatával Set-AzureStorageServiceMetricsProperty az aktuális beállítások módosításához.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Ön PowerShell a helyi gépen való konfigurálásához használható Storage Metrics a tárfiókban található az Azure PowerShell-parancsmag Get-AzStorageServiceMetricsProperty lekérni az aktuális beállítások és a Set-AzStorageServiceMetricsProperty parancsmag használatával az aktuális beállítások módosításához.
 
 A parancsmagok, amelyek vezérlik a Storage Metrics használja a következő paramétereket:
 
@@ -48,16 +51,16 @@ A parancsmagok, amelyek vezérlik a Storage Metrics használja a következő par
 Az alábbi parancs például a perc típusú metrikák a alapértelmezett tárfiókban található Blob szolgáltatás vált, együtt a megőrzési időszak beállítása pedig öt nappal:
 
 ```powershell
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
 Az alábbi parancs lekéri a jelenlegi óránkénti metrikák szintje és megőrzési nap a blobszolgáltatás alapértelmezett tárfiókban található:
 
 ```powershell
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Konfigurálásával kapcsolatos információkat az Azure PowerShell-parancsmagok az Azure-előfizetés és kiválasztása az alapértelmezett tárfiókot használni, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
+Működik az Azure-előfizetésében az Azure PowerShell-parancsmagjainak konfigurálása és használata az alapértelmezett tárfiók kiválasztása kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása annak](/powershell/azure/overview).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Programozott módon a Storage mérőszámainak engedélyezése
 Az alábbi C#-kódrészlet bemutatja, hogyan engedélyezze a mérőszámok és a naplózást a Blob service használata a storage ügyféloldali kódtára a .NET-hez:

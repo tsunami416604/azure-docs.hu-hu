@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255601"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713964"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>A LUIS-eredményeket ad hozzá az Application Insights és az Azure functions
 Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ebben az oktatóanyagban kódja érhető el a [LUIS-minták GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
+Ebben az oktatóanyagban kódja érhető el a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
 
 ## <a name="web-app-bot-with-luis"></a>Web app bot az intelligens hangfelismerési szolgáltatással
 Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-nodejs-tutorial-build-bot-framework-sample.md): 
@@ -51,11 +51,11 @@ Annak érdekében, hogy a LUIS-kérések és válaszok rögzítése, a web app b
 
 1. Web app bot service-ben az Azure Portalon válassza ki a **hozhat létre** alatt a **Bot felügyeleti** szakaszban. 
 
-    ![Keresés az app insights](./media/luis-tutorial-appinsights/build.png)
+    ![Web app bot service-ben az Azure Portalon válassza a "Build" a "Bot kezelése" szakaszban. ](./media/luis-tutorial-appinsights/build.png)
 
 2. Egy új böngészőlapon nyílik meg, hogy az App Service Editor. Válassza ki az alkalmazás neve a felső sávon, majd válassza ki **Kudu konzol megnyitása**. 
 
-    ![Keresés az app insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Válassza ki a felső sávon az alkalmazás nevét, majd válassza a "Megnyitás Kudu konzol". ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. A konzolon adja meg az Application Insights és az aláhúzás csomagok telepítéséhez a következő parancsot:
 
@@ -63,7 +63,7 @@ Annak érdekében, hogy a LUIS-kérések és válaszok rögzítése, a web app b
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Keresés az app insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Az Application Insights és az aláhúzás csomagok telepítése az npm parancsok használatával](./media/luis-tutorial-appinsights/npm-install.png)
 
     Várja meg a csomagok telepítése:
 
@@ -112,9 +112,7 @@ Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez.
 
 1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás robot neve. Kattintson az erőforráson típusú **Application Insights**. Az ikonra az Application Insights egy villanykörte. 
 
-    ![Keresés az app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ! [[Keresse meg az app insights az Azure Portalon](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. Az erőforrás megnyitása után kattintson a a **keresési** ikonjára a Nagyító ikonra a jobb szélen panelen. Egy új panel a jobb oldali jeleníti meg. Telemetriai adatok mennyiségétől függően található, a panel megjelenítéséhez egy második is igénybe vehet. Keresse meg `LUIS-results` , majd nyomja le a billentyűzet adja meg. A listában csak a LUIS lekérdezési eredmények ebben az oktatóanyagban hozzáadja van szűkíthető.
 

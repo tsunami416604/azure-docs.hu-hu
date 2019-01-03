@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: wesmc
-ms.openlocfilehash: fabd21f9d7fe5ac1511f6b4cc07b8c17b055befe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 15166ae5eaab72849564ce8f03daf65eefae11f1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019642"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584037"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Az Azure CLI-minták az Azure Cache a redis Cache
 
@@ -33,7 +33,7 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 | [Gyorsítótár-részletek](./scripts/show-cache.md) | Részletek az Azure Cache Redis-példányt, beleértve a kiépítési állapot beolvasása. |
 | [A gazdagépnév, portok és kulcsok beolvasása](./scripts/cache-keys-ports.md) | Lekéri a gazdagépnév, portok és kulcsok az Azure Cache a Redis-példányt. |
 |**Webalkalmazás és a gyorsítótár**||
-| [Webes alkalmazás csatlakoztatása az Azure Cache redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Létrehoz egy Azure-webalkalmazást és a egy Azure Cache redis, majd hozzáadja az alkalmazásbeállításokat a redis-kapcsolat adatai. |
+| [Webes alkalmazás csatlakoztatása az Azure Cache redis](./../app-service/scripts/cli-connect-to-redis.md) | Létrehoz egy Azure-webalkalmazást és a egy Azure Cache redis, majd hozzáadja az alkalmazásbeállításokat a redis-kapcsolat adatai. |
 |**Gyorsítótár törlése**||
 | [A gyorsítótár törlése](./scripts/delete-cache.md) | Az Azure Cache Redis-példány törlése  |
 | | |

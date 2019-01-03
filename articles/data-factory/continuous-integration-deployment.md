@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623785"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554928"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -733,12 +733,12 @@ Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Tr
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -762,7 +762,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +788,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +819,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -958,3 +975,17 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>A csatolt Resource Manager-sablonok
+
+Ha beállította a folyamatos integráció és készregyártás (CI/CD) esetében az adat-előállítók, azt megfigyelheti, hogy nagyobb méretű az előállító növekedésével tapasztal a Resource Manager sablon korlátok, például az erőforrások vagy a maximálisan megengedett adattartalom-erőforrásban maximális száma Manager-sablon. Például ezek együtt egy Factory teljes Resource Manager-sablon létrehozása a Data Factory is hoz létre a társított Resource Manager-sablonok. Ennek eredményeképpen rendelkezik az egész gyár tartalom oszthatók több fájlt, hogy azokat az említett korlátozások nem futtatható.
+
+Ha van konfigurálva, a Git, a hivatkozott sablonok jönnek létre és menti a teljes Resource Manager-sablonok mellett a `adf_publish` ág nevű új mappa alatt `linkedTemplates`.
+
+![Resource Manager-sablonok csatolt mappa](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+A csatolt Resource Manager-sablonok általában rendelkeznek egy fő sablont és a fő kapcsolódó gyermek sablonok számos. A fölérendelt sablon neve `ArmTemplate_master.json`, és a gyermek sablonok vannak elnevezve a minta `ArmTemplate_0.json`, `ArmTemplate_1.json`, és így tovább. A teljes, a kapcsolt sablonok használata a Resource Manager-sablon használatával történő átvitele a CI/CD feladat átirányítása frissítése `ArmTemplate_master.json` helyett mutató `ArmTemplateForFactory.json` (azaz a teljes Resource Manager-sablon). Resource Manager megköveteli, hogy a hivatkozott sablonok feltöltése a storage-fiókra, hogy azok elérhetők az Azure-ban üzembe helyezés során. További információ: [telepítése társított ARM-sablonok VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+
+Ne felejtse el hozzáadni a Data Factory-parancsfájlok a CI/CD-folyamat, előtt és után a központi telepítési feladatot.
+
+Ha nincs konfigurálva a Git, a hivatkozott sablonok keresztül érhető el a **exportálása ARM-sablon** kézmozdulat.

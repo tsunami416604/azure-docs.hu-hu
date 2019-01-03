@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260584"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714984"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ez a cikk ismerteti a 1807 csomag tartalmát. A frissítés tartalmazza a fejlesztések, javításokat és ismert problémák az Azure Stack, valamint a helyét, a frissítés letöltése ehhez a verzióhoz. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -162,9 +162,8 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Stack telepítése [1805 frissítése](azure-stack-update-1805.md) az Azure Stack 1807 frissítés alkalmazása előtt.  Hiba történt a frissítés nélkül 1806.  
-
-- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1805](azure-stack-update-1805.md#post-update-steps).  
+- Az Azure Stack telepítése [1805 frissítése](azure-stack-update-1805.md) az Azure Stack 1807 frissítés alkalmazása előtt. Hiba történt a frissítés nélkül 1806.  
+ 
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
@@ -244,16 +243,16 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 
    #1 riasztás:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
 
   Riasztási #2:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
   Mindkét riasztás biztonságosan figyelmen kívül hagyható, és automatikusan fog bezárása idővel.  
 
@@ -261,10 +260,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 2812138 | IS --> 
 - Láthatja, hogy egy riasztás **tárolási** összetevő, amely rendelkezik a következő adatokat:
 
-   - NAME: Storage szolgáltatás belső kommunikációs hiba  
-   - SÚLYOSSÁG: kritikus  
+   - NÉV: Storage szolgáltatás belső kommunikációs hiba  
+   - SÚLYOSSÁG: Kritikus  
    - ÖSSZETEVŐ: Storage  
-   - Leírás: A Storage szolgáltatás belső kommunikációs hiba történt, amikor kéréseket küld az alábbi csomópontok.  
+   - LEÍRÁS: Storage szolgáltatás belső kommunikációs hiba történt a kérés küldésekor az alábbi csomópontok.  
 
     A riasztás biztonságosan figyelmen kívül hagyható, de a riasztás lezárása manuálisan kell.
 
@@ -281,7 +280,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Amikor kiválasztja a virtuális gép üzembe helyezéséhez virtuálisgép-méretet, néhány F-sorozat Virtuálisgép-méretek nem láthatók a virtuális gép létrehozásakor a méret választó részeként. Az alábbi virtuális gépeinek-választójában jelenítse nem jelennek meg: *F8s_v2*, *F16s_v2*, *F32s_v2*, és *F64s_v2*.  
   Áthidaló megoldásként használja a következő módszerek egyikét virtuális gép üzembe helyezése. Az egyes módszerek kell adja meg a használni kívánt virtuális gép méretét.
 
-  - **Az Azure Resource Manager-sablon:** egy sablont használ, amikor a *vmSize* egyenlő a használni kívánt Virtuálisgép-méretet a sablonban. Ha például a következő bejegyzés központi telepítéséhez használandó használó virtuális gép a *F32s_v2* mérete:  
+  - **Az Azure Resource Manager-sablon:** Amikor egy sablont használ, állítsa be a *vmSize* egyenlő a használni kívánt Virtuálisgép-méretet a sablonban. Ha például a következő bejegyzés központi telepítéséhez használandó használó virtuális gép a *F32s_v2* mérete:  
 
     ```
         "properties": {
@@ -289,9 +288,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Az Azure CLI:** használhatja a [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) parancsot, és adja meg a virtuális gép méretét a paramétert, hasonló `--size "Standard_F32s_v2"`.
+  - **Az Azure CLI:** Használhatja a [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) parancsot, és adja meg a virtuális gép méretét a paramétert, hasonló `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** a PowerShell segítségével használható [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) a paraméterrel, amely meghatározza a virtuális gép méretét, hasonló `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** A PowerShell segítségével [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) a paraméterrel, amely meghatározza a virtuális gép méretét, hasonló `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 

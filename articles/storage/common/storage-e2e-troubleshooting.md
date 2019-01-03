@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262318"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634507"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ Első lépésként azt konfigurálnia kell az Azure Storage-naplózás és mér�
 
 **Via PowerShell**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Az Azure PowerShell használatának első lépései, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 1. Használja a [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
@@ -114,13 +116,13 @@ Az Azure PowerShell használatának első lépései, lásd: [telepítése és ko
 4. Storage a Blob szolgáltatás naplózásának engedélyezéséről:
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. A Blob szolgáltatás, ügyelve arra, hogy állítsa be, hogy a storage mérőszámainak engedélyezése **- MetricsType** való `Minute`:
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>.NET ügyféloldali naplózás konfigurálása
@@ -198,11 +200,11 @@ Message Analyzert eszközöket tartalmaz, amelyek segítenek a kiszolgáló, üg
 2. Indítsa el a Message Analyzer.
 3. Az a **eszközök** menüjében válassza **Eszközkezelő**. Az a **Eszközkezelő** párbeszédablakban válassza **letölti**, majd szűrés **Azure Storage**. Az Azure Storage-eszközök, az alábbi képen látható módon jelenik meg.
 4. Kattintson a **szinkronizálás az összes megjelenített elemek** az Azure Storage-eszközök telepítéséhez. A rendelkezésre álló eszközök a következők:
-   * **Az Azure Storage Színszabályainak:** az Azure Storage színszabályainak engedélyezése, hogy meghatározza a speciális szűrők, amelyek használják a szín, a szöveg és a betűtípus stílusok üzeneteket, amelyek tartalmazzák a nyomkövetési szereplő konkrét információk kiemeléséhez.
-   * **Az Azure Storage-diagramokat:** az Azure Storage-diagramok használata előre definiált diagramok, amelyek a graph-kiszolgáló naplózási adatokat. Vegye figyelembe, hogy használatára diagramok Azure Storage jelenleg, akkor előfordulhat, hogy csak akkor kell betölteni a kiszolgálónapló a elemzési rácsba.
-   * **Az Azure Storage-elemzők:** az Azure Storage-elemzők elemezni annak érdekében, hogy a elemzési rácsban megjelenítendő őket az Azure Storage-kliens, a kiszolgáló és a HTTP-naplókat.
-   * **Az Azure Storage-szűrők:** az Azure Storage-szűrők használatával lekérdezheti az adatokat az elemzési rács előre meghatározott feltételeknek.
-   * **Az Azure Storage nézet elrendezések:** az Azure Storage nézet elrendezések előre definiált oszlop elrendezések és az elemzési rács csoportosításokat.
+   * **Az Azure Storage Színszabályainak:** Az Azure Storage színszabályainak engedélyezze, hogy meghatározza a speciális szűrők, amelyek színét, szöveg és betűstílusok üzeneteket, amelyek tartalmazzák a nyomkövetési szereplő konkrét információk kiemeléséhez.
+   * **Az Azure Storage-diagramokat:** Az Azure Storage-diagramok olyan előre definiált diagramok, amelyek a graph-kiszolgáló naplózási adatokat. Vegye figyelembe, hogy használatára diagramok Azure Storage jelenleg, akkor előfordulhat, hogy csak akkor kell betölteni a kiszolgálónapló a elemzési rácsba.
+   * **Az Azure Storage-elemzők:** Az Azure Storage-elemzők az Azure Storage-kliens, a kiszolgáló és a HTTP-naplókat elemezni annak érdekében, hogy a elemzési rácsban megjelenítendő őket.
+   * **Az Azure Storage-szűrők:** Az Azure Storage-szűrők használatával lekérdezheti az adatokat az elemzési rács előre meghatározott feltételeknek.
+   * **Az Azure Storage-nézet elrendezések:** Az Azure Storage nézet elrendezésének a következők: előre definiált oszlop elrendezések és az elemzési rács csoportosításokat.
 5. Indítsa újra a Message Analyzer, az eszközök telepítése után.
 
 ![Message Analyzer Eszközkezelő](./media/storage-e2e-troubleshooting/mma-start-page-1.png)

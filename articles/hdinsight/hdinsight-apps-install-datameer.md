@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498766"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652965"
 ---
 # <a name="install-published-application---datameer"></a>Közzétett alkalmazás – Datameer telepítése
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Datameer](https://ww
 
 ## <a name="about-datameer"></a>Tudnivalók a Datameer
 
-Datameer a Hadoop platformon, kiterjesztésének meglévő Azure HDInsight képességeit és a quick integration, előkészítési és strukturált és strukturálatlan adatok elemzése egy natív alkalmazást. Datameer férhet hozzá több mint 70 források és formátumok: strukturált, félig strukturált és strukturálatlan. Töltse fel az adatokat, vagy használhatja azok egyedi adatok hivatkozások segítségével szerez adatokat igény szerinti közvetlenül. A Datameer önkiszolgáló funkciókat és ismerős számolótábla-felülettel Big Data-technológia bonyolultságát is csökkenti, és gyorsítja idő Insight. A számolótábla-felülettel, amely optimalizált, Hadoop-feladatok majd fordítja deklaratív Képletek beírása egy egyszerű mechanizmust biztosít. A Datameer és az üzleti intelligenciára épülő (BI) és az Excel-ismereteit használhatja Hadoop a felhőben gyorsan. További információkért lásd: a [Datameer dokumentáció](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+Datameer a Hadoop platformon, kiterjesztésének meglévő Azure HDInsight képességeit és a quick integration, előkészítési és strukturált és strukturálatlan adatok elemzése egy natív alkalmazást. Datameer férhet hozzá több mint 70 források és formátumok: strukturált, félig strukturált és strukturálatlan. Töltse fel az adatokat, vagy használhatja azok egyedi adatok hivatkozások segítségével szerez adatokat igény szerinti közvetlenül. A Datameer önkiszolgáló funkciókat és ismerős számolótábla-felülettel Big Data-technológia bonyolultságát is csökkenti, és gyorsítja idő Insight. A számolótábla-felülettel, amely optimalizált, Hadoop-feladatok majd fordítja deklaratív Képletek beírása egy egyszerű mechanizmust biztosít. A Datameer és az üzleti intelligenciára épülő (BI) és az Excel-ismereteit használhatja Hadoop a felhőben gyorsan. További információkért lásd: a [Datameer dokumentáció](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +106,9 @@ Gratulálunk! Ezzel létrehozott egy vizualizációt, az adatok kód írása né
 
 ## <a name="next-steps"></a>További lépések
 
-* [Datameer dokumentáció](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
-* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.
+* [Datameer dokumentáció](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): Ismerje meg, hogyan lehet HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
+* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Ismerje meg, hogyan teheti közzé egyéni HDInsight-alkalmazásait akár az Azure Marketplace-en.
+* [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx): Ismerje meg, hogyan adhat meg HDInsight-alkalmazások.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): Ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): Ismerje meg, hogy egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

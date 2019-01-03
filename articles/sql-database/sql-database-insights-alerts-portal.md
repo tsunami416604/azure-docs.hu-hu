@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273347"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634609"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -46,13 +46,13 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 1. Az a [portál](https://portal.azure.com/), keresse meg az erőforrást, amelyek figyelése érdekli, és válassza ki azt.
 2. Válassza ki **riasztások (klasszikus)** a figyelés szakaszban. A szöveg és ikon kissé eltérhet a különböző erőforrásokat.  
    
-     ![Figyelés](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Figyelés](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **CSAK AZ SQL DW**: Kattintson a **DWU-felhasználás** grafikon. Válassza ki **klasszikus riasztások megtekintése**
 
 3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** gombra, és töltse ki a mezőket.
    
-    ![Riasztás beállítása](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Riasztás beállítása](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítő e-mailek is megjeleníti.
 5. Válassza ki a **metrika** figyelheti, majd kattintson a kívánt egy **feltétel** és **küszöbérték** a mérőszám értéke. Is kiválaszthatják a **időszak** , ameddig a metrikaszabály riasztási triggerek előtt teljesülniük kell. Így például, ha az időszak "PT5M" használja, és a riasztás 80 % fölötti keres CPU, a riasztás aktiválásakor mikor a **átlagos** CPU 80 % fölötti 5 perc volt. Akkor fordul elő, az első eseményindító, ha azt újra aktivál, ha az átlagos Processzorhasználat nem éri a 80 %-kal több mint 5 perc. A CPU-mérték 1 percenként történik. Tekintse át az alábbi táblázat a támogatott idő windows és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos értéket használja.   
 6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy elküldhetők e-mailben a riasztás akkor aktiválódik, amikor a rendszergazdák és a társadminisztrátorok.
@@ -117,5 +117,5 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 ## <a name="next-steps"></a>További lépések
 * [Az Azure monitoring áttekintése](../monitoring-and-diagnostics/monitoring-overview.md) többek között a különböző információkat gyűjthet, és figyelheti.
 * Tudjon meg többet [webhookok konfigurálásáról a riasztások](../azure-monitor/platform/alerts-webhooks.md).
-* Get- [diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és részletes nagy gyakoriságú metrikákat gyűjt be a szolgáltatás.
+* Get- [diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md) és részletes nagy gyakoriságú metrikákat gyűjt be a szolgáltatás.
 * Get- [metrikák gyűjtési áttekintése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , győződjön meg arról, hogy szolgáltatása elérhető és válaszkész.

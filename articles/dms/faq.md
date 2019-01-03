@@ -4,19 +4,19 @@ description: Ismerje meg az adatbázis-migrálási parancsait végrehajtásához
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 12/19/2018
+ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887104"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714695"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatával kapcsolatos gyakori kérdések
 Ez a cikk felsorolja az Azure Database Migration Service kapcsolódó válaszokat és használatával kapcsolatos gyakori kérdésekre.
@@ -28,7 +28,7 @@ Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatá
 - Folyamatos befektetést áttelepítések fennakadások nélkül használható.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>K. Milyen forrás – cél párok az Azure Database Migration Service jelenleg támogatja?
-A szolgáltatás jelenleg támogatja az SQL Serverről az Azure SQL Database, és megnyithatja az Azure portal webhelyen ebben a forgatókönyvben az Azure Database Migration Service használatának megkezdéséhez. Egyéb forrás – cél párok, például az Azure SQL Database, Oracle egy korlátozott Private Preview-n keresztül érhetők el. Részt venni a korlátozott előzetes verzióban elérhető saját forgatókönyv esetében lehetőség esetében regisztráció [Itt](https://aka.ms/dms-preview/).
+A szolgáltatás jelenleg támogatja a különböző áttelepítési forgatókönyveinek. Állapotát az egyes érhető el áttelepítési forgatókönyvek teljes listáját lásd: a cikk [állapotát az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek](https://docs.microsoft.com/azure/dms/resource-scenario-status). Egyéb áttelepítési forgatókönyvek korlátozott előzetes verzióban elérhető és a DMS Preview-helyeken keresztül nevezés beküldése igényel. A korlátozott előzetes verzióban érhető el, és a regisztráció particpate egy ezeket az ajánlatokat a forgatókönyvek teljes listáját lásd: a [DMS Preview-hely](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>K. Az Azure Database Migration Service összehasonlítása a más Microsoft adatbázis-áttelepítési eszközök például a Database Migration Assistant (DMA) vagy az SQL Server Migrálási Assistant (SSMA)
 Az Azure Database Migration Service legyen az előnyben részesített módszere ipari méretekben a Microsoft Azure adatbázis-migrálást. További részleteket az Azure Database Migration Service hogyan hasonlítja össze a más Microsoft-adatbázis-áttelepítési eszközök és kapcsolatos javaslatokat a szolgáltatás különböző forgatókönyvek segítségével, tekintse meg a blog könyvelés [sokoldalúbbá Microsoft adatbázis Migrálási eszközöket és szolgáltatásokat](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).

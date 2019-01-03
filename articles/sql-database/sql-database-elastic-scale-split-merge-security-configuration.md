@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964832"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599832"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
 A felosztás/egyesítés szolgáltatás használatához a megfelelő biztonsági kell konfigurálnia. A szolgáltatás része a Microsoft Azure SQL Database rugalmas méretezési funkció. További információkért lásd: [rugalmas méretezési felosztása és egyesítése Service-oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -43,7 +43,7 @@ Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítv�
     Ha telepítve van, folytassa a:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* A WDK az első [Windows 8.1: készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* A WDK az első [Windows 8.1: Készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
 SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
@@ -398,16 +398,16 @@ Kövesse az alábbi lépéseket:
 ## <a name="export-certificate"></a>Tanúsítvány exportálása
 Az a **tanúsítvány exportálása varázslóban**:
 
-1. Kattintson a **Tovább** gombra.
+1. Kattintson a **tovább**.
 2. Válassza ki **Igen**, majd **a titkos kulcs exportálásának**.
-3. Kattintson a **Tovább** gombra.
+3. Kattintson a **tovább**.
 4. Válassza ki a kívánt kimeneti fájl formátumát.
 5. Ellenőrizze a kívánt beállításokat.
 6. Ellenőrizze **jelszó**.
 7. Adjon meg egy erős jelszót, és erősítse meg.
-8. Kattintson a **Tovább** gombra.
+8. Kattintson a **tovább**.
 9. Írja be vagy tallózással keresse meg a FileName paramétert a tanúsítvány tárolására (használja a. PFX-kiterjesztéssel).
-10. Kattintson a **Tovább** gombra.
+10. Kattintson a **tovább**.
 11. Kattintson a **Befejezés** gombra.
 12. Kattintson az **OK** gombra.
 
@@ -418,7 +418,7 @@ A Tanúsítványimportáló varázslóban:
    
    * Válassza ki **aktuális felhasználó** Ha csak az aktuális felhasználóhoz tartozó futó folyamatok a szolgáltatás elérésére
    * Válassza ki **helyi gép** , ha a számítógép más folyamatok a szolgáltatás elérésére
-2. Kattintson a **Tovább** gombra.
+2. Kattintson a **tovább**.
 3. Ha importál egy fájlból, erősítse meg a fájl elérési útját.
 4. Ha egy. PFX-fájlt:
    1. Adja meg a jelszót a titkos kulcsok védelme

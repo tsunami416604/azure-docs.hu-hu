@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: fa2f16f1a7d99a825039e2191c69642a45ff728a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3b06335019cf15cc296c1814ee1fcf5ce50c3949
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845229"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971849"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vészhelyreállítás az Azure-bA a helyszíni fizikai kiszolgálók beállítása
 
@@ -137,7 +137,7 @@ IP-cím-alapú tűzfalszabályainak lehetővé kell tennie az Azure URL-címeket
 - **Kereskedelmi IP-címek** – lehetővé teszik a [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653), és a HTTPS (443) portot. Lehetővé teszi az Azure-régió támogatja az aad-ben, a biztonsági mentés, a replikációs és a tároló URL-címek az előfizetéséhez tartozó IP-címtartományát.  
 - **IP-címek kormányzati** -lehetővé teszi a [Azure Government adatközpont IP-címtartományok](https://www.microsoft.com/en-us/download/details.aspx?id=57063), és a HTTPS (443) port minden USGov régió (Virginia, Texas, Arizona és Iowa) támogatja az aad-ben, a biztonsági mentés, a replikáció és a tároló URL-címek esetében.  
 
-#### <a name="run-setup"></a>Futtassa a telepítőt
+#### <a name="run-setup"></a>A telepítő futtatása
 Futtassa az egyesített telepítő egy helyi rendszergazdaként, a konfigurációs kiszolgáló telepítése. A folyamatkiszolgáló és a fő célkiszolgáló is települnek alapértelmezés szerint a konfigurációs kiszolgálón.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]

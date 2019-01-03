@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100038"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652614"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -162,6 +162,17 @@ Ha a hálózat beállításait igényli, hogy kifejezetten engedélyezett kapcso
 Három esetben a DNS-név megfelel a mintának \*.azure-devices.net. 
 
 Ezenkívül a **Container-motor** tárolójegyzékek-hívást hajt végre a HTTPS-kapcsolaton keresztül. Az IoT Edge-futtatókörnyezet tárolórendszerképek lekéréséhez a DNS-név mcr.microsoft.com. A tároló motor más beállításjegyzékek csatlakozik, a központi telepítésben lévő konfigurálva. 
+
+Ezzel az ellenőrzőlistával tűzfalszabályokat kiindulópontként szolgál:
+
+   | URL-címe (\* = helyettesítő karakter) | Kimenő TCP-portok | Használat |
+   | ----- | ----- | ----- |
+   | MCR.microsoft.com  | 443 | A Microsoft tárolóregisztrációs adatbázis |
+   | Global.Azure-eszközök – provisioning.net  | 443 | A DPS hozzáféréséhez (nem kötelező) |
+   | \*. azurecr.io | 443 | Személyes, mind a 3. fél tárolóregisztrációs adatbázis |
+   | \*.blob.core.windows.net | 443 | Töltse le a lemezkép eltérések | 
+   | \*.Azure-devices.net | 5671, 8883, 443-as porton | Az IoT Hub-hozzáférés |
+   | \*. docker.io  | 443 | Docker-hozzáférés (nem kötelező) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Egy proxyn keresztül történő kommunikáció konfigurálása
 

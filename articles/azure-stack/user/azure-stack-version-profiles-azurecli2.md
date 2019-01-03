@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2018
+ms.date: 12/06/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969957"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726612"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
@@ -128,7 +128,6 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-
    b. Regisztrálja a *felhasználói* környezet használja:
 
       ```azurecli
@@ -151,9 +150,22 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
+    d. Felhasználó regisztrálása az AD FS-környezetben, használja:
 
+      ```azurecli
+      az cloud register \
+        -n AzureStack  \
+        --endpoint-resource-manager "https://management.local.azurestack.external" \
+        --suffix-storage-endpoint "local.azurestack.external" \
+        --suffix-keyvault-dns ".vault.local.azurestack.external"\
+        --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" \
+        --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/"\
+        --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/"\
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --profile "2018-03-01-hybrid"
+      ```
 1. Állítsa be az aktív környezetet az alábbi parancsok használatával.
-
+   
    a. Az a *felhőalapú felügyeleti* környezet használja:
 
       ```azurecli
@@ -180,8 +192,8 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
 
 1. Jelentkezzen be az Azure Stack-környezet használatával a `az login` parancsot. Bejelentkezhet az Azure Stack-környezet vagy egy felhasználó vagy egy [szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-    * AAD-környezetek
-      * Jelentkezzen be egy *felhasználói*: megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy hitelesíteni tudja a webböngésző használatával. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
+    * Az Azure AD-környezet
+      * Jelentkezzen be egy *felhasználói*: Megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy hitelesíteni tudja a webböngésző használatával. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
 
       ```azurecli
       az login \
@@ -192,9 +204,9 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
       > [!NOTE]
       > Ha a felhasználói fiók rendelkezik a többtényezős hitelesítés engedélyezve van, használhatja a `az login command` anélkül, hogy a `-u` paraméter. A következő parancs futtatásával lehetővé teszi egy URL-CÍMÉT és a egy kódot, amely hitelesítést kell használnia.
    
-      * Jelentkezzen be egy *szolgáltatásnév*: jelentkezik be, mielőtt [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](azure-stack-create-service-principals.md) vagy a parancssori felület, és rendelje hozzá egy szerepkörhöz. Most jelentkezzen be a következő paranccsal:
+      * Jelentkezzen be egy *szolgáltatásnév*: Amikor bejelentkezik, [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](azure-stack-create-service-principals.md) vagy a parancssori felület, és rendelje hozzá egy szerepkörhöz. Most jelentkezzen be a következő paranccsal:
 
-      ```azurecli
+      ```azurecli  
       az login \
         --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
         --service-principal \
@@ -203,20 +215,33 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
       ```
     * Az AD FS-környezetek
 
-        * Jelentkezzen be egy *szolgáltatásnév*: 
-          1.    Készítse elő a .pem-fájlt a szolgáltatás egyszerű bejelentkezéshez használandó.
-                * Az ügyfélszámítógépen, ahol a rendszerbiztonsági tag lett létrehozva, a szolgáltatás egyszerű tanúsítvány exportálása a pfx titkos kulccsal (cert: \CurrentUser\My; helyen található a tanúsítvány nevét a neve megegyezik a rendszerbiztonsági tag van).
+        * Jelentkezzen be a webböngésző használatával felhasználóként:  
+              ```azurecli  
+              az login
+              ```
+        * Jelentkezzen be a webböngészővel rendelkező eszköz felhasználóként:  
+              ```azurecli  
+              az login --use-device-code
+              ```
+        > [!Note]  
+        >A következő parancs futtatásával lehetővé teszi egy URL-CÍMÉT és a egy kódot, amely hitelesítést kell használnia.
 
-                *   A pfx konvertálható pem (OpenSSL segédprogram használata).
+        * Jelentkezzen be egy egyszerű szolgáltatást:
+        
+          1. Készítse elő a .pem-fájlt a szolgáltatás egyszerű bejelentkezéshez használandó.
 
-          1.    Jelentkezzen be a parancssori felület. :
-                ```azurecli
-                az login --service-principal \
-                 -u <Client ID from the Service Principal details> \
-                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
-                 --tenant <Tenant ID> \
-                 --debug 
-                ```
+            * Az ügyfélszámítógépen, ahol a rendszerbiztonsági tag lett létrehozva, a szolgáltatás egyszerű tanúsítvány exportálása a pfx titkos kulccsal (található `cert:\CurrentUser\My;` a tanúsítvány nevét a neve megegyezik a rendszerbiztonsági tag van).
+        
+            * A pfx konvertálható pem (OpenSSL segédprogram használata).
+
+          2.  Jelentkezzen be a parancssori felület:
+            ```azurecli  
+            az login --service-principal \
+              -u <Client ID from the Service Principal details> \
+              -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+              --tenant <Tenant ID> \
+              --debug 
+            ```
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 

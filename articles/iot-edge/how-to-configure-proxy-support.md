@@ -4,21 +4,21 @@ description: Hogyan állíthatja be az Azure IoT Edge-futtatókörnyezet és bá
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ad9ecd9c5b50657caba7522fe500a748a10cd02d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100468"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634303"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
-IoT Edge-eszközökön az IoT hubbal való kommunikációhoz HTTPS-kéréseket küldeni. Ha az eszköz csatlakoztatva van a hálózathoz, amelyek proxykiszolgálót használ, a kiszolgálón keresztül kommunikálnak az IoT Edge-futtatókörnyezet konfigurálása szeretné. Proxykiszolgálók is befolyásolhatja az egyes IoT Edge-modulok ha azok HTTP vagy HTTPS-kéréseket, amelyek nem irányítva az Edge hubon áthaladó teszik. 
+IoT Edge-eszközökön az IoT hubbal való kommunikációhoz HTTPS-kéréseket küldeni. Ha az eszköz csatlakoztatva van a hálózathoz, amelyek proxykiszolgálót használ, a kiszolgálón keresztül kommunikálnak az IoT Edge-futtatókörnyezet konfigurálása szeretné. Proxykiszolgálók is befolyásolhatja az egyes IoT Edge-modulok ha azok HTTP vagy HTTPS-kéréseket, amely nincs átirányítva az IoT Edge hubon keresztül teszik. 
 
 Proxykiszolgáló használata az IoT Edge-eszköz konfigurálása a következő alapvető lépéseket: 
 
@@ -33,7 +33,7 @@ A Docker-démont és az IoT Edge konfigurálása az eszközön, akkor ismernie k
 
 Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**proxy_host**:**proxyport**. 
 
-* A **protokoll** HTTP vagy HTTPS van. A Docker-démon mindkét protokollt, a container registry beállításoktól függően a konfigurálható, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
+* A **protokoll** HTTP vagy HTTPS van. A Docker-démon használhatja mindkét protokollt, a tároló-beállításjegyzékek beállításai, attól függően, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
 
 * A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, a hitelesítő adatokat biztosíthat a proxy_host formátumban részeként **felhasználói**:**jelszó**@**proxy_host**. 
 
@@ -43,14 +43,22 @@ Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**
 
 Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű eszközön, konfigurálja a package manager haladhat végig a proxykiszolgáló eléréséhez a telepítési csomagot. Ha például [apt-get paranccsal beállítása egy http-proxy használatára](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Miután konfigurálta a Csomagkezelő, kövesse a [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) vagy [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) a szokásos módon. 
 
-Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, nyissa meg a telepítési csomag eléréséhez a proxykiszolgálón keresztül szeretné. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
+Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor nyissa meg a proxykiszolgálón keresztül után töltse le a telepítési parancsfájlt, majd újból letölteni a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
 
 ```powershell
 . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows
+Install-SecurityDaemon -Manual -ContainerOs Windows -proxy <proxy URL>
 ```
 
-További információ és a telepítési beállításokat, lásd: [telepítse az Azure IoT Edge-modul a Windows-tárolók használata Windows](how-to-install-iot-edge-windows-with-windows.md) vagy [telepítse az Azure IoT Edge-modul Windows, Linux-tárolók használata a](how-to-install-iot-edge-windows-with-linux.md).
+Ha Ön rendelkezik bonyolult, amely nem szerepelhet az URL-címet a proxykiszolgáló hitelesítő adatait, használja a `-ProxyCredential` paraméter `-InvokeWebRequestParameters`. Például:
+
+```powershell
+$proxyCredential = (Get-Credential).GetNetworkCredential()
+. {Invoke-WebRequest -proxy <proxy URL> -ProxyCredential $proxyCredential -useb aka.ms/iotedge-win} | Invoke-Expression; `
+Install-SecurityDaemon -Manual -ContainerOs Windows -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
+```
+
+Proxy-paraméterekkel kapcsolatos további információkért lásd: [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Telepítési lehetőségekkel kapcsolatos további információkért lásd: [telepítse az Azure IoT Edge-modul a Windows](how-to-install-iot-edge-windows.md).
 
 Miután telepítette az IoT Edge-futtatókörnyezet, az alábbi szakasz segítségével konfigurálja azt a proxy adatait. 
 
@@ -65,7 +73,7 @@ Tekintse meg a Docker dokumentációt a Docker-démon konfigurálása a környez
 Válassza ki a cikket, amely a Docker verziójára: 
 
 * [Docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [A Windows docker](https://docs.docker.com/docker-for-windows/#proxies)
+* [A Windows docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
 
 ### <a name="iot-edge-daemon"></a>IoT Edge-démon
 
@@ -86,7 +94,7 @@ A következő szöveget, és cserélje le  **\<proxy URL-címe >** a proxykiszol
 Environment="https_proxy=<proxy URL>"
 ```
 
-Frissítés a service manager csomópontmetrikák felvételéhez iotedge az új konfigurációt.
+A service manager az új konfigurációt az IoT Edge-hez való frissítése.
 
 ```bash
 sudo systemctl daemon-reload
@@ -118,13 +126,13 @@ IoT Edge a módosítások érvénybe léptetéséhez indítsa újra.
 Restart-Service iotedge
 ```
 
-## <a name="configure-the-edge-agent"></a>Az Edge agent konfigurálása
+## <a name="configure-the-iot-edge-agent"></a>Az IoT Edge-ügynök konfigurálása
 
-Az Edge agent minden IoT Edge-eszközön indítsa el az első modult. Az IoT Edge config.yaml fájl található információk alapján első alkalommal elindul. Az Edge agent majd csatlakozik az IoT hubhoz telepítési jegyzékek, amely deklarálja, hogy milyen más modulok kell lekérni az eszközön telepített.
+Az IoT Edge-ügynök minden IoT Edge-eszközön indítsa el az első modult. Az IoT Edge config.yaml fájl található információk alapján első alkalommal elindul. Üzembe helyezési jegyzékek, amely deklarálja, hogy milyen más modulok kell lekérni az IoT Hub ezután csatlakozik az IoT Edge-ügynök telepítve az eszközön.
 
 Nyissa meg az IoT Edge-eszköz config.yaml fájlt. Linux rendszerek esetében ez a fájl nem található: **/etc/iotedge/config.yaml**. A Windows rendszerek esetében ez a fájl következő helyen található **C:\ProgramData\iotedge\config.yaml**. A konfigurációs fájl védett, így hozzáférési rendszergazdai jogosultságok szükségesek. A Linux rendszerek esetében, amely azt jelenti, hogy használatával a `sudo` parancs előtt meg megnyitni a fájlt az előnyben részesített szövegszerkesztőben. Windows, az azt jelenti, hogy nyissa meg egy szövegszerkesztőben, például a Jegyzettömbben Futtatás rendszergazdaként, és majd a fájl megnyitásakor. 
 
-Config.yaml a fájlban keresse meg a **az Edge Agent modul specifikációja** szakaszban. Az Edge agent definíciója tartalmaz egy **env** paraméter, ahol hozzáadhat környezeti változókat. 
+Config.yaml a fájlban keresse meg a **az Edge Agent modul specifikációja** szakaszban. Az IoT Edge-ügynök definíció egy **env** paraméter, ahol hozzáadhat környezeti változókat. 
 
 <!--
 ![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
@@ -160,7 +168,7 @@ Mentse a módosításait config.yaml, és zárja be a szerkesztőt. IoT Edge a m
 
 ## <a name="configure-deployment-manifests"></a>Üzembe helyezés jegyzékek konfigurálása  
 
-Ha a proxykiszolgáló használata az IoT Edge-eszköz van konfigurálva, kell is az összes későbbi központi telepítés jegyzékek levő környezeti változók deklarálása. A két futásidejű modulok, edgeAgent és edgeHub, mindig rendelkeznie kell konfigurált IoT Hub kommunikáció fenntartása a proxykiszolgálót. Bármely proxykiszolgálón keresztül kommunikáljon az IoT Edge-modul is beállíthat, de az nem szükséges modulokat, amely az üzeneteket a edgeHub keresztül irányíthatja, illetve, hogy csak kommunikálhat más modulok az eszközön. 
+Ha a proxykiszolgáló használata az IoT Edge-eszköz van konfigurálva, a jövőben üzembe helyezési jegyzékfájlok környezeti változókat deklarálni továbbra is szeretné. Mindig úgy állítsa be a két futásidejű modulok, edgeAgent és edgeHub való kommunikációhoz a proxykiszolgálón keresztül, így ezek folyamatosan az IoT Hub-kapcsolattal. Az internethez csatlakozó egyéb IoT Edge-modulok esetében a proxykiszolgáló kell konfigurálni. Azonban a modulokat, amely az üzeneteket a edgeHub keresztül irányíthatja, illetve, hogy csak kommunikálhat más modulok az eszközön nem szükséges a proxykiszolgáló adatai. 
 
 Az Azure portal használatával, vagy manuálisan a JSON-fájl szerkesztése telepítési jegyzékek hozhat létre. 
 
@@ -168,11 +176,11 @@ Az Azure portal használatával, vagy manuálisan a JSON-fájl szerkesztése tel
 
 Használatakor a **modulok beállítása** eszközök, IoT Edge üzemelő példány létrehozása varázsló minden modul rendelkezik egy **környezeti változók** szakaszt, amely a proxy server kapcsolatok konfigurálásához használhatja. 
 
-Az Edge agentet és az Edge hub-modulok konfigurálásához válasszon **speciális Edge-futtatókörnyezet-beállítások konfigurálása** a varázsló első lépése. 
+Az IoT Edge-ügynök és hub IoT Edge-modulok konfigurálásához válasszon **speciális Edge-futtatókörnyezet-beállítások konfigurálása** a varázsló első lépése. 
 
 ![Edge-futtatókörnyezet speciális beállításainak megadása](./media/how-to-configure-proxy-support/configure-runtime.png)
 
-Adja hozzá a **https_proxy** környezeti változót, az Edge agentet és az Edge hub modulmeghatározásokat. Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszközön a config.yaml fájlt ad hozzá, amelyek az Edge agent modul definíció túl. 
+Adja hozzá a **https_proxy** környezeti változót, az IoT Edge-ügynök és az IoT Edge hubot modulmeghatározásokat. Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszközön a config.yaml fájlt ad hozzá, amely az IoT Edge-ügynök modul definíció túl. 
 
 ![Https_proxy környezeti változó beállítása](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
@@ -211,7 +219,7 @@ A a környezeti változókat tartalmaz a modul definition edgeHub az alábbihoz 
 }
 ```
 
-Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszközön a confige.yaml fájlt ad hozzá, amelyek az Edge agent modul definíció túl. 
+Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszközön a confige.yaml fájlt ad hozzá, amely az IoT Edge-ügynök modul definíció túl. 
 
 ```json
 "env": {

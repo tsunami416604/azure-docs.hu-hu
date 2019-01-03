@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964117"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720815"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -71,19 +71,19 @@ Az Azure Active Directory-Bérlői rendszergazda nem rendelkezik Azure-előfizet
 
    ![Az Azure AD tulajdonságok – képernyőkép](./media/security-center-management-groups/aad-properties.png)
 
-3. A **globális rendszergazda kezelheti az Azure-előfizetéseket és a felügyeleti csoportok**, a kapcsoló beállítása **Igen**.
+3. A **Access management az Azure-erőforrások**, a kapcsoló beállítása **Igen**.
 
    ![Globális rendszergazda kezelheti az Azure-előfizetéseket és a felügyeleti csoport – képernyőkép](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - Ha beállította a kapcsoló **Igen**, a globális rendszergazdai fiókjával (jelenleg bejelentkezett felhasználó) kerül a felhasználói hozzáférés rendszergazdájának szerepköre az Azure RBAC a gyökérszintű hatókörben (`/`), mely engedélyezi a nézet és a jelentés eléréséhez az összes Azure-előfizetések az Azure AD-bérlőhöz társított.
+   - Ha a kapcsoló Igen, az Azure RBAC a gyökérszintű hatókörben (/) a felhasználói hozzáférés rendszergazdája szerepkör rendelt. Ezzel engedélyt ad meg szerepkörök hozzárendelése az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoportokat. Ez a kapcsoló csak az Azure AD globális rendszergazdai szerepkörrel felruházott felhasználók számára érhető el.
 
-   - Ha beállította a kapcsoló **nem**, a globális rendszergazdai fiókjával (jelenleg bejelentkezett felhasználó) eltávolítják az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör. Az összes Azure-előfizetések az Azure AD-bérlőhöz társított nem fogja látni, és megtekintheti, és csak az Azure-előfizetések kezelése, amelyhez rendelkezik hozzáféréssel.
+  - A kapcsoló nem állítja be, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör eltávolítja a felhasználói fiókból. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
 
 4. Kattintson a **mentése** a beállítás mentéséhez.
 
     - Ez a beállítás egy globális tulajdonság nem, és csak a bejelentkezett felhasználó vonatkozik.
 
-5. A végre kell hajtania az emelt szintű hozzáférési feladatok elvégzéséhez. Ha elkészült, állítsa a kapcsolót vissza **nem**.
+5. Végre kell hajtania az emelt szintű hozzáférési feladatokat. Ha elkészült, állítsa a kapcsolót vissza **nem**.
 
 
 ### <a name="assign-rbac-roles-to-users"></a>RBAC-szerepkörök hozzárendelése felhasználókhoz

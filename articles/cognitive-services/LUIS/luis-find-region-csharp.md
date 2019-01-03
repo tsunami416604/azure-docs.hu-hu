@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5d4c564ac797f40d7f6e9b169a6c864d3ef8147b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f95dec8a539a92a0397421fbde411f646eeca3ca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165163"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720084"
 ---
-# <a name="find-endpoint-region-with-c"></a>Keresse meg a végpont régió a C# használatával 
+# <a name="programmatically-find-endpoint-region-with-c"></a>Programozott módon találja a végpont-régióhozC# 
 Ha rendelkezik a LUIS alkalmazás és a LUIS előfizetés-azonosító, Észreveheti, hogy melyik régiót kell végpont lekérdezések használatával.
 
 > [!NOTE] 
-> A teljes C# megoldás érhető el a [ **LUIS-Samples** GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/).
+> A teljes C# megoldás érhető el a [ **Azure-minták** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/csharp/).
 
 ## <a name="luis-endpoint-query-strategy"></a>A LUIS végpont lekérdezés stratégia
 Minden egyes LUIS végpont lekérdezés van szükség:

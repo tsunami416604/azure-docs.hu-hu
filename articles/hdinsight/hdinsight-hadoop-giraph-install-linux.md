@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383901"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713828"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Telepítse az Apache Giraph HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
 
 Ismerje meg, az Apache Giraph telepítése egy HDInsight-fürtön. A szkript HDInsight művelet funkciója lehetővé teszi, hogy testre szabhatja a fürt egy bash-szkript futtatásával. Fürtök testreszabása során és a fürt létrehozása után használható parancsprogramok.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Mi az a Giraph
 
-[Az Apache Giraph](http://giraph.apache.org/) diagramfeldolgozási Hadoop használatával végezhető el, és az Azure HDInsight is használható. Gráfok objektumok közötti kapcsolatok modellezésére. Ha például a kapcsolatok között nagyobb hálózatokon, mint például az interneten útválasztók és a közösségi hálózatokon személyek közötti kapcsolatok. Gráffeldolgozási lehetővé teszi a grafikon, objektumok közötti kapcsolatok vonatkozó döntések meghozatalát például:
+[Az Apache Giraph](https://giraph.apache.org/) diagramfeldolgozási Hadoop használatával végezhető el, és az Azure HDInsight is használható. Gráfok objektumok közötti kapcsolatok modellezésére. Ha például a kapcsolatok között nagyobb hálózatokon, mint például az interneten útválasztók és a közösségi hálózatokon személyek közötti kapcsolatok. Gráffeldolgozási lehetővé teszi a grafikon, objektumok közötti kapcsolatok vonatkozó döntések meghozatalát például:
 
 * A jelenlegi kapcsolatok alapján lehetséges barátok azonosítása.
 
@@ -36,7 +36,7 @@ Ismerje meg, az Apache Giraph telepítése egy HDInsight-fürtön. A szkript HDI
 > [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak,-Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők, például a Giraph, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Microsoft Support lehet oldani a problémát. Ha nem, a nyílt forráskódú Közösségek részletes szakértelmét, hogy a technológiát találhatók egyeztetnie kell. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például a Giraph, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Microsoft Support lehet oldani a problémát. Ha nem, a nyílt forráskódú Közösségek részletes szakértelmét, hogy a technológiát találhatók egyeztetnie kell. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>A parancsfájl leírása
@@ -55,7 +55,7 @@ A parancsfájlpéldát a Giraph telepítése egy HDInsight-fürtön a következ�
 
 Ez a szakasz útmutatást az Azure portal használatával a fürt létrehozásakor a minta parancsfájl használatával.
 
-> [!NOTE]
+> [!NOTE]  
 > Az alábbi módszerek bármelyikével szkriptműveletet lehet alkalmazni:
 > * Azure PowerShell
 > * Az Azure klasszikus parancssori felület
@@ -86,7 +86,7 @@ Ez a szakasz útmutatást az Azure portal használatával a fürt létrehozásak
 
 ## <a name="usegiraph"></a>A Giraph használata a HDInsight
 
-Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt SimpleShortestPathsComputation példa futtatásához. Ez a példa az alapszintű [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) megvalósítása a grafikus objektumok közötti legrövidebb útvonal megkeresése.
+Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt SimpleShortestPathsComputation példa futtatásához. Ez a példa az alapszintű [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) megvalósítása a grafikus objektumok közötti legrövidebb útvonal megkeresése.
 
 1. Csatlakozzon SSH-val a HDInsight-fürthöz:
 
@@ -146,7 +146,7 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
    | `-op` |A kimeneti helyet. |
    | `-w 2` |A használandó feldolgozók száma. Ebben a példában a 2. |
 
-    Ezeket és más paramétereket, a Giraph minták használt további információkért lásd: a [Giraph rövid](http://giraph.apache.org/quick_start.html).
+    Ezeket és más paramétereket, a Giraph minták használt további információkért lásd: a [Giraph rövid](https://giraph.apache.org/quick_start.html).
 
 6. A feladat befejeztével az eredmények tárolása az **/example/out/shotestpaths** könyvtár. A kimeneti fájl neve kezdődhet **. rész – m -** és az első, a második, stb. fájl jelző szám. A kimenet megtekintéséhez használja az a következő parancsot:
 

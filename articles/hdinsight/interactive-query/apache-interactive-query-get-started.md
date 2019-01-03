@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 6086c03961294a18fbf6a106188593c79c88d663
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b34d67e640f09ac6949e992d3af9388581851622
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309997"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629526"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
 Interaktív lekérdezés (más néven az Apache Hive LLAP, vagy [alacsony késés Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi az Apache Hive-lekérdezések gyorsabb és interaktívabb sokkal.
@@ -23,10 +23,8 @@ Interaktív lekérdezés (más néven az Apache Hive LLAP, vagy [alacsony késé
 
 Az interaktív lekérdezési fürt különbözik az Apache Hadoop-fürt. Csak a Hive-szolgáltatást tartalmaz. 
 
-> [!NOTE]
+> [!NOTE]  
 > A Hive-szolgáltatást, az az interaktív lekérdezési fürt csak az Apache Ambari, Hive-nézet, Beeline és a Microsoft Hive adatforrásnevet illesztőprogram (Hive ODBC) keresztül érheti el. Nem férhet hozzá, a Hive konzolt, templeton eszközön keresztül végzett, a klasszikus Azure CLI vagy az Azure PowerShell használatával. 
-> 
-> 
 
 ## <a name="create-an-interactive-query-cluster"></a>Az interaktív lekérdezési fürt létrehozása
 A HDInsight-fürt létrehozásával kapcsolatos információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Válassza ki az interaktív lekérdezési fürtöt.
@@ -34,17 +32,17 @@ A HDInsight-fürt létrehozásával kapcsolatos információkért lásd: [Apache
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Apache Hive-lekérdezések végrehajtása az interaktív lekérdezés
 Hive-lekérdezések végrehajtásához a következő lehetőségek állnak rendelkezésére:
 
-* A Power BI használata
+* Microsoft Power BI használata
 
     Lásd: [megjelenítése interaktív lekérdezés Apache Hive-adatok Power BI segítségével az Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
  
-* Az Apache a Zeppelin használata
+* Az Apache Zeppelin használata
 
     Lásd: [Apache Hive-lekérdezések futtatásához az Azure HDInsight használata az Apache Zeppelin ](../hdinsight-connect-hive-zeppelin.md).
 
 * A Visual Studio használata
 
-    Lásd: [csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatását a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+    Lásd: [csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatását a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 
 * A Visual Studio kód használata
 
@@ -75,7 +73,7 @@ A Java adatbázis-kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
 * Ismerje meg, hogyan [HDInsight interaktív lekérdezési fürtökhöz létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
 * Ismerje meg, hogyan [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
 * Ismerje meg, hogyan [Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához ](../hdinsight-connect-hive-zeppelin.md).
-* Ismerje meg, hogyan [a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+* Ismerje meg, hogyan [a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 * Ismerje meg, hogyan [HDInsight Tools for Visual Studio Code használata](../hdinsight-for-vscode.md).
 * Ismerje meg, hogyan [Apache Hive-nézet használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/apache-hadoop-use-hive-ambari-view.md)
 * Ismerje meg, hogyan [a Beeline használata a HDInsight Apache Hive-lekérdezések elküldéséhez](../hadoop/apache-hadoop-use-hive-beeline.md).

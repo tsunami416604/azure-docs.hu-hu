@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343156"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713269"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Tartós függvények futtatása a webjobs-feladatok
 
-[Az Azure Functions](../functions-overview.md) és a [Durable Functions](durable-functions-overview.md) bővítmény épül a [WebJobs SDK-val](../../app-service/web-sites-create-web-jobs.md). A `JobHost` van a modul az Azure Functions a WebJobs SDK-val. Ha meg kell határozni `JobHost` viselkedését az Azure Functions nem lehetséges módokon, fejlesztéséhez és tartós függvények futtatása a WebJobs SDK-val saját maga által. A tartós függvények ezután futtathat egy Azure webjobs-feladat vagy bárhol a konzol alkalmazás fut-e.
+[Az Azure Functions](../functions-overview.md) és a [Durable Functions](durable-functions-overview.md) bővítmény épül a [WebJobs SDK-val](../../app-service/webjobs-create.md). A `JobHost` van a modul az Azure Functions a WebJobs SDK-val. Ha meg kell határozni `JobHost` viselkedését az Azure Functions nem lehetséges módokon, fejlesztéséhez és tartós függvények futtatása a WebJobs SDK-val saját maga által. A tartós függvények ezután futtathat egy Azure webjobs-feladat vagy bárhol a konzol alkalmazás fut-e.
 
 A WebJobs SDK-verzió érhető el a titkosításblokkoló Durable Functions-minta: Töltse le vagy klónozza a [Durable Functions-tárház](https://github.com/azure/azure-functions-durable-extension/) , és keresse meg a *minták\\webjobssdk\\láncolás* mappát.
 

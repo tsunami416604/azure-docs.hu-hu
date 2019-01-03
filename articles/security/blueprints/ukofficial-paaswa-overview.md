@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409020"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718497"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: Egyesült Királyság hivatalos számítási feladatokhoz üzemeltető PaaS webes alkalmazás
 
@@ -102,17 +102,17 @@ Adatok kívül az átvitel során, és az Azure-összetevők közötti védje [T
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Az Azure Web Apps egy teljes körűen felügyelt webes webalkalmazás fejlesztett infrastruktúra kezelése nélkül a Java, PHP, Node.js, Python, HTML és C# környezetet üzemeltetési biztosít. Automatikus méretezést biztosít, és magas rendelkezésre állás érdekében támogatja a Windows és Linux egyaránt, és lehetővé teszi, hogy az automatikus telepítéseket a [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) vagy bármely egyéb Git-alapú adattárból.
+Az Azure App Service teljes körűen felügyelt webes üzemeltetési környezet fejlesztett ki, a Java, PHP, Node.js, Python, HTML-webalkalmazás nyújt és C# nélkül az infrastruktúrával kellene foglalkoznia. Automatikus méretezést biztosít, és magas rendelkezésre állás érdekében támogatja a Windows és Linux egyaránt, és lehetővé teszi, hogy az automatikus telepítéseket a [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) vagy bármely egyéb Git-alapú adattárból.
 
 App Service [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/) és hitelesítheti a felhasználókat a [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) vagy közösségi bejelentkezés ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), és [Microsoft hitelesítési](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
 
-Alapszintű, Standard és prémium csomag éles számítási feladatokra, és dedikált virtuálisgép-példányokon. Egyes példányok több alkalmazást és tartományt is támogathatnak. App services is támogatási [IP-címkorlátozások](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) , szükség esetén a megbízható IP-címek forgalmának biztonságossá tétele és is [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) más PaaS-szolgáltatások biztonságos kapcsolat például [Key Vault](https://azure.microsoft.com/services/key-vault/) és [az Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Ha további biztonsági szükség az izolált csomag az alkalmazások privát, dedikált Azure-környezetben üzemelteti, és az alkalmazásokhoz, amelyeknél a biztonságos kapcsolat a helyszíni hálózat, vagy további teljesítmény és skálázhatóság ideális.
+Alapszintű, Standard és prémium csomag éles számítási feladatokra, és dedikált virtuálisgép-példányokon. Egyes példányok több alkalmazást és tartományt is támogathatnak. App services is támogatási [IP-címkorlátozások](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) , szükség esetén a megbízható IP-címek forgalmának biztonságossá tétele és is [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/overview-managed-identity) más PaaS-szolgáltatások biztonságos kapcsolat például [Key Vault](https://azure.microsoft.com/services/key-vault/) és [az Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Ha további biztonsági szükség az izolált csomag az alkalmazások privát, dedikált Azure-környezetben üzemelteti, és az alkalmazásokhoz, amelyeknél a biztonságos kapcsolat a helyszíni hálózat, vagy további teljesítmény és skálázhatóság ideális.
 
 Ez a sablon a következő App Service-szolgáltatásokat telepíti:
 
-- [Standard szintű](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) Csomagszint App Service-ben
-- Több webalkalmazás [üzembe helyezési pontok](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Fejlesztési, előzetes verzió, QA, foglalja annak és természetesen éles (alapértelmezett tárhely).
-- [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) csatlakozni [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (Ez a hozzáférés biztosítására is használható [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
+- [Standard szintű](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) Csomagszint App Service-ben
+- App Service-ben több [üzembe helyezési pontok](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Fejlesztési, előzetes verzió, QA, foglalja annak és természetesen éles (alapértelmezett tárhely).
+- [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/app-service/overview-managed-identity) csatlakozni [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (Ez a hozzáférés biztosítására is használható [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integráció a [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) teljesítményének figyelése
 - [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - A metrika [riasztások](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -163,7 +163,7 @@ Azure Storage védelmével kapcsolatos részletes információk található a [b
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>Ez a megoldás az Azure Key Vault
 
-- A tárelérési kulcs, rendelkezik olvasási hozzáférést nyújtani a [identitás](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) a ügyfél felé néző webes alkalmazás
+- A tárelérési kulcs, rendelkezik olvasási hozzáférést nyújtani a [identitás](https://docs.microsoft.com/azure/app-service/overview-managed-identity) a ügyfél felé néző webes alkalmazás
 - Az SQL Server adatbázis jelszót tartalmazza (a külön tárolóban)
 - Diagnosztikai naplózás
 

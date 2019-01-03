@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 310a349aad4e6626033ca2f378e7c1b0ffa96560
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 47a957453bf5962f59518719895edc0f13fe7dc8
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388941"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584377"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
@@ -26,10 +26,10 @@ A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monito
 
 * Figyelési irányítópult megtekintése a portálon, és a saját privát figyelési irányítópultokat hozhat létre.
 * Meghatározott riasztási szabályok megtekintése [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md)
-* Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](../../monitoring-and-diagnostics/insights-powershell-samples.md), vagy [platformfüggetlen CLI](../../azure-monitor/platform/cli-samples.md).
+* Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md), vagy [platformfüggetlen CLI](../../azure-monitor/platform/cli-samples.md).
 * A lekérdezés a tevékenységnaplóban a portálon, az Azure Monitor REST API, PowerShell-parancsmagok vagy többplatformos parancssori felület használatával.
-* Nézet a [diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erőforrás.
-* Nézet a [naplóprofil](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) -előfizetéssel.
+* Nézet a [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) erőforrás.
+* Nézet a [naplóprofil](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) -előfizetéssel.
 * Automatikus skálázási beállítások megtekintéséhez.
 * Riasztási tevékenység megtekintése és beállításait.
 * Application Insights-adatok elérése és adatok megtekintése az AI-Analytics.
@@ -49,8 +49,8 @@ A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monito
 A figyelés közreműködői szerepkörrel mások is láthatják az összes monitorozási adat, előfizetés és a létrehozása vagy módosítása a figyelési beállításokat, de nem módosítható az összes többi erőforrást. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és a szervezet figyelési csapat vagy akik mellett a fenti, engedélyeket is képesnek kell lenniük a felügyelt szolgáltatóknak tagjai számára megfelelő:
 
 * Tegye közzé a figyelési irányítópult, egy megosztott irányítópultot.
-* Állítsa be [diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) egy resource.* számára
-* Állítsa be a [naplóprofil](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
+* Állítsa be [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) egy resource.* számára
+* Állítsa be a [naplóprofil](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
 * Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Hozza létre az Application Insights-webtesztek és összetevőket.
 * A Log Analytics-munkaterület megosztott kulcsainak listázása.

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf5035d4dd1c58baff66bd5edbdac42c08d6baab
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164565"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600176"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Az Azure SQL Database-ben a Query Store működtetése
 Query Store az Azure-ban olyan teljes körűen felügyelt adatbázis-szolgáltatás, amely folyamatosan gyűjti, és az összes lekérdezés részletes történelmi adatait jeleníti meg. Egy repülőgép adatok eseményrögzítő, amely jelentősen leegyszerűsíti a lekérdezési teljesítmény hibaelhárítása, mind a felhőbeli és helyszíni ügyfelek hasonlíthatók Query Store is gondolja. Ez a cikk ismerteti az Azure-ban a Query Store működtetése adott aspektusait. Ez előtti gyűjtött adatait használja, gyorsan diagnosztizálhatja és teljesítménybeli problémák megoldásához és így több időt üzleti kellene összpontosítani. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336493"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584309"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 
@@ -33,7 +33,7 @@ Az alábbi eljárás ismerteti, hogyan lehet a metrikaalapú riasztási szabály
 
 3. Kattintson a **cél kiválasztása**, környezet, amely betölti panelén válassza a célként megadott erőforrás, amelyet módosítani szeretne. Használat **előfizetés** és **erőforrástípus** legördülő listákból a figyelni kívánt erőforrás található. A Keresősáv használatával keresse meg az erőforrást.
 
-4. Ha a kiválasztott erőforrás riasztásokat is létrehozhat, a metrikák **elérhető jelek** aljának jobb metrikákat tartalmazza. Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok teljes listáját megtekintheti [cikk](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)
+4. Ha a kiválasztott erőforrás riasztásokat is létrehozhat, a metrikák **elérhető jelek** aljának jobb metrikákat tartalmazza. Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok teljes listáját megtekintheti [cikk](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
 
 5. Miután kiválasztotta a célként megadott erőforrás, kattintson a **feltételek hozzáadása**
 
@@ -130,4 +130,4 @@ A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metr
 
 - [Hozzon létre az Azure Resource Manager-sablonok használatával metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-enable-template.md).
 - [Megismerheti, hogyan riasztást küld a metrika a munkahelyi](alerts-metric-overview.md).
-- [A web hook sémáját metrikákhoz kapcsolódó riasztások ismertetése](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)
+- [A web hook sémáját metrikákhoz kapcsolódó riasztások ismertetése](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

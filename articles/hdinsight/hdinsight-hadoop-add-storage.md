@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015755"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714283"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
 Ismerje meg, hogy parancsfájlműveletekkel további Azure storage-fiókok hozzáadása a HDInsight használatával. A jelen dokumentumban leírt lépések tárfiók hozzáadása egy meglévő Linux-alapú HDInsight-fürtön.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban lévő információk további tárhely hozzáadása egy fürt létrehozása után van. Információk a storage-fiókok hozzáadása a fürt létrehozása során: [fürtök beállítása a HDInsight az Apache Hadoop, az Apache Spark, az Apache Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>Működés
 
 Ez a szkript a következő paramétereket fogadja:
 
-* __Az Azure storage-fiók neve__: a HDInsight-fürt hozzáadása a tárfiók nevére. A szkript futtatása után HDInsight olvashat és írhat a tárfiókban tárolt adatokat.
+* __Az Azure storage-fiók neve__: A HDInsight-fürt hozzáadása a tárfiók neve. A szkript futtatása után HDInsight olvashat és írhat a tárfiókban tárolt adatokat.
 
-* __Az Azure storage-fiókkulcs__: egy kulcsot, amely engedélyezi a hozzáférést a tárfiókhoz.
+* __Az Azure storage-fiókkulcs__: Egy kulcs, amely engedélyezi a hozzáférést a tárfiókhoz.
 
 * __-p__ (nem kötelező): Ha meg van adva, a kulcs nem titkosított, és egyszerű szövegként a core-site.xml fájlban tárolja.
 
@@ -45,7 +45,7 @@ A feldolgozás során a szkript a következő műveleteket hajtja végre:
 
 * Leállítja és újraindítja a [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), és [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) szolgáltatások. Ezek a szolgáltatások indítása és leállítása lehetővé teszi, hogy az új tárfiókot használni őket.
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott.
 
 ## <a name="the-script"></a>A parancsfájl
@@ -60,7 +60,7 @@ __Követelmények__:
 
 Ez a szkript az Azure Portalon, az Azure PowerShell vagy az Azure klasszikus parancssori felület is használható. További információkért lásd: a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentumot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Testreszabás dokumentumban leírt lépések használata esetén használja a következő információkat a alkalmazni ezt a parancsfájlt:
 >
 > * Bármely példa parancsfájlművelet URI cserélje le az URI-t, a szkript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
@@ -85,14 +85,14 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Állítsa be `$clusterName` a HDInsight-fürt nevére. Állítsa be `$storageAccountName` a tárfiók nevére. Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) és a jelszót.
 
 ```Bash
 curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Állítsa be `$PASSWORD` a fürt bejelentkezési (rendszergazdai) fiókjelszóra. Állítsa be `$CLUSTERNAME` a HDInsight-fürt nevére. Állítsa be `$STORAGEACCOUNTNAME` a tárfiók nevére.
 >
 > Ez a példa [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) és [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) lekérésére és JSON-adatok elemzése.
@@ -132,14 +132,14 @@ A probléma megkerüléséhez, el kell távolítania a meglévő bejegyzést a t
 
 Ha a tárfiók más régióban, mint a HDInsight-fürt, gyenge teljesítményt tapasztalhat. Egy másik régióban lévő adatok elérése elküldi a hálózati forgalom, a regionális Azure adatközponton kívül és késés megjelentetni nyilvános interneten keresztül.
 
-> [!WARNING]
+> [!WARNING]  
 > Storage-fiók egy másik régióban, mint a HDInsight-fürt használata nem támogatott.
 
 ### <a name="additional-charges"></a>További díjak
 
 Ha a tárfiók más régióban, mint a HDInsight-fürt, az Azure számlázását a előfordulhat, hogy figyelje meg a további kimenő forgalom költségeit. Egy kimenő forgalmi díjat adatok kikerül egy regionális adatközpont esetén is alkalmazva lesz. A díj akkor is, ha a forgalom egy másik Azure-adatközpontban egy másik régióban lévő szánt van alkalmazva.
 
-> [!WARNING]
+> [!WARNING]  
 > Storage-fiók egy másik régióban, mint a HDInsight-fürt használata nem támogatott.
 
 ## <a name="next-steps"></a>További lépések

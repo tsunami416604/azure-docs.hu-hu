@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 8801954ec5ff0277614f65217b9abab6bfb67035
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8e81ab81e33302b9a0da3e0230d1366cc90d208
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098614"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635510"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -25,6 +25,8 @@ Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor
 > Alapértelmezés szerint ne tudják bekapcsolni a tűzfalszabályok a tárfiók beérkező adatok blokkolja, kivéve, ha a kérések származhatnak olyan szolgáltatás, amely egy Azure virtuális hálózaton (VNet) belül. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.
 >
 > Az Azure-szolgáltatások, amelyek azáltal, hogy az alhálózat, a szolgáltatáspéldány virtuális hálózaton belüli működnie hozzáférést biztosíthat. Korlátozott számú keresztül forgatókönyvek engedélyezése a [kivételek](#exceptions) az alábbi szakaszban ismertetett mechanizmus. Az Azure portal eléréséhez kell egy gépen belül a megbízható (IP vagy virtuális hálózatok közötti) beállításával lehet.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -65,24 +67,24 @@ Alapértelmezett hálózati hozzáférési szabályok storage-fiókok az Azure p
 
 #### <a name="powershell"></a>PowerShell
 
-1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-Az-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
 1. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
 1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint nem engedélyezi a hálózati hozzáférést.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
 1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint hálózati hozzáférés engedélyezéséhez.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
 #### <a name="cliv2"></a>CLIv2
@@ -153,32 +155,32 @@ Virtuális hálózati szabályok tárfiókok az Azure portal, PowerShell vagy CL
 
 #### <a name="powershell"></a>PowerShell
 
-1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-Az-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
 1. A virtuális hálózati szabályok listája.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
 1. Szolgáltatásvégpont engedélyezése az Azure Storage egy meglévő virtuális hálózatot és alhálózatot az.
 
     ```PowerShell
-    Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
 1. Adjon hozzá egy virtuális hálózatot és alhálózatot a hálózati szabályt.
 
     ```PowerShell
-    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-    Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 1. Távolítsa el a virtuális hálózatot és alhálózatot a hálózati szabályt.
 
     ```PowerShell
-    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-    Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 > [!IMPORTANT]
@@ -261,36 +263,36 @@ Storage-fiókok az Azure Portalon, a PowerShell vagy a CLIv2 IP-hálózati szab�
 
 #### <a name="powershell"></a>PowerShell
 
-1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-Az-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
 1. IP-hálózati szabályok listája.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
 1. Adja hozzá az egyes IP-cím hálózati szabályt.
 
     ```PowerShell
-    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Adjon hozzá egy IP-címtartomány hálózati szabályt.
 
     ```PowerShell
-    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 1. Távolítsa el az egyes IP-cím hálózati szabályt.
 
     ```PowerShell
-    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Távolítsa el az IP-címtartomány hálózati szabályt.
 
     ```PowerShell
-    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 > [!IMPORTANT]
@@ -378,24 +380,24 @@ Hálózati kivételeit, annak az Azure portal, PowerShell vagy az Azure CLI seg�
 
 #### <a name="powershell"></a>PowerShell
 
-1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-Az-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
 1. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
 
     ```PowerShell
-    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
+    (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
 1. A storage-fiók hálózati szabályok alóli kivételek konfigurálása.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
 1. Távolítsa el a storage-fiók hálózati szabályok alóli kivételek.
 
     ```PowerShell
-    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
+    Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
     ```
 
 > [!IMPORTANT]

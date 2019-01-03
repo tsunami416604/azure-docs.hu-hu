@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 501fe1d2da89b6968f5a3619fc8e02b01b1abd7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f0d0442a8640a75b21e95e3ae024fd7994602b51
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263957"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807941"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB átviteli költségek optimalizálása
 
@@ -56,7 +56,7 @@ API-t, a kiválasztott függően az alábbi táblázatban látható módon telep
 |API|A **megosztott** átviteli sebességgel konfigurálása |A **dedikált** átviteli sebességgel konfigurálása |
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
-|MongoDB API|Adatbázis|Gyűjtemény|
+|Az Azure Cosmos DB MongoDB API-jaival|Adatbázis|Gyűjtemény|
 |Cassandra API|Kulcstér|Tábla|
 |Gremlin API|Adatbázisfiók|Graph|
 |Tábla API|Adatbázisfiók|Tábla|

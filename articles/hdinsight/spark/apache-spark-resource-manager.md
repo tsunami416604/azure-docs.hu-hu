@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3536fb21d50dd54ec71615eba25c2d60fc727f34
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583295"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787903"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
@@ -34,7 +34,7 @@ Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és fu
 
 **A Spark előzmények kiszolgáló webes felhasználói felület megnyitása**
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**
 
     ![Spark-Előzménykiszolgáló](./media/apache-spark-resource-manager/launch-history-server.png "Spark-Előzménykiszolgáló")
@@ -54,15 +54,13 @@ A Spark-Előzménykiszolgáló webes felhasználói felület hasonlóan néz ki:
 ## <a name="open-the-yarn-ui"></a>Nyissa meg a Yarn felhasználói felületén
 Használhatja a YARN felhasználói felületén, a Spark-fürtön futó alkalmazások figyeléséhez.
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **YARN**.
 
     ![Indítsa el a YARN felhasználói felületén](./media/apache-spark-resource-manager/launch-yarn-ui.png)
 
-   > [!TIP]
+   > [!TIP]  
    > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **fürt irányítópultja**, és kattintson a **HDInsight-fürt irányítópultja**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.
-   >
-   >
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Spark-alkalmazások esetében optimalizálása
 A három fő paraméterek alkalmazás követelményeitől függően a Spark-konfigurációhoz használható `spark.executor.instances`, `spark.executor.cores`, és `spark.executor.memory`. Az Executor egy folyamat egy Spark-alkalmazás esetén. A feldolgozó csomóponton fut, és felelős az alkalmazáshoz tartozó feladatok elvégzését. Az alapértelmezett száma végrehajtóval és az egyes fürtök végrehajtó mérete számítása munkavégző csomópontok és a munkavégző csomópont méretét száma alapján történik. Ez az információ a tárolt `spark-defaults.conf` a fő fürtcsomópontokon.
@@ -158,8 +156,8 @@ Indítsa el a Yarn felhasználói felületén, ahogyan az a cikk elején. Fürtm
 
 ### <a name="for-data-analysts"></a>Az adatelemzők számára
 
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
 * [Caffe elosztott deep learning az Azure HDInsight Spark használata](apache-spark-deep-learning-caffe.md)
@@ -167,7 +165,7 @@ Indítsa el a Yarn felhasználói felületén, ahogyan az a cikk elején. Fürtm
 ### <a name="for-apache-spark-developers"></a>Az Apache Spark-fejlesztőknek
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
