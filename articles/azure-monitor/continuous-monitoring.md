@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 82187a99fc8009096127cca624698e1329e5d13b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386536"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975526"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -33,7 +33,7 @@ Ahhoz, hogy kapjon observability környezete egészében, a webes alkalmazások 
 
 - [Az Azure DevOps Projects](../devops-project/overview.md) biztosítanak a meglévő kódot és a Git-tárház egy egyszerűsített élményt, vagy létrehoz egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-bA mintaalkalmazásból közül választhat.
 - [Folyamatos figyelés a DevOps-kiadási folyamatok](../application-insights/app-insights-vsts-continuous-monitoring.md) lehetővé teszi, hogy kapu vagy visszaállítani az üzembe helyezett szolgáltatáspéldányt a figyelési adatok.
-- [Az állapotfigyelő](../application-insights/app-insights-monitor-performance-live-website-now.md) lehetővé teszi, hogy a Windows az Azure Application Insights élő .NET-alkalmazás kialakítása módosítása vagy a kód ismételt telepítése nélkül.
+- [Az állapotfigyelő](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi, hogy a Windows az Azure Application Insights élő .NET-alkalmazás kialakítása módosítása vagy a kód ismételt telepítése nélkül.
 - Ha az alkalmazás rendelkezik hozzáféréssel a kódot, majd engedélyezze a teljes körű figyelési [Application Insights](../application-insights/app-insights-overview.md) az Azure Monitor készült Application Insights SDK telepítésével [.NET](../application-insights/quick-monitor-portal.md), [Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), vagy [bármely más programnyelv](../application-insights/app-insights-platforms.md). Ez lehetővé teszi, hogy adja meg az egyéni eseményeket, metrikákat vagy lapmegtekintés, amely az alkalmazás és a cége a.
 
 
@@ -56,7 +56,7 @@ Alkalmazások csak olyan megbízható, mint hogy az alapul szolgáló infrastruk
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Az Azure-erőforráscsoportok erőforrások egyesítése
 Egy tipikus alkalmazást az Azure-ban még ma például a virtuális gépek és az App Services vagy a Cloud Services, az AKS-fürt vagy a Service Fabric futó mikroszolgáltatásokat több erőforrást tartalmaz. Ezek az alkalmazások gyakran függőségei, mint az Event Hubs, Storage, SQL és a Service Bus használatára.
 
-- A teljes körű betekintést nyerhet a különböző alkalmazások alkotó összes erőforrásra inAzure erőforrások erőforráscsoportok össze. [Az erőforráscsoportok az Azure Monitor](../monitoring-and-diagnostics/resource-group-insights.md) állapotának és teljesítményének a teljes teljes körű, Élesítés alkalmazás, és lehetővé teszi, hogy a vizsgálatok megfelelő összetevőből kapott vagy hibakeresés nyomon követheti, hogy egyszerű módszert kínál.
+- A teljes körű betekintést nyerhet a különböző alkalmazások alkotó összes erőforrásra inAzure erőforrások erőforráscsoportok össze. [Az erőforráscsoportok az Azure Monitor](../azure-monitor/insights/resource-group-insights.md) állapotának és teljesítményének a teljes teljes körű, Élesítés alkalmazás, és lehetővé teszi, hogy a vizsgálatok megfelelő összetevőből kapott vagy hibakeresés nyomon követheti, hogy egyszerű módszert kínál.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Biztosítandó folyamatos üzembe helyezés keresztül
 Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy automatikusan integráció és üzembe helyezése az kódmódosításokat az alkalmazás az automatikus vizsgálat eredményei alapján. Ez leegyszerűsíti a telepítési folyamat, és biztosítja a minőségi változásokat, mielőtt azokat éles környezetben helyezze át.
@@ -74,7 +74,7 @@ Monitorozás kritikus fontosságú tényezője van pontos rendszergazdák aktuá
 - Riasztások használata a leghatékonyabb azt jelenti, hogy a rendszergazdák értesítése a műveletek határozhatók meg. Rendelkezésre álló [értesítési műveletek](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, e-mailek, leküldéses értesítéseket vagy hanghívás vannak.
 - Speciális műveletek használata [az ITSM-eszközhöz való csatlakoztatása](platform/itsmc-overview.md) vagy más riasztáskezelés-rendszerekhez [webhookok](platform/activity-log-alerts-webhook.md).
 - A riasztásokat, valamint az azonosított helyzetekben szervizelése [Azure Automation-runbookok](../automation/automation-webhooks.md) vagy [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , amely a riasztást, webhookok segítségével lehet elindítani. 
-- Használat [az automatikus skálázás](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md) dinamikusan növelheti és csökkentheti a számítási erőforrások gyűjtött metrikák alapján.
+- Használat [az automatikus skálázás](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) dinamikusan növelheti és csökkentheti a számítási erőforrások gyűjtött metrikák alapján.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Irányítópultok és munkafüzetek előkészítése
 Arról, hogy a fejlesztési és operatív rendelkezik-e a hozzáférést ugyanazon telemetriát és eszközök lehetővé teszi a környezete egészében minták megtekintése és az időt a észlelése (MTTD) és átlagos idő a visszaállítás (MTTR) minimalizálása érdekében.

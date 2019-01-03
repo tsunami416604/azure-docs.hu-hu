@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133146"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993163"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>A LUIS-portál 1000 utterances tesztelésével Batch
 
@@ -48,7 +48,7 @@ A modellben az egyéni entitások jelennek meg a batch teszt entitások szűrő 
 
 A kötegfájl utterances áll. Minden kimondásakor rendelkeznie kell egy várt szándék előrejelzési együtt bármely [gép megismert entitások](luis-concept-entity-types.md#types-of-entities) várhatóan észlelhető. 
 
-## <a name="batch-syntax-template"></a>Batch-szintaxis sablon
+## <a name="batch-syntax-template-for-intents-with-entities"></a>A Batch szintaxis sablon szándékok és entitások
 
 Az alábbi sablon használatával indítsa el a parancsfájlba:
 
@@ -75,6 +75,22 @@ Az alábbi sablon használatával indítsa el a parancsfájlba:
 ```
 
 A szkript a **startPos** és **endPos** megjegyezni elején és végén egy entitás tulajdonságai. Az értékek nulláról induló és kell nem kezdődik vagy fejeződjön be egy szóközt. Ez különbözik a lekérdezés naplókat, amelyek startIndex és endIndex tulajdonságokkal. 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>A Batch szintaxis sablon nélkül entitások leképezések
+
+Az alábbi sablon használatával indítsa el a kötegfájlt entitások nélkül:
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+Ha nem szeretné tesztelni az entitások, például a `entities` tulajdonságot, és állítsa be az üres tömbként `[]`.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Gyakori hibák a batch importálása

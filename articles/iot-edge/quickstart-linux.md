@@ -4,17 +4,17 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/14/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6479bfbb81468649108ed648035122e4623041e3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555506"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973672"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Gyors útmutató: Az első IoT Edge-modul x64 Linux rendszerű eszközre telepítéséhez
 
@@ -60,6 +60,8 @@ IoT Edge-eszköz:
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
+   Hozzon létre, és az új virtuális gép elindítása néhány percig is eltarthat. 
 
    Amikor létrehoz egy új virtuális gépet, jegyezze fel a a **publicIpAddress**, amely a create parancs kimenete részeként van megadva. A nyilvános IP-cím segítségével csatlakozzon a virtuális géphez az útmutató későbbi részében.
 
@@ -196,12 +198,12 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
    sudo systemctl restart iotedge
    ```
 
->[!TIP]
->Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig alkalmazza a **sudo** kifejezést a parancsok előtt. 
-
 ### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
 
 Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfigurálva.
+
+>[!TIP]
+>Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig alkalmazza a **sudo** kifejezést a parancsok előtt. 
 
 1. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e.
 
@@ -246,15 +248,18 @@ Nyissa meg újra a parancssort az IoT Edge-eszközön. Győződjön meg arról, 
 
    ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2.png)
 
-Tekintse meg a tempSensor modul által küldött üzeneteket:
+A hőmérséklet-érzékelő modul küldött üzenetek megjelenítése:
 
    ```bash
-   sudo iotedge logs tempSensor -f
+   sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
-![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
+   >[!TIP]
+   >IoT Edge-parancsok modulneveket kontextusban való megnevezésekor nagybetűk között.
 
-Előfordulhat, hogy a hőmérsékletérzékelő modul az Edge Hubhoz való csatlakozásra vár, ha a napló utolsó sora `Using transport Mqtt_Tcp_Only`. Próbálja meg leállítani a modult, és hagyja, hogy az Edge-ügynök újraindítsa. A modult a következő paranccsal állíthatja le: `sudo docker stop tempSensor`.
+   ![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
+
+A hőmérséklet-érzékelő modul vár az Edge Hub csatlakozni, ha az utolsó sor jelenik meg a napló **átviteli Mqtt_Tcp_Only használatával**. Próbálja ki a modul leállítása, és lehetővé teszi az Edge Agent, indítsa újra. A paranccsal állíthatja le `sudo docker stop SimulatedTemperatureSensor`.
 
 Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény). 
 
@@ -288,10 +293,10 @@ Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tá
    sudo docker ps -a
    ```
 
-Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét. 
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. 
 
    ```bash
-   sudo docker rm -f tempSensor
+   sudo docker rm -f SimulatedTemperatureSensor
    sudo docker rm -f edgeHub
    sudo docker rm -f edgeAgent
    ```

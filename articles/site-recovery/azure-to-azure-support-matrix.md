@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24776e2d14824c6d7b028a2cb9e2ba1e1aaa5c96
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342714"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789126"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -56,8 +56,9 @@ Kína | Kelet-Kína, Észak-Kína, Kína North2, Kína East2
 
 >[!NOTE]
 >
-> Dél-brazíliai régióban hogy replikálhat, és átadja a feladatokat az alábbi lehetőségek közül: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban.</br>
-> Megjegyzendő, hogy a Site Recovery csak engedélyezve Dél-brazíliai régióban, ahol a virtuális gépek védhetők a forrásrégióban, használható. Azt nem használható egy cél DR régióban bármely, az USA déli középső Régióját például az Azure-régióban. Folyamatban van a késés okát megfigyelt földrajzi távolságtól miatt javasoljuk, hogy válassza ki a Dél-Brazília kivételével bármely más amerikai régióban.  
+> Dél-brazíliai régióban hogy replikálhat, és átadja a feladatokat az alábbi lehetőségek közül: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban.
+>
+> Megjegyzendő, hogy a Site Recovery csak engedélyezve Dél-brazíliai régióban, ahol a virtuális gépek védhetők a forrásrégióban, használható. Azt nem használható egy cél DR régióban bármely, az USA déli középső Régióját például az Azure-régióban. Folyamatban van a késés okát megfigyelt földrajzi távolságtól miatt javasoljuk, hogy válassza ki a Dél-Brazília kivételével bármely más amerikai régióban.
 
 ## <a name="cache-storage"></a>Gyorsítótár
 
@@ -127,10 +128,10 @@ Debian 8 | 9.17, 9.18 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.88-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.126-94.22-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.162-94.69-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.140-94.42-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.138-94.39-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.88-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.126-94.22-default SP3 4.4.73-5-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek – Linux rendszer/Vendég fájltárolás
 
@@ -145,7 +146,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3
 --- | --- | ---
 Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Győződjön meg arról [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md).
 Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, egy rendelkezésre állási csoportot a forrás területi beállítások alapján automatikusan jön létre. Ezek a beállítások módosítása
-Rendelkezésre állási zónák | Támogatott |  
+Rendelkezésre állási zónák | Támogatott |
 Hybrid Use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gép van engedélyezve, HUB licence feladatátvételi teszt vagy feladatátvétel a virtuális gép is használ a HUB licenc.
 Virtuális gépek méretezési csoportjai | Nem támogatott |
 Azure-katalógus-rendszerképek – a Microsoft közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
@@ -177,12 +178,12 @@ Adatok lemez maximális száma | Egy adott Azure-beli Virtuálisgép-méretet t�
 Lemez adatváltozási sebesség | 10 Mbps for a premium storage lemezenkénti maximális. Legfeljebb 2 MB/s Standard Storage lemezenkénti. | Ha az átlagos adatváltozási sebessége a a lemez folyamatosan magasabb, mint a maximális, replikálása nem történik meg.<br/><br/>  Azonban csak időnként túllépi a maximálisan engedélyezett, ha replikációs legérdekesebb részeit is, de előfordulhat, hogy kissé késleltetett helyreállítási pontok látható.
 Adatlemez - standard storage-fiók | Támogatott |
 Adatlemez - premium storage-fiók | Támogatott | Ha a virtuális gép lemezei prémium és standard szintű tárfiókok helyezkednek el, kiválaszthatja az egyes lemezek, ellenőrizze, hogy azonos tárolási konfigurációval a célrégióban egy másik céloldali tárfiókkal.
-Felügyelt lemez – standard | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |  
+Felügyelt lemez – standard | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
 Felügyelt lemez – prémium szintű | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
 Standard SSD | Nem támogatott |
 Redundancia | Az LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatják a ritka és gyakori elérésű tárolási
-A tárolóhelyek | Támogatott |         
+A tárolóhelyek | Támogatott |
 Titkosítás inaktív állapotban (SSE) | Támogatott | Az SSE az alapértelmezett beállítás, a storage-fiókok.   
 Az Azure Disk Encryption (ADE) a Windows operációs rendszer | Engedélyezve van a virtuális gépek [az Azure AD-alkalmazást encryption](https://aka.ms/ade-aad-app) támogatottak |
 Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Nem támogatott |
@@ -193,7 +194,7 @@ Kibővített fájlkiszolgáló  | Nem támogatott|
 LRS | Támogatott |
 GRS | Támogatott |
 RA-GRS | Támogatott |
-ZRS | Nem támogatott |  
+ZRS | Nem támogatott |
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatottak a ritkán használt adatok és a gyakori elérésű tárolási
 Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, ügyeljen arra, hogy ["Allow megbízható Microsoft-szolgáltatások"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Általános célú V2-tárfiókok (mindkét gyakori és ritka elérésű szint) | Nem | Tranzakciós költségek növelése jelentősen képest általános célú V1-tárfiókok
@@ -220,13 +221,13 @@ Hálózati adapter | Egy adott Azure-beli Virtuálisgép-méretet a támogatott 
 Internetes Load Balancer | Támogatott | Társítsa az előre konfigurált terheléselosztó egy Azure Automation-szkript használatával a helyreállítási terv.
 Belső Load balancer | Támogatott | Társítsa az előre konfigurált terheléselosztó egy Azure Automation-szkript használatával a helyreállítási terv.
 Nyilvános IP-cím | Támogatott | Egy meglévő nyilvános IP-címet társítani a hálózati adaptert. Vagy hozzon létre egy nyilvános IP-címet, és társíthatja azt egy Azure Automation-szkript használatával a helyreállítási tervben szereplő hálózati adapter.
-A hálózati adapter NSG-t | Támogatott | Az NSG-t társítson a hálózati adapter egy Azure Automation-szkript használatával a helyreállítási terv.  
+A hálózati adapter NSG-t | Támogatott | Az NSG-t társítson a hálózati adapter egy Azure Automation-szkript használatával a helyreállítási terv.
 Az alhálózati NSG | Támogatott | Az NSG-KET társíthat az alhálózat egy Azure Automation-szkript használatával a helyreállítási terv.
 Fenntartott (statikus) IP-cím | Támogatott | Ha a forrásoldali virtuális gép hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózat az azonos rendelkezésre álló IP-címmel rendelkezik, azt hozzá van rendelve, a feladatátvételen átesett virtuális gép.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik elérhető azonos IP-cím, egy alhálózaton elérhető IP-címek a virtuális gép számára van fenntartva.<br/><br/> Azt is beállíthatja egy rögzített IP-cím és alhálózat **replikált elemek** > **beállítások** > **számítás és hálózat**  >  **Hálózati adapterek**.
 Dinamikus IP-cím | Támogatott | Ha a forrás hálózati adapter dinamikus IP-címzés, a hálózati adapter a feladatátvételen átesett virtuális gép is alapértelmezés szerint dinamikus.<br/><br/> Ez módosítható rögzített IP-címmel, ha szükséges.
 Traffic Manager     | Támogatott | A Traffic Manager előre is megadhatja, hogy a végpont a forrásrégióban rendszeres időközönként, valamint a végponti feladatátvétel esetén a célrégióban adatforgalmat.
 Azure DNS | Támogatott |
-Egyéni DNS  | Támogatott |    
+Egyéni DNS  | Támogatott |
 Hitelesített proxykiszolgálói | Támogatott | Tekintse meg [hálózati dokumentum.](site-recovery-azure-to-azure-networking-guidance.md)    
 Hitelesített proxyt | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
 A helyszíni (vagy anélkül ExpressRoute) a helyek közötti VPN| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. Tekintse meg [hálózati dokumentum.](site-recovery-azure-to-azure-networking-guidance.md)  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bae1e7de3c24ff6fbf943ef93ad449d784feb0c8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322943"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788696"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Az Azure-felhőszolgáltatás teljesítményszámlálók gyűjtése
 
@@ -84,7 +84,7 @@ A cloud Services, Azure Diagnostics vagy az Application Insights-teljesítménys
 
 ### <a name="application-insights"></a>Application Insights
 
-A Cloud Services az Azure Application Insights lehetővé teszi, hogy Ön adja meg, hogy mely teljesítményszámlálókat szeretné gyűjteni. Miután [az Application Insights hozzáadása a projekthez](../application-insights/app-insights-cloudservices.md#sdk), egy konfigurációs fájlt **ApplicationInsights.config** adnak hozzá a Visual Studio-projektben. A konfigurációs fájl határozza meg, milyen típusú információt az Application Insights összegyűjti, és az Azure-bA küldi.
+A Cloud Services az Azure Application Insights lehetővé teszi, hogy Ön adja meg, hogy mely teljesítményszámlálókat szeretné gyűjteni. Miután [az Application Insights hozzáadása a projekthez](../azure-monitor/app/cloudservices.md#sdk), egy konfigurációs fájlt **ApplicationInsights.config** adnak hozzá a Visual Studio-projektben. A konfigurációs fájl határozza meg, milyen típusú információt az Application Insights összegyűjti, és az Azure-bA küldi.
 
 Nyissa meg a **ApplicationInsights.config** fájlt és keresse meg a **ApplicationInsights** > **fájl TelemetryModules** elemet. Minden egyes `<Add>` gyermekelem egy telemetriai adatokat gyűjt, és a konfiguráció típusát határozza meg. A teljesítmény számláló telemetriai modultípus van `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Ha ez az elem már definiálva van, vegye fel egy második alkalommal. Minden teljesítményszámláló gyűjtésére van definiálva egy nevű csomópont alatt `<Counters>`. Íme egy példa által gyűjtött teljesítményszámlálók meghajtó:
 
@@ -116,7 +116,7 @@ Az Application Insights automatikusan gyűjti a következő teljesítményszáml
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-További információkért lásd: [rendszerteljesítmény-számlálók az Application Insights](../application-insights/app-insights-performance-counters.md) és [Application Insights az Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters).
+További információkért lásd: [rendszerteljesítmény-számlálók az Application Insights](../application-insights/app-insights-performance-counters.md) és [Application Insights az Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
@@ -294,7 +294,7 @@ Mint azt korábban említettük, a gyűjtendő teljesítményszámlálókat megh
 
 ## <a name="more-information"></a>További információ
 
-- [Az Application Insights az Azure Cloud Servicesben](../application-insights/app-insights-cloudservices.md#performance-counters)
+- [Az Application Insights az Azure Cloud Servicesben](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Az Application Insights rendszerteljesítmény-számlálók](../application-insights/app-insights-performance-counters.md)
 - [A számláló elérési út megadását](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure Diagnostics-séma - teljesítményszámlálók](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

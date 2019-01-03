@@ -1,7 +1,7 @@
 ---
 title: Ügyfél használhat már üzembe helyezett webszolgáltatás létrehozása
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhat egy webszolgáltatás, amelyet jött létre, amikor egy modell telepítve lett az Azure Machine Learning-modellel. A webszolgáltatás által elérhetővé tett REST API-t. Hozzon létre az ügyfelek számára az API-t az Ön által választott programozási nyelvet.
+description: Megtudhatja, hogyan használhat egy webszolgáltatás, amelyet jött létre, amikor egy modell telepítve lett az Azure Machine Learning-modellel. A web service REST API-t tesz elérhetővé. Hozza létre az ügyfelek számára az API-t az Ön által választott programozási nyelvet.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251130"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753387"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
-REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre webes szolgáltatást használó ügyfelek C#, Go, a Java és Python.
+REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre a webszolgáltatás ügyfelek C#, Go, a Java és Python.
 
-Webszolgáltatás-rendszerképet egy Azure-Tárolópéldányon, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) központi telepítésekor jön létre. A regisztrált modellek és a pontozófájlt lemezképek jönnek létre. Egy webes szolgáltatás eléréséhez használt URI-ja használatával lehet beolvasni a [Azure Machine Learning SDK](https://aka.ms/aml-sdk). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
+Azure Container Instances, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) lemezkép központi telepítésekor létrehoz egy webes szolgáltatást. A regisztrált modellek és a pontozófájlt képeket hoz létre. Az URI használatával egy webes szolgáltatás eléréséhez használt lekérése a [Azure Machine Learning SDK](https://aka.ms/aml-sdk). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
 
-Az általános munkafolyamatát, amikor egy Machine Learning webszolgáltatás használó ügyfél létrehozása a következő:
+Általános létrehozásának munkafolyamata a machine learning-webszolgáltatás használó ügyfél a következő:
 
-1. A kapcsolati adatok lekéréséhez az SDK használatával
-1. A modell által használt kérelem adatok típusának meghatározása
-1. Hozzon létre egy alkalmazást, amely meghívja a webszolgáltatást
+1. Az SDK segítségével a kapcsolati adatok lekéréséhez.
+1. A modell által használt kérelem adatok típusának meghatározása.
+1. Hozzon létre egy alkalmazást, amely meghívja a webszolgáltatást.
 
 ## <a name="connection-information"></a>Kapcsolatadatok
 
 > [!NOTE]
-> Az Azure Machine Learning SDK kéri le a webes adatait. Ez a Python SDK-t. A webes szolgáltatások adatainak beolvasásához használatos, miközben használhatja bármilyen nyelven létrehozni az ügyfelet a szolgáltatás.
+> Az Azure Machine Learning SDK használatával a webes szolgáltatás adatai olvashatók be. Ez a Python SDK-t. Bármilyen nyelv használatával hozzon létre egy ügyfél a szolgáltatás.
 
-A kapcsolat webalkalmazás adatait az Azure Machine Learning SDK használatával lekérhetők. A [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály egy ügyfél létrehozásához szükséges információkat biztosít. A következő `Webservice` tulajdonságok, amelyek hasznosak lehetnek, amikor egy ügyfélalkalmazás létrehozása:
+A [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály ügyfél létre kell információkat tartalmazza. A következő `Webservice` a tulajdonságok akkor hasznos, ha egy ügyfélalkalmazás létrehozása:
 
 * `auth_enabled` – Ha engedélyezve van a hitelesítés, `True`; ellenkező esetben `False`.
 * `scoring_uri` – A REST API-cím.
@@ -53,14 +53,14 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     print(service.scoring_uri)
     ```
 
-* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ a szűrhetik, lásd: a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenciák dokumentációiba.
+* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ arról, hogy mi a szűrhetők, lásd: a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenciák dokumentációiba.
 
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
     ```
 
-* Ha ismeri a telepített szolgáltatás nevére, létrehozhat egy új példányát `Webservice` , és adja meg a munkaterület és a szolgáltatás nevét meg paraméterként. Az új objektum tartalmazza a telepített szolgáltatással kapcsolatos információkat.
+* Ha ismeri a telepített szolgáltatás nevére, létrehozhat egy új példányát `Webservice`, és adja meg a munkaterület és a szolgáltatás nevét meg paraméterként. Az új objektum tartalmazza a telepített szolgáltatással kapcsolatos információkat.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -69,12 +69,12 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
 
 ### <a name="authentication-key"></a>Hitelesítési kulcs
 
-Hitelesítési kulcsok automatikusan jönnek létre, amikor a hitelesítés engedélyezve van a központi telepítés.
+Ha engedélyezi a hitelesítést egy központi telepítés, hitelesítési kulcsok automatikus létrehozása.
 
-* Hitelesítés __alapértelmezés szerint engedélyezett__ való üzembe helyezés esetén __Azure Kubernetes Service__.
-* Hitelesítés __alapértelmezés szerint le van tiltva__ való üzembe helyezés esetén __az Azure container Instances__.
+* Hitelesítés alapértelmezés szerint engedélyezve van, az Azure Kubernetes Service-ben való telepítéséhez.
+* Hitelesítés le van tiltva alapértelmezés szerint az Azure Container Instancesben való telepítéséhez.
 
-Hitelesítés beállításához használja a `auth_enabled` paraméter létrehozásakor vagy frissítésekor egy központi telepítést.
+Hitelesítés beállításához használja a `auth_enabled` paraméter létrehozása vagy frissítése egy központi telepítést.
 
 Ha a hitelesítés engedélyezve van, használhatja a `get_keys` metódusának segítéségével lekérheti az egy elsődleges és másodlagos hitelesítési kulcs:
 
@@ -128,7 +128,7 @@ A webszolgáltatás egy kérelem több adatkészletek tud fogadni. Egy JSON-doku
 
 ### <a name="binary-data"></a>Bináris adatok
 
-Ha a modell fogad bináris adatot, például egy kép, módosítania kell a `score.py` nyers HTTP-kérelmek fogadásához az üzembe helyezéshez használt fájlt. Íme egy példa egy `score.py` , amely elfogadja a bináris adatokat, és adja vissza a POST kérésekhez a fordított bájt. A GET-kérésekhez, a válasz törzsében a teljes URL-címet adja vissza:
+Ha a modell fogad bináris adatot, például egy kép, módosítania kell a `score.py` nyers HTTP-kérelmek fogadásához az üzembe helyezéshez használt fájlt. Íme egy példa egy `score.py` , amely elfogadja a bináris adatokat, és a POST kérésekhez a fordított bájtok adja vissza. A GET-kérésekhez akkor a válasz törzsében a teljes URL-címet adja vissza:
 
 ```python 
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> A dolgokat a `azureml.contrib` névtér változnak gyakran, dolgozunk a szolgáltatás fejlesztéséhez. Ezért semmit a névtérben lévő kell előzetes minősül és nincs teljes egészében a Microsoft támogatja.
+> A `azureml.contrib` névtér gyakran változik, dolgozunk a szolgáltatás fejlesztéséhez. Ezért semmit a névtérben lévő kell előzetes minősül, és nincs teljes egészében a Microsoft támogatja.
 >
-> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevők a contrib névtér a következő paranccsal telepíthető:
+> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevőket telepíthet a `contrib` névtér a következő paranccsal:
 > 
 > ```shell
 > pip install azureml-contrib-services

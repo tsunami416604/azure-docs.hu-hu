@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876519"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753642"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -119,9 +119,9 @@ A [Metrikaböngésző](../application-insights/app-insights-metrics-explorer.md)
 
 ![Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
 
-Az a [hibák](../application-insights/app-insights-asp-net-exceptions.md) lapon létrehozhat diagramokat és függvény hibák és a kiszolgáló kivételek alapuló riasztások. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, ha meg, hogy [egyéni telemetriát](#custom-telemetry-in-c-functions) függőségek.
+Az a [hibák](../azure-monitor/app/asp-net-exceptions.md) lapon létrehozhat diagramokat és függvény hibák és a kiszolgáló kivételek alapuló riasztások. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, ha meg, hogy [egyéni telemetriát](#custom-telemetry-in-c-functions) függőségek.
 
-![Meghibásodások](media/functions-monitoring/failures.png)
+![Hibák](media/functions-monitoring/failures.png)
 
 Az a [teljesítmény](../application-insights/app-insights-performance-counters.md) lapon elemezheti a teljesítménybeli problémák.
 
@@ -137,7 +137,7 @@ A [élő metrikák Stream](../application-insights/app-insights-live-stream.md) 
 
 ## <a name="query-telemetry-data"></a>Telemetriai adatok lekérdezése
 
-[Application Insights-elemzési](../application-insights/app-insights-analytics.md) figyelmébe, amely az összes, a telemetriai adatok egy adatbázisban lévő táblák formájában. Analytics kibontása, ahol elvégezhető a módosításuk és az adatok megjelenítése egy lekérdezési nyelvet biztosít.
+[Application Insights-elemzési](../azure-monitor/app/analytics.md) figyelmébe, amely az összes, a telemetriai adatok egy adatbázisban lévő táblák formájában. Analytics kibontása, ahol elvégezhető a módosításuk és az adatok megjelenítése egy lekérdezési nyelvet biztosít.
 
 ![Válassza ki az Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -158,7 +158,7 @@ A rendelkezésre álló táblák jelennek meg a **séma** lapjának bal oldali a
 * **kérelmek** -egyet mindegyik függvény meghívási.
 * **kivételek** – a modul által okozott kivételeket.
 * **customMetrics** -száma, a sikeres és sikertelen meghívásához, a sikerességi arányról, időtartama.
-* **customEvents** -események nyomon követett futásidőben, például: aktiválja a függvényt egy HTTP-kérelmekre.
+* **customEvents** -események nyomon követett futásidőben, például:  Aktiválja a függvényt egy HTTP-kérelmekre.
 * **performanceCounters** -kapcsolatos információ a függvények futnak a kiszolgálók teljesítményét.
 
 A más táblák vannak a rendelkezésre állási tesztek és ügyfélböngészőnek és telemetriai adatokat. Egyéni telemetriai adatok hozzáadása valósítható meg.
@@ -439,7 +439,7 @@ Ez a kód hívása helyett a `trackMetric` használatával [az Application insig
 
 ## <a name="custom-telemetry-in-c-functions"></a>Egyéni telemetriát a C#-függvények
 
-Használhatja a [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) egyéni telemetriai adatokat küldeni az Application Insights NuGet-csomagot. A következő C# példában a [API egyéni telemetriához](../application-insights/app-insights-api-custom-events-metrics.md). A példában az a .NET osztálytár, de az Application Insights-kódot a C#-szkript esetében megegyezik.
+Használhatja a [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) egyéni telemetriai adatokat küldeni az Application Insights NuGet-csomagot. A következő C# példában a [API egyéni telemetriához](../azure-monitor/app/api-custom-events-metrics.md). A példában az a .NET osztálytár, de az Application Insights-kódot a C#-szkript esetében megegyezik.
 
 ### <a name="version-2x"></a>Verzió 2.x
 
@@ -671,7 +671,7 @@ PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-A
 PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-További információkért lásd: [naplók közvetítése](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
+További információkért lásd: [naplók közvetítése](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
 
 ### <a name="viewing-log-files-locally"></a>Helyileg naplófájlok megtekintése
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6ce51dc9bbcdc7b46593a4800c4fce07a42f3171
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346083"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972171"
 ---
 # <a name="offer-settings-tab"></a>Az ajánlat (beállítások) lapján
 
@@ -42,9 +42,6 @@ Ez az azonosító van a fiókjával kapcsolatban. Ha a munkahelyi fiókjával je
 *Name (Név)*
 
 Ez a karakterlánc, mi az appsource-on vagy az Azure Marketplace-en ajánlat nevét jeleníti meg. A *neve* mező kitöltése legfeljebb 50 karakter hosszúságú lehet.  A felülvizsgáló szükség lehet, hogy a Hozzáfűzés időtartamát az ajánlat nevét a cím szerkesztése és a csomag típusa.
-
->[!Note]
->Fontos: Csak adja meg a tényleges szolgáltatás nevét. Szolgáltatás típusa és időtartama, valamint nem tartalmazzák.
 
 Edgewater Fullscope szerint a következő példa bemutatja, hogyan van-e összeállítva ajánlat nevét. Az ajánlat neve jelenik meg:
 

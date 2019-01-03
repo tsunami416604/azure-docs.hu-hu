@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 785223f7da1f59288f4fca6e7a3955a6b3af41c0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383816"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974996"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Presto HDInsight Hadoop-fürtök
 
@@ -31,9 +31,7 @@ HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. Tovább
 > [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 > 
-> Egyéni összetevők, például Presto, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
-> 
-> 
+> Egyéni összetevők, például Presto, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="install-presto-using-script-action"></a>Szkriptműveletek használatával a Presto telepítése
@@ -44,7 +42,7 @@ Ez a szakasz útmutatást a minta parancsfájl használatával, amikor egy új f
 
     * Hadoop-fürt a HDInsight 3.6-os verzióját kell lennie.
 
-    * Azure Storage azt kell használnia, mint az adattárban. Presto egy fürtön, amely a beállítást használja az Azure Data Lake Store használata nem még egy lehetőség.
+    * Azure Storage azt kell használnia, mint az adattárban. A beállítást, az Azure Data Lake Storage használó fürtön Presto használata még nem egy lehetőséget.
 
     ![HDInsight-fürt létrehozása egyéni beállítások használatával](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
@@ -123,17 +121,23 @@ Az alábbi lépések segítségével Airpal telepíteni az élcsomóponton:
 
 5. Kattintson a **Purchase** (Vásárlás) gombra.
 
-6. Miután a fürt konfigurációját a módosítások is vonatkozik, elérheti a Airpal webes felületén az alábbi lépések segítségével.
+6. Után a módosítások a fürtkonfiguráció, elérheti a Airpal webes felület, az alábbi lépéseket a [az Azure portal](https://portal.azure.com):
 
-    1. A fürt párbeszédpanelen kattintson a **alkalmazások**.
+    1. A bal oldali menüben válassza ki a **minden szolgáltatás**.
+
+    1. A **ANALYTICS**válassza **HDInsight-fürtök**.
+
+    1. Ekkor megnyílik az alapértelmezett nézet listából válassza ki a fürtöt.
+
+    1. Az alapértelmezett nézet a csoportban **beállítások**, jelölje be **alkalmazások**.
 
         ![HDInsight indítási Airpal Presto fürtön](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    2. Az a **telepített alkalmazások** területen kattintson a **portál** airpal ellen.
+    1. Az a **telepített alkalmazások** lap, helyi a bejegyzés a táblázatban a **airpal**, és válassza ki **portál**.
 
         ![HDInsight indítási Airpal Presto fürtön](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    3. Amikor a rendszer kéri, adja meg, amely a HDInsight Hadoop-fürt létrehozásakor megadott rendszergazdai hitelesítő adatait.
+    1. Amikor a rendszer kéri, adja meg, amely a HDInsight Hadoop-fürt létrehozásakor megadott rendszergazdai hitelesítő adatait.
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>A Presto telepítése HDInsight-fürt testreszabása
 

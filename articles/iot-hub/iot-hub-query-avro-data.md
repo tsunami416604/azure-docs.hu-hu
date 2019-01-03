@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: asrastog
-ms.openlocfilehash: a5b8ce8cd753ee294a8d61ba8a3dfed872f0f31a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956325"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993484"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Az Avro-adatok lekérdezése az Azure Data Lake Analytics használatával
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti, hogyan lehet hatékonyan juthatnak az Azure-szolgáltatáso
 
 A kihívás, hogy, amikor az Azure IoT Hub üzeneteket irányítja az Azure Blob storage, az IoT Hub ír a tartalmat az Avro formátum, ami egy üzenet törzsének tulajdonság és a egy üzenet egyik tulajdonságát is van. Az IoT Hub adatok írása a Blob storage támogatja az Avro-adatok formátumát csak a, és bármely más végpontok nem használják ezt a formátumot. További információkért lásd: egy Azure Storage-tárolók használatával kapcsolatos cikket. Bár az Avro formátum kiválóan alkalmazható az adatok és az üzenet megőrzését, egy kérdés használatával adatokat lekérdezni. Ezzel szemben a JSON vagy CSV formátumban sokkal egyszerűbb, az adatok lekérdezése.
 
-<!-- https://review.docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
+<!-- https://review.docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
 
 Nem relációs big-data igények és formátumok és a nehézség, használhatja a big-data minták számos átalakítása, mind az adatok méretezés. A minták egyikét, "fizessen a lekérdezés" a lépéseknek az ismertetése, ez a cikk az Azure Data Lake Analytics. A lekérdezés a Hadoop és más megoldásokkal könnyen végrehajthat, bár a Data Lake Analytics van gyakran fejlesztéseink a "fizessen a lekérdezés" módszer. 
 
@@ -171,7 +171,7 @@ Ebben a szakaszban az Avro-adatok lekérdezése és exportálása az Azure Blob 
 
 Ebben az oktatóanyagban megtudhatta, hogyan hatékonyan juthatnak az Azure-szolgáltatások az Azure IoT Hubból üzenetek az Avro-adatok lekérdezésére.
 
-Teljes körű teljes körű megoldások, IoT Hub használó példákért lásd a [Azure IoT-Megoldásgyorsítók dokumentációja](../iot-accelerators/index.yml).
+Teljes körű teljes körű megoldások, IoT Hub használó példákért lásd a [Azure IoT-Megoldásgyorsítók dokumentációja](/azure/iot-accelerators).
 
 Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).
 

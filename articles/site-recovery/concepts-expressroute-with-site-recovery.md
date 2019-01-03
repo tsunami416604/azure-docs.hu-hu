@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: mayg
-ms.openlocfilehash: 60da5d4e80a7465d02926066298a5dc63afb1de7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1fabbe3a9a486abc862bfb6c2671c60d11d8e8c7
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875178"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809930"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery az Azure ExpressRoute
 
@@ -38,9 +38,9 @@ Tudjon meg többet, és hasonlítsa össze az ExpressRoute útválasztási tarto
 
 Az Azure Site Recovery lehetővé teszi a vészhelyreállítást és migrálás az Azure-bA a helyszíni [Hyper-V virtuális gépek](hyper-v-azure-architecture.md), [VMware virtuális gépek](vmware-azure-architecture.md), és [fizikai kiszolgálók](physical-azure-architecture.md). Az összes helyszíni – Azure forgatókönyvek esetén, a replikációs adatokat fogadja és egy Azure Storage-fiókban tárolt. A replikáció során a virtuális gép díjakat nem kell fizetnie. Ha feladatátvételt végez az Azure-ba, a Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket.
 
-A Site Recovery replikálja az adatokat az Azure Storage-fiók egy nyilvános végpontot keresztül. A Site Recovery replikációjára ExpressRoute használatához használhat [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Miután a virtuális gépek vagy kiszolgálók átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
+A Site Recovery replikálja az adatokat az Azure Storage-fiók egy nyilvános végpontot keresztül. A Site Recovery replikációjára ExpressRoute használatához használhat [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek vagy kiszolgálók átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
 
-A kombinált forgatókönyvhöz az alábbi ábrán jelölt: ![a – helyszíni – Azure ExpressRoute használatával](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+A kombinált forgatókönyvhöz az alábbi ábrán jelölt: ![A – helyszíni – Azure ExpressRoute használatával](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Azure-bA replikációs az expressroute-tal
 

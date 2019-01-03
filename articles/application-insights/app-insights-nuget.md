@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000779"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972073"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -70,17 +70,17 @@ Alább látható stabil kiadási NuGet-csomagok az Application Insights jelenleg
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Lehetővé teszi, hogy a futásidejű adatok gyűjtése x64 alkalmazások | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Lehetővé teszi, hogy a futásidejű adatok gyűjtése x86 az alkalmazásokat. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Ezek a csomagok futásidejű megfigyelése a legfontosabb funkcióit részét alkotó [Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md). Nem kell közvetlenül letöltheti ezeket a csomagokat, használja az állapotfigyelő telepítőjét. Ha szeretné megtudni, további információ arról, hogy ezen csomagok dolgozhat technikai részletek [blogbejegyzés](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) fejlesztők egyik remek kezdőpont van.
+Ezek a csomagok futásidejű megfigyelése a legfontosabb funkcióit részét alkotó [Állapotfigyelőt](../azure-monitor/app/monitor-performance-live-website-now.md). Nem kell közvetlenül letöltheti ezeket a csomagokat, használja az állapotfigyelő telepítőjét. Ha szeretné megtudni, további információ arról, hogy ezen csomagok dolgozhat technikai részletek [blogbejegyzés](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) fejlesztők egyik remek kezdőpont van.
 
 ## <a name="additional-packages"></a>További csomagok
 
 | Csomag neve | Poslední stabilní Verze. | Leírás | Letöltés |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Ez a bővítmény lehetővé teszi, hogy az Application Insights-figyelést egy Azure App Service szolgáltatásban. SDK verziója 2.6.1. Utasításokat: Adja hozzá a rendszerállapotkulcsot "Állítani az APPINSIGHTS_INSTRUMENTATIONKEY" alkalmazásbeállításokat, és indítsa újra a webapp-érvénybe.| [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
+| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Ez a bővítmény lehetővé teszi, hogy az Application Insights-figyelést egy Azure App Service szolgáltatásban. SDK verziója 2.6.1. Utasítások: Adja hozzá a rendszerállapotkulcsot "Állítani az APPINSIGHTS_INSTRUMENTATIONKEY" alkalmazásbeállításokat, és indítsa újra a webapp-érvénybe.| [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft.ApplicationInsights.Injector | 2.6.7 | Ez a csomag adatfolyamat létrehozása kód nélküli Application Insights-injektálási szükséges fájlok találhatók. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
 
 ## <a name="next-steps"></a>További lépések
 
-- A figyelő [ASP.NET Core](app-insights-asp-net-core.md).
+- A figyelő [ASP.NET Core](../azure-monitor/app/asp-net-core.md).
 - Profiljának ASP.NET Core [Azure-beli Linuxos web apps](app-insights-profiler-aspnetcore-linux.md).
 - Az ASP.NET Debug [pillanatképek](app-insights-snapshot-debugger.md).

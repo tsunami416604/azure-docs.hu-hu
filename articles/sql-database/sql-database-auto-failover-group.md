@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 3da4d6ffe8660c490d39f223dff105ed126fa10b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284940"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994640"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
-Automatikus feladatátvételi csoportok az SQL Database szolgáltatás lehetővé teszi, hogy a replikációs és feladatátvételi csoport egy logikai kiszolgálón lévő adatbázisokhoz, vagy egy felügyelt példány (jelenleg nyilvános előzetes verzióban elérhető a felügyelt példány) egy másik régióban található összes adatbázis kezelése. Használja az azonos technológiára [aktív georeplikáció](sql-database-active-geo-replication.md). Manuálisan is kezdeményezhető feladatátvétel, vagy az SQL Database szolgáltatás egy felhasználói házirendet használó felhasználó által definiált szabályzat alapján lehet delegálni. Az utóbbi lehetőséget lehetővé teszi, hogy automatikusan helyreállítani egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
+Automatikus feladatátvételi csoportok az SQL Database szolgáltatás lehetővé teszi, hogy a replikációs és feladatátvételi csoport egy logikai kiszolgálón lévő adatbázisokhoz, vagy egy felügyelt példány (jelenleg nyilvános előzetes verzióban elérhető a felügyelt példány) egy másik régióban található összes adatbázis kezelése. Használja az azonos technológiára [aktív georeplikáció](sql-database-active-geo-replication.md). Manuálisan is kezdeményezhető feladatátvétel, vagy az SQL Database szolgáltatás egy felhasználó által definiált szabályzat alapján lehet delegálni. Az utóbbi lehetőséget lehetővé teszi, hogy automatikusan helyreállítani egy másodlagos régióban több kapcsolódó adatbázisok egy Katasztrofális hiba vagy egyéb nem tervezett esemény, amely az SQL Database szolgáltatás rendelkezésre állása az elsődleges régióban teljes vagy részleges elvesztését eredményezi. Emellett használhatja az olvasható másodlagos adatbázis csak olvasható lekérdezési számítási feladatok kiszervezéséhez. Automatikus feladatátvételi csoportok több adatbázis között, mivel ezeknek az adatbázisoknak az elsődleges kiszolgálón kell konfigurálni. Az adatbázisok a feladatátvételi csoport elsődleges és másodlagos kiszolgálók ugyanabban az előfizetésben kell lennie. Automatikus feladatátvételi csoportok támogatja az összes adatbázis replikálása a csoportban csak egy másodlagos kiszolgáló egy másik régióban.
 
 > [!NOTE]
 > Az azonos vagy eltérő régiókban lévő több másodlagos példány hozható létre egy logikai kiszolgálót, és egyetlen vagy készletezett adatbázisok használatának ügyfélcsomagokat használata [aktív georeplikáció](sql-database-active-geo-replication.md).
@@ -42,7 +42,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Feladatátvételi csoport**
 
-  Egy feladatátvételi csoportot manged belül egyetlen felügyelt példány átveheti egy másik régióba egységként abban az esetben az összes vagy néhány elsődleges adatbázist az elsődleges régióban leállás miatt elérhetetlenné válik, vagy egy logikai kiszolgáló adatbázisok egy csoportja.
+  Egy feladatátvételi csoportot a felügyelt belül egyetlen felügyelt példány átveheti egy másik régióba egységként abban az esetben az összes vagy néhány elsődleges adatbázist az elsődleges régióban leállás miatt elérhetetlenné válik, vagy egy logikai kiszolgáló adatbázisok egy csoportját.
 
   - **Logikai kiszolgálók**
 
@@ -81,7 +81,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Feladatátvételi csoport csak olvasható figyelője**
 
-  Egy formázott DNS CNAME rekord, amely a a csak olvasható figyelő, amely a másodlagos URL-címre mutat. Lehetővé teszi az átlátható módon csatlakozás a megadott terheléselosztási szabályok használata a másodlagos csak olvasható SQL alkalmazások.
+  Egy DNS CNAME-rekordot, amely a csak olvasható figyelő, amely a másodlagos URL-cím formátumú. Lehetővé teszi az átlátható módon csatlakozás a megadott terheléselosztási szabályok használata a másodlagos csak olvasható SQL alkalmazások.
 
   - **A logikai kiszolgáló DNS CNAME-rekordot a csak olvasási figyelői**
 
@@ -203,7 +203,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenése**
 
-  SQL feladatátvételi döntés független az alkalmazás vagy a használt egyéb szolgáltatások többi részétől. Az alkalmazás "összekeverhetők" egy adott régióban, és néhány, a másik néhány összetevőt. A probléma elkerülése érdekében győződjön meg, hogy a redundáns alkalmazástelepítés, a Vészhelyreállítás régióban található, és kövesse az alábbi [hálózati biztonsági irányelveket](#Failover groups-and-network-security).
+  SQL feladatátvételi döntés független az alkalmazás vagy a használt egyéb szolgáltatások többi részétől. Az alkalmazás "összekeverhetők" egy adott régióban, és néhány, a másik néhány összetevőt. A probléma elkerülése érdekében győződjön meg, hogy a redundáns alkalmazástelepítés, a Vészhelyreállítás régióban található, és kövesse az alábbi [hálózati biztonsági irányelveket](#failover-groups-and-network-security).
 
 - **Adatvesztés előkészítése**
 
@@ -262,7 +262,7 @@ A feladatátvételi csoportok között két különböző régióban lévő els�
     > [!IMPORTANT]
     > Helytelenül van konfigurálva az NSG biztonsági szabályai vezet elakadt adatbázis-másolási műveletek.
 
-7. Másodlagos példány DNS-zóna partner konfigurálni kell. DNS-zóna egy tulajdonságot egy felügyelt példány. Ez azt jelenti, hogy a gazdagép nevét, amely a következő felügyelt példány nevét, és megelőzi részét a `.database.windows.net` előtag. Véletlenszerű karakterlánc létrehozása az első felügyelt példány minden virtuális hálózat létrehozása során. A DNS-zónát a felügyelt példány létrehozása után nem módosítható, és ugyanazon az alhálózaton belül az összes felügyelt példányok megoszthatja az ugyanazon DNS-zóna értéket. Az elsődleges felügyelt példány és a másodlagos felügyelt példány Manged példány feladatátvételi csoport beállítása, a DNS-zóna azonos értéket kell osztania. Ehhez a DnsZonePartner paraméter megadásával, a másodlagos felügyelt példány létrehozásakor. A DNS-zóna partner tulajdonság a felügyelt példány megosztására egy feladatátvételi csoport az határozza meg. Megadásával az erőforrás-azonosító egy másik felügyelt példány DnsZonePartner bemeneteként, a felügyelt példány létrehozása folyamatban örökli a partner a felügyelt példánynak azonos DNS zónához értékét.
+7. Másodlagos példány DNS-zóna partner konfigurálni kell. DNS-zóna egy tulajdonságot egy felügyelt példány. Ez azt jelenti, hogy a gazdagép nevét, amely a következő felügyelt példány nevét, és megelőzi részét a `.database.windows.net` előtag. Véletlenszerű karakterlánc létrehozása az első felügyelt példány minden virtuális hálózat létrehozása során. A DNS-zónát a felügyelt példány létrehozása után nem módosítható, és ugyanazon az alhálózaton belül az összes felügyelt példányok megoszthatja az ugyanazon DNS-zóna értéket. Az elsődleges felügyelt példány és a másodlagos felügyelt példány felügyelt példány feladatátvételi csoport beállítása, a DNS-zóna azonos értéket kell osztania. Ehhez a DnsZonePartner paraméter megadásával, a másodlagos felügyelt példány létrehozásakor. A DNS-zóna partner tulajdonság a felügyelt példány megosztására egy feladatátvételi csoport az határozza meg. Megadásával az erőforrás-azonosító egy másik felügyelt példány DnsZonePartner bemeneteként, a felügyelt példány létrehozása folyamatban örökli a partner a felügyelt példánynak azonos DNS zónához értékét.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
 
@@ -306,17 +306,17 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 
 #### <a name="install-the-newest-pre-release-version-of-powershell"></a>Telepítse a Powershell legújabb előzetes verziója
 
-1. A powershellget-modul frissítéséhez 1.6.5 (vagy a legújabb előzetes verzió). Lásd: [PowerShell preview-hely](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
+1. A PowerShellGet-modul frissítéséhez 1.6.5 (vagy a legújabb előzetes verzió). Lásd: [PowerShell preview-hely](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
    ```Powershell
-      install-module powershellget -MinimumVersion 1.6.5 -force
+      install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. Egy új PowerShell-ablakban hajtsa végre a következő parancsokat:
 
    ```Powershell
-      import-module powershellget
-      get-module powershellget #verify version is 1.6.5 (or newer)
+      import-module PowerShellGet
+      get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```
